@@ -3,7 +3,7 @@
   FILE: icalderivedparameters.{c,h}
   CREATOR: eric 09 May 1999
   
-  $Id$
+  $Id: icalparameter.c 134 2021-06-01 06:21:35Z erx $
   $Locker$
     
 
@@ -56,7 +56,7 @@ struct icalparameter_impl* icalparameter_new_impl(icalparameter_kind kind)
 	return 0;
     }
     
-    strcpy(v->id,"para");
+    strlcpy (v->id, "para", sizeof (v->id));
 
     v->kind = kind;
     v->size = 0;

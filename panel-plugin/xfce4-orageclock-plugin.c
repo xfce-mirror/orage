@@ -117,7 +117,7 @@ static void oc_set_lines_to_panel(Clock *clock)
     GList   *tmp_list;
 
     if (clock->lines_vertically)
-        clock->mbox = gtk_vbox_new(TRUE, 0);
+        clock->mbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
     else
         clock->mbox = gtk_hbox_new(TRUE, 0);
     gtk_widget_show(clock->mbox);
@@ -128,7 +128,7 @@ static void oc_set_lines_to_panel(Clock *clock)
          tmp_list = g_list_next(tmp_list)) {
         clock_line = tmp_list->data;
         /* make sure clock face is updated */
-        strcpy(clock_line->prev, "New line");
+        g_strlcpy (clock_line->prev, "New line", sizeof (clock_line->prev));
         oc_set_line(clock, clock_line, -1);
     }
 }
@@ -150,7 +150,7 @@ static void oc_tooltip_set(Clock *clock)
     oc_utf8_strftime(res, sizeof(res), clock->tooltip_data->str, &clock->now);
     if (strcmp(res,  clock->tooltip_prev)) {
         gtk_tooltips_set_tip(clock->tips, GTK_WIDGET(clock->plugin),res, NULL);
-        strcpy(clock->tooltip_prev, res);
+        g_strlcpy (clock->tooltip_prev, res, sizeof (clock->tooltip_prev));
     }
 }
 
@@ -177,7 +177,7 @@ static gboolean oc_get_time(Clock *clock)
          * */
         if (strcmp(res, line->prev)) {
             gtk_label_set_text(GTK_LABEL(line->label), res);
-            strcpy(line->prev, res);
+            g_strlcpy (line->prev, res, sizeof (line->prev));
         }
     }
     oc_tooltip_set(clock);
@@ -498,7 +498,7 @@ ClockLine * oc_add_new_line(Clock *clock, const char *data, const char *font, in
 
     clock_line->data = g_string_new(data);
     clock_line->font = g_string_new(font);
-    strcpy(clock_line->prev, "New line");
+    g_strlcpy (clock_line->prev, "New line", sizeof (clock_line->prev));
     clock_line->clock = clock;
     clock->lines = g_list_insert(clock->lines, clock_line, pos);
     return(clock_line);
@@ -550,10 +550,10 @@ static void oc_read_rc_file(XfcePanelPlugin *plugin, Clock *clock)
     clock->rotation = xfce_rc_read_int_entry(rc, "rotation", 0);
     
     for (i = 0, more_lines = TRUE; more_lines; i++) {
-        sprintf(tmp, "data%d", i);
+        g_snprintf (tmp, sizeof (tmp), "data%d", i);
         data = xfce_rc_read_entry(rc, tmp, NULL);
         if (data) { /* let's add it */
-            sprintf(tmp, "font%d", i);
+            g_snprintf (tmp, sizeof (tmp), "font%d", i);
             font = xfce_rc_read_entry(rc, tmp, NULL);
             oc_add_new_line(clock, data, font, -1);
         }
@@ -594,7 +594,7 @@ void oc_write_rc_file(XfcePanelPlugin *plugin, Clock *clock)
 
     xfce_rc_write_bool_entry(rc, "fg_set", clock->fg_set);
     if (clock->fg_set) {
-        sprintf(tmp, "%uR %uG %uB"
+        g_snprintf (tmp, sizeof (tmp), "%uR %uG %uB"
                 , clock->fg.red, clock->fg.green, clock->fg.blue);
         xfce_rc_write_entry(rc, "fg", tmp);
     }
@@ -604,7 +604,7 @@ void oc_write_rc_file(XfcePanelPlugin *plugin, Clock *clock)
 
     xfce_rc_write_bool_entry(rc, "bg_set", clock->bg_set);
     if (clock->bg_set) {
-        sprintf(tmp, "%uR %uG %uB"
+        g_snprintf (tmp, sizeof (tmp), "%uR %uG %uB"
                 , clock->bg.red, clock->bg.green, clock->bg.blue);
         xfce_rc_write_entry(rc, "bg", tmp);
     }
@@ -637,16 +637,16 @@ void oc_write_rc_file(XfcePanelPlugin *plugin, Clock *clock)
             tmp_list;
          i++, tmp_list = g_list_next(tmp_list)) {
         line = tmp_list->data;
-        sprintf(tmp, "data%d", i);
+        g_snprintf (tmp, sizeof (tmp), "data%d", i);
         xfce_rc_write_entry(rc, tmp,  line->data->str);
-        sprintf(tmp, "font%d", i);
+        g_snprintf (tmp, sizeof (tmp), "font%d", i);
         xfce_rc_write_entry(rc, tmp,  line->font->str);
     }
     /* delete extra lines */
     for (; i <= clock->orig_line_cnt; i++) {
-        sprintf(tmp, "data%d", i);
+        g_snprintf (tmp, sizeof (tmp), "data%d", i);
         xfce_rc_delete_entry(rc, tmp,  FALSE);
-        sprintf(tmp, "font%d", i);
+        g_snprintf (tmp, sizeof (tmp), "font%d", i);
         xfce_rc_delete_entry(rc, tmp,  FALSE);
     }
 

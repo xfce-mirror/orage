@@ -360,7 +360,7 @@ void oc_properties_options(GtkWidget *dlg, Clock *clock)
     label = gtk_label_new(_("set timezone to:"));
     oc_table_add(table, label, 0, 0);
 
-    button = gtk_button_new_from_stock(GTK_STOCK_OPEN);
+    button = orage_util_image_button ("document-open", _("_Open"));
     if (clock->timezone->str && clock->timezone->len)
          gtk_button_set_label(GTK_BUTTON(button), _(clock->timezone->str));
     oc_table_add(table, button, 1, 0);
@@ -378,7 +378,7 @@ void oc_properties_options(GtkWidget *dlg, Clock *clock)
          tmp_list = g_list_next(tmp_list)) {
         cur_line++;
         line = tmp_list->data;
-        sprintf(tmp, _("Line %d:"), cur_line);
+        g_snprintf (tmp, sizeof (tmp), _("Line %d:"), cur_line);
         label = gtk_label_new(tmp);
         oc_table_add(table, label, 0, cur_line);
 

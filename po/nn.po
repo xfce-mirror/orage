@@ -1531,7 +1531,7 @@ msgid "All appointments"
 msgstr ""
 
 #: ../src/interface.c:1041
-msgid "Named appointments: "
+msgid "Named appointments:"
 msgstr ""
 
 #: ../src/interface.c:1053
@@ -2056,18 +2056,6 @@ msgstr ""
 #: ../src/parameters.c:925
 msgid "Selected day"
 msgstr ""
-
-#: ../src/parameters.c:943
-msgid "Use dynamic tray icon"
-msgstr "Bruk dynamisk trauikon"
-
-#: ../src/parameters.c:948
-msgid "Use dynamic icon"
-msgstr "Bruk dynamisk ikon"
-
-#: ../src/parameters.c:954
-msgid "Dynamic icon shows current month and day of the month."
-msgstr "Dynamisk ikon viser gjeldande månad og dag i månaden."
 
 #: ../src/parameters.c:962 ../src/parameters.c:967
 msgid "Use wakeup timer"

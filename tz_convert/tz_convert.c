@@ -340,16 +340,16 @@ int process_file(const char *file_name)
 void create_backup_file(char *out_file)
 {
     char *backup_out_file, backup_ending[]=".old";
-    int out_file_name_len, backup_ending_len, backup_out_file_name_len;
+    size_t out_file_name_len, backup_ending_len, backup_out_file_name_len;
 
     out_file_name_len = strlen(out_file);
     backup_ending_len = strlen(backup_ending);
     backup_out_file_name_len = out_file_name_len + backup_ending_len;
 
     backup_out_file = malloc(backup_out_file_name_len + 1);
-    strncpy(backup_out_file, out_file, out_file_name_len);
+    strlcpy(backup_out_file, out_file, backup_out_file_name_len + 1);
     backup_out_file[out_file_name_len] = '\0';
-    strncat(backup_out_file, backup_ending, backup_ending_len);
+    strlcat(backup_out_file, backup_ending, backup_out_file_name_len + 1);
 
     if (rename(out_file, backup_out_file)) {
         printf("Error creating backup file %s:\n", backup_out_file);
@@ -388,7 +388,7 @@ int create_ical_file(const char *in_file_name)
 {
     struct stat out_stat;
     char ical_ending[]=".ics";
-    int in_file_name_len, ical_ending_len, out_file_name_len;
+    size_t in_file_name_len, ical_ending_len, out_file_name_len;
 
     if (debug > 1)
         printf("create_ical_file: start\n");
@@ -400,7 +400,7 @@ int create_ical_file(const char *in_file_name)
         out_file = malloc(out_file_name_len + 1);
         strncpy(out_file, &in_file_name[in_file_base_offset], in_file_name_len);
         out_file[in_file_name_len] = '\0';
-        strncat(out_file, ical_ending, ical_ending_len);
+        strlcat(out_file, ical_ending, out_file_name_len + 1);
 
         /* FIXME: it is possible that in_timezone_name and timezone_name
          * do not get any value! Move them outside of this if */
@@ -474,7 +474,7 @@ int create_ical_file(const char *in_file_name)
 
 void write_ical_str(char *data)
 {
-    int len;
+    size_t len;
 
     len = strlen(data);
     fwrite(data, 1, len, ical_file);
@@ -500,8 +500,7 @@ struct ical_timezone_data wit_get_data(int i
         , struct ical_timezone_data *prev) {
     unsigned long tc_time;
     unsigned int tct_i, abbr_i;
-    struct ical_timezone_data 
-        data = { {0, 0, 0, 0, 0, 0, 0}, 0, 0, 0, 0, 0, 0, 0, NULL};
+    struct ical_timezone_data data = {0};
 
     /* get timechange time */
     in_head = begin_timechanges;
@@ -638,7 +637,6 @@ void wit_write_data(int repeat_rule, struct rdate_prev_data **rdate
         , struct ical_timezone_data *ical_data)
 {
     char str[100], until_date[31];
-    int len;
     char *dst_begin="BEGIN:DAYLIGHT\n";
     char *dst_end="END:DAYLIGHT\n";
     char *std_begin="BEGIN:STANDARD\n";
@@ -699,25 +697,25 @@ void wit_write_data(int repeat_rule, struct rdate_prev_data **rdate
     else
         write_ical_str(std_begin);
 
-    len = snprintf(str, 30, "TZOFFSETFROM:%+03d%02d\n"
+    snprintf(str, 30, "TZOFFSETFROM:%+03d%02d\n"
             , prev->prev_gmt_offset_hh, prev->prev_gmt_offset_mm);
-    fwrite(str, 1, len, ical_file);
+    fwrite(str, 1, strlen (str), ical_file);
 
-    len = snprintf(str, 30, "TZOFFSETTO:%+03d%02d\n"
+    snprintf(str, 30, "TZOFFSETTO:%+03d%02d\n"
             , prev->gmt_offset_hh, prev->gmt_offset_mm);
-    fwrite(str, 1, len, ical_file);
+    fwrite(str, 1, strlen (str), ical_file);
 
-    len = snprintf(str, 99, "TZNAME:%s\n", prev->tz);
-    fwrite(str, 1, len, ical_file);
+    snprintf(str, 99, "TZNAME:%s\n", prev->tz);
+    fwrite(str, 1, strlen (str), ical_file);
 
-    len = snprintf(str, 30, "DTSTART:%04d%02d%02dT%02d%02d%02d\n"
+    snprintf(str, 30, "DTSTART:%04d%02d%02dT%02d%02d%02d\n"
             , first->start_time.tm_year + 1900
             , first->start_time.tm_mon  + 1
             , first->start_time.tm_mday
             , first->start_time.tm_hour
             , first->start_time.tm_min
             , first->start_time.tm_sec);
-    fwrite(str, 1, len, ical_file);
+    fwrite(str, 1, strlen (str), ical_file);
 
     if (repeat_rule) { /* we had repeating appointment */
         if (repeat_rule < 10) { /* RRULE */
@@ -742,31 +740,31 @@ void wit_write_data(int repeat_rule, struct rdate_prev_data **rdate
                 }
                 until_time.tm_mday = 1;
             }
-            len = snprintf(until_date, 30, "%04d%02d%02dT235959Z"
+            snprintf(until_date, 30, "%04d%02d%02dT235959Z"
                     , until_time.tm_year + 1900
                     , until_time.tm_mon  + 1
                     , until_time.tm_mday);
-            len = snprintf(str, 80
+            snprintf(str, 80
                     , "RRULE:FREQ=YEARLY;BYMONTH=%d;BYDAY=%d%s;UNTIL=%s\n"
                     , first->start_time.tm_mon + 1
                     , repeat_rule
                     , day[first->start_time.tm_wday]
                     , until_date);
-            fwrite(str, 1, len, ical_file);
+            fwrite(str, 1, strlen(str), ical_file);
         }
         else { /* RDATE */
             if (debug > 3)
                 printf("\t\t...RDATE\n");
             for (tmp_data = *rdate; tmp_data ; ) {
                 tmp_prev = tmp_data->data;
-                len = snprintf(str, 30, "RDATE:%04d%02d%02dT%02d%02d%02d\n"
+                snprintf(str, 30, "RDATE:%04d%02d%02dT%02d%02d%02d\n"
                         , tmp_prev.start_time.tm_year + 1900
                         , tmp_prev.start_time.tm_mon  + 1
                         , tmp_prev.start_time.tm_mday
                         , tmp_prev.start_time.tm_hour
                         , tmp_prev.start_time.tm_min
                         , tmp_prev.start_time.tm_sec);
-                fwrite(str, 1, len, ical_file);
+                fwrite(str, 1, strlen (str), ical_file);
 
                 tmp_data2 = tmp_data;
                 tmp_data = tmp_data->next;
@@ -821,11 +819,11 @@ void write_ical_timezones()
      *                  repeating groups, it is actually the same than prev.
      *                  */
     struct ical_timezone_data ical_data
-        , ical_data_prev = { {0, 0, 0, 0, 0, 0, 0}, 0, 0, 0, 0, 0, 0, 0, NULL}
-        , data_prev_std = { {0, 0, 0, 0, 0, 0, 0}, 0, 0, 0, 0, 0, 0, 0, NULL}
-        , data_first_std = { {0, 0, 0, 0, 0, 0, 0}, 0, 0, 0, 0, 0, 0, 0, NULL}
-        , data_prev_dst = { {0, 0, 0, 0, 0, 0, 0}, 0, 0, 0, 0, 0, 0, 0, NULL}
-        , data_first_dst = { {0, 0, 0, 0, 0, 0, 0}, 0, 0, 0, 0, 0, 0, 0, NULL};
+        , ical_data_prev = {0}
+        , data_prev_std = {0}
+        , data_first_std = {0}
+        , data_prev_dst = {0}
+        , data_first_dst = {0};
         /* pointers either to data_prev_std and data_first_std
          * or to data_prev_dst and data_first_dst. 
          * These avoid having separate code paths for std and dst */
@@ -1092,6 +1090,8 @@ int write_ical_file(const char *in_file_name, const struct stat *in_file_stat)
     fclose(ical_file);
     if (debug > 1)
         printf("\n***** write_ical_file: end *****\n\n\n");
+    
+    (void)in_file_stat;
     return(0);
 }
 
@@ -1424,18 +1424,18 @@ void add_zone_tabs()
     }
     buf_len=len+18+1; /* +1=add \n */
     buf = malloc(buf_len+1); /* +1=add \0 */
-    sprintf(buf, "+0000000 -0000000 %s\n", timezone_name);
+    snprintf(buf, buf_len + 1, "+0000000 -0000000 %s\n", timezone_name);
     if (before) {
         if (fseek(ical_zone_tab, 0l, SEEK_END))
             perror("\tfseek-end");
         else
-            fwrite(buf, 1, buf_len, ical_zone_tab);
+            fwrite(buf, 1, strlen (buf), ical_zone_tab);
     }
     else {
         if (fseek(ical_zone_tab, offset-18, SEEK_SET))
             perror("\tfseek-set");
         else {
-            fwrite(buf, 1, buf_len, ical_zone_tab);
+            fwrite(buf, 1, strlen (buf), ical_zone_tab);
             buf_len = strlen(&ical_zone_buf[offset-18]);
             fwrite(&ical_zone_buf[offset-18], 1, buf_len, ical_zone_tab);
         }
@@ -1452,7 +1452,9 @@ void add_zone_tabs()
 int file_call(const char *file_name, const struct stat *sb, int flags
         , struct FTW *f)
 {
+#ifdef FTW_ACTIONRETVAL    
     int i;
+#endif
 
     if (debug > 1)
         printf("file_call: start\n");

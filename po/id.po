@@ -1535,7 +1535,7 @@ msgid "All appointments"
 msgstr "Semua janji"
 
 #: ../src/interface.c:1041
-msgid "Named appointments: "
+msgid "Named appointments:"
 msgstr "Janji yang dinamai:"
 
 #: ../src/interface.c:1053
@@ -2060,18 +2060,6 @@ msgstr "Hari pertama dalam pekan"
 #: ../src/parameters.c:925
 msgid "Selected day"
 msgstr "Hari dipilih"
-
-#: ../src/parameters.c:943
-msgid "Use dynamic tray icon"
-msgstr "Gunakan ikon baki dinamis"
-
-#: ../src/parameters.c:948
-msgid "Use dynamic icon"
-msgstr "Gunakan ikon dinamis"
-
-#: ../src/parameters.c:954
-msgid "Dynamic icon shows current month and day of the month."
-msgstr "Ikon dinamis menampilkan bulan ini dan hari dalam bulan."
 
 #: ../src/parameters.c:962 ../src/parameters.c:967
 msgid "Use wakeup timer"

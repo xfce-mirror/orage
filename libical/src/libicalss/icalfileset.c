@@ -3,7 +3,7 @@
   FILE: icalfileset.c
   CREATOR: eric 23 December 1999
   
-  $Id$
+  $Id: icalfileset.c 136 2021-06-02 06:16:06Z erx $
   $Locker$
     
  (C) COPYRIGHT 2000, Eric Busboom, http://www.softwarestudio.org
@@ -180,7 +180,7 @@ icalcluster* icalfileset_produce_icalcluster(const char *path) {
 char* icalfileset_read_from_file(char *s, size_t size, void *d)
 {
     char* p = s;
-    int fd = (int)d;
+    int fd = (intptr_t)d;
 
     /* Simulate fgets -- read single characters and stop at '\n' */
 
@@ -209,7 +209,7 @@ icalerrorenum icalfileset_read_file(icalfileset* set,mode_t mode)
   
     parser = icalparser_new();
 
-    icalparser_set_gen_data(parser,(void*)set->fd);
+    icalparser_set_gen_data(parser,(void*)(intptr_t)set->fd);
     set->cluster = icalparser_parse(parser,icalfileset_read_from_file);
     icalparser_free(parser);
 
@@ -356,9 +356,9 @@ icalerrorenum icalfileset_commit(icalset* set)
     
     if (fset->options.safe_saves == 1) {
 #ifndef WIN32
-	snprintf(tmp,ICAL_PATH_MAX,"cp '%s' '%s.bak'",fset->path, fset->path);
+	snprintf (tmp, sizeof (tmp),"cp '%s' '%s.bak'",fset->path, fset->path);
 #else
-	snprintf(tmp,ICAL_PATH_MAX,"copy %s %s.bak", fset->path, fset->path);
+	snprintf (tmp, sizeof (tmp),"copy %s %s.bak", fset->path, fset->path);
 #endif
 	
 	if(system(tmp) < 0){

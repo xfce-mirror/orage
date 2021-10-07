@@ -67,7 +67,7 @@ static struct tm *get_time(const gchar *tz)
     /*
     setenv("TZ", tz, 1);
     */
-    g_snprintf(env_tz, 256, "TZ=%s", tz);
+    g_snprintf(env_tz, sizeof (env_tz), "TZ=%s", tz);
     putenv(env_tz);
     tzset();
     if (clocks.time_adj_act) {
@@ -83,11 +83,13 @@ static struct tm *get_time(const gchar *tz)
 
 static gboolean global_time_active_already(GdkAtom *atom)
 {
+#if (GTK_MAJOR_VERSION < 3)
     Window xwindow;
     GdkEventClient gev; 
 
-    *atom = gdk_atom_intern("_XFCE_GLOBALTIME_RUNNING", FALSE);
-    xwindow = XGetSelectionOwner(GDK_DISPLAY(), gdk_x11_atom_to_xatom(*atom));
+    *atom = gdk_atom_intern (GLOBALTIME_RUNNING, FALSE);
+    xwindow = XGetSelectionOwner(gdk_x11_get_default_xdisplay(),
+                                 gdk_x11_atom_to_xatom(*atom));
     if (xwindow != None) { /* real owner found; must be us. Let's go visible */
 /* DOES NOT WORK: if ((window = gdk_selection_owner_get(atom)) != NULL) { */
         gev.type = GDK_CLIENT_EVENT;
@@ -103,9 +105,14 @@ static gboolean global_time_active_already(GdkAtom *atom)
         return(TRUE); 
     }
     else
+#else
+#warning "TODO for GTK 3"
+        (void)atom;
+#endif
         return(FALSE); 
 }
 
+#if (GTK_MAJOR_VERSION < 3)
 static void raise_window(void)
 {
     GdkWindow *window;
@@ -113,7 +120,7 @@ static void raise_window(void)
     gtk_window_set_decorated(GTK_WINDOW(clocks.window), clocks.decorations);
     gtk_window_move(GTK_WINDOW(clocks.window), clocks.x, clocks.y);
     gtk_window_stick(GTK_WINDOW(clocks.window));
-    window = GTK_WIDGET(clocks.window)->window;
+    window = gtk_widget_get_window(GTK_WIDGET(clocks.window));
     gdk_x11_window_set_user_time(window, gdk_x11_get_server_time(window));
     gtk_widget_show(clocks.window);
     gtk_window_present(GTK_WINDOW(clocks.window));
@@ -128,8 +135,8 @@ static gboolean client_message_received(GtkWidget *widget
         return(TRUE);
     }
     else if (event->message_type ==
-            gdk_atom_intern("_XFCE_GLOBALTIME_TOGGLE_HERE", FALSE)) {
-        if (GTK_WIDGET_VISIBLE(clocks.window)) {
+            gdk_atom_intern (GLOBALTIME_TOGGLE, FALSE)) {
+        if (gtk_widget_get_visible(clocks.window)) {
             gtk_widget_hide(clocks.window);
             return(TRUE);
         }
@@ -139,10 +146,22 @@ static gboolean client_message_received(GtkWidget *widget
                                                                                 
     return(FALSE);
 }
+#else
+#warning "TODO for GTK 3"
+static gboolean client_message_received(GtkWidget *widget
+            , void *event, gpointer user_data)
+{                 
+    (void)widget;
+    (void)event;
+    (void)user_data;
+    return(FALSE);
+}
+#endif
 
 static gboolean clock_button_pressed(GtkWidget *widget, GdkEventButton *event
         , clock_struct *clockp)
 {
+    (void)event;
     return(clock_parameters(widget, clockp));
 }
 
@@ -274,8 +293,9 @@ static void show_clock_format_clock(clock_struct *clockp)
     }
 
 /*********** timezone tooltip ***********/
-    sprintf(tmp, _("%s\nclick to modify clock"), clockp->tz->str);
-    gtk_tooltips_set_tip(clocks.tips, clockp->clock_ebox, tmp, NULL);
+    g_snprintf (tmp, sizeof (tmp), _("%s\nclick to modify clock"),
+                clockp->tz->str);
+    gtk_widget_set_tooltip_text(clockp->clock_ebox, tmp);
 
 /*********** clock size even or varying */
     gtk_box_set_homogeneous(GTK_BOX(clocks.clocks_hbox), clocks.expand);
@@ -294,6 +314,7 @@ static void show_clock_format_clock(clock_struct *clockp)
 
 void show_clock(clock_struct *clockp, gint *pos)
 {
+    #warning "TODO replace box with grid"
     clockp->clock_hbox = gtk_hbox_new(FALSE, 0);
     gtk_box_pack_start(GTK_BOX(clocks.clocks_hbox), clockp->clock_hbox
                         , clocks.expand, clocks.expand, 0);
@@ -302,7 +323,7 @@ void show_clock(clock_struct *clockp, gint *pos)
                         , clockp->clock_hbox, *pos);
     gtk_widget_show(clockp->clock_hbox);
 
-    clockp->clock_separator = gtk_vseparator_new();
+    clockp->clock_separator = gtk_separator_new (GTK_ORIENTATION_VERTICAL);
     gtk_box_pack_start(GTK_BOX(clockp->clock_hbox)
                     , clockp->clock_separator, FALSE, FALSE, 0);
     gtk_widget_show(clockp->clock_separator);
@@ -313,8 +334,8 @@ void show_clock(clock_struct *clockp, gint *pos)
     g_signal_connect(G_OBJECT(clockp->clock_ebox), "button_press_event"
                     , G_CALLBACK(clock_button_pressed), clockp);
     gtk_widget_show(clockp->clock_ebox);
-
-    clockp->clock_vbox = gtk_vbox_new(FALSE, 1);
+#warning "TODO replace box with grid"
+    clockp->clock_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
     gtk_container_set_border_width(GTK_CONTAINER(clockp->clock_vbox), 1);
     gtk_container_add(GTK_CONTAINER(clockp->clock_ebox), clockp->clock_vbox);
     gtk_widget_show(clockp->clock_vbox);
@@ -375,6 +396,8 @@ static gboolean preferences_button_pressed(GtkWidget *widget
     else {
         return(default_preferences(widget));
     }
+    
+    (void)dummy;
 }
 
 static void add_default_clock(void)
@@ -390,25 +413,37 @@ static void add_default_clock(void)
     write_file();
 }
 
-static void upd_clock(clock_struct *clockp)
+static void upd_clock(clock_struct *clockp, gpointer user_data)
 {
     struct tm *now;
 
     now = get_time(clockp->tz->str);
     if (clocks.local_mday == now->tm_mday) 
-        sprintf(clocks.time_now, "%02d:%02d", now->tm_hour, now->tm_min);
-    else if (clocks.local_mday > now->tm_mday) 
-        sprintf(clocks.time_now, "%02d:%02d-", now->tm_hour, now->tm_min);
+    {
+        g_snprintf (clocks.time_now, sizeof (clocks.time_now), "%02d:%02d",
+                    now->tm_hour, now->tm_min);
+    }
+    else if (clocks.local_mday > now->tm_mday)
+    {
+        g_snprintf (clocks.time_now, sizeof (clocks.time_now), "%02d:%02d-",
+                    now->tm_hour, now->tm_min);
+    }
     else
-        sprintf(clocks.time_now, "%02d:%02d+", now->tm_hour, now->tm_min);
+    {
+        g_snprintf (clocks.time_now, sizeof (clocks.time_now), "%02d:%02d+",
+                    now->tm_hour, now->tm_min);
+    }
+    
     show_clock_format_time(clockp);
     if (clocks.modified > 0) {
         show_clock_format_name(clockp);
         show_clock_format_clock(clockp);
     }
+    
+    (void)user_data;
 }
 
-static gboolean upd_clocks(void)
+static gboolean upd_clocks (gpointer user_data)
 {
     struct tm *now;
     gint secs_now;
@@ -432,17 +467,24 @@ static gboolean upd_clocks(void)
         /* minute changed => need to update visible clocks */
         g_list_foreach(clocks.clock_list, (GFunc) upd_clock, NULL);
     clocks.previous_secs = secs_now;
+    
+    (void)user_data;
+    
     return(TRUE);
 }
 
 static void adj_hh_changed(GtkSpinButton *cb, gpointer user_data)
 {
     clocks.hh_adj = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(cb));
+    
+    (void)user_data;
 }
 
 static void adj_mm_changed(GtkSpinButton *cb, gpointer user_data)
 {
     clocks.mm_adj = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(cb));
+    
+    (void)user_data;
 }
 
 static void init_hdr_button(void)
@@ -452,6 +494,7 @@ static void init_hdr_button(void)
     /* this shows also text, which we do not want:
     clocks.hdr_button = gtk_button_new_from_stock(GTK_STOCK_PREFERENCES);
     */
+    #warning "TODO replace box with grid"
     clocks.hdr_hbox = gtk_hbox_new(FALSE, 1);
     gtk_box_pack_start(GTK_BOX(clocks.main_hbox)
             , clocks.hdr_hbox, FALSE, FALSE, 0);
@@ -460,8 +503,8 @@ static void init_hdr_button(void)
     clocks.hdr_button = gtk_button_new();
     gtk_box_pack_start(GTK_BOX(clocks.hdr_hbox)
             , clocks.hdr_button, FALSE, FALSE, 0);
-    gtk_tooltips_set_tip(clocks.tips, clocks.hdr_button
-            , _("button 1 to change preferences \nbutton 2 to adjust time of clocks"), NULL);
+    gtk_widget_set_tooltip_text(clocks.hdr_button
+            , _("button 1 to change preferences \nbutton 2 to adjust time of clocks"));
     g_signal_connect(clocks.hdr_button, "button_press_event"
             , G_CALLBACK(preferences_button_pressed), NULL);
     image = gtk_image_new_from_stock(GTK_STOCK_PREFERENCES
@@ -476,8 +519,7 @@ static void init_hdr_button(void)
     gtk_spin_button_set_value(GTK_SPIN_BUTTON(clocks.hdr_adj_hh), (gdouble)0);
     gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(clocks.hdr_adj_hh), TRUE);
     gtk_widget_set_size_request(clocks.hdr_adj_hh, 45, -1);
-    gtk_tooltips_set_tip(clocks.tips, clocks.hdr_adj_hh
-            , _("adjust to change hour"), NULL);
+    gtk_widget_set_tooltip_text(clocks.hdr_adj_hh, _("adjust to change hour"));
     g_signal_connect((gpointer) clocks.hdr_adj_hh, "changed"
             , G_CALLBACK(adj_hh_changed), NULL);
 
@@ -492,19 +534,23 @@ static void init_hdr_button(void)
     gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(clocks.hdr_adj_mm), TRUE);
     gtk_spin_button_set_increments(GTK_SPIN_BUTTON(clocks.hdr_adj_mm), 30, 1);
     gtk_widget_set_size_request(clocks.hdr_adj_mm, 45, -1);
-    gtk_tooltips_set_tip(clocks.tips, clocks.hdr_adj_mm
-            , _("adjust to change minute. Click arrows with button 2 to change only 1 minute."), NULL);
+    gtk_widget_set_tooltip_text(clocks.hdr_adj_mm
+            , _("adjust to change minute. Click arrows with button 2 to change only 1 minute."));
     g_signal_connect((gpointer) clocks.hdr_adj_mm, "changed"
             , G_CALLBACK(adj_mm_changed), NULL);
     /* We want it to be hidden initially, it is special thing to do...
     gtk_widget_show(clocks.hdr_adj);
     */
-
 }
 
-static gboolean clean_up(GtkObject *obj, GdkEvent *event, gint g)
+static gboolean clean_up(GtkWidget *obj, GdkEvent *event, gpointer data)
 {
     write_file();
+    
+    (void)obj;
+    (void)event;
+    (void)data;
+    
     return(FALSE);
 }
 
@@ -526,7 +572,7 @@ static void initialize_clocks(void)
     GtkWidget *button;
 
     clocks.clock_list = NULL;
-    strcpy(clocks.time_now, "88:88");
+    g_strlcpy (clocks.time_now, "88:88", sizeof (clocks.time_now));
     clocks.previous_secs = 61;      
     clocks.time_adj_act = FALSE;      
     clocks.no_update = FALSE;
@@ -541,18 +587,19 @@ static void initialize_clocks(void)
     */
     clocks.local_mday = 0;
     clocks.modified = 0;
-    clocks.tips = gtk_tooltips_new();
 
     /* Standard window-creating stuff */
     clocks.window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_window_set_title(GTK_WINDOW(clocks.window), _("Global Time"));
 
+    #warning "TODO replace box with grid"
     clocks.main_hbox = gtk_hbox_new(FALSE, 1);
     gtk_container_add(GTK_CONTAINER(clocks.window), clocks.main_hbox);
     gtk_widget_show(clocks.main_hbox);
 
     init_hdr_button();
 
+    #warning "TODO replace box with grid"
     clocks.clocks_hbox = gtk_hbox_new(clocks.expand, 1);
     gtk_box_pack_start(GTK_BOX(clocks.main_hbox)
                     , clocks.clocks_hbox, FALSE, FALSE, 0);
@@ -576,7 +623,7 @@ static void initialize_clocks(void)
             , gtk_font_button_get_font_name((GtkFontButton *)button));
     g_string_assign(clocks.clock_default_attr.time_font
             , clocks.clock_default_attr.name_font->str);
-    gtk_object_sink(GTK_OBJECT(button));
+    g_object_ref_sink(button);
 
     g_signal_connect(G_OBJECT(clocks.window), "delete-event"
             , G_CALLBACK(clean_up), NULL);
@@ -588,6 +635,7 @@ static void create_global_time(void)
 {
     gint pos = -1; /* to the end */
     GdkAtom atom;
+    GdkWindow *window;
 
     /* first check if we are active already */
     if (global_time_active_already(&atom))
@@ -597,8 +645,9 @@ static void create_global_time(void)
     clocks.hidden = gtk_invisible_new();
     gtk_widget_show(clocks.hidden);
 
-    if (!gdk_selection_owner_set(clocks.hidden->window, atom,
-            gdk_x11_get_server_time(clocks.hidden->window), FALSE)) {
+    window = gtk_widget_get_window (clocks.hidden);
+    if (!gdk_selection_owner_set(window, atom,
+            gdk_x11_get_server_time(window), FALSE)) {
         g_warning("Unable acquire ownership of selection");
     }
 
@@ -612,7 +661,7 @@ static void create_global_time(void)
     /*
     get_time("GMT");
     */
-    g_timeout_add(500, (GtkFunction)upd_clocks, NULL);
+    g_timeout_add(500, (GSourceFunc)upd_clocks, NULL);
 
     g_list_foreach(clocks.clock_list, (GFunc) show_clock, &pos);
 

@@ -3,7 +3,7 @@
   FILE: icalcluster.c
   CREATOR: acampi 13 March 2002
   
-  $Id$
+  $Id: icalcluster.c 134 2021-06-01 06:21:35Z erx $
   $Locker$
     
  (C) COPYRIGHT 2002, Eric Busboom, http://www.softwarestudio.org
@@ -78,7 +78,7 @@ icalcluster * icalcluster_new_impl(void) {
 	}
   
 	memset(impl, 0, sizeof(struct icalcluster_impl));
-	strcpy(impl->id,ICALCLUSTER_ID);
+        strlcpy (impl->id,ICALCLUSTER_ID, sizeof (impl->id));
 
 	return impl;
 }

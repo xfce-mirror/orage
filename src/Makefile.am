@@ -1,44 +1,46 @@
 bin_PROGRAMS = orage
 
-orage_SOURCES =					\
-	$(orage_dbus_sources)				\
+orage_SOURCES =							\
+	$(orage_dbus_sources)					\
 	about-xfcalendar.c					\
 	about-xfcalendar.h					\
 	appointment.c						\
 	appointment.h						\
-	day-view.c							\
-	day-view.h							\
+	day-view.c						\
+	day-view.h						\
 	event-list.c						\
 	event-list.h						\
-	functions.c							\
-	functions.h							\
+	functions.c						\
+	functions.h						\
 	ical-archive.c						\
-	ical-code.c							\
-	ical-code.h							\
+	ical-code.c						\
+	ical-code.h						\
 	ical-internal.h						\
 	ical-expimp.c						\
-	interface.c							\
-	interface.h							\
-	main.c								\
-	mainbox.c							\
-	mainbox.h							\
+	interface.c						\
+	interface.h						\
+	main.c							\
+	mainbox.c						\
+	mainbox.h						\
+	orage_css.c						\
+	orage_css.h						\
 	orage-i18n.h						\
 	parameters.c						\
 	parameters.h						\
-	parameters_internal.h				\
-	reminder.c							\
-	reminder.h							\
+	parameters_internal.h					\
+	reminder.c						\
+	reminder.h						\
 	timezone_names.c					\
-	timezone_selection.c				\
-	timezone_selection.h				\
-	tray_icon.c							\
-	tray_icon.h							\
+	timezone_selection.c					\
+	timezone_selection.h					\
+	tray_icon.c						\
+	tray_icon.h						\
 	tz_zoneinfo_read.c					\
 	tz_zoneinfo_read.h
 
 orage_CFLAGS =							\
-    $(LIBGTK_CFLAGS)                    \
-	-DPACKAGE_DATA_DIR=\""$(datadir)"\"	\
+    $(LIBGTK_CFLAGS)						\
+	-DPACKAGE_DATA_DIR=\""$(datadir)"\"			\
 	-DPACKAGE_LOCALE_DIR=\""$(localedir)"\"
 
 orage_LDADD =							\
@@ -49,9 +51,9 @@ orage_LDADD =							\
 
 if INCLUDED_LIBICAL
 orage_CFLAGS +=							\
-	-I$(top_builddir)/libical/src/libical				\
-	-I$(top_builddir)/libical/src/libicalss				\
-	-I$(top_srcdir)/libical/src/libical					\
+	-I$(top_builddir)/libical/src/libical			\
+	-I$(top_builddir)/libical/src/libicalss			\
+	-I$(top_srcdir)/libical/src/libical			\
 	-I$(top_srcdir)/libical/src/libicalss
 
 orage_LDADD +=							\
@@ -68,11 +70,11 @@ endif
 
 if HAVE_DBUS
 orage_dbus_sources =						\
-	orage-dbus-object.c						\
-	orage-dbus-object.h						\
-	orage-dbus-client.c						\
-	orage-dbus-client.h						\
-	orage-dbus.h							\
+	orage-dbus-object.c					\
+	orage-dbus-object.h					\
+	orage-dbus-client.c					\
+	orage-dbus-client.h					\
+	orage-dbus.h						\
 	orage-dbus-service.xml					\
 	orage-dbus-service.h
 
@@ -90,6 +92,14 @@ endif
 if HAVE_NOTIFY
 orage_LDADD +=							\
 	$(NOTIFY_LIBS)
+endif
+
+if HAVE_LIBXFCE4UI
+orage_CFLAGS +=							\
+	$(LIBXFCE4UI_CFLAGS)
+	
+orage_LDADD +=							\
+	$(LIBXFCE4UI_LIBS)
 endif
 
 # vi:set ts=8 sw=8 noet ai:

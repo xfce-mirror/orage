@@ -1,4 +1,4 @@
-# $Id$
+# $Id: Makefile.am 285 2021-10-07 06:46:38Z erx $
 
 if INCLUDED_LIBICAL
 LIBICAL_SUBDIR=						\
@@ -12,10 +12,11 @@ SUBDIRS = 							\
 	po								\
 	sounds							\
 	src								\
-	panel-plugin					\
-	globaltime						\
-	tz_convert						\
-	plugin
+	tz_convert
+	
+# FIXME: plugin, panel-plugin and globaltime are not ported to GTK3
+
+DIST_SUBDIRS = $(SUBDIRS) plugin panel-plugin globaltime
 
 desktopdir = $(datadir)/applications
 desktop_in_files = xfcalendar.desktop.in

@@ -213,9 +213,9 @@ typedef struct _appt_win
      * add == TRUE && new == FALSE */
 } appt_win;
 
-appt_win *create_appt_win(char *action, char *par);
+appt_win *create_appt_win(gchar *action, gchar *par);
 
-GdkColor *orage_category_list_contains(char *categories);
+GdkRGBA *orage_category_list_contains(char *categories);
 void orage_category_get_list();
 
 #endif /* !__APPOINTMENT_H__ */

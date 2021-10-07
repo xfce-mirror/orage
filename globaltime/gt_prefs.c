@@ -32,6 +32,7 @@
 
 #include "globaltime.h"
 #include "../src/orage-i18n.h"
+//#include "../src/functions.h"
 #include "timezone_selection.h"
 
 
@@ -104,23 +105,26 @@ static gboolean release_preferences_window(GtkWidget *widget
 static void close_preferences_window(GtkWidget *widget, GtkWidget *window)
 {
     gtk_widget_destroy(window);
+    
+    (void)widget;
 }
                                                                                 
 static gboolean save_preferences(GtkWidget *widget
         , modify_struct *modify_default)
 {
     write_file();
+    
+    (void)widget;
+    (void)modify_default;
+    
     return(FALSE);
 }
 
-static void add_separator(GtkWidget *box, gchar type)
+static void add_separator (GtkWidget *box, const GtkOrientation type)
 {
     GtkWidget *separator;
-
-    if (type == 'H') 
-        separator = gtk_hseparator_new();
-    else
-        separator = gtk_vseparator_new();
+    
+    separator = gtk_separator_new (type);
     gtk_box_pack_start(GTK_BOX(box), separator, FALSE, FALSE, 1);
     gtk_widget_show(separator);
 }
@@ -128,11 +132,11 @@ static void add_separator(GtkWidget *box, gchar type)
 static GtkWidget *add_box(GtkWidget *box, gchar type)
 {
     GtkWidget *new_box;
-
+#warning "TODO replace box with grid"
     if (type == 'H') 
         new_box = gtk_hbox_new(FALSE, 0);
     else
-        new_box = gtk_vbox_new(FALSE, 0);
+        new_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
     gtk_box_pack_start(GTK_BOX(box), new_box, FALSE, FALSE, 2);
     gtk_widget_show(new_box);
     return(new_box);
@@ -145,7 +149,7 @@ static void add_header(GtkWidget *box, gchar *text, gboolean bold)
 
     if (bold) {
         label = gtk_label_new(NULL);
-        sprintf(tmp, "<b>%s</b>", text);
+        g_snprintf (tmp, sizeof (tmp), "<b>%s</b>", text);
         gtk_label_set_markup(GTK_LABEL(label), tmp);
     }
     else
@@ -155,16 +159,16 @@ static void add_header(GtkWidget *box, gchar *text, gboolean bold)
 }
 
 static GtkWidget *toolbar_append_button(GtkWidget *toolbar
-        , const gchar *stock_id, GtkTooltips *tooltips
+        , const gchar *stock_id
         , const char *tooltip_text)
 {
-    GtkWidget *button;
+    GtkToolItem *button;
             
-    button = (GtkWidget *) gtk_tool_button_new_from_stock(stock_id);
-    gtk_tool_item_set_tooltip(GTK_TOOL_ITEM(button), tooltips
-            , (const gchar *) tooltip_text, NULL);
-    gtk_toolbar_insert(GTK_TOOLBAR(toolbar), GTK_TOOL_ITEM(button), -1);
-    return button;
+    button = gtk_tool_button_new_from_stock(stock_id);
+    gtk_tool_item_set_tooltip_text(GTK_TOOL_ITEM(button)
+            , (const gchar *) tooltip_text);
+    gtk_toolbar_insert(GTK_TOOLBAR(toolbar), button, -1);
+    return (GtkWidget *)button;
 }
 
 static void toolbar_append_separator(GtkWidget *toolbar)
@@ -184,6 +188,8 @@ static gboolean save_clock(GtkWidget *widget
             , gtk_entry_get_text(GTK_ENTRY(modify_clock->name_entry)));
     gtk_label_set_text(GTK_LABEL(clockp->name_label), clockp->name->str);
     write_file();
+    
+    (void)widget;
     return(FALSE);
 }
 
@@ -193,6 +199,8 @@ static gboolean release_modify_clock_window(GtkWidget *widget
     modify_clock->clock->modified = FALSE;
     g_free(modify_clock);
     clocks.modified--;
+    
+    (void)widget;
     return(FALSE);
 }
 
@@ -202,12 +210,16 @@ static gboolean set_timezone_from_clock(GtkWidget *widget
     g_string_assign(clocks.local_tz
             , gtk_button_get_label((GTK_BUTTON(modify_clock->button_tz))));
     write_file();
+    
+    (void)widget;
     return(FALSE);
 }
 
 static void close_modify_clock_window(GtkWidget *widget, GtkWidget *window)
 {
     gtk_widget_destroy(window);
+    
+    (void)widget;
 }
 
 static void copy_attr(text_attr_struct *dst_attr, text_attr_struct *src_attr)
@@ -273,6 +285,8 @@ static void add_clock(GtkWidget *widget, modify_struct *modify_clock)
     write_file();
     g_signal_emit_by_name(clockp_new->clock_ebox, "button_press_event"
             , clockp_new, &ret);
+    
+    (void)widget;
 }
 
 static void copy_clock(GtkWidget *widget, modify_struct *modify_clock)
@@ -297,6 +311,8 @@ static void copy_clock(GtkWidget *widget, modify_struct *modify_clock)
     write_file();
     g_signal_emit_by_name(clockp_new->clock_ebox, "button_press_event"
             , clockp_new, &ret);
+    
+    (void)widget;
 }
 
 static void delete_clock(GtkWidget *widget, modify_struct *modify_clock)
@@ -319,6 +335,8 @@ static void delete_clock(GtkWidget *widget, modify_struct *modify_clock)
     g_free(clockp);
     write_file();
     gtk_widget_destroy(modify_clock->window); /* self destruct */
+    
+    (void)widget;
 }
 
 static void move_clock(GtkWidget *widget, modify_struct *modify_clock)
@@ -368,7 +386,7 @@ static void ask_timezone(GtkButton *button, modify_struct *modify_clock)
      * timezone list needs to be shown in local timezone (details show time) */
     clocks.no_update = TRUE; 
     if (clocks.local_tz && clocks.local_tz->str && clocks.local_tz->len) {
-        g_snprintf(env_tz, 256, "TZ=%s", clocks.local_tz->str);
+        g_snprintf(env_tz, sizeof (env_tz), "TZ=%s", clocks.local_tz->str);
         putenv(env_tz);
         tzset();
     }
@@ -437,16 +455,16 @@ static void set_modified(GtkWidget *widget, gboolean *modified)
     write_file();
 }
 
-static void fill_combo_box(GtkComboBox *combo_box, char **source
+static void fill_combo_box(GtkComboBoxText *combo_box, char **source
         , gchar *cur_value)
 {
     gint i;
 
     for (i = 0; strcmp(source[i], "END"); i++) {
-        gtk_combo_box_append_text(combo_box, _(source[i]));
+        gtk_combo_box_text_append_text(combo_box, _(source[i]));
         if ((strcmp(cur_value, "NO VALUE") != 0)
         &&  ((i == 0) || (strcmp(_(cur_value), _(source[i])) == 0)))
-            gtk_combo_box_set_active(combo_box, i);
+            gtk_combo_box_set_active(GTK_COMBO_BOX(combo_box), i);
     }
 }
 
@@ -512,22 +530,22 @@ static void create_parameter_toolbar(GtkWidget *vbox
     gtk_box_pack_start(GTK_BOX(vbox), toolbar, FALSE, FALSE, 0);
 
     /* -----------------------UPDATE-------------------------------------- */
-    button = toolbar_append_button(toolbar, GTK_STOCK_SAVE, clocks.tips
+    button = toolbar_append_button(toolbar, GTK_STOCK_SAVE
             , _("update this clock")); 
     g_signal_connect(G_OBJECT(button), "clicked"
             , G_CALLBACK(save_clock), modify_clock);
     /* -----------------------INSERT-------------------------------------- */
-    button = toolbar_append_button(toolbar, GTK_STOCK_NEW, clocks.tips
+    button = toolbar_append_button(toolbar, GTK_STOCK_NEW
             , _("add new empty clock")); 
     g_signal_connect(G_OBJECT(button), "clicked"
             , G_CALLBACK(add_clock), modify_clock);
     /* -----------------------COPY---------------------------------------- */
-    button = toolbar_append_button(toolbar, GTK_STOCK_COPY, clocks.tips
+    button = toolbar_append_button(toolbar, GTK_STOCK_COPY
             , _("add new clock using this clock as model")); 
     g_signal_connect(G_OBJECT(button), "clicked"
             , G_CALLBACK(copy_clock), modify_clock);
     /* -----------------------DELETE-------------------------------------- */
-    button = toolbar_append_button(toolbar, GTK_STOCK_DELETE, clocks.tips
+    button = toolbar_append_button(toolbar, GTK_STOCK_DELETE
             , _("delete this clock")); 
     g_signal_connect(G_OBJECT(button), "clicked"
             , G_CALLBACK(delete_clock), modify_clock);
@@ -535,22 +553,22 @@ static void create_parameter_toolbar(GtkWidget *vbox
     toolbar_append_separator(toolbar); 
     
     /* -----------------------MOVE FIRST---------------------------------- */
-    button = toolbar_append_button(toolbar, GTK_STOCK_GOTO_FIRST, clocks.tips
+    button = toolbar_append_button(toolbar, GTK_STOCK_GOTO_FIRST
             , _("move this clock first")); 
     g_signal_connect(G_OBJECT(button), "clicked"
             , G_CALLBACK(move_clock), modify_clock);
     /* -----------------------MOVE BACK----------------------------------- */
-    button = toolbar_append_button(toolbar, GTK_STOCK_GO_BACK, clocks.tips
+    button = toolbar_append_button(toolbar, GTK_STOCK_GO_BACK
             , _("move this clock left")); 
     g_signal_connect(G_OBJECT(button), "clicked"
             , G_CALLBACK(move_clock), modify_clock);
     /* -----------------------MOVE FORWARD-------------------------------- */
-    button = toolbar_append_button(toolbar, GTK_STOCK_GO_FORWARD, clocks.tips
+    button = toolbar_append_button(toolbar, GTK_STOCK_GO_FORWARD
             , _("move this clock right")); 
     g_signal_connect(G_OBJECT(button), "clicked"
             , G_CALLBACK(move_clock), modify_clock);
     /* -----------------------MOVE LAST----------------------------------- */
-    button = toolbar_append_button(toolbar, GTK_STOCK_GOTO_LAST, clocks.tips
+    button = toolbar_append_button(toolbar, GTK_STOCK_GOTO_LAST
             , _("move this clock last")); 
     g_signal_connect(G_OBJECT(button), "clicked"
             , G_CALLBACK(move_clock), modify_clock);
@@ -558,13 +576,13 @@ static void create_parameter_toolbar(GtkWidget *vbox
     toolbar_append_separator(toolbar); 
     
     /* ---------------------QUIT------------------------------------------ */
-    button = toolbar_append_button(toolbar, "gtk-media-record", clocks.tips
+    button = toolbar_append_button(toolbar, "gtk-media-record"
             , _("set the timezone of this clock to be local timezone"));
     g_signal_connect(G_OBJECT(button), "clicked"
             , G_CALLBACK(set_timezone_from_clock)
             , modify_clock);
 
-    button = toolbar_append_button(toolbar, GTK_STOCK_QUIT, clocks.tips
+    button = toolbar_append_button(toolbar, GTK_STOCK_QUIT
             , _("close window and exit")); 
     g_signal_connect(G_OBJECT(button), "clicked"
             , G_CALLBACK(close_modify_clock_window)
@@ -592,8 +610,8 @@ gboolean clock_parameters(GtkWidget *widget, clock_struct *clockp)
     g_free(window_name);
     g_signal_connect(G_OBJECT(modify_clock->window) , "destroy"
             , G_CALLBACK(release_modify_clock_window), modify_clock);
-
-    vbox = gtk_vbox_new(FALSE, 0);
+#warning "TODO replace box with grid"
+    vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
     gtk_container_add(GTK_CONTAINER(modify_clock->window), vbox);
 
 /* ---------------------TOOLBAR--------------------------------------------- */
@@ -609,12 +627,13 @@ gboolean clock_parameters(GtkWidget *widget, clock_struct *clockp)
     gtk_entry_set_text(GTK_ENTRY(modify_clock->name_entry), clockp->name->str);
     gtk_box_pack_start(GTK_BOX(hbox), modify_clock->name_entry
             , FALSE, FALSE, 5);
-    gtk_tooltips_set_tip(clocks.tips, modify_clock->name_entry
-            , _("enter name of clock"), NULL);
+    gtk_widget_set_tooltip_text(modify_clock->name_entry
+            , _("enter name of clock"));
 
     hbox = add_box(vbox, 'H');
     add_header(hbox, _("Timezone of the clock:"), TRUE);
-    modify_clock->button_tz = gtk_button_new_from_stock(GTK_STOCK_OPEN);
+    modify_clock->button_tz = orage_util_image_button ("document-open",
+                                                       _("_Open"));
     if (clockp->tz->str && clockp->tz->len)
          gtk_button_set_label(GTK_BUTTON(modify_clock->button_tz)
                  , _(clockp->tz->str));
@@ -626,6 +645,8 @@ gboolean clock_parameters(GtkWidget *widget, clock_struct *clockp)
     create_parameter_formatting(vbox, modify_clock);
 
     gtk_widget_show_all(modify_clock->window);
+    
+    (void)widget;
     return(FALSE);
 }
 
@@ -639,7 +660,7 @@ static void create_parameter_formatting(GtkWidget *vbox
     GtkWidget *table;
     GtkWidget *label;
 
-    add_separator(vbox, 'H');
+    add_separator(vbox, GTK_ORIENTATION_HORIZONTAL);
     add_header(vbox, _("Text Formatting"), TRUE);
     table = gtk_table_new(6, 3, FALSE); /* rows, columns, homogenous */
     /* table attach parameters: left, right, top, bottom */
@@ -648,12 +669,12 @@ static void create_parameter_formatting(GtkWidget *vbox
     /*------------------------background-------------------------*/
     label = gtk_label_new(_("Background color:"));
     gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 0, 1);
-    gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
+    g_object_set (label, "xalign", 0.0, "yalign", 0.5, NULL);
 
     modify_clock->button_clock_bg = 
             gtk_color_button_new_with_color(clock_bgp);
-    gtk_tooltips_set_tip(clocks.tips, modify_clock->button_clock_bg
-            , _("Click to change background colour for clock"), NULL);
+    gtk_widget_set_tooltip_text(modify_clock->button_clock_bg
+            , _("Click to change background colour for clock"));
     g_signal_connect(G_OBJECT(modify_clock->button_clock_bg), "color-set"
             , G_CALLBACK(set_color), clock_bgp);
     gtk_widget_set_sensitive(modify_clock->button_clock_bg
@@ -666,8 +687,8 @@ static void create_parameter_formatting(GtkWidget *vbox
     gtk_toggle_button_set_active(
             (GtkToggleButton *)modify_clock->check_button_default_bg
             , !attrp->clock_bg_modified);
-    gtk_tooltips_set_tip(clocks.tips, modify_clock->check_button_default_bg
-            , _("Cross this to use default instead of selected value"), NULL);
+    gtk_widget_set_tooltip_text(modify_clock->check_button_default_bg
+            , _("Cross this to use default instead of selected value"));
     g_signal_connect(G_OBJECT(modify_clock->check_button_default_bg)
             , "toggled", G_CALLBACK(set_modified)
             , &clockp->clock_attr.clock_bg_modified);
@@ -680,12 +701,12 @@ static void create_parameter_formatting(GtkWidget *vbox
     /*------------------------foreground-------------------------*/
     label = gtk_label_new(_("Foreground (=text) color:"));
     gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 1, 2);
-    gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
+    g_object_set (label, "xalign", 0.0, "yalign", 0.5, NULL);
 
     modify_clock->button_clock_fg = 
             gtk_color_button_new_with_color(clock_fgp);
-    gtk_tooltips_set_tip(clocks.tips, modify_clock->button_clock_fg
-            , _("Click to change foreground colour for clock"), NULL);
+    gtk_widget_set_tooltip_text(modify_clock->button_clock_fg
+            , _("Click to change foreground colour for clock"));
     g_signal_connect(G_OBJECT(modify_clock->button_clock_fg), "color-set"
             , G_CALLBACK(set_color), clock_fgp);
     gtk_widget_set_sensitive(modify_clock->button_clock_fg
@@ -698,8 +719,8 @@ static void create_parameter_formatting(GtkWidget *vbox
     gtk_toggle_button_set_active(
             (GtkToggleButton *)modify_clock->check_button_default_fg
             , !attrp->clock_fg_modified);
-    gtk_tooltips_set_tip(clocks.tips, modify_clock->check_button_default_fg
-            , _("Cross this to use default instead of selected value"), NULL);
+    gtk_widget_set_tooltip_text(modify_clock->check_button_default_fg
+            , _("Cross this to use default instead of selected value"));
     g_signal_connect(G_OBJECT(modify_clock->check_button_default_fg)
             , "toggled", G_CALLBACK(set_modified)
             , &clockp->clock_attr.clock_fg_modified);
@@ -712,12 +733,12 @@ static void create_parameter_formatting(GtkWidget *vbox
     /*------------------------name font-------------------------*/
     label = gtk_label_new(_("Font for name of clock:"));
     gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 2, 3);
-    gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
+    g_object_set (label, "xalign", 0.0, "yalign", 0.5, NULL);
 
     modify_clock->button_font_name = gtk_font_button_new_with_font(
             attrp->name_font->str);
-    gtk_tooltips_set_tip(clocks.tips, modify_clock->button_font_name
-            , _("Click to change font for clock name"), NULL);
+    gtk_widget_set_tooltip_text(modify_clock->button_font_name
+            , _("Click to change font for clock name"));
     g_signal_connect(G_OBJECT(modify_clock->button_font_name), "font-set"
             , G_CALLBACK(set_font), attrp->name_font);
     gtk_widget_set_sensitive(modify_clock->button_font_name
@@ -730,9 +751,8 @@ static void create_parameter_formatting(GtkWidget *vbox
     gtk_toggle_button_set_active(
             (GtkToggleButton *)modify_clock->check_button_default_font_name
             , !attrp->name_font_modified);
-    gtk_tooltips_set_tip(clocks.tips
-            , modify_clock->check_button_default_font_name
-            , _("Cross this to use default instead of selected value"), NULL);
+    gtk_widget_set_tooltip_text(modify_clock->check_button_default_font_name
+            , _("Cross this to use default instead of selected value"));
     g_signal_connect(G_OBJECT(modify_clock->check_button_default_font_name)
             , "toggled", G_CALLBACK(set_modified)
             , &clockp->clock_attr.name_font_modified);
@@ -745,12 +765,12 @@ static void create_parameter_formatting(GtkWidget *vbox
     /*------------------------time font-------------------------*/
     label = gtk_label_new(_("Font for time of clock:"));
     gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 3, 4);
-    gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
+    g_object_set (label, "xalign", 0.0, "yalign", 0.5, NULL);
 
     modify_clock->button_font_time = gtk_font_button_new_with_font(
             attrp->time_font->str);
-    gtk_tooltips_set_tip(clocks.tips, modify_clock->button_font_time
-            , _("Click to change font for clock time"), NULL);
+    gtk_widget_set_tooltip_text(modify_clock->button_font_time
+            , _("Click to change font for clock time"));
     g_signal_connect(G_OBJECT(modify_clock->button_font_time), "font-set"
             , G_CALLBACK(set_font), attrp->time_font);
     gtk_widget_set_sensitive(modify_clock->button_font_time
@@ -763,9 +783,8 @@ static void create_parameter_formatting(GtkWidget *vbox
     gtk_toggle_button_set_active(
             (GtkToggleButton *)modify_clock->check_button_default_font_time
             , !attrp->time_font_modified);
-    gtk_tooltips_set_tip(clocks.tips
-            , modify_clock->check_button_default_font_time
-            , _("Cross this to use default instead of selected value"), NULL);
+    gtk_widget_set_tooltip_text(modify_clock->check_button_default_font_time
+            , _("Cross this to use default instead of selected value"));
     g_signal_connect(G_OBJECT(modify_clock->check_button_default_font_time)
             , "toggled", G_CALLBACK(set_modified)
             , &clockp->clock_attr.time_font_modified);
@@ -779,10 +798,10 @@ static void create_parameter_formatting(GtkWidget *vbox
     /*------------------------underline name--------------------*/
     label = gtk_label_new(_("Underline name of clock:"));
     gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 4, 5);
-    gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
+    g_object_set (label, "xalign", 0.0, "yalign", 0.5, NULL);
 
-    modify_clock->combo_box_underline_name = gtk_combo_box_new_text();
-    fill_combo_box((GtkComboBox *)modify_clock->combo_box_underline_name
+    modify_clock->combo_box_underline_name = gtk_combo_box_text_new();
+    fill_combo_box((GtkComboBoxText *)modify_clock->combo_box_underline_name
             , attr_underline, attrp->name_underline->str);
     g_signal_connect(G_OBJECT(modify_clock->combo_box_underline_name), "changed"
             , G_CALLBACK(underline_combo_box_changed)
@@ -797,9 +816,8 @@ static void create_parameter_formatting(GtkWidget *vbox
     gtk_toggle_button_set_active(
             (GtkToggleButton *)modify_clock->check_button_default_underline_name
             , !attrp->name_underline_modified);
-    gtk_tooltips_set_tip(clocks.tips
-            , modify_clock->check_button_default_underline_name
-            , _("Cross this to use default instead of selected value"), NULL);
+    gtk_widget_set_tooltip_text(modify_clock->check_button_default_underline_name
+            , _("Cross this to use default instead of selected value"));
     g_signal_connect(G_OBJECT(modify_clock->check_button_default_underline_name)
             , "toggled", G_CALLBACK(reset_name_underline), clockp);
     gtk_table_attach_defaults(GTK_TABLE(table)
@@ -809,10 +827,10 @@ static void create_parameter_formatting(GtkWidget *vbox
     /*------------------------underline time--------------------*/
     label = gtk_label_new(_("Underline time of clock:"));
     gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 5, 6);
-    gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
+    g_object_set (label, "xalign", 0.0, "yalign", 0.5, NULL);
 
-    modify_clock->combo_box_underline_time = gtk_combo_box_new_text();
-    fill_combo_box((GtkComboBox *)modify_clock->combo_box_underline_time
+    modify_clock->combo_box_underline_time = gtk_combo_box_text_new();
+    fill_combo_box((GtkComboBoxText *)modify_clock->combo_box_underline_time
             , attr_underline, attrp->time_underline->str);
     g_signal_connect(G_OBJECT(modify_clock->combo_box_underline_time), "changed"
             , G_CALLBACK(underline_combo_box_changed)
@@ -827,9 +845,8 @@ static void create_parameter_formatting(GtkWidget *vbox
     gtk_toggle_button_set_active(
         (GtkToggleButton *)modify_clock->check_button_default_underline_time
             , !attrp->time_underline_modified);
-    gtk_tooltips_set_tip(clocks.tips
-            , modify_clock->check_button_default_underline_time
-            , _("Cross this to use default instead of selected value"), NULL);
+    gtk_widget_set_tooltip_text(modify_clock->check_button_default_underline_time
+            , _("Cross this to use default instead of selected value"));
     g_signal_connect(G_OBJECT(modify_clock->check_button_default_underline_time)
             , "toggled", G_CALLBACK(reset_time_underline), clockp);
     gtk_table_attach_defaults(GTK_TABLE(table)
@@ -846,7 +863,7 @@ static void preferences_formatting(GtkWidget *vbox
     GtkWidget *table;
     GtkWidget *label;
 
-    add_separator(vbox, 'H');
+    add_separator(vbox, GTK_ORIENTATION_HORIZONTAL);
     add_header(vbox, _("Text Default Formatting"), TRUE);
     table = gtk_table_new(6, 3, FALSE); /* rows, columns, homogenous */
     /* table attach parameters: left, right, top, bottom */
@@ -855,12 +872,12 @@ static void preferences_formatting(GtkWidget *vbox
     /*------------------------background-------------------------*/
     label = gtk_label_new(_("Background color:"));
     gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 0, 1);
-    gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
+    g_object_set (label, "xalign", 0.0, "yalign", 0.5, NULL);
 
     modify_default->button_clock_bg = 
             gtk_color_button_new_with_color(clock_bgp);
-    gtk_tooltips_set_tip(clocks.tips, modify_default->button_clock_bg
-            , _("Click to change default background colour for clocks"), NULL);
+    gtk_widget_set_tooltip_text(modify_default->button_clock_bg
+            , _("Click to change default background colour for clocks"));
     g_signal_connect(G_OBJECT(modify_default->button_clock_bg), "color-set"
             , G_CALLBACK(set_color), clock_bgp);
     gtk_widget_set_sensitive(modify_default->button_clock_bg
@@ -873,9 +890,8 @@ static void preferences_formatting(GtkWidget *vbox
     gtk_toggle_button_set_active(
             (GtkToggleButton *)modify_default->check_button_default_bg
             , !attrp->clock_bg_modified);
-    gtk_tooltips_set_tip(clocks.tips, modify_default->check_button_default_bg
-            , _("Cross this to use system default instead of selected color")
-            , NULL);
+    gtk_widget_set_tooltip_text(modify_default->check_button_default_bg
+            , _("Cross this to use system default instead of selected color"));
     g_signal_connect(G_OBJECT(modify_default->check_button_default_bg)
             , "toggled", G_CALLBACK(set_modified)
             , &clocks.clock_default_attr.clock_bg_modified);
@@ -888,12 +904,12 @@ static void preferences_formatting(GtkWidget *vbox
     /*------------------------foreground-------------------------*/
     label = gtk_label_new(_("Foreground (=text) color:"));
     gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 1, 2);
-    gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
+    g_object_set (label, "xalign", 0.0, "yalign", 0.5, NULL);
 
     modify_default->button_clock_fg = 
             gtk_color_button_new_with_color(clock_fgp);
-    gtk_tooltips_set_tip(clocks.tips, modify_default->button_clock_fg
-            , _("Click to change default text colour for clocks"), NULL);
+    gtk_widget_set_tooltip_text(modify_default->button_clock_fg
+            , _("Click to change default text colour for clocks"));
     g_signal_connect(G_OBJECT(modify_default->button_clock_fg), "color-set"
             , G_CALLBACK(set_color), clock_fgp);
     gtk_widget_set_sensitive(modify_default->button_clock_fg
@@ -906,9 +922,8 @@ static void preferences_formatting(GtkWidget *vbox
     gtk_toggle_button_set_active(
             (GtkToggleButton *)modify_default->check_button_default_fg
             , !attrp->clock_fg_modified);
-    gtk_tooltips_set_tip(clocks.tips, modify_default->check_button_default_fg
-            , _("Cross this to use system default instead of selected color")
-            , NULL);
+    gtk_widget_set_tooltip_text(modify_default->check_button_default_fg
+            , _("Cross this to use system default instead of selected color"));
     g_signal_connect(G_OBJECT(modify_default->check_button_default_fg)
             , "toggled", G_CALLBACK(set_modified)
             , &clocks.clock_default_attr.clock_fg_modified);
@@ -921,12 +936,12 @@ static void preferences_formatting(GtkWidget *vbox
     /*------------------------name font-------------------------*/
     label = gtk_label_new(_("Font for name of clock:"));
     gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 2, 3);
-    gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
+    g_object_set (label, "xalign", 0.0, "yalign", 0.5, NULL);
 
     modify_default->button_font_name = 
             gtk_font_button_new_with_font(attrp->name_font->str);
-    gtk_tooltips_set_tip(clocks.tips, modify_default->button_font_name
-            , _("Click to change default font for clock name"), NULL);
+    gtk_widget_set_tooltip_text(modify_default->button_font_name
+            , _("Click to change default font for clock name"));
     g_signal_connect(G_OBJECT(modify_default->button_font_name), "font-set"
             , G_CALLBACK(set_font), attrp->name_font);
     gtk_widget_set_sensitive(modify_default->button_font_name
@@ -939,10 +954,8 @@ static void preferences_formatting(GtkWidget *vbox
     gtk_toggle_button_set_active(
             (GtkToggleButton *)modify_default->check_button_default_font_name
             , !attrp->name_font_modified);
-    gtk_tooltips_set_tip(clocks.tips
-            , modify_default->check_button_default_font_name
-            , _("Cross this to use system default font instead of selected font")
-            , NULL);
+    gtk_widget_set_tooltip_text(modify_default->check_button_default_font_name
+            , _("Cross this to use system default font instead of selected font"));
     g_signal_connect(G_OBJECT(modify_default->check_button_default_font_name)
             , "toggled", G_CALLBACK(set_modified)
             , &clocks.clock_default_attr.name_font_modified);
@@ -955,12 +968,12 @@ static void preferences_formatting(GtkWidget *vbox
     /*------------------------time font-------------------------*/
     label = gtk_label_new(_("Font for time of clock:"));
     gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 3, 4);
-    gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
+    g_object_set (label, "xalign", 0.0, "yalign", 0.5, NULL);
 
     modify_default->button_font_time = 
             gtk_font_button_new_with_font(attrp->time_font->str);
-    gtk_tooltips_set_tip(clocks.tips, modify_default->button_font_time
-            , _("Click to change default font for clock time"), NULL);
+    gtk_widget_set_tooltip_text(modify_default->button_font_time
+            , _("Click to change default font for clock time"));
     g_signal_connect(G_OBJECT(modify_default->button_font_time), "font-set"
             , G_CALLBACK(set_font), attrp->time_font);
     gtk_widget_set_sensitive(modify_default->button_font_time
@@ -973,10 +986,8 @@ static void preferences_formatting(GtkWidget *vbox
     gtk_toggle_button_set_active(
             (GtkToggleButton *)modify_default->check_button_default_font_time
             , !attrp->time_font_modified);
-    gtk_tooltips_set_tip(clocks.tips
-            , modify_default->check_button_default_font_time
-            , _("Cross this to use system default font instead of selected font")
-            , NULL);
+    gtk_widget_set_tooltip_text(modify_default->check_button_default_font_time
+            , _("Cross this to use system default font instead of selected font"));
     g_signal_connect(G_OBJECT(modify_default->check_button_default_font_time)
             , "toggled", G_CALLBACK(set_modified)
             , &clocks.clock_default_attr.time_font_modified);
@@ -989,10 +1000,10 @@ static void preferences_formatting(GtkWidget *vbox
     /*------------------------underline name--------------------*/
     label = gtk_label_new(_("Underline for name of clock:"));
     gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 4, 5);
-    gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
+    g_object_set (label, "xalign", 0.0, "yalign", 0.5, NULL);
 
-    modify_default->combo_box_underline_name = gtk_combo_box_new_text();
-    fill_combo_box((GtkComboBox *)modify_default->combo_box_underline_name
+    modify_default->combo_box_underline_name = gtk_combo_box_text_new();
+    fill_combo_box((GtkComboBoxText *)modify_default->combo_box_underline_name
             , attr_underline, attrp->name_underline->str);
     g_signal_connect(G_OBJECT(modify_default->combo_box_underline_name)
             , "changed"
@@ -1003,10 +1014,10 @@ static void preferences_formatting(GtkWidget *vbox
     /*------------------------underline time--------------------*/
     label = gtk_label_new(_("Underline for time of clock:"));
     gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 5, 6);
-    gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
+    g_object_set (label, "xalign", 0.0, "yalign", 0.5, NULL);
 
-    modify_default->combo_box_underline_time = gtk_combo_box_new_text();
-    fill_combo_box((GtkComboBox *)modify_default->combo_box_underline_time
+    modify_default->combo_box_underline_time = gtk_combo_box_text_new();
+    fill_combo_box((GtkComboBoxText *)modify_default->combo_box_underline_time
             , attr_underline, attrp->time_underline->str);
     g_signal_connect(G_OBJECT(modify_default->combo_box_underline_time)
             , "changed"
@@ -1023,14 +1034,14 @@ static void preferences_toolbar(GtkWidget *vbox, modify_struct *modify_default)
     toolbar = gtk_toolbar_new();
     gtk_box_pack_start(GTK_BOX(vbox), toolbar, FALSE, FALSE, 0);
     /* -----------------------UPDATE-------------------------------------- */
-    button = toolbar_append_button(toolbar, GTK_STOCK_SAVE, clocks.tips
+    button = toolbar_append_button(toolbar, GTK_STOCK_SAVE
             , _("update preferences"));
     g_signal_connect(G_OBJECT(button), "clicked"
             , G_CALLBACK(save_preferences), modify_default);
 
     /* -----------------------INSERT-------------------------------------- */
     toolbar_append_separator(toolbar);
-    button = toolbar_append_button(toolbar, GTK_STOCK_NEW, clocks.tips
+    button = toolbar_append_button(toolbar, GTK_STOCK_NEW
             , _("add new empty clock")); 
     modify_default->clock=NULL; /* used in add_clock */
     g_signal_connect(G_OBJECT(button), "clicked"
@@ -1038,7 +1049,7 @@ static void preferences_toolbar(GtkWidget *vbox, modify_struct *modify_default)
 
     /* ---------------------QUIT------------------------------------------ */
     toolbar_append_separator(toolbar);
-    button = toolbar_append_button(toolbar, GTK_STOCK_QUIT, clocks.tips
+    button = toolbar_append_button(toolbar, GTK_STOCK_QUIT
             , _("close window and exit"));
     g_signal_connect(G_OBJECT(button), "clicked"
             , G_CALLBACK(close_preferences_window), modify_default->window);
@@ -1062,8 +1073,8 @@ gboolean default_preferences(GtkWidget *widget)
             , _("Globaltime Preferences"));
     g_signal_connect(G_OBJECT(modify_default->window) , "destroy"
             , G_CALLBACK(release_preferences_window), modify_default);
-                                                                                
-    vbox = gtk_vbox_new(FALSE, 0);
+#warning "TODO replace box with grid"                                                                     
+    vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
     gtk_container_add(GTK_CONTAINER(modify_default->window), vbox);
 
 /* -----------------------TOOLBAR-------------------------------------- */
@@ -1079,8 +1090,7 @@ gboolean default_preferences(GtkWidget *widget)
     if (clocks.decorations)
         gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), TRUE);
     gtk_box_pack_start(GTK_BOX(hbox), button, TRUE, TRUE, 0);
-    gtk_tooltips_set_tip(clocks.tips, button
-            , _("Use normal decorations"), NULL);
+    gtk_widget_set_tooltip_text(button, _("Use normal decorations"));
     g_signal_connect(G_OBJECT(button), "toggled"
             , G_CALLBACK(decoration_radio_button_pressed), "Standard");
 
@@ -1090,8 +1100,8 @@ gboolean default_preferences(GtkWidget *widget)
     if (!clocks.decorations)
         gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), TRUE);
     gtk_box_pack_start(GTK_BOX(hbox), button, TRUE, TRUE, 0);
-    gtk_tooltips_set_tip(clocks.tips, button
-            , _("Do not show window decorations (borders)"), NULL);
+    gtk_widget_set_tooltip_text(button
+            , _("Do not show window decorations (borders)"));
     g_signal_connect(G_OBJECT(button), "toggled"
             , G_CALLBACK(decoration_radio_button_pressed), "None");
 
@@ -1102,8 +1112,8 @@ gboolean default_preferences(GtkWidget *widget)
     if (clocks.expand)
         gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), TRUE);
     gtk_box_pack_start(GTK_BOX(hbox), button, TRUE, TRUE, 0);
-    gtk_tooltips_set_tip(clocks.tips, button
-            , _("All clocks have same size"), NULL);
+    gtk_widget_set_tooltip_text(button
+            , _("All clocks have same size"));
     g_signal_connect(G_OBJECT(button), "toggled"
             , G_CALLBACK(clocksize_radio_button_pressed), "Equal");
 
@@ -1112,15 +1122,15 @@ gboolean default_preferences(GtkWidget *widget)
     if (!clocks.expand)
         gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), TRUE);
     gtk_box_pack_start(GTK_BOX(hbox), button, TRUE, TRUE, 0);
-    gtk_tooltips_set_tip(clocks.tips, button
-            , _("Clock sizes vary"), NULL);
+    gtk_widget_set_tooltip_text(button, _("Clock sizes vary"));
     g_signal_connect(G_OBJECT(button), "toggled"
             , G_CALLBACK(clocksize_radio_button_pressed), "Vary");
 
 /* -----------------------Local timezone------------------------------ */
     hbox = add_box(vbox, 'H');
     add_header(hbox, _("Local timezone:"), TRUE);
-    modify_default->button_tz = gtk_button_new_from_stock(GTK_STOCK_OPEN);
+    modify_default->button_tz = orage_util_image_button ("document-open",
+                                                           _("_Open"));
     if (clocks.local_tz->str)
          gtk_button_set_label(GTK_BUTTON(modify_default->button_tz)
                  , _(clocks.local_tz->str));
@@ -1133,6 +1143,8 @@ gboolean default_preferences(GtkWidget *widget)
     preferences_formatting(vbox, modify_default);
                                                                                 
     gtk_widget_show_all(modify_default->window);
+    
+    (void)widget;
     return(FALSE);
 }
 

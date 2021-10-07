@@ -1,3 +1,5 @@
+AUTOMAKE_OPTIONS = subdir-objects
+
 if HAVE_LIBXFCE4PANEL
 plugin_LTLIBRARIES = liborageclock.la
 endif

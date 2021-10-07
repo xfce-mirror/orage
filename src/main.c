@@ -38,6 +38,7 @@
 #include <string.h>
 #endif
 #include <time.h>
+#include <inttypes.h>
 
 #include <glib.h>
 #include <gtk/gtk.h>
@@ -47,6 +48,7 @@
 #define ORAGE_MAIN  "orage"
 
 #include "orage-i18n.h"
+#include "css_tools.h"
 #include "functions.h"
 #include "mainbox.h"
 #include "reminder.h"
@@ -59,6 +61,10 @@
 #include <dbus/dbus-glib-lowlevel.h>
 #endif
 
+#define CALENDAR_TOGGLE_EVENT "_XFCE_CALENDAR_TOGGLE_HERE"
+#define CALENDAR_RAISE_EVENT "_XFCE_CALENDAR_RAISE"
+#define CALENDAR_PREFERENCES_EVENT "_XFCE_CALENDAR_PREFERENCES"
+
 /* session client handler */
 /*
 static SessionClient	*session_client = NULL;
@@ -68,18 +74,23 @@ static GdkAtom atom_alive;
 #ifdef HAVE_DBUS
 static gboolean resume_after_sleep(gpointer user_data)
 {
-    orage_message(10, "Resuming after sleep");
+    g_message ("Resuming after sleep");
     alarm_read();
     orage_day_change(&g_par);
+    
+    (void)user_data;
     return(FALSE); /* only once */
 }
 
 static void resuming_cb(DBusGProxy *proxy, gpointer user_data)
 {
-    orage_message(10, "Resuming");
+    g_message ("Resuming");
     /* we need this delay to prevent updating tray icon too quickly when
        the normal code handles it also */
-    g_timeout_add_seconds(2, (GtkFunction) resume_after_sleep, NULL);
+    g_timeout_add_seconds(2, (GSourceFunc) resume_after_sleep, NULL);
+    
+    (void)user_data;
+    (void)proxy;
 }
 
 static void handle_resuming(void)
@@ -88,7 +99,6 @@ static void handle_resuming(void)
     GError *error = NULL;
     DBusGProxy *proxy;
 
-    g_type_init(); /* deprecated in GLib 2.36 and happens now automatically */
     connection = dbus_g_bus_get(DBUS_BUS_SYSTEM, &error);
     if (connection) {
        proxy = dbus_g_proxy_new_for_name(connection, "org.freedesktop.UPower"
@@ -108,7 +118,6 @@ static void handle_resuming(void)
 }
 #endif
 
-
 /* This function monitors that we do not loose time.  It checks if longer time
    than expected wakeup time has passed and fixes timings if that is the case.
    This is needed since sometimes hibernate and suspend does not do a good job
@@ -126,47 +135,54 @@ gboolean check_wakeup(gpointer user_data)
         /* user_data is normally NULL, but first call it has some value, 
            which means that this is init call */
         if (!user_data) { /* normal timer call */
-            orage_message(10, "wakeup timer refreshing");
+            g_message ("wakeup timer refreshing");
             alarm_read();
             /* It is quite possible that day did not change, 
                but we need to reset timers */
             orage_day_change(&tt_prev); 
         }
         else {
-            orage_message(10, "wakeup timer init %d", tt_prev);
+            g_message ("wakeup timer init %" PRIiMAX, (intmax_t)tt_prev);
         }
     }
     tt_prev = tt_new;
     return(TRUE);
 }
 
-static void send_event(char *event)
+static void send_event (const char *event)
 {
-    GdkEventClient gev;
+    XEvent xevent;
     Window xwindow;
+    Display *display;
 
-    memset(&gev, 0, sizeof(gev));
+    (void)memset (&xevent, 0, sizeof (xevent));
 
-    xwindow = XGetSelectionOwner(GDK_DISPLAY()
-            , gdk_x11_atom_to_xatom(atom_alive));
+    display = gdk_x11_get_default_xdisplay ();
+    xwindow = XGetSelectionOwner (display, gdk_x11_atom_to_xatom (atom_alive));
 
-    gev.type = GDK_CLIENT_EVENT;
-    gev.window = NULL;
-    gev.send_event = TRUE;
-    gev.message_type = gdk_atom_intern(event, FALSE);
-    gev.data_format = 8;
+    xevent.xclient.type = ClientMessage;
+    xevent.xclient.display = display;
+    xevent.xclient.window = xwindow;
+    xevent.xclient.send_event = TRUE;
+    xevent.xclient.message_type = XInternAtom (display, event, FALSE);
+    xevent.xclient.format = 8;
 
-    gdk_event_send_client_message((GdkEvent *)&gev, (GdkNativeWindow)xwindow);
+    if (XSendEvent (display, xwindow, FALSE, NoEventMask, &xevent) == 0)
+        g_warning ("send message to %s failed", event);
+    
+    (void)XFlush (display);
 }
 
-void orage_toggle_visible(void)
+void orage_toggle_visible (void)
 {
-    send_event("_XFCE_CALENDAR_TOGGLE_HERE");
+    g_debug ("orage_toggle_visible(), send '" CALENDAR_TOGGLE_EVENT "' event");
+    send_event (CALENDAR_TOGGLE_EVENT);
 }
 
 static void raise_orage(void)
 {
-    send_event("_XFCE_CALENDAR_RAISE");
+    g_debug ("raise_orage(), send '" CALENDAR_RAISE_EVENT "' event");
+    send_event (CALENDAR_RAISE_EVENT);
 }
 
 static gboolean keep_tidy(void)
@@ -190,6 +206,11 @@ static gboolean mWindow_delete_event_cb(GtkWidget *widget, GdkEvent *event
     else {
         orage_toggle_visible();
     }
+    
+    (void)widget;
+    (void)event;
+    (void)user_data;
+    
     return(TRUE);
 }
 
@@ -207,41 +228,57 @@ static void raise_window(void)
         gtk_window_stick(GTK_WINDOW(cal->mWindow));
     gtk_window_set_keep_above(GTK_WINDOW(cal->mWindow)
             , g_par.set_ontop);
-    window = GTK_WIDGET(cal->mWindow)->window;
+    window = gtk_widget_get_window (GTK_WIDGET(cal->mWindow));
     gdk_x11_window_set_user_time(window, gdk_x11_get_server_time(window));
     gtk_widget_show(cal->mWindow);
     gtk_window_present(GTK_WINDOW(cal->mWindow));
 }
 
-static gboolean client_message_received(GtkWidget *widget
-        , GdkEventClient *event, gpointer user_data)
+static GdkFilterReturn
+client_message_filter (GdkXEvent *gdkxevent, GdkEvent *event, gpointer data)
 {
+    XClientMessageEvent *evt;
+    XEvent *xevent = (XEvent *)gdkxevent;
     CalWin *cal = (CalWin *)g_par.xfcal;
-
-    if (event->message_type ==
-            gdk_atom_intern("_XFCE_CALENDAR_RAISE", FALSE)) {
-        raise_window();
-        return(TRUE);
+    
+    if (xevent->type != ClientMessage)
+        return GDK_FILTER_CONTINUE;
+    
+    evt = (XClientMessageEvent *)gdkxevent;
+    
+    if (evt->message_type ==
+            XInternAtom (evt->display, CALENDAR_RAISE_EVENT, FALSE))
+    {
+        g_debug ("received '" CALENDAR_RAISE_EVENT "' event");
+        raise_window ();
+        return GDK_FILTER_REMOVE;
     }
-    else if (event->message_type ==
-            gdk_atom_intern("_XFCE_CALENDAR_TOGGLE_HERE", FALSE)) {
-        if (GTK_WIDGET_VISIBLE(cal->mWindow)) {
-            write_parameters();
-            gtk_widget_hide(cal->mWindow);
-            return(TRUE);
+    else if (evt->message_type ==
+             XInternAtom (evt->display, CALENDAR_TOGGLE_EVENT, FALSE))
+    {
+        g_debug ("received '" CALENDAR_TOGGLE_EVENT "' event");
+        if (gtk_widget_get_visible (cal->mWindow))
+        {
+            write_parameters ();
+            gtk_widget_hide (cal->mWindow);
         }
-        else {
-            raise_window();
-            return(TRUE);
-        }
+        else
+            raise_window ();
+        
+        return GDK_FILTER_REMOVE;
     }
-    else if (event->message_type ==
-            gdk_atom_intern("_XFCE_CALENDAR_PREFERENCES", FALSE)) {
-        show_parameters();
-        return(TRUE);
+    else if (evt->message_type ==
+            XInternAtom (evt->display, CALENDAR_PREFERENCES_EVENT, FALSE))
+    {
+        g_debug ("received '" CALENDAR_PREFERENCES_EVENT "' event");
+        show_parameters ();
+        return GDK_FILTER_REMOVE;
     }
+    
+    (void)event;
+    (void)data;
 
-    return(FALSE);
+    return GDK_FILTER_CONTINUE;
 }
 
 /*
@@ -299,13 +336,18 @@ static void print_version(void)
 #else
     g_print(_("\tUsing Orage local version of libical.\n"));
 #endif
+#ifdef HAVE_LIBXFCE4UI
+    g_print(_("\tUsing libxfce4ui: yes\n"));
+#else
+    g_print(_("\tUsing libxfce4ui: no\n"));
+#endif
     g_print("\n");
 }
 
 static void preferences(void)
 {
-    send_event("_XFCE_CALENDAR_RAISE");
-    send_event("_XFCE_CALENDAR_PREFERENCES");
+    send_event (CALENDAR_RAISE_EVENT);
+    send_event (CALENDAR_PREFERENCES_EVENT);
 }
 
 static void print_help(void)
@@ -334,18 +376,18 @@ static void import_file(gboolean running, char *file_name, gboolean initialized)
         /* let's use dbus since server is running there already */
 #ifdef HAVE_DBUS
         if (orage_dbus_import_file(file_name))
-            orage_message(40, "import done file=%s", file_name);
+            g_message ("import done file=%s", file_name);
         else
-            g_warning("import failed file=%s\n", file_name);
+            g_warning ("import failed file=%s\n", file_name);
 #else
         g_warning("Can not do import without dbus. import failed file=%s\n", file_name);
 #endif
     }
     else if (!running && initialized) {/* do it self directly */
         if (xfical_import_file(file_name))
-            orage_message(40, "import done file=%s", file_name);
+            g_message ("import done file=%s", file_name);
         else
-            g_warning("import failed file=%s\n", file_name);
+            g_warning ("import failed file=%s\n", file_name);
     }
 }
 
@@ -363,18 +405,18 @@ static void export_file(gboolean running, char *file_name, gboolean initialized
         /* let's use dbus since server is running there already */
 #ifdef HAVE_DBUS
         if (orage_dbus_export_file(file_name, type, uid_list))
-            orage_message(40, "export done to file=%s", file_name);
+            g_message ("export done to file=%s", file_name);
         else
-            g_warning("export failed file=%s\n", file_name);
+            g_warning ("export failed file=%s\n", file_name);
 #else
-        g_warning("Can not do export without dbus. failed file=%s\n", file_name);
+        g_warning ("Can not do export without dbus. failed file=%s\n", file_name);
 #endif
     }
     else if (!running && initialized) { /* do it self directly */
         if (xfical_export_file(file_name, type, uid_list))
-            orage_message(40, "export done to file=%s", file_name);
+            g_message ("export done to file=%s", file_name);
         else
-            g_warning("export failed file=%s\n", file_name);
+            g_warning ("export failed file=%s\n", file_name);
     }
 }
 
@@ -386,18 +428,18 @@ static void add_foreign(gboolean running, char *file_name, gboolean initialized
         /* let's use dbus since server is running there already */
 #ifdef HAVE_DBUS
         if (orage_dbus_foreign_add(file_name, read_only, name))
-            orage_message(40, "Add done online foreign file=%s", file_name);
+            g_message ("Add done online foreign file=%s", file_name);
         else
-            orage_message(140, "Add failed online foreign file=%s\n", file_name);
+            g_warning ("Add failed online foreign file=%s\n", file_name);
 #else
-        orage_message(140, "Can not do add foreign file to running Orage without dbus. Add failed foreign file=%s\n", file_name);
+        g_warning ("Can not do add foreign file to running Orage without dbus. Add failed foreign file=%s\n", file_name);
 #endif
     }
     else if (!running && initialized) { /* do it self directly */
         if (orage_foreign_file_add(file_name, read_only, name))
-            orage_message(40, "Add done foreign file=%s", file_name);
+            g_message ("Add done foreign file=%s", file_name);
         else
-            orage_message(140, "Add failed foreign file=%s\n", file_name);
+            g_warning ("Add failed foreign file=%s\n", file_name);
     }
 }
 
@@ -407,18 +449,18 @@ static void remove_foreign(gboolean running, char *file_name, gboolean initializ
         /* let's use dbus since server is running there already */
 #ifdef HAVE_DBUS
         if (orage_dbus_foreign_remove(file_name))
-            orage_message(40, "Remove done foreign file=%s", file_name);
+            g_message ("Remove done foreign file=%s", file_name);
         else
-            orage_message(140, "Remove failed foreign file=%s\n", file_name);
+            g_warning ("Remove failed foreign file=%s\n", file_name);
 #else
-        orage_message(140, "Can not do remove foreign file without dbus. Remove failed foreign file=%s\n", file_name);
+        g_warning ("Can not do remove foreign file without dbus. Remove failed foreign file=%s\n", file_name);
 #endif
     }
     else if (!running && initialized) { /* do it self directly */
         if (orage_foreign_file_remove(file_name))
-            orage_message(40, "Remove done foreign file=%s", file_name);
+            g_message ("Remove done foreign file=%s", file_name);
         else
-            orage_message(140, "Remove failed foreign file=%s\n", file_name);
+            g_warning ("Remove failed foreign file=%s\n", file_name);
     }
 }
 
@@ -548,7 +590,7 @@ static gboolean check_orage_alive(void)
 {
     Window xwindow;
 
-    if ((xwindow = XGetSelectionOwner(GDK_DISPLAY()
+    if ((xwindow = XGetSelectionOwner(gdk_x11_get_default_xdisplay()
             , gdk_x11_atom_to_xatom(atom_alive))) != None)
         return(TRUE); /* yes, we got selection owner, so orage must be there */
     else /* no selction owner, so orage is not running yet */
@@ -558,15 +600,17 @@ static gboolean check_orage_alive(void)
 static void mark_orage_alive(void)
 {
     GtkWidget *hidden;
+    GdkWindow *window;
 
     hidden = gtk_invisible_new();
     gtk_widget_show(hidden);
-    if (!gdk_selection_owner_set(hidden->window, atom_alive
-                , gdk_x11_get_server_time(hidden->window), FALSE)) {
+    window = gtk_widget_get_window (hidden);
+    if (!gdk_selection_owner_set(window, atom_alive
+                , gdk_x11_get_server_time(window), FALSE)) {
         g_error("Unable acquire ownership of selection");
     }
-    g_signal_connect(hidden, "client-event"
-            , G_CALLBACK(client_message_received), NULL);
+    
+    gdk_window_add_filter (window, client_message_filter, NULL);
 }
 
 int main(int argc, char *argv[])
@@ -581,6 +625,7 @@ int main(int argc, char *argv[])
     textdomain(GETTEXT_PACKAGE);
 
     gtk_init(&argc, &argv);
+    register_css_provider ();
 
     atom_alive = gdk_atom_intern("_XFCE_CALENDAR_RUNNING", FALSE);
     running = check_orage_alive();
@@ -637,7 +682,7 @@ int main(int argc, char *argv[])
             (GtkCalendar *)((CalWin *)g_par.xfcal)->mCalendar, NULL);
 
     /* start monitoring external file updates */
-    g_timeout_add_seconds(30, (GtkFunction)orage_external_update_check, NULL);
+    g_timeout_add_seconds(30, (GSourceFunc)orage_external_update_check, NULL);
 
     /* let's check if I got filename as a parameter */
     initialized = TRUE;

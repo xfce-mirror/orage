@@ -4,7 +4,7 @@
   FILE: icalproperty.c
   CREATOR: eric 28 April 1999
   
-  $Id$
+  $Id: icalproperty.c 134 2021-06-01 06:21:35Z erx $
 
 
  (C) COPYRIGHT 2000, Eric Busboom, http://www.softwarestudio.org
@@ -104,7 +104,7 @@ icalproperty_new_impl(icalproperty_kind kind)
 	return 0;
     }
     
-    strcpy(prop->id,"prop");
+    strlcpy (prop->id,"prop", sizeof (prop->id));
 
     prop->kind = kind;
     prop->parameters = pvl_newlist();

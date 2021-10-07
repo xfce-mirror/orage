@@ -5,7 +5,7 @@
   
   DESCRIPTION:
   
-  $Id$
+  $Id: icallangbind.h 2 2021-01-06 09:02:24Z erx $
   $Locker$
 
   (C) COPYRIGHT 1999 Eric Busboom 

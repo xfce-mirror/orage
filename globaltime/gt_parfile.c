@@ -49,7 +49,8 @@ static void write_color(OrageRc *rc, gchar *prop, GdkColor *color)
     gchar tmp[100];
 
     if (color) {
-        sprintf(tmp, "%uR %uG %uB", color->red, color->green, color->blue);
+        g_snprintf (tmp, sizeof (tmp), "%uR %uG %uB",
+                    color->red, color->green, color->blue);
         orage_rc_put_str(rc, prop, tmp);
     }
 }

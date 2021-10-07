@@ -4,7 +4,7 @@
  CREATOR: Damon Chaplin 15 March 2001
 
 
- $Id$
+ $Id: icaltimezone.h 2 2021-01-06 09:02:24Z erx $
  $Locker$
 
  (C) COPYRIGHT 2001, Damon Chaplin

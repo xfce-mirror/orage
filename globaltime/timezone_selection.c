@@ -56,11 +56,6 @@
 #include "../src/tz_zoneinfo_read.h"
 #include "timezone_selection.h"
 
-
-/*
-#define ORAGE_DEBUG 1
-*/
-
 enum {
     LOCATION,
     LOCATION_ENG,
@@ -89,7 +84,7 @@ static GtkTreeStore *tz_button_create_store(gboolean details
     store = gtk_tree_store_new(N_COLUMNS
             , G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING
             , G_TYPE_STRING, G_TYPE_STRING);
-    strcpy(area_old, "S T a R T"); /* this never matches */
+    g_strlcpy(area_old, "S T a R T", sizeof (area_old)); /* this never matches */
     tz_a = get_orage_timezones(details, check_ical ? 1 : 0);
     /*
     g_print(P_N "number of timezones %d\n", tz_a.count);
@@ -153,24 +148,24 @@ static GtkTreeStore *tz_button_create_store(gboolean details
             change_hour = change_time / (60*60);
             change_min  = abs((change_time - change_hour * (60*60)) /60);
             if (change_hour && change_min)
-                g_snprintf(s_change_time, 50, _("%d hour %d mins")
+                g_snprintf(s_change_time, sizeof (s_change_time), _("%d hour %d mins")
                         , abs(change_hour), change_min);
             else if (change_hour)
-                g_snprintf(s_change_time, 50, _("%d hour"), abs(change_hour));
+                g_snprintf(s_change_time, sizeof (s_change_time), _("%d hour"), abs(change_hour));
             else if (change_min)
-                g_snprintf(s_change_time, 50, _("%d mins"), change_min);
+                g_snprintf(s_change_time, sizeof (s_change_time), _("%d mins"), change_min);
             else
-                strcpy(s_change_time, " ");
+                g_strlcpy (s_change_time, " ", sizeof (s_change_time));
 
             if (change_time < 0)
-                g_snprintf(s_change, 50, "(%s %s)"
+                g_snprintf(s_change, sizeof (s_change), "(%s %s)"
                         , _("backward"), s_change_time);
             else if (change_time > 0)
-                g_snprintf(s_change, 50, "(%s %s)"
+                g_snprintf(s_change, sizeof (s_change), "(%s %s)"
                         , _("forward"), s_change_time);
             else
-                strcpy(s_change, " ");
-            g_snprintf(s_offset, 100
+                g_strlcpy (s_change, " ", sizeof (s_change));
+            g_snprintf(s_offset, sizeof (s_offset)
                     , "%+03d:%02d %s (%s)\n   -> %+03d:%02d %s"
                     , offs_hour, offs_min
                     , (tz_a.dst[i]) ? "dst" : "std"
@@ -179,24 +174,24 @@ static GtkTreeStore *tz_button_create_store(gboolean details
                     , s_change);
         }
         else {
-            g_snprintf(s_offset, 100, "%+03d:%02d %s (%s)"
+            g_snprintf(s_offset, sizeof (s_offset), "%+03d:%02d %s (%s)"
                     , offs_hour, offs_min
                     , (tz_a.dst[i]) ? "dst" : "std"
                     , (tz_a.tz[i]) ? tz_a.tz[i] : "-");
         }
         if (details) {
             if (tz_a.country[i] && tz_a.cc[i])
-                g_snprintf(s_country, 100, "%s (%s)"
+                g_snprintf(s_country, sizeof (s_country), "%s (%s)"
                         , tz_a.country[i], tz_a.cc[i]);
             else
-                strcpy(s_country, " ");
-            g_snprintf(s_changes, 200, "%s\n%s"
+                g_strlcpy (s_country, " ", sizeof (s_country));
+            g_snprintf(s_changes, sizeof (s_changes), "%s\n%s"
                     , (tz_a.prev[i]) ? tz_a.prev[i] : _("not changed")
                     , (tz_a.next[i]) ? tz_a.next[i] : _("not changing"));
         }
         else {
-            strcpy(s_country, " ");
-            strcpy(s_changes, " ");
+            g_strlcpy (s_country, " ", sizeof (s_country));
+            g_strlcpy (s_changes, " ", sizeof (s_changes));
         }
 
         gtk_tree_store_set(store, &iter2
@@ -315,7 +310,7 @@ gboolean orage_timezone_button_clicked(GtkButton *button, GtkWindow *parent
                 , NULL);
     sw = gtk_scrolled_window_new(NULL, NULL);
     gtk_container_add(GTK_CONTAINER(sw), tree);
-    gtk_box_pack_start(GTK_BOX(GTK_DIALOG(window)->vbox), sw, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(gtk_dialog_get_content_area(GTK_DIALOG(window))), sw, TRUE, TRUE, 0);
     gtk_window_set_default_size(GTK_WINDOW(window), 750, 500);
 
     gtk_widget_show_all(window);
@@ -338,7 +333,7 @@ gboolean orage_timezone_button_clicked(GtkButton *button, GtkWindow *parent
                 }
                 break;
             case 1:
-                free_orage_timezones(details);
+                free_orage_timezones ();
                 details = !details;
                 /* gtk_widget_destroy(GTK_WIDGET(store)); */
                 gtk_widget_destroy(tree);
