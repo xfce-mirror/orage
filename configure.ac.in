@@ -36,6 +36,7 @@ AC_REVISION([$Id$])
 
 dnl Initialize automake
 AM_INIT_AUTOMAKE()
+AM_SILENT_RULES([yes])
 AM_CONFIG_HEADER([config.h])
 AM_MAINTAINER_MODE()
 
