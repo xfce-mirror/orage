@@ -48,7 +48,7 @@
 #define ORAGE_MAIN  "orage"
 
 #include "orage-i18n.h"
-#include "css_tools.h"
+#include "orage-css.h"
 #include "functions.h"
 #include "mainbox.h"
 #include "reminder.h"

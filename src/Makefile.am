@@ -22,8 +22,8 @@ orage_SOURCES =							\
 	main.c							\
 	mainbox.c						\
 	mainbox.h						\
-	orage_css.c						\
-	orage_css.h						\
+	orage-css.c						\
+	orage-css.h						\
 	orage-i18n.h						\
 	parameters.c						\
 	parameters.h						\
