@@ -43,6 +43,7 @@
 #include <string.h>
     /* strncmp, strcmp, strlen, strncat, strncpy, strdup, strstr */
 
+#include <glib.h>
 #include "tz_zoneinfo_read.h"
 
 /* This define is needed to get nftw instead if ftw.
@@ -790,12 +791,12 @@ static void read_os_timezones(void)
     tz_dir = malloc (in_file_base_offset + zoneinfo_len + 1); /* '\0' */
     strncpy (tz_dir, in_file, in_file_base_offset);
     tz_dir[in_file_base_offset] = '\0'; 
-    strlcat (tz_dir, "zoneinfo/", len); /* now we have the base directory */
+    g_strlcat (tz_dir, "zoneinfo/", len); /* now we have the base directory */
 
     len = strlen(tz_dir) + strlen(ZONETAB_FILE) + 1;
     zone_tab_file_name = malloc (len);
-    strlcpy (zone_tab_file_name, tz_dir, len);
-    strlcat (zone_tab_file_name, ZONETAB_FILE, len);
+    g_strlcpy (zone_tab_file_name, tz_dir, len);
+    g_strlcat (zone_tab_file_name, ZONETAB_FILE, len);
 
     free(tz_dir);
 
@@ -847,15 +848,15 @@ static void read_countries(void)
     strncpy (tz_dir, in_file, in_file_base_offset);
     tz_dir[in_file_base_offset] = '\0'; 
 #ifdef __OpenBSD__ 
-    strlcat (tz_dir, "misc/", len); /* this is shorter than "zoneinfo" so it is safe */
+    g_strlcat (tz_dir, "misc/", len); /* this is shorter than "zoneinfo" so it is safe */
 #else
-    strlcat (tz_dir, "zoneinfo/", len); /* now we have the base directory */
+    g_strlcat (tz_dir, "zoneinfo/", len); /* now we have the base directory */
 #endif
 
     len = strlen(tz_dir) + strlen(COUNTRY_FILE) + 1;
     country_file_name = malloc (len);
-    strlcpy (country_file_name, tz_dir, len);
-    strlcat (country_file_name, COUNTRY_FILE, len);
+    g_strlcpy (country_file_name, tz_dir, len);
+    g_strlcat (country_file_name, COUNTRY_FILE, len);
     free(tz_dir);
 
     if (!(country_file = fopen(country_file_name, "r"))) {
