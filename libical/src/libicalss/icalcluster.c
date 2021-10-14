@@ -78,7 +78,7 @@ icalcluster * icalcluster_new_impl(void) {
 	}
   
 	memset(impl, 0, sizeof(struct icalcluster_impl));
-        strlcpy (impl->id,ICALCLUSTER_ID, sizeof (impl->id));
+	strcpy(impl->id,ICALCLUSTER_ID);
 
 	return impl;
 }

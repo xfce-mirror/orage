@@ -180,7 +180,7 @@ char* sspm_get_parameter(char* line, char* parameter)
     if(s != 0){
 	strncpy(name,p,(size_t)s-(size_t)p);
     } else {
-	strlcpy (name, p, sizeof (name));
+	strcpy(name,p);
     }
 
     /* Strip off trailing quote, if it exists */
@@ -810,7 +810,6 @@ void* sspm_make_multipart_subpart(struct mime_impl *impl,
                        until we get the right boundary.  */
 		    char* boundary;
 		    char msg[256];
-                    size_t len;
 		    
 		    snprintf (msg, sizeof (msg), "Expected: %s. Got: %s",
                               parent_header->boundary,line);
@@ -819,13 +818,12 @@ void* sspm_make_multipart_subpart(struct mime_impl *impl,
 				   SSPM_WRONG_BOUNDARY_ERROR,msg);
 
 		    /* Read until the paired terminating boundary */
-                    len = strlen (line) + 5;
-		    if((boundary = (char*)malloc (len)) == 0){
+		    if((boundary = (char*)malloc(strlen(line)+5)) == 0){
 			fprintf(stderr,"Out of memory");
 			abort();
 		    }
-		    strlcpy (boundary, line, len);
-		    strlcat (boundary, "--", len);
+		    strcpy(boundary,line);
+		    strcat(boundary,"--");
 		    while((line = sspm_get_next_line(impl)) != 0){
 			if(strcmp(boundary,line)==0){
 			    break;
@@ -957,14 +955,13 @@ void sspm_read_header(struct mime_impl *impl,struct sspm_header *header)
 		
 		assert(strlen(buf) < BUF_SIZE);
 		
-		strlcpy (header_lines[current_line], buf,
-                          sizeof (header_lines[current_line]));
+		strcpy(header_lines[current_line],buf);
 		
 		break;
 	    }
 	    
 	    case HEADER_CONTINUATION: {
-		char* last_line;
+		char* last_line, *end;
 		char *buf_start;
 
 		if(current_line < 0){
@@ -975,6 +972,8 @@ void sspm_read_header(struct mime_impl *impl,struct sspm_header *header)
 		}
 
 		last_line = header_lines[current_line];
+		end = (char*) ( (size_t)strlen(last_line)+
+				      (size_t)last_line);
 		
 		impl->state = IN_HEADER;
 

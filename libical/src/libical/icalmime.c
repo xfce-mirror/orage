@@ -239,7 +239,7 @@ line between the header and the previous boundary\?";
 		snprintf(temp, sizeof(temp),
 			 "%s: %s",str,parts[i].header.error_text);
 	    } else {
-                strlcpy (temp, str, sizeof (temp));
+		strcpy(temp,str);
 	    }
 
 	    icalcomponent_add_property

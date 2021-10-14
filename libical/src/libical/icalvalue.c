@@ -76,7 +76,7 @@ struct icalvalue_impl*  icalvalue_new_impl(icalvalue_kind kind){
 	return 0;
     }
     
-    strlcpy (v->id, "val", sizeof (v->id));
+    strcpy(v->id,"val");
     
     v->kind = kind;
     v->size = 0;
@@ -105,7 +105,7 @@ icalvalue* icalvalue_new_clone(const icalvalue* old) {
 	return 0;
     }
 
-    strlcpy (new->id, old->id, sizeof (new->id));
+    strcpy(new->id, old->id);
     new->kind = old->kind;
     new->size = old->size;
 

@@ -1585,8 +1585,7 @@ icaltimezone_dump_changes		(icaltimezone	*zone,
 			      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
     icaltimezonechange *zone_change;
     int change_num;
-    const size_t buffer_len = 8;
-    char buffer[buffer_len];
+    char buffer[8];
 
     /* Make sure the changes array is expanded up to the given time. */
     icaltimezone_ensure_coverage (zone, max_year);
@@ -1609,7 +1608,7 @@ icaltimezone_dump_changes		(icaltimezone	*zone,
 		zone_change->hour, zone_change->minute, zone_change->second);
 
 	/* Wall Clock Time offset from UTC. */
-	format_utc_offset (zone_change->utc_offset, buffer, buffer_len);
+	format_utc_offset (zone_change->utc_offset, buffer, sizeof (buffer));
 	fprintf (fp, "\t%s", buffer);
 
 	fprintf (fp, "\n");

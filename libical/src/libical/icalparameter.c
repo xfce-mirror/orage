@@ -56,7 +56,7 @@ struct icalparameter_impl* icalparameter_new_impl(icalparameter_kind kind)
 	return 0;
     }
     
-    strlcpy (v->id, "para", sizeof (v->id));
+    strcpy(v->id,"para");
 
     v->kind = kind;
     v->size = 0;

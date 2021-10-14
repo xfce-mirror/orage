@@ -131,7 +131,7 @@ icalcomponent_new_impl (icalcomponent_kind kind)
 	return 0;
     }
     
-    strlcpy (comp->id, "comp", sizeof (comp->id));
+    strcpy(comp->id,"comp");
 
     comp->kind = kind;
     comp->properties = pvl_newlist();

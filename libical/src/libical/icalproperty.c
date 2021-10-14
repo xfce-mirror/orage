@@ -104,7 +104,7 @@ icalproperty_new_impl(icalproperty_kind kind)
 	return 0;
     }
     
-    strlcpy (prop->id,"prop", sizeof (prop->id));
+    strcpy(prop->id,"prop");
 
     prop->kind = kind;
     prop->parameters = pvl_newlist();

@@ -180,7 +180,7 @@ int icalset_loaddir(const char *path) {
                        *bufptr;
         int             tot = 0;
 
-        g_strlcpy (buf, path, sizeof (buf));
+        strcpy(buf, path);
         bufptr = buf + strlen(buf);
 
         if (*(bufptr-1) != '/')
