@@ -1,5 +1,11 @@
 bin_PROGRAMS = orage
 
+noinst_LTLIBRARIES = liborage.la
+
+liborage_la_SOURCES =						\
+	functions.c functions.h					\
+	tz_zoneinfo_read.c tz_zoneinfo_read.h
+
 orage_SOURCES =							\
 	$(orage_dbus_sources)					\
 	about-xfcalendar.c					\
@@ -10,8 +16,6 @@ orage_SOURCES =							\
 	day-view.h						\
 	event-list.c						\
 	event-list.h						\
-	functions.c						\
-	functions.h						\
 	ical-archive.c						\
 	ical-code.c						\
 	ical-code.h						\
@@ -34,23 +38,30 @@ orage_SOURCES =							\
 	timezone_selection.c					\
 	timezone_selection.h					\
 	tray_icon.c						\
-	tray_icon.h						\
-	tz_zoneinfo_read.c					\
-	tz_zoneinfo_read.h
+	tray_icon.h
 
-orage_CFLAGS =							\
-    $(LIBGTK_CFLAGS)						\
+liborage_la_CPPFLAGS =						\
+	-DPACKAGE_DATA_DIR=\""$(datadir)"\"
+	
+liborage_la_CFLAGS =						\
+	$(LIBGTK_CFLAGS)
+	
+orage_CPPFLAGS =						\
 	-DPACKAGE_DATA_DIR=\""$(datadir)"\"			\
 	-DPACKAGE_LOCALE_DIR=\""$(localedir)"\"
 
+orage_CFLAGS =							\
+	$(LIBGTK_CFLAGS)
+
 orage_LDADD =							\
-    $(LIBGTK_LIBS)                      \
-	-lX11            					\
-	-lm              					\
-	$(INTLLIBS)
+	$(LIBGTK_LIBS)						\
+	-lX11							\
+	-lm							\
+	$(INTLLIBS)						\
+	liborage.la
 
 if INCLUDED_LIBICAL
-orage_CFLAGS +=							\
+orage_CPPFLAGS +=						\
 	-I$(top_builddir)/libical/src/libical			\
 	-I$(top_builddir)/libical/src/libicalss			\
 	-I$(top_srcdir)/libical/src/libical			\
@@ -61,11 +72,8 @@ orage_LDADD +=							\
 	$(top_builddir)/libical/src/libical/libical.la		\
 	$(top_builddir)/libical/src/libicalss/libicalss.la
 else
-orage_CFLAGS +=							\
-	$(LIBICAL_CFLAGS)
-
-orage_LDADD +=							\
-	$(LIBICAL_LIBS)
+orage_CFLAGS +=	$(LIBICAL_CFLAGS)
+orage_LDADD += $(LIBICAL_LIBS)
 endif
 
 if HAVE_DBUS
@@ -78,12 +86,9 @@ orage_dbus_sources =						\
 	orage-dbus-service.xml					\
 	orage-dbus-service.h
 
-orage_CFLAGS +=							\
-	-DDBUS_API_SUBJECT_TO_CHANGE			\
-	$(DBUS_CFLAGS)
-
-orage_LDADD +=							\
-	$(DBUS_LIBS)
+orage_CPPFLAGS += -DDBUS_API_SUBJECT_TO_CHANGE
+orage_CFLAGS += $(DBUS_CFLAGS)
+orage_LDADD += $(DBUS_LIBS)
 
 orage-dbus-server.h: $(srcdir)/orage-dbus-service.xml Makefile
 	dbus-binding-tool --prefix=orage --mode=glib-server $(srcdir)/orage-dbus-service.xml > orage-dbus-service.h
