@@ -51,11 +51,12 @@ orage_CPPFLAGS =						\
 	-DPACKAGE_LOCALE_DIR=\""$(localedir)"\"
 
 orage_CFLAGS =							\
-	$(LIBGTK_CFLAGS)
+	$(LIBGTK_CFLAGS)					\
+	$(LIBX11_CFLAGS)
 
 orage_LDADD =							\
 	$(LIBGTK_LIBS)						\
-	-lX11							\
+	$(LIBX11_LIBS)						\
 	-lm							\
 	$(INTLLIBS)						\
 	liborage.la

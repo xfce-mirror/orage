@@ -24,13 +24,15 @@ globaltime_CPPFLAGS =							\
 	-DPACKAGE_DATA_DIR=\""$(datadir)"\"				\
 	-DPACKAGE_LOCALE_DIR=\""$(localedir)"\"
 
-globaltime_CFLAGS = $(LIBGTK_CFLAGS)
+globaltime_CFLAGS =							\
+	$(LIBGTK_CFLAGS)						\
+	$(LIBX11_CFLAGS)
 
 globaltime_LDADD =							\
 	$(LIBGTK_LIBS)							\
-	-lX11								\
+	$(LIBX11_LIBS)							\
 	$(INTLLIBS)							\
-	../src/liborage.la
+	$(top_builddir)/src/liborage.la
 
 EXTRA_DIST =								\
 	$(man_MANS)							\
