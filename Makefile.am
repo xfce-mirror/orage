@@ -5,18 +5,18 @@ LIBICAL_SUBDIR=						\
 	libical
 endif
 
-SUBDIRS = 							\
-	$(LIBICAL_SUBDIR)				\
-	doc								\
-	icons							\
-	po								\
-	sounds							\
-	src								\
-	tz_convert
+SUBDIRS = $(LIBICAL_SUBDIR) \
+	  doc		    \
+	  icons		    \
+	  po		    \
+	  sounds	    \
+	  src		    \
+	  globaltime	    \
+	  tz_convert
 	
-# FIXME: plugin, panel-plugin and globaltime are not ported to GTK3
+# FIXME: plugin and panel-plugin are not ported to GTK3
 
-DIST_SUBDIRS = $(SUBDIRS) plugin panel-plugin globaltime
+DIST_SUBDIRS = $(SUBDIRS) plugin panel-plugin
 
 desktopdir = $(datadir)/applications
 desktop_in_files = xfcalendar.desktop.in
