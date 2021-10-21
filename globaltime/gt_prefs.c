@@ -32,7 +32,7 @@
 
 #include "globaltime.h"
 #include "../src/orage-i18n.h"
-//#include "../src/functions.h"
+#include "../src/functions.h"
 #include "timezone_selection.h"
 
 
