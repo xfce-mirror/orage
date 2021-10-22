@@ -99,6 +99,9 @@ static gboolean release_preferences_window(GtkWidget *widget
 {
     g_free(modify_default);
     clocks.modified--;
+    
+    (void)widget;
+    
     return(FALSE);
 }
                                                                                 
