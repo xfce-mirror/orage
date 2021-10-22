@@ -496,8 +496,8 @@ static void init_hdr_button(void)
     */
     #warning "TODO replace box with grid"
     clocks.hdr_hbox = gtk_hbox_new(FALSE, 1);
-    gtk_box_pack_start(GTK_BOX(clocks.main_hbox)
-            , clocks.hdr_hbox, FALSE, FALSE, 0);
+    gtk_grid_attach_next_to (GTK_GRID (clocks.main_hbox), clocks.hdr_hbox, NULL,
+                             GTK_POS_RIGHT, 1, 1);
     gtk_widget_show(clocks.hdr_hbox);
 
     clocks.hdr_button = gtk_button_new();
@@ -592,8 +592,7 @@ static void initialize_clocks(void)
     clocks.window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_window_set_title(GTK_WINDOW(clocks.window), _("Global Time"));
 
-    #warning "TODO replace box with grid"
-    clocks.main_hbox = gtk_hbox_new(FALSE, 1);
+    clocks.main_hbox = gtk_grid_new ();
     gtk_container_add(GTK_CONTAINER(clocks.window), clocks.main_hbox);
     gtk_widget_show(clocks.main_hbox);
 
@@ -601,8 +600,8 @@ static void initialize_clocks(void)
 
     #warning "TODO replace box with grid"
     clocks.clocks_hbox = gtk_hbox_new(clocks.expand, 1);
-    gtk_box_pack_start(GTK_BOX(clocks.main_hbox)
-                    , clocks.clocks_hbox, FALSE, FALSE, 0);
+    gtk_grid_attach_next_to (GTK_GRID (clocks.main_hbox), clocks.clocks_hbox,
+                             NULL, GTK_POS_RIGHT, 1, 1);
     gtk_widget_show(clocks.clocks_hbox);
 
     clocks.clock_default_attr.clock_fg = g_new0(GdkColor,1);
