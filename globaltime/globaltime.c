@@ -494,15 +494,14 @@ static void init_hdr_button(void)
     /* this shows also text, which we do not want:
     clocks.hdr_button = gtk_button_new_from_stock(GTK_STOCK_PREFERENCES);
     */
-    #warning "TODO replace box with grid"
-    clocks.hdr_hbox = gtk_hbox_new(FALSE, 1);
+    clocks.hdr_hbox = gtk_grid_new ();
     gtk_grid_attach_next_to (GTK_GRID (clocks.main_hbox), clocks.hdr_hbox, NULL,
                              GTK_POS_RIGHT, 1, 1);
     gtk_widget_show(clocks.hdr_hbox);
 
     clocks.hdr_button = gtk_button_new();
-    gtk_box_pack_start(GTK_BOX(clocks.hdr_hbox)
-            , clocks.hdr_button, FALSE, FALSE, 0);
+    gtk_grid_attach_next_to (GTK_GRID (clocks.hdr_hbox), clocks.hdr_button,
+                             NULL, GTK_POS_RIGHT, 1, 1);
     gtk_widget_set_tooltip_text(clocks.hdr_button
             , _("button 1 to change preferences \nbutton 2 to adjust time of clocks"));
     g_signal_connect(clocks.hdr_button, "button_press_event"
@@ -514,8 +513,8 @@ static void init_hdr_button(void)
     gtk_widget_show(clocks.hdr_button);
 
     clocks.hdr_adj_hh = gtk_spin_button_new_with_range(-24, 24, 1);
-    gtk_box_pack_start(GTK_BOX(clocks.hdr_hbox)
-            , clocks.hdr_adj_hh, FALSE, FALSE, 0);
+    gtk_grid_attach_next_to (GTK_GRID (clocks.hdr_hbox), clocks.hdr_adj_hh,
+                             NULL, GTK_POS_RIGHT, 1, 1);
     gtk_spin_button_set_value(GTK_SPIN_BUTTON(clocks.hdr_adj_hh), (gdouble)0);
     gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(clocks.hdr_adj_hh), TRUE);
     gtk_widget_set_size_request(clocks.hdr_adj_hh, 45, -1);
@@ -524,12 +523,12 @@ static void init_hdr_button(void)
             , G_CALLBACK(adj_hh_changed), NULL);
 
     clocks.hdr_adj_sep = gtk_label_new(":");
-    gtk_box_pack_start(GTK_BOX(clocks.hdr_hbox)
-            , clocks.hdr_adj_sep, FALSE, FALSE, 0);
+    gtk_grid_attach_next_to (GTK_GRID (clocks.hdr_hbox), clocks.hdr_adj_sep,
+                             NULL, GTK_POS_RIGHT, 1, 1);
 
     clocks.hdr_adj_mm = gtk_spin_button_new_with_range(-60, 60, 1);
-    gtk_box_pack_start(GTK_BOX(clocks.hdr_hbox)
-            , clocks.hdr_adj_mm, FALSE, FALSE, 0);
+    gtk_grid_attach_next_to (GTK_GRID (clocks.hdr_hbox), clocks.hdr_adj_mm,
+                             NULL, GTK_POS_RIGHT, 1, 1);
     gtk_spin_button_set_value(GTK_SPIN_BUTTON(clocks.hdr_adj_mm), (gdouble)0);
     gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(clocks.hdr_adj_mm), TRUE);
     gtk_spin_button_set_increments(GTK_SPIN_BUTTON(clocks.hdr_adj_mm), 30, 1);
