@@ -64,9 +64,9 @@ static struct tm *get_time(const gchar *tz)
     static struct tm now;
     static char env_tz[256];
 
-    /*
+#if 0
     setenv("TZ", tz, 1);
-    */
+#endif
     g_snprintf(env_tz, sizeof (env_tz), "TZ=%s", tz);
     putenv(env_tz);
     tzset();
@@ -334,8 +334,7 @@ void show_clock(clock_struct *clockp, gint *pos)
     g_signal_connect(G_OBJECT(clockp->clock_ebox), "button_press_event"
                     , G_CALLBACK(clock_button_pressed), clockp);
     gtk_widget_show(clockp->clock_ebox);
-#warning "TODO replace box with grid"
-    clockp->clock_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+    clockp->clock_vbox = gtk_grid_new ();
     gtk_container_set_border_width(GTK_CONTAINER(clockp->clock_vbox), 1);
     gtk_container_add(GTK_CONTAINER(clockp->clock_ebox), clockp->clock_vbox);
     gtk_widget_show(clockp->clock_vbox);
@@ -345,13 +344,15 @@ void show_clock(clock_struct *clockp, gint *pos)
     show_clock_format_name(clockp);
     gtk_box_pack_start(GTK_BOX(clockp->clock_vbox), clockp->name_label
             , FALSE, FALSE, 0);
+    gtk_grid_attach_next_to (GTK_GRID (clockp->clock_vbox), clockp->name_label,
+                             NULL, GTK_POS_BOTTOM, 1, 1);
     gtk_widget_show(clockp->name_label);
 
 /*********** Timezone and actual time ***********/
     clockp->time_label = gtk_label_new(NULL);
     show_clock_format_time(clockp);
-    gtk_box_pack_start(GTK_BOX(clockp->clock_vbox), clockp->time_label
-            , FALSE, FALSE, 0);
+    gtk_grid_attach_next_to (GTK_GRID (clockp->clock_vbox), clockp->time_label,
+                             NULL, GTK_POS_BOTTOM, 1, 1);
     gtk_widget_show(clockp->time_label);
 
 /*********** font and color ***************/
