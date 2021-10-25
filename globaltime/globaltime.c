@@ -51,6 +51,7 @@
 
 #define NAME_VERSION "Global Time (2.2)"
 
+#define GLOBALTIME_RAISE "_XFCE_GLOBALTIME_RAISE"
 
 global_times_struct clocks;
 
@@ -81,35 +82,36 @@ static struct tm *get_time(const gchar *tz)
     return(&now);
 }
 
-static gboolean global_time_active_already(GdkAtom *atom)
+static gboolean global_time_active_already (GdkAtom *atom)
 {
-#if (GTK_MAJOR_VERSION < 3)
+    XEvent xevent;
     Window xwindow;
-    GdkEventClient gev; 
+    Display *display;
+    gchar *event;
 
     *atom = gdk_atom_intern (GLOBALTIME_RUNNING, FALSE);
-    xwindow = XGetSelectionOwner(gdk_x11_get_default_xdisplay(),
-                                 gdk_x11_atom_to_xatom(*atom));
-    if (xwindow != None) { /* real owner found; must be us. Let's go visible */
-/* DOES NOT WORK: if ((window = gdk_selection_owner_get(atom)) != NULL) { */
-        gev.type = GDK_CLIENT_EVENT;
-        gev.window = NULL;
-        gev.send_event = TRUE;
-        gev.message_type = gdk_atom_intern ("_XFCE_GLOBALTIME_RAISE", FALSE);
-        gev.data_format = 8; 
-        if (gdk_event_send_client_message ((GdkEvent *) &gev
-                    , (GdkNativeWindow) xwindow))
+    display = gdk_x11_get_default_xdisplay ();
+    xwindow = XGetSelectionOwner (display, gdk_x11_atom_to_xatom (*atom));
+    
+    if (xwindow != None)
+    {
+        /* Real owner found; must be us. Let's go visible. */
+        event = GLOBALTIME_RAISE;
+        xevent.xclient.type = ClientMessage;
+        xevent.xclient.display = display;
+        xevent.xclient.window = xwindow;
+        xevent.xclient.send_event = TRUE;
+        xevent.xclient.message_type = XInternAtom (display, event, FALSE);
+        
+        if (XSendEvent (display, xwindow, FALSE, NoEventMask, &xevent))
             g_message(_("Raising GlobalTime window..."));
         else
-            g_warning(_("GlobalTime window raise failed"));
-        return(TRUE); 
+            g_warning (_("GlobalTime window raise failed"));
+        
+        return TRUE;
     }
     else
-#else
-#warning "TODO for GTK 3"
-        (void)atom;
-#endif
-        return(FALSE); 
+        return FALSE;
 }
 
 #if (GTK_MAJOR_VERSION < 3)
@@ -130,7 +132,7 @@ static gboolean client_message_received(GtkWidget *widget
             , GdkEventClient *event, gpointer user_data)
 {
     if (event->message_type == 
-            gdk_atom_intern("_XFCE_GLOBALTIME_RAISE", FALSE)) {
+            gdk_atom_intern(GLOBALTIME_RAISE, FALSE)) {
         raise_window();
         return(TRUE);
     }
@@ -148,13 +150,54 @@ static gboolean client_message_received(GtkWidget *widget
 }
 #else
 #warning "TODO for GTK 3"
-static gboolean client_message_received(GtkWidget *widget
-            , void *event, gpointer user_data)
-{                 
-    (void)widget;
+static void raise_window (void)
+{
+    GdkWindow *window;
+
+    gtk_window_set_decorated(GTK_WINDOW(clocks.window), clocks.decorations);
+    gtk_window_move(GTK_WINDOW(clocks.window), clocks.x, clocks.y);
+    gtk_window_stick(GTK_WINDOW(clocks.window));
+    window = gtk_widget_get_window(GTK_WIDGET(clocks.window));
+    gdk_x11_window_set_user_time(window, gdk_x11_get_server_time(window));
+    gtk_widget_show(clocks.window);
+    gtk_window_present(GTK_WINDOW(clocks.window));
+}
+
+static GdkFilterReturn
+client_message_filter (GdkXEvent *gdkxevent, GdkEvent *event, gpointer data)
+{
+    XClientMessageEvent *evt;
+    XEvent *xevent = (XEvent *)gdkxevent;
+    
+    if (xevent->type != ClientMessage)
+        return GDK_FILTER_CONTINUE;
+    
+    evt = (XClientMessageEvent *)gdkxevent;
+    
+    if (evt->message_type ==
+            XInternAtom (evt->display, GLOBALTIME_RAISE, FALSE))
+    {
+        g_debug ("received '" GLOBALTIME_RAISE "' event");
+        raise_window ();
+        return GDK_FILTER_REMOVE;
+    }
+    
+    else if (evt->message_type ==
+             XInternAtom (evt->display, GLOBALTIME_TOGGLE, FALSE))
+    {
+        g_debug ("received '" GLOBALTIME_TOGGLE "' event");
+        if (gtk_widget_get_visible (clocks.window))
+            gtk_widget_hide (clocks.window);
+        else
+            raise_window();
+        
+        return GDK_FILTER_REMOVE;
+    }
+    
     (void)event;
-    (void)user_data;
-    return(FALSE);
+    (void)data;
+
+    return GDK_FILTER_CONTINUE;
 }
 #endif
 
@@ -657,19 +700,18 @@ static void create_global_time(void)
     if (g_list_length(clocks.clock_list) == 0)
         add_default_clock();
 
-    /*
+#if 0
     get_time("GMT");
-    */
+#endif
     g_timeout_add(500, (GSourceFunc)upd_clocks, NULL);
 
     g_list_foreach(clocks.clock_list, (GFunc) show_clock, &pos);
 
     gtk_window_move(GTK_WINDOW(clocks.window), clocks.x, clocks.y);
     gtk_window_set_decorated(GTK_WINDOW(clocks.window), clocks.decorations);
-    gtk_widget_show(clocks.window);
-
-    g_signal_connect(clocks.hidden, "client-event"
-            , G_CALLBACK(client_message_received), NULL);
+    gtk_widget_show (clocks.window);
+    
+    gdk_window_add_filter (window, client_message_filter, NULL);
 }
 
 int main(int argc, char *argv[])
