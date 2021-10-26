@@ -244,29 +244,29 @@ static void show_clock_format_clock(clock_struct *clockp)
     if (clockp->clock_attr.name_font_modified) {
         font = pango_font_description_from_string(
                 clockp->clock_attr.name_font->str);
-        gtk_widget_modify_font(clockp->name_label, font);
+        gtk_widget_override_font (clockp->name_label, font);
         pango_font_description_free(font);
     }
     else if (clocks.clock_default_attr.name_font_modified) {
         font = pango_font_description_from_string(
                 clocks.clock_default_attr.name_font->str);
-        gtk_widget_modify_font(clockp->name_label, font);
+        gtk_widget_override_font (clockp->name_label, font);
         pango_font_description_free(font);
     }
     else 
-        gtk_widget_modify_font(clockp->name_label, NULL);
+        gtk_widget_override_font (clockp->name_label, NULL);
 
 /*********** Clock Time font ***********/
     if (clockp->clock_attr.time_font_modified) {
         font = pango_font_description_from_string(
                 clockp->clock_attr.time_font->str);
-        gtk_widget_modify_font(clockp->time_label, font);
+        gtk_widget_override_font (clockp->time_label, font);
         pango_font_description_free(font);
     }
     else if (clocks.clock_default_attr.time_font_modified) {
         font = pango_font_description_from_string(
                 clocks.clock_default_attr.time_font->str);
-        gtk_widget_modify_font(clockp->time_label, font);
+        gtk_widget_override_font (clockp->time_label, font);
         pango_font_description_free(font);
     }
     else 

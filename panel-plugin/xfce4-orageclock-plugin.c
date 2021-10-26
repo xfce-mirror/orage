@@ -75,11 +75,11 @@ void oc_line_font_set(ClockLine *line)
 
     if (line->font->str) {
         font = pango_font_description_from_string(line->font->str);
-        gtk_widget_modify_font(line->label, font);
+        gtk_widget_override_font (line->label, font);
         pango_font_description_free(font);
     }
     else
-        gtk_widget_modify_font(line->label, NULL);
+        gtk_widget_override_font (line->label, NULL);
 }
 
 void oc_line_rotate(Clock *clock, ClockLine *line)
