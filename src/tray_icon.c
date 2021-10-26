@@ -166,8 +166,10 @@ static gboolean button_press_cb(GtkStatusIcon *status_icon
             xevent.xclient.send_event = TRUE;
             xevent.xclient.window = xwindow;
             
-            if (XSendEvent (display, xwindow, FALSE, NoEventMask, &xevent) == 0)
-                g_warning ("send message to globaltime failed");
+            if (XSendEvent (display, xwindow, FALSE, NoEventMask, &xevent))
+                g_debug(_("Raising GlobalTime window..."));
+            else
+                g_warning (_("GlobalTime window raise failed"));
             
             (void)XFlush (display);
             
