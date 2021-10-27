@@ -128,24 +128,46 @@ static void add_separator (GtkWidget *box, const GtkOrientation type)
     GtkWidget *separator;
     
     separator = gtk_separator_new (type);
-    gtk_box_pack_start(GTK_BOX(box), separator, FALSE, FALSE, 1);
+    if (separator == GTK_ORIENTATION_HORIZONTAL)
+    {
+        g_object_set (separator, "margin-left", 1, "margin-right", 1, NULL);
+        gtk_grid_attach_next_to (GTK_GRID (box), separator, NULL, GTK_POS_RIGHT,
+                                 1, 1);
+    }
+    else
+    {
+        g_object_set (separator, "margin-top", 1, "margin-bottom", 1, NULL);
+        gtk_grid_attach_next_to (GTK_GRID (box), separator, NULL,
+                                 GTK_POS_BOTTOM, 1, 1);
+    }
+
     gtk_widget_show(separator);
 }
 
-static GtkWidget *add_box(GtkWidget *box, gchar type)
+static GtkWidget *add_box (GtkWidget *box, const gchar type)
 {
     GtkWidget *new_box;
-#warning "TODO replace box with grid"
-    if (type == 'H') 
-        new_box = gtk_hbox_new(FALSE, 0);
+    
+    new_box = gtk_grid_new ();
+    if (type == 'H')
+    {
+        g_object_set (new_box, "margin-top", 2, "margin-bottom", 2, NULL);
+        gtk_grid_attach_next_to (GTK_GRID (box), new_box, NULL, GTK_POS_BOTTOM,
+                                 1, 1);
+    }
     else
-        new_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-    gtk_box_pack_start(GTK_BOX(box), new_box, FALSE, FALSE, 2);
-    gtk_widget_show(new_box);
-    return(new_box);
+    {
+        g_object_set (new_box, "margin-left", 2, "margin-right", 2, NULL);
+        gtk_grid_attach_next_to (GTK_GRID (box), new_box, NULL, GTK_POS_RIGHT,
+                                 1, 1);
+    }
+    
+    gtk_widget_show (new_box);
+    
+    return new_box;
 }
 
-static void add_header(GtkWidget *box, gchar *text, gboolean bold)
+static void add_header(GtkWidget *box, const gchar *text, const gboolean bold)
 {
     GtkWidget *label;
     gchar tmp[100];
@@ -157,7 +179,11 @@ static void add_header(GtkWidget *box, gchar *text, gboolean bold)
     }
     else
         label = gtk_label_new(text);
-    gtk_box_pack_start(GTK_BOX(box), label, FALSE, FALSE, 1);
+    
+    g_object_set (label, "margin-top", 1, "margin-bottom", 1, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (box), label, NULL, GTK_POS_BOTTOM,
+                                 1, 1);
+        
     gtk_widget_show(label);
 }
 
@@ -530,7 +556,8 @@ static void create_parameter_toolbar(GtkWidget *vbox
     GtkWidget *button;
 
     toolbar = gtk_toolbar_new();
-    gtk_box_pack_start(GTK_BOX(vbox), toolbar, FALSE, FALSE, 0);
+    g_object_set (toolbar, "hexpand", TRUE, "halign", GTK_ALIGN_FILL, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (vbox), toolbar, NULL, GTK_POS_TOP, 1, 1);
 
     /* -----------------------UPDATE-------------------------------------- */
     button = toolbar_append_button(toolbar, GTK_STOCK_SAVE
@@ -613,8 +640,8 @@ gboolean clock_parameters(GtkWidget *widget, clock_struct *clockp)
     g_free(window_name);
     g_signal_connect(G_OBJECT(modify_clock->window) , "destroy"
             , G_CALLBACK(release_modify_clock_window), modify_clock);
-#warning "TODO replace box with grid"
-    vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+    
+    vbox = gtk_grid_new ();
     gtk_container_add(GTK_CONTAINER(modify_clock->window), vbox);
 
 /* ---------------------TOOLBAR--------------------------------------------- */
@@ -627,9 +654,12 @@ gboolean clock_parameters(GtkWidget *widget, clock_struct *clockp)
     hbox = add_box(vbox, 'H');
     add_header(hbox, _("Name of the clock:"), TRUE);
     modify_clock->name_entry = gtk_entry_new();
+    g_object_set (modify_clock->name_entry, "margin-left", 5,
+                                            "margin-right", 5,
+                                            NULL);
     gtk_entry_set_text(GTK_ENTRY(modify_clock->name_entry), clockp->name->str);
-    gtk_box_pack_start(GTK_BOX(hbox), modify_clock->name_entry
-            , FALSE, FALSE, 5);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), modify_clock->name_entry, NULL,
+                             GTK_POS_RIGHT, 1, 1);
     gtk_widget_set_tooltip_text(modify_clock->name_entry
             , _("enter name of clock"));
 
@@ -637,10 +667,14 @@ gboolean clock_parameters(GtkWidget *widget, clock_struct *clockp)
     add_header(hbox, _("Timezone of the clock:"), TRUE);
     modify_clock->button_tz = orage_util_image_button ("document-open",
                                                        _("_Open"));
+    g_object_set (modify_clock->button_tz, "margin-left", 5,
+                                           "margin-right", 5,
+                                           NULL);
     if (clockp->tz->str && clockp->tz->len)
          gtk_button_set_label(GTK_BUTTON(modify_clock->button_tz)
                  , _(clockp->tz->str));
-    gtk_box_pack_start(GTK_BOX(hbox), modify_clock->button_tz, FALSE, FALSE, 2);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), modify_clock->button_tz, NULL,
+                             GTK_POS_RIGHT, 1, 1);
     g_signal_connect(G_OBJECT(modify_clock->button_tz), "clicked"
             , G_CALLBACK(ask_timezone), modify_clock);
 
@@ -667,7 +701,8 @@ static void create_parameter_formatting(GtkWidget *vbox
     add_header(vbox, _("Text Formatting"), TRUE);
     table = gtk_table_new(6, 3, FALSE); /* rows, columns, homogenous */
     /* table attach parameters: left, right, top, bottom */
-    gtk_box_pack_start(GTK_BOX(vbox), table, FALSE, FALSE, 2);
+    gtk_grid_attach_next_to (GTK_GRID (vbox), table, NULL, GTK_POS_BOTTOM, 1, 1);
+    g_object_set (table, "margin-top", 2, "margin-bottom", 2, NULL);
 
     /*------------------------background-------------------------*/
     label = gtk_label_new(_("Background color:"));
@@ -870,7 +905,8 @@ static void preferences_formatting(GtkWidget *vbox
     add_header(vbox, _("Text Default Formatting"), TRUE);
     table = gtk_table_new(6, 3, FALSE); /* rows, columns, homogenous */
     /* table attach parameters: left, right, top, bottom */
-    gtk_box_pack_start(GTK_BOX(vbox), table, FALSE, FALSE, 2);
+    gtk_grid_attach_next_to (GTK_GRID (vbox), table, NULL, GTK_POS_BOTTOM, 1, 1);
+    g_object_set (table, "margin-bottom", 2, "margin-bottom", 2, NULL);
 
     /*------------------------background-------------------------*/
     label = gtk_label_new(_("Background color:"));
@@ -1035,7 +1071,7 @@ static void preferences_toolbar(GtkWidget *vbox, modify_struct *modify_default)
     GtkWidget *button;
 
     toolbar = gtk_toolbar_new();
-    gtk_box_pack_start(GTK_BOX(vbox), toolbar, FALSE, FALSE, 0);
+    gtk_grid_attach_next_to (GTK_GRID (vbox), toolbar, NULL, GTK_POS_TOP, 1, 1);
     /* -----------------------UPDATE-------------------------------------- */
     button = toolbar_append_button(toolbar, GTK_STOCK_SAVE
             , _("update preferences"));
@@ -1076,8 +1112,8 @@ gboolean default_preferences(GtkWidget *widget)
             , _("Globaltime Preferences"));
     g_signal_connect(G_OBJECT(modify_default->window) , "destroy"
             , G_CALLBACK(release_preferences_window), modify_default);
-#warning "TODO replace box with grid"                                                                     
-    vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+    
+    vbox = gtk_grid_new ();
     gtk_container_add(GTK_CONTAINER(modify_default->window), vbox);
 
 /* -----------------------TOOLBAR-------------------------------------- */
@@ -1090,9 +1126,11 @@ gboolean default_preferences(GtkWidget *widget)
     hbox = add_box(vbox, 'H');
     add_header(hbox, _("Decorations:"), TRUE);
     button = gtk_radio_button_new_with_label(NULL, _("Standard"));
+    g_object_set (button, "hexpand", TRUE, "halign", GTK_ALIGN_FILL, NULL);
     if (clocks.decorations)
         gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), TRUE);
-    gtk_box_pack_start(GTK_BOX(hbox), button, TRUE, TRUE, 0);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), button, NULL,
+                             GTK_POS_RIGHT, 1, 1);
     gtk_widget_set_tooltip_text(button, _("Use normal decorations"));
     g_signal_connect(G_OBJECT(button), "toggled"
             , G_CALLBACK(decoration_radio_button_pressed), "Standard");
@@ -1100,9 +1138,11 @@ gboolean default_preferences(GtkWidget *widget)
     dec_group = gtk_radio_button_get_group(GTK_RADIO_BUTTON (button));
     button = gtk_radio_button_new_with_label_from_widget(
             GTK_RADIO_BUTTON(button), _("None"));
+    g_object_set (button, "hexpand", TRUE, "halign", GTK_ALIGN_FILL, NULL);
     if (!clocks.decorations)
         gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), TRUE);
-    gtk_box_pack_start(GTK_BOX(hbox), button, TRUE, TRUE, 0);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), button, NULL,
+                             GTK_POS_RIGHT, 1, 1);
     gtk_widget_set_tooltip_text(button
             , _("Do not show window decorations (borders)"));
     g_signal_connect(G_OBJECT(button), "toggled"
@@ -1112,9 +1152,11 @@ gboolean default_preferences(GtkWidget *widget)
     hbox = add_box(vbox, 'H');
     add_header(hbox, _("Clock size:"), TRUE);
     button = gtk_radio_button_new_with_label(NULL, _("Equal"));
+    g_object_set (button, "hexpand", TRUE, "halign", GTK_ALIGN_FILL, NULL);
     if (clocks.expand)
         gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), TRUE);
-    gtk_box_pack_start(GTK_BOX(hbox), button, TRUE, TRUE, 0);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), button, NULL,
+                             GTK_POS_RIGHT, 1, 1);
     gtk_widget_set_tooltip_text(button
             , _("All clocks have same size"));
     g_signal_connect(G_OBJECT(button), "toggled"
@@ -1122,9 +1164,11 @@ gboolean default_preferences(GtkWidget *widget)
 
     dec_group = gtk_radio_button_get_group(GTK_RADIO_BUTTON (button));
     button = gtk_radio_button_new_with_label(dec_group, _("Varying"));
+    g_object_set (button, "hexpand", TRUE, "halign", GTK_ALIGN_FILL, NULL);
     if (!clocks.expand)
         gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), TRUE);
-    gtk_box_pack_start(GTK_BOX(hbox), button, TRUE, TRUE, 0);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), button, NULL,
+                             GTK_POS_RIGHT, 1, 1);
     gtk_widget_set_tooltip_text(button, _("Clock sizes vary"));
     g_signal_connect(G_OBJECT(button), "toggled"
             , G_CALLBACK(clocksize_radio_button_pressed), "Vary");
@@ -1134,11 +1178,14 @@ gboolean default_preferences(GtkWidget *widget)
     add_header(hbox, _("Local timezone:"), TRUE);
     modify_default->button_tz = orage_util_image_button ("document-open",
                                                            _("_Open"));
+    g_object_set (modify_default->button_tz, "margin-left", 2,
+                                             "margin-right", 2,
+                                             NULL);
     if (clocks.local_tz->str)
          gtk_button_set_label(GTK_BUTTON(modify_default->button_tz)
                  , _(clocks.local_tz->str));
-    gtk_box_pack_start(GTK_BOX(hbox), modify_default->button_tz, FALSE, FALSE
-            , 2);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), modify_default->button_tz, NULL,
+                             GTK_POS_RIGHT, 1, 1);
     g_signal_connect(G_OBJECT(modify_default->button_tz), "clicked"
             , G_CALLBACK(ask_timezone), modify_default);
 
