@@ -346,11 +346,9 @@ void show_clock(clock_struct *clockp, gint *pos)
     gtk_container_add(GTK_CONTAINER(clockp->clock_ebox), clockp->clock_vbox);
     gtk_widget_show(clockp->clock_vbox);
 
-/*********** Clock Name ***********/
+    /*********** Clock Name ***********/
     clockp->name_label = gtk_label_new(NULL);
     show_clock_format_name(clockp);
-    gtk_box_pack_start(GTK_BOX(clockp->clock_vbox), clockp->name_label
-            , FALSE, FALSE, 0);
     gtk_grid_attach_next_to (GTK_GRID (clockp->clock_vbox), clockp->name_label,
                              NULL, GTK_POS_BOTTOM, 1, 1);
     gtk_widget_show(clockp->name_label);
