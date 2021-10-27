@@ -322,13 +322,12 @@ static void show_clock_format_clock(clock_struct *clockp)
 
 void show_clock(clock_struct *clockp, gint *pos)
 {
-    #warning "TODO replace box with grid"
     clockp->clock_hbox = gtk_hbox_new(FALSE, 0);
     gtk_box_pack_start(GTK_BOX(clocks.clocks_hbox), clockp->clock_hbox
                         , clocks.expand, clocks.expand, 0);
     if (*pos !=- 1) /* -1=to the end (default) */
-        gtk_box_reorder_child(GTK_BOX(clocks.clocks_hbox)
-                        , clockp->clock_hbox, *pos);
+        gtk_box_reorder_child(GTK_BOX(clocks.clocks_hbox), clockp->clock_hbox,
+                              *pos);
     gtk_widget_show(clockp->clock_hbox);
 
     clockp->clock_separator = gtk_separator_new (GTK_ORIENTATION_VERTICAL);
@@ -606,7 +605,6 @@ static void initialize_clocks(void)
 
     init_hdr_button();
 
-    #warning "TODO replace box with grid"
     clocks.clocks_hbox = gtk_hbox_new(clocks.expand, 1);
     gtk_grid_attach_next_to (GTK_GRID (clocks.main_hbox), clocks.clocks_hbox,
                              NULL, GTK_POS_RIGHT, 1, 1);

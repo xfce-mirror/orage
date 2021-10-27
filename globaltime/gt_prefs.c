@@ -368,8 +368,8 @@ static void move_clock(GtkWidget *widget, modify_struct *modify_clock)
     if (pos == new_pos)
         return; /* not moving at all */
 
-    gtk_box_reorder_child(GTK_BOX(clocks.clocks_hbox)
-            , clockp->clock_hbox, new_pos);
+    gtk_box_reorder_child(GTK_BOX(clocks.clocks_hbox), clockp->clock_hbox,
+                          new_pos);
 
     clocks.clock_list = g_list_remove(clocks.clock_list, clockp);
     clocks.clock_list = g_list_insert(clocks.clock_list, clockp, new_pos);
