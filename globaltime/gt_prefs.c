@@ -1046,7 +1046,7 @@ static void preferences_formatting(GtkWidget *vbox
             , "changed"
             , G_CALLBACK(underline_default_name_combo_box_changed), attrp);
     gtk_grid_attach (GTK_GRID (table), modify_default->combo_box_underline_name,
-                     1, 4, 1, 1);
+                     1, 4, 2, 1);
 
     /*------------------------underline time--------------------*/
     label = gtk_label_new(_("Underline for time of clock:"));
@@ -1060,7 +1060,7 @@ static void preferences_formatting(GtkWidget *vbox
             , "changed"
             , G_CALLBACK(underline_default_time_combo_box_changed), attrp);
     gtk_grid_attach (GTK_GRID (table), modify_default->combo_box_underline_time,
-                     1, 5, 1, 1);
+                     1, 5, 2, 1);
 }
 
 static void preferences_toolbar(GtkWidget *vbox, modify_struct *modify_default)
