@@ -699,14 +699,14 @@ static void create_parameter_formatting(GtkWidget *vbox
 
     add_separator(vbox, GTK_ORIENTATION_HORIZONTAL);
     add_header(vbox, _("Text Formatting"), TRUE);
-    table = gtk_table_new(6, 3, FALSE); /* rows, columns, homogenous */
+    table = gtk_grid_new ();
     /* table attach parameters: left, right, top, bottom */
     gtk_grid_attach_next_to (GTK_GRID (vbox), table, NULL, GTK_POS_BOTTOM, 1, 1);
     g_object_set (table, "margin-top", 2, "margin-bottom", 2, NULL);
 
     /*------------------------background-------------------------*/
     label = gtk_label_new(_("Background color:"));
-    gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 0, 1);
+    gtk_grid_attach (GTK_GRID (table), label, 0, 0, 1, 1);
     g_object_set (label, "xalign", 0.0, "yalign", 0.5, NULL);
 
     modify_clock->button_clock_bg = 
@@ -717,8 +717,8 @@ static void create_parameter_formatting(GtkWidget *vbox
             , G_CALLBACK(set_color), clock_bgp);
     gtk_widget_set_sensitive(modify_clock->button_clock_bg
             , attrp->clock_bg_modified);
-    gtk_table_attach_defaults(GTK_TABLE(table)
-             , modify_clock->button_clock_bg, 1, 2, 0, 1);
+    gtk_grid_attach (GTK_GRID (table), modify_clock->button_clock_bg,
+                     1, 0, 1, 1);
 
     modify_clock->check_button_default_bg = 
             gtk_check_button_new_with_label(_("Use default"));
@@ -733,13 +733,13 @@ static void create_parameter_formatting(GtkWidget *vbox
     g_signal_connect(G_OBJECT(modify_clock->check_button_default_bg)
             , "toggled", G_CALLBACK(set_sensitivity)
             , modify_clock->button_clock_bg);
-    gtk_table_attach_defaults(GTK_TABLE(table)
-            , modify_clock->check_button_default_bg, 2, 3, 0, 1);
+    gtk_grid_attach (GTK_GRID (table), modify_clock->check_button_default_bg,
+                     2, 0, 1, 1);
 
     /*------------------------foreground-------------------------*/
     label = gtk_label_new(_("Foreground (=text) color:"));
-    gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 1, 2);
     g_object_set (label, "xalign", 0.0, "yalign", 0.5, NULL);
+    gtk_grid_attach (GTK_GRID (table), label, 0, 1, 1, 1);
 
     modify_clock->button_clock_fg = 
             gtk_color_button_new_with_color(clock_fgp);
@@ -749,8 +749,8 @@ static void create_parameter_formatting(GtkWidget *vbox
             , G_CALLBACK(set_color), clock_fgp);
     gtk_widget_set_sensitive(modify_clock->button_clock_fg
             , attrp->clock_fg_modified);
-    gtk_table_attach_defaults(GTK_TABLE(table)
-            , modify_clock->button_clock_fg, 1, 2, 1, 2);
+    gtk_grid_attach (GTK_GRID (table), modify_clock->button_clock_fg,
+                     1, 1, 1, 1);
 
     modify_clock->check_button_default_fg = 
             gtk_check_button_new_with_label(_("Use default"));
@@ -765,13 +765,13 @@ static void create_parameter_formatting(GtkWidget *vbox
     g_signal_connect(G_OBJECT(modify_clock->check_button_default_fg)
             , "toggled", G_CALLBACK(set_sensitivity)
             , modify_clock->button_clock_fg);
-    gtk_table_attach_defaults(GTK_TABLE(table)
-            , modify_clock->check_button_default_fg, 2, 3, 1, 2);
+    gtk_grid_attach (GTK_GRID (table), modify_clock->check_button_default_fg,
+                     2, 1, 1, 1);
 
     /*------------------------name font-------------------------*/
     label = gtk_label_new(_("Font for name of clock:"));
-    gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 2, 3);
     g_object_set (label, "xalign", 0.0, "yalign", 0.5, NULL);
+    gtk_grid_attach (GTK_GRID (table), label, 0, 2, 1, 1);
 
     modify_clock->button_font_name = gtk_font_button_new_with_font(
             attrp->name_font->str);
@@ -781,8 +781,8 @@ static void create_parameter_formatting(GtkWidget *vbox
             , G_CALLBACK(set_font), attrp->name_font);
     gtk_widget_set_sensitive(modify_clock->button_font_name
             , attrp->name_font_modified);
-    gtk_table_attach_defaults(GTK_TABLE(table)
-            , modify_clock->button_font_name, 1, 2, 2, 3);
+    gtk_grid_attach (GTK_GRID (table), modify_clock->button_font_name,
+                     1, 2, 1, 1);
 
     modify_clock->check_button_default_font_name = 
             gtk_check_button_new_with_label(_("Use default"));
@@ -797,13 +797,13 @@ static void create_parameter_formatting(GtkWidget *vbox
     g_signal_connect(G_OBJECT(modify_clock->check_button_default_font_name)
             , "toggled", G_CALLBACK(set_sensitivity)
             , modify_clock->button_font_name);
-    gtk_table_attach_defaults(GTK_TABLE(table)
-            , modify_clock->check_button_default_font_name, 2, 3, 2, 3);
+    gtk_grid_attach (GTK_GRID (table), modify_clock->check_button_default_font_name,
+                     2, 2, 1, 1);
 
     /*------------------------time font-------------------------*/
     label = gtk_label_new(_("Font for time of clock:"));
-    gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 3, 4);
     g_object_set (label, "xalign", 0.0, "yalign", 0.5, NULL);
+    gtk_grid_attach (GTK_GRID (table), label, 0, 3, 1, 1);
 
     modify_clock->button_font_time = gtk_font_button_new_with_font(
             attrp->time_font->str);
@@ -813,8 +813,8 @@ static void create_parameter_formatting(GtkWidget *vbox
             , G_CALLBACK(set_font), attrp->time_font);
     gtk_widget_set_sensitive(modify_clock->button_font_time
             , attrp->time_font_modified);
-    gtk_table_attach_defaults(GTK_TABLE(table)
-            , modify_clock->button_font_time, 1, 2, 3, 4);
+    gtk_grid_attach (GTK_GRID (table), modify_clock->button_font_time,
+                     1, 3, 1, 1);
 
     modify_clock->check_button_default_font_time = 
             gtk_check_button_new_with_label(_("Use default"));
@@ -829,14 +829,13 @@ static void create_parameter_formatting(GtkWidget *vbox
     g_signal_connect(G_OBJECT(modify_clock->check_button_default_font_time)
             , "toggled", G_CALLBACK(set_sensitivity)
             , modify_clock->button_font_time);
-    gtk_table_attach_defaults(GTK_TABLE(table)
-            , modify_clock->check_button_default_font_time, 2, 3, 3, 4);
-
+    gtk_grid_attach (GTK_GRID (table), modify_clock->check_button_default_font_time,
+                     2, 3, 1, 1);
 
     /*------------------------underline name--------------------*/
     label = gtk_label_new(_("Underline name of clock:"));
-    gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 4, 5);
     g_object_set (label, "xalign", 0.0, "yalign", 0.5, NULL);
+    gtk_grid_attach (GTK_GRID (table), label, 0, 4, 1, 1);
 
     modify_clock->combo_box_underline_name = gtk_combo_box_text_new();
     fill_combo_box((GtkComboBoxText *)modify_clock->combo_box_underline_name
@@ -846,8 +845,8 @@ static void create_parameter_formatting(GtkWidget *vbox
             , attrp->name_underline);
     gtk_widget_set_sensitive(modify_clock->combo_box_underline_name
             , attrp->name_underline_modified);
-    gtk_table_attach_defaults(GTK_TABLE(table)
-            , modify_clock->combo_box_underline_name, 1, 2, 4, 5);
+    gtk_grid_attach (GTK_GRID (table), modify_clock->combo_box_underline_name,
+                     1, 4, 1, 1);
 
     modify_clock->check_button_default_underline_name = 
             gtk_check_button_new_with_label(_("Use default"));
@@ -858,14 +857,13 @@ static void create_parameter_formatting(GtkWidget *vbox
             , _("Cross this to use default instead of selected value"));
     g_signal_connect(G_OBJECT(modify_clock->check_button_default_underline_name)
             , "toggled", G_CALLBACK(reset_name_underline), clockp);
-    gtk_table_attach_defaults(GTK_TABLE(table)
-            , modify_clock->check_button_default_underline_name, 2, 3, 4, 5);
-
+    gtk_grid_attach (GTK_GRID (table), modify_clock->check_button_default_underline_name,
+                     2, 4, 1, 1);
 
     /*------------------------underline time--------------------*/
     label = gtk_label_new(_("Underline time of clock:"));
-    gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 5, 6);
     g_object_set (label, "xalign", 0.0, "yalign", 0.5, NULL);
+    gtk_grid_attach (GTK_GRID (table), label, 0, 5, 1, 1);
 
     modify_clock->combo_box_underline_time = gtk_combo_box_text_new();
     fill_combo_box((GtkComboBoxText *)modify_clock->combo_box_underline_time
@@ -875,8 +873,8 @@ static void create_parameter_formatting(GtkWidget *vbox
             , attrp->time_underline);
     gtk_widget_set_sensitive(modify_clock->combo_box_underline_time
             , attrp->time_underline_modified);
-    gtk_table_attach_defaults(GTK_TABLE(table)
-            , modify_clock->combo_box_underline_time, 1, 2, 5, 6);
+    gtk_grid_attach (GTK_GRID (table), modify_clock->combo_box_underline_time,
+                     1, 5, 1, 1);
 
     modify_clock->check_button_default_underline_time = 
             gtk_check_button_new_with_label(_("Use default"));
@@ -887,8 +885,8 @@ static void create_parameter_formatting(GtkWidget *vbox
             , _("Cross this to use default instead of selected value"));
     g_signal_connect(G_OBJECT(modify_clock->check_button_default_underline_time)
             , "toggled", G_CALLBACK(reset_time_underline), clockp);
-    gtk_table_attach_defaults(GTK_TABLE(table)
-            , modify_clock->check_button_default_underline_time, 2, 3, 5, 6);
+    gtk_grid_attach (GTK_GRID (table), modify_clock->check_button_default_underline_time,
+                     2, 5, 1, 1);
 }
 
 static void preferences_formatting(GtkWidget *vbox
@@ -903,15 +901,15 @@ static void preferences_formatting(GtkWidget *vbox
 
     add_separator(vbox, GTK_ORIENTATION_HORIZONTAL);
     add_header(vbox, _("Text Default Formatting"), TRUE);
-    table = gtk_table_new(6, 3, FALSE); /* rows, columns, homogenous */
+    table = gtk_grid_new ();
     /* table attach parameters: left, right, top, bottom */
     gtk_grid_attach_next_to (GTK_GRID (vbox), table, NULL, GTK_POS_BOTTOM, 1, 1);
     g_object_set (table, "margin-bottom", 2, "margin-bottom", 2, NULL);
 
     /*------------------------background-------------------------*/
     label = gtk_label_new(_("Background color:"));
-    gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 0, 1);
     g_object_set (label, "xalign", 0.0, "yalign", 0.5, NULL);
+    gtk_grid_attach (GTK_GRID (table), label, 0, 0, 1, 1);
 
     modify_default->button_clock_bg = 
             gtk_color_button_new_with_color(clock_bgp);
@@ -921,8 +919,8 @@ static void preferences_formatting(GtkWidget *vbox
             , G_CALLBACK(set_color), clock_bgp);
     gtk_widget_set_sensitive(modify_default->button_clock_bg
             , attrp->clock_bg_modified);
-    gtk_table_attach_defaults(GTK_TABLE(table)
-            , modify_default->button_clock_bg, 1, 2, 0, 1);
+    gtk_grid_attach (GTK_GRID (table), modify_default->button_clock_bg,
+                     1, 0, 1, 1);
 
     modify_default->check_button_default_bg =
             gtk_check_button_new_with_label(_("Use default"));
@@ -937,13 +935,13 @@ static void preferences_formatting(GtkWidget *vbox
     g_signal_connect(G_OBJECT(modify_default->check_button_default_bg)
             , "toggled", G_CALLBACK(set_sensitivity)
             , modify_default->button_clock_bg);
-    gtk_table_attach_defaults(GTK_TABLE(table)
-            , modify_default->check_button_default_bg, 2, 3, 0, 1);
+    gtk_grid_attach (GTK_GRID (table), modify_default->check_button_default_bg,
+                     2, 0, 1, 1);
 
     /*------------------------foreground-------------------------*/
     label = gtk_label_new(_("Foreground (=text) color:"));
-    gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 1, 2);
     g_object_set (label, "xalign", 0.0, "yalign", 0.5, NULL);
+    gtk_grid_attach (GTK_GRID (table), label, 0, 1, 1, 1);
 
     modify_default->button_clock_fg = 
             gtk_color_button_new_with_color(clock_fgp);
@@ -953,8 +951,8 @@ static void preferences_formatting(GtkWidget *vbox
             , G_CALLBACK(set_color), clock_fgp);
     gtk_widget_set_sensitive(modify_default->button_clock_fg
             , attrp->clock_fg_modified);
-    gtk_table_attach_defaults(GTK_TABLE(table)
-            , modify_default->button_clock_fg, 1, 2, 1, 2);
+    gtk_grid_attach (GTK_GRID (table), modify_default->button_clock_fg,
+                     1, 1, 1, 1);
 
     modify_default->check_button_default_fg =
             gtk_check_button_new_with_label(_("Use default"));
@@ -969,13 +967,13 @@ static void preferences_formatting(GtkWidget *vbox
     g_signal_connect(G_OBJECT(modify_default->check_button_default_fg)
             , "toggled", G_CALLBACK(set_sensitivity)
             , modify_default->button_clock_fg);
-    gtk_table_attach_defaults(GTK_TABLE(table)
-            , modify_default->check_button_default_fg, 2, 3, 1, 2);
+    gtk_grid_attach (GTK_GRID (table), modify_default->check_button_default_fg,
+                     2, 1, 1, 1);
 
     /*------------------------name font-------------------------*/
     label = gtk_label_new(_("Font for name of clock:"));
-    gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 2, 3);
     g_object_set (label, "xalign", 0.0, "yalign", 0.5, NULL);
+    gtk_grid_attach (GTK_GRID (table), label, 0, 2, 1, 1);
 
     modify_default->button_font_name = 
             gtk_font_button_new_with_font(attrp->name_font->str);
@@ -985,8 +983,8 @@ static void preferences_formatting(GtkWidget *vbox
             , G_CALLBACK(set_font), attrp->name_font);
     gtk_widget_set_sensitive(modify_default->button_font_name
             , attrp->name_font_modified);
-    gtk_table_attach_defaults(GTK_TABLE(table)
-            , modify_default->button_font_name, 1, 2, 2, 3);
+    gtk_grid_attach (GTK_GRID (table), modify_default->button_font_name,
+                     1, 2, 1, 1);
 
     modify_default->check_button_default_font_name = 
             gtk_check_button_new_with_label(_("Use default"));
@@ -1001,13 +999,13 @@ static void preferences_formatting(GtkWidget *vbox
     g_signal_connect(G_OBJECT(modify_default->check_button_default_font_name)
             , "toggled", G_CALLBACK(set_sensitivity)
             , modify_default->button_font_name);
-    gtk_table_attach_defaults(GTK_TABLE(table)
-            , modify_default->check_button_default_font_name, 2, 3, 2, 3);
+    gtk_grid_attach (GTK_GRID (table), modify_default->check_button_default_font_name,
+                     2, 2, 1, 1);
 
     /*------------------------time font-------------------------*/
     label = gtk_label_new(_("Font for time of clock:"));
-    gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 3, 4);
     g_object_set (label, "xalign", 0.0, "yalign", 0.5, NULL);
+    gtk_grid_attach (GTK_GRID (table), label, 0, 3, 1, 1);
 
     modify_default->button_font_time = 
             gtk_font_button_new_with_font(attrp->time_font->str);
@@ -1017,8 +1015,8 @@ static void preferences_formatting(GtkWidget *vbox
             , G_CALLBACK(set_font), attrp->time_font);
     gtk_widget_set_sensitive(modify_default->button_font_time
             , attrp->time_font_modified);
-    gtk_table_attach_defaults(GTK_TABLE(table)
-            , modify_default->button_font_time, 1, 2, 3, 4);
+    gtk_grid_attach (GTK_GRID (table), modify_default->button_font_time,
+                     1, 3, 1, 1);
 
     modify_default->check_button_default_font_time = 
             gtk_check_button_new_with_label(_("Use default"));
@@ -1033,13 +1031,13 @@ static void preferences_formatting(GtkWidget *vbox
     g_signal_connect(G_OBJECT(modify_default->check_button_default_font_time)
             , "toggled", G_CALLBACK(set_sensitivity)
             , modify_default->button_font_time);
-    gtk_table_attach_defaults(GTK_TABLE(table)
-            , modify_default->check_button_default_font_time, 2, 3, 3, 4);
+    gtk_grid_attach (GTK_GRID (table), modify_default->check_button_default_font_time,
+                     2, 3, 1, 1);
 
     /*------------------------underline name--------------------*/
     label = gtk_label_new(_("Underline for name of clock:"));
-    gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 4, 5);
     g_object_set (label, "xalign", 0.0, "yalign", 0.5, NULL);
+    gtk_grid_attach (GTK_GRID (table), label, 0, 4, 1, 1);
 
     modify_default->combo_box_underline_name = gtk_combo_box_text_new();
     fill_combo_box((GtkComboBoxText *)modify_default->combo_box_underline_name
@@ -1047,13 +1045,13 @@ static void preferences_formatting(GtkWidget *vbox
     g_signal_connect(G_OBJECT(modify_default->combo_box_underline_name)
             , "changed"
             , G_CALLBACK(underline_default_name_combo_box_changed), attrp);
-    gtk_table_attach_defaults(GTK_TABLE(table)
-            , modify_default->combo_box_underline_name, 1, 3, 4, 5);
+    gtk_grid_attach (GTK_GRID (table), modify_default->combo_box_underline_name,
+                     1, 4, 1, 1);
 
     /*------------------------underline time--------------------*/
     label = gtk_label_new(_("Underline for time of clock:"));
-    gtk_table_attach_defaults(GTK_TABLE(table), label, 0, 1, 5, 6);
     g_object_set (label, "xalign", 0.0, "yalign", 0.5, NULL);
+    gtk_grid_attach (GTK_GRID (table), label, 0, 5, 1, 1);
 
     modify_default->combo_box_underline_time = gtk_combo_box_text_new();
     fill_combo_box((GtkComboBoxText *)modify_default->combo_box_underline_time
@@ -1061,8 +1059,8 @@ static void preferences_formatting(GtkWidget *vbox
     g_signal_connect(G_OBJECT(modify_default->combo_box_underline_time)
             , "changed"
             , G_CALLBACK(underline_default_time_combo_box_changed), attrp);
-    gtk_table_attach_defaults(GTK_TABLE(table)
-            , modify_default->combo_box_underline_time, 1, 3, 5, 6);
+    gtk_grid_attach (GTK_GRID (table), modify_default->combo_box_underline_time,
+                     1, 5, 1, 1);
 }
 
 static void preferences_toolbar(GtkWidget *vbox, modify_struct *modify_default)
