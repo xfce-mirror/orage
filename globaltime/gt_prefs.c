@@ -59,7 +59,13 @@ typedef struct modify
     GtkWidget *check_button_default_underline_time;
 } modify_struct;
 
-
+typedef enum
+{
+    MOVE_CLOCK_BACK,
+    MOVE_CLOCK_FORWARD,
+    MOVE_CLOCK_FIRST,
+    MOVE_CLOCK_LAST
+} move_clock_dir_e;
 
 static void create_parameter_formatting(GtkWidget *vbox
         , modify_struct *modify_clock);
@@ -185,19 +191,6 @@ static void add_header(GtkWidget *box, const gchar *text, const gboolean bold)
                                  1, 1);
         
     gtk_widget_show(label);
-}
-
-static GtkWidget *toolbar_append_button(GtkWidget *toolbar
-        , const gchar *stock_id
-        , const char *tooltip_text)
-{
-    GtkToolItem *button;
-            
-    button = gtk_tool_button_new_from_stock(stock_id);
-    gtk_tool_item_set_tooltip_text(GTK_TOOL_ITEM(button)
-            , (const gchar *) tooltip_text);
-    gtk_toolbar_insert(GTK_TOOLBAR(toolbar), button, -1);
-    return (GtkWidget *)button;
 }
 
 static void toolbar_append_separator(GtkWidget *toolbar)
@@ -368,38 +361,71 @@ static void delete_clock(GtkWidget *widget, modify_struct *modify_clock)
     (void)widget;
 }
 
-static void move_clock(GtkWidget *widget, modify_struct *modify_clock)
+static void move_clock (modify_struct *modify_clock,
+                        const move_clock_dir_e move_dir)
 {
     clock_struct *clockp = modify_clock->clock;
     gint pos, new_pos = 0, len;
-    const gchar *button_text;
 
-    if ((len = g_list_length(clocks.clock_list)) == 1) 
+    len = g_list_length (clocks.clock_list);
+    if (len < 2)
         return; /* not possible to move 1 element */
 
-    pos = g_list_index(clocks.clock_list, clockp); 
-    button_text = gtk_tool_button_get_stock_id(GTK_TOOL_BUTTON(widget));
+    pos = g_list_index (clocks.clock_list, clockp);
 
-    if (strcmp(button_text, "gtk-go-back") == 0) 
-        new_pos = pos-1; /* gtk: -1 == last */
-    else if (strcmp(button_text, "gtk-go-forward") == 0)
-        new_pos = (pos+1 == len ? 0 : pos+1);
-    else if (strcmp(button_text, "gtk-goto-first") == 0)
-        new_pos = 0;
-    else if (strcmp(button_text, "gtk-goto-last") == 0)
-        new_pos = (pos+1 == len ? pos : len);
-    else
-        g_warning("unknown button pressed %s", button_text);
+    switch (move_dir)
+    {
+        case MOVE_CLOCK_BACK:
+            new_pos = pos - 1;
+            break;
+            
+        case MOVE_CLOCK_FORWARD:
+            new_pos = (pos + 1 == len ? 0 : pos+1);
+            break;
+            
+        case MOVE_CLOCK_FIRST:
+            new_pos = 0;
+            break;
+            
+        case MOVE_CLOCK_LAST:
+            new_pos = (pos + 1 == len) ? pos : len;
+            break;
+            
+        default:
+            g_warning ("unknown button pressed");
+            break;
+    }
 
-    if (pos == new_pos)
-        return; /* not moving at all */
+    gtk_box_reorder_child (GTK_BOX (clocks.clocks_hbox), clockp->clock_hbox,
+                           new_pos);
 
-    gtk_box_reorder_child(GTK_BOX(clocks.clocks_hbox), clockp->clock_hbox,
-                          new_pos);
+    clocks.clock_list = g_list_remove (clocks.clock_list, clockp);
+    clocks.clock_list = g_list_insert (clocks.clock_list, clockp, new_pos);
+    write_file ();
+}
 
-    clocks.clock_list = g_list_remove(clocks.clock_list, clockp);
-    clocks.clock_list = g_list_insert(clocks.clock_list, clockp, new_pos);
-    write_file();
+static void move_clock_back (GtkWidget *widget, modify_struct *modify_clock)
+{
+    move_clock (modify_clock, MOVE_CLOCK_BACK);
+    (void)widget;
+}
+
+static void move_clock_forward (GtkWidget *widget, modify_struct *modify_clock)
+{
+    move_clock (modify_clock, MOVE_CLOCK_FORWARD);
+    (void)widget;
+}
+
+static void move_clock_first (GtkWidget *widget, modify_struct *modify_clock)
+{
+    move_clock (modify_clock, MOVE_CLOCK_FIRST);
+    (void)widget;
+}
+
+static void move_clock_last (GtkWidget *widget, modify_struct *modify_clock)
+{
+    move_clock (modify_clock, MOVE_CLOCK_LAST);
+    (void)widget;
 }
 
 /* We handle here timezone setting for individual clocks, but also
@@ -560,60 +586,60 @@ static void create_parameter_toolbar(GtkWidget *vbox
     gtk_grid_attach_next_to (GTK_GRID (vbox), toolbar, NULL, GTK_POS_TOP, 1, 1);
 
     /* -----------------------UPDATE-------------------------------------- */
-    button = toolbar_append_button(toolbar, GTK_STOCK_SAVE
-            , _("update this clock")); 
+    button = orage_toolbar_append_button (toolbar, "document-save",
+                                          _("update this clock"), -1);
     g_signal_connect(G_OBJECT(button), "clicked"
             , G_CALLBACK(save_clock), modify_clock);
     /* -----------------------INSERT-------------------------------------- */
-    button = toolbar_append_button(toolbar, GTK_STOCK_NEW
-            , _("add new empty clock")); 
+    button = orage_toolbar_append_button (toolbar, "document-new",
+                                          _("add new empty clock"), -1);
     g_signal_connect(G_OBJECT(button), "clicked"
             , G_CALLBACK(add_clock), modify_clock);
     /* -----------------------COPY---------------------------------------- */
-    button = toolbar_append_button(toolbar, GTK_STOCK_COPY
-            , _("add new clock using this clock as model")); 
+    button = orage_toolbar_append_button (toolbar, "edit-copy",
+              _("add new clock using this clock as model"), -1);
     g_signal_connect(G_OBJECT(button), "clicked"
             , G_CALLBACK(copy_clock), modify_clock);
     /* -----------------------DELETE-------------------------------------- */
-    button = toolbar_append_button(toolbar, GTK_STOCK_DELETE
-            , _("delete this clock")); 
+    button = orage_toolbar_append_button (toolbar, "edit-delete",
+                                          _("delete this clock"), -1);
     g_signal_connect(G_OBJECT(button), "clicked"
             , G_CALLBACK(delete_clock), modify_clock);
 
     toolbar_append_separator(toolbar); 
     
     /* -----------------------MOVE FIRST---------------------------------- */
-    button = toolbar_append_button(toolbar, GTK_STOCK_GOTO_FIRST
-            , _("move this clock first")); 
-    g_signal_connect(G_OBJECT(button), "clicked"
-            , G_CALLBACK(move_clock), modify_clock);
+    button = orage_toolbar_append_button (toolbar, "go-first",
+                                          _("move this clock first"), -1);
+    g_signal_connect (G_OBJECT(button), "clicked", G_CALLBACK(move_clock_first),
+                      modify_clock);
     /* -----------------------MOVE BACK----------------------------------- */
-    button = toolbar_append_button(toolbar, GTK_STOCK_GO_BACK
-            , _("move this clock left")); 
-    g_signal_connect(G_OBJECT(button), "clicked"
-            , G_CALLBACK(move_clock), modify_clock);
+    button = orage_toolbar_append_button (toolbar, "go-previous",
+                                          _("move this clock left"), -1);
+    g_signal_connect (G_OBJECT(button), "clicked", G_CALLBACK(move_clock_back),
+                      modify_clock);
     /* -----------------------MOVE FORWARD-------------------------------- */
-    button = toolbar_append_button(toolbar, GTK_STOCK_GO_FORWARD
-            , _("move this clock right")); 
-    g_signal_connect(G_OBJECT(button), "clicked"
-            , G_CALLBACK(move_clock), modify_clock);
+    button = orage_toolbar_append_button (toolbar, "go-next",
+                                          _("move this clock right"), -1);
+    g_signal_connect (G_OBJECT(button), "clicked",
+                      G_CALLBACK(move_clock_forward), modify_clock);
     /* -----------------------MOVE LAST----------------------------------- */
-    button = toolbar_append_button(toolbar, GTK_STOCK_GOTO_LAST
-            , _("move this clock last")); 
-    g_signal_connect(G_OBJECT(button), "clicked"
-            , G_CALLBACK(move_clock), modify_clock);
+    button = orage_toolbar_append_button (toolbar, "go-last",
+                                          _("move this clock last"), -1);
+    g_signal_connect (G_OBJECT(button), "clicked", G_CALLBACK(move_clock_last),
+                      modify_clock);
 
     toolbar_append_separator(toolbar); 
     
     /* ---------------------QUIT------------------------------------------ */
-    button = toolbar_append_button(toolbar, "gtk-media-record"
-            , _("set the timezone of this clock to be local timezone"));
+    button = orage_toolbar_append_button (toolbar, "media-record",
+            _("set the timezone of this clock to be local timezone"), -1);
     g_signal_connect(G_OBJECT(button), "clicked"
             , G_CALLBACK(set_timezone_from_clock)
             , modify_clock);
 
-    button = toolbar_append_button(toolbar, GTK_STOCK_QUIT
-            , _("close window and exit")); 
+    button = orage_toolbar_append_button (toolbar, "application-exit",
+                                          _("close window and exit"), -1);
     g_signal_connect(G_OBJECT(button), "clicked"
             , G_CALLBACK(close_modify_clock_window)
             , modify_clock->window);
@@ -1071,23 +1097,23 @@ static void preferences_toolbar(GtkWidget *vbox, modify_struct *modify_default)
     toolbar = gtk_toolbar_new();
     gtk_grid_attach_next_to (GTK_GRID (vbox), toolbar, NULL, GTK_POS_TOP, 1, 1);
     /* -----------------------UPDATE-------------------------------------- */
-    button = toolbar_append_button(toolbar, GTK_STOCK_SAVE
-            , _("update preferences"));
+    button = orage_toolbar_append_button (toolbar, "document-save",
+                                          _("update preferences"), -1);
     g_signal_connect(G_OBJECT(button), "clicked"
             , G_CALLBACK(save_preferences), modify_default);
 
     /* -----------------------INSERT-------------------------------------- */
     toolbar_append_separator(toolbar);
-    button = toolbar_append_button(toolbar, GTK_STOCK_NEW
-            , _("add new empty clock")); 
+    button = orage_toolbar_append_button (toolbar, "document-new",
+                                          _("add new empty clock"), -1);
     modify_default->clock=NULL; /* used in add_clock */
     g_signal_connect(G_OBJECT(button), "clicked"
             , G_CALLBACK(add_clock), modify_default);
 
     /* ---------------------QUIT------------------------------------------ */
     toolbar_append_separator(toolbar);
-    button = toolbar_append_button(toolbar, GTK_STOCK_QUIT
-            , _("close window and exit"));
+    button = orage_toolbar_append_button (toolbar, "application-exit",
+                                          _("close window and exit"), -1);
     g_signal_connect(G_OBJECT(button), "clicked"
             , G_CALLBACK(close_preferences_window), modify_default->window);
 }
