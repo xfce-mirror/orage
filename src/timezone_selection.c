@@ -56,6 +56,8 @@
 #include "tz_zoneinfo_read.h"
 #include "timezone_selection.h"
 
+#define ORAGE_TRACE 0
+
 enum {
     LOCATION,
     LOCATION_ENG,
@@ -86,9 +88,9 @@ static GtkTreeStore *tz_button_create_store(gboolean details
             , G_TYPE_STRING, G_TYPE_STRING);
     g_strlcpy (area_old, "S T a R T", sizeof (area_old)); /* this never matches */
     tz_a = get_orage_timezones(details, check_ical ? 1 : 0);
-    /*
+#if 0
     g_print(P_N "number of timezones %d\n", tz_a.count);
-    */
+#endif
 #ifndef HAVE_LIBICAL
     /* Create special "area" for first level timezones, which do not have
      * any real area */
@@ -148,10 +150,10 @@ static GtkTreeStore *tz_button_create_store(gboolean details
         gtk_tree_store_append(store, &iter2, &iter1);
         offs_hour = tz_a.utc_offset[i] / (60*60);
         offs_min = abs((tz_a.utc_offset[i] - offs_hour * (60*60)) / 60);
-        /*
+#if 0
         if (offs_min)
             g_print(P_N " %s offset %d hour %d minutes %d\n", tz_a.city[i], tz_a.utc_offset[i], offs_hour, offs_min);
-        */
+#endif
         if (details && tz_a.next[i]) {
             next_offs_hour = tz_a.next_utc_offset[i] / (60*60);
             next_offs_min = abs((tz_a.next_utc_offset[i]
@@ -297,6 +299,10 @@ gboolean orage_timezone_button_clicked(GtkButton *button, GtkWindow *parent
     GtkTreeIter       iter;
     gboolean    changed = FALSE;
     gboolean    details = FALSE;
+    
+#if ORAGE_TRACE
+    g_debug (P_N);
+#endif
 
     store = tz_button_create_store(details, check_ical);
     tree = tz_button_create_view(details, store);
