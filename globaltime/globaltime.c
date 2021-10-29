@@ -512,8 +512,8 @@ static void init_hdr_button(void)
             , _("button 1 to change preferences \nbutton 2 to adjust time of clocks"));
     g_signal_connect(clocks.hdr_button, "button_press_event"
             , G_CALLBACK(preferences_button_pressed), NULL);
-    image = gtk_image_new_from_stock(GTK_STOCK_PREFERENCES
-            , GTK_ICON_SIZE_BUTTON);
+    image = gtk_image_new_from_icon_name ("preferences-system",
+                                          GTK_ICON_SIZE_BUTTON);
     gtk_container_add(GTK_CONTAINER(clocks.hdr_button), GTK_WIDGET(image));
     gtk_widget_show(image);
     gtk_widget_show(clocks.hdr_button);
