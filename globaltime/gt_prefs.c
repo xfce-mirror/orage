@@ -266,11 +266,11 @@ void init_attr(text_attr_struct *attr)
 {
     text_attr_struct *def_attrp = &clocks.clock_default_attr;
 
-    attr->clock_fg = g_new0(GdkColor,1);
+    attr->clock_fg = g_new0 (GdkRGBA, 1);
     *attr->clock_fg = *clocks.clock_default_attr.clock_fg;
     attr->clock_fg_modified = FALSE;
 
-    attr->clock_bg = g_new0(GdkColor,1);
+    attr->clock_bg = g_new0 (GdkRGBA, 1);
     *attr->clock_bg = *clocks.clock_default_attr.clock_bg;
     attr->clock_bg_modified = FALSE;
 
@@ -492,10 +492,10 @@ static void reset_time_underline(GtkWidget *widget, clock_struct *clockp)
     write_file();
 }
 
-static void set_color(GtkWidget *widget, GdkColor *color)
+static void set_color (GtkColorButton *color_button, GdkRGBA *color)
 {
-    gtk_color_button_get_color((GtkColorButton *)widget, color);
-    write_file();
+    gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (color_button), color);
+    write_file ();
 }
 
 static void set_sensitivity(GtkWidget *widget, GtkWidget *button)
@@ -718,8 +718,8 @@ static void create_parameter_formatting(GtkWidget *vbox
 {
     clock_struct *clockp = modify_clock->clock;
     text_attr_struct *attrp = &modify_clock->clock->clock_attr;
-    GdkColor *clock_fgp = modify_clock->clock->clock_attr.clock_fg;
-    GdkColor *clock_bgp = modify_clock->clock->clock_attr.clock_bg;
+    GdkRGBA *clock_fgp = modify_clock->clock->clock_attr.clock_fg;
+    GdkRGBA *clock_bgp = modify_clock->clock->clock_attr.clock_bg;
     GtkWidget *table;
     GtkWidget *label;
 
@@ -736,7 +736,7 @@ static void create_parameter_formatting(GtkWidget *vbox
     g_object_set (label, "xalign", 0.0, "yalign", 0.5, NULL);
 
     modify_clock->button_clock_bg = 
-            gtk_color_button_new_with_color(clock_bgp);
+            gtk_color_button_new_with_rgba (clock_bgp);
     gtk_widget_set_tooltip_text(modify_clock->button_clock_bg
             , _("Click to change background colour for clock"));
     g_signal_connect(G_OBJECT(modify_clock->button_clock_bg), "color-set"
@@ -768,7 +768,7 @@ static void create_parameter_formatting(GtkWidget *vbox
     gtk_grid_attach (GTK_GRID (table), label, 0, 1, 1, 1);
 
     modify_clock->button_clock_fg = 
-            gtk_color_button_new_with_color(clock_fgp);
+            gtk_color_button_new_with_rgba (clock_fgp);
     gtk_widget_set_tooltip_text(modify_clock->button_clock_fg
             , _("Click to change foreground colour for clock"));
     g_signal_connect(G_OBJECT(modify_clock->button_clock_fg), "color-set"
@@ -920,8 +920,8 @@ static void preferences_formatting(GtkWidget *vbox
 {
 
     text_attr_struct *attrp = &clocks.clock_default_attr;
-    GdkColor *clock_fgp = clocks.clock_default_attr.clock_fg;
-    GdkColor *clock_bgp = clocks.clock_default_attr.clock_bg;
+    GdkRGBA *clock_fgp = clocks.clock_default_attr.clock_fg;
+    GdkRGBA *clock_bgp = clocks.clock_default_attr.clock_bg;
     GtkWidget *table;
     GtkWidget *label;
 
@@ -938,7 +938,7 @@ static void preferences_formatting(GtkWidget *vbox
     gtk_grid_attach (GTK_GRID (table), label, 0, 0, 1, 1);
 
     modify_default->button_clock_bg = 
-            gtk_color_button_new_with_color(clock_bgp);
+            gtk_color_button_new_with_rgba (clock_bgp);
     gtk_widget_set_tooltip_text(modify_default->button_clock_bg
             , _("Click to change default background colour for clocks"));
     g_signal_connect(G_OBJECT(modify_default->button_clock_bg), "color-set"
@@ -970,7 +970,7 @@ static void preferences_formatting(GtkWidget *vbox
     gtk_grid_attach (GTK_GRID (table), label, 0, 1, 1, 1);
 
     modify_default->button_clock_fg = 
-            gtk_color_button_new_with_color(clock_fgp);
+            gtk_color_button_new_with_rgba (clock_fgp);
     gtk_widget_set_tooltip_text(modify_default->button_clock_fg
             , _("Click to change default text colour for clocks"));
     g_signal_connect(G_OBJECT(modify_default->button_clock_fg), "color-set"

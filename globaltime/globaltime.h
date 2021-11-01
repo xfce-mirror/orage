@@ -6,9 +6,9 @@
 
 typedef struct
 { /* clock name and time font settings */
-    GdkColor *clock_fg;
+    GdkRGBA *clock_fg;
     gboolean clock_fg_modified;
-    GdkColor *clock_bg;
+    GdkRGBA *clock_bg;
     gboolean clock_bg_modified;
     GString  *name_font;
     gboolean name_font_modified;

@@ -274,26 +274,30 @@ static void show_clock_format_clock(clock_struct *clockp)
 
 /*********** Clock background ***********/
     if (clockp->clock_attr.clock_bg_modified)
-        gtk_widget_modify_bg(clockp->clock_ebox, GTK_STATE_NORMAL
-                , clockp->clock_attr.clock_bg);
+        gtk_widget_override_background_color (clockp->clock_ebox,
+                                              GTK_STATE_FLAG_NORMAL,
+                                              clockp->clock_attr.clock_bg);
     else if (clocks.clock_default_attr.clock_bg_modified)
-        gtk_widget_modify_bg(clockp->clock_ebox, GTK_STATE_NORMAL
-                , clocks.clock_default_attr.clock_bg);
+        gtk_widget_override_background_color (clockp->clock_ebox,
+                                              GTK_STATE_FLAG_NORMAL,
+                                              clocks.clock_default_attr.clock_bg);
     else
-        gtk_widget_modify_bg(clockp->clock_ebox, GTK_STATE_NORMAL, NULL);
+        gtk_widget_override_background_color (clockp->clock_ebox,
+                                              GTK_STATE_FLAG_NORMAL,
+                                              NULL);
 
 /*********** Clock foreground ***********/
     if (clockp->clock_attr.clock_fg_modified) {
-        gtk_widget_modify_fg(clockp->name_label, GTK_STATE_NORMAL
-                , clockp->clock_attr.clock_fg);
-        gtk_widget_modify_fg(clockp->time_label, GTK_STATE_NORMAL
-                , clockp->clock_attr.clock_fg);
+        gtk_widget_override_color (clockp->name_label, GTK_STATE_FLAG_NORMAL,
+                                   clockp->clock_attr.clock_fg);
+        gtk_widget_override_color (clockp->time_label, GTK_STATE_FLAG_NORMAL,
+                                   clockp->clock_attr.clock_fg);
     }
     else if (clocks.clock_default_attr.clock_fg_modified) {
-        gtk_widget_modify_fg(clockp->name_label, GTK_STATE_NORMAL
-                , clocks.clock_default_attr.clock_fg);
-        gtk_widget_modify_fg(clockp->time_label, GTK_STATE_NORMAL
-                , clocks.clock_default_attr.clock_fg);
+        gtk_widget_override_color (clockp->name_label, GTK_STATE_FLAG_NORMAL,
+                                   clocks.clock_default_attr.clock_fg);
+        gtk_widget_override_color (clockp->time_label, GTK_STATE_FLAG_NORMAL,
+                                   clocks.clock_default_attr.clock_fg);
     }
     else {
         gtk_widget_modify_fg(clockp->time_label, GTK_STATE_NORMAL, NULL);
@@ -608,9 +612,11 @@ static void initialize_clocks(void)
                              NULL, GTK_POS_RIGHT, 1, 1);
     gtk_widget_show(clocks.clocks_hbox);
 
-    clocks.clock_default_attr.clock_fg = g_new0(GdkColor,1);
+    clocks.clock_default_attr.clock_fg = g_new0 (GdkRGBA, 1);
+    gdk_rgba_parse (clocks.clock_default_attr.clock_fg, "black");
     clocks.clock_default_attr.clock_fg_modified = FALSE;
-    clocks.clock_default_attr.clock_bg = g_new0(GdkColor,1);
+    clocks.clock_default_attr.clock_bg = g_new0 (GdkRGBA, 1);
+    gdk_rgba_parse (clocks.clock_default_attr.clock_bg, "white");
     clocks.clock_default_attr.clock_fg_modified = FALSE;
     clocks.clock_default_attr.name_font = g_string_new("");
     clocks.clock_default_attr.name_font_modified = FALSE;

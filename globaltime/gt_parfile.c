@@ -44,14 +44,15 @@ static void write_string(OrageRc *rc, gchar *prop, GString *string)
         orage_rc_put_str(rc, prop, string->str);
 }
 
-static void write_color(OrageRc *rc, gchar *prop, GdkColor *color)
+static void write_color (OrageRc *rc, const gchar *prop, const GdkRGBA *color)
 {
-    gchar tmp[100];
-
-    if (color) {
-        g_snprintf (tmp, sizeof (tmp), "%uR %uG %uB",
-                    color->red, color->green, color->blue);
-        orage_rc_put_str(rc, prop, tmp);
+    gchar *color_str;
+    
+    if (color)
+    {
+        color_str = gdk_rgba_to_string (color);
+        orage_rc_put_str (rc, prop, color_str);
+        g_free (color_str);
     }
 }
 
@@ -117,24 +118,18 @@ static gboolean read_string(OrageRc *rc, gchar *prop, GString *result)
     return(found);
 }
 
-static gboolean read_color(OrageRc *rc, gchar *prop, GdkColor **result)
+static gboolean read_color (OrageRc *rc, const gchar *prop, GdkRGBA **result)
 {
-    gchar *tmp;
+    gchar *color_str;
     gboolean found = FALSE;
-    unsigned int red, green, blue;
-
-    if (orage_rc_exists_item(rc, prop)) {
-        tmp = (gchar *)orage_rc_get_str(rc, prop, "");
-        /*
-        sscanf(tmp, "%uR %uG %uB", &(*result)->red, &(*result)->green
-                , &(*result)->blue);
-                */
-        sscanf(tmp, "%uR %uG %uB", &red, &green, &blue);
-        (*result)->red = red;
-        (*result)->green = green;
-        (*result)->blue = blue;
-        (*result)->pixel = 0;
+    
+    if (orage_rc_exists_item (rc, prop))
+    {
+        color_str = orage_rc_get_str (rc, prop, "#000000");
+        gdk_rgba_parse (*result, color_str);
         found = TRUE;
+        
+        g_free (color_str);
     }
     return(found);
 }
