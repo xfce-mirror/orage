@@ -18,6 +18,8 @@ EOF
   exit 1
 }
 
+mkdir -p m4
+
 XDT_AUTOGEN_REQUIRED_VERSION="4.16.0" exec xdt-autogen $@
 
 # vi:set ts=2 sw=2 et ai:
