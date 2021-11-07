@@ -638,10 +638,10 @@ static void initialize_clocks(void)
     clocks.clock_default_attr.time_underline_modified = FALSE;
     /* find default font */
     button = gtk_font_button_new();
-    g_string_assign(clocks.clock_default_attr.name_font
-            , gtk_font_button_get_font_name((GtkFontButton *)button));
-    g_string_assign(clocks.clock_default_attr.time_font
-            , clocks.clock_default_attr.name_font->str);
+    g_string_assign (clocks.clock_default_attr.name_font,
+                     gtk_font_chooser_get_font (GTK_FONT_CHOOSER (button)));
+    g_string_assign (clocks.clock_default_attr.time_font,
+                     clocks.clock_default_attr.name_font->str);
     g_object_ref_sink(button);
 
     g_signal_connect(G_OBJECT(clocks.window), "delete-event"

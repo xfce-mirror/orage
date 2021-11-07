@@ -467,11 +467,11 @@ static void ask_timezone(GtkButton *button, modify_struct *modify_clock)
     clocks.no_update = FALSE; 
 }
 
-static void set_font(GtkWidget *widget, GString *font)
+static void set_font (GtkWidget *widget, GString *font)
 {
-    g_string_assign(font
-            , gtk_font_button_get_font_name((GtkFontButton *)widget));
-    write_file();
+    g_string_assign (font,
+                     gtk_font_chooser_get_font (GTK_FONT_CHOOSER (widget)));
+    write_file ();
 }
 
 static void reset_name_underline(GtkWidget *widget, clock_struct *clockp)
