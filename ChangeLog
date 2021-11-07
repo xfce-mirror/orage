@@ -1,14 +1,16 @@
 Version 4.15.1 (DEVELOPEMENT VERSION NOT RELEASED):
-	* Fixed libbsd dependency: reverted libical strl* functions back to
-	  str* or changed orage functions from strl* to g_strl*.
-	* Automake changes: silent mode is now default
-	* Minimum autogen required version is 4.16.0
-	* Replaced GlobalTime background and foreground colours from GdkColor to GdkRGBA
-	  (old colours from GlobalTime configuration is not valid anymore)
+    * Fixed libbsd dependency: reverted libical strl* functions back to
+      str* or changed orage functions from strl* to g_strl*.
+    * Automake changes: silent mode is now default
+    * Minimum autogen required version is 4.16.0
+    * Ported GlobalTime to GTK3:
+        * Replaced GlobalTime background and foreground colours from GdkColor to
+          GdkRGBA (old colours from GlobalTime configuration is not valid
+          anymore)
 
 Version 4.15.0 (Thu Oct 7 21:38:06 2021 +0300):
-	* Most code ported to GTK3, tested only on FreeBSD. This is first public
-	  version with GTK3.
+    * Most code ported to GTK3, tested only on FreeBSD. This is first public
+      version with GTK3.
 
 commit df687eb2738bea3cbbd9765f3fc1fc563408a869
 Author: Juha Kautto <juha@xfce.org>

@@ -235,42 +235,52 @@ static void show_clock_format_time(clock_struct *clockp)
     }
 }
 
+static void gt_label_set_font (GtkLabel *label, const GString *font_str)
+{
+    PangoFontDescription *font;
+    PangoAttrList *attrlist;
+    PangoAttribute *attr;
+    
+    font = pango_font_description_from_string (font_str->str);
+    attr = pango_attr_font_desc_new (font);
+    pango_font_description_free (font);
+    attrlist = pango_attr_list_new ();
+    pango_attr_list_insert (attrlist, attr);
+    gtk_label_set_attributes (label, attrlist);
+    pango_attr_list_unref (attrlist);
+}
+
 static void show_clock_format_clock(clock_struct *clockp)
 {
     gchar tmp[100];
-    PangoFontDescription *font;
 
-/*********** Clock Name font ***********/
-    if (clockp->clock_attr.name_font_modified) {
-        font = pango_font_description_from_string(
-                clockp->clock_attr.name_font->str);
-        gtk_widget_override_font (clockp->name_label, font);
-        pango_font_description_free(font);
+    /*********** Clock Name font ***********/
+    if (clockp->clock_attr.name_font_modified)
+    {
+        gt_label_set_font (GTK_LABEL (clockp->name_label),
+                           clockp->clock_attr.name_font);
     }
-    else if (clocks.clock_default_attr.name_font_modified) {
-        font = pango_font_description_from_string(
-                clocks.clock_default_attr.name_font->str);
-        gtk_widget_override_font (clockp->name_label, font);
-        pango_font_description_free(font);
+    else if (clocks.clock_default_attr.name_font_modified)
+    {
+        gt_label_set_font (GTK_LABEL (clockp->name_label),
+                           clocks.clock_default_attr.name_font);
     }
-    else 
-        gtk_widget_override_font (clockp->name_label, NULL);
+    else
+        gtk_label_set_attributes (GTK_LABEL (clockp->name_label), NULL);
 
-/*********** Clock Time font ***********/
-    if (clockp->clock_attr.time_font_modified) {
-        font = pango_font_description_from_string(
-                clockp->clock_attr.time_font->str);
-        gtk_widget_override_font (clockp->time_label, font);
-        pango_font_description_free(font);
+    /*********** Clock Time font ***********/
+    if (clockp->clock_attr.time_font_modified)
+    {
+        gt_label_set_font (GTK_LABEL (clockp->time_label),
+                           clockp->clock_attr.time_font);
     }
-    else if (clocks.clock_default_attr.time_font_modified) {
-        font = pango_font_description_from_string(
-                clocks.clock_default_attr.time_font->str);
-        gtk_widget_override_font (clockp->time_label, font);
-        pango_font_description_free(font);
+    else if (clocks.clock_default_attr.time_font_modified)
+    {
+        gt_label_set_font (GTK_LABEL (clockp->time_label),
+                           clocks.clock_default_attr.time_font);
     }
-    else 
-        gtk_widget_modify_font(clockp->time_label, NULL);
+    else
+        gtk_label_set_attributes (GTK_LABEL (clockp->time_label), NULL);
 
 /*********** Clock background ***********/
     if (clockp->clock_attr.clock_bg_modified)
