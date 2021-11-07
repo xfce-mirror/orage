@@ -250,6 +250,16 @@ static void gt_label_set_font (GtkLabel *label, const GString *font_str)
     pango_attr_list_unref (attrlist);
 }
 
+static void gt_set_background_color (GtkWidget *widget, const GdkRGBA *color)
+{
+    gtk_widget_override_background_color (widget, GTK_STATE_FLAG_NORMAL, color);
+}
+
+static void gt_set_foreground_color (GtkWidget *widget, const GdkRGBA *color)
+{
+    gtk_widget_override_color (widget, GTK_STATE_FLAG_NORMAL, color);
+}
+
 static void show_clock_format_clock(clock_struct *clockp)
 {
     gchar tmp[100];
@@ -282,36 +292,39 @@ static void show_clock_format_clock(clock_struct *clockp)
     else
         gtk_label_set_attributes (GTK_LABEL (clockp->time_label), NULL);
 
-/*********** Clock background ***********/
+    /*********** Clock background ***********/
     if (clockp->clock_attr.clock_bg_modified)
-        gtk_widget_override_background_color (clockp->clock_ebox,
-                                              GTK_STATE_FLAG_NORMAL,
-                                              clockp->clock_attr.clock_bg);
+    {
+        gt_set_background_color (clockp->clock_ebox,
+                                 clockp->clock_attr.clock_bg);
+    }
     else if (clocks.clock_default_attr.clock_bg_modified)
-        gtk_widget_override_background_color (clockp->clock_ebox,
-                                              GTK_STATE_FLAG_NORMAL,
-                                              clocks.clock_default_attr.clock_bg);
+    {
+        gt_set_background_color (clockp->clock_ebox,
+                                 clocks.clock_default_attr.clock_bg);
+    }
     else
-        gtk_widget_override_background_color (clockp->clock_ebox,
-                                              GTK_STATE_FLAG_NORMAL,
-                                              NULL);
+        gt_set_background_color (clockp->clock_ebox, NULL);
 
-/*********** Clock foreground ***********/
-    if (clockp->clock_attr.clock_fg_modified) {
-        gtk_widget_override_color (clockp->name_label, GTK_STATE_FLAG_NORMAL,
-                                   clockp->clock_attr.clock_fg);
-        gtk_widget_override_color (clockp->time_label, GTK_STATE_FLAG_NORMAL,
-                                   clockp->clock_attr.clock_fg);
+    /*********** Clock foreground ***********/
+    if (clockp->clock_attr.clock_fg_modified)
+    {
+        gt_set_foreground_color (clockp->name_label,
+                                 clockp->clock_attr.clock_fg);
+        gt_set_foreground_color (clockp->time_label,
+                                 clockp->clock_attr.clock_fg);
     }
-    else if (clocks.clock_default_attr.clock_fg_modified) {
-        gtk_widget_override_color (clockp->name_label, GTK_STATE_FLAG_NORMAL,
-                                   clocks.clock_default_attr.clock_fg);
-        gtk_widget_override_color (clockp->time_label, GTK_STATE_FLAG_NORMAL,
-                                   clocks.clock_default_attr.clock_fg);
+    else if (clocks.clock_default_attr.clock_fg_modified)
+    {
+        gt_set_foreground_color (clockp->name_label, 
+                                 clocks.clock_default_attr.clock_fg);
+        gt_set_foreground_color (clockp->time_label,
+                                 clocks.clock_default_attr.clock_fg);
     }
-    else {
-        gtk_widget_modify_fg(clockp->time_label, GTK_STATE_NORMAL, NULL);
-        gtk_widget_modify_fg(clockp->name_label, GTK_STATE_NORMAL, NULL);
+    else
+    {
+        gt_set_foreground_color (clockp->time_label, NULL);
+        gt_set_foreground_color (clockp->name_label, NULL);
     }
 
 /*********** timezone tooltip ***********/
