@@ -252,12 +252,27 @@ static void gt_label_set_font (GtkLabel *label, const GString *font_str)
 
 static void gt_set_background_color (GtkWidget *widget, const GdkRGBA *color)
 {
+    /* Deprecation warnings is disabled, as it is not reasonable to change
+     * current implementation to CSS. But if widget colour changing through CSS
+     * is still needed, then the general idea is following:
+     * provider = Gtk.CssProvider()
+     * provider.load_from_data(some_css_fragment)
+     * widget.get_style_context().add_provider(provider,
+     *                          Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
+     * 
+     * Once you want to reset the widget's style, you call:
+     * widget.get_style_context().remove_provider(provider)
+     */
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gtk_widget_override_background_color (widget, GTK_STATE_FLAG_NORMAL, color);
+    G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void gt_set_foreground_color (GtkWidget *widget, const GdkRGBA *color)
 {
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gtk_widget_override_color (widget, GTK_STATE_FLAG_NORMAL, color);
+    G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void show_clock_format_clock(clock_struct *clockp)
