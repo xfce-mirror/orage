@@ -364,7 +364,7 @@ static void show_clock_format_clock(clock_struct *clockp)
 
 void show_clock(clock_struct *clockp, gint *pos)
 {
-    clockp->clock_hbox = gtk_hbox_new(FALSE, 0);
+    clockp->clock_hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
     gtk_box_pack_start(GTK_BOX(clocks.clocks_hbox), clockp->clock_hbox
                         , clocks.expand, clocks.expand, 0);
     if (*pos !=- 1) /* -1=to the end (default) */
@@ -645,7 +645,7 @@ static void initialize_clocks(void)
 
     init_hdr_button();
 
-    clocks.clocks_hbox = gtk_hbox_new(clocks.expand, 1);
+    clocks.clocks_hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 1);
     gtk_grid_attach_next_to (GTK_GRID (clocks.main_hbox), clocks.clocks_hbox,
                              NULL, GTK_POS_RIGHT, 1, 1);
     gtk_widget_show(clocks.clocks_hbox);
