@@ -12,11 +12,12 @@ SUBDIRS = $(LIBICAL_SUBDIR) \
 	  sounds	    \
 	  src		    \
 	  globaltime	    \
+          plugin            \
 	  tz_convert
 	
-# FIXME: plugin and panel-plugin are not ported to GTK3
+# FIXME: panel-plugin is not ported to GTK3
 
-DIST_SUBDIRS = $(SUBDIRS) plugin panel-plugin
+DIST_SUBDIRS = $(SUBDIRS) panel-plugin
 
 desktopdir = $(datadir)/applications
 desktop_in_files = xfcalendar.desktop.in
