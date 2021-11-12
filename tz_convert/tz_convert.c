@@ -100,12 +100,12 @@ unsigned char *begin_timechangetypes;
 /* timezone name table */
 unsigned char *begin_timezonenames;         
 
-unsigned long gmtcnt;
-unsigned long stdcnt;
-unsigned long leapcnt;
-unsigned long timecnt;  /* points when time changes */
-unsigned long typecnt;  /* table of different time changes = types */
-unsigned long charcnt;  /* length of timezone name table */
+int gmtcnt;
+int stdcnt;
+int leapcnt;
+int timecnt;  /* points when time changes */
+int typecnt;  /* table of different time changes = types */
+int charcnt;  /* length of timezone name table */
 
 struct ical_timezone_data {
     struct tm start_time;
@@ -123,22 +123,23 @@ struct rdate_prev_data {
 void read_file(const char *file_name, const struct stat *file_stat)
 {
     FILE *file;
+    const size_t file_size = file_stat->st_size;
 
     if (debug > 1) {
         printf("read_file: start\n");
-        printf("\n***** size of file %s is %d bytes *****\n\n", file_name
-                , (int)file_stat->st_size);
+        printf("\n***** size of file %s is %zu bytes *****\n\n", file_name
+                , file_size);
     }
-    in_buf = malloc(file_stat->st_size);
+    in_buf = malloc (file_size);
     in_head = in_buf;
-    in_tail = in_buf + file_stat->st_size - 1;
+    in_tail = in_buf + file_size - 1;
     file = fopen(file_name, "r");
     if (!file) {
         printf("read_file: file open failed (%s)\n", file_name);
         perror("\tfopen");
         return;
     }
-    if (fread(in_buf, 1, file_stat->st_size, file) < file_stat->st_size)
+    if (fread(in_buf, 1, file_size, file) < file_size)
         if (ferror(file)) {
             printf("read_file: file read failed (%s)\n", file_name);
             fclose(file);
@@ -174,22 +175,22 @@ int process_header()
     in_head += 16; /* reserved */
     gmtcnt  = get_long();
     if (debug > 2)
-        printf("gmtcnt=%lu \n", gmtcnt);
+        printf("gmtcnt=%d \n", gmtcnt);
     stdcnt  = get_long();
     if (debug > 2)
-        printf("stdcnt=%lu \n", stdcnt);
+        printf("stdcnt=%d \n", stdcnt);
     leapcnt = get_long();
     if (debug > 2)
-        printf("leapcnt=%lu \n", leapcnt);
+        printf("leapcnt=%d \n", leapcnt);
     timecnt = get_long();
     if (debug > 2)
-        printf("number of time changes: timecnt=%lu \n", timecnt);
+        printf("number of time changes: timecnt=%d \n", timecnt);
     typecnt = get_long();
     if (debug > 2)
-        printf("number of time change types: typecnt=%lu \n", typecnt);
+        printf("number of time change types: typecnt=%d \n", typecnt);
     charcnt = get_long();
     if (debug > 2)
-        printf("lenght of different timezone names table: charcnt=%lu \n"
+        printf("lenght of different timezone names table: charcnt=%d \n"
                 , charcnt);
     return(0);
 }
@@ -1113,7 +1114,7 @@ void write_parameters(const char *par_file_name)
     len = in_file_base_offset + strlen("zoneinfo");
     if (in_file[len-1] == '/')
         len--; /* remove trailing / */
-    if (len <= strlen(in_file)) {
+    if (len <= (int)strlen(in_file)) {
         fwrite(in_file, 1, len, par_file);
     }
     else {
@@ -1362,7 +1363,9 @@ void add_zone_tabs()
     char *ical_zone_buf, *line_end, *buf;
     int offset; /* offset to next timezone in libical zones.tab */
     int before; /* current timezone appears before ours in zones.tab */
-    int len = strlen(timezone_name), buf_len;
+    size_t file_size;
+    size_t buf_len;
+    size_t len = strlen (timezone_name);
 
     if (debug > 1)
         printf("add_zone_tabs: start\n");
@@ -1394,8 +1397,9 @@ void add_zone_tabs()
         return;
     }
 
-    ical_zone_buf = malloc(ical_zone_stat.st_size+1);
-    if ((fread(ical_zone_buf, 1, ical_zone_stat.st_size, ical_zone_tab) < ical_zone_stat.st_size)
+    file_size = ical_zone_stat.st_size;
+    ical_zone_buf = malloc (file_size + 1);
+    if ((fread(ical_zone_buf, 1, file_size, ical_zone_tab) < file_size)
     && (ferror(ical_zone_tab))) {
         printf("add_zone_tabs: error reading (%s).\n", ical_zone);
         perror("\tfread");
@@ -1403,7 +1407,7 @@ void add_zone_tabs()
         fclose(ical_zone_tab);
         return;
     }
-    ical_zone_buf[ical_zone_stat.st_size] = 0; /* end with null */
+    ical_zone_buf[file_size] = 0; /* end with null */
     if (strstr(ical_zone_buf, timezone_name)) {
         if (debug > 1)
             printf("add_zone_tabs: timezone exists already, returning.\n");
