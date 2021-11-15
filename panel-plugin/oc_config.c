@@ -144,6 +144,8 @@ static gboolean oc_line_changed(GtkWidget *entry, GdkEventKey *key
         , GString *data)
 {
     g_string_assign(data, gtk_entry_get_text(GTK_ENTRY(entry)));
+    
+    (void)key;
 
     return(FALSE);
 }
@@ -177,6 +179,8 @@ static void oc_new_line(GtkToolButton *toolbutton, ClockLine *line)
     oc_fg_set(clock);
 
     oc_recreate_properties_options(clock);
+    
+    (void)toolbutton;
 }
 
 static void oc_delete_line(GtkToolButton *toolbutton, ClockLine *line)
@@ -191,6 +195,8 @@ static void oc_delete_line(GtkToolButton *toolbutton, ClockLine *line)
     g_free(line);
 
     oc_recreate_properties_options(clock);
+    
+    (void)toolbutton;
 }
 
 static void oc_move_up_line(GtkToolButton *toolbutton, ClockLine *line)
@@ -205,6 +211,8 @@ static void oc_move_up_line(GtkToolButton *toolbutton, ClockLine *line)
     clock->lines = g_list_insert(clock->lines, line, pos);
 
     oc_recreate_properties_options(clock);
+    
+    (void)toolbutton;
 }
 
 static void oc_move_down_line(GtkToolButton *toolbutton, ClockLine *line)
@@ -222,6 +230,8 @@ static void oc_move_down_line(GtkToolButton *toolbutton, ClockLine *line)
     clock->lines = g_list_insert(clock->lines, line, pos);
 
     oc_recreate_properties_options(clock);
+    
+    (void)toolbutton;
 }
 
 static void oc_table_add(GtkWidget *table, GtkWidget *widget, int col, int row)
@@ -466,6 +476,8 @@ void oc_instructions(GtkWidget *dlg, Clock *clock)
     label = gtk_label_new(_("This program uses strftime function to get time.\nUse any valid code to get time in the format you prefer.\nSome common codes are:\n\t%A = weekday\t\t\t%B = month\n\t%c = date & time\t\t%R = hour & minute\n\t%V = week number\t\t%Z = timezone in use\n\t%H = hours \t\t\t\t%M = minute\n\t%X = local time\t\t\t%x = local date"));
     gtk_misc_set_alignment(GTK_MISC(label), 0.0f, 0.0f);
     gtk_box_pack_start(GTK_BOX(hbox), label, TRUE, TRUE, 0);
+    
+    (void)clock;
 }
 
 static void oc_dialog_response(GtkWidget *dlg, int response, Clock *clock)
@@ -476,6 +488,8 @@ static void oc_dialog_response(GtkWidget *dlg, int response, Clock *clock)
     xfce_panel_plugin_unblock_menu(clock->plugin);
     oc_write_rc_file(clock->plugin, clock);
     oc_init_timer(clock);
+    
+    (void)response;
 }
 
 void oc_properties_dialog(XfcePanelPlugin *plugin, Clock *clock)
