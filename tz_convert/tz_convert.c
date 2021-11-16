@@ -348,9 +348,9 @@ void create_backup_file(char *out_file)
     backup_out_file_name_len = out_file_name_len + backup_ending_len;
 
     backup_out_file = malloc(backup_out_file_name_len + 1);
-    strlcpy(backup_out_file, out_file, backup_out_file_name_len + 1);
+    strncpy(backup_out_file, out_file, backup_out_file_name_len + 1);
     backup_out_file[out_file_name_len] = '\0';
-    strlcat(backup_out_file, backup_ending, backup_out_file_name_len + 1);
+    strncat(backup_out_file, backup_ending, backup_out_file_name_len + 1);
 
     if (rename(out_file, backup_out_file)) {
         printf("Error creating backup file %s:\n", backup_out_file);
@@ -401,7 +401,7 @@ int create_ical_file(const char *in_file_name)
         out_file = malloc(out_file_name_len + 1);
         strncpy(out_file, &in_file_name[in_file_base_offset], in_file_name_len);
         out_file[in_file_name_len] = '\0';
-        strlcat(out_file, ical_ending, out_file_name_len + 1);
+        strncat(out_file, ical_ending, out_file_name_len + 1);
 
         /* FIXME: it is possible that in_timezone_name and timezone_name
          * do not get any value! Move them outside of this if */
