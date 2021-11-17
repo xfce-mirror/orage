@@ -38,6 +38,7 @@
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4panel/libxfce4panel.h>
 
+#include "../globaltime/globaltime.h"
 #include "../src/functions.h"
 #include "xfce4-orageclock-plugin.h"
 
@@ -353,12 +354,12 @@ static gboolean popup_program(GtkWidget *widget, gchar *program, Clock *clock
     gchar *check, *popup; /* atom names to use */
 
     if (strcmp(program, "orage") == 0) {
-        check = "_XFCE_CALENDAR_RUNNING";
-        popup = "_XFCE_CALENDAR_TOGGLE_HERE";
+        check = CALENDAR_RUNNING;
+        popup = CALENDAR_TOGGLE_EVENT;
     }
     else if (strcmp(program, "globaltime") == 0) {
-        check = "_XFCE_GLOBALTIME_RUNNING";
-        popup = "_XFCE_GLOBALTIME_TOGGLE_HERE";
+        check = GLOBALTIME_RUNNING;
+        popup = GLOBALTIME_TOGGLE;
     }
     else {
         g_warning("unknown program to start %s", program);

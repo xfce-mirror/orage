@@ -61,7 +61,6 @@
 #include <dbus/dbus-glib-lowlevel.h>
 #endif
 
-#define CALENDAR_TOGGLE_EVENT "_XFCE_CALENDAR_TOGGLE_HERE"
 #define CALENDAR_RAISE_EVENT "_XFCE_CALENDAR_RAISE"
 #define CALENDAR_PREFERENCES_EVENT "_XFCE_CALENDAR_PREFERENCES"
 
@@ -627,7 +626,7 @@ int main(int argc, char *argv[])
     gtk_init(&argc, &argv);
     register_css_provider ();
 
-    atom_alive = gdk_atom_intern("_XFCE_CALENDAR_RUNNING", FALSE);
+    atom_alive = gdk_atom_intern (CALENDAR_RUNNING, FALSE);
     running = check_orage_alive();
     if (process_args(argc, argv, running, initialized)) 
         return(EXIT_SUCCESS);
