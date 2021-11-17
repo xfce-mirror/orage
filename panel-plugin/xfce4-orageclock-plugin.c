@@ -32,7 +32,7 @@
 
 #include <glib.h>
 #include <gtk/gtk.h>
-#include <gdk/gdkevents.h>
+/* #include <gdk/gdkevents.h> */
 #include <gdk/gdkx.h>
 
 #include <libxfce4util/libxfce4util.h>
@@ -345,10 +345,11 @@ static void oc_update_size(Clock *clock, int size)
 static gboolean popup_program(GtkWidget *widget, gchar *program, Clock *clock
         , guint event_time)
 {
+    XEvent xevent;
     GdkAtom atom;
     Window xwindow;
+    Display *display;
     GError *error = NULL;
-    GdkEventClient gev;
     gchar *check, *popup; /* atom names to use */
 
     if (strcmp(program, "orage") == 0) {
@@ -365,23 +366,29 @@ static gboolean popup_program(GtkWidget *widget, gchar *program, Clock *clock
     }
 
     /* send message to program to check if it is running */
-    atom = gdk_atom_intern(check, FALSE);
-    if ((xwindow = XGetSelectionOwner(GDK_DISPLAY(),
-            gdk_x11_atom_to_xatom(atom))) != None) { /* yes, then toggle */
-        gev.type = GDK_CLIENT_EVENT;
-        gev.window = widget->window;
-        gev.send_event = TRUE;
-        gev.message_type = gdk_atom_intern(popup, FALSE);
-        gev.data_format = 8;
-
-        if (!gdk_event_send_client_message((GdkEvent *) &gev,
-                (GdkNativeWindow)xwindow)) 
-             g_message("%s: send message to %s failed", OC_NAME, program);
-        gdk_flush();
-
-        return(TRUE);
+    atom = gdk_atom_intern (check, FALSE);
+    display = gdk_x11_get_default_xdisplay ();
+    xwindow = XGetSelectionOwner (display, gdk_x11_atom_to_xatom (atom));
+    
+    if (xwindow != None)
+    {
+        /* yes, then toggle */
+        xevent.xclient.type = ClientMessage;
+        xevent.xclient.format = 8;
+        xevent.xclient.display = display;
+        xevent.xclient.window = xwindow;
+        xevent.xclient.send_event = TRUE;
+        xevent.xclient.message_type = XInternAtom (display, popup, FALSE);
+        
+        if (!XSendEvent (display, xwindow, FALSE, NoEventMask, &xevent))
+            g_warning ("%s: send message to %s failed", OC_NAME, program);
+        
+        (void)XFlush (display);
+        return TRUE;
     }
-    else { /* not running, let's try to start it. Need to reset TZ! */
+    else
+    {
+        /* not running, let's try to start it. Need to reset TZ! */
         static guint prev_event_time = 0; /* prevents double start (BUG 4096) */
 
         if (prev_event_time && ((event_time - prev_event_time) < 1000)) {

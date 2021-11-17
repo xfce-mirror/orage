@@ -242,7 +242,7 @@ static void oc_table_add(GtkWidget *table, GtkWidget *widget, int col, int row)
 
 static void oc_properties_appearance(GtkWidget *dlg, Clock *clock)
 {
-    GtkWidget *frame, *cb, *color, *sb;
+    GtkWidget *frame, *cb, *color, *sb, *vbox;
     GdkColor def_fg, def_bg;
     GtkStyle *def_style;
     GtkWidget *table;
@@ -255,9 +255,11 @@ static void oc_properties_appearance(GtkWidget *dlg, Clock *clock)
     gtk_table_set_row_spacings(GTK_TABLE(table), 6);
     gtk_table_set_col_spacings(GTK_TABLE(table), 6);
     
-    frame = orage_create_framebox_with_content(_("Appearance"), table);
+    frame = orage_create_framebox_with_content(_("Appearance"), GTK_SHADOW_NONE,
+                                               table);
     gtk_container_set_border_width(GTK_CONTAINER(frame), 6);
-    gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dlg)->vbox), frame, FALSE, FALSE, 0);
+    vbox = gtk_dialog_get_content_area(GTK_DIALOG(dlg));
+    gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
     
     def_style = gtk_widget_get_default_style();
     def_fg = def_style->fg[GTK_STATE_NORMAL];
@@ -345,7 +347,7 @@ void oc_properties_options(GtkWidget *dlg, Clock *clock)
     GtkWidget *frame, *cb, *label, *entry, *font, *button;
     GtkStyle *def_style;
     gchar *def_font, tmp[100];
-    GtkWidget *table, *toolbar;
+    GtkWidget *table, *toolbar, *vbox;
     GtkToolItem *tool_button;
     gint line_cnt, cur_line;
     ClockLine *line;
@@ -357,12 +359,14 @@ void oc_properties_options(GtkWidget *dlg, Clock *clock)
     gtk_table_set_row_spacings(GTK_TABLE(table), 6);
     gtk_table_set_col_spacings(GTK_TABLE(table), 6);
 
-    frame = orage_create_framebox_with_content(_("Clock Options"), table);
+    frame = orage_create_framebox_with_content(_("Clock Options"),
+                                               GTK_SHADOW_NONE, table);
     gtk_container_set_border_width(GTK_CONTAINER(frame), 6);
-    gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dlg)->vbox), frame, FALSE, FALSE, 0);
+    vbox = gtk_dialog_get_content_area(GTK_DIALOG(dlg));
+    gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
     /* we sometimes call this function again, so we need to put it to the 
        correct position */
-    gtk_box_reorder_child(GTK_BOX(GTK_DIALOG(dlg)->vbox), frame, 2);
+    gtk_box_reorder_child(GTK_BOX(vbox), frame, 2);
     /* this is needed when we restructure this frame */
     g_object_set_data(G_OBJECT(clock->plugin), "properties_frame", frame);
 
@@ -463,11 +467,12 @@ void oc_properties_options(GtkWidget *dlg, Clock *clock)
 
 void oc_instructions(GtkWidget *dlg, Clock *clock)
 {
-    GtkWidget *hbox, *label, *image;
+    GtkWidget *hbox, *vbox, *label, *image;
 
     /* Instructions */
     hbox = gtk_hbox_new(FALSE, 0);
-    gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dlg)->vbox), hbox, FALSE, FALSE, 6);
+    vbox = gtk_dialog_get_content_area(GTK_DIALOG(dlg));
+    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 6);
 
     image = gtk_image_new_from_stock(GTK_STOCK_DIALOG_INFO, GTK_ICON_SIZE_DND);
     gtk_misc_set_alignment(GTK_MISC(image), 0.5f, 0.0f);
@@ -505,7 +510,7 @@ void oc_properties_dialog(XfcePanelPlugin *plugin, Clock *clock)
     dlg = gtk_dialog_new_with_buttons(_("Orage clock Preferences"), 
             GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(plugin))),
             GTK_DIALOG_DESTROY_WITH_PARENT |
-            GTK_DIALOG_NO_SEPARATOR,
+            GTK_UI_MANAGER_SEPARATOR,
             GTK_STOCK_CLOSE, GTK_RESPONSE_OK,
             NULL);
     

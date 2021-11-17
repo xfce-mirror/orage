@@ -279,6 +279,7 @@ gboolean orage_timezone_button_clicked(GtkButton *button, GtkWindow *parent
     GtkWidget *tree;
     GtkWidget *window;
     GtkWidget *sw;
+    GtkWidget *vbox;
     int result;
     char *loc = NULL, *loc_eng = NULL;
     GtkTreeSelection *sel;
@@ -311,7 +312,8 @@ gboolean orage_timezone_button_clicked(GtkButton *button, GtkWindow *parent
                 , NULL);
     sw = gtk_scrolled_window_new(NULL, NULL);
     gtk_container_add(GTK_CONTAINER(sw), tree);
-    gtk_box_pack_start(GTK_BOX(GTK_DIALOG(window)->vbox), sw, TRUE, TRUE, 0);
+    vbox = gtk_dialog_get_content_area(GTK_DIALOG(window));
+    gtk_box_pack_start(GTK_BOX(vbox), sw, TRUE, TRUE, 0);
     gtk_window_set_default_size(GTK_WINDOW(window), 750, 500);
 
     gtk_widget_show_all(window);
