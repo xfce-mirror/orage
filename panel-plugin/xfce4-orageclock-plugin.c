@@ -37,6 +37,7 @@
 
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4panel/libxfce4panel.h>
+#include <libxfce4panel/xfce-panel-plugin-provider.h>
 
 #include "../globaltime/globaltime.h"
 #include "../src/functions.h"
@@ -83,7 +84,7 @@ void oc_line_font_set(ClockLine *line)
         gtk_widget_override_font (line->label, NULL);
 }
 
-void oc_line_rotate(Clock *clock, ClockLine *line)
+void oc_line_rotate(OragePlugin *clock, ClockLine *line)
 {
     switch (clock->rotation) {
         case 0:
@@ -98,7 +99,7 @@ void oc_line_rotate(Clock *clock, ClockLine *line)
     }
 }
 
-void oc_set_line(Clock *clock, ClockLine *clock_line, int pos)
+void oc_set_line(OragePlugin *clock, ClockLine *clock_line, int pos)
 {
     clock_line->label = gtk_label_new("");
     gtk_box_pack_start(GTK_BOX(clock->mbox), clock_line->label
@@ -112,7 +113,7 @@ void oc_set_line(Clock *clock, ClockLine *clock_line, int pos)
     */
 }
 
-static void oc_set_lines_to_panel(Clock *clock)
+static void oc_set_lines_to_panel(OragePlugin *clock)
 {
     ClockLine *clock_line;
     GList   *tmp_list;
@@ -134,7 +135,7 @@ static void oc_set_lines_to_panel(Clock *clock)
     }
 }
 
-void oc_reorganize_lines(Clock *clock)
+void oc_reorganize_lines(OragePlugin *clock)
 {
     /* let's just do this easily as it is very seldom called: 
        delete and recreate lines */
@@ -144,18 +145,22 @@ void oc_reorganize_lines(Clock *clock)
     oc_size_set(clock);
 }
 
-static void oc_tooltip_set(Clock *clock)
+static void oc_tooltip_set(OragePlugin *clock)
 {
     char res[OC_MAX_LINE_LENGTH-1];
 
     oc_utf8_strftime(res, sizeof(res), clock->tooltip_data->str, &clock->now);
     if (strcmp(res,  clock->tooltip_prev)) {
+#if 0
         gtk_tooltips_set_tip(clock->tips, GTK_WIDGET(clock->plugin),res, NULL);
+#else
+#warning "TODO: check me"
+#endif
         g_strlcpy (clock->tooltip_prev, res, sizeof (clock->tooltip_prev));
     }
 }
 
-static gboolean oc_get_time(Clock *clock)
+static gboolean oc_get_time(OragePlugin *clock)
 {
     time_t  t;
     char    res[OC_MAX_LINE_LENGTH-1];
@@ -186,7 +191,7 @@ static gboolean oc_get_time(Clock *clock)
     return(TRUE);
 }
 
-static gboolean oc_get_time_and_tune(Clock *clock)
+static gboolean oc_get_time_and_tune(OragePlugin *clock)
 {
     oc_get_time(clock);
     if (clock->now.tm_sec > 1) {
@@ -200,7 +205,7 @@ static gboolean oc_get_time_and_tune(Clock *clock)
     return(TRUE);
 }
 
-static gboolean oc_get_time_delay(Clock *clock)
+static gboolean oc_get_time_delay(OragePlugin *clock)
 {
     oc_get_time(clock); /* update clock */
     /* now we really start the clock */
@@ -209,7 +214,7 @@ static gboolean oc_get_time_delay(Clock *clock)
     return(FALSE); /* this is one time only timer */
 }
 
-void oc_start_timer(Clock *clock)
+void oc_start_timer(OragePlugin *clock)
 {
     gint delay_time; /* this is used to set the clock start time correct */
 
@@ -245,7 +250,7 @@ void oc_start_timer(Clock *clock)
     }
 }
 
-gboolean oc_check_if_same(Clock *clock, int diff)
+gboolean oc_check_if_same(OragePlugin *clock, int diff)
 {
     /* we compare if clock would change after diff seconds */
     /* instead of waiting for the time to really pass, we just move the clock
@@ -303,7 +308,7 @@ gboolean oc_check_if_same(Clock *clock, int diff)
     return(same_time);
 }
 
-void oc_tune_interval(Clock *clock)
+void oc_tune_interval(OragePlugin *clock)
 {
     /* check if clock changes after 2 secs */
     if (oc_check_if_same(clock, 2)) { /* Continue checking */
@@ -323,7 +328,7 @@ void oc_tune_interval(Clock *clock)
     }
 }
 
-void oc_init_timer(Clock *clock)
+void oc_init_timer(OragePlugin *clock)
 {
     /* Fix for bug 7232. Need to make sure timezone is correct. */
     tzset(); 
@@ -333,7 +338,7 @@ void oc_init_timer(Clock *clock)
     oc_start_timer(clock);
 }
 
-static void oc_update_size(Clock *clock, int size)
+static void oc_update_size(OragePlugin *clock, int size)
 {
     if (size > 26) {
         gtk_container_set_border_width(GTK_CONTAINER(clock->frame), 2);
@@ -343,7 +348,7 @@ static void oc_update_size(Clock *clock, int size)
     }
 }
 
-static gboolean popup_program(GtkWidget *widget, gchar *program, Clock *clock
+static gboolean popup_program(GtkWidget *widget, gchar *program, OragePlugin *clock
         , guint event_time)
 {
     XEvent xevent;
@@ -420,7 +425,7 @@ static gboolean popup_program(GtkWidget *widget, gchar *program, Clock *clock
 }
 
 static gboolean on_button_press_event_cb(GtkWidget *widget
-        , GdkEventButton *event, Clock *clock)
+        , GdkEventButton *event, OragePlugin *clock)
 {
     /* Fix for bug 7232. Need to make sure timezone is correct. */
     tzset(); 
@@ -442,7 +447,7 @@ static gboolean on_button_press_event_cb(GtkWidget *widget
 
 /* Interface Implementation */
 
-static gboolean oc_set_size(XfcePanelPlugin *plugin, int size, Clock *clock)
+static gboolean oc_set_size(XfcePanelPlugin *plugin, int size, OragePlugin *clock)
 {
     oc_update_size(clock, size);
     if (clock->first_call) {
@@ -465,7 +470,7 @@ static gboolean oc_set_size(XfcePanelPlugin *plugin, int size, Clock *clock)
     return(TRUE);
 }
 
-static void oc_free_data(XfcePanelPlugin *plugin, Clock *clock)
+static void oc_free_data(XfcePanelPlugin *plugin, OragePlugin *clock)
 {
     GtkWidget *dlg = g_object_get_data(G_OBJECT(plugin), "dialog");
 
@@ -500,7 +505,7 @@ static GdkColor oc_rc_read_color(XfceRc *rc, char *par, char *def)
     return(color);
 }
 
-ClockLine * oc_add_new_line(Clock *clock, const char *data, const char *font, int pos)
+ClockLine * oc_add_new_line(OragePlugin *clock, const char *data, const char *font, int pos)
 {
     ClockLine *clock_line = g_new0(ClockLine, 1);
 
@@ -512,7 +517,7 @@ ClockLine * oc_add_new_line(Clock *clock, const char *data, const char *font, in
     return(clock_line);
 }
 
-static void oc_read_rc_file(XfcePanelPlugin *plugin, Clock *clock)
+static void oc_read_rc_file(XfcePanelPlugin *plugin, OragePlugin *clock)
 {
     gchar  *file;
     XfceRc *rc;
@@ -579,7 +584,7 @@ static void oc_read_rc_file(XfcePanelPlugin *plugin, Clock *clock)
     xfce_rc_close(rc);
 }
 
-void oc_write_rc_file(XfcePanelPlugin *plugin, Clock *clock)
+void oc_write_rc_file(XfcePanelPlugin *plugin, OragePlugin *clock)
 {
     gchar  *file;
     XfceRc *rc;
@@ -666,12 +671,16 @@ void oc_write_rc_file(XfcePanelPlugin *plugin, Clock *clock)
 }
 
 /* Create widgets and connect to signals */
-Clock *orage_oc_new(XfcePanelPlugin *plugin)
+OragePlugin *orage_oc_new(XfcePanelPlugin *plugin)
 {
-    Clock *clock = g_new0(Clock, 1);
+    OragePlugin *clock = g_new0(OragePlugin, 1);
 
     clock->first_call = TRUE; /* this is starting point */
+#if 0
     clock->plugin = plugin;
+#else
+#warning "TODO: check me"
+#endif
 
     clock->ebox = gtk_event_box_new();
     gtk_widget_show(clock->ebox);
@@ -716,13 +725,13 @@ Clock *orage_oc_new(XfcePanelPlugin *plugin)
     return(clock);
 }
 
-void oc_show_frame_set(Clock *clock)
+void oc_show_frame_set(OragePlugin *clock)
 {
     gtk_frame_set_shadow_type(GTK_FRAME(clock->frame)
             , clock->show_frame ? GTK_SHADOW_IN : GTK_SHADOW_NONE);
 }
 
-void oc_fg_set(Clock *clock)
+void oc_fg_set(OragePlugin *clock)
 {
     GdkColor *fg = NULL;
     ClockLine *line;
@@ -739,7 +748,7 @@ void oc_fg_set(Clock *clock)
     }
 }
 
-void oc_bg_set(Clock *clock)
+void oc_bg_set(OragePlugin *clock)
 {
     GdkColor *bg = NULL;
 
@@ -749,7 +758,7 @@ void oc_bg_set(Clock *clock)
     gtk_widget_modify_bg(clock->ebox, GTK_STATE_NORMAL, bg);
 }
 
-void oc_timezone_set(Clock *clock)
+void oc_timezone_set(OragePlugin *clock)
 {
     if ((clock->timezone->str != NULL) && (clock->timezone->len > 0)) {
         /* user has set timezone, so let's set TZ */
@@ -764,7 +773,7 @@ void oc_timezone_set(Clock *clock)
     tzset();
 }
 
-void oc_size_set(Clock *clock)
+void oc_size_set(OragePlugin *clock)
 {
     gint w, h;
 
@@ -773,9 +782,9 @@ void oc_size_set(Clock *clock)
     gtk_widget_set_size_request(clock->mbox, w, h);
 }
 
-static void oc_construct(XfcePanelPlugin *plugin)
+void oc_construct(XfcePanelPlugin *plugin)
 {
-    Clock *clock;
+    OragePlugin *clock;
 
     xfce_textdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 
@@ -815,12 +824,85 @@ static void oc_construct(XfcePanelPlugin *plugin)
     g_signal_connect(plugin, "save", 
             G_CALLBACK(oc_write_rc_file), clock);
 
-/* callback for calendar and globaltime popup */
+    /* callback for calendar and globaltime popup */
     g_signal_connect(clock->ebox, "button-press-event",
             G_CALLBACK(on_button_press_event_cb), clock);
 }
 
+static void orage_plugin_class_init (OragePluginClass *klass)
+{
+  XfcePanelPluginClass *plugin_class;
+#if 0
+  GObjectClass         *gobject_class;
+  GtkWidgetClass       *widget_class;
+
+  gobject_class = G_OBJECT_CLASS (klass);
+  gobject_class->set_property = separator_plugin_set_property;
+  gobject_class->get_property = separator_plugin_get_property;
+
+  widget_class = GTK_WIDGET_CLASS (klass);
+  widget_class->draw = separator_plugin_draw;
+#endif
+
+  plugin_class = XFCE_PANEL_PLUGIN_CLASS (klass);
+#if 0
+  plugin_class->construct = separator_plugin_construct;
+#endif
+  plugin_class->construct = oc_construct;
+#if 0
+  plugin_class->size_changed = separator_plugin_size_changed;
+  plugin_class->configure_plugin = separator_plugin_configure_plugin;
+  plugin_class->orientation_changed = separator_plugin_orientation_changed;
+
+  g_object_class_install_property (gobject_class,
+                                   PROP_STYLE,
+                                   g_param_spec_uint ("style",
+                                                      NULL, NULL,
+                                                      SEPARATOR_PLUGIN_STYLE_MIN,
+                                                      SEPARATOR_PLUGIN_STYLE_MAX,
+                                                      SEPARATOR_PLUGIN_STYLE_DEFAULT,
+                                                      G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+
+  g_object_class_install_property (gobject_class,
+                                   PROP_EXPAND,
+                                   g_param_spec_boolean ("expand",
+                                                          NULL, NULL,
+                                                          FALSE,
+                                                          G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+#endif
+}
+
+static void orage_plugin_init (OragePlugin *plugin)
+{
+}
+
+static void orage_plugin_construct (XfcePanelPlugin *panel_plugin)
+{
+  OragePlugin     *plugin = XFCE_ORAGE_PLUGIN (panel_plugin);
+#if 0
+  const PanelProperty  properties[] =
+  {
+    { NULL }
+  };
+#endif
+  /* show the properties dialog */
+  xfce_panel_plugin_menu_show_configure (XFCE_PANEL_PLUGIN (plugin));
+
+  /* connect all properties */
+  // PANEL_UTILS_LINK_4UI
+#if 0
+  panel_properties_bind (NULL, G_OBJECT (plugin),
+                         xfce_panel_plugin_get_property_base (panel_plugin),
+                         properties, FALSE);
+#endif
+
+  /* make sure the plugin is drawn */
+  gtk_widget_queue_draw (GTK_WIDGET (panel_plugin));
+}
+
 /* Register with the panel */
-
+#if 1
+XFCE_PANEL_DEFINE_PLUGIN (OragePlugin, oc_construct)
+#else   
 XFCE_PANEL_PLUGIN_REGISTER(oc_construct);
-
+#endif

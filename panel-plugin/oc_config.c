@@ -42,67 +42,67 @@
 #include "timezone_selection.h"
 
 
-void oc_properties_options(GtkWidget *dlg, Clock *clock);
+void oc_properties_options(GtkWidget *dlg, OragePlugin *clock);
 
 /* -------------------------------------------------------------------- *
  *                        Configuration Dialog                          *
  * -------------------------------------------------------------------- */
 
-static void oc_show_frame_toggled(GtkToggleButton *cb, Clock *clock)
+static void oc_show_frame_toggled(GtkToggleButton *cb, OragePlugin *clock)
 {
     clock->show_frame = gtk_toggle_button_get_active(cb);
     oc_show_frame_set(clock);
 }
 
-static void oc_set_fg_toggled(GtkToggleButton *cb, Clock *clock)
+static void oc_set_fg_toggled(GtkToggleButton *cb, OragePlugin *clock)
 {
     clock->fg_set = gtk_toggle_button_get_active(cb);
     oc_fg_set(clock);
 }
 
-static void oc_fg_color_changed(GtkWidget *widget, Clock *clock)
+static void oc_fg_color_changed(GtkWidget *widget, OragePlugin *clock)
 {
     gtk_color_button_get_color((GtkColorButton *)widget, &clock->fg);
     oc_fg_set(clock);
 }
 
-static void oc_set_bg_toggled(GtkToggleButton *cb, Clock *clock)
+static void oc_set_bg_toggled(GtkToggleButton *cb, OragePlugin *clock)
 {
     clock->bg_set = gtk_toggle_button_get_active(cb);
     oc_bg_set(clock);
 }
 
-static void oc_bg_color_changed(GtkWidget *widget, Clock *clock)
+static void oc_bg_color_changed(GtkWidget *widget, OragePlugin *clock)
 {
     gtk_color_button_get_color((GtkColorButton *)widget, &clock->bg);
     oc_bg_set(clock);
 }
 
-static void oc_set_height_toggled(GtkToggleButton *cb, Clock *clock)
+static void oc_set_height_toggled(GtkToggleButton *cb, OragePlugin *clock)
 {
     clock->height_set = gtk_toggle_button_get_active(cb);
     oc_size_set(clock);
 }
 
-static void oc_set_height_changed(GtkSpinButton *sb, Clock *clock)
+static void oc_set_height_changed(GtkSpinButton *sb, OragePlugin *clock)
 {
     clock->height = gtk_spin_button_get_value_as_int(sb);
     oc_size_set(clock);
 }
 
-static void oc_set_width_toggled(GtkToggleButton *cb, Clock *clock)
+static void oc_set_width_toggled(GtkToggleButton *cb, OragePlugin *clock)
 {
     clock->width_set = gtk_toggle_button_get_active(cb);
     oc_size_set(clock);
 }
 
-static void oc_set_width_changed(GtkSpinButton *sb, Clock *clock)
+static void oc_set_width_changed(GtkSpinButton *sb, OragePlugin *clock)
 {
     clock->width = gtk_spin_button_get_value_as_int(sb);
     oc_size_set(clock);
 }
 
-static void oc_rotation_changed(GtkComboBox *cb, Clock *clock)
+static void oc_rotation_changed(GtkComboBox *cb, OragePlugin *clock)
 {
     GList *tmp_list;
 
@@ -114,19 +114,23 @@ static void oc_rotation_changed(GtkComboBox *cb, Clock *clock)
     }
 }
 
-static void oc_lines_vertically_toggled(GtkToggleButton *cb, Clock *clock)
+static void oc_lines_vertically_toggled(GtkToggleButton *cb, OragePlugin *clock)
 {
     clock->lines_vertically = gtk_toggle_button_get_active(cb);
 
     oc_reorganize_lines(clock);
 }
 
-static void oc_timezone_selected(GtkButton *button, Clock *clock)
+static void oc_timezone_selected(GtkButton *button, OragePlugin *clock)
 {
     GtkWidget *dialog;
     gchar *filename = NULL;
 
+#if 0
     dialog = g_object_get_data(G_OBJECT(clock->plugin), "dialog");
+#else
+#warning "TODO: check me"
+#endif
     if (orage_timezone_button_clicked(button, GTK_WINDOW(dialog)
             , &filename, FALSE, NULL)) {
         g_string_assign(clock->timezone, filename);
@@ -135,7 +139,7 @@ static void oc_timezone_selected(GtkButton *button, Clock *clock)
     }
 }
 
-static void oc_hib_timing_toggled(GtkToggleButton *cb, Clock *clock)
+static void oc_hib_timing_toggled(GtkToggleButton *cb, OragePlugin *clock)
 {
     clock->hib_timing = gtk_toggle_button_get_active(cb);
 }
@@ -157,12 +161,16 @@ static void oc_line_font_changed(GtkWidget *widget, ClockLine *line)
     oc_line_font_set(line);
 }
 
-static void oc_recreate_properties_options(Clock *clock)
+static void oc_recreate_properties_options(OragePlugin *clock)
 {
     GtkWidget *dialog, *frame;
 
+#if 0
     dialog = g_object_get_data(G_OBJECT(clock->plugin), "dialog");
     frame  = g_object_get_data(G_OBJECT(clock->plugin), "properties_frame");
+#else
+#warning "TODO: check me"
+#endif
     gtk_widget_destroy(frame);
     oc_properties_options(dialog, clock);
     gtk_widget_show_all(dialog);
@@ -170,7 +178,7 @@ static void oc_recreate_properties_options(Clock *clock)
 
 static void oc_new_line(GtkToolButton *toolbutton, ClockLine *line)
 {
-    Clock *clock = line->clock;;
+    OragePlugin *clock = line->clock;;
     ClockLine *new_line;
     gint pos;
     pos = g_list_index(clock->lines, line);
@@ -185,7 +193,7 @@ static void oc_new_line(GtkToolButton *toolbutton, ClockLine *line)
 
 static void oc_delete_line(GtkToolButton *toolbutton, ClockLine *line)
 {
-    Clock *clock = line->clock;;
+    OragePlugin *clock = line->clock;;
 
     /* remove the data from the list and from the panel */
     g_string_free(line->data, TRUE);
@@ -201,7 +209,7 @@ static void oc_delete_line(GtkToolButton *toolbutton, ClockLine *line)
 
 static void oc_move_up_line(GtkToolButton *toolbutton, ClockLine *line)
 {
-    Clock *clock = line->clock;;
+    OragePlugin *clock = line->clock;;
     gint pos;
 
     pos = g_list_index(clock->lines, line);
@@ -217,7 +225,7 @@ static void oc_move_up_line(GtkToolButton *toolbutton, ClockLine *line)
 
 static void oc_move_down_line(GtkToolButton *toolbutton, ClockLine *line)
 {
-    Clock *clock = line->clock;;
+    OragePlugin *clock = line->clock;;
     gint pos, line_cnt;
 
     line_cnt = g_list_length(clock->lines);
@@ -240,7 +248,7 @@ static void oc_table_add(GtkWidget *table, GtkWidget *widget, int col, int row)
             , GTK_FILL, GTK_FILL, 0, 0);
 }
 
-static void oc_properties_appearance(GtkWidget *dlg, Clock *clock)
+static void oc_properties_appearance(GtkWidget *dlg, OragePlugin *clock)
 {
     GtkWidget *frame, *cb, *color, *sb, *vbox;
     GdkColor def_fg, def_bg;
@@ -342,7 +350,7 @@ static void oc_properties_appearance(GtkWidget *dlg, Clock *clock)
     g_signal_connect(cb, "toggled", G_CALLBACK(oc_lines_vertically_toggled), clock);
 }
 
-void oc_properties_options(GtkWidget *dlg, Clock *clock)
+void oc_properties_options(GtkWidget *dlg, OragePlugin *clock)
 {
     GtkWidget *frame, *cb, *label, *entry, *font, *button;
     GtkStyle *def_style;
@@ -368,7 +376,11 @@ void oc_properties_options(GtkWidget *dlg, Clock *clock)
        correct position */
     gtk_box_reorder_child(GTK_BOX(vbox), frame, 2);
     /* this is needed when we restructure this frame */
+#if 0
     g_object_set_data(G_OBJECT(clock->plugin), "properties_frame", frame);
+#else
+#warning "TODO: check me"
+#endif
 
     /* timezone */
     label = gtk_label_new(_("set timezone to:"));
@@ -444,7 +456,6 @@ void oc_properties_options(GtkWidget *dlg, Clock *clock)
         */
     }
 
-
     /* Tooltip hint */
     label = gtk_label_new(_("Tooltip:"));
     oc_table_add(table, label, 0, line_cnt+1);
@@ -465,7 +476,7 @@ void oc_properties_options(GtkWidget *dlg, Clock *clock)
     g_signal_connect(cb, "toggled", G_CALLBACK(oc_hib_timing_toggled), clock);
 }
 
-void oc_instructions(GtkWidget *dlg, Clock *clock)
+void oc_instructions(GtkWidget *dlg, OragePlugin *clock)
 {
     GtkWidget *hbox, *vbox, *label, *image;
 
@@ -485,19 +496,27 @@ void oc_instructions(GtkWidget *dlg, Clock *clock)
     (void)clock;
 }
 
-static void oc_dialog_response(GtkWidget *dlg, int response, Clock *clock)
+static void oc_dialog_response(GtkWidget *dlg, int response, OragePlugin *clock)
 {
+#if 0
     g_object_set_data(G_OBJECT(clock->plugin), "dialog", NULL);
     g_object_set_data(G_OBJECT(clock->plugin), "properties_frame", NULL);
+#else
+#warning "TODO: check me"
+#endif
     gtk_widget_destroy(dlg);
+#if 0
     xfce_panel_plugin_unblock_menu(clock->plugin);
     oc_write_rc_file(clock->plugin, clock);
+#else
+#warning "TODO: check me"
+#endif
     oc_init_timer(clock);
     
     (void)response;
 }
 
-void oc_properties_dialog(XfcePanelPlugin *plugin, Clock *clock)
+void oc_properties_dialog(XfcePanelPlugin *plugin, OragePlugin *clock)
 {
     GtkWidget *dlg;
 
