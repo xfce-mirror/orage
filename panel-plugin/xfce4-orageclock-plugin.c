@@ -675,11 +675,6 @@ OragePlugin *orage_oc_new(XfcePanelPlugin *plugin)
     OragePlugin *clock = g_new0(OragePlugin, 1);
 
     clock->first_call = TRUE; /* this is starting point */
-#if 0
-    clock->plugin = plugin;
-#else
-#warning "TODO: check me"
-#endif
 
     clock->ebox = gtk_event_box_new();
     gtk_widget_show(clock->ebox);
