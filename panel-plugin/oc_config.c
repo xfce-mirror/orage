@@ -317,9 +317,8 @@ static void oc_properties_appearance(GtkWidget *dlg, OragePlugin *clock)
     if (!clock->height_set)
         clock->height = 32;
     gtk_spin_button_set_value(GTK_SPIN_BUTTON(sb), (gdouble)clock->height);
-    gtk_tooltips_set_tip(clock->tips, GTK_WIDGET(cb),
-            _("Note that you can not change the height of horizontal panels")
-            , NULL);
+    gtk_widget_set_tooltip_text (GTK_WIDGET(cb),
+            _("Note that you can not change the height of horizontal panels"));
     g_signal_connect((gpointer) sb, "value-changed",
             G_CALLBACK(oc_set_height_changed), clock);
 
@@ -332,9 +331,8 @@ static void oc_properties_appearance(GtkWidget *dlg, OragePlugin *clock)
     if (!clock->width_set)
         clock->width = 70;
     gtk_spin_button_set_value(GTK_SPIN_BUTTON(sb), (gdouble)clock->width);
-    gtk_tooltips_set_tip(clock->tips, GTK_WIDGET(cb),
-            _("Note that you can not change the width of vertical panels")
-            , NULL);
+    gtk_widget_set_tooltip_text (GTK_WIDGET(cb),
+            _("Note that you can not change the width of vertical panels"));
     g_signal_connect((gpointer) sb, "value-changed",
             G_CALLBACK(oc_set_width_changed), clock);
 
@@ -413,8 +411,8 @@ void oc_properties_options(GtkWidget *dlg, OragePlugin *clock)
         g_signal_connect(entry, "key-release-event", G_CALLBACK(oc_line_changed)
                 , line->data);
         if (cur_line == 1)
-            gtk_tooltips_set_tip(clock->tips, GTK_WIDGET(entry),
-                    _("Enter any valid strftime function parameter."), NULL);
+            gtk_widget_set_tooltip_text (GTK_WIDGET(entry),
+                    _("Enter any valid strftime function parameter."));
         oc_table_add(table, entry, 1, cur_line);
 
         if (line->font->len) {
@@ -470,9 +468,8 @@ void oc_properties_options(GtkWidget *dlg, OragePlugin *clock)
     cb = gtk_check_button_new_with_mnemonic(_("fix time after suspend/hibernate"));
     oc_table_add(table, cb, 1, line_cnt+2);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(cb), clock->hib_timing);
-    gtk_tooltips_set_tip(clock->tips, GTK_WIDGET(cb),
-            _("You only need this if you do short term (less than 5 hours) suspend or hibernate and your visible time does not include seconds. Under these circumstances it is possible that Orageclock shows time inaccurately unless you have this selected. (Selecting this prevents cpu and interrupt saving features from working.)")
-            , NULL);
+    gtk_widget_set_tooltip_text (GTK_WIDGET(cb),
+            _("You only need this if you do short term (less than 5 hours) suspend or hibernate and your visible time does not include seconds. Under these circumstances it is possible that Orageclock shows time inaccurately unless you have this selected. (Selecting this prevents cpu and interrupt saving features from working.)"));
     g_signal_connect(cb, "toggled", G_CALLBACK(oc_hib_timing_toggled), clock);
 }
 

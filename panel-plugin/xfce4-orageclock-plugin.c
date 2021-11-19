@@ -151,7 +151,7 @@ static void oc_tooltip_set(OragePlugin *clock)
     oc_utf8_strftime(res, sizeof(res), clock->tooltip_data->str, &clock->now);
     if (strcmp(res,  clock->tooltip_prev)) {
 #if 0
-        gtk_tooltips_set_tip(clock->tips, GTK_WIDGET(clock->plugin),res, NULL);
+        gtk_widget_set_tooltip_text (GTK_WIDGET(clock->plugin),res);
 #else
 #warning "TODO: check me"
 #endif
@@ -481,7 +481,6 @@ static void oc_free_data(XfcePanelPlugin *plugin, OragePlugin *clock)
     }
     g_list_free(clock->lines);
     g_free(clock->TZ_orig);
-    g_object_unref(clock->tips);
     g_free(clock);
 }
 
@@ -711,10 +710,6 @@ OragePlugin *orage_oc_new(XfcePanelPlugin *plugin)
     clock->tooltip_data = g_string_new(_("%A %d %B %Y/%V"));
 
     clock->hib_timing = FALSE;
-
-    clock->tips = gtk_tooltips_new();
-    g_object_ref(clock->tips);
-    gtk_object_sink(GTK_OBJECT(clock->tips));
         
     return(clock);
 }

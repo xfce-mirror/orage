@@ -75,7 +75,6 @@ struct _OragePlugin
     gchar      tooltip_prev[OC_MAX_LINE_LENGTH+1];
     gboolean   hib_timing;
 
-    GtkTooltip *tips;
     int         timeout_id;  /* timer id for the clock */
     int         delay_timeout_id;
     int         interval;
