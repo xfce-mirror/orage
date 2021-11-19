@@ -32,7 +32,6 @@
 
 #include <glib.h>
 #include <gtk/gtk.h>
-/* #include <gdk/gdkevents.h> */
 #include <gdk/gdkx.h>
 
 #include <libxfce4util/libxfce4util.h>
@@ -53,7 +52,7 @@ static void oc_utf8_strftime(char *res, int res_l, char *format, struct tm *tm)
 
     /* strftime is nasty. It returns formatted characters (%A...) in utf8
      * but it does not convert plain characters so they will be in locale 
-     * charset. 
+     * charset.
      * It expects format to be in locale charset, so we need to convert 
      * that first (it may contain utf8).
      * We need then convert the results finally to utf8.
@@ -902,7 +901,7 @@ static void orage_plugin_construct (XfcePanelPlugin *panel_plugin)
 
 /* Register with the panel */
 #if 1
-XFCE_PANEL_DEFINE_PLUGIN (OragePlugin, oc_construct)
+XFCE_PANEL_DEFINE_PLUGIN (OragePlugin, orage_plugin)
 #else   
-XFCE_PANEL_PLUGIN_REGISTER(oc_construct);
+XFCE_PANEL_PLUGIN_REGISTER (oc_construct);
 #endif
