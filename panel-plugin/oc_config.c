@@ -178,7 +178,7 @@ static void oc_recreate_properties_options(OragePlugin *clock)
 
 static void oc_new_line(GtkToolButton *toolbutton, ClockLine *line)
 {
-    OragePlugin *clock = line->clock;;
+    OragePlugin *clock = line->clock;
     ClockLine *new_line;
     gint pos;
     pos = g_list_index(clock->lines, line);
@@ -193,7 +193,7 @@ static void oc_new_line(GtkToolButton *toolbutton, ClockLine *line)
 
 static void oc_delete_line(GtkToolButton *toolbutton, ClockLine *line)
 {
-    OragePlugin *clock = line->clock;;
+    OragePlugin *clock = line->clock;
 
     /* remove the data from the list and from the panel */
     g_string_free(line->data, TRUE);
@@ -209,7 +209,7 @@ static void oc_delete_line(GtkToolButton *toolbutton, ClockLine *line)
 
 static void oc_move_up_line(GtkToolButton *toolbutton, ClockLine *line)
 {
-    OragePlugin *clock = line->clock;;
+    OragePlugin *clock = line->clock;
     gint pos;
 
     pos = g_list_index(clock->lines, line);
@@ -225,7 +225,7 @@ static void oc_move_up_line(GtkToolButton *toolbutton, ClockLine *line)
 
 static void oc_move_down_line(GtkToolButton *toolbutton, ClockLine *line)
 {
-    OragePlugin *clock = line->clock;;
+    OragePlugin *clock = line->clock;
     gint pos, line_cnt;
 
     line_cnt = g_list_length(clock->lines);
