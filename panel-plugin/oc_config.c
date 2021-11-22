@@ -242,10 +242,11 @@ static void oc_move_down_line(GtkToolButton *toolbutton, ClockLine *line)
     (void)toolbutton;
 }
 
-static void oc_table_add(GtkWidget *table, GtkWidget *widget, int col, int row)
+static void oc_table_add (GtkWidget *table, GtkWidget *widget,
+                          const int col, const int row)
 {
-    gtk_table_attach(GTK_TABLE(table), widget, col, col+1, row, row+1
-            , GTK_FILL, GTK_FILL, 0, 0);
+    g_object_set (widget, "expand", TRUE, NULL);
+    gtk_grid_attach (GTK_GRID (table), widget, col, row, 1, 1);
 }
 
 static void oc_properties_appearance(GtkWidget *dlg, OragePlugin *clock)
@@ -258,10 +259,9 @@ static void oc_properties_appearance(GtkWidget *dlg, OragePlugin *clock)
         , _("Rotate right")};
 
 
-    table = gtk_table_new(4, 4, FALSE); /* rows, columns */
+    table = gtk_grid_new ();
     gtk_container_set_border_width(GTK_CONTAINER(table), 10);
-    gtk_table_set_row_spacings(GTK_TABLE(table), 6);
-    gtk_table_set_col_spacings(GTK_TABLE(table), 6);
+    g_object_set (table, "row-spacing", 6, "column-spacing", 6,  NULL);
     
     frame = orage_create_framebox_with_content(_("Appearance"), GTK_SHADOW_NONE,
                                                table);
@@ -360,10 +360,9 @@ void oc_properties_options(GtkWidget *dlg, OragePlugin *clock)
     GList   *tmp_list;
 
     line_cnt = g_list_length(clock->lines);
-    table = gtk_table_new(3+line_cnt, 4, FALSE);
+    table = gtk_grid_new ();
     gtk_container_set_border_width(GTK_CONTAINER(table), 10);
-    gtk_table_set_row_spacings(GTK_TABLE(table), 6);
-    gtk_table_set_col_spacings(GTK_TABLE(table), 6);
+    g_object_set (table, "row-spacing", 6, "column-spacing", 6,  NULL);
 
     frame = orage_create_framebox_with_content(_("Clock Options"),
                                                GTK_SHADOW_NONE, table);
