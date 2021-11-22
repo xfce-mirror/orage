@@ -477,7 +477,7 @@ void oc_instructions(GtkWidget *dlg, OragePlugin *clock)
     GtkWidget *hbox, *vbox, *label, *image;
 
     /* Instructions */
-    hbox = gtk_hbox_new(FALSE, 0);
+    hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
     vbox = gtk_dialog_get_content_area(GTK_DIALOG(dlg));
     gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 6);
 
