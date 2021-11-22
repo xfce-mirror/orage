@@ -420,6 +420,8 @@ static gboolean popup_program(GtkWidget *widget, gchar *program, OragePlugin *cl
         return(TRUE);
     }
 
+    (void)widget;
+
     return(FALSE);
 }
 
