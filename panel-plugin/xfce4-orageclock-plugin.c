@@ -83,11 +83,11 @@ void oc_line_font_set(ClockLine *line)
         pango_font_description_free (font);
         attrlist = pango_attr_list_new ();
         pango_attr_list_insert (attrlist, attr);
-        gtk_label_set_attributes (line->label, attrlist);
+        gtk_label_set_attributes (GTK_LABEL(line->label), attrlist);
         pango_attr_list_unref (attrlist);
     }
     else
-        gtk_label_set_attributes (line->label, NULL);
+        gtk_label_set_attributes (GTK_LABEL(line->label), NULL);
 }
 
 void oc_line_rotate(OragePlugin *clock, ClockLine *line)
