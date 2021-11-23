@@ -73,14 +73,21 @@ static void oc_utf8_strftime(char *res, int res_l, char *format, struct tm *tm)
 void oc_line_font_set(ClockLine *line)
 {
     PangoFontDescription *font;
+    PangoAttribute *attr;
+    PangoAttrList *attrlist;
 
-    if (line->font->str) {
-        font = pango_font_description_from_string(line->font->str);
-        gtk_widget_override_font (line->label, font);
-        pango_font_description_free(font);
+    if (line->font->str)
+    {
+        font = pango_font_description_from_string (line->font->str);
+        attr = pango_attr_font_desc_new (font);
+        pango_font_description_free (font);
+        attrlist = pango_attr_list_new ();
+        pango_attr_list_insert (attrlist, attr);
+        gtk_label_set_attributes (line->label, attrlist);
+        pango_attr_list_unref (attrlist);
     }
     else
-        gtk_widget_override_font (line->label, NULL);
+        gtk_label_set_attributes (line->label, NULL);
 }
 
 void oc_line_rotate(OragePlugin *clock, ClockLine *line)
