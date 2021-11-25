@@ -60,9 +60,10 @@ static void oc_set_fg_toggled(GtkToggleButton *cb, OragePlugin *clock)
     oc_fg_set(clock);
 }
 
-static void oc_fg_color_changed(GtkWidget *widget, OragePlugin *clock)
+static void oc_fg_color_changed (GtkColorButton *color_button,
+                                 OragePlugin *clock)
 {
-    gtk_color_button_get_color((GtkColorButton *)widget, &clock->fg);
+    gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (color_button), &clock->fg);
     oc_fg_set(clock);
 }
 
@@ -72,9 +73,10 @@ static void oc_set_bg_toggled(GtkToggleButton *cb, OragePlugin *clock)
     oc_bg_set(clock);
 }
 
-static void oc_bg_color_changed(GtkWidget *widget, OragePlugin *clock)
+static void oc_bg_color_changed (GtkColorButton *color_button,
+                                 OragePlugin *clock)
 {
-    gtk_color_button_get_color((GtkColorButton *)widget, &clock->bg);
+    gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (color_button), &clock->bg);
     oc_bg_set(clock);
 }
 
@@ -252,12 +254,12 @@ static void oc_table_add (GtkWidget *table, GtkWidget *widget,
 static void oc_properties_appearance(GtkWidget *dlg, OragePlugin *clock)
 {
     GtkWidget *frame, *cb, *color, *sb, *vbox;
-    GdkColor def_fg, def_bg;
-    GtkStyle *def_style;
+    GdkRGBA def_fg, def_bg;
+    GtkStyleContext *context;
+    GtkCssProvider *provider;
     GtkWidget *table;
     char *clock_rotation_array[3] = {_("No rotation"), _("Rotate left")
         , _("Rotate right")};
-
 
     table = gtk_grid_new ();
     gtk_container_set_border_width(GTK_CONTAINER(table), 10);
@@ -269,9 +271,16 @@ static void oc_properties_appearance(GtkWidget *dlg, OragePlugin *clock)
     vbox = gtk_dialog_get_content_area(GTK_DIALOG(dlg));
     gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
     
-    def_style = gtk_widget_get_default_style();
-    def_fg = def_style->fg[GTK_STATE_NORMAL];
-    def_bg = def_style->bg[GTK_STATE_NORMAL];
+    context = gtk_style_context_new ();
+    provider = gtk_css_provider_get_default ();
+    gtk_style_context_add_provider (context, provider,
+                                    GTK_STYLE_PROVIDER_PRIORITY_THEME);
+    
+    gtk_style_context_get_color (context, GTK_STATE_FLAG_NORMAL, &def_fg);
+    gtk_style_context_get_property (context,
+                                    GTK_STYLE_PROPERTY_BACKGROUND_COLOR ,
+                                    GTK_STATE_FLAG_NORMAL,
+                                    &def_bg);
 
     /* show frame */
     cb = gtk_check_button_new_with_mnemonic(_("Show _frame"));
@@ -288,7 +297,7 @@ static void oc_properties_appearance(GtkWidget *dlg, OragePlugin *clock)
     if (!clock->fg_set) {
         clock->fg = def_fg;
     }
-    color = gtk_color_button_new_with_color(&clock->fg);
+    color = gtk_color_button_new_with_rgba (&clock->fg);
     oc_table_add(table, color, 1, 1);
     g_signal_connect(G_OBJECT(color), "color-set"
             , G_CALLBACK(oc_fg_color_changed), clock);
@@ -302,7 +311,7 @@ static void oc_properties_appearance(GtkWidget *dlg, OragePlugin *clock)
     if (!clock->bg_set) {
         clock->bg = def_bg;
     }
-    color = gtk_color_button_new_with_color(&clock->bg);
+    color = gtk_color_button_new_with_rgba (&clock->bg);
     oc_table_add(table, color, 3, 1);
     g_signal_connect(G_OBJECT(color), "color-set"
             , G_CALLBACK(oc_bg_color_changed), clock);

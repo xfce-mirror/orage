@@ -58,9 +58,9 @@ struct _OragePlugin
     GtkWidget *mbox; /* main box. Either vertical or horizontal */
     gboolean   show_frame;
     gboolean   fg_set;
-    GdkColor   fg;
+    GdkRGBA    fg;
     gboolean   bg_set;
-    GdkColor   bg;
+    GdkRGBA    bg;
     gboolean   width_set;
     gint       width;
     gboolean   height_set;

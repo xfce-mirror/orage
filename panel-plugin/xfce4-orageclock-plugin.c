@@ -497,23 +497,19 @@ static void oc_free_data(XfcePanelPlugin *plugin, OragePlugin *clock)
     g_free(clock);
 }
 
-static GdkColor oc_rc_read_color(XfceRc *rc, char *par, char *def)
+static GdkRGBA oc_rc_read_color (XfceRc *rc, char *par, char *def)
 {
     const gchar *ret;
-    GdkColor color;
+    GdkRGBA color;
 
     ret = xfce_rc_read_entry(rc, par, def);
-    color.pixel = 0;
-    if (!strcmp(ret, def)
-    ||  sscanf(ret, OC_RC_COLOR
-                , (unsigned int *)&color.red
-                , (unsigned int *)&color.green
-                , (unsigned int *)&color.blue) != 3) {
-        gint i = sscanf(ret, OC_RC_COLOR , (unsigned int *)&color.red , (unsigned int *)&color.green , (unsigned int *)&color.blue);
-        g_warning("unable to read %s colour from rc file ret=(%s) def=(%s) cnt=%d", par, ret, def, i);
-        gdk_color_parse(ret, &color);
+    if (gdk_rgba_parse (&color, ret) == FALSE)
+    {
+        g_warning ("unable to read %s colour from rc file ret=(%s) def=(%s)",
+                   par, ret, def);
     }
-    return(color);
+    
+    return color;
 }
 
 ClockLine * oc_add_new_line(OragePlugin *clock, const char *data, const char *font, int pos)
@@ -598,6 +594,7 @@ static void oc_read_rc_file(XfcePanelPlugin *plugin, OragePlugin *clock)
 void oc_write_rc_file(XfcePanelPlugin *plugin, OragePlugin *clock)
 {
     gchar  *file;
+    gchar  *colour_str;
     XfceRc *rc;
     gchar   tmp[100];
     int     i;
@@ -618,9 +615,9 @@ void oc_write_rc_file(XfcePanelPlugin *plugin, OragePlugin *clock)
 
     xfce_rc_write_bool_entry(rc, "fg_set", clock->fg_set);
     if (clock->fg_set) {
-        g_snprintf (tmp, sizeof (tmp), "%uR %uG %uB"
-                , clock->fg.red, clock->fg.green, clock->fg.blue);
-        xfce_rc_write_entry(rc, "fg", tmp);
+        colour_str = gdk_rgba_to_string (&clock->fg);
+        xfce_rc_write_entry (rc, "fg", colour_str);
+        g_free (colour_str);
     }
     else {
         xfce_rc_delete_entry(rc, "fg", TRUE);
@@ -628,9 +625,9 @@ void oc_write_rc_file(XfcePanelPlugin *plugin, OragePlugin *clock)
 
     xfce_rc_write_bool_entry(rc, "bg_set", clock->bg_set);
     if (clock->bg_set) {
-        g_snprintf (tmp, sizeof (tmp), "%uR %uG %uB"
-                , clock->bg.red, clock->bg.green, clock->bg.blue);
-        xfce_rc_write_entry(rc, "bg", tmp);
+        colour_str = gdk_rgba_to_string (&clock->bg);
+        xfce_rc_write_entry (rc, "bg", colour_str);
+        g_free (colour_str);
     }
     else {
         xfce_rc_delete_entry(rc, "bg", TRUE);
@@ -735,7 +732,7 @@ void oc_show_frame_set(OragePlugin *clock)
 
 void oc_fg_set(OragePlugin *clock)
 {
-    GdkColor *fg = NULL;
+    GdkRGBA *fg = NULL;
     ClockLine *line;
     GList   *tmp_list;
 
@@ -743,21 +740,23 @@ void oc_fg_set(OragePlugin *clock)
         fg = &clock->fg;
 
     for (tmp_list = g_list_first(clock->lines);
-            tmp_list;
-         tmp_list = g_list_next(tmp_list)) {
+         tmp_list;
+         tmp_list = g_list_next(tmp_list))
+    {
         line = tmp_list->data;
-        gtk_widget_modify_fg(line->label, GTK_STATE_NORMAL, fg);
+        gtk_widget_override_color (line->label, GTK_STATE_FLAG_NORMAL, fg);
     }
 }
 
 void oc_bg_set(OragePlugin *clock)
 {
-    GdkColor *bg = NULL;
+    GdkRGBA *bg = NULL;
 
     if (clock->bg_set)
         bg = &clock->bg;
 
-    gtk_widget_modify_bg(clock->ebox, GTK_STATE_NORMAL, bg);
+    gtk_widget_override_background_color (clock->ebox,
+                                          GTK_STATE_FLAG_NORMAL, bg);
 }
 
 void oc_timezone_set(OragePlugin *clock)
