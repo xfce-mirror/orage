@@ -744,7 +744,9 @@ void oc_fg_set(OragePlugin *clock)
          tmp_list = g_list_next(tmp_list))
     {
         line = tmp_list->data;
+        G_GNUC_BEGIN_IGNORE_DEPRECATIONS
         gtk_widget_override_color (line->label, GTK_STATE_FLAG_NORMAL, fg);
+        G_GNUC_END_IGNORE_DEPRECATIONS
     }
 }
 
@@ -755,8 +757,10 @@ void oc_bg_set(OragePlugin *clock)
     if (clock->bg_set)
         bg = &clock->bg;
 
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gtk_widget_override_background_color (clock->ebox,
                                           GTK_STATE_FLAG_NORMAL, bg);
+    G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 void oc_timezone_set(OragePlugin *clock)
