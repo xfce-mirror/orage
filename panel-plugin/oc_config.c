@@ -273,7 +273,7 @@ static void oc_properties_appearance(GtkWidget *dlg, OragePlugin *clock)
     
     context = gtk_style_context_new ();
     provider = gtk_css_provider_new ();
-    gtk_style_context_add_provider (context, provider,
+    gtk_style_context_add_provider (context, GTK_STYLE_PROVIDER (provider),
                                     GTK_STYLE_PROVIDER_PRIORITY_THEME);
     
     gtk_style_context_get_color (context, GTK_STATE_FLAG_NORMAL, &def_fg);
