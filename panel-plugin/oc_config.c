@@ -277,10 +277,8 @@ static void oc_properties_appearance(GtkWidget *dlg, OragePlugin *clock)
                                     GTK_STYLE_PROVIDER_PRIORITY_THEME);
     
     gtk_style_context_get_color (context, GTK_STATE_FLAG_NORMAL, &def_fg);
-    gtk_style_context_get_property (context,
-                                    GTK_STYLE_PROPERTY_BACKGROUND_COLOR ,
-                                    GTK_STATE_FLAG_NORMAL,
-                                    &def_bg);
+    gtk_style_context_get (context, GTK_STATE_FLAG_NORMAL, 
+                           GTK_STYLE_PROPERTY_BACKGROUND_COLOR, &def_bg, NULL);
 
     /* show frame */
     cb = gtk_check_button_new_with_mnemonic(_("Show _frame"));
