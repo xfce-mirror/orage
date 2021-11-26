@@ -272,7 +272,7 @@ static void oc_properties_appearance(GtkWidget *dlg, OragePlugin *clock)
     gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
     
     context = gtk_style_context_new ();
-    provider = gtk_css_provider_get_default ();
+    provider = gtk_css_provider_new ();
     gtk_style_context_add_provider (context, provider,
                                     GTK_STYLE_PROVIDER_PRIORITY_THEME);
     
