@@ -255,8 +255,6 @@ static void oc_properties_appearance(GtkWidget *dlg, OragePlugin *clock)
 {
     GtkWidget *frame, *cb, *color, *sb, *vbox;
     GdkRGBA def_fg, def_bg;
-    GtkStyleContext *context;
-    GtkCssProvider *provider;
     GtkWidget *table;
     char *clock_rotation_array[3] = {_("No rotation"), _("Rotate left")
         , _("Rotate right")};
@@ -271,15 +269,6 @@ static void oc_properties_appearance(GtkWidget *dlg, OragePlugin *clock)
     vbox = gtk_dialog_get_content_area(GTK_DIALOG(dlg));
     gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
     
-    context = gtk_style_context_new ();
-    provider = gtk_css_provider_new ();
-    gtk_style_context_add_provider (context, GTK_STYLE_PROVIDER (provider),
-                                    GTK_STYLE_PROVIDER_PRIORITY_THEME);
-    
-    gtk_style_context_get_color (context, GTK_STATE_FLAG_NORMAL, &def_fg);
-    gtk_style_context_get (context, GTK_STATE_FLAG_NORMAL, 
-                           GTK_STYLE_PROPERTY_BACKGROUND_COLOR, &def_bg, NULL);
-
     /* show frame */
     cb = gtk_check_button_new_with_mnemonic(_("Show _frame"));
     oc_table_add(table, cb, 0, 0);
@@ -292,7 +281,9 @@ static void oc_properties_appearance(GtkWidget *dlg, OragePlugin *clock)
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(cb), clock->fg_set);
     g_signal_connect(cb, "toggled", G_CALLBACK(oc_set_fg_toggled), clock);
 
-    if (!clock->fg_set) {
+    if (!clock->fg_set)
+    {
+        gdk_rgba_parse (&def_fg, "black");
         clock->fg = def_fg;
     }
     color = gtk_color_button_new_with_rgba (&clock->fg);
@@ -306,7 +297,9 @@ static void oc_properties_appearance(GtkWidget *dlg, OragePlugin *clock)
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(cb), clock->bg_set);
     g_signal_connect(cb, "toggled", G_CALLBACK(oc_set_bg_toggled), clock);
 
-    if (!clock->bg_set) {
+    if (!clock->bg_set)
+    {
+        gdk_rgba_parse (&def_bg, "white");
         clock->bg = def_bg;
     }
     color = gtk_color_button_new_with_rgba (&clock->bg);
