@@ -256,8 +256,8 @@ static void oc_properties_appearance(GtkWidget *dlg, OragePlugin *clock)
     GtkWidget *frame, *cb, *color, *sb, *vbox;
     GdkRGBA def_fg, def_bg;
     GtkWidget *table;
-    char *clock_rotation_array[3] = {_("No rotation"), _("Rotate left")
-        , _("Rotate right")};
+    const gchar *clock_rotation_array[3] =
+    { _("No rotation"), _("Rotate left") , _("Rotate right")};
 
     table = gtk_grid_new ();
     gtk_container_set_border_width(GTK_CONTAINER(table), 10);
