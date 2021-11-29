@@ -879,6 +879,7 @@ static void orage_plugin_class_init (OragePluginClass *klass)
 
 static void orage_plugin_init (OragePlugin *plugin)
 {
+    (void)plugin;
 }
 
 static void orage_plugin_construct (XfcePanelPlugin *panel_plugin)
