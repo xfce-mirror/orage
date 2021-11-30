@@ -617,6 +617,7 @@ static void create_icon(void)
 static void initialize_clocks(void)
 {
     GtkWidget *button;
+    const gchar *font;
 
     clocks.clock_list = NULL;
     g_strlcpy (clocks.time_now, "88:88", sizeof (clocks.time_now));
@@ -665,11 +666,12 @@ static void initialize_clocks(void)
     clocks.clock_default_attr.time_underline = g_string_new(attr_underline[0]);
     clocks.clock_default_attr.time_underline_modified = FALSE;
     /* find default font */
-    button = gtk_font_button_new();
-    g_string_assign (clocks.clock_default_attr.name_font,
-                     gtk_font_chooser_get_font (GTK_FONT_CHOOSER (button)));
+    button = gtk_font_button_new ();
+    font = gtk_font_chooser_get_font (GTK_FONT_CHOOSER (button));
+    g_string_assign (clocks.clock_default_attr.name_font, font);
     g_string_assign (clocks.clock_default_attr.time_font,
                      clocks.clock_default_attr.name_font->str);
+    g_free (font);
     g_object_ref_sink(button);
 
     g_signal_connect(G_OBJECT(clocks.window), "delete-event"

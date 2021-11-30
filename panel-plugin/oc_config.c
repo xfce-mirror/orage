@@ -158,9 +158,10 @@ static gboolean oc_line_changed(GtkWidget *entry, GdkEventKey *key
 
 static void oc_line_font_changed(GtkWidget *widget, ClockLine *line)
 {
-    g_string_assign(line->font
-            , gtk_font_button_get_font_name((GtkFontButton *)widget));
-    oc_line_font_set(line);
+    const gchar *font = gtk_font_chooser_get_font (GTK_FONT_CHOOSER (widget));
+    g_string_assign (line->font, font);
+    g_free (font);
+    oc_line_font_set (line);
 }
 
 static void oc_recreate_properties_options(OragePlugin *clock)
