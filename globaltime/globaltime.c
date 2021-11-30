@@ -617,7 +617,7 @@ static void create_icon(void)
 static void initialize_clocks(void)
 {
     GtkWidget *button;
-    const gchar *font;
+    gchar *font;
 
     clocks.clock_list = NULL;
     g_strlcpy (clocks.time_now, "88:88", sizeof (clocks.time_now));

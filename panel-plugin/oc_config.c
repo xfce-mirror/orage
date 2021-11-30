@@ -158,7 +158,7 @@ static gboolean oc_line_changed(GtkWidget *entry, GdkEventKey *key
 
 static void oc_line_font_changed(GtkWidget *widget, ClockLine *line)
 {
-    const gchar *font = gtk_font_chooser_get_font (GTK_FONT_CHOOSER (widget));
+    gchar *font = gtk_font_chooser_get_font (GTK_FONT_CHOOSER (widget));
     g_string_assign (line->font, font);
     g_free (font);
     oc_line_font_set (line);
