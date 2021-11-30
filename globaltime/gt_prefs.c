@@ -469,7 +469,7 @@ static void ask_timezone(GtkButton *button, modify_struct *modify_clock)
 
 static void set_font (GtkWidget *widget, GString *font)
 {
-    const gchar *font_name
+    const gchar *font_name;
     
     font_name = gtk_font_chooser_get_font (GTK_FONT_CHOOSER (widget));
     g_string_assign (font, font_name);
