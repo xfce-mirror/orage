@@ -352,8 +352,7 @@ static void oc_properties_appearance(GtkWidget *dlg, OragePlugin *clock)
 void oc_properties_options(GtkWidget *dlg, OragePlugin *clock)
 {
     GtkWidget *frame, *cb, *label, *entry, *font, *button;
-    GtkStyle *def_style;
-    gchar *def_font, tmp[100];
+    gchar tmp[100];
     GtkWidget *table, *toolbar, *vbox;
     GtkToolItem *tool_button;
     gint line_cnt, cur_line;
@@ -393,8 +392,6 @@ void oc_properties_options(GtkWidget *dlg, OragePlugin *clock)
 
     /* lines */
     line_cnt = g_list_length(clock->lines);
-    def_style = gtk_widget_get_default_style();
-    def_font = pango_font_description_to_string(def_style->font_desc);
 
     cur_line = 0;
     for (tmp_list = g_list_first(clock->lines);
@@ -415,12 +412,11 @@ void oc_properties_options(GtkWidget *dlg, OragePlugin *clock)
                     _("Enter any valid strftime function parameter."));
         oc_table_add(table, entry, 1, cur_line);
 
-        if (line->font->len) {
-            font = gtk_font_button_new_with_font(line->font->str);
-        }
-        else {
-            font = gtk_font_button_new_with_font(def_font);
-        }
+        if (line->font->len)
+            font = gtk_font_button_new_with_font (line->font->str);
+        else
+            font = gtk_font_button_new ();
+        
         g_signal_connect(G_OBJECT(font), "font-set"
                 , G_CALLBACK(oc_line_font_changed), line);
         oc_table_add(table, font, 2, cur_line);
