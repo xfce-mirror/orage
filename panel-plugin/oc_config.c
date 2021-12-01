@@ -354,7 +354,7 @@ void oc_properties_options(GtkWidget *dlg, OragePlugin *clock)
     GtkWidget *frame, *cb, *label, *entry, *font, *button;
     gchar tmp[100];
     GtkWidget *table, *toolbar, *vbox;
-    GtkToolItem *tool_button;
+    GtkWidget *tool_button;
     gint line_cnt, cur_line;
     ClockLine *line;
     GList   *tmp_list;
@@ -423,31 +423,27 @@ void oc_properties_options(GtkWidget *dlg, OragePlugin *clock)
 
         toolbar = gtk_toolbar_new();
         if (line_cnt < OC_MAX_LINES) { /* no real reason to limit this though */
-            tool_button = gtk_tool_button_new_from_stock(GTK_STOCK_ADD);
-            gtk_toolbar_insert(GTK_TOOLBAR(toolbar), tool_button, -1);
+            tool_button = orage_toolbar_append_button (toolbar, "list-add",
+                                                       "Add line", -1);
             g_signal_connect(tool_button, "clicked"
                     , G_CALLBACK(oc_new_line), line);
         }
         if (line_cnt > 1) { /* do not delete last line */
-            tool_button = gtk_tool_button_new_from_stock(GTK_STOCK_DELETE);
-            gtk_toolbar_insert(GTK_TOOLBAR(toolbar), tool_button, -1);
+            tool_button = orage_toolbar_append_button (toolbar, "list-remove",
+                                                       "Remove line", -1);
             g_signal_connect(tool_button, "clicked"
                     , G_CALLBACK(oc_delete_line), line);
             /* we do not need these if we only have 1 line */
-            tool_button = gtk_tool_button_new_from_stock(GTK_STOCK_GO_UP);
-            gtk_toolbar_insert(GTK_TOOLBAR(toolbar), tool_button, -1);
+            tool_button = orage_toolbar_append_button (toolbar, "go-up",
+                                                       "Move up", -1);
             g_signal_connect(tool_button, "clicked"
                     , G_CALLBACK(oc_move_up_line), line);
-            tool_button = gtk_tool_button_new_from_stock(GTK_STOCK_GO_DOWN);
-            gtk_toolbar_insert(GTK_TOOLBAR(toolbar), tool_button, -1);
+            tool_button = orage_toolbar_append_button (toolbar, "go-down",
+                                                       "Move down", -1);
             g_signal_connect(tool_button, "clicked"
                     , G_CALLBACK(oc_move_down_line), line);
         }
         oc_table_add(table, toolbar, 3, cur_line);
-
-        /*
-        button = gtk_button_new_from_stock(GTK_STOCK_DELETE);
-        */
     }
 
     /* Tooltip hint */
