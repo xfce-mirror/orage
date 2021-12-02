@@ -470,17 +470,19 @@ void oc_instructions(GtkWidget *dlg, OragePlugin *clock)
     GtkWidget *hbox, *vbox, *label, *image;
 
     /* Instructions */
-    hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+    hbox = gtk_grid_new ();
     vbox = gtk_dialog_get_content_area(GTK_DIALOG(dlg));
     gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 6);
 
-    image = gtk_image_new_from_stock(GTK_STOCK_DIALOG_INFO, GTK_ICON_SIZE_DND);
-    gtk_misc_set_alignment(GTK_MISC(image), 0.5f, 0.0f);
-    gtk_box_pack_start(GTK_BOX(hbox), image, FALSE, FALSE, 0);
+    image = gtk_image_new_from_icon_name ("dialog-information",
+                                          GTK_ICON_SIZE_DND);
+    g_object_set (image, "xalign", 0.5f, "yalign", 0.0f, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), image, NULL, GTK_POS_RIGHT, 1, 1);
 
     label = gtk_label_new(_("This program uses strftime function to get time.\nUse any valid code to get time in the format you prefer.\nSome common codes are:\n\t%A = weekday\t\t\t%B = month\n\t%c = date & time\t\t%R = hour & minute\n\t%V = week number\t\t%Z = timezone in use\n\t%H = hours \t\t\t\t%M = minute\n\t%X = local time\t\t\t%x = local date"));
-    gtk_misc_set_alignment(GTK_MISC(label), 0.0f, 0.0f);
-    gtk_box_pack_start(GTK_BOX(hbox), label, TRUE, TRUE, 0);
+    g_object_set (label, "xalign", 0.0, "yalign", 0.0,
+                         "hexpand", TRUE, "halign", GTK_ALIGN_FILL, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
     
     (void)clock;
 }
@@ -519,7 +521,7 @@ void oc_properties_dialog(XfcePanelPlugin *plugin, OragePlugin *clock)
             GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(plugin))),
             GTK_DIALOG_DESTROY_WITH_PARENT |
             GTK_UI_MANAGER_SEPARATOR,
-            GTK_STOCK_CLOSE, GTK_RESPONSE_OK,
+            _("Close"), GTK_RESPONSE_OK,
             NULL);
     
     g_object_set_data(G_OBJECT(plugin), "dialog", dlg);
