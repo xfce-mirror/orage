@@ -164,7 +164,7 @@ static void oc_tooltip_set(OragePlugin *clock)
 #if 0
         gtk_widget_set_tooltip_text (GTK_WIDGET(clock->plugin),res);
 #else
-#warning "TODO: check me"
+#warning "TODO: fix tooltip text"
 #endif
         g_strlcpy (clock->tooltip_prev, res, sizeof (clock->tooltip_prev));
     }
