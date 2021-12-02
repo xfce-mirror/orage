@@ -107,4 +107,3 @@ void oc_set_line(OragePlugin *clock, ClockLine *clock_line, int pos);
 ClockLine * oc_add_new_line(OragePlugin *clock, const char *data, const char *font, int pos);
 void oc_reorganize_lines(OragePlugin *clock);
 void oc_construct(XfcePanelPlugin *plugin);
-static void orage_plugin_construct(XfcePanelPlugin *panel_plugin);
