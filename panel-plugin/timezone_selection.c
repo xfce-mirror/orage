@@ -300,7 +300,7 @@ gboolean orage_timezone_button_clicked(GtkButton *button, GtkWindow *parent
                 , _("UTC"), 2
                 , _("floating"), 3
                 , _(local_tz), 4
-                , GTK_STOCK_OK, GTK_RESPONSE_ACCEPT
+                , "_OK", GTK_RESPONSE_ACCEPT
                 , NULL);
     else
         window =  gtk_dialog_new_with_buttons(_("Pick timezone")
@@ -308,7 +308,7 @@ gboolean orage_timezone_button_clicked(GtkButton *button, GtkWindow *parent
                 , GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT
                 , _("Change mode"), 1
                 , _("UTC"), 2
-                , GTK_STOCK_OK, GTK_RESPONSE_ACCEPT
+                , "_OK", GTK_RESPONSE_ACCEPT
                 , NULL);
     sw = gtk_scrolled_window_new(NULL, NULL);
     gtk_container_add(GTK_CONTAINER(sw), tree);
