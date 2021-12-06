@@ -34,6 +34,7 @@
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
 
+#include <libxfce4ui/libxfce4ui.h>
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4panel/libxfce4panel.h>
 #include <libxfce4panel/xfce-panel-plugin-provider.h>
@@ -884,26 +885,26 @@ static void orage_plugin_init (OragePlugin *plugin)
 
 static void orage_plugin_construct (XfcePanelPlugin *panel_plugin)
 {
-  OragePlugin     *plugin = XFCE_ORAGE_PLUGIN (panel_plugin);
+    OragePlugin *plugin = XFCE_ORAGE_PLUGIN (panel_plugin);
 #if 0
-  const PanelProperty  properties[] =
-  {
-    { NULL }
-  };
+    const PanelProperty  properties[] =
+    {
+        { NULL }
+    };
 #endif
-  /* show the properties dialog */
-  xfce_panel_plugin_menu_show_configure (XFCE_PANEL_PLUGIN (plugin));
+    /* show the properties dialog */
+    xfce_panel_plugin_menu_show_configure (XFCE_PANEL_PLUGIN (plugin));
 
-  /* connect all properties */
-  // PANEL_UTILS_LINK_4UI
+    if (xfce_titled_dialog_get_type () == 0)
+        return;
+  
 #if 0
-  panel_properties_bind (NULL, G_OBJECT (plugin),
-                         xfce_panel_plugin_get_property_base (panel_plugin),
-                         properties, FALSE);
+    panel_properties_bind (NULL, G_OBJECT (plugin),
+                           xfce_panel_plugin_get_property_base (panel_plugin),
+                           properties, FALSE);
 #endif
-
-  /* make sure the plugin is drawn */
-  gtk_widget_queue_draw (GTK_WIDGET (panel_plugin));
+    /* make sure the plugin is drawn */
+    gtk_widget_queue_draw (GTK_WIDGET (panel_plugin));
 }
 
 /* Register with the panel */

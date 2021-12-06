@@ -4,21 +4,23 @@ endif
 
 plugindir = $(libdir)/xfce4/panel/plugins
 
-liborageclock_la_CFLAGS =					\
-	-DPACKAGE_DATA_DIR=\"$(datadir)\"				\
-	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"			\
-	$(LIBXFCE4PANEL_CFLAGS)
+liborageclock_la_CFLAGS =						    \
+	-DPACKAGE_DATA_DIR=\"$(datadir)\"				    \
+	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"				    \
+	$(LIBXFCE4PANEL_CFLAGS)						    \
+	$(LIBXFCE4UI_CFLAGS)
 
-liborageclock_la_LDFLAGS =					\
-	-avoid-version							\
-	-module									\
-	-no-undefined 							\
+liborageclock_la_LDFLAGS =						    \
+	-avoid-version							    \
+	-module								    \
+	-no-undefined							    \
 	-export-symbols-regex '^xfce_panel_module_(preinit|init|construct)' \
 	$(PLATFORM_LDFLAGS)
 
-liborageclock_la_LIBADD =					\
-	$(LIBXFCE4PANEL_LIBS)					\
-	$(LIBX11_LIBS)						\
+liborageclock_la_LIBADD =						    \
+	$(LIBXFCE4PANEL_LIBS)						    \
+	$(LIBXFCE4UI_LIBS)						    \
+	$(LIBX11_LIBS)							    \
 	$(top_builddir)/src/liborage.la
 
 liborageclock_la_SOURCES =					\
