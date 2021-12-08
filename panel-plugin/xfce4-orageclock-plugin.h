@@ -91,7 +91,7 @@ struct _ClockLine
     OragePlugin *clock; /* pointer back to main clock structure */
 };
 
-void oc_properties_dialog(XfcePanelPlugin *plugin, OragePlugin *clock);
+void oc_properties_dialog (XfcePanelPlugin *plugin);
 
 void oc_show_frame_set(OragePlugin *clock);
 void oc_fg_set(OragePlugin *clock);

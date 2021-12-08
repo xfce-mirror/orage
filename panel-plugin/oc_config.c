@@ -169,8 +169,8 @@ static void oc_recreate_properties_options(OragePlugin *clock)
     GtkWidget *dialog, *frame;
 
 #if 0
-    dialog = g_object_get_data(G_OBJECT(clock->plugin), "dialog");
-    frame  = g_object_get_data(G_OBJECT(clock->plugin), "properties_frame");
+    dialog = g_object_get_data (G_OBJECT (clock), "dialog");
+    frame  = g_object_get_data (G_OBJECT (clock), "properties_frame");
 #else
 #warning "TODO: check me"
 #endif
@@ -490,8 +490,8 @@ void oc_instructions(GtkWidget *dlg, OragePlugin *clock)
 static void oc_dialog_response(GtkWidget *dlg, int response, OragePlugin *clock)
 {
 #if 0
-    g_object_set_data(G_OBJECT(clock->plugin), "dialog", NULL);
-    g_object_set_data(G_OBJECT(clock->plugin), "properties_frame", NULL);
+    g_object_set_data (G_OBJECT (clock), "dialog", NULL);
+    g_object_set_data (G_OBJECT (clock), "properties_frame", NULL);
 #else
 #warning "TODO: check me"
 #endif
@@ -507,8 +507,9 @@ static void oc_dialog_response(GtkWidget *dlg, int response, OragePlugin *clock)
     (void)response;
 }
 
-void oc_properties_dialog(XfcePanelPlugin *plugin, OragePlugin *clock)
+void oc_properties_dialog (XfcePanelPlugin *plugin)
 {
+    OragePlugin *clock = XFCE_ORAGE_PLUGIN (plugin);
     GtkWidget *dlg;
 
     xfce_panel_plugin_block_menu(plugin);

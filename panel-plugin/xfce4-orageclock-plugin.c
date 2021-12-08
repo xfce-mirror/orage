@@ -229,9 +229,11 @@ void oc_start_timer(OragePlugin *clock)
 {
     gint delay_time; /* this is used to set the clock start time correct */
 
-    /*
-    g_message("oc_start_timer: (%s) interval %d  %d:%d:%d", clock->tooltip_prev, clock->interval, clock->now.tm_hour, clock->now.tm_min, clock->now.tm_sec);
-    */
+#if 0
+    g_debug ("oc_start_timer: (%s) interval %d  %d:%d:%d", clock->tooltip_prev,
+             clock->interval, clock->now.tm_hour, clock->now.tm_min,
+             clock->now.tm_sec);
+#endif
     /* stop the clock refresh since we will start it again here soon */
     if (clock->timeout_id) {
         g_source_remove(clock->timeout_id);
@@ -460,8 +462,10 @@ static gboolean on_button_press_event_cb(GtkWidget *widget
 
 /* Interface Implementation */
 
-static gboolean oc_set_size(XfcePanelPlugin *plugin, int size, OragePlugin *clock)
+static gboolean oc_set_size (XfcePanelPlugin *plugin, int size)
 {
+    OragePlugin *clock = XFCE_ORAGE_PLUGIN (plugin);
+    
     oc_update_size(clock, size);
     if (clock->first_call) {
     /* default is horizontal panel. 
@@ -483,8 +487,9 @@ static gboolean oc_set_size(XfcePanelPlugin *plugin, int size, OragePlugin *cloc
     return(TRUE);
 }
 
-static void oc_free_data(XfcePanelPlugin *plugin, OragePlugin *clock)
+static void oc_free_data (XfcePanelPlugin *plugin)
 {
+    OragePlugin *clock = XFCE_ORAGE_PLUGIN (plugin);
     GtkWidget *dlg = g_object_get_data(G_OBJECT(plugin), "dialog");
 
     if (dlg)
@@ -495,7 +500,6 @@ static void oc_free_data(XfcePanelPlugin *plugin, OragePlugin *clock)
     }
     g_list_free(clock->lines);
     g_free(clock->TZ_orig);
-    g_free(clock);
 }
 
 static GdkRGBA oc_rc_read_color (XfceRc *rc, char *par, char *def)
@@ -682,7 +686,7 @@ void oc_write_rc_file(XfcePanelPlugin *plugin, OragePlugin *clock)
 /* Create widgets and connect to signals */
 OragePlugin *orage_oc_new(XfcePanelPlugin *plugin)
 {
-    OragePlugin *clock = g_new0(OragePlugin, 1);
+    OragePlugin *clock = XFCE_ORAGE_PLUGIN (plugin);
 
     clock->first_call = TRUE; /* this is starting point */
 
@@ -817,15 +821,6 @@ void oc_construct(XfcePanelPlugin *plugin)
     xfce_panel_plugin_add_action_widget(plugin, clock->ebox);
     
     xfce_panel_plugin_menu_show_configure(plugin);
-
-    g_signal_connect(plugin, "configure-plugin", 
-            G_CALLBACK(oc_properties_dialog), clock);
-
-    g_signal_connect(plugin, "size-changed", 
-            G_CALLBACK(oc_set_size), clock);
-    
-    g_signal_connect(plugin, "free-data", 
-            G_CALLBACK(oc_free_data), clock);
     
     g_signal_connect(plugin, "save", 
             G_CALLBACK(oc_write_rc_file), clock);
@@ -837,44 +832,45 @@ void oc_construct(XfcePanelPlugin *plugin)
 
 static void orage_plugin_class_init (OragePluginClass *klass)
 {
-  XfcePanelPluginClass *plugin_class;
+    XfcePanelPluginClass *plugin_class;
 #if 0
-  GObjectClass         *gobject_class;
-  GtkWidgetClass       *widget_class;
+    GtkWidgetClass       *widget_class;
+    GObjectClass         *gobject_class;
 
-  gobject_class = G_OBJECT_CLASS (klass);
-  gobject_class->set_property = separator_plugin_set_property;
-  gobject_class->get_property = separator_plugin_get_property;
+    gobject_class = G_OBJECT_CLASS (klass);
+    gobject_class->set_property = separator_plugin_set_property;
+    gobject_class->get_property = separator_plugin_get_property;
 
-  widget_class = GTK_WIDGET_CLASS (klass);
-  widget_class->draw = separator_plugin_draw;
+    widget_class = GTK_WIDGET_CLASS (klass);
+    widget_class->draw = separator_plugin_draw;
 #endif
 
-  plugin_class = XFCE_PANEL_PLUGIN_CLASS (klass);
+    plugin_class = XFCE_PANEL_PLUGIN_CLASS (klass);
 #if 0
-  plugin_class->construct = separator_plugin_construct;
+    plugin_class->construct = separator_plugin_construct;
 #endif
-  plugin_class->construct = oc_construct;
+    plugin_class->construct = oc_construct;
+    plugin_class->free_data = oc_free_data;
+    plugin_class->size_changed = oc_set_size;
+    plugin_class->configure_plugin = oc_properties_dialog;
 #if 0
-  plugin_class->size_changed = separator_plugin_size_changed;
-  plugin_class->configure_plugin = separator_plugin_configure_plugin;
-  plugin_class->orientation_changed = separator_plugin_orientation_changed;
-
-  g_object_class_install_property (gobject_class,
-                                   PROP_STYLE,
-                                   g_param_spec_uint ("style",
-                                                      NULL, NULL,
-                                                      SEPARATOR_PLUGIN_STYLE_MIN,
-                                                      SEPARATOR_PLUGIN_STYLE_MAX,
-                                                      SEPARATOR_PLUGIN_STYLE_DEFAULT,
-                                                      G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
-
-  g_object_class_install_property (gobject_class,
-                                   PROP_EXPAND,
-                                   g_param_spec_boolean ("expand",
-                                                          NULL, NULL,
-                                                          FALSE,
-                                                          G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+    plugin_class->orientation_changed = separator_plugin_orientation_changed;
+    
+    g_object_class_install_property (gobject_class,
+                                     PROP_STYLE,
+                                     g_param_spec_uint ("style",
+                                                        NULL, NULL,
+                                                        SEPARATOR_PLUGIN_STYLE_MIN,
+                                                        SEPARATOR_PLUGIN_STYLE_MAX,
+                                                        SEPARATOR_PLUGIN_STYLE_DEFAULT,
+                                                        G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+    
+    g_object_class_install_property (gobject_class,
+                                     PROP_EXPAND,
+                                     g_param_spec_boolean ("expand",
+                                                           NULL, NULL,
+                                                           FALSE,
+                                                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 #endif
 }
 
