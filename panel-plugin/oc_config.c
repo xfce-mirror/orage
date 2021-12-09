@@ -128,11 +128,7 @@ static void oc_timezone_selected(GtkButton *button, OragePlugin *clock)
     GtkWidget *dialog;
     gchar *filename = NULL;
 
-#if 0
-    dialog = g_object_get_data(G_OBJECT(clock->plugin), "dialog");
-#else
-#warning "TODO: check me"
-#endif
+    dialog = g_object_get_data (G_OBJECT (clock), "dialog");
     if (orage_timezone_button_clicked(button, GTK_WINDOW(dialog)
             , &filename, FALSE, NULL)) {
         g_string_assign(clock->timezone, filename);
@@ -168,8 +164,8 @@ static void oc_recreate_properties_options(OragePlugin *clock)
 {
     GtkWidget *dialog, *frame;
 
-#if 0
     dialog = g_object_get_data (G_OBJECT (clock), "dialog");
+#if 0
     frame  = g_object_get_data (G_OBJECT (clock), "properties_frame");
 #else
 #warning "TODO: check me"
@@ -489,8 +485,9 @@ void oc_instructions(GtkWidget *dlg, OragePlugin *clock)
 
 static void oc_dialog_response(GtkWidget *dlg, int response, OragePlugin *clock)
 {
-#if 0
     g_object_set_data (G_OBJECT (clock), "dialog", NULL);
+    
+#if 0
     g_object_set_data (G_OBJECT (clock), "properties_frame", NULL);
 #else
 #warning "TODO: check me"
