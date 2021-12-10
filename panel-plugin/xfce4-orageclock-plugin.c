@@ -162,11 +162,7 @@ static void oc_tooltip_set(OragePlugin *clock)
 
     oc_utf8_strftime(res, sizeof(res), clock->tooltip_data->str, &clock->now);
     if (strcmp(res,  clock->tooltip_prev)) {
-#if 0
-        gtk_widget_set_tooltip_text (GTK_WIDGET(clock->plugin),res);
-#else
-#warning "TODO: fix tooltip text"
-#endif
+        gtk_widget_set_tooltip_text (GTK_WIDGET (clock), res);
         g_strlcpy (clock->tooltip_prev, res, sizeof (clock->tooltip_prev));
     }
 }
