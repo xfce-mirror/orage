@@ -480,8 +480,8 @@ static void oc_dialog_response(GtkWidget *dlg, int response, OragePlugin *clock)
     g_object_set_data (G_OBJECT (clock), "dialog", NULL);
     g_object_set_data (G_OBJECT (clock), "properties_frame", NULL);
     gtk_widget_destroy(dlg);
+    xfce_panel_plugin_unblock_menu (XFCE_PANEL_PLUGIN (clock));
 #if 0
-    xfce_panel_plugin_unblock_menu(clock->plugin);
     oc_write_rc_file(clock->plugin, clock);
 #else
 #warning "TODO: check me"
