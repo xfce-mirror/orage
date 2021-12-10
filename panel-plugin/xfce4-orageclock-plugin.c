@@ -128,10 +128,7 @@ static void oc_set_lines_to_panel(OragePlugin *clock)
     if (clock->lines_vertically)
         clock->mbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
     else
-    {
         clock->mbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-        g_object_set (clock->mbox, "column-homogeneous", TRUE, NULL);
-    }
 
     gtk_widget_show(clock->mbox);
     gtk_container_add(GTK_CONTAINER(clock->frame), clock->mbox);
