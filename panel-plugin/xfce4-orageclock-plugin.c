@@ -596,7 +596,7 @@ static void oc_read_rc_file(XfcePanelPlugin *plugin, OragePlugin *clock)
     xfce_rc_close(rc);
 }
 
-void oc_write_rc_file(XfcePanelPlugin *plugin, OragePlugin *clock)
+void oc_write_rc_file (OragePlugin *clock)
 {
     gchar  *file;
     gchar  *colour_str;
@@ -605,6 +605,7 @@ void oc_write_rc_file(XfcePanelPlugin *plugin, OragePlugin *clock)
     int     i;
     ClockLine *line;
     GList   *tmp_list;
+    XfcePanelPlugin *plugin = XFCE_PANEL_PLUGIN (clock);
 
     if (!(file = xfce_panel_plugin_save_location(plugin, TRUE))) {
         g_warning("unable to write rc file");

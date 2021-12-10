@@ -100,7 +100,7 @@ void oc_size_set(OragePlugin *clock);
 void oc_timezone_set(OragePlugin *clock);
 void oc_line_font_set(ClockLine *line);
 void oc_line_rotate(OragePlugin *clock, ClockLine *line);
-void oc_write_rc_file(XfcePanelPlugin *plugin, OragePlugin *clock);
+void oc_write_rc_file(OragePlugin *clock);
 void oc_start_timer(OragePlugin *clock);
 void oc_init_timer(OragePlugin *clock);
 void oc_set_line(OragePlugin *clock, ClockLine *clock_line, int pos);
