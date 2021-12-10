@@ -4,6 +4,9 @@ endif
 
 plugindir = $(libdir)/xfce4/panel/plugins
 
+liborageclock_la_CPPFLAGS =						    \
+	-DG_LOG_DOMAIN=\"orageclock\"
+
 liborageclock_la_CFLAGS =						    \
 	-DPACKAGE_DATA_DIR=\"$(datadir)\"				    \
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"				    \
