@@ -165,11 +165,7 @@ static void oc_recreate_properties_options(OragePlugin *clock)
     GtkWidget *dialog, *frame;
 
     dialog = g_object_get_data (G_OBJECT (clock), "dialog");
-#if 0
     frame  = g_object_get_data (G_OBJECT (clock), "properties_frame");
-#else
-#warning "TODO: check me"
-#endif
     gtk_widget_destroy(frame);
     oc_properties_options(dialog, clock);
     gtk_widget_show_all(dialog);
@@ -369,11 +365,7 @@ void oc_properties_options(GtkWidget *dlg, OragePlugin *clock)
        correct position */
     gtk_box_reorder_child(GTK_BOX(vbox), frame, 2);
     /* this is needed when we restructure this frame */
-#if 0
-    g_object_set_data(G_OBJECT(clock->plugin), "properties_frame", frame);
-#else
-#warning "TODO: check me"
-#endif
+    g_object_set_data (G_OBJECT (clock), "properties_frame", frame);
 
     /* timezone */
     label = gtk_label_new(_("set timezone to:"));
@@ -486,12 +478,7 @@ void oc_instructions(GtkWidget *dlg, OragePlugin *clock)
 static void oc_dialog_response(GtkWidget *dlg, int response, OragePlugin *clock)
 {
     g_object_set_data (G_OBJECT (clock), "dialog", NULL);
-    
-#if 0
     g_object_set_data (G_OBJECT (clock), "properties_frame", NULL);
-#else
-#warning "TODO: check me"
-#endif
     gtk_widget_destroy(dlg);
 #if 0
     xfce_panel_plugin_unblock_menu(clock->plugin);
