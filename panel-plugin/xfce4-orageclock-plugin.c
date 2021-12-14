@@ -347,6 +347,10 @@ void oc_init_timer(OragePlugin *clock)
 static void oc_update_size (OragePlugin *clock, gint size)
 {
     if (size > 26) {
+        /* FIXME: as plugin is not yet displayed, and width/heigh is not
+         * calculated, then following line give negative width warning
+         * 'Gtk-WARNING **: 10:00:26.812: gtk_widget_size_allocate(): attempt to allocate widget with width -3 and height 25'
+         */
         gtk_container_set_border_width(GTK_CONTAINER(clock->frame), 2);
     }
     else {

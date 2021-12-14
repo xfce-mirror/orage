@@ -50,6 +50,9 @@ void oc_properties_options(GtkWidget *dlg, OragePlugin *clock);
 
 static void oc_show_frame_toggled(GtkToggleButton *cb, OragePlugin *clock)
 {
+    /* FIXME: following Gtk-WARNING will be printed when frame is enabled:
+     * "Negative content width -1 (allocation 1, extents 1x1) while allocating gadget (node border, owner GtkFrame)"
+     */
     clock->show_frame = gtk_toggle_button_get_active(cb);
     oc_show_frame_set(clock);
 }
