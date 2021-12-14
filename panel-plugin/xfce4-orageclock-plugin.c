@@ -344,7 +344,7 @@ void oc_init_timer(OragePlugin *clock)
     oc_start_timer(clock);
 }
 
-static void oc_update_size(OragePlugin *clock, int size)
+static void oc_update_size (OragePlugin *clock, gint size)
 {
     if (size > 26) {
         gtk_container_set_border_width(GTK_CONTAINER(clock->frame), 2);
@@ -455,7 +455,7 @@ static gboolean on_button_press_event_cb(GtkWidget *widget
 
 /* Interface Implementation */
 
-static gboolean oc_set_size (XfcePanelPlugin *plugin, int size)
+static gboolean oc_set_size (XfcePanelPlugin *plugin, gint size)
 {
     OragePlugin *clock = XFCE_ORAGE_PLUGIN (plugin);
     
