@@ -480,11 +480,13 @@ void oc_instructions(GtkWidget *dlg, OragePlugin *clock)
 
 static void oc_dialog_response(GtkWidget *dlg, int response, OragePlugin *clock)
 {
+    XfcePanelPlugin *plugin = XFCE_PANEL_PLUGIN (clock);
+    
     g_object_set_data (G_OBJECT (clock), "dialog", NULL);
     g_object_set_data (G_OBJECT (clock), "properties_frame", NULL);
     gtk_widget_destroy(dlg);
-    xfce_panel_plugin_unblock_menu (XFCE_PANEL_PLUGIN (clock));
-    oc_write_rc_file (clock);
+    xfce_panel_plugin_unblock_menu (plugin);
+    oc_write_rc_file (plugin);
     oc_init_timer(clock);
     
     (void)response;

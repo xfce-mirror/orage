@@ -592,7 +592,7 @@ static void oc_read_rc_file(XfcePanelPlugin *plugin, OragePlugin *clock)
     xfce_rc_close(rc);
 }
 
-void oc_write_rc_file (OragePlugin *clock)
+void oc_write_rc_file (XfcePanelPlugin *plugin)
 {
     gchar  *file;
     gchar  *colour_str;
@@ -601,8 +601,8 @@ void oc_write_rc_file (OragePlugin *clock)
     int     i;
     ClockLine *line;
     GList   *tmp_list;
-    XfcePanelPlugin *plugin = XFCE_PANEL_PLUGIN (clock);
-
+    OragePlugin *clock = XFCE_ORAGE_PLUGIN (plugin);
+    
     if (!(file = xfce_panel_plugin_save_location(plugin, TRUE))) {
         g_warning("unable to write rc file");
         return;
@@ -819,9 +819,6 @@ void oc_construct(XfcePanelPlugin *plugin)
     xfce_panel_plugin_add_action_widget(plugin, clock->ebox);
     
     xfce_panel_plugin_menu_show_configure(plugin);
-    
-    g_signal_connect(plugin, "save", 
-            G_CALLBACK(oc_write_rc_file), clock);
 
     /* callback for calendar and globaltime popup */
     g_signal_connect(clock->ebox, "button-press-event",
@@ -837,6 +834,7 @@ static void orage_plugin_class_init (OragePluginClass *klass)
     plugin_class->free_data = oc_free_data;
     plugin_class->size_changed = oc_set_size;
     plugin_class->configure_plugin = oc_properties_dialog;
+    plugin_class->save = oc_write_rc_file;
 }
 
 static void orage_plugin_init (OragePlugin *plugin)
