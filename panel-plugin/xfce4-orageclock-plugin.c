@@ -34,7 +34,6 @@
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
 
-#include <libxfce4ui/libxfce4ui.h>
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4panel/libxfce4panel.h>
 #include <libxfce4panel/xfce-panel-plugin-provider.h>
@@ -812,9 +811,10 @@ void oc_construct(XfcePanelPlugin *plugin)
 
     oc_init_timer(clock);
 
-    /* we are called through size-changed trigger
+    /* we are called through size-changed trigger */
+#if 0
     oc_update_size(clock, xfce_panel_plugin_get_size(plugin));
-    */
+#endif
 
     xfce_panel_plugin_add_action_widget(plugin, clock->ebox);
     
@@ -831,45 +831,12 @@ void oc_construct(XfcePanelPlugin *plugin)
 static void orage_plugin_class_init (OragePluginClass *klass)
 {
     XfcePanelPluginClass *plugin_class;
-#if 0
-    GtkWidgetClass       *widget_class;
-    GObjectClass         *gobject_class;
-
-    gobject_class = G_OBJECT_CLASS (klass);
-    gobject_class->set_property = separator_plugin_set_property;
-    gobject_class->get_property = separator_plugin_get_property;
-
-    widget_class = GTK_WIDGET_CLASS (klass);
-    widget_class->draw = separator_plugin_draw;
-#endif
 
     plugin_class = XFCE_PANEL_PLUGIN_CLASS (klass);
-#if 0
-    plugin_class->construct = separator_plugin_construct;
-#endif
     plugin_class->construct = oc_construct;
     plugin_class->free_data = oc_free_data;
     plugin_class->size_changed = oc_set_size;
     plugin_class->configure_plugin = oc_properties_dialog;
-#if 0
-    plugin_class->orientation_changed = separator_plugin_orientation_changed;
-    
-    g_object_class_install_property (gobject_class,
-                                     PROP_STYLE,
-                                     g_param_spec_uint ("style",
-                                                        NULL, NULL,
-                                                        SEPARATOR_PLUGIN_STYLE_MIN,
-                                                        SEPARATOR_PLUGIN_STYLE_MAX,
-                                                        SEPARATOR_PLUGIN_STYLE_DEFAULT,
-                                                        G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
-    
-    g_object_class_install_property (gobject_class,
-                                     PROP_EXPAND,
-                                     g_param_spec_boolean ("expand",
-                                                           NULL, NULL,
-                                                           FALSE,
-                                                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
-#endif
 }
 
 static void orage_plugin_init (OragePlugin *plugin)
@@ -877,33 +844,4 @@ static void orage_plugin_init (OragePlugin *plugin)
     (void)plugin;
 }
 
-static void orage_plugin_construct (XfcePanelPlugin *panel_plugin)
-{
-    OragePlugin *plugin = XFCE_ORAGE_PLUGIN (panel_plugin);
-#if 0
-    const PanelProperty  properties[] =
-    {
-        { NULL }
-    };
-#endif
-    /* show the properties dialog */
-    xfce_panel_plugin_menu_show_configure (XFCE_PANEL_PLUGIN (plugin));
-
-    if (xfce_titled_dialog_get_type () == 0)
-        return;
-  
-#if 0
-    panel_properties_bind (NULL, G_OBJECT (plugin),
-                           xfce_panel_plugin_get_property_base (panel_plugin),
-                           properties, FALSE);
-#endif
-    /* make sure the plugin is drawn */
-    gtk_widget_queue_draw (GTK_WIDGET (panel_plugin));
-}
-
-/* Register with the panel */
-#if 1
 XFCE_PANEL_DEFINE_PLUGIN (OragePlugin, orage_plugin)
-#else   
-XFCE_PANEL_PLUGIN_REGISTER (oc_construct);
-#endif
