@@ -7,6 +7,9 @@ Version 4.15.1 (DEVELOPEMENT VERSION NOT RELEASED):
         * Replaced GlobalTime background and foreground colours from GdkColor to
           GdkRGBA (old colours from GlobalTime configuration is not valid
           anymore)
+	* Ported panel-plugin to GTK3.
+		* Changed to plugin to use panel plugin class. Initial patches
+		  contributed by Patronos.
 
 Version 4.15.0 (Thu Oct 7 21:38:06 2021 +0300):
     * Most code ported to GTK3, tested only on FreeBSD. This is first public
