@@ -1,22 +1,20 @@
-# $Id$
+AUTOMAKE_OPTIONS = 1.8 dist-bzip2
 
 if INCLUDED_LIBICAL
-LIBICAL_SUBDIR=						\
-	libical
+LIBICAL_SUBDIR = libical
 endif
 
-SUBDIRS = 							\
-	$(LIBICAL_SUBDIR)				\
-	doc								\
-	icons							\
-	po								\
-	sounds							\
-	src								\
-	panel-plugin					\
-	globaltime						\
-	tz_convert						\
-	plugin
-
+SUBDIRS = $(LIBICAL_SUBDIR)	\
+	doc			\
+	icons			\
+	po			\
+	sounds			\
+	src			\
+	globaltime		\
+	plugin			\
+	panel-plugin		\
+	tz_convert
+	
 desktopdir = $(datadir)/applications
 desktop_in_files = xfcalendar.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
@@ -44,10 +42,6 @@ DISTCLEANFILES =							\
 	intltool-update							\
 	$(desktop_DATA)							\
 	$(service_DATA)
-
-AUTOMAKE_OPTIONS =							\
-	1.8							        	\
-	dist-bzip2
 
 distclean-local:
 	rm -rf *.cache *~ *.spec

@@ -42,67 +42,72 @@
 #include "timezone_selection.h"
 
 
-void oc_properties_options(GtkWidget *dlg, Clock *clock);
+void oc_properties_options(GtkWidget *dlg, OragePlugin *clock);
 
 /* -------------------------------------------------------------------- *
  *                        Configuration Dialog                          *
  * -------------------------------------------------------------------- */
 
-static void oc_show_frame_toggled(GtkToggleButton *cb, Clock *clock)
+static void oc_show_frame_toggled(GtkToggleButton *cb, OragePlugin *clock)
 {
+    /* FIXME: following Gtk-WARNING will be printed when frame is enabled:
+     * "Negative content width -1 (allocation 1, extents 1x1) while allocating gadget (node border, owner GtkFrame)"
+     */
     clock->show_frame = gtk_toggle_button_get_active(cb);
     oc_show_frame_set(clock);
 }
 
-static void oc_set_fg_toggled(GtkToggleButton *cb, Clock *clock)
+static void oc_set_fg_toggled(GtkToggleButton *cb, OragePlugin *clock)
 {
     clock->fg_set = gtk_toggle_button_get_active(cb);
     oc_fg_set(clock);
 }
 
-static void oc_fg_color_changed(GtkWidget *widget, Clock *clock)
+static void oc_fg_color_changed (GtkColorButton *color_button,
+                                 OragePlugin *clock)
 {
-    gtk_color_button_get_color((GtkColorButton *)widget, &clock->fg);
+    gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (color_button), &clock->fg);
     oc_fg_set(clock);
 }
 
-static void oc_set_bg_toggled(GtkToggleButton *cb, Clock *clock)
+static void oc_set_bg_toggled(GtkToggleButton *cb, OragePlugin *clock)
 {
     clock->bg_set = gtk_toggle_button_get_active(cb);
     oc_bg_set(clock);
 }
 
-static void oc_bg_color_changed(GtkWidget *widget, Clock *clock)
+static void oc_bg_color_changed (GtkColorButton *color_button,
+                                 OragePlugin *clock)
 {
-    gtk_color_button_get_color((GtkColorButton *)widget, &clock->bg);
+    gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (color_button), &clock->bg);
     oc_bg_set(clock);
 }
 
-static void oc_set_height_toggled(GtkToggleButton *cb, Clock *clock)
+static void oc_set_height_toggled(GtkToggleButton *cb, OragePlugin *clock)
 {
     clock->height_set = gtk_toggle_button_get_active(cb);
     oc_size_set(clock);
 }
 
-static void oc_set_height_changed(GtkSpinButton *sb, Clock *clock)
+static void oc_set_height_changed(GtkSpinButton *sb, OragePlugin *clock)
 {
     clock->height = gtk_spin_button_get_value_as_int(sb);
     oc_size_set(clock);
 }
 
-static void oc_set_width_toggled(GtkToggleButton *cb, Clock *clock)
+static void oc_set_width_toggled(GtkToggleButton *cb, OragePlugin *clock)
 {
     clock->width_set = gtk_toggle_button_get_active(cb);
     oc_size_set(clock);
 }
 
-static void oc_set_width_changed(GtkSpinButton *sb, Clock *clock)
+static void oc_set_width_changed(GtkSpinButton *sb, OragePlugin *clock)
 {
     clock->width = gtk_spin_button_get_value_as_int(sb);
     oc_size_set(clock);
 }
 
-static void oc_rotation_changed(GtkComboBox *cb, Clock *clock)
+static void oc_rotation_changed(GtkComboBox *cb, OragePlugin *clock)
 {
     GList *tmp_list;
 
@@ -114,19 +119,19 @@ static void oc_rotation_changed(GtkComboBox *cb, Clock *clock)
     }
 }
 
-static void oc_lines_vertically_toggled(GtkToggleButton *cb, Clock *clock)
+static void oc_lines_vertically_toggled(GtkToggleButton *cb, OragePlugin *clock)
 {
     clock->lines_vertically = gtk_toggle_button_get_active(cb);
 
     oc_reorganize_lines(clock);
 }
 
-static void oc_timezone_selected(GtkButton *button, Clock *clock)
+static void oc_timezone_selected(GtkButton *button, OragePlugin *clock)
 {
     GtkWidget *dialog;
     gchar *filename = NULL;
 
-    dialog = g_object_get_data(G_OBJECT(clock->plugin), "dialog");
+    dialog = g_object_get_data (G_OBJECT (clock), "dialog");
     if (orage_timezone_button_clicked(button, GTK_WINDOW(dialog)
             , &filename, FALSE, NULL)) {
         g_string_assign(clock->timezone, filename);
@@ -135,7 +140,7 @@ static void oc_timezone_selected(GtkButton *button, Clock *clock)
     }
 }
 
-static void oc_hib_timing_toggled(GtkToggleButton *cb, Clock *clock)
+static void oc_hib_timing_toggled(GtkToggleButton *cb, OragePlugin *clock)
 {
     clock->hib_timing = gtk_toggle_button_get_active(cb);
 }
@@ -144,23 +149,26 @@ static gboolean oc_line_changed(GtkWidget *entry, GdkEventKey *key
         , GString *data)
 {
     g_string_assign(data, gtk_entry_get_text(GTK_ENTRY(entry)));
+    
+    (void)key;
 
     return(FALSE);
 }
 
 static void oc_line_font_changed(GtkWidget *widget, ClockLine *line)
 {
-    g_string_assign(line->font
-            , gtk_font_button_get_font_name((GtkFontButton *)widget));
-    oc_line_font_set(line);
+    gchar *font = gtk_font_chooser_get_font (GTK_FONT_CHOOSER (widget));
+    g_string_assign (line->font, font);
+    g_free (font);
+    oc_line_font_set (line);
 }
 
-static void oc_recreate_properties_options(Clock *clock)
+static void oc_recreate_properties_options(OragePlugin *clock)
 {
     GtkWidget *dialog, *frame;
 
-    dialog = g_object_get_data(G_OBJECT(clock->plugin), "dialog");
-    frame  = g_object_get_data(G_OBJECT(clock->plugin), "properties_frame");
+    dialog = g_object_get_data (G_OBJECT (clock), "dialog");
+    frame  = g_object_get_data (G_OBJECT (clock), "properties_frame");
     gtk_widget_destroy(frame);
     oc_properties_options(dialog, clock);
     gtk_widget_show_all(dialog);
@@ -168,7 +176,7 @@ static void oc_recreate_properties_options(Clock *clock)
 
 static void oc_new_line(GtkToolButton *toolbutton, ClockLine *line)
 {
-    Clock *clock = line->clock;;
+    OragePlugin *clock = line->clock;
     ClockLine *new_line;
     gint pos;
     pos = g_list_index(clock->lines, line);
@@ -177,11 +185,13 @@ static void oc_new_line(GtkToolButton *toolbutton, ClockLine *line)
     oc_fg_set(clock);
 
     oc_recreate_properties_options(clock);
+    
+    (void)toolbutton;
 }
 
 static void oc_delete_line(GtkToolButton *toolbutton, ClockLine *line)
 {
-    Clock *clock = line->clock;;
+    OragePlugin *clock = line->clock;
 
     /* remove the data from the list and from the panel */
     g_string_free(line->data, TRUE);
@@ -191,11 +201,13 @@ static void oc_delete_line(GtkToolButton *toolbutton, ClockLine *line)
     g_free(line);
 
     oc_recreate_properties_options(clock);
+    
+    (void)toolbutton;
 }
 
 static void oc_move_up_line(GtkToolButton *toolbutton, ClockLine *line)
 {
-    Clock *clock = line->clock;;
+    OragePlugin *clock = line->clock;
     gint pos;
 
     pos = g_list_index(clock->lines, line);
@@ -205,11 +217,13 @@ static void oc_move_up_line(GtkToolButton *toolbutton, ClockLine *line)
     clock->lines = g_list_insert(clock->lines, line, pos);
 
     oc_recreate_properties_options(clock);
+    
+    (void)toolbutton;
 }
 
 static void oc_move_down_line(GtkToolButton *toolbutton, ClockLine *line)
 {
-    Clock *clock = line->clock;;
+    OragePlugin *clock = line->clock;
     gint pos, line_cnt;
 
     line_cnt = g_list_length(clock->lines);
@@ -222,37 +236,35 @@ static void oc_move_down_line(GtkToolButton *toolbutton, ClockLine *line)
     clock->lines = g_list_insert(clock->lines, line, pos);
 
     oc_recreate_properties_options(clock);
+    
+    (void)toolbutton;
 }
 
-static void oc_table_add(GtkWidget *table, GtkWidget *widget, int col, int row)
+static void oc_table_add (GtkWidget *table, GtkWidget *widget,
+                          const int col, const int row)
 {
-    gtk_table_attach(GTK_TABLE(table), widget, col, col+1, row, row+1
-            , GTK_FILL, GTK_FILL, 0, 0);
+    g_object_set (widget, "expand", TRUE, NULL);
+    gtk_grid_attach (GTK_GRID (table), widget, col, row, 1, 1);
 }
 
-static void oc_properties_appearance(GtkWidget *dlg, Clock *clock)
+static void oc_properties_appearance(GtkWidget *dlg, OragePlugin *clock)
 {
-    GtkWidget *frame, *cb, *color, *sb;
-    GdkColor def_fg, def_bg;
-    GtkStyle *def_style;
+    GtkWidget *frame, *cb, *color, *sb, *vbox;
+    GdkRGBA def_fg, def_bg;
     GtkWidget *table;
-    char *clock_rotation_array[3] = {_("No rotation"), _("Rotate left")
-        , _("Rotate right")};
+    const gchar *clock_rotation_array[3] =
+    { _("No rotation"), _("Rotate left") , _("Rotate right")};
 
-
-    table = gtk_table_new(4, 4, FALSE); /* rows, columns */
+    table = gtk_grid_new ();
     gtk_container_set_border_width(GTK_CONTAINER(table), 10);
-    gtk_table_set_row_spacings(GTK_TABLE(table), 6);
-    gtk_table_set_col_spacings(GTK_TABLE(table), 6);
+    g_object_set (table, "row-spacing", 6, "column-spacing", 6,  NULL);
     
-    frame = orage_create_framebox_with_content(_("Appearance"), table);
+    frame = orage_create_framebox_with_content(_("Appearance"), GTK_SHADOW_NONE,
+                                               table);
     gtk_container_set_border_width(GTK_CONTAINER(frame), 6);
-    gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dlg)->vbox), frame, FALSE, FALSE, 0);
+    vbox = gtk_dialog_get_content_area(GTK_DIALOG(dlg));
+    gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
     
-    def_style = gtk_widget_get_default_style();
-    def_fg = def_style->fg[GTK_STATE_NORMAL];
-    def_bg = def_style->bg[GTK_STATE_NORMAL];
-
     /* show frame */
     cb = gtk_check_button_new_with_mnemonic(_("Show _frame"));
     oc_table_add(table, cb, 0, 0);
@@ -265,10 +277,12 @@ static void oc_properties_appearance(GtkWidget *dlg, Clock *clock)
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(cb), clock->fg_set);
     g_signal_connect(cb, "toggled", G_CALLBACK(oc_set_fg_toggled), clock);
 
-    if (!clock->fg_set) {
+    if (!clock->fg_set)
+    {
+        gdk_rgba_parse (&def_fg, "black");
         clock->fg = def_fg;
     }
-    color = gtk_color_button_new_with_color(&clock->fg);
+    color = gtk_color_button_new_with_rgba (&clock->fg);
     oc_table_add(table, color, 1, 1);
     g_signal_connect(G_OBJECT(color), "color-set"
             , G_CALLBACK(oc_fg_color_changed), clock);
@@ -279,10 +293,12 @@ static void oc_properties_appearance(GtkWidget *dlg, Clock *clock)
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(cb), clock->bg_set);
     g_signal_connect(cb, "toggled", G_CALLBACK(oc_set_bg_toggled), clock);
 
-    if (!clock->bg_set) {
+    if (!clock->bg_set)
+    {
+        gdk_rgba_parse (&def_bg, "white");
         clock->bg = def_bg;
     }
-    color = gtk_color_button_new_with_color(&clock->bg);
+    color = gtk_color_button_new_with_rgba (&clock->bg);
     oc_table_add(table, color, 3, 1);
     g_signal_connect(G_OBJECT(color), "color-set"
             , G_CALLBACK(oc_bg_color_changed), clock);
@@ -297,9 +313,8 @@ static void oc_properties_appearance(GtkWidget *dlg, Clock *clock)
     if (!clock->height_set)
         clock->height = 32;
     gtk_spin_button_set_value(GTK_SPIN_BUTTON(sb), (gdouble)clock->height);
-    gtk_tooltips_set_tip(clock->tips, GTK_WIDGET(cb),
-            _("Note that you can not change the height of horizontal panels")
-            , NULL);
+    gtk_widget_set_tooltip_text (GTK_WIDGET(cb),
+            _("Note that you can not change the height of horizontal panels"));
     g_signal_connect((gpointer) sb, "value-changed",
             G_CALLBACK(oc_set_height_changed), clock);
 
@@ -312,9 +327,8 @@ static void oc_properties_appearance(GtkWidget *dlg, Clock *clock)
     if (!clock->width_set)
         clock->width = 70;
     gtk_spin_button_set_value(GTK_SPIN_BUTTON(sb), (gdouble)clock->width);
-    gtk_tooltips_set_tip(clock->tips, GTK_WIDGET(cb),
-            _("Note that you can not change the width of vertical panels")
-            , NULL);
+    gtk_widget_set_tooltip_text (GTK_WIDGET(cb),
+            _("Note that you can not change the width of vertical panels"));
     g_signal_connect((gpointer) sb, "value-changed",
             G_CALLBACK(oc_set_width_changed), clock);
 
@@ -330,37 +344,37 @@ static void oc_properties_appearance(GtkWidget *dlg, Clock *clock)
     g_signal_connect(cb, "toggled", G_CALLBACK(oc_lines_vertically_toggled), clock);
 }
 
-void oc_properties_options(GtkWidget *dlg, Clock *clock)
+void oc_properties_options(GtkWidget *dlg, OragePlugin *clock)
 {
     GtkWidget *frame, *cb, *label, *entry, *font, *button;
-    GtkStyle *def_style;
-    gchar *def_font, tmp[100];
-    GtkWidget *table, *toolbar;
-    GtkToolItem *tool_button;
+    gchar tmp[100];
+    GtkWidget *table, *toolbar, *vbox;
+    GtkWidget *tool_button;
     gint line_cnt, cur_line;
     ClockLine *line;
     GList   *tmp_list;
 
     line_cnt = g_list_length(clock->lines);
-    table = gtk_table_new(3+line_cnt, 4, FALSE);
+    table = gtk_grid_new ();
     gtk_container_set_border_width(GTK_CONTAINER(table), 10);
-    gtk_table_set_row_spacings(GTK_TABLE(table), 6);
-    gtk_table_set_col_spacings(GTK_TABLE(table), 6);
+    g_object_set (table, "row-spacing", 6, "column-spacing", 6,  NULL);
 
-    frame = orage_create_framebox_with_content(_("Clock Options"), table);
+    frame = orage_create_framebox_with_content(_("Clock Options"),
+                                               GTK_SHADOW_NONE, table);
     gtk_container_set_border_width(GTK_CONTAINER(frame), 6);
-    gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dlg)->vbox), frame, FALSE, FALSE, 0);
+    vbox = gtk_dialog_get_content_area(GTK_DIALOG(dlg));
+    gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
     /* we sometimes call this function again, so we need to put it to the 
        correct position */
-    gtk_box_reorder_child(GTK_BOX(GTK_DIALOG(dlg)->vbox), frame, 2);
+    gtk_box_reorder_child(GTK_BOX(vbox), frame, 2);
     /* this is needed when we restructure this frame */
-    g_object_set_data(G_OBJECT(clock->plugin), "properties_frame", frame);
+    g_object_set_data (G_OBJECT (clock), "properties_frame", frame);
 
     /* timezone */
     label = gtk_label_new(_("set timezone to:"));
     oc_table_add(table, label, 0, 0);
 
-    button = gtk_button_new_from_stock(GTK_STOCK_OPEN);
+    button = orage_util_image_button ("document-open", _("_Open"));
     if (clock->timezone->str && clock->timezone->len)
          gtk_button_set_label(GTK_BUTTON(button), _(clock->timezone->str));
     oc_table_add(table, button, 1, 0);
@@ -369,8 +383,6 @@ void oc_properties_options(GtkWidget *dlg, Clock *clock)
 
     /* lines */
     line_cnt = g_list_length(clock->lines);
-    def_style = gtk_widget_get_default_style();
-    def_font = pango_font_description_to_string(def_style->font_desc);
 
     cur_line = 0;
     for (tmp_list = g_list_first(clock->lines);
@@ -378,7 +390,7 @@ void oc_properties_options(GtkWidget *dlg, Clock *clock)
          tmp_list = g_list_next(tmp_list)) {
         cur_line++;
         line = tmp_list->data;
-        sprintf(tmp, _("Line %d:"), cur_line);
+        g_snprintf (tmp, sizeof (tmp), _("Line %d:"), cur_line);
         label = gtk_label_new(tmp);
         oc_table_add(table, label, 0, cur_line);
 
@@ -387,49 +399,43 @@ void oc_properties_options(GtkWidget *dlg, Clock *clock)
         g_signal_connect(entry, "key-release-event", G_CALLBACK(oc_line_changed)
                 , line->data);
         if (cur_line == 1)
-            gtk_tooltips_set_tip(clock->tips, GTK_WIDGET(entry),
-                    _("Enter any valid strftime function parameter."), NULL);
+            gtk_widget_set_tooltip_text (GTK_WIDGET(entry),
+                    _("Enter any valid strftime function parameter."));
         oc_table_add(table, entry, 1, cur_line);
 
-        if (line->font->len) {
-            font = gtk_font_button_new_with_font(line->font->str);
-        }
-        else {
-            font = gtk_font_button_new_with_font(def_font);
-        }
+        if (line->font->len)
+            font = gtk_font_button_new_with_font (line->font->str);
+        else
+            font = gtk_font_button_new ();
+        
         g_signal_connect(G_OBJECT(font), "font-set"
                 , G_CALLBACK(oc_line_font_changed), line);
         oc_table_add(table, font, 2, cur_line);
 
         toolbar = gtk_toolbar_new();
         if (line_cnt < OC_MAX_LINES) { /* no real reason to limit this though */
-            tool_button = gtk_tool_button_new_from_stock(GTK_STOCK_ADD);
-            gtk_toolbar_insert(GTK_TOOLBAR(toolbar), tool_button, -1);
+            tool_button = orage_toolbar_append_button (toolbar, "list-add",
+                                                       "Add line", -1);
             g_signal_connect(tool_button, "clicked"
                     , G_CALLBACK(oc_new_line), line);
         }
         if (line_cnt > 1) { /* do not delete last line */
-            tool_button = gtk_tool_button_new_from_stock(GTK_STOCK_DELETE);
-            gtk_toolbar_insert(GTK_TOOLBAR(toolbar), tool_button, -1);
+            tool_button = orage_toolbar_append_button (toolbar, "list-remove",
+                                                       "Remove line", -1);
             g_signal_connect(tool_button, "clicked"
                     , G_CALLBACK(oc_delete_line), line);
             /* we do not need these if we only have 1 line */
-            tool_button = gtk_tool_button_new_from_stock(GTK_STOCK_GO_UP);
-            gtk_toolbar_insert(GTK_TOOLBAR(toolbar), tool_button, -1);
+            tool_button = orage_toolbar_append_button (toolbar, "go-up",
+                                                       "Move up", -1);
             g_signal_connect(tool_button, "clicked"
                     , G_CALLBACK(oc_move_up_line), line);
-            tool_button = gtk_tool_button_new_from_stock(GTK_STOCK_GO_DOWN);
-            gtk_toolbar_insert(GTK_TOOLBAR(toolbar), tool_button, -1);
+            tool_button = orage_toolbar_append_button (toolbar, "go-down",
+                                                       "Move down", -1);
             g_signal_connect(tool_button, "clicked"
                     , G_CALLBACK(oc_move_down_line), line);
         }
         oc_table_add(table, toolbar, 3, cur_line);
-
-        /*
-        button = gtk_button_new_from_stock(GTK_STOCK_DELETE);
-        */
     }
-
 
     /* Tooltip hint */
     label = gtk_label_new(_("Tooltip:"));
@@ -445,41 +451,50 @@ void oc_properties_options(GtkWidget *dlg, Clock *clock)
     cb = gtk_check_button_new_with_mnemonic(_("fix time after suspend/hibernate"));
     oc_table_add(table, cb, 1, line_cnt+2);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(cb), clock->hib_timing);
-    gtk_tooltips_set_tip(clock->tips, GTK_WIDGET(cb),
-            _("You only need this if you do short term (less than 5 hours) suspend or hibernate and your visible time does not include seconds. Under these circumstances it is possible that Orageclock shows time inaccurately unless you have this selected. (Selecting this prevents cpu and interrupt saving features from working.)")
-            , NULL);
+    gtk_widget_set_tooltip_text (GTK_WIDGET(cb),
+            _("You only need this if you do short term (less than 5 hours) suspend or hibernate and your visible time does not include seconds. Under these circumstances it is possible that Orageclock shows time inaccurately unless you have this selected. (Selecting this prevents cpu and interrupt saving features from working.)"));
     g_signal_connect(cb, "toggled", G_CALLBACK(oc_hib_timing_toggled), clock);
 }
 
-void oc_instructions(GtkWidget *dlg, Clock *clock)
+void oc_instructions(GtkWidget *dlg, OragePlugin *clock)
 {
-    GtkWidget *hbox, *label, *image;
+    GtkWidget *hbox, *vbox, *label, *image;
 
     /* Instructions */
-    hbox = gtk_hbox_new(FALSE, 0);
-    gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dlg)->vbox), hbox, FALSE, FALSE, 6);
+    hbox = gtk_grid_new ();
+    vbox = gtk_dialog_get_content_area(GTK_DIALOG(dlg));
+    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 6);
 
-    image = gtk_image_new_from_stock(GTK_STOCK_DIALOG_INFO, GTK_ICON_SIZE_DND);
-    gtk_misc_set_alignment(GTK_MISC(image), 0.5f, 0.0f);
-    gtk_box_pack_start(GTK_BOX(hbox), image, FALSE, FALSE, 0);
+    image = gtk_image_new_from_icon_name ("dialog-information",
+                                          GTK_ICON_SIZE_DND);
+    g_object_set (image, "xalign", 0.5f, "yalign", 0.0f, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), image, NULL, GTK_POS_RIGHT, 1, 1);
 
     label = gtk_label_new(_("This program uses strftime function to get time.\nUse any valid code to get time in the format you prefer.\nSome common codes are:\n\t%A = weekday\t\t\t%B = month\n\t%c = date & time\t\t%R = hour & minute\n\t%V = week number\t\t%Z = timezone in use\n\t%H = hours \t\t\t\t%M = minute\n\t%X = local time\t\t\t%x = local date"));
-    gtk_misc_set_alignment(GTK_MISC(label), 0.0f, 0.0f);
-    gtk_box_pack_start(GTK_BOX(hbox), label, TRUE, TRUE, 0);
+    g_object_set (label, "xalign", 0.0, "yalign", 0.0,
+                         "hexpand", TRUE, "halign", GTK_ALIGN_FILL, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
+    
+    (void)clock;
 }
 
-static void oc_dialog_response(GtkWidget *dlg, int response, Clock *clock)
+static void oc_dialog_response(GtkWidget *dlg, int response, OragePlugin *clock)
 {
-    g_object_set_data(G_OBJECT(clock->plugin), "dialog", NULL);
-    g_object_set_data(G_OBJECT(clock->plugin), "properties_frame", NULL);
+    XfcePanelPlugin *plugin = XFCE_PANEL_PLUGIN (clock);
+    
+    g_object_set_data (G_OBJECT (clock), "dialog", NULL);
+    g_object_set_data (G_OBJECT (clock), "properties_frame", NULL);
     gtk_widget_destroy(dlg);
-    xfce_panel_plugin_unblock_menu(clock->plugin);
-    oc_write_rc_file(clock->plugin, clock);
+    xfce_panel_plugin_unblock_menu (plugin);
+    oc_write_rc_file (plugin);
     oc_init_timer(clock);
+    
+    (void)response;
 }
 
-void oc_properties_dialog(XfcePanelPlugin *plugin, Clock *clock)
+void oc_properties_dialog (XfcePanelPlugin *plugin)
 {
+    OragePlugin *clock = XFCE_ORAGE_PLUGIN (plugin);
     GtkWidget *dlg;
 
     xfce_panel_plugin_block_menu(plugin);
@@ -491,8 +506,8 @@ void oc_properties_dialog(XfcePanelPlugin *plugin, Clock *clock)
     dlg = gtk_dialog_new_with_buttons(_("Orage clock Preferences"), 
             GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(plugin))),
             GTK_DIALOG_DESTROY_WITH_PARENT |
-            GTK_DIALOG_NO_SEPARATOR,
-            GTK_STOCK_CLOSE, GTK_RESPONSE_OK,
+            GTK_UI_MANAGER_SEPARATOR,
+            _("Close"), GTK_RESPONSE_OK,
             NULL);
     
     g_object_set_data(G_OBJECT(plugin), "dialog", dlg);

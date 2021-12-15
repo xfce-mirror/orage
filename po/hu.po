@@ -1537,8 +1537,8 @@ msgid "All appointments"
 msgstr "Minden értekezlet"
 
 #: ../src/interface.c:1041
-msgid "Named appointments: "
-msgstr "Megadott értekezletek: "
+msgid "Named appointments:"
+msgstr "Megadott értekezletek:"
 
 #: ../src/interface.c:1053
 msgid ""
@@ -2062,18 +2062,6 @@ msgstr "Hét első napja"
 #: ../src/parameters.c:925
 msgid "Selected day"
 msgstr "Kiválasztott nap"
-
-#: ../src/parameters.c:943
-msgid "Use dynamic tray icon"
-msgstr "Dinamikus értesítőikon használata"
-
-#: ../src/parameters.c:948
-msgid "Use dynamic icon"
-msgstr "Dinamikus ikon használata"
-
-#: ../src/parameters.c:954
-msgid "Dynamic icon shows current month and day of the month."
-msgstr "A dinamikus ikon a hónapot és a napot jeleníti meg."
 
 #: ../src/parameters.c:962 ../src/parameters.c:967
 msgid "Use wakeup timer"

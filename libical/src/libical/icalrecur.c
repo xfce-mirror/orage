@@ -3,7 +3,7 @@
   FILE: icalrecur.c
   CREATOR: eric 16 May 2000
   
-  $Id$
+  $Id: icalrecur.c 7 2021-01-06 12:44:58Z erx $
   $Locker:  $
     
 
@@ -1792,7 +1792,7 @@ static pvl_list expand_by_day(icalrecur_iterator* impl, int year)
 	    tmp_start_doy = ((dow + 7 - start_dow) % 7) + 1;
 
             for (doy = tmp_start_doy; doy <= end_year_day; doy += 7)
-                    pvl_push(days_list,(void*)(int)doy);
+                    pvl_push(days_list,(void*)(intptr_t)doy);
             
         } else if ( pos > 0) {
             int first;
@@ -1804,7 +1804,7 @@ static pvl_list expand_by_day(icalrecur_iterator* impl, int year)
             }
 
             /* Then just multiple the position times 7 to get the pos'th day in the year */
-            pvl_push(days_list,(void*)(first+  (pos-1) * 7));
+            pvl_push(days_list,(void*)(intptr_t)(first+  (pos-1) * 7));
             
         } else { /* pos < 0 */ 
             int last;
@@ -1817,7 +1817,7 @@ static pvl_list expand_by_day(icalrecur_iterator* impl, int year)
                 last = end_year_day - end_dow + dow - 7;
             }
 
-            pvl_push(days_list,(void*)(last - (pos-1) * 7));
+            pvl_push(days_list,(void*)(intptr_t)(last - (pos-1) * 7));
         }
     }
     return days_list;
