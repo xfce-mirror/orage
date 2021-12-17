@@ -1,4 +1,5 @@
 Version 4.15.2 (TBD)
+    * Fixed 'Ical week start day' configuration parameter is ignored.
 
 Version 4.15.1 (15 December 2021):
     * Fixed libbsd dependency: reverted libical strl* functions back to
