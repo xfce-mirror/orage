@@ -79,8 +79,35 @@ static int get_first_weekday_from_locale(void)
 
     return((week_1stday + first_weekday - 2 + 7) % 7);
 #else
-    g_warning ("Can not find first weekday. Using default: Monday=0. If this is wrong guess. please set undocumented parameter: Ical week start day (Sunday=6)");
+    g_warning ("Can not find first weekday. Using default: Monday=0. If this "
+               "is wrong guess. please set undocumented parameter: "
+               "Ical week start day (Sunday=6)");
     return(0);
+#endif
+}
+
+/* 0 = monday, ..., 6 = sunday */
+static gint get_first_weekday (OrageRc *orc)
+{
+#ifdef HAVE__NL_TIME_FIRST_WEEKDAY
+#if 0
+    /* Original code. */
+    return orage_rc_get_int (orc, "Ical week start day",
+                             get_first_weekday_from_locale ());
+#else
+    /* TODO: This should be valid code for Linux, check how this part work on
+     * Linux.
+     */
+    const gint first_week_day = orage_rc_get_int(orc, "Ical week start day",-1);
+    
+    return (first_week_day != -1) ? first_week_day
+                                  : get_first_weekday_from_locale ();
+#endif
+#else
+    const gint first_week_day = orage_rc_get_int(orc, "Ical week start day",-1);
+    
+    return (first_week_day == -1) ? get_first_weekday_from_locale ()
+                                  : first_week_day;
 #endif
 }
 
@@ -1359,9 +1386,7 @@ void read_parameters(void)
             , "Own icon row2 data", "%d");
     g_par.own_icon_row3_data = orage_rc_get_str(orc
             , "Own icon row3 data", "%b");
-    /* 0 = monday, ..., 6 = sunday */
-    g_par.ical_weekstartday = orage_rc_get_int(orc, "Ical week start day"
-            , get_first_weekday_from_locale());
+    g_par.ical_weekstartday = get_first_weekday (orc);
     g_par.show_days = orage_rc_get_bool(orc, "Show days", FALSE);
     g_par.foreign_count = orage_rc_get_int(orc, "Foreign file count", 0);
     for (i = 0; i < g_par.foreign_count; i++) {
