@@ -1,7 +1,6 @@
 /*      Orage - Calendar and alarm handler
  *
- * Copyright (c) 2005-2011 Juha Kautto  (juha at xfce.org)
- * Copyright (c) 2004-2006 Mickael Graf (korbinus at xfce.org)
+ * Copyright (c) 2021 Erkki Moorits  (erkki.moorits at mail.ee)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,15 +20,20 @@
 
  */
 
-#ifndef __TRAY_ICON_H__
-#define __TRAY_ICON_H__
+#ifndef ORAGE_CSS_H
+#define ORAGE_CSS_H 1
 
-#include <gtk/gtk.h>
+#define ORAGE_DAY_VIEW_SEPARATOR_BAR "orage_day_view_hour_line"
+#define ORAGE_DAY_VIEW_OCCUPIED_HOUR_LINE "orage_day_view_occupied_hour_line"
+#define ORAGE_DAY_VIEW_TASK_SEPARATOR "orage_day_view_task_separator"
+#define ORAGE_DAY_VIEW_ODD_HOURS "orage_day_view_odd_hours"
+#define ORAGE_DAY_VIEW_EVEN_HOURS "orage_day_view_even_hours"
+#define ORAGE_DAY_VIEW_ALL_DAY_EVENT "orage_day_view_all_day_event"
+#define ORAGE_DAY_VIEW_TODAY "orage_day_view_today"
+#define ORAGE_DAY_VIEW_SUNDAY "orage_day_view_sunday"
+#define ORAGE_MAINBOX_RED "orage_mainbox_red"
+#define ORAGE_MAINBOX_BLUE "orage_mainbox_blue"
 
-GdkPixbuf *orage_create_icon(gboolean static_icon, gint size);
+extern void register_css_provider (void);
 
-GtkStatusIcon *create_TrayIcon(GdkPixbuf *orage_logo);
-
-void refresh_TrayIcon(void);
-
-#endif /* !__TRAY_ICON_H__ */
+#endif

@@ -45,7 +45,6 @@ gboolean orage_dbus_import_file(gchar *file_name)
     GError *error = NULL;
     DBusGProxy *proxy;
 
-    g_type_init();
     connection = dbus_g_bus_get(DBUS_BUS_SESSION, &error);
     if (connection == NULL) {
           /* notify the user that D-BUS service won't be available */
@@ -77,7 +76,6 @@ gboolean orage_dbus_export_file(gchar *file_name, gint type, gchar *uids)
     GError *error = NULL;
     DBusGProxy *proxy;
 
-    g_type_init();
     connection = dbus_g_bus_get(DBUS_BUS_SESSION, &error);
     if (connection == NULL) {
         g_warning("Failed to connect to the D-BUS session bus: %s"
@@ -106,7 +104,6 @@ gboolean orage_dbus_foreign_add(gchar *file_name, gboolean read_only
     GError *error = NULL;
     DBusGProxy *proxy;
 
-    g_type_init();
     connection = dbus_g_bus_get(DBUS_BUS_SESSION, &error);
     if (connection == NULL) {
         g_warning("Failed to connect to the D-BUS session bus: %s"
@@ -134,7 +131,6 @@ gboolean orage_dbus_foreign_remove(gchar *file_name)
     GError *error = NULL;
     DBusGProxy *proxy;
 
-    g_type_init();
     connection = dbus_g_bus_get(DBUS_BUS_SESSION, &error);
     if (connection == NULL) {
         g_warning("Failed to connect to the D-BUS session bus: %s"

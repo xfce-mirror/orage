@@ -4,7 +4,7 @@
   CREATOR: eric 20 March 1999
 
 
-  $Id$
+  $Id: icalproperty.h 2 2021-01-06 09:02:24Z erx $
   $Locker$
 
   

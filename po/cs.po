@@ -1537,7 +1537,7 @@ msgid "All appointments"
 msgstr "Všechny schůzky"
 
 #: ../src/interface.c:1041
-msgid "Named appointments: "
+msgid "Named appointments:"
 msgstr "Pojmenované schůzky:"
 
 #: ../src/interface.c:1053
@@ -2062,18 +2062,6 @@ msgstr "První den v týdnu"
 #: ../src/parameters.c:925
 msgid "Selected day"
 msgstr "Vybraný den"
-
-#: ../src/parameters.c:943
-msgid "Use dynamic tray icon"
-msgstr "Používat dynamickou ikonu v oznamovací oblasti"
-
-#: ../src/parameters.c:948
-msgid "Use dynamic icon"
-msgstr "Používat dynamické ikony"
-
-#: ../src/parameters.c:954
-msgid "Dynamic icon shows current month and day of the month."
-msgstr "Dynamická ikona zobrazuje aktuální měsíc a den v měsíci."
 
 #: ../src/parameters.c:962 ../src/parameters.c:967
 msgid "Use wakeup timer"

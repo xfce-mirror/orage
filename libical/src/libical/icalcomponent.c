@@ -2,7 +2,7 @@
   FILE: icalcomponent.c
   CREATOR: eric 28 April 1999
   
-  $Id$
+  $Id: icalcomponent.c 271 2021-09-27 06:35:52Z erx $
 
  (C) COPYRIGHT 2000, Eric Busboom, http://www.softwarestudio.org
 
@@ -2244,7 +2244,7 @@ icalcomponent_handle_conflicting_vtimezones (icalcomponent *comp,
   /* We didn't find a VTIMEZONE that matched, so we have to rename the TZID,
      using the maximum numerical suffix found + 1. */
   tzid_copy = strdup (tzid);
-  sprintf (suffix_buf, "%i", max_suffix + 1);
+  snprintf (suffix_buf, sizeof (suffix_buf), "%i", max_suffix + 1);
   new_tzid = malloc (tzid_len + strlen (suffix_buf) + 1);
   if (!new_tzid || !tzid_copy) {
     icalerror_set_errno(ICAL_NEWFAILED_ERROR);
@@ -2526,7 +2526,6 @@ const char* icalcomponent_get_relcalid(icalcomponent* comp){
     return icalproperty_get_relcalid(prop);
 }
 
-
 /** @brief Return the time a TODO task is DUE.
  *
  *  @param comp Valid calendar component.
@@ -2534,7 +2533,6 @@ const char* icalcomponent_get_relcalid(icalcomponent* comp){
  *  Uses the DUE: property if it exists, otherwise we calculate the DUE
  *  value by adding the task's duration to the DTSTART time
  */
-
 struct icaltimetype icalcomponent_get_due(icalcomponent* comp)
 {
     icalcomponent *inner = icalcomponent_get_inner(comp);

@@ -3,7 +3,7 @@
   FILE: icalenum.c
   CREATOR: eric 29 April 1999
   
-  $Id$
+  $Id: icalenums.c 137 2021-06-04 06:05:18Z erx $
 
 
  (C) COPYRIGHT 2000, Eric Busboom, http://www.softwarestudio.org
@@ -112,7 +112,7 @@ char* icalenum_reqstat_code(icalrequeststatus stat)
 	if ( request_status_map[i].kind ==  stat) {
 	    major = request_status_map[i].major;
 	    minor = request_status_map[i].minor;
-	    sprintf(tmpbuf, "%i.%i", major, minor);
+	    snprintf (tmpbuf, sizeof (tmpbuf), "%i.%i", major, minor);
 	    return icalmemory_tmp_copy(tmpbuf);
 	}
     }

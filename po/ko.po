@@ -1536,7 +1536,7 @@ msgid "All appointments"
 msgstr "모든 일정"
 
 #: ../src/interface.c:1041
-msgid "Named appointments: "
+msgid "Named appointments:"
 msgstr "이름붙인 일정"
 
 #: ../src/interface.c:1053
@@ -2061,18 +2061,6 @@ msgstr "주 첫째날"
 #: ../src/parameters.c:925
 msgid "Selected day"
 msgstr "선택한 날"
-
-#: ../src/parameters.c:943
-msgid "Use dynamic tray icon"
-msgstr "동적 표시줄 아이콘 사용"
-
-#: ../src/parameters.c:948
-msgid "Use dynamic icon"
-msgstr "동적 아이콘 사용"
-
-#: ../src/parameters.c:954
-msgid "Dynamic icon shows current month and day of the month."
-msgstr "동적 이 달의 월, 일을 보여줍니다."
 
 #: ../src/parameters.c:962 ../src/parameters.c:967
 msgid "Use wakeup timer"

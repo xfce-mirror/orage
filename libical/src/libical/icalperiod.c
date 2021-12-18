@@ -3,7 +3,7 @@
   FILE: icalperiod.c
   CREATOR: eric 02 June 2000
   
-  $Id$
+  $Id: icalperiod.c 2 2021-01-06 09:02:24Z erx $
   $Locker$
     
  (C) COPYRIGHT 2000, Eric Busboom, http://www.softwarestudio.org
