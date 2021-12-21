@@ -2582,7 +2582,6 @@ static struct icaltimetype count_first_alarm_time(xfical_period per
  * when counting alarm time. */
         if (rel == ICAL_RELATED_START) {
             per.stime.is_date       = 0;
-            per.stime.is_utc        = 1;
             per.stime.is_daylight   = 0;
             per.stime.zone          = utc_icaltimezone;
             per.stime.hour          = 0;
@@ -2591,7 +2590,6 @@ static struct icaltimetype count_first_alarm_time(xfical_period per
         }
         else {
             per.etime.is_date       = 0;
-            per.etime.is_utc        = 1;
             per.etime.is_daylight   = 0;
             per.etime.zone          = utc_icaltimezone;
             per.etime.hour          = 0;
@@ -2616,7 +2614,6 @@ static struct icaltimetype count_next_alarm_time(struct icaltimetype start_time
 /* HACK: convert to UTC time so that we can use time arithmetic
  * when counting alarm time. */
         start_time.is_date       = 0;
-        start_time.is_utc        = 1;
         start_time.is_daylight   = 0;
         start_time.zone          = utc_icaltimezone;
         start_time.hour          = 0;
@@ -2773,7 +2770,6 @@ static alarm_struct *process_alarm_trigger(icalcomponent *c
      */
     if (icaltime_is_date(per.stime)) {
         if (local_icaltimezone != utc_icaltimezone) {
-            next_alarm_time.is_utc        = 0;
             next_alarm_time.is_daylight   = 0;
             next_alarm_time.zone          = local_icaltimezone;
         }
@@ -2857,7 +2853,6 @@ g_warning (P_N "Alarm rec loop next_start:%s next_alarm:%s per.stime:%s", icalti
          */
         if (icaltime_is_date(per.stime)) {
             if (local_icaltimezone != utc_icaltimezone) {
-                next_alarm_time.is_utc        = 0;
                 next_alarm_time.is_daylight   = 0;
                 next_alarm_time.zone          = local_icaltimezone;
             }
@@ -2951,7 +2946,6 @@ g_warning (P_N "*****After loop Alarm %s %s", icaltime_as_ical_string(next_alarm
          */
         if (icaltime_is_date(per.stime)) {
             if (local_icaltimezone != utc_icaltimezone) {
-                next_alarm_time.is_utc        = 0;
                 next_alarm_time.is_daylight   = 0;
                 next_alarm_time.zone          = local_icaltimezone;
             }
