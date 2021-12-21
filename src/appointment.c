@@ -1523,7 +1523,9 @@ static xfical_exception *new_exception(gchar *text)
     xfical_exception *recur_exception;
     gint i;
     struct tm tm_time = {0};
+#ifndef HAVE_LIBICAL
     char *tmp;
+#endif
 
     recur_exception = g_new(xfical_exception, 1);
     i = strlen(text);
