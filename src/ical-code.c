@@ -112,79 +112,6 @@ static icaltimezone *local_icaltimezone = NULL;
 /* in timezone_names.c */
 extern const gchar *trans_timezone[];
 
-#if 0
-static struct icaltimetype ical_get_current_local_time()
-{
-#undef P_N
-#define P_N "ical_get_current_local_time: "
-    struct tm *tm;
-    struct icaltimetype ctime;
-
-#ifdef ORAGE_DEBUG
-    g_debug (P_N);
-#endif
-    if (g_par.local_timezone_utc)
-        ctime = icaltime_current_time_with_zone(utc_icaltimezone);
-    else if ((g_par.local_timezone)
-        &&   (strcmp(g_par.local_timezone, "floating") != 0))
-        ctime = icaltime_current_time_with_zone(local_icaltimezone);
-    else { / * use floating time * /
-        ctime.is_utc      = 0;
-        ctime.is_date     = 0;
-        ctime.is_daylight = 0;
-        ctime.zone        = NULL;
-    }
-    / * and at the end we need to change the clock to be correct * /
-    tm = orage_localtime();
-    ctime.year        = tm->tm_year+1900;
-    ctime.month       = tm->tm_mon+1;
-    ctime.day         = tm->tm_mday;
-    ctime.hour        = tm->tm_hour;
-    ctime.minute      = tm->tm_min;
-    ctime.second      = tm->tm_sec;
-
-    return(ctime);
-}
-
-static xfical_timezone_array get_ical_timezones()
-{
-#undef P_N
-#define P_N "xfical_timezone_array: "
-    static xfical_timezone_array tz={0, NULL, NULL};
-    static char tz_utc[]="UTC";
-    static char tz_floating[]="floating";
-    icalarray *tz_array;
-    icaltimezone *l_tz;
-    struct icaltimetype ctime;
-
-#ifdef ORAGE_DEBUG
-    g_debug (P_N);
-#endif
-    if (tz.count == 0) {
-        tz_array = icaltimezone_get_builtin_timezones();
-        tz.city = (char **)g_malloc(sizeof(char *)*(2+tz_array->num_elements));
-        tz.utc_offset = (int *)g_malloc(sizeof(int)*(2+tz_array->num_elements));
-        tz.dst = (int *)g_malloc(sizeof(int)*(2+tz_array->num_elements));
-        ctime = ical_get_current_local_time();
-        for (tz.count = 0; tz.count <  tz_array->num_elements; tz.count++) {
-            l_tz = (icaltimezone *)icalarray_element_at(tz_array, tz.count);
-            / * ical timezones are static so this is safe although not
-             * exactly pretty * /
-            tz.city[tz.count] = (char *)icaltimezone_get_location(l_tz);
-            tz.utc_offset[tz.count] = icaltimezone_get_utc_offset(
-                    l_tz, &ctime, &tz.dst[tz.count]);
-        }
-        tz.utc_offset[tz.count] = 0;
-        tz.dst[tz.count] = 0;
-        tz.city[tz.count++] = tz_utc;
-        tz.utc_offset[tz.count] = 0;
-        tz.dst[tz.count] = 0;
-        tz.city[tz.count++] = tz_floating;
-    }
-    return (tz);
-}
-#endif
-
 gboolean xfical_set_local_timezone(gboolean testing)
 {
 #undef P_N
@@ -222,47 +149,6 @@ gboolean xfical_set_local_timezone(gboolean testing)
     }
     return (TRUE); 
 }
-
-/*
- * Basically standard says that timezone should be added always
- * when it is used, but in real life these are not needed since
- * all systems have their own timezone data, so let's save time
- * and space and comment this out. 
- */
-#if 0
-static void xfical_add_timezone(icalcomponent *p_ical, icalset *p_fical
-        , char *loc)
-{
-    icaltimezone *icaltz=NULL;
-    icalcomponent *itimezone=NULL;
-                                                                                
-    if (!loc) {
-        g_critical ("xfical_add_timezone: no location defined");
-        return;
-    }
-    else
-        g_message ("Adding timezone %s", loc);
-
-    if (strcmp(loc,"UTC") == 0 
-    ||  strcmp(loc,"floating") == 0) {
-        return;
-    }
-                                                                                
-    icaltz=icaltimezone_get_builtin_timezone(loc);
-    if (icaltz==NULL) {
-        g_critical ("xfical_add_timezone: timezone not found %s", loc);
-        return;
-    }
-    itimezone=icaltimezone_get_component(icaltz);
-    if (itimezone != NULL) {
-        icalcomponent_add_component(p_ical
-            , icalcomponent_new_clone(itimezone));
-        icalset_mark(p_fical);
-    }
-    else
-        g_critical ("xfical_add_timezone: timezone add failed %s", loc);
-}
-#endif
 
 gboolean ic_internal_file_open(icalcomponent **p_ical
         , icalset **p_fical, gchar *file_icalpath, gboolean read_only
@@ -333,16 +219,14 @@ gboolean ic_internal_file_open(icalcomponent **p_ical
                    , icalproperty_new_version("2.0")
                    , icalproperty_new_prodid("-//Xfce//Orage//EN")
                    , NULL);
-            /*
-            xfical_add_timezone(*p_ical, *p_fical, g_par.local_timezone);
-            */
+
             icalset_add_component(*p_fical, *p_ical);
-            /*
+#if 0
             icalset_add_component(*p_fical
                    , icalcomponent_new_clone(*p_ical));
 
             *p_ical = icalset_get_first_component(*p_fical);
-            */
+#endif
             icalset_commit(*p_fical);
         }
         else { /* VCALENDAR found */
@@ -3129,7 +3013,6 @@ static void xfical_alarm_build_list_internal_real(gboolean first_list_today
 #ifdef ORAGE_DEBUG
     g_debug (P_N);
 #endif
-    /* cur_time = ical_get_current_local_time(); */
     cur_time = icaltime_current_time_with_zone(utc_icaltimezone);
 
     for (c = icalcomponent_get_first_component(base, ICAL_ANY_COMPONENT);
