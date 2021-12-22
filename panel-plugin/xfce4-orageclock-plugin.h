@@ -93,17 +93,18 @@ struct _ClockLine
 
 void oc_properties_dialog (XfcePanelPlugin *plugin);
 
-void oc_show_frame_set(OragePlugin *clock);
-void oc_fg_set(OragePlugin *clock);
-void oc_bg_set(OragePlugin *clock);
-void oc_size_set(OragePlugin *clock);
-void oc_timezone_set(OragePlugin *clock);
+void oc_show_frame_set(OragePlugin *plugin);
+void oc_fg_set(OragePlugin *plugin);
+void oc_bg_set(OragePlugin *plugin);
+void oc_size_set(OragePlugin *plugin);
+void oc_timezone_set(OragePlugin *plugin);
 void oc_line_font_set(ClockLine *line);
-void oc_line_rotate(OragePlugin *clock, ClockLine *line);
-void oc_write_rc_file (XfcePanelPlugin *clock);
-void oc_start_timer(OragePlugin *clock);
-void oc_init_timer(OragePlugin *clock);
-void oc_set_line(OragePlugin *clock, ClockLine *clock_line, int pos);
-ClockLine * oc_add_new_line(OragePlugin *clock, const char *data, const char *font, int pos);
-void oc_reorganize_lines(OragePlugin *clock);
+void oc_line_rotate(OragePlugin *plugin, ClockLine *line);
+void oc_write_rc_file (XfcePanelPlugin *plugin);
+void oc_start_timer(OragePlugin *plugin);
+void oc_init_timer(OragePlugin *plugin);
+void oc_set_line(OragePlugin *plugin, ClockLine *clock_line, int pos);
+ClockLine * oc_add_new_line (OragePlugin *plugin, const char *data,
+                             const char *font, int pos);
+void oc_reorganize_lines(OragePlugin *plugin);
 void oc_construct(XfcePanelPlugin *plugin);
