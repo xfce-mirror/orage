@@ -14,7 +14,7 @@ m4_define([xfce_minimum_version], [4.16.0])
 m4_define([dbus_minimum_version], [0.1])
 m4_define([notify_minimum_version], [0.3.2])
 m4_define([intltool_minimum_version], [0.35])
-m4_define([libical_minimum_version], [0.43])
+m4_define([libical_minimum_version], [3.0])
 
 
 dnl # DO NOT MODIFY ANYTHING BELOW THIS LINE, UNLESS YOU KNOW WHAT
