@@ -3,7 +3,7 @@
   FILE: sspm.c Parse Mime
   CREATOR: eric 25 June 2000
   
-  $Id$
+  $Id: sspm.c 137 2021-06-04 06:05:18Z erx $
   $Locker$
     
  The contents of this file are subject to the Mozilla Public License
@@ -255,18 +255,22 @@ void* sspm_default_new_part()
 void sspm_default_add_line(void *part, struct sspm_header *header, 
 			   char* line, size_t size)
 {
+    (void)part;
+    (void)header;
+    (void)line;
+    (void)size;
 }
 
 void* sspm_default_end_part(void* part)
 {
+    (void)part;
     return 0;
 }
 
 void sspm_default_free_part(void *part)
 {
+    (void)part;
 }
-
-
 
 struct sspm_action_map sspm_action_map[] = 
 {
@@ -707,9 +711,8 @@ void* sspm_make_part(struct mime_impl *impl,
 		    char* boundary;
 		    char msg[256];
 
-		    snprintf(msg,256,
-			     "Expected: %s--. Got: %s",
-			     parent_header->boundary,line);
+		    snprintf (msg, sizeof (msg), "Expected: %s--. Got: %s",
+                              parent_header->boundary,line);
 
 		    sspm_set_error(parent_header,
 		      SSPM_WRONG_BOUNDARY_ERROR,msg);
@@ -808,9 +811,8 @@ void* sspm_make_multipart_subpart(struct mime_impl *impl,
 		    char* boundary;
 		    char msg[256];
 		    
-		    snprintf(msg,256,
-			     "Expected: %s. Got: %s",
-			     parent_header->boundary,line);
+		    snprintf (msg, sizeof (msg), "Expected: %s. Got: %s",
+                              parent_header->boundary,line);
 
 		    sspm_set_error(parent_header,
 				   SSPM_WRONG_BOUNDARY_ERROR,msg);
@@ -1022,7 +1024,6 @@ int sspm_parse_mime(struct sspm_part *parts,
 {
     struct mime_impl impl;
     struct sspm_header header;
-    void *part;
     int i;
 
     /* Initialize all of the data */
@@ -1052,7 +1053,7 @@ int sspm_parse_mime(struct sspm_part *parts,
 	
 	sspm_store_part(&impl,header,impl.level,0,0);
 
-	part = sspm_make_multipart_part(&impl,child_header);
+	(void)sspm_make_multipart_part(&impl,child_header);
 
     } else {
 	void *part;
@@ -1063,6 +1064,8 @@ int sspm_parse_mime(struct sspm_part *parts,
 	
 	sspm_store_part(&impl,header,impl.level,part,size);
     }
+    
+    (void)first_header;
 
     return 0;
 }
@@ -1249,7 +1252,7 @@ void sspm_append_hex(struct sspm_buffer* buf, char ch)
 {
     char tmp[3];
 
-    sprintf(tmp,"=%02X",ch);
+    snprintf (tmp, sizeof (tmp), "=%02X",ch);
 
     sspm_append_string(buf,tmp);
 }
@@ -1457,7 +1460,8 @@ void sspm_encode_base64(struct sspm_buffer *buf, char* data, size_t size)
     } else if (i%3 == 2 && first == 0){
 	    sspm_write_base64(buf, inbuf, 3);
     }
-
+    
+    (void)size;
 }
 
 void sspm_write_header(struct sspm_buffer *buf,struct sspm_header *header)
@@ -1478,19 +1482,19 @@ void sspm_write_header(struct sspm_buffer *buf,struct sspm_header *header)
 	minor = header->minor_text;
     }
     
-    sprintf(temp,"Content-Type: %s/%s",major,minor);
+    snprintf (temp, sizeof (temp), "Content-Type: %s/%s",major,minor);
 
     sspm_append_string(buf,temp);
 
     if(header->boundary != 0){
-	sprintf(temp,";boundary=\"%s\"",header->boundary);
+	snprintf (temp, sizeof (temp), ";boundary=\"%s\"",header->boundary);
 	sspm_append_string(buf,temp);
     }
     
     /* Append any content type parameters */    
     if(header->content_type_params != 0){
 	for(i=0; *(header->content_type_params[i])!= 0;i++){
-	    sprintf(temp,header->content_type_params[i]);
+	    snprintf (temp, sizeof (temp), "%s", header->content_type_params[i]);
 	    sspm_append_char(buf,';');
 	    sspm_append_string(buf,temp);
 	}
@@ -1502,7 +1506,7 @@ void sspm_write_header(struct sspm_buffer *buf,struct sspm_header *header)
 
     if(header->encoding != SSPM_UNKNOWN_ENCODING &&
 	header->encoding != SSPM_NO_ENCODING){
-	sprintf(temp,"Content-Transfer-Encoding: %s\n",
+	snprintf (temp, sizeof (temp), "Content-Transfer-Encoding: %s\n",
 		sspm_encoding_string(header->encoding));
     }
 
@@ -1572,6 +1576,8 @@ void sspm_write_part(struct sspm_buffer *buf,struct sspm_part *part,int *part_nu
     }
 
     sspm_append_string(buf,"\n\n");
+    
+    (void)part_num;
 }
 
 int sspm_write_mime(struct sspm_part *parts,size_t num_parts,
@@ -1612,7 +1618,8 @@ int sspm_write_mime(struct sspm_part *parts,size_t num_parts,
 
 
     *output_string = buf.buffer;
+    
+    (void)num_parts;
 
     return 0;
 }
-

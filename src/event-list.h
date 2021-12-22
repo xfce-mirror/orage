@@ -98,7 +98,7 @@ typedef struct _el_win
     GList    *apptw_list; /* keep track of appointments being updated */
 } el_win; /* event list window */
 
-el_win* create_el_win(char *start_date);
+el_win* create_el_win(const gchar *start_date);
 void refresh_el_win(el_win *el);
 
 #endif /* !__EVENT_LIST_H__ */

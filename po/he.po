@@ -1535,7 +1535,7 @@ msgid "All appointments"
 msgstr "כל הפגישות"
 
 #: ../src/interface.c:1041
-msgid "Named appointments: "
+msgid "Named appointments:"
 msgstr "פגישות נקובות:"
 
 #: ../src/interface.c:1053
@@ -2060,18 +2060,6 @@ msgstr "יום ראשון במספר בשבוע"
 #: ../src/parameters.c:925
 msgid "Selected day"
 msgstr "יום נבחר"
-
-#: ../src/parameters.c:943
-msgid "Use dynamic tray icon"
-msgstr "השתמש באייקון מגש דינמי"
-
-#: ../src/parameters.c:948
-msgid "Use dynamic icon"
-msgstr "השתמש באייקון דינמי"
-
-#: ../src/parameters.c:954
-msgid "Dynamic icon shows current month and day of the month."
-msgstr "אייקון דינמי מראה חודש נוכחי ויום בחודש."
 
 #: ../src/parameters.c:962 ../src/parameters.c:967
 msgid "Use wakeup timer"

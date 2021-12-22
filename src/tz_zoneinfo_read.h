@@ -33,4 +33,4 @@ typedef struct _orage_timezone_array
 } orage_timezone_array;
 
 orage_timezone_array get_orage_timezones(int details, int ical);
-void free_orage_timezones(int details);
+extern void free_orage_timezones (void);

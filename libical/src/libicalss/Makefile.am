@@ -2,7 +2,7 @@
 #  FILE: Makefile.am
 #  CREATOR: eric 
 #  
-#  $Id$
+#  $Id: Makefile.am 281 2021-10-04 07:15:30Z erx $
 #
 #
 # (C) COPYRIGHT 2000, Eric Busboom, http://www.softwarestudio.org
@@ -36,7 +36,7 @@ $(srcdir)/icalsslexer.c: icalssyacc.h
 
 noinst_LTLIBRARIES = libicalss.la
 
-INCLUDES =			\
+AM_CPPFLAGS =			\
 	-I$(top_srcdir)/libical/src	\
 	-I$(top_builddir)/libical/src	\
 	-I$(top_srcdir)/libical/src/libical	\

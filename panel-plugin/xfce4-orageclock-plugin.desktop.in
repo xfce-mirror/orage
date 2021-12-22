@@ -5,4 +5,5 @@ _Comment=Show time and date?
 Icon=xfce-schedule
 X-XFCE-Module=orageclock
 X-XFCE-Internal=FALSE
+X-XFCE-API=2.0
 

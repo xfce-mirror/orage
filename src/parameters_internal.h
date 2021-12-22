@@ -99,9 +99,6 @@ typedef struct _Itf
     GSList    *dw_week_mode_radiobutton_group;
     GtkWidget *dw_week_mode_week_radiobutton;
     GtkWidget *dw_week_mode_day_radiobutton;
-    /* Dynamic icon */
-    GtkWidget *use_dynamic_icon_frame;
-    GtkWidget *use_dynamic_icon_checkbutton;
     /* Use wakeup timer for suspend */
     GtkWidget *use_wakeup_timer_frame;
     GtkWidget *use_wakeup_timer_checkbutton;

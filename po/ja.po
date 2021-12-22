@@ -1532,8 +1532,8 @@ msgid "All appointments"
 msgstr "すべての用件"
 
 #: ../src/interface.c:1041
-msgid "Named appointments: "
-msgstr "指定した用件: "
+msgid "Named appointments:"
+msgstr "指定した用件:"
 
 #: ../src/interface.c:1053
 msgid ""
@@ -2057,18 +2057,6 @@ msgstr "週の初日"
 #: ../src/parameters.c:925
 msgid "Selected day"
 msgstr "選択した日"
-
-#: ../src/parameters.c:943
-msgid "Use dynamic tray icon"
-msgstr "ダイナミックトレイアイコンの使用"
-
-#: ../src/parameters.c:948
-msgid "Use dynamic icon"
-msgstr "ダイナミックアイコンを使用する"
-
-#: ../src/parameters.c:954
-msgid "Dynamic icon shows current month and day of the month."
-msgstr "ダイナミックアイコンを使用すると現在の月と日を表示します。"
 
 #: ../src/parameters.c:962 ../src/parameters.c:967
 msgid "Use wakeup timer"

@@ -1534,7 +1534,7 @@ msgid "All appointments"
 msgstr "Kaikki tapahtumat"
 
 #: ../src/interface.c:1041
-msgid "Named appointments: "
+msgid "Named appointments:"
 msgstr "Nimetyt tapaamiset:"
 
 #: ../src/interface.c:1053
@@ -2059,18 +2059,6 @@ msgstr "Viikon ensimmäinen päivä"
 #: ../src/parameters.c:925
 msgid "Selected day"
 msgstr "Valittu päivä"
-
-#: ../src/parameters.c:943
-msgid "Use dynamic tray icon"
-msgstr "Käytä dynaamista ilmoitusalueen kuvaketta"
-
-#: ../src/parameters.c:948
-msgid "Use dynamic icon"
-msgstr "Käytä dynaamista kuvaketta"
-
-#: ../src/parameters.c:954
-msgid "Dynamic icon shows current month and day of the month."
-msgstr "Dynaaminen kuvake näyttää nykyisen kuukauden ja päivän."
 
 #: ../src/parameters.c:962 ../src/parameters.c:967
 msgid "Use wakeup timer"
