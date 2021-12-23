@@ -90,24 +90,11 @@ typedef struct _parameters
 
     /* tray icon */
     void *trayIcon; /* this is GtkStatusIcon * */
-    gboolean use_dynamic_icon;
 
-    gboolean use_own_dynamic_icon;
     char *own_icon_file;
     char *own_icon_row1_data;
-    char *own_icon_row1_color;
-    char *own_icon_row1_font;
-    gint own_icon_row1_x;
-    gint own_icon_row1_y;
     char *own_icon_row2_data;
-    char *own_icon_row2_color;
-    char *own_icon_row2_font;
-    gint own_icon_row2_x;
-    gint own_icon_row2_y;
     char *own_icon_row3_data;
-    char *own_icon_row3_color;
-    char *own_icon_row3_font;
-    gint own_icon_row3_x;
     gint own_icon_row3_y;
 
     /* event-list window */

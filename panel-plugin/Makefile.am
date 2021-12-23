@@ -4,32 +4,34 @@ endif
 
 plugindir = $(libdir)/xfce4/panel/plugins
 
-liborageclock_la_CFLAGS =					\
-	-DPACKAGE_DATA_DIR=\"$(datadir)\"				\
-	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"			\
-	@LIBXFCE4PANEL_CFLAGS@
+liborageclock_la_CPPFLAGS =						    \
+	-DG_LOG_DOMAIN=\"orageclock\"
 
-liborageclock_la_LDFLAGS =					\
-	-avoid-version							\
-	-module									\
-	-no-undefined 							\
+liborageclock_la_CFLAGS =						    \
+	-DPACKAGE_DATA_DIR=\"$(datadir)\"				    \
+	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"				    \
+	$(LIBXFCE4PANEL_CFLAGS)						    \
+	$(LIBXFCE4UI_CFLAGS)
+
+liborageclock_la_LDFLAGS =						    \
+	-avoid-version							    \
+	-module								    \
+	-no-undefined							    \
 	-export-symbols-regex '^xfce_panel_module_(preinit|init|construct)' \
 	$(PLATFORM_LDFLAGS)
 
-liborageclock_la_LIBADD =					\
-	@LIBXFCE4PANEL_LIBS@                            \
-	-lX11
+liborageclock_la_LIBADD =						    \
+	$(LIBXFCE4PANEL_LIBS)						    \
+	$(LIBXFCE4UI_LIBS)						    \
+	$(LIBX11_LIBS)							    \
+	$(top_builddir)/src/liborage.la
 
-liborageclock_la_SOURCES = 				\
-	oc_config.c								\
+liborageclock_la_SOURCES =					\
+	oc_config.c						\
 	timezone_selection.c					\
 	timezone_selection.h					\
-	../src/tz_zoneinfo_read.c				\
-	../src/tz_zoneinfo_read.h				\
 	xfce4-orageclock-plugin.c				\
-	xfce4-orageclock-plugin.h               \
-	../src/functions.c						\
-	../src/functions.h
+	xfce4-orageclock-plugin.h
 
 if HAVE_CYGWIN
 liborageclock_la_LDFLAGS +=                 \

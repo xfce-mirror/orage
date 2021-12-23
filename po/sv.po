@@ -1537,8 +1537,8 @@ msgid "All appointments"
 msgstr "Alla möten"
 
 #: ../src/interface.c:1041
-msgid "Named appointments: "
-msgstr "Namngivna möten: "
+msgid "Named appointments:"
+msgstr "Namngivna möten:"
 
 #: ../src/interface.c:1053
 msgid ""
@@ -2062,18 +2062,6 @@ msgstr "Veckans första dag"
 #: ../src/parameters.c:925
 msgid "Selected day"
 msgstr "Markerad dag"
-
-#: ../src/parameters.c:943
-msgid "Use dynamic tray icon"
-msgstr "Använd dynamisk systembrickeikon"
-
-#: ../src/parameters.c:948
-msgid "Use dynamic icon"
-msgstr "Använd dynamisk ikon"
-
-#: ../src/parameters.c:954
-msgid "Dynamic icon shows current month and day of the month."
-msgstr "Dynamisk ikon visar aktuell månad och dag i månaden."
 
 #: ../src/parameters.c:962 ../src/parameters.c:967
 msgid "Use wakeup timer"

@@ -3,7 +3,7 @@
     FILE: icalmessage.c
     CREATOR: ebusboom 07 Nov 2000
   
-    $Id$
+    $Id: icalmessage.c 282 2021-10-04 07:17:18Z erx $
     $Locker$
     
     (C) COPYRIGHT 2000, Eric Busboom, http://www.softwarestudio.org
@@ -159,10 +159,10 @@ icalcomponent *icalmessage_new_reply_base(icalcomponent* c,
     icalcomponent_add_property(reply,icalproperty_new_version("2.0"));
     
 #ifndef WIN32    
-    sprintf(tmp,
+    snprintf (tmp, sizeof (tmp),
            "-//SoftwareStudio//NONSGML %s %s //EN",PACKAGE,VERSION);
 #else
-    sprintf(tmp,
+    snprintf (tmp, sizeof (tmp),
            "-//SoftwareStudio//NONSGML %s %s //EN",ICAL_PACKAGE,ICAL_VERSION);
 #endif
     icalcomponent_add_property(reply,icalproperty_new_prodid(tmp));

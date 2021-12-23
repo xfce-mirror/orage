@@ -1539,7 +1539,7 @@ msgid "All appointments"
 msgstr "Todos compromissos"
 
 #: ../src/interface.c:1041
-msgid "Named appointments: "
+msgid "Named appointments:"
 msgstr "Compromissos chamados:"
 
 #: ../src/interface.c:1053
@@ -2064,18 +2064,6 @@ msgstr "Primeiro dia da semana"
 #: ../src/parameters.c:925
 msgid "Selected day"
 msgstr "Dia selecionado"
-
-#: ../src/parameters.c:943
-msgid "Use dynamic tray icon"
-msgstr "Usar ícone de bandeja dinâmico"
-
-#: ../src/parameters.c:948
-msgid "Use dynamic icon"
-msgstr "Usar ícone dinâmico"
-
-#: ../src/parameters.c:954
-msgid "Dynamic icon shows current month and day of the month."
-msgstr "Ícone dinâmico mostra o atual mês e dia do mês."
 
 #: ../src/parameters.c:962 ../src/parameters.c:967
 msgid "Use wakeup timer"

@@ -4,7 +4,7 @@
  CREATOR: eric 30 June 1999
 
 
- $Id$
+ $Id: icalmemory.h 2 2021-01-06 09:02:24Z erx $
  $Locker$
 
  This program is free software; you can redistribute it and/or modify

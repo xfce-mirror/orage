@@ -1,8 +1,14 @@
+#ifndef GLOBALTIME_H
+#define GLOBALTIME_H 1
+
+#define GLOBALTIME_RUNNING "_XFCE_GLOBALTIME_RUNNING"
+#define GLOBALTIME_TOGGLE "_XFCE_GLOBALTIME_TOGGLE_HERE"
+
 typedef struct
 { /* clock name and time font settings */
-    GdkColor *clock_fg;
+    GdkRGBA *clock_fg;
     gboolean clock_fg_modified;
-    GdkColor *clock_bg;
+    GdkRGBA *clock_bg;
     gboolean clock_bg_modified;
     GString  *name_font;
     gboolean name_font_modified;
@@ -54,7 +60,6 @@ typedef struct
     GtkWidget *hdr_adj_mm;  /* adjust minutes spin */
     GtkWidget *clocks_hbox; /* contains clocks = clock_hbox list */
     GtkWidget *hidden;      /* used for interaction with GDK */
-    GtkTooltips *tips;
     text_attr_struct clock_default_attr;
 } global_times_struct;
 
@@ -80,3 +85,4 @@ void show_clock(clock_struct *clockp, gint *pos);
 gboolean default_preferences(GtkWidget *widget);
 gboolean clock_parameters(GtkWidget *widget, clock_struct *clockp);
 
+#endif

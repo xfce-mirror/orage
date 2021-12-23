@@ -4,7 +4,7 @@
  CREATOR: eric 26 July 2000
 
 
- $Id$
+ $Id: icalmime.c 137 2021-06-04 06:05:18Z erx $
  $Locker$
 
  (C) COPYRIGHT 2000, Eric Busboom, http://www.softwarestudio.org
@@ -80,6 +80,8 @@ void icalmime_text_add_line(void *part,
     icalmemory_append_string(&(impl->buf),&(impl->buf_pos),
 			     &(impl->buf_size),line);
     
+    (void)header;
+    (void)size;
 }
 
 void* icalmime_textcalendar_end_part(void* part)
@@ -128,15 +130,14 @@ void icalmime_attachment_add_line(void *part, struct sspm_header *header,
 
 void* icalmime_attachment_end_part(void* part)
 {
+    (void)part;
     return 0;
 }
 
 void icalmime_attachment_free_part(void *part)
 {
+    (void)part;
 }
-
-
-
 
 struct sspm_action_map icalmime_local_action_map[] = 
 {
@@ -199,7 +200,7 @@ icalcomponent* icalmime_parse(char* (*get_string)(char *s, size_t size,
 	    minor = parts[i].header.minor_text;
 	}
 	
-	snprintf(mimetype,sizeof(mimetype),"%s/%s",major,minor);
+	snprintf (mimetype, sizeof(mimetype), "%s/%s", major, minor);
 
 	comp = icalcomponent_new(ICAL_XLICMIMEPART_COMPONENT);
 
@@ -235,7 +236,7 @@ line between the header and the previous boundary\?";
 	    }
 
 	    if(parts[i].header.error_text != 0){
-		snprintf(temp,sizeof(temp),
+		snprintf(temp, sizeof(temp),
 			 "%s: %s",str,parts[i].header.error_text);
 	    } else {
 		strcpy(temp,str);
@@ -388,7 +389,4 @@ int icalmime_test(char* (*get_string)(char *s, size_t size, void *d),
     printf("%s\n",out);
 
     return 0;
-
 }
-
-
