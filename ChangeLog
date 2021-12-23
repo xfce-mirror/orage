@@ -1,4 +1,4 @@
-Version 4.15.2 (TBD)
+Version 4.16.0 (TBD)
     * Fixed 'Ical week start day' configuration parameter is ignored.
     * Fixed libical support, supported libical version is now >= 3.0.
 

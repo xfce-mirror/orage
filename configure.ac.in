@@ -7,7 +7,7 @@ dnl Written for Xfce by Juha Kautto <juha@xfce.org>
 dnl
 
 dnl Version information
-m4_define([orage_version], [4.15.2])
+m4_define([orage_version], [4.16.0])
 
 m4_define([gtk_minimum_version], [3.24.0])
 m4_define([xfce_minimum_version], [4.16.0])
@@ -22,7 +22,7 @@ dnl # YOU ARE DOING.
 
 
 dnl Initialize autoconf
-AC_COPYRIGHT([Copyright (c) 2003-2015
+AC_COPYRIGHT([Copyright (c) 2003-2021
         The Xfce development team. All rights reserved.
 
 Written for Xfce by Juha Kautto <juha@xfce.org>.])
