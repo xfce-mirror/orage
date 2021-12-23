@@ -3223,8 +3223,6 @@ static void build_alarm_page(appt_win *apptw)
     apptw->Sound_hbox = gtk_grid_new ();
     apptw->Sound_checkbutton = 
             gtk_check_button_new_with_mnemonic(_("Use"));
-    //g_object_set (apptw->Sound_checkbutton, "margin-right", 6,
-    //                                        "hexpand", FALSE, NULL);
     gtk_widget_set_tooltip_text(apptw->Sound_checkbutton
             , _("Select this if you want audible alarm"));
     gtk_grid_attach_next_to (GTK_GRID (apptw->Sound_hbox),
@@ -3232,7 +3230,7 @@ static void build_alarm_page(appt_win *apptw)
                              1, 1);
 
     apptw->Sound_entry = gtk_entry_new ();
-    g_object_set (apptw->Sound_entry, "margin-left", 6,
+    g_object_set (apptw->Sound_entry, "margin-left", 10,
                                       "margin-right", 6,
                                       "halign", GTK_ALIGN_FILL,
                                       "hexpand", TRUE, NULL);
