@@ -130,7 +130,7 @@ static void editEvent(GtkTreeView *view, GtkTreePath *path
 
     model = gtk_tree_view_get_model(view);
     start_appt_win("UPDATE", el, model, &iter, path);
-    
+
     (void)col;
 }
 
@@ -252,9 +252,9 @@ static void flags_data_func(GtkTreeViewColumn *col, GtkCellRenderer *rend
                  , "background-set",    TRUE
                  , NULL);
     }
-    
+
     g_free(categories);
-    
+
     (void)col;
     (void)user_data;
 }
@@ -273,7 +273,7 @@ static void start_time_data_func(GtkTreeViewColumn *col, GtkCellRenderer *rend
                      , "foreground-set",    FALSE
                      , "strikethrough-set", FALSE
                      , "weight-set",        FALSE
-                     , NULL); 
+                     , NULL);
             return;
         }
 
@@ -372,7 +372,7 @@ static void start_time_data_func(GtkTreeViewColumn *col, GtkCellRenderer *rend
                  , "weight-set",        FALSE
                  , NULL); 
     }
-    
+
     (void)col;
 }
 
@@ -635,7 +635,7 @@ static void event_data(el_win *el)
     t_title = orage_i18_date_to_tm_date(title); 
     if (el->show_old && el->only_first) {
         /* just take any old enough date, so that all events fit in */
-        g_strlcpy(a_day, "19000101", sizeof (a_day)); 
+        g_strlcpy(a_day, "19000101", sizeof (a_day));
         /* we need to adjust also number of days shown */
         d1 = g_date_new_dmy(1, 1, 1900);
         d2 = g_date_new_dmy(t_title.tm_mday, t_title.tm_mon+1
@@ -648,7 +648,7 @@ static void event_data(el_win *el)
         stime = orage_tm_time_to_icaltime(&t_title);
         g_strlcpy (a_day, stime, sizeof (a_day));
     }
-    
+
     t = orage_localtime();
     g_snprintf(el->time_now, sizeof (el->time_now), "%02d:%02d", t->tm_hour,
               t->tm_min);
@@ -694,11 +694,11 @@ void refresh_el_win(el_win *el)
 {
 #undef P_N
 #define P_N "refresh_el_win: "
-    
+
 #if EVENT_LIST_TRACE
     g_debug (P_N);
 #endif
-    
+
     orage_category_get_list();
     if (el->Window && el->ListStore && el->TreeView) {
         gtk_list_store_clear(el->ListStore);
@@ -751,7 +751,7 @@ static void on_notebook_page_switch(GtkNotebook *notebook
      * refreshes when tab is change quickly; like with mouse roll
      */
     g_timeout_add(300, (GSourceFunc)upd_notebook, el);
-    
+
     (void)notebook;
     (void)page;
     (void)page_num;
@@ -763,7 +763,7 @@ static void on_Search_clicked(GtkButton *b, gpointer user_data)
 
     gtk_notebook_set_current_page(GTK_NOTEBOOK(el->Notebook), SEARCH_PAGE);
     refresh_el_win((el_win *)user_data);
-    
+
     (void)b;
 }
 
@@ -773,7 +773,7 @@ static void on_View_search_activate_cb(GtkMenuItem *mi, gpointer user_data)
 
     gtk_notebook_set_current_page(GTK_NOTEBOOK(el->Notebook), SEARCH_PAGE);
     refresh_el_win((el_win *)user_data);
-    
+
     (void)mi;
 }
 
@@ -817,7 +817,7 @@ static void duplicate_appointment(el_win *el)
                 , _("Click a row to select it and after that you can copy it.")
                 );
     }
-    
+
     g_list_foreach(list, (GFunc)(GCallback)gtk_tree_path_free, NULL);
     g_list_free(list);
 }
@@ -825,14 +825,14 @@ static void duplicate_appointment(el_win *el)
 static void on_Copy_clicked(GtkButton *b, gpointer user_data)
 {
     duplicate_appointment((el_win *)user_data);
-    
+
     (void)b;
 }
 
 static void on_File_duplicate_activate_cb(GtkMenuItem *mi, gpointer user_data)
 {
     duplicate_appointment((el_win *)user_data);
-    
+
     (void)mi;
 }
 
@@ -869,7 +869,7 @@ static void close_window(el_win *el)
 static void on_Close_clicked(GtkButton *b, gpointer user_data)
 {
     close_window((el_win *)user_data);
-    
+
     (void)b;
 }
 
@@ -880,14 +880,14 @@ static void on_Dayview_clicked(GtkButton *b, gpointer user_data)
 
     title = (char *)gtk_window_get_title(GTK_WINDOW(el->Window));
     create_day_win(title);
-    
+
     (void)b;
 }
 
 static void on_File_close_activate_cb(GtkMenuItem *mi, gpointer user_data)
 {
     close_window((el_win *)user_data);
-    
+
     (void)mi;
 }
 
@@ -895,24 +895,24 @@ static gboolean on_Window_delete_event(GtkWidget *w, GdkEvent *e
         , gpointer user_data)
 {
     close_window((el_win *)user_data);
-    
+
     (void)w;
     (void)e;
-    
+
     return(FALSE);
 }
 
 static void on_Refresh_clicked(GtkButton *b, gpointer user_data)
 {
     refresh_el_win((el_win*)user_data);
-    
+
     (void)b;
 }
 
 static void on_View_refresh_activate_cb(GtkMenuItem *mi, gpointer user_data)
 {
     refresh_el_win((el_win*)user_data);
-    
+
     (void)mi;
 }
 
@@ -931,14 +931,14 @@ static void changeSelectedDate(el_win *el, gint day)
 static void on_Previous_clicked(GtkButton *b, gpointer user_data)
 {
     changeSelectedDate((el_win *)user_data, -1);
-    
+
     (void)b;
 }
 
 static void on_Go_previous_activate_cb(GtkMenuItem *mi, gpointer user_data)
 {
     changeSelectedDate((el_win *)user_data, -1);
-    
+
     (void)mi;
 }
 
@@ -951,28 +951,28 @@ static void go_to_today(el_win *el)
 static void on_Today_clicked(GtkButton *b, gpointer user_data)
 {
     go_to_today((el_win *)user_data);
-    
+
     (void)b;
 }
 
 static void on_Go_today_activate_cb(GtkMenuItem *mi, gpointer user_data)
 {
     go_to_today((el_win *)user_data);
-    
+
     (void)mi;
 }
 
 static void on_Next_clicked(GtkButton *b, gpointer user_data)
 {
     changeSelectedDate((el_win *)user_data, 1);
-    
+
     (void)b;
 }
 
 static void on_Go_next_activate_cb(GtkMenuItem *mi, gpointer user_data)
 {
     changeSelectedDate((el_win *)user_data, 1);
-    
+
     (void)mi;
 }
 
@@ -989,21 +989,21 @@ static void create_new_appointment(el_win *el)
 static void on_File_newApp_activate_cb(GtkMenuItem *mi, gpointer user_data)
 {
     create_new_appointment((el_win *)user_data);
-    
+
     (void)mi;
 }
 
 static void on_Create_toolbutton_clicked_cb(GtkButton *b, gpointer user_data)
 {
     create_new_appointment((el_win *)user_data);
-    
+
     (void)b;
 }
 
 static void on_spin_changed(GtkSpinButton *b, gpointer user_data)
 {
     refresh_el_win((el_win *)user_data);
-    
+
     (void)b;
 }
 
@@ -1015,14 +1015,14 @@ static void on_only_first_clicked(GtkCheckButton *b, gpointer user_data)
             GTK_TOGGLE_BUTTON(el->event_only_first_checkbutton));
     gtk_widget_set_sensitive(el->event_show_old_checkbutton, el->only_first);
     refresh_el_win((el_win *)user_data);
-    
+
     (void)b;
 }
 
 static void on_show_old_clicked(GtkCheckButton *b, gpointer user_data)
 {
     refresh_el_win((el_win *)user_data);
-    
+
     (void)b;
 }
 
@@ -1084,14 +1084,14 @@ static void delete_appointment(el_win *el)
 static void on_Delete_clicked(GtkButton *b, gpointer user_data)
 {
     delete_appointment((el_win *)user_data);
-    
+
     (void)b;
 }
 
 static void on_File_delete_activate_cb(GtkMenuItem *mi, gpointer user_data)
 {
     delete_appointment((el_win *)user_data);
-    
+
     (void)mi;
 }
 
@@ -1147,7 +1147,7 @@ static void drag_data_get(GtkWidget *widget, GdkDragContext *context
             g_warning("drag_data_get failed\n");
         g_string_free(result, TRUE);
     }
-    
+
     (void)context;
     (void)info;
     (void)itime;
@@ -1256,7 +1256,7 @@ static void build_toolbar(el_win *el)
             , "edit-delete", _("Delete"), i++);
 
     (void)orage_toolbar_append_separator(el->Toolbar, i++);
-    
+
     el->Previous_toolbutton = orage_toolbar_append_button(el->Toolbar
             , "go-previous", _("Back"), i++);
     el->Today_toolbutton = orage_toolbar_append_button(el->Toolbar
@@ -1317,7 +1317,7 @@ static void build_event_tab(el_win *el)
     g_object_set (el->event_spin, "margin-right", 2,
                                   "margin-left", 2,
                                    NULL);
-        
+
     gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(el->event_spin), TRUE);
     gtk_spin_button_set_value(GTK_SPIN_BUTTON(el->event_spin)
             , (gdouble)el->days);
@@ -1432,10 +1432,10 @@ static void build_event_list(el_win *el)
 {
 #undef P_N
 #define P_N "build_event_list: "
-    
+
     GtkCellRenderer *rend;
     GtkTreeViewColumn *col;
-    
+
 #if EVENT_LIST_TRACE
     g_debug (P_N);
 #endif
@@ -1521,10 +1521,10 @@ el_win *create_el_win(const gchar *start_date)
 {
 #undef P_N
 #define P_N "create_el_win: "
-    
+
     GdkPixbuf *pixbuf;
     el_win *el;
-    
+
 #if EVENT_LIST_TRACE
     g_debug (P_N "%s", start_date);
 #endif
@@ -1546,7 +1546,7 @@ el_win *create_el_win(const gchar *start_date)
     if (g_par.el_pos_x || g_par.el_pos_y)
         gtk_window_move(GTK_WINDOW(el->Window), g_par.el_pos_x, g_par.el_pos_y);
     gtk_window_add_accel_group(GTK_WINDOW(el->Window), el->accel_group);
-    
+
     el->Vbox = gtk_grid_new ();
     gtk_container_add(GTK_CONTAINER(el->Window), el->Vbox);
 

@@ -63,7 +63,6 @@
 #define FILETYPE_SIZE 38
 
 #define ORAGE_RC_COLOUR "Color"
-
 #define CATEGORIES_SPACING 10
 
 typedef struct _orage_category_win
@@ -489,7 +488,7 @@ static void app_type_checkbutton_clicked_cb(GtkCheckButton *cb
 {
     type_hide_show((appt_win *)user_data);
     mark_appointment_changed((appt_win *)user_data);
-    
+
     (void)cb;
 }
 
@@ -512,7 +511,7 @@ static void on_appTitle_entry_changed_cb(GtkEditable *entry
 
     g_free(title);
     mark_appointment_changed((appt_win *)user_data);
-    
+
     (void)entry;
 }
 
@@ -521,7 +520,7 @@ static void app_time_checkbutton_clicked_cb(GtkCheckButton *cb
 {
     set_time_sensitivity((appt_win *)user_data);
     mark_appointment_changed((appt_win *)user_data);
-    
+
     (void)cb;
 }
 
@@ -543,7 +542,7 @@ static void on_notebook_page_switch(GtkNotebook *notebook
 {
     if (page_num == 2)
         refresh_recur_calendars((appt_win *)user_data);
-    
+
     (void)notebook;
     (void)page;
 }
@@ -554,7 +553,7 @@ static void app_recur_checkbutton_clicked_cb(GtkCheckButton *checkbutton
     set_repeat_sensitivity((appt_win *)user_data);
     mark_appointment_changed((appt_win *)user_data);
     refresh_recur_calendars((appt_win *)user_data);
-    
+
     (void)checkbutton;
 }
 
@@ -563,7 +562,7 @@ static void app_recur_feature_checkbutton_clicked_cb(GtkCheckButton *cb
 {
     recur_hide_show((appt_win *)user_data);
     mark_appointment_changed((appt_win *)user_data);
-    
+
     (void)cb;
 }
 
@@ -572,7 +571,7 @@ static void app_sound_checkbutton_clicked_cb(GtkCheckButton *cb
 {
     set_sound_sensitivity((appt_win *)user_data);
     mark_appointment_changed((appt_win *)user_data);
-    
+
     (void)cb;
 }
 
@@ -582,7 +581,7 @@ static void app_notify_checkbutton_clicked_cb(GtkCheckButton *cb
 {
     set_notify_sensitivity((appt_win *)user_data);
     mark_appointment_changed((appt_win *)user_data);
-    
+
     (void)cb;
 }
 #endif
@@ -592,14 +591,14 @@ static void app_proc_checkbutton_clicked_cb(GtkCheckButton *cb
 {
     set_proc_sensitivity((appt_win *)user_data);
     mark_appointment_changed((appt_win *)user_data);
-    
+
     (void)cb;
 }
 
 static void app_checkbutton_clicked_cb(GtkCheckButton *cb, gpointer user_data)
 {
     mark_appointment_changed((appt_win *)user_data);
-    
+
     (void)cb;
 }
 
@@ -650,14 +649,14 @@ static void on_appNote_buffer_changed_cb(GtkTextBuffer *b, gpointer user_data)
     }
    
     mark_appointment_changed((appt_win *)user_data);
-    
+
     (void)b;
 }
 
 static void on_app_entry_changed_cb(GtkEditable *entry, gpointer user_data)
 {
     mark_appointment_changed((appt_win *)user_data);
-    
+
     (void)entry;
 }
 
@@ -666,7 +665,7 @@ static void on_freq_combobox_changed_cb(GtkComboBox *cb, gpointer user_data)
     set_repeat_sensitivity((appt_win *)user_data);
     mark_appointment_changed((appt_win *)user_data);
     refresh_recur_calendars((appt_win *)user_data);
-    
+
     (void)cb;
 }
 
@@ -680,7 +679,7 @@ static void on_app_combobox_changed_cb(GtkComboBox *cb, gpointer user_data)
 static void on_app_spin_button_changed_cb(GtkSpinButton *sb, gpointer user_data)
 {
     mark_appointment_changed((appt_win *)user_data);
-    
+
     (void)sb;
 }
 
@@ -689,7 +688,7 @@ static void on_recur_spin_button_changed_cb(GtkSpinButton *sb
 {
     mark_appointment_changed((appt_win *)user_data);
     refresh_recur_calendars((appt_win *)user_data);
-    
+
     (void)sb;
 }
 
@@ -752,7 +751,7 @@ static void on_appSound_button_clicked_cb(GtkButton *button, gpointer user_data)
 
     gtk_widget_destroy(file_chooser);
     g_free(appSound_entry_filename);
-    
+
     (void)button;
 }
 
@@ -798,7 +797,7 @@ static gboolean on_appWindow_delete_event_cb(GtkWidget *widget, GdkEvent *event
     , gpointer user_data)
 {
     return(appWindow_check_and_close((appt_win *)user_data));
-    
+
     (void)widget;
     (void)event;
 }
@@ -1298,14 +1297,14 @@ static gboolean save_xfical_from_appt_win(appt_win *apptw)
 static void on_appFileSave_menu_activate_cb(GtkMenuItem *mi, gpointer user_data)
 {
     save_xfical_from_appt_win((appt_win *)user_data);
-    
+
     (void)mi;
 }
 
 static void on_appSave_clicked_cb(GtkButton *b, gpointer user_data)
 {
     save_xfical_from_appt_win((appt_win *)user_data);
-    
+
     (void)b;
 }
 
@@ -1320,14 +1319,14 @@ static void on_appFileSaveClose_menu_activate_cb(GtkMenuItem *mi
         , gpointer user_data)
 {
     save_xfical_from_appt_win_and_close((appt_win *)user_data);
-    
+
     (void)mi;
 }
 
 static void on_appSaveClose_clicked_cb(GtkButton *b, gpointer user_data)
 {
     save_xfical_from_appt_win_and_close((appt_win *)user_data);
-    
+
     (void)b;
 }
 
@@ -1366,7 +1365,7 @@ static void delete_xfical_from_appt_win(appt_win *apptw)
 static void on_appDelete_clicked_cb(GtkButton *b, gpointer user_data)
 {
     delete_xfical_from_appt_win((appt_win *)user_data);
-    
+
     (void)b;
 }
 
@@ -1374,7 +1373,7 @@ static void on_appFileDelete_menu_activate_cb(GtkMenuItem *mi
         , gpointer user_data)
 {
     delete_xfical_from_appt_win((appt_win *)user_data);
-    
+
     (void)mi;
 }
 
@@ -1382,7 +1381,7 @@ static void on_appFileClose_menu_activate_cb(GtkMenuItem *mi
         , gpointer user_data)
 {
     appWindow_check_and_close((appt_win *)user_data);
-    
+
     (void)mi;
 }
 
@@ -1403,14 +1402,14 @@ static void on_appFileDuplicate_menu_activate_cb(GtkMenuItem *mi
         , gpointer user_data)
 {
     duplicate_xfical_from_appt_win((appt_win *)user_data);
-    
+
     (void)mi;
 }
 
 static void on_appDuplicate_clicked_cb(GtkButton *b, gpointer user_data)
 {
     duplicate_xfical_from_appt_win((appt_win *)user_data);
-    
+
     (void)b;
 }
 
@@ -1428,14 +1427,14 @@ static void on_appFileRevert_menu_activate_cb(GtkMenuItem *mi
         , gpointer user_data)
 {
     revert_xfical_to_last_saved((appt_win *)user_data);
-    
+
     (void)mi;
 }
 
 static void on_appRevert_clicked_cb(GtkWidget *b, gpointer *user_data)
 {
     revert_xfical_to_last_saved((appt_win *)user_data);
-    
+
     (void)b;
 }
 
@@ -1649,9 +1648,8 @@ static gboolean add_recur_exception_row (const gchar *p_time,
     label = gtk_label_new(text);
     g_free(text);
     g_object_set (label, "xalign", 0.0, "yalign", 0.5, NULL);
-    
     ev = gtk_event_box_new();
-    gtk_container_add (GTK_CONTAINER(ev), label);
+    gtk_container_add(GTK_CONTAINER(ev), label);
     gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_exception_rows_vbox),
                              ev, NULL, GTK_POS_BOTTOM, 1, 1);
     g_signal_connect(ev, "button-press-event", G_CALLBACK (recur_row_clicked),
@@ -1911,8 +1909,7 @@ static OrageRc *orage_category_file_open (const gboolean read_only)
     OrageRc *orc;
 
     fpath = orage_data_file_location(ORAGE_CATEGORIES_DIR_FILE);
-    if ((orc = orage_rc_file_open(fpath, read_only)) == NULL)
-    {
+    if ((orc = orage_rc_file_open(fpath, read_only)) == NULL) {
         g_warning (P_N "category file open failed.");
     }
     g_free(fpath);
@@ -1945,7 +1942,7 @@ static void orage_category_free(gpointer gcat, gpointer dummy)
 
     g_free(cat->category);
     g_free(cat);
-    
+
     (void)dummy;
 }
 
@@ -1957,7 +1954,7 @@ static void orage_category_free_list(void)
 }
 
 void orage_category_get_list(void)
-{    
+{
     OrageRc *orc;
     gchar **cat_groups, *color;
     gint i;
@@ -1965,7 +1962,7 @@ void orage_category_get_list(void)
 
     if (orage_category_list != NULL)
         orage_category_free_list();
-    
+
     orc = orage_category_file_open(TRUE);
     cat_groups = orage_rc_get_groups(orc);
     for (i = 0; cat_groups[i] != NULL; i++) {
@@ -1998,7 +1995,7 @@ static gboolean category_fill_cb(GtkComboBoxText *cb, char *selection)
         gtk_combo_box_text_append_text(cb, (const gchar *)cat_gourps[i]);
         if (!found && selection && !strcmp(selection, cat_gourps[i])) {
             /* +1 as we have _("Not set") there first */
-            gtk_combo_box_set_active(GTK_COMBO_BOX(cb), i+1); 
+            gtk_combo_box_set_active(GTK_COMBO_BOX(cb), i+1);
             found = TRUE;
         }
     }
@@ -2056,12 +2053,10 @@ static void orage_category_write_entry (const gchar *category,
     OrageRc *orc;
     gchar *color_str;
 
-    if (!ORAGE_STR_EXISTS(category))
-    {
+    if (!ORAGE_STR_EXISTS(category)) {
         g_message ("orage_category_write_entry: empty category. Not written");
         return;
     }
-    
     color_str = gdk_rgba_to_string (color);
     orc = orage_category_file_open(FALSE);
     orage_rc_set_group(orc, category);
@@ -2096,26 +2091,26 @@ static gboolean on_cat_window_delete_event(GtkWidget *w, GdkEvent *e
         , gpointer user_data)
 {
     close_cat_window(user_data);
-    
+
     (void)w;
     (void)e;
     return(FALSE);
 }
 
-static void cat_add_button_clicked (GtkButton *button, gpointer user_data)
+static void cat_add_button_clicked(GtkButton *button, gpointer user_data)
 {
     category_win_struct *catw = (category_win_struct *)user_data;
     gchar *entry_category;
     GdkRGBA color;
-    
-    entry_category = g_strdup (gtk_entry_get_text((GtkEntry *)catw->new_entry));
+
+    entry_category = g_strdup(gtk_entry_get_text((GtkEntry *)catw->new_entry));
     g_strstrip(entry_category);
     gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (catw->new_color_button),
                                 &color);
     orage_category_write_entry(entry_category, &color);
     g_free(entry_category);
     refresh_categories(catw);
-    
+
     (void)button;
 }
 
@@ -2124,11 +2119,11 @@ static void cat_color_button_changed(GtkColorButton *color_button
 {
     gchar *category;
     GdkRGBA color;
-    
-    category = g_object_get_data (G_OBJECT(color_button), "CATEGORY");
+
+    category = g_object_get_data(G_OBJECT(color_button), "CATEGORY");
     gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (color_button), &color);
-    orage_category_write_entry (category, &color);
-    
+    orage_category_write_entry(category, &color);
+
     (void)user_data;
 }
 
@@ -2151,7 +2146,7 @@ static void show_category(const gpointer elem, gpointer user_data)
     hbox = gtk_grid_new ();
     g_object_set (hbox, "column-spacing", CATEGORIES_SPACING,
                         NULL);
-    
+
     label = gtk_label_new(cat->category);
     g_object_set (label, "xalign", 0.0, "yalign", 0.5,
                          "hexpand", TRUE,
@@ -2178,34 +2173,33 @@ static void show_category(const gpointer elem, gpointer user_data)
                              GTK_POS_BOTTOM, 1, 1);
 }
 
-static void refresh_categories (category_win_struct *catw)
+static void refresh_categories(category_win_struct *catw)
 {
     GtkWidget *swin;
 
-    gtk_widget_destroy (catw->cur_frame);
+    gtk_widget_destroy(catw->cur_frame);
 
     catw->cur_frame_vbox = gtk_grid_new ();
     g_object_set (catw->cur_frame_vbox, "row-spacing", CATEGORIES_SPACING,
                                         NULL);
-    swin = gtk_scrolled_window_new (NULL, NULL);
-    gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (swin),
-                                    GTK_POLICY_AUTOMATIC,
-                                    GTK_POLICY_AUTOMATIC);
+    swin = gtk_scrolled_window_new(NULL, NULL);
+    gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(swin)
+            , GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
     gtk_container_add (GTK_CONTAINER (swin), catw->cur_frame_vbox);
-    catw->cur_frame = orage_create_framebox_with_content (
+    catw->cur_frame = orage_create_framebox_with_content(
             _("Current categories"), GTK_SHADOW_IN, swin);
     g_object_set (catw->cur_frame, "margin-top", 5,
                                    "margin-bottom", 5,
                                    "vexpand", TRUE,
                                    "valign", GTK_ALIGN_FILL,
                                    NULL);
-    
+
     gtk_grid_attach_next_to (GTK_GRID (catw->vbox), catw->cur_frame, NULL,
                              GTK_POS_BOTTOM, 1, 1);
 
-    orage_category_get_list ();
-    g_list_foreach (orage_category_list, show_category, catw);
-    gtk_widget_show_all (catw->cur_frame);
+    orage_category_get_list();
+    g_list_foreach(orage_category_list, show_category, catw);
+    gtk_widget_show_all(catw->cur_frame);
 }
 
 static void create_cat_win(category_win_struct *catw)
@@ -2257,7 +2251,7 @@ static void create_cat_win(category_win_struct *catw)
     catw->cur_frame = orage_create_framebox_with_content ("dummy",
                                                           GTK_SHADOW_NONE,
                                                           vbox);
-    refresh_categories (catw);
+    refresh_categories(catw);
 }
 
 static void on_categories_button_clicked_cb(GtkWidget *button
@@ -2285,7 +2279,7 @@ static void on_categories_button_clicked_cb(GtkWidget *button
     g_signal_connect((gpointer)catw->window, "delete_event",
         G_CALLBACK(on_cat_window_delete_event), catw);
     gtk_widget_show_all(catw->window);
-    
+
     (void)button;
 }
 
@@ -2793,7 +2787,7 @@ static void on_test_button_clicked_cb(GtkButton *button
     g_free(cur_alarm.description);
     g_free(cur_alarm.sound);
     g_free(cur_alarm.cmd);
-    
+
     (void)button;
 }
 
@@ -2805,7 +2799,7 @@ static void on_appDefault_save_button_clicked_cb(GtkButton *button
 
     fill_appt_from_apptw_alarm(appt, apptw);
     store_default_alarm(appt);
-    
+
     (void)button;
 }
 
@@ -2817,7 +2811,7 @@ static void on_appDefault_read_button_clicked_cb(GtkButton *button
 
     read_default_alarm(appt);
     fill_appt_window_alarm(apptw, appt);
-    
+
     (void)button;
 }
 
@@ -2997,7 +2991,7 @@ static void build_general_page(appt_win *apptw)
     apptw->Completed_label = gtk_label_new(_("Completed"));
     apptw->Completed_hbox = gtk_grid_new ();
     apptw->Completed_checkbutton = 
-            gtk_check_button_new_with_mnemonic(_("Done"));    
+            gtk_check_button_new_with_mnemonic(_("Done"));
     gtk_grid_attach_next_to (GTK_GRID (apptw->Completed_hbox),
             apptw->Completed_checkbutton, NULL, GTK_POS_RIGHT, 1, 1);
     label = gtk_label_new(" ");
@@ -3186,7 +3180,7 @@ static void build_alarm_page(appt_win *apptw)
             , apptw->Alarm_spin_dd, apptw->Alarm_spin_dd_label
             , apptw->Alarm_spin_hh, apptw->Alarm_spin_hh_label
             , apptw->Alarm_spin_mm, apptw->Alarm_spin_mm_label);
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Alarm_hbox), 
+    gtk_grid_attach_next_to (GTK_GRID (apptw->Alarm_hbox),
                              apptw->Alarm_time_hbox, NULL,
                              GTK_POS_RIGHT, 1, 1);
     apptw->Alarm_when_cb = orage_create_combo_box_with_content(when_array, 4);
@@ -3229,7 +3223,7 @@ static void build_alarm_page(appt_win *apptw)
                              apptw->Sound_checkbutton, NULL, GTK_POS_RIGHT,
                              1, 1);
 
-    apptw->Sound_entry = gtk_entry_new ();
+    apptw->Sound_entry = gtk_entry_new();
     g_object_set (apptw->Sound_entry, "margin-left", 10,
                                       "margin-right", 6,
                                       "halign", GTK_ALIGN_FILL,
@@ -3669,7 +3663,7 @@ static void build_recurrence_page(appt_win *apptw)
     apptw->Recur_exception_label = gtk_label_new(_("Exceptions"));
     apptw->Recur_exception_hbox = gtk_grid_new ();
     apptw->Recur_exception_scroll_win = gtk_scrolled_window_new(NULL, NULL);
-    
+
     /* FIXME: Using width-request is hack. Recur_exception_scroll_win should
      * take all remaing space from grid and Recur_exception_type_vbox should
      * aligned to end. But we don't know width of other wigets in this tab and
@@ -3690,7 +3684,7 @@ static void build_recurrence_page(appt_win *apptw)
 
     gtk_container_add (GTK_CONTAINER (apptw->Recur_exception_scroll_win),
                                       apptw->Recur_exception_rows_vbox);
-    
+
     gtk_widget_set_tooltip_text(apptw->Recur_exception_scroll_win
             , _("Add more exception dates by clicking the calendar days below.\nException is either exclusion(-) or inclusion(+) depending on the selection.\nRemove by clicking the data."));
     apptw->Recur_exception_type_vbox = gtk_grid_new ();
@@ -3723,12 +3717,12 @@ static void build_recurrence_page(appt_win *apptw)
             apptw->Recur_exception_incl_rb
             , apptw->Recur_exception_incl_spin_hh
             , apptw->Recur_exception_incl_spin_mm, NULL);
-    
+
     gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_exception_type_vbox),
                              apptw->Recur_exception_incl_time_hbox, NULL,
                              GTK_POS_BOTTOM, 1, 1);
 
-    orage_table_add_row (apptw->TableRecur
+    orage_table_add_row(apptw->TableRecur
             , apptw->Recur_exception_label, apptw->Recur_exception_hbox
             , ++row ,(GTK_EXPAND | GTK_FILL), (0));
 
@@ -3756,7 +3750,7 @@ static void build_recurrence_page(appt_win *apptw)
     gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_calendar_hbox),
                              apptw->Recur_calendar2, NULL,
                              GTK_POS_RIGHT, 1, 1);
-    
+
     apptw->Recur_calendar3 = gtk_calendar_new();
     gtk_calendar_set_display_options(GTK_CALENDAR(apptw->Recur_calendar3)
             , GTK_CALENDAR_SHOW_HEADING | GTK_CALENDAR_SHOW_DAY_NAMES);

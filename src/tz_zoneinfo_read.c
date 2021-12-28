@@ -80,6 +80,8 @@
 #define ICAL_ZONES_TAB_FILENAME  "zones.tab"
 #define ICAL_ZONES_TAB_FILE_LOC  ORAGE_ZONEINFO_DIRECTORY ICAL_ZONES_TAB_FILENAME
 
+
+
 /* this contains all timezone data */
 orage_timezone_array tz_array= {0};
 
@@ -658,7 +660,7 @@ static int check_parameters(void)
         }
         else { /* no errors */
             in_file = malloc(par_file_stat.st_size+1);
-            if (((off_t)fread(in_file, 1, par_file_stat.st_size, par_file) 
+            if (((off_t)fread(in_file, 1, par_file_stat.st_size, par_file)
                         < par_file_stat.st_size)
             && (ferror(par_file))) {
                 printf("check_parameters: error reading (%s)\n"
@@ -786,10 +788,10 @@ static void read_os_timezones(void)
     if (zone_tab_buf) {
         return;
     }
-    
+
     len = in_file_base_offset + zoneinfo_len + 1;
-    tz_dir = malloc (in_file_base_offset + zoneinfo_len + 1); /* '\0' */
-    strncpy (tz_dir, in_file, in_file_base_offset);
+    tz_dir = malloc(in_file_base_offset + zoneinfo_len + 1); /* '\0' */
+    strncpy(tz_dir, in_file, in_file_base_offset);
     tz_dir[in_file_base_offset] = '\0'; 
     g_strlcat (tz_dir, "zoneinfo/", len); /* now we have the base directory */
 
@@ -845,7 +847,7 @@ static void read_countries(void)
 
     len = in_file_base_offset + zoneinfo_len + 1;
     tz_dir = malloc (len); /* '\0' */
-    strncpy (tz_dir, in_file, in_file_base_offset);
+    strncpy(tz_dir, in_file, in_file_base_offset);
     tz_dir[in_file_base_offset] = '\0'; 
 #ifdef __OpenBSD__ 
     g_strlcat (tz_dir, "misc/", len); /* this is shorter than "zoneinfo" so it is safe */
@@ -1007,7 +1009,7 @@ void free_orage_timezones (void)
 {
     int i;
 
-    for (i = 0; i < tz_array.count; i++) {
+    for (i = 0 ; i < tz_array.count; i++) {
         if (tz_array.city[i])
             free(tz_array.city[i]);
         if (tz_array.tz[i])

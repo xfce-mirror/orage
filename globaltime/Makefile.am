@@ -7,7 +7,7 @@ globaltime_SOURCES =							\
 	gt_prefs.c							\
 	timezone_selection.c						\
 	timezone_selection.h
-	
+
 man_MANS = globaltime.1
 
 if MAINTAINER_MODE

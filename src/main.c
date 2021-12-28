@@ -76,7 +76,7 @@ static gboolean resume_after_sleep(gpointer user_data)
     g_message ("Resuming after sleep");
     alarm_read();
     orage_day_change(&g_par);
-    
+
     (void)user_data;
     return(FALSE); /* only once */
 }
@@ -87,7 +87,7 @@ static void resuming_cb(DBusGProxy *proxy, gpointer user_data)
     /* we need this delay to prevent updating tray icon too quickly when
        the normal code handles it also */
     g_timeout_add_seconds(2, (GSourceFunc) resume_after_sleep, NULL);
-    
+
     (void)user_data;
     (void)proxy;
 }
@@ -168,11 +168,11 @@ static void send_event (const char *event)
 
     if (XSendEvent (display, xwindow, FALSE, NoEventMask, &xevent) == 0)
         g_warning ("send message to %s failed", event);
-    
+
     (void)XFlush (display);
 }
 
-void orage_toggle_visible (void)
+void orage_toggle_visible(void)
 {
     g_debug ("orage_toggle_visible(), send '" CALENDAR_TOGGLE_EVENT "' event");
     send_event (CALENDAR_TOGGLE_EVENT);
@@ -205,11 +205,11 @@ static gboolean mWindow_delete_event_cb(GtkWidget *widget, GdkEvent *event
     else {
         orage_toggle_visible();
     }
-    
+
     (void)widget;
     (void)event;
     (void)user_data;
-    
+
     return(TRUE);
 }
 
@@ -239,12 +239,12 @@ client_message_filter (GdkXEvent *gdkxevent, GdkEvent *event, gpointer data)
     XClientMessageEvent *evt;
     XEvent *xevent = (XEvent *)gdkxevent;
     CalWin *cal = (CalWin *)g_par.xfcal;
-    
+
     if (xevent->type != ClientMessage)
         return GDK_FILTER_CONTINUE;
-    
+
     evt = (XClientMessageEvent *)gdkxevent;
-    
+
     if (evt->message_type ==
             XInternAtom (evt->display, CALENDAR_RAISE_EVENT, FALSE))
     {
@@ -263,7 +263,7 @@ client_message_filter (GdkXEvent *gdkxevent, GdkEvent *event, gpointer data)
         }
         else
             raise_window ();
-        
+
         return GDK_FILTER_REMOVE;
     }
     else if (evt->message_type ==
@@ -273,7 +273,7 @@ client_message_filter (GdkXEvent *gdkxevent, GdkEvent *event, gpointer data)
         show_parameters ();
         return GDK_FILTER_REMOVE;
     }
-    
+
     (void)event;
     (void)data;
 
@@ -377,7 +377,7 @@ static void import_file(gboolean running, char *file_name, gboolean initialized)
         if (orage_dbus_import_file(file_name))
             g_message ("import done file=%s", file_name);
         else
-            g_warning ("import failed file=%s\n", file_name);
+            g_warning("import failed file=%s\n", file_name);
 #else
         g_warning("Can not do import without dbus. import failed file=%s\n", file_name);
 #endif
@@ -386,7 +386,7 @@ static void import_file(gboolean running, char *file_name, gboolean initialized)
         if (xfical_import_file(file_name))
             g_message ("import done file=%s", file_name);
         else
-            g_warning ("import failed file=%s\n", file_name);
+            g_warning("import failed file=%s\n", file_name);
     }
 }
 
@@ -406,16 +406,16 @@ static void export_file(gboolean running, char *file_name, gboolean initialized
         if (orage_dbus_export_file(file_name, type, uid_list))
             g_message ("export done to file=%s", file_name);
         else
-            g_warning ("export failed file=%s\n", file_name);
+            g_warning("export failed file=%s\n", file_name);
 #else
-        g_warning ("Can not do export without dbus. failed file=%s\n", file_name);
+        g_warning("Can not do export without dbus. failed file=%s\n", file_name);
 #endif
     }
     else if (!running && initialized) { /* do it self directly */
         if (xfical_export_file(file_name, type, uid_list))
             g_message ("export done to file=%s", file_name);
         else
-            g_warning ("export failed file=%s\n", file_name);
+            g_warning("export failed file=%s\n", file_name);
     }
 }
 
@@ -465,7 +465,7 @@ static void remove_foreign(gboolean running, char *file_name, gboolean initializ
 
 static gboolean process_args(int argc, char *argv[], gboolean running
         , gboolean initialized)
-{ 
+{
     int argi;
     gboolean end = FALSE;
     gboolean foreign_file_read_only = TRUE;
@@ -608,7 +608,7 @@ static void mark_orage_alive(void)
                 , gdk_x11_get_server_time(window), FALSE)) {
         g_error("Unable acquire ownership of selection");
     }
-    
+
     gdk_window_add_filter (window, client_message_filter, NULL);
 }
 

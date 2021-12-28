@@ -99,13 +99,13 @@ static gint get_first_weekday (OrageRc *orc)
      * Linux.
      */
     const gint first_week_day = orage_rc_get_int(orc, "Ical week start day",-1);
-    
+
     return (first_week_day != -1) ? first_week_day
                                   : get_first_weekday_from_locale ();
 #endif
 #else
     const gint first_week_day = orage_rc_get_int(orc, "Ical week start day",-1);
-    
+
     return (first_week_day == -1) ? get_first_weekday_from_locale ()
                                   : first_week_day;
 #endif
@@ -160,7 +160,7 @@ static void sound_application_changed(GtkWidget *dialog, gpointer user_data)
         g_free(g_par.sound_application);
     g_par.sound_application = g_strdup(gtk_entry_get_text(
             GTK_ENTRY(itf->sound_application_entry)));
-    
+
     (void)dialog;
 }
 
@@ -177,7 +177,7 @@ static void borders_changed(GtkWidget *dialog, gpointer user_data)
     g_par.show_borders = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->show_borders_checkbutton));
     set_border();
-    
+
     (void)dialog;
 }
 
@@ -196,7 +196,7 @@ static void menu_changed(GtkWidget *dialog, gpointer user_data)
     g_par.show_menu = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->show_menu_checkbutton));
     set_menu();
-    
+
     (void)dialog;
 }
 
@@ -216,7 +216,7 @@ static void heading_changed(GtkWidget *dialog, gpointer user_data)
     g_par.show_heading = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->show_heading_checkbutton));
     set_calendar();
-    
+
     (void)dialog;
 }
 
@@ -227,7 +227,7 @@ static void days_changed(GtkWidget *dialog, gpointer user_data)
     g_par.show_day_names = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->show_day_names_checkbutton));
     set_calendar();
-    
+
     (void)dialog;
 }
 
@@ -238,7 +238,7 @@ static void weeks_changed(GtkWidget *dialog, gpointer user_data)
     g_par.show_weeks = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->show_weeks_checkbutton));
     set_calendar();
-    
+
     (void)dialog;
 }
 
@@ -257,7 +257,7 @@ static void todos_changed(GtkWidget *dialog, gpointer user_data)
             gtk_window_resize(GTK_WINDOW(((CalWin *)g_par.xfcal)->mWindow)
                     , g_par.size_x, 1);
     }
-    
+
     (void)dialog;
 }
 
@@ -268,12 +268,12 @@ static void show_events_spin_changed(GtkSpinButton *sb, gpointer user_data)
         build_mainbox_event_box();
     else {
         gtk_widget_hide(((CalWin *)g_par.xfcal)->mEvent_vbox);
-        /* Hide the whole area if also todo's box does not exist. */
+        /* hide the whole area if also todo box does not exist */
         if (!g_par.show_todos)
             gtk_window_resize(GTK_WINDOW(((CalWin *)g_par.xfcal)->mWindow)
                     , g_par.size_x, 1);
     }
-    
+
     (void)user_data;
 }
 
@@ -292,7 +292,7 @@ static void stick_changed(GtkWidget *dialog, gpointer user_data)
     g_par.set_stick = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->set_stick_checkbutton));
     set_stick();
-    
+
     (void)dialog;
 }
 
@@ -309,7 +309,7 @@ static void ontop_changed(GtkWidget *dialog, gpointer user_data)
     g_par.set_ontop = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->set_ontop_checkbutton));
     set_ontop();
-    
+
     (void)dialog;
 }
 
@@ -326,7 +326,7 @@ static void taskbar_changed(GtkWidget *dialog, gpointer user_data)
     g_par.show_taskbar = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->show_taskbar_checkbutton));
     set_taskbar();
-    
+
     (void)dialog;
 }
 
@@ -343,21 +343,21 @@ static void pager_changed(GtkWidget *dialog, gpointer user_data)
     g_par.show_pager = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->show_pager_checkbutton));
     set_pager();
-    
+
     (void)dialog;
 }
 
-static void set_systray (void)
+static void set_systray(void)
 {
     GdkPixbuf *orage_logo;
     GtkStatusIcon *status_icon = (GtkStatusIcon *)g_par.trayIcon;
 
     if (!(status_icon && orage_status_icon_is_embedded (status_icon)))
     {
-        orage_logo = orage_create_icon (FALSE, 0);
+        orage_logo = orage_create_icon(FALSE, 0);
         status_icon = create_TrayIcon (orage_logo);
         g_par.trayIcon = status_icon;
-        g_object_unref (orage_logo);
+        g_object_unref(orage_logo);
     }
 
     orage_status_icon_set_visible (status_icon, g_par.show_systray);
@@ -370,7 +370,7 @@ static void systray_changed(GtkWidget *dialog, gpointer user_data)
     g_par.show_systray = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->show_systray_checkbutton));
     set_systray();
-    
+
     (void)dialog;
 }
 
@@ -382,7 +382,7 @@ static void start_changed(GtkWidget *dialog, gpointer user_data)
             itf->visibility_show_radiobutton));
     g_par.start_minimized = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->visibility_minimized_radiobutton));
-    
+
     (void)dialog;
 }
 
@@ -392,7 +392,7 @@ static void show_changed(GtkWidget *dialog, gpointer user_data)
 
     g_par.show_days = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->click_to_show_days_radiobutton));
-    
+
     (void)dialog;
 }
 
@@ -403,7 +403,7 @@ static void foreign_alarm_changed(GtkWidget *dialog, gpointer user_data)
     g_par.use_foreign_display_alarm_notify = 
         gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->foreign_alarm_notification_radiobutton));
-    
+
     (void)dialog;
 }
 
@@ -414,7 +414,7 @@ static void dw_week_mode_changed(GtkWidget *dialog, gpointer user_data)
     g_par.dw_week_mode = 
         gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->dw_week_mode_week_radiobutton));
-    
+
     (void)dialog;
 }
 
@@ -431,22 +431,24 @@ static void sound_application_open_button_clicked(GtkButton *button
             , GTK_WINDOW(itf->orage_dialog), GTK_FILE_CHOOSER_ACTION_OPEN
             , "_Cancel", GTK_RESPONSE_CANCEL
             , NULL);
-    
+
     open_button = orage_util_image_button ("document-open", _("_Open"));
     gtk_widget_set_can_default (open_button, TRUE);
     gtk_dialog_add_action_widget (GTK_DIALOG (file_chooser), open_button,
                                   GTK_RESPONSE_ACCEPT);
 
     /* Set sound application search path */
-    if (g_par.sound_application == NULL || strlen(g_par.sound_application) == 0 ||  g_par.sound_application[0] != '/' || ! gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(file_chooser), g_par.sound_application))
-        gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER(file_chooser), "/");
-    
-    if (gtk_dialog_run(GTK_DIALOG(file_chooser)) == GTK_RESPONSE_ACCEPT)
-    {
-        g_par.sound_application = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(file_chooser));
+    if (g_par.sound_application == NULL || strlen(g_par.sound_application) == 0
+    ||  g_par.sound_application[0] != '/'
+    || ! gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(file_chooser)
+                , g_par.sound_application))
+        gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER(file_chooser)
+                , "/");
 
-        if (g_par.sound_application)
-        {
+   if (gtk_dialog_run(GTK_DIALOG(file_chooser)) == GTK_RESPONSE_ACCEPT) {
+           g_par.sound_application = gtk_file_chooser_get_filename(
+                GTK_FILE_CHOOSER(file_chooser));
+        if (g_par.sound_application) {
             s = g_strdup(g_par.sound_application);
             gtk_entry_set_text(GTK_ENTRY(itf->sound_application_entry)
                     , (const gchar *)s);
@@ -454,7 +456,7 @@ static void sound_application_open_button_clicked(GtkButton *button
         }
     }
     gtk_widget_destroy(file_chooser);
-    
+
     (void)button;
 }
 
@@ -476,7 +478,7 @@ static void archive_threshold_spin_changed(GtkSpinButton *sb
         , gpointer user_data)
 {
     g_par.archive_limit = gtk_spin_button_get_value(sb);
-    
+
     (void)user_data;
 }
 #endif
@@ -487,14 +489,14 @@ static void select_day_changed(GtkWidget *dialog, gpointer user_data)
 
     g_par.select_always_today = gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(itf->select_day_today_radiobutton));
-    
+
     (void)dialog;
 }
 
 static void el_extra_days_spin_changed(GtkSpinButton *sb, gpointer user_data)
 {
     g_par.el_days = gtk_spin_button_get_value(sb);
-    
+
     (void)user_data;
 }
 
@@ -502,7 +504,7 @@ static void el_only_first_checkbutton_clicked(GtkCheckButton *cb
         , gpointer user_data)
 {
     g_par.el_only_first = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb));
-    
+
     (void)user_data;
 }
 
@@ -528,7 +530,7 @@ static void use_wakeup_timer_changed(GtkWidget *dialog, gpointer user_data)
     g_par.use_wakeup_timer = gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(itf->use_wakeup_timer_checkbutton));
     set_wakeup_timer();
-    
+
     (void)dialog;
 }
 
@@ -538,7 +540,7 @@ static void always_quit_changed(GtkWidget *dialog, gpointer user_data)
 
     g_par.close_means_quit = gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(itf->always_quit_checkbutton));
-    
+
     (void)dialog;
 }
 
@@ -634,7 +636,7 @@ static void create_parameter_dialog_main_setup_tab(Itf *dialog)
 
     dialog->sound_application_open_button = 
             orage_util_image_button ("document-open", _("_Open"));
-    
+
     g_object_set (dialog->sound_application_open_button,
                   "margin-left", 10,
                   NULL);
@@ -655,7 +657,7 @@ static void table_add_row(GtkWidget *table, GtkWidget *data1, GtkWidget *data2,
 {
     if (data1)
         gtk_grid_attach (GTK_GRID (table), data1, 0, row, 1, 1);
-    
+
     if (data2)
         gtk_grid_attach (GTK_GRID (table), data2, 1, row, 1, 1);
 }
@@ -664,9 +666,10 @@ static void create_parameter_dialog_calendar_setup_tab(Itf *dialog)
 {
     GtkWidget *hbox, *vbox, *label, *table;
     gint row;
-    
+
     dialog->calendar_vbox = gtk_grid_new ();
-    dialog->calendar_tab = orage_create_framebox_with_content (NULL,
+    dialog->calendar_tab = 
+        orage_create_framebox_with_content (NULL,
                            GTK_SHADOW_NONE, dialog->calendar_vbox);
     /* orage_create_framebox_with_content set 'margin-top' to 5, so we have to
      * change top margin AFTER calling orage_create_framebox_with_content.
@@ -767,7 +770,8 @@ static void create_parameter_dialog_calendar_setup_tab(Itf *dialog)
 
     /***** Where calendar appears = exists = is visible *****/
     table = gtk_grid_new ();
-    dialog->appearance_frame = orage_create_framebox_with_content (
+    dialog->appearance_frame = 
+            orage_create_framebox_with_content (
             _("Calendar visibility"), GTK_SHADOW_NONE, table);
     gtk_grid_attach_next_to (GTK_GRID (dialog->calendar_vbox),
                              dialog->appearance_frame, NULL, GTK_POS_BOTTOM,
@@ -981,7 +985,8 @@ static void create_parameter_dialog_extra_setup_tab(Itf *dialog)
     GtkWidget *hbox, *vbox, *label;
 
     dialog->extra_vbox = gtk_grid_new ();
-    dialog->extra_tab = orage_create_framebox_with_content (
+    dialog->extra_tab = 
+            orage_create_framebox_with_content (
             NULL, GTK_SHADOW_NONE, dialog->extra_vbox);
     /* orage_create_framebox_with_content set 'margin-top' to 5, so we have to
      * change top margin AFTER calling orage_create_framebox_with_content.
@@ -996,7 +1001,7 @@ static void create_parameter_dialog_extra_setup_tab(Itf *dialog)
     vbox = gtk_grid_new ();
     dialog->el_extra_days_frame = orage_create_framebox_with_content(
             _("Event list window"), GTK_SHADOW_NONE, vbox);
-    
+
     gtk_grid_attach_next_to (GTK_GRID (dialog->extra_vbox),
                              dialog->el_extra_days_frame, NULL, GTK_POS_BOTTOM,
                              1, 1);
@@ -1038,7 +1043,7 @@ static void create_parameter_dialog_extra_setup_tab(Itf *dialog)
     g_object_set (hbox, "column-homogeneous", TRUE, NULL);
     dialog->dw_week_mode_frame = orage_create_framebox_with_content(
             _("Day view window default first day"), GTK_SHADOW_NONE, hbox);
-    
+
     gtk_grid_attach_next_to (GTK_GRID (dialog->extra_vbox),
                              dialog->dw_week_mode_frame, NULL, GTK_POS_BOTTOM,
                              1, 1);
@@ -1085,7 +1090,7 @@ static void create_parameter_dialog_extra_setup_tab(Itf *dialog)
     hbox = gtk_grid_new ();
     dialog->use_wakeup_timer_frame = orage_create_framebox_with_content(
             _("Use wakeup timer"), GTK_SHADOW_NONE, hbox);
-        
+
     gtk_grid_attach_next_to (GTK_GRID (dialog->extra_vbox),
                              dialog->use_wakeup_timer_frame, NULL,
                              GTK_POS_BOTTOM, 1, 1);
@@ -1110,7 +1115,7 @@ static void create_parameter_dialog_extra_setup_tab(Itf *dialog)
     g_object_set (hbox, "column-homogeneous", TRUE, NULL);
     dialog->foreign_alarm_frame = orage_create_framebox_with_content(
             _("Foreign file default visual alarm"), GTK_SHADOW_NONE, hbox);
-    
+
     gtk_grid_attach_next_to (GTK_GRID (dialog->extra_vbox),
                              dialog->foreign_alarm_frame, NULL, GTK_POS_BOTTOM,
                              1, 1);
@@ -1157,7 +1162,7 @@ static void create_parameter_dialog_extra_setup_tab(Itf *dialog)
     hbox = gtk_grid_new ();
     dialog->always_quit_frame = orage_create_framebox_with_content(
             _("Always quit when asked to close"), GTK_SHADOW_NONE, hbox);
-    
+
     gtk_grid_attach_next_to (GTK_GRID (dialog->extra_vbox),
                              dialog->always_quit_frame, NULL, GTK_POS_BOTTOM,
                              1, 1);

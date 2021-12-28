@@ -47,9 +47,8 @@ static void write_string(OrageRc *rc, gchar *prop, GString *string)
 static void write_color (OrageRc *rc, const gchar *prop, const GdkRGBA *color)
 {
     gchar *color_str;
-    
-    if (color)
-    {
+
+    if (color) {
         color_str = gdk_rgba_to_string (color);
         orage_rc_put_str (rc, prop, color_str);
         g_free (color_str);
@@ -122,13 +121,12 @@ static gboolean read_color (OrageRc *rc, const gchar *prop, GdkRGBA **result)
 {
     gchar *color_str;
     gboolean found = FALSE;
-    
-    if (orage_rc_exists_item (rc, prop))
-    {
+
+    if (orage_rc_exists_item(rc, prop)) {
         color_str = orage_rc_get_str (rc, prop, "#000000");
         gdk_rgba_parse (*result, color_str);
         found = TRUE;
-        
+
         g_free (color_str);
     }
     return(found);

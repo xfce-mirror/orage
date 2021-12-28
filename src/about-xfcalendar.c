@@ -53,13 +53,13 @@ void create_wAbout(GtkWidget *widget, gpointer user_data)
   gtk_about_dialog_set_documenters(about, authors);
   orage_logo = orage_create_icon(FALSE, 96);
   gtk_about_dialog_set_logo(about, orage_logo);
-          
+
   gtk_window_set_default_size(GTK_WINDOW(dialog), 520, 440);
 
   gtk_dialog_run(GTK_DIALOG(dialog));
   gtk_widget_destroy(dialog);
   g_object_unref(orage_logo);
-  
+
   (void)widget;
   (void)user_data;
 }

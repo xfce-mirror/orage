@@ -58,26 +58,26 @@ static GtkStyleContext *get_style (GtkStyleContext *parent,
 {
     GtkWidgetPath *path;
     GtkStyleContext *context;
-    
+
     if (parent)
         path = gtk_widget_path_copy (gtk_style_context_get_path (parent));
     else
         path = gtk_widget_path_new ();
-    
+
     gtk_widget_path_append_type (path, G_TYPE_NONE);
     gtk_widget_path_iter_set_object_name (path, -1, selector);
-    
+
     context = gtk_style_context_new ();
     gtk_style_context_set_path (context, path);
     gtk_style_context_set_parent (context, parent);
-    
+
     /* Unfortunately, we have to explicitly set the state again here for it to
      * take effect.
      */
     gtk_style_context_set_state (context,
                                  gtk_widget_path_iter_get_state (path, -1));
     gtk_widget_path_unref (path);
-    
+
     return context;
 }
 
@@ -87,9 +87,9 @@ static GtkWidget *orage_image_menu_item (const gchar *label,
 #ifdef HAVE_LIBXFCE4UI
     return xfce_gtk_image_menu_item_new_from_icon_name (
             label, NULL, NULL, NULL, NULL, icon_name, NULL);
-#else    
+#else
     (void)icon_name;
-    
+
     return gtk_menu_item_new_with_mnemonic (label);
 #endif
 }
@@ -103,14 +103,14 @@ static void on_Today_activate(GtkMenuItem *menuitem, gpointer user_data)
     orage_select_date(GTK_CALENDAR(xfcal->mCalendar), t->tm_year+1900
             , t->tm_mon, t->tm_mday);
     (void)create_el_win (NULL);
-    
+
     (void)menuitem;
 }
 
 static void on_preferences_activate(GtkMenuItem *menuitem, gpointer user_data)
 {
     show_parameters ();
-    
+
     (void)menuitem;
     (void)user_data;
 }
@@ -124,8 +124,8 @@ static void on_new_appointment_activate(GtkMenuItem *menuitem,
     t = orage_localtime();
     g_snprintf(cur_date, sizeof (cur_date), "%04d%02d%02d", t->tm_year+1900
                , t->tm_mon+1, t->tm_mday);
-    create_appt_win("NEW", cur_date); 
-    
+    create_appt_win("NEW", cur_date);
+
     (void)menuitem;
     (void)user_data;
 }
@@ -137,7 +137,7 @@ static void on_globaltime_activate(GtkMenuItem *menuitem, gpointer user_data)
     if (!orage_exec("globaltime", FALSE, &error))
         g_message("%s: start of %s failed: %s", "Orage", "globaltime"
                 , error->message);
-    
+
     (void)menuitem;
     (void)user_data;
 }
@@ -149,7 +149,7 @@ static gboolean button_press_cb(GtkStatusIcon *status_icon
     Window xwindow;
     Display *display;
     XEvent xevent;
-    
+
     if (event->type != GDK_BUTTON_PRESS) /* double or triple click */
         return(FALSE); /* ignore */
     else if (event->button == 2)
@@ -165,41 +165,41 @@ static gboolean button_press_cb(GtkStatusIcon *status_icon
                     XInternAtom (display, GLOBALTIME_TOGGLE, FALSE);
             xevent.xclient.send_event = TRUE;
             xevent.xclient.window = xwindow;
-            
+
             if (XSendEvent (display, xwindow, FALSE, NoEventMask, &xevent))
                 g_debug(_("Raising GlobalTime window..."));
             else
                 g_warning (_("GlobalTime window raise failed"));
-            
+
             (void)XFlush (display);
-            
-            return(TRUE);     
+
+            return(TRUE);
         }
         else { /* not running, let's try to start it. Need to reset TZ! */
             on_globaltime_activate(NULL, NULL);
             return(TRUE);
         }
     }
-    
+
     (void)status_icon;
     (void)user_data;
-    
+
     return(FALSE);
 }
 
 static void toggle_visible_cb(GtkStatusIcon *status_icon, gpointer user_data)
 {
     orage_toggle_visible();
-    
+
     (void)status_icon;
     (void)user_data;
 }
 
 static void show_menu(GtkStatusIcon *status_icon, guint button
         , guint activate_time, gpointer user_data)
-{    
+{
     gtk_menu_popup_at_pointer ((GtkMenu *)user_data, NULL);
-    
+
     (void)status_icon;
     (void)button;
     (void)activate_time;
@@ -237,35 +237,35 @@ static GtkStyleContext *get_row_style (GtkStyleContext *style_context,
                                        gint row_idx)
 {
     char buf[8];
-    
+
     (void)g_snprintf (buf, sizeof (buf) - 1 , "row%d", row_idx);
-    
+
     return get_style (style_context, buf);
 }
 
 static const char *get_row_x_data (const gint line)
 {
     char *row_x_data;
-    
+
     switch (line)
     {
         case 1:
             row_x_data = g_par.own_icon_row1_data;
             break;
-            
+
         case 2:
             row_x_data = g_par.own_icon_row2_data;
             break;
-            
+
         case 3:
             row_x_data = g_par.own_icon_row3_data;
             break;
-            
+
         default:
             g_assert_not_reached ();
             break;
     }
-    
+
     return row_x_data;
 }
 
@@ -276,26 +276,26 @@ static gint find_y_offset (const gint line,
                            const gint16 border_bottom)
 {
     gint y_offset;
-            
+
     switch (line)
     {
         case 1:
             y_offset = border_top;
             break;
-            
+
         case 2:
             y_offset = ((height - y_size) / 2) - border_top;
             break;
-            
-        case 3:            
+
+        case 3:
             y_offset = height - y_size - border_top - border_bottom;
             break;
-            
+
         default:
             g_assert_not_reached ();
             break;
     }
-    
+
     return y_offset;
 }
 
@@ -317,39 +317,39 @@ static void create_own_icon_pango_layout (gint line,
     GtkStyleContext *sub_style_context;
     GtkStateFlags style_context_state;
     const char *row_x_data;
-    
+
     g_assert ((line >= 1) && (line <= 3));
-        
+
     pl = gtk_widget_create_pango_layout (xfcal->mWindow, "x");
     sub_style_context = get_row_style (style_context, line);
     style_context_state = gtk_style_context_get_state (sub_style_context);
-    
+
     gtk_style_context_get (sub_style_context, style_context_state,
                            GTK_STYLE_PROPERTY_FONT, &font_desc, NULL);
-    
+
     gtk_style_context_get_color (sub_style_context, style_context_state,
                                  &color);
-    
+
     gdk_cairo_set_source_rgba (cr, &color);
-    
+
     row_x_data = get_row_x_data (line);
-    
+
     if (format_line (pl, t, row_x_data, font_desc) == FALSE)
     {
         g_object_unref (pl);
         g_warning ("icon line format failed");
         return;
     }
-    
+
     pango_layout_get_pixel_extents (pl, &real_rect, &log_rect);
     x_size = log_rect.width;
     y_size = log_rect.height;
-    
+
     x_offset = (width - x_size) / 2;
     y_offset = find_y_offset(line, height, y_size, border->top, border->bottom);
-    
+
     draw_pango_layout (cr, pl, x_offset, y_offset);
-    
+
     g_object_unref (pl);
 }
 
@@ -358,11 +358,11 @@ static cairo_t *create_icon_background (cairo_surface_t *surface,
                                         gint width, gint height)
 {
     cairo_t *cr;
-        
+
     cr = cairo_create (surface);
     gtk_render_background (style_context, cr, 0, 0, width, height);
     gtk_render_frame (style_context, cr, 0, 0, width, height);
-    
+
     return cr;
 }
 
@@ -381,7 +381,7 @@ static GdkPixbuf *create_dynamic_icon (void)
 
     style_context = get_style (NULL, "orage_tray_icon");
     cr = create_icon_background (surface, style_context, width, height);
-    
+
     gtk_style_context_get_border (style_context,
                                   gtk_style_context_get_state (style_context),
                                   &border);
@@ -396,13 +396,13 @@ static GdkPixbuf *create_dynamic_icon (void)
                                   width, height);
     create_own_icon_pango_layout (3, cr, style_context, &border, t,
                                   width, height);
-   
+
     g_object_unref (style_context);
     pixbuf = gdk_pixbuf_get_from_surface (surface, 0, 0, width, height);
     cairo_paint (cr);
     cairo_surface_destroy (surface);
     cairo_destroy (cr);
-    
+
     return pixbuf;
 }
 
@@ -420,7 +420,7 @@ GdkPixbuf *orage_create_icon(gboolean static_icon, gint size)
     }
     else { /***** dynamic icon build starts now *****/
         pixbuf = create_dynamic_icon ();
-        
+
         if (size) {
             pixbuf2 = gdk_pixbuf_scale_simple(pixbuf, size, size
                     , GDK_INTERP_BILINEAR);
@@ -434,7 +434,7 @@ GdkPixbuf *orage_create_icon(gboolean static_icon, gint size)
                     , GTK_ICON_LOOKUP_USE_BUILTIN, &error);
         }
     }
-  
+
     if (pixbuf == NULL) {
         g_warning ("orage_create_icon: static icon creation failed, "
                    "using default About icon");
@@ -442,13 +442,13 @@ GdkPixbuf *orage_create_icon(gboolean static_icon, gint size)
         pixbuf = gtk_icon_theme_load_icon(icon_theme, "help-about", size
                 , GTK_ICON_LOOKUP_USE_BUILTIN, &error);
     }
-        
+
     if (pixbuf == NULL)
     {
         g_warning("orage_create_icon: couldn’t load icon '%s'", error->message);
         g_error_free (error);
     }
-    
+
     return(pixbuf);
 }
 
@@ -471,7 +471,7 @@ static GtkWidget *create_TrayIcon_menu(void)
     g_signal_connect(menuItem, "activate"
             , G_CALLBACK(on_new_appointment_activate), NULL);
     gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
-  
+
     menuItem = gtk_separator_menu_item_new();
     gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
     menuItem = orage_image_menu_item (_("Preferences"), "preferences-system");
@@ -484,7 +484,7 @@ static GtkWidget *create_TrayIcon_menu(void)
     menuItem = orage_image_menu_item(_("Quit"), "application-exit");
     g_signal_connect(menuItem, "activate", G_CALLBACK(gtk_main_quit), NULL);
     gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
-  
+
     menuItem = gtk_separator_menu_item_new();
     gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
     menuItem = gtk_menu_item_new_with_label(_("Globaltime"));

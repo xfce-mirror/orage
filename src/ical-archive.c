@@ -303,7 +303,7 @@ static void xfical_icalcomponent_archive_recurrent(icalcomponent *e
                                 , 0));
         }
     }
-    
+
     (void)uid;
 }
 

@@ -52,7 +52,7 @@ static void oc_utf8_strftime(char *res, int res_l, char *format, struct tm *tm)
 
     /* strftime is nasty. It returns formatted characters (%A...) in utf8
      * but it does not convert plain characters so they will be in locale 
-     * charset.
+     * charset. 
      * It expects format to be in locale charset, so we need to convert 
      * that first (it may contain utf8).
      * We need then convert the results finally to utf8.
@@ -76,11 +76,10 @@ void oc_line_font_set(ClockLine *line)
     PangoAttribute *attr;
     PangoAttrList *attrlist;
 
-    if (line->font->str)
-    {
-        font = pango_font_description_from_string (line->font->str);
+    if (line->font->str) {
+        font = pango_font_description_from_string(line->font->str);
         attr = pango_attr_font_desc_new (font);
-        pango_font_description_free (font);
+        pango_font_description_free(font);
         attrlist = pango_attr_list_new ();
         pango_attr_list_insert (attrlist, attr);
         gtk_label_set_attributes (GTK_LABEL(line->label), attrlist);
@@ -132,7 +131,7 @@ static void oc_set_lines_to_panel(OragePlugin *plugin)
     gtk_widget_show(plugin->mbox);
     gtk_container_add(GTK_CONTAINER(plugin->frame), plugin->mbox);
 
-    for (tmp_list = g_list_first(plugin->lines); 
+    for (tmp_list = g_list_first(plugin->lines);
             tmp_list;
          tmp_list = g_list_next(tmp_list)) {
         clock_line = tmp_list->data;
@@ -172,7 +171,7 @@ static gboolean oc_get_time(OragePlugin *plugin)
 
     time(&t);
     localtime_r(&t, &plugin->now);
-    for (tmp_list = g_list_first(plugin->lines); 
+    for (tmp_list = g_list_first(plugin->lines);
             tmp_list;
          tmp_list = g_list_next(tmp_list)) {
         line = tmp_list->data;
@@ -386,7 +385,7 @@ static gboolean popup_program (GtkWidget *widget, gchar *program,
     atom = gdk_atom_intern (check, FALSE);
     display = gdk_x11_get_default_xdisplay ();
     xwindow = XGetSelectionOwner (display, gdk_x11_atom_to_xatom (atom));
-    
+
     if (xwindow != None)
     {
         /* yes, then toggle */
@@ -396,23 +395,21 @@ static gboolean popup_program (GtkWidget *widget, gchar *program,
         xevent.xclient.window = xwindow;
         xevent.xclient.send_event = TRUE;
         xevent.xclient.message_type = XInternAtom (display, popup, FALSE);
-        
+
         if (!XSendEvent (display, xwindow, FALSE, NoEventMask, &xevent))
             g_warning ("%s: send message to %s failed", OC_NAME, program);
-        
+
         (void)XFlush (display);
         return TRUE;
     }
-    else
-    {
-        /* not running, let's try to start it. Need to reset TZ! */
+    else { /* not running, let's try to start it. Need to reset TZ! */
         static guint prev_event_time = 0; /* prevents double start (BUG 4096) */
 
         if (prev_event_time && ((event_time - prev_event_time) < 1000)) {
             g_message("%s: double start of %s prevented", OC_NAME, program);
             return(FALSE);
         }
-            
+
         prev_event_time = event_time;
         if (plugin->TZ_orig != NULL)  /* we had TZ when we started */
             g_setenv("TZ", plugin->TZ_orig, 1);
@@ -420,7 +417,7 @@ static gboolean popup_program (GtkWidget *widget, gchar *program,
             g_unsetenv("TZ");
         tzset();
 
-        if (!orage_exec(program, FALSE, &error)) 
+        if (!orage_exec(program, FALSE, &error))
             g_message("%s: start of %s failed", OC_NAME, program);
 
         if ((plugin->timezone->str != NULL) && (plugin->timezone->len > 0)) {
@@ -463,7 +460,7 @@ static gboolean on_button_press_event_cb(GtkWidget *widget
 static gboolean oc_set_size (XfcePanelPlugin *plugin, gint size)
 {
     OragePlugin *orage_plugin = XFCE_ORAGE_PLUGIN (plugin);
-    
+
     oc_update_size(orage_plugin, size);
     if (orage_plugin->first_call) {
     /* default is horizontal panel. 
@@ -492,7 +489,7 @@ static void oc_free_data (XfcePanelPlugin *plugin)
 
     if (dlg)
         gtk_widget_destroy(dlg);
-    
+
     if (orage_plugin->timeout_id) {
         g_source_remove(orage_plugin->timeout_id);
     }
@@ -511,8 +508,7 @@ static GdkRGBA oc_rc_read_color (XfceRc *rc, char *par, char *def)
         g_warning ("unable to read %s colour from rc file ret=(%s) def=(%s)",
                    par, ret, def);
     }
-    
-    return color;
+    return(color);
 }
 
 ClockLine * oc_add_new_line (OragePlugin *plugin, const char *data,
@@ -559,7 +555,7 @@ static void oc_read_rc_file(XfcePanelPlugin *plugin, OragePlugin *orage_plugin)
     g_free(file);
 
     ret = xfce_rc_read_entry(rc, "timezone", NULL);
-    g_string_assign(orage_plugin->timezone, ret); 
+    g_string_assign(orage_plugin->timezone, ret);
 
     orage_plugin->width_set = xfce_rc_read_bool_entry(rc, "width_set", FALSE);
     if (orage_plugin->width_set) {
@@ -585,10 +581,10 @@ static void oc_read_rc_file(XfcePanelPlugin *plugin, OragePlugin *orage_plugin)
             more_lines = FALSE;
         }
     }
-    orage_plugin->orig_line_cnt = i; 
+    orage_plugin->orig_line_cnt = i;
 
     if ((ret = xfce_rc_read_entry(rc, "tooltip", NULL)))
-        g_string_assign(orage_plugin->tooltip_data, ret); 
+        g_string_assign(orage_plugin->tooltip_data, ret);
 
     orage_plugin->hib_timing = xfce_rc_read_bool_entry(rc, "hib_timing", FALSE);
 
@@ -605,7 +601,7 @@ void oc_write_rc_file (XfcePanelPlugin *plugin)
     ClockLine *line;
     GList   *tmp_list;
     OragePlugin *orage_plugin = XFCE_ORAGE_PLUGIN (plugin);
-    
+
     if (!(file = xfce_panel_plugin_save_location(plugin, TRUE))) {
         g_warning("unable to write rc file");
         return;
@@ -725,7 +721,7 @@ OragePlugin *orage_oc_new(XfcePanelPlugin *plugin)
     orage_plugin->tooltip_data = g_string_new(_("%A %d %B %Y/%V"));
 
     orage_plugin->hib_timing = FALSE;
-        
+
     return(orage_plugin);
 }
 
@@ -820,7 +816,7 @@ void oc_construct(XfcePanelPlugin *plugin)
 #endif
 
     xfce_panel_plugin_add_action_widget(plugin, clock->ebox);
-    
+
     xfce_panel_plugin_menu_show_configure(plugin);
 
     /* callback for calendar and globaltime popup */

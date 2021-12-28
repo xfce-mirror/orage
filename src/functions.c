@@ -89,7 +89,7 @@ GtkWidget *orage_create_combo_box_with_content (const gchar *text[],
     combo_box = gtk_combo_box_text_new ();
     for (i = 0; i < size; i++)
         gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(combo_box), text[i]);
-    
+
     return combo_box;
 }
 
@@ -161,7 +161,7 @@ static void child_setup_async(gpointer user_data)
 #if defined(HAVE_SETSID) && !defined(G_OS_WIN32)
     setsid();
 #endif
-    
+
     (void)user_data;
 }
 
@@ -172,7 +172,7 @@ static void child_watch_cb(GPid pid, gint status, gpointer data)
     waitpid(pid, NULL, 0);
     g_spawn_close_pid(pid);
     *cmd_active = FALSE;
-    
+
     (void)status;
 }
 
@@ -208,14 +208,13 @@ GtkWidget *orage_toolbar_append_button (GtkWidget *toolbar,
 {
     GtkWidget *button;
     GtkWidget *image;
-    
+
     image = gtk_image_new_from_icon_name (icon_name,
                                           GTK_ICON_SIZE_SMALL_TOOLBAR);
-    
+
     button = (GtkWidget *)gtk_tool_button_new (image, tooltip_text);
-    gtk_tool_item_set_tooltip_text (GTK_TOOL_ITEM (button), tooltip_text);
-    gtk_toolbar_insert (GTK_TOOLBAR (toolbar), GTK_TOOL_ITEM (button), pos);
-    
+    gtk_tool_item_set_tooltip_text(GTK_TOOL_ITEM(button), tooltip_text);
+    gtk_toolbar_insert(GTK_TOOLBAR(toolbar), GTK_TOOL_ITEM(button), pos);
     return button;
 }
 
@@ -237,27 +236,25 @@ GtkWidget *orage_table_new (const guint border)
     gtk_container_set_border_width (GTK_CONTAINER (grid), border);
     gtk_grid_set_row_spacing (GTK_GRID (grid), 6);
     gtk_grid_set_column_spacing (GTK_GRID (grid), 6);
-    
+
     return grid;
 }
 
-void orage_table_add_row (GtkWidget *table, GtkWidget *label, 
+void orage_table_add_row (GtkWidget *table, GtkWidget *label,
                           GtkWidget *input, const guint row,
                           const GtkAttachOptions input_x_option,
                           const GtkAttachOptions input_y_option)
 {
-    if (label)
-    {
+    if (label) {
         gtk_grid_attach (GTK_GRID (table), label, 0, row, 1, 1);
         g_object_set (label, "xalign", 0.0, "yalign", 0.5,
                              "halign", GTK_ALIGN_FILL,
                              NULL);
     }
-    
-    if (input)
-    {
+
+    if (input) {
         gtk_grid_attach (GTK_GRID (table), input, 1, row, 1, 1);
-        
+
         if (input_x_option & GTK_FILL)
             g_object_set (input, "halign", GTK_ALIGN_FILL, NULL);
         if (input_x_option & GTK_EXPAND)
@@ -267,7 +264,7 @@ void orage_table_add_row (GtkWidget *table, GtkWidget *label,
             g_object_set (input, "halign", GTK_ALIGN_CENTER,
                                  "hexpand", FALSE, NULL);
         }
-        
+
         if (input_y_option & GTK_FILL)
             g_object_set (input, "valign", GTK_ALIGN_FILL, NULL);
         if (input_y_option & GTK_EXPAND)
@@ -526,9 +523,9 @@ char *orage_process_text_commands(char *text)
 static GtkWidget *orage_hfiller_new (const gint width)
 {
     GtkWidget *label = gtk_label_new ("");
-    
+
     g_object_set (label, "margin-right", width, NULL);
-    
+
     return label;
 }
 
@@ -544,14 +541,13 @@ GtkWidget *orage_period_hbox_new (const gboolean head_space,
 
     hbox = gtk_grid_new ();
 
-    if (head_space)
-    {
+    if (head_space) {
         filler = orage_hfiller_new (field_fill_width);
         gtk_grid_attach_next_to (GTK_GRID (hbox), filler, NULL,
                                  GTK_POS_RIGHT, 1, 1);
     }
-    
-    gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (spin_dd), TRUE);
+
+    gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(spin_dd), TRUE);
     gtk_grid_attach_next_to (GTK_GRID (hbox), spin_dd, NULL,
                              GTK_POS_RIGHT, 1, 1);
 
@@ -566,7 +562,7 @@ GtkWidget *orage_period_hbox_new (const gboolean head_space,
                              GTK_POS_RIGHT, 1, 1);
 
     gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(spin_hh), TRUE);
-    
+
     gtk_grid_attach_next_to (GTK_GRID (hbox), spin_hh, NULL,
                              GTK_POS_RIGHT, 1, 1);
 
@@ -582,7 +578,7 @@ GtkWidget *orage_period_hbox_new (const gboolean head_space,
 
     gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (spin_mm), TRUE);
     gtk_spin_button_set_increments (GTK_SPIN_BUTTON (spin_mm), 5, 10);
-    
+
     gtk_grid_attach_next_to (GTK_GRID (hbox), spin_mm, NULL,
                              GTK_POS_RIGHT, 1, 1);
 
@@ -592,8 +588,7 @@ GtkWidget *orage_period_hbox_new (const gboolean head_space,
     gtk_grid_attach_next_to (GTK_GRID (hbox), mm_label, NULL,
                              GTK_POS_RIGHT, 1, 1);
 
-    if (tail_space)
-    {
+    if (tail_space) {
         filler = orage_hfiller_new (field_fill_width);
         gtk_grid_attach_next_to (GTK_GRID (hbox), filler, NULL,
                                  GTK_POS_RIGHT, 1, 1);
@@ -607,25 +602,24 @@ GtkWidget *orage_create_framebox_with_content (const gchar *title,
                                                GtkWidget *content)
 {
     GtkWidget *framebox;
-    GtkWidget *label;
     gchar *tmp;
+    GtkWidget *label;
 
-    framebox = gtk_frame_new (NULL);
-    gtk_frame_set_shadow_type (GTK_FRAME (framebox), shadow_type);
-    gtk_frame_set_label_align (GTK_FRAME (framebox), 0.0, 1.0);
-    gtk_widget_show (framebox);
+    framebox = gtk_frame_new(NULL);
+    gtk_frame_set_shadow_type(GTK_FRAME(framebox), shadow_type);
+    gtk_frame_set_label_align(GTK_FRAME(framebox), 0.0, 1.0);
+    gtk_widget_show(framebox);
 
-    if (title)
-    {
-        tmp = g_strdup_printf ("<b>%s</b>", title);
-        label = gtk_label_new (tmp);
-        gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
+    if (title) {
+        tmp = g_strdup_printf("<b>%s</b>", title);
+        label = gtk_label_new(tmp);
+        gtk_label_set_use_markup(GTK_LABEL(label), TRUE);
         g_object_set (label, "xalign", 0.0, "yalign", 0.5,
                              "margin-left", 5,
                              NULL);
-        gtk_widget_show (label);
-        gtk_frame_set_label_widget (GTK_FRAME (framebox), label);
-        g_free (tmp);
+        gtk_widget_show(label);
+        gtk_frame_set_label_widget(GTK_FRAME(framebox), label);
+        g_free(tmp);
     }
 
     g_object_set (content, "margin-top", 5,
@@ -635,7 +629,7 @@ GtkWidget *orage_create_framebox_with_content (const gchar *title,
                            NULL);
     gtk_container_add (GTK_CONTAINER (framebox), content);
 
-    return framebox;
+    return(framebox);
 }
 
 /*******************************************************
@@ -649,33 +643,24 @@ struct tm orage_i18_time_to_tm_time (const gchar *i18_time)
 
     ret = (char *)strptime(i18_time, "%x %R", &tm_time);
     if (ret == NULL)
-    {
-        g_error ("Orage: orage_i18_time_to_tm_time wrong format (%s)",
-                 i18_time);
-    }
+        g_error("Orage: orage_i18_time_to_tm_time wrong format (%s)", i18_time);
     else if (ret[0] != '\0')
-    {
-        g_warning ("Orage: orage_i18_time_to_tm_time too long format (%s). Ignoring:%s)"
+        g_warning("Orage: orage_i18_time_to_tm_time too long format (%s). Ignoring:%s)"
                 , i18_time, ret);
-    }
-    
-    return (tm_time);
+    return(tm_time);
 }
 
 struct tm orage_i18_date_to_tm_date (const gchar *i18_date)
 {
     char *ret;
     struct tm tm_date = {0};
-    
+
     ret = strptime ((const char *)i18_date, "%x", &tm_date);
     if (ret == NULL)
         g_error("Orage: orage_i18_date_to_tm_date wrong format (%s)", i18_date);
     else if (ret[0] != '\0')
-    {
         g_warning("Orage: orage_i18_date_to_tm_date too long format (%s). Ignoring:%s)"
                 , i18_date, ret);
-    }
-    
     return(tm_date);
 }
 
@@ -694,14 +679,14 @@ gchar *orage_tm_date_to_i18_date (const struct tm *tm_date)
 
     if (strftime ((char *)i18_date, sizeof (i18_date), "%x", tm_date) == 0)
         g_error ("orage_tm_date_to_i18_date too long string in strftime");
-    
+
     return(i18_date);
 }
 
 struct tm orage_cal_to_tm_time(GtkCalendar *cal, gint hh, gint mm)
 {
     struct tm tm_date = {0};
- 
+
     /* dst needs to -1 or mktime adjusts time if we are in another
      * dst setting. */
     tm_date.tm_isdst = -1;
@@ -725,7 +710,7 @@ struct tm orage_cal_to_tm_time(GtkCalendar *cal, gint hh, gint mm)
 char *orage_cal_to_i18_time(GtkCalendar *cal, gint hh, gint mm)
 {
     struct tm tm_date = {0};
-    
+
     tm_date.tm_isdst = -1;
 
     tm_date = orage_cal_to_tm_time(cal, hh, mm);
@@ -735,7 +720,7 @@ char *orage_cal_to_i18_time(GtkCalendar *cal, gint hh, gint mm)
 char *orage_cal_to_i18_date(GtkCalendar *cal)
 {
     struct tm tm_date = {0};
-    
+
     tm_date.tm_isdst = -1;
 
     tm_date = orage_cal_to_tm_time(cal, 1, 1);
@@ -746,7 +731,7 @@ char *orage_cal_to_icaldate(GtkCalendar *cal)
 {
     struct tm tm_date = {0};
     char *icalt;
-    
+
     tm_date.tm_isdst = -1;
 
     tm_date = orage_cal_to_tm_time(cal, 1, 1);
@@ -797,7 +782,7 @@ gchar *orage_tm_time_to_icaltime(struct tm *t)
                 t->tm_year + 1900, t->tm_mon + 1, t->tm_mday,
                 t->tm_hour, t->tm_min, t->tm_sec);
 
-    return (icaltime);
+    return(icaltime);
 }
 
 char *orage_icaltime_to_i18_time(const char *icaltime)
@@ -1025,7 +1010,7 @@ gchar *orage_config_file_location (const gchar *name)
         }
         g_free(dir_name);
         /* now we have the directories ready, let's check for system default */
-        sys_name = orage_xdg_system_config_file_location (name);
+        sys_name = orage_xdg_system_config_file_location(name);
         if (sys_name) { /* we found it, we need to copy it */
             orage_copy_file(sys_name, file_name);
         }
@@ -1061,7 +1046,7 @@ OrageRc *orage_rc_file_open (const gchar *fpath, gboolean read_only)
         g_debug (P_N "Unable to open RC file (%s). Creating it. (%s)",
                  fpath, error->message);
 #endif
-        
+
         g_clear_error(&error);
         if (g_file_set_contents(fpath, "#Created by Orage", -1
                     , &error)) { /* successfully created new file */
@@ -1153,9 +1138,8 @@ gchar *orage_rc_get_str(OrageRc *orc, const gchar *key, const gchar *def)
     gchar *ret;
 
     ret = g_key_file_get_string (orc->rc, orc->cur_group, key, &error);
-    if (!ret && error)
-    {
-        ret = g_strdup (def);
+    if (!ret && error) {
+        ret = g_strdup(def);
 #if ORAGE_DEBUG
         g_debug ("orage_rc_get_str: "
                  "str (%s) group (%s) in RC file (%s) not found, "
@@ -1163,7 +1147,6 @@ gchar *orage_rc_get_str(OrageRc *orc, const gchar *key, const gchar *def)
                  key, orc->cur_group, orc->file_name, ret);
 #endif
     }
-    
     return(ret);
 }
 
@@ -1173,8 +1156,7 @@ gint orage_rc_get_int (OrageRc *orc, const gchar *key, const gint def)
     gint ret;
 
     ret = g_key_file_get_integer (orc->rc, orc->cur_group, key, &error);
-    if (!ret && error)
-    {
+    if (!ret && error) {
         ret = def;
 #if ORAGE_DEBUG
         g_debug ("orage_rc_get_int: "
@@ -1183,7 +1165,6 @@ gint orage_rc_get_int (OrageRc *orc, const gchar *key, const gint def)
                  key, orc->cur_group, orc->file_name, ret);
 #endif
     }
-    
     return(ret);
 }
 
@@ -1193,8 +1174,7 @@ gboolean orage_rc_get_bool (OrageRc *orc, const gchar *key, const gboolean def)
     gboolean ret;
 
     ret = g_key_file_get_boolean (orc->rc, orc->cur_group, key, &error);
-    if (!ret && error)
-    {
+    if (!ret && error) {
         ret = def;
 #if ORAGE_DEBUG
         g_debug ("orage_rc_get_bool: "
@@ -1203,7 +1183,6 @@ gboolean orage_rc_get_bool (OrageRc *orc, const gchar *key, const gboolean def)
                  key, orc->cur_group, orc->file_name, ret);
 #endif
     }
-    
     return(ret);
 }
 
@@ -1301,11 +1280,11 @@ gint orage_error_dialog (GtkWindow *parent, const gchar *primary_text,
 gboolean orage_status_icon_is_embedded (GtkStatusIcon *status_icon)
 {
     gboolean is_embedded;
-    
+
     G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     is_embedded = gtk_status_icon_is_embedded (status_icon);
     G_GNUC_END_IGNORE_DEPRECATIONS
-            
+
     return is_embedded;
 }
 
@@ -1320,11 +1299,11 @@ void orage_status_icon_set_visible (GtkStatusIcon *status_icon,
 GtkStatusIcon *orage_status_icon_new_from_pixbuf (GdkPixbuf *pixbuf)
 {
     GtkStatusIcon *status_icon;
-    
+
     G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     status_icon = gtk_status_icon_new_from_pixbuf (pixbuf);
     G_GNUC_END_IGNORE_DEPRECATIONS
-    
+
     return status_icon;
 }
 
@@ -1340,13 +1319,13 @@ GtkWidget *orage_util_image_button (const gchar *icon_name, const gchar *label)
 {
     GtkWidget *button;
     GtkWidget *image;
-    
+
     image = gtk_image_new_from_icon_name (icon_name, GTK_ICON_SIZE_BUTTON);
     gtk_widget_show (image);
-    
+
     button = gtk_button_new_with_mnemonic (label);
     gtk_button_set_image (GTK_BUTTON (button), image);
     gtk_widget_show (button);
-    
+
     return button;
 }

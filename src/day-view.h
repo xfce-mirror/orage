@@ -66,10 +66,10 @@ typedef struct _day_win
     GtkWidget *header[MAX_DAYS];
     GtkWidget *element[24][MAX_DAYS];
     GtkWidget *line[24][MAX_DAYS];
-    
+
     guint upd_timer;
     gdouble scroll_pos; /* remember the scroll position */
-    
+
     GList *apptw_list; /* keep track of appointments being updated */
     gchar a_day[9]; /* start date yyyymmdd */
     gint days;      /* how many days to show */

@@ -105,34 +105,34 @@ static gboolean release_preferences_window(GtkWidget *widget
 {
     g_free(modify_default);
     clocks.modified--;
-    
+
     (void)widget;
-    
+
     return(FALSE);
 }
-                                                                                
+
 static void close_preferences_window(GtkWidget *widget, GtkWidget *window)
 {
     gtk_widget_destroy(window);
-    
+
     (void)widget;
 }
-                                                                                
+
 static gboolean save_preferences(GtkWidget *widget
         , modify_struct *modify_default)
 {
     write_file();
-    
+
     (void)widget;
     (void)modify_default;
-    
+
     return(FALSE);
 }
 
 static void add_separator (GtkWidget *box, const GtkOrientation type)
 {
     GtkWidget *separator;
-    
+
     separator = gtk_separator_new (type);
     if (separator == GTK_ORIENTATION_HORIZONTAL)
     {
@@ -153,7 +153,7 @@ static void add_separator (GtkWidget *box, const GtkOrientation type)
 static GtkWidget *add_box (GtkWidget *box, const gchar type)
 {
     GtkWidget *new_box;
-    
+
     new_box = gtk_grid_new ();
     if (type == 'H')
     {
@@ -167,9 +167,9 @@ static GtkWidget *add_box (GtkWidget *box, const gchar type)
         gtk_grid_attach_next_to (GTK_GRID (box), new_box, NULL, GTK_POS_RIGHT,
                                  1, 1);
     }
-    
+
     gtk_widget_show (new_box);
-    
+
     return new_box;
 }
 
@@ -185,11 +185,11 @@ static void add_header(GtkWidget *box, const gchar *text, const gboolean bold)
     }
     else
         label = gtk_label_new(text);
-    
+
     g_object_set (label, "margin-top", 1, "margin-bottom", 1, NULL);
     gtk_grid_attach_next_to (GTK_GRID (box), label, NULL, GTK_POS_BOTTOM,
                                  1, 1);
-        
+
     gtk_widget_show(label);
 }
 
@@ -210,7 +210,7 @@ static gboolean save_clock(GtkWidget *widget
             , gtk_entry_get_text(GTK_ENTRY(modify_clock->name_entry)));
     gtk_label_set_text(GTK_LABEL(clockp->name_label), clockp->name->str);
     write_file();
-    
+
     (void)widget;
     return(FALSE);
 }
@@ -221,7 +221,7 @@ static gboolean release_modify_clock_window(GtkWidget *widget
     modify_clock->clock->modified = FALSE;
     g_free(modify_clock);
     clocks.modified--;
-    
+
     (void)widget;
     return(FALSE);
 }
@@ -232,7 +232,7 @@ static gboolean set_timezone_from_clock(GtkWidget *widget
     g_string_assign(clocks.local_tz
             , gtk_button_get_label((GTK_BUTTON(modify_clock->button_tz))));
     write_file();
-    
+
     (void)widget;
     return(FALSE);
 }
@@ -240,7 +240,7 @@ static gboolean set_timezone_from_clock(GtkWidget *widget
 static void close_modify_clock_window(GtkWidget *widget, GtkWidget *window)
 {
     gtk_widget_destroy(window);
-    
+
     (void)widget;
 }
 
@@ -307,7 +307,7 @@ static void add_clock(GtkWidget *widget, modify_struct *modify_clock)
     write_file();
     g_signal_emit_by_name(clockp_new->clock_ebox, "button_press_event"
             , clockp_new, &ret);
-    
+
     (void)widget;
 }
 
@@ -333,7 +333,7 @@ static void copy_clock(GtkWidget *widget, modify_struct *modify_clock)
     write_file();
     g_signal_emit_by_name(clockp_new->clock_ebox, "button_press_event"
             , clockp_new, &ret);
-    
+
     (void)widget;
 }
 
@@ -357,7 +357,7 @@ static void delete_clock(GtkWidget *widget, modify_struct *modify_clock)
     g_free(clockp);
     write_file();
     gtk_widget_destroy(modify_clock->window); /* self destruct */
-    
+
     (void)widget;
 }
 
@@ -378,19 +378,19 @@ static void move_clock (modify_struct *modify_clock,
         case MOVE_CLOCK_BACK:
             new_pos = pos - 1;
             break;
-            
+
         case MOVE_CLOCK_FORWARD:
             new_pos = (pos + 1 == len ? 0 : pos+1);
             break;
-            
+
         case MOVE_CLOCK_FIRST:
             new_pos = 0;
             break;
-            
+
         case MOVE_CLOCK_LAST:
             new_pos = (pos + 1 == len) ? pos : len;
             break;
-            
+
         default:
             g_warning ("unknown button pressed");
             break;
@@ -467,12 +467,12 @@ static void ask_timezone(GtkButton *button, modify_struct *modify_clock)
     clocks.no_update = FALSE; 
 }
 
-static void set_font (GtkWidget *widget, GString *font)
+static void set_font(GtkWidget *widget, GString *font)
 {
     gchar *font_name = gtk_font_chooser_get_font (GTK_FONT_CHOOSER (widget));
     g_string_assign (font, font_name);
     g_free (font_name);
-    write_file ();
+    write_file();
 }
 
 static void reset_name_underline(GtkWidget *widget, clock_struct *clockp)
@@ -496,7 +496,7 @@ static void reset_time_underline(GtkWidget *widget, clock_struct *clockp)
 static void set_color (GtkColorButton *color_button, GdkRGBA *color)
 {
     gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (color_button), color);
-    write_file ();
+    write_file();
 }
 
 static void set_sensitivity(GtkWidget *widget, GtkWidget *button)
@@ -667,7 +667,7 @@ gboolean clock_parameters(GtkWidget *widget, clock_struct *clockp)
     g_free(window_name);
     g_signal_connect(G_OBJECT(modify_clock->window) , "destroy"
             , G_CALLBACK(release_modify_clock_window), modify_clock);
-    
+
     vbox = gtk_grid_new ();
     gtk_container_add(GTK_CONTAINER(modify_clock->window), vbox);
 
@@ -709,7 +709,7 @@ gboolean clock_parameters(GtkWidget *widget, clock_struct *clockp)
     create_parameter_formatting(vbox, modify_clock);
 
     gtk_widget_show_all(modify_clock->window);
-    
+
     (void)widget;
     return(FALSE);
 }
@@ -1137,7 +1137,7 @@ gboolean default_preferences(GtkWidget *widget)
             , _("Globaltime Preferences"));
     g_signal_connect(G_OBJECT(modify_default->window) , "destroy"
             , G_CALLBACK(release_preferences_window), modify_default);
-    
+
     vbox = gtk_grid_new ();
     gtk_container_add(GTK_CONTAINER(modify_default->window), vbox);
 
@@ -1218,7 +1218,7 @@ gboolean default_preferences(GtkWidget *widget)
     preferences_formatting(vbox, modify_default);
                                                                                 
     gtk_widget_show_all(modify_default->window);
-    
+
     (void)widget;
     return(FALSE);
 }

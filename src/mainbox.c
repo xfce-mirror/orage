@@ -84,7 +84,7 @@ static void mFile_newApp_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
     strncpy(cur_date, orage_cal_to_icaldate(GTK_CALENDAR(cal->mCalendar)), 8);
     cur_date[8]='\0';
     create_appt_win("NEW", cur_date);
-    
+
     (void)menuitem;
 }
 
@@ -98,9 +98,9 @@ static void mFile_interface_activate_cb(GtkMenuItem *menuitem
 #if ORAGE_TRACE
     g_debug (P_N);
 #endif
-    
+
     orage_external_interface(cal);
-    
+
     (void)menuitem;
 }
 
@@ -113,12 +113,12 @@ static void mFile_close_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
 #if ORAGE_TRACE
     g_debug (P_N);
 #endif
-    
+
     if (g_par.close_means_quit)
         gtk_main_quit();
     else
         gtk_widget_hide(cal->mWindow);
-    
+
     (void)menuitem;
 }
 
@@ -126,13 +126,13 @@ static void mFile_quit_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
 {
 #undef P_N
 #define P_N "mFile_quit_activate_cb: "
-    
+
 #if ORAGE_TRACE
     g_debug (P_N);
 #endif
-    
+
     gtk_main_quit();
-    
+
     (void)menuitem;
     (void)user_data;
 }
@@ -142,13 +142,13 @@ static void mEdit_preferences_activate_cb(GtkMenuItem *menuitem
 {
 #undef P_N
 #define P_N "mEdit_preferences_activate_cb: "
-    
+
 #if ORAGE_TRACE
     g_debug (P_N);
 #endif
-    
+
     show_parameters();
-    
+
     (void)menuitem;
     (void)user_data;
 }
@@ -158,13 +158,13 @@ static void mView_ViewSelectedDate_activate_cb(GtkMenuItem *menuitem
 {
 #undef P_N
 #define P_N "mView_ViewSelectedDate_activate_cb: "
-    
+
 #if ORAGE_TRACE
     g_debug (P_N);
 #endif
-    
+
     (void)create_el_win(NULL);
-    
+
     (void)menuitem;
     (void)user_data;
 }
@@ -179,9 +179,9 @@ static void mView_ViewSelectedWeek_activate_cb(GtkMenuItem *menuitem
 #if ORAGE_TRACE
     g_debug (P_N);
 #endif
-    
+
     create_day_win(orage_cal_to_i18_date(GTK_CALENDAR(cal->mCalendar)));
-    
+
     (void)menuitem;
 }
 
@@ -195,9 +195,9 @@ static void mView_selectToday_activate_cb(GtkMenuItem *menuitem
 #if ORAGE_TRACE
     g_debug (P_N);
 #endif
-    
+
     orage_select_today(GTK_CALENDAR(cal->mCalendar));
-    
+
     (void)menuitem;
 }
 
@@ -211,11 +211,11 @@ static void mView_StartGlobaltime_activate_cb(GtkMenuItem *menuitem
 #if ORAGE_TRACE
     g_debug (P_N);
 #endif
-    
+
     if (!orage_exec("globaltime", FALSE, &error))
         g_warning ("%s: start of %s failed: %s", "Orage", "globaltime"
                 , error->message);
-    
+
     (void)menuitem;
     (void)user_data;
 }
@@ -230,7 +230,7 @@ static void mHelp_help_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
 #if ORAGE_TRACE
     g_debug (P_N);
 #endif
-    
+
     helpdoc = g_strconcat("exo-open ", PACKAGE_DATA_DIR
            , G_DIR_SEPARATOR_S, "orage"
            , G_DIR_SEPARATOR_S, "doc"
@@ -254,7 +254,7 @@ static void mHelp_help_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
         }
     }
     g_free(helpdoc);
-    
+
     (void)menuitem;
     (void)user_data;
 }
@@ -281,7 +281,7 @@ static void mCalendar_day_selected_double_click_cb(GtkCalendar *calendar
         create_day_win(orage_cal_to_i18_date(calendar));
     else
         (void)create_el_win(NULL);
-    
+
     (void)user_data;
 }
 
@@ -295,7 +295,7 @@ static gboolean upd_calendar(GtkCalendar *calendar)
 #endif
     orage_mark_appointments();
     month_change_timer = 0;
-    
+
     (void)calendar;
     return(FALSE); /* we do this only once */
 }
@@ -317,10 +317,10 @@ void mCalendar_month_changed_cb(GtkCalendar *calendar, gpointer user_data)
     if (month_change_timer) {
         g_source_remove(month_change_timer);
     }
-    
+
     gtk_calendar_clear_marks(calendar);
     month_change_timer = g_timeout_add(400, (GSourceFunc)upd_calendar, calendar);
-    
+
     (void)user_data;
 }
 
@@ -433,7 +433,7 @@ static void todo_clicked(GtkWidget *widget
         uid = g_object_get_data(G_OBJECT(widget), "UID");
         create_appt_win("UPDATE", uid);
     }
-    
+
     (void)user_data;
 }
 
@@ -442,7 +442,7 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
 {
 #undef P_N
 #define P_N "add_info_row: "
-    
+
     GtkWidget *ev, *label;
     CalWin *cal = (CalWin *)g_par.xfcal;
     gchar *tip, *tmp, *tmp_title, *tmp_note;
@@ -451,7 +451,7 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
     struct tm *t;
     char  *l_time, *s_time, *s_timeonly, *e_time, *c_time, *na, *today;
     gint  len;
-    
+
     /***** add data into the vbox *****/
     ev = gtk_event_box_new();
     tmp_title = appt->title
@@ -852,7 +852,7 @@ static void mCalendar_day_selected_cb(GtkCalendar *calendar
 #endif
     /* rebuild the info for the selected date */
     build_mainbox_event_box();
-    
+
     (void)calendar;
     (void)user_data;
 }

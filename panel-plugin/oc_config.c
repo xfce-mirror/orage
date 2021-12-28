@@ -150,7 +150,7 @@ static gboolean oc_line_changed(GtkWidget *entry, GdkEventKey *key
         , GString *data)
 {
     g_string_assign(data, gtk_entry_get_text(GTK_ENTRY(entry)));
-    
+
     (void)key;
 
     return(FALSE);
@@ -186,7 +186,7 @@ static void oc_new_line(GtkToolButton *toolbutton, ClockLine *line)
     oc_fg_set(plugin);
 
     oc_recreate_properties_options(plugin);
-    
+
     (void)toolbutton;
 }
 
@@ -202,7 +202,7 @@ static void oc_delete_line(GtkToolButton *toolbutton, ClockLine *line)
     g_free(line);
 
     oc_recreate_properties_options(plugin);
-    
+
     (void)toolbutton;
 }
 
@@ -218,7 +218,7 @@ static void oc_move_up_line(GtkToolButton *toolbutton, ClockLine *line)
     plugin->lines = g_list_insert(plugin->lines, line, pos);
 
     oc_recreate_properties_options(plugin);
-    
+
     (void)toolbutton;
 }
 
@@ -237,7 +237,7 @@ static void oc_move_down_line(GtkToolButton *toolbutton, ClockLine *line)
     plugin->lines = g_list_insert(plugin->lines, line, pos);
 
     oc_recreate_properties_options(plugin);
-    
+
     (void)toolbutton;
 }
 
@@ -259,13 +259,13 @@ static void oc_properties_appearance(GtkWidget *dlg, OragePlugin *plugin)
     table = gtk_grid_new ();
     gtk_container_set_border_width(GTK_CONTAINER(table), 10);
     g_object_set (table, "row-spacing", 6, "column-spacing", 6,  NULL);
-    
+
     frame = orage_create_framebox_with_content(_("Appearance"), GTK_SHADOW_NONE,
                                                table);
     gtk_container_set_border_width(GTK_CONTAINER(frame), 6);
     vbox = gtk_dialog_get_content_area(GTK_DIALOG(dlg));
     gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
-    
+
     /* show frame */
     cb = gtk_check_button_new_with_mnemonic(_("Show _frame"));
     oc_table_add(table, cb, 0, 0);
@@ -365,7 +365,7 @@ void oc_properties_options(GtkWidget *dlg, OragePlugin *plugin)
     gtk_container_set_border_width(GTK_CONTAINER(frame), 6);
     vbox = gtk_dialog_get_content_area(GTK_DIALOG(dlg));
     gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
-    /* we sometimes call this function again, so we need to put it to the 
+    /* we sometimes call this function again, so we need to put it to the
        correct position */
     gtk_box_reorder_child(GTK_BOX(vbox), frame, 2);
     /* this is needed when we restructure this frame */
@@ -396,7 +396,7 @@ void oc_properties_options(GtkWidget *dlg, OragePlugin *plugin)
         oc_table_add(table, label, 0, cur_line);
 
         entry = gtk_entry_new();
-        gtk_entry_set_text(GTK_ENTRY(entry), line->data->str); 
+        gtk_entry_set_text(GTK_ENTRY(entry), line->data->str);
         g_signal_connect(entry, "key-release-event", G_CALLBACK(oc_line_changed)
                 , line->data);
         if (cur_line == 1)
@@ -404,11 +404,12 @@ void oc_properties_options(GtkWidget *dlg, OragePlugin *plugin)
                     _("Enter any valid strftime function parameter."));
         oc_table_add(table, entry, 1, cur_line);
 
-        if (line->font->len)
-            font = gtk_font_button_new_with_font (line->font->str);
-        else
-            font = gtk_font_button_new ();
-        
+        if (line->font->len) {
+            font = gtk_font_button_new_with_font(line->font->str);
+        }
+        else {
+            font = gtk_font_button_new();
+        }
         g_signal_connect(G_OBJECT(font), "font-set"
                 , G_CALLBACK(oc_line_font_changed), line);
         oc_table_add(table, font, 2, cur_line);
@@ -443,11 +444,11 @@ void oc_properties_options(GtkWidget *dlg, OragePlugin *plugin)
     oc_table_add(table, label, 0, line_cnt+1);
 
     entry = gtk_entry_new();
-    gtk_entry_set_text(GTK_ENTRY(entry), plugin->tooltip_data->str); 
+    gtk_entry_set_text(GTK_ENTRY(entry), plugin->tooltip_data->str);
     oc_table_add(table, entry, 1, line_cnt+1);
     g_signal_connect(entry, "key-release-event", G_CALLBACK(oc_line_changed)
             , plugin->tooltip_data);
-    
+
     /* special timing for SUSPEND/HIBERNATE */
     cb = gtk_check_button_new_with_mnemonic(_("fix time after suspend/hibernate"));
     oc_table_add(table, cb, 1, line_cnt+2);
@@ -475,7 +476,7 @@ void oc_instructions(GtkWidget *dlg, OragePlugin *plugin)
     g_object_set (label, "xalign", 0.0, "yalign", 0.0,
                          "hexpand", TRUE, "halign", GTK_ALIGN_FILL, NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
-    
+
     (void)plugin;
 }
 
@@ -483,14 +484,14 @@ static void oc_dialog_response (GtkWidget *dlg, int response,
                                 OragePlugin *plugin)
 {
     XfcePanelPlugin *panel_plugin = XFCE_PANEL_PLUGIN (plugin);
-    
+
     g_object_set_data (G_OBJECT (plugin), "dialog", NULL);
     g_object_set_data (G_OBJECT (plugin), "properties_frame", NULL);
     gtk_widget_destroy(dlg);
     xfce_panel_plugin_unblock_menu (panel_plugin);
     oc_write_rc_file (panel_plugin);
     oc_init_timer (plugin);
-    
+
     (void)response;
 }
 
@@ -502,22 +503,22 @@ void oc_properties_dialog (XfcePanelPlugin *plugin)
     xfce_panel_plugin_block_menu(plugin);
     
     /* change interval to show quick feedback on panel */
-    orage_plugin->interval = OC_CONFIG_INTERVAL; 
+    orage_plugin->interval = OC_CONFIG_INTERVAL;
     oc_start_timer(orage_plugin);
 
-    dlg = gtk_dialog_new_with_buttons(_("Orage clock Preferences"), 
+    dlg = gtk_dialog_new_with_buttons(_("Orage clock Preferences"),
             GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(plugin))),
             GTK_DIALOG_DESTROY_WITH_PARENT |
             GTK_UI_MANAGER_SEPARATOR,
             _("Close"), GTK_RESPONSE_OK,
             NULL);
-    
+
     g_object_set_data(G_OBJECT(plugin), "dialog", dlg);
     gtk_window_set_position(GTK_WINDOW(dlg), GTK_WIN_POS_CENTER);
     gtk_container_set_border_width(GTK_CONTAINER(dlg), 2);
     g_signal_connect(dlg, "response", G_CALLBACK(oc_dialog_response),
                      orage_plugin);
-    
+
     oc_properties_appearance(dlg, orage_plugin);
     oc_properties_options(dlg, orage_plugin);
     oc_instructions(dlg, orage_plugin);

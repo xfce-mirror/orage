@@ -1091,7 +1091,7 @@ int write_ical_file(const char *in_file_name, const struct stat *in_file_stat)
     fclose(ical_file);
     if (debug > 1)
         printf("\n***** write_ical_file: end *****\n\n\n");
-    
+
     (void)in_file_stat;
     return(0);
 }
@@ -1456,7 +1456,7 @@ void add_zone_tabs()
 int file_call(const char *file_name, const struct stat *sb, int flags
         , struct FTW *f)
 {
-#ifdef FTW_ACTIONRETVAL    
+#ifdef FTW_ACTIONRETVAL
     int i;
 #endif
 

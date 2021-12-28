@@ -82,7 +82,7 @@ static struct tm *get_time(const gchar *tz)
     return(&now);
 }
 
-static gboolean global_time_active_already (GdkAtom *atom)
+static gboolean global_time_active_already(GdkAtom *atom)
 {
     XEvent xevent;
     Window xwindow;
@@ -92,7 +92,7 @@ static gboolean global_time_active_already (GdkAtom *atom)
     *atom = gdk_atom_intern (GLOBALTIME_RUNNING, FALSE);
     display = gdk_x11_get_default_xdisplay ();
     xwindow = XGetSelectionOwner (display, gdk_x11_atom_to_xatom (*atom));
-    
+
     if (xwindow != None)
     {
         /* Real owner found; must be us. Let's go visible. */
@@ -103,30 +103,30 @@ static gboolean global_time_active_already (GdkAtom *atom)
         xevent.xclient.window = xwindow;
         xevent.xclient.send_event = TRUE;
         xevent.xclient.message_type = XInternAtom (display, event, FALSE);
-        
+
         if (XSendEvent (display, xwindow, FALSE, NoEventMask, &xevent))
             g_debug (_("Raising GlobalTime window..."));
         else
-            g_warning (_("GlobalTime window raise failed"));
-        
+            g_warning(_("GlobalTime window raise failed"));
+
         (void)XFlush (display);
-        return TRUE;
+        return(TRUE); 
     }
     else
-        return FALSE;
+        return(FALSE); 
 }
 
-static void raise_window (void)
+static void raise_window(void)
 {
     GdkWindow *window;
 
-    gtk_window_set_decorated (GTK_WINDOW(clocks.window), clocks.decorations);
-    gtk_window_move (GTK_WINDOW(clocks.window), clocks.x, clocks.y);
-    gtk_window_stick (GTK_WINDOW(clocks.window));
+    gtk_window_set_decorated(GTK_WINDOW(clocks.window), clocks.decorations);
+    gtk_window_move(GTK_WINDOW(clocks.window), clocks.x, clocks.y);
+    gtk_window_stick(GTK_WINDOW(clocks.window));
     window = gtk_widget_get_window (GTK_WIDGET(clocks.window));
-    gdk_x11_window_set_user_time (window, gdk_x11_get_server_time(window));
-    gtk_widget_show (clocks.window);
-    gtk_window_present (GTK_WINDOW(clocks.window));
+    gdk_x11_window_set_user_time(window, gdk_x11_get_server_time(window));
+    gtk_widget_show(clocks.window);
+    gtk_window_present(GTK_WINDOW(clocks.window));
 }
 
 static GdkFilterReturn
@@ -134,12 +134,12 @@ client_message_filter (GdkXEvent *gdkxevent, GdkEvent *event, gpointer data)
 {
     XClientMessageEvent *evt;
     const XEvent *xevent = (const XEvent *)gdkxevent;
-    
+
     if (xevent->type != ClientMessage)
         return GDK_FILTER_CONTINUE;
-    
+
     evt = (XClientMessageEvent *)gdkxevent;
-    
+
     if (evt->message_type ==
             XInternAtom (evt->display, GLOBALTIME_RAISE, FALSE))
     {
@@ -147,7 +147,7 @@ client_message_filter (GdkXEvent *gdkxevent, GdkEvent *event, gpointer data)
         raise_window ();
         return GDK_FILTER_REMOVE;
     }
-    
+
     else if (evt->message_type ==
              XInternAtom (evt->display, GLOBALTIME_TOGGLE, FALSE))
     {
@@ -156,10 +156,10 @@ client_message_filter (GdkXEvent *gdkxevent, GdkEvent *event, gpointer data)
             gtk_widget_hide (clocks.window);
         else
             raise_window();
-        
+
         return GDK_FILTER_REMOVE;
     }
-    
+
     (void)event;
     (void)data;
 
@@ -240,7 +240,7 @@ static void gt_label_set_font (GtkLabel *label, const GString *font_str)
     PangoFontDescription *font;
     PangoAttrList *attrlist;
     PangoAttribute *attr;
-    
+
     font = pango_font_description_from_string (font_str->str);
     attr = pango_attr_font_desc_new (font);
     pango_font_description_free (font);
@@ -252,14 +252,14 @@ static void gt_label_set_font (GtkLabel *label, const GString *font_str)
 
 static void gt_set_background_color (GtkWidget *widget, const GdkRGBA *color)
 {
-    /* Deprecation warnings is disabled, as it is not reasonable to change
+    /* Deprecation warnings are disabled, as it is not reasonable to change
      * current implementation to CSS. But if widget colour changing through CSS
      * is still needed, then the general idea is following:
      * provider = Gtk.CssProvider()
      * provider.load_from_data(some_css_fragment)
      * widget.get_style_context().add_provider(provider,
      *                          Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
-     * 
+     *
      * Once you want to reset the widget's style, you call:
      * widget.get_style_context().remove_provider(provider)
      */
@@ -279,35 +279,31 @@ static void show_clock_format_clock(clock_struct *clockp)
 {
     gchar tmp[100];
 
-    /*********** Clock Name font ***********/
-    if (clockp->clock_attr.name_font_modified)
-    {
+/*********** Clock Name font ***********/
+    if (clockp->clock_attr.name_font_modified) {
         gt_label_set_font (GTK_LABEL (clockp->name_label),
                            clockp->clock_attr.name_font);
     }
-    else if (clocks.clock_default_attr.name_font_modified)
-    {
+    else if (clocks.clock_default_attr.name_font_modified) {
         gt_label_set_font (GTK_LABEL (clockp->name_label),
                            clocks.clock_default_attr.name_font);
     }
-    else
+    else 
         gtk_label_set_attributes (GTK_LABEL (clockp->name_label), NULL);
 
-    /*********** Clock Time font ***********/
-    if (clockp->clock_attr.time_font_modified)
-    {
+/*********** Clock Time font ***********/
+    if (clockp->clock_attr.time_font_modified) {
         gt_label_set_font (GTK_LABEL (clockp->time_label),
                            clockp->clock_attr.time_font);
     }
-    else if (clocks.clock_default_attr.time_font_modified)
-    {
+    else if (clocks.clock_default_attr.time_font_modified) {
         gt_label_set_font (GTK_LABEL (clockp->time_label),
                            clocks.clock_default_attr.time_font);
     }
-    else
+    else 
         gtk_label_set_attributes (GTK_LABEL (clockp->time_label), NULL);
 
-    /*********** Clock background ***********/
+/*********** Clock background ***********/
     if (clockp->clock_attr.clock_bg_modified)
     {
         gt_set_background_color (clockp->clock_ebox,
@@ -321,23 +317,20 @@ static void show_clock_format_clock(clock_struct *clockp)
     else
         gt_set_background_color (clockp->clock_ebox, NULL);
 
-    /*********** Clock foreground ***********/
-    if (clockp->clock_attr.clock_fg_modified)
-    {
+/*********** Clock foreground ***********/
+    if (clockp->clock_attr.clock_fg_modified) {
         gt_set_foreground_color (clockp->name_label,
                                  clockp->clock_attr.clock_fg);
         gt_set_foreground_color (clockp->time_label,
                                  clockp->clock_attr.clock_fg);
     }
-    else if (clocks.clock_default_attr.clock_fg_modified)
-    {
-        gt_set_foreground_color (clockp->name_label, 
+    else if (clocks.clock_default_attr.clock_fg_modified) {
+        gt_set_foreground_color (clockp->name_label,
                                  clocks.clock_default_attr.clock_fg);
         gt_set_foreground_color (clockp->time_label,
                                  clocks.clock_default_attr.clock_fg);
     }
-    else
-    {
+    else {
         gt_set_foreground_color (clockp->time_label, NULL);
         gt_set_foreground_color (clockp->name_label, NULL);
     }
@@ -388,7 +381,7 @@ void show_clock(clock_struct *clockp, gint *pos)
     gtk_container_add(GTK_CONTAINER(clockp->clock_ebox), clockp->clock_vbox);
     gtk_widget_show(clockp->clock_vbox);
 
-    /*********** Clock Name ***********/
+/*********** Clock Name ***********/
     clockp->name_label = gtk_label_new(NULL);
     show_clock_format_name(clockp);
     gtk_grid_attach_next_to (GTK_GRID (clockp->clock_vbox), clockp->name_label,
@@ -444,7 +437,7 @@ static gboolean preferences_button_pressed(GtkWidget *widget
     else {
         return(default_preferences(widget));
     }
-    
+
     (void)dummy;
 }
 
@@ -471,7 +464,7 @@ static void upd_clock(clock_struct *clockp, gpointer user_data)
         g_snprintf (clocks.time_now, sizeof (clocks.time_now), "%02d:%02d",
                     now->tm_hour, now->tm_min);
     }
-    else if (clocks.local_mday > now->tm_mday)
+    else if (clocks.local_mday > now->tm_mday) 
     {
         g_snprintf (clocks.time_now, sizeof (clocks.time_now), "%02d:%02d-",
                     now->tm_hour, now->tm_min);
@@ -481,13 +474,13 @@ static void upd_clock(clock_struct *clockp, gpointer user_data)
         g_snprintf (clocks.time_now, sizeof (clocks.time_now), "%02d:%02d+",
                     now->tm_hour, now->tm_min);
     }
-    
+
     show_clock_format_time(clockp);
     if (clocks.modified > 0) {
         show_clock_format_name(clockp);
         show_clock_format_clock(clockp);
     }
-    
+
     (void)user_data;
 }
 
@@ -515,23 +508,21 @@ static gboolean upd_clocks (gpointer user_data)
         /* minute changed => need to update visible clocks */
         g_list_foreach(clocks.clock_list, (GFunc) upd_clock, NULL);
     clocks.previous_secs = secs_now;
-    
+
     (void)user_data;
-    
+
     return(TRUE);
 }
 
 static void adj_hh_changed(GtkSpinButton *cb, gpointer user_data)
 {
     clocks.hh_adj = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(cb));
-    
     (void)user_data;
 }
 
 static void adj_mm_changed(GtkSpinButton *cb, gpointer user_data)
 {
     clocks.mm_adj = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(cb));
-    
     (void)user_data;
 }
 
@@ -593,11 +584,11 @@ static void init_hdr_button(void)
 static gboolean clean_up(GtkWidget *obj, GdkEvent *event, gpointer data)
 {
     write_file();
-    
+
     (void)obj;
     (void)event;
     (void)data;
-    
+
     return(FALSE);
 }
 
@@ -666,7 +657,7 @@ static void initialize_clocks(void)
     clocks.clock_default_attr.time_underline = g_string_new(attr_underline[0]);
     clocks.clock_default_attr.time_underline_modified = FALSE;
     /* find default font */
-    button = gtk_font_button_new ();
+    button = gtk_font_button_new();
     font = gtk_font_chooser_get_font (GTK_FONT_CHOOSER (button));
     g_string_assign (clocks.clock_default_attr.name_font, font);
     g_string_assign (clocks.clock_default_attr.time_font,
@@ -716,8 +707,8 @@ static void create_global_time(void)
 
     gtk_window_move(GTK_WINDOW(clocks.window), clocks.x, clocks.y);
     gtk_window_set_decorated(GTK_WINDOW(clocks.window), clocks.decorations);
-    gtk_widget_show (clocks.window);
-    
+    gtk_widget_show(clocks.window);
+
     gdk_window_add_filter (window, client_message_filter, NULL);
 }
 

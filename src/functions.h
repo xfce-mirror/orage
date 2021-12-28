@@ -180,7 +180,7 @@ void orage_status_icon_set_tooltip_markup (GtkStatusIcon *status_icon,
                                            const gchar *markup);
 
 /** Create button with image. This code is taken from Mousepad.
- *  
+ *
  *  @note This function is direct replacement for gtk_button_new_from_stock.
  *        I.e. 'gtk_button_new_from_stock("gtk-open")' can be changed to
  *        'orage_util_image_button ("document-open", _("_Open"))'.

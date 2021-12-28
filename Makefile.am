@@ -14,7 +14,7 @@ SUBDIRS = $(LIBICAL_SUBDIR)	\
 	plugin			\
 	panel-plugin		\
 	tz_convert
-	
+
 desktopdir = $(datadir)/applications
 desktop_in_files = xfcalendar.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)

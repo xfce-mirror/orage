@@ -13,7 +13,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the 
+ * along with this program; if not, write to the
        Free Software Foundation
        51 Franklin Street, 5th Floor
        Boston, MA 02110-1301 USA
@@ -112,22 +112,22 @@ void register_css_provider (void)
     GtkCssProvider *provider;
     GdkDisplay *display;
     GdkScreen *screen;
-    
+
     if (css_registered == TRUE)
         return;
-    
+
     provider = gtk_css_provider_new ();
     display = gdk_display_get_default ();
     screen = gdk_display_get_default_screen (display);
-    
+
     gtk_style_context_add_provider_for_screen (
             screen,
             GTK_STYLE_PROVIDER (provider),
             GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
-    
-    gtk_css_provider_load_from_data (GTK_CSS_PROVIDER (provider), 
+
+    gtk_css_provider_load_from_data (GTK_CSS_PROVIDER (provider),
                                      orage_css_style, -1, NULL);
-    
+
     g_object_unref (provider);
     css_registered = TRUE;
 }

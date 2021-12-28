@@ -182,7 +182,7 @@ gboolean ic_internal_file_open(icalcomponent **p_ical
             g_warning (P_N "file empty");
         else
             g_error (P_N "file empty");
-        
+
         return(FALSE);
     }
     if (read_only)
@@ -334,7 +334,7 @@ static gboolean delayed_file_close(gpointer user_data)
 #endif
     /* we only close file once, so end here */
     file_close_timer = 0;
-    
+
     (void)user_data;
     return(FALSE); 
 }
@@ -1858,7 +1858,6 @@ static void ical_appt_get_rrule_internal(icalcomponent *c, xfical_appt *appt
         }
     }
     appt->interval = rrule.interval;
-    
     (void)c;
 }
 
@@ -2562,7 +2561,6 @@ static void build_excluded_list(GList **exclude_l, icalcomponent *comp
 static void free_exclude_time(gpointer e_t, gpointer dummy)
 {
     g_free(e_t);
-    
     (void)dummy;
 }
 
@@ -3429,7 +3427,7 @@ static void mark_calendar(icalcomponent *c, icaltime_span *span , void *data)
     xfical_mark_calendar_days(cal_data->cal, cal_data->year, cal_data->month
             , sdate.year, sdate.month, sdate.day
             , edate.year, edate.month, edate.day);
-    
+
     (void)c;
 }
 

@@ -287,7 +287,7 @@ gboolean orage_timezone_button_clicked(GtkButton *button, GtkWindow *parent
     GtkTreeIter       iter;
     gboolean    changed = FALSE;
     gboolean    details = FALSE;
-    
+
 #if ORAGE_TRACE
     g_debug (P_N);
 #endif
