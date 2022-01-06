@@ -60,12 +60,8 @@ typedef struct _day_win
     GtkRequisition StartDate_button_req;
     GtkWidget *day_spin;
 
-    GtkWidget *day_view_vbox;
-    GtkWidget *scroll_win_h;
-    GtkWidget *dtable_h; /* header of day table */
     GtkWidget *scroll_win;
     GtkWidget *dtable;   /* day table */
-    GtkRequisition hour_req;
 
     GtkWidget *header[MAX_DAYS];
     GtkWidget *element[24][MAX_DAYS];
@@ -74,8 +70,7 @@ typedef struct _day_win
     guint upd_timer;
     gdouble scroll_pos; /* remember the scroll position */
 
-    GdkColor bg1, bg2, line_color, bg_today, fg_sunday;
-    GList    *apptw_list; /* keep track of appointments being updated */
+    GList *apptw_list; /* keep track of appointments being updated */
     gchar a_day[9]; /* start date yyyymmdd */
     gint days;      /* how many days to show */
 } day_win;

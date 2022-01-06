@@ -1536,7 +1536,7 @@ msgid "All appointments"
 msgstr "Totes les cites"
 
 #: ../src/interface.c:1041
-msgid "Named appointments: "
+msgid "Named appointments:"
 msgstr "Cites amb nom:"
 
 #: ../src/interface.c:1053
@@ -2061,18 +2061,6 @@ msgstr "Primer dia de la setmana"
 #: ../src/parameters.c:925
 msgid "Selected day"
 msgstr "Dia seleccionat"
-
-#: ../src/parameters.c:943
-msgid "Use dynamic tray icon"
-msgstr "Utilitza la icona dinàmica de l'àrea de notificació"
-
-#: ../src/parameters.c:948
-msgid "Use dynamic icon"
-msgstr "Utilitza la icona dinàmica"
-
-#: ../src/parameters.c:954
-msgid "Dynamic icon shows current month and day of the month."
-msgstr "La icona dinàmica mostra el mes actual i el dia del mes."
 
 #: ../src/parameters.c:962 ../src/parameters.c:967
 msgid "Use wakeup timer"

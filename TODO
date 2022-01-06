@@ -1,11 +1,13 @@
 List of things we should do when (if) we have time:
 
-1) VTODO handling
-*** DONE 4.5 ***
-
-2) Import (Export ?) data from external calendar sources
-    Read valid ical files and add VEVENTS into xfcalendar format.
-*** DONE 4.5 ***
+*) Replace bundled libical with external one. Versin 4.16.0 should have
+   default external libical and optional internal, and version 4.18.0 have
+   only external libical
+*) Port Globaltime to GTK3
+*) Port panel-plugin to GTK3
+*) Fix FreeBSD related issues: make does not work and calendar start always with
+   Sunday
+*) Fix mess with CSS
 
 3) Timezone handling
     This is actually needed only if we want to syncronize several 
@@ -33,28 +35,8 @@ List of things we should do when (if) we have time:
     These are not dialog windows, they should have a menu each.
 *** DONE 4.4 ***
 
-8) Write help
-*** DONE 4.4 ***
-
-9) VJOURNAL handling
-*** DONE 4.5 ***
-
 10) more alarm possibilities (like libnotify BUG 2831 and email)
 *** Partly DONE 4.5 ***
 
 11) Day, Week, Month view
 *** Partly DONE 4.5 ***
-
-12) Exclude possiblity in repeating rule
-*** DONE 4.7 ***
-
-13) Repeating rule visual presentation
-    Show when events actually happen
-*** DONE 4.7 ***
-
-14) Alarm before the end of the event. 
-    Needed for TODOs
-*** DONE 4.5 ***
-
-15) Internal: build own message/warning system
-*** DONE 4.5 ***

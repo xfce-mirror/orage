@@ -56,9 +56,7 @@
 #include "tray_icon.h"
 #include "parameters.h"
 
-/*
-#define ORAGE_DEBUG 1
-*/
+#define ORAGE_TRACE 0
 
 /* Compatibility macro for < libnotify-0.7 */
 /* NOTIFY_CHECK_VERSION was created in 0.5.2 */
@@ -84,8 +82,8 @@ static void alarm_free(gpointer galarm)
 #define P_N "alarm_free: "
     alarm_struct *l_alarm = (alarm_struct *)galarm;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     g_free(l_alarm->alarm_time);
     g_free(l_alarm->action_time);
@@ -105,8 +103,8 @@ static gint alarm_order(gconstpointer a, gconstpointer b)
 #undef P_N
 #define P_N "alarm_order: "
 
-#ifdef ORAGE_DEBUG
-    orage_message(-300, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     if (((alarm_struct *)a)->alarm_time == NULL)
         return(1);
@@ -125,8 +123,8 @@ void alarm_list_free(void)
     alarm_struct *l_alarm;
     GList *alarm_l, *kept_l=NULL;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     time_now = orage_tm_time_to_icaltime(orage_localtime());
         /* FIXME: This could be tuned since now it runs into the remaining
@@ -165,8 +163,8 @@ static void alarm_free_memory(alarm_struct *l_alarm)
 #undef P_N
 #define P_N "alarm_free_memory: "
 
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     if (!l_alarm->display_orage && !l_alarm->display_notify && !l_alarm->audio)
         /* all gone, need to clean memory */
@@ -182,8 +180,8 @@ void alarm_add(alarm_struct *l_alarm)
 #undef P_N
 #define P_N "alarm_add: "
 
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     g_par.alarm_list = g_list_prepend(g_par.alarm_list, l_alarm);
 }
@@ -194,8 +192,8 @@ static alarm_struct *alarm_copy(alarm_struct *l_alarm, gboolean init)
 #define P_N "alarm_copy: "
     alarm_struct *n_alarm;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     n_alarm = g_new0(alarm_struct, 1);
 
@@ -260,16 +258,16 @@ static OrageRc *orage_persistent_file_open(gboolean read_only)
     gchar *fpath;
     OrageRc *orc;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     fpath = orage_data_file_location(ORAGE_PERSISTENT_ALARMS_DIR_FILE);
     if (!read_only)  /* we need to empty it before each write */
         if (g_remove(fpath)) {
-            orage_message(150, P_N "g_remove failed.");
+            g_warning (P_N "g_remove failed.");
         }
     if ((orc = (OrageRc *)orage_rc_file_open(fpath, read_only)) == NULL) {
-        orage_message(150, P_N "persistent alarms file open failed.");
+        g_warning (P_N "persistent alarms file open failed.");
     }
     g_free(fpath);
 
@@ -282,8 +280,8 @@ static alarm_struct *alarm_read_next_alarm(OrageRc *orc, gchar *time_now)
 #define P_N "alarm_read_next_alarm: "
     alarm_struct *new_alarm;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
 
     new_alarm = g_new0(alarm_struct, 1);
@@ -335,8 +333,8 @@ void alarm_read(void)
     gchar **alarm_groups;
     gint i;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
 
     time_now = orage_tm_time_to_icaltime(orage_localtime());
@@ -363,8 +361,8 @@ static void alarm_store(gpointer galarm, gpointer par)
     alarm_struct *l_alarm = (alarm_struct *)galarm;
     OrageRc *orc = (OrageRc *)par;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-200, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     if (!l_alarm->persistent)
         return; /* only store persistent alarms */
@@ -397,8 +395,8 @@ static void store_persistent_alarms(void)
 #define P_N "store_persistent_alarms: "
     OrageRc *orc;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     orc = orage_persistent_file_open(FALSE);
     g_list_foreach(g_par.alarm_list, alarm_store, (gpointer)orc);
@@ -417,8 +415,8 @@ static void notify_action_open(NotifyNotification *n, const char *action
 #define P_N "notify_action_open: "
     alarm_struct *l_alarm = (alarm_struct *)par;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     /* 
      * These two lines would keep notify window active and make it possible
@@ -428,6 +426,9 @@ static void notify_action_open(NotifyNotification *n, const char *action
     create_notify_reminder(l_alarm);
     */
     create_appt_win("UPDATE", l_alarm->uid);
+
+    (void)n;
+    (void)action;
 }
 #endif
 
@@ -440,8 +441,8 @@ static gboolean sound_alarm(gpointer data)
     gboolean status;
     GtkWidget *stop;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     /* note: -1 loops forever */
     if (l_alarm->repeat_cnt != 0) {
@@ -487,8 +488,8 @@ static void create_sound_reminder(alarm_struct *l_alarm)
 #undef P_N
 #define P_N "create_sound_reminder: "
 
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     l_alarm->sound_cmd = g_strconcat(g_par.sound_application, " \""
         , l_alarm->sound, "\"", NULL);
@@ -497,7 +498,7 @@ static void create_sound_reminder(alarm_struct *l_alarm)
         l_alarm->repeat_cnt++; /* need to do it once */
     }
 
-    g_timeout_add_seconds(l_alarm->repeat_delay, (GtkFunction) sound_alarm
+    g_timeout_add_seconds(l_alarm->repeat_delay, (GSourceFunc) sound_alarm
             , (gpointer) l_alarm);
 }
 
@@ -508,8 +509,8 @@ static void notify_closed(NotifyNotification *n, gpointer par)
 #define P_N "notify_closed: "
     alarm_struct *l_alarm = (alarm_struct *)par;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     /*
     g_print("notify_closed: start %d %d\n",  l_alarm->audio, l_alarm->display_notify);
@@ -523,6 +524,8 @@ static void notify_closed(NotifyNotification *n, gpointer par)
         l_alarm->display_notify = FALSE; /* I am gone */
         alarm_free_memory(l_alarm);
     }
+
+    (void)n;
 }
 
 static void notify_action_silence(NotifyNotification *n, const char *action
@@ -532,8 +535,8 @@ static void notify_action_silence(NotifyNotification *n, const char *action
 #define P_N "notify_action_silence: "
     alarm_struct *l_alarm = (alarm_struct *)par;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     /* notify system will raise notify_closed also, so we need to mark that
        this is not a real close, but just a refresh, so that memory is not 
@@ -541,6 +544,9 @@ static void notify_action_silence(NotifyNotification *n, const char *action
     l_alarm->notify_refresh = TRUE; 
     l_alarm->repeat_cnt = 0; /* end sound during next  play */
     create_notify_reminder(l_alarm); /* recreate after notify close */
+
+    (void)n;
+    (void)action;
 }
 #endif
 
@@ -549,19 +555,19 @@ static void create_notify_reminder(alarm_struct *l_alarm)
 #undef P_N
 #define P_N "create_notify_reminder: "
 
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
 #ifdef HAVE_NOTIFY
     char heading[250];
     NotifyNotification *n;
 
     if (!notify_init("Orage")) {
-        orage_message(150, "Notify init failed\n");
+        g_warning ("Notify init failed\n");
         return;
     }
 
-    strncpy(heading,  _("Reminder "), 100);
+    g_strlcpy(heading,  _("Reminder "), sizeof (heading));
     if (l_alarm->title)
         g_strlcat(heading, l_alarm->title, 150);
     if (l_alarm->action_time) {
@@ -576,7 +582,7 @@ static void create_notify_reminder(alarm_struct *l_alarm)
 #else
     n = notify_notification_new(heading, l_alarm->description, NULL, NULL);
     if (g_par.trayIcon 
-    && gtk_status_icon_is_embedded((GtkStatusIcon *)g_par.trayIcon))
+    && orage_status_icon_is_embedded ((GtkStatusIcon *)g_par.trayIcon))
         notify_notification_attach_to_status_icon(n
                 , (GtkStatusIcon *)g_par.trayIcon);
 #endif
@@ -605,10 +611,11 @@ static void create_notify_reminder(alarm_struct *l_alarm)
            , G_CALLBACK(notify_closed), l_alarm);
 
     if (!notify_notification_show(n, NULL)) {
-        orage_message(150, "failed to send notification");
+        g_warning ("failed to send notification");
     }
 #else
-    orage_message(150, "libnotify not linked in. Can't use notifications.");
+    g_warning ("libnotify not linked in. Can't use notifications.");
+    (void)l_alarm;
 #endif
 }
 
@@ -618,11 +625,13 @@ static void destroy_orage_reminder(GtkWidget *wReminder, gpointer user_data)
 #define P_N "destroy_orage_reminder: "
     alarm_struct *l_alarm = (alarm_struct *)user_data;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     l_alarm->display_orage = FALSE; /* I am gone */
     alarm_free_memory(l_alarm);
+
+    (void)wReminder;
 }
 
 static void on_btStopNoiseReminder_clicked(GtkButton *button
@@ -632,8 +641,8 @@ static void on_btStopNoiseReminder_clicked(GtkButton *button
 #define P_N "on_btStopNoiseReminder_clicked: "
     alarm_struct *l_alarm = (alarm_struct *)user_data;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     l_alarm->repeat_cnt = 0;
     gtk_widget_set_sensitive(GTK_WIDGET(button), FALSE);
@@ -645,10 +654,12 @@ static void on_btOkReminder_clicked(GtkButton *button, gpointer user_data)
 #define P_N "on_btOkReminder_clicked: "
     GtkWidget *wReminder = (GtkWidget *)user_data;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     gtk_widget_destroy(wReminder); /* destroy the specific appointment window */
+
+    (void)button;
 }
 
 static void on_btOpenReminder_clicked(GtkButton *button, gpointer user_data)
@@ -657,10 +668,12 @@ static void on_btOpenReminder_clicked(GtkButton *button, gpointer user_data)
 #define P_N "on_btOpenReminder_clicked: "
     alarm_struct *l_alarm = (alarm_struct *)user_data;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     create_appt_win("UPDATE", l_alarm->uid);
+
+    (void)button;
 }
 
 static void on_btRecreateReminder_clicked(GtkButton *button, gpointer user_data)
@@ -672,8 +685,8 @@ static void on_btRecreateReminder_clicked(GtkButton *button, gpointer user_data)
     alarm_struct *n_alarm;
     time_t tt;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     display_data = (orage_ddmmhh_hbox_struct *)l_alarm->orage_display_data;
     /* we do not have l_alarm time here */
@@ -692,6 +705,8 @@ static void on_btRecreateReminder_clicked(GtkButton *button, gpointer user_data)
     alarm_add(n_alarm);
     setup_orage_alarm_clock();
     gtk_widget_destroy(display_data->dialog);
+
+    (void)button;
 }
 
 static void create_orage_reminder(alarm_struct *l_alarm)
@@ -713,8 +728,8 @@ static void create_orage_reminder(alarm_struct *l_alarm)
     GtkWidget *e_hbox;
     gchar *tmp;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     wReminder = gtk_dialog_new();
     gtk_widget_set_size_request(wReminder, -1, 250);
@@ -725,7 +740,7 @@ static void create_orage_reminder(alarm_struct *l_alarm)
     gtk_window_set_keep_above(GTK_WINDOW(wReminder), TRUE);
 
     /* Main AREA */
-    vbReminder = GTK_DIALOG(wReminder)->vbox;
+    vbReminder = gtk_dialog_get_content_area (GTK_DIALOG(wReminder));
 
     hdReminder = gtk_label_new(NULL);
     gtk_label_set_selectable(GTK_LABEL(hdReminder), TRUE);
@@ -751,9 +766,9 @@ static void create_orage_reminder(alarm_struct *l_alarm)
     lbReminder = gtk_label_new(l_alarm->description);
     gtk_label_set_line_wrap(GTK_LABEL(lbReminder), TRUE);
     gtk_label_set_selectable(GTK_LABEL(lbReminder), TRUE);
-    gtk_scrolled_window_add_with_viewport(GTK_SCROLLED_WINDOW(swReminder)
-            , lbReminder);
-    
+
+    gtk_container_add (GTK_CONTAINER (swReminder), lbReminder);
+
  /* TIME AREA */
     ddmmhh_hbox = (orage_ddmmhh_hbox_struct *)l_alarm->orage_display_data;
     ddmmhh_hbox->spin_dd = gtk_spin_button_new_with_range(0, 100, 1);
@@ -768,32 +783,40 @@ static void create_orage_reminder(alarm_struct *l_alarm)
             , ddmmhh_hbox->spin_hh, ddmmhh_hbox->spin_hh_label
             , ddmmhh_hbox->spin_mm, ddmmhh_hbox->spin_mm_label);
     /* we want it to the left: */
-    e_hbox = gtk_hbox_new(FALSE, 0);
-    gtk_box_pack_end(GTK_BOX(e_hbox), ddmmhh_hbox->time_hbox, FALSE, FALSE, 0);
+
+    e_hbox = gtk_grid_new ();
+    gtk_grid_attach_next_to (GTK_GRID (e_hbox), ddmmhh_hbox->time_hbox, NULL,
+                             GTK_POS_RIGHT, 1, 1);
     gtk_box_pack_end(GTK_BOX(vbReminder), e_hbox, FALSE, FALSE, 0);
     ddmmhh_hbox->dialog = wReminder;
 
- /* ACTION AREA */
-    daaReminder = GTK_DIALOG(wReminder)->action_area;
-    gtk_dialog_set_has_separator(GTK_DIALOG(wReminder), FALSE);
-    gtk_button_box_set_layout(GTK_BUTTON_BOX(daaReminder), GTK_BUTTONBOX_END);
+    /* ACTION AREA: Following two lines change buttons layout in dialog window.
+     * GTK4 does not have 'gtk_dialog_get_action_area' function. However,
+     * following two lines is safe to remove, then reminder box have GTK defaul
+     * buttons layout in reminder dialog.
+     */
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+    daaReminder = gtk_dialog_get_action_area (GTK_DIALOG (wReminder));
+    G_GNUC_END_IGNORE_DEPRECATIONS
+    gtk_button_box_set_layout(GTK_BUTTON_BOX(daaReminder), GTK_BUTTONBOX_EXPAND);
 
     if (l_alarm->uid) {
-        btOpenReminder = gtk_button_new_from_stock("gtk-open");
+        btOpenReminder = orage_util_image_button ("document-open", _("_Open"));
         gtk_dialog_add_action_widget(GTK_DIALOG(wReminder), btOpenReminder
                 , GTK_RESPONSE_OK);
         g_signal_connect((gpointer) btOpenReminder, "clicked"
                 , G_CALLBACK(on_btOpenReminder_clicked), l_alarm);
     }
 
-    btOkReminder = gtk_button_new_from_stock("gtk-close");
+    btOkReminder = orage_util_image_button ("window-close", _("_Close"));
     gtk_dialog_add_action_widget(GTK_DIALOG(wReminder), btOkReminder
             , GTK_RESPONSE_OK);
     g_signal_connect((gpointer) btOkReminder, "clicked"
             , G_CALLBACK(on_btOkReminder_clicked), wReminder);
 
     if ((l_alarm->audio) && (l_alarm->repeat_cnt > 1)) {
-        btStopNoiseReminder = gtk_button_new_from_stock("gtk-stop");
+        btStopNoiseReminder = orage_util_image_button ("process-stop",
+                                                       _("_Stop"));
         l_alarm->active_alarm->stop_noise_reminder = btStopNoiseReminder;
         gtk_dialog_add_action_widget(GTK_DIALOG(wReminder)
                 , btStopNoiseReminder, GTK_RESPONSE_OK);
@@ -801,8 +824,7 @@ static void create_orage_reminder(alarm_struct *l_alarm)
             G_CALLBACK(on_btStopNoiseReminder_clicked), l_alarm);
     }
 
-    btRecreateReminder = orage_create_custom_stock_button("gtk-ok"
-            , _("Postpone"));
+    btRecreateReminder = orage_util_image_button ("gtk-ok", _("Postpone"));
     gtk_widget_set_tooltip_text(btRecreateReminder
             , _("Remind me again after the specified time"));
     gtk_dialog_add_action_widget(GTK_DIALOG(wReminder)
@@ -819,19 +841,19 @@ static void create_procedure_reminder(alarm_struct *l_alarm)
 {
 #undef P_N
 #define P_N "create_procedure_reminder: "
-    /*
+#if 0
     gboolean status, active; / * active not used * /
     GError *error = NULL;
-    */
-    gchar *cmd, *tmp, *atime, *sep;
+#endif
+    gchar *cmd, *atime, *sep;
     gint status;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
-    /*
+#if 0
     status = orage_exec(l_alarm->cmd, &active, &error);
-    */
+#endif
     cmd = g_strconcat(l_alarm->cmd, " &", NULL);
 
     cmd = orage_replace_text(cmd, "<&T>", l_alarm->title);
@@ -855,7 +877,7 @@ static void create_procedure_reminder(alarm_struct *l_alarm)
                We could try to find the middle one using strlen, but as
                there probably is not this kind of issues, it is not worth
                the trouble */
-            orage_message(10, P_N "<&ST>/<&ET> string conversion failed (%s)"
+            g_message (P_N "<&ST>/<&ET> string conversion failed (%s)"
                     , l_alarm->action_time);
         }
         else {
@@ -868,7 +890,7 @@ static void create_procedure_reminder(alarm_struct *l_alarm)
         }
     }
     else 
-        orage_message(10, P_N "<&ST>/<&ET> string conversion failed 2 (%s)"
+        g_message (P_N "<&ST>/<&ET> string conversion failed 2 (%s)"
                 , l_alarm->action_time);
 
     status = system(cmd);
@@ -883,8 +905,8 @@ void create_reminders(alarm_struct *l_alarm)
 #define P_N "create_reminders: "
     alarm_struct *n_alarm;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     /* FIXME: instead of copying this new private version of the l_alarm,
      * g_list_remove(GList *g_par.alarm_list, gconstpointer l_alarm);
@@ -908,8 +930,8 @@ static void reset_orage_day_change(gboolean changed)
     struct tm *t;
     gint secs_left;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     if (changed) { /* date was change, need to count next change time */
         t = orage_localtime();
@@ -922,7 +944,7 @@ static void reset_orage_day_change(gboolean changed)
         secs_left = 1;
     }
     g_par.day_timer = g_timeout_add_seconds(secs_left
-            , (GtkFunction) orage_day_change, NULL);
+            , (GSourceFunc) orage_day_change, NULL);
 }
 
 /* fire after the date has changed and setup the icon 
@@ -936,9 +958,9 @@ gboolean orage_day_change(gpointer user_data)
     static gint previous_year=0, previous_month=0, previous_day=0;
     guint selected_year=0, selected_month=0, selected_day=0;
     gint current_year=0, current_month=0, current_day=0;
-                                                                                
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     t = orage_localtime();
   /* See if the day just changed. 
@@ -995,9 +1017,9 @@ static gboolean orage_alarm_clock(gpointer user_data)
     gboolean alarm_raised=FALSE;
     gboolean more_alarms=TRUE;
     gchar *time_now;
-                                                                                
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     time_now = orage_tm_time_to_icaltime(orage_localtime());
   /* Check if there are any alarms to show */
@@ -1020,6 +1042,8 @@ static gboolean orage_alarm_clock(gpointer user_data)
         xfical_alarm_build_list(FALSE); /* this calls reset_orage_alarm_clock */
     else
         reset_orage_alarm_clock(); /* need to setup next timer */
+
+    (void)user_data;
     return(FALSE); /* only once */
 }
 
@@ -1034,8 +1058,8 @@ static void reset_orage_alarm_clock(void)
     gint secs_to_alarm;
     gint dd;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     if (g_par.alarm_timer) { /* need to stop it if running */
         g_source_remove(g_par.alarm_timer);
@@ -1060,7 +1084,7 @@ static void reset_orage_alarm_clock(void)
         if (secs_to_alarm < 1) /* rare, but possible */
             secs_to_alarm = 1;
         g_par.alarm_timer = g_timeout_add_seconds(secs_to_alarm
-                , (GtkFunction) orage_alarm_clock, NULL);
+                , (GSourceFunc) orage_alarm_clock, NULL);
     }
 }
 
@@ -1081,11 +1105,11 @@ static gboolean orage_tooltip_update(gpointer user_data)
     GDate *g_now, *g_alarm;
     gchar *tmp;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     if (!(g_par.trayIcon 
-    && gtk_status_icon_is_embedded((GtkStatusIcon *)g_par.trayIcon))) {
+    && orage_status_icon_is_embedded ((GtkStatusIcon *)g_par.trayIcon))) {
            /* no trayicon => no need to update the tooltip */
         return(FALSE);
     }
@@ -1126,9 +1150,10 @@ static gboolean orage_tooltip_update(gpointer user_data)
                 hh += 24;
                 dd -= 1;
             }
-/*
-    orage_message(10, P_N "tooltip: alarm=%s hh=%d hh=%d min=%d", cur_alarm->alarm_time, dd, hh, min);
-*/
+#if 0
+            g_message (P_N "tooltip: alarm=%s hh=%d hh=%d min=%d",
+                       cur_alarm->alarm_time, dd, hh, min);
+#endif
             g_string_append(tooltip, "<span weight=\"bold\">");
             tooltip_highlight_helper = g_string_new(" </span>");
             if (cur_alarm->temporary) { /* let's add a small mark */
@@ -1154,8 +1179,13 @@ static gboolean orage_tooltip_update(gpointer user_data)
     }
     if (alarm_cnt == 0)
         g_string_append_printf(tooltip, _("\nNo active alarms found"));
-    gtk_status_icon_set_tooltip_markup((GtkStatusIcon *)g_par.trayIcon, tooltip->str);
+
+    orage_status_icon_set_tooltip_markup ((GtkStatusIcon *)g_par.trayIcon, tooltip->str);
+
     g_string_free(tooltip, TRUE);
+
+    (void)user_data;
+
     return(TRUE);
 }
 
@@ -1165,8 +1195,8 @@ static gboolean start_orage_tooltip_update(gpointer user_data)
 #undef P_N
 #define P_N "start_orage_tooltip_update: "
 
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     if (g_par.tooltip_timer) { /* need to stop it if running */
         g_source_remove(g_par.tooltip_timer);
@@ -1174,20 +1204,23 @@ static gboolean start_orage_tooltip_update(gpointer user_data)
 
     orage_tooltip_update(NULL);
     g_par.tooltip_timer = g_timeout_add_seconds(60
-            , (GtkFunction) orage_tooltip_update, NULL);
+            , (GSourceFunc) orage_tooltip_update, NULL);
+
+    (void)user_data;
+
     return(FALSE);
 }
 
 /* adjust the call to happen when minute changes */
-static gboolean reset_orage_tooltip_update(void)
+static gboolean reset_orage_tooltip_update (gpointer user_data)
 {
 #undef P_N
 #define P_N "reset_orage_tooltip_update: "
     struct tm *t;
     gint secs_left;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     t = orage_localtime();
     secs_left = 60 - t->tm_sec;
@@ -1199,7 +1232,9 @@ static gboolean reset_orage_tooltip_update(void)
      * Perhaps not worth fixing. 
      * Should add another timer or static time to keep track of this */
     g_timeout_add_seconds(secs_left
-            , (GtkFunction) start_orage_tooltip_update, NULL);
+            , (GSourceFunc) start_orage_tooltip_update, NULL);
+
+    (void)user_data;
     return(FALSE);
 }
 
@@ -1208,8 +1243,8 @@ void setup_orage_alarm_clock(void)
 #undef P_N
 #define P_N "setup_orage_alarm_clock: "
 
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     /* order the list */
     g_par.alarm_list = g_list_sort(g_par.alarm_list, alarm_order);
@@ -1217,5 +1252,5 @@ void setup_orage_alarm_clock(void)
     store_persistent_alarms(); /* keep track of alarms when orage is down */
     /* We need to use timer since for some reason it does not work if we
      * do it here directly. Ugly, I know, but it works. */
-    g_timeout_add_seconds(1, (GtkFunction) reset_orage_tooltip_update, NULL);
+    g_timeout_add_seconds(1, (GSourceFunc) reset_orage_tooltip_update, NULL);
 }

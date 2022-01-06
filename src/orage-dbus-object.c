@@ -55,7 +55,6 @@ OrageDBus *orage_dbus;
 
 static void orage_dbus_class_init(OrageDBusClass *orage_class)
 {
-    g_type_init();
     dbus_g_object_type_install_info(G_TYPE_FROM_CLASS(orage_class)
             , &dbus_glib_orage_object_info);
 }
@@ -103,6 +102,8 @@ gboolean orage_dbus_service_load_file(DBusGProxy *proxy
                 , "Invalid ical file \"%s\"", IN_file);
         return(FALSE);
     }
+
+    (void)proxy;
 }
 
 gboolean orage_dbus_service_export_file(DBusGProxy *proxy
@@ -117,6 +118,9 @@ gboolean orage_dbus_service_export_file(DBusGProxy *proxy
         g_warning("DBUS File export failed %s", IN_file);
         return(FALSE);
     }
+
+    (void)proxy;
+    (void)error;
 }
 
 gboolean orage_dbus_service_add_foreign(DBusGProxy *proxy
@@ -132,6 +136,9 @@ gboolean orage_dbus_service_add_foreign(DBusGProxy *proxy
         g_warning("DBUS Foreign file add failed %s", IN_file);
         return(FALSE);
     }
+
+    (void)proxy;
+    (void)error;
 }
 
 gboolean orage_dbus_service_remove_foreign(DBusGProxy *proxy
@@ -146,8 +153,10 @@ gboolean orage_dbus_service_remove_foreign(DBusGProxy *proxy
         g_warning("Orage **: DBUS Foreign file remove failed %s", IN_file);
         return(FALSE);
     }
-}
 
+    (void)proxy;
+    (void)error;
+}
 
 void orage_dbus_start(void)
 {

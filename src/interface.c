@@ -67,8 +67,7 @@ static int uid_drag_target_count = 1;
  */
 static gboolean interface_lock = FALSE;
 
-
-static void refresh_foreign_files(intf_win *intf_w, gboolean first);
+static void refresh_foreign_files(intf_win *intf_w, const gboolean first);
 
 gboolean orage_external_update_check(gpointer user_data)
 {
@@ -80,14 +79,14 @@ gboolean orage_external_update_check(gpointer user_data)
 
     /* check main Orage file */
     if (g_stat(g_par.orage_file, &s) < 0) {
-        orage_message(150, P_N "stat of %s failed: %d (%s)",
+        g_warning ("stat of %s failed: %d (%s)",
                 g_par.orage_file, errno, strerror(errno));
     }
     else {
         if (s.st_mtime > g_par.latest_file_change) {
             g_par.latest_file_change = s.st_mtime;
-            orage_message(10, _("Found external update on file %s.")
-                    , g_par.orage_file);  
+            g_message (_("Found external update on file %s.")
+                    , g_par.orage_file);
             external_changes_present = TRUE;
         }
     }
@@ -95,25 +94,27 @@ gboolean orage_external_update_check(gpointer user_data)
     /* check also foreign files */
     for (i = 0; i < g_par.foreign_count; i++) {
         if (g_stat(g_par.foreign_data[i].file, &s) < 0) {
-            orage_message(150, P_N "stat of %s failed: %d (%s)",
+            g_warning ("stat of %s failed: %d (%s)",
                     g_par.foreign_data[i].file, errno, strerror(errno));
         }
         else {
             if (s.st_mtime > g_par.foreign_data[i].latest_file_change) {
                 g_par.foreign_data[i].latest_file_change = s.st_mtime;
-                orage_message(10, _("Found external update on file %s.")
+                g_message (_("Found external update on file %s.")
                         , g_par.foreign_data[i].file);
                 external_changes_present = TRUE;
             }
         }
     }
-    
+
     if (external_changes_present) {
-        orage_message(80, _("Refreshing alarms and calendar due to external file update."));
+        g_message (_("Refreshing alarms and calendar due to external file update."));
         xfical_file_close_force();
         xfical_alarm_build_list(FALSE);
         orage_mark_appointments();
     }
+
+    (void)user_data;
 
     return(TRUE); /* keep running */
 }
@@ -130,6 +131,8 @@ static void orage_file_entry_changed(GtkWidget *dialog, gpointer user_data)
     else {
         gtk_widget_set_sensitive(intf_w->orage_file_save_button, TRUE);
     }
+
+    (void)dialog;
 }
 
 static void orage_file_save_button_clicked(GtkButton *button
@@ -183,6 +186,8 @@ static void orage_file_save_button_clicked(GtkButton *button
     else {
         g_free(s);
     }
+
+    (void)button;
 }
 
 #ifdef HAVE_ARCHIVE
@@ -198,6 +203,8 @@ static void archive_file_entry_changed(GtkWidget *dialog, gpointer user_data)
     else {
         gtk_widget_set_sensitive(intf_w->archive_file_save_button, TRUE);
     }
+
+    (void)dialog;
 }
 
 static void archive_file_save_button_clicked(GtkButton *button
@@ -250,6 +257,8 @@ static void archive_file_save_button_clicked(GtkButton *button
     else {
         g_free(s);
     }
+
+    (void)button;
 }
 #endif
 
@@ -263,8 +272,8 @@ static GtkWidget *orage_file_chooser(GtkWidget *parent_window
     f_chooser = GTK_FILE_CHOOSER(gtk_file_chooser_dialog_new(
             _("Select a file..."), GTK_WINDOW(parent_window)
             , save ? GTK_FILE_CHOOSER_ACTION_SAVE : GTK_FILE_CHOOSER_ACTION_OPEN
-            , GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL
-            , GTK_STOCK_OK, GTK_RESPONSE_ACCEPT
+            , "_Cancel", GTK_RESPONSE_CANCEL
+            , "_OK", GTK_RESPONSE_ACCEPT
             , NULL));
     /* Add filters */
     filter = gtk_file_filter_new();
@@ -326,6 +335,8 @@ static void orage_file_open_button_clicked(GtkButton *button
         }
     }
     gtk_widget_destroy(f_chooser);
+
+    (void)button;
 }
 
 #ifdef HAVE_ARCHIVE
@@ -355,6 +366,8 @@ static void archive_file_open_button_clicked(GtkButton *button
         }
     }
     gtk_widget_destroy(f_chooser);
+
+    (void)button;
 }
 #endif
 
@@ -388,6 +401,8 @@ static void exp_open_button_clicked(GtkButton *button, gpointer user_data)
     }
 
     gtk_widget_destroy(f_chooser);
+
+    (void)button;
 }
 
 static void imp_open_button_clicked(GtkButton *button, gpointer user_data)
@@ -418,21 +433,29 @@ static void imp_open_button_clicked(GtkButton *button, gpointer user_data)
     }
 
     gtk_widget_destroy(f_chooser);
+    (void)button;
 }
 
 #ifdef HAVE_ARCHIVE
 static void on_archive_button_clicked_cb(GtkButton *button, gpointer user_data)
 {
     xfical_archive();
+
+    (void)button;
+    (void)user_data;
 }
 
-static void on_unarchive_button_clicked_cb(GtkButton *button, gpointer user_data)
+static void on_unarchive_button_clicked_cb (GtkButton *button,
+                                            gpointer user_data)
 {
     xfical_unarchive();
+
+    (void)button;
+    (void)user_data;
 }
 #endif
 
-gboolean orage_import_file(gchar *entry_filename) 
+gboolean orage_import_file (const gchar *entry_filename)
 {
     if (xfical_import_file(entry_filename)) {
         orage_mark_appointments();
@@ -465,9 +488,9 @@ static void imp_save_button_clicked(GtkButton *button, gpointer user_data)
                 *filename_end = 0; /* filename ends here */
             /* FIXME: proper messages to screen */
             if (orage_import_file(filename))
-                orage_message(40, "Import done %s", filename);
+                g_message ("Import done %s", filename);
             else
-                g_warning("import failed file=%s\n", filename);
+                g_warning ("import failed file=%s\n", filename);
             if (filename_end != NULL) { /* we have more files */
                 filename = filename_end+1; /* next file starts here */
                 more_files = TRUE;
@@ -480,6 +503,8 @@ static void imp_save_button_clicked(GtkButton *button, gpointer user_data)
     else
         g_warning("save_button_clicked: filename MISSING");
     g_free(entry_filename);
+
+    (void)button;
 }
 
 static void exp_save_button_clicked(GtkButton *button, gpointer user_data)
@@ -507,14 +532,16 @@ static void exp_save_button_clicked(GtkButton *button, gpointer user_data)
         }
 
         if (orage_export_file(entry_filename, app_count, entry_uids))
-            orage_message(40, "Export done %s", entry_filename);
+            g_message ("Export done %s", entry_filename);
         else
-            g_warning("export failed file=%s\n", entry_filename);
+            g_warning ("export failed file=%s\n", entry_filename);
     }
     else
         g_warning("save_button_clicked: filename MISSING");
     g_free(entry_filename);
     g_free(entry_uids);
+
+    (void)button;
 }
 
 static void for_open_button_clicked(GtkButton *button, gpointer user_data)
@@ -549,6 +576,8 @@ static void for_open_button_clicked(GtkButton *button, gpointer user_data)
     }
 
     gtk_widget_destroy(f_chooser);
+
+    (void)button;
 }
 
 static void orage_foreign_file_remove_line(gint del_line)
@@ -606,9 +635,11 @@ static void for_remove_button_clicked(GtkButton *button, gpointer user_data)
 #define P_N "for_remove_button_clicked: "
     gint del_line = GPOINTER_TO_INT(user_data);
 
-    orage_message(90, P_N "Removing foreign file %s (%s).", g_par.foreign_data[del_line].name, g_par.foreign_data[del_line].file);
+    g_message (P_N "Removing foreign file %s (%s).", g_par.foreign_data[del_line].name, g_par.foreign_data[del_line].file);
     orage_foreign_file_remove_line(del_line);
-    orage_message(90, P_N "Foreign file removed and Orage alarms refreshed.");
+    g_message (P_N "Foreign file removed and Orage alarms refreshed.");
+
+    (void)button;
 }
 
 static void for_remove_button_clicked2(GtkButton *button, gpointer user_data)
@@ -616,9 +647,11 @@ static void for_remove_button_clicked2(GtkButton *button, gpointer user_data)
     intf_win *intf_w = (intf_win *)user_data;
 
     refresh_foreign_files(intf_w, FALSE);
+
+    (void)button;
 }
 
-static void refresh_foreign_files(intf_win *intf_w, gboolean first)
+static void refresh_foreign_files(intf_win *intf_w, const gboolean first)
 {
     GtkWidget *label, *hbox, *vbox, *button;
     gchar num[3];
@@ -626,32 +659,44 @@ static void refresh_foreign_files(intf_win *intf_w, gboolean first)
 
     if (!first)
         gtk_widget_destroy(intf_w->for_cur_frame);
-    vbox = gtk_vbox_new(FALSE, 0);
-    intf_w->for_cur_frame = orage_create_framebox_with_content(
-            _("Current foreign files"), vbox);
-    gtk_box_pack_start(GTK_BOX(intf_w->for_tab_main_vbox)
-            , intf_w->for_cur_frame, FALSE, FALSE, 5);
 
-    intf_w->for_cur_table = orage_table_new(10, 5);
+    vbox = gtk_grid_new ();
+    intf_w->for_cur_frame = orage_create_framebox_with_content(
+            _("Current foreign files"), GTK_SHADOW_NONE, vbox);
+    g_object_set (intf_w->for_cur_frame, "margin-top", 15,
+                                         NULL);
+    gtk_grid_attach_next_to (GTK_GRID (intf_w->for_tab_main_vbox),
+                             intf_w->for_cur_frame, NULL,
+                             GTK_POS_BOTTOM, 1, 1);
+    intf_w->for_cur_table = orage_table_new (5);
     if (g_par.foreign_count) {
         for (i = 0; i < g_par.foreign_count; i++) {
-            hbox = gtk_hbox_new(FALSE, 0);
+            hbox = gtk_grid_new ();
             if (g_par.foreign_data[i].name) {
                 label = gtk_label_new(g_par.foreign_data[i].name);
                 gtk_widget_set_tooltip_text(label, g_par.foreign_data[i].file);
             }
             else
                 label = gtk_label_new(g_par.foreign_data[i].file);
-            gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
-            gtk_box_pack_start(GTK_BOX(hbox), label, TRUE, TRUE, 5);
+
+            g_object_set (label, "xalign", 0.0, "yalign", 0.5,
+                                 "hexpand", TRUE, "halign", GTK_ALIGN_FILL,
+                                 NULL);
+            gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL,
+                                 GTK_POS_RIGHT, 1, 1);
             if (g_par.foreign_data[i].read_only)
                 label = gtk_label_new(_("READ ONLY"));
             else
                 label = gtk_label_new(_("READ WRITE"));
-            gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 5);
-            button = gtk_button_new_from_stock("gtk-remove");
-            gtk_box_pack_start(GTK_BOX(hbox), button, FALSE, FALSE, 5);
-            g_sprintf(num, "%02d", i+1);
+
+            g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
+            gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL,
+                                     GTK_POS_RIGHT, 1, 1);
+            button = orage_util_image_button ("list-remove", _("_Remove"));
+            g_object_set (button, "margin-left", 5, "margin-right", 5, NULL);
+            gtk_grid_attach_next_to (GTK_GRID (hbox), button, NULL,
+                                     GTK_POS_RIGHT, 1, 1);
+            g_snprintf (num, sizeof (num), "%02d", i + 1);
             label = gtk_label_new(num);
             orage_table_add_row(intf_w->for_cur_table
                     , label, hbox
@@ -662,72 +707,88 @@ static void refresh_foreign_files(intf_win *intf_w, gboolean first)
             g_signal_connect_after((gpointer)button, "clicked"
                     , G_CALLBACK(for_remove_button_clicked2), intf_w);
         }
-        gtk_box_pack_start(GTK_BOX(vbox), intf_w->for_cur_table
-                , FALSE, FALSE, 5);
+
+        gtk_grid_attach_next_to (GTK_GRID (vbox), intf_w->for_cur_table, NULL,
+                                 GTK_POS_BOTTOM, 1, 1);
     }
     else {
         label = gtk_label_new(_("***** No foreign files *****"));
-        gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, 5);
+        g_object_set (vbox, "halign", GTK_ALIGN_CENTER, NULL);
+        gtk_grid_attach_next_to (GTK_GRID (vbox), label, NULL,
+                                 GTK_POS_BOTTOM, 1, 1);
     }
     gtk_widget_show_all(intf_w->for_cur_frame);
 }
 
-static gboolean orage_foreign_file_add_internal(gchar *filename
-        , gchar *name, gboolean read_only, GtkWidget *main_window)
+static gboolean orage_foreign_file_add_internal (const gchar *filename,
+                                                 const gchar *name,
+                                                 const gboolean read_only,
+                                                 GtkWidget *main_window)
 {
 #undef P_N
 #define P_N "orage_foreign_file_add_internal: "
     gint i = 0;
-    gint result;
-    char *add_failed = _("Foreign file add failed");
+    const gchar *add_failed = _("Foreign file add failed");
 
     if (g_par.foreign_count > 9) {
-        orage_message(150, P_N "Orage can only handle 10 foreign files. Limit reached. New file not added.");
+        g_warning (P_N "Orage can only handle 10 foreign files. Limit reached. New file not added.");
         if (main_window)
-            result = orage_error_dialog(GTK_WINDOW(main_window)
+        {
+            (void)orage_error_dialog(GTK_WINDOW(main_window)
                     , add_failed
                     , _("Orage can only handle 10 foreign files. Limit reached."));
+        }
         return(FALSE);
     }
     if (!ORAGE_STR_EXISTS(filename)) {
-        orage_message(150, P_N "File is empty. New file not added.");
+        g_warning (P_N "File is empty. New file not added.");
         if (main_window)
-            result = orage_error_dialog(GTK_WINDOW(main_window)
+        {
+            (void)orage_error_dialog(GTK_WINDOW(main_window)
                     , add_failed
                     , _("Filename is empty."));
+        }
         return(FALSE);
     }
     if (!ORAGE_STR_EXISTS(name)) {
-        orage_message(150, P_N "Name is empty. New file not added.");
+        g_warning (P_N "Name is empty. New file not added.");
         if (main_window)
-            result = orage_error_dialog(GTK_WINDOW(main_window)
+        {
+            (void)orage_error_dialog(GTK_WINDOW(main_window)
                     , add_failed
                     , _("Name is empty."));
+        }
         return(FALSE);
     }
     if (!g_file_test(filename, G_FILE_TEST_EXISTS)) {
-        orage_message(150, P_N "New file %s does not exist. New file not added.", filename);
+        g_warning (P_N "New file %s does not exist. New file not added.", filename);
         if (main_window)
-            result = orage_error_dialog(GTK_WINDOW(main_window)
+        {
+            (void)orage_error_dialog(GTK_WINDOW(main_window)
                     , add_failed
                     , _("File does not exist."));
+        }
         return(FALSE);
     }
     for (i = 0; i < g_par.foreign_count; i++) {
         if (strcmp(g_par.foreign_data[i].file, filename) == 0) {
-            orage_message(150, P_N "Foreign file already exists. New file not added");
+            g_warning (P_N "Foreign file already exists. New file not added");
             if (main_window)
-                result = orage_error_dialog(GTK_WINDOW(main_window)
+            {
+                (void)orage_error_dialog(GTK_WINDOW(main_window)
                         , add_failed
                         , _("Same filename already exists in Orage."));
-                return(FALSE);
+            }
+            return(FALSE);
         }
         if (strcmp(g_par.foreign_data[i].name, name) == 0) {
-            orage_message(150, P_N "Foreign file name already exists. New file not added");
+            g_warning (P_N "Foreign file name already exists. New file not added");
             if (main_window)
-                result = orage_error_dialog(GTK_WINDOW(main_window)
+            {
+                (void)orage_error_dialog(GTK_WINDOW(main_window)
                         , add_failed
                         , _("Same name already exists in Orage."));
+            }
             return(FALSE);
         }
     }
@@ -745,8 +806,8 @@ static gboolean orage_foreign_file_add_internal(gchar *filename
 }
 
 /* this is used from command line */
-gboolean orage_foreign_file_add(gchar *filename, gboolean read_only
-        , gchar *name)
+gboolean orage_foreign_file_add(const gchar *filename, const gboolean read_only
+        , const gchar *name)
 {
     if (interface_lock) {
         g_warning("Exchange window active, can't add files from cmd line\n");
@@ -768,12 +829,15 @@ static void for_add_button_clicked(GtkButton *button, gpointer user_data)
     entry_name = gtk_entry_get_text((GtkEntry *)intf_w->for_new_name_entry);
     read_only = gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(intf_w->for_new_read_only));
-    if (orage_foreign_file_add_internal((char *)entry_filename
-                , (char *)entry_name, read_only, intf_w->main_window)) {
+    if (orage_foreign_file_add_internal (entry_filename, entry_name, read_only,
+                                         intf_w->main_window))
+    {
         refresh_foreign_files(intf_w, FALSE);
-        orage_message(80, P_N "New foreign file %s (%s) added.", entry_name
+        g_message (P_N "New foreign file %s (%s) added.", entry_name
                 , entry_filename);
     }
+
+    (void)button;
 }
 
 static void close_intf_w(gpointer user_data)
@@ -788,17 +852,24 @@ static void close_intf_w(gpointer user_data)
 static void close_button_clicked(GtkButton *button, gpointer user_data)
 {
     close_intf_w(user_data);
+
+    (void)button;
 }
 
 static void filemenu_close_activated(GtkMenuItem *menuitem, gpointer user_data)
 {
     close_intf_w(user_data);
+
+    (void)menuitem;
 }
 
 static gboolean on_Window_delete_event(GtkWidget *w, GdkEvent *e
         , gpointer user_data)
 {
     close_intf_w(user_data);
+
+    (void)w;
+    (void)e;
     return(FALSE);
 }
 
@@ -806,8 +877,8 @@ static void create_menu(intf_win *intf_w)
 {
     /* Menu bar */
     intf_w->menubar = gtk_menu_bar_new();
-    gtk_box_pack_start(GTK_BOX(intf_w->main_vbox), intf_w->menubar
-            , FALSE, FALSE, 0);
+    gtk_grid_attach_next_to (GTK_GRID (intf_w->main_vbox), intf_w->menubar,
+                             NULL, GTK_POS_BOTTOM, 1, 1);
 
     /* File menu */
     intf_w->filemenu = orage_menu_new(_("_File"), intf_w->menubar);
@@ -822,16 +893,14 @@ static void create_menu(intf_win *intf_w)
 
 static void create_toolbar(intf_win *intf_w)
 {
-    gint i = 0;
-
     /* Toolbar */
     intf_w->toolbar = gtk_toolbar_new();
-    gtk_box_pack_start(GTK_BOX(intf_w->main_vbox), intf_w->toolbar
-            , FALSE, FALSE, 0);
+    gtk_grid_attach_next_to (GTK_GRID (intf_w->main_vbox), intf_w->toolbar,
+                             NULL, GTK_POS_BOTTOM, 1, 1);
 
     /* Buttons */
     intf_w->close_button = orage_toolbar_append_button(intf_w->toolbar
-            , "gtk-close", _("Close"), i++);
+            , "window-close", _("Close"), 0);
 
     g_signal_connect((gpointer)intf_w->close_button, "clicked"
             , G_CALLBACK(close_button_clicked), intf_w);
@@ -845,12 +914,13 @@ static void handle_file_drag_data(GtkWidget *widget, GdkDragContext *context
     gint i, pos;
     GError *error = NULL;
 
-    if (data->length < 0) {
+    if (gtk_selection_data_get_length (data) < 0) {
         g_warning("File drag failed");
         gtk_drag_finish(context, FALSE, FALSE, d_time);
         return;
     }
-    file_list = g_uri_list_extract_uris((gchar *)data->data);
+    file_list = g_uri_list_extract_uris (
+            (const gchar *)gtk_selection_data_get_data (data));
     for (i = 0; file_list[i] != NULL; i++) {
         if ((file = g_filename_from_uri(file_list[i], NULL, &error)) == NULL) {
             g_warning("Dragging g_filename_from_uri %s failed %s"
@@ -883,6 +953,10 @@ static void imp_file_drag_data_received(GtkWidget *widget
         , guint info, guint d_time)
 {
     handle_file_drag_data(widget, context, data, d_time, TRUE);
+
+    (void)x;
+    (void)y;
+    (void)info;
 }
 
 static void exp_file_drag_data_received(GtkWidget *widget
@@ -890,24 +964,37 @@ static void exp_file_drag_data_received(GtkWidget *widget
         , guint info, guint d_time)
 {
     handle_file_drag_data(widget, context, data, d_time, FALSE);
+
+    (void)x;
+    (void)y;
+    (void)info;
 }
 
 static void uid_drag_data_received(GtkWidget *widget, GdkDragContext *context
         , gint x, gint y, GtkSelectionData *data, guint info, guint d_time)
 {
-    if (data->length < 0) {
+    if (gtk_selection_data_get_length (data) < 0) {
         g_warning("UID drag failed");
         gtk_drag_finish(context, FALSE, FALSE, d_time);
         return;
     }
     gtk_drag_finish(context, TRUE, FALSE, d_time);
+
+    (void)widget;
+    (void)x;
+    (void)y;
+    (void)info;
 }
 
 static gboolean drag_drop(GtkWidget *widget, GdkDragContext *context
         , gint x, gint y, guint d_time)
 {
-    gtk_drag_get_data(widget, context
-            , GDK_POINTER_TO_ATOM(context->targets->data), d_time);
+    gtk_drag_get_data(widget, context,
+             GDK_POINTER_TO_ATOM (gdk_drag_context_list_targets (context)->data)
+            , d_time);
+
+    (void)x;
+    (void)y;
 
     return(TRUE);
 }
@@ -944,6 +1031,8 @@ static void exp_add_all_rb_clicked(GtkWidget *button, gpointer *user_data)
     intf_win *intf_w = (intf_win *)user_data;
 
     gtk_widget_set_sensitive(intf_w->iea_exp_id_entry, FALSE);
+
+    (void)button;
 }
 
 static void exp_add_id_rb_clicked(GtkWidget *button, gpointer *user_data)
@@ -951,6 +1040,8 @@ static void exp_add_id_rb_clicked(GtkWidget *button, gpointer *user_data)
     intf_win *intf_w = (intf_win *)user_data;
 
     gtk_widget_set_sensitive(intf_w->iea_exp_id_entry, TRUE);
+
+    (void)button;
 }
 
 static void create_import_export_tab(intf_win *intf_w)
@@ -959,32 +1050,48 @@ static void create_import_export_tab(intf_win *intf_w)
     gchar *file;
     gchar *str;
 
-    m_vbox = gtk_vbox_new(FALSE, 0);
+    m_vbox = gtk_grid_new ();
     intf_w->iea_notebook_page = orage_create_framebox_with_content(
-            NULL, m_vbox);
+            NULL, GTK_SHADOW_NONE, m_vbox);
     intf_w->iea_tab_label = gtk_label_new(_("Import/export"));
     gtk_notebook_append_page(GTK_NOTEBOOK(intf_w->notebook)
             , intf_w->iea_notebook_page, intf_w->iea_tab_label);
 
     /***** import *****/
-    vbox = gtk_vbox_new(FALSE, 0);
+    vbox = gtk_grid_new ();
     intf_w->iea_imp_frame = orage_create_framebox_with_content(
-            _("Import"), vbox);
-    gtk_box_pack_start(GTK_BOX(m_vbox)
-            , intf_w->iea_imp_frame, FALSE, FALSE, 5);
+            _("Import"), GTK_SHADOW_NONE, vbox);
+    g_object_set (intf_w->iea_imp_frame, "margin-top", 5, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (m_vbox),
+                             intf_w->iea_imp_frame, NULL,
+                             GTK_POS_BOTTOM, 1, 1);
 
-    hbox = gtk_hbox_new(FALSE, 0);
+    hbox = gtk_grid_new ();
+    g_object_set (hbox, "margin-top", 5, "margin-bottom", 5, NULL);
     label = gtk_label_new(_("Read from file:"));
-    gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 5);
+    g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
     intf_w->iea_imp_entry = gtk_entry_new();
-    gtk_box_pack_start(GTK_BOX(hbox), intf_w->iea_imp_entry, TRUE, TRUE, 0);
-    intf_w->iea_imp_open_button = gtk_button_new_from_stock("gtk-open");
-    gtk_box_pack_start(GTK_BOX(hbox), intf_w->iea_imp_open_button
-            , FALSE, FALSE, 5);
-    intf_w->iea_imp_save_button = gtk_button_new_from_stock("gtk-save");
-    gtk_box_pack_start(GTK_BOX(hbox), intf_w->iea_imp_save_button
-            , FALSE, FALSE, 5);
-    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 5);
+    g_object_set (intf_w->iea_imp_entry, "hexpand", TRUE,
+                                         "halign", GTK_ALIGN_FILL,
+                                         NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->iea_imp_entry, NULL,
+                             GTK_POS_RIGHT, 1, 1);
+    intf_w->iea_imp_open_button = orage_util_image_button ("document-open",
+                                                           _("_Open"));
+    g_object_set (intf_w->iea_imp_open_button, "margin-left", 5,
+                                               "margin-right", 5,
+                                               NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->iea_imp_open_button, NULL,
+                             GTK_POS_RIGHT, 1, 1);
+    intf_w->iea_imp_save_button = orage_util_image_button ("document-save",
+                                                         _("_Save"));
+    g_object_set (intf_w->iea_imp_save_button, "margin-left", 5,
+                                               "margin-right", 5,
+                                               NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->iea_imp_save_button, NULL,
+                             GTK_POS_RIGHT, 1, 1);
+    gtk_grid_attach_next_to (GTK_GRID (vbox), hbox, NULL, GTK_POS_BOTTOM, 1, 1);
 
     g_signal_connect((gpointer)intf_w->iea_imp_open_button, "clicked"
             , G_CALLBACK(imp_open_button_clicked), intf_w);
@@ -994,57 +1101,89 @@ static void create_import_export_tab(intf_win *intf_w)
             , _("Separate filenames with comma(,).\n NOTE: comma is not valid character in filenames for Orage."));
 
     /***** export *****/
-    vbox = gtk_vbox_new(FALSE, 0);
+    vbox = gtk_grid_new ();
     intf_w->iea_exp_frame = orage_create_framebox_with_content(
-            _("Export"), vbox);
-    gtk_box_pack_start(GTK_BOX(m_vbox)
-            , intf_w->iea_exp_frame, FALSE, FALSE, 5);
+            _("Export"), GTK_SHADOW_NONE, vbox);
+    g_object_set (intf_w->iea_exp_frame, "margin-top", 5, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (m_vbox),
+                             intf_w->iea_exp_frame, NULL,
+                             GTK_POS_BOTTOM, 1, 1);
 
-    hbox = gtk_hbox_new(FALSE, 0);
+    hbox = gtk_grid_new ();
+    g_object_set (hbox, "margin-top", 5, "margin-bottom", 5, NULL);
     label = gtk_label_new(_("Write to file:"));
-    gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 5);
+    g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
     intf_w->iea_exp_entry = gtk_entry_new();
-    gtk_box_pack_start(GTK_BOX(hbox), intf_w->iea_exp_entry, TRUE, TRUE, 0);
+    g_object_set (intf_w->iea_exp_entry, "hexpand", TRUE,
+                                         "halign", GTK_ALIGN_FILL,
+                                         NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->iea_exp_entry, NULL,
+                             GTK_POS_RIGHT, 1, 1);
     file = g_build_filename(g_get_home_dir(), "orage_export.ics", NULL);
     gtk_entry_set_text(GTK_ENTRY(intf_w->iea_exp_entry), file);
     g_free(file);
-    intf_w->iea_exp_open_button = gtk_button_new_from_stock("gtk-open");
-    gtk_box_pack_start(GTK_BOX(hbox), intf_w->iea_exp_open_button
-            , FALSE, FALSE, 5);
-    intf_w->iea_exp_save_button = gtk_button_new_from_stock("gtk-save");
-    gtk_box_pack_start(GTK_BOX(hbox), intf_w->iea_exp_save_button
-            , FALSE, FALSE, 5);
-    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 5);
+    intf_w->iea_exp_open_button = orage_util_image_button ("document-open",
+                                                           _("_Open"));
+    g_object_set (intf_w->iea_exp_open_button, "margin-left", 5,
+                                               "margin-right", 5,
+                                               NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->iea_exp_open_button, NULL,
+                             GTK_POS_RIGHT, 1, 1);
+    intf_w->iea_exp_save_button = orage_util_image_button ("document-save",
+                                                           _("_Save"));
+    g_object_set (intf_w->iea_exp_save_button, "margin-left", 5,
+                                               "margin-right", 5,
+                                               NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->iea_exp_save_button, NULL,
+                             GTK_POS_RIGHT, 1, 1);
+    gtk_grid_attach_next_to (GTK_GRID (vbox), hbox, NULL, GTK_POS_BOTTOM, 1, 1);
 
     g_signal_connect((gpointer)intf_w->iea_exp_open_button, "clicked"
             , G_CALLBACK(exp_open_button_clicked), intf_w);
     g_signal_connect((gpointer)intf_w->iea_exp_save_button, "clicked"
             , G_CALLBACK(exp_save_button_clicked), intf_w);
 
-    hbox = gtk_hbox_new(FALSE, 0);
+    hbox = gtk_grid_new ();
+    g_object_set (hbox, "margin-top", 5, "margin-bottom", 5, NULL);
     label = gtk_label_new(_("Select"));
-    gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 5);
+    g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL,
+                             GTK_POS_BOTTOM, 1, 1);
     intf_w->iea_exp_add_all_rb = gtk_radio_button_new_with_label(NULL
             , _("All appointments"));
-    gtk_box_pack_start(GTK_BOX(hbox), intf_w->iea_exp_add_all_rb
-            , FALSE, FALSE, 5);
-    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 5);
+    g_object_set (intf_w->iea_exp_add_all_rb, "margin-left", 5,
+                                              "margin-right", 5,
+                                              NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->iea_exp_add_all_rb, NULL,
+                             GTK_POS_RIGHT, 1, 1);
+    gtk_grid_attach_next_to (GTK_GRID (vbox), hbox, NULL, GTK_POS_BOTTOM, 1, 1);
 
     g_signal_connect((gpointer)intf_w->iea_exp_add_all_rb, "clicked"
             , G_CALLBACK(exp_add_all_rb_clicked), intf_w);
 
-    hbox = gtk_hbox_new(FALSE, 0);
+    hbox = gtk_grid_new ();
+    g_object_set (hbox, "margin-top", 5, "margin-bottom", 5, NULL);
     label = gtk_label_new(_("Select"));
-    gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 5);
+    g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL,
+                             GTK_POS_BOTTOM, 1, 1);
     intf_w->iea_exp_add_id_rb = gtk_radio_button_new_with_mnemonic_from_widget(
             GTK_RADIO_BUTTON(intf_w->iea_exp_add_all_rb)
-            , _("Named appointments: "));
-    gtk_box_pack_start(GTK_BOX(hbox), intf_w->iea_exp_add_id_rb
-            , FALSE, FALSE, 0);
-    intf_w->iea_exp_id_entry = gtk_entry_new();
-    gtk_box_pack_start(GTK_BOX(hbox), intf_w->iea_exp_id_entry, TRUE, TRUE, 0);
+            , _("Named appointments:"));
+    g_object_set (intf_w->iea_exp_add_id_rb, "margin-left", 5,
+                                             "margin-right", 5,
+                                              NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->iea_exp_add_id_rb, NULL,
+                             GTK_POS_RIGHT, 1, 1);
+    intf_w->iea_exp_id_entry = gtk_entry_new ();
+    g_object_set (intf_w->iea_exp_id_entry, "hexpand", TRUE,
+                                            "halign", GTK_ALIGN_FILL,
+                                            NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->iea_exp_id_entry, NULL,
+                             GTK_POS_RIGHT, 1, 1);
     gtk_widget_set_sensitive(intf_w->iea_exp_id_entry, FALSE);
-    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 5);
+    gtk_grid_attach_next_to (GTK_GRID (vbox), hbox, NULL, GTK_POS_BOTTOM, 1, 1);
 
     g_signal_connect((gpointer)intf_w->iea_exp_add_id_rb, "clicked"
             , G_CALLBACK(exp_add_id_rb_clicked), intf_w);
@@ -1062,35 +1201,49 @@ static void create_import_export_tab(intf_win *intf_w)
 
 #ifdef HAVE_ARCHIVE
     /***** archive *****/
-    vbox = gtk_vbox_new(FALSE, 0);
+    vbox = gtk_grid_new ();
     intf_w->iea_arc_frame = orage_create_framebox_with_content(
-            _("Archive"), vbox);
-    gtk_box_pack_start(GTK_BOX(m_vbox)
-            , intf_w->iea_arc_frame, FALSE, FALSE, 5);
+            _("Archive"), GTK_SHADOW_NONE, vbox);
+    g_object_set (intf_w->iea_arc_frame, "margin-top", 5, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (m_vbox),
+                             intf_w->iea_arc_frame, NULL,
+                             GTK_POS_BOTTOM, 1, 1);
 
-    hbox = gtk_hbox_new(FALSE, 0);
-    intf_w->iea_arc_button1 = gtk_button_new_from_stock("gtk-execute");
-    gtk_box_pack_start(GTK_BOX(hbox),  intf_w->iea_arc_button1
-            , FALSE, FALSE, 5);
+    hbox = gtk_grid_new ();
+    g_object_set (hbox, "margin-top", 5, "margin-bottom", 5, NULL);
+    intf_w->iea_arc_button1 = orage_util_image_button ("system-run",
+                                                       _("_Execute"));
+    g_object_set (intf_w->iea_arc_button1, "margin-left", 5,
+                                           "margin-right", 5,
+                                           NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->iea_arc_button1, NULL,
+                             GTK_POS_RIGHT, 1, 1);
     str = g_strdup_printf(_("Archive now (threshold: %d months)")
             , g_par.archive_limit);
     label = gtk_label_new(str);
     g_free(str);
-    gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 5);
-    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 5);
+    g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
+    gtk_grid_attach_next_to (GTK_GRID (vbox), hbox, NULL, GTK_POS_BOTTOM, 1, 1);
 
     g_signal_connect((gpointer)intf_w->iea_arc_button1, "clicked"
             , G_CALLBACK(on_archive_button_clicked_cb), intf_w);
     gtk_widget_set_tooltip_text(intf_w->iea_arc_button1
             , _("You can change archive threshold in parameters"));
 
-    hbox = gtk_hbox_new(FALSE, 0);
-    intf_w->iea_arc_button2 = gtk_button_new_from_stock("gtk-execute");
-    gtk_box_pack_start(GTK_BOX(hbox), intf_w->iea_arc_button2
-            , FALSE, FALSE, 5);
-    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 5);
+    hbox = gtk_grid_new ();
+    g_object_set (hbox, "margin-top", 5, "margin-bottom", 5, NULL);
+    intf_w->iea_arc_button2 = orage_util_image_button ("system-run",
+                                                       _("_Execute"));
+    g_object_set (intf_w->iea_arc_button2, "margin-left", 5,
+                                           "margin-right", 5,
+                                           NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->iea_arc_button2, NULL,
+                             GTK_POS_RIGHT, 1, 1);
+    gtk_grid_attach_next_to (GTK_GRID (vbox), hbox, NULL, GTK_POS_BOTTOM, 1, 1);
     label = gtk_label_new(_("Revert archive now"));
-    gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
+    g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
 
     g_signal_connect((gpointer)intf_w->iea_arc_button2, "clicked"
             , G_CALLBACK(on_unarchive_button_clicked_cb), intf_w);
@@ -1103,69 +1256,98 @@ static void create_orage_file_tab(intf_win *intf_w)
 {
     GtkWidget *label, *hbox, *vbox, *m_vbox;
 
-    m_vbox = gtk_vbox_new(FALSE, 0);
+    m_vbox = gtk_grid_new ();
     /* FIXME: this could be simpler than framebox */
-    intf_w->fil_notebook_page = orage_create_framebox_with_content(NULL, m_vbox);
+    intf_w->fil_notebook_page = orage_create_framebox_with_content (
+            NULL, GTK_SHADOW_NONE, m_vbox);
     intf_w->fil_tab_label = gtk_label_new(_("Orage files"));
     gtk_notebook_append_page(GTK_NOTEBOOK(intf_w->notebook)
             , intf_w->fil_notebook_page, intf_w->fil_tab_label);
 
     /***** main file *****/
-    vbox = gtk_vbox_new(FALSE, 0);
+    vbox = gtk_grid_new ();
     intf_w->orage_file_frame = orage_create_framebox_with_content(
-            _("Orage main calendar file"), vbox);
-    gtk_box_pack_start(GTK_BOX(m_vbox)
-            , intf_w->orage_file_frame, FALSE, FALSE, 5);
+            _("Orage main calendar file"), GTK_SHADOW_NONE, vbox);
+    g_object_set (intf_w->orage_file_frame, "margin-top", 5,
+                                            "margin-bottom", 5,
+                                            NULL);
+    gtk_grid_attach_next_to (GTK_GRID (m_vbox), intf_w->orage_file_frame, NULL,
+                             GTK_POS_BOTTOM, 1, 1);
 
-    hbox = gtk_hbox_new(FALSE, 0);
+    hbox = gtk_grid_new ();
+    g_object_set (hbox, "margin-top", 5, "margin-bottom", 5, NULL);
     label = gtk_label_new(_("Current file:"));
-    gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 5);
+    g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
     label = gtk_label_new((const gchar *)g_par.orage_file);
-    gtk_box_pack_start(GTK_BOX(hbox), label, TRUE, TRUE, 5);
-    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 5);
+    g_object_set (label, "margin-right", 5,
+                         "hexpand", TRUE, "halign", GTK_ALIGN_START,
+                         NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
+    gtk_grid_attach_next_to (GTK_GRID (vbox), hbox, NULL, GTK_POS_BOTTOM, 1, 1);
 
-    hbox = gtk_hbox_new(FALSE, 0);
+    hbox = gtk_grid_new ();
+    g_object_set (hbox, "margin-top", 5, "margin-bottom", 5, NULL);
     label = gtk_label_new(_("New file:"));
-    gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 5);
+    g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
     intf_w->orage_file_entry = gtk_entry_new();
     gtk_entry_set_text(GTK_ENTRY(intf_w->orage_file_entry)
             , (const gchar *)g_par.orage_file);
-    gtk_box_pack_start(GTK_BOX(hbox), intf_w->orage_file_entry, TRUE, TRUE, 0);
-    intf_w->orage_file_open_button = gtk_button_new_from_stock("gtk-open");
-    gtk_box_pack_start(GTK_BOX(hbox)
-            , intf_w->orage_file_open_button, FALSE, FALSE, 5);
-    intf_w->orage_file_save_button = gtk_button_new_from_stock("gtk-save");
-    gtk_widget_set_sensitive(intf_w->orage_file_save_button, FALSE);
-    gtk_box_pack_start(GTK_BOX(hbox)
-            , intf_w->orage_file_save_button, FALSE, FALSE, 5);
-    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 5);
+    g_object_set (intf_w->orage_file_entry,
+                  "hexpand", TRUE, "halign", GTK_ALIGN_FILL, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->orage_file_entry, NULL,
+                             GTK_POS_RIGHT, 1, 1);
 
-    hbox = gtk_hbox_new(FALSE, 0);
+    intf_w->orage_file_open_button = orage_util_image_button ("document-open",
+                                                              _("_Open"));
+    g_object_set (intf_w->orage_file_open_button,
+                  "margin-left", 5, "margin-right", 5, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->orage_file_open_button,
+                             NULL, GTK_POS_RIGHT, 1, 1);
+    intf_w->orage_file_save_button = orage_util_image_button ("document-save",
+                                                              _("_Save"));
+    gtk_widget_set_sensitive(intf_w->orage_file_save_button, FALSE);
+    g_object_set (intf_w->orage_file_save_button,
+                  "margin-left", 5, "margin-right", 5, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->orage_file_save_button,
+                             NULL, GTK_POS_RIGHT, 1, 1);
+    gtk_grid_attach_next_to (GTK_GRID (vbox), hbox, NULL, GTK_POS_BOTTOM, 1, 1);
+
+    hbox = gtk_grid_new ();
+    g_object_set (hbox, "margin-top", 5, "margin-bottom", 5, NULL);
     label = gtk_label_new(_("Action options:"));
-    gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 5);
+    g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
     intf_w->orage_file_rename_rb = 
             gtk_radio_button_new_with_label(NULL, _("Rename"));
-    gtk_box_pack_start(GTK_BOX(hbox)
-            , intf_w->orage_file_rename_rb, FALSE, FALSE, 5);
+    g_object_set (intf_w->orage_file_rename_rb,
+                  "margin-left", 5, "margin-right", 5, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->orage_file_rename_rb,
+                             NULL, GTK_POS_RIGHT, 1, 1);
     gtk_widget_set_tooltip_text(intf_w->orage_file_rename_rb
             , _("Orage internal file rename only.\nDoes not touch external filesystem at all.\nNew file must exist."));
 
     intf_w->orage_file_copy_rb = 
             gtk_radio_button_new_with_mnemonic_from_widget(
                     GTK_RADIO_BUTTON(intf_w->orage_file_rename_rb), _("Copy"));
-    gtk_box_pack_start(GTK_BOX(hbox)
-            , intf_w->orage_file_copy_rb, FALSE, FALSE, 5);
+    g_object_set (intf_w->orage_file_copy_rb,
+                  "margin-left", 5, "margin-right", 5, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->orage_file_copy_rb,
+                             NULL, GTK_POS_RIGHT, 1, 1);
     gtk_widget_set_tooltip_text(intf_w->orage_file_copy_rb
             , _("Current file is copied and stays unmodified in the old place."));
 
     intf_w->orage_file_move_rb = 
             gtk_radio_button_new_with_mnemonic_from_widget(
                     GTK_RADIO_BUTTON(intf_w->orage_file_rename_rb), _("Move"));
-    gtk_box_pack_start(GTK_BOX(hbox)
-            , intf_w->orage_file_move_rb, FALSE, FALSE, 5);
+    g_object_set (intf_w->orage_file_move_rb,
+                  "margin-left", 5, "margin-right", 5, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->orage_file_move_rb,
+                             NULL, GTK_POS_RIGHT, 1, 1);
     gtk_widget_set_tooltip_text(intf_w->orage_file_move_rb
             , _("Current file is moved and vanishes from the old place."));
-    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 5);
+    gtk_grid_attach_next_to (GTK_GRID (vbox), hbox, NULL, GTK_POS_BOTTOM, 1, 1);
 
     g_signal_connect(G_OBJECT(intf_w->orage_file_open_button), "clicked"
             , G_CALLBACK(orage_file_open_button_clicked), intf_w);
@@ -1176,54 +1358,80 @@ static void create_orage_file_tab(intf_win *intf_w)
 
 #ifdef HAVE_ARCHIVE
     /***** archive file *****/
-    vbox = gtk_vbox_new(FALSE, 0);
+    vbox = gtk_grid_new ();
     intf_w->archive_file_frame = orage_create_framebox_with_content(
-            _("Archive file"), vbox);
-    gtk_box_pack_start(GTK_BOX(m_vbox)
-            , intf_w->archive_file_frame, FALSE, FALSE, 5);
+            _("Archive file"), GTK_SHADOW_NONE, vbox);
+    g_object_set (intf_w->archive_file_frame, "margin-top", 5,
+                                              "margin-bottom", 5,
+                                              NULL);
+    gtk_grid_attach_next_to (GTK_GRID (m_vbox), intf_w->archive_file_frame,
+                             NULL, GTK_POS_BOTTOM, 1, 1);
 
-    hbox = gtk_hbox_new(FALSE, 0);
+    hbox = gtk_grid_new ();
+    g_object_set (hbox, "margin-top", 5, "margin-bottom", 5, NULL);
     label = gtk_label_new(_("Current file:"));
-    gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 5);
+    g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
     label = gtk_label_new((const gchar *)g_par.archive_file);
-    gtk_box_pack_start(GTK_BOX(hbox), label, TRUE, TRUE, 5);
-    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 5);
+    g_object_set (label, "margin-right", 5,
+                         "hexpand", TRUE, "halign", GTK_ALIGN_START,
+                         NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
+    gtk_grid_attach_next_to (GTK_GRID (vbox), hbox, NULL, GTK_POS_BOTTOM, 1, 1);
 
-    hbox = gtk_hbox_new(FALSE, 0);
+    hbox = gtk_grid_new ();
+    g_object_set (hbox, "margin-top", 5, "margin-bottom", 5, NULL);
     label = gtk_label_new(_("New file:"));
-    gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 5);
+    g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
     intf_w->archive_file_entry = gtk_entry_new();
     gtk_entry_set_text(GTK_ENTRY(intf_w->archive_file_entry)
             , (const gchar *)g_par.archive_file);
-    gtk_box_pack_start(GTK_BOX(hbox)
-            , intf_w->archive_file_entry, TRUE, TRUE, 0);
-    intf_w->archive_file_open_button = gtk_button_new_from_stock("gtk-open");
-    gtk_box_pack_start(GTK_BOX(hbox)
-            , intf_w->archive_file_open_button, FALSE, FALSE, 5);
-    intf_w->archive_file_save_button = gtk_button_new_from_stock("gtk-save");
+    g_object_set (intf_w->archive_file_entry,
+                  "hexpand", TRUE, "halign", GTK_ALIGN_FILL, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->archive_file_entry, NULL,
+                             GTK_POS_RIGHT, 1, 1);
+    intf_w->archive_file_open_button = orage_util_image_button ("document-open",
+                                                                _("_Open"));
+    g_object_set (intf_w->archive_file_open_button,
+                  "margin-left", 5, "margin-right", 5, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->archive_file_open_button,
+                             NULL, GTK_POS_RIGHT, 1, 1);
+    intf_w->archive_file_save_button = orage_util_image_button ("document-save",
+                                                                _("_Save"));
     gtk_widget_set_sensitive(intf_w->archive_file_save_button, FALSE);
-    gtk_box_pack_start(GTK_BOX(hbox)
-            , intf_w->archive_file_save_button, FALSE, FALSE, 5);
-    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 5);
+    g_object_set (intf_w->archive_file_save_button,
+                  "margin-left", 5, "margin-right", 5, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->archive_file_save_button,
+                             NULL, GTK_POS_RIGHT, 1, 1);
+    gtk_grid_attach_next_to (GTK_GRID (vbox), hbox, NULL, GTK_POS_BOTTOM, 1, 1);
 
-    hbox = gtk_hbox_new(FALSE, 0);
+    hbox = gtk_grid_new ();
+    g_object_set (hbox, "margin-top", 5, "margin-bottom", 5, NULL);
     label = gtk_label_new(_("Action options:"));
-    gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 5);
+    g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
     intf_w->archive_file_rename_rb = 
             gtk_radio_button_new_with_label(NULL, _("Rename"));
-    gtk_box_pack_start(GTK_BOX(hbox)
-            , intf_w->archive_file_rename_rb, FALSE, FALSE, 5);
+    g_object_set (intf_w->archive_file_rename_rb,
+                  "margin-left", 5, "margin-right", 5, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->archive_file_rename_rb,
+                             NULL, GTK_POS_RIGHT, 1, 1);
     intf_w->archive_file_copy_rb = 
             gtk_radio_button_new_with_mnemonic_from_widget(
                 GTK_RADIO_BUTTON(intf_w->archive_file_rename_rb), _("Copy"));
-    gtk_box_pack_start(GTK_BOX(hbox)
-            , intf_w->archive_file_copy_rb, FALSE, FALSE, 5);
+    g_object_set (intf_w->archive_file_copy_rb,
+                  "margin-left", 5, "margin-right", 5, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->archive_file_copy_rb,
+                             NULL, GTK_POS_RIGHT, 1, 1);
     intf_w->archive_file_move_rb = 
             gtk_radio_button_new_with_mnemonic_from_widget(
                 GTK_RADIO_BUTTON(intf_w->archive_file_rename_rb), _("Move"));
-    gtk_box_pack_start(GTK_BOX(hbox)
-            , intf_w->archive_file_move_rb, FALSE, FALSE, 5);
-    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 5);
+    g_object_set (intf_w->archive_file_move_rb,
+                  "margin-left", 5, "margin-right", 5, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->archive_file_move_rb,
+                             NULL, GTK_POS_RIGHT, 1, 1);
+    gtk_grid_attach_next_to (GTK_GRID (vbox), hbox, NULL, GTK_POS_BOTTOM, 1, 1);
 
     g_signal_connect(G_OBJECT(intf_w->archive_file_open_button), "clicked"
             , G_CALLBACK(archive_file_open_button_clicked), intf_w);
@@ -1238,55 +1446,75 @@ static void create_foreign_file_tab(intf_win *intf_w)
 {
     GtkWidget *label, *hbox, *vbox;
 
-    intf_w->for_tab_main_vbox = gtk_vbox_new(FALSE, 0);
+    intf_w->for_tab_main_vbox = gtk_grid_new ();
     /* FIXME: this could be simpler than framebox */
-    intf_w->for_notebook_page = orage_create_framebox_with_content(NULL
-            , intf_w->for_tab_main_vbox);
+    intf_w->for_notebook_page =
+            orage_create_framebox_with_content (NULL, GTK_SHADOW_NONE,
+                                                intf_w->for_tab_main_vbox);
     intf_w->for_tab_label = gtk_label_new(_("Foreign files"));
     gtk_notebook_append_page(GTK_NOTEBOOK(intf_w->notebook)
             , intf_w->for_notebook_page, intf_w->for_tab_label);
 
     /***** Add new file *****/
-    vbox = gtk_vbox_new(FALSE, 0);
+    vbox = gtk_grid_new ();
     intf_w->for_new_frame = orage_create_framebox_with_content(
-            _("Add new foreign file"), vbox);
-    gtk_box_pack_start(GTK_BOX(intf_w->for_tab_main_vbox)
-            , intf_w->for_new_frame, FALSE, FALSE, 5);
+            _("Add new foreign file"), GTK_SHADOW_NONE, vbox);
 
-    hbox = gtk_hbox_new(FALSE, 0);
+    gtk_grid_attach_next_to (GTK_GRID (intf_w->for_tab_main_vbox),
+                             intf_w->for_new_frame, NULL,
+                             GTK_POS_BOTTOM, 1, 1);
+
+    hbox = gtk_grid_new ();
+    g_object_set (hbox, "margin-top", 5, "margin-bottom", 5, NULL);
     label = gtk_label_new(_("Foreign file:"));
-    gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 5);
+    g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
     intf_w->for_new_entry = gtk_entry_new();
-    gtk_box_pack_start(GTK_BOX(hbox), intf_w->for_new_entry, TRUE, TRUE, 0);
-    intf_w->for_new_open_button = gtk_button_new_from_stock("gtk-open");
-    gtk_box_pack_start(GTK_BOX(hbox), intf_w->for_new_open_button
-            , FALSE, FALSE, 5);
-    intf_w->for_new_save_button = gtk_button_new_from_stock("gtk-add");
-    gtk_box_pack_start(GTK_BOX(hbox), intf_w->for_new_save_button
-            , FALSE, FALSE, 5);
-    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 5);
+    g_object_set (intf_w->for_new_entry,
+                  "hexpand", TRUE, "halign", GTK_ALIGN_FILL, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->for_new_entry, NULL,
+                             GTK_POS_RIGHT, 1, 1);
+    intf_w->for_new_open_button = orage_util_image_button ("document-open",
+                                                           _("_Open"));
+    g_object_set (intf_w->for_new_open_button, "margin-left", 5,
+                                               "margin-right", 5,
+                                               NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->for_new_open_button, NULL,
+                             GTK_POS_RIGHT, 1, 1);
+    intf_w->for_new_save_button = orage_util_image_button ("list-add",
+                                                           _("_Add"));
+    g_object_set (intf_w->for_new_save_button, "margin-left", 5,
+                                               "margin-right", 5,
+                                               NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->for_new_save_button, NULL,
+                             GTK_POS_RIGHT, 1, 1);
+    gtk_grid_attach_next_to (GTK_GRID (vbox), hbox, NULL, GTK_POS_BOTTOM, 1, 1);
 
     g_signal_connect((gpointer)intf_w->for_new_open_button, "clicked"
             , G_CALLBACK(for_open_button_clicked), intf_w);
     g_signal_connect((gpointer)intf_w->for_new_save_button, "clicked"
             , G_CALLBACK(for_add_button_clicked), intf_w);
 
-    hbox = gtk_hbox_new(FALSE, 0);
-    /*
-    label = gtk_label_new(_("Options:"));
-    gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 5);
-    */
+    hbox = gtk_grid_new ();
+    g_object_set (hbox, "margin-top", 5, "margin-bottom", 5, NULL);
     label = gtk_label_new(_("Visible name:"));
-    gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 5);
+    g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
     intf_w->for_new_name_entry = gtk_entry_new();
-    gtk_box_pack_start(GTK_BOX(hbox), intf_w->for_new_name_entry
-            , TRUE, TRUE, 0);
-    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 5);
+    g_object_set (intf_w->for_new_name_entry, "hexpand", TRUE,
+                                              "halign", GTK_ALIGN_FILL,
+                                              NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->for_new_name_entry, NULL,
+                             GTK_POS_RIGHT, 1, 1);
+    gtk_grid_attach_next_to (GTK_GRID (vbox), hbox, NULL, GTK_POS_BOTTOM, 1, 1);
     intf_w->for_new_read_only = gtk_check_button_new_with_label(_("Read only"));
     gtk_toggle_button_set_active(
             GTK_TOGGLE_BUTTON(intf_w->for_new_read_only), TRUE);
-    gtk_box_pack_start(GTK_BOX(hbox), intf_w->for_new_read_only
-            , FALSE, FALSE, 5);
+    g_object_set (intf_w->for_new_read_only, "margin-left", 5,
+                                             "margin-right", 5,
+                                             NULL);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->for_new_read_only, NULL,
+                             GTK_POS_RIGHT, 1, 1);
 
     gtk_widget_set_tooltip_text(intf_w->for_new_read_only
             , _("Set this if you want to make sure that this file is never modified by Orage.\nNote that modifying foreign files may make them incompatible with the original tool, where they came from!"));
@@ -1312,7 +1540,7 @@ void orage_external_interface(CalWin *xfcal)
     gtk_window_add_accel_group(GTK_WINDOW(intf_w->main_window)
             , intf_w->accelgroup);
 
-    intf_w->main_vbox = gtk_vbox_new(FALSE, 0);
+    intf_w->main_vbox = gtk_grid_new ();
     gtk_container_add(GTK_CONTAINER(intf_w->main_window), intf_w->main_vbox);
 
     create_menu(intf_w);
@@ -1320,7 +1548,8 @@ void orage_external_interface(CalWin *xfcal)
 
      /* create tabs */
     intf_w->notebook = gtk_notebook_new();
-    gtk_container_add(GTK_CONTAINER(intf_w->main_vbox), intf_w->notebook);
+    gtk_grid_attach_next_to (GTK_GRID (intf_w->main_vbox), intf_w->notebook,
+                             NULL, GTK_POS_BOTTOM, 1, 1);
     gtk_container_set_border_width(GTK_CONTAINER(intf_w->notebook), 5);
 
     create_import_export_tab(intf_w);
@@ -1332,4 +1561,6 @@ void orage_external_interface(CalWin *xfcal)
 
     gtk_widget_show_all(intf_w->main_window);
     drag_and_drop_init(intf_w);
+
+    (void)xfcal;
 }

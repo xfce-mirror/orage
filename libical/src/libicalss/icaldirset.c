@@ -3,7 +3,7 @@
     FILE: icaldirset.c
     CREATOR: eric 28 November 1999
   
-    $Id$
+    $Id: icaldirset.c 137 2021-06-04 06:05:18Z erx $
     $Locker$
     
  (C) COPYRIGHT 2000, Eric Busboom, http://www.softwarestudio.org
@@ -131,11 +131,13 @@ icalerrorenum icaldirset_commit(icalset* set)
 
 void icaldirset_lock(const char* dir)
 {
+    (void)dir;
 }
 
 
 void icaldirset_unlock(const char* dir)
 {
+    (void)dir;
 }
 
 /* Load the contents of the store directory into the store's internal directory list*/
@@ -315,7 +317,7 @@ int icaldirset_next_uid_number(icaldirset* dset)
 
     icalerror_check_arg_rz( (dset!=0), "dset");
 
-    sprintf(filename,"%s/%s",dset->dir,"SEQUENCE");
+    snprintf (filename, sizeof (filename), "%s/%s",dset->dir,"SEQUENCE");
 
     /* Create the file if it does not exist.*/
     if (stat(filename,&sbuf) == -1 || !S_ISREG(sbuf.st_mode)){
@@ -374,7 +376,7 @@ icalerrorenum icaldirset_next_cluster(icaldirset* dset)
 	return ICAL_NO_ERROR;
     }
 	    
-    sprintf(path,"%s/%s", dset->dir,(char*)pvl_data(dset->directory_iterator));
+    snprintf(path,sizeof (path), "%s/%s", dset->dir,(char*)pvl_data(dset->directory_iterator));
 
     icalcluster_free(dset->cluster);
     dset->cluster = icalfileset_produce_icalcluster(path);
@@ -399,9 +401,9 @@ static void icaldirset_add_uid(icalcomponent* comp)
 #ifndef WIN32
 	uname(&unamebuf);
 	
-	sprintf(uidstring,"%d-%s",(int)getpid(),unamebuf.nodename);
+	snprintf(uidstring, sizeof (uidstring), "%d-%s",(int)getpid(),unamebuf.nodename);
 #else
-	sprintf(uidstring,"%d-%s",(int)getpid(),"WINDOWS");  /* FIX: There must be an easy get the system name */
+	snprintf(uidstring, sizeof (uidstrign), "%d-%s",(int)getpid(),"WINDOWS");  /* FIX: There must be an easy get the system name */
 #endif
 	
 	uid = icalproperty_new_uid(uidstring);
@@ -466,7 +468,7 @@ icalerrorenum icaldirset_add_component(icalset* set, icalcomponent* comp)
     v = icalproperty_get_value(dt);
     tm = icalvalue_get_datetime(v);
 
-    snprintf(clustername,ICAL_PATH_MAX,"%s/%04d%02d",dset->dir, tm.year, tm.month);
+    snprintf(clustername,sizeof (clustername),"%s/%04d%02d",dset->dir, tm.year, tm.month);
 
     /* Load the cluster and insert the object */
     if(dset->cluster != 0 && 
@@ -560,7 +562,9 @@ int icaldirset_count_components(icalset* store,
 {
     /* HACK, not implemented */
     assert(0);
-
+    
+    (void)store;
+    (void)kind;
     return 0;
 }
 
@@ -569,6 +573,8 @@ icalcomponent* icaldirset_fetch_match(icalset* set, icalcomponent *c)
 {
     fprintf(stderr," icaldirset_fetch_match is not implemented\n");
     assert(0);
+    (void)set;
+    (void)c;
     return 0;
 }
 
@@ -584,7 +590,7 @@ icalcomponent* icaldirset_fetch(icalset* set, const char* uid)
     icalerror_check_arg_rz( (set!=0), "set");
     icalerror_check_arg_rz( (uid!=0), "uid");
 
-    snprintf(sql, 256, "SELECT * FROM VEVENT WHERE UID = \"%s\"", uid);
+    snprintf(sql, sizeof (sql), "SELECT * FROM VEVENT WHERE UID = \"%s\"", uid);
     
     gauge = icalgauge_new_from_sql(sql, 0);
 
@@ -636,6 +642,9 @@ icalerrorenum icaldirset_modify(icalset* set,
 			       icalcomponent *new)
 {
     assert(0);
+    (void)set;
+    (void)old;
+    (void)new;
     return ICAL_NO_ERROR; /* HACK, not implemented */
 
 }
@@ -645,6 +654,7 @@ void icaldirset_clear(icalset* set)
 {
 
     assert(0);
+    (void)set;
     return;
     /* HACK, not implemented */
 }
@@ -685,7 +695,7 @@ icalcomponent* icaldirset_get_first_component(icalset* set)
 	return 0;
     }
     
-  snprintf(path,ICAL_PATH_MAX,"%s/%s",
+  snprintf(path,sizeof (path),"%s/%s",
 	   dset->dir,
 	   (char*)pvl_data(dset->directory_iterator));
 
@@ -795,11 +805,16 @@ icalsetiter icaldirset_begin_component(icalset* set, icalcomponent_kind kind, ic
 icalcomponent* icaldirsetiter_to_next(icalset* set, icalsetiter* i)
 {
     /* TO BE IMPLEMENTED */
+    
+    (void)set;
+    (void)i;
     return NULL;
 }
 
 icalcomponent* icaldirsetiter_to_prior(icalset* set, icalsetiter* i)
 {
     /* TO BE IMPLEMENTED */
+    (void)set;
+    (void)i;
     return NULL;
 }
