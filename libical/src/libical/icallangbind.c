@@ -5,7 +5,7 @@
   
   DESCRIPTION:
   
-  $Id$
+  $Id: icallangbind.c 137 2021-06-04 06:05:18Z erx $
   $Locker$
 
   (C) COPYRIGHT 1999 Eric Busboom 
@@ -188,7 +188,7 @@ const char* icallangbind_property_eval_string(icalproperty* prop, char* sep)
     APPENDS(", 'pid' ");
     APPENDS(sep);
     APPENDC('\'');
-    snprintf(tmp,25,"%p",prop);
+    snprintf(tmp,sizeof (tmp),"%p",prop);
     APPENDS(tmp);
     APPENDC('\'');
 
@@ -295,16 +295,14 @@ int icallangbind_string_to_open_flag(const char* str)
     else return -1;
 }
 
-
 const char* icallangbind_quote_as_ical(const char* str)
 {
-    size_t buf_size = 2 * strlen(str);
+    const size_t buf_size = 2 * strlen (str);
 
     /* assume every char could be quoted */
     char* buf = icalmemory_new_buffer(buf_size);
-    int result;
 
-    result = icalvalue_encode_ical_string(str, buf, buf_size);
+    (void)icalvalue_encode_ical_string(str, buf, buf_size);
 
     icalmemory_add_tmp_buffer(buf);
 

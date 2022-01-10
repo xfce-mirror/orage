@@ -24,6 +24,8 @@
 #ifndef __TRAY_ICON_H__
 #define __TRAY_ICON_H__
 
+#include <gtk/gtk.h>
+
 GdkPixbuf *orage_create_icon(gboolean static_icon, gint size);
 
 GtkStatusIcon *create_TrayIcon(GdkPixbuf *orage_logo);

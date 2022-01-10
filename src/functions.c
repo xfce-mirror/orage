@@ -46,8 +46,7 @@
 #include "functions.h"
 #include "parameters.h"
 
-/* message logging level */
-int g_log_level=0;
+#define ORAGE_DEBUG 0
 
 /**************************************
  *  Debugging helping functions       *
@@ -59,7 +58,7 @@ int g_log_level=0;
  * grep MARK /tmp/logfile.strace
  * grep MARK /tmp/logfile.strace|sed s/", F_OK) = -1 ENOENT (No such file or directory)"/\)/
  * */
-/*
+#if 0
 void program_log (const char *format, ...)
 {
         va_list args;
@@ -75,58 +74,23 @@ void program_log (const char *format, ...)
         access (str, F_OK);
         g_free (str);
 }
-*/
-
-/* Print message at various level:
- * < 0     = Debug (Use only in special debug code which should not be in 
- *                  normal code.)
- * 0-99    = Message
- * 100-199 = Warning
- * 200-299 = Critical warning
- * 300-    = Error
- * variable g_log_level can be used to control how much data is printed
- */
-void orage_message(gint level, const char *format, ...)
-{
-    va_list args;
-    char *formatted, time_stamp[10];
-    struct tm *t = orage_localtime();
-
-    if (level < g_log_level)
-        return;
-    va_start(args, format);
-    formatted = g_strdup_vprintf(format, args);
-    va_end(args);
-
-    g_sprintf(time_stamp, "%02d:%02d:%02d ", t->tm_hour, t->tm_min, t->tm_sec);
-    if (level < 0)
-        g_debug("%s%s", time_stamp, formatted);
-    else if (level < 100) 
-        g_message("Orage **: %s %s", time_stamp, formatted);
-    else if (level < 200) 
-        g_warning("%s%s", time_stamp, formatted);
-    else if (level < 300) 
-        g_critical("%s%s", time_stamp, formatted);
-    else
-        g_error("Orage **: %s%s", time_stamp, formatted);
-    g_free(formatted);
-}
+#endif
 
 /**************************************
  *  General purpose helper functions  *
  **************************************/
 
-GtkWidget *orage_create_combo_box_with_content(char *text[], int size)
+GtkWidget *orage_create_combo_box_with_content (const gchar *text[],
+                                                const int size)
 {
-    register int i;
+    int i;
     GtkWidget *combo_box;
 
-    combo_box = gtk_combo_box_new_text();
-    for (i = 0; i < size; i++) {
-        gtk_combo_box_append_text(GTK_COMBO_BOX(combo_box)
-                , (const gchar *)text[i]);
-    }
-    return(combo_box);
+    combo_box = gtk_combo_box_text_new ();
+    for (i = 0; i < size; i++)
+        gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(combo_box), text[i]);
+
+    return combo_box;
 }
 
 gboolean orage_date_button_clicked(GtkWidget *button, GtkWidget *selDate_dialog)
@@ -134,7 +98,8 @@ gboolean orage_date_button_clicked(GtkWidget *button, GtkWidget *selDate_dialog)
 /*  GtkWidget *selDate_dialog; */
     GtkWidget *selDate_calendar;
     gint result;
-    char *new_date=NULL, *cur_date;
+    char *new_date=NULL;
+    const gchar *cur_date;
     struct tm cur_t;
     gboolean changed, allocated=FALSE;
 
@@ -146,13 +111,14 @@ gboolean orage_date_button_clicked(GtkWidget *button, GtkWidget *selDate_dialog)
             GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
             _("Today"),
             1,
-            GTK_STOCK_OK,
+            "_OK",
             GTK_RESPONSE_ACCEPT,
             NULL);
             */
 
     selDate_calendar = gtk_calendar_new();
-    gtk_container_add(GTK_CONTAINER(GTK_DIALOG(selDate_dialog)->vbox)
+    gtk_container_add(
+        GTK_CONTAINER(gtk_dialog_get_content_area (GTK_DIALOG(selDate_dialog)))
             , selDate_calendar);
 
     cur_date = (char *)gtk_button_get_label(GTK_BUTTON(button));
@@ -190,14 +156,14 @@ gboolean orage_date_button_clicked(GtkWidget *button, GtkWidget *selDate_dialog)
     return(changed);
 }
 
-static void child_setup_async(gpointer user_data)
+static void child_setup_async (G_GNUC_UNUSED gpointer user_data)
 {
 #if defined(HAVE_SETSID) && !defined(G_OS_WIN32)
     setsid();
 #endif
 }
 
-static void child_watch_cb(GPid pid, gint status, gpointer data)
+static void child_watch_cb (GPid pid, G_GNUC_UNUSED gint status, gpointer data)
 {
     gboolean *cmd_active = (gboolean *)data;
 
@@ -206,7 +172,7 @@ static void child_watch_cb(GPid pid, gint status, gpointer data)
     *cmd_active = FALSE;
 }
 
-gboolean orage_exec(const char *cmd, gboolean *cmd_active, GError **error)
+gboolean orage_exec(const gchar *cmd, gboolean *cmd_active, GError **error)
 {
     char **argv;
     gboolean success;
@@ -231,12 +197,18 @@ gboolean orage_exec(const char *cmd, gboolean *cmd_active, GError **error)
     return(success);
 }
 
-GtkWidget *orage_toolbar_append_button(GtkWidget *toolbar
-    , const gchar *stock_id, const char *tooltip_text, gint pos)
+GtkWidget *orage_toolbar_append_button (GtkWidget *toolbar,
+                                        const gchar *icon_name,
+                                        const gchar *tooltip_text,
+                                        const gint pos)
 {
     GtkWidget *button;
+    GtkWidget *image;
 
-    button = (GtkWidget *)gtk_tool_button_new_from_stock(stock_id);
+    image = gtk_image_new_from_icon_name (icon_name,
+                                          GTK_ICON_SIZE_SMALL_TOOLBAR);
+
+    button = (GtkWidget *)gtk_tool_button_new (image, tooltip_text);
     gtk_tool_item_set_tooltip_text(GTK_TOOL_ITEM(button), tooltip_text);
     gtk_toolbar_insert(GTK_TOOLBAR(toolbar), GTK_TOOL_ITEM(button), pos);
     return button;
@@ -252,31 +224,52 @@ GtkWidget *orage_toolbar_append_separator(GtkWidget *toolbar, gint pos)
     return separator;
 }
 
-GtkWidget *orage_table_new(guint rows, guint border)
+GtkWidget *orage_table_new (const guint border)
 {
-    GtkWidget *table;
+    GtkWidget *grid;
 
-    table = gtk_table_new(rows, 2, FALSE);
-    gtk_container_set_border_width(GTK_CONTAINER(table), border);
-    gtk_table_set_row_spacings(GTK_TABLE(table), 6);
-    gtk_table_set_col_spacings(GTK_TABLE(table), 6);
-    return table;
+    grid = gtk_grid_new ();
+    gtk_container_set_border_width (GTK_CONTAINER (grid), border);
+    gtk_grid_set_row_spacing (GTK_GRID (grid), 6);
+    gtk_grid_set_column_spacing (GTK_GRID (grid), 6);
+
+    return grid;
 }
 
-void orage_table_add_row(GtkWidget *table, GtkWidget *label
-        , GtkWidget *input, guint row
-        , GtkAttachOptions input_x_option
-        , GtkAttachOptions input_y_option)
+void orage_table_add_row (GtkWidget *table, GtkWidget *label,
+                          GtkWidget *input, const guint row,
+                          const GtkAttachOptions input_x_option,
+                          const GtkAttachOptions input_y_option)
 {
     if (label) {
-        gtk_table_attach(GTK_TABLE (table), label, 0, 1, row, row+1
-                , (GTK_FILL), (0), 0, 0);
-        gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
+        gtk_grid_attach (GTK_GRID (table), label, 0, row, 1, 1);
+        g_object_set (label, "xalign", 0.0, "yalign", 0.5,
+                             "halign", GTK_ALIGN_FILL,
+                             NULL);
     }
 
     if (input) {
-        gtk_table_attach(GTK_TABLE(table), input, 1, 2, row, row+1,
-                  input_x_option, input_y_option, 0, 0);
+        gtk_grid_attach (GTK_GRID (table), input, 1, row, 1, 1);
+
+        if (input_x_option & GTK_FILL)
+            g_object_set (input, "halign", GTK_ALIGN_FILL, NULL);
+        if (input_x_option & GTK_EXPAND)
+            g_object_set (input, "hexpand", TRUE, NULL);
+        if (input_x_option & GTK_SHRINK)
+        {
+            g_object_set (input, "halign", GTK_ALIGN_CENTER,
+                                 "hexpand", FALSE, NULL);
+        }
+
+        if (input_y_option & GTK_FILL)
+            g_object_set (input, "valign", GTK_ALIGN_FILL, NULL);
+        if (input_y_option & GTK_EXPAND)
+            g_object_set (input, "vexpand", TRUE, NULL);
+        if (input_y_option & GTK_SHRINK)
+        {
+            g_object_set (input, "valign", GTK_ALIGN_CENTER,
+                                 "vexpand", FALSE, NULL);
+        }
     }
 }
 
@@ -299,7 +292,9 @@ GtkWidget *orage_image_menu_item_new_from_stock(const gchar *stock_id
 {
     GtkWidget *menu_item;
 
-    menu_item = gtk_image_menu_item_new_from_stock(stock_id, ag);
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+    menu_item = gtk_image_menu_item_new_from_stock (stock_id, ag);
+G_GNUC_END_IGNORE_DEPRECATIONS
     gtk_container_add(GTK_CONTAINER(menu), menu_item);
     return menu_item;
 }
@@ -313,13 +308,13 @@ GtkWidget *orage_separator_menu_item_new(GtkWidget *menu)
     return menu_item;
 }
 
-GtkWidget *orage_menu_item_new_with_mnemonic(const gchar *label
-    , GtkWidget *menu)
+GtkWidget *orage_menu_item_new_with_mnemonic (const gchar *label,
+                                              GtkWidget *menu)
 {
     GtkWidget *menu_item;
 
-    menu_item = gtk_menu_item_new_with_mnemonic(label);
-    gtk_container_add(GTK_CONTAINER(menu), menu_item);
+    menu_item = gtk_menu_item_new_with_mnemonic (label);
+    gtk_container_add (GTK_CONTAINER (menu), menu_item);
     return menu_item;
 }
 
@@ -494,15 +489,13 @@ char *orage_process_text_commands(char *text)
                     g_free(new);
                 }
                 else
-                    orage_message(150, P_N "start year is too big (%d)."
-                            , start_year);
+                    g_warning (P_N "start year is too big (%d).", start_year);
             }
             else
-                orage_message(150, P_N "failed to understand parameter (%s)."
-                        , cmd);
+                g_warning (P_N "failed to understand parameter (%s).", cmd);
         }
         else
-            orage_message(150, P_N "parameter (%s) misses ending >.", cmd);
+            g_warning (P_N "parameter (%s) misses ending >.", cmd);
     }
 
     if (beq) {
@@ -520,62 +513,96 @@ char *orage_process_text_commands(char *text)
     return(beq);
 }
 
-GtkWidget *orage_period_hbox_new(gboolean head_space, gboolean tail_space
-        , GtkWidget *spin_dd, GtkWidget *dd_label
-        , GtkWidget *spin_hh, GtkWidget *hh_label
-        , GtkWidget *spin_mm, GtkWidget *mm_label)
+/** Create new horizontal filler with given width.
+ *  @param width filler width
+ */
+static GtkWidget *orage_hfiller_new (const gint width)
 {
-    GtkWidget *hbox, *space_label;
+    GtkWidget *label = gtk_label_new ("");
 
-    hbox = gtk_hbox_new(FALSE, 0);
+    g_object_set (label, "margin-right", width, NULL);
+
+    return label;
+}
+
+GtkWidget *orage_period_hbox_new (const gboolean head_space,
+                                  const gboolean tail_space,
+                                  GtkWidget *spin_dd, GtkWidget *dd_label,
+                                  GtkWidget *spin_hh, GtkWidget *hh_label,
+                                  GtkWidget *spin_mm, GtkWidget *mm_label)
+{
+    const gint field_fill_width = 15;
+    const gint spinner_and_label_fill_width = 5;
+    GtkWidget *hbox, *filler;
+
+    hbox = gtk_grid_new ();
 
     if (head_space) {
-        space_label = gtk_label_new("   ");
-        gtk_box_pack_start(GTK_BOX(hbox), space_label, FALSE, FALSE, 0);
+        filler = orage_hfiller_new (field_fill_width);
+        gtk_grid_attach_next_to (GTK_GRID (hbox), filler, NULL,
+                                 GTK_POS_RIGHT, 1, 1);
     }
 
     gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(spin_dd), TRUE);
-    gtk_box_pack_start(GTK_BOX(hbox), spin_dd, FALSE, FALSE, 0);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), spin_dd, NULL,
+                             GTK_POS_RIGHT, 1, 1);
 
-    gtk_box_pack_start(GTK_BOX(hbox), dd_label, FALSE, FALSE, 5);
+    filler = orage_hfiller_new (spinner_and_label_fill_width);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), filler, NULL,
+                             GTK_POS_RIGHT, 1, 1);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), dd_label, NULL,
+                             GTK_POS_RIGHT, 1, 1);
 
-    space_label = gtk_label_new("   ");
-    gtk_box_pack_start(GTK_BOX(hbox), space_label, FALSE, FALSE, 0);
+    filler = orage_hfiller_new (field_fill_width);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), filler, NULL,
+                             GTK_POS_RIGHT, 1, 1);
 
     gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(spin_hh), TRUE);
-    /* gtk_widget_set_size_request(spin_hh, 40, -1); */
-    gtk_box_pack_start(GTK_BOX(hbox), spin_hh, FALSE, FALSE, 0);
 
-    gtk_box_pack_start(GTK_BOX(hbox), hh_label, FALSE, FALSE, 5);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), spin_hh, NULL,
+                             GTK_POS_RIGHT, 1, 1);
 
-    space_label = gtk_label_new("   ");
-    gtk_box_pack_start(GTK_BOX(hbox), space_label, FALSE, FALSE, 0);
+    filler = orage_hfiller_new (spinner_and_label_fill_width);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), filler, NULL,
+                             GTK_POS_RIGHT, 1, 1);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), hh_label, NULL,
+                             GTK_POS_RIGHT, 1, 1);
 
-    gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(spin_mm), TRUE);
-    gtk_spin_button_set_increments(GTK_SPIN_BUTTON(spin_mm), 5, 10);
-    /* gtk_widget_set_size_request(spin_mm, 40, -1); */
-    gtk_box_pack_start(GTK_BOX(hbox), spin_mm, FALSE, FALSE, 0);
+    filler = orage_hfiller_new (field_fill_width);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), filler, NULL,
+                             GTK_POS_RIGHT, 1, 1);
 
-    gtk_box_pack_start(GTK_BOX(hbox), mm_label, FALSE, FALSE, 5);
+    gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (spin_mm), TRUE);
+    gtk_spin_button_set_increments (GTK_SPIN_BUTTON (spin_mm), 5, 10);
+
+    gtk_grid_attach_next_to (GTK_GRID (hbox), spin_mm, NULL,
+                             GTK_POS_RIGHT, 1, 1);
+
+    filler = orage_hfiller_new (spinner_and_label_fill_width);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), filler, NULL,
+                             GTK_POS_RIGHT, 1, 1);
+    gtk_grid_attach_next_to (GTK_GRID (hbox), mm_label, NULL,
+                             GTK_POS_RIGHT, 1, 1);
 
     if (tail_space) {
-        space_label = gtk_label_new("   ");
-        gtk_box_pack_start(GTK_BOX(hbox), space_label, FALSE, FALSE, 0);
+        filler = orage_hfiller_new (field_fill_width);
+        gtk_grid_attach_next_to (GTK_GRID (hbox), filler, NULL,
+                                 GTK_POS_RIGHT, 1, 1);
     }
 
     return hbox;
 }
 
-GtkWidget *orage_create_framebox_with_content(const gchar *title
-        , GtkWidget *content)
+GtkWidget *orage_create_framebox_with_content (const gchar *title,
+                                               const GtkShadowType shadow_type,
+                                               GtkWidget *content)
 {
     GtkWidget *framebox;
-    GtkWidget *frame_bin;
     gchar *tmp;
     GtkWidget *label;
 
     framebox = gtk_frame_new(NULL);
-    gtk_frame_set_shadow_type(GTK_FRAME(framebox), GTK_SHADOW_NONE);
+    gtk_frame_set_shadow_type(GTK_FRAME(framebox), shadow_type);
     gtk_frame_set_label_align(GTK_FRAME(framebox), 0.0, 1.0);
     gtk_widget_show(framebox);
 
@@ -583,41 +610,32 @@ GtkWidget *orage_create_framebox_with_content(const gchar *title
         tmp = g_strdup_printf("<b>%s</b>", title);
         label = gtk_label_new(tmp);
         gtk_label_set_use_markup(GTK_LABEL(label), TRUE);
-        gtk_misc_set_alignment(GTK_MISC(label), 0.0, 0.5);
+        g_object_set (label, "xalign", 0.0, "yalign", 0.5,
+                             "margin-left", 5,
+                             NULL);
         gtk_widget_show(label);
         gtk_frame_set_label_widget(GTK_FRAME(framebox), label);
         g_free(tmp);
     }
 
-    frame_bin = gtk_alignment_new(0.0, 0.0, 1.0, 1.0);
-    gtk_alignment_set_padding(GTK_ALIGNMENT(frame_bin), 5, 5, 21, 5);
-    gtk_widget_show(frame_bin);
-    gtk_container_add(GTK_CONTAINER(framebox), frame_bin);
-    gtk_container_add(GTK_CONTAINER(frame_bin), content);
+    g_object_set (content, "margin-top", 5,
+                           "margin-bottom", 5,
+                           "margin-left", 21,
+                           "margin-right", 5,
+                           NULL);
+    gtk_container_add (GTK_CONTAINER (framebox), content);
 
     return(framebox);
-}
-
-GtkWidget *orage_create_custom_stock_button(const gchar *stock_id
-        , const gchar *label_text) {
-    GtkWidget *button;
-    GtkWidget *image;
-
-    image = gtk_image_new_from_stock(stock_id, GTK_ICON_SIZE_BUTTON);
-    button = gtk_button_new_with_label(label_text);
-    gtk_button_set_image((GtkButton*)button, image);
-    
-    return(button);
 }
 
 /*******************************************************
  * time convert and manipulation functions
  *******************************************************/
 
-struct tm orage_i18_time_to_tm_time(const char *i18_time)
+struct tm orage_i18_time_to_tm_time (const gchar *i18_time)
 {
     char *ret;
-    struct tm tm_time = {0,0,0,0,0,0,0,0,0};
+    struct tm tm_time = {0};
 
     ret = (char *)strptime(i18_time, "%x %R", &tm_time);
     if (ret == NULL)
@@ -628,12 +646,12 @@ struct tm orage_i18_time_to_tm_time(const char *i18_time)
     return(tm_time);
 }
 
-struct tm orage_i18_date_to_tm_date(const char *i18_date)
+struct tm orage_i18_date_to_tm_date (const gchar *i18_date)
 {
     char *ret;
-    struct tm tm_date = {0,0,0,0,0,0,0,0,0};
+    struct tm tm_date = {0};
 
-    ret = (char *)strptime(i18_date, "%x", &tm_date);
+    ret = strptime ((const char *)i18_date, "%x", &tm_date);
     if (ret == NULL)
         g_error("Orage: orage_i18_date_to_tm_date wrong format (%s)", i18_date);
     else if (ret[0] != '\0')
@@ -642,29 +660,32 @@ struct tm orage_i18_date_to_tm_date(const char *i18_date)
     return(tm_date);
 }
 
-char *orage_tm_time_to_i18_time(struct tm *tm_time)
+gchar *orage_tm_time_to_i18_time(struct tm *tm_time)
 {
-    static char i18_time[128];
+    static gchar i18_time[128];
 
-    if (strftime(i18_time, 128, "%x %R", tm_time) == 0)
+    if (strftime (i18_time, sizeof (i18_time), "%x %R", tm_time) == 0)
         g_error("Orage: orage_tm_time_to_i18_time too long string in strftime");
     return(i18_time);
 }
 
-char *orage_tm_date_to_i18_date(struct tm *tm_date)
+gchar *orage_tm_date_to_i18_date (const struct tm *tm_date)
 {
-    static char i18_date[128];
+    static gchar i18_date[128];
 
-    if (strftime(i18_date, 128, "%x", tm_date) == 0)
-        g_error("Orage: orage_tm_date_to_i18_date too long string in strftime");
+    if (strftime ((char *)i18_date, sizeof (i18_date), "%x", tm_date) == 0)
+        g_error ("orage_tm_date_to_i18_date too long string in strftime");
+
     return(i18_date);
 }
 
 struct tm orage_cal_to_tm_time(GtkCalendar *cal, gint hh, gint mm)
 {
+    struct tm tm_date = {0};
+
     /* dst needs to -1 or mktime adjusts time if we are in another
-     * dst setting */
-    struct tm tm_date = {0,0,0,0,0,0,0,0,-1};
+     * dst setting. */
+    tm_date.tm_isdst = -1;
 
     gtk_calendar_get_date(cal
             , (unsigned int *)&tm_date.tm_year
@@ -684,7 +705,9 @@ struct tm orage_cal_to_tm_time(GtkCalendar *cal, gint hh, gint mm)
 
 char *orage_cal_to_i18_time(GtkCalendar *cal, gint hh, gint mm)
 {
-    struct tm tm_date = {0,0,0,0,0,0,0,0,-1};
+    struct tm tm_date = {0};
+
+    tm_date.tm_isdst = -1;
 
     tm_date = orage_cal_to_tm_time(cal, hh, mm);
     return(orage_tm_time_to_i18_time(&tm_date));
@@ -692,7 +715,9 @@ char *orage_cal_to_i18_time(GtkCalendar *cal, gint hh, gint mm)
 
 char *orage_cal_to_i18_date(GtkCalendar *cal)
 {
-    struct tm tm_date = {0,0,0,0,0,0,0,0,-1};
+    struct tm tm_date = {0};
+
+    tm_date.tm_isdst = -1;
 
     tm_date = orage_cal_to_tm_time(cal, 1, 1);
     return(orage_tm_date_to_i18_date(&tm_date));
@@ -700,8 +725,10 @@ char *orage_cal_to_i18_date(GtkCalendar *cal)
 
 char *orage_cal_to_icaldate(GtkCalendar *cal)
 {
-    struct tm tm_date = {0,0,0,0,0,0,0,0,-1};
+    struct tm tm_date = {0};
     char *icalt;
+
+    tm_date.tm_isdst = -1;
 
     tm_date = orage_cal_to_tm_time(cal, 1, 1);
     icalt = orage_tm_time_to_icaltime(&tm_date);
@@ -709,9 +736,10 @@ char *orage_cal_to_icaldate(GtkCalendar *cal)
     return(icalt);
 }
 
-struct tm orage_icaltime_to_tm_time(const char *icaltime, gboolean real_tm)
+struct tm orage_icaltime_to_tm_time (const gchar *icaltime,
+                                     const gboolean real_tm)
 {
-    struct tm t = {0,0,0,0,0,0,0,0,0};
+    struct tm t = {0};
     char *ret;
 
     ret = strptime(icaltime, "%Y%m%dT%H%M%S", &t);
@@ -742,13 +770,13 @@ struct tm orage_icaltime_to_tm_time(const char *icaltime, gboolean real_tm)
     return(t);
 }
 
-char *orage_tm_time_to_icaltime(struct tm *t)
+gchar *orage_tm_time_to_icaltime(struct tm *t)
 {
-    static char icaltime[XFICAL_APPT_TIME_FORMAT_LEN];
+    static gchar icaltime[XFICAL_APPT_TIME_FORMAT_LEN];
 
-    g_sprintf(icaltime, XFICAL_APPT_TIME_FORMAT
-            , t->tm_year + 1900, t->tm_mon + 1, t->tm_mday
-            , t->tm_hour, t->tm_min, t->tm_sec);
+    g_snprintf (icaltime, sizeof (icaltime), XFICAL_APPT_TIME_FORMAT,
+                t->tm_year + 1900, t->tm_mon + 1, t->tm_mday,
+                t->tm_hour, t->tm_min, t->tm_sec);
 
     return(icaltime);
 }
@@ -777,7 +805,7 @@ char *orage_icaltime_to_i18_time_only(const char *icaltime)
     return(i18_time);
 }
 
-char *orage_i18_time_to_icaltime(const char *i18_time)
+gchar *orage_i18_time_to_icaltime(const gchar *i18_time)
 {
     struct tm t;
     char      *ct;
@@ -787,10 +815,10 @@ char *orage_i18_time_to_icaltime(const char *i18_time)
     return(ct);
 }
 
-char *orage_i18_date_to_icaldate(const char *i18_date)
+gchar *orage_i18_date_to_icaldate(const gchar *i18_date)
 {
     struct tm t;
-    char      *icalt;
+    gchar *icalt;
 
     t = orage_i18_date_to_tm_date(i18_date);
     icalt = orage_tm_time_to_icaltime(&t);
@@ -815,7 +843,7 @@ char *orage_localdate_i18(void)
 }
 
 /* move one day forward or backward */
-void orage_move_day(struct tm *t, int day)
+void orage_move_day(struct tm *t, const gint day)
 {
     t->tm_mday += day; /* may be negative */
     /* mktime adjusts t correctly. It also fills missing tm_wday and tm_yday, 
@@ -826,7 +854,7 @@ void orage_move_day(struct tm *t, int day)
     }
 }
 
-gint orage_days_between(struct tm *t1, struct tm *t2)
+gint orage_days_between (const struct tm *t1, const struct tm *t2)
 {
     GDate *g_t1, *g_t2;
     gint dd;
@@ -867,7 +895,7 @@ void orage_select_today(GtkCalendar *cal)
  * data and config file locations
  *******************************************************/
 
-gboolean orage_copy_file(gchar *source, gchar *target)
+gboolean orage_copy_file (const gchar *source, const gchar *target)
 {
     gchar *text;
     gsize text_len;
@@ -876,14 +904,14 @@ gboolean orage_copy_file(gchar *source, gchar *target)
 
     /* read file */
     if (!g_file_get_contents(source, &text, &text_len, &error)) {
-        orage_message(150, "orage_copy_file: Could not open file (%s) error:%s"
+        g_warning ("orage_copy_file: Could not open file (%s) error:%s"
                 , source, error->message);
         g_error_free(error);
         ok = FALSE;
     }
     /* write file */
     if (ok && !g_file_set_contents(target, text, -1, &error)) {
-        orage_message(150, "orage_copy_file: Could not write file (%s) error:%s"
+        g_warning ("orage_copy_file: Could not write file (%s) error:%s"
                 , target, error->message);
         g_error_free(error);
         ok = FALSE;
@@ -892,9 +920,9 @@ gboolean orage_copy_file(gchar *source, gchar *target)
     return(ok);
 }
 
-gchar *orage_xdg_system_data_file_location(char *name)
+static gchar *orage_xdg_system_data_file_location (const gchar *name)
 {
-    char *file_name;
+    gchar *file_name;
     const gchar * const *base_dirs;
     int i;
 
@@ -914,9 +942,9 @@ gchar *orage_xdg_system_data_file_location(char *name)
 /* Returns valid xdg local data file name. 
    If the file did not exist, it checks if there are system defaults 
    and creates it from those */
-gchar *orage_data_file_location(char *name)
+gchar *orage_data_file_location (const gchar *name)
 {
-    char *file_name, *dir_name, *sys_name;
+    gchar *file_name, *dir_name, *sys_name;
     const char *base_dir;
     int mode = 0700;
 
@@ -924,9 +952,9 @@ gchar *orage_data_file_location(char *name)
     file_name = g_build_filename(base_dir, name, NULL);
     if (!g_file_test(file_name, G_FILE_TEST_IS_REGULAR)) {
         /* it does not exist, let's try to create it */
-        dir_name = g_path_get_dirname((const gchar *)file_name);
+        dir_name = g_path_get_dirname (file_name);
         if (g_mkdir_with_parents(dir_name, mode)) {
-            orage_message(150, "orage_data_file_location: (%s) (%s) directory creation failed.\n", base_dir, file_name);
+            g_warning ("orage_data_file_location: (%s) (%s) directory creation failed.\n", base_dir, file_name);
         }
         g_free(dir_name);
         /* now we have the directories ready, let's check for system default */
@@ -940,7 +968,7 @@ gchar *orage_data_file_location(char *name)
 }
 
 /* these are default files and must only be read */
-gchar *orage_xdg_system_config_file_location(char *name)
+static gchar *orage_xdg_system_config_file_location (const gchar *name)
 {
     char *file_name;
     const gchar * const *base_dirs;
@@ -962,9 +990,9 @@ gchar *orage_xdg_system_config_file_location(char *name)
 /* Returns valid xdg local config file name. 
    If the file did not exist, it checks if there are system defaults 
    and creates it from those */
-gchar *orage_config_file_location(char *name)
+gchar *orage_config_file_location (const gchar *name)
 {
-    char *file_name, *dir_name, *sys_name;
+    gchar *file_name, *dir_name, *sys_name;
     const char *base_dir;
     int mode = 0700;
 
@@ -972,9 +1000,9 @@ gchar *orage_config_file_location(char *name)
     file_name = g_build_filename(base_dir, name, NULL);
     if (!g_file_test(file_name, G_FILE_TEST_IS_REGULAR)) {
         /* it does not exist, let's try to create it */
-        dir_name = g_path_get_dirname((const gchar *)file_name);
+        dir_name = g_path_get_dirname (file_name);
         if (g_mkdir_with_parents(dir_name, mode)) {
-            orage_message(150, "orage_config_file_location: (%s) (%s) directory creation failed.\n", base_dir, file_name);
+            g_warning ("orage_config_file_location: (%s) (%s) directory creation failed.\n", base_dir, file_name);
         }
         g_free(dir_name);
         /* now we have the directories ready, let's check for system default */
@@ -991,16 +1019,18 @@ gchar *orage_config_file_location(char *name)
  * rc file interface
  *******************************************************/
 
-OrageRc *orage_rc_file_open(char *fpath, gboolean read_only)
+OrageRc *orage_rc_file_open (const gchar *fpath, gboolean read_only)
 {
+#undef P_N
+#define P_N "orage_rc_file_open: "
     /* XfceRc *rc; */
     OrageRc *orc = NULL;
     GKeyFile *grc;
     GError *error = NULL;
 
     grc = g_key_file_new();
-    if (g_key_file_load_from_file(grc, (const gchar *)fpath
-            , G_KEY_FILE_KEEP_COMMENTS, &error)) { /* success */
+    if (g_key_file_load_from_file(grc, fpath, G_KEY_FILE_KEEP_COMMENTS, &error))
+    { /* success */
         orc = g_new(OrageRc, 1);
         orc->rc = grc;
         orc->read_only = read_only;
@@ -1008,11 +1038,13 @@ OrageRc *orage_rc_file_open(char *fpath, gboolean read_only)
         orc->cur_group = NULL;
     }
     else {
-#ifdef ORAGE_DEBUG
-        orage_message(-90, "orage_rc_file_open: Unable to open RC file (%s). Creating it. (%s)", fpath, error->message);
+#if ORAGE_DEBUG
+        g_debug (P_N "Unable to open RC file (%s). Creating it. (%s)",
+                 fpath, error->message);
 #endif
+
         g_clear_error(&error);
-        if (g_file_set_contents((const gchar *)fpath, "#Created by Orage", -1
+        if (g_file_set_contents(fpath, "#Created by Orage", -1
                     , &error)) { /* successfully created new file */
             orc = g_new(OrageRc, 1);
             orc->rc = grc;
@@ -1021,8 +1053,9 @@ OrageRc *orage_rc_file_open(char *fpath, gboolean read_only)
             orc->cur_group = NULL;
         }
         else {
-#ifdef ORAGE_DEBUG
-            orage_message(150, "orage_rc_file_open: Unable to open (create) RC file (%s). (%s)", fpath, error->message);
+#if ORAGE_DEBUG
+            g_debug (P_N "Unable to open (create) RC file (%s). (%s)",
+                     fpath, error->message);
 #endif
             g_key_file_free(grc);
         }
@@ -1035,6 +1068,8 @@ void orage_rc_file_close(OrageRc *orc)
     /* FIXME: check if file contents have been changed and only write when
        needed or build separate save function */
 {
+#undef P_N
+#define P_N "orage_rc_file_close: "
     GError *error = NULL;
     gchar *file_content = NULL;
     gsize length;
@@ -1046,41 +1081,44 @@ void orage_rc_file_close(OrageRc *orc)
             if (file_content 
             && !g_file_set_contents(orc->file_name, file_content, -1
                 , &error)) { /* write needed and failed */
-                orage_message(150, "orage_rc_file_close: File save failed. RC file (%s). (%s)", orc->file_name, error->message);
+                g_warning (P_N "File save failed. RC file (%s). (%s)",
+                           orc->file_name, error->message);
             }
             g_free(file_content);
         }
         g_key_file_free(orc->rc);
-        g_free((void *)orc->file_name);
-        g_free((void *)orc->cur_group);
+        g_free(orc->file_name);
+        g_free(orc->cur_group);
         g_free(orc);
     }
     else {
-#ifdef ORAGE_DEBUG
-        orage_message(-90, "orage_rc_file_close: closing empty file.");
-#endif
+        g_debug (P_N "closing empty file.");
     }
 }
 
 gchar **orage_rc_get_groups(OrageRc *orc)
 {
-    return(g_key_file_get_groups((GKeyFile *)orc->rc, NULL));
+    return(g_key_file_get_groups(orc->rc, NULL));
 }
 
-void orage_rc_set_group(OrageRc *orc, char *grp)
+void orage_rc_set_group(OrageRc *orc, const gchar *grp)
 {
-    g_free((void *)orc->cur_group);
+    g_free(orc->cur_group);
     orc->cur_group = g_strdup(grp);
 }
 
-void orage_rc_del_group(OrageRc *orc, char *grp)
+void orage_rc_del_group(OrageRc *orc, const gchar *grp)
 {
+#undef P_N
+#define P_N "orage_rc_del_group: "
+
     GError *error = NULL;
 
-    if (!g_key_file_remove_group((GKeyFile *)orc->rc, (const gchar *)grp
-                , &error)) {
-#ifdef ORAGE_DEBUG
-        orage_message(150, "orage_rc_del_group: Group remove failed. RC file (%s). group (%s) (%s)", orc->file_name, grp, error->message);
+    if (!g_key_file_remove_group(orc->rc, grp, &error))
+    {
+#if ORAGE_DEBUG
+        g_debug (P_N "Group remove failed. RC file (%s). group (%s) (%s)",
+                 orc->file_name, grp, error->message);
 #endif
     }
 }
@@ -1090,91 +1128,92 @@ gchar *orage_rc_get_group(OrageRc *orc)
     return(g_strdup(orc->cur_group));
 }
 
-gchar *orage_rc_get_str(OrageRc *orc, char *key, char *def)
+gchar *orage_rc_get_str(OrageRc *orc, const gchar *key, const gchar *def)
 {
     GError *error = NULL;
     gchar *ret;
 
-    ret = g_key_file_get_string((GKeyFile *)orc->rc, orc->cur_group
-            , (const gchar *)key, &error);
+    ret = g_key_file_get_string (orc->rc, orc->cur_group, key, &error);
     if (!ret && error) {
         ret = g_strdup(def);
-#ifdef ORAGE_DEBUG
-        orage_message(-90, "orage_rc_get_str: str (%s) group (%s) in RC file (%s) not found, using default (%s)", key, orc->cur_group, orc->file_name, ret);
+#if ORAGE_DEBUG
+        g_debug ("orage_rc_get_str: "
+                 "str (%s) group (%s) in RC file (%s) not found, "
+                 "using default (%s)",
+                 key, orc->cur_group, orc->file_name, ret);
 #endif
     }
     return(ret);
 }
 
-gint orage_rc_get_int(OrageRc *orc, char *key, gint def)
+gint orage_rc_get_int (OrageRc *orc, const gchar *key, const gint def)
 {
     GError *error = NULL;
     gint ret;
 
-    ret = g_key_file_get_integer((GKeyFile *)orc->rc, orc->cur_group
-            , (const gchar *)key, &error);
+    ret = g_key_file_get_integer (orc->rc, orc->cur_group, key, &error);
     if (!ret && error) {
         ret = def;
-#ifdef ORAGE_DEBUG
-        orage_message(-90, "orage_rc_get_int: str (%s) group (%s) in RC file (%s) not found, using default (%d)", key, orc->cur_group, orc->file_name, ret);
+#if ORAGE_DEBUG
+        g_debug ("orage_rc_get_int: "
+                 "str (%s) group (%s) in RC file (%s) not found, "
+                 "using default (%d)",
+                 key, orc->cur_group, orc->file_name, ret);
 #endif
     }
     return(ret);
 }
 
-gboolean orage_rc_get_bool(OrageRc *orc, char *key, gboolean def)
+gboolean orage_rc_get_bool (OrageRc *orc, const gchar *key, const gboolean def)
 {
     GError *error = NULL;
     gboolean ret;
 
-    ret = g_key_file_get_boolean((GKeyFile *)orc->rc, orc->cur_group
-            , (const gchar *)key, &error);
+    ret = g_key_file_get_boolean (orc->rc, orc->cur_group, key, &error);
     if (!ret && error) {
         ret = def;
-#ifdef ORAGE_DEBUG
-        orage_message(-90, "orage_rc_get_bool: str (%s) group (%s) in RC file (%s) not found, using default (%d)", key, orc->cur_group, orc->file_name, ret);
+#if ORAGE_DEBUG
+        g_debug ("orage_rc_get_bool: "
+                 "str (%s) group (%s) in RC file (%s) not found, "
+                 "using default (%d)",
+                 key, orc->cur_group, orc->file_name, ret);
 #endif
     }
     return(ret);
 }
 
-void orage_rc_put_str(OrageRc *orc, char *key, char *val)
+void orage_rc_put_str (OrageRc *orc, const gchar *key, const gchar *val)
 {
     if (ORAGE_STR_EXISTS(val))
-        g_key_file_set_string((GKeyFile *)orc->rc, orc->cur_group
-                , (const gchar *)key, (const gchar *)val);
+        g_key_file_set_string (orc->rc, orc->cur_group, key, val);
 }
 
-void orage_rc_put_int(OrageRc *orc, char *key, gint val)
+void orage_rc_put_int (OrageRc *orc, const gchar *key, const gint val)
 {
-    g_key_file_set_integer((GKeyFile *)orc->rc, orc->cur_group
-            , (const gchar *)key, val);
+    g_key_file_set_integer (orc->rc, orc->cur_group ,key, val);
 }
 
-void orage_rc_put_bool(OrageRc *orc, char *key, gboolean val)
+void orage_rc_put_bool (OrageRc *orc, const gchar *key, const gboolean val)
 {
-    g_key_file_set_boolean((GKeyFile *)orc->rc, orc->cur_group
-            , (const gchar *)key, val);
+    g_key_file_set_boolean (orc->rc, orc->cur_group, key, val);
 }
 
-gboolean orage_rc_exists_item(OrageRc *orc, char *key)
+gboolean orage_rc_exists_item (OrageRc *orc, const gchar *key)
 {
-    return(g_key_file_has_key((GKeyFile *)orc->rc, orc->cur_group
-            , (const gchar *)key, NULL));
+    return g_key_file_has_key (orc->rc, orc->cur_group, key, NULL);
 }
 
-void orage_rc_del_item(OrageRc *orc, char *key)
+void orage_rc_del_item (OrageRc *orc, const gchar *key)
 {
-    g_key_file_remove_key((GKeyFile *)orc->rc, orc->cur_group
-            , (const gchar *)key, NULL);
+    g_key_file_remove_key (orc->rc, orc->cur_group, key, NULL);
 }
 
 /*******************************************************
  * dialog functions
  *******************************************************/
 
-gint orage_info_dialog(GtkWindow *parent
-        , char *primary_text, char *secondary_text)
+gint orage_info_dialog (GtkWindow *parent
+        , const gchar *primary_text, const gchar *secondary_text)
 {
     GtkWidget *dialog;
     gint result;
@@ -1192,9 +1231,10 @@ gint orage_info_dialog(GtkWindow *parent
     return(result);
 }
 
-gint orage_warning_dialog(GtkWindow *parent
-        , char *primary_text, char *secondary_text
-        , char *no_text, char *yes_text)
+gint orage_warning_dialog (GtkWindow *parent, const gchar *primary_text,
+                                              const gchar *secondary_text,
+                                              const gchar *no_text,
+                                              const gchar *yes_text)
 {
     GtkWidget *dialog;
     gint result;
@@ -1214,8 +1254,8 @@ gint orage_warning_dialog(GtkWindow *parent
     return(result);
 }
 
-gint orage_error_dialog(GtkWindow *parent
-        , char *primary_text, char *secondary_text)
+gint orage_error_dialog (GtkWindow *parent, const gchar *primary_text,
+                                            const gchar *secondary_text)
 {
     GtkWidget *dialog;
     gint result;
@@ -1231,4 +1271,57 @@ gint orage_error_dialog(GtkWindow *parent
     result = gtk_dialog_run(GTK_DIALOG(dialog));
     gtk_widget_destroy(dialog);
     return(result);
+}
+
+gboolean orage_status_icon_is_embedded (GtkStatusIcon *status_icon)
+{
+    gboolean is_embedded;
+
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+    is_embedded = gtk_status_icon_is_embedded (status_icon);
+    G_GNUC_END_IGNORE_DEPRECATIONS
+
+    return is_embedded;
+}
+
+void orage_status_icon_set_visible (GtkStatusIcon *status_icon,
+                                    const gboolean visible)
+{
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+    gtk_status_icon_set_visible (status_icon, visible);
+    G_GNUC_END_IGNORE_DEPRECATIONS
+}
+
+GtkStatusIcon *orage_status_icon_new_from_pixbuf (GdkPixbuf *pixbuf)
+{
+    GtkStatusIcon *status_icon;
+
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+    status_icon = gtk_status_icon_new_from_pixbuf (pixbuf);
+    G_GNUC_END_IGNORE_DEPRECATIONS
+
+    return status_icon;
+}
+
+void orage_status_icon_set_tooltip_markup (GtkStatusIcon *status_icon,
+                                           const gchar *markup)
+{
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+    gtk_status_icon_set_tooltip_markup (status_icon, markup);
+    G_GNUC_END_IGNORE_DEPRECATIONS
+}
+
+GtkWidget *orage_util_image_button (const gchar *icon_name, const gchar *label)
+{
+    GtkWidget *button;
+    GtkWidget *image;
+
+    image = gtk_image_new_from_icon_name (icon_name, GTK_ICON_SIZE_BUTTON);
+    gtk_widget_show (image);
+
+    button = gtk_button_new_with_mnemonic (label);
+    gtk_button_set_image (GTK_BUTTON (button), image);
+    gtk_widget_show (button);
+
+    return button;
 }

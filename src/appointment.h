@@ -147,7 +147,7 @@ typedef struct _appt_win
     GtkWidget *Proc_hbox;
     GtkWidget *Proc_checkbutton;
     GtkWidget *Proc_entry;
-    GtkWidget *Test_button;;
+    GtkWidget *Test_button;
     GtkWidget *Default_label;
     GtkWidget *Default_hbox;
     GtkWidget *Default_savebutton;
@@ -192,7 +192,7 @@ typedef struct _appt_win
     GtkWidget *Recur_exception_type_vbox;
     GtkWidget *Recur_exception_excl_rb;
     GtkWidget *Recur_exception_incl_rb;
-    GtkWidget *Recur_exception_incl_time_hbox;;
+    GtkWidget *Recur_exception_incl_time_hbox;
     GtkWidget *Recur_exception_incl_spin_hh;
     GtkWidget *Recur_exception_incl_spin_mm;
     GtkWidget *Recur_calendar_label;
@@ -213,9 +213,9 @@ typedef struct _appt_win
      * add == TRUE && new == FALSE */
 } appt_win;
 
-appt_win *create_appt_win(char *action, char *par);
+appt_win *create_appt_win(gchar *action, gchar *par);
 
-GdkColor *orage_category_list_contains(char *categories);
+GdkRGBA *orage_category_list_contains(char *categories);
 void orage_category_get_list();
 
 #endif /* !__APPOINTMENT_H__ */

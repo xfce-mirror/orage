@@ -4,7 +4,7 @@
  CREATOR: eric 26 Jan 2001
 
 
- $Id$
+ $Id: icalduration.h 2 2021-01-06 09:02:24Z erx $
  $Locker$
 
  (C) COPYRIGHT 2000, Eric Busboom, http://www.softwarestudio.org

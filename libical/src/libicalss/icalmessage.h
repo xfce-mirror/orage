@@ -4,7 +4,7 @@
  CREATOR: eric 07 Nov 2000
 
 
- $Id$
+ $Id: icalmessage.h 2 2021-01-06 09:02:24Z erx $
  $Locker$
 
  (C) COPYRIGHT 2000, Eric Busboom, http://www.softwarestudio.org

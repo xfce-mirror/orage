@@ -3,7 +3,7 @@
  FILE: icaltimezone.c
  CREATOR: Damon Chaplin 15 March 2001
 
- $Id$
+ $Id: icaltimezone.c 137 2021-06-04 06:05:18Z erx $
  $Locker$
 
  (C) COPYRIGHT 2001, Damon Chaplin
@@ -187,7 +187,8 @@ static char* icaltimezone_load_get_line_fn	(char		*s,
 						 void		*data);
 
 static void  format_utc_offset			(int		 utc_offset,
-						 char		*buffer);
+						 char		*buffer,
+                                                 const size_t buffer_len);
 
 static char* get_zone_directory(void);
 
@@ -1418,7 +1419,7 @@ icaltimezone_parse_zone_tab		(void)
     filename_len = strlen (get_zone_directory()) + strlen (ZONES_TAB_FILENAME)
 	+ 2;
 
-    filename = (char*) malloc (filename_len);
+    filename = (char*)malloc (filename_len);
     if (!filename) {
 	icalerror_set_errno(ICAL_NEWFAILED_ERROR);
 	return;
@@ -1607,7 +1608,7 @@ icaltimezone_dump_changes		(icaltimezone	*zone,
 		zone_change->hour, zone_change->minute, zone_change->second);
 
 	/* Wall Clock Time offset from UTC. */
-	format_utc_offset (zone_change->utc_offset, buffer);
+	format_utc_offset (zone_change->utc_offset, buffer, sizeof (buffer));
 	fprintf (fp, "\t%s", buffer);
 
 	fprintf (fp, "\n");
@@ -1620,7 +1621,8 @@ icaltimezone_dump_changes		(icaltimezone	*zone,
    buffer should have space for 8 characters. */
 static void
 format_utc_offset			(int		 utc_offset,
-					 char		*buffer)
+					 char		*buffer,
+                                         const size_t buffer_len)
 {
   char *sign = "+";
   int hours, minutes, seconds;
@@ -1644,9 +1646,9 @@ format_utc_offset			(int		 utc_offset,
   }
 
   if (seconds == 0)
-    sprintf (buffer, "%s%02i%02i", sign, hours, minutes);
+    snprintf (buffer, buffer_len, "%s%02i%02i", sign, hours, minutes);
   else
-    sprintf (buffer, "%s%02i%02i%02i", sign, hours, minutes, seconds);
+    snprintf (buffer, buffer_len, "%s%02i%02i%02i", sign, hours, minutes, seconds);
 }
 
 static char* get_zone_directory(void)
