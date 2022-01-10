@@ -317,7 +317,7 @@ gboolean xfical_file_check(gchar *file_name)
     return(ic_internal_file_open(&x_ical, &x_fical, file_name, FALSE, TRUE));
 }
 
-static gboolean delayed_file_close(gpointer user_data)
+static gboolean delayed_file_close (G_GNUC_UNUSED gpointer user_data)
 {
 #undef P_N
 #define P_N "delayed_file_close: "
@@ -335,7 +335,6 @@ static gboolean delayed_file_close(gpointer user_data)
     /* we only close file once, so end here */
     file_close_timer = 0;
 
-    (void)user_data;
     return(FALSE); 
 }
 
@@ -1772,8 +1771,9 @@ static void process_completed_date(xfical_appt *appt, icalproperty *p)
     appt->completed = TRUE;
 }
 
-static void ical_appt_get_rrule_internal(icalcomponent *c, xfical_appt *appt
-        , icalproperty *p)
+static void ical_appt_get_rrule_internal (G_GNUC_UNUSED icalcomponent *c,
+                                          xfical_appt *appt,
+                                          icalproperty *p)
 {
 #undef P_N
 #define P_N "ical_appt_get_rrule_internal: "
@@ -1858,7 +1858,6 @@ static void ical_appt_get_rrule_internal(icalcomponent *c, xfical_appt *appt
         }
     }
     appt->interval = rrule.interval;
-    (void)c;
 }
 
 static void appt_init(xfical_appt *appt)
@@ -2558,10 +2557,9 @@ static void build_excluded_list(GList **exclude_l, icalcomponent *comp
     }
 }
 
-static void free_exclude_time(gpointer e_t, gpointer dummy)
+static void free_exclude_time(gpointer e_t, G_GNUC_UNUSED gpointer dummy)
 {
     g_free(e_t);
-    (void)dummy;
 }
 
 static void free_excluded_list(GList *exclude_l)
@@ -3359,7 +3357,9 @@ static gboolean xfical_mark_calendar_days(GtkCalendar *gtkcal
 
 /* note that this not understand timezones, but gets always raw time,
  * which we need to convert to correct timezone */
-static void mark_calendar(icalcomponent *c, icaltime_span *span , void *data)
+static void mark_calendar (G_GNUC_UNUSED icalcomponent *c,
+                           icaltime_span *span,
+                           void *data)
 {
 #undef P_N
 #define P_N "mark_calendar: "
@@ -3427,8 +3427,6 @@ static void mark_calendar(icalcomponent *c, icaltime_span *span , void *data)
     xfical_mark_calendar_days(cal_data->cal, cal_data->year, cal_data->month
             , sdate.year, sdate.month, sdate.day
             , edate.year, edate.month, edate.day);
-
-    (void)c;
 }
 
  /* Mark days from appointment c into calendar

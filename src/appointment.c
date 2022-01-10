@@ -483,16 +483,14 @@ static void set_proc_sensitivity(appt_win *apptw)
     }
 }
 
-static void app_type_checkbutton_clicked_cb(GtkCheckButton *cb
+static void app_type_checkbutton_clicked_cb (G_GNUC_UNUSED GtkCheckButton *cb
         , gpointer user_data)
 {
     type_hide_show((appt_win *)user_data);
     mark_appointment_changed((appt_win *)user_data);
-
-    (void)cb;
 }
 
-static void on_appTitle_entry_changed_cb(GtkEditable *entry
+static void on_appTitle_entry_changed_cb (G_GNUC_UNUSED GtkEditable *entry
         , gpointer user_data)
 {
     gchar *title, *application_name;
@@ -511,17 +509,13 @@ static void on_appTitle_entry_changed_cb(GtkEditable *entry
 
     g_free(title);
     mark_appointment_changed((appt_win *)user_data);
-
-    (void)entry;
 }
 
-static void app_time_checkbutton_clicked_cb(GtkCheckButton *cb
+static void app_time_checkbutton_clicked_cb (G_GNUC_UNUSED GtkCheckButton *cb
         , gpointer user_data)
 {
     set_time_sensitivity((appt_win *)user_data);
     mark_appointment_changed((appt_win *)user_data);
-
-    (void)cb;
 }
 
 static void refresh_recur_calendars(appt_win *apptw)
@@ -537,69 +531,56 @@ static void refresh_recur_calendars(appt_win *apptw)
     xfical_mark_calendar_recur(GTK_CALENDAR(apptw->Recur_calendar3), appt);
 }
 
-static void on_notebook_page_switch(GtkNotebook *notebook
-        , GtkWidget *page, guint page_num, gpointer user_data)
+static void on_notebook_page_switch (G_GNUC_UNUSED GtkNotebook *notebook,
+                                     G_GNUC_UNUSED GtkWidget *page,
+                                     guint page_num, gpointer user_data)
 {
     if (page_num == 2)
         refresh_recur_calendars((appt_win *)user_data);
-
-    (void)notebook;
-    (void)page;
 }
 
-static void app_recur_checkbutton_clicked_cb(GtkCheckButton *checkbutton
-        , gpointer user_data)
+static void app_recur_checkbutton_clicked_cb (
+    G_GNUC_UNUSED GtkCheckButton *checkbutton, gpointer user_data)
 {
     set_repeat_sensitivity((appt_win *)user_data);
     mark_appointment_changed((appt_win *)user_data);
     refresh_recur_calendars((appt_win *)user_data);
-
-    (void)checkbutton;
 }
 
-static void app_recur_feature_checkbutton_clicked_cb(GtkCheckButton *cb
-        , gpointer user_data)
+static void app_recur_feature_checkbutton_clicked_cb (
+    G_GNUC_UNUSED GtkCheckButton *cb, gpointer user_data)
 {
     recur_hide_show((appt_win *)user_data);
     mark_appointment_changed((appt_win *)user_data);
-
-    (void)cb;
 }
 
-static void app_sound_checkbutton_clicked_cb(GtkCheckButton *cb
+static void app_sound_checkbutton_clicked_cb (G_GNUC_UNUSED GtkCheckButton *cb
         , gpointer user_data)
 {
     set_sound_sensitivity((appt_win *)user_data);
     mark_appointment_changed((appt_win *)user_data);
-
-    (void)cb;
 }
 
 #ifdef HAVE_NOTIFY
-static void app_notify_checkbutton_clicked_cb(GtkCheckButton *cb
+static void app_notify_checkbutton_clicked_cb (G_GNUC_UNUSED GtkCheckButton *cb
         , gpointer user_data)
 {
     set_notify_sensitivity((appt_win *)user_data);
     mark_appointment_changed((appt_win *)user_data);
-
-    (void)cb;
 }
 #endif
 
-static void app_proc_checkbutton_clicked_cb(GtkCheckButton *cb
+static void app_proc_checkbutton_clicked_cb (G_GNUC_UNUSED GtkCheckButton *cb
         , gpointer user_data)
 {
     set_proc_sensitivity((appt_win *)user_data);
     mark_appointment_changed((appt_win *)user_data);
-
-    (void)cb;
 }
 
-static void app_checkbutton_clicked_cb(GtkCheckButton *cb, gpointer user_data)
+static void app_checkbutton_clicked_cb (G_GNUC_UNUSED GtkCheckButton *cb,
+                                        gpointer user_data)
 {
     mark_appointment_changed((appt_win *)user_data);
-
-    (void)cb;
 }
 
 static void refresh_dependent_data(appt_win *apptw)
@@ -611,7 +592,8 @@ static void refresh_dependent_data(appt_win *apptw)
     orage_mark_appointments();
 }
 
-static void on_appNote_buffer_changed_cb(GtkTextBuffer *b, gpointer user_data)
+static void on_appNote_buffer_changed_cb (G_GNUC_UNUSED GtkTextBuffer *b,
+                                          gpointer user_data)
 {
     appt_win *apptw = (appt_win *)user_data;
     GtkTextIter start, end, match_start, match_end;
@@ -649,50 +631,43 @@ static void on_appNote_buffer_changed_cb(GtkTextBuffer *b, gpointer user_data)
     }
    
     mark_appointment_changed((appt_win *)user_data);
-
-    (void)b;
 }
 
-static void on_app_entry_changed_cb(GtkEditable *entry, gpointer user_data)
+static void on_app_entry_changed_cb (G_GNUC_UNUSED GtkEditable *entry,
+                                     gpointer user_data)
 {
     mark_appointment_changed((appt_win *)user_data);
-
-    (void)entry;
 }
 
-static void on_freq_combobox_changed_cb(GtkComboBox *cb, gpointer user_data)
+static void on_freq_combobox_changed_cb (G_GNUC_UNUSED GtkComboBox *cb,
+                                         gpointer user_data)
 {
     set_repeat_sensitivity((appt_win *)user_data);
     mark_appointment_changed((appt_win *)user_data);
     refresh_recur_calendars((appt_win *)user_data);
-
-    (void)cb;
 }
 
-static void on_app_combobox_changed_cb(GtkComboBox *cb, gpointer user_data)
+static void on_app_combobox_changed_cb (G_GNUC_UNUSED GtkComboBox *cb,
+                                        gpointer user_data)
 {
     mark_appointment_changed((appt_win *)user_data);
-
-    (void)cb;
 }
 
-static void on_app_spin_button_changed_cb(GtkSpinButton *sb, gpointer user_data)
+static void on_app_spin_button_changed_cb (G_GNUC_UNUSED GtkSpinButton *sb,
+                                           gpointer user_data)
 {
     mark_appointment_changed((appt_win *)user_data);
-
-    (void)sb;
 }
 
-static void on_recur_spin_button_changed_cb(GtkSpinButton *sb
+static void on_recur_spin_button_changed_cb (G_GNUC_UNUSED GtkSpinButton *sb
         , gpointer user_data)
 {
     mark_appointment_changed((appt_win *)user_data);
     refresh_recur_calendars((appt_win *)user_data);
-
-    (void)sb;
 }
 
-static void on_appSound_button_clicked_cb(GtkButton *button, gpointer user_data)
+static void on_appSound_button_clicked_cb (G_GNUC_UNUSED GtkButton *button,
+                                           gpointer user_data)
 {
     appt_win *apptw = (appt_win *)user_data;
     GtkWidget *file_chooser;
@@ -751,8 +726,6 @@ static void on_appSound_button_clicked_cb(GtkButton *button, gpointer user_data)
 
     gtk_widget_destroy(file_chooser);
     g_free(appSound_entry_filename);
-
-    (void)button;
 }
 
 static void app_free_memory(appt_win *apptw)
@@ -793,13 +766,11 @@ static gboolean appWindow_check_and_close(appt_win *apptw)
     return(TRUE);
 }
 
-static gboolean on_appWindow_delete_event_cb(GtkWidget *widget, GdkEvent *event
-    , gpointer user_data)
+static gboolean on_appWindow_delete_event_cb (G_GNUC_UNUSED GtkWidget *widget,
+                                              G_GNUC_UNUSED GdkEvent *event,
+                                              gpointer user_data)
 {
     return(appWindow_check_and_close((appt_win *)user_data));
-
-    (void)widget;
-    (void)event;
 }
 
 static gboolean orage_validate_datetime(appt_win *apptw, xfical_appt *appt)
@@ -1294,18 +1265,16 @@ static gboolean save_xfical_from_appt_win(appt_win *apptw)
     return(ok);
 }
 
-static void on_appFileSave_menu_activate_cb(GtkMenuItem *mi, gpointer user_data)
+static void on_appFileSave_menu_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
+                                             gpointer user_data)
 {
     save_xfical_from_appt_win((appt_win *)user_data);
-
-    (void)mi;
 }
 
-static void on_appSave_clicked_cb(GtkButton *b, gpointer user_data)
+static void on_appSave_clicked_cb (G_GNUC_UNUSED GtkButton *b,
+                                   gpointer user_data)
 {
     save_xfical_from_appt_win((appt_win *)user_data);
-
-    (void)b;
 }
 
 static void save_xfical_from_appt_win_and_close(appt_win *apptw)
@@ -1315,19 +1284,16 @@ static void save_xfical_from_appt_win_and_close(appt_win *apptw)
     }
 }
 
-static void on_appFileSaveClose_menu_activate_cb(GtkMenuItem *mi
+static void on_appFileSaveClose_menu_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi
         , gpointer user_data)
 {
     save_xfical_from_appt_win_and_close((appt_win *)user_data);
-
-    (void)mi;
 }
 
-static void on_appSaveClose_clicked_cb(GtkButton *b, gpointer user_data)
+static void on_appSaveClose_clicked_cb (G_GNUC_UNUSED GtkButton *b,
+                                        gpointer user_data)
 {
     save_xfical_from_appt_win_and_close((appt_win *)user_data);
-
-    (void)b;
 }
 
 static void delete_xfical_from_appt_win(appt_win *apptw)
@@ -1362,27 +1328,22 @@ static void delete_xfical_from_appt_win(appt_win *apptw)
     }
 }
 
-static void on_appDelete_clicked_cb(GtkButton *b, gpointer user_data)
+static void on_appDelete_clicked_cb (G_GNUC_UNUSED GtkButton *b,
+                                     gpointer user_data)
 {
     delete_xfical_from_appt_win((appt_win *)user_data);
-
-    (void)b;
 }
 
-static void on_appFileDelete_menu_activate_cb(GtkMenuItem *mi
+static void on_appFileDelete_menu_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi
         , gpointer user_data)
 {
     delete_xfical_from_appt_win((appt_win *)user_data);
-
-    (void)mi;
 }
 
-static void on_appFileClose_menu_activate_cb(GtkMenuItem *mi
+static void on_appFileClose_menu_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi
         , gpointer user_data)
 {
     appWindow_check_and_close((appt_win *)user_data);
-
-    (void)mi;
 }
 
 static void duplicate_xfical_from_appt_win(appt_win *apptw)
@@ -1398,19 +1359,16 @@ static void duplicate_xfical_from_appt_win(appt_win *apptw)
     }
 }
 
-static void on_appFileDuplicate_menu_activate_cb(GtkMenuItem *mi
+static void on_appFileDuplicate_menu_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi
         , gpointer user_data)
 {
     duplicate_xfical_from_appt_win((appt_win *)user_data);
-
-    (void)mi;
 }
 
-static void on_appDuplicate_clicked_cb(GtkButton *b, gpointer user_data)
+static void on_appDuplicate_clicked_cb (G_GNUC_UNUSED GtkButton *b,
+                                        gpointer user_data)
 {
     duplicate_xfical_from_appt_win((appt_win *)user_data);
-
-    (void)b;
 }
 
 static void revert_xfical_to_last_saved(appt_win *apptw)
@@ -1423,19 +1381,16 @@ static void revert_xfical_to_last_saved(appt_win *apptw)
     }
 }
 
-static void on_appFileRevert_menu_activate_cb(GtkMenuItem *mi
+static void on_appFileRevert_menu_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi
         , gpointer user_data)
 {
     revert_xfical_to_last_saved((appt_win *)user_data);
-
-    (void)mi;
 }
 
-static void on_appRevert_clicked_cb(GtkWidget *b, gpointer *user_data)
+static void on_appRevert_clicked_cb (G_GNUC_UNUSED GtkWidget *b,
+                                     gpointer *user_data)
 {
     revert_xfical_to_last_saved((appt_win *)user_data);
-
-    (void)b;
 }
 
 static void on_Date_button_clicked_cb(GtkWidget *button, gpointer *user_data)
@@ -1936,14 +1891,12 @@ GdkRGBA *orage_category_list_contains(char *categories)
     return(NULL);
 }
 
-static void orage_category_free(gpointer gcat, gpointer dummy)
+static void orage_category_free(gpointer gcat, G_GNUC_UNUSED gpointer dummy)
 {
     orage_category_struct *cat = (orage_category_struct *)gcat;
 
     g_free(cat->category);
     g_free(cat);
-
-    (void)dummy;
 }
 
 static void orage_category_free_list(void)
@@ -2087,17 +2040,17 @@ static void close_cat_window(gpointer user_data)
     g_free(catw);
 }
 
-static gboolean on_cat_window_delete_event(GtkWidget *w, GdkEvent *e
-        , gpointer user_data)
+static gboolean on_cat_window_delete_event (G_GNUC_UNUSED GtkWidget *w,
+                                            G_GNUC_UNUSED GdkEvent *e,
+                                            gpointer user_data)
 {
     close_cat_window(user_data);
 
-    (void)w;
-    (void)e;
     return(FALSE);
 }
 
-static void cat_add_button_clicked(GtkButton *button, gpointer user_data)
+static void cat_add_button_clicked (G_GNUC_UNUSED GtkButton *button,
+                                    gpointer user_data)
 {
     category_win_struct *catw = (category_win_struct *)user_data;
     gchar *entry_category;
@@ -2110,12 +2063,10 @@ static void cat_add_button_clicked(GtkButton *button, gpointer user_data)
     orage_category_write_entry(entry_category, &color);
     g_free(entry_category);
     refresh_categories(catw);
-
-    (void)button;
 }
 
 static void cat_color_button_changed(GtkColorButton *color_button
-        , gpointer user_data)
+        , G_GNUC_UNUSED gpointer user_data)
 {
     gchar *category;
     GdkRGBA color;
@@ -2123,8 +2074,6 @@ static void cat_color_button_changed(GtkColorButton *color_button
     category = g_object_get_data(G_OBJECT(color_button), "CATEGORY");
     gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (color_button), &color);
     orage_category_write_entry(category, &color);
-
-    (void)user_data;
 }
 
 static void cat_del_button_clicked(GtkButton *button, gpointer user_data)
@@ -2254,7 +2203,7 @@ static void create_cat_win(category_win_struct *catw)
     refresh_categories(catw);
 }
 
-static void on_categories_button_clicked_cb(GtkWidget *button
+static void on_categories_button_clicked_cb (G_GNUC_UNUSED GtkWidget *button
         , gpointer *user_data)
 {
     appt_win *apptw = (appt_win *)user_data;
@@ -2279,8 +2228,6 @@ static void on_categories_button_clicked_cb(GtkWidget *button
     g_signal_connect((gpointer)catw->window, "delete_event",
         G_CALLBACK(on_cat_window_delete_event), catw);
     gtk_widget_show_all(catw->window);
-
-    (void)button;
 }
 
 /**********************************************************/
@@ -2739,7 +2686,7 @@ static void read_default_alarm(xfical_appt *appt)
     orage_rc_file_close(orc);
 }
 
-static void on_test_button_clicked_cb(GtkButton *button
+static void on_test_button_clicked_cb (G_GNUC_UNUSED GtkButton *button
         , gpointer user_data)
 {
     appt_win *apptw = (appt_win *)user_data;
@@ -2787,32 +2734,26 @@ static void on_test_button_clicked_cb(GtkButton *button
     g_free(cur_alarm.description);
     g_free(cur_alarm.sound);
     g_free(cur_alarm.cmd);
-
-    (void)button;
 }
 
-static void on_appDefault_save_button_clicked_cb(GtkButton *button
-        , gpointer user_data)
+static void on_appDefault_save_button_clicked_cb (
+    G_GNUC_UNUSED GtkButton *button, gpointer user_data)
 {
     appt_win *apptw = (appt_win *)user_data;
     xfical_appt *appt = (xfical_appt *)apptw->xf_appt;
 
     fill_appt_from_apptw_alarm(appt, apptw);
     store_default_alarm(appt);
-
-    (void)button;
 }
 
-static void on_appDefault_read_button_clicked_cb(GtkButton *button
-        , gpointer user_data)
+static void on_appDefault_read_button_clicked_cb (
+    G_GNUC_UNUSED GtkButton *button, gpointer user_data)
 {
     appt_win *apptw = (appt_win *)user_data;
     xfical_appt *appt = (xfical_appt *)apptw->xf_appt;
 
     read_default_alarm(appt);
     fill_appt_window_alarm(apptw, appt);
-
-    (void)button;
 }
 
 static void build_toolbar(appt_win *apptw)

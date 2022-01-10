@@ -130,7 +130,9 @@ static void raise_window(void)
 }
 
 static GdkFilterReturn
-client_message_filter (GdkXEvent *gdkxevent, GdkEvent *event, gpointer data)
+client_message_filter (GdkXEvent *gdkxevent,
+                       G_GNUC_UNUSED GdkEvent *event,
+                       G_GNUC_UNUSED gpointer data)
 {
     XClientMessageEvent *evt;
     const XEvent *xevent = (const XEvent *)gdkxevent;
@@ -160,16 +162,13 @@ client_message_filter (GdkXEvent *gdkxevent, GdkEvent *event, gpointer data)
         return GDK_FILTER_REMOVE;
     }
 
-    (void)event;
-    (void)data;
-
     return GDK_FILTER_CONTINUE;
 }
 
-static gboolean clock_button_pressed(GtkWidget *widget, GdkEventButton *event
+static gboolean clock_button_pressed (GtkWidget *widget,
+                                      G_GNUC_UNUSED GdkEventButton *event
         , clock_struct *clockp)
 {
-    (void)event;
     return(clock_parameters(widget, clockp));
 }
 
@@ -401,7 +400,7 @@ void show_clock(clock_struct *clockp, gint *pos)
 
 
 static gboolean preferences_button_pressed(GtkWidget *widget
-        , GdkEventButton *event, gpointer dummy)
+        , GdkEventButton *event, G_GNUC_UNUSED gpointer dummy)
 {
     struct tm *now;
 
@@ -437,8 +436,6 @@ static gboolean preferences_button_pressed(GtkWidget *widget
     else {
         return(default_preferences(widget));
     }
-
-    (void)dummy;
 }
 
 static void add_default_clock(void)
@@ -454,7 +451,7 @@ static void add_default_clock(void)
     write_file();
 }
 
-static void upd_clock(clock_struct *clockp, gpointer user_data)
+static void upd_clock (clock_struct *clockp, G_GNUC_UNUSED gpointer user_data)
 {
     struct tm *now;
 
@@ -480,11 +477,9 @@ static void upd_clock(clock_struct *clockp, gpointer user_data)
         show_clock_format_name(clockp);
         show_clock_format_clock(clockp);
     }
-
-    (void)user_data;
 }
 
-static gboolean upd_clocks (gpointer user_data)
+static gboolean upd_clocks (G_GNUC_UNUSED gpointer user_data)
 {
     struct tm *now;
     gint secs_now;
@@ -509,21 +504,17 @@ static gboolean upd_clocks (gpointer user_data)
         g_list_foreach(clocks.clock_list, (GFunc) upd_clock, NULL);
     clocks.previous_secs = secs_now;
 
-    (void)user_data;
-
     return(TRUE);
 }
 
-static void adj_hh_changed(GtkSpinButton *cb, gpointer user_data)
+static void adj_hh_changed (GtkSpinButton *cb, G_GNUC_UNUSED gpointer user_data)
 {
     clocks.hh_adj = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(cb));
-    (void)user_data;
 }
 
-static void adj_mm_changed(GtkSpinButton *cb, gpointer user_data)
+static void adj_mm_changed (GtkSpinButton *cb, G_GNUC_UNUSED gpointer user_data)
 {
     clocks.mm_adj = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(cb));
-    (void)user_data;
 }
 
 static void init_hdr_button(void)
@@ -581,13 +572,11 @@ static void init_hdr_button(void)
     */
 }
 
-static gboolean clean_up(GtkWidget *obj, GdkEvent *event, gpointer data)
+static gboolean clean_up (G_GNUC_UNUSED GtkWidget *obj,
+                          G_GNUC_UNUSED GdkEvent *event,
+                          G_GNUC_UNUSED gpointer data)
 {
     write_file();
-
-    (void)obj;
-    (void)event;
-    (void)data;
 
     return(FALSE);
 }

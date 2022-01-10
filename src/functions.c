@@ -156,24 +156,20 @@ gboolean orage_date_button_clicked(GtkWidget *button, GtkWidget *selDate_dialog)
     return(changed);
 }
 
-static void child_setup_async(gpointer user_data)
+static void child_setup_async (G_GNUC_UNUSED gpointer user_data)
 {
 #if defined(HAVE_SETSID) && !defined(G_OS_WIN32)
     setsid();
 #endif
-
-    (void)user_data;
 }
 
-static void child_watch_cb(GPid pid, gint status, gpointer data)
+static void child_watch_cb (GPid pid, G_GNUC_UNUSED gint status, gpointer data)
 {
     gboolean *cmd_active = (gboolean *)data;
 
     waitpid(pid, NULL, 0);
     g_spawn_close_pid(pid);
     *cmd_active = FALSE;
-
-    (void)status;
 }
 
 gboolean orage_exec(const gchar *cmd, gboolean *cmd_active, GError **error)

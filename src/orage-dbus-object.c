@@ -24,6 +24,7 @@
 #include <config.h>
 #endif
 
+#include <glib.h>
 #include <glib-object.h>
 
 #include <dbus/dbus-glib-lowlevel.h>
@@ -88,7 +89,7 @@ static void orage_dbus_init(OrageDBus *o_dbus)
     }
 }
 
-gboolean orage_dbus_service_load_file(DBusGProxy *proxy
+gboolean orage_dbus_service_load_file (G_GNUC_UNUSED DBusGProxy *proxy
         , const char *IN_file
         , GError **error)
 {
@@ -102,13 +103,11 @@ gboolean orage_dbus_service_load_file(DBusGProxy *proxy
                 , "Invalid ical file \"%s\"", IN_file);
         return(FALSE);
     }
-
-    (void)proxy;
 }
 
-gboolean orage_dbus_service_export_file(DBusGProxy *proxy
+gboolean orage_dbus_service_export_file (G_GNUC_UNUSED DBusGProxy *proxy
         , const char *IN_file, const int IN_type, const char *IN_uids
-        , GError **error)
+        , G_GNUC_UNUSED GError **error)
 {
     if (orage_export_file((char *)IN_file, (gint)IN_type, (char *)IN_uids)) {
         g_message("Orage **: DBUS File exported %s", IN_file);
@@ -118,14 +117,11 @@ gboolean orage_dbus_service_export_file(DBusGProxy *proxy
         g_warning("DBUS File export failed %s", IN_file);
         return(FALSE);
     }
-
-    (void)proxy;
-    (void)error;
 }
 
-gboolean orage_dbus_service_add_foreign(DBusGProxy *proxy
+gboolean orage_dbus_service_add_foreign (G_GNUC_UNUSED DBusGProxy *proxy
         , const char *IN_file, const gboolean IN_mode, const char *IN_name
-        , GError **error)
+        , G_GNUC_UNUSED GError **error)
 {
     if (orage_foreign_file_add((char *)IN_file, (gboolean)IN_mode
                 , (char *)IN_name)) {
@@ -136,14 +132,11 @@ gboolean orage_dbus_service_add_foreign(DBusGProxy *proxy
         g_warning("DBUS Foreign file add failed %s", IN_file);
         return(FALSE);
     }
-
-    (void)proxy;
-    (void)error;
 }
 
-gboolean orage_dbus_service_remove_foreign(DBusGProxy *proxy
+gboolean orage_dbus_service_remove_foreign (G_GNUC_UNUSED DBusGProxy *proxy
         , const char *IN_file
-        , GError **error)
+        , G_GNUC_UNUSED GError **error)
 {
     if (orage_foreign_file_remove((char *)IN_file)) {
         g_message("Orage **: DBUS Foreign file removed %s", IN_file);
@@ -153,9 +146,6 @@ gboolean orage_dbus_service_remove_foreign(DBusGProxy *proxy
         g_warning("Orage **: DBUS Foreign file remove failed %s", IN_file);
         return(FALSE);
     }
-
-    (void)proxy;
-    (void)error;
 }
 
 void orage_dbus_start(void)

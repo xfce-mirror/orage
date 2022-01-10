@@ -152,7 +152,8 @@ static void dialog_response(GtkWidget *dialog, gint response_id
     }
 }
 
-static void sound_application_changed(GtkWidget *dialog, gpointer user_data)
+static void sound_application_changed (G_GNUC_UNUSED GtkWidget *dialog,
+                                       gpointer user_data)
 {
     Itf *itf = (Itf *)user_data;
     
@@ -160,8 +161,6 @@ static void sound_application_changed(GtkWidget *dialog, gpointer user_data)
         g_free(g_par.sound_application);
     g_par.sound_application = g_strdup(gtk_entry_get_text(
             GTK_ENTRY(itf->sound_application_entry)));
-
-    (void)dialog;
 }
 
 static void set_border(void)
@@ -170,15 +169,14 @@ static void set_border(void)
             , g_par.show_borders);
 }
 
-static void borders_changed(GtkWidget *dialog, gpointer user_data)
+static void borders_changed (G_GNUC_UNUSED GtkWidget *dialog,
+                             gpointer user_data)
 {
     Itf *itf = (Itf *)user_data;
 
     g_par.show_borders = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->show_borders_checkbutton));
     set_border();
-
-    (void)dialog;
 }
 
 static void set_menu(void)
@@ -189,15 +187,13 @@ static void set_menu(void)
         gtk_widget_hide(((CalWin *)g_par.xfcal)->mMenubar);
 }
 
-static void menu_changed(GtkWidget *dialog, gpointer user_data)
+static void menu_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
 {
     Itf *itf = (Itf *)user_data;
 
     g_par.show_menu = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->show_menu_checkbutton));
     set_menu();
-
-    (void)dialog;
 }
 
 static void set_calendar(void)
@@ -209,40 +205,35 @@ static void set_calendar(void)
                     | (g_par.show_weeks ? GTK_CALENDAR_SHOW_WEEK_NUMBERS : 0));
 }
 
-static void heading_changed(GtkWidget *dialog, gpointer user_data)
+static void heading_changed (G_GNUC_UNUSED GtkWidget *dialog,
+                             gpointer user_data)
 {
     Itf *itf = (Itf *)user_data;
 
     g_par.show_heading = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->show_heading_checkbutton));
     set_calendar();
-
-    (void)dialog;
 }
 
-static void days_changed(GtkWidget *dialog, gpointer user_data)
+static void days_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
 {
     Itf *itf = (Itf *)user_data;
 
     g_par.show_day_names = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->show_day_names_checkbutton));
     set_calendar();
-
-    (void)dialog;
 }
 
-static void weeks_changed(GtkWidget *dialog, gpointer user_data)
+static void weeks_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
 {
     Itf *itf = (Itf *)user_data;
 
     g_par.show_weeks = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->show_weeks_checkbutton));
     set_calendar();
-
-    (void)dialog;
 }
 
-static void todos_changed(GtkWidget *dialog, gpointer user_data)
+static void todos_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
 {
     Itf *itf = (Itf *)user_data;
 
@@ -257,11 +248,10 @@ static void todos_changed(GtkWidget *dialog, gpointer user_data)
             gtk_window_resize(GTK_WINDOW(((CalWin *)g_par.xfcal)->mWindow)
                     , g_par.size_x, 1);
     }
-
-    (void)dialog;
 }
 
-static void show_events_spin_changed(GtkSpinButton *sb, gpointer user_data)
+static void show_events_spin_changed (GtkSpinButton *sb,
+                                      G_GNUC_UNUSED gpointer user_data)
 {
     g_par.show_event_days = gtk_spin_button_get_value(sb);
     if (g_par.show_event_days)
@@ -273,8 +263,6 @@ static void show_events_spin_changed(GtkSpinButton *sb, gpointer user_data)
             gtk_window_resize(GTK_WINDOW(((CalWin *)g_par.xfcal)->mWindow)
                     , g_par.size_x, 1);
     }
-
-    (void)user_data;
 }
 
 static void set_stick(void)
@@ -285,15 +273,13 @@ static void set_stick(void)
         gtk_window_unstick(GTK_WINDOW(((CalWin *)g_par.xfcal)->mWindow));
 }
 
-static void stick_changed(GtkWidget *dialog, gpointer user_data)
+static void stick_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
 {
     Itf *itf = (Itf *)user_data;
 
     g_par.set_stick = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->set_stick_checkbutton));
     set_stick();
-
-    (void)dialog;
 }
 
 static void set_ontop(void)
@@ -302,15 +288,13 @@ static void set_ontop(void)
             , g_par.set_ontop);
 }
 
-static void ontop_changed(GtkWidget *dialog, gpointer user_data)
+static void ontop_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
 {
     Itf *itf = (Itf *)user_data;
 
     g_par.set_ontop = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->set_ontop_checkbutton));
     set_ontop();
-
-    (void)dialog;
 }
 
 static void set_taskbar(void)
@@ -319,15 +303,14 @@ static void set_taskbar(void)
             GTK_WINDOW(((CalWin *)g_par.xfcal)->mWindow), !g_par.show_taskbar);
 }
 
-static void taskbar_changed(GtkWidget *dialog, gpointer user_data)
+static void taskbar_changed (G_GNUC_UNUSED GtkWidget *dialog,
+                             gpointer user_data)
 {
     Itf *itf = (Itf *)user_data;
 
     g_par.show_taskbar = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->show_taskbar_checkbutton));
     set_taskbar();
-
-    (void)dialog;
 }
 
 static void set_pager(void)
@@ -336,15 +319,13 @@ static void set_pager(void)
             , !g_par.show_pager);
 }
 
-static void pager_changed(GtkWidget *dialog, gpointer user_data)
+static void pager_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
 {
     Itf *itf = (Itf *)user_data;
 
     g_par.show_pager = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->show_pager_checkbutton));
     set_pager();
-
-    (void)dialog;
 }
 
 static void set_systray(void)
@@ -363,18 +344,17 @@ static void set_systray(void)
     orage_status_icon_set_visible (status_icon, g_par.show_systray);
 }
 
-static void systray_changed(GtkWidget *dialog, gpointer user_data)
+static void systray_changed (G_GNUC_UNUSED GtkWidget *dialog,
+                             gpointer user_data)
 {
     Itf *itf = (Itf *)user_data;
 
     g_par.show_systray = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->show_systray_checkbutton));
     set_systray();
-
-    (void)dialog;
 }
 
-static void start_changed(GtkWidget *dialog, gpointer user_data)
+static void start_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
 {
     Itf *itf = (Itf *)user_data;
 
@@ -382,44 +362,38 @@ static void start_changed(GtkWidget *dialog, gpointer user_data)
             itf->visibility_show_radiobutton));
     g_par.start_minimized = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->visibility_minimized_radiobutton));
-
-    (void)dialog;
 }
 
-static void show_changed(GtkWidget *dialog, gpointer user_data)
+static void show_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
 {
     Itf *itf = (Itf *)user_data;
 
     g_par.show_days = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->click_to_show_days_radiobutton));
-
-    (void)dialog;
 }
 
-static void foreign_alarm_changed(GtkWidget *dialog, gpointer user_data)
+static void foreign_alarm_changed (G_GNUC_UNUSED GtkWidget *dialog,
+                                   gpointer user_data)
 {
     Itf *itf = (Itf *)user_data;
 
     g_par.use_foreign_display_alarm_notify = 
         gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->foreign_alarm_notification_radiobutton));
-
-    (void)dialog;
 }
 
-static void dw_week_mode_changed(GtkWidget *dialog, gpointer user_data)
+static void dw_week_mode_changed (G_GNUC_UNUSED GtkWidget *dialog,
+                                  gpointer user_data)
 {
     Itf *itf = (Itf *)user_data;
 
     g_par.dw_week_mode = 
         gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->dw_week_mode_week_radiobutton));
-
-    (void)dialog;
 }
 
-static void sound_application_open_button_clicked(GtkButton *button
-        , gpointer user_data)
+static void sound_application_open_button_clicked (
+    G_GNUC_UNUSED GtkButton *button, gpointer user_data)
 {
     Itf *itf = (Itf *)user_data;
     GtkWidget *file_chooser;
@@ -456,8 +430,6 @@ static void sound_application_open_button_clicked(GtkButton *button
         }
     }
     gtk_widget_destroy(file_chooser);
-
-    (void)button;
 }
 
 static void timezone_button_clicked(GtkButton *button, gpointer user_data)
@@ -475,37 +447,31 @@ static void timezone_button_clicked(GtkButton *button, gpointer user_data)
 
 #ifdef HAVE_ARCHIVE
 static void archive_threshold_spin_changed(GtkSpinButton *sb
-        , gpointer user_data)
+        , G_GNUC_UNUSED gpointer user_data)
 {
     g_par.archive_limit = gtk_spin_button_get_value(sb);
-
-    (void)user_data;
 }
 #endif
 
-static void select_day_changed(GtkWidget *dialog, gpointer user_data)
+static void select_day_changed (G_GNUC_UNUSED GtkWidget *dialog,
+                                gpointer user_data)
 {
     Itf *itf = (Itf *)user_data;
 
     g_par.select_always_today = gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(itf->select_day_today_radiobutton));
-
-    (void)dialog;
 }
 
-static void el_extra_days_spin_changed(GtkSpinButton *sb, gpointer user_data)
+static void el_extra_days_spin_changed (GtkSpinButton *sb,
+                                        G_GNUC_UNUSED gpointer user_data)
 {
     g_par.el_days = gtk_spin_button_get_value(sb);
-
-    (void)user_data;
 }
 
 static void el_only_first_checkbutton_clicked(GtkCheckButton *cb
-        , gpointer user_data)
+        , G_GNUC_UNUSED gpointer user_data)
 {
     g_par.el_only_first = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb));
-
-    (void)user_data;
 }
 
 /* start monitoring lost seconds due to hibernate or suspend */
@@ -523,25 +489,23 @@ static void set_wakeup_timer(void)
     }
 }
 
-static void use_wakeup_timer_changed(GtkWidget *dialog, gpointer user_data)
+static void use_wakeup_timer_changed (G_GNUC_UNUSED GtkWidget *dialog,
+                                      gpointer user_data)
 {
     Itf *itf = (Itf *)user_data;
 
     g_par.use_wakeup_timer = gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(itf->use_wakeup_timer_checkbutton));
     set_wakeup_timer();
-
-    (void)dialog;
 }
 
-static void always_quit_changed(GtkWidget *dialog, gpointer user_data)
+static void always_quit_changed (G_GNUC_UNUSED GtkWidget *dialog,
+                                 gpointer user_data)
 {
     Itf *itf = (Itf *)user_data;
 
     g_par.close_means_quit = gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(itf->always_quit_checkbutton));
-
-    (void)dialog;
 }
 
 static void create_parameter_dialog_main_setup_tab(Itf *dialog)

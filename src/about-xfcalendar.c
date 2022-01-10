@@ -27,13 +27,15 @@
 #endif
 
 #include <gtk/gtk.h>
+#include <glib.h>
 
 #include "orage-i18n.h"
 #include "tray_icon.h"
 #include "about-xfcalendar.h"
 
 
-void create_wAbout(GtkWidget *widget, gpointer user_data)
+void create_wAbout (G_GNUC_UNUSED GtkWidget *widget,
+                    G_GNUC_UNUSED gpointer user_data)
 {
   GtkWidget *dialog;
   GdkPixbuf *orage_logo;
@@ -59,7 +61,4 @@ void create_wAbout(GtkWidget *widget, gpointer user_data)
   gtk_dialog_run(GTK_DIALOG(dialog));
   gtk_widget_destroy(dialog);
   g_object_unref(orage_logo);
-
-  (void)widget;
-  (void)user_data;
 }

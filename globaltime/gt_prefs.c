@@ -100,31 +100,25 @@ static gboolean clocksize_radio_button_pressed(GtkWidget *widget, gchar *label)
     return(FALSE);
 }
 
-static gboolean release_preferences_window(GtkWidget *widget
+static gboolean release_preferences_window (G_GNUC_UNUSED GtkWidget *widget
         , modify_struct *modify_default)
 {
     g_free(modify_default);
     clocks.modified--;
 
-    (void)widget;
-
     return(FALSE);
 }
 
-static void close_preferences_window(GtkWidget *widget, GtkWidget *window)
+static void close_preferences_window (G_GNUC_UNUSED GtkWidget *widget,
+                                      GtkWidget *window)
 {
     gtk_widget_destroy(window);
-
-    (void)widget;
 }
 
-static gboolean save_preferences(GtkWidget *widget
-        , modify_struct *modify_default)
+static gboolean save_preferences (G_GNUC_UNUSED GtkWidget *widget,
+                                  G_GNUC_UNUSED modify_struct *modify_default)
 {
     write_file();
-
-    (void)widget;
-    (void)modify_default;
 
     return(FALSE);
 }
@@ -201,7 +195,7 @@ static void toolbar_append_separator(GtkWidget *toolbar)
     gtk_toolbar_insert(GTK_TOOLBAR(toolbar), GTK_TOOL_ITEM(separator), -1); 
 }
 
-static gboolean save_clock(GtkWidget *widget
+static gboolean save_clock (G_GNUC_UNUSED GtkWidget *widget
         , modify_struct *modify_clock)
 {
     clock_struct *clockp = modify_clock->clock;
@@ -211,37 +205,33 @@ static gboolean save_clock(GtkWidget *widget
     gtk_label_set_text(GTK_LABEL(clockp->name_label), clockp->name->str);
     write_file();
 
-    (void)widget;
     return(FALSE);
 }
 
-static gboolean release_modify_clock_window(GtkWidget *widget
+static gboolean release_modify_clock_window (G_GNUC_UNUSED GtkWidget *widget
         , modify_struct *modify_clock)
 {
     modify_clock->clock->modified = FALSE;
     g_free(modify_clock);
     clocks.modified--;
 
-    (void)widget;
     return(FALSE);
 }
 
-static gboolean set_timezone_from_clock(GtkWidget *widget
+static gboolean set_timezone_from_clock (G_GNUC_UNUSED GtkWidget *widget
         , modify_struct *modify_clock)
 {
     g_string_assign(clocks.local_tz
             , gtk_button_get_label((GTK_BUTTON(modify_clock->button_tz))));
     write_file();
 
-    (void)widget;
     return(FALSE);
 }
 
-static void close_modify_clock_window(GtkWidget *widget, GtkWidget *window)
+static void close_modify_clock_window (G_GNUC_UNUSED GtkWidget *widget,
+                                       GtkWidget *window)
 {
     gtk_widget_destroy(window);
-
-    (void)widget;
 }
 
 static void copy_attr(text_attr_struct *dst_attr, text_attr_struct *src_attr)
@@ -287,7 +277,8 @@ void init_attr(text_attr_struct *attr)
     attr->time_underline_modified = FALSE;
 }
 
-static void add_clock(GtkWidget *widget, modify_struct *modify_clock)
+static void add_clock (G_GNUC_UNUSED GtkWidget *widget,
+                       modify_struct *modify_clock)
 {
     clock_struct *clockp_old = modify_clock->clock;
     clock_struct *clockp_new; 
@@ -307,11 +298,9 @@ static void add_clock(GtkWidget *widget, modify_struct *modify_clock)
     write_file();
     g_signal_emit_by_name(clockp_new->clock_ebox, "button_press_event"
             , clockp_new, &ret);
-
-    (void)widget;
 }
 
-static void copy_clock(GtkWidget *widget, modify_struct *modify_clock)
+static void copy_clock (G_GNUC_UNUSED GtkWidget *widget, modify_struct *modify_clock)
 {
     clock_struct *clockp_old = modify_clock->clock;
     clock_struct *clockp_new; 
@@ -333,11 +322,10 @@ static void copy_clock(GtkWidget *widget, modify_struct *modify_clock)
     write_file();
     g_signal_emit_by_name(clockp_new->clock_ebox, "button_press_event"
             , clockp_new, &ret);
-
-    (void)widget;
 }
 
-static void delete_clock(GtkWidget *widget, modify_struct *modify_clock)
+static void delete_clock (G_GNUC_UNUSED GtkWidget *widget,
+                          modify_struct *modify_clock)
 {
     clock_struct *clockp = modify_clock->clock;
     GtkWidget *dialog;
@@ -356,9 +344,7 @@ static void delete_clock(GtkWidget *widget, modify_struct *modify_clock)
     gtk_widget_destroy(clockp->clock_hbox);
     g_free(clockp);
     write_file();
-    gtk_widget_destroy(modify_clock->window); /* self destruct */
-
-    (void)widget;
+    gtk_widget_destroy(modify_clock->window); /* self destruct */;
 }
 
 static void move_clock (modify_struct *modify_clock,
@@ -404,28 +390,28 @@ static void move_clock (modify_struct *modify_clock,
     write_file ();
 }
 
-static void move_clock_back (GtkWidget *widget, modify_struct *modify_clock)
+static void move_clock_back (G_GNUC_UNUSED GtkWidget *widget,
+                             modify_struct *modify_clock)
 {
     move_clock (modify_clock, MOVE_CLOCK_BACK);
-    (void)widget;
 }
 
-static void move_clock_forward (GtkWidget *widget, modify_struct *modify_clock)
+static void move_clock_forward (G_GNUC_UNUSED GtkWidget *widget,
+                                modify_struct *modify_clock)
 {
     move_clock (modify_clock, MOVE_CLOCK_FORWARD);
-    (void)widget;
 }
 
-static void move_clock_first (GtkWidget *widget, modify_struct *modify_clock)
+static void move_clock_first (G_GNUC_UNUSED GtkWidget *widget,
+                              modify_struct *modify_clock)
 {
     move_clock (modify_clock, MOVE_CLOCK_FIRST);
-    (void)widget;
 }
 
-static void move_clock_last (GtkWidget *widget, modify_struct *modify_clock)
+static void move_clock_last (G_GNUC_UNUSED GtkWidget *widget,
+                             modify_struct *modify_clock)
 {
     move_clock (modify_clock, MOVE_CLOCK_LAST);
-    (void)widget;
 }
 
 /* We handle here timezone setting for individual clocks, but also
@@ -646,7 +632,8 @@ static void create_parameter_toolbar(GtkWidget *vbox
             , modify_clock->window);
 }
 
-gboolean clock_parameters(GtkWidget *widget, clock_struct *clockp)
+gboolean clock_parameters (G_GNUC_UNUSED GtkWidget *widget,
+                           clock_struct *clockp)
 {
     modify_struct *modify_clock;
     GtkWidget *vbox, *hbox;
@@ -710,7 +697,6 @@ gboolean clock_parameters(GtkWidget *widget, clock_struct *clockp)
 
     gtk_widget_show_all(modify_clock->window);
 
-    (void)widget;
     return(FALSE);
 }
 
@@ -1119,7 +1105,7 @@ static void preferences_toolbar(GtkWidget *vbox, modify_struct *modify_default)
             , G_CALLBACK(close_preferences_window), modify_default->window);
 }
 
-gboolean default_preferences(GtkWidget *widget)
+gboolean default_preferences (G_GNUC_UNUSED GtkWidget *widget)
 {
     modify_struct *modify_default;
     GtkWidget *vbox, *hbox;
@@ -1219,7 +1205,6 @@ gboolean default_preferences(GtkWidget *widget)
                                                                                 
     gtk_widget_show_all(modify_default->window);
 
-    (void)widget;
     return(FALSE);
 }
 

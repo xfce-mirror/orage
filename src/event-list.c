@@ -122,7 +122,7 @@ static void start_appt_win(char *mode,  el_win *el
 }
 
 static void editEvent(GtkTreeView *view, GtkTreePath *path
-        , GtkTreeViewColumn *col, gpointer user_data)
+        , G_GNUC_UNUSED GtkTreeViewColumn *col, gpointer user_data)
 {
     el_win *el = (el_win *)user_data;
     GtkTreeModel *model;
@@ -130,8 +130,6 @@ static void editEvent(GtkTreeView *view, GtkTreePath *path
 
     model = gtk_tree_view_get_model(view);
     start_appt_win("UPDATE", el, model, &iter, path);
-
-    (void)col;
 }
 
 static gint sortEvent_comp(GtkTreeModel *model
@@ -232,8 +230,11 @@ static char *format_time(el_win *el, xfical_appt *appt, char *par)
     return(result);
 }
 
-static void flags_data_func(GtkTreeViewColumn *col, GtkCellRenderer *rend
-        , GtkTreeModel *model, GtkTreeIter *iter, gpointer user_data)
+static void flags_data_func (G_GNUC_UNUSED GtkTreeViewColumn *col,
+                             GtkCellRenderer *rend,
+                             GtkTreeModel *model,
+                             GtkTreeIter *iter,
+                             G_GNUC_UNUSED gpointer user_data)
 {
     gchar *categories;
     GdkRGBA *color;
@@ -254,13 +255,13 @@ static void flags_data_func(GtkTreeViewColumn *col, GtkCellRenderer *rend
     }
 
     g_free(categories);
-
-    (void)col;
-    (void)user_data;
 }
 
-static void start_time_data_func(GtkTreeViewColumn *col, GtkCellRenderer *rend
-        , GtkTreeModel *model, GtkTreeIter *iter, gpointer user_data)
+static void start_time_data_func (G_GNUC_UNUSED GtkTreeViewColumn *col,
+                                  GtkCellRenderer *rend,
+                                  GtkTreeModel *model,
+                                  GtkTreeIter *iter,
+                                  gpointer user_data)
 {
     el_win *el = (el_win *)user_data;
     gchar *stime, *etime, *stime2;
@@ -372,8 +373,6 @@ static void start_time_data_func(GtkTreeViewColumn *col, GtkCellRenderer *rend
                  , "weight-set",        FALSE
                  , NULL); 
     }
-
-    (void)col;
 }
 
 static void add_el_row(el_win *el, xfical_appt *appt, char *par)
@@ -739,8 +738,10 @@ static gboolean upd_notebook(el_win *el)
     return(FALSE); /* we do this only once */
 }
 
-static void on_notebook_page_switch(GtkNotebook *notebook
-        , GtkWidget *page, guint page_num, gpointer user_data)
+static void on_notebook_page_switch (G_GNUC_UNUSED GtkNotebook *notebook,
+                                     G_GNUC_UNUSED GtkWidget *page,
+                                     G_GNUC_UNUSED guint page_num,
+                                     gpointer user_data)
 {
     el_win *el = (el_win *)user_data;
 
@@ -751,30 +752,23 @@ static void on_notebook_page_switch(GtkNotebook *notebook
      * refreshes when tab is change quickly; like with mouse roll
      */
     g_timeout_add(300, (GSourceFunc)upd_notebook, el);
-
-    (void)notebook;
-    (void)page;
-    (void)page_num;
 }
 
-static void on_Search_clicked(GtkButton *b, gpointer user_data)
+static void on_Search_clicked (G_GNUC_UNUSED GtkButton *b, gpointer user_data)
 {
     el_win *el = (el_win *)user_data;
 
     gtk_notebook_set_current_page(GTK_NOTEBOOK(el->Notebook), SEARCH_PAGE);
     refresh_el_win((el_win *)user_data);
-
-    (void)b;
 }
 
-static void on_View_search_activate_cb(GtkMenuItem *mi, gpointer user_data)
+static void on_View_search_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
+                                        gpointer user_data)
 {
     el_win *el = (el_win *)user_data;
 
     gtk_notebook_set_current_page(GTK_NOTEBOOK(el->Notebook), SEARCH_PAGE);
     refresh_el_win((el_win *)user_data);
-
-    (void)mi;
 }
 
 static void set_el_data(el_win *el, const gchar *title)
@@ -822,18 +816,15 @@ static void duplicate_appointment(el_win *el)
     g_list_free(list);
 }
 
-static void on_Copy_clicked(GtkButton *b, gpointer user_data)
+static void on_Copy_clicked (G_GNUC_UNUSED GtkButton *b, gpointer user_data)
 {
     duplicate_appointment((el_win *)user_data);
-
-    (void)b;
 }
 
-static void on_File_duplicate_activate_cb(GtkMenuItem *mi, gpointer user_data)
+static void on_File_duplicate_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
+                                           gpointer user_data)
 {
     duplicate_appointment((el_win *)user_data);
-
-    (void)mi;
 }
 
 static void close_window(el_win *el)
@@ -866,54 +857,44 @@ static void close_window(el_win *el)
     el = NULL;
 }
 
-static void on_Close_clicked(GtkButton *b, gpointer user_data)
+static void on_Close_clicked (G_GNUC_UNUSED GtkButton *b, gpointer user_data)
 {
     close_window((el_win *)user_data);
-
-    (void)b;
 }
 
-static void on_Dayview_clicked(GtkButton *b, gpointer user_data)
+static void on_Dayview_clicked (G_GNUC_UNUSED GtkButton *b, gpointer user_data)
 {
     el_win *el = (el_win *)user_data;
     char *title;
 
     title = (char *)gtk_window_get_title(GTK_WINDOW(el->Window));
     create_day_win(title);
-
-    (void)b;
 }
 
-static void on_File_close_activate_cb(GtkMenuItem *mi, gpointer user_data)
+static void on_File_close_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
+                                       gpointer user_data)
 {
     close_window((el_win *)user_data);
-
-    (void)mi;
 }
 
-static gboolean on_Window_delete_event(GtkWidget *w, GdkEvent *e
-        , gpointer user_data)
+static gboolean on_Window_delete_event (G_GNUC_UNUSED GtkWidget *w,
+                                        G_GNUC_UNUSED GdkEvent *e,
+                                        gpointer user_data)
 {
     close_window((el_win *)user_data);
-
-    (void)w;
-    (void)e;
 
     return(FALSE);
 }
 
-static void on_Refresh_clicked(GtkButton *b, gpointer user_data)
+static void on_Refresh_clicked (G_GNUC_UNUSED GtkButton *b, gpointer user_data)
 {
     refresh_el_win((el_win*)user_data);
-
-    (void)b;
 }
 
-static void on_View_refresh_activate_cb(GtkMenuItem *mi, gpointer user_data)
+static void on_View_refresh_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
+                                         gpointer user_data)
 {
     refresh_el_win((el_win*)user_data);
-
-    (void)mi;
 }
 
 static void changeSelectedDate(el_win *el, gint day)
@@ -928,18 +909,15 @@ static void changeSelectedDate(el_win *el, gint day)
     set_el_data_from_cal(el);
 }
 
-static void on_Previous_clicked(GtkButton *b, gpointer user_data)
+static void on_Previous_clicked (G_GNUC_UNUSED GtkButton *b, gpointer user_data)
 {
     changeSelectedDate((el_win *)user_data, -1);
-
-    (void)b;
 }
 
-static void on_Go_previous_activate_cb(GtkMenuItem *mi, gpointer user_data)
+static void on_Go_previous_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
+                                        gpointer user_data)
 {
     changeSelectedDate((el_win *)user_data, -1);
-
-    (void)mi;
 }
 
 static void go_to_today(el_win *el)
@@ -948,32 +926,26 @@ static void go_to_today(el_win *el)
     set_el_data_from_cal(el);
 }
 
-static void on_Today_clicked(GtkButton *b, gpointer user_data)
+static void on_Today_clicked (G_GNUC_UNUSED GtkButton *b, gpointer user_data)
 {
     go_to_today((el_win *)user_data);
-
-    (void)b;
 }
 
-static void on_Go_today_activate_cb(GtkMenuItem *mi, gpointer user_data)
+static void on_Go_today_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
+                                     gpointer user_data)
 {
     go_to_today((el_win *)user_data);
-
-    (void)mi;
 }
 
-static void on_Next_clicked(GtkButton *b, gpointer user_data)
+static void on_Next_clicked (G_GNUC_UNUSED GtkButton *b, gpointer user_data)
 {
     changeSelectedDate((el_win *)user_data, 1);
-
-    (void)b;
 }
 
-static void on_Go_next_activate_cb(GtkMenuItem *mi, gpointer user_data)
+static void on_Go_next_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
+                                    gpointer user_data)
 {
     changeSelectedDate((el_win *)user_data, 1);
-
-    (void)mi;
 }
 
 static void create_new_appointment(el_win *el)
@@ -986,28 +958,25 @@ static void create_new_appointment(el_win *el)
     do_appt_win("NEW", a_day, el);
 }
 
-static void on_File_newApp_activate_cb(GtkMenuItem *mi, gpointer user_data)
+static void on_File_newApp_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
+                                        gpointer user_data)
 {
     create_new_appointment((el_win *)user_data);
-
-    (void)mi;
 }
 
-static void on_Create_toolbutton_clicked_cb(GtkButton *b, gpointer user_data)
+static void on_Create_toolbutton_clicked_cb (G_GNUC_UNUSED GtkButton *b,
+                                             gpointer user_data)
 {
     create_new_appointment((el_win *)user_data);
-
-    (void)b;
 }
 
-static void on_spin_changed(GtkSpinButton *b, gpointer user_data)
+static void on_spin_changed (G_GNUC_UNUSED GtkSpinButton *b, gpointer user_data)
 {
     refresh_el_win((el_win *)user_data);
-
-    (void)b;
 }
 
-static void on_only_first_clicked(GtkCheckButton *b, gpointer user_data)
+static void on_only_first_clicked (G_GNUC_UNUSED GtkCheckButton *b,
+                                   gpointer user_data)
 {
     el_win *el = (el_win *)user_data;
 
@@ -1015,15 +984,12 @@ static void on_only_first_clicked(GtkCheckButton *b, gpointer user_data)
             GTK_TOGGLE_BUTTON(el->event_only_first_checkbutton));
     gtk_widget_set_sensitive(el->event_show_old_checkbutton, el->only_first);
     refresh_el_win((el_win *)user_data);
-
-    (void)b;
 }
 
-static void on_show_old_clicked(GtkCheckButton *b, gpointer user_data)
+static void on_show_old_clicked (G_GNUC_UNUSED GtkCheckButton *b,
+                                 gpointer user_data)
 {
     refresh_el_win((el_win *)user_data);
-
-    (void)b;
 }
 
 static void delete_appointment(el_win *el)
@@ -1081,18 +1047,15 @@ static void delete_appointment(el_win *el)
     }
 }
 
-static void on_Delete_clicked(GtkButton *b, gpointer user_data)
+static void on_Delete_clicked (G_GNUC_UNUSED GtkButton *b, gpointer user_data)
 {
     delete_appointment((el_win *)user_data);
-
-    (void)b;
 }
 
-static void on_File_delete_activate_cb(GtkMenuItem *mi, gpointer user_data)
+static void on_File_delete_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
+                                        gpointer user_data)
 {
     delete_appointment((el_win *)user_data);
-
-    (void)mi;
 }
 
 static void on_journal_start_button_clicked(GtkWidget *button
@@ -1110,9 +1073,12 @@ static void on_journal_start_button_clicked(GtkWidget *button
         refresh_el_win(el);
 }
 
-static void drag_data_get(GtkWidget *widget, GdkDragContext *context
-        , GtkSelectionData *selection_data, guint info, guint itime
-        , gpointer user_data)
+static void drag_data_get (GtkWidget *widget,
+                           G_GNUC_UNUSED GdkDragContext *context,
+                           GtkSelectionData *selection_data,
+                           G_GNUC_UNUSED guint info,
+                           G_GNUC_UNUSED guint itime,
+                           G_GNUC_UNUSED gpointer user_data)
 {
     GtkTreeSelection *sel;
     GtkTreeModel     *model;
@@ -1147,11 +1113,6 @@ static void drag_data_get(GtkWidget *widget, GdkDragContext *context
             g_warning("drag_data_get failed\n");
         g_string_free(result, TRUE);
     }
-
-    (void)context;
-    (void)info;
-    (void)itime;
-    (void)user_data;
 }
 
 static void build_menu(el_win *el)

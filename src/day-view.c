@@ -142,29 +142,24 @@ static void close_window(day_win *dw)
     dw = NULL;
 }
 
-static gboolean on_Window_delete_event(GtkWidget *w, GdkEvent *e
-        , gpointer user_data)
+static gboolean on_Window_delete_event (G_GNUC_UNUSED GtkWidget *w,
+                                        G_GNUC_UNUSED GdkEvent *e,
+                                        gpointer user_data)
 {
     close_window((day_win *)user_data);
-
-    (void)w;
-    (void)e;
 
     return(FALSE);
 }
 
-static void on_File_close_activate_cb(GtkMenuItem *mi, gpointer user_data)
+static void on_File_close_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
+                                       gpointer user_data)
 {
     close_window((day_win *)user_data);
-
-    (void)mi;
 }
 
-static void on_Close_clicked(GtkButton *b, gpointer user_data)
+static void on_Close_clicked (G_GNUC_UNUSED GtkButton *b, gpointer user_data)
 {
     close_window((day_win *)user_data);
-
-    (void)b;
 }
 
 static void create_new_appointment(day_win *dw)
@@ -179,32 +174,27 @@ static void create_new_appointment(day_win *dw)
     do_appt_win("NEW", a_day, dw);
 }
 
-static void on_File_newApp_activate_cb(GtkMenuItem *mi, gpointer user_data)
+static void on_File_newApp_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
+                                        gpointer user_data)
 {
     create_new_appointment((day_win *)user_data);
-
-    (void)mi;
 }
 
-static void on_Create_toolbutton_clicked_cb(GtkButton *mi, gpointer user_data)
+static void on_Create_toolbutton_clicked_cb (G_GNUC_UNUSED GtkButton *mi,
+                                             gpointer user_data)
 {
     create_new_appointment((day_win *)user_data);
-
-    (void)mi;
 }
 
-static void on_View_refresh_activate_cb(GtkMenuItem *mi, gpointer user_data)
+static void on_View_refresh_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
+                                         gpointer user_data)
 {
     refresh_day_win((day_win *)user_data);
-
-    (void)mi;
 }
 
-static void on_Refresh_clicked(GtkButton *b, gpointer user_data)
+static void on_Refresh_clicked (G_GNUC_UNUSED GtkButton *b, gpointer user_data)
 {
     refresh_day_win((day_win *)user_data);
-
-    (void)b;
 }
 
 static void changeSelectedDate(day_win *dw, const gint day)
@@ -226,74 +216,62 @@ static void go_to_today(day_win *dw)
     refresh_day_win(dw);
 }
 
-static void on_Today_clicked(GtkButton *b, gpointer user_data)
+static void on_Today_clicked (G_GNUC_UNUSED GtkButton *b, gpointer user_data)
 {
     go_to_today((day_win *)user_data);
-
-    (void)b;
 }
 
-static void on_Go_today_activate_cb(GtkMenuItem *mi, gpointer user_data)
+static void on_Go_today_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
+                                     gpointer user_data)
 {
     go_to_today((day_win *)user_data);
-
-    (void)mi;
 }
 
-static void on_Go_previous_week_activate_cb(GtkMenuItem *mi, gpointer user_data)
+static void on_Go_previous_week_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
+                                             gpointer user_data)
 {
     changeSelectedDate((day_win *)user_data, -7);
-
-    (void)mi;
 }
 
-static void on_Go_previous_day_activate_cb(GtkMenuItem *mi, gpointer user_data)
+static void on_Go_previous_day_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
+                                            gpointer user_data)
 {
     changeSelectedDate((day_win *)user_data, -1);
-
-    (void)mi;
 }
 
-static void on_Previous_day_clicked(GtkButton *b, gpointer user_data)
+static void on_Previous_day_clicked (G_GNUC_UNUSED GtkButton *b,
+                                     gpointer user_data)
 {
     changeSelectedDate((day_win *)user_data, -1);
-
-    (void)b;
 }
 
-static void on_Previous_week_clicked(GtkButton *b, gpointer user_data)
+static void on_Previous_week_clicked (G_GNUC_UNUSED GtkButton *b,
+                                      gpointer user_data)
 {
     changeSelectedDate((day_win *)user_data, -7);
-
-    (void)b;
 }
 
-static void on_Go_next_day_activate_cb(GtkMenuItem *mi, gpointer user_data)
+static void on_Go_next_day_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
+                                        gpointer user_data)
 {
     changeSelectedDate((day_win *)user_data, 1);
-
-    (void)mi;
 }
 
-static void on_Go_next_week_activate_cb(GtkMenuItem *mi, gpointer user_data)
+static void on_Go_next_week_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
+                                         gpointer user_data)
 {
     changeSelectedDate((day_win *)user_data, 7);
-
-    (void)mi;
 }
 
-static void on_Next_day_clicked(GtkButton *b, gpointer user_data)
+static void on_Next_day_clicked (G_GNUC_UNUSED GtkButton *b, gpointer user_data)
 {
     changeSelectedDate((day_win *)user_data, 1);
-
-    (void)b;
 }
 
-static void on_Next_week_clicked(GtkButton *b, gpointer user_data)
+static void on_Next_week_clicked (G_GNUC_UNUSED GtkButton *b,
+                                  gpointer user_data)
 {
     changeSelectedDate((day_win *)user_data, 7);
-
-    (void)b;
 }
 
 static void build_menu(day_win *dw)
@@ -459,7 +437,8 @@ static gboolean upd_day_view(day_win *dw)
     return(FALSE); /* we do this only once */
 }
 
-static void on_spin_changed(GtkSpinButton *b, gpointer *user_data)
+static void on_spin_changed (G_GNUC_UNUSED GtkSpinButton *b,
+                             gpointer *user_data)
 {
     day_win *dw = (day_win *)user_data;
 
@@ -471,8 +450,6 @@ static void on_spin_changed(GtkSpinButton *b, gpointer *user_data)
         g_source_remove(dw->upd_timer);       
     }
     dw->upd_timer = g_timeout_add(500, (GSourceFunc)upd_day_view, dw);
-
-    (void)b;
 }
 
 static void on_Date_button_clicked_cb(GtkWidget *button, gpointer *user_data)
@@ -488,14 +465,13 @@ static void on_Date_button_clicked_cb(GtkWidget *button, gpointer *user_data)
         refresh_day_win(dw);
 }
 
-static void header_button_clicked_cb(GtkWidget *button, gpointer *user_data)
+static void header_button_clicked_cb (GtkWidget *button,
+                                      G_GNUC_UNUSED gpointer *user_data)
 {
     const gchar *start_date;
 
     start_date = gtk_button_get_label(GTK_BUTTON(button));
     (void)create_el_win(start_date);
-
-    (void)user_data;
 }
 
 static void on_button_press_event_cb(GtkWidget *widget
@@ -510,40 +486,32 @@ static void on_button_press_event_cb(GtkWidget *widget
     }
 }
 
-static void on_arrow_up_press_event_cb(GtkWidget *widget
-        , GdkEventButton *event, gpointer *user_data)
+static void on_arrow_up_press_event_cb (G_GNUC_UNUSED GtkWidget *widget,
+                                        G_GNUC_UNUSED GdkEventButton *event,
+                                        gpointer *user_data)
 {
     changeSelectedDate((day_win *)user_data, -7);
-
-    (void)widget;
-    (void)event;
 }
 
-static void on_arrow_left_press_event_cb(GtkWidget *widget
-        , GdkEventButton *event, gpointer *user_data)
+static void on_arrow_left_press_event_cb (G_GNUC_UNUSED GtkWidget *widget,
+                                          G_GNUC_UNUSED GdkEventButton *event,
+                                          gpointer *user_data)
 {
     changeSelectedDate((day_win *)user_data, -1);
-
-    (void)widget;
-    (void)event;
 }
 
-static void on_arrow_right_press_event_cb(GtkWidget *widget
-        , GdkEventButton *event, gpointer *user_data)
+static void on_arrow_right_press_event_cb (G_GNUC_UNUSED GtkWidget *widget,
+                                           G_GNUC_UNUSED GdkEventButton *event,
+                                           gpointer *user_data)
 {
     changeSelectedDate((day_win *)user_data, 1);
-
-    (void)widget;
-    (void)event;
 }
 
-static void on_arrow_down_press_event_cb(GtkWidget *widget
-        , GdkEventButton *event, gpointer *user_data)
+static void on_arrow_down_press_event_cb (G_GNUC_UNUSED GtkWidget *widget,
+                                          G_GNUC_UNUSED GdkEventButton *event,
+                                          gpointer *user_data)
 {
     changeSelectedDate((day_win *)user_data, 7);
-
-    (void)widget;
-    (void)event;
 }
 
 static gchar *get_row_colour (const gint row)

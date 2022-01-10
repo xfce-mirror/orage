@@ -70,7 +70,8 @@ gboolean orage_mark_appointments(void)
     return(TRUE);
 }
 
-static void mFile_newApp_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
+static void mFile_newApp_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
+                                      gpointer user_data)
 {
 #undef P_N
 #define P_N "mFile_newApp_activate_cb: "
@@ -84,11 +85,9 @@ static void mFile_newApp_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
     strncpy(cur_date, orage_cal_to_icaldate(GTK_CALENDAR(cal->mCalendar)), 8);
     cur_date[8]='\0';
     create_appt_win("NEW", cur_date);
-
-    (void)menuitem;
 }
 
-static void mFile_interface_activate_cb(GtkMenuItem *menuitem
+static void mFile_interface_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem
         , gpointer user_data)
 {
 #undef P_N
@@ -100,11 +99,10 @@ static void mFile_interface_activate_cb(GtkMenuItem *menuitem
 #endif
 
     orage_external_interface(cal);
-
-    (void)menuitem;
 }
 
-static void mFile_close_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
+static void mFile_close_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
+                                     gpointer user_data)
 {
 #undef P_N
 #define P_N "mFile_close_activate_cb: "
@@ -118,11 +116,10 @@ static void mFile_close_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
         gtk_main_quit();
     else
         gtk_widget_hide(cal->mWindow);
-
-    (void)menuitem;
 }
 
-static void mFile_quit_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
+static void mFile_quit_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
+                                    G_GNUC_UNUSED gpointer user_data)
 {
 #undef P_N
 #define P_N "mFile_quit_activate_cb: "
@@ -132,13 +129,10 @@ static void mFile_quit_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
 #endif
 
     gtk_main_quit();
-
-    (void)menuitem;
-    (void)user_data;
 }
 
-static void mEdit_preferences_activate_cb(GtkMenuItem *menuitem
-        , gpointer user_data)
+static void mEdit_preferences_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
+                                           G_GNUC_UNUSED gpointer user_data)
 {
 #undef P_N
 #define P_N "mEdit_preferences_activate_cb: "
@@ -148,13 +142,10 @@ static void mEdit_preferences_activate_cb(GtkMenuItem *menuitem
 #endif
 
     show_parameters();
-
-    (void)menuitem;
-    (void)user_data;
 }
 
-static void mView_ViewSelectedDate_activate_cb(GtkMenuItem *menuitem
-        , gpointer user_data)
+static void mView_ViewSelectedDate_activate_cb (
+    G_GNUC_UNUSED GtkMenuItem *menuitem, G_GNUC_UNUSED gpointer user_data)
 {
 #undef P_N
 #define P_N "mView_ViewSelectedDate_activate_cb: "
@@ -164,13 +155,10 @@ static void mView_ViewSelectedDate_activate_cb(GtkMenuItem *menuitem
 #endif
 
     (void)create_el_win(NULL);
-
-    (void)menuitem;
-    (void)user_data;
 }
 
-static void mView_ViewSelectedWeek_activate_cb(GtkMenuItem *menuitem
-        , gpointer user_data)
+static void mView_ViewSelectedWeek_activate_cb (
+    G_GNUC_UNUSED GtkMenuItem *menuitem, gpointer user_data)
 {
 #undef P_N
 #define P_N "mView_ViewSelectedWeek_activate_cb: "
@@ -181,11 +169,9 @@ static void mView_ViewSelectedWeek_activate_cb(GtkMenuItem *menuitem
 #endif
 
     create_day_win(orage_cal_to_i18_date(GTK_CALENDAR(cal->mCalendar)));
-
-    (void)menuitem;
 }
 
-static void mView_selectToday_activate_cb(GtkMenuItem *menuitem
+static void mView_selectToday_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem
         , gpointer user_data)
 {
 #undef P_N
@@ -197,12 +183,10 @@ static void mView_selectToday_activate_cb(GtkMenuItem *menuitem
 #endif
 
     orage_select_today(GTK_CALENDAR(cal->mCalendar));
-
-    (void)menuitem;
 }
 
-static void mView_StartGlobaltime_activate_cb(GtkMenuItem *menuitem
-        , gpointer user_data)
+static void mView_StartGlobaltime_activate_cb (
+    G_GNUC_UNUSED GtkMenuItem *menuitem, G_GNUC_UNUSED gpointer user_data)
 {
 #undef P_N
 #define P_N "mView_StartGlobaltime_activate_cb: "
@@ -215,12 +199,10 @@ static void mView_StartGlobaltime_activate_cb(GtkMenuItem *menuitem
     if (!orage_exec("globaltime", FALSE, &error))
         g_warning ("%s: start of %s failed: %s", "Orage", "globaltime"
                 , error->message);
-
-    (void)menuitem;
-    (void)user_data;
 }
 
-static void mHelp_help_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
+static void mHelp_help_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
+                                    G_GNUC_UNUSED gpointer user_data)
 {
 #undef P_N
 #define P_N "mHelp_help_activate_cb: "
@@ -254,9 +236,6 @@ static void mHelp_help_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
         }
     }
     g_free(helpdoc);
-
-    (void)menuitem;
-    (void)user_data;
 }
 
 static void mHelp_about_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
@@ -270,7 +249,7 @@ static void mHelp_about_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
 }
 
 static void mCalendar_day_selected_double_click_cb(GtkCalendar *calendar
-        , gpointer user_data)
+        , G_GNUC_UNUSED gpointer user_data)
 {
 #undef P_N
 #define P_N "mCalendar_day_selected_double_click_cb: "
@@ -281,11 +260,9 @@ static void mCalendar_day_selected_double_click_cb(GtkCalendar *calendar
         create_day_win(orage_cal_to_i18_date(calendar));
     else
         (void)create_el_win(NULL);
-
-    (void)user_data;
 }
 
-static gboolean upd_calendar(GtkCalendar *calendar)
+static gboolean upd_calendar (G_GNUC_UNUSED GtkCalendar *calendar)
 {
 #undef P_N
 #define P_N "upd_calendar: "
@@ -296,11 +273,11 @@ static gboolean upd_calendar(GtkCalendar *calendar)
     orage_mark_appointments();
     month_change_timer = 0;
 
-    (void)calendar;
     return(FALSE); /* we do this only once */
 }
 
-void mCalendar_month_changed_cb(GtkCalendar *calendar, gpointer user_data)
+void mCalendar_month_changed_cb (GtkCalendar *calendar,
+                                 G_GNUC_UNUSED gpointer user_data)
 {
 #undef P_N
 #define P_N "mCalendar_month_changed_cb: "
@@ -320,8 +297,6 @@ void mCalendar_month_changed_cb(GtkCalendar *calendar, gpointer user_data)
 
     gtk_calendar_clear_marks(calendar);
     month_change_timer = g_timeout_add(400, (GSourceFunc)upd_calendar, calendar);
-
-    (void)user_data;
 }
 
 static void build_menu(void)
@@ -420,7 +395,7 @@ static void build_menu(void)
 }
 
 static void todo_clicked(GtkWidget *widget
-        , GdkEventButton *event, gpointer *user_data)
+        , GdkEventButton *event, G_GNUC_UNUSED gpointer *user_data)
 {
 #undef P_N
 #define P_N "todo_clicked: "
@@ -433,8 +408,6 @@ static void todo_clicked(GtkWidget *widget
         uid = g_object_get_data(G_OBJECT(widget), "UID");
         create_appt_win("UPDATE", uid);
     }
-
-    (void)user_data;
 }
 
 static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
@@ -842,8 +815,8 @@ static void build_mainbox_event_info(void)
     }
 }
 
-static void mCalendar_day_selected_cb(GtkCalendar *calendar
-        , gpointer user_data)
+static void mCalendar_day_selected_cb (G_GNUC_UNUSED GtkCalendar *calendar,
+                                       G_GNUC_UNUSED gpointer user_data)
 {
 #undef P_N
 #define P_N "mCalendar_day_selected_cb: "
@@ -852,9 +825,6 @@ static void mCalendar_day_selected_cb(GtkCalendar *calendar
 #endif
     /* rebuild the info for the selected date */
     build_mainbox_event_box();
-
-    (void)calendar;
-    (void)user_data;
 }
 
 void build_mainbox_event_box(void)

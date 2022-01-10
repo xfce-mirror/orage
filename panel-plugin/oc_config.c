@@ -146,12 +146,10 @@ static void oc_hib_timing_toggled(GtkToggleButton *cb, OragePlugin *plugin)
     plugin->hib_timing = gtk_toggle_button_get_active(cb);
 }
 
-static gboolean oc_line_changed(GtkWidget *entry, GdkEventKey *key
+static gboolean oc_line_changed(GtkWidget *entry, G_GNUC_UNUSED GdkEventKey *key
         , GString *data)
 {
     g_string_assign(data, gtk_entry_get_text(GTK_ENTRY(entry)));
-
-    (void)key;
 
     return(FALSE);
 }
@@ -175,7 +173,8 @@ static void oc_recreate_properties_options(OragePlugin *plugin)
     gtk_widget_show_all(dialog);
 }
 
-static void oc_new_line(GtkToolButton *toolbutton, ClockLine *line)
+static void oc_new_line (G_GNUC_UNUSED GtkToolButton *toolbutton,
+                         ClockLine *line)
 {
     OragePlugin *plugin = line->clock;
     ClockLine *new_line;
@@ -186,11 +185,10 @@ static void oc_new_line(GtkToolButton *toolbutton, ClockLine *line)
     oc_fg_set(plugin);
 
     oc_recreate_properties_options(plugin);
-
-    (void)toolbutton;
 }
 
-static void oc_delete_line(GtkToolButton *toolbutton, ClockLine *line)
+static void oc_delete_line (G_GNUC_UNUSED GtkToolButton *toolbutton,
+                            ClockLine *line)
 {
     OragePlugin *plugin = line->clock;
 
@@ -202,11 +200,10 @@ static void oc_delete_line(GtkToolButton *toolbutton, ClockLine *line)
     g_free(line);
 
     oc_recreate_properties_options(plugin);
-
-    (void)toolbutton;
 }
 
-static void oc_move_up_line(GtkToolButton *toolbutton, ClockLine *line)
+static void oc_move_up_line (G_GNUC_UNUSED GtkToolButton *toolbutton,
+                             ClockLine *line)
 {
     OragePlugin *plugin = line->clock;
     gint pos;
@@ -218,11 +215,10 @@ static void oc_move_up_line(GtkToolButton *toolbutton, ClockLine *line)
     plugin->lines = g_list_insert(plugin->lines, line, pos);
 
     oc_recreate_properties_options(plugin);
-
-    (void)toolbutton;
 }
 
-static void oc_move_down_line(GtkToolButton *toolbutton, ClockLine *line)
+static void oc_move_down_line (G_GNUC_UNUSED GtkToolButton *toolbutton,
+                               ClockLine *line)
 {
     OragePlugin *plugin = line->clock;
     gint pos, line_cnt;
@@ -237,8 +233,6 @@ static void oc_move_down_line(GtkToolButton *toolbutton, ClockLine *line)
     plugin->lines = g_list_insert(plugin->lines, line, pos);
 
     oc_recreate_properties_options(plugin);
-
-    (void)toolbutton;
 }
 
 static void oc_table_add (GtkWidget *table, GtkWidget *widget,
@@ -458,7 +452,7 @@ void oc_properties_options(GtkWidget *dlg, OragePlugin *plugin)
     g_signal_connect(cb, "toggled", G_CALLBACK(oc_hib_timing_toggled), plugin);
 }
 
-void oc_instructions(GtkWidget *dlg, OragePlugin *plugin)
+void oc_instructions(GtkWidget *dlg, G_GNUC_UNUSED OragePlugin *plugin)
 {
     GtkWidget *hbox, *vbox, *label, *image;
 
@@ -476,11 +470,9 @@ void oc_instructions(GtkWidget *dlg, OragePlugin *plugin)
     g_object_set (label, "xalign", 0.0, "yalign", 0.0,
                          "hexpand", TRUE, "halign", GTK_ALIGN_FILL, NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
-
-    (void)plugin;
 }
 
-static void oc_dialog_response (GtkWidget *dlg, int response,
+static void oc_dialog_response (GtkWidget *dlg, G_GNUC_UNUSED int response,
                                 OragePlugin *plugin)
 {
     XfcePanelPlugin *panel_plugin = XFCE_PANEL_PLUGIN (plugin);
@@ -491,8 +483,6 @@ static void oc_dialog_response (GtkWidget *dlg, int response,
     xfce_panel_plugin_unblock_menu (panel_plugin);
     oc_write_rc_file (panel_plugin);
     oc_init_timer (plugin);
-
-    (void)response;
 }
 
 void oc_properties_dialog (XfcePanelPlugin *plugin)

@@ -9,6 +9,7 @@ dnl
 dnl Version information
 m4_define([orage_version], [4.16.0])
 
+m4_define([glib_minimum_version], [2.52.0])
 m4_define([gtk_minimum_version], [3.24.0])
 m4_define([xfce_minimum_version], [4.16.0])
 m4_define([dbus_minimum_version], [0.1])
@@ -82,6 +83,7 @@ dnl *******************************
 XDT_CHECK_LIBX11_REQUIRE()
 
 dnl XDT_CHECK_PACKAGE([LIBXFCEGUI4], [libxfcegui4-1.0], [xfce_minimum_version])
+XDT_CHECK_PACKAGE([GLIB], [glib-2.0], [glib_minimum_version])
 XDT_CHECK_PACKAGE([LIBGTK], [gtk+-3.0], [gtk_minimum_version])
 
 dnl ************************************************

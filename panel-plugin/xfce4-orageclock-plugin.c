@@ -358,7 +358,7 @@ static void oc_update_size (OragePlugin *plugin, gint size)
     }
 }
 
-static gboolean popup_program (GtkWidget *widget, gchar *program,
+static gboolean popup_program (G_GNUC_UNUSED GtkWidget *widget, gchar *program,
                                OragePlugin *plugin, guint event_time)
 {
     XEvent xevent;
@@ -428,8 +428,6 @@ static gboolean popup_program (GtkWidget *widget, gchar *program,
 
         return(TRUE);
     }
-
-    (void)widget;
 
     return(FALSE);
 }
@@ -836,9 +834,8 @@ static void orage_plugin_class_init (OragePluginClass *klass)
     plugin_class->save = oc_write_rc_file;
 }
 
-static void orage_plugin_init (OragePlugin *plugin)
+static void orage_plugin_init (G_GNUC_UNUSED OragePlugin *plugin)
 {
-    (void)plugin;
 }
 
 XFCE_PANEL_DEFINE_PLUGIN (OragePlugin, orage_plugin)

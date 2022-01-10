@@ -30,6 +30,7 @@
 #endif
 
 #include <time.h>
+#include <glib.h>
 #include <gdk/gdk.h>
 #include <gtk/gtk.h>
 #include <glib/gprintf.h>
@@ -94,7 +95,8 @@ static GtkWidget *orage_image_menu_item (const gchar *label,
 #endif
 }
 
-static void on_Today_activate(GtkMenuItem *menuitem, gpointer user_data)
+static void on_Today_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
+                               gpointer user_data)
 {
     struct tm *t;
     CalWin *xfcal = (CalWin *)user_data;
@@ -103,20 +105,16 @@ static void on_Today_activate(GtkMenuItem *menuitem, gpointer user_data)
     orage_select_date(GTK_CALENDAR(xfcal->mCalendar), t->tm_year+1900
             , t->tm_mon, t->tm_mday);
     (void)create_el_win (NULL);
-
-    (void)menuitem;
 }
 
-static void on_preferences_activate(GtkMenuItem *menuitem, gpointer user_data)
+static void on_preferences_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
+                                     G_GNUC_UNUSED gpointer user_data)
 {
     show_parameters ();
-
-    (void)menuitem;
-    (void)user_data;
 }
 
-static void on_new_appointment_activate(GtkMenuItem *menuitem,
-                                        gpointer user_data)
+static void on_new_appointment_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
+                                         G_GNUC_UNUSED gpointer user_data)
 {
     struct tm *t;
     char cur_date[9];
@@ -125,25 +123,21 @@ static void on_new_appointment_activate(GtkMenuItem *menuitem,
     g_snprintf(cur_date, sizeof (cur_date), "%04d%02d%02d", t->tm_year+1900
                , t->tm_mon+1, t->tm_mday);
     create_appt_win("NEW", cur_date);
-
-    (void)menuitem;
-    (void)user_data;
 }
 
-static void on_globaltime_activate(GtkMenuItem *menuitem, gpointer user_data)
+static void on_globaltime_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
+                                    G_GNUC_UNUSED gpointer user_data)
 {
     GError *error = NULL;
 
     if (!orage_exec("globaltime", FALSE, &error))
         g_message("%s: start of %s failed: %s", "Orage", "globaltime"
                 , error->message);
-
-    (void)menuitem;
-    (void)user_data;
 }
 
-static gboolean button_press_cb(GtkStatusIcon *status_icon
-        , GdkEventButton *event, gpointer user_data)
+static gboolean button_press_cb (G_GNUC_UNUSED GtkStatusIcon *status_icon,
+                                 GdkEventButton *event,
+                                 G_GNUC_UNUSED gpointer user_data)
 {
     GdkAtom atom;
     Window xwindow;
@@ -181,28 +175,21 @@ static gboolean button_press_cb(GtkStatusIcon *status_icon
         }
     }
 
-    (void)status_icon;
-    (void)user_data;
-
     return(FALSE);
 }
 
-static void toggle_visible_cb(GtkStatusIcon *status_icon, gpointer user_data)
+static void toggle_visible_cb (G_GNUC_UNUSED GtkStatusIcon *status_icon,
+                               G_GNUC_UNUSED gpointer user_data)
 {
     orage_toggle_visible();
-
-    (void)status_icon;
-    (void)user_data;
 }
 
-static void show_menu(GtkStatusIcon *status_icon, guint button
-        , guint activate_time, gpointer user_data)
+static void show_menu (G_GNUC_UNUSED GtkStatusIcon *status_icon,
+                       G_GNUC_UNUSED guint button,
+                       G_GNUC_UNUSED guint activate_time,
+                       gpointer user_data)
 {
     gtk_menu_popup_at_pointer ((GtkMenu *)user_data, NULL);
-
-    (void)status_icon;
-    (void)button;
-    (void)activate_time;
 }
 
 static gboolean format_line (PangoLayout *pl, struct tm *t, const char *data,

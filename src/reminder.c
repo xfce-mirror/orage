@@ -408,8 +408,8 @@ static void store_persistent_alarms(void)
 /************************************************************/
 
 #ifdef HAVE_NOTIFY
-static void notify_action_open(NotifyNotification *n, const char *action
-        , gpointer par)
+static void notify_action_open (G_GNUC_UNUSED NotifyNotification *n,
+                                G_GNUC_UNUSED const char *action, gpointer par)
 {
 #undef P_N
 #define P_N "notify_action_open: "
@@ -426,9 +426,6 @@ static void notify_action_open(NotifyNotification *n, const char *action
     create_notify_reminder(l_alarm);
     */
     create_appt_win("UPDATE", l_alarm->uid);
-
-    (void)n;
-    (void)action;
 }
 #endif
 
@@ -503,7 +500,7 @@ static void create_sound_reminder(alarm_struct *l_alarm)
 }
 
 #ifdef HAVE_NOTIFY
-static void notify_closed(NotifyNotification *n, gpointer par)
+static void notify_closed (G_GNUC_UNUSED NotifyNotification *n, gpointer par)
 {
 #undef P_N
 #define P_N "notify_closed: "
@@ -524,11 +521,10 @@ static void notify_closed(NotifyNotification *n, gpointer par)
         l_alarm->display_notify = FALSE; /* I am gone */
         alarm_free_memory(l_alarm);
     }
-
-    (void)n;
 }
 
-static void notify_action_silence(NotifyNotification *n, const char *action
+static void notify_action_silence (G_GNUC_UNUSED NotifyNotification *n,
+                                   G_GNUC_UNUSED const char *action
         , gpointer par)
 {
 #undef P_N
@@ -544,9 +540,6 @@ static void notify_action_silence(NotifyNotification *n, const char *action
     l_alarm->notify_refresh = TRUE; 
     l_alarm->repeat_cnt = 0; /* end sound during next  play */
     create_notify_reminder(l_alarm); /* recreate after notify close */
-
-    (void)n;
-    (void)action;
 }
 #endif
 
@@ -619,7 +612,8 @@ static void create_notify_reminder(alarm_struct *l_alarm)
 #endif
 }
 
-static void destroy_orage_reminder(GtkWidget *wReminder, gpointer user_data)
+static void destroy_orage_reminder (G_GNUC_UNUSED GtkWidget *wReminder,
+                                    gpointer user_data)
 {
 #undef P_N
 #define P_N "destroy_orage_reminder: "
@@ -630,8 +624,6 @@ static void destroy_orage_reminder(GtkWidget *wReminder, gpointer user_data)
 #endif
     l_alarm->display_orage = FALSE; /* I am gone */
     alarm_free_memory(l_alarm);
-
-    (void)wReminder;
 }
 
 static void on_btStopNoiseReminder_clicked(GtkButton *button
@@ -648,7 +640,8 @@ static void on_btStopNoiseReminder_clicked(GtkButton *button
     gtk_widget_set_sensitive(GTK_WIDGET(button), FALSE);
 }
 
-static void on_btOkReminder_clicked(GtkButton *button, gpointer user_data)
+static void on_btOkReminder_clicked (G_GNUC_UNUSED GtkButton *button,
+                                     gpointer user_data)
 {
 #undef P_N
 #define P_N "on_btOkReminder_clicked: "
@@ -658,11 +651,10 @@ static void on_btOkReminder_clicked(GtkButton *button, gpointer user_data)
     g_debug (P_N);
 #endif
     gtk_widget_destroy(wReminder); /* destroy the specific appointment window */
-
-    (void)button;
 }
 
-static void on_btOpenReminder_clicked(GtkButton *button, gpointer user_data)
+static void on_btOpenReminder_clicked (G_GNUC_UNUSED GtkButton *button,
+                                       gpointer user_data)
 {
 #undef P_N
 #define P_N "on_btOpenReminder_clicked: "
@@ -672,11 +664,10 @@ static void on_btOpenReminder_clicked(GtkButton *button, gpointer user_data)
     g_debug (P_N);
 #endif
     create_appt_win("UPDATE", l_alarm->uid);
-
-    (void)button;
 }
 
-static void on_btRecreateReminder_clicked(GtkButton *button, gpointer user_data)
+static void on_btRecreateReminder_clicked (G_GNUC_UNUSED GtkButton *button,
+                                           gpointer user_data)
 {
 #undef P_N
 #define P_N "on_btRecreateReminder_clicked: "
@@ -705,8 +696,6 @@ static void on_btRecreateReminder_clicked(GtkButton *button, gpointer user_data)
     alarm_add(n_alarm);
     setup_orage_alarm_clock();
     gtk_widget_destroy(display_data->dialog);
-
-    (void)button;
 }
 
 static void create_orage_reminder(alarm_struct *l_alarm)
@@ -1008,7 +997,7 @@ gboolean orage_day_change(gpointer user_data)
 }
 
 /* check and raise alarms if there are any */
-static gboolean orage_alarm_clock(gpointer user_data)
+static gboolean orage_alarm_clock (G_GNUC_UNUSED gpointer user_data)
 {
 #undef P_N
 #define P_N "orage_alarm_clock: "
@@ -1043,7 +1032,6 @@ static gboolean orage_alarm_clock(gpointer user_data)
     else
         reset_orage_alarm_clock(); /* need to setup next timer */
 
-    (void)user_data;
     return(FALSE); /* only once */
 }
 
@@ -1089,7 +1077,7 @@ static void reset_orage_alarm_clock(void)
 }
 
 /* refresh trayicon tooltip once per minute */
-static gboolean orage_tooltip_update(gpointer user_data)
+static gboolean orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
 {
 #undef P_N
 #define P_N "orage_tooltip_update: "
@@ -1184,13 +1172,11 @@ static gboolean orage_tooltip_update(gpointer user_data)
 
     g_string_free(tooltip, TRUE);
 
-    (void)user_data;
-
     return(TRUE);
 }
 
 /* start timer to fire every minute to keep tooltip accurate */
-static gboolean start_orage_tooltip_update(gpointer user_data)
+static gboolean start_orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
 {
 #undef P_N
 #define P_N "start_orage_tooltip_update: "
@@ -1206,13 +1192,11 @@ static gboolean start_orage_tooltip_update(gpointer user_data)
     g_par.tooltip_timer = g_timeout_add_seconds(60
             , (GSourceFunc) orage_tooltip_update, NULL);
 
-    (void)user_data;
-
     return(FALSE);
 }
 
 /* adjust the call to happen when minute changes */
-static gboolean reset_orage_tooltip_update (gpointer user_data)
+static gboolean reset_orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
 {
 #undef P_N
 #define P_N "reset_orage_tooltip_update: "
@@ -1234,7 +1218,6 @@ static gboolean reset_orage_tooltip_update (gpointer user_data)
     g_timeout_add_seconds(secs_left
             , (GSourceFunc) start_orage_tooltip_update, NULL);
 
-    (void)user_data;
     return(FALSE);
 }
 

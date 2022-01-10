@@ -71,25 +71,22 @@ static SessionClient	*session_client = NULL;
 static GdkAtom atom_alive;
 
 #ifdef HAVE_DBUS
-static gboolean resume_after_sleep(gpointer user_data)
+static gboolean resume_after_sleep (G_GNUC_UNUSED gpointer user_data)
 {
     g_message ("Resuming after sleep");
     alarm_read();
     orage_day_change(&g_par);
 
-    (void)user_data;
     return(FALSE); /* only once */
 }
 
-static void resuming_cb(DBusGProxy *proxy, gpointer user_data)
+static void resuming_cb (G_GNUC_UNUSED DBusGProxy *proxy,
+                         G_GNUC_UNUSED gpointer user_data)
 {
     g_message ("Resuming");
     /* we need this delay to prevent updating tray icon too quickly when
        the normal code handles it also */
     g_timeout_add_seconds(2, (GSourceFunc) resume_after_sleep, NULL);
-
-    (void)user_data;
-    (void)proxy;
 }
 
 static void handle_resuming(void)
@@ -196,8 +193,9 @@ static gboolean keep_tidy(void)
     return(TRUE);
 }
 
-static gboolean mWindow_delete_event_cb(GtkWidget *widget, GdkEvent *event
-        , gpointer user_data)
+static gboolean mWindow_delete_event_cb (G_GNUC_UNUSED GtkWidget *widget,
+                                         G_GNUC_UNUSED GdkEvent *event,
+                                         G_GNUC_UNUSED gpointer user_data)
 {
     if (g_par.close_means_quit) {
         gtk_main_quit();
@@ -205,10 +203,6 @@ static gboolean mWindow_delete_event_cb(GtkWidget *widget, GdkEvent *event
     else {
         orage_toggle_visible();
     }
-
-    (void)widget;
-    (void)event;
-    (void)user_data;
 
     return(TRUE);
 }
@@ -233,8 +227,9 @@ static void raise_window(void)
     gtk_window_present(GTK_WINDOW(cal->mWindow));
 }
 
-static GdkFilterReturn
-client_message_filter (GdkXEvent *gdkxevent, GdkEvent *event, gpointer data)
+static GdkFilterReturn client_message_filter (GdkXEvent *gdkxevent,
+                                              G_GNUC_UNUSED GdkEvent *event,
+                                              G_GNUC_UNUSED gpointer data)
 {
     XClientMessageEvent *evt;
     XEvent *xevent = (XEvent *)gdkxevent;
@@ -273,9 +268,6 @@ client_message_filter (GdkXEvent *gdkxevent, GdkEvent *event, gpointer data)
         show_parameters ();
         return GDK_FILTER_REMOVE;
     }
-
-    (void)event;
-    (void)data;
 
     return GDK_FILTER_CONTINUE;
 }

@@ -47,6 +47,7 @@
 #include <time.h>
 #include <math.h>
 
+#include <glib.h>
 #include <gdk/gdk.h>
 #include <gtk/gtk.h>
 #include <glib/gprintf.h>
@@ -154,7 +155,7 @@ static void xfical_icalcomponent_archive_normal(icalcomponent *e)
 }
 
 static void xfical_icalcomponent_archive_recurrent(icalcomponent *e
-        , struct tm *threshold, char *uid)
+        , struct tm *threshold, G_GNUC_UNUSED char *uid)
 {
 #undef P_N
 #define P_N "xfical_icalcomponent_archive_recurrent: "
@@ -303,8 +304,6 @@ static void xfical_icalcomponent_archive_recurrent(icalcomponent *e
                                 , 0));
         }
     }
-
-    (void)uid;
 }
 
 gboolean xfical_archive(void)

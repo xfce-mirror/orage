@@ -69,7 +69,7 @@ static gboolean interface_lock = FALSE;
 
 static void refresh_foreign_files(intf_win *intf_w, const gboolean first);
 
-gboolean orage_external_update_check(gpointer user_data)
+gboolean orage_external_update_check (G_GNUC_UNUSED gpointer user_data)
 {
 #undef P_N
 #define P_N "orage_external_update_check: "
@@ -114,12 +114,11 @@ gboolean orage_external_update_check(gpointer user_data)
         orage_mark_appointments();
     }
 
-    (void)user_data;
-
     return(TRUE); /* keep running */
 }
 
-static void orage_file_entry_changed(GtkWidget *dialog, gpointer user_data)
+static void orage_file_entry_changed (G_GNUC_UNUSED GtkWidget *dialog,
+                                      gpointer user_data)
 {
     intf_win *intf_w = (intf_win *)user_data;
     const gchar *s;
@@ -131,11 +130,9 @@ static void orage_file_entry_changed(GtkWidget *dialog, gpointer user_data)
     else {
         gtk_widget_set_sensitive(intf_w->orage_file_save_button, TRUE);
     }
-
-    (void)dialog;
 }
 
-static void orage_file_save_button_clicked(GtkButton *button
+static void orage_file_save_button_clicked (G_GNUC_UNUSED GtkButton *button
         , gpointer user_data)
 {
     intf_win *intf_w = (intf_win *)user_data;
@@ -186,12 +183,11 @@ static void orage_file_save_button_clicked(GtkButton *button
     else {
         g_free(s);
     }
-
-    (void)button;
 }
 
 #ifdef HAVE_ARCHIVE
-static void archive_file_entry_changed(GtkWidget *dialog, gpointer user_data)
+static void archive_file_entry_changed (G_GNUC_UNUSED GtkWidget *dialog,
+                                        gpointer user_data)
 {
     intf_win *intf_w = (intf_win *)user_data;
     const gchar *s;
@@ -203,11 +199,9 @@ static void archive_file_entry_changed(GtkWidget *dialog, gpointer user_data)
     else {
         gtk_widget_set_sensitive(intf_w->archive_file_save_button, TRUE);
     }
-
-    (void)dialog;
 }
 
-static void archive_file_save_button_clicked(GtkButton *button
+static void archive_file_save_button_clicked (G_GNUC_UNUSED GtkButton *button
         , gpointer user_data)
 {
     intf_win *intf_w = (intf_win *)user_data;
@@ -257,8 +251,6 @@ static void archive_file_save_button_clicked(GtkButton *button
     else {
         g_free(s);
     }
-
-    (void)button;
 }
 #endif
 
@@ -309,7 +301,7 @@ static GtkWidget *orage_file_chooser(GtkWidget *parent_window
     return(GTK_WIDGET(f_chooser));
 }
 
-static void orage_file_open_button_clicked(GtkButton *button
+static void orage_file_open_button_clicked (G_GNUC_UNUSED GtkButton *button
         , gpointer user_data)
 {
     intf_win *intf_w = (intf_win *)user_data;
@@ -335,12 +327,10 @@ static void orage_file_open_button_clicked(GtkButton *button
         }
     }
     gtk_widget_destroy(f_chooser);
-
-    (void)button;
 }
 
 #ifdef HAVE_ARCHIVE
-static void archive_file_open_button_clicked(GtkButton *button
+static void archive_file_open_button_clicked (G_GNUC_UNUSED GtkButton *button
         , gpointer user_data)
 {
     intf_win *intf_w = (intf_win *)user_data;
@@ -366,12 +356,11 @@ static void archive_file_open_button_clicked(GtkButton *button
         }
     }
     gtk_widget_destroy(f_chooser);
-
-    (void)button;
 }
 #endif
 
-static void exp_open_button_clicked(GtkButton *button, gpointer user_data)
+static void exp_open_button_clicked (G_GNUC_UNUSED GtkButton *button,
+                                     gpointer user_data)
 {
     intf_win *intf_w = (intf_win *)user_data;
     GtkWidget *f_chooser;
@@ -401,11 +390,10 @@ static void exp_open_button_clicked(GtkButton *button, gpointer user_data)
     }
 
     gtk_widget_destroy(f_chooser);
-
-    (void)button;
 }
 
-static void imp_open_button_clicked(GtkButton *button, gpointer user_data)
+static void imp_open_button_clicked (G_GNUC_UNUSED GtkButton *button,
+                                     gpointer user_data)
 {
     intf_win *intf_w = (intf_win *)user_data;
     GtkWidget *f_chooser;
@@ -433,25 +421,19 @@ static void imp_open_button_clicked(GtkButton *button, gpointer user_data)
     }
 
     gtk_widget_destroy(f_chooser);
-    (void)button;
 }
 
 #ifdef HAVE_ARCHIVE
-static void on_archive_button_clicked_cb(GtkButton *button, gpointer user_data)
+static void on_archive_button_clicked_cb (G_GNUC_UNUSED GtkButton *button,
+                                          G_GNUC_UNUSED gpointer user_data)
 {
     xfical_archive();
-
-    (void)button;
-    (void)user_data;
 }
 
-static void on_unarchive_button_clicked_cb (GtkButton *button,
-                                            gpointer user_data)
+static void on_unarchive_button_clicked_cb (G_GNUC_UNUSED GtkButton *button,
+                                            G_GNUC_UNUSED gpointer user_data)
 {
     xfical_unarchive();
-
-    (void)button;
-    (void)user_data;
 }
 #endif
 
@@ -471,7 +453,8 @@ gboolean orage_export_file(gchar *entry_filename, gint type, gchar *uids)
     return(xfical_export_file(entry_filename, type, uids));
 }
 
-static void imp_save_button_clicked(GtkButton *button, gpointer user_data)
+static void imp_save_button_clicked (G_GNUC_UNUSED GtkButton *button,
+                                     gpointer user_data)
 {
     intf_win *intf_w = (intf_win *)user_data;
     gchar *entry_filename, *filename, *filename_end;
@@ -503,11 +486,10 @@ static void imp_save_button_clicked(GtkButton *button, gpointer user_data)
     else
         g_warning("save_button_clicked: filename MISSING");
     g_free(entry_filename);
-
-    (void)button;
 }
 
-static void exp_save_button_clicked(GtkButton *button, gpointer user_data)
+static void exp_save_button_clicked (G_GNUC_UNUSED GtkButton *button,
+                                     gpointer user_data)
 {
     intf_win *intf_w = (intf_win *)user_data;
     gchar *entry_filename, *entry_uids;
@@ -540,11 +522,10 @@ static void exp_save_button_clicked(GtkButton *button, gpointer user_data)
         g_warning("save_button_clicked: filename MISSING");
     g_free(entry_filename);
     g_free(entry_uids);
-
-    (void)button;
 }
 
-static void for_open_button_clicked(GtkButton *button, gpointer user_data)
+static void for_open_button_clicked (G_GNUC_UNUSED GtkButton *button,
+                                     gpointer user_data)
 {
     intf_win *intf_w = (intf_win *)user_data;
     GtkWidget *f_chooser;
@@ -576,8 +557,6 @@ static void for_open_button_clicked(GtkButton *button, gpointer user_data)
     }
 
     gtk_widget_destroy(f_chooser);
-
-    (void)button;
 }
 
 static void orage_foreign_file_remove_line(gint del_line)
@@ -629,7 +608,8 @@ gboolean orage_foreign_file_remove(gchar *filename)
     return(TRUE);
 }
 
-static void for_remove_button_clicked(GtkButton *button, gpointer user_data)
+static void for_remove_button_clicked (G_GNUC_UNUSED GtkButton *button,
+                                       gpointer user_data)
 {
 #undef P_N
 #define P_N "for_remove_button_clicked: "
@@ -638,17 +618,14 @@ static void for_remove_button_clicked(GtkButton *button, gpointer user_data)
     g_message (P_N "Removing foreign file %s (%s).", g_par.foreign_data[del_line].name, g_par.foreign_data[del_line].file);
     orage_foreign_file_remove_line(del_line);
     g_message (P_N "Foreign file removed and Orage alarms refreshed.");
-
-    (void)button;
 }
 
-static void for_remove_button_clicked2(GtkButton *button, gpointer user_data)
+static void for_remove_button_clicked2 (G_GNUC_UNUSED GtkButton *button,
+                                        gpointer user_data)
 {
     intf_win *intf_w = (intf_win *)user_data;
 
     refresh_foreign_files(intf_w, FALSE);
-
-    (void)button;
 }
 
 static void refresh_foreign_files(intf_win *intf_w, const gboolean first)
@@ -816,7 +793,8 @@ gboolean orage_foreign_file_add(const gchar *filename, const gboolean read_only
     return(orage_foreign_file_add_internal(filename, name, read_only, NULL));
 }
 
-static void for_add_button_clicked(GtkButton *button, gpointer user_data)
+static void for_add_button_clicked (G_GNUC_UNUSED GtkButton *button,
+                                    gpointer user_data)
 {
 #undef P_N
 #define P_N "for_add_button_clicked: "
@@ -836,8 +814,6 @@ static void for_add_button_clicked(GtkButton *button, gpointer user_data)
         g_message (P_N "New foreign file %s (%s) added.", entry_name
                 , entry_filename);
     }
-
-    (void)button;
 }
 
 static void close_intf_w(gpointer user_data)
@@ -849,27 +825,24 @@ static void close_intf_w(gpointer user_data)
     interface_lock = FALSE;
 }
 
-static void close_button_clicked(GtkButton *button, gpointer user_data)
+static void close_button_clicked (G_GNUC_UNUSED GtkButton *button,
+                                  gpointer user_data)
 {
     close_intf_w(user_data);
-
-    (void)button;
 }
 
-static void filemenu_close_activated(GtkMenuItem *menuitem, gpointer user_data)
+static void filemenu_close_activated (G_GNUC_UNUSED GtkMenuItem *menuitem,
+                                      gpointer user_data)
 {
     close_intf_w(user_data);
-
-    (void)menuitem;
 }
 
-static gboolean on_Window_delete_event(GtkWidget *w, GdkEvent *e
-        , gpointer user_data)
+static gboolean on_Window_delete_event (G_GNUC_UNUSED GtkWidget *w,
+                                        G_GNUC_UNUSED GdkEvent *e,
+                                        gpointer user_data)
 {
     close_intf_w(user_data);
 
-    (void)w;
-    (void)e;
     return(FALSE);
 }
 
@@ -948,30 +921,33 @@ static void handle_file_drag_data(GtkWidget *widget, GdkDragContext *context
     gtk_drag_finish(context, TRUE, FALSE, d_time);
 }
 
-static void imp_file_drag_data_received(GtkWidget *widget
-        , GdkDragContext *context, gint x, gint y, GtkSelectionData *data
-        , guint info, guint d_time)
+static void imp_file_drag_data_received (GtkWidget *widget,
+                                         GdkDragContext *context,
+                                         G_GNUC_UNUSED gint x,
+                                         G_GNUC_UNUSED gint y,
+                                         GtkSelectionData *data,
+                                         G_GNUC_UNUSED guint info,
+                                         guint d_time)
 {
     handle_file_drag_data(widget, context, data, d_time, TRUE);
-
-    (void)x;
-    (void)y;
-    (void)info;
 }
 
-static void exp_file_drag_data_received(GtkWidget *widget
-        , GdkDragContext *context, gint x, gint y, GtkSelectionData *data
-        , guint info, guint d_time)
+static void exp_file_drag_data_received (GtkWidget *widget,
+                                         GdkDragContext *context,
+                                         G_GNUC_UNUSED gint x,
+                                         G_GNUC_UNUSED gint y,
+                                         GtkSelectionData *data,
+                                         G_GNUC_UNUSED guint info,
+                                         guint d_time)
 {
     handle_file_drag_data(widget, context, data, d_time, FALSE);
-
-    (void)x;
-    (void)y;
-    (void)info;
 }
 
-static void uid_drag_data_received(GtkWidget *widget, GdkDragContext *context
-        , gint x, gint y, GtkSelectionData *data, guint info, guint d_time)
+static void uid_drag_data_received (G_GNUC_UNUSED GtkWidget *widget,
+                                    GdkDragContext *context,
+                                    G_GNUC_UNUSED gint x, G_GNUC_UNUSED gint y,
+                                    GtkSelectionData *data,
+                                    G_GNUC_UNUSED guint info, guint d_time)
 {
     if (gtk_selection_data_get_length (data) < 0) {
         g_warning("UID drag failed");
@@ -979,22 +955,14 @@ static void uid_drag_data_received(GtkWidget *widget, GdkDragContext *context
         return;
     }
     gtk_drag_finish(context, TRUE, FALSE, d_time);
-
-    (void)widget;
-    (void)x;
-    (void)y;
-    (void)info;
 }
 
 static gboolean drag_drop(GtkWidget *widget, GdkDragContext *context
-        , gint x, gint y, guint d_time)
+        , G_GNUC_UNUSED gint x, G_GNUC_UNUSED gint y, guint d_time)
 {
     gtk_drag_get_data(widget, context,
              GDK_POINTER_TO_ATOM (gdk_drag_context_list_targets (context)->data)
             , d_time);
-
-    (void)x;
-    (void)y;
 
     return(TRUE);
 }
@@ -1026,22 +994,20 @@ static void drag_and_drop_init(intf_win *intf_w)
             , G_CALLBACK(uid_drag_data_received), NULL);
 }
 
-static void exp_add_all_rb_clicked(GtkWidget *button, gpointer *user_data)
+static void exp_add_all_rb_clicked (G_GNUC_UNUSED GtkWidget *button,
+                                    gpointer *user_data)
 {
     intf_win *intf_w = (intf_win *)user_data;
 
     gtk_widget_set_sensitive(intf_w->iea_exp_id_entry, FALSE);
-
-    (void)button;
 }
 
-static void exp_add_id_rb_clicked(GtkWidget *button, gpointer *user_data)
+static void exp_add_id_rb_clicked (G_GNUC_UNUSED GtkWidget *button,
+                                   gpointer *user_data)
 {
     intf_win *intf_w = (intf_win *)user_data;
 
     gtk_widget_set_sensitive(intf_w->iea_exp_id_entry, TRUE);
-
-    (void)button;
 }
 
 static void create_import_export_tab(intf_win *intf_w)
@@ -1525,7 +1491,7 @@ static void create_foreign_file_tab(intf_win *intf_w)
     refresh_foreign_files(intf_w, TRUE);
 }
 
-void orage_external_interface(CalWin *xfcal)
+void orage_external_interface (G_GNUC_UNUSED CalWin *xfcal)
 {
     intf_win *intf_w = g_new(intf_win, 1);
 
@@ -1561,6 +1527,4 @@ void orage_external_interface(CalWin *xfcal)
 
     gtk_widget_show_all(intf_w->main_window);
     drag_and_drop_init(intf_w);
-
-    (void)xfcal;
 }
