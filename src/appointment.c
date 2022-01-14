@@ -1908,8 +1908,9 @@ static void orage_category_free_list(void)
 
 void orage_category_get_list(void)
 {
+    GdkRGBA rgba;
     OrageRc *orc;
-    gchar **cat_groups, *color;
+    gchar **cat_groups;
     gint i;
     orage_category_struct *cat;
 
@@ -1920,13 +1921,12 @@ void orage_category_get_list(void)
     cat_groups = orage_rc_get_groups(orc);
     for (i = 0; cat_groups[i] != NULL; i++) {
         orage_rc_set_group(orc, cat_groups[i]);
-        color = orage_rc_get_str(orc, ORAGE_RC_COLOUR, NULL);
-        if (color) {
+        if (orage_rc_read_color (orc, ORAGE_RC_COLOUR, &rgba, NULL))
+        {
             cat = g_new(orage_category_struct, 1);
             cat->category = g_strdup(cat_groups[i]);
-            gdk_rgba_parse (&cat->color, color);
+            cat->color = rgba;
             orage_category_list = g_list_prepend(orage_category_list, cat);
-            g_free(color);
         }
     }
     g_strfreev(cat_groups);

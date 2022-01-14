@@ -139,6 +139,18 @@ void orage_rc_put_bool(OrageRc *orc, const gchar *key, gboolean val);
 gboolean orage_rc_exists_item(OrageRc *orc, const gchar *key);
 void orage_rc_del_item(OrageRc *orc, const gchar *key);
 
+/** Read RGBA colour from configuration file.
+ *  described in orage rc, then if colour is not
+ *  @param orc Orage RC file refernce
+ *  @param key key for colour
+ *  @param rgba output colour.
+ *  @param def default colour. This colour is used only when colour is not
+ *         present or not pareseable in given rc file.
+ *  @retrun true when output rgba is updated, false if output not updated.
+ */
+gboolean orage_rc_read_color (OrageRc *orc, const gchar *key,
+                              GdkRGBA *rgba, const gchar *def);
+
 gint orage_info_dialog (GtkWindow *parent, const gchar *primary_text,
                                            const gchar *secondary_text);
 
@@ -186,5 +198,19 @@ void orage_status_icon_set_tooltip_markup (GtkStatusIcon *status_icon,
  *        'orage_util_image_button ("document-open", _("_Open"))'.
  */
 GtkWidget *orage_util_image_button (const gchar *icon_name, const gchar *label);
+
+/** This function take input string and try to convert to GdkRGBA, if conversion
+ *  failed, then default value will be converted.
+ *  @param color_str colour string to convert. This string may be in GDK RBGA
+ *         format or in legacy Orage format.
+ *  @param rgba converted output
+ *  @param def default value when colour_str can not be parsed. Only GDK RBGA
+ *         format is supported.
+ *  @return true when rgba was successfully updated, false color_str or def was
+ *         invalid
+ */
+gboolean orgage_str_to_rgba (const gchar *color_str,
+                             GdkRGBA *rgba,
+                             const gchar *def);
 
 #endif /* !__ORAGE_FUNCTIONS_H__ */

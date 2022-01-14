@@ -501,7 +501,7 @@ static GdkRGBA oc_rc_read_color (XfceRc *rc, char *par, char *def)
     GdkRGBA color;
 
     ret = xfce_rc_read_entry(rc, par, def);
-    if (gdk_rgba_parse (&color, ret) == FALSE)
+    if (orgage_str_to_rgba (ret, &color, def) == FALSE)
     {
         g_warning ("unable to read %s colour from rc file ret=(%s) def=(%s)",
                    par, ret, def);

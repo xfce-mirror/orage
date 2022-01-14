@@ -117,25 +117,12 @@ static gboolean read_string(OrageRc *rc, gchar *prop, GString *result)
     return(found);
 }
 
-static gboolean read_color (OrageRc *rc, const gchar *prop, GdkRGBA **result)
-{
-    gchar *color_str;
-    gboolean found = FALSE;
-
-    if (orage_rc_exists_item(rc, prop)) {
-        color_str = orage_rc_get_str (rc, prop, "#000000");
-        gdk_rgba_parse (*result, color_str);
-        found = TRUE;
-
-        g_free (color_str);
-    }
-    return(found);
-}
-
 static void read_attr(OrageRc *rc, text_attr_struct *attr)
 {
-    attr->clock_fg_modified = read_color(rc, "fg", &attr->clock_fg);
-    attr->clock_bg_modified = read_color(rc, "bg", &attr->clock_bg);
+    attr->clock_fg_modified =
+            orage_rc_read_color (rc, "fg", attr->clock_fg, "black");
+    attr->clock_bg_modified =
+            orage_rc_read_color (rc, "bg", attr->clock_bg, "white");
     attr->name_font_modified = 
             read_string(rc, "name_font", attr->name_font);
     attr->name_underline_modified = 

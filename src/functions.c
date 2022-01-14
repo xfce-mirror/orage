@@ -1208,6 +1208,29 @@ void orage_rc_del_item (OrageRc *orc, const gchar *key)
     g_key_file_remove_key (orc->rc, orc->cur_group, key, NULL);
 }
 
+gboolean orage_rc_read_color (OrageRc *orc, const gchar *key,
+                              GdkRGBA *rgba, const gchar *def)
+{
+    gboolean result;
+    gchar *color_str;
+
+    color_str = orage_rc_get_str (orc, key, NULL);
+    if (color_str)
+    {
+        result = orgage_str_to_rgba (color_str, rgba, def);
+        g_free (color_str);
+    }
+    else if (def)
+    {
+        g_warning ("unable to read colour from rc file, using default");
+        result = gdk_rgba_parse (rgba, def);
+    }
+    else
+        result = FALSE;
+
+    return result;
+}
+
 /*******************************************************
  * dialog functions
  *******************************************************/
@@ -1324,4 +1347,47 @@ GtkWidget *orage_util_image_button (const gchar *icon_name, const gchar *label)
     gtk_widget_show (button);
 
     return button;
+}
+
+gboolean orgage_str_to_rgba (const gchar *color_str,
+                             GdkRGBA *rgba,
+                             const gchar *def)
+{
+    unsigned int red;
+    unsigned int green;
+    unsigned int blue;
+    gboolean result;
+
+    if (strstr (color_str, "rgb"))
+    {
+        if (gdk_rgba_parse (rgba, color_str) == FALSE)
+        {
+            g_warning ("unable to parse rgba colour string '%s', using default",
+                       color_str);
+
+            result = gdk_rgba_parse (rgba, def);
+        }
+        else
+            result = TRUE;
+    }
+    else
+    {
+        if (sscanf (color_str, "%uR %uG %uB", &red, &green, &blue) == 3)
+        {
+            rgba->red = CLAMP ((double)red / 65535.0, 0.0, 1.0);
+            rgba->green = CLAMP ((double)green / 65535.0, 0.0, 1.0);
+            rgba->blue = CLAMP ((double)blue / 65535.0, 0.0, 1.0);
+            rgba->alpha = 1.0;
+            result = TRUE;
+        }
+        else
+        {
+            g_warning ("unable to parse legacy Orage colour string '%s', "
+                       "using default '%s'", color_str, def);
+
+            result = gdk_rgba_parse (rgba, def);
+        }
+    }
+
+    return result;
 }
