@@ -1499,7 +1499,7 @@ msgid "All appointments"
 msgstr "Mọi cuộc hẹn"
 
 #: ../src/interface.c:1041
-msgid "Named appointments: "
+msgid "Named appointments:"
 msgstr "Cuộc hẹn được đặt tên:"
 
 #: ../src/interface.c:1053
@@ -2024,18 +2024,6 @@ msgstr ""
 #: ../src/parameters.c:925
 msgid "Selected day"
 msgstr ""
-
-#: ../src/parameters.c:943
-msgid "Use dynamic tray icon"
-msgstr "Sử dụng biểu tượng thực trên khay hệ thống"
-
-#: ../src/parameters.c:948
-msgid "Use dynamic icon"
-msgstr "Sử dụng biểu tượng thực"
-
-#: ../src/parameters.c:954
-msgid "Dynamic icon shows current month and day of the month."
-msgstr "Biểu tượng thực sẽ hiển thị ngày và tháng hiện tại."
 
 #: ../src/parameters.c:962 ../src/parameters.c:967
 msgid "Use wakeup timer"

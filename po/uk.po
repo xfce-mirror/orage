@@ -1533,8 +1533,8 @@ msgid "All appointments"
 msgstr "Всі події"
 
 #: ../src/interface.c:1041
-msgid "Named appointments: "
-msgstr "Іменовані події: "
+msgid "Named appointments:"
+msgstr "Іменовані події:"
 
 #: ../src/interface.c:1053
 msgid ""
@@ -2058,18 +2058,6 @@ msgstr "Перший день тижня"
 #: ../src/parameters.c:925
 msgid "Selected day"
 msgstr "Вибраний день"
-
-#: ../src/parameters.c:943
-msgid "Use dynamic tray icon"
-msgstr "Використовувати динамічний значок пейджера"
-
-#: ../src/parameters.c:948
-msgid "Use dynamic icon"
-msgstr "Використовувати динамічний значок"
-
-#: ../src/parameters.c:954
-msgid "Dynamic icon shows current month and day of the month."
-msgstr "Динамічний значок показує поточний місяць і день місяця."
 
 #: ../src/parameters.c:962 ../src/parameters.c:967
 msgid "Use wakeup timer"

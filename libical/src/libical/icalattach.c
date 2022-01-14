@@ -3,7 +3,7 @@
   FILE: icalattach.c
   CREATOR: acampi 28 May 02
   
-  $Id$
+  $Id: icalattach.c 2 2021-01-06 09:02:24Z erx $
   $Locker$
     
 

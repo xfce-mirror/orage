@@ -2,7 +2,7 @@
   FILE: icalcalendar.c
   CREATOR: eric 23 December 1999
   
-  $Id$
+  $Id: icalcalendar.c 136 2021-06-02 06:16:06Z erx $
   $Locker$
     
  (C) COPYRIGHT 2000, Eric Busboom, http://www.softwarestudio.org

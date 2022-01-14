@@ -70,11 +70,7 @@
 #include "parameters.h"
 #include "interface.h"
 
-/*
-#define ORAGE_DEBUG 1
-*/
-
-
+#define ORAGE_TRACE 0
 
 static gboolean add_event(icalcomponent *c)
 {
@@ -83,19 +79,19 @@ static gboolean add_event(icalcomponent *c)
     icalcomponent *ca = NULL;
     char *uid;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-300, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     ca = icalcomponent_new_clone(c);
     if ((uid = (char *)icalcomponent_get_uid(ca)) == NULL) {
         uid = ic_generate_uid();
         icalcomponent_add_property(ca,  icalproperty_new_uid(uid));
-        orage_message(15, "Generated UID %s", uid);
+        g_message ("Generated UID %s", uid);
         g_free(uid);
 
     }
     if (!xfical_file_open(FALSE)) {
-        orage_message(250, P_N "ical file open failed");
+        g_critical (P_N "ical file open failed");
         return(FALSE);
     }
     icalcomponent_add_component(ic_ical, ca);
@@ -109,7 +105,8 @@ static gboolean add_event(icalcomponent *c)
 /* pre process the file to rule out some features, which orage does not
  * support so that we can do better conversion 
  */
-static gboolean pre_format(char *file_name_in, char *file_name_out)
+static gboolean pre_format(const gchar *file_name_in,
+                           const gchar *file_name_out)
 {
 #undef P_N
 #define P_N "pre_format: "
@@ -117,19 +114,19 @@ static gboolean pre_format(char *file_name_in, char *file_name_out)
     gsize text_len;
     GError *error = NULL;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-200, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
-    orage_message(15, _("Starting import file preprocessing"));
+    g_message (_("Starting import file preprocessing"));
     if (!g_file_get_contents(file_name_in, &text, &text_len, &error)) {
-        orage_message(250, P_N "Could not open ical file (%s) error:%s"
+        g_critical (P_N "Could not open ical file (%s) error:%s"
                 , file_name_in, error->message);
         g_error_free(error);
         return(FALSE);
     }
     /***** Check utf8 conformability *****/
     if (!g_utf8_validate(text, -1, NULL)) {
-        orage_message(250, P_N "is not in utf8 format. Conversion needed.\n (Use iconv and convert it into UTF-8 and import it again.)\n");
+        g_critical (P_N "is not in utf8 format. Conversion needed.\n (Use iconv and convert it into UTF-8 and import it again.)\n");
         return(FALSE);
         /* we don't know the real characterset, so we can't convert
         tmp = g_locale_to_utf8(text, -1, NULL, &cnt, NULL);
@@ -155,7 +152,7 @@ static gboolean pre_format(char *file_name_in, char *file_name_out)
             }
             *(tmp3-1) = 'Z'; /* this is 'bad'...but who cares...it is fast */
         }
-        orage_message(15, _("... Patched DCREATED to be CREATED."));
+        g_message (_("... Patched DCREATED to be CREATED."));
     }
 
     /***** 2: change absolute timezones into libical format *****/
@@ -170,19 +167,19 @@ static gboolean pre_format(char *file_name_in, char *file_name_out)
          * tmp3 = current search and eventually the real tzid */
         tmp = tmp+6; /* 6 = skip ";TZID=" */
         if (!(tmp2 = g_strstr_len(tmp, 100, "\n"))) { /* no end of line */
-            orage_message(150, P_N "timezone patch failed 1. no end-of-line found: %s", tmp);
+            g_warning (P_N "timezone patch failed 1. no end-of-line found: %s", tmp);
             continue;
         }
         tmp3 = tmp;
 
         tmp3++; /* skip '/' */
         if (!(tmp3 = g_strstr_len(tmp3, tmp2-tmp3, "/"))) { /* no more '/' */
-            orage_message(150, P_N "timezone patch failed 2. no / found: %s", tmp);
+            g_warning (P_N "timezone patch failed 2. no / found: %s", tmp);
             continue;
         }
         tmp3++; /* skip '/' */
         if (!(tmp3 = g_strstr_len(tmp3, tmp2-tmp3, "/"))) { /* no more '/' */
-            orage_message(150, P_N "timezone patch failed 3. no / found: %s", tmp);
+            g_warning (P_N "timezone patch failed 3. no / found: %s", tmp);
             continue;
         }
 
@@ -194,20 +191,20 @@ static gboolean pre_format(char *file_name_in, char *file_name_out)
         /* fill the end of the line with spaces */
         for (; tmp < tmp2; tmp++)
             *tmp = ' ';
-        orage_message(15, _("... Patched timezone to Orage format."));
+        g_message (_("... Patched timezone to Orage format."));
     }
 
     /***** All done: write file *****/
     if (!g_file_set_contents(file_name_out, text, -1, NULL)) {
-        orage_message(250, P_N "Could not write ical file (%s)", file_name_out);
+        g_critical (P_N "Could not write ical file (%s)", file_name_out);
         return(FALSE);
     }
     g_free(text);
-    orage_message(15, _("Import file preprocessing done"));
+    g_message (_("Import file preprocessing done"));
     return(TRUE);
 }
 
-gboolean xfical_import_file(char *file_name)
+gboolean xfical_import_file(const gchar *file_name)
 {
 #undef P_N
 #define P_N "xfical_import_file: "
@@ -216,8 +213,8 @@ gboolean xfical_import_file(char *file_name)
     icalcomponent *c1, *c2;
     int cnt1 = 0, cnt2 = 0;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     ical_file_name = g_strdup_printf("%s.orage", file_name);
     if (!pre_format(file_name, ical_file_name)) {
@@ -225,7 +222,7 @@ gboolean xfical_import_file(char *file_name)
         return(FALSE);
     }
     if ((file_ical = icalset_new_file(ical_file_name)) == NULL) {
-        orage_message(250, P_N "Could not open ical file (%s) %s"
+        g_critical (P_N "Could not open ical file (%s) %s"
                 , ical_file_name, icalerror_strerror(icalerrno));
         g_free(ical_file_name);
         return(FALSE);
@@ -247,7 +244,7 @@ gboolean xfical_import_file(char *file_name)
                 /* we ignore TIMEZONE component; Orage only uses internal
                  * timezones from libical */
                 else if (icalcomponent_isa(c2) != ICAL_VTIMEZONE_COMPONENT)
-                    orage_message(140, P_N "unknown component %s %s"
+                    g_warning (P_N "unknown component %s %s"
                             , icalcomponent_kind_to_string(
                                     icalcomponent_isa(c2))
                             , ical_file_name);
@@ -255,17 +252,17 @@ gboolean xfical_import_file(char *file_name)
 
         }
         else
-            orage_message(140, P_N "unknown icalset component %s in %s"
+            g_warning (P_N "unknown icalset component %s in %s"
                     , icalcomponent_kind_to_string(icalcomponent_isa(c1))
                     , ical_file_name);
     }
     if (cnt1 == 0) {
-        orage_message(150, P_N "No valid icalset components found");
+        g_warning (P_N "No valid icalset components found");
         g_free(ical_file_name);
         return(FALSE);
     }
     if (cnt2 == 0) {
-        orage_message(150, P_N "No valid ical components found");
+        g_warning (P_N "No valid ical components found");
         g_free(ical_file_name);
         return(FALSE);
     }
@@ -274,30 +271,29 @@ gboolean xfical_import_file(char *file_name)
     return(TRUE);
 }
 
-static gboolean export_prepare_write_file(char *file_name)
+static gboolean export_prepare_write_file(const gchar *file_name)
 {
 #undef P_N
 #define P_N "export_prepare_write_file: "
     gchar *tmp;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-200, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     if (strcmp(file_name, g_par.orage_file) == 0) {
-        orage_message(150, P_N "You do not want to overwrite Orage ical file! (%s)"
+        g_warning (P_N "You do not want to overwrite Orage ical file! (%s)"
                 , file_name);
         return(FALSE);
     }
     tmp = g_path_get_dirname(file_name);
     if (g_mkdir_with_parents(tmp, 0755)) { /* octal */
-        orage_message(250, P_N "Could not create directories (%s)"
-                , file_name);
+        g_critical (P_N "Could not create directories (%s)", file_name);
         return(FALSE);
     }
     g_free(tmp);
     if (g_file_test(file_name, G_FILE_TEST_EXISTS)) {
 	if (g_remove(file_name) == -1) {
-            orage_message(150, P_N "Failed to remove export file %s", file_name);
+            g_warning (P_N "Failed to remove export file %s", file_name);
         }
     }
     return(TRUE);
@@ -310,19 +306,19 @@ static gboolean export_all(char *file_name)
     gchar *text;
     gsize text_len;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-200, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     if (!export_prepare_write_file(file_name))
         return(FALSE);
     /* read Orage's ical file */
     if (!g_file_get_contents(g_par.orage_file, &text, &text_len, NULL)) {
-        orage_message(250, P_N "Could not open Orage ical file (%s)"
+        g_critical (P_N "Could not open Orage ical file (%s)"
                 , g_par.orage_file);
         return(FALSE);
     }
     if (!g_file_set_contents(file_name, text, -1, NULL)) {
-        orage_message(150, P_N "Could not write file (%s)"
+        g_warning (P_N "Could not write file (%s)"
                 , file_name);
         g_free(text);
         return(FALSE);
@@ -340,8 +336,8 @@ static void export_selected_uid(icalcomponent *base, gchar *uid_int
     gboolean key_found = FALSE;
     gchar *uid_ical;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-200, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     key_found = FALSE;
     for (c = icalcomponent_get_first_component(base, ICAL_ANY_COMPONENT);
@@ -355,7 +351,7 @@ static void export_selected_uid(icalcomponent *base, gchar *uid_int
         }
     }
     if (!key_found)
-        orage_message(150, P_N "not found %s from Orage", uid_int);
+        g_warning (P_N "not found %s from Orage", uid_int);
 }
 
 static gboolean export_selected(char *file_name, char *uids)
@@ -368,18 +364,17 @@ static gboolean export_selected(char *file_name, char *uids)
     gboolean more_uids;
     int i;
 
-#ifdef ORAGE_DEBUG
-    orage_message(-200, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     if (!export_prepare_write_file(file_name))
         return(FALSE);
     if (!ORAGE_STR_EXISTS(uids)) {
-        orage_message(150, P_N "UID list is empty");
+        g_warning (P_N "UID list is empty");
         return(FALSE);
     }
     if (!ic_internal_file_open(&x_ical, &x_fical, file_name, FALSE, FALSE)) {
-        orage_message(150, P_N "Failed to create export file %s"
-                , file_name);
+        g_warning (P_N "Failed to create export file %s", file_name);
         return(FALSE);
     }
     if (!xfical_file_open(TRUE)) {
@@ -390,7 +385,7 @@ static gboolean export_selected(char *file_name, char *uids)
     more_uids = TRUE;
     for (uid = uids; more_uids; ) {
         if (strlen(uid) < 5) {
-            orage_message(150, P_N "unknown appointment name %s", uid);
+            g_warning (P_N "unknown appointment name %s", uid);
             return(FALSE);
         }
         uid_int = uid+4;
@@ -407,14 +402,13 @@ static gboolean export_selected(char *file_name, char *uids)
                 export_selected_uid(ic_f_ical[i].ical, uid_int, x_ical);
             }
             else {
-                orage_message(150, P_N "unknown foreign file number %d, %s"
-                        , i, uid);
+                g_warning (P_N "unknown foreign file number %d, %s", i, uid);
                 return(FALSE);
             }
 
         }
         else {
-            orage_message(150, P_N "Unknown uid type (%s)", uid);
+            g_warning (P_N "Unknown uid type (%s)", uid);
         }
         
         if (uid_end != NULL)  /* we have more uids */
@@ -434,8 +428,8 @@ gboolean xfical_export_file(char *file_name, int type, char *uids)
 {
 #undef P_N
 #define P_N "xfical_export_file: "
-#ifdef ORAGE_DEBUG
-    orage_message(-100, P_N);
+#if ORAGE_TRACE
+    g_debug (P_N);
 #endif
     if (type == 0) { /* copy the whole file */
         return(export_all(file_name));
@@ -444,7 +438,7 @@ gboolean xfical_export_file(char *file_name, int type, char *uids)
         return(export_selected(file_name, uids));
     }
     else {
-        orage_message(260, P_N "Unknown app count");
+        g_critical (P_N "Unknown app count");
         return(FALSE);
     }
 }

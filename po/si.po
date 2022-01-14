@@ -1387,7 +1387,7 @@ msgid "All appointments"
 msgstr ""
 
 #: ../src/interface.c:1050
-msgid "Named appointments: "
+msgid "Named appointments:"
 msgstr ""
 
 #: ../src/interface.c:1062
@@ -1849,18 +1849,6 @@ msgstr ""
 
 #: ../src/parameters.c:819
 msgid "Select Previously Selected Date"
-msgstr ""
-
-#: ../src/parameters.c:836
-msgid "Use dynamic tray icon"
-msgstr ""
-
-#: ../src/parameters.c:841
-msgid "Use dynamic icon"
-msgstr ""
-
-#: ../src/parameters.c:847
-msgid "Dynamic icon shows current month and day of the month."
 msgstr ""
 
 #: ../src/parameters.c:856

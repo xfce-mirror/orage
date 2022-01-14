@@ -3,7 +3,7 @@
   FILE: icalarray.c
   CREATOR: Damon Chaplin 07 March 2001
   
-  $Id$
+  $Id: icalarray.c 2 2021-01-06 09:02:24Z erx $
   $Locker$
     
  (C) COPYRIGHT 2001, Ximian, Inc.

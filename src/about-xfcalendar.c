@@ -1,5 +1,6 @@
 /*      Orage - Calendar and alarm handler
  *
+ * Copyright (c) 2021 Erkki Moorits     (erkki.moorits at mail.ee)
  * Copyright (c) 2005-2011 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2004-2006 Mickael Graf (korbinus at xfce.org)
  *
@@ -26,32 +27,33 @@
 #endif
 
 #include <gtk/gtk.h>
+#include <glib.h>
 
 #include "orage-i18n.h"
 #include "tray_icon.h"
 #include "about-xfcalendar.h"
 
 
-void create_wAbout(GtkWidget *widget, gpointer user_data)
+void create_wAbout (G_GNUC_UNUSED GtkWidget *widget,
+                    G_GNUC_UNUSED gpointer user_data)
 {
   GtkWidget *dialog;
   GdkPixbuf *orage_logo;
   GtkAboutDialog *about;
-  const gchar *authors[] = {"Juha Kautto <juha@xfce.org>", _("Maintainer"), NULL};
+  const gchar *authors[] = {"Erkki Moorits <erkki.moorits@mail.ee>", _("Maintainer"),
+                            "Juha Kautto <juha@xfce.org>",
+                            NULL};
 
   dialog = gtk_about_dialog_new();
   about = (GtkAboutDialog *) dialog;
   gtk_about_dialog_set_program_name(about, "Orage");
   gtk_about_dialog_set_version(about, VERSION);
-  gtk_about_dialog_set_copyright(about, "Copyright © 2003-2011 Juha Kautto");
+  gtk_about_dialog_set_copyright(about, "Copyright © 2003-2021 Orage Team");
   gtk_about_dialog_set_comments(about, _("Manage your time with Orage"));
-  /*
-  gtk_about_dialog_set_license(about, XFCE_LICENSE_GPL);
-  */
   gtk_about_dialog_set_website(about, "http://www.xfce.org");
   gtk_about_dialog_set_authors(about, authors);
   gtk_about_dialog_set_documenters(about, authors);
-  orage_logo = orage_create_icon(FALSE, 48);
+  orage_logo = orage_create_icon(FALSE, 96);
   gtk_about_dialog_set_logo(about, orage_logo);
 
   gtk_window_set_default_size(GTK_WINDOW(dialog), 520, 440);

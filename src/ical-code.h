@@ -139,7 +139,7 @@ void xfical_file_close_force(void);
 
 xfical_appt *xfical_appt_alloc();
 char *xfical_appt_add(char *ical_file_id, xfical_appt *appt);
-xfical_appt *xfical_appt_get(char *ical_id);
+xfical_appt *xfical_appt_get(const gchar *ical_id);
 void xfical_appt_free(xfical_appt *appt);
 gboolean xfical_appt_mod(char *ical_id, xfical_appt *appt);
 gboolean xfical_appt_del(char *ical_id);
@@ -149,7 +149,7 @@ xfical_appt *xfical_appt_get_next_on_day(char *a_day, gboolean first, gint days
 xfical_appt *xfical_appt_get_next_with_string(char *str, gboolean first
         , gchar *file_type);
 void xfical_get_each_app_within_time(char *a_day, int days
-        , xfical_type type, gchar *file_type , GList **data);
+        , xfical_type type, const gchar *file_type , GList **data);
 
 void xfical_mark_calendar(GtkCalendar *gtkcal);
 void xfical_mark_calendar_recur(GtkCalendar *gtkcal, xfical_appt *appt);
@@ -165,7 +165,7 @@ gboolean xfical_unarchive(void);
 gboolean xfical_unarchive_uid(char *uid);
 #endif
 
-gboolean xfical_import_file(char *file_name);
+gboolean xfical_import_file(const gchar *file_name);
 gboolean xfical_export_file(char *file_name, int type, char *uids);
 
 gboolean xfical_file_check(gchar *file_name);

@@ -3,7 +3,7 @@
   FILE: icalattachimpl.h
   CREATOR: acampi 28 May 02
   
-  $Id$
+  $Id: icalattachimpl.h 2 2021-01-06 09:02:24Z erx $
 
 
  (C) COPYRIGHT 2000, Andrea Campi
