@@ -1542,8 +1542,8 @@ msgid "All appointments"
 msgstr "Все встречи"
 
 #: ../src/interface.c:1041
-msgid "Named appointments:"
-msgstr "Поименованные встречи:"
+msgid "Named appointments: "
+msgstr "Поименованные встречи: "
 
 #: ../src/interface.c:1053
 msgid ""
@@ -2067,6 +2067,18 @@ msgstr "Первый день недели"
 #: ../src/parameters.c:925
 msgid "Selected day"
 msgstr "Выбранный день"
+
+#: ../src/parameters.c:943
+msgid "Use dynamic tray icon"
+msgstr "Использовать динамический значок"
+
+#: ../src/parameters.c:948
+msgid "Use dynamic icon"
+msgstr "Динамический значок"
+
+#: ../src/parameters.c:954
+msgid "Dynamic icon shows current month and day of the month."
+msgstr "Динамический значок показывает текущие месяц и число. Используется только на панели оповещений."
 
 #: ../src/parameters.c:962 ../src/parameters.c:967
 msgid "Use wakeup timer"

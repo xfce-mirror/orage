@@ -1532,8 +1532,8 @@ msgid "All appointments"
 msgstr "ทุกนัดหมาย"
 
 #: ../src/interface.c:1041
-msgid "Named appointments:"
-msgstr "นัดหมายที่ตั้งชื่อ:"
+msgid "Named appointments: "
+msgstr "นัดหมายที่ตั้งชื่อ: "
 
 #: ../src/interface.c:1053
 msgid ""
@@ -2057,6 +2057,18 @@ msgstr "วันแรกของสัปดาห์"
 #: ../src/parameters.c:925
 msgid "Selected day"
 msgstr "วันที่เลือก"
+
+#: ../src/parameters.c:943
+msgid "Use dynamic tray icon"
+msgstr "ใช้ไอคอนถาดแบบพลวัต"
+
+#: ../src/parameters.c:948
+msgid "Use dynamic icon"
+msgstr "ใช้ไอคอนแบบพลวัต"
+
+#: ../src/parameters.c:954
+msgid "Dynamic icon shows current month and day of the month."
+msgstr "ไอคอนแบบพลวัตจะแสดงวันที่และเดือนปัจจุบัน"
 
 #: ../src/parameters.c:962 ../src/parameters.c:967
 msgid "Use wakeup timer"

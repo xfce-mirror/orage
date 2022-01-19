@@ -1532,8 +1532,8 @@ msgid "All appointments"
 msgstr "بارلىق دېيىشمىلەر"
 
 #: ../src/interface.c:1041
-msgid "Named appointments:"
-msgstr "ئىسىملىك دېيىشمىلەر:"
+msgid "Named appointments: "
+msgstr "ئىسىملىك دېيىشمىلەر: "
 
 #: ../src/interface.c:1053
 msgid ""
@@ -2057,6 +2057,18 @@ msgstr ""
 #: ../src/parameters.c:925
 msgid "Selected day"
 msgstr ""
+
+#: ../src/parameters.c:943
+msgid "Use dynamic tray icon"
+msgstr "ھەرىكەتچان قوندۇرما سىنبەلگىسى ئىشلەت"
+
+#: ../src/parameters.c:948
+msgid "Use dynamic icon"
+msgstr "ھەرىكەتچان سىنبەلگىسى ئىشلەت"
+
+#: ../src/parameters.c:954
+msgid "Dynamic icon shows current month and day of the month."
+msgstr "ھەرىكەتچان سىنبەلگىدە ئاي ۋە كۈن كۆرسىتىلسۇن."
 
 #: ../src/parameters.c:962 ../src/parameters.c:967
 msgid "Use wakeup timer"

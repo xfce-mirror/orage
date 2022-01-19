@@ -1538,7 +1538,7 @@ msgid "All appointments"
 msgstr "Tüm görevler"
 
 #: ../src/interface.c:1041
-msgid "Named appointments:"
+msgid "Named appointments: "
 msgstr "İsimlendirilmiş görevler:"
 
 #: ../src/interface.c:1053
@@ -2063,6 +2063,18 @@ msgstr "Haftanın ilk günü"
 #: ../src/parameters.c:925
 msgid "Selected day"
 msgstr "Seçilen gün"
+
+#: ../src/parameters.c:943
+msgid "Use dynamic tray icon"
+msgstr "Hareketli sistem simgesi kullan"
+
+#: ../src/parameters.c:948
+msgid "Use dynamic icon"
+msgstr "Hareketli simge kullan"
+
+#: ../src/parameters.c:954
+msgid "Dynamic icon shows current month and day of the month."
+msgstr "Hareketli simge mevcut ayı ve günlerini gösterir."
 
 #: ../src/parameters.c:962 ../src/parameters.c:967
 msgid "Use wakeup timer"

@@ -1537,8 +1537,8 @@ msgid "All appointments"
 msgstr "جميع المواعيد"
 
 #: ../src/interface.c:1041
-msgid "Named appointments:"
-msgstr "المواعيد مسماة:"
+msgid "Named appointments: "
+msgstr "المواعيد مسماة: "
 
 #: ../src/interface.c:1053
 msgid ""
@@ -2062,6 +2062,18 @@ msgstr "اليوم الأول من الأسبوع"
 #: ../src/parameters.c:925
 msgid "Selected day"
 msgstr "اليوم المحدد"
+
+#: ../src/parameters.c:943
+msgid "Use dynamic tray icon"
+msgstr "استخدام رموز متحركة في مصغرات الشريط"
+
+#: ../src/parameters.c:948
+msgid "Use dynamic icon"
+msgstr "استخدام الرمز المتحرك"
+
+#: ../src/parameters.c:954
+msgid "Dynamic icon shows current month and day of the month."
+msgstr "عرض رمز الشهر الحالي واليوم من الشهر بشكل متحرك."
 
 #: ../src/parameters.c:962 ../src/parameters.c:967
 msgid "Use wakeup timer"

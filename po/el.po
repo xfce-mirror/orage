@@ -1537,7 +1537,7 @@ msgid "All appointments"
 msgstr "Όλα τα ραντεβού"
 
 #: ../src/interface.c:1041
-msgid "Named appointments:"
+msgid "Named appointments: "
 msgstr ""
 
 #: ../src/interface.c:1053
@@ -2062,6 +2062,18 @@ msgstr "Πρώτη ημέρα της εβδομάδας"
 #: ../src/parameters.c:925
 msgid "Selected day"
 msgstr "Επιλεγμένη ημέρα"
+
+#: ../src/parameters.c:943
+msgid "Use dynamic tray icon"
+msgstr "Χρήση δυναμικού εικονιδίου πλαισίου συστήματος"
+
+#: ../src/parameters.c:948
+msgid "Use dynamic icon"
+msgstr "Χρήση δυναμικού εικονιδίου"
+
+#: ../src/parameters.c:954
+msgid "Dynamic icon shows current month and day of the month."
+msgstr "Το δυναμικό εικονίδιο εμφανίζει τον τρέχοντα μήνα και την τρέχουσα ημέρα του μήνα"
 
 #: ../src/parameters.c:962 ../src/parameters.c:967
 msgid "Use wakeup timer"

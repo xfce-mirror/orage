@@ -1536,8 +1536,8 @@ msgid "All appointments"
 msgstr "Svi sastanci"
 
 #: ../src/interface.c:1041
-msgid "Named appointments:"
-msgstr "Imenovani sastanci:"
+msgid "Named appointments: "
+msgstr "Imenovani sastanci: "
 
 #: ../src/interface.c:1053
 msgid ""
@@ -2061,6 +2061,18 @@ msgstr "Prvi dan u tjednu"
 #: ../src/parameters.c:925
 msgid "Selected day"
 msgstr "Odabrani dan"
+
+#: ../src/parameters.c:943
+msgid "Use dynamic tray icon"
+msgstr "Koristi dinamičnu ikonu u traci"
+
+#: ../src/parameters.c:948
+msgid "Use dynamic icon"
+msgstr "Koristi dinamičnu ikonu"
+
+#: ../src/parameters.c:954
+msgid "Dynamic icon shows current month and day of the month."
+msgstr "Dinamična ikona pokazuje trenutni mjesec i dan u mjesecu."
 
 #: ../src/parameters.c:962 ../src/parameters.c:967
 msgid "Use wakeup timer"

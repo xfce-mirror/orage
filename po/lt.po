@@ -1534,7 +1534,7 @@ msgid "All appointments"
 msgstr "Visi paskyrimai"
 
 #: ../src/interface.c:1041
-msgid "Named appointments:"
+msgid "Named appointments: "
 msgstr "Paskyrimai pavadinti:"
 
 #: ../src/interface.c:1053
@@ -2059,6 +2059,18 @@ msgstr "Pirmoji savaitės diena"
 #: ../src/parameters.c:925
 msgid "Selected day"
 msgstr "Pasirinkta diena"
+
+#: ../src/parameters.c:943
+msgid "Use dynamic tray icon"
+msgstr "Naudoti dinaminį sistemos dėklą"
+
+#: ../src/parameters.c:948
+msgid "Use dynamic icon"
+msgstr "Naudoti dinaminę piktogramą"
+
+#: ../src/parameters.c:954
+msgid "Dynamic icon shows current month and day of the month."
+msgstr "Dinaminė piktograma rodo dabartinį mėnesį ir mėnesio dieną."
 
 #: ../src/parameters.c:962 ../src/parameters.c:967
 msgid "Use wakeup timer"

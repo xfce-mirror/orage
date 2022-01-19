@@ -1535,8 +1535,8 @@ msgid "All appointments"
 msgstr "Alle afspraken"
 
 #: ../src/interface.c:1041
-msgid "Named appointments:"
-msgstr "Genoemde afspraken:"
+msgid "Named appointments: "
+msgstr "Genoemde afspraken: "
 
 #: ../src/interface.c:1053
 msgid ""
@@ -2060,6 +2060,18 @@ msgstr "Eerste dag van week"
 #: ../src/parameters.c:925
 msgid "Selected day"
 msgstr "Gekozen dag"
+
+#: ../src/parameters.c:943
+msgid "Use dynamic tray icon"
+msgstr "Gebruik dynamisch systeemvakpictogram"
+
+#: ../src/parameters.c:948
+msgid "Use dynamic icon"
+msgstr "Gebruik dynamisch pictogram"
+
+#: ../src/parameters.c:954
+msgid "Dynamic icon shows current month and day of the month."
+msgstr "Dynamisch pictogram toont huidige maand en dag"
 
 #: ../src/parameters.c:962 ../src/parameters.c:967
 msgid "Use wakeup timer"

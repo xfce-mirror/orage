@@ -1544,8 +1544,8 @@ msgid "All appointments"
 msgstr "Tous les rendez-vous"
 
 #: ../src/interface.c:1041
-msgid "Named appointments:"
-msgstr "Rendez-vous nommés:"
+msgid "Named appointments: "
+msgstr "Rendez-vous nommés :"
 
 #: ../src/interface.c:1053
 msgid ""
@@ -2069,6 +2069,18 @@ msgstr "Premier jour de la semaine"
 #: ../src/parameters.c:925
 msgid "Selected day"
 msgstr "Jour sélectionné"
+
+#: ../src/parameters.c:943
+msgid "Use dynamic tray icon"
+msgstr "Utiliser une icône de notification dynamique"
+
+#: ../src/parameters.c:948
+msgid "Use dynamic icon"
+msgstr "Utiliser une icône dynamique"
+
+#: ../src/parameters.c:954
+msgid "Dynamic icon shows current month and day of the month."
+msgstr "L’icône dynamique affiche le mois en cours et le jour du mois."
 
 #: ../src/parameters.c:962 ../src/parameters.c:967
 msgid "Use wakeup timer"

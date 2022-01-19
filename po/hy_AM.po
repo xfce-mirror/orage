@@ -1532,7 +1532,7 @@ msgid "All appointments"
 msgstr "Բոլոր ժամադրութիւնները"
 
 #: ../src/interface.c:1041
-msgid "Named appointments:"
+msgid "Named appointments: "
 msgstr "Անուանուած սաքրաւորումներ՝"
 
 #: ../src/interface.c:1053
@@ -2057,6 +2057,18 @@ msgstr "Շաբաթուա առաջին աւր"
 #: ../src/parameters.c:925
 msgid "Selected day"
 msgstr "Նշուած աւր"
+
+#: ../src/parameters.c:943
+msgid "Use dynamic tray icon"
+msgstr "Աւգտագործել  շարժուն դարակի պատկերակ"
+
+#: ../src/parameters.c:948
+msgid "Use dynamic icon"
+msgstr "Աւգտագործել շարժուն դարակ"
+
+#: ../src/parameters.c:954
+msgid "Dynamic icon shows current month and day of the month."
+msgstr "Շարժուն պատկերակը ցուցադրում է ընթացիկ ամիսը եւ ամսուա աւրը։"
 
 #: ../src/parameters.c:962 ../src/parameters.c:967
 msgid "Use wakeup timer"

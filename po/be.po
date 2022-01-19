@@ -1533,8 +1533,8 @@ msgid "All appointments"
 msgstr "Усе прызначэнні"
 
 #: ../src/interface.c:1041
-msgid "Named appointments:"
-msgstr "Прызначэнні з назвай:"
+msgid "Named appointments: "
+msgstr "Прызначэнні з назвай: "
 
 #: ../src/interface.c:1053
 msgid ""
@@ -2058,6 +2058,18 @@ msgstr "Першы дзень тыдня"
 #: ../src/parameters.c:925
 msgid "Selected day"
 msgstr "Абраны дзень"
+
+#: ../src/parameters.c:943
+msgid "Use dynamic tray icon"
+msgstr "Ужываць дынамічны значок на прасторы апавяшчэнняў"
+
+#: ../src/parameters.c:948
+msgid "Use dynamic icon"
+msgstr "Ужываць дынамічны значок"
+
+#: ../src/parameters.c:954
+msgid "Dynamic icon shows current month and day of the month."
+msgstr "Дынамічны значок паказвае бягучы месяц і дзень месяца."
 
 #: ../src/parameters.c:962 ../src/parameters.c:967
 msgid "Use wakeup timer"

@@ -1534,8 +1534,8 @@ msgid "All appointments"
 msgstr "Toles cites"
 
 #: ../src/interface.c:1041
-msgid "Named appointments:"
-msgstr "Cites con nome:"
+msgid "Named appointments: "
+msgstr "Cites con nome: "
 
 #: ../src/interface.c:1053
 msgid ""
@@ -2059,6 +2059,18 @@ msgstr "Primer día de la selmana"
 #: ../src/parameters.c:925
 msgid "Selected day"
 msgstr "Día esbilláu"
+
+#: ../src/parameters.c:943
+msgid "Use dynamic tray icon"
+msgstr "Usar iconu de bandexa dinámicu"
+
+#: ../src/parameters.c:948
+msgid "Use dynamic icon"
+msgstr "Usar icOnu dinámicu"
+
+#: ../src/parameters.c:954
+msgid "Dynamic icon shows current month and day of the month."
+msgstr "Los iconos dinámicos amuesen el mes y el día del mes d'anguaño. "
 
 #: ../src/parameters.c:962 ../src/parameters.c:967
 msgid "Use wakeup timer"

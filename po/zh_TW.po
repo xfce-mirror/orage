@@ -1538,7 +1538,7 @@ msgid "All appointments"
 msgstr "所有約會"
 
 #: ../src/interface.c:1041
-msgid "Named appointments:"
+msgid "Named appointments: "
 msgstr "命名的約會："
 
 #: ../src/interface.c:1053
@@ -2063,6 +2063,18 @@ msgstr "一週首天"
 #: ../src/parameters.c:925
 msgid "Selected day"
 msgstr "所選日子"
+
+#: ../src/parameters.c:943
+msgid "Use dynamic tray icon"
+msgstr "使用動態系統匣圖示"
+
+#: ../src/parameters.c:948
+msgid "Use dynamic icon"
+msgstr "使用動態圖示"
+
+#: ../src/parameters.c:954
+msgid "Dynamic icon shows current month and day of the month."
+msgstr "動態圖示會顯示目前的月份和日期。"
 
 #: ../src/parameters.c:962 ../src/parameters.c:967
 msgid "Use wakeup timer"
