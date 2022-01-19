@@ -44,13 +44,14 @@ static void write_string(OrageRc *rc, gchar *prop, GString *string)
         orage_rc_put_str(rc, prop, string->str);
 }
 
-static void write_color(OrageRc *rc, gchar *prop, GdkColor *color)
+static void write_color (OrageRc *rc, const gchar *prop, const GdkRGBA *color)
 {
-    gchar tmp[100];
+    gchar *color_str;
 
     if (color) {
-        sprintf(tmp, "%uR %uG %uB", color->red, color->green, color->blue);
-        orage_rc_put_str(rc, prop, tmp);
+        color_str = gdk_rgba_to_string (color);
+        orage_rc_put_str (rc, prop, color_str);
+        g_free (color_str);
     }
 }
 
@@ -116,32 +117,12 @@ static gboolean read_string(OrageRc *rc, gchar *prop, GString *result)
     return(found);
 }
 
-static gboolean read_color(OrageRc *rc, gchar *prop, GdkColor **result)
-{
-    gchar *tmp;
-    gboolean found = FALSE;
-    unsigned int red, green, blue;
-
-    if (orage_rc_exists_item(rc, prop)) {
-        tmp = (gchar *)orage_rc_get_str(rc, prop, "");
-        /*
-        sscanf(tmp, "%uR %uG %uB", &(*result)->red, &(*result)->green
-                , &(*result)->blue);
-                */
-        sscanf(tmp, "%uR %uG %uB", &red, &green, &blue);
-        (*result)->red = red;
-        (*result)->green = green;
-        (*result)->blue = blue;
-        (*result)->pixel = 0;
-        found = TRUE;
-    }
-    return(found);
-}
-
 static void read_attr(OrageRc *rc, text_attr_struct *attr)
 {
-    attr->clock_fg_modified = read_color(rc, "fg", &attr->clock_fg);
-    attr->clock_bg_modified = read_color(rc, "bg", &attr->clock_bg);
+    attr->clock_fg_modified =
+            orage_rc_read_color (rc, "fg", attr->clock_fg, "black");
+    attr->clock_bg_modified =
+            orage_rc_read_color (rc, "bg", attr->clock_bg, "white");
     attr->name_font_modified = 
             read_string(rc, "name_font", attr->name_font);
     attr->name_underline_modified = 

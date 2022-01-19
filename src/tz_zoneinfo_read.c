@@ -43,6 +43,7 @@
 #include <string.h>
     /* strncmp, strcmp, strlen, strncat, strncpy, strdup, strstr */
 
+#include <glib.h>
 #include "tz_zoneinfo_read.h"
 
 /* This define is needed to get nftw instead if ftw.
@@ -82,7 +83,7 @@
 
 
 /* this contains all timezone data */
-orage_timezone_array tz_array={0, NULL, NULL, NULL, NULL, NULL, NULL};
+orage_timezone_array tz_array= {0};
 
 static char *zone_tab_buf = NULL, *country_buf = NULL, *zones_tab_buf = NULL;
 
@@ -151,7 +152,7 @@ static void read_file(const char *file_name, const struct stat *file_stat)
             perror("\tfread");
             return;
     }
-    if (fread(in_buf, 1, file_stat->st_size, file) < file_stat->st_size)
+    if ((off_t)fread(in_buf, 1, file_stat->st_size, file) < file_stat->st_size)
         if (ferror(file)) {
             printf("read_file: file read failed (%s)\n", file_name);
             fclose(file);
@@ -218,9 +219,9 @@ static void process_local_time_table(void)
     for (i = 0; i < timecnt; i++) {
         tmp = get_long();
         if (debug > 3) {
-            printf("GMT %d: %d =  %s", i, (int)tmp
+            printf("GMT %u: %d =  %s", i, (int)tmp
                     , asctime(gmtime((const time_t*)&tmp)));
-            printf("\tLOC %d: %d =  %s", i, (int)tmp
+            printf("\tLOC %u: %d =  %s", i, (int)tmp
                     , asctime(localtime((const time_t*)&tmp)));
         }
     }
@@ -238,7 +239,7 @@ static void process_local_time_type_table(void)
         tmp = in_head[0];
         in_head++;
         if (debug > 3)
-            printf("type %d: %d\n", i, (unsigned int)tmp);
+            printf("type %u: %d\n", i, (unsigned int)tmp);
     }
 }
 
@@ -258,7 +259,7 @@ static void process_ttinfo_table(void)
         tmp3 = in_head[0];
         in_head++;
         if (debug > 3)
-            printf("%d: gmtoffset:%ld isdst:%d abbr:%d\n", i, tmp
+            printf("%u: gmtoffset:%ld isdst:%d abbr:%d\n", i, tmp
                     , (unsigned int)tmp2, (unsigned int)tmp3);
     }
 }
@@ -274,7 +275,7 @@ static void process_abbr_table(void)
     tmp = in_head;
     for (i = 0; i < charcnt; i++) { /* we need to walk over the table */
         if (debug > 3)
-            printf("Abbr:%d (%d)(%s)\n", i, (int)strlen((char *)(tmp + i))
+            printf("Abbr:%u (%d)(%s)\n", i, (int)strlen((char *)(tmp + i))
                     ,tmp + i);
         i += strlen((char *)(tmp + i));
     }
@@ -292,7 +293,7 @@ static void process_leap_table(void)
         tmp = get_long();
         tmp2 = get_long();
         if (debug > 3)
-            printf("leaps %d: %lu =  %s (%lu)", i, tmp
+            printf("leaps %u: %lu =  %s (%lu)", i, tmp
                     , asctime(localtime((const time_t *)&tmp)), tmp2);
     }
 }
@@ -308,7 +309,7 @@ static void process_std_table(void)
         tmp = (unsigned long)in_head[0];
         in_head++;
         if (debug > 3)
-            printf("stds %d: %d\n", i, (unsigned int)tmp);
+            printf("stds %u: %u\n", i, (unsigned int)tmp);
     }
 }
 
@@ -323,7 +324,7 @@ static void process_gmt_table(void)
         tmp = (unsigned long)in_head[0];
         in_head++;
         if (debug > 3)
-            printf("gmts %d: %d\n", i, (unsigned int)tmp);
+            printf("gmts %u: %u\n", i, (unsigned int)tmp);
     }
 }
 
@@ -418,8 +419,7 @@ static int timezone_exists_in_ical(void)
 
 /* FIXME: need to check that if OUTFILE is given as a parameter,
  * INFILE is not a directory (or make outfile to act like directory also ? */
-static int write_ical_file(const char *in_file_name
-        , const struct stat *in_file_stat)
+static int write_ical_file(void)
 {
     int i;
     unsigned int tct_i, abbr_i;
@@ -580,7 +580,7 @@ static int file_call_process_file(const char *file_name
         free(in_buf);
         return(1);
     }
-    write_ical_file(file_name, sb);
+    write_ical_file ();
 
     free(in_buf);
     free(out_file);
@@ -594,7 +594,9 @@ static int file_call_process_file(const char *file_name
 static int file_call(const char *file_name, const struct stat *sb, int flags
         , struct FTW *f)
 {
+#ifdef FTW_ACTIONRETVAL
     int i;
+#endif
 
     if (debug > 1)
         printf("\nfile_call: start\n");
@@ -618,6 +620,7 @@ static int file_call(const char *file_name, const struct stat *sb, int flags
             }
         }
 #else
+        (void)f;
         /* not easy to do that in BSD, where we do not have FTW_ACTIONRETVAL
            features. It can be done by checking differently */
         if (debug > 0)
@@ -657,7 +660,7 @@ static int check_parameters(void)
         }
         else { /* no errors */
             in_file = malloc(par_file_stat.st_size+1);
-            if ((fread(in_file, 1, par_file_stat.st_size, par_file) 
+            if (((off_t)fread(in_file, 1, par_file_stat.st_size, par_file)
                         < par_file_stat.st_size)
             && (ferror(par_file))) {
                 printf("check_parameters: error reading (%s)\n"
@@ -779,19 +782,23 @@ static void read_os_timezones(void)
     int zoneinfo_len=strlen("zoneinfo/");
     FILE *zone_tab_file;
     struct stat zone_tab_file_stat;
+    size_t len;
 
     /****** zone.tab file ******/
     if (zone_tab_buf) {
         return;
     }
+
+    len = in_file_base_offset + zoneinfo_len + 1;
     tz_dir = malloc(in_file_base_offset + zoneinfo_len + 1); /* '\0' */
     strncpy(tz_dir, in_file, in_file_base_offset);
     tz_dir[in_file_base_offset] = '\0'; 
-    strcat(tz_dir, "zoneinfo/"); /* now we have the base directory */
+    g_strlcat (tz_dir, "zoneinfo/", len); /* now we have the base directory */
 
-    zone_tab_file_name = malloc(strlen(tz_dir) + strlen(ZONETAB_FILE) + 1);
-    strcpy(zone_tab_file_name, tz_dir);
-    strcat(zone_tab_file_name, ZONETAB_FILE);
+    len = strlen(tz_dir) + strlen(ZONETAB_FILE) + 1;
+    zone_tab_file_name = malloc (len);
+    g_strlcpy (zone_tab_file_name, tz_dir, len);
+    g_strlcat (zone_tab_file_name, ZONETAB_FILE, len);
 
     free(tz_dir);
 
@@ -811,7 +818,7 @@ static void read_os_timezones(void)
         return;
     }
     zone_tab_buf = malloc(zone_tab_file_stat.st_size+1);
-    if ((fread(zone_tab_buf, 1, zone_tab_file_stat.st_size, zone_tab_file) < zone_tab_file_stat.st_size)
+    if (((off_t)fread(zone_tab_buf, 1, zone_tab_file_stat.st_size, zone_tab_file) < zone_tab_file_stat.st_size)
     && (ferror(zone_tab_file))) {
         printf("read_os_timezones: zone.tab file read failed (%s)\n"
                 , zone_tab_file_name);
@@ -831,24 +838,27 @@ static void read_countries(void)
     int zoneinfo_len=strlen("zoneinfo/");
     FILE *country_file;
     struct stat country_file_stat;
+    size_t len;
 
     /****** country=iso3166.tab file ******/
     if (country_buf) { /* we have read it already */
         return;
     }
 
-    tz_dir = malloc(in_file_base_offset + zoneinfo_len + 1); /* '\0' */
+    len = in_file_base_offset + zoneinfo_len + 1;
+    tz_dir = malloc (len); /* '\0' */
     strncpy(tz_dir, in_file, in_file_base_offset);
     tz_dir[in_file_base_offset] = '\0'; 
 #ifdef __OpenBSD__ 
-    strcat(tz_dir, "misc/"); /* this is shorter than "zoneinfo" so it is safe */
+    g_strlcat (tz_dir, "misc/", len); /* this is shorter than "zoneinfo" so it is safe */
 #else
-    strcat(tz_dir, "zoneinfo/"); /* now we have the base directory */
+    g_strlcat (tz_dir, "zoneinfo/", len); /* now we have the base directory */
 #endif
 
-    country_file_name = malloc(strlen(tz_dir) + strlen(COUNTRY_FILE) + 1);
-    strcpy(country_file_name, tz_dir);
-    strcat(country_file_name, COUNTRY_FILE);
+    len = strlen(tz_dir) + strlen(COUNTRY_FILE) + 1;
+    country_file_name = malloc (len);
+    g_strlcpy (country_file_name, tz_dir, len);
+    g_strlcat (country_file_name, COUNTRY_FILE, len);
     free(tz_dir);
 
     if (!(country_file = fopen(country_file_name, "r"))) {
@@ -867,7 +877,7 @@ static void read_countries(void)
         return;
     }
     country_buf = malloc(country_file_stat.st_size+1);
-    if ((fread(country_buf, 1, country_file_stat.st_size, country_file) < country_file_stat.st_size)
+    if (((off_t)fread(country_buf, 1, country_file_stat.st_size, country_file) < country_file_stat.st_size)
     && (ferror(country_file))) {
         printf("read_countries: iso3166.tab file read failed (%s)\n"
                 , country_file_name);
@@ -902,7 +912,7 @@ static void read_ical_timezones(void)
         return;
     }
     zones_tab_buf = malloc(zones_tab_file_stat.st_size+1);
-    if ((fread(zones_tab_buf, 1, zones_tab_file_stat.st_size, zones_tab_file) < zones_tab_file_stat.st_size)
+    if (((off_t)fread(zones_tab_buf, 1, zones_tab_file_stat.st_size, zones_tab_file) < zones_tab_file_stat.st_size)
     && (ferror(zones_tab_file))) {
         printf("read_ical_timezones: zones.tab file read failed (%s)\n"
                 , ICAL_ZONES_TAB_FILE_LOC);
@@ -995,7 +1005,7 @@ orage_timezone_array get_orage_timezones(int show_details, int ical)
     return(tz_array);
 }
 
-void free_orage_timezones(int show_details)
+void free_orage_timezones (void)
 {
     int i;
 
