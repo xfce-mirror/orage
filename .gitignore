@@ -1,3 +1,4 @@
+*.desktop
 *.gmo
 *.la
 *.lo
@@ -20,7 +21,6 @@ configure
 configure.ac
 depcomp
 globaltime/globaltime
-globaltime/globaltime.desktop
 install-sh
 intltool-extract.in
 intltool-merge.in
@@ -41,12 +41,11 @@ missing
 nbproject
 org.xfce.calendar.service
 org.xfce.orage.service
-po/.intltool-merge-cache
+po/.intltool-merge-cache*
 po/Makefile.in.in
 po/POTFILES
 po/stamp-it
 src/orage
 stamp-h1
 tz_convert/tz_convert
-xfcalendar.desktop
 xfcalendar.spec
