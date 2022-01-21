@@ -1,6 +1,6 @@
 dnl Orage - Calendar application for Xfce
 dnl
-dnl Copyright (c) 2003-2021
+dnl Copyright (c) 2003-2022
 dnl         The Xfce development team. All rights reserved.
 dnl
 dnl Written for Xfce by Juha Kautto <juha@xfce.org>
@@ -23,7 +23,7 @@ dnl # YOU ARE DOING.
 
 
 dnl Initialize autoconf
-AC_COPYRIGHT([Copyright (c) 2003-2021
+AC_COPYRIGHT([Copyright (c) 2003-2022
         The Xfce development team. All rights reserved.
 
 Written for Xfce by Juha Kautto <juha@xfce.org>.])
@@ -48,6 +48,7 @@ AM_CONDITIONAL([HAVE_CYGWIN], [test "`uname | grep \"CYGWIN\"`" != ""])
 dnl Check for basic programs
 AC_PROG_INSTALL()
 IT_PROG_INTLTOOL([intltool_minimum_version])
+AC_PROG_SED
 AC_PROG_YACC()
 AC_PROG_LN_S()
 m4_version_prereq([2.70], [AC_PROG_LEX(noyywrap)], [AC_PROG_LEX])
