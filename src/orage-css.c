@@ -20,6 +20,10 @@
 
  */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include "orage-css.h"
 #include <gtk/gtk.h>
 #include <glib.h>
