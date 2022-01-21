@@ -21,7 +21,10 @@
  *      Based on XFce panel plugin clock and date-time plugin
  */
 
+#ifdef HAVE_CONFIG_H
 #include <config.h>
+#endif
+
 #include <sys/stat.h>
 #include <memory.h>
 #include <stdlib.h>
@@ -256,7 +259,7 @@ void oc_start_timer(OragePlugin *plugin)
     }
 }
 
-gboolean oc_check_if_same(OragePlugin *plugin, int diff)
+static gboolean oc_check_if_same(OragePlugin *plugin, int diff)
 {
     /* we compare if clock would change after diff seconds */
     /* instead of waiting for the time to really pass, we just move the clock
@@ -314,7 +317,7 @@ gboolean oc_check_if_same(OragePlugin *plugin, int diff)
     return(same_time);
 }
 
-void oc_tune_interval(OragePlugin *plugin)
+static void oc_tune_interval(OragePlugin *plugin)
 {
     /* check if clock changes after 2 secs */
     if (oc_check_if_same(plugin, 2)) { /* Continue checking */
@@ -678,7 +681,7 @@ void oc_write_rc_file (XfcePanelPlugin *plugin)
 }
 
 /* Create widgets and connect to signals */
-OragePlugin *orage_oc_new(XfcePanelPlugin *plugin)
+static OragePlugin *orage_oc_new(XfcePanelPlugin *plugin)
 {
     OragePlugin *orage_plugin = XFCE_ORAGE_PLUGIN (plugin);
 
@@ -822,6 +825,8 @@ void oc_construct(XfcePanelPlugin *plugin)
             G_CALLBACK(on_button_press_event_cb), clock);
 }
 
+XFCE_PANEL_DEFINE_PLUGIN (OragePlugin, orage_plugin)
+
 static void orage_plugin_class_init (OragePluginClass *klass)
 {
     XfcePanelPluginClass *plugin_class;
@@ -837,5 +842,3 @@ static void orage_plugin_class_init (OragePluginClass *klass)
 static void orage_plugin_init (G_GNUC_UNUSED OragePlugin *plugin)
 {
 }
-
-XFCE_PANEL_DEFINE_PLUGIN (OragePlugin, orage_plugin)
