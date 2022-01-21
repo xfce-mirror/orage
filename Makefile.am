@@ -51,6 +51,6 @@ rpm: dist
 	@rm -f $(PACKAGE)-$(VERSION).tar.gz
 
 html: Makefile
-	make -C doc html
+	$(MAKE) -C doc html
 
 # vi:set ts=8 sw=8 noet ai nocindent:
