@@ -472,12 +472,12 @@ static int write_ical_file(void)
              * 03:59 is returned as 03:59 (change did not yet happen) */
             prev_tc_time -= 1;
             localtime_r((const time_t *)&prev_tc_time, &cur_gm_time);
-            strftime(s_prev, 100, "%c", &cur_gm_time);
+            _strftime(s_prev, 100, "%c", &cur_gm_time);
             tz_array.prev[tz_array.count] = strdup(s_prev);
 
             tc_time -= 1;
             localtime_r((const time_t *)&tc_time, &cur_gm_time);
-            strftime(s_next, 100, "%c", &cur_gm_time);
+            _strftime(s_next, 100, "%c", &cur_gm_time);
             tz_array.next[tz_array.count] = strdup(s_next);
             /* get timechange type index */
             if (timecnt) {
@@ -503,7 +503,7 @@ static int write_ical_file(void)
         if (details && prev_tc_time) {
             prev_tc_time -= 1;
             localtime_r((const time_t *)&prev_tc_time, &cur_gm_time);
-            strftime(s_prev, 100, "%c", &cur_gm_time);
+            _strftime(s_prev, 100, "%c", &cur_gm_time);
             tz_array.prev[tz_array.count] = strdup(s_prev);
         }
         else
