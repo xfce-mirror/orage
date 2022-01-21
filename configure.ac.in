@@ -55,7 +55,7 @@ AM_CONDITIONAL([HAVE_CYGWIN], [test "`uname | grep \"CYGWIN\"`" != ""])
 dnl Check for basic programs
 AC_PROG_INSTALL()
 IT_PROG_INTLTOOL([intltool_minimum_version])
-AC_PROG_SED
+AC_PROG_SED()
 AC_PROG_YACC()
 AC_PROG_LN_S()
 AM_PROG_LEX()
