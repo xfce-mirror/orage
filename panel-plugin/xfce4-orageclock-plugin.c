@@ -259,7 +259,7 @@ void oc_start_timer(OragePlugin *plugin)
     }
 }
 
-gboolean oc_check_if_same(OragePlugin *plugin, int diff)
+static gboolean oc_check_if_same(OragePlugin *plugin, int diff)
 {
     /* we compare if clock would change after diff seconds */
     /* instead of waiting for the time to really pass, we just move the clock
@@ -317,7 +317,7 @@ gboolean oc_check_if_same(OragePlugin *plugin, int diff)
     return(same_time);
 }
 
-void oc_tune_interval(OragePlugin *plugin)
+static void oc_tune_interval(OragePlugin *plugin)
 {
     /* check if clock changes after 2 secs */
     if (oc_check_if_same(plugin, 2)) { /* Continue checking */
@@ -681,7 +681,7 @@ void oc_write_rc_file (XfcePanelPlugin *plugin)
 }
 
 /* Create widgets and connect to signals */
-OragePlugin *orage_oc_new(XfcePanelPlugin *plugin)
+static OragePlugin *orage_oc_new(XfcePanelPlugin *plugin)
 {
     OragePlugin *orage_plugin = XFCE_ORAGE_PLUGIN (plugin);
 
