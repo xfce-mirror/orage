@@ -38,7 +38,6 @@
 #include <string.h>
 #endif
 #include <time.h>
-#include <inttypes.h>
 
 #include <glib.h>
 #include <gtk/gtk.h>
@@ -113,37 +112,6 @@ static void handle_resuming(void)
     }
 }
 #endif
-
-/* This function monitors that we do not loose time.  It checks if longer time
-   than expected wakeup time has passed and fixes timings if that is the case.
-   This is needed since sometimes hibernate and suspend does not do a good job
-   in firing Orage timers and timing gets wrong. 
-NOTE: called from parameters.c set_wakeup_timer
-*/
-gboolean check_wakeup(gpointer user_data)
-{
-    static time_t tt_prev=0;
-    time_t tt_new=0;
-
-    tt_new = time(NULL);
-    if (tt_new - tt_prev > ORAGE_WAKEUP_TIMER_PERIOD * 2) {
-        /* we very rarely come here. */ 
-        /* user_data is normally NULL, but first call it has some value, 
-           which means that this is init call */
-        if (!user_data) { /* normal timer call */
-            g_message ("wakeup timer refreshing");
-            alarm_read();
-            /* It is quite possible that day did not change, 
-               but we need to reset timers */
-            orage_day_change(&tt_prev); 
-        }
-        else {
-            g_message ("wakeup timer init %" PRIiMAX, (intmax_t)tt_prev);
-        }
-    }
-    tt_prev = tt_new;
-    return(TRUE);
-}
 
 static void send_event (const char *event)
 {

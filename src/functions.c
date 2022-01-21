@@ -21,6 +21,10 @@
 
  */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #define _XOPEN_SOURCE /* glibc2 needs this */
 #define _XOPEN_SOURCE_EXTENDED 1 /* strptime needs this in posix systems */
 
@@ -45,6 +49,7 @@
 #include "orage-i18n.h"
 #include "functions.h"
 #include "parameters.h"
+#include "tz_zoneinfo_read.h"
 
 #define ORAGE_DEBUG 0
 
@@ -664,7 +669,7 @@ gchar *orage_tm_time_to_i18_time(struct tm *tm_time)
 {
     static gchar i18_time[128];
 
-    if (strftime (i18_time, sizeof (i18_time), "%x %R", tm_time) == 0)
+    if (_strftime (i18_time, sizeof (i18_time), "%x %R", tm_time) == 0)
         g_error("Orage: orage_tm_time_to_i18_time too long string in strftime");
     return(i18_time);
 }
@@ -673,7 +678,7 @@ gchar *orage_tm_date_to_i18_date (const struct tm *tm_date)
 {
     static gchar i18_date[128];
 
-    if (strftime ((char *)i18_date, sizeof (i18_date), "%x", tm_date) == 0)
+    if (_strftime ((char *)i18_date, sizeof (i18_date), "%x", tm_date) == 0)
         g_error ("orage_tm_date_to_i18_date too long string in strftime");
 
     return(i18_date);
@@ -800,7 +805,7 @@ char *orage_icaltime_to_i18_time_only(const char *icaltime)
     static char i18_time[10];
 
     t = orage_icaltime_to_tm_time(icaltime, TRUE);
-    if (strftime(i18_time, 10, "%R", &t) == 0)
+    if (_strftime(i18_time, 10, "%R", &t) == 0)
         g_error("Orage: orage_icaltime_to_i18_time_short too long string in strftime");
     return(i18_time);
 }

@@ -18,6 +18,16 @@
  */
 
 
+/* silence -Wformat-y2k warning when using %c or %x (see man strftime.3) */
+static inline size_t
+_strftime (char *s,
+           size_t max,
+           const char *fmt,
+           const struct tm *tm)
+{
+    return strftime(s, max, fmt, tm);
+}
+
 typedef struct _orage_timezone_array
 {
     int    count;     /* how many timezones we have */
