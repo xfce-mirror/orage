@@ -338,21 +338,21 @@ static int process_file(const char *file_name)
     return(0); /* ok */
 }
 
-static void create_backup_file(char *out_file)
+static void create_backup_file(char *_out_file)
 {
     char *backup_out_file, backup_ending[]=".old";
     size_t out_file_name_len, backup_ending_len, backup_out_file_name_len;
 
-    out_file_name_len = strlen(out_file);
+    out_file_name_len = strlen(_out_file);
     backup_ending_len = strlen(backup_ending);
     backup_out_file_name_len = out_file_name_len + backup_ending_len;
 
     backup_out_file = malloc(backup_out_file_name_len + 1);
-    strncpy(backup_out_file, out_file, backup_out_file_name_len + 1);
+    strncpy(backup_out_file, _out_file, backup_out_file_name_len + 1);
     backup_out_file[out_file_name_len] = '\0';
     strncat(backup_out_file, backup_ending, backup_out_file_name_len + 1);
 
-    if (rename(out_file, backup_out_file)) {
+    if (rename(_out_file, backup_out_file)) {
         printf("Error creating backup file %s:\n", backup_out_file);
         perror("\trename");
     }
