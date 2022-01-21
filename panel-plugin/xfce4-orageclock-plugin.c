@@ -825,6 +825,8 @@ void oc_construct(XfcePanelPlugin *plugin)
             G_CALLBACK(on_button_press_event_cb), clock);
 }
 
+XFCE_PANEL_DEFINE_PLUGIN (OragePlugin, orage_plugin)
+
 static void orage_plugin_class_init (OragePluginClass *klass)
 {
     XfcePanelPluginClass *plugin_class;
@@ -840,5 +842,3 @@ static void orage_plugin_class_init (OragePluginClass *klass)
 static void orage_plugin_init (G_GNUC_UNUSED OragePlugin *plugin)
 {
 }
-
-XFCE_PANEL_DEFINE_PLUGIN (OragePlugin, orage_plugin)
