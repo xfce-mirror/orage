@@ -18,4 +18,4 @@ EXTRA_DIST = \
 	orage.xml
 
 html: Makefile
-	make -C C html
+	$(MAKE) -C C html
