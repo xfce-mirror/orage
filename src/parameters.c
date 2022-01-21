@@ -30,6 +30,7 @@
 
 #include <stdio.h>
 #include <locale.h>
+#include <inttypes.h>
 
 #ifdef HAVE__NL_TIME_FIRST_WEEKDAY
 #include <langinfo.h>
@@ -49,8 +50,7 @@
 #include "parameters.h"
 #include "parameters_internal.h"
 #include "mainbox.h"
-
-gboolean check_wakeup(gpointer user_data); /* in main.c*/
+#include "reminder.h"
 
 static gboolean is_running = FALSE;
 
@@ -472,6 +472,36 @@ static void el_only_first_checkbutton_clicked(GtkCheckButton *cb
         , G_GNUC_UNUSED gpointer user_data)
 {
     g_par.el_only_first = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(cb));
+}
+
+/* This function monitors that we do not loose time.  It checks if longer time
+   than expected wakeup time has passed and fixes timings if that is the case.
+   This is needed since sometimes hibernate and suspend does not do a good job
+   in firing Orage timers and timing gets wrong.
+*/
+static gboolean check_wakeup(gpointer user_data)
+{
+    static time_t tt_prev=0;
+    time_t tt_new=0;
+
+    tt_new = time(NULL);
+    if (tt_new - tt_prev > ORAGE_WAKEUP_TIMER_PERIOD * 2) {
+        /* we very rarely come here. */
+        /* user_data is normally NULL, but first call it has some value,
+           which means that this is init call */
+        if (!user_data) { /* normal timer call */
+            g_message ("wakeup timer refreshing");
+            alarm_read();
+            /* It is quite possible that day did not change,
+               but we need to reset timers */
+            orage_day_change(&tt_prev);
+        }
+        else {
+            g_message ("wakeup timer init %" PRIiMAX, (intmax_t)tt_prev);
+        }
+    }
+    tt_prev = tt_new;
+    return(TRUE);
 }
 
 /* start monitoring lost seconds due to hibernate or suspend */
