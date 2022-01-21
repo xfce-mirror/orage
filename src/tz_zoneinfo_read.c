@@ -399,18 +399,17 @@ static int timezone_exists_in_ical(void)
      We will search if it exists also in the ical zones.tab file */
   /* new libical checks os zone.tab file, so we need to use that if using
      that library instead of our own private libical */
-    char *str;
 
 #ifdef HAVE_LIBICAL
-    if ((str = strchr(in_timezone_name, '/')) 
-    &&  (str = strstr(zone_tab_buf, in_timezone_name)))
+    if (strchr(in_timezone_name, '/')
+        && strstr(zone_tab_buf, in_timezone_name))
         return(1); /* yes, it is there */
     else
         return(0); /* not found */
 #else
     if (!zones_tab_buf)
         return(0);
-    if ((str = strstr(zones_tab_buf, in_timezone_name)))
+    if (strstr(zones_tab_buf, in_timezone_name))
         return(1); /* yes, it is there */
     else
         return(0); /* not found */

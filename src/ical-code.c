@@ -1188,7 +1188,6 @@ static void appt_add_recur_internal(xfical_appt *appt, icalcomponent *icmp)
     }
     if (cnt == 7) { /* all days defined... */
         *recur_p2 = *recur_p; /* ...reset to null... */
-        recur_p = recur_p2;   /* ...no need for BYDAY then */
     }
     else if (appt->interval > 1 && appt->freq == XFICAL_FREQ_WEEKLY) {
         /* we have BYDAY rule, let's check week starting date:
@@ -1199,8 +1198,7 @@ static void appt_add_recur_internal(xfical_appt *appt, icalcomponent *icmp)
          * Monday is default, so we can skip that, too
          * */
         if (g_par.ical_weekstartday)
-            recur_p += g_sprintf(recur_p, ";WKST=%s"
-                    , byday_a[g_par.ical_weekstartday]);
+            g_sprintf(recur_p, ";WKST=%s", byday_a[g_par.ical_weekstartday]);
     }
     rrule = icalrecurrencetype_from_string(recur_str);
     icalcomponent_add_property(icmp, icalproperty_new_rrule(rrule));
@@ -3563,7 +3561,7 @@ static void xfical_mark_calendar_from_component(GtkCalendar *gtkcal
             icalrecur_iterator_free(ri);
             if (!icaltime_is_null_time(nsdate)) {
                 nedate = icaltime_add(nsdate, per.duration);
-                marked = xfical_mark_calendar_days(gtkcal, year, month
+                xfical_mark_calendar_days(gtkcal, year, month
                         , nedate.year, nedate.month, nedate.day
                         , nedate.year, nedate.month, nedate.day);
             }
