@@ -9,6 +9,8 @@ dnl
 dnl Version information
 m4_define([orage_version], [4.16.0])
 
+AC_DEFINE(GLIB_VERSION_MAX_ALLOWED, GLIB_VERSION_2_52, Warn when using post 2_52 APIs)
+AC_DEFINE(GLIB_VERSION_MIN_REQUIRED, GLIB_VERSION_2_52, Don't warn about post 2_52 deprecations)
 m4_define([glib_minimum_version], [2.52.0])
 m4_define([gtk_minimum_version], [3.24.0])
 m4_define([xfce_minimum_version], [4.16.0])
