@@ -455,7 +455,7 @@ void oc_properties_options(GtkWidget *dlg, OragePlugin *plugin)
     g_signal_connect(cb, "toggled", G_CALLBACK(oc_hib_timing_toggled), plugin);
 }
 
-void oc_instructions(GtkWidget *dlg, G_GNUC_UNUSED OragePlugin *plugin)
+static void oc_instructions(GtkWidget *dlg, G_GNUC_UNUSED OragePlugin *plugin)
 {
     GtkWidget *hbox, *vbox, *label, *image;
 
