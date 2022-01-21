@@ -352,7 +352,6 @@ void oc_properties_options(GtkWidget *dlg, OragePlugin *plugin)
     ClockLine *line;
     GList   *tmp_list;
 
-    line_cnt = g_list_length(plugin->lines);
     table = gtk_grid_new ();
     gtk_container_set_border_width(GTK_CONTAINER(table), 10);
     g_object_set (table, "row-spacing", 6, "column-spacing", 6,  NULL);
