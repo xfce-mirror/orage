@@ -1110,7 +1110,6 @@ gboolean default_preferences (G_GNUC_UNUSED GtkWidget *widget)
     modify_struct *modify_default;
     GtkWidget *vbox, *hbox;
     GtkWidget *button;
-    GSList *dec_group;
 
     if (clocks.modified > 0)
         return(FALSE); /* safer with only one update ;o) */
@@ -1146,7 +1145,6 @@ gboolean default_preferences (G_GNUC_UNUSED GtkWidget *widget)
     g_signal_connect(G_OBJECT(button), "toggled"
             , G_CALLBACK(decoration_radio_button_pressed), "Standard");
 
-    dec_group = gtk_radio_button_get_group(GTK_RADIO_BUTTON (button));
     button = gtk_radio_button_new_with_label_from_widget(
             GTK_RADIO_BUTTON(button), _("None"));
     g_object_set (button, "hexpand", TRUE, "halign", GTK_ALIGN_FILL, NULL);
@@ -1173,8 +1171,8 @@ gboolean default_preferences (G_GNUC_UNUSED GtkWidget *widget)
     g_signal_connect(G_OBJECT(button), "toggled"
             , G_CALLBACK(clocksize_radio_button_pressed), "Equal");
 
-    dec_group = gtk_radio_button_get_group(GTK_RADIO_BUTTON (button));
-    button = gtk_radio_button_new_with_label(dec_group, _("Varying"));
+    button = gtk_radio_button_new_with_label_from_widget(
+            GTK_RADIO_BUTTON(button), _("Varying"));
     g_object_set (button, "hexpand", TRUE, "halign", GTK_ALIGN_FILL, NULL);
     if (!clocks.expand)
         gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), TRUE);

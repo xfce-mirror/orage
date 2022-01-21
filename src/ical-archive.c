@@ -245,7 +245,6 @@ static void xfical_icalcomponent_archive_recurrent(icalcomponent *e
     }
 
     p = icalcomponent_get_first_property(e, ICAL_RRULE_PROPERTY);
-    nsdate = icaltime_null_time();
     rrule = icalproperty_get_rrule(p);
     ri = icalrecur_iterator_new(rrule, sdate);
 

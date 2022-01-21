@@ -190,7 +190,7 @@ static char *format_time(el_win *el, xfical_appt *appt, char *par)
                 append_time(result, end_ical_time, i);
         }
         else {/* date only appointment */
-            i = g_strlcpy (result, _("All day"), result_len);
+            g_strlcpy (result, _("All day"), result_len);
         }
     }
     else { /* normally show date and time */
@@ -569,7 +569,6 @@ static void app_data(el_win *el, char *a_day, char *par)
             ical_type = XFICAL_TYPE_JOURNAL;
             break;
         default:
-            ical_type = XFICAL_TYPE_EVENT; /* to satisfy c-compiler checks */
             g_error("wrong page in app_data (%d)\n", el->page);
     }
 
