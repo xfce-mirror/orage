@@ -21,7 +21,10 @@
  *      Based on Xfce panel plugin clock and date-time plugin
  */
 
+#ifdef HAVE_CONFIG_H
 #include <config.h>
+#endif
+
 #include <sys/stat.h>
 #include <memory.h>
 #include <stdlib.h>
