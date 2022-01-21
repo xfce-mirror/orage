@@ -1,13 +1,18 @@
 dnl Orage - Calendar application for Xfce
 dnl
-dnl Copyright (c) 2003-2021
+dnl Copyright (c) 2003-2022
 dnl         The Xfce development team. All rights reserved.
 dnl
 dnl Written for Xfce by Juha Kautto <juha@xfce.org>
 dnl
 
 dnl Version information
-m4_define([orage_version], [4.16.0])
+m4_define([orage_version_major], [4])
+m4_define([orage_version_minor], [16])
+m4_define([orage_version_micro], [0])
+m4_define([orage_version_build], [@REVISION@])
+m4_define([orage_version_tag], [git]) # Leave empty for releases
+m4_define([orage_version], [orage_version_major().orage_version_minor().orage_version_micro()ifelse(orage_version_tag(), [git], [orage_version_tag()-orage_version_build()], [orage_version_tag()])])
 
 m4_define([glib_minimum_version], [2.52.0])
 m4_define([gtk_minimum_version], [3.24.0])
@@ -23,7 +28,7 @@ dnl # YOU ARE DOING.
 
 
 dnl Initialize autoconf
-AC_COPYRIGHT([Copyright (c) 2003-2021
+AC_COPYRIGHT([Copyright (c) 2003-2022
         The Xfce development team. All rights reserved.
 
 Written for Xfce by Juha Kautto <juha@xfce.org>.])
@@ -50,6 +55,7 @@ AM_CONDITIONAL([HAVE_CYGWIN], [test "`uname | grep \"CYGWIN\"`" != ""])
 dnl Check for basic programs
 AC_PROG_INSTALL()
 IT_PROG_INTLTOOL([intltool_minimum_version])
+AC_PROG_SED()
 AC_PROG_YACC()
 AC_PROG_LN_S()
 AM_PROG_LEX()
