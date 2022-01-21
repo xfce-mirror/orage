@@ -709,7 +709,7 @@ static void wit_write_data(int repeat_rule, struct rdate_prev_data **rdate
     snprintf(str, 99, "TZNAME:%s\n", prev->tz);
     fwrite(str, 1, strlen (str), ical_file);
 
-    snprintf(str, 30, "DTSTART:%04d%02d%02dT%02d%02d%02d\n"
+    snprintf(str, 99, "DTSTART:%04d%02d%02dT%02d%02d%02d\n"
             , first->start_time.tm_year + 1900
             , first->start_time.tm_mon  + 1
             , first->start_time.tm_mday
@@ -741,11 +741,11 @@ static void wit_write_data(int repeat_rule, struct rdate_prev_data **rdate
                 }
                 until_time.tm_mday = 1;
             }
-            snprintf(until_date, 30, "%04d%02d%02dT235959Z"
+            snprintf(until_date, 99, "%04d%02d%02dT235959Z"
                     , until_time.tm_year + 1900
                     , until_time.tm_mon  + 1
                     , until_time.tm_mday);
-            snprintf(str, 80
+            snprintf(str, 99
                     , "RRULE:FREQ=YEARLY;BYMONTH=%d;BYDAY=%d%s;UNTIL=%s\n"
                     , first->start_time.tm_mon + 1
                     , repeat_rule
@@ -758,7 +758,7 @@ static void wit_write_data(int repeat_rule, struct rdate_prev_data **rdate
                 printf("\t\t...RDATE\n");
             for (tmp_data = *rdate; tmp_data ; ) {
                 tmp_prev = tmp_data->data;
-                snprintf(str, 30, "RDATE:%04d%02d%02dT%02d%02d%02d\n"
+                snprintf(str, 99, "RDATE:%04d%02d%02dT%02d%02d%02d\n"
                         , tmp_prev.start_time.tm_year + 1900
                         , tmp_prev.start_time.tm_mon  + 1
                         , tmp_prev.start_time.tm_mday
