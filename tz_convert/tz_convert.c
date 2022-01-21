@@ -120,7 +120,7 @@ struct rdate_prev_data {
     struct rdate_prev_data   *next;
 };
 
-void read_file(const char *file_name, const struct stat *file_stat)
+static void read_file(const char *file_name, const struct stat *file_stat)
 {
     FILE *file;
     const size_t file_size = file_stat->st_size;
@@ -151,7 +151,7 @@ void read_file(const char *file_name, const struct stat *file_stat)
         printf("read_file: end\n");
 }
 
-int get_long()
+static int get_long(void)
 {
     int tmp;
 
@@ -163,7 +163,7 @@ int get_long()
     return(tmp);
 }
 
-int process_header()
+static int process_header(void)
 {
     if (debug > 2)
         printf("file id: %s\n", in_head);
@@ -195,7 +195,7 @@ int process_header()
     return(0);
 }
 
-void process_local_time_table()
+static void process_local_time_table(void)
 { /* points when time changes */
     time_t tmp;
     int i;
@@ -214,7 +214,7 @@ void process_local_time_table()
     }
 }
 
-void process_local_time_type_table()
+static void process_local_time_type_table(void)
 { /* pointers to table, which explain how time changes */
     unsigned char tmp;
     int i;
@@ -230,7 +230,7 @@ void process_local_time_type_table()
     }
 }
 
-void process_ttinfo_table()
+static void process_ttinfo_table(void)
 { /* table of different time changes = types */
     long tmp;
     unsigned char tmp2, tmp3;
@@ -251,7 +251,7 @@ void process_ttinfo_table()
     }
 }
 
-void process_abbr_table()
+static void process_abbr_table(void)
 {
     unsigned char *tmp;
     int i;
@@ -269,7 +269,7 @@ void process_abbr_table()
     in_head += charcnt;
 }
 
-void process_leap_table()
+static void process_leap_table(void)
 {
     unsigned long tmp, tmp2;
     int i;
@@ -285,7 +285,7 @@ void process_leap_table()
     }
 }
 
-void process_std_table()
+static void process_std_table(void)
 {
     unsigned char tmp;
     int i;
@@ -300,7 +300,7 @@ void process_std_table()
     }
 }
 
-void process_gmt_table()
+static void process_gmt_table(void)
 {
     unsigned char tmp;
     int i;
@@ -317,11 +317,11 @@ void process_gmt_table()
 
 /* go through the contents of the file and find the positions of 
  * needed data. Uses global pointer: in_head */
-int process_file(const char *file_name)
+static int process_file(const char *file_name)
 {
     if (debug > 1)
         printf("\n\nprocess_file: start\n");
-    if (process_header(file_name)) {
+    if (process_header()) {
         printf("File (%s) does not look like tz file. Skipping it.\n"
                 , file_name);
         return(1);
@@ -338,28 +338,28 @@ int process_file(const char *file_name)
     return(0); /* ok */
 }
 
-void create_backup_file(char *out_file)
+static void create_backup_file(char *_out_file)
 {
     char *backup_out_file, backup_ending[]=".old";
     size_t out_file_name_len, backup_ending_len, backup_out_file_name_len;
 
-    out_file_name_len = strlen(out_file);
+    out_file_name_len = strlen(_out_file);
     backup_ending_len = strlen(backup_ending);
     backup_out_file_name_len = out_file_name_len + backup_ending_len;
 
     backup_out_file = malloc(backup_out_file_name_len + 1);
-    strncpy(backup_out_file, out_file, backup_out_file_name_len + 1);
+    strncpy(backup_out_file, _out_file, backup_out_file_name_len + 1);
     backup_out_file[out_file_name_len] = '\0';
     strncat(backup_out_file, backup_ending, backup_out_file_name_len + 1);
 
-    if (rename(out_file, backup_out_file)) {
+    if (rename(_out_file, backup_out_file)) {
         printf("Error creating backup file %s:\n", backup_out_file);
         perror("\trename");
     }
     free(backup_out_file);
 }
 
-void create_ical_directory(const char *in_file_name)
+static void create_ical_directory(const char *in_file_name)
 {
     char *ical_dir_name;
 
@@ -385,7 +385,7 @@ void create_ical_directory(const char *in_file_name)
         printf("create_ical_directory: end\n");
 }
 
-int create_ical_file(const char *in_file_name)
+static int create_ical_file(const char *in_file_name)
 {
     struct stat out_stat;
     char ical_ending[]=".ics";
@@ -473,7 +473,7 @@ int create_ical_file(const char *in_file_name)
     return(0);
 }
 
-void write_ical_str(char *data)
+static void write_ical_str(char *data)
 {
     size_t len;
 
@@ -481,7 +481,7 @@ void write_ical_str(char *data)
     fwrite(data, 1, len, ical_file);
 }
 
-void write_ical_header()
+static void write_ical_header(void)
 {
     char *vcalendar = "BEGIN:VCALENDAR\nPRODID:-//Xfce//NONSGML Orage Olson-VTIMEZONE Converter//EN\nVERSION:2.0\n";
     char *vtimezone = "BEGIN:VTIMEZONE\nTZID:/softwarestudio.org/Olson_20011030_5/";
@@ -497,7 +497,7 @@ void write_ical_header()
     write_ical_str(line);
 }
 
-struct ical_timezone_data wit_get_data(int i
+static struct ical_timezone_data wit_get_data(int i
         , struct ical_timezone_data *prev) {
     unsigned long tc_time;
     unsigned int tct_i, abbr_i;
@@ -554,7 +554,7 @@ struct ical_timezone_data wit_get_data(int i
  * RDATE == 100
  * no repeat possible == 0
  * */
-int wit_get_repeat_rule(struct ical_timezone_data *prev
+static int wit_get_repeat_rule(struct ical_timezone_data *prev
         , struct ical_timezone_data *cur) {
     int monthdays[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     int repeat_rule;
@@ -633,7 +633,7 @@ int wit_get_repeat_rule(struct ical_timezone_data *prev
     return(repeat_rule);
 }
 
-void wit_write_data(int repeat_rule, struct rdate_prev_data **rdate
+static void wit_write_data(int repeat_rule, struct rdate_prev_data **rdate
         , struct ical_timezone_data *first, struct ical_timezone_data *prev
         , struct ical_timezone_data *ical_data)
 {
@@ -709,7 +709,7 @@ void wit_write_data(int repeat_rule, struct rdate_prev_data **rdate
     snprintf(str, 99, "TZNAME:%s\n", prev->tz);
     fwrite(str, 1, strlen (str), ical_file);
 
-    snprintf(str, 30, "DTSTART:%04d%02d%02dT%02d%02d%02d\n"
+    snprintf(str, 99, "DTSTART:%04d%02d%02dT%02d%02d%02d\n"
             , first->start_time.tm_year + 1900
             , first->start_time.tm_mon  + 1
             , first->start_time.tm_mday
@@ -741,11 +741,11 @@ void wit_write_data(int repeat_rule, struct rdate_prev_data **rdate
                 }
                 until_time.tm_mday = 1;
             }
-            snprintf(until_date, 30, "%04d%02d%02dT235959Z"
+            snprintf(until_date, 99, "%04d%02d%02dT235959Z"
                     , until_time.tm_year + 1900
                     , until_time.tm_mon  + 1
                     , until_time.tm_mday);
-            snprintf(str, 80
+            snprintf(str, 99
                     , "RRULE:FREQ=YEARLY;BYMONTH=%d;BYDAY=%d%s;UNTIL=%s\n"
                     , first->start_time.tm_mon + 1
                     , repeat_rule
@@ -758,7 +758,7 @@ void wit_write_data(int repeat_rule, struct rdate_prev_data **rdate
                 printf("\t\t...RDATE\n");
             for (tmp_data = *rdate; tmp_data ; ) {
                 tmp_prev = tmp_data->data;
-                snprintf(str, 30, "RDATE:%04d%02d%02dT%02d%02d%02d\n"
+                snprintf(str, 99, "RDATE:%04d%02d%02dT%02d%02d%02d\n"
                         , tmp_prev.start_time.tm_year + 1900
                         , tmp_prev.start_time.tm_mon  + 1
                         , tmp_prev.start_time.tm_mday
@@ -785,7 +785,7 @@ void wit_write_data(int repeat_rule, struct rdate_prev_data **rdate
         write_ical_str(std_end);
 }
 
-void wit_push_to_rdate_queue(struct rdate_prev_data **p_rdate_data
+static void wit_push_to_rdate_queue(struct rdate_prev_data **p_rdate_data
         , struct ical_timezone_data *p_data_prev)
 {
     struct rdate_prev_data *tmp_data = NULL, *tmp_data2 = NULL;
@@ -806,7 +806,7 @@ void wit_push_to_rdate_queue(struct rdate_prev_data **p_rdate_data
     }
 }
 
-void write_ical_timezones()
+static void write_ical_timezones(void)
 {
     int i;
     /* ical_data        contains the just read new record being processed
@@ -1070,7 +1070,7 @@ void write_ical_timezones()
         printf("\tskipping last dst write as dst init has not been done:\n");
 }
 
-void write_ical_ending()
+static void write_ical_ending(void)
 {
     char *end= "END:VTIMEZONE\nEND:VCALENDAR\n";
 
@@ -1079,7 +1079,7 @@ void write_ical_ending()
 
 /* FIXME: need to check that if OUTFILE is given as a parameter,
  * INFILE is not a directory (or make outfile to act like directory also ? */
-int write_ical_file(const char *in_file_name, const struct stat *in_file_stat)
+static int write_ical_file(const char *in_file_name, const struct stat *in_file_stat)
 {
     if (debug > 1)
         printf("***** write_ical_file: start *****\n\n");
@@ -1096,7 +1096,7 @@ int write_ical_file(const char *in_file_name, const struct stat *in_file_stat)
     return(0);
 }
 
-void write_parameters(const char *par_file_name)
+static void write_parameters(const char *par_file_name)
 {
     /* FIXME: currently only writing the location of system tz files.
      * It would be good to have a way to influence other parameters also.*/
@@ -1162,7 +1162,7 @@ void read_parameters(const char *par_file_name)
 }
 */
 
-int par_version()
+static int par_version(void)
 {
     printf(
         "tz_convert version (Orage utility) %s\n"
@@ -1175,7 +1175,7 @@ int par_version()
     return(1);
 }
 
-int par_help()
+static int par_help(void)
 {
     printf(
         "tz_convert converts operating system timezone (tz) files\n"
@@ -1195,7 +1195,7 @@ int par_help()
     return(1);
 }
 
-int get_parameters_popt(int argc, const char **argv)
+static int get_parameters_popt(int argc, const char **argv)
 {
     int par_type = 0, val, res = 0, i;
     char *tmp_str = NULL;
@@ -1353,7 +1353,7 @@ int get_parameters_popt(int argc, const char **argv)
     return(res);
 }
 
-void add_zone_tabs()
+static void add_zone_tabs(void)
 {
     /* ical index filename is zoneinfo/zones.tab 
      * and os file is zone.tab */
@@ -1453,7 +1453,7 @@ void add_zone_tabs()
 }
 
 /* The main code. This is called once per each file found */
-int file_call(const char *file_name, const struct stat *sb, int flags
+static int file_call(const char *file_name, const struct stat *sb, int flags
         , struct FTW *f)
 {
 #ifdef FTW_ACTIONRETVAL
@@ -1531,7 +1531,7 @@ int file_call(const char *file_name, const struct stat *sb, int flags
 }
 
 /* check the parameters and use defaults when possible */
-int check_parameters()
+static int check_parameters(void)
 {
     char *s_tz, *last_tz = NULL, tz[]="/zoneinfo", tz2[]="zoneinfo/";
     int tz_len, i;

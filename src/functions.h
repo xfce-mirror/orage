@@ -48,11 +48,6 @@
 
 #define ORAGE_STR_EXISTS(str) ((str != NULL) && (str[0] != 0))
 
-#if !GLIB_CHECK_VERSION(2,14,0)
-#define g_timeout_add_seconds(interval,func,data) \
-        g_timeout_add((interval)*1000, func, data)
-#endif
-
 typedef struct _OrageRc
 {
     GKeyFile *rc;
