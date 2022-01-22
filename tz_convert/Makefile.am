@@ -15,14 +15,16 @@ tz_convert_SOURCES =						\
 
 tz_convert_CFLAGS =						\
 	-DPACKAGE_DATA_DIR=\""$(datadir)"\"				\
-	-DPACKAGE_LOCALE_DIR=\""$(localedir)"\"
+	-DPACKAGE_LOCALE_DIR=\""$(localedir)"\" \
+	$(GLIB_CFLAGS)
 
 tz_convert_LDFLAGS =                        \
 	-lpopt
 
 
 tz_convert_LDADD =						\
-	$(INTLLIBS)
+	$(INTLLIBS) \
+	$(GLIB_LIBS)
 
 EXTRA_DIST =							\
 	$(man_MANS)								\
