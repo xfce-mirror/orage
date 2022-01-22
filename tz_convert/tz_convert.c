@@ -1647,9 +1647,9 @@ int main(int argc, const char **argv)
      * if it run into an error.
      * BSD lacks FTW_ACTIONRETVAL, so we only use it when available. */
 #ifdef FTW_ACTIONRETVAL
-    if (nftw(in_file, file_call, 10, FTW_PHYS | FTW_ACTIONRETVAL) == -1) {
+    if (in_file == NULL || nftw(in_file, file_call, 10, FTW_PHYS | FTW_ACTIONRETVAL) == -1) {
 #else
-    if (nftw(in_file, file_call, 10, FTW_PHYS) == -1) {
+    if (in_file == NULL || nftw(in_file, file_call, 10, FTW_PHYS) == -1) {
 #endif
         perror("nftw error in file handling");
         exit(EXIT_FAILURE);
