@@ -143,7 +143,7 @@ static void read_file(const char *file_name, const struct stat *file_stat)
         printf("***** size of file %s is %d bytes *****\n", file_name
                 , (int)file_stat->st_size);
     }
-    in_buf = malloc(file_stat->st_size);
+    in_buf = g_malloc0(file_stat->st_size);
     in_head = in_buf;
     in_tail = in_buf + file_stat->st_size - 1;
     file = fopen(file_name, "r");
