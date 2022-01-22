@@ -834,7 +834,7 @@ static void create_procedure_reminder(alarm_struct *l_alarm)
     gboolean status, active; / * active not used * /
     GError *error = NULL;
 #endif
-    gchar *cmd, *atime, *sep;
+    gchar *cmd, *atime, *sep = NULL;
     gint status;
 
 #if ORAGE_TRACE
@@ -859,7 +859,9 @@ static void create_procedure_reminder(alarm_struct *l_alarm)
     /* l_alarm->action_time format is <start-time - end-time>
     and times are in user format already. Problem is if that format contain
     string " - " already, but let's hope not.  */
-    sep = strstr(l_alarm->action_time, " - ");
+    if (l_alarm->action_time != NULL)
+        sep = strstr(l_alarm->action_time, " - ");
+
     if (sep) { /* we should always have this */
         if (strstr(sep+1, " - ")) {
             /* this is problem as now we have more than one separator.
