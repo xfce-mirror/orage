@@ -22,6 +22,7 @@
 #include <errno.h>
     /* errno */
 
+#include <glib.h>
 #include <stdlib.h>
     /* malloc, atoi, free, setenv */
 
@@ -130,7 +131,7 @@ static void read_file(const char *file_name, const struct stat *file_stat)
         printf("\n***** size of file %s is %zu bytes *****\n\n", file_name
                 , file_size);
     }
-    in_buf = malloc (file_size);
+    in_buf = g_malloc0 (file_size);
     in_head = in_buf;
     in_tail = in_buf + file_size - 1;
     file = fopen(file_name, "r");
