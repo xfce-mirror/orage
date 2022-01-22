@@ -143,7 +143,7 @@ static void read_file(const char *file_name, const struct stat *file_stat)
         printf("***** size of file %s is %d bytes *****\n", file_name
                 , (int)file_stat->st_size);
     }
-    in_buf = malloc(file_stat->st_size);
+    in_buf = g_malloc0(file_stat->st_size);
     in_head = in_buf;
     in_tail = in_buf + file_stat->st_size - 1;
     file = fopen(file_name, "r");
@@ -399,18 +399,17 @@ static int timezone_exists_in_ical(void)
      We will search if it exists also in the ical zones.tab file */
   /* new libical checks os zone.tab file, so we need to use that if using
      that library instead of our own private libical */
-    char *str;
 
 #ifdef HAVE_LIBICAL
-    if ((str = strchr(in_timezone_name, '/')) 
-    &&  (str = strstr(zone_tab_buf, in_timezone_name)))
+    if (strchr(in_timezone_name, '/')
+        && strstr(zone_tab_buf, in_timezone_name))
         return(1); /* yes, it is there */
     else
         return(0); /* not found */
 #else
     if (!zones_tab_buf)
         return(0);
-    if ((str = strstr(zones_tab_buf, in_timezone_name)))
+    if (strstr(zones_tab_buf, in_timezone_name))
         return(1); /* yes, it is there */
     else
         return(0); /* not found */

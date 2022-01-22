@@ -22,6 +22,7 @@
 #include <errno.h>
     /* errno */
 
+#include <glib.h>
 #include <stdlib.h>
     /* malloc, atoi, free, setenv */
 
@@ -130,7 +131,7 @@ static void read_file(const char *file_name, const struct stat *file_stat)
         printf("\n***** size of file %s is %zu bytes *****\n\n", file_name
                 , file_size);
     }
-    in_buf = malloc (file_size);
+    in_buf = g_malloc0 (file_size);
     in_head = in_buf;
     in_tail = in_buf + file_size - 1;
     file = fopen(file_name, "r");
@@ -1647,9 +1648,9 @@ int main(int argc, const char **argv)
      * if it run into an error.
      * BSD lacks FTW_ACTIONRETVAL, so we only use it when available. */
 #ifdef FTW_ACTIONRETVAL
-    if (nftw(in_file, file_call, 10, FTW_PHYS | FTW_ACTIONRETVAL) == -1) {
+    if (in_file == NULL || nftw(in_file, file_call, 10, FTW_PHYS | FTW_ACTIONRETVAL) == -1) {
 #else
-    if (nftw(in_file, file_call, 10, FTW_PHYS) == -1) {
+    if (in_file == NULL || nftw(in_file, file_call, 10, FTW_PHYS) == -1) {
 #endif
         perror("nftw error in file handling");
         exit(EXIT_FAILURE);
