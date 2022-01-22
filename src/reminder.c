@@ -146,8 +146,8 @@ void alarm_list_free(void)
             kept_l = g_list_concat(kept_l, alarm_l);
         }
         else { /* get rid of that l_alarm element */
-            alarm_free(alarm_l->data);
             g_par.alarm_list=g_list_remove(g_par.alarm_list, l_alarm);
+            alarm_free(l_alarm);
         }
     }
     g_list_free(g_par.alarm_list);
