@@ -52,7 +52,7 @@
 #include "mainbox.h"
 #include "reminder.h"
 
-static gboolean is_running = FALSE;
+static Itf *global_itf = NULL;
 
 /* Return the first day of the week, where 0=monday, 6=sunday.
  *     Borrowed from GTK+:s Calendar Widget, but modified
@@ -146,9 +146,9 @@ static void dialog_response(GtkWidget *dialog, gint response_id
     }
     else { /* delete signal or close response */
         write_parameters();
-        is_running = FALSE;
         gtk_widget_destroy(dialog);
         g_free(itf);
+        global_itf = NULL;
     }
 }
 
@@ -1496,14 +1496,11 @@ void write_parameters(void)
 
 void show_parameters(void)
 {
-    static Itf *dialog = NULL;
-
-    if (is_running) {
-        gtk_window_present(GTK_WINDOW(dialog->orage_dialog));
+    if (global_itf != NULL) {
+        gtk_window_present(GTK_WINDOW(global_itf->orage_dialog));
     }
     else {
-        is_running = TRUE;
-        dialog = create_parameter_dialog();
+        global_itf = create_parameter_dialog();
     }
 }
 

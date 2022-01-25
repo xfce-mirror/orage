@@ -1989,7 +1989,7 @@ static void fill_category_data(appt_win *apptw, xfical_appt *appt)
         while (*(tmp) == ' ' || *(tmp) == ',') /* skip blanks and , */
             tmp++; 
     }
-    if (category_fill_cb(GTK_COMBO_BOX_TEXT(apptw->Categories_cb), tmp)) {
+    if (category_fill_cb(GTK_COMBO_BOX_TEXT(apptw->Categories_cb), tmp) && tmp != NULL) {
         /* we found match. Let's try to hide that from the entry text */
         while (tmp != appt->categories 
                 && (*(tmp-1) == ' ' || *(tmp-1) == ','))

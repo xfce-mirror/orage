@@ -547,10 +547,8 @@ static gboolean process_args(int argc, char *argv[], gboolean running
 
 static gboolean check_orage_alive(void)
 {
-    Window xwindow;
-
-    if ((xwindow = XGetSelectionOwner(gdk_x11_get_default_xdisplay()
-            , gdk_x11_atom_to_xatom(atom_alive))) != None)
+    if (XGetSelectionOwner(gdk_x11_get_default_xdisplay(),
+                           gdk_x11_atom_to_xatom(atom_alive)) != None)
         return(TRUE); /* yes, we got selection owner, so orage must be there */
     else /* no selction owner, so orage is not running yet */
         return(FALSE);
