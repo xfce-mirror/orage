@@ -115,7 +115,7 @@ static gboolean read_string(OrageRc *rc, gchar *prop, GString *result)
     gboolean found = FALSE;
 
     if (orage_rc_exists_item(rc, prop)) {
-        result = g_string_assign(result, orage_rc_get_str(rc, prop, ""));
+        g_string_assign(result, orage_rc_get_str(rc, prop, ""));
         found = TRUE;
     }
     return(found);
