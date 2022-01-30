@@ -83,7 +83,7 @@ static gboolean add_event(icalcomponent *c)
     g_debug (P_N);
 #endif
     ca = icalcomponent_new_clone(c);
-    if ((uid = (char *)icalcomponent_get_uid(ca)) == NULL) {
+    if (icalcomponent_get_uid(ca) == NULL) {
         uid = ic_generate_uid();
         icalcomponent_add_property(ca,  icalproperty_new_uid(uid));
         g_message ("Generated UID %s", uid);
