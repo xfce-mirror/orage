@@ -1,374 +1,396 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Real School <translator_students@realschool.am>, 2019
+# Xfce Bot <transifex@xfce.org>, 2022
+# Hayk Andreasyan <hayk.andreasyan@realschool.am>, 2022
+# Real School <localization@ehayq.am>, 2022
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Xfce Apps\n"
+"Project-Id-Version: orage\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-23 12:30+0200\n"
-"PO-Revision-Date: 2019-07-22 13:55+0000\n"
-"Last-Translator: Real School <translator_students@realschool.am>\n"
-"Language-Team: Armenian (Armenia) (http://www.transifex.com/xfce/xfce-apps/language/hy_AM/)\n"
+"POT-Creation-Date: 2022-02-01 15:01+0100\n"
+"PO-Revision-Date: 2022-02-01 14:01+0000\n"
+"Last-Translator: Real School <localization@ehayq.am>, 2022\n"
+"Language-Team: Armenian (Armenia) (https://www.transifex.com/xfce/teams/16840/hy_AM/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: hy_AM\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../globaltime/globaltime.c:58
+#: ../globaltime/globaltime.c:59
 msgid "no underline"
 msgstr "առանց ընդգծման"
 
-#: ../globaltime/globaltime.c:58
+#: ../globaltime/globaltime.c:59
 msgid "single"
 msgstr "եզակի"
 
-#: ../globaltime/globaltime.c:58
+#: ../globaltime/globaltime.c:59
 msgid "double"
 msgstr "զոյգ"
 
-#: ../globaltime/globaltime.c:58
+#: ../globaltime/globaltime.c:59
 msgid "low"
 msgstr "ցածր"
 
-#: ../globaltime/globaltime.c:100
+#: ../globaltime/globaltime.c:108 ../src/tray_icon.c:164
 msgid "Raising GlobalTime window..."
 msgstr "Բացուում է GlobalTime պատուհանը․․․"
 
-#: ../globaltime/globaltime.c:102
+#: ../globaltime/globaltime.c:110 ../src/tray_icon.c:166
 msgid "GlobalTime window raise failed"
 msgstr "GlobalTime պատուհանի միացումը ձախողուեց"
 
 #. ********** timezone tooltip **********
-#: ../globaltime/globaltime.c:277
+#: ../globaltime/globaltime.c:338
 #, c-format
 msgid ""
 "%s\n"
 "click to modify clock"
-msgstr "%s\nսեղմեք ժամացոյցը փոփոխելու համար"
+msgstr ""
+"%s\n"
+"սեղմեք ժամացոյցը փոփոխելու համար"
 
-#: ../globaltime/globaltime.c:386
+#: ../globaltime/globaltime.c:447
 msgid "Localtime"
 msgstr "Տեղային ժամ"
 
-#: ../globaltime/globaltime.c:464
+#: ../globaltime/globaltime.c:536
 msgid ""
 "button 1 to change preferences \n"
 "button 2 to adjust time of clocks"
-msgstr "կոճակ 1 նախընտրութիւնները փոխելու համար \nկոճակ 2 ժամը կարգաբերելու համար"
+msgstr ""
+"կոճակ 1 նախընտրութիւնները փոխելու համար \n"
+"կոճակ 2 ժամը կարգաբերելու համար"
 
-#: ../globaltime/globaltime.c:480
+#: ../globaltime/globaltime.c:551
 msgid "adjust to change hour"
 msgstr "կարգաբերել ժամի փոփոխութիւնը"
 
-#: ../globaltime/globaltime.c:496
+#: ../globaltime/globaltime.c:567
 msgid ""
 "adjust to change minute. Click arrows with button 2 to change only 1 minute."
-msgstr "կարգաբերել րոպեի փոփոխութիւնը։ Սեղմեք սլաքները ստեղն 2 ֊ի հետ 1 րոպեն փոփոխելու համար։"
+msgstr ""
+"կարգաբերել րոպեի փոփոխութիւնը։ Սեղմեք սլաքները ստեղն 2 ֊ի հետ 1 րոպեն "
+"փոփոխելու համար։"
 
-#: ../globaltime/globaltime.c:548
+#: ../globaltime/globaltime.c:621
 msgid "Global Time"
 msgstr "Ընդհանրական ժամանակ"
 
-#: ../globaltime/gt_prefs.c:265 ../globaltime/gt_prefs.c:266
+#: ../globaltime/gt_prefs.c:290 ../globaltime/gt_prefs.c:291
 msgid "NEW"
 msgstr "ՆՈՐ"
 
-#: ../globaltime/gt_prefs.c:289
+#: ../globaltime/gt_prefs.c:314
 msgid "NEW COPY"
 msgstr "ՆՈՐ ՊԱՏՃԷ"
 
-#: ../globaltime/gt_prefs.c:310
+#: ../globaltime/gt_prefs.c:336
 msgid "Not possible to delete the last clock."
 msgstr "Հնարաւոր չէ ջնջել վերջին ժամը։"
 
-#: ../globaltime/gt_prefs.c:516
+#: ../globaltime/gt_prefs.c:577
 msgid "update this clock"
 msgstr "թարմեցնել ժամը"
 
-#: ../globaltime/gt_prefs.c:521 ../globaltime/gt_prefs.c:1034
+#: ../globaltime/gt_prefs.c:582 ../globaltime/gt_prefs.c:1095
 msgid "add new empty clock"
 msgstr "աւելացնել նոր դատարկ ժամացոյց"
 
-#: ../globaltime/gt_prefs.c:526
+#: ../globaltime/gt_prefs.c:587
 msgid "add new clock using this clock as model"
 msgstr "աւելացնել նոր ժամացոյց աւգտագործելով ժամացոյցերը ըստ տեսակի"
 
-#: ../globaltime/gt_prefs.c:531
+#: ../globaltime/gt_prefs.c:592
 msgid "delete this clock"
 msgstr "ջնջել այս ժամացոյցը"
 
-#: ../globaltime/gt_prefs.c:539
+#: ../globaltime/gt_prefs.c:600
 msgid "move this clock first"
 msgstr "շարժել ժամացոյցը սկիզբ"
 
-#: ../globaltime/gt_prefs.c:544
+#: ../globaltime/gt_prefs.c:605
 msgid "move this clock left"
 msgstr "շարժել ժամացոյցը ձախ"
 
-#: ../globaltime/gt_prefs.c:549
+#: ../globaltime/gt_prefs.c:610
 msgid "move this clock right"
 msgstr "շարժել ժամացոյցը աջ"
 
-#: ../globaltime/gt_prefs.c:554
+#: ../globaltime/gt_prefs.c:615
 msgid "move this clock last"
 msgstr "շարժել ժամացոյցը վերջ"
 
-#: ../globaltime/gt_prefs.c:562
+#: ../globaltime/gt_prefs.c:623
 msgid "set the timezone of this clock to be local timezone"
 msgstr "սահմանել այս ժամացոյցի ժամային գաւտու համար տեղային ժամանակագաւտի"
 
-#: ../globaltime/gt_prefs.c:568 ../globaltime/gt_prefs.c:1042
+#: ../globaltime/gt_prefs.c:629 ../globaltime/gt_prefs.c:1103
 msgid "close window and exit"
 msgstr "Փակել պատուհանը եւ դուրս գալ"
 
-#: ../globaltime/gt_prefs.c:590
+#: ../globaltime/gt_prefs.c:652
 msgid "Globaltime preferences "
 msgstr "Globaltime նախընտրանքներ "
 
 #. -----------------------HEADING-------------------------------------------
-#: ../globaltime/gt_prefs.c:603
+#: ../globaltime/gt_prefs.c:665
 msgid "Clock Parameters"
 msgstr "Ժամի յարաչափեր"
 
-#: ../globaltime/gt_prefs.c:607
+#: ../globaltime/gt_prefs.c:669
 msgid "Name of the clock:"
 msgstr "Ժամացոյցի անուն․"
 
-#: ../globaltime/gt_prefs.c:613
+#: ../globaltime/gt_prefs.c:678
 msgid "enter name of clock"
 msgstr "մուտքագրեք ժամացոյցի անուն"
 
-#: ../globaltime/gt_prefs.c:616
+#: ../globaltime/gt_prefs.c:681
 msgid "Timezone of the clock:"
 msgstr "ժամացոյցի ժամանակագաւտին․"
 
-#: ../globaltime/gt_prefs.c:643
+#: ../globaltime/gt_prefs.c:683 ../globaltime/gt_prefs.c:1189
+#: ../panel-plugin/oc_config.c:374 ../src/appointment.c:3175
+#: ../src/interface.c:1047 ../src/interface.c:1093 ../src/interface.c:1269
+#: ../src/interface.c:1361 ../src/interface.c:1444 ../src/parameters.c:409
+#: ../src/parameters.c:632 ../src/reminder.c:793
+msgid "_Open"
+msgstr "_Բացել"
+
+#: ../globaltime/gt_prefs.c:714
 msgid "Text Formatting"
 msgstr "Գրոյթի ձեւաչափում"
 
 #. ------------------------background-------------------------
-#: ../globaltime/gt_prefs.c:649 ../globaltime/gt_prefs.c:856
+#: ../globaltime/gt_prefs.c:721 ../globaltime/gt_prefs.c:923
 msgid "Background color:"
 msgstr "Յետնապատկերի գոյն․"
 
-#: ../globaltime/gt_prefs.c:656
+#: ../globaltime/gt_prefs.c:728
 msgid "Click to change background colour for clock"
 msgstr "Սեղմեք ժամացոյցի յետնապատկերի գոյնը փոխելու համար"
 
-#: ../globaltime/gt_prefs.c:665 ../globaltime/gt_prefs.c:697
-#: ../globaltime/gt_prefs.c:729 ../globaltime/gt_prefs.c:762
-#: ../globaltime/gt_prefs.c:796 ../globaltime/gt_prefs.c:826
-#: ../globaltime/gt_prefs.c:872 ../globaltime/gt_prefs.c:905
-#: ../globaltime/gt_prefs.c:938 ../globaltime/gt_prefs.c:972
+#: ../globaltime/gt_prefs.c:737 ../globaltime/gt_prefs.c:769
+#: ../globaltime/gt_prefs.c:801 ../globaltime/gt_prefs.c:833
+#: ../globaltime/gt_prefs.c:865 ../globaltime/gt_prefs.c:893
+#: ../globaltime/gt_prefs.c:939 ../globaltime/gt_prefs.c:971
+#: ../globaltime/gt_prefs.c:1003 ../globaltime/gt_prefs.c:1035
 msgid "Use default"
 msgstr "Լռելեայն"
 
-#: ../globaltime/gt_prefs.c:670 ../globaltime/gt_prefs.c:702
-#: ../globaltime/gt_prefs.c:735 ../globaltime/gt_prefs.c:768
-#: ../globaltime/gt_prefs.c:802 ../globaltime/gt_prefs.c:832
+#: ../globaltime/gt_prefs.c:742 ../globaltime/gt_prefs.c:774
+#: ../globaltime/gt_prefs.c:806 ../globaltime/gt_prefs.c:838
+#: ../globaltime/gt_prefs.c:870 ../globaltime/gt_prefs.c:898
 msgid "Cross this to use default instead of selected value"
 msgstr "Հատեք այս, ընտրուած ծաւալի փոխարեն լռելեայնը աւգտագործելու համար"
 
 #. ------------------------foreground-------------------------
-#: ../globaltime/gt_prefs.c:681 ../globaltime/gt_prefs.c:889
+#: ../globaltime/gt_prefs.c:753 ../globaltime/gt_prefs.c:955
 msgid "Foreground (=text) color:"
 msgstr "Առաջնաշերտ (=text) գոյն․"
 
-#: ../globaltime/gt_prefs.c:688
+#: ../globaltime/gt_prefs.c:760
 msgid "Click to change foreground colour for clock"
 msgstr "Սեղմեք ժամացոյցի առաջնաշերտը փոփոխելու համար"
 
 #. ------------------------name font-------------------------
-#: ../globaltime/gt_prefs.c:713 ../globaltime/gt_prefs.c:922
+#: ../globaltime/gt_prefs.c:785 ../globaltime/gt_prefs.c:987
 msgid "Font for name of clock:"
 msgstr "Ժամացոյցի անուան տառատեսակ․"
 
-#: ../globaltime/gt_prefs.c:720
+#: ../globaltime/gt_prefs.c:792
 msgid "Click to change font for clock name"
 msgstr "Սեղմեք ժամի անուան տառատեսակը փոփոխելու համար "
 
 #. ------------------------time font-------------------------
-#: ../globaltime/gt_prefs.c:746 ../globaltime/gt_prefs.c:956
+#: ../globaltime/gt_prefs.c:817 ../globaltime/gt_prefs.c:1019
 msgid "Font for time of clock:"
 msgstr "Ժամացոյցի ժամի տառատեսակ․"
 
-#: ../globaltime/gt_prefs.c:753
+#: ../globaltime/gt_prefs.c:824
 msgid "Click to change font for clock time"
 msgstr "Սեղմեք ժամի տառատեսակի փոփոխման համար"
 
 #. ------------------------underline name--------------------
-#: ../globaltime/gt_prefs.c:780
+#: ../globaltime/gt_prefs.c:849
 msgid "Underline name of clock:"
 msgstr "Ընդգծել ժամի անունը․"
 
 #. ------------------------underline time--------------------
-#: ../globaltime/gt_prefs.c:810
+#: ../globaltime/gt_prefs.c:877
 msgid "Underline time of clock:"
 msgstr "Ընդգծել ժամը․"
 
-#: ../globaltime/gt_prefs.c:850
+#: ../globaltime/gt_prefs.c:916
 msgid "Text Default Formatting"
 msgstr "Գրոյթի լռելեայն ձեւաչափում"
 
-#: ../globaltime/gt_prefs.c:863
+#: ../globaltime/gt_prefs.c:930
 msgid "Click to change default background colour for clocks"
 msgstr "Սեղմեք ժամացոյցերի լռելեայն յետնապատկերի գոյնը փոխելու համար"
 
-#: ../globaltime/gt_prefs.c:877 ../globaltime/gt_prefs.c:910
+#: ../globaltime/gt_prefs.c:944 ../globaltime/gt_prefs.c:976
 msgid "Cross this to use system default instead of selected color"
-msgstr "Հատեք այս, համակարգի ընտրուած գոյնի փոխարէն լռելեայնը աւգտագործելու համար"
+msgstr ""
+"Հատեք այս, համակարգի ընտրուած գոյնի փոխարէն լռելեայնը աւգտագործելու համար"
 
-#: ../globaltime/gt_prefs.c:896
+#: ../globaltime/gt_prefs.c:962
 msgid "Click to change default text colour for clocks"
 msgstr "Սեղմեք ժամացոյցերի գրոյթի լռելեայն գոյնը փոփոխելու համար"
 
-#: ../globaltime/gt_prefs.c:929
+#: ../globaltime/gt_prefs.c:994
 msgid "Click to change default font for clock name"
 msgstr "Սեղմեք ժամացոյցերի անուան լռելեայն տառատեսակը փոփոխելու համար"
 
-#: ../globaltime/gt_prefs.c:944 ../globaltime/gt_prefs.c:978
+#: ../globaltime/gt_prefs.c:1008 ../globaltime/gt_prefs.c:1040
 msgid "Cross this to use system default font instead of selected font"
-msgstr "Հատեք այս, համակարգի ընտրուած տառատեսակի փոխարեն լռելեայնը աւգտագործելու համար"
+msgstr ""
+"Հատեք այս, համակարգի ընտրուած տառատեսակի փոխարեն լռելեայնը աւգտագործելու "
+"համար"
 
-#: ../globaltime/gt_prefs.c:963
+#: ../globaltime/gt_prefs.c:1026
 msgid "Click to change default font for clock time"
 msgstr "Սեղմեք ժամացոյցի լռելեայն տառատտեսակը փոփոխելու համար"
 
 #. ------------------------underline name--------------------
-#: ../globaltime/gt_prefs.c:990
+#: ../globaltime/gt_prefs.c:1051
 msgid "Underline for name of clock:"
 msgstr "Ժամացոյցի անուան ընդգծում․"
 
 #. ------------------------underline time--------------------
-#: ../globaltime/gt_prefs.c:1004
+#: ../globaltime/gt_prefs.c:1065
 msgid "Underline for time of clock:"
 msgstr "Ժամացոյցի ժամի ընդգծում․"
 
-#: ../globaltime/gt_prefs.c:1027
+#: ../globaltime/gt_prefs.c:1088
 msgid "update preferences"
 msgstr "թարմեցնել նախընտութիւնները"
 
-#: ../globaltime/gt_prefs.c:1062
+#: ../globaltime/gt_prefs.c:1122
 msgid "Globaltime Preferences"
 msgstr "Ընդհանուր ժամի նախընտրութիւններ"
 
 #. -----------------------HEADING--------------------------------------
-#: ../globaltime/gt_prefs.c:1073
+#: ../globaltime/gt_prefs.c:1133
 msgid "General Preferences"
 msgstr "Հիմնական նախընտրութիւններ"
 
-#: ../globaltime/gt_prefs.c:1077
+#: ../globaltime/gt_prefs.c:1137
 msgid "Decorations:"
 msgstr "Պատկերազարդումներ․"
 
-#: ../globaltime/gt_prefs.c:1078
+#: ../globaltime/gt_prefs.c:1138
 msgid "Standard"
 msgstr "Չափաւրինակային"
 
-#: ../globaltime/gt_prefs.c:1083
+#: ../globaltime/gt_prefs.c:1144
 msgid "Use normal decorations"
 msgstr "Աւգտագործել նոռմալ պատկերազարդումներ"
 
-#: ../globaltime/gt_prefs.c:1089 ../src/appointment.c:3290
+#: ../globaltime/gt_prefs.c:1149 ../src/appointment.c:3424
 msgid "None"
 msgstr "Ոչ"
 
-#: ../globaltime/gt_prefs.c:1094
+#: ../globaltime/gt_prefs.c:1156
 msgid "Do not show window decorations (borders)"
 msgstr "Չցուցադրել պատուհանի պատկերազարդումները (եզրերը)"
 
-#: ../globaltime/gt_prefs.c:1100
+#: ../globaltime/gt_prefs.c:1162
 msgid "Clock size:"
 msgstr "Ժամացոյցի չափսը․"
 
-#: ../globaltime/gt_prefs.c:1101
+#: ../globaltime/gt_prefs.c:1163
 msgid "Equal"
 msgstr "Հաւասար"
 
-#: ../globaltime/gt_prefs.c:1106
+#: ../globaltime/gt_prefs.c:1170
 msgid "All clocks have same size"
 msgstr "Բոլոր ժամացոյցերը ունեն նոյն չափսը"
 
-#: ../globaltime/gt_prefs.c:1111
+#: ../globaltime/gt_prefs.c:1175
 msgid "Varying"
 msgstr "Փոփոխուող"
 
-#: ../globaltime/gt_prefs.c:1116
+#: ../globaltime/gt_prefs.c:1181
 msgid "Clock sizes vary"
 msgstr "Ժամացոյցերի չափսերի տարբերութիւն"
 
-#: ../globaltime/gt_prefs.c:1122
+#: ../globaltime/gt_prefs.c:1187
 msgid "Local timezone:"
 msgstr "Տեղային ժամանակագոտի․"
 
-#: ../globaltime/timezone_selection.c:101
-#: ../panel-plugin/timezone_selection.c:102 ../src/timezone_selection.c:102
+#: ../globaltime/timezone_selection.c:98
+#: ../panel-plugin/timezone_selection.c:97 ../src/timezone_selection.c:99
 msgid " Other"
 msgstr "Այլ"
 
-#: ../globaltime/timezone_selection.c:156
-#: ../panel-plugin/timezone_selection.c:157 ../src/timezone_selection.c:168
+#: ../globaltime/timezone_selection.c:153
+#: ../panel-plugin/timezone_selection.c:152 ../src/timezone_selection.c:165
 #, c-format
 msgid "%d hour %d mins"
 msgstr "%d ժամ %d րոպե"
 
-#: ../globaltime/timezone_selection.c:159
-#: ../panel-plugin/timezone_selection.c:160 ../src/timezone_selection.c:171
+#: ../globaltime/timezone_selection.c:156
+#: ../panel-plugin/timezone_selection.c:155 ../src/timezone_selection.c:168
 #, c-format
 msgid "%d hour"
 msgstr "%d ժամ"
 
-#: ../globaltime/timezone_selection.c:161
-#: ../panel-plugin/timezone_selection.c:162 ../src/timezone_selection.c:173
+#: ../globaltime/timezone_selection.c:158
+#: ../panel-plugin/timezone_selection.c:157 ../src/timezone_selection.c:170
 #, c-format
 msgid "%d mins"
 msgstr "%d րոպե"
 
-#: ../globaltime/timezone_selection.c:167
-#: ../panel-plugin/timezone_selection.c:168 ../src/timezone_selection.c:179
+#: ../globaltime/timezone_selection.c:164
+#: ../panel-plugin/timezone_selection.c:163 ../src/timezone_selection.c:176
 msgid "backward"
 msgstr "յետ"
 
-#: ../globaltime/timezone_selection.c:170
-#: ../panel-plugin/timezone_selection.c:171 ../src/timezone_selection.c:182
+#: ../globaltime/timezone_selection.c:167
+#: ../panel-plugin/timezone_selection.c:166 ../src/timezone_selection.c:179
 msgid "forward"
 msgstr "առաջ"
 
-#: ../globaltime/timezone_selection.c:194
-#: ../panel-plugin/timezone_selection.c:195 ../src/timezone_selection.c:206
+#: ../globaltime/timezone_selection.c:191
+#: ../panel-plugin/timezone_selection.c:190 ../src/timezone_selection.c:203
 msgid "not changed"
 msgstr "փոփոխուած չէ"
 
-#: ../globaltime/timezone_selection.c:195
-#: ../panel-plugin/timezone_selection.c:196 ../src/timezone_selection.c:207
+#: ../globaltime/timezone_selection.c:192
+#: ../panel-plugin/timezone_selection.c:191 ../src/timezone_selection.c:204
 msgid "not changing"
 msgstr "չի փոփոխուում"
 
 #. location
-#: ../globaltime/timezone_selection.c:247
-#: ../globaltime/timezone_selection.c:252
-#: ../panel-plugin/timezone_selection.c:248
-#: ../panel-plugin/timezone_selection.c:253 ../src/appointment.c:2776
-#: ../src/timezone_selection.c:259 ../src/timezone_selection.c:264
+#: ../globaltime/timezone_selection.c:244
+#: ../globaltime/timezone_selection.c:249
+#: ../panel-plugin/timezone_selection.c:243
+#: ../panel-plugin/timezone_selection.c:248 ../src/appointment.c:2847
+#: ../src/timezone_selection.c:256 ../src/timezone_selection.c:261
 msgid "Location"
 msgstr "Դիրք"
 
-#: ../globaltime/timezone_selection.c:258
-#: ../panel-plugin/timezone_selection.c:259 ../src/timezone_selection.c:270
+#: ../globaltime/timezone_selection.c:255
+#: ../panel-plugin/timezone_selection.c:254 ../src/timezone_selection.c:267
 msgid "GMT Offset"
 msgstr "GMT լրացում"
 
-#: ../globaltime/timezone_selection.c:264
-#: ../panel-plugin/timezone_selection.c:265 ../src/timezone_selection.c:276
+#: ../globaltime/timezone_selection.c:261
+#: ../panel-plugin/timezone_selection.c:260 ../src/timezone_selection.c:273
 msgid "Previous/Next Change"
 msgstr "Նախորդ/Հաջորդ փոփոխութիւնը"
 
-#: ../globaltime/timezone_selection.c:269
-#: ../panel-plugin/timezone_selection.c:270 ../src/timezone_selection.c:281
+#: ../globaltime/timezone_selection.c:266
+#: ../panel-plugin/timezone_selection.c:265 ../src/timezone_selection.c:278
 msgid "Country"
 msgstr "Երկիր"
 
@@ -377,39 +399,39 @@ msgstr "Երկիր"
 #. done very seldom and we do not want to allow "floating" here.
 #. This test is ugly, but it is not worth an extra parameter.
 #. this is normal appointment
-#: ../globaltime/timezone_selection.c:299
-#: ../globaltime/timezone_selection.c:309
-#: ../panel-plugin/timezone_selection.c:300
-#: ../panel-plugin/timezone_selection.c:310 ../src/timezone_selection.c:316
-#: ../src/timezone_selection.c:325 ../src/timezone_selection.c:336
+#: ../globaltime/timezone_selection.c:300
+#: ../globaltime/timezone_selection.c:310
+#: ../panel-plugin/timezone_selection.c:296
+#: ../panel-plugin/timezone_selection.c:306 ../src/timezone_selection.c:317
+#: ../src/timezone_selection.c:326 ../src/timezone_selection.c:337
 msgid "Pick timezone"
 msgstr "Ընտրեք ժամագոտին"
 
-#: ../globaltime/timezone_selection.c:302
-#: ../globaltime/timezone_selection.c:312
-#: ../panel-plugin/timezone_selection.c:303
-#: ../panel-plugin/timezone_selection.c:313 ../src/timezone_selection.c:319
-#: ../src/timezone_selection.c:328 ../src/timezone_selection.c:339
+#: ../globaltime/timezone_selection.c:303
+#: ../globaltime/timezone_selection.c:313
+#: ../panel-plugin/timezone_selection.c:299
+#: ../panel-plugin/timezone_selection.c:309 ../src/timezone_selection.c:320
+#: ../src/timezone_selection.c:329 ../src/timezone_selection.c:340
 msgid "Change mode"
 msgstr "Փոխել աշխատակերպը"
 
-#: ../globaltime/timezone_selection.c:303
-#: ../globaltime/timezone_selection.c:313
-#: ../globaltime/timezone_selection.c:352
-#: ../panel-plugin/timezone_selection.c:304
-#: ../panel-plugin/timezone_selection.c:314
-#: ../panel-plugin/timezone_selection.c:353 ../src/timezone_selection.c:320
-#: ../src/timezone_selection.c:329 ../src/timezone_selection.c:340
-#: ../src/timezone_selection.c:379
+#: ../globaltime/timezone_selection.c:304
+#: ../globaltime/timezone_selection.c:314
+#: ../globaltime/timezone_selection.c:353
+#: ../panel-plugin/timezone_selection.c:300
+#: ../panel-plugin/timezone_selection.c:310
+#: ../panel-plugin/timezone_selection.c:350 ../src/timezone_selection.c:321
+#: ../src/timezone_selection.c:330 ../src/timezone_selection.c:341
+#: ../src/timezone_selection.c:380
 msgid "UTC"
 msgstr "UTC"
 
 #. NOTE: this exists only if ical timezones are being used
-#: ../globaltime/timezone_selection.c:304
-#: ../globaltime/timezone_selection.c:357
-#: ../panel-plugin/timezone_selection.c:305
-#: ../panel-plugin/timezone_selection.c:358 ../src/timezone_selection.c:330
-#: ../src/timezone_selection.c:384
+#: ../globaltime/timezone_selection.c:305
+#: ../globaltime/timezone_selection.c:358
+#: ../panel-plugin/timezone_selection.c:301
+#: ../panel-plugin/timezone_selection.c:355 ../src/timezone_selection.c:331
+#: ../src/timezone_selection.c:385
 msgid "floating"
 msgstr "լողալ"
 
@@ -421,100 +443,105 @@ msgstr "Orage Globaltime"
 msgid "Show clocks from different countries"
 msgstr "Ցուցադրել ժամացոյցներ տարբեր երկրներից"
 
-#: ../globaltime/globaltime.desktop.in.h:3 ../src/tray_icon.c:500
+#: ../globaltime/globaltime.desktop.in.h:3 ../src/tray_icon.c:477
 msgid "Globaltime"
 msgstr "Ընդհանուր ժամ"
 
-#: ../panel-plugin/oc_config.c:239
+#: ../panel-plugin/oc_config.c:254
 msgid "No rotation"
 msgstr "Առանց թեքութեան"
 
-#: ../panel-plugin/oc_config.c:239
+#: ../panel-plugin/oc_config.c:254
 msgid "Rotate left"
 msgstr "Շրջել ձախ"
 
-#: ../panel-plugin/oc_config.c:240
+#: ../panel-plugin/oc_config.c:254
 msgid "Rotate right"
 msgstr "Շրջել աջ"
 
-#: ../panel-plugin/oc_config.c:248
+#: ../panel-plugin/oc_config.c:260
 msgid "Appearance"
 msgstr "Տեսք"
 
 #. show frame
-#: ../panel-plugin/oc_config.c:257
+#: ../panel-plugin/oc_config.c:267
 msgid "Show _frame"
 msgstr "Ցուցադրել _կառուցուածքը"
 
 #. foreground color
-#: ../panel-plugin/oc_config.c:263
+#: ../panel-plugin/oc_config.c:273
 msgid "set foreground _color:"
 msgstr "սահմանել _առաջնաշերտի գոյնը․"
 
 #. background color
-#: ../panel-plugin/oc_config.c:277
+#: ../panel-plugin/oc_config.c:289
 msgid "set _background color:"
 msgstr "Սահմանել _Յետնաշերտի գոյնը․"
 
 #. clock size (=mbox size): height and width
-#: ../panel-plugin/oc_config.c:291
+#: ../panel-plugin/oc_config.c:305
 msgid "set _height:"
 msgstr "Բար_ձրութիւն․"
 
-#: ../panel-plugin/oc_config.c:301
+#: ../panel-plugin/oc_config.c:315
 msgid "Note that you can not change the height of horizontal panels"
 msgstr "Դուք չեք կարող փոփոխել հորիզոնական ընտրացնակերի բարձրութիւնը։"
 
-#: ../panel-plugin/oc_config.c:306
+#: ../panel-plugin/oc_config.c:319
 msgid "set _width:"
 msgstr "լայ_նութիւն․"
 
-#: ../panel-plugin/oc_config.c:316
+#: ../panel-plugin/oc_config.c:329
 msgid "Note that you can not change the width of vertical panels"
 msgstr "Դուք չեք կարող փոփոխել ուղղահաեաց ընտրացանկերի լայնութիւնը"
 
-#: ../panel-plugin/oc_config.c:327
+#: ../panel-plugin/oc_config.c:339
 msgid "Show lines _vertically"
 msgstr "Ցուցադրել տողերը _ուղղահաեաց"
 
-#: ../panel-plugin/oc_config.c:350
+#: ../panel-plugin/oc_config.c:359
 msgid "Clock Options"
 msgstr "Ժամացոյցի ընտրանքներ"
 
 #. timezone
-#: ../panel-plugin/oc_config.c:360
+#: ../panel-plugin/oc_config.c:371
 msgid "set timezone to:"
 msgstr "սահմանել ժամային գաւտի՝"
 
-#: ../panel-plugin/oc_config.c:381
+#: ../panel-plugin/oc_config.c:390
 #, c-format
 msgid "Line %d:"
 msgstr "Տող %d․"
 
-#: ../panel-plugin/oc_config.c:391
+#: ../panel-plugin/oc_config.c:400
 msgid "Enter any valid strftime function parameter."
 msgstr "Մուտքագրեք իւրաքանչիւր վաւեր strftime գործառոյթի նախընտրութիւն։"
 
 #. Tooltip hint
-#: ../panel-plugin/oc_config.c:435
+#: ../panel-plugin/oc_config.c:439
 msgid "Tooltip:"
 msgstr "Գործիքահուշ․"
 
 #. special timing for SUSPEND/HIBERNATE
-#: ../panel-plugin/oc_config.c:445
+#: ../panel-plugin/oc_config.c:449
 msgid "fix time after suspend/hibernate"
 msgstr "յիշել ժամը կասեցումից/նիրհումից յետոյ"
 
-#: ../panel-plugin/oc_config.c:449
+#: ../panel-plugin/oc_config.c:453
 msgid ""
 "You only need this if you do short term (less than 5 hours) suspend or "
 "hibernate and your visible time does not include seconds. Under these "
 "circumstances it is possible that Orageclock shows time inaccurately unless "
 "you have this selected. (Selecting this prevents cpu and interrupt saving "
 "features from working.)"
-msgstr "Հարկաւոր է աւգտագործել այս, եթե կարճ (հինգ ժամից քիչ) կասեցում կամ նիրհում Եք տեսանելի ժամը, որը  չի ներառում վայրկեաններ։ Այս հանգամանքներից ելնելով հնարաւոր է, որ Orageclock֊ը ցոյց տա ժամը սխալ,  մինչ ընտրանքը նշուած չէ։ (Նշելը կանխում է աշխատանքի ժամանակ կենտրոնական մշակիչ սարքի եւ ընդհատումների պահումը։) "
+msgstr ""
+"Հարկաւոր է աւգտագործել այս, եթե կարճ (հինգ ժամից քիչ) կասեցում կամ նիրհում "
+"Եք տեսանելի ժամը, որը  չի ներառում վայրկեաններ։ Այս հանգամանքներից ելնելով "
+"հնարաւոր է, որ Orageclock֊ը ցոյց տա ժամը սխալ,  մինչ ընտրանքը նշուած չէ։ "
+"(Նշելը կանխում է աշխատանքի ժամանակ կենտրոնական մշակիչ սարքի եւ ընդհատումների"
+" պահումը։) "
 
-#: ../panel-plugin/oc_config.c:466
+#: ../panel-plugin/oc_config.c:471
 msgid ""
 "This program uses strftime function to get time.\n"
 "Use any valid code to get time in the format you prefer.\n"
@@ -524,11 +551,24 @@ msgid ""
 "\t%V = week number\t\t%Z = timezone in use\n"
 "\t%H = hours \t\t\t\t%M = minute\n"
 "\t%X = local time\t\t\t%x = local date"
-msgstr "Այս ծրագիրը աւգտագործում է strftime գործառոյթը ժամը իմանալու համար։\nԱւգտագործեք իւրաքանչիւր վաւեր կոդ ձեր նախնտրած ձեւաչափով ժամը ցուցադրելու համար։\nՈրոշ ընդհանուր կոդեր․\n\t%A = weekday\t\t\t%B = month\n\t%c = date & time\t\t%R = hour & minute\n\t%V = week number\t\t%Z = timezone in use\n\t%H = hours \t\t\t\t%M = minute\n\t%X = local time\t\t\t%x = local date"
+msgstr ""
+"Այս ծրագիրը աւգտագործում է strftime գործառոյթը ժամը իմանալու համար։\n"
+"Աւգտագործեք իւրաքանչիւր վաւեր կոդ ձեր նախնտրած ձեւաչափով ժամը ցուցադրելու համար։\n"
+"Որոշ ընդհանուր կոդեր․\n"
+"\t%A = weekday\t\t\t%B = month\n"
+"\t%c = date & time\t\t%R = hour & minute\n"
+"\t%V = week number\t\t%Z = timezone in use\n"
+"\t%H = hours \t\t\t\t%M = minute\n"
+"\t%X = local time\t\t\t%x = local date"
 
-#: ../panel-plugin/oc_config.c:491
+#: ../panel-plugin/oc_config.c:501
 msgid "Orage clock Preferences"
 msgstr "Orage ժամացոյցի յատկութիւնները"
+
+#: ../panel-plugin/oc_config.c:505 ../src/day-view.c:403
+#: ../src/event-list.c:1237 ../src/interface.c:876
+msgid "Close"
+msgstr "Փակել"
 
 #. TRANSLATORS: Use format characters from strftime(3)
 #. * to get the proper string for your locale.
@@ -538,318 +578,345 @@ msgstr "Orage ժամացոյցի յատկութիւնները"
 #. * %B  : full month name
 #. * %Y  : four digit year
 #. * %V  : ISO week number
-#: ../panel-plugin/xfce4-orageclock-plugin.c:700
+#: ../panel-plugin/xfce4-orageclock-plugin.c:722
 msgid "%A %d %B %Y/%V"
 msgstr "%A %d %B %Y/%V"
 
-#: ../src/about-xfcalendar.c:40
+#: ../src/about-xfcalendar.c:43
 msgid "Maintainer"
 msgstr "Սպասարկող"
 
-#: ../src/about-xfcalendar.c:47
+#: ../src/about-xfcalendar.c:52
 msgid "Manage your time with Orage"
 msgstr "Կառավարեք Ձեր ժամանակը Orage ֊ի հետ"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
 #. end time
-#: ../src/appointment.c:313 ../src/appointment.c:353 ../src/appointment.c:2805
+#: ../src/appointment.c:321 ../src/appointment.c:361 ../src/appointment.c:2876
 msgid "End"
 msgstr "Աւարտ"
 
-#: ../src/appointment.c:333
+#: ../src/appointment.c:341
 msgid "Due"
 msgstr "Վերջնաժամկետ"
 
-#: ../src/appointment.c:493 ../src/mainbox.c:862
+#: ../src/appointment.c:501 ../src/mainbox.c:883
 msgid "Orage"
 msgstr "Orage"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
-#: ../src/appointment.c:672 ../src/interface.c:264 ../src/parameters.c:374
+#: ../src/appointment.c:688 ../src/interface.c:265 ../src/parameters.c:404
 msgid "Select a file..."
 msgstr "Ընտրեք նիշ․․․"
 
-#: ../src/appointment.c:680
+#: ../src/appointment.c:696
 msgid "Sound Files"
 msgstr "Ձայնային նշոց"
 
-#: ../src/appointment.c:687 ../src/interface.c:277
+#: ../src/appointment.c:703 ../src/interface.c:278
 msgid "All Files"
 msgstr "Բոլոր նիշերը"
 
-#: ../src/appointment.c:738
+#: ../src/appointment.c:754
 msgid "The appointment information has been modified."
 msgstr "ժամադրութեան մասին տեղեկութիւնը փոփոխուել է։"
 
-#: ../src/appointment.c:739 ../src/appointment.c:1287 ../src/event-list.c:969
+#: ../src/appointment.c:755 ../src/appointment.c:1308 ../src/event-list.c:1007
 msgid "Do you want to continue?"
 msgstr "Շարունակե՞լ։"
 
-#: ../src/appointment.c:740
+#: ../src/appointment.c:756
 msgid "No, do not leave"
 msgstr "Չլքել"
 
-#: ../src/appointment.c:741
+#: ../src/appointment.c:757
 msgid "Yes, ignore modifications and leave"
 msgstr "Անտեսել փոփոխութիւնները եւ դուրս գալ"
 
-#: ../src/appointment.c:768
+#: ../src/appointment.c:785
 msgid "The end of this appointment is earlier than the beginning."
 msgstr "Հանդիպման աւարտը աւելի վաղ է, քան սկիզբը։"
 
-#: ../src/appointment.c:1035 ../src/appointment.c:1923
+#: ../src/appointment.c:1054 ../src/appointment.c:1945
 msgid "Not set"
 msgstr "Սահմանուած չէ"
 
-#: ../src/appointment.c:1138
+#: ../src/appointment.c:1156
 msgid "Add new appointment to this file."
 msgstr "Աւելացնել նիշում նոր ժամադրութիւն։"
 
-#: ../src/appointment.c:1139 ../src/appointment.c:1188
+#: ../src/appointment.c:1157 ../src/appointment.c:1206
 msgid "Orage default file"
 msgstr "Orage լռելեայն նիշ"
 
-#: ../src/appointment.c:1225
+#: ../src/appointment.c:1243
 msgid "Appointment addition failed."
 msgstr "Չյաջողուեց յաւելել ժամադրութիւն։"
 
-#: ../src/appointment.c:1226
+#: ../src/appointment.c:1244
 msgid ""
 "Error happened when adding appointment. Look more details from the log file."
-msgstr "Ժամադրութեան աւելացման ժամանակ հայտնուեց սխալ։ Աւելի մանրամասն դիտեք արձանագրութեան նիշում։"
+msgstr ""
+"Ժամադրութեան աւելացման ժամանակ հայտնուեց սխալ։ Աւելի մանրամասն դիտեք "
+"արձանագրութեան նիշում։"
 
-#: ../src/appointment.c:1236
+#: ../src/appointment.c:1254
 msgid "Appointment update failed."
 msgstr "Չյաջողուեց թարմեցնել ժամադրութիւնը։"
 
-#: ../src/appointment.c:1237
+#: ../src/appointment.c:1255
 msgid ""
 "Look more details from the log file. (Perhaps file was updated external from"
 " Orage?)"
-msgstr "Աւելի մանրամասն դիտեք արձանագրութեան նիշում։ (Հաւանաբար նիշը ատրաքին թարմեցուել Orage֊ից։)"
+msgstr ""
+"Աւելի մանրամասն դիտեք արձանագրութեան նիշում։ (Հաւանաբար նիշը ատրաքին "
+"թարմեցուել Orage֊ից։)"
 
-#: ../src/appointment.c:1286
+#: ../src/appointment.c:1307
 msgid "This appointment will be permanently removed."
 msgstr "Այս ժամադրութիւնը կհեռացուի առաջնահերթ։"
 
-#: ../src/appointment.c:1288 ../src/event-list.c:970
+#: ../src/appointment.c:1309 ../src/event-list.c:1008
 msgid "No, cancel the removal"
 msgstr "Ոչ, չեղարկել հեռացումը"
 
-#: ../src/appointment.c:1289
+#: ../src/appointment.c:1310
 msgid "Yes, remove it"
 msgstr "Այո, հեռացնել"
 
-#: ../src/appointment.c:1378 ../src/appointment.c:1393 ../src/day-view.c:457
-#: ../src/event-list.c:1028
+#: ../src/appointment.c:1402 ../src/appointment.c:1417 ../src/day-view.c:460
+#: ../src/event-list.c:1067
 msgid "Pick the date"
 msgstr "Նշեք ամսաթիւ"
 
-#: ../src/appointment.c:1380 ../src/appointment.c:1395 ../src/day-view.c:386
-#: ../src/day-view.c:459 ../src/event-list.c:1030 ../src/event-list.c:1180
-#: ../src/tray_icon.c:460
+#: ../src/appointment.c:1404 ../src/appointment.c:1419 ../src/day-view.c:389
+#: ../src/day-view.c:462 ../src/event-list.c:1069 ../src/event-list.c:1223
+#: ../src/tray_icon.c:450
 msgid "Today"
 msgstr "Այսաւր"
 
-#: ../src/appointment.c:1803
+#: ../src/appointment.c:1835
 msgid "This appointment does not exist."
 msgstr "Նման ժամադրութիւն գոյութիւն չունի։"
 
-#: ../src/appointment.c:1804
+#: ../src/appointment.c:1836
 msgid "It was probably removed, please refresh your screen."
 msgstr "Այդ արդեն հեռացուած է, թարմեցրեք ցուցադրիչը։"
 
-#: ../src/appointment.c:2105
+#: ../src/appointment.c:2113 ../src/interface.c:672
+msgid "_Remove"
+msgstr ""
+
+#: ../src/appointment.c:2139
 msgid "Current categories"
 msgstr "Ընթացիկ կարգերը"
 
-#: ../src/appointment.c:2120
+#: ../src/appointment.c:2161
 msgid "Add new category with color"
 msgstr "Աւելացնել նոր կարգ գոյնով"
 
-#: ../src/appointment.c:2124
+#: ../src/appointment.c:2172
 msgid "Category:"
 msgstr "Անուանակարգ․"
 
-#: ../src/appointment.c:2155
+#: ../src/appointment.c:2188 ../src/interface.c:1451
+msgid "_Add"
+msgstr "_Յաւելել"
+
+#: ../src/appointment.c:2217
 msgid "Colors of categories - Orage"
 msgstr "Անուանակարգերի գոյներ ֊ Orage"
 
-#: ../src/appointment.c:2201
+#: ../src/appointment.c:2263
 msgid " *** COPY ***"
 msgstr " *** ՊԱՏՃԷ ***"
 
-#: ../src/appointment.c:2466
+#: ../src/appointment.c:2531
 msgid "New appointment - Orage"
 msgstr "Նոր ժամադրութիւն ֊ Orage"
 
 #. File menu stuff
 #. ********* File menu *********
 #. File menu
-#: ../src/appointment.c:2496 ../src/day-view.c:279 ../src/event-list.c:1081
-#: ../src/interface.c:813 ../src/mainbox.c:297
+#: ../src/appointment.c:2559 ../src/day-view.c:283 ../src/event-list.c:1124
+#: ../src/interface.c:857 ../src/mainbox.c:316
 msgid "_File"
 msgstr "_Նիշ"
 
-#: ../src/appointment.c:2502
+#: ../src/appointment.c:2565
 msgid "Sav_e and close"
 msgstr "Պահ_ել եւ փակել"
 
-#: ../src/appointment.c:2515 ../src/event-list.c:1087
+#: ../src/appointment.c:2578 ../src/event-list.c:1130
 msgid "D_uplicate"
 msgstr "Կ_րկնաւրինակել"
 
-#: ../src/appointment.c:2702
+#: ../src/appointment.c:2768
 msgid "Save"
 msgstr "Պահել"
 
-#: ../src/appointment.c:2704
+#: ../src/appointment.c:2770
 msgid "Save and close"
 msgstr "Պահել եւ փակել"
 
-#: ../src/appointment.c:2709
+#: ../src/appointment.c:2775
 msgid "Revert"
 msgstr "Վերադարձնել"
 
-#: ../src/appointment.c:2711 ../src/event-list.c:1171
+#: ../src/appointment.c:2777 ../src/event-list.c:1214
 msgid "Duplicate"
 msgstr "Կրկնաւրինակ"
 
-#: ../src/appointment.c:2716 ../src/event-list.c:1173
+#: ../src/appointment.c:2782 ../src/event-list.c:1216
 msgid "Delete"
 msgstr "Ջնջել"
 
-#: ../src/appointment.c:2734
+#: ../src/appointment.c:2800
 msgid "Free"
 msgstr "Ազատ"
 
-#: ../src/appointment.c:2734
+#: ../src/appointment.c:2800
 msgid "Busy"
 msgstr "Զբաղուած"
 
-#: ../src/appointment.c:2738
+#: ../src/appointment.c:2804
 msgid "General"
 msgstr "Ընդհանուր"
 
 #. type
-#: ../src/appointment.c:2744
+#: ../src/appointment.c:2810
 msgid "Type "
 msgstr "Տեսակ"
 
-#: ../src/appointment.c:2746 ../src/event-list.c:1226
+#: ../src/appointment.c:2812 ../src/event-list.c:1269
 msgid "Event"
 msgstr "Իրադարձութիւն"
 
-#: ../src/appointment.c:2749
+#: ../src/appointment.c:2817
 msgid ""
 "Event that will happen sometime. For example:\n"
 "Meeting or birthday or TV show."
-msgstr "Իրադարձութիւն, որ ժամանակ առ ժամանակ կատարուում է։ Աւրինակ․\nՀանդիպում, կամ ծնունդ, կամ հեռուստահաղորդում։"
+msgstr ""
+"Իրադարձութիւն, որ ժամանակ առ ժամանակ կատարուում է։ Աւրինակ․\n"
+"Հանդիպում, կամ ծնունդ, կամ հեռուստահաղորդում։"
 
-#: ../src/appointment.c:2752 ../src/event-list.c:1274
+#: ../src/appointment.c:2820 ../src/event-list.c:1328
 msgid "Todo"
 msgstr "Todo"
 
-#: ../src/appointment.c:2755
+#: ../src/appointment.c:2825
 msgid ""
 "Something that you should do sometime. For example:\n"
 "Wash your car or test new version of Orage."
-msgstr "Այն ինչ Դուք անում Եք երբեմն։ Աւրինակ՝\nԼուանալ մեքենան կամ փորձել Orage֊ի նոր տարբերակը։"
+msgstr ""
+"Այն ինչ Դուք անում Եք երբեմն։ Աւրինակ՝\n"
+"Լուանալ մեքենան կամ փորձել Orage֊ի նոր տարբերակը։"
 
-#: ../src/appointment.c:2758 ../src/event-list.c:1287
+#: ../src/appointment.c:2828 ../src/event-list.c:1341
 msgid "Journal"
 msgstr "Մատեան"
 
-#: ../src/appointment.c:2762
+#: ../src/appointment.c:2833
 msgid ""
 "Make a note that something happened. For example:\n"
 "Remark that your mother called or first snow came."
-msgstr "Գրառեք իրադարձութիւններ։ Աւրինակ\nՆշում, որ Ձեր մայրն է զանգել, կամ առաջին ձիւնը։"
+msgstr ""
+"Գրառեք իրադարձութիւններ։ Աւրինակ\n"
+"Նշում, որ Ձեր մայրն է զանգել, կամ առաջին ձիւնը։"
 
 #. title
-#: ../src/appointment.c:2769
+#: ../src/appointment.c:2840
 msgid "Title "
 msgstr "Անուն"
 
-#: ../src/appointment.c:2784
+#: ../src/appointment.c:2855
 msgid "All day event"
 msgstr "Ողջ աւրուա իրադարձութիւն"
 
 #. start time
-#: ../src/appointment.c:2790 ../src/appointment.c:3453 ../src/day-view.c:801
+#: ../src/appointment.c:2861 ../src/appointment.c:3580 ../src/day-view.c:806
 msgid "Start"
 msgstr "Սկիզբ"
 
-#: ../src/appointment.c:2810
+#: ../src/appointment.c:2881
 msgid "Set      "
 msgstr "Սահմանել"
 
-#: ../src/appointment.c:2831
+#: ../src/appointment.c:2904
 msgid "Duration"
 msgstr "Տեւողութիւն"
 
-#: ../src/appointment.c:2835 ../src/appointment.c:3027 ../src/reminder.c:758
+#: ../src/appointment.c:2908 ../src/appointment.c:3115 ../src/reminder.c:764
 msgid "days"
 msgstr "աւրեր"
 
-#: ../src/appointment.c:2837 ../src/appointment.c:3029 ../src/reminder.c:760
+#: ../src/appointment.c:2910 ../src/appointment.c:3117 ../src/reminder.c:766
 msgid "hours"
 msgstr "ժամեր"
 
-#: ../src/appointment.c:2839 ../src/appointment.c:3031 ../src/reminder.c:762
+#: ../src/appointment.c:2912 ../src/appointment.c:3119 ../src/reminder.c:768
 msgid "mins"
 msgstr "րոպեներ"
 
 #. Availability (only for EVENT)
-#: ../src/appointment.c:2851
+#: ../src/appointment.c:2924
 msgid "Availability"
 msgstr "Հասանելիութիւն"
 
 #. completed (only for TODO)
-#: ../src/appointment.c:2859 ../src/appointment.c:3459
+#: ../src/appointment.c:2932 ../src/appointment.c:3589
 msgid "Completed"
 msgstr "Կատարուած"
 
-#: ../src/appointment.c:2862
+#: ../src/appointment.c:2935
 msgid "Done"
 msgstr "Կատարուած է"
 
 #. categories
-#: ../src/appointment.c:2883
+#: ../src/appointment.c:2960
 msgid "Categories"
 msgstr "Անուանակարգեր"
 
-#: ../src/appointment.c:2895
+#: ../src/appointment.c:2978
 msgid ""
 "This is special category, which can be used to color this appointment in "
 "list views."
-msgstr "Սա հատուկ անուանակարգ է, որը կարող է կիրառուել դիտացանկում այս ժամադրութիւնը գունաւորելու համար։"
+msgstr ""
+"Սա հատուկ անուանակարգ է, որը կարող է կիրառուել դիտացանկում այս ժամադրութիւնը"
+" գունաւորելու համար։"
 
-#: ../src/appointment.c:2900
+#: ../src/appointment.c:2979
+msgid "_Colour"
+msgstr ""
+
+#: ../src/appointment.c:2984
 msgid "update colors for categories."
 msgstr "թարմեցնել գոյները անուանակարգերի համար։"
 
 #. priority
-#: ../src/appointment.c:2906
+#: ../src/appointment.c:2990
 msgid "Priority"
 msgstr "Առաջնահերթութիւն"
 
-#: ../src/appointment.c:2910
+#: ../src/appointment.c:2994
 msgid ""
 "If you set this 8 or bigger, the appointment is NOT shown on list windows.\n"
 "You can use that feature to unclutter your list windows, but it makes it more difficult to find this appointment.\n"
 "(Alarms will still fire normally.)\n"
 "(There is undocumented parameter so that you can change the default limit of 8.)"
-msgstr "Եթե սահմանեք 8 կամ աւել, ժամադրութիւնը ՉԻ ցուցադրուի ցանկի պատուհաններում։\n(Ազդանշանները կը շարունակեն աշխատել։)\n(Չփաստաթղթաւորուած յատկութիւններ չկան, Դուք կարող Եք փոխել լռելեայն 8֊ի սահմանափակումը։)"
+msgstr ""
+"Եթե սահմանեք 8 կամ աւել, ժամադրութիւնը ՉԻ ցուցադրուի ցանկի պատուհաններում։\n"
+"(Ազդանշանները կը շարունակեն աշխատել։)\n"
+"(Չփաստաթղթաւորուած յատկութիւններ չկան, Դուք կարող Եք փոխել լռելեայն 8֊ի սահմանափակումը։)"
 
 #. note
-#: ../src/appointment.c:2918
+#: ../src/appointment.c:3003
 msgid "Note"
 msgstr "Նշում"
 
-#: ../src/appointment.c:2939
+#: ../src/appointment.c:3024
 msgid ""
 "These shorthand commands take effect immediately:\n"
 "    <D> inserts current date in local date format\n"
@@ -859,123 +926,137 @@ msgid ""
 "These are converted only later when they are seen:\n"
 "    <&Ynnnn> is translated to current year minus nnnn.\n"
 "(This can be used for example in birthday reminders to tell how old the person will be.)"
-msgstr "Այս հաւաքական հրամանները անմիջապէս գործում են․\n<D>ներմուծում է ընթացիկ ամսաթիւը տեղային ամսաթուի ձեւաչափով\n<T>ներմուծում է ժամը եւ\n<DT>ներմուծում է ամսաթիւն ու ժամը։\n\nԴրանք փոխարկուել են միայն դիտուելուց յետոյ․\n <&Ynnnn>  թարգմանուած է ընթացիկ տարուանից հանած nnnn։\n(Այս կարող են աւգտագործուել աւրինակի համար ծնունդի յիշեցումներում, թե քանի տարեկան է դառնում մարդը։)"
+msgstr ""
+"Այս հաւաքական հրամանները անմիջապէս գործում են․\n"
+"<D>ներմուծում է ընթացիկ ամսաթիւը տեղային ամսաթուի ձեւաչափով\n"
+"<T>ներմուծում է ժամը եւ\n"
+"<DT>ներմուծում է ամսաթիւն ու ժամը։\n"
+"\n"
+"Դրանք փոխարկուել են միայն դիտուելուց յետոյ․\n"
+" <&Ynnnn>  թարգմանուած է ընթացիկ տարուանից հանած nnnn։\n"
+"(Այս կարող են աւգտագործուել աւրինակի համար ծնունդի յիշեցումներում, թե քանի տարեկան է դառնում մարդը։)"
 
-#: ../src/appointment.c:3010
+#: ../src/appointment.c:3097
 msgid "Before Start"
 msgstr "Մինչ սկսելը"
 
-#: ../src/appointment.c:3010
+#: ../src/appointment.c:3097
 msgid "Before End"
 msgstr "Մինչ աւարտը"
 
-#: ../src/appointment.c:3011
+#: ../src/appointment.c:3098
 msgid "After Start"
 msgstr "Սկսելուց յետոյ"
 
-#: ../src/appointment.c:3011
+#: ../src/appointment.c:3098
 msgid "After End"
 msgstr "Աւարտից յետոյ"
 
-#: ../src/appointment.c:3018
+#: ../src/appointment.c:3106
 msgid "Alarm"
 msgstr "Ազդանշան"
 
 #. **** ALARM TIME ****
-#: ../src/appointment.c:3024
+#: ../src/appointment.c:3112
 msgid "Alarm time"
 msgstr "Ազդանշանի ժամ"
 
-#: ../src/appointment.c:3048
+#: ../src/appointment.c:3137
 msgid ""
 "Often you want to get alarm:\n"
 " 1) before Event start\n"
 " 2) before Todo end\n"
 " 3) after Todo start"
-msgstr "Սովորաբար ազդանշան է պէտք լինում․\n 1) մինչ միջոցառման սկսելը\n 2) մինչեւ Todo֊ն աւարտուի\n 3) Todo֊ի սկսելուց յետոյ"
+msgstr ""
+"Սովորաբար ազդանշան է պէտք լինում․\n"
+" 1) մինչ միջոցառման սկսելը\n"
+" 2) մինչեւ Todo֊ն աւարտուի\n"
+" 3) Todo֊ի սկսելուց յետոյ"
 
-#: ../src/appointment.c:3053
+#: ../src/appointment.c:3142
 msgid "Persistent alarm"
 msgstr "Հաստատուն ազդանշան"
 
-#: ../src/appointment.c:3055
+#: ../src/appointment.c:3147
 msgid ""
 "Select this if you want Orage to remind you even if it has not been active "
 "when the alarm happened."
-msgstr "Ընտրեք այս, եթե ցանկանում Եք, որ Orage֊ը յիշեցնի Ձեզ, նոյնիսկ եթե այն չի միացուել ազդանշանի ժամանակ։"
+msgstr ""
+"Ընտրեք այս, եթե ցանկանում Եք, որ Orage֊ը յիշեցնի Ձեզ, նոյնիսկ եթե այն չի "
+"միացուել ազդանշանի ժամանակ։"
 
 #. **** Audio Alarm ****
-#: ../src/appointment.c:3064
+#: ../src/appointment.c:3156
 msgid "Sound"
 msgstr "Ձայն"
 
-#: ../src/appointment.c:3068 ../src/appointment.c:3188
+#: ../src/appointment.c:3160 ../src/appointment.c:3293
 msgid "Use"
 msgstr "Աւգտագործել"
 
-#: ../src/appointment.c:3070
+#: ../src/appointment.c:3162
 msgid "Select this if you want audible alarm"
 msgstr "Նշեք, եթե ցանկանում եք լսելի ազդանշան"
 
-#: ../src/appointment.c:3087
+#: ../src/appointment.c:3188
 msgid "Repeat alarm sound"
 msgstr "Կրկնել ազդանշանի ձայնը"
 
-#: ../src/appointment.c:3103 ../src/appointment.c:3402
+#: ../src/appointment.c:3203 ../src/appointment.c:3512
 msgid "times"
 msgstr "ժամեր"
 
-#: ../src/appointment.c:3119
+#: ../src/appointment.c:3219
 msgid "sec interval"
 msgstr "վայրկ․ ժամանակամիջոց"
 
 #. **** Display Alarm ****
-#: ../src/appointment.c:3129
+#: ../src/appointment.c:3229
 msgid "Visual"
 msgstr "Տեսողական"
 
-#: ../src/appointment.c:3133
+#: ../src/appointment.c:3233
 msgid "Use Orage window"
 msgstr "Աւգտագործել Orage պատուհան"
 
-#: ../src/appointment.c:3135
+#: ../src/appointment.c:3235
 msgid "Select this if you want Orage window alarm"
 msgstr "Նշեք,  Orage պատուհանի ազդանշանի համար"
 
-#: ../src/appointment.c:3147
+#: ../src/appointment.c:3247
 msgid "Use notification"
 msgstr "Աւգտագործել ծանուցումները"
 
-#: ../src/appointment.c:3149
+#: ../src/appointment.c:3249
 msgid "Select this if you want notification alarm"
 msgstr "Նշեք, ծանուցումների ազդանշանների համար"
 
-#: ../src/appointment.c:3155
+#: ../src/appointment.c:3257
 msgid "Set timeout"
 msgstr "Սահմանեք ժամասպառ"
 
-#: ../src/appointment.c:3157
+#: ../src/appointment.c:3259
 msgid "Select this if you want notification to expire automatically"
 msgstr "Նշեք,  ծանուցումները ինքնուրոյն սպառուելու համար"
 
-#: ../src/appointment.c:3168
+#: ../src/appointment.c:3270
 msgid "0 = system default expiration time"
 msgstr "0 = համակարգի լռելեայն սպառման ժամանակը"
 
-#: ../src/appointment.c:3173
+#: ../src/appointment.c:3278
 msgid "seconds"
 msgstr "վայրկեան յետոյ"
 
 #. **** Procedure Alarm ****
-#: ../src/appointment.c:3184
+#: ../src/appointment.c:3289
 msgid "Procedure"
 msgstr "Ընթացակարգ"
 
-#: ../src/appointment.c:3190
+#: ../src/appointment.c:3295
 msgid "Select this if you want procedure or script alarm"
 msgstr "Նշեք, գրուած ազդանշանը ընթացակարգելու համար"
 
-#: ../src/appointment.c:3196
+#: ../src/appointment.c:3305
 msgid ""
 "You must enter all escape etc characters yourself.\n"
 "This string is just given to shell to process.\n"
@@ -985,146 +1066,173 @@ msgid ""
 "\t<&AT> alarm time\n"
 "\t<&ST> appointment start time\n"
 "\t<&ET> appointment end time"
-msgstr "Դուք պիտի մուտքագրեք բոլոր escape այլ նշանները ինքնուրոյն։\nԱյս տողը տրուած է գործընթացի միջավայրում։\nՀետեւեալ յատուկ հրամանները փոխարինուել են բեռնման ժամանակ․\n\t<&T>  ժամադրութեան վերնագիր\n\t<&D>  ժամադրութեան նկարագրում\n\t<&AT> ազդանշանի ժամը\n\t<&ST> ժամադրութեան սկսման ժամը\n\t<&ET> appointment end time"
+msgstr ""
+"Դուք պիտի մուտքագրեք բոլոր escape այլ նշանները ինքնուրոյն։\n"
+"Այս տողը տրուած է գործընթացի միջավայրում։\n"
+"Հետեւեալ յատուկ հրամանները փոխարինուել են բեռնման ժամանակ․\n"
+"\t<&T>  ժամադրութեան վերնագիր\n"
+"\t<&D>  ժամադրութեան նկարագրում\n"
+"\t<&AT> ազդանշանի ժամը\n"
+"\t<&ST> ժամադրութեան սկսման ժամը\n"
+"\t<&ET> appointment end time"
 
-#: ../src/appointment.c:3208
+#: ../src/appointment.c:3319 ../src/interface.c:1181 ../src/interface.c:1203
+msgid "_Execute"
+msgstr ""
+
+#: ../src/appointment.c:3321
 msgid "Test this alarm by raising it now"
 msgstr "Ստուգեք այս ազդանշանը գործարկելով այն"
 
-#: ../src/appointment.c:3215
+#: ../src/appointment.c:3334
 msgid "<b>Default alarm</b>"
 msgstr "<b>Լռելեայն ազդանշան</b>"
 
-#: ../src/appointment.c:3223
+#: ../src/appointment.c:3340 ../src/interface.c:1054 ../src/interface.c:1100
+#: ../src/interface.c:1275 ../src/interface.c:1367
+msgid "_Save"
+msgstr "_Պահել"
+
+#: ../src/appointment.c:3348
 msgid "Store current settings as default alarm"
 msgstr "Պահեստաւորել ընթացիկ կարգաւորումները երպէս լռելեայն ազդանշան"
 
-#: ../src/appointment.c:3228
+#: ../src/appointment.c:3350
+msgid "_Revert"
+msgstr ""
+
+#: ../src/appointment.c:3358
 msgid "Set current settings from default alarm"
 msgstr "Սահմանել ընթացիկ կարգաւորումները լռելեայն ազդանշանից"
 
-#: ../src/appointment.c:3290
+#: ../src/appointment.c:3424
 msgid "Daily"
 msgstr "Աւրերով"
 
-#: ../src/appointment.c:3290
+#: ../src/appointment.c:3424
 msgid "Weekly"
 msgstr "Շաբաթներով"
 
-#: ../src/appointment.c:3290
+#: ../src/appointment.c:3424
 msgid "Monthly"
 msgstr "Ամիսներով"
 
-#: ../src/appointment.c:3290
+#: ../src/appointment.c:3424
 msgid "Yearly"
 msgstr "Տարիներով"
 
-#: ../src/appointment.c:3290
+#: ../src/appointment.c:3424
 msgid "Hourly"
 msgstr "Ժամերով"
 
-#: ../src/appointment.c:3292
+#: ../src/appointment.c:3426
 msgid "Mon"
 msgstr "Երկ"
 
-#: ../src/appointment.c:3292
+#: ../src/appointment.c:3426
 msgid "Tue"
 msgstr "Երք"
 
-#: ../src/appointment.c:3292
+#: ../src/appointment.c:3426
 msgid "Wed"
 msgstr "Չրք"
 
-#: ../src/appointment.c:3292
+#: ../src/appointment.c:3426
 msgid "Thu"
 msgstr "Հնգ"
 
-#: ../src/appointment.c:3292
+#: ../src/appointment.c:3426
 msgid "Fri"
 msgstr "Ուրբ"
 
-#: ../src/appointment.c:3292
+#: ../src/appointment.c:3426
 msgid "Sat"
 msgstr "Շբթ"
 
-#: ../src/appointment.c:3292
+#: ../src/appointment.c:3426
 msgid "Sun"
 msgstr "Կրկ"
 
-#: ../src/appointment.c:3297
+#: ../src/appointment.c:3431
 msgid "Recurrence"
 msgstr "Կրկնութիւն"
 
 #. complexity
-#: ../src/appointment.c:3303
+#: ../src/appointment.c:3437
 msgid "Complexity"
 msgstr "Բարդութիւն"
 
-#: ../src/appointment.c:3306
+#: ../src/appointment.c:3440
 msgid "Basic"
 msgstr "Հիմնական"
 
-#: ../src/appointment.c:3312
+#: ../src/appointment.c:3447
 msgid "Advanced"
 msgstr "Բարելաւուած"
 
-#: ../src/appointment.c:3316
+#: ../src/appointment.c:3453
 msgid "Use this if you want regular repeating event"
 msgstr "Աւգտագործեք իրադարձութեան սովորական կրկնութեան համար"
 
-#: ../src/appointment.c:3318
+#: ../src/appointment.c:3455
 msgid ""
 "Use this if you need complex times like:\n"
 " Every Saturday and Sunday or \n"
 " First Tuesday every month"
-msgstr "Աւգտագործեք այս, եթե ունեք բարդ ժամերի կարիք, աւրինակ՝\nԱմեն շաբաթ եւ կիրակի, կամ\nԱմեն ամսուա առաջին երեքշաբթի"
+msgstr ""
+"Աւգտագործեք այս, եթե ունեք բարդ ժամերի կարիք, աւրինակ՝\n"
+"Ամեն շաբաթ եւ կիրակի, կամ\n"
+"Ամեն ամսուա առաջին երեքշաբթի"
 
 #. frequency
-#: ../src/appointment.c:3324
+#: ../src/appointment.c:3461
 msgid "Frequency"
 msgstr "Հաճախութիւն"
 
-#: ../src/appointment.c:3330
+#: ../src/appointment.c:3468
 msgid "Each"
 msgstr "Իւրաքանչիւր"
 
-#: ../src/appointment.c:3337
+#: ../src/appointment.c:3479
 msgid "occurrence"
 msgstr "իրադարձութիւն"
 
-#: ../src/appointment.c:3341
+#: ../src/appointment.c:3486
 msgid ""
 "Limit frequency to certain interval.\n"
 " For example: Every third day:\n"
 " Frequency = Daily and Interval = 3"
-msgstr "Սահմանել հաճախութիւնը հաստատուն դադարով։\nԱւրինակ՝ ամեն երրորդ աւրը․\nFrequency = Daily and Interval = 3"
+msgstr ""
+"Սահմանել հաճախութիւնը հաստատուն դադարով։\n"
+"Աւրինակ՝ ամեն երրորդ աւրը․\n"
+"Frequency = Daily and Interval = 3"
 
-#: ../src/appointment.c:3386
+#: ../src/appointment.c:3493
 msgid "Limit"
 msgstr "Սահման"
 
-#: ../src/appointment.c:3388
+#: ../src/appointment.c:3495
 msgid "Repeat forever"
 msgstr "Անվերջ կրկնել"
 
-#: ../src/appointment.c:3394
+#: ../src/appointment.c:3502
 msgid "Repeat "
 msgstr "Կրկնել"
 
-#: ../src/appointment.c:3410
+#: ../src/appointment.c:3526
 msgid "Repeat until "
 msgstr "Կրկնել մինչ"
 
 #. weekdays (only for complex settings)
-#: ../src/appointment.c:3423
+#: ../src/appointment.c:3542
 msgid "Weekdays"
 msgstr "Շաբաթուա աւրեր"
 
-#: ../src/appointment.c:3435
+#: ../src/appointment.c:3559
 msgid "Which day"
 msgstr "Որ աւրը"
 
-#: ../src/appointment.c:3443
+#: ../src/appointment.c:3570
 msgid ""
 "Specify which weekday for monthly and yearly events.\n"
 " For example:\n"
@@ -1132,200 +1240,210 @@ msgid ""
 "\tFrequency = Monthly,\n"
 "\tWeekdays = check only Wednesday,\n"
 "\tWhich day = select 2 from the number below Wednesday"
-msgstr "Յատկորրոշել որ շաբաթուա աւրը մասուա եւ տարուա միջոցառումների համար։\nԱւրինակ՝\n\tՀաճաշութիւն = Ամսական,\n\tՇաբաթուա աւրերին = ստուգել միայն չորեքշաբթի,\n\tՈր աւրը = ընտրել 2 չորեքշաբթուանից ցածր թիւ"
+msgstr ""
+"Յատկորրոշել որ շաբաթուա աւրը մասուա եւ տարուա միջոցառումների համար։\n"
+"Աւրինակ՝\n"
+"\tՀաճաշութիւն = Ամսական,\n"
+"\tՇաբաթուա աւրերին = ստուգել միայն չորեքշաբթի,\n"
+"\tՈր աւրը = ընտրել 2 չորեքշաբթուանից ցածր թիւ"
 
 #. TODO base (only for TODOs)
-#: ../src/appointment.c:3450
+#: ../src/appointment.c:3577
 msgid "TODO base"
 msgstr "TODO շտեմարան"
 
-#: ../src/appointment.c:3463
+#: ../src/appointment.c:3596
 msgid ""
 "TODO reoccurs regularly starting on start time and repeating after each "
 "interval no matter when it was last completed"
 msgstr ""
 
-#: ../src/appointment.c:3465
+#: ../src/appointment.c:3598
 msgid ""
 "TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
 msgstr ""
 
 #. exceptions
-#: ../src/appointment.c:3471
+#: ../src/appointment.c:3604
 msgid "Exceptions"
 msgstr "Բացառութիւններ"
 
-#: ../src/appointment.c:3484
+#: ../src/appointment.c:3630
 msgid ""
 "Add more exception dates by clicking the calendar days below.\n"
 "Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
 "Remove by clicking the data."
 msgstr ""
 
-#: ../src/appointment.c:3489
+#: ../src/appointment.c:3641
 msgid "Add excluded date (-)"
 msgstr ""
 
-#: ../src/appointment.c:3491
+#: ../src/appointment.c:3643
 msgid "Excluded days are full days where this appointment is not happening"
 msgstr ""
 
-#: ../src/appointment.c:3497
+#: ../src/appointment.c:3650
 msgid "Add included time (+)"
 msgstr "Աւելացնել ներառուած ժամ (+) "
 
-#: ../src/appointment.c:3499
+#: ../src/appointment.c:3652
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time"
 msgstr ""
 
 #. calendars showing the action days
-#: ../src/appointment.c:3516
+#: ../src/appointment.c:3671
 msgid "Action dates"
 msgstr ""
 
 #. ********* View menu *********
 #. View menu
-#: ../src/day-view.c:289 ../src/event-list.c:1104 ../src/mainbox.c:323
+#: ../src/day-view.c:293 ../src/event-list.c:1147 ../src/mainbox.c:342
 msgid "_View"
 msgstr "_Տեսք"
 
 #. ********* Go menu   *********
-#: ../src/day-view.c:303 ../src/event-list.c:1123
+#: ../src/day-view.c:307 ../src/event-list.c:1166
 msgid "_Go"
 msgstr "_Գնալ"
 
-#: ../src/day-view.c:377 ../src/event-list.c:1169
+#: ../src/day-view.c:380 ../src/event-list.c:1212
 msgid "New"
 msgstr "Նոր"
 
-#: ../src/day-view.c:382
+#: ../src/day-view.c:385
 msgid "Back one week"
 msgstr "Յետ մեկ շաբաթ"
 
-#: ../src/day-view.c:384
+#: ../src/day-view.c:387
 msgid "Back one day"
 msgstr "Յետ մեկ աւր"
 
-#: ../src/day-view.c:388
+#: ../src/day-view.c:391
 msgid "Forward one day"
 msgstr "Մեկ աւր յետոյ"
 
-#: ../src/day-view.c:390
+#: ../src/day-view.c:393
 msgid "Forward one week"
 msgstr "Մեկ շաբաթ յետոյ"
 
-#: ../src/day-view.c:395 ../src/event-list.c:1187
+#: ../src/day-view.c:398 ../src/event-list.c:1230
 msgid "Refresh"
 msgstr "Թարմացնել"
 
-#: ../src/day-view.c:400 ../src/event-list.c:1194 ../src/interface.c:834
-msgid "Close"
-msgstr "Փակել"
+#: ../src/day-view.c:462
+msgid "_OK"
+msgstr "_Լաւ"
 
-#: ../src/day-view.c:549
+#: ../src/day-view.c:568
 msgid "Unknown"
 msgstr "Անյայտ"
 
-#: ../src/day-view.c:807
+#: ../src/day-view.c:815
 msgid "       Number of days to show"
 msgstr "Ցուցադրուող աւրերի համարները"
 
-#: ../src/day-view.c:1073
+#: ../src/day-view.c:1045
 msgid "Orage - day view"
 msgstr "Orage - աւրերի դիտում"
 
 #. date only appointment
-#: ../src/event-list.c:191
+#: ../src/event-list.c:193
 msgid "All day"
 msgstr "Ամբողջ աւրը"
 
-#: ../src/event-list.c:596 ../src/event-list.c:1370
+#: ../src/event-list.c:608 ../src/event-list.c:1432
 msgid "Time"
 msgstr "Ժամանակ"
 
-#: ../src/event-list.c:784
+#: ../src/event-list.c:809
 msgid "No rows have been selected."
 msgstr "Տողեր չեն ընտրուել։"
 
-#: ../src/event-list.c:785
+#: ../src/event-list.c:810
 msgid "Click a row to select it and after that you can copy it."
 msgstr "Սեղնեք տողը եւ ընտրեք այն պատճէնելուց յետոյ։"
 
-#: ../src/event-list.c:968
+#: ../src/event-list.c:1006
 msgid ""
 "You will permanently remove all\n"
 "selected appointments."
-msgstr "Դուք միշտ կը հեռացնեք բոլոր\nընտրուած սարքերը։"
+msgstr ""
+"Դուք միշտ կը հեռացնեք բոլոր\n"
+"ընտրուած սարքերը։"
 
-#: ../src/event-list.c:971
+#: ../src/event-list.c:1009
 msgid "Yes, remove them"
 msgstr "Այո, հեռացնել"
 
-#: ../src/event-list.c:1178
+#: ../src/event-list.c:1221
 msgid "Back"
 msgstr "Յետ"
 
-#: ../src/event-list.c:1182
+#: ../src/event-list.c:1225
 msgid "Forward"
 msgstr "Առաջ"
 
-#: ../src/event-list.c:1189
+#: ../src/event-list.c:1232
 msgid "Find"
 msgstr "Գտնել"
 
-#: ../src/event-list.c:1196
+#: ../src/event-list.c:1239
 msgid "Dayview"
 msgstr "Աւրադիտում"
 
-#: ../src/event-list.c:1231
+#: ../src/event-list.c:1274
 msgid "Extra days to show:"
 msgstr "Լրացուցիչ աւրեր ցուցադրութեան համար՝"
 
-#: ../src/event-list.c:1240
+#: ../src/event-list.c:1288
 msgid "only first repeating"
 msgstr "միայն առաջին կրկնութիւնը՝"
 
-#: ../src/event-list.c:1245
+#: ../src/event-list.c:1296
 msgid ""
 "Check this if you only want to see the first repeating event. By default all are shown.\n"
 "Note that this also shows all urgencies.\n"
 "Note that repeating events may appear earlier in the list as the first occurrence only is listed."
-msgstr "Ստուգեք այս, եթե ցանկանում Եք տեսնել աջաջին կրկնուող միջոցառումը։ Բոլորը ցուցադրուում են լռելեայն։\nՅիշեք, որ սովորաբար ցուցադրուում են բոլոր հրատապութիւնները։\nՅիշեք նաեւ, եր միջոցառումների կրկնութիւնը աւելի շուտկը երեւայ ցուցակում, քան առաջին իրադարձութեան միայն ցուցակաւորումը։"
+msgstr ""
+"Ստուգեք այս, եթե ցանկանում Եք տեսնել աջաջին կրկնուող միջոցառումը։ Բոլորը ցուցադրուում են լռելեայն։\n"
+"Յիշեք, որ սովորաբար ցուցադրուում են բոլոր հրատապութիւնները։\n"
+"Յիշեք նաեւ, եր միջոցառումների կրկնութիւնը աւելի շուտկը երեւայ ցուցակում, քան առաջին իրադարձութեան միայն ցուցակաւորումը։"
 
-#: ../src/event-list.c:1250
+#: ../src/event-list.c:1301
 msgid "also old"
 msgstr "միշտ հին"
 
-#: ../src/event-list.c:1252
+#: ../src/event-list.c:1306
 msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed'."
 msgstr ""
 
-#: ../src/event-list.c:1290
+#: ../src/event-list.c:1344
 msgid "Journal entries starting from:"
 msgstr "Մատեանի նշումները սկսուում են՝"
 
-#: ../src/event-list.c:1310
+#: ../src/event-list.c:1364
 msgid "Search"
 msgstr "Որոնում"
 
-#: ../src/event-list.c:1313
+#: ../src/event-list.c:1367
 msgid "Search text "
 msgstr "Որոնել գրոյթ"
 
-#: ../src/event-list.c:1378
+#: ../src/event-list.c:1440
 msgid "Flags"
 msgstr "Դրոշակներ"
 
-#: ../src/event-list.c:1386
+#: ../src/event-list.c:1448
 msgid "Title"
 msgstr "Անուն"
 
-#: ../src/event-list.c:1412
+#: ../src/event-list.c:1474
 msgid ""
 "Double click line to edit it.\n"
 "\n"
@@ -1339,828 +1457,898 @@ msgid ""
 "\t\tO=Orage A=Archive F=Foreign\n"
 "\t 5. Appointment type:\n"
 "\t\tE=Event T=Todo J=Journal"
-msgstr "Կրկնակի սեղմեք խմբագրելու համար։\n\nԴրոշակներ կարգում․\n \t 1. Alarm: n=no alarm\n\t\t A=Alarm is set P=Persistent alarm is set\n\t 2. Recurrence: n=no recurrence\n\t\t H=Hourly D=Daily W=Weekly M=Monthly Y=Yearly\n\t 3. Type: f=free B=Busy\n\t 4. Located in file:\n\t\tO=Orage A=Archive F=Foreign\n\t  5. Appointment type:\n\t\tE=Event T=Todo J=Journal"
+msgstr ""
+"Կրկնակի սեղմեք խմբագրելու համար։\n"
+"\n"
+"Դրոշակներ կարգում․\n"
+" \t 1. Alarm: n=no alarm\n"
+"\t\t A=Alarm is set P=Persistent alarm is set\n"
+"\t 2. Recurrence: n=no recurrence\n"
+"\t\t H=Hourly D=Daily W=Weekly M=Monthly Y=Yearly\n"
+"\t 3. Type: f=free B=Busy\n"
+"\t 4. Located in file:\n"
+"\t\tO=Orage A=Archive F=Foreign\n"
+"\t  5. Appointment type:\n"
+"\t\tE=Event T=Todo J=Journal"
 
 #. remove since it has ended
-#: ../src/ical-archive.c:267
+#: ../src/ical-archive.c:263
 msgid "\tRecur ended, moving to archive file."
 msgstr "\tԿրկնութիւնը աւարտուած է, տեղաշարժում պահոցի նիշ։"
 
-#: ../src/ical-archive.c:330
+#: ../src/ical-archive.c:326
 msgid "Archiving not enabled. Exiting"
 msgstr "Պահեստաւորումը թոյլատրուած չէ։ Ելք"
 
-#: ../src/ical-archive.c:349
+#: ../src/ical-archive.c:345
 #, c-format
 msgid "Archiving threshold: %d month(s)"
 msgstr "Պահուստաւորման շեմ․ %d ամիս"
 
 #. yy mon day
-#: ../src/ical-archive.c:352
+#: ../src/ical-archive.c:348
 #, c-format
 msgid "\tArchiving events, which are older than: %04d-%02d-%02d"
 msgstr "\tՄիջոցառումների պահուատաւորում, որոնք աւելի հին են քան՝ %04d֊%02d֊%02d"
 
-#: ../src/ical-archive.c:379
+#: ../src/ical-archive.c:375
 #, c-format
 msgid "Archiving uid: %s"
 msgstr "Պահուստաւորման uid՝ %s"
 
 #. VTODO not completed, do not archive
-#: ../src/ical-archive.c:385
+#: ../src/ical-archive.c:381
 msgid "\tVTODO not complete; not archived"
 msgstr "\tVTODO աւարտուած չէ; պահուստաւորուած չէ"
 
 #. it is recurrent event
-#: ../src/ical-archive.c:390
+#: ../src/ical-archive.c:386
 #, c-format
 msgid "\tRecurring. End year: %04d, month: %02d, day: %02d"
 msgstr "\tՊարբերական։ Տարուա աւարտ՝ %04d, ամիս %02d, աւր %02d"
 
-#: ../src/ical-archive.c:407
+#: ../src/ical-archive.c:403
 msgid "Archiving done\n"
 msgstr "Պահուստաւորումն կատարուեց\n"
 
 #. PHASE 1: go through base orage file and remove "repeat" shortcuts
-#: ../src/ical-archive.c:423
+#: ../src/ical-archive.c:419
 msgid "Starting archive removal."
 msgstr "Պահոցի հեռացումը սկսուում է։"
 
-#: ../src/ical-archive.c:424
+#: ../src/ical-archive.c:420
 msgid "\tPHASE 1: reset recurring appointments"
 msgstr "\tՓՈՒԼ 1․ վերականգնել կրկնուող ժամադրութիւնները"
 
 #. PHASE 2: go through archive file and add everything back to base orage.
 #. * After that delete the whole arch file
-#: ../src/ical-archive.c:446
+#: ../src/ical-archive.c:442
 msgid "\tPHASE 2: return archived appointments"
 msgstr "\tՓՈՒԼ 2․ վերականգնել պահուստաւորուած ժամադրութիւնները"
 
-#: ../src/ical-archive.c:472
+#: ../src/ical-archive.c:468
 msgid "Archive removal done\n"
 msgstr "Պահոցի հեռացումն աւարտուեց\n"
 
-#: ../src/ical-code.c:972
+#: ../src/ical-code.c:859
 msgid "Orage default alarm"
 msgstr "Orage լռելեայն ազդանշան"
 
-#: ../src/ical-code.c:3179
+#: ../src/ical-code.c:3064
 msgid "Created alarm list for main Orage file:"
 msgstr "Ազդանշանների ստեղծուած ցուցակ Orage հիմնական նիշի համար․"
 
-#: ../src/ical-code.c:3181
+#: ../src/ical-code.c:3066
 #, c-format
 msgid "Created alarm list for foreign file: %s (%s)"
 msgstr "Ազդանշանների ստեղծուած ցուցակ արտաքին նիշի համար․ %s (%s)"
 
-#: ../src/ical-code.c:3183
+#: ../src/ical-code.c:3068
 #, c-format
 msgid "\tAdded %d alarms. Processed %d events."
 msgstr "\tԱւելացուած %d ազդանշաններ։  Կատարուած %d միջոցառումներ։"
 
-#: ../src/ical-code.c:3185
+#: ../src/ical-code.c:3070
 #, c-format
 msgid ""
 "\tFound %d alarms of which %d are active. (Searched %d recurring alarms.)"
-msgstr "\tԳտնուած %d ազդանշաններ, որոնցից %d պահուստ են։ (Որոնուած %d կրկնուող ազդանշաններ։)"
+msgstr ""
+"\tԳտնուած %d ազդանշաններ, որոնցից %d պահուստ են։ (Որոնուած %d կրկնուող "
+"ազդանշաններ։)"
 
-#: ../src/ical-expimp.c:123
+#: ../src/ical-expimp.c:120
 msgid "Starting import file preprocessing"
 msgstr "Սկսոում է ներածումը եւ կատարումը"
 
-#: ../src/ical-expimp.c:158
+#: ../src/ical-expimp.c:155
 msgid "... Patched DCREATED to be CREATED."
 msgstr "... Շտկուած DCREATED ֊ը CREATED֊ի։"
 
-#: ../src/ical-expimp.c:197
+#: ../src/ical-expimp.c:194
 msgid "... Patched timezone to Orage format."
 msgstr "... Շտկուած ժամանակագաւտի Orage ֊ի ձեւաչափով։"
 
-#: ../src/ical-expimp.c:206
+#: ../src/ical-expimp.c:203
 msgid "Import file preprocessing done"
 msgstr "Արտածման նիշի նախամշակումն աւարտուած է"
 
-#: ../src/interface.c:89 ../src/interface.c:104
+#: ../src/interface.c:88 ../src/interface.c:103
 #, c-format
 msgid "Found external update on file %s."
 msgstr "Գտնուել է արտաքին արդիացում %s նիշում։"
 
-#: ../src/interface.c:112
+#: ../src/interface.c:111
 msgid "Refreshing alarms and calendar due to external file update."
-msgstr "Ազդանշանների եւ աւրացոյցի թարմեցում ճիշտ ժամանակին արտաքին նիշի արդիացման համար։"
+msgstr ""
+"Ազդանշանների եւ աւրացոյցի թարմեցում ճիշտ ժամանակին արտաքին նիշի արդիացման "
+"համար։"
 
-#: ../src/interface.c:271
+#: ../src/interface.c:272
 msgid "Calendar files"
 msgstr "Աւրացոյցի նիշեր"
 
-#: ../src/interface.c:631
+#: ../src/interface.c:642
 msgid "Current foreign files"
 msgstr "Ընթացիկ արտաքին նիշեր"
 
-#: ../src/interface.c:648
+#: ../src/interface.c:665
 msgid "READ ONLY"
 msgstr "ՄԻԱՅՆ ԸՆԹԵՐՑՄԱՆ"
 
-#: ../src/interface.c:650
+#: ../src/interface.c:667
 msgid "READ WRITE"
 msgstr "ԸՆԹԵՐՑՄԱՆ ԳՐՄԱՆ"
 
-#: ../src/interface.c:669
+#: ../src/interface.c:692
 msgid "***** No foreign files *****"
 msgstr "***** Արտաքին նիշեր չկան *****"
 
-#: ../src/interface.c:682
+#: ../src/interface.c:708
 msgid "Foreign file add failed"
 msgstr "Չյաջողուեց աւելացներ արտաքին նիշ"
 
-#: ../src/interface.c:689
+#: ../src/interface.c:716
 msgid "Orage can only handle 10 foreign files. Limit reached."
 msgstr "Orage ֊ը կարող է բռնել միայն 10 ընթացիկ նիշ։ Սահմանը գերազանցուել է։"
 
-#: ../src/interface.c:697
+#: ../src/interface.c:726
 msgid "Filename is empty."
 msgstr "Նիշի անունը դատարկ է։"
 
-#: ../src/interface.c:705
+#: ../src/interface.c:736
 msgid "Name is empty."
 msgstr "Անունը դատարկ է։"
 
-#: ../src/interface.c:713
+#: ../src/interface.c:746
 msgid "File does not exist."
 msgstr "Նիշը գոյութիւն չունի"
 
-#: ../src/interface.c:722
+#: ../src/interface.c:757
 msgid "Same filename already exists in Orage."
 msgstr "Orage֊ում արդէն կայ այդ անունով նիշ։."
 
-#: ../src/interface.c:730
+#: ../src/interface.c:767
 msgid "Same name already exists in Orage."
 msgstr "Orage֊ում արդէն կայ այդ անունը։."
 
-#: ../src/interface.c:965
+#: ../src/interface.c:1022
 msgid "Import/export"
 msgstr "Ներածում/արտածում"
 
-#: ../src/interface.c:972
+#: ../src/interface.c:1029
 msgid "Import"
 msgstr "Ներածել"
 
-#: ../src/interface.c:977
+#: ../src/interface.c:1037
 msgid "Read from file:"
 msgstr "Ընթերցուել է նիշից․"
 
-#: ../src/interface.c:994
+#: ../src/interface.c:1067
 msgid ""
 "Separate filenames with comma(,).\n"
 " NOTE: comma is not valid character in filenames for Orage."
-msgstr "Բաժանել նիշերի անուանումները ստորակէտերով (,)։\nՅԻՇԵՑՈՒՄ․ ստորակէտը անվաւեր նշան է Orage֊ի նիշերի անունների համար։"
+msgstr ""
+"Բաժանել նիշերի անուանումները ստորակէտերով (,)։\n"
+"ՅԻՇԵՑՈՒՄ․ ստորակէտը անվաւեր նշան է Orage֊ի նիշերի անունների համար։"
 
-#: ../src/interface.c:999
+#: ../src/interface.c:1072
 msgid "Export"
 msgstr "Արտածել"
 
-#: ../src/interface.c:1004
+#: ../src/interface.c:1080
 msgid "Write to file:"
 msgstr "Գրել նիշում․"
 
-#: ../src/interface.c:1025 ../src/interface.c:1037
+#: ../src/interface.c:1115 ../src/interface.c:1133
 msgid "Select"
 msgstr "Ընտրել"
 
-#: ../src/interface.c:1028
+#: ../src/interface.c:1120
 msgid "All appointments"
 msgstr "Բոլոր ժամադրութիւնները"
 
-#: ../src/interface.c:1041
-msgid "Named appointments: "
-msgstr "Անուանուած սաքրաւորումներ՝"
+#: ../src/interface.c:1139
+msgid "Named appointments:"
+msgstr ""
 
-#: ../src/interface.c:1053
+#: ../src/interface.c:1158
 msgid ""
 "Note that only main file appointments are read.\n"
 "Archived and Foreign events are not exported."
-msgstr "Յիշեք, որ միայն հիմնական նիշերի սարաւորումներն են ընթերցուում։\nՊահուստաւորուած եւ աւտար միջոցառումները արտածուած չեն։"
+msgstr ""
+"Յիշեք, որ միայն հիմնական նիշերի սարաւորումներն են ընթերցուում։\n"
+"Պահուստաւորուած եւ աւտար միջոցառումները արտածուած չեն։"
 
-#: ../src/interface.c:1056
+#: ../src/interface.c:1161
 msgid ""
 "Note that only main file appointments are read.\n"
 "Foreign events are not exported."
-msgstr "Յիշեք, որ միայն հիմնական նիշերի սարաւորումներն են ընթերցուում։\nԱւտար միջոցառումները արտածուած չեն։"
+msgstr ""
+"Յիշեք, որ միայն հիմնական նիշերի սարաւորումներն են ընթերցուում։\n"
+"Աւտար միջոցառումները արտածուած չեն։"
 
-#: ../src/interface.c:1059
+#: ../src/interface.c:1164
 msgid "You can easily drag these from event-list window."
-msgstr "Դուք կարող Եք հեշտութեամբ քցել իրենց միջոցառումների ցուցակի պատուհանից։ "
+msgstr ""
+"Դուք կարող Եք հեշտութեամբ քցել իրենց միջոցառումների ցուցակի պատուհանից։ "
 
-#: ../src/interface.c:1061
+#: ../src/interface.c:1166
 msgid "Orage appointment UIDs separated by commas."
 msgstr "Orage ժամադրութիւն UIDs անջատուել է կետերով։"
 
-#: ../src/interface.c:1067
+#: ../src/interface.c:1172
 msgid "Archive"
 msgstr "Պահոց"
 
-#: ../src/interface.c:1075
+#: ../src/interface.c:1187
 #, c-format
 msgid "Archive now (threshold: %d months)"
 msgstr "Պահեստաւորել հիմա (շեմ․ %d ամիս)"
 
-#: ../src/interface.c:1085
+#: ../src/interface.c:1198
 msgid "You can change archive threshold in parameters"
 msgstr "Դուք կարող եք փոփոխել պահուստի շեմերը ընտրանքներում"
 
-#: ../src/interface.c:1092
+#: ../src/interface.c:1210
 msgid "Revert archive now"
 msgstr "Վերադառձնել պահոցը հիմա"
 
-#: ../src/interface.c:1098
+#: ../src/interface.c:1217
 msgid ""
 "Return all archived events into main orage file and remove arch file.\n"
 "This is useful for example when doing export and moving orage\n"
 "appointments to another system."
-msgstr "Վերականգնել բոլոր պահուստաւորուած միջոցառումները orage֊ի հիմնական նիշում եւ հեռացնել կամարի նիշը։\nՍա աւգտակար է աւրինակ արտածման եւ orage ժամադրութիւնները\n դէպի այլ համակարկ տեղաշարժման ժամանակ։"
+msgstr ""
+"Վերականգնել բոլոր պահուստաւորուած միջոցառումները orage֊ի հիմնական նիշում եւ հեռացնել կամարի նիշը։\n"
+"Սա աւգտակար է աւրինակ արտածման եւ orage ժամադրութիւնները\n"
+" դէպի այլ համակարկ տեղաշարժման ժամանակ։"
 
-#: ../src/interface.c:1109
+#: ../src/interface.c:1229
 msgid "Orage files"
 msgstr "Orage նիշեր"
 
-#: ../src/interface.c:1116
+#: ../src/interface.c:1236
 msgid "Orage main calendar file"
 msgstr "Orage հիմնական աւրացոյցի նիշ"
 
-#: ../src/interface.c:1121 ../src/interface.c:1186
+#: ../src/interface.c:1245 ../src/interface.c:1338
 msgid "Current file:"
 msgstr "Ընթացիկ նիշ՝"
 
-#: ../src/interface.c:1128 ../src/interface.c:1193
+#: ../src/interface.c:1257 ../src/interface.c:1350
 msgid "New file:"
 msgstr "Նոր նիշ․"
 
-#: ../src/interface.c:1144 ../src/interface.c:1210
+#: ../src/interface.c:1285 ../src/interface.c:1377
 msgid "Action options:"
 msgstr "Գործողութեան ընտրանքներ՝"
 
-#: ../src/interface.c:1147 ../src/interface.c:1213
+#: ../src/interface.c:1289 ../src/interface.c:1381
 msgid "Rename"
 msgstr "Անուանափոխել"
 
-#: ../src/interface.c:1151
+#: ../src/interface.c:1295
 msgid ""
 "Orage internal file rename only.\n"
 "Does not touch external filesystem at all.\n"
 "New file must exist."
-msgstr "Orage ներքին նիշի միայն վերանուանում։\nՉի դիպչում արտաքին նիշային համակարգի։\nՆոր նիշը պիտի գոյութիւն ունենա։"
+msgstr ""
+"Orage ներքին նիշի միայն վերանուանում։\n"
+"Չի դիպչում արտաքին նիշային համակարգի։\n"
+"Նոր նիշը պիտի գոյութիւն ունենա։"
 
-#: ../src/interface.c:1155 ../src/interface.c:1218
+#: ../src/interface.c:1299 ../src/interface.c:1388
 msgid "Copy"
 msgstr "Պատճէնել"
 
-#: ../src/interface.c:1159
+#: ../src/interface.c:1305
 msgid "Current file is copied and stays unmodified in the old place."
 msgstr "Ընթացիկ նիշը պատճէնուած է եւ մնացել է չբարելաւուած հին տեղում։"
 
-#: ../src/interface.c:1163 ../src/interface.c:1223
+#: ../src/interface.c:1309 ../src/interface.c:1395
 msgid "Move"
 msgstr "Շարժել"
 
-#: ../src/interface.c:1167
+#: ../src/interface.c:1315
 msgid "Current file is moved and vanishes from the old place."
 msgstr "Ընթացիկ նիշը շարժուել եւ անհետացել է իր հին տեղից։"
 
-#: ../src/interface.c:1181
+#: ../src/interface.c:1329
 msgid "Archive file"
 msgstr "Պահոցի նիշ"
 
-#: ../src/interface.c:1245
+#: ../src/interface.c:1420
 msgid "Foreign files"
 msgstr "Արտաքին նիշեր"
 
-#: ../src/interface.c:1252
+#: ../src/interface.c:1427
 msgid "Add new foreign file"
 msgstr "Աւելացնել նոր արտաքին նիշ"
 
-#: ../src/interface.c:1257
+#: ../src/interface.c:1435
 msgid "Foreign file:"
 msgstr "Արտաքին նիշ․"
 
-#. label = gtk_label_new(_("Options:"));
-#. gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 5);
-#: ../src/interface.c:1279
+#: ../src/interface.c:1466
 msgid "Visible name:"
 msgstr "Տեսանելի անուն․"
 
-#: ../src/interface.c:1285
+#: ../src/interface.c:1476
 msgid "Read only"
 msgstr "Միայն ընթերցման"
 
-#: ../src/interface.c:1292
+#: ../src/interface.c:1486
 msgid ""
 "Set this if you want to make sure that this file is never modified by Orage.\n"
 "Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
-msgstr "Սահմանեք այս, եթե համոզուած Եք, որ այս նիշը երբեք չի բերելաւուել Orage֊ի կողմից։\nՅիշեք, որ արտաքին նիշերի բարելաւումը  կարող է վերածել իրենց անհամատեղելի հիմնական գործիքի հետ, որտեղից եկել էին։ "
+msgstr ""
+"Սահմանեք այս, եթե համոզուած Եք, որ այս նիշը երբեք չի բերելաւուել Orage֊ի կողմից։\n"
+"Յիշեք, որ արտաքին նիշերի բարելաւումը  կարող է վերածել իրենց անհամատեղելի հիմնական գործիքի հետ, որտեղից եկել էին։ "
 
-#: ../src/interface.c:1294
+#: ../src/interface.c:1488
 msgid "This internal name is displayed to user instead of file name."
 msgstr "Այս ներքին անունը ցուցադրուում է աւգտատիրոջը նիշի անուան փոխարէն։"
 
-#: ../src/interface.c:1308
+#: ../src/interface.c:1502
 msgid "Exchange data - Orage"
 msgstr "Տուեալների փոխանակում - Orage"
 
-#: ../src/main.c:275
+#: ../src/main.c:271
 #, c-format
 msgid ""
 "\tThis is %s version %s\n"
 "\n"
-msgstr "\tՍա %s %s տարբերակի\n\n"
+msgstr ""
+"\tՍա %s %s տարբերակի\n"
+"\n"
 
-#: ../src/main.c:277
+#: ../src/main.c:273
 #, c-format
 msgid "\tReleased under the terms of the GNU General Public License.\n"
 msgstr "\tԹողարկուել է GNU General Public License֊ի պայմաններով։\n"
 
-#: ../src/main.c:278
+#: ../src/main.c:274
 #, c-format
 msgid "\tCompiled against GTK+-%d.%d.%d, "
 msgstr "\tԿազմուած  GTK+-%d.%d.%d, "
 
-#: ../src/main.c:280
+#: ../src/main.c:276
 #, c-format
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "աւգտագործելով GTK+-%d.%d.%d.\n"
 
-#: ../src/main.c:283
+#: ../src/main.c:279
 #, c-format
 msgid "\tUsing DBUS for import.\n"
 msgstr "\tԱւգտագործելով DBUS արտածման համար։\n"
 
-#: ../src/main.c:285
+#: ../src/main.c:281
 #, c-format
 msgid "\tNot using DBUS. Import works only partially.\n"
 msgstr "\tՉաւգտագործել DBUS։ Արտածումը աշխատում է միայն մասամբ։\n"
 
-#: ../src/main.c:288
+#: ../src/main.c:284
 #, c-format
 msgid "\tUsing libnotify.\n"
 msgstr "\tԱւգտագործել libnotify:\n"
 
-#: ../src/main.c:290
+#: ../src/main.c:286
 #, c-format
 msgid "\tNot using libnotify.\n"
 msgstr "\tՉաւգտագործել Libnotify։\n"
 
-#: ../src/main.c:293
+#: ../src/main.c:289
 #, c-format
 msgid "\tUsing automatic archiving.\n"
 msgstr "\tԱւգտագործել ինքնուրոյն պահուստաւորում։\n"
 
-#: ../src/main.c:295
+#: ../src/main.c:291
 #, c-format
 msgid "\tNot using archiving.\n"
 msgstr "\tՉպահուստաւորել։\n"
 
-#: ../src/main.c:298
+#: ../src/main.c:294
 #, c-format
 msgid "\tUsing operating system package libical.\n"
 msgstr "\tԱւգտագործել աւպերացիոն համակարգի փաթեթ libical։\n"
 
-#: ../src/main.c:300
+#: ../src/main.c:296
 #, c-format
 msgid "\tUsing Orage local version of libical.\n"
 msgstr "\tԱւգտագործելով Orage libical֊ի տեղային տարբերակ։\n"
 
-#: ../src/main.c:313
+#: ../src/main.c:299
+#, c-format
+msgid "\tUsing libxfce4ui: yes\n"
+msgstr ""
+
+#: ../src/main.c:301
+#, c-format
+msgid "\tUsing libxfce4ui: no\n"
+msgstr ""
+
+#: ../src/main.c:314
 #, c-format
 msgid ""
 "Usage: orage [options] [files]\n"
 "\n"
-msgstr "Աւգտագործում․ orage [ընտրանքներ] [նիշեր]\n\n"
+msgstr ""
+"Աւգտագործում․ orage [ընտրանքներ] [նիշեր]\n"
+"\n"
 
-#: ../src/main.c:314
+#: ../src/main.c:315
 #, c-format
 msgid "Options:\n"
 msgstr "Ընտրանքներ․\n"
 
-#: ../src/main.c:315
+#: ../src/main.c:316
 #, c-format
 msgid "--version (-v) \t\tshow version of orage\n"
 msgstr "--version (-v) \t\tցուցադրել orage֊ի տարբերակը\n"
 
-#: ../src/main.c:316
+#: ../src/main.c:317
 #, c-format
 msgid "--help (-h) \t\tprint this text\n"
 msgstr "--help (-h) \t\tտպել այս գրոյթը\n"
 
-#: ../src/main.c:317
+#: ../src/main.c:318
 #, c-format
 msgid "--preferences (-p) \tshow preferences form\n"
 msgstr "--preferences (-p) \tցուցադրել յատկութիւնները\n"
 
-#: ../src/main.c:318
+#: ../src/main.c:319
 #, c-format
 msgid "--toggle (-t) \t\tmake orage visible/unvisible\n"
 msgstr "--toggle (-t) \t\tսարքել orage֊ը տեսանելի/անտեսանելի\n"
 
-#: ../src/main.c:319
+#: ../src/main.c:320
 #, c-format
 msgid "--add-foreign (-a) file [RW] [name] \tadd a foreign file\n"
 msgstr "--add-foreign (-a) file [RW] [name] \tաւելացնել արտաքին նիշ\n"
 
-#: ../src/main.c:320
+#: ../src/main.c:321
 #, c-format
 msgid "--remove-foreign (-r) file \tremove a foreign file\n"
 msgstr "--remove-foreign (-r) file \tհեռացնել արտաքին նիշ\n"
 
-#: ../src/main.c:321
+#: ../src/main.c:322
 #, c-format
 msgid ""
 "--export (-e) file [appointment...] \texport appointments from Orage to "
 "file\n"
-msgstr "--export (-e) file [appointment...] \tարտածել ժամադրութիւններ Orageից նիշ\n"
+msgstr ""
+"--export (-e) file [appointment...] \tարտածել ժամադրութիւններ Orageից նիշ\n"
 
-#: ../src/main.c:323
+#: ../src/main.c:324
 #, c-format
 msgid "files=ical files to load into orage\n"
 msgstr "files=ical նիշեր orage ում բեռնելու համար\n"
 
-#: ../src/main.c:325
+#: ../src/main.c:326
 #, c-format
 msgid "\tdbus not included in orage. \n"
 msgstr "\tdbus չի ներառուում orage֊ում։ \n"
 
-#: ../src/main.c:326
+#: ../src/main.c:327
 #, c-format
 msgid ""
 "\twithout dbus [files] and foreign file options(-a & -r) can only be used "
 "when starting orage \n"
-msgstr "\tառանց dbus [նիշերի] եւ արտաքին նիշի ընտրանքները(-a & -r) կարող են աւգտագործուել միայն orage֊ի միացման ժամանակ \n"
+msgstr ""
+"\tառանց dbus [նիշերի] եւ արտաքին նիշի ընտրանքները(-a & -r) կարող են "
+"աւգտագործուել միայն orage֊ի միացման ժամանակ \n"
 
-#: ../src/main.c:535
+#: ../src/main.c:536
 #, c-format
 msgid ""
 "\n"
 "Unknown option %s\n"
 "\n"
-msgstr "\nԱնյայտ ընտրանք %s\n\n"
+msgstr ""
+"\n"
+"Անյայտ ընտրանք %s\n"
+"\n"
 
-#: ../src/mainbox.c:305
+#: ../src/mainbox.c:324
 msgid "_Exchange data"
 msgstr "_Տուեալների փոխանակում"
 
 #. Edit menu
-#: ../src/mainbox.c:316
+#: ../src/mainbox.c:335
 msgid "_Edit"
 msgstr "_Խմբագրում"
 
-#: ../src/mainbox.c:326
+#: ../src/mainbox.c:345
 msgid "View selected _date"
 msgstr "Դիտել նշուած _տուեալները"
 
-#: ../src/mainbox.c:329
+#: ../src/mainbox.c:348
 msgid "View selected _week"
 msgstr "Դիտել նշուած _շաբաթը"
 
-#: ../src/mainbox.c:335
+#: ../src/mainbox.c:354
 msgid "Select _Today"
 msgstr "Նշել _Այսաւր"
 
-#: ../src/mainbox.c:341
+#: ../src/mainbox.c:360
 msgid "Show _Globaltime"
 msgstr "Ցուցադրել _ընդհանրական ժամը"
 
 #. Help menu
-#: ../src/mainbox.c:345
+#. the rest
+#: ../src/mainbox.c:364 ../src/parameters.c:1209
 msgid "_Help"
 msgstr "_Աջակցութիւն"
 
-#: ../src/mainbox.c:414 ../src/reminder.c:1138
+#: ../src/mainbox.c:432 ../src/reminder.c:1155
 msgid "No title defined"
 msgstr "Վերնագիր սահմանուած չէ"
 
-#: ../src/mainbox.c:471
+#: ../src/mainbox.c:495
 #, c-format
 msgid " Location: %s\n"
 msgstr "Տեղ՝ %s\n"
 
-#: ../src/mainbox.c:481
+#: ../src/mainbox.c:505
 #, c-format
 msgid ""
 "\n"
 " Note:\n"
 "%s"
-msgstr "\nՆշում․\n%s"
+msgstr ""
+"\n"
+"Նշում․\n"
+"%s"
 
-#: ../src/mainbox.c:489
+#: ../src/mainbox.c:513
 msgid "Never"
 msgstr "Երբեք"
 
-#: ../src/mainbox.c:495
+#: ../src/mainbox.c:519
 #, c-format
 msgid ""
 "Title: %s\n"
 "%s Start:\t%s\n"
 " Due:\t%s\n"
 " Done:\t%s%s"
-msgstr "Վերնագիր՝ %s\n%s Սկիզբ՝\t%s\n Վերջ՝\t%s\n Աւարտ՝\t%s%s"
+msgstr ""
+"Վերնագիր՝ %s\n"
+"%s Սկիզբ՝\t%s\n"
+" Վերջ՝\t%s\n"
+" Աւարտ՝\t%s%s"
 
-#: ../src/mainbox.c:503
+#: ../src/mainbox.c:527
 #, c-format
 msgid ""
 "Title: %s\n"
 "%s Start:\t%s\n"
 " End:\t%s%s"
-msgstr "Վերնագիր՝ %s\n%s Սկիզբ՝\t%s\n Աւարտ՝\t%s%s"
+msgstr ""
+"Վերնագիր՝ %s\n"
+"%s Սկիզբ՝\t%s\n"
+" Աւարտ՝\t%s%s"
 
-#: ../src/mainbox.c:613
+#: ../src/mainbox.c:637
 msgid "<b>To do:</b>"
 msgstr "<b>Անելու․</b>"
 
-#: ../src/mainbox.c:649
+#: ../src/mainbox.c:678
 #, c-format
 msgid "<b>Events for %s:</b>"
 msgstr "<b>Միջոցառումներ %s․</b>"
 
-#: ../src/mainbox.c:660
+#: ../src/mainbox.c:689
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "Միջոցառումներ %s - %s․</b>"
 
-#: ../src/parameters.c:492
+#: ../src/parameters.c:554
 msgid "Main settings"
 msgstr "Հիմնական կարգաւորումներ"
 
-#: ../src/parameters.c:498
+#: ../src/parameters.c:560
 msgid "Timezone"
 msgstr "Ժամանակագաւտի"
 
-#: ../src/parameters.c:513
+#: ../src/parameters.c:581
 msgid "You should always define your local timezone."
 msgstr "Դուք պիտի միշտ սահմանեք Ձեր տեղային ժամային գաւտին։"
 
-#: ../src/parameters.c:521
+#: ../src/parameters.c:589
 msgid "Archive threshold (months)"
 msgstr "Պահուստաւորել շեմը (ամիսներ)"
 
-#: ../src/parameters.c:531
+#: ../src/parameters.c:602
 msgid "(0 = no archiving)"
 msgstr "(0 = չպահուստաւորել)"
 
-#: ../src/parameters.c:534
+#: ../src/parameters.c:606
 msgid "Archiving is used to save time and space when handling events."
-msgstr "Պահուստաւորումը աւգտագործուում է միջոցառումների ընթացքում ժամանկը եւ տեղը խնայելու համար։"
+msgstr ""
+"Պահուստաւորումը աւգտագործուում է միջոցառումների ընթացքում ժամանկը եւ տեղը "
+"խնայելու համար։"
 
-#: ../src/parameters.c:542
+#: ../src/parameters.c:614
 msgid "Sound command"
 msgstr "Ձայնային հրաման"
 
-#: ../src/parameters.c:557
+#: ../src/parameters.c:642
 msgid "This command is given to shell to make sound in alarms."
 msgstr "Այս հրամանը տրուել է ազդանշանների ձայնը կազմելու համար։"
 
-#: ../src/parameters.c:596
+#: ../src/parameters.c:673
 msgid "Calendar window"
 msgstr "Աւրացոյցի պատուհան"
 
-#: ../src/parameters.c:603
+#: ../src/parameters.c:680
 msgid "Calendar visual details"
 msgstr "Աւրացոյցի տեսական մանրամասները"
 
-#: ../src/parameters.c:609
+#: ../src/parameters.c:687
 msgid "Show borders"
 msgstr "Ցուցադրել սահմանները"
 
-#: ../src/parameters.c:614
+#: ../src/parameters.c:692
 msgid "Show menu"
 msgstr "Ցուցադրել ընտրացանկը"
 
-#: ../src/parameters.c:622
+#: ../src/parameters.c:700
 msgid "Show day names"
 msgstr "Ցուցադրել աւրերի անուանումները"
 
-#: ../src/parameters.c:627
+#: ../src/parameters.c:705
 msgid "Show week numbers"
 msgstr "Ցուցադրել շաբաթուա թուերը"
 
-#: ../src/parameters.c:635
+#: ../src/parameters.c:713
 msgid "Show month and year"
 msgstr "Ցուցադրել ամիսը եւ տարին"
 
-#: ../src/parameters.c:655
+#: ../src/parameters.c:733
 msgid "Calendar info boxes"
 msgstr "Աւրացոյցի տեղեկութիւնների արկղներ"
 
-#: ../src/parameters.c:660
+#: ../src/parameters.c:740
 msgid "Show todo list"
 msgstr "Ցուցադրել գործերի ցուցակը"
 
-#: ../src/parameters.c:667
+#: ../src/parameters.c:747
 msgid "Number of days to show in event window"
 msgstr "Աւրերի համարները միջոցառման պատուհանում ցուցադրելու համար"
 
-#: ../src/parameters.c:673
+#: ../src/parameters.c:755
 msgid "0 = do not show event list at all"
 msgstr "0 = ընդհանրապէս չցուցադրել իրադարձութեան ցուցակը"
 
-#: ../src/parameters.c:686
+#: ../src/parameters.c:769
 msgid "Calendar visibility"
 msgstr "Աւրացոյցի տսանելիութիւն"
 
-#: ../src/parameters.c:691
+#: ../src/parameters.c:775
 msgid "Show on all desktops"
 msgstr "Ցուցադրել բոլոր աշխատասեղաններում"
 
-#: ../src/parameters.c:696
+#: ../src/parameters.c:780
 msgid "Keep on top"
 msgstr "Պահել վերեւում"
 
-#: ../src/parameters.c:704
+#: ../src/parameters.c:788
 msgid "Show in taskbar"
 msgstr "Ցուցադրել առաջադրանքների գաւտում"
 
-#: ../src/parameters.c:709
+#: ../src/parameters.c:793
 msgid "Show in pager"
 msgstr "Ցուցադրել հեռատողում"
 
-#: ../src/parameters.c:717
+#: ../src/parameters.c:801
 msgid "Show in systray"
 msgstr "Ցուցադրել systray֊ում"
 
-#: ../src/parameters.c:738
+#: ../src/parameters.c:823
 msgid "Calendar start"
 msgstr "Աւրացոյցի սկիզբ"
 
-#: ../src/parameters.c:743
+#: ../src/parameters.c:829
 msgid "Show"
 msgstr "Ցուցադրել"
 
-#: ../src/parameters.c:755
+#: ../src/parameters.c:845
 msgid "Hide"
 msgstr "Թաքցնել"
 
-#: ../src/parameters.c:767
+#: ../src/parameters.c:862
 msgid "Minimized"
 msgstr "Փոքրացուած"
 
-#: ../src/parameters.c:787
+#: ../src/parameters.c:888
 msgid "On calendar window open"
 msgstr "Աւրացոյցի բացուած պատուհանում"
 
-#: ../src/parameters.c:792
+#: ../src/parameters.c:894
 msgid "Select today's date"
 msgstr "Ընտրել այսաւրուայ ամսաթիւնը"
 
-#: ../src/parameters.c:805
+#: ../src/parameters.c:911
 msgid "Select previously selected date"
 msgstr "Ընտրել նախորդ ընտրուած ամսաթիւը"
 
-#: ../src/parameters.c:823
+#: ../src/parameters.c:935
 msgid "Calendar day double click shows"
 msgstr "Կրկնակի սեղմումը ցուցադրում է աւրացոյցի աւրը"
 
-#: ../src/parameters.c:828
+#: ../src/parameters.c:941
 msgid "Days view"
 msgstr "Աւրերի դիտում"
 
-#: ../src/parameters.c:840
+#: ../src/parameters.c:957
 msgid "Event list"
 msgstr "Միջոցառումների ցուցակ"
 
-#: ../src/parameters.c:862
+#: ../src/parameters.c:990
 msgid "Extra settings"
 msgstr "Լրացուցիչ կարգաւորումներ"
 
-#: ../src/parameters.c:869
+#: ../src/parameters.c:997
 msgid "Event list window"
 msgstr "Միջոցառումների ցուցակի պատուհան"
 
-#: ../src/parameters.c:874
+#: ../src/parameters.c:1004
 msgid "Number of extra days to show in event list"
 msgstr "Հաւելեալ աւրերի համարները միջոցառումների ցուցակում ցուցադրելու համար"
 
-#: ../src/parameters.c:883
+#: ../src/parameters.c:1014
 msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
-msgstr "Սա լռելեայն ծաւալ է, Դուք կարող Եք այն փոխել իրական միջոցառումների ցուցակի պատուհանում։"
+msgstr ""
+"Սա լռելեայն ծաւալ է, Դուք կարող Եք այն փոխել իրական միջոցառումների ցուցակի "
+"պատուհանում։"
 
-#: ../src/parameters.c:891
+#: ../src/parameters.c:1022
 msgid "Show only first repeating event"
 msgstr "Ցուցադրել միայն առաջին անգամ կրկնուող միջոցառումը"
 
-#: ../src/parameters.c:907
+#: ../src/parameters.c:1039
 msgid "Day view window default first day"
 msgstr "Աւրերի դիտման պատուհան լռելեայն առաջին աւր"
 
-#: ../src/parameters.c:912
+#: ../src/parameters.c:1046
 msgid "First day of week"
 msgstr "Շաբաթուա առաջին աւր"
 
-#: ../src/parameters.c:925
+#: ../src/parameters.c:1063
 msgid "Selected day"
 msgstr "Նշուած աւր"
 
-#: ../src/parameters.c:943
-msgid "Use dynamic tray icon"
-msgstr "Աւգտագործել  շարժուն դարակի պատկերակ"
-
-#: ../src/parameters.c:948
-msgid "Use dynamic icon"
-msgstr "Աւգտագործել շարժուն դարակ"
-
-#: ../src/parameters.c:954
-msgid "Dynamic icon shows current month and day of the month."
-msgstr "Շարժուն պատկերակը ցուցադրում է ընթացիկ ամիսը եւ ամսուա աւրը։"
-
-#: ../src/parameters.c:962 ../src/parameters.c:967
+#: ../src/parameters.c:1086 ../src/parameters.c:1093
 msgid "Use wakeup timer"
 msgstr "Աւգտագործել զարթնելու ժամաչափ"
 
-#: ../src/parameters.c:973
+#: ../src/parameters.c:1101
 msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
-msgstr "Աւրտագործել այս ժամաչափը, եթե Orage֊ը ունի պատշաճ զարթնելու խնդիրներ կասեցումից կամ նիրհումից յետոյ։  (Աւրինակ դարակի պատկերակը չի թարմեցուալ, կամ ազդանշանները չեն աշխատել։)"
+msgstr ""
+"Աւրտագործել այս ժամաչափը, եթե Orage֊ը ունի պատշաճ զարթնելու խնդիրներ "
+"կասեցումից կամ նիրհումից յետոյ։  (Աւրինակ դարակի պատկերակը չի թարմեցուալ, "
+"կամ ազդանշանները չեն աշխատել։)"
 
-#: ../src/parameters.c:982
+#: ../src/parameters.c:1111
 msgid "Foreign file default visual alarm"
 msgstr "Արտաքին նիշ լռելեայն տեսողական ազդանշան"
 
-#: ../src/parameters.c:987
+#: ../src/parameters.c:1118
 msgid "Orage window"
 msgstr "Orage պատուհան"
 
-#: ../src/parameters.c:1000
+#: ../src/parameters.c:1135
 msgid "Notify notification"
 msgstr "Ծանուցել ծանուցումը"
 
-#: ../src/parameters.c:1018
+#: ../src/parameters.c:1158
 msgid "Always quit when asked to close"
 msgstr "Միշտ դադարեցնել երբ հարցնում են փակել"
 
-#: ../src/parameters.c:1023
+#: ../src/parameters.c:1165
 msgid "Always quit"
 msgstr "Միշտ դադարեցնել"
 
-#: ../src/parameters.c:1029
+#: ../src/parameters.c:1172
 msgid ""
 "By default Orage stays open in the background when asked to close. This "
 "option changes Orage to quit and never stay in background when it is asked "
 "to close."
-msgstr "Լռելեայն Orage֊ը մնում է բաց յետնաշերտում, երբ հարցուում է փակել։ Այդ ընտրանքը անջատում է Orage֊ը եւ չի թողնում մնալ յետնաշերտում փակման հարցման ժամանակ։"
+msgstr ""
+"Լռելեայն Orage֊ը մնում է բաց յետնաշերտում, երբ հարցուում է փակել։ Այդ "
+"ընտրանքը անջատում է Orage֊ը եւ չի թողնում մնալ յետնաշերտում փակման հարցման "
+"ժամանակ։"
 
-#: ../src/parameters.c:1045
+#: ../src/parameters.c:1188
 msgid "Orage Preferences"
 msgstr "Orage Յատկութիւններ"
 
-#: ../src/parameters.c:1157
+#: ../src/parameters.c:1212 ../src/reminder.c:800
+msgid "_Close"
+msgstr "_Փակել"
+
+#: ../src/parameters.c:1299
 msgid "First Orage start. Searching default timezone."
 msgstr "Orage֊ի առաջին միացում։ Լռելեայն ժամանակագաւտու որոնում։"
 
-#: ../src/parameters.c:1176
+#: ../src/parameters.c:1318
 #, c-format
 msgid "Default timezone set to %s."
 msgstr "Լռելեայն ժամանակագաւտի սահմանուել է %s։"
 
-#: ../src/parameters.c:1179
+#: ../src/parameters.c:1321
 msgid "Default timezone not found, please, set it manually."
 msgstr "Լռելեայն ժամանակագաւտի չի գտնուել, խնդրում ենք սահմանել այն ձեռքով։"
 
-#: ../src/reminder.c:562
+#: ../src/reminder.c:563
 msgid "Reminder "
 msgstr "Յիշեցում"
 
-#: ../src/reminder.c:591
+#: ../src/reminder.c:592
 msgid "Open"
 msgstr "Բացել"
 
-#: ../src/reminder.c:719
+#: ../src/reminder.c:725
 msgid "Reminder - Orage"
 msgstr "Յիշեցում ֊ Orage"
 
-#: ../src/reminder.c:803
+#: ../src/reminder.c:808
+msgid "_Stop"
+msgstr ""
+
+#: ../src/reminder.c:816
 msgid "Postpone"
 msgstr "Յետաձգել"
 
-#: ../src/reminder.c:805
+#: ../src/reminder.c:818
 msgid "Remind me again after the specified time"
 msgstr "Յիշեցնել աւելի ուշ, յատկորոշուած ժամից յետոյ"
 
-#: ../src/reminder.c:1091
+#: ../src/reminder.c:1107
 msgid "Next active alarms:"
 msgstr "Յաջորդ գործուն ազդանշանները․"
 
-#: ../src/reminder.c:1145
+#: ../src/reminder.c:1162
 #, c-format
 msgid ""
 "\n"
 "%02d d %02d h %02d min to: %s"
-msgstr "\n%02d աւր %02d ժ %02d րոպէ մինչ՝ %s"
+msgstr ""
+"\n"
+"%02d աւր %02d ժ %02d րոպէ մինչ՝ %s"
 
-#: ../src/reminder.c:1154
+#: ../src/reminder.c:1171
 #, c-format
 msgid ""
 "\n"
 "No active alarms found"
-msgstr "\nՊահուստաւորուած ազդանշաններ չեն գտնուել"
+msgstr ""
+"\n"
+"Պահուստաւորուած ազդանշաններ չեն գտնուել"
 
 #: ../src/timezone_names.c:36
 msgid "Africa"
@@ -4406,19 +4594,23 @@ msgstr "ԱՄՆ/Խաղաղովկեանոսեան֊Նոր"
 msgid "US/Samoa"
 msgstr "ԱՄՆ/Սամոա"
 
-#: ../src/tray_icon.c:469
+#: ../src/tray_icon.c:457
 msgid "New appointment"
 msgstr "Նոր սարքաւրում"
 
-#: ../src/tray_icon.c:485
-msgid "About Orage"
-msgstr "Orage֊ի մասին"
+#: ../src/tray_icon.c:464
+msgid "Preferences"
+msgstr "Նախընտրութիւններ"
 
-#: ../panel-plugin/xfce4-orageclock-plugin.desktop.in.in.h:1
+#: ../src/tray_icon.c:471
+msgid "Quit"
+msgstr "Լքել"
+
+#: ../panel-plugin/xfce4-orageclock-plugin.desktop.in.h:1
 msgid "Orage Panel Clock"
 msgstr "Orage Վահանակի ժամացոյց"
 
-#: ../panel-plugin/xfce4-orageclock-plugin.desktop.in.in.h:2
+#: ../panel-plugin/xfce4-orageclock-plugin.desktop.in.h:2
 msgid "Show time and date?"
 msgstr "Ցուցադրե՞լ ժամը եւ ամսաթիւը։"
 
