@@ -1,374 +1,396 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Abduqadir Abliz <sahran.ug@gmail.com>, 2013
+# Xfce Bot <transifex@xfce.org>, 2022
+# Nick Schermer <nick@xfce.org>, 2022
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Xfce Apps\n"
+"Project-Id-Version: orage\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-23 12:30+0200\n"
-"PO-Revision-Date: 2017-09-23 19:02+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
-"Language-Team: Uighur (http://www.transifex.com/xfce/xfce-apps/language/ug/)\n"
+"POT-Creation-Date: 2022-02-01 15:01+0100\n"
+"PO-Revision-Date: 2022-02-01 14:01+0000\n"
+"Last-Translator: Nick Schermer <nick@xfce.org>, 2022\n"
+"Language-Team: Uyghur (https://www.transifex.com/xfce/teams/16840/ug/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ug\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../globaltime/globaltime.c:58
+#: ../globaltime/globaltime.c:59
 msgid "no underline"
 msgstr ""
 
-#: ../globaltime/globaltime.c:58
+#: ../globaltime/globaltime.c:59
 msgid "single"
 msgstr ""
 
-#: ../globaltime/globaltime.c:58
+#: ../globaltime/globaltime.c:59
 msgid "double"
 msgstr ""
 
-#: ../globaltime/globaltime.c:58
+#: ../globaltime/globaltime.c:59
 msgid "low"
 msgstr ""
 
-#: ../globaltime/globaltime.c:100
+#: ../globaltime/globaltime.c:108 ../src/tray_icon.c:164
 msgid "Raising GlobalTime window..."
 msgstr "دۇنيا ۋاقتى(GlobalTime) كۆزنىكى كۆتۈرۈلۈۋاتىدۇ..."
 
-#: ../globaltime/globaltime.c:102
+#: ../globaltime/globaltime.c:110 ../src/tray_icon.c:166
 msgid "GlobalTime window raise failed"
 msgstr "دۇنيا ۋاقتى(GlobalTime) كۆزنىكىنى كۆتۈرۈش مەغلۇپ بولدى"
 
 #. ********** timezone tooltip **********
-#: ../globaltime/globaltime.c:277
+#: ../globaltime/globaltime.c:338
 #, c-format
 msgid ""
 "%s\n"
 "click to modify clock"
-msgstr "%s\nچېكىپ سائەتنى توغرىلاڭ"
+msgstr ""
+"%s\n"
+"چېكىپ سائەتنى توغرىلاڭ"
 
-#: ../globaltime/globaltime.c:386
+#: ../globaltime/globaltime.c:447
 msgid "Localtime"
 msgstr "يەرلىك ۋاقىت"
 
-#: ../globaltime/globaltime.c:464
+#: ../globaltime/globaltime.c:536
 msgid ""
 "button 1 to change preferences \n"
 "button 2 to adjust time of clocks"
-msgstr "توپچە 1 تەڭشەكنى ئۆزگەرتىدۇ \nتوپچە 2 ۋاقىتنى توغرىلايدۇ"
+msgstr ""
+"توپچە 1 تەڭشەكنى ئۆزگەرتىدۇ \n"
+"توپچە 2 ۋاقىتنى توغرىلايدۇ"
 
-#: ../globaltime/globaltime.c:480
+#: ../globaltime/globaltime.c:551
 msgid "adjust to change hour"
 msgstr "سائەتنى توغرىلايدۇ"
 
-#: ../globaltime/globaltime.c:496
+#: ../globaltime/globaltime.c:567
 msgid ""
 "adjust to change minute. Click arrows with button 2 to change only 1 minute."
-msgstr "مىنۇتنى توغرىلايدۇ. توپچە 2 نى ئىسترېلكا بىلەن قوشۇپ چەكسە بىر مىنۇت ئۆزگىرىدۇ."
+msgstr ""
+"مىنۇتنى توغرىلايدۇ. توپچە 2 نى ئىسترېلكا بىلەن قوشۇپ چەكسە بىر مىنۇت "
+"ئۆزگىرىدۇ."
 
-#: ../globaltime/globaltime.c:548
+#: ../globaltime/globaltime.c:621
 msgid "Global Time"
 msgstr ""
 
-#: ../globaltime/gt_prefs.c:265 ../globaltime/gt_prefs.c:266
+#: ../globaltime/gt_prefs.c:290 ../globaltime/gt_prefs.c:291
 msgid "NEW"
 msgstr "NEW"
 
-#: ../globaltime/gt_prefs.c:289
+#: ../globaltime/gt_prefs.c:314
 msgid "NEW COPY"
 msgstr "NEW COPY"
 
-#: ../globaltime/gt_prefs.c:310
+#: ../globaltime/gt_prefs.c:336
 msgid "Not possible to delete the last clock."
 msgstr "ئەڭ ئاخىرقى سائەتنى ئۆچۈرۈش مۇمكىن ئەمەس."
 
-#: ../globaltime/gt_prefs.c:516
+#: ../globaltime/gt_prefs.c:577
 msgid "update this clock"
 msgstr "بۇ سائەتنى يېڭىلا"
 
-#: ../globaltime/gt_prefs.c:521 ../globaltime/gt_prefs.c:1034
+#: ../globaltime/gt_prefs.c:582 ../globaltime/gt_prefs.c:1095
 msgid "add new empty clock"
 msgstr "يېڭىدىن قۇرۇق سائەت قوش"
 
-#: ../globaltime/gt_prefs.c:526
+#: ../globaltime/gt_prefs.c:587
 msgid "add new clock using this clock as model"
 msgstr "مۇشۇ سائەتنى ئۈلگە قىلىپ يېڭى سائەت قوش"
 
-#: ../globaltime/gt_prefs.c:531
+#: ../globaltime/gt_prefs.c:592
 msgid "delete this clock"
 msgstr "بۇ سائەتنى ئۆچۈر"
 
-#: ../globaltime/gt_prefs.c:539
+#: ../globaltime/gt_prefs.c:600
 msgid "move this clock first"
 msgstr "ئاۋۋال بۇ سائەتنى يۆتكە"
 
-#: ../globaltime/gt_prefs.c:544
+#: ../globaltime/gt_prefs.c:605
 msgid "move this clock left"
 msgstr "بۇ سائەتنى سولغا يۆتكە"
 
-#: ../globaltime/gt_prefs.c:549
+#: ../globaltime/gt_prefs.c:610
 msgid "move this clock right"
 msgstr "بۇ سائەتنى ئونغا يۆتكە"
 
-#: ../globaltime/gt_prefs.c:554
+#: ../globaltime/gt_prefs.c:615
 msgid "move this clock last"
 msgstr "بۇ سائەتنى ئەڭ ئاخىرىغا يۆتكە"
 
-#: ../globaltime/gt_prefs.c:562
+#: ../globaltime/gt_prefs.c:623
 msgid "set the timezone of this clock to be local timezone"
 msgstr "بۇ سائەتنىڭ ۋاقىت رايونىنى يەرلىك ۋاقىت رايونىغا تەڭشە"
 
-#: ../globaltime/gt_prefs.c:568 ../globaltime/gt_prefs.c:1042
+#: ../globaltime/gt_prefs.c:629 ../globaltime/gt_prefs.c:1103
 msgid "close window and exit"
 msgstr "كۆزنەكنى تاقاپ ئاخىرلاشتۇر"
 
-#: ../globaltime/gt_prefs.c:590
+#: ../globaltime/gt_prefs.c:652
 msgid "Globaltime preferences "
 msgstr "دۇنيا ۋاقتى(GlobalTime) تەڭشەكلىرى "
 
 #. -----------------------HEADING-------------------------------------------
-#: ../globaltime/gt_prefs.c:603
+#: ../globaltime/gt_prefs.c:665
 msgid "Clock Parameters"
 msgstr "سائەت پارامېتىرلىرى"
 
-#: ../globaltime/gt_prefs.c:607
+#: ../globaltime/gt_prefs.c:669
 msgid "Name of the clock:"
 msgstr "سائەت ئاتى:"
 
-#: ../globaltime/gt_prefs.c:613
+#: ../globaltime/gt_prefs.c:678
 msgid "enter name of clock"
 msgstr "سائەت ئاتىنى كىرگۈزۈڭ"
 
-#: ../globaltime/gt_prefs.c:616
+#: ../globaltime/gt_prefs.c:681
 msgid "Timezone of the clock:"
 msgstr "سائەتنىڭ ۋاقىت رايونى:"
 
-#: ../globaltime/gt_prefs.c:643
+#: ../globaltime/gt_prefs.c:683 ../globaltime/gt_prefs.c:1189
+#: ../panel-plugin/oc_config.c:374 ../src/appointment.c:3175
+#: ../src/interface.c:1047 ../src/interface.c:1093 ../src/interface.c:1269
+#: ../src/interface.c:1361 ../src/interface.c:1444 ../src/parameters.c:409
+#: ../src/parameters.c:632 ../src/reminder.c:793
+msgid "_Open"
+msgstr "ئاچ(_O)"
+
+#: ../globaltime/gt_prefs.c:714
 msgid "Text Formatting"
 msgstr "تېكىست فورماتى"
 
 #. ------------------------background-------------------------
-#: ../globaltime/gt_prefs.c:649 ../globaltime/gt_prefs.c:856
+#: ../globaltime/gt_prefs.c:721 ../globaltime/gt_prefs.c:923
 msgid "Background color:"
 msgstr "تەگلىك  رەڭگى:"
 
-#: ../globaltime/gt_prefs.c:656
+#: ../globaltime/gt_prefs.c:728
 msgid "Click to change background colour for clock"
 msgstr "چېكىپ سائەتنىڭ تەگلىك رېڭىنى ئۆزگەرت"
 
-#: ../globaltime/gt_prefs.c:665 ../globaltime/gt_prefs.c:697
-#: ../globaltime/gt_prefs.c:729 ../globaltime/gt_prefs.c:762
-#: ../globaltime/gt_prefs.c:796 ../globaltime/gt_prefs.c:826
-#: ../globaltime/gt_prefs.c:872 ../globaltime/gt_prefs.c:905
-#: ../globaltime/gt_prefs.c:938 ../globaltime/gt_prefs.c:972
+#: ../globaltime/gt_prefs.c:737 ../globaltime/gt_prefs.c:769
+#: ../globaltime/gt_prefs.c:801 ../globaltime/gt_prefs.c:833
+#: ../globaltime/gt_prefs.c:865 ../globaltime/gt_prefs.c:893
+#: ../globaltime/gt_prefs.c:939 ../globaltime/gt_prefs.c:971
+#: ../globaltime/gt_prefs.c:1003 ../globaltime/gt_prefs.c:1035
 msgid "Use default"
 msgstr "كۆڭۈلدىكىنى ئىشلەت"
 
-#: ../globaltime/gt_prefs.c:670 ../globaltime/gt_prefs.c:702
-#: ../globaltime/gt_prefs.c:735 ../globaltime/gt_prefs.c:768
-#: ../globaltime/gt_prefs.c:802 ../globaltime/gt_prefs.c:832
+#: ../globaltime/gt_prefs.c:742 ../globaltime/gt_prefs.c:774
+#: ../globaltime/gt_prefs.c:806 ../globaltime/gt_prefs.c:838
+#: ../globaltime/gt_prefs.c:870 ../globaltime/gt_prefs.c:898
 msgid "Cross this to use default instead of selected value"
 msgstr "تاللانغان قىممەتنى ئىشلەتمەي كۆڭۈلدىكىنى ئىشلىتىش ئۈچۈن بۇنى سىزىۋەت"
 
 #. ------------------------foreground-------------------------
-#: ../globaltime/gt_prefs.c:681 ../globaltime/gt_prefs.c:889
+#: ../globaltime/gt_prefs.c:753 ../globaltime/gt_prefs.c:955
 msgid "Foreground (=text) color:"
 msgstr "ئالدى (=تېكىست) رېڭى:"
 
-#: ../globaltime/gt_prefs.c:688
+#: ../globaltime/gt_prefs.c:760
 msgid "Click to change foreground colour for clock"
 msgstr "چېكىپ سائەتنىڭ ئالدى رېڭىنى ئۆزگەرت"
 
 #. ------------------------name font-------------------------
-#: ../globaltime/gt_prefs.c:713 ../globaltime/gt_prefs.c:922
+#: ../globaltime/gt_prefs.c:785 ../globaltime/gt_prefs.c:987
 msgid "Font for name of clock:"
 msgstr "سائەتنىڭ فونت ئاتى:"
 
-#: ../globaltime/gt_prefs.c:720
+#: ../globaltime/gt_prefs.c:792
 msgid "Click to change font for clock name"
 msgstr "چېكىپ سائەتنىڭ فونت ئاتىنى ئۆزگەرت"
 
 #. ------------------------time font-------------------------
-#: ../globaltime/gt_prefs.c:746 ../globaltime/gt_prefs.c:956
+#: ../globaltime/gt_prefs.c:817 ../globaltime/gt_prefs.c:1019
 msgid "Font for time of clock:"
 msgstr "سائەت ۋاقتىنىڭ فونتى:"
 
-#: ../globaltime/gt_prefs.c:753
+#: ../globaltime/gt_prefs.c:824
 msgid "Click to change font for clock time"
 msgstr "چېكىپ سائەت ۋاقتىنىڭ فونتىنى ئۆزگەرت"
 
 #. ------------------------underline name--------------------
-#: ../globaltime/gt_prefs.c:780
+#: ../globaltime/gt_prefs.c:849
 msgid "Underline name of clock:"
 msgstr "سائەتنىڭ Underline ئاتى:"
 
 #. ------------------------underline time--------------------
-#: ../globaltime/gt_prefs.c:810
+#: ../globaltime/gt_prefs.c:877
 msgid "Underline time of clock:"
 msgstr "سائەتنىڭ Underline ۋاقتى:"
 
-#: ../globaltime/gt_prefs.c:850
+#: ../globaltime/gt_prefs.c:916
 msgid "Text Default Formatting"
 msgstr "تېكىستنىڭ كۆڭۈلدىكى فورماتى"
 
-#: ../globaltime/gt_prefs.c:863
+#: ../globaltime/gt_prefs.c:930
 msgid "Click to change default background colour for clocks"
 msgstr "چېكىپ سائەتنىڭ كۆڭۈلدىكى تەگلىك رەڭگىنى ئۆزگەرت"
 
-#: ../globaltime/gt_prefs.c:877 ../globaltime/gt_prefs.c:910
+#: ../globaltime/gt_prefs.c:944 ../globaltime/gt_prefs.c:976
 msgid "Cross this to use system default instead of selected color"
-msgstr "تاللانغان رەڭنى ئىشلەتمەي سىستېمىنىڭ كۆڭۈلدىكى رېڭىنى ئىشلىتىش ئۈچۈن بۇنى سىزىۋەت"
+msgstr ""
+"تاللانغان رەڭنى ئىشلەتمەي سىستېمىنىڭ كۆڭۈلدىكى رېڭىنى ئىشلىتىش ئۈچۈن بۇنى "
+"سىزىۋەت"
 
-#: ../globaltime/gt_prefs.c:896
+#: ../globaltime/gt_prefs.c:962
 msgid "Click to change default text colour for clocks"
 msgstr "چېكىپ سائەت كۆڭۈلدىكى تېكىست رەڭگىنى ئۆزگەرت"
 
-#: ../globaltime/gt_prefs.c:929
+#: ../globaltime/gt_prefs.c:994
 msgid "Click to change default font for clock name"
 msgstr "چېكىپ سائەت ئاتىنىڭ كۆڭۈلدىكى فونتىنى ئۆزگەرت"
 
-#: ../globaltime/gt_prefs.c:944 ../globaltime/gt_prefs.c:978
+#: ../globaltime/gt_prefs.c:1008 ../globaltime/gt_prefs.c:1040
 msgid "Cross this to use system default font instead of selected font"
-msgstr "تاللانغان فونتنى ئىشلەتمەي سىستېمىنىڭ كۆڭۈلدىكى فونتىنى ئىشلىتىش ئۈچۈن بۇنى سىزىۋەت"
+msgstr ""
+"تاللانغان فونتنى ئىشلەتمەي سىستېمىنىڭ كۆڭۈلدىكى فونتىنى ئىشلىتىش ئۈچۈن بۇنى "
+"سىزىۋەت"
 
-#: ../globaltime/gt_prefs.c:963
+#: ../globaltime/gt_prefs.c:1026
 msgid "Click to change default font for clock time"
 msgstr "چېكىپ سائەت ۋاقتىنىڭ كۆڭۈلدىكى فونتىنى ئۆزگەرت"
 
 #. ------------------------underline name--------------------
-#: ../globaltime/gt_prefs.c:990
+#: ../globaltime/gt_prefs.c:1051
 msgid "Underline for name of clock:"
 msgstr "سائەتنىڭ Underline ئاتى:"
 
 #. ------------------------underline time--------------------
-#: ../globaltime/gt_prefs.c:1004
+#: ../globaltime/gt_prefs.c:1065
 msgid "Underline for time of clock:"
 msgstr "سائەتنىڭ Underline ۋاقتى:"
 
-#: ../globaltime/gt_prefs.c:1027
+#: ../globaltime/gt_prefs.c:1088
 msgid "update preferences"
 msgstr "يېڭىلاش تەڭشەكلىرى"
 
-#: ../globaltime/gt_prefs.c:1062
+#: ../globaltime/gt_prefs.c:1122
 msgid "Globaltime Preferences"
 msgstr "دۇنيا ۋاقتى(GlobalTime) تەڭشەكلىرى"
 
 #. -----------------------HEADING--------------------------------------
-#: ../globaltime/gt_prefs.c:1073
+#: ../globaltime/gt_prefs.c:1133
 msgid "General Preferences"
 msgstr "ئادەتتىكى تەڭشەكلەر"
 
-#: ../globaltime/gt_prefs.c:1077
+#: ../globaltime/gt_prefs.c:1137
 msgid "Decorations:"
 msgstr "بېزەكلەر:"
 
-#: ../globaltime/gt_prefs.c:1078
+#: ../globaltime/gt_prefs.c:1138
 msgid "Standard"
 msgstr "ئۆلچەملىك"
 
-#: ../globaltime/gt_prefs.c:1083
+#: ../globaltime/gt_prefs.c:1144
 msgid "Use normal decorations"
 msgstr "ئادەتتىكى بېزەكلەرنى ئىشلەت"
 
-#: ../globaltime/gt_prefs.c:1089 ../src/appointment.c:3290
+#: ../globaltime/gt_prefs.c:1149 ../src/appointment.c:3424
 msgid "None"
 msgstr "يوق"
 
-#: ../globaltime/gt_prefs.c:1094
+#: ../globaltime/gt_prefs.c:1156
 msgid "Do not show window decorations (borders)"
 msgstr "كۆزنەك بېزەكلىرى(گىرۋەكلىرى) نى كۆرسەتمە"
 
-#: ../globaltime/gt_prefs.c:1100
+#: ../globaltime/gt_prefs.c:1162
 msgid "Clock size:"
 msgstr "سائەت چوڭلۇقى:"
 
-#: ../globaltime/gt_prefs.c:1101
+#: ../globaltime/gt_prefs.c:1163
 msgid "Equal"
 msgstr "تەڭ"
 
-#: ../globaltime/gt_prefs.c:1106
+#: ../globaltime/gt_prefs.c:1170
 msgid "All clocks have same size"
 msgstr "ھەممە سائەت ئوخشاش چوڭلۇقتا بولسۇن"
 
-#: ../globaltime/gt_prefs.c:1111
+#: ../globaltime/gt_prefs.c:1175
 msgid "Varying"
 msgstr "ھەر خىل"
 
-#: ../globaltime/gt_prefs.c:1116
+#: ../globaltime/gt_prefs.c:1181
 msgid "Clock sizes vary"
 msgstr "سائەت چوڭلۇقى ھەرخىل"
 
-#: ../globaltime/gt_prefs.c:1122
+#: ../globaltime/gt_prefs.c:1187
 msgid "Local timezone:"
 msgstr "يەرلىك ۋاقىت رايونى:"
 
-#: ../globaltime/timezone_selection.c:101
-#: ../panel-plugin/timezone_selection.c:102 ../src/timezone_selection.c:102
+#: ../globaltime/timezone_selection.c:98
+#: ../panel-plugin/timezone_selection.c:97 ../src/timezone_selection.c:99
 msgid " Other"
 msgstr " باشقىلار"
 
-#: ../globaltime/timezone_selection.c:156
-#: ../panel-plugin/timezone_selection.c:157 ../src/timezone_selection.c:168
+#: ../globaltime/timezone_selection.c:153
+#: ../panel-plugin/timezone_selection.c:152 ../src/timezone_selection.c:165
 #, c-format
 msgid "%d hour %d mins"
 msgstr "%d سائەت %d مىنۇت"
 
-#: ../globaltime/timezone_selection.c:159
-#: ../panel-plugin/timezone_selection.c:160 ../src/timezone_selection.c:171
+#: ../globaltime/timezone_selection.c:156
+#: ../panel-plugin/timezone_selection.c:155 ../src/timezone_selection.c:168
 #, c-format
 msgid "%d hour"
 msgstr "%d سائەت"
 
-#: ../globaltime/timezone_selection.c:161
-#: ../panel-plugin/timezone_selection.c:162 ../src/timezone_selection.c:173
+#: ../globaltime/timezone_selection.c:158
+#: ../panel-plugin/timezone_selection.c:157 ../src/timezone_selection.c:170
 #, c-format
 msgid "%d mins"
 msgstr "%d مىنۇت"
 
-#: ../globaltime/timezone_selection.c:167
-#: ../panel-plugin/timezone_selection.c:168 ../src/timezone_selection.c:179
+#: ../globaltime/timezone_selection.c:164
+#: ../panel-plugin/timezone_selection.c:163 ../src/timezone_selection.c:176
 msgid "backward"
 msgstr "كەينىگە"
 
-#: ../globaltime/timezone_selection.c:170
-#: ../panel-plugin/timezone_selection.c:171 ../src/timezone_selection.c:182
+#: ../globaltime/timezone_selection.c:167
+#: ../panel-plugin/timezone_selection.c:166 ../src/timezone_selection.c:179
 msgid "forward"
 msgstr "ئالدىغا"
 
-#: ../globaltime/timezone_selection.c:194
-#: ../panel-plugin/timezone_selection.c:195 ../src/timezone_selection.c:206
+#: ../globaltime/timezone_selection.c:191
+#: ../panel-plugin/timezone_selection.c:190 ../src/timezone_selection.c:203
 msgid "not changed"
 msgstr "ئۆزگەرتىلمىدى"
 
-#: ../globaltime/timezone_selection.c:195
-#: ../panel-plugin/timezone_selection.c:196 ../src/timezone_selection.c:207
+#: ../globaltime/timezone_selection.c:192
+#: ../panel-plugin/timezone_selection.c:191 ../src/timezone_selection.c:204
 msgid "not changing"
 msgstr "ئۆزگەرمىدى"
 
 #. location
-#: ../globaltime/timezone_selection.c:247
-#: ../globaltime/timezone_selection.c:252
-#: ../panel-plugin/timezone_selection.c:248
-#: ../panel-plugin/timezone_selection.c:253 ../src/appointment.c:2776
-#: ../src/timezone_selection.c:259 ../src/timezone_selection.c:264
+#: ../globaltime/timezone_selection.c:244
+#: ../globaltime/timezone_selection.c:249
+#: ../panel-plugin/timezone_selection.c:243
+#: ../panel-plugin/timezone_selection.c:248 ../src/appointment.c:2847
+#: ../src/timezone_selection.c:256 ../src/timezone_selection.c:261
 msgid "Location"
 msgstr "ئورنى"
 
-#: ../globaltime/timezone_selection.c:258
-#: ../panel-plugin/timezone_selection.c:259 ../src/timezone_selection.c:270
+#: ../globaltime/timezone_selection.c:255
+#: ../panel-plugin/timezone_selection.c:254 ../src/timezone_selection.c:267
 msgid "GMT Offset"
 msgstr "GMT Offset"
 
-#: ../globaltime/timezone_selection.c:264
-#: ../panel-plugin/timezone_selection.c:265 ../src/timezone_selection.c:276
+#: ../globaltime/timezone_selection.c:261
+#: ../panel-plugin/timezone_selection.c:260 ../src/timezone_selection.c:273
 msgid "Previous/Next Change"
 msgstr "ئالدىنقىسى/كېيىنكى ئۆزگىرىش"
 
-#: ../globaltime/timezone_selection.c:269
-#: ../panel-plugin/timezone_selection.c:270 ../src/timezone_selection.c:281
+#: ../globaltime/timezone_selection.c:266
+#: ../panel-plugin/timezone_selection.c:265 ../src/timezone_selection.c:278
 msgid "Country"
 msgstr "دۆلەت"
 
@@ -377,39 +399,39 @@ msgstr "دۆلەت"
 #. done very seldom and we do not want to allow "floating" here.
 #. This test is ugly, but it is not worth an extra parameter.
 #. this is normal appointment
-#: ../globaltime/timezone_selection.c:299
-#: ../globaltime/timezone_selection.c:309
-#: ../panel-plugin/timezone_selection.c:300
-#: ../panel-plugin/timezone_selection.c:310 ../src/timezone_selection.c:316
-#: ../src/timezone_selection.c:325 ../src/timezone_selection.c:336
+#: ../globaltime/timezone_selection.c:300
+#: ../globaltime/timezone_selection.c:310
+#: ../panel-plugin/timezone_selection.c:296
+#: ../panel-plugin/timezone_selection.c:306 ../src/timezone_selection.c:317
+#: ../src/timezone_selection.c:326 ../src/timezone_selection.c:337
 msgid "Pick timezone"
 msgstr "ۋاقىت رايونى تاللا"
 
-#: ../globaltime/timezone_selection.c:302
-#: ../globaltime/timezone_selection.c:312
-#: ../panel-plugin/timezone_selection.c:303
-#: ../panel-plugin/timezone_selection.c:313 ../src/timezone_selection.c:319
-#: ../src/timezone_selection.c:328 ../src/timezone_selection.c:339
+#: ../globaltime/timezone_selection.c:303
+#: ../globaltime/timezone_selection.c:313
+#: ../panel-plugin/timezone_selection.c:299
+#: ../panel-plugin/timezone_selection.c:309 ../src/timezone_selection.c:320
+#: ../src/timezone_selection.c:329 ../src/timezone_selection.c:340
 msgid "Change mode"
 msgstr "ھالەت ئۆزگەرت"
 
-#: ../globaltime/timezone_selection.c:303
-#: ../globaltime/timezone_selection.c:313
-#: ../globaltime/timezone_selection.c:352
-#: ../panel-plugin/timezone_selection.c:304
-#: ../panel-plugin/timezone_selection.c:314
-#: ../panel-plugin/timezone_selection.c:353 ../src/timezone_selection.c:320
-#: ../src/timezone_selection.c:329 ../src/timezone_selection.c:340
-#: ../src/timezone_selection.c:379
+#: ../globaltime/timezone_selection.c:304
+#: ../globaltime/timezone_selection.c:314
+#: ../globaltime/timezone_selection.c:353
+#: ../panel-plugin/timezone_selection.c:300
+#: ../panel-plugin/timezone_selection.c:310
+#: ../panel-plugin/timezone_selection.c:350 ../src/timezone_selection.c:321
+#: ../src/timezone_selection.c:330 ../src/timezone_selection.c:341
+#: ../src/timezone_selection.c:380
 msgid "UTC"
 msgstr "UTC"
 
 #. NOTE: this exists only if ical timezones are being used
-#: ../globaltime/timezone_selection.c:304
-#: ../globaltime/timezone_selection.c:357
-#: ../panel-plugin/timezone_selection.c:305
-#: ../panel-plugin/timezone_selection.c:358 ../src/timezone_selection.c:330
-#: ../src/timezone_selection.c:384
+#: ../globaltime/timezone_selection.c:305
+#: ../globaltime/timezone_selection.c:358
+#: ../panel-plugin/timezone_selection.c:301
+#: ../panel-plugin/timezone_selection.c:355 ../src/timezone_selection.c:331
+#: ../src/timezone_selection.c:385
 msgid "floating"
 msgstr "لەيلىمە"
 
@@ -421,100 +443,105 @@ msgstr "ئورىج(Orage) دۇنيا ۋاقتى"
 msgid "Show clocks from different countries"
 msgstr "ئوخشىمىغان دۆلەتلەرنىڭ سائىتىنى كۆرسەت"
 
-#: ../globaltime/globaltime.desktop.in.h:3 ../src/tray_icon.c:500
+#: ../globaltime/globaltime.desktop.in.h:3 ../src/tray_icon.c:477
 msgid "Globaltime"
 msgstr "دۇنيا ۋاقتى(GlobalTime)"
 
-#: ../panel-plugin/oc_config.c:239
+#: ../panel-plugin/oc_config.c:254
 msgid "No rotation"
 msgstr ""
 
-#: ../panel-plugin/oc_config.c:239
+#: ../panel-plugin/oc_config.c:254
 msgid "Rotate left"
 msgstr ""
 
-#: ../panel-plugin/oc_config.c:240
+#: ../panel-plugin/oc_config.c:254
 msgid "Rotate right"
 msgstr ""
 
-#: ../panel-plugin/oc_config.c:248
+#: ../panel-plugin/oc_config.c:260
 msgid "Appearance"
 msgstr "كۆرۈنۈشى"
 
 #. show frame
-#: ../panel-plugin/oc_config.c:257
+#: ../panel-plugin/oc_config.c:267
 msgid "Show _frame"
 msgstr "كاندۇكنى كۆرسەت(_F)"
 
 #. foreground color
-#: ../panel-plugin/oc_config.c:263
+#: ../panel-plugin/oc_config.c:273
 msgid "set foreground _color:"
 msgstr "ئالدى رېڭىنى بەلگىلە(_C)"
 
 #. background color
-#: ../panel-plugin/oc_config.c:277
+#: ../panel-plugin/oc_config.c:289
 msgid "set _background color:"
 msgstr "تەگلىك رېڭىنى بەلگىلە(_B)"
 
 #. clock size (=mbox size): height and width
-#: ../panel-plugin/oc_config.c:291
+#: ../panel-plugin/oc_config.c:305
 msgid "set _height:"
 msgstr "ئېگىزلىكنى بەلگىلە(_H)"
 
-#: ../panel-plugin/oc_config.c:301
+#: ../panel-plugin/oc_config.c:315
 msgid "Note that you can not change the height of horizontal panels"
 msgstr "دىققەت، گورىزونتال كۆزنەكلەرنىڭ ئېگىزلىكىنى ئۆزگەرتكىلى بولمايدۇ"
 
-#: ../panel-plugin/oc_config.c:306
+#: ../panel-plugin/oc_config.c:319
 msgid "set _width:"
 msgstr "كەڭلىكنى بەلگىلە(_W)"
 
-#: ../panel-plugin/oc_config.c:316
+#: ../panel-plugin/oc_config.c:329
 msgid "Note that you can not change the width of vertical panels"
 msgstr "دىققەت، تىك كۆزنەكلەرنىڭ كەڭلىكىنى ئۆزگەرتكىلى بولمايدۇ"
 
-#: ../panel-plugin/oc_config.c:327
+#: ../panel-plugin/oc_config.c:339
 msgid "Show lines _vertically"
 msgstr ""
 
-#: ../panel-plugin/oc_config.c:350
+#: ../panel-plugin/oc_config.c:359
 msgid "Clock Options"
 msgstr "سائەت تاللانمىلىرى"
 
 #. timezone
-#: ../panel-plugin/oc_config.c:360
+#: ../panel-plugin/oc_config.c:371
 msgid "set timezone to:"
 msgstr "ۋاقىت رايونىنى تۆۋەندىكىگە توغرىلاڭ:"
 
-#: ../panel-plugin/oc_config.c:381
+#: ../panel-plugin/oc_config.c:390
 #, c-format
 msgid "Line %d:"
 msgstr "قۇر %d:"
 
-#: ../panel-plugin/oc_config.c:391
+#: ../panel-plugin/oc_config.c:400
 msgid "Enter any valid strftime function parameter."
 msgstr "strftime فۇنكسىيىسىنىڭ خالىغان ئىناۋەتلىك پارامېتىرىنى كىرگۈزۈڭ."
 
 #. Tooltip hint
-#: ../panel-plugin/oc_config.c:435
+#: ../panel-plugin/oc_config.c:439
 msgid "Tooltip:"
 msgstr "كۆرسەتمە:"
 
 #. special timing for SUSPEND/HIBERNATE
-#: ../panel-plugin/oc_config.c:445
+#: ../panel-plugin/oc_config.c:449
 msgid "fix time after suspend/hibernate"
 msgstr "تەنەپپۇس قىلىش/ئۈچەككە كىرىشتىن كېيىنكى fix ۋاقتى"
 
-#: ../panel-plugin/oc_config.c:449
+#: ../panel-plugin/oc_config.c:453
 msgid ""
 "You only need this if you do short term (less than 5 hours) suspend or "
 "hibernate and your visible time does not include seconds. Under these "
 "circumstances it is possible that Orageclock shows time inaccurately unless "
 "you have this selected. (Selecting this prevents cpu and interrupt saving "
 "features from working.)"
-msgstr "بۇ تاللانما، قىسقا ۋاقىت(5 سائەتتىن ئاز)لىق توڭلىتىش، ياكى ئۈچەككە كىرگۈزۈش ئېلىپ بارغاندا، سائەتتە سېكۇنتنى كۆرسەتمەيدىغان ۋاقىتتىلا ئىشلىتىلىدۇ. بۇ خىل شەرت ئاستىدا، مەزكۇر تاللانما تاللانمىسا، Orage نىڭ سائىتى توغرا كۆرسىتىلمەسلىكى مۇمكىن(بۇ تاللانسا، CPU ۋە ئۈزۈلۈش(interrupt) نىڭ ئىشلىشىدىن ساقلانغىلى بولىدۇ)."
+msgstr ""
+"بۇ تاللانما، قىسقا ۋاقىت(5 سائەتتىن ئاز)لىق توڭلىتىش، ياكى ئۈچەككە كىرگۈزۈش "
+"ئېلىپ بارغاندا، سائەتتە سېكۇنتنى كۆرسەتمەيدىغان ۋاقىتتىلا ئىشلىتىلىدۇ. بۇ "
+"خىل شەرت ئاستىدا، مەزكۇر تاللانما تاللانمىسا، Orage نىڭ سائىتى توغرا "
+"كۆرسىتىلمەسلىكى مۇمكىن(بۇ تاللانسا، CPU ۋە ئۈزۈلۈش(interrupt) نىڭ ئىشلىشىدىن"
+" ساقلانغىلى بولىدۇ)."
 
-#: ../panel-plugin/oc_config.c:466
+#: ../panel-plugin/oc_config.c:471
 msgid ""
 "This program uses strftime function to get time.\n"
 "Use any valid code to get time in the format you prefer.\n"
@@ -524,11 +551,24 @@ msgid ""
 "\t%V = week number\t\t%Z = timezone in use\n"
 "\t%H = hours \t\t\t\t%M = minute\n"
 "\t%X = local time\t\t\t%x = local date"
-msgstr "بۇ پروگرامما ۋاقىتقا strftime نى ئىشلىتىدۇ.\nئۆزىڭىز ياخشى كۆرىدىغان ۋاقىت فورماتى ئۈچۈن بىرەر ئىناۋەتلىك كود ئىشلىتىڭ.\nبەزى كۆپ ئىشلىتىدىغان كودلار:\n\t%A = ھەپتە\t\t\t%B = ئاي\n\t%c = چېسلا & ۋاقىت\t\t%R = سائەت & مىنۇت\n\t%V = ھەپتە نومۇرى\t\t%Z = ئىشلىتىۋاتقان ۋاقىت رايونى\n\t%H = سائەت \t\t\t\t%M = مىنۇت\n\t%X = يەرلىك ۋاقىت\t\t\t%x = يەرلىك چېسلا"
+msgstr ""
+"بۇ پروگرامما ۋاقىتقا strftime نى ئىشلىتىدۇ.\n"
+"ئۆزىڭىز ياخشى كۆرىدىغان ۋاقىت فورماتى ئۈچۈن بىرەر ئىناۋەتلىك كود ئىشلىتىڭ.\n"
+"بەزى كۆپ ئىشلىتىدىغان كودلار:\n"
+"\t%A = ھەپتە\t\t\t%B = ئاي\n"
+"\t%c = چېسلا & ۋاقىت\t\t%R = سائەت & مىنۇت\n"
+"\t%V = ھەپتە نومۇرى\t\t%Z = ئىشلىتىۋاتقان ۋاقىت رايونى\n"
+"\t%H = سائەت \t\t\t\t%M = مىنۇت\n"
+"\t%X = يەرلىك ۋاقىت\t\t\t%x = يەرلىك چېسلا"
 
-#: ../panel-plugin/oc_config.c:491
+#: ../panel-plugin/oc_config.c:501
 msgid "Orage clock Preferences"
 msgstr "Orage سائەت تەڭشەكلىرى"
+
+#: ../panel-plugin/oc_config.c:505 ../src/day-view.c:403
+#: ../src/event-list.c:1237 ../src/interface.c:876
+msgid "Close"
+msgstr "تاقا"
 
 #. TRANSLATORS: Use format characters from strftime(3)
 #. * to get the proper string for your locale.
@@ -538,305 +578,325 @@ msgstr "Orage سائەت تەڭشەكلىرى"
 #. * %B  : full month name
 #. * %Y  : four digit year
 #. * %V  : ISO week number
-#: ../panel-plugin/xfce4-orageclock-plugin.c:700
+#: ../panel-plugin/xfce4-orageclock-plugin.c:722
 msgid "%A %d %B %Y/%V"
 msgstr "%Y/%B/%d %A %V"
 
-#: ../src/about-xfcalendar.c:40
+#: ../src/about-xfcalendar.c:43
 msgid "Maintainer"
 msgstr "مەسئۇل ئادەم"
 
-#: ../src/about-xfcalendar.c:47
+#: ../src/about-xfcalendar.c:52
 msgid "Manage your time with Orage"
 msgstr "ۋاقىتنى Orage دە باشقۇرۇش"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
 #. end time
-#: ../src/appointment.c:313 ../src/appointment.c:353 ../src/appointment.c:2805
+#: ../src/appointment.c:321 ../src/appointment.c:361 ../src/appointment.c:2876
 msgid "End"
 msgstr "تامام"
 
-#: ../src/appointment.c:333
+#: ../src/appointment.c:341
 msgid "Due"
 msgstr "مۆھلىتى"
 
-#: ../src/appointment.c:493 ../src/mainbox.c:862
+#: ../src/appointment.c:501 ../src/mainbox.c:883
 msgid "Orage"
 msgstr "Orage"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
-#: ../src/appointment.c:672 ../src/interface.c:264 ../src/parameters.c:374
+#: ../src/appointment.c:688 ../src/interface.c:265 ../src/parameters.c:404
 msgid "Select a file..."
 msgstr "ھۆججەت تاللا...."
 
-#: ../src/appointment.c:680
+#: ../src/appointment.c:696
 msgid "Sound Files"
 msgstr "ئۈن ھۆججەتلىرى"
 
-#: ../src/appointment.c:687 ../src/interface.c:277
+#: ../src/appointment.c:703 ../src/interface.c:278
 msgid "All Files"
 msgstr "ھەممە ھۆججەتلەر"
 
-#: ../src/appointment.c:738
+#: ../src/appointment.c:754
 msgid "The appointment information has been modified."
 msgstr "دېيىشمە ئۇچۇرلىرى ئۆزگەرتىلدى"
 
-#: ../src/appointment.c:739 ../src/appointment.c:1287 ../src/event-list.c:969
+#: ../src/appointment.c:755 ../src/appointment.c:1308 ../src/event-list.c:1007
 msgid "Do you want to continue?"
 msgstr "داۋاملاشتۇرامسىز؟"
 
-#: ../src/appointment.c:740
+#: ../src/appointment.c:756
 msgid "No, do not leave"
 msgstr ""
 
-#: ../src/appointment.c:741
+#: ../src/appointment.c:757
 msgid "Yes, ignore modifications and leave"
 msgstr ""
 
-#: ../src/appointment.c:768
+#: ../src/appointment.c:785
 msgid "The end of this appointment is earlier than the beginning."
 msgstr "دېيىشمىنىڭ ئاخىرقى ۋاقتى باشلىنىش ۋاقتىدىن بۇرۇن بولۇپ قالدى."
 
-#: ../src/appointment.c:1035 ../src/appointment.c:1923
+#: ../src/appointment.c:1054 ../src/appointment.c:1945
 msgid "Not set"
 msgstr "بەلگىلەنمىگەن"
 
-#: ../src/appointment.c:1138
+#: ../src/appointment.c:1156
 msgid "Add new appointment to this file."
 msgstr ""
 
-#: ../src/appointment.c:1139 ../src/appointment.c:1188
+#: ../src/appointment.c:1157 ../src/appointment.c:1206
 msgid "Orage default file"
 msgstr ""
 
-#: ../src/appointment.c:1225
+#: ../src/appointment.c:1243
 msgid "Appointment addition failed."
 msgstr ""
 
-#: ../src/appointment.c:1226
+#: ../src/appointment.c:1244
 msgid ""
 "Error happened when adding appointment. Look more details from the log file."
 msgstr ""
 
-#: ../src/appointment.c:1236
+#: ../src/appointment.c:1254
 msgid "Appointment update failed."
 msgstr ""
 
-#: ../src/appointment.c:1237
+#: ../src/appointment.c:1255
 msgid ""
 "Look more details from the log file. (Perhaps file was updated external from"
 " Orage?)"
 msgstr ""
 
-#: ../src/appointment.c:1286
+#: ../src/appointment.c:1307
 msgid "This appointment will be permanently removed."
 msgstr "بۇ دېيىشمە مەڭگۈلۈككە ئۆچۈرۈلىدۇ."
 
-#: ../src/appointment.c:1288 ../src/event-list.c:970
+#: ../src/appointment.c:1309 ../src/event-list.c:1008
 msgid "No, cancel the removal"
 msgstr ""
 
-#: ../src/appointment.c:1289
+#: ../src/appointment.c:1310
 msgid "Yes, remove it"
 msgstr ""
 
-#: ../src/appointment.c:1378 ../src/appointment.c:1393 ../src/day-view.c:457
-#: ../src/event-list.c:1028
+#: ../src/appointment.c:1402 ../src/appointment.c:1417 ../src/day-view.c:460
+#: ../src/event-list.c:1067
 msgid "Pick the date"
 msgstr ""
 
-#: ../src/appointment.c:1380 ../src/appointment.c:1395 ../src/day-view.c:386
-#: ../src/day-view.c:459 ../src/event-list.c:1030 ../src/event-list.c:1180
-#: ../src/tray_icon.c:460
+#: ../src/appointment.c:1404 ../src/appointment.c:1419 ../src/day-view.c:389
+#: ../src/day-view.c:462 ../src/event-list.c:1069 ../src/event-list.c:1223
+#: ../src/tray_icon.c:450
 msgid "Today"
 msgstr "بۈگۈن"
 
-#: ../src/appointment.c:1803
+#: ../src/appointment.c:1835
 msgid "This appointment does not exist."
 msgstr "بۇ دېيىشمە مەۋجۇت ئەمەس."
 
-#: ../src/appointment.c:1804
+#: ../src/appointment.c:1836
 msgid "It was probably removed, please refresh your screen."
 msgstr "ئۆچۈرۈلۈپ كەتكەندەك قىلىدۇ، ئېكرانىڭىزنى يېڭىلاڭ."
 
-#: ../src/appointment.c:2105
+#: ../src/appointment.c:2113 ../src/interface.c:672
+msgid "_Remove"
+msgstr ""
+
+#: ../src/appointment.c:2139
 msgid "Current categories"
 msgstr "ھازىرقى كاتېگورىيەلەر"
 
-#: ../src/appointment.c:2120
+#: ../src/appointment.c:2161
 msgid "Add new category with color"
 msgstr "يېڭىدىن رەڭلىك كاتېگورىيە قوشۇش"
 
-#: ../src/appointment.c:2124
+#: ../src/appointment.c:2172
 msgid "Category:"
 msgstr "كاتېگورىيە:"
 
-#: ../src/appointment.c:2155
+#: ../src/appointment.c:2188 ../src/interface.c:1451
+msgid "_Add"
+msgstr ""
+
+#: ../src/appointment.c:2217
 msgid "Colors of categories - Orage"
 msgstr "كاتېگورىيە رېڭى - Orage"
 
-#: ../src/appointment.c:2201
+#: ../src/appointment.c:2263
 msgid " *** COPY ***"
 msgstr " *** COPY ***"
 
-#: ../src/appointment.c:2466
+#: ../src/appointment.c:2531
 msgid "New appointment - Orage"
 msgstr "يېڭى دېيىشمە -  Orage"
 
 #. File menu stuff
 #. ********* File menu *********
 #. File menu
-#: ../src/appointment.c:2496 ../src/day-view.c:279 ../src/event-list.c:1081
-#: ../src/interface.c:813 ../src/mainbox.c:297
+#: ../src/appointment.c:2559 ../src/day-view.c:283 ../src/event-list.c:1124
+#: ../src/interface.c:857 ../src/mainbox.c:316
 msgid "_File"
 msgstr "ھۆججەت(_F)"
 
-#: ../src/appointment.c:2502
+#: ../src/appointment.c:2565
 msgid "Sav_e and close"
 msgstr "ساقلاپ تاقا(_E)"
 
-#: ../src/appointment.c:2515 ../src/event-list.c:1087
+#: ../src/appointment.c:2578 ../src/event-list.c:1130
 msgid "D_uplicate"
 msgstr "كۆپەيت(_u)"
 
-#: ../src/appointment.c:2702
+#: ../src/appointment.c:2768
 msgid "Save"
 msgstr "ساقلا"
 
-#: ../src/appointment.c:2704
+#: ../src/appointment.c:2770
 msgid "Save and close"
 msgstr "ساقلاپ ئاندىن تاقايدۇ"
 
-#: ../src/appointment.c:2709
+#: ../src/appointment.c:2775
 msgid "Revert"
 msgstr "ئەسلىگە قايتۇر"
 
-#: ../src/appointment.c:2711 ../src/event-list.c:1171
+#: ../src/appointment.c:2777 ../src/event-list.c:1214
 msgid "Duplicate"
 msgstr "كۆچۈرۈلمە نۇسخا"
 
-#: ../src/appointment.c:2716 ../src/event-list.c:1173
+#: ../src/appointment.c:2782 ../src/event-list.c:1216
 msgid "Delete"
 msgstr "ئۆچۈر"
 
-#: ../src/appointment.c:2734
+#: ../src/appointment.c:2800
 msgid "Free"
 msgstr "ئەركىن"
 
-#: ../src/appointment.c:2734
+#: ../src/appointment.c:2800
 msgid "Busy"
 msgstr "ئالدىراش"
 
-#: ../src/appointment.c:2738
+#: ../src/appointment.c:2804
 msgid "General"
 msgstr "ئادەتتىكى"
 
 #. type
-#: ../src/appointment.c:2744
+#: ../src/appointment.c:2810
 msgid "Type "
 msgstr "تىپى "
 
-#: ../src/appointment.c:2746 ../src/event-list.c:1226
+#: ../src/appointment.c:2812 ../src/event-list.c:1269
 msgid "Event"
 msgstr "ھادىسە"
 
-#: ../src/appointment.c:2749
+#: ../src/appointment.c:2817
 msgid ""
 "Event that will happen sometime. For example:\n"
 "Meeting or birthday or TV show."
-msgstr "بەزىدە ئالاھىدە ئىش تۇز بېرىدۇ.مەسىلەن:\nيىغىن ياكى تۇغۇلغان كۈن ياكى تېلېۋىزىيە ئويۇنى دېگەندەك."
+msgstr ""
+"بەزىدە ئالاھىدە ئىش تۇز بېرىدۇ.مەسىلەن:\n"
+"يىغىن ياكى تۇغۇلغان كۈن ياكى تېلېۋىزىيە ئويۇنى دېگەندەك."
 
-#: ../src/appointment.c:2752 ../src/event-list.c:1274
+#: ../src/appointment.c:2820 ../src/event-list.c:1328
 msgid "Todo"
 msgstr "قىلىدىغان ئىشلار:"
 
-#: ../src/appointment.c:2755
+#: ../src/appointment.c:2825
 msgid ""
 "Something that you should do sometime. For example:\n"
 "Wash your car or test new version of Orage."
-msgstr "بەزىدە قىلىدىغان ئىشلار. مەسىلەن:\nماشىنىنى يۇيىدىغان ياكى تەكشۈرىدىغان ياكى بولمىسا Orage نىڭ يېڭى نەشرىنى سىنايدىغان دېگەندەك."
+msgstr ""
+"بەزىدە قىلىدىغان ئىشلار. مەسىلەن:\n"
+"ماشىنىنى يۇيىدىغان ياكى تەكشۈرىدىغان ياكى بولمىسا Orage نىڭ يېڭى نەشرىنى سىنايدىغان دېگەندەك."
 
-#: ../src/appointment.c:2758 ../src/event-list.c:1287
+#: ../src/appointment.c:2828 ../src/event-list.c:1341
 msgid "Journal"
 msgstr "ژۇرنال"
 
-#: ../src/appointment.c:2762
+#: ../src/appointment.c:2833
 msgid ""
 "Make a note that something happened. For example:\n"
 "Remark that your mother called or first snow came."
-msgstr "يۈز بەرگەن ئىشلارنى خاتىرىگە يېزىپ قويۇش. مەسىلەن:\nئانىڭىزنىڭ تېلېفون ئۇرغانلىرى ياكى تۇنجى قار ياققان ۋاقىت دېگەندەك."
+msgstr ""
+"يۈز بەرگەن ئىشلارنى خاتىرىگە يېزىپ قويۇش. مەسىلەن:\n"
+"ئانىڭىزنىڭ تېلېفون ئۇرغانلىرى ياكى تۇنجى قار ياققان ۋاقىت دېگەندەك."
 
 #. title
-#: ../src/appointment.c:2769
+#: ../src/appointment.c:2840
 msgid "Title "
 msgstr "ماۋزۇ "
 
-#: ../src/appointment.c:2784
+#: ../src/appointment.c:2855
 msgid "All day event"
 msgstr "پۈتۈن كۈنلۈك ئىشلار"
 
 #. start time
-#: ../src/appointment.c:2790 ../src/appointment.c:3453 ../src/day-view.c:801
+#: ../src/appointment.c:2861 ../src/appointment.c:3580 ../src/day-view.c:806
 msgid "Start"
 msgstr "باشلا"
 
-#: ../src/appointment.c:2810
+#: ../src/appointment.c:2881
 msgid "Set      "
 msgstr "تەڭشەك      "
 
-#: ../src/appointment.c:2831
+#: ../src/appointment.c:2904
 msgid "Duration"
 msgstr "ۋاقتى"
 
-#: ../src/appointment.c:2835 ../src/appointment.c:3027 ../src/reminder.c:758
+#: ../src/appointment.c:2908 ../src/appointment.c:3115 ../src/reminder.c:764
 msgid "days"
 msgstr "كۈن"
 
-#: ../src/appointment.c:2837 ../src/appointment.c:3029 ../src/reminder.c:760
+#: ../src/appointment.c:2910 ../src/appointment.c:3117 ../src/reminder.c:766
 msgid "hours"
 msgstr "سائەت"
 
-#: ../src/appointment.c:2839 ../src/appointment.c:3031 ../src/reminder.c:762
+#: ../src/appointment.c:2912 ../src/appointment.c:3119 ../src/reminder.c:768
 msgid "mins"
 msgstr "مىنۇت"
 
 #. Availability (only for EVENT)
-#: ../src/appointment.c:2851
+#: ../src/appointment.c:2924
 msgid "Availability"
 msgstr "بارى"
 
 #. completed (only for TODO)
-#: ../src/appointment.c:2859 ../src/appointment.c:3459
+#: ../src/appointment.c:2932 ../src/appointment.c:3589
 msgid "Completed"
 msgstr "تاماملاندى"
 
-#: ../src/appointment.c:2862
+#: ../src/appointment.c:2935
 msgid "Done"
 msgstr "تامام"
 
 #. categories
-#: ../src/appointment.c:2883
+#: ../src/appointment.c:2960
 msgid "Categories"
 msgstr "كاتېگورىيە"
 
-#: ../src/appointment.c:2895
+#: ../src/appointment.c:2978
 msgid ""
 "This is special category, which can be used to color this appointment in "
 "list views."
-msgstr "بۇ ئالاھىدە كاتېگورىيە بولۇپ، تىزىم كۆرۈنۈشىدىكى دېيىشمىلەر رەڭلىك كۆرسىتىلىدۇ."
+msgstr ""
+"بۇ ئالاھىدە كاتېگورىيە بولۇپ، تىزىم كۆرۈنۈشىدىكى دېيىشمىلەر رەڭلىك "
+"كۆرسىتىلىدۇ."
 
-#: ../src/appointment.c:2900
+#: ../src/appointment.c:2979
+msgid "_Colour"
+msgstr ""
+
+#: ../src/appointment.c:2984
 msgid "update colors for categories."
 msgstr "كاتېگورىيەنىڭ رەڭلىرىنى يېڭىلايدۇ."
 
 #. priority
-#: ../src/appointment.c:2906
+#: ../src/appointment.c:2990
 msgid "Priority"
 msgstr "مەرتىۋىسى"
 
-#: ../src/appointment.c:2910
+#: ../src/appointment.c:2994
 msgid ""
 "If you set this 8 or bigger, the appointment is NOT shown on list windows.\n"
 "You can use that feature to unclutter your list windows, but it makes it more difficult to find this appointment.\n"
@@ -845,11 +905,11 @@ msgid ""
 msgstr ""
 
 #. note
-#: ../src/appointment.c:2918
+#: ../src/appointment.c:3003
 msgid "Note"
 msgstr "ئىزاھ"
 
-#: ../src/appointment.c:2939
+#: ../src/appointment.c:3024
 msgid ""
 "These shorthand commands take effect immediately:\n"
 "    <D> inserts current date in local date format\n"
@@ -859,123 +919,137 @@ msgid ""
 "These are converted only later when they are seen:\n"
 "    <&Ynnnn> is translated to current year minus nnnn.\n"
 "(This can be used for example in birthday reminders to tell how old the person will be.)"
-msgstr "تۆۋەندىكى قىسقا بۇيرۇقلار شۇ ھامان ئىجرا بولىدۇ:\n    <D> نۆۋەتتىكى ۋاقىت ۋە چېسلانى يەرلىك پىچىمدا قىستۇرىدۇ\n    <T> ۋاقىتنى قىستۇرىدۇ\n    <DT> ۋاقىت ۋە چېسلانى قىستۇرىدۇ.\n\nتۆۋەندىكىلەر بۇلار كۆرسىتىلگەندىلا ئايلاندۇرۇلىدۇ:\n    <&Ynnnn> ھازىرقى يىلدىن nnnn نى ئالغان نەتىجىنى كۆرسىتىدۇ.\n(بۇنى ئادەتتە تۇغۇلغان كۈننى خەۋەر قىلغاندا، شۇ كىشىنىڭ قانچە ياشقا كىرگەنلىكىنى بىلدۈرۈشتە ئىشلەتسە بولىدۇ.)"
+msgstr ""
+"تۆۋەندىكى قىسقا بۇيرۇقلار شۇ ھامان ئىجرا بولىدۇ:\n"
+"    <D> نۆۋەتتىكى ۋاقىت ۋە چېسلانى يەرلىك پىچىمدا قىستۇرىدۇ\n"
+"    <T> ۋاقىتنى قىستۇرىدۇ\n"
+"    <DT> ۋاقىت ۋە چېسلانى قىستۇرىدۇ.\n"
+"\n"
+"تۆۋەندىكىلەر بۇلار كۆرسىتىلگەندىلا ئايلاندۇرۇلىدۇ:\n"
+"    <&Ynnnn> ھازىرقى يىلدىن nnnn نى ئالغان نەتىجىنى كۆرسىتىدۇ.\n"
+"(بۇنى ئادەتتە تۇغۇلغان كۈننى خەۋەر قىلغاندا، شۇ كىشىنىڭ قانچە ياشقا كىرگەنلىكىنى بىلدۈرۈشتە ئىشلەتسە بولىدۇ.)"
 
-#: ../src/appointment.c:3010
+#: ../src/appointment.c:3097
 msgid "Before Start"
 msgstr "باشلىنىشتىن بۇرۇن"
 
-#: ../src/appointment.c:3010
+#: ../src/appointment.c:3097
 msgid "Before End"
 msgstr "تاماملىنىشتىن بۇرۇن"
 
-#: ../src/appointment.c:3011
+#: ../src/appointment.c:3098
 msgid "After Start"
 msgstr "باشلانغاندىن كېيىن"
 
-#: ../src/appointment.c:3011
+#: ../src/appointment.c:3098
 msgid "After End"
 msgstr "تاماملانغاندىن كېيىن"
 
-#: ../src/appointment.c:3018
+#: ../src/appointment.c:3106
 msgid "Alarm"
 msgstr "گۈدۈك"
 
 #. **** ALARM TIME ****
-#: ../src/appointment.c:3024
+#: ../src/appointment.c:3112
 msgid "Alarm time"
 msgstr "گۈدۈك ۋاقتى"
 
-#: ../src/appointment.c:3048
+#: ../src/appointment.c:3137
 msgid ""
 "Often you want to get alarm:\n"
 " 1) before Event start\n"
 " 2) before Todo end\n"
 " 3) after Todo start"
-msgstr "گۈدۈكنى چالىدىغان ۋاقىت:\n 1) ئالاھىدە ئىشتىن بۇرۇن\n 2) قىلىدىغان ئىشلار تاماملانغاندا\n 3) قىلىدىغان ئىشلار باشلانغاندىن كېيىن"
+msgstr ""
+"گۈدۈكنى چالىدىغان ۋاقىت:\n"
+" 1) ئالاھىدە ئىشتىن بۇرۇن\n"
+" 2) قىلىدىغان ئىشلار تاماملانغاندا\n"
+" 3) قىلىدىغان ئىشلار باشلانغاندىن كېيىن"
 
-#: ../src/appointment.c:3053
+#: ../src/appointment.c:3142
 msgid "Persistent alarm"
 msgstr "ئۆزگەرمەس قوڭغۇراق"
 
-#: ../src/appointment.c:3055
+#: ../src/appointment.c:3147
 msgid ""
 "Select this if you want Orage to remind you even if it has not been active "
 "when the alarm happened."
-msgstr "قوڭغۇراق چېلىنغاندا، Orage نى قوزغاتماي، كېيىن Orage قوزغىتىلغاندا خەۋەر قىلماقچى بولغاندا تاللىسا بولىدۇ."
+msgstr ""
+"قوڭغۇراق چېلىنغاندا، Orage نى قوزغاتماي، كېيىن Orage قوزغىتىلغاندا خەۋەر "
+"قىلماقچى بولغاندا تاللىسا بولىدۇ."
 
 #. **** Audio Alarm ****
-#: ../src/appointment.c:3064
+#: ../src/appointment.c:3156
 msgid "Sound"
 msgstr "ئاۋاز"
 
-#: ../src/appointment.c:3068 ../src/appointment.c:3188
+#: ../src/appointment.c:3160 ../src/appointment.c:3293
 msgid "Use"
 msgstr "ئىشلەت"
 
-#: ../src/appointment.c:3070
+#: ../src/appointment.c:3162
 msgid "Select this if you want audible alarm"
 msgstr "ئاۋازلىق گۈدۈك ئۈچۈن بۇنى تاللاڭ"
 
-#: ../src/appointment.c:3087
+#: ../src/appointment.c:3188
 msgid "Repeat alarm sound"
 msgstr "ئاۋازلىق گۈدۈكنى تەكرارلىسۇن"
 
-#: ../src/appointment.c:3103 ../src/appointment.c:3402
+#: ../src/appointment.c:3203 ../src/appointment.c:3512
 msgid "times"
 msgstr "ۋاقىت"
 
-#: ../src/appointment.c:3119
+#: ../src/appointment.c:3219
 msgid "sec interval"
 msgstr "ئارقىلىق بەلگىلە"
 
 #. **** Display Alarm ****
-#: ../src/appointment.c:3129
+#: ../src/appointment.c:3229
 msgid "Visual"
 msgstr "كۆرۈنۈشلۈك"
 
-#: ../src/appointment.c:3133
+#: ../src/appointment.c:3233
 msgid "Use Orage window"
 msgstr "Orage كۆزنىكىنى ئىشلەت"
 
-#: ../src/appointment.c:3135
+#: ../src/appointment.c:3235
 msgid "Select this if you want Orage window alarm"
 msgstr "Orage كۆزنەك گۈدۈكى ئۈچۈن بۇنى تاللاڭ"
 
-#: ../src/appointment.c:3147
+#: ../src/appointment.c:3247
 msgid "Use notification"
 msgstr "ئۇقتۇرۇش ئىشلەت"
 
-#: ../src/appointment.c:3149
+#: ../src/appointment.c:3249
 msgid "Select this if you want notification alarm"
 msgstr "ئۇقتۇرۇش گۈدۈكى ئۈچۈن بۇنى تاللاڭ"
 
-#: ../src/appointment.c:3155
+#: ../src/appointment.c:3257
 msgid "Set timeout"
 msgstr "ۋاقىت چېكىنى بەلگىلە"
 
-#: ../src/appointment.c:3157
+#: ../src/appointment.c:3259
 msgid "Select this if you want notification to expire automatically"
 msgstr "ئۇقتۇرۇشنىڭ مۇددىتىنى ئاپتوماتىك ئۆتكۈزۈۋەتمەكچى بولسىڭىز بۇنى تاللاڭ"
 
-#: ../src/appointment.c:3168
+#: ../src/appointment.c:3270
 msgid "0 = system default expiration time"
 msgstr "0 = سىستېمىنىڭ كۆڭۈلدىكى ۋاقىت چېكى"
 
-#: ../src/appointment.c:3173
+#: ../src/appointment.c:3278
 msgid "seconds"
 msgstr "سېكۇنت"
 
 #. **** Procedure Alarm ****
-#: ../src/appointment.c:3184
+#: ../src/appointment.c:3289
 msgid "Procedure"
 msgstr "جەريان"
 
-#: ../src/appointment.c:3190
+#: ../src/appointment.c:3295
 msgid "Select this if you want procedure or script alarm"
 msgstr "پروگرامما ياكى قوليازمىدا خەۋەر قىلىدىغان چاغدا تاللىسا بولىدۇ"
 
-#: ../src/appointment.c:3196
+#: ../src/appointment.c:3305
 msgid ""
 "You must enter all escape etc characters yourself.\n"
 "This string is just given to shell to process.\n"
@@ -985,146 +1059,173 @@ msgid ""
 "\t<&AT> alarm time\n"
 "\t<&ST> appointment start time\n"
 "\t<&ET> appointment end time"
-msgstr "بىر قىسىم قاچۇرغۇچى ھەرپلەرنى ئۆزىڭىز كىرگۈزۈڭ.\nمەزكۇر تېكىست shell غا يوللاپ بېرىلىدۇ.\nتۆۋەندىكىلەر بولسا، ئىجرا قىلىنىۋاتقان ۋاقىتتا ئالماشتۇرۇلىدىغان ئالاھىدە بۇيرۇقلاردۇر:\n\t<&T>  دېيىشمە ماۋزۇسى\n\t<&D>  دېيىشمە تەپسىلاتى\n\t<&AT> قوڭغۇراق ۋاقتى\n\t<&ST> دېيىشمىنىڭ باشلىنىش ۋاقتى\n\t<&ET> دېيىشمىنىڭ ئاخىرلىشىش ۋاقتى"
+msgstr ""
+"بىر قىسىم قاچۇرغۇچى ھەرپلەرنى ئۆزىڭىز كىرگۈزۈڭ.\n"
+"مەزكۇر تېكىست shell غا يوللاپ بېرىلىدۇ.\n"
+"تۆۋەندىكىلەر بولسا، ئىجرا قىلىنىۋاتقان ۋاقىتتا ئالماشتۇرۇلىدىغان ئالاھىدە بۇيرۇقلاردۇر:\n"
+"\t<&T>  دېيىشمە ماۋزۇسى\n"
+"\t<&D>  دېيىشمە تەپسىلاتى\n"
+"\t<&AT> قوڭغۇراق ۋاقتى\n"
+"\t<&ST> دېيىشمىنىڭ باشلىنىش ۋاقتى\n"
+"\t<&ET> دېيىشمىنىڭ ئاخىرلىشىش ۋاقتى"
 
-#: ../src/appointment.c:3208
+#: ../src/appointment.c:3319 ../src/interface.c:1181 ../src/interface.c:1203
+msgid "_Execute"
+msgstr ""
+
+#: ../src/appointment.c:3321
 msgid "Test this alarm by raising it now"
 msgstr "بۇ گۈدۈكنى ھازىرلا سىنا"
 
-#: ../src/appointment.c:3215
+#: ../src/appointment.c:3334
 msgid "<b>Default alarm</b>"
 msgstr "<b>كۆڭۈلدىكى قوڭغۇراق</b>"
 
-#: ../src/appointment.c:3223
+#: ../src/appointment.c:3340 ../src/interface.c:1054 ../src/interface.c:1100
+#: ../src/interface.c:1275 ../src/interface.c:1367
+msgid "_Save"
+msgstr ""
+
+#: ../src/appointment.c:3348
 msgid "Store current settings as default alarm"
 msgstr "ھازىرقى تەڭشەكنى كۆڭۈلدىكى گۈدۈك قىلىپ ساقلا"
 
-#: ../src/appointment.c:3228
+#: ../src/appointment.c:3350
+msgid "_Revert"
+msgstr ""
+
+#: ../src/appointment.c:3358
 msgid "Set current settings from default alarm"
 msgstr "كۆڭۈلدىكى گۈدۈكنى ھازىرقى تەڭشەككە قوللان"
 
-#: ../src/appointment.c:3290
+#: ../src/appointment.c:3424
 msgid "Daily"
 msgstr "كۈندىلىك"
 
-#: ../src/appointment.c:3290
+#: ../src/appointment.c:3424
 msgid "Weekly"
 msgstr "ھەپتىلىك"
 
-#: ../src/appointment.c:3290
+#: ../src/appointment.c:3424
 msgid "Monthly"
 msgstr "ئايلىق"
 
-#: ../src/appointment.c:3290
+#: ../src/appointment.c:3424
 msgid "Yearly"
 msgstr "يىللىق"
 
-#: ../src/appointment.c:3290
+#: ../src/appointment.c:3424
 msgid "Hourly"
 msgstr "ھەر سائەتتە"
 
-#: ../src/appointment.c:3292
+#: ../src/appointment.c:3426
 msgid "Mon"
 msgstr "دۈشەنبە"
 
-#: ../src/appointment.c:3292
+#: ../src/appointment.c:3426
 msgid "Tue"
 msgstr "سەيشەنبە"
 
-#: ../src/appointment.c:3292
+#: ../src/appointment.c:3426
 msgid "Wed"
 msgstr "چارشەنبە"
 
-#: ../src/appointment.c:3292
+#: ../src/appointment.c:3426
 msgid "Thu"
 msgstr "پەيشەنبە"
 
-#: ../src/appointment.c:3292
+#: ../src/appointment.c:3426
 msgid "Fri"
 msgstr "جۈمە"
 
-#: ../src/appointment.c:3292
+#: ../src/appointment.c:3426
 msgid "Sat"
 msgstr "شەنبە"
 
-#: ../src/appointment.c:3292
+#: ../src/appointment.c:3426
 msgid "Sun"
 msgstr "قۇياش"
 
-#: ../src/appointment.c:3297
+#: ../src/appointment.c:3431
 msgid "Recurrence"
 msgstr "قايتىلىنىش"
 
 #. complexity
-#: ../src/appointment.c:3303
+#: ../src/appointment.c:3437
 msgid "Complexity"
 msgstr "مۇرەككەپ"
 
-#: ../src/appointment.c:3306
+#: ../src/appointment.c:3440
 msgid "Basic"
 msgstr "ئاساس"
 
-#: ../src/appointment.c:3312
+#: ../src/appointment.c:3447
 msgid "Advanced"
 msgstr "ئالىي"
 
-#: ../src/appointment.c:3316
+#: ../src/appointment.c:3453
 msgid "Use this if you want regular repeating event"
 msgstr "ئەگەر قەرەللىك ۋاقىتتا تەكرارلاشنى خالىسىڭىز بۇنى ئىشلىتىڭ"
 
-#: ../src/appointment.c:3318
+#: ../src/appointment.c:3455
 msgid ""
 "Use this if you need complex times like:\n"
 " Every Saturday and Sunday or \n"
 " First Tuesday every month"
-msgstr "تۆۋەندىكىدەك مۇرەككەپ تەڭشەك ئۈچۈن بۇنى ئىشلىتىڭ:\n ھەر شەنبە ياكى يەكشەنبە ياكى \n ھەر ئاينىڭ تۇنجى دۈشەنبە كۈنى دېگەندەكلەر ئۈچۈن"
+msgstr ""
+"تۆۋەندىكىدەك مۇرەككەپ تەڭشەك ئۈچۈن بۇنى ئىشلىتىڭ:\n"
+" ھەر شەنبە ياكى يەكشەنبە ياكى \n"
+" ھەر ئاينىڭ تۇنجى دۈشەنبە كۈنى دېگەندەكلەر ئۈچۈن"
 
 #. frequency
-#: ../src/appointment.c:3324
+#: ../src/appointment.c:3461
 msgid "Frequency"
 msgstr "Frequency"
 
-#: ../src/appointment.c:3330
+#: ../src/appointment.c:3468
 msgid "Each"
 msgstr "ھەر بىر"
 
-#: ../src/appointment.c:3337
+#: ../src/appointment.c:3479
 msgid "occurrence"
 msgstr "كۆرۈلۈش"
 
-#: ../src/appointment.c:3341
+#: ../src/appointment.c:3486
 msgid ""
 "Limit frequency to certain interval.\n"
 " For example: Every third day:\n"
 " Frequency = Daily and Interval = 3"
-msgstr "تەكرارلىققا مەلۇم دائىرىدە چەك قويىدۇ.\n مەسىلەن: ھەر ئۇچ كۈندە بىر قېتىم:\n تەكرارلىقى = ھەر كۈنى، ئارىلىقى = 3"
+msgstr ""
+"تەكرارلىققا مەلۇم دائىرىدە چەك قويىدۇ.\n"
+" مەسىلەن: ھەر ئۇچ كۈندە بىر قېتىم:\n"
+" تەكرارلىقى = ھەر كۈنى، ئارىلىقى = 3"
 
-#: ../src/appointment.c:3386
+#: ../src/appointment.c:3493
 msgid "Limit"
 msgstr "لىمىت"
 
-#: ../src/appointment.c:3388
+#: ../src/appointment.c:3495
 msgid "Repeat forever"
 msgstr "مەڭگۈ قايتىلىسۇن"
 
-#: ../src/appointment.c:3394
+#: ../src/appointment.c:3502
 msgid "Repeat "
 msgstr "قايتىلا "
 
-#: ../src/appointment.c:3410
+#: ../src/appointment.c:3526
 msgid "Repeat until "
 msgstr "بۇنىڭغىچە قايتىلىسۇن "
 
 #. weekdays (only for complex settings)
-#: ../src/appointment.c:3423
+#: ../src/appointment.c:3542
 msgid "Weekdays"
 msgstr "ئىش كۈنىدە"
 
-#: ../src/appointment.c:3435
+#: ../src/appointment.c:3559
 msgid "Which day"
 msgstr "قايسى كۈن"
 
-#: ../src/appointment.c:3443
+#: ../src/appointment.c:3570
 msgid ""
 "Specify which weekday for monthly and yearly events.\n"
 " For example:\n"
@@ -1132,200 +1233,211 @@ msgid ""
 "\tFrequency = Monthly,\n"
 "\tWeekdays = check only Wednesday,\n"
 "\tWhich day = select 2 from the number below Wednesday"
-msgstr "ئايلىق پائالىيەت ۋە يىللىق پائالييەتنىڭ قايسىي خىزمەت كۈنى ئىكەنلىكىنى بەلگىلەيدۇ.\nمەسىلەن:\nھەر ئاينىڭ ئۈچىنچى چارشەنبە كۈنى: \nچاستوتىسى ھەر ئاي، خىزمەت كۈنى پەقەت چارشەنبىنىلا تەكشۈرىدۇ، قايسى كۈنى چارشەنبىنىڭ سانىدىن 2 تاللىنىدۇ"
+msgstr ""
+"ئايلىق پائالىيەت ۋە يىللىق پائالييەتنىڭ قايسىي خىزمەت كۈنى ئىكەنلىكىنى بەلگىلەيدۇ.\n"
+"مەسىلەن:\n"
+"ھەر ئاينىڭ ئۈچىنچى چارشەنبە كۈنى: \n"
+"چاستوتىسى ھەر ئاي، خىزمەت كۈنى پەقەت چارشەنبىنىلا تەكشۈرىدۇ، قايسى كۈنى چارشەنبىنىڭ سانىدىن 2 تاللىنىدۇ"
 
 #. TODO base (only for TODOs)
-#: ../src/appointment.c:3450
+#: ../src/appointment.c:3577
 msgid "TODO base"
 msgstr "بىجىرىلىدىغان ئىش ئاساسى"
 
-#: ../src/appointment.c:3463
+#: ../src/appointment.c:3596
 msgid ""
 "TODO reoccurs regularly starting on start time and repeating after each "
 "interval no matter when it was last completed"
-msgstr "بىجىرىلىدىغان ئىش قانۇنىيەتلىك ھالدا باشلىنىدىغان ۋاقىتتا قوزغىتىلىپ ھەمدە ھەر ئارىلىقتا تەكرارلىنىدۇ، ئالدىنقى قېتىم قاچان تاماملىنىشتىن قەتئىنەزەر ئۇ تەكرار يۈز بېرىدۇ"
+msgstr ""
+"بىجىرىلىدىغان ئىش قانۇنىيەتلىك ھالدا باشلىنىدىغان ۋاقىتتا قوزغىتىلىپ ھەمدە "
+"ھەر ئارىلىقتا تەكرارلىنىدۇ، ئالدىنقى قېتىم قاچان تاماملىنىشتىن قەتئىنەزەر ئۇ"
+" تەكرار يۈز بېرىدۇ"
 
-#: ../src/appointment.c:3465
+#: ../src/appointment.c:3598
 msgid ""
 "TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
 msgstr ""
 
 #. exceptions
-#: ../src/appointment.c:3471
+#: ../src/appointment.c:3604
 msgid "Exceptions"
 msgstr "مۇستەسنا"
 
-#: ../src/appointment.c:3484
+#: ../src/appointment.c:3630
 msgid ""
 "Add more exception dates by clicking the calendar days below.\n"
 "Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
 "Remove by clicking the data."
 msgstr ""
 
-#: ../src/appointment.c:3489
+#: ../src/appointment.c:3641
 msgid "Add excluded date (-)"
 msgstr "چىقىرىۋېتىدىغان كۈنلەرنى قوش(-)"
 
-#: ../src/appointment.c:3491
+#: ../src/appointment.c:3643
 msgid "Excluded days are full days where this appointment is not happening"
-msgstr "چىقىرىۋېتىدىغان كۈنلەر پۈتۈن كۈن بولىدۇ، ھەم بۇ كۈندە دېيىشمىلەرنىڭ ھېچقايسىسى ئېلىپ بېرىلمايدۇ"
+msgstr ""
+"چىقىرىۋېتىدىغان كۈنلەر پۈتۈن كۈن بولىدۇ، ھەم بۇ كۈندە دېيىشمىلەرنىڭ "
+"ھېچقايسىسى ئېلىپ بېرىلمايدۇ"
 
-#: ../src/appointment.c:3497
+#: ../src/appointment.c:3650
 msgid "Add included time (+)"
 msgstr "قوشۇلىدىغان ۋاقىتنى قوش(+)"
 
-#: ../src/appointment.c:3499
+#: ../src/appointment.c:3652
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time"
 msgstr ""
 
 #. calendars showing the action days
-#: ../src/appointment.c:3516
+#: ../src/appointment.c:3671
 msgid "Action dates"
 msgstr "مەشغۇلات چېسلاسى"
 
 #. ********* View menu *********
 #. View menu
-#: ../src/day-view.c:289 ../src/event-list.c:1104 ../src/mainbox.c:323
+#: ../src/day-view.c:293 ../src/event-list.c:1147 ../src/mainbox.c:342
 msgid "_View"
 msgstr "كۆرۈنۈش(_V)"
 
 #. ********* Go menu   *********
-#: ../src/day-view.c:303 ../src/event-list.c:1123
+#: ../src/day-view.c:307 ../src/event-list.c:1166
 msgid "_Go"
 msgstr "يۆتكەل(_G)"
 
-#: ../src/day-view.c:377 ../src/event-list.c:1169
+#: ../src/day-view.c:380 ../src/event-list.c:1212
 msgid "New"
 msgstr "يېڭى"
 
-#: ../src/day-view.c:382
+#: ../src/day-view.c:385
 msgid "Back one week"
 msgstr ""
 
-#: ../src/day-view.c:384
+#: ../src/day-view.c:387
 msgid "Back one day"
 msgstr ""
 
-#: ../src/day-view.c:388
+#: ../src/day-view.c:391
 msgid "Forward one day"
 msgstr ""
 
-#: ../src/day-view.c:390
+#: ../src/day-view.c:393
 msgid "Forward one week"
 msgstr ""
 
-#: ../src/day-view.c:395 ../src/event-list.c:1187
+#: ../src/day-view.c:398 ../src/event-list.c:1230
 msgid "Refresh"
 msgstr "يېڭىلا"
 
-#: ../src/day-view.c:400 ../src/event-list.c:1194 ../src/interface.c:834
-msgid "Close"
-msgstr "تاقا"
+#: ../src/day-view.c:462
+msgid "_OK"
+msgstr ""
 
-#: ../src/day-view.c:549
+#: ../src/day-view.c:568
 msgid "Unknown"
 msgstr "نامەلۇم"
 
-#: ../src/day-view.c:807
+#: ../src/day-view.c:815
 msgid "       Number of days to show"
 msgstr "       كۆرسىتىدىغان كۈنلەرنىڭ سانى"
 
-#: ../src/day-view.c:1073
+#: ../src/day-view.c:1045
 msgid "Orage - day view"
 msgstr "Orage - كۈنلەرنى كۆرۈش"
 
 #. date only appointment
-#: ../src/event-list.c:191
+#: ../src/event-list.c:193
 msgid "All day"
 msgstr "بارلىق كۈنلەر"
 
-#: ../src/event-list.c:596 ../src/event-list.c:1370
+#: ../src/event-list.c:608 ../src/event-list.c:1432
 msgid "Time"
 msgstr "ۋاقىت"
 
-#: ../src/event-list.c:784
+#: ../src/event-list.c:809
 msgid "No rows have been selected."
 msgstr "قۇر تاللانمىغان"
 
-#: ../src/event-list.c:785
+#: ../src/event-list.c:810
 msgid "Click a row to select it and after that you can copy it."
 msgstr "چېكىپ قۇرنى تاللىغىلى بولىدۇ ئاندىن كېيىن ئۇنى كۆچۈرۈشكە بولىدۇ."
 
-#: ../src/event-list.c:968
+#: ../src/event-list.c:1006
 msgid ""
 "You will permanently remove all\n"
 "selected appointments."
-msgstr "تاللانغان بارلىق دېيىشمىلەر \nمەڭگۈلۈككە ئۆچۈرۈلىدۇ"
+msgstr ""
+"تاللانغان بارلىق دېيىشمىلەر \n"
+"مەڭگۈلۈككە ئۆچۈرۈلىدۇ"
 
-#: ../src/event-list.c:971
+#: ../src/event-list.c:1009
 msgid "Yes, remove them"
 msgstr ""
 
-#: ../src/event-list.c:1178
+#: ../src/event-list.c:1221
 msgid "Back"
 msgstr "ئارقىسىغا"
 
-#: ../src/event-list.c:1182
+#: ../src/event-list.c:1225
 msgid "Forward"
 msgstr "ئالدىغا"
 
-#: ../src/event-list.c:1189
+#: ../src/event-list.c:1232
 msgid "Find"
 msgstr "ئىزدە"
 
-#: ../src/event-list.c:1196
+#: ../src/event-list.c:1239
 msgid "Dayview"
 msgstr ""
 
-#: ../src/event-list.c:1231
+#: ../src/event-list.c:1274
 msgid "Extra days to show:"
 msgstr ""
 
-#: ../src/event-list.c:1240
+#: ../src/event-list.c:1288
 msgid "only first repeating"
 msgstr ""
 
-#: ../src/event-list.c:1245
+#: ../src/event-list.c:1296
 msgid ""
 "Check this if you only want to see the first repeating event. By default all are shown.\n"
 "Note that this also shows all urgencies.\n"
 "Note that repeating events may appear earlier in the list as the first occurrence only is listed."
 msgstr ""
 
-#: ../src/event-list.c:1250
+#: ../src/event-list.c:1301
 msgid "also old"
 msgstr ""
 
-#: ../src/event-list.c:1252
+#: ../src/event-list.c:1306
 msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed'."
 msgstr ""
 
-#: ../src/event-list.c:1290
+#: ../src/event-list.c:1344
 msgid "Journal entries starting from:"
 msgstr ""
 
-#: ../src/event-list.c:1310
+#: ../src/event-list.c:1364
 msgid "Search"
 msgstr "ئىزدە"
 
-#: ../src/event-list.c:1313
+#: ../src/event-list.c:1367
 msgid "Search text "
 msgstr "ئىزدەيدىغان تېكىست "
 
-#: ../src/event-list.c:1378
+#: ../src/event-list.c:1440
 msgid "Flags"
 msgstr "بەلگىلەر"
 
-#: ../src/event-list.c:1386
+#: ../src/event-list.c:1448
 msgid "Title"
 msgstr "ماۋزۇ"
 
-#: ../src/event-list.c:1412
+#: ../src/event-list.c:1474
 msgid ""
 "Double click line to edit it.\n"
 "\n"
@@ -1342,506 +1454,527 @@ msgid ""
 msgstr ""
 
 #. remove since it has ended
-#: ../src/ical-archive.c:267
+#: ../src/ical-archive.c:263
 msgid "\tRecur ended, moving to archive file."
 msgstr ""
 
-#: ../src/ical-archive.c:330
+#: ../src/ical-archive.c:326
 msgid "Archiving not enabled. Exiting"
 msgstr "ئارخىپلاشنى ئىشلەتكىلى بولمايدۇ. ئاخىرلاشتۇرۇۋاتىدۇ"
 
-#: ../src/ical-archive.c:349
+#: ../src/ical-archive.c:345
 #, c-format
 msgid "Archiving threshold: %d month(s)"
 msgstr "ئارخىپلاش بوسۇغىسى: %d ئاي"
 
 #. yy mon day
-#: ../src/ical-archive.c:352
+#: ../src/ical-archive.c:348
 #, c-format
 msgid "\tArchiving events, which are older than: %04d-%02d-%02d"
 msgstr "\t%04d-%02d-%02d دىن كونا بولغان ئارخىپلاش ھادىسىسى"
 
-#: ../src/ical-archive.c:379
+#: ../src/ical-archive.c:375
 #, c-format
 msgid "Archiving uid: %s"
 msgstr "ئارخىپلاش uid: %s"
 
 #. VTODO not completed, do not archive
-#: ../src/ical-archive.c:385
+#: ../src/ical-archive.c:381
 msgid "\tVTODO not complete; not archived"
 msgstr "\tVTODO تاماملانمىدى؛ ئارخىپلانمايدۇ"
 
 #. it is recurrent event
-#: ../src/ical-archive.c:390
+#: ../src/ical-archive.c:386
 #, c-format
 msgid "\tRecurring. End year: %04d, month: %02d, day: %02d"
 msgstr ""
 
-#: ../src/ical-archive.c:407
+#: ../src/ical-archive.c:403
 msgid "Archiving done\n"
 msgstr "ئارخىپلاش تاماملاندى\n"
 
 #. PHASE 1: go through base orage file and remove "repeat" shortcuts
-#: ../src/ical-archive.c:423
+#: ../src/ical-archive.c:419
 msgid "Starting archive removal."
 msgstr "ئارخىپ ئۆچۈرۈشنى باشلاندى."
 
-#: ../src/ical-archive.c:424
+#: ../src/ical-archive.c:420
 msgid "\tPHASE 1: reset recurring appointments"
 msgstr ""
 
 #. PHASE 2: go through archive file and add everything back to base orage.
 #. * After that delete the whole arch file
-#: ../src/ical-archive.c:446
+#: ../src/ical-archive.c:442
 msgid "\tPHASE 2: return archived appointments"
 msgstr ""
 
-#: ../src/ical-archive.c:472
+#: ../src/ical-archive.c:468
 msgid "Archive removal done\n"
 msgstr "ئارخىپ ئۆچۈرۈش تاماملاندى.\n"
 
-#: ../src/ical-code.c:972
+#: ../src/ical-code.c:859
 msgid "Orage default alarm"
 msgstr "Orage كۆڭۈلدىكى گۈدۈك"
 
-#: ../src/ical-code.c:3179
+#: ../src/ical-code.c:3064
 msgid "Created alarm list for main Orage file:"
 msgstr ""
 
-#: ../src/ical-code.c:3181
+#: ../src/ical-code.c:3066
 #, c-format
 msgid "Created alarm list for foreign file: %s (%s)"
 msgstr ""
 
-#: ../src/ical-code.c:3183
+#: ../src/ical-code.c:3068
 #, c-format
 msgid "\tAdded %d alarms. Processed %d events."
 msgstr ""
 
-#: ../src/ical-code.c:3185
+#: ../src/ical-code.c:3070
 #, c-format
 msgid ""
 "\tFound %d alarms of which %d are active. (Searched %d recurring alarms.)"
 msgstr ""
 
-#: ../src/ical-expimp.c:123
+#: ../src/ical-expimp.c:120
 msgid "Starting import file preprocessing"
 msgstr "ھۆججەت ئىمپورت قىلىش باشلاندى"
 
-#: ../src/ical-expimp.c:158
+#: ../src/ical-expimp.c:155
 msgid "... Patched DCREATED to be CREATED."
 msgstr ""
 
-#: ../src/ical-expimp.c:197
+#: ../src/ical-expimp.c:194
 msgid "... Patched timezone to Orage format."
 msgstr ""
 
-#: ../src/ical-expimp.c:206
+#: ../src/ical-expimp.c:203
 msgid "Import file preprocessing done"
 msgstr "ھۆججەت ئىمپورت قىلىش تاماملاندى"
 
-#: ../src/interface.c:89 ../src/interface.c:104
+#: ../src/interface.c:88 ../src/interface.c:103
 #, c-format
 msgid "Found external update on file %s."
 msgstr ""
 
-#: ../src/interface.c:112
+#: ../src/interface.c:111
 msgid "Refreshing alarms and calendar due to external file update."
 msgstr ""
 
-#: ../src/interface.c:271
+#: ../src/interface.c:272
 msgid "Calendar files"
 msgstr "يىلنامە ھۆججىتى"
 
-#: ../src/interface.c:631
+#: ../src/interface.c:642
 msgid "Current foreign files"
 msgstr "ھازىرقى سىرتقى ھۆججەتلەر"
 
-#: ../src/interface.c:648
+#: ../src/interface.c:665
 msgid "READ ONLY"
 msgstr "پەقەتلا ئوقۇش"
 
-#: ../src/interface.c:650
+#: ../src/interface.c:667
 msgid "READ WRITE"
 msgstr "ئوقۇپ يېزىش"
 
-#: ../src/interface.c:669
+#: ../src/interface.c:692
 msgid "***** No foreign files *****"
 msgstr "***** سىرتقى ھۆججەت يوق *****"
 
-#: ../src/interface.c:682
+#: ../src/interface.c:708
 msgid "Foreign file add failed"
 msgstr ""
 
-#: ../src/interface.c:689
+#: ../src/interface.c:716
 msgid "Orage can only handle 10 foreign files. Limit reached."
 msgstr ""
 
-#: ../src/interface.c:697
+#: ../src/interface.c:726
 msgid "Filename is empty."
 msgstr ""
 
-#: ../src/interface.c:705
+#: ../src/interface.c:736
 msgid "Name is empty."
 msgstr ""
 
-#: ../src/interface.c:713
+#: ../src/interface.c:746
 msgid "File does not exist."
 msgstr ""
 
-#: ../src/interface.c:722
+#: ../src/interface.c:757
 msgid "Same filename already exists in Orage."
 msgstr ""
 
-#: ../src/interface.c:730
+#: ../src/interface.c:767
 msgid "Same name already exists in Orage."
 msgstr ""
 
-#: ../src/interface.c:965
+#: ../src/interface.c:1022
 msgid "Import/export"
 msgstr "ئەكىرىش/چىقىرىش"
 
-#: ../src/interface.c:972
+#: ../src/interface.c:1029
 msgid "Import"
 msgstr "ئەكىر"
 
-#: ../src/interface.c:977
+#: ../src/interface.c:1037
 msgid "Read from file:"
 msgstr "ھۆججەتتىن ئوقۇ:"
 
-#: ../src/interface.c:994
+#: ../src/interface.c:1067
 msgid ""
 "Separate filenames with comma(,).\n"
 " NOTE: comma is not valid character in filenames for Orage."
-msgstr "ھۆججەت نامى پەش ئارقىلىق ئايرىلسۇن(,).\n دىققەت: Orage دا پەشنى ھۆججەت نامىدا ئىشلەتكىلى بولمايدۇ."
+msgstr ""
+"ھۆججەت نامى پەش ئارقىلىق ئايرىلسۇن(,).\n"
+" دىققەت: Orage دا پەشنى ھۆججەت نامىدا ئىشلەتكىلى بولمايدۇ."
 
-#: ../src/interface.c:999
+#: ../src/interface.c:1072
 msgid "Export"
 msgstr "چىقار"
 
-#: ../src/interface.c:1004
+#: ../src/interface.c:1080
 msgid "Write to file:"
 msgstr "ھۆججەت ياز:"
 
-#: ../src/interface.c:1025 ../src/interface.c:1037
+#: ../src/interface.c:1115 ../src/interface.c:1133
 msgid "Select"
 msgstr "تاللا"
 
-#: ../src/interface.c:1028
+#: ../src/interface.c:1120
 msgid "All appointments"
 msgstr "بارلىق دېيىشمىلەر"
 
-#: ../src/interface.c:1041
-msgid "Named appointments: "
-msgstr "ئىسىملىك دېيىشمىلەر: "
+#: ../src/interface.c:1139
+msgid "Named appointments:"
+msgstr ""
 
-#: ../src/interface.c:1053
+#: ../src/interface.c:1158
 msgid ""
 "Note that only main file appointments are read.\n"
 "Archived and Foreign events are not exported."
 msgstr ""
 
-#: ../src/interface.c:1056
+#: ../src/interface.c:1161
 msgid ""
 "Note that only main file appointments are read.\n"
 "Foreign events are not exported."
 msgstr ""
 
-#: ../src/interface.c:1059
+#: ../src/interface.c:1164
 msgid "You can easily drag these from event-list window."
 msgstr "event-list كۆزنىكىدىن ئوڭايلا سۆرەپ ئەكىرگىلى بولىدۇ."
 
-#: ../src/interface.c:1061
+#: ../src/interface.c:1166
 msgid "Orage appointment UIDs separated by commas."
 msgstr ""
 
-#: ../src/interface.c:1067
+#: ../src/interface.c:1172
 msgid "Archive"
 msgstr "ئارخىپ"
 
-#: ../src/interface.c:1075
+#: ../src/interface.c:1187
 #, c-format
 msgid "Archive now (threshold: %d months)"
 msgstr "ھازىر ئارخىپلا(بوسۇغا: %d ئاي)"
 
-#: ../src/interface.c:1085
+#: ../src/interface.c:1198
 msgid "You can change archive threshold in parameters"
 msgstr "ئارخىپ بوسۇغىسىنى پارامېتىر ئارىلىق ئۆزگەرتكىلى بولىدۇ"
 
-#: ../src/interface.c:1092
+#: ../src/interface.c:1210
 msgid "Revert archive now"
 msgstr ""
 
-#: ../src/interface.c:1098
+#: ../src/interface.c:1217
 msgid ""
 "Return all archived events into main orage file and remove arch file.\n"
 "This is useful for example when doing export and moving orage\n"
 "appointments to another system."
 msgstr ""
 
-#: ../src/interface.c:1109
+#: ../src/interface.c:1229
 msgid "Orage files"
 msgstr "Orage ھۆججەتلىرى"
 
-#: ../src/interface.c:1116
+#: ../src/interface.c:1236
 msgid "Orage main calendar file"
 msgstr "Orage ئاساسلىق يىلنامە ھۆججىتى"
 
-#: ../src/interface.c:1121 ../src/interface.c:1186
+#: ../src/interface.c:1245 ../src/interface.c:1338
 msgid "Current file:"
 msgstr ""
 
-#: ../src/interface.c:1128 ../src/interface.c:1193
+#: ../src/interface.c:1257 ../src/interface.c:1350
 msgid "New file:"
 msgstr ""
 
-#: ../src/interface.c:1144 ../src/interface.c:1210
+#: ../src/interface.c:1285 ../src/interface.c:1377
 msgid "Action options:"
 msgstr ""
 
-#: ../src/interface.c:1147 ../src/interface.c:1213
+#: ../src/interface.c:1289 ../src/interface.c:1381
 msgid "Rename"
 msgstr "ئات ئۆزگەرت"
 
-#: ../src/interface.c:1151
+#: ../src/interface.c:1295
 msgid ""
 "Orage internal file rename only.\n"
 "Does not touch external filesystem at all.\n"
 "New file must exist."
 msgstr ""
 
-#: ../src/interface.c:1155 ../src/interface.c:1218
+#: ../src/interface.c:1299 ../src/interface.c:1388
 msgid "Copy"
 msgstr "كۆچۈر"
 
-#: ../src/interface.c:1159
+#: ../src/interface.c:1305
 msgid "Current file is copied and stays unmodified in the old place."
-msgstr "ھازىرقى ھۆججەت كۆچۈرۈلىدۇ، بۇرۇنقى ئورۇندىكىسى شۇ پېتى قالىدۇ، ئۆزگەرمەيدۇ."
+msgstr ""
+"ھازىرقى ھۆججەت كۆچۈرۈلىدۇ، بۇرۇنقى ئورۇندىكىسى شۇ پېتى قالىدۇ، ئۆزگەرمەيدۇ."
 
-#: ../src/interface.c:1163 ../src/interface.c:1223
+#: ../src/interface.c:1309 ../src/interface.c:1395
 msgid "Move"
 msgstr "يۆتكە"
 
-#: ../src/interface.c:1167
+#: ../src/interface.c:1315
 msgid "Current file is moved and vanishes from the old place."
 msgstr "ھازىرقى ھۆججەت يۆتكىۋېتىلىدۇ ھەم بۇرۇنقى ئورۇندىن غايىب بولۇپ كېتىدۇ."
 
-#: ../src/interface.c:1181
+#: ../src/interface.c:1329
 msgid "Archive file"
 msgstr "ئارخىپ ھۆججىتى"
 
-#: ../src/interface.c:1245
+#: ../src/interface.c:1420
 msgid "Foreign files"
 msgstr "سىرتتىن كەلگەن ھۆججەتلەر"
 
-#: ../src/interface.c:1252
+#: ../src/interface.c:1427
 msgid "Add new foreign file"
 msgstr "يېڭىدىن سىرتقى ھۆججەت قوش"
 
-#: ../src/interface.c:1257
+#: ../src/interface.c:1435
 msgid "Foreign file:"
 msgstr "سىرتتىن كەلگەن ھۆججەت:"
 
-#. label = gtk_label_new(_("Options:"));
-#. gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 5);
-#: ../src/interface.c:1279
+#: ../src/interface.c:1466
 msgid "Visible name:"
 msgstr ""
 
-#: ../src/interface.c:1285
+#: ../src/interface.c:1476
 msgid "Read only"
 msgstr "پەقەتلا ئوقۇش"
 
-#: ../src/interface.c:1292
+#: ../src/interface.c:1486
 msgid ""
 "Set this if you want to make sure that this file is never modified by Orage.\n"
 "Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
 msgstr ""
 
-#: ../src/interface.c:1294
+#: ../src/interface.c:1488
 msgid "This internal name is displayed to user instead of file name."
 msgstr ""
 
-#: ../src/interface.c:1308
+#: ../src/interface.c:1502
 msgid "Exchange data - Orage"
 msgstr ""
 
-#: ../src/main.c:275
+#: ../src/main.c:271
 #, c-format
 msgid ""
 "\tThis is %s version %s\n"
 "\n"
-msgstr "\tبۇ بولسا %s نەشرى %s\n\n"
+msgstr ""
+"\tبۇ بولسا %s نەشرى %s\n"
+"\n"
 
-#: ../src/main.c:277
+#: ../src/main.c:273
 #, c-format
 msgid "\tReleased under the terms of the GNU General Public License.\n"
-msgstr "\tمەزكۇر پروگرامما GNU General Public License, 2-نەشرى ئاساسىدا تارقىتىلغان\n"
+msgstr ""
+"\tمەزكۇر پروگرامما GNU General Public License, 2-نەشرى ئاساسىدا "
+"تارقىتىلغان\n"
 
-#: ../src/main.c:278
+#: ../src/main.c:274
 #, c-format
 msgid "\tCompiled against GTK+-%d.%d.%d, "
 msgstr ""
 
-#: ../src/main.c:280
+#: ../src/main.c:276
 #, c-format
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "GTK+-%d.%d.%d. نى ئىشلىتىش.\n"
 
-#: ../src/main.c:283
+#: ../src/main.c:279
 #, c-format
 msgid "\tUsing DBUS for import.\n"
 msgstr "\tئىمپورت قىلىشتا DBUS ئىشلىتىدۇ.\n"
 
-#: ../src/main.c:285
+#: ../src/main.c:281
 #, c-format
 msgid "\tNot using DBUS. Import works only partially.\n"
 msgstr "\tبۇنىڭدا DBUS ئىشلەتمەيدۇ، ئىمپورت قىلىش تولۇق ئىشلىمەيدۇ.\n"
 
-#: ../src/main.c:288
+#: ../src/main.c:284
 #, c-format
 msgid "\tUsing libnotify.\n"
 msgstr "\tبۇنىڭدا libnotify ئىشلىتىدۇ.\n"
 
-#: ../src/main.c:290
+#: ../src/main.c:286
 #, c-format
 msgid "\tNot using libnotify.\n"
 msgstr "\tبۇنىڭدا libnotify ئىشلەتمەيدۇ.\n"
 
-#: ../src/main.c:293
+#: ../src/main.c:289
 #, c-format
 msgid "\tUsing automatic archiving.\n"
 msgstr "\tبۇنىڭدا ئاپتوماتىك ئارخىپلاش ئىشلىتىدۇ.\n"
 
-#: ../src/main.c:295
+#: ../src/main.c:291
 #, c-format
 msgid "\tNot using archiving.\n"
 msgstr "\tبۇنىڭدا ئارخىپلاش ئىشلەتمەيدۇ.\n"
 
-#: ../src/main.c:298
+#: ../src/main.c:294
 #, c-format
 msgid "\tUsing operating system package libical.\n"
 msgstr "\tمەشغۇلات سىستېمىسىنىڭ  libical بوغچىسىنى ئىشلىتىدۇ.\n"
 
-#: ../src/main.c:300
+#: ../src/main.c:296
 #, c-format
 msgid "\tUsing Orage local version of libical.\n"
 msgstr "\tبۇنىڭدا Orage نىڭ ئۆزىنىڭ libical بوغچىسىنى ئىشلىتىدۇ.\n"
 
-#: ../src/main.c:313
+#: ../src/main.c:299
+#, c-format
+msgid "\tUsing libxfce4ui: yes\n"
+msgstr ""
+
+#: ../src/main.c:301
+#, c-format
+msgid "\tUsing libxfce4ui: no\n"
+msgstr ""
+
+#: ../src/main.c:314
 #, c-format
 msgid ""
 "Usage: orage [options] [files]\n"
 "\n"
-msgstr "ئىشلىتىش ئۇسۇلى: orage [تاللانما] [ھۆججەتلەر]\n\n"
+msgstr ""
+"ئىشلىتىش ئۇسۇلى: orage [تاللانما] [ھۆججەتلەر]\n"
+"\n"
 
-#: ../src/main.c:314
+#: ../src/main.c:315
 #, c-format
 msgid "Options:\n"
 msgstr "تاللانمىلار:\n"
 
-#: ../src/main.c:315
+#: ../src/main.c:316
 #, c-format
 msgid "--version (-v) \t\tshow version of orage\n"
 msgstr "--version (-v) \t\t orage نىڭ نەشرىنى كۆرسىتىپ بېرىدۇ\n"
 
-#: ../src/main.c:316
+#: ../src/main.c:317
 #, c-format
 msgid "--help (-h) \t\tprint this text\n"
 msgstr "--help (-h) \t\tمەزكۇر تېكىستنى بېسىپ چىقىرىدۇ\n"
 
-#: ../src/main.c:317
+#: ../src/main.c:318
 #, c-format
 msgid "--preferences (-p) \tshow preferences form\n"
 msgstr "--preferences (-p) \tتەڭشەك form نى كۆرسىتىدۇ\n"
 
-#: ../src/main.c:318
+#: ../src/main.c:319
 #, c-format
 msgid "--toggle (-t) \t\tmake orage visible/unvisible\n"
 msgstr "--toggle (-t) \t\torage كۆرۈنىدىغان ياكى كۆرۈنمەيدىغان قىلىدۇ\n"
 
-#: ../src/main.c:319
+#: ../src/main.c:320
 #, c-format
 msgid "--add-foreign (-a) file [RW] [name] \tadd a foreign file\n"
 msgstr ""
 
-#: ../src/main.c:320
+#: ../src/main.c:321
 #, c-format
 msgid "--remove-foreign (-r) file \tremove a foreign file\n"
 msgstr "--remove-foreign (-r) file \tسىرتقى ھۆججەت ئۆچۈرىدۇ\n"
 
-#: ../src/main.c:321
+#: ../src/main.c:322
 #, c-format
 msgid ""
 "--export (-e) file [appointment...] \texport appointments from Orage to "
 "file\n"
 msgstr ""
 
-#: ../src/main.c:323
+#: ../src/main.c:324
 #, c-format
 msgid "files=ical files to load into orage\n"
 msgstr "files=orage گە يۈكلەيدىغان ical ھۆججەتلىرى\n"
 
-#: ../src/main.c:325
+#: ../src/main.c:326
 #, c-format
 msgid "\tdbus not included in orage. \n"
 msgstr "\tdbus orage نىڭ ئىچىدە يوق. \n"
 
-#: ../src/main.c:326
+#: ../src/main.c:327
 #, c-format
 msgid ""
 "\twithout dbus [files] and foreign file options(-a & -r) can only be used "
 "when starting orage \n"
 msgstr ""
 
-#: ../src/main.c:535
+#: ../src/main.c:536
 #, c-format
 msgid ""
 "\n"
 "Unknown option %s\n"
 "\n"
-msgstr "\nنامەلۇم تاللانما %s\n\n"
+msgstr ""
+"\n"
+"نامەلۇم تاللانما %s\n"
+"\n"
 
-#: ../src/mainbox.c:305
+#: ../src/mainbox.c:324
 msgid "_Exchange data"
 msgstr "سانلىق ئاساس ئالماشتۇر(_E)"
 
 #. Edit menu
-#: ../src/mainbox.c:316
+#: ../src/mainbox.c:335
 msgid "_Edit"
 msgstr "تەھرىر(_E)"
 
-#: ../src/mainbox.c:326
+#: ../src/mainbox.c:345
 msgid "View selected _date"
 msgstr "تاللانغان چېسلانى كۆرسەت(_D)"
 
-#: ../src/mainbox.c:329
+#: ../src/mainbox.c:348
 msgid "View selected _week"
 msgstr "تاللانغان ھەپتىنى كۆرسەت(_W)"
 
-#: ../src/mainbox.c:335
+#: ../src/mainbox.c:354
 msgid "Select _Today"
 msgstr "بۈگۈننى تاللا(_T)"
 
-#: ../src/mainbox.c:341
+#: ../src/mainbox.c:360
 msgid "Show _Globaltime"
 msgstr "دۇنيا ۋاقتىنى كۆرسەت(_G)"
 
 #. Help menu
-#: ../src/mainbox.c:345
+#. the rest
+#: ../src/mainbox.c:364 ../src/parameters.c:1209
 msgid "_Help"
 msgstr "ياردەم(_H)"
 
-#: ../src/mainbox.c:414 ../src/reminder.c:1138
+#: ../src/mainbox.c:432 ../src/reminder.c:1155
 msgid "No title defined"
 msgstr ""
 
-#: ../src/mainbox.c:471
+#: ../src/mainbox.c:495
 #, c-format
 msgid " Location: %s\n"
 msgstr ""
 
-#: ../src/mainbox.c:481
+#: ../src/mainbox.c:505
 #, c-format
 msgid ""
 "\n"
@@ -1849,11 +1982,11 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../src/mainbox.c:489
+#: ../src/mainbox.c:513
 msgid "Never"
 msgstr "زادىلا"
 
-#: ../src/mainbox.c:495
+#: ../src/mainbox.c:519
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1862,7 +1995,7 @@ msgid ""
 " Done:\t%s%s"
 msgstr ""
 
-#: ../src/mainbox.c:503
+#: ../src/mainbox.c:527
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1870,297 +2003,300 @@ msgid ""
 " End:\t%s%s"
 msgstr ""
 
-#: ../src/mainbox.c:613
+#: ../src/mainbox.c:637
 msgid "<b>To do:</b>"
 msgstr "<b>ئىشلار:</b>"
 
-#: ../src/mainbox.c:649
+#: ../src/mainbox.c:678
 #, c-format
 msgid "<b>Events for %s:</b>"
 msgstr "<b>%s نىڭ ھادىسىلىرى:</b>"
 
-#: ../src/mainbox.c:660
+#: ../src/mainbox.c:689
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>%s- %s نىڭ ھادىسىلىرى :</b>"
 
-#: ../src/parameters.c:492
+#: ../src/parameters.c:554
 msgid "Main settings"
 msgstr "ئاساسىي تەڭشەكلەر"
 
-#: ../src/parameters.c:498
+#: ../src/parameters.c:560
 msgid "Timezone"
 msgstr "ۋاقىت رايونى"
 
-#: ../src/parameters.c:513
+#: ../src/parameters.c:581
 msgid "You should always define your local timezone."
 msgstr "يەرلىك ۋاقىت رايونىنى بەلگىلىمىسىڭىز بولمايدۇ."
 
-#: ../src/parameters.c:521
+#: ../src/parameters.c:589
 msgid "Archive threshold (months)"
 msgstr "ئارخىپ بوسۇغىسى (ئايلار)"
 
-#: ../src/parameters.c:531
+#: ../src/parameters.c:602
 msgid "(0 = no archiving)"
 msgstr "(0 = ئارخىپلانمايدۇ)"
 
-#: ../src/parameters.c:534
+#: ../src/parameters.c:606
 msgid "Archiving is used to save time and space when handling events."
-msgstr "ئارخىپلاش،  ھادىسىلەرنى بىر تەرەپ قىلغاندا، ۋاقىت ۋە دىسكا بوشلۇقىنى تېجەيدۇ."
+msgstr ""
+"ئارخىپلاش،  ھادىسىلەرنى بىر تەرەپ قىلغاندا، ۋاقىت ۋە دىسكا بوشلۇقىنى "
+"تېجەيدۇ."
 
-#: ../src/parameters.c:542
+#: ../src/parameters.c:614
 msgid "Sound command"
 msgstr "ئۈن بۇيرۇقى"
 
-#: ../src/parameters.c:557
+#: ../src/parameters.c:642
 msgid "This command is given to shell to make sound in alarms."
 msgstr ""
 
-#: ../src/parameters.c:596
+#: ../src/parameters.c:673
 msgid "Calendar window"
 msgstr ""
 
-#: ../src/parameters.c:603
+#: ../src/parameters.c:680
 msgid "Calendar visual details"
 msgstr ""
 
-#: ../src/parameters.c:609
+#: ../src/parameters.c:687
 msgid "Show borders"
 msgstr "گىرۋەكلەرنى كۆرسەت"
 
-#: ../src/parameters.c:614
+#: ../src/parameters.c:692
 msgid "Show menu"
 msgstr "تىزىملىكنى كۆرسىتىش"
 
-#: ../src/parameters.c:622
+#: ../src/parameters.c:700
 msgid "Show day names"
 msgstr "كۈن ناملىرىنى كۆرسەت"
 
-#: ../src/parameters.c:627
+#: ../src/parameters.c:705
 msgid "Show week numbers"
 msgstr "ھەپتە نومۇرىنى كۆرسىتىدۇ"
 
-#: ../src/parameters.c:635
+#: ../src/parameters.c:713
 msgid "Show month and year"
 msgstr "ئاي ۋە يىلنى كۆرسەت"
 
-#: ../src/parameters.c:655
+#: ../src/parameters.c:733
 msgid "Calendar info boxes"
 msgstr ""
 
-#: ../src/parameters.c:660
+#: ../src/parameters.c:740
 msgid "Show todo list"
 msgstr "ئىشلار تىزىملىكىنى كۆرسىتىدۇ"
 
-#: ../src/parameters.c:667
+#: ../src/parameters.c:747
 msgid "Number of days to show in event window"
 msgstr "ھادىسە كۆزنىكىدە كۆرسىتىدىغان كۈننىڭ سانى"
 
-#: ../src/parameters.c:673
+#: ../src/parameters.c:755
 msgid "0 = do not show event list at all"
 msgstr "0 = ھادىسە تىزىملىكىنى زادىلا كۆرسەتمەيدۇ"
 
-#: ../src/parameters.c:686
+#: ../src/parameters.c:769
 msgid "Calendar visibility"
 msgstr ""
 
-#: ../src/parameters.c:691
+#: ../src/parameters.c:775
 msgid "Show on all desktops"
 msgstr "بارلىق ئۈستەلئۈستىلىرىدە كۆرسەتسۇن"
 
-#: ../src/parameters.c:696
+#: ../src/parameters.c:780
 msgid "Keep on top"
 msgstr "كۆزنەك ھەمىشە ئەڭ ئۈستىدە تۇرسۇن"
 
-#: ../src/parameters.c:704
+#: ../src/parameters.c:788
 msgid "Show in taskbar"
 msgstr "ۋەزىپە بالدىقىنى كۆرسەتسۇن"
 
-#: ../src/parameters.c:709
+#: ../src/parameters.c:793
 msgid "Show in pager"
 msgstr ""
 
-#: ../src/parameters.c:717
+#: ../src/parameters.c:801
 msgid "Show in systray"
 msgstr "قونداقتا كۆرسەت"
 
-#: ../src/parameters.c:738
+#: ../src/parameters.c:823
 msgid "Calendar start"
 msgstr "يىلنامە باشلاش"
 
-#: ../src/parameters.c:743
+#: ../src/parameters.c:829
 msgid "Show"
 msgstr "كۆرسەت"
 
-#: ../src/parameters.c:755
+#: ../src/parameters.c:845
 msgid "Hide"
 msgstr "يوشۇر"
 
-#: ../src/parameters.c:767
+#: ../src/parameters.c:862
 msgid "Minimized"
 msgstr "كىچىكلىتىش"
 
-#: ../src/parameters.c:787
+#: ../src/parameters.c:888
 msgid "On calendar window open"
 msgstr ""
 
-#: ../src/parameters.c:792
+#: ../src/parameters.c:894
 msgid "Select today's date"
 msgstr ""
 
-#: ../src/parameters.c:805
+#: ../src/parameters.c:911
 msgid "Select previously selected date"
 msgstr ""
 
-#: ../src/parameters.c:823
+#: ../src/parameters.c:935
 msgid "Calendar day double click shows"
 msgstr ""
 
-#: ../src/parameters.c:828
+#: ../src/parameters.c:941
 msgid "Days view"
 msgstr ""
 
-#: ../src/parameters.c:840
+#: ../src/parameters.c:957
 msgid "Event list"
 msgstr "ھادىسە تىزىملىكى"
 
-#: ../src/parameters.c:862
+#: ../src/parameters.c:990
 msgid "Extra settings"
 msgstr "باشقا تەڭشەكلەر"
 
-#: ../src/parameters.c:869
+#: ../src/parameters.c:997
 msgid "Event list window"
 msgstr ""
 
-#: ../src/parameters.c:874
+#: ../src/parameters.c:1004
 msgid "Number of extra days to show in event list"
 msgstr "ھادىسە تىزىملىكىدە كۆرسىتىدىغان باشقا كۈنلەر"
 
-#: ../src/parameters.c:883
+#: ../src/parameters.c:1014
 msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
-msgstr "بۇ پەقەتلا كۆڭۈلدىكى قىممىتى، بۇنى eventlist كۆزنىكىدە ئۆزگەرتكىلى بولىدۇ."
+msgstr ""
+"بۇ پەقەتلا كۆڭۈلدىكى قىممىتى، بۇنى eventlist كۆزنىكىدە ئۆزگەرتكىلى بولىدۇ."
 
-#: ../src/parameters.c:891
+#: ../src/parameters.c:1022
 msgid "Show only first repeating event"
 msgstr ""
 
-#: ../src/parameters.c:907
+#: ../src/parameters.c:1039
 msgid "Day view window default first day"
 msgstr ""
 
-#: ../src/parameters.c:912
+#: ../src/parameters.c:1046
 msgid "First day of week"
 msgstr ""
 
-#: ../src/parameters.c:925
+#: ../src/parameters.c:1063
 msgid "Selected day"
 msgstr ""
 
-#: ../src/parameters.c:943
-msgid "Use dynamic tray icon"
-msgstr "ھەرىكەتچان قوندۇرما سىنبەلگىسى ئىشلەت"
-
-#: ../src/parameters.c:948
-msgid "Use dynamic icon"
-msgstr "ھەرىكەتچان سىنبەلگىسى ئىشلەت"
-
-#: ../src/parameters.c:954
-msgid "Dynamic icon shows current month and day of the month."
-msgstr "ھەرىكەتچان سىنبەلگىدە ئاي ۋە كۈن كۆرسىتىلسۇن."
-
-#: ../src/parameters.c:962 ../src/parameters.c:967
+#: ../src/parameters.c:1086 ../src/parameters.c:1093
 msgid "Use wakeup timer"
 msgstr ""
 
-#: ../src/parameters.c:973
+#: ../src/parameters.c:1101
 msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
 msgstr ""
 
-#: ../src/parameters.c:982
+#: ../src/parameters.c:1111
 msgid "Foreign file default visual alarm"
 msgstr ""
 
-#: ../src/parameters.c:987
+#: ../src/parameters.c:1118
 msgid "Orage window"
 msgstr ""
 
-#: ../src/parameters.c:1000
+#: ../src/parameters.c:1135
 msgid "Notify notification"
 msgstr ""
 
-#: ../src/parameters.c:1018
+#: ../src/parameters.c:1158
 msgid "Always quit when asked to close"
 msgstr ""
 
-#: ../src/parameters.c:1023
+#: ../src/parameters.c:1165
 msgid "Always quit"
 msgstr ""
 
-#: ../src/parameters.c:1029
+#: ../src/parameters.c:1172
 msgid ""
 "By default Orage stays open in the background when asked to close. This "
 "option changes Orage to quit and never stay in background when it is asked "
 "to close."
 msgstr ""
 
-#: ../src/parameters.c:1045
+#: ../src/parameters.c:1188
 msgid "Orage Preferences"
 msgstr "Orage خاسلىقى"
 
-#: ../src/parameters.c:1157
+#: ../src/parameters.c:1212 ../src/reminder.c:800
+msgid "_Close"
+msgstr "تاقا(_C)"
+
+#: ../src/parameters.c:1299
 msgid "First Orage start. Searching default timezone."
 msgstr "Orage تۇنجى قوزغالدى. كۆڭۈلدىكى ۋاقىت رايونىنى ئىزدەۋاتىدۇ."
 
-#: ../src/parameters.c:1176
+#: ../src/parameters.c:1318
 #, c-format
 msgid "Default timezone set to %s."
 msgstr "كۆڭۈلدىكى ۋاقىت رايونى  %s غا توغرىلا."
 
-#: ../src/parameters.c:1179
+#: ../src/parameters.c:1321
 msgid "Default timezone not found, please, set it manually."
 msgstr "كۆڭۈلدىكى ۋاقىت رايونى تېپىلمىدى، ئۆزىڭىز بېكىتىڭ."
 
-#: ../src/reminder.c:562
+#: ../src/reminder.c:563
 msgid "Reminder "
 msgstr "بەلگە "
 
-#: ../src/reminder.c:591
+#: ../src/reminder.c:592
 msgid "Open"
 msgstr "ئاچ"
 
-#: ../src/reminder.c:719
+#: ../src/reminder.c:725
 msgid "Reminder - Orage"
 msgstr "ئەسلەتكۈ - Orage"
 
-#: ../src/reminder.c:803
+#: ../src/reminder.c:808
+msgid "_Stop"
+msgstr ""
+
+#: ../src/reminder.c:816
 msgid "Postpone"
 msgstr ""
 
-#: ../src/reminder.c:805
+#: ../src/reminder.c:818
 msgid "Remind me again after the specified time"
 msgstr "بەلگىلىك ۋاقىتتىن  كېيىن ئەسكەرتمە بەرگىن"
 
-#: ../src/reminder.c:1091
+#: ../src/reminder.c:1107
 msgid "Next active alarms:"
 msgstr "كېيىنكى ئاكتىپ گۈدۈكلەر:"
 
-#: ../src/reminder.c:1145
+#: ../src/reminder.c:1162
 #, c-format
 msgid ""
 "\n"
 "%02d d %02d h %02d min to: %s"
-msgstr "\n%02d d %02d h %02d min to: %s"
+msgstr ""
+"\n"
+"%02d d %02d h %02d min to: %s"
 
-#: ../src/reminder.c:1154
+#: ../src/reminder.c:1171
 #, c-format
 msgid ""
 "\n"
 "No active alarms found"
-msgstr "\nئاكتىپ گۈدۈك تېپىلمىدى"
+msgstr ""
+"\n"
+"ئاكتىپ گۈدۈك تېپىلمىدى"
 
 #: ../src/timezone_names.c:36
 msgid "Africa"
@@ -4406,19 +4542,23 @@ msgstr ""
 msgid "US/Samoa"
 msgstr ""
 
-#: ../src/tray_icon.c:469
+#: ../src/tray_icon.c:457
 msgid "New appointment"
 msgstr "يېڭى دېيىشمە"
 
-#: ../src/tray_icon.c:485
-msgid "About Orage"
-msgstr "Orage ھەققىدە"
+#: ../src/tray_icon.c:464
+msgid "Preferences"
+msgstr "تەڭشەكلەر"
 
-#: ../panel-plugin/xfce4-orageclock-plugin.desktop.in.in.h:1
+#: ../src/tray_icon.c:471
+msgid "Quit"
+msgstr ""
+
+#: ../panel-plugin/xfce4-orageclock-plugin.desktop.in.h:1
 msgid "Orage Panel Clock"
 msgstr "Orage كۆزنەك سائىتى"
 
-#: ../panel-plugin/xfce4-orageclock-plugin.desktop.in.in.h:2
+#: ../panel-plugin/xfce4-orageclock-plugin.desktop.in.h:2
 msgid "Show time and date?"
 msgstr "ۋاقىت ۋە چېسلانى كۆرسەتسۇنمۇ؟"
 
