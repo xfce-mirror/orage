@@ -1,377 +1,395 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Andhika Padmawan <andhika.padmawan@gmail.com>, 2010,2014
-# Ardjuna <Asyura.x@gmail.com>, 2013
-# se7entime <se7entime@openmailbox.org>, 2013
-# se7entime <se7entime@openmailbox.org>, 2013
+# Xfce Bot <transifex@xfce.org>, 2022
+# Triyan W. Nugroho <triyan.wn@gmail.com>, 2022
+# Kukuh Syafaat <syafaatkukuh@gmail.com>, 2022
+# Ardjuna <Asyura.x@gmail.com>, 2022
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Xfce Apps\n"
+"Project-Id-Version: orage\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-23 12:30+0200\n"
-"PO-Revision-Date: 2018-09-14 00:16+0000\n"
-"Last-Translator: Kukuh Syafaat <syafaatkukuh@gmail.com>\n"
-"Language-Team: Indonesian (http://www.transifex.com/xfce/xfce-apps/language/id/)\n"
+"POT-Creation-Date: 2022-02-01 15:01+0100\n"
+"PO-Revision-Date: 2022-02-01 14:01+0000\n"
+"Last-Translator: Ardjuna <Asyura.x@gmail.com>, 2022\n"
+"Language-Team: Indonesian (https://www.transifex.com/xfce/teams/16840/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../globaltime/globaltime.c:58
+#: ../globaltime/globaltime.c:59
 msgid "no underline"
 msgstr "tidak ada garis bawahi"
 
-#: ../globaltime/globaltime.c:58
+#: ../globaltime/globaltime.c:59
 msgid "single"
 msgstr "tunggal"
 
-#: ../globaltime/globaltime.c:58
+#: ../globaltime/globaltime.c:59
 msgid "double"
 msgstr "dobel"
 
-#: ../globaltime/globaltime.c:58
+#: ../globaltime/globaltime.c:59
 msgid "low"
 msgstr "rendah"
 
-#: ../globaltime/globaltime.c:100
+#: ../globaltime/globaltime.c:108 ../src/tray_icon.c:164
 msgid "Raising GlobalTime window..."
 msgstr "Munculkan jendela Waktu Global..."
 
-#: ../globaltime/globaltime.c:102
+#: ../globaltime/globaltime.c:110 ../src/tray_icon.c:166
 msgid "GlobalTime window raise failed"
 msgstr "Gagal menaikan jendela Waktu Global"
 
 #. ********** timezone tooltip **********
-#: ../globaltime/globaltime.c:277
+#: ../globaltime/globaltime.c:338
 #, c-format
 msgid ""
 "%s\n"
 "click to modify clock"
-msgstr "%s\nklik untuk memodifikasi waktu"
+msgstr ""
+"%s\n"
+"klik untuk memodifikasi waktu"
 
-#: ../globaltime/globaltime.c:386
+#: ../globaltime/globaltime.c:447
 msgid "Localtime"
 msgstr "Waktu lokal"
 
-#: ../globaltime/globaltime.c:464
+#: ../globaltime/globaltime.c:536
 msgid ""
 "button 1 to change preferences \n"
 "button 2 to adjust time of clocks"
-msgstr "tombol 1 untuk mengganti pengaturan \ntombol 2 untuk menyesuaikan waktu jam"
+msgstr ""
+"tombol 1 untuk mengganti pengaturan \n"
+"tombol 2 untuk menyesuaikan waktu jam"
 
-#: ../globaltime/globaltime.c:480
+#: ../globaltime/globaltime.c:551
 msgid "adjust to change hour"
 msgstr "sesuaikan untuk ganti jam"
 
-#: ../globaltime/globaltime.c:496
+#: ../globaltime/globaltime.c:567
 msgid ""
 "adjust to change minute. Click arrows with button 2 to change only 1 minute."
-msgstr "sesuaikan untuk mengubah menit. Klik panah dengan tombol 2 untuk mengubah hanya satu menit."
+msgstr ""
+"sesuaikan untuk mengubah menit. Klik panah dengan tombol 2 untuk mengubah "
+"hanya satu menit."
 
-#: ../globaltime/globaltime.c:548
+#: ../globaltime/globaltime.c:621
 msgid "Global Time"
 msgstr "Waktu Global"
 
-#: ../globaltime/gt_prefs.c:265 ../globaltime/gt_prefs.c:266
+#: ../globaltime/gt_prefs.c:290 ../globaltime/gt_prefs.c:291
 msgid "NEW"
 msgstr "BARU"
 
-#: ../globaltime/gt_prefs.c:289
+#: ../globaltime/gt_prefs.c:314
 msgid "NEW COPY"
 msgstr "SALINAN BARU"
 
-#: ../globaltime/gt_prefs.c:310
+#: ../globaltime/gt_prefs.c:336
 msgid "Not possible to delete the last clock."
 msgstr "Tidak diperbolehkan menghapus jam terakhir."
 
-#: ../globaltime/gt_prefs.c:516
+#: ../globaltime/gt_prefs.c:577
 msgid "update this clock"
 msgstr "mutakhirkan jam ini"
 
-#: ../globaltime/gt_prefs.c:521 ../globaltime/gt_prefs.c:1034
+#: ../globaltime/gt_prefs.c:582 ../globaltime/gt_prefs.c:1095
 msgid "add new empty clock"
 msgstr "tambah jam kosong baru"
 
-#: ../globaltime/gt_prefs.c:526
+#: ../globaltime/gt_prefs.c:587
 msgid "add new clock using this clock as model"
 msgstr "tambah jam baru dengan meniru setelan pada jam ini"
 
-#: ../globaltime/gt_prefs.c:531
+#: ../globaltime/gt_prefs.c:592
 msgid "delete this clock"
 msgstr "hapus jam ini"
 
-#: ../globaltime/gt_prefs.c:539
+#: ../globaltime/gt_prefs.c:600
 msgid "move this clock first"
 msgstr "pindah jam ini ke pertama"
 
-#: ../globaltime/gt_prefs.c:544
+#: ../globaltime/gt_prefs.c:605
 msgid "move this clock left"
 msgstr "pindah jam ini ke kiri"
 
-#: ../globaltime/gt_prefs.c:549
+#: ../globaltime/gt_prefs.c:610
 msgid "move this clock right"
 msgstr "pindah jam ini ke kanan"
 
-#: ../globaltime/gt_prefs.c:554
+#: ../globaltime/gt_prefs.c:615
 msgid "move this clock last"
 msgstr "pindah jam ini ke terakhir"
 
-#: ../globaltime/gt_prefs.c:562
+#: ../globaltime/gt_prefs.c:623
 msgid "set the timezone of this clock to be local timezone"
 msgstr "ubah zona waktu jam ini ke zona waktu lokal"
 
-#: ../globaltime/gt_prefs.c:568 ../globaltime/gt_prefs.c:1042
+#: ../globaltime/gt_prefs.c:629 ../globaltime/gt_prefs.c:1103
 msgid "close window and exit"
 msgstr "tutup jendela dan keluar"
 
-#: ../globaltime/gt_prefs.c:590
+#: ../globaltime/gt_prefs.c:652
 msgid "Globaltime preferences "
 msgstr "Pengaturan waktu global"
 
 #. -----------------------HEADING-------------------------------------------
-#: ../globaltime/gt_prefs.c:603
+#: ../globaltime/gt_prefs.c:665
 msgid "Clock Parameters"
 msgstr "Parameter Jam"
 
-#: ../globaltime/gt_prefs.c:607
+#: ../globaltime/gt_prefs.c:669
 msgid "Name of the clock:"
 msgstr "Nama jam:"
 
-#: ../globaltime/gt_prefs.c:613
+#: ../globaltime/gt_prefs.c:678
 msgid "enter name of clock"
 msgstr "masukkan nama jam"
 
-#: ../globaltime/gt_prefs.c:616
+#: ../globaltime/gt_prefs.c:681
 msgid "Timezone of the clock:"
 msgstr "Zona waktu jam:"
 
-#: ../globaltime/gt_prefs.c:643
+#: ../globaltime/gt_prefs.c:683 ../globaltime/gt_prefs.c:1189
+#: ../panel-plugin/oc_config.c:374 ../src/appointment.c:3175
+#: ../src/interface.c:1047 ../src/interface.c:1093 ../src/interface.c:1269
+#: ../src/interface.c:1361 ../src/interface.c:1444 ../src/parameters.c:409
+#: ../src/parameters.c:632 ../src/reminder.c:793
+msgid "_Open"
+msgstr "_Buka"
+
+#: ../globaltime/gt_prefs.c:714
 msgid "Text Formatting"
 msgstr "Format Teks"
 
 #. ------------------------background-------------------------
-#: ../globaltime/gt_prefs.c:649 ../globaltime/gt_prefs.c:856
+#: ../globaltime/gt_prefs.c:721 ../globaltime/gt_prefs.c:923
 msgid "Background color:"
 msgstr "Warna latar belakang:"
 
-#: ../globaltime/gt_prefs.c:656
+#: ../globaltime/gt_prefs.c:728
 msgid "Click to change background colour for clock"
 msgstr "Klik untuk ganti warna latar belakang untuk jam"
 
-#: ../globaltime/gt_prefs.c:665 ../globaltime/gt_prefs.c:697
-#: ../globaltime/gt_prefs.c:729 ../globaltime/gt_prefs.c:762
-#: ../globaltime/gt_prefs.c:796 ../globaltime/gt_prefs.c:826
-#: ../globaltime/gt_prefs.c:872 ../globaltime/gt_prefs.c:905
-#: ../globaltime/gt_prefs.c:938 ../globaltime/gt_prefs.c:972
+#: ../globaltime/gt_prefs.c:737 ../globaltime/gt_prefs.c:769
+#: ../globaltime/gt_prefs.c:801 ../globaltime/gt_prefs.c:833
+#: ../globaltime/gt_prefs.c:865 ../globaltime/gt_prefs.c:893
+#: ../globaltime/gt_prefs.c:939 ../globaltime/gt_prefs.c:971
+#: ../globaltime/gt_prefs.c:1003 ../globaltime/gt_prefs.c:1035
 msgid "Use default"
 msgstr "Gunakan standar"
 
-#: ../globaltime/gt_prefs.c:670 ../globaltime/gt_prefs.c:702
-#: ../globaltime/gt_prefs.c:735 ../globaltime/gt_prefs.c:768
-#: ../globaltime/gt_prefs.c:802 ../globaltime/gt_prefs.c:832
+#: ../globaltime/gt_prefs.c:742 ../globaltime/gt_prefs.c:774
+#: ../globaltime/gt_prefs.c:806 ../globaltime/gt_prefs.c:838
+#: ../globaltime/gt_prefs.c:870 ../globaltime/gt_prefs.c:898
 msgid "Cross this to use default instead of selected value"
 msgstr "Silang ini untuk menggunakan standar daripada nilai terpilih"
 
 #. ------------------------foreground-------------------------
-#: ../globaltime/gt_prefs.c:681 ../globaltime/gt_prefs.c:889
+#: ../globaltime/gt_prefs.c:753 ../globaltime/gt_prefs.c:955
 msgid "Foreground (=text) color:"
 msgstr "Warna latar depan (=teks):"
 
-#: ../globaltime/gt_prefs.c:688
+#: ../globaltime/gt_prefs.c:760
 msgid "Click to change foreground colour for clock"
 msgstr "Klik untuk ganti warna latar belakang untuk jam"
 
 #. ------------------------name font-------------------------
-#: ../globaltime/gt_prefs.c:713 ../globaltime/gt_prefs.c:922
+#: ../globaltime/gt_prefs.c:785 ../globaltime/gt_prefs.c:987
 msgid "Font for name of clock:"
 msgstr "Fonta untuk nama jam:"
 
-#: ../globaltime/gt_prefs.c:720
+#: ../globaltime/gt_prefs.c:792
 msgid "Click to change font for clock name"
 msgstr "Klik untuk ganti fonta untuk nama jam"
 
 #. ------------------------time font-------------------------
-#: ../globaltime/gt_prefs.c:746 ../globaltime/gt_prefs.c:956
+#: ../globaltime/gt_prefs.c:817 ../globaltime/gt_prefs.c:1019
 msgid "Font for time of clock:"
 msgstr "Fonta untuk waktu jam:"
 
-#: ../globaltime/gt_prefs.c:753
+#: ../globaltime/gt_prefs.c:824
 msgid "Click to change font for clock time"
 msgstr "Klik untuk ganti fonta untuk waktu jam"
 
 #. ------------------------underline name--------------------
-#: ../globaltime/gt_prefs.c:780
+#: ../globaltime/gt_prefs.c:849
 msgid "Underline name of clock:"
 msgstr "Garis bawahi nama jam:"
 
 #. ------------------------underline time--------------------
-#: ../globaltime/gt_prefs.c:810
+#: ../globaltime/gt_prefs.c:877
 msgid "Underline time of clock:"
 msgstr "Garis bawahi waktu jam:"
 
-#: ../globaltime/gt_prefs.c:850
+#: ../globaltime/gt_prefs.c:916
 msgid "Text Default Formatting"
 msgstr "Format Standar Teks"
 
-#: ../globaltime/gt_prefs.c:863
+#: ../globaltime/gt_prefs.c:930
 msgid "Click to change default background colour for clocks"
 msgstr "Klik untuk ganti warna latar belakang standar untuk jam"
 
-#: ../globaltime/gt_prefs.c:877 ../globaltime/gt_prefs.c:910
+#: ../globaltime/gt_prefs.c:944 ../globaltime/gt_prefs.c:976
 msgid "Cross this to use system default instead of selected color"
 msgstr "Silang ini untuk menggunakan standar sistem daripada warna terpilih"
 
-#: ../globaltime/gt_prefs.c:896
+#: ../globaltime/gt_prefs.c:962
 msgid "Click to change default text colour for clocks"
 msgstr "Klik untuk ganti warna teks standar untuk jam"
 
-#: ../globaltime/gt_prefs.c:929
+#: ../globaltime/gt_prefs.c:994
 msgid "Click to change default font for clock name"
 msgstr "Klik untuk ganti fonta standar untuk nama jam"
 
-#: ../globaltime/gt_prefs.c:944 ../globaltime/gt_prefs.c:978
+#: ../globaltime/gt_prefs.c:1008 ../globaltime/gt_prefs.c:1040
 msgid "Cross this to use system default font instead of selected font"
-msgstr "Sila ini untuk menggunakan fonta standar sistem daripada fonta terpilih"
+msgstr ""
+"Sila ini untuk menggunakan fonta standar sistem daripada fonta terpilih"
 
-#: ../globaltime/gt_prefs.c:963
+#: ../globaltime/gt_prefs.c:1026
 msgid "Click to change default font for clock time"
 msgstr "Klik untuk ganti fonta standar untuk waktu jam"
 
 #. ------------------------underline name--------------------
-#: ../globaltime/gt_prefs.c:990
+#: ../globaltime/gt_prefs.c:1051
 msgid "Underline for name of clock:"
 msgstr "Garis bawah untuk nama jam:"
 
 #. ------------------------underline time--------------------
-#: ../globaltime/gt_prefs.c:1004
+#: ../globaltime/gt_prefs.c:1065
 msgid "Underline for time of clock:"
 msgstr "Garis bawah untuk waktu jam:"
 
-#: ../globaltime/gt_prefs.c:1027
+#: ../globaltime/gt_prefs.c:1088
 msgid "update preferences"
 msgstr "mutakhirkan pengaturan"
 
-#: ../globaltime/gt_prefs.c:1062
+#: ../globaltime/gt_prefs.c:1122
 msgid "Globaltime Preferences"
 msgstr "Pengaturan Waktu Global"
 
 #. -----------------------HEADING--------------------------------------
-#: ../globaltime/gt_prefs.c:1073
+#: ../globaltime/gt_prefs.c:1133
 msgid "General Preferences"
 msgstr "Pengaturan Umum"
 
-#: ../globaltime/gt_prefs.c:1077
+#: ../globaltime/gt_prefs.c:1137
 msgid "Decorations:"
 msgstr "Dekorasi:"
 
-#: ../globaltime/gt_prefs.c:1078
+#: ../globaltime/gt_prefs.c:1138
 msgid "Standard"
 msgstr "Standar"
 
-#: ../globaltime/gt_prefs.c:1083
+#: ../globaltime/gt_prefs.c:1144
 msgid "Use normal decorations"
 msgstr "Gunakan dekorasi normal"
 
-#: ../globaltime/gt_prefs.c:1089 ../src/appointment.c:3290
+#: ../globaltime/gt_prefs.c:1149 ../src/appointment.c:3424
 msgid "None"
 msgstr "Tak ada"
 
-#: ../globaltime/gt_prefs.c:1094
+#: ../globaltime/gt_prefs.c:1156
 msgid "Do not show window decorations (borders)"
 msgstr "Jangan tampilkan dekorasi jendela (batas)"
 
-#: ../globaltime/gt_prefs.c:1100
+#: ../globaltime/gt_prefs.c:1162
 msgid "Clock size:"
 msgstr "Ukuran jam:"
 
-#: ../globaltime/gt_prefs.c:1101
+#: ../globaltime/gt_prefs.c:1163
 msgid "Equal"
 msgstr "Sama"
 
-#: ../globaltime/gt_prefs.c:1106
+#: ../globaltime/gt_prefs.c:1170
 msgid "All clocks have same size"
 msgstr "Semua jam punya ukuran sama"
 
-#: ../globaltime/gt_prefs.c:1111
+#: ../globaltime/gt_prefs.c:1175
 msgid "Varying"
 msgstr "Beragam"
 
-#: ../globaltime/gt_prefs.c:1116
+#: ../globaltime/gt_prefs.c:1181
 msgid "Clock sizes vary"
 msgstr "Ukuran jam beragam"
 
-#: ../globaltime/gt_prefs.c:1122
+#: ../globaltime/gt_prefs.c:1187
 msgid "Local timezone:"
 msgstr "Zona waktu lokal:"
 
-#: ../globaltime/timezone_selection.c:101
-#: ../panel-plugin/timezone_selection.c:102 ../src/timezone_selection.c:102
+#: ../globaltime/timezone_selection.c:98
+#: ../panel-plugin/timezone_selection.c:97 ../src/timezone_selection.c:99
 msgid " Other"
 msgstr " Lainnya"
 
-#: ../globaltime/timezone_selection.c:156
-#: ../panel-plugin/timezone_selection.c:157 ../src/timezone_selection.c:168
+#: ../globaltime/timezone_selection.c:153
+#: ../panel-plugin/timezone_selection.c:152 ../src/timezone_selection.c:165
 #, c-format
 msgid "%d hour %d mins"
 msgstr "%d jam %d menit"
 
-#: ../globaltime/timezone_selection.c:159
-#: ../panel-plugin/timezone_selection.c:160 ../src/timezone_selection.c:171
+#: ../globaltime/timezone_selection.c:156
+#: ../panel-plugin/timezone_selection.c:155 ../src/timezone_selection.c:168
 #, c-format
 msgid "%d hour"
 msgstr "%d jam"
 
-#: ../globaltime/timezone_selection.c:161
-#: ../panel-plugin/timezone_selection.c:162 ../src/timezone_selection.c:173
+#: ../globaltime/timezone_selection.c:158
+#: ../panel-plugin/timezone_selection.c:157 ../src/timezone_selection.c:170
 #, c-format
 msgid "%d mins"
 msgstr "%d menit"
 
-#: ../globaltime/timezone_selection.c:167
-#: ../panel-plugin/timezone_selection.c:168 ../src/timezone_selection.c:179
+#: ../globaltime/timezone_selection.c:164
+#: ../panel-plugin/timezone_selection.c:163 ../src/timezone_selection.c:176
 msgid "backward"
 msgstr "mundur"
 
-#: ../globaltime/timezone_selection.c:170
-#: ../panel-plugin/timezone_selection.c:171 ../src/timezone_selection.c:182
+#: ../globaltime/timezone_selection.c:167
+#: ../panel-plugin/timezone_selection.c:166 ../src/timezone_selection.c:179
 msgid "forward"
 msgstr "maju"
 
-#: ../globaltime/timezone_selection.c:194
-#: ../panel-plugin/timezone_selection.c:195 ../src/timezone_selection.c:206
+#: ../globaltime/timezone_selection.c:191
+#: ../panel-plugin/timezone_selection.c:190 ../src/timezone_selection.c:203
 msgid "not changed"
 msgstr "tak diubah"
 
-#: ../globaltime/timezone_selection.c:195
-#: ../panel-plugin/timezone_selection.c:196 ../src/timezone_selection.c:207
+#: ../globaltime/timezone_selection.c:192
+#: ../panel-plugin/timezone_selection.c:191 ../src/timezone_selection.c:204
 msgid "not changing"
 msgstr "tak mengubah"
 
 #. location
-#: ../globaltime/timezone_selection.c:247
-#: ../globaltime/timezone_selection.c:252
-#: ../panel-plugin/timezone_selection.c:248
-#: ../panel-plugin/timezone_selection.c:253 ../src/appointment.c:2776
-#: ../src/timezone_selection.c:259 ../src/timezone_selection.c:264
+#: ../globaltime/timezone_selection.c:244
+#: ../globaltime/timezone_selection.c:249
+#: ../panel-plugin/timezone_selection.c:243
+#: ../panel-plugin/timezone_selection.c:248 ../src/appointment.c:2847
+#: ../src/timezone_selection.c:256 ../src/timezone_selection.c:261
 msgid "Location"
 msgstr "Lokasi"
 
-#: ../globaltime/timezone_selection.c:258
-#: ../panel-plugin/timezone_selection.c:259 ../src/timezone_selection.c:270
+#: ../globaltime/timezone_selection.c:255
+#: ../panel-plugin/timezone_selection.c:254 ../src/timezone_selection.c:267
 msgid "GMT Offset"
 msgstr "Ofset GMT"
 
-#: ../globaltime/timezone_selection.c:264
-#: ../panel-plugin/timezone_selection.c:265 ../src/timezone_selection.c:276
+#: ../globaltime/timezone_selection.c:261
+#: ../panel-plugin/timezone_selection.c:260 ../src/timezone_selection.c:273
 msgid "Previous/Next Change"
 msgstr "Perubahan Sebelumnya/Berikutnya"
 
-#: ../globaltime/timezone_selection.c:269
-#: ../panel-plugin/timezone_selection.c:270 ../src/timezone_selection.c:281
+#: ../globaltime/timezone_selection.c:266
+#: ../panel-plugin/timezone_selection.c:265 ../src/timezone_selection.c:278
 msgid "Country"
 msgstr "Negara"
 
@@ -380,39 +398,39 @@ msgstr "Negara"
 #. done very seldom and we do not want to allow "floating" here.
 #. This test is ugly, but it is not worth an extra parameter.
 #. this is normal appointment
-#: ../globaltime/timezone_selection.c:299
-#: ../globaltime/timezone_selection.c:309
-#: ../panel-plugin/timezone_selection.c:300
-#: ../panel-plugin/timezone_selection.c:310 ../src/timezone_selection.c:316
-#: ../src/timezone_selection.c:325 ../src/timezone_selection.c:336
+#: ../globaltime/timezone_selection.c:300
+#: ../globaltime/timezone_selection.c:310
+#: ../panel-plugin/timezone_selection.c:296
+#: ../panel-plugin/timezone_selection.c:306 ../src/timezone_selection.c:317
+#: ../src/timezone_selection.c:326 ../src/timezone_selection.c:337
 msgid "Pick timezone"
 msgstr "Pilih zona waktu"
 
-#: ../globaltime/timezone_selection.c:302
-#: ../globaltime/timezone_selection.c:312
-#: ../panel-plugin/timezone_selection.c:303
-#: ../panel-plugin/timezone_selection.c:313 ../src/timezone_selection.c:319
-#: ../src/timezone_selection.c:328 ../src/timezone_selection.c:339
+#: ../globaltime/timezone_selection.c:303
+#: ../globaltime/timezone_selection.c:313
+#: ../panel-plugin/timezone_selection.c:299
+#: ../panel-plugin/timezone_selection.c:309 ../src/timezone_selection.c:320
+#: ../src/timezone_selection.c:329 ../src/timezone_selection.c:340
 msgid "Change mode"
 msgstr "Mode ubah"
 
-#: ../globaltime/timezone_selection.c:303
-#: ../globaltime/timezone_selection.c:313
-#: ../globaltime/timezone_selection.c:352
-#: ../panel-plugin/timezone_selection.c:304
-#: ../panel-plugin/timezone_selection.c:314
-#: ../panel-plugin/timezone_selection.c:353 ../src/timezone_selection.c:320
-#: ../src/timezone_selection.c:329 ../src/timezone_selection.c:340
-#: ../src/timezone_selection.c:379
+#: ../globaltime/timezone_selection.c:304
+#: ../globaltime/timezone_selection.c:314
+#: ../globaltime/timezone_selection.c:353
+#: ../panel-plugin/timezone_selection.c:300
+#: ../panel-plugin/timezone_selection.c:310
+#: ../panel-plugin/timezone_selection.c:350 ../src/timezone_selection.c:321
+#: ../src/timezone_selection.c:330 ../src/timezone_selection.c:341
+#: ../src/timezone_selection.c:380
 msgid "UTC"
 msgstr "UTC"
 
 #. NOTE: this exists only if ical timezones are being used
-#: ../globaltime/timezone_selection.c:304
-#: ../globaltime/timezone_selection.c:357
-#: ../panel-plugin/timezone_selection.c:305
-#: ../panel-plugin/timezone_selection.c:358 ../src/timezone_selection.c:330
-#: ../src/timezone_selection.c:384
+#: ../globaltime/timezone_selection.c:305
+#: ../globaltime/timezone_selection.c:358
+#: ../panel-plugin/timezone_selection.c:301
+#: ../panel-plugin/timezone_selection.c:355 ../src/timezone_selection.c:331
+#: ../src/timezone_selection.c:385
 msgid "floating"
 msgstr "mengambang"
 
@@ -424,100 +442,106 @@ msgstr "Waktu Global Orage"
 msgid "Show clocks from different countries"
 msgstr "Tampilkan jam dari beragam negara"
 
-#: ../globaltime/globaltime.desktop.in.h:3 ../src/tray_icon.c:500
+#: ../globaltime/globaltime.desktop.in.h:3 ../src/tray_icon.c:477
 msgid "Globaltime"
 msgstr "Waktu Global"
 
-#: ../panel-plugin/oc_config.c:239
+#: ../panel-plugin/oc_config.c:254
 msgid "No rotation"
 msgstr "Tidak ada rotasi"
 
-#: ../panel-plugin/oc_config.c:239
+#: ../panel-plugin/oc_config.c:254
 msgid "Rotate left"
 msgstr "Putar ke kiri"
 
-#: ../panel-plugin/oc_config.c:240
+#: ../panel-plugin/oc_config.c:254
 msgid "Rotate right"
 msgstr "Putar ke kanan"
 
-#: ../panel-plugin/oc_config.c:248
+#: ../panel-plugin/oc_config.c:260
 msgid "Appearance"
 msgstr "Tampilan"
 
 #. show frame
-#: ../panel-plugin/oc_config.c:257
+#: ../panel-plugin/oc_config.c:267
 msgid "Show _frame"
 msgstr "Tampilkan _bingkai"
 
 #. foreground color
-#: ../panel-plugin/oc_config.c:263
+#: ../panel-plugin/oc_config.c:273
 msgid "set foreground _color:"
 msgstr "atur warna latar _depan:"
 
 #. background color
-#: ../panel-plugin/oc_config.c:277
+#: ../panel-plugin/oc_config.c:289
 msgid "set _background color:"
 msgstr "atur warna latar _belakang:"
 
 #. clock size (=mbox size): height and width
-#: ../panel-plugin/oc_config.c:291
+#: ../panel-plugin/oc_config.c:305
 msgid "set _height:"
 msgstr "atur _tinggi:"
 
-#: ../panel-plugin/oc_config.c:301
+#: ../panel-plugin/oc_config.c:315
 msgid "Note that you can not change the height of horizontal panels"
-msgstr "Perlu dicatat bahwa anda tak dapat mengubah tinggi dari panel horizontal"
+msgstr ""
+"Perlu dicatat bahwa anda tak dapat mengubah tinggi dari panel horizontal"
 
-#: ../panel-plugin/oc_config.c:306
+#: ../panel-plugin/oc_config.c:319
 msgid "set _width:"
 msgstr "atur _lebar:"
 
-#: ../panel-plugin/oc_config.c:316
+#: ../panel-plugin/oc_config.c:329
 msgid "Note that you can not change the width of vertical panels"
 msgstr "Perlu dicatat bahwa anda tak dapat mengubah lebar dari panel vertikal"
 
-#: ../panel-plugin/oc_config.c:327
+#: ../panel-plugin/oc_config.c:339
 msgid "Show lines _vertically"
 msgstr "Tampilkan baris secara _vertikal"
 
-#: ../panel-plugin/oc_config.c:350
+#: ../panel-plugin/oc_config.c:359
 msgid "Clock Options"
 msgstr "Opsi Jam"
 
 #. timezone
-#: ../panel-plugin/oc_config.c:360
+#: ../panel-plugin/oc_config.c:371
 msgid "set timezone to:"
 msgstr "atur zona waktu ke:"
 
-#: ../panel-plugin/oc_config.c:381
+#: ../panel-plugin/oc_config.c:390
 #, c-format
 msgid "Line %d:"
 msgstr "Baris %d:"
 
-#: ../panel-plugin/oc_config.c:391
+#: ../panel-plugin/oc_config.c:400
 msgid "Enter any valid strftime function parameter."
 msgstr "Masukkan parameter fungsi strftime benar apapun."
 
 #. Tooltip hint
-#: ../panel-plugin/oc_config.c:435
+#: ../panel-plugin/oc_config.c:439
 msgid "Tooltip:"
 msgstr "Tip alat:"
 
 #. special timing for SUSPEND/HIBERNATE
-#: ../panel-plugin/oc_config.c:445
+#: ../panel-plugin/oc_config.c:449
 msgid "fix time after suspend/hibernate"
 msgstr "waktu tepat setelah suspensi/hibernasi"
 
-#: ../panel-plugin/oc_config.c:449
+#: ../panel-plugin/oc_config.c:453
 msgid ""
 "You only need this if you do short term (less than 5 hours) suspend or "
 "hibernate and your visible time does not include seconds. Under these "
 "circumstances it is possible that Orageclock shows time inaccurately unless "
 "you have this selected. (Selecting this prevents cpu and interrupt saving "
 "features from working.)"
-msgstr "Anda hanya memerlukan ini jika anda melakukan suspensi atau hibernasi jangka pendek (kurang dari 5 jam) dan waktu anda yang tampak tidak menyertakan detik. Dalam keadaan ini dimungkinkan Orageclock menampilkan waktu secara tidak akurat kecuali anda telah memilih ini. (Memilih ini mencegah cpu dan interupsi menyimpan fitur dari pekerjaan.)"
+msgstr ""
+"Anda hanya memerlukan ini jika anda melakukan suspensi atau hibernasi jangka"
+" pendek (kurang dari 5 jam) dan waktu anda yang tampak tidak menyertakan "
+"detik. Dalam keadaan ini dimungkinkan Orageclock menampilkan waktu secara "
+"tidak akurat kecuali anda telah memilih ini. (Memilih ini mencegah cpu dan "
+"interupsi menyimpan fitur dari pekerjaan.)"
 
-#: ../panel-plugin/oc_config.c:466
+#: ../panel-plugin/oc_config.c:471
 msgid ""
 "This program uses strftime function to get time.\n"
 "Use any valid code to get time in the format you prefer.\n"
@@ -527,11 +551,24 @@ msgid ""
 "\t%V = week number\t\t%Z = timezone in use\n"
 "\t%H = hours \t\t\t\t%M = minute\n"
 "\t%X = local time\t\t\t%x = local date"
-msgstr "Program ini menggunakan fungsi strftime untuk mendapatkan waktu.\nGunakan kode benar apapun untuk mendapatkan waktu dalam format yang anda inginkan.\nBeberapa kode yang umum antara lain:\n\t%A = hari kerja\t\t\t%B = bulan\n\t%c = tanggal & waktu\t\t%R = jam & menit\n\t%V = nomor minggu\t\t%Z = zona waktu yang digunakan\n\t%H = jam\t\t\t\t%M = menit\n\t%X = waktu lokal\t\t\t%x = tanggal lokal"
+msgstr ""
+"Program ini menggunakan fungsi strftime untuk mendapatkan waktu.\n"
+"Gunakan kode benar apapun untuk mendapatkan waktu dalam format yang anda inginkan.\n"
+"Beberapa kode yang umum antara lain:\n"
+"\t%A = hari kerja\t\t\t%B = bulan\n"
+"\t%c = tanggal & waktu\t\t%R = jam & menit\n"
+"\t%V = nomor minggu\t\t%Z = zona waktu yang digunakan\n"
+"\t%H = jam\t\t\t\t%M = menit\n"
+"\t%X = waktu lokal\t\t\t%x = tanggal lokal"
 
-#: ../panel-plugin/oc_config.c:491
+#: ../panel-plugin/oc_config.c:501
 msgid "Orage clock Preferences"
 msgstr "Pengaturan jam Orage"
+
+#: ../panel-plugin/oc_config.c:505 ../src/day-view.c:403
+#: ../src/event-list.c:1237 ../src/interface.c:876
+msgid "Close"
+msgstr "Tutup"
 
 #. TRANSLATORS: Use format characters from strftime(3)
 #. * to get the proper string for your locale.
@@ -541,318 +578,346 @@ msgstr "Pengaturan jam Orage"
 #. * %B  : full month name
 #. * %Y  : four digit year
 #. * %V  : ISO week number
-#: ../panel-plugin/xfce4-orageclock-plugin.c:700
+#: ../panel-plugin/xfce4-orageclock-plugin.c:722
 msgid "%A %d %B %Y/%V"
 msgstr "%A %d %B %Y/%V"
 
-#: ../src/about-xfcalendar.c:40
+#: ../src/about-xfcalendar.c:43
 msgid "Maintainer"
 msgstr "Pemelihara"
 
-#: ../src/about-xfcalendar.c:47
+#: ../src/about-xfcalendar.c:52
 msgid "Manage your time with Orage"
 msgstr "Atur waktu anda dengan Orage"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
 #. end time
-#: ../src/appointment.c:313 ../src/appointment.c:353 ../src/appointment.c:2805
+#: ../src/appointment.c:321 ../src/appointment.c:361 ../src/appointment.c:2876
 msgid "End"
 msgstr "Akhir"
 
-#: ../src/appointment.c:333
+#: ../src/appointment.c:341
 msgid "Due"
 msgstr "Tempo"
 
-#: ../src/appointment.c:493 ../src/mainbox.c:862
+#: ../src/appointment.c:501 ../src/mainbox.c:883
 msgid "Orage"
 msgstr "Orage"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
-#: ../src/appointment.c:672 ../src/interface.c:264 ../src/parameters.c:374
+#: ../src/appointment.c:688 ../src/interface.c:265 ../src/parameters.c:404
 msgid "Select a file..."
 msgstr "Pilih berkas..."
 
-#: ../src/appointment.c:680
+#: ../src/appointment.c:696
 msgid "Sound Files"
 msgstr "Berkas Suara"
 
-#: ../src/appointment.c:687 ../src/interface.c:277
+#: ../src/appointment.c:703 ../src/interface.c:278
 msgid "All Files"
 msgstr "Semua Berkas"
 
-#: ../src/appointment.c:738
+#: ../src/appointment.c:754
 msgid "The appointment information has been modified."
 msgstr "Informasi janji telah dimodifikasi."
 
-#: ../src/appointment.c:739 ../src/appointment.c:1287 ../src/event-list.c:969
+#: ../src/appointment.c:755 ../src/appointment.c:1308 ../src/event-list.c:1007
 msgid "Do you want to continue?"
 msgstr "Anda ingin melanjutkan?"
 
-#: ../src/appointment.c:740
+#: ../src/appointment.c:756
 msgid "No, do not leave"
 msgstr "Tidak, tetap di sini"
 
-#: ../src/appointment.c:741
+#: ../src/appointment.c:757
 msgid "Yes, ignore modifications and leave"
 msgstr "Ya, urungkan perubahan dan keluar"
 
-#: ../src/appointment.c:768
+#: ../src/appointment.c:785
 msgid "The end of this appointment is earlier than the beginning."
 msgstr "Akhir janji ini lebih awal dari pada awalnya."
 
-#: ../src/appointment.c:1035 ../src/appointment.c:1923
+#: ../src/appointment.c:1054 ../src/appointment.c:1945
 msgid "Not set"
 msgstr "Tak diatur"
 
-#: ../src/appointment.c:1138
+#: ../src/appointment.c:1156
 msgid "Add new appointment to this file."
 msgstr "Tambah janji baru ke berkas ini."
 
-#: ../src/appointment.c:1139 ../src/appointment.c:1188
+#: ../src/appointment.c:1157 ../src/appointment.c:1206
 msgid "Orage default file"
 msgstr "Berkas standar Orage"
 
-#: ../src/appointment.c:1225
+#: ../src/appointment.c:1243
 msgid "Appointment addition failed."
 msgstr "Penambahan janji gagal."
 
-#: ../src/appointment.c:1226
+#: ../src/appointment.c:1244
 msgid ""
 "Error happened when adding appointment. Look more details from the log file."
-msgstr "Galat terjadi ketika menambah janji. Lihat detail lebih rinci di berkas catatan."
+msgstr ""
+"Galat terjadi ketika menambah janji. Lihat detail lebih rinci di berkas "
+"catatan."
 
-#: ../src/appointment.c:1236
+#: ../src/appointment.c:1254
 msgid "Appointment update failed."
 msgstr "Pemutakhiran janji gagal."
 
-#: ../src/appointment.c:1237
+#: ../src/appointment.c:1255
 msgid ""
 "Look more details from the log file. (Perhaps file was updated external from"
 " Orage?)"
-msgstr "Lihat detail lebih rinci dari berkas catatan. (Mungkin berkas dimutakhirkan selain menggunakan Orage?)"
+msgstr ""
+"Lihat detail lebih rinci dari berkas catatan. (Mungkin berkas dimutakhirkan "
+"selain menggunakan Orage?)"
 
-#: ../src/appointment.c:1286
+#: ../src/appointment.c:1307
 msgid "This appointment will be permanently removed."
 msgstr "Perjanjian ini akan dihapus secara permanen."
 
-#: ../src/appointment.c:1288 ../src/event-list.c:970
+#: ../src/appointment.c:1309 ../src/event-list.c:1008
 msgid "No, cancel the removal"
 msgstr "Tidak, batalkan pembuangan"
 
-#: ../src/appointment.c:1289
+#: ../src/appointment.c:1310
 msgid "Yes, remove it"
 msgstr "Ya, boleh dibuang"
 
-#: ../src/appointment.c:1378 ../src/appointment.c:1393 ../src/day-view.c:457
-#: ../src/event-list.c:1028
+#: ../src/appointment.c:1402 ../src/appointment.c:1417 ../src/day-view.c:460
+#: ../src/event-list.c:1067
 msgid "Pick the date"
 msgstr "Pilih tanggal"
 
-#: ../src/appointment.c:1380 ../src/appointment.c:1395 ../src/day-view.c:386
-#: ../src/day-view.c:459 ../src/event-list.c:1030 ../src/event-list.c:1180
-#: ../src/tray_icon.c:460
+#: ../src/appointment.c:1404 ../src/appointment.c:1419 ../src/day-view.c:389
+#: ../src/day-view.c:462 ../src/event-list.c:1069 ../src/event-list.c:1223
+#: ../src/tray_icon.c:450
 msgid "Today"
 msgstr "Hari Ini"
 
-#: ../src/appointment.c:1803
+#: ../src/appointment.c:1835
 msgid "This appointment does not exist."
 msgstr "Perjanjian tersebut tidak ditemukan."
 
-#: ../src/appointment.c:1804
+#: ../src/appointment.c:1836
 msgid "It was probably removed, please refresh your screen."
 msgstr "Janji mungkin telah dihapus, tolong segarkan layar anda."
 
-#: ../src/appointment.c:2105
+#: ../src/appointment.c:2113 ../src/interface.c:672
+msgid "_Remove"
+msgstr "_Buang"
+
+#: ../src/appointment.c:2139
 msgid "Current categories"
 msgstr "Kategori saat ini"
 
-#: ../src/appointment.c:2120
+#: ../src/appointment.c:2161
 msgid "Add new category with color"
 msgstr "Tambah kategori baru dengan warna"
 
-#: ../src/appointment.c:2124
+#: ../src/appointment.c:2172
 msgid "Category:"
 msgstr "Kategori:"
 
-#: ../src/appointment.c:2155
+#: ../src/appointment.c:2188 ../src/interface.c:1451
+msgid "_Add"
+msgstr "T_ambah"
+
+#: ../src/appointment.c:2217
 msgid "Colors of categories - Orage"
 msgstr "Warna kategori - Orage"
 
-#: ../src/appointment.c:2201
+#: ../src/appointment.c:2263
 msgid " *** COPY ***"
 msgstr " *** SALIN ***"
 
-#: ../src/appointment.c:2466
+#: ../src/appointment.c:2531
 msgid "New appointment - Orage"
 msgstr "Janji baru - Orage"
 
 #. File menu stuff
 #. ********* File menu *********
 #. File menu
-#: ../src/appointment.c:2496 ../src/day-view.c:279 ../src/event-list.c:1081
-#: ../src/interface.c:813 ../src/mainbox.c:297
+#: ../src/appointment.c:2559 ../src/day-view.c:283 ../src/event-list.c:1124
+#: ../src/interface.c:857 ../src/mainbox.c:316
 msgid "_File"
 msgstr "_Berkas"
 
-#: ../src/appointment.c:2502
+#: ../src/appointment.c:2565
 msgid "Sav_e and close"
 msgstr "S_impan dan tutup"
 
-#: ../src/appointment.c:2515 ../src/event-list.c:1087
+#: ../src/appointment.c:2578 ../src/event-list.c:1130
 msgid "D_uplicate"
 msgstr "D_uplikat"
 
-#: ../src/appointment.c:2702
+#: ../src/appointment.c:2768
 msgid "Save"
 msgstr "Simpan"
 
-#: ../src/appointment.c:2704
+#: ../src/appointment.c:2770
 msgid "Save and close"
 msgstr "Simpan dan tutup"
 
-#: ../src/appointment.c:2709
+#: ../src/appointment.c:2775
 msgid "Revert"
 msgstr "Kembalikan"
 
-#: ../src/appointment.c:2711 ../src/event-list.c:1171
+#: ../src/appointment.c:2777 ../src/event-list.c:1214
 msgid "Duplicate"
 msgstr "Duplikat"
 
-#: ../src/appointment.c:2716 ../src/event-list.c:1173
+#: ../src/appointment.c:2782 ../src/event-list.c:1216
 msgid "Delete"
 msgstr "Hapus"
 
-#: ../src/appointment.c:2734
+#: ../src/appointment.c:2800
 msgid "Free"
 msgstr "Bebas"
 
-#: ../src/appointment.c:2734
+#: ../src/appointment.c:2800
 msgid "Busy"
 msgstr "Sibuk"
 
-#: ../src/appointment.c:2738
+#: ../src/appointment.c:2804
 msgid "General"
 msgstr "Umum"
 
 #. type
-#: ../src/appointment.c:2744
+#: ../src/appointment.c:2810
 msgid "Type "
 msgstr "Tipe"
 
-#: ../src/appointment.c:2746 ../src/event-list.c:1226
+#: ../src/appointment.c:2812 ../src/event-list.c:1269
 msgid "Event"
 msgstr "Even"
 
-#: ../src/appointment.c:2749
+#: ../src/appointment.c:2817
 msgid ""
 "Event that will happen sometime. For example:\n"
 "Meeting or birthday or TV show."
-msgstr "Even yang suatu waktu mungkin terjadi. Misalnya:\nRapat atau ulang tahun atau acara TV."
+msgstr ""
+"Even yang suatu waktu mungkin terjadi. Misalnya:\n"
+"Rapat atau ulang tahun atau acara TV."
 
-#: ../src/appointment.c:2752 ../src/event-list.c:1274
+#: ../src/appointment.c:2820 ../src/event-list.c:1328
 msgid "Todo"
 msgstr "Untuk dikerjakan"
 
-#: ../src/appointment.c:2755
+#: ../src/appointment.c:2825
 msgid ""
 "Something that you should do sometime. For example:\n"
 "Wash your car or test new version of Orage."
-msgstr "Sesuatu yang harus anda lakukan suatu waktu. Misalnya:\nCuci mobil anda atau tes versi baru Orage."
+msgstr ""
+"Sesuatu yang harus anda lakukan suatu waktu. Misalnya:\n"
+"Cuci mobil anda atau tes versi baru Orage."
 
-#: ../src/appointment.c:2758 ../src/event-list.c:1287
+#: ../src/appointment.c:2828 ../src/event-list.c:1341
 msgid "Journal"
 msgstr "Jurnal"
 
-#: ../src/appointment.c:2762
+#: ../src/appointment.c:2833
 msgid ""
 "Make a note that something happened. For example:\n"
 "Remark that your mother called or first snow came."
-msgstr "Buat catatan tentang sesuatu yang terjadi. Misalnya:\nCatat kapan ibu anda menelepon atau turun salju pertama."
+msgstr ""
+"Buat catatan tentang sesuatu yang terjadi. Misalnya:\n"
+"Catat kapan ibu anda menelepon atau turun salju pertama."
 
 #. title
-#: ../src/appointment.c:2769
+#: ../src/appointment.c:2840
 msgid "Title "
 msgstr "Judul"
 
-#: ../src/appointment.c:2784
+#: ../src/appointment.c:2855
 msgid "All day event"
 msgstr "Even sepanjang hari"
 
 #. start time
-#: ../src/appointment.c:2790 ../src/appointment.c:3453 ../src/day-view.c:801
+#: ../src/appointment.c:2861 ../src/appointment.c:3580 ../src/day-view.c:806
 msgid "Start"
 msgstr "Mulai"
 
-#: ../src/appointment.c:2810
+#: ../src/appointment.c:2881
 msgid "Set      "
 msgstr "Atur      "
 
-#: ../src/appointment.c:2831
+#: ../src/appointment.c:2904
 msgid "Duration"
 msgstr "Durasi"
 
-#: ../src/appointment.c:2835 ../src/appointment.c:3027 ../src/reminder.c:758
+#: ../src/appointment.c:2908 ../src/appointment.c:3115 ../src/reminder.c:764
 msgid "days"
 msgstr "hari"
 
-#: ../src/appointment.c:2837 ../src/appointment.c:3029 ../src/reminder.c:760
+#: ../src/appointment.c:2910 ../src/appointment.c:3117 ../src/reminder.c:766
 msgid "hours"
 msgstr "jam"
 
-#: ../src/appointment.c:2839 ../src/appointment.c:3031 ../src/reminder.c:762
+#: ../src/appointment.c:2912 ../src/appointment.c:3119 ../src/reminder.c:768
 msgid "mins"
 msgstr "menit"
 
 #. Availability (only for EVENT)
-#: ../src/appointment.c:2851
+#: ../src/appointment.c:2924
 msgid "Availability"
 msgstr "Ketersediaan"
 
 #. completed (only for TODO)
-#: ../src/appointment.c:2859 ../src/appointment.c:3459
+#: ../src/appointment.c:2932 ../src/appointment.c:3589
 msgid "Completed"
 msgstr "Terselesaikan"
 
-#: ../src/appointment.c:2862
+#: ../src/appointment.c:2935
 msgid "Done"
 msgstr "Selesai"
 
 #. categories
-#: ../src/appointment.c:2883
+#: ../src/appointment.c:2960
 msgid "Categories"
 msgstr "Kategori"
 
-#: ../src/appointment.c:2895
+#: ../src/appointment.c:2978
 msgid ""
 "This is special category, which can be used to color this appointment in "
 "list views."
-msgstr "Ini adalah kategori spesial, yang dapat digunakan untuk mewarnai janji ini di tampilan senarai."
+msgstr ""
+"Ini adalah kategori spesial, yang dapat digunakan untuk mewarnai janji ini "
+"di tampilan senarai."
 
-#: ../src/appointment.c:2900
+#: ../src/appointment.c:2979
+msgid "_Colour"
+msgstr ""
+
+#: ../src/appointment.c:2984
 msgid "update colors for categories."
 msgstr "mutakhirkan warna untuk kategori."
 
 #. priority
-#: ../src/appointment.c:2906
+#: ../src/appointment.c:2990
 msgid "Priority"
 msgstr "Prioritas"
 
-#: ../src/appointment.c:2910
+#: ../src/appointment.c:2994
 msgid ""
 "If you set this 8 or bigger, the appointment is NOT shown on list windows.\n"
 "You can use that feature to unclutter your list windows, but it makes it more difficult to find this appointment.\n"
 "(Alarms will still fire normally.)\n"
 "(There is undocumented parameter so that you can change the default limit of 8.)"
-msgstr "Jika anda mengatur ini 8 atau lebih besar, janji TIDAK ditampilkan di daftar jendela.\nAnda dapat menggunakan fitur tersebut untuk merapikan daftar jendela, tapi membuatnya susah menemukan janji ini.\n(Alarm tetap akan berbunyi normalnya.)\n(Ada parameter yang tidak didokumentasikan sehingga anda dapat mengubah batas standar 8.)"
+msgstr ""
+"Jika anda mengatur ini 8 atau lebih besar, janji TIDAK ditampilkan di daftar jendela.\n"
+"Anda dapat menggunakan fitur tersebut untuk merapikan daftar jendela, tapi membuatnya susah menemukan janji ini.\n"
+"(Alarm tetap akan berbunyi normalnya.)\n"
+"(Ada parameter yang tidak didokumentasikan sehingga anda dapat mengubah batas standar 8.)"
 
 #. note
-#: ../src/appointment.c:2918
+#: ../src/appointment.c:3003
 msgid "Note"
 msgstr "Catatan"
 
-#: ../src/appointment.c:2939
+#: ../src/appointment.c:3024
 msgid ""
 "These shorthand commands take effect immediately:\n"
 "    <D> inserts current date in local date format\n"
@@ -862,123 +927,137 @@ msgid ""
 "These are converted only later when they are seen:\n"
 "    <&Ynnnn> is translated to current year minus nnnn.\n"
 "(This can be used for example in birthday reminders to tell how old the person will be.)"
-msgstr "Perintah jalan pintas ini akan langsung mempunyai efek:\n    <D> masukkan tanggal saat ini dalam format tanggal lokal\n    <T> masukkan waktu dan\n    <DT> masukkan tanggal dan waktu.\n\nIni hanya akan dikonversi nanti ketika terlihat:\n    <&Ynnnn> diterjemahkan ke tahun saat ini minus nnnn.\n(Ini dapat digunakan sebagai contoh dalam pengingat ulang tahun untuk memberitahu seberapa tua seseorang nantinya.)"
+msgstr ""
+"Perintah jalan pintas ini akan langsung mempunyai efek:\n"
+"    <D> masukkan tanggal saat ini dalam format tanggal lokal\n"
+"    <T> masukkan waktu dan\n"
+"    <DT> masukkan tanggal dan waktu.\n"
+"\n"
+"Ini hanya akan dikonversi nanti ketika terlihat:\n"
+"    <&Ynnnn> diterjemahkan ke tahun saat ini minus nnnn.\n"
+"(Ini dapat digunakan sebagai contoh dalam pengingat ulang tahun untuk memberitahu seberapa tua seseorang nantinya.)"
 
-#: ../src/appointment.c:3010
+#: ../src/appointment.c:3097
 msgid "Before Start"
 msgstr "Sebelum Mulai"
 
-#: ../src/appointment.c:3010
+#: ../src/appointment.c:3097
 msgid "Before End"
 msgstr "Sebelum Akhir"
 
-#: ../src/appointment.c:3011
+#: ../src/appointment.c:3098
 msgid "After Start"
 msgstr "Setelah Mulai"
 
-#: ../src/appointment.c:3011
+#: ../src/appointment.c:3098
 msgid "After End"
 msgstr "Setelah Akhir"
 
-#: ../src/appointment.c:3018
+#: ../src/appointment.c:3106
 msgid "Alarm"
 msgstr "Alarm"
 
 #. **** ALARM TIME ****
-#: ../src/appointment.c:3024
+#: ../src/appointment.c:3112
 msgid "Alarm time"
 msgstr "Waktu alarm"
 
-#: ../src/appointment.c:3048
+#: ../src/appointment.c:3137
 msgid ""
 "Often you want to get alarm:\n"
 " 1) before Event start\n"
 " 2) before Todo end\n"
 " 3) after Todo start"
-msgstr "Anda sering menginginkan alarm:\n 1) sebelum Even dimulai\n 2) sebelum Untuk Dikerjakan selesai\n 3) setelah Untuk Dikerjakan mulai"
+msgstr ""
+"Anda sering menginginkan alarm:\n"
+" 1) sebelum Even dimulai\n"
+" 2) sebelum Untuk Dikerjakan selesai\n"
+" 3) setelah Untuk Dikerjakan mulai"
 
-#: ../src/appointment.c:3053
+#: ../src/appointment.c:3142
 msgid "Persistent alarm"
 msgstr "Alarm persisten"
 
-#: ../src/appointment.c:3055
+#: ../src/appointment.c:3147
 msgid ""
 "Select this if you want Orage to remind you even if it has not been active "
 "when the alarm happened."
-msgstr "Pilih ini jika anda ingin Orage untuk mengingatkan anda bahkan ketika pengaturan ini belum diaktifkan ketika alarm berbunyi."
+msgstr ""
+"Pilih ini jika anda ingin Orage untuk mengingatkan anda bahkan ketika "
+"pengaturan ini belum diaktifkan ketika alarm berbunyi."
 
 #. **** Audio Alarm ****
-#: ../src/appointment.c:3064
+#: ../src/appointment.c:3156
 msgid "Sound"
 msgstr "Suara"
 
-#: ../src/appointment.c:3068 ../src/appointment.c:3188
+#: ../src/appointment.c:3160 ../src/appointment.c:3293
 msgid "Use"
 msgstr "Gunakan"
 
-#: ../src/appointment.c:3070
+#: ../src/appointment.c:3162
 msgid "Select this if you want audible alarm"
 msgstr "Pilih ini jika anda ingin alarm yang dapat didengar"
 
-#: ../src/appointment.c:3087
+#: ../src/appointment.c:3188
 msgid "Repeat alarm sound"
 msgstr "Ulang suara alarm"
 
-#: ../src/appointment.c:3103 ../src/appointment.c:3402
+#: ../src/appointment.c:3203 ../src/appointment.c:3512
 msgid "times"
 msgstr "waktu"
 
-#: ../src/appointment.c:3119
+#: ../src/appointment.c:3219
 msgid "sec interval"
 msgstr "detik interval"
 
 #. **** Display Alarm ****
-#: ../src/appointment.c:3129
+#: ../src/appointment.c:3229
 msgid "Visual"
 msgstr "Visual"
 
-#: ../src/appointment.c:3133
+#: ../src/appointment.c:3233
 msgid "Use Orage window"
 msgstr "Gunakan jendela Orage"
 
-#: ../src/appointment.c:3135
+#: ../src/appointment.c:3235
 msgid "Select this if you want Orage window alarm"
 msgstr "Pilih ini jika anda ingin alarm jendela Orage"
 
-#: ../src/appointment.c:3147
+#: ../src/appointment.c:3247
 msgid "Use notification"
 msgstr "Gunakan pemberitahuan"
 
-#: ../src/appointment.c:3149
+#: ../src/appointment.c:3249
 msgid "Select this if you want notification alarm"
 msgstr "Pilih ini jika anda ingin alarm pemberitahuan"
 
-#: ../src/appointment.c:3155
+#: ../src/appointment.c:3257
 msgid "Set timeout"
 msgstr "Atur waktu habis"
 
-#: ../src/appointment.c:3157
+#: ../src/appointment.c:3259
 msgid "Select this if you want notification to expire automatically"
 msgstr "Pilih ini jika anda ingin pemberitahuan untuk otomatis kadaluarsa"
 
-#: ../src/appointment.c:3168
+#: ../src/appointment.c:3270
 msgid "0 = system default expiration time"
 msgstr "0 = waktu kadaluarsa standar sistem"
 
-#: ../src/appointment.c:3173
+#: ../src/appointment.c:3278
 msgid "seconds"
 msgstr "detik"
 
 #. **** Procedure Alarm ****
-#: ../src/appointment.c:3184
+#: ../src/appointment.c:3289
 msgid "Procedure"
 msgstr "Prosedur"
 
-#: ../src/appointment.c:3190
+#: ../src/appointment.c:3295
 msgid "Select this if you want procedure or script alarm"
 msgstr "Pilih ini jika anda ingin prosedur atau skrip alarm"
 
-#: ../src/appointment.c:3196
+#: ../src/appointment.c:3305
 msgid ""
 "You must enter all escape etc characters yourself.\n"
 "This string is just given to shell to process.\n"
@@ -988,146 +1067,173 @@ msgid ""
 "\t<&AT> alarm time\n"
 "\t<&ST> appointment start time\n"
 "\t<&ET> appointment end time"
-msgstr "Anda harus memasukkan semua karakter keluar dll sendiri.\nTali ini hanya diberikan ke shell untuk diproses.\nPerintah khusus berikut diganti saat waktu berjalan:\n\t<&T> judul janji\n\t<&D> deskripsi janji\n\t<&AT> waktu alarm\n\t<&ST> waktu mulai janji\n\t<&ET> waktu akhir janji"
+msgstr ""
+"Anda harus memasukkan semua karakter keluar dll sendiri.\n"
+"Tali ini hanya diberikan ke shell untuk diproses.\n"
+"Perintah khusus berikut diganti saat waktu berjalan:\n"
+"\t<&T> judul janji\n"
+"\t<&D> deskripsi janji\n"
+"\t<&AT> waktu alarm\n"
+"\t<&ST> waktu mulai janji\n"
+"\t<&ET> waktu akhir janji"
 
-#: ../src/appointment.c:3208
+#: ../src/appointment.c:3319 ../src/interface.c:1181 ../src/interface.c:1203
+msgid "_Execute"
+msgstr ""
+
+#: ../src/appointment.c:3321
 msgid "Test this alarm by raising it now"
 msgstr "Tes alarm ini dengan menaikkannya sekarang"
 
-#: ../src/appointment.c:3215
+#: ../src/appointment.c:3334
 msgid "<b>Default alarm</b>"
 msgstr "<b>Alarm standar</b>"
 
-#: ../src/appointment.c:3223
+#: ../src/appointment.c:3340 ../src/interface.c:1054 ../src/interface.c:1100
+#: ../src/interface.c:1275 ../src/interface.c:1367
+msgid "_Save"
+msgstr "_Simpan"
+
+#: ../src/appointment.c:3348
 msgid "Store current settings as default alarm"
 msgstr "Simpan pengaturan saat ini sebagai alarm standar"
 
-#: ../src/appointment.c:3228
+#: ../src/appointment.c:3350
+msgid "_Revert"
+msgstr "_Kembalikan"
+
+#: ../src/appointment.c:3358
 msgid "Set current settings from default alarm"
 msgstr "Atur pengaturan saat ini dari alarm standar"
 
-#: ../src/appointment.c:3290
+#: ../src/appointment.c:3424
 msgid "Daily"
 msgstr "Harian"
 
-#: ../src/appointment.c:3290
+#: ../src/appointment.c:3424
 msgid "Weekly"
 msgstr "Mingguan"
 
-#: ../src/appointment.c:3290
+#: ../src/appointment.c:3424
 msgid "Monthly"
 msgstr "Bulanan"
 
-#: ../src/appointment.c:3290
+#: ../src/appointment.c:3424
 msgid "Yearly"
 msgstr "Tahunan"
 
-#: ../src/appointment.c:3290
+#: ../src/appointment.c:3424
 msgid "Hourly"
 msgstr "Setiap Jam"
 
-#: ../src/appointment.c:3292
+#: ../src/appointment.c:3426
 msgid "Mon"
 msgstr "Sen"
 
-#: ../src/appointment.c:3292
+#: ../src/appointment.c:3426
 msgid "Tue"
 msgstr "Sel"
 
-#: ../src/appointment.c:3292
+#: ../src/appointment.c:3426
 msgid "Wed"
 msgstr "Rab"
 
-#: ../src/appointment.c:3292
+#: ../src/appointment.c:3426
 msgid "Thu"
 msgstr "Kam"
 
-#: ../src/appointment.c:3292
+#: ../src/appointment.c:3426
 msgid "Fri"
 msgstr "Jum"
 
-#: ../src/appointment.c:3292
+#: ../src/appointment.c:3426
 msgid "Sat"
 msgstr "Sab"
 
-#: ../src/appointment.c:3292
+#: ../src/appointment.c:3426
 msgid "Sun"
 msgstr "Ahd"
 
-#: ../src/appointment.c:3297
+#: ../src/appointment.c:3431
 msgid "Recurrence"
 msgstr "Pengulangan"
 
 #. complexity
-#: ../src/appointment.c:3303
+#: ../src/appointment.c:3437
 msgid "Complexity"
 msgstr "Kompleksitas"
 
-#: ../src/appointment.c:3306
+#: ../src/appointment.c:3440
 msgid "Basic"
 msgstr "Dasar"
 
-#: ../src/appointment.c:3312
+#: ../src/appointment.c:3447
 msgid "Advanced"
 msgstr "Tingkat lanjut"
 
-#: ../src/appointment.c:3316
+#: ../src/appointment.c:3453
 msgid "Use this if you want regular repeating event"
 msgstr "Gunakan ini jika anda ingin even berulang reguler"
 
-#: ../src/appointment.c:3318
+#: ../src/appointment.c:3455
 msgid ""
 "Use this if you need complex times like:\n"
 " Every Saturday and Sunday or \n"
 " First Tuesday every month"
-msgstr "Gunakan ini jika anda butuh waktu kompleks seperti:\n Setiap Sabtu dan Minggu atau \n Selasa pertama setiap bulan"
+msgstr ""
+"Gunakan ini jika anda butuh waktu kompleks seperti:\n"
+" Setiap Sabtu dan Minggu atau \n"
+" Selasa pertama setiap bulan"
 
 #. frequency
-#: ../src/appointment.c:3324
+#: ../src/appointment.c:3461
 msgid "Frequency"
 msgstr "Frekuensi"
 
-#: ../src/appointment.c:3330
+#: ../src/appointment.c:3468
 msgid "Each"
 msgstr "Tiap"
 
-#: ../src/appointment.c:3337
+#: ../src/appointment.c:3479
 msgid "occurrence"
 msgstr "kejadian"
 
-#: ../src/appointment.c:3341
+#: ../src/appointment.c:3486
 msgid ""
 "Limit frequency to certain interval.\n"
 " For example: Every third day:\n"
 " Frequency = Daily and Interval = 3"
-msgstr "Batas frekuensi untuk interval tertentu.\n Misalnya: Tiap hari ketiga:\n Frekuensi = Harian dan Interval = 3"
+msgstr ""
+"Batas frekuensi untuk interval tertentu.\n"
+" Misalnya: Tiap hari ketiga:\n"
+" Frekuensi = Harian dan Interval = 3"
 
-#: ../src/appointment.c:3386
+#: ../src/appointment.c:3493
 msgid "Limit"
 msgstr "Batas"
 
-#: ../src/appointment.c:3388
+#: ../src/appointment.c:3495
 msgid "Repeat forever"
 msgstr "Ulang selamanya"
 
-#: ../src/appointment.c:3394
+#: ../src/appointment.c:3502
 msgid "Repeat "
 msgstr "Ulang"
 
-#: ../src/appointment.c:3410
+#: ../src/appointment.c:3526
 msgid "Repeat until "
 msgstr "Ulang sampai"
 
 #. weekdays (only for complex settings)
-#: ../src/appointment.c:3423
+#: ../src/appointment.c:3542
 msgid "Weekdays"
 msgstr "Hari kerja"
 
-#: ../src/appointment.c:3435
+#: ../src/appointment.c:3559
 msgid "Which day"
 msgstr "Hari apa"
 
-#: ../src/appointment.c:3443
+#: ../src/appointment.c:3570
 msgid ""
 "Specify which weekday for monthly and yearly events.\n"
 " For example:\n"
@@ -1135,200 +1241,222 @@ msgid ""
 "\tFrequency = Monthly,\n"
 "\tWeekdays = check only Wednesday,\n"
 "\tWhich day = select 2 from the number below Wednesday"
-msgstr "Tentukan hari kerja apa untuk even bulanan dan tahunan.\n Misalnya:\n Rabu kedua tiap bulan:\n\tFrekuensi = Bulanan,\n\tHari kerja = hanya cek Rabu,\n\tHari apa = pilih 2 dari nomor di bawah Rabu"
+msgstr ""
+"Tentukan hari kerja apa untuk even bulanan dan tahunan.\n"
+" Misalnya:\n"
+" Rabu kedua tiap bulan:\n"
+"\tFrekuensi = Bulanan,\n"
+"\tHari kerja = hanya cek Rabu,\n"
+"\tHari apa = pilih 2 dari nomor di bawah Rabu"
 
 #. TODO base (only for TODOs)
-#: ../src/appointment.c:3450
+#: ../src/appointment.c:3577
 msgid "TODO base"
 msgstr "Dasar TODO"
 
-#: ../src/appointment.c:3463
+#: ../src/appointment.c:3596
 msgid ""
 "TODO reoccurs regularly starting on start time and repeating after each "
 "interval no matter when it was last completed"
-msgstr "TODO rutin terjadi kembali dimulai sejak waktu mulai dan mengulanginya setelah tiap interval tidak perduli kapan terakhir selesainya"
+msgstr ""
+"TODO rutin terjadi kembali dimulai sejak waktu mulai dan mengulanginya "
+"setelah tiap interval tidak perduli kapan terakhir selesainya"
 
-#: ../src/appointment.c:3465
+#: ../src/appointment.c:3598
 msgid ""
 "TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
-msgstr "TODO terjadi kembali didasarkan atas waktu lengkap dan pengulangan setelah interval dihitung dari waktu yang terakhir diselesaikan.\n(Perlu dicatat bahwa anda tidak dapat memberitahu apapun tentang riwayat TODO karena terjadi kembali berubah tiap kali selesai.)"
+msgstr ""
+"TODO terjadi kembali didasarkan atas waktu lengkap dan pengulangan setelah interval dihitung dari waktu yang terakhir diselesaikan.\n"
+"(Perlu dicatat bahwa anda tidak dapat memberitahu apapun tentang riwayat TODO karena terjadi kembali berubah tiap kali selesai.)"
 
 #. exceptions
-#: ../src/appointment.c:3471
+#: ../src/appointment.c:3604
 msgid "Exceptions"
 msgstr "Pengecualian"
 
-#: ../src/appointment.c:3484
+#: ../src/appointment.c:3630
 msgid ""
 "Add more exception dates by clicking the calendar days below.\n"
 "Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
 "Remove by clicking the data."
-msgstr "Tambah beberapa tanggal pengecualian dengan klik hari kalender di bawah.\n Pengecualian adalah baik pengecualian(-) atau penyertaan(+) tergantung dari pemilihan.\nHapus dengan klik pada data."
+msgstr ""
+"Tambah beberapa tanggal pengecualian dengan klik hari kalender di bawah.\n"
+" Pengecualian adalah baik pengecualian(-) atau penyertaan(+) tergantung dari pemilihan.\n"
+"Hapus dengan klik pada data."
 
-#: ../src/appointment.c:3489
+#: ../src/appointment.c:3641
 msgid "Add excluded date (-)"
 msgstr "Tambah tanggal dikecualikan (-)"
 
-#: ../src/appointment.c:3491
+#: ../src/appointment.c:3643
 msgid "Excluded days are full days where this appointment is not happening"
 msgstr "Hari dikecualikan adalah hari penuh tempat janji ini tidak terjadi"
 
-#: ../src/appointment.c:3497
+#: ../src/appointment.c:3650
 msgid "Add included time (+)"
 msgstr "Tambah waktu disertakan (+)"
 
-#: ../src/appointment.c:3499
+#: ../src/appointment.c:3652
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time"
-msgstr "Waktu disertakan memiliki zona waktu yang sama dengan waktu mulai, tapi mungkin memiliki waktu yang berbeda"
+msgstr ""
+"Waktu disertakan memiliki zona waktu yang sama dengan waktu mulai, tapi "
+"mungkin memiliki waktu yang berbeda"
 
 #. calendars showing the action days
-#: ../src/appointment.c:3516
+#: ../src/appointment.c:3671
 msgid "Action dates"
 msgstr "Tanggal aksi"
 
 #. ********* View menu *********
 #. View menu
-#: ../src/day-view.c:289 ../src/event-list.c:1104 ../src/mainbox.c:323
+#: ../src/day-view.c:293 ../src/event-list.c:1147 ../src/mainbox.c:342
 msgid "_View"
 msgstr "_Tampilan"
 
 #. ********* Go menu   *********
-#: ../src/day-view.c:303 ../src/event-list.c:1123
+#: ../src/day-view.c:307 ../src/event-list.c:1166
 msgid "_Go"
 msgstr "_Ke"
 
-#: ../src/day-view.c:377 ../src/event-list.c:1169
+#: ../src/day-view.c:380 ../src/event-list.c:1212
 msgid "New"
 msgstr "Baru"
 
-#: ../src/day-view.c:382
+#: ../src/day-view.c:385
 msgid "Back one week"
 msgstr "Mundur satu minggu"
 
-#: ../src/day-view.c:384
+#: ../src/day-view.c:387
 msgid "Back one day"
 msgstr "Mundur satu hari"
 
-#: ../src/day-view.c:388
+#: ../src/day-view.c:391
 msgid "Forward one day"
 msgstr "Maju satu hari"
 
-#: ../src/day-view.c:390
+#: ../src/day-view.c:393
 msgid "Forward one week"
 msgstr "Maju satu minggu"
 
-#: ../src/day-view.c:395 ../src/event-list.c:1187
+#: ../src/day-view.c:398 ../src/event-list.c:1230
 msgid "Refresh"
 msgstr "Segarkan"
 
-#: ../src/day-view.c:400 ../src/event-list.c:1194 ../src/interface.c:834
-msgid "Close"
-msgstr "Tutup"
+#: ../src/day-view.c:462
+msgid "_OK"
+msgstr "_OK"
 
-#: ../src/day-view.c:549
+#: ../src/day-view.c:568
 msgid "Unknown"
 msgstr "Tak diketahui"
 
-#: ../src/day-view.c:807
+#: ../src/day-view.c:815
 msgid "       Number of days to show"
 msgstr "       Jumlah hari untuk ditampilkan"
 
-#: ../src/day-view.c:1073
+#: ../src/day-view.c:1045
 msgid "Orage - day view"
 msgstr "Orage - tampilan hari"
 
 #. date only appointment
-#: ../src/event-list.c:191
+#: ../src/event-list.c:193
 msgid "All day"
 msgstr "Semua hari"
 
-#: ../src/event-list.c:596 ../src/event-list.c:1370
+#: ../src/event-list.c:608 ../src/event-list.c:1432
 msgid "Time"
 msgstr "Waktu"
 
-#: ../src/event-list.c:784
+#: ../src/event-list.c:809
 msgid "No rows have been selected."
 msgstr "Tak ada baris dipilih."
 
-#: ../src/event-list.c:785
+#: ../src/event-list.c:810
 msgid "Click a row to select it and after that you can copy it."
 msgstr "Pilih baris untuk memilih dan setelah itu anda dapat menyalinnya."
 
-#: ../src/event-list.c:968
+#: ../src/event-list.c:1006
 msgid ""
 "You will permanently remove all\n"
 "selected appointments."
-msgstr "Anda akan menghapus permanen\nsemua janji terpilih."
+msgstr ""
+"Anda akan menghapus permanen\n"
+"semua janji terpilih."
 
-#: ../src/event-list.c:971
+#: ../src/event-list.c:1009
 msgid "Yes, remove them"
 msgstr "Ya, boleh dibuang"
 
-#: ../src/event-list.c:1178
+#: ../src/event-list.c:1221
 msgid "Back"
 msgstr "Kembali"
 
-#: ../src/event-list.c:1182
+#: ../src/event-list.c:1225
 msgid "Forward"
 msgstr "Maju"
 
-#: ../src/event-list.c:1189
+#: ../src/event-list.c:1232
 msgid "Find"
 msgstr "Cari"
 
-#: ../src/event-list.c:1196
+#: ../src/event-list.c:1239
 msgid "Dayview"
 msgstr "Tampilan hari"
 
-#: ../src/event-list.c:1231
+#: ../src/event-list.c:1274
 msgid "Extra days to show:"
 msgstr "Hari ekstra untuk ditampilkan:"
 
-#: ../src/event-list.c:1240
+#: ../src/event-list.c:1288
 msgid "only first repeating"
 msgstr "hanya pengulangan pertama"
 
-#: ../src/event-list.c:1245
+#: ../src/event-list.c:1296
 msgid ""
 "Check this if you only want to see the first repeating event. By default all are shown.\n"
 "Note that this also shows all urgencies.\n"
 "Note that repeating events may appear earlier in the list as the first occurrence only is listed."
-msgstr "Centang ini jika anda hanya ingin melihat even pengulangan pertama. Standarnya semua ditampilkan.\nDengan catatan ini juga menampilkan semua hal yang penting.\nDengan catatan even pengulangan dapat muncul sebelumnya dalam daftar karena hanya pengulangan pertama juga ditampilkan."
+msgstr ""
+"Centang ini jika anda hanya ingin melihat even pengulangan pertama. Standarnya semua ditampilkan.\n"
+"Dengan catatan ini juga menampilkan semua hal yang penting.\n"
+"Dengan catatan even pengulangan dapat muncul sebelumnya dalam daftar karena hanya pengulangan pertama juga ditampilkan."
 
-#: ../src/event-list.c:1250
+#: ../src/event-list.c:1301
 msgid "also old"
 msgstr "juga tua"
 
-#: ../src/event-list.c:1252
+#: ../src/event-list.c:1306
 msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed'."
-msgstr "Centang ini jika anda ingin melihat juga even lama. Ini hanya dapat dipilih setelah 'hanya pengulangan pertama' diaktifkan untuk menghindari daftar yang panjang.\nDengan catatan pilihan hari tambahan tetap menentukan jika janji baru ditampilkan."
+msgstr ""
+"Centang ini jika anda ingin melihat juga even lama. Ini hanya dapat dipilih setelah 'hanya pengulangan pertama' diaktifkan untuk menghindari daftar yang panjang.\n"
+"Dengan catatan pilihan hari tambahan tetap menentukan jika janji baru ditampilkan."
 
-#: ../src/event-list.c:1290
+#: ../src/event-list.c:1344
 msgid "Journal entries starting from:"
 msgstr "Entri jurnal dimulai dari:"
 
-#: ../src/event-list.c:1310
+#: ../src/event-list.c:1364
 msgid "Search"
 msgstr "Telusur"
 
-#: ../src/event-list.c:1313
+#: ../src/event-list.c:1367
 msgid "Search text "
 msgstr "Telusur teks"
 
-#: ../src/event-list.c:1378
+#: ../src/event-list.c:1440
 msgid "Flags"
 msgstr "Bendera"
 
-#: ../src/event-list.c:1386
+#: ../src/event-list.c:1448
 msgid "Title"
 msgstr "Judul"
 
-#: ../src/event-list.c:1412
+#: ../src/event-list.c:1474
 msgid ""
 "Double click line to edit it.\n"
 "\n"
@@ -1342,828 +1470,894 @@ msgid ""
 "\t\tO=Orage A=Archive F=Foreign\n"
 "\t 5. Appointment type:\n"
 "\t\tE=Event T=Todo J=Journal"
-msgstr "Klik ganda pada baris untuk menyunting.\n\nPanji (sesuai urutan):⏎\n⇥ 1. Alarm: n=tanpa alarm⏎\n⇥⇥ A=Alarm terpasang P=Alarm berulang terpasang⏎\n⇥ 2. Pengulangan: n=tanpa pengulangan⏎\n⇥⇥ H=Jam-an D=Harian W=Mingguan M=Bulanan Y=Tahunan⏎\n⇥ 3. Tipe: f=bebas B=Sibuk⏎\n⇥ 4. Lokasi dalam berkas:⏎\n⇥⇥O=Orage A=Arsip F=Tidak dikenal⏎\n⇥ 5. Tipe perjanjian:⏎\n⇥⇥E=Even T=Rencana J=Jurnal"
+msgstr ""
+"Klik ganda pada baris untuk menyunting.\n"
+"\n"
+"Panji (sesuai urutan):⏎\n"
+"⇥ 1. Alarm: n=tanpa alarm⏎\n"
+"⇥⇥ A=Alarm terpasang P=Alarm berulang terpasang⏎\n"
+"⇥ 2. Pengulangan: n=tanpa pengulangan⏎\n"
+"⇥⇥ H=Jam-an D=Harian W=Mingguan M=Bulanan Y=Tahunan⏎\n"
+"⇥ 3. Tipe: f=bebas B=Sibuk⏎\n"
+"⇥ 4. Lokasi dalam berkas:⏎\n"
+"⇥⇥O=Orage A=Arsip F=Tidak dikenal⏎\n"
+"⇥ 5. Tipe perjanjian:⏎\n"
+"⇥⇥E=Even T=Rencana J=Jurnal"
 
 #. remove since it has ended
-#: ../src/ical-archive.c:267
+#: ../src/ical-archive.c:263
 msgid "\tRecur ended, moving to archive file."
 msgstr "\tPengulangan berakhir, pindah ke berkas arsip."
 
-#: ../src/ical-archive.c:330
+#: ../src/ical-archive.c:326
 msgid "Archiving not enabled. Exiting"
 msgstr "Pengarsipan tak diaktifkan. Keluar"
 
-#: ../src/ical-archive.c:349
+#: ../src/ical-archive.c:345
 #, c-format
 msgid "Archiving threshold: %d month(s)"
 msgstr "Mengarsipkan ambang: %d bulan"
 
 #. yy mon day
-#: ../src/ical-archive.c:352
+#: ../src/ical-archive.c:348
 #, c-format
 msgid "\tArchiving events, which are older than: %04d-%02d-%02d"
 msgstr "\tMengarsipkan even yang lebih tua dari: %04d-%02d-%02d"
 
-#: ../src/ical-archive.c:379
+#: ../src/ical-archive.c:375
 #, c-format
 msgid "Archiving uid: %s"
 msgstr "Mengarsipkan uid: %s"
 
 #. VTODO not completed, do not archive
-#: ../src/ical-archive.c:385
+#: ../src/ical-archive.c:381
 msgid "\tVTODO not complete; not archived"
 msgstr "\tVTODO tak selesai: tak diarsipkan"
 
 #. it is recurrent event
-#: ../src/ical-archive.c:390
+#: ../src/ical-archive.c:386
 #, c-format
 msgid "\tRecurring. End year: %04d, month: %02d, day: %02d"
 msgstr "\tPengulangan. Tahun akhir: %04d, bulan: %02d, hari: %02d"
 
-#: ../src/ical-archive.c:407
+#: ../src/ical-archive.c:403
 msgid "Archiving done\n"
 msgstr "Pengarsipan selesai\n"
 
 #. PHASE 1: go through base orage file and remove "repeat" shortcuts
-#: ../src/ical-archive.c:423
+#: ../src/ical-archive.c:419
 msgid "Starting archive removal."
 msgstr "Memulai penghapusan arsip."
 
-#: ../src/ical-archive.c:424
+#: ../src/ical-archive.c:420
 msgid "\tPHASE 1: reset recurring appointments"
 msgstr "\tFASE 1: tata ulang pengulangan janji "
 
 #. PHASE 2: go through archive file and add everything back to base orage.
 #. * After that delete the whole arch file
-#: ../src/ical-archive.c:446
+#: ../src/ical-archive.c:442
 msgid "\tPHASE 2: return archived appointments"
 msgstr "\tFASE 2: kembalikan arsip janji"
 
-#: ../src/ical-archive.c:472
+#: ../src/ical-archive.c:468
 msgid "Archive removal done\n"
 msgstr "Penghapusan arsip selesai\n"
 
-#: ../src/ical-code.c:972
+#: ../src/ical-code.c:859
 msgid "Orage default alarm"
 msgstr "Alarm standar Orage"
 
-#: ../src/ical-code.c:3179
+#: ../src/ical-code.c:3064
 msgid "Created alarm list for main Orage file:"
 msgstr "Buat daftar alarm untuk berkas utama Orage:"
 
-#: ../src/ical-code.c:3181
+#: ../src/ical-code.c:3066
 #, c-format
 msgid "Created alarm list for foreign file: %s (%s)"
 msgstr "Buat daftar alarm untuk berkas asing: %s (%s)"
 
-#: ../src/ical-code.c:3183
+#: ../src/ical-code.c:3068
 #, c-format
 msgid "\tAdded %d alarms. Processed %d events."
 msgstr "\tMenambahkan %d alarm. Memproses %d peristiwa."
 
-#: ../src/ical-code.c:3185
+#: ../src/ical-code.c:3070
 #, c-format
 msgid ""
 "\tFound %d alarms of which %d are active. (Searched %d recurring alarms.)"
-msgstr "\tMenemukan %d alarm dimana %d alarm aktif. (Menelusuri %d pengulangan alarm.)"
+msgstr ""
+"\tMenemukan %d alarm dimana %d alarm aktif. (Menelusuri %d pengulangan "
+"alarm.)"
 
-#: ../src/ical-expimp.c:123
+#: ../src/ical-expimp.c:120
 msgid "Starting import file preprocessing"
 msgstr "Memulai impor praproses berkas"
 
-#: ../src/ical-expimp.c:158
+#: ../src/ical-expimp.c:155
 msgid "... Patched DCREATED to be CREATED."
 msgstr "... Patch DCREATED akan di CREATED."
 
-#: ../src/ical-expimp.c:197
+#: ../src/ical-expimp.c:194
 msgid "... Patched timezone to Orage format."
 msgstr "... Zona waktu ditambal ke format Orage."
 
-#: ../src/ical-expimp.c:206
+#: ../src/ical-expimp.c:203
 msgid "Import file preprocessing done"
 msgstr "Impor praproses berkas selesai"
 
-#: ../src/interface.c:89 ../src/interface.c:104
+#: ../src/interface.c:88 ../src/interface.c:103
 #, c-format
 msgid "Found external update on file %s."
 msgstr "Menemukan pemutakhiran eksternal pada berkas %s."
 
-#: ../src/interface.c:112
+#: ../src/interface.c:111
 msgid "Refreshing alarms and calendar due to external file update."
 msgstr "Menyegarkan alarm dan kalender karena pemutakhiran berkas eksternal."
 
-#: ../src/interface.c:271
+#: ../src/interface.c:272
 msgid "Calendar files"
 msgstr "Berkas kalender"
 
-#: ../src/interface.c:631
+#: ../src/interface.c:642
 msgid "Current foreign files"
 msgstr "Berkas asing saat ini"
 
-#: ../src/interface.c:648
+#: ../src/interface.c:665
 msgid "READ ONLY"
 msgstr "HANYA BACA"
 
-#: ../src/interface.c:650
+#: ../src/interface.c:667
 msgid "READ WRITE"
 msgstr "BACA TULIS"
 
-#: ../src/interface.c:669
+#: ../src/interface.c:692
 msgid "***** No foreign files *****"
 msgstr "***** Tak ada berkas asing *****"
 
-#: ../src/interface.c:682
+#: ../src/interface.c:708
 msgid "Foreign file add failed"
 msgstr "Penambahan berkas asing gagal"
 
-#: ../src/interface.c:689
+#: ../src/interface.c:716
 msgid "Orage can only handle 10 foreign files. Limit reached."
 msgstr "Orage hanya dapat menangani 10 berkas asing. Batas tercapai."
 
-#: ../src/interface.c:697
+#: ../src/interface.c:726
 msgid "Filename is empty."
 msgstr "Nama berkas kosong."
 
-#: ../src/interface.c:705
+#: ../src/interface.c:736
 msgid "Name is empty."
 msgstr "Nama kosong."
 
-#: ../src/interface.c:713
+#: ../src/interface.c:746
 msgid "File does not exist."
 msgstr "Berkas tidak ada."
 
-#: ../src/interface.c:722
+#: ../src/interface.c:757
 msgid "Same filename already exists in Orage."
 msgstr "Nama berkas yang sama telah ada di Orage."
 
-#: ../src/interface.c:730
+#: ../src/interface.c:767
 msgid "Same name already exists in Orage."
 msgstr "Nama yang sama telah ada di Orage."
 
-#: ../src/interface.c:965
+#: ../src/interface.c:1022
 msgid "Import/export"
 msgstr "Impor/ekspor"
 
-#: ../src/interface.c:972
+#: ../src/interface.c:1029
 msgid "Import"
 msgstr "Impor"
 
-#: ../src/interface.c:977
+#: ../src/interface.c:1037
 msgid "Read from file:"
 msgstr "Baca dari berkas:"
 
-#: ../src/interface.c:994
+#: ../src/interface.c:1067
 msgid ""
 "Separate filenames with comma(,).\n"
 " NOTE: comma is not valid character in filenames for Orage."
-msgstr "Pisahkan nama berkas dengan koma(,).\n CATATAN: koma bukan karakter yang sah pada nama berkas untuk Orage."
+msgstr ""
+"Pisahkan nama berkas dengan koma(,).\n"
+" CATATAN: koma bukan karakter yang sah pada nama berkas untuk Orage."
 
-#: ../src/interface.c:999
+#: ../src/interface.c:1072
 msgid "Export"
 msgstr "Ekspor"
 
-#: ../src/interface.c:1004
+#: ../src/interface.c:1080
 msgid "Write to file:"
 msgstr "Tulis ke berkas:"
 
-#: ../src/interface.c:1025 ../src/interface.c:1037
+#: ../src/interface.c:1115 ../src/interface.c:1133
 msgid "Select"
 msgstr "Pilih"
 
-#: ../src/interface.c:1028
+#: ../src/interface.c:1120
 msgid "All appointments"
 msgstr "Semua janji"
 
-#: ../src/interface.c:1041
-msgid "Named appointments: "
-msgstr "Janji yang dinamai:"
+#: ../src/interface.c:1139
+msgid "Named appointments:"
+msgstr ""
 
-#: ../src/interface.c:1053
+#: ../src/interface.c:1158
 msgid ""
 "Note that only main file appointments are read.\n"
 "Archived and Foreign events are not exported."
-msgstr "Perhatikan bahwa hanya berkas janji utama yang dibaca.\nEven Arsip dan Asing tidak diekspor."
+msgstr ""
+"Perhatikan bahwa hanya berkas janji utama yang dibaca.\n"
+"Even Arsip dan Asing tidak diekspor."
 
-#: ../src/interface.c:1056
+#: ../src/interface.c:1161
 msgid ""
 "Note that only main file appointments are read.\n"
 "Foreign events are not exported."
-msgstr "Perhatikan bahwa hanya janji utama yang dibaca.\nEven asing tidak diekspor."
+msgstr ""
+"Perhatikan bahwa hanya janji utama yang dibaca.\n"
+"Even asing tidak diekspor."
 
-#: ../src/interface.c:1059
+#: ../src/interface.c:1164
 msgid "You can easily drag these from event-list window."
 msgstr "Anda dapat dengan mudah menarik ini dari jendela senarai even."
 
-#: ../src/interface.c:1061
+#: ../src/interface.c:1166
 msgid "Orage appointment UIDs separated by commas."
 msgstr "UID janji Orage dipisahkan oleh koma."
 
-#: ../src/interface.c:1067
+#: ../src/interface.c:1172
 msgid "Archive"
 msgstr "Arsip"
 
-#: ../src/interface.c:1075
+#: ../src/interface.c:1187
 #, c-format
 msgid "Archive now (threshold: %d months)"
 msgstr "Arsip sekarang (ambang: %d bulan)"
 
-#: ../src/interface.c:1085
+#: ../src/interface.c:1198
 msgid "You can change archive threshold in parameters"
 msgstr "Anda dapat mengganti ambang arsip di parameter"
 
-#: ../src/interface.c:1092
+#: ../src/interface.c:1210
 msgid "Revert archive now"
 msgstr "Ulang arsip sekarang"
 
-#: ../src/interface.c:1098
+#: ../src/interface.c:1217
 msgid ""
 "Return all archived events into main orage file and remove arch file.\n"
 "This is useful for example when doing export and moving orage\n"
 "appointments to another system."
-msgstr "Kembalikan semua even yang diarsipkan ke berkas utama orage dan hapus berkas arsitektur.\nIni berguna sebagai contoh ketika melakukan ekspor dan memindahkan janji\norage ke sistem lain."
+msgstr ""
+"Kembalikan semua even yang diarsipkan ke berkas utama orage dan hapus berkas arsitektur.\n"
+"Ini berguna sebagai contoh ketika melakukan ekspor dan memindahkan janji\n"
+"orage ke sistem lain."
 
-#: ../src/interface.c:1109
+#: ../src/interface.c:1229
 msgid "Orage files"
 msgstr "Berkas Orage"
 
-#: ../src/interface.c:1116
+#: ../src/interface.c:1236
 msgid "Orage main calendar file"
 msgstr "Berkas kalender utama Orage"
 
-#: ../src/interface.c:1121 ../src/interface.c:1186
+#: ../src/interface.c:1245 ../src/interface.c:1338
 msgid "Current file:"
 msgstr "Berkas saat ini:"
 
-#: ../src/interface.c:1128 ../src/interface.c:1193
+#: ../src/interface.c:1257 ../src/interface.c:1350
 msgid "New file:"
 msgstr "Berkas baru:"
 
-#: ../src/interface.c:1144 ../src/interface.c:1210
+#: ../src/interface.c:1285 ../src/interface.c:1377
 msgid "Action options:"
 msgstr "Opsi aksi:"
 
-#: ../src/interface.c:1147 ../src/interface.c:1213
+#: ../src/interface.c:1289 ../src/interface.c:1381
 msgid "Rename"
 msgstr "Ganti nama"
 
-#: ../src/interface.c:1151
+#: ../src/interface.c:1295
 msgid ""
 "Orage internal file rename only.\n"
 "Does not touch external filesystem at all.\n"
 "New file must exist."
-msgstr "Hanya ganti nama berkas internal Orage.\nTak menyentuh sistem berkas eksternal sama sekali.\nBerkas baru harus ada."
+msgstr ""
+"Hanya ganti nama berkas internal Orage.\n"
+"Tak menyentuh sistem berkas eksternal sama sekali.\n"
+"Berkas baru harus ada."
 
-#: ../src/interface.c:1155 ../src/interface.c:1218
+#: ../src/interface.c:1299 ../src/interface.c:1388
 msgid "Copy"
 msgstr "Salin"
 
-#: ../src/interface.c:1159
+#: ../src/interface.c:1305
 msgid "Current file is copied and stays unmodified in the old place."
-msgstr "Berkas saat ini telah tersalin dan tetap tak termodifikasi di tempat lama."
+msgstr ""
+"Berkas saat ini telah tersalin dan tetap tak termodifikasi di tempat lama."
 
-#: ../src/interface.c:1163 ../src/interface.c:1223
+#: ../src/interface.c:1309 ../src/interface.c:1395
 msgid "Move"
 msgstr "Pindah"
 
-#: ../src/interface.c:1167
+#: ../src/interface.c:1315
 msgid "Current file is moved and vanishes from the old place."
 msgstr "Berkas saat ini telah dipindah dan hilang dari tempat lama."
 
-#: ../src/interface.c:1181
+#: ../src/interface.c:1329
 msgid "Archive file"
 msgstr "Berkas arsip"
 
-#: ../src/interface.c:1245
+#: ../src/interface.c:1420
 msgid "Foreign files"
 msgstr "Berkas asing"
 
-#: ../src/interface.c:1252
+#: ../src/interface.c:1427
 msgid "Add new foreign file"
 msgstr "Tambah berkas asing baru"
 
-#: ../src/interface.c:1257
+#: ../src/interface.c:1435
 msgid "Foreign file:"
 msgstr "Berkas asing:"
 
-#. label = gtk_label_new(_("Options:"));
-#. gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 5);
-#: ../src/interface.c:1279
+#: ../src/interface.c:1466
 msgid "Visible name:"
 msgstr "Nama terlihat:"
 
-#: ../src/interface.c:1285
+#: ../src/interface.c:1476
 msgid "Read only"
 msgstr "Hanya baca"
 
-#: ../src/interface.c:1292
+#: ../src/interface.c:1486
 msgid ""
 "Set this if you want to make sure that this file is never modified by Orage.\n"
 "Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
-msgstr "Atur ini jika anda ingin memastikan bahwa berkas ini tak akan pernah dimodifikasi oleh Orage.\nPerlu dicatat bahwa memodifikasi berkas asing dapat menyebabkan mereka tidak cocok dengan alat aslinya, tempat mereka berasal!"
+msgstr ""
+"Atur ini jika anda ingin memastikan bahwa berkas ini tak akan pernah dimodifikasi oleh Orage.\n"
+"Perlu dicatat bahwa memodifikasi berkas asing dapat menyebabkan mereka tidak cocok dengan alat aslinya, tempat mereka berasal!"
 
-#: ../src/interface.c:1294
+#: ../src/interface.c:1488
 msgid "This internal name is displayed to user instead of file name."
 msgstr "Nama internal ini ditampilkan ke pengguna ketimbang nama berkas."
 
-#: ../src/interface.c:1308
+#: ../src/interface.c:1502
 msgid "Exchange data - Orage"
 msgstr "Pertukaran data - Orage"
 
-#: ../src/main.c:275
+#: ../src/main.c:271
 #, c-format
 msgid ""
 "\tThis is %s version %s\n"
 "\n"
-msgstr "\tIni adalah %s versi %s\n\n"
+msgstr ""
+"\tIni adalah %s versi %s\n"
+"\n"
 
-#: ../src/main.c:277
+#: ../src/main.c:273
 #, c-format
 msgid "\tReleased under the terms of the GNU General Public License.\n"
 msgstr "\tDirilis di bawah Lisensi Publik Umum GNU.\n"
 
-#: ../src/main.c:278
+#: ../src/main.c:274
 #, c-format
 msgid "\tCompiled against GTK+-%d.%d.%d, "
 msgstr "\tDikompilasi kontra GTK+-%d.%d.%d,"
 
-#: ../src/main.c:280
+#: ../src/main.c:276
 #, c-format
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "menggunakan GTK+-%d.%d.%d.\n"
 
-#: ../src/main.c:283
+#: ../src/main.c:279
 #, c-format
 msgid "\tUsing DBUS for import.\n"
 msgstr "\tMenggunakan DBUS untuk impor.\n"
 
-#: ../src/main.c:285
+#: ../src/main.c:281
 #, c-format
 msgid "\tNot using DBUS. Import works only partially.\n"
 msgstr "\tTak menggunakan DBUS. Impor hanya bekerja sebagian.\n"
 
-#: ../src/main.c:288
+#: ../src/main.c:284
 #, c-format
 msgid "\tUsing libnotify.\n"
 msgstr "\tMenggunakan libnotify.\n"
 
-#: ../src/main.c:290
+#: ../src/main.c:286
 #, c-format
 msgid "\tNot using libnotify.\n"
 msgstr "\tTak menggunakan libnotify.\n"
 
-#: ../src/main.c:293
+#: ../src/main.c:289
 #, c-format
 msgid "\tUsing automatic archiving.\n"
 msgstr "\tMenggunakan pengarsipan otomatis.\n"
 
-#: ../src/main.c:295
+#: ../src/main.c:291
 #, c-format
 msgid "\tNot using archiving.\n"
 msgstr "\tTak menggunakan pengarsipan.\n"
 
-#: ../src/main.c:298
+#: ../src/main.c:294
 #, c-format
 msgid "\tUsing operating system package libical.\n"
 msgstr "\tMenggunakan paket sistem operasi libical.\n"
 
-#: ../src/main.c:300
+#: ../src/main.c:296
 #, c-format
 msgid "\tUsing Orage local version of libical.\n"
 msgstr "\tMenggunakan versi lokal Orage liblical.\n"
 
-#: ../src/main.c:313
+#: ../src/main.c:299
+#, c-format
+msgid "\tUsing libxfce4ui: yes\n"
+msgstr ""
+
+#: ../src/main.c:301
+#, c-format
+msgid "\tUsing libxfce4ui: no\n"
+msgstr ""
+
+#: ../src/main.c:314
 #, c-format
 msgid ""
 "Usage: orage [options] [files]\n"
 "\n"
-msgstr "Penggunaan: orage [opsi] [berkas]\n\n"
+msgstr ""
+"Penggunaan: orage [opsi] [berkas]\n"
+"\n"
 
-#: ../src/main.c:314
+#: ../src/main.c:315
 #, c-format
 msgid "Options:\n"
 msgstr "Opsi:\n"
 
-#: ../src/main.c:315
+#: ../src/main.c:316
 #, c-format
 msgid "--version (-v) \t\tshow version of orage\n"
 msgstr "--versi (-v) \t\ttampilkan versi orage\n"
 
-#: ../src/main.c:316
+#: ../src/main.c:317
 #, c-format
 msgid "--help (-h) \t\tprint this text\n"
 msgstr "--help (-h) \t\tcetak teks ini\n"
 
-#: ../src/main.c:317
+#: ../src/main.c:318
 #, c-format
 msgid "--preferences (-p) \tshow preferences form\n"
 msgstr "--preferences (-p) \ttampilkan bentuk pengaturan\n"
 
-#: ../src/main.c:318
+#: ../src/main.c:319
 #, c-format
 msgid "--toggle (-t) \t\tmake orage visible/unvisible\n"
 msgstr "--toggle (-t) \t\tbuat orage terlihat\tak terlihat\n"
 
-#: ../src/main.c:319
+#: ../src/main.c:320
 #, c-format
 msgid "--add-foreign (-a) file [RW] [name] \tadd a foreign file\n"
 msgstr "--add-foreign (-a) berkas [RW] [nama] \ttambah berkas asing\n"
 
-#: ../src/main.c:320
+#: ../src/main.c:321
 #, c-format
 msgid "--remove-foreign (-r) file \tremove a foreign file\n"
 msgstr "--remove-foreign (-r) berkas \thapus berkas asing\n"
 
-#: ../src/main.c:321
+#: ../src/main.c:322
 #, c-format
 msgid ""
 "--export (-e) file [appointment...] \texport appointments from Orage to "
 "file\n"
 msgstr "--export (-e) berkas [janji...] \texport janji dari Orage ke berkas\n"
 
-#: ../src/main.c:323
+#: ../src/main.c:324
 #, c-format
 msgid "files=ical files to load into orage\n"
 msgstr "berkas=berkas ical untuk dimuat ke dalam orage\n"
 
-#: ../src/main.c:325
+#: ../src/main.c:326
 #, c-format
 msgid "\tdbus not included in orage. \n"
 msgstr "\tdbus tak disertakan dalam orage. \n"
 
-#: ../src/main.c:326
+#: ../src/main.c:327
 #, c-format
 msgid ""
 "\twithout dbus [files] and foreign file options(-a & -r) can only be used "
 "when starting orage \n"
-msgstr "\ttanpa dbus [berkas] dan opsi berkas asing(-a & -r) hanya dapat digunakan ketikamemulai orage \n"
+msgstr ""
+"\ttanpa dbus [berkas] dan opsi berkas asing(-a & -r) hanya dapat digunakan "
+"ketikamemulai orage \n"
 
-#: ../src/main.c:535
+#: ../src/main.c:536
 #, c-format
 msgid ""
 "\n"
 "Unknown option %s\n"
 "\n"
-msgstr "\nOpsi %s tak diketahui\n\n"
+msgstr ""
+"\n"
+"Opsi %s tak diketahui\n"
+"\n"
 
-#: ../src/mainbox.c:305
+#: ../src/mainbox.c:324
 msgid "_Exchange data"
 msgstr "_Pertukaran data"
 
 #. Edit menu
-#: ../src/mainbox.c:316
+#: ../src/mainbox.c:335
 msgid "_Edit"
 msgstr "_Sunting"
 
-#: ../src/mainbox.c:326
+#: ../src/mainbox.c:345
 msgid "View selected _date"
 msgstr "Tampilkan _tanggal terpilih"
 
-#: ../src/mainbox.c:329
+#: ../src/mainbox.c:348
 msgid "View selected _week"
 msgstr "Tampilkan _minggu terpilih"
 
-#: ../src/mainbox.c:335
+#: ../src/mainbox.c:354
 msgid "Select _Today"
 msgstr "Pilih _Hari Ini"
 
-#: ../src/mainbox.c:341
+#: ../src/mainbox.c:360
 msgid "Show _Globaltime"
 msgstr "Tampilkan Waktu _Global"
 
 #. Help menu
-#: ../src/mainbox.c:345
+#. the rest
+#: ../src/mainbox.c:364 ../src/parameters.c:1209
 msgid "_Help"
 msgstr "Ba_ntuan"
 
-#: ../src/mainbox.c:414 ../src/reminder.c:1138
+#: ../src/mainbox.c:432 ../src/reminder.c:1155
 msgid "No title defined"
 msgstr "Belum ada judul"
 
-#: ../src/mainbox.c:471
+#: ../src/mainbox.c:495
 #, c-format
 msgid " Location: %s\n"
 msgstr "Lokasi: %s\n"
 
-#: ../src/mainbox.c:481
+#: ../src/mainbox.c:505
 #, c-format
 msgid ""
 "\n"
 " Note:\n"
 "%s"
-msgstr "\nCatatan:\n%s"
+msgstr ""
+"\n"
+"Catatan:\n"
+"%s"
 
-#: ../src/mainbox.c:489
+#: ../src/mainbox.c:513
 msgid "Never"
 msgstr "Tak pernah"
 
-#: ../src/mainbox.c:495
+#: ../src/mainbox.c:519
 #, c-format
 msgid ""
 "Title: %s\n"
 "%s Start:\t%s\n"
 " Due:\t%s\n"
 " Done:\t%s%s"
-msgstr "Judul: %s\n%s Mulai:\t%s\nTempo:\t%s\nSelesai:\t%s%s"
+msgstr ""
+"Judul: %s\n"
+"%s Mulai:\t%s\n"
+"Tempo:\t%s\n"
+"Selesai:\t%s%s"
 
-#: ../src/mainbox.c:503
+#: ../src/mainbox.c:527
 #, c-format
 msgid ""
 "Title: %s\n"
 "%s Start:\t%s\n"
 " End:\t%s%s"
-msgstr "Judul: %s\n%s Mulai:\t%s\nSelesai:\t%s%s"
+msgstr ""
+"Judul: %s\n"
+"%s Mulai:\t%s\n"
+"Selesai:\t%s%s"
 
-#: ../src/mainbox.c:613
+#: ../src/mainbox.c:637
 msgid "<b>To do:</b>"
 msgstr "<b>Harus dikerjakan:</b>"
 
-#: ../src/mainbox.c:649
+#: ../src/mainbox.c:678
 #, c-format
 msgid "<b>Events for %s:</b>"
 msgstr "<b>Even untuk %s:</b>"
 
-#: ../src/mainbox.c:660
+#: ../src/mainbox.c:689
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>Even untuk %s - %s:</b>"
 
-#: ../src/parameters.c:492
+#: ../src/parameters.c:554
 msgid "Main settings"
 msgstr "Pengaturan utama"
 
-#: ../src/parameters.c:498
+#: ../src/parameters.c:560
 msgid "Timezone"
 msgstr "Zona waktu"
 
-#: ../src/parameters.c:513
+#: ../src/parameters.c:581
 msgid "You should always define your local timezone."
 msgstr "Anda harus selalu menentukan zona waktu lokal anda."
 
-#: ../src/parameters.c:521
+#: ../src/parameters.c:589
 msgid "Archive threshold (months)"
 msgstr "Ambang arsip (bulan)"
 
-#: ../src/parameters.c:531
+#: ../src/parameters.c:602
 msgid "(0 = no archiving)"
 msgstr "(0 = tak ada pengarsipan)"
 
-#: ../src/parameters.c:534
+#: ../src/parameters.c:606
 msgid "Archiving is used to save time and space when handling events."
-msgstr "Pengarsipan digunakan untuk menghemat waktu dan ruang ketika menangani even."
+msgstr ""
+"Pengarsipan digunakan untuk menghemat waktu dan ruang ketika menangani even."
 
-#: ../src/parameters.c:542
+#: ../src/parameters.c:614
 msgid "Sound command"
 msgstr "Perintah suara"
 
-#: ../src/parameters.c:557
+#: ../src/parameters.c:642
 msgid "This command is given to shell to make sound in alarms."
 msgstr "Perintah ini diberikan ke shell untuk membuat suara pada alarm."
 
-#: ../src/parameters.c:596
+#: ../src/parameters.c:673
 msgid "Calendar window"
 msgstr "Jendela kalender"
 
-#: ../src/parameters.c:603
+#: ../src/parameters.c:680
 msgid "Calendar visual details"
 msgstr "Detil visual kalender"
 
-#: ../src/parameters.c:609
+#: ../src/parameters.c:687
 msgid "Show borders"
 msgstr "Tampilkan batas"
 
-#: ../src/parameters.c:614
+#: ../src/parameters.c:692
 msgid "Show menu"
 msgstr "Tampilkan menu"
 
-#: ../src/parameters.c:622
+#: ../src/parameters.c:700
 msgid "Show day names"
 msgstr "Tampilkan nama hari"
 
-#: ../src/parameters.c:627
+#: ../src/parameters.c:705
 msgid "Show week numbers"
 msgstr "Tampilkan nomor minggu"
 
-#: ../src/parameters.c:635
+#: ../src/parameters.c:713
 msgid "Show month and year"
 msgstr "Tampilkan bulan dan tahun"
 
-#: ../src/parameters.c:655
+#: ../src/parameters.c:733
 msgid "Calendar info boxes"
 msgstr "Kolom info kalender"
 
-#: ../src/parameters.c:660
+#: ../src/parameters.c:740
 msgid "Show todo list"
 msgstr "Tampilkan senarai harus dikerjakan"
 
-#: ../src/parameters.c:667
+#: ../src/parameters.c:747
 msgid "Number of days to show in event window"
 msgstr "Jumlah hari untuk ditampilkan di jendela peristiwa"
 
-#: ../src/parameters.c:673
+#: ../src/parameters.c:755
 msgid "0 = do not show event list at all"
 msgstr "0 = jangan tampilkan senarai peristiwa sama sekali"
 
-#: ../src/parameters.c:686
+#: ../src/parameters.c:769
 msgid "Calendar visibility"
 msgstr "Tampakan kalender"
 
-#: ../src/parameters.c:691
+#: ../src/parameters.c:775
 msgid "Show on all desktops"
 msgstr "Tampilkan di semua desktop"
 
-#: ../src/parameters.c:696
+#: ../src/parameters.c:780
 msgid "Keep on top"
 msgstr "Tetap di atas"
 
-#: ../src/parameters.c:704
+#: ../src/parameters.c:788
 msgid "Show in taskbar"
 msgstr "Tampilkan di batang kerja"
 
-#: ../src/parameters.c:709
+#: ../src/parameters.c:793
 msgid "Show in pager"
 msgstr "Tampilkan di pemisah"
 
-#: ../src/parameters.c:717
+#: ../src/parameters.c:801
 msgid "Show in systray"
 msgstr "Tampilkan di baki sistem"
 
-#: ../src/parameters.c:738
+#: ../src/parameters.c:823
 msgid "Calendar start"
 msgstr "Mulai kalender"
 
-#: ../src/parameters.c:743
+#: ../src/parameters.c:829
 msgid "Show"
 msgstr "Tampilkan"
 
-#: ../src/parameters.c:755
+#: ../src/parameters.c:845
 msgid "Hide"
 msgstr "Sembunyikan"
 
-#: ../src/parameters.c:767
+#: ../src/parameters.c:862
 msgid "Minimized"
 msgstr "Minimalkan"
 
-#: ../src/parameters.c:787
+#: ../src/parameters.c:888
 msgid "On calendar window open"
 msgstr "Saat jendela kalender terbuka"
 
-#: ../src/parameters.c:792
+#: ../src/parameters.c:894
 msgid "Select today's date"
 msgstr "Pilih tanggal hari ini"
 
-#: ../src/parameters.c:805
+#: ../src/parameters.c:911
 msgid "Select previously selected date"
 msgstr "Pilih tanggal yang sebelumnya"
 
-#: ../src/parameters.c:823
+#: ../src/parameters.c:935
 msgid "Calendar day double click shows"
 msgstr "Klik ganda tanggalan di kalender akan menampilkan"
 
-#: ../src/parameters.c:828
+#: ../src/parameters.c:941
 msgid "Days view"
 msgstr "Tampilan hari"
 
-#: ../src/parameters.c:840
+#: ../src/parameters.c:957
 msgid "Event list"
 msgstr "Senarai even"
 
-#: ../src/parameters.c:862
+#: ../src/parameters.c:990
 msgid "Extra settings"
 msgstr "Pengaturan tambahan"
 
-#: ../src/parameters.c:869
+#: ../src/parameters.c:997
 msgid "Event list window"
 msgstr "Jendela daftar even"
 
-#: ../src/parameters.c:874
+#: ../src/parameters.c:1004
 msgid "Number of extra days to show in event list"
 msgstr "Jumlah hari tambahan untuk ditampilkan di senarai peristiwa"
 
-#: ../src/parameters.c:883
+#: ../src/parameters.c:1014
 msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
-msgstr "Ini hanya nilai standar, anda dapat mengubahnya di dalam jendela senarai peristiwa sebenarnya."
+msgstr ""
+"Ini hanya nilai standar, anda dapat mengubahnya di dalam jendela senarai "
+"peristiwa sebenarnya."
 
-#: ../src/parameters.c:891
+#: ../src/parameters.c:1022
 msgid "Show only first repeating event"
 msgstr "Hanya tampilkan even pengulangan pertama"
 
-#: ../src/parameters.c:907
+#: ../src/parameters.c:1039
 msgid "Day view window default first day"
 msgstr "Jendela lihat hari bawaan hari pertama"
 
-#: ../src/parameters.c:912
+#: ../src/parameters.c:1046
 msgid "First day of week"
 msgstr "Hari pertama dalam pekan"
 
-#: ../src/parameters.c:925
+#: ../src/parameters.c:1063
 msgid "Selected day"
 msgstr "Hari dipilih"
 
-#: ../src/parameters.c:943
-msgid "Use dynamic tray icon"
-msgstr "Gunakan ikon baki dinamis"
-
-#: ../src/parameters.c:948
-msgid "Use dynamic icon"
-msgstr "Gunakan ikon dinamis"
-
-#: ../src/parameters.c:954
-msgid "Dynamic icon shows current month and day of the month."
-msgstr "Ikon dinamis menampilkan bulan ini dan hari dalam bulan."
-
-#: ../src/parameters.c:962 ../src/parameters.c:967
+#: ../src/parameters.c:1086 ../src/parameters.c:1093
 msgid "Use wakeup timer"
 msgstr "Gunakan penghitung bangun"
 
-#: ../src/parameters.c:973
+#: ../src/parameters.c:1101
 msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
-msgstr "Gunakan penghitung ini jika Orage mempunyai masalah kembali aktif setelah suspensi atau hibernasi. (Misalnya ikon baki tidak dikembalikan atau alarm tidak berbunyi.)"
+msgstr ""
+"Gunakan penghitung ini jika Orage mempunyai masalah kembali aktif setelah "
+"suspensi atau hibernasi. (Misalnya ikon baki tidak dikembalikan atau alarm "
+"tidak berbunyi.)"
 
-#: ../src/parameters.c:982
+#: ../src/parameters.c:1111
 msgid "Foreign file default visual alarm"
 msgstr "Alarm visual standar berkas tak dikenal"
 
-#: ../src/parameters.c:987
+#: ../src/parameters.c:1118
 msgid "Orage window"
 msgstr "Jendela Orage"
 
-#: ../src/parameters.c:1000
+#: ../src/parameters.c:1135
 msgid "Notify notification"
 msgstr "Beritahu sistem notifikasi"
 
-#: ../src/parameters.c:1018
+#: ../src/parameters.c:1158
 msgid "Always quit when asked to close"
 msgstr "Selalu berhenti ketika akan ditutup"
 
-#: ../src/parameters.c:1023
+#: ../src/parameters.c:1165
 msgid "Always quit"
 msgstr "Selalu berhenti"
 
-#: ../src/parameters.c:1029
+#: ../src/parameters.c:1172
 msgid ""
 "By default Orage stays open in the background when asked to close. This "
 "option changes Orage to quit and never stay in background when it is asked "
 "to close."
-msgstr "Biasanya Orage tetap berjalan di latar belakang ketika akan ditutup. Opsi ini mengubah Orage untuk berhenti dan tidak berjalan di latar belakang ketika akan ditutup."
+msgstr ""
+"Biasanya Orage tetap berjalan di latar belakang ketika akan ditutup. Opsi "
+"ini mengubah Orage untuk berhenti dan tidak berjalan di latar belakang "
+"ketika akan ditutup."
 
-#: ../src/parameters.c:1045
+#: ../src/parameters.c:1188
 msgid "Orage Preferences"
 msgstr "Pengaturan Orage"
 
-#: ../src/parameters.c:1157
+#: ../src/parameters.c:1212 ../src/reminder.c:800
+msgid "_Close"
+msgstr "_Tutup"
+
+#: ../src/parameters.c:1299
 msgid "First Orage start. Searching default timezone."
 msgstr "Pertama memulai Orage. Mencari zona waktu standar."
 
-#: ../src/parameters.c:1176
+#: ../src/parameters.c:1318
 #, c-format
 msgid "Default timezone set to %s."
 msgstr "Zona waktu standar diatur ke %s."
 
-#: ../src/parameters.c:1179
+#: ../src/parameters.c:1321
 msgid "Default timezone not found, please, set it manually."
 msgstr "Zona waktu standar tak ditemukan, silakan, atur secara manual."
 
-#: ../src/reminder.c:562
+#: ../src/reminder.c:563
 msgid "Reminder "
 msgstr "Pengingat"
 
-#: ../src/reminder.c:591
+#: ../src/reminder.c:592
 msgid "Open"
 msgstr "Buka"
 
-#: ../src/reminder.c:719
+#: ../src/reminder.c:725
 msgid "Reminder - Orage"
 msgstr "Pengingat - Orage"
 
-#: ../src/reminder.c:803
+#: ../src/reminder.c:808
+msgid "_Stop"
+msgstr "_Berhenti"
+
+#: ../src/reminder.c:816
 msgid "Postpone"
 msgstr "Tunda"
 
-#: ../src/reminder.c:805
+#: ../src/reminder.c:818
 msgid "Remind me again after the specified time"
 msgstr "Ingatkan saya lagi setelah waktu yang ditentukan"
 
-#: ../src/reminder.c:1091
+#: ../src/reminder.c:1107
 msgid "Next active alarms:"
 msgstr "Alarm aktif selanjutnya:"
 
-#: ../src/reminder.c:1145
+#: ../src/reminder.c:1162
 #, c-format
 msgid ""
 "\n"
 "%02d d %02d h %02d min to: %s"
-msgstr "\n%02d hari %02d jam %02d menit ke: %s"
+msgstr ""
+"\n"
+"%02d hari %02d jam %02d menit ke: %s"
 
-#: ../src/reminder.c:1154
+#: ../src/reminder.c:1171
 #, c-format
 msgid ""
 "\n"
 "No active alarms found"
-msgstr "\nTak ada alarm aktif ditemukan"
+msgstr ""
+"\n"
+"Tak ada alarm aktif ditemukan"
 
 #: ../src/timezone_names.c:36
 msgid "Africa"
@@ -4409,19 +4603,23 @@ msgstr "AS/Pasifik-Baru"
 msgid "US/Samoa"
 msgstr "AS/Samoa"
 
-#: ../src/tray_icon.c:469
+#: ../src/tray_icon.c:457
 msgid "New appointment"
 msgstr "Janji Baru"
 
-#: ../src/tray_icon.c:485
-msgid "About Orage"
-msgstr "Tentang Orage"
+#: ../src/tray_icon.c:464
+msgid "Preferences"
+msgstr "Preferensi"
 
-#: ../panel-plugin/xfce4-orageclock-plugin.desktop.in.in.h:1
+#: ../src/tray_icon.c:471
+msgid "Quit"
+msgstr "Keluar"
+
+#: ../panel-plugin/xfce4-orageclock-plugin.desktop.in.h:1
 msgid "Orage Panel Clock"
 msgstr "Jam Panel Orage"
 
-#: ../panel-plugin/xfce4-orageclock-plugin.desktop.in.in.h:2
+#: ../panel-plugin/xfce4-orageclock-plugin.desktop.in.h:2
 msgid "Show time and date?"
 msgstr "Tampilkan jam dan tanggal?"
 
