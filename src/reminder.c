@@ -83,7 +83,7 @@ static void alarm_free(gpointer galarm)
     alarm_struct *l_alarm = (alarm_struct *)galarm;
 
 #if ORAGE_TRACE
-    g_debug (P_N);
+    g_debug (P_N "%p", l_alarm);
 #endif
     g_free(l_alarm->alarm_time);
     g_free(l_alarm->action_time);
@@ -118,7 +118,7 @@ static gint alarm_order(gconstpointer a, gconstpointer b)
 void alarm_list_free(void)
 {
 #undef P_N
-#define P_N "alarm_free_all: "
+#define P_N "alarm_list_free: "
     gchar *time_now;
     alarm_struct *l_alarm;
     GList *alarm_l, *kept_l=NULL;
@@ -192,10 +192,11 @@ static alarm_struct *alarm_copy(alarm_struct *l_alarm, gboolean init)
 #define P_N "alarm_copy: "
     alarm_struct *n_alarm;
 
-#if ORAGE_TRACE
-    g_debug (P_N);
-#endif
     n_alarm = g_new0(alarm_struct, 1);
+
+#if ORAGE_TRACE
+    g_debug (P_N "%p", n_alarm);
+#endif
 
     /* first l_alarm values which are not modified */
     if (l_alarm->alarm_time != NULL)
@@ -449,7 +450,8 @@ static gboolean sound_alarm(gpointer data)
         status = orage_exec(l_alarm->sound_cmd
                 , &l_alarm->active_alarm->sound_active, &error);
         if (!status) {
-            g_warning("reminder: play failed (%s) %s", l_alarm->sound, error->message);
+            g_warning ("reminder: play failed (%s) %s",
+                       l_alarm->sound, error->message);
             l_alarm->repeat_cnt = 0; /* one warning is enough */
             status = TRUE; /* we need to come back once to do cleanout */
         }
