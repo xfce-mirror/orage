@@ -138,11 +138,11 @@ void alarm_list_free(void)
             /* We keep temporary alarms, which have not yet fired.
                Remove the element from the list, but do not loose it. */
             g_par.alarm_list = g_list_remove_link(g_par.alarm_list, alarm_l);
-            /*
+#if 0
             if (!kept_l)
                 kept_l = alarm_l;
             else
-            */
+#endif
             kept_l = g_list_concat(kept_l, alarm_l);
         }
         else { /* get rid of that l_alarm element */
@@ -344,9 +344,9 @@ void alarm_read(void)
     for (i = 0; alarm_groups[i] != NULL; i++) {
         orage_rc_set_group(orc, alarm_groups[i]);
         if ((new_alarm = alarm_read_next_alarm(orc, time_now)) != NULL) {
-            /*
+#if 0
             g_print(P_N "time_now=%s alarm=%s\n", time_now, new_alarm->alarm_time);
-            */
+#endif
             create_reminders(new_alarm);
             alarm_free(new_alarm);
         }
@@ -511,9 +511,9 @@ static void notify_closed (G_GNUC_UNUSED NotifyNotification *n, gpointer par)
 #if ORAGE_TRACE
     g_debug (P_N);
 #endif
-    /*
+#if 0
     g_print("notify_closed: start %d %d\n",  l_alarm->audio, l_alarm->display_notify);
-    */
+#endif
     if (l_alarm->notify_refresh) {
         /* this is not really closing notify, but only a refresh, so
          * we do not clean the memory now */
@@ -1022,9 +1022,9 @@ static gboolean orage_alarm_clock (G_GNUC_UNUSED gpointer user_data)
         /* remember that it is sorted list */
         cur_alarm = (alarm_struct *)alarm_l->data;
         if (strcmp(time_now, cur_alarm->alarm_time) > 0) {
-            /*
+#if 0
             g_print(P_N "time_now=%s alarm=%s\n", time_now, cur_alarm->alarm_time);
-            */
+#endif
             create_reminders(cur_alarm);
             alarm_raised = TRUE;
         }
