@@ -566,10 +566,10 @@ static void create_notify_reminder(alarm_struct *l_alarm)
 
     g_strlcpy(heading,  _("Reminder "), sizeof (heading));
     if (l_alarm->title)
-        g_strlcat(heading, l_alarm->title, 150);
+        g_strlcat(heading, l_alarm->title, sizeof (heading));
     if (l_alarm->action_time) {
-        g_strlcat(heading, "\n", 160);
-        g_strlcat(heading, l_alarm->action_time, 250);
+        g_strlcat(heading, "\n", sizeof (heading));
+        g_strlcat(heading, l_alarm->action_time, sizeof (heading));
     }
     /* since version 0.7.0, libnotify does not have the widget parameter in 
        notify_notification_new and it does not have function
