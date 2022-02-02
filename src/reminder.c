@@ -103,16 +103,19 @@ static gint alarm_order(gconstpointer a, gconstpointer b)
 #undef P_N
 #define P_N "alarm_order: "
 
+    const alarm_struct *alarm_a = (const alarm_struct *)a;
+    const alarm_struct *alarm_b = (const alarm_struct *)b;
+
 #if ORAGE_TRACE
     g_debug (P_N);
 #endif
-    if (((alarm_struct *)a)->alarm_time == NULL)
+
+    if (alarm_a->alarm_time == NULL)
         return(1);
-    else if (((alarm_struct *)b)->alarm_time == NULL)
+    else if (alarm_b->alarm_time == NULL)
         return(-1);
 
-    return(strcmp(((alarm_struct *)a)->alarm_time
-                , ((alarm_struct *)b)->alarm_time));
+    return strcmp (alarm_a->alarm_time, alarm_b->alarm_time);
 }
 
 void alarm_list_free(void)
@@ -497,8 +500,7 @@ static void create_sound_reminder(alarm_struct *l_alarm)
         l_alarm->repeat_cnt++; /* need to do it once */
     }
 
-    g_timeout_add_seconds(l_alarm->repeat_delay, (GSourceFunc) sound_alarm
-            , (gpointer) l_alarm);
+    g_timeout_add_seconds (l_alarm->repeat_delay, sound_alarm, l_alarm);
 }
 
 #ifdef HAVE_NOTIFY
@@ -511,9 +513,9 @@ static void notify_closed (G_GNUC_UNUSED NotifyNotification *n, gpointer par)
 #if ORAGE_TRACE
     g_debug (P_N);
 #endif
-#if 0
+    /*
     g_print("notify_closed: start %d %d\n",  l_alarm->audio, l_alarm->display_notify);
-#endif
+    */
     if (l_alarm->notify_refresh) {
         /* this is not really closing notify, but only a refresh, so
          * we do not clean the memory now */
