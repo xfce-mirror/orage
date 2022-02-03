@@ -513,9 +513,9 @@ static void notify_closed (G_GNUC_UNUSED NotifyNotification *n, gpointer par)
 #if ORAGE_TRACE
     g_debug (P_N);
 #endif
-    /*
+#if 0
     g_print("notify_closed: start %d %d\n",  l_alarm->audio, l_alarm->display_notify);
-    */
+#endif
     if (l_alarm->notify_refresh) {
         /* this is not really closing notify, but only a refresh, so
          * we do not clean the memory now */
@@ -830,7 +830,7 @@ static void create_orage_reminder(alarm_struct *l_alarm)
     gtk_widget_show_all(wReminder);
 }
 
-static void create_procedure_reminder(alarm_struct *l_alarm)
+static void create_procedure_reminder (const alarm_struct *l_alarm)
 {
 #undef P_N
 #define P_N "create_procedure_reminder: "
@@ -899,6 +899,10 @@ void create_reminders(alarm_struct *l_alarm)
 #undef P_N
 #define P_N "create_reminders: "
     alarm_struct *n_alarm;
+    gboolean sound_reminder;
+    gboolean orage_reminder;
+    gboolean notify_reminder;
+    gboolean procedure_reminder;
 
 #if ORAGE_TRACE
     g_debug (P_N);
@@ -906,16 +910,34 @@ void create_reminders(alarm_struct *l_alarm)
     /* FIXME: instead of copying this new private version of the l_alarm,
      * g_list_remove(GList *g_par.alarm_list, gconstpointer l_alarm);
      * remove it and use the original. saves time */
-    n_alarm = alarm_copy(l_alarm, TRUE);
 
-    if (n_alarm->audio && n_alarm->sound)
-        create_sound_reminder(n_alarm);
-    if (n_alarm->display_orage)
-        create_orage_reminder(n_alarm);
-    if (n_alarm->display_notify)
-        create_notify_reminder(n_alarm);
-    if (n_alarm->procedure && n_alarm->cmd)
-        create_procedure_reminder(n_alarm);
+    sound_reminder = (l_alarm->audio && l_alarm->sound);
+    orage_reminder = l_alarm->display_orage;
+    notify_reminder = l_alarm->display_notify;
+    procedure_reminder = (l_alarm->procedure && l_alarm->cmd);
+
+    if (sound_reminder || orage_reminder || notify_reminder)
+    {
+        /* Single n_alarm copy is also for sharing alarm completed information
+         * between reminders. This is needed because sound alarm may be set to
+         * repeat forever, sound alarm can be only silenced by cliking button
+         * on orage or notify reminder. Closing visual remider must also stop
+         * sound reminder.
+         */
+        n_alarm = alarm_copy (l_alarm, TRUE);
+
+        if (sound_reminder)
+            create_sound_reminder (n_alarm);
+
+        if (orage_reminder)
+            create_orage_reminder (n_alarm);
+
+        if (notify_reminder)
+            create_notify_reminder (n_alarm);
+    }
+
+    if (procedure_reminder)
+        create_procedure_reminder (l_alarm);
 }
 
 static void reset_orage_day_change(gboolean changed)
