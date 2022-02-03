@@ -10,15 +10,16 @@
 # Andre Miranda <andre42m@gmail.com>, 2022
 # Rafael Fontenelle <rffontenelle@gmail.com>, 2022
 # Lucas Wilm <lucaswilm@gmail.com>, 2022
+# C. E., 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: orage\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-01 15:01+0100\n"
+"POT-Creation-Date: 2022-02-02 00:50+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Lucas Wilm <lucaswilm@gmail.com>, 2022\n"
+"Last-Translator: C. E., 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/xfce/teams/16840/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1691,7 +1692,7 @@ msgstr "Todos compromissos"
 
 #: ../src/interface.c:1139
 msgid "Named appointments:"
-msgstr ""
+msgstr "Marcações nomeadas:"
 
 #: ../src/interface.c:1158
 msgid ""
@@ -1902,12 +1903,12 @@ msgstr "\tUsando versão local do Orage do libical.\n"
 #: ../src/main.c:299
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
-msgstr ""
+msgstr "\tUsar libxfce4ui: sim\n"
 
 #: ../src/main.c:301
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
-msgstr ""
+msgstr "\tUsar libxfce4ui: não\n"
 
 #: ../src/main.c:314
 #, c-format
