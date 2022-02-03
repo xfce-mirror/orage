@@ -106,7 +106,7 @@ msgstr "actualizar este reloj"
 
 #: ../globaltime/gt_prefs.c:582 ../globaltime/gt_prefs.c:1095
 msgid "add new empty clock"
-msgstr "añadir un reloj vacío nuevo"
+msgstr "añadir un reloj nuevo vacío"
 
 #: ../globaltime/gt_prefs.c:587
 msgid "add new clock using this clock as model"
@@ -118,7 +118,7 @@ msgstr "eliminar este reloj"
 
 #: ../globaltime/gt_prefs.c:600
 msgid "move this clock first"
-msgstr "mover este reloj a la primera posición"
+msgstr "mover este reloj al principio"
 
 #: ../globaltime/gt_prefs.c:605
 msgid "move this clock left"
@@ -134,9 +134,7 @@ msgstr "mover este reloj al final"
 
 #: ../globaltime/gt_prefs.c:623
 msgid "set the timezone of this clock to be local timezone"
-msgstr ""
-"establecer el huso horario para este reloj para que sea el huso horario "
-"local"
+msgstr "configurar el huso horario de este reloj como el huso horario local"
 
 #: ../globaltime/gt_prefs.c:629 ../globaltime/gt_prefs.c:1103
 msgid "close window and exit"
@@ -144,12 +142,12 @@ msgstr "cerrar la ventana y salir"
 
 #: ../globaltime/gt_prefs.c:652
 msgid "Globaltime preferences "
-msgstr "Preferencias de hora global"
+msgstr "Preferencias de la hora global"
 
 #. -----------------------HEADING-------------------------------------------
 #: ../globaltime/gt_prefs.c:665
 msgid "Clock Parameters"
-msgstr "Parámetros de reloj"
+msgstr "Parámetros del reloj"
 
 #: ../globaltime/gt_prefs.c:669
 msgid "Name of the clock:"
@@ -157,7 +155,7 @@ msgstr "Nombre del reloj:"
 
 #: ../globaltime/gt_prefs.c:678
 msgid "enter name of clock"
-msgstr "introduzca el nombre del reloj"
+msgstr "escriba el nombre del reloj"
 
 #: ../globaltime/gt_prefs.c:681
 msgid "Timezone of the clock:"
@@ -173,16 +171,16 @@ msgstr "_Abrir"
 
 #: ../globaltime/gt_prefs.c:714
 msgid "Text Formatting"
-msgstr "Formato de texto"
+msgstr "Formato del texto"
 
 #. ------------------------background-------------------------
 #: ../globaltime/gt_prefs.c:721 ../globaltime/gt_prefs.c:923
 msgid "Background color:"
-msgstr "Color de fondo:"
+msgstr "Color del fondo:"
 
 #: ../globaltime/gt_prefs.c:728
 msgid "Click to change background colour for clock"
-msgstr "Pulse para cambiar el color de fondo del reloj"
+msgstr "Haga clic para cambiar el color del fondo del reloj"
 
 #: ../globaltime/gt_prefs.c:737 ../globaltime/gt_prefs.c:769
 #: ../globaltime/gt_prefs.c:801 ../globaltime/gt_prefs.c:833
@@ -190,48 +188,45 @@ msgstr "Pulse para cambiar el color de fondo del reloj"
 #: ../globaltime/gt_prefs.c:939 ../globaltime/gt_prefs.c:971
 #: ../globaltime/gt_prefs.c:1003 ../globaltime/gt_prefs.c:1035
 msgid "Use default"
-msgstr "Usar predeterminado"
+msgstr "Usar el valor por defecto"
 
 #: ../globaltime/gt_prefs.c:742 ../globaltime/gt_prefs.c:774
 #: ../globaltime/gt_prefs.c:806 ../globaltime/gt_prefs.c:838
 #: ../globaltime/gt_prefs.c:870 ../globaltime/gt_prefs.c:898
 msgid "Cross this to use default instead of selected value"
-msgstr ""
-"Marcar con una cruz para utilizar el valor predeterminado en lugar del "
-"seleccionado"
+msgstr "Marque esta opción para usar el valor defecto en vez del seleccionado"
 
 #. ------------------------foreground-------------------------
 #: ../globaltime/gt_prefs.c:753 ../globaltime/gt_prefs.c:955
 msgid "Foreground (=text) color:"
-msgstr "Color de primer plano (=texto):"
+msgstr "Color del texto:"
 
 #: ../globaltime/gt_prefs.c:760
 msgid "Click to change foreground colour for clock"
-msgstr "Pulse para cambiar el color de primer plano del reloj"
+msgstr "Haga clic para cambiar el color del texto del reloj"
 
 #. ------------------------name font-------------------------
 #: ../globaltime/gt_prefs.c:785 ../globaltime/gt_prefs.c:987
 msgid "Font for name of clock:"
-msgstr "Tipo de letra para el nombre del reloj:"
+msgstr "Tipografía para el nombre del reloj:"
 
 #: ../globaltime/gt_prefs.c:792
 msgid "Click to change font for clock name"
-msgstr "Pulse para cambiar el tipo de letra del nombre del reloj"
+msgstr "Haga clic para cambiar la tipografía del nombre del reloj"
 
 #. ------------------------time font-------------------------
 #: ../globaltime/gt_prefs.c:817 ../globaltime/gt_prefs.c:1019
 msgid "Font for time of clock:"
-msgstr "Tipo de letra para la hora del reloj:"
+msgstr "Tipografía para la hora del reloj:"
 
 #: ../globaltime/gt_prefs.c:824
 msgid "Click to change font for clock time"
-msgstr ""
-"Pulse para cambiar el tipo de letra predeterminado de la hora del reloj"
+msgstr "Haga clic para cambiar la tipografía de la hora del reloj"
 
 #. ------------------------underline name--------------------
 #: ../globaltime/gt_prefs.c:849
 msgid "Underline name of clock:"
-msgstr "Subrayar nombre del reloj:"
+msgstr "Subrayar el nombre del reloj:"
 
 #. ------------------------underline time--------------------
 #: ../globaltime/gt_prefs.c:877
@@ -240,7 +235,7 @@ msgstr "Subrayar la hora del reloj:"
 
 #: ../globaltime/gt_prefs.c:916
 msgid "Text Default Formatting"
-msgstr "Formato de texto predeterminado"
+msgstr "Formato predeterminado del texto"
 
 #: ../globaltime/gt_prefs.c:930
 msgid "Click to change default background colour for clocks"
