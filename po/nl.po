@@ -10,9 +10,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: orage\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-01 15:01+0100\n"
+"POT-Creation-Date: 2022-02-02 00:50+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Pjotr <pjotrvertaalt@gmail.com>, 2022\n"
 "Language-Team: Dutch (https://www.transifex.com/xfce/teams/16840/nl/)\n"
@@ -888,7 +888,7 @@ msgstr ""
 
 #: ../src/appointment.c:2979
 msgid "_Colour"
-msgstr ""
+msgstr "_Kleur"
 
 #: ../src/appointment.c:2984
 msgid "update colors for categories."
@@ -1078,7 +1078,7 @@ msgstr ""
 
 #: ../src/appointment.c:3319 ../src/interface.c:1181 ../src/interface.c:1203
 msgid "_Execute"
-msgstr ""
+msgstr "_Uitvoeren"
 
 #: ../src/appointment.c:3321
 msgid "Test this alarm by raising it now"
@@ -1680,7 +1680,7 @@ msgstr "Alle afspraken"
 
 #: ../src/interface.c:1139
 msgid "Named appointments:"
-msgstr ""
+msgstr "Benoemde afspraken:"
 
 #: ../src/interface.c:1158
 msgid ""
@@ -1893,12 +1893,12 @@ msgstr "\tMet gebruik van Orage lokale versie van libical.\n"
 #: ../src/main.c:299
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
-msgstr ""
+msgstr "\tMet gebruikmaking van libxfce4ui: ja\n"
 
 #: ../src/main.c:301
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
-msgstr ""
+msgstr "\tMet gebruikmaking van libxfce4ui: nee\n"
 
 #: ../src/main.c:314
 #, c-format
