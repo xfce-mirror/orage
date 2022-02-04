@@ -11,9 +11,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: orage\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-01 15:01+0100\n"
+"POT-Creation-Date: 2022-02-02 00:50+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Priit Jõerüüt <transifex@joeruut.com>, 2022\n"
 "Language-Team: Estonian (https://www.transifex.com/xfce/teams/16840/et/)\n"
@@ -71,7 +71,7 @@ msgstr ""
 
 #: ../globaltime/globaltime.c:551
 msgid "adjust to change hour"
-msgstr "sättida tundide muutmiseks"
+msgstr "kohanda tundide muutmiseks"
 
 #: ../globaltime/globaltime.c:567
 msgid ""
@@ -96,47 +96,47 @@ msgstr "Viimast kella ei ole võimalik kustutada."
 
 #: ../globaltime/gt_prefs.c:577
 msgid "update this clock"
-msgstr "uuendada seda kella"
+msgstr "uuenda seda kella"
 
 #: ../globaltime/gt_prefs.c:582 ../globaltime/gt_prefs.c:1095
 msgid "add new empty clock"
-msgstr "lisada uus tühi kell"
+msgstr "lisa uus tühi kell"
 
 #: ../globaltime/gt_prefs.c:587
 msgid "add new clock using this clock as model"
-msgstr "lisada uus kell, kasutades mudelina käesolevat kella"
+msgstr "lisa uus kell, kasutades näidisena käesolevat kella"
 
 #: ../globaltime/gt_prefs.c:592
 msgid "delete this clock"
-msgstr "kustutada see kell"
+msgstr "kustuta see kell"
 
 #: ../globaltime/gt_prefs.c:600
 msgid "move this clock first"
-msgstr "esmalt liigutada seda kella"
+msgstr "esmalt liiguta seda kella"
 
 #: ../globaltime/gt_prefs.c:605
 msgid "move this clock left"
-msgstr "liigutada seda kella vasakule"
+msgstr "liiguta seda kella vasakule"
 
 #: ../globaltime/gt_prefs.c:610
 msgid "move this clock right"
-msgstr "liigutada seda kella paremale"
+msgstr "liiguta seda kella paremale"
 
 #: ../globaltime/gt_prefs.c:615
 msgid "move this clock last"
-msgstr "liigutada seda kella viimasena"
+msgstr "liiguta see kell viimaseks"
 
 #: ../globaltime/gt_prefs.c:623
 msgid "set the timezone of this clock to be local timezone"
-msgstr "määrata selle kella ajavööndiks kohalik ajavöönd"
+msgstr "määra selle kella ajavööndiks kohalik ajavöönd"
 
 #: ../globaltime/gt_prefs.c:629 ../globaltime/gt_prefs.c:1103
 msgid "close window and exit"
-msgstr "sulgeda aken ja väljuda"
+msgstr "sulge aken ja välju"
 
 #: ../globaltime/gt_prefs.c:652
 msgid "Globaltime preferences "
-msgstr ""
+msgstr "GlobalTime'i eelistused"
 
 #. -----------------------HEADING-------------------------------------------
 #: ../globaltime/gt_prefs.c:665
@@ -149,7 +149,7 @@ msgstr "Selle kella nimetus:"
 
 #: ../globaltime/gt_prefs.c:678
 msgid "enter name of clock"
-msgstr "sisestage kellale nimetus"
+msgstr "sisesta kellale nimetus"
 
 #: ../globaltime/gt_prefs.c:681
 msgid "Timezone of the clock:"
@@ -174,7 +174,7 @@ msgstr "Taustavärv:"
 
 #: ../globaltime/gt_prefs.c:728
 msgid "Click to change background colour for clock"
-msgstr "Klõpsake, et muuta kella taustavärvi"
+msgstr "Kella taustavärvi muutmiseks klõpsa"
 
 #: ../globaltime/gt_prefs.c:737 ../globaltime/gt_prefs.c:769
 #: ../globaltime/gt_prefs.c:801 ../globaltime/gt_prefs.c:833
@@ -182,13 +182,13 @@ msgstr "Klõpsake, et muuta kella taustavärvi"
 #: ../globaltime/gt_prefs.c:939 ../globaltime/gt_prefs.c:971
 #: ../globaltime/gt_prefs.c:1003 ../globaltime/gt_prefs.c:1035
 msgid "Use default"
-msgstr "Kasutada vaikeseadet"
+msgstr "Kasuta vaikeseadet"
 
 #: ../globaltime/gt_prefs.c:742 ../globaltime/gt_prefs.c:774
 #: ../globaltime/gt_prefs.c:806 ../globaltime/gt_prefs.c:838
 #: ../globaltime/gt_prefs.c:870 ../globaltime/gt_prefs.c:898
 msgid "Cross this to use default instead of selected value"
-msgstr "Märkige, et kasutada vaikeseadet, mitte valitud väärtust"
+msgstr "Märgi, et kasutada vaikeseadet, mitte valitud väärtust"
 
 #. ------------------------foreground-------------------------
 #: ../globaltime/gt_prefs.c:753 ../globaltime/gt_prefs.c:955
@@ -197,7 +197,7 @@ msgstr "Esiplaani (=tekst) värv:"
 
 #: ../globaltime/gt_prefs.c:760
 msgid "Click to change foreground colour for clock"
-msgstr "Klõpsake, et muuta kella esiplaani värvi"
+msgstr "Kella esiplaani värvi muutmiseks klõpsa"
 
 #. ------------------------name font-------------------------
 #: ../globaltime/gt_prefs.c:785 ../globaltime/gt_prefs.c:987
@@ -206,7 +206,7 @@ msgstr "Kellanime font:"
 
 #: ../globaltime/gt_prefs.c:792
 msgid "Click to change font for clock name"
-msgstr "Klõpsake, et muuta kella nime fonti"
+msgstr "Kella nime fondi muutmiseks klõpsa"
 
 #. ------------------------time font-------------------------
 #: ../globaltime/gt_prefs.c:817 ../globaltime/gt_prefs.c:1019
@@ -215,7 +215,7 @@ msgstr "Kellaaja font:"
 
 #: ../globaltime/gt_prefs.c:824
 msgid "Click to change font for clock time"
-msgstr "Klõpsake, et muuta kellaaja fonti"
+msgstr "Kellaaja fondi muutmiseks klõpsa"
 
 #. ------------------------underline name--------------------
 #: ../globaltime/gt_prefs.c:849
@@ -233,23 +233,23 @@ msgstr "Vaikimisi vormistus tekstile"
 
 #: ../globaltime/gt_prefs.c:930
 msgid "Click to change default background colour for clocks"
-msgstr "Klõpsake, et muuta kellade vaikimisi taustavärvi"
+msgstr "Kellade vaikimisi taustavärvi muutmiseks klõpsa"
 
 #: ../globaltime/gt_prefs.c:944 ../globaltime/gt_prefs.c:976
 msgid "Cross this to use system default instead of selected color"
-msgstr "Märkige, et kasutada vaikeseadet, mitte valitud värvi"
+msgstr "Märgi, et kasutada vaikeseadet, mitte valitud värvi"
 
 #: ../globaltime/gt_prefs.c:962
 msgid "Click to change default text colour for clocks"
-msgstr "Klõpsake, et muuta kellade vaikimisi tekstivärvi"
+msgstr "Kellade vaikimisi tekstivärvi muutmiseks klõpsa"
 
 #: ../globaltime/gt_prefs.c:994
 msgid "Click to change default font for clock name"
-msgstr "Klõpsake, et muuta kellanimede vaikimisi fonti"
+msgstr "Kellanimede vaikimisi fondi muutmiseks klõpsa"
 
 #: ../globaltime/gt_prefs.c:1008 ../globaltime/gt_prefs.c:1040
 msgid "Cross this to use system default font instead of selected font"
-msgstr "Märkige, et kasutada vaikeseadet, mitte valitud fonti"
+msgstr "Märgi, et kasutada vaikeseadet, mitte valitud fonti"
 
 #: ../globaltime/gt_prefs.c:1026
 msgid "Click to change default font for clock time"
@@ -267,11 +267,11 @@ msgstr "Kellaaja allajoonimine:"
 
 #: ../globaltime/gt_prefs.c:1088
 msgid "update preferences"
-msgstr "uuendada eelistusi"
+msgstr "uuenda eelistusi"
 
 #: ../globaltime/gt_prefs.c:1122
 msgid "Globaltime Preferences"
-msgstr ""
+msgstr "GlobalTime'i eelistused"
 
 #. -----------------------HEADING--------------------------------------
 #: ../globaltime/gt_prefs.c:1133
@@ -553,7 +553,7 @@ msgstr ""
 
 #: ../panel-plugin/oc_config.c:501
 msgid "Orage clock Preferences"
-msgstr ""
+msgstr "Orage'i kella eelistused"
 
 #: ../panel-plugin/oc_config.c:505 ../src/day-view.c:403
 #: ../src/event-list.c:1237 ../src/interface.c:876
@@ -1857,7 +1857,7 @@ msgstr "--help (-h) \t\ttrükkida see tekst\n"
 #: ../src/main.c:318
 #, c-format
 msgid "--preferences (-p) \tshow preferences form\n"
-msgstr "--preferences (-p) \tnäidata eelistuste ankeeti\n"
+msgstr "--preferences (-p) \tnäita eelistuste valikuid\n"
 
 #: ../src/main.c:319
 #, c-format
@@ -2208,7 +2208,7 @@ msgstr ""
 
 #: ../src/parameters.c:1188
 msgid "Orage Preferences"
-msgstr "Orage'i seadistused"
+msgstr "Orage'i eelistused"
 
 #: ../src/parameters.c:1212 ../src/reminder.c:800
 msgid "_Close"
