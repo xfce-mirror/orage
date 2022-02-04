@@ -6,19 +6,19 @@
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2022
 # Andrij Mizyk <andmizyk@gmail.com>, 2022
-# Yarema aka Knedlyk <yupadmin@gmail.com>, 2022
 # Vasyl Khrystiuk <h6.msangel@gmail.com>, 2022
 # dsafsadf <heneral@gmail.com>, 2022
 # zubr139, 2022
+# Yarema aka Knedlyk <yupadmin@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: orage\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-01 15:01+0100\n"
+"POT-Creation-Date: 2022-02-02 00:50+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: zubr139, 2022\n"
+"Last-Translator: Yarema aka Knedlyk <yupadmin@gmail.com>, 2022\n"
 "Language-Team: Ukrainian (https://www.transifex.com/xfce/teams/16840/uk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -891,7 +891,7 @@ msgstr ""
 
 #: ../src/appointment.c:2979
 msgid "_Colour"
-msgstr ""
+msgstr "_Колір"
 
 #: ../src/appointment.c:2984
 msgid "update colors for categories."
@@ -1083,7 +1083,7 @@ msgstr ""
 
 #: ../src/appointment.c:3319 ../src/interface.c:1181 ../src/interface.c:1203
 msgid "_Execute"
-msgstr ""
+msgstr "_Виконати"
 
 #: ../src/appointment.c:3321
 msgid "Test this alarm by raising it now"
@@ -1104,7 +1104,7 @@ msgstr "Запам'ятати поточні параметри як типов�
 
 #: ../src/appointment.c:3350
 msgid "_Revert"
-msgstr ""
+msgstr "_Повернути"
 
 #: ../src/appointment.c:3358
 msgid "Set current settings from default alarm"
@@ -1685,7 +1685,7 @@ msgstr "Всі події"
 
 #: ../src/interface.c:1139
 msgid "Named appointments:"
-msgstr ""
+msgstr "Названі зустрічі:"
 
 #: ../src/interface.c:1158
 msgid ""
@@ -1896,12 +1896,12 @@ msgstr "\tВикористовуючи локальну версію Orage libic
 #: ../src/main.c:299
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
-msgstr ""
+msgstr "\tВикористання libxfce4ui: так\n"
 
 #: ../src/main.c:301
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
-msgstr ""
+msgstr "\tВикористання libxfce4ui: ні\n"
 
 #: ../src/main.c:314
 #, c-format
@@ -2334,7 +2334,7 @@ msgstr "Нагадування - Orage"
 
 #: ../src/reminder.c:808
 msgid "_Stop"
-msgstr ""
+msgstr "_Стоп"
 
 #: ../src/reminder.c:816
 msgid "Postpone"
