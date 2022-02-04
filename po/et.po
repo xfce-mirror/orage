@@ -348,12 +348,12 @@ msgstr ""
 #: ../globaltime/timezone_selection.c:164
 #: ../panel-plugin/timezone_selection.c:163 ../src/timezone_selection.c:176
 msgid "backward"
-msgstr ""
+msgstr "tagasi"
 
 #: ../globaltime/timezone_selection.c:167
 #: ../panel-plugin/timezone_selection.c:166 ../src/timezone_selection.c:179
 msgid "forward"
-msgstr ""
+msgstr "edasi"
 
 #: ../globaltime/timezone_selection.c:191
 #: ../panel-plugin/timezone_selection.c:190 ../src/timezone_selection.c:203
@@ -4539,7 +4539,7 @@ msgstr ""
 
 #: ../plugin/xfce-xfcalendar-settings.desktop.in.h:1
 msgid "Orage preferences"
-msgstr ""
+msgstr "Orage'i eelistused"
 
 #: ../plugin/xfce-xfcalendar-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Calendar Application (Orage)"
@@ -4547,7 +4547,7 @@ msgstr ""
 
 #: ../plugin/xfce-xfcalendar-settings.desktop.in.h:3
 msgid "Orage Calendar Preferences"
-msgstr ""
+msgstr "Orage'i kalendri eelistused"
 
 #: ../plugin/xfce-xfcalendar-settings.desktop.in.h:4
 #: ../xfcalendar.desktop.in.h:3
