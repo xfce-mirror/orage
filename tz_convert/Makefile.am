@@ -1,4 +1,4 @@
-if HAVE_LIBPOTPT
+if HAVE_LIBPOPT
 bin_PROGRAMS = tz_convert
 endif
 
@@ -16,15 +16,13 @@ tz_convert_SOURCES =						\
 tz_convert_CFLAGS =						\
 	-DPACKAGE_DATA_DIR=\""$(datadir)"\"				\
 	-DPACKAGE_LOCALE_DIR=\""$(localedir)"\" \
-	$(GLIB_CFLAGS)
-
-tz_convert_LDFLAGS =                        \
-	-lpopt
-
+	$(GLIB_CFLAGS)				\
+	$(LIBPOPT_CFLAGS)
 
 tz_convert_LDADD =						\
 	$(INTLLIBS) \
-	$(GLIB_LIBS)
+	$(GLIB_LIBS) \
+	$(LIBPOPT_LIBS)
 
 EXTRA_DIST =							\
 	$(man_MANS)								\

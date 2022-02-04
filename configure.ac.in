@@ -21,6 +21,7 @@ m4_define([dbus_minimum_version], [0.1])
 m4_define([notify_minimum_version], [0.3.2])
 m4_define([intltool_minimum_version], [0.35])
 m4_define([libical_minimum_version], [3.0])
+m4_define([libpopt_minimum_version], [1.18])
 
 
 dnl # DO NOT MODIFY ANYTHING BELOW THIS LINE, UNLESS YOU KNOW WHAT
@@ -260,11 +261,9 @@ XDT_CHECK_OPTIONAL_PACKAGE([NOTIFY], [libnotify],
 dnl **************************************
 dnl *** Check support for libpopt      ***
 dnl **************************************
-AC_CHECK_LIB([popt], [poptGetContext],
-        [have_popt="yes"
-         AC_DEFINE([HAVE_LIBPOTPT], [1], [Define if we have popt])
-        ])
-AM_CONDITIONAL([HAVE_LIBPOTPT], [test x"$have_popt" = x"yes"])
+XDT_CHECK_OPTIONAL_PACKAGE([LIBPOPT], [popt],
+                           [libpopt_minimum_version], [libpopt],
+                           [LIBPOPT support])
 
 dnl ************************************************
 dnl *** Optional support for automatic archiving ***
@@ -356,7 +355,7 @@ else
 echo "* LIBICAL support:           no. Using Orage local libical"
 fi
 echo "* Automatic archiving:       $have_archive"
-if test x"$have_popt" = x"yes"; then
+if test x"$LIBPOPT_FOUND" = x"yes"; then
 echo "* libpopt available:         yes, building tz_convert"
 else
 echo "* libpopt not available:     no, not building tz_convert"
