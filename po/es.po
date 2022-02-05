@@ -81,8 +81,8 @@ msgstr "ajuste para cambiar la hora"
 msgid ""
 "adjust to change minute. Click arrows with button 2 to change only 1 minute."
 msgstr ""
-"ajuste para cambiar minutos. Pulse en las flechas con el segundo botón para "
-"cambiar solamente 1 minuto."
+"ajuste para cambiar minutos. Haga clic en las flechas con el botón 2 para "
+"cambiar solo 1 minuto."
 
 #: ../globaltime/globaltime.c:621
 msgid "Global Time"
@@ -244,8 +244,7 @@ msgstr "Pulse para cambiar el color de fondo predeterminado para los relojes"
 #: ../globaltime/gt_prefs.c:944 ../globaltime/gt_prefs.c:976
 msgid "Cross this to use system default instead of selected color"
 msgstr ""
-"Marcar para usar el color de sistema predeterminado en lugar del "
-"seleccionado"
+"Marcar para usar el color de sistema predeterminado en vez del seleccionado"
 
 #: ../globaltime/gt_prefs.c:962
 msgid "Click to change default text colour for clocks"
