@@ -239,7 +239,8 @@ msgstr "Formato predeterminado del texto"
 
 #: ../globaltime/gt_prefs.c:930
 msgid "Click to change default background colour for clocks"
-msgstr "Pulse para cambiar el color de fondo predeterminado para los relojes"
+msgstr ""
+"Haga clic para cambiar el color del fondo predeterminado para los relojes"
 
 #: ../globaltime/gt_prefs.c:944 ../globaltime/gt_prefs.c:976
 msgid "Cross this to use system default instead of selected color"
@@ -248,23 +249,24 @@ msgstr ""
 
 #: ../globaltime/gt_prefs.c:962
 msgid "Click to change default text colour for clocks"
-msgstr "Pulse para cambiar el color de texto predeterminado para los relojes"
+msgstr ""
+"Haga clic para cambiar el color del texto predeterminado para los relojes"
 
 #: ../globaltime/gt_prefs.c:994
 msgid "Click to change default font for clock name"
 msgstr ""
-"Pulse para cambiar el tipo de letra predeterminado del nombre del reloj"
+"Haga clic para cambiar la tipografía predeterminada del nombre del reloj"
 
 #: ../globaltime/gt_prefs.c:1008 ../globaltime/gt_prefs.c:1040
 msgid "Cross this to use system default font instead of selected font"
 msgstr ""
-"Marcar para usar el tipo de letra predeterminado del sistema en lugar del "
-"tipo de letra seleccionado"
+"Marcar para usar la tipografía predeterminada del sistema en vez de la "
+"tipografía seleccionada"
 
 #: ../globaltime/gt_prefs.c:1026
 msgid "Click to change default font for clock time"
 msgstr ""
-"Pulse para cambiar el tipo de letra predeterminado para la hora del reloj"
+"Haga clic para cambiar la tipografía predeterminada para la hora del reloj"
 
 #. ------------------------underline name--------------------
 #: ../globaltime/gt_prefs.c:1051
@@ -278,11 +280,11 @@ msgstr "Subrayado para la hora del reloj:"
 
 #: ../globaltime/gt_prefs.c:1088
 msgid "update preferences"
-msgstr "Actualizar preferencias"
+msgstr "actualizar las preferencias"
 
 #: ../globaltime/gt_prefs.c:1122
 msgid "Globaltime Preferences"
-msgstr "Preferencias de hora global"
+msgstr "Preferencias de la hora global"
 
 #. -----------------------HEADING--------------------------------------
 #: ../globaltime/gt_prefs.c:1133
@@ -299,15 +301,15 @@ msgstr "Estándar"
 
 #: ../globaltime/gt_prefs.c:1144
 msgid "Use normal decorations"
-msgstr "Usar decoraciones normales"
+msgstr "Usar las decoraciones normales"
 
 #: ../globaltime/gt_prefs.c:1149 ../src/appointment.c:3424
 msgid "None"
-msgstr "Ninguno"
+msgstr "Desactivar"
 
 #: ../globaltime/gt_prefs.c:1156
 msgid "Do not show window decorations (borders)"
-msgstr "No mostrar decoración de ventana (bordes)"
+msgstr "No mostrar las decoraciones de la ventana (bordes)"
 
 #: ../globaltime/gt_prefs.c:1162
 msgid "Clock size:"
@@ -327,7 +329,7 @@ msgstr "Variable"
 
 #: ../globaltime/gt_prefs.c:1181
 msgid "Clock sizes vary"
-msgstr "Los tamaños de reloj varían"
+msgstr "El tamaño de los relojes varían"
 
 #: ../globaltime/gt_prefs.c:1187
 msgid "Local timezone:"
@@ -342,19 +344,19 @@ msgstr "Otras"
 #: ../panel-plugin/timezone_selection.c:152 ../src/timezone_selection.c:165
 #, c-format
 msgid "%d hour %d mins"
-msgstr "%d horas %d minutos"
+msgstr "%d h %d min"
 
 #: ../globaltime/timezone_selection.c:156
 #: ../panel-plugin/timezone_selection.c:155 ../src/timezone_selection.c:168
 #, c-format
 msgid "%d hour"
-msgstr "%d horas"
+msgstr "%d h"
 
 #: ../globaltime/timezone_selection.c:158
 #: ../panel-plugin/timezone_selection.c:157 ../src/timezone_selection.c:170
 #, c-format
 msgid "%d mins"
-msgstr "%d mins"
+msgstr "%d min"
 
 #: ../globaltime/timezone_selection.c:164
 #: ../panel-plugin/timezone_selection.c:163 ../src/timezone_selection.c:176
@@ -388,7 +390,7 @@ msgstr "Localización"
 #: ../globaltime/timezone_selection.c:255
 #: ../panel-plugin/timezone_selection.c:254 ../src/timezone_selection.c:267
 msgid "GMT Offset"
-msgstr "Base GMT"
+msgstr "Diferencia con GMT"
 
 #: ../globaltime/timezone_selection.c:261
 #: ../panel-plugin/timezone_selection.c:260 ../src/timezone_selection.c:273
@@ -419,7 +421,7 @@ msgstr "Escoja un huso horario"
 #: ../panel-plugin/timezone_selection.c:309 ../src/timezone_selection.c:320
 #: ../src/timezone_selection.c:329 ../src/timezone_selection.c:340
 msgid "Change mode"
-msgstr "Cambiar modo"
+msgstr "Cambiar el modo"
 
 #: ../globaltime/timezone_selection.c:304
 #: ../globaltime/timezone_selection.c:314
@@ -455,7 +457,7 @@ msgstr "Hora global"
 
 #: ../panel-plugin/oc_config.c:254
 msgid "No rotation"
-msgstr "Sin Rotación"
+msgstr "Sin rotación"
 
 #: ../panel-plugin/oc_config.c:254
 msgid "Rotate left"
@@ -1391,7 +1393,8 @@ msgstr "No se seleccionó ninguna fila."
 
 #: ../src/event-list.c:810
 msgid "Click a row to select it and after that you can copy it."
-msgstr "Pulse en una fila para seleccionarla y para poder copiarla después."
+msgstr ""
+"Haga clic en una fila para seleccionarla y para poder copiarla después."
 
 #: ../src/event-list.c:1006
 msgid ""
@@ -1986,8 +1989,8 @@ msgid ""
 "\twithout dbus [files] and foreign file options(-a & -r) can only be used "
 "when starting orage \n"
 msgstr ""
-"\tsin dbus las opciones (-a y -r) para [archivos] y archivos externos "
-"solamente pueden ser usadas al iniciar Orage \n"
+"\tsin dbus [archivos] y las opciones para archivos externos (-a y -r),  solo"
+" se puede usar al iniciar Orage\n"
 
 #: ../src/main.c:536
 #, c-format
@@ -2281,9 +2284,9 @@ msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
 msgstr ""
-"Use este temporizador si Orage tiene problemas al activarse luego de "
-"suspender o hibernar. (Por ejemplo, el icono de la bandeja no se actualiza o"
-" las alarmas no se activan)"
+"Use este temporizador si Orage tiene problemas al activarse después de "
+"suspender o hibernar. el sistema. (Por ejemplo, si el icono de la bandeja no"
+" se actualiza o las alarmas no se activan.)"
 
 #: ../src/parameters.c:1111
 msgid "Foreign file default visual alarm"
@@ -2311,9 +2314,9 @@ msgid ""
 "option changes Orage to quit and never stay in background when it is asked "
 "to close."
 msgstr ""
-"Por omisión, Orage permanece abierto en el fondo cuando se le pide cerrar. "
-"Esta opción hace que Orage salga y nunca permanezca abierto en el fondo "
-"cuando es cerrado"
+"Por defecto, Orage permanece abierto en segundo plano cuando se le pide que "
+"se cierre. Esta opción hace que Orage se cierre y no permanezca en segundo "
+"plano."
 
 #: ../src/parameters.c:1188
 msgid "Orage Preferences"
@@ -2325,7 +2328,7 @@ msgstr "_Cerrar"
 
 #: ../src/parameters.c:1299
 msgid "First Orage start. Searching default timezone."
-msgstr "Primer inicio de Orage. Buscando huso horario predeterminado."
+msgstr "Primer inicio de Orage. Búsqueda del huso horario predeterminado."
 
 #: ../src/parameters.c:1318
 #, c-format
@@ -4640,7 +4643,7 @@ msgstr "Salir"
 
 #: ../panel-plugin/xfce4-orageclock-plugin.desktop.in.h:1
 msgid "Orage Panel Clock"
-msgstr "Panel de reloj Orage"
+msgstr "Reloj del panel Orage"
 
 #: ../panel-plugin/xfce4-orageclock-plugin.desktop.in.h:2
 msgid "Show time and date?"
@@ -4652,11 +4655,11 @@ msgstr "Preferencias de Orage"
 
 #: ../plugin/xfce-xfcalendar-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Calendar Application (Orage)"
-msgstr "Configuración para la aplicación de calendario de Xfce (Orage)"
+msgstr "Configuración de la aplicación de calendario de Xfce 4 (Orage)"
 
 #: ../plugin/xfce-xfcalendar-settings.desktop.in.h:3
 msgid "Orage Calendar Preferences"
-msgstr "Preferencias de calendario de Orage"
+msgstr "Preferencias del calendario Orage"
 
 #: ../plugin/xfce-xfcalendar-settings.desktop.in.h:4
 #: ../xfcalendar.desktop.in.h:3
