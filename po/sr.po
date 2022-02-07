@@ -10,9 +10,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: orage\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-01 15:01+0100\n"
+"POT-Creation-Date: 2022-02-02 00:50+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Саша Петровић <salepetronije@gmail.com>, 2022\n"
 "Language-Team: Serbian (https://www.transifex.com/xfce/teams/16840/sr/)\n"
@@ -105,7 +105,7 @@ msgstr "додајте нови празан часовник"
 
 #: ../globaltime/gt_prefs.c:587
 msgid "add new clock using this clock as model"
-msgstr "додајте нови часовник користећи овај као модел"
+msgstr "додајте нови часовник користећи овај као образац"
 
 #: ../globaltime/gt_prefs.c:592
 msgid "delete this clock"
@@ -142,7 +142,7 @@ msgstr "Поставке општег времена "
 #. -----------------------HEADING-------------------------------------------
 #: ../globaltime/gt_prefs.c:665
 msgid "Clock Parameters"
-msgstr "Параметри часовника"
+msgstr "Одреднице часовника"
 
 #: ../globaltime/gt_prefs.c:669
 msgid "Name of the clock:"
@@ -166,7 +166,7 @@ msgstr "_Отвори"
 
 #: ../globaltime/gt_prefs.c:714
 msgid "Text Formatting"
-msgstr "Обликовање текста"
+msgstr "Обликовање писма"
 
 #. ------------------------background-------------------------
 #: ../globaltime/gt_prefs.c:721 ../globaltime/gt_prefs.c:923
@@ -175,7 +175,7 @@ msgstr "Боја позадине:"
 
 #: ../globaltime/gt_prefs.c:728
 msgid "Click to change background colour for clock"
-msgstr "Кликните да измените боју позадине часовника"
+msgstr "Кликните ради измене боје позадине часовника"
 
 #: ../globaltime/gt_prefs.c:737 ../globaltime/gt_prefs.c:769
 #: ../globaltime/gt_prefs.c:801 ../globaltime/gt_prefs.c:833
@@ -189,17 +189,16 @@ msgstr "Користи основно"
 #: ../globaltime/gt_prefs.c:806 ../globaltime/gt_prefs.c:838
 #: ../globaltime/gt_prefs.c:870 ../globaltime/gt_prefs.c:898
 msgid "Cross this to use default instead of selected value"
-msgstr ""
-"Штиклирајте ово да би била коришћена основна уместо изабране вредности"
+msgstr "Означите ово ради коришћења основне уместо изабране вредности"
 
 #. ------------------------foreground-------------------------
 #: ../globaltime/gt_prefs.c:753 ../globaltime/gt_prefs.c:955
 msgid "Foreground (=text) color:"
-msgstr "Боја прочеља (=текста):"
+msgstr "Боја прочеља (=писма):"
 
 #: ../globaltime/gt_prefs.c:760
 msgid "Click to change foreground colour for clock"
-msgstr "Кликните да измените боју прочеља часовника"
+msgstr "Кликните ради измене боје прочеља часовника"
 
 #. ------------------------name font-------------------------
 #: ../globaltime/gt_prefs.c:785 ../globaltime/gt_prefs.c:987
@@ -208,7 +207,7 @@ msgstr "Писмо за назив часовника:"
 
 #: ../globaltime/gt_prefs.c:792
 msgid "Click to change font for clock name"
-msgstr "Кликните да измените словни лик за назив часовника"
+msgstr "Кликните ради измене словног лика за назив часовника"
 
 #. ------------------------time font-------------------------
 #: ../globaltime/gt_prefs.c:817 ../globaltime/gt_prefs.c:1019
@@ -217,7 +216,7 @@ msgstr "Писмо за време часовника:"
 
 #: ../globaltime/gt_prefs.c:824
 msgid "Click to change font for clock time"
-msgstr "Кликните да измените словни лик за време часовника"
+msgstr "Кликните ради измене словног лика за време часовника"
 
 #. ------------------------underline name--------------------
 #: ../globaltime/gt_prefs.c:849
@@ -231,32 +230,31 @@ msgstr "Подвучено време часовника:"
 
 #: ../globaltime/gt_prefs.c:916
 msgid "Text Default Formatting"
-msgstr "Основно обликовање текста"
+msgstr "Основно обликовање писма"
 
 #: ../globaltime/gt_prefs.c:930
 msgid "Click to change default background colour for clocks"
-msgstr "Кликните да измените основну боју позадине часовника"
+msgstr "Кликните ради измене основне боје позадине часовника"
 
 #: ../globaltime/gt_prefs.c:944 ../globaltime/gt_prefs.c:976
 msgid "Cross this to use system default instead of selected color"
-msgstr "Штиклирајте ово да би била коришћена основна уместо изабране боје"
+msgstr "Означите ово ради коришћења основне уместо изабране боје"
 
 #: ../globaltime/gt_prefs.c:962
 msgid "Click to change default text colour for clocks"
-msgstr "Кликните да измените основну боју текста часовника"
+msgstr "Кликните ради измене основне боје писма часовника"
 
 #: ../globaltime/gt_prefs.c:994
 msgid "Click to change default font for clock name"
-msgstr "Кликните да измените основни словни лик за назив часовника"
+msgstr "Кликните ради измене основног словног лика за назив часовника"
 
 #: ../globaltime/gt_prefs.c:1008 ../globaltime/gt_prefs.c:1040
 msgid "Cross this to use system default font instead of selected font"
-msgstr ""
-"Штиклирајте ово да би било коришћен основни уместо изабраног словног лика"
+msgstr "Означите ово ради коришћења основног уместо изабраног словног лика"
 
 #: ../globaltime/gt_prefs.c:1026
 msgid "Click to change default font for clock time"
-msgstr "Кликните да измените основни словни лик за време часовника"
+msgstr "Кликните ради измене основног словног лика за време часовника"
 
 #. ------------------------underline name--------------------
 #: ../globaltime/gt_prefs.c:1051
@@ -323,7 +321,7 @@ msgstr "Величине часовника ће се разликовати"
 
 #: ../globaltime/gt_prefs.c:1187
 msgid "Local timezone:"
-msgstr "Месна временска област:"
+msgstr "Местна временска област:"
 
 #: ../globaltime/timezone_selection.c:98
 #: ../panel-plugin/timezone_selection.c:97 ../src/timezone_selection.c:99
@@ -380,12 +378,12 @@ msgstr "Место"
 #: ../globaltime/timezone_selection.c:255
 #: ../panel-plugin/timezone_selection.c:254 ../src/timezone_selection.c:267
 msgid "GMT Offset"
-msgstr "ГМТ померај"
+msgstr "Померај ГМТ-а"
 
 #: ../globaltime/timezone_selection.c:261
 #: ../panel-plugin/timezone_selection.c:260 ../src/timezone_selection.c:273
 msgid "Previous/Next Change"
-msgstr "Претходна/Наредна измена"
+msgstr "Претходна/наредна измена"
 
 #: ../globaltime/timezone_selection.c:266
 #: ../panel-plugin/timezone_selection.c:265 ../src/timezone_selection.c:278
@@ -411,7 +409,7 @@ msgstr "Изаберите временску област"
 #: ../panel-plugin/timezone_selection.c:309 ../src/timezone_selection.c:320
 #: ../src/timezone_selection.c:329 ../src/timezone_selection.c:340
 msgid "Change mode"
-msgstr "Режим измене"
+msgstr "Начин измене"
 
 #: ../globaltime/timezone_selection.c:304
 #: ../globaltime/timezone_selection.c:314
@@ -422,7 +420,7 @@ msgstr "Режим измене"
 #: ../src/timezone_selection.c:330 ../src/timezone_selection.c:341
 #: ../src/timezone_selection.c:380
 msgid "UTC"
-msgstr "КУВ"
+msgstr "УТЦ"
 
 #. NOTE: this exists only if ical timezones are being used
 #: ../globaltime/timezone_selection.c:305
@@ -513,7 +511,7 @@ msgstr "Ред %d:"
 
 #: ../panel-plugin/oc_config.c:400
 msgid "Enter any valid strftime function parameter."
-msgstr "Унесите неки исправан параметар функције временске ниске."
+msgstr "Унесите неку исправну одредницу функције временске ниске."
 
 #. Tooltip hint
 #: ../panel-plugin/oc_config.c:439
@@ -536,8 +534,8 @@ msgstr ""
 "Ово вам је потребно само ако радите краткорочно (мање од 5 сати) обустављање"
 " или замрзавање а у вашем видљивом времену нису приказане секунде. Под овим "
 "околностима могуће је да Оражов часовник приказује нетачно време осим ако "
-"нисте изабрали ово. (Бирање овога штити процесор и прекида функције чувања "
-"од дејствовања.)"
+"нисте изабрали ово. (Бирање овога штити процесор и прекида дејства чувања од"
+" чињења.)"
 
 #: ../panel-plugin/oc_config.c:471
 msgid ""
@@ -557,7 +555,7 @@ msgstr ""
 "\t%c = датум и време\t\t%R = сат и минут\n"
 "\t%V = број седмице\t\t%Z = временска област у употреби\n"
 "\t%H = сати \t\t        %M = минут\n"
-"\t%X = месно време\t\t%x = месни датум"
+"\t%X = местно време\t\t%x = месни датум"
 
 #: ../panel-plugin/oc_config.c:501
 msgid "Orage clock Preferences"
@@ -586,7 +584,7 @@ msgstr "Одржавалац"
 
 #: ../src/about-xfcalendar.c:52
 msgid "Manage your time with Orage"
-msgstr "Управљајте вашим временом са Оранжом"
+msgstr "Управљајте вашим временом са Оражом"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -601,7 +599,7 @@ msgstr "Рок"
 
 #: ../src/appointment.c:501 ../src/mainbox.c:883
 msgid "Orage"
-msgstr "Ораже"
+msgstr "Ораж"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
@@ -717,7 +715,7 @@ msgstr "Додајте нову категорију са бојом"
 
 #: ../src/appointment.c:2172
 msgid "Category:"
-msgstr "Категорија:"
+msgstr "Врста:"
 
 #: ../src/appointment.c:2188 ../src/interface.c:1451
 msgid "_Add"
@@ -725,7 +723,7 @@ msgstr "_Додај"
 
 #: ../src/appointment.c:2217
 msgid "Colors of categories - Orage"
-msgstr "Боје категорија — Ораж"
+msgstr "Боје врста — Ораж"
 
 #: ../src/appointment.c:2263
 msgid " *** COPY ***"
@@ -882,16 +880,16 @@ msgid ""
 "This is special category, which can be used to color this appointment in "
 "list views."
 msgstr ""
-"Ово је посебна категорија, која може бити коришћена да обоји овај састанак у"
-" прегледу списком."
+"Ово је посебна врста, која може бити коришћена да обоји овај састанак у "
+"прегледу списком."
 
 #: ../src/appointment.c:2979
 msgid "_Colour"
-msgstr ""
+msgstr "_Боја"
 
 #: ../src/appointment.c:2984
 msgid "update colors for categories."
-msgstr "освежите боје за категорије."
+msgstr "освежите боје за врсте."
 
 #. priority
 #: ../src/appointment.c:2990
@@ -1007,7 +1005,7 @@ msgstr "пута"
 
 #: ../src/appointment.c:3219
 msgid "sec interval"
-msgstr "период секунди"
+msgstr "међувреме у секундама"
 
 #. **** Display Alarm ****
 #: ../src/appointment.c:3229
@@ -1077,7 +1075,7 @@ msgstr ""
 
 #: ../src/appointment.c:3319 ../src/interface.c:1181 ../src/interface.c:1203
 msgid "_Execute"
-msgstr ""
+msgstr "-Изврши"
 
 #: ../src/appointment.c:3321
 msgid "Test this alarm by raising it now"
@@ -1279,7 +1277,7 @@ msgid ""
 "Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
 "Remove by clicking the data."
 msgstr ""
-"Додајте још датума изузетака кликом на дан колендара.\n"
+"Додајте још датума изузетака кликом на дан календара.\n"
 "Изузетак је или искључење(-) или укључење(+) у зависности од избора.\n"
 "Уклоните кликом на податак."
 
@@ -1505,7 +1503,7 @@ msgstr "\tДогађаји архивирања, који су старији о
 #: ../src/ical-archive.c:375
 #, c-format
 msgid "Archiving uid: %s"
-msgstr "уиб архивирања: %s"
+msgstr "УИД архивирања: %s"
 
 #. VTODO not completed, do not archive
 #: ../src/ical-archive.c:381
@@ -1520,7 +1518,7 @@ msgstr "\tПонављање. Година краја: %04d, месец: %02d, �
 
 #: ../src/ical-archive.c:403
 msgid "Archiving done\n"
-msgstr "Архивирање је обављено\n"
+msgstr "Чување је обављено\n"
 
 #. PHASE 1: go through base orage file and remove "repeat" shortcuts
 #: ../src/ical-archive.c:419
@@ -1564,7 +1562,7 @@ msgstr "\tДодато је %d аларма. Обрађено је %d догађ
 msgid ""
 "\tFound %d alarms of which %d are active. (Searched %d recurring alarms.)"
 msgstr ""
-"        Пронашао сам %d аларма од којих су активна %d. (Тражених "
+"        Пронашао сам %d аларма од којих је покренутих %d. (Тражених "
 "понављајућих аларма — %d.)"
 
 #: ../src/ical-expimp.c:120
@@ -1590,11 +1588,11 @@ msgstr "Пронађена је спољна измена датотеке %s."
 
 #: ../src/interface.c:111
 msgid "Refreshing alarms and calendar due to external file update."
-msgstr "Освежавам аларме и колендар због спољних измена датотеке,"
+msgstr "Освежавам аларме и календар због спољних измена датотеке."
 
 #: ../src/interface.c:272
 msgid "Calendar files"
-msgstr "Датотеке колендара"
+msgstr "Датотеке календара"
 
 #: ../src/interface.c:642
 msgid "Current foreign files"
@@ -1679,7 +1677,7 @@ msgstr "Сви састанци"
 
 #: ../src/interface.c:1139
 msgid "Named appointments:"
-msgstr ""
+msgstr "Именовани састанци:"
 
 #: ../src/interface.c:1158
 msgid ""
@@ -1738,7 +1736,7 @@ msgstr "Оражове датотеке"
 
 #: ../src/interface.c:1236
 msgid "Orage main calendar file"
-msgstr "Датотека Оражовог главног колендара"
+msgstr "Датотека Оражовог главног календара"
 
 #: ../src/interface.c:1245 ../src/interface.c:1338
 msgid "Current file:"
@@ -1889,12 +1887,12 @@ msgstr "\tКористи Оражово месно издање библиоте
 #: ../src/main.c:299
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
-msgstr ""
+msgstr "\tКористи libxfce4ui: да\n"
 
 #: ../src/main.c:301
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
-msgstr ""
+msgstr "\tКористи libxfce4ui: не\n"
 
 #: ../src/main.c:314
 #, c-format
@@ -1963,7 +1961,9 @@ msgstr "\tд-сабирница није укључена у ораж. \n"
 msgid ""
 "\twithout dbus [files] and foreign file options(-a & -r) can only be used "
 "when starting orage \n"
-msgstr "коришћен приликом покретања оража \n"
+msgstr ""
+"\tбез дбуса [датотеке] и могућности стране датотеке (-a и -r) може бити "
+"коришћен само приликом покретања оража \n"
 
 #: ../src/main.c:536
 #, c-format
@@ -2105,11 +2105,11 @@ msgstr "Ова наредба се даје конзоли за стварање
 
 #: ../src/parameters.c:673
 msgid "Calendar window"
-msgstr "Прозор колендара"
+msgstr "Прозор календара"
 
 #: ../src/parameters.c:680
 msgid "Calendar visual details"
-msgstr "Видљиве појединости колендара"
+msgstr "Видљиве појединости календара"
 
 #: ../src/parameters.c:687
 msgid "Show borders"
@@ -2133,7 +2133,7 @@ msgstr "Прикажи месец и годину"
 
 #: ../src/parameters.c:733
 msgid "Calendar info boxes"
-msgstr "Обавештајне кутијице колендара"
+msgstr "Обавештајне кутијице календара"
 
 #: ../src/parameters.c:740
 msgid "Show todo list"
@@ -2149,7 +2149,7 @@ msgstr "0 = не приказуј списак догађаја нипошто"
 
 #: ../src/parameters.c:769
 msgid "Calendar visibility"
-msgstr "Видљивост колендара"
+msgstr "Видљивост календара"
 
 #: ../src/parameters.c:775
 msgid "Show on all desktops"
@@ -2173,7 +2173,7 @@ msgstr "Прикажи у системској фиоци"
 
 #: ../src/parameters.c:823
 msgid "Calendar start"
-msgstr "Почетак колендара"
+msgstr "Почетак календара"
 
 #: ../src/parameters.c:829
 msgid "Show"
@@ -2189,7 +2189,7 @@ msgstr "Умањено"
 
 #: ../src/parameters.c:888
 msgid "On calendar window open"
-msgstr "При отварању прозора колендара"
+msgstr "При отварању прозора календара"
 
 #: ../src/parameters.c:894
 msgid "Select today's date"
@@ -2201,7 +2201,7 @@ msgstr "Одабери претходно одабрани датум"
 
 #: ../src/parameters.c:935
 msgid "Calendar day double click shows"
-msgstr "Двоструки клик на дан колендара приказује"
+msgstr "Двоструки клик на дан календара приказује"
 
 #: ../src/parameters.c:941
 msgid "Days view"
@@ -4627,21 +4627,21 @@ msgstr "Поставке Оража"
 
 #: ../plugin/xfce-xfcalendar-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Calendar Application (Orage)"
-msgstr "Подешавања за колендар Иксфце-а 4 (Ораж)"
+msgstr "Подешавања за календар Иксфце-а 4 (Ораж)"
 
 #: ../plugin/xfce-xfcalendar-settings.desktop.in.h:3
 msgid "Orage Calendar Preferences"
-msgstr "Поставке Оражовог колендара"
+msgstr "Поставке Оражовог календара"
 
 #: ../plugin/xfce-xfcalendar-settings.desktop.in.h:4
 #: ../xfcalendar.desktop.in.h:3
 msgid "Calendar"
-msgstr "Колендар"
+msgstr "Календар"
 
 #: ../xfcalendar.desktop.in.h:1
 msgid "Orage Calendar"
-msgstr "Оражов колендар"
+msgstr "Оражов календар"
 
 #: ../xfcalendar.desktop.in.h:2
 msgid "Desktop calendar"
-msgstr "Колендар радне површи"
+msgstr "Календар радне површи"
