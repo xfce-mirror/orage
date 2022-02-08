@@ -34,7 +34,6 @@ EXTRA_DIST =								\
 	intltool-extract.in						\
 	intltool-merge.in						\
 	intltool-update.in						\
-	xfcalendar.spec							\
 	$(desktop_in_files)						\
 	$(service_in_files)
 
@@ -46,7 +45,7 @@ DISTCLEANFILES =							\
 	$(service_DATA)
 
 distclean-local:
-	rm -rf *.cache *~ *.spec
+	rm -rf *.cache *~
 
 rpm: dist
 	rpmbuild -ta $(PACKAGE)-$(VERSION).tar.gz
