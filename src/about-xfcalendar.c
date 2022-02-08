@@ -40,19 +40,22 @@ void create_wAbout (G_GNUC_UNUSED GtkWidget *widget,
   GtkWidget *dialog;
   GdkPixbuf *orage_logo;
   GtkAboutDialog *about;
-  const gchar *authors[] = {"Erkki Moorits <erkki.moorits@mail.ee>", _("Maintainer"),
+  const gchar *authors[] = {"Erkki Moorits <erkki.moorits@mail.ee>",
                             "Juha Kautto <juha@xfce.org>",
+                            "Benedikt Meurer <benny@xfce.org>",
+                            "Mickael Graf <korbinus@xfce.org>",
                             NULL};
 
   dialog = gtk_about_dialog_new();
   about = (GtkAboutDialog *) dialog;
   gtk_about_dialog_set_program_name(about, "Orage");
   gtk_about_dialog_set_version(about, VERSION);
-  gtk_about_dialog_set_copyright(about, "Copyright © 2003-2021 Orage Team");
-  gtk_about_dialog_set_comments(about, _("Manage your time with Orage"));
-  gtk_about_dialog_set_website(about, "http://www.xfce.org");
+  gtk_about_dialog_set_copyright(about, "Copyright © 2003-2022 Orage Team");
+  gtk_about_dialog_set_comments(about, _("Orage is a time-managing application for the Xfce desktop environment"));
+  gtk_about_dialog_set_website(about, "https://docs.xfce.org/apps/orage/start");
   gtk_about_dialog_set_authors(about, authors);
-  gtk_about_dialog_set_documenters(about, authors);
+  gtk_about_dialog_set_license_type(about, GTK_LICENSE_GPL_2_0);
+  gtk_about_dialog_set_translator_credits(about, _("translator-credits"));
   orage_logo = orage_create_icon(FALSE, 96);
   gtk_about_dialog_set_logo(about, orage_logo);
 
