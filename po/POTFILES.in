@@ -31,4 +31,5 @@ src/tz_zoneinfo_read.c
 # files added by intltool-prepare.
 panel-plugin/xfce4-orageclock-plugin.desktop.in
 plugin/xfce-xfcalendar-settings.desktop.in
+org.xfce.orage.appdata.xml.in
 xfcalendar.desktop.in
