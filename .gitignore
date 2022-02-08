@@ -41,6 +41,7 @@ missing
 nbproject
 org.xfce.calendar.service
 org.xfce.orage.service
+org.xfce.orage.appdata.xml
 po/.intltool-merge-cache*
 po/Makefile.in.in
 po/POTFILES
@@ -48,4 +49,3 @@ po/stamp-it
 src/orage
 stamp-h1
 tz_convert/tz_convert
-xfcalendar.spec
