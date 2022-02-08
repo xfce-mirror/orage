@@ -40,15 +40,17 @@ void create_wAbout (G_GNUC_UNUSED GtkWidget *widget,
   GtkWidget *dialog;
   GdkPixbuf *orage_logo;
   GtkAboutDialog *about;
-  const gchar *authors[] = {"Erkki Moorits <erkki.moorits@mail.ee>", _("Maintainer"),
+  const gchar *authors[] = {"Erkki Moorits <erkki.moorits@mail.ee>",
                             "Juha Kautto <juha@xfce.org>",
+                            "Benedikt Meurer <benny@xfce.org>",
+                            "Mickael Graf <korbinus@xfce.org>",
                             NULL};
 
   dialog = gtk_about_dialog_new();
   about = (GtkAboutDialog *) dialog;
   gtk_about_dialog_set_program_name(about, "Orage");
   gtk_about_dialog_set_version(about, VERSION);
-  gtk_about_dialog_set_copyright(about, "Copyright © 2003-2021 Orage Team");
+  gtk_about_dialog_set_copyright(about, "Copyright © 2003-2022 Orage Team");
   gtk_about_dialog_set_comments(about, _("Manage your time with Orage"));
   gtk_about_dialog_set_website(about, "http://www.xfce.org");
   gtk_about_dialog_set_authors(about, authors);
