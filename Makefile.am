@@ -22,6 +22,11 @@ desktop_in_files = xfcalendar.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
 
+appdatadir = $(datadir)/metainfo
+appdata_in_files = org.xfce.orage.appdata.xml.in
+appdata_DATA = $(appdata_in_files:.xml.in=.xml)
+@INTLTOOL_XML_RULE@
+
 if HAVE_DBUS
 servicedir = $(datadir)/dbus-1/services
 service_in_files = org.xfce.calendar.service.in org.xfce.orage.service.in
@@ -35,6 +40,7 @@ EXTRA_DIST =								\
 	intltool-merge.in						\
 	intltool-update.in						\
 	$(desktop_in_files)						\
+	$(appdata_in_files)						\
 	$(service_in_files)
 
 DISTCLEANFILES =							\
@@ -42,6 +48,7 @@ DISTCLEANFILES =							\
 	intltool-merge							\
 	intltool-update							\
 	$(desktop_DATA)							\
+	$(appdata_DATA)							\
 	$(service_DATA)
 
 distclean-local:
