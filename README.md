@@ -1,22 +1,67 @@
-Time-managing application for the Xfce desktop environment.
+[![License](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://gitlab.xfce.org/apps/orage/-/blob/master/COPYING)
 
-Note that version 4.7.6 uses different format in parameter files, so
-oncy you start using 4.7.6, Orage will forget all parameters. To avoid
-that you can manually add row:
-[PARAMETERS]
-as first line to the parameter file (~/.config/orage/oragerc).
+# orage
 
-Note that Orage Xfce panel plugin changed name in 4.7, so you need to remove
-it and add it back to use the new features.
+Orage is a time-managing application for the [Xfce](https://www.xfce.org) desktop environment.
 
-Note that there is no conversion routine to migrate your old data into 
-the new version (from 4.4 to 4.6 for example) so after each major version
-you need to manually add appointments.
+Orage aims to be a fast and easy to use graphical calendar. It uses portable ical format and
+includes common calendar features like repeating appointments and multiple alarming possibilities.
+Orage does not have group calendar features, but can only be used for single user. It takes a list
+of files for ical files that should be imported. Contents of those files are read and converted into
+Orage, but those files are left untouched.
 
-First thing you want to do is add your local timezone in the preferences,
-If you do not set local timezone, do not use timezones in any appointments
-either. It will cause just problems.
+----
 
-Orage uses ical interface instead of old dbh to store and
-utilize calender appointments since version 4.3
+### Homepage
 
+[Orage documentation](https://docs.xfce.org/apps/orage/start)
+
+### Changelog
+
+See [NEWS](https://gitlab.xfce.org/apps/orage/-/blob/master/NEWS) for details on changes and fixes made in the current release.
+
+### Required Packages
+
+Orage depends on the following packages:
+
+* [GLib](https://wiki.gnome.org/Projects/GLib) >= 2.52.0
+* [GTK](https://www.gtk.org) >= 3.24.0
+
+### Optional Packages
+
+Orage optionally depends on the following packages:
+
+* [Libical](https://github.com/libical/libical) >= 3.0.0
+* [Libnotify](https://gitlab.gnome.org/GNOME/libnotify) >= 0.3.2
+* [D-Bus](https://wiki.freedesktop.org/www/Software/dbus/) >= 0.1.0
+
+### Source Code Repository
+
+[Orage source code](https://gitlab.xfce.org/apps/orage)
+
+### Download a Release Tarball
+
+[Orage archive](https://archive.xfce.org/src/apps/orage)
+    or
+[Orage tags](https://gitlab.xfce.org/apps/orage/-/tags)
+
+### Installation
+
+From source code repository:
+
+    % cd orage
+    % ./autogen.sh
+    % make
+    % make install
+
+From release tarball:
+
+    % tar xf orage-<version>.tar.bz2
+    % cd orage-<version>
+    % ./configure
+    % make
+    % make install
+
+### Reporting Bugs
+
+Visit the [reporting bugs](https://docs.xfce.org/apps/orage/bugs) page to view currently open bug reports and instructions on reporting new bugs or submitting bugfixes.
