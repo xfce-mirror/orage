@@ -754,9 +754,8 @@ struct tm orage_icaltime_to_tm_time (const gchar *icaltime,
          * and and libs, it is not always guaranteed that all required fields
          * are filled. Convert only with date formatter.
          */
-        ret = strptime (icaltime, "%Y%m%d", &t);
 
-        if (ret == NULL)
+        if (strptime (icaltime, "%Y%m%d", &t) == NULL)
         {
             g_warning ("%s: icaltime string '%s' conversion failed",
                      G_STRFUNC, icaltime);
