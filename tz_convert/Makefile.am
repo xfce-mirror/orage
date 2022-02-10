@@ -2,14 +2,6 @@ if HAVE_LIBPOPT
 bin_PROGRAMS = tz_convert
 endif
 
-man_MANS =                             		 \
-	tz_convert.1
-
-if MAINTAINER_MODE
-tz_convert.1: tz_convert.xml
-	xsltproc -nonet http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl $<
-endif
-
 tz_convert_SOURCES =						\
 	tz_convert.c
 
@@ -23,10 +15,5 @@ tz_convert_LDADD =						\
 	$(INTLLIBS) \
 	$(GLIB_LIBS) \
 	$(LIBPOPT_LIBS)
-
-EXTRA_DIST =							\
-	$(man_MANS)								\
-	tz_convert.xml
-
 
 # vi:set ts=8 sw=8 noet ai:

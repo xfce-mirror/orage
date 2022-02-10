@@ -315,7 +315,6 @@ libical/src/libical/Makefile
 libical/src/libical/icalversion.h
 libical/src/libicalss/Makefile
 libical/zoneinfo/Makefile
-xfcalendar.spec
 icons/Makefile
 icons/48x48/Makefile
 icons/160x160/Makefile
@@ -324,9 +323,6 @@ po/Makefile.in
 sounds/Makefile
 src/Makefile
 plugin/Makefile
-doc/Makefile
-doc/C/Makefile
-doc/C/images/Makefile
 panel-plugin/Makefile
 globaltime/Makefile
 tz_convert/Makefile
