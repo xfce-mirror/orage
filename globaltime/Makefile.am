@@ -8,13 +8,6 @@ globaltime_SOURCES =							\
 	timezone_selection.c						\
 	timezone_selection.h
 
-man_MANS = globaltime.1
-
-if MAINTAINER_MODE
-globaltime.1: globaltime.xml
-	xsltproc -nonet http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl $<
-endif
-
 desktopdir = $(datadir)/applications
 desktop_in_files = globaltime.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
@@ -35,9 +28,7 @@ globaltime_LDADD =							\
 	$(top_builddir)/src/liborage.la
 
 EXTRA_DIST =								\
-	$(man_MANS)							\
-	$(desktop_in_files)						\
-	globaltime.xml
+	$(desktop_in_files)
 
 DISTCLEANFILES = $(desktop_DATA)
 
