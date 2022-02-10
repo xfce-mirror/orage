@@ -7,7 +7,6 @@ LIBICAL_SUBDIR = libical
 endif
 
 SUBDIRS = $(LIBICAL_SUBDIR)	\
-	doc			\
 	icons			\
 	po			\
 	sounds			\
@@ -53,8 +52,5 @@ DISTCLEANFILES =							\
 
 distclean-local:
 	rm -rf *.cache *~
-
-html: Makefile
-	$(MAKE) -C doc html
 
 # vi:set ts=8 sw=8 noet ai nocindent:

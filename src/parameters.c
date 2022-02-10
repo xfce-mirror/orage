@@ -115,34 +115,22 @@ static void dialog_response(GtkWidget *dialog, gint response_id
         , gpointer user_data)
 {
     Itf *itf = (Itf *)user_data;
-    gchar *helpdoc;
+    const gchar *helpdoc;
     GError *error = NULL;
 
     if (response_id == GTK_RESPONSE_HELP) {
         /* Needs to be in " to keep # */
-        helpdoc = g_strconcat("exo-open \"file://", PACKAGE_DATA_DIR
-                , G_DIR_SEPARATOR_S, "orage"
-                , G_DIR_SEPARATOR_S, "doc"
-                , G_DIR_SEPARATOR_S, "C"
-                , G_DIR_SEPARATOR_S, "orage.html#orage-preferences-window\""
-                , NULL);
+        helpdoc = "exo-open https://docs.xfce.org/apps/orage/start";
         if (!orage_exec(helpdoc, FALSE, &error)) {
             g_message ("%s failed: %s. Trying firefox", helpdoc
                     , error->message);
             g_clear_error(&error);
-            g_free(helpdoc);
-            helpdoc = g_strconcat("firefox \"file://", PACKAGE_DATA_DIR
-                    , G_DIR_SEPARATOR_S, "orage"
-                    , G_DIR_SEPARATOR_S, "doc"
-                    , G_DIR_SEPARATOR_S, "C"
-                    , G_DIR_SEPARATOR_S, "orage.html#orage-preferences-window\""
-                    , NULL);
+            helpdoc = "firefox https://docs.xfce.org/apps/orage/start";
             if (!orage_exec(helpdoc, FALSE, &error)) {
                 g_warning ("start of %s failed: %s", helpdoc, error->message);
                 g_clear_error(&error);
             }
         }
-        g_free(helpdoc);
     }
     else { /* delete signal or close response */
         write_parameters();

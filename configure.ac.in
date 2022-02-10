@@ -323,9 +323,6 @@ po/Makefile.in
 sounds/Makefile
 src/Makefile
 plugin/Makefile
-doc/Makefile
-doc/C/Makefile
-doc/C/images/Makefile
 panel-plugin/Makefile
 globaltime/Makefile
 tz_convert/Makefile
