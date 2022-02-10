@@ -748,15 +748,28 @@ struct tm orage_icaltime_to_tm_time (const gchar *icaltime,
     char *ret;
 
     ret = strptime(icaltime, "%Y%m%dT%H%M%S", &t);
-    if (ret == NULL) {
-        /* not all format string matched, so it must be DATE */
-        /* and tm_wday is not calculated ! */
-    /* need to fill missing tm_wday and tm_yday, which are in use 
-     * in some locale's default date. For example in en_IN. mktime does it */
-        if (mktime(&t) == (time_t) -1) {
-            g_warning("orage: orage_icaltime_to_tm_time mktime failed %d %d %d"
-                    , t.tm_year, t.tm_mon, t.tm_mday);
+    if (ret == NULL)
+    {
+        /* Not all format string matched, so it must be DATE. Depending on OS
+         * and and libs, it is not always guaranteed that all required fields
+         * are filled. Convert only with date formatter.
+         */
+
+        if (strptime (icaltime, "%Y%m%d", &t) == NULL)
+        {
+            g_warning ("%s: icaltime string '%s' conversion failed",
+                     G_STRFUNC, icaltime);
         }
+
+        /* Need to fill missing tm_wday and tm_yday, which are in use in some
+         * locale's default date. For example in en_IN. mktime does it.
+         */
+        if (mktime(&t) == (time_t) -1)
+        {
+            g_warning ("%s failed %d %d %d",
+                       G_STRFUNC, t.tm_year, t.tm_mon, t.tm_mday);
+        }
+
         t.tm_hour = -1;
         t.tm_min = -1;
         t.tm_sec = -1;
@@ -764,8 +777,7 @@ struct tm orage_icaltime_to_tm_time (const gchar *icaltime,
     else if (ret[0] != 0) { /* icaltime was not processed completely */
         /* UTC times end to Z, which is ok */
         if (ret[0] != 'Z' || ret[1] != 0) /* real error */
-            g_error("orage: orage_icaltime_to_tm_time error %s %s", icaltime
-                    , ret);
+            g_error ("%s %s %s", G_STRFUNC, icaltime, ret);
     }
 
     if (!real_tm) { /* convert from standard tm format to "normal" format */
