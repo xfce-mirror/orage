@@ -206,36 +206,24 @@ static void mHelp_help_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
 {
 #undef P_N
 #define P_N "mHelp_help_activate_cb: "
-    gchar *helpdoc;
+    const gchar *helpdoc;
     GError *error = NULL;
 
 #if ORAGE_TRACE
     g_debug (P_N);
 #endif
 
-    helpdoc = g_strconcat("exo-open ", PACKAGE_DATA_DIR
-           , G_DIR_SEPARATOR_S, "orage"
-           , G_DIR_SEPARATOR_S, "doc"
-           , G_DIR_SEPARATOR_S, "C"
-           , G_DIR_SEPARATOR_S, "orage.html"
-           , NULL);
+    helpdoc = "exo-open https://docs.xfce.org/apps/orage/start";
     if (!orage_exec(helpdoc, FALSE, &error)) {
         g_message ("%s failed: %s. Trying firefox", helpdoc
                                     , error->message);
         g_clear_error(&error);
-        g_free(helpdoc);
-        helpdoc = g_strconcat("firefox ", PACKAGE_DATA_DIR
-               , G_DIR_SEPARATOR_S, "orage"
-               , G_DIR_SEPARATOR_S, "doc"
-               , G_DIR_SEPARATOR_S, "C"
-               , G_DIR_SEPARATOR_S, "orage.html"
-               , NULL);
+        helpdoc = "firefox https://docs.xfce.org/apps/orage/start";
         if (!orage_exec(helpdoc, FALSE, &error)) {
             g_warning ("start of %s failed: %s", helpdoc, error->message);
             g_clear_error(&error);
         }
     }
-    g_free(helpdoc);
 }
 
 static void mHelp_about_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
