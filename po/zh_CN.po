@@ -11,9 +11,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: orage\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-01 15:01+0100\n"
+"POT-Creation-Date: 2022-02-02 00:50+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: 玉堂白鹤 <yjwork@qq.com>, 2022\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/xfce/teams/16840/zh_CN/)\n"
@@ -875,7 +875,7 @@ msgstr "这个特殊类别可用来在列表视图中将本约会彩色显示。
 
 #: ../src/appointment.c:2979
 msgid "_Colour"
-msgstr ""
+msgstr "颜色(_C)"
 
 #: ../src/appointment.c:2984
 msgid "update colors for categories."
@@ -1063,7 +1063,7 @@ msgstr ""
 
 #: ../src/appointment.c:3319 ../src/interface.c:1181 ../src/interface.c:1203
 msgid "_Execute"
-msgstr ""
+msgstr "执行(_E)"
 
 #: ../src/appointment.c:3321
 msgid "Test this alarm by raising it now"
@@ -1659,7 +1659,7 @@ msgstr "所有约会"
 
 #: ../src/interface.c:1139
 msgid "Named appointments:"
-msgstr ""
+msgstr "已命名的约会:"
 
 #: ../src/interface.c:1158
 msgid ""
@@ -1870,12 +1870,12 @@ msgstr "\t使用 Orage 本地版本 libical。\n"
 #: ../src/main.c:299
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
-msgstr ""
+msgstr "\t使用 libxfce4ui：是\n"
 
 #: ../src/main.c:301
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
-msgstr ""
+msgstr "\t使用 libxfce4ui：否\n"
 
 #: ../src/main.c:314
 #, c-format
