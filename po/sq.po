@@ -10,9 +10,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: orage\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-01 15:01+0100\n"
+"POT-Creation-Date: 2022-02-12 00:49+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>, 2022\n"
 "Language-Team: Albanian (https://www.transifex.com/xfce/teams/16840/sq/)\n"
@@ -159,8 +159,8 @@ msgstr "Zonë kohore e orës:"
 #: ../globaltime/gt_prefs.c:683 ../globaltime/gt_prefs.c:1189
 #: ../panel-plugin/oc_config.c:374 ../src/appointment.c:3175
 #: ../src/interface.c:1047 ../src/interface.c:1093 ../src/interface.c:1269
-#: ../src/interface.c:1361 ../src/interface.c:1444 ../src/parameters.c:409
-#: ../src/parameters.c:632 ../src/reminder.c:793
+#: ../src/interface.c:1361 ../src/interface.c:1444 ../src/parameters.c:397
+#: ../src/parameters.c:620 ../src/reminder.c:793
 msgid "_Open"
 msgstr "_Hape"
 
@@ -584,13 +584,14 @@ msgstr "Mbylle"
 msgid "%A %d %B %Y/%V"
 msgstr "%A %d %B %Y/%V"
 
-#: ../src/about-xfcalendar.c:43
-msgid "Maintainer"
-msgstr "Mirëmbajtës"
+#: ../src/about-xfcalendar.c:54 ../org.xfce.orage.appdata.xml.in.h:2
+msgid "Orage is a time-managing application for the Xfce desktop environment"
+msgstr ""
+"Orage është një aplikacion administrimi kohe për mjedisin desktop Xfce"
 
-#: ../src/about-xfcalendar.c:52
-msgid "Manage your time with Orage"
-msgstr "Administroni kohën tuaj me Orage-in"
+#: ../src/about-xfcalendar.c:58
+msgid "translator-credits"
+msgstr "Besnik Bleta"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -603,13 +604,14 @@ msgstr "Fund"
 msgid "Due"
 msgstr "Afat"
 
-#: ../src/appointment.c:501 ../src/mainbox.c:883
+#: ../src/appointment.c:501 ../src/mainbox.c:871
+#: ../org.xfce.orage.appdata.xml.in.h:1
 msgid "Orage"
 msgstr "Orage"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
-#: ../src/appointment.c:688 ../src/interface.c:265 ../src/parameters.c:404
+#: ../src/appointment.c:688 ../src/interface.c:265 ../src/parameters.c:392
 msgid "Select a file..."
 msgstr "Përzgjidhni një kartelë…"
 
@@ -743,7 +745,7 @@ msgstr "Takim i ri - Orage"
 #. ********* File menu *********
 #. File menu
 #: ../src/appointment.c:2559 ../src/day-view.c:283 ../src/event-list.c:1124
-#: ../src/interface.c:857 ../src/mainbox.c:316
+#: ../src/interface.c:857 ../src/mainbox.c:304
 msgid "_File"
 msgstr "_Kartelë"
 
@@ -1317,7 +1319,7 @@ msgstr "Data veprimi"
 
 #. ********* View menu *********
 #. View menu
-#: ../src/day-view.c:293 ../src/event-list.c:1147 ../src/mainbox.c:342
+#: ../src/day-view.c:293 ../src/event-list.c:1147 ../src/mainbox.c:330
 msgid "_View"
 msgstr "_Parje"
 
@@ -1991,47 +1993,47 @@ msgstr ""
 "Mundësi e panjohur %s\n"
 "\n"
 
-#: ../src/mainbox.c:324
+#: ../src/mainbox.c:312
 msgid "_Exchange data"
 msgstr "_Shkëmbe të dhëna"
 
 #. Edit menu
-#: ../src/mainbox.c:335
+#: ../src/mainbox.c:323
 msgid "_Edit"
 msgstr "_Përpunoni"
 
-#: ../src/mainbox.c:345
+#: ../src/mainbox.c:333
 msgid "View selected _date"
 msgstr "Shihni _datën e përzgjedhur"
 
-#: ../src/mainbox.c:348
+#: ../src/mainbox.c:336
 msgid "View selected _week"
 msgstr "Shihni _javën e përzgjedhur"
 
-#: ../src/mainbox.c:354
+#: ../src/mainbox.c:342
 msgid "Select _Today"
 msgstr "Përzgjidhni _Sot"
 
-#: ../src/mainbox.c:360
+#: ../src/mainbox.c:348
 msgid "Show _Globaltime"
 msgstr "Shfaqni _Globaltime"
 
 #. Help menu
 #. the rest
-#: ../src/mainbox.c:364 ../src/parameters.c:1209
+#: ../src/mainbox.c:352 ../src/parameters.c:1197
 msgid "_Help"
 msgstr "_Ndihmë"
 
-#: ../src/mainbox.c:432 ../src/reminder.c:1155
+#: ../src/mainbox.c:420 ../src/reminder.c:1155
 msgid "No title defined"
 msgstr "S’është përcaktuar titull"
 
-#: ../src/mainbox.c:495
+#: ../src/mainbox.c:483
 #, c-format
 msgid " Location: %s\n"
 msgstr " Vendndodhje: %s\n"
 
-#: ../src/mainbox.c:505
+#: ../src/mainbox.c:493
 #, c-format
 msgid ""
 "\n"
@@ -2042,11 +2044,11 @@ msgstr ""
 " Shënim:\n"
 "%s"
 
-#: ../src/mainbox.c:513
+#: ../src/mainbox.c:501
 msgid "Never"
 msgstr "Kurrë"
 
-#: ../src/mainbox.c:519
+#: ../src/mainbox.c:507
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -2059,7 +2061,7 @@ msgstr ""
 " Afat:\t%s\n"
 " Përfundon më:\t%s%s"
 
-#: ../src/mainbox.c:527
+#: ../src/mainbox.c:515
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -2070,175 +2072,175 @@ msgstr ""
 "%s Fillon më:\t%s\n"
 " Përfundon më:\t%s%s"
 
-#: ../src/mainbox.c:637
+#: ../src/mainbox.c:625
 msgid "<b>To do:</b>"
 msgstr "<b>Për t’u bërë:</b>"
 
-#: ../src/mainbox.c:678
+#: ../src/mainbox.c:666
 #, c-format
 msgid "<b>Events for %s:</b>"
 msgstr "<b>Veprimtari për %s:</b>"
 
-#: ../src/mainbox.c:689
+#: ../src/mainbox.c:677
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>Veprimtari për %s - %s:</b>"
 
-#: ../src/parameters.c:554
+#: ../src/parameters.c:542
 msgid "Main settings"
 msgstr "Rregullimet kryesore"
 
-#: ../src/parameters.c:560
+#: ../src/parameters.c:548
 msgid "Timezone"
 msgstr "Zonë kohore"
 
-#: ../src/parameters.c:581
+#: ../src/parameters.c:569
 msgid "You should always define your local timezone."
 msgstr "Duhet të përcaktoni gjithmonë zonën tuaj kohore."
 
-#: ../src/parameters.c:589
+#: ../src/parameters.c:577
 msgid "Archive threshold (months)"
 msgstr "Prag arkivi (muaj)"
 
-#: ../src/parameters.c:602
+#: ../src/parameters.c:590
 msgid "(0 = no archiving)"
 msgstr "(0 = pa arkivim)"
 
-#: ../src/parameters.c:606
+#: ../src/parameters.c:594
 msgid "Archiving is used to save time and space when handling events."
 msgstr ""
 "Arkivimi përdoret për të kursyer kohë dhe hapësirë gjatë trajtimit të "
 "veprimtarive."
 
-#: ../src/parameters.c:614
+#: ../src/parameters.c:602
 msgid "Sound command"
 msgstr "Urdhër tingulli"
 
-#: ../src/parameters.c:642
+#: ../src/parameters.c:630
 msgid "This command is given to shell to make sound in alarms."
 msgstr "Ky urdhër i kalohet shellit për të prodhuar tingull gjatë alarmesh."
 
-#: ../src/parameters.c:673
+#: ../src/parameters.c:661
 msgid "Calendar window"
 msgstr "Dritare kalendari"
 
-#: ../src/parameters.c:680
+#: ../src/parameters.c:668
 msgid "Calendar visual details"
 msgstr "Hollësi pamore kalendari"
 
-#: ../src/parameters.c:687
+#: ../src/parameters.c:675
 msgid "Show borders"
 msgstr "Shfaq anë"
 
-#: ../src/parameters.c:692
+#: ../src/parameters.c:680
 msgid "Show menu"
 msgstr "Shfaq menu"
 
-#: ../src/parameters.c:700
+#: ../src/parameters.c:688
 msgid "Show day names"
 msgstr "Shfaq emra ditësh"
 
-#: ../src/parameters.c:705
+#: ../src/parameters.c:693
 msgid "Show week numbers"
 msgstr "Shfaq numra javësh"
 
-#: ../src/parameters.c:713
+#: ../src/parameters.c:701
 msgid "Show month and year"
 msgstr "Shfaq vit dhe muaj"
 
-#: ../src/parameters.c:733
+#: ../src/parameters.c:721
 msgid "Calendar info boxes"
 msgstr "Kuti të dhënash kalendari"
 
-#: ../src/parameters.c:740
+#: ../src/parameters.c:728
 msgid "Show todo list"
 msgstr "Shfaq listë zërash për t’u bërë"
 
-#: ../src/parameters.c:747
+#: ../src/parameters.c:735
 msgid "Number of days to show in event window"
 msgstr "Numër ditësh për shfaqje në dritare veprimtarie"
 
-#: ../src/parameters.c:755
+#: ../src/parameters.c:743
 msgid "0 = do not show event list at all"
 msgstr "0 = mos shfaq fare listë veprimtarish"
 
-#: ../src/parameters.c:769
+#: ../src/parameters.c:757
 msgid "Calendar visibility"
 msgstr "Dukshmëri kalendari"
 
-#: ../src/parameters.c:775
+#: ../src/parameters.c:763
 msgid "Show on all desktops"
 msgstr "Shfaqe në krejt desktopët"
 
-#: ../src/parameters.c:780
+#: ../src/parameters.c:768
 msgid "Keep on top"
 msgstr "Mbaje përsipër"
 
-#: ../src/parameters.c:788
+#: ../src/parameters.c:776
 msgid "Show in taskbar"
 msgstr "Shfaqe në shtyllë veprimesh"
 
-#: ../src/parameters.c:793
+#: ../src/parameters.c:781
 msgid "Show in pager"
 msgstr "Shfaqe në faques"
 
-#: ../src/parameters.c:801
+#: ../src/parameters.c:789
 msgid "Show in systray"
 msgstr "Shfaqe në shtyllë sistemi"
 
-#: ../src/parameters.c:823
+#: ../src/parameters.c:811
 msgid "Calendar start"
 msgstr "Fillim kalendari"
 
-#: ../src/parameters.c:829
+#: ../src/parameters.c:817
 msgid "Show"
 msgstr "Shfaqe"
 
-#: ../src/parameters.c:845
+#: ../src/parameters.c:833
 msgid "Hide"
 msgstr "Fshihe"
 
-#: ../src/parameters.c:862
+#: ../src/parameters.c:850
 msgid "Minimized"
 msgstr "Minimizuar"
 
-#: ../src/parameters.c:888
+#: ../src/parameters.c:876
 msgid "On calendar window open"
 msgstr "Gjatë hapjesh dritareje kalendari"
 
-#: ../src/parameters.c:894
+#: ../src/parameters.c:882
 msgid "Select today's date"
 msgstr "Përzgjidhni datën e sotme"
 
-#: ../src/parameters.c:911
+#: ../src/parameters.c:899
 msgid "Select previously selected date"
 msgstr "Përzgjidhni datë të përzgjedhur më parë"
 
-#: ../src/parameters.c:935
+#: ../src/parameters.c:923
 msgid "Calendar day double click shows"
 msgstr "Dyklikimi mbi ditë kalendari shfaq"
 
-#: ../src/parameters.c:941
+#: ../src/parameters.c:929
 msgid "Days view"
 msgstr "Parje ditësh"
 
-#: ../src/parameters.c:957
+#: ../src/parameters.c:945
 msgid "Event list"
 msgstr "Listë veprimtarish"
 
-#: ../src/parameters.c:990
+#: ../src/parameters.c:978
 msgid "Extra settings"
 msgstr "Rregullime ekstra"
 
-#: ../src/parameters.c:997
+#: ../src/parameters.c:985
 msgid "Event list window"
 msgstr "Dritare liste veprimtarish"
 
-#: ../src/parameters.c:1004
+#: ../src/parameters.c:992
 msgid "Number of extra days to show in event list"
 msgstr "Numër ditësh ekstra për shfaqje në listë veprimtarish"
 
-#: ../src/parameters.c:1014
+#: ../src/parameters.c:1002
 msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
@@ -2246,27 +2248,27 @@ msgstr ""
 "Kjo është thjesht vlera parazgjedhje, mund ta ndryshoni te dritarja faktike "
 "e listës së veprimtarive."
 
-#: ../src/parameters.c:1022
+#: ../src/parameters.c:1010
 msgid "Show only first repeating event"
 msgstr "Shfaq vetëm veprimtarinë e përsëritjes së parë"
 
-#: ../src/parameters.c:1039
+#: ../src/parameters.c:1027
 msgid "Day view window default first day"
 msgstr "Parazgjedhja për dritare të pamjes së ditëve është dita e parë"
 
-#: ../src/parameters.c:1046
+#: ../src/parameters.c:1034
 msgid "First day of week"
 msgstr "Dita e parë e javës"
 
-#: ../src/parameters.c:1063
+#: ../src/parameters.c:1051
 msgid "Selected day"
 msgstr "Dita e përzgjedhur"
 
-#: ../src/parameters.c:1086 ../src/parameters.c:1093
+#: ../src/parameters.c:1074 ../src/parameters.c:1081
 msgid "Use wakeup timer"
 msgstr "Përdor afatmatës zgjimesh"
 
-#: ../src/parameters.c:1101
+#: ../src/parameters.c:1089
 msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
@@ -2275,27 +2277,27 @@ msgstr ""
 "pezullimesh apo plogështimesh. (Për shembull, ikona në panelin e sistemit "
 "nuk rifreskohet, ose alarmet nuk bien.)"
 
-#: ../src/parameters.c:1111
+#: ../src/parameters.c:1099
 msgid "Foreign file default visual alarm"
 msgstr "Alarm pamor parazgjedhje për kartela të jashtme"
 
-#: ../src/parameters.c:1118
+#: ../src/parameters.c:1106
 msgid "Orage window"
 msgstr "Dritare Orage-i"
 
-#: ../src/parameters.c:1135
+#: ../src/parameters.c:1123
 msgid "Notify notification"
 msgstr "Shënim njoftimi"
 
-#: ../src/parameters.c:1158
+#: ../src/parameters.c:1146
 msgid "Always quit when asked to close"
 msgstr "Dil përherë, kur kërkohet të mbyllet"
 
-#: ../src/parameters.c:1165
+#: ../src/parameters.c:1153
 msgid "Always quit"
 msgstr "Dil përherë"
 
-#: ../src/parameters.c:1172
+#: ../src/parameters.c:1160
 msgid ""
 "By default Orage stays open in the background when asked to close. This "
 "option changes Orage to quit and never stay in background when it is asked "
@@ -2305,24 +2307,24 @@ msgstr ""
 " e tij. Kjo mundësi e ndryshon këtë sjellje që Orage të mbyllet dhe të mos "
 "qëndrojë kurrë në prapaskenë, kur kërkohet mbyllja e tij."
 
-#: ../src/parameters.c:1188
+#: ../src/parameters.c:1176
 msgid "Orage Preferences"
 msgstr "Parapëlqime për Orage-in"
 
-#: ../src/parameters.c:1212 ../src/reminder.c:800
+#: ../src/parameters.c:1200 ../src/reminder.c:800
 msgid "_Close"
 msgstr "_Mbylle"
 
-#: ../src/parameters.c:1299
+#: ../src/parameters.c:1287
 msgid "First Orage start. Searching default timezone."
 msgstr "Nisja e parë e Orage-it. Po kërkohet për zonën kohore parazgjedhje."
 
-#: ../src/parameters.c:1318
+#: ../src/parameters.c:1306
 #, c-format
 msgid "Default timezone set to %s."
 msgstr "Si zonë kohore parazgjedhje është caktuar %s."
 
-#: ../src/parameters.c:1321
+#: ../src/parameters.c:1309
 msgid "Default timezone not found, please, set it manually."
 msgstr "S’u gjet zonë kohore parazgjedhje, ju lutemi, caktojeni dorazi."
 
@@ -4652,6 +4654,28 @@ msgstr "Parapëlqime Kalendari Orage"
 #: ../xfcalendar.desktop.in.h:3
 msgid "Calendar"
 msgstr "Kalendar"
+
+#: ../org.xfce.orage.appdata.xml.in.h:3
+msgid ""
+"Orage aims to be a fast and easy to use graphical calendar. It uses portable"
+" ical format and includes common calendar features like repeating "
+"appointments and multiple alarming possibilities."
+msgstr ""
+"Orage synon të jetë një kalendar grafik i shpejtë dhe i lehtë për t’u "
+"përdorur. Përdor formatin e bartshëm ical dhe përfshin veçori të zakonshme "
+"kalendarësh, bie fjala, përsëritje takimesh dhe mundësi të shumta alarmi."
+
+#: ../org.xfce.orage.appdata.xml.in.h:4
+msgid ""
+"Orage does not have group calendar features, but can only be used for single"
+" user. It takes a list of files for ical files that should be imported. "
+"Contents of those files are read and converted into Orage, but those files "
+"are left untouched."
+msgstr ""
+"Orage nuk ka veçori kalendari grupesh, mund të përdoret vetëm për një "
+"përdorues. Pranon një listë kartelash për kartelat ical që duhen importuar. "
+"Lënda e këtyre kartelave lexohet dhe shndërrohet në formatin Orage, por këto"
+" kartela lihen të paprekura."
 
 #: ../xfcalendar.desktop.in.h:1
 msgid "Orage Calendar"
