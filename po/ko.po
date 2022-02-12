@@ -11,9 +11,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: orage\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-01 15:01+0100\n"
+"POT-Creation-Date: 2022-02-12 00:49+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>, 2022\n"
 "Language-Team: Korean (https://www.transifex.com/xfce/teams/16840/ko/)\n"
@@ -158,8 +158,8 @@ msgstr "시계 시간대:"
 #: ../globaltime/gt_prefs.c:683 ../globaltime/gt_prefs.c:1189
 #: ../panel-plugin/oc_config.c:374 ../src/appointment.c:3175
 #: ../src/interface.c:1047 ../src/interface.c:1093 ../src/interface.c:1269
-#: ../src/interface.c:1361 ../src/interface.c:1444 ../src/parameters.c:409
-#: ../src/parameters.c:632 ../src/reminder.c:793
+#: ../src/interface.c:1361 ../src/interface.c:1444 ../src/parameters.c:397
+#: ../src/parameters.c:620 ../src/reminder.c:793
 msgid "_Open"
 msgstr "열기(_O)"
 
@@ -575,13 +575,16 @@ msgstr "닫기"
 msgid "%A %d %B %Y/%V"
 msgstr "%Y년 %B %d일 %A %V주차"
 
-#: ../src/about-xfcalendar.c:43
-msgid "Maintainer"
-msgstr "메인테이너"
+#: ../src/about-xfcalendar.c:54 ../org.xfce.orage.appdata.xml.in.h:2
+msgid "Orage is a time-managing application for the Xfce desktop environment"
+msgstr ""
 
-#: ../src/about-xfcalendar.c:52
-msgid "Manage your time with Orage"
-msgstr "Orage로 시간을 관리하세요"
+#: ../src/about-xfcalendar.c:58
+msgid "translator-credits"
+msgstr ""
+"Kibum Han <yui@yui.pe.kr>\n"
+"Seong-ho Cho <darkcircle.0426@gmail.com>\n"
+"Jung-gyu Park <bagjunggyu@gmail.com>"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -594,13 +597,14 @@ msgstr "말일"
 msgid "Due"
 msgstr "기한"
 
-#: ../src/appointment.c:501 ../src/mainbox.c:883
+#: ../src/appointment.c:501 ../src/mainbox.c:871
+#: ../org.xfce.orage.appdata.xml.in.h:1
 msgid "Orage"
 msgstr "Orage"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
-#: ../src/appointment.c:688 ../src/interface.c:265 ../src/parameters.c:404
+#: ../src/appointment.c:688 ../src/interface.c:265 ../src/parameters.c:392
 msgid "Select a file..."
 msgstr "파일 선택..."
 
@@ -730,7 +734,7 @@ msgstr "새 일정 - Orage"
 #. ********* File menu *********
 #. File menu
 #: ../src/appointment.c:2559 ../src/day-view.c:283 ../src/event-list.c:1124
-#: ../src/interface.c:857 ../src/mainbox.c:316
+#: ../src/interface.c:857 ../src/mainbox.c:304
 msgid "_File"
 msgstr "파일(_F)"
 
@@ -1294,7 +1298,7 @@ msgstr "실행 일자"
 
 #. ********* View menu *********
 #. View menu
-#: ../src/day-view.c:293 ../src/event-list.c:1147 ../src/mainbox.c:342
+#: ../src/day-view.c:293 ../src/event-list.c:1147 ../src/mainbox.c:330
 msgid "_View"
 msgstr "보기(_V)"
 
@@ -1956,47 +1960,47 @@ msgstr ""
 "알 수 없는 옵션 %s\n"
 "\n"
 
-#: ../src/mainbox.c:324
+#: ../src/mainbox.c:312
 msgid "_Exchange data"
 msgstr "데이터 교환(_E)"
 
 #. Edit menu
-#: ../src/mainbox.c:335
+#: ../src/mainbox.c:323
 msgid "_Edit"
 msgstr "편집(_E)"
 
-#: ../src/mainbox.c:345
+#: ../src/mainbox.c:333
 msgid "View selected _date"
 msgstr "선택한 날짜 보기(_D)"
 
-#: ../src/mainbox.c:348
+#: ../src/mainbox.c:336
 msgid "View selected _week"
 msgstr "선택한 주 보기(_W)"
 
-#: ../src/mainbox.c:354
+#: ../src/mainbox.c:342
 msgid "Select _Today"
 msgstr "오늘 선택(_T)"
 
-#: ../src/mainbox.c:360
+#: ../src/mainbox.c:348
 msgid "Show _Globaltime"
 msgstr "세계시간 표시(_G)"
 
 #. Help menu
 #. the rest
-#: ../src/mainbox.c:364 ../src/parameters.c:1209
+#: ../src/mainbox.c:352 ../src/parameters.c:1197
 msgid "_Help"
 msgstr "도움말(_H)"
 
-#: ../src/mainbox.c:432 ../src/reminder.c:1155
+#: ../src/mainbox.c:420 ../src/reminder.c:1155
 msgid "No title defined"
 msgstr "지정한 제목이 없습니다"
 
-#: ../src/mainbox.c:495
+#: ../src/mainbox.c:483
 #, c-format
 msgid " Location: %s\n"
 msgstr "위치: %s\n"
 
-#: ../src/mainbox.c:505
+#: ../src/mainbox.c:493
 #, c-format
 msgid ""
 "\n"
@@ -2007,11 +2011,11 @@ msgstr ""
 "참고:\n"
 "%s"
 
-#: ../src/mainbox.c:513
+#: ../src/mainbox.c:501
 msgid "Never"
 msgstr "안함"
 
-#: ../src/mainbox.c:519
+#: ../src/mainbox.c:507
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -2024,7 +2028,7 @@ msgstr ""
 "기한:⇥%s\n"
 "완료:⇥%s%s"
 
-#: ../src/mainbox.c:527
+#: ../src/mainbox.c:515
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -2035,199 +2039,199 @@ msgstr ""
 "%s 시작:⇥%s⏎\n"
 "종료:⇥%s%s"
 
-#: ../src/mainbox.c:637
+#: ../src/mainbox.c:625
 msgid "<b>To do:</b>"
 msgstr "<b>할 일:</b>"
 
-#: ../src/mainbox.c:678
+#: ../src/mainbox.c:666
 #, c-format
 msgid "<b>Events for %s:</b>"
 msgstr "<b>%s의 행사:</b>"
 
-#: ../src/mainbox.c:689
+#: ../src/mainbox.c:677
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>%s - %s의 행사:</b>"
 
-#: ../src/parameters.c:554
+#: ../src/parameters.c:542
 msgid "Main settings"
 msgstr "메인 설정"
 
-#: ../src/parameters.c:560
+#: ../src/parameters.c:548
 msgid "Timezone"
 msgstr "시간대"
 
-#: ../src/parameters.c:581
+#: ../src/parameters.c:569
 msgid "You should always define your local timezone."
 msgstr "지역 시간대를 항상 정의하셔야 합니다."
 
-#: ../src/parameters.c:589
+#: ../src/parameters.c:577
 msgid "Archive threshold (months)"
 msgstr "보관 기준(개월)"
 
-#: ../src/parameters.c:602
+#: ../src/parameters.c:590
 msgid "(0 = no archiving)"
 msgstr "(0 = 보관 안함)"
 
-#: ../src/parameters.c:606
+#: ../src/parameters.c:594
 msgid "Archiving is used to save time and space when handling events."
 msgstr "보관기능을 이용해서 시간과 공간을 절약하십시오."
 
-#: ../src/parameters.c:614
+#: ../src/parameters.c:602
 msgid "Sound command"
 msgstr "소리 명령어"
 
-#: ../src/parameters.c:642
+#: ../src/parameters.c:630
 msgid "This command is given to shell to make sound in alarms."
 msgstr "알림 기능에서 소리를 내도록 쉘에 전달하는 명령어입니다."
 
-#: ../src/parameters.c:673
+#: ../src/parameters.c:661
 msgid "Calendar window"
 msgstr "달력 창"
 
-#: ../src/parameters.c:680
+#: ../src/parameters.c:668
 msgid "Calendar visual details"
 msgstr "달력 시각 요소 세부사항"
 
-#: ../src/parameters.c:687
+#: ../src/parameters.c:675
 msgid "Show borders"
 msgstr "틀 표시"
 
-#: ../src/parameters.c:692
+#: ../src/parameters.c:680
 msgid "Show menu"
 msgstr "메뉴 표시"
 
-#: ../src/parameters.c:700
+#: ../src/parameters.c:688
 msgid "Show day names"
 msgstr "요일 이름 표시"
 
-#: ../src/parameters.c:705
+#: ../src/parameters.c:693
 msgid "Show week numbers"
 msgstr "몇번째 주인지 표시"
 
-#: ../src/parameters.c:713
+#: ../src/parameters.c:701
 msgid "Show month and year"
 msgstr "연 월 표시"
 
-#: ../src/parameters.c:733
+#: ../src/parameters.c:721
 msgid "Calendar info boxes"
 msgstr "달력 정보 상자"
 
-#: ../src/parameters.c:740
+#: ../src/parameters.c:728
 msgid "Show todo list"
 msgstr "할 일 목록 표시"
 
-#: ../src/parameters.c:747
+#: ../src/parameters.c:735
 msgid "Number of days to show in event window"
 msgstr "행사 창에 보여줄 날짜 수"
 
-#: ../src/parameters.c:755
+#: ../src/parameters.c:743
 msgid "0 = do not show event list at all"
 msgstr "0 = 모든 행사 목록을 표시하지 않습니다"
 
-#: ../src/parameters.c:769
+#: ../src/parameters.c:757
 msgid "Calendar visibility"
 msgstr "달력 모양새"
 
-#: ../src/parameters.c:775
+#: ../src/parameters.c:763
 msgid "Show on all desktops"
 msgstr "모든 데스크톱에 표시"
 
-#: ../src/parameters.c:780
+#: ../src/parameters.c:768
 msgid "Keep on top"
 msgstr "맨 위에 유지"
 
-#: ../src/parameters.c:788
+#: ../src/parameters.c:776
 msgid "Show in taskbar"
 msgstr "작업표시줄에 표시"
 
-#: ../src/parameters.c:793
+#: ../src/parameters.c:781
 msgid "Show in pager"
 msgstr "페이저에 표시"
 
-#: ../src/parameters.c:801
+#: ../src/parameters.c:789
 msgid "Show in systray"
 msgstr "트레이에 표시"
 
-#: ../src/parameters.c:823
+#: ../src/parameters.c:811
 msgid "Calendar start"
 msgstr "시작하면서 달력을"
 
-#: ../src/parameters.c:829
+#: ../src/parameters.c:817
 msgid "Show"
 msgstr "보이기"
 
-#: ../src/parameters.c:845
+#: ../src/parameters.c:833
 msgid "Hide"
 msgstr "숨기기"
 
-#: ../src/parameters.c:862
+#: ../src/parameters.c:850
 msgid "Minimized"
 msgstr "최소화"
 
-#: ../src/parameters.c:888
+#: ../src/parameters.c:876
 msgid "On calendar window open"
 msgstr "달력 창을 열었을 때"
 
-#: ../src/parameters.c:894
+#: ../src/parameters.c:882
 msgid "Select today's date"
 msgstr "오늘 날짜를 선택하십시오"
 
-#: ../src/parameters.c:911
+#: ../src/parameters.c:899
 msgid "Select previously selected date"
 msgstr "이전에 선택한 날짜를 선택하십시오"
 
-#: ../src/parameters.c:935
+#: ../src/parameters.c:923
 msgid "Calendar day double click shows"
 msgstr "표시할 달력 날짜를 두번 누르십시오"
 
-#: ../src/parameters.c:941
+#: ../src/parameters.c:929
 msgid "Days view"
 msgstr "일 단위 보기"
 
-#: ../src/parameters.c:957
+#: ../src/parameters.c:945
 msgid "Event list"
 msgstr "행사 목록"
 
-#: ../src/parameters.c:990
+#: ../src/parameters.c:978
 msgid "Extra settings"
 msgstr "추가 설정"
 
-#: ../src/parameters.c:997
+#: ../src/parameters.c:985
 msgid "Event list window"
 msgstr "행사 목록 창"
 
-#: ../src/parameters.c:1004
+#: ../src/parameters.c:992
 msgid "Number of extra days to show in event list"
 msgstr "행사 목록에 보여줄 추가 날짜 수"
 
-#: ../src/parameters.c:1014
+#: ../src/parameters.c:1002
 msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
 msgstr "단지 기본값일 뿐입니다. 행사 목록 창에서 바꿀 수 있습니다."
 
-#: ../src/parameters.c:1022
+#: ../src/parameters.c:1010
 msgid "Show only first repeating event"
 msgstr "처음 반복하는 행사만 표시"
 
-#: ../src/parameters.c:1039
+#: ../src/parameters.c:1027
 msgid "Day view window default first day"
 msgstr "첫째날을 기본으로 하는 날짜 보기 창"
 
-#: ../src/parameters.c:1046
+#: ../src/parameters.c:1034
 msgid "First day of week"
 msgstr "주 첫째날"
 
-#: ../src/parameters.c:1063
+#: ../src/parameters.c:1051
 msgid "Selected day"
 msgstr "선택한 날"
 
-#: ../src/parameters.c:1086 ../src/parameters.c:1093
+#: ../src/parameters.c:1074 ../src/parameters.c:1081
 msgid "Use wakeup timer"
 msgstr "기상 시계 사용"
 
-#: ../src/parameters.c:1101
+#: ../src/parameters.c:1089
 msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
@@ -2235,27 +2239,27 @@ msgstr ""
 "대기 또는 최대 절전 이후에 적절하게 시스템 상태를 복귀하는데 Orage에 문제가 있다면 이 시계를 사용합니다. (예를 들어 표시줄 "
 "아이콘을 새로 고치지 않거나 알림을 시작하지 않는 경우.)"
 
-#: ../src/parameters.c:1111
+#: ../src/parameters.c:1099
 msgid "Foreign file default visual alarm"
 msgstr "외부 파일에 시각 알림 기본 적용"
 
-#: ../src/parameters.c:1118
+#: ../src/parameters.c:1106
 msgid "Orage window"
 msgstr "Orage 창"
 
-#: ../src/parameters.c:1135
+#: ../src/parameters.c:1123
 msgid "Notify notification"
 msgstr "공지 알림"
 
-#: ../src/parameters.c:1158
+#: ../src/parameters.c:1146
 msgid "Always quit when asked to close"
 msgstr "닫기 요청을 받으면 항상 끝내기"
 
-#: ../src/parameters.c:1165
+#: ../src/parameters.c:1153
 msgid "Always quit"
 msgstr "항상 끝내기"
 
-#: ../src/parameters.c:1172
+#: ../src/parameters.c:1160
 msgid ""
 "By default Orage stays open in the background when asked to close. This "
 "option changes Orage to quit and never stay in background when it is asked "
@@ -2264,24 +2268,24 @@ msgstr ""
 "기본적으로 Orage는 닫기 요청을 받으면 백그라운드에 연 상태로 둡니다. 이 옵션은 닫기 요청을 받으면 Orage를 끝내도록 하고 "
 "백그라운드에 남아있지 않도록 합니다."
 
-#: ../src/parameters.c:1188
+#: ../src/parameters.c:1176
 msgid "Orage Preferences"
 msgstr "Orage 기본 설정"
 
-#: ../src/parameters.c:1212 ../src/reminder.c:800
+#: ../src/parameters.c:1200 ../src/reminder.c:800
 msgid "_Close"
 msgstr "닫기(_C)"
 
-#: ../src/parameters.c:1299
+#: ../src/parameters.c:1287
 msgid "First Orage start. Searching default timezone."
 msgstr "Orage를 처음 시작합니다. 기본 시간대를 검색중입니다."
 
-#: ../src/parameters.c:1318
+#: ../src/parameters.c:1306
 #, c-format
 msgid "Default timezone set to %s."
 msgstr "%s 기본 시간대로 설정했습니다."
 
-#: ../src/parameters.c:1321
+#: ../src/parameters.c:1309
 msgid "Default timezone not found, please, set it manually."
 msgstr "기본 시간대가 없으니 직접 설정하십시오."
 
@@ -4611,6 +4615,21 @@ msgstr "Orage 달력 기본 설정"
 #: ../xfcalendar.desktop.in.h:3
 msgid "Calendar"
 msgstr "달력"
+
+#: ../org.xfce.orage.appdata.xml.in.h:3
+msgid ""
+"Orage aims to be a fast and easy to use graphical calendar. It uses portable"
+" ical format and includes common calendar features like repeating "
+"appointments and multiple alarming possibilities."
+msgstr ""
+
+#: ../org.xfce.orage.appdata.xml.in.h:4
+msgid ""
+"Orage does not have group calendar features, but can only be used for single"
+" user. It takes a list of files for ical files that should be imported. "
+"Contents of those files are read and converted into Orage, but those files "
+"are left untouched."
+msgstr ""
 
 #: ../xfcalendar.desktop.in.h:1
 msgid "Orage Calendar"
