@@ -7,20 +7,21 @@
 # Xfce Bot <transifex@xfce.org>, 2022
 # Urien Desterres <urien.desterres@gmail.com>, 2022
 # David MARMONT <it@marmont.fr>, 2022
-# Yannick Le Guen <leguen.yannick@gmail.com>, 2022
 # David D, 2022
 # Charles Monzat <c.monzat@laposte.net>, 2022
 # jc1 <jc1.quebecos@gmail.com>, 2022
 # Andre Miranda <andre42m@gmail.com>, 2022
+# Yannick Le Guen <leguen.yannick@gmail.com>, 2022
+# Wallon Wallon, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-02 00:50+0100\n"
+"POT-Creation-Date: 2022-02-12 00:49+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Andre Miranda <andre42m@gmail.com>, 2022\n"
+"Last-Translator: Wallon Wallon, 2022\n"
 "Language-Team: French (https://www.transifex.com/xfce/teams/16840/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -165,8 +166,8 @@ msgstr "Fuseau horaire de l’horloge :"
 #: ../globaltime/gt_prefs.c:683 ../globaltime/gt_prefs.c:1189
 #: ../panel-plugin/oc_config.c:374 ../src/appointment.c:3175
 #: ../src/interface.c:1047 ../src/interface.c:1093 ../src/interface.c:1269
-#: ../src/interface.c:1361 ../src/interface.c:1444 ../src/parameters.c:409
-#: ../src/parameters.c:632 ../src/reminder.c:793
+#: ../src/interface.c:1361 ../src/interface.c:1444 ../src/parameters.c:397
+#: ../src/parameters.c:620 ../src/reminder.c:793
 msgid "_Open"
 msgstr "_Ouvrir"
 
@@ -202,7 +203,7 @@ msgstr ""
 #. ------------------------foreground-------------------------
 #: ../globaltime/gt_prefs.c:753 ../globaltime/gt_prefs.c:955
 msgid "Foreground (=text) color:"
-msgstr "Couleur de premier plan (= texte) :"
+msgstr "Couleur de premier plan (= texte) :"
 
 #: ../globaltime/gt_prefs.c:760
 msgid "Click to change foreground colour for clock"
@@ -211,7 +212,7 @@ msgstr "Cliquez pour modifier la couleur de premier plan de l’horloge"
 #. ------------------------name font-------------------------
 #: ../globaltime/gt_prefs.c:785 ../globaltime/gt_prefs.c:987
 msgid "Font for name of clock:"
-msgstr "Police pour le nom de l’horloge :"
+msgstr "Police pour le nom de l’horloge :"
 
 #: ../globaltime/gt_prefs.c:792
 msgid "Click to change font for clock name"
@@ -220,7 +221,7 @@ msgstr "Cliquez pour modifier la police du nom de l’horloge"
 #. ------------------------time font-------------------------
 #: ../globaltime/gt_prefs.c:817 ../globaltime/gt_prefs.c:1019
 msgid "Font for time of clock:"
-msgstr "Police pour l’heure de l’horloge :"
+msgstr "Police pour l’heure de l’horloge :"
 
 #: ../globaltime/gt_prefs.c:824
 msgid "Click to change font for clock time"
@@ -229,12 +230,12 @@ msgstr "Cliquez pour modifier la police de l’horloge"
 #. ------------------------underline name--------------------
 #: ../globaltime/gt_prefs.c:849
 msgid "Underline name of clock:"
-msgstr "Souligner le nom de l’horloge :"
+msgstr "Souligner le nom de l’horloge :"
 
 #. ------------------------underline time--------------------
 #: ../globaltime/gt_prefs.c:877
 msgid "Underline time of clock:"
-msgstr "Souligner l’heure de l’horloge :"
+msgstr "Souligner l’heure de l’horloge :"
 
 #: ../globaltime/gt_prefs.c:916
 msgid "Text Default Formatting"
@@ -263,7 +264,7 @@ msgstr "Cliquez pour modifier la police par défaut du nom de l’horloge"
 #: ../globaltime/gt_prefs.c:1008 ../globaltime/gt_prefs.c:1040
 msgid "Cross this to use system default font instead of selected font"
 msgstr ""
-"Cochez cette option pour utiliser la valeur par défaut du système au lieu de"
+"Cochez cette option pour utiliser la police par défaut du système au lieu de"
 " la police sélectionnée"
 
 #: ../globaltime/gt_prefs.c:1026
@@ -273,12 +274,12 @@ msgstr "Cliquez pour modifier la police par défaut de l’heure de l’horloge"
 #. ------------------------underline name--------------------
 #: ../globaltime/gt_prefs.c:1051
 msgid "Underline for name of clock:"
-msgstr "Souligner le nom de l’horloge :"
+msgstr "Souligner le nom de l’horloge :"
 
 #. ------------------------underline time--------------------
 #: ../globaltime/gt_prefs.c:1065
 msgid "Underline for time of clock:"
-msgstr "Souligner l’heure de l’horloge :"
+msgstr "Souligner l’heure de l’horloge :"
 
 #: ../globaltime/gt_prefs.c:1088
 msgid "update preferences"
@@ -295,7 +296,7 @@ msgstr "Préférences générales"
 
 #: ../globaltime/gt_prefs.c:1137
 msgid "Decorations:"
-msgstr "Décorations :"
+msgstr "Décorations :"
 
 #: ../globaltime/gt_prefs.c:1138
 msgid "Standard"
@@ -335,7 +336,7 @@ msgstr "La taille des horloges varie"
 
 #: ../globaltime/gt_prefs.c:1187
 msgid "Local timezone:"
-msgstr "Fuseau horaire local :"
+msgstr "Fuseau horaire local :"
 
 #: ../globaltime/timezone_selection.c:98
 #: ../panel-plugin/timezone_selection.c:97 ../src/timezone_selection.c:99
@@ -481,17 +482,17 @@ msgstr "Afficher le _cadre"
 #. foreground color
 #: ../panel-plugin/oc_config.c:273
 msgid "set foreground _color:"
-msgstr "définir la co_uleur du premier plan :"
+msgstr "définir la co_uleur du premier plan :"
 
 #. background color
 #: ../panel-plugin/oc_config.c:289
 msgid "set _background color:"
-msgstr "définir la couleur d’_arrière-plan :"
+msgstr "définir la couleur d’_arrière-plan :"
 
 #. clock size (=mbox size): height and width
 #: ../panel-plugin/oc_config.c:305
 msgid "set _height:"
-msgstr "définir la _hauteur :"
+msgstr "définir la _hauteur :"
 
 #: ../panel-plugin/oc_config.c:315
 msgid "Note that you can not change the height of horizontal panels"
@@ -501,7 +502,7 @@ msgstr ""
 
 #: ../panel-plugin/oc_config.c:319
 msgid "set _width:"
-msgstr "Définir la _largeur :"
+msgstr "Définir la _largeur :"
 
 #: ../panel-plugin/oc_config.c:329
 msgid "Note that you can not change the width of vertical panels"
@@ -520,12 +521,12 @@ msgstr "Options d’horloge"
 #. timezone
 #: ../panel-plugin/oc_config.c:371
 msgid "set timezone to:"
-msgstr "régler le fuseau horaire sur :"
+msgstr "régler le fuseau horaire sur :"
 
 #: ../panel-plugin/oc_config.c:390
 #, c-format
 msgid "Line %d:"
-msgstr "Ligne %d :"
+msgstr "Ligne %d :"
 
 #: ../panel-plugin/oc_config.c:400
 msgid "Enter any valid strftime function parameter."
@@ -534,7 +535,7 @@ msgstr "Entrer un paramètre valide de la fonction strftime."
 #. Tooltip hint
 #: ../panel-plugin/oc_config.c:439
 msgid "Tooltip:"
-msgstr "Info-bulle :"
+msgstr "Info-bulle :"
 
 #. special timing for SUSPEND/HIBERNATE
 #: ../panel-plugin/oc_config.c:449
@@ -598,13 +599,15 @@ msgstr "Fermer"
 msgid "%A %d %B %Y/%V"
 msgstr "%A %d %B %Y / %V"
 
-#: ../src/about-xfcalendar.c:43
-msgid "Maintainer"
-msgstr "Développeur"
+#: ../src/about-xfcalendar.c:54 ../org.xfce.orage.appdata.xml.in.h:2
+msgid "Orage is a time-managing application for the Xfce desktop environment"
+msgstr ""
+"Orage est une application de gestion du temps pour l'environnement de bureau"
+" Xfce."
 
-#: ../src/about-xfcalendar.c:52
-msgid "Manage your time with Orage"
-msgstr "Gérer votre temps avec Orage"
+#: ../src/about-xfcalendar.c:58
+msgid "translator-credits"
+msgstr "L’équipe de traduction francophone de Xfce"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -617,13 +620,14 @@ msgstr "Fin"
 msgid "Due"
 msgstr "Échéance"
 
-#: ../src/appointment.c:501 ../src/mainbox.c:883
+#: ../src/appointment.c:501 ../src/mainbox.c:871
+#: ../org.xfce.orage.appdata.xml.in.h:1
 msgid "Orage"
 msgstr "Orage"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
-#: ../src/appointment.c:688 ../src/interface.c:265 ../src/parameters.c:404
+#: ../src/appointment.c:688 ../src/interface.c:265 ../src/parameters.c:392
 msgid "Select a file..."
 msgstr "Sélectionner un fichier…"
 
@@ -641,7 +645,7 @@ msgstr "Les infos du rendez-vous ont été modifiées."
 
 #: ../src/appointment.c:755 ../src/appointment.c:1308 ../src/event-list.c:1007
 msgid "Do you want to continue?"
-msgstr "Voulez-vous continuer ?"
+msgstr "Voulez-vous continuer ?"
 
 #: ../src/appointment.c:756
 msgid "No, do not leave"
@@ -676,7 +680,7 @@ msgid ""
 "Error happened when adding appointment. Look more details from the log file."
 msgstr ""
 "L’erreur s’est produite lors de l’ajout d’un rendez-vous. Voir plus de "
-"détails dans le fichier du journal."
+"détails dans le fichier journal."
 
 #: ../src/appointment.c:1254
 msgid "Appointment update failed."
@@ -687,8 +691,8 @@ msgid ""
 "Look more details from the log file. (Perhaps file was updated external from"
 " Orage?)"
 msgstr ""
-"Voir plus de détails dans le fichier du journal (peut-être que le fichier a "
-"été mis à jour de façon externe à Orage ?)"
+"Voir plus de détails dans le fichier journal (Peut-être que le fichier a été"
+" mis à jour en dehors d'Orage ?)"
 
 #: ../src/appointment.c:1307
 msgid "This appointment will be permanently removed."
@@ -757,7 +761,7 @@ msgstr "Nouveau rendez-vous - Orage"
 #. ********* File menu *********
 #. File menu
 #: ../src/appointment.c:2559 ../src/day-view.c:283 ../src/event-list.c:1124
-#: ../src/interface.c:857 ../src/mainbox.c:316
+#: ../src/interface.c:857 ../src/mainbox.c:304
 msgid "_File"
 msgstr "_Fichier"
 
@@ -858,7 +862,7 @@ msgstr "Début"
 
 #: ../src/appointment.c:2881
 msgid "Set      "
-msgstr "Définir"
+msgstr "Définir   "
 
 #: ../src/appointment.c:2904
 msgid "Duration"
@@ -1238,7 +1242,7 @@ msgstr "Répéter indéfiniment"
 
 #: ../src/appointment.c:3502
 msgid "Repeat "
-msgstr "Répéter"
+msgstr "Répéter "
 
 #: ../src/appointment.c:3526
 msgid "Repeat until "
@@ -1334,7 +1338,7 @@ msgstr "Dates des actions"
 
 #. ********* View menu *********
 #. View menu
-#: ../src/day-view.c:293 ../src/event-list.c:1147 ../src/mainbox.c:342
+#: ../src/day-view.c:293 ../src/event-list.c:1147 ../src/mainbox.c:330
 msgid "_View"
 msgstr "_Vue"
 
@@ -1677,7 +1681,7 @@ msgstr "Importer"
 
 #: ../src/interface.c:1037
 msgid "Read from file:"
-msgstr "Lire depuis un fichier :"
+msgstr "Lire depuis un fichier :"
 
 #: ../src/interface.c:1067
 msgid ""
@@ -1693,7 +1697,7 @@ msgstr "Exporter"
 
 #: ../src/interface.c:1080
 msgid "Write to file:"
-msgstr "Écrire dans le fichier :"
+msgstr "Écrire dans le fichier :"
 
 #: ../src/interface.c:1115 ../src/interface.c:1133
 msgid "Select"
@@ -1705,7 +1709,7 @@ msgstr "Tous les rendez-vous"
 
 #: ../src/interface.c:1139
 msgid "Named appointments:"
-msgstr "Rendez-vous nommés :"
+msgstr "Rendez-vous nommés :"
 
 #: ../src/interface.c:1158
 msgid ""
@@ -1768,15 +1772,15 @@ msgstr "Fichier calendrier principal d’Orage"
 
 #: ../src/interface.c:1245 ../src/interface.c:1338
 msgid "Current file:"
-msgstr "Fichier actuel :"
+msgstr "Fichier actuel :"
 
 #: ../src/interface.c:1257 ../src/interface.c:1350
 msgid "New file:"
-msgstr "Nouveau fichier :"
+msgstr "Nouveau fichier :"
 
 #: ../src/interface.c:1285 ../src/interface.c:1377
 msgid "Action options:"
-msgstr "Options d’action :"
+msgstr "Options d’action :"
 
 #: ../src/interface.c:1289 ../src/interface.c:1381
 msgid "Rename"
@@ -1822,11 +1826,11 @@ msgstr "Ajouter un nouveau fichier externe"
 
 #: ../src/interface.c:1435
 msgid "Foreign file:"
-msgstr "Fichier externe :"
+msgstr "Fichier externe :"
 
 #: ../src/interface.c:1466
 msgid "Visible name:"
-msgstr "Nom visible :"
+msgstr "Nom visible :"
 
 #: ../src/interface.c:1476
 msgid "Read only"
@@ -1838,7 +1842,7 @@ msgid ""
 "Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
 msgstr ""
 "Permet d’être certain que ce fichier ne soit jamais modifié par Orage.\n"
-"Notez que la modification des fichiers externes les rend incompatibles avec l’outil qui a servi à les créer !"
+"Notez que la modification des fichiers externes les rend incompatibles avec l’outil qui a servi à les créer !"
 
 #: ../src/interface.c:1488
 msgid "This internal name is displayed to user instead of file name."
@@ -2006,47 +2010,47 @@ msgstr ""
 "Option inconnue %s\n"
 "\n"
 
-#: ../src/mainbox.c:324
+#: ../src/mainbox.c:312
 msgid "_Exchange data"
 msgstr "É_changer des données"
 
 #. Edit menu
-#: ../src/mainbox.c:335
+#: ../src/mainbox.c:323
 msgid "_Edit"
 msgstr "É_dition"
 
-#: ../src/mainbox.c:345
+#: ../src/mainbox.c:333
 msgid "View selected _date"
 msgstr "Voir le _jour choisi"
 
-#: ../src/mainbox.c:348
+#: ../src/mainbox.c:336
 msgid "View selected _week"
 msgstr "Voir la _semaine choisie"
 
-#: ../src/mainbox.c:354
+#: ../src/mainbox.c:342
 msgid "Select _Today"
 msgstr "Choisir _aujourd’hui"
 
-#: ../src/mainbox.c:360
+#: ../src/mainbox.c:348
 msgid "Show _Globaltime"
 msgstr "Afficher l’heure _globale"
 
 #. Help menu
 #. the rest
-#: ../src/mainbox.c:364 ../src/parameters.c:1209
+#: ../src/mainbox.c:352 ../src/parameters.c:1197
 msgid "_Help"
 msgstr "_Aide"
 
-#: ../src/mainbox.c:432 ../src/reminder.c:1155
+#: ../src/mainbox.c:420 ../src/reminder.c:1155
 msgid "No title defined"
 msgstr "Aucun titre défini"
 
-#: ../src/mainbox.c:495
+#: ../src/mainbox.c:483
 #, c-format
 msgid " Location: %s\n"
 msgstr " Emplacement : %s \n"
 
-#: ../src/mainbox.c:505
+#: ../src/mainbox.c:493
 #, c-format
 msgid ""
 "\n"
@@ -2057,11 +2061,11 @@ msgstr ""
 " Note :\n"
 "%s"
 
-#: ../src/mainbox.c:513
+#: ../src/mainbox.c:501
 msgid "Never"
 msgstr "Jamais"
 
-#: ../src/mainbox.c:519
+#: ../src/mainbox.c:507
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -2074,7 +2078,7 @@ msgstr ""
 " Échéance :\t%s\n"
 " Fait :\t%s%s"
 
-#: ../src/mainbox.c:527
+#: ../src/mainbox.c:515
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -2085,178 +2089,178 @@ msgstr ""
 "%s Début : \t%s\n"
 " Fin : \t%s%s"
 
-#: ../src/mainbox.c:637
+#: ../src/mainbox.c:625
 msgid "<b>To do:</b>"
 msgstr "<b>À faire :</b>"
 
-#: ../src/mainbox.c:678
+#: ../src/mainbox.c:666
 #, c-format
 msgid "<b>Events for %s:</b>"
 msgstr "<b>événements pour %s :</b>"
 
-#: ../src/mainbox.c:689
+#: ../src/mainbox.c:677
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>événements pour %s - %s :</b>"
 
-#: ../src/parameters.c:554
+#: ../src/parameters.c:542
 msgid "Main settings"
 msgstr "Paramètres principaux"
 
-#: ../src/parameters.c:560
+#: ../src/parameters.c:548
 msgid "Timezone"
 msgstr "Fuseau horaire"
 
-#: ../src/parameters.c:581
+#: ../src/parameters.c:569
 msgid "You should always define your local timezone."
 msgstr "Vous devez toujours définir votre fuseau horaire local."
 
-#: ../src/parameters.c:589
+#: ../src/parameters.c:577
 msgid "Archive threshold (months)"
-msgstr "Durée à archiver (mois)"
+msgstr "Seuil d'archivage (mois)"
 
-#: ../src/parameters.c:602
+#: ../src/parameters.c:590
 msgid "(0 = no archiving)"
 msgstr "(0 = pas d’archivage)"
 
-#: ../src/parameters.c:606
+#: ../src/parameters.c:594
 msgid "Archiving is used to save time and space when handling events."
 msgstr ""
 "L’archivage est utilisé pour gagner du temps et de l’espace lors de la "
 "manipulation des événements."
 
-#: ../src/parameters.c:614
+#: ../src/parameters.c:602
 msgid "Sound command"
 msgstr "Commande pour jouer un son"
 
-#: ../src/parameters.c:642
+#: ../src/parameters.c:630
 msgid "This command is given to shell to make sound in alarms."
 msgstr ""
 "Cette commande est exécutée par l’interpréteur de commande pour faire sonner"
 " les alarmes."
 
-#: ../src/parameters.c:673
+#: ../src/parameters.c:661
 msgid "Calendar window"
 msgstr "Fenêtre calendrier"
 
-#: ../src/parameters.c:680
+#: ../src/parameters.c:668
 msgid "Calendar visual details"
 msgstr "Détails visuels du calendrier  "
 
-#: ../src/parameters.c:687
+#: ../src/parameters.c:675
 msgid "Show borders"
 msgstr "Afficher la bordure de fenêtre"
 
-#: ../src/parameters.c:692
+#: ../src/parameters.c:680
 msgid "Show menu"
 msgstr "Afficher la barre de menu"
 
-#: ../src/parameters.c:700
+#: ../src/parameters.c:688
 msgid "Show day names"
 msgstr "Afficher le nom du jour"
 
-#: ../src/parameters.c:705
+#: ../src/parameters.c:693
 msgid "Show week numbers"
 msgstr "Afficher les numéros de semaine"
 
-#: ../src/parameters.c:713
+#: ../src/parameters.c:701
 msgid "Show month and year"
 msgstr "Afficher le mois et l’année"
 
-#: ../src/parameters.c:733
+#: ../src/parameters.c:721
 msgid "Calendar info boxes"
 msgstr "Calendrier des boîtes info"
 
-#: ../src/parameters.c:740
+#: ../src/parameters.c:728
 msgid "Show todo list"
 msgstr "Afficher la liste des choses à faire"
 
-#: ../src/parameters.c:747
+#: ../src/parameters.c:735
 msgid "Number of days to show in event window"
 msgstr "Nombre de jours à afficher dans la fenêtre d’événements"
 
-#: ../src/parameters.c:755
+#: ../src/parameters.c:743
 msgid "0 = do not show event list at all"
 msgstr "0 = ne pas afficher la liste des événements"
 
-#: ../src/parameters.c:769
+#: ../src/parameters.c:757
 msgid "Calendar visibility"
 msgstr "Visibilité du calendrier "
 
-#: ../src/parameters.c:775
+#: ../src/parameters.c:763
 msgid "Show on all desktops"
 msgstr "Afficher sur tous les bureaux"
 
-#: ../src/parameters.c:780
+#: ../src/parameters.c:768
 msgid "Keep on top"
 msgstr "Toujours au-dessus"
 
-#: ../src/parameters.c:788
+#: ../src/parameters.c:776
 msgid "Show in taskbar"
 msgstr "Afficher dans la barre des tâches"
 
-#: ../src/parameters.c:793
+#: ../src/parameters.c:781
 msgid "Show in pager"
 msgstr "Afficher dans le pager"
 
-#: ../src/parameters.c:801
+#: ../src/parameters.c:789
 msgid "Show in systray"
 msgstr "Afficher dans la zone de notification"
 
-#: ../src/parameters.c:823
+#: ../src/parameters.c:811
 msgid "Calendar start"
 msgstr "Affichage du calendrier au lancement"
 
-#: ../src/parameters.c:829
+#: ../src/parameters.c:817
 msgid "Show"
 msgstr "Afficher"
 
-#: ../src/parameters.c:845
+#: ../src/parameters.c:833
 msgid "Hide"
 msgstr "Masquer"
 
-#: ../src/parameters.c:862
+#: ../src/parameters.c:850
 msgid "Minimized"
 msgstr "Réduire"
 
-#: ../src/parameters.c:888
+#: ../src/parameters.c:876
 msgid "On calendar window open"
 msgstr "Lors de l’ouverture de la fenêtre du calendrier"
 
-#: ../src/parameters.c:894
+#: ../src/parameters.c:882
 msgid "Select today's date"
 msgstr "Sélectionner la date d’aujourd’hui"
 
-#: ../src/parameters.c:911
+#: ../src/parameters.c:899
 msgid "Select previously selected date"
 msgstr "Sélectionner la date précédemment sélectionnée"
 
-#: ../src/parameters.c:935
+#: ../src/parameters.c:923
 msgid "Calendar day double click shows"
 msgstr "Affichage lors d’un double-clic sur une journée du calendrier"
 
-#: ../src/parameters.c:941
+#: ../src/parameters.c:929
 msgid "Days view"
 msgstr "Vue des jours"
 
-#: ../src/parameters.c:957
+#: ../src/parameters.c:945
 msgid "Event list"
 msgstr "Liste des événements"
 
-#: ../src/parameters.c:990
+#: ../src/parameters.c:978
 msgid "Extra settings"
 msgstr "Paramètres supplémentaires"
 
-#: ../src/parameters.c:997
+#: ../src/parameters.c:985
 msgid "Event list window"
 msgstr "Fenêtre de la liste des événements"
 
-#: ../src/parameters.c:1004
+#: ../src/parameters.c:992
 msgid "Number of extra days to show in event list"
 msgstr ""
 "Nombre de jours supplémentaires à afficher dans la liste des événements"
 
-#: ../src/parameters.c:1014
+#: ../src/parameters.c:1002
 msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
@@ -2264,27 +2268,27 @@ msgstr ""
 "Ceci est juste la valeur par défaut, vous pouvez la modifier dans la fenêtre"
 " de la liste des événements actuels."
 
-#: ../src/parameters.c:1022
+#: ../src/parameters.c:1010
 msgid "Show only first repeating event"
 msgstr "Afficher seulement la première répétition de l’événement"
 
-#: ../src/parameters.c:1039
+#: ../src/parameters.c:1027
 msgid "Day view window default first day"
 msgstr "Premier jour par défaut dans la fenêtre « vue journalière »"
 
-#: ../src/parameters.c:1046
+#: ../src/parameters.c:1034
 msgid "First day of week"
 msgstr "Premier jour de la semaine"
 
-#: ../src/parameters.c:1063
+#: ../src/parameters.c:1051
 msgid "Selected day"
 msgstr "Jour sélectionné"
 
-#: ../src/parameters.c:1086 ../src/parameters.c:1093
+#: ../src/parameters.c:1074 ../src/parameters.c:1081
 msgid "Use wakeup timer"
 msgstr "Utiliser la minuterie du réveil"
 
-#: ../src/parameters.c:1101
+#: ../src/parameters.c:1089
 msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
@@ -2294,27 +2298,27 @@ msgstr ""
 "exemple, si l’icône n’est pas mise à jour ou si les alarmes ne s’activent "
 "pas)."
 
-#: ../src/parameters.c:1111
+#: ../src/parameters.c:1099
 msgid "Foreign file default visual alarm"
 msgstr "Fichier externe par défaut de l’alarme visuelle "
 
-#: ../src/parameters.c:1118
+#: ../src/parameters.c:1106
 msgid "Orage window"
 msgstr "Fenêtre Orage "
 
-#: ../src/parameters.c:1135
+#: ../src/parameters.c:1123
 msgid "Notify notification"
 msgstr "Signaler la notification"
 
-#: ../src/parameters.c:1158
+#: ../src/parameters.c:1146
 msgid "Always quit when asked to close"
 msgstr "Toujours quitter lorsqu’on demande à fermer"
 
-#: ../src/parameters.c:1165
+#: ../src/parameters.c:1153
 msgid "Always quit"
 msgstr "Toujours quitter"
 
-#: ../src/parameters.c:1172
+#: ../src/parameters.c:1160
 msgid ""
 "By default Orage stays open in the background when asked to close. This "
 "option changes Orage to quit and never stay in background when it is asked "
@@ -2324,24 +2328,24 @@ msgstr ""
 "fermer. Cette option permet de quitter Orage sans le laisser ouvert en "
 "arrière-plan."
 
-#: ../src/parameters.c:1188
+#: ../src/parameters.c:1176
 msgid "Orage Preferences"
 msgstr "Préférences d’Orage"
 
-#: ../src/parameters.c:1212 ../src/reminder.c:800
+#: ../src/parameters.c:1200 ../src/reminder.c:800
 msgid "_Close"
 msgstr "_Fermer"
 
-#: ../src/parameters.c:1299
+#: ../src/parameters.c:1287
 msgid "First Orage start. Searching default timezone."
 msgstr "Premier démarrage d’Orage. Recherche du fuseau horaire par défaut."
 
-#: ../src/parameters.c:1318
+#: ../src/parameters.c:1306
 #, c-format
 msgid "Default timezone set to %s."
 msgstr "Fuseau horaire par défaut réglé sur %s."
 
-#: ../src/parameters.c:1321
+#: ../src/parameters.c:1309
 msgid "Default timezone not found, please, set it manually."
 msgstr ""
 "Fuseau horaire par défaut non trouvé, veuillez le sélectionner manuellement."
@@ -2372,7 +2376,7 @@ msgstr "Rappelez-moi à nouveau après le délai spécifié"
 
 #: ../src/reminder.c:1107
 msgid "Next active alarms:"
-msgstr "Prochaines alarmes actives :"
+msgstr "Prochaines alarmes actives :"
 
 #: ../src/reminder.c:1162
 #, c-format
@@ -2381,7 +2385,7 @@ msgid ""
 "%02d d %02d h %02d min to: %s"
 msgstr ""
 "\n"
-"%02d j %02d h %02d min à : %s"
+"%02d j %02d h %02d min à : %s"
 
 #: ../src/reminder.c:1171
 #, c-format
@@ -4672,6 +4676,30 @@ msgstr "Préférences calendrier Orage"
 #: ../xfcalendar.desktop.in.h:3
 msgid "Calendar"
 msgstr "Calendrier"
+
+#: ../org.xfce.orage.appdata.xml.in.h:3
+msgid ""
+"Orage aims to be a fast and easy to use graphical calendar. It uses portable"
+" ical format and includes common calendar features like repeating "
+"appointments and multiple alarming possibilities."
+msgstr ""
+"Orage se veut être un calendrier graphique rapide et facile à utiliser. Il "
+"utilise le format ical portable et inclut les fonctionnalités courantes des "
+"calendriers, comme la répétition des rendez-vous et les possibilités "
+"d'alarmes multiples."
+
+#: ../org.xfce.orage.appdata.xml.in.h:4
+msgid ""
+"Orage does not have group calendar features, but can only be used for single"
+" user. It takes a list of files for ical files that should be imported. "
+"Contents of those files are read and converted into Orage, but those files "
+"are left untouched."
+msgstr ""
+"Orage n'a pas de fonctionnalités pour gérer le calendrier d'un groupe et "
+"peut être utilisé que par un seul utilisateur. Il prend une liste de "
+"fichiers pour les fichiers ical qui doivent être importés. Le contenu de ces"
+" fichiers est lu et converti dans Orage mais ces derniers ne sont pas "
+"modifiés."
 
 #: ../xfcalendar.desktop.in.h:1
 msgid "Orage Calendar"
