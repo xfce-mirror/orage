@@ -10,9 +10,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: orage\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-01 15:01+0100\n"
+"POT-Creation-Date: 2022-02-12 00:49+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Źmicier Turok <nashtlumach@gmail.com>, 2022\n"
 "Language-Team: Belarusian (https://www.transifex.com/xfce/teams/16840/be/)\n"
@@ -157,8 +157,8 @@ msgstr "Часавы пояс гадзінніка:"
 #: ../globaltime/gt_prefs.c:683 ../globaltime/gt_prefs.c:1189
 #: ../panel-plugin/oc_config.c:374 ../src/appointment.c:3175
 #: ../src/interface.c:1047 ../src/interface.c:1093 ../src/interface.c:1269
-#: ../src/interface.c:1361 ../src/interface.c:1444 ../src/parameters.c:409
-#: ../src/parameters.c:632 ../src/reminder.c:793
+#: ../src/interface.c:1361 ../src/interface.c:1444 ../src/parameters.c:397
+#: ../src/parameters.c:620 ../src/reminder.c:793
 msgid "_Open"
 msgstr "_Адкрыць"
 
@@ -584,13 +584,13 @@ msgstr "Закрыць"
 msgid "%A %d %B %Y/%V"
 msgstr "%A %d %B %Y/%V"
 
-#: ../src/about-xfcalendar.c:43
-msgid "Maintainer"
-msgstr "Суправаджальнік"
+#: ../src/about-xfcalendar.c:54 ../org.xfce.orage.appdata.xml.in.h:2
+msgid "Orage is a time-managing application for the Xfce desktop environment"
+msgstr ""
 
-#: ../src/about-xfcalendar.c:52
-msgid "Manage your time with Orage"
-msgstr "Кіруйце вашым часам з дапамогай Orage"
+#: ../src/about-xfcalendar.c:58
+msgid "translator-credits"
+msgstr "Źmicier Turok <nashtlumach@gmail.com>"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -603,13 +603,14 @@ msgstr "Канец"
 msgid "Due"
 msgstr "Праз"
 
-#: ../src/appointment.c:501 ../src/mainbox.c:883
+#: ../src/appointment.c:501 ../src/mainbox.c:871
+#: ../org.xfce.orage.appdata.xml.in.h:1
 msgid "Orage"
 msgstr "Orage"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
-#: ../src/appointment.c:688 ../src/interface.c:265 ../src/parameters.c:404
+#: ../src/appointment.c:688 ../src/interface.c:265 ../src/parameters.c:392
 msgid "Select a file..."
 msgstr "Абраць файл..."
 
@@ -743,7 +744,7 @@ msgstr "Новае прызначэнне - Orage"
 #. ********* File menu *********
 #. File menu
 #: ../src/appointment.c:2559 ../src/day-view.c:283 ../src/event-list.c:1124
-#: ../src/interface.c:857 ../src/mainbox.c:316
+#: ../src/interface.c:857 ../src/mainbox.c:304
 msgid "_File"
 msgstr "_Файл"
 
@@ -1311,7 +1312,7 @@ msgstr "Даты дзеяння"
 
 #. ********* View menu *********
 #. View menu
-#: ../src/day-view.c:293 ../src/event-list.c:1147 ../src/mainbox.c:342
+#: ../src/day-view.c:293 ../src/event-list.c:1147 ../src/mainbox.c:330
 msgid "_View"
 msgstr "Вы_гляд"
 
@@ -1984,47 +1985,47 @@ msgstr ""
 "Невядомы параметр %s\n"
 "\n"
 
-#: ../src/mainbox.c:324
+#: ../src/mainbox.c:312
 msgid "_Exchange data"
 msgstr "Абмен да_нымі"
 
 #. Edit menu
-#: ../src/mainbox.c:335
+#: ../src/mainbox.c:323
 msgid "_Edit"
 msgstr "_Рэдагаваць"
 
-#: ../src/mainbox.c:345
+#: ../src/mainbox.c:333
 msgid "View selected _date"
 msgstr "Паказаць _абраны дзень"
 
-#: ../src/mainbox.c:348
+#: ../src/mainbox.c:336
 msgid "View selected _week"
 msgstr "Паказа_ць абраны тыдзень"
 
-#: ../src/mainbox.c:354
+#: ../src/mainbox.c:342
 msgid "Select _Today"
 msgstr "Абраць сённяшні дз_ень"
 
-#: ../src/mainbox.c:360
+#: ../src/mainbox.c:348
 msgid "Show _Globaltime"
 msgstr "_Паказаць глабальны час"
 
 #. Help menu
 #. the rest
-#: ../src/mainbox.c:364 ../src/parameters.c:1209
+#: ../src/mainbox.c:352 ../src/parameters.c:1197
 msgid "_Help"
 msgstr "_Даведка"
 
-#: ../src/mainbox.c:432 ../src/reminder.c:1155
+#: ../src/mainbox.c:420 ../src/reminder.c:1155
 msgid "No title defined"
 msgstr "Без назвы"
 
-#: ../src/mainbox.c:495
+#: ../src/mainbox.c:483
 #, c-format
 msgid " Location: %s\n"
 msgstr " Размяшчэнне: %s\n"
 
-#: ../src/mainbox.c:505
+#: ../src/mainbox.c:493
 #, c-format
 msgid ""
 "\n"
@@ -2035,11 +2036,11 @@ msgstr ""
 " Нататка:\n"
 "%s"
 
-#: ../src/mainbox.c:513
+#: ../src/mainbox.c:501
 msgid "Never"
 msgstr "Ніколі"
 
-#: ../src/mainbox.c:519
+#: ../src/mainbox.c:507
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -2052,7 +2053,7 @@ msgstr ""
 " Працягласць:\t%s\n"
 " Завяршэнне:\t%s%s"
 
-#: ../src/mainbox.c:527
+#: ../src/mainbox.c:515
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -2063,202 +2064,202 @@ msgstr ""
 "%s Пачатак:\t%s\n"
 " Завяршэнне:\t%s%s"
 
-#: ../src/mainbox.c:637
+#: ../src/mainbox.c:625
 msgid "<b>To do:</b>"
 msgstr "<b>Зрабіць:</b>"
 
-#: ../src/mainbox.c:678
+#: ../src/mainbox.c:666
 #, c-format
 msgid "<b>Events for %s:</b>"
 msgstr "<b>Падзеі для %s:</b>"
 
-#: ../src/mainbox.c:689
+#: ../src/mainbox.c:677
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>Падзеі для %s - %s:</b>"
 
-#: ../src/parameters.c:554
+#: ../src/parameters.c:542
 msgid "Main settings"
 msgstr "Асноўныя налады"
 
-#: ../src/parameters.c:560
+#: ../src/parameters.c:548
 msgid "Timezone"
 msgstr "Часавы пояс"
 
-#: ../src/parameters.c:581
+#: ../src/parameters.c:569
 msgid "You should always define your local timezone."
 msgstr "Вы мусіце заўсёды вызначаць свой мясцовы часавы пояс."
 
-#: ../src/parameters.c:589
+#: ../src/parameters.c:577
 msgid "Archive threshold (months)"
 msgstr "Парог архівацыі (месяцаў)"
 
-#: ../src/parameters.c:602
+#: ../src/parameters.c:590
 msgid "(0 = no archiving)"
 msgstr "(0 = не архіваваць)"
 
-#: ../src/parameters.c:606
+#: ../src/parameters.c:594
 msgid "Archiving is used to save time and space when handling events."
 msgstr ""
 "Архівацыя выкарыстоўваецца для эканоміі часу і прасторы падчас апрацоўкі "
 "падзей."
 
-#: ../src/parameters.c:614
+#: ../src/parameters.c:602
 msgid "Sound command"
 msgstr "Загад гуку"
 
-#: ../src/parameters.c:642
+#: ../src/parameters.c:630
 msgid "This command is given to shell to make sound in alarms."
 msgstr "Гэты загад даецца абалонцы, каб падаць гукавы сігнал."
 
-#: ../src/parameters.c:673
+#: ../src/parameters.c:661
 msgid "Calendar window"
 msgstr "Акно каляндара"
 
-#: ../src/parameters.c:680
+#: ../src/parameters.c:668
 msgid "Calendar visual details"
 msgstr "Візуальныя элементы каляндара"
 
-#: ../src/parameters.c:687
+#: ../src/parameters.c:675
 msgid "Show borders"
 msgstr "Паказваць межы"
 
-#: ../src/parameters.c:692
+#: ../src/parameters.c:680
 msgid "Show menu"
 msgstr "Паказваць меню"
 
-#: ../src/parameters.c:700
+#: ../src/parameters.c:688
 msgid "Show day names"
 msgstr "Паказваць назвы дзён"
 
-#: ../src/parameters.c:705
+#: ../src/parameters.c:693
 msgid "Show week numbers"
 msgstr "Паказваць нумары тыдняў"
 
-#: ../src/parameters.c:713
+#: ../src/parameters.c:701
 msgid "Show month and year"
 msgstr "Паказваць месяц і год"
 
-#: ../src/parameters.c:733
+#: ../src/parameters.c:721
 msgid "Calendar info boxes"
 msgstr "Інфармацыйныя блокі каляндара"
 
-#: ../src/parameters.c:740
+#: ../src/parameters.c:728
 msgid "Show todo list"
 msgstr "Паказваць спіс задач"
 
-#: ../src/parameters.c:747
+#: ../src/parameters.c:735
 msgid "Number of days to show in event window"
 msgstr "Колькі дзён паказваць у акне падзей"
 
-#: ../src/parameters.c:755
+#: ../src/parameters.c:743
 msgid "0 = do not show event list at all"
 msgstr "0 = не паказваць спіс падзей зусім"
 
-#: ../src/parameters.c:769
+#: ../src/parameters.c:757
 msgid "Calendar visibility"
 msgstr "Бачнасць каляндара"
 
-#: ../src/parameters.c:775
+#: ../src/parameters.c:763
 msgid "Show on all desktops"
 msgstr "Паказваць на ўсіх прасторах"
 
-#: ../src/parameters.c:780
+#: ../src/parameters.c:768
 msgid "Keep on top"
 msgstr "Трымаць наверсе"
 
-#: ../src/parameters.c:788
+#: ../src/parameters.c:776
 msgid "Show in taskbar"
 msgstr "Паказваць на панэлі задач"
 
-#: ../src/parameters.c:793
+#: ../src/parameters.c:781
 msgid "Show in pager"
 msgstr "Паказваць у пэйджары"
 
-#: ../src/parameters.c:801
+#: ../src/parameters.c:789
 msgid "Show in systray"
 msgstr "Паказваць на прасторы апавяшчэнняў"
 
-#: ../src/parameters.c:823
+#: ../src/parameters.c:811
 msgid "Calendar start"
 msgstr "Запуск каляндара"
 
-#: ../src/parameters.c:829
+#: ../src/parameters.c:817
 msgid "Show"
 msgstr "Паказваць"
 
-#: ../src/parameters.c:845
+#: ../src/parameters.c:833
 msgid "Hide"
 msgstr "Хаваць"
 
-#: ../src/parameters.c:862
+#: ../src/parameters.c:850
 msgid "Minimized"
 msgstr "Мінімізаваць"
 
-#: ../src/parameters.c:888
+#: ../src/parameters.c:876
 msgid "On calendar window open"
 msgstr "Падчас адкрыцця каляндара"
 
-#: ../src/parameters.c:894
+#: ../src/parameters.c:882
 msgid "Select today's date"
 msgstr "Абраць сённяшнюю дату"
 
-#: ../src/parameters.c:911
+#: ../src/parameters.c:899
 msgid "Select previously selected date"
 msgstr "Абраць папярэднюю дату"
 
-#: ../src/parameters.c:935
+#: ../src/parameters.c:923
 msgid "Calendar day double click shows"
 msgstr "Падвойная пстрычка па каляндары адлюстроўвае"
 
-#: ../src/parameters.c:941
+#: ../src/parameters.c:929
 msgid "Days view"
 msgstr "Дні"
 
-#: ../src/parameters.c:957
+#: ../src/parameters.c:945
 msgid "Event list"
 msgstr "Падзеі"
 
-#: ../src/parameters.c:990
+#: ../src/parameters.c:978
 msgid "Extra settings"
 msgstr "Дадатковыя налады"
 
-#: ../src/parameters.c:997
+#: ../src/parameters.c:985
 msgid "Event list window"
 msgstr "Акно спіса падзей"
 
-#: ../src/parameters.c:1004
+#: ../src/parameters.c:992
 msgid "Number of extra days to show in event list"
 msgstr "Колькі дадатковых дзён паказваць у спісе падзей"
 
-#: ../src/parameters.c:1014
+#: ../src/parameters.c:1002
 msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
 msgstr ""
 "Гэта толькі прадвызначанае значэнне, яго можна змяніць у акне спіса падзей."
 
-#: ../src/parameters.c:1022
+#: ../src/parameters.c:1010
 msgid "Show only first repeating event"
 msgstr "Паказваць толькі першую паўторную падзею"
 
-#: ../src/parameters.c:1039
+#: ../src/parameters.c:1027
 msgid "Day view window default first day"
 msgstr "Першы дзень для прадвызначанага выгяду дня"
 
-#: ../src/parameters.c:1046
+#: ../src/parameters.c:1034
 msgid "First day of week"
 msgstr "Першы дзень тыдня"
 
-#: ../src/parameters.c:1063
+#: ../src/parameters.c:1051
 msgid "Selected day"
 msgstr "Абраны дзень"
 
-#: ../src/parameters.c:1086 ../src/parameters.c:1093
+#: ../src/parameters.c:1074 ../src/parameters.c:1081
 msgid "Use wakeup timer"
 msgstr "Выкарыстоўваць таймер абуджэння"
 
-#: ../src/parameters.c:1101
+#: ../src/parameters.c:1089
 msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
@@ -2267,27 +2268,27 @@ msgstr ""
 "чакання альбо сну. (Напрыклад, не абнаўляецца значок альбо не працуюць "
 "апавяшчэнні)."
 
-#: ../src/parameters.c:1111
+#: ../src/parameters.c:1099
 msgid "Foreign file default visual alarm"
 msgstr "Прадвызначаны візуальны будзільнік для вонкавага файла"
 
-#: ../src/parameters.c:1118
+#: ../src/parameters.c:1106
 msgid "Orage window"
 msgstr "Акно Orage"
 
-#: ../src/parameters.c:1135
+#: ../src/parameters.c:1123
 msgid "Notify notification"
 msgstr "Апавяшчэнне"
 
-#: ../src/parameters.c:1158
+#: ../src/parameters.c:1146
 msgid "Always quit when asked to close"
 msgstr "Заўсёды выходзіць пры закрыцці"
 
-#: ../src/parameters.c:1165
+#: ../src/parameters.c:1153
 msgid "Always quit"
 msgstr "Заўсёды выходзіць"
 
-#: ../src/parameters.c:1172
+#: ../src/parameters.c:1160
 msgid ""
 "By default Orage stays open in the background when asked to close. This "
 "option changes Orage to quit and never stay in background when it is asked "
@@ -2296,24 +2297,24 @@ msgstr ""
 "Прадвызначана Orage працягвае працаваць у фоне падчас закрыцця. З гэтым "
 "параметрам Orage будзе закрывацца."
 
-#: ../src/parameters.c:1188
+#: ../src/parameters.c:1176
 msgid "Orage Preferences"
 msgstr "Налады Orage"
 
-#: ../src/parameters.c:1212 ../src/reminder.c:800
+#: ../src/parameters.c:1200 ../src/reminder.c:800
 msgid "_Close"
 msgstr "_Закрыць"
 
-#: ../src/parameters.c:1299
+#: ../src/parameters.c:1287
 msgid "First Orage start. Searching default timezone."
 msgstr "Першы запуск Orage. Шукаецца прадвызначаны часавы пояс."
 
-#: ../src/parameters.c:1318
+#: ../src/parameters.c:1306
 #, c-format
 msgid "Default timezone set to %s."
 msgstr "Прадвызначаны часавы пояс %s зададзены."
 
-#: ../src/parameters.c:1321
+#: ../src/parameters.c:1309
 msgid "Default timezone not found, please, set it manually."
 msgstr "Прадвызначаны часавы пояс не знойдзены, задайце яго самастойна."
 
@@ -4643,6 +4644,21 @@ msgstr "Налады каляндара Orage"
 #: ../xfcalendar.desktop.in.h:3
 msgid "Calendar"
 msgstr "Каляндар"
+
+#: ../org.xfce.orage.appdata.xml.in.h:3
+msgid ""
+"Orage aims to be a fast and easy to use graphical calendar. It uses portable"
+" ical format and includes common calendar features like repeating "
+"appointments and multiple alarming possibilities."
+msgstr ""
+
+#: ../org.xfce.orage.appdata.xml.in.h:4
+msgid ""
+"Orage does not have group calendar features, but can only be used for single"
+" user. It takes a list of files for ical files that should be imported. "
+"Contents of those files are read and converted into Orage, but those files "
+"are left untouched."
+msgstr ""
 
 #: ../xfcalendar.desktop.in.h:1
 msgid "Orage Calendar"
