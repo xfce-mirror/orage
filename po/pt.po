@@ -4656,6 +4656,9 @@ msgid ""
 " ical format and includes common calendar features like repeating "
 "appointments and multiple alarming possibilities."
 msgstr ""
+"O Orage pretende ser um calendário gráfico rápido e fácil de usar. Utiliza o"
+" formato ical portátil e inclui funcionalidades comuns de calendário como a "
+"repetição de compromissos e várias possibilidades de alarme."
 
 #: ../org.xfce.orage.appdata.xml.in.h:4
 msgid ""
@@ -4664,6 +4667,10 @@ msgid ""
 "Contents of those files are read and converted into Orage, but those files "
 "are left untouched."
 msgstr ""
+"O Orage não tem funcionalidades de calendário de grupo, mas só pode ser "
+"utilizado para um único utilizador. É necessária uma lista de ficheiros para"
+" ficheiros ical que devem ser importados. O conteúdo desses ficheiros é lido"
+" e convertido para o Orage, mas esses ficheiros são deixados intocados."
 
 #: ../xfcalendar.desktop.in.h:1
 msgid "Orage Calendar"
