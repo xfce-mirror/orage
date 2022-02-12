@@ -11,9 +11,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: orage\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-01 15:01+0100\n"
+"POT-Creation-Date: 2022-02-12 00:49+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Michael Findlay <translate@cobber-linux.org>, 2022\n"
 "Language-Team: English (Australia) (https://www.transifex.com/xfce/teams/16840/en_AU/)\n"
@@ -159,8 +159,8 @@ msgstr "Timezone of the clock:"
 #: ../globaltime/gt_prefs.c:683 ../globaltime/gt_prefs.c:1189
 #: ../panel-plugin/oc_config.c:374 ../src/appointment.c:3175
 #: ../src/interface.c:1047 ../src/interface.c:1093 ../src/interface.c:1269
-#: ../src/interface.c:1361 ../src/interface.c:1444 ../src/parameters.c:409
-#: ../src/parameters.c:632 ../src/reminder.c:793
+#: ../src/interface.c:1361 ../src/interface.c:1444 ../src/parameters.c:397
+#: ../src/parameters.c:620 ../src/reminder.c:793
 msgid "_Open"
 msgstr "_Open"
 
@@ -578,13 +578,13 @@ msgstr "Close"
 msgid "%A %d %B %Y/%V"
 msgstr "%A %d %B %Y/%V"
 
-#: ../src/about-xfcalendar.c:43
-msgid "Maintainer"
-msgstr "Maintainer"
+#: ../src/about-xfcalendar.c:54 ../org.xfce.orage.appdata.xml.in.h:2
+msgid "Orage is a time-managing application for the Xfce desktop environment"
+msgstr ""
 
-#: ../src/about-xfcalendar.c:52
-msgid "Manage your time with Orage"
-msgstr "Manage your time with Orage"
+#: ../src/about-xfcalendar.c:58
+msgid "translator-credits"
+msgstr "translator-credits"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -597,13 +597,14 @@ msgstr "End"
 msgid "Due"
 msgstr "Due"
 
-#: ../src/appointment.c:501 ../src/mainbox.c:883
+#: ../src/appointment.c:501 ../src/mainbox.c:871
+#: ../org.xfce.orage.appdata.xml.in.h:1
 msgid "Orage"
 msgstr "Orage"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
-#: ../src/appointment.c:688 ../src/interface.c:265 ../src/parameters.c:404
+#: ../src/appointment.c:688 ../src/interface.c:265 ../src/parameters.c:392
 msgid "Select a file..."
 msgstr "Select a file..."
 
@@ -736,7 +737,7 @@ msgstr "New appointment - Orage"
 #. ********* File menu *********
 #. File menu
 #: ../src/appointment.c:2559 ../src/day-view.c:283 ../src/event-list.c:1124
-#: ../src/interface.c:857 ../src/mainbox.c:316
+#: ../src/interface.c:857 ../src/mainbox.c:304
 msgid "_File"
 msgstr "_File"
 
@@ -1307,7 +1308,7 @@ msgstr "Action dates"
 
 #. ********* View menu *********
 #. View menu
-#: ../src/day-view.c:293 ../src/event-list.c:1147 ../src/mainbox.c:342
+#: ../src/day-view.c:293 ../src/event-list.c:1147 ../src/mainbox.c:330
 msgid "_View"
 msgstr "_View"
 
@@ -1974,47 +1975,47 @@ msgstr ""
 "Unknown option %s\n"
 "\n"
 
-#: ../src/mainbox.c:324
+#: ../src/mainbox.c:312
 msgid "_Exchange data"
 msgstr "_Exchange data"
 
 #. Edit menu
-#: ../src/mainbox.c:335
+#: ../src/mainbox.c:323
 msgid "_Edit"
 msgstr "_Edit"
 
-#: ../src/mainbox.c:345
+#: ../src/mainbox.c:333
 msgid "View selected _date"
 msgstr "View selected _date"
 
-#: ../src/mainbox.c:348
+#: ../src/mainbox.c:336
 msgid "View selected _week"
 msgstr "View selected _week"
 
-#: ../src/mainbox.c:354
+#: ../src/mainbox.c:342
 msgid "Select _Today"
 msgstr "Select _Today"
 
-#: ../src/mainbox.c:360
+#: ../src/mainbox.c:348
 msgid "Show _Globaltime"
 msgstr "Show _Globaltime"
 
 #. Help menu
 #. the rest
-#: ../src/mainbox.c:364 ../src/parameters.c:1209
+#: ../src/mainbox.c:352 ../src/parameters.c:1197
 msgid "_Help"
 msgstr "_Help"
 
-#: ../src/mainbox.c:432 ../src/reminder.c:1155
+#: ../src/mainbox.c:420 ../src/reminder.c:1155
 msgid "No title defined"
 msgstr "No title defined"
 
-#: ../src/mainbox.c:495
+#: ../src/mainbox.c:483
 #, c-format
 msgid " Location: %s\n"
 msgstr " Location: %s\n"
 
-#: ../src/mainbox.c:505
+#: ../src/mainbox.c:493
 #, c-format
 msgid ""
 "\n"
@@ -2025,11 +2026,11 @@ msgstr ""
 " Note:\n"
 "%s"
 
-#: ../src/mainbox.c:513
+#: ../src/mainbox.c:501
 msgid "Never"
 msgstr "Never"
 
-#: ../src/mainbox.c:519
+#: ../src/mainbox.c:507
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -2042,7 +2043,7 @@ msgstr ""
 " Due:\t%s\n"
 " Done:\t%s%s"
 
-#: ../src/mainbox.c:527
+#: ../src/mainbox.c:515
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -2053,173 +2054,173 @@ msgstr ""
 "%s Start:\t%s\n"
 " End:\t%s%s"
 
-#: ../src/mainbox.c:637
+#: ../src/mainbox.c:625
 msgid "<b>To do:</b>"
 msgstr "<b>To do:</b>"
 
-#: ../src/mainbox.c:678
+#: ../src/mainbox.c:666
 #, c-format
 msgid "<b>Events for %s:</b>"
 msgstr "<b>Events for %s:</b>"
 
-#: ../src/mainbox.c:689
+#: ../src/mainbox.c:677
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>Events for %s - %s:</b>"
 
-#: ../src/parameters.c:554
+#: ../src/parameters.c:542
 msgid "Main settings"
 msgstr "Main settings"
 
-#: ../src/parameters.c:560
+#: ../src/parameters.c:548
 msgid "Timezone"
 msgstr "Timezone"
 
-#: ../src/parameters.c:581
+#: ../src/parameters.c:569
 msgid "You should always define your local timezone."
 msgstr "You should always define your local timezone."
 
-#: ../src/parameters.c:589
+#: ../src/parameters.c:577
 msgid "Archive threshold (months)"
 msgstr "Archive threshold (months)"
 
-#: ../src/parameters.c:602
+#: ../src/parameters.c:590
 msgid "(0 = no archiving)"
 msgstr "(0 = no archiving)"
 
-#: ../src/parameters.c:606
+#: ../src/parameters.c:594
 msgid "Archiving is used to save time and space when handling events."
 msgstr "Archiving is used to save time and space when handling events."
 
-#: ../src/parameters.c:614
+#: ../src/parameters.c:602
 msgid "Sound command"
 msgstr "Sound command"
 
-#: ../src/parameters.c:642
+#: ../src/parameters.c:630
 msgid "This command is given to shell to make sound in alarms."
 msgstr "This command is given to shell to make sound in alarms."
 
-#: ../src/parameters.c:673
+#: ../src/parameters.c:661
 msgid "Calendar window"
 msgstr "Calendar window"
 
-#: ../src/parameters.c:680
+#: ../src/parameters.c:668
 msgid "Calendar visual details"
 msgstr "Calendar visual details"
 
-#: ../src/parameters.c:687
+#: ../src/parameters.c:675
 msgid "Show borders"
 msgstr "Show borders"
 
-#: ../src/parameters.c:692
+#: ../src/parameters.c:680
 msgid "Show menu"
 msgstr "Show menu"
 
-#: ../src/parameters.c:700
+#: ../src/parameters.c:688
 msgid "Show day names"
 msgstr "Show day names"
 
-#: ../src/parameters.c:705
+#: ../src/parameters.c:693
 msgid "Show week numbers"
 msgstr "Show week numbers"
 
-#: ../src/parameters.c:713
+#: ../src/parameters.c:701
 msgid "Show month and year"
 msgstr "Show month and year"
 
-#: ../src/parameters.c:733
+#: ../src/parameters.c:721
 msgid "Calendar info boxes"
 msgstr "Calendar info boxes"
 
-#: ../src/parameters.c:740
+#: ../src/parameters.c:728
 msgid "Show todo list"
 msgstr "Show todo list"
 
-#: ../src/parameters.c:747
+#: ../src/parameters.c:735
 msgid "Number of days to show in event window"
 msgstr "Number of days to show in event window"
 
-#: ../src/parameters.c:755
+#: ../src/parameters.c:743
 msgid "0 = do not show event list at all"
 msgstr "0 = do not show event list at all"
 
-#: ../src/parameters.c:769
+#: ../src/parameters.c:757
 msgid "Calendar visibility"
 msgstr "Calendar visibility"
 
-#: ../src/parameters.c:775
+#: ../src/parameters.c:763
 msgid "Show on all desktops"
 msgstr "Show on all desktops"
 
-#: ../src/parameters.c:780
+#: ../src/parameters.c:768
 msgid "Keep on top"
 msgstr "Keep on top"
 
-#: ../src/parameters.c:788
+#: ../src/parameters.c:776
 msgid "Show in taskbar"
 msgstr "Show in taskbar"
 
-#: ../src/parameters.c:793
+#: ../src/parameters.c:781
 msgid "Show in pager"
 msgstr "Show in pager"
 
-#: ../src/parameters.c:801
+#: ../src/parameters.c:789
 msgid "Show in systray"
 msgstr "Show in systray"
 
-#: ../src/parameters.c:823
+#: ../src/parameters.c:811
 msgid "Calendar start"
 msgstr "Calendar start"
 
-#: ../src/parameters.c:829
+#: ../src/parameters.c:817
 msgid "Show"
 msgstr "Show"
 
-#: ../src/parameters.c:845
+#: ../src/parameters.c:833
 msgid "Hide"
 msgstr "Hide"
 
-#: ../src/parameters.c:862
+#: ../src/parameters.c:850
 msgid "Minimized"
 msgstr "Minimised"
 
-#: ../src/parameters.c:888
+#: ../src/parameters.c:876
 msgid "On calendar window open"
 msgstr "On calendar window open"
 
-#: ../src/parameters.c:894
+#: ../src/parameters.c:882
 msgid "Select today's date"
 msgstr "Select today's date"
 
-#: ../src/parameters.c:911
+#: ../src/parameters.c:899
 msgid "Select previously selected date"
 msgstr "Select previously selected date"
 
-#: ../src/parameters.c:935
+#: ../src/parameters.c:923
 msgid "Calendar day double click shows"
 msgstr "Calendar day double click shows"
 
-#: ../src/parameters.c:941
+#: ../src/parameters.c:929
 msgid "Days view"
 msgstr "Days view"
 
-#: ../src/parameters.c:957
+#: ../src/parameters.c:945
 msgid "Event list"
 msgstr "Event list"
 
-#: ../src/parameters.c:990
+#: ../src/parameters.c:978
 msgid "Extra settings"
 msgstr "Extra settings"
 
-#: ../src/parameters.c:997
+#: ../src/parameters.c:985
 msgid "Event list window"
 msgstr "Event list window"
 
-#: ../src/parameters.c:1004
+#: ../src/parameters.c:992
 msgid "Number of extra days to show in event list"
 msgstr "Number of extra days to show in event list"
 
-#: ../src/parameters.c:1014
+#: ../src/parameters.c:1002
 msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
@@ -2227,27 +2228,27 @@ msgstr ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
 
-#: ../src/parameters.c:1022
+#: ../src/parameters.c:1010
 msgid "Show only first repeating event"
 msgstr "Show only first repeating event"
 
-#: ../src/parameters.c:1039
+#: ../src/parameters.c:1027
 msgid "Day view window default first day"
 msgstr "Day view window default first day"
 
-#: ../src/parameters.c:1046
+#: ../src/parameters.c:1034
 msgid "First day of week"
 msgstr "First day of week"
 
-#: ../src/parameters.c:1063
+#: ../src/parameters.c:1051
 msgid "Selected day"
 msgstr "Selected day"
 
-#: ../src/parameters.c:1086 ../src/parameters.c:1093
+#: ../src/parameters.c:1074 ../src/parameters.c:1081
 msgid "Use wakeup timer"
 msgstr "Use wakeup timer"
 
-#: ../src/parameters.c:1101
+#: ../src/parameters.c:1089
 msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
@@ -2255,27 +2256,27 @@ msgstr ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
 
-#: ../src/parameters.c:1111
+#: ../src/parameters.c:1099
 msgid "Foreign file default visual alarm"
 msgstr "Foreign file default visual alarm"
 
-#: ../src/parameters.c:1118
+#: ../src/parameters.c:1106
 msgid "Orage window"
 msgstr "Orage window"
 
-#: ../src/parameters.c:1135
+#: ../src/parameters.c:1123
 msgid "Notify notification"
 msgstr "Notify notification"
 
-#: ../src/parameters.c:1158
+#: ../src/parameters.c:1146
 msgid "Always quit when asked to close"
 msgstr "Always quit when asked to close"
 
-#: ../src/parameters.c:1165
+#: ../src/parameters.c:1153
 msgid "Always quit"
 msgstr "Always quit"
 
-#: ../src/parameters.c:1172
+#: ../src/parameters.c:1160
 msgid ""
 "By default Orage stays open in the background when asked to close. This "
 "option changes Orage to quit and never stay in background when it is asked "
@@ -2285,24 +2286,24 @@ msgstr ""
 "option changes Orage to quit and never stay in background when it is asked "
 "to close."
 
-#: ../src/parameters.c:1188
+#: ../src/parameters.c:1176
 msgid "Orage Preferences"
 msgstr "Orage Preferences"
 
-#: ../src/parameters.c:1212 ../src/reminder.c:800
+#: ../src/parameters.c:1200 ../src/reminder.c:800
 msgid "_Close"
 msgstr "_Close"
 
-#: ../src/parameters.c:1299
+#: ../src/parameters.c:1287
 msgid "First Orage start. Searching default timezone."
 msgstr "First Orage start. Searching default timezone."
 
-#: ../src/parameters.c:1318
+#: ../src/parameters.c:1306
 #, c-format
 msgid "Default timezone set to %s."
 msgstr "Default timezone set to %s."
 
-#: ../src/parameters.c:1321
+#: ../src/parameters.c:1309
 msgid "Default timezone not found, please, set it manually."
 msgstr "Default timezone not found, please, set it manually."
 
@@ -4632,6 +4633,21 @@ msgstr "Orage Calendar Preferences"
 #: ../xfcalendar.desktop.in.h:3
 msgid "Calendar"
 msgstr "Calendar"
+
+#: ../org.xfce.orage.appdata.xml.in.h:3
+msgid ""
+"Orage aims to be a fast and easy to use graphical calendar. It uses portable"
+" ical format and includes common calendar features like repeating "
+"appointments and multiple alarming possibilities."
+msgstr ""
+
+#: ../org.xfce.orage.appdata.xml.in.h:4
+msgid ""
+"Orage does not have group calendar features, but can only be used for single"
+" user. It takes a list of files for ical files that should be imported. "
+"Contents of those files are read and converted into Orage, but those files "
+"are left untouched."
+msgstr ""
 
 #: ../xfcalendar.desktop.in.h:1
 msgid "Orage Calendar"
