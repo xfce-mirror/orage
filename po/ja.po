@@ -4635,6 +4635,8 @@ msgid ""
 "Contents of those files are read and converted into Orage, but those files "
 "are left untouched."
 msgstr ""
+"Orage にはグループカレンダーの機能がなく、シングルユーザーのみで使用できます。インポートには ical "
+"ファイルのファイルリストを使用します。これらのファイルは Orage に読み込まれて変換されますが、ファイル自体は変更されません。"
 
 #: ../xfcalendar.desktop.in.h:1
 msgid "Orage Calendar"
