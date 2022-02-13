@@ -7,8 +7,8 @@
 # Xfce Bot <transifex@xfce.org>, 2022
 # Nick Schermer <nick@xfce.org>, 2022
 # Nobuhiro Iwamatsu <iwamatsu@nigauri.org>, 2022
-# UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2022
 # Masato HASHIMOTO <cabezon.hashimoto@gmail.com>, 2022
+# UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2022
 # 
 #, fuzzy
 msgid ""
@@ -17,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-12 00:49+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Masato HASHIMOTO <cabezon.hashimoto@gmail.com>, 2022\n"
+"Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2022\n"
 "Language-Team: Japanese (https://www.transifex.com/xfce/teams/16840/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -579,7 +579,7 @@ msgstr "%x %A"
 
 #: ../src/about-xfcalendar.c:54 ../org.xfce.orage.appdata.xml.in.h:2
 msgid "Orage is a time-managing application for the Xfce desktop environment"
-msgstr ""
+msgstr "Orage は、Xfce デスクトップ環境向けの時間管理アプリケーションです。"
 
 #: ../src/about-xfcalendar.c:58
 msgid "translator-credits"
@@ -4625,6 +4625,8 @@ msgid ""
 " ical format and includes common calendar features like repeating "
 "appointments and multiple alarming possibilities."
 msgstr ""
+"Orage は、高速で使いやすいグラフィカルカレンダーを目指しています。ポータブルな ical "
+"形式を使用し、予定の繰り返しや複数のアラームなどの一般的なカレンダー機能を含んでいます。"
 
 #: ../org.xfce.orage.appdata.xml.in.h:4
 msgid ""
