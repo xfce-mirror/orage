@@ -4652,6 +4652,10 @@ msgid ""
 " ical format and includes common calendar features like repeating "
 "appointments and multiple alarming possibilities."
 msgstr ""
+"Orage siekia būti greitu ir lengvu naudoti grafiniu kalendoriumi. Programa "
+"Orage naudoja perkeliamą ical formatą ir joje yra dažniausiai kalendoriuose "
+"naudojamos ypatybės, tokios kaip paskyrimai ir daugelis galimybių naudoti "
+"signalus."
 
 #: ../org.xfce.orage.appdata.xml.in.h:4
 msgid ""
