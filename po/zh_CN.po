@@ -8,6 +8,7 @@
 # Mingcong Bai <jeffbai@aosc.xyz>, 2022
 # 玉堂白鹤 <yjwork@qq.com>, 2022
 # Xiaobo Zhou <zhouxiaobo.500@gmail.com>, 2022
+# YuHeng Chou <wojiushixxx@126.com>, 2022
 # 
 #, fuzzy
 msgid ""
@@ -16,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-12 00:49+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Xiaobo Zhou <zhouxiaobo.500@gmail.com>, 2022\n"
+"Last-Translator: YuHeng Chou <wojiushixxx@126.com>, 2022\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/xfce/teams/16840/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -577,7 +578,7 @@ msgstr "%Y年 %b %d日 %A/第%V周"
 
 #: ../src/about-xfcalendar.c:54 ../org.xfce.orage.appdata.xml.in.h:2
 msgid "Orage is a time-managing application for the Xfce desktop environment"
-msgstr ""
+msgstr "Orage 是 Xfce 桌面环境下的一款时间管理应用"
 
 #: ../src/about-xfcalendar.c:58
 msgid "translator-credits"
