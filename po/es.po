@@ -596,6 +596,8 @@ msgstr "%A %d %B %Y/%V"
 #: ../src/about-xfcalendar.c:54 ../org.xfce.orage.appdata.xml.in.h:2
 msgid "Orage is a time-managing application for the Xfce desktop environment"
 msgstr ""
+"Orage es una aplicación de gestión del tiempo para el entorno de escritorio "
+"Xfce"
 
 #: ../src/about-xfcalendar.c:58
 msgid "translator-credits"
@@ -4675,6 +4677,9 @@ msgid ""
 " ical format and includes common calendar features like repeating "
 "appointments and multiple alarming possibilities."
 msgstr ""
+"Orage es un calendario gráfico rápido y fácil de usar. Usa el formato ical "
+"portátil e incluye funciones de calendario usuales, como diversas opciones "
+"de alarma y repetición de citas."
 
 #: ../org.xfce.orage.appdata.xml.in.h:4
 msgid ""
@@ -4683,6 +4688,10 @@ msgid ""
 "Contents of those files are read and converted into Orage, but those files "
 "are left untouched."
 msgstr ""
+"Orage no posee funciones de calendario de grupo, sino que solo se puede usar"
+" para un solo usuario. Acepta una lista de archivos para los archivos ical "
+"que se deben importar. El contenido de esos archivos se lee y se convierte "
+"al formato de Orage, pero los archivos no se modifican."
 
 #: ../xfcalendar.desktop.in.h:1
 msgid "Orage Calendar"
