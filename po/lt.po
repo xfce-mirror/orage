@@ -581,7 +581,7 @@ msgstr "%Y %B %d/%V, %A"
 
 #: ../src/about-xfcalendar.c:54 ../org.xfce.orage.appdata.xml.in.h:2
 msgid "Orage is a time-managing application for the Xfce desktop environment"
-msgstr ""
+msgstr "Orage yra laiko valdymo programa, skirta Xfce darbalaukio aplinkai"
 
 #: ../src/about-xfcalendar.c:58
 msgid "translator-credits"
@@ -4660,6 +4660,10 @@ msgid ""
 "Contents of those files are read and converted into Orage, but those files "
 "are left untouched."
 msgstr ""
+"Orage neturi grupės kalendoriaus ypatybių, bet gali būti naudojama tik "
+"vienam naudotojui. Jai tereikia pageidaujamų importuoti ical failų sąrašo. "
+"Šių failų turinys yra perskaitomas ir konvertuojamas į Orage formatą, o "
+"patys failai lieka nepakeisti."
 
 #: ../xfcalendar.desktop.in.h:1
 msgid "Orage Calendar"
