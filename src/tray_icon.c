@@ -130,7 +130,7 @@ static void on_globaltime_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
 {
     GError *error = NULL;
 
-    if (!orage_exec("globaltime", FALSE, &error))
+    if (!orage_exec("globaltime", NULL, &error))
         g_message("%s: start of %s failed: %s", "Orage", "globaltime"
                 , error->message);
 }

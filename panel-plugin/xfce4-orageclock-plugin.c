@@ -420,7 +420,7 @@ static gboolean popup_program (G_GNUC_UNUSED GtkWidget *widget, gchar *program,
             g_unsetenv("TZ");
         tzset();
 
-        if (!orage_exec(program, FALSE, &error))
+        if (!orage_exec(program, NULL, &error))
             g_message("%s: start of %s failed", OC_NAME, program);
 
         if ((plugin->timezone->str != NULL) && (plugin->timezone->len > 0)) {

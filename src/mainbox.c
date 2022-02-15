@@ -196,7 +196,7 @@ static void mView_StartGlobaltime_activate_cb (
     g_debug (P_N);
 #endif
 
-    if (!orage_exec("globaltime", FALSE, &error))
+    if (!orage_exec("globaltime", NULL, &error))
         g_warning ("%s: start of %s failed: %s", "Orage", "globaltime"
                 , error->message);
 }
@@ -214,12 +214,12 @@ static void mHelp_help_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
 #endif
 
     helpdoc = "exo-open https://docs.xfce.org/apps/orage/start";
-    if (!orage_exec(helpdoc, FALSE, &error)) {
+    if (!orage_exec(helpdoc, NULL, &error)) {
         g_message ("%s failed: %s. Trying firefox", helpdoc
                                     , error->message);
         g_clear_error(&error);
         helpdoc = "firefox https://docs.xfce.org/apps/orage/start";
-        if (!orage_exec(helpdoc, FALSE, &error)) {
+        if (!orage_exec(helpdoc, NULL, &error)) {
             g_warning ("start of %s failed: %s", helpdoc, error->message);
             g_clear_error(&error);
         }

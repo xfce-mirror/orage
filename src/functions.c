@@ -181,22 +181,24 @@ gboolean orage_exec(const gchar *cmd, gboolean *cmd_active, GError **error)
 {
     char **argv;
     gboolean success;
-    int spawn_flags = G_SPAWN_SEARCH_PATH | G_SPAWN_DO_NOT_REAP_CHILD;
+    int spawn_flags = G_SPAWN_SEARCH_PATH;
     GPid pid;
 
     if (!g_shell_parse_argv(cmd, NULL, &argv, error))
         return(FALSE);
 
-    if (!argv || !argv[0])
-        return(FALSE);
-
-    success = g_spawn_async(NULL, argv, NULL, spawn_flags
-            , child_setup_async, NULL, &pid, error);
     if (cmd_active) {
+        spawn_flags |= G_SPAWN_DO_NOT_REAP_CHILD;
+        success = g_spawn_async(NULL, argv, NULL, spawn_flags
+                , child_setup_async, NULL, &pid, error);
+        *cmd_active = success;
         if (success)
-            *cmd_active = TRUE;
-        g_child_watch_add(pid, child_watch_cb, cmd_active);
+            g_child_watch_add(pid, child_watch_cb, cmd_active);
     }
+    else
+        success = g_spawn_async(NULL, argv, NULL, spawn_flags
+                , child_setup_async, NULL, NULL, error);
+
     g_strfreev(argv);
 
     return(success);
