@@ -3782,147 +3782,147 @@ msgstr "Tšiili/Lihavõttesaar"
 
 #: ../src/timezone_names.c:410
 msgid "Etc"
-msgstr ""
+msgstr "Üldnimed"
 
 #: ../src/timezone_names.c:411
 msgid "Etc/GMT"
-msgstr ""
+msgstr "Üldnimed/GMT"
 
 #: ../src/timezone_names.c:412
 msgid "Etc/GMT+0"
-msgstr ""
+msgstr "Üldnimed/GMT+0"
 
 #: ../src/timezone_names.c:413
 msgid "Etc/GMT+1"
-msgstr ""
+msgstr "Üldnimed/GMT+1"
 
 #: ../src/timezone_names.c:414
 msgid "Etc/GMT+10"
-msgstr ""
+msgstr "Üldnimed/GMT+10"
 
 #: ../src/timezone_names.c:415
 msgid "Etc/GMT+11"
-msgstr ""
+msgstr "Üldnimed/GMT+11"
 
 #: ../src/timezone_names.c:416
 msgid "Etc/GMT+12"
-msgstr ""
+msgstr "Üldnimed/GMT+12"
 
 #: ../src/timezone_names.c:417
 msgid "Etc/GMT+2"
-msgstr ""
+msgstr "Üldnimed/GMT+2"
 
 #: ../src/timezone_names.c:418
 msgid "Etc/GMT+3"
-msgstr ""
+msgstr "Üldnimed/GMT+3"
 
 #: ../src/timezone_names.c:419
 msgid "Etc/GMT+4"
-msgstr ""
+msgstr "Üldnimed/GMT+4"
 
 #: ../src/timezone_names.c:420
 msgid "Etc/GMT+5"
-msgstr ""
+msgstr "Üldnimed/GMT+5"
 
 #: ../src/timezone_names.c:421
 msgid "Etc/GMT+6"
-msgstr ""
+msgstr "Üldnimed/GMT+6"
 
 #: ../src/timezone_names.c:422
 msgid "Etc/GMT+7"
-msgstr ""
+msgstr "Üldnimed/GMT+7"
 
 #: ../src/timezone_names.c:423
 msgid "Etc/GMT+8"
-msgstr ""
+msgstr "Üldnimed/GMT+8"
 
 #: ../src/timezone_names.c:424
 msgid "Etc/GMT+9"
-msgstr ""
+msgstr "Üldnimed/GMT+9"
 
 #: ../src/timezone_names.c:425
 msgid "Etc/GMT-0"
-msgstr ""
+msgstr "Üldnimed/GMT-0"
 
 #: ../src/timezone_names.c:426
 msgid "Etc/GMT-1"
-msgstr ""
+msgstr "Üldnimed/GMT-1"
 
 #: ../src/timezone_names.c:427
 msgid "Etc/GMT-10"
-msgstr ""
+msgstr "Üldnimed/GMT-10"
 
 #: ../src/timezone_names.c:428
 msgid "Etc/GMT-11"
-msgstr ""
+msgstr "Üldnimed/GMT-11"
 
 #: ../src/timezone_names.c:429
 msgid "Etc/GMT-12"
-msgstr ""
+msgstr "Üldnimed/GMT-12"
 
 #: ../src/timezone_names.c:430
 msgid "Etc/GMT-13"
-msgstr ""
+msgstr "Üldnimed/GMT-13"
 
 #: ../src/timezone_names.c:431
 msgid "Etc/GMT-14"
-msgstr ""
+msgstr "Üldnimed/GMT-14"
 
 #: ../src/timezone_names.c:432
 msgid "Etc/GMT-2"
-msgstr ""
+msgstr "Üldnimed/GMT-2"
 
 #: ../src/timezone_names.c:433
 msgid "Etc/GMT-3"
-msgstr ""
+msgstr "Üldnimed/GMT-3"
 
 #: ../src/timezone_names.c:434
 msgid "Etc/GMT-4"
-msgstr ""
+msgstr "Üldnimed/GMT-4"
 
 #: ../src/timezone_names.c:435
 msgid "Etc/GMT-5"
-msgstr ""
+msgstr "Üldnimed/GMT-5"
 
 #: ../src/timezone_names.c:436
 msgid "Etc/GMT-6"
-msgstr ""
+msgstr "Üldnimed/GMT-6"
 
 #: ../src/timezone_names.c:437
 msgid "Etc/GMT-7"
-msgstr ""
+msgstr "Üldnimed/GMT-7"
 
 #: ../src/timezone_names.c:438
 msgid "Etc/GMT-8"
-msgstr ""
+msgstr "Üldnimed/GMT-8"
 
 #: ../src/timezone_names.c:439
 msgid "Etc/GMT-9"
-msgstr ""
+msgstr "Üldnimed/GMT-9"
 
 #: ../src/timezone_names.c:440
 msgid "Etc/GMT0"
-msgstr ""
+msgstr "Üldnimed/GMT0"
 
 #: ../src/timezone_names.c:441
 msgid "Etc/Greenwich"
-msgstr ""
+msgstr "Üldnimed/Greenwich"
 
 #: ../src/timezone_names.c:442
 msgid "Etc/UCT"
-msgstr ""
+msgstr "Üldnimed/UCT"
 
 #: ../src/timezone_names.c:443
 msgid "Etc/UTC"
-msgstr ""
+msgstr "Üldnimed/UTC"
 
 #: ../src/timezone_names.c:444
 msgid "Etc/Universal"
-msgstr ""
+msgstr "Üldnimed/Universal"
 
 #: ../src/timezone_names.c:445
 msgid "Etc/Zulu"
-msgstr ""
+msgstr "Üldnimed/Zulu"
 
 #: ../src/timezone_names.c:446
 msgid "Europe"
@@ -4546,7 +4546,7 @@ msgstr ""
 
 #: ../panel-plugin/xfce4-orageclock-plugin.desktop.in.h:2
 msgid "Show time and date?"
-msgstr ""
+msgstr "Kas kuvame kellaaega ja kuupäeva?"
 
 #: ../plugin/xfce-xfcalendar-settings.desktop.in.h:1
 msgid "Orage preferences"
@@ -4554,7 +4554,7 @@ msgstr "Orage'i eelistused"
 
 #: ../plugin/xfce-xfcalendar-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Calendar Application (Orage)"
-msgstr ""
+msgstr "Xfce 4 kalendrirakenduse (Orage) seadistused"
 
 #: ../plugin/xfce-xfcalendar-settings.desktop.in.h:3
 msgid "Orage Calendar Preferences"
