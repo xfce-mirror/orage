@@ -83,7 +83,7 @@ static void alarm_free(gpointer galarm)
     alarm_struct *l_alarm = (alarm_struct *)galarm;
 
 #if ORAGE_TRACE
-    g_debug (P_N);
+    g_debug (P_N "%p", l_alarm);
 #endif
     g_free(l_alarm->alarm_time);
     g_free(l_alarm->action_time);
@@ -103,22 +103,25 @@ static gint alarm_order(gconstpointer a, gconstpointer b)
 #undef P_N
 #define P_N "alarm_order: "
 
+    const alarm_struct *alarm_a = (const alarm_struct *)a;
+    const alarm_struct *alarm_b = (const alarm_struct *)b;
+
 #if ORAGE_TRACE
     g_debug (P_N);
 #endif
-    if (((alarm_struct *)a)->alarm_time == NULL)
+
+    if (alarm_a->alarm_time == NULL)
         return(1);
-    else if (((alarm_struct *)b)->alarm_time == NULL)
+    else if (alarm_b->alarm_time == NULL)
         return(-1);
 
-    return(strcmp(((alarm_struct *)a)->alarm_time
-                , ((alarm_struct *)b)->alarm_time));
+    return strcmp (alarm_a->alarm_time, alarm_b->alarm_time);
 }
 
 void alarm_list_free(void)
 {
 #undef P_N
-#define P_N "alarm_free_all: "
+#define P_N "alarm_list_free: "
     gchar *time_now;
     alarm_struct *l_alarm;
     GList *alarm_l, *kept_l=NULL;
@@ -138,11 +141,11 @@ void alarm_list_free(void)
             /* We keep temporary alarms, which have not yet fired.
                Remove the element from the list, but do not loose it. */
             g_par.alarm_list = g_list_remove_link(g_par.alarm_list, alarm_l);
-            /*
+#if 0
             if (!kept_l)
                 kept_l = alarm_l;
             else
-            */
+#endif
             kept_l = g_list_concat(kept_l, alarm_l);
         }
         else { /* get rid of that l_alarm element */
@@ -192,10 +195,11 @@ static alarm_struct *alarm_copy(alarm_struct *l_alarm, gboolean init)
 #define P_N "alarm_copy: "
     alarm_struct *n_alarm;
 
-#if ORAGE_TRACE
-    g_debug (P_N);
-#endif
     n_alarm = g_new0(alarm_struct, 1);
+
+#if ORAGE_TRACE
+    g_debug (P_N "%p", n_alarm);
+#endif
 
     /* first l_alarm values which are not modified */
     if (l_alarm->alarm_time != NULL)
@@ -343,9 +347,9 @@ void alarm_read(void)
     for (i = 0; alarm_groups[i] != NULL; i++) {
         orage_rc_set_group(orc, alarm_groups[i]);
         if ((new_alarm = alarm_read_next_alarm(orc, time_now)) != NULL) {
-            /*
+#if 0
             g_print(P_N "time_now=%s alarm=%s\n", time_now, new_alarm->alarm_time);
-            */
+#endif
             create_reminders(new_alarm);
             alarm_free(new_alarm);
         }
@@ -449,7 +453,8 @@ static gboolean sound_alarm(gpointer data)
         status = orage_exec(l_alarm->sound_cmd
                 , &l_alarm->active_alarm->sound_active, &error);
         if (!status) {
-            g_warning("reminder: play failed (%s) %s", l_alarm->sound, error->message);
+            g_warning ("reminder: play failed (%s) %s",
+                       l_alarm->sound, error->message);
             l_alarm->repeat_cnt = 0; /* one warning is enough */
             status = TRUE; /* we need to come back once to do cleanout */
         }
@@ -495,8 +500,7 @@ static void create_sound_reminder(alarm_struct *l_alarm)
         l_alarm->repeat_cnt++; /* need to do it once */
     }
 
-    g_timeout_add_seconds(l_alarm->repeat_delay, (GSourceFunc) sound_alarm
-            , (gpointer) l_alarm);
+    g_timeout_add_seconds (l_alarm->repeat_delay, sound_alarm, l_alarm);
 }
 
 #ifdef HAVE_NOTIFY
@@ -509,9 +513,9 @@ static void notify_closed (G_GNUC_UNUSED NotifyNotification *n, gpointer par)
 #if ORAGE_TRACE
     g_debug (P_N);
 #endif
-    /*
+#if 0
     g_print("notify_closed: start %d %d\n",  l_alarm->audio, l_alarm->display_notify);
-    */
+#endif
     if (l_alarm->notify_refresh) {
         /* this is not really closing notify, but only a refresh, so
          * we do not clean the memory now */
@@ -562,10 +566,10 @@ static void create_notify_reminder(alarm_struct *l_alarm)
 
     g_strlcpy(heading,  _("Reminder "), sizeof (heading));
     if (l_alarm->title)
-        g_strlcat(heading, l_alarm->title, 150);
+        g_strlcat(heading, l_alarm->title, sizeof (heading));
     if (l_alarm->action_time) {
-        g_strlcat(heading, "\n", 160);
-        g_strlcat(heading, l_alarm->action_time, 250);
+        g_strlcat(heading, "\n", sizeof (heading));
+        g_strlcat(heading, l_alarm->action_time, sizeof (heading));
     }
     /* since version 0.7.0, libnotify does not have the widget parameter in 
        notify_notification_new and it does not have function
@@ -826,7 +830,7 @@ static void create_orage_reminder(alarm_struct *l_alarm)
     gtk_widget_show_all(wReminder);
 }
 
-static void create_procedure_reminder(alarm_struct *l_alarm)
+static void create_procedure_reminder (const alarm_struct *l_alarm)
 {
 #undef P_N
 #define P_N "create_procedure_reminder: "
@@ -895,6 +899,10 @@ void create_reminders(alarm_struct *l_alarm)
 #undef P_N
 #define P_N "create_reminders: "
     alarm_struct *n_alarm;
+    gboolean sound_reminder;
+    gboolean orage_reminder;
+    gboolean notify_reminder;
+    gboolean procedure_reminder;
 
 #if ORAGE_TRACE
     g_debug (P_N);
@@ -902,16 +910,34 @@ void create_reminders(alarm_struct *l_alarm)
     /* FIXME: instead of copying this new private version of the l_alarm,
      * g_list_remove(GList *g_par.alarm_list, gconstpointer l_alarm);
      * remove it and use the original. saves time */
-    n_alarm = alarm_copy(l_alarm, TRUE);
 
-    if (n_alarm->audio && n_alarm->sound)
-        create_sound_reminder(n_alarm);
-    if (n_alarm->display_orage)
-        create_orage_reminder(n_alarm);
-    if (n_alarm->display_notify)
-        create_notify_reminder(n_alarm);
-    if (n_alarm->procedure && n_alarm->cmd)
-        create_procedure_reminder(n_alarm);
+    sound_reminder = (l_alarm->audio && l_alarm->sound);
+    orage_reminder = l_alarm->display_orage;
+    notify_reminder = l_alarm->display_notify;
+    procedure_reminder = (l_alarm->procedure && l_alarm->cmd);
+
+    if (sound_reminder || orage_reminder || notify_reminder)
+    {
+        /* Single n_alarm copy is also for sharing alarm completed information
+         * between reminders. This is needed because sound alarm may be set to
+         * repeat forever, sound alarm can be only silenced by cliking button
+         * on orage or notify reminder. Closing visual remider must also stop
+         * sound reminder.
+         */
+        n_alarm = alarm_copy (l_alarm, TRUE);
+
+        if (sound_reminder)
+            create_sound_reminder (n_alarm);
+
+        if (orage_reminder)
+            create_orage_reminder (n_alarm);
+
+        if (notify_reminder)
+            create_notify_reminder (n_alarm);
+    }
+
+    if (procedure_reminder)
+        create_procedure_reminder (l_alarm);
 }
 
 static void reset_orage_day_change(gboolean changed)
@@ -1020,9 +1046,9 @@ static gboolean orage_alarm_clock (G_GNUC_UNUSED gpointer user_data)
         /* remember that it is sorted list */
         cur_alarm = (alarm_struct *)alarm_l->data;
         if (strcmp(time_now, cur_alarm->alarm_time) > 0) {
-            /*
+#if 0
             g_print(P_N "time_now=%s alarm=%s\n", time_now, cur_alarm->alarm_time);
-            */
+#endif
             create_reminders(cur_alarm);
             alarm_raised = TRUE;
         }
