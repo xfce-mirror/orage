@@ -39,7 +39,7 @@ ltmain.sh
 m4
 missing
 nbproject
-org.xfce.calendar.service
+org.xfce.orage.service
 org.xfce.orage.appdata.xml
 po/.intltool-merge-cache*
 po/Makefile.in.in
