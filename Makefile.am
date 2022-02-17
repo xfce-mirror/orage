@@ -28,7 +28,7 @@ appdata_DATA = $(appdata_in_files:.xml.in=.xml)
 
 if HAVE_DBUS
 servicedir = $(datadir)/dbus-1/services
-service_in_files = org.xfce.calendar.service.in org.xfce.orage.service.in
+service_in_files = org.xfce.orage.service.in
 service_DATA = $(service_in_files:.service.in=.service)
 %.service: %.service.in
 	$(AM_V_GEN) $(SED) -e "s,\@bindir\@,$(bindir),g" < $< > $@
