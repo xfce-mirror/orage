@@ -34,7 +34,7 @@
   <update_contact>xfce4-dev@xfce.org</update_contact>
   <developer_name>Orage Team</developer_name>
   <translation type="gettext">orage</translation>
-  <launchable type="desktop-id">xfcalendar.desktop</launchable>
+  <launchable type="desktop-id">org.xfce.orage.desktop</launchable>
   <content_rating type="oars-1.1"/>
 
   <provides>
