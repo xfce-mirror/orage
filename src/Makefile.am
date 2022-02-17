@@ -83,7 +83,6 @@ orage_dbus_sources =						\
 	orage-dbus-object.h					\
 	orage-dbus-client.c					\
 	orage-dbus-client.h					\
-	orage-dbus.h						\
 	orage-dbus-service.xml					\
 	orage-dbus-service.h
 
@@ -91,8 +90,10 @@ orage_CPPFLAGS += -DDBUS_API_SUBJECT_TO_CHANGE
 orage_CFLAGS += $(DBUS_CFLAGS)
 orage_LDADD += $(DBUS_LIBS)
 
-orage-dbus-server.h: $(srcdir)/orage-dbus-service.xml Makefile
+orage-dbus-service.h: $(srcdir)/orage-dbus-service.xml Makefile
 	dbus-binding-tool --prefix=orage --mode=glib-server $(srcdir)/orage-dbus-service.xml > orage-dbus-service.h
+
+DISTCLEANFILES = orage-dbus-service.h
 endif
 
 if HAVE_NOTIFY
