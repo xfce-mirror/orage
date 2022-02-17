@@ -56,7 +56,7 @@
 #include "parameters.h"
 #include "interface.h"
 #ifdef HAVE_DBUS
-#include "orage-dbus.h"
+#include "orage-dbus-client.h"
 #include <dbus/dbus-glib-lowlevel.h>
 #endif
 
