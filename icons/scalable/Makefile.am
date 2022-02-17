@@ -2,8 +2,8 @@
 
 iconsdir = $(datadir)/icons/hicolor/scalable/apps
 icons_DATA =								\
-	xfcalendar.svg                          \
-	orage_globaltime.svg
+	org.xfce.orage.svg                          \
+	org.xfce.orage.globaltime.svg
 
 EXTRA_DIST =								\
 	$(icons_DATA)

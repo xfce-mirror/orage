@@ -1366,7 +1366,7 @@ void read_parameters(void)
     g_par.set_stick = orage_rc_get_bool(orc, "Set sticked", TRUE);
     g_par.set_ontop = orage_rc_get_bool(orc, "Set ontop", FALSE);
     g_par.own_icon_file = orage_rc_get_str(orc, "Own icon file"
-            , PACKAGE_DATA_DIR "/icons/hicolor/160x160/apps/orage.xpm");
+            , PACKAGE_DATA_DIR "/icons/hicolor/160x160/apps/org.xfce.orage.xpm");
     g_par.own_icon_row1_data = orage_rc_get_str(orc
             , "Own icon row1 data", "%a");
     g_par.own_icon_row2_data = orage_rc_get_str(orc

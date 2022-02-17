@@ -587,7 +587,7 @@ static void create_icon(void)
     GtkIconTheme *icon_theme;
 
     icon_theme = gtk_icon_theme_get_default();
-    clock_logo = gtk_icon_theme_load_icon(icon_theme, "orage_globaltime", 0
+    clock_logo = gtk_icon_theme_load_icon(icon_theme, "org.xfce.orage.globaltime", 0
             , GTK_ICON_LOOKUP_USE_BUILTIN, NULL);
     gtk_window_set_default_icon(clock_logo);
     gtk_window_set_icon(GTK_WINDOW(clocks.window), clock_logo);

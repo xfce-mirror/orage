@@ -40,7 +40,7 @@ endif
 
 # .desktop file
 #
-desktop_in_files = xfce4-orageclock-plugin.desktop.in
+desktop_in_files = org.xfce.orage.clock-plugin.desktop.in
 	
 desktopdir = $(datadir)/xfce4/panel/plugins
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
