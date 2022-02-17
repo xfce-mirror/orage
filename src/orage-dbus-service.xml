@@ -19,9 +19,9 @@
 
 -->
 
-<node name="/org/xfce/calendar">
+<node name="/org/xfce/orage">
 
-  <interface name="org.xfce.calendar">
+  <interface name="org.xfce.orage">
     <annotation name="org.freedesktop.DBus.GLib.CSymbol" value="orage_dbus_service"/>
     <method name="LoadFile">
       <!-- This is optional, and in this case is redunundant -->

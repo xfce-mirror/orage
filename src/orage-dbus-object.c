@@ -73,14 +73,9 @@ static void orage_dbus_init(OrageDBus *o_dbus)
         g_error_free(error);
     }
     else {
-      /* register the /org/xfce/calendar object for orage */
+      /* register the /org/xfce/orage object for orage */
         dbus_g_connection_register_g_object(o_dbus->connection
-              , "/org/xfce/calendar", G_OBJECT(o_dbus));
-
-      /* request the org.xfce.calendar name for orage */
-        dbus_bus_request_name(dbus_g_connection_get_connection(
-                  o_dbus->connection), "org.xfce.calendar"
-              , DBUS_NAME_FLAG_REPLACE_EXISTING, NULL);
+              , "/org/xfce/orage", G_OBJECT(o_dbus));
 
       /* request the org.xfce.orage name for orage */
         dbus_bus_request_name(dbus_g_connection_get_connection(

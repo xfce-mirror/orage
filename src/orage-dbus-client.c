@@ -28,7 +28,7 @@
 
 #include <dbus/dbus-glib-lowlevel.h>
 
-#include "orage-dbus.h"
+#include "orage-dbus-client.h"
 /*
 #include "orage-dbus-object.h"
 #include "orage-dbus-service.h"
@@ -55,7 +55,7 @@ gboolean orage_dbus_import_file(gchar *file_name)
 
 /* Create a proxy object for the "bus driver" (name "org.freedesktop.DBus") */
     proxy = dbus_g_proxy_new_for_name(connection
-            , "org.xfce.calendar", "/org/xfce/calendar", "org.xfce.calendar");
+            , "org.xfce.orage", "/org/xfce/orage", "org.xfce.orage");
 
     /*
     if (orage_dbus_service_load_file(proxy, file_name,  &error)) {
@@ -84,7 +84,7 @@ gboolean orage_dbus_export_file(gchar *file_name, gint type, gchar *uids)
     }
 
     proxy = dbus_g_proxy_new_for_name(connection
-            , "org.xfce.calendar", "/org/xfce/calendar", "org.xfce.calendar");
+            , "org.xfce.orage", "/org/xfce/orage", "org.xfce.orage");
     if (dbus_g_proxy_call(proxy, "ExportFile", &error
                 , G_TYPE_STRING, file_name
                 , G_TYPE_INT, type
@@ -112,7 +112,7 @@ gboolean orage_dbus_foreign_add(gchar *file_name, gboolean read_only
     }
 
     proxy = dbus_g_proxy_new_for_name(connection
-            , "org.xfce.calendar", "/org/xfce/calendar", "org.xfce.calendar");
+            , "org.xfce.orage", "/org/xfce/orage", "org.xfce.orage");
     if (dbus_g_proxy_call(proxy, "AddForeign", &error
                 , G_TYPE_STRING, file_name
                 , G_TYPE_BOOLEAN, read_only
@@ -139,7 +139,7 @@ gboolean orage_dbus_foreign_remove(gchar *file_name)
     }
 
     proxy = dbus_g_proxy_new_for_name(connection
-            , "org.xfce.calendar", "/org/xfce/calendar", "org.xfce.calendar");
+            , "org.xfce.orage", "/org/xfce/orage", "org.xfce.orage");
     if (dbus_g_proxy_call(proxy, "RemoveForeign", &error
                 , G_TYPE_STRING, file_name
                 , G_TYPE_INVALID, G_TYPE_INVALID)) {
