@@ -17,7 +17,7 @@ SUBDIRS = $(LIBICAL_SUBDIR)	\
 	tz_convert
 
 desktopdir = $(datadir)/applications
-desktop_in_files = xfcalendar.desktop.in
+desktop_in_files = org.xfce.orage.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
 
