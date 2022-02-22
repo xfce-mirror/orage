@@ -7,8 +7,8 @@
 # Xfce Bot <transifex@xfce.org>, 2022
 # Eirik Dekko <edekko@gmail.com>, 2022
 # Allan Nordhøy <epost@anotheragency.no>, 2022
-# heskjestad <cato@heskjestad.xyz>, 2022
 # Harald H. <haarektrans@gmail.com>, 2022
+# heskjestad <cato@heskjestad.xyz>, 2022
 # 
 #, fuzzy
 msgid ""
@@ -17,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-12 00:49+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Harald H. <haarektrans@gmail.com>, 2022\n"
+"Last-Translator: heskjestad <cato@heskjestad.xyz>, 2022\n"
 "Language-Team: Norwegian Bokmål (https://www.transifex.com/xfce/teams/16840/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -585,7 +585,7 @@ msgstr "%A %d %B %Y / %V"
 
 #: ../src/about-xfcalendar.c:54 ../org.xfce.orage.appdata.xml.in.h:2
 msgid "Orage is a time-managing application for the Xfce desktop environment"
-msgstr ""
+msgstr "Orage er et kalenderprogram for skrivebordsmiljøet Xfce"
 
 #: ../src/about-xfcalendar.c:58
 msgid "translator-credits"
@@ -4648,6 +4648,9 @@ msgid ""
 " ical format and includes common calendar features like repeating "
 "appointments and multiple alarming possibilities."
 msgstr ""
+"Orage har som mål å være en grafisk kalender som er rask og enkel i bruk. "
+"Den bruker det portable filformatet «ical» og har vanlige kalenderfunksjoner"
+" slik som gjentakende møter og tilpassede alarmer."
 
 #: ../org.xfce.orage.appdata.xml.in.h:4
 msgid ""
@@ -4656,6 +4659,9 @@ msgid ""
 "Contents of those files are read and converted into Orage, but those files "
 "are left untouched."
 msgstr ""
+"Orage er ikke laget for flere samtidige brukere. Programmet kan importere "
+"ical-filer: Innholdet kan leses og konverteres til Orage, men selve filene "
+"endres ikke."
 
 #: ../xfcalendar.desktop.in.h:1
 msgid "Orage Calendar"
