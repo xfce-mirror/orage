@@ -574,7 +574,7 @@ msgstr "%A. %d %B %Y/%V"
 
 #: ../src/about-xfcalendar.c:54 ../org.xfce.orage.appdata.xml.in.h:2
 msgid "Orage is a time-managing application for the Xfce desktop environment"
-msgstr ""
+msgstr "Orage on ajahalduse rakendus Xfce töölauakeskkonna jaoks"
 
 #: ../src/about-xfcalendar.c:58
 msgid "translator-credits"
@@ -651,7 +651,7 @@ msgstr "Kohtumise lisamine ei õnnestunud."
 #: ../src/appointment.c:1244
 msgid ""
 "Error happened when adding appointment. Look more details from the log file."
-msgstr ""
+msgstr "Kohtumise lisamisel tekkis viga. Täiendavat teavet leiad logist."
 
 #: ../src/appointment.c:1254
 msgid "Appointment update failed."
@@ -1624,7 +1624,7 @@ msgstr "Kõik kohtumised"
 
 #: ../src/interface.c:1139
 msgid "Named appointments:"
-msgstr ""
+msgstr "Nimetatud kohtumised: "
 
 #: ../src/interface.c:1158
 msgid ""
