@@ -585,6 +585,7 @@ msgstr "%A %d %B %Y/%V"
 #: ../src/about-xfcalendar.c:54 ../org.xfce.orage.appdata.xml.in.h:2
 msgid "Orage is a time-managing application for the Xfce desktop environment"
 msgstr ""
+"Orage adalah sebuah aplikasi pengelola waktu untuk lingkungan desktop Xfce"
 
 #: ../src/about-xfcalendar.c:58
 msgid "translator-credits"
@@ -893,7 +894,7 @@ msgstr ""
 
 #: ../src/appointment.c:2979
 msgid "_Colour"
-msgstr ""
+msgstr "_Warna"
 
 #: ../src/appointment.c:2984
 msgid "update colors for categories."
@@ -1083,7 +1084,7 @@ msgstr ""
 
 #: ../src/appointment.c:3319 ../src/interface.c:1181 ../src/interface.c:1203
 msgid "_Execute"
-msgstr ""
+msgstr "_Jalankan"
 
 #: ../src/appointment.c:3321
 msgid "Test this alarm by raising it now"
@@ -1895,12 +1896,12 @@ msgstr "\tMenggunakan versi lokal Orage liblical.\n"
 #: ../src/main.c:299
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
-msgstr ""
+msgstr "\tMenggunakan libxfce4ui: ya\n"
 
 #: ../src/main.c:301
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
-msgstr ""
+msgstr "\tMenggunakan libxfce4ui: tidak\n"
 
 #: ../src/main.c:314
 #, c-format
