@@ -6,6 +6,10 @@ if INCLUDED_LIBICAL
 LIBICAL_SUBDIR = libical
 endif
 
+if BUILD_TZ_CONVERT
+TZ_CONVERT_SUBDIR = tz_convert
+endif
+
 SUBDIRS = $(LIBICAL_SUBDIR)	\
 	icons			\
 	po			\
@@ -14,7 +18,7 @@ SUBDIRS = $(LIBICAL_SUBDIR)	\
 	globaltime		\
 	plugin			\
 	panel-plugin		\
-	tz_convert
+	$(TZ_CONVERT_SUBDIR)
 
 desktopdir = $(datadir)/applications
 desktop_in_files = org.xfce.orage.desktop.in
