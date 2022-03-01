@@ -373,5 +373,4 @@ echo "* LIBXFCE4UI support:        yes"
 else
 echo "* LIBXFCE4UI support:        no"
 fi
-
 echo
