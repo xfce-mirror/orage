@@ -1,6 +1,4 @@
-if HAVE_LIBPOPT
 bin_PROGRAMS = tz_convert
-endif
 
 tz_convert_SOURCES =						\
 	tz_convert.c
