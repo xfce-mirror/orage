@@ -71,8 +71,6 @@ static void refresh_foreign_files(intf_win *intf_w, const gboolean first);
 
 gboolean orage_external_update_check (G_GNUC_UNUSED gpointer user_data)
 {
-#undef P_N
-#define P_N "orage_external_update_check: "
     struct stat s;
     gint i;
     gboolean external_changes_present = FALSE;
@@ -611,13 +609,16 @@ gboolean orage_foreign_file_remove(gchar *filename)
 static void for_remove_button_clicked (G_GNUC_UNUSED GtkButton *button,
                                        gpointer user_data)
 {
-#undef P_N
-#define P_N "for_remove_button_clicked: "
     gint del_line = GPOINTER_TO_INT(user_data);
 
-    g_message (P_N "Removing foreign file %s (%s).", g_par.foreign_data[del_line].name, g_par.foreign_data[del_line].file);
+    g_message ("%s: Removing foreign file %s (%s).", G_STRFUNC,
+               g_par.foreign_data[del_line].name,
+               g_par.foreign_data[del_line].file);
+
     orage_foreign_file_remove_line(del_line);
-    g_message (P_N "Foreign file removed and Orage alarms refreshed.");
+
+    g_message ("%s: Foreign file removed and Orage alarms refreshed.",
+               G_STRFUNC);
 }
 
 static void for_remove_button_clicked2 (G_GNUC_UNUSED GtkButton *button,
@@ -702,13 +703,12 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
                                                  const gboolean read_only,
                                                  GtkWidget *main_window)
 {
-#undef P_N
-#define P_N "orage_foreign_file_add_internal: "
     gint i = 0;
     const gchar *add_failed = _("Foreign file add failed");
 
     if (g_par.foreign_count > 9) {
-        g_warning (P_N "Orage can only handle 10 foreign files. Limit reached. New file not added.");
+        g_warning ("%s: Orage can only handle 10 foreign files. Limit reached. "
+                   "New file not added.", G_STRFUNC);
         if (main_window)
         {
             (void)orage_error_dialog(GTK_WINDOW(main_window)
@@ -718,7 +718,7 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
         return(FALSE);
     }
     if (!ORAGE_STR_EXISTS(filename)) {
-        g_warning (P_N "File is empty. New file not added.");
+        g_warning ("%s: File is empty. New file not added.", G_STRFUNC);
         if (main_window)
         {
             (void)orage_error_dialog(GTK_WINDOW(main_window)
@@ -728,7 +728,7 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
         return(FALSE);
     }
     if (!ORAGE_STR_EXISTS(name)) {
-        g_warning (P_N "Name is empty. New file not added.");
+        g_warning ("%s: Name is empty. New file not added.", G_STRFUNC);
         if (main_window)
         {
             (void)orage_error_dialog(GTK_WINDOW(main_window)
@@ -738,7 +738,8 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
         return(FALSE);
     }
     if (!g_file_test(filename, G_FILE_TEST_EXISTS)) {
-        g_warning (P_N "New file %s does not exist. New file not added.", filename);
+        g_warning ("%s: New file %s does not exist. New file not added.",
+                   G_STRFUNC, filename);
         if (main_window)
         {
             (void)orage_error_dialog(GTK_WINDOW(main_window)
@@ -749,7 +750,8 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
     }
     for (i = 0; i < g_par.foreign_count; i++) {
         if (strcmp(g_par.foreign_data[i].file, filename) == 0) {
-            g_warning (P_N "Foreign file already exists. New file not added");
+            g_warning ("%s: Foreign file already exists. New file not added",
+                       G_STRFUNC);
             if (main_window)
             {
                 (void)orage_error_dialog(GTK_WINDOW(main_window)
@@ -759,7 +761,8 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
             return(FALSE);
         }
         if (strcmp(g_par.foreign_data[i].name, name) == 0) {
-            g_warning (P_N "Foreign file name already exists. New file not added");
+            g_warning ("%s: Foreign file name already exists. "
+                       "New file not added", G_STRFUNC);
             if (main_window)
             {
                 (void)orage_error_dialog(GTK_WINDOW(main_window)
@@ -796,8 +799,6 @@ gboolean orage_foreign_file_add(const gchar *filename, const gboolean read_only
 static void for_add_button_clicked (G_GNUC_UNUSED GtkButton *button,
                                     gpointer user_data)
 {
-#undef P_N
-#define P_N "for_add_button_clicked: "
     intf_win *intf_w = (intf_win *)user_data;
     const gchar *entry_filename;
     const gchar *entry_name;
@@ -811,7 +812,7 @@ static void for_add_button_clicked (G_GNUC_UNUSED GtkButton *button,
                                          intf_w->main_window))
     {
         refresh_foreign_files(intf_w, FALSE);
-        g_message (P_N "New foreign file %s (%s) added.", entry_name
+        g_message ("%s: New foreign file %s (%s) added.", G_STRFUNC, entry_name
                 , entry_filename);
     }
 }

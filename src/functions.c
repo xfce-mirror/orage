@@ -51,8 +51,6 @@
 #include "parameters.h"
 #include "tz_zoneinfo_read.h"
 
-#define ORAGE_DEBUG 0
-
 /**************************************
  *  Debugging helping functions       *
  **************************************/
@@ -334,8 +332,6 @@ GtkWidget *orage_menu_item_new_with_mnemonic (const gchar *label,
 */
 char *orage_replace_text(char *text, char *old, char *new)
 {
-#undef P_N
-#define P_N "orage_replace_text: "
     /* these point to the original string and travel it until no more olds 
      * are found:
      * cur points to the current head (after each old if any found)
@@ -412,8 +408,6 @@ static char* add_line(char *old_result, char *start, int line_len
 */
 char *orage_limit_text(char *text, int max_line_len, int max_lines)
 {
-#undef P_N
-#define P_N "orage_limit_text: "
     /* these point to the original string and travel it until no more cuts 
      * are needed:
      * cur points to the current end of text character.
@@ -453,8 +447,6 @@ char *orage_limit_text(char *text, int max_line_len, int max_lines)
  * <&Ynnnn> which calculates years between current year and nnnn */
 char *orage_process_text_commands(char *text)
 {
-#undef P_N
-#define P_N "process_text_commands: "
     /* these point to the original string and travel it until no more commands 
      * are found:
      * cur points to the current head
@@ -496,13 +488,19 @@ char *orage_process_text_commands(char *text)
                     g_free(new);
                 }
                 else
-                    g_warning (P_N "start year is too big (%d).", start_year);
+                {
+                    g_warning ("%s: start year is too big (%d).",
+                               G_STRFUNC, start_year);
+                }
             }
             else
-                g_warning (P_N "failed to understand parameter (%s).", cmd);
+            {
+                g_warning ("%s: failed to understand parameter (%s).",
+                           G_STRFUNC, cmd);
+            }
         }
         else
-            g_warning (P_N "parameter (%s) misses ending >.", cmd);
+            g_warning ("%s: parameter (%s) misses ending >.", G_STRFUNC, cmd);
     }
 
     if (beq) {
@@ -1039,8 +1037,6 @@ gchar *orage_config_file_location (const gchar *name)
 
 OrageRc *orage_rc_file_open (const gchar *fpath, gboolean read_only)
 {
-#undef P_N
-#define P_N "orage_rc_file_open: "
     /* XfceRc *rc; */
     OrageRc *orc = NULL;
     GKeyFile *grc;
@@ -1056,10 +1052,8 @@ OrageRc *orage_rc_file_open (const gchar *fpath, gboolean read_only)
         orc->cur_group = NULL;
     }
     else {
-#if ORAGE_DEBUG
-        g_debug (P_N "Unable to open RC file (%s). Creating it. (%s)",
-                 fpath, error->message);
-#endif
+        g_debug ("%s: Unable to open RC file (%s). Creating it. (%s)",
+                 G_STRFUNC, fpath, error->message);
 
         g_clear_error(&error);
         if (g_file_set_contents(fpath, "#Created by Orage", -1
@@ -1071,10 +1065,8 @@ OrageRc *orage_rc_file_open (const gchar *fpath, gboolean read_only)
             orc->cur_group = NULL;
         }
         else {
-#if ORAGE_DEBUG
-            g_debug (P_N "Unable to open (create) RC file (%s). (%s)",
-                     fpath, error->message);
-#endif
+            g_debug ("%s: Unable to open (create) RC file (%s). (%s)",
+                     G_STRFUNC, fpath, error->message);
             g_key_file_free(grc);
         }
     }
@@ -1086,8 +1078,6 @@ void orage_rc_file_close(OrageRc *orc)
     /* FIXME: check if file contents have been changed and only write when
        needed or build separate save function */
 {
-#undef P_N
-#define P_N "orage_rc_file_close: "
     GError *error = NULL;
     gchar *file_content = NULL;
     gsize length;
@@ -1099,8 +1089,8 @@ void orage_rc_file_close(OrageRc *orc)
             if (file_content 
             && !g_file_set_contents(orc->file_name, file_content, -1
                 , &error)) { /* write needed and failed */
-                g_warning (P_N "File save failed. RC file (%s). (%s)",
-                           orc->file_name, error->message);
+                g_warning ("%s: File save failed. RC file (%s). (%s)",
+                           G_STRFUNC, orc->file_name, error->message);
             }
             g_free(file_content);
         }
@@ -1110,7 +1100,7 @@ void orage_rc_file_close(OrageRc *orc)
         g_free(orc);
     }
     else {
-        g_debug (P_N "closing empty file.");
+        g_debug ("%s: closing empty file.", G_STRFUNC);
     }
 }
 
@@ -1127,17 +1117,12 @@ void orage_rc_set_group(OrageRc *orc, const gchar *grp)
 
 void orage_rc_del_group(OrageRc *orc, const gchar *grp)
 {
-#undef P_N
-#define P_N "orage_rc_del_group: "
-
     GError *error = NULL;
 
     if (!g_key_file_remove_group(orc->rc, grp, &error))
     {
-#if ORAGE_DEBUG
-        g_debug (P_N "Group remove failed. RC file (%s). group (%s) (%s)",
-                 orc->file_name, grp, error->message);
-#endif
+        g_debug ("%s: Group remove failed. RC file (%s). group (%s) (%s)",
+                 G_STRFUNC, orc->file_name, grp, error->message);
     }
 }
 
@@ -1154,12 +1139,9 @@ gchar *orage_rc_get_str(OrageRc *orc, const gchar *key, const gchar *def)
     ret = g_key_file_get_string (orc->rc, orc->cur_group, key, &error);
     if (!ret && error) {
         ret = g_strdup(def);
-#if ORAGE_DEBUG
-        g_debug ("orage_rc_get_str: "
-                 "str (%s) group (%s) in RC file (%s) not found, "
-                 "using default (%s)",
-                 key, orc->cur_group, orc->file_name, ret);
-#endif
+        g_debug ("%s: str (%s) group (%s) in RC file (%s) not found, "
+                 "using default (%s)", G_STRFUNC, key, orc->cur_group,
+                 orc->file_name, ret);
     }
     return(ret);
 }
@@ -1172,12 +1154,9 @@ gint orage_rc_get_int (OrageRc *orc, const gchar *key, const gint def)
     ret = g_key_file_get_integer (orc->rc, orc->cur_group, key, &error);
     if (!ret && error) {
         ret = def;
-#if ORAGE_DEBUG
-        g_debug ("orage_rc_get_int: "
-                 "str (%s) group (%s) in RC file (%s) not found, "
-                 "using default (%d)",
-                 key, orc->cur_group, orc->file_name, ret);
-#endif
+        g_debug ("%s: str (%s) group (%s) in RC file (%s) not found, "
+                 "using default (%d)", G_STRFUNC, key, orc->cur_group,
+                 orc->file_name, ret);
     }
     return(ret);
 }
@@ -1190,12 +1169,9 @@ gboolean orage_rc_get_bool (OrageRc *orc, const gchar *key, const gboolean def)
     ret = g_key_file_get_boolean (orc->rc, orc->cur_group, key, &error);
     if (!ret && error) {
         ret = def;
-#if ORAGE_DEBUG
-        g_debug ("orage_rc_get_bool: "
-                 "str (%s) group (%s) in RC file (%s) not found, "
-                 "using default (%d)",
-                 key, orc->cur_group, orc->file_name, ret);
-#endif
+        g_debug ("%s: str (%s) group (%s) in RC file (%s) not found, "
+                 "using default (%d)", G_STRFUNC, key, orc->cur_group,
+                 orc->file_name, ret);
     }
     return(ret);
 }
