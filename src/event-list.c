@@ -65,7 +65,6 @@
 #include "day-view.h"
 
 #define BORDER_SIZE 10
-#define EVENT_LIST_TRACE 1
 
 enum {
     COL_TIME = 0
@@ -690,13 +689,6 @@ static void journal_data(el_win *el)
 
 void refresh_el_win(el_win *el)
 {
-#undef P_N
-#define P_N "refresh_el_win: "
-
-#if EVENT_LIST_TRACE
-    g_debug (P_N);
-#endif
-
     orage_category_get_list();
     if (el->Window && el->ListStore && el->TreeView) {
         gtk_list_store_clear(el->ListStore);
@@ -1390,15 +1382,8 @@ static void build_notebook(el_win *el)
 
 static void build_event_list(el_win *el)
 {
-#undef P_N
-#define P_N "build_event_list: "
-
     GtkCellRenderer *rend;
     GtkTreeViewColumn *col;
-
-#if EVENT_LIST_TRACE
-    g_debug (P_N);
-#endif
 
     /* Scrolled window */
     el->ScrolledWindow = gtk_scrolled_window_new(NULL, NULL);
@@ -1479,15 +1464,8 @@ static void build_event_list(el_win *el)
 
 el_win *create_el_win(const gchar *start_date)
 {
-#undef P_N
-#define P_N "create_el_win: "
-
     GdkPixbuf *pixbuf;
     el_win *el;
-
-#if EVENT_LIST_TRACE
-    g_debug (P_N "%s", start_date);
-#endif
 
     /* initialisation + main window + base vbox */
     el = g_new(el_win, 1);
