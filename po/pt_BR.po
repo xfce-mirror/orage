@@ -6,12 +6,12 @@
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2022
 # Marcelo Tobias <marcelo.tobbias@gmail.com>, 2022
-# Michael Martins <michaelfm21@gmail.com>, 2022
 # Rafael Fontenelle <rffontenelle@gmail.com>, 2022
 # Lucas Wilm <lucaswilm@gmail.com>, 2022
 # C. E., 2022
 # Andre Miranda <andre42m@gmail.com>, 2022
 # Wellington Almeida <wsalmeida6@gmail.com>, 2022
+# Michael Martins <michaelfm21@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
@@ -20,7 +20,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-12 00:49+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Wellington Almeida <wsalmeida6@gmail.com>, 2022\n"
+"Last-Translator: Michael Martins <michaelfm21@gmail.com>, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/xfce/teams/16840/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -82,7 +82,7 @@ msgstr "ajuste para modificar a hora"
 msgid ""
 "adjust to change minute. Click arrows with button 2 to change only 1 minute."
 msgstr ""
-"ajuste para modificar os minutos. Clique na setas com o botão 2 para "
+"ajuste para modificar os minutos. Clique nas setas com o botão 2 para "
 "modificar somente 1 minuto."
 
 #: ../globaltime/globaltime.c:621
@@ -519,7 +519,7 @@ msgstr "Linha %d:"
 
 #: ../panel-plugin/oc_config.c:400
 msgid "Enter any valid strftime function parameter."
-msgstr "Entre qualquer parâmetro válido da função strftime."
+msgstr "Entre com qualquer parâmetro válido da função strftime."
 
 #. Tooltip hint
 #: ../panel-plugin/oc_config.c:439
@@ -914,10 +914,10 @@ msgid ""
 "(Alarms will still fire normally.)\n"
 "(There is undocumented parameter so that you can change the default limit of 8.)"
 msgstr ""
-"Se você definir isso como 8 ou mair, o compromisso NÃO será mostrado nas janelas de lista.\n"
+"Se você definir isso como 8 ou maior, o compromisso NÃO será mostrado nas janelas de lista.\n"
 "Você pode usar o recurso para desconfundir as janelas de lista, mas ele deixa mais difícil localizar este compromisso.\n"
 "(Alarmes vão tocar normalmente.)\n"
-"(há parâmetro não documentado de forma que você possa alterar o limite padrão de 8.)"
+"(Existe um parâmetro não documentado para que você possa alterar o limite padrão de 8.)"
 
 #. note
 #: ../src/appointment.c:3003
@@ -1132,7 +1132,7 @@ msgstr "Anual"
 
 #: ../src/appointment.c:3424
 msgid "Hourly"
-msgstr "Hora em hora"
+msgstr "De hora em hora"
 
 #: ../src/appointment.c:3426
 msgid "Mon"
@@ -1322,7 +1322,7 @@ msgstr "Datas de ação"
 #. View menu
 #: ../src/day-view.c:293 ../src/event-list.c:1147 ../src/mainbox.c:330
 msgid "_View"
-msgstr "_Ver"
+msgstr "_Visualizar"
 
 #. ********* Go menu   *********
 #: ../src/day-view.c:307 ../src/event-list.c:1166
@@ -1482,7 +1482,7 @@ msgstr ""
 "Clique duplo na linha para editá-la.\n"
 "\n"
 "Sinalizadores em ordem:\n"
-"     1. Alarme:\n"
+" 1. Alarme:\n"
 "          n=Nenhum alarme\n"
 "          A=Alarme definido\n"
 "          P=alarme persistente\n"
