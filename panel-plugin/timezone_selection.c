@@ -69,8 +69,6 @@ enum {
 static GtkTreeStore *tz_button_create_store(gboolean details
         , gboolean check_ical)
 {
-#undef P_N
-#define P_N "tz_button_create_store: "
 #define MAX_AREA_LENGTH 100
 
     GtkTreeStore *store;
@@ -87,9 +85,6 @@ static GtkTreeStore *tz_button_create_store(gboolean details
             , G_TYPE_STRING, G_TYPE_STRING);
     g_strlcpy (area_old, "S T a R T", sizeof (area_old)); /* this never matches */
     tz_a = get_orage_timezones(details, check_ical ? 1 : 0);
-    /*
-    g_print(P_N "number of timezones %d\n", tz_a.count);
-    */
     /* Create special "area" for first level timezones, which do not have
      * any real area */
     gtk_tree_store_append(store, &iter1, NULL);
@@ -130,17 +125,14 @@ static GtkTreeStore *tz_button_create_store(gboolean details
                 area_old[j] = 0;
             }
             else {
-                g_print(P_N "too long line in zones.tab %s", tz_a.city[i]);
+                g_info ("%s: too long line in zones.tab %s",
+                        G_STRFUNC, tz_a.city[i]);
             }
         }
         /* then city translated and in base form used internally */
         gtk_tree_store_append(store, &iter2, &iter1);
         offs_hour = tz_a.utc_offset[i] / (60*60);
         offs_min = abs((tz_a.utc_offset[i] - offs_hour * (60*60)) / 60);
-        /*
-        if (offs_min)
-            g_print(P_N " %s offset %d hour %d minutes %d\n", tz_a.city[i], tz_a.utc_offset[i], offs_hour, offs_min);
-        */
         if (details && tz_a.next[i]) {
             next_offs_hour = tz_a.next_utc_offset[i] / (60*60);
             next_offs_min = abs((tz_a.next_utc_offset[i]
@@ -223,8 +215,6 @@ static gint sortEvent_comp(GtkTreeModel *model
 
 static GtkWidget *tz_button_create_view(gboolean details, GtkTreeStore *store)
 {
-#undef P_N
-#define P_N "tz_button_create_view: "
 #define MAX_AREA_LENGTH 100
 
     GtkWidget *tree;
@@ -272,9 +262,6 @@ static GtkWidget *tz_button_create_view(gboolean details, GtkTreeStore *store)
 gboolean orage_timezone_button_clicked(GtkButton *button, GtkWindow *parent
         , gchar **tz, gboolean check_ical, char *local_tz)
 {
-#undef P_N
-#define P_N "orage_timezone_button_clicked: "
-
     GtkTreeStore *store;
     GtkWidget *tree;
     GtkWidget *window;
