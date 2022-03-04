@@ -773,8 +773,6 @@ static int check_parameters(void)
 
 static void read_os_timezones(void)
 {
-#undef P_N
-#define P_N "read_os_timezones: "
 #define MAX_AREA_LENGTH 100
 
     char *tz_dir, *zone_tab_file_name;

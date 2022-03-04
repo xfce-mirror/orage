@@ -1184,8 +1184,6 @@ static void remove_file_select_cb(appt_win *apptw)
 
 static gboolean save_xfical_from_appt_win(appt_win *apptw)
 {
-#undef P_N
-#define P_N "save_xfical_from_appt_win: "
     gint i;
     gboolean ok = FALSE, found = FALSE;
     xfical_appt *appt = (xfical_appt *)apptw->xf_appt;
@@ -1195,7 +1193,8 @@ static gboolean save_xfical_from_appt_win(appt_win *apptw)
         ok = TRUE;
         /* Here we try to save the event... */
         if (!xfical_file_open(TRUE)) {
-            g_warning (P_N "file open and update failed: %s", apptw->xf_uid);
+            g_warning ("%s: file open and update failed: %s",
+                       G_STRFUNC, apptw->xf_uid);
             return(FALSE);
         }
         if (apptw->appointment_add) {
@@ -1217,7 +1216,8 @@ static gboolean save_xfical_from_appt_win(appt_win *apptw)
                         xf_file_id = g_strdup_printf("F%02d.", i-1);
                     }
                     else { /* error! */
-                        g_warning (P_N "Matching foreign file not found: %s", tmp);
+                        g_warning ("%s: Matching foreign file not found: %s",
+                                   G_STRFUNC, tmp);
                         ok = FALSE;
                     }
                 }
@@ -1238,7 +1238,7 @@ static gboolean save_xfical_from_appt_win(appt_win *apptw)
                 remove_file_select_cb(apptw);
             }
             else {
-                g_warning (P_N "Addition failed: %s", apptw->xf_uid);
+                g_warning ("%s: Addition failed: %s", G_STRFUNC, apptw->xf_uid);
                 (void)orage_error_dialog(GTK_WINDOW(apptw->Window)
                         , _("Appointment addition failed.")
                         , _("Error happened when adding appointment. Look more details from the log file."));
@@ -1249,7 +1249,8 @@ static gboolean save_xfical_from_appt_win(appt_win *apptw)
             if (ok)
                 g_message ("Modified: %s", apptw->xf_uid);
             else {
-                g_warning (P_N "Modification failed: %s", apptw->xf_uid);
+                g_warning ("%s: Modification failed: %s",
+                           G_STRFUNC, apptw->xf_uid);
                 (void)orage_error_dialog(GTK_WINDOW(apptw->Window)
                         , _("Appointment update failed.")
                         , _("Look more details from the log file. (Perhaps file was updated external from Orage?)"));
@@ -1298,8 +1299,6 @@ static void on_appSaveClose_clicked_cb (G_GNUC_UNUSED GtkButton *b,
 
 static void delete_xfical_from_appt_win(appt_win *apptw)
 {
-#undef P_N
-#define P_N "delete_xfical_from_appt_win: "
     gint result;
     gboolean ok = FALSE;
 
@@ -1312,14 +1311,15 @@ static void delete_xfical_from_appt_win(appt_win *apptw)
     if (result == GTK_RESPONSE_YES) {
         if (!apptw->appointment_add) {
             if (!xfical_file_open(TRUE)) {
-                g_warning (P_N "file open and removal failed: %s", apptw->xf_uid);
+                g_warning ("%s: file open and removal failed: %s",
+                           G_STRFUNC, apptw->xf_uid);
                 return;
             }
             ok = xfical_appt_del(apptw->xf_uid);
             if (ok)
                 g_message ("Removed: %s", apptw->xf_uid);
             else
-                g_warning (P_N "Removal failed: %s", apptw->xf_uid);
+                g_warning ("%s: Removal failed: %s", G_STRFUNC, apptw->xf_uid);
             xfical_file_close(TRUE);
         }
 
@@ -1858,14 +1858,12 @@ GList *orage_category_list = NULL;
 
 static OrageRc *orage_category_file_open (const gboolean read_only)
 {
-#undef P_N
-#define P_N "orage_category_file_open: "
     gchar *fpath;
     OrageRc *orc;
 
     fpath = orage_data_file_location(ORAGE_CATEGORIES_DIR_FILE);
     if ((orc = orage_rc_file_open(fpath, read_only)) == NULL) {
-        g_warning (P_N "category file open failed.");
+        g_warning ("%s: category file open failed.", G_STRFUNC);
     }
     g_free(fpath);
 
@@ -2607,18 +2605,16 @@ static void build_menu(appt_win *apptw)
 
 static OrageRc *orage_alarm_file_open(gboolean read_only)
 {
-#undef P_N
-#define P_N "orage_alarm_file_open: "
     gchar *fpath;
     OrageRc *orc;
 
     fpath = orage_config_file_location(ORAGE_DEFAULT_ALARM_DIR_FILE);
     if (!read_only)  /* we need to empty it before each write */
         if (g_remove(fpath)) {
-            g_warning (P_N "g_remove failed.");
+            g_warning ("%s: g_remove failed.", G_STRFUNC);
         }
     if ((orc = orage_rc_file_open(fpath, read_only)) == NULL) {
-        g_warning (P_N "default alarm file open failed.");
+        g_warning ("%s: default alarm file open failed.", G_STRFUNC);
     }
     g_free(fpath);
 
