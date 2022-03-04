@@ -56,7 +56,6 @@
 #include "../src/tz_zoneinfo_read.h"
 #include "timezone_selection.h"
 
-#define ORAGE_TRACE 1
 
 enum {
     LOCATION,
