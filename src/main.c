@@ -309,24 +309,24 @@ static void preferences(void)
     send_event (CALENDAR_PREFERENCES_EVENT);
 }
 
-static void print_help(void)
+static void print_help(void (*print_func) (const gchar *, ...))
 {
-    g_print(_("Usage: orage [options] [files]\n\n"));
-    g_print(_("Options:\n"));
-    g_print(_("--version (-v) \t\tshow version of orage\n"));
-    g_print(_("--help (-h) \t\tprint this text\n"));
-    g_print(_("--preferences (-p) \tshow preferences form\n"));
-    g_print(_("--toggle (-t) \t\tmake orage visible/unvisible\n"));
-    g_print(_("--add-foreign (-a) file [RW] [name] \tadd a foreign file\n"));
-    g_print(_("--remove-foreign (-r) file \tremove a foreign file\n"));
-    g_print(_("--export (-e) file [appointment...] \texport appointments from Orage to file\n"));
-    g_print("\n");
-    g_print(_("files=ical files to load into orage\n"));
+    print_func(_("Usage: orage [options] [files]\n\n"));
+    print_func(_("Options:\n"));
+    print_func(_("--version (-v) \t\tshow version of orage\n"));
+    print_func(_("--help (-h) \t\tprint this text\n"));
+    print_func(_("--preferences (-p) \tshow preferences form\n"));
+    print_func(_("--toggle (-t) \t\tmake orage visible/unvisible\n"));
+    print_func(_("--add-foreign (-a) file [RW] [name] \tadd a foreign file\n"));
+    print_func(_("--remove-foreign (-r) file \tremove a foreign file\n"));
+    print_func(_("--export (-e) file [appointment...] \texport appointments from Orage to file\n"));
+    print_func("\n");
+    print_func(_("files=ical files to load into orage\n"));
 #ifndef HAVE_DBUS
-    g_print(_("\tdbus not included in orage. \n"));
-    g_print(_("\twithout dbus [files] and foreign file options(-a & -r) can only be used when starting orage \n"));
+    print_func(_("\tdbus not included in orage. \n"));
+    print_func(_("\twithout dbus [files] and foreign file options(-a & -r) can only be used when starting orage \n"));
 #endif
-    g_print("\n");
+    print_func("\n");
 }
 
 static void import_file(gboolean running, char *file_name, gboolean initialized)
@@ -359,7 +359,8 @@ static void export_file(gboolean running, char *file_name, gboolean initialized
         type = 1;
     else
         type = 0;
-    g_print("export_file: running=%d initialized= %d type=%d, file=%s, uids=%s\n", running, initialized, type, file_name, uid_list);
+    g_message ("export_file: running=%d initialized= %d type=%d, file=%s, uids=%s\n",
+               running, initialized, type, file_name, uid_list);
     if (running && !initialized) {
         /* let's use dbus since server is running there already */
 #ifdef HAVE_DBUS
@@ -382,7 +383,7 @@ static void export_file(gboolean running, char *file_name, gboolean initialized
 static void add_foreign(gboolean running, char *file_name, gboolean initialized
         , gboolean read_only, char *name)
 {
-    g_print("\nadd_foreign: file_name%s name:%s\n\n", file_name, name);
+    g_message ("\nadd_foreign: file_name%s name:%s\n\n", file_name, name);
     if (running && !initialized) {
         /* let's use dbus since server is running there already */
 #ifdef HAVE_DBUS
@@ -451,7 +452,7 @@ static gboolean process_args(int argc, char *argv[], gboolean running
         else if (!strcmp(argv[argi], "--help") || 
                  !strcmp(argv[argi], "-h")     ||
                  !strcmp(argv[argi], "-?")) {
-            print_help();
+            print_help(g_print);
             end = TRUE;
         }
         else if (!strcmp(argv[argi], "--preferences") || 
@@ -475,8 +476,8 @@ static gboolean process_args(int argc, char *argv[], gboolean running
         else if (!strcmp(argv[argi], "--add-foreign") ||
                  !strcmp(argv[argi], "-a")) {
             if (argi+1 >= argc) {
-                g_print("\nFile not specified\n\n");
-                print_help();
+                g_printerr("\nFile not specified\n\n");
+                print_help(g_printerr);
                 end = TRUE;
             } 
             else {
@@ -509,8 +510,8 @@ static gboolean process_args(int argc, char *argv[], gboolean running
         else if (!strcmp(argv[argi], "--remove-foreign") ||
                  !strcmp(argv[argi], "-r")) {
             if (argi+1 >= argc) {
-                g_print("\nFile not specified\n\n");
-                print_help();
+                g_printerr("\nFile not specified\n\n");
+                print_help(g_printerr);
                 end = TRUE;
             } 
             else {
@@ -520,8 +521,8 @@ static gboolean process_args(int argc, char *argv[], gboolean running
         else if (!strcmp(argv[argi], "--export") ||
                  !strcmp(argv[argi], "-e")) {
             if (argi+1 >= argc) {
-                g_print("\nFile not specified\n\n");
-                print_help();
+                g_printerr("\nFile not specified\n\n");
+                print_help(g_printerr);
                 end = TRUE;
             } 
             else {
@@ -533,8 +534,8 @@ static gboolean process_args(int argc, char *argv[], gboolean running
             }
         }
         else if (argv[argi][0] == '-') {
-            g_print(_("\nUnknown option %s\n\n"), argv[argi]);
-            print_help();
+            g_printerr(_("\nUnknown option %s\n\n"), argv[argi]);
+            print_help(g_printerr);
             end = TRUE;
         }
         else {
