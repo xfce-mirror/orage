@@ -1481,23 +1481,16 @@ msgid ""
 msgstr ""
 "Clique duplo na linha para editá-la.\n"
 "\n"
-"Sinalizadores em ordem:\n"
-" 1. Alarme:\n"
-"          n=Nenhum alarme\n"
-"          A=Alarme definido\n"
-"          P=alarme persistente\n"
-"     2. Recorrência:\n"
-"          n=nenhuma recorrência M=Mensalmente\n"
-"          H=cada Hora           W=Semanalmente\n"
-"          D=Diariamente         Y=Anualmente\n"
-"     3. Tipo:\n"
-"          f=livre               B=ocupado\n"
-"     4. Localizado em arquivo:\n"
-"          O=Orage               A=Arquivo\n"
-"          F=Externo\n"
-"     5. Tipos de compromisso:\n"
-"          E=Evento              T=Tarefa\n"
-"          J=Diário"
+"Flags em ordem:\n"
+"\t 1. Alarme: n=sem alarme\n"
+"\t\t A=Alarme definido para P=Alarme persistente\n"
+"\t 2. Recorrência: n=sem recorrência\n"
+"\t\t H=De hora em hora D=Diariamente W=Semanalmente M=Mensalmente Y=Anulamente\n"
+"\t 3. Tipo: f=livre B=Ocupado\n"
+"\t 4. Localizado no arquivo:\n"
+"\t\tO=Orage A=Arquivo F=Estrangeiro\n"
+"\t 5. Tipo de compromisso:\n"
+"\t\tE=Evento T=Para fazer J=Diário"
 
 #. remove since it has ended
 #: ../src/ical-archive.c:263
@@ -1892,7 +1885,7 @@ msgstr "\tUsando arquivamento automático.\n"
 #: ../src/main.c:291
 #, c-format
 msgid "\tNot using archiving.\n"
-msgstr "\tNão usando arquivamento.\n"
+msgstr "\tNão usar arquivamento.\n"
 
 #: ../src/main.c:294
 #, c-format
@@ -2088,7 +2081,7 @@ msgstr "<b>Eventos para %s:</b>"
 #: ../src/mainbox.c:677
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
-msgstr "<b>Eventos for %s - %s:</b>"
+msgstr "<b>Eventos para %s - %s:</b>"
 
 #: ../src/parameters.c:542
 msgid "Main settings"
@@ -2221,7 +2214,7 @@ msgstr "Selecionar data anteriormente selecionada"
 
 #: ../src/parameters.c:923
 msgid "Calendar day double click shows"
-msgstr "clique-duplo no dia do calendário mostra"
+msgstr "O clique duplo no dia do calendário mostra"
 
 #: ../src/parameters.c:929
 msgid "Days view"
@@ -4684,7 +4677,7 @@ msgstr ""
 
 #: ../xfcalendar.desktop.in.h:1
 msgid "Orage Calendar"
-msgstr "Orage Calendário"
+msgstr "Calendário Orage"
 
 #: ../xfcalendar.desktop.in.h:2
 msgid "Desktop calendar"
