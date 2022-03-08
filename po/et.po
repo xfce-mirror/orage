@@ -25,19 +25,19 @@ msgstr ""
 
 #: ../globaltime/globaltime.c:59
 msgid "no underline"
-msgstr ""
+msgstr "alljoon puudub"
 
 #: ../globaltime/globaltime.c:59
 msgid "single"
-msgstr ""
+msgstr "ühekordne alljoon"
 
 #: ../globaltime/globaltime.c:59
 msgid "double"
-msgstr ""
+msgstr "topelt alljoon"
 
 #: ../globaltime/globaltime.c:59
 msgid "low"
-msgstr ""
+msgstr "madal alljoon"
 
 #: ../globaltime/globaltime.c:108 ../src/tray_icon.c:164
 msgid "Raising GlobalTime window..."
@@ -377,7 +377,7 @@ msgstr "Asukoht"
 #: ../globaltime/timezone_selection.c:255
 #: ../panel-plugin/timezone_selection.c:254 ../src/timezone_selection.c:267
 msgid "GMT Offset"
-msgstr ""
+msgstr "GMT ajanihe"
 
 #: ../globaltime/timezone_selection.c:261
 #: ../panel-plugin/timezone_selection.c:260 ../src/timezone_selection.c:273
