@@ -143,15 +143,14 @@ static void read_file(const char *file_name, const struct stat *file_stat)
     in_tail = in_buf + file_stat->st_size - 1;
     file = fopen(file_name, "r");
     if (!file) {
-            printf("read_file: file open error (%s)\n", file_name);
-            perror("\tfread");
-            return;
+        g_warning ("file open error (%s): %s", file_name, strerror (errno));
+        return;
     }
     if ((off_t)fread(in_buf, 1, file_stat->st_size, file) < file_stat->st_size)
         if (ferror(file)) {
-            printf("read_file: file read failed (%s)\n", file_name);
+            g_warning ("file read failed (%s): %s", file_name,
+                       strerror (errno));
             fclose(file);
-            perror("\tfread");
             return;
         }
     fclose(file);
@@ -533,7 +532,7 @@ static int file_call_process_file(const char *file_name
     which nftw gives us!
     (lstat = information from the real file istead of the link) */ 
         if (stat(file_name, &file_stat)) {
-            perror("\tstat");
+            g_warning ("file open error (%s): %s", file_name, strerror (errno));
             free(in_timezone_name);
             free(timezone_name);
             return(1);
@@ -611,16 +610,15 @@ static int check_parameters(void)
     if (par_file != NULL) { /* does exist and no error */
         if (stat(TZ_CONVERT_PAR_FILE_LOC, &par_file_stat) == -1) {
             /* error reading the parameter file */
-            printf("check_parameters: in_file name not found from (%s) \n"
-                , TZ_CONVERT_PAR_FILE_LOC);
+            g_warning ("in_file name not found from (%s)",
+                       TZ_CONVERT_PAR_FILE_LOC);
         }
         else { /* no errors */
             in_file = malloc(par_file_stat.st_size+1);
             if (((off_t)fread(in_file, 1, par_file_stat.st_size, par_file)
                         < par_file_stat.st_size)
             && (ferror(par_file))) {
-                printf("check_parameters: error reading (%s)\n"
-                        , TZ_CONVERT_PAR_FILE_LOC);
+                g_warning ("error reading (%s)", TZ_CONVERT_PAR_FILE_LOC);
                 free(in_file);
                 in_file = NULL;
             }
@@ -632,8 +630,8 @@ static int check_parameters(void)
                     in_file[par_file_stat.st_size] = '\0';
                 /* test that it is fine */
                 if (stat(in_file, &par_file_stat) == -1) { /* error */
-                    printf("check_parameters: error reading (%s) (from %s)\n"
-                            , in_file, TZ_CONVERT_PAR_FILE_LOC);
+                    g_warning ("error reading (%s) (from %s)", in_file,
+                               TZ_CONVERT_PAR_FILE_LOC);
                     free(in_file);
                     in_file = NULL;
                 }
@@ -645,32 +643,34 @@ static int check_parameters(void)
         in_file = strdup(DEFAULT_OS_ZONEINFO_DIRECTORY);
 
     if (in_file[0] != '/') {
-        printf("check_parameters: in_file name (%s) is not absolute file name. Ending\n"
-                , in_file);
+        g_warning ("in_file name (%s) is not absolute file name. Ending",
+                   in_file);
         return(1);
     }
     if (stat(in_file, &in_stat) == -1) { /* error */
-        perror("\tcheck_parameters: stat");
+        g_warning ("file error (%s): %s", in_file, strerror (errno));
         return(2);
     }
     if (S_ISDIR(in_stat.st_mode)) {
         in_file_is_dir = 1;
         if (timezone_name) {
-            printf("\tcheck_parameters: when infile (%s) is directory, you can not specify timezone name (%s), but it is copied from each in file. Ending\n"
-                , in_file, timezone_name);
+            g_warning ("when infile (%s) is directory, you can not specify "
+                       "timezone name (%s), but it is copied from each in "
+                       "file. Ending", in_file, timezone_name);
             return(3);
         }
         if (out_file) {
-            printf("\tcheck_parameters: when infile (%s) is directory, you can not specify outfile name (%s), but it is copied from each in file. Ending\n"
-                , in_file, out_file);
+            g_warning ("when infile (%s) is directory, you can not specify "
+                       "outfile name (%s), but it is copied from each in file. "
+                       "Ending", in_file, out_file);
             return(3);
         }
     }
     else {
         in_file_is_dir = 0;
         if (!S_ISREG(in_stat.st_mode)) {
-            printf("\tcheck_parameters: in_file (%s) is not directory nor normal file. Ending\n"
-                , in_file);
+            g_warning ("in_file (%s) is not directory nor normal file. Ending",
+                       in_file);
             return(3);
         }
     }
@@ -686,8 +686,8 @@ static int check_parameters(void)
         s_tz++;
     }
     if (last_tz == NULL) {
-        printf("check_parameters: in_file name (%s) does not contain (%s). Ending\n"
-                , in_file, tz);
+        g_warning ("in_file name (%s) does not contain (%s). Ending", in_file,
+                   tz);
         return(4);
     }
 
@@ -749,28 +749,25 @@ static void read_os_timezones(void)
     free(tz_dir);
 
     if (!(zone_tab_file = fopen(zone_tab_file_name, "r"))) {
-        printf("read_os_timezones: zone.tab file open failed (%s)\n"
-                , zone_tab_file_name);
+        g_warning ("zone.tab file open failed (%s): %s", zone_tab_file_name,
+                   strerror (errno));
         free(zone_tab_file_name);
-        perror("\tfopen");
         return;
     }
     if (stat(zone_tab_file_name, &zone_tab_file_stat) == -1) {
-        printf("read_os_timezones: zone.tab file stat failed (%s)\n"
-                , zone_tab_file_name);
+        g_warning ("zone.tab file stat failed (%s): %s", zone_tab_file_name,
+                   strerror (errno));
         free(zone_tab_file_name);
         fclose(zone_tab_file);
-        perror("\tstat");
         return;
     }
     zone_tab_buf = malloc(zone_tab_file_stat.st_size+1);
     if (((off_t)fread(zone_tab_buf, 1, zone_tab_file_stat.st_size, zone_tab_file) < zone_tab_file_stat.st_size)
     && (ferror(zone_tab_file))) {
-        printf("read_os_timezones: zone.tab file read failed (%s)\n"
-                , zone_tab_file_name);
+        g_warning ("zone.tab file read failed (%s): %s", zone_tab_file_name,
+                   strerror (errno));
         free(zone_tab_file_name);
         fclose(zone_tab_file);
-        perror("\tfread");
         return;
     }
     zone_tab_buf[zone_tab_file_stat.st_size] = '\0';
@@ -808,28 +805,25 @@ static void read_countries(void)
     free(tz_dir);
 
     if (!(country_file = fopen(country_file_name, "r"))) {
-        printf("read_countries: iso3166.tab file open failed (%s)\n"
-                , country_file_name);
+        g_warning ("iso3166.tab file open failed (%s): %s", country_file_name,
+                   strerror (errno));
         free(country_file_name);
-        perror("\tfopen");
         return;
     }
     if (stat(country_file_name, &country_file_stat) == -1) {
-        printf("read_countries: iso3166.tab file stat failed (%s)\n"
-                , country_file_name);
+        g_warning ("iso3166.tab file stat failed (%s): %s", country_file_name,
+                   strerror (errno));
         free(country_file_name);
         fclose(country_file);
-        perror("\tstat");
         return;
     }
     country_buf = malloc(country_file_stat.st_size+1);
     if (((off_t)fread(country_buf, 1, country_file_stat.st_size, country_file) < country_file_stat.st_size)
     && (ferror(country_file))) {
-        printf("read_countries: iso3166.tab file read failed (%s)\n"
-                , country_file_name);
+        g_warning ("iso3166.tab file read failed (%s): %s", country_file_name,
+                   strerror (errno));
         free(country_file_name);
         fclose(country_file);
-        perror("\tfread");
         return;
     }
     country_buf[country_file_stat.st_size] = '\0';
@@ -845,25 +839,22 @@ static void read_ical_timezones(void)
 
     /****** zones.tab file ******/
     if (!(zones_tab_file = fopen(ICAL_ZONES_TAB_FILE_LOC, "r"))) {
-        printf("read_ical_timezones: zones.tab file open failed (%s)\n"
-                , ICAL_ZONES_TAB_FILE_LOC);
-        perror("\tfopen");
+        g_warning ("zones.tab file open failed (%s): %s",
+                   ICAL_ZONES_TAB_FILE_LOC, strerror (errno));
         return;
     }
     if (stat(ICAL_ZONES_TAB_FILE_LOC, &zones_tab_file_stat) == -1) {
-        printf("read_ical_timezones: zones.tab file stat failed (%s)\n"
-                , ICAL_ZONES_TAB_FILE_LOC);
+        g_warning ("zones.tab file stat failed (%s): %s",
+                   ICAL_ZONES_TAB_FILE_LOC, strerror (errno));
         fclose(zones_tab_file);
-        perror("\tstat");
         return;
     }
     zones_tab_buf = malloc(zones_tab_file_stat.st_size+1);
     if (((off_t)fread(zones_tab_buf, 1, zones_tab_file_stat.st_size, zones_tab_file) < zones_tab_file_stat.st_size)
     && (ferror(zones_tab_file))) {
-        printf("read_ical_timezones: zones.tab file read failed (%s)\n"
-                , ICAL_ZONES_TAB_FILE_LOC);
+        g_warning ("zones.tab file read failed (%s): %s",
+                   ICAL_ZONES_TAB_FILE_LOC, strerror (errno));
         fclose(zones_tab_file);
-        perror("\tfread");
         return;
     }
     zones_tab_buf[zones_tab_file_stat.st_size] = '\0';
@@ -920,7 +911,7 @@ orage_timezone_array get_orage_timezones(int show_details, int ical)
 #else
         if (nftw(in_file, file_call, 10, FTW_PHYS) == -1) {
 #endif
-            perror("nftw error in file handling");
+            g_critical ("nftw error in file handling: %s", strerror (errno));
             exit(EXIT_FAILURE);
         }
 
