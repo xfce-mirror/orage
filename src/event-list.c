@@ -568,7 +568,7 @@ static void app_data(el_win *el, char *a_day, char *par)
             ical_type = XFICAL_TYPE_JOURNAL;
             break;
         default:
-            g_error("wrong page in app_data (%d)\n", el->page);
+            g_error ("wrong page in app_data (%d)", el->page);
     }
 
     /* first search base orage file */

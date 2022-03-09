@@ -1838,7 +1838,7 @@ static xfical_appt *fill_appt_window_get_appt(appt_win *apptw
         xfical_file_close(TRUE);
     }
     else {
-        g_error("unknown parameter\n");
+        g_error("unknown parameter");
     }
 
     return(appt);
@@ -2501,7 +2501,7 @@ static gboolean fill_appt_window(appt_win *apptw, const gchar *action,
         appt->readonly = FALSE; 
     }
     else {
-        g_error("fill_appt_window: unknown parameter\n");
+        g_error ("%s: unknown parameter", G_STRFUNC);
         g_free(appt);
         apptw->xf_appt = NULL;
         return(FALSE);

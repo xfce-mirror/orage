@@ -644,10 +644,10 @@ struct tm orage_i18_time_to_tm_time (const gchar *i18_time)
 
     ret = (char *)strptime(i18_time, "%x %R", &tm_time);
     if (ret == NULL)
-        g_error("Orage: orage_i18_time_to_tm_time wrong format (%s)", i18_time);
+        g_error ("%s wrong format (%s)", G_STRFUNC, i18_time);
     else if (ret[0] != '\0')
-        g_warning("Orage: orage_i18_time_to_tm_time too long format (%s). Ignoring:%s)"
-                , i18_time, ret);
+        g_warning ("%s too long format (%s). Ignoring:%s)", G_STRFUNC, i18_time,
+                   ret);
     return(tm_time);
 }
 
@@ -658,10 +658,10 @@ struct tm orage_i18_date_to_tm_date (const gchar *i18_date)
 
     ret = strptime ((const char *)i18_date, "%x", &tm_date);
     if (ret == NULL)
-        g_error("Orage: orage_i18_date_to_tm_date wrong format (%s)", i18_date);
+        g_error ("%s: wrong format (%s)", G_STRFUNC, i18_date);
     else if (ret[0] != '\0')
-        g_warning("Orage: orage_i18_date_to_tm_date too long format (%s). Ignoring:%s)"
-                , i18_date, ret);
+        g_warning ("%s: too long format (%s). Ignoring:%s)", G_STRFUNC, i18_date,
+                   ret);
     return(tm_date);
 }
 
@@ -670,7 +670,7 @@ gchar *orage_tm_time_to_i18_time(struct tm *tm_time)
     static gchar i18_time[128];
 
     if (_strftime (i18_time, sizeof (i18_time), "%x %R", tm_time) == 0)
-        g_error("Orage: orage_tm_time_to_i18_time too long string in strftime");
+        g_error ("%s: too long string in strftime", G_STRFUNC);
     return(i18_time);
 }
 
@@ -679,7 +679,7 @@ gchar *orage_tm_date_to_i18_date (const struct tm *tm_date)
     static gchar i18_date[128];
 
     if (_strftime ((char *)i18_date, sizeof (i18_date), "%x", tm_date) == 0)
-        g_error ("orage_tm_date_to_i18_date too long string in strftime");
+        g_error ("%s: too long string in strftime", G_STRFUNC);
 
     return(i18_date);
 }
@@ -817,7 +817,7 @@ char *orage_icaltime_to_i18_time_only(const char *icaltime)
 
     t = orage_icaltime_to_tm_time(icaltime, TRUE);
     if (_strftime(i18_time, 10, "%R", &t) == 0)
-        g_error("Orage: orage_icaltime_to_i18_time_short too long string in strftime");
+        g_error ("%s: too long string in strftime", G_STRFUNC);
     return(i18_time);
 }
 
