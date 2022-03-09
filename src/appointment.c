@@ -958,7 +958,7 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
                 GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
         appt->type = XFICAL_TYPE_JOURNAL;
     else
-        g_warning("fill_appt_from_apptw: coding error, illegal type");
+        g_warning ("%s: coding error, illegal type", G_STRFUNC);
 
     /* title */
     g_free(appt->title);
@@ -1110,7 +1110,7 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
                    current_t.tm_mon + 1, current_t.tm_mday, 23, 59, 10);
     }
     else
-        g_warning("fill_appt_from_apptw: coding error, illegal recurrence");
+        g_warning ("%s: coding error, illegal recurrence", G_STRFUNC);
 
     /* recurrence weekdays */
     for (i=0; i <= 6; i++) {
@@ -1550,7 +1550,8 @@ static void recur_row_clicked(GtkWidget *widget
             g_free(recur_exception_cur);
         }
         else { 
-            g_warning("recur_row_clicked: non existent row (%s)\n", recur_exception->time);
+            g_warning ("%s: non existent row (%s)", G_STRFUNC,
+                       recur_exception->time);
         }
         g_free(recur_exception);
 
@@ -1703,10 +1704,10 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
             gtk_button_set_label(GTK_BUTTON(apptw->StartTimezone_button)
                     , _(appt->start_tz_loc));
         else /* we should never get here */
-            g_warning("fill_appt_window_times: start_tz_loc is null");
+            g_warning ("%s: start_tz_loc is null", G_STRFUNC);
     }
     else
-        g_warning("fill_appt_window_times: starttime wrong %s", appt->uid);
+        g_warning ("%s: starttime wrong %s", G_STRFUNC, appt->uid);
 
     /* end time */
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(
@@ -1727,10 +1728,10 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
                     , _(appt->end_tz_loc));
         }
         else /* we should never get here */
-            g_warning("fill_appt_window_times: end_tz_loc is null");
+            g_warning ("%s: end_tz_loc is null", G_STRFUNC);
     }
     else
-        g_warning("fill_appt_window_times: endtime wrong %s", appt->uid);
+        g_warning ("%s: endtime wrong %s", G_STRFUNC, appt->uid);
 
     /* duration */
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(apptw->Dur_checkbutton)
@@ -1762,10 +1763,10 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
                     , _(appt->completed_tz_loc));
         }
         else /* we should never get here */
-            g_warning("fill_appt_window_times: completed_tz_loc is null");
+            g_warning ("%s: completed_tz_loc is null", G_STRFUNC);
     }
     else
-        g_warning("fill_appt_window_times: completedtime wrong %s", appt->uid);
+        g_warning ("%s: completedtime wrong %s", G_STRFUNC, appt->uid);
 }
 
 static xfical_appt *fill_appt_window_get_appt(appt_win *apptw
@@ -1838,7 +1839,7 @@ static xfical_appt *fill_appt_window_get_appt(appt_win *apptw
         xfical_file_close(TRUE);
     }
     else {
-        g_error("unknown parameter\n");
+        g_error("unknown parameter");
     }
 
     return(appt);
@@ -2005,7 +2006,7 @@ static void orage_category_write_entry (const gchar *category,
     gchar *color_str;
 
     if (!ORAGE_STR_EXISTS(category)) {
-        g_message ("orage_category_write_entry: empty category. Not written");
+        g_message ("%s: empty category. Not written", G_STRFUNC);
         return;
     }
     color_str = gdk_rgba_to_string (color);
@@ -2021,7 +2022,7 @@ static void orage_category_remove_entry(gchar *category)
     OrageRc *orc;
 
     if (!ORAGE_STR_EXISTS(category)) {
-        g_message ("orage_category_remove_entry: empty category. Not removed");
+        g_message ("%s: empty category. Not removed", G_STRFUNC);
         return;
     }
     orc = orage_category_file_open(FALSE);
@@ -2501,7 +2502,7 @@ static gboolean fill_appt_window(appt_win *apptw, const gchar *action,
         appt->readonly = FALSE; 
     }
     else {
-        g_error("fill_appt_window: unknown parameter\n");
+        g_error ("%s: unknown parameter", G_STRFUNC);
         g_free(appt);
         apptw->xf_appt = NULL;
         return(FALSE);

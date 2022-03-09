@@ -946,8 +946,11 @@ static void appt_add_exception_internal(xfical_appt *appt
 #ifdef HAVE_LIBICAL
             if (icaltime_is_date(wtime))
             {
-                g_warning ("appt_add_exceptions_internal: EXDATE is date (%s) (%zu). There is libical bug http://sourceforge.net/tracker/?func=detail&aid=2901161&group_id=16077&atid=116077 which causes that excluded dates do not work properly in Orage.",
-                           excp->time, strlen(excp->time));
+                g_warning ("%s: EXDATE is date (%s) (%zu). There is libical "
+                           "bug http://sourceforge.net/tracker/?func=detail&aid=2901161&group_id=16077&atid=116077 "
+                           "which causes that excluded dates do not work "
+                           "properly in Orage.", G_STRFUNC, excp->time,
+                           strlen(excp->time));
             }
 #endif
             icalcomponent_add_property(icmp
@@ -961,7 +964,8 @@ static void appt_add_exception_internal(xfical_appt *appt
                     , icalproperty_new_rdate(rdate));
         }
         else
-            g_warning ("appt_add_exceptions_internal: unknown exception type %s, ignoring", excp->type);
+            g_warning ("%s: unknown exception type %s, ignoring", G_STRFUNC,
+                       excp->type);
     }
 }
 

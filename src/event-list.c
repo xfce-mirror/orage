@@ -568,7 +568,7 @@ static void app_data(el_win *el, char *a_day, char *par)
             ical_type = XFICAL_TYPE_JOURNAL;
             break;
         default:
-            g_error("wrong page in app_data (%d)\n", el->page);
+            g_error ("wrong page in app_data (%d)", el->page);
     }
 
     /* first search base orage file */
@@ -707,7 +707,7 @@ void refresh_el_win(el_win *el)
                 search_data(el);
                 break;
             default:
-                g_warning("refresh_el_win: unknown tab");
+                g_warning ("%s: unknown tab", G_STRFUNC);
                 break;
         }
     }
@@ -839,7 +839,7 @@ static void close_window(el_win *el)
         if (apptw) /* appointment window is still alive */
             apptw->el = NULL; /* not interested anymore */
         else
-            g_warning ("close_window: not null appt window");
+            g_warning ("%s: not null appt window", G_STRFUNC);
     }
     g_list_free(el->apptw_list);
 

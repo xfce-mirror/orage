@@ -376,7 +376,8 @@ static gboolean sound_alarm(gpointer data)
         status = orage_exec(l_alarm->sound_cmd
                 , &l_alarm->active_alarm->sound_active, &error);
         if (!status) {
-            g_warning("reminder: play failed (%s) %s", l_alarm->sound, error->message);
+            g_warning ("%s: play failed (%s) %s", G_STRFUNC, l_alarm->sound,
+                       error->message);
             l_alarm->repeat_cnt = 0; /* one warning is enough */
             status = TRUE; /* we need to come back once to do cleanout */
         }

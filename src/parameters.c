@@ -425,7 +425,7 @@ static void timezone_button_clicked(GtkButton *button, gpointer user_data)
     Itf *itf = (Itf *)user_data;
 
     if (!ORAGE_STR_EXISTS(g_par.local_timezone)) {
-        g_warning("timezone pressed: local timezone missing");
+        g_warning ("%s: local timezone missing", G_STRFUNC);
         g_par.local_timezone = g_strdup("UTC");
     }
     if (orage_timezone_button_clicked(button, GTK_WINDOW(itf->orage_dialog)
@@ -1221,7 +1221,7 @@ static OrageRc *orage_parameters_file_open(gboolean read_only)
 
     fpath = orage_config_file_location(ORAGE_PAR_DIR_FILE);
     if ((orc = orage_rc_file_open(fpath, read_only)) == NULL) {
-        g_warning ("orage_parameters_file_open: Parameter file open failed.(%s)", fpath);
+        g_warning ("%s: Parameter file open failed.(%s)", G_STRFUNC, fpath);
     }
     g_free(fpath);
 
@@ -1260,8 +1260,8 @@ static void init_dtz_check_dir(gchar *tz_dirname, gchar *tz_local, gint len)
                 g_free(tz_data);
             }
             else { /* we should never come here */
-                g_warning("init_default_timezone: can not read (%s) %s"
-                        , tz_fullfile, error->message);
+                g_warning ("%s: can not read (%s) %s", G_STRFUNC, tz_fullfile,
+                           error->message);
                 g_error_free(error);
                 error = NULL;
             }
