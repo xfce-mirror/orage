@@ -247,8 +247,8 @@ gboolean xfical_file_open(gboolean foreign)
     if (ok)
     {
         if (g_stat(g_par.orage_file, &s) < 0) {
-            g_warning ("%s: stat of %s failed: %d (%s)", G_STRFUNC,
-                    g_par.orage_file, errno, strerror(errno));
+            g_warning ("%s: stat of %s failed: %s", G_STRFUNC,
+                       g_par.orage_file, g_strerror (errno));
             g_par.latest_file_change = (time_t)0;
         }
         else {
@@ -269,8 +269,8 @@ gboolean xfical_file_open(gboolean foreign)
             else {
                 /* store last access time */
                 if (g_stat(g_par.foreign_data[i].file, &s) < 0) {
-                    g_warning ("%s, stat of %s failed: %d (%s)", G_STRFUNC,
-                            g_par.foreign_data[i].file, errno, strerror(errno));
+                    g_warning ("%s, stat of %s failed: %s", G_STRFUNC,
+                               g_par.foreign_data[i].file, g_strerror (errno));
                     g_par.foreign_data[i].latest_file_change = (time_t)0;
                 }
                 else {
@@ -323,8 +323,8 @@ void xfical_file_close(gboolean foreign)
             delayed_file_close(NULL);
             /* store last access time */
             if (g_stat(g_par.orage_file, &s) < 0) {
-                g_warning ("%s: stat of %s failed: %d (%s)", G_STRFUNC,
-                        g_par.orage_file, errno, strerror(errno));
+                g_warning ("%s: stat of %s failed: %s", G_STRFUNC,
+                        g_par.orage_file, g_strerror (errno));
                 g_par.latest_file_change = (time_t)0;
             }
             else {
@@ -348,8 +348,8 @@ void xfical_file_close(gboolean foreign)
                 ic_f_ical[i].fical = NULL;
                 /* store last access time */
                 if (g_stat(g_par.foreign_data[i].file, &s) < 0) {
-                    g_warning ("%s: stat of %s failed: %d (%s)", G_STRFUNC,
-                            g_par.foreign_data[i].file, errno, strerror(errno));
+                    g_warning ("%s: stat of %s failed: %s", G_STRFUNC,
+                            g_par.foreign_data[i].file, g_strerror (errno));
                     g_par.foreign_data[i].latest_file_change = (time_t)0;
                 }
                 else {

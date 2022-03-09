@@ -143,13 +143,13 @@ static void read_file(const char *file_name, const struct stat *file_stat)
     in_tail = in_buf + file_stat->st_size - 1;
     file = fopen(file_name, "r");
     if (!file) {
-        g_warning ("file open error (%s): %s", file_name, strerror (errno));
+        g_warning ("file open error (%s): %s", file_name, g_strerror (errno));
         return;
     }
     if ((off_t)fread(in_buf, 1, file_stat->st_size, file) < file_stat->st_size)
         if (ferror(file)) {
             g_warning ("file read failed (%s): %s", file_name,
-                       strerror (errno));
+                       g_strerror (errno));
             fclose(file);
             return;
         }
@@ -532,7 +532,8 @@ static int file_call_process_file(const char *file_name
     which nftw gives us!
     (lstat = information from the real file istead of the link) */ 
         if (stat(file_name, &file_stat)) {
-            g_warning ("file open error (%s): %s", file_name, strerror (errno));
+            g_warning ("file open error (%s): %s", file_name,
+                       g_strerror (errno));
             free(in_timezone_name);
             free(timezone_name);
             return(1);
@@ -648,7 +649,7 @@ static int check_parameters(void)
         return(1);
     }
     if (stat(in_file, &in_stat) == -1) { /* error */
-        g_warning ("file error (%s): %s", in_file, strerror (errno));
+        g_warning ("file error (%s): %s", in_file, g_strerror (errno));
         return(2);
     }
     if (S_ISDIR(in_stat.st_mode)) {
@@ -750,13 +751,13 @@ static void read_os_timezones(void)
 
     if (!(zone_tab_file = fopen(zone_tab_file_name, "r"))) {
         g_warning ("zone.tab file open failed (%s): %s", zone_tab_file_name,
-                   strerror (errno));
+                   g_strerror (errno));
         free(zone_tab_file_name);
         return;
     }
     if (stat(zone_tab_file_name, &zone_tab_file_stat) == -1) {
         g_warning ("zone.tab file stat failed (%s): %s", zone_tab_file_name,
-                   strerror (errno));
+                   g_strerror (errno));
         free(zone_tab_file_name);
         fclose(zone_tab_file);
         return;
@@ -765,7 +766,7 @@ static void read_os_timezones(void)
     if (((off_t)fread(zone_tab_buf, 1, zone_tab_file_stat.st_size, zone_tab_file) < zone_tab_file_stat.st_size)
     && (ferror(zone_tab_file))) {
         g_warning ("zone.tab file read failed (%s): %s", zone_tab_file_name,
-                   strerror (errno));
+                   g_strerror (errno));
         free(zone_tab_file_name);
         fclose(zone_tab_file);
         return;
@@ -806,13 +807,13 @@ static void read_countries(void)
 
     if (!(country_file = fopen(country_file_name, "r"))) {
         g_warning ("iso3166.tab file open failed (%s): %s", country_file_name,
-                   strerror (errno));
+                   g_strerror (errno));
         free(country_file_name);
         return;
     }
     if (stat(country_file_name, &country_file_stat) == -1) {
         g_warning ("iso3166.tab file stat failed (%s): %s", country_file_name,
-                   strerror (errno));
+                   g_strerror (errno));
         free(country_file_name);
         fclose(country_file);
         return;
@@ -821,7 +822,7 @@ static void read_countries(void)
     if (((off_t)fread(country_buf, 1, country_file_stat.st_size, country_file) < country_file_stat.st_size)
     && (ferror(country_file))) {
         g_warning ("iso3166.tab file read failed (%s): %s", country_file_name,
-                   strerror (errno));
+                   g_strerror (errno));
         free(country_file_name);
         fclose(country_file);
         return;
@@ -840,12 +841,12 @@ static void read_ical_timezones(void)
     /****** zones.tab file ******/
     if (!(zones_tab_file = fopen(ICAL_ZONES_TAB_FILE_LOC, "r"))) {
         g_warning ("zones.tab file open failed (%s): %s",
-                   ICAL_ZONES_TAB_FILE_LOC, strerror (errno));
+                   ICAL_ZONES_TAB_FILE_LOC, g_strerror (errno));
         return;
     }
     if (stat(ICAL_ZONES_TAB_FILE_LOC, &zones_tab_file_stat) == -1) {
         g_warning ("zones.tab file stat failed (%s): %s",
-                   ICAL_ZONES_TAB_FILE_LOC, strerror (errno));
+                   ICAL_ZONES_TAB_FILE_LOC, g_strerror (errno));
         fclose(zones_tab_file);
         return;
     }
@@ -853,7 +854,7 @@ static void read_ical_timezones(void)
     if (((off_t)fread(zones_tab_buf, 1, zones_tab_file_stat.st_size, zones_tab_file) < zones_tab_file_stat.st_size)
     && (ferror(zones_tab_file))) {
         g_warning ("zones.tab file read failed (%s): %s",
-                   ICAL_ZONES_TAB_FILE_LOC, strerror (errno));
+                   ICAL_ZONES_TAB_FILE_LOC, g_strerror (errno));
         fclose(zones_tab_file);
         return;
     }
@@ -911,7 +912,7 @@ orage_timezone_array get_orage_timezones(int show_details, int ical)
 #else
         if (nftw(in_file, file_call, 10, FTW_PHYS) == -1) {
 #endif
-            g_critical ("nftw error in file handling: %s", strerror (errno));
+            g_critical ("nftw error in file handling: %s", g_strerror (errno));
             exit(EXIT_FAILURE);
         }
 
