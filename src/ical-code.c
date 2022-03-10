@@ -188,7 +188,7 @@ gboolean ic_internal_file_open(icalcomponent **p_ical
         }
         if (cnt == 0) {
             if (test) { /* failed */
-                g_warning ("%s: no top level (VCALENDAR) component in"
+                g_warning ("%s: no top level (VCALENDAR) component in "
                            "calendar file %s", G_STRFUNC, file_icalpath);
                 return(FALSE);
             }

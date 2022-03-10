@@ -134,8 +134,7 @@ static void mView_StartGlobaltime_activate_cb (
     GError *error = NULL;
 
     if (!orage_exec("globaltime", NULL, &error))
-        g_warning ("%s: start of %s failed: %s", "Orage", "globaltime"
-                , error->message);
+        g_warning ("start of globaltime failed: %s", error->message);
 }
 
 static void mHelp_help_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
