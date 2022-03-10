@@ -52,17 +52,10 @@
 #include "tray_icon.h"
 #include "day-view.h"
 
-#define ORAGE_TRACE 0
-
 static guint month_change_timer=0;
 
 gboolean orage_mark_appointments(void)
 {
-#undef P_N
-#define P_N "orage_mark_appointments: "
-#if ORAGE_TRACE
-    g_debug (P_N);
-#endif
     if (!xfical_file_open(TRUE))
         return(FALSE);
     xfical_mark_calendar(GTK_CALENDAR(((CalWin *)g_par.xfcal)->mCalendar));
@@ -73,14 +66,9 @@ gboolean orage_mark_appointments(void)
 static void mFile_newApp_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
                                       gpointer user_data)
 {
-#undef P_N
-#define P_N "mFile_newApp_activate_cb: "
     CalWin *cal = (CalWin *)user_data;
     char cur_date[9];
 
-#if ORAGE_TRACE
-    g_debug (P_N);
-#endif
     /* cal has always a day selected here, so it is safe to read it */
     strncpy(cur_date, orage_cal_to_icaldate(GTK_CALENDAR(cal->mCalendar)), 8);
     cur_date[8]='\0';
@@ -90,13 +78,7 @@ static void mFile_newApp_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
 static void mFile_interface_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem
         , gpointer user_data)
 {
-#undef P_N
-#define P_N "mFile_interface_activate_cb: "
     CalWin *cal = (CalWin *)user_data;
-
-#if ORAGE_TRACE
-    g_debug (P_N);
-#endif
 
     orage_external_interface(cal);
 }
@@ -104,13 +86,7 @@ static void mFile_interface_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem
 static void mFile_close_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
                                      gpointer user_data)
 {
-#undef P_N
-#define P_N "mFile_close_activate_cb: "
     CalWin *cal = (CalWin *)user_data;
-
-#if ORAGE_TRACE
-    g_debug (P_N);
-#endif
 
     if (g_par.close_means_quit)
         gtk_main_quit();
@@ -121,52 +97,25 @@ static void mFile_close_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
 static void mFile_quit_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
                                     G_GNUC_UNUSED gpointer user_data)
 {
-#undef P_N
-#define P_N "mFile_quit_activate_cb: "
-
-#if ORAGE_TRACE
-    g_debug (P_N);
-#endif
-
     gtk_main_quit();
 }
 
 static void mEdit_preferences_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
                                            G_GNUC_UNUSED gpointer user_data)
 {
-#undef P_N
-#define P_N "mEdit_preferences_activate_cb: "
-
-#if ORAGE_TRACE
-    g_debug (P_N);
-#endif
-
     show_parameters();
 }
 
 static void mView_ViewSelectedDate_activate_cb (
     G_GNUC_UNUSED GtkMenuItem *menuitem, G_GNUC_UNUSED gpointer user_data)
 {
-#undef P_N
-#define P_N "mView_ViewSelectedDate_activate_cb: "
-
-#if ORAGE_TRACE
-    g_debug (P_N);
-#endif
-
     (void)create_el_win(NULL);
 }
 
 static void mView_ViewSelectedWeek_activate_cb (
     G_GNUC_UNUSED GtkMenuItem *menuitem, gpointer user_data)
 {
-#undef P_N
-#define P_N "mView_ViewSelectedWeek_activate_cb: "
     CalWin *cal = (CalWin *)user_data;
-
-#if ORAGE_TRACE
-    g_debug (P_N);
-#endif
 
     create_day_win(orage_cal_to_i18_date(GTK_CALENDAR(cal->mCalendar)));
 }
@@ -174,13 +123,7 @@ static void mView_ViewSelectedWeek_activate_cb (
 static void mView_selectToday_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem
         , gpointer user_data)
 {
-#undef P_N
-#define P_N "mView_selectToday_activate_cb: "
     CalWin *cal = (CalWin *)user_data;
-
-#if ORAGE_TRACE
-    g_debug (P_N);
-#endif
 
     orage_select_today(GTK_CALENDAR(cal->mCalendar));
 }
@@ -188,13 +131,7 @@ static void mView_selectToday_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem
 static void mView_StartGlobaltime_activate_cb (
     G_GNUC_UNUSED GtkMenuItem *menuitem, G_GNUC_UNUSED gpointer user_data)
 {
-#undef P_N
-#define P_N "mView_StartGlobaltime_activate_cb: "
     GError *error = NULL;
-
-#if ORAGE_TRACE
-    g_debug (P_N);
-#endif
 
     if (!orage_exec("globaltime", NULL, &error))
         g_warning ("%s: start of %s failed: %s", "Orage", "globaltime"
@@ -204,14 +141,8 @@ static void mView_StartGlobaltime_activate_cb (
 static void mHelp_help_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
                                     G_GNUC_UNUSED gpointer user_data)
 {
-#undef P_N
-#define P_N "mHelp_help_activate_cb: "
     const gchar *helpdoc;
     GError *error = NULL;
-
-#if ORAGE_TRACE
-    g_debug (P_N);
-#endif
 
     helpdoc = "exo-open https://docs.xfce.org/apps/orage/start";
     if (!orage_exec(helpdoc, NULL, &error)) {
@@ -228,22 +159,12 @@ static void mHelp_help_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
 
 static void mHelp_about_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
 {
-#undef P_N
-#define P_N "mHelp_about_activate_cb: "
-#if ORAGE_TRACE
-    g_debug (P_N);
-#endif
     create_wAbout((GtkWidget *)menuitem, user_data);
 }
 
 static void mCalendar_day_selected_double_click_cb(GtkCalendar *calendar
         , G_GNUC_UNUSED gpointer user_data)
 {
-#undef P_N
-#define P_N "mCalendar_day_selected_double_click_cb: "
-#if ORAGE_TRACE
-    g_debug (P_N);
-#endif
     if (g_par.show_days)
         create_day_win(orage_cal_to_i18_date(calendar));
     else
@@ -252,12 +173,6 @@ static void mCalendar_day_selected_double_click_cb(GtkCalendar *calendar
 
 static gboolean upd_calendar (G_GNUC_UNUSED GtkCalendar *calendar)
 {
-#undef P_N
-#define P_N "upd_calendar: "
-
-#if ORAGE_TRACE
-    g_debug (P_N);
-#endif
     orage_mark_appointments();
     month_change_timer = 0;
 
@@ -267,11 +182,6 @@ static gboolean upd_calendar (G_GNUC_UNUSED GtkCalendar *calendar)
 void mCalendar_month_changed_cb (GtkCalendar *calendar,
                                  G_GNUC_UNUSED gpointer user_data)
 {
-#undef P_N
-#define P_N "mCalendar_month_changed_cb: "
-#if ORAGE_TRACE
-    g_debug (P_N);
-#endif
     /* orage_mark_appointments is rather heavy (=slow), so doing
      * it here is not a good idea. We can't keep up with the autorepeat
      * speed if we do the whole thing here. Bug 2080 prooves it. So let's
@@ -289,13 +199,8 @@ void mCalendar_month_changed_cb (GtkCalendar *calendar,
 
 static void build_menu(void)
 {
-#undef P_N
-#define P_N "build_menu: "
     CalWin *cal = (CalWin *)g_par.xfcal;
 
-#if ORAGE_TRACE
-    g_debug (P_N);
-#endif
     cal->mMenubar = gtk_menu_bar_new();
     gtk_grid_attach_next_to (GTK_GRID(cal->mVbox), cal->mMenubar, NULL,
                              GTK_POS_BOTTOM, 1, 1);
@@ -385,13 +290,8 @@ static void build_menu(void)
 static void todo_clicked(GtkWidget *widget
         , GdkEventButton *event, G_GNUC_UNUSED gpointer *user_data)
 {
-#undef P_N
-#define P_N "todo_clicked: "
     gchar *uid;
 
-#if ORAGE_TRACE
-    g_debug (P_N);
-#endif
     if (event->type==GDK_2BUTTON_PRESS) {
         uid = g_object_get_data(G_OBJECT(widget), "UID");
         create_appt_win("UPDATE", uid);
@@ -401,9 +301,6 @@ static void todo_clicked(GtkWidget *widget
 static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
                          const gboolean todo)
 {
-#undef P_N
-#define P_N "add_info_row: "
-
     GtkWidget *ev, *label;
     CalWin *cal = (CalWin *)g_par.xfcal;
     gchar *tip, *tmp, *tmp_title, *tmp_note;
@@ -440,9 +337,9 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
         g_free(s_timeonly);
     }
     label = gtk_label_new(tmp);
-#if ORAGE_TRACE
-    g_debug (P_N "label='%s'", tmp);
-#endif
+
+    g_debug ("%s: label='%s'", G_STRFUNC, tmp);
+
     g_free(tmp);
     gtk_label_set_ellipsize(GTK_LABEL(label), PANGO_ELLIPSIZE_END);
     g_object_set (label, "xalign", 0.0, "yalign", 0.5,
@@ -530,13 +427,8 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
 static void insert_rows(GList **list, char *a_day, xfical_type ical_type
         , gchar *file_type)
 {
-#undef P_N
-#define P_N "insert_rows: "
     xfical_appt *appt;
 
-#if ORAGE_TRACE
-    g_debug (P_N);
-#endif
     for (appt = xfical_appt_get_next_on_day(a_day, TRUE, 0
                 , ical_type , file_type);
          appt;
@@ -548,13 +440,8 @@ static void insert_rows(GList **list, char *a_day, xfical_type ical_type
 
 static gint event_order(gconstpointer a, gconstpointer b)
 {
-#undef P_N
-#define P_N "event_order: "
     xfical_appt *appt1, *appt2;
 
-#if ORAGE_TRACE
-    g_debug (P_N);
-#endif
     appt1 = (xfical_appt *)a;
     appt2 = (xfical_appt *)b;
 
@@ -563,13 +450,8 @@ static gint event_order(gconstpointer a, gconstpointer b)
 
 static gint todo_order(gconstpointer a, gconstpointer b)
 {
-#undef P_N
-#define P_N "todo_order: "
     xfical_appt *appt1, *appt2;
 
-#if ORAGE_TRACE
-    g_debug (P_N);
-#endif
     appt1 = (xfical_appt *)a;
     appt2 = (xfical_appt *)b;
 
@@ -583,23 +465,11 @@ static gint todo_order(gconstpointer a, gconstpointer b)
 
 static void info_process(gpointer a, gpointer pbox)
 {
-#undef P_N
-#define P_N "info_process: "
     xfical_appt *appt = (xfical_appt *)a;
     GtkGrid *box= GTK_GRID (pbox);
     CalWin *cal = (CalWin *)g_par.xfcal;
     gboolean todo;
 
-#if ORAGE_TRACE
-    g_debug (P_N "%s", appt->uid);
-#endif
-#if 0
-    if (appt->freq == XFICAL_FREQ_HOURLY) {
-        g_debug (P_N "HOURLY");
-        if (appt->priority >= g_par.priority_list_limit)
-            g_debug (P_N "low priority HOURLY");
-    }
-#endif
     todo = (pbox == cal->mTodo_rows_vbox) ? TRUE : FALSE;
     if (appt->priority < g_par.priority_list_limit)
         add_info_row(appt, box, todo);
@@ -608,13 +478,8 @@ static void info_process(gpointer a, gpointer pbox)
 
 static void create_mainbox_todo_info(void)
 {
-#undef P_N
-#define P_N "create_mainbox_todo_info: "
     CalWin *cal = (CalWin *)g_par.xfcal;
 
-#if ORAGE_TRACE
-    g_debug (P_N);
-#endif
     cal->mTodo_vbox = gtk_grid_new ();
     g_object_set (cal->mTodo_vbox, "vexpand", TRUE,
                                    "valign", GTK_ALIGN_FILL,
@@ -641,15 +506,10 @@ static void create_mainbox_todo_info(void)
 
 static void create_mainbox_event_info_box(void)
 {
-#undef P_N
-#define P_N "create_mainbox_event_info_box: "
     CalWin *cal = (CalWin *)g_par.xfcal;
     gchar *tmp, *tmp2, *tmp3;
     struct tm tm_date_start, tm_date_end;
 
-#if ORAGE_TRACE
-    g_debug (P_N);
-#endif
     tm_date_start = orage_cal_to_tm_time(GTK_CALENDAR(cal->mCalendar), 1, 1);
 
     cal->mEvent_vbox = gtk_grid_new ();
@@ -701,8 +561,6 @@ static void create_mainbox_event_info_box(void)
 
 static void build_mainbox_todo_info(void)
 {
-#undef P_N
-#define P_N "build_mainbox_todo_info: "
     CalWin *cal = (CalWin *)g_par.xfcal;
     char      *s_time;
     char      a_day[9];  /* yyyymmdd */
@@ -712,9 +570,6 @@ static void build_mainbox_todo_info(void)
     gint i;
     GList *todo_list=NULL;
 
-#if ORAGE_TRACE
-    g_debug (P_N);
-#endif
     if (g_par.show_todos) {
         t = orage_localtime();
         s_time = orage_tm_time_to_icaltime(t);
@@ -748,8 +603,6 @@ static void build_mainbox_todo_info(void)
 
 static void build_mainbox_event_info(void)
 {
-#undef P_N
-#define P_N "build_mainbox_event_info: "
     CalWin *cal = (CalWin *)g_par.xfcal;
     char      *s_time;
     char      a_day[9];  /* yyyymmdd */
@@ -759,9 +612,6 @@ static void build_mainbox_event_info(void)
     gint i;
     GList *event_list=NULL;
 
-#if ORAGE_TRACE
-    g_debug (P_N);
-#endif
     if (g_par.show_event_days) {
         gtk_calendar_get_date(GTK_CALENDAR(cal->mCalendar)
                 , (unsigned int *)&tt.tm_year
@@ -806,22 +656,12 @@ static void build_mainbox_event_info(void)
 static void mCalendar_day_selected_cb (G_GNUC_UNUSED GtkCalendar *calendar,
                                        G_GNUC_UNUSED gpointer user_data)
 {
-#undef P_N
-#define P_N "mCalendar_day_selected_cb: "
-#if ORAGE_TRACE
-    g_debug (P_N);
-#endif
     /* rebuild the info for the selected date */
     build_mainbox_event_box();
 }
 
 void build_mainbox_event_box(void)
 {
-#undef P_N
-#define P_N "build_mainbox_event_box: "
-#if ORAGE_TRACE
-    g_debug (P_N);
-#endif
     if (!xfical_file_open(TRUE))
         return;
     build_mainbox_event_info();
@@ -830,11 +670,6 @@ void build_mainbox_event_box(void)
 
 void build_mainbox_todo_box(void)
 {
-#undef P_N
-#define P_N "build_mainbox_todo_box: "
-#if ORAGE_TRACE
-    g_debug (P_N);
-#endif
     if (!xfical_file_open(TRUE))
         return;
     build_mainbox_todo_info();
@@ -848,13 +683,6 @@ void build_mainbox_todo_box(void)
  **********************************************************************/
 void build_mainbox_info(void)
 {
-#undef P_N
-#define P_N "build_mainbox_info: "
-
-#if ORAGE_TRACE
-    g_debug (P_N);
-#endif
-
     build_mainbox_todo_info();
     build_mainbox_event_info();
 }
@@ -862,9 +690,6 @@ void build_mainbox_info(void)
 void build_mainWin(void)
 {
     CalWin *cal = (CalWin *)g_par.xfcal;
-#if ORAGE_TRACE
-    g_debug ("build_mainWin");
-#endif
 
     cal->mAccel_group = gtk_accel_group_new();
 
