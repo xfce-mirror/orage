@@ -792,7 +792,7 @@ static void duplicate_appointment(el_win *el)
     list_len = g_list_length(list);
     if (list_len > 0) {
         if (list_len > 1)
-            g_warning("Copy: too many rows selected\n");
+            g_warning ("Copy: too many rows selected");
         path = (GtkTreePath *)g_list_nth_data(list, 0);
         start_appt_win("COPY", el, model, &iter, path);
     }
@@ -1101,7 +1101,7 @@ static void drag_data_get (GtkWidget *widget,
     g_list_free(list);
     if (result) {
         if (!gtk_selection_data_set_text(selection_data, result->str, -1))
-            g_warning("drag_data_get failed\n");
+            g_warning ("%s: failed", G_STRFUNC);
         g_string_free(result, TRUE);
     }
 }

@@ -471,7 +471,7 @@ static void imp_save_button_clicked (G_GNUC_UNUSED GtkButton *button,
             if (orage_import_file(filename))
                 g_message ("Import done %s", filename);
             else
-                g_warning ("import failed file=%s\n", filename);
+                g_warning ("import failed file=%s", filename);
             if (filename_end != NULL) { /* we have more files */
                 filename = filename_end+1; /* next file starts here */
                 more_files = TRUE;
@@ -508,13 +508,13 @@ static void exp_save_button_clicked (G_GNUC_UNUSED GtkButton *button,
             app_count = 1;
         }
         else {
-            g_warning("UNKNOWN select appointment\n");
+            g_warning ("UNKNOWN select appointment");
         }
 
         if (orage_export_file(entry_filename, app_count, entry_uids))
             g_message ("Export done %s", entry_filename);
         else
-            g_warning ("export failed file=%s\n", entry_filename);
+            g_warning ("export failed file=%s", entry_filename);
     }
     else
         g_warning("save_button_clicked: filename MISSING");
@@ -584,7 +584,7 @@ gboolean orage_foreign_file_remove(gchar *filename)
     gboolean found = FALSE;
 
     if (interface_lock) {
-        g_warning("Exchange window active, can't remove files from cmd line\n");
+        g_warning ("Exchange window active, can't remove files from cmd line");
         return(FALSE);
     }
     if (!ORAGE_STR_EXISTS(filename)) {
@@ -790,7 +790,7 @@ gboolean orage_foreign_file_add(const gchar *filename, const gboolean read_only
         , const gchar *name)
 {
     if (interface_lock) {
-        g_warning("Exchange window active, can't add files from cmd line\n");
+        g_warning ("Exchange window active, can't add files from cmd line");
         return(FALSE);
     }
     return(orage_foreign_file_add_internal(filename, name, read_only, NULL));
@@ -914,8 +914,8 @@ static void handle_file_drag_data(GtkWidget *widget, GdkDragContext *context
                         , strlen(file), &pos);
             }
             else { /* export to only 1 file, ignoring the rest */
-                g_warning("Exporting only to one file, ignoring drag file %d (%s)\n"
-                        , i+1, file_list[i]);
+                g_warning ("Exporting only to one file, "
+                           "ignoring drag file %d (%s)", i+1, file_list[i]);
             }
         }
     }

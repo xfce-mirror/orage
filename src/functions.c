@@ -970,7 +970,8 @@ gchar *orage_data_file_location (const gchar *name)
         /* it does not exist, let's try to create it */
         dir_name = g_path_get_dirname (file_name);
         if (g_mkdir_with_parents(dir_name, mode)) {
-            g_warning ("orage_data_file_location: (%s) (%s) directory creation failed.\n", base_dir, file_name);
+            g_warning ("%s: (%s) (%s) directory creation failed", G_STRFUNC,
+                       base_dir, file_name);
         }
         g_free(dir_name);
         /* now we have the directories ready, let's check for system default */
@@ -1018,7 +1019,8 @@ gchar *orage_config_file_location (const gchar *name)
         /* it does not exist, let's try to create it */
         dir_name = g_path_get_dirname (file_name);
         if (g_mkdir_with_parents(dir_name, mode)) {
-            g_warning ("orage_config_file_location: (%s) (%s) directory creation failed.\n", base_dir, file_name);
+            g_warning ("%s: (%s) (%s) directory creation failed", G_STRFUNC,
+                       base_dir, file_name);
         }
         g_free(dir_name);
         /* now we have the directories ready, let's check for system default */
