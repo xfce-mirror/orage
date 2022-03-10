@@ -702,8 +702,8 @@ struct tm orage_cal_to_tm_time(GtkCalendar *cal, gint hh, gint mm)
     /* need to fill missing tm_wday and tm_yday, which are in use 
      * in some locale's default date. For example in en_IN. mktime does it */
     if (mktime(&tm_date) == (time_t) -1) {
-        g_warning("orage: orage_cal_to_tm_time mktime failed %d %d %d"
-                , tm_date.tm_year, tm_date.tm_mon, tm_date.tm_mday);
+        g_warning ("%s: mktime failed %d %d %d", G_STRFUNC, tm_date.tm_year,
+                   tm_date.tm_mon, tm_date.tm_mday);
     }
     return(tm_date);
 }
@@ -865,8 +865,8 @@ void orage_move_day(struct tm *t, const gint day)
     /* mktime adjusts t correctly. It also fills missing tm_wday and tm_yday, 
      * which are in use in some locale's default date. For example in en_IN */
     if (mktime(t) == (time_t) -1) {
-        g_warning("orage: orage_move_day mktime failed %d %d %d"
-                , t->tm_year, t->tm_mon, t->tm_mday);
+        g_warning ("%s: mktime failed %d %d %d", G_STRFUNC, t->tm_year,
+                   t->tm_mon, t->tm_mday);
     }
 }
 
@@ -920,15 +920,15 @@ gboolean orage_copy_file (const gchar *source, const gchar *target)
 
     /* read file */
     if (!g_file_get_contents(source, &text, &text_len, &error)) {
-        g_warning ("orage_copy_file: Could not open file (%s) error:%s"
-                , source, error->message);
+        g_warning ("%s: Could not open file (%s) error:%s", G_STRFUNC, source,
+                   error->message);
         g_error_free(error);
         ok = FALSE;
     }
     /* write file */
     if (ok && !g_file_set_contents(target, text, -1, &error)) {
-        g_warning ("orage_copy_file: Could not write file (%s) error:%s"
-                , target, error->message);
+        g_warning ("%s: Could not write file (%s) error:%s", G_STRFUNC, target,
+                   error->message);
         g_error_free(error);
         ok = FALSE;
     }

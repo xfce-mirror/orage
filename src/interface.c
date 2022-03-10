@@ -482,7 +482,7 @@ static void imp_save_button_clicked (G_GNUC_UNUSED GtkButton *button,
         }
     }
     else
-        g_warning("save_button_clicked: filename MISSING");
+        g_warning ("%s: filename MISSING", G_STRFUNC);
     g_free(entry_filename);
 }
 

@@ -139,13 +139,13 @@ static void send_event (const char *event)
 
 void orage_toggle_visible(void)
 {
-    g_debug ("orage_toggle_visible(), send '" CALENDAR_TOGGLE_EVENT "' event");
+    g_debug ("%s: send '" CALENDAR_TOGGLE_EVENT "' event", G_STRFUNC);
     send_event (CALENDAR_TOGGLE_EVENT);
 }
 
 static void raise_orage(void)
 {
-    g_debug ("raise_orage(), send '" CALENDAR_RAISE_EVENT "' event");
+    g_debug ("%s: send '" CALENDAR_RAISE_EVENT "' event", G_STRFUNC);
     send_event (CALENDAR_RAISE_EVENT);
 }
 
