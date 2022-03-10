@@ -85,7 +85,7 @@ static GtkTreeStore *tz_button_create_store(gboolean details
     g_strlcpy (area_old, "S T a R T", sizeof (area_old)); /* this never matches */
     tz_a = get_orage_timezones(details, check_ical ? 1 : 0);
 
-    g_debug ("%s: number of timezones %d\n", G_STRFUNC, tz_a.count);
+    g_debug ("%s: number of timezones %d", G_STRFUNC, tz_a.count);
 
 #ifndef HAVE_LIBICAL
     /* Create special "area" for first level timezones, which do not have
@@ -150,7 +150,7 @@ static GtkTreeStore *tz_button_create_store(gboolean details
 
         if (offs_min)
         {
-            g_debug ("%s: %s offset %d hour %d minutes %d\n", G_STRFUNC,
+            g_debug ("%s: %s offset %d hour %d minutes %d", G_STRFUNC,
                      tz_a.city[i], tz_a.utc_offset[i], offs_hour, offs_min);
         }
 

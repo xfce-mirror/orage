@@ -416,7 +416,7 @@ GdkPixbuf *orage_create_icon(gboolean static_icon, gint size)
         }
 
         if (pixbuf == NULL) {
-            g_warning("orage_create_icon: dynamic icon creation failed\n");
+            g_warning ("orage_create_icon: dynamic icon creation failed");
             pixbuf = gtk_icon_theme_load_icon(icon_theme, "org.xfce.orage", size
                     , GTK_ICON_LOOKUP_USE_BUILTIN, &error);
         }

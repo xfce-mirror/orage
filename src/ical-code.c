@@ -2499,7 +2499,7 @@ struct icaltimetype exdatetime;
             continue;
         }
 
-        g_debug ("%s: found RDATE exception in alarm handling (%s)\n",
+        g_debug ("%s: found RDATE exception in alarm handling (%s)",
                  G_STRFUNC, icalproperty_get_value_as_string(rdate));
 
         if (icaltime_is_null_time(rdate_period.time))

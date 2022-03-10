@@ -1550,7 +1550,8 @@ static void recur_row_clicked(GtkWidget *widget
             g_free(recur_exception_cur);
         }
         else { 
-            g_warning("recur_row_clicked: non existent row (%s)\n", recur_exception->time);
+            g_warning ("recur_row_clicked: non existent row (%s)",
+                       recur_exception->time);
         }
         g_free(recur_exception);
 
@@ -2248,7 +2249,7 @@ static void fill_appt_window_general(appt_win *apptw, xfical_appt *appt
         gtk_toggle_button_set_active(
                 GTK_TOGGLE_BUTTON(apptw->Type_journal_rb), TRUE);
     else
-        g_warning("fill_appt_window_general: Illegal value for type\n");
+        g_warning ("%s: Illegal value for type", G_STRFUNC);
 
     /* appointment name */
     gtk_entry_set_text(GTK_ENTRY(apptw->Title_entry)
@@ -2415,8 +2416,8 @@ static void fill_appt_window_recurrence(appt_win *apptw, xfical_appt *appt)
                     , (const gchar *)untildate_to_display);
             break;
         default: /* error */
-            g_warning("fill_appt_window: Unsupported recur_limit %d",
-                    appt->recur_limit);
+            g_warning ("%s: Unsupported recur_limit %d", G_STRFUNC,
+                       appt->recur_limit);
     }
 
     /* weekdays */
