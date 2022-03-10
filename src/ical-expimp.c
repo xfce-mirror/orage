@@ -345,7 +345,7 @@ static gboolean export_selected(char *file_name, char *uids)
         return(FALSE);
     }
     if (!ic_internal_file_open(&x_ical, &x_fical, file_name, FALSE, FALSE)) {
-        g_warning ("%s Failed to create export file %s", G_STRFUNC, file_name);
+        g_warning ("%s: Failed to create export file %s", G_STRFUNC, file_name);
         return(FALSE);
     }
     if (!xfical_file_open(TRUE)) {
