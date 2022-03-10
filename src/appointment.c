@@ -911,10 +911,6 @@ static void fill_appt_from_apptw_alarm(xfical_appt *appt, appt_win *apptw)
         appt->procedure_cmd = g_strndup(tmp+i, j-i);
     if (l-k)
         appt->procedure_params = g_strndup(tmp+k, l-k);
-    /*
-    g_print("parameter reading: tmp=(%s) cmd=(%s) params=(%s) i=%d j=%d k=%d l=%d\n",
-            tmp, appt->procedure_cmd, appt->procedure_params, i, j, k, l);
-    */
 }
 
 /*
@@ -1124,17 +1120,6 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
     /* recurrence todo base */
     appt->recur_todo_base_start = gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(apptw->Recur_todo_base_start_rb));
-
-    /* recurrence exceptions */
-    /* is kept upto date all the time */
-    /*
-    g_print("fill_appt_from_apptw: checking data start\n");
-    for (tmp_gl = g_list_first(appt->recur_exceptions);
-         tmp_gl != NULL;
-         tmp_gl = g_list_next(tmp_gl)) {
-        g_print("fill_appt_from_apptw: checking data (%s)\n", ((xfical_exception *)tmp_gl->data)->time);
-    }
-    */
 
     return(TRUE);
 }

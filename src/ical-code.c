@@ -1797,10 +1797,6 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
                 ical_appt_get_rrule_internal(c, appt, p);
                 break;
             case ICAL_X_PROPERTY:
-#if 0
-                text = icalproperty_get_value_as_string(p);
-                g_print("X PROPERTY: %s\n", text);
-#endif
                 text = icalproperty_get_x_name(p);
                 if (g_str_has_prefix(text, "X-ORAGE-ORIG-DTSTART")) {
                     process_start_date(appt, p, &itime, &stime, &sltime);
@@ -3421,17 +3417,7 @@ static void xfical_get_each_app_within_time_internal(char *a_day, gint days
            what the time is in, libical returns wrong time in span.
            But as the hour only changes with HOURLY repeating appointments,
            we can replace received hour with the hour from start time */
-        /*
-        p = icalcomponent_get_first_property(c, ICAL_DTEND_PROPERTY);
-            if (p != NULL) {
-        start = icalproperty_get_dtend(p);
-        data1.orig_end_hour = start.hour;
-            }
-            else {
-                g_print("NULL ***********\n");
-            }
-            g_print("ORIG END HOUR %d ***********\n", data1.orig_end_hour);
-            */
+
         p = icalcomponent_get_first_property(c, ICAL_DTSTART_PROPERTY);
         start = icalproperty_get_dtstart(p);
         data1.orig_start_hour = start.hour;

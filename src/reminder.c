@@ -426,9 +426,6 @@ static void notify_closed (G_GNUC_UNUSED NotifyNotification *n, gpointer par)
 {
     alarm_struct *l_alarm = (alarm_struct *)par;
 
-    /*
-    g_print("notify_closed: start %d %d\n",  l_alarm->audio, l_alarm->display_notify);
-    */
     if (l_alarm->notify_refresh) {
         /* this is not really closing notify, but only a refresh, so
          * we do not clean the memory now */
