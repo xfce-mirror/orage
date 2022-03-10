@@ -225,11 +225,6 @@ void oc_start_timer(OragePlugin *plugin)
 {
     gint delay_time; /* this is used to set the clock start time correct */
 
-#if 0
-    g_debug ("oc_start_timer: (%s) interval %d  %d:%d:%d", plugin->tooltip_prev,
-             plugin->interval, plugin->now.tm_hour, plugin->now.tm_min,
-             plugin->now.tm_sec);
-#endif
     /* stop the clock refresh since we will start it again here soon */
     if (plugin->timeout_id) {
         g_source_remove(plugin->timeout_id);

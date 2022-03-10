@@ -138,7 +138,7 @@ gboolean orage_dbus_service_remove_foreign (G_GNUC_UNUSED DBusGProxy *proxy
         return(TRUE);
     }
     else {
-        g_warning("Orage **: DBUS Foreign file remove failed %s", IN_file);
+        g_warning ("DBUS Foreign file remove failed %s", IN_file);
         return(FALSE);
     }
 }
