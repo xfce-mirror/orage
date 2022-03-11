@@ -161,9 +161,9 @@ static gboolean button_press_cb (G_GNUC_UNUSED GtkStatusIcon *status_icon,
             xevent.xclient.window = xwindow;
 
             if (XSendEvent (display, xwindow, FALSE, NoEventMask, &xevent))
-                g_debug(_("Raising GlobalTime window..."));
+                g_debug ("Raising GlobalTime window");
             else
-                g_warning (_("GlobalTime window raise failed"));
+                g_warning ("GlobalTime window raise failed");
 
             (void)XFlush (display);
 
