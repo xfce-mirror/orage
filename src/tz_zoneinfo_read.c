@@ -170,8 +170,6 @@ static int get_long(void)
 
 static int process_header(void)
 {
-    g_debug ("file id: %s", in_head);
-
     if (strncmp((char *)in_head, "TZif", 4)) { /* we accept version 1 and 2 */
         return(1);
     }
@@ -180,22 +178,11 @@ static int process_header(void)
     in_head += 16; /* reserved */
 
     gmtcnt  = get_long();
-    g_debug ("gmtcnt=%lu", gmtcnt);
-
     stdcnt  = get_long();
-    g_debug ("stdcnt=%lu", stdcnt);
-
     leapcnt = get_long();
-    g_debug ("leapcnt=%lu", leapcnt);
-
     timecnt = get_long();
-    g_debug ("number of time changes: timecnt=%lu", timecnt);
-
     typecnt = get_long();
-    g_debug ("number of time change types: typecnt=%lu", typecnt);
-
     charcnt = get_long();
-    g_debug ("length of different timezone names table: charcnt=%lu", charcnt);
 
     return(0);
 }
@@ -271,7 +258,6 @@ static void process_leap_table(void)
     unsigned long tmp, tmp2;
     unsigned int i;
 
-    g_debug ("FIXME: function which relies to side effects");
     for (i = 0; i < leapcnt; i++) { /* we need to walk over the table */
         /* get_long has side effect to increment in_head. */
         tmp = get_long();
@@ -585,9 +571,10 @@ static int file_call(const char *file_name, const struct stat *sb, int flags
         }
 #else
         (void)f;
-        /* not easy to do that in BSD, where we do not have FTW_ACTIONRETVAL
-           features. It can be done by checking differently */
-        g_debug ("FIXME: this directory should be skipped");
+        /* FIXME: this directory should be skipped.
+         * Not easy to do that in BSD, where we do not have FTW_ACTIONRETVAL
+         * features. It can be done by checking differently.
+         */
 #endif
     }
     else {
@@ -711,9 +698,9 @@ static int check_parameters(void)
                in_file_is_dir ? "directory" : "normal file");
     g_debug ("Year limit: %d", ignore_older);
     g_debug ("Infile timezone: (%s)", in_timezone_name);
-    g_debug ("Outfile: (%s)\n", out_file);
-    g_debug ("Outfile timezone: (%s)\n", timezone_name);
-    g_debug ("Maximum exclude directory count: (%d)\n", excl_dir_cnt);
+    g_debug ("Outfile: (%s)", out_file);
+    g_debug ("Outfile timezone: (%s)", timezone_name);
+    g_debug ("Maximum exclude directory count: (%d)", excl_dir_cnt);
 
     for (i = 0; (i <= excl_dir_cnt) && excl_dir[i]; i++)
         g_debug ("exclude directory %d: (%s)" , i, excl_dir[i]);
