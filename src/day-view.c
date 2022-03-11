@@ -133,7 +133,7 @@ static void close_window(day_win *dw)
         if (apptw) /* appointment window is still alive */
             apptw->dw = NULL; /* not interested anymore */
         else
-            g_warning ("close_window: not null appt window");
+            g_warning ("%s: not null appt window", G_STRFUNC);
     }
     g_list_free(dw->apptw_list);
 

@@ -79,7 +79,7 @@ static gboolean decoration_radio_button_pressed(GtkWidget *widget, gchar *label)
         else if (strcmp(label, "None") == 0)
             clocks.decorations = FALSE;
         else 
-            g_warning("Unknown selection in decoration radio button\n");
+            g_warning ("Unknown selection in decoration radio button");
         write_file();
         gtk_window_set_decorated(GTK_WINDOW(clocks.window), clocks.decorations);
     }
@@ -94,7 +94,7 @@ static gboolean clocksize_radio_button_pressed(GtkWidget *widget, gchar *label)
         else if (strcmp(label, "Vary") == 0)
             clocks.expand = FALSE;
         else 
-            g_warning("Unknown selection in clock size radio button\n");
+            g_warning ("Unknown selection in clock size radio button");
         write_file();
     }
     return(FALSE);

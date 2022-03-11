@@ -87,8 +87,6 @@ orage_timezone_array tz_array= {0};
 
 static char *zone_tab_buf = NULL, *country_buf = NULL, *zones_tab_buf = NULL;
 
-static int debug = 0; /* bigger number => more output */
-static char version[] = "1.5.1";
 static int file_cnt = 0; /* number of processed files */
 
 static unsigned char *in_buf, *in_head, *in_tail;
@@ -138,30 +136,24 @@ static void read_file(const char *file_name, const struct stat *file_stat)
 {
     FILE *file;
 
-    if (debug > 1) {
-        printf("read_file: start\n");
-        printf("***** size of file %s is %d bytes *****\n", file_name
-                , (int)file_stat->st_size);
-    }
+    g_debug ("size of file %s is %d bytes", file_name, (int)file_stat->st_size);
+
     in_buf = g_malloc0(file_stat->st_size);
     in_head = in_buf;
     in_tail = in_buf + file_stat->st_size - 1;
     file = fopen(file_name, "r");
     if (!file) {
-            printf("read_file: file open error (%s)\n", file_name);
-            perror("\tfread");
-            return;
+        g_warning ("file open error (%s): %s", file_name, g_strerror (errno));
+        return;
     }
     if ((off_t)fread(in_buf, 1, file_stat->st_size, file) < file_stat->st_size)
         if (ferror(file)) {
-            printf("read_file: file read failed (%s)\n", file_name);
+            g_warning ("file read failed (%s): %s", file_name,
+                       g_strerror (errno));
             fclose(file);
-            perror("\tfread");
             return;
         }
     fclose(file);
-    if (debug > 1)
-        printf("read_file: end\n");
 }
 
 static int get_long(void)
@@ -178,166 +170,86 @@ static int get_long(void)
 
 static int process_header(void)
 {
-    if (debug > 2)
-        printf("file id: %s\n", in_head);
     if (strncmp((char *)in_head, "TZif", 4)) { /* we accept version 1 and 2 */
         return(1);
     }
     /* header */
     in_head += 4; /* type */
     in_head += 16; /* reserved */
+
     gmtcnt  = get_long();
-    if (debug > 2)
-        printf("gmtcnt=%lu \n", gmtcnt);
     stdcnt  = get_long();
-    if (debug > 2)
-        printf("stdcnt=%lu \n", stdcnt);
     leapcnt = get_long();
-    if (debug > 2)
-        printf("leapcnt=%lu \n", leapcnt);
     timecnt = get_long();
-    if (debug > 2)
-        printf("number of time changes: timecnt=%lu \n", timecnt);
     typecnt = get_long();
-    if (debug > 2)
-        printf("number of time change types: typecnt=%lu \n", typecnt);
     charcnt = get_long();
-    if (debug > 2)
-        printf("lenght of different timezone names table: charcnt=%lu \n"
-                , charcnt);
+
     return(0);
 }
 
 static void process_local_time_table(void)
-{ /* points when time changes */
-    time_t tmp;
-    unsigned int i;
+{
+    /* points when time changes */
 
     begin_timechanges = in_head;
-    if (debug > 3)
-        printf("\n***** printing time change dates *****\n");
-    for (i = 0; i < timecnt; i++) {
-        tmp = get_long();
-        if (debug > 3) {
-            printf("GMT %u: %d =  %s", i, (int)tmp
-                    , asctime(gmtime((const time_t*)&tmp)));
-            printf("\tLOC %u: %d =  %s", i, (int)tmp
-                    , asctime(localtime((const time_t*)&tmp)));
-        }
-    }
+
+    /* Skip over table entries. */
+    in_head += (4 * timecnt);
 }
 
 static void process_local_time_type_table(void)
-{ /* pointers to table, which explain how time changes */
-    unsigned char tmp;
-    unsigned int i;
+{
+    /* pointers to table, which explain how time changes */
 
     begin_timechangetypeindexes = in_head;
-    if (debug > 3)
-        printf("\n***** printing time change type indekses *****\n");
-    for (i = 0; i < timecnt; i++) { /* we need to walk over the table */
-        tmp = in_head[0];
-        in_head++;
-        if (debug > 3)
-            printf("type %u: %d\n", i, (unsigned int)tmp);
-    }
+
+    /* Skip over table entries. */
+    in_head += timecnt;
 }
 
 static void process_ttinfo_table(void)
-{ /* table of different time changes = types */
-    long tmp;
-    unsigned char tmp2, tmp3;
-    unsigned int i;
+{
+    /* table of different time changes = types */
 
     begin_timechangetypes = in_head;
-    if (debug > 3)
-        printf("\n***** printing different time change types *****\n");
-    for (i = 0; i < typecnt; i++) { /* we need to walk over the table */
-        tmp = get_long();
-        tmp2 = in_head[0];
-        in_head++;
-        tmp3 = in_head[0];
-        in_head++;
-        if (debug > 3)
-            printf("%u: gmtoffset:%ld isdst:%d abbr:%d\n", i, tmp
-                    , (unsigned int)tmp2, (unsigned int)tmp3);
-    }
+
+    /* Skip over table entries. */
+    in_head += (6 * typecnt);
 }
 
 static void process_abbr_table(void)
 {
-    unsigned char *tmp;
-    unsigned int i;
-
     begin_timezonenames = in_head;
-    if (debug > 3)
-        printf("\n***** printing different timezone names *****\n");
-    tmp = in_head;
-    for (i = 0; i < charcnt; i++) { /* we need to walk over the table */
-        if (debug > 3)
-            printf("Abbr:%u (%d)(%s)\n", i, (int)strlen((char *)(tmp + i))
-                    ,tmp + i);
-        i += strlen((char *)(tmp + i));
-    }
+
+    /* Skip over table entries. */
     in_head += charcnt;
 }
 
 static void process_leap_table(void)
 {
-    unsigned long tmp, tmp2;
-    unsigned int i;
-
-    if (debug > 3)
-        printf("\n***** printing leap time table *****\n");
-    for (i = 0; i < leapcnt; i++) { /* we need to walk over the table */
-        tmp = get_long();
-        tmp2 = get_long();
-        if (debug > 3)
-            printf("leaps %u: %lu =  %s (%lu)", i, tmp
-                    , asctime(localtime((const time_t *)&tmp)), tmp2);
-    }
+    /* Skip over table entries. */
+    in_head += (8 * leapcnt);
 }
 
 static void process_std_table(void)
 {
-    unsigned char tmp;
-    unsigned int i;
-
-    if (debug > 3)
-        printf("\n***** printing std table *****\n");
-    for (i = 0; i < stdcnt; i++) { /* we need to walk over the table */
-        tmp = (unsigned long)in_head[0];
-        in_head++;
-        if (debug > 3)
-            printf("stds %u: %u\n", i, (unsigned int)tmp);
-    }
+    /* Skip over table entries. */
+    in_head += stdcnt;
 }
 
 static void process_gmt_table(void)
 {
-    unsigned char tmp;
-    unsigned int i;
-
-    if (debug > 3)
-        printf("\n***** printing gmt table *****\n");
-    for (i = 0; i < gmtcnt; i++) { /* we need to walk over the table */
-        tmp = (unsigned long)in_head[0];
-        in_head++;
-        if (debug > 3)
-            printf("gmts %u: %u\n", i, (unsigned int)tmp);
-    }
+    /* Skip over table entries. */
+    in_head += gmtcnt;
 }
 
 /* go through the contents of the file and find the positions of 
  * needed data. Uses global pointer: in_head */
 static int process_file(const char *file_name)
 {
-    if (debug > 1)
-        printf("process_file: start\n");
     if (process_header()) {
-        if (debug > 0)
-            printf("File (%s) does not look like tz file. Skipping it.\n"
-                    , file_name);
+        g_message ("File (%s) does not look like tz file. Skipping it.",
+                   file_name);
         return(1);
     }
     process_local_time_table();
@@ -347,8 +259,7 @@ static int process_file(const char *file_name)
     process_leap_table();
     process_std_table();
     process_gmt_table();
-    if (debug > 1)
-        printf("process_file: end\n");
+
     return(0); /* ok */
 }
 
@@ -426,9 +337,6 @@ static int write_ical_file(void)
     time_t tt_now = time(NULL);
     long tc_time = 0, prev_tc_time = 0; /* TimeChange times */
     char s_next[101], s_prev[101];
-
-    if (debug > 1)
-        printf("***** write_ical_file: start *****\n");
 
     tz_array.city[tz_array.count] = strdup(in_timezone_name);
 
@@ -532,8 +440,7 @@ static int write_ical_file(void)
     tz_array.tz[tz_array.count] = strdup((char *)in_head + abbr_i);
 
     tz_array.count++;
-    if (debug > 1)
-        printf("***** write_ical_file: end *****\n");
+
     return(0);
 }
 
@@ -542,18 +449,17 @@ static int file_call_process_file(const char *file_name
 {
     struct stat file_stat;
 
-    if (debug > 0) {
-        if (flags == FTW_SL)
-            printf("\t\tfile_call: processing symbolic link=(%s)\n", file_name);
-        else
-            printf("\t\tfile_call: processing file=(%s)\n", file_name);
-    }
+    if (flags == FTW_SL)
+        g_debug ("processing symbolic link=(%s)", file_name);
+    else
+        g_debug ("processing file=(%s)", file_name);
+
     in_timezone_name = strdup(&file_name[in_file_base_offset
             + strlen("zoneinfo/")]);
     timezone_name = strdup(in_timezone_name);
     if (check_ical && !timezone_exists_in_ical()) {
-        if (debug > 0)
-            printf("\t\tfile_call: skipping file=(%s) as it does not exist in libical\n", file_name);
+        g_debug ("skipping file=(%s) as it does not exist in libical",
+                 file_name);
         free(in_timezone_name);
         free(timezone_name);
         return(1);
@@ -564,7 +470,8 @@ static int file_call_process_file(const char *file_name
     which nftw gives us!
     (lstat = information from the real file istead of the link) */ 
         if (stat(file_name, &file_stat)) {
-            perror("\tstat");
+            g_warning ("file open error (%s): %s", file_name,
+                       g_strerror (errno));
             free(in_timezone_name);
             free(timezone_name);
             return(1);
@@ -597,8 +504,6 @@ static int file_call(const char *file_name, const struct stat *sb, int flags
     int i;
 #endif
 
-    if (debug > 1)
-        printf("\nfile_call: start\n");
     file_cnt++;
     /* we are only interested about files and directories we can access */
     if (flags == FTW_F || flags == FTW_SL) { /* we got file */
@@ -606,34 +511,28 @@ static int file_call(const char *file_name, const struct stat *sb, int flags
             return(FTW_CONTINUE); /* skip this file */
     }
     else if (flags == FTW_D) { /* this is directory */
-        if (debug > 0)
-            printf("\tfile_call: processing directory=(%s)\n", file_name);
+        g_debug ("processing directory=(%s)", file_name);
 #ifdef FTW_ACTIONRETVAL
         /* need to check if we have excluded directory */
         for (i = 0; (i <= excl_dir_cnt) && excl_dir[i]; i++) {
             if (strcmp(excl_dir[i],  file_name+f->base) == 0) {
-                if (debug > 0)
-                    printf("\t\tfile_call: skipping excluded directory (%s)\n"
-                            , file_name+f->base);
+                g_message ("skipping excluded directory (%s)",
+                           file_name+f->base);
                 return(FTW_SKIP_SUBTREE);
             }
         }
 #else
         (void)f;
-        /* not easy to do that in BSD, where we do not have FTW_ACTIONRETVAL
-           features. It can be done by checking differently */
-        if (debug > 0)
-            printf("FIXME: this directory should be skipped\n");
+        /* FIXME: this directory should be skipped.
+         * Not easy to do that in BSD, where we do not have FTW_ACTIONRETVAL
+         * features. It can be done by checking differently.
+         */
 #endif
     }
     else {
-        if (debug > 0) {
-            printf("\t\tfile_call: skipping inaccessible file=(%s)\n", file_name);
-        }
+        g_message ("skipping inaccessible file=(%s)", file_name);
     }
 
-    if (debug > 1)
-        printf("file_call: end\n\n");
     return(FTW_CONTINUE);
 }
 
@@ -646,24 +545,20 @@ static int check_parameters(void)
     FILE *par_file;
     struct stat par_file_stat;
 
-    if (debug > 1)
-        printf("check_parameters: start\n");
-
     in_file = NULL;
     par_file = fopen(TZ_CONVERT_PAR_FILE_LOC, "r");
     if (par_file != NULL) { /* does exist and no error */
         if (stat(TZ_CONVERT_PAR_FILE_LOC, &par_file_stat) == -1) {
             /* error reading the parameter file */
-            printf("check_parameters: in_file name not found from (%s) \n"
-                , TZ_CONVERT_PAR_FILE_LOC);
+            g_warning ("in_file name not found from (%s)",
+                       TZ_CONVERT_PAR_FILE_LOC);
         }
         else { /* no errors */
             in_file = malloc(par_file_stat.st_size+1);
             if (((off_t)fread(in_file, 1, par_file_stat.st_size, par_file)
                         < par_file_stat.st_size)
             && (ferror(par_file))) {
-                printf("check_parameters: error reading (%s)\n"
-                        , TZ_CONVERT_PAR_FILE_LOC);
+                g_warning ("error reading (%s)", TZ_CONVERT_PAR_FILE_LOC);
                 free(in_file);
                 in_file = NULL;
             }
@@ -675,8 +570,8 @@ static int check_parameters(void)
                     in_file[par_file_stat.st_size] = '\0';
                 /* test that it is fine */
                 if (stat(in_file, &par_file_stat) == -1) { /* error */
-                    printf("check_parameters: error reading (%s) (from %s)\n"
-                            , in_file, TZ_CONVERT_PAR_FILE_LOC);
+                    g_warning ("error reading (%s) (from %s)", in_file,
+                               TZ_CONVERT_PAR_FILE_LOC);
                     free(in_file);
                     in_file = NULL;
                 }
@@ -688,32 +583,34 @@ static int check_parameters(void)
         in_file = strdup(DEFAULT_OS_ZONEINFO_DIRECTORY);
 
     if (in_file[0] != '/') {
-        printf("check_parameters: in_file name (%s) is not absolute file name. Ending\n"
-                , in_file);
+        g_warning ("in_file name (%s) is not absolute file name. Ending",
+                   in_file);
         return(1);
     }
     if (stat(in_file, &in_stat) == -1) { /* error */
-        perror("\tcheck_parameters: stat");
+        g_warning ("file error (%s): %s", in_file, g_strerror (errno));
         return(2);
     }
     if (S_ISDIR(in_stat.st_mode)) {
         in_file_is_dir = 1;
         if (timezone_name) {
-            printf("\tcheck_parameters: when infile (%s) is directory, you can not specify timezone name (%s), but it is copied from each in file. Ending\n"
-                , in_file, timezone_name);
+            g_warning ("when infile (%s) is directory, you can not specify "
+                       "timezone name (%s), but it is copied from each in "
+                       "file. Ending", in_file, timezone_name);
             return(3);
         }
         if (out_file) {
-            printf("\tcheck_parameters: when infile (%s) is directory, you can not specify outfile name (%s), but it is copied from each in file. Ending\n"
-                , in_file, out_file);
+            g_warning ("when infile (%s) is directory, you can not specify "
+                       "outfile name (%s), but it is copied from each in file. "
+                       "Ending", in_file, out_file);
             return(3);
         }
     }
     else {
         in_file_is_dir = 0;
         if (!S_ISREG(in_stat.st_mode)) {
-            printf("\tcheck_parameters: in_file (%s) is not directory nor normal file. Ending\n"
-                , in_file);
+            g_warning ("in_file (%s) is not directory nor normal file. Ending",
+                       in_file);
             return(3);
         }
     }
@@ -729,8 +626,8 @@ static int check_parameters(void)
         s_tz++;
     }
     if (last_tz == NULL) {
-        printf("check_parameters: in_file name (%s) does not contain (%s). Ending\n"
-                , in_file, tz);
+        g_warning ("in_file name (%s) does not contain (%s). Ending", in_file,
+                   tz);
         return(4);
     }
 
@@ -749,32 +646,22 @@ static int check_parameters(void)
         excl_dir[1] = strdup("right");
     }
 
-    if (debug > 1) {
-        printf("\n***** Parameters *****\n");
-        printf("\tversion: %s\n", version);
-        printf("\tdebug level: %d\n", debug);
-        printf("\tyear limit: %d\n", ignore_older);
-        printf("\tinfile: (%s) %s\n", in_file
-                , in_file_is_dir ? "directory" : "normal file");
-        printf("\tinfile timezone: (%s)\n", in_timezone_name);
-        printf("\toutfile: (%s)\n", out_file);
-        printf("\toutfile timezone: (%s)\n", timezone_name);
-        printf("\tmaximum exclude directory count: (%d)\n", excl_dir_cnt);
-        for (i = 0; (i <= excl_dir_cnt) && excl_dir[i];i++)
-            printf("\t\texclude directory %d: (%s)\n"
-                    , i, excl_dir[i]);
-        printf("***** Parameters *****\n\n");
-    }
+    g_message ("Infile: (%s) %s", in_file,
+               in_file_is_dir ? "directory" : "normal file");
+    g_debug ("Year limit: %d", ignore_older);
+    g_debug ("Infile timezone: (%s)", in_timezone_name);
+    g_debug ("Outfile: (%s)", out_file);
+    g_debug ("Outfile timezone: (%s)", timezone_name);
+    g_debug ("Maximum exclude directory count: (%d)", excl_dir_cnt);
 
-    if (debug > 1)
-        printf("check_parameters: end\n\n\n");
+    for (i = 0; (i <= excl_dir_cnt) && excl_dir[i]; i++)
+        g_debug ("exclude directory %d: (%s)" , i, excl_dir[i]);
+
     return(0); /* continue */
 }
 
 static void read_os_timezones(void)
 {
-#undef P_N
-#define P_N "read_os_timezones: "
 #define MAX_AREA_LENGTH 100
 
     char *tz_dir, *zone_tab_file_name;
@@ -802,28 +689,25 @@ static void read_os_timezones(void)
     free(tz_dir);
 
     if (!(zone_tab_file = fopen(zone_tab_file_name, "r"))) {
-        printf("read_os_timezones: zone.tab file open failed (%s)\n"
-                , zone_tab_file_name);
+        g_warning ("zone.tab file open failed (%s): %s", zone_tab_file_name,
+                   g_strerror (errno));
         free(zone_tab_file_name);
-        perror("\tfopen");
         return;
     }
     if (stat(zone_tab_file_name, &zone_tab_file_stat) == -1) {
-        printf("read_os_timezones: zone.tab file stat failed (%s)\n"
-                , zone_tab_file_name);
+        g_warning ("zone.tab file stat failed (%s): %s", zone_tab_file_name,
+                   g_strerror (errno));
         free(zone_tab_file_name);
         fclose(zone_tab_file);
-        perror("\tstat");
         return;
     }
     zone_tab_buf = malloc(zone_tab_file_stat.st_size+1);
     if (((off_t)fread(zone_tab_buf, 1, zone_tab_file_stat.st_size, zone_tab_file) < zone_tab_file_stat.st_size)
     && (ferror(zone_tab_file))) {
-        printf("read_os_timezones: zone.tab file read failed (%s)\n"
-                , zone_tab_file_name);
+        g_warning ("zone.tab file read failed (%s): %s", zone_tab_file_name,
+                   g_strerror (errno));
         free(zone_tab_file_name);
         fclose(zone_tab_file);
-        perror("\tfread");
         return;
     }
     zone_tab_buf[zone_tab_file_stat.st_size] = '\0';
@@ -861,28 +745,25 @@ static void read_countries(void)
     free(tz_dir);
 
     if (!(country_file = fopen(country_file_name, "r"))) {
-        printf("read_countries: iso3166.tab file open failed (%s)\n"
-                , country_file_name);
+        g_warning ("iso3166.tab file open failed (%s): %s", country_file_name,
+                   g_strerror (errno));
         free(country_file_name);
-        perror("\tfopen");
         return;
     }
     if (stat(country_file_name, &country_file_stat) == -1) {
-        printf("read_countries: iso3166.tab file stat failed (%s)\n"
-                , country_file_name);
+        g_warning ("iso3166.tab file stat failed (%s): %s", country_file_name,
+                   g_strerror (errno));
         free(country_file_name);
         fclose(country_file);
-        perror("\tstat");
         return;
     }
     country_buf = malloc(country_file_stat.st_size+1);
     if (((off_t)fread(country_buf, 1, country_file_stat.st_size, country_file) < country_file_stat.st_size)
     && (ferror(country_file))) {
-        printf("read_countries: iso3166.tab file read failed (%s)\n"
-                , country_file_name);
+        g_warning ("iso3166.tab file read failed (%s): %s", country_file_name,
+                   g_strerror (errno));
         free(country_file_name);
         fclose(country_file);
-        perror("\tfread");
         return;
     }
     country_buf[country_file_stat.st_size] = '\0';
@@ -898,25 +779,22 @@ static void read_ical_timezones(void)
 
     /****** zones.tab file ******/
     if (!(zones_tab_file = fopen(ICAL_ZONES_TAB_FILE_LOC, "r"))) {
-        printf("read_ical_timezones: zones.tab file open failed (%s)\n"
-                , ICAL_ZONES_TAB_FILE_LOC);
-        perror("\tfopen");
+        g_warning ("zones.tab file open failed (%s): %s",
+                   ICAL_ZONES_TAB_FILE_LOC, g_strerror (errno));
         return;
     }
     if (stat(ICAL_ZONES_TAB_FILE_LOC, &zones_tab_file_stat) == -1) {
-        printf("read_ical_timezones: zones.tab file stat failed (%s)\n"
-                , ICAL_ZONES_TAB_FILE_LOC);
+        g_warning ("zones.tab file stat failed (%s): %s",
+                   ICAL_ZONES_TAB_FILE_LOC, g_strerror (errno));
         fclose(zones_tab_file);
-        perror("\tstat");
         return;
     }
     zones_tab_buf = malloc(zones_tab_file_stat.st_size+1);
     if (((off_t)fread(zones_tab_buf, 1, zones_tab_file_stat.st_size, zones_tab_file) < zones_tab_file_stat.st_size)
     && (ferror(zones_tab_file))) {
-        printf("read_ical_timezones: zones.tab file read failed (%s)\n"
-                , ICAL_ZONES_TAB_FILE_LOC);
+        g_warning ("zones.tab file read failed (%s): %s",
+                   ICAL_ZONES_TAB_FILE_LOC, g_strerror (errno));
         fclose(zones_tab_file);
-        perror("\tfread");
         return;
     }
     zones_tab_buf[zones_tab_file_stat.st_size] = '\0';
@@ -950,8 +828,9 @@ orage_timezone_array get_orage_timezones(int show_details, int ical)
         tz_array.country = (char **)malloc(sizeof(char *)*(tz_array_size+2));
         tz_array.cc = (char **)malloc(sizeof(char *)*(tz_array_size+2));
         check_parameters();
-        if (debug > 0)
-            printf("Processing %s files\n\n\n", in_file);
+
+        g_debug ("Processing %s files", in_file);
+
         if (details) {
             read_os_timezones();
             read_countries();
@@ -972,12 +851,11 @@ orage_timezone_array get_orage_timezones(int show_details, int ical)
 #else
         if (nftw(in_file, file_call, 10, FTW_PHYS) == -1) {
 #endif
-            perror("nftw error in file handling");
+            g_critical ("nftw error in file handling: %s", g_strerror (errno));
             exit(EXIT_FAILURE);
         }
-        if (debug > 0)
-            printf("Orage: Processed %d timezone files from (%s)\n"
-                    , file_cnt, in_file);
+
+        g_message ("Processed %d timezone files from (%s)", file_cnt, in_file);
 
         free(in_file);
 

@@ -89,7 +89,7 @@ gboolean orage_dbus_service_load_file (G_GNUC_UNUSED DBusGProxy *proxy
         , GError **error)
 {
     if (orage_import_file((char *)IN_file)) {
-        g_message("Orage **: DBUS File added %s", IN_file);
+        g_message ("DBUS File added %s", IN_file);
         return(TRUE);
     }
     else {
@@ -105,7 +105,7 @@ gboolean orage_dbus_service_export_file (G_GNUC_UNUSED DBusGProxy *proxy
         , G_GNUC_UNUSED GError **error)
 {
     if (orage_export_file((char *)IN_file, (gint)IN_type, (char *)IN_uids)) {
-        g_message("Orage **: DBUS File exported %s", IN_file);
+        g_message ("DBUS File exported %s", IN_file);
         return(TRUE);
     }
     else {
@@ -120,7 +120,7 @@ gboolean orage_dbus_service_add_foreign (G_GNUC_UNUSED DBusGProxy *proxy
 {
     if (orage_foreign_file_add((char *)IN_file, (gboolean)IN_mode
                 , (char *)IN_name)) {
-        g_message("Orage **: DBUS Foreign file added %s", IN_file);
+        g_message ("DBUS Foreign file added %s", IN_file);
         return(TRUE);
     }
     else {
@@ -134,11 +134,11 @@ gboolean orage_dbus_service_remove_foreign (G_GNUC_UNUSED DBusGProxy *proxy
         , G_GNUC_UNUSED GError **error)
 {
     if (orage_foreign_file_remove((char *)IN_file)) {
-        g_message("Orage **: DBUS Foreign file removed %s", IN_file);
+        g_message ("DBUS Foreign file removed %s", IN_file);
         return(TRUE);
     }
     else {
-        g_warning("Orage **: DBUS Foreign file remove failed %s", IN_file);
+        g_warning ("DBUS Foreign file remove failed %s", IN_file);
         return(FALSE);
     }
 }
