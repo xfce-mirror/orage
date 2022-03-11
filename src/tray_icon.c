@@ -161,9 +161,9 @@ static gboolean button_press_cb (G_GNUC_UNUSED GtkStatusIcon *status_icon,
             xevent.xclient.window = xwindow;
 
             if (XSendEvent (display, xwindow, FALSE, NoEventMask, &xevent))
-                g_debug(_("Raising GlobalTime window..."));
+                g_debug ("Raising GlobalTime window");
             else
-                g_warning (_("GlobalTime window raise failed"));
+                g_warning ("GlobalTime window raise failed");
 
             (void)XFlush (display);
 
@@ -199,7 +199,7 @@ static gboolean format_line (PangoLayout *pl, struct tm *t, const char *data,
 
     if (ORAGE_STR_EXISTS(data)) {
         if (strftime(row, sizeof (row) - 1, data, t) == 0) {
-            g_warning("format_line: strftime %s failed", data);
+            g_warning ("%s: strftime %s failed", G_STRFUNC, data);
             return(FALSE);
         }
         else
@@ -416,15 +416,15 @@ GdkPixbuf *orage_create_icon(gboolean static_icon, gint size)
         }
 
         if (pixbuf == NULL) {
-            g_warning("orage_create_icon: dynamic icon creation failed\n");
+            g_warning ("%s: dynamic icon creation failed", G_STRFUNC);
             pixbuf = gtk_icon_theme_load_icon(icon_theme, "org.xfce.orage", size
                     , GTK_ICON_LOOKUP_USE_BUILTIN, &error);
         }
     }
 
     if (pixbuf == NULL) {
-        g_warning ("orage_create_icon: static icon creation failed, "
-                   "using default About icon");
+        g_warning ("%s: static icon creation failed, using default About icon",
+                   G_STRFUNC);
         /* dynamic icon also tries static before giving up */
         pixbuf = gtk_icon_theme_load_icon(icon_theme, "help-about", size
                 , GTK_ICON_LOOKUP_USE_BUILTIN, &error);
@@ -432,7 +432,7 @@ GdkPixbuf *orage_create_icon(gboolean static_icon, gint size)
 
     if (pixbuf == NULL)
     {
-        g_warning("orage_create_icon: couldn’t load icon '%s'", error->message);
+        g_warning ("%s: couldn’t load icon '%s'", G_STRFUNC, error->message);
         g_error_free (error);
     }
 

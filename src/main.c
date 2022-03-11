@@ -104,11 +104,11 @@ static void handle_resuming(void)
                    , G_CALLBACK(resuming_cb), NULL, NULL);
        } 
        else {
-           g_warning("Failed to create proxy object\n");
+           g_warning("Failed to create proxy object");
        }
     } 
     else {
-        g_warning("Failed to connect to D-BUS daemon: %s\n", error->message);
+        g_warning("Failed to connect to D-BUS daemon: %s", error->message);
     }
 }
 #endif
@@ -139,13 +139,13 @@ static void send_event (const char *event)
 
 void orage_toggle_visible(void)
 {
-    g_debug ("orage_toggle_visible(), send '" CALENDAR_TOGGLE_EVENT "' event");
+    g_debug ("%s: send '" CALENDAR_TOGGLE_EVENT "' event", G_STRFUNC);
     send_event (CALENDAR_TOGGLE_EVENT);
 }
 
 static void raise_orage(void)
 {
-    g_debug ("raise_orage(), send '" CALENDAR_RAISE_EVENT "' event");
+    g_debug ("%s: send '" CALENDAR_RAISE_EVENT "' event", G_STRFUNC);
     send_event (CALENDAR_RAISE_EVENT);
 }
 
@@ -337,16 +337,17 @@ static void import_file(gboolean running, char *file_name, gboolean initialized)
         if (orage_dbus_import_file(file_name))
             g_message ("import done file=%s", file_name);
         else
-            g_warning("import failed file=%s\n", file_name);
+            g_warning ("import failed file=%s", file_name);
 #else
-        g_warning("Can not do import without dbus. import failed file=%s\n", file_name);
+        g_warning("Can not do import without dbus. import failed file=%s",
+                  file_name);
 #endif
     }
     else if (!running && initialized) {/* do it self directly */
         if (xfical_import_file(file_name))
             g_message ("import done file=%s", file_name);
         else
-            g_warning("import failed file=%s\n", file_name);
+            g_warning ("import failed file=%s", file_name);
     }
 }
 
@@ -367,16 +368,16 @@ static void export_file(gboolean running, char *file_name, gboolean initialized
         if (orage_dbus_export_file(file_name, type, uid_list))
             g_message ("export done to file=%s", file_name);
         else
-            g_warning("export failed file=%s\n", file_name);
+            g_warning ("export failed file=%s", file_name);
 #else
-        g_warning("Can not do export without dbus. failed file=%s\n", file_name);
+        g_warning("Can not do export without dbus. failed file=%s", file_name);
 #endif
     }
     else if (!running && initialized) { /* do it self directly */
         if (xfical_export_file(file_name, type, uid_list))
             g_message ("export done to file=%s", file_name);
         else
-            g_warning("export failed file=%s\n", file_name);
+            g_warning ("export failed file=%s", file_name);
     }
 }
 
@@ -390,16 +391,17 @@ static void add_foreign(gboolean running, char *file_name, gboolean initialized
         if (orage_dbus_foreign_add(file_name, read_only, name))
             g_message ("Add done online foreign file=%s", file_name);
         else
-            g_warning ("Add failed online foreign file=%s\n", file_name);
+            g_warning ("Add failed online foreign file=%s", file_name);
 #else
-        g_warning ("Can not do add foreign file to running Orage without dbus. Add failed foreign file=%s\n", file_name);
+        g_warning ("Can not do add foreign file to running Orage without dbus. "
+                   "Add failed foreign file=%s", file_name);
 #endif
     }
     else if (!running && initialized) { /* do it self directly */
         if (orage_foreign_file_add(file_name, read_only, name))
             g_message ("Add done foreign file=%s", file_name);
         else
-            g_warning ("Add failed foreign file=%s\n", file_name);
+            g_warning ("Add failed foreign file=%s", file_name);
     }
 }
 
@@ -411,16 +413,17 @@ static void remove_foreign(gboolean running, char *file_name, gboolean initializ
         if (orage_dbus_foreign_remove(file_name))
             g_message ("Remove done foreign file=%s", file_name);
         else
-            g_warning ("Remove failed foreign file=%s\n", file_name);
+            g_warning ("Remove failed foreign file=%s", file_name);
 #else
-        g_warning ("Can not do remove foreign file without dbus. Remove failed foreign file=%s\n", file_name);
+        g_warning ("Can not do remove foreign file without dbus. "
+                   "Remove failed foreign file=%s", file_name);
 #endif
     }
     else if (!running && initialized) { /* do it self directly */
         if (orage_foreign_file_remove(file_name))
             g_message ("Remove done foreign file=%s", file_name);
         else
-            g_warning ("Remove failed foreign file=%s\n", file_name);
+            g_warning ("Remove failed foreign file=%s", file_name);
     }
 }
 
