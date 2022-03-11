@@ -125,7 +125,7 @@ static GtkTreeStore *tz_button_create_store(gboolean details
                 area_old[j] = 0;
             }
             else {
-                g_info ("%s: too long line in zones.tab %s",
+                g_debug ("%s: too long line in zones.tab %s",
                         G_STRFUNC, tz_a.city[i]);
             }
         }
