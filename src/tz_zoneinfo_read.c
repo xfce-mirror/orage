@@ -188,107 +188,59 @@ static int process_header(void)
 }
 
 static void process_local_time_table(void)
-{ /* points when time changes */
-    time_t tmp;
-    unsigned int i;
+{
+    /* points when time changes */
 
     begin_timechanges = in_head;
 
-    g_debug ("FIXME: function which relies to side effects");
-    for (i = 0; i < timecnt; i++) {
-        /* get_long has side effect to increment in_head. */
-        tmp = get_long();
-        g_debug ("GMT %u: %d =  %s", i, (int)tmp,
-                 asctime(gmtime((const time_t*)&tmp)));
-        g_debug ("LOC %u: %d =  %s", i, (int)tmp,
-                 asctime(localtime((const time_t*)&tmp)));
-    }
+    /* Skip over table entries. */
+    in_head += (4 * timecnt);
 }
 
 static void process_local_time_type_table(void)
-{ /* pointers to table, which explain how time changes */
-    unsigned char tmp;
-    unsigned int i;
+{
+    /* pointers to table, which explain how time changes */
 
     begin_timechangetypeindexes = in_head;
 
-    for (i = 0; i < timecnt; i++) { /* we need to walk over the table */
-        tmp = in_head[0];
-        in_head++;
-        g_debug ("type %u: %d", i, (unsigned int)tmp);
-    }
+    /* Skip over table entries. */
+    in_head += timecnt;
 }
 
 static void process_ttinfo_table(void)
-{ /* table of different time changes = types */
-    long tmp;
-    unsigned char tmp2, tmp3;
-    unsigned int i;
+{
+    /* table of different time changes = types */
 
     begin_timechangetypes = in_head;
 
-    for (i = 0; i < typecnt; i++) { /* we need to walk over the table */
-        tmp = get_long();
-        tmp2 = in_head[0];
-        in_head++;
-        tmp3 = in_head[0];
-        in_head++;
-        g_debug ("%u: gmtoffset:%ld isdst:%d abbr:%d", i, tmp,
-                 (unsigned int)tmp2, (unsigned int)tmp3);
-    }
+    /* Skip over table entries. */
+    in_head += (6 * typecnt);
 }
 
 static void process_abbr_table(void)
 {
-    unsigned char *tmp;
-    unsigned int i;
-
     begin_timezonenames = in_head;
 
-    tmp = in_head;
-    for (i = 0; i < charcnt; i++) { /* we need to walk over the table */
-        g_debug ("Abbr:%u (%d)(%s)", i, (int)strlen((char *)(tmp + i)),tmp + i);
-        i += strlen((char *)(tmp + i));
-    }
+    /* Skip over table entries. */
     in_head += charcnt;
 }
 
 static void process_leap_table(void)
 {
-    unsigned long tmp, tmp2;
-    unsigned int i;
-
-    for (i = 0; i < leapcnt; i++) { /* we need to walk over the table */
-        /* get_long has side effect to increment in_head. */
-        tmp = get_long();
-        tmp2 = get_long();
-        g_debug ("leaps %u: %lu =  %s (%lu)", i, tmp,
-                 asctime(localtime((const time_t *)&tmp)), tmp2);
-    }
+    /* Skip over table entries. */
+    in_head += (8 * leapcnt);
 }
 
 static void process_std_table(void)
 {
-    unsigned char tmp;
-    unsigned int i;
-
-    for (i = 0; i < stdcnt; i++) { /* we need to walk over the table */
-        tmp = (unsigned long)in_head[0];
-        in_head++;
-        g_debug ("stds %u: %u", i, (unsigned int)tmp);
-    }
+    /* Skip over table entries. */
+    in_head += stdcnt;
 }
 
 static void process_gmt_table(void)
 {
-    unsigned char tmp;
-    unsigned int i;
-
-    for (i = 0; i < gmtcnt; i++) { /* we need to walk over the table */
-        tmp = (unsigned long)in_head[0];
-        in_head++;
-        g_debug ("gmts %u: %u", i, (unsigned int)tmp);
-    }
+    /* Skip over table entries. */
+    in_head += gmtcnt;
 }
 
 /* go through the contents of the file and find the positions of 
