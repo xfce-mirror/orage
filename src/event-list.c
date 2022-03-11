@@ -65,7 +65,6 @@
 #include "day-view.h"
 
 #define BORDER_SIZE 10
-#define EVENT_LIST_TRACE 1
 
 enum {
     COL_TIME = 0
@@ -534,13 +533,7 @@ static void app_rows(el_win *el, char *a_day, char *par, xfical_type ical_type
              appt;
              appt = xfical_appt_get_next_on_day(a_day, FALSE, el->days
                     , ical_type, file_type)) {
-            /*
-            g_print("Title: %s a_day %s\n\tstart %s end %s\n \tcur start %s end %s\n "
-                  , appt->title, a_day
-                  , appt->starttime, appt->endtime
-                  , appt->starttimecur, appt->endtimecur
-                      );
-                      */
+
             /* fix bug 8508: Do not show event if it is normal (= has time)
                and it has ended at midnight (=early morning) */
             if (!(appt->endtimecur[8] == 'T' 
@@ -569,7 +562,7 @@ static void app_data(el_win *el, char *a_day, char *par)
             ical_type = XFICAL_TYPE_JOURNAL;
             break;
         default:
-            g_error("wrong page in app_data (%d)\n", el->page);
+            g_error ("wrong page in app_data (%d)", el->page);
     }
 
     /* first search base orage file */
@@ -690,13 +683,6 @@ static void journal_data(el_win *el)
 
 void refresh_el_win(el_win *el)
 {
-#undef P_N
-#define P_N "refresh_el_win: "
-
-#if EVENT_LIST_TRACE
-    g_debug (P_N);
-#endif
-
     orage_category_get_list();
     if (el->Window && el->ListStore && el->TreeView) {
         gtk_list_store_clear(el->ListStore);
@@ -715,7 +701,7 @@ void refresh_el_win(el_win *el)
                 search_data(el);
                 break;
             default:
-                g_warning("refresh_el_win: unknown tab");
+                g_warning ("%s: unknown tab", G_STRFUNC);
                 break;
         }
     }
@@ -800,7 +786,7 @@ static void duplicate_appointment(el_win *el)
     list_len = g_list_length(list);
     if (list_len > 0) {
         if (list_len > 1)
-            g_warning("Copy: too many rows selected\n");
+            g_warning ("Copy: too many rows selected");
         path = (GtkTreePath *)g_list_nth_data(list, 0);
         start_appt_win("COPY", el, model, &iter, path);
     }
@@ -847,7 +833,7 @@ static void close_window(el_win *el)
         if (apptw) /* appointment window is still alive */
             apptw->el = NULL; /* not interested anymore */
         else
-            g_warning ("close_window: not null appt window");
+            g_warning ("%s: not null appt window", G_STRFUNC);
     }
     g_list_free(el->apptw_list);
 
@@ -1109,7 +1095,7 @@ static void drag_data_get (GtkWidget *widget,
     g_list_free(list);
     if (result) {
         if (!gtk_selection_data_set_text(selection_data, result->str, -1))
-            g_warning("drag_data_get failed\n");
+            g_warning ("%s: failed", G_STRFUNC);
         g_string_free(result, TRUE);
     }
 }
@@ -1390,15 +1376,8 @@ static void build_notebook(el_win *el)
 
 static void build_event_list(el_win *el)
 {
-#undef P_N
-#define P_N "build_event_list: "
-
     GtkCellRenderer *rend;
     GtkTreeViewColumn *col;
-
-#if EVENT_LIST_TRACE
-    g_debug (P_N);
-#endif
 
     /* Scrolled window */
     el->ScrolledWindow = gtk_scrolled_window_new(NULL, NULL);
@@ -1479,15 +1458,8 @@ static void build_event_list(el_win *el)
 
 el_win *create_el_win(const gchar *start_date)
 {
-#undef P_N
-#define P_N "create_el_win: "
-
     GdkPixbuf *pixbuf;
     el_win *el;
-
-#if EVENT_LIST_TRACE
-    g_debug (P_N "%s", start_date);
-#endif
 
     /* initialisation + main window + base vbox */
     el = g_new(el_win, 1);
