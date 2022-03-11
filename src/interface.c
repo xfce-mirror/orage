@@ -83,8 +83,7 @@ gboolean orage_external_update_check (G_GNUC_UNUSED gpointer user_data)
     else {
         if (s.st_mtime > g_par.latest_file_change) {
             g_par.latest_file_change = s.st_mtime;
-            g_message (_("Found external update on file %s.")
-                    , g_par.orage_file);
+            g_message ("Found external update on file %s", g_par.orage_file);
             external_changes_present = TRUE;
         }
     }
@@ -98,15 +97,15 @@ gboolean orage_external_update_check (G_GNUC_UNUSED gpointer user_data)
         else {
             if (s.st_mtime > g_par.foreign_data[i].latest_file_change) {
                 g_par.foreign_data[i].latest_file_change = s.st_mtime;
-                g_message (_("Found external update on file %s.")
-                        , g_par.foreign_data[i].file);
+                g_message ("Found external update on file %s",
+                           g_par.foreign_data[i].file);
                 external_changes_present = TRUE;
             }
         }
     }
 
     if (external_changes_present) {
-        g_message (_("Refreshing alarms and calendar due to external file update."));
+        g_message ("Refreshing alarms and calendar due to external file update");
         xfical_file_close_force();
         xfical_alarm_build_list(FALSE);
         orage_mark_appointments();

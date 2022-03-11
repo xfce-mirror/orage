@@ -2773,14 +2773,17 @@ static void xfical_alarm_build_list_internal_real(gboolean first_list_today
     }  /* COMPONENT */
     if (first_list_today) {
         if (strcmp(file_type, "O00.") == 0)
-            g_message (_("Created alarm list for main Orage file:"));
+            g_message ("Created alarm list for main Orage file");
         else 
-            g_message (_("Created alarm list for foreign file: %s (%s)")
-                    , file_name, file_type);
-        g_message (_("\tAdded %d alarms. Processed %d events.")
-                , cnt_alarm_add, cnt_event);
-        g_message (_("\tFound %d alarms of which %d are active. (Searched %d recurring alarms.)")
-                , cnt_alarm, cnt_act_alarm, cnt_repeat);
+            g_message ("Created alarm list for foreign file: %s (%s)",
+                       file_name, file_type);
+
+        g_message ("Added %d alarms. Processed %d events.", cnt_alarm_add,
+                   cnt_event);
+
+        g_message ("Found %d alarms of which %d are active. "
+                   "(Searched %d recurring alarms.)", cnt_alarm, cnt_act_alarm,
+                   cnt_repeat);
     }
 }
 

@@ -234,7 +234,7 @@ static void xfical_icalcomponent_archive_recurrent(icalcomponent *e
     icalrecur_iterator_free(ri);
 
     if (icaltime_is_null_time(nsdate)) { /* remove since it has ended */
-        g_message (_("\tRecur ended, moving to archive file."));
+        g_message ("Recur ended, moving to archive file");
         if (has_orig_dtstart) 
             replace_repeating(e, p_origdtstart, ICAL_DTSTART_PROPERTY);
         if (has_orig_dtend) 
@@ -292,7 +292,7 @@ gboolean xfical_archive(void)
     char *uid;
 
     if (g_par.archive_limit == 0) {
-        g_message (_("Archiving not enabled. Exiting"));
+        g_message ("Archiving not enabled. Exiting");
         return(TRUE);
     }
     if (!xfical_file_open(FALSE) || !xfical_archive_open()) {
@@ -311,10 +311,9 @@ gboolean xfical_archive(void)
         threshold->tm_year--;
     }
 
-    g_message (_("Archiving threshold: %d month(s)")
-            , g_par.archive_limit);
+    g_message ("Archiving threshold: %d month(s)", g_par.archive_limit);
     /* yy mon day */
-    g_message (_("\tArchiving events, which are older than: %04d-%02d-%02d")
+    g_message ("Archiving events, which are older than: %04d-%02d-%02d"
             , threshold->tm_year, threshold->tm_mon, threshold->tm_mday);
 
     /* Check appointment file for items older than the threshold */
@@ -341,19 +340,20 @@ gboolean xfical_archive(void)
          */
         if ((per.etime.year*12 + per.etime.month) 
             < (threshold->tm_year*12 + threshold->tm_mon)) {
-            g_message (_("Archiving uid: %s"), uid);
+            g_message ("Archiving uid: %s", uid);
             /* FIXME: check VTODO completed before archiving it */
             if (per.ikind == ICAL_VTODO_COMPONENT 
                 && ((per.ctime.year*12 + per.ctime.month) 
                     < (per.stime.year*12 + per.stime.month))) {
                 /* VTODO not completed, do not archive */
-                g_message (_("\tVTODO not complete; not archived"));
+                g_message ("VTODO not complete; not archived");
             }
             else {
                 p = icalcomponent_get_first_property(c, ICAL_RRULE_PROPERTY);
                 if (p) {  /*  it is recurrent event */
-                    g_message (_("\tRecurring. End year: %04d, month: %02d, day: %02d")
-                        , per.etime.year, per.etime.month, per.etime.day);
+                    g_message ("Recurring. End year: %04d, "
+                               "month: %02d, day: %02d", per.etime.year,
+                               per.etime.month, per.etime.day);
                     xfical_icalcomponent_archive_recurrent(c, threshold, uid);
                 }
                 else 
@@ -369,7 +369,7 @@ gboolean xfical_archive(void)
     icalset_mark(ic_fical);
     icalset_commit(ic_fical);
     xfical_file_close(FALSE);
-    g_message (_("Archiving done\n"));
+    g_message ("Archiving done");
     return(TRUE);
 }
 
@@ -380,8 +380,8 @@ gboolean xfical_unarchive(void)
     const char *text;
 
     /* PHASE 1: go through base orage file and remove "repeat" shortcuts */
-    g_message (_("Starting archive removal."));
-    g_message (_("\tPHASE 1: reset recurring appointments"));
+    g_message ("Starting archive removal.");
+    g_message ("PHASE 1: reset recurring appointments");
     if (!xfical_file_open(FALSE)) {
         g_critical ("%s: file open error", G_STRFUNC);
         return(FALSE);
@@ -403,7 +403,7 @@ gboolean xfical_unarchive(void)
     }
     /* PHASE 2: go through archive file and add everything back to base orage.
      * After that delete the whole arch file */
-    g_message (_("\tPHASE 2: return archived appointments"));
+    g_message ("PHASE 2: return archived appointments");
     if (!xfical_archive_open()) {
         /* we have risk to delete the data permanently, let's stop here */
         g_error ("%s: archive file open error", G_STRFUNC);
@@ -430,7 +430,7 @@ gboolean xfical_unarchive(void)
     icalset_mark(ic_fical);
     icalset_commit(ic_fical);
     xfical_file_close(FALSE);
-    g_message (_("Archive removal done\n"));
+    g_message ("Archive removal done");
     return(TRUE);
 }
 

@@ -105,7 +105,7 @@ static gboolean pre_format(const gchar *file_name_in,
     gsize text_len;
     GError *error = NULL;
 
-    g_message (_("Starting import file preprocessing"));
+    g_message ("Starting import file preprocessing");
     if (!g_file_get_contents(file_name_in, &text, &text_len, &error)) {
         g_critical ("%s: Could not open ical file (%s) error:%s", G_STRFUNC
                 , file_name_in, error->message);
@@ -142,7 +142,7 @@ static gboolean pre_format(const gchar *file_name_in,
             }
             *(tmp3-1) = 'Z'; /* this is 'bad'...but who cares...it is fast */
         }
-        g_message (_("... Patched DCREATED to be CREATED."));
+        g_message ("Patched DCREATED to be CREATED");
     }
 
     /***** 2: change absolute timezones into libical format *****/
@@ -184,7 +184,7 @@ static gboolean pre_format(const gchar *file_name_in,
         /* fill the end of the line with spaces */
         for (; tmp < tmp2; tmp++)
             *tmp = ' ';
-        g_message (_("... Patched timezone to Orage format."));
+        g_message ("Patched timezone to Orage format");
     }
 
     /***** All done: write file *****/
@@ -194,7 +194,7 @@ static gboolean pre_format(const gchar *file_name_in,
         return(FALSE);
     }
     g_free(text);
-    g_message (_("Import file preprocessing done"));
+    g_message ("Import file preprocessing done");
     return(TRUE);
 }
 

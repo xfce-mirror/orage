@@ -1284,7 +1284,7 @@ static void init_default_timezone(void)
 
     g_free(g_par.local_timezone);
     g_par.local_timezone = NULL;
-    g_message(_("First Orage start. Searching default timezone."));
+    g_message ("First Orage start. Searching default timezone");
     /* debian, ubuntu stores the timezone name into /etc/timezone */
     if (g_file_get_contents("/etc/timezone", &g_par.local_timezone
                 , &len, NULL)) {
@@ -1303,10 +1303,10 @@ static void init_default_timezone(void)
         g_free(tz_local);
     }
     if (ORAGE_STR_EXISTS(g_par.local_timezone))
-        g_message(_("Default timezone set to %s."), g_par.local_timezone);
+        g_message ("Default timezone set to %s", g_par.local_timezone);
     else {
         g_par.local_timezone = g_strdup("UTC");
-        g_message(_("Default timezone not found, please, set it manually."));
+        g_message ("Default timezone not found, please, set it manually");
     }
 }
 

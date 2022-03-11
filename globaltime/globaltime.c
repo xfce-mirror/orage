@@ -105,9 +105,9 @@ static gboolean global_time_active_already(GdkAtom *atom)
         xevent.xclient.message_type = XInternAtom (display, event, FALSE);
 
         if (XSendEvent (display, xwindow, FALSE, NoEventMask, &xevent))
-            g_debug (_("Raising GlobalTime window..."));
+            g_debug ("Raising GlobalTime window");
         else
-            g_warning(_("GlobalTime window raise failed"));
+            g_warning ("GlobalTime window raise failed");
 
         (void)XFlush (display);
         return(TRUE); 
