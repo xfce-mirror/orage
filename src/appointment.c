@@ -911,10 +911,6 @@ static void fill_appt_from_apptw_alarm(xfical_appt *appt, appt_win *apptw)
         appt->procedure_cmd = g_strndup(tmp+i, j-i);
     if (l-k)
         appt->procedure_params = g_strndup(tmp+k, l-k);
-    /*
-    g_print("parameter reading: tmp=(%s) cmd=(%s) params=(%s) i=%d j=%d k=%d l=%d\n",
-            tmp, appt->procedure_cmd, appt->procedure_params, i, j, k, l);
-    */
 }
 
 /*
@@ -958,7 +954,7 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
                 GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
         appt->type = XFICAL_TYPE_JOURNAL;
     else
-        g_warning("fill_appt_from_apptw: coding error, illegal type");
+        g_warning ("%s: coding error, illegal type", G_STRFUNC);
 
     /* title */
     g_free(appt->title);
@@ -1110,7 +1106,7 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
                    current_t.tm_mon + 1, current_t.tm_mday, 23, 59, 10);
     }
     else
-        g_warning("fill_appt_from_apptw: coding error, illegal recurrence");
+        g_warning ("%s: coding error, illegal recurrence", G_STRFUNC);
 
     /* recurrence weekdays */
     for (i=0; i <= 6; i++) {
@@ -1124,17 +1120,6 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
     /* recurrence todo base */
     appt->recur_todo_base_start = gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(apptw->Recur_todo_base_start_rb));
-
-    /* recurrence exceptions */
-    /* is kept upto date all the time */
-    /*
-    g_print("fill_appt_from_apptw: checking data start\n");
-    for (tmp_gl = g_list_first(appt->recur_exceptions);
-         tmp_gl != NULL;
-         tmp_gl = g_list_next(tmp_gl)) {
-        g_print("fill_appt_from_apptw: checking data (%s)\n", ((xfical_exception *)tmp_gl->data)->time);
-    }
-    */
 
     return(TRUE);
 }
@@ -1184,8 +1169,6 @@ static void remove_file_select_cb(appt_win *apptw)
 
 static gboolean save_xfical_from_appt_win(appt_win *apptw)
 {
-#undef P_N
-#define P_N "save_xfical_from_appt_win: "
     gint i;
     gboolean ok = FALSE, found = FALSE;
     xfical_appt *appt = (xfical_appt *)apptw->xf_appt;
@@ -1195,7 +1178,8 @@ static gboolean save_xfical_from_appt_win(appt_win *apptw)
         ok = TRUE;
         /* Here we try to save the event... */
         if (!xfical_file_open(TRUE)) {
-            g_warning (P_N "file open and update failed: %s", apptw->xf_uid);
+            g_warning ("%s: file open and update failed: %s",
+                       G_STRFUNC, apptw->xf_uid);
             return(FALSE);
         }
         if (apptw->appointment_add) {
@@ -1217,7 +1201,8 @@ static gboolean save_xfical_from_appt_win(appt_win *apptw)
                         xf_file_id = g_strdup_printf("F%02d.", i-1);
                     }
                     else { /* error! */
-                        g_warning (P_N "Matching foreign file not found: %s", tmp);
+                        g_warning ("%s: Matching foreign file not found: %s",
+                                   G_STRFUNC, tmp);
                         ok = FALSE;
                     }
                 }
@@ -1238,7 +1223,7 @@ static gboolean save_xfical_from_appt_win(appt_win *apptw)
                 remove_file_select_cb(apptw);
             }
             else {
-                g_warning (P_N "Addition failed: %s", apptw->xf_uid);
+                g_warning ("%s: Addition failed: %s", G_STRFUNC, apptw->xf_uid);
                 (void)orage_error_dialog(GTK_WINDOW(apptw->Window)
                         , _("Appointment addition failed.")
                         , _("Error happened when adding appointment. Look more details from the log file."));
@@ -1249,7 +1234,8 @@ static gboolean save_xfical_from_appt_win(appt_win *apptw)
             if (ok)
                 g_message ("Modified: %s", apptw->xf_uid);
             else {
-                g_warning (P_N "Modification failed: %s", apptw->xf_uid);
+                g_warning ("%s: Modification failed: %s",
+                           G_STRFUNC, apptw->xf_uid);
                 (void)orage_error_dialog(GTK_WINDOW(apptw->Window)
                         , _("Appointment update failed.")
                         , _("Look more details from the log file. (Perhaps file was updated external from Orage?)"));
@@ -1298,8 +1284,6 @@ static void on_appSaveClose_clicked_cb (G_GNUC_UNUSED GtkButton *b,
 
 static void delete_xfical_from_appt_win(appt_win *apptw)
 {
-#undef P_N
-#define P_N "delete_xfical_from_appt_win: "
     gint result;
     gboolean ok = FALSE;
 
@@ -1312,14 +1296,15 @@ static void delete_xfical_from_appt_win(appt_win *apptw)
     if (result == GTK_RESPONSE_YES) {
         if (!apptw->appointment_add) {
             if (!xfical_file_open(TRUE)) {
-                g_warning (P_N "file open and removal failed: %s", apptw->xf_uid);
+                g_warning ("%s: file open and removal failed: %s",
+                           G_STRFUNC, apptw->xf_uid);
                 return;
             }
             ok = xfical_appt_del(apptw->xf_uid);
             if (ok)
                 g_message ("Removed: %s", apptw->xf_uid);
             else
-                g_warning (P_N "Removal failed: %s", apptw->xf_uid);
+                g_warning ("%s: Removal failed: %s", G_STRFUNC, apptw->xf_uid);
             xfical_file_close(TRUE);
         }
 
@@ -1550,7 +1535,8 @@ static void recur_row_clicked(GtkWidget *widget
             g_free(recur_exception_cur);
         }
         else { 
-            g_warning("recur_row_clicked: non existent row (%s)\n", recur_exception->time);
+            g_warning ("%s: non existent row (%s)", G_STRFUNC,
+                       recur_exception->time);
         }
         g_free(recur_exception);
 
@@ -1703,10 +1689,10 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
             gtk_button_set_label(GTK_BUTTON(apptw->StartTimezone_button)
                     , _(appt->start_tz_loc));
         else /* we should never get here */
-            g_warning("fill_appt_window_times: start_tz_loc is null");
+            g_warning ("%s: start_tz_loc is null", G_STRFUNC);
     }
     else
-        g_warning("fill_appt_window_times: starttime wrong %s", appt->uid);
+        g_warning ("%s: starttime wrong %s", G_STRFUNC, appt->uid);
 
     /* end time */
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(
@@ -1727,10 +1713,10 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
                     , _(appt->end_tz_loc));
         }
         else /* we should never get here */
-            g_warning("fill_appt_window_times: end_tz_loc is null");
+            g_warning ("%s: end_tz_loc is null", G_STRFUNC);
     }
     else
-        g_warning("fill_appt_window_times: endtime wrong %s", appt->uid);
+        g_warning ("%s: endtime wrong %s", G_STRFUNC, appt->uid);
 
     /* duration */
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(apptw->Dur_checkbutton)
@@ -1762,10 +1748,10 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
                     , _(appt->completed_tz_loc));
         }
         else /* we should never get here */
-            g_warning("fill_appt_window_times: completed_tz_loc is null");
+            g_warning ("%s: completed_tz_loc is null", G_STRFUNC);
     }
     else
-        g_warning("fill_appt_window_times: completedtime wrong %s", appt->uid);
+        g_warning ("%s: completedtime wrong %s", G_STRFUNC, appt->uid);
 }
 
 static xfical_appt *fill_appt_window_get_appt(appt_win *apptw
@@ -1838,7 +1824,7 @@ static xfical_appt *fill_appt_window_get_appt(appt_win *apptw
         xfical_file_close(TRUE);
     }
     else {
-        g_error("unknown parameter\n");
+        g_error("unknown parameter");
     }
 
     return(appt);
@@ -1858,14 +1844,12 @@ GList *orage_category_list = NULL;
 
 static OrageRc *orage_category_file_open (const gboolean read_only)
 {
-#undef P_N
-#define P_N "orage_category_file_open: "
     gchar *fpath;
     OrageRc *orc;
 
     fpath = orage_data_file_location(ORAGE_CATEGORIES_DIR_FILE);
     if ((orc = orage_rc_file_open(fpath, read_only)) == NULL) {
-        g_warning (P_N "category file open failed.");
+        g_warning ("%s: category file open failed.", G_STRFUNC);
     }
     g_free(fpath);
 
@@ -2007,7 +1991,7 @@ static void orage_category_write_entry (const gchar *category,
     gchar *color_str;
 
     if (!ORAGE_STR_EXISTS(category)) {
-        g_message ("orage_category_write_entry: empty category. Not written");
+        g_message ("%s: empty category. Not written", G_STRFUNC);
         return;
     }
     color_str = gdk_rgba_to_string (color);
@@ -2023,7 +2007,7 @@ static void orage_category_remove_entry(gchar *category)
     OrageRc *orc;
 
     if (!ORAGE_STR_EXISTS(category)) {
-        g_message ("orage_category_remove_entry: empty category. Not removed");
+        g_message ("%s: empty category. Not removed", G_STRFUNC);
         return;
     }
     orc = orage_category_file_open(FALSE);
@@ -2250,7 +2234,7 @@ static void fill_appt_window_general(appt_win *apptw, xfical_appt *appt
         gtk_toggle_button_set_active(
                 GTK_TOGGLE_BUTTON(apptw->Type_journal_rb), TRUE);
     else
-        g_warning("fill_appt_window_general: Illegal value for type\n");
+        g_warning ("%s: Illegal value for type", G_STRFUNC);
 
     /* appointment name */
     gtk_entry_set_text(GTK_ENTRY(apptw->Title_entry)
@@ -2417,8 +2401,8 @@ static void fill_appt_window_recurrence(appt_win *apptw, xfical_appt *appt)
                     , (const gchar *)untildate_to_display);
             break;
         default: /* error */
-            g_warning("fill_appt_window: Unsupported recur_limit %d",
-                    appt->recur_limit);
+            g_warning ("%s: Unsupported recur_limit %d", G_STRFUNC,
+                       appt->recur_limit);
     }
 
     /* weekdays */
@@ -2503,7 +2487,7 @@ static gboolean fill_appt_window(appt_win *apptw, const gchar *action,
         appt->readonly = FALSE; 
     }
     else {
-        g_error("fill_appt_window: unknown parameter\n");
+        g_error ("%s: unknown parameter", G_STRFUNC);
         g_free(appt);
         apptw->xf_appt = NULL;
         return(FALSE);
@@ -2607,18 +2591,16 @@ static void build_menu(appt_win *apptw)
 
 static OrageRc *orage_alarm_file_open(gboolean read_only)
 {
-#undef P_N
-#define P_N "orage_alarm_file_open: "
     gchar *fpath;
     OrageRc *orc;
 
     fpath = orage_config_file_location(ORAGE_DEFAULT_ALARM_DIR_FILE);
     if (!read_only)  /* we need to empty it before each write */
         if (g_remove(fpath)) {
-            g_warning (P_N "g_remove failed.");
+            g_warning ("%s: g_remove failed.", G_STRFUNC);
         }
     if ((orc = orage_rc_file_open(fpath, read_only)) == NULL) {
-        g_warning (P_N "default alarm file open failed.");
+        g_warning ("%s: default alarm file open failed.", G_STRFUNC);
     }
     g_free(fpath);
 
