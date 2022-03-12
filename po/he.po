@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-12 00:49+0100\n"
+"POT-Creation-Date: 2022-03-12 00:50+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>, 2022\n"
 "Language-Team: Hebrew (https://www.transifex.com/xfce/teams/16840/he/)\n"
@@ -39,14 +39,6 @@ msgstr "כפול"
 #: ../globaltime/globaltime.c:59
 msgid "low"
 msgstr "נמוך"
-
-#: ../globaltime/globaltime.c:108 ../src/tray_icon.c:164
-msgid "Raising GlobalTime window..."
-msgstr "מגביה חלון זמן גלובלי..."
-
-#: ../globaltime/globaltime.c:110 ../src/tray_icon.c:166
-msgid "GlobalTime window raise failed"
-msgstr "הגבהת חלון זמן גלובלי נכשלה"
 
 #. ********** timezone tooltip **********
 #: ../globaltime/globaltime.c:338
@@ -157,10 +149,10 @@ msgid "Timezone of the clock:"
 msgstr "איזור זמן של השעון:"
 
 #: ../globaltime/gt_prefs.c:683 ../globaltime/gt_prefs.c:1189
-#: ../panel-plugin/oc_config.c:374 ../src/appointment.c:3175
+#: ../panel-plugin/oc_config.c:374 ../src/appointment.c:3157
 #: ../src/interface.c:1047 ../src/interface.c:1093 ../src/interface.c:1269
 #: ../src/interface.c:1361 ../src/interface.c:1444 ../src/parameters.c:397
-#: ../src/parameters.c:620 ../src/reminder.c:793
+#: ../src/parameters.c:620 ../src/reminder.c:666
 msgid "_Open"
 msgstr "_פתח"
 
@@ -291,7 +283,7 @@ msgstr "רגיל"
 msgid "Use normal decorations"
 msgstr "השתמש בעיצובים רגילים"
 
-#: ../globaltime/gt_prefs.c:1149 ../src/appointment.c:3424
+#: ../globaltime/gt_prefs.c:1149 ../src/appointment.c:3406
 msgid "None"
 msgstr "כלום"
 
@@ -323,70 +315,70 @@ msgstr "גדלי שעון משתנים"
 msgid "Local timezone:"
 msgstr "איזור זמן מקומי:"
 
-#: ../globaltime/timezone_selection.c:98
-#: ../panel-plugin/timezone_selection.c:97 ../src/timezone_selection.c:99
+#: ../globaltime/timezone_selection.c:93
+#: ../panel-plugin/timezone_selection.c:92 ../src/timezone_selection.c:95
 msgid " Other"
 msgstr "אחר"
 
-#: ../globaltime/timezone_selection.c:153
-#: ../panel-plugin/timezone_selection.c:152 ../src/timezone_selection.c:165
+#: ../globaltime/timezone_selection.c:146
+#: ../panel-plugin/timezone_selection.c:144 ../src/timezone_selection.c:165
 #, c-format
 msgid "%d hour %d mins"
 msgstr "%d שעה %d דקות"
 
-#: ../globaltime/timezone_selection.c:156
-#: ../panel-plugin/timezone_selection.c:155 ../src/timezone_selection.c:168
+#: ../globaltime/timezone_selection.c:149
+#: ../panel-plugin/timezone_selection.c:147 ../src/timezone_selection.c:168
 #, c-format
 msgid "%d hour"
 msgstr "%d שעה"
 
-#: ../globaltime/timezone_selection.c:158
-#: ../panel-plugin/timezone_selection.c:157 ../src/timezone_selection.c:170
+#: ../globaltime/timezone_selection.c:151
+#: ../panel-plugin/timezone_selection.c:149 ../src/timezone_selection.c:170
 #, c-format
 msgid "%d mins"
 msgstr "%d דקות"
 
-#: ../globaltime/timezone_selection.c:164
-#: ../panel-plugin/timezone_selection.c:163 ../src/timezone_selection.c:176
+#: ../globaltime/timezone_selection.c:157
+#: ../panel-plugin/timezone_selection.c:155 ../src/timezone_selection.c:176
 msgid "backward"
 msgstr "אחורה"
 
-#: ../globaltime/timezone_selection.c:167
-#: ../panel-plugin/timezone_selection.c:166 ../src/timezone_selection.c:179
+#: ../globaltime/timezone_selection.c:160
+#: ../panel-plugin/timezone_selection.c:158 ../src/timezone_selection.c:179
 msgid "forward"
 msgstr "קדימה"
 
-#: ../globaltime/timezone_selection.c:191
-#: ../panel-plugin/timezone_selection.c:190 ../src/timezone_selection.c:203
+#: ../globaltime/timezone_selection.c:184
+#: ../panel-plugin/timezone_selection.c:182 ../src/timezone_selection.c:203
 msgid "not changed"
 msgstr "לא שונה"
 
-#: ../globaltime/timezone_selection.c:192
-#: ../panel-plugin/timezone_selection.c:191 ../src/timezone_selection.c:204
+#: ../globaltime/timezone_selection.c:185
+#: ../panel-plugin/timezone_selection.c:183 ../src/timezone_selection.c:204
 msgid "not changing"
 msgstr "לא משתנה"
 
 #. location
-#: ../globaltime/timezone_selection.c:244
-#: ../globaltime/timezone_selection.c:249
-#: ../panel-plugin/timezone_selection.c:243
-#: ../panel-plugin/timezone_selection.c:248 ../src/appointment.c:2847
-#: ../src/timezone_selection.c:256 ../src/timezone_selection.c:261
+#: ../globaltime/timezone_selection.c:235
+#: ../globaltime/timezone_selection.c:240
+#: ../panel-plugin/timezone_selection.c:233
+#: ../panel-plugin/timezone_selection.c:238 ../src/appointment.c:2829
+#: ../src/timezone_selection.c:254 ../src/timezone_selection.c:259
 msgid "Location"
 msgstr "מיקום"
 
-#: ../globaltime/timezone_selection.c:255
-#: ../panel-plugin/timezone_selection.c:254 ../src/timezone_selection.c:267
+#: ../globaltime/timezone_selection.c:246
+#: ../panel-plugin/timezone_selection.c:244 ../src/timezone_selection.c:265
 msgid "GMT Offset"
 msgstr "קיזוז GMT "
 
-#: ../globaltime/timezone_selection.c:261
-#: ../panel-plugin/timezone_selection.c:260 ../src/timezone_selection.c:273
+#: ../globaltime/timezone_selection.c:252
+#: ../panel-plugin/timezone_selection.c:250 ../src/timezone_selection.c:271
 msgid "Previous/Next Change"
 msgstr "שינוי קודם/הבא"
 
-#: ../globaltime/timezone_selection.c:266
-#: ../panel-plugin/timezone_selection.c:265 ../src/timezone_selection.c:278
+#: ../globaltime/timezone_selection.c:257
+#: ../panel-plugin/timezone_selection.c:255 ../src/timezone_selection.c:276
 msgid "Country"
 msgstr "מדינה"
 
@@ -395,51 +387,52 @@ msgstr "מדינה"
 #. done very seldom and we do not want to allow "floating" here.
 #. This test is ugly, but it is not worth an extra parameter.
 #. this is normal appointment
-#: ../globaltime/timezone_selection.c:300
-#: ../globaltime/timezone_selection.c:310
-#: ../panel-plugin/timezone_selection.c:296
-#: ../panel-plugin/timezone_selection.c:306 ../src/timezone_selection.c:317
-#: ../src/timezone_selection.c:326 ../src/timezone_selection.c:337
+#: ../globaltime/timezone_selection.c:284
+#: ../globaltime/timezone_selection.c:294
+#: ../panel-plugin/timezone_selection.c:283
+#: ../panel-plugin/timezone_selection.c:293 ../src/timezone_selection.c:308
+#: ../src/timezone_selection.c:317 ../src/timezone_selection.c:328
 msgid "Pick timezone"
 msgstr "בחר אזור-זמן"
 
-#: ../globaltime/timezone_selection.c:303
-#: ../globaltime/timezone_selection.c:313
-#: ../panel-plugin/timezone_selection.c:299
-#: ../panel-plugin/timezone_selection.c:309 ../src/timezone_selection.c:320
-#: ../src/timezone_selection.c:329 ../src/timezone_selection.c:340
+#: ../globaltime/timezone_selection.c:287
+#: ../globaltime/timezone_selection.c:297
+#: ../panel-plugin/timezone_selection.c:286
+#: ../panel-plugin/timezone_selection.c:296 ../src/timezone_selection.c:311
+#: ../src/timezone_selection.c:320 ../src/timezone_selection.c:331
 msgid "Change mode"
 msgstr "אופן שינוי"
 
-#: ../globaltime/timezone_selection.c:304
-#: ../globaltime/timezone_selection.c:314
-#: ../globaltime/timezone_selection.c:353
-#: ../panel-plugin/timezone_selection.c:300
-#: ../panel-plugin/timezone_selection.c:310
-#: ../panel-plugin/timezone_selection.c:350 ../src/timezone_selection.c:321
-#: ../src/timezone_selection.c:330 ../src/timezone_selection.c:341
-#: ../src/timezone_selection.c:380
+#: ../globaltime/timezone_selection.c:288
+#: ../globaltime/timezone_selection.c:298
+#: ../globaltime/timezone_selection.c:337
+#: ../panel-plugin/timezone_selection.c:287
+#: ../panel-plugin/timezone_selection.c:297
+#: ../panel-plugin/timezone_selection.c:337 ../src/timezone_selection.c:312
+#: ../src/timezone_selection.c:321 ../src/timezone_selection.c:332
+#: ../src/timezone_selection.c:371
 msgid "UTC"
 msgstr "UTC"
 
 #. NOTE: this exists only if ical timezones are being used
-#: ../globaltime/timezone_selection.c:305
-#: ../globaltime/timezone_selection.c:358
-#: ../panel-plugin/timezone_selection.c:301
-#: ../panel-plugin/timezone_selection.c:355 ../src/timezone_selection.c:331
-#: ../src/timezone_selection.c:385
+#: ../globaltime/timezone_selection.c:289
+#: ../globaltime/timezone_selection.c:342
+#: ../panel-plugin/timezone_selection.c:288
+#: ../panel-plugin/timezone_selection.c:342 ../src/timezone_selection.c:322
+#: ../src/timezone_selection.c:376
 msgid "floating"
 msgstr "צף"
 
-#: ../globaltime/globaltime.desktop.in.h:1
+#: ../globaltime/org.xfce.orage.globaltime.desktop.in.h:1
 msgid "Orage Globaltime"
 msgstr "זמן גלובלי Orage "
 
-#: ../globaltime/globaltime.desktop.in.h:2
+#: ../globaltime/org.xfce.orage.globaltime.desktop.in.h:2
 msgid "Show clocks from different countries"
 msgstr "הצג שעונים ממדינות שונות"
 
-#: ../globaltime/globaltime.desktop.in.h:3 ../src/tray_icon.c:477
+#: ../globaltime/org.xfce.orage.globaltime.desktop.in.h:3
+#: ../src/tray_icon.c:477
 msgid "Globaltime"
 msgstr "זמן גלובלי"
 
@@ -559,7 +552,7 @@ msgid "Orage clock Preferences"
 msgstr "העדפות שעון Orage "
 
 #: ../panel-plugin/oc_config.c:505 ../src/day-view.c:403
-#: ../src/event-list.c:1237 ../src/interface.c:876
+#: ../src/event-list.c:1223 ../src/interface.c:876
 msgid "Close"
 msgstr "סגור"
 
@@ -571,7 +564,7 @@ msgstr "סגור"
 #. * %B  : full month name
 #. * %Y  : four digit year
 #. * %V  : ISO week number
-#: ../panel-plugin/xfce4-orageclock-plugin.c:722
+#: ../panel-plugin/xfce4-orageclock-plugin.c:717
 msgid "%A %d %B %Y/%V"
 msgstr "%A %d %B %Y/%V"
 
@@ -586,7 +579,7 @@ msgstr "צוות תרגום Xfce לעברית"
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
 #. end time
-#: ../src/appointment.c:321 ../src/appointment.c:361 ../src/appointment.c:2876
+#: ../src/appointment.c:321 ../src/appointment.c:361 ../src/appointment.c:2858
 msgid "End"
 msgstr "סיום"
 
@@ -594,14 +587,14 @@ msgstr "סיום"
 msgid "Due"
 msgstr "מגיע"
 
-#: ../src/appointment.c:501 ../src/mainbox.c:871
+#: ../src/appointment.c:501 ../src/mainbox.c:695
 #: ../org.xfce.orage.appdata.xml.in.h:1
 msgid "Orage"
 msgstr "Orage"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
-#: ../src/appointment.c:688 ../src/interface.c:265 ../src/parameters.c:392
+#: ../src/appointment.c:688 ../src/interface.c:262 ../src/parameters.c:392
 msgid "Select a file..."
 msgstr "בחר קובץ..."
 
@@ -609,7 +602,7 @@ msgstr "בחר קובץ..."
 msgid "Sound Files"
 msgstr "קבצי קול"
 
-#: ../src/appointment.c:703 ../src/interface.c:278
+#: ../src/appointment.c:703 ../src/interface.c:275
 msgid "All Files"
 msgstr "כל הקבצים"
 
@@ -617,7 +610,7 @@ msgstr "כל הקבצים"
 msgid "The appointment information has been modified."
 msgstr "המידע אודות הפגישה שונה."
 
-#: ../src/appointment.c:755 ../src/appointment.c:1308 ../src/event-list.c:1007
+#: ../src/appointment.c:755 ../src/appointment.c:1292 ../src/event-list.c:993
 msgid "Do you want to continue?"
 msgstr "האם ברצונך להמשיך?"
 
@@ -633,158 +626,158 @@ msgstr "כן, התעלם משינויים ועזוב"
 msgid "The end of this appointment is earlier than the beginning."
 msgstr "סוף פגישה זו מוקדם מתחילתה."
 
-#: ../src/appointment.c:1054 ../src/appointment.c:1945
+#: ../src/appointment.c:1050 ../src/appointment.c:1929
 msgid "Not set"
 msgstr "לא נקבע"
 
-#: ../src/appointment.c:1156
+#: ../src/appointment.c:1141
 msgid "Add new appointment to this file."
 msgstr "הוסף פגישה חדשה לקובץ זה."
 
-#: ../src/appointment.c:1157 ../src/appointment.c:1206
+#: ../src/appointment.c:1142 ../src/appointment.c:1190
 msgid "Orage default file"
 msgstr "קובץ ברירת מחדל Orage "
 
-#: ../src/appointment.c:1243
+#: ../src/appointment.c:1228
 msgid "Appointment addition failed."
 msgstr "הוספת פגישה נכשלה."
 
-#: ../src/appointment.c:1244
+#: ../src/appointment.c:1229
 msgid ""
 "Error happened when adding appointment. Look more details from the log file."
 msgstr "שגיאה התרחשה בעת הוספת פגישה. ראה קובץ יומן לפרטים נוספים."
 
-#: ../src/appointment.c:1254
+#: ../src/appointment.c:1240
 msgid "Appointment update failed."
 msgstr "עדכון פגישה נכשל."
 
-#: ../src/appointment.c:1255
+#: ../src/appointment.c:1241
 msgid ""
 "Look more details from the log file. (Perhaps file was updated external from"
 " Orage?)"
 msgstr "ראה קובץ יומן לפרטים נוספים. (אולי קובץ עודכן מחוץ ל- Orage?)"
 
-#: ../src/appointment.c:1307
+#: ../src/appointment.c:1291
 msgid "This appointment will be permanently removed."
 msgstr "הפגישה תוסר לצמיתות."
 
-#: ../src/appointment.c:1309 ../src/event-list.c:1008
+#: ../src/appointment.c:1293 ../src/event-list.c:994
 msgid "No, cancel the removal"
 msgstr "לא, בטל את ההסרה"
 
-#: ../src/appointment.c:1310
+#: ../src/appointment.c:1294
 msgid "Yes, remove it"
 msgstr "כן, הסר זאת"
 
-#: ../src/appointment.c:1402 ../src/appointment.c:1417 ../src/day-view.c:460
-#: ../src/event-list.c:1067
+#: ../src/appointment.c:1387 ../src/appointment.c:1402 ../src/day-view.c:460
+#: ../src/event-list.c:1053
 msgid "Pick the date"
 msgstr "בחר תאריך"
 
-#: ../src/appointment.c:1404 ../src/appointment.c:1419 ../src/day-view.c:389
-#: ../src/day-view.c:462 ../src/event-list.c:1069 ../src/event-list.c:1223
+#: ../src/appointment.c:1389 ../src/appointment.c:1404 ../src/day-view.c:389
+#: ../src/day-view.c:462 ../src/event-list.c:1055 ../src/event-list.c:1209
 #: ../src/tray_icon.c:450
 msgid "Today"
 msgstr "היום"
 
-#: ../src/appointment.c:1835
+#: ../src/appointment.c:1821
 msgid "This appointment does not exist."
 msgstr "פגישה זו לא קיימת."
 
-#: ../src/appointment.c:1836
+#: ../src/appointment.c:1822
 msgid "It was probably removed, please refresh your screen."
 msgstr "זה ככל הנראה הוסר, אנא רענן את המסך שלך."
 
-#: ../src/appointment.c:2113 ../src/interface.c:672
+#: ../src/appointment.c:2097 ../src/interface.c:672
 msgid "_Remove"
 msgstr "_הסר"
 
-#: ../src/appointment.c:2139
+#: ../src/appointment.c:2123
 msgid "Current categories"
 msgstr "קטגוריות נוכחיות"
 
-#: ../src/appointment.c:2161
+#: ../src/appointment.c:2145
 msgid "Add new category with color"
 msgstr "הוסף קטגוריה חדשה עם צבע"
 
-#: ../src/appointment.c:2172
+#: ../src/appointment.c:2156
 msgid "Category:"
 msgstr "קטגוריה:"
 
-#: ../src/appointment.c:2188 ../src/interface.c:1451
+#: ../src/appointment.c:2172 ../src/interface.c:1451
 msgid "_Add"
 msgstr "הו_סף"
 
-#: ../src/appointment.c:2217
+#: ../src/appointment.c:2201
 msgid "Colors of categories - Orage"
 msgstr "צבעים של קטגוריות - Orage "
 
-#: ../src/appointment.c:2263
+#: ../src/appointment.c:2247
 msgid " *** COPY ***"
 msgstr "*** עותק ***"
 
-#: ../src/appointment.c:2531
+#: ../src/appointment.c:2515
 msgid "New appointment - Orage"
 msgstr "פגישה חדשה - Orage"
 
 #. File menu stuff
 #. ********* File menu *********
 #. File menu
-#: ../src/appointment.c:2559 ../src/day-view.c:283 ../src/event-list.c:1124
-#: ../src/interface.c:857 ../src/mainbox.c:304
+#: ../src/appointment.c:2543 ../src/day-view.c:283 ../src/event-list.c:1110
+#: ../src/interface.c:857 ../src/mainbox.c:208
 msgid "_File"
 msgstr "_קובץ"
 
-#: ../src/appointment.c:2565
+#: ../src/appointment.c:2549
 msgid "Sav_e and close"
 msgstr "_שמור וסגור"
 
-#: ../src/appointment.c:2578 ../src/event-list.c:1130
+#: ../src/appointment.c:2562 ../src/event-list.c:1116
 msgid "D_uplicate"
 msgstr "ש_כפל"
 
-#: ../src/appointment.c:2768
+#: ../src/appointment.c:2750
 msgid "Save"
 msgstr "שמור"
 
-#: ../src/appointment.c:2770
+#: ../src/appointment.c:2752
 msgid "Save and close"
 msgstr "שמור וסגור"
 
-#: ../src/appointment.c:2775
+#: ../src/appointment.c:2757
 msgid "Revert"
 msgstr "בטל"
 
-#: ../src/appointment.c:2777 ../src/event-list.c:1214
+#: ../src/appointment.c:2759 ../src/event-list.c:1200
 msgid "Duplicate"
 msgstr "שכפל"
 
-#: ../src/appointment.c:2782 ../src/event-list.c:1216
+#: ../src/appointment.c:2764 ../src/event-list.c:1202
 msgid "Delete"
 msgstr "מחק"
 
-#: ../src/appointment.c:2800
+#: ../src/appointment.c:2782
 msgid "Free"
 msgstr "פנוי"
 
-#: ../src/appointment.c:2800
+#: ../src/appointment.c:2782
 msgid "Busy"
 msgstr "עסוק"
 
-#: ../src/appointment.c:2804
+#: ../src/appointment.c:2786
 msgid "General"
 msgstr "כללי"
 
 #. type
-#: ../src/appointment.c:2810
+#: ../src/appointment.c:2792
 msgid "Type "
 msgstr "סוג"
 
-#: ../src/appointment.c:2812 ../src/event-list.c:1269
+#: ../src/appointment.c:2794 ../src/event-list.c:1255
 msgid "Event"
 msgstr "מאורע"
 
-#: ../src/appointment.c:2817
+#: ../src/appointment.c:2799
 msgid ""
 "Event that will happen sometime. For example:\n"
 "Meeting or birthday or TV show."
@@ -792,11 +785,11 @@ msgstr ""
 "מאורע שיתרחש מתישהו. לדוגמה:\n"
 "פגישה או יום הולדת או תוכנית טלויזיה. "
 
-#: ../src/appointment.c:2820 ../src/event-list.c:1328
+#: ../src/appointment.c:2802 ../src/event-list.c:1314
 msgid "Todo"
 msgstr "לעשות"
 
-#: ../src/appointment.c:2825
+#: ../src/appointment.c:2807
 msgid ""
 "Something that you should do sometime. For example:\n"
 "Wash your car or test new version of Orage."
@@ -804,11 +797,11 @@ msgstr ""
 "משהו שאתה צריך לעשות מתישהו. לדוגמה:\n"
 "לשטוף את המכונית או לבחון גרסה חדשה של Orage."
 
-#: ../src/appointment.c:2828 ../src/event-list.c:1341
+#: ../src/appointment.c:2810 ../src/event-list.c:1327
 msgid "Journal"
 msgstr "יומן"
 
-#: ../src/appointment.c:2833
+#: ../src/appointment.c:2815
 msgid ""
 "Make a note that something happened. For example:\n"
 "Remark that your mother called or first snow came."
@@ -817,78 +810,78 @@ msgstr ""
 "ציין שאימך התקשרה או שירד שלג ראשון."
 
 #. title
-#: ../src/appointment.c:2840
+#: ../src/appointment.c:2822
 msgid "Title "
 msgstr "כותרת"
 
-#: ../src/appointment.c:2855
+#: ../src/appointment.c:2837
 msgid "All day event"
 msgstr "אירוע במשך יום שלם"
 
 #. start time
-#: ../src/appointment.c:2861 ../src/appointment.c:3580 ../src/day-view.c:806
+#: ../src/appointment.c:2843 ../src/appointment.c:3562 ../src/day-view.c:806
 msgid "Start"
 msgstr "התחלה"
 
-#: ../src/appointment.c:2881
+#: ../src/appointment.c:2863
 msgid "Set      "
 msgstr "קבע"
 
-#: ../src/appointment.c:2904
+#: ../src/appointment.c:2886
 msgid "Duration"
 msgstr "משך"
 
-#: ../src/appointment.c:2908 ../src/appointment.c:3115 ../src/reminder.c:764
+#: ../src/appointment.c:2890 ../src/appointment.c:3097 ../src/reminder.c:637
 msgid "days"
 msgstr "ימים"
 
-#: ../src/appointment.c:2910 ../src/appointment.c:3117 ../src/reminder.c:766
+#: ../src/appointment.c:2892 ../src/appointment.c:3099 ../src/reminder.c:639
 msgid "hours"
 msgstr "שעות"
 
-#: ../src/appointment.c:2912 ../src/appointment.c:3119 ../src/reminder.c:768
+#: ../src/appointment.c:2894 ../src/appointment.c:3101 ../src/reminder.c:641
 msgid "mins"
 msgstr "דקות"
 
 #. Availability (only for EVENT)
-#: ../src/appointment.c:2924
+#: ../src/appointment.c:2906
 msgid "Availability"
 msgstr "זמינות"
 
 #. completed (only for TODO)
-#: ../src/appointment.c:2932 ../src/appointment.c:3589
+#: ../src/appointment.c:2914 ../src/appointment.c:3571
 msgid "Completed"
 msgstr "הושלם"
 
-#: ../src/appointment.c:2935
+#: ../src/appointment.c:2917
 msgid "Done"
 msgstr "גמור"
 
 #. categories
-#: ../src/appointment.c:2960
+#: ../src/appointment.c:2942
 msgid "Categories"
 msgstr "קטגוריות"
 
-#: ../src/appointment.c:2978
+#: ../src/appointment.c:2960
 msgid ""
 "This is special category, which can be used to color this appointment in "
 "list views."
 msgstr "זוהי קטגוריה מיוחדת, היכולה לשמש לצבוע את הפגישה הזו ברשימות."
 
-#: ../src/appointment.c:2979
+#: ../src/appointment.c:2961
 msgid "_Colour"
 msgstr "_צבע"
 
-#: ../src/appointment.c:2984
+#: ../src/appointment.c:2966
 msgid "update colors for categories."
 msgstr "עדכן צבעים עבור קטגוריות."
 
 #. priority
-#: ../src/appointment.c:2990
+#: ../src/appointment.c:2972
 msgid "Priority"
 msgstr "עדיפות"
 
-#: ../src/appointment.c:2994
+#: ../src/appointment.c:2976
 msgid ""
 "If you set this 8 or bigger, the appointment is NOT shown on list windows.\n"
 "You can use that feature to unclutter your list windows, but it makes it more difficult to find this appointment.\n"
@@ -901,11 +894,11 @@ msgstr ""
 "(יש פרמטר לא מתועד כך שאתה יכול לשנות את גבול ברירת המחדל של 8.)"
 
 #. note
-#: ../src/appointment.c:3003
+#: ../src/appointment.c:2985
 msgid "Note"
 msgstr "תזכורת"
 
-#: ../src/appointment.c:3024
+#: ../src/appointment.c:3006
 msgid ""
 "These shorthand commands take effect immediately:\n"
 "    <D> inserts current date in local date format\n"
@@ -925,32 +918,32 @@ msgstr ""
 "<&Ynnnn> מתורגם לשנה נוכחית מינוס nnnn.\n"
 "(זה ניתן לשימוש למשל בתזכורות ליום הולדת בכדי לדעת בן כמה האדם יהיה.)"
 
-#: ../src/appointment.c:3097
+#: ../src/appointment.c:3079
 msgid "Before Start"
 msgstr "לפני התחלה"
 
-#: ../src/appointment.c:3097
+#: ../src/appointment.c:3079
 msgid "Before End"
 msgstr "לפני סיום"
 
-#: ../src/appointment.c:3098
+#: ../src/appointment.c:3080
 msgid "After Start"
 msgstr "לאחר התחלה"
 
-#: ../src/appointment.c:3098
+#: ../src/appointment.c:3080
 msgid "After End"
 msgstr "לאחר סיום"
 
-#: ../src/appointment.c:3106
+#: ../src/appointment.c:3088
 msgid "Alarm"
 msgstr "התראה"
 
 #. **** ALARM TIME ****
-#: ../src/appointment.c:3112
+#: ../src/appointment.c:3094
 msgid "Alarm time"
 msgstr "זמן אזעקה"
 
-#: ../src/appointment.c:3137
+#: ../src/appointment.c:3119
 msgid ""
 "Often you want to get alarm:\n"
 " 1) before Event start\n"
@@ -962,11 +955,11 @@ msgstr ""
 "2) לפני סיום דבר לעשות\n"
 "3) לאחר התחלת דבר לעשות"
 
-#: ../src/appointment.c:3142
+#: ../src/appointment.c:3124
 msgid "Persistent alarm"
 msgstr "אזעקה מתמשכת"
 
-#: ../src/appointment.c:3147
+#: ../src/appointment.c:3129
 msgid ""
 "Select this if you want Orage to remind you even if it has not been active "
 "when the alarm happened."
@@ -975,77 +968,77 @@ msgstr ""
 "התרחשה."
 
 #. **** Audio Alarm ****
-#: ../src/appointment.c:3156
+#: ../src/appointment.c:3138
 msgid "Sound"
 msgstr "צליל"
 
-#: ../src/appointment.c:3160 ../src/appointment.c:3293
+#: ../src/appointment.c:3142 ../src/appointment.c:3275
 msgid "Use"
 msgstr "שימוש"
 
-#: ../src/appointment.c:3162
+#: ../src/appointment.c:3144
 msgid "Select this if you want audible alarm"
 msgstr "בחר בזה אם ברצונך באזעקה קולית"
 
-#: ../src/appointment.c:3188
+#: ../src/appointment.c:3170
 msgid "Repeat alarm sound"
 msgstr "חזור על צליל ההתראה"
 
-#: ../src/appointment.c:3203 ../src/appointment.c:3512
+#: ../src/appointment.c:3185 ../src/appointment.c:3494
 msgid "times"
 msgstr "זמנים"
 
-#: ../src/appointment.c:3219
+#: ../src/appointment.c:3201
 msgid "sec interval"
 msgstr "מרווח שניות"
 
 #. **** Display Alarm ****
-#: ../src/appointment.c:3229
+#: ../src/appointment.c:3211
 msgid "Visual"
 msgstr "ויזואלי"
 
-#: ../src/appointment.c:3233
+#: ../src/appointment.c:3215
 msgid "Use Orage window"
 msgstr "השתמש בחלון Orage"
 
-#: ../src/appointment.c:3235
+#: ../src/appointment.c:3217
 msgid "Select this if you want Orage window alarm"
 msgstr "בחר בזה אם רצונך באזעקת חלון Orage "
 
-#: ../src/appointment.c:3247
+#: ../src/appointment.c:3229
 msgid "Use notification"
 msgstr "הודעת שימוש"
 
-#: ../src/appointment.c:3249
+#: ../src/appointment.c:3231
 msgid "Select this if you want notification alarm"
 msgstr "בחר בזה אם רצונך באזעקת הודעה."
 
-#: ../src/appointment.c:3257
+#: ../src/appointment.c:3239
 msgid "Set timeout"
 msgstr "קבע פסק זמן"
 
-#: ../src/appointment.c:3259
+#: ../src/appointment.c:3241
 msgid "Select this if you want notification to expire automatically"
 msgstr "בחר בזה אם ברצונך שההודעה תפקע אוטומטית"
 
-#: ../src/appointment.c:3270
+#: ../src/appointment.c:3252
 msgid "0 = system default expiration time"
 msgstr "0 = זמן פקיעה ברירת מחדל של מערכת"
 
-#: ../src/appointment.c:3278
+#: ../src/appointment.c:3260
 msgid "seconds"
 msgstr "שניות"
 
 #. **** Procedure Alarm ****
-#: ../src/appointment.c:3289
+#: ../src/appointment.c:3271
 msgid "Procedure"
 msgstr "הליך"
 
-#: ../src/appointment.c:3295
+#: ../src/appointment.c:3277
 msgid "Select this if you want procedure or script alarm"
 msgstr "בחר בזה אם רצונך באזעקת הליך או תסריט"
 
-#: ../src/appointment.c:3305
+#: ../src/appointment.c:3287
 msgid ""
 "You must enter all escape etc characters yourself.\n"
 "This string is just given to shell to process.\n"
@@ -1065,105 +1058,105 @@ msgstr ""
 "<&ST> זמן התחלת פגישה\n"
 "<&ET> זמן סיום פגישה"
 
-#: ../src/appointment.c:3319 ../src/interface.c:1181 ../src/interface.c:1203
+#: ../src/appointment.c:3301 ../src/interface.c:1181 ../src/interface.c:1203
 msgid "_Execute"
 msgstr "לה_וציא"
 
-#: ../src/appointment.c:3321
+#: ../src/appointment.c:3303
 msgid "Test this alarm by raising it now"
 msgstr "בדוק אזעקה זו ע\"י הפעלתה עכשיו"
 
-#: ../src/appointment.c:3334
+#: ../src/appointment.c:3316
 msgid "<b>Default alarm</b>"
 msgstr "<b>אזעקת ברירת מחדל</b> "
 
-#: ../src/appointment.c:3340 ../src/interface.c:1054 ../src/interface.c:1100
+#: ../src/appointment.c:3322 ../src/interface.c:1054 ../src/interface.c:1100
 #: ../src/interface.c:1275 ../src/interface.c:1367
 msgid "_Save"
 msgstr "_שמור"
 
-#: ../src/appointment.c:3348
+#: ../src/appointment.c:3330
 msgid "Store current settings as default alarm"
 msgstr "אחסן הגדרות נוכחיות כאזעקת ברירת מחדל"
 
-#: ../src/appointment.c:3350
+#: ../src/appointment.c:3332
 msgid "_Revert"
 msgstr "_חזור"
 
-#: ../src/appointment.c:3358
+#: ../src/appointment.c:3340
 msgid "Set current settings from default alarm"
 msgstr "קבע הגדרות נוכחיות מאזעקת ברירת מחדל"
 
-#: ../src/appointment.c:3424
+#: ../src/appointment.c:3406
 msgid "Daily"
 msgstr "יומי"
 
-#: ../src/appointment.c:3424
+#: ../src/appointment.c:3406
 msgid "Weekly"
 msgstr "שבועי"
 
-#: ../src/appointment.c:3424
+#: ../src/appointment.c:3406
 msgid "Monthly"
 msgstr "חודשי"
 
-#: ../src/appointment.c:3424
+#: ../src/appointment.c:3406
 msgid "Yearly"
 msgstr "שנתי"
 
-#: ../src/appointment.c:3424
+#: ../src/appointment.c:3406
 msgid "Hourly"
 msgstr "שעתי"
 
-#: ../src/appointment.c:3426
+#: ../src/appointment.c:3408
 msgid "Mon"
 msgstr "שני"
 
-#: ../src/appointment.c:3426
+#: ../src/appointment.c:3408
 msgid "Tue"
 msgstr "שלישי"
 
-#: ../src/appointment.c:3426
+#: ../src/appointment.c:3408
 msgid "Wed"
 msgstr "רביעי"
 
-#: ../src/appointment.c:3426
+#: ../src/appointment.c:3408
 msgid "Thu"
 msgstr "חמישי"
 
-#: ../src/appointment.c:3426
+#: ../src/appointment.c:3408
 msgid "Fri"
 msgstr "שישי"
 
-#: ../src/appointment.c:3426
+#: ../src/appointment.c:3408
 msgid "Sat"
 msgstr "שבת"
 
-#: ../src/appointment.c:3426
+#: ../src/appointment.c:3408
 msgid "Sun"
 msgstr "ראשון"
 
-#: ../src/appointment.c:3431
+#: ../src/appointment.c:3413
 msgid "Recurrence"
 msgstr "מופע חוזר"
 
 #. complexity
-#: ../src/appointment.c:3437
+#: ../src/appointment.c:3419
 msgid "Complexity"
 msgstr "מורכבות"
 
-#: ../src/appointment.c:3440
+#: ../src/appointment.c:3422
 msgid "Basic"
 msgstr "בסיסי"
 
-#: ../src/appointment.c:3447
+#: ../src/appointment.c:3429
 msgid "Advanced"
 msgstr "מתקדם"
 
-#: ../src/appointment.c:3453
+#: ../src/appointment.c:3435
 msgid "Use this if you want regular repeating event"
 msgstr "השתמש בזה אם רצונך באירוע חוזר רגיל"
 
-#: ../src/appointment.c:3455
+#: ../src/appointment.c:3437
 msgid ""
 "Use this if you need complex times like:\n"
 " Every Saturday and Sunday or \n"
@@ -1174,19 +1167,19 @@ msgstr ""
 "יום שלישי הראשון בכל חודש"
 
 #. frequency
-#: ../src/appointment.c:3461
+#: ../src/appointment.c:3443
 msgid "Frequency"
 msgstr "תדירות"
 
-#: ../src/appointment.c:3468
+#: ../src/appointment.c:3450
 msgid "Each"
 msgstr "כל"
 
-#: ../src/appointment.c:3479
+#: ../src/appointment.c:3461
 msgid "occurrence"
 msgstr "התרחשות"
 
-#: ../src/appointment.c:3486
+#: ../src/appointment.c:3468
 msgid ""
 "Limit frequency to certain interval.\n"
 " For example: Every third day:\n"
@@ -1196,32 +1189,32 @@ msgstr ""
 "לדוגמה: כל יום שלישי במספר:\n"
 "תדירות = יומית ומרווח = 3"
 
-#: ../src/appointment.c:3493
+#: ../src/appointment.c:3475
 msgid "Limit"
 msgstr "גבול"
 
-#: ../src/appointment.c:3495
+#: ../src/appointment.c:3477
 msgid "Repeat forever"
 msgstr "חזור לעולם"
 
-#: ../src/appointment.c:3502
+#: ../src/appointment.c:3484
 msgid "Repeat "
 msgstr "חזור "
 
-#: ../src/appointment.c:3526
+#: ../src/appointment.c:3508
 msgid "Repeat until "
 msgstr "חזור עד "
 
 #. weekdays (only for complex settings)
-#: ../src/appointment.c:3542
+#: ../src/appointment.c:3524
 msgid "Weekdays"
 msgstr "ימי חול"
 
-#: ../src/appointment.c:3559
+#: ../src/appointment.c:3541
 msgid "Which day"
 msgstr "איזה יום"
 
-#: ../src/appointment.c:3570
+#: ../src/appointment.c:3552
 msgid ""
 "Specify which weekday for monthly and yearly events.\n"
 " For example:\n"
@@ -1238,11 +1231,11 @@ msgstr ""
 "איזה יום = בחר 2 מהמספר למטה מרביעי"
 
 #. TODO base (only for TODOs)
-#: ../src/appointment.c:3577
+#: ../src/appointment.c:3559
 msgid "TODO base"
 msgstr "בסיס דברים לעשות"
 
-#: ../src/appointment.c:3596
+#: ../src/appointment.c:3578
 msgid ""
 "TODO reoccurs regularly starting on start time and repeating after each "
 "interval no matter when it was last completed"
@@ -1250,7 +1243,7 @@ msgstr ""
 "דברים לעשות חוזר בקביעות החל מזמן התחלה וחוזר לאחר כל מרווח לא משנה מתי הוא "
 "הושלם לאחרונה"
 
-#: ../src/appointment.c:3598
+#: ../src/appointment.c:3580
 msgid ""
 "TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
@@ -1259,11 +1252,11 @@ msgstr ""
 "(שים לב שאתה לא יכול לדעת כלום על ההיסטוריה של דברים לעשות מאחר ובסיס החזרה משתנה לאחר כל השלמה.)"
 
 #. exceptions
-#: ../src/appointment.c:3604
+#: ../src/appointment.c:3586
 msgid "Exceptions"
 msgstr "חריגות"
 
-#: ../src/appointment.c:3630
+#: ../src/appointment.c:3612
 msgid ""
 "Add more exception dates by clicking the calendar days below.\n"
 "Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
@@ -1273,19 +1266,19 @@ msgstr ""
 "חריגה היא אי הכללה(-) או הכללה(+) כתלות בבחירה.\n"
 "הסר ע\"י הקלקה במידע."
 
-#: ../src/appointment.c:3641
+#: ../src/appointment.c:3623
 msgid "Add excluded date (-)"
 msgstr "הוסף תאריך לא נכלל (-)"
 
-#: ../src/appointment.c:3643
+#: ../src/appointment.c:3625
 msgid "Excluded days are full days where this appointment is not happening"
 msgstr "ימים לא נכללים הם ימים שלמים בהם פגישה זו אינה קורית"
 
-#: ../src/appointment.c:3650
+#: ../src/appointment.c:3632
 msgid "Add included time (+)"
 msgstr "הוסף זמן נכלל (+)"
 
-#: ../src/appointment.c:3652
+#: ../src/appointment.c:3634
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time"
@@ -1294,22 +1287,22 @@ msgstr ""
 "אחר"
 
 #. calendars showing the action days
-#: ../src/appointment.c:3671
+#: ../src/appointment.c:3653
 msgid "Action dates"
 msgstr "תאריכי פעולה"
 
 #. ********* View menu *********
 #. View menu
-#: ../src/day-view.c:293 ../src/event-list.c:1147 ../src/mainbox.c:330
+#: ../src/day-view.c:293 ../src/event-list.c:1133 ../src/mainbox.c:234
 msgid "_View"
 msgstr "הצ_ג"
 
 #. ********* Go menu   *********
-#: ../src/day-view.c:307 ../src/event-list.c:1166
+#: ../src/day-view.c:307 ../src/event-list.c:1152
 msgid "_Go"
 msgstr "_עבור"
 
-#: ../src/day-view.c:380 ../src/event-list.c:1212
+#: ../src/day-view.c:380 ../src/event-list.c:1198
 msgid "New"
 msgstr "חדש"
 
@@ -1329,7 +1322,7 @@ msgstr "קדימה יום אחד"
 msgid "Forward one week"
 msgstr "קדימה שבוע אחד"
 
-#: ../src/day-view.c:398 ../src/event-list.c:1230
+#: ../src/day-view.c:398 ../src/event-list.c:1216
 msgid "Refresh"
 msgstr "רענן"
 
@@ -1350,23 +1343,23 @@ msgid "Orage - day view"
 msgstr "Orage - מבט יום"
 
 #. date only appointment
-#: ../src/event-list.c:193
+#: ../src/event-list.c:192
 msgid "All day"
 msgstr "כל היום"
 
-#: ../src/event-list.c:608 ../src/event-list.c:1432
+#: ../src/event-list.c:601 ../src/event-list.c:1411
 msgid "Time"
 msgstr "זמן"
 
-#: ../src/event-list.c:809
+#: ../src/event-list.c:795
 msgid "No rows have been selected."
 msgstr "אף שורה לא נבחרה."
 
-#: ../src/event-list.c:810
+#: ../src/event-list.c:796
 msgid "Click a row to select it and after that you can copy it."
 msgstr "הקלק על שורה כדי לבחור אותה ולאחר מכן אתה יכול להעתיק אותה."
 
-#: ../src/event-list.c:1006
+#: ../src/event-list.c:992
 msgid ""
 "You will permanently remove all\n"
 "selected appointments."
@@ -1374,35 +1367,35 @@ msgstr ""
 "אתה תסיר לתמיד את כל\n"
 "הפגישות הנבחרות."
 
-#: ../src/event-list.c:1009
+#: ../src/event-list.c:995
 msgid "Yes, remove them"
 msgstr "כן, הסר אותן"
 
-#: ../src/event-list.c:1221
+#: ../src/event-list.c:1207
 msgid "Back"
 msgstr "לאחור"
 
-#: ../src/event-list.c:1225
+#: ../src/event-list.c:1211
 msgid "Forward"
 msgstr "קדימה"
 
-#: ../src/event-list.c:1232
+#: ../src/event-list.c:1218
 msgid "Find"
 msgstr "מצא"
 
-#: ../src/event-list.c:1239
+#: ../src/event-list.c:1225
 msgid "Dayview"
 msgstr "מבט יום"
 
-#: ../src/event-list.c:1274
+#: ../src/event-list.c:1260
 msgid "Extra days to show:"
 msgstr "ימים נוספים להצגה:"
 
-#: ../src/event-list.c:1288
+#: ../src/event-list.c:1274
 msgid "only first repeating"
 msgstr "רק הראשון חוזר"
 
-#: ../src/event-list.c:1296
+#: ../src/event-list.c:1282
 msgid ""
 "Check this if you only want to see the first repeating event. By default all are shown.\n"
 "Note that this also shows all urgencies.\n"
@@ -1412,11 +1405,11 @@ msgstr ""
 "שים לב שזה מראה גם את הדחיפויות.\n"
 "שים לב שאירועים חוזרים עלולים להופיע מוקדם יותר ברשימה מכיוון שרק ההתרחשות הראשונה רשומה."
 
-#: ../src/event-list.c:1301
+#: ../src/event-list.c:1287
 msgid "also old"
 msgstr "גם ישן"
 
-#: ../src/event-list.c:1306
+#: ../src/event-list.c:1292
 msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed'."
@@ -1424,27 +1417,27 @@ msgstr ""
 "בחר בזה אם ברצונך לראות גם אירועים ישנים. זה ניתן לבחירה רק לאחר ש-\"רק ראשון חוזר\" מופעל בכדי למנוע רשימות ארוכות מאוד.\n"
 "שים לב שבחירת ימים נוספים עדיין מגדירה אם פגישות חדשות יותר רשומות."
 
-#: ../src/event-list.c:1344
+#: ../src/event-list.c:1330
 msgid "Journal entries starting from:"
 msgstr "ערכי יומן החל מ:"
 
-#: ../src/event-list.c:1364
+#: ../src/event-list.c:1350
 msgid "Search"
 msgstr "חפש"
 
-#: ../src/event-list.c:1367
+#: ../src/event-list.c:1353
 msgid "Search text "
 msgstr "חפש טקסט"
 
-#: ../src/event-list.c:1440
+#: ../src/event-list.c:1419
 msgid "Flags"
 msgstr "דגלים"
 
-#: ../src/event-list.c:1448
+#: ../src/event-list.c:1427
 msgid "Title"
 msgstr "כותרת"
 
-#: ../src/event-list.c:1474
+#: ../src/event-list.c:1453
 msgid ""
 "Double click line to edit it.\n"
 "\n"
@@ -1472,115 +1465,11 @@ msgstr ""
 "5. סוג פגישה:\n"
 "E = אירוע T = דברים לעשות J = יומן"
 
-#. remove since it has ended
-#: ../src/ical-archive.c:263
-msgid "\tRecur ended, moving to archive file."
-msgstr "חזרה הסתיימה, מעביר לקובץ ארכיון."
-
-#: ../src/ical-archive.c:326
-msgid "Archiving not enabled. Exiting"
-msgstr "ביצוע ארכיון לא מתאפשר. יוצא"
-
-#: ../src/ical-archive.c:345
-#, c-format
-msgid "Archiving threshold: %d month(s)"
-msgstr "סף ארכיון: %d חודש(ים)"
-
-#. yy mon day
-#: ../src/ical-archive.c:348
-#, c-format
-msgid "\tArchiving events, which are older than: %04d-%02d-%02d"
-msgstr "ביצוע ארכיון אירועים, הישנים יותר מ: %04d-%02d-%02d "
-
-#: ../src/ical-archive.c:375
-#, c-format
-msgid "Archiving uid: %s"
-msgstr "Archiving uid: %s"
-
-#. VTODO not completed, do not archive
-#: ../src/ical-archive.c:381
-msgid "\tVTODO not complete; not archived"
-msgstr "VTODO לא מושלם, לא הועבר לארכיון"
-
-#. it is recurrent event
-#: ../src/ical-archive.c:386
-#, c-format
-msgid "\tRecurring. End year: %04d, month: %02d, day: %02d"
-msgstr "חוזר. שנת סיום: %04d, חודש: %02d, יום: %02d "
-
-#: ../src/ical-archive.c:403
-msgid "Archiving done\n"
-msgstr "ארכיון בוצע\n"
-
-#. PHASE 1: go through base orage file and remove "repeat" shortcuts
-#: ../src/ical-archive.c:419
-msgid "Starting archive removal."
-msgstr "מצחיל הסרה מארכיון."
-
-#: ../src/ical-archive.c:420
-msgid "\tPHASE 1: reset recurring appointments"
-msgstr "שלב 1: אתחל פגישות חוזרות"
-
-#. PHASE 2: go through archive file and add everything back to base orage.
-#. * After that delete the whole arch file
-#: ../src/ical-archive.c:442
-msgid "\tPHASE 2: return archived appointments"
-msgstr "שלב 2: החזר פגישות מארכיון"
-
-#: ../src/ical-archive.c:468
-msgid "Archive removal done\n"
-msgstr "הסרה מארכיון בוצעה\n"
-
-#: ../src/ical-code.c:859
+#: ../src/ical-code.c:751
 msgid "Orage default alarm"
 msgstr "התראת ברירת המחדל של Orage"
 
-#: ../src/ical-code.c:3064
-msgid "Created alarm list for main Orage file:"
-msgstr "רשימת אזעקה נוצרה עבור קובץ Orage עיקרי:"
-
-#: ../src/ical-code.c:3066
-#, c-format
-msgid "Created alarm list for foreign file: %s (%s)"
-msgstr "רשימת אזעקה נוצרה עבור קובץ זר: %s (%s) "
-
-#: ../src/ical-code.c:3068
-#, c-format
-msgid "\tAdded %d alarms. Processed %d events."
-msgstr "נוספו %d אזעקות. עובדו %d אירועים."
-
-#: ../src/ical-code.c:3070
-#, c-format
-msgid ""
-"\tFound %d alarms of which %d are active. (Searched %d recurring alarms.)"
-msgstr "נמצאו %d אזעקות מהן %d פעילות. (חיפוש בין %d אזעקות חוזרות.)"
-
-#: ../src/ical-expimp.c:120
-msgid "Starting import file preprocessing"
-msgstr "מתחיל עיבוד קדם של קובץ יבוא"
-
-#: ../src/ical-expimp.c:155
-msgid "... Patched DCREATED to be CREATED."
-msgstr "... Patched DCREATED to be CREATED."
-
-#: ../src/ical-expimp.c:194
-msgid "... Patched timezone to Orage format."
-msgstr "... בוצע patch באיזור זמן לפורמט Orage. "
-
-#: ../src/ical-expimp.c:203
-msgid "Import file preprocessing done"
-msgstr "עיבוד קדם של קובץ יבוא בוצע"
-
-#: ../src/interface.c:88 ../src/interface.c:103
-#, c-format
-msgid "Found external update on file %s."
-msgstr "נמצא עדכון חיצוני בקובץ %s. "
-
-#: ../src/interface.c:111
-msgid "Refreshing alarms and calendar due to external file update."
-msgstr "מרענן אזעקות ויומן עקב עדכון קובץ חיצוני."
-
-#: ../src/interface.c:272
+#: ../src/interface.c:269
 msgid "Calendar files"
 msgstr "קבצי לוח שנה"
 
@@ -1600,19 +1489,19 @@ msgstr "קריאה כתיבה"
 msgid "***** No foreign files *****"
 msgstr "***** אין קבצים זרים *****"
 
-#: ../src/interface.c:708
+#: ../src/interface.c:706
 msgid "Foreign file add failed"
 msgstr "נכשלה הוספת קובץ זר"
 
-#: ../src/interface.c:716
+#: ../src/interface.c:715
 msgid "Orage can only handle 10 foreign files. Limit reached."
 msgstr "Orage יכול לטפל רק ב-10 קבצים זרים. הגעת לגבול."
 
-#: ../src/interface.c:726
+#: ../src/interface.c:725
 msgid "Filename is empty."
 msgstr "שם קובץ הוא ריק."
 
-#: ../src/interface.c:736
+#: ../src/interface.c:735
 msgid "Name is empty."
 msgstr "שם הוא ריק."
 
@@ -1620,11 +1509,11 @@ msgstr "שם הוא ריק."
 msgid "File does not exist."
 msgstr "קובץ לא קיים."
 
-#: ../src/interface.c:757
+#: ../src/interface.c:758
 msgid "Same filename already exists in Orage."
 msgstr "אותו שם קובץ כבר קיים ב- Orage. "
 
-#: ../src/interface.c:767
+#: ../src/interface.c:769
 msgid "Same name already exists in Orage."
 msgstr "אותו שם כבר קיים ב- Orage. "
 
@@ -1884,7 +1773,6 @@ msgid "\tUsing libxfce4ui: no\n"
 msgstr "\tUsing libxfce4ui: no\n"
 
 #: ../src/main.c:314
-#, c-format
 msgid ""
 "Usage: orage [options] [files]\n"
 "\n"
@@ -1893,67 +1781,56 @@ msgstr ""
 "\n"
 
 #: ../src/main.c:315
-#, c-format
 msgid "Options:\n"
 msgstr "אפשרויות:\n"
 
 #: ../src/main.c:316
-#, c-format
 msgid "--version (-v) \t\tshow version of orage\n"
 msgstr ""
 "--version (-v) \t\tהצג גרסה של orage\n"
 "\n"
 
 #: ../src/main.c:317
-#, c-format
 msgid "--help (-h) \t\tprint this text\n"
 msgstr ""
 "--help (-h) \t\tהדפס טקסט זה\n"
 "\n"
 
 #: ../src/main.c:318
-#, c-format
 msgid "--preferences (-p) \tshow preferences form\n"
 msgstr ""
 "--preferences (-p) \tהצג טופס העדפות\n"
 "\n"
 
 #: ../src/main.c:319
-#, c-format
 msgid "--toggle (-t) \t\tmake orage visible/unvisible\n"
 msgstr "--toggle (-t) \t\tהפוך את orage לנראה/בלתי נראה\n"
 
 #: ../src/main.c:320
-#, c-format
 msgid "--add-foreign (-a) file [RW] [name] \tadd a foreign file\n"
 msgstr "--add-foreign (-a) file [RW] [name] \tהוסף קובץ זר\n"
 
 #: ../src/main.c:321
-#, c-format
 msgid "--remove-foreign (-r) file \tremove a foreign file\n"
 msgstr "--remove-foreign (-r) file \tהסר קובץ זר\n"
 
 #: ../src/main.c:322
-#, c-format
 msgid ""
 "--export (-e) file [appointment...] \texport appointments from Orage to "
 "file\n"
 msgstr "--export (-e) file [appointment...] \tייצא פגישות מ-orage לקובץ\n"
 
 #: ../src/main.c:324
-#, c-format
 msgid "files=ical files to load into orage\n"
 msgstr "files=קבצי ical להעלות אל orage \n"
 
 #: ../src/main.c:326
-#, c-format
 msgid "\tdbus not included in orage. \n"
 msgstr ""
 "dbus לא נכלל ב-orage. \n"
 "\n"
 
 #: ../src/main.c:327
-#, c-format
 msgid ""
 "\twithout dbus [files] and foreign file options(-a & -r) can only be used "
 "when starting orage \n"
@@ -1961,7 +1838,7 @@ msgstr ""
 "ללא dbus [קבצים] וקובץ זר, אפשרויות (-a & -r) ניתנות לשימוש רק בעת התחלת "
 "orage \n"
 
-#: ../src/main.c:536
+#: ../src/main.c:540
 #, c-format
 msgid ""
 "\n"
@@ -1972,47 +1849,47 @@ msgstr ""
 "אפשרות לא ידועה %s \n"
 "\n"
 
-#: ../src/mainbox.c:312
+#: ../src/mainbox.c:216
 msgid "_Exchange data"
 msgstr "החלף מידע"
 
 #. Edit menu
-#: ../src/mainbox.c:323
+#: ../src/mainbox.c:227
 msgid "_Edit"
 msgstr "ע_ריכה"
 
-#: ../src/mainbox.c:333
+#: ../src/mainbox.c:237
 msgid "View selected _date"
 msgstr "הצג _תאריך נבחר"
 
-#: ../src/mainbox.c:336
+#: ../src/mainbox.c:240
 msgid "View selected _week"
 msgstr "צפה בשבוע נבחר"
 
-#: ../src/mainbox.c:342
+#: ../src/mainbox.c:246
 msgid "Select _Today"
 msgstr "_בחר את היום"
 
-#: ../src/mainbox.c:348
+#: ../src/mainbox.c:252
 msgid "Show _Globaltime"
 msgstr "הצג זמן גלובלי"
 
 #. Help menu
 #. the rest
-#: ../src/mainbox.c:352 ../src/parameters.c:1197
+#: ../src/mainbox.c:256 ../src/parameters.c:1197
 msgid "_Help"
 msgstr "_עזרה"
 
-#: ../src/mainbox.c:420 ../src/reminder.c:1155
+#: ../src/mainbox.c:316 ../src/reminder.c:995
 msgid "No title defined"
 msgstr "אף שם לא הוגדר"
 
-#: ../src/mainbox.c:483
+#: ../src/mainbox.c:379
 #, c-format
 msgid " Location: %s\n"
 msgstr "מיקום: %s \n"
 
-#: ../src/mainbox.c:493
+#: ../src/mainbox.c:389
 #, c-format
 msgid ""
 "\n"
@@ -2023,11 +1900,11 @@ msgstr ""
 "שים לב:\n"
 "%s "
 
-#: ../src/mainbox.c:501
+#: ../src/mainbox.c:397
 msgid "Never"
 msgstr "אף פעם"
 
-#: ../src/mainbox.c:507
+#: ../src/mainbox.c:403
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -2040,7 +1917,7 @@ msgstr ""
 "אמור ל: %s \n"
 "סיום: %s%s "
 
-#: ../src/mainbox.c:515
+#: ../src/mainbox.c:411
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -2051,16 +1928,16 @@ msgstr ""
 "%s התחלה: %s \n"
 "סיום: %s%s "
 
-#: ../src/mainbox.c:625
+#: ../src/mainbox.c:489
 msgid "<b>To do:</b>"
 msgstr "<b>לעשות:</b> "
 
-#: ../src/mainbox.c:666
+#: ../src/mainbox.c:525
 #, c-format
 msgid "<b>Events for %s:</b>"
 msgstr "<b>אירועים ל-%s:</b>"
 
-#: ../src/mainbox.c:677
+#: ../src/mainbox.c:536
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>אירועים ל %s - %s:</b>"
@@ -2284,52 +2161,39 @@ msgstr ""
 msgid "Orage Preferences"
 msgstr "העדפות Orage"
 
-#: ../src/parameters.c:1200 ../src/reminder.c:800
+#: ../src/parameters.c:1200 ../src/reminder.c:673
 msgid "_Close"
 msgstr "_סגור"
 
-#: ../src/parameters.c:1287
-msgid "First Orage start. Searching default timezone."
-msgstr "התחלה ראשונה של Orage. מחפש איזור זמן ברירת מחדל."
-
-#: ../src/parameters.c:1306
-#, c-format
-msgid "Default timezone set to %s."
-msgstr "איזור זמן ברירת מחדל נקבע ל-%s. "
-
-#: ../src/parameters.c:1309
-msgid "Default timezone not found, please, set it manually."
-msgstr "איזור זמן ברירת מחדל לא נמצא, אנא, קבע אותו ידנית."
-
-#: ../src/reminder.c:563
+#: ../src/reminder.c:466
 msgid "Reminder "
 msgstr "תזכורת "
 
-#: ../src/reminder.c:592
+#: ../src/reminder.c:495
 msgid "Open"
 msgstr "פתח"
 
-#: ../src/reminder.c:725
+#: ../src/reminder.c:598
 msgid "Reminder - Orage"
 msgstr "תזכורת - Orage "
 
-#: ../src/reminder.c:808
+#: ../src/reminder.c:681
 msgid "_Stop"
 msgstr "_עצירה"
 
-#: ../src/reminder.c:816
+#: ../src/reminder.c:689
 msgid "Postpone"
 msgstr "דחה"
 
-#: ../src/reminder.c:818
+#: ../src/reminder.c:691
 msgid "Remind me again after the specified time"
 msgstr "הזכר לי שוב לאחר הזמן שצוין"
 
-#: ../src/reminder.c:1107
+#: ../src/reminder.c:947
 msgid "Next active alarms:"
 msgstr "אזעקות פעילות הבאות בתור:"
 
-#: ../src/reminder.c:1162
+#: ../src/reminder.c:1002
 #, c-format
 msgid ""
 "\n"
@@ -2338,7 +2202,7 @@ msgstr ""
 "\n"
 "%02d d %02d h %02d min to: %s"
 
-#: ../src/reminder.c:1171
+#: ../src/reminder.c:1011
 #, c-format
 msgid ""
 "\n"
@@ -4603,28 +4467,28 @@ msgstr "העדפות"
 msgid "Quit"
 msgstr "יציאה"
 
-#: ../panel-plugin/xfce4-orageclock-plugin.desktop.in.h:1
+#: ../panel-plugin/org.xfce.orage.clock-plugin.desktop.in.h:1
 msgid "Orage Panel Clock"
 msgstr "שעון פאנל Orage "
 
-#: ../panel-plugin/xfce4-orageclock-plugin.desktop.in.h:2
+#: ../panel-plugin/org.xfce.orage.clock-plugin.desktop.in.h:2
 msgid "Show time and date?"
 msgstr "להציג זמן ותאריך?"
 
-#: ../plugin/xfce-xfcalendar-settings.desktop.in.h:1
+#: ../plugin/org.xfce.orage-settings.desktop.in.h:1
 msgid "Orage preferences"
 msgstr "העדפות Orage "
 
-#: ../plugin/xfce-xfcalendar-settings.desktop.in.h:2
+#: ../plugin/org.xfce.orage-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Calendar Application (Orage)"
 msgstr "הגדרות עבור (Orage) תוכנת יומן Xfce 4 "
 
-#: ../plugin/xfce-xfcalendar-settings.desktop.in.h:3
+#: ../plugin/org.xfce.orage-settings.desktop.in.h:3
 msgid "Orage Calendar Preferences"
 msgstr "העדפות יומן Orage "
 
-#: ../plugin/xfce-xfcalendar-settings.desktop.in.h:4
-#: ../xfcalendar.desktop.in.h:3
+#: ../plugin/org.xfce.orage-settings.desktop.in.h:4
+#: ../org.xfce.orage.desktop.in.h:3
 msgid "Calendar"
 msgstr "לוח שנה"
 
@@ -4643,10 +4507,10 @@ msgid ""
 "are left untouched."
 msgstr ""
 
-#: ../xfcalendar.desktop.in.h:1
+#: ../org.xfce.orage.desktop.in.h:1
 msgid "Orage Calendar"
 msgstr "יומן Orage "
 
-#: ../xfcalendar.desktop.in.h:2
+#: ../org.xfce.orage.desktop.in.h:2
 msgid "Desktop calendar"
 msgstr "לוח שנה לשולחן העבודה"
