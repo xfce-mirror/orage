@@ -19,11 +19,13 @@ globaltime_CPPFLAGS =							\
 
 globaltime_CFLAGS =							\
 	$(LIBGTK_CFLAGS)						\
-	$(LIBX11_CFLAGS)
+	$(LIBX11_CFLAGS)						\
+	$(LIBXFCE4UI_CFLAGS)
 
 globaltime_LDADD =							\
 	$(LIBGTK_LIBS)							\
 	$(LIBX11_LIBS)							\
+	$(LIBXFCE4UI_LIBS)							\
 	$(INTLLIBS)							\
 	$(top_builddir)/src/liborage.la
 

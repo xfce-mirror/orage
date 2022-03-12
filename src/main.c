@@ -44,6 +44,8 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 
+#include <libxfce4util/libxfce4util.h>
+
 #define ORAGE_MAIN  "orage"
 
 #include "orage-i18n.h"
@@ -579,11 +581,7 @@ int main(int argc, char *argv[])
     gboolean running, initialized = FALSE;
 
     /* init i18n = nls to use gettext */
-    bindtextdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
-#ifdef HAVE_BIND_TEXTDOMAIN_CODESET
-    bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
-#endif
-    textdomain(GETTEXT_PACKAGE);
+    xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 
     gtk_init(&argc, &argv);
     register_css_provider ();
