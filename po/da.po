@@ -577,7 +577,7 @@ msgstr "%A %d. %B %Y/%V"
 
 #: ../src/about-xfcalendar.c:54 ../org.xfce.orage.appdata.xml.in.h:2
 msgid "Orage is a time-managing application for the Xfce desktop environment"
-msgstr ""
+msgstr "Orage er et tidsstyringsprogram til Xfce-skrivebordsmiljøet"
 
 #: ../src/about-xfcalendar.c:58
 msgid "translator-credits"
@@ -890,7 +890,7 @@ msgstr ""
 
 #: ../src/appointment.c:2961
 msgid "_Colour"
-msgstr ""
+msgstr "_Farve"
 
 #: ../src/appointment.c:2966
 msgid "update colors for categories."
