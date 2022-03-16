@@ -324,6 +324,7 @@ static void create_own_icon_pango_layout (gint line,
     if (format_line (pl, t, row_x_data, font_desc) == FALSE)
     {
         g_object_unref (pl);
+        pango_font_description_free (font_desc);
         g_warning ("icon line format failed");
         return;
     }
@@ -338,6 +339,7 @@ static void create_own_icon_pango_layout (gint line,
     draw_pango_layout (cr, pl, x_offset, y_offset);
 
     g_object_unref (pl);
+    pango_font_description_free (font_desc);
 }
 
 static cairo_t *create_icon_background (cairo_surface_t *surface,

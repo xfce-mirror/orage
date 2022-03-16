@@ -1070,6 +1070,7 @@ OrageRc *orage_rc_file_open (const gchar *fpath, gboolean read_only)
             g_debug ("%s: Unable to open (create) RC file (%s). (%s)",
                      G_STRFUNC, fpath, error->message);
             g_key_file_free(grc);
+            g_error_free (error);
         }
     }
 
@@ -1093,6 +1094,7 @@ void orage_rc_file_close(OrageRc *orc)
                 , &error)) { /* write needed and failed */
                 g_warning ("%s: File save failed. RC file (%s). (%s)",
                            G_STRFUNC, orc->file_name, error->message);
+                g_error_free (error);
             }
             g_free(file_content);
         }
@@ -1125,6 +1127,7 @@ void orage_rc_del_group(OrageRc *orc, const gchar *grp)
     {
         g_debug ("%s: Group remove failed. RC file (%s). group (%s) (%s)",
                  G_STRFUNC, orc->file_name, grp, error->message);
+        g_error_free (error);
     }
 }
 
@@ -1144,6 +1147,7 @@ gchar *orage_rc_get_str(OrageRc *orc, const gchar *key, const gchar *def)
         g_debug ("%s: str (%s) group (%s) in RC file (%s) not found, "
                  "using default (%s)", G_STRFUNC, key, orc->cur_group,
                  orc->file_name, ret);
+        g_error_free (error);
     }
     return(ret);
 }
@@ -1159,6 +1163,7 @@ gint orage_rc_get_int (OrageRc *orc, const gchar *key, const gint def)
         g_debug ("%s: str (%s) group (%s) in RC file (%s) not found, "
                  "using default (%d)", G_STRFUNC, key, orc->cur_group,
                  orc->file_name, ret);
+        g_error_free (error);
     }
     return(ret);
 }
@@ -1174,6 +1179,7 @@ gboolean orage_rc_get_bool (OrageRc *orc, const gchar *key, const gboolean def)
         g_debug ("%s: str (%s) group (%s) in RC file (%s) not found, "
                  "using default (%d)", G_STRFUNC, key, orc->cur_group,
                  orc->file_name, ret);
+        g_error_free (error);
     }
     return(ret);
 }
