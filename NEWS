@@ -1,3 +1,201 @@
+4.16.0 (2022-03-17)
+======
+Note: GlobalTime and Orage panel plugin are being deprecated and will be
+removed in a future release. Their features will be integrated with or provided
+by existing Xfce components.
+See https://gitlab.xfce.org/apps/orage/-/issues/3#note_43209
+
+Finalize port to GTK 3, small fixes and cleanup for 4.16.0 (see MRs for more
+details):
+- Add new application icon (!18)
+- Fix some memory leaks
+- i18n: Use `xfce_textdomain()` to initialize translations
+- Trace messages cleanup (!15)
+- Update COPYING (Issue #10, !17)
+- Use stdout and stderr correctly in main.c
+- Build tz_convert only with bundled libical (!14)
+- Switch to reverse-DNS naming for icon and desktop files (!13)
+- D-Bus service cleanup (!12)
+- Fix `orage_exec()` and its calls
+- Update project files (!10)
+- Fixed strptime parse issue on FreeBSD (#6, !11)
+- Fix make distcheck warnning
+- Fixed libpopt detection on FreeBSD (!9)
+- Fix build warnings 3: Clang static analyzer (!6)
+- Added 'git' to program version string and 'sed' check (!7)
+- Fix build warnings 2: Compilation (!4)
+- Fix build warnings 1: Autotools (!3)
+- Add basic GitLab pipeline (!2)
+
+Commits from merge request !1 (GTK 3 port), which also includes 4.15.x below:
+- Reverted to c60567fe
+- Fixed typos
+- Added support for 'legacy' non RGBA GTK colours. Both RGBA and old 
+colous are now supported.
+- Replaced unused parameters '(void)' castings with GLib G_GNUC_UNUSED. 
+Added GLib check to configure.
+- Removed trailing whitespaces and corrected formatting
+- Updated version numbers
+- Aligned new appointment->alarm Sound and Procedure entry fields and 
+removed unused code.
+- Renamed 'OragePlugin *clock' to 'OragePlugin *plugin' or 'OragePlugin 
+*orage_plugin'
+- Fixed libical support, supported libical version is now >= 3.0.
+- Added variable tmp only when HAVE_LIBICAL is not defined
+- Dead code removal
+- Removed outdated is_utc, libical uses UTC timezone. This patch allows 
+to use libical 3.0
+- Updated with 'Ical week start day' issue
+- Fixed: "'Ical week start day' configuration parameter is ignored". 
+Issue #5
+- Changed version number to 4.15.2
+
+- Translation Updates:
+  Albanian, Amharic, Arabic, Armenian (Armenia), Asturian, Basque,
+  Belarusian, Bulgarian, Catalan, Chinese (China), Chinese (Taiwan),
+  Croatian, Czech, Danish, Dutch, English (Australia), English (United
+  Kingdom), Estonian, Finnish, French, Galician, German, Greek, Hebrew,
+  Hungarian, Icelandic, Indonesian, Italian, Japanese, Kazakh, Korean,
+  Latvian, Lithuanian, Malay, Norwegian Bokmål, Norwegian Nynorsk,
+  Occitan (post 1500), Polish, Portuguese, Portuguese (Brazil),
+  Romanian, Russian, Serbian, Slovak, Spanish, Swedish, Thai, Turkish,
+  Ukrainian, Urdu, Urdu (Pakistan), Uyghur
+
+4.15.1 (2021-12-15, unreleased version)
+======
+Notes from old ChangeLog file:
+* Fixed libbsd dependency: reverted libical strl* functions back to
+  str* or changed orage functions from strl* to g_strl*.
+* Automake changes: silent mode is now default
+* Minimum autogen required version is 4.16.0
+* Ported GlobalTime to GTK3:
+  * Replaced GlobalTime background and foreground colours from GdkColor to
+    GdkRGBA (old colours from GlobalTime configuration is not valid
+    anymore)
+* Ported panel-plugin to GTK3.
+  * Changed to plugin to use panel plugin class. Initial patches
+    contributed by Patronos.
+
+Full commit list:
+- Version 4.15.1 release time
+- Updated with panel plugin changes
+- Changed 'save' signal to member of plugin class
+- Dead code removal
+- Added FIXME comments
+- Changed int parameter to gint
+- Removed invalid "column-homogeneous" property from box property
+- Fixed plugin tooltip
+- Fixed rc file write
+- Fixed panel plugin blocking/unblocking when configuration menu is 
+closed
+- Fixed "properties_frame" handling
+- Added log domain for panel plugin
+- Fixed object "dialog" getters and setters
+- Fixed class based plugin intialization
+- Added xfce_titled_dialog_get_type == 0 check
+- Updated TODO message
+- Removed redundant declaration
+- Replaced GTK_STOCK_OK with "_OK"
+- Replaced deprected GTK2 code with alternative GTK3 code
+- Replaced gtk_tool_button_new_from_stock with 
+orage_toolbar_append_button
+- Removed deprecated gtk_widget_get_default_style
+- Removed redundant const qualifiers
+- Fixed typo
+- Replaced gtk_font_button_get_font_name with gtk_font_chooser_get_font 
+and added g_free for release memory from allocated font name
+- Disable unused parameter warning
+- Changed variable clock_rotation_array from char to const gchar
+- Changed OS default background to white and foreground (text colour) 
+to black
+- Replaced gtk_style_context_get_property with gtk_style_context_get
+- Fixed casting of GtkStyleProvider
+- Replaced deprecated gtk_css_provider_get_default with 
+gtk_css_provider_new
+- Suppressed deprecated warnings
+- Changed clock background and font colour from GtkColour to GtkRGBA
+- Casted GtkWidget to GtkLabel
+- Replaced gtk_widget_override_font with gtk_label_set_attributes
+- Replaced hbox with box
+- Replaced table with grid
+- Suppresed unused parameter warning
+- Fixed tooltips for GTK3 (removed gtk_tooltips_new and related)
+- Removed unused code
+- Fixed panel plugin type name
+- Code cleanup: replaced ';;' with ';'
+- Patches from issues #4: started to porting orage plugin to class 
+structure.
+- Replaced string constants which was used in several places with macros
+- Added patches from issues #2 and #3. These patches allows to compile 
+panel-pugin, but compiled code is still non functional (needs cleanup 
+from remaining GTK2 version).
+- Enabled XFCE API for GTK3 (X-XFCE-API=2.0)
+- Internal libical and tz_convert fixes to get it compiled on Fedora35
+- Suppressed unused parameter warnings
+- Replaced subdir object build with convenience library
+- Enabled building panel plugin
+- Enabled building 'xfce-xfcalendar-settings.desktop'
+- Fixed compiler warnings about coparing signed and unsigned
+- Replaced gtk_hbox_new with gtk_box_new
+- Suppressed deperecation warnings for 
+gtk_widget_override_background_color and gtk_widget_override_color
+- Isolated deprecated color modify functions
+- Replaced deprecated gtk_font_button_get_font_name with 
+gtk_font_chooser_get_font
+- Replaced deprecated gtk_widget_modify_font and 
+gtk_widget_override_font with gtk_label_set_attributes
+- GNU intltool 0.51.0 (Ubuntu 21.04) needs that 'm4' directory exists 
+before calling intltoolize
+- Replaced Globaltime colours from GdkColor to GdkRGBA
+- Replaced GTK_STOCK_OK in globaltime timezone selection with "_OK" and 
+changed orage timezone selection to match as possible with globaltime 
+timezone slection (in future globaltime tz selection will be merged 
+with orage tz selection)
+- Replaced gtk_image_new_from_stock with gtk_image_new_from_icon_name
+- Replaced stock ID based buttons with named icon based
+- Fixed grid cell lengths for two last rows in "Text Default 
+Formatting" table
+- Replaced table with grid
+- Replaced all boxes in gt_prefs.c with grid
+- Removed redundant gtk_box_pack_start
+- Removed redundant warning macros
+- Replaced deprecated gtk_widget_modify_font with 
+gtk_widget_override_font
+- Fixed GlobalTime raising event handling
+- Added more debug info for tray icon rising
+- Ported code that use GdkEventClient to GTK3
+- Replaced box with grid
+- Replaced clocks.hdr_hbox box with grid
+- Replaced clocks.main_hbox hbox with grid
+- Disabled unused parameter warning
+- Fixed pointer error while pressing any button (re-added functions.h)
+- Added .gitignore
+- Added X11 library check to configure
+- Created convinience library for shared files (shared between Orage 
+and Globaltime)
+- Re-enabled building Globaltime
+- Fixed libbsd dependency: reverted libical strl* functions back to str*
+- Added new TODOs and removed already done
+- Updated changes in version 4.15.x
+- Removing dependency to libbsd: replaced strlcpy, strlcat, etc 
+functions with g_strl* functions
+- Added silent automake rules as default
+- Updated required XDT_AUTOGEN_REQUIRED_VERSION to 4.16.0
+- Fixed Orage internal CSS filenames
+- Changed working version to 4.15.1
+- Reverted back required autogen version
+
+4.15.0 (2021-10-07, unreleased version)
+======
+Most code ported to GTK3, tested only on FreeBSD.
+- GTK3 port
+
+4.8.5 to 4.15.1
+===============
+Some notes are in the ChangeLog file removed in
+94a4f3b6d5ccbec18be59fd457b4c9a7752a09c4
+4.15.x are unreleased versions also described above.
+
 20130201: Version 4.8.4
 ---------
         * Production fix release 
