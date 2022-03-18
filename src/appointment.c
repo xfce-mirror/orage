@@ -2472,7 +2472,7 @@ static gboolean fill_appt_window(appt_win *apptw, const gchar *action,
 
     /* first flags */
     apptw->xf_uid = g_strdup(appt->uid);
-    apptw->par = g_strdup((const gchar *)par);
+    apptw->par = g_strdup (par);
     apptw->appointment_changed = FALSE;
     if (strcmp(action, "NEW") == 0) {
         apptw->appointment_add = TRUE;
