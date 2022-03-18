@@ -598,36 +598,40 @@ static void on_appNote_buffer_changed_cb (G_GNUC_UNUSED GtkTextBuffer *b,
     appt_win *apptw = (appt_win *)user_data;
     GtkTextIter start, end, match_start, match_end;
     GtkTextBuffer *tb;
-    gchar *cdate, ctime[6], *cdatetime;
-    struct tm *tm;
+    GDateTime *dt;
+    gchar *time_str;
+    const gchar *fmt;
 
     tb = apptw->Note_buffer;
     gtk_text_buffer_get_bounds(tb, &start, &end);
+
     if (gtk_text_iter_forward_search(&start, "<D>"
                 , GTK_TEXT_SEARCH_TEXT_ONLY
                 , &match_start, &match_end, &end)) { /* found it */
-        cdate = orage_localdate_i18();
-        gtk_text_buffer_delete(tb, &match_start, &match_end);
-        gtk_text_buffer_insert(tb, &match_start, cdate, -1);
+        fmt = "%x";
     }
     else if (gtk_text_iter_forward_search(&start, "<T>"
                 , GTK_TEXT_SEARCH_TEXT_ONLY
                 , &match_start, &match_end, &end)) { /* found it */
-        tm = orage_localtime();
-        g_snprintf(ctime, sizeof (ctime), "%02d:%02d", tm->tm_hour, tm->tm_min);
-        gtk_text_buffer_delete(tb, &match_start, &match_end);
-        gtk_text_buffer_insert(tb, &match_start, ctime, -1);
+        fmt = "%H:%M";
     }
     else if (gtk_text_iter_forward_search(&start, "<DT>"
                 , GTK_TEXT_SEARCH_TEXT_ONLY
                 , &match_start, &match_end, &end)) { /* found it */
-        tm = orage_localtime();
-        cdate = orage_tm_date_to_i18_date(tm);
-        g_snprintf(ctime, sizeof (ctime), "%02d:%02d", tm->tm_hour, tm->tm_min);
-        cdatetime = g_strconcat(cdate, " ", ctime, NULL);
+        fmt = "%x %H:%M";
+    }
+    else
+        fmt = NULL;
+
+    if (fmt)
+    {
+        dt = g_date_time_new_now_local ();
+        time_str = g_date_time_format (dt, fmt);
+        g_date_time_unref (dt);
+
         gtk_text_buffer_delete(tb, &match_start, &match_end);
-        gtk_text_buffer_insert(tb, &match_start, cdatetime, -1);
-        g_free(cdatetime);
+        gtk_text_buffer_insert(tb, &match_start, time_str, -1);
+        g_free (time_str);
     }
    
     mark_appointment_changed((appt_win *)user_data);

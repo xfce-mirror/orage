@@ -93,12 +93,11 @@ GtkWidget *orage_period_hbox_new(gboolean head_space, gboolean tail_space
         , GtkWidget *spin_hh, GtkWidget *hh_label
         , GtkWidget *spin_mm, GtkWidget *mm_label);
 
+/* Can be replaced with 'g_date_time_new_now_local'. */
 __attribute__((deprecated))
 struct tm *orage_localtime();
 
-#if 0
 __attribute__((deprecated))
-#endif
 char *orage_localdate_i18();
 
 #if 0
