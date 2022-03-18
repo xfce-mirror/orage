@@ -85,7 +85,7 @@ static const GtkTargetEntry drag_targets[] =
     { "STRING", 0, DRAG_TARGET_STRING }
 };
 
-static void do_appt_win(char *mode, char *uid, el_win *el)
+static void do_appt_win (const gchar *mode, char *uid, el_win *el)
 {
     appt_win *apptw;
 
@@ -98,7 +98,7 @@ static void do_appt_win(char *mode, char *uid, el_win *el)
     }
 };
 
-static void start_appt_win(char *mode,  el_win *el
+static void start_appt_win (const char *mode,  el_win *el
         , GtkTreeModel *model, GtkTreeIter *iter, GtkTreePath *path)
 {
     gchar *uid = NULL, *flags = NULL;

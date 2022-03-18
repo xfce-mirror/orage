@@ -45,7 +45,7 @@
 #define FULL_DAY_ROW (BUTTON_ROW + 1)
 #define FIRST_HOUR_ROW (FULL_DAY_ROW + 1)
 
-static void do_appt_win(char *mode, char *uid, day_win *dw)
+static void do_appt_win (const gchar *mode, char *uid, day_win *dw)
 {
     appt_win *apptw;
 

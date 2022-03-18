@@ -3745,7 +3745,7 @@ static void enable_recurrence_page_signals(appt_win *apptw)
             , G_CALLBACK(recur_day_selected_double_click_cb), apptw);
 }
 
-appt_win *create_appt_win(gchar *action, gchar *par)
+appt_win *create_appt_win (const gchar *action, gchar *par)
 {
     appt_win *apptw;
     GdkWindow *window;
