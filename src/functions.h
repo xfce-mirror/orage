@@ -93,15 +93,42 @@ GtkWidget *orage_period_hbox_new(gboolean head_space, gboolean tail_space
         , GtkWidget *spin_hh, GtkWidget *hh_label
         , GtkWidget *spin_mm, GtkWidget *mm_label);
 
+__attribute__((deprecated))
 struct tm *orage_localtime();
+
+#if 0
+__attribute__((deprecated))
+#endif
 char *orage_localdate_i18();
+
+#if 0
+__attribute__((deprecated))
+#endif
 struct tm orage_i18_time_to_tm_time(const gchar *i18_time);
+
+#if 0
+__attribute__((deprecated))
+#endif
 struct tm orage_i18_date_to_tm_date(const gchar *i18_date);
+
 gchar *orage_i18_time_to_icaltime(const gchar *i18_time);
 gchar *orage_i18_date_to_icaldate(const gchar *i18_date);
+
+#if 0
+__attribute__((deprecated))
+#endif
 gchar *orage_tm_time_to_i18_time(struct tm *tm_date);
+
+#if 0
+__attribute__((deprecated))
+#endif
 gchar *orage_tm_date_to_i18_date(const struct tm *tm_date);
+
+#if 0
+__attribute__((deprecated))
+#endif
 gchar *orage_tm_time_to_icaltime(struct tm *t);
+
 struct tm orage_icaltime_to_tm_time(const gchar *i18_date, gboolean real_tm);
 char *orage_icaltime_to_i18_time(const char *icaltime);
 char *orage_icaltime_to_i18_time_only(const char *icaltime);
