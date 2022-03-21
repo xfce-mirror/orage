@@ -1663,9 +1663,9 @@ static void recur_day_selected_double_click_cb(GtkCalendar *calendar
 
 static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
 {
-    char *startdate_to_display, *enddate_to_display, *completeddate_to_display;
+    gchar *date_to_display;
     int days, hours, minutes;
-    struct tm tm_date;
+    GDateTime *gdt;
 
     /* all day ? */
     gtk_toggle_button_set_active(
@@ -1673,25 +1673,28 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
 
     /* start time */
     if (strlen(appt->starttime) > 6 ) {
-        tm_date = orage_icaltime_to_tm_time(appt->starttime, TRUE);
-        startdate_to_display = orage_tm_date_to_i18_date(&tm_date);
-        gtk_button_set_label(GTK_BUTTON(apptw->StartDate_button)
-                , (const gchar *)startdate_to_display);
-        gtk_spin_button_set_value(
-                GTK_SPIN_BUTTON(apptw->StartTime_spin_hh)
-                        , (gdouble)tm_date.tm_hour);
-        gtk_spin_button_set_value(
-                GTK_SPIN_BUTTON(apptw->Recur_exception_incl_spin_hh)
-                        , (gdouble)tm_date.tm_hour);
-        gtk_spin_button_set_value(
-                GTK_SPIN_BUTTON(apptw->StartTime_spin_mm)
-                        , (gdouble)tm_date.tm_min);
-        gtk_spin_button_set_value(
-                GTK_SPIN_BUTTON(apptw->Recur_exception_incl_spin_mm)
-                        , (gdouble)tm_date.tm_min);
+        gdt = orage_icaltime_to_gdatetime (appt->starttime, FALSE);
+        date_to_display = g_date_time_format (gdt, "%x");
+        gtk_button_set_label (GTK_BUTTON(apptw->StartDate_button),
+                              date_to_display);
+        g_free (date_to_display);
+
+        gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->StartTime_spin_hh),
+                                   g_date_time_get_hour (gdt));
+        gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->Recur_exception_incl_spin_hh),
+                                   g_date_time_get_hour (gdt));
+        gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->StartTime_spin_mm),
+                                   g_date_time_get_minute (gdt));
+        gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->Recur_exception_incl_spin_mm),
+                                   g_date_time_get_minute (gdt));
+
+        g_date_time_unref (gdt);
+
         if (appt->start_tz_loc)
+        {
             gtk_button_set_label(GTK_BUTTON(apptw->StartTimezone_button)
                     , _(appt->start_tz_loc));
+        }
         else /* we should never get here */
             g_warning ("%s: start_tz_loc is null", G_STRFUNC);
     }
@@ -1702,16 +1705,19 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(
             apptw->End_checkbutton), appt->use_due_time);
     if (strlen(appt->endtime) > 6 ) {
-        tm_date = orage_icaltime_to_tm_time(appt->endtime, TRUE);
-        enddate_to_display = orage_tm_date_to_i18_date(&tm_date);
-        gtk_button_set_label(GTK_BUTTON(apptw->EndDate_button)
-                , (const gchar *)enddate_to_display);
-        gtk_spin_button_set_value(
-                GTK_SPIN_BUTTON(apptw->EndTime_spin_hh)
-                        , (gdouble)tm_date.tm_hour);
-        gtk_spin_button_set_value(
-                GTK_SPIN_BUTTON(apptw->EndTime_spin_mm)
-                        , (gdouble)tm_date.tm_min);
+        gdt = orage_icaltime_to_gdatetime (appt->endtime, FALSE);
+        date_to_display = g_date_time_format (gdt, "%x");
+        gtk_button_set_label (GTK_BUTTON (apptw->EndDate_button),
+                              date_to_display);
+        g_free (date_to_display);
+
+        gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->EndTime_spin_hh),
+                                   g_date_time_get_hour (gdt));
+        gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->EndTime_spin_mm),
+                                   g_date_time_get_minute (gdt));
+
+        g_date_time_unref (gdt);
+
         if (appt->end_tz_loc) {
             gtk_button_set_label(GTK_BUTTON(apptw->EndTimezone_button)
                     , _(appt->end_tz_loc));
@@ -1739,14 +1745,19 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(
             apptw->Completed_checkbutton), appt->completed);
     if (strlen(appt->completedtime) > 6 ) {
-        tm_date = orage_icaltime_to_tm_time(appt->completedtime, TRUE);
-        completeddate_to_display = orage_tm_date_to_i18_date(&tm_date);
-        gtk_button_set_label(GTK_BUTTON(apptw->CompletedDate_button)
-                , (const gchar *)completeddate_to_display);
-        gtk_spin_button_set_value(GTK_SPIN_BUTTON(apptw->CompletedTime_spin_hh)
-                , (gdouble)tm_date.tm_hour);
-        gtk_spin_button_set_value(GTK_SPIN_BUTTON(apptw->CompletedTime_spin_mm)
-                , (gdouble)tm_date.tm_min);
+        gdt = orage_icaltime_to_gdatetime (appt->completedtime, FALSE);
+        date_to_display = g_date_time_format (gdt, "%x");
+        gtk_button_set_label (GTK_BUTTON(apptw->CompletedDate_button),
+                              date_to_display);
+        g_free (date_to_display);
+
+        gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->CompletedTime_spin_hh),
+                                   g_date_time_get_hour (gdt));
+        gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->CompletedTime_spin_mm),
+                                   g_date_time_get_minute (gdt));
+
+        g_date_time_unref (gdt);
+
         if (appt->completed_tz_loc) {
             gtk_button_set_label(GTK_BUTTON(apptw->CompletedTimezone_button)
                     , _(appt->completed_tz_loc));

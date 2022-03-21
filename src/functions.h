@@ -118,9 +118,7 @@ __attribute__((deprecated))
 #endif
 gchar *orage_tm_time_to_i18_time(struct tm *tm_date);
 
-#if 0
 __attribute__((deprecated))
-#endif
 gchar *orage_tm_date_to_i18_date(const struct tm *tm_date);
 
 #if 0
@@ -128,7 +126,13 @@ __attribute__((deprecated))
 #endif
 gchar *orage_tm_time_to_icaltime(struct tm *t);
 
-struct tm orage_icaltime_to_tm_time(const gchar *i18_date, gboolean real_tm);
+__attribute__((deprecated))
+struct tm orage_icaltime_to_tm_time (const gchar *i18_date, gboolean real_tm);
+
+__attribute__((deprecated))
+GDateTime *orage_icaltime_to_gdatetime (const gchar *i18_date,
+                                        gboolean real_tm);
+
 char *orage_icaltime_to_i18_time(const char *icaltime);
 char *orage_icaltime_to_i18_time_only(const char *icaltime);
 struct tm orage_cal_to_tm_time(GtkCalendar *cal, gint hh, gint mm);
