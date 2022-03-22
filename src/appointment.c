@@ -1769,45 +1769,57 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
         g_warning ("%s: completedtime wrong %s", G_STRFUNC, appt->uid);
 }
 
+/** @param action action to be taken, possible values: "NEW", "UPDATE" and "COPY"
+ *  @param par contains XFICAL_APPT_DATE_FORMAT (yyyymmdd) date for "NEW"
+ *         appointment and ical uid for "UPDATE" and "COPY"
+ */
 static xfical_appt *fill_appt_window_get_appt(appt_win *apptw
     , const gchar *action, const gchar *par)
 {
     xfical_appt *appt=NULL;
-    struct tm *t;
-    gchar today[9];
+    GDateTime *gdt;
+    gchar *today __attribute__ ((deprecated ("replace string with GDateTime")));
+    gint hour;
+    gint minute;
 
     if (strcmp(action, "NEW") == 0) {
-/* par contains XFICAL_APPT_DATE_FORMAT (yyyymmdd) date for NEW appointment */
         appt = xfical_appt_alloc();
-        t = orage_localtime();
-        g_snprintf(today, sizeof (today), "%04d%02d%02d",
-                   t->tm_year+1900, t->tm_mon+1, t->tm_mday);
-        /* If we're today, we propose an appointment the next half-hour */
-        /* hour 24 is wrong, we use 00 */
-        if (strcmp(par, today) == 0 && t->tm_hour < 23) { 
-            if (t->tm_min <= 30) {
+        gdt = g_date_time_new_now_local ();
+        today = g_date_time_format (gdt, "%Y%m%d");
+        hour = g_date_time_get_hour (gdt);
+        minute = g_date_time_get_minute (gdt);
+        g_date_time_unref (gdt);
+        if (strcmp(par, today) == 0 &&  hour < 23) {
+            /* If we're today, we propose an appointment the next half-hour hour
+             * 24 is wrong, we use 00.
+             */
+            if (minute <= 30) {
+                g_debug ("minute <= 30");
                 g_snprintf(appt->starttime, sizeof (appt->starttime),
-                           "%sT%02d%02d00", par, t->tm_hour, 30);
+                           "%sT%02d%02d00", par, hour, 30);
                 g_snprintf(appt->endtime, sizeof (appt->endtime),
-                           "%sT%02d%02d00", par, t->tm_hour + 1, 00);
+                           "%sT%02d%02d00", par, hour + 1, 00);
             }
             else {
+                g_debug ("minute > 30");
                 g_snprintf(appt->starttime, sizeof (appt->starttime),
-                           "%sT%02d%02d00", par, t->tm_hour + 1, 00);
+                           "%sT%02d%02d00", par, hour + 1, 00);
                 g_snprintf(appt->endtime, sizeof (appt->endtime),
-                           "%sT%02d%02d00", par, t->tm_hour + 1, 30);
+                           "%sT%02d%02d00", par, hour + 1, 30);
             }
         }
-        /* otherwise we suggest it at 09:00 in the morning. */
         else {
+            /* otherwise we suggest it at 09:00 in the morning. */
             g_snprintf(appt->starttime, sizeof (appt->starttime),
                        "%sT090000", par);
             g_snprintf(appt->endtime, sizeof (appt->endtime),
                        "%sT093000", par);
         }
+        g_debug ("appt->starttime: '%s'", appt->starttime);
+        g_debug ("appt->endtime: '%s'", appt->endtime);
         if (g_par.local_timezone_utc)
             appt->start_tz_loc = g_strdup("UTC");
-        else if (g_par.local_timezone) 
+        else if (g_par.local_timezone)
             appt->start_tz_loc = g_strdup(g_par.local_timezone);
         else
             appt->start_tz_loc = g_strdup("floating");
@@ -1818,13 +1830,14 @@ static xfical_appt *fill_appt_window_get_appt(appt_win *apptw
         /* use duration by default for new appointments */
         appt->use_duration = TRUE;
         g_snprintf (appt->completedtime, sizeof (appt->completedtime),
-                    "%sT%02d%02d00", today, t->tm_hour, t->tm_min);
+                    "%sT%02d%02d00", today, hour, minute);
+        g_free (today);
+        g_debug ("appt->completedtime: '%s'", appt->completedtime);
         appt->completed_tz_loc = g_strdup(appt->start_tz_loc);
 
         read_default_alarm(appt);
     }
     else if ((strcmp(action, "UPDATE") == 0) || (strcmp(action, "COPY") == 0)) {
-        /* par contains ical uid */
         if (!par) {
             g_message ("%s appointment with null id. Ending.", action);
             return(NULL);
@@ -2502,9 +2515,9 @@ static gboolean fill_appt_window(appt_win *apptw, const gchar *action,
         appt->readonly = FALSE; 
     }
     else {
-        g_error ("%s: unknown parameter", G_STRFUNC);
         g_free(appt);
         apptw->xf_appt = NULL;
+        g_error ("%s: unknown parameter", G_STRFUNC);
         return(FALSE);
     }
     if (apptw->appointment_add) {
