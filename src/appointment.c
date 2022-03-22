@@ -2485,7 +2485,7 @@ static gboolean fill_appt_window(appt_win *apptw, const gchar *action,
                                  const gchar *par)
 {
     xfical_appt *appt;
-    struct tm *t;
+    GDateTime *gdt;
 
     /********************* INIT *********************/
     g_message ("%s appointment: %s", action, par);
@@ -2524,11 +2524,15 @@ static gboolean fill_appt_window(appt_win *apptw, const gchar *action,
         add_file_select_cb(apptw);
     }
     if (!appt->completed) { /* some nice default */
-        t = orage_localtime(); /* probably completed today? */
+        gdt = g_date_time_new_now_local (); /* probably completed today? */
         g_snprintf(appt->completedtime, sizeof (appt->completedtime),
                    XFICAL_APPT_TIME_FORMAT,
-                   t->tm_year+1900, t->tm_mon+1 , t->tm_mday, t->tm_hour,
-                   t->tm_min, 0);
+                   g_date_time_get_year (gdt),
+                   g_date_time_get_month (gdt),
+                   g_date_time_get_day_of_month (gdt),
+                   g_date_time_get_hour (gdt),
+                   g_date_time_get_minute (gdt), 0);
+        g_date_time_unref (gdt);
         g_free(appt->completed_tz_loc);
         appt->completed_tz_loc = g_strdup(appt->start_tz_loc);
     }
