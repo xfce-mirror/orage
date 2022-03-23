@@ -1794,14 +1794,12 @@ static xfical_appt *fill_appt_window_get_appt(appt_win *apptw
              * 24 is wrong, we use 00.
              */
             if (minute <= 30) {
-                g_debug ("minute <= 30");
                 g_snprintf(appt->starttime, sizeof (appt->starttime),
                            "%sT%02d%02d00", par, hour, 30);
                 g_snprintf(appt->endtime, sizeof (appt->endtime),
                            "%sT%02d%02d00", par, hour + 1, 00);
             }
             else {
-                g_debug ("minute > 30");
                 g_snprintf(appt->starttime, sizeof (appt->starttime),
                            "%sT%02d%02d00", par, hour + 1, 00);
                 g_snprintf(appt->endtime, sizeof (appt->endtime),
@@ -1815,8 +1813,7 @@ static xfical_appt *fill_appt_window_get_appt(appt_win *apptw
             g_snprintf(appt->endtime, sizeof (appt->endtime),
                        "%sT093000", par);
         }
-        g_debug ("appt->starttime: '%s'", appt->starttime);
-        g_debug ("appt->endtime: '%s'", appt->endtime);
+
         if (g_par.local_timezone_utc)
             appt->start_tz_loc = g_strdup("UTC");
         else if (g_par.local_timezone)
@@ -1832,7 +1829,6 @@ static xfical_appt *fill_appt_window_get_appt(appt_win *apptw
         g_snprintf (appt->completedtime, sizeof (appt->completedtime),
                     "%sT%02d%02d00", today, hour, minute);
         g_free (today);
-        g_debug ("appt->completedtime: '%s'", appt->completedtime);
         appt->completed_tz_loc = g_strdup(appt->start_tz_loc);
 
         read_default_alarm(appt);
