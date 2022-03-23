@@ -93,21 +93,20 @@ GtkWidget *orage_period_hbox_new(gboolean head_space, gboolean tail_space
         , GtkWidget *spin_hh, GtkWidget *hh_label
         , GtkWidget *spin_mm, GtkWidget *mm_label);
 
-/* Can be replaced with 'g_date_time_new_now_local'. */
-__attribute__((deprecated))
+__attribute__((deprecated ("replace with 'g_date_time_new_now_local'")))
 struct tm *orage_localtime();
 
-__attribute__((deprecated))
-char *orage_localdate_i18();
+/** Return date string. Calling function must free returned date string.
+ *  @return date string.
+ */
+gchar *orage_localdate_i18 (void);
 
 #if 0
 __attribute__((deprecated))
 #endif
 struct tm orage_i18_time_to_tm_time(const gchar *i18_time);
 
-#if 0
 __attribute__((deprecated))
-#endif
 struct tm orage_i18_date_to_tm_date(const gchar *i18_date);
 
 gchar *orage_i18_time_to_icaltime(const gchar *i18_time);

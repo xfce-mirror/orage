@@ -101,7 +101,8 @@ gboolean orage_date_button_clicked(GtkWidget *button, GtkWidget *selDate_dialog)
 /*  GtkWidget *selDate_dialog; */
     GtkWidget *selDate_calendar;
     gint result;
-    char *new_date=NULL;
+    gchar *new_date = NULL;
+    gchar *today;
     const gchar *cur_date;
     struct tm cur_t;
     gboolean changed, allocated=FALSE;
@@ -127,8 +128,13 @@ gboolean orage_date_button_clicked(GtkWidget *button, GtkWidget *selDate_dialog)
     cur_date = (char *)gtk_button_get_label(GTK_BUTTON(button));
     if (cur_date)
         cur_t = orage_i18_date_to_tm_date(cur_date);
-    else /* something was wrong. let's return some valid value */
-        cur_t = orage_i18_date_to_tm_date(orage_localdate_i18());
+    else
+    {
+        /* something was wrong. let's return some valid value */
+        today = orage_localdate_i18 ();
+        cur_t = orage_i18_date_to_tm_date (today);
+        g_free (today);
+    }
 
     orage_select_date(GTK_CALENDAR(selDate_calendar)
             , cur_t.tm_year+1900, cur_t.tm_mon, cur_t.tm_mday);
@@ -141,6 +147,7 @@ gboolean orage_date_button_clicked(GtkWidget *button, GtkWidget *selDate_dialog)
             break;
         case 1:
             new_date = orage_localdate_i18();
+            allocated = TRUE;
             break;
         case GTK_RESPONSE_DELETE_EVENT:
         default:
@@ -152,7 +159,7 @@ gboolean orage_date_button_clicked(GtkWidget *button, GtkWidget *selDate_dialog)
         changed = TRUE;
     else
         changed = FALSE;
-    gtk_button_set_label(GTK_BUTTON(button), (const gchar *)new_date);
+    gtk_button_set_label (GTK_BUTTON(button), new_date);
     if (allocated)
         g_free(new_date);
     gtk_widget_destroy(selDate_dialog);
@@ -897,12 +904,16 @@ struct tm *orage_localtime(void)
     return(localtime(&tt));
 }
 
-char *orage_localdate_i18(void)
+gchar *orage_localdate_i18 (void)
 {
-    struct tm *t;
+    GDateTime *gdt;
+    gchar *today;
 
-    t = orage_localtime();
-    return(orage_tm_date_to_i18_date(t));
+    gdt = g_date_time_new_now_local ();
+    today = g_date_time_format (gdt, "%x");
+    g_date_time_unref (gdt);
+
+    return today;
 }
 
 /* move one day forward or backward */

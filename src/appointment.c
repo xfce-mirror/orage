@@ -2386,7 +2386,7 @@ static void fill_appt_window_alarm(appt_win *apptw, xfical_appt *appt)
 
 static void fill_appt_window_recurrence(appt_win *apptw, xfical_appt *appt)
 {
-    char *untildate_to_display;
+    gchar *untildate_to_display;
     gchar *text;
     GList *tmp;
     xfical_exception *recur_exception;
@@ -2401,8 +2401,9 @@ static void fill_appt_window_recurrence(appt_win *apptw, xfical_appt *appt)
             gtk_spin_button_set_value(
                     GTK_SPIN_BUTTON(apptw->Recur_count_spin), (gdouble)1);
             untildate_to_display = orage_localdate_i18();
-            gtk_button_set_label(GTK_BUTTON(apptw->Recur_until_button)
-                    , (const gchar *)untildate_to_display);
+            gtk_button_set_label (GTK_BUTTON(apptw->Recur_until_button),
+                                  untildate_to_display);
+            g_free (untildate_to_display);
             break;
         case 1: /* count */
             gtk_toggle_button_set_active(
@@ -2411,8 +2412,9 @@ static void fill_appt_window_recurrence(appt_win *apptw, xfical_appt *appt)
                     GTK_SPIN_BUTTON(apptw->Recur_count_spin)
                     , (gdouble)appt->recur_count);
             untildate_to_display = orage_localdate_i18();
-            gtk_button_set_label(GTK_BUTTON(apptw->Recur_until_button)
-                    , (const gchar *)untildate_to_display);
+            gtk_button_set_label (GTK_BUTTON (apptw->Recur_until_button),
+                                  untildate_to_display);
+            g_free (untildate_to_display);
             break;
         case 2: /* until */
             gtk_toggle_button_set_active(

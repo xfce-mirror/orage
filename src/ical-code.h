@@ -72,19 +72,19 @@ typedef struct _xfical_appt
          * T means it has also time part
          * Z means it is in UTC format
          */
-    __attribute__ ((deprecated ("replace with glib implementation")))
+    __attribute__ ((deprecated ("replace with GDateTime")))
     gchar  starttime[17];
     gchar *start_tz_loc;
     gboolean use_due_time;  /* VTODO has due date or not */
 
-    __attribute__ ((deprecated ("replace with glib implementation")))
+    __attribute__ ((deprecated ("replace with GDateTime")))
     gchar  endtime[17];
     gchar *end_tz_loc;
     gboolean use_duration;
     gint   duration;
     gboolean completed;
 
-    __attribute__ ((deprecated ("replace with glib implementation")))
+    __attribute__ ((deprecated ("replace with GDateTime")))
     gchar  completedtime[17];
     gchar *completed_tz_loc;
 
@@ -128,6 +128,8 @@ typedef struct _xfical_appt
     xfical_freq freq;
     gint   recur_limit; /* 0 = no limit  1 = count  2 = until */
     gint   recur_count;
+
+    __attribute__ ((deprecated ("replace with GDateTime")))
     gchar  recur_until[17];
     gboolean recur_byday[7]; /* 0=Mo, 1=Tu, 2=We, 3=Th, 4=Fr, 5=Sa, 6=Su */
     gint   recur_byday_cnt[7]; /* monthly/early: 1=first -1=last 2=second... */

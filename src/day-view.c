@@ -211,8 +211,11 @@ static void changeSelectedDate(day_win *dw, const gint day)
 
 static void go_to_today(day_win *dw)
 {
-    gtk_button_set_label(GTK_BUTTON(dw->StartDate_button)
-            , orage_localdate_i18());
+    gchar *date_str;
+
+    date_str = orage_localdate_i18 ();
+    gtk_button_set_label (GTK_BUTTON(dw->StartDate_button), date_str);
+    g_free (date_str);
     refresh_day_win(dw);
 }
 
@@ -938,7 +941,8 @@ static void build_day_view_table (day_win *dw)
     gint days_n1;
     gint i, sunday;
     GtkWidget *label, *button;
-    char text[5+1], *date, *today;
+    char text[5+1], *date;
+    gchar *today;
     struct tm tm_date;
     gint monthdays[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
@@ -962,7 +966,7 @@ static void build_day_view_table (day_win *dw)
     if (is_leapyear (tm_date.tm_year))
         ++monthdays[1];
 
-    today = g_strdup(orage_localdate_i18());
+    today = orage_localdate_i18 ();
 
     fill_hour_arrow(dw, 0);
     for (i = 1; i < days_n1; i++)
