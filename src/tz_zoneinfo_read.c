@@ -138,7 +138,7 @@ static void read_file(const char *file_name, const struct stat *file_stat)
 
     g_debug ("size of file %s is %d bytes", file_name, (int)file_stat->st_size);
 
-    in_buf = g_malloc0(file_stat->st_size);
+    in_buf = g_new0(unsigned char, file_stat->st_size);
     in_head = in_buf;
     in_tail = in_buf + file_stat->st_size - 1;
     file = fopen(file_name, "r");
@@ -279,7 +279,7 @@ static void get_country(void)
     if (str_nl < zone_tab_buf)
         return; /* not found */
     /* now step one step forward and we are pointing to the country code */
-    tz_array.cc[tz_array.count] = malloc(2 + 1);
+    tz_array.cc[tz_array.count] = g_new(char, 2 + 1);
     strncpy(tz_array.cc[tz_array.count], ++str_nl, 2);
     tz_array.cc[tz_array.count][2] = '\0';
 
@@ -300,7 +300,7 @@ static void get_country(void)
      * (There is a line end at the end of the file also.) */
     for (str_nl = str; str_nl[0] != '\n'; str_nl++)
         ;
-    tz_array.country[tz_array.count] = malloc((str_nl - str) + 1);
+    tz_array.country[tz_array.count] = g_new(char, (str_nl - str) + 1);
     strncpy(tz_array.country[tz_array.count], str, (str_nl - str));
     tz_array.country[tz_array.count][(str_nl - str)] = '\0';
 }
@@ -338,7 +338,7 @@ static int write_ical_file(void)
     long tc_time = 0, prev_tc_time = 0; /* TimeChange times */
     char s_next[101], s_prev[101];
 
-    tz_array.city[tz_array.count] = strdup(in_timezone_name);
+    tz_array.city[tz_array.count] = g_strdup(in_timezone_name);
 
     tz_array.cc[tz_array.count] = NULL;
     tz_array.country[tz_array.count] = NULL;
@@ -380,12 +380,12 @@ static int write_ical_file(void)
             prev_tc_time -= 1;
             localtime_r((const time_t *)&prev_tc_time, &cur_gm_time);
             _strftime(s_prev, 100, "%c", &cur_gm_time);
-            tz_array.prev[tz_array.count] = strdup(s_prev);
+            tz_array.prev[tz_array.count] = g_strdup(s_prev);
 
             tc_time -= 1;
             localtime_r((const time_t *)&tc_time, &cur_gm_time);
             _strftime(s_next, 100, "%c", &cur_gm_time);
-            tz_array.next[tz_array.count] = strdup(s_next);
+            tz_array.next[tz_array.count] = g_strdup(s_next);
             /* get timechange type index */
             if (timecnt) {
                 in_head = begin_timechangetypeindexes;
@@ -411,7 +411,7 @@ static int write_ical_file(void)
             prev_tc_time -= 1;
             localtime_r((const time_t *)&prev_tc_time, &cur_gm_time);
             _strftime(s_prev, 100, "%c", &cur_gm_time);
-            tz_array.prev[tz_array.count] = strdup(s_prev);
+            tz_array.prev[tz_array.count] = g_strdup(s_prev);
         }
         else
             tz_array.prev[tz_array.count] = NULL;
@@ -437,7 +437,7 @@ static int write_ical_file(void)
 
      /* get timezone name */
     in_head = begin_timezonenames;
-    tz_array.tz[tz_array.count] = strdup((char *)in_head + abbr_i);
+    tz_array.tz[tz_array.count] = g_strdup((char *)in_head + abbr_i);
 
     tz_array.count++;
 
@@ -454,14 +454,14 @@ static int file_call_process_file(const char *file_name
     else
         g_debug ("processing file=(%s)", file_name);
 
-    in_timezone_name = strdup(&file_name[in_file_base_offset
+    in_timezone_name = g_strdup(&file_name[in_file_base_offset
             + strlen("zoneinfo/")]);
-    timezone_name = strdup(in_timezone_name);
+    timezone_name = g_strdup(in_timezone_name);
     if (check_ical && !timezone_exists_in_ical()) {
         g_debug ("skipping file=(%s) as it does not exist in libical",
                  file_name);
-        free(in_timezone_name);
-        free(timezone_name);
+        g_free(in_timezone_name);
+        g_free(timezone_name);
         return(1);
     }
     if (flags == FTW_SL) {
@@ -472,8 +472,8 @@ static int file_call_process_file(const char *file_name
         if (stat(file_name, &file_stat)) {
             g_warning ("file open error (%s): %s", file_name,
                        g_strerror (errno));
-            free(in_timezone_name);
-            free(timezone_name);
+            g_free(in_timezone_name);
+            g_free(timezone_name);
             return(1);
         }
         read_file(file_name, &file_stat);
@@ -481,18 +481,18 @@ static int file_call_process_file(const char *file_name
     else
         read_file(file_name, sb);
     if (process_file(file_name)) { /* we skipped this file */
-        free(in_timezone_name);
-        free(timezone_name);
-        free(in_buf);
+        g_free(in_timezone_name);
+        g_free(timezone_name);
+        g_free(in_buf);
         return(1);
     }
     write_ical_file ();
 
-    free(in_buf);
-    free(out_file);
+    g_free(in_buf);
+    g_free(out_file);
     out_file = NULL;
-    free(in_timezone_name);
-    free(timezone_name);
+    g_free(in_timezone_name);
+    g_free(timezone_name);
     return(0);
 }
 
@@ -554,12 +554,12 @@ static int check_parameters(void)
                        TZ_CONVERT_PAR_FILE_LOC);
         }
         else { /* no errors */
-            in_file = malloc(par_file_stat.st_size+1);
+            in_file = g_new(char, par_file_stat.st_size+1);
             if (((off_t)fread(in_file, 1, par_file_stat.st_size, par_file)
                         < par_file_stat.st_size)
             && (ferror(par_file))) {
                 g_warning ("error reading (%s)", TZ_CONVERT_PAR_FILE_LOC);
-                free(in_file);
+                g_free(in_file);
                 in_file = NULL;
             }
             else { 
@@ -572,7 +572,7 @@ static int check_parameters(void)
                 if (stat(in_file, &par_file_stat) == -1) { /* error */
                     g_warning ("error reading (%s) (from %s)", in_file,
                                TZ_CONVERT_PAR_FILE_LOC);
-                    free(in_file);
+                    g_free(in_file);
                     in_file = NULL;
                 }
             }
@@ -580,7 +580,7 @@ static int check_parameters(void)
         fclose(par_file);
     }
     if (in_file == NULL) /* in file not found */
-        in_file = strdup(DEFAULT_OS_ZONEINFO_DIRECTORY);
+        in_file = g_strdup(DEFAULT_OS_ZONEINFO_DIRECTORY);
 
     if (in_file[0] != '/') {
         g_warning ("in_file name (%s) is not absolute file name. Ending",
@@ -634,16 +634,16 @@ static int check_parameters(void)
     in_file_base_offset = last_tz - in_file + 1; /* skip '/' */
 
     if (!in_file_is_dir) {
-        in_timezone_name = strdup(&in_file[in_file_base_offset + strlen(tz2)]);
+        in_timezone_name = g_strdup(&in_file[in_file_base_offset + strlen(tz2)]);
         if (timezone_name == NULL)
-            timezone_name = strdup(in_timezone_name);
+            timezone_name = g_strdup(in_timezone_name);
     }
 
     if (excl_dir == NULL) { /* use default */
         excl_dir_cnt = 5; /* just in case it was changed by parameter */
-        excl_dir = calloc(3, sizeof(char *));
-        excl_dir[0] = strdup("posix");
-        excl_dir[1] = strdup("right");
+        excl_dir = g_new0(char *, 3);
+        excl_dir[0] = g_strdup("posix");
+        excl_dir[1] = g_strdup("right");
     }
 
     g_message ("Infile: (%s) %s", in_file,
@@ -676,42 +676,42 @@ static void read_os_timezones(void)
     }
 
     len = in_file_base_offset + zoneinfo_len + 1;
-    tz_dir = malloc(in_file_base_offset + zoneinfo_len + 1); /* '\0' */
+    tz_dir = g_new(char, in_file_base_offset + zoneinfo_len + 1); /* '\0' */
     strncpy(tz_dir, in_file, in_file_base_offset);
     tz_dir[in_file_base_offset] = '\0'; 
     g_strlcat (tz_dir, "zoneinfo/", len); /* now we have the base directory */
 
     len = strlen(tz_dir) + strlen(ZONETAB_FILE) + 1;
-    zone_tab_file_name = malloc (len);
+    zone_tab_file_name = g_new (char, len);
     g_strlcpy (zone_tab_file_name, tz_dir, len);
     g_strlcat (zone_tab_file_name, ZONETAB_FILE, len);
 
-    free(tz_dir);
+    g_free(tz_dir);
 
     if (!(zone_tab_file = fopen(zone_tab_file_name, "r"))) {
         g_warning ("zone.tab file open failed (%s): %s", zone_tab_file_name,
                    g_strerror (errno));
-        free(zone_tab_file_name);
+        g_free(zone_tab_file_name);
         return;
     }
     if (stat(zone_tab_file_name, &zone_tab_file_stat) == -1) {
         g_warning ("zone.tab file stat failed (%s): %s", zone_tab_file_name,
                    g_strerror (errno));
-        free(zone_tab_file_name);
+        g_free(zone_tab_file_name);
         fclose(zone_tab_file);
         return;
     }
-    zone_tab_buf = malloc(zone_tab_file_stat.st_size+1);
+    zone_tab_buf = g_new(char, zone_tab_file_stat.st_size+1);
     if (((off_t)fread(zone_tab_buf, 1, zone_tab_file_stat.st_size, zone_tab_file) < zone_tab_file_stat.st_size)
     && (ferror(zone_tab_file))) {
         g_warning ("zone.tab file read failed (%s): %s", zone_tab_file_name,
                    g_strerror (errno));
-        free(zone_tab_file_name);
+        g_free(zone_tab_file_name);
         fclose(zone_tab_file);
         return;
     }
     zone_tab_buf[zone_tab_file_stat.st_size] = '\0';
-    free(zone_tab_file_name);
+    g_free(zone_tab_file_name);
     fclose(zone_tab_file);
 }
 
@@ -729,7 +729,7 @@ static void read_countries(void)
     }
 
     len = in_file_base_offset + zoneinfo_len + 1;
-    tz_dir = malloc (len); /* '\0' */
+    tz_dir = g_new (char, len); /* '\0' */
     strncpy(tz_dir, in_file, in_file_base_offset);
     tz_dir[in_file_base_offset] = '\0'; 
 #ifdef __OpenBSD__ 
@@ -739,35 +739,35 @@ static void read_countries(void)
 #endif
 
     len = strlen(tz_dir) + strlen(COUNTRY_FILE) + 1;
-    country_file_name = malloc (len);
+    country_file_name = g_new (char, len);
     g_strlcpy (country_file_name, tz_dir, len);
     g_strlcat (country_file_name, COUNTRY_FILE, len);
-    free(tz_dir);
+    g_free(tz_dir);
 
     if (!(country_file = fopen(country_file_name, "r"))) {
         g_warning ("iso3166.tab file open failed (%s): %s", country_file_name,
                    g_strerror (errno));
-        free(country_file_name);
+        g_free(country_file_name);
         return;
     }
     if (stat(country_file_name, &country_file_stat) == -1) {
         g_warning ("iso3166.tab file stat failed (%s): %s", country_file_name,
                    g_strerror (errno));
-        free(country_file_name);
+        g_free(country_file_name);
         fclose(country_file);
         return;
     }
-    country_buf = malloc(country_file_stat.st_size+1);
+    country_buf = g_new(char, country_file_stat.st_size+1);
     if (((off_t)fread(country_buf, 1, country_file_stat.st_size, country_file) < country_file_stat.st_size)
     && (ferror(country_file))) {
         g_warning ("iso3166.tab file read failed (%s): %s", country_file_name,
                    g_strerror (errno));
-        free(country_file_name);
+        g_free(country_file_name);
         fclose(country_file);
         return;
     }
     country_buf[country_file_stat.st_size] = '\0';
-    free(country_file_name);
+    g_free(country_file_name);
     fclose(country_file);
 }
 
@@ -789,7 +789,7 @@ static void read_ical_timezones(void)
         fclose(zones_tab_file);
         return;
     }
-    zones_tab_buf = malloc(zones_tab_file_stat.st_size+1);
+    zones_tab_buf = g_new(char, zones_tab_file_stat.st_size+1);
     if (((off_t)fread(zones_tab_buf, 1, zones_tab_file_stat.st_size, zones_tab_file) < zones_tab_file_stat.st_size)
     && (ferror(zones_tab_file))) {
         g_warning ("zones.tab file read failed (%s): %s",
@@ -818,15 +818,15 @@ orage_timezone_array get_orage_timezones(int show_details, int ical)
     details = show_details;
     check_ical = ical;
     if (tz_array.count == 0) {
-        tz_array.city = (char **)malloc(sizeof(char *)*(tz_array_size+2));
-        tz_array.utc_offset = (int *)malloc(sizeof(int)*(tz_array_size+2));
-        tz_array.dst = (int *)malloc(sizeof(int)*(tz_array_size+2));
-        tz_array.tz = (char **)malloc(sizeof(char *)*(tz_array_size+2));
-        tz_array.prev = (char **)malloc(sizeof(char *)*(tz_array_size+2));
-        tz_array.next = (char **)malloc(sizeof(char *)*(tz_array_size+2));
-        tz_array.next_utc_offset = (int *)malloc(sizeof(int)*(tz_array_size+2));
-        tz_array.country = (char **)malloc(sizeof(char *)*(tz_array_size+2));
-        tz_array.cc = (char **)malloc(sizeof(char *)*(tz_array_size+2));
+        tz_array.city = g_new(char *, tz_array_size+2);
+        tz_array.utc_offset = g_new(int, tz_array_size+2);
+        tz_array.dst = g_new(int, tz_array_size+2);
+        tz_array.tz = g_new(char *, tz_array_size+2);
+        tz_array.prev = g_new(char *, tz_array_size+2);
+        tz_array.next = g_new(char *, tz_array_size+2);
+        tz_array.next_utc_offset = g_new(int, tz_array_size+2);
+        tz_array.country = g_new(char *, tz_array_size+2);
+        tz_array.cc = g_new(char *, tz_array_size+2);
         check_parameters();
 
         g_debug ("Processing %s files", in_file);
@@ -857,17 +857,17 @@ orage_timezone_array get_orage_timezones(int show_details, int ical)
 
         g_message ("Processed %d timezone files from (%s)", file_cnt, in_file);
 
-        free(in_file);
+        g_free(in_file);
 
         tz_array.utc_offset[tz_array.count] = 0;
         tz_array.dst[tz_array.count] = 0;
-        tz_array.tz[tz_array.count] = strdup("UTC");
+        tz_array.tz[tz_array.count] = g_strdup("UTC");
         tz_array.prev[tz_array.count] = NULL;
         tz_array.next[tz_array.count] = NULL;
         tz_array.next_utc_offset[tz_array.count] = 0;
         tz_array.country[tz_array.count] = NULL;
         tz_array.cc[tz_array.count] = NULL;
-        tz_array.city[tz_array.count++] = strdup("UTC");
+        tz_array.city[tz_array.count++] = g_strdup("UTC");
 
         tz_array.utc_offset[tz_array.count] = 0;
         tz_array.dst[tz_array.count] = 0;
@@ -877,7 +877,7 @@ orage_timezone_array get_orage_timezones(int show_details, int ical)
         tz_array.next_utc_offset[tz_array.count] = 0;
         tz_array.country[tz_array.count] = NULL;
         tz_array.cc[tz_array.count] = NULL;
-        tz_array.city[tz_array.count++] = strdup("floating");
+        tz_array.city[tz_array.count++] = g_strdup("floating");
     }
     return(tz_array);
 }
@@ -888,39 +888,39 @@ void free_orage_timezones (void)
 
     for (i = 0 ; i < tz_array.count; i++) {
         if (tz_array.city[i])
-            free(tz_array.city[i]);
+            g_free(tz_array.city[i]);
         if (tz_array.tz[i])
-            free(tz_array.tz[i]);
+            g_free(tz_array.tz[i]);
         if (tz_array.prev[i])
-            free(tz_array.prev[i]);
+            g_free(tz_array.prev[i]);
         if (tz_array.next[i])
-            free(tz_array.next[i]);
+            g_free(tz_array.next[i]);
         if (tz_array.country[i])
-            free(tz_array.country[i]);
+            g_free(tz_array.country[i]);
         if (tz_array.cc[i])
-            free(tz_array.cc[i]);
+            g_free(tz_array.cc[i]);
     }
-    free(tz_array.city);
-    free(tz_array.utc_offset);
-    free(tz_array.dst);
-    free(tz_array.tz);
-    free(tz_array.prev);
-    free(tz_array.next);
-    free(tz_array.next_utc_offset);
-    free(tz_array.country);
-    free(tz_array.cc);
+    g_free(tz_array.city);
+    g_free(tz_array.utc_offset);
+    g_free(tz_array.dst);
+    g_free(tz_array.tz);
+    g_free(tz_array.prev);
+    g_free(tz_array.next);
+    g_free(tz_array.next_utc_offset);
+    g_free(tz_array.country);
+    g_free(tz_array.cc);
     tz_array.count = 0;
     timezone_name = NULL;
     if (zone_tab_buf) {
-        free(zone_tab_buf);
+        g_free(zone_tab_buf);
         zone_tab_buf = NULL;
     }
     if (country_buf) {
-        free(country_buf);
+        g_free(country_buf);
         country_buf = NULL;
     }
     if (zones_tab_buf) {
-        free(zones_tab_buf);
+        g_free(zones_tab_buf);
         zones_tab_buf = NULL;
     }
     file_cnt = 0; /* number of processed files */
