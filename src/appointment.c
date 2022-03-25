@@ -1071,18 +1071,39 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
      */ 
     appt->completed = gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(apptw->Completed_checkbutton));
-    current_t = orage_i18_date_to_tm_date(gtk_button_get_label(
-            GTK_BUTTON(apptw->CompletedDate_button)));
-    g_snprintf(completedtime, sizeof (completedtime), "%02d:%02d"
-            , gtk_spin_button_get_value_as_int(
-                    GTK_SPIN_BUTTON(apptw->CompletedTime_spin_hh))
-            , gtk_spin_button_get_value_as_int(
-                    GTK_SPIN_BUTTON(apptw->CompletedTime_spin_mm)));
-    strptime(completedtime, time_format, &current_t);
-    g_snprintf(appt->completedtime, sizeof (appt->completedtime),
-               XFICAL_APPT_TIME_FORMAT, current_t.tm_year + 1900,
-               current_t.tm_mon + 1, current_t.tm_mday,
-               current_t.tm_hour, current_t.tm_min, 0);
+
+    gdt_tmp = g_object_get_data (G_OBJECT (apptw->CompletedDate_button),
+                                 DATE_BUTTON_KEY);
+
+#if USE_GLIB_258
+    gtz = g_date_time_get_timezone (gdt_tmp);
+#else
+    gtz = g_time_zone_new (g_date_time_get_timezone_abbreviation (gdt_tmp));
+#endif
+
+    gdt = g_date_time_new (gtz,
+                           g_date_time_get_year (gdt_tmp),
+                           g_date_time_get_month (gdt_tmp),
+                           g_date_time_get_day_of_month (gdt_tmp),
+                           gtk_spin_button_get_value_as_int (
+                                    GTK_SPIN_BUTTON (apptw->CompletedTime_spin_hh)),
+                           gtk_spin_button_get_value_as_int (
+                                    GTK_SPIN_BUTTON (apptw->CompletedTime_spin_mm)),
+                           g_date_time_get_seconds (gdt_tmp));
+
+    g_snprintf (appt->completedtime, sizeof (appt->completedtime),
+                XFICAL_APPT_TIME_FORMAT,
+                g_date_time_get_year (gdt),
+                g_date_time_get_month (gdt),
+                g_date_time_get_day_of_month (gdt),
+                g_date_time_get_hour (gdt),
+                g_date_time_get_minute (gdt),
+                0);
+
+    g_date_time_unref (gdt);
+#if (USE_GLIB_258 == 0)
+    g_time_zone_unref (gtz);
+#endif
 
     /* availability */
     appt->availability = gtk_combo_box_get_active(
@@ -1791,6 +1812,9 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
             apptw->Completed_checkbutton), appt->completed);
     if (strlen(appt->completedtime) > 6 ) {
         gdt = orage_icaltime_to_gdatetime (appt->completedtime, FALSE);
+        g_object_set_data_full (G_OBJECT (apptw->CompletedDate_button),
+                                DATE_BUTTON_KEY, gdt,
+                                (GDestroyNotify)g_date_time_unref);
         date_to_display = g_date_time_format (gdt, "%x");
         gtk_button_set_label (GTK_BUTTON(apptw->CompletedDate_button),
                               date_to_display);
@@ -1800,8 +1824,6 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
                                    g_date_time_get_hour (gdt));
         gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->CompletedTime_spin_mm),
                                    g_date_time_get_minute (gdt));
-
-        g_date_time_unref (gdt);
 
         if (appt->completed_tz_loc) {
             gtk_button_set_label(GTK_BUTTON(apptw->CompletedTimezone_button)
