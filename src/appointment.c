@@ -1770,7 +1770,6 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
             apptw->End_checkbutton), appt->use_due_time);
     if (strlen(appt->endtime) > 6 ) {
         gdt = orage_icaltime_to_gdatetime (appt->endtime, FALSE);
-        g_debug ("appt->endtime2: %s", appt->endtime);
         g_object_set_data_full (G_OBJECT (apptw->EndDate_button),
                                 DATE_BUTTON_KEY, gdt,
                                 (GDestroyNotify)g_date_time_unref);
@@ -2455,9 +2454,10 @@ static void fill_appt_window_recurrence(appt_win *apptw, xfical_appt *appt)
 {
     gchar *untildate_to_display;
     gchar *text;
+    gdouble recur_count;
     GList *tmp;
+    GDateTime *gdt;
     xfical_exception *recur_exception;
-    struct tm tm_date;
     int i;
 
     gtk_combo_box_set_active(GTK_COMBO_BOX(apptw->Recur_freq_cb), appt->freq);
@@ -2465,38 +2465,33 @@ static void fill_appt_window_recurrence(appt_win *apptw, xfical_appt *appt)
         case 0: /* no limit */
             gtk_toggle_button_set_active(
                     GTK_TOGGLE_BUTTON(apptw->Recur_limit_rb), TRUE);
-            gtk_spin_button_set_value(
-                    GTK_SPIN_BUTTON(apptw->Recur_count_spin), (gdouble)1);
-            untildate_to_display = orage_localdate_i18();
-            gtk_button_set_label (GTK_BUTTON(apptw->Recur_until_button),
-                                  untildate_to_display);
-            g_free (untildate_to_display);
+            recur_count = 1;
+            gdt = g_date_time_new_now_local ();
             break;
         case 1: /* count */
             gtk_toggle_button_set_active(
                     GTK_TOGGLE_BUTTON(apptw->Recur_count_rb), TRUE);
-            gtk_spin_button_set_value(
-                    GTK_SPIN_BUTTON(apptw->Recur_count_spin)
-                    , (gdouble)appt->recur_count);
-            untildate_to_display = orage_localdate_i18();
-            gtk_button_set_label (GTK_BUTTON (apptw->Recur_until_button),
-                                  untildate_to_display);
-            g_free (untildate_to_display);
+            recur_count = appt->recur_count;
+            gdt = g_date_time_new_now_local ();
             break;
         case 2: /* until */
             gtk_toggle_button_set_active(
                     GTK_TOGGLE_BUTTON(apptw->Recur_until_rb), TRUE);
-            gtk_spin_button_set_value(
-                    GTK_SPIN_BUTTON(apptw->Recur_count_spin), (gdouble)1);
-            tm_date = orage_icaltime_to_tm_time(appt->recur_until, TRUE);
-            untildate_to_display = orage_tm_date_to_i18_date(&tm_date);
-            gtk_button_set_label(GTK_BUTTON(apptw->Recur_until_button)
-                    , (const gchar *)untildate_to_display);
+            recur_count = 1;
+            gdt = orage_icaltime_to_gdatetime (appt->recur_until, FALSE);
             break;
         default: /* error */
-            g_warning ("%s: Unsupported recur_limit %d", G_STRFUNC,
-                       appt->recur_limit);
+            g_error ("%s: Unsupported recur_limit %d", G_STRFUNC,
+                      appt->recur_limit);
     }
+
+    gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->Recur_count_spin),
+                               recur_count);
+    untildate_to_display = g_date_time_format (gdt, "%x");
+    g_date_time_unref (gdt);
+    gtk_button_set_label (GTK_BUTTON(apptw->Recur_until_button),
+                          untildate_to_display);
+    g_free (untildate_to_display);
 
     /* weekdays */
     for (i=0; i <= 6; i++) {

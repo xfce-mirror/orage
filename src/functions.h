@@ -101,34 +101,28 @@ struct tm *orage_localtime();
  */
 gchar *orage_localdate_i18 (void);
 
-#if 0
-__attribute__((deprecated))
-#endif
+__attribute__((deprecated ("replace with 'g_date_time_new_now_local'")))
 struct tm orage_i18_time_to_tm_time(const gchar *i18_time);
 
-__attribute__((deprecated))
+__attribute__((deprecated ("replace with 'g_date_time_new_now_local'")))
 struct tm orage_i18_date_to_tm_date(const gchar *i18_date);
 
 gchar *orage_i18_time_to_icaltime(const gchar *i18_time);
 gchar *orage_i18_date_to_icaldate(const gchar *i18_date);
 
-#if 0
-__attribute__((deprecated))
-#endif
+__attribute__((deprecated ("replace with 'g_date_time_new_now_local'")))
 gchar *orage_tm_time_to_i18_time(struct tm *tm_date);
 
 __attribute__((deprecated))
 gchar *orage_tm_date_to_i18_date(const struct tm *tm_date);
 
-#if 0
-__attribute__((deprecated))
-#endif
+__attribute__((deprecated ("replace with 'g_date_time_new_now_local'")))
 gchar *orage_tm_time_to_icaltime(struct tm *t);
 
 __attribute__((deprecated))
 struct tm orage_icaltime_to_tm_time (const gchar *i18_date, gboolean real_tm);
 
-__attribute__((deprecated))
+__attribute__((deprecated ("temporary function")))
 GDateTime *orage_icaltime_to_gdatetime (const gchar *i18_date,
                                         gboolean real_tm);
 
