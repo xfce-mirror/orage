@@ -1166,11 +1166,15 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
         appt->recur_limit = 2;    /* until limit */
         appt->recur_count = 0;    /* special: means no repeat count limit */
 
-        current_t = orage_i18_date_to_tm_date(gtk_button_get_label(
-                GTK_BUTTON(apptw->Recur_until_button)));
-        g_snprintf(appt->recur_until, sizeof (appt->recur_until),
-                   XFICAL_APPT_TIME_FORMAT, current_t.tm_year + 1900,
-                   current_t.tm_mon + 1, current_t.tm_mday, 23, 59, 10);
+        gdt = g_object_get_data (G_OBJECT (apptw->Recur_until_button),
+                                 DATE_BUTTON_KEY);
+
+        g_snprintf (appt->recur_until, sizeof (appt->recur_until),
+                    XFICAL_APPT_TIME_FORMAT,
+                    g_date_time_get_year (gdt),
+                    g_date_time_get_month (gdt),
+                    g_date_time_get_day_of_month (gdt),
+                    23, 59, 10);
     }
     else
         g_warning ("%s: coding error, illegal recurrence", G_STRFUNC);
@@ -2488,7 +2492,9 @@ static void fill_appt_window_recurrence(appt_win *apptw, xfical_appt *appt)
     gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->Recur_count_spin),
                                recur_count);
     untildate_to_display = g_date_time_format (gdt, "%x");
-    g_date_time_unref (gdt);
+    g_object_set_data_full (G_OBJECT (apptw->Recur_until_button),
+                            DATE_BUTTON_KEY, gdt,
+                            (GDestroyNotify)g_date_time_unref);
     gtk_button_set_label (GTK_BUTTON(apptw->Recur_until_button),
                           untildate_to_display);
     g_free (untildate_to_display);
