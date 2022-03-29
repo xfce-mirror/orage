@@ -715,6 +715,26 @@ struct tm orage_cal_to_tm_time(GtkCalendar *cal, gint hh, gint mm)
     return(tm_date);
 }
 
+GDateTime *orage_cal_to_gdatetime (GtkCalendar *cal,
+                                   const gint hh, const gint mm)
+{
+    guint year;
+    guint month;
+    guint day;
+    GDateTime *gdt;
+
+    gtk_calendar_get_date (cal, &year, &month, &day);
+
+    gdt = g_date_time_new_local (year, month, day, hh, mm, 0);
+    if (gdt == NULL)
+    {
+        g_error ("%s failed %d-%d-%d %d:%d",
+                 G_STRFUNC, year, month, day, hh, mm);
+    }
+
+    return gdt;
+}
+
 char *orage_cal_to_i18_time(GtkCalendar *cal, gint hh, gint mm)
 {
     struct tm tm_date = {0};
