@@ -44,6 +44,7 @@
 #define BUTTON_ROW 0
 #define FULL_DAY_ROW (BUTTON_ROW + 1)
 #define FIRST_HOUR_ROW (FULL_DAY_ROW + 1)
+#define DATE_KEY "button-date"
 
 static void do_appt_win (const gchar *mode, char *uid, day_win *dw)
 {
@@ -211,11 +212,15 @@ static void changeSelectedDate(day_win *dw, const gint day)
 
 static void go_to_today(day_win *dw)
 {
-    gchar *date_str;
+    GDateTime *gdt;
+    gchar *today;
 
-    date_str = orage_localdate_i18 ();
-    gtk_button_set_label (GTK_BUTTON(dw->StartDate_button), date_str);
-    g_free (date_str);
+    gdt = g_date_time_new_now_local ();
+    today = g_date_time_format (gdt, "%x");
+    g_object_set_data_full (G_OBJECT (dw->StartDate_button),
+                            DATE_KEY, gdt, (GDestroyNotify)g_date_time_unref);
+    gtk_button_set_label (GTK_BUTTON (dw->StartDate_button), today);
+    g_free (today);
     refresh_day_win(dw);
 }
 
