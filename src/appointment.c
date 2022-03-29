@@ -931,15 +931,8 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
     GTimeZone *gtz;
     GDateTime *gdt;
     GDateTime *gdt_tmp;
-    const char *time_format="%H:%M";
-    struct tm current_t;
-    gchar starttime[6];
-    gchar endtime[6], completedtime[6];
     gint i;
     gchar *tmp, *tmp2;
-    /*
-    GList *tmp_gl;
-    */
 
 /* Next line is fix for bug 2811.
  * We need to make sure spin buttons do not have values which are not
