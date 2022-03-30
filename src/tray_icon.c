@@ -116,12 +116,17 @@ static void on_preferences_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
 static void on_new_appointment_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
                                          G_GNUC_UNUSED gpointer user_data)
 {
-    struct tm *t;
+    GDateTime *gdt;
     char cur_date[9];
+    gint year;
+    gint month;
+    gint day;
 
-    t = orage_localtime();
-    g_snprintf(cur_date, sizeof (cur_date), "%04d%02d%02d", t->tm_year+1900
-               , t->tm_mon+1, t->tm_mday);
+    gdt = g_date_time_new_now_local ();
+    g_date_time_get_ymd (gdt, &year, &month, &day);
+    g_snprintf (cur_date, sizeof (cur_date), "%04d%02d%02d", year, month, day);
+    g_date_time_unref (gdt);
+
     create_appt_win("NEW", cur_date);
 }
 
