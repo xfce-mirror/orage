@@ -1835,6 +1835,8 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
 /** @param action action to be taken, possible values: "NEW", "UPDATE" and "COPY"
  *  @param par contains XFICAL_APPT_DATE_FORMAT (yyyymmdd) date for "NEW"
  *         appointment and ical uid for "UPDATE" and "COPY"
+ *
+ *  FIXME: Action "NEW" parameter should be GDateTime
  */
 static xfical_appt *fill_appt_window_get_appt(appt_win *apptw
     , const gchar *action, const gchar *par)
