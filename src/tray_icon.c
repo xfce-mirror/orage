@@ -98,12 +98,12 @@ static GtkWidget *orage_image_menu_item (const gchar *label,
 static void on_Today_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
                                gpointer user_data)
 {
-    struct tm *t;
+    GDateTime *gdt;
     CalWin *xfcal = (CalWin *)user_data;
 
-    t = orage_localtime();
-    orage_select_date(GTK_CALENDAR(xfcal->mCalendar), t->tm_year+1900
-            , t->tm_mon, t->tm_mday);
+    gdt = g_date_time_new_now_local ();
+    orage_select_date2 (GTK_CALENDAR (xfcal->mCalendar), gdt);
+    g_date_time_unref (gdt);
     (void)create_el_win (NULL);
 }
 

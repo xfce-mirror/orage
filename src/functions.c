@@ -977,6 +977,26 @@ void orage_select_date(GtkCalendar *cal
     }
 }
 
+void orage_select_date2 (GtkCalendar *cal, GDateTime *gdt)
+{
+    guint cur_year, cur_month, cur_mday;
+    gint year;
+    gint month;
+    gint day;
+
+    g_date_time_get_ymd (gdt, &year, &month, &day);
+    month -= 1;
+    gtk_calendar_get_date(cal, &cur_year, &cur_month, &cur_mday);
+
+    if (((gint)cur_year == year) && ((gint)cur_month == month))
+        gtk_calendar_select_day(cal, day);
+    else {
+        gtk_calendar_select_day(cal, 0); /* need to avoid illegal day/month */
+        gtk_calendar_select_month(cal, month, year);
+        gtk_calendar_select_day(cal, day);
+    }
+}
+
 void orage_select_today(GtkCalendar *cal)
 {
     struct tm *t;

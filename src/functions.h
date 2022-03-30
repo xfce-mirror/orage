@@ -147,7 +147,14 @@ char *orage_cal_to_icaldate(GtkCalendar *cal);
 void orage_move_day(struct tm *t, int day);
 gint orage_days_between (const struct tm *t1, const struct tm *t2);
 
+__attribute__((deprecated ("use orage_select_date2")))
 void orage_select_date(GtkCalendar *cal, guint year, guint month, guint day);
+
+/** Set (GTK) calendar to selected date.
+ *  @param cal instance of GTK calendar
+ *  @param gdt selected date.
+ */
+void orage_select_date2 (GtkCalendar *cal, GDateTime *gdt);
 void orage_select_today(GtkCalendar *cal);
 
 gboolean orage_copy_file (const gchar *source, const gchar *target);
