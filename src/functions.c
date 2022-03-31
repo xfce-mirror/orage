@@ -672,6 +672,18 @@ struct tm orage_i18_date_to_tm_date (const gchar *i18_date)
     return(tm_date);
 }
 
+void orage_i18_date_to_gdate (const gchar *i18_date, GDate *date)
+{
+    g_date_set_parse (date, i18_date);
+
+    if (g_date_valid (date) == FALSE)
+    {
+        /* Release memory before exit program. */
+        g_date_free (date);
+        g_error ("%s: wrong date format (%s)", G_STRFUNC, i18_date);
+    }
+}
+
 gchar *orage_tm_time_to_i18_time(struct tm *tm_time)
 {
     static gchar i18_time[128];
@@ -922,6 +934,17 @@ struct tm *orage_localtime(void)
 
     tt = time(NULL);
     return(localtime(&tt));
+}
+
+GDate *orage_gdatetime_to_gdate (GDateTime *gdt)
+{
+    gint year;
+    gint month;
+    gint day;
+
+    g_date_time_get_ymd (gdt, &year, &month, &day);
+
+    return g_date_new_dmy (day, month, year);
 }
 
 gchar *orage_localdate_i18 (void)

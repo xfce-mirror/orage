@@ -96,6 +96,8 @@ GtkWidget *orage_period_hbox_new(gboolean head_space, gboolean tail_space
 __attribute__((deprecated ("replace with 'g_date_time_new_now_local'")))
 struct tm *orage_localtime();
 
+GDate *orage_gdatetime_to_gdate (GDateTime *gdt);
+
 /** Return date string. Calling function must free returned date string.
  *  @return date string.
  */
@@ -104,8 +106,10 @@ gchar *orage_localdate_i18 (void);
 __attribute__((deprecated ("replace with 'g_date_time_new_now_local'")))
 struct tm orage_i18_time_to_tm_time(const gchar *i18_time);
 
-__attribute__((deprecated ("replace with 'g_date_time_new_now_local'")))
+__attribute__((deprecated ("use 'orage_i18_date_to_gdate'")))
 struct tm orage_i18_date_to_tm_date(const gchar *i18_date);
+
+void orage_i18_date_to_gdate (const gchar *i18_date, GDate *date);
 
 gchar *orage_i18_time_to_icaltime(const gchar *i18_time);
 gchar *orage_i18_date_to_icaldate(const gchar *i18_date);
@@ -116,7 +120,7 @@ gchar *orage_tm_time_to_i18_time(struct tm *tm_date);
 __attribute__((deprecated))
 gchar *orage_tm_date_to_i18_date(const struct tm *tm_date);
 
-__attribute__((deprecated ("replace with 'g_date_time_new_now_local'")))
+__attribute__((deprecated))
 gchar *orage_tm_time_to_icaltime(struct tm *t);
 
 __attribute__((deprecated))

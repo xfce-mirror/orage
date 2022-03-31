@@ -610,46 +610,50 @@ static void event_data(el_win *el)
     const gchar *title;  /* in %x strftime format */
     char      *stime;  /* in icaltime format */
     char      a_day[9]; /* yyyymmdd */
-    struct tm *t, t_title;
-    GDate *d1, *d2;
+    struct tm t_title;
+    GDate *gd_title;
+    GDate *gd_now;
+    GDate *d1;
+    GDateTime *gdt;
 
     if (el->days == 0)
         refresh_time_field(el);
     el->days = gtk_spin_button_get_value(GTK_SPIN_BUTTON(el->event_spin));
-    /*
+#if 0
     el->only_first = gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(el->event_only_first_checkbutton));
-            */
+#endif
     el->show_old = gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(el->event_show_old_checkbutton));
     title = gtk_window_get_title(GTK_WINDOW(el->Window));
-    t_title = orage_i18_date_to_tm_date(title); 
+    gd_title = g_date_new ();
+    orage_i18_date_to_gdate (title, gd_title);
+
     if (el->show_old && el->only_first) {
         /* just take any old enough date, so that all events fit in */
         g_strlcpy(a_day, "19000101", sizeof (a_day));
         /* we need to adjust also number of days shown */
         d1 = g_date_new_dmy(1, 1, 1900);
-        d2 = g_date_new_dmy(t_title.tm_mday, t_title.tm_mon+1
-                , t_title.tm_year+1900);
-        el->days += g_date_days_between(d1, d2);
+        el->days += g_date_days_between (d1, gd_title);
         g_date_free(d1);
-        g_date_free(d2);
     }
     else { /* we show starting from selected day */
-        stime = orage_tm_time_to_icaltime(&t_title);
+        t_title = orage_i18_date_to_tm_date(title);
+        stime = orage_tm_time_to_icaltime (&t_title);
         g_strlcpy (a_day, stime, sizeof (a_day));
     }
 
-    t = orage_localtime();
-    g_snprintf(el->time_now, sizeof (el->time_now), "%02d:%02d", t->tm_hour,
-              t->tm_min);
-    if (t_title.tm_year == t->tm_year
-    &&  t_title.tm_mon  == t->tm_mon
-    &&  t_title.tm_mday == t->tm_mday)
-        el->today = TRUE;
-    else
-        el->today = FALSE; 
+    gdt = g_date_time_new_now_local ();
+    gd_now = orage_gdatetime_to_gdate (gdt);
+    g_snprintf (el->time_now, sizeof (el->time_now), "%02d:%02d",
+                g_date_time_get_hour (gdt),
+                g_date_time_get_minute (gdt));
 
+    g_date_time_unref (gdt);
+    el->today = (g_date_days_between (gd_title, gd_now) == 0) ? TRUE : FALSE;
+
+    g_date_free (gd_now);
+    g_date_free (gd_title);
     app_data(el, a_day, a_day);
 }
 
