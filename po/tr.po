@@ -8,8 +8,8 @@
 # Xfce Bot <transifex@xfce.org>, 2022
 # Serdar Sağlam <teknomobil@msn.com>, 2022
 # Necdet Yücel <necdetyucel@gmail.com>, 2022
-# Emin Tufan Çetin <etcetin@gmail.com>, 2022
 # Demiray Muhterem <mdemiray@msn.com>, 2022
+# Emin Tufan Çetin <etcetin@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
@@ -18,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-12 00:50+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Demiray Muhterem <mdemiray@msn.com>, 2022\n"
+"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>, 2022\n"
 "Language-Team: Turkish (https://www.transifex.com/xfce/teams/16840/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -72,8 +72,8 @@ msgstr "saati ayarla"
 msgid ""
 "adjust to change minute. Click arrows with button 2 to change only 1 minute."
 msgstr ""
-"değişim dakikasını ayarla. Sadece 1 dakika değiştirmek için düğme 2 ile "
-"okları tıklayın."
+"değişim dakikasını ayarla. Yalnızca 1 dakika değiştirmek için düğme 2 "
+"oklarına tıkla."
 
 #: ../globaltime/globaltime.c:621
 msgid "Global Time"
@@ -89,7 +89,7 @@ msgstr "YENİ KOPYA"
 
 #: ../globaltime/gt_prefs.c:336
 msgid "Not possible to delete the last clock."
-msgstr "Son saati silmek mümkün değil."
+msgstr "Son saati silinemiyor."
 
 #: ../globaltime/gt_prefs.c:577
 msgid "update this clock"
@@ -133,7 +133,7 @@ msgstr "pencereyi kapa ve çık"
 
 #: ../globaltime/gt_prefs.c:652
 msgid "Globaltime preferences "
-msgstr "Evrensel tercihleri"
+msgstr "Evrensel saat tercihleri"
 
 #. -----------------------HEADING-------------------------------------------
 #: ../globaltime/gt_prefs.c:665
@@ -167,11 +167,11 @@ msgstr "Metin Biçimi"
 #. ------------------------background-------------------------
 #: ../globaltime/gt_prefs.c:721 ../globaltime/gt_prefs.c:923
 msgid "Background color:"
-msgstr "Arkaplan rengi:"
+msgstr "Arka plan rengi:"
 
 #: ../globaltime/gt_prefs.c:728
 msgid "Click to change background colour for clock"
-msgstr "Saatin arkaplan rengini değiştirmek için tıkla"
+msgstr "Saatin arka plan rengini değiştirmek için tıkla"
 
 #: ../globaltime/gt_prefs.c:737 ../globaltime/gt_prefs.c:769
 #: ../globaltime/gt_prefs.c:801 ../globaltime/gt_prefs.c:833
@@ -179,22 +179,22 @@ msgstr "Saatin arkaplan rengini değiştirmek için tıkla"
 #: ../globaltime/gt_prefs.c:939 ../globaltime/gt_prefs.c:971
 #: ../globaltime/gt_prefs.c:1003 ../globaltime/gt_prefs.c:1035
 msgid "Use default"
-msgstr "Varsayılanı kullan"
+msgstr "Öntanımlıyı kullan"
 
 #: ../globaltime/gt_prefs.c:742 ../globaltime/gt_prefs.c:774
 #: ../globaltime/gt_prefs.c:806 ../globaltime/gt_prefs.c:838
 #: ../globaltime/gt_prefs.c:870 ../globaltime/gt_prefs.c:898
 msgid "Cross this to use default instead of selected value"
-msgstr "Varsayılanı kullanmak için burayı işaretle"
+msgstr "Öntanımlıyı kullanmak için burayı imle"
 
 #. ------------------------foreground-------------------------
 #: ../globaltime/gt_prefs.c:753 ../globaltime/gt_prefs.c:955
 msgid "Foreground (=text) color:"
-msgstr "Önplan (=metin) rengi:"
+msgstr "Ön plan (=metin) rengi:"
 
 #: ../globaltime/gt_prefs.c:760
 msgid "Click to change foreground colour for clock"
-msgstr "Saatin önplan rengini değiştirmek için tıkla"
+msgstr "Saatin ön plan rengini değiştirmek için tıkla"
 
 #. ------------------------name font-------------------------
 #: ../globaltime/gt_prefs.c:785 ../globaltime/gt_prefs.c:987
@@ -230,11 +230,11 @@ msgstr "Öntanımlı Metin Biçimi"
 
 #: ../globaltime/gt_prefs.c:930
 msgid "Click to change default background colour for clocks"
-msgstr "Saatlerin öntanımlı arkaplan rengini değiştirmek için tıkla"
+msgstr "Saatlerin öntanımlı arka plan rengini değiştirmek için tıkla"
 
 #: ../globaltime/gt_prefs.c:944 ../globaltime/gt_prefs.c:976
 msgid "Cross this to use system default instead of selected color"
-msgstr "Öntanımlı sistem renklerini kullanmak için burayı işaretle"
+msgstr "Öntanımlı sistem renklerini kullanmak için burayı imle"
 
 #: ../globaltime/gt_prefs.c:962
 msgid "Click to change default text colour for clocks"
@@ -246,7 +246,7 @@ msgstr "Saat adı için öntanımlı yazı tipini değiştirmek için tıkla"
 
 #: ../globaltime/gt_prefs.c:1008 ../globaltime/gt_prefs.c:1040
 msgid "Cross this to use system default font instead of selected font"
-msgstr "Öntanımlı sistem biçimini kullanmak için burayı işaretle"
+msgstr "Öntanımlı sistem biçimini kullanmak için burayı imle"
 
 #: ../globaltime/gt_prefs.c:1026
 msgid "Click to change default font for clock time"
@@ -285,7 +285,7 @@ msgstr "Standart"
 
 #: ../globaltime/gt_prefs.c:1144
 msgid "Use normal decorations"
-msgstr "Normal süslemeleri kullan"
+msgstr "Olağan süslemeleri kullan"
 
 #: ../globaltime/gt_prefs.c:1149 ../src/appointment.c:3406
 msgid "None"
@@ -305,7 +305,7 @@ msgstr "Eşit"
 
 #: ../globaltime/gt_prefs.c:1170
 msgid "All clocks have same size"
-msgstr "Bütün saatler aynı boyutta olsun"
+msgstr "Tüm saatler aynı boyutta olsun"
 
 #: ../globaltime/gt_prefs.c:1175
 msgid "Varying"
@@ -397,7 +397,7 @@ msgstr "Ülke"
 #: ../panel-plugin/timezone_selection.c:293 ../src/timezone_selection.c:308
 #: ../src/timezone_selection.c:317 ../src/timezone_selection.c:328
 msgid "Pick timezone"
-msgstr "Zaman dilimi seç"
+msgstr "Saat dilimi seç"
 
 #: ../globaltime/timezone_selection.c:287
 #: ../globaltime/timezone_selection.c:297
@@ -433,7 +433,7 @@ msgstr "Orage Evrensel Zaman"
 
 #: ../globaltime/org.xfce.orage.globaltime.desktop.in.h:2
 msgid "Show clocks from different countries"
-msgstr "Farklı ülkelerden saatleri göster"
+msgstr "Başka ülkelerden saatleri göster"
 
 #: ../globaltime/org.xfce.orage.globaltime.desktop.in.h:3
 #: ../src/tray_icon.c:477
@@ -464,12 +464,12 @@ msgstr "_Kenarlığı göster"
 #. foreground color
 #: ../panel-plugin/oc_config.c:273
 msgid "set foreground _color:"
-msgstr "önpla_n rengini belirle:"
+msgstr "ön pla_n rengini belirle:"
 
 #. background color
 #: ../panel-plugin/oc_config.c:289
 msgid "set _background color:"
-msgstr "_arkaplan rengini belirle:"
+msgstr "_arka plan rengini belirle:"
 
 #. clock size (=mbox size): height and width
 #: ../panel-plugin/oc_config.c:305
@@ -529,8 +529,8 @@ msgid ""
 "features from working.)"
 msgstr ""
 "Bu seçeneğe kısa süredeki (5 saatten daha az) askıya alma ve uyku kipi "
-"işlemi için ihtiyaç duyabilirsiniz ve saatiniz saniye içermemelidir. Böyle "
-"ayarlamazsanız, Orage saati yanlış gösterebilir. (bu özelliği seçmek, "
+"işlemi için gereksinebilirsiniz ve saatiniz saniye içermemelidir. Böyle "
+"ayarlamazsanız, Orageclock zamanı yanlış gösterebilir. (Bu özelliği seçmek, "
 "işlemci ve kaydetme işlemleri kesiminin çalışmasını engeller.)"
 
 #: ../panel-plugin/oc_config.c:471
@@ -544,18 +544,18 @@ msgid ""
 "\t%H = hours \t\t\t\t%M = minute\n"
 "\t%X = local time\t\t\t%x = local date"
 msgstr ""
-"Bu uygulama zaman ve tarih bilgisini almak için \"strftime\" fonksiyonu kullanır.\n"
-"Sen de geçerli kodu kullanarak istediğin biçimde zamanı ve tarihi alabilirsin.\n"
+"Bu uygulama zaman ve tarih bilgisini almak için \"strftime\" işlevini kullanır.\n"
+"Yeğlediğiniz biçimde saati almak için herhangi bir geçerli kodu kullanın.\n"
 "İşte birkaç örnek:\n"
 "\t%A = haftanın günü \t\t\t%B = ay\n"
-"\t%c = tarih ve zaman \t\t\t%R = saat ve dakika\n"
+"\t%c = tarih ve zaman \t\t%R = saat ve dakika\n"
 "\t%V = hafta numarası \t\t\t%Z = kullanımdaki zaman dilimi\n"
 "\t%H = saat \t\t\t\t\t%M = dakika\n"
 "\t%X = yerel zaman\t\t\t%x = yerel tarih"
 
 #: ../panel-plugin/oc_config.c:501
 msgid "Orage clock Preferences"
-msgstr "Orage saat Özellikleri"
+msgstr "Orageclock Tercihleri"
 
 #: ../panel-plugin/oc_config.c:505 ../src/day-view.c:403
 #: ../src/event-list.c:1223 ../src/interface.c:876
@@ -608,7 +608,7 @@ msgstr "Orage"
 #. Create file chooser
 #: ../src/appointment.c:688 ../src/interface.c:262 ../src/parameters.c:392
 msgid "Select a file..."
-msgstr "Bir dosya seç..."
+msgstr "Dosya seç..."
 
 #: ../src/appointment.c:696
 msgid "Sound Files"
@@ -624,7 +624,7 @@ msgstr "Görev bilgisi değiştirildi."
 
 #: ../src/appointment.c:755 ../src/appointment.c:1292 ../src/event-list.c:993
 msgid "Do you want to continue?"
-msgstr "Devam etmek istiyor musun?"
+msgstr "Sürdürmek istiyor musunuz?"
 
 #: ../src/appointment.c:756
 msgid "No, do not leave"
@@ -632,7 +632,7 @@ msgstr "Hayır, ayrılma"
 
 #: ../src/appointment.c:757
 msgid "Yes, ignore modifications and leave"
-msgstr "Evet, değişiklikleri yoksay ve ayrıl"
+msgstr "Evet, değişiklikleri yok say ve ayrıl"
 
 #: ../src/appointment.c:785
 msgid "The end of this appointment is earlier than the beginning."
@@ -644,11 +644,11 @@ msgstr "Belirtilmemiş"
 
 #: ../src/appointment.c:1141
 msgid "Add new appointment to this file."
-msgstr "Bu dosyaya yeni bir randevu ekle."
+msgstr "Bu dosyaya yeni randevu ekle."
 
 #: ../src/appointment.c:1142 ../src/appointment.c:1190
 msgid "Orage default file"
-msgstr "Orage varsayılan dosyası"
+msgstr "Orage öntamılı dosyası"
 
 #: ../src/appointment.c:1228
 msgid "Appointment addition failed."
@@ -669,16 +669,16 @@ msgid ""
 "Look more details from the log file. (Perhaps file was updated external from"
 " Orage?)"
 msgstr ""
-"Daha fazla ayrıntı için günlük dosyasına bakın. (Dosya Orage tarafından "
-"güncellenmiştir?)"
+"Daha çok ayrıntı için günlük dosyasına bakın. (Belki dosya Orage dışında "
+"güncellenmiştir.)"
 
 #: ../src/appointment.c:1291
 msgid "This appointment will be permanently removed."
-msgstr "Bu görev kalıcı olarak silinmiş olacak."
+msgstr "Bu görev kalıcı olarak kaldırılacak."
 
 #: ../src/appointment.c:1293 ../src/event-list.c:994
 msgid "No, cancel the removal"
-msgstr "Hayır, kaldırmayı iptal et"
+msgstr "Hayır, kaldırmaktan vazgeç"
 
 #: ../src/appointment.c:1294
 msgid "Yes, remove it"
@@ -701,7 +701,7 @@ msgstr "Böyle bir görev yok."
 
 #: ../src/appointment.c:1822
 msgid "It was probably removed, please refresh your screen."
-msgstr "Muhtemelen silinmiş, lütfen ekranı yenileyiniz."
+msgstr "Büyük olasılıkla silinmiş, lütfen ekranınızı yenileyiniz."
 
 #: ../src/appointment.c:2097 ../src/interface.c:672
 msgid "_Remove"
@@ -709,15 +709,15 @@ msgstr "_Kaldır"
 
 #: ../src/appointment.c:2123
 msgid "Current categories"
-msgstr "Son başlıklar"
+msgstr "Son kategoriler"
 
 #: ../src/appointment.c:2145
 msgid "Add new category with color"
-msgstr "Renkle yeni bölüm ekle"
+msgstr "Yeni renkli kategori ekle"
 
 #: ../src/appointment.c:2156
 msgid "Category:"
-msgstr "Bölüm:"
+msgstr "Kategori:"
 
 #: ../src/appointment.c:2172 ../src/interface.c:1451
 msgid "_Add"
@@ -725,7 +725,7 @@ msgstr "_Ekle"
 
 #: ../src/appointment.c:2201
 msgid "Colors of categories - Orage"
-msgstr "Bölümlerin renkleri - Orage"
+msgstr "Kategorilerin renkleri - Orage"
 
 #: ../src/appointment.c:2247
 msgid " *** COPY ***"
@@ -848,15 +848,15 @@ msgstr "Süre"
 
 #: ../src/appointment.c:2890 ../src/appointment.c:3097 ../src/reminder.c:637
 msgid "days"
-msgstr "günler"
+msgstr "gün"
 
 #: ../src/appointment.c:2892 ../src/appointment.c:3099 ../src/reminder.c:639
 msgid "hours"
-msgstr "saatler"
+msgstr "saat"
 
 #: ../src/appointment.c:2894 ../src/appointment.c:3101 ../src/reminder.c:641
 msgid "mins"
-msgstr "dakikalar"
+msgstr "dakika"
 
 #. Availability (only for EVENT)
 #: ../src/appointment.c:2906
@@ -875,13 +875,15 @@ msgstr "Yapıldı"
 #. categories
 #: ../src/appointment.c:2942
 msgid "Categories"
-msgstr "Bölümler"
+msgstr "Kategoriler"
 
 #: ../src/appointment.c:2960
 msgid ""
 "This is special category, which can be used to color this appointment in "
 "list views."
-msgstr "Bu kategori liste görünümünde renkli gösterileceği için özeldir."
+msgstr ""
+"Bu özel kategoridir, liste görünümünde bu görevi renklendirmede "
+"kullanılabilir."
 
 #: ../src/appointment.c:2961
 msgid "_Colour"
@@ -889,7 +891,7 @@ msgstr "_Renk"
 
 #: ../src/appointment.c:2966
 msgid "update colors for categories."
-msgstr "Bölümlerin renklerini güncelle"
+msgstr "kategoriler için renkleri güncelle."
 
 #. priority
 #: ../src/appointment.c:2972
@@ -903,9 +905,9 @@ msgid ""
 "(Alarms will still fire normally.)\n"
 "(There is undocumented parameter so that you can change the default limit of 8.)"
 msgstr ""
-"Eğer bunu 8 veya daha büyük yaparsanız, randevular pencere listesine GÖSTERİLMEZ.\n"
-"Bu özelliği liste pencerelerinizin karmaşık olmasını önlemek için kullanabilirsiniz, ancak bir randevuyu bulmak bununla birlikte daha zorlaşır.\n"
-"(Alarmlar hala normal olarak çalacaktır.)\n"
+"Eğer bunu 8 veya daha büyük yaparsanız, pencere listesinde randevu GÖSTERİLMEZ.\n"
+"Bu özelliği liste pencerelerinizi toparlamada kullanabilirsiniz, ancak bununla birlikte randevuyu bulmak zorlaşır.\n"
+"(Alarmlar hala çalacaktır.)\n"
 "(Belgelendirilmemiş bir parametre bulunmaktadır. Böylece öntanımlı 8 sınırını değiştirebilirsiniz.)"
 
 #. note
@@ -924,14 +926,14 @@ msgid ""
 "    <&Ynnnn> is translated to current year minus nnnn.\n"
 "(This can be used for example in birthday reminders to tell how old the person will be.)"
 msgstr ""
-"Bu kısayol komutları derhal etkilenecek:\n"
-"    <D> yerel tarih biçiminde mevcut tarihi gir\n"
-"    <T> zamanı gir ve\n"
-"    <DT> tarih ve zamanı gir.\n"
+"Bu kısayol komutları anında etkilenecek:\n"
+"    <D> yerel tarih biçiminde geçerli tarihi yerleştirir\n"
+"    <T> zamanı yerleştirir ve\n"
+"    <DT> tarih ve zamanı yerleştirir.\n"
 "\n"
-"Bunlar göründüklerinde dönüştürülür:\n"
-"    <&Ynnnn> geçerli dakika nnnn'ye dönüştürülür.\n"
-"(Bu örnek olarak personelin doğum günü hatırlatmasında kaç yaşında olacağını söyleyecek.)"
+"Bunlar yalnızca göründükten sonra dönüştürülür:\n"
+"    <&Ynnnn> geçerli yıl eksi nnnn olarak dönüştürülür.\n"
+"(Bu, örneğin personelin doğum günü anımsatmasında kaç yaşında olacağını söyler.)"
 
 #: ../src/appointment.c:3079
 msgid "Before Start"
@@ -951,12 +953,12 @@ msgstr "Bittikten Sonra"
 
 #: ../src/appointment.c:3088
 msgid "Alarm"
-msgstr "alârm"
+msgstr "Alarm"
 
 #. **** ALARM TIME ****
 #: ../src/appointment.c:3094
 msgid "Alarm time"
-msgstr "Alârm zamanı"
+msgstr "Alarm zamanı"
 
 #: ../src/appointment.c:3119
 msgid ""
@@ -965,22 +967,22 @@ msgid ""
 " 2) before Todo end\n"
 " 3) after Todo start"
 msgstr ""
-"Genellikle hatırlatma uyarısını şu şekillerde isteyebilirsiniz:\n"
+"Genellikle şunlarda alarm isteyebilirsiniz:\n"
 " 1) Görev başlamadan önce\n"
 " 2) Yapılacak işler bitmeden önce\n"
 " 3) Yapılacak işler başladıktan sonra"
 
 #: ../src/appointment.c:3124
 msgid "Persistent alarm"
-msgstr "Sürekli alârm"
+msgstr "Kalıcı alarm"
 
 #: ../src/appointment.c:3129
 msgid ""
 "Select this if you want Orage to remind you even if it has not been active "
 "when the alarm happened."
 msgstr ""
-"Bu seçeneği eğer alârm devrede olduğu sırada işlem etkin değilse Orage'ın "
-"sizi uyarması için kullanabilirsiniz."
+"Bu seçeneği eğer alârm devrede olduğu sırada işlem etkin değilse bile "
+"Orage'ın sizi uyarması için kullanabilirsiniz."
 
 #. **** Audio Alarm ****
 #: ../src/appointment.c:3138
@@ -997,11 +999,11 @@ msgstr "Sesli alârm için bu özelliği seçiniz"
 
 #: ../src/appointment.c:3170
 msgid "Repeat alarm sound"
-msgstr "alârm sesini tekrarla"
+msgstr "Alarm sesini yinele"
 
 #: ../src/appointment.c:3185 ../src/appointment.c:3494
 msgid "times"
-msgstr "zamanlar"
+msgstr "kez"
 
 #: ../src/appointment.c:3201
 msgid "sec interval"
@@ -1018,15 +1020,15 @@ msgstr "Orage penceresini kullan"
 
 #: ../src/appointment.c:3217
 msgid "Select this if you want Orage window alarm"
-msgstr "Orage penceresi uyarısı istiyorsanız, bunu seçin"
+msgstr "Orage pencere alarmı istiyorsanız bunu seçin"
 
 #: ../src/appointment.c:3229
 msgid "Use notification"
-msgstr "Bildiri penceresi kullan"
+msgstr "Bildirim penceresi kullan"
 
 #: ../src/appointment.c:3231
 msgid "Select this if you want notification alarm"
-msgstr "Eğer bildiri penceresi çıksın istiyorsanız, bunu seçin"
+msgstr "Eğer bildirim penceresi çıksın istiyorsanız bunu seçin"
 
 #: ../src/appointment.c:3239
 msgid "Set timeout"
@@ -1034,7 +1036,7 @@ msgstr "Dinlenme saatini belirle"
 
 #: ../src/appointment.c:3241
 msgid "Select this if you want notification to expire automatically"
-msgstr "Alârmın otomatik olarak sonlanmasını istiyorsanız bunu seçiniz"
+msgstr "Alârmın kendiliğinden sonlanmasını istiyorsanız bunu seçiniz"
 
 #: ../src/appointment.c:3252
 msgid "0 = system default expiration time"
@@ -1042,7 +1044,7 @@ msgstr "0 = öntanımlı sistem sonlanma tarihi"
 
 #: ../src/appointment.c:3260
 msgid "seconds"
-msgstr "saniyeler"
+msgstr "saniye"
 
 #. **** Procedure Alarm ****
 #: ../src/appointment.c:3271
@@ -1065,7 +1067,7 @@ msgid ""
 "\t<&ET> appointment end time"
 msgstr ""
 "Tüm kaçış vb. karakterlerini kendiniz girmelisiniz.\n"
-"Bu metin sadece işlenebilmesi için kabuğa verilir.\n"
+"Bu metin yalnızca işlenebilmesi için kabuğa verilir.\n"
 "Aşağıdaki özel komutlar çalışma zamanında değiştirilir:\n"
 "\t<&T>  randevu başlığı\n"
 "\t<&D>  randevu açıklaması\n"
@@ -1079,7 +1081,7 @@ msgstr "_Çalıştır"
 
 #: ../src/appointment.c:3303
 msgid "Test this alarm by raising it now"
-msgstr "Şuandan itibaren çalışacak bu alârmı test et"
+msgstr "Bu alarmı şimdi yükselterek sına"
 
 #: ../src/appointment.c:3316
 msgid "<b>Default alarm</b>"
@@ -1152,7 +1154,7 @@ msgstr "Pzr"
 
 #: ../src/appointment.c:3413
 msgid "Recurrence"
-msgstr "Tekrarlama"
+msgstr "Yineleme"
 
 #. complexity
 #: ../src/appointment.c:3419
@@ -1169,7 +1171,7 @@ msgstr "Gelişmiş"
 
 #: ../src/appointment.c:3435
 msgid "Use this if you want regular repeating event"
-msgstr "Düzenli tekrarlanan görevler için bu özelliği kullanabilirsiniz"
+msgstr "Düzenli yinelenen görevler için bu özelliği kullanabilirsiniz"
 
 #: ../src/appointment.c:3437
 msgid ""
@@ -1177,9 +1179,9 @@ msgid ""
 " Every Saturday and Sunday or \n"
 " First Tuesday every month"
 msgstr ""
-"Karmaşık tarihler belirlemek için bunu kullanabilirsiniz, mesela:\n"
-" Her Cumartesi ve Pazar veya \n"
-" Her ay ilk Pazartesi"
+"Karmaşık tarihler belirlemek için bunu kullanabilirsiniz, örneğin:\n"
+" Her cumartesi ve pazar veya \n"
+" Her ay ilk pazartesi"
 
 #. frequency
 #: ../src/appointment.c:3443
@@ -1210,15 +1212,15 @@ msgstr "Kısıtla"
 
 #: ../src/appointment.c:3477
 msgid "Repeat forever"
-msgstr "Sürekli tekrarla"
+msgstr "Sürekli yinele"
 
 #: ../src/appointment.c:3484
 msgid "Repeat "
-msgstr "Tekrarla "
+msgstr "Yinele"
 
 #: ../src/appointment.c:3508
 msgid "Repeat until "
-msgstr "Şu zamana kadar tekrarla "
+msgstr "Şu zamana dek yinele "
 
 #. weekdays (only for complex settings)
 #: ../src/appointment.c:3524
@@ -1240,15 +1242,15 @@ msgid ""
 msgstr ""
 "Aylık ve yıllık görevler için haftanın bir gününü belirtebilirsiniz.\n"
 " Örneğin:\n"
-" Her ayın ikinci Çarşamba'sı:\n"
+" Her ayın ikinci çarşambası:\n"
 "\tSıklık = Aylık,\n"
-"\tHaftanın günü = sadece Çarşambayı işaretleyin,\n"
-"\tHangi gün = Çarşambanın altındaki sayılardan 2'yi seçin"
+"\tHaftanın günü = yalnızca çarşambayı imleyin,\n"
+"\tHangi gün = çarşambanın altındaki sayılardan 2'yi seçin"
 
 #. TODO base (only for TODOs)
 #: ../src/appointment.c:3559
 msgid "TODO base"
-msgstr "YAPILACAK temel"
+msgstr "YAPILACAK temeli"
 
 #: ../src/appointment.c:3578
 msgid ""
@@ -1407,7 +1409,7 @@ msgstr "Gösterilecek ilave günler:"
 
 #: ../src/event-list.c:1274
 msgid "only first repeating"
-msgstr "sadece ilk tekrar eden"
+msgstr "yalnızca ilk yineleyen"
 
 #: ../src/event-list.c:1282
 msgid ""
