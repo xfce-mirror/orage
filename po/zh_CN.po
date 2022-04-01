@@ -6,7 +6,7 @@
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2022
 # Mingcong Bai <jeffbai@aosc.xyz>, 2022
-# Xiaobo Zhou <zhouxiaobo.500@gmail.com>, 2022
+# Cally Mal <zhouxiaobo.500@gmail.com>, 2022
 # YuHeng Chou <wojiushixxx@126.com>, 2022
 # 玉堂白鹤 <yjwork@qq.com>, 2022
 # 
@@ -4485,7 +4485,7 @@ msgid ""
 "Orage aims to be a fast and easy to use graphical calendar. It uses portable"
 " ical format and includes common calendar features like repeating "
 "appointments and multiple alarming possibilities."
-msgstr ""
+msgstr "Orage 的目标是成为一款快速易用的图形日历。它使用便携式 ical 格式，包括常见的日历功能，如重复约会和多种提醒的可能性。"
 
 #: ../org.xfce.orage.appdata.xml.in.h:4
 msgid ""
@@ -4494,6 +4494,8 @@ msgid ""
 "Contents of those files are read and converted into Orage, but those files "
 "are left untouched."
 msgstr ""
+"Orage 没有群组日历功能，只能用于单个用户。它为计划导入的 ical 文件生成一个文件列表。这些文件的内容被读取并转换到 "
+"Orage，但这些文件保持不变。"
 
 #: ../org.xfce.orage.desktop.in.h:1
 msgid "Orage Calendar"
