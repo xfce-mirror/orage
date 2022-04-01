@@ -1327,7 +1327,8 @@ static void build_todo_tab(el_win *el)
 static void build_journal_tab(el_win *el)
 {
     GtkWidget *label;
-    struct tm *tm;
+    GDateTime *gdt_local;
+    GDateTime *gdt;
     gchar *sdate;
 
     el->journal_tab_label = gtk_label_new(_("Journal"));
@@ -1335,11 +1336,16 @@ static void build_journal_tab(el_win *el)
 
     label = gtk_label_new(_("Journal entries starting from:"));
     el->journal_start_button = gtk_button_new();
-    tm = orage_localtime();
-    tm->tm_year -= 1;
-    sdate = orage_tm_date_to_i18_date(tm);
-    gtk_button_set_label(GTK_BUTTON(el->journal_start_button)
-            , (const gchar *)sdate);
+    gdt_local = g_date_time_new_now_local ();
+    gdt = g_date_time_add_years (gdt_local, -1);
+    g_date_time_unref (gdt_local);
+
+    sdate = g_date_time_format (gdt, "%x");
+    g_date_time_unref (gdt);
+
+    gtk_button_set_label (GTK_BUTTON (el->journal_start_button), sdate);
+
+    g_free (sdate);
     orage_table_add_row(el->journal_notebook_page
             , label, el->journal_start_button, 0, (GTK_FILL), (0));
 
