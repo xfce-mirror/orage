@@ -961,7 +961,7 @@ static gboolean orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
                 hour = 0; minute = 0; second = 0;
             }
             else {
-                sscanf(cur_alarm->alarm_time, XFICAL_APPT_TIME_FORMAT
+                sscanf(cur_alarm->alarm_time, XFICAL_APPT_TIME_FORMAT_DEPRECATED
                         , &year, &month, &day, &hour, &minute, &second);
             }
             g_now = g_date_new_dmy(t->tm_mday, t->tm_mon + 1

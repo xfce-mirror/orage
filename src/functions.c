@@ -876,7 +876,7 @@ gchar *orage_tm_time_to_icaltime(struct tm *t)
 {
     static gchar icaltime[XFICAL_APPT_TIME_FORMAT_LEN];
 
-    g_snprintf (icaltime, sizeof (icaltime), XFICAL_APPT_TIME_FORMAT,
+    g_snprintf (icaltime, sizeof (icaltime), XFICAL_APPT_TIME_FORMAT_DEPRECATED,
                 t->tm_year + 1900, t->tm_mon + 1, t->tm_mday,
                 t->tm_hour, t->tm_min, t->tm_sec);
 

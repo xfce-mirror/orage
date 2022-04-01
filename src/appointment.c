@@ -992,7 +992,7 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
                            g_date_time_get_seconds (gdt_tmp));
 
     g_snprintf (appt->starttime, sizeof (appt->starttime),
-                XFICAL_APPT_TIME_FORMAT,
+                XFICAL_APPT_TIME_FORMAT_DEPRECATED,
                 g_date_time_get_year (gdt),
                 g_date_time_get_month (gdt),
                 g_date_time_get_day_of_month (gdt),
@@ -1028,7 +1028,7 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
                            g_date_time_get_seconds (gdt_tmp));
 
     g_snprintf (appt->endtime, sizeof (appt->endtime),
-                XFICAL_APPT_TIME_FORMAT,
+                XFICAL_APPT_TIME_FORMAT_DEPRECATED,
                 g_date_time_get_year (gdt),
                 g_date_time_get_month (gdt),
                 g_date_time_get_day_of_month (gdt),
@@ -1085,7 +1085,7 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
                            g_date_time_get_seconds (gdt_tmp));
 
     g_snprintf (appt->completedtime, sizeof (appt->completedtime),
-                XFICAL_APPT_TIME_FORMAT,
+                XFICAL_APPT_TIME_FORMAT_DEPRECATED,
                 g_date_time_get_year (gdt),
                 g_date_time_get_month (gdt),
                 g_date_time_get_day_of_month (gdt),
@@ -1163,7 +1163,7 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
                                  DATE_BUTTON_KEY);
 
         g_snprintf (appt->recur_until, sizeof (appt->recur_until),
-                    XFICAL_APPT_TIME_FORMAT,
+                    XFICAL_APPT_TIME_FORMAT_DEPRECATED,
                     g_date_time_get_year (gdt),
                     g_date_time_get_month (gdt),
                     g_date_time_get_day_of_month (gdt),
@@ -2587,7 +2587,7 @@ static gboolean fill_appt_window(appt_win *apptw, const gchar *action,
     if (!appt->completed) { /* some nice default */
         gdt = g_date_time_new_now_local (); /* probably completed today? */
         g_snprintf(appt->completedtime, sizeof (appt->completedtime),
-                   XFICAL_APPT_TIME_FORMAT,
+                   XFICAL_APPT_TIME_FORMAT_DEPRECATED,
                    g_date_time_get_year (gdt),
                    g_date_time_get_month (gdt),
                    g_date_time_get_day_of_month (gdt),

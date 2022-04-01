@@ -94,6 +94,8 @@ typedef struct _el_win
     int      days;        /* how many extra days to show; usually 0 */
     el_page  page;        /* appointment page to show */
     char     time_now[6]; /* hh:mm */
+
+    __attribute__ ((deprecated))
     char     date_now[XFICAL_APPT_TIME_FORMAT_LEN]; /* yyyymmddThhmmss */
     GList    *apptw_list; /* keep track of appointments being updated */
 } el_win; /* event list window */

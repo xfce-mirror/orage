@@ -27,7 +27,8 @@
 #define CALENDAR_RUNNING "_XFCE_CALENDAR_RUNNING"
 #define CALENDAR_TOGGLE_EVENT "_XFCE_CALENDAR_TOGGLE_HERE"
 
-#define XFICAL_APPT_TIME_FORMAT "%04d%02d%02dT%02d%02d%02d"
+#define XFICAL_APPT_TIME_FORMAT_DEPRECATED "%04d%02d%02dT%02d%02d%02d"
+#define XFICAL_APPT_TIME_FORMAT "%Y%m%dT%H%M%S"
 #define XFICAL_APPT_TIME_FORMAT_LEN 16
 #define XFICAL_APPT_DATE_FORMAT "%04d%02d%02d"
 #define XFICAL_APPT_DATE_FORMAT_LEN 9
@@ -120,7 +121,7 @@ gchar *orage_tm_time_to_i18_time(struct tm *tm_date);
 __attribute__((deprecated))
 gchar *orage_tm_date_to_i18_date(const struct tm *tm_date);
 
-__attribute__((deprecated))
+__attribute__((deprecated ("replace with g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT)")))
 gchar *orage_tm_time_to_icaltime(struct tm *t);
 
 __attribute__((deprecated))
