@@ -956,7 +956,7 @@ static gboolean orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
         if (alarm_cnt < tooltip_alarm_limit) {
             if (strlen(cur_alarm->alarm_time) < XFICAL_APPT_DATE_FORMAT_LEN) { 
                /* it is date = full day */
-                sscanf(cur_alarm->alarm_time, XFICAL_APPT_DATE_FORMAT
+                sscanf(cur_alarm->alarm_time, XFICAL_APPT_DATE_FORMAT_DEPRECATED
                         , &year, &month, &day);
                 hour = 0; minute = 0; second = 0;
             }

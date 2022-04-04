@@ -123,6 +123,7 @@ typedef struct _xfical_appt
         /* for repeating events cur times show current repeating event.
          * normal times are always the real (=first) start and end times
          */
+    __attribute__ ((deprecated ("replace with GDateTime")))
     gchar  starttimecur[17];
     gchar  endtimecur[17];
     xfical_freq freq;

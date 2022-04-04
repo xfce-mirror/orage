@@ -301,12 +301,14 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
                          const gboolean todo)
 {
     GtkWidget *ev, *label;
+    GDateTime *gdt;
     CalWin *cal = (CalWin *)g_par.xfcal;
     gchar *tip, *tmp, *tmp_title, *tmp_note;
     gchar *tip_title, *tip_location, *tip_note;
     gchar *format_bold = "<b> %s </b>";
-    struct tm *t;
-    char  *l_time, *s_time, *s_timeonly, *e_time, *c_time, *na, *today;
+    char  *s_time, *s_timeonly, *e_time, *c_time, *na;
+    gchar *l_time;
+    gchar *today;
     gint  len;
 
     /***** add data into the vbox *****/
@@ -322,7 +324,9 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
         g_free(e_time);
     }
     else {
-        today = orage_tm_time_to_icaltime(orage_localtime());
+        gdt = g_date_time_new_now_local ();
+        today = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT);
+        g_date_time_unref (gdt);
         s_timeonly = g_strdup(orage_icaltime_to_i18_time_only(
                     appt->starttimecur));
         if (!strncmp(today, appt->starttimecur, 8)) /* today */
@@ -333,11 +337,10 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
             else
                 tmp = g_strdup_printf(" %s  %s", s_timeonly, tmp_title);
         }
+        g_free (today);
         g_free(s_timeonly);
     }
     label = gtk_label_new(tmp);
-
-    g_debug ("%s: label='%s'", G_STRFUNC, tmp);
 
     g_free(tmp);
     gtk_label_set_ellipsize(GTK_LABEL(label), PANGO_ELLIPSIZE_END);
@@ -354,8 +357,9 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
 
     /***** set color *****/
     if (todo) {
-        t = orage_localtime();
-        l_time = orage_tm_time_to_icaltime(t);
+        gdt = g_date_time_new_now_local ();
+        l_time = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT);
+        g_date_time_unref (gdt);
         if (appt->starttimecur[8] == 'T') /* date+time */
             len = 15;
         else /* date only */
@@ -369,6 +373,8 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
         else if (strncmp(appt->starttimecur, l_time, len) <= 0
              &&  strncmp(e_time, l_time, len) >= 0)
             gtk_widget_set_name (label, ORAGE_MAINBOX_BLUE);
+
+        g_free (l_time);
         g_free(e_time);
     }
 
@@ -561,19 +567,17 @@ static void create_mainbox_event_info_box(void)
 static void build_mainbox_todo_info(void)
 {
     CalWin *cal = (CalWin *)g_par.xfcal;
-    char      *s_time;
-    char      a_day[9];  /* yyyymmdd */
-    struct tm *t;
+    GDateTime *gdt;
+    gchar *a_day;
     xfical_type ical_type;
     gchar file_type[8];
     gint i;
     GList *todo_list=NULL;
 
     if (g_par.show_todos) {
-        t = orage_localtime();
-        s_time = orage_tm_time_to_icaltime(t);
-        strncpy(a_day, s_time, 8);
-        a_day[8] = '\0';
+        gdt = g_date_time_new_now_local ();
+        a_day = g_date_time_format (gdt, XFICAL_APPT_DATE_FORMAT);
+        g_date_time_unref (gdt);
 
         ical_type = XFICAL_TYPE_TODO;
         /* first search base orage file */
@@ -584,6 +588,8 @@ static void build_mainbox_todo_info(void)
             g_snprintf(file_type, sizeof (file_type), "F%02d.", i);
             insert_rows(&todo_list, a_day, ical_type, file_type);
         }
+
+        g_free (a_day);
     }
     if (todo_list) {
         gtk_widget_destroy(cal->mTodo_vbox);
