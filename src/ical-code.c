@@ -2828,7 +2828,7 @@ void xfical_alarm_build_list(gboolean first_list_today)
   *          You need to deallocate it after used.
   * Note:   starttimecur and endtimecur are converted to local timezone
   */
-static xfical_appt *xfical_appt_get_next_on_day_internal(char *a_day
+static xfical_appt *xfical_appt_get_next_on_day_internal (const gchar *a_day
         , gboolean first, gint days, xfical_type type, icalcomponent *base
         , gchar *file_type)
 {
@@ -2958,8 +2958,9 @@ static xfical_appt *xfical_appt_get_next_on_day_internal(char *a_day
   *          It will be overdriven by next invocation of this function.
   * Note:   starttimecur and endtimecur are converted to local timezone
   */
-xfical_appt *xfical_appt_get_next_on_day(char *a_day, gboolean first, gint days
-        , xfical_type type, gchar *file_type)
+xfical_appt *xfical_appt_get_next_on_day (const gchar *a_day, gboolean first,
+                                          gint days, xfical_type type,
+                                          gchar *file_type)
 {
     gint i;
 
@@ -3367,8 +3368,12 @@ static void add_appt_to_list(icalcomponent *c, icaltime_span *span , void *data)
 /* Fetch each appointment within the specified time period and add those
  * to the data GList. Note that each repeating appointment is real full 
  * appt */
-static void xfical_get_each_app_within_time_internal(char *a_day, gint days
-        , xfical_type type, icalcomponent *base, const gchar *file_type, GList **data)
+static void xfical_get_each_app_within_time_internal (const gchar *a_day,
+                                                      gint days,
+                                                      xfical_type type,
+                                                      icalcomponent *base,
+                                                      const gchar *file_type,
+                                                      GList **data)
 {
     struct icaltimetype asdate, aedate;    /* period to check */
     icalcomponent *c=NULL;
@@ -3445,7 +3450,7 @@ static void xfical_get_each_app_within_time_internal(char *a_day, gint days
 }
 
 /* This will (probably) replace xfical_appt_get_next_on_day */
-void xfical_get_each_app_within_time(char *a_day, gint days
+void xfical_get_each_app_within_time (const gchar *a_day, gint days
         , xfical_type type, const gchar *file_type, GList **data)
 {
     gint i;

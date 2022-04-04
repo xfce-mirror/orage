@@ -152,11 +152,12 @@ void xfical_appt_free(xfical_appt *appt);
 gboolean xfical_appt_mod(char *ical_id, xfical_appt *appt);
 gboolean xfical_appt_del(char *ical_id);
 
-xfical_appt *xfical_appt_get_next_on_day(char *a_day, gboolean first, gint days
-        , xfical_type type,  gchar *file_type);
+xfical_appt *xfical_appt_get_next_on_day (const gchar *a_day, gboolean first,
+                                          gint days, xfical_type type,
+                                          gchar *file_type);
 xfical_appt *xfical_appt_get_next_with_string(char *str, gboolean first
         , gchar *file_type);
-void xfical_get_each_app_within_time(char *a_day, int days
+void xfical_get_each_app_within_time (const gchar *a_day, int days
         , xfical_type type, const gchar *file_type , GList **data);
 
 void xfical_mark_calendar(GtkCalendar *gtkcal);

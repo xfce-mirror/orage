@@ -429,7 +429,7 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
     g_free(tip);
 }
 
-static void insert_rows(GList **list, char *a_day, xfical_type ical_type
+static void insert_rows(GList **list, const gchar *a_day, xfical_type ical_type
         , gchar *file_type)
 {
     xfical_appt *appt;

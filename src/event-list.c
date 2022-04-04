@@ -507,8 +507,8 @@ static void search_data(el_win *el)
     g_free(search_string);
 }
 
-static void app_rows(el_win *el, char *a_day, char *par, xfical_type ical_type
-        , gchar *file_type)
+static void app_rows (el_win *el, const gchar *a_day, char *par,
+                      xfical_type ical_type, gchar *file_type)
 {
     GList *appt_list=NULL, *tmp;
     xfical_appt *appt;
@@ -545,7 +545,7 @@ static void app_rows(el_win *el, char *a_day, char *par, xfical_type ical_type
     }
 }
 
-static void app_data(el_win *el, char *a_day, char *par)
+static void app_data (el_win *el, const gchar *a_day, char *par)
 {
     xfical_type ical_type;
     gchar file_type[8];
@@ -609,7 +609,7 @@ static void event_data(el_win *el)
 {
     const gchar *title;  /* in %x strftime format */
     char      *stime;  /* in icaltime format */
-    char      a_day[9]; /* yyyymmdd */
+    gchar a_day[9]; /* yyyymmdd */
     struct tm t_title;
     GDate *gd_title;
     GDate *gd_now;
