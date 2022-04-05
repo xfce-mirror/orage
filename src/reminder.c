@@ -104,11 +104,14 @@ static gint alarm_order(gconstpointer a, gconstpointer b)
 
 void alarm_list_free(void)
 {
+    GDateTime *gdt;
     gchar *time_now;
     alarm_struct *l_alarm;
     GList *alarm_l, *kept_l=NULL;
 
-    time_now = orage_tm_time_to_icaltime(orage_localtime());
+    gdt = g_date_time_new_now_local ();
+    time_now = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT);
+    g_date_time_unref (gdt);
         /* FIXME: This could be tuned since now it runs into the remaining
            elements several times. They could be moved to another list and
            removed and added back at the end, remove with g_list_remove_link */
@@ -120,11 +123,11 @@ void alarm_list_free(void)
             /* We keep temporary alarms, which have not yet fired.
                Remove the element from the list, but do not loose it. */
             g_par.alarm_list = g_list_remove_link(g_par.alarm_list, alarm_l);
-            /*
+#if 0
             if (!kept_l)
                 kept_l = alarm_l;
             else
-            */
+#endif
             kept_l = g_list_concat(kept_l, alarm_l);
         }
         else { /* get rid of that l_alarm element */
@@ -132,6 +135,7 @@ void alarm_list_free(void)
             alarm_free(l_alarm);
         }
     }
+    g_free (time_now);
     g_list_free(g_par.alarm_list);
     g_par.alarm_list = NULL;
     if (g_list_length(kept_l)) {
@@ -279,13 +283,16 @@ static alarm_struct *alarm_read_next_alarm(OrageRc *orc, gchar *time_now)
 
 void alarm_read(void)
 {
+    GDateTime *gdt;
     alarm_struct *new_alarm;
     OrageRc *orc;
     gchar *time_now;
     gchar **alarm_groups;
     gint i;
 
-    time_now = orage_tm_time_to_icaltime(orage_localtime());
+    gdt = g_date_time_new_now_local ();
+    time_now = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT);
+    g_date_time_unref (gdt);
     orc = orage_persistent_file_open(TRUE);
     alarm_groups = orage_rc_get_groups(orc);
     for (i = 0; alarm_groups[i] != NULL; i++) {
@@ -297,6 +304,7 @@ void alarm_read(void)
             alarm_free(new_alarm);
         }
     }
+    g_free (time_now);
     g_strfreev(alarm_groups);
     orage_rc_file_close(orc);
 }
@@ -857,14 +865,17 @@ gboolean orage_day_change(gpointer user_data)
 /* check and raise alarms if there are any */
 static gboolean orage_alarm_clock (G_GNUC_UNUSED gpointer user_data)
 {
+    GDateTime *gdt;
     GList *alarm_l;
     alarm_struct *cur_alarm;
     gboolean alarm_raised=FALSE;
     gboolean more_alarms=TRUE;
     gchar *time_now;
 
-    time_now = orage_tm_time_to_icaltime(orage_localtime());
-  /* Check if there are any alarms to show */
+    gdt = g_date_time_new_now_local ();
+    time_now = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT);
+    g_date_time_unref (gdt);
+    /* Check if there are any alarms to show */
     for (alarm_l = g_list_first(g_par.alarm_list);
          alarm_l != NULL && more_alarms;
          alarm_l = g_list_next(alarm_l)) {
@@ -879,6 +890,9 @@ static gboolean orage_alarm_clock (G_GNUC_UNUSED gpointer user_data)
         else /* sorted so scan can be stopped */
             more_alarms = FALSE; 
     }
+
+    g_free (time_now);
+
     if (alarm_raised)  /* at least one l_alarm processed, need new list */
         xfical_alarm_build_list(FALSE); /* this calls reset_orage_alarm_clock */
     else
