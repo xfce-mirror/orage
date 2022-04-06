@@ -703,6 +703,7 @@ static void create_orage_reminder(alarm_struct *l_alarm)
 
 static void create_procedure_reminder(alarm_struct *l_alarm)
 {
+    GDateTime *gdt;
 #if 0
     gboolean status, active; / * active not used * /
     GError *error = NULL;
@@ -722,7 +723,12 @@ static void create_procedure_reminder(alarm_struct *l_alarm)
     if (l_alarm->alarm_time)
         atime = g_strdup(orage_icaltime_to_i18_time(l_alarm->alarm_time));
     else
-        atime = g_strdup(orage_tm_time_to_i18_time(orage_localtime()));
+    {
+        gdt = g_date_time_new_now_local ();
+        atime = g_date_time_format (gdt, "%x %R");
+        g_date_time_unref (gdt);
+    }
+
     cmd = orage_replace_text(cmd, "<&AT>", atime);
     g_free(atime);
 
