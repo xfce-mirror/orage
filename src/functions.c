@@ -950,13 +950,25 @@ GDate *orage_gdatetime_to_gdate (GDateTime *gdt)
 gchar *orage_localdate_i18 (void)
 {
     GDateTime *gdt;
-    gchar *today;
+    gchar *time_str;
 
     gdt = g_date_time_new_now_local ();
-    today = g_date_time_format (gdt, "%x");
+    time_str = g_date_time_format (gdt, "%x");
     g_date_time_unref (gdt);
 
-    return today;
+    return time_str;
+}
+
+gchar *orage_localtime_icaltime (void)
+{
+    GDateTime *gdt;
+    gchar *time_str;
+
+    gdt = g_date_time_new_now_local ();
+    time_str = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT);
+    g_date_time_unref (gdt);
+
+    return time_str;
 }
 
 /* move one day forward or backward */

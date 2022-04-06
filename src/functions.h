@@ -105,6 +105,12 @@ GDate *orage_gdatetime_to_gdate (GDateTime *gdt);
  */
 gchar *orage_localdate_i18 (void);
 
+/** Return time string in icaltime format. Calling function must free returned
+ *  date string.
+ *  @return date string.
+ */
+gchar *orage_localtime_icaltime (void);
+
 __attribute__((deprecated ("replace with 'g_date_time_new_now_local'")))
 struct tm orage_i18_time_to_tm_time(const gchar *i18_time);
 

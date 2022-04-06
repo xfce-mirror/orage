@@ -301,7 +301,6 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
                          const gboolean todo)
 {
     GtkWidget *ev, *label;
-    GDateTime *gdt;
     CalWin *cal = (CalWin *)g_par.xfcal;
     gchar *tip, *tmp, *tmp_title, *tmp_note;
     gchar *tip_title, *tip_location, *tip_note;
@@ -324,9 +323,7 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
         g_free(e_time);
     }
     else {
-        gdt = g_date_time_new_now_local ();
-        today = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT);
-        g_date_time_unref (gdt);
+        today = orage_localtime_icaltime ();
         s_timeonly = g_strdup(orage_icaltime_to_i18_time_only(
                     appt->starttimecur));
         if (!strncmp(today, appt->starttimecur, 8)) /* today */
@@ -357,9 +354,7 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
 
     /***** set color *****/
     if (todo) {
-        gdt = g_date_time_new_now_local ();
-        l_time = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT);
-        g_date_time_unref (gdt);
+        l_time = orage_localtime_icaltime ();
         if (appt->starttimecur[8] == 'T') /* date+time */
             len = 15;
         else /* date only */

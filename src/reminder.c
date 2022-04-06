@@ -104,14 +104,11 @@ static gint alarm_order(gconstpointer a, gconstpointer b)
 
 void alarm_list_free(void)
 {
-    GDateTime *gdt;
     gchar *time_now;
     alarm_struct *l_alarm;
     GList *alarm_l, *kept_l=NULL;
 
-    gdt = g_date_time_new_now_local ();
-    time_now = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT);
-    g_date_time_unref (gdt);
+    time_now = orage_localtime_icaltime ();
         /* FIXME: This could be tuned since now it runs into the remaining
            elements several times. They could be moved to another list and
            removed and added back at the end, remove with g_list_remove_link */
@@ -283,16 +280,13 @@ static alarm_struct *alarm_read_next_alarm(OrageRc *orc, gchar *time_now)
 
 void alarm_read(void)
 {
-    GDateTime *gdt;
     alarm_struct *new_alarm;
     OrageRc *orc;
     gchar *time_now;
     gchar **alarm_groups;
     gint i;
 
-    gdt = g_date_time_new_now_local ();
-    time_now = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT);
-    g_date_time_unref (gdt);
+    time_now = orage_localtime_icaltime ();
     orc = orage_persistent_file_open(TRUE);
     alarm_groups = orage_rc_get_groups(orc);
     for (i = 0; alarm_groups[i] != NULL; i++) {
@@ -865,16 +859,13 @@ gboolean orage_day_change(gpointer user_data)
 /* check and raise alarms if there are any */
 static gboolean orage_alarm_clock (G_GNUC_UNUSED gpointer user_data)
 {
-    GDateTime *gdt;
     GList *alarm_l;
     alarm_struct *cur_alarm;
     gboolean alarm_raised=FALSE;
     gboolean more_alarms=TRUE;
     gchar *time_now;
 
-    gdt = g_date_time_new_now_local ();
-    time_now = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT);
-    g_date_time_unref (gdt);
+    time_now = orage_localtime_icaltime ();
     /* Check if there are any alarms to show */
     for (alarm_l = g_list_first(g_par.alarm_list);
          alarm_l != NULL && more_alarms;

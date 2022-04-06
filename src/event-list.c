@@ -659,14 +659,11 @@ static void event_data(el_win *el)
 
 static void todo_data(el_win *el)
 {
-    GDateTime *gdt;
     gchar     *stime;
     char      a_day[9];  /* yyyymmdd */
 
     el->days = 0; /* not used */
-    gdt = g_date_time_new_now_local ();
-    stime = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT);
-    g_date_time_unref (gdt);
+    stime = orage_localtime_icaltime ();
     strncpy(a_day, stime, 8);
     a_day[8] = '\0';
     strncpy(el->date_now, stime, XFICAL_APPT_TIME_FORMAT_LEN-1);
