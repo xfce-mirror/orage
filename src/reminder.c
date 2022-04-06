@@ -784,15 +784,16 @@ void create_reminders(alarm_struct *l_alarm)
 
 static void reset_orage_day_change(gboolean changed)
 {
-    struct tm *t;
+    GDateTime *gdt;
     gint secs_left;
 
     if (changed) { /* date was change, need to count next change time */
-        t = orage_localtime();
-        /* t format is 23:59:59 -> 00:00:00 so we can use 
-         * 24:00:00 to represent next day.
-         * Let's find out how much time we have until it happens */
-        secs_left = 60*60*(24 - t->tm_hour) - 60*t->tm_min - t->tm_sec;
+        gdt = g_date_time_new_now_local ();
+        secs_left = 60 - g_date_time_get_second (gdt);
+        secs_left = 60 * 60 * (24 - g_date_time_get_hour (gdt))
+                  - 60 * g_date_time_get_minute (gdt)
+                  - g_date_time_get_second (gdt);
+        g_date_time_unref (gdt);
     }
     else { /* the change did not happen. Need to try again asap. */
         secs_left = 1;
@@ -1039,11 +1040,13 @@ static gboolean start_orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
 /* adjust the call to happen when minute changes */
 static gboolean reset_orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
 {
-    struct tm *t;
+    GDateTime *gdt;
     gint secs_left;
 
-    t = orage_localtime();
-    secs_left = 60 - t->tm_sec;
+    gdt = g_date_time_new_now_local ();
+    secs_left = 60 - g_date_time_get_second (gdt);
+    g_date_time_unref (gdt);
+
     if (secs_left > 2) 
         orage_tooltip_update(NULL);
     /* FIXME: do not start this, if it is already in progress.
