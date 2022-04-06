@@ -1779,12 +1779,12 @@ msgstr "\tИспользуется версия Orage библиотеки libic
 #: ../src/main.c:299
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
-msgstr ""
+msgstr "\tИспользуется libxfce4ui: да\n"
 
 #: ../src/main.c:301
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
-msgstr ""
+msgstr "\tИспользуется libxfce4ui: нет\n"
 
 #: ../src/main.c:314
 msgid ""
