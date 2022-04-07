@@ -938,7 +938,7 @@ static void reset_orage_alarm_clock(void)
 /* refresh trayicon tooltip once per minute */
 static gboolean orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
 {
-    struct tm *t;
+    GDateTime *gdt;
     GList *alarm_l;
     alarm_struct *cur_alarm;
     gboolean more_alarms=TRUE;
@@ -955,7 +955,7 @@ static gboolean orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
            /* no trayicon => no need to update the tooltip */
         return(FALSE);
     }
-    t = orage_localtime();
+    gdt = g_date_time_new_now_local ();
     tooltip = g_string_new(_("Next active alarms:"));
     g_string_prepend(tooltip, "<span foreground=\"blue\" weight=\"bold\" underline=\"single\">");
     g_string_append(tooltip, " </span>");
@@ -976,14 +976,14 @@ static gboolean orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
                 sscanf(cur_alarm->alarm_time, XFICAL_APPT_TIME_FORMAT_DEPRECATED
                         , &year, &month, &day, &hour, &minute, &second);
             }
-            g_now = g_date_new_dmy(t->tm_mday, t->tm_mon + 1
-                    , t->tm_year + 1900);
+            g_now = orage_gdatetime_to_gdate (gdt);
             g_alarm = g_date_new_dmy(day, month, year);
             dd = g_date_days_between(g_now, g_alarm);
+
             g_date_free(g_now);
             g_date_free(g_alarm);
-            hh = hour - t->tm_hour;
-            min = minute - t->tm_min;
+            hh = hour - g_date_time_get_hour (gdt);
+            min = minute - g_date_time_get_minute (gdt);
             if (min < 0) {
                 min += 60;
                 hh -= 1;
@@ -993,7 +993,7 @@ static gboolean orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
                 dd -= 1;
             }
 
-            g_debug ("%s: tooltip, alarm=%s hh=%d hh=%d min=%d", G_STRFUNC,
+            g_debug ("%s: alarm=%s hh=%d hh=%d min=%d", G_STRFUNC,
                      cur_alarm->alarm_time, dd, hh, min);
 
             g_string_append(tooltip, "<span weight=\"bold\">");
@@ -1019,6 +1019,9 @@ static gboolean orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
         else /* sorted so scan can be stopped */
             more_alarms = FALSE; 
     }
+
+    g_date_time_unref (gdt);
+
     if (alarm_cnt == 0)
         g_string_append_printf(tooltip, _("\nNo active alarms found"));
 
