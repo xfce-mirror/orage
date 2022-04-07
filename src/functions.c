@@ -1037,10 +1037,11 @@ void orage_select_date2 (GtkCalendar *cal, GDateTime *gdt)
 
 void orage_select_today(GtkCalendar *cal)
 {
-    struct tm *t;
+    GDateTime *gdt;
 
-    t = orage_localtime();
-    orage_select_date(cal, t->tm_year+1900, t->tm_mon, t->tm_mday);
+    gdt = g_date_time_new_now_local ();
+    orage_select_date2 (cal, gdt);
+    g_date_time_unref (gdt);
 }
 
 /*******************************************************
