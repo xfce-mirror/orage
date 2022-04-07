@@ -602,7 +602,7 @@ static void on_appNote_buffer_changed_cb (G_GNUC_UNUSED GtkTextBuffer *b,
     appt_win *apptw = (appt_win *)user_data;
     GtkTextIter start, end, match_start, match_end;
     GtkTextBuffer *tb;
-    GDateTime *dt;
+    GDateTime *gdt;
     gchar *time_str;
     const gchar *fmt;
 
@@ -629,9 +629,9 @@ static void on_appNote_buffer_changed_cb (G_GNUC_UNUSED GtkTextBuffer *b,
 
     if (fmt)
     {
-        dt = g_date_time_new_now_local ();
-        time_str = g_date_time_format (dt, fmt);
-        g_date_time_unref (dt);
+        gdt = g_date_time_new_now_local ();
+        time_str = g_date_time_format (gdt, fmt);
+        g_date_time_unref (gdt);
 
         gtk_text_buffer_delete(tb, &match_start, &match_end);
         gtk_text_buffer_insert(tb, &match_start, time_str, -1);
