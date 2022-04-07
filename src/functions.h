@@ -88,7 +88,7 @@ GtkWidget *orage_menu_item_new_with_mnemonic(const gchar *label
 
 char *orage_replace_text(char *text, char *old, char *new);
 char *orage_limit_text(char *text, int max_line_len, int max_lines);
-char *orage_process_text_commands(char *text);
+gchar *orage_process_text_commands (const gchar *text);
 
 GtkWidget *orage_period_hbox_new(gboolean head_space, gboolean tail_space
         , GtkWidget *spin_dd, GtkWidget *dd_label

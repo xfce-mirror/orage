@@ -452,21 +452,22 @@ char *orage_limit_text(char *text, int max_line_len, int max_lines)
 /* this will change <&Xnnn> type commands to numbers or text as defined.
  * Currently the only command is 
  * <&Ynnnn> which calculates years between current year and nnnn */
-char *orage_process_text_commands(char *text)
+gchar *orage_process_text_commands (const gchar *text)
 {
     /* these point to the original string and travel it until no more commands 
      * are found:
      * cur points to the current head
      * cmd points to the start of new command
      * end points to the end of new command */
-    char *cur, *end, *cmd;
+    const gchar *cur;
+    char *end, *cmd;
     /* these point to the new string, which has commands in processed form:
      * new is the new fragment to be added
      * beq is the total new string. */
     char *new=NULL, *beq=NULL;
     char *tmp; /* temporary pointer to handle freeing */
     int start_year = -1, year_diff, res;
-    struct tm *cur_time;
+    GDateTime *gdt;
 
     /**** RULE <&Ynnnn> difference of the nnnn year and current year *****/
     /* This is usefull in birthdays for example: I will be <&Y1980>
@@ -477,8 +478,10 @@ char *orage_process_text_commands(char *text)
             res = sscanf(cmd, "<&Y%d", &start_year);
             end[0] = '>'; /* put it back. */
             if (res == 1 && start_year > 0) { /* we assume success */
-                cur_time = orage_localtime();
-                year_diff = cur_time->tm_year + 1900 - start_year;
+                gdt = g_date_time_new_now_local ();
+                year_diff = g_date_time_get_year (gdt) - start_year;
+                g_date_time_unref (gdt);
+
                 if (year_diff > 0) { /* sane value */
                     end++; /* next char after > */
                     cmd[0] = '\0'; /* temporarily. (this ends cur) */
