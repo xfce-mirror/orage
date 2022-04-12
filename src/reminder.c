@@ -804,8 +804,7 @@ static void reset_orage_day_change(gboolean changed)
     else { /* the change did not happen. Need to try again asap. */
         secs_left = 1;
     }
-    g_par.day_timer = g_timeout_add_seconds(secs_left
-            , (GSourceFunc) orage_day_change, NULL);
+    g_par.day_timer = g_timeout_add_seconds (secs_left, orage_day_change, NULL);
 }
 
 /* fire after the date has changed and setup the icon 
@@ -813,38 +812,42 @@ static void reset_orage_day_change(gboolean changed)
  */
 gboolean orage_day_change(gpointer user_data)
 {
-    struct tm *t;
+    GDateTime *gdt;
+    gint year;
+    gint month;
+    gint day;
     static gint previous_year=0, previous_month=0, previous_day=0;
     guint selected_year=0, selected_month=0, selected_day=0;
     gint current_year=0, current_month=0, current_day=0;
 
-    t = orage_localtime();
-  /* See if the day just changed. 
-     Note that when we are called first time we always have day change. 
-     If user_data is not NULL, we also force day change. */
-    if (user_data
-    || previous_day != t->tm_mday
-    || previous_month != t->tm_mon
-    || previous_year != t->tm_year + 1900) {
+    gdt = g_date_time_new_now_local ();
+    g_date_time_get_ymd (gdt, &year, &month, &day);
+    /* See if the day just changed.  Note that when we are called first time we
+     * always have day change.  If user_data is not NULL, we also force day
+     * change.
+     */
+    if (user_data || previous_day != day || previous_month != month || previous_year != year)
+    {
         if (user_data) {
             if (g_par.day_timer) { /* need to stop it if running */
                 g_source_remove(g_par.day_timer);
                 g_par.day_timer = 0;
             }
         }
-        current_year  = t->tm_year + 1900;
-        current_month = t->tm_mon;
-        current_day   = t->tm_mday;
-      /* Get the selected date from calendar */
+        current_year  = year;
+        current_month = month;
+        current_day   = day;
+        /* Get the selected date from calendar */
         gtk_calendar_get_date(GTK_CALENDAR(((CalWin *)g_par.xfcal)->mCalendar),
                  &selected_year, &selected_month, &selected_day);
-        if ((int)selected_year == previous_year 
-        && (int)selected_month == previous_month 
-        && (int)selected_day == previous_day) {
-            /* previous day was indeed selected, 
+        selected_month++;
+        if ((gint)selected_year == previous_year
+        && (gint)selected_month == previous_month
+        && (gint)selected_day == previous_day) {
+            /* previous day was indeed selected,
                keep it current automatically */
-            orage_select_date(GTK_CALENDAR(((CalWin *)g_par.xfcal)->mCalendar)
-                    , current_year, current_month, current_day);
+            orage_select_date2 (GTK_CALENDAR(((CalWin *)g_par.xfcal)->mCalendar),
+                                gdt);
         }
         previous_year  = current_year;
         previous_month = current_month;
