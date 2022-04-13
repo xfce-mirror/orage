@@ -808,7 +808,10 @@ static void reset_orage_day_change(gboolean changed)
 }
 
 /* fire after the date has changed and setup the icon 
- * and change the date in the mainwindow
+ * and change the date in the mainwindow.
+ *
+ * TODO: all xxx_year, xxx_month and xxx_day variables can be replaced with
+ * GDate
  */
 gboolean orage_day_change(gpointer user_data)
 {
@@ -904,37 +907,35 @@ static gboolean orage_alarm_clock (G_GNUC_UNUSED gpointer user_data)
 
 static void reset_orage_alarm_clock(void)
 {
-    struct tm *t, t_alarm, t2;
     GList *alarm_l;
     alarm_struct *cur_alarm;
-    gchar *next_alarm;
     gint secs_to_alarm;
-    gint dd;
+    GDateTime *gdt;
+    GDateTime *gdt_alarm;
 
     if (g_par.alarm_timer) { /* need to stop it if running */
         g_source_remove(g_par.alarm_timer);
         g_par.alarm_timer = 0;
     }
     if (g_par.alarm_list) { /* we have alarms */
-        memcpy(&t2, orage_localtime(), sizeof(t2));
-        t = &t2;
-        t->tm_mon++;
-        t->tm_year = t->tm_year + 1900;
+        gdt = g_date_time_new_now_local ();
         alarm_l = g_list_first(g_par.alarm_list);
         cur_alarm = (alarm_struct *)alarm_l->data;
-        next_alarm = cur_alarm->alarm_time;
-        t_alarm = orage_icaltime_to_tm_time(next_alarm, FALSE);
-        /* let's find out how much time we have until l_alarm happens */
-        dd = orage_days_between(t, &t_alarm);
-        secs_to_alarm = t_alarm.tm_sec  - t->tm_sec
-                  + 60*(t_alarm.tm_min  - t->tm_min)
-                  + 60*60*(t_alarm.tm_hour - t->tm_hour)
-                  + 24*60*60*dd;
+        gdt_alarm = orage_icaltime_to_gdatetime (cur_alarm->alarm_time, FALSE);
+
+        /* Let's find out how much time we have until l_alarm happens. Adding
+         * 999999 to time difference before dividing is for ceiling value.
+         */
+        secs_to_alarm = (g_date_time_difference (gdt_alarm, gdt) + 999999)
+                      / 1000000;
+
+        g_date_time_unref (gdt);
+        g_date_time_unref (gdt_alarm);
         secs_to_alarm += 1; /* alarm needs to come a bit later */
         if (secs_to_alarm < 1) /* rare, but possible */
             secs_to_alarm = 1;
         g_par.alarm_timer = g_timeout_add_seconds(secs_to_alarm
-                , (GSourceFunc) orage_alarm_clock, NULL);
+                , orage_alarm_clock, NULL);
     }
 }
 
