@@ -132,8 +132,8 @@ static void xfical_icalcomponent_archive_normal(icalcomponent *e)
     icalcomponent_remove_component(ic_ical, e);
 }
 
-static void xfical_icalcomponent_archive_recurrent(icalcomponent *e
-        , struct tm *threshold, G_GNUC_UNUSED char *uid)
+static void xfical_icalcomponent_archive_recurrent (icalcomponent *e,
+                                                    const gint threshold_months)
 {
     struct icaltimetype sdate, edate, nsdate, nedate;
     struct icalrecurrencetype rrule;
@@ -144,7 +144,7 @@ static void xfical_icalcomponent_archive_recurrent(icalcomponent *e
     char *text2;
     icalproperty *p, *pdtstart, *pdtend;
     icalproperty *p_orig, *p_origdtstart = NULL, *p_origdtend = NULL;
-    gboolean upd_edate = FALSE; 
+    gboolean upd_edate = FALSE;
     gboolean has_orig_dtstart = FALSE, has_orig_dtend = FALSE;
 
     /* We must not remove recurrent events, but just modify start- and
@@ -168,7 +168,7 @@ static void xfical_icalcomponent_archive_recurrent(icalcomponent *e
         duration = icaltime_subtract(edate, sdate);
         upd_edate = TRUE;
     }
-    else { 
+    else {
         p = icalcomponent_get_first_property(e, ICAL_DURATION_PROPERTY);
         if (p) /* we have DURATION, which does not need changes */
             duration = icalproperty_get_duration(p);
@@ -180,9 +180,9 @@ static void xfical_icalcomponent_archive_recurrent(icalcomponent *e
         text = icalproperty_get_x_name(p_orig);
         if (g_str_has_prefix(text, "X-ORAGE-ORIG-DTSTART")) {
             if (has_orig_dtstart) {
-                /* This fixes bug which existed prior to 4.5.9.7: 
-                 * It was possible that multiple entries were generated. 
-                 * They are in order: oldest first. 
+                /* This fixes bug which existed prior to 4.5.9.7:
+                 * It was possible that multiple entries were generated.
+                 * They are in order: oldest first.
                  * And we only need the oldest, so delete the rest */
                 g_warning ("%s: Corrupted X-ORAGE-ORIG-DTSTART setting. Fixing",
                            G_STRFUNC);
@@ -226,8 +226,7 @@ static void xfical_icalcomponent_archive_recurrent(icalcomponent *e
     for (nsdate = icalrecur_iterator_next(ri),
             nedate = icaltime_add(nsdate, duration);
          !icaltime_is_null_time(nsdate)
-         && (nedate.year*12 + nedate.month) 
-                < ((threshold->tm_year)*12 + threshold->tm_mon);
+         && (nedate.year*12 + nedate.month) < threshold_months;
          nsdate = icalrecur_iterator_next(ri),
             nedate = icaltime_add(nsdate, duration)){
     }
@@ -235,9 +234,9 @@ static void xfical_icalcomponent_archive_recurrent(icalcomponent *e
 
     if (icaltime_is_null_time(nsdate)) { /* remove since it has ended */
         g_message ("Recur ended, moving to archive file");
-        if (has_orig_dtstart) 
+        if (has_orig_dtstart)
             replace_repeating(e, p_origdtstart, ICAL_DTSTART_PROPERTY);
-        if (has_orig_dtend) 
+        if (has_orig_dtend)
             replace_repeating(e, p_origdtend, ICAL_DTEND_PROPERTY);
         xfical_icalcomponent_archive_normal(e);
     }
@@ -281,15 +280,17 @@ static void xfical_icalcomponent_archive_recurrent(icalcomponent *e
 
 gboolean xfical_archive(void)
 {
-    /*
-    struct icaltimetype sdate, edate;
-    */
+    GDateTime *gdt;
+    GDateTime *threshold;
     xfical_period per;
     icalcomponent *c, *c2;
     icalproperty *p;
-    struct tm tm_threshold;
-    struct tm *threshold;
-    char *uid;
+    const char *uid;
+    gint year;
+    gint month;
+    gint day;
+    gint threshold_months;
+    gint ical_months;
 
     if (g_par.archive_limit == 0) {
         g_message ("Archiving not enabled. Exiting");
@@ -299,51 +300,47 @@ gboolean xfical_archive(void)
         g_critical ("%s: file open error", G_STRFUNC);
         return(FALSE);
     }
-    memcpy(&tm_threshold, orage_localtime(), sizeof(tm_threshold));
-    threshold=&tm_threshold;
-    threshold->tm_mday = 1;
-    threshold->tm_year += 1900;
-    threshold->tm_mon += 1; /* convert from 0...11 to 1...12 */
 
-    threshold->tm_mon -= g_par.archive_limit;
-    if (threshold->tm_mon <= 0) {
-        threshold->tm_mon += 12;
-        threshold->tm_year--;
-    }
+    gdt = g_date_time_new_now_local ();
+    threshold = g_date_time_add_months (gdt, -g_par.archive_limit);
+    g_date_time_unref (gdt);
+    g_date_time_get_ymd (threshold, &year, &month, &day);
 
     g_message ("Archiving threshold: %d month(s)", g_par.archive_limit);
     /* yy mon day */
-    g_message ("Archiving events, which are older than: %04d-%02d-%02d"
-            , threshold->tm_year, threshold->tm_mon, threshold->tm_mday);
+    g_message ("Archiving events, which are older than: %04d-%02d-%02d",
+               year, month, 1);
 
     /* Check appointment file for items older than the threshold */
     /* Note: remove moves the "c" pointer to next item, so we need to store it
      *       first to process all of them or we end up skipping entries */
+    threshold_months = year * 12 + month;
     for (c = icalcomponent_get_first_component(ic_ical, ICAL_ANY_COMPONENT);
          c != 0;
          c = c2) {
         c2 = icalcomponent_get_next_component(ic_ical, ICAL_ANY_COMPONENT);
-        /*
+#if 0
         sdate = icalcomponent_get_dtstart(c);
         edate = icalcomponent_get_dtend(c);
         if (icaltime_is_null_time(edate)) {
             edate = sdate;
         }
-        */
+#endif
         per =  ic_get_period(c, TRUE);
-        uid = (char *)icalcomponent_get_uid(c);
         /* Items with endate before threshold => archived.
          * Recurring events are marked in the main file by adding special
          * X-ORAGE_ORIG-DTSTART/X-ORAGE_ORIG-DTEND to save the original
          * start/end dates. Then start_date is changed. These are NOT
          * written in archive file (unless of course they really have ended).
          */
-        if ((per.etime.year*12 + per.etime.month) 
-            < (threshold->tm_year*12 + threshold->tm_mon)) {
+        ical_months = per.etime.year * 12 + per.etime.month;
+        if (ical_months < threshold_months)
+        {
+            uid = icalcomponent_get_uid(c);
             g_message ("Archiving uid: %s", uid);
             /* FIXME: check VTODO completed before archiving it */
-            if (per.ikind == ICAL_VTODO_COMPONENT 
-                && ((per.ctime.year*12 + per.ctime.month) 
+            if (per.ikind == ICAL_VTODO_COMPONENT
+                && ((per.ctime.year*12 + per.ctime.month)
                     < (per.stime.year*12 + per.stime.month))) {
                 /* VTODO not completed, do not archive */
                 g_message ("VTODO not complete; not archived");
@@ -354,14 +351,15 @@ gboolean xfical_archive(void)
                     g_message ("Recurring. End year: %04d, "
                                "month: %02d, day: %02d", per.etime.year,
                                per.etime.month, per.etime.day);
-                    xfical_icalcomponent_archive_recurrent(c, threshold, uid);
+                    xfical_icalcomponent_archive_recurrent (c, threshold_months);
                 }
-                else 
+                else
                     xfical_icalcomponent_archive_normal(c);
             }
         }
     }
 
+    g_date_time_unref (threshold);
     ic_file_modified = TRUE;
     icalset_mark(ic_afical);
     icalset_commit(ic_afical);
