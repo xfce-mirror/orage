@@ -647,7 +647,7 @@ GtkWidget *orage_create_framebox_with_content (const gchar *title,
  * time convert and manipulation functions
  *******************************************************/
 
-struct tm orage_i18_time_to_tm_time (const gchar *i18_time)
+static struct tm orage_i18_time_to_tm_time (const gchar *i18_time)
 {
     char *ret;
     struct tm tm_time = {0};
@@ -687,7 +687,7 @@ void orage_i18_date_to_gdate (const gchar *i18_date, GDate *date)
     }
 }
 
-gchar *orage_tm_time_to_i18_time(struct tm *tm_time)
+static gchar *orage_tm_time_to_i18_time(struct tm *tm_time)
 {
     static gchar i18_time[128];
 
@@ -929,14 +929,6 @@ gchar *orage_i18_date_to_icaldate(const gchar *i18_date)
     icalt = orage_tm_time_to_icaltime(&t);
     icalt[8] = '\0'; /* we know it is date */
     return(icalt);
-}
-
-struct tm *orage_localtime(void)
-{
-    time_t tt;
-
-    tt = time(NULL);
-    return(localtime(&tt));
 }
 
 GDate *orage_gdatetime_to_gdate (GDateTime *gdt)
