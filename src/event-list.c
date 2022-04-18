@@ -885,15 +885,21 @@ static void on_View_refresh_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
     refresh_el_win((el_win*)user_data);
 }
 
-static void changeSelectedDate(el_win *el, gint day)
+static void changeSelectedDate (el_win *el, const gint day)
 {
-    struct tm tm_date;
+    GDate *date;
+    GDateTime *gdt1;
+    GDateTime *gdt2;
 
-    tm_date = orage_i18_date_to_tm_date(
-            gtk_window_get_title(GTK_WINDOW(el->Window)));
-    orage_move_day(&tm_date, day);
-    orage_select_date(GTK_CALENDAR(((CalWin *)g_par.xfcal)->mCalendar)
-            , tm_date.tm_year + 1900, tm_date.tm_mon, tm_date.tm_mday);
+    date = g_date_new ();
+    orage_i18_date_to_gdate (gtk_window_get_title(GTK_WINDOW(el->Window)), date);
+    gdt1 = orage_gdate_to_gdatetime (date);
+    g_free (date);
+    gdt2 = g_date_time_add_days (gdt1, day);
+    g_date_time_unref (gdt1);
+    orage_select_date2 (GTK_CALENDAR(((CalWin *)g_par.xfcal)->mCalendar), gdt2);
+    g_date_time_unref (gdt2);
+
     set_el_data_from_cal(el);
 }
 
