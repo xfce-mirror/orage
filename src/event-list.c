@@ -545,7 +545,7 @@ static void app_rows (el_win *el, const gchar *a_day, char *par,
     }
 }
 
-static void app_data (el_win *el, const gchar *a_day, char *par)
+static void app_data (el_win *el, __attribute__ ((deprecated ("use GDateTime instead string"))) const gchar *a_day, char *par)
 {
     xfical_type ical_type;
     gchar file_type[8];
