@@ -610,7 +610,6 @@ static void event_data(el_win *el)
     const gchar *title;  /* in %x strftime format */
     char      *stime;  /* in icaltime format */
     gchar a_day[9]; /* yyyymmdd */
-    struct tm t_title;
     GDate *gd_title;
     GDate *gd_now;
     GDate *d1;
@@ -638,9 +637,11 @@ static void event_data(el_win *el)
         g_date_free(d1);
     }
     else { /* we show starting from selected day */
-        t_title = orage_i18_date_to_tm_date(title);
-        stime = orage_tm_time_to_icaltime (&t_title);
+        gdt = orage_gdate_to_gdatetime (gd_title);
+        g_date_time_unref (gdt);
+        stime = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT);
         g_strlcpy (a_day, stime, sizeof (a_day));
+        g_free (stime);
     }
 
     gdt = g_date_time_new_now_local ();
