@@ -942,6 +942,15 @@ GDate *orage_gdatetime_to_gdate (GDateTime *gdt)
     return g_date_new_dmy (day, month, year);
 }
 
+GDateTime *orage_gdate_to_gdatetime (const GDate *gd)
+{
+    const gint year = g_date_get_year (gd);
+    const gint month = g_date_get_month (gd);
+    const gint day = g_date_get_day (gd);
+
+    return g_date_time_new_local (year, month, day, 0, 0, 0);
+}
+
 gchar *orage_localdate_i18 (void)
 {
     GDateTime *gdt;

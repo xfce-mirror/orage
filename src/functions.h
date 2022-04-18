@@ -96,6 +96,7 @@ GtkWidget *orage_period_hbox_new(gboolean head_space, gboolean tail_space
         , GtkWidget *spin_mm, GtkWidget *mm_label);
 
 GDate *orage_gdatetime_to_gdate (GDateTime *gdt);
+GDateTime *orage_gdate_to_gdatetime (const GDate *gd);
 
 /** Return date string. Calling function must free returned date string.
  *  @return date string.
