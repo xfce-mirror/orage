@@ -557,22 +557,38 @@ static void on_btRecreateReminder_clicked (G_GNUC_UNUSED GtkButton *button,
     alarm_struct *l_alarm = (alarm_struct *)user_data;
     orage_ddmmhh_hbox_struct *display_data;
     alarm_struct *n_alarm;
-    time_t tt;
+    gint days;
+    gint hours;
+    gint minutes;
+    GDateTime *gdt_local;
+    GDateTime *gdt_local_d;
+    GDateTime *gdt_local_dh;
+    GDateTime *gdt_local_dhm;
+    gchar *time_str;
 
     display_data = (orage_ddmmhh_hbox_struct *)l_alarm->orage_display_data;
     /* we do not have l_alarm time here */
     n_alarm = alarm_copy(l_alarm, FALSE);
-
     n_alarm->temporary = TRUE;
+
     /* let's count new l_alarm time */
-    tt = time(NULL);
-    tt += (gtk_spin_button_get_value_as_int(
-            GTK_SPIN_BUTTON(display_data->spin_dd)) * 24*60*60
-        + gtk_spin_button_get_value_as_int(
-            GTK_SPIN_BUTTON(display_data->spin_hh)) *    60*60
-        + gtk_spin_button_get_value_as_int(
-            GTK_SPIN_BUTTON(display_data->spin_mm)) *       60);
-    n_alarm->alarm_time = g_strdup(orage_tm_time_to_icaltime(localtime(&tt)));
+    days = gtk_spin_button_get_value_as_int (
+            GTK_SPIN_BUTTON (display_data->spin_dd));
+    hours = gtk_spin_button_get_value_as_int (
+            GTK_SPIN_BUTTON (display_data->spin_hh));
+    minutes = gtk_spin_button_get_value_as_int (
+            GTK_SPIN_BUTTON (display_data->spin_mm));
+    gdt_local = g_date_time_new_now_local ();
+    gdt_local_d = g_date_time_add_days (gdt_local, days);
+    gdt_local_dh = g_date_time_add_hours (gdt_local_d, hours);
+    gdt_local_dhm = g_date_time_add_minutes (gdt_local_dh, minutes);
+    time_str = g_date_time_format (gdt_local_dhm, XFICAL_APPT_TIME_FORMAT);
+    n_alarm->alarm_time = g_strdup (time_str);
+    g_date_time_unref (gdt_local);
+    g_date_time_unref (gdt_local_d);
+    g_date_time_unref (gdt_local_dh);
+    g_date_time_unref (gdt_local_dhm);
+    g_free (time_str);
     alarm_add(n_alarm);
     setup_orage_alarm_clock();
     gtk_widget_destroy(display_data->dialog);
