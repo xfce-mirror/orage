@@ -706,7 +706,8 @@ gchar *orage_tm_date_to_i18_date (const struct tm *tm_date)
     return(i18_date);
 }
 
-struct tm orage_cal_to_tm_time(GtkCalendar *cal, gint hh, gint mm)
+__attribute__((deprecated ("use orage_cal_to_gdatetime")))
+static struct tm orage_cal_to_tm_time (GtkCalendar *cal, gint hh, gint mm)
 {
     struct tm tm_date = {0};
 

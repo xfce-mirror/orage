@@ -133,9 +133,6 @@ GDateTime *orage_icaltime_to_gdatetime (const gchar *i18_date,
 char *orage_icaltime_to_i18_time(const char *icaltime);
 char *orage_icaltime_to_i18_time_only(const char *icaltime);
 
-__attribute__((deprecated ("use orage_cal_to_gdatetime")))
-struct tm orage_cal_to_tm_time(GtkCalendar *cal, gint hh, gint mm);
-
 /** Return GDateTime from GTK calendar. This function set hour and minute values
  *  as well.
  *  @param cal instance of GTK calendar
