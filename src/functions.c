@@ -739,7 +739,7 @@ GDateTime *orage_cal_to_gdatetime (GtkCalendar *cal,
     GDateTime *gdt;
 
     gtk_calendar_get_date (cal, &year, &month, &day);
-
+    month += 1;
     gdt = g_date_time_new_local (year, month, day, hh, mm, 0);
     if (gdt == NULL)
     {

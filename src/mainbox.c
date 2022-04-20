@@ -508,9 +508,10 @@ static void create_mainbox_event_info_box(void)
 {
     CalWin *cal = (CalWin *)g_par.xfcal;
     gchar *tmp, *tmp2, *tmp3;
-    struct tm tm_date_start, tm_date_end;
+    GDateTime *gdt;
+    GDateTime *gdt_tmp;
 
-    tm_date_start = orage_cal_to_tm_time(GTK_CALENDAR(cal->mCalendar), 1, 1);
+    gdt = orage_cal_to_gdatetime (GTK_CALENDAR (cal->mCalendar), 1, 1);
 
     cal->mEvent_vbox = gtk_grid_new ();
     g_object_set (cal->mEvent_vbox, "vexpand", TRUE,
@@ -522,18 +523,17 @@ static void create_mainbox_event_info_box(void)
     if (g_par.show_event_days) {
     /* bug 7836: we call this routine also with 0 = no event data at all */
         if (g_par.show_event_days == 1) {
-            tmp2 = g_strdup(orage_tm_date_to_i18_date(&tm_date_start));
+            tmp2 = g_date_time_format (gdt, "%x");
             tmp = g_strdup_printf(_("<b>Events for %s:</b>"), tmp2);
             g_free(tmp2);
         }
         else {
-            int i;
+            tmp2 = g_date_time_format (gdt, "%x");
 
-            tm_date_end = tm_date_start;
-            for (i = g_par.show_event_days-1; i; i--)
-                orage_move_day(&tm_date_end, 1);
-            tmp2 = g_strdup(orage_tm_date_to_i18_date(&tm_date_start));
-            tmp3 = g_strdup(orage_tm_date_to_i18_date(&tm_date_end));
+            gdt_tmp = gdt;
+            gdt = g_date_time_add_days (gdt_tmp, g_par.show_event_days - 1);
+            g_date_time_unref (gdt_tmp);
+            tmp3 = g_date_time_format (gdt, "%x");
             tmp = g_strdup_printf(_("<b>Events for %s - %s:</b>"), tmp2, tmp3);
             g_free(tmp2);
             g_free(tmp3);
@@ -542,6 +542,7 @@ static void create_mainbox_event_info_box(void)
         g_free(tmp);
     }
 
+    g_date_time_unref (gdt);
     g_object_set (cal->mEvent_label, "xalign", 0.0, "yalign", 0.5, NULL);
     gtk_grid_attach_next_to (GTK_GRID(cal->mEvent_vbox), cal->mEvent_label,
                              NULL, GTK_POS_BOTTOM, 1, 1);
