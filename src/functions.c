@@ -770,9 +770,6 @@ char *orage_cal_to_i18_time(GtkCalendar *cal, gint hh, gint mm)
 {
     GDateTime *gdt;
     char *tim;
-    struct tm tm_date = {0};
-
-    tm_date.tm_isdst = -1;
 
     gdt = orage_cal_to_gdatetime (cal, hh, mm);
     tim = g_date_time_format (gdt, "%x %R");
