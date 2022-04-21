@@ -1698,7 +1698,7 @@ static void recur_day_selected_double_click_cb(GtkCalendar *calendar
                     GTK_SPIN_BUTTON(apptw->StartTime_spin_hh));
             mm =  gtk_spin_button_get_value_as_int(
                     GTK_SPIN_BUTTON(apptw->StartTime_spin_mm));
-            cal_date = g_strdup(orage_cal_to_i18_time(calendar, hh, mm));
+            cal_date = orage_cal_to_i18_time(calendar, hh, mm);
         }
 #else
         /* date is enough */
@@ -1711,7 +1711,7 @@ static void recur_day_selected_double_click_cb(GtkCalendar *calendar
                 GTK_SPIN_BUTTON(apptw->Recur_exception_incl_spin_hh));
         mm =  gtk_spin_button_get_value_as_int(
                 GTK_SPIN_BUTTON(apptw->Recur_exception_incl_spin_mm));
-        cal_date = g_strdup(orage_cal_to_i18_time(calendar, hh, mm));
+        cal_date = orage_cal_to_i18_time (calendar, hh, mm);
     }
 
     if (add_recur_exception_row(cal_date, type, apptw, FALSE)) { /* new data */
