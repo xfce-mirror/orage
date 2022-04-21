@@ -701,6 +701,7 @@ GDateTime *orage_i18_date_to_gdatetime (const gchar *i18_date)
     return gdt;
 }
 
+__attribute__ ((deprecated))
 static gchar *orage_tm_time_to_i18_time(struct tm *tm_time)
 {
     static gchar i18_time[128];

@@ -71,6 +71,8 @@ typedef struct _day_win
     gdouble scroll_pos; /* remember the scroll position */
 
     GList *apptw_list; /* keep track of appointments being updated */
+
+    __attribute__ ((deprecated ("replace with GDateTime")))
     gchar a_day[9]; /* start date yyyymmdd */
     gint days;      /* how many days to show */
 } day_win;
