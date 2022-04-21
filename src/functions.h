@@ -127,7 +127,6 @@ gchar *orage_tm_time_to_icaltime(struct tm *t);
 __attribute__((deprecated))
 struct tm orage_icaltime_to_tm_time (const gchar *i18_date, gboolean real_tm);
 
-__attribute__((deprecated ("temporary function")))
 GDateTime *orage_icaltime_to_gdatetime (const gchar *i18_date,
                                         gboolean real_tm);
 
