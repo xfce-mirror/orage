@@ -98,18 +98,20 @@ GtkWidget *orage_create_combo_box_with_content (const gchar *text[],
 
 gboolean orage_date_button_clicked(GtkWidget *button, GtkWidget *selDate_dialog)
 {
-/*  GtkWidget *selDate_dialog; */
+#if 0
+    GtkWidget *selDate_dialog;
+#endif
     GtkWidget *selDate_calendar;
     gint result;
     gchar *new_date = NULL;
-    gchar *today;
     const gchar *cur_date;
-    struct tm cur_t;
     gboolean changed, allocated=FALSE;
+    GDateTime *gdt;
 
-    /*
-       For some unknown reason NLS does not work in this file, so this
-       has to be done in the main code:
+#if 0
+    /* For some unknown reason NLS does not work in this file, so this has to be
+     * done in the main code:
+     */
     selDate_dialog = gtk_dialog_new_with_buttons(
             _("Pick the date"), GTK_WINDOW(win),
             GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
@@ -118,26 +120,25 @@ gboolean orage_date_button_clicked(GtkWidget *button, GtkWidget *selDate_dialog)
             "_OK",
             GTK_RESPONSE_ACCEPT,
             NULL);
-            */
+#endif
 
     selDate_calendar = gtk_calendar_new();
     gtk_container_add(
         GTK_CONTAINER(gtk_dialog_get_content_area (GTK_DIALOG(selDate_dialog)))
             , selDate_calendar);
 
-    cur_date = (char *)gtk_button_get_label(GTK_BUTTON(button));
+    cur_date = gtk_button_get_label(GTK_BUTTON(button));
+
     if (cur_date)
-        cur_t = orage_i18_date_to_tm_date(cur_date);
+        gdt = orage_i18_date_to_gdatetime (cur_date);
     else
     {
         /* something was wrong. let's return some valid value */
-        today = orage_localdate_i18 ();
-        cur_t = orage_i18_date_to_tm_date (today);
-        g_free (today);
+        gdt = g_date_time_new_now_local ();
     }
 
-    orage_select_date(GTK_CALENDAR(selDate_calendar)
-            , cur_t.tm_year+1900, cur_t.tm_mon, cur_t.tm_mday);
+    orage_select_date2 (GTK_CALENDAR (selDate_calendar), gdt);
+    g_date_time_unref (gdt);
     gtk_widget_show_all(selDate_dialog);
 
     result = gtk_dialog_run(GTK_DIALOG(selDate_dialog));
@@ -685,6 +686,19 @@ void orage_i18_date_to_gdate (const gchar *i18_date, GDate *date)
         g_date_free (date);
         g_error ("%s: wrong date format (%s)", G_STRFUNC, i18_date);
     }
+}
+
+GDateTime *orage_i18_date_to_gdatetime (const gchar *i18_date)
+{
+    GDateTime *gdt;
+    GDate *date;
+
+    date = g_date_new ();
+    orage_i18_date_to_gdate (i18_date, date);
+    gdt = orage_gdate_to_gdatetime (date);
+    g_date_free (date);
+
+    return gdt;
 }
 
 static gchar *orage_tm_time_to_i18_time(struct tm *tm_time)
