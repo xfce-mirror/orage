@@ -1503,6 +1503,7 @@ el_win *create_el_win(const gchar *start_date)
     el->only_first = g_par.el_only_first;
     el->show_old = el->only_first;
     el->time_now[0] = 0;
+    el->date_now = g_date_time_new_now_local ();
     el->apptw_list = NULL;
     el->accel_group = gtk_accel_group_new();
 
