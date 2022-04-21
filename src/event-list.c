@@ -266,6 +266,8 @@ static void start_time_data_func (G_GNUC_UNUSED GtkTreeViewColumn *col,
     gchar *stime, *etime, *stime2;
     gchar start_time[17], end_time[17];
     gint len;
+    GDateTime *gdt_start_time;
+    GDateTime *gdt_end_time;
 
     if (el->page == EVENT_PAGE) {
         if (!el->today || el->days != 0) { /* reset */
@@ -278,19 +280,19 @@ static void start_time_data_func (G_GNUC_UNUSED GtkTreeViewColumn *col,
         }
 
         gtk_tree_model_get(model, iter, COL_TIME, &stime, -1);
-        /* we need to remember the real address in case we increment it, 
+        /* we need to remember the real address in case we increment it,
          * so that we can free the correct pointer */
-        stime2 = stime; 
+        stime2 = stime;
         if (stime[0] == '+')
             stime++;
         etime = stime + 8; /* hh:mm - hh:mm */
         /* only add special highlight if we are on today (=start with time) */
-        if (stime[2] != ':') { 
+        if (stime[2] != ':') {
             g_object_set(rend
                      , "foreground-set",    FALSE
                      , "strikethrough-set", FALSE
                      , "weight-set",        FALSE
-                     , NULL); 
+                     , NULL);
         }
         else if (strncmp(etime, el->time_now, 5) < 0) { /* gone */
             g_object_set(rend
@@ -301,7 +303,7 @@ static void start_time_data_func (G_GNUC_UNUSED GtkTreeViewColumn *col,
                      , "weight-set",        TRUE
                      , NULL);
         }
-        else if (strncmp(stime, el->time_now, 5) <= 0 
+        else if (strncmp(stime, el->time_now, 5) <= 0
               && strncmp(etime, el->time_now, 5) >= 0) { /* current */
             g_object_set(rend
                      , "foreground",        "Blue"
@@ -330,12 +332,24 @@ static void start_time_data_func (G_GNUC_UNUSED GtkTreeViewColumn *col,
             len = 8;
         }
         strncpy(start_time, stime, len);
+        gdt_start_time = orage_icaltime_to_gdatetime (start_time, FALSE);
         gtk_tree_model_get(model, iter, COL_TIME, &stime2, -1);
         if (g_str_has_suffix(stime2, "- ...")) /* no due time */
-            strncpy(end_time, "99999", len); /* long in the future*/
+        {
+            /* long in the future*/
+            gdt_end_time = g_date_time_new_from_iso8601 ("9999-12-31T23:59:59Z", NULL);
+        }
         else /* normal due time*/
+        {
             strncpy(end_time, stime+len, len);
-        if (strncmp(end_time, el->date_now, len) < 0) { /* gone */
+            gdt_end_time = orage_icaltime_to_gdatetime (end_time, FALSE);
+        }
+
+        g_free (stime);
+        g_free (stime2);
+
+        if (g_date_time_difference (gdt_end_time, el->date_now) < 0) {
+            /* gone */
             g_object_set(rend
                      , "foreground",        "Red"
                      , "foreground-set",    TRUE
@@ -344,8 +358,9 @@ static void start_time_data_func (G_GNUC_UNUSED GtkTreeViewColumn *col,
                      , "weight-set",        TRUE
                      , NULL);
         }
-        else if (strncmp(start_time, el->date_now, len) <= 0 
-              && strncmp(end_time, el->date_now, len) >= 0) { /* current */
+        else if (g_date_time_difference (gdt_start_time, el->date_now) <= 0
+              && g_date_time_difference (gdt_end_time, el->date_now) >= 0) {
+            /* current */
             g_object_set(rend
                      , "foreground",        "Blue"
                      , "foreground-set",    TRUE
@@ -362,15 +377,15 @@ static void start_time_data_func (G_GNUC_UNUSED GtkTreeViewColumn *col,
                      , "weight-set",        TRUE
                      , NULL);
         }
-        g_free(stime);
-        g_free(stime2);
+        g_date_time_unref (gdt_start_time);
+        g_date_time_unref (gdt_end_time);
     }
     else {
         g_object_set(rend
                  , "foreground-set",    FALSE
                  , "strikethrough-set", FALSE
                  , "weight-set",        FALSE
-                 , NULL); 
+                 , NULL);
     }
 }
 
@@ -667,9 +682,13 @@ static void todo_data(el_win *el)
     stime = orage_localtime_icaltime ();
     strncpy(a_day, stime, 8);
     a_day[8] = '\0';
-    strncpy(el->date_now, stime, XFICAL_APPT_TIME_FORMAT_LEN-1);
     g_free (stime);
-    el->date_now[XFICAL_APPT_TIME_FORMAT_LEN-1] = '\0';
+
+    if (el->date_now)
+        g_date_time_unref (el->date_now);
+
+    el->date_now = g_date_time_new_now_local ();
+
     app_data(el, a_day, NULL);
 }
 
