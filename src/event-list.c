@@ -907,14 +907,11 @@ static void on_View_refresh_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
 
 static void changeSelectedDate (el_win *el, const gint day)
 {
-    GDate *date;
     GDateTime *gdt1;
     GDateTime *gdt2;
 
-    date = g_date_new ();
-    orage_i18_date_to_gdate (gtk_window_get_title(GTK_WINDOW(el->Window)), date);
-    gdt1 = orage_gdate_to_gdatetime (date);
-    g_free (date);
+    gdt1 = orage_i18_date_to_gdatetime (
+            gtk_window_get_title (GTK_WINDOW(el->Window)));
     gdt2 = g_date_time_add_days (gdt1, day);
     g_date_time_unref (gdt1);
     orage_select_date2 (GTK_CALENDAR(((CalWin *)g_par.xfcal)->mCalendar), gdt2);
