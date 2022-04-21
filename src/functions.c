@@ -937,12 +937,13 @@ gchar *orage_i18_time_to_icaltime(const gchar *i18_time)
 
 gchar *orage_i18_date_to_icaldate(const gchar *i18_date)
 {
-    struct tm t;
+    GDateTime *gdt;
     gchar *icalt;
 
-    t = orage_i18_date_to_tm_date(i18_date);
-    icalt = orage_tm_time_to_icaltime(&t);
-    icalt[8] = '\0'; /* we know it is date */
+    gdt = orage_i18_date_to_gdatetime (i18_date);
+    icalt = g_date_time_format (gdt, XFICAL_APPT_DATE_FORMAT);
+    g_date_time_unref (gdt);
+
     return(icalt);
 }
 
