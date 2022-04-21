@@ -137,7 +137,7 @@ gboolean orage_date_button_clicked(GtkWidget *button, GtkWidget *selDate_dialog)
         gdt = g_date_time_new_now_local ();
     }
 
-    orage_select_date2 (GTK_CALENDAR (selDate_calendar), gdt);
+    orage_select_date (GTK_CALENDAR (selDate_calendar), gdt);
     g_date_time_unref (gdt);
     gtk_widget_show_all(selDate_dialog);
 
@@ -1016,7 +1016,7 @@ gint orage_days_between (const struct tm *t1, const struct tm *t2)
     return(dd);
 }
 
-void orage_select_date2 (GtkCalendar *cal, GDateTime *gdt)
+void orage_select_date (GtkCalendar *cal, GDateTime *gdt)
 {
     guint cur_year, cur_month, cur_mday;
     gint year;
@@ -1041,7 +1041,7 @@ void orage_select_today(GtkCalendar *cal)
     GDateTime *gdt;
 
     gdt = g_date_time_new_now_local ();
-    orage_select_date2 (cal, gdt);
+    orage_select_date (cal, gdt);
     g_date_time_unref (gdt);
 }
 

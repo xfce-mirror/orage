@@ -865,7 +865,7 @@ gboolean orage_day_change(gpointer user_data)
         && (gint)selected_day == previous_day) {
             /* previous day was indeed selected,
                keep it current automatically */
-            orage_select_date2 (GTK_CALENDAR(((CalWin *)g_par.xfcal)->mCalendar),
+            orage_select_date (GTK_CALENDAR(((CalWin *)g_par.xfcal)->mCalendar),
                                 gdt);
         }
         previous_year  = current_year;

@@ -102,7 +102,7 @@ static void on_Today_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
     CalWin *xfcal = (CalWin *)user_data;
 
     gdt = g_date_time_new_now_local ();
-    orage_select_date2 (GTK_CALENDAR (xfcal->mCalendar), gdt);
+    orage_select_date (GTK_CALENDAR (xfcal->mCalendar), gdt);
     g_date_time_unref (gdt);
     (void)create_el_win (NULL);
 }

@@ -914,7 +914,7 @@ static void changeSelectedDate (el_win *el, const gint day)
             gtk_window_get_title (GTK_WINDOW(el->Window)));
     gdt2 = g_date_time_add_days (gdt1, day);
     g_date_time_unref (gdt1);
-    orage_select_date2 (GTK_CALENDAR(((CalWin *)g_par.xfcal)->mCalendar), gdt2);
+    orage_select_date (GTK_CALENDAR(((CalWin *)g_par.xfcal)->mCalendar), gdt2);
     g_date_time_unref (gdt2);
 
     set_el_data_from_cal(el);

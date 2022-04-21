@@ -153,7 +153,7 @@ gint orage_days_between (const struct tm *t1, const struct tm *t2);
  *  @param cal instance of GTK calendar
  *  @param gdt selected date.
  */
-void orage_select_date2 (GtkCalendar *cal, GDateTime *gdt);
+void orage_select_date (GtkCalendar *cal, GDateTime *gdt);
 void orage_select_today(GtkCalendar *cal);
 
 gboolean orage_copy_file (const gchar *source, const gchar *target);
