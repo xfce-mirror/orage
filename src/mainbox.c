@@ -605,8 +605,7 @@ static void build_mainbox_todo_info(void)
 static void build_mainbox_event_info(void)
 {
     CalWin *cal = (CalWin *)g_par.xfcal;
-    char      *s_time;
-    char      a_day[9];  /* yyyymmdd */
+    gchar *s_time;
     xfical_type ical_type;
     gchar file_type[8];
     gint i;
@@ -614,25 +613,23 @@ static void build_mainbox_event_info(void)
 
     if (g_par.show_event_days) {
         s_time = orage_cal_to_icaldate (GTK_CALENDAR (cal->mCalendar));
-        strncpy(a_day, s_time, 8);
-        g_free (s_time);
-        a_day[8] = '\0';
-    
         ical_type = XFICAL_TYPE_EVENT;
         g_strlcpy (file_type, "O00.", sizeof (file_type));
 #if 0
-        insert_rows(&event_list, a_day, ical_type, file_type);
+        insert_rows(&event_list, s_time, ical_type, file_type);
 #endif
-        xfical_get_each_app_within_time(a_day, g_par.show_event_days
+        xfical_get_each_app_within_time (s_time, g_par.show_event_days
                 , ical_type, file_type, &event_list);
         for (i = 0; i < g_par.foreign_count; i++) {
             g_snprintf(file_type, sizeof (file_type), "F%02d.", i);
 #if 0
-            insert_rows(&event_list, a_day, ical_type, file_type);
+            insert_rows(&event_list, s_time, ical_type, file_type);
 #endif
-            xfical_get_each_app_within_time(a_day, g_par.show_event_days
+            xfical_get_each_app_within_time (s_time, g_par.show_event_days
                     , ical_type, file_type, &event_list);
         }
+
+        g_free (s_time);
     }
     if (event_list) {
         gtk_widget_destroy(cal->mEvent_vbox);
