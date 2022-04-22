@@ -67,12 +67,12 @@ static void mFile_newApp_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
                                       gpointer user_data)
 {
     CalWin *cal = (CalWin *)user_data;
-    char cur_date[9];
+    gchar *cur_date;
 
     /* cal has always a day selected here, so it is safe to read it */
-    strncpy(cur_date, orage_cal_to_icaldate(GTK_CALENDAR(cal->mCalendar)), 8);
-    cur_date[8]='\0';
+    cur_date = orage_cal_to_icaldate (GTK_CALENDAR (cal->mCalendar));
     create_appt_win("NEW", cur_date);
+    g_free (cur_date);
 }
 
 static void mFile_interface_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem
@@ -615,6 +615,7 @@ static void build_mainbox_event_info(void)
     if (g_par.show_event_days) {
         s_time = orage_cal_to_icaldate (GTK_CALENDAR (cal->mCalendar));
         strncpy(a_day, s_time, 8);
+        g_free (s_time);
         a_day[8] = '\0';
     
         ical_type = XFICAL_TYPE_EVENT;

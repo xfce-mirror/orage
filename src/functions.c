@@ -809,14 +809,14 @@ char *orage_cal_to_i18_date(GtkCalendar *cal)
 
 char *orage_cal_to_icaldate(GtkCalendar *cal)
 {
-    struct tm tm_date = {0};
     char *icalt;
+    GDateTime *gdt;
 
-    tm_date.tm_isdst = -1;
-
-    tm_date = orage_cal_to_tm_time(cal, 1, 1);
-    icalt = orage_tm_time_to_icaltime(&tm_date);
+    gdt = orage_cal_to_gdatetime (cal, 1, 1);
+    icalt = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT);
+    g_date_time_unref (gdt);
     icalt[8] = '\0'; /* we know it is date */
+
     return(icalt);
 }
 
@@ -954,6 +954,7 @@ gchar *orage_i18_time_to_icaltime(const gchar *i18_time)
 
     gdt = orage_i18_time_to_gdatetime (i18_time);
     ct = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT);
+    g_date_time_unref (gdt);
 
     return(ct);
 }
