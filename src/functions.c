@@ -813,9 +813,8 @@ char *orage_cal_to_icaldate(GtkCalendar *cal)
     GDateTime *gdt;
 
     gdt = orage_cal_to_gdatetime (cal, 1, 1);
-    icalt = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT);
+    icalt = g_date_time_format (gdt, XFICAL_APPT_DATE_FORMAT);
     g_date_time_unref (gdt);
-    icalt[8] = '\0'; /* we know it is date */
 
     return(icalt);
 }
