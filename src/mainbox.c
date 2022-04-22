@@ -315,10 +315,10 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
     tmp_title = appt->title
             ? orage_process_text_commands(appt->title)
             : g_strdup(_("No title defined"));
-    s_time = g_strdup(orage_icaltime_to_i18_time(appt->starttimecur));
+    s_time = orage_icaltime_to_i18_time (appt->starttimecur);
     if (todo) {
-        e_time = g_strdup(appt->use_due_time
-                ? orage_icaltime_to_i18_time(appt->endtimecur) : s_time);
+        e_time = appt->use_due_time ?
+            orage_icaltime_to_i18_time(appt->endtimecur) : g_strdup (s_time);
         tmp = g_strdup_printf(" %s  %s", e_time, tmp_title);
         g_free(e_time);
     }
@@ -396,10 +396,10 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
 
     if (todo) {
         na = _("Never");
-        e_time = g_strdup(appt->use_due_time
-                ? orage_icaltime_to_i18_time(appt->endtimecur) : na);
-        c_time = g_strdup(appt->completed
-                ? orage_icaltime_to_i18_time(appt->completedtime) : na);
+        e_time = appt->use_due_time ?
+                orage_icaltime_to_i18_time(appt->endtimecur) : g_strdup (na);
+        c_time = appt->completed ?
+                orage_icaltime_to_i18_time(appt->completedtime) : g_strdup (na);
 
         tip = g_strdup_printf(_("Title: %s\n%s Start:\t%s\n Due:\t%s\n Done:\t%s%s")
                 , tip_title, tip_location, s_time, e_time, c_time, tip_note);
@@ -407,7 +407,7 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
         g_free(c_time);
     }
     else { /* it is event */
-        e_time = g_strdup(orage_icaltime_to_i18_time(appt->endtimecur));
+        e_time = orage_icaltime_to_i18_time (appt->endtimecur);
 
         tip = g_strdup_printf(_("Title: %s\n%s Start:\t%s\n End:\t%s%s")
                 , tip_title, tip_location, s_time, e_time, tip_note);

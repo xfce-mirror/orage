@@ -2567,10 +2567,10 @@ struct icaltimetype exdatetime;
 
         next_start_time = icaltime_add(next_alarm_time, alarm_start_diff);
         next_end_time = icaltime_add(next_start_time, per.duration);
-        tmp1 = g_strdup(orage_icaltime_to_i18_time(
-                        icaltime_as_ical_string(next_start_time)));
-        tmp2 = g_strdup(orage_icaltime_to_i18_time(
-                        icaltime_as_ical_string(next_end_time)));
+        tmp1 = orage_icaltime_to_i18_time (
+                        icaltime_as_ical_string(next_start_time));
+        tmp2 = orage_icaltime_to_i18_time (
+                        icaltime_as_ical_string(next_end_time));
         new_alarm->action_time = g_strconcat(tmp1, " - ", tmp2, NULL);
         g_free(tmp1);
         g_free(tmp2);

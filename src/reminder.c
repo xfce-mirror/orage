@@ -737,7 +737,7 @@ static void create_procedure_reminder(alarm_struct *l_alarm)
     cmd = orage_replace_text(cmd, "<&D>", l_alarm->description);
 
     if (l_alarm->alarm_time)
-        atime = g_strdup(orage_icaltime_to_i18_time(l_alarm->alarm_time));
+        atime = orage_icaltime_to_i18_time (l_alarm->alarm_time);
     else
     {
         gdt = g_date_time_new_now_local ();

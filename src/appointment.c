@@ -2545,7 +2545,7 @@ static void fill_appt_window_recurrence(appt_win *apptw, xfical_appt *appt)
          tmp != NULL;
          tmp = g_list_next(tmp)) {
         recur_exception = (xfical_exception *)tmp->data;
-        text = g_strdup(orage_icaltime_to_i18_time(recur_exception->time));
+        text = orage_icaltime_to_i18_time (recur_exception->time);
         add_recur_exception_row(text, recur_exception->type, apptw, TRUE);
         g_free(text);
     }
@@ -2788,8 +2788,8 @@ static void on_test_button_clicked_cb (G_GNUC_UNUSED GtkButton *button
         cur_alarm.uid = g_strdup(appt->uid);
     else
         cur_alarm.uid = NULL;
-    tmp1  = g_strdup(orage_icaltime_to_i18_time(appt->starttime));
-    tmp2  = g_strdup(orage_icaltime_to_i18_time(appt->endtime));
+    tmp1  = orage_icaltime_to_i18_time (appt->starttime);
+    tmp2  = orage_icaltime_to_i18_time (appt->endtime);
     cur_alarm.action_time = g_strconcat(tmp1, " - ", tmp2, NULL);
     g_free(tmp1);
     g_free(tmp2);

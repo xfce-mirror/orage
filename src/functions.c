@@ -878,9 +878,9 @@ GDateTime *orage_icaltime_to_gdatetime (const gchar *icaltime,
                        G_STRFUNC, t.tm_year, t.tm_mon, t.tm_mday);
         }
 
-        t.tm_hour = -1;
-        t.tm_min = -1;
-        t.tm_sec = -1;
+        t.tm_hour = 0;
+        t.tm_min = 0;
+        t.tm_sec = 0;
     }
     else if (ret[0] != 0) { /* icaltime was not processed completely */
         /* UTC times end to Z, which is ok */
@@ -910,14 +910,17 @@ gchar *orage_tm_time_to_icaltime(struct tm *t)
 
 char *orage_icaltime_to_i18_time(const char *icaltime)
 { /* timezone is not converted */
-    struct tm t;
-    char      *ct;
+    GDateTime *gdt;
+    gchar *ct;
 
-    t = orage_icaltime_to_tm_time(icaltime, TRUE);
-    if (t.tm_hour == -1)
-        ct = orage_tm_date_to_i18_date(&t);
+    gdt = orage_icaltime_to_gdatetime (icaltime, FALSE);
+    if (strchr (icaltime, 'T') == NULL)
+        ct = g_date_time_format (gdt, "%x");
     else
-        ct = orage_tm_time_to_i18_time(&t);
+        ct = g_date_time_format (gdt, "%x %R");
+
+    g_date_time_unref (gdt);
+
     return(ct);
 }
 
