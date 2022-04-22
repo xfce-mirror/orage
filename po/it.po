@@ -1594,7 +1594,7 @@ msgstr "Tutti gli appuntamenti"
 
 #: ../src/interface.c:1139
 msgid "Named appointments:"
-msgstr ""
+msgstr "Solo determinati appuntamenti:"
 
 #: ../src/interface.c:1158
 msgid ""
