@@ -324,8 +324,8 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
     }
     else {
         today = orage_localtime_icaltime ();
-        s_timeonly = g_strdup(orage_icaltime_to_i18_time_only(
-                    appt->starttimecur));
+        s_timeonly = orage_icaltime_to_i18_time_only (appt->starttimecur);
+
         if (!strncmp(today, appt->starttimecur, 8)) /* today */
             tmp = g_strdup_printf(" %s* %s", s_timeonly, tmp_title);
         else {

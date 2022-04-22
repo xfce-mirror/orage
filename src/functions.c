@@ -648,20 +648,6 @@ GtkWidget *orage_create_framebox_with_content (const gchar *title,
  * time convert and manipulation functions
  *******************************************************/
 
-static struct tm orage_i18_time_to_tm_time (const gchar *i18_time)
-{
-    char *ret;
-    struct tm tm_time = {0};
-
-    ret = (char *)strptime(i18_time, "%x %R", &tm_time);
-    if (ret == NULL)
-        g_error ("%s wrong format (%s)", G_STRFUNC, i18_time);
-    else if (ret[0] != '\0')
-        g_warning ("%s too long format (%s). Ignoring:%s)", G_STRFUNC, i18_time,
-                   ret);
-    return(tm_time);
-}
-
 static GDateTime *orage_i18_time_to_gdatetime (const gchar *i18_time)
 {
     char *ret;
@@ -937,12 +923,13 @@ char *orage_icaltime_to_i18_time(const char *icaltime)
 
 char *orage_icaltime_to_i18_time_only(const char *icaltime)
 {
-    struct tm t;
-    static char i18_time[10];
+    GDateTime *gdt;
+    gchar *i18_time;
 
-    t = orage_icaltime_to_tm_time(icaltime, TRUE);
-    if (_strftime(i18_time, 10, "%R", &t) == 0)
-        g_error ("%s: too long string in strftime", G_STRFUNC);
+    gdt = orage_icaltime_to_gdatetime (icaltime, TRUE);
+    i18_time = g_date_time_format (gdt, "%R");
+    g_date_time_unref (gdt);
+
     return(i18_time);
 }
 
