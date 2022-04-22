@@ -1525,6 +1525,7 @@ static xfical_exception *new_exception(gchar *text)
 {
     xfical_exception *recur_exception;
     gint i;
+    gchar *icaltime;
     struct tm tm_time = {0};
 #ifndef HAVE_LIBICAL
     char *tmp;
@@ -1535,7 +1536,9 @@ static xfical_exception *new_exception(gchar *text)
     text[i-2] = '\0';
     if (text[i-1] == '+') {
         g_strlcpy (recur_exception->type,"RDATE",sizeof(recur_exception->type));
-        strncpy(recur_exception->time, orage_i18_time_to_icaltime(text), 16);
+        icaltime = orage_i18_time_to_icaltime (text);
+        strncpy(recur_exception->time, icaltime, 16);
+        g_free (icaltime);
         recur_exception->time[16] = '\0';
     }
     else {
@@ -1545,20 +1548,28 @@ static xfical_exception *new_exception(gchar *text)
            correctly yet. Check more from BUG 5764.
            We use start time from appointment. */
         /* we should not have dates as we are using standard libical,
-           but if this fails (=return NULL) we may have date from somewhere 
+           but if this fails (=return NULL) we may have date from somewhere
            else */
         if ((char *)strptime(text, "%x %R", &tm_time) == NULL)
             strncpy(recur_exception->time, orage_i18_date_to_icaldate(text), 16);
         else
-            strncpy(recur_exception->time, orage_i18_time_to_icaltime(text), 16);
+        {
+            icaltime = orage_i18_time_to_icaltime (text);
+            strncpy(recur_exception->time, icaltime, 16);
+            g_free (icaltime);
+        }
         recur_exception->time[16] = '\0';
 #else
         /* we should not have date-times as we are using internal libical,
-           which only uses dates, but if this returns non null, we may have 
+           which only uses dates, but if this returns non null, we may have
            datetime from somewhere else */
         tmp = (char *)strptime(text, "%x", &tm_time);
         if (ORAGE_STR_EXISTS(tmp))
-            strncpy(recur_exception->time, orage_i18_time_to_icaltime(text), 16);
+        {
+            icaltime = orage_i18_time_to_icaltime (text);
+            strncpy(recur_exception->time, icaltime, 16);
+            g_free (icaltime);
+        }
         else
             strncpy(recur_exception->time, orage_i18_date_to_icaldate(text), 16);
         recur_exception->time[16] = '\0';

@@ -662,6 +662,25 @@ static struct tm orage_i18_time_to_tm_time (const gchar *i18_time)
     return(tm_time);
 }
 
+static GDateTime *orage_i18_time_to_gdatetime (const gchar *i18_time)
+{
+    char *ret;
+    struct tm t = {0};
+
+    ret = (char *)strptime(i18_time, "%x %R", &t);
+    if (ret == NULL)
+        g_error ("%s wrong format (%s)", G_STRFUNC, i18_time);
+    else if (ret[0] != '\0')
+        g_warning ("%s too long format (%s). Ignoring:%s)", G_STRFUNC, i18_time,
+                   ret);
+
+    t.tm_year += 1900;
+    t.tm_mon += 1;
+
+    return g_date_time_new_local (t.tm_year, t.tm_mon, t.tm_mday, t.tm_hour,
+                                  t.tm_min, t.tm_sec);
+}
+
 struct tm orage_i18_date_to_tm_date (const gchar *i18_date)
 {
     char *ret;
@@ -930,11 +949,12 @@ char *orage_icaltime_to_i18_time_only(const char *icaltime)
 
 gchar *orage_i18_time_to_icaltime(const gchar *i18_time)
 {
-    struct tm t;
-    char      *ct;
+    gchar *ct;
+    GDateTime *gdt;
 
-    t = orage_i18_time_to_tm_time(i18_time);
-    ct = orage_tm_time_to_icaltime(&t);
+    gdt = orage_i18_time_to_gdatetime (i18_time);
+    ct = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT);
+
     return(ct);
 }
 
