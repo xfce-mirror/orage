@@ -574,6 +574,8 @@ msgstr "%A %d %B %Y/%V"
 #: ../src/about-xfcalendar.c:54 ../org.xfce.orage.appdata.xml.in.h:2
 msgid "Orage is a time-managing application for the Xfce desktop environment"
 msgstr ""
+"Orage ialah sebuah aplikasi pengurusan-masa untuk persekitaran atas meja "
+"Xfce"
 
 #: ../src/about-xfcalendar.c:58
 msgid "translator-credits"
@@ -878,7 +880,7 @@ msgstr ""
 
 #: ../src/appointment.c:2961
 msgid "_Colour"
-msgstr ""
+msgstr "_Warna"
 
 #: ../src/appointment.c:2966
 msgid "update colors for categories."
@@ -1068,7 +1070,7 @@ msgstr ""
 
 #: ../src/appointment.c:3301 ../src/interface.c:1181 ../src/interface.c:1203
 msgid "_Execute"
-msgstr ""
+msgstr "_Lakukan"
 
 #: ../src/appointment.c:3303
 msgid "Test this alarm by raising it now"
@@ -1089,7 +1091,7 @@ msgstr "Simpan tetapan semasa sebagai penggera lalai"
 
 #: ../src/appointment.c:3332
 msgid "_Revert"
-msgstr ""
+msgstr "_Kembali"
 
 #: ../src/appointment.c:3340
 msgid "Set current settings from default alarm"
@@ -1563,7 +1565,7 @@ msgstr "Semua temujanji"
 
 #: ../src/interface.c:1139
 msgid "Named appointments:"
-msgstr ""
+msgstr "Janji temu bertajuk:"
 
 #: ../src/interface.c:1158
 msgid ""
@@ -1773,12 +1775,12 @@ msgstr "\tMenggunakan versi setempat libical Orage.\n"
 #: ../src/main.c:299
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
-msgstr ""
+msgstr "\tGuna libxfce4ui: ya\n"
 
 #: ../src/main.c:301
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
-msgstr ""
+msgstr "\tGuna libxfce4ui: tidak\n"
 
 #: ../src/main.c:314
 msgid ""
@@ -4505,6 +4507,9 @@ msgid ""
 " ical format and includes common calendar features like repeating "
 "appointments and multiple alarming possibilities."
 msgstr ""
+"Orage bermatlamat untuk menjadi sebuah kalendar bergrafik yang mudah "
+"digunakan dan pantas. Ia menggunakan format ical mudah alih dan mengandungi "
+"ciri-ciri kalendar umum seperti janji temu berulang dan penggera berbilang."
 
 #: ../org.xfce.orage.appdata.xml.in.h:4
 msgid ""
@@ -4513,6 +4518,10 @@ msgid ""
 "Contents of those files are read and converted into Orage, but those files "
 "are left untouched."
 msgstr ""
+"Orage tidak mempunyai ciri-ciri kalender kumpulan, tetapi ia hanya boleh "
+"digunakan untuk pengguna tunggal. Ia boleh mengimport senarai fail untuk "
+"fail-fail ical. Kandungan fail tersebut dibaca dan ditukar format ke format "
+"Orage, fail-fail tersebut masih kekal dan tidak diubah suai."
 
 #: ../org.xfce.orage.desktop.in.h:1
 msgid "Orage Calendar"
