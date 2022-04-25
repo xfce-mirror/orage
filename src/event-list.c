@@ -165,10 +165,11 @@ static char *format_time(el_win *el, xfical_appt *appt, char *par)
     const size_t result_len = 51;
     char *tmp;
     int i = 0;
-    char *start_ical_time;
-    char *end_ical_time;
+    gchar *start_ical_time;
+    gchar *end_ical_time;
     gboolean same_date;
     struct tm t = {0};
+    GDateTime *gdt;
 
     start_ical_time = appt->starttimecur;
     end_ical_time = appt->endtimecur;
@@ -193,9 +194,11 @@ static char *format_time(el_win *el, xfical_appt *appt, char *par)
         }
     }
     else { /* normally show date and time */
-        t = orage_icaltime_to_tm_time(appt->starttimecur, TRUE);
-        tmp = orage_tm_date_to_i18_date(&t);
+        gdt = orage_icaltime_to_gdatetime (appt->starttimecur, FALSE);
+        tmp = g_date_time_format (gdt, "%x");
+        g_date_time_unref (gdt);
         i = g_strlcpy(result, tmp, result_len);
+        g_free (tmp);
         if (start_ical_time[8] == 'T') { /* time part available */
             result[i++] = ' ';
             append_time(result, start_ical_time, i);
