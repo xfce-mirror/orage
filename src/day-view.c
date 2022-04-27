@@ -200,13 +200,17 @@ static void on_Refresh_clicked (G_GNUC_UNUSED GtkButton *b, gpointer user_data)
 
 static void changeSelectedDate(day_win *dw, const gint day)
 {
-    struct tm tm_date;
+    gchar *label;
+    GDateTime *gdt_o;
+    GDateTime *gdt_m;
 
-    tm_date = orage_i18_date_to_tm_date(
-            gtk_button_get_label(GTK_BUTTON(dw->StartDate_button)));
-    orage_move_day(&tm_date, day);
-    gtk_button_set_label(GTK_BUTTON(dw->StartDate_button)
-            , orage_tm_date_to_i18_date(&tm_date));
+    gdt_o = g_object_get_data (G_OBJECT (dw->StartDate_button), DATE_KEY);
+    gdt_m = g_date_time_add_days (gdt_o, day);
+    label = g_date_time_format (gdt_m, "%x");
+    gtk_button_set_label (GTK_BUTTON (dw->StartDate_button), label);
+    g_free (label);
+    g_object_set_data_full (G_OBJECT (dw->StartDate_button),
+                            DATE_KEY, gdt_m, (GDestroyNotify)g_date_time_unref);
     refresh_day_win(dw);
 }
 
@@ -806,6 +810,7 @@ static void build_day_view_header (day_win *dw, const gchar *start_date)
     struct tm tm_date;
     const gchar *first_date;
     int diff_to_weeks_first_day;
+    GDateTime *gdt;
 
     grid = gtk_grid_new ();
     g_object_set (grid, "margin", 10, NULL);
@@ -850,6 +855,11 @@ static void build_day_view_header (day_win *dw, const gchar *start_date)
     else {
         first_date = start_date;
     }
+
+    gdt = orage_i18_date_to_gdatetime (first_date);
+
+    g_object_set_data_full (G_OBJECT (dw->StartDate_button),
+                            DATE_KEY, gdt, (GDestroyNotify)g_date_time_unref);
     gtk_button_set_label (GTK_BUTTON(dw->StartDate_button), first_date);
     gtk_spin_button_set_value(GTK_SPIN_BUTTON(dw->day_spin), 7);
 
