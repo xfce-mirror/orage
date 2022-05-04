@@ -807,10 +807,12 @@ static void build_day_view_header (day_win *dw, const gchar *start_date)
     GtkWidget *start_label;
     GtkWidget *no_days_label;
     GtkWidget *grid;
-    struct tm tm_date;
+    static gchar date_buf[128];
+    gchar *first_date_tmp;
     const gchar *first_date;
     int diff_to_weeks_first_day;
     GDateTime *gdt;
+    GDateTime *gdt0;
 
     grid = gtk_grid_new ();
     g_object_set (grid, "margin", 10, NULL);
@@ -838,19 +840,24 @@ static void build_day_view_header (day_win *dw, const gchar *start_date)
 
     /* initial values */
     if (g_par.dw_week_mode) { /* we want to start form week start day */
-        tm_date = orage_i18_date_to_tm_date(start_date);
+        gdt0 = orage_i18_date_to_gdatetime (start_date);
         /* tm_date.wday: 0 = Sunday, 1 = Monday, 2 = Tuesday, ... 6 = Saturday
            g_par.ical_weekstartday: 0 = Monday, 1 = Tuesday, ... 6 = Sunday */
-        diff_to_weeks_first_day = tm_date.tm_wday - (g_par.ical_weekstartday+1);
-        if (diff_to_weeks_first_day < 0)
-            diff_to_weeks_first_day += 7;
+        diff_to_weeks_first_day = g_date_time_get_day_of_week (gdt0)
+                                - (g_par.ical_weekstartday + 1);
         if (diff_to_weeks_first_day == 0) { /* we are on week start day */
             first_date = start_date;
         }
         else {
-            orage_move_day(&tm_date, -1*diff_to_weeks_first_day);
-            first_date = orage_tm_date_to_i18_date(&tm_date);
+            gdt = g_date_time_add_days (gdt0, -1 * diff_to_weeks_first_day);
+            first_date_tmp = g_date_time_format (gdt, "%x");
+            strncpy (date_buf, first_date_tmp, sizeof (date_buf) - 1);
+            g_free (first_date_tmp);
+            date_buf[sizeof (date_buf) - 1] = '\0';
+            first_date = date_buf;
         }
+
+        g_date_time_unref (gdt0);
     }
     else {
         first_date = start_date;
