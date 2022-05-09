@@ -667,20 +667,6 @@ static GDateTime *orage_i18_time_to_gdatetime (const gchar *i18_time)
                                   t.tm_min, t.tm_sec);
 }
 
-struct tm orage_i18_date_to_tm_date (const gchar *i18_date)
-{
-    char *ret;
-    struct tm tm_date = {0};
-
-    ret = strptime ((const char *)i18_date, "%x", &tm_date);
-    if (ret == NULL)
-        g_error ("%s: wrong format (%s)", G_STRFUNC, i18_date);
-    else if (ret[0] != '\0')
-        g_warning ("%s: too long format (%s). Ignoring:%s)", G_STRFUNC, i18_date,
-                   ret);
-    return(tm_date);
-}
-
 void orage_i18_date_to_gdate (const gchar *i18_date, GDate *date)
 {
     g_date_set_parse (date, i18_date);

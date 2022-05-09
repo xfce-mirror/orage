@@ -109,9 +109,6 @@ gchar *orage_localdate_i18 (void);
  */
 gchar *orage_localtime_icaltime (void);
 
-__attribute__((deprecated ("use 'orage_i18_date_to_gdate'")))
-struct tm orage_i18_date_to_tm_date(const gchar *i18_date);
-
 void orage_i18_date_to_gdate (const gchar *i18_date, GDate *date);
 GDateTime *orage_i18_date_to_gdatetime (const gchar *i18_date);
 
