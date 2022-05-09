@@ -930,12 +930,17 @@ static void fill_hour_arrow (day_win *dw, const gint col)
     gtk_grid_attach (GTK_GRID (dw->dtable), ev, col, FULL_DAY_ROW, 1, 1);
 }
 
-static gboolean is_leapyear (const int year)
+static gboolean is_same_date (GDateTime *gdt0, GDateTime *gdt1)
 {
-    if (((year % 4) == 0) && (((year % 100) != 0) || ((year % 400) == 0)))
-        return TRUE;
-    else
+    if (g_date_time_get_year (gdt0) != g_date_time_get_year (gdt1))
         return FALSE;
+    else if ((g_date_time_get_day_of_year (gdt0) !=
+              g_date_time_get_day_of_year (gdt1)))
+    {
+        return FALSE;
+    }
+    else
+        return TRUE;
 }
 
 static GtkWidget *build_scroll_window (void)
@@ -963,15 +968,16 @@ static void build_day_view_table (day_win *dw)
     gint days_n1;
     gint i, sunday;
     GtkWidget *label, *button;
-    char text[5+1], *date;
-    gchar *today;
-    struct tm tm_date;
-    gint monthdays[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    char text[5+1];
+    gchar *date;
+    GDateTime *gdt0;
+    GDateTime *gdt1;
+    GDateTime *gdt_today;
 
     orage_category_get_list();
     days = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(dw->day_spin));
     days_n1 = days + 1;
-    tm_date = orage_i18_date_to_tm_date(
+    gdt0 = orage_i18_date_to_gdatetime (
             gtk_button_get_label(GTK_BUTTON(dw->StartDate_button)));
 
     /****** header of day table = days columns ******/
@@ -981,22 +987,19 @@ static void build_day_view_table (day_win *dw)
 
     dw->dtable = gtk_grid_new ();
 
-    sunday = tm_date.tm_wday; /* 0 = Sunday */
+    sunday = g_date_time_get_day_of_week (gdt0);
     if (sunday) /* index to next sunday */
         sunday = 7-sunday;
 
-    if (is_leapyear (tm_date.tm_year))
-        ++monthdays[1];
-
-    today = orage_localdate_i18 ();
-
+    gdt_today = g_date_time_new_now_local ();
     fill_hour_arrow(dw, 0);
     for (i = 1; i < days_n1; i++)
     {
-        date = orage_tm_date_to_i18_date(&tm_date);
+        date = g_date_time_format (gdt0, "%x");
         button = gtk_button_new_with_label (date);
+        g_free (date);
 
-        if (strcmp (today, date) == 0)
+        if (is_same_date (gdt_today, gdt0))
             gtk_widget_set_name (button, ORAGE_DAY_VIEW_TODAY);
 
         if ((i - 1) % 7 == sunday)
@@ -1010,22 +1013,14 @@ static void build_day_view_table (day_win *dw)
         g_object_set (button, "margin-left", 3, NULL);
         gtk_grid_attach (GTK_GRID (dw->dtable), button, i, BUTTON_ROW, 1, 1);
 
-        if (++tm_date.tm_mday == (monthdays[tm_date.tm_mon]+1)) {
-            if (++tm_date.tm_mon == 12) {
-                ++tm_date.tm_year;
-                tm_date.tm_mon = 0;
-            }
-
-            tm_date.tm_mday = 1;
-        }
-
-        /* some rare locales show weekday in the default date, so we need to 
-         * make it correct. Safer would be to call mktime() */
-        tm_date.tm_wday = (tm_date.tm_wday + 1) % 7;
+        gdt1 = g_date_time_add_days (gdt0, 1);
+        g_date_time_unref (gdt0);
+        gdt0 = gdt1;
     }
 
     fill_hour_arrow (dw, days_n1);
-    g_free (today);
+    g_date_time_unref (gdt_today);
+    g_date_time_unref (gdt0);
 
     /* GtkGrid does not implement GtkScrollable, but 'gtk_container_add'
      * intelligenty accounts it and wraps it GtkScrollable.
