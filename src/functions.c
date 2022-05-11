@@ -692,16 +692,6 @@ GDateTime *orage_i18_date_to_gdatetime (const gchar *i18_date)
     return gdt;
 }
 
-__attribute__ ((deprecated))
-static gchar *orage_tm_time_to_i18_time(struct tm *tm_time)
-{
-    static gchar i18_time[128];
-
-    if (_strftime (i18_time, sizeof (i18_time), "%x %R", tm_time) == 0)
-        g_error ("%s: too long string in strftime", G_STRFUNC);
-    return(i18_time);
-}
-
 __attribute__((deprecated))
 static gchar *orage_tm_date_to_i18_date (const struct tm *tm_date)
 {
