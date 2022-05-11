@@ -702,7 +702,8 @@ static gchar *orage_tm_time_to_i18_time(struct tm *tm_time)
     return(i18_time);
 }
 
-gchar *orage_tm_date_to_i18_date (const struct tm *tm_date)
+__attribute__((deprecated))
+static gchar *orage_tm_date_to_i18_date (const struct tm *tm_date)
 {
     static gchar i18_date[128];
 
