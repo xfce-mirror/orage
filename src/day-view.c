@@ -545,19 +545,30 @@ static void add_row (day_win *dw, const xfical_appt *appt)
     gchar *tmp_note, *tip_note;
     GtkWidget *ev, *lab, *hb;
     GtkWidget *separator;
-    struct tm tm_start, tm_end, tm_first;
+    GDateTime *gdt_start;
+    GDateTime *gdt_end;
+    GDateTime *gdt_first;
     gchar *format_bold = "<b> %s </b>";
+    gint start_hour;
+    gint end_hour;
 
     /* First clarify timings */
-    tm_start = orage_icaltime_to_tm_time(appt->starttimecur, FALSE);
-    tm_end   = orage_icaltime_to_tm_time(appt->endtimecur, FALSE);
-    tm_first = orage_icaltime_to_tm_time(dw->a_day, FALSE);
-    start_col = orage_days_between(&tm_first, &tm_start)+1;
-    end_col   = orage_days_between(&tm_first, &tm_end)+1;
-    days      = orage_days_between(&tm_start, &tm_end);
+    gdt_start = orage_icaltime_to_gdatetime (appt->starttimecur, FALSE);
+    gdt_end   = orage_icaltime_to_gdatetime (appt->endtimecur, FALSE);
+    gdt_first = orage_icaltime_to_gdatetime (dw->a_day, FALSE);
 
-    if (start_col > dw->days) { /* can happen if timezones pass date change */
-        return; /* this does not fit, so we just skip it */
+    start_col = orage_days_between (gdt_first, gdt_start) + 1;
+    end_col   = orage_days_between (gdt_first, gdt_end) + 1;
+    days      = orage_days_between (gdt_start, gdt_end);
+
+    g_date_time_unref (gdt_first);
+
+    if (start_col > dw->days)
+    {
+        /* Can happen if timezones pass date change. This does not fit, so we
+         * just skip it.
+         */
+        goto add_row_cleanup;
     }
 
     if (start_col < 1) {
@@ -566,10 +577,14 @@ static void add_row (day_win *dw, const xfical_appt *appt)
     }
     else {
         col = start_col;
-        row = tm_start.tm_hour;
+        row = g_date_time_get_hour (gdt_start);
     }
-    if (end_col < 1) { /* can happen if timezones pass date change */
-        return; /* this does not fit, so we just skip it */
+    if (end_col < 1)
+    {
+        /* Can happen if timezones pass date change. This does not fit, so we
+         * just skip it.
+         */
+        goto add_row_cleanup;
     }
     if (end_col > dw->days) { /* can happen if timezones pass date change */
         end_col = days;
@@ -600,17 +615,13 @@ static void add_row (day_win *dw, const xfical_appt *appt)
             gtk_grid_attach_next_to (GTK_GRID (hb), separator, NULL,
                     GTK_POS_RIGHT, 1, 1);
         }
-    /* we took the date in unnormalized format, so we need to do that now */
-        tm_start.tm_year -= 1900;
-        tm_start.tm_mon -= 1;
-        start_date = g_strdup(orage_tm_date_to_i18_date(&tm_start));
+
+        start_date = g_date_time_format (gdt_start, "%x");
         if (days == 0)
             tip = g_strdup_printf("%s\n%s\n%s"
                     , tip_title, start_date, tip_note);
         else {
-            tm_end.tm_year -= 1900;
-            tm_end.tm_mon -= 1;
-            end_date = g_strdup(orage_tm_date_to_i18_date(&tm_end));
+            end_date = g_date_time_format (gdt_end, "%x");
             tip = g_strdup_printf("%s\n%s - %s\n%s"
                     , tip_title, start_date, end_date, tip_note);
             g_free(end_date);
@@ -636,21 +647,25 @@ static void add_row (day_win *dw, const xfical_appt *appt)
         }
 
         if (days == 0)
-            tip = g_strdup_printf("%s\n%02d:%02d-%02d:%02d\n%s"
-                    , tip_title, tm_start.tm_hour, tm_start.tm_min
-                    , tm_end.tm_hour, tm_end.tm_min, tip_note);
+        {
+            tip = g_strdup_printf ("%s\n%02d:%02d-%02d:%02d\n%s", tip_title,
+                    g_date_time_get_hour (gdt_start),
+                    g_date_time_get_minute (gdt_start),
+                    g_date_time_get_hour (gdt_end),
+                    g_date_time_get_minute (gdt_end),
+                    tip_note);
+        }
         else {
-    /* we took the date in unnormalized format, so we need to do that now */
-            tm_start.tm_year -= 1900;
-            tm_start.tm_mon -= 1;
-            tm_end.tm_year -= 1900;
-            tm_end.tm_mon -= 1;
-            start_date = g_strdup(orage_tm_date_to_i18_date(&tm_start));
-            end_date = g_strdup(orage_tm_date_to_i18_date(&tm_end));
-            tip = g_strdup_printf("%s\n%s %02d:%02d - %s %02d:%02d\n%s"
-                    , tip_title
-                    , start_date, tm_start.tm_hour, tm_start.tm_min
-                    , end_date, tm_end.tm_hour, tm_end.tm_min, tip_note);
+            start_date = g_date_time_format (gdt_start, "%x");
+            end_date = g_date_time_format (gdt_end, "%x");
+            tip = g_strdup_printf ("%s\n%s %02d:%02d - %s %02d:%02d\n%s",
+                    tip_title, start_date,
+                    g_date_time_get_hour (gdt_start),
+                    g_date_time_get_minute (gdt_start),
+                    end_date,
+                    g_date_time_get_hour (gdt_end),
+                    g_date_time_get_minute (gdt_end),
+                    tip_note);
             g_free(start_date);
             g_free(end_date);
         }
@@ -668,21 +683,27 @@ static void add_row (day_win *dw, const xfical_appt *appt)
     g_free(tip_note);
 
     /* and finally draw the line to show how long the appointment is,
-     * but only if it is Busy type event (=availability != 0) 
+     * but only if it is Busy type event (=availability != 0)
      * and it is not whole day event */
     if (appt->availability && !appt->allDay) {
         first_col = (start_col < 1) ? 1 : start_col;
         last_col = (end_col > dw->days) ? dw->days : end_col;
+        start_hour = g_date_time_get_hour (gdt_start);
+        end_hour = g_date_time_get_hour (gdt_end);
 
         for (col = first_col; col <= last_col; col++)
         {
-            start_row = (col == start_col) ? tm_start.tm_hour : 0;
-            end_row = (col == end_col) ? tm_end.tm_hour : 23;
+            start_row = (col == start_col) ? start_hour : 0;
+            end_row = (col == end_col) ? end_hour : 23;
 
             for (row = start_row; row <= end_row; row++)
                 dw->line[row][col] = build_line (dw->line[row][col]);
         }
     }
+
+add_row_cleanup:
+    g_date_time_unref (gdt_start);
+    g_date_time_unref (gdt_end);
 }
 
 static void app_rows (day_win *dw,

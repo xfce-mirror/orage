@@ -143,7 +143,14 @@ char *orage_cal_to_i18_time(GtkCalendar *cal, gint hh, gint mm);
 char *orage_cal_to_i18_date(GtkCalendar *cal);
 char *orage_cal_to_icaldate(GtkCalendar *cal);
 void orage_move_day(struct tm *t, int day);
-gint orage_days_between (const struct tm *t1, const struct tm *t2);
+
+/** Find number of days between two time values.
+ *  @param gdt1 first time value
+ *  @param gdt2 second time value
+ *  @return Number of days between two time value. This value can be negative if
+ *          gdt2 < gdt1
+ */
+gint orage_days_between (GDateTime *gdt1, GDateTime *gdt2);
 
 /** Set (GTK) calendar to selected date.
  *  @param cal instance of GTK calendar

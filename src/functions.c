@@ -1002,17 +1002,18 @@ void orage_move_day(struct tm *t, const gint day)
     }
 }
 
-gint orage_days_between (const struct tm *t1, const struct tm *t2)
+gint orage_days_between (GDateTime *gdt1, GDateTime *gdt2)
 {
     GDate *g_t1, *g_t2;
     gint dd;
 
-    g_t1 = g_date_new_dmy(t1->tm_mday, t1->tm_mon, t1->tm_year);
-    g_t2 = g_date_new_dmy(t2->tm_mday, t2->tm_mon, t2->tm_year);
-    dd = g_date_days_between(g_t1, g_t2);
-    g_date_free(g_t1);
-    g_date_free(g_t2);
-    return(dd);
+    g_t1 = orage_gdatetime_to_gdate (gdt1);
+    g_t2 = orage_gdatetime_to_gdate (gdt2);
+    dd = g_date_days_between (g_t1, g_t2);
+    g_date_free (g_t1);
+    g_date_free (g_t2);
+
+    return dd;
 }
 
 void orage_select_date (GtkCalendar *cal, GDateTime *gdt)
