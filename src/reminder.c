@@ -235,8 +235,10 @@ static OrageRc *orage_persistent_file_open(gboolean read_only)
     return(orc);
 }
 
-static alarm_struct *alarm_read_next_alarm(OrageRc *orc, gchar *time_now)
+static alarm_struct *alarm_read_next_alarm(OrageRc *orc, GDateTime *gdt)
 {
+    gint strcmp_result;
+    gchar *time_str;
     alarm_struct *new_alarm;
 
     new_alarm = g_new0(alarm_struct, 1);
@@ -265,7 +267,10 @@ static alarm_struct *alarm_read_next_alarm(OrageRc *orc, gchar *time_now)
     /* let's first check if the time has gone so that we need to
      * send that delayed l_alarm or can we just ignore it since it is
      * still in the future */
-    if (strcmp(time_now, new_alarm->alarm_time) < 0) { 
+    time_str = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT);
+    strcmp_result = strcmp (time_str, new_alarm->alarm_time);
+    g_free (time_str);
+    if (strcmp_result < 0) {
         /* real l_alarm has not happened yet */
         if (new_alarm->temporary)
             /* we need to store this or it will get lost */
@@ -282,23 +287,22 @@ void alarm_read(void)
 {
     alarm_struct *new_alarm;
     OrageRc *orc;
-    gchar *time_now;
+    GDateTime *time_now;
     gchar **alarm_groups;
     gint i;
 
-    time_now = orage_localtime_icaltime ();
+    time_now = g_date_time_new_now_local ();
     orc = orage_persistent_file_open(TRUE);
     alarm_groups = orage_rc_get_groups(orc);
     for (i = 0; alarm_groups[i] != NULL; i++) {
         orage_rc_set_group(orc, alarm_groups[i]);
         if ((new_alarm = alarm_read_next_alarm(orc, time_now)) != NULL) {
-            g_debug ("%s: time_now=%s alarm=%s",
-                     G_STRFUNC, time_now, new_alarm->alarm_time);
+            g_debug ("%s: alarm=%s", G_STRFUNC, new_alarm->alarm_time);
             create_reminders(new_alarm);
             alarm_free(new_alarm);
         }
     }
-    g_free (time_now);
+    g_date_time_unref (time_now);
     g_strfreev(alarm_groups);
     orage_rc_file_close(orc);
 }
