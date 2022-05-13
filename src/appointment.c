@@ -991,15 +991,11 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
                                     GTK_SPIN_BUTTON (apptw->StartTime_spin_mm)),
                            g_date_time_get_seconds (gdt_tmp));
 
-    g_snprintf (appt->starttime, sizeof (appt->starttime),
-                XFICAL_APPT_TIME_FORMAT_DEPRECATED,
-                g_date_time_get_year (gdt),
-                g_date_time_get_month (gdt),
-                g_date_time_get_day_of_month (gdt),
-                g_date_time_get_hour (gdt),
-                g_date_time_get_minute (gdt),
-                0);
+    tmp = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT_S0);
     g_date_time_unref (gdt);
+    g_strlcpy (appt->starttime, tmp, sizeof (appt->starttime));
+    g_free (tmp);
+
 #if (USE_GLIB_258 == 0)
     g_time_zone_unref (gtz);
 #endif
@@ -1027,16 +1023,11 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
                                     GTK_SPIN_BUTTON (apptw->EndTime_spin_mm)),
                            g_date_time_get_seconds (gdt_tmp));
 
-    g_snprintf (appt->endtime, sizeof (appt->endtime),
-                XFICAL_APPT_TIME_FORMAT_DEPRECATED,
-                g_date_time_get_year (gdt),
-                g_date_time_get_month (gdt),
-                g_date_time_get_day_of_month (gdt),
-                g_date_time_get_hour (gdt),
-                g_date_time_get_minute (gdt),
-                0);
-
+    tmp = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT_S0);
     g_date_time_unref (gdt);
+    g_strlcpy (appt->endtime, tmp, sizeof (appt->endtime));
+    g_free (tmp);
+
 #if (USE_GLIB_258 == 0)
     g_time_zone_unref (gtz);
 #endif
@@ -1084,16 +1075,11 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
                                     GTK_SPIN_BUTTON (apptw->CompletedTime_spin_mm)),
                            g_date_time_get_seconds (gdt_tmp));
 
-    g_snprintf (appt->completedtime, sizeof (appt->completedtime),
-                XFICAL_APPT_TIME_FORMAT_DEPRECATED,
-                g_date_time_get_year (gdt),
-                g_date_time_get_month (gdt),
-                g_date_time_get_day_of_month (gdt),
-                g_date_time_get_hour (gdt),
-                g_date_time_get_minute (gdt),
-                0);
-
+    tmp = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT_S0);
     g_date_time_unref (gdt);
+    g_strlcpy (appt->completedtime, tmp, sizeof (appt->completedtime));
+    g_free (tmp);
+
 #if (USE_GLIB_258 == 0)
     g_time_zone_unref (gtz);
 #endif
@@ -1162,12 +1148,10 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
         gdt = g_object_get_data (G_OBJECT (apptw->Recur_until_button),
                                  DATE_BUTTON_KEY);
 
-        g_snprintf (appt->recur_until, sizeof (appt->recur_until),
-                    XFICAL_APPT_TIME_FORMAT_DEPRECATED,
-                    g_date_time_get_year (gdt),
-                    g_date_time_get_month (gdt),
-                    g_date_time_get_day_of_month (gdt),
-                    23, 59, 10);
+        tmp = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT_END_OF_DAY);
+        g_date_time_unref (gdt);
+        g_strlcpy (appt->recur_until, tmp, sizeof (appt->recur_until));
+        g_free (tmp);
     }
     else
         g_warning ("%s: coding error, illegal recurrence", G_STRFUNC);
@@ -2558,6 +2542,7 @@ static gboolean fill_appt_window(appt_win *apptw, const gchar *action,
 {
     xfical_appt *appt;
     GDateTime *gdt;
+    gchar *time_str;
 
     /********************* INIT *********************/
     g_message ("%s appointment: %s", action, par);
@@ -2597,14 +2582,10 @@ static gboolean fill_appt_window(appt_win *apptw, const gchar *action,
     }
     if (!appt->completed) { /* some nice default */
         gdt = g_date_time_new_now_local (); /* probably completed today? */
-        g_snprintf(appt->completedtime, sizeof (appt->completedtime),
-                   XFICAL_APPT_TIME_FORMAT_DEPRECATED,
-                   g_date_time_get_year (gdt),
-                   g_date_time_get_month (gdt),
-                   g_date_time_get_day_of_month (gdt),
-                   g_date_time_get_hour (gdt),
-                   g_date_time_get_minute (gdt), 0);
+        time_str = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT_S0);
         g_date_time_unref (gdt);
+        g_strlcpy (appt->completedtime, time_str, sizeof (appt->completedtime));
+        g_free (time_str);
         g_free(appt->completed_tz_loc);
         appt->completed_tz_loc = g_strdup(appt->start_tz_loc);
     }
