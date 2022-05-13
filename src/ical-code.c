@@ -3307,8 +3307,6 @@ static void add_appt_to_list(icalcomponent *c, icaltime_span *span , void *data)
         /* Need to check that returned value is withing limits.
            Check more from BUG 5764 and 7886. */
 
-    g_debug ("%s", G_STRFUNC);
-
     data1 = (app_data *)data;
     appt = g_new0(xfical_appt, 1);
     /* FIXME: we could check if UID is the same and only get all data
