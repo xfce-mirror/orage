@@ -3035,34 +3035,44 @@ static void mark_calendar (G_GNUC_UNUSED icalcomponent *c,
                            void *data)
 {
     struct icaltimetype sdate, edate;
-    struct tm start_tm, end_tm;
     struct mark_calendar_data {
         GtkCalendar *cal;
-        guint year; 
+        guint year;
         guint month;
         gint orig_start_hour, orig_end_hour;
         xfical_appt appt;
     } *cal_data;
-    time_t temp;
+    gchar *str;
+    GDateTime *gdt_start;
+    GDateTime *gdt_end;
+    GDateTime *gdt_tmp;
 
     /*FIXME: find times from the span */
     cal_data = (struct mark_calendar_data *)data;
 
-    gmtime_r(&span->start, &start_tm);
-    gmtime_r(&span->end, &end_tm);
+    gdt_start = g_date_time_new_from_unix_utc (span->start);
+    gdt_end = g_date_time_new_from_unix_utc (span->end);
+
     /* check bug 7886 explanation in function add_appt_to_list */
     if (cal_data->appt.endtime[8] != 'T' && !cal_data->appt.use_duration) {
-        temp = span->end;
-        temp -= 24*60*60;
-        gmtime_r(&temp, &end_tm);
+        gdt_tmp = gdt_end;
+        gdt_end = g_date_time_add_days (gdt_tmp, -1);
+        g_date_time_unref (gdt_tmp);
     }
-    sdate = icaltime_from_string(orage_tm_time_to_icaltime(&start_tm));
-    edate = icaltime_from_string(orage_tm_time_to_icaltime(&end_tm));
+
+    str = g_date_time_format (gdt_start, XFICAL_APPT_TIME_FORMAT);
+    sdate = icaltime_from_string (str);
+    g_free (str);
+
+    str = g_date_time_format (gdt_end, XFICAL_APPT_TIME_FORMAT);
+    edate = icaltime_from_string (str);
+    g_free (str);
+
     if (cal_data->appt.freq != XFICAL_FREQ_HOURLY
-    &&  start_tm.tm_hour != cal_data->orig_start_hour) {
+    &&  g_date_time_get_hour (gdt_start) != cal_data->orig_start_hour) {
         g_debug ("%s: FIXING WRONG HOUR Title (%s) %d -> %d (day %d)",
-                 G_STRFUNC, cal_data->appt.title, start_tm.tm_hour,
-                 cal_data->orig_start_hour, start_tm.tm_mday);
+                 G_STRFUNC, cal_data->appt.title, g_date_time_get_hour (gdt_start),
+                 cal_data->orig_start_hour, g_date_time_get_day_of_month (gdt_start));
         /* WHEN we arrive here, libical has done an extra UTC conversion,
           which we need to undo */
         sdate = convert_to_zone(sdate, "UTC");
@@ -3072,15 +3082,11 @@ static void mark_calendar (G_GNUC_UNUSED icalcomponent *c,
         sdate = convert_to_zone(sdate, cal_data->appt.start_tz_loc);
         edate = convert_to_zone(edate, cal_data->appt.end_tz_loc);
     }
+    g_date_time_unref (gdt_start);
+    g_date_time_unref (gdt_end);
     sdate = icaltime_convert_to_zone(sdate, local_icaltimezone);
     edate = icaltime_convert_to_zone(edate, local_icaltimezone);
-    /*
-    if (cal_data->appt.freq != XFICAL_FREQ_HOURLY
-    &&  end_tm.tm_hour != cal_data->orig_end_hour) {
-    }
-    else {
-    }
-    */
+
     /* fix for bug 8508 prevent showing extra day in calendar.
        Only has effect when end date is midnight */
     icaltime_adjust(&edate, 0, 0, 0, -1);
@@ -3283,7 +3289,11 @@ static void add_appt_to_list(icalcomponent *c, icaltime_span *span , void *data)
 {
     xfical_appt *appt;
     struct icaltimetype sdate, edate;
-    struct tm start_tm, end_tm;
+    struct tm end_tm;
+    GDateTime *gdt_start;
+    GDateTime *gdt_end;
+    GDateTime *gdt_tmp;
+    gchar *str;
     typedef struct _app_data
     {
         GList **list;
@@ -3296,7 +3306,8 @@ static void add_appt_to_list(icalcomponent *c, icaltime_span *span , void *data)
     app_data *data1;
         /* Need to check that returned value is withing limits.
            Check more from BUG 5764 and 7886. */
-    icaltime_span test_span;
+
+    g_debug ("%s", G_STRFUNC);
 
     data1 = (app_data *)data;
     appt = g_new0(xfical_appt, 1);
@@ -3304,8 +3315,9 @@ static void add_appt_to_list(icalcomponent *c, icaltime_span *span , void *data)
      * when UID changes. This seems to be fast enough as it is though */
     (void)get_appt_from_icalcomponent(c, appt);
     xfical_appt_get_fill_internal(appt, data1->file_type);
-    gmtime_r(&span->start, &start_tm);
     gmtime_r(&span->end, &end_tm);
+    gdt_start = g_date_time_new_from_unix_utc (span->start);
+    gdt_end = g_date_time_new_from_unix_utc (span->end);
 
     /* BUG 7886. we are called with wrong span->end when we have full day
        event. This is libical bug and needs to be fixed properly later, but
@@ -3313,25 +3325,32 @@ static void add_appt_to_list(icalcomponent *c, icaltime_span *span , void *data)
     FIXME: code whole loop correctly = function icalcomponent_foreach_recurrence
     */
     if (appt->endtime[8] != 'T' && !appt->use_duration) {
-        test_span = *span;
-        test_span.end -= 24*60*60;
-        gmtime_r(&test_span.end, &end_tm);
+        gdt_tmp = gdt_end;
+        gdt_end = g_date_time_add_days (gdt_tmp, -1);
+        g_date_time_unref (gdt_tmp);
         /* now end is correct, but we still have been called wrongly on
            the last day */
     }
+
     /* end of bug workaround */
     /* FIXME: should we use interval instead ? */
-    sdate = icaltime_from_string(orage_tm_time_to_icaltime(&start_tm));
-    edate = icaltime_from_string(orage_tm_time_to_icaltime(&end_tm));
+    str = g_date_time_format (gdt_start, XFICAL_APPT_TIME_FORMAT);
+    sdate = icaltime_from_string (str);
+    g_free (str);
+
+    str = g_date_time_format (gdt_end, XFICAL_APPT_TIME_FORMAT);
+    edate = icaltime_from_string (str);
+    g_free (str);
+
     /* BUG 7929. If calendar file contains same timezone definition than what
        the time is in, libical returns wrong time in span. But as the hour
        only changes with HOURLY repeating appointments, we can replace received
        hour with the hour from start time */
-    if (appt->freq != XFICAL_FREQ_HOURLY 
-    &&  start_tm.tm_hour != data1->orig_start_hour) {
+    if (appt->freq != XFICAL_FREQ_HOURLY
+    &&  g_date_time_get_hour (gdt_start) != data1->orig_start_hour) {
         g_debug ("%s: FIXING WRONG HOUR Title (%s) %d -> %d (day %d)",
-                 G_STRFUNC, appt->title, start_tm.tm_hour,
-                 data1->orig_start_hour, start_tm.tm_mday);
+                 G_STRFUNC, appt->title, g_date_time_get_hour (gdt_start),
+                 data1->orig_start_hour, g_date_time_get_day_of_month (gdt_start));
         /* WHEN we arrive here, libical has done an extra UTC conversion,
            which we need to undo */
         sdate = convert_to_zone(sdate, "UTC");
@@ -3341,9 +3360,12 @@ static void add_appt_to_list(icalcomponent *c, icaltime_span *span , void *data)
         sdate = convert_to_zone(sdate, appt->start_tz_loc);
         edate = convert_to_zone(edate, appt->end_tz_loc);
     }
+
+    g_date_time_unref (gdt_start);
+    g_date_time_unref (gdt_end);
+
     sdate = icaltime_convert_to_zone(sdate, local_icaltimezone);
     edate = icaltime_convert_to_zone(edate, local_icaltimezone);
-
 
     strncpy(appt->starttimecur, icaltime_as_ical_string(sdate), 16);
     appt->starttimecur[16] = '\0';
@@ -3359,10 +3381,10 @@ static void add_appt_to_list(icalcomponent *c, icaltime_span *span , void *data)
     || strncmp(appt->starttimecur, data1->aedate, 16) >= 0) {
         /* we do not need this. Free the memory */
         xfical_appt_free(appt);
-    } 
+    }
     else {/* add to list like with internal libical */
         *data1->list = g_list_prepend(*data1->list, appt);
-    } 
+    }
 }
 
 /* Fetch each appointment within the specified time period and add those
