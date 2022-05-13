@@ -829,17 +829,6 @@ GDateTime *orage_icaltime_to_gdatetime (const gchar *icaltime,
                                   t.tm_min, t.tm_sec);
 }
 
-gchar *orage_tm_time_to_icaltime(struct tm *t)
-{
-    static gchar icaltime[XFICAL_APPT_TIME_FORMAT_LEN];
-
-    g_snprintf (icaltime, sizeof (icaltime), XFICAL_APPT_TIME_FORMAT_DEPRECATED,
-                t->tm_year + 1900, t->tm_mon + 1, t->tm_mday,
-                t->tm_hour, t->tm_min, t->tm_sec);
-
-    return(icaltime);
-}
-
 char *orage_icaltime_to_i18_time(const char *icaltime)
 { /* timezone is not converted */
     GDateTime *gdt;

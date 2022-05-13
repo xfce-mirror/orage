@@ -115,9 +115,6 @@ GDateTime *orage_i18_date_to_gdatetime (const gchar *i18_date);
 gchar *orage_i18_time_to_icaltime(const gchar *i18_time);
 gchar *orage_i18_date_to_icaldate(const gchar *i18_date);
 
-__attribute__((deprecated ("replace with g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT)")))
-gchar *orage_tm_time_to_icaltime(struct tm *t);
-
 GDateTime *orage_icaltime_to_gdatetime (const gchar *i18_date,
                                         gboolean real_tm);
 
