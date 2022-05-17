@@ -115,6 +115,8 @@ void orage_i18_date_to_gdate (const gchar *i18_date, GDate *date);
 GDateTime *orage_i18_date_to_gdatetime (const gchar *i18_date);
 
 gchar *orage_i18_time_to_icaltime(const gchar *i18_time);
+
+__attribute__ ((deprecated))
 gchar *orage_i18_date_to_icaldate(const gchar *i18_date);
 
 GDateTime *orage_icaltime_to_gdatetime (const gchar *i18_date,
