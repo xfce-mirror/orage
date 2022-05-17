@@ -165,14 +165,16 @@ static void on_Close_clicked (G_GNUC_UNUSED GtkButton *b, gpointer user_data)
 
 static void create_new_appointment(day_win *dw)
 {
-    const gchar *s_date;
-    char a_day[9];
+    gchar *a_day_str;
+    GDateTime *a_day;
 
-    s_date = gtk_button_get_label (GTK_BUTTON(dw->StartDate_button));
-    (void)g_strlcpy (a_day, orage_i18_date_to_icaldate (s_date), sizeof(a_day));
+    a_day = g_object_get_data (G_OBJECT (dw->StartDate_button), DATE_KEY);
     dw->a_day[8] = '\0';
 
-    do_appt_win("NEW", a_day, dw);
+    a_day_str = g_date_time_format (a_day, XFICAL_APPT_DATE_FORMAT);
+
+    do_appt_win ("NEW", a_day_str, dw);
+    g_free (a_day_str);
 }
 
 static void on_File_newApp_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
@@ -208,9 +210,9 @@ static void changeSelectedDate(day_win *dw, const gint day)
     gdt_m = g_date_time_add_days (gdt_o, day);
     label = g_date_time_format (gdt_m, "%x");
     gtk_button_set_label (GTK_BUTTON (dw->StartDate_button), label);
-    g_free (label);
     g_object_set_data_full (G_OBJECT (dw->StartDate_button),
                             DATE_KEY, gdt_m, (GDestroyNotify)g_date_time_unref);
+    g_free (label);
     refresh_day_win(dw);
 }
 
@@ -221,9 +223,9 @@ static void go_to_today(day_win *dw)
 
     gdt = g_date_time_new_now_local ();
     today = g_date_time_format (gdt, "%x");
+    gtk_button_set_label (GTK_BUTTON (dw->StartDate_button), today);
     g_object_set_data_full (G_OBJECT (dw->StartDate_button),
                             DATE_KEY, gdt, (GDestroyNotify)g_date_time_unref);
-    gtk_button_set_label (GTK_BUTTON (dw->StartDate_button), today);
     g_free (today);
     refresh_day_win(dw);
 }
@@ -886,9 +888,9 @@ static void build_day_view_header (day_win *dw, const gchar *start_date)
 
     gdt = orage_i18_date_to_gdatetime (first_date);
 
+    gtk_button_set_label (GTK_BUTTON(dw->StartDate_button), first_date);
     g_object_set_data_full (G_OBJECT (dw->StartDate_button),
                             DATE_KEY, gdt, (GDestroyNotify)g_date_time_unref);
-    gtk_button_set_label (GTK_BUTTON(dw->StartDate_button), first_date);
     gtk_spin_button_set_value(GTK_SPIN_BUTTON(dw->day_spin), 7);
 
     g_signal_connect (dw->day_spin, "value-changed",
