@@ -732,12 +732,16 @@ static void app_rows (day_win *dw,
 static void app_data(day_win *dw)
 {
     xfical_type ical_type;
-    gchar *s_date, file_type[8];
+    gchar file_type[8];
     gint i;
+    gchar *a_day_str;
+    GDateTime *a_day;
 
     ical_type = XFICAL_TYPE_EVENT;
-    s_date = (char *)gtk_button_get_label(GTK_BUTTON(dw->StartDate_button));
-    strncpy(dw->a_day, orage_i18_date_to_icaldate(s_date), 8);
+    a_day = g_object_get_data (G_OBJECT (dw->StartDate_button), DATE_KEY);
+    a_day_str = g_date_time_format (a_day, XFICAL_APPT_DATE_FORMAT);
+    g_strlcpy(dw->a_day, a_day_str, sizeof (dw->a_day));
+    g_free (a_day_str);
     dw->a_day[8] = '\0';
     dw->days = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(dw->day_spin));
 
