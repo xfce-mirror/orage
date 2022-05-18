@@ -977,12 +977,13 @@ static void on_Go_next_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
 
 static void create_new_appointment(el_win *el)
 {
-    char *title, a_day[9];
+    GDateTime *gdt;
+    gchar *a_day;
 
-    title = (char *)gtk_window_get_title(GTK_WINDOW(el->Window));
-    strncpy(a_day, orage_i18_date_to_icaldate(title), 8);
-    a_day[8] = '\0';
+    gdt = g_object_get_data (G_OBJECT (el->Window), DATE_KEY);
+    a_day = g_date_time_format (gdt, XFICAL_APPT_DATE_FORMAT);
     do_appt_win("NEW", a_day, el);
+    g_free (a_day);
 }
 
 static void on_File_newApp_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
