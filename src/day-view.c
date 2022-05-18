@@ -482,10 +482,9 @@ static void on_Date_button_clicked_cb(GtkWidget *button, gpointer *user_data)
 static void header_button_clicked_cb (GtkWidget *button,
                                       G_GNUC_UNUSED gpointer *user_data)
 {
-    const gchar *start_date;
-
-    start_date = gtk_button_get_label(GTK_BUTTON(button));
-    (void)create_el_win(start_date);
+    GDateTime *gdt;
+    gdt = g_object_get_data (G_OBJECT (button), DATE_KEY);
+    (void)create_el_win (gdt);
 }
 
 static void on_button_press_event_cb(GtkWidget *widget
@@ -1024,6 +1023,8 @@ static void build_day_view_table (day_win *dw)
     {
         date = g_date_time_format (gdt0, "%x");
         button = gtk_button_new_with_label (date);
+        g_object_set_data_full (G_OBJECT (button), DATE_KEY, gdt0,
+                                (GDestroyNotify)g_date_time_unref);
         g_free (date);
 
         if (is_same_date (gdt_today, gdt0))
@@ -1040,9 +1041,10 @@ static void build_day_view_table (day_win *dw)
         g_object_set (button, "margin-left", 3, NULL);
         gtk_grid_attach (GTK_GRID (dw->dtable), button, i, BUTTON_ROW, 1, 1);
 
-        gdt1 = g_date_time_add_days (gdt0, 1);
-        g_date_time_unref (gdt0);
-        gdt0 = gdt1;
+        /* gdt0 can be safely reassigned, current value is unrefrenced by
+         * button.
+         */
+        gdt0 = g_date_time_add_days (gdt0, 1);
     }
 
     fill_hour_arrow (dw, days_n1);

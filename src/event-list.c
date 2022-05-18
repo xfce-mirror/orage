@@ -786,20 +786,29 @@ static void on_View_search_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
     refresh_el_win((el_win *)user_data);
 }
 
-static void set_el_data(el_win *el, const gchar *title)
+static void set_el_data (el_win *el, GDateTime *gdt)
 {
+    gchar *title;
+
+    title = g_date_time_format (gdt, "%x");
     gtk_window_set_title(GTK_WINDOW(el->Window), title);
+    g_free (title);
+
+    g_date_time_ref (gdt);
+    g_object_set_data_full (G_OBJECT (el->Window),
+                            DATE_KEY, gdt, (GDestroyNotify)g_date_time_unref);
     gtk_notebook_set_current_page(GTK_NOTEBOOK(el->Notebook), EVENT_PAGE);
     refresh_el_win(el);
 }
 
 static void set_el_data_from_cal(el_win *el)
 {
-    gchar *title;
+    GDateTime *gdt;
 
-    title = orage_cal_to_i18_date(
-            GTK_CALENDAR(((CalWin *)g_par.xfcal)->mCalendar));
-    set_el_data(el, title);
+    gdt = orage_cal_to_gdatetime (
+            GTK_CALENDAR(((CalWin *)g_par.xfcal)->mCalendar), 0, 0);
+    set_el_data (el, gdt);
+    g_date_time_unref (gdt);
 }
 
 static void duplicate_appointment(el_win *el)
@@ -1368,7 +1377,6 @@ static void build_journal_tab(el_win *el)
     g_date_time_unref (gdt_local);
 
     sdate = g_date_time_format (gdt, "%x");
-    g_debug ("%s: sdate='%s'", G_STRFUNC, sdate);
     gtk_button_set_label (GTK_BUTTON (el->journal_start_button), sdate);
     g_object_set_data_full (G_OBJECT (el->journal_start_button),
                             DATE_KEY, gdt, (GDestroyNotify)g_date_time_unref);
@@ -1496,7 +1504,7 @@ static void build_event_list(el_win *el)
             G_CALLBACK(editEvent), el);
 }
 
-el_win *create_el_win(const gchar *start_date)
+el_win *create_el_win (GDateTime *gdt)
 {
     GdkPixbuf *pixbuf;
     el_win *el;
@@ -1532,10 +1540,10 @@ el_win *create_el_win(const gchar *start_date)
             , G_CALLBACK(on_Window_delete_event), el);
 
     gtk_widget_show_all(el->Window);
-    if (start_date == NULL)
+    if (gdt == NULL)
         set_el_data_from_cal(el);
     else
-        set_el_data(el, start_date);
+        set_el_data (el, gdt);
 
     gtk_drag_source_set(el->TreeView, GDK_BUTTON1_MASK
             , drag_targets, DRAG_TARGET_COUNT, GDK_ACTION_COPY);
