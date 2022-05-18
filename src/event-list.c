@@ -65,6 +65,7 @@
 #include "day-view.h"
 
 #define BORDER_SIZE 10
+#define DATE_KEY "button-date"
 
 enum {
     COL_TIME = 0
@@ -699,14 +700,15 @@ static void todo_data(el_win *el)
 
 static void journal_data(el_win *el)
 {
-    char     a_day[9];  /* yyyymmdd */
+    gchar *a_day;
+    GDateTime *gdt;
 
     el->days = 10*365; /* long enough time to get everything from future */
-    strncpy(a_day, orage_i18_date_to_icaldate(gtk_button_get_label(
-            GTK_BUTTON(el->journal_start_button))), 8);
-    a_day[8] = '\0';
+    gdt = g_object_get_data (G_OBJECT (el->journal_start_button), DATE_KEY);
+    a_day = g_date_time_format (gdt, XFICAL_APPT_DATE_FORMAT);
 
     app_data(el, a_day, NULL);
+    g_free (a_day);
 }
 
 void refresh_el_win(el_win *el)
@@ -1366,9 +1368,10 @@ static void build_journal_tab(el_win *el)
     g_date_time_unref (gdt_local);
 
     sdate = g_date_time_format (gdt, "%x");
-    g_date_time_unref (gdt);
-
+    g_debug ("%s: sdate='%s'", G_STRFUNC, sdate);
     gtk_button_set_label (GTK_BUTTON (el->journal_start_button), sdate);
+    g_object_set_data_full (G_OBJECT (el->journal_start_button),
+                            DATE_KEY, gdt, (GDestroyNotify)g_date_time_unref);
 
     g_free (sdate);
     orage_table_add_row(el->journal_notebook_page
