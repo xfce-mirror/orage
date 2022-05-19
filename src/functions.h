@@ -117,8 +117,10 @@ GDateTime *orage_i18_time_to_gdatetime (const gchar *i18_time);
 
 gchar *orage_i18_time_to_icaltime(const gchar *i18_time);
 
+#ifdef HAVE_LIBICAL
 __attribute__ ((deprecated))
 gchar *orage_i18_date_to_icaldate(const gchar *i18_date);
+#endif
 
 GDateTime *orage_icaltime_to_gdatetime (const gchar *i18_date,
                                         gboolean real_tm);

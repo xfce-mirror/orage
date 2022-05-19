@@ -869,6 +869,7 @@ gchar *orage_i18_time_to_icaltime(const gchar *i18_time)
     return(ct);
 }
 
+#ifdef HAVE_LIBICAL
 gchar *orage_i18_date_to_icaldate(const gchar *i18_date)
 {
     GDateTime *gdt;
@@ -880,6 +881,7 @@ gchar *orage_i18_date_to_icaldate(const gchar *i18_date)
 
     return(icalt);
 }
+#endif
 
 GDate *orage_gdatetime_to_gdate (GDateTime *gdt)
 {
