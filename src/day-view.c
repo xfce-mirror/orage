@@ -997,7 +997,6 @@ static void build_day_view_table (day_win *dw)
     char text[5+1];
     gchar *date;
     GDateTime *gdt0;
-    GDateTime *gdt1;
     GDateTime *gdt_today;
 
     orage_category_get_list();
