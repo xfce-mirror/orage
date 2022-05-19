@@ -648,7 +648,7 @@ GtkWidget *orage_create_framebox_with_content (const gchar *title,
  * time convert and manipulation functions
  *******************************************************/
 
-static GDateTime *orage_i18_time_to_gdatetime (const gchar *i18_time)
+GDateTime *orage_i18_time_to_gdatetime (const gchar *i18_time)
 {
     char *ret;
     struct tm t = {0};

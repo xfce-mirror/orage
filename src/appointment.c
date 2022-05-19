@@ -1509,8 +1509,10 @@ static xfical_exception *new_exception(gchar *text)
 {
     xfical_exception *recur_exception;
     gint i;
-    gchar *icaltime;
+    gchar *ical_str;
     struct tm tm_time = {0};
+    GDateTime *gdt;
+    gchar *fmt;
 #ifndef HAVE_LIBICAL
     char *tmp;
 #endif
@@ -1519,14 +1521,15 @@ static xfical_exception *new_exception(gchar *text)
     i = strlen(text);
     text[i-2] = '\0';
     if (text[i-1] == '+') {
-        g_strlcpy (recur_exception->type,"RDATE",sizeof(recur_exception->type));
-        icaltime = orage_i18_time_to_icaltime (text);
-        strncpy(recur_exception->time, icaltime, 16);
-        g_free (icaltime);
-        recur_exception->time[16] = '\0';
+        g_strlcpy (recur_exception->type, "RDATE",
+                   sizeof(recur_exception->type));
+        gdt = orage_i18_time_to_gdatetime (text);
+        ical_str = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT);
+        g_date_time_unref (gdt);
     }
     else {
-        g_strlcpy(recur_exception->type,"EXDATE",sizeof(recur_exception->type));
+        g_strlcpy (recur_exception->type, "EXDATE",
+                   sizeof(recur_exception->type));
 #ifdef HAVE_LIBICAL
         /* need to add time also as standard libical can not handle dates
            correctly yet. Check more from BUG 5764.
@@ -1535,30 +1538,33 @@ static xfical_exception *new_exception(gchar *text)
            but if this fails (=return NULL) we may have date from somewhere
            else */
         if ((char *)strptime(text, "%x %R", &tm_time) == NULL)
-            strncpy(recur_exception->time, orage_i18_date_to_icaldate(text), 16);
+        {
+            gdt = orage_i18_date_to_gdatetime (text);
+            fmt = XFICAL_APPT_DATE_FORMAT;
+        }
         else
         {
-            icaltime = orage_i18_time_to_icaltime (text);
-            strncpy(recur_exception->time, icaltime, 16);
-            g_free (icaltime);
+            gdt = orage_i18_time_to_gdatetime (text);
+            fmt = XFICAL_APPT_TIME_FORMAT;
         }
-        recur_exception->time[16] = '\0';
+
+        ical_str = g_date_time_format (gdt, fmt);
+        g_date_time_unref (gdt);
 #else
         /* we should not have date-times as we are using internal libical,
            which only uses dates, but if this returns non null, we may have
            datetime from somewhere else */
         tmp = (char *)strptime(text, "%x", &tm_time);
         if (ORAGE_STR_EXISTS(tmp))
-        {
-            icaltime = orage_i18_time_to_icaltime (text);
-            strncpy(recur_exception->time, icaltime, 16);
-            g_free (icaltime);
-        }
+            ical_str = orage_i18_time_to_icaltime (text);
         else
-            strncpy(recur_exception->time, orage_i18_date_to_icaldate(text), 16);
-        recur_exception->time[16] = '\0';
+            ical_str = orage_i18_date_to_icaldate (text);
 #endif
     }
+
+    g_strlcpy (recur_exception->time, ical_str,
+               sizeof (recur_exception->time));
+    g_free (ical_str);
     text[i-2] = ' ';
     return(recur_exception);
 }
