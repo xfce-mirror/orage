@@ -139,6 +139,7 @@ static void close_window(day_win *dw)
     g_list_free(dw->apptw_list);
 
     gtk_widget_destroy(dw->Window);
+    g_date_time_unref (dw->a_day);
     g_free(dw);
     dw = NULL;
 }
@@ -169,8 +170,6 @@ static void create_new_appointment(day_win *dw)
     GDateTime *a_day;
 
     a_day = g_object_get_data (G_OBJECT (dw->StartDate_button), DATE_KEY);
-    dw->a_day[8] = '\0';
-
     a_day_str = g_date_time_format (a_day, XFICAL_APPT_DATE_FORMAT);
 
     do_appt_win ("NEW", a_day_str, dw);
@@ -556,7 +555,7 @@ static void add_row (day_win *dw, const xfical_appt *appt)
     /* First clarify timings */
     gdt_start = orage_icaltime_to_gdatetime (appt->starttimecur, FALSE);
     gdt_end   = orage_icaltime_to_gdatetime (appt->endtimecur, FALSE);
-    gdt_first = orage_icaltime_to_gdatetime (dw->a_day, FALSE);
+    gdt_first = g_date_time_ref (dw->a_day);
 
     start_col = orage_days_between (gdt_first, gdt_start) + 1;
     end_col   = orage_days_between (gdt_first, gdt_end) + 1;
@@ -713,9 +712,12 @@ static void app_rows (day_win *dw,
 {
     GList *appt_list=NULL, *tmp;
     xfical_appt *appt;
+    gchar *a_day_str;
 
-    xfical_get_each_app_within_time(dw->a_day, dw->days
-            , ical_type, file_type, &appt_list);
+    a_day_str = g_date_time_format (dw->a_day, XFICAL_APPT_DATE_FORMAT);
+    xfical_get_each_app_within_time (a_day_str, dw->days, ical_type, file_type,
+                                     &appt_list);
+    g_free (a_day_str);
     for (tmp = g_list_first(appt_list);
          tmp != NULL;
          tmp = g_list_next(tmp)) {
@@ -733,15 +735,12 @@ static void app_data(day_win *dw)
     xfical_type ical_type;
     gchar file_type[8];
     gint i;
-    gchar *a_day_str;
     GDateTime *a_day;
 
     ical_type = XFICAL_TYPE_EVENT;
     a_day = g_object_get_data (G_OBJECT (dw->StartDate_button), DATE_KEY);
-    a_day_str = g_date_time_format (a_day, XFICAL_APPT_DATE_FORMAT);
-    g_strlcpy(dw->a_day, a_day_str, sizeof (dw->a_day));
-    g_free (a_day_str);
-    dw->a_day[8] = '\0';
+    g_date_time_unref (dw->a_day);
+    dw->a_day = g_date_time_ref (a_day);
     dw->days = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(dw->day_spin));
 
     /* first search base orage file */
@@ -1082,6 +1081,7 @@ day_win *create_day_win(char *start_date)
 
     /* initialisation + main window + base vbox */
     dw = g_new0(day_win, 1);
+    dw->a_day = g_date_time_new_now_local ();
     dw->scroll_pos = -1; /* not set */
     dw->accel_group = gtk_accel_group_new();
 

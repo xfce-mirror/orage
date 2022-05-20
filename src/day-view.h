@@ -72,8 +72,7 @@ typedef struct _day_win
 
     GList *apptw_list; /* keep track of appointments being updated */
 
-    __attribute__ ((deprecated ("replace with GDateTime")))
-    gchar a_day[9]; /* start date yyyymmdd */
+    GDateTime *a_day; /* start date */
     gint days;      /* how many days to show */
 } day_win;
 
