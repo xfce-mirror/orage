@@ -139,6 +139,8 @@ GDateTime *orage_cal_to_gdatetime (GtkCalendar *cal, gint hh, gint mm);
 
 char *orage_cal_to_i18_time(GtkCalendar *cal, gint hh, gint mm);
 char *orage_cal_to_i18_date(GtkCalendar *cal);
+
+__attribute__ ((deprecated ("use orage_cal_to_gdatetime()")))
 char *orage_cal_to_icaldate(GtkCalendar *cal);
 void orage_move_day(struct tm *t, int day);
 
