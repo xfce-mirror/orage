@@ -71,8 +71,8 @@ static void mFile_newApp_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
     gchar *cur_date;
 
     /* cal has always a day selected here, so it is safe to read it */
-    cur_date = orage_cal_to_icaldate (GTK_CALENDAR (cal->mCalendar));
     gdt = orage_cal_to_gdatetime (GTK_CALENDAR (cal->mCalendar), 1, 1);
+    cur_date = g_date_time_format (gdt, XFICAL_APPT_DATE_FORMAT);
     create_appt_win("NEW", cur_date, gdt);
     g_date_time_unref (gdt);
     g_free (cur_date);
@@ -616,9 +616,12 @@ static void build_mainbox_event_info(void)
     gchar file_type[8];
     gint i;
     GList *event_list=NULL;
+    GDateTime *gdt;
 
     if (g_par.show_event_days) {
-        s_time = orage_cal_to_icaldate (GTK_CALENDAR (cal->mCalendar));
+        gdt = orage_cal_to_gdatetime (GTK_CALENDAR (cal->mCalendar), 1, 1);
+        s_time = g_date_time_format (gdt, XFICAL_APPT_DATE_FORMAT);
+        g_date_time_unref (gdt);
         ical_type = XFICAL_TYPE_EVENT;
         g_strlcpy (file_type, "O00.", sizeof (file_type));
 #if 0

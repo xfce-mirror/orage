@@ -770,18 +770,6 @@ char *orage_cal_to_i18_date(GtkCalendar *cal)
     return(orage_tm_date_to_i18_date(&tm_date));
 }
 
-char *orage_cal_to_icaldate(GtkCalendar *cal)
-{
-    char *icalt;
-    GDateTime *gdt;
-
-    gdt = orage_cal_to_gdatetime (cal, 1, 1);
-    icalt = g_date_time_format (gdt, XFICAL_APPT_DATE_FORMAT);
-    g_date_time_unref (gdt);
-
-    return(icalt);
-}
-
 GDateTime *orage_icaltime_to_gdatetime (const gchar *icaltime,
                                         const gboolean real_tm)
 {

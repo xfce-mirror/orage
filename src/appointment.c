@@ -1901,9 +1901,7 @@ static xfical_appt *fill_appt_window_get_new_appt (const gchar *par,
                                               par_day_of_month, par_hour,
                                               par_minute, 0);
 
-    time_str = g_date_time_format (appt->starttime2,
-                                   XFICAL_APPT_TIME_FORMAT);
-
+    time_str = g_date_time_format (appt->starttime2, XFICAL_APPT_TIME_FORMAT);
     g_strlcpy (appt->starttime, time_str, sizeof (appt->starttime));
     g_free (time_str);
 
