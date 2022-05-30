@@ -94,7 +94,7 @@ static void read_default_alarm(xfical_appt *appt);
  *  these are the main functions in this file:
  */ 
 static gboolean fill_appt_window(appt_win *apptw, const gchar *action,
-                                 const gchar *par);
+                                 const gchar *par, GDateTime *gdt_par);
 static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw);
 
 static GtkWidget *datetime_hbox_new(GtkWidget *date_button
@@ -749,6 +749,7 @@ static void app_free_memory(appt_win *apptw)
     gtk_widget_destroy(apptw->Window);
     g_free(apptw->xf_uid);
     g_free(apptw->par);
+    g_date_time_unref (apptw->par2);
     xfical_appt_free((xfical_appt *)apptw->xf_appt);
     g_free(apptw);
 }
@@ -981,7 +982,8 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
 #else
     gtz = g_time_zone_new (g_date_time_get_timezone_abbreviation (gdt_tmp));
 #endif
-    gdt = g_date_time_new (gtz,
+    g_date_time_unref (appt->starttime2);
+    appt->starttime2 = g_date_time_new (gtz,
                            g_date_time_get_year (gdt_tmp),
                            g_date_time_get_month (gdt_tmp),
                            g_date_time_get_day_of_month (gdt_tmp),
@@ -991,14 +993,13 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
                                     GTK_SPIN_BUTTON (apptw->StartTime_spin_mm)),
                            g_date_time_get_seconds (gdt_tmp));
 
-    tmp = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT_S0);
-    g_date_time_unref (gdt);
-    g_strlcpy (appt->starttime, tmp, sizeof (appt->starttime));
-    g_free (tmp);
-
 #if (USE_GLIB_258 == 0)
     g_time_zone_unref (gtz);
 #endif
+
+    tmp = g_date_time_format (appt->starttime2, XFICAL_APPT_TIME_FORMAT_S0);
+    g_strlcpy (appt->starttime, tmp, sizeof (appt->starttime));
+    g_free (tmp);
 
     /* end date and time. 
      * Note that timezone is kept upto date all the time 
@@ -1383,9 +1384,12 @@ static void duplicate_xfical_from_appt_win(appt_win *apptw)
 {
     gint x, y;
     appt_win *apptw2;
+    GDateTime *gdt;
 
     /* do not keep track of appointments created here */
-    apptw2 = create_appt_win("COPY", apptw->xf_uid);
+    gdt = g_date_time_new_now_local ();
+    apptw2 = create_appt_win("COPY", apptw->xf_uid, gdt);
+    g_date_time_unref (gdt);
     if (apptw2) {
         gtk_window_get_position(GTK_WINDOW(apptw->Window), &x, &y);
         gtk_window_move(GTK_WINDOW(apptw2->Window), x+20, y+20);
@@ -1406,11 +1410,14 @@ static void on_appDuplicate_clicked_cb (G_GNUC_UNUSED GtkButton *b,
 
 static void revert_xfical_to_last_saved(appt_win *apptw)
 {
+    GDateTime *gdt;
     if (!apptw->appointment_new) {
-        fill_appt_window(apptw, "UPDATE", apptw->xf_uid);
+        gdt = g_date_time_new_now_local ();
+        fill_appt_window(apptw, "UPDATE", apptw->xf_uid, gdt);
+        g_date_time_unref (gdt);
     }
     else {
-        fill_appt_window(apptw, "NEW", apptw->par);
+        fill_appt_window(apptw, "NEW", apptw->par, apptw->par2);
     }
 }
 
@@ -1836,69 +1843,100 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
 /** @param action action to be taken, possible values: "NEW", "UPDATE" and "COPY"
  *  @param par contains XFICAL_APPT_DATE_FORMAT (yyyymmdd) date for "NEW"
  *         appointment and ical uid for "UPDATE" and "COPY"
- *
- *  FIXME: Action "NEW" parameter should be GDateTime
  */
-static xfical_appt *fill_appt_window_get_appt(appt_win *apptw
-    , const gchar *action, const gchar *par)
+static xfical_appt *fill_appt_window_get_new_appt (const gchar *par,
+                                                   GDateTime *par_gdt)
 {
-    xfical_appt *appt=NULL;
-    GDateTime *gdt;
+    xfical_appt *appt;
+    GDateTime *gdt_now;
     gchar *today __attribute__ ((deprecated ("replace string with GDateTime")));
+    gchar *time_str;
     gint hour;
     gint minute;
+    gint par_year;
+    gint par_month;
+    gint par_day_of_month;
+    gint par_hour;
+    gint par_minute;
 
-    if (strcmp(action, "NEW") == 0) {
-        appt = xfical_appt_alloc();
-        gdt = g_date_time_new_now_local ();
-        today = g_date_time_format (gdt, "%Y%m%d");
-        hour = g_date_time_get_hour (gdt);
-        minute = g_date_time_get_minute (gdt);
-        g_date_time_unref (gdt);
-        if (strcmp(par, today) == 0 &&  hour < 23) {
-            /* If we're today, we propose an appointment the next half-hour hour
-             * 24 is wrong, we use 00.
-             */
-            if (minute <= 30) {
-                g_snprintf(appt->starttime, sizeof (appt->starttime),
-                           "%sT%02d%02d00", par, hour, 30);
-                g_snprintf(appt->endtime, sizeof (appt->endtime),
-                           "%sT%02d%02d00", par, hour + 1, 00);
-            }
-            else {
-                g_snprintf(appt->starttime, sizeof (appt->starttime),
-                           "%sT%02d%02d00", par, hour + 1, 00);
-                g_snprintf(appt->endtime, sizeof (appt->endtime),
-                           "%sT%02d%02d00", par, hour + 1, 30);
-            }
-        }
-        else {
-            /* otherwise we suggest it at 09:00 in the morning. */
-            g_snprintf(appt->starttime, sizeof (appt->starttime),
-                       "%sT090000", par);
+    appt = xfical_appt_alloc ();
+    gdt_now = g_date_time_new_now_local ();
+    today = g_date_time_format (gdt_now, XFICAL_APPT_DATE_FORMAT);
+    hour = g_date_time_get_hour (gdt_now);
+    minute = g_date_time_get_minute (gdt_now);
+    g_date_time_unref (gdt_now);
+
+    g_date_time_get_ymd (par_gdt, &par_year, &par_month, &par_day_of_month);
+    if (strcmp (par, today) == 0 && hour < 23)
+    {
+        /* If we're today, we propose an appointment the next half-hour hour
+         * 24 is wrong, we use 00.
+         */
+        if (minute <= 30)
+        {
+            par_hour = hour;
+            par_minute = 30;
             g_snprintf(appt->endtime, sizeof (appt->endtime),
-                       "%sT093000", par);
+                       "%sT%02d0000", par, hour + 1);
         }
-
-        if (g_par.local_timezone_utc)
-            appt->start_tz_loc = g_strdup("UTC");
-        else if (g_par.local_timezone)
-            appt->start_tz_loc = g_strdup(g_par.local_timezone);
         else
-            appt->start_tz_loc = g_strdup("floating");
-        appt->end_tz_loc = g_strdup(appt->start_tz_loc);
-        appt->duration = 30*60;
-        /* use NOT completed by default for new TODO */
-        appt->completed = FALSE;
-        /* use duration by default for new appointments */
-        appt->use_duration = TRUE;
-        g_snprintf (appt->completedtime, sizeof (appt->completedtime),
-                    "%sT%02d%02d00", today, hour, minute);
-        g_free (today);
-        appt->completed_tz_loc = g_strdup(appt->start_tz_loc);
-
-        read_default_alarm(appt);
+        {
+            par_hour = hour + 1;
+            par_minute = 0;
+            g_snprintf(appt->endtime, sizeof (appt->endtime),
+                       "%sT%02d3000", par, hour + 1);
+        }
     }
+    else
+    {
+        /* Otherwise we suggest it at 09:00 in the morning. */
+        par_hour = 9;
+        par_minute = 0;
+        g_snprintf(appt->endtime, sizeof (appt->endtime),
+                   "%sT093000", par);
+    }
+
+    g_date_time_unref (appt->starttime2);
+    appt->starttime2 = g_date_time_new_local (par_year, par_month,
+                                              par_day_of_month, par_hour,
+                                              par_minute, 0);
+
+    time_str = g_date_time_format (appt->starttime2,
+                                   XFICAL_APPT_TIME_FORMAT);
+
+    g_strlcpy (appt->starttime, time_str, sizeof (appt->starttime));
+    g_free (time_str);
+
+    if (g_par.local_timezone_utc)
+        appt->start_tz_loc = g_strdup ("UTC");
+    else if (g_par.local_timezone)
+        appt->start_tz_loc = g_strdup (g_par.local_timezone);
+    else
+        appt->start_tz_loc = g_strdup ("floating");
+
+    appt->end_tz_loc = g_strdup (appt->start_tz_loc);
+    appt->duration = 30*60;
+    /* use NOT completed by default for new TODO */
+    appt->completed = FALSE;
+    /* use duration by default for new appointments */
+    appt->use_duration = TRUE;
+    g_snprintf (appt->completedtime, sizeof (appt->completedtime),
+                "%sT%02d%02d00", today, hour, minute);
+    g_free (today);
+    appt->completed_tz_loc = g_strdup (appt->start_tz_loc);
+
+    read_default_alarm (appt);
+
+    return appt;
+}
+
+static xfical_appt *fill_appt_window_get_appt(appt_win *apptw
+    , const gchar *action, const gchar *par, GDateTime *par_gdt)
+{
+    xfical_appt *appt=NULL;
+
+    if (strcmp(action, "NEW") == 0)
+        appt = fill_appt_window_get_new_appt (par, par_gdt);
     else if ((strcmp(action, "UPDATE") == 0) || (strcmp(action, "COPY") == 0)) {
         if (!par) {
             g_message ("%s appointment with null id. Ending.", action);
@@ -2544,7 +2582,7 @@ static void fill_appt_window_recurrence(appt_win *apptw, xfical_appt *appt)
 
 /* Fill appointment window with data */
 static gboolean fill_appt_window(appt_win *apptw, const gchar *action,
-                                 const gchar *par)
+                                 const gchar *par, GDateTime *gdt_par)
 {
     xfical_appt *appt;
     GDateTime *gdt;
@@ -2552,7 +2590,7 @@ static gboolean fill_appt_window(appt_win *apptw, const gchar *action,
 
     /********************* INIT *********************/
     g_message ("%s appointment: %s", action, par);
-    if ((appt = fill_appt_window_get_appt(apptw, action, par)) == NULL) {
+    if ((appt = fill_appt_window_get_appt (apptw, action, par, gdt_par)) == NULL) {
         return(FALSE);
     }
     apptw->xf_appt = appt;
@@ -2560,6 +2598,8 @@ static gboolean fill_appt_window(appt_win *apptw, const gchar *action,
     /* first flags */
     apptw->xf_uid = g_strdup(appt->uid);
     apptw->par = g_strdup (par);
+    g_date_time_unref (apptw->par2);
+    apptw->par2 = g_date_time_ref (gdt_par);
     apptw->appointment_changed = FALSE;
     if (strcmp(action, "NEW") == 0) {
         apptw->appointment_add = TRUE;
@@ -2575,12 +2615,12 @@ static gboolean fill_appt_window(appt_win *apptw, const gchar *action,
         apptw->appointment_add = TRUE;
         apptw->appointment_new = FALSE;
         /* new copy is never readonly even though the original may have been */
-        appt->readonly = FALSE; 
+        appt->readonly = FALSE;
     }
     else {
         g_free(appt);
         apptw->xf_appt = NULL;
-        g_error ("%s: unknown parameter", G_STRFUNC);
+        g_error ("%s: unknown parameter '%s'", G_STRFUNC, action);
         return(FALSE);
     }
     if (apptw->appointment_add) {
@@ -3832,7 +3872,7 @@ static void enable_recurrence_page_signals(appt_win *apptw)
             , G_CALLBACK(recur_day_selected_double_click_cb), apptw);
 }
 
-appt_win *create_appt_win (const gchar *action, gchar *par)
+appt_win *create_appt_win (const gchar *action, gchar *par, GDateTime *gdt_par)
 {
     appt_win *apptw;
     GdkWindow *window;
@@ -3841,6 +3881,7 @@ appt_win *create_appt_win (const gchar *action, gchar *par)
     apptw = g_new(appt_win, 1);
     apptw->xf_uid = NULL;
     apptw->par = NULL;
+    apptw->par2 = g_date_time_new_now_local ();
     apptw->xf_appt = NULL;
     apptw->el = NULL;
     apptw->dw = NULL;
@@ -3848,9 +3889,9 @@ appt_win *create_appt_win (const gchar *action, gchar *par)
     apptw->accel_group = gtk_accel_group_new();
 
     apptw->Window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-    /*
+#if 0
     gtk_window_set_default_size(GTK_WINDOW(apptw->Window), 450, 325);
-    */
+#endif
     gtk_window_add_accel_group(GTK_WINDOW(apptw->Window), apptw->accel_group);
 
     apptw->Vbox = gtk_grid_new ();
@@ -3871,7 +3912,7 @@ appt_win *create_appt_win (const gchar *action, gchar *par)
     g_signal_connect((gpointer)apptw->Window, "delete-event"
             , G_CALLBACK(on_appWindow_delete_event_cb), apptw);
 
-    if (fill_appt_window(apptw, action, par)) { /* all fine */
+    if (fill_appt_window(apptw, action, par, gdt_par)) { /* all fine */
         enable_general_page_signals(apptw);
         enable_alarm_page_signals(apptw);
         enable_recurrence_page_signals(apptw);

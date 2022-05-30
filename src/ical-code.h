@@ -74,6 +74,7 @@ typedef struct _xfical_appt
          */
     __attribute__ ((deprecated ("replace with GDateTime")))
     gchar  starttime[17];
+    GDateTime *starttime2;
     gchar *start_tz_loc;
     gboolean use_due_time;  /* VTODO has due date or not */
 

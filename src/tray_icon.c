@@ -125,9 +125,9 @@ static void on_new_appointment_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
     gdt = g_date_time_new_now_local ();
     g_date_time_get_ymd (gdt, &year, &month, &day);
     g_snprintf (cur_date, sizeof (cur_date), "%04d%02d%02d", year, month, day);
-    g_date_time_unref (gdt);
 
-    create_appt_win("NEW", cur_date);
+    create_appt_win("NEW", cur_date, gdt);
+    g_date_time_unref (gdt);
 }
 
 static void on_globaltime_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,

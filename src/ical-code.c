@@ -690,6 +690,7 @@ xfical_appt *xfical_appt_alloc(void)
     appt->availability = 1;
     appt->freq = XFICAL_FREQ_NONE;
     appt->interval = 1;
+    appt->starttime2 = g_date_time_new_now_local ();
     for (i=0; i <= 6; i++)
         appt->recur_byday[i] = TRUE;
     return(appt);
@@ -1515,6 +1516,8 @@ static void process_start_date(xfical_appt *appt, icalproperty *p
     *stime = ic_convert_to_timezone(*itime, p);
     *sltime = convert_to_local_timezone(*itime, p);
     g_strlcpy(appt->starttime, text, sizeof (appt->starttime));
+    g_date_time_unref (appt->starttime2);
+    appt->starttime2 = orage_icaltime_to_gdatetime (text, FALSE);
     if (icaltime_is_date(*itime)) {
         appt->allDay = TRUE;
         appt->start_tz_loc = "floating";
@@ -1528,7 +1531,7 @@ static void process_start_date(xfical_appt *appt, icalproperty *p
         appt->start_tz_loc = ((t = ic_get_char_timezone(p)) ? t : "floating");
     }
     if (appt->endtime[0] == '\0') {
-        g_strlcpy(appt->endtime,  appt->starttime, sizeof (appt->endtime));
+        g_strlcpy(appt->endtime, text, sizeof (appt->endtime));
         appt->end_tz_loc = appt->start_tz_loc;
     }
 }
@@ -1703,10 +1706,11 @@ static void appt_init(xfical_appt *appt)
     appt->recur_limit = 0;
     appt->recur_count = 0;
     appt->recur_until[0] = '\0';
-/*
+    appt->starttime2 = g_date_time_new_now_local ();
+#if 0
     appt->email_alarm = FALSE;
     appt->email_attendees = NULL;
-*/
+#endif
     for (i=0; i <= 6; i++) {
         appt->recur_byday[i] = TRUE;
         appt->recur_byday_cnt[i] = 0;
@@ -2060,9 +2064,10 @@ void xfical_appt_free(xfical_appt *appt)
     g_free(appt->procedure_cmd);
     g_free(appt->procedure_params);
     g_free(appt->categories);
-    /*
+    g_date_time_unref (appt->starttime2);
+#if 0
     g_free(appt->email_attendees);
-    */
+#endif
     for (tmp = g_list_first(appt->recur_exceptions);
          tmp != NULL;
          tmp = g_list_next(tmp)) {
@@ -3161,6 +3166,7 @@ static void xfical_mark_calendar_from_component(GtkCalendar *gtkcal
             icalcomponent_foreach_recurrence(c, nsdate, nedate, mark_calendar
                     , (void *)&cal_data);
             g_free(cal_data.appt.categories);
+            g_date_time_unref (cal_data.appt.starttime2);
         }
         else {
             per = ic_get_period(c, TRUE);

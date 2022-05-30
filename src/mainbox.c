@@ -66,12 +66,15 @@ gboolean orage_mark_appointments(void)
 static void mFile_newApp_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
                                       gpointer user_data)
 {
+    GDateTime *gdt;
     CalWin *cal = (CalWin *)user_data;
     gchar *cur_date;
 
     /* cal has always a day selected here, so it is safe to read it */
     cur_date = orage_cal_to_icaldate (GTK_CALENDAR (cal->mCalendar));
-    create_appt_win("NEW", cur_date);
+    gdt = orage_cal_to_gdatetime (GTK_CALENDAR (cal->mCalendar), 1, 1);
+    create_appt_win("NEW", cur_date, gdt);
+    g_date_time_unref (gdt);
     g_free (cur_date);
 }
 
@@ -290,10 +293,13 @@ static void todo_clicked(GtkWidget *widget
         , GdkEventButton *event, G_GNUC_UNUSED gpointer *user_data)
 {
     gchar *uid;
+    GDateTime *gdt;
 
     if (event->type==GDK_2BUTTON_PRESS) {
         uid = g_object_get_data(G_OBJECT(widget), "UID");
-        create_appt_win("UPDATE", uid);
+        gdt = g_date_time_new_now_local ();
+        create_appt_win("UPDATE", uid, gdt);
+        g_date_time_unref (gdt);
     }
 }
 

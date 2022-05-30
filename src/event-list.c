@@ -86,22 +86,24 @@ static const GtkTargetEntry drag_targets[] =
     { "STRING", 0, DRAG_TARGET_STRING }
 };
 
-static void do_appt_win (const gchar *mode, char *uid, el_win *el)
+static void do_appt_win (const gchar *mode, char *uid, el_win *el,
+                         GDateTime *gdt)
 {
     appt_win *apptw;
 
-    apptw = create_appt_win(mode, uid);
+    apptw = create_appt_win(mode, uid, gdt);
     if (apptw) {
         /* we started this, so keep track of it */
         el->apptw_list = g_list_prepend(el->apptw_list, apptw);
         /* inform the appointment that we are interested in it */
-        apptw->el = el; 
+        apptw->el = el;
     }
-};
+}
 
 static void start_appt_win (const char *mode,  el_win *el
         , GtkTreeModel *model, GtkTreeIter *iter, GtkTreePath *path)
 {
+    GDateTime *gdt;
     gchar *uid = NULL, *flags = NULL;
 
     if (gtk_tree_model_get_iter(model, iter, path)) {
@@ -110,13 +112,15 @@ static void start_appt_win (const char *mode,  el_win *el
         gtk_tree_model_get(model, iter, COL_FLAGS, &flags, -1);
         if (flags && flags[3] == 'A') {
             xfical_unarchive_uid(uid);
-            /* note that file id changes after archive */ 
+            /* note that file id changes after archive */
             uid[0]='O';
             refresh_el_win(el);
         }
         g_free(flags);
 #endif
-        do_appt_win(mode, uid, el);
+        gdt = g_date_time_new_now_local ();
+        do_appt_win(mode, uid, el, gdt);
+        g_date_time_unref (gdt);
         g_free(uid);
     }
 }
@@ -982,7 +986,7 @@ static void create_new_appointment(el_win *el)
 
     gdt = g_object_get_data (G_OBJECT (el->Window), DATE_KEY);
     a_day = g_date_time_format (gdt, XFICAL_APPT_DATE_FORMAT);
-    do_appt_win("NEW", a_day, el);
+    do_appt_win("NEW", a_day, el, gdt);
     g_free (a_day);
 }
 

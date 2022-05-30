@@ -354,6 +354,7 @@ static void store_persistent_alarms(void)
 static void notify_action_open (G_GNUC_UNUSED NotifyNotification *n,
                                 G_GNUC_UNUSED const char *action, gpointer par)
 {
+    GDateTime *gdt;
     alarm_struct *l_alarm = (alarm_struct *)par;
 
     /* 
@@ -363,7 +364,9 @@ static void notify_action_open (G_GNUC_UNUSED NotifyNotification *n,
     l_alarm->notify_refresh = TRUE;
     create_notify_reminder(l_alarm);
     */
-    create_appt_win("UPDATE", l_alarm->uid);
+    gdt = g_date_time_new_now_local ();
+    create_appt_win("UPDATE", l_alarm->uid, gdt);
+    g_date_time_unref (gdt);
 }
 #endif
 
@@ -550,9 +553,12 @@ static void on_btOkReminder_clicked (G_GNUC_UNUSED GtkButton *button,
 static void on_btOpenReminder_clicked (G_GNUC_UNUSED GtkButton *button,
                                        gpointer user_data)
 {
+    GDateTime *gdt;
     alarm_struct *l_alarm = (alarm_struct *)user_data;
 
-    create_appt_win("UPDATE", l_alarm->uid);
+    gdt = g_date_time_new_now_local ();
+    create_appt_win("UPDATE", l_alarm->uid, gdt);
+    g_date_time_unref (gdt);
 }
 
 static void on_btRecreateReminder_clicked (G_GNUC_UNUSED GtkButton *button,
