@@ -1741,7 +1741,7 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
 
     /* start time */
     if (strlen(appt->starttime) > 6 ) {
-        gdt = orage_icaltime_to_gdatetime (appt->starttime, FALSE);
+        gdt = g_date_time_ref (appt->starttime2);
         g_object_set_data_full (G_OBJECT (apptw->StartDate_button),
                                 DATE_BUTTON_KEY, gdt,
                                 (GDestroyNotify)g_date_time_unref);
