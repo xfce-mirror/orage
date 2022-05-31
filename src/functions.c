@@ -821,13 +821,11 @@ char *orage_icaltime_to_i18_time(const char *icaltime)
 { /* timezone is not converted */
     GDateTime *gdt;
     gchar *ct;
+    gchar *fmt;
 
     gdt = orage_icaltime_to_gdatetime (icaltime, FALSE);
-    if (strchr (icaltime, 'T') == NULL)
-        ct = g_date_time_format (gdt, "%x");
-    else
-        ct = g_date_time_format (gdt, "%x %R");
-
+    fmt = (strchr (icaltime, 'T') == NULL) ? "%x" : "%x %R";
+    ct = g_date_time_format (gdt, fmt);
     g_date_time_unref (gdt);
 
     return(ct);
