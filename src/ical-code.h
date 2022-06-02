@@ -80,6 +80,7 @@ typedef struct _xfical_appt
 
     __attribute__ ((deprecated ("replace with GDateTime")))
     gchar  endtime[17];
+    GDateTime *endtime2;
     gchar *end_tz_loc;
     gboolean use_duration;
     gint   duration;

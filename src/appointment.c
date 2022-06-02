@@ -1001,9 +1001,9 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
     g_strlcpy (appt->starttime, tmp, sizeof (appt->starttime));
     g_free (tmp);
 
-    /* end date and time. 
-     * Note that timezone is kept upto date all the time 
-     */ 
+    /* end date and time.
+     * Note that timezone is kept upto date all the time
+     */
     appt->use_due_time = gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(apptw->End_checkbutton));
 
@@ -1014,7 +1014,8 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
 #else
     gtz = g_time_zone_new (g_date_time_get_timezone_abbreviation (gdt_tmp));
 #endif
-    gdt = g_date_time_new (gtz,
+    g_date_time_unref (appt->endtime2);
+    appt->endtime2 = g_date_time_new (gtz,
                            g_date_time_get_year (gdt_tmp),
                            g_date_time_get_month (gdt_tmp),
                            g_date_time_get_day_of_month (gdt_tmp),
@@ -1024,8 +1025,7 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
                                     GTK_SPIN_BUTTON (apptw->EndTime_spin_mm)),
                            g_date_time_get_seconds (gdt_tmp));
 
-    tmp = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT_S0);
-    g_date_time_unref (gdt);
+    tmp = g_date_time_format (appt->endtime2, XFICAL_APPT_TIME_FORMAT_S0);
     g_strlcpy (appt->endtime, tmp, sizeof (appt->endtime));
     g_free (tmp);
 
@@ -1051,9 +1051,9 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
     if (!orage_validate_datetime(apptw, appt))
         return(FALSE);
 
-    /* completed date and time. 
-     * Note that timezone is kept upto date all the time 
-     */ 
+    /* completed date and time.
+     * Note that timezone is kept upto date all the time
+     */
     appt->completed = gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(apptw->Completed_checkbutton));
 
@@ -1774,7 +1774,7 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(
             apptw->End_checkbutton), appt->use_due_time);
     if (strlen(appt->endtime) > 6 ) {
-        gdt = orage_icaltime_to_gdatetime (appt->endtime, FALSE);
+        gdt = g_date_time_ref (appt->endtime2);
         g_object_set_data_full (G_OBJECT (apptw->EndDate_button),
                                 DATE_BUTTON_KEY, gdt,
                                 (GDestroyNotify)g_date_time_unref);
@@ -1856,8 +1856,10 @@ static xfical_appt *fill_appt_window_get_new_appt (const gchar *par,
     gint par_year;
     gint par_month;
     gint par_day_of_month;
-    gint par_hour;
-    gint par_minute;
+    gint start_hour;
+    gint end_hour;
+    gint start_minute;
+    gint end_minute;
 
     appt = xfical_appt_alloc ();
     gdt_now = g_date_time_new_now_local ();
@@ -1874,35 +1876,44 @@ static xfical_appt *fill_appt_window_get_new_appt (const gchar *par,
          */
         if (minute <= 30)
         {
-            par_hour = hour;
-            par_minute = 30;
-            g_snprintf(appt->endtime, sizeof (appt->endtime),
-                       "%sT%02d0000", par, hour + 1);
+            start_hour = hour;
+            start_minute = 30;
+            end_hour = hour + 1;
+            end_minute = 0;
         }
         else
         {
-            par_hour = hour + 1;
-            par_minute = 0;
-            g_snprintf(appt->endtime, sizeof (appt->endtime),
-                       "%sT%02d3000", par, hour + 1);
+            start_hour = hour + 1;
+            start_minute = 0;
+            end_hour = hour + 1;
+            end_minute = 30;
         }
     }
     else
     {
         /* Otherwise we suggest it at 09:00 in the morning. */
-        par_hour = 9;
-        par_minute = 0;
-        g_snprintf(appt->endtime, sizeof (appt->endtime),
-                   "%sT093000", par);
+        start_hour = 9;
+        start_minute = 0;
+        end_hour = 9;
+        end_minute = 30;
     }
 
     g_date_time_unref (appt->starttime2);
     appt->starttime2 = g_date_time_new_local (par_year, par_month,
-                                              par_day_of_month, par_hour,
-                                              par_minute, 0);
+                                              par_day_of_month, start_hour,
+                                              start_minute, 0);
 
     time_str = g_date_time_format (appt->starttime2, XFICAL_APPT_TIME_FORMAT);
     g_strlcpy (appt->starttime, time_str, sizeof (appt->starttime));
+    g_free (time_str);
+
+    g_date_time_unref (appt->endtime2);
+    appt->endtime2 = g_date_time_new_local (par_year, par_month,
+                                            par_day_of_month, end_hour,
+                                            end_minute, 0);
+
+    time_str = g_date_time_format (appt->endtime2, XFICAL_APPT_TIME_FORMAT);
+    g_strlcpy (appt->endtime, time_str, sizeof (appt->endtime));
     g_free (time_str);
 
     if (g_par.local_timezone_utc)

@@ -649,13 +649,15 @@ int xfical_compare_times(xfical_appt *appt)
         etime = icaltime_add(stime, duration);
         text  = icaltime_as_ical_string(etime);
         g_strlcpy(appt->endtime, text, sizeof (appt->endtime));
+        g_date_time_unref (appt->endtime2);
+        appt->endtime2 = orage_icaltime_to_gdatetime (text, FALSE);
         g_free(appt->end_tz_loc);
         appt->end_tz_loc = g_strdup(appt->start_tz_loc);
         return(0); /* ok */
 
     }
     else {
-        if (ORAGE_STR_EXISTS(appt->starttime) 
+        if (ORAGE_STR_EXISTS(appt->starttime)
         &&  ORAGE_STR_EXISTS(appt->endtime)) {
             stime = icaltime_from_string(appt->starttime);
             etime = icaltime_from_string(appt->endtime);
@@ -1532,6 +1534,8 @@ static void process_start_date(xfical_appt *appt, icalproperty *p
     }
     if (appt->endtime[0] == '\0') {
         g_strlcpy(appt->endtime, text, sizeof (appt->endtime));
+        g_date_time_unref (appt->endtime2);
+        appt->endtime2 = g_date_time_ref (appt->starttime2);
         appt->end_tz_loc = appt->start_tz_loc;
     }
 }
@@ -1548,6 +1552,8 @@ static void process_end_date(xfical_appt *appt, icalproperty *p
     text  = icaltime_as_ical_string(*itime);
 #endif
     g_strlcpy(appt->endtime, text, sizeof (appt->endtime));
+    g_date_time_unref (appt->endtime2);
+    appt->endtime2 = orage_icaltime_to_gdatetime (text, FALSE);
     if (icaltime_is_date(*itime)) {
         appt->allDay = TRUE;
         appt->end_tz_loc = "floating";
@@ -1707,6 +1713,7 @@ static void appt_init(xfical_appt *appt)
     appt->recur_count = 0;
     appt->recur_until[0] = '\0';
     appt->starttime2 = g_date_time_new_now_local ();
+    appt->endtime2 = g_date_time_ref (appt->starttime2);
 #if 0
     appt->email_alarm = FALSE;
     appt->email_attendees = NULL;
@@ -1776,7 +1783,7 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
                     appt->availability = 0;
                 else if (xf_transp == ICAL_TRANSP_OPAQUE)
                     appt->availability = 1;
-                else 
+                else
                     appt->availability = -1;
                 break;
             case ICAL_DTSTART_PROPERTY:
@@ -1848,7 +1855,7 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
                     excp = g_new(xfical_exception, 1);
                     g_strlcpy (excp->type, "EXDATE", sizeof (excp->type));
                     g_strlcpy (excp->time, text, sizeof (excp->time));
-                    appt->recur_exceptions = 
+                    appt->recur_exceptions =
                             g_list_prepend(appt->recur_exceptions, excp);
                 }
                 break;
@@ -1862,7 +1869,7 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
                 }
                 else {
                     text = icalproperty_get_value_as_string(p);
-                    if (strlen(text) > 16) 
+                    if (strlen(text) > 16)
                     {
                         g_message ("%s: invalid RDATE %s. Ignoring", G_STRFUNC,
                                    text);
@@ -1871,7 +1878,7 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
                         excp = g_new(xfical_exception, 1);
                         g_strlcpy (excp->type, "RDATE", sizeof (excp->type));
                         g_strlcpy (excp->time, text, sizeof (excp->time));
-                        appt->recur_exceptions = 
+                        appt->recur_exceptions =
                                 g_list_prepend(appt->recur_exceptions, excp);
                     }
                 }
@@ -1891,10 +1898,12 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
     get_appt_alarm_from_icalcomponent(c, appt);
 
     /* need to set missing endtime or duration */
-    if (appt->use_duration) { 
+    if (appt->use_duration) {
         etime = icaltime_add(stime, duration);
         text  = icaltime_as_ical_string(etime);
         g_strlcpy(appt->endtime, text, sizeof (appt->endtime));
+        g_date_time_unref (appt->endtime2);
+        appt->endtime2 = orage_icaltime_to_gdatetime (text, FALSE);
         appt->end_tz_loc = appt->start_tz_loc;
     }
     else {
@@ -1908,6 +1917,8 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
             duration = icaldurationtype_from_int(appt->duration);
             etime = icaltime_add(stime, duration);
             text  = icaltime_as_ical_string(etime);
+            g_date_time_unref (appt->endtime2);
+            appt->endtime2 = orage_icaltime_to_gdatetime (text, FALSE);
             g_strlcpy(appt->endtime, text, sizeof (appt->endtime));
         }
     }
@@ -2065,6 +2076,7 @@ void xfical_appt_free(xfical_appt *appt)
     g_free(appt->procedure_params);
     g_free(appt->categories);
     g_date_time_unref (appt->starttime2);
+    g_date_time_unref (appt->endtime2);
 #if 0
     g_free(appt->email_attendees);
 #endif
@@ -3167,6 +3179,7 @@ static void xfical_mark_calendar_from_component(GtkCalendar *gtkcal
                     , (void *)&cal_data);
             g_free(cal_data.appt.categories);
             g_date_time_unref (cal_data.appt.starttime2);
+            g_date_time_unref (cal_data.appt.endtime2);
         }
         else {
             per = ic_get_period(c, TRUE);
