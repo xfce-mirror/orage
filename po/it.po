@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: ../globaltime/globaltime.c:59
 msgid "no underline"
@@ -4553,6 +4553,10 @@ msgid ""
 "Contents of those files are read and converted into Orage, but those files "
 "are left untouched."
 msgstr ""
+"Orage non possiede caratteristiche di un calendario condiviso, ma puo' "
+"essere utilizzato solo da utenti singoli. Esso prende una lista di file per "
+"file ical che devono essere importate. I contenuti di tali file vengono "
+"letti e convertiti in Orage, ma i file stessi rimangono immutati."
 
 #: ../org.xfce.orage.desktop.in.h:1
 msgid "Orage Calendar"
