@@ -83,6 +83,34 @@ void program_log (const char *format, ...)
  *  General purpose helper functions  *
  **************************************/
 
+static gint orage_gdatetime_compare_date (GDateTime *gdt1, GDateTime *gdt2)
+{
+    gint y1;
+    gint y2;
+    gint m1;
+    gint m2;
+    gint d1;
+    gint d2;
+
+    g_date_time_get_ymd (gdt1, &y1, &m1, &d1);
+    g_date_time_get_ymd (gdt2, &y2, &m2, &d2);
+
+    if (d1 < d2)
+        return -1;
+    else if (d1 > d2)
+        return 1;
+    else if (m1 < m2)
+        return -1;
+    else if (m1 > m2)
+        return 1;
+    else if (y1 < y2)
+        return -1;
+    else if (y1 > y2)
+        return 1;
+    else
+        return 0;
+}
+
 GtkWidget *orage_create_combo_box_with_content (const gchar *text[],
                                                 const int size)
 {
@@ -163,6 +191,76 @@ gboolean orage_date_button_clicked(GtkWidget *button, GtkWidget *selDate_dialog)
     gtk_button_set_label (GTK_BUTTON(button), new_date);
     if (allocated)
         g_free(new_date);
+    gtk_widget_destroy(selDate_dialog);
+    return(changed);
+}
+
+gboolean orage_date_button_clicked2 (GtkWidget *button, GtkWidget *selDate_dialog)
+{
+#if 0
+    GtkWidget *selDate_dialog;
+#endif
+    GtkWidget *selDate_calendar;
+    gint result;
+    gboolean changed;
+    gchar *time_str;
+    GDateTime *gdt;
+    GDateTime *gdt_new_date;
+
+#if 0
+    /* For some unknown reason NLS does not work in this file, so this has to be
+     * done in the main code:
+     */
+    selDate_dialog = gtk_dialog_new_with_buttons(
+            _("Pick the date"), GTK_WINDOW(win),
+            GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+            _("Today"),
+            1,
+            "_OK",
+            GTK_RESPONSE_ACCEPT,
+            NULL);
+#endif
+
+    selDate_calendar = gtk_calendar_new();
+    gtk_container_add(
+        GTK_CONTAINER(gtk_dialog_get_content_area (GTK_DIALOG(selDate_dialog)))
+            , selDate_calendar);
+
+    gdt = g_object_get_data (G_OBJECT (button), DATE_KEY);
+
+    if (gdt == NULL)
+    {
+        /* something was wrong. let's return some valid value */
+        gdt = g_date_time_new_now_local ();
+    }
+
+    orage_select_date (GTK_CALENDAR (selDate_calendar), gdt);
+    gtk_widget_show_all(selDate_dialog);
+
+    result = gtk_dialog_run(GTK_DIALOG(selDate_dialog));
+    switch(result){
+        case GTK_RESPONSE_ACCEPT:
+            gdt_new_date = orage_cal_to_gdatetime (GTK_CALENDAR (selDate_calendar), 1, 1);
+            break;
+
+        case 1:
+            gdt_new_date = g_date_time_new_now_local ();
+            break;
+
+        case GTK_RESPONSE_DELETE_EVENT:
+        default:
+            gdt_new_date = g_date_time_ref (gdt);
+            break;
+    }
+
+    changed = orage_gdatetime_compare_date (gdt_new_date, gdt) ? TRUE : FALSE;
+    time_str = g_date_time_format (gdt_new_date, "%x");
+    gtk_button_set_label (GTK_BUTTON(button), time_str);
+    g_free (time_str);
+    g_object_set_data_full (G_OBJECT (button),
+                            DATE_KEY, gdt_new_date,
+                            (GDestroyNotify)g_date_time_unref);
+
     gtk_widget_destroy(selDate_dialog);
     return(changed);
 }

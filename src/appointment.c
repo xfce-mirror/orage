@@ -67,8 +67,6 @@
 #define ORAGE_RC_COLOUR "Color"
 #define CATEGORIES_SPACING 10
 
-#define DATE_BUTTON_KEY "button-date"
-
 typedef struct _orage_category_win
 {
     GtkWidget *window;
@@ -976,7 +974,7 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
             GTK_TOGGLE_BUTTON(apptw->AllDay_checkbutton));
 
     gdt_tmp = g_object_get_data (G_OBJECT (apptw->StartDate_button),
-                                 DATE_BUTTON_KEY);
+                                 DATE_KEY);
 #if USE_GLIB_258
     gtz = g_date_time_get_timezone (gdt_tmp);
 #else
@@ -1008,7 +1006,7 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
             GTK_TOGGLE_BUTTON(apptw->End_checkbutton));
 
     gdt_tmp = g_object_get_data (G_OBJECT (apptw->EndDate_button),
-                                 DATE_BUTTON_KEY);
+                                 DATE_KEY);
 #if USE_GLIB_258
     gtz = g_date_time_get_timezone (gdt_tmp);
 #else
@@ -1058,7 +1056,7 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
             GTK_TOGGLE_BUTTON(apptw->Completed_checkbutton));
 
     gdt_tmp = g_object_get_data (G_OBJECT (apptw->CompletedDate_button),
-                                 DATE_BUTTON_KEY);
+                                 DATE_KEY);
 
 #if USE_GLIB_258
     gtz = g_date_time_get_timezone (gdt_tmp);
@@ -1147,7 +1145,7 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
         appt->recur_count = 0;    /* special: means no repeat count limit */
 
         gdt = g_object_get_data (G_OBJECT (apptw->Recur_until_button),
-                                 DATE_BUTTON_KEY);
+                                 DATE_KEY);
 
         tmp = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT_END_OF_DAY);
         g_date_time_unref (gdt);
@@ -1443,7 +1441,7 @@ static void on_Date_button_clicked_cb(GtkWidget *button, gpointer *user_data)
             GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
             _("Today"), 1, "_OK", GTK_RESPONSE_ACCEPT, NULL);
 
-    if (orage_date_button_clicked(button, selDate_dialog))
+    if (orage_date_button_clicked2 (button, selDate_dialog))
         mark_appointment_changed(apptw);
 }
 
@@ -1743,7 +1741,7 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
     if (strlen(appt->starttime) > 6 ) {
         gdt = g_date_time_ref (appt->starttime2);
         g_object_set_data_full (G_OBJECT (apptw->StartDate_button),
-                                DATE_BUTTON_KEY, gdt,
+                                DATE_KEY, gdt,
                                 (GDestroyNotify)g_date_time_unref);
         date_to_display = g_date_time_format (gdt, "%x");
         gtk_button_set_label (GTK_BUTTON(apptw->StartDate_button),
@@ -1776,7 +1774,7 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
     if (strlen(appt->endtime) > 6 ) {
         gdt = g_date_time_ref (appt->endtime2);
         g_object_set_data_full (G_OBJECT (apptw->EndDate_button),
-                                DATE_BUTTON_KEY, gdt,
+                                DATE_KEY, gdt,
                                 (GDestroyNotify)g_date_time_unref);
         date_to_display = g_date_time_format (gdt, "%x");
         gtk_button_set_label (GTK_BUTTON (apptw->EndDate_button),
@@ -1817,7 +1815,7 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
     if (strlen(appt->completedtime) > 6 ) {
         gdt = orage_icaltime_to_gdatetime (appt->completedtime, FALSE);
         g_object_set_data_full (G_OBJECT (apptw->CompletedDate_button),
-                                DATE_BUTTON_KEY, gdt,
+                                DATE_KEY, gdt,
                                 (GDestroyNotify)g_date_time_unref);
         date_to_display = g_date_time_format (gdt, "%x");
         gtk_button_set_label (GTK_BUTTON(apptw->CompletedDate_button),
@@ -2536,7 +2534,7 @@ static void fill_appt_window_recurrence(appt_win *apptw, xfical_appt *appt)
                                recur_count);
     untildate_to_display = g_date_time_format (gdt, "%x");
     g_object_set_data_full (G_OBJECT (apptw->Recur_until_button),
-                            DATE_BUTTON_KEY, gdt,
+                            DATE_KEY, gdt,
                             (GDestroyNotify)g_date_time_unref);
     gtk_button_set_label (GTK_BUTTON(apptw->Recur_until_button),
                           untildate_to_display);
@@ -2808,13 +2806,59 @@ static void read_default_alarm(xfical_appt *appt)
     orage_rc_file_close(orc);
 }
 
+static gboolean is_same_date (GDateTime *gdt1, GDateTime *gdt2)
+{
+    if (g_date_time_get_year (gdt1) != g_date_time_get_year (gdt2))
+        return FALSE;
+
+    if (g_date_time_get_day_of_year (gdt1) != g_date_time_get_day_of_year (gdt2))
+        return FALSE;
+
+    return TRUE;
+}
+
+static gchar *create_action_time (xfical_appt *appt)
+{
+    gchar *action_time;
+    gchar *fmt;
+    gchar *start_str;
+    gchar *end_str;
+
+    if (g_date_time_compare (appt->starttime2, appt->endtime2) == 0)
+    {
+        action_time = g_date_time_format (appt->starttime2, "%x %R");
+        return action_time;
+    }
+
+    if (appt->allDay == TRUE)
+    {
+        fmt = "%x";
+
+        if (is_same_date (appt->starttime2, appt->endtime2) == TRUE)
+        {
+            action_time = g_date_time_format (appt->starttime2, fmt);
+            return action_time;
+        }
+    }
+    else
+        fmt = "%x %R";
+
+    start_str = g_date_time_format (appt->starttime2, fmt);
+    end_str = g_date_time_format (appt->endtime2, fmt);
+
+    action_time = g_strconcat (start_str, " - ", end_str, NULL);
+    g_free (start_str);
+    g_free (end_str);
+
+    return action_time;
+}
+
 static void on_test_button_clicked_cb (G_GNUC_UNUSED GtkButton *button
         , gpointer user_data)
 {
     appt_win *apptw = (appt_win *)user_data;
     xfical_appt *appt = (xfical_appt *)apptw->xf_appt;
     alarm_struct cur_alarm;
-    gchar *tmp1, *tmp2;
 
     fill_appt_from_apptw(appt, apptw);
 
@@ -2824,11 +2868,9 @@ static void on_test_button_clicked_cb (G_GNUC_UNUSED GtkButton *button
         cur_alarm.uid = g_strdup(appt->uid);
     else
         cur_alarm.uid = NULL;
-    tmp1  = orage_icaltime_to_i18_time (appt->starttime);
-    tmp2  = orage_icaltime_to_i18_time (appt->endtime);
-    cur_alarm.action_time = g_strconcat(tmp1, " - ", tmp2, NULL);
-    g_free(tmp1);
-    g_free(tmp2);
+
+    cur_alarm.action_time = create_action_time (appt);
+
     cur_alarm.title = g_strdup(appt->title);
     cur_alarm.description = g_strdup(appt->note);
     cur_alarm.persistent = appt->alarm_persistent;
