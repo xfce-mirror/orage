@@ -475,7 +475,7 @@ static void on_Date_button_clicked_cb(GtkWidget *button, gpointer *user_data)
             GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
             _("Today"), 1, _("_OK"), GTK_RESPONSE_ACCEPT, NULL);
 
-    if (orage_date_button_clicked(button, selDate_dialog))
+    if (orage_date_button_clicked2 (button, selDate_dialog))
         refresh_day_win(dw);
 }
 
