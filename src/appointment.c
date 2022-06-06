@@ -1847,7 +1847,6 @@ static xfical_appt *fill_appt_window_get_new_appt (const gchar *par,
 {
     xfical_appt *appt;
     GDateTime *gdt_now;
-    gchar *today __attribute__ ((deprecated ("replace string with GDateTime")));
     gchar *time_str;
     gint hour;
     gint minute;
@@ -1861,17 +1860,15 @@ static xfical_appt *fill_appt_window_get_new_appt (const gchar *par,
 
     appt = xfical_appt_alloc ();
     gdt_now = g_date_time_new_now_local ();
-    today = g_date_time_format (gdt_now, XFICAL_APPT_DATE_FORMAT);
     hour = g_date_time_get_hour (gdt_now);
-    minute = g_date_time_get_minute (gdt_now);
-    g_date_time_unref (gdt_now);
 
     g_date_time_get_ymd (par_gdt, &par_year, &par_month, &par_day_of_month);
-    if (strcmp (par, today) == 0 && hour < 23)
+    if (orage_gdatetime_compare_date (par_gdt, gdt_now) == 0 && (hour < 23))
     {
         /* If we're today, we propose an appointment the next half-hour hour
          * 24 is wrong, we use 00.
          */
+        minute = g_date_time_get_minute (gdt_now);
         if (minute <= 30)
         {
             start_hour = hour;
@@ -1927,9 +1924,10 @@ static xfical_appt *fill_appt_window_get_new_appt (const gchar *par,
     appt->completed = FALSE;
     /* use duration by default for new appointments */
     appt->use_duration = TRUE;
-    g_snprintf (appt->completedtime, sizeof (appt->completedtime),
-                "%sT%02d%02d00", today, hour, minute);
-    g_free (today);
+    time_str = g_date_time_format (gdt_now, XFICAL_APPT_TIME_FORMAT_S0);
+    g_date_time_unref (gdt_now);
+    g_strlcpy (appt->completedtime, time_str, sizeof (appt->completedtime));
+    g_free (time_str);
     appt->completed_tz_loc = g_strdup (appt->start_tz_loc);
 
     read_default_alarm (appt);
