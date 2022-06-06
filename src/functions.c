@@ -83,7 +83,7 @@ void program_log (const char *format, ...)
  *  General purpose helper functions  *
  **************************************/
 
-static gint orage_gdatetime_compare_date (GDateTime *gdt1, GDateTime *gdt2)
+gint orage_gdatetime_compare_date (GDateTime *gdt1, GDateTime *gdt2)
 {
     gint y1;
     gint y2;

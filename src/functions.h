@@ -102,6 +102,15 @@ GtkWidget *orage_period_hbox_new(gboolean head_space, gboolean tail_space
         , GtkWidget *spin_mm, GtkWidget *mm_label);
 
 GDate *orage_gdatetime_to_gdate (GDateTime *gdt);
+
+/** Comapare dates only.
+ *  @param gdt1 GDateTime fist date and time
+ *  @param gdt2 GDateTime second date and time
+ *  @return 0 if dates are equal, -1 if gdt1 is less than gdt2, 1 if gdt1 is
+ *  larger than gdt2.
+ */
+gint orage_gdatetime_compare_date (GDateTime *gdt1, GDateTime *gdt2);
+
 GDateTime *orage_gdate_to_gdatetime (const GDate *gd);
 
 /** Return date string. Calling function must free returned date string.
