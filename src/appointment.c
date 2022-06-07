@@ -1558,19 +1558,24 @@ static xfical_exception *new_exception(gchar *text)
             gdt = orage_i18_time_to_gdatetime (text);
             fmt = XFICAL_APPT_TIME_FORMAT;
         }
-
-        ical_str = g_date_time_format (gdt, fmt);
-        g_date_time_unref (gdt);
 #else
         /* we should not have date-times as we are using internal libical,
            which only uses dates, but if this returns non null, we may have
            datetime from somewhere else */
         tmp = (char *)strptime(text, "%x", &tm_time);
         if (ORAGE_STR_EXISTS(tmp))
-            ical_str = orage_i18_time_to_icaltime (text);
+        {
+            gdt = orage_i18_time_to_gdatetime (text);
+            fmt = XFICAL_APPT_TIME_FORMAT;
+        }
         else
-            ical_str = orage_i18_date_to_icaldate (text);
+        {
+            gdt = orage_i18_date_to_gdatetime (text);
+            fmt = XFICAL_APPT_DATE_FORMAT;
+        }
 #endif
+        ical_str = g_date_time_format (gdt, fmt);
+        g_date_time_unref (gdt);
     }
 
     g_strlcpy (recur_exception->time, ical_str,
