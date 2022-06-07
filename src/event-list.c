@@ -570,11 +570,12 @@ static void app_rows (el_win *el, const gchar *a_day, char *par,
     }
 }
 
-static void app_data (el_win *el, __attribute__ ((deprecated ("use GDateTime instead string"))) const gchar *a_day, char *par)
+static void app_data (el_win *el, GDateTime *a_day_gdt, char *par)
 {
     xfical_type ical_type;
     gchar file_type[8];
     gint i;
+    gchar *a_day;
 
     switch (el->page) {
         case EVENT_PAGE:
@@ -594,6 +595,7 @@ static void app_data (el_win *el, __attribute__ ((deprecated ("use GDateTime ins
     if (!xfical_file_open(TRUE))
         return;
     g_strlcpy (file_type, "O00.", sizeof (file_type));
+    a_day = g_date_time_format (a_day_gdt, XFICAL_APPT_DATE_FORMAT);
     app_rows(el, a_day, par, ical_type, file_type);
     /* then process all foreign files */
     for (i = 0; i < g_par.foreign_count; i++) {
@@ -611,6 +613,7 @@ static void app_data (el_win *el, __attribute__ ((deprecated ("use GDateTime ins
         }
     }
 #endif
+    g_free (a_day);
     xfical_file_close(TRUE);
 }
 
@@ -634,11 +637,14 @@ static void event_data(el_win *el)
 {
     const gchar *title;  /* in %x strftime format */
     char      *stime;  /* in icaltime format */
+
+    __attribute__ ((deprecated ("use GDateTime")))
     gchar a_day[9]; /* yyyymmdd */
     GDate *gd_title;
     GDate *gd_now;
     GDate *d1;
     GDateTime *gdt;
+    GDateTime *gdt_a_day;
 
     if (el->days == 0)
         refresh_time_field(el);
@@ -658,13 +664,13 @@ static void event_data(el_win *el)
         g_strlcpy(a_day, "19000101", sizeof (a_day));
         /* we need to adjust also number of days shown */
         d1 = g_date_new_dmy(1, 1, 1900);
+        gdt_a_day = orage_gdate_to_gdatetime (d1);
         el->days += g_date_days_between (d1, gd_title);
         g_date_free(d1);
     }
     else { /* we show starting from selected day */
-        gdt = orage_gdate_to_gdatetime (gd_title);
-        g_date_time_unref (gdt);
-        stime = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT);
+        gdt_a_day = orage_gdate_to_gdatetime (gd_title);
+        stime = g_date_time_format (gdt_a_day, XFICAL_APPT_TIME_FORMAT);
         g_strlcpy (a_day, stime, sizeof (a_day));
         g_free (stime);
     }
@@ -680,39 +686,28 @@ static void event_data(el_win *el)
 
     g_date_free (gd_now);
     g_date_free (gd_title);
-    app_data(el, a_day, a_day);
+    app_data (el, gdt_a_day, a_day);
+    g_date_time_unref (gdt_a_day);
 }
 
 static void todo_data(el_win *el)
 {
-    gchar     *stime;
-    char      a_day[9];  /* yyyymmdd */
-
     el->days = 0; /* not used */
-    stime = orage_localtime_icaltime ();
-    strncpy(a_day, stime, 8);
-    a_day[8] = '\0';
-    g_free (stime);
 
     if (el->date_now)
         g_date_time_unref (el->date_now);
 
     el->date_now = g_date_time_new_now_local ();
-
-    app_data(el, a_day, NULL);
+    app_data (el, el->date_now, NULL);
 }
 
 static void journal_data(el_win *el)
 {
-    gchar *a_day;
     GDateTime *gdt;
 
     el->days = 10*365; /* long enough time to get everything from future */
     gdt = g_object_get_data (G_OBJECT (el->journal_start_button), DATE_KEY);
-    a_day = g_date_time_format (gdt, XFICAL_APPT_DATE_FORMAT);
-
-    app_data(el, a_day, NULL);
-    g_free (a_day);
+    app_data (el, gdt, NULL);
 }
 
 void refresh_el_win(el_win *el)
