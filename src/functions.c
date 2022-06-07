@@ -789,12 +789,14 @@ char *orage_cal_to_i18_time(GtkCalendar *cal, gint hh, gint mm)
 
 char *orage_cal_to_i18_date(GtkCalendar *cal)
 {
-    struct tm tm_date = {0};
+    GDateTime *gdt;
+    gchar *date;
 
-    tm_date.tm_isdst = -1;
+    gdt = orage_cal_to_gdatetime (cal, 1, 1);
+    date = g_date_time_format (gdt, "%x");
+    g_date_time_unref (gdt);
 
-    tm_date = orage_cal_to_tm_time(cal, 1, 1);
-    return(orage_tm_date_to_i18_date(&tm_date));
+    return date;
 }
 
 GDateTime *orage_icaltime_to_gdatetime (const gchar *icaltime,

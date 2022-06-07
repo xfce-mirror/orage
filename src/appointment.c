@@ -1704,7 +1704,7 @@ static void recur_day_selected_double_click_cb(GtkCalendar *calendar
            We use start time from appointment. */
         if (gtk_toggle_button_get_active(
                 GTK_TOGGLE_BUTTON(apptw->AllDay_checkbutton)))
-            cal_date = g_strdup(orage_cal_to_i18_date(calendar));
+            cal_date = orage_cal_to_i18_date (calendar);
         else {
             hh =  gtk_spin_button_get_value_as_int(
                     GTK_SPIN_BUTTON(apptw->StartTime_spin_hh));
@@ -1714,7 +1714,7 @@ static void recur_day_selected_double_click_cb(GtkCalendar *calendar
         }
 #else
         /* date is enough */
-        cal_date = g_strdup(orage_cal_to_i18_date(calendar));
+        cal_date = orage_cal_to_i18_date (calendar);
 #endif
     }
     else { /* extra day. This needs also time */
