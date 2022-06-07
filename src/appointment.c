@@ -932,6 +932,9 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
     GDateTime *gdt_tmp;
     gint i;
     gchar *tmp, *tmp2;
+    gint year;
+    gint month;
+    gint day;
 
 /* Next line is fix for bug 2811.
  * We need to make sure spin buttons do not have values which are not
@@ -1144,12 +1147,15 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
         appt->recur_limit = 2;    /* until limit */
         appt->recur_count = 0;    /* special: means no repeat count limit */
 
-        gdt = g_object_get_data (G_OBJECT (apptw->Recur_until_button),
-                                 DATE_KEY);
-
-        tmp = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT_END_OF_DAY);
-        g_date_time_unref (gdt);
+        gdt_tmp = g_object_get_data (G_OBJECT (apptw->Recur_until_button),
+                                     DATE_KEY);
+        g_date_time_get_ymd (gdt_tmp, &year, &month, &day);
+        gdt = g_date_time_new_local (year, month, day, 23, 59, 10);
+        tmp = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT);
         g_strlcpy (appt->recur_until, tmp, sizeof (appt->recur_until));
+        g_object_set_data_full (G_OBJECT (apptw->Recur_until_button),
+                                DATE_KEY, gdt,
+                                (GDestroyNotify)g_date_time_unref);
         g_free (tmp);
     }
     else
