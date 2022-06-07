@@ -124,78 +124,7 @@ GtkWidget *orage_create_combo_box_with_content (const gchar *text[],
     return combo_box;
 }
 
-gboolean orage_date_button_clicked(GtkWidget *button, GtkWidget *selDate_dialog)
-{
-#if 0
-    GtkWidget *selDate_dialog;
-#endif
-    GtkWidget *selDate_calendar;
-    gint result;
-    gchar *new_date = NULL;
-    const gchar *cur_date;
-    gboolean changed, allocated=FALSE;
-    GDateTime *gdt;
-
-#if 0
-    /* For some unknown reason NLS does not work in this file, so this has to be
-     * done in the main code:
-     */
-    selDate_dialog = gtk_dialog_new_with_buttons(
-            _("Pick the date"), GTK_WINDOW(win),
-            GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-            _("Today"),
-            1,
-            "_OK",
-            GTK_RESPONSE_ACCEPT,
-            NULL);
-#endif
-
-    selDate_calendar = gtk_calendar_new();
-    gtk_container_add(
-        GTK_CONTAINER(gtk_dialog_get_content_area (GTK_DIALOG(selDate_dialog)))
-            , selDate_calendar);
-
-    cur_date = gtk_button_get_label(GTK_BUTTON(button));
-
-    if (cur_date)
-        gdt = orage_i18_date_to_gdatetime (cur_date);
-    else
-    {
-        /* something was wrong. let's return some valid value */
-        gdt = g_date_time_new_now_local ();
-    }
-
-    orage_select_date (GTK_CALENDAR (selDate_calendar), gdt);
-    g_date_time_unref (gdt);
-    gtk_widget_show_all(selDate_dialog);
-
-    result = gtk_dialog_run(GTK_DIALOG(selDate_dialog));
-    switch(result){
-        case GTK_RESPONSE_ACCEPT:
-            new_date = orage_cal_to_i18_date(GTK_CALENDAR(selDate_calendar));
-            break;
-        case 1:
-            new_date = orage_localdate_i18();
-            allocated = TRUE;
-            break;
-        case GTK_RESPONSE_DELETE_EVENT:
-        default:
-            new_date = g_strdup(cur_date);
-            allocated = TRUE;
-            break;
-    }
-    if (g_ascii_strcasecmp(new_date, cur_date) != 0)
-        changed = TRUE;
-    else
-        changed = FALSE;
-    gtk_button_set_label (GTK_BUTTON(button), new_date);
-    if (allocated)
-        g_free(new_date);
-    gtk_widget_destroy(selDate_dialog);
-    return(changed);
-}
-
-gboolean orage_date_button_clicked2 (GtkWidget *button, GtkWidget *selDate_dialog)
+gboolean orage_date_button_clicked (GtkWidget *button, GtkWidget *selDate_dialog)
 {
 #if 0
     GtkWidget *selDate_dialog;

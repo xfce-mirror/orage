@@ -1447,7 +1447,7 @@ static void on_Date_button_clicked_cb(GtkWidget *button, gpointer *user_data)
             GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
             _("Today"), 1, "_OK", GTK_RESPONSE_ACCEPT, NULL);
 
-    if (orage_date_button_clicked2 (button, selDate_dialog))
+    if (orage_date_button_clicked (button, selDate_dialog))
         mark_appointment_changed(apptw);
 }
 
@@ -1462,7 +1462,7 @@ static void on_recur_Date_button_clicked_cb(GtkWidget *button
             GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
             _("Today"), 1, "_OK", GTK_RESPONSE_ACCEPT, NULL);
 
-    if (orage_date_button_clicked2 (button, selDate_dialog))
+    if (orage_date_button_clicked (button, selDate_dialog))
         mark_appointment_changed(apptw);
     refresh_recur_calendars((appt_win *)user_data);
 }

@@ -1101,7 +1101,7 @@ static void on_journal_start_button_clicked(GtkWidget *button
             GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
             _("Today"), 1, "_OK", GTK_RESPONSE_ACCEPT, NULL);
 
-    if (orage_date_button_clicked2 (button, selDate_dialog))
+    if (orage_date_button_clicked (button, selDate_dialog))
         refresh_el_win(el);
 }
 
