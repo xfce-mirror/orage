@@ -108,11 +108,6 @@ gint orage_gdatetime_compare_date (GDateTime *gdt1, GDateTime *gdt2);
 
 GDateTime *orage_gdate_to_gdatetime (const GDate *gd);
 
-/** Return date string. Calling function must free returned date string.
- *  @return date string.
- */
-gchar *orage_localdate_i18 (void);
-
 /** Return time string in icaltime format. Calling function must free returned
  *  date string.
  *  @return date string.
@@ -122,14 +117,6 @@ gchar *orage_localtime_icaltime (void);
 void orage_i18_date_to_gdate (const gchar *i18_date, GDate *date);
 GDateTime *orage_i18_date_to_gdatetime (const gchar *i18_date);
 GDateTime *orage_i18_time_to_gdatetime (const gchar *i18_time);
-
-gchar *orage_i18_time_to_icaltime(const gchar *i18_time);
-
-#ifdef HAVE_LIBICAL
-__attribute__ ((deprecated))
-gchar *orage_i18_date_to_icaldate(const gchar *i18_date);
-#endif
-
 GDateTime *orage_icaltime_to_gdatetime (const gchar *i18_date,
                                         gboolean real_tm);
 
@@ -147,7 +134,6 @@ GDateTime *orage_cal_to_gdatetime (GtkCalendar *cal, gint hh, gint mm);
 
 char *orage_cal_to_i18_time(GtkCalendar *cal, gint hh, gint mm);
 char *orage_cal_to_i18_date(GtkCalendar *cal);
-void orage_move_day(struct tm *t, int day);
 
 /** Find number of days between two time values.
  *  @param gdt1 first time value

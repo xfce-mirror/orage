@@ -836,32 +836,6 @@ char *orage_icaltime_to_i18_time_only(const char *icaltime)
     return(i18_time);
 }
 
-gchar *orage_i18_time_to_icaltime(const gchar *i18_time)
-{
-    gchar *ct;
-    GDateTime *gdt;
-
-    gdt = orage_i18_time_to_gdatetime (i18_time);
-    ct = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT);
-    g_date_time_unref (gdt);
-
-    return(ct);
-}
-
-#ifdef HAVE_LIBICAL
-gchar *orage_i18_date_to_icaldate(const gchar *i18_date)
-{
-    GDateTime *gdt;
-    gchar *icalt;
-
-    gdt = orage_i18_date_to_gdatetime (i18_date);
-    icalt = g_date_time_format (gdt, XFICAL_APPT_DATE_FORMAT);
-    g_date_time_unref (gdt);
-
-    return(icalt);
-}
-#endif
-
 GDate *orage_gdatetime_to_gdate (GDateTime *gdt)
 {
     gint year;
@@ -882,18 +856,6 @@ GDateTime *orage_gdate_to_gdatetime (const GDate *gd)
     return g_date_time_new_local (year, month, day, 0, 0, 0);
 }
 
-gchar *orage_localdate_i18 (void)
-{
-    GDateTime *gdt;
-    gchar *time_str;
-
-    gdt = g_date_time_new_now_local ();
-    time_str = g_date_time_format (gdt, "%x");
-    g_date_time_unref (gdt);
-
-    return time_str;
-}
-
 gchar *orage_localtime_icaltime (void)
 {
     GDateTime *gdt;
@@ -904,18 +866,6 @@ gchar *orage_localtime_icaltime (void)
     g_date_time_unref (gdt);
 
     return time_str;
-}
-
-/* move one day forward or backward */
-void orage_move_day(struct tm *t, const gint day)
-{
-    t->tm_mday += day; /* may be negative */
-    /* mktime adjusts t correctly. It also fills missing tm_wday and tm_yday, 
-     * which are in use in some locale's default date. For example in en_IN */
-    if (mktime(t) == (time_t) -1) {
-        g_warning ("%s: mktime failed %d %d %d", G_STRFUNC, t->tm_year,
-                   t->tm_mon, t->tm_mday);
-    }
 }
 
 gint orage_days_between (GDateTime *gdt1, GDateTime *gdt2)
