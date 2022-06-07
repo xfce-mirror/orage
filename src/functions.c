@@ -719,42 +719,6 @@ GDateTime *orage_i18_date_to_gdatetime (const gchar *i18_date)
     return gdt;
 }
 
-__attribute__((deprecated))
-static gchar *orage_tm_date_to_i18_date (const struct tm *tm_date)
-{
-    static gchar i18_date[128];
-
-    if (_strftime ((char *)i18_date, sizeof (i18_date), "%x", tm_date) == 0)
-        g_error ("%s: too long string in strftime", G_STRFUNC);
-
-    return(i18_date);
-}
-
-__attribute__((deprecated ("use orage_cal_to_gdatetime")))
-static struct tm orage_cal_to_tm_time (GtkCalendar *cal, gint hh, gint mm)
-{
-    struct tm tm_date = {0};
-
-    /* dst needs to -1 or mktime adjusts time if we are in another
-     * dst setting. */
-    tm_date.tm_isdst = -1;
-
-    gtk_calendar_get_date(cal
-            , (unsigned int *)&tm_date.tm_year
-            , (unsigned int *)&tm_date.tm_mon
-            , (unsigned int *)&tm_date.tm_mday);
-    tm_date.tm_year -= 1900;
-    tm_date.tm_hour = hh;
-    tm_date.tm_min = mm;
-    /* need to fill missing tm_wday and tm_yday, which are in use 
-     * in some locale's default date. For example in en_IN. mktime does it */
-    if (mktime(&tm_date) == (time_t) -1) {
-        g_warning ("%s: mktime failed %d %d %d", G_STRFUNC, tm_date.tm_year,
-                   tm_date.tm_mon, tm_date.tm_mday);
-    }
-    return(tm_date);
-}
-
 GDateTime *orage_cal_to_gdatetime (GtkCalendar *cal,
                                    const gint hh, const gint mm)
 {
