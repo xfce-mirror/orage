@@ -1824,7 +1824,7 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(
             apptw->Completed_checkbutton), appt->completed);
     if (strlen(appt->completedtime) > 6 ) {
-        gdt = orage_icaltime_to_gdatetime (appt->completedtime, FALSE);
+        gdt = g_date_time_ref (appt->completedtime2);
         g_object_set_data_full (G_OBJECT (apptw->CompletedDate_button),
                                 DATE_KEY, gdt,
                                 (GDestroyNotify)g_date_time_unref);
