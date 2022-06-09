@@ -1067,7 +1067,8 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
     gtz = g_time_zone_new (g_date_time_get_timezone_abbreviation (gdt_tmp));
 #endif
 
-    gdt = g_date_time_new (gtz,
+    g_date_time_unref (appt->completedtime2);
+    appt->completedtime2 = g_date_time_new (gtz,
                            g_date_time_get_year (gdt_tmp),
                            g_date_time_get_month (gdt_tmp),
                            g_date_time_get_day_of_month (gdt_tmp),
@@ -1077,8 +1078,7 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
                                     GTK_SPIN_BUTTON (apptw->CompletedTime_spin_mm)),
                            g_date_time_get_seconds (gdt_tmp));
 
-    tmp = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT_S0);
-    g_date_time_unref (gdt);
+    tmp = g_date_time_format (appt->completedtime2, XFICAL_APPT_TIME_FORMAT_S0);
     g_strlcpy (appt->completedtime, tmp, sizeof (appt->completedtime));
     g_free (tmp);
 
@@ -1936,7 +1936,8 @@ static xfical_appt *fill_appt_window_get_new_appt (const gchar *par,
     /* use duration by default for new appointments */
     appt->use_duration = TRUE;
     time_str = g_date_time_format (gdt_now, XFICAL_APPT_TIME_FORMAT_S0);
-    g_date_time_unref (gdt_now);
+    g_date_time_unref (appt->completedtime2);
+    appt->completedtime2 = gdt_now;
     g_strlcpy (appt->completedtime, time_str, sizeof (appt->completedtime));
     g_free (time_str);
     appt->completed_tz_loc = g_strdup (appt->start_tz_loc);
@@ -2643,9 +2644,9 @@ static gboolean fill_appt_window(appt_win *apptw, const gchar *action,
         add_file_select_cb(apptw);
     }
     if (!appt->completed) { /* some nice default */
-        gdt = g_date_time_new_now_local (); /* probably completed today? */
-        time_str = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT_S0);
-        g_date_time_unref (gdt);
+        g_date_time_unref (appt->completedtime2);
+        appt->completedtime2 = g_date_time_new_now_local (); /* probably completed today? */
+        time_str = g_date_time_format (appt->completedtime2, XFICAL_APPT_TIME_FORMAT_S0);
         g_strlcpy (appt->completedtime, time_str, sizeof (appt->completedtime));
         g_free (time_str);
         g_free(appt->completed_tz_loc);

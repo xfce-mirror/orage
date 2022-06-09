@@ -88,6 +88,7 @@ typedef struct _xfical_appt
 
     __attribute__ ((deprecated ("replace with GDateTime")))
     gchar  completedtime[17];
+    GDateTime *completedtime2;
     gchar *completed_tz_loc;
 
     gint availability;

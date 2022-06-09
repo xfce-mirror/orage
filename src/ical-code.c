@@ -1580,6 +1580,8 @@ static void process_completed_date(xfical_appt *appt, icalproperty *p)
     itime = icaltime_from_string(text);
     eltime = convert_to_local_timezone(itime, p);
     text  = icaltime_as_ical_string(eltime);
+    g_date_time_unref (appt->completedtime2);
+    appt->completedtime2 = orage_icaltime_to_gdatetime (text, FALSE);
     appt->completed_tz_loc = g_par.local_timezone;
     g_strlcpy(appt->completedtime, text, sizeof (appt->completedtime));
     appt->completed = TRUE;
@@ -1687,6 +1689,7 @@ static void appt_init(xfical_appt *appt)
     appt->duration = 0;
     appt->completed = FALSE;
     appt->completedtime[0] = '\0';
+    appt->completedtime2 = g_date_time_new_now_local ();
     appt->completed_tz_loc = NULL;
     appt->availability = -1;
     appt->priority = 0;
@@ -1713,7 +1716,7 @@ static void appt_init(xfical_appt *appt)
     appt->recur_limit = 0;
     appt->recur_count = 0;
     appt->recur_until[0] = '\0';
-    appt->starttime2 = g_date_time_new_now_local ();
+    appt->starttime2 = g_date_time_ref (appt->completedtime2);
     appt->endtime2 = g_date_time_ref (appt->starttime2);
 #if 0
     appt->email_alarm = FALSE;
