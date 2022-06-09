@@ -636,10 +636,8 @@ static void refresh_time_field(el_win *el)
 static void event_data(el_win *el)
 {
     const gchar *title;  /* in %x strftime format */
-    char      *stime;  /* in icaltime format */
-
     __attribute__ ((deprecated ("use GDateTime")))
-    gchar a_day[9]; /* yyyymmdd */
+    gchar *a_day;
     GDate *gd_title;
     GDate *gd_now;
     GDate *d1;
@@ -661,8 +659,6 @@ static void event_data(el_win *el)
 
     if (el->show_old && el->only_first) {
         /* just take any old enough date, so that all events fit in */
-        g_strlcpy(a_day, "19000101", sizeof (a_day));
-        /* we need to adjust also number of days shown */
         d1 = g_date_new_dmy(1, 1, 1900);
         gdt_a_day = orage_gdate_to_gdatetime (d1);
         el->days += g_date_days_between (d1, gd_title);
@@ -670,9 +666,6 @@ static void event_data(el_win *el)
     }
     else { /* we show starting from selected day */
         gdt_a_day = orage_gdate_to_gdatetime (gd_title);
-        stime = g_date_time_format (gdt_a_day, XFICAL_APPT_TIME_FORMAT);
-        g_strlcpy (a_day, stime, sizeof (a_day));
-        g_free (stime);
     }
 
     gdt = g_date_time_new_now_local ();
@@ -686,8 +679,10 @@ static void event_data(el_win *el)
 
     g_date_free (gd_now);
     g_date_free (gd_title);
+    a_day = g_date_time_format (gdt_a_day, XFICAL_APPT_TIME_FORMAT);
     app_data (el, gdt_a_day, a_day);
     g_date_time_unref (gdt_a_day);
+    g_free (a_day);
 }
 
 static void todo_data(el_win *el)
