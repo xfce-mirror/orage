@@ -694,6 +694,7 @@ xfical_appt *xfical_appt_alloc(void)
     appt->interval = 1;
     appt->starttime2 = g_date_time_new_now_local ();
     appt->endtime2 = g_date_time_ref (appt->starttime2);
+    appt->completedtime2 = g_date_time_ref (appt->endtime2);
     for (i=0; i <= 6; i++)
         appt->recur_byday[i] = TRUE;
     return(appt);
@@ -2081,6 +2082,7 @@ void xfical_appt_free(xfical_appt *appt)
     g_free(appt->categories);
     g_date_time_unref (appt->starttime2);
     g_date_time_unref (appt->endtime2);
+    g_date_time_unref (appt->completedtime2);
 #if 0
     g_free(appt->email_attendees);
 #endif
