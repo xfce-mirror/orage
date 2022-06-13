@@ -558,7 +558,7 @@ static void add_row (day_win *dw, const xfical_appt *appt)
 
     /* First clarify timings */
     gdt_start = g_date_time_ref (appt->starttimecur2);
-    gdt_end   = orage_icaltime_to_gdatetime (appt->endtimecur, FALSE);
+    gdt_end   = g_date_time_ref (appt->endtimecur2);
     gdt_first = g_date_time_ref (dw->a_day);
 
     start_col = orage_days_between (gdt_first, gdt_start) + 1;

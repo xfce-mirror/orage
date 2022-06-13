@@ -173,7 +173,6 @@ static char *format_time(el_win *el, xfical_appt *appt, char *par)
     gchar *start_ical_time;
     gchar *end_ical_time;
     gboolean same_date;
-    GDateTime *gdt;
 
     start_ical_time = appt->starttimecur;
     end_ical_time = appt->endtimecur;
@@ -210,9 +209,7 @@ static char *format_time(el_win *el, xfical_appt *appt, char *par)
             }
             else {
                 if (!same_date) {
-                    gdt = orage_icaltime_to_gdatetime (appt->endtimecur, FALSE);
-                    tmp = g_date_time_format (gdt, "%x");
-                    g_date_time_unref (gdt);
+                    tmp = g_date_time_format (appt->endtimecur2, "%x");
                     i = g_strlcat (result, tmp, result_len);
                     g_free (tmp);
                     result[i++] = ' ';
@@ -226,8 +223,7 @@ static char *format_time(el_win *el, xfical_appt *appt, char *par)
                 g_strlcat(result, "...", result_len);
             }
             else {
-                gdt = orage_icaltime_to_gdatetime (appt->endtimecur, FALSE);
-                tmp = g_date_time_format (gdt, "%x");
+                tmp = g_date_time_format (appt->endtimecur2, "%x");
                 g_strlcat(result, tmp, result_len);
                 g_free (tmp);
             }
@@ -464,9 +460,9 @@ static void add_el_row(el_win *el, xfical_appt *appt, char *par)
     }
 
     s_sort1 = g_strconcat(appt->starttimecur, appt->endtimecur, NULL);
-    /*
+#if 0
     s_sort = g_utf8_collate_key(s_sort1, -1);
-    */
+#endif
 
     list1 = el->ListStore;
     gtk_list_store_append(list1, &iter1);
