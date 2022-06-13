@@ -1715,12 +1715,13 @@ static void appt_init(xfical_appt *appt)
     appt->starttimecur[0] = '\0';
     appt->starttimecur2 = g_date_time_ref (appt->completedtime2);
     appt->endtimecur[0] = '\0';
+    appt->endtimecur2 = g_date_time_ref (appt->starttimecur2);
     appt->freq = XFICAL_FREQ_NONE;
     appt->recur_limit = 0;
     appt->recur_count = 0;
     appt->recur_until[0] = '\0';
-    appt->starttime2 = g_date_time_ref (appt->starttimecur2);
-    appt->endtime2 = g_date_time_ref (appt->starttime2);
+    appt->starttime2 = g_date_time_ref (appt->endtimecur2);
+    appt->endtime2 = g_date_time_ref (appt->endtimecur2);
 #if 0
     appt->email_alarm = FALSE;
     appt->email_attendees = NULL;
@@ -2965,6 +2966,8 @@ static xfical_appt *xfical_appt_get_next_on_day_internal (const gchar *a_day
 
         g_date_time_unref (appt->starttimecur2);
         appt->starttimecur2 = orage_icaltime_to_gdatetime (start_str, FALSE);
+        g_date_time_unref (appt->endtimecur2);
+        appt->endtimecur2 = orage_icaltime_to_gdatetime (end_str, FALSE);
         g_strlcpy (appt->starttimecur, start_str, sizeof (appt->starttimecur));
         g_strlcpy (appt->endtimecur, end_str, sizeof (appt->endtimecur));
 
@@ -3400,10 +3403,12 @@ static void add_appt_to_list(icalcomponent *c, icaltime_span *span , void *data)
     appt->starttimecur2 = orage_icaltime_to_gdatetime (str, FALSE);
     strncpy(appt->starttimecur, str, 16);
     appt->starttimecur[16] = '\0';
-    strncpy(appt->endtimecur, icaltime_as_ical_string(edate), 16);
+
+    str = icaltime_as_ical_string (edate);
+    g_date_time_unref (appt->endtimecur2);
+    appt->endtimecur2 = orage_icaltime_to_gdatetime (str, FALSE);
+    strncpy(appt->endtimecur, str, 16);
     appt->endtimecur[16] = '\0';
-    /*
-            */
         /* Need to check that returned value is withing limits.
            Check more from BUG 5764 and 7886. */
     /* starttimecur and endtimecur are in local timezone. Compare that to
@@ -3730,6 +3735,8 @@ static xfical_appt *xfical_appt_get_next_with_string_internal(char *str
                         if (strcmp(g_par.local_timezone, "floating") == 0) {
                             g_date_time_unref (appt->starttimecur2);
                             appt->starttimecur2 = g_date_time_ref (appt->starttime2);
+                            g_date_time_unref (appt->endtimecur2);
+                            appt->endtimecur2 = g_date_time_ref (appt->endtime2);
                             g_strlcpy(appt->starttimecur, appt->starttime,
                                       sizeof (appt->starttimecur));
                             g_strlcpy(appt->endtimecur, appt->endtime,
@@ -3750,6 +3757,8 @@ static xfical_appt *xfical_appt_get_next_with_string_internal(char *str
                             it = icaltime_convert_to_zone(it
                                     , local_icaltimezone);
                             stime = icaltime_as_ical_string(it);
+                            g_date_time_unref (appt->starttimecur2);
+                            appt->endtimecur2 = orage_icaltime_to_gdatetime (stime, FALSE);
                             g_strlcpy (appt->endtimecur, stime,
                                        sizeof (appt->endtimecur));
                         }

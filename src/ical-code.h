@@ -132,6 +132,7 @@ typedef struct _xfical_appt
 
     __attribute__ ((deprecated ("replace with GDateTime")))
     gchar  endtimecur[17];
+    GDateTime *endtimecur2;
     xfical_freq freq;
     gint   recur_limit; /* 0 = no limit  1 = count  2 = until */
     gint   recur_count;
