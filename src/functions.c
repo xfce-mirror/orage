@@ -732,7 +732,7 @@ GDateTime *orage_cal_to_gdatetime (GtkCalendar *cal,
     gdt = g_date_time_new_local (year, month, day, hh, mm, 0);
     if (gdt == NULL)
     {
-        g_error ("%s failed %d-%d-%d %d:%d",
+        g_error ("%s failed %04d-%02d-%02d %02d:%02d",
                  G_STRFUNC, year, month, day, hh, mm);
     }
 
