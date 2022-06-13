@@ -557,7 +557,7 @@ static void add_row (day_win *dw, const xfical_appt *appt)
     gint end_hour;
 
     /* First clarify timings */
-    gdt_start = orage_icaltime_to_gdatetime (appt->starttimecur, FALSE);
+    gdt_start = g_date_time_ref (appt->starttimecur2);
     gdt_end   = orage_icaltime_to_gdatetime (appt->endtimecur, FALSE);
     gdt_first = g_date_time_ref (dw->a_day);
 
