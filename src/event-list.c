@@ -198,9 +198,7 @@ static char *format_time(el_win *el, xfical_appt *appt, char *par)
         }
     }
     else { /* normally show date and time */
-        gdt = orage_icaltime_to_gdatetime (appt->starttimecur, FALSE);
-        tmp = g_date_time_format (gdt, "%x");
-        g_date_time_unref (gdt);
+        tmp = g_date_time_format (appt->starttimecur2, "%x");
         i = g_strlcpy(result, tmp, result_len);
         g_free (tmp);
         if (start_ical_time[8] == 'T') { /* time part available */
