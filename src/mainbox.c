@@ -460,7 +460,7 @@ static gint event_order(gconstpointer a, gconstpointer b)
     appt1 = (xfical_appt *)a;
     appt2 = (xfical_appt *)b;
 
-    return(strcmp(appt1->starttimecur, appt2->starttimecur));
+    return g_date_time_compare (appt1->starttimecur2, appt2->starttimecur2);
 }
 
 static gint todo_order(gconstpointer a, gconstpointer b)
