@@ -695,6 +695,7 @@ xfical_appt *xfical_appt_alloc(void)
     appt->starttime2 = g_date_time_new_now_local ();
     appt->endtime2 = g_date_time_ref (appt->starttime2);
     appt->completedtime2 = g_date_time_ref (appt->endtime2);
+    appt->starttimecur2 = g_date_time_ref (appt->completedtime2);
     for (i=0; i <= 6; i++)
         appt->recur_byday[i] = TRUE;
     return(appt);
@@ -1712,12 +1713,13 @@ static void appt_init(xfical_appt *appt)
     appt->procedure_cmd = NULL;
     appt->procedure_params = NULL;
     appt->starttimecur[0] = '\0';
+    appt->starttimecur2 = g_date_time_ref (appt->completedtime2);
     appt->endtimecur[0] = '\0';
     appt->freq = XFICAL_FREQ_NONE;
     appt->recur_limit = 0;
     appt->recur_count = 0;
     appt->recur_until[0] = '\0';
-    appt->starttime2 = g_date_time_ref (appt->completedtime2);
+    appt->starttime2 = g_date_time_ref (appt->starttimecur2);
     appt->endtime2 = g_date_time_ref (appt->starttime2);
 #if 0
     appt->email_alarm = FALSE;
@@ -2868,6 +2870,8 @@ static xfical_appt *xfical_appt_get_next_on_day_internal (const gchar *a_day
     struct icalrecurrencetype rrule;
     icalrecur_iterator* ri;
     icalcomponent_kind ikind = ICAL_VEVENT_COMPONENT;
+    gchar *start_str;
+    gchar *end_str;
 
     /* setup period to test */
     asdate = icaltime_from_string(a_day);
@@ -2951,17 +2955,18 @@ static xfical_appt *xfical_appt_get_next_on_day_internal (const gchar *a_day
         }
         appt = appt_get_any(uid, base, file_type);
         if (recurrent_date_found) {
-            g_strlcpy (appt->starttimecur, icaltime_as_ical_string(nsdate),
-                       sizeof (appt->starttimecur));
-            g_strlcpy (appt->endtimecur, icaltime_as_ical_string(nedate),
-                       sizeof (appt->endtimecur));
+            start_str = icaltime_as_ical_string (nsdate);
+            end_str = icaltime_as_ical_string(nedate);
         }
         else {
-            g_strlcpy (appt->starttimecur, icaltime_as_ical_string(per.stime),
-                       sizeof (appt->starttimecur));
-            g_strlcpy (appt->endtimecur, icaltime_as_ical_string(per.etime),
-                       sizeof (appt->endtimecur));
+            start_str = icaltime_as_ical_string (per.stime);
+            end_str = icaltime_as_ical_string (per.etime);
         }
+
+        g_date_time_unref (appt->starttimecur2);
+        appt->starttimecur2 = orage_icaltime_to_gdatetime (start_str, FALSE);
+        g_strlcpy (appt->starttimecur, start_str, sizeof (appt->starttimecur));
+        g_strlcpy (appt->endtimecur, end_str, sizeof (appt->endtimecur));
 
         return(appt);
     }
@@ -3390,7 +3395,10 @@ static void add_appt_to_list(icalcomponent *c, icaltime_span *span , void *data)
     sdate = icaltime_convert_to_zone(sdate, local_icaltimezone);
     edate = icaltime_convert_to_zone(edate, local_icaltimezone);
 
-    strncpy(appt->starttimecur, icaltime_as_ical_string(sdate), 16);
+    str = icaltime_as_ical_string (sdate);
+    g_date_time_unref (appt->starttimecur2);
+    appt->starttimecur2 = orage_icaltime_to_gdatetime (str, FALSE);
+    strncpy(appt->starttimecur, str, 16);
     appt->starttimecur[16] = '\0';
     strncpy(appt->endtimecur, icaltime_as_ical_string(edate), 16);
     appt->endtimecur[16] = '\0';
@@ -3720,6 +3728,8 @@ static xfical_appt *xfical_appt_get_next_with_string_internal(char *str
                     }
                     else {
                         if (strcmp(g_par.local_timezone, "floating") == 0) {
+                            g_date_time_unref (appt->starttimecur2);
+                            appt->starttimecur2 = g_date_time_ref (appt->starttime2);
                             g_strlcpy(appt->starttimecur, appt->starttime,
                                       sizeof (appt->starttimecur));
                             g_strlcpy(appt->endtimecur, appt->endtime,
@@ -3731,6 +3741,8 @@ static xfical_appt *xfical_appt_get_next_with_string_internal(char *str
                             it = icaltime_convert_to_zone(it
                                     , local_icaltimezone);
                             stime = icaltime_as_ical_string(it);
+                            g_date_time_unref (appt->starttimecur2);
+                            appt->starttimecur2 = orage_icaltime_to_gdatetime (stime, FALSE);
                             g_strlcpy (appt->starttimecur, stime,
                                        sizeof (appt->starttimecur));
                             it = icaltime_from_string(appt->endtime);

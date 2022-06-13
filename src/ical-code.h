@@ -128,6 +128,7 @@ typedef struct _xfical_appt
          */
     __attribute__ ((deprecated ("replace with GDateTime")))
     gchar  starttimecur[17];
+    GDateTime *starttimecur2;
 
     __attribute__ ((deprecated ("replace with GDateTime")))
     gchar  endtimecur[17];
