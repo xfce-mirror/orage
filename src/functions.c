@@ -896,7 +896,7 @@ void orage_select_date (GtkCalendar *cal, GDateTime *gdt)
     if (((gint)cur_year == year) && ((gint)cur_month == month))
         gtk_calendar_select_day(cal, day);
     else {
-        gtk_calendar_select_day(cal, 0); /* need to avoid illegal day/month */
+        gtk_calendar_select_day(cal, 1); /* need to avoid illegal day/month */
         gtk_calendar_select_month(cal, month, year);
         gtk_calendar_select_day(cal, day);
     }
