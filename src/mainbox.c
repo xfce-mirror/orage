@@ -475,7 +475,7 @@ static gint todo_order(gconstpointer a, gconstpointer b)
     if (!appt1->use_due_time && appt2->use_due_time)
         return(1);
 
-    return(strcmp(appt1->endtimecur, appt2->endtimecur));
+    return g_date_time_compare (appt1->endtimecur2, appt2->endtimecur2);
 }
 
 static void info_process(gpointer a, gpointer pbox)
