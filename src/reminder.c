@@ -912,8 +912,6 @@ static gboolean orage_alarm_clock (G_GNUC_UNUSED gpointer user_data)
         /* remember that it is sorted list */
         cur_alarm = (alarm_struct *)alarm_l->data;
         if (strcmp(time_now, cur_alarm->alarm_time) > 0) {
-            g_debug ("%s: time_now=%s alarm=%s",
-                     G_STRFUNC, time_now, cur_alarm->alarm_time);
             create_reminders(cur_alarm);
             alarm_raised = TRUE;
         }

@@ -1153,6 +1153,8 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
         gdt = g_date_time_new_local (year, month, day, 23, 59, 10);
         tmp = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT);
         g_strlcpy (appt->recur_until, tmp, sizeof (appt->recur_until));
+        g_date_time_unref (appt->recur_until2);
+        appt->recur_until2 = g_date_time_ref (gdt);
         g_object_set_data_full (G_OBJECT (apptw->Recur_until_button),
                                 DATE_KEY, gdt,
                                 (GDestroyNotify)g_date_time_unref);

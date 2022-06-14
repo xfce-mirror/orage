@@ -1625,6 +1625,8 @@ static void ical_appt_get_rrule_internal (G_GNUC_UNUSED icalcomponent *c,
         appt->recur_limit = 2;
         text  = icaltime_as_ical_string(rrule.until);
         g_strlcpy(appt->recur_until, text, sizeof (appt->recur_until));
+        g_date_time_unref (appt->recur_until2);
+        appt->recur_until2 = orage_icaltime_to_gdatetime (text, FALSE);
     }
     if (rrule.by_day[0] != ICAL_RECURRENCE_ARRAY_MAX) {
         for (i=0; i <= 6; i++)
@@ -1720,8 +1722,9 @@ static void appt_init(xfical_appt *appt)
     appt->recur_limit = 0;
     appt->recur_count = 0;
     appt->recur_until[0] = '\0';
-    appt->starttime2 = g_date_time_ref (appt->endtimecur2);
-    appt->endtime2 = g_date_time_ref (appt->endtimecur2);
+    appt->recur_until2 = g_date_time_ref (appt->endtimecur2);
+    appt->starttime2 = g_date_time_ref (appt->recur_until2);
+    appt->endtime2 = g_date_time_ref (appt->starttime2);
 #if 0
     appt->email_alarm = FALSE;
     appt->email_attendees = NULL;
@@ -1944,6 +1947,8 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
         }
         text  = icaltime_as_ical_string(wtime);
         g_strlcpy(appt->recur_until, text, sizeof (appt->recur_until));
+        g_date_time_unref (appt->recur_until2);
+        appt->recur_until2 = orage_icaltime_to_gdatetime (text, FALSE);
     }
     return(TRUE);
 }
