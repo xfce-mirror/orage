@@ -696,6 +696,7 @@ xfical_appt *xfical_appt_alloc(void)
     appt->endtime2 = g_date_time_ref (appt->starttime2);
     appt->completedtime2 = g_date_time_ref (appt->endtime2);
     appt->starttimecur2 = g_date_time_ref (appt->completedtime2);
+    appt->recur_until2 = g_date_time_ref (appt->starttimecur2);
     for (i=0; i <= 6; i++)
         appt->recur_byday[i] = TRUE;
     return(appt);
