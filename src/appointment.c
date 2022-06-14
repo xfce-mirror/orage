@@ -2535,7 +2535,7 @@ static void fill_appt_window_recurrence(appt_win *apptw, xfical_appt *appt)
             gtk_toggle_button_set_active(
                     GTK_TOGGLE_BUTTON(apptw->Recur_until_rb), TRUE);
             recur_count = 1;
-            gdt = orage_icaltime_to_gdatetime (appt->recur_until, FALSE);
+            gdt = g_date_time_ref (appt->recur_until2);
             break;
         default: /* error */
             g_error ("%s: Unsupported recur_limit %d", G_STRFUNC,
