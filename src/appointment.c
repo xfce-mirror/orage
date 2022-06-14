@@ -2604,7 +2604,6 @@ static gboolean fill_appt_window(appt_win *apptw, const gchar *action,
                                  const gchar *par, GDateTime *gdt_par)
 {
     xfical_appt *appt;
-    GDateTime *gdt;
     gchar *time_str;
 
     /********************* INIT *********************/
