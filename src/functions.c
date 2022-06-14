@@ -779,7 +779,9 @@ GDateTime *orage_icaltime_to_gdatetime (const gchar *icaltime,
         if (strptime (icaltime, "%Y%m%d", &t) == NULL)
         {
             g_warning ("%s: icaltime string '%s' conversion failed",
-                     G_STRFUNC, icaltime);
+                       G_STRFUNC, icaltime);
+
+            return NULL;
         }
 
         /* Need to fill missing tm_wday and tm_yday, which are in use in some
@@ -789,6 +791,8 @@ GDateTime *orage_icaltime_to_gdatetime (const gchar *icaltime,
         {
             g_warning ("%s failed %d %d %d",
                        G_STRFUNC, t.tm_year, t.tm_mon, t.tm_mday);
+
+            return NULL;
         }
 
         t.tm_hour = 0;
