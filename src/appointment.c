@@ -1133,14 +1133,12 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
                 GTK_TOGGLE_BUTTON(apptw->Recur_limit_rb))) {
         appt->recur_limit = 0;    /* no limit */
         appt->recur_count = 0;    /* special: means no repeat count limit */
-        appt->recur_until[0] = 0; /* special: means no until time limit */
     }
     else if (gtk_toggle_button_get_active(
                 GTK_TOGGLE_BUTTON(apptw->Recur_count_rb))) {
         appt->recur_limit = 1;    /* count limit */
         appt->recur_count = gtk_spin_button_get_value_as_int(
                 GTK_SPIN_BUTTON(apptw->Recur_count_spin));
-        appt->recur_until[0] = 0; /* special: means no until time limit */
     }
     else if (gtk_toggle_button_get_active(
                 GTK_TOGGLE_BUTTON(apptw->Recur_until_rb))) {
@@ -1152,7 +1150,6 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
         g_date_time_get_ymd (gdt_tmp, &year, &month, &day);
         gdt = g_date_time_new_local (year, month, day, 23, 59, 10);
         tmp = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT);
-        g_strlcpy (appt->recur_until, tmp, sizeof (appt->recur_until));
         g_date_time_unref (appt->recur_until2);
         appt->recur_until2 = g_date_time_ref (gdt);
         g_object_set_data_full (G_OBJECT (apptw->Recur_until_button),

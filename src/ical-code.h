@@ -137,8 +137,6 @@ typedef struct _xfical_appt
     gint   recur_limit; /* 0 = no limit  1 = count  2 = until */
     gint   recur_count;
 
-    __attribute__ ((deprecated ("replace with GDateTime")))
-    gchar  recur_until[17];
     GDateTime *recur_until2;
     gboolean recur_byday[7]; /* 0=Mo, 1=Tu, 2=We, 3=Th, 4=Fr, 5=Sa, 6=Su */
     gint   recur_byday_cnt[7]; /* monthly/early: 1=first -1=last 2=second... */
