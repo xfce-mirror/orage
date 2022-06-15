@@ -110,15 +110,24 @@ extern const gchar *trans_timezone[];
 
 static struct icaltimetype icaltime_from_gdatetime (GDateTime *gdt)
 {
-    gchar *str;
+    gchar str[17];
     struct icaltimetype icalt;
 
     /* TODO: icaltimetype should be created directly from GDateTime, not using
      * intermediate string.
+     *
+     * g_date_time_format with format = XFICAL_APPT_TIME_FORMAT does not padd year with leading 0, this
+     * is incompatible with ical.
      */
-    str = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT);
+    g_snprintf (str, sizeof (str), XFICAL_APPT_TIME_FORMAT_DEPRECATED,
+                g_date_time_get_year (gdt),
+                g_date_time_get_month (gdt),
+                g_date_time_get_day_of_month (gdt),
+                g_date_time_get_hour (gdt),
+                g_date_time_get_minute (gdt),
+                g_date_time_get_second (gdt));
+
     icalt = icaltime_from_string (str);
-    g_free (str);
 
     return icalt;
 }
@@ -1611,6 +1620,7 @@ static void ical_appt_get_rrule_internal (G_GNUC_UNUSED icalcomponent *c,
 {
     struct icalrecurrencetype rrule;
     int i, cnt, day;
+    GDateTime *gdt;
 
     rrule = icalproperty_get_rrule(p);
     switch (rrule.freq) {
@@ -1638,11 +1648,17 @@ static void ical_appt_get_rrule_internal (G_GNUC_UNUSED icalcomponent *c,
     else if(! icaltime_is_null_time(rrule.until)) {
         const char *text;
 
-        appt->recur_limit = 2;
-        text  = icaltime_as_ical_string(rrule.until);
-        g_strlcpy(appt->recur_until, text, sizeof (appt->recur_until));
-        g_date_time_unref (appt->recur_until2);
-        appt->recur_until2 = orage_icaltime_to_gdatetime (text, FALSE);
+        text = icaltime_as_ical_string (rrule.until);
+        gdt = orage_icaltime_to_gdatetime (text, FALSE);
+        if (gdt)
+        {
+            g_date_time_unref (appt->recur_until2);
+            appt->recur_until2 = gdt;
+            appt->recur_limit = 2;
+            g_strlcpy(appt->recur_until, text, sizeof (appt->recur_until));
+        }
+        else
+            appt->recur_limit = 0;
     }
     if (rrule.by_day[0] != ICAL_RECURRENCE_ARRAY_MAX) {
         for (i=0; i <= 6; i++)
@@ -1950,7 +1966,7 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
         }
     }
     if (appt->recur_limit == 2) { /* BUG 2937: convert back from UTC */
-        wtime = icaltime_from_string(appt->recur_until);
+        wtime = icaltime_from_gdatetime (appt->recur_until2);
         if (! ORAGE_STR_EXISTS(appt->start_tz_loc) )
             wtime = icaltime_convert_to_zone(wtime, local_icaltimezone);
         else if (strcmp(appt->start_tz_loc, "floating") == 0)
