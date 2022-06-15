@@ -322,7 +322,7 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
     gchar *format_bold = "<b> %s </b>";
     char  *s_time, *s_timeonly, *e_time, *c_time, *na;
     gchar *l_time;
-    gchar *today;
+    GDateTime *today;
     gint  len;
 
     /***** add data into the vbox *****/
@@ -338,10 +338,9 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
         g_free(e_time);
     }
     else {
-        today = orage_localtime_icaltime ();
+        today = g_date_time_new_now_local ();
         s_timeonly = g_date_time_format (appt->starttimecur2, "%R");
-
-        if (!strncmp(today, appt->starttimecur, 8)) /* today */
+        if (orage_gdatetime_compare_date (today, appt->starttimecur2) == 0)
             tmp = g_strdup_printf(" %s* %s", s_timeonly, tmp_title);
         else {
             if (g_par.show_event_days > 1)
@@ -349,7 +348,7 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
             else
                 tmp = g_strdup_printf(" %s  %s", s_timeonly, tmp_title);
         }
-        g_free (today);
+        g_date_time_unref (today);
         g_free(s_timeonly);
     }
     label = gtk_label_new(tmp);
