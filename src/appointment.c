@@ -1149,13 +1149,11 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
                                      DATE_KEY);
         g_date_time_get_ymd (gdt_tmp, &year, &month, &day);
         gdt = g_date_time_new_local (year, month, day, 23, 59, 10);
-        tmp = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT);
         g_date_time_unref (appt->recur_until);
         appt->recur_until = g_date_time_ref (gdt);
         g_object_set_data_full (G_OBJECT (apptw->Recur_until_button),
                                 DATE_KEY, gdt,
                                 (GDestroyNotify)g_date_time_unref);
-        g_free (tmp);
     }
     else
         g_warning ("%s: coding error, illegal recurrence", G_STRFUNC);
