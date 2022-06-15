@@ -108,6 +108,21 @@ static icaltimezone *local_icaltimezone = NULL;
 /* in timezone_names.c */
 extern const gchar *trans_timezone[];
 
+static struct icaltimetype icaltime_from_gdatetime (GDateTime *gdt)
+{
+    gchar *str;
+    struct icaltimetype icalt;
+
+    /* TODO: icaltimetype should be created directly from GDateTime, not using
+     * intermediate string.
+     */
+    str = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT);
+    icalt = icaltime_from_string (str);
+    g_free (str);
+
+    return icalt;
+}
+
 gboolean xfical_set_local_timezone(gboolean testing)
 {
     local_icaltimezone = NULL;
@@ -1018,7 +1033,7 @@ static void appt_add_recur_internal(xfical_appt *appt, icalcomponent *icmp)
     }
     else if (appt->recur_limit == 2) { /* needs to be in UTC */
 /* BUG 2937: convert recur_until to utc from start time timezone */
-        wtime = icaltime_from_string(appt->recur_until);
+        wtime = icaltime_from_gdatetime (appt->recur_until2);
         if ORAGE_STR_EXISTS(appt->start_tz_loc) {
         /* Null == floating => no special action needed */
             if (strcmp(appt->start_tz_loc, "floating") == 0) {
