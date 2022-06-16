@@ -1162,7 +1162,7 @@ static void appt_add_endtime_internal(xfical_appt *appt, icalcomponent *icmp)
     }
     else if ORAGE_STR_EXISTS(appt->endtime) {
         end_time_done = FALSE;
-        wtime = icaltime_from_string(appt->endtime);
+        wtime = icaltime_from_gdatetime (appt->endtime2);
         if (appt->allDay) { 
             /* need to add 1 day. For example:
              * DTSTART=20070221 & DTEND=20070223
@@ -1210,7 +1210,7 @@ static void appt_add_completedtime_internal(xfical_appt *appt
         return; /* only VTODO can have completed time */
     }
     if (appt->completed) {
-        wtime = icaltime_from_string(appt->completedtime);
+        wtime = icaltime_from_gdatetime (appt->completedtime2);
         if ORAGE_STR_EXISTS(appt->completed_tz_loc) {
         /* Null == floating => no special action needed */
             if (strcmp(appt->completed_tz_loc, "floating") == 0) {
