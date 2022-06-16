@@ -663,11 +663,14 @@ int xfical_compare_times(xfical_appt *appt)
         appt->starttime[8] = '\0';
         appt->endtime[8] = '\0';
     }
+
+    if (!ORAGE_STR_EXISTS (appt->starttime))
+    {
+        g_critical ("%s: null start time", G_STRFUNC);
+        return 0; /* should be error ! */
+    }
+
     if (appt->use_duration) {
-        if (! ORAGE_STR_EXISTS(appt->starttime)) {
-            g_critical ("%s: null start time", G_STRFUNC);
-            return(0); /* should be error ! */
-        }
         stime = icaltime_from_string(appt->starttime);
         duration = icaldurationtype_from_int(appt->duration);
         etime = icaltime_add(stime, duration);
@@ -681,25 +684,23 @@ int xfical_compare_times(xfical_appt *appt)
 
     }
     else {
-        if (ORAGE_STR_EXISTS(appt->starttime)
-        &&  ORAGE_STR_EXISTS(appt->endtime)) {
-            stime = icaltime_from_string(appt->starttime);
-            etime = icaltime_from_string(appt->endtime);
-
-            stime = convert_to_zone(stime, appt->start_tz_loc);
-            stime = icaltime_convert_to_zone(stime, local_icaltimezone);
-            etime = convert_to_zone(etime, appt->end_tz_loc);
-            etime = icaltime_convert_to_zone(etime, local_icaltimezone);
-
-            duration = icaltime_subtract(etime, stime);
-            appt->duration = icaldurationtype_as_int(duration);
-            return(icaltime_compare(stime, etime));
-        }
-        else {
-            g_critical ("%s: null time %s %s", G_STRFUNC,
-                        appt->starttime, appt->endtime);
+        if (!ORAGE_STR_EXISTS (appt->endtime))
+        {
+            g_critical ("%s: null end time", G_STRFUNC);
             return(0); /* should be error ! */
         }
+
+        stime = icaltime_from_string (appt->starttime);
+        etime = icaltime_from_string (appt->endtime);
+
+        stime = convert_to_zone (stime, appt->start_tz_loc);
+        stime = icaltime_convert_to_zone (stime, local_icaltimezone);
+        etime = convert_to_zone (etime, appt->end_tz_loc);
+        etime = icaltime_convert_to_zone (etime, local_icaltimezone);
+
+        duration = icaltime_subtract (etime, stime);
+        appt->duration = icaldurationtype_as_int (duration);
+        return icaltime_compare (stime, etime);
     }
 }
 
