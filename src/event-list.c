@@ -176,7 +176,6 @@ static char *format_time(el_win *el, xfical_appt *appt, char *par)
 
     start_ical_time = appt->starttimecur;
     end_ical_time = appt->endtimecur;
-    same_date = !strncmp(start_ical_time, end_ical_time, 8);
     result = g_new0(char, result_len);
 
     if (el->page == EVENT_PAGE && el->days == 0) {
@@ -208,6 +207,7 @@ static char *format_time(el_win *el, xfical_appt *appt, char *par)
                 g_strlcat (result, "...", result_len);
             }
             else {
+                same_date = !strncmp(start_ical_time, end_ical_time, 8);
                 if (!same_date) {
                     tmp = g_date_time_format (appt->endtimecur2, "%x");
                     i = g_strlcat (result, tmp, result_len);
@@ -477,9 +477,9 @@ static void add_el_row(el_win *el, xfical_appt *appt, char *par)
     g_free(title);
     g_free(s_sort1);
     g_free(stime);
-    /*
+#if 0
     g_free(s_sort);
-    */
+#endif
 }
 
 static void searh_rows(el_win *el, gchar *search_string, gchar *file_type)
