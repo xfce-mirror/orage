@@ -1746,35 +1746,31 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
             GTK_TOGGLE_BUTTON(apptw->AllDay_checkbutton), appt->allDay);
 
     /* start time */
-    if (strlen(appt->starttime) > 6 ) {
-        gdt = g_date_time_ref (appt->starttime2);
-        g_object_set_data_full (G_OBJECT (apptw->StartDate_button),
-                                DATE_KEY, gdt,
-                                (GDestroyNotify)g_date_time_unref);
-        date_to_display = g_date_time_format (gdt, "%x");
-        gtk_button_set_label (GTK_BUTTON(apptw->StartDate_button),
-                              date_to_display);
-        g_free (date_to_display);
+    gdt = g_date_time_ref (appt->starttime2);
+    g_object_set_data_full (G_OBJECT (apptw->StartDate_button),
+                            DATE_KEY, gdt,
+                            (GDestroyNotify)g_date_time_unref);
+    date_to_display = g_date_time_format (gdt, "%x");
+    gtk_button_set_label (GTK_BUTTON(apptw->StartDate_button),
+                          date_to_display);
+    g_free (date_to_display);
 
-        gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->StartTime_spin_hh),
-                                   g_date_time_get_hour (gdt));
-        gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->Recur_exception_incl_spin_hh),
-                                   g_date_time_get_hour (gdt));
-        gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->StartTime_spin_mm),
-                                   g_date_time_get_minute (gdt));
-        gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->Recur_exception_incl_spin_mm),
-                                   g_date_time_get_minute (gdt));
+    gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->StartTime_spin_hh),
+                               g_date_time_get_hour (gdt));
+    gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->Recur_exception_incl_spin_hh),
+                               g_date_time_get_hour (gdt));
+    gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->StartTime_spin_mm),
+                               g_date_time_get_minute (gdt));
+    gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->Recur_exception_incl_spin_mm),
+                               g_date_time_get_minute (gdt));
 
-        if (appt->start_tz_loc)
-        {
-            gtk_button_set_label(GTK_BUTTON(apptw->StartTimezone_button)
-                    , _(appt->start_tz_loc));
-        }
-        else /* we should never get here */
-            g_warning ("%s: start_tz_loc is null", G_STRFUNC);
+    if (appt->start_tz_loc)
+    {
+        gtk_button_set_label(GTK_BUTTON(apptw->StartTimezone_button)
+                , _(appt->start_tz_loc));
     }
-    else
-        g_warning ("%s: starttime wrong %s", G_STRFUNC, appt->uid);
+    else /* we should never get here */
+        g_warning ("%s: start_tz_loc is null", G_STRFUNC);
 
     /* end time */
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(
