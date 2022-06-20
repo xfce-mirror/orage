@@ -411,9 +411,11 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
     if (todo) {
         na = _("Never");
         e_time = appt->use_due_time ?
-                orage_icaltime_to_i18_time(appt->endtimecur) : g_strdup (na);
+                 orage_gdatetime_to_i18_time (appt->endtimecur2, appt->allDay)
+                 : g_strdup (na);
         c_time = appt->completed ?
-                orage_icaltime_to_i18_time(appt->completedtime) : g_strdup (na);
+                 orage_gdatetime_to_i18_time (appt->completedtime2, appt->allDay)
+                 : g_strdup (na);
 
         tip = g_strdup_printf(_("Title: %s\n%s Start:\t%s\n Due:\t%s\n Done:\t%s%s")
                 , tip_title, tip_location, s_time, e_time, c_time, tip_note);
@@ -421,8 +423,7 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
         g_free(c_time);
     }
     else { /* it is event */
-        e_time = orage_icaltime_to_i18_time (appt->endtimecur);
-
+        e_time = orage_gdatetime_to_i18_time (appt->endtimecur2, appt->allDay);
         tip = g_strdup_printf(_("Title: %s\n%s Start:\t%s\n End:\t%s%s")
                 , tip_title, tip_location, s_time, e_time, tip_note);
     }
