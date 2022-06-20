@@ -701,8 +701,7 @@ int xfical_compare_times(xfical_appt *appt)
             g_critical ("%s: null end time", G_STRFUNC);
             return(0); /* should be error ! */
         }
-
-        stime = icaltime_from_string (appt->starttime);
+        stime = icaltime_from_gdatetime (appt->starttime2, appt->allDay);
         etime = icaltime_from_string (appt->endtime);
 
         stime = convert_to_zone (stime, appt->start_tz_loc);
@@ -3791,7 +3790,8 @@ static xfical_appt *xfical_appt_get_next_with_string_internal(char *str
                                       sizeof (appt->endtimecur));
                         }
                         else {
-                            it = icaltime_from_string(appt->starttime);
+                            it = icaltime_from_gdatetime (appt->starttime2,
+                                                          appt->allDay);
                             it = convert_to_zone(it, appt->start_tz_loc);
                             it = icaltime_convert_to_zone(it
                                     , local_icaltimezone);
