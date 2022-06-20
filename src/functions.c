@@ -814,18 +814,25 @@ GDateTime *orage_icaltime_to_gdatetime (const gchar *icaltime,
                                   t.tm_min, t.tm_sec);
 }
 
-char *orage_icaltime_to_i18_time(const char *icaltime)
+gchar *orage_icaltime_to_i18_time (const char *icaltime)
 { /* timezone is not converted */
     GDateTime *gdt;
     gchar *ct;
-    gchar *fmt;
+    gboolean date_only;
 
     gdt = orage_icaltime_to_gdatetime (icaltime, FALSE);
-    fmt = (strchr (icaltime, 'T') == NULL) ? "%x" : "%x %R";
-    ct = g_date_time_format (gdt, fmt);
+    date_only = (strchr (icaltime, 'T') == NULL);
+    ct = orage_gdatetime_to_i18_time (gdt, date_only);
     g_date_time_unref (gdt);
 
     return(ct);
+}
+
+gchar *orage_gdatetime_to_i18_time (GDateTime *gdt, const gboolean date_only)
+{
+    const gchar *fmt = date_only ? "%x" : "%x %R";
+
+    return g_date_time_format (gdt, fmt);
 }
 
 char *orage_icaltime_to_i18_time_only(const char *icaltime)

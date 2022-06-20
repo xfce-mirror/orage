@@ -97,6 +97,7 @@ GtkWidget *orage_period_hbox_new(gboolean head_space, gboolean tail_space
         , GtkWidget *spin_mm, GtkWidget *mm_label);
 
 GDate *orage_gdatetime_to_gdate (GDateTime *gdt);
+gchar *orage_gdatetime_to_i18_time (GDateTime *gdt, const gboolean date_only);
 
 /** Comapare dates only.
  *  @param gdt1 GDateTime fist date and time
@@ -128,7 +129,7 @@ GDateTime *orage_i18_time_to_gdatetime (const gchar *i18_time);
 GDateTime *orage_icaltime_to_gdatetime (const gchar *i18_date,
                                         gboolean real_tm);
 
-char *orage_icaltime_to_i18_time(const char *icaltime);
+gchar *orage_icaltime_to_i18_time (const char *icaltime);
 char *orage_icaltime_to_i18_time_only(const char *icaltime);
 
 /** Return GDateTime from GTK calendar. This function set hour and minute values
