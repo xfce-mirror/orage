@@ -702,7 +702,7 @@ int xfical_compare_times(xfical_appt *appt)
             return(0); /* should be error ! */
         }
         stime = icaltime_from_gdatetime (appt->starttime2, appt->allDay);
-        etime = icaltime_from_string (appt->endtime);
+        etime = icaltime_from_gdatetime (appt->endtime2, appt->allDay);
 
         stime = convert_to_zone (stime, appt->start_tz_loc);
         stime = icaltime_convert_to_zone (stime, local_icaltimezone);
@@ -3800,7 +3800,8 @@ static xfical_appt *xfical_appt_get_next_with_string_internal(char *str
                             appt->starttimecur2 = orage_icaltime_to_gdatetime (stime, FALSE);
                             g_strlcpy (appt->starttimecur, stime,
                                        sizeof (appt->starttimecur));
-                            it = icaltime_from_string(appt->endtime);
+                            it = icaltime_from_gdatetime (appt->endtime2,
+                                                          appt->allDay);
                             it = convert_to_zone(it, appt->end_tz_loc);
                             it = icaltime_convert_to_zone(it
                                     , local_icaltimezone);
