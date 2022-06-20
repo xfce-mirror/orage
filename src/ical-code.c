@@ -3805,7 +3805,7 @@ static xfical_appt *xfical_appt_get_next_with_string_internal(char *str
                             it = icaltime_convert_to_zone(it
                                     , local_icaltimezone);
                             stime = icaltime_as_ical_string(it);
-                            g_date_time_unref (appt->starttimecur2);
+                            g_date_time_unref (appt->endtimecur2);
                             appt->endtimecur2 = orage_icaltime_to_gdatetime (stime, FALSE);
                             g_strlcpy (appt->endtimecur, stime,
                                        sizeof (appt->endtimecur));
