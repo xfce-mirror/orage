@@ -1129,7 +1129,7 @@ static void appt_add_starttime_internal(xfical_appt *appt, icalcomponent *icmp)
     }
 
     if ORAGE_STR_EXISTS(appt->starttime) {
-        wtime=icaltime_from_string(appt->starttime);
+        wtime = icaltime_from_gdatetime (appt->starttime2, appt->allDay);
         if (appt->allDay) { /* date */
             icalcomponent_add_property(icmp
                     , icalproperty_new_dtstart(wtime));
