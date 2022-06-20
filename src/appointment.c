@@ -992,7 +992,7 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
                                     GTK_SPIN_BUTTON (apptw->StartTime_spin_hh)),
                            gtk_spin_button_get_value_as_int (
                                     GTK_SPIN_BUTTON (apptw->StartTime_spin_mm)),
-                           g_date_time_get_seconds (gdt_tmp));
+                           0);
 
 #if (USE_GLIB_258 == 0)
     g_time_zone_unref (gtz);
@@ -1024,7 +1024,7 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
                                     GTK_SPIN_BUTTON (apptw->EndTime_spin_hh)),
                            gtk_spin_button_get_value_as_int (
                                     GTK_SPIN_BUTTON (apptw->EndTime_spin_mm)),
-                           g_date_time_get_seconds (gdt_tmp));
+                           0);
 
     tmp = g_date_time_format (appt->endtime2, XFICAL_APPT_TIME_FORMAT_S0);
     g_strlcpy (appt->endtime, tmp, sizeof (appt->endtime));
@@ -1076,7 +1076,7 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
                                     GTK_SPIN_BUTTON (apptw->CompletedTime_spin_hh)),
                            gtk_spin_button_get_value_as_int (
                                     GTK_SPIN_BUTTON (apptw->CompletedTime_spin_mm)),
-                           g_date_time_get_seconds (gdt_tmp));
+                           0);
 
     tmp = g_date_time_format (appt->completedtime2, XFICAL_APPT_TIME_FORMAT_S0);
     g_strlcpy (appt->completedtime, tmp, sizeof (appt->completedtime));
