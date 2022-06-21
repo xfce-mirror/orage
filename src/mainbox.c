@@ -413,8 +413,8 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
         e_time = appt->use_due_time ?
                  orage_gdatetime_to_i18_time (appt->endtimecur2, appt->allDay)
                  : g_strdup (na);
-        c_time = appt->completed ?
-                 orage_gdatetime_to_i18_time (appt->completedtime2, appt->allDay)
+        c_time = appt->completed && appt->completedtime ?
+                 orage_gdatetime_to_i18_time (appt->completedtime, appt->allDay)
                  : g_strdup (na);
 
         tip = g_strdup_printf(_("Title: %s\n%s Start:\t%s\n Due:\t%s\n Done:\t%s%s")

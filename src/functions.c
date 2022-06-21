@@ -847,6 +847,14 @@ char *orage_icaltime_to_i18_time_only(const char *icaltime)
     return(i18_time);
 }
 
+void orage_gdatetime_unref (GDateTime *gdt)
+{
+    if (gdt == NULL)
+        return;
+
+    g_date_time_unref (gdt);
+}
+
 GDate *orage_gdatetime_to_gdate (GDateTime *gdt)
 {
     gint year;

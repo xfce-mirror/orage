@@ -96,6 +96,7 @@ GtkWidget *orage_period_hbox_new(gboolean head_space, gboolean tail_space
         , GtkWidget *spin_hh, GtkWidget *hh_label
         , GtkWidget *spin_mm, GtkWidget *mm_label);
 
+void orage_gdatetime_unref (GDateTime *gdt);
 GDate *orage_gdatetime_to_gdate (GDateTime *gdt);
 gchar *orage_gdatetime_to_i18_time (GDateTime *gdt, const gboolean date_only);
 

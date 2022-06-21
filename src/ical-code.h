@@ -86,9 +86,7 @@ typedef struct _xfical_appt
     gint   duration;
     gboolean completed;
 
-    __attribute__ ((deprecated ("replace with GDateTime")))
-    gchar  completedtime[17];
-    GDateTime *completedtime2;
+    GDateTime *completedtime;
     gchar *completed_tz_loc;
 
     gint availability;

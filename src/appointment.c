@@ -1067,8 +1067,8 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
     gtz = g_time_zone_new (g_date_time_get_timezone_abbreviation (gdt_tmp));
 #endif
 
-    g_date_time_unref (appt->completedtime2);
-    appt->completedtime2 = g_date_time_new (gtz,
+    orage_gdatetime_unref (appt->completedtime);
+    appt->completedtime = g_date_time_new (gtz,
                            g_date_time_get_year (gdt_tmp),
                            g_date_time_get_month (gdt_tmp),
                            g_date_time_get_day_of_month (gdt_tmp),
@@ -1077,10 +1077,6 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
                            gtk_spin_button_get_value_as_int (
                                     GTK_SPIN_BUTTON (apptw->CompletedTime_spin_mm)),
                            0);
-
-    tmp = g_date_time_format (appt->completedtime2, XFICAL_APPT_TIME_FORMAT_S0);
-    g_strlcpy (appt->completedtime, tmp, sizeof (appt->completedtime));
-    g_free (tmp);
 
 #if (USE_GLIB_258 == 0)
     g_time_zone_unref (gtz);
@@ -1816,8 +1812,8 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
     /* completed time (only available for todo) */
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(
             apptw->Completed_checkbutton), appt->completed);
-    if (strlen(appt->completedtime) > 6 ) {
-        gdt = g_date_time_ref (appt->completedtime2);
+    if (appt->completedtime) {
+        gdt = g_date_time_ref (appt->completedtime);
         g_object_set_data_full (G_OBJECT (apptw->CompletedDate_button),
                                 DATE_KEY, gdt,
                                 (GDestroyNotify)g_date_time_unref);
@@ -1928,11 +1924,8 @@ static xfical_appt *fill_appt_window_get_new_appt (const gchar *par,
     appt->completed = FALSE;
     /* use duration by default for new appointments */
     appt->use_duration = TRUE;
-    time_str = g_date_time_format (gdt_now, XFICAL_APPT_TIME_FORMAT_S0);
-    g_date_time_unref (appt->completedtime2);
-    appt->completedtime2 = gdt_now;
-    g_strlcpy (appt->completedtime, time_str, sizeof (appt->completedtime));
-    g_free (time_str);
+    orage_gdatetime_unref (appt->completedtime);
+    appt->completedtime = gdt_now;
     appt->completed_tz_loc = g_strdup (appt->start_tz_loc);
 
     read_default_alarm (appt);
@@ -2636,11 +2629,8 @@ static gboolean fill_appt_window(appt_win *apptw, const gchar *action,
         add_file_select_cb(apptw);
     }
     if (!appt->completed) { /* some nice default */
-        g_date_time_unref (appt->completedtime2);
-        appt->completedtime2 = g_date_time_new_now_local (); /* probably completed today? */
-        time_str = g_date_time_format (appt->completedtime2, XFICAL_APPT_TIME_FORMAT_S0);
-        g_strlcpy (appt->completedtime, time_str, sizeof (appt->completedtime));
-        g_free (time_str);
+        orage_gdatetime_unref (appt->completedtime);
+        appt->completedtime = g_date_time_new_now_local (); /* probably completed today? */
         g_free(appt->completed_tz_loc);
         appt->completed_tz_loc = g_strdup(appt->start_tz_loc);
     }

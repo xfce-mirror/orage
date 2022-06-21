@@ -730,8 +730,7 @@ xfical_appt *xfical_appt_alloc(void)
     appt->interval = 1;
     appt->starttime2 = g_date_time_new_now_local ();
     appt->endtime2 = g_date_time_ref (appt->starttime2);
-    appt->completedtime2 = g_date_time_ref (appt->endtime2);
-    appt->starttimecur2 = g_date_time_ref (appt->completedtime2);
+    appt->starttimecur2 = g_date_time_ref (appt->endtime2);
     appt->recur_until = g_date_time_ref (appt->starttimecur2);
     for (i=0; i <= 6; i++)
         appt->recur_byday[i] = TRUE;
@@ -1222,8 +1221,8 @@ static void appt_add_completedtime_internal(xfical_appt *appt
     if (appt->type != XFICAL_TYPE_TODO) {
         return; /* only VTODO can have completed time */
     }
-    if (appt->completed) {
-        wtime = icaltime_from_gdatetime (appt->completedtime2, FALSE);
+    if ((appt->completed) && (appt->completedtime)) {
+        wtime = icaltime_from_gdatetime (appt->completedtime, FALSE);
         if ORAGE_STR_EXISTS(appt->completed_tz_loc) {
         /* Null == floating => no special action needed */
             if (strcmp(appt->completed_tz_loc, "floating") == 0) {
@@ -1620,10 +1619,9 @@ static void process_completed_date(xfical_appt *appt, icalproperty *p)
     itime = icaltime_from_string(text);
     eltime = convert_to_local_timezone(itime, p);
     text  = icaltime_as_ical_string(eltime);
-    g_date_time_unref (appt->completedtime2);
-    appt->completedtime2 = orage_icaltime_to_gdatetime (text, FALSE);
+    orage_gdatetime_unref (appt->completedtime);
+    appt->completedtime = orage_icaltime_to_gdatetime (text, FALSE);
     appt->completed_tz_loc = g_par.local_timezone;
-    g_strlcpy(appt->completedtime, text, sizeof (appt->completedtime));
     appt->completed = TRUE;
 }
 
@@ -1736,8 +1734,7 @@ static void appt_init(xfical_appt *appt)
     appt->use_duration = FALSE;
     appt->duration = 0;
     appt->completed = FALSE;
-    appt->completedtime[0] = '\0';
-    appt->completedtime2 = g_date_time_new_now_local ();
+    appt->completedtime = NULL;
     appt->completed_tz_loc = NULL;
     appt->availability = -1;
     appt->priority = 0;
@@ -1759,7 +1756,7 @@ static void appt_init(xfical_appt *appt)
     appt->procedure_cmd = NULL;
     appt->procedure_params = NULL;
     appt->starttimecur[0] = '\0';
-    appt->starttimecur2 = g_date_time_ref (appt->completedtime2);
+    appt->starttimecur2 = g_date_time_new_now_local ();
     appt->endtimecur[0] = '\0';
     appt->endtimecur2 = g_date_time_ref (appt->starttimecur2);
     appt->freq = XFICAL_FREQ_NONE;
@@ -2132,7 +2129,7 @@ void xfical_appt_free(xfical_appt *appt)
     g_free(appt->categories);
     g_date_time_unref (appt->starttime2);
     g_date_time_unref (appt->endtime2);
-    g_date_time_unref (appt->completedtime2);
+    orage_gdatetime_unref (appt->completedtime);
 #if 0
     g_free(appt->email_attendees);
 #endif
