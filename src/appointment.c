@@ -983,7 +983,7 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
 #else
     gtz = g_time_zone_new (g_date_time_get_timezone_abbreviation (gdt_tmp));
 #endif
-    g_date_time_unref (appt->starttime2);
+    orage_gdatetime_unref (appt->starttime2);
     appt->starttime2 = g_date_time_new (gtz,
                            g_date_time_get_year (gdt_tmp),
                            g_date_time_get_month (gdt_tmp),
@@ -1015,7 +1015,7 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
 #else
     gtz = g_time_zone_new (g_date_time_get_timezone_abbreviation (gdt_tmp));
 #endif
-    g_date_time_unref (appt->endtime2);
+    orage_gdatetime_unref (appt->endtime2);
     appt->endtime2 = g_date_time_new (gtz,
                            g_date_time_get_year (gdt_tmp),
                            g_date_time_get_month (gdt_tmp),
@@ -1145,7 +1145,7 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
                                      DATE_KEY);
         g_date_time_get_ymd (gdt_tmp, &year, &month, &day);
         gdt = g_date_time_new_local (year, month, day, 23, 59, 10);
-        g_date_time_unref (appt->recur_until);
+        orage_gdatetime_unref (appt->recur_until);
         appt->recur_until = g_date_time_ref (gdt);
         g_object_set_data_full (G_OBJECT (apptw->Recur_until_button),
                                 DATE_KEY, gdt,
@@ -1893,7 +1893,7 @@ static xfical_appt *fill_appt_window_get_new_appt (const gchar *par,
         end_minute = 30;
     }
 
-    g_date_time_unref (appt->starttime2);
+    orage_gdatetime_unref (appt->starttime2);
     appt->starttime2 = g_date_time_new_local (par_year, par_month,
                                               par_day_of_month, start_hour,
                                               start_minute, 0);
@@ -1902,7 +1902,7 @@ static xfical_appt *fill_appt_window_get_new_appt (const gchar *par,
     g_strlcpy (appt->starttime, time_str, sizeof (appt->starttime));
     g_free (time_str);
 
-    g_date_time_unref (appt->endtime2);
+    orage_gdatetime_unref (appt->endtime2);
     appt->endtime2 = g_date_time_new_local (par_year, par_month,
                                             par_day_of_month, end_hour,
                                             end_minute, 0);

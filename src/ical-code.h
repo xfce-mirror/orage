@@ -112,10 +112,10 @@ typedef struct _xfical_appt
         /* used only with libnotify. -1 = no timeout 0 = use default timeout */
     gint display_notify_timeout;  
 
-    /*
+#if 0
     gboolean email_alarm;
     gchar *email_attendees;
-    */
+#endif
 
     gboolean procedure_alarm;
     gchar *procedure_cmd;
