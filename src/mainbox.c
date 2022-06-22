@@ -333,7 +333,7 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
     today = g_date_time_new_now_local ();
     if (todo) {
         e_time = appt->use_due_time ?
-            orage_icaltime_to_i18_time(appt->endtimecur) : g_strdup (s_time);
+            orage_gdatetime_to_i18_time(appt->endtimecur2, appt->allDay) : g_strdup (s_time);
         tmp = g_strdup_printf(" %s  %s", e_time, tmp_title);
         g_free(e_time);
     }
