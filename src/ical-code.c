@@ -1153,16 +1153,16 @@ static void appt_add_endtime_internal(xfical_appt *appt, icalcomponent *icmp)
     gboolean end_time_done;
     struct icaldurationtype duration;
 
-    if (!appt->use_due_time && (appt->type == XFICAL_TYPE_TODO)) { 
+    if (!appt->use_due_time && (appt->type == XFICAL_TYPE_TODO)) {
         ; /* done with due time */
     }
-    else if (appt->use_duration) { 
+    else if (appt->use_duration) {
         /* both event and todo can have duration */
         duration = icaldurationtype_from_int(appt->duration);
         icalcomponent_add_property(icmp
                 , icalproperty_new_duration(duration));
     }
-    else if ORAGE_STR_EXISTS(appt->endtime) {
+    else if (appt->endtime2) {
         end_time_done = FALSE;
         wtime = icaltime_from_gdatetime (appt->endtime2, FALSE);
         if (appt->allDay) { 
