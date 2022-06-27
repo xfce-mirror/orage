@@ -1715,9 +1715,11 @@ static void appt_init(xfical_appt *appt)
     appt->location = NULL;
     appt->allDay = FALSE;
     appt->readonly = FALSE;
+    appt->starttime = NULL;
     appt->start_tz_loc = NULL;
     appt->use_due_time = FALSE;
     appt->endtime[0] = '\0';
+    appt->endtime2 = NULL;
     appt->end_tz_loc = NULL;
     appt->use_duration = FALSE;
     appt->duration = 0;
@@ -1751,8 +1753,6 @@ static void appt_init(xfical_appt *appt)
     appt->recur_limit = 0;
     appt->recur_count = 0;
     appt->recur_until = NULL;
-    appt->starttime = NULL;
-    appt->endtime2 = NULL;
 #if 0
     appt->email_alarm = FALSE;
     appt->email_attendees = NULL;
