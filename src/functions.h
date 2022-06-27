@@ -99,6 +99,7 @@ GtkWidget *orage_period_hbox_new(gboolean head_space, gboolean tail_space
 void orage_gdatetime_unref (GDateTime *gdt);
 GDate *orage_gdatetime_to_gdate (GDateTime *gdt);
 gchar *orage_gdatetime_to_i18_time (GDateTime *gdt, const gboolean date_only);
+gchar *orage_gdatetime_to_icaltime (GDateTime *gdt, const gboolean date_only);
 
 /** Comapare dates only.
  *  @param gdt1 GDateTime fist date and time

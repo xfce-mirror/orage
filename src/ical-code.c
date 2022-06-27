@@ -3649,6 +3649,7 @@ static xfical_appt *xfical_appt_get_next_with_string_internal(char *str
     static gchar *text_upper, *text, *beg, *end;
     static gboolean upper_text;
     gchar *cur, *tmp, mem;
+    gchar *time_str;
     gsize text_len, len;
     char *uid, ical_uid[XFICAL_UID_LEN+1];
     xfical_appt *appt;
@@ -3773,10 +3774,13 @@ static xfical_appt *xfical_appt_get_next_with_string_internal(char *str
                             appt->starttimecur2 = g_date_time_ref (appt->starttime2);
                             orage_gdatetime_unref (appt->endtimecur2);
                             appt->endtimecur2 = g_date_time_ref (appt->endtime2);
-                            g_strlcpy(appt->starttimecur, appt->starttime,
+                            time_str = orage_gdatetime_to_icaltime (
+                                    appt->starttime2, appt->allDay);
+                            g_strlcpy(appt->starttimecur, time_str,
                                       sizeof (appt->starttimecur));
                             g_strlcpy(appt->endtimecur, appt->endtime,
                                       sizeof (appt->endtimecur));
+                            g_free (time_str);
                         }
                         else {
                             it = icaltime_from_gdatetime (appt->starttime2,

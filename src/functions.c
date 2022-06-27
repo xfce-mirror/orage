@@ -835,6 +835,42 @@ gchar *orage_gdatetime_to_i18_time (GDateTime *gdt, const gboolean date_only)
     return g_date_time_format (gdt, fmt);
 }
 
+gchar *orage_gdatetime_to_icaltime (GDateTime *gdt, const gboolean date_only)
+{
+    gint year;
+    gint month;
+    gint day;
+    gchar *str;
+    size_t len;
+
+    g_date_time_get_ymd (gdt, &year, &month, &day);
+
+    /* g_date_time_format with format = XFICAL_APPT_TIME_FORMAT does not padd
+     * year with leading 0, this is incompatible with ical. To add padding we
+     * need to use snprintf.
+     */
+
+    if (date_only)
+    {
+        len = 10;
+        str = g_malloc (len);
+        g_snprintf (str, len, XFICAL_APPT_DATE_FORMAT_DEPRECATED,
+                    year, month, day);
+    }
+    else
+    {
+        len = 17;
+        str = g_malloc (len);
+        g_snprintf (str, len, XFICAL_APPT_TIME_FORMAT_DEPRECATED,
+                    year, month, day,
+                    g_date_time_get_hour (gdt),
+                    g_date_time_get_minute (gdt),
+                    g_date_time_get_second (gdt));
+    }
+
+    return str;
+}
+
 char *orage_icaltime_to_i18_time_only(const char *icaltime)
 {
     GDateTime *gdt;
