@@ -1771,7 +1771,7 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
     /* end time */
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(
             apptw->End_checkbutton), appt->use_due_time);
-    if (strlen(appt->endtime) > 6 ) {
+    if (appt->endtime2) {
         gdt = g_date_time_ref (appt->endtime2);
         g_object_set_data_full (G_OBJECT (apptw->EndDate_button),
                                 DATE_KEY, gdt,

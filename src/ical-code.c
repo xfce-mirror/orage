@@ -729,8 +729,7 @@ xfical_appt *xfical_appt_alloc(void)
     appt->freq = XFICAL_FREQ_NONE;
     appt->interval = 1;
     appt->starttime2 = g_date_time_new_now_local ();
-    appt->endtime2 = g_date_time_ref (appt->starttime2);
-    appt->starttimecur2 = g_date_time_ref (appt->endtime2);
+    appt->starttimecur2 = g_date_time_ref (appt->starttime2);
     for (i=0; i <= 6; i++)
         appt->recur_byday[i] = TRUE;
     return(appt);
@@ -1763,7 +1762,7 @@ static void appt_init(xfical_appt *appt)
     appt->recur_count = 0;
     appt->recur_until = NULL;
     appt->starttime2 = g_date_time_ref (appt->endtimecur2);
-    appt->endtime2 = g_date_time_ref (appt->starttime2);
+    appt->endtime2 = NULL;
 #if 0
     appt->email_alarm = FALSE;
     appt->email_attendees = NULL;
