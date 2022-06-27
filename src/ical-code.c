@@ -1561,9 +1561,9 @@ static void process_start_date(xfical_appt *appt, icalproperty *p
 
         appt->start_tz_loc = ((t = ic_get_char_timezone(p)) ? t : "floating");
     }
-    if (appt->endtime[0] == '\0') {
+
+    if (appt->endtime2 == NULL) {
         g_strlcpy(appt->endtime, text, sizeof (appt->endtime));
-        orage_gdatetime_unref (appt->endtime2);
         appt->endtime2 = g_date_time_ref (appt->starttime);
         appt->end_tz_loc = appt->start_tz_loc;
     }
