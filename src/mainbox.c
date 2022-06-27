@@ -329,7 +329,7 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
     tmp_title = appt->title
             ? orage_process_text_commands(appt->title)
             : g_strdup(_("No title defined"));
-    s_time = orage_icaltime_to_i18_time (appt->starttimecur);
+    s_time = orage_gdatetime_to_i18_time (appt->starttimecur2, appt->allDay);
     today = g_date_time_new_now_local ();
     if (todo) {
         e_time = appt->use_due_time ?
