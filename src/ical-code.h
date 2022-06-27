@@ -67,17 +67,15 @@ typedef struct _xfical_appt
     gboolean allDay;
     gboolean readonly;
 
-        /* time format must be:
-         * yyyymmdd[Thhmiss[Z]] = %04d%02d%02dT%02d%02d%02d
-         * T means it has also time part
-         * Z means it is in UTC format
-         */
-    __attribute__ ((deprecated ("replace with GDateTime")))
-    gchar  starttime[17];
     GDateTime *starttime2;
     gchar *start_tz_loc;
     gboolean use_due_time;  /* VTODO has due date or not */
 
+    /* time format must be:
+     * yyyymmdd[Thhmiss[Z]] = %04d%02d%02dT%02d%02d%02d
+     * T means it has also time part
+     * Z means it is in UTC format
+     */
     __attribute__ ((deprecated ("replace with GDateTime")))
     gchar  endtime[17];
     GDateTime *endtime2;

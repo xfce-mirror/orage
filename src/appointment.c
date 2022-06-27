@@ -998,10 +998,6 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
     g_time_zone_unref (gtz);
 #endif
 
-    tmp = g_date_time_format (appt->starttime2, XFICAL_APPT_TIME_FORMAT_S0);
-    g_strlcpy (appt->starttime, tmp, sizeof (appt->starttime));
-    g_free (tmp);
-
     /* end date and time.
      * Note that timezone is kept upto date all the time
      */
@@ -1897,10 +1893,6 @@ static xfical_appt *fill_appt_window_get_new_appt (const gchar *par,
     appt->starttime2 = g_date_time_new_local (par_year, par_month,
                                               par_day_of_month, start_hour,
                                               start_minute, 0);
-
-    time_str = g_date_time_format (appt->starttime2, XFICAL_APPT_TIME_FORMAT);
-    g_strlcpy (appt->starttime, time_str, sizeof (appt->starttime));
-    g_free (time_str);
 
     orage_gdatetime_unref (appt->endtime2);
     appt->endtime2 = g_date_time_new_local (par_year, par_month,

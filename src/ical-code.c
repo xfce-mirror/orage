@@ -672,7 +672,6 @@ int xfical_compare_times(xfical_appt *appt)
 
     if (appt->allDay) { /* cut the string after Date: yyyymmdd */
         /* FIXME: compare function should not modify input data. */
-        appt->starttime[8] = '\0';
         appt->endtime[8] = '\0';
     }
 
@@ -1114,7 +1113,6 @@ static void appt_add_starttime_internal(xfical_appt *appt, icalcomponent *icmp)
 
     if (appt->allDay) { /* cut the string after Date: yyyymmdd */
         /* FIXME: compare function should not modify input data. */
-        appt->starttime[8] = '\0';
         appt->endtime[8] = '\0';
     }
 
@@ -1549,7 +1547,6 @@ static void process_start_date(xfical_appt *appt, icalproperty *p
     *itime = icaltime_from_string(text);
     *stime = ic_convert_to_timezone(*itime, p);
     *sltime = convert_to_local_timezone(*itime, p);
-    g_strlcpy(appt->starttime, text, sizeof (appt->starttime));
     orage_gdatetime_unref (appt->starttime2);
     appt->starttime2 = orage_icaltime_to_gdatetime (text, FALSE);
     if (icaltime_is_date(*itime)) {
@@ -1718,7 +1715,6 @@ static void appt_init(xfical_appt *appt)
     appt->location = NULL;
     appt->allDay = FALSE;
     appt->readonly = FALSE;
-    appt->starttime[0] = '\0';
     appt->start_tz_loc = NULL;
     appt->use_due_time = FALSE;
     appt->endtime[0] = '\0';
