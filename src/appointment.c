@@ -983,8 +983,8 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
 #else
     gtz = g_time_zone_new (g_date_time_get_timezone_abbreviation (gdt_tmp));
 #endif
-    orage_gdatetime_unref (appt->starttime2);
-    appt->starttime2 = g_date_time_new (gtz,
+    orage_gdatetime_unref (appt->starttime);
+    appt->starttime = g_date_time_new (gtz,
                            g_date_time_get_year (gdt_tmp),
                            g_date_time_get_month (gdt_tmp),
                            g_date_time_get_day_of_month (gdt_tmp),
@@ -1738,7 +1738,7 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
             GTK_TOGGLE_BUTTON(apptw->AllDay_checkbutton), appt->allDay);
 
     /* start time */
-    gdt = g_date_time_ref (appt->starttime2);
+    gdt = g_date_time_ref (appt->starttime);
     g_object_set_data_full (G_OBJECT (apptw->StartDate_button),
                             DATE_KEY, gdt,
                             (GDestroyNotify)g_date_time_unref);
@@ -1889,8 +1889,8 @@ static xfical_appt *fill_appt_window_get_new_appt (const gchar *par,
         end_minute = 30;
     }
 
-    orage_gdatetime_unref (appt->starttime2);
-    appt->starttime2 = g_date_time_new_local (par_year, par_month,
+    orage_gdatetime_unref (appt->starttime);
+    appt->starttime = g_date_time_new_local (par_year, par_month,
                                               par_day_of_month, start_hour,
                                               start_minute, 0);
 
@@ -2808,9 +2808,9 @@ static gchar *create_action_time (xfical_appt *appt)
     gchar *start_str;
     gchar *end_str;
 
-    if (g_date_time_compare (appt->starttime2, appt->endtime2) == 0)
+    if (g_date_time_compare (appt->starttime, appt->endtime2) == 0)
     {
-        action_time = g_date_time_format (appt->starttime2, "%x %R");
+        action_time = g_date_time_format (appt->starttime, "%x %R");
         return action_time;
     }
 
@@ -2818,16 +2818,16 @@ static gchar *create_action_time (xfical_appt *appt)
     {
         fmt = "%x";
 
-        if (is_same_date (appt->starttime2, appt->endtime2) == TRUE)
+        if (is_same_date (appt->starttime, appt->endtime2) == TRUE)
         {
-            action_time = g_date_time_format (appt->starttime2, fmt);
+            action_time = g_date_time_format (appt->starttime, fmt);
             return action_time;
         }
     }
     else
         fmt = "%x %R";
 
-    start_str = g_date_time_format (appt->starttime2, fmt);
+    start_str = g_date_time_format (appt->starttime, fmt);
     end_str = g_date_time_format (appt->endtime2, fmt);
 
     action_time = g_strconcat (start_str, " - ", end_str, NULL);

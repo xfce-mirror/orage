@@ -675,11 +675,11 @@ int xfical_compare_times(xfical_appt *appt)
         appt->endtime[8] = '\0';
     }
 
-    if (appt->starttime2 == NULL)
+    if (appt->starttime == NULL)
         g_error ("%s: null start time", G_STRFUNC);
 
     if (appt->use_duration) {
-        stime = icaltime_from_gdatetime (appt->starttime2, appt->allDay);
+        stime = icaltime_from_gdatetime (appt->starttime, appt->allDay);
         duration = icaldurationtype_from_int(appt->duration);
         etime = icaltime_add(stime, duration);
         text  = icaltime_as_ical_string(etime);
@@ -695,7 +695,7 @@ int xfical_compare_times(xfical_appt *appt)
         if (appt->endtime2 == NULL)
             g_error ("%s: null end time", G_STRFUNC);
 
-        stime = icaltime_from_gdatetime (appt->starttime2, appt->allDay);
+        stime = icaltime_from_gdatetime (appt->starttime, appt->allDay);
         etime = icaltime_from_gdatetime (appt->endtime2, appt->allDay);
 
         stime = convert_to_zone (stime, appt->start_tz_loc);
@@ -1116,8 +1116,8 @@ static void appt_add_starttime_internal(xfical_appt *appt, icalcomponent *icmp)
         appt->endtime[8] = '\0';
     }
 
-    if (appt->starttime2) {
-        wtime = icaltime_from_gdatetime (appt->starttime2, appt->allDay);
+    if (appt->starttime) {
+        wtime = icaltime_from_gdatetime (appt->starttime, appt->allDay);
         if (appt->allDay) { /* date */
             icalcomponent_add_property(icmp
                     , icalproperty_new_dtstart(wtime));
@@ -1547,8 +1547,8 @@ static void process_start_date(xfical_appt *appt, icalproperty *p
     *itime = icaltime_from_string(text);
     *stime = ic_convert_to_timezone(*itime, p);
     *sltime = convert_to_local_timezone(*itime, p);
-    orage_gdatetime_unref (appt->starttime2);
-    appt->starttime2 = orage_icaltime_to_gdatetime (text, FALSE);
+    orage_gdatetime_unref (appt->starttime);
+    appt->starttime = orage_icaltime_to_gdatetime (text, FALSE);
     if (icaltime_is_date(*itime)) {
         appt->allDay = TRUE;
         appt->start_tz_loc = "floating";
@@ -1564,7 +1564,7 @@ static void process_start_date(xfical_appt *appt, icalproperty *p
     if (appt->endtime[0] == '\0') {
         g_strlcpy(appt->endtime, text, sizeof (appt->endtime));
         orage_gdatetime_unref (appt->endtime2);
-        appt->endtime2 = g_date_time_ref (appt->starttime2);
+        appt->endtime2 = g_date_time_ref (appt->starttime);
         appt->end_tz_loc = appt->start_tz_loc;
     }
 }
@@ -1751,7 +1751,7 @@ static void appt_init(xfical_appt *appt)
     appt->recur_limit = 0;
     appt->recur_count = 0;
     appt->recur_until = NULL;
-    appt->starttime2 = NULL;
+    appt->starttime = NULL;
     appt->endtime2 = NULL;
 #if 0
     appt->email_alarm = FALSE;
@@ -2115,7 +2115,7 @@ void xfical_appt_free(xfical_appt *appt)
     g_free(appt->procedure_cmd);
     g_free(appt->procedure_params);
     g_free(appt->categories);
-    orage_gdatetime_unref (appt->starttime2);
+    orage_gdatetime_unref (appt->starttime);
     orage_gdatetime_unref (appt->endtime2);
     orage_gdatetime_unref (appt->completedtime);
 #if 0
@@ -3224,7 +3224,7 @@ static void xfical_mark_calendar_from_component(GtkCalendar *gtkcal
             icalcomponent_foreach_recurrence(c, nsdate, nedate, mark_calendar
                     , (void *)&cal_data);
             g_free(cal_data.appt.categories);
-            orage_gdatetime_unref (cal_data.appt.starttime2);
+            orage_gdatetime_unref (cal_data.appt.starttime);
             orage_gdatetime_unref (cal_data.appt.endtime2);
         }
         else {
@@ -3767,11 +3767,11 @@ static xfical_appt *xfical_appt_get_next_with_string_internal(char *str
                     else {
                         if (strcmp(g_par.local_timezone, "floating") == 0) {
                             orage_gdatetime_unref (appt->starttimecur2);
-                            appt->starttimecur2 = g_date_time_ref (appt->starttime2);
+                            appt->starttimecur2 = g_date_time_ref (appt->starttime);
                             orage_gdatetime_unref (appt->endtimecur2);
                             appt->endtimecur2 = g_date_time_ref (appt->endtime2);
                             time_str = orage_gdatetime_to_icaltime (
-                                    appt->starttime2, appt->allDay);
+                                    appt->starttime, appt->allDay);
                             g_strlcpy(appt->starttimecur, time_str,
                                       sizeof (appt->starttimecur));
                             g_strlcpy(appt->endtimecur, appt->endtime,
@@ -3779,7 +3779,7 @@ static xfical_appt *xfical_appt_get_next_with_string_internal(char *str
                             g_free (time_str);
                         }
                         else {
-                            it = icaltime_from_gdatetime (appt->starttime2,
+                            it = icaltime_from_gdatetime (appt->starttime,
                                                           appt->allDay);
                             it = convert_to_zone(it, appt->start_tz_loc);
                             it = icaltime_convert_to_zone(it

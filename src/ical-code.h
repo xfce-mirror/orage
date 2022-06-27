@@ -67,7 +67,7 @@ typedef struct _xfical_appt
     gboolean allDay;
     gboolean readonly;
 
-    GDateTime *starttime2;
+    GDateTime *starttime;
     gchar *start_tz_loc;
     gboolean use_due_time;  /* VTODO has due date or not */
 
