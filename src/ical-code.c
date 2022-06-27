@@ -676,11 +676,8 @@ int xfical_compare_times(xfical_appt *appt)
         appt->endtime[8] = '\0';
     }
 
-    if (!ORAGE_STR_EXISTS (appt->starttime))
-    {
-        g_critical ("%s: null start time", G_STRFUNC);
-        return 0; /* should be error ! */
-    }
+    if (appt->starttime2 == NULL)
+        g_error ("%s: null start time", G_STRFUNC);
 
     if (appt->use_duration) {
         stime = icaltime_from_gdatetime (appt->starttime2, appt->allDay);
@@ -696,11 +693,9 @@ int xfical_compare_times(xfical_appt *appt)
 
     }
     else {
-        if (!ORAGE_STR_EXISTS (appt->endtime))
-        {
-            g_critical ("%s: null end time", G_STRFUNC);
-            return(0); /* should be error ! */
-        }
+        if (appt->endtime2 == NULL)
+            g_error ("%s: null end time", G_STRFUNC);
+
         stime = icaltime_from_gdatetime (appt->starttime2, appt->allDay);
         etime = icaltime_from_gdatetime (appt->endtime2, appt->allDay);
 
@@ -728,8 +723,7 @@ xfical_appt *xfical_appt_alloc(void)
     appt->availability = 1;
     appt->freq = XFICAL_FREQ_NONE;
     appt->interval = 1;
-    appt->starttime2 = g_date_time_new_now_local ();
-    appt->starttimecur2 = g_date_time_ref (appt->starttime2);
+    appt->starttimecur2 = g_date_time_new_now_local ();
     for (i=0; i <= 6; i++)
         appt->recur_byday[i] = TRUE;
     return(appt);
@@ -1124,7 +1118,7 @@ static void appt_add_starttime_internal(xfical_appt *appt, icalcomponent *icmp)
         appt->endtime[8] = '\0';
     }
 
-    if ORAGE_STR_EXISTS(appt->starttime) {
+    if (appt->starttime2) {
         wtime = icaltime_from_gdatetime (appt->starttime2, appt->allDay);
         if (appt->allDay) { /* date */
             icalcomponent_add_property(icmp
@@ -1761,7 +1755,7 @@ static void appt_init(xfical_appt *appt)
     appt->recur_limit = 0;
     appt->recur_count = 0;
     appt->recur_until = NULL;
-    appt->starttime2 = g_date_time_ref (appt->endtimecur2);
+    appt->starttime2 = NULL;
     appt->endtime2 = NULL;
 #if 0
     appt->email_alarm = FALSE;
@@ -2125,7 +2119,7 @@ void xfical_appt_free(xfical_appt *appt)
     g_free(appt->procedure_cmd);
     g_free(appt->procedure_params);
     g_free(appt->categories);
-    g_date_time_unref (appt->starttime2);
+    orage_gdatetime_unref (appt->starttime2);
     orage_gdatetime_unref (appt->endtime2);
     orage_gdatetime_unref (appt->completedtime);
 #if 0
@@ -3234,7 +3228,7 @@ static void xfical_mark_calendar_from_component(GtkCalendar *gtkcal
             icalcomponent_foreach_recurrence(c, nsdate, nedate, mark_calendar
                     , (void *)&cal_data);
             g_free(cal_data.appt.categories);
-            g_date_time_unref (cal_data.appt.starttime2);
+            orage_gdatetime_unref (cal_data.appt.starttime2);
             orage_gdatetime_unref (cal_data.appt.endtime2);
         }
         else {
