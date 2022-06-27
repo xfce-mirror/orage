@@ -3117,7 +3117,7 @@ static void mark_calendar (G_GNUC_UNUSED icalcomponent *c,
     gdt_end = g_date_time_new_from_unix_utc (span->end);
 
     /* check bug 7886 explanation in function add_appt_to_list */
-    if (cal_data->appt.endtime[8] != 'T' && !cal_data->appt.use_duration) {
+    if (cal_data->appt.allDay && !cal_data->appt.use_duration) {
         gdt_tmp = gdt_end;
         gdt_end = g_date_time_add_days (gdt_tmp, -1);
         g_date_time_unref (gdt_tmp);
@@ -3387,7 +3387,7 @@ static void add_appt_to_list(icalcomponent *c, icaltime_span *span , void *data)
        now I just work around it.
     FIXME: code whole loop correctly = function icalcomponent_foreach_recurrence
     */
-    if (appt->endtime[8] != 'T' && !appt->use_duration) {
+    if (appt->allDay && !appt->use_duration) {
         gdt_tmp = gdt_end;
         gdt_end = g_date_time_add_days (gdt_tmp, -1);
         g_date_time_unref (gdt_tmp);
