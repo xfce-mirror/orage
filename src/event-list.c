@@ -151,17 +151,13 @@ static gint sortEvent_comp(GtkTreeModel *model
     return(ret);
 }
 
-static int append_time(char *result, char *ical_time, int i)
+static void append_time (gchar *result, GDateTime *gdt, const size_t len)
 {
-    result[i++] = ical_time[9];
-    result[i++] = ical_time[10];
-    result[i++] = ':';
-    result[i++] = ical_time[11];
-    result[i++] = ical_time[12];
-    result[i++] = ' ';
-    result[i] = '\0';
+    gchar *ical_time;
 
-    return(6);
+    ical_time = g_date_time_format (gdt, "%R");
+    g_snprintf (result, len, "%s ", ical_time);
+    g_free (ical_time);
 }
 
 static char *format_time(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
@@ -186,12 +182,12 @@ static char *format_time(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
             if (strncmp(start_ical_time, a_day, 8) < 0)
                 g_strlcpy (result, "+00:00 ", result_len);
             else
-                append_time(result, start_ical_time, i);
+                append_time (&result[i], appt->starttimecur2, result_len - i);
             i = g_strlcat (result, "- ", result_len);
             if (strncmp(a_day, end_ical_time , 8) < 0)
                 g_strlcat (result, "24:00+", result_len);
             else
-                append_time(result, end_ical_time, i);
+                append_time (&result[i], appt->endtimecur2, result_len - i);
         }
         else {/* date only appointment */
             g_strlcpy (result, _("All day"), result_len);
@@ -203,7 +199,7 @@ static char *format_time(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
         g_free (tmp);
         if (appt->allDay == FALSE) { /* time part available */
             result[i++] = ' ';
-            append_time(result, start_ical_time, i);
+            append_time (&result[i], appt->starttimecur2, result_len - i);
             i = g_strlcat (result, "- ", result_len);
             if (el->page == TODO_PAGE && !appt->use_due_time) {
                 g_strlcat (result, "...", result_len);
@@ -216,7 +212,7 @@ static char *format_time(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
                     g_free (tmp);
                     result[i++] = ' ';
                 }
-                append_time(result, end_ical_time, i);
+                append_time (&result[i], appt->endtimecur2, result_len - i);
             }
         }
         else {/* date only */
