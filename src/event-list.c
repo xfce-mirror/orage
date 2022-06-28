@@ -526,11 +526,14 @@ static void search_data(el_win *el)
     g_free(search_string);
 }
 
-static void app_rows (el_win *el, const gchar *a_day, char *par,
+static void app_rows (el_win *el, GDateTime *a_day_gdt, char *par,
                       xfical_type ical_type, gchar *file_type)
 {
     GList *appt_list=NULL, *tmp;
     xfical_appt *appt;
+    gchar *a_day;
+
+    a_day = g_date_time_format (a_day_gdt, XFICAL_APPT_DATE_FORMAT);
 
     if (ical_type == XFICAL_TYPE_EVENT && !el->only_first) {
         xfical_get_each_app_within_time(a_day, el->days+1
@@ -562,6 +565,8 @@ static void app_rows (el_win *el, const gchar *a_day, char *par,
             xfical_appt_free(appt);
         }
     }
+
+    g_free (a_day);
 }
 
 static void app_data (el_win *el, GDateTime *a_day_gdt, char *par)
@@ -589,8 +594,7 @@ static void app_data (el_win *el, GDateTime *a_day_gdt, char *par)
     if (!xfical_file_open(TRUE))
         return;
     g_strlcpy (file_type, "O00.", sizeof (file_type));
-    a_day = g_date_time_format (a_day_gdt, XFICAL_APPT_DATE_FORMAT);
-    app_rows(el, a_day, par, ical_type, file_type);
+    app_rows(el, a_day_gdt, par, ical_type, file_type);
     /* then process all foreign files */
     for (i = 0; i < g_par.foreign_count; i++) {
         g_snprintf(file_type, sizeof (file_type), "F%02d.", i);
@@ -602,12 +606,11 @@ static void app_data (el_win *el, GDateTime *a_day_gdt, char *par)
     if (ical_type == XFICAL_TYPE_JOURNAL) {
         if (xfical_archive_open()) {
             g_strlcpy (file_type, "A00.", sizeof (file_type));
-            app_rows(el, a_day, par, ical_type, file_type);
+            app_rows(el, a_day_gdt, par, ical_type, file_type);
             xfical_archive_close();
         }
     }
 #endif
-    g_free (a_day);
     xfical_file_close(TRUE);
 }
 
