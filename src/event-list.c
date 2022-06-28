@@ -181,7 +181,7 @@ static char *format_time(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
 
     if (el->page == EVENT_PAGE && el->days == 0) {
         /* special formatting for 1 day VEVENTS */
-        if (start_ical_time[8] == 'T') { /* time part available */
+        if (appt->allDay == FALSE) { /* time part available */
             if (strncmp(start_ical_time, a_day, 8) < 0)
                 g_strlcpy (result, "+00:00 ", result_len);
             else
@@ -200,7 +200,7 @@ static char *format_time(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
         tmp = g_date_time_format (appt->starttimecur2, "%x");
         i = g_strlcpy(result, tmp, result_len);
         g_free (tmp);
-        if (start_ical_time[8] == 'T') { /* time part available */
+        if (appt->allDay == FALSE) { /* time part available */
             result[i++] = ' ';
             append_time(result, start_ical_time, i);
             i = g_strlcat (result, "- ", result_len);
