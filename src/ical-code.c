@@ -93,6 +93,16 @@ typedef struct _xfical_timezone_array
     int  *dst;        /* pointer to int array holding dst settings */
 } xfical_timezone_array;
 
+typedef struct _app_data
+{
+    GList **list;
+    const gchar *file_type;
+    /* Need to check that returned value is withing limits. Check more from
+     * BUG 5764 and 7886.
+     */
+    gchar asdate[17], aedate[17];
+    gint orig_start_hour, orig_end_hour;
+} app_data;
 
 static guint    file_close_timer = 0;  /* delayed file close timer */
 
@@ -2015,7 +2025,8 @@ static xfical_appt *xfical_appt_get_internal(const char *ical_uid
     }
 }
 
-static void xfical_appt_get_fill_internal(xfical_appt *appt, char *file_type)
+static void xfical_appt_get_fill_internal (xfical_appt *appt,
+                                           const gchar *file_type)
 {
     if (appt) {
         appt->uid = g_strconcat(file_type, appt->uid, NULL);
@@ -3359,15 +3370,6 @@ static void add_appt_to_list(icalcomponent *c, icaltime_span *span , void *data)
     GDateTime *gdt_end;
     GDateTime *gdt_tmp;
     gchar *str;
-    typedef struct _app_data
-    {
-        GList **list;
-        gchar *file_type;
-        /* Need to check that returned value is withing limits.
-           Check more from BUG 5764 and 7886. */
-        gchar asdate[17], aedate[17];
-        gint orig_start_hour, orig_end_hour;
-    } app_data;
     app_data *data1;
         /* Need to check that returned value is withing limits.
            Check more from BUG 5764 and 7886. */
@@ -3471,15 +3473,6 @@ static void xfical_get_each_app_within_time_internal (const gchar *a_day,
     icalcomponent *c2=NULL;
     icalproperty *p = NULL;
     struct icaltimetype start;
-    typedef struct _app_data
-    {
-        GList **list;
-        const gchar *file_type;
-        /* Need to check that returned value is withing limits.
-           Check more from BUG 5764 and 7886. */
-        gchar asdate[17], aedate[17];
-        gint orig_start_hour, orig_end_hour;
-    } app_data;
     app_data data1;
 
     /* setup period to test */
