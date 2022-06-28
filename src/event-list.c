@@ -164,7 +164,7 @@ static int append_time(char *result, char *ical_time, int i)
     return(6);
 }
 
-static char *format_time(el_win *el, xfical_appt *appt, char *par)
+static char *format_time(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
 {
     char *result;
     const size_t result_len = 51;
@@ -173,6 +173,7 @@ static char *format_time(el_win *el, xfical_appt *appt, char *par)
     gchar *start_ical_time;
     gchar *end_ical_time;
     gboolean same_date;
+    gchar *a_day = g_date_time_format (gdt_par, XFICAL_APPT_TIME_FORMAT);
 
     start_ical_time = appt->starttimecur;
     end_ical_time = appt->endtimecur;
@@ -181,12 +182,12 @@ static char *format_time(el_win *el, xfical_appt *appt, char *par)
     if (el->page == EVENT_PAGE && el->days == 0) {
         /* special formatting for 1 day VEVENTS */
         if (start_ical_time[8] == 'T') { /* time part available */
-            if (strncmp(start_ical_time, par, 8) < 0)
+            if (strncmp(start_ical_time, a_day, 8) < 0)
                 g_strlcpy (result, "+00:00 ", result_len);
             else
                 append_time(result, start_ical_time, i);
             i = g_strlcat (result, "- ", result_len);
-            if (strncmp(par, end_ical_time , 8) < 0)
+            if (strncmp(a_day, end_ical_time , 8) < 0)
                 g_strlcat (result, "24:00+", result_len);
             else
                 append_time(result, end_ical_time, i);
@@ -229,6 +230,7 @@ static char *format_time(el_win *el, xfical_appt *appt, char *par)
             }
         }
     }
+    g_free (a_day);
 
     return(result);
 }
@@ -393,7 +395,7 @@ static void start_time_data_func (G_GNUC_UNUSED GtkTreeViewColumn *col,
     }
 }
 
-static void add_el_row(el_win *el, xfical_appt *appt, char *par)
+static void add_el_row(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
 {
     GtkTreeIter     iter1;
     GtkListStore   *list1;
@@ -404,7 +406,7 @@ static void add_el_row(el_win *el, xfical_appt *appt, char *par)
     gchar          *tmp_note;
     guint           len = 50;
 
-    stime = format_time(el, appt, par);
+    stime = format_time (el, appt, gdt_par);
     if (appt->display_alarm_orage || appt->display_alarm_notify 
     ||  appt->sound_alarm || appt->procedure_alarm)
         if (appt->alarm_persistent)
@@ -526,7 +528,7 @@ static void search_data(el_win *el)
     g_free(search_string);
 }
 
-static void app_rows (el_win *el, GDateTime *a_day_gdt, char *par,
+static void app_rows (el_win *el, GDateTime *a_day_gdt, GDateTime *gdt_par,
                       xfical_type ical_type, gchar *file_type)
 {
     GList *appt_list=NULL, *tmp;
@@ -543,7 +545,7 @@ static void app_rows (el_win *el, GDateTime *a_day_gdt, char *par,
              tmp = g_list_next(tmp)) {
             appt = (xfical_appt *)tmp->data;
             if (appt->priority < g_par.priority_list_limit) {
-                add_el_row(el, appt, par);
+                add_el_row (el, appt, gdt_par);
             }
             xfical_appt_free(appt);
         }
@@ -561,7 +563,7 @@ static void app_rows (el_win *el, GDateTime *a_day_gdt, char *par,
             if (!(appt->endtimecur[8] == 'T' 
                 && strncmp(appt->endtimecur+9, "000000", 6) == 0
                 && strncmp(appt->endtimecur, a_day, 8) == 0))
-                add_el_row(el, appt, par);
+                add_el_row (el, appt, gdt_par);
             xfical_appt_free(appt);
         }
     }
@@ -569,12 +571,11 @@ static void app_rows (el_win *el, GDateTime *a_day_gdt, char *par,
     g_free (a_day);
 }
 
-static void app_data (el_win *el, GDateTime *a_day_gdt, char *par)
+static void app_data (el_win *el, GDateTime *a_day_gdt, GDateTime *gdt_par)
 {
     xfical_type ical_type;
     gchar file_type[8];
     gint i;
-    gchar *a_day;
 
     switch (el->page) {
         case EVENT_PAGE:
@@ -594,11 +595,11 @@ static void app_data (el_win *el, GDateTime *a_day_gdt, char *par)
     if (!xfical_file_open(TRUE))
         return;
     g_strlcpy (file_type, "O00.", sizeof (file_type));
-    app_rows(el, a_day_gdt, par, ical_type, file_type);
+    app_rows (el, a_day_gdt, gdt_par, ical_type, file_type);
     /* then process all foreign files */
     for (i = 0; i < g_par.foreign_count; i++) {
         g_snprintf(file_type, sizeof (file_type), "F%02d.", i);
-        app_rows(el, a_day, par, ical_type, file_type);
+        app_rows (el, a_day_gdt, gdt_par, ical_type, file_type);
     }
 
 #ifdef HAVE_ARCHIVE
@@ -606,7 +607,7 @@ static void app_data (el_win *el, GDateTime *a_day_gdt, char *par)
     if (ical_type == XFICAL_TYPE_JOURNAL) {
         if (xfical_archive_open()) {
             g_strlcpy (file_type, "A00.", sizeof (file_type));
-            app_rows(el, a_day_gdt, par, ical_type, file_type);
+            app_rows (el, a_day_gdt, gdt_par, ical_type, file_type);
             xfical_archive_close();
         }
     }
@@ -633,8 +634,6 @@ static void refresh_time_field(el_win *el)
 static void event_data(el_win *el)
 {
     const gchar *title;  /* in %x strftime format */
-    __attribute__ ((deprecated ("use GDateTime")))
-    gchar *a_day;
     GDate *gd_title;
     GDate *gd_now;
     GDate *d1;
@@ -676,10 +675,8 @@ static void event_data(el_win *el)
 
     g_date_free (gd_now);
     g_date_free (gd_title);
-    a_day = g_date_time_format (gdt_a_day, XFICAL_APPT_TIME_FORMAT);
-    app_data (el, gdt_a_day, a_day);
+    app_data (el, gdt_a_day, gdt_a_day);
     g_date_time_unref (gdt_a_day);
-    g_free (a_day);
 }
 
 static void todo_data(el_win *el)
