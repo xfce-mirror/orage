@@ -173,7 +173,8 @@ static char *format_time(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
     gchar *start_ical_time;
     gchar *end_ical_time;
     gboolean same_date;
-    gchar *a_day = g_date_time_format (gdt_par, XFICAL_APPT_TIME_FORMAT);
+    gchar *a_day = gdt_par ? g_date_time_format (gdt_par, XFICAL_APPT_TIME_FORMAT)
+                           : g_new0 (gchar, 1);
 
     start_ical_time = appt->starttimecur;
     end_ical_time = appt->endtimecur;
