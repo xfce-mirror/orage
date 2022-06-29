@@ -199,7 +199,8 @@ static gchar *format_time(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
                 g_strlcat (result, "...", result_len);
             }
             else {
-                same_date = !strncmp (appt->starttimecur, appt->endtimecur, 8);
+                same_date = !orage_gdatetime_compare_date (appt->starttimecur2,
+                                                           appt->endtimecur2);
                 if (!same_date) {
                     tmp = g_date_time_format (appt->endtimecur2, "%x");
                     i = g_strlcat (result, tmp, result_len);
