@@ -548,15 +548,7 @@ static void app_rows (el_win *el, GDateTime *a_day_gdt, GDateTime *gdt_par,
              appt;
              appt = xfical_appt_get_next_on_day(a_day, FALSE, el->days
                     , ical_type, file_type)) {
-
-            /* fix bug 8508: Do not show event if it is normal (= has time)
-               and it has ended at midnight (=early morning) */
-            if (!((appt->allDay == FALSE)
-                && strncmp(appt->endtimecur+9, "000000", 6) == 0
-                && orage_gdatetime_compare_date (appt->endtimecur2, a_day_gdt) == 0))
-            {
-                add_el_row (el, appt, gdt_par);
-            }
+            add_el_row (el, appt, gdt_par);
             xfical_appt_free(appt);
         }
     }
