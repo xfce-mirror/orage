@@ -551,10 +551,12 @@ static void app_rows (el_win *el, GDateTime *a_day_gdt, GDateTime *gdt_par,
 
             /* fix bug 8508: Do not show event if it is normal (= has time)
                and it has ended at midnight (=early morning) */
-            if (!(appt->endtimecur[8] == 'T' 
+            if (!((appt->allDay == FALSE)
                 && strncmp(appt->endtimecur+9, "000000", 6) == 0
                 && strncmp(appt->endtimecur, a_day, 8) == 0))
+            {
                 add_el_row (el, appt, gdt_par);
+            }
             xfical_appt_free(appt);
         }
     }
