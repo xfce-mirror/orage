@@ -166,25 +166,19 @@ static char *format_time(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
     const size_t result_len = 51;
     char *tmp;
     int i = 0;
-    gchar *start_ical_time;
-    gchar *end_ical_time;
     gboolean same_date;
-    gchar *a_day = gdt_par ? g_date_time_format (gdt_par, XFICAL_APPT_TIME_FORMAT)
-                           : g_new0 (gchar, 1);
 
-    start_ical_time = appt->starttimecur;
-    end_ical_time = appt->endtimecur;
     result = g_new0(char, result_len);
 
     if (el->page == EVENT_PAGE && el->days == 0) {
         /* special formatting for 1 day VEVENTS */
         if (appt->allDay == FALSE) { /* time part available */
-            if (strncmp(start_ical_time, a_day, 8) < 0)
+            if (gdt_par && (orage_gdatetime_compare_date (appt->starttimecur2, gdt_par) < 0))
                 g_strlcpy (result, "+00:00 ", result_len);
             else
                 append_time (&result[i], appt->starttimecur2, result_len - i);
             i = g_strlcat (result, "- ", result_len);
-            if (strncmp(a_day, end_ical_time , 8) < 0)
+            if ((gdt_par == NULL) || (orage_gdatetime_compare_date (gdt_par, appt->endtimecur2) < 0))
                 g_strlcat (result, "24:00+", result_len);
             else
                 append_time (&result[i], appt->endtimecur2, result_len - i);
@@ -205,7 +199,7 @@ static char *format_time(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
                 g_strlcat (result, "...", result_len);
             }
             else {
-                same_date = !strncmp(start_ical_time, end_ical_time, 8);
+                same_date = !strncmp (appt->starttimecur, appt->endtimecur, 8);
                 if (!same_date) {
                     tmp = g_date_time_format (appt->endtimecur2, "%x");
                     i = g_strlcat (result, tmp, result_len);
@@ -227,7 +221,6 @@ static char *format_time(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
             }
         }
     }
-    g_free (a_day);
 
     return(result);
 }
