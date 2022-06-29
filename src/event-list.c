@@ -160,15 +160,15 @@ static void append_time (gchar *result, GDateTime *gdt, const size_t len)
     g_free (ical_time);
 }
 
-static char *format_time(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
+static gchar *format_time(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
 {
-    char *result;
+    gchar *result;
     const size_t result_len = 51;
-    char *tmp;
+    gchar *tmp;
     int i = 0;
     gboolean same_date;
 
-    result = g_new0(char, result_len);
+    result = g_new0(gchar, result_len);
 
     if (el->page == EVENT_PAGE && el->days == 0) {
         /* special formatting for 1 day VEVENTS */
