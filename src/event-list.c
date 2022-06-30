@@ -396,6 +396,8 @@ static void add_el_row(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
     gchar          /* *s_sort,*/ *s_sort1;
     gchar          *tmp_note;
     guint           len = 50;
+    GDateTime *s_time;
+    GDateTime *e_time;
 
     stime = format_time (el, appt, gdt_par);
     if (appt->display_alarm_orage || appt->display_alarm_notify 
@@ -452,7 +454,12 @@ static void add_el_row(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
         g_free(tmp_note);
     }
 
-    s_sort1 = g_strconcat(appt->starttimecur, appt->endtimecur, NULL);
+    s_time = orage_gdatetime_to_icaltime (appt->starttimecur2, appt->allDay);
+    e_time = orage_gdatetime_to_icaltime (appt->endtimecur2, appt->allDay);
+    s_sort1 = g_strconcat (s_time, e_time, NULL);
+    g_free (s_time);
+    g_free (e_time);
+
 #if 0
     s_sort = g_utf8_collate_key(s_sort1, -1);
 #endif
