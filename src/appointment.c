@@ -2578,7 +2578,6 @@ static gboolean fill_appt_window(appt_win *apptw, const gchar *action,
                                  const gchar *par, GDateTime *gdt_par)
 {
     xfical_appt *appt;
-    gchar *time_str;
 
     /********************* INIT *********************/
     g_message ("%s appointment: %s", action, par);
