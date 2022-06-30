@@ -265,6 +265,7 @@ static void start_time_data_func (G_GNUC_UNUSED GtkTreeViewColumn *col,
     gint len;
     GDateTime *gdt_start_time;
     GDateTime *gdt_end_time;
+    GTimeZone *utc_tz;
 
     if (el->page == EVENT_PAGE) {
         if (!el->today || el->days != 0) { /* reset */
@@ -334,7 +335,9 @@ static void start_time_data_func (G_GNUC_UNUSED GtkTreeViewColumn *col,
         if (g_str_has_suffix(stime2, "- ...")) /* no due time */
         {
             /* long in the future*/
-            gdt_end_time = g_date_time_new_from_iso8601 ("9999-12-31T23:59:59Z", NULL);
+            utc_tz = g_time_zone_new_utc ();
+            gdt_end_time = g_date_time_new (utc_tz, 9999, 12, 31, 23, 59, 59);
+            g_time_zone_unref (utc_tz);
         }
         else /* normal due time*/
         {
@@ -396,8 +399,8 @@ static void add_el_row(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
     gchar          /* *s_sort,*/ *s_sort1;
     gchar          *tmp_note;
     guint           len = 50;
-    GDateTime *s_time;
-    GDateTime *e_time;
+    gchar *s_time;
+    gchar *e_time;
 
     stime = format_time (el, appt, gdt_par);
     if (appt->display_alarm_orage || appt->display_alarm_notify 
