@@ -178,10 +178,10 @@ static gchar *format_time(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
             else
                 append_time (&result[i], appt->starttimecur2, result_len - i);
             i = g_strlcat (result, "- ", result_len);
-            if ((gdt_par == NULL) || (orage_gdatetime_compare_date (gdt_par, appt->endtimecur2) < 0))
+            if ((gdt_par == NULL) || (orage_gdatetime_compare_date (gdt_par, appt->endtimecur) < 0))
                 g_strlcat (result, "24:00+", result_len);
             else
-                append_time (&result[i], appt->endtimecur2, result_len - i);
+                append_time (&result[i], appt->endtimecur, result_len - i);
         }
         else {/* date only appointment */
             g_strlcpy (result, _("All day"), result_len);
@@ -200,14 +200,14 @@ static gchar *format_time(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
             }
             else {
                 same_date = !orage_gdatetime_compare_date (appt->starttimecur2,
-                                                           appt->endtimecur2);
+                                                           appt->endtimecur);
                 if (!same_date) {
-                    tmp = g_date_time_format (appt->endtimecur2, "%x");
+                    tmp = g_date_time_format (appt->endtimecur, "%x");
                     i = g_strlcat (result, tmp, result_len);
                     g_free (tmp);
                     result[i++] = ' ';
                 }
-                append_time (&result[i], appt->endtimecur2, result_len - i);
+                append_time (&result[i], appt->endtimecur, result_len - i);
             }
         }
         else {/* date only */
@@ -216,7 +216,7 @@ static gchar *format_time(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
                 g_strlcat(result, "...", result_len);
             }
             else {
-                tmp = g_date_time_format (appt->endtimecur2, "%x");
+                tmp = g_date_time_format (appt->endtimecur, "%x");
                 g_strlcat(result, tmp, result_len);
                 g_free (tmp);
             }
@@ -455,7 +455,7 @@ static void add_el_row(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
     }
 
     s_time = orage_gdatetime_to_icaltime (appt->starttimecur2, appt->allDay);
-    e_time = orage_gdatetime_to_icaltime (appt->endtimecur2, appt->allDay);
+    e_time = orage_gdatetime_to_icaltime (appt->endtimecur, appt->allDay);
     s_sort1 = g_strconcat (s_time, e_time, NULL);
     g_free (s_time);
     g_free (e_time);

@@ -333,7 +333,7 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
     today = g_date_time_new_now_local ();
     if (todo) {
         e_time = appt->use_due_time ?
-            orage_gdatetime_to_i18_time(appt->endtimecur2, appt->allDay) : g_strdup (s_time);
+            orage_gdatetime_to_i18_time(appt->endtimecur, appt->allDay) : g_strdup (s_time);
         tmp = g_strdup_printf(" %s  %s", e_time, tmp_title);
         g_free(e_time);
     }
@@ -367,7 +367,7 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
     /***** set color *****/
     if (todo) {
         if (appt->use_due_time)
-            gdt_e_time = g_date_time_ref (appt->endtimecur2);
+            gdt_e_time = g_date_time_ref (appt->endtimecur);
         else
             gdt_e_time = g_date_time_new_local (9999, 12, 31, 23, 59, 59);
 
@@ -406,7 +406,7 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
     if (todo) {
         na = _("Never");
         e_time = appt->use_due_time ?
-                 orage_gdatetime_to_i18_time (appt->endtimecur2, appt->allDay)
+                 orage_gdatetime_to_i18_time (appt->endtimecur, appt->allDay)
                  : g_strdup (na);
         c_time = appt->completed && appt->completedtime ?
                  orage_gdatetime_to_i18_time (appt->completedtime, appt->allDay)
@@ -418,7 +418,7 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
         g_free(c_time);
     }
     else { /* it is event */
-        e_time = orage_gdatetime_to_i18_time (appt->endtimecur2, appt->allDay);
+        e_time = orage_gdatetime_to_i18_time (appt->endtimecur, appt->allDay);
         tip = g_strdup_printf(_("Title: %s\n%s Start:\t%s\n End:\t%s%s")
                 , tip_title, tip_location, s_time, e_time, tip_note);
     }
@@ -471,7 +471,7 @@ static gint todo_order(gconstpointer a, gconstpointer b)
     if (!appt1->use_due_time && appt2->use_due_time)
         return(1);
 
-    return g_date_time_compare (appt1->endtimecur2, appt2->endtimecur2);
+    return g_date_time_compare (appt1->endtimecur, appt2->endtimecur);
 }
 
 static void info_process(gpointer a, gpointer pbox)

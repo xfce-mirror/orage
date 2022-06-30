@@ -1765,8 +1765,7 @@ static void appt_init(xfical_appt *appt)
     appt->procedure_params = NULL;
     appt->starttimecur[0] = '\0';
     appt->starttimecur2 = g_date_time_new_now_local ();
-    appt->endtimecur[0] = '\0';
-    appt->endtimecur2 = g_date_time_ref (appt->starttimecur2);
+    appt->endtimecur = g_date_time_ref (appt->starttimecur2);
     appt->freq = XFICAL_FREQ_NONE;
     appt->recur_limit = 0;
     appt->recur_count = 0;
@@ -3017,10 +3016,9 @@ static xfical_appt *xfical_appt_get_next_on_day_internal (const gchar *a_day
 
         orage_gdatetime_unref (appt->starttimecur2);
         appt->starttimecur2 = orage_icaltime_to_gdatetime (start_str, FALSE);
-        orage_gdatetime_unref (appt->endtimecur2);
-        appt->endtimecur2 = orage_icaltime_to_gdatetime (end_str, FALSE);
+        orage_gdatetime_unref (appt->endtimecur);
+        appt->endtimecur = orage_icaltime_to_gdatetime (end_str, FALSE);
         g_strlcpy (appt->starttimecur, start_str, sizeof (appt->starttimecur));
-        g_strlcpy (appt->endtimecur, end_str, sizeof (appt->endtimecur));
 
         return(appt);
     }
@@ -3447,15 +3445,13 @@ static void add_appt_to_list(icalcomponent *c, icaltime_span *span , void *data)
     appt->starttimecur[16] = '\0';
 
     str = icaltime_as_ical_string (edate);
-    g_date_time_unref (appt->endtimecur2);
-    appt->endtimecur2 = orage_icaltime_to_gdatetime (str, FALSE);
-    strncpy(appt->endtimecur, str, 16);
-    appt->endtimecur[16] = '\0';
+    g_date_time_unref (appt->endtimecur);
+    appt->endtimecur = orage_icaltime_to_gdatetime (str, FALSE);
         /* Need to check that returned value is withing limits.
            Check more from BUG 5764 and 7886. */
     /* starttimecur and endtimecur are in local timezone. Compare that to
        limits, which are also localtimezone DATEs */
-    if (g_date_time_compare (appt->endtimecur2, data1->asdate) <= 0
+    if (g_date_time_compare (appt->endtimecur, data1->asdate) <= 0
      || g_date_time_compare (appt->starttimecur2, data1->aedate) >= 0) {
         /* we do not need this. Free the memory */
         xfical_appt_free(appt);
@@ -3770,14 +3766,12 @@ static xfical_appt *xfical_appt_get_next_with_string_internal(char *str
                         if (strcmp(g_par.local_timezone, "floating") == 0) {
                             orage_gdatetime_unref (appt->starttimecur2);
                             appt->starttimecur2 = g_date_time_ref (appt->starttime);
-                            orage_gdatetime_unref (appt->endtimecur2);
-                            appt->endtimecur2 = g_date_time_ref (appt->endtime2);
+                            orage_gdatetime_unref (appt->endtimecur);
+                            appt->endtimecur = g_date_time_ref (appt->endtime2);
                             time_str = orage_gdatetime_to_icaltime (
                                     appt->starttime, appt->allDay);
                             g_strlcpy(appt->starttimecur, time_str,
                                       sizeof (appt->starttimecur));
-                            g_strlcpy(appt->endtimecur, appt->endtime,
-                                      sizeof (appt->endtimecur));
                             g_free (time_str);
                         }
                         else {
@@ -3797,10 +3791,8 @@ static xfical_appt *xfical_appt_get_next_with_string_internal(char *str
                             it = icaltime_convert_to_zone(it
                                     , local_icaltimezone);
                             stime = icaltime_as_ical_string(it);
-                            orage_gdatetime_unref (appt->endtimecur2);
-                            appt->endtimecur2 = orage_icaltime_to_gdatetime (stime, FALSE);
-                            g_strlcpy (appt->endtimecur, stime,
-                                       sizeof (appt->endtimecur));
+                            orage_gdatetime_unref (appt->endtimecur);
+                            appt->endtimecur = orage_icaltime_to_gdatetime (stime, FALSE);
                         }
                         beg = find_next(uid, end, "\nEND:");
                         if (!beg) {
