@@ -100,7 +100,8 @@ typedef struct _app_data
     /* Need to check that returned value is withing limits. Check more from
      * BUG 5764 and 7886.
      */
-    gchar asdate[17], aedate[17];
+    GDateTime *asdate;
+    GDateTime *aedate;
     gint orig_start_hour, orig_end_hour;
 } app_data;
 
@@ -118,8 +119,8 @@ static icaltimezone *local_icaltimezone = NULL;
 /* in timezone_names.c */
 extern const gchar *trans_timezone[];
 
-static struct icaltimetype icaltime_from_gdatetime (GDateTime *gdt,
-                                                    const gboolean date_only)
+static struct icaltimetype icaltimetype_from_gdatetime (GDateTime *gdt,
+                                                        const gboolean date_only)
 {
     gint year;
     gint month;
@@ -151,6 +152,13 @@ static struct icaltimetype icaltime_from_gdatetime (GDateTime *gdt,
     icalt = icaltime_from_string (str);
 
     return icalt;
+}
+
+static GDateTime *icaltimetype_to_gdatetime (struct icaltimetype t)
+{
+    const gchar *i18_date = icaltime_as_ical_string (t);
+
+    return orage_icaltime_to_gdatetime (i18_date, FALSE);
 }
 
 gboolean xfical_set_local_timezone(gboolean testing)
@@ -689,7 +697,7 @@ int xfical_compare_times(xfical_appt *appt)
         g_error ("%s: null start time", G_STRFUNC);
 
     if (appt->use_duration) {
-        stime = icaltime_from_gdatetime (appt->starttime, appt->allDay);
+        stime = icaltimetype_from_gdatetime (appt->starttime, appt->allDay);
         duration = icaldurationtype_from_int(appt->duration);
         etime = icaltime_add(stime, duration);
         text  = icaltime_as_ical_string(etime);
@@ -705,8 +713,8 @@ int xfical_compare_times(xfical_appt *appt)
         if (appt->endtime2 == NULL)
             g_error ("%s: null end time", G_STRFUNC);
 
-        stime = icaltime_from_gdatetime (appt->starttime, appt->allDay);
-        etime = icaltime_from_gdatetime (appt->endtime2, appt->allDay);
+        stime = icaltimetype_from_gdatetime (appt->starttime, appt->allDay);
+        etime = icaltimetype_from_gdatetime (appt->endtime2, appt->allDay);
 
         stime = convert_to_zone (stime, appt->start_tz_loc);
         stime = icaltime_convert_to_zone (stime, local_icaltimezone);
@@ -1054,7 +1062,7 @@ static void appt_add_recur_internal(xfical_appt *appt, icalcomponent *icmp)
     }
     else if (appt->recur_limit == 2) { /* needs to be in UTC */
 /* BUG 2937: convert recur_until to utc from start time timezone */
-        wtime = icaltime_from_gdatetime (appt->recur_until, FALSE);
+        wtime = icaltimetype_from_gdatetime (appt->recur_until, FALSE);
         if ORAGE_STR_EXISTS(appt->start_tz_loc) {
         /* Null == floating => no special action needed */
             if (strcmp(appt->start_tz_loc, "floating") == 0) {
@@ -1127,7 +1135,7 @@ static void appt_add_starttime_internal(xfical_appt *appt, icalcomponent *icmp)
     }
 
     if (appt->starttime) {
-        wtime = icaltime_from_gdatetime (appt->starttime, appt->allDay);
+        wtime = icaltimetype_from_gdatetime (appt->starttime, appt->allDay);
         if (appt->allDay) { /* date */
             icalcomponent_add_property(icmp
                     , icalproperty_new_dtstart(wtime));
@@ -1174,7 +1182,7 @@ static void appt_add_endtime_internal(xfical_appt *appt, icalcomponent *icmp)
     }
     else if (appt->endtime2) {
         end_time_done = FALSE;
-        wtime = icaltime_from_gdatetime (appt->endtime2, FALSE);
+        wtime = icaltimetype_from_gdatetime (appt->endtime2, FALSE);
         if (appt->allDay) { 
             /* need to add 1 day. For example:
              * DTSTART=20070221 & DTEND=20070223
@@ -1222,7 +1230,7 @@ static void appt_add_completedtime_internal(xfical_appt *appt
         return; /* only VTODO can have completed time */
     }
     if ((appt->completed) && (appt->completedtime)) {
-        wtime = icaltime_from_gdatetime (appt->completedtime, FALSE);
+        wtime = icaltimetype_from_gdatetime (appt->completedtime, FALSE);
         if ORAGE_STR_EXISTS(appt->completed_tz_loc) {
         /* Null == floating => no special action needed */
             if (strcmp(appt->completed_tz_loc, "floating") == 0) {
@@ -1972,7 +1980,7 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
         }
     }
     if (appt->recur_limit == 2) { /* BUG 2937: convert back from UTC */
-        wtime = icaltime_from_gdatetime (appt->recur_until, FALSE);
+        wtime = icaltimetype_from_gdatetime (appt->recur_until, FALSE);
         if (! ORAGE_STR_EXISTS(appt->start_tz_loc) )
             wtime = icaltime_convert_to_zone(wtime, local_icaltimezone);
         else if (strcmp(appt->start_tz_loc, "floating") == 0)
@@ -3447,8 +3455,8 @@ static void add_appt_to_list(icalcomponent *c, icaltime_span *span , void *data)
            Check more from BUG 5764 and 7886. */
     /* starttimecur and endtimecur are in local timezone. Compare that to
        limits, which are also localtimezone DATEs */
-    if (strncmp(appt->endtimecur, data1->asdate, 16) <= 0
-    || strncmp(appt->starttimecur, data1->aedate, 16) >= 0) {
+    if (g_date_time_compare (appt->endtimecur2, data1->asdate) <= 0
+     || g_date_time_compare (appt->starttimecur2, data1->aedate) >= 0) {
         /* we do not need this. Free the memory */
         xfical_appt_free(appt);
     }
@@ -3493,10 +3501,8 @@ static void xfical_get_each_app_within_time_internal (const gchar *a_day,
     data1.file_type = file_type;
         /* Need to check that returned value is withing limits.
            Check more from BUG 5764 and 7886. */
-    g_strlcpy((char *)&data1.asdate, icaltime_as_ical_string(asdate), 17);
-    g_strlcpy(&data1.asdate[8], "T000000", 9);
-    g_strlcpy((char *)&data1.aedate, icaltime_as_ical_string(aedate), 17);
-    g_strlcpy(&data1.aedate[8], "T000000", 9);
+    data1.asdate = orage_icaltime_to_gdatetime (a_day, FALSE);
+    data1.aedate = icaltimetype_to_gdatetime (aedate);
     /* Hack for bug 8382: Take one more day earlier and later than needed
        due to UTC conversion. (And drop those days later then.) */
     icaltime_adjust(&asdate, -1, 0, 0, 0);
@@ -3530,6 +3536,9 @@ static void xfical_get_each_app_within_time_internal (const gchar *a_day,
                     , add_appt_to_list, (void *)&data1);
         }
     }
+
+    g_date_time_unref (data1.asdate);
+    g_date_time_unref (data1.aedate);
 }
 
 /* This will (probably) replace xfical_appt_get_next_on_day */
@@ -3772,7 +3781,7 @@ static xfical_appt *xfical_appt_get_next_with_string_internal(char *str
                             g_free (time_str);
                         }
                         else {
-                            it = icaltime_from_gdatetime (appt->starttime,
+                            it = icaltimetype_from_gdatetime (appt->starttime,
                                                           appt->allDay);
                             it = convert_to_zone(it, appt->start_tz_loc);
                             it = icaltime_convert_to_zone(it
@@ -3782,7 +3791,7 @@ static xfical_appt *xfical_appt_get_next_with_string_internal(char *str
                             appt->starttimecur2 = orage_icaltime_to_gdatetime (stime, FALSE);
                             g_strlcpy (appt->starttimecur, stime,
                                        sizeof (appt->starttimecur));
-                            it = icaltime_from_gdatetime (appt->endtime2,
+                            it = icaltimetype_from_gdatetime (appt->endtime2,
                                                           appt->allDay);
                             it = convert_to_zone(it, appt->end_tz_loc);
                             it = icaltime_convert_to_zone(it
