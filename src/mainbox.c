@@ -329,7 +329,7 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
     tmp_title = appt->title
             ? orage_process_text_commands(appt->title)
             : g_strdup(_("No title defined"));
-    s_time = orage_gdatetime_to_i18_time (appt->starttimecur2, appt->allDay);
+    s_time = orage_gdatetime_to_i18_time (appt->starttimecur, appt->allDay);
     today = g_date_time_new_now_local ();
     if (todo) {
         e_time = appt->use_due_time ?
@@ -338,8 +338,8 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
         g_free(e_time);
     }
     else {
-        s_timeonly = g_date_time_format (appt->starttimecur2, "%R");
-        if (orage_gdatetime_compare_date (today, appt->starttimecur2) == 0)
+        s_timeonly = g_date_time_format (appt->starttimecur, "%R");
+        if (orage_gdatetime_compare_date (today, appt->starttimecur) == 0)
             tmp = g_strdup_printf(" %s* %s", s_timeonly, tmp_title);
         else {
             if (g_par.show_event_days > 1)
@@ -373,7 +373,7 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
 
         if (g_date_time_compare (gdt_e_time, today) < 0) /* gone */
             gtk_widget_set_name (label, ORAGE_MAINBOX_RED);
-        else if (g_date_time_compare (appt->starttimecur2, today) <= 0
+        else if (g_date_time_compare (appt->starttimecur, today) <= 0
              &&  g_date_time_compare (gdt_e_time, today) >= 0)
         {
             gtk_widget_set_name (label, ORAGE_MAINBOX_BLUE);
@@ -456,7 +456,7 @@ static gint event_order(gconstpointer a, gconstpointer b)
     appt1 = (xfical_appt *)a;
     appt2 = (xfical_appt *)b;
 
-    return g_date_time_compare (appt1->starttimecur2, appt2->starttimecur2);
+    return g_date_time_compare (appt1->starttimecur, appt2->starttimecur);
 }
 
 static gint todo_order(gconstpointer a, gconstpointer b)

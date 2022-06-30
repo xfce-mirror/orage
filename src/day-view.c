@@ -557,7 +557,7 @@ static void add_row (day_win *dw, const xfical_appt *appt)
     gint end_hour;
 
     /* First clarify timings */
-    gdt_start = g_date_time_ref (appt->starttimecur2);
+    gdt_start = g_date_time_ref (appt->starttimecur);
     gdt_end   = g_date_time_ref (appt->endtimecur);
     gdt_first = g_date_time_ref (dw->a_day);
 

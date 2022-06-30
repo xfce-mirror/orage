@@ -121,16 +121,8 @@ typedef struct _xfical_appt
 
     /* For repeating events cur times show current repeating event. Normal times
      * are always the real (=first) start and end times.
-     *
-     * Time format must be:
-     * yyyymmdd[Thhmiss[Z]] = %04d%02d%02dT%02d%02d%02d
-     * T means it has also time part
-     * Z means it is in UTC format
      */
-    __attribute__ ((deprecated ("replace with GDateTime")))
-    gchar  starttimecur[17];
-    GDateTime *starttimecur2;
-
+    GDateTime *starttimecur;
     GDateTime *endtimecur;
     xfical_freq freq;
     gint   recur_limit; /* 0 = no limit  1 = count  2 = until */
