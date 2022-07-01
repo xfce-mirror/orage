@@ -1417,9 +1417,9 @@ msgid ""
 "Note that this also shows all urgencies.\n"
 "Note that repeating events may appear earlier in the list as the first occurrence only is listed."
 msgstr ""
-"Eğer sadece ilk tekrarlanan olayı görmek istiyorsanız bunu işareyleyin. Öntanımlı olarak tümü gösterilir.\n"
-"Bunun ayrıca önemleri de göstereceğini dikkate alın.\n"
-"Sadece ilk sonuç listeleneceğinden, tekrarlanan olayların daha önceden görüneceğini unutmayın."
+"Eğer yalnızca ilk yineleyen olayı görmek istiyorsanız bunu imleyin. Öntanımlı olarak tümü gösterilir.\n"
+"Bunun ayrıca önemleri de göstereceğini göz önünde bulundurun.\n"
+"Yalnızca ilk sonuç listeleneceğinden, yineleyen olayların daha önceden görüneceğini unutmayın."
 
 #: ../src/event-list.c:1287
 msgid "also old"
@@ -1430,7 +1430,7 @@ msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed'."
 msgstr ""
-"Eğer eski olayları da görmek istiyorsanız bunu işaretleyin. Bu, uzun listeleri önleyebilmek adına sadece 'sadece ilk tekrarlananı göster' etkin ise seçilebilir.\n"
+"Eğer eski olayları da görmek istiyorsanız bunu imleyin. Bu, uzun listeleri önleyebilmek adına yalnızca 'yalnızca ilk yineleneni göster' etkin ise seçilebilir.\n"
 "Ek gün seçiminin daha yeni randevular listelenmişse hala tanımlı olacağını unutmayın."
 
 #: ../src/event-list.c:1330
@@ -1491,15 +1491,15 @@ msgstr "Takvim dosyaları"
 
 #: ../src/interface.c:642
 msgid "Current foreign files"
-msgstr "Son eklenen dosyalar"
+msgstr "Şu anki yabancı dosyalar"
 
 #: ../src/interface.c:665
 msgid "READ ONLY"
-msgstr "SADECE OKUMA İZNİ"
+msgstr "YALNIZCA OKUMA İZNİ"
 
 #: ../src/interface.c:667
 msgid "READ WRITE"
-msgstr "SADECE YAZMA İZNİ"
+msgstr "YALNIZCA YAZMA İZNİ"
 
 #: ../src/interface.c:692
 msgid "***** No foreign files *****"
@@ -1507,11 +1507,11 @@ msgstr "***** Hiç ek dosya yok *****"
 
 #: ../src/interface.c:706
 msgid "Foreign file add failed"
-msgstr "Harici dosya ekleme başarısız"
+msgstr "Yabancı dosya ekleme başarısız"
 
 #: ../src/interface.c:715
 msgid "Orage can only handle 10 foreign files. Limit reached."
-msgstr "Orage en fazla 10 harici dosyayı işleyebilir. Sınıra ulaşıldı."
+msgstr "Orage, en çok 10 yabancı dosyayı işleyebilir. Sınıra ulaşıldı."
 
 #: ../src/interface.c:725
 msgid "Filename is empty."
@@ -1578,16 +1578,16 @@ msgid ""
 "Note that only main file appointments are read.\n"
 "Archived and Foreign events are not exported."
 msgstr ""
-"Sadece esas dosya görevleri okunacaktır.\n"
-"Arşivlenmiş ve harici görevler dışa aktarılmayacaktır."
+"Yalnızca ana dosya görevleri okunacaktır.\n"
+"Arşivlenmiş ve Yabancı görevler dışa aktarılmayacaktır."
 
 #: ../src/interface.c:1161
 msgid ""
 "Note that only main file appointments are read.\n"
 "Foreign events are not exported."
 msgstr ""
-"Sadece esas dosya görevleri okunacaktır.\n"
-"Harici görevler gösterilmemektedir."
+"Yalnızca ana dosya görevleri okunacaktır.\n"
+"Yabancı görevler dışa aktarılmamaktadır."
 
 #: ../src/interface.c:1164
 msgid "You can easily drag these from event-list window."
@@ -1620,9 +1620,9 @@ msgid ""
 "This is useful for example when doing export and moving orage\n"
 "appointments to another system."
 msgstr ""
-"Bütün arşivleri esas orage dosyasına getirir ve arch dosyasını siler.\n"
-"Bu işlem dışa aktarmada ve farklı sistemlerde orage kullanmak için\n"
-"örnek sayılabilir."
+"Tüm arşivleri ana orage dosyasına getir ve arch dosyasını sil.\n"
+"Bu işlem, başka sistemlerde orage kullanmak için dışa aktarmada\n"
+"kullanışlıdır."
 
 #: ../src/interface.c:1229
 msgid "Orage files"
@@ -1680,15 +1680,15 @@ msgstr "Arşiv dosyası"
 
 #: ../src/interface.c:1420
 msgid "Foreign files"
-msgstr "Ek dosyalar"
+msgstr "Yabancı dosyalar"
 
 #: ../src/interface.c:1427
 msgid "Add new foreign file"
-msgstr "Yeni dosya ekle"
+msgstr "Yeni yabancı dosya ekle"
 
 #: ../src/interface.c:1435
 msgid "Foreign file:"
-msgstr "Ek dosya:"
+msgstr "Yabancı dosya:"
 
 #: ../src/interface.c:1466
 msgid "Visible name:"
@@ -1696,15 +1696,15 @@ msgstr "Görünür ad:"
 
 #: ../src/interface.c:1476
 msgid "Read only"
-msgstr "Sadece okuma izni"
+msgstr "Yalnızca okuma izni"
 
 #: ../src/interface.c:1486
 msgid ""
 "Set this if you want to make sure that this file is never modified by Orage.\n"
 "Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
 msgstr ""
-"Bu özelliği eğer Orage dosyaya hiç müdahale etmemişse kullanın.\n"
-"Eğer harici dosyaya müdahale etmiş iseniz, dosyayı aldığınız programla o dosya uyumsuzluk gösterebilir!"
+"Bu özelliği, eğer Orage dosyaya hiç müdahale etmemişse kullanın.\n"
+"Eğer yabancı dosyaya müdahale ettiyseniz, dosyayı aldığınız programla uyumsuzluk gösterebilir!"
 
 #: ../src/interface.c:1488
 msgid "This internal name is displayed to user instead of file name."
@@ -1761,7 +1761,7 @@ msgstr "\tlibnotify kullanılmıyor.\n"
 #: ../src/main.c:289
 #, c-format
 msgid "\tUsing automatic archiving.\n"
-msgstr "\tOtomatik arşivleme kullanılıyor.\n"
+msgstr "\tKendiliğinden arşivleme kullanılıyor.\n"
 
 #: ../src/main.c:291
 #, c-format
@@ -1818,11 +1818,11 @@ msgstr "--toggle (-t) \t\tOrage'i görünür / görünmez yap\n"
 
 #: ../src/main.c:320
 msgid "--add-foreign (-a) file [RW] [name] \tadd a foreign file\n"
-msgstr "--add-foreign (-a) file [RW] [name] \tharici bir dosya ekle\n"
+msgstr "--add-foreign (-a) file [RW] [name] \tyabancı dosya ekle\n"
 
 #: ../src/main.c:321
 msgid "--remove-foreign (-r) file \tremove a foreign file\n"
-msgstr "--remove-foreign (-r) dosya \tsonradan eklenmiş dosyayı sil\n"
+msgstr "--remove-foreign (-r) dosya \tyabancı dosyayı kaldır\n"
 
 #: ../src/main.c:322
 msgid ""
@@ -1843,8 +1843,8 @@ msgid ""
 "\twithout dbus [files] and foreign file options(-a & -r) can only be used "
 "when starting orage \n"
 msgstr ""
-"\tdbus olmadığı zaman orage sadece [dosyalar] ve diğer dosya seçenekleri (-a"
-" & -r) parametreleriyle çalışabilir \n"
+"\tdbus olmadan orage yalnızca [dosyalar] ve yabancı dosya seçenekleri (-a & "
+"-r) parametreleriyle çalışabilir\n"
 
 #: ../src/main.c:540
 #, c-format
@@ -2113,7 +2113,7 @@ msgstr ""
 
 #: ../src/parameters.c:1010
 msgid "Show only first repeating event"
-msgstr "Sadece ilk tekrar eden olayı göster"
+msgstr "Yalnızca ilk yineleyen olayı göster"
 
 #: ../src/parameters.c:1027
 msgid "Day view window default first day"
@@ -4522,7 +4522,7 @@ msgid ""
 "Contents of those files are read and converted into Orage, but those files "
 "are left untouched."
 msgstr ""
-"Orage, grup takvimi özelliğine sahip değildir, sadece tek kullanıcı için "
+"Orage, grup takvimi özelliği bulundurmaz, yalnzıca tek kullanıcı için "
 "kullanılabilir. İçe aktarılması gereken ical dosyaları için bir dosya "
 "listesi alır. Bu dosyaların içeriği okunur ve Orage'a dönüştürülür, ancak bu"
 " dosyalara dokunulmaz."
