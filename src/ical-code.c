@@ -2905,8 +2905,8 @@ static xfical_appt *xfical_appt_get_next_on_day_internal (const gchar *a_day
     struct icalrecurrencetype rrule;
     icalrecur_iterator* ri;
     icalcomponent_kind ikind = ICAL_VEVENT_COMPONENT;
-    gchar *start_str;
-    gchar *end_str;
+    const gchar *start_str;
+    const gchar *end_str;
 
     /* setup period to test */
     asdate = icaltime_from_string(a_day);
@@ -3359,6 +3359,7 @@ static void add_appt_to_list(icalcomponent *c, icaltime_span *span , void *data)
     GDateTime *gdt_end;
     GDateTime *gdt_tmp;
     gchar *str;
+    const gchar *i18_time;
     app_data *data1;
         /* Need to check that returned value is withing limits.
            Check more from BUG 5764 and 7886. */
@@ -3421,13 +3422,13 @@ static void add_appt_to_list(icalcomponent *c, icaltime_span *span , void *data)
     sdate = icaltime_convert_to_zone(sdate, local_icaltimezone);
     edate = icaltime_convert_to_zone(edate, local_icaltimezone);
 
-    str = icaltime_as_ical_string (sdate);
+    i18_time = icaltime_as_ical_string (sdate);
     orage_gdatetime_unref (appt->starttimecur);
-    appt->starttimecur = orage_icaltime_to_gdatetime (str, FALSE);
+    appt->starttimecur = orage_icaltime_to_gdatetime (i18_time, FALSE);
 
-    str = icaltime_as_ical_string (edate);
+    i18_time = icaltime_as_ical_string (edate);
     g_date_time_unref (appt->endtimecur);
-    appt->endtimecur = orage_icaltime_to_gdatetime (str, FALSE);
+    appt->endtimecur = orage_icaltime_to_gdatetime (i18_time, FALSE);
         /* Need to check that returned value is withing limits.
            Check more from BUG 5764 and 7886. */
     /* starttimecur and endtimecur are in local timezone. Compare that to
