@@ -1039,9 +1039,6 @@ static gboolean orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
                 dd -= 1;
             }
 
-            g_debug ("%s: alarm=%s hh=%d hh=%d min=%d", G_STRFUNC,
-                     cur_alarm->alarm_time, dd, hh, min);
-
             g_string_append(tooltip, "<span weight=\"bold\">");
             tooltip_highlight_helper = g_string_new(" </span>");
             if (cur_alarm->temporary) { /* let's add a small mark */
