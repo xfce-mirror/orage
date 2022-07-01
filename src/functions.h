@@ -174,9 +174,11 @@ gchar *orage_rc_get_group(OrageRc *orc);
 gchar *orage_rc_get_str(OrageRc *orc, const gchar *key, const gchar *def);
 gint   orage_rc_get_int(OrageRc *orc, const gchar *key, gint def);
 gboolean orage_rc_get_bool(OrageRc *orc, const gchar *key, gboolean def);
+GDateTime *orage_rc_get_gdatetime (OrageRc *orc, const gchar *key, GDateTime *def);
 void orage_rc_put_str(OrageRc *orc, const gchar *key, const gchar *val);
 void orage_rc_put_int(OrageRc *orc, const gchar *key, gint val);
 void orage_rc_put_bool(OrageRc *orc, const gchar *key, gboolean val);
+void orage_rc_put_gdatetime (OrageRc *orc, const gchar *key, GDateTime *gdt);
 gboolean orage_rc_exists_item(OrageRc *orc, const gchar *key);
 void orage_rc_del_item(OrageRc *orc, const gchar *key);
 

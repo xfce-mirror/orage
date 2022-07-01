@@ -79,6 +79,7 @@ static void alarm_free(gpointer galarm)
     alarm_struct *l_alarm = (alarm_struct *)galarm;
 
     g_free(l_alarm->alarm_time);
+    orage_gdatetime_unref (l_alarm->alarm_time2);
     g_free(l_alarm->action_time);
     g_free(l_alarm->uid);
     g_free(l_alarm->title);
@@ -166,6 +167,8 @@ static alarm_struct *alarm_copy(alarm_struct *l_alarm, gboolean init)
     /* first l_alarm values which are not modified */
     if (l_alarm->alarm_time != NULL)
         n_alarm->alarm_time = g_strdup(l_alarm->alarm_time);
+    if (l_alarm->alarm_time2 != NULL)
+        n_alarm->alarm_time2 = g_date_time_ref (l_alarm->alarm_time2);
     if (l_alarm->action_time != NULL)
         n_alarm->action_time = g_strdup(l_alarm->action_time);
     if (l_alarm->uid != NULL)
@@ -245,6 +248,7 @@ static alarm_struct *alarm_read_next_alarm(OrageRc *orc, GDateTime *gdt)
 
     new_alarm->uid = orage_rc_get_group(orc);
     new_alarm->alarm_time = orage_rc_get_str(orc, "ALARM_TIME", "0000");
+    new_alarm->alarm_time2 = orage_rc_get_gdatetime (orc, "ALARM_TIME", NULL);
     new_alarm->action_time = orage_rc_get_str(orc, "ACTION_TIME", "0000");
     new_alarm->title = orage_rc_get_str(orc, "TITLE", NULL);
     new_alarm->description = orage_rc_get_str(orc, "DESCRIPTION", NULL);
@@ -594,10 +598,10 @@ static void on_btRecreateReminder_clicked (G_GNUC_UNUSED GtkButton *button,
     gdt_local_dhm = g_date_time_add_minutes (gdt_local_dh, minutes);
     time_str = g_date_time_format (gdt_local_dhm, XFICAL_APPT_TIME_FORMAT);
     n_alarm->alarm_time = g_strdup (time_str);
+    n_alarm->alarm_time2 = gdt_local_dhm;
     g_date_time_unref (gdt_local);
     g_date_time_unref (gdt_local_d);
     g_date_time_unref (gdt_local_dh);
-    g_date_time_unref (gdt_local_dhm);
     g_free (time_str);
     alarm_add(n_alarm);
     setup_orage_alarm_clock();

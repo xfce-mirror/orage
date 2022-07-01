@@ -1243,6 +1243,27 @@ gboolean orage_rc_get_bool (OrageRc *orc, const gchar *key, const gboolean def)
     return(ret);
 }
 
+GDateTime *orage_rc_get_gdatetime (OrageRc *orc, const gchar *key, GDateTime *def)
+{
+    GError *error = NULL;
+    gchar *ret;
+    GDateTime *gdt;
+
+    ret = g_key_file_get_string (orc->rc, orc->cur_group, key, &error);
+    if ((ret == NULL) && error)
+    {
+        gdt = def ? g_date_time_ref (def) : NULL;
+        g_debug ("%s: str (%s) group (%s) in RC file (%s) not found, "
+                 "using default", G_STRFUNC, key, orc->cur_group,
+                 orc->file_name);
+        g_error_free (error);
+    }
+    else
+        gdt = orage_icaltime_to_gdatetime (ret, FALSE);
+
+    return gdt;
+}
+
 void orage_rc_put_str (OrageRc *orc, const gchar *key, const gchar *val)
 {
     if (ORAGE_STR_EXISTS(val))
@@ -1257,6 +1278,14 @@ void orage_rc_put_int (OrageRc *orc, const gchar *key, const gint val)
 void orage_rc_put_bool (OrageRc *orc, const gchar *key, const gboolean val)
 {
     g_key_file_set_boolean (orc->rc, orc->cur_group, key, val);
+}
+
+void orage_rc_put_gdatetime (OrageRc *orc, const gchar *key, GDateTime *gdt)
+{
+    gchar *icaltime = orage_gdatetime_to_icaltime (gdt, FALSE);
+
+    g_key_file_set_string (orc->rc, orc->cur_group, key, icaltime);
+    g_free (icaltime);
 }
 
 gboolean orage_rc_exists_item (OrageRc *orc, const gchar *key)

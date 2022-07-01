@@ -37,6 +37,7 @@ typedef struct _alarm_struct
 {
     __attribute__ ((deprecated ("replace with GDateTime")))
     gchar   *alarm_time;
+    GDateTime *alarm_time2;
     gchar   *action_time; /* alarm is based on this time */
     gchar   *uid;
     gchar   *title;

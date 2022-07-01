@@ -2617,6 +2617,7 @@ struct icaltimetype exdatetime;
         else
             next_alarm_time = icaltime_convert_to_zone(next_alarm_time, local_icaltimezone);
         new_alarm->alarm_time = g_strdup(icaltime_as_ical_string(next_alarm_time));
+        new_alarm->alarm_time2 = icaltimetype_to_gdatetime (next_alarm_time);
     /* alarm_start_diff goes from start to alarm, so we need to revert it
      * here since now we need to get the start time from alarm. */
         if (alarm_start_diff.is_neg)
