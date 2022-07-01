@@ -94,13 +94,15 @@ static void alarm_free(gpointer galarm)
 
 static gint alarm_order(gconstpointer a, gconstpointer b)
 {
-    if (((alarm_struct *)a)->alarm_time == NULL)
+    const alarm_struct *alarm_a = (const alarm_struct *)a;
+    const alarm_struct *alarm_b = (const alarm_struct *)b;
+
+    if (alarm_a->alarm_time2 == NULL)
         return(1);
-    else if (((alarm_struct *)b)->alarm_time == NULL)
+    else if (alarm_b->alarm_time2 == NULL)
         return(-1);
 
-    return(strcmp(((alarm_struct *)a)->alarm_time
-                , ((alarm_struct *)b)->alarm_time));
+    return g_date_time_compare (alarm_a->alarm_time2, alarm_b->alarm_time2);
 }
 
 void alarm_list_free(void)
