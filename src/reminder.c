@@ -62,6 +62,21 @@
 #define NOTIFY_CHECK_VERSION(x,y,z) 0
 #endif
 
+#define RC_ALARM_TIME "ALARM_TIME"
+#define RC_ACTION_TIME "ACTION_TIME"
+#define RC_TITLE "TITLE"
+#define RC_DESCRIPTION "DESCRIPTION"
+#define RC_DISPLAY_ORAGE "DISPLAY_ORAGE"
+#define RC_TEMPORARY "TEMPORARY"
+#define RC_DISPLAY_NOTIFY "DISPLAY_NOTIFY"
+#define RC_NOTIFY_TIMEOUT "NOTIFY_TIMEOUT"
+#define RC_AUDIO "AUDIO"
+#define RC_SOUND "SOUND"
+#define RC_REPEAT_CNT "REPEAT_CNT"
+#define RC_REPEAT_DELAY "REPEAT_DELAY"
+#define RC_PROCEDURE "PROCEDURE"
+#define RC_CMD "CMD"
+
 typedef struct _orage_ddmmhh_hbox
 {
     GtkWidget *time_hbox
@@ -248,26 +263,26 @@ static alarm_struct *alarm_read_next_alarm(OrageRc *orc, GDateTime *gdt)
     new_alarm = g_new0(alarm_struct, 1);
 
     new_alarm->uid = orage_rc_get_group(orc);
-    new_alarm->alarm_time = orage_rc_get_str(orc, "ALARM_TIME", "0000");
-    new_alarm->alarm_time2 = orage_rc_get_gdatetime (orc, "ALARM_TIME", NULL);
-    new_alarm->action_time = orage_rc_get_str(orc, "ACTION_TIME", "0000");
-    new_alarm->title = orage_rc_get_str(orc, "TITLE", NULL);
-    new_alarm->description = orage_rc_get_str(orc, "DESCRIPTION", NULL);
+    new_alarm->alarm_time = orage_rc_get_str(orc, RC_ALARM_TIME, "0000");
+    new_alarm->alarm_time2 = orage_rc_get_gdatetime (orc, RC_ALARM_TIME, NULL);
+    new_alarm->action_time = orage_rc_get_str(orc, RC_ACTION_TIME, "0000");
+    new_alarm->title = orage_rc_get_str(orc, RC_TITLE, NULL);
+    new_alarm->description = orage_rc_get_str(orc, RC_DESCRIPTION, NULL);
     new_alarm->persistent = TRUE; /* this must be */
-    new_alarm->temporary = orage_rc_get_bool(orc, "TEMPORARY", FALSE);
-    new_alarm->display_orage = orage_rc_get_bool(orc, "DISPLAY_ORAGE", FALSE);
+    new_alarm->temporary = orage_rc_get_bool(orc, RC_TEMPORARY, FALSE);
+    new_alarm->display_orage = orage_rc_get_bool(orc, RC_DISPLAY_ORAGE, FALSE);
 
 #ifdef HAVE_NOTIFY
-    new_alarm->display_notify = orage_rc_get_bool(orc, "DISPLAY_NOTIFY", FALSE);
-    new_alarm->notify_timeout = orage_rc_get_int(orc, "NOTIFY_TIMEOUT", FALSE);
+    new_alarm->display_notify = orage_rc_get_bool(orc, RC_DISPLAY_NOTIFY, FALSE);
+    new_alarm->notify_timeout = orage_rc_get_int(orc, RC_NOTIFY_TIMEOUT, FALSE);
 #endif
 
-    new_alarm->audio = orage_rc_get_bool(orc, "AUDIO", FALSE);
-    new_alarm->sound = orage_rc_get_str(orc, "SOUND", NULL);
-    new_alarm->repeat_cnt = orage_rc_get_int(orc, "REPEAT_CNT", 0);
-    new_alarm->repeat_delay = orage_rc_get_int(orc, "REPEAT_DELAY", 2);
-    new_alarm->procedure = orage_rc_get_bool(orc, "PROCEDURE", FALSE);
-    new_alarm->cmd = orage_rc_get_str(orc, "CMD", NULL);
+    new_alarm->audio = orage_rc_get_bool(orc, RC_AUDIO, FALSE);
+    new_alarm->sound = orage_rc_get_str(orc, RC_SOUND, NULL);
+    new_alarm->repeat_cnt = orage_rc_get_int(orc, RC_REPEAT_CNT, 0);
+    new_alarm->repeat_delay = orage_rc_get_int(orc, RC_REPEAT_DELAY, 2);
+    new_alarm->procedure = orage_rc_get_bool(orc, RC_PROCEDURE, FALSE);
+    new_alarm->cmd = orage_rc_get_str(orc, RC_CMD, NULL);
 
     /* let's first check if the time has gone so that we need to
      * send that delayed l_alarm or can we just ignore it since it is
@@ -321,24 +336,24 @@ static void alarm_store(gpointer galarm, gpointer par)
 
     orage_rc_set_group(par, l_alarm->uid);
 
-    orage_rc_put_str(orc, "ALARM_TIME", l_alarm->alarm_time);
-    orage_rc_put_str(orc, "ACTION_TIME", l_alarm->action_time);
-    orage_rc_put_str(orc, "TITLE", l_alarm->title);
-    orage_rc_put_str(orc, "DESCRIPTION", l_alarm->description);
-    orage_rc_put_bool(orc, "DISPLAY_ORAGE", l_alarm->display_orage);
-    orage_rc_put_bool(orc, "TEMPORARY", l_alarm->temporary);
+    orage_rc_put_str(orc, RC_ALARM_TIME, l_alarm->alarm_time);
+    orage_rc_put_str(orc, RC_ACTION_TIME, l_alarm->action_time);
+    orage_rc_put_str(orc, RC_TITLE, l_alarm->title);
+    orage_rc_put_str(orc, RC_DESCRIPTION, l_alarm->description);
+    orage_rc_put_bool(orc, RC_DISPLAY_ORAGE, l_alarm->display_orage);
+    orage_rc_put_bool(orc, RC_TEMPORARY, l_alarm->temporary);
 
 #ifdef HAVE_NOTIFY
-    orage_rc_put_bool(orc, "DISPLAY_NOTIFY", l_alarm->display_notify);
-    orage_rc_put_int(orc, "NOTIFY_TIMEOUT", l_alarm->notify_timeout);
+    orage_rc_put_bool(orc, RC_DISPLAY_NOTIFY, l_alarm->display_notify);
+    orage_rc_put_int(orc, RC_NOTIFY_TIMEOUT, l_alarm->notify_timeout);
 #endif
 
-    orage_rc_put_bool(orc, "AUDIO", l_alarm->audio);
-    orage_rc_put_str(orc, "SOUND", l_alarm->sound);
-    orage_rc_put_int(orc, "REPEAT_CNT", l_alarm->repeat_cnt);
-    orage_rc_put_int(orc, "REPEAT_DELAY", l_alarm->repeat_delay);
-    orage_rc_put_bool(orc, "PROCEDURE", l_alarm->procedure);
-    orage_rc_put_str(orc, "CMD", l_alarm->cmd);
+    orage_rc_put_bool(orc, RC_AUDIO, l_alarm->audio);
+    orage_rc_put_str(orc, RC_SOUND, l_alarm->sound);
+    orage_rc_put_int(orc, RC_REPEAT_CNT, l_alarm->repeat_cnt);
+    orage_rc_put_int(orc, RC_REPEAT_DELAY, l_alarm->repeat_delay);
+    orage_rc_put_bool(orc, RC_PROCEDURE, l_alarm->procedure);
+    orage_rc_put_str(orc, RC_CMD, l_alarm->cmd);
 }
 
 static void store_persistent_alarms(void)
