@@ -242,8 +242,7 @@ static OrageRc *orage_persistent_file_open(gboolean read_only)
 
 static alarm_struct *alarm_read_next_alarm(OrageRc *orc, GDateTime *gdt)
 {
-    gint strcmp_result;
-    gchar *time_str;
+    gint cmp_result;
     alarm_struct *new_alarm;
 
     new_alarm = g_new0(alarm_struct, 1);
@@ -273,10 +272,9 @@ static alarm_struct *alarm_read_next_alarm(OrageRc *orc, GDateTime *gdt)
     /* let's first check if the time has gone so that we need to
      * send that delayed l_alarm or can we just ignore it since it is
      * still in the future */
-    time_str = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT);
-    strcmp_result = strcmp (time_str, new_alarm->alarm_time);
-    g_free (time_str);
-    if (strcmp_result < 0) {
+    cmp_result = g_date_time_compare (gdt, new_alarm->alarm_time2);
+
+    if (cmp_result < 0) {
         /* real l_alarm has not happened yet */
         if (new_alarm->temporary)
             /* we need to store this or it will get lost */
