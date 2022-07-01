@@ -871,18 +871,6 @@ gchar *orage_gdatetime_to_icaltime (GDateTime *gdt, const gboolean date_only)
     return str;
 }
 
-char *orage_icaltime_to_i18_time_only(const char *icaltime)
-{
-    GDateTime *gdt;
-    gchar *i18_time;
-
-    gdt = orage_icaltime_to_gdatetime (icaltime, TRUE);
-    i18_time = g_date_time_format (gdt, "%R");
-    g_date_time_unref (gdt);
-
-    return(i18_time);
-}
-
 void orage_gdatetime_unref (GDateTime *gdt)
 {
     if (gdt == NULL)
