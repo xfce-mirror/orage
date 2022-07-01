@@ -764,15 +764,13 @@ static void create_procedure_reminder(alarm_struct *l_alarm)
 
     cmd = orage_replace_text(cmd, "<&D>", l_alarm->description);
 
-    if (l_alarm->alarm_time)
-        atime = orage_icaltime_to_i18_time (l_alarm->alarm_time);
+    if (l_alarm->alarm_time2)
+        gdt = g_date_time_ref (l_alarm->alarm_time2);
     else
-    {
         gdt = g_date_time_new_now_local ();
-        atime = g_date_time_format (gdt, "%x %R");
-        g_date_time_unref (gdt);
-    }
 
+    atime = g_date_time_format (gdt, "%x %R");
+    g_date_time_unref (gdt);
     cmd = orage_replace_text(cmd, "<&AT>", atime);
     g_free(atime);
 
@@ -952,27 +950,25 @@ static void reset_orage_alarm_clock(void)
     GList *alarm_l;
     alarm_struct *cur_alarm;
     gint secs_to_alarm;
-    GDateTime *gdt;
-    GDateTime *gdt_alarm;
+    GDateTime *gdt_now;
 
     if (g_par.alarm_timer) { /* need to stop it if running */
         g_source_remove(g_par.alarm_timer);
         g_par.alarm_timer = 0;
     }
     if (g_par.alarm_list) { /* we have alarms */
-        gdt = g_date_time_new_now_local ();
         alarm_l = g_list_first(g_par.alarm_list);
         cur_alarm = (alarm_struct *)alarm_l->data;
-        gdt_alarm = orage_icaltime_to_gdatetime (cur_alarm->alarm_time, FALSE);
+        gdt_now = g_date_time_new_now_local ();
 
         /* Let's find out how much time we have until l_alarm happens. Adding
          * 999999 to time difference before dividing is for ceiling value.
          */
-        secs_to_alarm = (g_date_time_difference (gdt_alarm, gdt) + 999999)
-                      / 1000000;
+        secs_to_alarm = (g_date_time_difference (cur_alarm->alarm_time2, gdt_now)
+                      + 999999) / 1000000;
 
-        g_date_time_unref (gdt);
-        g_date_time_unref (gdt_alarm);
+        g_date_time_unref (gdt_now);
+
         secs_to_alarm += 1; /* alarm needs to come a bit later */
         if (secs_to_alarm < 1) /* rare, but possible */
             secs_to_alarm = 1;
