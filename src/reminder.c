@@ -316,7 +316,6 @@ void alarm_read(void)
     for (i = 0; alarm_groups[i] != NULL; i++) {
         orage_rc_set_group(orc, alarm_groups[i]);
         if ((new_alarm = alarm_read_next_alarm(orc, time_now)) != NULL) {
-            g_debug ("%s: alarm=%s", G_STRFUNC, new_alarm->alarm_time);
             create_reminders(new_alarm);
             alarm_free(new_alarm);
         }
