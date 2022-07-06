@@ -52,11 +52,13 @@ orage_CPPFLAGS =						\
 
 orage_CFLAGS =							\
 	$(LIBGTK_CFLAGS)					\
-	$(LIBX11_CFLAGS)
+	$(LIBX11_CFLAGS)					\
+	$(LIBXFCE4UTIL_CFLAGS)
 
 orage_LDADD =							\
 	$(LIBGTK_LIBS)						\
 	$(LIBX11_LIBS)						\
+	$(LIBXFCE4UTIL_LIBS)					\
 	-lm							\
 	$(INTLLIBS)						\
 	liborage.la
