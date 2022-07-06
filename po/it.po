@@ -7,8 +7,8 @@
 # Xfce Bot <transifex@xfce.org>, 2022
 # Emanuele Petriglia <transifex@emanuelepetriglia.com>, 2022
 # Cristian Marchi <cri.penta@gmail.com>, 2022
-# Dmytro Tokayev, 2022
 # Vincenzo Reale <vinx.reale@gmail.com>, 2022
+# Dmytro Tokayev, 2022
 # 
 #, fuzzy
 msgid ""
@@ -17,13 +17,13 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-12 00:50+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Vincenzo Reale <vinx.reale@gmail.com>, 2022\n"
+"Last-Translator: Dmytro Tokayev, 2022\n"
 "Language-Team: Italian (https://www.transifex.com/xfce/teams/16840/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: ../globaltime/globaltime.c:59
 msgid "no underline"
@@ -590,6 +590,7 @@ msgstr "%A %d %B %Y/%V"
 #: ../src/about-xfcalendar.c:54 ../org.xfce.orage.appdata.xml.in.h:2
 msgid "Orage is a time-managing application for the Xfce desktop environment"
 msgstr ""
+"Orage è un'applicazione di gestione del tempo per l'ambiente desktop Xfce"
 
 #: ../src/about-xfcalendar.c:58
 msgid "translator-credits"
@@ -899,7 +900,7 @@ msgstr ""
 
 #: ../src/appointment.c:2961
 msgid "_Colour"
-msgstr ""
+msgstr "_Colore"
 
 #: ../src/appointment.c:2966
 msgid "update colors for categories."
@@ -1095,7 +1096,7 @@ msgstr ""
 
 #: ../src/appointment.c:3301 ../src/interface.c:1181 ../src/interface.c:1203
 msgid "_Execute"
-msgstr ""
+msgstr "_Esegui"
 
 #: ../src/appointment.c:3303
 msgid "Test this alarm by raising it now"
@@ -1593,7 +1594,7 @@ msgstr "Tutti gli appuntamenti"
 
 #: ../src/interface.c:1139
 msgid "Named appointments:"
-msgstr ""
+msgstr "Solo determinati appuntamenti:"
 
 #: ../src/interface.c:1158
 msgid ""
@@ -4540,6 +4541,10 @@ msgid ""
 " ical format and includes common calendar features like repeating "
 "appointments and multiple alarming possibilities."
 msgstr ""
+"Orage mira ad essere un calendario grafico veloce e facile da usare. "
+"Utilizza il formato ical portatile e include caratteristiche comuni del "
+"calendario come la ripetizione degli appuntamenti e la possibilità di "
+"allarmi multipli."
 
 #: ../org.xfce.orage.appdata.xml.in.h:4
 msgid ""
@@ -4548,6 +4553,10 @@ msgid ""
 "Contents of those files are read and converted into Orage, but those files "
 "are left untouched."
 msgstr ""
+"Orage non possiede caratteristiche di un calendario condiviso, ma puo' "
+"essere utilizzato solo da utenti singoli. Esso prende una lista di file per "
+"file ical che devono essere importate. I contenuti di tali file vengono "
+"letti e convertiti in Orage, ma i file stessi rimangono immutati."
 
 #: ../org.xfce.orage.desktop.in.h:1
 msgid "Orage Calendar"

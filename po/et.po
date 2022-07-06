@@ -485,7 +485,7 @@ msgstr "Vertikaalsete ribade laiust ei saa muuta"
 
 #: ../panel-plugin/oc_config.c:339
 msgid "Show lines _vertically"
-msgstr ""
+msgstr "Näita _vertikaalseid jooni"
 
 #: ../panel-plugin/oc_config.c:359
 msgid "Clock Options"
@@ -1722,12 +1722,12 @@ msgstr ""
 #: ../src/main.c:299
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
-msgstr ""
+msgstr "\tKasutusel on libxfce4ui: jah\n"
 
 #: ../src/main.c:301
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
-msgstr ""
+msgstr "\tKasutusel on libxfce4ui: ei\n"
 
 #: ../src/main.c:314
 msgid ""
@@ -1831,7 +1831,7 @@ msgstr "_Abi"
 
 #: ../src/mainbox.c:316 ../src/reminder.c:995
 msgid "No title defined"
-msgstr ""
+msgstr "Pealkiri on määratlemata"
 
 #: ../src/mainbox.c:379
 #, c-format
@@ -1845,6 +1845,9 @@ msgid ""
 " Note:\n"
 "%s"
 msgstr ""
+"\n"
+" Märge:\n"
+"%s"
 
 #: ../src/mainbox.c:397
 msgid "Never"
@@ -1858,6 +1861,10 @@ msgid ""
 " Due:\t%s\n"
 " Done:\t%s%s"
 msgstr ""
+"Pealkiri: %s\n"
+"%s Algus:\t%s\n"
+" Tähtaeg:\t%s\n"
+" Tehtud:\t%s%s"
 
 #: ../src/mainbox.c:411
 #, c-format
@@ -1866,6 +1873,9 @@ msgid ""
 "%s Start:\t%s\n"
 " End:\t%s%s"
 msgstr ""
+"Pealkiri: %s\n"
+"%s Algus:\t%s\n"
+" Lõpp:\t%s%s"
 
 #: ../src/mainbox.c:489
 msgid "<b>To do:</b>"
@@ -1879,11 +1889,11 @@ msgstr "<b>%s sündmused:</b>"
 #: ../src/mainbox.c:536
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
-msgstr ""
+msgstr "<b>%s - %s sündmused:</b>"
 
 #: ../src/parameters.c:542
 msgid "Main settings"
-msgstr ""
+msgstr "Põhiseadistused"
 
 #: ../src/parameters.c:548
 msgid "Timezone"
@@ -2042,37 +2052,40 @@ msgstr ""
 
 #: ../src/parameters.c:1010
 msgid "Show only first repeating event"
-msgstr ""
+msgstr "Näita vaid esimest korduvat sündmust"
 
 #: ../src/parameters.c:1027
 msgid "Day view window default first day"
-msgstr ""
+msgstr "Esimene päev päevade vaates"
 
 #: ../src/parameters.c:1034
 msgid "First day of week"
-msgstr ""
+msgstr "Nädala esimene päev"
 
 #: ../src/parameters.c:1051
 msgid "Selected day"
-msgstr ""
+msgstr "Valitud päev"
 
 #: ../src/parameters.c:1074 ../src/parameters.c:1081
 msgid "Use wakeup timer"
-msgstr ""
+msgstr "Kasuta äratuse taimerit"
 
 #: ../src/parameters.c:1089
 msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
 msgstr ""
+"Kasuta seda taimerit siis, kui Orage'i tegevus ei jätku korrektselt peale "
+"arvuti uinumisoleku lõppu. (Näiteks, kui ikoon olekuribal jääb uuendamata "
+"või alarmid ei toimi.)"
 
 #: ../src/parameters.c:1099
 msgid "Foreign file default visual alarm"
-msgstr ""
+msgstr "Vaikimisi kasutatav näidatav alarm välise faili puhul"
 
 #: ../src/parameters.c:1106
 msgid "Orage window"
-msgstr ""
+msgstr "Orage'i aken"
 
 #: ../src/parameters.c:1123
 msgid "Notify notification"
@@ -2080,11 +2093,11 @@ msgstr ""
 
 #: ../src/parameters.c:1146
 msgid "Always quit when asked to close"
-msgstr ""
+msgstr "Sulgemisel alati lõpeta töö"
 
 #: ../src/parameters.c:1153
 msgid "Always quit"
-msgstr ""
+msgstr "Alati lõpeta töö"
 
 #: ../src/parameters.c:1160
 msgid ""
@@ -2092,6 +2105,9 @@ msgid ""
 "option changes Orage to quit and never stay in background when it is asked "
 "to close."
 msgstr ""
+"Akna sulgemisel Orage vaikimisi jääb taustal tööle. Selle valikuga saad "
+"määrata, et sulgemisel ka lõpetatakse rakenduse tegevus ja ta ei jää "
+"taustaprogrammina tööle."
 
 #: ../src/parameters.c:1176
 msgid "Orage Preferences"
@@ -3357,15 +3373,15 @@ msgstr "Aasia/Ar-Riyāḑ"
 
 #: ../src/timezone_names.c:338
 msgid "Asia/Riyadh87"
-msgstr ""
+msgstr "Aasia/Riyadh87"
 
 #: ../src/timezone_names.c:339
 msgid "Asia/Riyadh88"
-msgstr ""
+msgstr "Aasia/Riyadh88"
 
 #: ../src/timezone_names.c:340
 msgid "Asia/Riyadh89"
-msgstr ""
+msgstr "Aasia/Riyadh89"
 
 #: ../src/timezone_names.c:341
 msgid "Asia/Saigon"

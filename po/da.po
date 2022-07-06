@@ -584,11 +584,7 @@ msgid "translator-credits"
 msgstr ""
 "Per Kongstad\n"
 "Aputsiak Niels Janussen\n"
-"scootergrisen\n"
-"\n"
-"Dansk-gruppen\n"
-"Websted http://dansk-gruppen.dk\n"
-"E-mail <dansk@dansk-gruppen.dk>"
+"scootergrisen"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -4515,6 +4511,10 @@ msgid ""
 " ical format and includes common calendar features like repeating "
 "appointments and multiple alarming possibilities."
 msgstr ""
+"Orage har som mål at være en grafisk kalender som er hurtig og let at bruge."
+" Den bruger det transportable ical-format og inkluderer almindelige "
+"kalenderfunktionaliteter såsom gentagelse af aftaler og mulighed for flere "
+"alarmer."
 
 #: ../org.xfce.orage.appdata.xml.in.h:4
 msgid ""
@@ -4523,6 +4523,10 @@ msgid ""
 "Contents of those files are read and converted into Orage, but those files "
 "are left untouched."
 msgstr ""
+"Orage har ikke funktionaliteter til gruppekalender, men kan kun bruges af én"
+" bruger. Den bruger en liste over filer af ical-filer som skal importeres. "
+"Filernes indhold læses og konverteres i Orage, men der ændres ikke på "
+"filerne."
 
 #: ../org.xfce.orage.desktop.in.h:1
 msgid "Orage Calendar"

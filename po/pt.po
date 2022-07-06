@@ -7,7 +7,7 @@
 # Xfce Bot <transifex@xfce.org>, 2022
 # Alexandre Fidalgo <alexandremagnos15@gmail.com>, 2022
 # José Vieira <jvieira33@sapo.pt>, 2022
-# Sérgio Marques <smarques@ikmail.com>, 2022
+# Sérgio Marques <smarquespt@gmail.com>, 2022
 # Hugo Carvalho <hugokarvalho@hotmail.com>, 2022
 # 
 #, fuzzy
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pt\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: ../globaltime/globaltime.c:59
 msgid "no underline"
@@ -132,7 +132,7 @@ msgstr "fechar esta janela e sair"
 
 #: ../globaltime/gt_prefs.c:652
 msgid "Globaltime preferences "
-msgstr "Preferências da Hora global"
+msgstr "Preferências da hora global "
 
 #. -----------------------HEADING-------------------------------------------
 #: ../globaltime/gt_prefs.c:665
@@ -324,7 +324,7 @@ msgstr "Fuso horário local:"
 #: ../globaltime/timezone_selection.c:93
 #: ../panel-plugin/timezone_selection.c:92 ../src/timezone_selection.c:95
 msgid " Other"
-msgstr "Outro"
+msgstr " Outro"
 
 #: ../globaltime/timezone_selection.c:146
 #: ../panel-plugin/timezone_selection.c:144 ../src/timezone_selection.c:165
@@ -731,7 +731,7 @@ msgstr "Categoria de cores - Orage"
 
 #: ../src/appointment.c:2247
 msgid " *** COPY ***"
-msgstr "*** COPIAR ***"
+msgstr " *** COPIAR ***"
 
 #: ../src/appointment.c:2515
 msgid "New appointment - Orage"
@@ -788,7 +788,7 @@ msgstr "Geral"
 #. type
 #: ../src/appointment.c:2792
 msgid "Type "
-msgstr "Tipo"
+msgstr "Tipo "
 
 #: ../src/appointment.c:2794 ../src/event-list.c:1255
 msgid "Event"
@@ -829,7 +829,7 @@ msgstr ""
 #. title
 #: ../src/appointment.c:2822
 msgid "Title "
-msgstr "Título"
+msgstr "Título "
 
 #: ../src/appointment.c:2837
 msgid "All day event"
@@ -842,7 +842,7 @@ msgstr "Inicio"
 
 #: ../src/appointment.c:2863
 msgid "Set      "
-msgstr "Definir"
+msgstr "Definir      "
 
 #: ../src/appointment.c:2886
 msgid "Duration"
@@ -983,8 +983,8 @@ msgid ""
 "Select this if you want Orage to remind you even if it has not been active "
 "when the alarm happened."
 msgstr ""
-"Selecione isto se quiser quiser que o Orage lhe lembre mesmo que não tenha "
-"estado activo quando o alarme ocorreu. "
+"Selecione isto se quiser que o Orage lhe lembre mesmo que não tenha estado "
+"ativo quando o alarme ocorreu."
 
 #. **** Audio Alarm ****
 #: ../src/appointment.c:3138
@@ -1219,11 +1219,11 @@ msgstr "Repetir eternamente"
 
 #: ../src/appointment.c:3484
 msgid "Repeat "
-msgstr "Repetir"
+msgstr "Repetir "
 
 #: ../src/appointment.c:3508
 msgid "Repeat until "
-msgstr "Repetir até"
+msgstr "Repetir até "
 
 #. weekdays (only for complex settings)
 #: ../src/appointment.c:3524
@@ -1356,7 +1356,7 @@ msgstr "Desconhecido"
 
 #: ../src/day-view.c:815
 msgid "       Number of days to show"
-msgstr "Número de dias a mostrar"
+msgstr "       Número de dias a mostrar"
 
 #: ../src/day-view.c:1045
 msgid "Orage - day view"
@@ -1447,7 +1447,7 @@ msgstr "Procurar"
 
 #: ../src/event-list.c:1353
 msgid "Search text "
-msgstr "Texto a procurar"
+msgstr "Texto a procurar "
 
 #: ../src/event-list.c:1419
 msgid "Flags"
@@ -1904,7 +1904,7 @@ msgstr "Sem título definido"
 #: ../src/mainbox.c:379
 #, c-format
 msgid " Location: %s\n"
-msgstr "Localização: %s\n"
+msgstr " Localização: %s\n"
 
 #: ../src/mainbox.c:389
 #, c-format
@@ -2116,7 +2116,8 @@ msgstr "Número de dias extra a mostrar na lista de eventos"
 msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
-msgstr "Este é o valor por omissão e você pode alterá-lo na janela de eventos"
+msgstr ""
+"Este é o valor por omissão e você pode alterá-lo na janela de eventos."
 
 #: ../src/parameters.c:1010
 msgid "Show only first repeating event"
@@ -2187,7 +2188,7 @@ msgstr "Fe_char"
 
 #: ../src/reminder.c:466
 msgid "Reminder "
-msgstr "Lembrete"
+msgstr "Lembrete "
 
 #: ../src/reminder.c:495
 msgid "Open"
