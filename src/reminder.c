@@ -122,11 +122,12 @@ static gint alarm_order(gconstpointer a, gconstpointer b)
 
 void alarm_list_free(void)
 {
-    gchar *time_now;
+    GDateTime *time_now;
     alarm_struct *l_alarm;
     GList *alarm_l, *kept_l=NULL;
 
-    time_now = orage_localtime_icaltime ();
+    time_now = g_date_time_new_now_local ();
+
         /* FIXME: This could be tuned since now it runs into the remaining
            elements several times. They could be moved to another list and
            removed and added back at the end, remove with g_list_remove_link */
@@ -134,7 +135,7 @@ void alarm_list_free(void)
          alarm_l != NULL; 
          alarm_l = g_list_first(g_par.alarm_list)) {
         l_alarm = alarm_l->data;
-        if (l_alarm->temporary && (strcmp(time_now, l_alarm->alarm_time) < 0)) {
+        if (l_alarm->temporary && (g_date_time_compare (time_now, l_alarm->alarm_time2) < 0)) {
             /* We keep temporary alarms, which have not yet fired.
                Remove the element from the list, but do not loose it. */
             g_par.alarm_list = g_list_remove_link(g_par.alarm_list, alarm_l);
@@ -150,7 +151,7 @@ void alarm_list_free(void)
             alarm_free(l_alarm);
         }
     }
-    g_free (time_now);
+    g_date_time_unref (time_now);
     g_list_free(g_par.alarm_list);
     g_par.alarm_list = NULL;
     if (g_list_length(kept_l)) {
@@ -918,24 +919,24 @@ static gboolean orage_alarm_clock (G_GNUC_UNUSED gpointer user_data)
     alarm_struct *cur_alarm;
     gboolean alarm_raised=FALSE;
     gboolean more_alarms=TRUE;
-    gchar *time_now;
+    GDateTime *time_now;
 
-    time_now = orage_localtime_icaltime ();
+    time_now = g_date_time_new_now_local ();
     /* Check if there are any alarms to show */
     for (alarm_l = g_list_first(g_par.alarm_list);
          alarm_l != NULL && more_alarms;
          alarm_l = g_list_next(alarm_l)) {
         /* remember that it is sorted list */
         cur_alarm = (alarm_struct *)alarm_l->data;
-        if (strcmp(time_now, cur_alarm->alarm_time) > 0) {
+        if (g_date_time_compare (time_now, cur_alarm->alarm_time2) > 0) {
             create_reminders(cur_alarm);
             alarm_raised = TRUE;
         }
         else /* sorted so scan can be stopped */
-            more_alarms = FALSE; 
-    }
+            more_alarms = FALSE;
+        }
 
-    g_free (time_now);
+    g_date_time_unref (time_now);
 
     if (alarm_raised)  /* at least one l_alarm processed, need new list */
         xfical_alarm_build_list(FALSE); /* this calls reset_orage_alarm_clock */
