@@ -989,7 +989,7 @@ static gboolean orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
     GString *tooltip=NULL, *tooltip_highlight_helper=NULL;
     gint alarm_cnt=0;
     gint tooltip_alarm_limit=5;
-    gint year, month, day, hour, minute, second;
+    gint hour, minute;
     gint dd, hh, min;
     GDate *g_now, *g_alarm;
     gchar *tmp;
@@ -1003,25 +1003,17 @@ static gboolean orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
     tooltip = g_string_new(_("Next active alarms:"));
     g_string_prepend(tooltip, "<span foreground=\"blue\" weight=\"bold\" underline=\"single\">");
     g_string_append(tooltip, " </span>");
-  /* Check if there are any alarms to show */
+    /* Check if there are any alarms to show */
     for (alarm_l = g_list_first(g_par.alarm_list);
          alarm_l != NULL && more_alarms;
          alarm_l = g_list_next(alarm_l)) {
         /* remember that it is sorted list */
         cur_alarm = (alarm_struct *)alarm_l->data;
         if (alarm_cnt < tooltip_alarm_limit) {
-            if (strlen(cur_alarm->alarm_time) < XFICAL_APPT_DATE_FORMAT_LEN) { 
-               /* it is date = full day */
-                sscanf(cur_alarm->alarm_time, XFICAL_APPT_DATE_FORMAT_DEPRECATED
-                        , &year, &month, &day);
-                hour = 0; minute = 0; second = 0;
-            }
-            else {
-                sscanf(cur_alarm->alarm_time, XFICAL_APPT_TIME_FORMAT_DEPRECATED
-                        , &year, &month, &day, &hour, &minute, &second);
-            }
             g_now = orage_gdatetime_to_gdate (gdt);
-            g_alarm = g_date_new_dmy(day, month, year);
+            g_alarm = orage_gdatetime_to_gdate (cur_alarm->alarm_time2);
+            hour = g_date_time_get_hour (cur_alarm->alarm_time2);
+            minute = g_date_time_get_minute (cur_alarm->alarm_time2);
             dd = g_date_days_between(g_now, g_alarm);
 
             g_date_free(g_now);
