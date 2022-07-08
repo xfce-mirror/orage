@@ -27,14 +27,6 @@
 #define CALENDAR_RUNNING "_XFCE_CALENDAR_RUNNING"
 #define CALENDAR_TOGGLE_EVENT "_XFCE_CALENDAR_TOGGLE_HERE"
 
-#define XFICAL_APPT_TIME_FORMAT_DEPRECATED "%04d%02d%02dT%02d%02d%02d"
-#define XFICAL_APPT_TIME_FORMAT "%Y%m%dT%H%M%S"
-#define XFICAL_APPT_TIME_FORMAT_S0 "%Y%m%dT%H%M00"
-#define XFICAL_APPT_TIME_FORMAT_LEN 16
-#define XFICAL_APPT_DATE_FORMAT_DEPRECATED "%04d%02d%02d"
-#define XFICAL_APPT_DATE_FORMAT "%Y%m%d"
-#define XFICAL_APPT_DATE_FORMAT_LEN 9
-
 #define ORAGE_DIR "orage" G_DIR_SEPARATOR_S
 #define ORAGE_PAR_FILE  "oragerc"
 #define ORAGE_PAR_DIR_FILE ORAGE_DIR ORAGE_PAR_FILE
@@ -99,7 +91,15 @@ GtkWidget *orage_period_hbox_new(gboolean head_space, gboolean tail_space
 void orage_gdatetime_unref (GDateTime *gdt);
 GDate *orage_gdatetime_to_gdate (GDateTime *gdt);
 gchar *orage_gdatetime_to_i18_time (GDateTime *gdt, const gboolean date_only);
-gchar *orage_gdatetime_to_icaltime (GDateTime *gdt, const gboolean date_only);
+
+/** Create ical time string. Unlike g_date_time_format this function add padding
+ *  with '0' to year value. Padding is required by Ical format.
+ *  @param gdt GDateTime
+ *  @param date_only, when true returns date string in format yyyymmdd, if false
+ *         return date and time in format yyyymmddThhmmss.
+ *  @return date or time sting. User must free returned string.
+ */
+gchar *orage_gdatetime_to_icaltime (GDateTime *gdt, gboolean date_only);
 
 /** Comapare dates only.
  *  @param gdt1 GDateTime fist date and time

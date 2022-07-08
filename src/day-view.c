@@ -171,7 +171,7 @@ static void create_new_appointment(day_win *dw)
     GDateTime *a_day;
 
     a_day = g_object_get_data (G_OBJECT (dw->StartDate_button), DATE_KEY);
-    a_day_str = g_date_time_format (a_day, XFICAL_APPT_DATE_FORMAT);
+    a_day_str = orage_gdatetime_to_icaltime (a_day, TRUE);
 
     do_appt_win ("NEW", a_day_str, dw, a_day);
     g_free (a_day_str);
@@ -718,7 +718,7 @@ static void app_rows (day_win *dw,
     xfical_appt *appt;
     gchar *a_day_str;
 
-    a_day_str = g_date_time_format (dw->a_day, XFICAL_APPT_DATE_FORMAT);
+    a_day_str = orage_gdatetime_to_icaltime (dw->a_day, TRUE);
     xfical_get_each_app_within_time (a_day_str, dw->days, ical_type, file_type,
                                      &appt_list);
     g_free (a_day_str);

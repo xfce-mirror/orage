@@ -536,7 +536,7 @@ static void app_rows (el_win *el, GDateTime *a_day_gdt, GDateTime *gdt_par,
     xfical_appt *appt;
     gchar *a_day;
 
-    a_day = g_date_time_format (a_day_gdt, XFICAL_APPT_DATE_FORMAT);
+    a_day = orage_gdatetime_to_icaltime (a_day_gdt, TRUE);
 
     if (ical_type == XFICAL_TYPE_EVENT && !el->only_first) {
         xfical_get_each_app_within_time(a_day, el->days+1
@@ -964,7 +964,7 @@ static void create_new_appointment(el_win *el)
     gchar *a_day;
 
     gdt = g_object_get_data (G_OBJECT (el->Window), DATE_KEY);
-    a_day = g_date_time_format (gdt, XFICAL_APPT_DATE_FORMAT);
+    a_day = orage_gdatetime_to_icaltime (gdt, TRUE);
     do_appt_win("NEW", a_day, el, gdt);
     g_free (a_day);
 }

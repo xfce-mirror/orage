@@ -122,34 +122,16 @@ extern const gchar *trans_timezone[];
 static struct icaltimetype icaltimetype_from_gdatetime (GDateTime *gdt,
                                                         const gboolean date_only)
 {
-    gint year;
-    gint month;
-    gint day;
-    gchar str[17];
+    gchar *str;
     struct icaltimetype icalt;
 
     /* TODO: icaltimetype should be created directly from GDateTime, not using
      * intermediate string.
-     *
-     * g_date_time_format with format = XFICAL_APPT_TIME_FORMAT does not padd year with leading 0, this
-     * is incompatible with ical.
      */
-    g_date_time_get_ymd (gdt, &year, &month, &day);
-    if (date_only)
-    {
-        g_snprintf (str, sizeof (str), XFICAL_APPT_DATE_FORMAT_DEPRECATED,
-                    year, month, day);
-    }
-    else
-    {
-        g_snprintf (str, sizeof (str), XFICAL_APPT_TIME_FORMAT_DEPRECATED,
-                    year, month, day,
-                    g_date_time_get_hour (gdt),
-                    g_date_time_get_minute (gdt),
-                    g_date_time_get_second (gdt));
-    }
 
+    str = orage_gdatetime_to_icaltime (gdt, date_only);
     icalt = icaltime_from_string (str);
+    g_free (str);
 
     return icalt;
 }
@@ -3123,11 +3105,11 @@ static void mark_calendar (G_GNUC_UNUSED icalcomponent *c,
         g_date_time_unref (gdt_tmp);
     }
 
-    str = g_date_time_format (gdt_start, XFICAL_APPT_TIME_FORMAT);
+    str = orage_gdatetime_to_icaltime (gdt_start, FALSE);
     sdate = icaltime_from_string (str);
     g_free (str);
 
-    str = g_date_time_format (gdt_end, XFICAL_APPT_TIME_FORMAT);
+    str = orage_gdatetime_to_icaltime (gdt_end, FALSE);
     edate = icaltime_from_string (str);
     g_free (str);
 
@@ -3389,11 +3371,11 @@ static void add_appt_to_list(icalcomponent *c, icaltime_span *span , void *data)
 
     /* end of bug workaround */
     /* FIXME: should we use interval instead ? */
-    str = g_date_time_format (gdt_start, XFICAL_APPT_TIME_FORMAT);
+    str = orage_gdatetime_to_icaltime (gdt_start, FALSE);
     sdate = icaltime_from_string (str);
     g_free (str);
 
-    str = g_date_time_format (gdt_end, XFICAL_APPT_TIME_FORMAT);
+    str = orage_gdatetime_to_icaltime (gdt_end, FALSE);
     edate = icaltime_from_string (str);
     g_free (str);
 

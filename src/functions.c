@@ -51,6 +51,9 @@
 #include "parameters.h"
 #include "tz_zoneinfo_read.h"
 
+#define XFICAL_APPT_TIME_FORMAT "%04d%02d%02dT%02d%02d%02d"
+#define XFICAL_APPT_DATE_FORMAT "%04d%02d%02d"
+
 /**************************************
  *  Debugging helping functions       *
  **************************************/
@@ -854,14 +857,14 @@ gchar *orage_gdatetime_to_icaltime (GDateTime *gdt, const gboolean date_only)
     {
         len = 10;
         str = g_malloc (len);
-        g_snprintf (str, len, XFICAL_APPT_DATE_FORMAT_DEPRECATED,
+        g_snprintf (str, len, XFICAL_APPT_DATE_FORMAT,
                     year, month, day);
     }
     else
     {
         len = 17;
         str = g_malloc (len);
-        g_snprintf (str, len, XFICAL_APPT_TIME_FORMAT_DEPRECATED,
+        g_snprintf (str, len, XFICAL_APPT_TIME_FORMAT,
                     year, month, day,
                     g_date_time_get_hour (gdt),
                     g_date_time_get_minute (gdt),

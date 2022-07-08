@@ -1022,9 +1022,6 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
                                     GTK_SPIN_BUTTON (apptw->EndTime_spin_mm)),
                            0);
 
-    tmp = g_date_time_format (appt->endtime, XFICAL_APPT_TIME_FORMAT_S0);
-    g_free (tmp);
-
 #if (USE_GLIB_258 == 0)
     g_time_zone_unref (gtz);
 #endif
@@ -1512,6 +1509,7 @@ static xfical_exception *new_exception(gchar *text)
     struct tm tm_time = {0};
     GDateTime *gdt;
     gchar *fmt;
+    gboolean date_only;
 #ifndef HAVE_LIBICAL
     char *tmp;
 #endif
@@ -1523,7 +1521,7 @@ static xfical_exception *new_exception(gchar *text)
         g_strlcpy (recur_exception->type, "RDATE",
                    sizeof(recur_exception->type));
         gdt = orage_i18_time_to_gdatetime (text);
-        ical_str = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT);
+        ical_str = orage_gdatetime_to_icaltime (gdt, FALSE);
         g_date_time_unref (gdt);
     }
     else {
@@ -1539,12 +1537,12 @@ static xfical_exception *new_exception(gchar *text)
         if ((char *)strptime(text, "%x %R", &tm_time) == NULL)
         {
             gdt = orage_i18_date_to_gdatetime (text);
-            fmt = XFICAL_APPT_DATE_FORMAT;
+            date_only = TRUE;
         }
         else
         {
             gdt = orage_i18_time_to_gdatetime (text);
-            fmt = XFICAL_APPT_TIME_FORMAT;
+            date_only = FALSE;
         }
 #else
         /* we should not have date-times as we are using internal libical,
@@ -1554,15 +1552,15 @@ static xfical_exception *new_exception(gchar *text)
         if (ORAGE_STR_EXISTS(tmp))
         {
             gdt = orage_i18_time_to_gdatetime (text);
-            fmt = XFICAL_APPT_TIME_FORMAT;
+            date_only = FALSE;
         }
         else
         {
             gdt = orage_i18_date_to_gdatetime (text);
-            fmt = XFICAL_APPT_DATE_FORMAT;
+            date_only = TRUE;
         }
 #endif
-        ical_str = g_date_time_format (gdt, fmt);
+        ical_str = orage_gdatetime_to_icaltime (gdt, date_only);
         g_date_time_unref (gdt);
     }
 
@@ -1898,7 +1896,7 @@ static xfical_appt *fill_appt_window_get_new_appt (const gchar *par,
                                             par_day_of_month, end_hour,
                                             end_minute, 0);
 
-    time_str = g_date_time_format (appt->endtime, XFICAL_APPT_TIME_FORMAT);
+    time_str = orage_gdatetime_to_icaltime (appt->endtime, FALSE);
     g_free (time_str);
 
     if (g_par.local_timezone_utc)
