@@ -2845,7 +2845,6 @@ static void on_test_button_clicked_cb (G_GNUC_UNUSED GtkButton *button
 
     /* no need for alarm time as we are doing this now */
     cur_alarm.alarm_time = NULL;
-    cur_alarm.alarm_time2 = NULL;
     if (appt->uid)
         cur_alarm.uid = g_strdup(appt->uid);
     else

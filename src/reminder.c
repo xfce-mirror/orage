@@ -93,8 +93,7 @@ static void alarm_free(gpointer galarm)
 {
     alarm_struct *l_alarm = (alarm_struct *)galarm;
 
-    g_free(l_alarm->alarm_time);
-    orage_gdatetime_unref (l_alarm->alarm_time2);
+    orage_gdatetime_unref (l_alarm->alarm_time);
     g_free(l_alarm->action_time);
     g_free(l_alarm->uid);
     g_free(l_alarm->title);
@@ -112,12 +111,12 @@ static gint alarm_order(gconstpointer a, gconstpointer b)
     const alarm_struct *alarm_a = (const alarm_struct *)a;
     const alarm_struct *alarm_b = (const alarm_struct *)b;
 
-    if (alarm_a->alarm_time2 == NULL)
+    if (alarm_a->alarm_time == NULL)
         return(1);
-    else if (alarm_b->alarm_time2 == NULL)
+    else if (alarm_b->alarm_time == NULL)
         return(-1);
 
-    return g_date_time_compare (alarm_a->alarm_time2, alarm_b->alarm_time2);
+    return g_date_time_compare (alarm_a->alarm_time, alarm_b->alarm_time);
 }
 
 void alarm_list_free(void)
@@ -135,7 +134,7 @@ void alarm_list_free(void)
          alarm_l != NULL; 
          alarm_l = g_list_first(g_par.alarm_list)) {
         l_alarm = alarm_l->data;
-        if (l_alarm->temporary && (g_date_time_compare (time_now, l_alarm->alarm_time2) < 0)) {
+        if (l_alarm->temporary && (g_date_time_compare (time_now, l_alarm->alarm_time) < 0)) {
             /* We keep temporary alarms, which have not yet fired.
                Remove the element from the list, but do not loose it. */
             g_par.alarm_list = g_list_remove_link(g_par.alarm_list, alarm_l);
@@ -184,9 +183,7 @@ static alarm_struct *alarm_copy(alarm_struct *l_alarm, gboolean init)
 
     /* first l_alarm values which are not modified */
     if (l_alarm->alarm_time != NULL)
-        n_alarm->alarm_time = g_strdup(l_alarm->alarm_time);
-    if (l_alarm->alarm_time2 != NULL)
-        n_alarm->alarm_time2 = g_date_time_ref (l_alarm->alarm_time2);
+        n_alarm->alarm_time = g_date_time_ref (l_alarm->alarm_time);
     if (l_alarm->action_time != NULL)
         n_alarm->action_time = g_strdup(l_alarm->action_time);
     if (l_alarm->uid != NULL)
@@ -264,8 +261,7 @@ static alarm_struct *alarm_read_next_alarm(OrageRc *orc, GDateTime *gdt)
     new_alarm = g_new0(alarm_struct, 1);
 
     new_alarm->uid = orage_rc_get_group(orc);
-    new_alarm->alarm_time = orage_rc_get_str(orc, RC_ALARM_TIME, "0000");
-    new_alarm->alarm_time2 = orage_rc_get_gdatetime (orc, RC_ALARM_TIME, NULL);
+    new_alarm->alarm_time = orage_rc_get_gdatetime (orc, RC_ALARM_TIME, NULL);
     new_alarm->action_time = orage_rc_get_str(orc, RC_ACTION_TIME, "0000");
     new_alarm->title = orage_rc_get_str(orc, RC_TITLE, NULL);
     new_alarm->description = orage_rc_get_str(orc, RC_DESCRIPTION, NULL);
@@ -288,7 +284,7 @@ static alarm_struct *alarm_read_next_alarm(OrageRc *orc, GDateTime *gdt)
     /* let's first check if the time has gone so that we need to
      * send that delayed l_alarm or can we just ignore it since it is
      * still in the future */
-    cmp_result = g_date_time_compare (gdt, new_alarm->alarm_time2);
+    cmp_result = g_date_time_compare (gdt, new_alarm->alarm_time);
 
     if (cmp_result < 0) {
         /* real l_alarm has not happened yet */
@@ -336,8 +332,7 @@ static void alarm_store(gpointer galarm, gpointer par)
 
     orage_rc_set_group(par, l_alarm->uid);
 
-    orage_rc_put_str(orc, RC_ALARM_TIME, l_alarm->alarm_time);
-    orage_rc_put_gdatetime (orc, RC_ALARM_TIME, l_alarm->alarm_time2);
+    orage_rc_put_gdatetime (orc, RC_ALARM_TIME, l_alarm->alarm_time);
     orage_rc_put_str(orc, RC_ACTION_TIME, l_alarm->action_time);
     orage_rc_put_str(orc, RC_TITLE, l_alarm->title);
     orage_rc_put_str(orc, RC_DESCRIPTION, l_alarm->description);
@@ -594,7 +589,6 @@ static void on_btRecreateReminder_clicked (G_GNUC_UNUSED GtkButton *button,
     GDateTime *gdt_local_d;
     GDateTime *gdt_local_dh;
     GDateTime *gdt_local_dhm;
-    gchar *time_str;
 
     display_data = (orage_ddmmhh_hbox_struct *)l_alarm->orage_display_data;
     /* we do not have l_alarm time here */
@@ -612,13 +606,10 @@ static void on_btRecreateReminder_clicked (G_GNUC_UNUSED GtkButton *button,
     gdt_local_d = g_date_time_add_days (gdt_local, days);
     gdt_local_dh = g_date_time_add_hours (gdt_local_d, hours);
     gdt_local_dhm = g_date_time_add_minutes (gdt_local_dh, minutes);
-    time_str = g_date_time_format (gdt_local_dhm, XFICAL_APPT_TIME_FORMAT);
-    n_alarm->alarm_time = g_strdup (time_str);
-    n_alarm->alarm_time2 = gdt_local_dhm;
+    n_alarm->alarm_time = gdt_local_dhm;
     g_date_time_unref (gdt_local);
     g_date_time_unref (gdt_local_d);
     g_date_time_unref (gdt_local_dh);
-    g_free (time_str);
     alarm_add(n_alarm);
     setup_orage_alarm_clock();
     gtk_widget_destroy(display_data->dialog);
@@ -766,8 +757,8 @@ static void create_procedure_reminder(alarm_struct *l_alarm)
 
     cmd = orage_replace_text(cmd, "<&D>", l_alarm->description);
 
-    if (l_alarm->alarm_time2)
-        gdt = g_date_time_ref (l_alarm->alarm_time2);
+    if (l_alarm->alarm_time)
+        gdt = g_date_time_ref (l_alarm->alarm_time);
     else
         gdt = g_date_time_new_now_local ();
 
@@ -929,7 +920,7 @@ static gboolean orage_alarm_clock (G_GNUC_UNUSED gpointer user_data)
          alarm_l = g_list_next(alarm_l)) {
         /* remember that it is sorted list */
         cur_alarm = (alarm_struct *)alarm_l->data;
-        if (g_date_time_compare (time_now, cur_alarm->alarm_time2) > 0) {
+        if (g_date_time_compare (time_now, cur_alarm->alarm_time) > 0) {
             create_reminders(cur_alarm);
             alarm_raised = TRUE;
         }
@@ -966,7 +957,7 @@ static void reset_orage_alarm_clock(void)
         /* Let's find out how much time we have until l_alarm happens. Adding
          * 999999 to time difference before dividing is for ceiling value.
          */
-        secs_to_alarm = (g_date_time_difference (cur_alarm->alarm_time2, gdt_now)
+        secs_to_alarm = (g_date_time_difference (cur_alarm->alarm_time, gdt_now)
                       + 999999) / 1000000;
 
         g_date_time_unref (gdt_now);
@@ -1011,9 +1002,9 @@ static gboolean orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
         cur_alarm = (alarm_struct *)alarm_l->data;
         if (alarm_cnt < tooltip_alarm_limit) {
             g_now = orage_gdatetime_to_gdate (gdt);
-            g_alarm = orage_gdatetime_to_gdate (cur_alarm->alarm_time2);
-            hour = g_date_time_get_hour (cur_alarm->alarm_time2);
-            minute = g_date_time_get_minute (cur_alarm->alarm_time2);
+            g_alarm = orage_gdatetime_to_gdate (cur_alarm->alarm_time);
+            hour = g_date_time_get_hour (cur_alarm->alarm_time);
+            minute = g_date_time_get_minute (cur_alarm->alarm_time);
             dd = g_date_days_between(g_now, g_alarm);
 
             g_date_free(g_now);
