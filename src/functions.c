@@ -899,18 +899,6 @@ GDateTime *orage_gdate_to_gdatetime (const GDate *gd)
     return g_date_time_new_local (year, month, day, 0, 0, 0);
 }
 
-gchar *orage_localtime_icaltime (void)
-{
-    GDateTime *gdt;
-    gchar *time_str;
-
-    gdt = g_date_time_new_now_local ();
-    time_str = g_date_time_format (gdt, XFICAL_APPT_TIME_FORMAT);
-    g_date_time_unref (gdt);
-
-    return time_str;
-}
-
 gint orage_days_between (GDateTime *gdt1, GDateTime *gdt2)
 {
     GDate *g_t1, *g_t2;
