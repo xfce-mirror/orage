@@ -337,6 +337,7 @@ static void alarm_store(gpointer galarm, gpointer par)
     orage_rc_set_group(par, l_alarm->uid);
 
     orage_rc_put_str(orc, RC_ALARM_TIME, l_alarm->alarm_time);
+    orage_rc_put_gdatetime (orc, RC_ALARM_TIME, l_alarm->alarm_time2);
     orage_rc_put_str(orc, RC_ACTION_TIME, l_alarm->action_time);
     orage_rc_put_str(orc, RC_TITLE, l_alarm->title);
     orage_rc_put_str(orc, RC_DESCRIPTION, l_alarm->description);
