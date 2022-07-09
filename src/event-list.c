@@ -909,10 +909,8 @@ static void changeSelectedDate (el_win *el, const gint day)
     GDateTime *gdt1;
     GDateTime *gdt2;
 
-    gdt1 = orage_i18_date_to_gdatetime (
-            gtk_window_get_title (GTK_WINDOW(el->Window)));
+    gdt1 = g_object_get_data (G_OBJECT (el->Window), DATE_KEY);
     gdt2 = g_date_time_add_days (gdt1, day);
-    g_date_time_unref (gdt1);
     orage_select_date (GTK_CALENDAR(((CalWin *)g_par.xfcal)->mCalendar), gdt2);
     g_date_time_unref (gdt2);
 
