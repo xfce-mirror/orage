@@ -831,17 +831,14 @@ static void fill_days (day_win *dw, const gint days)
     }
 }
 
-static void build_day_view_header (day_win *dw, const gchar *start_date)
+static void build_day_view_header (day_win *dw, GDateTime *start_date)
 {
     GtkWidget *start_label;
     GtkWidget *no_days_label;
     GtkWidget *grid;
-    static gchar date_buf[128];
-    gchar *first_date_tmp;
-    const gchar *first_date;
+    gchar *first_date;
     int diff_to_weeks_first_day;
     GDateTime *gdt;
-    GDateTime *gdt0;
 
     grid = gtk_grid_new ();
     g_object_set (grid, "margin", 10, NULL);
@@ -869,31 +866,21 @@ static void build_day_view_header (day_win *dw, const gchar *start_date)
 
     /* initial values */
     if (g_par.dw_week_mode) { /* we want to start form week start day */
-        gdt0 = orage_i18_date_to_gdatetime (start_date);
-        /* tm_date.wday: 0 = Sunday, 1 = Monday, 2 = Tuesday, ... 6 = Saturday
-           g_par.ical_weekstartday: 0 = Monday, 1 = Tuesday, ... 6 = Sunday */
-        diff_to_weeks_first_day = g_date_time_get_day_of_week (gdt0)
+        diff_to_weeks_first_day = g_date_time_get_day_of_week (start_date)
                                 - (g_par.ical_weekstartday + 1);
-        if (diff_to_weeks_first_day == 0) { /* we are on week start day */
-            first_date = start_date;
+        if (diff_to_weeks_first_day == 0) {
+            /* we are on week start day */
+            gdt = g_date_time_ref (start_date);
         }
         else {
-            gdt = g_date_time_add_days (gdt0, -1 * diff_to_weeks_first_day);
-            first_date_tmp = g_date_time_format (gdt, "%x");
-            strncpy (date_buf, first_date_tmp, sizeof (date_buf) - 1);
-            g_free (first_date_tmp);
-            date_buf[sizeof (date_buf) - 1] = '\0';
-            first_date = date_buf;
+            gdt = g_date_time_add_days (start_date,
+                                        -1 * diff_to_weeks_first_day);
         }
-
-        g_date_time_unref (gdt0);
     }
-    else {
-        first_date = start_date;
-    }
+    else
+        gdt = g_date_time_ref (start_date);
 
-    gdt = orage_i18_date_to_gdatetime (first_date);
-
+    first_date = g_date_time_format (gdt, "%x");
     gtk_button_set_label (GTK_BUTTON(dw->StartDate_button), first_date);
     g_object_set_data_full (G_OBJECT (dw->StartDate_button),
                             DATE_KEY, gdt, (GDestroyNotify)g_date_time_unref);
@@ -903,6 +890,8 @@ static void build_day_view_header (day_win *dw, const gchar *start_date)
                       G_CALLBACK (on_spin_changed), dw);
     g_signal_connect (dw->StartDate_button, "clicked",
                       G_CALLBACK (on_Date_button_clicked_cb), dw);
+
+    g_free (first_date);
 }
 
 static void fill_hour (day_win *dw,
@@ -1079,7 +1068,7 @@ void refresh_day_win(day_win *dw)
     g_timeout_add(100, (GSourceFunc)scroll_position_timer, (gpointer)dw);
 }
 
-day_win *create_day_win(char *start_date)
+day_win *create_day_win (GDateTime *start_date)
 {
     day_win *dw;
 

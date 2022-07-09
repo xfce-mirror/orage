@@ -119,11 +119,11 @@ static void mView_ViewSelectedWeek_activate_cb (
     G_GNUC_UNUSED GtkMenuItem *menuitem, gpointer user_data)
 {
     CalWin *cal = (CalWin *)user_data;
-    gchar *date;
+    GDateTime *date;
 
-    date = orage_cal_to_i18_date (GTK_CALENDAR (cal->mCalendar));
+    date = orage_cal_to_gdatetime (GTK_CALENDAR (cal->mCalendar), 1, 1);
     create_day_win (date);
-    g_free (date);
+    g_date_time_unref (date);
 }
 
 static void mView_selectToday_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem
@@ -170,13 +170,13 @@ static void mHelp_about_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
 static void mCalendar_day_selected_double_click_cb(GtkCalendar *calendar
         , G_GNUC_UNUSED gpointer user_data)
 {
-    gchar *date;
+    GDateTime *date;
 
     if (g_par.show_days)
     {
-        date = orage_cal_to_i18_date (calendar);
+        date = orage_cal_to_gdatetime (calendar, 1, 1);
         create_day_win (date);
-        g_free (date);
+        g_date_time_unref (date);
     }
     else
         (void)create_el_win(NULL);

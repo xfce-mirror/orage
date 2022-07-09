@@ -76,7 +76,7 @@ typedef struct _day_win
     gint days;      /* how many days to show */
 } day_win;
 
-day_win *create_day_win(char *start_date);
+day_win *create_day_win (GDateTime *start_date);
 void refresh_day_win(day_win *dw);
 
 #endif /* !__DAY_VIEW_H__ */

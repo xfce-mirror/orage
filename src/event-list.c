@@ -872,10 +872,10 @@ static void on_Close_clicked (G_GNUC_UNUSED GtkButton *b, gpointer user_data)
 static void on_Dayview_clicked (G_GNUC_UNUSED GtkButton *b, gpointer user_data)
 {
     el_win *el = (el_win *)user_data;
-    char *title;
+    GDateTime *gdt;
 
-    title = (char *)gtk_window_get_title(GTK_WINDOW(el->Window));
-    create_day_win(title);
+    gdt = g_object_get_data (G_OBJECT (el->Window), DATE_KEY);
+    create_day_win (gdt);
 }
 
 static void on_File_close_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
