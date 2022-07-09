@@ -799,10 +799,10 @@ GDateTime *orage_icaltime_to_gdatetime (const gchar *icaltime,
         t.tm_min = 0;
         t.tm_sec = 0;
     }
-    else if (ret[0] != 0) { /* icaltime was not processed completely */
+    else if (ret[0] != '\0') { /* icaltime was not processed completely */
         /* UTC times end to Z, which is ok */
-        if (ret[0] != 'Z' || ret[1] != 0) /* real error */
-            g_error ("%s %s %s", G_STRFUNC, icaltime, ret);
+        if (ret[0] != 'Z' || ret[1] != '\0') /* real error */
+            g_error ("%s icaltime='%s' ret='%s'", G_STRFUNC, icaltime, ret);
     }
 
     if (real_tm == FALSE) { /* convert from standard tm format to "normal" format */
