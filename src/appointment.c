@@ -1839,7 +1839,6 @@ static xfical_appt *fill_appt_window_get_new_appt (const gchar *par,
 {
     xfical_appt *appt;
     GDateTime *gdt_now;
-    gchar *time_str;
     gint hour;
     gint minute;
     gint par_year;
@@ -1894,9 +1893,6 @@ static xfical_appt *fill_appt_window_get_new_appt (const gchar *par,
     appt->endtime = g_date_time_new_local (par_year, par_month,
                                             par_day_of_month, end_hour,
                                             end_minute, 0);
-
-    time_str = orage_gdatetime_to_icaltime (appt->endtime, FALSE);
-    g_free (time_str);
 
     if (g_par.local_timezone_utc)
         appt->start_tz_loc = g_strdup ("UTC");
