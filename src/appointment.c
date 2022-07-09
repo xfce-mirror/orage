@@ -1508,7 +1508,6 @@ static xfical_exception *new_exception(gchar *text)
     gchar *ical_str;
     struct tm tm_time = {0};
     GDateTime *gdt;
-    gchar *fmt;
     gboolean date_only;
 #ifndef HAVE_LIBICAL
     char *tmp;
@@ -1521,8 +1520,7 @@ static xfical_exception *new_exception(gchar *text)
         g_strlcpy (recur_exception->type, "RDATE",
                    sizeof(recur_exception->type));
         gdt = orage_i18_time_to_gdatetime (text);
-        ical_str = orage_gdatetime_to_icaltime (gdt, FALSE);
-        g_date_time_unref (gdt);
+        date_only = FALSE;
     }
     else {
         g_strlcpy (recur_exception->type, "EXDATE",
@@ -1560,9 +1558,10 @@ static xfical_exception *new_exception(gchar *text)
             date_only = TRUE;
         }
 #endif
-        ical_str = orage_gdatetime_to_icaltime (gdt, date_only);
-        g_date_time_unref (gdt);
     }
+
+    ical_str = orage_gdatetime_to_icaltime (gdt, date_only);
+    g_date_time_unref (gdt);
 
     g_strlcpy (recur_exception->time, ical_str,
                sizeof (recur_exception->time));
