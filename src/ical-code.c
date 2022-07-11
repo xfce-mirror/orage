@@ -143,6 +143,21 @@ static GDateTime *icaltimetype_to_gdatetime (struct icaltimetype t)
     return orage_icaltime_to_gdatetime (i18_date, FALSE);
 }
 
+static gchar *icaltime_to_i18_time (const char *icaltime)
+{
+    /* timezone is not converted */
+    GDateTime *gdt;
+    gchar *ct;
+    gboolean date_only;
+
+    gdt = orage_icaltime_to_gdatetime (icaltime, FALSE);
+    date_only = (strchr (icaltime, 'T') == NULL);
+    ct = orage_gdatetime_to_i18_time (gdt, date_only);
+    g_date_time_unref (gdt);
+
+    return(ct);
+}
+
 gboolean xfical_set_local_timezone(gboolean testing)
 {
     local_icaltimezone = NULL;
@@ -2597,9 +2612,9 @@ struct icaltimetype exdatetime;
 
         next_start_time = icaltime_add(next_alarm_time, alarm_start_diff);
         next_end_time = icaltime_add(next_start_time, per.duration);
-        tmp1 = orage_icaltime_to_i18_time (
+        tmp1 = icaltime_to_i18_time (
                         icaltime_as_ical_string(next_start_time));
-        tmp2 = orage_icaltime_to_i18_time (
+        tmp2 = icaltime_to_i18_time (
                         icaltime_as_ical_string(next_end_time));
         new_alarm->action_time = g_strconcat(tmp1, " - ", tmp2, NULL);
         g_free(tmp1);

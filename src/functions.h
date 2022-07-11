@@ -125,8 +125,6 @@ GDateTime *orage_i18_time_to_gdatetime (const gchar *i18_time);
 GDateTime *orage_icaltime_to_gdatetime (const gchar *i18_date,
                                         gboolean real_tm);
 
-gchar *orage_icaltime_to_i18_time (const char *icaltime);
-
 /** Return GDateTime from GTK calendar. This function set hour and minute values
  *  as well.
  *  @param cal instance of GTK calendar
