@@ -968,21 +968,9 @@ static void appt_add_exception_internal(xfical_appt *appt
          gl_tmp != NULL;
          gl_tmp = g_list_next(gl_tmp)) {
         excp = (xfical_exception *)gl_tmp->data;
-        wtime = icaltime_from_string(excp->time); 
-        if (strcmp(excp->type, "EXDATE") == 0) {
-#ifdef HAVE_LIBICAL
-            if (icaltime_is_date(wtime))
-            {
-                g_warning ("%s: EXDATE is date (%s) (%zu). There is libical "
-                           "bug http://sourceforge.net/tracker/?func=detail&aid=2901161&group_id=16077&atid=116077 "
-                           "which causes that excluded dates do not work "
-                           "properly in Orage.", G_STRFUNC, excp->time,
-                           strlen(excp->time));
-            }
-#endif
-            icalcomponent_add_property(icmp
-                    , icalproperty_new_exdate(wtime));
-        }
+        wtime = icaltimetype_from_gdatetime (excp->time, FALSE);
+        if (strcmp(excp->type, "EXDATE") == 0)
+            icalcomponent_add_property(icmp, icalproperty_new_exdate(wtime));
         else if (strcmp(excp->type, "RDATE") == 0) {
             /* Orage does not support rdate periods */
             rdate.period = icalperiodtype_null_period();
@@ -1877,7 +1865,7 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
                 else {
                     excp = g_new(xfical_exception, 1);
                     g_strlcpy (excp->type, "EXDATE", sizeof (excp->type));
-                    g_strlcpy (excp->time, text, sizeof (excp->time));
+                    excp->time = orage_icaltime_to_gdatetime (text, FALSE);
                     appt->recur_exceptions =
                             g_list_prepend(appt->recur_exceptions, excp);
                 }
@@ -1900,7 +1888,7 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
                     else {
                         excp = g_new(xfical_exception, 1);
                         g_strlcpy (excp->type, "RDATE", sizeof (excp->type));
-                        g_strlcpy (excp->time, text, sizeof (excp->time));
+                        excp->time = orage_icaltime_to_gdatetime (text, FALSE);
                         appt->recur_exceptions =
                                 g_list_prepend(appt->recur_exceptions, excp);
                     }
@@ -2107,7 +2095,7 @@ void xfical_appt_free(xfical_appt *appt)
     for (tmp = g_list_first(appt->recur_exceptions);
          tmp != NULL;
          tmp = g_list_next(tmp)) {
-        g_free(tmp->data);
+        appt_exception_free (tmp->data);
     }
     g_list_free(appt->recur_exceptions);
     g_free(appt);

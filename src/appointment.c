@@ -1490,11 +1490,12 @@ static void on_appCompletedTimezone_clicked_cb(GtkButton *button
 
 static gint check_exists(gconstpointer a, gconstpointer b)
 {
-   /*  We actually only care about match or no match.*/
-    if (!strcmp(((xfical_exception *)a)->time
-              , ((xfical_exception *)b)->time)) {
-        return(strcmp(((xfical_exception *)a)->type
-                    , ((xfical_exception *)b)->type));
+    xfical_exception *ex_a = (xfical_exception *)a;
+    xfical_exception *ex_b = (xfical_exception *)b;
+
+    /*  We actually only care about match or no match.*/
+    if (g_date_time_compare (ex_a->time, ex_b->time) == 0) {
+        return(strcmp(ex_a->type, ex_b->type));
     }
     else {
         return(1); /* does not matter if it is smaller or bigger */
@@ -1505,7 +1506,6 @@ static xfical_exception *new_exception(gchar *text)
 {
     xfical_exception *recur_exception;
     gint i;
-    gchar *ical_str;
     struct tm tm_time = {0};
     GDateTime *gdt;
     gboolean date_only;
@@ -1560,14 +1560,15 @@ static xfical_exception *new_exception(gchar *text)
 #endif
     }
 
-    ical_str = orage_gdatetime_to_icaltime (gdt, date_only);
-    g_date_time_unref (gdt);
-
-    g_strlcpy (recur_exception->time, ical_str,
-               sizeof (recur_exception->time));
-    g_free (ical_str);
+    recur_exception->time = gdt;
     text[i-2] = ' ';
     return(recur_exception);
+}
+
+void appt_exception_free (xfical_exception *recur_exception)
+{
+    g_date_time_unref (recur_exception->time);
+    g_free (recur_exception);
 }
 
 static void recur_row_clicked(GtkWidget *widget
@@ -1576,6 +1577,7 @@ static void recur_row_clicked(GtkWidget *widget
     appt_win *apptw = (appt_win *)user_data;
     xfical_appt *appt;
     gchar *text;
+    gchar *time_str;
     GList *children;
     GtkWidget *lab;
     xfical_exception *recur_exception, *recur_exception_cur;
@@ -1598,11 +1600,12 @@ static void recur_row_clicked(GtkWidget *widget
             recur_exception_cur = gl_pos->data;
             appt->recur_exceptions = 
                     g_list_remove(appt->recur_exceptions, recur_exception_cur);
-            g_free(recur_exception_cur);
+            appt_exception_free (recur_exception_cur);
         }
-        else { 
-            g_warning ("%s: non existent row (%s)", G_STRFUNC,
-                       recur_exception->time);
+        else {
+            time_str = g_date_time_format (recur_exception->time, "%F %T");
+            g_warning ("%s: non existent row (%s)", G_STRFUNC, time_str);
+            g_free (time_str);
         }
         g_free(recur_exception);
 
@@ -1641,7 +1644,7 @@ static gboolean add_recur_exception_row (const gchar *p_time,
                     , check_exists)) {
             /* this element is already in the list, so no need to add it again.
              * we just clean the memory and leave */
-            g_free(recur_exception);
+            appt_exception_free (recur_exception);
             g_free(text);
             return(FALSE);
         }
@@ -2559,7 +2562,7 @@ static void fill_appt_window_recurrence(appt_win *apptw, xfical_appt *appt)
          tmp != NULL;
          tmp = g_list_next(tmp)) {
         recur_exception = (xfical_exception *)tmp->data;
-        text = orage_icaltime_to_i18_time (recur_exception->time);
+        text = orage_gdatetime_to_i18_time (recur_exception->time, FALSE);
         add_recur_exception_row(text, recur_exception->type, apptw, TRUE);
         g_free(text);
     }

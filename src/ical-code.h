@@ -45,7 +45,7 @@ typedef enum
 
 typedef struct _xfical_exception
 {
-    gchar  time[17]; /* Orage uses no timezones here */
+    GDateTime *time;
     gchar  type[7]; /* EXDATE, RDATE */
 } xfical_exception;
 
