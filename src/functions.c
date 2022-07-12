@@ -739,30 +739,6 @@ GDateTime *orage_cal_to_gdatetime (GtkCalendar *cal,
     return gdt;
 }
 
-char *orage_cal_to_i18_time(GtkCalendar *cal, gint hh, gint mm)
-{
-    GDateTime *gdt;
-    char *tim;
-
-    gdt = orage_cal_to_gdatetime (cal, hh, mm);
-    tim = g_date_time_format (gdt, "%x %R");
-    g_date_time_unref (gdt);
-
-    return tim;
-}
-
-char *orage_cal_to_i18_date(GtkCalendar *cal)
-{
-    GDateTime *gdt;
-    gchar *date;
-
-    gdt = orage_cal_to_gdatetime (cal, 1, 1);
-    date = g_date_time_format (gdt, "%x");
-    g_date_time_unref (gdt);
-
-    return date;
-}
-
 GDateTime *orage_icaltime_to_gdatetime (const gchar *icaltime,
                                         const gboolean real_tm)
 {

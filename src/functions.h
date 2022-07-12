@@ -134,9 +134,6 @@ GDateTime *orage_icaltime_to_gdatetime (const gchar *i18_date,
  */
 GDateTime *orage_cal_to_gdatetime (GtkCalendar *cal, gint hh, gint mm);
 
-char *orage_cal_to_i18_time(GtkCalendar *cal, gint hh, gint mm);
-char *orage_cal_to_i18_date(GtkCalendar *cal);
-
 /** Find number of days between two time values.
  *  @param gdt1 first time value
  *  @param gdt2 second time value
