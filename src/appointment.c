@@ -1616,13 +1616,14 @@ static void recur_row_clicked(GtkWidget *widget
     }
 }
 
-static gboolean add_recur_exception_row (const gchar *p_time,
+static gboolean add_recur_exception_row (GDateTime *p_time_gdt,
                                          const gchar *p_type,
                                          appt_win *apptw,
                                          const gboolean only_window)
 {
     GtkWidget *ev, *label;
     gchar *text, tmp_type[2];
+    gchar *p_time;
     xfical_appt *appt;
     xfical_exception *recur_exception;
 
@@ -1634,7 +1635,10 @@ static gboolean add_recur_exception_row (const gchar *p_time,
     else
         tmp_type[0] = p_type[0];
     tmp_type[1] = '\0';
+    appt = (xfical_appt *)apptw->xf_appt;
+    p_time = orage_gdatetime_to_i18_time (p_time_gdt, appt->allDay);
     text = g_strdup_printf("%s %s", p_time, tmp_type);
+    g_free (p_time);
 
     /* Then, let's keep the GList updated */
     if (!only_window) {
@@ -1685,7 +1689,8 @@ static void recur_day_selected_double_click_cb(GtkCalendar *calendar
         , gpointer user_data)
 {
     appt_win *apptw = (appt_win *)user_data;
-    gchar *cal_date, *type;
+    gchar *type;
+    GDateTime *gdt;
     gint hh, mm;
 
     if (gtk_toggle_button_get_active(
@@ -1697,17 +1702,17 @@ static void recur_day_selected_double_click_cb(GtkCalendar *calendar
            We use start time from appointment. */
         if (gtk_toggle_button_get_active(
                 GTK_TOGGLE_BUTTON(apptw->AllDay_checkbutton)))
-            cal_date = orage_cal_to_i18_date (calendar);
+            gdt = orage_cal_to_gdatetime (calendar, 1, 1);
         else {
             hh =  gtk_spin_button_get_value_as_int(
                     GTK_SPIN_BUTTON(apptw->StartTime_spin_hh));
             mm =  gtk_spin_button_get_value_as_int(
                     GTK_SPIN_BUTTON(apptw->StartTime_spin_mm));
-            cal_date = orage_cal_to_i18_time(calendar, hh, mm);
+            gdt = orage_cal_to_gdatetime (calendar, hh, mm);
         }
 #else
         /* date is enough */
-        cal_date = orage_cal_to_i18_date (calendar);
+        gdt = orage_cal_to_gdatetime (calendar, 1, 1);
 #endif
     }
     else { /* extra day. This needs also time */
@@ -1716,14 +1721,14 @@ static void recur_day_selected_double_click_cb(GtkCalendar *calendar
                 GTK_SPIN_BUTTON(apptw->Recur_exception_incl_spin_hh));
         mm =  gtk_spin_button_get_value_as_int(
                 GTK_SPIN_BUTTON(apptw->Recur_exception_incl_spin_mm));
-        cal_date = orage_cal_to_i18_time (calendar, hh, mm);
+        gdt = orage_cal_to_gdatetime (calendar, hh, mm);
     }
 
-    if (add_recur_exception_row(cal_date, type, apptw, FALSE)) { /* new data */
+    if (add_recur_exception_row (gdt, type, apptw, FALSE)) { /* new data */
         mark_appointment_changed((appt_win *)user_data);
         refresh_recur_calendars((appt_win *)user_data);
     }
-    g_free(cal_date);
+    g_date_time_unref (gdt);
 }
 
 static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
@@ -2562,9 +2567,8 @@ static void fill_appt_window_recurrence(appt_win *apptw, xfical_appt *appt)
          tmp != NULL;
          tmp = g_list_next(tmp)) {
         recur_exception = (xfical_exception *)tmp->data;
-        text = orage_gdatetime_to_i18_time (recur_exception->time, FALSE);
-        add_recur_exception_row(text, recur_exception->type, apptw, TRUE);
-        g_free(text);
+        add_recur_exception_row (recur_exception->time,
+                                  recur_exception->type, apptw, TRUE);
     }
     /* note: include times is setup in the fill_appt_window_times */
 }
