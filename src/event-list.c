@@ -629,7 +629,6 @@ static void refresh_time_field(el_win *el)
 
 static void event_data(el_win *el)
 {
-    const gchar *title;  /* in %x strftime format */
     GDate *gd_title;
     GDate *gd_now;
     GDate *d1;
@@ -645,9 +644,8 @@ static void event_data(el_win *el)
 #endif
     el->show_old = gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(el->event_show_old_checkbutton));
-    title = gtk_window_get_title(GTK_WINDOW(el->Window));
-    gd_title = g_date_new ();
-    orage_i18_date_to_gdate (title, gd_title);
+    gdt = g_object_get_data (G_OBJECT (el->Window), DATE_KEY);
+    gd_title = orage_gdatetime_to_gdate (gdt);
 
     if (el->show_old && el->only_first) {
         /* just take any old enough date, so that all events fit in */
