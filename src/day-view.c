@@ -718,10 +718,8 @@ static void app_rows (day_win *dw,
     xfical_appt *appt;
     gchar *a_day_str;
 
-    a_day_str = orage_gdatetime_to_icaltime (dw->a_day, TRUE);
-    xfical_get_each_app_within_time (a_day_str, dw->days, ical_type, file_type,
+    xfical_get_each_app_within_time (dw->a_day, dw->days, ical_type, file_type,
                                      &appt_list);
-    g_free (a_day_str);
     for (tmp = g_list_first(appt_list);
          tmp != NULL;
          tmp = g_list_next(tmp)) {

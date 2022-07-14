@@ -540,7 +540,7 @@ static void app_rows (el_win *el, GDateTime *a_day_gdt, GDateTime *gdt_par,
     a_day = orage_gdatetime_to_icaltime (a_day_gdt, TRUE);
 
     if (ical_type == XFICAL_TYPE_EVENT && !el->only_first) {
-        xfical_get_each_app_within_time(a_day, el->days+1
+        xfical_get_each_app_within_time (a_day_gdt, el->days+1
                 , ical_type, file_type, &appt_list);
         for (tmp = g_list_first(appt_list);
              tmp != NULL;

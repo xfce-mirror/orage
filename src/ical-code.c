@@ -3505,25 +3505,29 @@ static void xfical_get_each_app_within_time_internal (const gchar *a_day,
 }
 
 /* This will (probably) replace xfical_appt_get_next_on_day */
-void xfical_get_each_app_within_time (const gchar *a_day, gint days
-        , xfical_type type, const gchar *file_type, GList **data)
+void xfical_get_each_app_within_time (GDateTime *a_day, gint days,
+                                      xfical_type type, const gchar *file_type,
+                                      GList **data)
 {
     gint i;
+    gchar *str;
+
+    str = orage_gdatetime_to_icaltime (a_day, TRUE);
 
     if (file_type[0] == 'O') {
-        xfical_get_each_app_within_time_internal(a_day
+        xfical_get_each_app_within_time_internal(str
                 , days, type, ic_ical, file_type, data);
     }
 #ifdef HAVE_ARCHIVE
     else if (file_type[0] == 'A') {
-        xfical_get_each_app_within_time_internal(a_day
+        xfical_get_each_app_within_time_internal(str
                 , days, type, ic_aical, file_type, data);
     }
 #endif
     else if (file_type[0] == 'F') {
         sscanf(file_type, "F%02d", &i);
         if (i < g_par.foreign_count && ic_f_ical[i].ical != NULL)
-            xfical_get_each_app_within_time_internal(a_day
+            xfical_get_each_app_within_time_internal(str
                     , days, type, ic_f_ical[i].ical, file_type, data);
          else {
              g_critical ("%s: unknown foreign file number %s",
@@ -3533,6 +3537,8 @@ void xfical_get_each_app_within_time (const gchar *a_day, gint days
     else {
         g_critical ("%s: unknown file type", G_STRFUNC);
     }
+
+    g_free (str);
 }
 
 /* let's find next VEVENT or VTODO or VJOURNAL BEGIN or END

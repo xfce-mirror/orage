@@ -616,7 +616,6 @@ static void build_mainbox_todo_info(void)
 static void build_mainbox_event_info(void)
 {
     CalWin *cal = (CalWin *)g_par.xfcal;
-    gchar *s_time;
     xfical_type ical_type;
     gchar file_type[8];
     gint i;
@@ -625,25 +624,23 @@ static void build_mainbox_event_info(void)
 
     if (g_par.show_event_days) {
         gdt = orage_cal_to_gdatetime (GTK_CALENDAR (cal->mCalendar), 1, 1);
-        s_time = orage_gdatetime_to_icaltime (gdt, TRUE);
-        g_date_time_unref (gdt);
         ical_type = XFICAL_TYPE_EVENT;
         g_strlcpy (file_type, "O00.", sizeof (file_type));
 #if 0
-        insert_rows(&event_list, s_time, ical_type, file_type);
+        insert_rows(&event_list, gdt, ical_type, file_type);
 #endif
-        xfical_get_each_app_within_time (s_time, g_par.show_event_days
+        xfical_get_each_app_within_time (gdt, g_par.show_event_days
                 , ical_type, file_type, &event_list);
         for (i = 0; i < g_par.foreign_count; i++) {
             g_snprintf(file_type, sizeof (file_type), "F%02d.", i);
 #if 0
-            insert_rows(&event_list, s_time, ical_type, file_type);
+            insert_rows(&event_list, gdt, ical_type, file_type);
 #endif
-            xfical_get_each_app_within_time (s_time, g_par.show_event_days
+            xfical_get_each_app_within_time (gdt, g_par.show_event_days
                     , ical_type, file_type, &event_list);
         }
 
-        g_free (s_time);
+        g_date_time_unref (gdt);
     }
     if (event_list) {
         gtk_widget_destroy(cal->mEvent_vbox);
