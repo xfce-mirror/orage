@@ -2994,51 +2994,49 @@ static xfical_appt *xfical_appt_get_next_on_day_internal (const gchar *a_day
         return(0);
 }
 
- /* Read next EVENT/TODO/JOURNAL component on the specified date from 
-  * ical datafile.
-  * a_day:  start date of ical component which is to be read
-  * first:  get first appointment is TRUE, if not get next.
-  * days:   how many more days to check forward. 0 = only one day
-  * type:   EVENT/TODO/JOURNAL to be read
-  * returns: NULL if failed and xfical_appt pointer to xfical_appt struct 
-  *          filled with data if successfull. 
-  *          You need to deallocate it after used.
-  *          It will be overdriven by next invocation of this function.
-  * Note:   starttimecur and endtimecur are converted to local timezone
-  */
-xfical_appt *xfical_appt_get_next_on_day (const gchar *a_day, gboolean first,
+xfical_appt *xfical_appt_get_next_on_day (GDateTime *gdt, gboolean first,
                                           gint days, xfical_type type,
                                           gchar *file_type)
 {
     gint i;
+    gchar *a_day;
+    xfical_appt *appt;
+
+    a_day = orage_gdatetime_to_icaltime (gdt, TRUE);
 
     /* FIXME: old code called, replace with xfical_get_each_app_within_time. */
     if (file_type[0] == 'O') {
-        return(xfical_appt_get_next_on_day_internal(a_day, first
-                , days, type, ic_ical, file_type));
+        appt = xfical_appt_get_next_on_day_internal (a_day, first, days, type,
+                                                     ic_ical, file_type);
     }
 #ifdef HAVE_ARCHIVE
     else if (file_type[0] == 'A') {
-        return(xfical_appt_get_next_on_day_internal(a_day, first
-                , days, type, ic_aical, file_type));
+        appt = xfical_appt_get_next_on_day_internal (a_day, first, days, type,
+                                                     ic_aical, file_type);
     }
 #endif
     else if (file_type[0] == 'F') {
         sscanf(file_type, "F%02d", &i);
         if (i < g_par.foreign_count && ic_f_ical[i].ical != NULL)
-            return(xfical_appt_get_next_on_day_internal(a_day, first
-                    , days, type, ic_f_ical[i].ical, file_type));
-         else {
-             g_critical ("%s: unknown foreign file number %s", G_STRFUNC,
-                         file_type);
-             return(NULL);
-         }
+        {
+            appt = xfical_appt_get_next_on_day_internal (a_day, first, days,
+                    type, ic_f_ical[i].ical, file_type);
+        }
+        else
+        {
+            g_critical ("%s: unknown foreign file number %s", G_STRFUNC,
+                        file_type);
+            appt = NULL;
+        }
     }
     else {
         g_critical ("%s: unknown file type", G_STRFUNC);
-        return(NULL);
+        appt = NULL;
     }
 
+    g_free (a_day);
+    
+    return appt;
 }
 
 static gboolean xfical_mark_calendar_days(GtkCalendar *gtkcal

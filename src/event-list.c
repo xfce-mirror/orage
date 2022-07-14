@@ -535,7 +535,6 @@ static void app_rows (el_win *el, GDateTime *a_day_gdt, GDateTime *gdt_par,
 {
     GList *appt_list=NULL, *tmp;
     xfical_appt *appt;
-    gchar *a_day;
 
     if (ical_type == XFICAL_TYPE_EVENT && !el->only_first) {
         xfical_get_each_app_within_time (a_day_gdt, el->days+1
@@ -552,18 +551,14 @@ static void app_rows (el_win *el, GDateTime *a_day_gdt, GDateTime *gdt_par,
         g_list_free(appt_list);
     }
     else {
-        a_day = orage_gdatetime_to_icaltime (a_day_gdt, TRUE);
-
-        for (appt = xfical_appt_get_next_on_day(a_day, TRUE, el->days
+        for (appt = xfical_appt_get_next_on_day (a_day_gdt, TRUE, el->days
                     , ical_type, file_type);
              appt;
-             appt = xfical_appt_get_next_on_day(a_day, FALSE, el->days
+             appt = xfical_appt_get_next_on_day (a_day_gdt, FALSE, el->days
                     , ical_type, file_type)) {
             add_el_row (el, appt, gdt_par);
             xfical_appt_free(appt);
         }
-
-        g_free (a_day);
     }
 }
 

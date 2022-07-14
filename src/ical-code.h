@@ -142,9 +142,21 @@ void xfical_appt_free(xfical_appt *appt);
 gboolean xfical_appt_mod(char *ical_id, xfical_appt *appt);
 gboolean xfical_appt_del(char *ical_id);
 
-xfical_appt *xfical_appt_get_next_on_day (const gchar *a_day, gboolean first,
+/** Read next EVENT/TODO/JOURNAL component on the specified date from ical
+ *  datafile.
+ *  @param gdt start date of ical component which is to be read
+ *  @param first get first appointment is TRUE, if not get next
+ *  @param days how many more days to check forward. 0 = only one day
+ *  @param type EVENT/TODO/JOURNAL to be read
+ *  @returns NULL if failed and xfical_appt pointer to xfical_appt struct filled
+ *           with data if successfull. You need to deallocate it after used. It
+ *           will be overdriven by next invocation of this function.
+ *  @note starttimecur and endtimecur are converted to local timezone
+ */
+xfical_appt *xfical_appt_get_next_on_day (GDateTime *gdt, gboolean first,
                                           gint days, xfical_type type,
                                           gchar *file_type);
+
 xfical_appt *xfical_appt_get_next_with_string(char *str, gboolean first
         , gchar *file_type);
 void xfical_get_each_app_within_time (GDateTime *a_day, int days

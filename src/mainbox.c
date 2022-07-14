@@ -439,19 +439,14 @@ static void insert_rows (GList **list, GDateTime *gdt, xfical_type ical_type
         , gchar *file_type)
 {
     xfical_appt *appt;
-    gchar *a_day;
 
-    a_day = orage_gdatetime_to_icaltime (gdt, TRUE);
-
-    for (appt = xfical_appt_get_next_on_day(a_day, TRUE, 0
+    for (appt = xfical_appt_get_next_on_day(gdt, TRUE, 0
                 , ical_type , file_type);
          appt;
-         appt = xfical_appt_get_next_on_day(a_day, FALSE, 0
+         appt = xfical_appt_get_next_on_day(gdt, FALSE, 0
                 , ical_type , file_type)) {
         *list = g_list_prepend(*list, appt);
     }
-
-    g_free (a_day);
 }
 
 static gint event_order(gconstpointer a, gconstpointer b)
