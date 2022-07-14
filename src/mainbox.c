@@ -435,10 +435,13 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
     g_free(tip);
 }
 
-static void insert_rows(GList **list, const gchar *a_day, xfical_type ical_type
+static void insert_rows (GList **list, GDateTime *gdt, xfical_type ical_type
         , gchar *file_type)
 {
     xfical_appt *appt;
+    gchar *a_day;
+
+    a_day = orage_gdatetime_to_icaltime (gdt, TRUE);
 
     for (appt = xfical_appt_get_next_on_day(a_day, TRUE, 0
                 , ical_type , file_type);
@@ -447,6 +450,8 @@ static void insert_rows(GList **list, const gchar *a_day, xfical_type ical_type
                 , ical_type , file_type)) {
         *list = g_list_prepend(*list, appt);
     }
+
+    g_free (a_day);
 }
 
 static gint event_order(gconstpointer a, gconstpointer b)
@@ -575,7 +580,6 @@ static void build_mainbox_todo_info(void)
 {
     CalWin *cal = (CalWin *)g_par.xfcal;
     GDateTime *gdt;
-    gchar *a_day;
     xfical_type ical_type;
     gchar file_type[8];
     gint i;
@@ -583,20 +587,17 @@ static void build_mainbox_todo_info(void)
 
     if (g_par.show_todos) {
         gdt = g_date_time_new_now_local ();
-        a_day = orage_gdatetime_to_icaltime (gdt, TRUE);
-        g_date_time_unref (gdt);
-
         ical_type = XFICAL_TYPE_TODO;
         /* first search base orage file */
         g_strlcpy (file_type, "O00.", sizeof (file_type));
-        insert_rows(&todo_list, a_day, ical_type, file_type);
+        insert_rows(&todo_list, gdt, ical_type, file_type);
         /* then process all foreign files */
         for (i = 0; i < g_par.foreign_count; i++) {
             g_snprintf(file_type, sizeof (file_type), "F%02d.", i);
-            insert_rows(&todo_list, a_day, ical_type, file_type);
+            insert_rows(&todo_list, gdt, ical_type, file_type);
         }
 
-        g_free (a_day);
+        g_date_time_unref (gdt);
     }
     if (todo_list) {
         gtk_widget_destroy(cal->mTodo_vbox);
