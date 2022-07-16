@@ -992,8 +992,8 @@ static void build_day_view_table (day_win *dw)
     orage_category_get_list();
     days = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(dw->day_spin));
     days_n1 = days + 1;
-    gdt0 = orage_i18_date_to_gdatetime (
-            gtk_button_get_label(GTK_BUTTON(dw->StartDate_button)));
+    gdt0 = g_date_time_ref (
+            g_object_get_data (G_OBJECT (dw->StartDate_button), DATE_KEY));
 
     /****** header of day table = days columns ******/
     dw->scroll_win = build_scroll_window ();
