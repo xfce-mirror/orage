@@ -694,7 +694,7 @@ GDateTime *orage_i18_time_to_gdatetime (const gchar *i18_time)
                                   t.tm_min, t.tm_sec);
 }
 
-void orage_i18_date_to_gdate (const gchar *i18_date, GDate *date)
+static void orage_i18_date_to_gdate (const gchar *i18_date, GDate *date)
 {
     g_date_set_parse (date, i18_date);
 

@@ -111,7 +111,6 @@ gint orage_gdatetime_compare_date (GDateTime *gdt1, GDateTime *gdt2);
 
 GDateTime *orage_gdate_to_gdatetime (const GDate *gd);
 
-void orage_i18_date_to_gdate (const gchar *i18_date, GDate *date);
 GDateTime *orage_i18_date_to_gdatetime (const gchar *i18_date);
 GDateTime *orage_i18_time_to_gdatetime (const gchar *i18_time);
 
