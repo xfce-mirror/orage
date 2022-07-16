@@ -43,10 +43,16 @@ typedef enum
    ,XFICAL_TYPE_JOURNAL
 } xfical_type;
 
+typedef enum
+{
+    EXDATE,
+    RDATE
+} xfical_exception_type;
+
 typedef struct _xfical_exception
 {
     GDateTime *time;
-    gchar  type[7]; /* EXDATE, RDATE */
+    xfical_exception_type type;
 } xfical_exception;
 
 typedef struct _xfical_appt

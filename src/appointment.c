@@ -1495,7 +1495,7 @@ static gint check_exists(gconstpointer a, gconstpointer b)
 
     /*  We actually only care about match or no match.*/
     if (g_date_time_compare (ex_a->time, ex_b->time) == 0) {
-        return(strcmp(ex_a->type, ex_b->type));
+        return !(ex_a->type == ex_b->type);
     }
     else {
         return(1); /* does not matter if it is smaller or bigger */
@@ -1517,14 +1517,12 @@ static xfical_exception *new_exception(gchar *text)
     i = strlen(text);
     text[i-2] = '\0';
     if (text[i-1] == '+') {
-        g_strlcpy (recur_exception->type, "RDATE",
-                   sizeof(recur_exception->type));
+        recur_exception->type = RDATE;
         gdt = orage_i18_time_to_gdatetime (text);
         date_only = FALSE;
     }
     else {
-        g_strlcpy (recur_exception->type, "EXDATE",
-                   sizeof(recur_exception->type));
+        recur_exception->type = EXDATE;
 #ifdef HAVE_LIBICAL
         /* need to add time also as standard libical can not handle dates
            correctly yet. Check more from BUG 5764.
@@ -1617,7 +1615,7 @@ static void recur_row_clicked(GtkWidget *widget
 }
 
 static gboolean add_recur_exception_row (GDateTime *p_time_gdt,
-                                         const gchar *p_type,
+                                         const xfical_exception_type p_type,
                                          appt_win *apptw,
                                          const gboolean only_window)
 {
@@ -1628,12 +1626,22 @@ static gboolean add_recur_exception_row (GDateTime *p_time_gdt,
     xfical_exception *recur_exception;
 
     /* First build the data */
-    if (!strcmp(p_type, "EXDATE"))
-        tmp_type[0] = '-';
-    else if (!strcmp(p_type, "RDATE"))
-        tmp_type[0] = '+';
-    else
-        tmp_type[0] = p_type[0];
+    switch (p_type)
+    {
+        case EXDATE:
+            tmp_type[0] = '-';
+            break;
+
+        case RDATE:
+            tmp_type[0] = '+';
+            break;
+
+        default:
+            g_debug ("%s: unknown exception type '%d'", G_STRFUNC, p_type);
+            tmp_type[0] = '\0';
+            break;
+    }
+
     tmp_type[1] = '\0';
     appt = (xfical_appt *)apptw->xf_appt;
     p_time = orage_gdatetime_to_i18_time (p_time_gdt, appt->allDay);
@@ -1689,13 +1697,13 @@ static void recur_day_selected_double_click_cb(GtkCalendar *calendar
         , gpointer user_data)
 {
     appt_win *apptw = (appt_win *)user_data;
-    gchar *type;
+    xfical_exception_type type;
     GDateTime *gdt;
     gint hh, mm;
 
     if (gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(apptw->Recur_exception_excl_rb))) {
-        type = "-";
+        type = EXDATE;
 #ifdef HAVE_LIBICAL
         /* need to add time also as standard libical can not handle dates
            correctly yet. Check more from BUG 5764.
@@ -1716,7 +1724,7 @@ static void recur_day_selected_double_click_cb(GtkCalendar *calendar
 #endif
     }
     else { /* extra day. This needs also time */
-        type = "+";
+        type = RDATE;
         hh =  gtk_spin_button_get_value_as_int(
                 GTK_SPIN_BUTTON(apptw->Recur_exception_incl_spin_hh));
         mm =  gtk_spin_button_get_value_as_int(
@@ -2485,7 +2493,6 @@ static void fill_appt_window_alarm(appt_win *apptw, xfical_appt *appt)
 static void fill_appt_window_recurrence(appt_win *apptw, xfical_appt *appt)
 {
     gchar *untildate_to_display;
-    gchar *text;
     gdouble recur_count;
     GList *tmp;
     GDateTime *gdt;
@@ -2568,7 +2575,7 @@ static void fill_appt_window_recurrence(appt_win *apptw, xfical_appt *appt)
          tmp = g_list_next(tmp)) {
         recur_exception = (xfical_exception *)tmp->data;
         add_recur_exception_row (recur_exception->time,
-                                  recur_exception->type, apptw, TRUE);
+                                 recur_exception->type, apptw, TRUE);
     }
     /* note: include times is setup in the fill_appt_window_times */
 }

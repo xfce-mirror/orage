@@ -984,9 +984,10 @@ static void appt_add_exception_internal(xfical_appt *appt
          gl_tmp = g_list_next(gl_tmp)) {
         excp = (xfical_exception *)gl_tmp->data;
         wtime = icaltimetype_from_gdatetime (excp->time, FALSE);
-        if (strcmp(excp->type, "EXDATE") == 0)
+        if (excp->type == EXDATE)
             icalcomponent_add_property(icmp, icalproperty_new_exdate(wtime));
-        else if (strcmp(excp->type, "RDATE") == 0) {
+        else if (excp->type == RDATE)
+        {
             /* Orage does not support rdate periods */
             rdate.period = icalperiodtype_null_period();
             rdate.time = wtime;
@@ -994,7 +995,7 @@ static void appt_add_exception_internal(xfical_appt *appt
                     , icalproperty_new_rdate(rdate));
         }
         else
-            g_warning ("%s: unknown exception type %s, ignoring", G_STRFUNC,
+            g_warning ("%s: unknown exception type %d, ignoring", G_STRFUNC,
                        excp->type);
     }
 }
@@ -1879,7 +1880,7 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
                 }
                 else {
                     excp = g_new(xfical_exception, 1);
-                    g_strlcpy (excp->type, "EXDATE", sizeof (excp->type));
+                    excp->type = EXDATE;
                     excp->time = orage_icaltime_to_gdatetime (text, FALSE);
                     appt->recur_exceptions =
                             g_list_prepend(appt->recur_exceptions, excp);
@@ -1902,7 +1903,7 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
                     }
                     else {
                         excp = g_new(xfical_exception, 1);
-                        g_strlcpy (excp->type, "RDATE", sizeof (excp->type));
+                        excp->type = RDATE;
                         excp->time = orage_icaltime_to_gdatetime (text, FALSE);
                         appt->recur_exceptions =
                                 g_list_prepend(appt->recur_exceptions, excp);
