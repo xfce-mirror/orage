@@ -849,7 +849,7 @@ void orage_gdatetime_unref (GDateTime *gdt)
     g_date_time_unref (gdt);
 }
 
-GDate *orage_gdatetime_to_gdate (GDateTime *gdt)
+static GDate *orage_gdatetime_to_gdate (GDateTime *gdt)
 {
     gint year;
     gint month;
