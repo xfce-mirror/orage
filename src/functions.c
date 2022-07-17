@@ -706,6 +706,15 @@ static void orage_i18_date_to_gdate (const gchar *i18_date, GDate *date)
     }
 }
 
+static GDateTime *orage_gdate_to_gdatetime (const GDate *gd)
+{
+    const gint year = g_date_get_year (gd);
+    const gint month = g_date_get_month (gd);
+    const gint day = g_date_get_day (gd);
+
+    return g_date_time_new_local (year, month, day, 0, 0, 0);
+}
+
 GDateTime *orage_i18_date_to_gdatetime (const gchar *i18_date)
 {
     GDateTime *gdt;
@@ -849,15 +858,6 @@ GDate *orage_gdatetime_to_gdate (GDateTime *gdt)
     g_date_time_get_ymd (gdt, &year, &month, &day);
 
     return g_date_new_dmy (day, month, year);
-}
-
-GDateTime *orage_gdate_to_gdatetime (const GDate *gd)
-{
-    const gint year = g_date_get_year (gd);
-    const gint month = g_date_get_month (gd);
-    const gint day = g_date_get_day (gd);
-
-    return g_date_time_new_local (year, month, day, 0, 0, 0);
 }
 
 gint orage_gdatetime_days_between (GDateTime *gdt1, GDateTime *gdt2)
