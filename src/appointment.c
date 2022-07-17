@@ -1502,7 +1502,7 @@ static gint check_exists(gconstpointer a, gconstpointer b)
     }
 }
 
-static xfical_exception *new_exception(gchar *text)
+static xfical_exception *exception_new (gchar *text)
 {
     xfical_exception *recur_exception;
     gint i;
@@ -1589,7 +1589,7 @@ static void recur_row_clicked(GtkWidget *widget
         text = g_strdup(gtk_label_get_text(GTK_LABEL(lab)));
 
          /* Then, let's keep the GList updated */
-        recur_exception = new_exception(text);
+        recur_exception = exception_new(text);
         appt = (xfical_appt *)apptw->xf_appt;
         g_free(text);
         if ((gl_pos = g_list_find_custom(appt->recur_exceptions
@@ -1650,7 +1650,7 @@ static gboolean add_recur_exception_row (GDateTime *p_time_gdt,
 
     /* Then, let's keep the GList updated */
     if (!only_window) {
-        recur_exception = new_exception(text);
+        recur_exception = exception_new(text);
         appt = (xfical_appt *)apptw->xf_appt;
         if (g_list_find_custom(appt->recur_exceptions, recur_exception
                     , check_exists)) {
