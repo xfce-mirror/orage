@@ -1508,7 +1508,6 @@ static xfical_exception *exception_new (gchar *text)
     gint i;
     struct tm tm_time = {0};
     GDateTime *gdt;
-    gboolean date_only;
 #ifndef HAVE_LIBICAL
     char *tmp;
 #endif
@@ -1519,7 +1518,6 @@ static xfical_exception *exception_new (gchar *text)
     if (text[i-1] == '+') {
         recur_exception->type = RDATE;
         gdt = orage_i18_time_to_gdatetime (text);
-        date_only = FALSE;
     }
     else {
         recur_exception->type = EXDATE;
@@ -1531,30 +1529,18 @@ static xfical_exception *exception_new (gchar *text)
            but if this fails (=return NULL) we may have date from somewhere
            else */
         if ((char *)strptime(text, "%x %R", &tm_time) == NULL)
-        {
             gdt = orage_i18_date_to_gdatetime (text);
-            date_only = TRUE;
-        }
         else
-        {
             gdt = orage_i18_time_to_gdatetime (text);
-            date_only = FALSE;
-        }
 #else
         /* we should not have date-times as we are using internal libical,
            which only uses dates, but if this returns non null, we may have
            datetime from somewhere else */
         tmp = (char *)strptime(text, "%x", &tm_time);
         if (ORAGE_STR_EXISTS(tmp))
-        {
             gdt = orage_i18_time_to_gdatetime (text);
-            date_only = FALSE;
-        }
         else
-        {
             gdt = orage_i18_date_to_gdatetime (text);
-            date_only = TRUE;
-        }
 #endif
     }
 
