@@ -860,7 +860,7 @@ GDateTime *orage_gdate_to_gdatetime (const GDate *gd)
     return g_date_time_new_local (year, month, day, 0, 0, 0);
 }
 
-gint orage_days_between (GDateTime *gdt1, GDateTime *gdt2)
+gint orage_gdatetime_days_between (GDateTime *gdt1, GDateTime *gdt2)
 {
     GDate *g_t1, *g_t2;
     gint dd;

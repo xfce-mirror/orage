@@ -139,7 +139,7 @@ GDateTime *orage_cal_to_gdatetime (GtkCalendar *cal, gint hh, gint mm);
  *  @return Number of days between two time value. This value can be negative if
  *          gdt2 < gdt1
  */
-gint orage_days_between (GDateTime *gdt1, GDateTime *gdt2);
+gint orage_gdatetime_days_between (GDateTime *gdt1, GDateTime *gdt2);
 
 /** Set (GTK) calendar to selected date.
  *  @param cal instance of GTK calendar
