@@ -982,7 +982,6 @@ static gboolean orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
     gint tooltip_alarm_limit=5;
     gint hour, minute;
     gint dd, hh, min;
-    GDate *g_now, *g_alarm;
     gchar *tmp;
 
     if (!(g_par.trayIcon 
@@ -1001,14 +1000,9 @@ static gboolean orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
         /* remember that it is sorted list */
         cur_alarm = (alarm_struct *)alarm_l->data;
         if (alarm_cnt < tooltip_alarm_limit) {
-            g_now = orage_gdatetime_to_gdate (gdt);
-            g_alarm = orage_gdatetime_to_gdate (cur_alarm->alarm_time);
             hour = g_date_time_get_hour (cur_alarm->alarm_time);
             minute = g_date_time_get_minute (cur_alarm->alarm_time);
-            dd = g_date_days_between(g_now, g_alarm);
-
-            g_date_free(g_now);
-            g_date_free(g_alarm);
+            dd = orage_gdatetime_days_between (gdt, cur_alarm->alarm_time);
             hh = hour - g_date_time_get_hour (gdt);
             min = minute - g_date_time_get_minute (gdt);
             if (min < 0) {
