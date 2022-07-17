@@ -624,11 +624,9 @@ static void refresh_time_field(el_win *el)
 
 static void event_data(el_win *el)
 {
-    GDate *gd_title;
-    GDate *gd_now;
-    GDate *d1;
-    GDateTime *gdt;
+    GDateTime *gdt_now;
     GDateTime *gdt_a_day;
+    GDateTime *gdt_title;
 
     if (el->days == 0)
         refresh_time_field(el);
@@ -639,33 +637,27 @@ static void event_data(el_win *el)
 #endif
     el->show_old = gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(el->event_show_old_checkbutton));
-    gdt = g_object_get_data (G_OBJECT (el->Window), DATE_KEY);
-    gd_title = orage_gdatetime_to_gdate (gdt);
+    gdt_title = g_object_get_data (G_OBJECT (el->Window), DATE_KEY);
 
     if (el->show_old && el->only_first) {
         /* just take any old enough date, so that all events fit in */
-        d1 = g_date_new_dmy(1, 1, 1900);
-        gdt_a_day = orage_gdate_to_gdatetime (d1);
-        el->days += g_date_days_between (d1, gd_title);
-        g_date_free(d1);
+        gdt_a_day = g_date_time_new_local (1900, 1, 1, 0, 0, 0);
+        el->days += orage_gdatetime_days_between (gdt_a_day, gdt_title);
     }
     else { /* we show starting from selected day */
-        gdt_a_day = orage_gdate_to_gdatetime (gd_title);
+        gdt_a_day = g_date_time_ref (gdt_title);
     }
 
-    gdt = g_date_time_new_now_local ();
-    gd_now = orage_gdatetime_to_gdate (gdt);
+    gdt_now = g_date_time_new_now_local ();
     g_snprintf (el->time_now, sizeof (el->time_now), "%02d:%02d",
-                g_date_time_get_hour (gdt),
-                g_date_time_get_minute (gdt));
+                g_date_time_get_hour (gdt_now),
+                g_date_time_get_minute (gdt_now));
 
-    g_date_time_unref (gdt);
-    el->today = (g_date_days_between (gd_title, gd_now) == 0) ? TRUE : FALSE;
+    el->today = (orage_gdatetime_days_between (gdt_title, gdt_now) == 0);
 
-    g_date_free (gd_now);
-    g_date_free (gd_title);
     app_data (el, gdt_a_day, gdt_a_day);
     g_date_time_unref (gdt_a_day);
+    g_date_time_unref (gdt_now);
 }
 
 static void todo_data(el_win *el)
