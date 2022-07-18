@@ -53,6 +53,7 @@ typedef struct _xfical_exception
 {
     GDateTime *time;
     xfical_exception_type type;
+    gboolean all_day;
 } xfical_exception;
 
 typedef struct _xfical_appt
