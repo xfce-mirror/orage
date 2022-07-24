@@ -72,6 +72,7 @@
 #include "appointment.h"
 #include "parameters.h"
 #include "interface.h"
+#include "xfical_exception.h"
 
 static void xfical_alarm_build_list_internal(gboolean first_list_today);
 

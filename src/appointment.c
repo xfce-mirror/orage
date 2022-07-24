@@ -58,6 +58,7 @@
 #include "appointment.h"
 #include "parameters.h"
 #include "reminder.h"
+#include "xfical_exception.h"
 
 /* FIXME: Remove USE_GLIB_258 after switching required GLib to >= 2.58. */
 #define USE_GLIB_258 0
@@ -1490,8 +1491,8 @@ static void on_appCompletedTimezone_clicked_cb(GtkButton *button
 
 static gint check_exists(gconstpointer a, gconstpointer b)
 {
-    xfical_exception *ex_a = (xfical_exception *)a;
-    xfical_exception *ex_b = (xfical_exception *)b;
+    const xfical_exception *ex_a = (const xfical_exception *)a;
+    const xfical_exception *ex_b = (const xfical_exception *)b;
 
     /*  We actually only care about match or no match.*/
     if (g_date_time_compare (ex_a->time, ex_b->time) == 0) {
@@ -1561,12 +1562,6 @@ static xfical_exception *exception_new2 (GDateTime *p_time_gdt,
     recur_exception->all_day = all_day;
 
     return recur_exception;
-}
-
-void appt_exception_free (xfical_exception *recur_exception)
-{
-    g_date_time_unref (recur_exception->time);
-    g_free (recur_exception);
 }
 
 static void recur_row_clicked(GtkWidget *widget

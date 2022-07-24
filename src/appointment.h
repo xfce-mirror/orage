@@ -218,6 +218,5 @@ appt_win *create_appt_win (const gchar *action, gchar *par, GDateTime *gdt_par);
 
 GdkRGBA *orage_category_list_contains(char *categories);
 void orage_category_get_list();
-void appt_exception_free (xfical_exception *recur_exception);
 
 #endif /* !__APPOINTMENT_H__ */
