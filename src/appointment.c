@@ -1601,7 +1601,7 @@ static void recur_row_clicked(GtkWidget *widget
             g_warning ("%s: non existent row (%s)", G_STRFUNC, time_str);
             g_free (time_str);
         }
-        g_free(recur_exception);
+        xfical_exception_free (recur_exception);
 
         /* and finally update the display */
         gtk_widget_destroy(widget);

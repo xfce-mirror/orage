@@ -1766,6 +1766,7 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
     gboolean stime_found = FALSE, etime_found = FALSE;
     xfical_exception *excp;
     struct icaldatetimeperiodtype rdate;
+    GDateTime *gdt;
 
         /********** Component type ********/
     /* we want isolate all libical calls and features into this file,
@@ -1880,9 +1881,9 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
                                G_STRFUNC, text);
                 }
                 else {
-                    excp = g_new(xfical_exception, 1);
-                    excp->type = EXDATE;
-                    excp->time = orage_icaltime_to_gdatetime (text, FALSE);
+                    gdt = orage_icaltime_to_gdatetime (text, FALSE);
+                    excp = xfical_exception_new (gdt, FALSE, EXDATE);
+                    g_date_time_unref (gdt);
                     appt->recur_exceptions =
                             g_list_prepend(appt->recur_exceptions, excp);
                 }
@@ -1903,9 +1904,9 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
                                    text);
                     }
                     else {
-                        excp = g_new(xfical_exception, 1);
-                        excp->type = RDATE;
-                        excp->time = orage_icaltime_to_gdatetime (text, FALSE);
+                        gdt = orage_icaltime_to_gdatetime (text, FALSE);
+                        excp = xfical_exception_new (gdt, FALSE, RDATE);
+                        g_date_time_unref (gdt);
                         appt->recur_exceptions =
                                 g_list_prepend(appt->recur_exceptions, excp);
                     }
