@@ -1617,42 +1617,24 @@ static void recur_row_clicked(GtkWidget *widget
     }
 }
 
-static gboolean add_recur_exception_row (GDateTime *p_time_gdt,
-                                         const xfical_exception_type p_type,
+static gboolean add_recur_exception_row (xfical_exception *except,
                                          appt_win *apptw,
                                          const gboolean only_window)
 {
     GtkWidget *ev, *label;
-    gchar *text, tmp_type[2];
-    gchar *p_time;
+    gchar *text;
     xfical_appt *appt;
     xfical_exception *recur_exception;
+    GDateTime *p_time_gdt;
+    xfical_exception_type p_type;
 
-    /* First build the data */
-    switch (p_type)
-    {
-        case EXDATE:
-            tmp_type[0] = '-';
-            break;
-
-        case RDATE:
-            tmp_type[0] = '+';
-            break;
-
-        default:
-            g_debug ("%s: unknown exception type '%d'", G_STRFUNC, p_type);
-            tmp_type[0] = '\0';
-            break;
-    }
-
-    tmp_type[1] = '\0';
-    appt = (xfical_appt *)apptw->xf_appt;
-    p_time = orage_gdatetime_to_i18_time (p_time_gdt, appt->allDay);
-    text = g_strdup_printf("%s %s", p_time, tmp_type);
-    g_free (p_time);
+    text = xfical_exception_to_i18 (except);
 
     /* Then, let's keep the GList updated */
     if (!only_window) {
+        appt = (xfical_appt *)apptw->xf_appt;
+        p_time_gdt = xfical_exception_get_time (except);
+        p_type = xfical_exception_get_type (except);
         recur_exception = xfical_exception_new (p_time_gdt, appt->allDay, p_type);
         appt = (xfical_appt *)apptw->xf_appt;
         if (g_list_find_custom(appt->recur_exceptions, recur_exception
@@ -1703,6 +1685,8 @@ static void recur_day_selected_double_click_cb(GtkCalendar *calendar
     xfical_exception_type type;
     GDateTime *gdt;
     gint hh, mm;
+    gboolean all_day;
+    xfical_exception *except;
 
     if (gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(apptw->Recur_exception_excl_rb))) {
@@ -1713,17 +1697,22 @@ static void recur_day_selected_double_click_cb(GtkCalendar *calendar
            We use start time from appointment. */
         if (gtk_toggle_button_get_active(
                 GTK_TOGGLE_BUTTON(apptw->AllDay_checkbutton)))
+        {
             gdt = orage_cal_to_gdatetime (calendar, 1, 1);
+            all_day = TRUE;
+        }
         else {
             hh =  gtk_spin_button_get_value_as_int(
                     GTK_SPIN_BUTTON(apptw->StartTime_spin_hh));
             mm =  gtk_spin_button_get_value_as_int(
                     GTK_SPIN_BUTTON(apptw->StartTime_spin_mm));
             gdt = orage_cal_to_gdatetime (calendar, hh, mm);
+            all_day = FALSE;
         }
 #else
         /* date is enough */
         gdt = orage_cal_to_gdatetime (calendar, 1, 1);
+        all_day = FALSE;
 #endif
     }
     else { /* extra day. This needs also time */
@@ -1733,13 +1722,18 @@ static void recur_day_selected_double_click_cb(GtkCalendar *calendar
         mm =  gtk_spin_button_get_value_as_int(
                 GTK_SPIN_BUTTON(apptw->Recur_exception_incl_spin_mm));
         gdt = orage_cal_to_gdatetime (calendar, hh, mm);
+        all_day = FALSE;
     }
 
-    if (add_recur_exception_row (gdt, type, apptw, FALSE)) { /* new data */
+    except = xfical_exception_new (gdt, all_day, type);
+    g_date_time_unref (gdt);
+
+    if (add_recur_exception_row (except, apptw, FALSE)) { /* new data */
         mark_appointment_changed((appt_win *)user_data);
         refresh_recur_calendars((appt_win *)user_data);
     }
-    g_date_time_unref (gdt);
+
+    xfical_exception_free (except);
 }
 
 static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
@@ -2577,9 +2571,7 @@ static void fill_appt_window_recurrence(appt_win *apptw, xfical_appt *appt)
          tmp != NULL;
          tmp = g_list_next(tmp)) {
         recur_exception = (xfical_exception *)tmp->data;
-        add_recur_exception_row (xfical_exception_get_time (recur_exception),
-                                 xfical_exception_get_type (recur_exception),
-                                 apptw, TRUE);
+        add_recur_exception_row (recur_exception, apptw, TRUE);
     }
     /* note: include times is setup in the fill_appt_window_times */
 }
