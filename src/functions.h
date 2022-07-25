@@ -89,7 +89,7 @@ GtkWidget *orage_period_hbox_new(gboolean head_space, gboolean tail_space
         , GtkWidget *spin_mm, GtkWidget *mm_label);
 
 void orage_gdatetime_unref (GDateTime *gdt);
-gchar *orage_gdatetime_to_i18_time (GDateTime *gdt, const gboolean date_only);
+gchar *orage_gdatetime_to_i18_time (GDateTime *gdt, gboolean date_only);
 
 /** Create ical time string. Unlike g_date_time_format this function add padding
  *  with '0' to year value. Padding is required by Ical format.
