@@ -1515,7 +1515,6 @@ static xfical_exception *exception_new (gchar *text)
     char *tmp;
 #endif
 
-    recur_exception = g_new(xfical_exception, 1);
     i = strlen(text);
     text[i-2] = '\0';
     if (text[i-1] == '+') {
