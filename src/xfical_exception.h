@@ -31,18 +31,14 @@ typedef enum
     RDATE
 } xfical_exception_type;
 
-struct _xfical_exception
-{
-    GDateTime *time;
-    xfical_exception_type type;
-    gboolean all_day;
-};
-
 typedef struct _xfical_exception xfical_exception;
 
 xfical_exception *xfical_exception_new (GDateTime *gdt,
                                         gboolean all_day,
                                         xfical_exception_type type);
 void xfical_exception_free (xfical_exception *recur_exception);
+
+GDateTime *xfical_exception_get_time (const xfical_exception *recur_exception);
+xfical_exception_type xfical_exception_get_type (const xfical_exception *recur_exception);
 
 #endif

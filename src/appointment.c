@@ -1493,10 +1493,16 @@ static gint check_exists(gconstpointer a, gconstpointer b)
 {
     const xfical_exception *ex_a = (const xfical_exception *)a;
     const xfical_exception *ex_b = (const xfical_exception *)b;
+    GDateTime *time_a = xfical_exception_get_time (ex_a);
+    GDateTime *time_b = xfical_exception_get_time (ex_b);
+    xfical_exception_type type_a;
+    xfical_exception_type type_b;
 
     /*  We actually only care about match or no match.*/
-    if (g_date_time_compare (ex_a->time, ex_b->time) == 0) {
-        return !(ex_a->type == ex_b->type);
+    if (g_date_time_compare (time_a, time_b) == 0) {
+        type_a = xfical_exception_get_type (ex_a);
+        type_b = xfical_exception_get_type (ex_b);
+        return !(type_a == type_b);
     }
     else {
         return(1); /* does not matter if it is smaller or bigger */
@@ -1597,7 +1603,8 @@ static void recur_row_clicked(GtkWidget *widget
             xfical_exception_free (recur_exception_cur);
         }
         else {
-            time_str = g_date_time_format (recur_exception->time, "%F %T");
+            time_str = g_date_time_format (xfical_exception_get_time (
+                    recur_exception), "%F %T");
             g_warning ("%s: non existent row (%s)", G_STRFUNC, time_str);
             g_free (time_str);
         }
@@ -2570,8 +2577,9 @@ static void fill_appt_window_recurrence(appt_win *apptw, xfical_appt *appt)
          tmp != NULL;
          tmp = g_list_next(tmp)) {
         recur_exception = (xfical_exception *)tmp->data;
-        add_recur_exception_row (recur_exception->time,
-                                 recur_exception->type, apptw, TRUE);
+        add_recur_exception_row (xfical_exception_get_time (recur_exception),
+                                 xfical_exception_get_type (recur_exception),
+                                 apptw, TRUE);
     }
     /* note: include times is setup in the fill_appt_window_times */
 }

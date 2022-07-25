@@ -979,15 +979,18 @@ static void appt_add_exception_internal(xfical_appt *appt
     GList *gl_tmp;
     xfical_exception *excp;
     struct icaldatetimeperiodtype rdate;
+    xfical_exception_type type;
 
     for (gl_tmp = g_list_first(appt->recur_exceptions);
          gl_tmp != NULL;
          gl_tmp = g_list_next(gl_tmp)) {
         excp = (xfical_exception *)gl_tmp->data;
-        wtime = icaltimetype_from_gdatetime (excp->time, FALSE);
-        if (excp->type == EXDATE)
+        wtime = icaltimetype_from_gdatetime (xfical_exception_get_time (excp),
+                                             FALSE);
+        type = xfical_exception_get_type (excp);
+        if (type == EXDATE)
             icalcomponent_add_property(icmp, icalproperty_new_exdate(wtime));
-        else if (excp->type == RDATE)
+        else if (type == RDATE)
         {
             /* Orage does not support rdate periods */
             rdate.period = icalperiodtype_null_period();
@@ -997,7 +1000,7 @@ static void appt_add_exception_internal(xfical_appt *appt
         }
         else
             g_warning ("%s: unknown exception type %d, ignoring", G_STRFUNC,
-                       excp->type);
+                       type);
     }
 }
 
