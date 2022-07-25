@@ -1567,8 +1567,8 @@ static xfical_exception *exception_new (gchar *text)
 
     recur_exception = xfical_exception_new (gdt, all_day, exception_type);
     g_date_time_unref (gdt);
-    text[i-2] = ' ';
-    return (recur_exception);
+
+    return recur_exception;
 }
 
 static void recur_row_clicked(GtkWidget *widget
@@ -1589,11 +1589,9 @@ static void recur_row_clicked(GtkWidget *widget
         children = g_list_first(children);
         lab = (GtkWidget *)children->data;
         text = g_strdup(gtk_label_get_text(GTK_LABEL(lab)));
-
-         /* Then, let's keep the GList updated */
         recur_exception = exception_new(text);
+        g_free (text);
         appt = (xfical_appt *)apptw->xf_appt;
-        g_free(text);
         if ((gl_pos = g_list_find_custom(appt->recur_exceptions
                     , recur_exception, check_exists))) {
             /* let's remove it */
