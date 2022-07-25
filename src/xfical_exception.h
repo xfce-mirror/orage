@@ -40,6 +40,6 @@ void xfical_exception_free (xfical_exception *recur_exception);
 
 GDateTime *xfical_exception_get_time (const xfical_exception *recur_exception);
 xfical_exception_type xfical_exception_get_type (const xfical_exception *recur_exception);
-gchar *xfical_exeption_to_i18 (const xfical_exception *recur_exception);
+gchar *xfical_exception_to_i18 (const xfical_exception *recur_exception);
 
 #endif

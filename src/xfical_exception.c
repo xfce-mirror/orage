@@ -21,6 +21,7 @@
  */
 
 #include "xfical_exception.h"
+#include "functions.h"
 #include <glib.h>
 
 struct _xfical_exception
@@ -60,7 +61,7 @@ xfical_exception_type xfical_exception_get_type (const xfical_exception *recur_e
     return recur_exception->type;
 }
 
-gchar *xfical_exeption_to_i18 (const xfical_exception *recur_exception)
+gchar *xfical_exception_to_i18 (const xfical_exception *recur_exception)
 {
     gchar type_chr;
     gchar *p_time;
@@ -78,7 +79,7 @@ gchar *xfical_exeption_to_i18 (const xfical_exception *recur_exception)
             break;
 
         default:
-            g_error ("%s: unknown exception type '%d'", G_STRFUNC, p_type);
+            g_error ("%s: unknown exception type '%d'", G_STRFUNC, type);
             type_chr = '\0';
             break;
     }
