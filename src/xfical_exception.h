@@ -38,6 +38,6 @@ typedef struct _xfical_exception
     gboolean all_day;
 } xfical_exception;
 
-void appt_exception_free (xfical_exception *recur_exception);
+void xfical_exception_free (xfical_exception *recur_exception);
 
 #endif

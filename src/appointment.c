@@ -1610,7 +1610,7 @@ static void recur_row_clicked(GtkWidget *widget
             recur_exception_cur = gl_pos->data;
             appt->recur_exceptions = 
                     g_list_remove(appt->recur_exceptions, recur_exception_cur);
-            appt_exception_free (recur_exception_cur);
+            xfical_exception_free (recur_exception_cur);
         }
         else {
             time_str = g_date_time_format (recur_exception->time, "%F %T");
@@ -1668,7 +1668,7 @@ static gboolean add_recur_exception_row (GDateTime *p_time_gdt,
                     , check_exists)) {
             /* this element is already in the list, so no need to add it again.
              * we just clean the memory and leave */
-            appt_exception_free (recur_exception);
+            xfical_exception_free (recur_exception);
             g_free(text);
             return(FALSE);
         }

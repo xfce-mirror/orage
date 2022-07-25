@@ -23,7 +23,7 @@
 #include "xfical_exception.h"
 #include <glib.h>
 
-void appt_exception_free (xfical_exception *recur_exception)
+void xfical_exception_free (xfical_exception *recur_exception)
 {
     g_date_time_unref (recur_exception->time);
     g_free (recur_exception);
