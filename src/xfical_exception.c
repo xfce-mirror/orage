@@ -23,6 +23,20 @@
 #include "xfical_exception.h"
 #include <glib.h>
 
+xfical_exception *xfical_exception_new (GDateTime *gdt,
+                                        const gboolean all_day,
+                                        const xfical_exception_type type)
+{
+    xfical_exception *recur_exception;
+
+    recur_exception = g_new (xfical_exception, 1);
+    recur_exception->time = g_date_time_ref (gdt);
+    recur_exception->type = type;
+    recur_exception->all_day = all_day;
+
+    return recur_exception;
+}
+
 void xfical_exception_free (xfical_exception *recur_exception)
 {
     g_date_time_unref (recur_exception->time);

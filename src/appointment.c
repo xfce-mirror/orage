@@ -1567,20 +1567,6 @@ static xfical_exception *exception_new (gchar *text)
     return(recur_exception);
 }
 
-static xfical_exception *exception_new2 (GDateTime *p_time_gdt,
-                                         const gboolean all_day,
-                                         const xfical_exception_type type)
-{
-    xfical_exception *recur_exception;
-
-    recur_exception = g_new (xfical_exception, 1);
-    recur_exception->time = g_date_time_ref (p_time_gdt);
-    recur_exception->type = type;
-    recur_exception->all_day = all_day;
-
-    return recur_exception;
-}
-
 static void recur_row_clicked(GtkWidget *widget
         , GdkEventButton *event, gpointer *user_data)
 {
@@ -1662,7 +1648,7 @@ static gboolean add_recur_exception_row (GDateTime *p_time_gdt,
 
     /* Then, let's keep the GList updated */
     if (!only_window) {
-        recur_exception = exception_new2 (p_time_gdt, appt->allDay, p_type);
+        recur_exception = xfical_exception_new (p_time_gdt, appt->allDay, p_type);
         appt = (xfical_appt *)apptw->xf_appt;
         if (g_list_find_custom(appt->recur_exceptions, recur_exception
                     , check_exists)) {

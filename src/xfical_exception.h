@@ -38,6 +38,9 @@ typedef struct _xfical_exception
     gboolean all_day;
 } xfical_exception;
 
+xfical_exception *xfical_exception_new (GDateTime *gdt,
+                                        gboolean all_day,
+                                        xfical_exception_type type);
 void xfical_exception_free (xfical_exception *recur_exception);
 
 #endif
