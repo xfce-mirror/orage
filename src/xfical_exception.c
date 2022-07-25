@@ -59,3 +59,34 @@ xfical_exception_type xfical_exception_get_type (const xfical_exception *recur_e
 {
     return recur_exception->type;
 }
+
+gchar *xfical_exeption_to_i18 (const xfical_exception *recur_exception)
+{
+    gchar type_chr;
+    gchar *p_time;
+    gchar *text;
+    const xfical_exception_type type = recur_exception->type;
+
+    switch (type)
+    {
+        case EXDATE:
+            type_chr = '-';
+            break;
+
+        case RDATE:
+            type_chr = '+';
+            break;
+
+        default:
+            g_error ("%s: unknown exception type '%d'", G_STRFUNC, p_type);
+            type_chr = '\0';
+            break;
+    }
+
+    p_time = orage_gdatetime_to_i18_time (recur_exception->time,
+                                          recur_exception->all_day);
+    text = g_strdup_printf("%s %c", p_time, type_chr);
+    g_free (p_time);
+
+    return text;
+}
