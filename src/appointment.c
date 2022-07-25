@@ -1560,11 +1560,10 @@ static xfical_exception *exception_new (gchar *text)
 #endif
     }
 
-    recur_exception->time = gdt;
-    recur_exception->type = exception_type;
-    recur_exception->all_day = all_day;
+    recur_exception = xfical_exception_new (gdt, all_day, exception_type);
+    g_date_time_unref (gdt);
     text[i-2] = ' ';
-    return(recur_exception);
+    return (recur_exception);
 }
 
 static void recur_row_clicked(GtkWidget *widget
