@@ -21,8 +21,11 @@
 
  */
 
-#ifndef __ORAGE_FUNCTIONS_H__
-#define __ORAGE_FUNCTIONS_H__
+#ifndef ORAGE_FUNCTIONS_H
+#define ORAGE_FUNCTIONS_H
+
+#include <glib.h>
+#include <gtk/gtk.h>
 
 #define CALENDAR_RUNNING "_XFCE_CALENDAR_RUNNING"
 #define CALENDAR_TOGGLE_EVENT "_XFCE_CALENDAR_TOGGLE_HERE"
