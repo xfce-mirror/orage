@@ -111,9 +111,6 @@ gchar *orage_gdatetime_to_icaltime (GDateTime *gdt, gboolean date_only);
  */
 gint orage_gdatetime_compare_date (GDateTime *gdt1, GDateTime *gdt2);
 
-GDateTime *orage_i18_date_to_gdatetime (const gchar *i18_date);
-GDateTime *orage_i18_time_to_gdatetime (const gchar *i18_time);
-
 /** Converts icaltime to GDateTime.
  *  @param i18_date date and time in icaltime format.
  *  @param real_tm FALSE when year 0 == 1900 and month 0 is January, TRUE when

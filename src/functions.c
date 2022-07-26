@@ -675,59 +675,6 @@ GtkWidget *orage_create_framebox_with_content (const gchar *title,
  * time convert and manipulation functions
  *******************************************************/
 
-GDateTime *orage_i18_time_to_gdatetime (const gchar *i18_time)
-{
-    char *ret;
-    struct tm t = {0};
-
-    ret = (char *)strptime(i18_time, "%x %R", &t);
-    if (ret == NULL)
-        g_error ("%s wrong format (%s)", G_STRFUNC, i18_time);
-    else if (ret[0] != '\0')
-        g_warning ("%s too long format (%s). Ignoring:%s)", G_STRFUNC, i18_time,
-                   ret);
-
-    t.tm_year += 1900;
-    t.tm_mon += 1;
-
-    return g_date_time_new_local (t.tm_year, t.tm_mon, t.tm_mday, t.tm_hour,
-                                  t.tm_min, t.tm_sec);
-}
-
-static void orage_i18_date_to_gdate (const gchar *i18_date, GDate *date)
-{
-    g_date_set_parse (date, i18_date);
-
-    if (g_date_valid (date) == FALSE)
-    {
-        /* Release memory before exit program. */
-        g_date_free (date);
-        g_error ("%s: wrong date format (%s)", G_STRFUNC, i18_date);
-    }
-}
-
-static GDateTime *orage_gdate_to_gdatetime (const GDate *gd)
-{
-    const gint year = g_date_get_year (gd);
-    const gint month = g_date_get_month (gd);
-    const gint day = g_date_get_day (gd);
-
-    return g_date_time_new_local (year, month, day, 0, 0, 0);
-}
-
-GDateTime *orage_i18_date_to_gdatetime (const gchar *i18_date)
-{
-    GDateTime *gdt;
-    GDate *date;
-
-    date = g_date_new ();
-    orage_i18_date_to_gdate (i18_date, date);
-    gdt = orage_gdate_to_gdatetime (date);
-    g_date_free (date);
-
-    return gdt;
-}
-
 GDateTime *orage_cal_to_gdatetime (GtkCalendar *cal,
                                    const gint hh, const gint mm)
 {
