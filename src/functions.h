@@ -236,7 +236,7 @@ GtkWidget *orage_util_image_button (const gchar *icon_name, const gchar *label);
  *  @return true when rgba was successfully updated, false color_str or def was
  *         invalid
  */
-gboolean orgage_str_to_rgba (const gchar *color_str,
+gboolean orage_str_to_rgba (const gchar *color_str,
                              GdkRGBA *rgba,
                              const gchar *def);
 

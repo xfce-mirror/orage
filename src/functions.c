@@ -1191,7 +1191,7 @@ gboolean orage_rc_read_color (OrageRc *orc, const gchar *key,
     color_str = orage_rc_get_str (orc, key, NULL);
     if (color_str)
     {
-        result = orgage_str_to_rgba (color_str, rgba, def);
+        result = orage_str_to_rgba (color_str, rgba, def);
         g_free (color_str);
     }
     else if (def)
@@ -1323,7 +1323,7 @@ GtkWidget *orage_util_image_button (const gchar *icon_name, const gchar *label)
     return button;
 }
 
-gboolean orgage_str_to_rgba (const gchar *color_str,
+gboolean orage_str_to_rgba (const gchar *color_str,
                              GdkRGBA *rgba,
                              const gchar *def)
 {
