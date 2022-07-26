@@ -469,6 +469,9 @@ static void set_notify_sensitivity(appt_win *apptw)
         gtk_widget_set_sensitive(apptw->Display_spin_expire_notify_label
                 , FALSE);
     }
+#else
+    /* Suppress compiler warning for unused parameter. */
+    (void)apptw;
 #endif
 }
 
@@ -1781,12 +1784,7 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
         g_warning ("%s: completedtime wrong %s", G_STRFUNC, appt->uid);
 }
 
-/** @param action action to be taken, possible values: "NEW", "UPDATE" and "COPY"
- *  @param par contains XFICAL_APPT_DATE_FORMAT (yyyymmdd) date for "NEW"
- *         appointment and ical uid for "UPDATE" and "COPY"
- */
-static xfical_appt *fill_appt_window_get_new_appt (const gchar *par,
-                                                   GDateTime *par_gdt)
+static xfical_appt *fill_appt_window_get_new_appt (GDateTime *par_gdt)
 {
     xfical_appt *appt;
     GDateTime *gdt_now;
@@ -1873,7 +1871,7 @@ static xfical_appt *fill_appt_window_get_appt(appt_win *apptw
     xfical_appt *appt=NULL;
 
     if (strcmp(action, "NEW") == 0)
-        appt = fill_appt_window_get_new_appt (par, par_gdt);
+        appt = fill_appt_window_get_new_appt (par_gdt);
     else if ((strcmp(action, "UPDATE") == 0) || (strcmp(action, "COPY") == 0)) {
         if (!par) {
             g_message ("%s appointment with null id. Ending.", action);
