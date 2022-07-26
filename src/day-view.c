@@ -716,7 +716,6 @@ static void app_rows (day_win *dw,
 {
     GList *appt_list=NULL, *tmp;
     xfical_appt *appt;
-    gchar *a_day_str;
 
     xfical_get_each_app_within_time (dw->a_day, dw->days, ical_type, file_type,
                                      &appt_list);
