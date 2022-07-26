@@ -46,12 +46,12 @@
 #define FIRST_HOUR_ROW (FULL_DAY_ROW + 1)
 #define DATE_KEY "button-date"
 
-static void do_appt_win (const gchar *mode, char *uid, day_win *dw,
+static void do_appt_win (const appt_win_action mode, char *uid, day_win *dw,
                          GDateTime *gdt)
 {
     appt_win *apptw;
 
-    apptw = create_appt_win(mode, uid, gdt);
+    apptw = create_appt_win (mode, uid, gdt);
     if (apptw) {
         /* we started this, so keep track of it */
         dw->apptw_list = g_list_prepend(dw->apptw_list, apptw);
@@ -173,7 +173,7 @@ static void create_new_appointment(day_win *dw)
     a_day = g_object_get_data (G_OBJECT (dw->StartDate_button), DATE_KEY);
     a_day_str = orage_gdatetime_to_icaltime (a_day, TRUE);
 
-    do_appt_win ("NEW", a_day_str, dw, a_day);
+    do_appt_win (NEW_APPT_WIN, a_day_str, dw, a_day);
     g_free (a_day_str);
 }
 
@@ -497,7 +497,7 @@ static void on_button_press_event_cb(GtkWidget *widget
     if (event->type == GDK_2BUTTON_PRESS) {
         uid = g_object_get_data(G_OBJECT(widget), "UID");
         gdt = g_date_time_new_now_local ();
-        do_appt_win ("UPDATE", uid, dw, gdt);
+        do_appt_win (UPDATE_APPT_WIN, uid, dw, gdt);
         g_date_time_unref (gdt);
     }
 }

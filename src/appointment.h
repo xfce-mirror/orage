@@ -24,6 +24,13 @@
 #ifndef __APPOINTMENT_H__
 #define __APPOINTMENT_H__
 
+typedef enum
+{
+    NEW_APPT_WIN,
+    UPDATE_APPT_WIN,
+    COPY_APPT_WIN
+} appt_win_action;
+
 typedef struct _appt_win
 {
     GtkAccelGroup *accel_group;
@@ -214,7 +221,7 @@ typedef struct _appt_win
      * add == TRUE && new == FALSE */
 } appt_win;
 
-appt_win *create_appt_win (const gchar *action, gchar *par, GDateTime *gdt_par);
+appt_win *create_appt_win (appt_win_action action, gchar *par, GDateTime *gdt_par);
 
 GdkRGBA *orage_category_list_contains(char *categories);
 void orage_category_get_list();

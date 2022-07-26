@@ -86,7 +86,7 @@ static const GtkTargetEntry drag_targets[] =
     { "STRING", 0, DRAG_TARGET_STRING }
 };
 
-static void do_appt_win (const gchar *mode, char *uid, el_win *el,
+static void do_appt_win (const appt_win_action mode, char *uid, el_win *el,
                          GDateTime *gdt)
 {
     appt_win *apptw;
@@ -100,7 +100,7 @@ static void do_appt_win (const gchar *mode, char *uid, el_win *el,
     }
 }
 
-static void start_appt_win (const char *mode,  el_win *el
+static void start_appt_win (const appt_win_action mode,  el_win *el
         , GtkTreeModel *model, GtkTreeIter *iter, GtkTreePath *path)
 {
     GDateTime *gdt;
@@ -133,7 +133,7 @@ static void editEvent(GtkTreeView *view, GtkTreePath *path
     GtkTreeIter   iter;
 
     model = gtk_tree_view_get_model(view);
-    start_appt_win("UPDATE", el, model, &iter, path);
+    start_appt_win (UPDATE_APPT_WIN, el, model, &iter, path);
 }
 
 static gint sortEvent_comp(GtkTreeModel *model
@@ -796,7 +796,7 @@ static void duplicate_appointment(el_win *el)
         if (list_len > 1)
             g_warning ("Copy: too many rows selected");
         path = (GtkTreePath *)g_list_nth_data(list, 0);
-        start_appt_win("COPY", el, model, &iter, path);
+        start_appt_win (COPY_APPT_WIN, el, model, &iter, path);
     }
     else {
         orage_info_dialog(GTK_WINDOW(el->Window)
@@ -949,7 +949,7 @@ static void create_new_appointment(el_win *el)
 
     gdt = g_object_get_data (G_OBJECT (el->Window), DATE_KEY);
     a_day = orage_gdatetime_to_icaltime (gdt, TRUE);
-    do_appt_win("NEW", a_day, el, gdt);
+    do_appt_win (NEW_APPT_WIN, a_day, el, gdt);
     g_free (a_day);
 }
 

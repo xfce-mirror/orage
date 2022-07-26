@@ -572,7 +572,7 @@ static void on_btOpenReminder_clicked (G_GNUC_UNUSED GtkButton *button,
     alarm_struct *l_alarm = (alarm_struct *)user_data;
 
     gdt = g_date_time_new_now_local ();
-    create_appt_win("UPDATE", l_alarm->uid, gdt);
+    create_appt_win (UPDATE_APPT_WIN, l_alarm->uid, gdt);
     g_date_time_unref (gdt);
 }
 

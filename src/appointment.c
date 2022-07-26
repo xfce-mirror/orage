@@ -93,8 +93,8 @@ static void read_default_alarm(xfical_appt *appt);
 /*  
  *  these are the main functions in this file:
  */ 
-static gboolean fill_appt_window(appt_win *apptw, const gchar *action,
-                                 const gchar *par, GDateTime *gdt_par);
+static gboolean fill_appt_window (appt_win *apptw, appt_win_action action,
+                                  const gchar *par, GDateTime *gdt_par);
 static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw);
 
 static GtkWidget *datetime_hbox_new(GtkWidget *date_button
@@ -1382,7 +1382,7 @@ static void duplicate_xfical_from_appt_win(appt_win *apptw)
 
     /* do not keep track of appointments created here */
     gdt = g_date_time_new_now_local ();
-    apptw2 = create_appt_win("COPY", apptw->xf_uid, gdt);
+    apptw2 = create_appt_win (COPY_APPT_WIN, apptw->xf_uid, gdt);
     g_date_time_unref (gdt);
     if (apptw2) {
         gtk_window_get_position(GTK_WINDOW(apptw->Window), &x, &y);
@@ -1407,11 +1407,11 @@ static void revert_xfical_to_last_saved(appt_win *apptw)
     GDateTime *gdt;
     if (!apptw->appointment_new) {
         gdt = g_date_time_new_now_local ();
-        fill_appt_window(apptw, "UPDATE", apptw->xf_uid, gdt);
+        fill_appt_window (apptw, UPDATE_APPT_WIN, apptw->xf_uid, gdt);
         g_date_time_unref (gdt);
     }
     else {
-        fill_appt_window(apptw, "NEW", apptw->par, apptw->par2);
+        fill_appt_window (apptw, NEW_APPT_WIN, apptw->par, apptw->par2);
     }
 }
 
@@ -1866,28 +1866,40 @@ static xfical_appt *fill_appt_window_get_new_appt (GDateTime *par_gdt)
 }
 
 static xfical_appt *fill_appt_window_get_appt(appt_win *apptw
-    , const gchar *action, const gchar *par, GDateTime *par_gdt)
+    , const appt_win_action action, const gchar *par, GDateTime *par_gdt)
 {
     xfical_appt *appt=NULL;
 
-    if (strcmp(action, "NEW") == 0)
-        appt = fill_appt_window_get_new_appt (par_gdt);
-    else if ((strcmp(action, "UPDATE") == 0) || (strcmp(action, "COPY") == 0)) {
-        if (!par) {
-            g_message ("%s appointment with null id. Ending.", action);
-            return(NULL);
-        }
-        if (!xfical_file_open(TRUE))
-            return(NULL);
-        if ((appt = xfical_appt_get(par)) == NULL) {
-            orage_info_dialog(GTK_WINDOW(apptw->Window)
-                , _("This appointment does not exist.")
-                , _("It was probably removed, please refresh your screen."));
-        }
-        xfical_file_close(TRUE);
-    }
-    else {
-        g_error("unknown parameter");
+    switch (action)
+    {
+        case NEW_APPT_WIN:
+            appt = fill_appt_window_get_new_appt (par_gdt);
+            break;
+
+        case UPDATE_APPT_WIN:
+        case COPY_APPT_WIN:
+            if (!par)
+            {
+                g_message ("appointment with null id. Ending.");
+                break;
+            }
+
+            if (!xfical_file_open (TRUE))
+                break;
+
+            if ((appt = xfical_appt_get(par)) == NULL)
+            {
+                orage_info_dialog (GTK_WINDOW(apptw->Window),
+                        _("This appointment does not exist."),
+                        _("It was probably removed, please refresh your screen."));
+            }
+
+            xfical_file_close (TRUE);
+            break;
+
+        default:
+            g_error ("unknown parameter %d", action);
+            break;
     }
 
     return(appt);
@@ -2282,7 +2294,7 @@ static void on_categories_button_clicked_cb (G_GNUC_UNUSED GtkWidget *button
 /**********************************************************/
 
 static void fill_appt_window_general(appt_win *apptw, xfical_appt *appt
-        , const gchar *action)
+        , const appt_win_action action)
 {
     int i;
 
@@ -2303,7 +2315,8 @@ static void fill_appt_window_general(appt_win *apptw, xfical_appt *appt
     gtk_entry_set_text(GTK_ENTRY(apptw->Title_entry)
             , (appt->title ? appt->title : ""));
 
-    if (strcmp(action, "COPY") == 0) {
+    if (action == COPY_APPT_WIN)
+    {
         gtk_editable_set_position(GTK_EDITABLE(apptw->Title_entry), -1);
         i = gtk_editable_get_position(GTK_EDITABLE(apptw->Title_entry));
         gtk_editable_insert_text(GTK_EDITABLE(apptw->Title_entry)
@@ -2513,13 +2526,13 @@ static void fill_appt_window_recurrence(appt_win *apptw, xfical_appt *appt)
 }
 
 /* Fill appointment window with data */
-static gboolean fill_appt_window(appt_win *apptw, const gchar *action,
-                                 const gchar *par, GDateTime *gdt_par)
+static gboolean fill_appt_window (appt_win *apptw, const appt_win_action action,
+                                  const gchar *par, GDateTime *gdt_par)
 {
     xfical_appt *appt;
 
     /********************* INIT *********************/
-    g_message ("%s appointment: %s", action, par);
+    g_message ("appointment: %s", par);
     if ((appt = fill_appt_window_get_appt (apptw, action, par, gdt_par)) == NULL) {
         return(FALSE);
     }
@@ -2531,28 +2544,38 @@ static gboolean fill_appt_window(appt_win *apptw, const gchar *action,
     g_date_time_unref (apptw->par2);
     apptw->par2 = g_date_time_ref (gdt_par);
     apptw->appointment_changed = FALSE;
-    if (strcmp(action, "NEW") == 0) {
-        apptw->appointment_add = TRUE;
-        apptw->appointment_new = TRUE;
+    switch (action)
+    {
+        case NEW_APPT_WIN:
+            apptw->appointment_add = TRUE;
+            apptw->appointment_new = TRUE;
+            break;
+
+        case UPDATE_APPT_WIN:
+            apptw->appointment_add = FALSE;
+            apptw->appointment_new = FALSE;
+            break;
+
+        case COPY_APPT_WIN:
+            /* COPY uses old uid as base and adds new, so
+             * add == TRUE && new == FALSE
+             */
+            apptw->appointment_add = TRUE;
+            apptw->appointment_new = FALSE;
+
+            /* New copy is never readonly even though the original may have
+             * been.
+             */
+            appt->readonly = FALSE;
+            break;
+
+        default:
+            g_free (appt);
+            apptw->xf_appt = NULL;
+            g_error ("%s: unknown parameter %d", G_STRFUNC, action);
+            return FALSE;
     }
-    else if (strcmp(action, "UPDATE") == 0) {
-        apptw->appointment_add = FALSE;
-        apptw->appointment_new = FALSE;
-    }
-    else if (strcmp(action, "COPY") == 0) {
-        /* COPY uses old uid as base and adds new, so
-         * add == TRUE && new == FALSE */
-        apptw->appointment_add = TRUE;
-        apptw->appointment_new = FALSE;
-        /* new copy is never readonly even though the original may have been */
-        appt->readonly = FALSE;
-    }
-    else {
-        g_free(appt);
-        apptw->xf_appt = NULL;
-        g_error ("%s: unknown parameter '%s'", G_STRFUNC, action);
-        return(FALSE);
-    }
+
     if (apptw->appointment_add) {
         add_file_select_cb(apptw);
     }
@@ -3843,7 +3866,8 @@ static void enable_recurrence_page_signals(appt_win *apptw)
             , G_CALLBACK(recur_day_selected_double_click_cb), apptw);
 }
 
-appt_win *create_appt_win (const gchar *action, gchar *par, GDateTime *gdt_par)
+appt_win *create_appt_win (const appt_win_action action, gchar *par,
+                           GDateTime *gdt_par)
 {
     appt_win *apptw;
     GdkWindow *window;
