@@ -67,7 +67,7 @@
 
 #define ORAGE_RC_COLOUR "Color"
 #define CATEGORIES_SPACING 10
-#define EXCECPTION_KEY "xfical_exception_key"
+#define EXCEPTION_KEY "xfical_exception_key"
 
 typedef struct _orage_category_win
 {
@@ -1589,9 +1589,8 @@ static void recur_row_clicked(GtkWidget *widget
         children = gtk_container_get_children(GTK_CONTAINER(widget));
         children = g_list_first(children);
         lab = (GtkWidget *)children->data;
-        text = g_strdup(gtk_label_get_text(GTK_LABEL(lab)));
-        recur_exception = exception_new(text);
-        g_free (text);
+        recur_exception = xfical_exception_ref (
+                g_object_get_data (G_OBJECT (lab), EXCEPTION_KEY));
         appt = (xfical_appt *)apptw->xf_appt;
         if ((gl_pos = g_list_find_custom(appt->recur_exceptions
                     , recur_exception, check_exists))) {
@@ -1655,7 +1654,7 @@ static gboolean add_recur_exception_row (xfical_exception *except,
     g_free(text);
     g_object_set (label, "xalign", 0.0, "yalign", 0.5, NULL);
     g_object_set_data_full (G_OBJECT (label),
-                            EXCECPTION_KEY, xfical_exception_ref (except),
+                            EXCEPTION_KEY, xfical_exception_ref (except),
                             (GDestroyNotify)xfical_exception_unref);
     ev = gtk_event_box_new();
     gtk_container_add(GTK_CONTAINER(ev), label);
