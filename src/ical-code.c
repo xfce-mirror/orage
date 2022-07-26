@@ -2116,7 +2116,7 @@ void xfical_appt_free(xfical_appt *appt)
     for (tmp = g_list_first(appt->recur_exceptions);
          tmp != NULL;
          tmp = g_list_next(tmp)) {
-        xfical_exception_free (tmp->data);
+        xfical_exception_unref (tmp->data);
     }
     g_list_free(appt->recur_exceptions);
     g_free(appt);

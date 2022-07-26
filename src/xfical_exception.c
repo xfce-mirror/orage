@@ -29,26 +29,67 @@ struct _xfical_exception
     GDateTime *time;
     xfical_exception_type type;
     gboolean all_day;
+
+    gint ref_count;  /* (atomic) */
 };
 
 xfical_exception *xfical_exception_new (GDateTime *gdt,
                                         const gboolean all_day,
                                         const xfical_exception_type type)
 {
-    xfical_exception *recur_exception;
+    xfical_exception *except;
 
-    recur_exception = g_new (xfical_exception, 1);
-    recur_exception->time = g_date_time_ref (gdt);
-    recur_exception->type = type;
-    recur_exception->all_day = all_day;
+    except = g_new (xfical_exception, 1);
+    except->time = g_date_time_ref (gdt);
+    except->type = type;
+    except->all_day = all_day;
+    except->ref_count = 1;
 
-    return recur_exception;
+    gchar *time;
+    time = g_date_time_format_iso8601 (gdt);
+    g_debug ("  NEW exception: %p, refcount=%d, gdt=%p, time='%s'",
+             except, except->ref_count, gdt, time);
+    g_free (time);
+
+    return except;
 }
 
-void xfical_exception_free (xfical_exception *recur_exception)
+xfical_exception *xfical_exception_ref (xfical_exception *except)
 {
-    g_date_time_unref (recur_exception->time);
-    g_free (recur_exception);
+  g_return_val_if_fail (except != NULL, NULL);
+  g_return_val_if_fail (except->ref_count > 0, NULL);
+
+  g_atomic_int_inc (&except->ref_count);
+
+  gchar *time;
+  GDateTime *gdt = except->time;
+  time = g_date_time_format_iso8601 (gdt);
+  g_debug ("  REF exception: %p, refcount=%d, gdt=%p, time='%s'",
+           except, except->ref_count, gdt, time);
+  g_free (time);
+
+  return except;
+}
+
+void xfical_exception_unref (xfical_exception *except)
+{
+    gchar *time;
+
+    g_return_if_fail (except != NULL);
+    g_return_if_fail (except->ref_count > 0);
+
+    time = g_date_time_format_iso8601 (except->time);
+    g_debug ("UNREF exception: %p, refcount=%d, gdt=%p, time='%s'",
+             except, except->ref_count, except->time, time);
+    g_free (time);
+
+    if (g_atomic_int_dec_and_test (&except->ref_count))
+    {
+        g_debug ("UNREF exception: free %p", except);
+
+        g_date_time_unref (except->time);
+        g_free (except);
+    }
 }
 
 GDateTime *xfical_exception_get_time (const xfical_exception *recur_exception)

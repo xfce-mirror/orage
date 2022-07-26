@@ -67,6 +67,7 @@
 
 #define ORAGE_RC_COLOUR "Color"
 #define CATEGORIES_SPACING 10
+#define EXCECPTION_KEY "xfical_exception_key"
 
 typedef struct _orage_category_win
 {
@@ -1598,7 +1599,7 @@ static void recur_row_clicked(GtkWidget *widget
             recur_exception_cur = gl_pos->data;
             appt->recur_exceptions = 
                     g_list_remove(appt->recur_exceptions, recur_exception_cur);
-            xfical_exception_free (recur_exception_cur);
+            xfical_exception_unref (recur_exception_cur);
         }
         else {
             time_str = g_date_time_format (xfical_exception_get_time (
@@ -1606,7 +1607,7 @@ static void recur_row_clicked(GtkWidget *widget
             g_warning ("%s: non existent row (%s)", G_STRFUNC, time_str);
             g_free (time_str);
         }
-        xfical_exception_free (recur_exception);
+        xfical_exception_unref (recur_exception);
 
         /* and finally update the display */
         gtk_widget_destroy(widget);
@@ -1639,7 +1640,7 @@ static gboolean add_recur_exception_row (xfical_exception *except,
                     , check_exists)) {
             /* this element is already in the list, so no need to add it again.
              * we just clean the memory and leave */
-            xfical_exception_free (recur_exception);
+            xfical_exception_unref (recur_exception);
             g_free(text);
             return(FALSE);
         }
@@ -1653,6 +1654,9 @@ static gboolean add_recur_exception_row (xfical_exception *except,
     label = gtk_label_new(text);
     g_free(text);
     g_object_set (label, "xalign", 0.0, "yalign", 0.5, NULL);
+    g_object_set_data_full (G_OBJECT (label),
+                            EXCECPTION_KEY, xfical_exception_ref (except),
+                            (GDestroyNotify)xfical_exception_unref);
     ev = gtk_event_box_new();
     gtk_container_add(GTK_CONTAINER(ev), label);
     gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_exception_rows_vbox),
@@ -1731,7 +1735,7 @@ static void recur_day_selected_double_click_cb(GtkCalendar *calendar
         refresh_recur_calendars((appt_win *)user_data);
     }
 
-    xfical_exception_free (except);
+    xfical_exception_unref (except);
 }
 
 static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)

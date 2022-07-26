@@ -36,7 +36,8 @@ typedef struct _xfical_exception xfical_exception;
 xfical_exception *xfical_exception_new (GDateTime *gdt,
                                         gboolean all_day,
                                         xfical_exception_type type);
-void xfical_exception_free (xfical_exception *recur_exception);
+xfical_exception *xfical_exception_ref (xfical_exception *except);
+void xfical_exception_unref (xfical_exception *recur_exception);
 
 GDateTime *xfical_exception_get_time (const xfical_exception *recur_exception);
 xfical_exception_type xfical_exception_get_type (const xfical_exception *recur_exception);
