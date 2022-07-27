@@ -24,6 +24,10 @@
 #include "functions.h"
 #include <glib.h>
 
+#ifndef NDEBUG
+#define XFICAL_EXCEPTION_DEBUG 1 /* Debug info can be removed after 4.17 */
+#endif
+
 struct _xfical_exception
 {
     GDateTime *time;
@@ -38,6 +42,9 @@ xfical_exception *xfical_exception_new (GDateTime *gdt,
                                         const xfical_exception_type type)
 {
     xfical_exception *except;
+#if XFICAL_EXCEPTION_DEBUG
+    gchar *time;
+#endif
 
     except = g_new (xfical_exception, 1);
     except->time = g_date_time_ref (gdt);
@@ -45,48 +52,60 @@ xfical_exception *xfical_exception_new (GDateTime *gdt,
     except->all_day = all_day;
     except->ref_count = 1;
 
-    gchar *time;
-    time = g_date_time_format_iso8601 (gdt);
+#if XFICAL_EXCEPTION_DEBUG
+    time = g_date_time_format (gdt, "%x %R");
     g_debug ("  NEW exception: %p, refcount=%d, gdt=%p, time='%s'",
              except, except->ref_count, gdt, time);
     g_free (time);
+#endif
 
     return except;
 }
 
 xfical_exception *xfical_exception_ref (xfical_exception *except)
 {
-  g_return_val_if_fail (except != NULL, NULL);
-  g_return_val_if_fail (except->ref_count > 0, NULL);
+#if XFICAL_EXCEPTION_DEBUG
+    gchar *time;
+    GDateTime *gdt;
+#endif
 
-  g_atomic_int_inc (&except->ref_count);
+    g_return_val_if_fail (except != NULL, NULL);
+    g_return_val_if_fail (except->ref_count > 0, NULL);
 
-  gchar *time;
-  GDateTime *gdt = except->time;
-  time = g_date_time_format_iso8601 (gdt);
-  g_debug ("  REF exception: %p, refcount=%d, gdt=%p, time='%s'",
-           except, except->ref_count, gdt, time);
-  g_free (time);
+    g_atomic_int_inc (&except->ref_count);
 
-  return except;
+#if XFICAL_EXCEPTION_DEBUG
+    gdt = except->time;
+    time = g_date_time_format (gdt, "%x %R");
+    g_debug ("  REF exception: %p, refcount=%d, gdt=%p, time='%s'",
+             except, except->ref_count, gdt, time);
+    g_free (time);
+#endif
+
+    return except;
 }
 
 void xfical_exception_unref (xfical_exception *except)
 {
+#if XFICAL_EXCEPTION_DEBUG
     gchar *time;
+#endif
 
     g_return_if_fail (except != NULL);
     g_return_if_fail (except->ref_count > 0);
 
-    time = g_date_time_format_iso8601 (except->time);
+#if XFICAL_EXCEPTION_DEBUG
+    time = g_date_time_format (except->time, "%x %R");
     g_debug ("UNREF exception: %p, refcount=%d, gdt=%p, time='%s'",
              except, except->ref_count, except->time, time);
     g_free (time);
+#endif
 
     if (g_atomic_int_dec_and_test (&except->ref_count))
     {
+#if XFICAL_EXCEPTION_DEBUG
         g_debug ("UNREF exception: free %p", except);
-
+#endif
         g_date_time_unref (except->time);
         g_free (except);
     }
