@@ -68,14 +68,11 @@ static void mFile_newApp_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
 {
     GDateTime *gdt;
     CalWin *cal = (CalWin *)user_data;
-    gchar *cur_date;
 
     /* cal has always a day selected here, so it is safe to read it */
     gdt = orage_cal_to_gdatetime (GTK_CALENDAR (cal->mCalendar), 1, 1);
-    cur_date = orage_gdatetime_to_icaltime (gdt, TRUE);
-    create_appt_win (NEW_APPT_WIN, cur_date, gdt);
+    create_appt_win (NEW_APPT_WIN, NULL, gdt);
     g_date_time_unref (gdt);
-    g_free (cur_date);
 }
 
 static void mFile_interface_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem

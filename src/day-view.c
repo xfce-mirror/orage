@@ -46,8 +46,8 @@
 #define FIRST_HOUR_ROW (FULL_DAY_ROW + 1)
 #define DATE_KEY "button-date"
 
-static void do_appt_win (const appt_win_action mode, char *uid, day_win *dw,
-                         GDateTime *gdt)
+static void do_appt_win (const appt_win_action mode, const gchar *uid,
+                         day_win *dw, GDateTime *gdt)
 {
     appt_win *apptw;
 
@@ -167,14 +167,11 @@ static void on_Close_clicked (G_GNUC_UNUSED GtkButton *b, gpointer user_data)
 
 static void create_new_appointment(day_win *dw)
 {
-    gchar *a_day_str;
     GDateTime *a_day;
 
     a_day = g_object_get_data (G_OBJECT (dw->StartDate_button), DATE_KEY);
-    a_day_str = orage_gdatetime_to_icaltime (a_day, TRUE);
 
-    do_appt_win (NEW_APPT_WIN, a_day_str, dw, a_day);
-    g_free (a_day_str);
+    do_appt_win (NEW_APPT_WIN, NULL, dw, a_day);
 }
 
 static void on_File_newApp_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,

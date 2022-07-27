@@ -945,12 +945,9 @@ static void on_Go_next_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
 static void create_new_appointment(el_win *el)
 {
     GDateTime *gdt;
-    gchar *a_day;
 
     gdt = g_object_get_data (G_OBJECT (el->Window), DATE_KEY);
-    a_day = orage_gdatetime_to_icaltime (gdt, TRUE);
-    do_appt_win (NEW_APPT_WIN, a_day, el, gdt);
-    g_free (a_day);
+    do_appt_win (NEW_APPT_WIN, NULL, el, gdt);
 }
 
 static void on_File_newApp_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,

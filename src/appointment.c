@@ -2541,35 +2541,35 @@ static void fill_appt_window_recurrence(appt_win *apptw, xfical_appt *appt)
 static gboolean fill_appt_window (appt_win *apptw, const appt_win_action action,
                                   const gchar *par, GDateTime *gdt_par)
 {
+    const gchar *action_str;
     xfical_appt *appt;
 
     /********************* INIT *********************/
-    g_message ("appointment: %s", par);
     appt = fill_appt_window_get_appt (apptw, action, par, gdt_par);
     if (appt == NULL) {
         return(FALSE);
     }
     apptw->xf_appt = appt;
 
-    /* first flags */
-    apptw->xf_uid = g_strdup(appt->uid);
-    apptw->par = g_strdup (par);
-    g_date_time_unref (apptw->par2);
-    apptw->par2 = g_date_time_ref (gdt_par);
-    apptw->appointment_changed = FALSE;
     switch (action)
     {
         case NEW_APPT_WIN:
+            action_str = "NEW";
             apptw->appointment_add = TRUE;
             apptw->appointment_new = TRUE;
+            apptw->par = orage_gdatetime_to_icaltime (gdt_par, TRUE);
             break;
 
         case UPDATE_APPT_WIN:
+            action_str = "UPDATE";
             apptw->appointment_add = FALSE;
             apptw->appointment_new = FALSE;
+            apptw->par = g_strdup (par);
             break;
 
         case COPY_APPT_WIN:
+            action_str = "COPY";
+
             /* COPY uses old uid as base and adds new, so
              * add == TRUE && new == FALSE
              */
@@ -2580,6 +2580,7 @@ static gboolean fill_appt_window (appt_win *apptw, const appt_win_action action,
              * been.
              */
             appt->readonly = FALSE;
+            apptw->par = g_strdup (par);
             break;
 
         default:
@@ -2588,6 +2589,12 @@ static gboolean fill_appt_window (appt_win *apptw, const appt_win_action action,
             g_error ("%s: unknown parameter %d", G_STRFUNC, action);
             return FALSE;
     }
+
+    g_message ("%s appointment: %s", action_str, apptw->par);
+    apptw->xf_uid = g_strdup(appt->uid);
+    g_date_time_unref (apptw->par2);
+    apptw->par2 = g_date_time_ref (gdt_par);
+    apptw->appointment_changed = FALSE;
 
     if (apptw->appointment_add) {
         add_file_select_cb(apptw);
@@ -3879,7 +3886,7 @@ static void enable_recurrence_page_signals(appt_win *apptw)
             , G_CALLBACK(recur_day_selected_double_click_cb), apptw);
 }
 
-appt_win *create_appt_win (const appt_win_action action, gchar *par,
+appt_win *create_appt_win (const appt_win_action action, const gchar *par,
                            GDateTime *gdt_par)
 {
     appt_win *apptw;

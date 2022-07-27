@@ -221,7 +221,8 @@ typedef struct _appt_win
      * add == TRUE && new == FALSE */
 } appt_win;
 
-appt_win *create_appt_win (appt_win_action action, gchar *par, GDateTime *gdt_par);
+appt_win *create_appt_win (appt_win_action action, const gchar *par,
+                           GDateTime *gdt_par);
 
 GdkRGBA *orage_category_list_contains(char *categories);
 void orage_category_get_list();
