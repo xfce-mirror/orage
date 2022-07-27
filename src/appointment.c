@@ -1865,10 +1865,37 @@ static xfical_appt *fill_appt_window_get_new_appt (GDateTime *par_gdt)
     return appt;
 }
 
-static xfical_appt *fill_appt_window_get_appt(appt_win *apptw
-    , const appt_win_action action, const gchar *par, GDateTime *par_gdt)
+static xfical_appt *fill_appt_window_update_appt (appt_win *apptw,
+                                                  const gchar *uid)
 {
-    xfical_appt *appt=NULL;
+    xfical_appt *appt;
+
+    if (uid == NULL)
+    {
+        g_message ("appointment with null id. Ending.");
+        return NULL;
+    }
+
+    if (!xfical_file_open (TRUE))
+        return NULL;
+
+    appt = xfical_appt_get (uid);
+    if (appt == NULL)
+    {
+        orage_info_dialog (GTK_WINDOW (apptw->Window),
+                _("This appointment does not exist."),
+                _("It was probably removed, please refresh your screen."));
+    }
+
+    xfical_file_close (TRUE);
+
+    return appt;
+}
+
+static xfical_appt *fill_appt_window_get_appt(appt_win *apptw
+    , const appt_win_action action, const gchar *uid, GDateTime *par_gdt)
+{
+    xfical_appt *appt;
 
     switch (action)
     {
@@ -1878,27 +1905,12 @@ static xfical_appt *fill_appt_window_get_appt(appt_win *apptw
 
         case UPDATE_APPT_WIN:
         case COPY_APPT_WIN:
-            if (!par)
-            {
-                g_message ("appointment with null id. Ending.");
-                break;
-            }
-
-            if (!xfical_file_open (TRUE))
-                break;
-
-            if ((appt = xfical_appt_get(par)) == NULL)
-            {
-                orage_info_dialog (GTK_WINDOW(apptw->Window),
-                        _("This appointment does not exist."),
-                        _("It was probably removed, please refresh your screen."));
-            }
-
-            xfical_file_close (TRUE);
+            appt = fill_appt_window_update_appt (apptw, uid);
             break;
 
         default:
             g_error ("unknown parameter %d", action);
+            appt = NULL;
             break;
     }
 
@@ -2525,7 +2537,7 @@ static void fill_appt_window_recurrence(appt_win *apptw, xfical_appt *appt)
     /* note: include times is setup in the fill_appt_window_times */
 }
 
-/* Fill appointment window with data */
+/** Fill appointment window with data. */
 static gboolean fill_appt_window (appt_win *apptw, const appt_win_action action,
                                   const gchar *par, GDateTime *gdt_par)
 {
@@ -2533,7 +2545,8 @@ static gboolean fill_appt_window (appt_win *apptw, const appt_win_action action,
 
     /********************* INIT *********************/
     g_message ("appointment: %s", par);
-    if ((appt = fill_appt_window_get_appt (apptw, action, par, gdt_par)) == NULL) {
+    appt = fill_appt_window_get_appt (apptw, action, par, gdt_par);
+    if (appt == NULL) {
         return(FALSE);
     }
     apptw->xf_appt = appt;
