@@ -1872,7 +1872,7 @@ static xfical_appt *fill_appt_window_update_appt (appt_win *apptw,
 
     if (uid == NULL)
     {
-        g_message ("appointment with null id. Ending.");
+        g_warning ("appointment with null id. Ending.");
         return NULL;
     }
 
