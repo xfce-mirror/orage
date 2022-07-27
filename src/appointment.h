@@ -210,8 +210,7 @@ typedef struct _appt_win
 
     void *xf_appt; /* this is xfical_appt * */
     gchar *xf_uid;
-    gchar *par;
-    GDateTime *par2;
+    GDateTime *appointment_time;
     void  *el;          /* used to refresh calling event list */
     void  *dw;          /* used to refresh calling day list */
     gboolean appointment_add;       /* are we adding app */

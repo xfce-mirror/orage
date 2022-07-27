@@ -751,8 +751,7 @@ static void app_free_memory(appt_win *apptw)
                 g_list_remove(((day_win *)apptw->dw)->apptw_list, apptw);
     gtk_widget_destroy(apptw->Window);
     g_free(apptw->xf_uid);
-    g_free(apptw->par);
-    g_date_time_unref (apptw->par2);
+    g_date_time_unref (apptw->appointment_time);
     xfical_appt_free((xfical_appt *)apptw->xf_appt);
     g_free(apptw);
 }
@@ -1411,7 +1410,7 @@ static void revert_xfical_to_last_saved(appt_win *apptw)
         g_date_time_unref (gdt);
     }
     else {
-        fill_appt_window (apptw, NEW_APPT_WIN, apptw->par, apptw->par2);
+        fill_appt_window (apptw, NEW_APPT_WIN, NULL, apptw->appointment_time);
     }
 }
 
@@ -2543,6 +2542,7 @@ static gboolean fill_appt_window (appt_win *apptw, const appt_win_action action,
 {
     const gchar *action_str;
     xfical_appt *appt;
+    gchar *appointment_id;
 
     /********************* INIT *********************/
     appt = fill_appt_window_get_appt (apptw, action, par, gdt_par);
@@ -2557,14 +2557,14 @@ static gboolean fill_appt_window (appt_win *apptw, const appt_win_action action,
             action_str = "NEW";
             apptw->appointment_add = TRUE;
             apptw->appointment_new = TRUE;
-            apptw->par = orage_gdatetime_to_icaltime (gdt_par, TRUE);
+            appointment_id = orage_gdatetime_to_i18_time (gdt_par, TRUE);
             break;
 
         case UPDATE_APPT_WIN:
             action_str = "UPDATE";
             apptw->appointment_add = FALSE;
             apptw->appointment_new = FALSE;
-            apptw->par = g_strdup (par);
+            appointment_id = g_strdup (par);
             break;
 
         case COPY_APPT_WIN:
@@ -2580,7 +2580,7 @@ static gboolean fill_appt_window (appt_win *apptw, const appt_win_action action,
              * been.
              */
             appt->readonly = FALSE;
-            apptw->par = g_strdup (par);
+            appointment_id = g_strdup (par);
             break;
 
         default:
@@ -2590,10 +2590,11 @@ static gboolean fill_appt_window (appt_win *apptw, const appt_win_action action,
             return FALSE;
     }
 
-    g_message ("%s appointment: %s", action_str, apptw->par);
+    g_message ("%s appointment: '%s'", action_str, appointment_id);
+    g_free (appointment_id);
     apptw->xf_uid = g_strdup(appt->uid);
-    g_date_time_unref (apptw->par2);
-    apptw->par2 = g_date_time_ref (gdt_par);
+    g_date_time_unref (apptw->appointment_time);
+    apptw->appointment_time = g_date_time_ref (gdt_par);
     apptw->appointment_changed = FALSE;
 
     if (apptw->appointment_add) {
@@ -3895,8 +3896,7 @@ appt_win *create_appt_win (const appt_win_action action, const gchar *par,
     /*  initialisation + main window + base vbox */
     apptw = g_new(appt_win, 1);
     apptw->xf_uid = NULL;
-    apptw->par = NULL;
-    apptw->par2 = g_date_time_new_now_local ();
+    apptw->appointment_time = g_date_time_new_now_local ();
     apptw->xf_appt = NULL;
     apptw->el = NULL;
     apptw->dw = NULL;
