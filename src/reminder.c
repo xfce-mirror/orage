@@ -830,7 +830,6 @@ static void reset_orage_day_change(gboolean changed)
 
     if (changed) { /* date was change, need to count next change time */
         gdt = g_date_time_new_now_local ();
-        secs_left = 60 - g_date_time_get_second (gdt);
         secs_left = 60 * 60 * (24 - g_date_time_get_hour (gdt))
                   - 60 * g_date_time_get_minute (gdt)
                   - g_date_time_get_second (gdt);
