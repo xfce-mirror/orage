@@ -3041,7 +3041,7 @@ xfical_appt *xfical_appt_get_next_on_day (GDateTime *gdt, gboolean first,
     }
 
     g_free (a_day);
-    
+
     return appt;
 }
 
