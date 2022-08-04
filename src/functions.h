@@ -96,6 +96,8 @@ gchar *orage_gdatetime_to_i18_time (GDateTime *gdt, gboolean date_only);
 
 /** Create ical time string. Unlike g_date_time_format this function add padding
  *  with '0' to year value. Padding is required by Ical format.
+ *  @note This function should not used for Orage internal date/time, use
+ *        GDateTime instead. It is intended only for exporting GDateTime.
  *  @param gdt GDateTime
  *  @param date_only, when true returns date string in format yyyymmdd, if false
  *         return date and time in format yyyymmddThhmmss.
@@ -111,7 +113,9 @@ gchar *orage_gdatetime_to_icaltime (GDateTime *gdt, gboolean date_only);
  */
 gint orage_gdatetime_compare_date (GDateTime *gdt1, GDateTime *gdt2);
 
-/** Converts icaltime to GDateTime.
+/** Convert icaltime to GDateTime.
+ *  @note This function should not used for Orage internal date/time, use
+ *        GDateTime instead. It is intended only for importing Ical date/time.
  *  @param i18_date date and time in icaltime format.
  *  @param real_tm FALSE when year 0 == 1900 and month 0 is January, TRUE when
  *         year 0 == 0 and month 1 is January
