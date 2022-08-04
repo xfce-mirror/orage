@@ -380,7 +380,7 @@ static void notify_action_open (G_GNUC_UNUSED NotifyNotification *n,
     create_notify_reminder(l_alarm);
     */
     gdt = g_date_time_new_now_local ();
-    create_appt_win("UPDATE", l_alarm->uid, gdt);
+    create_appt_win (UPDATE_APPT_WIN, l_alarm->uid, gdt);
     g_date_time_unref (gdt);
 }
 #endif
