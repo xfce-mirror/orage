@@ -60,14 +60,14 @@
 #include "reminder.h"
 #include "xfical_exception.h"
 
-/* FIXME: Remove USE_GLIB_258 after switching required GLib to >= 2.58. */
-#define USE_GLIB_258 0
 #define BORDER_SIZE 20
 #define FILETYPE_SIZE 38
 
 #define ORAGE_RC_COLOUR "Color"
 #define CATEGORIES_SPACING 10
 #define EXCEPTION_KEY "xfical_exception_key"
+
+#define USE_GLIB_258 (GLIB_CHECK_VERSION (2, 58, 0))
 
 typedef struct _orage_category_win
 {
@@ -983,7 +983,9 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
     gdt_tmp = g_object_get_data (G_OBJECT (apptw->StartDate_button),
                                  DATE_KEY);
 #if USE_GLIB_258
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gtz = g_date_time_get_timezone (gdt_tmp);
+    G_GNUC_END_IGNORE_DEPRECATIONS
 #else
     gtz = g_time_zone_new (g_date_time_get_timezone_abbreviation (gdt_tmp));
 #endif
@@ -1011,7 +1013,9 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
     gdt_tmp = g_object_get_data (G_OBJECT (apptw->EndDate_button),
                                  DATE_KEY);
 #if USE_GLIB_258
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gtz = g_date_time_get_timezone (gdt_tmp);
+    G_GNUC_END_IGNORE_DEPRECATIONS
 #else
     gtz = g_time_zone_new (g_date_time_get_timezone_abbreviation (gdt_tmp));
 #endif
@@ -1058,7 +1062,9 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
                                  DATE_KEY);
 
 #if USE_GLIB_258
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gtz = g_date_time_get_timezone (gdt_tmp);
+    G_GNUC_END_IGNORE_DEPRECATIONS
 #else
     gtz = g_time_zone_new (g_date_time_get_timezone_abbreviation (gdt_tmp));
 #endif
