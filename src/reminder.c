@@ -900,6 +900,9 @@ gboolean orage_day_change(gpointer user_data)
          * */
         reset_orage_day_change(FALSE);
     }
+
+    g_date_time_unref (gdt);
+
     return(FALSE); /* we started new timer, so we end here */
 }
 
