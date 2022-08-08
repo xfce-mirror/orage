@@ -331,7 +331,7 @@ static void start_time_data_func (G_GNUC_UNUSED GtkTreeViewColumn *col,
         }
         strncpy(start_time, stime, len);
         start_time[len] = '\0';
-        gdt_start_time = orage_icaltime_to_gdatetime (start_time, FALSE);
+        gdt_start_time = orage_icaltime_to_gdatetime (start_time);
         gtk_tree_model_get(model, iter, COL_TIME, &stime2, -1);
         if (g_str_has_suffix(stime2, "- ...")) /* no due time */
         {
@@ -343,7 +343,7 @@ static void start_time_data_func (G_GNUC_UNUSED GtkTreeViewColumn *col,
         else /* normal due time*/
         {
             strncpy(end_time, stime+len, len);
-            gdt_end_time = orage_icaltime_to_gdatetime (end_time, FALSE);
+            gdt_end_time = orage_icaltime_to_gdatetime (end_time);
         }
 
         g_free (stime);

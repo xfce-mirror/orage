@@ -141,7 +141,7 @@ static GDateTime *icaltimetype_to_gdatetime (struct icaltimetype t)
 {
     const gchar *i18_date = icaltime_as_ical_string (t);
 
-    return orage_icaltime_to_gdatetime (i18_date, FALSE);
+    return orage_icaltime_to_gdatetime (i18_date);
 }
 
 static gchar *icaltime_to_i18_time (const char *icaltime)
@@ -151,7 +151,7 @@ static gchar *icaltime_to_i18_time (const char *icaltime)
     gchar *ct;
     gboolean date_only;
 
-    gdt = orage_icaltime_to_gdatetime (icaltime, FALSE);
+    gdt = orage_icaltime_to_gdatetime (icaltime);
     date_only = (strchr (icaltime, 'T') == NULL);
     ct = orage_gdatetime_to_i18_time (gdt, date_only);
     g_date_time_unref (gdt);
@@ -695,7 +695,7 @@ int xfical_compare_times(xfical_appt *appt)
         etime = icaltime_add(stime, duration);
         text  = icaltime_as_ical_string(etime);
         orage_gdatetime_unref (appt->endtime);
-        appt->endtime = orage_icaltime_to_gdatetime (text, FALSE);
+        appt->endtime = orage_icaltime_to_gdatetime (text);
         g_free(appt->end_tz_loc);
         appt->end_tz_loc = g_strdup(appt->start_tz_loc);
         return(0); /* ok */
@@ -1545,7 +1545,7 @@ static void process_start_date(xfical_appt *appt, icalproperty *p
     *stime = ic_convert_to_timezone(*itime, p);
     *sltime = convert_to_local_timezone(*itime, p);
     orage_gdatetime_unref (appt->starttime);
-    appt->starttime = orage_icaltime_to_gdatetime (text, FALSE);
+    appt->starttime = orage_icaltime_to_gdatetime (text);
     if (icaltime_is_date(*itime)) {
         appt->allDay = TRUE;
         appt->start_tz_loc = "floating";
@@ -1577,7 +1577,7 @@ static void process_end_date(xfical_appt *appt, icalproperty *p
     text  = icaltime_as_ical_string(*itime);
 #endif
     orage_gdatetime_unref (appt->endtime);
-    appt->endtime = orage_icaltime_to_gdatetime (text, FALSE);
+    appt->endtime = orage_icaltime_to_gdatetime (text);
     if (icaltime_is_date(*itime)) {
         appt->allDay = TRUE;
         appt->end_tz_loc = "floating";
@@ -1604,7 +1604,7 @@ static void process_completed_date(xfical_appt *appt, icalproperty *p)
     eltime = convert_to_local_timezone(itime, p);
     text  = icaltime_as_ical_string(eltime);
     orage_gdatetime_unref (appt->completedtime);
-    appt->completedtime = orage_icaltime_to_gdatetime (text, FALSE);
+    appt->completedtime = orage_icaltime_to_gdatetime (text);
     appt->completed_tz_loc = g_par.local_timezone;
     appt->completed = TRUE;
 }
@@ -1644,7 +1644,7 @@ static void ical_appt_get_rrule_internal (G_GNUC_UNUSED icalcomponent *c,
         const char *text;
 
         text = icaltime_as_ical_string (rrule.until);
-        gdt = orage_icaltime_to_gdatetime (text, FALSE);
+        gdt = orage_icaltime_to_gdatetime (text);
         if (gdt)
         {
             orage_gdatetime_unref (appt->recur_until);
@@ -1884,7 +1884,7 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
                                G_STRFUNC, text);
                 }
                 else {
-                    gdt = orage_icaltime_to_gdatetime (text, FALSE);
+                    gdt = orage_icaltime_to_gdatetime (text);
                     excp = xfical_exception_new (gdt, FALSE, EXDATE);
                     g_date_time_unref (gdt);
                     appt->recur_exceptions =
@@ -1907,7 +1907,7 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
                                    text);
                     }
                     else {
-                        gdt = orage_icaltime_to_gdatetime (text, FALSE);
+                        gdt = orage_icaltime_to_gdatetime (text);
                         excp = xfical_exception_new (gdt, FALSE, RDATE);
                         g_date_time_unref (gdt);
                         appt->recur_exceptions =
@@ -1934,7 +1934,7 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
         etime = icaltime_add(stime, duration);
         text  = icaltime_as_ical_string(etime);
         orage_gdatetime_unref (appt->endtime);
-        appt->endtime = orage_icaltime_to_gdatetime (text, FALSE);
+        appt->endtime = orage_icaltime_to_gdatetime (text);
         appt->end_tz_loc = appt->start_tz_loc;
     }
     else {
@@ -1949,7 +1949,7 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
             etime = icaltime_add(stime, duration);
             text  = icaltime_as_ical_string(etime);
             orage_gdatetime_unref (appt->endtime);
-            appt->endtime = orage_icaltime_to_gdatetime (text, FALSE);
+            appt->endtime = orage_icaltime_to_gdatetime (text);
         }
     }
     if (appt->recur_limit == 2) { /* BUG 2937: convert back from UTC */
@@ -1966,7 +1966,7 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
         }
         text  = icaltime_as_ical_string(wtime);
         orage_gdatetime_unref (appt->recur_until);
-        appt->recur_until = orage_icaltime_to_gdatetime (text, FALSE);
+        appt->recur_until = orage_icaltime_to_gdatetime (text);
     }
     return(TRUE);
 }
@@ -2990,9 +2990,9 @@ static xfical_appt *xfical_appt_get_next_on_day_internal (const gchar *a_day
         }
 
         orage_gdatetime_unref (appt->starttimecur);
-        appt->starttimecur = orage_icaltime_to_gdatetime (start_str, FALSE);
+        appt->starttimecur = orage_icaltime_to_gdatetime (start_str);
         orage_gdatetime_unref (appt->endtimecur);
-        appt->endtimecur = orage_icaltime_to_gdatetime (end_str, FALSE);
+        appt->endtimecur = orage_icaltime_to_gdatetime (end_str);
 
         return(appt);
     }
@@ -3413,11 +3413,11 @@ static void add_appt_to_list(icalcomponent *c, icaltime_span *span , void *data)
 
     i18_time = icaltime_as_ical_string (sdate);
     orage_gdatetime_unref (appt->starttimecur);
-    appt->starttimecur = orage_icaltime_to_gdatetime (i18_time, FALSE);
+    appt->starttimecur = orage_icaltime_to_gdatetime (i18_time);
 
     i18_time = icaltime_as_ical_string (edate);
     g_date_time_unref (appt->endtimecur);
-    appt->endtimecur = orage_icaltime_to_gdatetime (i18_time, FALSE);
+    appt->endtimecur = orage_icaltime_to_gdatetime (i18_time);
         /* Need to check that returned value is withing limits.
            Check more from BUG 5764 and 7886. */
     /* starttimecur and endtimecur are in local timezone. Compare that to
@@ -3468,7 +3468,7 @@ static void xfical_get_each_app_within_time_internal (const gchar *a_day,
     data1.file_type = file_type;
         /* Need to check that returned value is withing limits.
            Check more from BUG 5764 and 7886. */
-    data1.asdate = orage_icaltime_to_gdatetime (a_day, FALSE);
+    data1.asdate = orage_icaltime_to_gdatetime (a_day);
     data1.aedate = icaltimetype_to_gdatetime (aedate);
     /* Hack for bug 8382: Take one more day earlier and later than needed
        due to UTC conversion. (And drop those days later then.) */
@@ -3753,7 +3753,7 @@ static xfical_appt *xfical_appt_get_next_with_string_internal(char *str
                                     , local_icaltimezone);
                             stime = icaltime_as_ical_string(it);
                             orage_gdatetime_unref (appt->starttimecur);
-                            appt->starttimecur = orage_icaltime_to_gdatetime (stime, FALSE);
+                            appt->starttimecur = orage_icaltime_to_gdatetime (stime);
                             it = icaltimetype_from_gdatetime (appt->endtime,
                                                           appt->allDay);
                             it = convert_to_zone(it, appt->end_tz_loc);
@@ -3761,7 +3761,7 @@ static xfical_appt *xfical_appt_get_next_with_string_internal(char *str
                                     , local_icaltimezone);
                             stime = icaltime_as_ical_string(it);
                             orage_gdatetime_unref (appt->endtimecur);
-                            appt->endtimecur = orage_icaltime_to_gdatetime (stime, FALSE);
+                            appt->endtimecur = orage_icaltime_to_gdatetime (stime);
                         }
                         beg = find_next(uid, end, "\nEND:");
                         if (!beg) {

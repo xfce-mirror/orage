@@ -695,8 +695,7 @@ GDateTime *orage_cal_to_gdatetime (GtkCalendar *cal,
     return gdt;
 }
 
-GDateTime *orage_icaltime_to_gdatetime (const gchar *icaltime,
-                                        const gboolean real_tm)
+GDateTime *orage_icaltime_to_gdatetime (const gchar *icaltime)
 {
     struct tm t = {0};
     char *ret;
@@ -737,10 +736,8 @@ GDateTime *orage_icaltime_to_gdatetime (const gchar *icaltime,
             g_error ("%s icaltime='%s' ret='%s'", G_STRFUNC, icaltime, ret);
     }
 
-    if (real_tm == FALSE) { /* convert from standard tm format to "normal" format */
-        t.tm_year += 1900;
-        t.tm_mon += 1;
-    }
+    t.tm_year += 1900;
+    t.tm_mon += 1;
 
     return g_date_time_new_local (t.tm_year, t.tm_mon, t.tm_mday, t.tm_hour,
                                   t.tm_min, t.tm_sec);
@@ -1143,7 +1140,7 @@ GDateTime *orage_rc_get_gdatetime (OrageRc *orc, const gchar *key, GDateTime *de
         g_error_free (error);
     }
     else
-        gdt = orage_icaltime_to_gdatetime (ret, FALSE);
+        gdt = orage_icaltime_to_gdatetime (ret);
 
     return gdt;
 }

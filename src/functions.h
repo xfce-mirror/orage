@@ -117,13 +117,10 @@ gint orage_gdatetime_compare_date (GDateTime *gdt1, GDateTime *gdt2);
  *  @note This function should not used for Orage internal date/time, use
  *        GDateTime instead. It is intended only for importing Ical date/time.
  *  @param i18_date date and time in icaltime format.
- *  @param real_tm FALSE when year 0 == 1900 and month 0 is January, TRUE when
- *         year 0 == 0 and month 1 is January
  *  @return GDateTime or NULL if input string does not contain date/time
  *          information
  */
-GDateTime *orage_icaltime_to_gdatetime (const gchar *i18_date,
-                                        gboolean real_tm);
+GDateTime *orage_icaltime_to_gdatetime (const gchar *i18_date);
 
 /** Return GDateTime from GTK calendar. This function set hour and minute values
  *  as well.
