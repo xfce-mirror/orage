@@ -762,7 +762,7 @@ static void create_procedure_reminder(alarm_struct *l_alarm)
     else
         gdt = g_date_time_new_now_local ();
 
-    atime = g_date_time_format (gdt, "%x %R");
+    atime = orage_gdatetime_to_i18_time (gdt, FALSE);
     g_date_time_unref (gdt);
     cmd = orage_replace_text(cmd, "<&AT>", atime);
     g_free(atime);

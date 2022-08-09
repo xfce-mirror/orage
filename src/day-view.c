@@ -205,7 +205,7 @@ static void changeSelectedDate(day_win *dw, const gint day)
 
     gdt_o = g_object_get_data (G_OBJECT (dw->StartDate_button), DATE_KEY);
     gdt_m = g_date_time_add_days (gdt_o, day);
-    label = g_date_time_format (gdt_m, "%x");
+    label = orage_gdatetime_to_i18_time (gdt_m, TRUE);
     gtk_button_set_label (GTK_BUTTON (dw->StartDate_button), label);
     g_object_set_data_full (G_OBJECT (dw->StartDate_button),
                             DATE_KEY, gdt_m, (GDestroyNotify)g_date_time_unref);
@@ -219,7 +219,7 @@ static void go_to_today(day_win *dw)
     gchar *today;
 
     gdt = g_date_time_new_now_local ();
-    today = g_date_time_format (gdt, "%x");
+    today = orage_gdatetime_to_i18_time (gdt, TRUE);
     gtk_button_set_label (GTK_BUTTON (dw->StartDate_button), today);
     g_object_set_data_full (G_OBJECT (dw->StartDate_button),
                             DATE_KEY, gdt, (GDestroyNotify)g_date_time_unref);
@@ -617,12 +617,12 @@ static void add_row (day_win *dw, const xfical_appt *appt)
                     GTK_POS_RIGHT, 1, 1);
         }
 
-        start_date = g_date_time_format (gdt_start, "%x");
+        start_date = orage_gdatetime_to_i18_time (gdt_start, TRUE);
         if (days == 0)
             tip = g_strdup_printf("%s\n%s\n%s"
                     , tip_title, start_date, tip_note);
         else {
-            end_date = g_date_time_format (gdt_end, "%x");
+            end_date = orage_gdatetime_to_i18_time (gdt_end, TRUE);
             tip = g_strdup_printf("%s\n%s - %s\n%s"
                     , tip_title, start_date, end_date, tip_note);
             g_free(end_date);
@@ -657,8 +657,8 @@ static void add_row (day_win *dw, const xfical_appt *appt)
                     tip_note);
         }
         else {
-            start_date = g_date_time_format (gdt_start, "%x");
-            end_date = g_date_time_format (gdt_end, "%x");
+            start_date = orage_gdatetime_to_i18_time (gdt_start, TRUE);
+            end_date = orage_gdatetime_to_i18_time (gdt_end, TRUE);
             tip = g_strdup_printf ("%s\n%s %02d:%02d - %s %02d:%02d\n%s",
                     tip_title, start_date,
                     g_date_time_get_hour (gdt_start),
@@ -874,7 +874,7 @@ static void build_day_view_header (day_win *dw, GDateTime *start_date)
     else
         gdt = g_date_time_ref (start_date);
 
-    first_date = g_date_time_format (gdt, "%x");
+    first_date = orage_gdatetime_to_i18_time (gdt, TRUE);
     gtk_button_set_label (GTK_BUTTON(dw->StartDate_button), first_date);
     g_object_set_data_full (G_OBJECT (dw->StartDate_button),
                             DATE_KEY, gdt, (GDestroyNotify)g_date_time_unref);
@@ -1006,7 +1006,7 @@ static void build_day_view_table (day_win *dw)
     fill_hour_arrow(dw, 0);
     for (i = 1; i < days_n1; i++)
     {
-        date = g_date_time_format (gdt0, "%x");
+        date = orage_gdatetime_to_i18_time (gdt0, TRUE);
         button = gtk_button_new_with_label (date);
         g_object_set_data_full (G_OBJECT (button), DATE_KEY, gdt0,
                                 (GDestroyNotify)g_date_time_unref);

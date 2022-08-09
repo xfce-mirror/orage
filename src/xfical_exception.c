@@ -53,7 +53,7 @@ xfical_exception *xfical_exception_new (GDateTime *gdt,
     except->ref_count = 1;
 
 #if XFICAL_EXCEPTION_DEBUG
-    time = g_date_time_format (gdt, "%x %R");
+    time = orage_gdatetime_to_i18_time (gdt, FALSE);
     g_debug ("  NEW exception: %p, refcount=%d, gdt=%p, time='%s'",
              except, except->ref_count, gdt, time);
     g_free (time);
@@ -76,7 +76,7 @@ xfical_exception *xfical_exception_ref (xfical_exception *except)
 
 #if XFICAL_EXCEPTION_DEBUG
     gdt = except->time;
-    time = g_date_time_format (gdt, "%x %R");
+    time = orage_gdatetime_to_i18_time (gdt, FALSE);
     g_debug ("  REF exception: %p, refcount=%d, gdt=%p, time='%s'",
              except, except->ref_count, gdt, time);
     g_free (time);
@@ -95,7 +95,7 @@ void xfical_exception_unref (xfical_exception *except)
     g_return_if_fail (except->ref_count > 0);
 
 #if XFICAL_EXCEPTION_DEBUG
-    time = g_date_time_format (except->time, "%x %R");
+    time = orage_gdatetime_to_i18_time (except->time, FALSE);
     g_debug ("UNREF exception: %p, refcount=%d, gdt=%p, time='%s'",
              except, except->ref_count, except->time, time);
     g_free (time);

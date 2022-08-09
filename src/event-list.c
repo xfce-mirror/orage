@@ -188,7 +188,7 @@ static gchar *format_time(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
         }
     }
     else { /* normally show date and time */
-        tmp = g_date_time_format (appt->starttimecur, "%x");
+        tmp = orage_gdatetime_to_i18_time (appt->starttimecur, TRUE);
         i = g_strlcpy(result, tmp, result_len);
         g_free (tmp);
         if (appt->allDay == FALSE) { /* time part available */
@@ -202,7 +202,7 @@ static gchar *format_time(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
                 same_date = !orage_gdatetime_compare_date (appt->starttimecur,
                                                            appt->endtimecur);
                 if (!same_date) {
-                    tmp = g_date_time_format (appt->endtimecur, "%x");
+                    tmp = orage_gdatetime_to_i18_time (appt->endtimecur, TRUE);
                     i = g_strlcat (result, tmp, result_len);
                     g_free (tmp);
                     result[i++] = ' ';
@@ -216,7 +216,7 @@ static gchar *format_time(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
                 g_strlcat(result, "...", result_len);
             }
             else {
-                tmp = g_date_time_format (appt->endtimecur, "%x");
+                tmp = orage_gdatetime_to_i18_time (appt->endtimecur, TRUE);
                 g_strlcat(result, tmp, result_len);
                 g_free (tmp);
             }
@@ -757,7 +757,7 @@ static void set_el_data (el_win *el, GDateTime *gdt)
 {
     gchar *title;
 
-    title = g_date_time_format (gdt, "%x");
+    title = orage_gdatetime_to_i18_time (gdt, TRUE);
     gtk_window_set_title(GTK_WINDOW(el->Window), title);
     g_free (title);
 
@@ -1339,7 +1339,7 @@ static void build_journal_tab(el_win *el)
     gdt = g_date_time_add_years (gdt_local, -1);
     g_date_time_unref (gdt_local);
 
-    sdate = g_date_time_format (gdt, "%x");
+    sdate = orage_gdatetime_to_i18_time (gdt, TRUE);
     gtk_button_set_label (GTK_BUTTON (el->journal_start_button), sdate);
     g_object_set_data_full (G_OBJECT (el->journal_start_button),
                             DATE_KEY, gdt, (GDestroyNotify)g_date_time_unref);

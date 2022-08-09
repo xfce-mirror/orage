@@ -531,17 +531,17 @@ static void create_mainbox_event_info_box(void)
     if (g_par.show_event_days) {
     /* bug 7836: we call this routine also with 0 = no event data at all */
         if (g_par.show_event_days == 1) {
-            tmp2 = g_date_time_format (gdt, "%x");
+            tmp2 = orage_gdatetime_to_i18_time (gdt, TRUE);
             tmp = g_strdup_printf(_("<b>Events for %s:</b>"), tmp2);
             g_free(tmp2);
         }
         else {
-            tmp2 = g_date_time_format (gdt, "%x");
+            tmp2 = orage_gdatetime_to_i18_time (gdt, TRUE);
 
             gdt_tmp = gdt;
             gdt = g_date_time_add_days (gdt_tmp, g_par.show_event_days - 1);
             g_date_time_unref (gdt_tmp);
-            tmp3 = g_date_time_format (gdt, "%x");
+            tmp3 = orage_gdatetime_to_i18_time (gdt, TRUE);
             tmp = g_strdup_printf(_("<b>Events for %s - %s:</b>"), tmp2, tmp3);
             g_free(tmp2);
             g_free(tmp3);

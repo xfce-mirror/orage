@@ -1697,7 +1697,7 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
     g_object_set_data_full (G_OBJECT (apptw->StartDate_button),
                             DATE_KEY, gdt,
                             (GDestroyNotify)g_date_time_unref);
-    date_to_display = g_date_time_format (gdt, "%x");
+    date_to_display = orage_gdatetime_to_i18_time (gdt, TRUE);
     gtk_button_set_label (GTK_BUTTON(apptw->StartDate_button),
                           date_to_display);
     g_free (date_to_display);
@@ -1727,7 +1727,7 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
         g_object_set_data_full (G_OBJECT (apptw->EndDate_button),
                                 DATE_KEY, gdt,
                                 (GDestroyNotify)g_date_time_unref);
-        date_to_display = g_date_time_format (gdt, "%x");
+        date_to_display = orage_gdatetime_to_i18_time (gdt, TRUE);
         gtk_button_set_label (GTK_BUTTON (apptw->EndDate_button),
                               date_to_display);
         g_free (date_to_display);
@@ -1768,7 +1768,7 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
         g_object_set_data_full (G_OBJECT (apptw->CompletedDate_button),
                                 DATE_KEY, gdt,
                                 (GDestroyNotify)g_date_time_unref);
-        date_to_display = g_date_time_format (gdt, "%x");
+        date_to_display = orage_gdatetime_to_i18_time (gdt, TRUE);
         gtk_button_set_label (GTK_BUTTON(apptw->CompletedDate_button),
                               date_to_display);
         g_free (date_to_display);
@@ -2489,7 +2489,7 @@ static void fill_appt_window_recurrence(appt_win *apptw, xfical_appt *appt)
 
     gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->Recur_count_spin),
                                recur_count);
-    untildate_to_display = g_date_time_format (gdt, "%x");
+    untildate_to_display = orage_gdatetime_to_i18_time (gdt, TRUE);
     g_object_set_data_full (G_OBJECT (apptw->Recur_until_button),
                             DATE_KEY, gdt,
                             (GDestroyNotify)g_date_time_unref);
@@ -2790,31 +2790,30 @@ static gboolean is_same_date (GDateTime *gdt1, GDateTime *gdt2)
 static gchar *create_action_time (xfical_appt *appt)
 {
     gchar *action_time;
-    gchar *fmt;
+    gboolean all_day;
     gchar *start_str;
     gchar *end_str;
 
     if (g_date_time_compare (appt->starttime, appt->endtime) == 0)
     {
-        action_time = g_date_time_format (appt->starttime, "%x %R");
+        action_time = orage_gdatetime_to_i18_time (appt->starttime, FALSE);
         return action_time;
     }
 
     if (appt->allDay == TRUE)
     {
-        fmt = "%x";
-
         if (is_same_date (appt->starttime, appt->endtime) == TRUE)
         {
-            action_time = g_date_time_format (appt->starttime, fmt);
+            action_time = orage_gdatetime_to_i18_time (appt->starttime, TRUE);
             return action_time;
         }
+        all_day = TRUE;
     }
     else
-        fmt = "%x %R";
+        all_day = FALSE;
 
-    start_str = g_date_time_format (appt->starttime, fmt);
-    end_str = g_date_time_format (appt->endtime, fmt);
+    start_str = orage_gdatetime_to_i18_time (appt->starttime, all_day);
+    end_str = orage_gdatetime_to_i18_time (appt->endtime, all_day);
 
     action_time = g_strconcat (start_str, " - ", end_str, NULL);
     g_free (start_str);

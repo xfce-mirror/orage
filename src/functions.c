@@ -186,7 +186,7 @@ gboolean orage_date_button_clicked (GtkWidget *button, GtkWidget *selDate_dialog
 
     changed = orage_gdatetime_compare_date (gdt_new_date, gdt) ? TRUE : FALSE;
     g_date_time_unref (gdt);
-    time_str = g_date_time_format (gdt_new_date, "%x");
+    time_str = orage_gdatetime_to_i18_time (gdt_new_date, TRUE);
     gtk_button_set_label (GTK_BUTTON(button), time_str);
     g_free (time_str);
     g_object_set_data_full (G_OBJECT (button),
