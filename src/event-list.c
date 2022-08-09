@@ -664,9 +664,7 @@ static void todo_data(el_win *el)
 {
     el->days = 0; /* not used */
 
-    if (el->date_now)
-        g_date_time_unref (el->date_now);
-
+    orage_gdatetime_unref (el->date_now);
     el->date_now = g_date_time_new_now_local ();
     app_data (el, el->date_now, NULL);
 }
