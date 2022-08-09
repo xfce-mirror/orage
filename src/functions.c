@@ -162,6 +162,8 @@ gboolean orage_date_button_clicked (GtkWidget *button, GtkWidget *selDate_dialog
         /* something was wrong. let's return some valid value */
         gdt = g_date_time_new_now_local ();
     }
+    else
+        g_date_time_ref (gdt);
 
     orage_select_date (GTK_CALENDAR (selDate_calendar), gdt);
     gtk_widget_show_all(selDate_dialog);
@@ -183,6 +185,7 @@ gboolean orage_date_button_clicked (GtkWidget *button, GtkWidget *selDate_dialog
     }
 
     changed = orage_gdatetime_compare_date (gdt_new_date, gdt) ? TRUE : FALSE;
+    g_date_time_unref (gdt);
     time_str = g_date_time_format (gdt_new_date, "%x");
     gtk_button_set_label (GTK_BUTTON(button), time_str);
     g_free (time_str);
