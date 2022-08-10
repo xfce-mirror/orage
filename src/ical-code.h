@@ -43,12 +43,6 @@ typedef enum
    ,XFICAL_TYPE_JOURNAL
 } xfical_type;
 
-typedef struct _xfical_exception
-{
-    gchar  time[17]; /* Orage uses no timezones here */
-    gchar  type[7]; /* EXDATE, RDATE */
-} xfical_exception;
-
 typedef struct _xfical_appt
 {
     xfical_type type;
@@ -67,20 +61,17 @@ typedef struct _xfical_appt
     gboolean allDay;
     gboolean readonly;
 
-        /* time format must be:
-         * yyyymmdd[Thhmiss[Z]] = %04d%02d%02dT%02d%02d%02d
-         * T means it has also time part
-         * Z means it is in UTC format
-         */
-    gchar  starttime[17];
+    GDateTime *starttime;
     gchar *start_tz_loc;
     gboolean use_due_time;  /* VTODO has due date or not */
-    gchar  endtime[17];
+
+    GDateTime *endtime;
     gchar *end_tz_loc;
     gboolean use_duration;
     gint   duration;
     gboolean completed;
-    gchar  completedtime[17];
+
+    GDateTime *completedtime;
     gchar *completed_tz_loc;
 
     gint availability;
@@ -106,24 +97,25 @@ typedef struct _xfical_appt
         /* used only with libnotify. -1 = no timeout 0 = use default timeout */
     gint display_notify_timeout;  
 
-    /*
+#if 0
     gboolean email_alarm;
     gchar *email_attendees;
-    */
+#endif
 
     gboolean procedure_alarm;
     gchar *procedure_cmd;
     gchar *procedure_params;
 
-        /* for repeating events cur times show current repeating event.
-         * normal times are always the real (=first) start and end times
-         */
-    gchar  starttimecur[17];
-    gchar  endtimecur[17];
+    /* For repeating events cur times show current repeating event. Normal times
+     * are always the real (=first) start and end times.
+     */
+    GDateTime *starttimecur;
+    GDateTime *endtimecur;
     xfical_freq freq;
     gint   recur_limit; /* 0 = no limit  1 = count  2 = until */
     gint   recur_count;
-    gchar  recur_until[17];
+
+    GDateTime *recur_until;
     gboolean recur_byday[7]; /* 0=Mo, 1=Tu, 2=We, 3=Th, 4=Fr, 5=Sa, 6=Su */
     gint   recur_byday_cnt[7]; /* monthly/early: 1=first -1=last 2=second... */
     gint   interval;    /* 1=every day/week..., 2=every second day/week,... */
@@ -144,11 +136,24 @@ void xfical_appt_free(xfical_appt *appt);
 gboolean xfical_appt_mod(char *ical_id, xfical_appt *appt);
 gboolean xfical_appt_del(char *ical_id);
 
-xfical_appt *xfical_appt_get_next_on_day(char *a_day, gboolean first, gint days
-        , xfical_type type,  gchar *file_type);
+/** Read next EVENT/TODO/JOURNAL component on the specified date from ical
+ *  datafile.
+ *  @param gdt start date of ical component which is to be read
+ *  @param first get first appointment is TRUE, if not get next
+ *  @param days how many more days to check forward. 0 = only one day
+ *  @param type EVENT/TODO/JOURNAL to be read
+ *  @returns NULL if failed and xfical_appt pointer to xfical_appt struct filled
+ *           with data if successfull. You need to deallocate it after used. It
+ *           will be overdriven by next invocation of this function.
+ *  @note starttimecur and endtimecur are converted to local timezone
+ */
+xfical_appt *xfical_appt_get_next_on_day (GDateTime *gdt, gboolean first,
+                                          gint days, xfical_type type,
+                                          gchar *file_type);
+
 xfical_appt *xfical_appt_get_next_with_string(char *str, gboolean first
         , gchar *file_type);
-void xfical_get_each_app_within_time(char *a_day, int days
+void xfical_get_each_app_within_time (GDateTime *a_day, int days
         , xfical_type type, const gchar *file_type , GList **data);
 
 void xfical_mark_calendar(GtkCalendar *gtkcal);

@@ -44,12 +44,14 @@
 #define BUTTON_ROW 0
 #define FULL_DAY_ROW (BUTTON_ROW + 1)
 #define FIRST_HOUR_ROW (FULL_DAY_ROW + 1)
+#define DATE_KEY "button-date"
 
-static void do_appt_win(char *mode, char *uid, day_win *dw)
+static void do_appt_win (const appt_win_action mode, const gchar *uid,
+                         day_win *dw, GDateTime *gdt)
 {
     appt_win *apptw;
 
-    apptw = create_appt_win(mode, uid);
+    apptw = create_appt_win (mode, uid, gdt);
     if (apptw) {
         /* we started this, so keep track of it */
         dw->apptw_list = g_list_prepend(dw->apptw_list, apptw);
@@ -138,6 +140,7 @@ static void close_window(day_win *dw)
     g_list_free(dw->apptw_list);
 
     gtk_widget_destroy(dw->Window);
+    g_date_time_unref (dw->a_day);
     g_free(dw);
     dw = NULL;
 }
@@ -164,14 +167,11 @@ static void on_Close_clicked (G_GNUC_UNUSED GtkButton *b, gpointer user_data)
 
 static void create_new_appointment(day_win *dw)
 {
-    const gchar *s_date;
-    char a_day[9];
+    GDateTime *a_day;
 
-    s_date = gtk_button_get_label (GTK_BUTTON(dw->StartDate_button));
-    (void)g_strlcpy (a_day, orage_i18_date_to_icaldate (s_date), sizeof(a_day));
-    dw->a_day[8] = '\0';
+    a_day = g_object_get_data (G_OBJECT (dw->StartDate_button), DATE_KEY);
 
-    do_appt_win("NEW", a_day, dw);
+    do_appt_win (NEW_APPT_WIN, NULL, dw, a_day);
 }
 
 static void on_File_newApp_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
@@ -199,20 +199,31 @@ static void on_Refresh_clicked (G_GNUC_UNUSED GtkButton *b, gpointer user_data)
 
 static void changeSelectedDate(day_win *dw, const gint day)
 {
-    struct tm tm_date;
+    gchar *label;
+    GDateTime *gdt_o;
+    GDateTime *gdt_m;
 
-    tm_date = orage_i18_date_to_tm_date(
-            gtk_button_get_label(GTK_BUTTON(dw->StartDate_button)));
-    orage_move_day(&tm_date, day);
-    gtk_button_set_label(GTK_BUTTON(dw->StartDate_button)
-            , orage_tm_date_to_i18_date(&tm_date));
+    gdt_o = g_object_get_data (G_OBJECT (dw->StartDate_button), DATE_KEY);
+    gdt_m = g_date_time_add_days (gdt_o, day);
+    label = orage_gdatetime_to_i18_time (gdt_m, TRUE);
+    gtk_button_set_label (GTK_BUTTON (dw->StartDate_button), label);
+    g_object_set_data_full (G_OBJECT (dw->StartDate_button),
+                            DATE_KEY, gdt_m, (GDestroyNotify)g_date_time_unref);
+    g_free (label);
     refresh_day_win(dw);
 }
 
 static void go_to_today(day_win *dw)
 {
-    gtk_button_set_label(GTK_BUTTON(dw->StartDate_button)
-            , orage_localdate_i18());
+    GDateTime *gdt;
+    gchar *today;
+
+    gdt = g_date_time_new_now_local ();
+    today = orage_gdatetime_to_i18_time (gdt, TRUE);
+    gtk_button_set_label (GTK_BUTTON (dw->StartDate_button), today);
+    g_object_set_data_full (G_OBJECT (dw->StartDate_button),
+                            DATE_KEY, gdt, (GDestroyNotify)g_date_time_unref);
+    g_free (today);
     refresh_day_win(dw);
 }
 
@@ -461,28 +472,30 @@ static void on_Date_button_clicked_cb(GtkWidget *button, gpointer *user_data)
             GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
             _("Today"), 1, _("_OK"), GTK_RESPONSE_ACCEPT, NULL);
 
-    if (orage_date_button_clicked(button, selDate_dialog))
+    if (orage_date_button_clicked (button, selDate_dialog))
         refresh_day_win(dw);
 }
 
 static void header_button_clicked_cb (GtkWidget *button,
                                       G_GNUC_UNUSED gpointer *user_data)
 {
-    const gchar *start_date;
-
-    start_date = gtk_button_get_label(GTK_BUTTON(button));
-    (void)create_el_win(start_date);
+    GDateTime *gdt;
+    gdt = g_object_get_data (G_OBJECT (button), DATE_KEY);
+    (void)create_el_win (gdt);
 }
 
 static void on_button_press_event_cb(GtkWidget *widget
         , GdkEventButton *event, gpointer *user_data)
 {
+    GDateTime *gdt;
     day_win *dw = (day_win *)user_data;
     gchar *uid;
 
     if (event->type == GDK_2BUTTON_PRESS) {
         uid = g_object_get_data(G_OBJECT(widget), "UID");
-        do_appt_win("UPDATE", uid, dw);
+        gdt = g_date_time_new_now_local ();
+        do_appt_win (UPDATE_APPT_WIN, uid, dw, gdt);
+        g_date_time_unref (gdt);
     }
 }
 
@@ -533,19 +546,30 @@ static void add_row (day_win *dw, const xfical_appt *appt)
     gchar *tmp_note, *tip_note;
     GtkWidget *ev, *lab, *hb;
     GtkWidget *separator;
-    struct tm tm_start, tm_end, tm_first;
+    GDateTime *gdt_start;
+    GDateTime *gdt_end;
+    GDateTime *gdt_first;
     gchar *format_bold = "<b> %s </b>";
+    gint start_hour;
+    gint end_hour;
 
     /* First clarify timings */
-    tm_start = orage_icaltime_to_tm_time(appt->starttimecur, FALSE);
-    tm_end   = orage_icaltime_to_tm_time(appt->endtimecur, FALSE);
-    tm_first = orage_icaltime_to_tm_time(dw->a_day, FALSE);
-    start_col = orage_days_between(&tm_first, &tm_start)+1;
-    end_col   = orage_days_between(&tm_first, &tm_end)+1;
-    days      = orage_days_between(&tm_start, &tm_end);
+    gdt_start = g_date_time_ref (appt->starttimecur);
+    gdt_end   = g_date_time_ref (appt->endtimecur);
+    gdt_first = g_date_time_ref (dw->a_day);
 
-    if (start_col > dw->days) { /* can happen if timezones pass date change */
-        return; /* this does not fit, so we just skip it */
+    start_col = orage_gdatetime_days_between (gdt_first, gdt_start) + 1;
+    end_col   = orage_gdatetime_days_between (gdt_first, gdt_end) + 1;
+    days      = orage_gdatetime_days_between (gdt_start, gdt_end);
+
+    g_date_time_unref (gdt_first);
+
+    if (start_col > dw->days)
+    {
+        /* Can happen if timezones pass date change. This does not fit, so we
+         * just skip it.
+         */
+        goto add_row_cleanup;
     }
 
     if (start_col < 1) {
@@ -554,10 +578,14 @@ static void add_row (day_win *dw, const xfical_appt *appt)
     }
     else {
         col = start_col;
-        row = tm_start.tm_hour;
+        row = g_date_time_get_hour (gdt_start);
     }
-    if (end_col < 1) { /* can happen if timezones pass date change */
-        return; /* this does not fit, so we just skip it */
+    if (end_col < 1)
+    {
+        /* Can happen if timezones pass date change. This does not fit, so we
+         * just skip it.
+         */
+        goto add_row_cleanup;
     }
     if (end_col > dw->days) { /* can happen if timezones pass date change */
         end_col = days;
@@ -588,17 +616,13 @@ static void add_row (day_win *dw, const xfical_appt *appt)
             gtk_grid_attach_next_to (GTK_GRID (hb), separator, NULL,
                     GTK_POS_RIGHT, 1, 1);
         }
-    /* we took the date in unnormalized format, so we need to do that now */
-        tm_start.tm_year -= 1900;
-        tm_start.tm_mon -= 1;
-        start_date = g_strdup(orage_tm_date_to_i18_date(&tm_start));
+
+        start_date = orage_gdatetime_to_i18_time (gdt_start, TRUE);
         if (days == 0)
             tip = g_strdup_printf("%s\n%s\n%s"
                     , tip_title, start_date, tip_note);
         else {
-            tm_end.tm_year -= 1900;
-            tm_end.tm_mon -= 1;
-            end_date = g_strdup(orage_tm_date_to_i18_date(&tm_end));
+            end_date = orage_gdatetime_to_i18_time (gdt_end, TRUE);
             tip = g_strdup_printf("%s\n%s - %s\n%s"
                     , tip_title, start_date, end_date, tip_note);
             g_free(end_date);
@@ -624,21 +648,25 @@ static void add_row (day_win *dw, const xfical_appt *appt)
         }
 
         if (days == 0)
-            tip = g_strdup_printf("%s\n%02d:%02d-%02d:%02d\n%s"
-                    , tip_title, tm_start.tm_hour, tm_start.tm_min
-                    , tm_end.tm_hour, tm_end.tm_min, tip_note);
+        {
+            tip = g_strdup_printf ("%s\n%02d:%02d-%02d:%02d\n%s", tip_title,
+                    g_date_time_get_hour (gdt_start),
+                    g_date_time_get_minute (gdt_start),
+                    g_date_time_get_hour (gdt_end),
+                    g_date_time_get_minute (gdt_end),
+                    tip_note);
+        }
         else {
-    /* we took the date in unnormalized format, so we need to do that now */
-            tm_start.tm_year -= 1900;
-            tm_start.tm_mon -= 1;
-            tm_end.tm_year -= 1900;
-            tm_end.tm_mon -= 1;
-            start_date = g_strdup(orage_tm_date_to_i18_date(&tm_start));
-            end_date = g_strdup(orage_tm_date_to_i18_date(&tm_end));
-            tip = g_strdup_printf("%s\n%s %02d:%02d - %s %02d:%02d\n%s"
-                    , tip_title
-                    , start_date, tm_start.tm_hour, tm_start.tm_min
-                    , end_date, tm_end.tm_hour, tm_end.tm_min, tip_note);
+            start_date = orage_gdatetime_to_i18_time (gdt_start, TRUE);
+            end_date = orage_gdatetime_to_i18_time (gdt_end, TRUE);
+            tip = g_strdup_printf ("%s\n%s %02d:%02d - %s %02d:%02d\n%s",
+                    tip_title, start_date,
+                    g_date_time_get_hour (gdt_start),
+                    g_date_time_get_minute (gdt_start),
+                    end_date,
+                    g_date_time_get_hour (gdt_end),
+                    g_date_time_get_minute (gdt_end),
+                    tip_note);
             g_free(start_date);
             g_free(end_date);
         }
@@ -656,21 +684,27 @@ static void add_row (day_win *dw, const xfical_appt *appt)
     g_free(tip_note);
 
     /* and finally draw the line to show how long the appointment is,
-     * but only if it is Busy type event (=availability != 0) 
+     * but only if it is Busy type event (=availability != 0)
      * and it is not whole day event */
     if (appt->availability && !appt->allDay) {
         first_col = (start_col < 1) ? 1 : start_col;
         last_col = (end_col > dw->days) ? dw->days : end_col;
+        start_hour = g_date_time_get_hour (gdt_start);
+        end_hour = g_date_time_get_hour (gdt_end);
 
         for (col = first_col; col <= last_col; col++)
         {
-            start_row = (col == start_col) ? tm_start.tm_hour : 0;
-            end_row = (col == end_col) ? tm_end.tm_hour : 23;
+            start_row = (col == start_col) ? start_hour : 0;
+            end_row = (col == end_col) ? end_hour : 23;
 
             for (row = start_row; row <= end_row; row++)
                 dw->line[row][col] = build_line (dw->line[row][col]);
         }
     }
+
+add_row_cleanup:
+    g_date_time_unref (gdt_start);
+    g_date_time_unref (gdt_end);
 }
 
 static void app_rows (day_win *dw,
@@ -680,8 +714,8 @@ static void app_rows (day_win *dw,
     GList *appt_list=NULL, *tmp;
     xfical_appt *appt;
 
-    xfical_get_each_app_within_time(dw->a_day, dw->days
-            , ical_type, file_type, &appt_list);
+    xfical_get_each_app_within_time (dw->a_day, dw->days, ical_type, file_type,
+                                     &appt_list);
     for (tmp = g_list_first(appt_list);
          tmp != NULL;
          tmp = g_list_next(tmp)) {
@@ -697,13 +731,14 @@ static void app_rows (day_win *dw,
 static void app_data(day_win *dw)
 {
     xfical_type ical_type;
-    gchar *s_date, file_type[8];
+    gchar file_type[8];
     gint i;
+    GDateTime *a_day;
 
     ical_type = XFICAL_TYPE_EVENT;
-    s_date = (char *)gtk_button_get_label(GTK_BUTTON(dw->StartDate_button));
-    strncpy(dw->a_day, orage_i18_date_to_icaldate(s_date), 8);
-    dw->a_day[8] = '\0';
+    a_day = g_object_get_data (G_OBJECT (dw->StartDate_button), DATE_KEY);
+    g_date_time_unref (dw->a_day);
+    dw->a_day = g_date_time_ref (a_day);
     dw->days = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(dw->day_spin));
 
     /* first search base orage file */
@@ -790,14 +825,14 @@ static void fill_days (day_win *dw, const gint days)
     }
 }
 
-static void build_day_view_header (day_win *dw, const gchar *start_date)
+static void build_day_view_header (day_win *dw, GDateTime *start_date)
 {
     GtkWidget *start_label;
     GtkWidget *no_days_label;
     GtkWidget *grid;
-    struct tm tm_date;
-    const gchar *first_date;
+    gchar *first_date;
     int diff_to_weeks_first_day;
+    GDateTime *gdt;
 
     grid = gtk_grid_new ();
     g_object_set (grid, "margin", 10, NULL);
@@ -825,30 +860,32 @@ static void build_day_view_header (day_win *dw, const gchar *start_date)
 
     /* initial values */
     if (g_par.dw_week_mode) { /* we want to start form week start day */
-        tm_date = orage_i18_date_to_tm_date(start_date);
-        /* tm_date.wday: 0 = Sunday, 1 = Monday, 2 = Tuesday, ... 6 = Saturday
-           g_par.ical_weekstartday: 0 = Monday, 1 = Tuesday, ... 6 = Sunday */
-        diff_to_weeks_first_day = tm_date.tm_wday - (g_par.ical_weekstartday+1);
-        if (diff_to_weeks_first_day < 0)
-            diff_to_weeks_first_day += 7;
-        if (diff_to_weeks_first_day == 0) { /* we are on week start day */
-            first_date = start_date;
+        diff_to_weeks_first_day = g_date_time_get_day_of_week (start_date)
+                                - (g_par.ical_weekstartday + 1);
+        if (diff_to_weeks_first_day == 0) {
+            /* we are on week start day */
+            gdt = g_date_time_ref (start_date);
         }
         else {
-            orage_move_day(&tm_date, -1*diff_to_weeks_first_day);
-            first_date = orage_tm_date_to_i18_date(&tm_date);
+            gdt = g_date_time_add_days (start_date,
+                                        -1 * diff_to_weeks_first_day);
         }
     }
-    else {
-        first_date = start_date;
-    }
+    else
+        gdt = g_date_time_ref (start_date);
+
+    first_date = orage_gdatetime_to_i18_time (gdt, TRUE);
     gtk_button_set_label (GTK_BUTTON(dw->StartDate_button), first_date);
+    g_object_set_data_full (G_OBJECT (dw->StartDate_button),
+                            DATE_KEY, gdt, (GDestroyNotify)g_date_time_unref);
     gtk_spin_button_set_value(GTK_SPIN_BUTTON(dw->day_spin), 7);
 
     g_signal_connect (dw->day_spin, "value-changed",
                       G_CALLBACK (on_spin_changed), dw);
     g_signal_connect (dw->StartDate_button, "clicked",
                       G_CALLBACK (on_Date_button_clicked_cb), dw);
+
+    g_free (first_date);
 }
 
 static void fill_hour (day_win *dw,
@@ -905,12 +942,17 @@ static void fill_hour_arrow (day_win *dw, const gint col)
     gtk_grid_attach (GTK_GRID (dw->dtable), ev, col, FULL_DAY_ROW, 1, 1);
 }
 
-static gboolean is_leapyear (const int year)
+static gboolean is_same_date (GDateTime *gdt0, GDateTime *gdt1)
 {
-    if (((year % 4) == 0) && (((year % 100) != 0) || ((year % 400) == 0)))
-        return TRUE;
-    else
+    if (g_date_time_get_year (gdt0) != g_date_time_get_year (gdt1))
         return FALSE;
+    else if ((g_date_time_get_day_of_year (gdt0) !=
+              g_date_time_get_day_of_year (gdt1)))
+    {
+        return FALSE;
+    }
+    else
+        return TRUE;
 }
 
 static GtkWidget *build_scroll_window (void)
@@ -938,15 +980,16 @@ static void build_day_view_table (day_win *dw)
     gint days_n1;
     gint i, sunday;
     GtkWidget *label, *button;
-    char text[5+1], *date, *today;
-    struct tm tm_date;
-    gint monthdays[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    char text[5+1];
+    gchar *date;
+    GDateTime *gdt0;
+    GDateTime *gdt_today;
 
     orage_category_get_list();
     days = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(dw->day_spin));
     days_n1 = days + 1;
-    tm_date = orage_i18_date_to_tm_date(
-            gtk_button_get_label(GTK_BUTTON(dw->StartDate_button)));
+    gdt0 = g_date_time_ref (
+            g_object_get_data (G_OBJECT (dw->StartDate_button), DATE_KEY));
 
     /****** header of day table = days columns ******/
     dw->scroll_win = build_scroll_window ();
@@ -955,22 +998,21 @@ static void build_day_view_table (day_win *dw)
 
     dw->dtable = gtk_grid_new ();
 
-    sunday = tm_date.tm_wday; /* 0 = Sunday */
+    sunday = g_date_time_get_day_of_week (gdt0);
     if (sunday) /* index to next sunday */
         sunday = 7-sunday;
 
-    if (is_leapyear (tm_date.tm_year))
-        ++monthdays[1];
-
-    today = g_strdup(orage_localdate_i18());
-
+    gdt_today = g_date_time_new_now_local ();
     fill_hour_arrow(dw, 0);
     for (i = 1; i < days_n1; i++)
     {
-        date = orage_tm_date_to_i18_date(&tm_date);
+        date = orage_gdatetime_to_i18_time (gdt0, TRUE);
         button = gtk_button_new_with_label (date);
+        g_object_set_data_full (G_OBJECT (button), DATE_KEY, gdt0,
+                                (GDestroyNotify)g_date_time_unref);
+        g_free (date);
 
-        if (strcmp (today, date) == 0)
+        if (is_same_date (gdt_today, gdt0))
             gtk_widget_set_name (button, ORAGE_DAY_VIEW_TODAY);
 
         if ((i - 1) % 7 == sunday)
@@ -984,22 +1026,15 @@ static void build_day_view_table (day_win *dw)
         g_object_set (button, "margin-left", 3, NULL);
         gtk_grid_attach (GTK_GRID (dw->dtable), button, i, BUTTON_ROW, 1, 1);
 
-        if (++tm_date.tm_mday == (monthdays[tm_date.tm_mon]+1)) {
-            if (++tm_date.tm_mon == 12) {
-                ++tm_date.tm_year;
-                tm_date.tm_mon = 0;
-            }
-
-            tm_date.tm_mday = 1;
-        }
-
-        /* some rare locales show weekday in the default date, so we need to 
-         * make it correct. Safer would be to call mktime() */
-        tm_date.tm_wday = (tm_date.tm_wday + 1) % 7;
+        /* gdt0 can be safely reassigned, current value is unrefrenced by
+         * button.
+         */
+        gdt0 = g_date_time_add_days (gdt0, 1);
     }
 
     fill_hour_arrow (dw, days_n1);
-    g_free (today);
+    g_date_time_unref (gdt_today);
+    g_date_time_unref (gdt0);
 
     /* GtkGrid does not implement GtkScrollable, but 'gtk_container_add'
      * intelligenty accounts it and wraps it GtkScrollable.
@@ -1027,12 +1062,13 @@ void refresh_day_win(day_win *dw)
     g_timeout_add(100, (GSourceFunc)scroll_position_timer, (gpointer)dw);
 }
 
-day_win *create_day_win(char *start_date)
+day_win *create_day_win (GDateTime *start_date)
 {
     day_win *dw;
 
     /* initialisation + main window + base vbox */
     dw = g_new0(day_win, 1);
+    dw->a_day = g_date_time_new_now_local ();
     dw->scroll_pos = -1; /* not set */
     dw->accel_group = gtk_accel_group_new();
 

@@ -98,12 +98,12 @@ static GtkWidget *orage_image_menu_item (const gchar *label,
 static void on_Today_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
                                gpointer user_data)
 {
-    struct tm *t;
+    GDateTime *gdt;
     CalWin *xfcal = (CalWin *)user_data;
 
-    t = orage_localtime();
-    orage_select_date(GTK_CALENDAR(xfcal->mCalendar), t->tm_year+1900
-            , t->tm_mon, t->tm_mday);
+    gdt = g_date_time_new_now_local ();
+    orage_select_date (GTK_CALENDAR (xfcal->mCalendar), gdt);
+    g_date_time_unref (gdt);
     (void)create_el_win (NULL);
 }
 
@@ -116,13 +116,18 @@ static void on_preferences_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
 static void on_new_appointment_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
                                          G_GNUC_UNUSED gpointer user_data)
 {
-    struct tm *t;
+    GDateTime *gdt;
     char cur_date[9];
+    gint year;
+    gint month;
+    gint day;
 
-    t = orage_localtime();
-    g_snprintf(cur_date, sizeof (cur_date), "%04d%02d%02d", t->tm_year+1900
-               , t->tm_mon+1, t->tm_mday);
-    create_appt_win("NEW", cur_date);
+    gdt = g_date_time_new_now_local ();
+    g_date_time_get_ymd (gdt, &year, &month, &day);
+    g_snprintf (cur_date, sizeof (cur_date), "%04d%02d%02d", year, month, day);
+
+    create_appt_win (NEW_APPT_WIN, cur_date, gdt);
+    g_date_time_unref (gdt);
 }
 
 static void on_globaltime_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
@@ -192,21 +197,25 @@ static void show_menu (G_GNUC_UNUSED GtkStatusIcon *status_icon,
     gtk_menu_popup_at_pointer ((GtkMenu *)user_data, NULL);
 }
 
-static gboolean format_line (PangoLayout *pl, struct tm *t, const char *data,
+static gboolean format_line (PangoLayout *pl, GDateTime *gdt, const gchar *fmt,
                              const PangoFontDescription *desc)
 {
-    gchar row[90];
+    gchar *date_str;
 
-    if (ORAGE_STR_EXISTS(data)) {
-        if (strftime(row, sizeof (row) - 1, data, t) == 0) {
-            g_warning ("%s: strftime %s failed", G_STRFUNC, data);
+    if (ORAGE_STR_EXISTS(fmt))
+    {
+        date_str = g_date_time_format (gdt, fmt);
+        if (date_str == NULL)
+        {
+            g_warning ("%s: g_date_time_format %s failed", G_STRFUNC, fmt);
             return(FALSE);
         }
         else
         {
             pango_layout_set_font_description (pl, desc);
-            pango_layout_set_text (pl, row, -1);
+            pango_layout_set_text (pl, date_str, -1);
             pango_layout_set_alignment (pl, PANGO_ALIGN_CENTER);
+            g_free (date_str);
             return(TRUE);
         }
     }
@@ -290,7 +299,7 @@ static void create_own_icon_pango_layout (gint line,
                                           cairo_t *cr,
                                           GtkStyleContext *style_context,
                                           GtkBorder *border,
-                                          struct tm *t,
+                                          GDateTime *gdt,
                                           gint width,
                                           gint height)
 {
@@ -321,7 +330,7 @@ static void create_own_icon_pango_layout (gint line,
 
     row_x_data = get_row_x_data (line);
 
-    if (format_line (pl, t, row_x_data, font_desc) == FALSE)
+    if (format_line (pl, gdt, row_x_data, font_desc) == FALSE)
     {
         g_object_unref (pl);
         pango_font_description_free (font_desc);
@@ -360,7 +369,7 @@ static GdkPixbuf *create_dynamic_icon (void)
     const gint width = 160, height = 160; /* size of icon */
     cairo_t *cr;
     GdkPixbuf *pixbuf;
-    struct tm *t;
+    GDateTime *gdt;
     cairo_surface_t *surface;
     GtkStyleContext *style_context;
     GtkBorder border;
@@ -375,17 +384,18 @@ static GdkPixbuf *create_dynamic_icon (void)
                                   gtk_style_context_get_state (style_context),
                                   &border);
 
-    t = orage_localtime ();
+    gdt = g_date_time_new_now_local ();
     /* Date line must be first, as this background may be overlap with upper
      * or lower text areas.
      */
-    create_own_icon_pango_layout (2, cr, style_context, &border, t,
+    create_own_icon_pango_layout (2, cr, style_context, &border, gdt,
                                   width, height);
-    create_own_icon_pango_layout (1, cr, style_context, &border, t,
+    create_own_icon_pango_layout (1, cr, style_context, &border, gdt,
                                   width, height);
-    create_own_icon_pango_layout (3, cr, style_context, &border, t,
+    create_own_icon_pango_layout (3, cr, style_context, &border, gdt,
                                   width, height);
 
+    g_date_time_unref (gdt);
     g_object_unref (style_context);
     pixbuf = gdk_pixbuf_get_from_surface (surface, 0, 0, width, height);
     cairo_paint (cr);

@@ -65,6 +65,7 @@
 #include "day-view.h"
 
 #define BORDER_SIZE 10
+#define DATE_KEY "button-date"
 
 enum {
     COL_TIME = 0
@@ -85,22 +86,24 @@ static const GtkTargetEntry drag_targets[] =
     { "STRING", 0, DRAG_TARGET_STRING }
 };
 
-static void do_appt_win(char *mode, char *uid, el_win *el)
+static void do_appt_win (const appt_win_action mode, char *uid, el_win *el,
+                         GDateTime *gdt)
 {
     appt_win *apptw;
 
-    apptw = create_appt_win(mode, uid);
+    apptw = create_appt_win(mode, uid, gdt);
     if (apptw) {
         /* we started this, so keep track of it */
         el->apptw_list = g_list_prepend(el->apptw_list, apptw);
         /* inform the appointment that we are interested in it */
-        apptw->el = el; 
+        apptw->el = el;
     }
-};
+}
 
-static void start_appt_win(char *mode,  el_win *el
+static void start_appt_win (const appt_win_action mode,  el_win *el
         , GtkTreeModel *model, GtkTreeIter *iter, GtkTreePath *path)
 {
+    GDateTime *gdt;
     gchar *uid = NULL, *flags = NULL;
 
     if (gtk_tree_model_get_iter(model, iter, path)) {
@@ -109,13 +112,15 @@ static void start_appt_win(char *mode,  el_win *el
         gtk_tree_model_get(model, iter, COL_FLAGS, &flags, -1);
         if (flags && flags[3] == 'A') {
             xfical_unarchive_uid(uid);
-            /* note that file id changes after archive */ 
+            /* note that file id changes after archive */
             uid[0]='O';
             refresh_el_win(el);
         }
         g_free(flags);
 #endif
-        do_appt_win(mode, uid, el);
+        gdt = g_date_time_new_now_local ();
+        do_appt_win(mode, uid, el, gdt);
+        g_date_time_unref (gdt);
         g_free(uid);
     }
 }
@@ -128,7 +133,7 @@ static void editEvent(GtkTreeView *view, GtkTreePath *path
     GtkTreeIter   iter;
 
     model = gtk_tree_view_get_model(view);
-    start_appt_win("UPDATE", el, model, &iter, path);
+    start_appt_win (UPDATE_APPT_WIN, el, model, &iter, path);
 }
 
 static gint sortEvent_comp(GtkTreeModel *model
@@ -146,71 +151,63 @@ static gint sortEvent_comp(GtkTreeModel *model
     return(ret);
 }
 
-static int append_time(char *result, char *ical_time, int i)
+static void append_time (gchar *result, GDateTime *gdt, const size_t len)
 {
-    result[i++] = ical_time[9];
-    result[i++] = ical_time[10];
-    result[i++] = ':';
-    result[i++] = ical_time[11];
-    result[i++] = ical_time[12];
-    result[i++] = ' ';
-    result[i] = '\0';
+    gchar *ical_time;
 
-    return(6);
+    ical_time = g_date_time_format (gdt, "%R");
+    g_snprintf (result, len, "%s ", ical_time);
+    g_free (ical_time);
 }
 
-static char *format_time(el_win *el, xfical_appt *appt, char *par)
+static gchar *format_time(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
 {
-    char *result;
+    gchar *result;
     const size_t result_len = 51;
-    char *tmp;
+    gchar *tmp;
     int i = 0;
-    char *start_ical_time;
-    char *end_ical_time;
     gboolean same_date;
-    struct tm t = {0};
 
-    start_ical_time = appt->starttimecur;
-    end_ical_time = appt->endtimecur;
-    same_date = !strncmp(start_ical_time, end_ical_time, 8);
-    result = g_new0(char, result_len);
+    result = g_new0(gchar, result_len);
 
-    if (el->page == EVENT_PAGE && el->days == 0) { 
+    if (el->page == EVENT_PAGE && el->days == 0) {
         /* special formatting for 1 day VEVENTS */
-        if (start_ical_time[8] == 'T') { /* time part available */
-            if (strncmp(start_ical_time, par, 8) < 0)
+        if (appt->allDay == FALSE) { /* time part available */
+            if (gdt_par && (orage_gdatetime_compare_date (appt->starttimecur, gdt_par) < 0))
                 g_strlcpy (result, "+00:00 ", result_len);
             else
-                append_time(result, start_ical_time, i);
+                append_time (&result[i], appt->starttimecur, result_len - i);
             i = g_strlcat (result, "- ", result_len);
-            if (strncmp(par, end_ical_time , 8) < 0)
+            if ((gdt_par == NULL) || (orage_gdatetime_compare_date (gdt_par, appt->endtimecur) < 0))
                 g_strlcat (result, "24:00+", result_len);
             else
-                append_time(result, end_ical_time, i);
+                append_time (&result[i], appt->endtimecur, result_len - i);
         }
         else {/* date only appointment */
             g_strlcpy (result, _("All day"), result_len);
         }
     }
     else { /* normally show date and time */
-        t = orage_icaltime_to_tm_time(appt->starttimecur, TRUE);
-        tmp = orage_tm_date_to_i18_date(&t);
+        tmp = orage_gdatetime_to_i18_time (appt->starttimecur, TRUE);
         i = g_strlcpy(result, tmp, result_len);
-        if (start_ical_time[8] == 'T') { /* time part available */
+        g_free (tmp);
+        if (appt->allDay == FALSE) { /* time part available */
             result[i++] = ' ';
-            append_time(result, start_ical_time, i);
+            append_time (&result[i], appt->starttimecur, result_len - i);
             i = g_strlcat (result, "- ", result_len);
             if (el->page == TODO_PAGE && !appt->use_due_time) {
                 g_strlcat (result, "...", result_len);
             }
             else {
+                same_date = !orage_gdatetime_compare_date (appt->starttimecur,
+                                                           appt->endtimecur);
                 if (!same_date) {
-                    t = orage_icaltime_to_tm_time(appt->endtimecur, TRUE);
-                    tmp = orage_tm_date_to_i18_date(&t);
+                    tmp = orage_gdatetime_to_i18_time (appt->endtimecur, TRUE);
                     i = g_strlcat (result, tmp, result_len);
+                    g_free (tmp);
                     result[i++] = ' ';
                 }
-                append_time(result, end_ical_time, i);
+                append_time (&result[i], appt->endtimecur, result_len - i);
             }
         }
         else {/* date only */
@@ -219,9 +216,9 @@ static char *format_time(el_win *el, xfical_appt *appt, char *par)
                 g_strlcat(result, "...", result_len);
             }
             else {
-                t = orage_icaltime_to_tm_time(appt->endtimecur, TRUE);
-                tmp = orage_tm_date_to_i18_date(&t);
+                tmp = orage_gdatetime_to_i18_time (appt->endtimecur, TRUE);
                 g_strlcat(result, tmp, result_len);
+                g_free (tmp);
             }
         }
     }
@@ -266,6 +263,9 @@ static void start_time_data_func (G_GNUC_UNUSED GtkTreeViewColumn *col,
     gchar *stime, *etime, *stime2;
     gchar start_time[17], end_time[17];
     gint len;
+    GDateTime *gdt_start_time;
+    GDateTime *gdt_end_time;
+    GTimeZone *utc_tz;
 
     if (el->page == EVENT_PAGE) {
         if (!el->today || el->days != 0) { /* reset */
@@ -278,19 +278,19 @@ static void start_time_data_func (G_GNUC_UNUSED GtkTreeViewColumn *col,
         }
 
         gtk_tree_model_get(model, iter, COL_TIME, &stime, -1);
-        /* we need to remember the real address in case we increment it, 
+        /* we need to remember the real address in case we increment it,
          * so that we can free the correct pointer */
-        stime2 = stime; 
+        stime2 = stime;
         if (stime[0] == '+')
             stime++;
         etime = stime + 8; /* hh:mm - hh:mm */
         /* only add special highlight if we are on today (=start with time) */
-        if (stime[2] != ':') { 
+        if (stime[2] != ':') {
             g_object_set(rend
                      , "foreground-set",    FALSE
                      , "strikethrough-set", FALSE
                      , "weight-set",        FALSE
-                     , NULL); 
+                     , NULL);
         }
         else if (strncmp(etime, el->time_now, 5) < 0) { /* gone */
             g_object_set(rend
@@ -301,7 +301,7 @@ static void start_time_data_func (G_GNUC_UNUSED GtkTreeViewColumn *col,
                      , "weight-set",        TRUE
                      , NULL);
         }
-        else if (strncmp(stime, el->time_now, 5) <= 0 
+        else if (strncmp(stime, el->time_now, 5) <= 0
               && strncmp(etime, el->time_now, 5) >= 0) { /* current */
             g_object_set(rend
                      , "foreground",        "Blue"
@@ -330,12 +330,27 @@ static void start_time_data_func (G_GNUC_UNUSED GtkTreeViewColumn *col,
             len = 8;
         }
         strncpy(start_time, stime, len);
+        start_time[len] = '\0';
+        gdt_start_time = orage_icaltime_to_gdatetime (start_time);
         gtk_tree_model_get(model, iter, COL_TIME, &stime2, -1);
         if (g_str_has_suffix(stime2, "- ...")) /* no due time */
-            strncpy(end_time, "99999", len); /* long in the future*/
+        {
+            /* long in the future*/
+            utc_tz = g_time_zone_new_utc ();
+            gdt_end_time = g_date_time_new (utc_tz, 9999, 12, 31, 23, 59, 59);
+            g_time_zone_unref (utc_tz);
+        }
         else /* normal due time*/
+        {
             strncpy(end_time, stime+len, len);
-        if (strncmp(end_time, el->date_now, len) < 0) { /* gone */
+            gdt_end_time = orage_icaltime_to_gdatetime (end_time);
+        }
+
+        g_free (stime);
+        g_free (stime2);
+
+        if (g_date_time_difference (gdt_end_time, el->date_now) < 0) {
+            /* gone */
             g_object_set(rend
                      , "foreground",        "Red"
                      , "foreground-set",    TRUE
@@ -344,8 +359,9 @@ static void start_time_data_func (G_GNUC_UNUSED GtkTreeViewColumn *col,
                      , "weight-set",        TRUE
                      , NULL);
         }
-        else if (strncmp(start_time, el->date_now, len) <= 0 
-              && strncmp(end_time, el->date_now, len) >= 0) { /* current */
+        else if (g_date_time_difference (gdt_start_time, el->date_now) <= 0
+              && g_date_time_difference (gdt_end_time, el->date_now) >= 0) {
+            /* current */
             g_object_set(rend
                      , "foreground",        "Blue"
                      , "foreground-set",    TRUE
@@ -362,19 +378,19 @@ static void start_time_data_func (G_GNUC_UNUSED GtkTreeViewColumn *col,
                      , "weight-set",        TRUE
                      , NULL);
         }
-        g_free(stime);
-        g_free(stime2);
+        g_date_time_unref (gdt_start_time);
+        g_date_time_unref (gdt_end_time);
     }
     else {
         g_object_set(rend
                  , "foreground-set",    FALSE
                  , "strikethrough-set", FALSE
                  , "weight-set",        FALSE
-                 , NULL); 
+                 , NULL);
     }
 }
 
-static void add_el_row(el_win *el, xfical_appt *appt, char *par)
+static void add_el_row(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
 {
     GtkTreeIter     iter1;
     GtkListStore   *list1;
@@ -384,8 +400,10 @@ static void add_el_row(el_win *el, xfical_appt *appt, char *par)
     gchar          /* *s_sort,*/ *s_sort1;
     gchar          *tmp_note;
     guint           len = 50;
+    gchar *s_time;
+    gchar *e_time;
 
-    stime = format_time(el, appt, par);
+    stime = format_time (el, appt, gdt_par);
     if (appt->display_alarm_orage || appt->display_alarm_notify 
     ||  appt->sound_alarm || appt->procedure_alarm)
         if (appt->alarm_persistent)
@@ -440,10 +458,15 @@ static void add_el_row(el_win *el, xfical_appt *appt, char *par)
         g_free(tmp_note);
     }
 
-    s_sort1 = g_strconcat(appt->starttimecur, appt->endtimecur, NULL);
-    /*
+    s_time = orage_gdatetime_to_icaltime (appt->starttimecur, appt->allDay);
+    e_time = orage_gdatetime_to_icaltime (appt->endtimecur, appt->allDay);
+    s_sort1 = g_strconcat (s_time, e_time, NULL);
+    g_free (s_time);
+    g_free (e_time);
+
+#if 0
     s_sort = g_utf8_collate_key(s_sort1, -1);
-    */
+#endif
 
     list1 = el->ListStore;
     gtk_list_store_append(list1, &iter1);
@@ -458,9 +481,9 @@ static void add_el_row(el_win *el, xfical_appt *appt, char *par)
     g_free(title);
     g_free(s_sort1);
     g_free(stime);
-    /*
+#if 0
     g_free(s_sort);
-    */
+#endif
 }
 
 static void searh_rows(el_win *el, gchar *search_string, gchar *file_type)
@@ -507,45 +530,39 @@ static void search_data(el_win *el)
     g_free(search_string);
 }
 
-static void app_rows(el_win *el, char *a_day, char *par, xfical_type ical_type
-        , gchar *file_type)
+static void app_rows (el_win *el, GDateTime *a_day_gdt, GDateTime *gdt_par,
+                      xfical_type ical_type, gchar *file_type)
 {
     GList *appt_list=NULL, *tmp;
     xfical_appt *appt;
 
     if (ical_type == XFICAL_TYPE_EVENT && !el->only_first) {
-        xfical_get_each_app_within_time(a_day, el->days+1
+        xfical_get_each_app_within_time (a_day_gdt, el->days+1
                 , ical_type, file_type, &appt_list);
         for (tmp = g_list_first(appt_list);
              tmp != NULL;
              tmp = g_list_next(tmp)) {
             appt = (xfical_appt *)tmp->data;
             if (appt->priority < g_par.priority_list_limit) {
-                add_el_row(el, appt, par);
+                add_el_row (el, appt, gdt_par);
             }
             xfical_appt_free(appt);
         }
         g_list_free(appt_list);
     }
     else {
-        for (appt = xfical_appt_get_next_on_day(a_day, TRUE, el->days
+        for (appt = xfical_appt_get_next_on_day (a_day_gdt, TRUE, el->days
                     , ical_type, file_type);
              appt;
-             appt = xfical_appt_get_next_on_day(a_day, FALSE, el->days
+             appt = xfical_appt_get_next_on_day (a_day_gdt, FALSE, el->days
                     , ical_type, file_type)) {
-
-            /* fix bug 8508: Do not show event if it is normal (= has time)
-               and it has ended at midnight (=early morning) */
-            if (!(appt->endtimecur[8] == 'T' 
-                && strncmp(appt->endtimecur+9, "000000", 6) == 0
-                && strncmp(appt->endtimecur, a_day, 8) == 0))
-                add_el_row(el, appt, par);
+            add_el_row (el, appt, gdt_par);
             xfical_appt_free(appt);
         }
     }
 }
 
-static void app_data(el_win *el, char *a_day, char *par)
+static void app_data (el_win *el, GDateTime *a_day_gdt, GDateTime *gdt_par)
 {
     xfical_type ical_type;
     gchar file_type[8];
@@ -569,11 +586,11 @@ static void app_data(el_win *el, char *a_day, char *par)
     if (!xfical_file_open(TRUE))
         return;
     g_strlcpy (file_type, "O00.", sizeof (file_type));
-    app_rows(el, a_day, par, ical_type, file_type);
+    app_rows (el, a_day_gdt, gdt_par, ical_type, file_type);
     /* then process all foreign files */
     for (i = 0; i < g_par.foreign_count; i++) {
         g_snprintf(file_type, sizeof (file_type), "F%02d.", i);
-        app_rows(el, a_day, par, ical_type, file_type);
+        app_rows (el, a_day_gdt, gdt_par, ical_type, file_type);
     }
 
 #ifdef HAVE_ARCHIVE
@@ -581,7 +598,7 @@ static void app_data(el_win *el, char *a_day, char *par)
     if (ical_type == XFICAL_TYPE_JOURNAL) {
         if (xfical_archive_open()) {
             g_strlcpy (file_type, "A00.", sizeof (file_type));
-            app_rows(el, a_day, par, ical_type, file_type);
+            app_rows (el, a_day_gdt, gdt_par, ical_type, file_type);
             xfical_archive_close();
         }
     }
@@ -607,78 +624,58 @@ static void refresh_time_field(el_win *el)
 
 static void event_data(el_win *el)
 {
-    const gchar *title;  /* in %x strftime format */
-    char      *stime;  /* in icaltime format */
-    char      a_day[9]; /* yyyymmdd */
-    struct tm *t, t_title;
-    GDate *d1, *d2;
+    GDateTime *gdt_now;
+    GDateTime *gdt_a_day;
+    GDateTime *gdt_title;
 
     if (el->days == 0)
         refresh_time_field(el);
     el->days = gtk_spin_button_get_value(GTK_SPIN_BUTTON(el->event_spin));
-    /*
+#if 0
     el->only_first = gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(el->event_only_first_checkbutton));
-            */
+#endif
     el->show_old = gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(el->event_show_old_checkbutton));
-    title = gtk_window_get_title(GTK_WINDOW(el->Window));
-    t_title = orage_i18_date_to_tm_date(title); 
+    gdt_title = g_object_get_data (G_OBJECT (el->Window), DATE_KEY);
+
     if (el->show_old && el->only_first) {
         /* just take any old enough date, so that all events fit in */
-        g_strlcpy(a_day, "19000101", sizeof (a_day));
-        /* we need to adjust also number of days shown */
-        d1 = g_date_new_dmy(1, 1, 1900);
-        d2 = g_date_new_dmy(t_title.tm_mday, t_title.tm_mon+1
-                , t_title.tm_year+1900);
-        el->days += g_date_days_between(d1, d2);
-        g_date_free(d1);
-        g_date_free(d2);
+        gdt_a_day = g_date_time_new_local (1900, 1, 1, 0, 0, 0);
+        el->days += orage_gdatetime_days_between (gdt_a_day, gdt_title);
     }
     else { /* we show starting from selected day */
-        stime = orage_tm_time_to_icaltime(&t_title);
-        g_strlcpy (a_day, stime, sizeof (a_day));
+        gdt_a_day = g_date_time_ref (gdt_title);
     }
 
-    t = orage_localtime();
-    g_snprintf(el->time_now, sizeof (el->time_now), "%02d:%02d", t->tm_hour,
-              t->tm_min);
-    if (t_title.tm_year == t->tm_year
-    &&  t_title.tm_mon  == t->tm_mon
-    &&  t_title.tm_mday == t->tm_mday)
-        el->today = TRUE;
-    else
-        el->today = FALSE; 
+    gdt_now = g_date_time_new_now_local ();
+    g_snprintf (el->time_now, sizeof (el->time_now), "%02d:%02d",
+                g_date_time_get_hour (gdt_now),
+                g_date_time_get_minute (gdt_now));
 
-    app_data(el, a_day, a_day);
+    el->today = (orage_gdatetime_days_between (gdt_title, gdt_now) == 0);
+
+    app_data (el, gdt_a_day, gdt_a_day);
+    g_date_time_unref (gdt_a_day);
+    g_date_time_unref (gdt_now);
 }
 
 static void todo_data(el_win *el)
 {
-    char      *stime;
-    char      a_day[9];  /* yyyymmdd */
-    struct tm *t;
-
     el->days = 0; /* not used */
-    t = orage_localtime();
-    stime = orage_tm_time_to_icaltime(t);
-    strncpy(a_day, stime, 8);
-    a_day[8] = '\0';
-    strncpy(el->date_now, stime, XFICAL_APPT_TIME_FORMAT_LEN-1);
-    el->date_now[XFICAL_APPT_TIME_FORMAT_LEN-1] = '\0';
-    app_data(el, a_day, NULL);
+
+    orage_gdatetime_unref (el->date_now);
+    el->date_now = g_date_time_new_now_local ();
+    app_data (el, el->date_now, NULL);
 }
 
 static void journal_data(el_win *el)
 {
-    char     a_day[9];  /* yyyymmdd */
+    GDateTime *gdt;
 
     el->days = 10*365; /* long enough time to get everything from future */
-    strncpy(a_day, orage_i18_date_to_icaldate(gtk_button_get_label(
-            GTK_BUTTON(el->journal_start_button))), 8);
-    a_day[8] = '\0';
-
-    app_data(el, a_day, NULL);
+    gdt = g_object_get_data (G_OBJECT (el->journal_start_button), DATE_KEY);
+    app_data (el, gdt, NULL);
 }
 
 void refresh_el_win(el_win *el)
@@ -756,20 +753,29 @@ static void on_View_search_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
     refresh_el_win((el_win *)user_data);
 }
 
-static void set_el_data(el_win *el, const gchar *title)
+static void set_el_data (el_win *el, GDateTime *gdt)
 {
+    gchar *title;
+
+    title = orage_gdatetime_to_i18_time (gdt, TRUE);
     gtk_window_set_title(GTK_WINDOW(el->Window), title);
+    g_free (title);
+
+    g_date_time_ref (gdt);
+    g_object_set_data_full (G_OBJECT (el->Window),
+                            DATE_KEY, gdt, (GDestroyNotify)g_date_time_unref);
     gtk_notebook_set_current_page(GTK_NOTEBOOK(el->Notebook), EVENT_PAGE);
     refresh_el_win(el);
 }
 
 static void set_el_data_from_cal(el_win *el)
 {
-    gchar *title;
+    GDateTime *gdt;
 
-    title = orage_cal_to_i18_date(
-            GTK_CALENDAR(((CalWin *)g_par.xfcal)->mCalendar));
-    set_el_data(el, title);
+    gdt = orage_cal_to_gdatetime (
+            GTK_CALENDAR(((CalWin *)g_par.xfcal)->mCalendar), 0, 0);
+    set_el_data (el, gdt);
+    g_date_time_unref (gdt);
 }
 
 static void duplicate_appointment(el_win *el)
@@ -788,7 +794,7 @@ static void duplicate_appointment(el_win *el)
         if (list_len > 1)
             g_warning ("Copy: too many rows selected");
         path = (GtkTreePath *)g_list_nth_data(list, 0);
-        start_appt_win("COPY", el, model, &iter, path);
+        start_appt_win (COPY_APPT_WIN, el, model, &iter, path);
     }
     else {
         orage_info_dialog(GTK_WINDOW(el->Window)
@@ -850,10 +856,10 @@ static void on_Close_clicked (G_GNUC_UNUSED GtkButton *b, gpointer user_data)
 static void on_Dayview_clicked (G_GNUC_UNUSED GtkButton *b, gpointer user_data)
 {
     el_win *el = (el_win *)user_data;
-    char *title;
+    GDateTime *gdt;
 
-    title = (char *)gtk_window_get_title(GTK_WINDOW(el->Window));
-    create_day_win(title);
+    gdt = g_object_get_data (G_OBJECT (el->Window), DATE_KEY);
+    create_day_win (gdt);
 }
 
 static void on_File_close_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
@@ -882,15 +888,16 @@ static void on_View_refresh_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
     refresh_el_win((el_win*)user_data);
 }
 
-static void changeSelectedDate(el_win *el, gint day)
+static void changeSelectedDate (el_win *el, const gint day)
 {
-    struct tm tm_date;
+    GDateTime *gdt1;
+    GDateTime *gdt2;
 
-    tm_date = orage_i18_date_to_tm_date(
-            gtk_window_get_title(GTK_WINDOW(el->Window)));
-    orage_move_day(&tm_date, day);
-    orage_select_date(GTK_CALENDAR(((CalWin *)g_par.xfcal)->mCalendar)
-            , tm_date.tm_year + 1900, tm_date.tm_mon, tm_date.tm_mday);
+    gdt1 = g_object_get_data (G_OBJECT (el->Window), DATE_KEY);
+    gdt2 = g_date_time_add_days (gdt1, day);
+    orage_select_date (GTK_CALENDAR(((CalWin *)g_par.xfcal)->mCalendar), gdt2);
+    g_date_time_unref (gdt2);
+
     set_el_data_from_cal(el);
 }
 
@@ -935,12 +942,10 @@ static void on_Go_next_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
 
 static void create_new_appointment(el_win *el)
 {
-    char *title, a_day[9];
+    GDateTime *gdt;
 
-    title = (char *)gtk_window_get_title(GTK_WINDOW(el->Window));
-    strncpy(a_day, orage_i18_date_to_icaldate(title), 8);
-    a_day[8] = '\0';
-    do_appt_win("NEW", a_day, el);
+    gdt = g_object_get_data (G_OBJECT (el->Window), DATE_KEY);
+    do_appt_win (NEW_APPT_WIN, NULL, el, gdt);
 }
 
 static void on_File_newApp_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
@@ -1054,7 +1059,7 @@ static void on_journal_start_button_clicked(GtkWidget *button
             GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
             _("Today"), 1, "_OK", GTK_RESPONSE_ACCEPT, NULL);
 
-    if (orage_date_button_clicked(button, selDate_dialog))
+    if (orage_date_button_clicked (button, selDate_dialog))
         refresh_el_win(el);
 }
 
@@ -1321,7 +1326,8 @@ static void build_todo_tab(el_win *el)
 static void build_journal_tab(el_win *el)
 {
     GtkWidget *label;
-    struct tm *tm;
+    GDateTime *gdt_local;
+    GDateTime *gdt;
     gchar *sdate;
 
     el->journal_tab_label = gtk_label_new(_("Journal"));
@@ -1329,11 +1335,16 @@ static void build_journal_tab(el_win *el)
 
     label = gtk_label_new(_("Journal entries starting from:"));
     el->journal_start_button = gtk_button_new();
-    tm = orage_localtime();
-    tm->tm_year -= 1;
-    sdate = orage_tm_date_to_i18_date(tm);
-    gtk_button_set_label(GTK_BUTTON(el->journal_start_button)
-            , (const gchar *)sdate);
+    gdt_local = g_date_time_new_now_local ();
+    gdt = g_date_time_add_years (gdt_local, -1);
+    g_date_time_unref (gdt_local);
+
+    sdate = orage_gdatetime_to_i18_time (gdt, TRUE);
+    gtk_button_set_label (GTK_BUTTON (el->journal_start_button), sdate);
+    g_object_set_data_full (G_OBJECT (el->journal_start_button),
+                            DATE_KEY, gdt, (GDestroyNotify)g_date_time_unref);
+
+    g_free (sdate);
     orage_table_add_row(el->journal_notebook_page
             , label, el->journal_start_button, 0, (GTK_FILL), (0));
 
@@ -1456,7 +1467,7 @@ static void build_event_list(el_win *el)
             G_CALLBACK(editEvent), el);
 }
 
-el_win *create_el_win(const gchar *start_date)
+el_win *create_el_win (GDateTime *gdt)
 {
     GdkPixbuf *pixbuf;
     el_win *el;
@@ -1468,6 +1479,7 @@ el_win *create_el_win(const gchar *start_date)
     el->only_first = g_par.el_only_first;
     el->show_old = el->only_first;
     el->time_now[0] = 0;
+    el->date_now = g_date_time_new_now_local ();
     el->apptw_list = NULL;
     el->accel_group = gtk_accel_group_new();
 
@@ -1491,10 +1503,10 @@ el_win *create_el_win(const gchar *start_date)
             , G_CALLBACK(on_Window_delete_event), el);
 
     gtk_widget_show_all(el->Window);
-    if (start_date == NULL)
+    if (gdt == NULL)
         set_el_data_from_cal(el);
     else
-        set_el_data(el, start_date);
+        set_el_data (el, gdt);
 
     gtk_drag_source_set(el->TreeView, GDK_BUTTON1_MASK
             , drag_targets, DRAG_TARGET_COUNT, GDK_ACTION_COPY);

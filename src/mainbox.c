@@ -66,13 +66,13 @@ gboolean orage_mark_appointments(void)
 static void mFile_newApp_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
                                       gpointer user_data)
 {
+    GDateTime *gdt;
     CalWin *cal = (CalWin *)user_data;
-    char cur_date[9];
 
     /* cal has always a day selected here, so it is safe to read it */
-    strncpy(cur_date, orage_cal_to_icaldate(GTK_CALENDAR(cal->mCalendar)), 8);
-    cur_date[8]='\0';
-    create_appt_win("NEW", cur_date);
+    gdt = orage_cal_to_gdatetime (GTK_CALENDAR (cal->mCalendar), 1, 1);
+    create_appt_win (NEW_APPT_WIN, NULL, gdt);
+    g_date_time_unref (gdt);
 }
 
 static void mFile_interface_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem
@@ -116,8 +116,11 @@ static void mView_ViewSelectedWeek_activate_cb (
     G_GNUC_UNUSED GtkMenuItem *menuitem, gpointer user_data)
 {
     CalWin *cal = (CalWin *)user_data;
+    GDateTime *date;
 
-    create_day_win(orage_cal_to_i18_date(GTK_CALENDAR(cal->mCalendar)));
+    date = orage_cal_to_gdatetime (GTK_CALENDAR (cal->mCalendar), 1, 1);
+    create_day_win (date);
+    g_date_time_unref (date);
 }
 
 static void mView_selectToday_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem
@@ -164,8 +167,14 @@ static void mHelp_about_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
 static void mCalendar_day_selected_double_click_cb(GtkCalendar *calendar
         , G_GNUC_UNUSED gpointer user_data)
 {
+    GDateTime *date;
+
     if (g_par.show_days)
-        create_day_win(orage_cal_to_i18_date(calendar));
+    {
+        date = orage_cal_to_gdatetime (calendar, 1, 1);
+        create_day_win (date);
+        g_date_time_unref (date);
+    }
     else
         (void)create_el_win(NULL);
 }
@@ -290,10 +299,13 @@ static void todo_clicked(GtkWidget *widget
         , GdkEventButton *event, G_GNUC_UNUSED gpointer *user_data)
 {
     gchar *uid;
+    GDateTime *gdt;
 
     if (event->type==GDK_2BUTTON_PRESS) {
         uid = g_object_get_data(G_OBJECT(widget), "UID");
-        create_appt_win("UPDATE", uid);
+        gdt = g_date_time_new_now_local ();
+        create_appt_win (UPDATE_APPT_WIN, uid, gdt);
+        g_date_time_unref (gdt);
     }
 }
 
@@ -305,27 +317,26 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
     gchar *tip, *tmp, *tmp_title, *tmp_note;
     gchar *tip_title, *tip_location, *tip_note;
     gchar *format_bold = "<b> %s </b>";
-    struct tm *t;
-    char  *l_time, *s_time, *s_timeonly, *e_time, *c_time, *na, *today;
-    gint  len;
+    char  *s_time, *s_timeonly, *e_time, *c_time, *na;
+    GDateTime *today;
+    GDateTime *gdt_e_time;
 
     /***** add data into the vbox *****/
     ev = gtk_event_box_new();
     tmp_title = appt->title
             ? orage_process_text_commands(appt->title)
             : g_strdup(_("No title defined"));
-    s_time = g_strdup(orage_icaltime_to_i18_time(appt->starttimecur));
+    s_time = orage_gdatetime_to_i18_time (appt->starttimecur, appt->allDay);
+    today = g_date_time_new_now_local ();
     if (todo) {
-        e_time = g_strdup(appt->use_due_time
-                ? orage_icaltime_to_i18_time(appt->endtimecur) : s_time);
+        e_time = appt->use_due_time ?
+            orage_gdatetime_to_i18_time(appt->endtimecur, appt->allDay) : g_strdup (s_time);
         tmp = g_strdup_printf(" %s  %s", e_time, tmp_title);
         g_free(e_time);
     }
     else {
-        today = orage_tm_time_to_icaltime(orage_localtime());
-        s_timeonly = g_strdup(orage_icaltime_to_i18_time_only(
-                    appt->starttimecur));
-        if (!strncmp(today, appt->starttimecur, 8)) /* today */
+        s_timeonly = g_date_time_format (appt->starttimecur, "%R");
+        if (orage_gdatetime_compare_date (today, appt->starttimecur) == 0)
             tmp = g_strdup_printf(" %s* %s", s_timeonly, tmp_title);
         else {
             if (g_par.show_event_days > 1)
@@ -336,8 +347,6 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
         g_free(s_timeonly);
     }
     label = gtk_label_new(tmp);
-
-    g_debug ("%s: label='%s'", G_STRFUNC, tmp);
 
     g_free(tmp);
     gtk_label_set_ellipsize(GTK_LABEL(label), PANGO_ELLIPSIZE_END);
@@ -354,22 +363,20 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
 
     /***** set color *****/
     if (todo) {
-        t = orage_localtime();
-        l_time = orage_tm_time_to_icaltime(t);
-        if (appt->starttimecur[8] == 'T') /* date+time */
-            len = 15;
-        else /* date only */
-            len = 8;
         if (appt->use_due_time)
-            e_time = g_strndup(appt->endtimecur, len);
+            gdt_e_time = g_date_time_ref (appt->endtimecur);
         else
-            e_time = g_strdup("99999");
-        if (strncmp(e_time,  l_time, len) < 0) /* gone */
+            gdt_e_time = g_date_time_new_local (9999, 12, 31, 23, 59, 59);
+
+        if (g_date_time_compare (gdt_e_time, today) < 0) /* gone */
             gtk_widget_set_name (label, ORAGE_MAINBOX_RED);
-        else if (strncmp(appt->starttimecur, l_time, len) <= 0
-             &&  strncmp(e_time, l_time, len) >= 0)
+        else if (g_date_time_compare (appt->starttimecur, today) <= 0
+             &&  g_date_time_compare (gdt_e_time, today) >= 0)
+        {
             gtk_widget_set_name (label, ORAGE_MAINBOX_BLUE);
-        g_free(e_time);
+        }
+
+        g_date_time_unref (gdt_e_time);
     }
 
     /***** set tooltip hint *****/
@@ -395,10 +402,12 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
 
     if (todo) {
         na = _("Never");
-        e_time = g_strdup(appt->use_due_time
-                ? orage_icaltime_to_i18_time(appt->endtimecur) : na);
-        c_time = g_strdup(appt->completed
-                ? orage_icaltime_to_i18_time(appt->completedtime) : na);
+        e_time = appt->use_due_time ?
+                 orage_gdatetime_to_i18_time (appt->endtimecur, appt->allDay)
+                 : g_strdup (na);
+        c_time = appt->completed && appt->completedtime ?
+                 orage_gdatetime_to_i18_time (appt->completedtime, appt->allDay)
+                 : g_strdup (na);
 
         tip = g_strdup_printf(_("Title: %s\n%s Start:\t%s\n Due:\t%s\n Done:\t%s%s")
                 , tip_title, tip_location, s_time, e_time, c_time, tip_note);
@@ -406,14 +415,14 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
         g_free(c_time);
     }
     else { /* it is event */
-        e_time = g_strdup(orage_icaltime_to_i18_time(appt->endtimecur));
-
+        e_time = orage_gdatetime_to_i18_time (appt->endtimecur, appt->allDay);
         tip = g_strdup_printf(_("Title: %s\n%s Start:\t%s\n End:\t%s%s")
                 , tip_title, tip_location, s_time, e_time, tip_note);
     }
 
     gtk_widget_set_tooltip_markup(ev, tip);
 
+    g_date_time_unref (today);
     g_free(tip_title);
     g_free(tip_location);
     g_free(tip_note);
@@ -423,15 +432,15 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
     g_free(tip);
 }
 
-static void insert_rows(GList **list, char *a_day, xfical_type ical_type
+static void insert_rows (GList **list, GDateTime *gdt, xfical_type ical_type
         , gchar *file_type)
 {
     xfical_appt *appt;
 
-    for (appt = xfical_appt_get_next_on_day(a_day, TRUE, 0
+    for (appt = xfical_appt_get_next_on_day(gdt, TRUE, 0
                 , ical_type , file_type);
          appt;
-         appt = xfical_appt_get_next_on_day(a_day, FALSE, 0
+         appt = xfical_appt_get_next_on_day(gdt, FALSE, 0
                 , ical_type , file_type)) {
         *list = g_list_prepend(*list, appt);
     }
@@ -444,7 +453,7 @@ static gint event_order(gconstpointer a, gconstpointer b)
     appt1 = (xfical_appt *)a;
     appt2 = (xfical_appt *)b;
 
-    return(strcmp(appt1->starttimecur, appt2->starttimecur));
+    return g_date_time_compare (appt1->starttimecur, appt2->starttimecur);
 }
 
 static gint todo_order(gconstpointer a, gconstpointer b)
@@ -459,7 +468,7 @@ static gint todo_order(gconstpointer a, gconstpointer b)
     if (!appt1->use_due_time && appt2->use_due_time)
         return(1);
 
-    return(strcmp(appt1->endtimecur, appt2->endtimecur));
+    return g_date_time_compare (appt1->endtimecur, appt2->endtimecur);
 }
 
 static void info_process(gpointer a, gpointer pbox)
@@ -507,9 +516,10 @@ static void create_mainbox_event_info_box(void)
 {
     CalWin *cal = (CalWin *)g_par.xfcal;
     gchar *tmp, *tmp2, *tmp3;
-    struct tm tm_date_start, tm_date_end;
+    GDateTime *gdt;
+    GDateTime *gdt_tmp;
 
-    tm_date_start = orage_cal_to_tm_time(GTK_CALENDAR(cal->mCalendar), 1, 1);
+    gdt = orage_cal_to_gdatetime (GTK_CALENDAR (cal->mCalendar), 1, 1);
 
     cal->mEvent_vbox = gtk_grid_new ();
     g_object_set (cal->mEvent_vbox, "vexpand", TRUE,
@@ -521,18 +531,17 @@ static void create_mainbox_event_info_box(void)
     if (g_par.show_event_days) {
     /* bug 7836: we call this routine also with 0 = no event data at all */
         if (g_par.show_event_days == 1) {
-            tmp2 = g_strdup(orage_tm_date_to_i18_date(&tm_date_start));
+            tmp2 = orage_gdatetime_to_i18_time (gdt, TRUE);
             tmp = g_strdup_printf(_("<b>Events for %s:</b>"), tmp2);
             g_free(tmp2);
         }
         else {
-            int i;
+            tmp2 = orage_gdatetime_to_i18_time (gdt, TRUE);
 
-            tm_date_end = tm_date_start;
-            for (i = g_par.show_event_days-1; i; i--)
-                orage_move_day(&tm_date_end, 1);
-            tmp2 = g_strdup(orage_tm_date_to_i18_date(&tm_date_start));
-            tmp3 = g_strdup(orage_tm_date_to_i18_date(&tm_date_end));
+            gdt_tmp = gdt;
+            gdt = g_date_time_add_days (gdt_tmp, g_par.show_event_days - 1);
+            g_date_time_unref (gdt_tmp);
+            tmp3 = orage_gdatetime_to_i18_time (gdt, TRUE);
             tmp = g_strdup_printf(_("<b>Events for %s - %s:</b>"), tmp2, tmp3);
             g_free(tmp2);
             g_free(tmp3);
@@ -541,6 +550,7 @@ static void create_mainbox_event_info_box(void)
         g_free(tmp);
     }
 
+    g_date_time_unref (gdt);
     g_object_set (cal->mEvent_label, "xalign", 0.0, "yalign", 0.5, NULL);
     gtk_grid_attach_next_to (GTK_GRID(cal->mEvent_vbox), cal->mEvent_label,
                              NULL, GTK_POS_BOTTOM, 1, 1);
@@ -561,29 +571,25 @@ static void create_mainbox_event_info_box(void)
 static void build_mainbox_todo_info(void)
 {
     CalWin *cal = (CalWin *)g_par.xfcal;
-    char      *s_time;
-    char      a_day[9];  /* yyyymmdd */
-    struct tm *t;
+    GDateTime *gdt;
     xfical_type ical_type;
     gchar file_type[8];
     gint i;
     GList *todo_list=NULL;
 
     if (g_par.show_todos) {
-        t = orage_localtime();
-        s_time = orage_tm_time_to_icaltime(t);
-        strncpy(a_day, s_time, 8);
-        a_day[8] = '\0';
-
+        gdt = g_date_time_new_now_local ();
         ical_type = XFICAL_TYPE_TODO;
         /* first search base orage file */
         g_strlcpy (file_type, "O00.", sizeof (file_type));
-        insert_rows(&todo_list, a_day, ical_type, file_type);
+        insert_rows(&todo_list, gdt, ical_type, file_type);
         /* then process all foreign files */
         for (i = 0; i < g_par.foreign_count; i++) {
             g_snprintf(file_type, sizeof (file_type), "F%02d.", i);
-            insert_rows(&todo_list, a_day, ical_type, file_type);
+            insert_rows(&todo_list, gdt, ical_type, file_type);
         }
+
+        g_date_time_unref (gdt);
     }
     if (todo_list) {
         gtk_widget_destroy(cal->mTodo_vbox);
@@ -603,39 +609,31 @@ static void build_mainbox_todo_info(void)
 static void build_mainbox_event_info(void)
 {
     CalWin *cal = (CalWin *)g_par.xfcal;
-    char      *s_time;
-    char      a_day[9];  /* yyyymmdd */
-    struct tm tt= {0};
     xfical_type ical_type;
     gchar file_type[8];
     gint i;
     GList *event_list=NULL;
+    GDateTime *gdt;
 
     if (g_par.show_event_days) {
-        gtk_calendar_get_date(GTK_CALENDAR(cal->mCalendar)
-                , (unsigned int *)&tt.tm_year
-                , (unsigned int *)&tt.tm_mon
-                , (unsigned int *)&tt.tm_mday);
-        tt.tm_year -= 1900;
-        s_time = orage_tm_time_to_icaltime(&tt);
-        strncpy(a_day, s_time, 8);
-        a_day[8] = '\0';
-    
+        gdt = orage_cal_to_gdatetime (GTK_CALENDAR (cal->mCalendar), 1, 1);
         ical_type = XFICAL_TYPE_EVENT;
         g_strlcpy (file_type, "O00.", sizeof (file_type));
-        /*
-        insert_rows(&event_list, a_day, ical_type, file_type);
-        */
-        xfical_get_each_app_within_time(a_day, g_par.show_event_days
+#if 0
+        insert_rows(&event_list, gdt, ical_type, file_type);
+#endif
+        xfical_get_each_app_within_time (gdt, g_par.show_event_days
                 , ical_type, file_type, &event_list);
         for (i = 0; i < g_par.foreign_count; i++) {
             g_snprintf(file_type, sizeof (file_type), "F%02d.", i);
-            /*
-            insert_rows(&event_list, a_day, ical_type, file_type);
-            */
-            xfical_get_each_app_within_time(a_day, g_par.show_event_days
+#if 0
+            insert_rows(&event_list, gdt, ical_type, file_type);
+#endif
+            xfical_get_each_app_within_time (gdt, g_par.show_event_days
                     , ical_type, file_type, &event_list);
         }
+
+        g_date_time_unref (gdt);
     }
     if (event_list) {
         gtk_widget_destroy(cal->mEvent_vbox);
