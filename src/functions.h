@@ -21,16 +21,14 @@
 
  */
 
-#ifndef __ORAGE_FUNCTIONS_H__
-#define __ORAGE_FUNCTIONS_H__
+#ifndef ORAGE_FUNCTIONS_H
+#define ORAGE_FUNCTIONS_H
+
+#include <glib.h>
+#include <gtk/gtk.h>
 
 #define CALENDAR_RUNNING "_XFCE_CALENDAR_RUNNING"
 #define CALENDAR_TOGGLE_EVENT "_XFCE_CALENDAR_TOGGLE_HERE"
-
-#define XFICAL_APPT_TIME_FORMAT "%04d%02d%02dT%02d%02d%02d"
-#define XFICAL_APPT_TIME_FORMAT_LEN 16
-#define XFICAL_APPT_DATE_FORMAT "%04d%02d%02d"
-#define XFICAL_APPT_DATE_FORMAT_LEN 9
 
 #define ORAGE_DIR "orage" G_DIR_SEPARATOR_S
 #define ORAGE_PAR_FILE  "oragerc"
@@ -48,6 +46,8 @@
 
 #define ORAGE_STR_EXISTS(str) ((str != NULL) && (str[0] != 0))
 
+#define DATE_KEY "button-date"
+
 typedef struct _OrageRc
 {
     GKeyFile *rc;
@@ -61,9 +61,7 @@ void program_log (const char *format, ...);
 #endif
 
 GtkWidget *orage_create_combo_box_with_content(const gchar *text[], int size);
-
-gboolean orage_date_button_clicked(GtkWidget *button, GtkWidget *win);
-
+gboolean orage_date_button_clicked (GtkWidget *button, GtkWidget *win);
 gboolean orage_exec(const gchar *cmd, gboolean *cmd_active, GError **error);
 
 GtkWidget *orage_toolbar_append_button (GtkWidget *toolbar,
@@ -86,33 +84,66 @@ GtkWidget *orage_menu_item_new_with_mnemonic(const gchar *label
 
 char *orage_replace_text(char *text, char *old, char *new);
 char *orage_limit_text(char *text, int max_line_len, int max_lines);
-char *orage_process_text_commands(char *text);
+gchar *orage_process_text_commands (const gchar *text);
 
 GtkWidget *orage_period_hbox_new(gboolean head_space, gboolean tail_space
         , GtkWidget *spin_dd, GtkWidget *dd_label
         , GtkWidget *spin_hh, GtkWidget *hh_label
         , GtkWidget *spin_mm, GtkWidget *mm_label);
 
-struct tm *orage_localtime();
-char *orage_localdate_i18();
-struct tm orage_i18_time_to_tm_time(const gchar *i18_time);
-struct tm orage_i18_date_to_tm_date(const gchar *i18_date);
-gchar *orage_i18_time_to_icaltime(const gchar *i18_time);
-gchar *orage_i18_date_to_icaldate(const gchar *i18_date);
-gchar *orage_tm_time_to_i18_time(struct tm *tm_date);
-gchar *orage_tm_date_to_i18_date(const struct tm *tm_date);
-gchar *orage_tm_time_to_icaltime(struct tm *t);
-struct tm orage_icaltime_to_tm_time(const gchar *i18_date, gboolean real_tm);
-char *orage_icaltime_to_i18_time(const char *icaltime);
-char *orage_icaltime_to_i18_time_only(const char *icaltime);
-struct tm orage_cal_to_tm_time(GtkCalendar *cal, gint hh, gint mm);
-char *orage_cal_to_i18_time(GtkCalendar *cal, gint hh, gint mm);
-char *orage_cal_to_i18_date(GtkCalendar *cal);
-char *orage_cal_to_icaldate(GtkCalendar *cal);
-void orage_move_day(struct tm *t, int day);
-gint orage_days_between (const struct tm *t1, const struct tm *t2);
+void orage_gdatetime_unref (GDateTime *gdt);
+gchar *orage_gdatetime_to_i18_time (GDateTime *gdt, gboolean date_only);
 
-void orage_select_date(GtkCalendar *cal, guint year, guint month, guint day);
+/** Create ical time string. Unlike g_date_time_format this function add padding
+ *  with '0' to year value. Padding is required by Ical format.
+ *  @note This function should not used for Orage internal date/time, use
+ *        GDateTime instead. It is intended only for exporting GDateTime.
+ *  @param gdt GDateTime
+ *  @param date_only, when true returns date string in format yyyymmdd, if false
+ *         return date and time in format yyyymmddThhmmss.
+ *  @return date or time sting. User must free returned string.
+ */
+gchar *orage_gdatetime_to_icaltime (GDateTime *gdt, gboolean date_only);
+
+/** Comapare dates only.
+ *  @param gdt1 GDateTime fist date and time
+ *  @param gdt2 GDateTime second date and time
+ *  @return 0 if dates are equal, -1 if gdt1 is less than gdt2, 1 if gdt1 is
+ *  larger than gdt2.
+ */
+gint orage_gdatetime_compare_date (GDateTime *gdt1, GDateTime *gdt2);
+
+/** Convert icaltime to GDateTime.
+ *  @note This function should not used for Orage internal date/time, use
+ *        GDateTime instead. It is intended only for importing Ical date/time.
+ *  @param i18_date date and time in icaltime format.
+ *  @return GDateTime or NULL if input string does not contain date/time
+ *          information
+ */
+GDateTime *orage_icaltime_to_gdatetime (const gchar *i18_date);
+
+/** Return GDateTime from GTK calendar. This function set hour and minute values
+ *  as well.
+ *  @param cal instance of GTK calendar
+ *  @param hh hour value
+ *  @param mm minute value
+ *  @return GDateTime, user should release return by g_date_time_unref.
+ */
+GDateTime *orage_cal_to_gdatetime (GtkCalendar *cal, gint hh, gint mm);
+
+/** Find number of days between two time values.
+ *  @param gdt1 first time value
+ *  @param gdt2 second time value
+ *  @return Number of days between two time value. This value can be negative if
+ *          gdt2 < gdt1
+ */
+gint orage_gdatetime_days_between (GDateTime *gdt1, GDateTime *gdt2);
+
+/** Set (GTK) calendar to selected date.
+ *  @param cal instance of GTK calendar
+ *  @param gdt selected date.
+ */
+void orage_select_date (GtkCalendar *cal, GDateTime *gdt);
 void orage_select_today(GtkCalendar *cal);
 
 gboolean orage_copy_file (const gchar *source, const gchar *target);
@@ -128,9 +159,11 @@ gchar *orage_rc_get_group(OrageRc *orc);
 gchar *orage_rc_get_str(OrageRc *orc, const gchar *key, const gchar *def);
 gint   orage_rc_get_int(OrageRc *orc, const gchar *key, gint def);
 gboolean orage_rc_get_bool(OrageRc *orc, const gchar *key, gboolean def);
+GDateTime *orage_rc_get_gdatetime (OrageRc *orc, const gchar *key, GDateTime *def);
 void orage_rc_put_str(OrageRc *orc, const gchar *key, const gchar *val);
 void orage_rc_put_int(OrageRc *orc, const gchar *key, gint val);
 void orage_rc_put_bool(OrageRc *orc, const gchar *key, gboolean val);
+void orage_rc_put_gdatetime (OrageRc *orc, const gchar *key, GDateTime *gdt);
 gboolean orage_rc_exists_item(OrageRc *orc, const gchar *key);
 void orage_rc_del_item(OrageRc *orc, const gchar *key);
 
@@ -204,7 +237,7 @@ GtkWidget *orage_util_image_button (const gchar *icon_name, const gchar *label);
  *  @return true when rgba was successfully updated, false color_str or def was
  *         invalid
  */
-gboolean orgage_str_to_rgba (const gchar *color_str,
+gboolean orage_str_to_rgba (const gchar *color_str,
                              GdkRGBA *rgba,
                              const gchar *def);
 

@@ -83,6 +83,34 @@ void program_log (const char *format, ...)
  *  General purpose helper functions  *
  **************************************/
 
+gint orage_gdatetime_compare_date (GDateTime *gdt1, GDateTime *gdt2)
+{
+    gint y1;
+    gint y2;
+    gint m1;
+    gint m2;
+    gint d1;
+    gint d2;
+
+    g_date_time_get_ymd (gdt1, &y1, &m1, &d1);
+    g_date_time_get_ymd (gdt2, &y2, &m2, &d2);
+
+    if (d1 < d2)
+        return -1;
+    else if (d1 > d2)
+        return 1;
+    else if (m1 < m2)
+        return -1;
+    else if (m1 > m2)
+        return 1;
+    else if (y1 < y2)
+        return -1;
+    else if (y1 > y2)
+        return 1;
+    else
+        return 0;
+}
+
 GtkWidget *orage_create_combo_box_with_content (const gchar *text[],
                                                 const int size)
 {
@@ -96,19 +124,22 @@ GtkWidget *orage_create_combo_box_with_content (const gchar *text[],
     return combo_box;
 }
 
-gboolean orage_date_button_clicked(GtkWidget *button, GtkWidget *selDate_dialog)
+gboolean orage_date_button_clicked (GtkWidget *button, GtkWidget *selDate_dialog)
 {
-/*  GtkWidget *selDate_dialog; */
+#if 0
+    GtkWidget *selDate_dialog;
+#endif
     GtkWidget *selDate_calendar;
     gint result;
-    char *new_date=NULL;
-    const gchar *cur_date;
-    struct tm cur_t;
-    gboolean changed, allocated=FALSE;
+    gboolean changed;
+    gchar *time_str;
+    GDateTime *gdt;
+    GDateTime *gdt_new_date;
 
-    /*
-       For some unknown reason NLS does not work in this file, so this
-       has to be done in the main code:
+#if 0
+    /* For some unknown reason NLS does not work in this file, so this has to be
+     * done in the main code:
+     */
     selDate_dialog = gtk_dialog_new_with_buttons(
             _("Pick the date"), GTK_WINDOW(win),
             GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
@@ -117,44 +148,51 @@ gboolean orage_date_button_clicked(GtkWidget *button, GtkWidget *selDate_dialog)
             "_OK",
             GTK_RESPONSE_ACCEPT,
             NULL);
-            */
+#endif
 
     selDate_calendar = gtk_calendar_new();
     gtk_container_add(
         GTK_CONTAINER(gtk_dialog_get_content_area (GTK_DIALOG(selDate_dialog)))
             , selDate_calendar);
 
-    cur_date = (char *)gtk_button_get_label(GTK_BUTTON(button));
-    if (cur_date)
-        cur_t = orage_i18_date_to_tm_date(cur_date);
-    else /* something was wrong. let's return some valid value */
-        cur_t = orage_i18_date_to_tm_date(orage_localdate_i18());
+    gdt = g_object_get_data (G_OBJECT (button), DATE_KEY);
 
-    orage_select_date(GTK_CALENDAR(selDate_calendar)
-            , cur_t.tm_year+1900, cur_t.tm_mon, cur_t.tm_mday);
+    if (gdt == NULL)
+    {
+        /* something was wrong. let's return some valid value */
+        gdt = g_date_time_new_now_local ();
+    }
+    else
+        g_date_time_ref (gdt);
+
+    orage_select_date (GTK_CALENDAR (selDate_calendar), gdt);
     gtk_widget_show_all(selDate_dialog);
 
     result = gtk_dialog_run(GTK_DIALOG(selDate_dialog));
     switch(result){
         case GTK_RESPONSE_ACCEPT:
-            new_date = orage_cal_to_i18_date(GTK_CALENDAR(selDate_calendar));
+            gdt_new_date = orage_cal_to_gdatetime (GTK_CALENDAR (selDate_calendar), 1, 1);
             break;
+
         case 1:
-            new_date = orage_localdate_i18();
+            gdt_new_date = g_date_time_new_now_local ();
             break;
+
         case GTK_RESPONSE_DELETE_EVENT:
         default:
-            new_date = g_strdup(cur_date);
-            allocated = TRUE;
+            gdt_new_date = g_date_time_ref (gdt);
             break;
     }
-    if (g_ascii_strcasecmp(new_date, cur_date) != 0)
-        changed = TRUE;
-    else
-        changed = FALSE;
-    gtk_button_set_label(GTK_BUTTON(button), (const gchar *)new_date);
-    if (allocated)
-        g_free(new_date);
+
+    changed = orage_gdatetime_compare_date (gdt_new_date, gdt) ? TRUE : FALSE;
+    g_date_time_unref (gdt);
+    time_str = orage_gdatetime_to_i18_time (gdt_new_date, TRUE);
+    gtk_button_set_label (GTK_BUTTON(button), time_str);
+    g_free (time_str);
+    g_object_set_data_full (G_OBJECT (button),
+                            DATE_KEY, gdt_new_date,
+                            (GDestroyNotify)g_date_time_unref);
+
     gtk_widget_destroy(selDate_dialog);
     return(changed);
 }
@@ -445,21 +483,22 @@ char *orage_limit_text(char *text, int max_line_len, int max_lines)
 /* this will change <&Xnnn> type commands to numbers or text as defined.
  * Currently the only command is 
  * <&Ynnnn> which calculates years between current year and nnnn */
-char *orage_process_text_commands(char *text)
+gchar *orage_process_text_commands (const gchar *text)
 {
     /* these point to the original string and travel it until no more commands 
      * are found:
      * cur points to the current head
      * cmd points to the start of new command
      * end points to the end of new command */
-    char *cur, *end, *cmd;
+    const gchar *cur;
+    char *end, *cmd;
     /* these point to the new string, which has commands in processed form:
      * new is the new fragment to be added
      * beq is the total new string. */
     char *new=NULL, *beq=NULL;
     char *tmp; /* temporary pointer to handle freeing */
     int start_year = -1, year_diff, res;
-    struct tm *cur_time;
+    GDateTime *gdt;
 
     /**** RULE <&Ynnnn> difference of the nnnn year and current year *****/
     /* This is usefull in birthdays for example: I will be <&Y1980>
@@ -470,8 +509,10 @@ char *orage_process_text_commands(char *text)
             res = sscanf(cmd, "<&Y%d", &start_year);
             end[0] = '>'; /* put it back. */
             if (res == 1 && start_year > 0) { /* we assume success */
-                cur_time = orage_localtime();
-                year_diff = cur_time->tm_year + 1900 - start_year;
+                gdt = g_date_time_new_now_local ();
+                year_diff = g_date_time_get_year (gdt) - start_year;
+                g_date_time_unref (gdt);
+
                 if (year_diff > 0) { /* sane value */
                     end++; /* next char after > */
                     cmd[0] = '\0'; /* temporarily. (this ends cur) */
@@ -637,117 +678,32 @@ GtkWidget *orage_create_framebox_with_content (const gchar *title,
  * time convert and manipulation functions
  *******************************************************/
 
-struct tm orage_i18_time_to_tm_time (const gchar *i18_time)
+GDateTime *orage_cal_to_gdatetime (GtkCalendar *cal,
+                                   const gint hh, const gint mm)
 {
-    char *ret;
-    struct tm tm_time = {0};
+    guint year;
+    guint month;
+    guint day;
+    GDateTime *gdt;
 
-    ret = (char *)strptime(i18_time, "%x %R", &tm_time);
-    if (ret == NULL)
-        g_error ("%s wrong format (%s)", G_STRFUNC, i18_time);
-    else if (ret[0] != '\0')
-        g_warning ("%s too long format (%s). Ignoring:%s)", G_STRFUNC, i18_time,
-                   ret);
-    return(tm_time);
-}
-
-struct tm orage_i18_date_to_tm_date (const gchar *i18_date)
-{
-    char *ret;
-    struct tm tm_date = {0};
-
-    ret = strptime ((const char *)i18_date, "%x", &tm_date);
-    if (ret == NULL)
-        g_error ("%s: wrong format (%s)", G_STRFUNC, i18_date);
-    else if (ret[0] != '\0')
-        g_warning ("%s: too long format (%s). Ignoring:%s)", G_STRFUNC, i18_date,
-                   ret);
-    return(tm_date);
-}
-
-gchar *orage_tm_time_to_i18_time(struct tm *tm_time)
-{
-    static gchar i18_time[128];
-
-    if (_strftime (i18_time, sizeof (i18_time), "%x %R", tm_time) == 0)
-        g_error ("%s: too long string in strftime", G_STRFUNC);
-    return(i18_time);
-}
-
-gchar *orage_tm_date_to_i18_date (const struct tm *tm_date)
-{
-    static gchar i18_date[128];
-
-    if (_strftime ((char *)i18_date, sizeof (i18_date), "%x", tm_date) == 0)
-        g_error ("%s: too long string in strftime", G_STRFUNC);
-
-    return(i18_date);
-}
-
-struct tm orage_cal_to_tm_time(GtkCalendar *cal, gint hh, gint mm)
-{
-    struct tm tm_date = {0};
-
-    /* dst needs to -1 or mktime adjusts time if we are in another
-     * dst setting. */
-    tm_date.tm_isdst = -1;
-
-    gtk_calendar_get_date(cal
-            , (unsigned int *)&tm_date.tm_year
-            , (unsigned int *)&tm_date.tm_mon
-            , (unsigned int *)&tm_date.tm_mday);
-    tm_date.tm_year -= 1900;
-    tm_date.tm_hour = hh;
-    tm_date.tm_min = mm;
-    /* need to fill missing tm_wday and tm_yday, which are in use 
-     * in some locale's default date. For example in en_IN. mktime does it */
-    if (mktime(&tm_date) == (time_t) -1) {
-        g_warning ("%s: mktime failed %d %d %d", G_STRFUNC, tm_date.tm_year,
-                   tm_date.tm_mon, tm_date.tm_mday);
+    gtk_calendar_get_date (cal, &year, &month, &day);
+    month += 1;
+    gdt = g_date_time_new_local (year, month, day, hh, mm, 0);
+    if (gdt == NULL)
+    {
+        g_error ("%s failed %04d-%02d-%02d %02d:%02d",
+                 G_STRFUNC, year, month, day, hh, mm);
     }
-    return(tm_date);
+
+    return gdt;
 }
 
-char *orage_cal_to_i18_time(GtkCalendar *cal, gint hh, gint mm)
-{
-    struct tm tm_date = {0};
-
-    tm_date.tm_isdst = -1;
-
-    tm_date = orage_cal_to_tm_time(cal, hh, mm);
-    return(orage_tm_time_to_i18_time(&tm_date));
-}
-
-char *orage_cal_to_i18_date(GtkCalendar *cal)
-{
-    struct tm tm_date = {0};
-
-    tm_date.tm_isdst = -1;
-
-    tm_date = orage_cal_to_tm_time(cal, 1, 1);
-    return(orage_tm_date_to_i18_date(&tm_date));
-}
-
-char *orage_cal_to_icaldate(GtkCalendar *cal)
-{
-    struct tm tm_date = {0};
-    char *icalt;
-
-    tm_date.tm_isdst = -1;
-
-    tm_date = orage_cal_to_tm_time(cal, 1, 1);
-    icalt = orage_tm_time_to_icaltime(&tm_date);
-    icalt[8] = '\0'; /* we know it is date */
-    return(icalt);
-}
-
-struct tm orage_icaltime_to_tm_time (const gchar *icaltime,
-                                     const gboolean real_tm)
+GDateTime *orage_icaltime_to_gdatetime (const gchar *icaltime)
 {
     struct tm t = {0};
     char *ret;
 
-    ret = strptime(icaltime, "%Y%m%dT%H%M%S", &t);
+    ret = strptime (icaltime, "%Y%m%dT%H%M%S", &t);
     if (ret == NULL)
     {
         /* Not all format string matched, so it must be DATE. Depending on OS
@@ -757,7 +713,9 @@ struct tm orage_icaltime_to_tm_time (const gchar *icaltime,
         if (strptime (icaltime, "%Y%m%d", &t) == NULL)
         {
             g_warning ("%s: icaltime string '%s' conversion failed",
-                     G_STRFUNC, icaltime);
+                       G_STRFUNC, icaltime);
+
+            return NULL;
         }
 
         /* Need to fill missing tm_wday and tm_yday, which are in use in some
@@ -767,133 +725,117 @@ struct tm orage_icaltime_to_tm_time (const gchar *icaltime,
         {
             g_warning ("%s failed %d %d %d",
                        G_STRFUNC, t.tm_year, t.tm_mon, t.tm_mday);
+
+            return NULL;
         }
 
-        t.tm_hour = -1;
-        t.tm_min = -1;
-        t.tm_sec = -1;
+        t.tm_hour = 0;
+        t.tm_min = 0;
+        t.tm_sec = 0;
     }
-    else if (ret[0] != 0) { /* icaltime was not processed completely */
+    else if (ret[0] != '\0') { /* icaltime was not processed completely */
         /* UTC times end to Z, which is ok */
-        if (ret[0] != 'Z' || ret[1] != 0) /* real error */
-            g_error ("%s %s %s", G_STRFUNC, icaltime, ret);
+        if (ret[0] != 'Z' || ret[1] != '\0') /* real error */
+            g_error ("%s icaltime='%s' ret='%s'", G_STRFUNC, icaltime, ret);
     }
 
-    if (!real_tm) { /* convert from standard tm format to "normal" format */
-        t.tm_year += 1900;
-        t.tm_mon += 1;
-    }
-    return(t);
+    t.tm_year += 1900;
+    t.tm_mon += 1;
+
+    return g_date_time_new_local (t.tm_year, t.tm_mon, t.tm_mday, t.tm_hour,
+                                  t.tm_min, t.tm_sec);
 }
 
-gchar *orage_tm_time_to_icaltime(struct tm *t)
+gchar *orage_gdatetime_to_i18_time (GDateTime *gdt, const gboolean date_only)
 {
-    static gchar icaltime[XFICAL_APPT_TIME_FORMAT_LEN];
+    const gchar *fmt = date_only ? "%x" : "%x %R";
 
-    g_snprintf (icaltime, sizeof (icaltime), XFICAL_APPT_TIME_FORMAT,
-                t->tm_year + 1900, t->tm_mon + 1, t->tm_mday,
-                t->tm_hour, t->tm_min, t->tm_sec);
-
-    return(icaltime);
+    return g_date_time_format (gdt, fmt);
 }
 
-char *orage_icaltime_to_i18_time(const char *icaltime)
-{ /* timezone is not converted */
-    struct tm t;
-    char      *ct;
+gchar *orage_gdatetime_to_icaltime (GDateTime *gdt, const gboolean date_only)
+{
+    gint year;
+    gint month;
+    gint day;
+    gchar *str;
+    size_t len;
 
-    t = orage_icaltime_to_tm_time(icaltime, TRUE);
-    if (t.tm_hour == -1)
-        ct = orage_tm_date_to_i18_date(&t);
+    g_date_time_get_ymd (gdt, &year, &month, &day);
+
+    /* g_date_time_format with format = XFICAL_APPT_TIME_FORMAT does not padd
+     * year with leading 0, this is incompatible with ical. To add padding we
+     * need to use snprintf.
+     */
+
+    if (date_only)
+    {
+        len = 10;
+        str = g_malloc (len);
+        g_snprintf (str, len, "%04d%02d%02d", year, month, day);
+    }
     else
-        ct = orage_tm_time_to_i18_time(&t);
-    return(ct);
-}
-
-char *orage_icaltime_to_i18_time_only(const char *icaltime)
-{
-    struct tm t;
-    static char i18_time[10];
-
-    t = orage_icaltime_to_tm_time(icaltime, TRUE);
-    if (_strftime(i18_time, 10, "%R", &t) == 0)
-        g_error ("%s: too long string in strftime", G_STRFUNC);
-    return(i18_time);
-}
-
-gchar *orage_i18_time_to_icaltime(const gchar *i18_time)
-{
-    struct tm t;
-    char      *ct;
-
-    t = orage_i18_time_to_tm_time(i18_time);
-    ct = orage_tm_time_to_icaltime(&t);
-    return(ct);
-}
-
-gchar *orage_i18_date_to_icaldate(const gchar *i18_date)
-{
-    struct tm t;
-    gchar *icalt;
-
-    t = orage_i18_date_to_tm_date(i18_date);
-    icalt = orage_tm_time_to_icaltime(&t);
-    icalt[8] = '\0'; /* we know it is date */
-    return(icalt);
-}
-
-struct tm *orage_localtime(void)
-{
-    time_t tt;
-
-    tt = time(NULL);
-    return(localtime(&tt));
-}
-
-char *orage_localdate_i18(void)
-{
-    struct tm *t;
-
-    t = orage_localtime();
-    return(orage_tm_date_to_i18_date(t));
-}
-
-/* move one day forward or backward */
-void orage_move_day(struct tm *t, const gint day)
-{
-    t->tm_mday += day; /* may be negative */
-    /* mktime adjusts t correctly. It also fills missing tm_wday and tm_yday, 
-     * which are in use in some locale's default date. For example in en_IN */
-    if (mktime(t) == (time_t) -1) {
-        g_warning ("%s: mktime failed %d %d %d", G_STRFUNC, t->tm_year,
-                   t->tm_mon, t->tm_mday);
+    {
+        len = 17;
+        str = g_malloc (len);
+        g_snprintf (str, len, "%04d%02d%02dT%02d%02d%02d",
+                    year, month, day,
+                    g_date_time_get_hour (gdt),
+                    g_date_time_get_minute (gdt),
+                    g_date_time_get_second (gdt));
     }
+
+    return str;
 }
 
-gint orage_days_between (const struct tm *t1, const struct tm *t2)
+void orage_gdatetime_unref (GDateTime *gdt)
+{
+    if (gdt == NULL)
+        return;
+
+    g_date_time_unref (gdt);
+}
+
+static GDate *orage_gdatetime_to_gdate (GDateTime *gdt)
+{
+    gint year;
+    gint month;
+    gint day;
+
+    g_date_time_get_ymd (gdt, &year, &month, &day);
+
+    return g_date_new_dmy (day, month, year);
+}
+
+gint orage_gdatetime_days_between (GDateTime *gdt1, GDateTime *gdt2)
 {
     GDate *g_t1, *g_t2;
     gint dd;
 
-    g_t1 = g_date_new_dmy(t1->tm_mday, t1->tm_mon, t1->tm_year);
-    g_t2 = g_date_new_dmy(t2->tm_mday, t2->tm_mon, t2->tm_year);
-    dd = g_date_days_between(g_t1, g_t2);
-    g_date_free(g_t1);
-    g_date_free(g_t2);
-    return(dd);
+    g_t1 = orage_gdatetime_to_gdate (gdt1);
+    g_t2 = orage_gdatetime_to_gdate (gdt2);
+    dd = g_date_days_between (g_t1, g_t2);
+    g_date_free (g_t1);
+    g_date_free (g_t2);
+
+    return dd;
 }
 
-void orage_select_date(GtkCalendar *cal
-    , guint year, guint month, guint day)
+void orage_select_date (GtkCalendar *cal, GDateTime *gdt)
 {
     guint cur_year, cur_month, cur_mday;
+    gint year;
+    gint month;
+    gint day;
 
+    g_date_time_get_ymd (gdt, &year, &month, &day);
+    month -= 1;
     gtk_calendar_get_date(cal, &cur_year, &cur_month, &cur_mday);
 
-    if (cur_year == year && cur_month == month)
+    if (((gint)cur_year == year) && ((gint)cur_month == month))
         gtk_calendar_select_day(cal, day);
     else {
-        gtk_calendar_select_day(cal, 0); /* need to avoid illegal day/month */
+        gtk_calendar_select_day(cal, 1); /* need to avoid illegal day/month */
         gtk_calendar_select_month(cal, month, year);
         gtk_calendar_select_day(cal, day);
     }
@@ -901,10 +843,11 @@ void orage_select_date(GtkCalendar *cal
 
 void orage_select_today(GtkCalendar *cal)
 {
-    struct tm *t;
+    GDateTime *gdt;
 
-    t = orage_localtime();
-    orage_select_date(cal, t->tm_year+1900, t->tm_mon, t->tm_mday);
+    gdt = g_date_time_new_now_local ();
+    orage_select_date (cal, gdt);
+    g_date_time_unref (gdt);
 }
 
 /*******************************************************
@@ -1184,6 +1127,27 @@ gboolean orage_rc_get_bool (OrageRc *orc, const gchar *key, const gboolean def)
     return(ret);
 }
 
+GDateTime *orage_rc_get_gdatetime (OrageRc *orc, const gchar *key, GDateTime *def)
+{
+    GError *error = NULL;
+    gchar *ret;
+    GDateTime *gdt;
+
+    ret = g_key_file_get_string (orc->rc, orc->cur_group, key, &error);
+    if ((ret == NULL) && error)
+    {
+        gdt = def ? g_date_time_ref (def) : NULL;
+        g_debug ("%s: str (%s) group (%s) in RC file (%s) not found, "
+                 "using default", G_STRFUNC, key, orc->cur_group,
+                 orc->file_name);
+        g_error_free (error);
+    }
+    else
+        gdt = orage_icaltime_to_gdatetime (ret);
+
+    return gdt;
+}
+
 void orage_rc_put_str (OrageRc *orc, const gchar *key, const gchar *val)
 {
     if (ORAGE_STR_EXISTS(val))
@@ -1198,6 +1162,14 @@ void orage_rc_put_int (OrageRc *orc, const gchar *key, const gint val)
 void orage_rc_put_bool (OrageRc *orc, const gchar *key, const gboolean val)
 {
     g_key_file_set_boolean (orc->rc, orc->cur_group, key, val);
+}
+
+void orage_rc_put_gdatetime (OrageRc *orc, const gchar *key, GDateTime *gdt)
+{
+    gchar *icaltime = orage_gdatetime_to_icaltime (gdt, FALSE);
+
+    g_key_file_set_string (orc->rc, orc->cur_group, key, icaltime);
+    g_free (icaltime);
 }
 
 gboolean orage_rc_exists_item (OrageRc *orc, const gchar *key)
@@ -1219,7 +1191,7 @@ gboolean orage_rc_read_color (OrageRc *orc, const gchar *key,
     color_str = orage_rc_get_str (orc, key, NULL);
     if (color_str)
     {
-        result = orgage_str_to_rgba (color_str, rgba, def);
+        result = orage_str_to_rgba (color_str, rgba, def);
         g_free (color_str);
     }
     else if (def)
@@ -1351,7 +1323,7 @@ GtkWidget *orage_util_image_button (const gchar *icon_name, const gchar *label)
     return button;
 }
 
-gboolean orgage_str_to_rgba (const gchar *color_str,
+gboolean orage_str_to_rgba (const gchar *color_str,
                              GdkRGBA *rgba,
                              const gchar *def)
 {
