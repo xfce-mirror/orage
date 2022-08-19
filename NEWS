@@ -1,3 +1,7 @@
+4.17.0 (future release)
+- Changed Orage internal time and data strings to GDateTime (!20)
+- In event list, fixed event hiding when event start at 00:00 and end 00:00 in same date (this kind event can be created when creating full day event, save event and then unset full day option). (!20)
+
 4.16.0 (2022-03-17)
 ======
 Note: GlobalTime and Orage panel plugin are being deprecated and will be
