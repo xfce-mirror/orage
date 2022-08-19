@@ -38,7 +38,9 @@ orage_SOURCES =							\
 	timezone_selection.c					\
 	timezone_selection.h					\
 	tray_icon.c						\
-	tray_icon.h
+	tray_icon.h						\
+	xfical_exception.c					\
+	xfical_exception.h
 
 liborage_la_CPPFLAGS =						\
 	-DPACKAGE_DATA_DIR=\""$(datadir)"\"

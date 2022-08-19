@@ -62,6 +62,21 @@
 #define NOTIFY_CHECK_VERSION(x,y,z) 0
 #endif
 
+#define RC_ALARM_TIME "ALARM_TIME"
+#define RC_ACTION_TIME "ACTION_TIME"
+#define RC_TITLE "TITLE"
+#define RC_DESCRIPTION "DESCRIPTION"
+#define RC_DISPLAY_ORAGE "DISPLAY_ORAGE"
+#define RC_TEMPORARY "TEMPORARY"
+#define RC_DISPLAY_NOTIFY "DISPLAY_NOTIFY"
+#define RC_NOTIFY_TIMEOUT "NOTIFY_TIMEOUT"
+#define RC_AUDIO "AUDIO"
+#define RC_SOUND "SOUND"
+#define RC_REPEAT_CNT "REPEAT_CNT"
+#define RC_REPEAT_DELAY "REPEAT_DELAY"
+#define RC_PROCEDURE "PROCEDURE"
+#define RC_CMD "CMD"
+
 typedef struct _orage_ddmmhh_hbox
 {
     GtkWidget *time_hbox
@@ -78,7 +93,7 @@ static void alarm_free(gpointer galarm)
 {
     alarm_struct *l_alarm = (alarm_struct *)galarm;
 
-    g_free(l_alarm->alarm_time);
+    orage_gdatetime_unref (l_alarm->alarm_time);
     g_free(l_alarm->action_time);
     g_free(l_alarm->uid);
     g_free(l_alarm->title);
@@ -93,22 +108,25 @@ static void alarm_free(gpointer galarm)
 
 static gint alarm_order(gconstpointer a, gconstpointer b)
 {
-    if (((alarm_struct *)a)->alarm_time == NULL)
+    const alarm_struct *alarm_a = (const alarm_struct *)a;
+    const alarm_struct *alarm_b = (const alarm_struct *)b;
+
+    if (alarm_a->alarm_time == NULL)
         return(1);
-    else if (((alarm_struct *)b)->alarm_time == NULL)
+    else if (alarm_b->alarm_time == NULL)
         return(-1);
 
-    return(strcmp(((alarm_struct *)a)->alarm_time
-                , ((alarm_struct *)b)->alarm_time));
+    return g_date_time_compare (alarm_a->alarm_time, alarm_b->alarm_time);
 }
 
 void alarm_list_free(void)
 {
-    gchar *time_now;
+    GDateTime *time_now;
     alarm_struct *l_alarm;
     GList *alarm_l, *kept_l=NULL;
 
-    time_now = orage_tm_time_to_icaltime(orage_localtime());
+    time_now = g_date_time_new_now_local ();
+
         /* FIXME: This could be tuned since now it runs into the remaining
            elements several times. They could be moved to another list and
            removed and added back at the end, remove with g_list_remove_link */
@@ -116,15 +134,15 @@ void alarm_list_free(void)
          alarm_l != NULL; 
          alarm_l = g_list_first(g_par.alarm_list)) {
         l_alarm = alarm_l->data;
-        if (l_alarm->temporary && (strcmp(time_now, l_alarm->alarm_time) < 0)) {
+        if (l_alarm->temporary && (g_date_time_compare (time_now, l_alarm->alarm_time) < 0)) {
             /* We keep temporary alarms, which have not yet fired.
                Remove the element from the list, but do not loose it. */
             g_par.alarm_list = g_list_remove_link(g_par.alarm_list, alarm_l);
-            /*
+#if 0
             if (!kept_l)
                 kept_l = alarm_l;
             else
-            */
+#endif
             kept_l = g_list_concat(kept_l, alarm_l);
         }
         else { /* get rid of that l_alarm element */
@@ -132,6 +150,7 @@ void alarm_list_free(void)
             alarm_free(l_alarm);
         }
     }
+    g_date_time_unref (time_now);
     g_list_free(g_par.alarm_list);
     g_par.alarm_list = NULL;
     if (g_list_length(kept_l)) {
@@ -164,7 +183,7 @@ static alarm_struct *alarm_copy(alarm_struct *l_alarm, gboolean init)
 
     /* first l_alarm values which are not modified */
     if (l_alarm->alarm_time != NULL)
-        n_alarm->alarm_time = g_strdup(l_alarm->alarm_time);
+        n_alarm->alarm_time = g_date_time_ref (l_alarm->alarm_time);
     if (l_alarm->action_time != NULL)
         n_alarm->action_time = g_strdup(l_alarm->action_time);
     if (l_alarm->uid != NULL)
@@ -234,37 +253,40 @@ static OrageRc *orage_persistent_file_open(gboolean read_only)
     return(orc);
 }
 
-static alarm_struct *alarm_read_next_alarm(OrageRc *orc, gchar *time_now)
+static alarm_struct *alarm_read_next_alarm(OrageRc *orc, GDateTime *gdt)
 {
+    gint cmp_result;
     alarm_struct *new_alarm;
 
     new_alarm = g_new0(alarm_struct, 1);
 
     new_alarm->uid = orage_rc_get_group(orc);
-    new_alarm->alarm_time = orage_rc_get_str(orc, "ALARM_TIME", "0000");
-    new_alarm->action_time = orage_rc_get_str(orc, "ACTION_TIME", "0000");
-    new_alarm->title = orage_rc_get_str(orc, "TITLE", NULL);
-    new_alarm->description = orage_rc_get_str(orc, "DESCRIPTION", NULL);
+    new_alarm->alarm_time = orage_rc_get_gdatetime (orc, RC_ALARM_TIME, NULL);
+    new_alarm->action_time = orage_rc_get_str(orc, RC_ACTION_TIME, "0000");
+    new_alarm->title = orage_rc_get_str(orc, RC_TITLE, NULL);
+    new_alarm->description = orage_rc_get_str(orc, RC_DESCRIPTION, NULL);
     new_alarm->persistent = TRUE; /* this must be */
-    new_alarm->temporary = orage_rc_get_bool(orc, "TEMPORARY", FALSE);
-    new_alarm->display_orage = orage_rc_get_bool(orc, "DISPLAY_ORAGE", FALSE);
+    new_alarm->temporary = orage_rc_get_bool(orc, RC_TEMPORARY, FALSE);
+    new_alarm->display_orage = orage_rc_get_bool(orc, RC_DISPLAY_ORAGE, FALSE);
 
 #ifdef HAVE_NOTIFY
-    new_alarm->display_notify = orage_rc_get_bool(orc, "DISPLAY_NOTIFY", FALSE);
-    new_alarm->notify_timeout = orage_rc_get_int(orc, "NOTIFY_TIMEOUT", FALSE);
+    new_alarm->display_notify = orage_rc_get_bool(orc, RC_DISPLAY_NOTIFY, FALSE);
+    new_alarm->notify_timeout = orage_rc_get_int(orc, RC_NOTIFY_TIMEOUT, FALSE);
 #endif
 
-    new_alarm->audio = orage_rc_get_bool(orc, "AUDIO", FALSE);
-    new_alarm->sound = orage_rc_get_str(orc, "SOUND", NULL);
-    new_alarm->repeat_cnt = orage_rc_get_int(orc, "REPEAT_CNT", 0);
-    new_alarm->repeat_delay = orage_rc_get_int(orc, "REPEAT_DELAY", 2);
-    new_alarm->procedure = orage_rc_get_bool(orc, "PROCEDURE", FALSE);
-    new_alarm->cmd = orage_rc_get_str(orc, "CMD", NULL);
+    new_alarm->audio = orage_rc_get_bool(orc, RC_AUDIO, FALSE);
+    new_alarm->sound = orage_rc_get_str(orc, RC_SOUND, NULL);
+    new_alarm->repeat_cnt = orage_rc_get_int(orc, RC_REPEAT_CNT, 0);
+    new_alarm->repeat_delay = orage_rc_get_int(orc, RC_REPEAT_DELAY, 2);
+    new_alarm->procedure = orage_rc_get_bool(orc, RC_PROCEDURE, FALSE);
+    new_alarm->cmd = orage_rc_get_str(orc, RC_CMD, NULL);
 
     /* let's first check if the time has gone so that we need to
      * send that delayed l_alarm or can we just ignore it since it is
      * still in the future */
-    if (strcmp(time_now, new_alarm->alarm_time) < 0) { 
+    cmp_result = g_date_time_compare (gdt, new_alarm->alarm_time);
+
+    if (cmp_result < 0) {
         /* real l_alarm has not happened yet */
         if (new_alarm->temporary)
             /* we need to store this or it will get lost */
@@ -281,22 +303,21 @@ void alarm_read(void)
 {
     alarm_struct *new_alarm;
     OrageRc *orc;
-    gchar *time_now;
+    GDateTime *time_now;
     gchar **alarm_groups;
     gint i;
 
-    time_now = orage_tm_time_to_icaltime(orage_localtime());
+    time_now = g_date_time_new_now_local ();
     orc = orage_persistent_file_open(TRUE);
     alarm_groups = orage_rc_get_groups(orc);
     for (i = 0; alarm_groups[i] != NULL; i++) {
         orage_rc_set_group(orc, alarm_groups[i]);
         if ((new_alarm = alarm_read_next_alarm(orc, time_now)) != NULL) {
-            g_debug ("%s: time_now=%s alarm=%s",
-                     G_STRFUNC, time_now, new_alarm->alarm_time);
             create_reminders(new_alarm);
             alarm_free(new_alarm);
         }
     }
+    g_date_time_unref (time_now);
     g_strfreev(alarm_groups);
     orage_rc_file_close(orc);
 }
@@ -311,24 +332,24 @@ static void alarm_store(gpointer galarm, gpointer par)
 
     orage_rc_set_group(par, l_alarm->uid);
 
-    orage_rc_put_str(orc, "ALARM_TIME", l_alarm->alarm_time);
-    orage_rc_put_str(orc, "ACTION_TIME", l_alarm->action_time);
-    orage_rc_put_str(orc, "TITLE", l_alarm->title);
-    orage_rc_put_str(orc, "DESCRIPTION", l_alarm->description);
-    orage_rc_put_bool(orc, "DISPLAY_ORAGE", l_alarm->display_orage);
-    orage_rc_put_bool(orc, "TEMPORARY", l_alarm->temporary);
+    orage_rc_put_gdatetime (orc, RC_ALARM_TIME, l_alarm->alarm_time);
+    orage_rc_put_str(orc, RC_ACTION_TIME, l_alarm->action_time);
+    orage_rc_put_str(orc, RC_TITLE, l_alarm->title);
+    orage_rc_put_str(orc, RC_DESCRIPTION, l_alarm->description);
+    orage_rc_put_bool(orc, RC_DISPLAY_ORAGE, l_alarm->display_orage);
+    orage_rc_put_bool(orc, RC_TEMPORARY, l_alarm->temporary);
 
 #ifdef HAVE_NOTIFY
-    orage_rc_put_bool(orc, "DISPLAY_NOTIFY", l_alarm->display_notify);
-    orage_rc_put_int(orc, "NOTIFY_TIMEOUT", l_alarm->notify_timeout);
+    orage_rc_put_bool(orc, RC_DISPLAY_NOTIFY, l_alarm->display_notify);
+    orage_rc_put_int(orc, RC_NOTIFY_TIMEOUT, l_alarm->notify_timeout);
 #endif
 
-    orage_rc_put_bool(orc, "AUDIO", l_alarm->audio);
-    orage_rc_put_str(orc, "SOUND", l_alarm->sound);
-    orage_rc_put_int(orc, "REPEAT_CNT", l_alarm->repeat_cnt);
-    orage_rc_put_int(orc, "REPEAT_DELAY", l_alarm->repeat_delay);
-    orage_rc_put_bool(orc, "PROCEDURE", l_alarm->procedure);
-    orage_rc_put_str(orc, "CMD", l_alarm->cmd);
+    orage_rc_put_bool(orc, RC_AUDIO, l_alarm->audio);
+    orage_rc_put_str(orc, RC_SOUND, l_alarm->sound);
+    orage_rc_put_int(orc, RC_REPEAT_CNT, l_alarm->repeat_cnt);
+    orage_rc_put_int(orc, RC_REPEAT_DELAY, l_alarm->repeat_delay);
+    orage_rc_put_bool(orc, RC_PROCEDURE, l_alarm->procedure);
+    orage_rc_put_str(orc, RC_CMD, l_alarm->cmd);
 }
 
 static void store_persistent_alarms(void)
@@ -348,6 +369,7 @@ static void store_persistent_alarms(void)
 static void notify_action_open (G_GNUC_UNUSED NotifyNotification *n,
                                 G_GNUC_UNUSED const char *action, gpointer par)
 {
+    GDateTime *gdt;
     alarm_struct *l_alarm = (alarm_struct *)par;
 
     /* 
@@ -357,7 +379,9 @@ static void notify_action_open (G_GNUC_UNUSED NotifyNotification *n,
     l_alarm->notify_refresh = TRUE;
     create_notify_reminder(l_alarm);
     */
-    create_appt_win("UPDATE", l_alarm->uid);
+    gdt = g_date_time_new_now_local ();
+    create_appt_win (UPDATE_APPT_WIN, l_alarm->uid, gdt);
+    g_date_time_unref (gdt);
 }
 #endif
 
@@ -544,9 +568,12 @@ static void on_btOkReminder_clicked (G_GNUC_UNUSED GtkButton *button,
 static void on_btOpenReminder_clicked (G_GNUC_UNUSED GtkButton *button,
                                        gpointer user_data)
 {
+    GDateTime *gdt;
     alarm_struct *l_alarm = (alarm_struct *)user_data;
 
-    create_appt_win("UPDATE", l_alarm->uid);
+    gdt = g_date_time_new_now_local ();
+    create_appt_win (UPDATE_APPT_WIN, l_alarm->uid, gdt);
+    g_date_time_unref (gdt);
 }
 
 static void on_btRecreateReminder_clicked (G_GNUC_UNUSED GtkButton *button,
@@ -555,22 +582,34 @@ static void on_btRecreateReminder_clicked (G_GNUC_UNUSED GtkButton *button,
     alarm_struct *l_alarm = (alarm_struct *)user_data;
     orage_ddmmhh_hbox_struct *display_data;
     alarm_struct *n_alarm;
-    time_t tt;
+    gint days;
+    gint hours;
+    gint minutes;
+    GDateTime *gdt_local;
+    GDateTime *gdt_local_d;
+    GDateTime *gdt_local_dh;
+    GDateTime *gdt_local_dhm;
 
     display_data = (orage_ddmmhh_hbox_struct *)l_alarm->orage_display_data;
     /* we do not have l_alarm time here */
     n_alarm = alarm_copy(l_alarm, FALSE);
-
     n_alarm->temporary = TRUE;
+
     /* let's count new l_alarm time */
-    tt = time(NULL);
-    tt += (gtk_spin_button_get_value_as_int(
-            GTK_SPIN_BUTTON(display_data->spin_dd)) * 24*60*60
-        + gtk_spin_button_get_value_as_int(
-            GTK_SPIN_BUTTON(display_data->spin_hh)) *    60*60
-        + gtk_spin_button_get_value_as_int(
-            GTK_SPIN_BUTTON(display_data->spin_mm)) *       60);
-    n_alarm->alarm_time = g_strdup(orage_tm_time_to_icaltime(localtime(&tt)));
+    days = gtk_spin_button_get_value_as_int (
+            GTK_SPIN_BUTTON (display_data->spin_dd));
+    hours = gtk_spin_button_get_value_as_int (
+            GTK_SPIN_BUTTON (display_data->spin_hh));
+    minutes = gtk_spin_button_get_value_as_int (
+            GTK_SPIN_BUTTON (display_data->spin_mm));
+    gdt_local = g_date_time_new_now_local ();
+    gdt_local_d = g_date_time_add_days (gdt_local, days);
+    gdt_local_dh = g_date_time_add_hours (gdt_local_d, hours);
+    gdt_local_dhm = g_date_time_add_minutes (gdt_local_dh, minutes);
+    n_alarm->alarm_time = gdt_local_dhm;
+    g_date_time_unref (gdt_local);
+    g_date_time_unref (gdt_local_d);
+    g_date_time_unref (gdt_local_dh);
     alarm_add(n_alarm);
     setup_orage_alarm_clock();
     gtk_widget_destroy(display_data->dialog);
@@ -701,6 +740,7 @@ static void create_orage_reminder(alarm_struct *l_alarm)
 
 static void create_procedure_reminder(alarm_struct *l_alarm)
 {
+    GDateTime *gdt;
 #if 0
     gboolean status, active; / * active not used * /
     GError *error = NULL;
@@ -718,9 +758,12 @@ static void create_procedure_reminder(alarm_struct *l_alarm)
     cmd = orage_replace_text(cmd, "<&D>", l_alarm->description);
 
     if (l_alarm->alarm_time)
-        atime = g_strdup(orage_icaltime_to_i18_time(l_alarm->alarm_time));
+        gdt = g_date_time_ref (l_alarm->alarm_time);
     else
-        atime = g_strdup(orage_tm_time_to_i18_time(orage_localtime()));
+        gdt = g_date_time_new_now_local ();
+
+    atime = orage_gdatetime_to_i18_time (gdt, FALSE);
+    g_date_time_unref (gdt);
     cmd = orage_replace_text(cmd, "<&AT>", atime);
     g_free(atime);
 
@@ -782,60 +825,66 @@ void create_reminders(alarm_struct *l_alarm)
 
 static void reset_orage_day_change(gboolean changed)
 {
-    struct tm *t;
+    GDateTime *gdt;
     gint secs_left;
 
     if (changed) { /* date was change, need to count next change time */
-        t = orage_localtime();
-        /* t format is 23:59:59 -> 00:00:00 so we can use 
-         * 24:00:00 to represent next day.
-         * Let's find out how much time we have until it happens */
-        secs_left = 60*60*(24 - t->tm_hour) - 60*t->tm_min - t->tm_sec;
+        gdt = g_date_time_new_now_local ();
+        secs_left = 60 * 60 * (24 - g_date_time_get_hour (gdt))
+                  - 60 * g_date_time_get_minute (gdt)
+                  - g_date_time_get_second (gdt);
+        g_date_time_unref (gdt);
     }
     else { /* the change did not happen. Need to try again asap. */
         secs_left = 1;
     }
-    g_par.day_timer = g_timeout_add_seconds(secs_left
-            , (GSourceFunc) orage_day_change, NULL);
+    g_par.day_timer = g_timeout_add_seconds (secs_left, orage_day_change, NULL);
 }
 
 /* fire after the date has changed and setup the icon 
- * and change the date in the mainwindow
+ * and change the date in the mainwindow.
+ *
+ * TODO: all xxx_year, xxx_month and xxx_day variables can be replaced with
+ * GDate
  */
 gboolean orage_day_change(gpointer user_data)
 {
-    struct tm *t;
+    GDateTime *gdt;
+    gint year;
+    gint month;
+    gint day;
     static gint previous_year=0, previous_month=0, previous_day=0;
     guint selected_year=0, selected_month=0, selected_day=0;
     gint current_year=0, current_month=0, current_day=0;
 
-    t = orage_localtime();
-  /* See if the day just changed. 
-     Note that when we are called first time we always have day change. 
-     If user_data is not NULL, we also force day change. */
-    if (user_data
-    || previous_day != t->tm_mday
-    || previous_month != t->tm_mon
-    || previous_year != t->tm_year + 1900) {
+    gdt = g_date_time_new_now_local ();
+    g_date_time_get_ymd (gdt, &year, &month, &day);
+    /* See if the day just changed.  Note that when we are called first time we
+     * always have day change.  If user_data is not NULL, we also force day
+     * change.
+     */
+    if (user_data || previous_day != day || previous_month != month || previous_year != year)
+    {
         if (user_data) {
             if (g_par.day_timer) { /* need to stop it if running */
                 g_source_remove(g_par.day_timer);
                 g_par.day_timer = 0;
             }
         }
-        current_year  = t->tm_year + 1900;
-        current_month = t->tm_mon;
-        current_day   = t->tm_mday;
-      /* Get the selected date from calendar */
+        current_year  = year;
+        current_month = month;
+        current_day   = day;
+        /* Get the selected date from calendar */
         gtk_calendar_get_date(GTK_CALENDAR(((CalWin *)g_par.xfcal)->mCalendar),
                  &selected_year, &selected_month, &selected_day);
-        if ((int)selected_year == previous_year 
-        && (int)selected_month == previous_month 
-        && (int)selected_day == previous_day) {
-            /* previous day was indeed selected, 
+        selected_month++;
+        if ((gint)selected_year == previous_year
+        && (gint)selected_month == previous_month
+        && (gint)selected_day == previous_day) {
+            /* previous day was indeed selected,
                keep it current automatically */
-            orage_select_date(GTK_CALENDAR(((CalWin *)g_par.xfcal)->mCalendar)
-                    , current_year, current_month, current_day);
+            orage_select_date (GTK_CALENDAR(((CalWin *)g_par.xfcal)->mCalendar),
+                                gdt);
         }
         previous_year  = current_year;
         previous_month = current_month;
@@ -851,6 +900,9 @@ gboolean orage_day_change(gpointer user_data)
          * */
         reset_orage_day_change(FALSE);
     }
+
+    g_date_time_unref (gdt);
+
     return(FALSE); /* we started new timer, so we end here */
 }
 
@@ -861,24 +913,25 @@ static gboolean orage_alarm_clock (G_GNUC_UNUSED gpointer user_data)
     alarm_struct *cur_alarm;
     gboolean alarm_raised=FALSE;
     gboolean more_alarms=TRUE;
-    gchar *time_now;
+    GDateTime *time_now;
 
-    time_now = orage_tm_time_to_icaltime(orage_localtime());
-  /* Check if there are any alarms to show */
+    time_now = g_date_time_new_now_local ();
+    /* Check if there are any alarms to show */
     for (alarm_l = g_list_first(g_par.alarm_list);
          alarm_l != NULL && more_alarms;
          alarm_l = g_list_next(alarm_l)) {
         /* remember that it is sorted list */
         cur_alarm = (alarm_struct *)alarm_l->data;
-        if (strcmp(time_now, cur_alarm->alarm_time) > 0) {
-            g_debug ("%s: time_now=%s alarm=%s",
-                     G_STRFUNC, time_now, cur_alarm->alarm_time);
+        if (g_date_time_compare (time_now, cur_alarm->alarm_time) > 0) {
             create_reminders(cur_alarm);
             alarm_raised = TRUE;
         }
         else /* sorted so scan can be stopped */
-            more_alarms = FALSE; 
-    }
+            more_alarms = FALSE;
+        }
+
+    g_date_time_unref (time_now);
+
     if (alarm_raised)  /* at least one l_alarm processed, need new list */
         xfical_alarm_build_list(FALSE); /* this calls reset_orage_alarm_clock */
     else
@@ -889,53 +942,48 @@ static gboolean orage_alarm_clock (G_GNUC_UNUSED gpointer user_data)
 
 static void reset_orage_alarm_clock(void)
 {
-    struct tm *t, t_alarm, t2;
     GList *alarm_l;
     alarm_struct *cur_alarm;
-    gchar *next_alarm;
     gint secs_to_alarm;
-    gint dd;
+    GDateTime *gdt_now;
 
     if (g_par.alarm_timer) { /* need to stop it if running */
         g_source_remove(g_par.alarm_timer);
         g_par.alarm_timer = 0;
     }
     if (g_par.alarm_list) { /* we have alarms */
-        memcpy(&t2, orage_localtime(), sizeof(t2));
-        t = &t2;
-        t->tm_mon++;
-        t->tm_year = t->tm_year + 1900;
         alarm_l = g_list_first(g_par.alarm_list);
         cur_alarm = (alarm_struct *)alarm_l->data;
-        next_alarm = cur_alarm->alarm_time;
-        t_alarm = orage_icaltime_to_tm_time(next_alarm, FALSE);
-        /* let's find out how much time we have until l_alarm happens */
-        dd = orage_days_between(t, &t_alarm);
-        secs_to_alarm = t_alarm.tm_sec  - t->tm_sec
-                  + 60*(t_alarm.tm_min  - t->tm_min)
-                  + 60*60*(t_alarm.tm_hour - t->tm_hour)
-                  + 24*60*60*dd;
+        gdt_now = g_date_time_new_now_local ();
+
+        /* Let's find out how much time we have until l_alarm happens. Adding
+         * 999999 to time difference before dividing is for ceiling value.
+         */
+        secs_to_alarm = (g_date_time_difference (cur_alarm->alarm_time, gdt_now)
+                      + 999999) / 1000000;
+
+        g_date_time_unref (gdt_now);
+
         secs_to_alarm += 1; /* alarm needs to come a bit later */
         if (secs_to_alarm < 1) /* rare, but possible */
             secs_to_alarm = 1;
         g_par.alarm_timer = g_timeout_add_seconds(secs_to_alarm
-                , (GSourceFunc) orage_alarm_clock, NULL);
+                , orage_alarm_clock, NULL);
     }
 }
 
 /* refresh trayicon tooltip once per minute */
 static gboolean orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
 {
-    struct tm *t;
+    GDateTime *gdt;
     GList *alarm_l;
     alarm_struct *cur_alarm;
     gboolean more_alarms=TRUE;
     GString *tooltip=NULL, *tooltip_highlight_helper=NULL;
     gint alarm_cnt=0;
     gint tooltip_alarm_limit=5;
-    gint year, month, day, hour, minute, second;
+    gint hour, minute;
     gint dd, hh, min;
-    GDate *g_now, *g_alarm;
     gchar *tmp;
 
     if (!(g_par.trayIcon 
@@ -943,35 +991,22 @@ static gboolean orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
            /* no trayicon => no need to update the tooltip */
         return(FALSE);
     }
-    t = orage_localtime();
+    gdt = g_date_time_new_now_local ();
     tooltip = g_string_new(_("Next active alarms:"));
     g_string_prepend(tooltip, "<span foreground=\"blue\" weight=\"bold\" underline=\"single\">");
     g_string_append(tooltip, " </span>");
-  /* Check if there are any alarms to show */
+    /* Check if there are any alarms to show */
     for (alarm_l = g_list_first(g_par.alarm_list);
          alarm_l != NULL && more_alarms;
          alarm_l = g_list_next(alarm_l)) {
         /* remember that it is sorted list */
         cur_alarm = (alarm_struct *)alarm_l->data;
         if (alarm_cnt < tooltip_alarm_limit) {
-            if (strlen(cur_alarm->alarm_time) < XFICAL_APPT_DATE_FORMAT_LEN) { 
-               /* it is date = full day */
-                sscanf(cur_alarm->alarm_time, XFICAL_APPT_DATE_FORMAT
-                        , &year, &month, &day);
-                hour = 0; minute = 0; second = 0;
-            }
-            else {
-                sscanf(cur_alarm->alarm_time, XFICAL_APPT_TIME_FORMAT
-                        , &year, &month, &day, &hour, &minute, &second);
-            }
-            g_now = g_date_new_dmy(t->tm_mday, t->tm_mon + 1
-                    , t->tm_year + 1900);
-            g_alarm = g_date_new_dmy(day, month, year);
-            dd = g_date_days_between(g_now, g_alarm);
-            g_date_free(g_now);
-            g_date_free(g_alarm);
-            hh = hour - t->tm_hour;
-            min = minute - t->tm_min;
+            hour = g_date_time_get_hour (cur_alarm->alarm_time);
+            minute = g_date_time_get_minute (cur_alarm->alarm_time);
+            dd = orage_gdatetime_days_between (gdt, cur_alarm->alarm_time);
+            hh = hour - g_date_time_get_hour (gdt);
+            min = minute - g_date_time_get_minute (gdt);
             if (min < 0) {
                 min += 60;
                 hh -= 1;
@@ -980,9 +1015,6 @@ static gboolean orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
                 hh += 24;
                 dd -= 1;
             }
-
-            g_debug ("%s: tooltip, alarm=%s hh=%d hh=%d min=%d", G_STRFUNC,
-                     cur_alarm->alarm_time, dd, hh, min);
 
             g_string_append(tooltip, "<span weight=\"bold\">");
             tooltip_highlight_helper = g_string_new(" </span>");
@@ -1007,6 +1039,9 @@ static gboolean orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
         else /* sorted so scan can be stopped */
             more_alarms = FALSE; 
     }
+
+    g_date_time_unref (gdt);
+
     if (alarm_cnt == 0)
         g_string_append_printf(tooltip, _("\nNo active alarms found"));
 
@@ -1034,11 +1069,13 @@ static gboolean start_orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
 /* adjust the call to happen when minute changes */
 static gboolean reset_orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
 {
-    struct tm *t;
+    GDateTime *gdt;
     gint secs_left;
 
-    t = orage_localtime();
-    secs_left = 60 - t->tm_sec;
+    gdt = g_date_time_new_now_local ();
+    secs_left = 60 - g_date_time_get_second (gdt);
+    g_date_time_unref (gdt);
+
     if (secs_left > 2) 
         orage_tooltip_update(NULL);
     /* FIXME: do not start this, if it is already in progress.

@@ -24,6 +24,13 @@
 #ifndef __APPOINTMENT_H__
 #define __APPOINTMENT_H__
 
+typedef enum
+{
+    NEW_APPT_WIN,
+    UPDATE_APPT_WIN,
+    COPY_APPT_WIN
+} appt_win_action;
+
 typedef struct _appt_win
 {
     GtkAccelGroup *accel_group;
@@ -203,7 +210,7 @@ typedef struct _appt_win
 
     void *xf_appt; /* this is xfical_appt * */
     gchar *xf_uid;
-    gchar *par;
+    GDateTime *appointment_time;
     void  *el;          /* used to refresh calling event list */
     void  *dw;          /* used to refresh calling day list */
     gboolean appointment_add;       /* are we adding app */
@@ -213,7 +220,8 @@ typedef struct _appt_win
      * add == TRUE && new == FALSE */
 } appt_win;
 
-appt_win *create_appt_win(gchar *action, gchar *par);
+appt_win *create_appt_win (appt_win_action action, const gchar *par,
+                           GDateTime *gdt_par);
 
 GdkRGBA *orage_category_list_contains(char *categories);
 void orage_category_get_list();

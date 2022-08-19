@@ -58,12 +58,16 @@
 #include "appointment.h"
 #include "parameters.h"
 #include "reminder.h"
+#include "xfical_exception.h"
 
 #define BORDER_SIZE 20
 #define FILETYPE_SIZE 38
 
 #define ORAGE_RC_COLOUR "Color"
 #define CATEGORIES_SPACING 10
+#define EXCEPTION_KEY "xfical_exception_key"
+
+#define USE_GLIB_258 (GLIB_CHECK_VERSION (2, 58, 0))
 
 typedef struct _orage_category_win
 {
@@ -89,8 +93,8 @@ static void read_default_alarm(xfical_appt *appt);
 /*  
  *  these are the main functions in this file:
  */ 
-static gboolean fill_appt_window(appt_win *apptw, const gchar *action,
-                                 const gchar *par);
+static gboolean fill_appt_window (appt_win *apptw, appt_win_action action,
+                                  const gchar *par, GDateTime *gdt_par);
 static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw);
 
 static GtkWidget *datetime_hbox_new(GtkWidget *date_button
@@ -465,6 +469,9 @@ static void set_notify_sensitivity(appt_win *apptw)
         gtk_widget_set_sensitive(apptw->Display_spin_expire_notify_label
                 , FALSE);
     }
+#else
+    /* Suppress compiler warning for unused parameter. */
+    (void)apptw;
 #endif
 }
 
@@ -598,36 +605,40 @@ static void on_appNote_buffer_changed_cb (G_GNUC_UNUSED GtkTextBuffer *b,
     appt_win *apptw = (appt_win *)user_data;
     GtkTextIter start, end, match_start, match_end;
     GtkTextBuffer *tb;
-    gchar *cdate, ctime[6], *cdatetime;
-    struct tm *tm;
+    GDateTime *gdt;
+    gchar *time_str;
+    const gchar *fmt;
 
     tb = apptw->Note_buffer;
     gtk_text_buffer_get_bounds(tb, &start, &end);
+
     if (gtk_text_iter_forward_search(&start, "<D>"
                 , GTK_TEXT_SEARCH_TEXT_ONLY
                 , &match_start, &match_end, &end)) { /* found it */
-        cdate = orage_localdate_i18();
-        gtk_text_buffer_delete(tb, &match_start, &match_end);
-        gtk_text_buffer_insert(tb, &match_start, cdate, -1);
+        fmt = "%x";
     }
     else if (gtk_text_iter_forward_search(&start, "<T>"
                 , GTK_TEXT_SEARCH_TEXT_ONLY
                 , &match_start, &match_end, &end)) { /* found it */
-        tm = orage_localtime();
-        g_snprintf(ctime, sizeof (ctime), "%02d:%02d", tm->tm_hour, tm->tm_min);
-        gtk_text_buffer_delete(tb, &match_start, &match_end);
-        gtk_text_buffer_insert(tb, &match_start, ctime, -1);
+        fmt = "%H:%M";
     }
     else if (gtk_text_iter_forward_search(&start, "<DT>"
                 , GTK_TEXT_SEARCH_TEXT_ONLY
                 , &match_start, &match_end, &end)) { /* found it */
-        tm = orage_localtime();
-        cdate = orage_tm_date_to_i18_date(tm);
-        g_snprintf(ctime, sizeof (ctime), "%02d:%02d", tm->tm_hour, tm->tm_min);
-        cdatetime = g_strconcat(cdate, " ", ctime, NULL);
+        fmt = "%x %H:%M";
+    }
+    else
+        fmt = NULL;
+
+    if (fmt)
+    {
+        gdt = g_date_time_new_now_local ();
+        time_str = g_date_time_format (gdt, fmt);
+        g_date_time_unref (gdt);
+
         gtk_text_buffer_delete(tb, &match_start, &match_end);
-        gtk_text_buffer_insert(tb, &match_start, cdatetime, -1);
-        g_free(cdatetime);
+        gtk_text_buffer_insert(tb, &match_start, time_str, -1);
+        g_free (time_str);
     }
    
     mark_appointment_changed((appt_win *)user_data);
@@ -740,7 +751,7 @@ static void app_free_memory(appt_win *apptw)
                 g_list_remove(((day_win *)apptw->dw)->apptw_list, apptw);
     gtk_widget_destroy(apptw->Window);
     g_free(apptw->xf_uid);
-    g_free(apptw->par);
+    g_date_time_unref (apptw->appointment_time);
     xfical_appt_free((xfical_appt *)apptw->xf_appt);
     g_free(apptw);
 }
@@ -920,14 +931,14 @@ static void fill_appt_from_apptw_alarm(xfical_appt *appt, appt_win *apptw)
 static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
 {
     GtkTextIter start, end;
-    const char *time_format="%H:%M";
-    struct tm current_t;
-    gchar starttime[6], endtime[6], completedtime[6];
+    GTimeZone *gtz;
+    GDateTime *gdt;
+    GDateTime *gdt_tmp;
     gint i;
     gchar *tmp, *tmp2;
-    /*
-    GList *tmp_gl;
-    */
+    gint year;
+    gint month;
+    gint day;
 
 /* Next line is fix for bug 2811.
  * We need to make sure spin buttons do not have values which are not
@@ -969,38 +980,59 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
     appt->allDay = gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(apptw->AllDay_checkbutton));
 
-    /* start date and time. 
-     * Note that timezone is kept upto date all the time 
-     */
-    current_t = orage_i18_date_to_tm_date(gtk_button_get_label(
-            GTK_BUTTON(apptw->StartDate_button)));
-    g_snprintf(starttime, sizeof (starttime), "%02d:%02d"
-            , gtk_spin_button_get_value_as_int(
-                    GTK_SPIN_BUTTON(apptw->StartTime_spin_hh))
-            , gtk_spin_button_get_value_as_int(
-                    GTK_SPIN_BUTTON(apptw->StartTime_spin_mm)));
-    strptime(starttime, time_format, &current_t);
-    g_snprintf(appt->starttime, sizeof (appt->starttime),
-              XFICAL_APPT_TIME_FORMAT, current_t.tm_year + 1900,
-              current_t.tm_mon + 1, current_t.tm_mday, current_t.tm_hour,
-              current_t.tm_min, 0);
+    gdt_tmp = g_object_get_data (G_OBJECT (apptw->StartDate_button),
+                                 DATE_KEY);
+#if USE_GLIB_258
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+    gtz = g_date_time_get_timezone (gdt_tmp);
+    G_GNUC_END_IGNORE_DEPRECATIONS
+#else
+    gtz = g_time_zone_new (g_date_time_get_timezone_abbreviation (gdt_tmp));
+#endif
+    orage_gdatetime_unref (appt->starttime);
+    appt->starttime = g_date_time_new (gtz,
+                           g_date_time_get_year (gdt_tmp),
+                           g_date_time_get_month (gdt_tmp),
+                           g_date_time_get_day_of_month (gdt_tmp),
+                           gtk_spin_button_get_value_as_int (
+                                    GTK_SPIN_BUTTON (apptw->StartTime_spin_hh)),
+                           gtk_spin_button_get_value_as_int (
+                                    GTK_SPIN_BUTTON (apptw->StartTime_spin_mm)),
+                           0);
 
-    /* end date and time. 
-     * Note that timezone is kept upto date all the time 
-     */ 
+#if (USE_GLIB_258 == 0)
+    g_time_zone_unref (gtz);
+#endif
+
+    /* end date and time.
+     * Note that timezone is kept upto date all the time
+     */
     appt->use_due_time = gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(apptw->End_checkbutton));
-    current_t = orage_i18_date_to_tm_date(gtk_button_get_label(
-            GTK_BUTTON(apptw->EndDate_button)));
-    g_snprintf(endtime, sizeof (endtime), "%02d:%02d"
-            , gtk_spin_button_get_value_as_int(
-                    GTK_SPIN_BUTTON(apptw->EndTime_spin_hh))
-            , gtk_spin_button_get_value_as_int(
-                    GTK_SPIN_BUTTON(apptw->EndTime_spin_mm)));
-    strptime(endtime, time_format, &current_t);
-    g_snprintf(appt->endtime, sizeof (appt->endtime), XFICAL_APPT_TIME_FORMAT
-            , current_t.tm_year + 1900, current_t.tm_mon + 1, current_t.tm_mday
-            , current_t.tm_hour, current_t.tm_min, 0);
+
+    gdt_tmp = g_object_get_data (G_OBJECT (apptw->EndDate_button),
+                                 DATE_KEY);
+#if USE_GLIB_258
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+    gtz = g_date_time_get_timezone (gdt_tmp);
+    G_GNUC_END_IGNORE_DEPRECATIONS
+#else
+    gtz = g_time_zone_new (g_date_time_get_timezone_abbreviation (gdt_tmp));
+#endif
+    orage_gdatetime_unref (appt->endtime);
+    appt->endtime = g_date_time_new (gtz,
+                           g_date_time_get_year (gdt_tmp),
+                           g_date_time_get_month (gdt_tmp),
+                           g_date_time_get_day_of_month (gdt_tmp),
+                           gtk_spin_button_get_value_as_int (
+                                    GTK_SPIN_BUTTON (apptw->EndTime_spin_hh)),
+                           gtk_spin_button_get_value_as_int (
+                                    GTK_SPIN_BUTTON (apptw->EndTime_spin_mm)),
+                           0);
+
+#if (USE_GLIB_258 == 0)
+    g_time_zone_unref (gtz);
+#endif
 
     /* duration */
     appt->use_duration = gtk_toggle_button_get_active(
@@ -1020,23 +1052,37 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
     if (!orage_validate_datetime(apptw, appt))
         return(FALSE);
 
-    /* completed date and time. 
-     * Note that timezone is kept upto date all the time 
-     */ 
+    /* completed date and time.
+     * Note that timezone is kept upto date all the time
+     */
     appt->completed = gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(apptw->Completed_checkbutton));
-    current_t = orage_i18_date_to_tm_date(gtk_button_get_label(
-            GTK_BUTTON(apptw->CompletedDate_button)));
-    g_snprintf(completedtime, sizeof (completedtime), "%02d:%02d"
-            , gtk_spin_button_get_value_as_int(
-                    GTK_SPIN_BUTTON(apptw->CompletedTime_spin_hh))
-            , gtk_spin_button_get_value_as_int(
-                    GTK_SPIN_BUTTON(apptw->CompletedTime_spin_mm)));
-    strptime(completedtime, time_format, &current_t);
-    g_snprintf(appt->completedtime, sizeof (appt->completedtime),
-               XFICAL_APPT_TIME_FORMAT, current_t.tm_year + 1900,
-               current_t.tm_mon + 1, current_t.tm_mday,
-               current_t.tm_hour, current_t.tm_min, 0);
+
+    gdt_tmp = g_object_get_data (G_OBJECT (apptw->CompletedDate_button),
+                                 DATE_KEY);
+
+#if USE_GLIB_258
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+    gtz = g_date_time_get_timezone (gdt_tmp);
+    G_GNUC_END_IGNORE_DEPRECATIONS
+#else
+    gtz = g_time_zone_new (g_date_time_get_timezone_abbreviation (gdt_tmp));
+#endif
+
+    orage_gdatetime_unref (appt->completedtime);
+    appt->completedtime = g_date_time_new (gtz,
+                           g_date_time_get_year (gdt_tmp),
+                           g_date_time_get_month (gdt_tmp),
+                           g_date_time_get_day_of_month (gdt_tmp),
+                           gtk_spin_button_get_value_as_int (
+                                    GTK_SPIN_BUTTON (apptw->CompletedTime_spin_hh)),
+                           gtk_spin_button_get_value_as_int (
+                                    GTK_SPIN_BUTTON (apptw->CompletedTime_spin_mm)),
+                           0);
+
+#if (USE_GLIB_258 == 0)
+    g_time_zone_unref (gtz);
+#endif
 
     /* availability */
     appt->availability = gtk_combo_box_get_active(
@@ -1085,25 +1131,27 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
                 GTK_TOGGLE_BUTTON(apptw->Recur_limit_rb))) {
         appt->recur_limit = 0;    /* no limit */
         appt->recur_count = 0;    /* special: means no repeat count limit */
-        appt->recur_until[0] = 0; /* special: means no until time limit */
     }
     else if (gtk_toggle_button_get_active(
                 GTK_TOGGLE_BUTTON(apptw->Recur_count_rb))) {
         appt->recur_limit = 1;    /* count limit */
         appt->recur_count = gtk_spin_button_get_value_as_int(
                 GTK_SPIN_BUTTON(apptw->Recur_count_spin));
-        appt->recur_until[0] = 0; /* special: means no until time limit */
     }
     else if (gtk_toggle_button_get_active(
                 GTK_TOGGLE_BUTTON(apptw->Recur_until_rb))) {
         appt->recur_limit = 2;    /* until limit */
         appt->recur_count = 0;    /* special: means no repeat count limit */
 
-        current_t = orage_i18_date_to_tm_date(gtk_button_get_label(
-                GTK_BUTTON(apptw->Recur_until_button)));
-        g_snprintf(appt->recur_until, sizeof (appt->recur_until),
-                   XFICAL_APPT_TIME_FORMAT, current_t.tm_year + 1900,
-                   current_t.tm_mon + 1, current_t.tm_mday, 23, 59, 10);
+        gdt_tmp = g_object_get_data (G_OBJECT (apptw->Recur_until_button),
+                                     DATE_KEY);
+        g_date_time_get_ymd (gdt_tmp, &year, &month, &day);
+        gdt = g_date_time_new_local (year, month, day, 23, 59, 10);
+        orage_gdatetime_unref (appt->recur_until);
+        appt->recur_until = g_date_time_ref (gdt);
+        g_object_set_data_full (G_OBJECT (apptw->Recur_until_button),
+                                DATE_KEY, gdt,
+                                (GDestroyNotify)g_date_time_unref);
     }
     else
         g_warning ("%s: coding error, illegal recurrence", G_STRFUNC);
@@ -1335,9 +1383,12 @@ static void duplicate_xfical_from_appt_win(appt_win *apptw)
 {
     gint x, y;
     appt_win *apptw2;
+    GDateTime *gdt;
 
     /* do not keep track of appointments created here */
-    apptw2 = create_appt_win("COPY", apptw->xf_uid);
+    gdt = g_date_time_new_now_local ();
+    apptw2 = create_appt_win (COPY_APPT_WIN, apptw->xf_uid, gdt);
+    g_date_time_unref (gdt);
     if (apptw2) {
         gtk_window_get_position(GTK_WINDOW(apptw->Window), &x, &y);
         gtk_window_move(GTK_WINDOW(apptw2->Window), x+20, y+20);
@@ -1358,11 +1409,14 @@ static void on_appDuplicate_clicked_cb (G_GNUC_UNUSED GtkButton *b,
 
 static void revert_xfical_to_last_saved(appt_win *apptw)
 {
+    GDateTime *gdt;
     if (!apptw->appointment_new) {
-        fill_appt_window(apptw, "UPDATE", apptw->xf_uid);
+        gdt = g_date_time_new_now_local ();
+        fill_appt_window (apptw, UPDATE_APPT_WIN, apptw->xf_uid, gdt);
+        g_date_time_unref (gdt);
     }
     else {
-        fill_appt_window(apptw, "NEW", apptw->par);
+        fill_appt_window (apptw, NEW_APPT_WIN, NULL, apptw->appointment_time);
     }
 }
 
@@ -1388,7 +1442,7 @@ static void on_Date_button_clicked_cb(GtkWidget *button, gpointer *user_data)
             GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
             _("Today"), 1, "_OK", GTK_RESPONSE_ACCEPT, NULL);
 
-    if (orage_date_button_clicked(button, selDate_dialog))
+    if (orage_date_button_clicked (button, selDate_dialog))
         mark_appointment_changed(apptw);
 }
 
@@ -1403,7 +1457,7 @@ static void on_recur_Date_button_clicked_cb(GtkWidget *button
             GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
             _("Today"), 1, "_OK", GTK_RESPONSE_ACCEPT, NULL);
 
-    if (orage_date_button_clicked(button, selDate_dialog))
+    if (orage_date_button_clicked (button, selDate_dialog))
         mark_appointment_changed(apptw);
     refresh_recur_calendars((appt_win *)user_data);
 }
@@ -1446,62 +1500,22 @@ static void on_appCompletedTimezone_clicked_cb(GtkButton *button
 
 static gint check_exists(gconstpointer a, gconstpointer b)
 {
-   /*  We actually only care about match or no match.*/
-    if (!strcmp(((xfical_exception *)a)->time
-              , ((xfical_exception *)b)->time)) {
-        return(strcmp(((xfical_exception *)a)->type
-                    , ((xfical_exception *)b)->type));
+    const xfical_exception *ex_a = (const xfical_exception *)a;
+    const xfical_exception *ex_b = (const xfical_exception *)b;
+    GDateTime *time_a = xfical_exception_get_time (ex_a);
+    GDateTime *time_b = xfical_exception_get_time (ex_b);
+    xfical_exception_type type_a;
+    xfical_exception_type type_b;
+
+    /*  We actually only care about match or no match.*/
+    if (g_date_time_compare (time_a, time_b) == 0) {
+        type_a = xfical_exception_get_type (ex_a);
+        type_b = xfical_exception_get_type (ex_b);
+        return !(type_a == type_b);
     }
     else {
         return(1); /* does not matter if it is smaller or bigger */
     }
-}
-
-static xfical_exception *new_exception(gchar *text)
-{
-    xfical_exception *recur_exception;
-    gint i;
-    struct tm tm_time = {0};
-#ifndef HAVE_LIBICAL
-    char *tmp;
-#endif
-
-    recur_exception = g_new(xfical_exception, 1);
-    i = strlen(text);
-    text[i-2] = '\0';
-    if (text[i-1] == '+') {
-        g_strlcpy (recur_exception->type,"RDATE",sizeof(recur_exception->type));
-        strncpy(recur_exception->time, orage_i18_time_to_icaltime(text), 16);
-        recur_exception->time[16] = '\0';
-    }
-    else {
-        g_strlcpy(recur_exception->type,"EXDATE",sizeof(recur_exception->type));
-#ifdef HAVE_LIBICAL
-        /* need to add time also as standard libical can not handle dates
-           correctly yet. Check more from BUG 5764.
-           We use start time from appointment. */
-        /* we should not have dates as we are using standard libical,
-           but if this fails (=return NULL) we may have date from somewhere 
-           else */
-        if ((char *)strptime(text, "%x %R", &tm_time) == NULL)
-            strncpy(recur_exception->time, orage_i18_date_to_icaldate(text), 16);
-        else
-            strncpy(recur_exception->time, orage_i18_time_to_icaltime(text), 16);
-        recur_exception->time[16] = '\0';
-#else
-        /* we should not have date-times as we are using internal libical,
-           which only uses dates, but if this returns non null, we may have 
-           datetime from somewhere else */
-        tmp = (char *)strptime(text, "%x", &tm_time);
-        if (ORAGE_STR_EXISTS(tmp))
-            strncpy(recur_exception->time, orage_i18_time_to_icaltime(text), 16);
-        else
-            strncpy(recur_exception->time, orage_i18_date_to_icaldate(text), 16);
-        recur_exception->time[16] = '\0';
-#endif
-    }
-    text[i-2] = ' ';
-    return(recur_exception);
 }
 
 static void recur_row_clicked(GtkWidget *widget
@@ -1509,7 +1523,7 @@ static void recur_row_clicked(GtkWidget *widget
 {
     appt_win *apptw = (appt_win *)user_data;
     xfical_appt *appt;
-    gchar *text;
+    gchar *time_str;
     GList *children;
     GtkWidget *lab;
     xfical_exception *recur_exception, *recur_exception_cur;
@@ -1520,25 +1534,24 @@ static void recur_row_clicked(GtkWidget *widget
         children = gtk_container_get_children(GTK_CONTAINER(widget));
         children = g_list_first(children);
         lab = (GtkWidget *)children->data;
-        text = g_strdup(gtk_label_get_text(GTK_LABEL(lab)));
-
-         /* Then, let's keep the GList updated */
-        recur_exception = new_exception(text);
+        recur_exception = xfical_exception_ref (
+                g_object_get_data (G_OBJECT (lab), EXCEPTION_KEY));
         appt = (xfical_appt *)apptw->xf_appt;
-        g_free(text);
         if ((gl_pos = g_list_find_custom(appt->recur_exceptions
                     , recur_exception, check_exists))) {
             /* let's remove it */
             recur_exception_cur = gl_pos->data;
             appt->recur_exceptions = 
                     g_list_remove(appt->recur_exceptions, recur_exception_cur);
-            g_free(recur_exception_cur);
+            xfical_exception_unref (recur_exception_cur);
         }
-        else { 
-            g_warning ("%s: non existent row (%s)", G_STRFUNC,
-                       recur_exception->time);
+        else {
+            time_str = g_date_time_format (xfical_exception_get_time (
+                    recur_exception), "%F %T");
+            g_warning ("%s: non existent row (%s)", G_STRFUNC, time_str);
+            g_free (time_str);
         }
-        g_free(recur_exception);
+        xfical_exception_unref (recur_exception);
 
         /* and finally update the display */
         gtk_widget_destroy(widget);
@@ -1547,35 +1560,31 @@ static void recur_row_clicked(GtkWidget *widget
     }
 }
 
-static gboolean add_recur_exception_row (const gchar *p_time,
-                                         const gchar *p_type,
+static gboolean add_recur_exception_row (xfical_exception *except,
                                          appt_win *apptw,
                                          const gboolean only_window)
 {
     GtkWidget *ev, *label;
-    gchar *text, tmp_type[2];
+    gchar *text;
     xfical_appt *appt;
     xfical_exception *recur_exception;
+    GDateTime *p_time_gdt;
+    xfical_exception_type p_type;
 
-    /* First build the data */
-    if (!strcmp(p_type, "EXDATE"))
-        tmp_type[0] = '-';
-    else if (!strcmp(p_type, "RDATE"))
-        tmp_type[0] = '+';
-    else
-        tmp_type[0] = p_type[0];
-    tmp_type[1] = '\0';
-    text = g_strdup_printf("%s %s", p_time, tmp_type);
+    text = xfical_exception_to_i18 (except);
 
     /* Then, let's keep the GList updated */
     if (!only_window) {
-        recur_exception = new_exception(text);
+        appt = (xfical_appt *)apptw->xf_appt;
+        p_time_gdt = xfical_exception_get_time (except);
+        p_type = xfical_exception_get_type (except);
+        recur_exception = xfical_exception_new (p_time_gdt, appt->allDay, p_type);
         appt = (xfical_appt *)apptw->xf_appt;
         if (g_list_find_custom(appt->recur_exceptions, recur_exception
                     , check_exists)) {
             /* this element is already in the list, so no need to add it again.
              * we just clean the memory and leave */
-            g_free(recur_exception);
+            xfical_exception_unref (recur_exception);
             g_free(text);
             return(FALSE);
         }
@@ -1589,6 +1598,9 @@ static gboolean add_recur_exception_row (const gchar *p_time,
     label = gtk_label_new(text);
     g_free(text);
     g_object_set (label, "xalign", 0.0, "yalign", 0.5, NULL);
+    g_object_set_data_full (G_OBJECT (label),
+                            EXCEPTION_KEY, xfical_exception_ref (except),
+                            (GDestroyNotify)xfical_exception_unref);
     ev = gtk_event_box_new();
     gtk_container_add(GTK_CONTAINER(ev), label);
     gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_exception_rows_vbox),
@@ -1616,98 +1628,115 @@ static void recur_day_selected_double_click_cb(GtkCalendar *calendar
         , gpointer user_data)
 {
     appt_win *apptw = (appt_win *)user_data;
-    gchar *cal_date, *type;
+    xfical_exception_type type;
+    GDateTime *gdt;
     gint hh, mm;
+    gboolean all_day;
+    xfical_exception *except;
 
     if (gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(apptw->Recur_exception_excl_rb))) {
-        type = "-";
+        type = EXDATE;
 #ifdef HAVE_LIBICAL
         /* need to add time also as standard libical can not handle dates
            correctly yet. Check more from BUG 5764.
            We use start time from appointment. */
         if (gtk_toggle_button_get_active(
                 GTK_TOGGLE_BUTTON(apptw->AllDay_checkbutton)))
-            cal_date = g_strdup(orage_cal_to_i18_date(calendar));
+        {
+            gdt = orage_cal_to_gdatetime (calendar, 1, 1);
+            all_day = TRUE;
+        }
         else {
             hh =  gtk_spin_button_get_value_as_int(
                     GTK_SPIN_BUTTON(apptw->StartTime_spin_hh));
             mm =  gtk_spin_button_get_value_as_int(
                     GTK_SPIN_BUTTON(apptw->StartTime_spin_mm));
-            cal_date = g_strdup(orage_cal_to_i18_time(calendar, hh, mm));
+            gdt = orage_cal_to_gdatetime (calendar, hh, mm);
+            all_day = FALSE;
         }
 #else
         /* date is enough */
-        cal_date = g_strdup(orage_cal_to_i18_date(calendar));
+        gdt = orage_cal_to_gdatetime (calendar, 1, 1);
+        all_day = FALSE;
 #endif
     }
     else { /* extra day. This needs also time */
-        type = "+";
+        type = RDATE;
         hh =  gtk_spin_button_get_value_as_int(
                 GTK_SPIN_BUTTON(apptw->Recur_exception_incl_spin_hh));
         mm =  gtk_spin_button_get_value_as_int(
                 GTK_SPIN_BUTTON(apptw->Recur_exception_incl_spin_mm));
-        cal_date = g_strdup(orage_cal_to_i18_time(calendar, hh, mm));
+        gdt = orage_cal_to_gdatetime (calendar, hh, mm);
+        all_day = FALSE;
     }
 
-    if (add_recur_exception_row(cal_date, type, apptw, FALSE)) { /* new data */
+    except = xfical_exception_new (gdt, all_day, type);
+    g_date_time_unref (gdt);
+
+    if (add_recur_exception_row (except, apptw, FALSE)) { /* new data */
         mark_appointment_changed((appt_win *)user_data);
         refresh_recur_calendars((appt_win *)user_data);
     }
-    g_free(cal_date);
+
+    xfical_exception_unref (except);
 }
 
 static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
 {
-    char *startdate_to_display, *enddate_to_display, *completeddate_to_display;
+    gchar *date_to_display;
     int days, hours, minutes;
-    struct tm tm_date;
+    GDateTime *gdt;
 
     /* all day ? */
     gtk_toggle_button_set_active(
             GTK_TOGGLE_BUTTON(apptw->AllDay_checkbutton), appt->allDay);
 
     /* start time */
-    if (strlen(appt->starttime) > 6 ) {
-        tm_date = orage_icaltime_to_tm_time(appt->starttime, TRUE);
-        startdate_to_display = orage_tm_date_to_i18_date(&tm_date);
-        gtk_button_set_label(GTK_BUTTON(apptw->StartDate_button)
-                , (const gchar *)startdate_to_display);
-        gtk_spin_button_set_value(
-                GTK_SPIN_BUTTON(apptw->StartTime_spin_hh)
-                        , (gdouble)tm_date.tm_hour);
-        gtk_spin_button_set_value(
-                GTK_SPIN_BUTTON(apptw->Recur_exception_incl_spin_hh)
-                        , (gdouble)tm_date.tm_hour);
-        gtk_spin_button_set_value(
-                GTK_SPIN_BUTTON(apptw->StartTime_spin_mm)
-                        , (gdouble)tm_date.tm_min);
-        gtk_spin_button_set_value(
-                GTK_SPIN_BUTTON(apptw->Recur_exception_incl_spin_mm)
-                        , (gdouble)tm_date.tm_min);
-        if (appt->start_tz_loc)
-            gtk_button_set_label(GTK_BUTTON(apptw->StartTimezone_button)
-                    , _(appt->start_tz_loc));
-        else /* we should never get here */
-            g_warning ("%s: start_tz_loc is null", G_STRFUNC);
+    gdt = g_date_time_ref (appt->starttime);
+    g_object_set_data_full (G_OBJECT (apptw->StartDate_button),
+                            DATE_KEY, gdt,
+                            (GDestroyNotify)g_date_time_unref);
+    date_to_display = orage_gdatetime_to_i18_time (gdt, TRUE);
+    gtk_button_set_label (GTK_BUTTON(apptw->StartDate_button),
+                          date_to_display);
+    g_free (date_to_display);
+
+    gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->StartTime_spin_hh),
+                               g_date_time_get_hour (gdt));
+    gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->Recur_exception_incl_spin_hh),
+                               g_date_time_get_hour (gdt));
+    gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->StartTime_spin_mm),
+                               g_date_time_get_minute (gdt));
+    gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->Recur_exception_incl_spin_mm),
+                               g_date_time_get_minute (gdt));
+
+    if (appt->start_tz_loc)
+    {
+        gtk_button_set_label(GTK_BUTTON(apptw->StartTimezone_button)
+                , _(appt->start_tz_loc));
     }
-    else
-        g_warning ("%s: starttime wrong %s", G_STRFUNC, appt->uid);
+    else /* we should never get here */
+        g_warning ("%s: start_tz_loc is null", G_STRFUNC);
 
     /* end time */
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(
             apptw->End_checkbutton), appt->use_due_time);
-    if (strlen(appt->endtime) > 6 ) {
-        tm_date = orage_icaltime_to_tm_time(appt->endtime, TRUE);
-        enddate_to_display = orage_tm_date_to_i18_date(&tm_date);
-        gtk_button_set_label(GTK_BUTTON(apptw->EndDate_button)
-                , (const gchar *)enddate_to_display);
-        gtk_spin_button_set_value(
-                GTK_SPIN_BUTTON(apptw->EndTime_spin_hh)
-                        , (gdouble)tm_date.tm_hour);
-        gtk_spin_button_set_value(
-                GTK_SPIN_BUTTON(apptw->EndTime_spin_mm)
-                        , (gdouble)tm_date.tm_min);
+    if (appt->endtime) {
+        gdt = g_date_time_ref (appt->endtime);
+        g_object_set_data_full (G_OBJECT (apptw->EndDate_button),
+                                DATE_KEY, gdt,
+                                (GDestroyNotify)g_date_time_unref);
+        date_to_display = orage_gdatetime_to_i18_time (gdt, TRUE);
+        gtk_button_set_label (GTK_BUTTON (apptw->EndDate_button),
+                              date_to_display);
+        g_free (date_to_display);
+
+        gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->EndTime_spin_hh),
+                                   g_date_time_get_hour (gdt));
+        gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->EndTime_spin_mm),
+                                   g_date_time_get_minute (gdt));
+
         if (appt->end_tz_loc) {
             gtk_button_set_label(GTK_BUTTON(apptw->EndTimezone_button)
                     , _(appt->end_tz_loc));
@@ -1734,15 +1763,21 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
     /* completed time (only available for todo) */
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(
             apptw->Completed_checkbutton), appt->completed);
-    if (strlen(appt->completedtime) > 6 ) {
-        tm_date = orage_icaltime_to_tm_time(appt->completedtime, TRUE);
-        completeddate_to_display = orage_tm_date_to_i18_date(&tm_date);
-        gtk_button_set_label(GTK_BUTTON(apptw->CompletedDate_button)
-                , (const gchar *)completeddate_to_display);
-        gtk_spin_button_set_value(GTK_SPIN_BUTTON(apptw->CompletedTime_spin_hh)
-                , (gdouble)tm_date.tm_hour);
-        gtk_spin_button_set_value(GTK_SPIN_BUTTON(apptw->CompletedTime_spin_mm)
-                , (gdouble)tm_date.tm_min);
+    if (appt->completedtime) {
+        gdt = g_date_time_ref (appt->completedtime);
+        g_object_set_data_full (G_OBJECT (apptw->CompletedDate_button),
+                                DATE_KEY, gdt,
+                                (GDestroyNotify)g_date_time_unref);
+        date_to_display = orage_gdatetime_to_i18_time (gdt, TRUE);
+        gtk_button_set_label (GTK_BUTTON(apptw->CompletedDate_button),
+                              date_to_display);
+        g_free (date_to_display);
+
+        gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->CompletedTime_spin_hh),
+                                   g_date_time_get_hour (gdt));
+        gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->CompletedTime_spin_mm),
+                                   g_date_time_get_minute (gdt));
+
         if (appt->completed_tz_loc) {
             gtk_button_set_label(GTK_BUTTON(apptw->CompletedTimezone_button)
                     , _(appt->completed_tz_loc));
@@ -1754,77 +1789,134 @@ static void fill_appt_window_times(appt_win *apptw, xfical_appt *appt)
         g_warning ("%s: completedtime wrong %s", G_STRFUNC, appt->uid);
 }
 
-static xfical_appt *fill_appt_window_get_appt(appt_win *apptw
-    , const gchar *action, const gchar *par)
+static xfical_appt *fill_appt_window_get_new_appt (GDateTime *par_gdt)
 {
-    xfical_appt *appt=NULL;
-    struct tm *t;
-    gchar today[9];
+    xfical_appt *appt;
+    GDateTime *gdt_now;
+    gint hour;
+    gint minute;
+    gint par_year;
+    gint par_month;
+    gint par_day_of_month;
+    gint start_hour;
+    gint end_hour;
+    gint start_minute;
+    gint end_minute;
 
-    if (strcmp(action, "NEW") == 0) {
-/* par contains XFICAL_APPT_DATE_FORMAT (yyyymmdd) date for NEW appointment */
-        appt = xfical_appt_alloc();
-        t = orage_localtime();
-        g_snprintf(today, sizeof (today), "%04d%02d%02d",
-                   t->tm_year+1900, t->tm_mon+1, t->tm_mday);
-        /* If we're today, we propose an appointment the next half-hour */
-        /* hour 24 is wrong, we use 00 */
-        if (strcmp(par, today) == 0 && t->tm_hour < 23) { 
-            if (t->tm_min <= 30) {
-                g_snprintf(appt->starttime, sizeof (appt->starttime),
-                           "%sT%02d%02d00", par, t->tm_hour, 30);
-                g_snprintf(appt->endtime, sizeof (appt->endtime),
-                           "%sT%02d%02d00", par, t->tm_hour + 1, 00);
-            }
-            else {
-                g_snprintf(appt->starttime, sizeof (appt->starttime),
-                           "%sT%02d%02d00", par, t->tm_hour + 1, 00);
-                g_snprintf(appt->endtime, sizeof (appt->endtime),
-                           "%sT%02d%02d00", par, t->tm_hour + 1, 30);
-            }
+    appt = xfical_appt_alloc ();
+    gdt_now = g_date_time_new_now_local ();
+    hour = g_date_time_get_hour (gdt_now);
+
+    g_date_time_get_ymd (par_gdt, &par_year, &par_month, &par_day_of_month);
+    if (orage_gdatetime_compare_date (par_gdt, gdt_now) == 0 && (hour < 23))
+    {
+        /* If we're today, we propose an appointment the next half-hour hour
+         * 24 is wrong, we use 00.
+         */
+        minute = g_date_time_get_minute (gdt_now);
+        if (minute <= 30)
+        {
+            start_hour = hour;
+            start_minute = 30;
+            end_hour = hour + 1;
+            end_minute = 0;
         }
-        /* otherwise we suggest it at 09:00 in the morning. */
-        else {
-            g_snprintf(appt->starttime, sizeof (appt->starttime),
-                       "%sT090000", par);
-            g_snprintf(appt->endtime, sizeof (appt->endtime),
-                       "%sT093000", par);
-        }
-        if (g_par.local_timezone_utc)
-            appt->start_tz_loc = g_strdup("UTC");
-        else if (g_par.local_timezone) 
-            appt->start_tz_loc = g_strdup(g_par.local_timezone);
         else
-            appt->start_tz_loc = g_strdup("floating");
-        appt->end_tz_loc = g_strdup(appt->start_tz_loc);
-        appt->duration = 30*60;
-        /* use NOT completed by default for new TODO */
-        appt->completed = FALSE;
-        /* use duration by default for new appointments */
-        appt->use_duration = TRUE;
-        g_snprintf (appt->completedtime, sizeof (appt->completedtime),
-                    "%sT%02d%02d00", today, t->tm_hour, t->tm_min);
-        appt->completed_tz_loc = g_strdup(appt->start_tz_loc);
+        {
+            start_hour = hour + 1;
+            start_minute = 0;
+            end_hour = hour + 1;
+            end_minute = 30;
+        }
+    }
+    else
+    {
+        /* Otherwise we suggest it at 09:00 in the morning. */
+        start_hour = 9;
+        start_minute = 0;
+        end_hour = 9;
+        end_minute = 30;
+    }
 
-        read_default_alarm(appt);
+    orage_gdatetime_unref (appt->starttime);
+    appt->starttime = g_date_time_new_local (par_year, par_month,
+                                              par_day_of_month, start_hour,
+                                              start_minute, 0);
+
+    orage_gdatetime_unref (appt->endtime);
+    appt->endtime = g_date_time_new_local (par_year, par_month,
+                                            par_day_of_month, end_hour,
+                                            end_minute, 0);
+
+    if (g_par.local_timezone_utc)
+        appt->start_tz_loc = g_strdup ("UTC");
+    else if (g_par.local_timezone)
+        appt->start_tz_loc = g_strdup (g_par.local_timezone);
+    else
+        appt->start_tz_loc = g_strdup ("floating");
+
+    appt->end_tz_loc = g_strdup (appt->start_tz_loc);
+    appt->duration = 30*60;
+    /* use NOT completed by default for new TODO */
+    appt->completed = FALSE;
+    /* use duration by default for new appointments */
+    appt->use_duration = TRUE;
+    orage_gdatetime_unref (appt->completedtime);
+    appt->completedtime = gdt_now;
+    appt->completed_tz_loc = g_strdup (appt->start_tz_loc);
+
+    read_default_alarm (appt);
+
+    return appt;
+}
+
+static xfical_appt *fill_appt_window_update_appt (appt_win *apptw,
+                                                  const gchar *uid)
+{
+    xfical_appt *appt;
+
+    if (uid == NULL)
+    {
+        g_warning ("appointment with null id. Ending.");
+        return NULL;
     }
-    else if ((strcmp(action, "UPDATE") == 0) || (strcmp(action, "COPY") == 0)) {
-        /* par contains ical uid */
-        if (!par) {
-            g_message ("%s appointment with null id. Ending.", action);
-            return(NULL);
-        }
-        if (!xfical_file_open(TRUE))
-            return(NULL);
-        if ((appt = xfical_appt_get(par)) == NULL) {
-            orage_info_dialog(GTK_WINDOW(apptw->Window)
-                , _("This appointment does not exist.")
-                , _("It was probably removed, please refresh your screen."));
-        }
-        xfical_file_close(TRUE);
+
+    if (!xfical_file_open (TRUE))
+        return NULL;
+
+    appt = xfical_appt_get (uid);
+    if (appt == NULL)
+    {
+        orage_info_dialog (GTK_WINDOW (apptw->Window),
+                _("This appointment does not exist."),
+                _("It was probably removed, please refresh your screen."));
     }
-    else {
-        g_error("unknown parameter");
+
+    xfical_file_close (TRUE);
+
+    return appt;
+}
+
+static xfical_appt *fill_appt_window_get_appt(appt_win *apptw
+    , const appt_win_action action, const gchar *uid, GDateTime *par_gdt)
+{
+    xfical_appt *appt;
+
+    switch (action)
+    {
+        case NEW_APPT_WIN:
+            appt = fill_appt_window_get_new_appt (par_gdt);
+            break;
+
+        case UPDATE_APPT_WIN:
+        case COPY_APPT_WIN:
+            appt = fill_appt_window_update_appt (apptw, uid);
+            break;
+
+        default:
+            g_error ("unknown parameter %d", action);
+            appt = NULL;
+            break;
     }
 
     return(appt);
@@ -2219,7 +2311,7 @@ static void on_categories_button_clicked_cb (G_GNUC_UNUSED GtkWidget *button
 /**********************************************************/
 
 static void fill_appt_window_general(appt_win *apptw, xfical_appt *appt
-        , const gchar *action)
+        , const appt_win_action action)
 {
     int i;
 
@@ -2240,7 +2332,8 @@ static void fill_appt_window_general(appt_win *apptw, xfical_appt *appt
     gtk_entry_set_text(GTK_ENTRY(apptw->Title_entry)
             , (appt->title ? appt->title : ""));
 
-    if (strcmp(action, "COPY") == 0) {
+    if (action == COPY_APPT_WIN)
+    {
         gtk_editable_set_position(GTK_EDITABLE(apptw->Title_entry), -1);
         i = gtk_editable_get_position(GTK_EDITABLE(apptw->Title_entry));
         gtk_editable_insert_text(GTK_EDITABLE(apptw->Title_entry)
@@ -2362,11 +2455,11 @@ static void fill_appt_window_alarm(appt_win *apptw, xfical_appt *appt)
 
 static void fill_appt_window_recurrence(appt_win *apptw, xfical_appt *appt)
 {
-    char *untildate_to_display;
-    gchar *text;
+    gchar *untildate_to_display;
+    gdouble recur_count;
     GList *tmp;
+    GDateTime *gdt;
     xfical_exception *recur_exception;
-    struct tm tm_date;
     int i;
 
     gtk_combo_box_set_active(GTK_COMBO_BOX(apptw->Recur_freq_cb), appt->freq);
@@ -2374,36 +2467,35 @@ static void fill_appt_window_recurrence(appt_win *apptw, xfical_appt *appt)
         case 0: /* no limit */
             gtk_toggle_button_set_active(
                     GTK_TOGGLE_BUTTON(apptw->Recur_limit_rb), TRUE);
-            gtk_spin_button_set_value(
-                    GTK_SPIN_BUTTON(apptw->Recur_count_spin), (gdouble)1);
-            untildate_to_display = orage_localdate_i18();
-            gtk_button_set_label(GTK_BUTTON(apptw->Recur_until_button)
-                    , (const gchar *)untildate_to_display);
+            recur_count = 1;
+            gdt = g_date_time_new_now_local ();
             break;
         case 1: /* count */
             gtk_toggle_button_set_active(
                     GTK_TOGGLE_BUTTON(apptw->Recur_count_rb), TRUE);
-            gtk_spin_button_set_value(
-                    GTK_SPIN_BUTTON(apptw->Recur_count_spin)
-                    , (gdouble)appt->recur_count);
-            untildate_to_display = orage_localdate_i18();
-            gtk_button_set_label(GTK_BUTTON(apptw->Recur_until_button)
-                    , (const gchar *)untildate_to_display);
+            recur_count = appt->recur_count;
+            gdt = g_date_time_new_now_local ();
             break;
         case 2: /* until */
             gtk_toggle_button_set_active(
                     GTK_TOGGLE_BUTTON(apptw->Recur_until_rb), TRUE);
-            gtk_spin_button_set_value(
-                    GTK_SPIN_BUTTON(apptw->Recur_count_spin), (gdouble)1);
-            tm_date = orage_icaltime_to_tm_time(appt->recur_until, TRUE);
-            untildate_to_display = orage_tm_date_to_i18_date(&tm_date);
-            gtk_button_set_label(GTK_BUTTON(apptw->Recur_until_button)
-                    , (const gchar *)untildate_to_display);
+            recur_count = 1;
+            gdt = g_date_time_ref (appt->recur_until);
             break;
         default: /* error */
-            g_warning ("%s: Unsupported recur_limit %d", G_STRFUNC,
-                       appt->recur_limit);
+            g_error ("%s: Unsupported recur_limit %d", G_STRFUNC,
+                      appt->recur_limit);
     }
+
+    gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->Recur_count_spin),
+                               recur_count);
+    untildate_to_display = orage_gdatetime_to_i18_time (gdt, TRUE);
+    g_object_set_data_full (G_OBJECT (apptw->Recur_until_button),
+                            DATE_KEY, gdt,
+                            (GDestroyNotify)g_date_time_unref);
+    gtk_button_set_label (GTK_BUTTON(apptw->Recur_until_button),
+                          untildate_to_display);
+    g_free (untildate_to_display);
 
     /* weekdays */
     for (i=0; i <= 6; i++) {
@@ -2445,62 +2537,78 @@ static void fill_appt_window_recurrence(appt_win *apptw, xfical_appt *appt)
          tmp != NULL;
          tmp = g_list_next(tmp)) {
         recur_exception = (xfical_exception *)tmp->data;
-        text = g_strdup(orage_icaltime_to_i18_time(recur_exception->time));
-        add_recur_exception_row(text, recur_exception->type, apptw, TRUE);
-        g_free(text);
+        add_recur_exception_row (recur_exception, apptw, TRUE);
     }
     /* note: include times is setup in the fill_appt_window_times */
 }
 
-/* Fill appointment window with data */
-static gboolean fill_appt_window(appt_win *apptw, const gchar *action,
-                                 const gchar *par)
+/** Fill appointment window with data. */
+static gboolean fill_appt_window (appt_win *apptw, const appt_win_action action,
+                                  const gchar *par, GDateTime *gdt_par)
 {
+    const gchar *action_str;
     xfical_appt *appt;
-    struct tm *t;
+    gchar *appointment_id;
 
     /********************* INIT *********************/
-    g_message ("%s appointment: %s", action, par);
-    if ((appt = fill_appt_window_get_appt(apptw, action, par)) == NULL) {
+    appt = fill_appt_window_get_appt (apptw, action, par, gdt_par);
+    if (appt == NULL) {
         return(FALSE);
     }
     apptw->xf_appt = appt;
 
-    /* first flags */
+    switch (action)
+    {
+        case NEW_APPT_WIN:
+            action_str = "NEW";
+            apptw->appointment_add = TRUE;
+            apptw->appointment_new = TRUE;
+            appointment_id = orage_gdatetime_to_i18_time (gdt_par, TRUE);
+            break;
+
+        case UPDATE_APPT_WIN:
+            action_str = "UPDATE";
+            apptw->appointment_add = FALSE;
+            apptw->appointment_new = FALSE;
+            appointment_id = g_strdup (par);
+            break;
+
+        case COPY_APPT_WIN:
+            action_str = "COPY";
+
+            /* COPY uses old uid as base and adds new, so
+             * add == TRUE && new == FALSE
+             */
+            apptw->appointment_add = TRUE;
+            apptw->appointment_new = FALSE;
+
+            /* New copy is never readonly even though the original may have
+             * been.
+             */
+            appt->readonly = FALSE;
+            appointment_id = g_strdup (par);
+            break;
+
+        default:
+            g_free (appt);
+            apptw->xf_appt = NULL;
+            g_error ("%s: unknown parameter %d", G_STRFUNC, action);
+            return FALSE;
+    }
+
+    g_message ("%s appointment: '%s'", action_str, appointment_id);
+    g_free (appointment_id);
     apptw->xf_uid = g_strdup(appt->uid);
-    apptw->par = g_strdup((const gchar *)par);
+    g_date_time_unref (apptw->appointment_time);
+    apptw->appointment_time = g_date_time_ref (gdt_par);
     apptw->appointment_changed = FALSE;
-    if (strcmp(action, "NEW") == 0) {
-        apptw->appointment_add = TRUE;
-        apptw->appointment_new = TRUE;
-    }
-    else if (strcmp(action, "UPDATE") == 0) {
-        apptw->appointment_add = FALSE;
-        apptw->appointment_new = FALSE;
-    }
-    else if (strcmp(action, "COPY") == 0) {
-        /* COPY uses old uid as base and adds new, so
-         * add == TRUE && new == FALSE */
-        apptw->appointment_add = TRUE;
-        apptw->appointment_new = FALSE;
-        /* new copy is never readonly even though the original may have been */
-        appt->readonly = FALSE; 
-    }
-    else {
-        g_error ("%s: unknown parameter", G_STRFUNC);
-        g_free(appt);
-        apptw->xf_appt = NULL;
-        return(FALSE);
-    }
+
     if (apptw->appointment_add) {
         add_file_select_cb(apptw);
     }
     if (!appt->completed) { /* some nice default */
-        t = orage_localtime(); /* probably completed today? */
-        g_snprintf(appt->completedtime, sizeof (appt->completedtime),
-                   XFICAL_APPT_TIME_FORMAT,
-                   t->tm_year+1900, t->tm_mon+1 , t->tm_mday, t->tm_hour,
-                   t->tm_min, 0);
+        orage_gdatetime_unref (appt->completedtime);
+        appt->completedtime = g_date_time_new_now_local (); /* probably completed today? */
         g_free(appt->completed_tz_loc);
         appt->completed_tz_loc = g_strdup(appt->start_tz_loc);
     }
@@ -2668,13 +2776,58 @@ static void read_default_alarm(xfical_appt *appt)
     orage_rc_file_close(orc);
 }
 
+static gboolean is_same_date (GDateTime *gdt1, GDateTime *gdt2)
+{
+    if (g_date_time_get_year (gdt1) != g_date_time_get_year (gdt2))
+        return FALSE;
+
+    if (g_date_time_get_day_of_year (gdt1) != g_date_time_get_day_of_year (gdt2))
+        return FALSE;
+
+    return TRUE;
+}
+
+static gchar *create_action_time (xfical_appt *appt)
+{
+    gchar *action_time;
+    gboolean all_day;
+    gchar *start_str;
+    gchar *end_str;
+
+    if (g_date_time_compare (appt->starttime, appt->endtime) == 0)
+    {
+        action_time = orage_gdatetime_to_i18_time (appt->starttime, FALSE);
+        return action_time;
+    }
+
+    if (appt->allDay == TRUE)
+    {
+        if (is_same_date (appt->starttime, appt->endtime) == TRUE)
+        {
+            action_time = orage_gdatetime_to_i18_time (appt->starttime, TRUE);
+            return action_time;
+        }
+        all_day = TRUE;
+    }
+    else
+        all_day = FALSE;
+
+    start_str = orage_gdatetime_to_i18_time (appt->starttime, all_day);
+    end_str = orage_gdatetime_to_i18_time (appt->endtime, all_day);
+
+    action_time = g_strconcat (start_str, " - ", end_str, NULL);
+    g_free (start_str);
+    g_free (end_str);
+
+    return action_time;
+}
+
 static void on_test_button_clicked_cb (G_GNUC_UNUSED GtkButton *button
         , gpointer user_data)
 {
     appt_win *apptw = (appt_win *)user_data;
     xfical_appt *appt = (xfical_appt *)apptw->xf_appt;
     alarm_struct cur_alarm;
-    gchar *tmp1, *tmp2;
 
     fill_appt_from_apptw(appt, apptw);
 
@@ -2684,11 +2837,9 @@ static void on_test_button_clicked_cb (G_GNUC_UNUSED GtkButton *button
         cur_alarm.uid = g_strdup(appt->uid);
     else
         cur_alarm.uid = NULL;
-    tmp1  = g_strdup(orage_icaltime_to_i18_time(appt->starttime));
-    tmp2  = g_strdup(orage_icaltime_to_i18_time(appt->endtime));
-    cur_alarm.action_time = g_strconcat(tmp1, " - ", tmp2, NULL);
-    g_free(tmp1);
-    g_free(tmp2);
+
+    cur_alarm.action_time = create_action_time (appt);
+
     cur_alarm.title = g_strdup(appt->title);
     cur_alarm.description = g_strdup(appt->note);
     cur_alarm.persistent = appt->alarm_persistent;
@@ -3741,7 +3892,8 @@ static void enable_recurrence_page_signals(appt_win *apptw)
             , G_CALLBACK(recur_day_selected_double_click_cb), apptw);
 }
 
-appt_win *create_appt_win(gchar *action, gchar *par)
+appt_win *create_appt_win (const appt_win_action action, const gchar *par,
+                           GDateTime *gdt_par)
 {
     appt_win *apptw;
     GdkWindow *window;
@@ -3749,7 +3901,7 @@ appt_win *create_appt_win(gchar *action, gchar *par)
     /*  initialisation + main window + base vbox */
     apptw = g_new(appt_win, 1);
     apptw->xf_uid = NULL;
-    apptw->par = NULL;
+    apptw->appointment_time = g_date_time_new_now_local ();
     apptw->xf_appt = NULL;
     apptw->el = NULL;
     apptw->dw = NULL;
@@ -3757,9 +3909,9 @@ appt_win *create_appt_win(gchar *action, gchar *par)
     apptw->accel_group = gtk_accel_group_new();
 
     apptw->Window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-    /*
+#if 0
     gtk_window_set_default_size(GTK_WINDOW(apptw->Window), 450, 325);
-    */
+#endif
     gtk_window_add_accel_group(GTK_WINDOW(apptw->Window), apptw->accel_group);
 
     apptw->Vbox = gtk_grid_new ();
@@ -3780,7 +3932,7 @@ appt_win *create_appt_win(gchar *action, gchar *par)
     g_signal_connect((gpointer)apptw->Window, "delete-event"
             , G_CALLBACK(on_appWindow_delete_event_cb), apptw);
 
-    if (fill_appt_window(apptw, action, par)) { /* all fine */
+    if (fill_appt_window(apptw, action, par, gdt_par)) { /* all fine */
         enable_general_page_signals(apptw);
         enable_alarm_page_signals(apptw);
         enable_recurrence_page_signals(apptw);
