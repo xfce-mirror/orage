@@ -1365,3 +1365,28 @@ gboolean orage_str_to_rgba (const gchar *color_str,
 
     return result;
 }
+
+gboolean orage_is_debug_logging_enabled (void)
+{
+    static gboolean enabled = FALSE;
+    static gboolean visited = FALSE;
+    const gchar *domains;
+    const gchar *log_domain = G_LOG_DOMAIN;
+
+    if (visited)
+        return enabled;
+
+    domains = g_getenv ("G_MESSAGES_DEBUG");
+    if (domains == NULL)
+        enabled = FALSE;
+    else if (strcmp (domains, "all") == 0)
+        enabled = TRUE;
+    else if (log_domain != NULL && strstr (domains, log_domain))
+        enabled = TRUE;
+    else
+        enabled = FALSE;
+
+    visited = TRUE;
+
+    return enabled;
+}
