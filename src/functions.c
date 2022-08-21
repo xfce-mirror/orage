@@ -997,8 +997,8 @@ OrageRc *orage_rc_file_open (const gchar *fpath, gboolean read_only)
         orc->cur_group = NULL;
     }
     else {
-        g_debug ("%s: Unable to open RC file (%s). Creating it. (%s)",
-                 G_STRFUNC, fpath, error->message);
+        g_warning ("Unable to open RC file (%s). Creating it. (%s)", fpath,
+                   error->message);
 
         g_clear_error(&error);
         if (g_file_set_contents(fpath, "#Created by Orage", -1
@@ -1010,8 +1010,8 @@ OrageRc *orage_rc_file_open (const gchar *fpath, gboolean read_only)
             orc->cur_group = NULL;
         }
         else {
-            g_debug ("%s: Unable to open (create) RC file (%s). (%s)",
-                     G_STRFUNC, fpath, error->message);
+            g_warning ("Unable to open (create) RC file (%s). (%s)", fpath,
+                       error->message);
             g_key_file_free(grc);
             g_error_free (error);
         }
@@ -1087,9 +1087,9 @@ gchar *orage_rc_get_str(OrageRc *orc, const gchar *key, const gchar *def)
     ret = g_key_file_get_string (orc->rc, orc->cur_group, key, &error);
     if (!ret && error) {
         ret = g_strdup(def);
-        g_debug ("%s: str (%s) group (%s) in RC file (%s) not found, "
-                 "using default (%s)", G_STRFUNC, key, orc->cur_group,
-                 orc->file_name, ret);
+        g_warning ("str (%s) group (%s) in RC file (%s) not found, "
+                   "using default (%s)", key, orc->cur_group,
+                   orc->file_name, ret);
         g_error_free (error);
     }
     return(ret);
@@ -1103,9 +1103,9 @@ gint orage_rc_get_int (OrageRc *orc, const gchar *key, const gint def)
     ret = g_key_file_get_integer (orc->rc, orc->cur_group, key, &error);
     if (!ret && error) {
         ret = def;
-        g_debug ("%s: str (%s) group (%s) in RC file (%s) not found, "
-                 "using default (%d)", G_STRFUNC, key, orc->cur_group,
-                 orc->file_name, ret);
+        g_warning ("str (%s) group (%s) in RC file (%s) not found, "
+                   "using default (%d)", key, orc->cur_group, orc->file_name,
+                 ret);
         g_error_free (error);
     }
     return(ret);
@@ -1119,9 +1119,9 @@ gboolean orage_rc_get_bool (OrageRc *orc, const gchar *key, const gboolean def)
     ret = g_key_file_get_boolean (orc->rc, orc->cur_group, key, &error);
     if (!ret && error) {
         ret = def;
-        g_debug ("%s: str (%s) group (%s) in RC file (%s) not found, "
-                 "using default (%d)", G_STRFUNC, key, orc->cur_group,
-                 orc->file_name, ret);
+        g_warning ("str (%s) group (%s) in RC file (%s) not found, "
+                   "using default (%d)", key, orc->cur_group, orc->file_name,
+                   ret);
         g_error_free (error);
     }
     return(ret);
@@ -1137,9 +1137,8 @@ GDateTime *orage_rc_get_gdatetime (OrageRc *orc, const gchar *key, GDateTime *de
     if ((ret == NULL) && error)
     {
         gdt = def ? g_date_time_ref (def) : NULL;
-        g_debug ("%s: str (%s) group (%s) in RC file (%s) not found, "
-                 "using default", G_STRFUNC, key, orc->cur_group,
-                 orc->file_name);
+        g_warning ("str (%s) group (%s) in RC file (%s) not found, "
+                   "using default", key, orc->cur_group, orc->file_name);
         g_error_free (error);
     }
     else
