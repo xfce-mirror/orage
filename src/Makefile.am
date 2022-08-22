@@ -43,14 +43,16 @@ orage_SOURCES =							\
 	xfical_exception.h
 
 liborage_la_CPPFLAGS =						\
-	-DPACKAGE_DATA_DIR=\""$(datadir)"\"
+	-DPACKAGE_DATA_DIR=\""$(datadir)"\"		        \
+	-DG_LOG_DOMAIN=\"liborage\"
 	
 liborage_la_CFLAGS =						\
 	$(LIBGTK_CFLAGS)
 	
 orage_CPPFLAGS =						\
 	-DPACKAGE_DATA_DIR=\""$(datadir)"\"			\
-	-DPACKAGE_LOCALE_DIR=\""$(localedir)"\"
+	-DPACKAGE_LOCALE_DIR=\""$(localedir)"\"			\
+	-DG_LOG_DOMAIN=\"orage\"
 
 orage_CFLAGS =							\
 	$(LIBGTK_CFLAGS)					\
