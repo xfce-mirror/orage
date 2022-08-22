@@ -241,4 +241,10 @@ gboolean orage_str_to_rgba (const gchar *color_str,
                              GdkRGBA *rgba,
                              const gchar *def);
 
+/** Tests if debug messages are printed out.
+ *  @return true when debug messages is printed out, false if not.
+ */
+gboolean orage_is_debug_logging_enabled (void);
+
+
 #endif /* !__ORAGE_FUNCTIONS_H__ */

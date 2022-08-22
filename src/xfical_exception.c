@@ -46,10 +46,13 @@ xfical_exception *xfical_exception_new (GDateTime *gdt,
     except->all_day = all_day;
     except->ref_count = 1;
 
-    time = orage_gdatetime_to_i18_time (gdt, FALSE);
-    g_debug ("  NEW exception: %p, refcount=%d, gdt=%p, time='%s'",
-             except, except->ref_count, gdt, time);
-    g_free (time);
+    if (orage_is_debug_logging_enabled ())
+    {
+        time = orage_gdatetime_to_i18_time (gdt, FALSE);
+        g_debug ("  NEW exception: %p, refcount=%d, gdt=%p, time='%s'",
+                 except, except->ref_count, gdt, time);
+        g_free (time);
+    }
 
     return except;
 }
@@ -64,11 +67,14 @@ xfical_exception *xfical_exception_ref (xfical_exception *except)
 
     g_atomic_int_inc (&except->ref_count);
 
-    gdt = except->time;
-    time = orage_gdatetime_to_i18_time (gdt, FALSE);
-    g_debug ("  REF exception: %p, refcount=%d, gdt=%p, time='%s'",
-             except, except->ref_count, gdt, time);
-    g_free (time);
+    if (orage_is_debug_logging_enabled ())
+    {
+        gdt = except->time;
+        time = orage_gdatetime_to_i18_time (gdt, FALSE);
+        g_debug ("  REF exception: %p, refcount=%d, gdt=%p, time='%s'",
+                 except, except->ref_count, gdt, time);
+        g_free (time);
+    }
 
     return except;
 }
@@ -80,10 +86,13 @@ void xfical_exception_unref (xfical_exception *except)
     g_return_if_fail (except != NULL);
     g_return_if_fail (except->ref_count > 0);
 
-    time = orage_gdatetime_to_i18_time (except->time, FALSE);
-    g_debug ("UNREF exception: %p, refcount=%d, gdt=%p, time='%s'",
-             except, except->ref_count, except->time, time);
-    g_free (time);
+    if (orage_is_debug_logging_enabled ())
+    {
+        time = orage_gdatetime_to_i18_time (except->time, FALSE);
+        g_debug ("UNREF exception: %p, refcount=%d, gdt=%p, time='%s'",
+                 except, except->ref_count, except->time, time);
+        g_free (time);
+    }
 
     if (g_atomic_int_dec_and_test (&except->ref_count))
     {
@@ -98,7 +107,8 @@ GDateTime *xfical_exception_get_time (const xfical_exception *recur_exception)
     return recur_exception->time;
 }
 
-xfical_exception_type xfical_exception_get_type (const xfical_exception *recur_exception)
+xfical_exception_type xfical_exception_get_type (
+    const xfical_exception *recur_exception)
 {
     return recur_exception->type;
 }
@@ -128,7 +138,7 @@ gchar *xfical_exception_to_i18 (const xfical_exception *recur_exception)
 
     p_time = orage_gdatetime_to_i18_time (recur_exception->time,
                                           recur_exception->all_day);
-    text = g_strdup_printf("%s %c", p_time, type_chr);
+    text = g_strdup_printf ("%s %c", p_time, type_chr);
     g_free (p_time);
 
     return text;
