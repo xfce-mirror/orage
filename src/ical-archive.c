@@ -52,13 +52,9 @@
 #include <gtk/gtk.h>
 #include <glib/gprintf.h>
 #include <glib/gstdio.h>
-#ifdef HAVE_LIBICAL
+
 #include <libical/ical.h>
 #include <libical/icalss.h>
-#else
-#include <ical.h>
-#include <icalss.h>
-#endif
 
 #include "orage-i18n.h"
 #include "functions.h"
