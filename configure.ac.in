@@ -92,6 +92,7 @@ AC_DEFINE(GLIB_VERSION_MIN_REQUIRED, GLIB_VERSION_2_52, Don't warn about post 2_
 XDT_CHECK_PACKAGE([GLIB], [glib-2.0], [glib_minimum_version])
 XDT_CHECK_PACKAGE([LIBGTK], [gtk+-3.0], [gtk_minimum_version])
 XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [xfce_minimum_version])
+XDT_CHECK_PACKAGE([LIBICAL], [libical], [libical_minimum_version])
 
 dnl ************************************************
 dnl *** Optional support for Xfce Panel          ***
@@ -102,128 +103,6 @@ XDT_CHECK_OPTIONAL_PACKAGE([LIBXFCE4PANEL], [libxfce4panel-2.0],
 
 if test x"$LIBXFCE4PANEL_FOUND" = x"yes"; then
    XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-2], [xfce_minimum_version])
-fi
-
-dnl *********************************************
-dnl *** Optional support for external libical ***
-dnl *********************************************
-dnl *** This is optional NOW, but will become mandatory after external
-dnl *** libical can do what Orage internal version can do or Orage works
-dnl *** with it.
-XDT_CHECK_OPTIONAL_PACKAGE([LIBICAL], [libical],
-                           [libical_minimum_version], [libical],
-                           [LIBICAL support])
-
-if test x"$LIBICAL_FOUND" = x"yes"; then
-echo "* LIBICAL support:           yes"
-else
-echo "* LIBICAL support:           no"
-dnl the ical magic
-ac_TZ_CONVERT_CHECKS=yes
-
-dnl Check for additional programs (libical)
-AC_CHECK_PROGS([AR], [ar aal], [ar])
-AC_CHECK_PROGS([PERL], [perl5 perl])
-
-AC_MSG_CHECKING(for Berkeley DB4 support)
-AC_ARG_WITH(bdb4, [  --with-bdb4             Add support for Berkeley DB 4.0],
-[case $with_bdb4 in
-    yes)	AC_MSG_RESULT(yes)
-    AC_MSG_RESULT(  Adding Berkeley DB support)
-    WITH_BDB4="yes"
-    ;;
-    no)		AC_MSG_RESULT(no)
-    ;;
-    *)		AC_MSG_RESULT(no)
-    AC_MSG_RESULT(Ignoring unknown argument to --with-bdb4: $with_bdb4)
-    ;;
-esac],
-AC_MSG_RESULT(no))
-
-if test x$WITH_BDB4 = xyes; then
-  AC_ARG_WITH(bdb4_dir, [  --with-bdb4-dir=PATH    Use PATH as location of BerkeleyDB 4.0],
-     BDB_DIR=$withval,
-     BDB_DIR=/usr/local/BerkeleyDB.4.0
-  )
-
-  AC_MSG_CHECKING(for Berkeley DB include files)
-  if test -f $BDB_DIR/include/db.h; then
-   BDB_DIR_INCLUDE=$BDB_DIR/include
-   AC_MSG_RESULT($BDB_DIR_INCLUDE)
-  else
-    if test -f $BDB_DIR/include/db4/db.h; then
-     BDB_DIR_INCLUDE=$BDB_DIR/include/db4
-     AC_MSG_RESULT($BDB_DIR_INCLUDE)
-    else
-     WITH_BDB4="no"
-     AC_MSG_RESULT(not found!)
-    fi
-  fi
-
-  AC_MSG_CHECKING(for Berkeley DB libraries)
-  if test -f $BDB_DIR/lib/libdb-4.0.la; then
-   BDB_DIR_LIB=$BDB_DIR/lib
-   BDB_LIB=libdb-4.0.la
-   AC_MSG_RESULT($BDB_DIR_LIB $BDB_LIB)
-  else
-    if test -f $BDB_DIR/lib/libdb4.la; then
-     BDB_DIR_LIB=$BDB_DIR/lib
-     BDB_LIB=libdb4.la
-     AC_MSG_RESULT($BDB_DIR_LIB $BDB_LIB)
-    else
-     WITH_BDB4="no"
-     AC_MSG_RESULT(not found!)
-    fi
-  fi
-
-  AC_SUBST(BDB_DIR)
-  AC_SUBST(BDB_DIR_INCLUDE)
-  AC_SUBST(BDB_DIR_LIB)
-  AC_SUBST(BDB_LIB)
-  dnl 4.0 is required...
-  BDB_VERSION="4.0"
-  AC_SUBST(BDB_VERSION)
-fi
-
-AC_MSG_CHECKING(whether to define _REENTRANT)
-AC_ARG_ENABLE(reentrant, [  --enable-reentrant      define _REENTRANT to enable reentrant system calls],
-[ case "${enableval}" in
-  no)
-    AC_MSG_RESULT(no)
-    ac_cv_reentrant=no
-    ;;
-  *)
-    AC_MSG_RESULT(yes)
-    AC_DEFINE([ICAL_REENTRANT], ,[Define if we want _REENTRANT]) [CFLAGS="$CFLAGS -D_REENTRANT"]
-    ac_cv_reentrant=yes
-    ;;
-  esac ],
-  AC_MSG_RESULT(no)
-)
-case "${host}" in
-        *-*-freebsdelf4* )
-    AC_MSG_RESULT(checking for pthread_create in -lpthread... -pthread (FreeBSD 4.x style))
-    AC_DEFINE(HAVE_PTHREAD, ,[Define if we have pthread.])
-    PTHREAD_LIBS=-pthread;;
-
-  *)
-  AC_CHECK_LIB([pthread], [pthread_create], [have_pthread=yes])
-  if test "x$have_pthread" = xyes; then
-     AC_DEFINE(HAVE_PTHREAD, ,[Define if we have pthread.])
-     PTHREAD_LIBS=-lpthread
-  fi;;
-esac
-AC_SUBST([PTHREAD_LIBS])
-LIBICAL_DIRS="
-libical/Makefile
-libical/design-data/Makefile
-libical/doc/Makefile
-libical/scripts/Makefile
-libical/src/Makefile
-libical/src/libical/Makefile
-libical/src/libical/icalversion.h
-libical/src/libicalss/Makefile
-libical/zoneinfo/Makefile"
 fi
 
 dnl **********************************
@@ -240,9 +119,6 @@ if test "$nl_ok" = "yes"; then
   AC_DEFINE([HAVE__NL_TIME_FIRST_WEEKDAY], [1],
       [Define if _NL_TIME_FIRST_WEEKDAY is available])
 fi
-
-AM_CONDITIONAL([HAVE_PTHREAD], [test x"$have_pthread" = x"yes"])
-AM_CONDITIONAL([WITH_BDB4], [test x"$WITH_BDB4" = x"yes"])
 
 dnl **********************************
 dnl *** Optional support for D-BUS ***
