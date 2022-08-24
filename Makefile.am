@@ -2,16 +2,11 @@ ACLOCAL_AMFLAGS = -I m4
 
 AUTOMAKE_OPTIONS = 1.8 dist-bzip2
 
-if INCLUDED_LIBICAL
-LIBICAL_SUBDIR = libical
-endif
-
 if BUILD_TZ_CONVERT
 TZ_CONVERT_SUBDIR = tz_convert
 endif
 
-SUBDIRS = $(LIBICAL_SUBDIR)	\
-	icons			\
+SUBDIRS = icons			\
 	po			\
 	sounds			\
 	src			\

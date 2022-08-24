@@ -119,7 +119,6 @@ echo "* LIBICAL support:           yes"
 else
 echo "* LIBICAL support:           no"
 dnl the ical magic
-ac_INCLUDED_LIBICAL=yes
 ac_TZ_CONVERT_CHECKS=yes
 
 dnl Check for additional programs (libical)
@@ -242,7 +241,6 @@ if test "$nl_ok" = "yes"; then
       [Define if _NL_TIME_FIRST_WEEKDAY is available])
 fi
 
-AM_CONDITIONAL([INCLUDED_LIBICAL], [test x"$ac_INCLUDED_LIBICAL" = x"yes"])
 AM_CONDITIONAL([HAVE_PTHREAD], [test x"$have_pthread" = x"yes"])
 AM_CONDITIONAL([WITH_BDB4], [test x"$WITH_BDB4" = x"yes"])
 
@@ -304,25 +302,8 @@ dnl Check for debugging support
 dnl BM_DEBUG_SUPPORT()
 XDT_FEATURE_DEBUG
 
-dnl the intention was to use variable
-dnl $LIBICAL_DIRS
-dnl to control if libical is being compiled or not, but only very
-dnl recent autotools can have such variables in AC_OUTPUT.
-dnl Reverting back to full list until time is right for using it.
-dnl This causes some extra work at compile time, but should not cause
-dnl any issues to users.
-
 AC_CONFIG_FILES([
 Makefile
-libical/Makefile
-libical/design-data/Makefile
-libical/doc/Makefile
-libical/scripts/Makefile
-libical/src/Makefile
-libical/src/libical/Makefile
-libical/src/libical/icalversion.h
-libical/src/libicalss/Makefile
-libical/zoneinfo/Makefile
 icons/Makefile
 icons/16x16/Makefile
 icons/24x24/Makefile

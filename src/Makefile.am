@@ -57,31 +57,17 @@ orage_CPPFLAGS =						\
 orage_CFLAGS =							\
 	$(LIBGTK_CFLAGS)					\
 	$(LIBX11_CFLAGS)					\
-	$(LIBXFCE4UTIL_CFLAGS)
+	$(LIBXFCE4UTIL_CFLAGS)					\
+	$(LIBICAL_CFLAGS)
 
 orage_LDADD =							\
 	$(LIBGTK_LIBS)						\
 	$(LIBX11_LIBS)						\
 	$(LIBXFCE4UTIL_LIBS)					\
+	$(LIBICAL_LIBS)						\
 	-lm							\
 	$(INTLLIBS)						\
 	liborage.la
-
-if INCLUDED_LIBICAL
-orage_CPPFLAGS +=						\
-	-I$(top_builddir)/libical/src/libical			\
-	-I$(top_builddir)/libical/src/libicalss			\
-	-I$(top_srcdir)/libical/src/libical			\
-	-I$(top_srcdir)/libical/src/libicalss
-
-orage_LDADD +=							\
-	$(PTHREAD_LIBS)										\
-	$(top_builddir)/libical/src/libical/libical.la		\
-	$(top_builddir)/libical/src/libicalss/libicalss.la
-else
-orage_CFLAGS +=	$(LIBICAL_CFLAGS)
-orage_LDADD += $(LIBICAL_LIBS)
-endif
 
 if HAVE_DBUS
 orage_dbus_sources =						\
