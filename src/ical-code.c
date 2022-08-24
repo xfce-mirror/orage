@@ -3118,9 +3118,6 @@ static void mark_calendar (G_GNUC_UNUSED icalcomponent *c,
 
     if (cal_data->appt.freq != XFICAL_FREQ_HOURLY
     &&  g_date_time_get_hour (gdt_start) != cal_data->orig_start_hour) {
-        g_debug ("%s: FIXING WRONG HOUR Title (%s) %d -> %d (day %d)",
-                 G_STRFUNC, cal_data->appt.title, g_date_time_get_hour (gdt_start),
-                 cal_data->orig_start_hour, g_date_time_get_day_of_month (gdt_start));
         /* WHEN we arrive here, libical has done an extra UTC conversion,
           which we need to undo */
         sdate = convert_to_zone(sdate, "UTC");
@@ -3388,9 +3385,6 @@ static void add_appt_to_list(icalcomponent *c, icaltime_span *span , void *data)
        hour with the hour from start time */
     if (appt->freq != XFICAL_FREQ_HOURLY
     &&  g_date_time_get_hour (gdt_start) != data1->orig_start_hour) {
-        g_debug ("%s: FIXING WRONG HOUR Title (%s) %d -> %d (day %d)",
-                 G_STRFUNC, appt->title, g_date_time_get_hour (gdt_start),
-                 data1->orig_start_hour, g_date_time_get_day_of_month (gdt_start));
         /* WHEN we arrive here, libical has done an extra UTC conversion,
            which we need to undo */
         sdate = convert_to_zone(sdate, "UTC");
