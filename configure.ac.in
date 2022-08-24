@@ -258,19 +258,6 @@ XDT_CHECK_OPTIONAL_PACKAGE([NOTIFY], [libnotify],
                            [notify_minimum_version], [libnotify],
                            [LIBNOTIFY support])
 
-dnl **************************************
-dnl *** Check support for libpopt      ***
-dnl **************************************
-XDT_CHECK_OPTIONAL_PACKAGE([LIBPOPT], [popt],
-                           [libpopt_minimum_version], [libpopt],
-                           [LIBPOPT support])
-
-if test x"$ac_TZ_CONVERT_CHECKS" = x"yes" && test x"$LIBPOPT_FOUND" = x"yes"; then
-ac_BUILD_TZ_CONVERT=yes
-fi
-
-AM_CONDITIONAL([BUILD_TZ_CONVERT], [test x"$ac_BUILD_TZ_CONVERT" = x"yes"])
-
 dnl ************************************************
 dnl *** Optional support for automatic archiving ***
 dnl ************************************************
@@ -319,7 +306,6 @@ src/Makefile
 plugin/Makefile
 panel-plugin/Makefile
 globaltime/Makefile
-tz_convert/Makefile
 ])
 AC_OUTPUT
 
@@ -338,16 +324,6 @@ if test x"$NOTIFY_FOUND" = x"yes"; then
 echo "* LIBNOTIFY support:         yes"
 else
 echo "* LIBNOTIFY support:         no"
-fi
-if test x"$LIBICAL_FOUND" = x"yes"; then
-echo "* LIBICAL support:           yes, and not building tz_convert "
-else
-echo "* LIBICAL support:           no. Using Orage local libical"
-if test x"$LIBPOPT_FOUND" = x"yes"; then
-echo "* libpopt available:         yes, building tz_convert"
-else
-echo "* libpopt not available:     no, not building tz_convert"
-fi
 fi
 echo "* Automatic archiving:       $have_archive"
 if test x"$LIBXFCE4PANEL_FOUND" = x"yes"; then

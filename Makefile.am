@@ -2,18 +2,13 @@ ACLOCAL_AMFLAGS = -I m4
 
 AUTOMAKE_OPTIONS = 1.8 dist-bzip2
 
-if BUILD_TZ_CONVERT
-TZ_CONVERT_SUBDIR = tz_convert
-endif
-
 SUBDIRS = icons			\
 	po			\
 	sounds			\
 	src			\
 	globaltime		\
 	plugin			\
-	panel-plugin		\
-	$(TZ_CONVERT_SUBDIR)
+	panel-plugin
 
 desktopdir = $(datadir)/applications
 desktop_in_files = org.xfce.orage.desktop.in
