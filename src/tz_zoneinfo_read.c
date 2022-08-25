@@ -310,21 +310,11 @@ static int timezone_exists_in_ical(void)
      We will search if it exists also in the ical zones.tab file */
   /* new libical checks os zone.tab file, so we need to use that if using
      that library instead of our own private libical */
-
-#ifdef HAVE_LIBICAL
     if (strchr(in_timezone_name, '/')
         && strstr(zone_tab_buf, in_timezone_name))
         return(1); /* yes, it is there */
     else
         return(0); /* not found */
-#else
-    if (!zones_tab_buf)
-        return(0);
-    if (strstr(zones_tab_buf, in_timezone_name))
-        return(1); /* yes, it is there */
-    else
-        return(0); /* not found */
-#endif
 }
 
 /* FIXME: need to check that if OUTFILE is given as a parameter,
@@ -771,37 +761,6 @@ static void read_countries(void)
     fclose(country_file);
 }
 
-#ifndef HAVE_LIBICAL
-static void read_ical_timezones(void)
-{
-    FILE *zones_tab_file;
-    struct stat zones_tab_file_stat;
-
-    /****** zones.tab file ******/
-    if (!(zones_tab_file = fopen(ICAL_ZONES_TAB_FILE_LOC, "r"))) {
-        g_warning ("zones.tab file open failed (%s): %s",
-                   ICAL_ZONES_TAB_FILE_LOC, g_strerror (errno));
-        return;
-    }
-    if (stat(ICAL_ZONES_TAB_FILE_LOC, &zones_tab_file_stat) == -1) {
-        g_warning ("zones.tab file stat failed (%s): %s",
-                   ICAL_ZONES_TAB_FILE_LOC, g_strerror (errno));
-        fclose(zones_tab_file);
-        return;
-    }
-    zones_tab_buf = g_new(char, zones_tab_file_stat.st_size+1);
-    if (((off_t)fread(zones_tab_buf, 1, zones_tab_file_stat.st_size, zones_tab_file) < zones_tab_file_stat.st_size)
-    && (ferror(zones_tab_file))) {
-        g_warning ("zones.tab file read failed (%s): %s",
-                   ICAL_ZONES_TAB_FILE_LOC, g_strerror (errno));
-        fclose(zones_tab_file);
-        return;
-    }
-    zones_tab_buf[zones_tab_file_stat.st_size] = '\0';
-    fclose(zones_tab_file);
-}
-#endif
-
 orage_timezone_array get_orage_timezones(int show_details, int ical)
 {
 #ifdef FTW_ACTIONRETVAL
@@ -809,11 +768,6 @@ orage_timezone_array get_orage_timezones(int show_details, int ical)
 #else
     int tz_array_size = 2000; /* BSD can not skip unneeded directories */
 #endif
-    /*
-     icalarray *tz_array;
-     icaltimezone *l_tz;
-     struct icaltimetype ctime;
-   */
 
     details = show_details;
     check_ical = ical;
@@ -835,13 +789,9 @@ orage_timezone_array get_orage_timezones(int show_details, int ical)
             read_os_timezones();
             read_countries();
         }
-        if (check_ical) {
-#ifdef HAVE_LIBICAL
+        if (check_ical)
             read_os_timezones();
-#else
-            read_ical_timezones();
-#endif
-        }
+
     /* nftw goes through the whole file structure and calls "file_call"
      * with each file. It returns 0 when everything has been done and -1
      * if it run into an error. 

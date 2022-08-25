@@ -292,11 +292,6 @@ static void print_version(void)
 #else
     g_print(_("\tNot using archiving.\n"));
 #endif
-#ifdef HAVE_LIBICAL
-    g_print(_("\tUsing operating system package libical.\n"));
-#else
-    g_print(_("\tUsing Orage local version of libical.\n"));
-#endif
 #ifdef HAVE_LIBXFCE4UI
     g_print(_("\tUsing libxfce4ui: yes\n"));
 #else

@@ -1637,7 +1637,6 @@ static void recur_day_selected_double_click_cb(GtkCalendar *calendar
     if (gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(apptw->Recur_exception_excl_rb))) {
         type = EXDATE;
-#ifdef HAVE_LIBICAL
         /* need to add time also as standard libical can not handle dates
            correctly yet. Check more from BUG 5764.
            We use start time from appointment. */
@@ -1655,11 +1654,6 @@ static void recur_day_selected_double_click_cb(GtkCalendar *calendar
             gdt = orage_cal_to_gdatetime (calendar, hh, mm);
             all_day = FALSE;
         }
-#else
-        /* date is enough */
-        gdt = orage_cal_to_gdatetime (calendar, 1, 1);
-        all_day = FALSE;
-#endif
     }
     else { /* extra day. This needs also time */
         type = RDATE;
