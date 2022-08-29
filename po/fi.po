@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-12 00:50+0100\n"
+"POT-Creation-Date: 2022-08-29 00:49+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Pasi Lallinaho <pasi@shimmerproject.org>, 2022\n"
 "Language-Team: Finnish (https://www.transifex.com/xfce/teams/16840/fi/)\n"
@@ -24,24 +24,24 @@ msgstr ""
 "Language: fi\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../globaltime/globaltime.c:59
+#: ../globaltime/globaltime.c:62
 msgid "no underline"
 msgstr "ei alleviivausta"
 
-#: ../globaltime/globaltime.c:59
+#: ../globaltime/globaltime.c:62
 msgid "single"
 msgstr "kokonaisluku"
 
-#: ../globaltime/globaltime.c:59
+#: ../globaltime/globaltime.c:62
 msgid "double"
 msgstr "desimaaliluku"
 
-#: ../globaltime/globaltime.c:59
+#: ../globaltime/globaltime.c:62
 msgid "low"
 msgstr "matala"
 
 #. ********** timezone tooltip **********
-#: ../globaltime/globaltime.c:338
+#: ../globaltime/globaltime.c:341
 #, c-format
 msgid ""
 "%s\n"
@@ -50,11 +50,11 @@ msgstr ""
 "%s\n"
 "Napsauta muuttaaksesi kelloa"
 
-#: ../globaltime/globaltime.c:447
+#: ../globaltime/globaltime.c:450
 msgid "Localtime"
 msgstr "Paikallinen aika"
 
-#: ../globaltime/globaltime.c:536
+#: ../globaltime/globaltime.c:539
 msgid ""
 "button 1 to change preferences \n"
 "button 2 to adjust time of clocks"
@@ -62,18 +62,18 @@ msgstr ""
 "Painike 1 muuttaa asetuksia\n"
 "Painike 2 säätää kellonaikaa"
 
-#: ../globaltime/globaltime.c:551
+#: ../globaltime/globaltime.c:554
 msgid "adjust to change hour"
 msgstr "Säädä vaihtaaksesi tuntia"
 
-#: ../globaltime/globaltime.c:567
+#: ../globaltime/globaltime.c:570
 msgid ""
 "adjust to change minute. Click arrows with button 2 to change only 1 minute."
 msgstr ""
 "Säädä vaihtaaksesi minuuttia. Napsauta nuolia painikkeella 2 siirtääksesi "
 "vain yhdellä minuutilla."
 
-#: ../globaltime/globaltime.c:621
+#: ../globaltime/globaltime.c:624
 msgid "Global Time"
 msgstr "Kansainvälinen aika"
 
@@ -151,10 +151,10 @@ msgid "Timezone of the clock:"
 msgstr "Kellon aikavyöhyke:"
 
 #: ../globaltime/gt_prefs.c:683 ../globaltime/gt_prefs.c:1189
-#: ../panel-plugin/oc_config.c:374 ../src/appointment.c:3157
+#: ../panel-plugin/oc_config.c:374 ../src/appointment.c:3302
 #: ../src/interface.c:1047 ../src/interface.c:1093 ../src/interface.c:1269
 #: ../src/interface.c:1361 ../src/interface.c:1444 ../src/parameters.c:397
-#: ../src/parameters.c:620 ../src/reminder.c:666
+#: ../src/parameters.c:620 ../src/reminder.c:705
 msgid "_Open"
 msgstr "_Avaa"
 
@@ -287,7 +287,7 @@ msgstr "Tavallinen"
 msgid "Use normal decorations"
 msgstr "Käytä normaaleita koristeluja"
 
-#: ../globaltime/gt_prefs.c:1149 ../src/appointment.c:3406
+#: ../globaltime/gt_prefs.c:1149 ../src/appointment.c:3551
 msgid "None"
 msgstr "Ei mitään"
 
@@ -320,69 +320,69 @@ msgid "Local timezone:"
 msgstr "Paikallinen aikavyöhyke:"
 
 #: ../globaltime/timezone_selection.c:93
-#: ../panel-plugin/timezone_selection.c:92 ../src/timezone_selection.c:95
+#: ../panel-plugin/timezone_selection.c:92
 msgid " Other"
 msgstr "Muu"
 
-#: ../globaltime/timezone_selection.c:146
-#: ../panel-plugin/timezone_selection.c:144 ../src/timezone_selection.c:165
+#: ../globaltime/timezone_selection.c:145
+#: ../panel-plugin/timezone_selection.c:144 ../src/timezone_selection.c:148
 #, c-format
 msgid "%d hour %d mins"
 msgstr "%d tuntia %d minuuttia"
 
-#: ../globaltime/timezone_selection.c:149
-#: ../panel-plugin/timezone_selection.c:147 ../src/timezone_selection.c:168
+#: ../globaltime/timezone_selection.c:148
+#: ../panel-plugin/timezone_selection.c:147 ../src/timezone_selection.c:151
 #, c-format
 msgid "%d hour"
 msgstr "%d tuntia"
 
-#: ../globaltime/timezone_selection.c:151
-#: ../panel-plugin/timezone_selection.c:149 ../src/timezone_selection.c:170
+#: ../globaltime/timezone_selection.c:150
+#: ../panel-plugin/timezone_selection.c:149 ../src/timezone_selection.c:153
 #, c-format
 msgid "%d mins"
 msgstr "%d minuttia"
 
-#: ../globaltime/timezone_selection.c:157
-#: ../panel-plugin/timezone_selection.c:155 ../src/timezone_selection.c:176
+#: ../globaltime/timezone_selection.c:156
+#: ../panel-plugin/timezone_selection.c:155 ../src/timezone_selection.c:159
 msgid "backward"
 msgstr "Taaksepäin"
 
-#: ../globaltime/timezone_selection.c:160
-#: ../panel-plugin/timezone_selection.c:158 ../src/timezone_selection.c:179
+#: ../globaltime/timezone_selection.c:159
+#: ../panel-plugin/timezone_selection.c:158 ../src/timezone_selection.c:162
 msgid "forward"
 msgstr "Eteenpäin"
 
-#: ../globaltime/timezone_selection.c:184
-#: ../panel-plugin/timezone_selection.c:182 ../src/timezone_selection.c:203
+#: ../globaltime/timezone_selection.c:183
+#: ../panel-plugin/timezone_selection.c:182 ../src/timezone_selection.c:186
 msgid "not changed"
 msgstr "Ei muutettu"
 
-#: ../globaltime/timezone_selection.c:185
-#: ../panel-plugin/timezone_selection.c:183 ../src/timezone_selection.c:204
+#: ../globaltime/timezone_selection.c:184
+#: ../panel-plugin/timezone_selection.c:183 ../src/timezone_selection.c:187
 msgid "not changing"
 msgstr "Ei muuteta"
 
 #. location
-#: ../globaltime/timezone_selection.c:235
-#: ../globaltime/timezone_selection.c:240
+#: ../globaltime/timezone_selection.c:234
+#: ../globaltime/timezone_selection.c:239
 #: ../panel-plugin/timezone_selection.c:233
-#: ../panel-plugin/timezone_selection.c:238 ../src/appointment.c:2829
-#: ../src/timezone_selection.c:254 ../src/timezone_selection.c:259
+#: ../panel-plugin/timezone_selection.c:238 ../src/appointment.c:2974
+#: ../src/timezone_selection.c:237 ../src/timezone_selection.c:242
 msgid "Location"
 msgstr "Sijainti"
 
-#: ../globaltime/timezone_selection.c:246
-#: ../panel-plugin/timezone_selection.c:244 ../src/timezone_selection.c:265
+#: ../globaltime/timezone_selection.c:245
+#: ../panel-plugin/timezone_selection.c:244 ../src/timezone_selection.c:248
 msgid "GMT Offset"
 msgstr "Ero GMT:hen"
 
-#: ../globaltime/timezone_selection.c:252
-#: ../panel-plugin/timezone_selection.c:250 ../src/timezone_selection.c:271
+#: ../globaltime/timezone_selection.c:251
+#: ../panel-plugin/timezone_selection.c:250 ../src/timezone_selection.c:254
 msgid "Previous/Next Change"
 msgstr "Edellinen/Seuraava vaihto"
 
-#: ../globaltime/timezone_selection.c:257
-#: ../panel-plugin/timezone_selection.c:255 ../src/timezone_selection.c:276
+#: ../globaltime/timezone_selection.c:256
+#: ../panel-plugin/timezone_selection.c:255 ../src/timezone_selection.c:259
 msgid "Country"
 msgstr "Maa"
 
@@ -391,39 +391,39 @@ msgstr "Maa"
 #. done very seldom and we do not want to allow "floating" here.
 #. This test is ugly, but it is not worth an extra parameter.
 #. this is normal appointment
-#: ../globaltime/timezone_selection.c:284
-#: ../globaltime/timezone_selection.c:294
+#: ../globaltime/timezone_selection.c:283
+#: ../globaltime/timezone_selection.c:293
 #: ../panel-plugin/timezone_selection.c:283
-#: ../panel-plugin/timezone_selection.c:293 ../src/timezone_selection.c:308
-#: ../src/timezone_selection.c:317 ../src/timezone_selection.c:328
+#: ../panel-plugin/timezone_selection.c:293 ../src/timezone_selection.c:291
+#: ../src/timezone_selection.c:300 ../src/timezone_selection.c:311
 msgid "Pick timezone"
 msgstr "Valitse aikavyöhyke"
 
-#: ../globaltime/timezone_selection.c:287
-#: ../globaltime/timezone_selection.c:297
+#: ../globaltime/timezone_selection.c:286
+#: ../globaltime/timezone_selection.c:296
 #: ../panel-plugin/timezone_selection.c:286
-#: ../panel-plugin/timezone_selection.c:296 ../src/timezone_selection.c:311
-#: ../src/timezone_selection.c:320 ../src/timezone_selection.c:331
+#: ../panel-plugin/timezone_selection.c:296 ../src/timezone_selection.c:294
+#: ../src/timezone_selection.c:303 ../src/timezone_selection.c:314
 msgid "Change mode"
 msgstr "Muuta tilaa"
 
-#: ../globaltime/timezone_selection.c:288
-#: ../globaltime/timezone_selection.c:298
-#: ../globaltime/timezone_selection.c:337
+#: ../globaltime/timezone_selection.c:287
+#: ../globaltime/timezone_selection.c:297
+#: ../globaltime/timezone_selection.c:336
 #: ../panel-plugin/timezone_selection.c:287
 #: ../panel-plugin/timezone_selection.c:297
-#: ../panel-plugin/timezone_selection.c:337 ../src/timezone_selection.c:312
-#: ../src/timezone_selection.c:321 ../src/timezone_selection.c:332
-#: ../src/timezone_selection.c:371
+#: ../panel-plugin/timezone_selection.c:337 ../src/timezone_selection.c:295
+#: ../src/timezone_selection.c:304 ../src/timezone_selection.c:315
+#: ../src/timezone_selection.c:354
 msgid "UTC"
 msgstr "UTC"
 
 #. NOTE: this exists only if ical timezones are being used
-#: ../globaltime/timezone_selection.c:289
-#: ../globaltime/timezone_selection.c:342
+#: ../globaltime/timezone_selection.c:288
+#: ../globaltime/timezone_selection.c:341
 #: ../panel-plugin/timezone_selection.c:288
-#: ../panel-plugin/timezone_selection.c:342 ../src/timezone_selection.c:322
-#: ../src/timezone_selection.c:376
+#: ../panel-plugin/timezone_selection.c:342 ../src/timezone_selection.c:305
+#: ../src/timezone_selection.c:359
 msgid "floating"
 msgstr "Kelluva"
 
@@ -436,7 +436,7 @@ msgid "Show clocks from different countries"
 msgstr "Näytä muiden maiden kellot"
 
 #: ../globaltime/org.xfce.orage.globaltime.desktop.in.h:3
-#: ../src/tray_icon.c:477
+#: ../src/tray_icon.c:489
 msgid "Globaltime"
 msgstr "Maailmanlaajuinen aika"
 
@@ -558,8 +558,8 @@ msgstr ""
 msgid "Orage clock Preferences"
 msgstr "Orage-kellon asetukset"
 
-#: ../panel-plugin/oc_config.c:505 ../src/day-view.c:403
-#: ../src/event-list.c:1223 ../src/interface.c:876
+#: ../panel-plugin/oc_config.c:505 ../src/day-view.c:414
+#: ../src/event-list.c:1228 ../src/interface.c:876
 msgid "Close"
 msgstr "Sulje"
 
@@ -588,79 +588,79 @@ msgstr ""
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
 #. end time
-#: ../src/appointment.c:321 ../src/appointment.c:361 ../src/appointment.c:2858
+#: ../src/appointment.c:325 ../src/appointment.c:365 ../src/appointment.c:3003
 msgid "End"
 msgstr "Loppuajankohta"
 
-#: ../src/appointment.c:341
+#: ../src/appointment.c:345
 msgid "Due"
 msgstr "Viimeistään"
 
-#: ../src/appointment.c:501 ../src/mainbox.c:695
+#: ../src/appointment.c:508 ../src/mainbox.c:693
 #: ../org.xfce.orage.appdata.xml.in.h:1
 msgid "Orage"
 msgstr "Orage"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
-#: ../src/appointment.c:688 ../src/interface.c:262 ../src/parameters.c:392
+#: ../src/appointment.c:699 ../src/interface.c:262 ../src/parameters.c:392
 msgid "Select a file..."
 msgstr "Valitse tiedosto..."
 
-#: ../src/appointment.c:696
+#: ../src/appointment.c:707
 msgid "Sound Files"
 msgstr "Äänitiedostot"
 
-#: ../src/appointment.c:703 ../src/interface.c:275
+#: ../src/appointment.c:714 ../src/interface.c:275
 msgid "All Files"
 msgstr "Kaikki tiedostot"
 
-#: ../src/appointment.c:754
+#: ../src/appointment.c:765
 msgid "The appointment information has been modified."
 msgstr "Tapaamisen tiedot muutettiin."
 
-#: ../src/appointment.c:755 ../src/appointment.c:1292 ../src/event-list.c:993
+#: ../src/appointment.c:766 ../src/appointment.c:1340 ../src/event-list.c:998
 msgid "Do you want to continue?"
 msgstr "Haluatko jatkaa?"
 
-#: ../src/appointment.c:756
+#: ../src/appointment.c:767
 msgid "No, do not leave"
 msgstr "Ei, älä poistu"
 
-#: ../src/appointment.c:757
+#: ../src/appointment.c:768
 msgid "Yes, ignore modifications and leave"
 msgstr "Kyllä, unohda muutokset ja poistu"
 
-#: ../src/appointment.c:785
+#: ../src/appointment.c:796
 msgid "The end of this appointment is earlier than the beginning."
 msgstr "Tämän tapaamisen loppuajankohta on ennen sen alkamisajankohtaa."
 
-#: ../src/appointment.c:1050 ../src/appointment.c:1929
+#: ../src/appointment.c:1096 ../src/appointment.c:2015
 msgid "Not set"
 msgstr "Ei määritetty"
 
-#: ../src/appointment.c:1141
+#: ../src/appointment.c:1189
 msgid "Add new appointment to this file."
 msgstr "Lisää uusi tapaaminen tähän tiedostoon."
 
-#: ../src/appointment.c:1142 ../src/appointment.c:1190
+#: ../src/appointment.c:1190 ../src/appointment.c:1238
 msgid "Orage default file"
 msgstr "Oragen oletustiedosto"
 
-#: ../src/appointment.c:1228
+#: ../src/appointment.c:1276
 msgid "Appointment addition failed."
 msgstr "Tapaamisen lisääminen epäonnistui."
 
-#: ../src/appointment.c:1229
+#: ../src/appointment.c:1277
 msgid ""
 "Error happened when adding appointment. Look more details from the log file."
 msgstr "Virhe lisättäessä tapaamista. Katso lisätietoja lokitiedostosta."
 
-#: ../src/appointment.c:1240
+#: ../src/appointment.c:1288
 msgid "Appointment update failed."
 msgstr "Tapaamisen päivittäminen epäonnistui."
 
-#: ../src/appointment.c:1241
+#: ../src/appointment.c:1289
 msgid ""
 "Look more details from the log file. (Perhaps file was updated external from"
 " Orage?)"
@@ -668,127 +668,127 @@ msgstr ""
 "Katso lisätietoja lokitiedostosta. (Ehkä jokin muu sovellus kuin Orage "
 "päivitti tiedostoa?)"
 
-#: ../src/appointment.c:1291
+#: ../src/appointment.c:1339
 msgid "This appointment will be permanently removed."
 msgstr "Tämä tapaaminen poistetaan lopullisesti."
 
-#: ../src/appointment.c:1293 ../src/event-list.c:994
+#: ../src/appointment.c:1341 ../src/event-list.c:999
 msgid "No, cancel the removal"
 msgstr "Ei, peruuta poistaminen"
 
-#: ../src/appointment.c:1294
+#: ../src/appointment.c:1342
 msgid "Yes, remove it"
 msgstr "Kyllä, poista tapaaminen"
 
-#: ../src/appointment.c:1387 ../src/appointment.c:1402 ../src/day-view.c:460
-#: ../src/event-list.c:1053
+#: ../src/appointment.c:1441 ../src/appointment.c:1456 ../src/day-view.c:471
+#: ../src/event-list.c:1058 ../src/functions.c:144
 msgid "Pick the date"
 msgstr "Valitse päivä"
 
-#: ../src/appointment.c:1389 ../src/appointment.c:1404 ../src/day-view.c:389
-#: ../src/day-view.c:462 ../src/event-list.c:1055 ../src/event-list.c:1209
-#: ../src/tray_icon.c:450
+#: ../src/appointment.c:1443 ../src/appointment.c:1458 ../src/day-view.c:400
+#: ../src/day-view.c:473 ../src/event-list.c:1060 ../src/event-list.c:1214
+#: ../src/functions.c:146 ../src/tray_icon.c:462
 msgid "Today"
 msgstr "Tänään"
 
-#: ../src/appointment.c:1821
+#: ../src/appointment.c:1885
 msgid "This appointment does not exist."
 msgstr "Tätä tapaamista ei ole olemassa."
 
-#: ../src/appointment.c:1822
+#: ../src/appointment.c:1886
 msgid "It was probably removed, please refresh your screen."
 msgstr "Tapahtuma on todennäköisesti poistettu, päivitä näyttösi."
 
-#: ../src/appointment.c:2097 ../src/interface.c:672
+#: ../src/appointment.c:2183 ../src/interface.c:672
 msgid "_Remove"
 msgstr "_Poista"
 
-#: ../src/appointment.c:2123
+#: ../src/appointment.c:2209
 msgid "Current categories"
 msgstr "Nykyiset kategoriat"
 
-#: ../src/appointment.c:2145
+#: ../src/appointment.c:2231
 msgid "Add new category with color"
 msgstr "Lisää uusi kategoria värillä"
 
-#: ../src/appointment.c:2156
+#: ../src/appointment.c:2242
 msgid "Category:"
 msgstr "Kategoria:"
 
-#: ../src/appointment.c:2172 ../src/interface.c:1451
+#: ../src/appointment.c:2258 ../src/interface.c:1451
 msgid "_Add"
 msgstr "_Lisää"
 
-#: ../src/appointment.c:2201
+#: ../src/appointment.c:2287
 msgid "Colors of categories - Orage"
 msgstr "Kategorioiden värit - Orage"
 
-#: ../src/appointment.c:2247
+#: ../src/appointment.c:2334
 msgid " *** COPY ***"
 msgstr "*** KOPIO ***"
 
-#: ../src/appointment.c:2515
+#: ../src/appointment.c:2617
 msgid "New appointment - Orage"
 msgstr "Uusi tapaaminen - Orage"
 
 #. File menu stuff
 #. ********* File menu *********
 #. File menu
-#: ../src/appointment.c:2543 ../src/day-view.c:283 ../src/event-list.c:1110
-#: ../src/interface.c:857 ../src/mainbox.c:208
+#: ../src/appointment.c:2645 ../src/day-view.c:294 ../src/event-list.c:1115
+#: ../src/interface.c:857 ../src/mainbox.c:217
 msgid "_File"
 msgstr "_Tiedosto"
 
-#: ../src/appointment.c:2549
+#: ../src/appointment.c:2651
 msgid "Sav_e and close"
 msgstr "_Tallenna ja sulje"
 
-#: ../src/appointment.c:2562 ../src/event-list.c:1116
+#: ../src/appointment.c:2664 ../src/event-list.c:1121
 msgid "D_uplicate"
 msgstr "_Kopioi"
 
-#: ../src/appointment.c:2750
+#: ../src/appointment.c:2895
 msgid "Save"
 msgstr "Tallenna"
 
-#: ../src/appointment.c:2752
+#: ../src/appointment.c:2897
 msgid "Save and close"
 msgstr "Tallenna ja sulje"
 
-#: ../src/appointment.c:2757
+#: ../src/appointment.c:2902
 msgid "Revert"
 msgstr "Palauta"
 
-#: ../src/appointment.c:2759 ../src/event-list.c:1200
+#: ../src/appointment.c:2904 ../src/event-list.c:1205
 msgid "Duplicate"
 msgstr "Kopioi"
 
-#: ../src/appointment.c:2764 ../src/event-list.c:1202
+#: ../src/appointment.c:2909 ../src/event-list.c:1207
 msgid "Delete"
 msgstr "Poista"
 
-#: ../src/appointment.c:2782
+#: ../src/appointment.c:2927
 msgid "Free"
 msgstr "Vapaa"
 
-#: ../src/appointment.c:2782
+#: ../src/appointment.c:2927
 msgid "Busy"
 msgstr "Kiireinen"
 
-#: ../src/appointment.c:2786
+#: ../src/appointment.c:2931
 msgid "General"
 msgstr "Yleinen"
 
 #. type
-#: ../src/appointment.c:2792
+#: ../src/appointment.c:2937
 msgid "Type "
 msgstr "Tyyppi"
 
-#: ../src/appointment.c:2794 ../src/event-list.c:1255
+#: ../src/appointment.c:2939 ../src/event-list.c:1260
 msgid "Event"
 msgstr "Tapahtuma"
 
-#: ../src/appointment.c:2799
+#: ../src/appointment.c:2944
 msgid ""
 "Event that will happen sometime. For example:\n"
 "Meeting or birthday or TV show."
@@ -796,11 +796,11 @@ msgstr ""
 "Tapahtuma joka tapahtuu joskus. Esimerkiksi:\n"
 "Tapaaminen tai syntymäpäivä tai TV-ohjelma."
 
-#: ../src/appointment.c:2802 ../src/event-list.c:1314
+#: ../src/appointment.c:2947 ../src/event-list.c:1319
 msgid "Todo"
 msgstr "Tekemättä"
 
-#: ../src/appointment.c:2807
+#: ../src/appointment.c:2952
 msgid ""
 "Something that you should do sometime. For example:\n"
 "Wash your car or test new version of Orage."
@@ -808,11 +808,11 @@ msgstr ""
 "Jotain mitä sinun pitäisi tehdä. Esimerkiksi:\n"
 "Pese auto tai testaa Oragen uutta versiota."
 
-#: ../src/appointment.c:2810 ../src/event-list.c:1327
+#: ../src/appointment.c:2955 ../src/event-list.c:1333
 msgid "Journal"
 msgstr "Päiväkirja"
 
-#: ../src/appointment.c:2815
+#: ../src/appointment.c:2960
 msgid ""
 "Make a note that something happened. For example:\n"
 "Remark that your mother called or first snow came."
@@ -821,79 +821,79 @@ msgstr ""
 "Äitisi soitti tai ensilumi satoi."
 
 #. title
-#: ../src/appointment.c:2822
+#: ../src/appointment.c:2967
 msgid "Title "
 msgstr "Otsikko"
 
-#: ../src/appointment.c:2837
+#: ../src/appointment.c:2982
 msgid "All day event"
 msgstr "Koko päivän tapahtuma"
 
 #. start time
-#: ../src/appointment.c:2843 ../src/appointment.c:3562 ../src/day-view.c:806
+#: ../src/appointment.c:2988 ../src/appointment.c:3707 ../src/day-view.c:841
 msgid "Start"
 msgstr "Aloitusajankohta"
 
-#: ../src/appointment.c:2863
+#: ../src/appointment.c:3008
 msgid "Set      "
 msgstr "Aseta"
 
-#: ../src/appointment.c:2886
+#: ../src/appointment.c:3031
 msgid "Duration"
 msgstr "Kesto"
 
-#: ../src/appointment.c:2890 ../src/appointment.c:3097 ../src/reminder.c:637
+#: ../src/appointment.c:3035 ../src/appointment.c:3242 ../src/reminder.c:676
 msgid "days"
 msgstr "päivää"
 
-#: ../src/appointment.c:2892 ../src/appointment.c:3099 ../src/reminder.c:639
+#: ../src/appointment.c:3037 ../src/appointment.c:3244 ../src/reminder.c:678
 msgid "hours"
 msgstr "tuntia"
 
-#: ../src/appointment.c:2894 ../src/appointment.c:3101 ../src/reminder.c:641
+#: ../src/appointment.c:3039 ../src/appointment.c:3246 ../src/reminder.c:680
 msgid "mins"
 msgstr "minuuttia"
 
 #. Availability (only for EVENT)
-#: ../src/appointment.c:2906
+#: ../src/appointment.c:3051
 msgid "Availability"
 msgstr "Saatavuus"
 
 #. completed (only for TODO)
-#: ../src/appointment.c:2914 ../src/appointment.c:3571
+#: ../src/appointment.c:3059 ../src/appointment.c:3716
 msgid "Completed"
 msgstr "tehty"
 
-#: ../src/appointment.c:2917
+#: ../src/appointment.c:3062
 msgid "Done"
 msgstr "Valmis"
 
 #. categories
-#: ../src/appointment.c:2942
+#: ../src/appointment.c:3087
 msgid "Categories"
 msgstr "Kategoriat"
 
-#: ../src/appointment.c:2960
+#: ../src/appointment.c:3105
 msgid ""
 "This is special category, which can be used to color this appointment in "
 "list views."
 msgstr ""
 "Tämä on erikoiskategoria, jolla tätä tapaamista voi värittää listoissa."
 
-#: ../src/appointment.c:2961
+#: ../src/appointment.c:3106
 msgid "_Colour"
 msgstr ""
 
-#: ../src/appointment.c:2966
+#: ../src/appointment.c:3111
 msgid "update colors for categories."
 msgstr "päivitä kategorioiden värit."
 
 #. priority
-#: ../src/appointment.c:2972
+#: ../src/appointment.c:3117
 msgid "Priority"
 msgstr "Tärkeys"
 
-#: ../src/appointment.c:2976
+#: ../src/appointment.c:3121
 msgid ""
 "If you set this 8 or bigger, the appointment is NOT shown on list windows.\n"
 "You can use that feature to unclutter your list windows, but it makes it more difficult to find this appointment.\n"
@@ -906,11 +906,11 @@ msgstr ""
 "(On olemassa dokumentoimaton arvo, jolla tätä raja-arvoia voidaan muuttaa.)"
 
 #. note
-#: ../src/appointment.c:2985
+#: ../src/appointment.c:3130
 msgid "Note"
 msgstr "Merkintä"
 
-#: ../src/appointment.c:3006
+#: ../src/appointment.c:3151
 msgid ""
 "These shorthand commands take effect immediately:\n"
 "    <D> inserts current date in local date format\n"
@@ -930,32 +930,32 @@ msgstr ""
 "<&Ynnnn> muutetaan nykyiseksi vuodeksi arvolla nnnn vähennettynä.\n"
 "(Tätä voi käyttää esimerkiksi syntymäpäivämuistutuksissa kertomaan kuinka vanha syntymäpäiväsankari on.)"
 
-#: ../src/appointment.c:3079
+#: ../src/appointment.c:3224
 msgid "Before Start"
 msgstr "Ennen alkamisaikaa"
 
-#: ../src/appointment.c:3079
+#: ../src/appointment.c:3224
 msgid "Before End"
 msgstr "Ennen päättymisaikaa"
 
-#: ../src/appointment.c:3080
+#: ../src/appointment.c:3225
 msgid "After Start"
 msgstr "Alkamisajan jälkeen"
 
-#: ../src/appointment.c:3080
+#: ../src/appointment.c:3225
 msgid "After End"
 msgstr "Päättymisajan jälkeen"
 
-#: ../src/appointment.c:3088
+#: ../src/appointment.c:3233
 msgid "Alarm"
 msgstr "Hälytys"
 
 #. **** ALARM TIME ****
-#: ../src/appointment.c:3094
+#: ../src/appointment.c:3239
 msgid "Alarm time"
 msgstr "Hälytysaika"
 
-#: ../src/appointment.c:3119
+#: ../src/appointment.c:3264
 msgid ""
 "Often you want to get alarm:\n"
 " 1) before Event start\n"
@@ -967,11 +967,11 @@ msgstr ""
 "2) ennen tehtävälistan kohdan päättymisaikaa\n"
 "3) tehtävälistan kohdan alkamisajan jälkeen"
 
-#: ../src/appointment.c:3124
+#: ../src/appointment.c:3269
 msgid "Persistent alarm"
 msgstr "Jatkuva hälytys"
 
-#: ../src/appointment.c:3129
+#: ../src/appointment.c:3274
 msgid ""
 "Select this if you want Orage to remind you even if it has not been active "
 "when the alarm happened."
@@ -980,78 +980,78 @@ msgstr ""
 " päällä silloin kun hälytys tapahtui."
 
 #. **** Audio Alarm ****
-#: ../src/appointment.c:3138
+#: ../src/appointment.c:3283
 msgid "Sound"
 msgstr "Ääni"
 
-#: ../src/appointment.c:3142 ../src/appointment.c:3275
+#: ../src/appointment.c:3287 ../src/appointment.c:3420
 msgid "Use"
 msgstr "Käytä"
 
-#: ../src/appointment.c:3144
+#: ../src/appointment.c:3289
 msgid "Select this if you want audible alarm"
 msgstr "Käytä tätä jos haluat äänihälytyksen"
 
-#: ../src/appointment.c:3170
+#: ../src/appointment.c:3315
 msgid "Repeat alarm sound"
 msgstr "Toista hälytysääni"
 
-#: ../src/appointment.c:3185 ../src/appointment.c:3494
+#: ../src/appointment.c:3330 ../src/appointment.c:3639
 msgid "times"
 msgstr "kertaa"
 
-#: ../src/appointment.c:3201
+#: ../src/appointment.c:3346
 msgid "sec interval"
 msgstr "sek välein"
 
 #. **** Display Alarm ****
-#: ../src/appointment.c:3211
+#: ../src/appointment.c:3356
 msgid "Visual"
 msgstr "Visuaalinen"
 
-#: ../src/appointment.c:3215
+#: ../src/appointment.c:3360
 msgid "Use Orage window"
 msgstr "Käytä Oragen ikkunaa"
 
-#: ../src/appointment.c:3217
+#: ../src/appointment.c:3362
 msgid "Select this if you want Orage window alarm"
 msgstr "Valitse tämä jos haluat hälytyksen Oragen ikkunaan"
 
-#: ../src/appointment.c:3229
+#: ../src/appointment.c:3374
 msgid "Use notification"
 msgstr "Käytä ilmoitusta"
 
-#: ../src/appointment.c:3231
+#: ../src/appointment.c:3376
 msgid "Select this if you want notification alarm"
 msgstr "Käytä tätä jos haluat ilmoitushälytyksen"
 
-#: ../src/appointment.c:3239
+#: ../src/appointment.c:3384
 msgid "Set timeout"
 msgstr "Määritä aikakatkaisu"
 
-#: ../src/appointment.c:3241
+#: ../src/appointment.c:3386
 msgid "Select this if you want notification to expire automatically"
 msgstr "Valitse tämä jos haluat että ilmoitus erääntyy automaattisesti"
 
-#: ../src/appointment.c:3252
+#: ../src/appointment.c:3397
 msgid "0 = system default expiration time"
 msgstr "0 = järjestelmän oletuserääntymisaika"
 
-#: ../src/appointment.c:3260
+#: ../src/appointment.c:3405
 msgid "seconds"
 msgstr "sekuntia"
 
 #. **** Procedure Alarm ****
-#: ../src/appointment.c:3271
+#: ../src/appointment.c:3416
 msgid "Procedure"
 msgstr "Järjestelmällinen"
 
-#: ../src/appointment.c:3277
+#: ../src/appointment.c:3422
 msgid "Select this if you want procedure or script alarm"
 msgstr ""
 "Valitse tämä jos haluat järjestelmällisen tai ohjelmoitavan hälytyksen"
 
-#: ../src/appointment.c:3287
+#: ../src/appointment.c:3432
 msgid ""
 "You must enter all escape etc characters yourself.\n"
 "This string is just given to shell to process.\n"
@@ -1071,105 +1071,105 @@ msgstr ""
 "\t<&ST> tapaamisen alkamisaika\n"
 "\t<&ET> tapaamisen päättymisaika"
 
-#: ../src/appointment.c:3301 ../src/interface.c:1181 ../src/interface.c:1203
+#: ../src/appointment.c:3446 ../src/interface.c:1181 ../src/interface.c:1203
 msgid "_Execute"
 msgstr ""
 
-#: ../src/appointment.c:3303
+#: ../src/appointment.c:3448
 msgid "Test this alarm by raising it now"
 msgstr "Kokeile tätä hälytystä kutsumalla se nyt"
 
-#: ../src/appointment.c:3316
+#: ../src/appointment.c:3461
 msgid "<b>Default alarm</b>"
 msgstr "<b>Oletushälytys</b>"
 
-#: ../src/appointment.c:3322 ../src/interface.c:1054 ../src/interface.c:1100
+#: ../src/appointment.c:3467 ../src/interface.c:1054 ../src/interface.c:1100
 #: ../src/interface.c:1275 ../src/interface.c:1367
 msgid "_Save"
 msgstr "_Tallenna"
 
-#: ../src/appointment.c:3330
+#: ../src/appointment.c:3475
 msgid "Store current settings as default alarm"
 msgstr "Tallenna nykyiset asetukset oletushälytykseksi"
 
-#: ../src/appointment.c:3332
+#: ../src/appointment.c:3477
 msgid "_Revert"
 msgstr ""
 
-#: ../src/appointment.c:3340
+#: ../src/appointment.c:3485
 msgid "Set current settings from default alarm"
 msgstr "Lataa asetukset oletushälytyksestä"
 
-#: ../src/appointment.c:3406
+#: ../src/appointment.c:3551
 msgid "Daily"
 msgstr "Päivittäin"
 
-#: ../src/appointment.c:3406
+#: ../src/appointment.c:3551
 msgid "Weekly"
 msgstr "Viikottain"
 
-#: ../src/appointment.c:3406
+#: ../src/appointment.c:3551
 msgid "Monthly"
 msgstr "Kuukausittain"
 
-#: ../src/appointment.c:3406
+#: ../src/appointment.c:3551
 msgid "Yearly"
 msgstr "Vuosittain"
 
-#: ../src/appointment.c:3406
+#: ../src/appointment.c:3551
 msgid "Hourly"
 msgstr "Joka tunti"
 
-#: ../src/appointment.c:3408
+#: ../src/appointment.c:3553
 msgid "Mon"
 msgstr "Ma"
 
-#: ../src/appointment.c:3408
+#: ../src/appointment.c:3553
 msgid "Tue"
 msgstr "Ti"
 
-#: ../src/appointment.c:3408
+#: ../src/appointment.c:3553
 msgid "Wed"
 msgstr "Ke"
 
-#: ../src/appointment.c:3408
+#: ../src/appointment.c:3553
 msgid "Thu"
 msgstr "To"
 
-#: ../src/appointment.c:3408
+#: ../src/appointment.c:3553
 msgid "Fri"
 msgstr "Pe"
 
-#: ../src/appointment.c:3408
+#: ../src/appointment.c:3553
 msgid "Sat"
 msgstr "La"
 
-#: ../src/appointment.c:3408
+#: ../src/appointment.c:3553
 msgid "Sun"
 msgstr "Su"
 
-#: ../src/appointment.c:3413
+#: ../src/appointment.c:3558
 msgid "Recurrence"
 msgstr "Toistuminen"
 
 #. complexity
-#: ../src/appointment.c:3419
+#: ../src/appointment.c:3564
 msgid "Complexity"
 msgstr "Monimutkaisuus"
 
-#: ../src/appointment.c:3422
+#: ../src/appointment.c:3567
 msgid "Basic"
 msgstr "Perus"
 
-#: ../src/appointment.c:3429
+#: ../src/appointment.c:3574
 msgid "Advanced"
 msgstr "Edistynyt"
 
-#: ../src/appointment.c:3435
+#: ../src/appointment.c:3580
 msgid "Use this if you want regular repeating event"
 msgstr "Käytä tätä jos haluat yksinkertaisen toistuvan tapahtuman"
 
-#: ../src/appointment.c:3437
+#: ../src/appointment.c:3582
 msgid ""
 "Use this if you need complex times like:\n"
 " Every Saturday and Sunday or \n"
@@ -1180,19 +1180,19 @@ msgstr ""
 "joka kuukauden ensimmäinen tiistai"
 
 #. frequency
-#: ../src/appointment.c:3443
+#: ../src/appointment.c:3588
 msgid "Frequency"
 msgstr "Toistumistiheys"
 
-#: ../src/appointment.c:3450
+#: ../src/appointment.c:3595
 msgid "Each"
 msgstr "Joka"
 
-#: ../src/appointment.c:3461
+#: ../src/appointment.c:3606
 msgid "occurrence"
 msgstr "esiintymä"
 
-#: ../src/appointment.c:3468
+#: ../src/appointment.c:3613
 msgid ""
 "Limit frequency to certain interval.\n"
 " For example: Every third day:\n"
@@ -1202,32 +1202,32 @@ msgstr ""
 "Esimerksi: joka kolmas päivä:\n"
 "Toistumistiheys = Päivittäin ja Aikaväli = 3"
 
-#: ../src/appointment.c:3475
+#: ../src/appointment.c:3620
 msgid "Limit"
 msgstr "Rajoitus"
 
-#: ../src/appointment.c:3477
+#: ../src/appointment.c:3622
 msgid "Repeat forever"
 msgstr "Toista ikuisesti"
 
-#: ../src/appointment.c:3484
+#: ../src/appointment.c:3629
 msgid "Repeat "
 msgstr "Toista"
 
-#: ../src/appointment.c:3508
+#: ../src/appointment.c:3653
 msgid "Repeat until "
 msgstr "Toista asti"
 
 #. weekdays (only for complex settings)
-#: ../src/appointment.c:3524
+#: ../src/appointment.c:3669
 msgid "Weekdays"
 msgstr "Arkipäivät"
 
-#: ../src/appointment.c:3541
+#: ../src/appointment.c:3686
 msgid "Which day"
 msgstr "Mikä päivä"
 
-#: ../src/appointment.c:3552
+#: ../src/appointment.c:3697
 msgid ""
 "Specify which weekday for monthly and yearly events.\n"
 " For example:\n"
@@ -1244,11 +1244,11 @@ msgstr ""
 "Mikä päivä = valitse numero 2 keskiviikon alapuolelta"
 
 #. TODO base (only for TODOs)
-#: ../src/appointment.c:3559
+#: ../src/appointment.c:3704
 msgid "TODO base"
 msgstr "Tehtävän toistuminen"
 
-#: ../src/appointment.c:3578
+#: ../src/appointment.c:3723
 msgid ""
 "TODO reoccurs regularly starting on start time and repeating after each "
 "interval no matter when it was last completed"
@@ -1256,7 +1256,7 @@ msgstr ""
 "Tehtävä toistuu säännöllisesti alkaen aloitusajasta ja toistuu jokaisen "
 "aikavälin jälkeen riippumatta siitä, koska tehtävä suoritetttiin viimeksi"
 
-#: ../src/appointment.c:3580
+#: ../src/appointment.c:3725
 msgid ""
 "TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
@@ -1265,11 +1265,11 @@ msgstr ""
 "(Huomaa että tehtävähistoriasta ei voida kertoa mitään koska uudelleenesiintymisen lähtöpäivä muuttuu jokaisen suorituskerran jäkeen.)"
 
 #. exceptions
-#: ../src/appointment.c:3586
+#: ../src/appointment.c:3731
 msgid "Exceptions"
 msgstr "Poikkeukset"
 
-#: ../src/appointment.c:3612
+#: ../src/appointment.c:3757
 msgid ""
 "Add more exception dates by clicking the calendar days below.\n"
 "Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
@@ -1279,19 +1279,19 @@ msgstr ""
 "Poikkeus on joko poissuljettu (-) tai sisällytetty (+) riippuen valinnasta.\n"
 "Poista napsauttamalla tietoja."
 
-#: ../src/appointment.c:3623
+#: ../src/appointment.c:3768
 msgid "Add excluded date (-)"
 msgstr "Lisää poissuljettu päivä (-)"
 
-#: ../src/appointment.c:3625
+#: ../src/appointment.c:3770
 msgid "Excluded days are full days where this appointment is not happening"
 msgstr "Poissuljetut päivät jolloin tämä tapaaminen ei tapahdu"
 
-#: ../src/appointment.c:3632
+#: ../src/appointment.c:3777
 msgid "Add included time (+)"
 msgstr "Lisää sisällytetty aika (+)"
 
-#: ../src/appointment.c:3634
+#: ../src/appointment.c:3779
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time"
@@ -1300,79 +1300,79 @@ msgstr ""
 " voi olla eri aika"
 
 #. calendars showing the action days
-#: ../src/appointment.c:3653
+#: ../src/appointment.c:3798
 msgid "Action dates"
 msgstr "Tapahtumapäivät"
 
 #. ********* View menu *********
 #. View menu
-#: ../src/day-view.c:293 ../src/event-list.c:1133 ../src/mainbox.c:234
+#: ../src/day-view.c:304 ../src/event-list.c:1138 ../src/mainbox.c:243
 msgid "_View"
 msgstr "_Näytä"
 
 #. ********* Go menu   *********
-#: ../src/day-view.c:307 ../src/event-list.c:1152
+#: ../src/day-view.c:318 ../src/event-list.c:1157
 msgid "_Go"
 msgstr "_Siirry"
 
-#: ../src/day-view.c:380 ../src/event-list.c:1198
+#: ../src/day-view.c:391 ../src/event-list.c:1203
 msgid "New"
 msgstr "Uusi"
 
-#: ../src/day-view.c:385
+#: ../src/day-view.c:396
 msgid "Back one week"
 msgstr "Yksi viikko taaksepäin"
 
-#: ../src/day-view.c:387
+#: ../src/day-view.c:398
 msgid "Back one day"
 msgstr "Yksi päivä taaksepäin"
 
-#: ../src/day-view.c:391
+#: ../src/day-view.c:402
 msgid "Forward one day"
 msgstr "Yksi päivä eteenpäin"
 
-#: ../src/day-view.c:393
+#: ../src/day-view.c:404
 msgid "Forward one week"
 msgstr "Yksi viikko eteenpäin"
 
-#: ../src/day-view.c:398 ../src/event-list.c:1216
+#: ../src/day-view.c:409 ../src/event-list.c:1221
 msgid "Refresh"
 msgstr "Päivitä"
 
-#: ../src/day-view.c:462
+#: ../src/day-view.c:473
 msgid "_OK"
 msgstr "_OK"
 
-#: ../src/day-view.c:568
+#: ../src/day-view.c:596
 msgid "Unknown"
 msgstr "Tuntematon"
 
-#: ../src/day-view.c:815
+#: ../src/day-view.c:850
 msgid "       Number of days to show"
 msgstr "Näytettävien päivien määrä"
 
-#: ../src/day-view.c:1045
+#: ../src/day-view.c:1081
 msgid "Orage - day view"
 msgstr "Orage - päivänäkymä"
 
 #. date only appointment
-#: ../src/event-list.c:192
+#: ../src/event-list.c:187
 msgid "All day"
 msgstr "Koko päivä"
 
-#: ../src/event-list.c:601 ../src/event-list.c:1411
+#: ../src/event-list.c:618 ../src/event-list.c:1422
 msgid "Time"
 msgstr "Aika"
 
-#: ../src/event-list.c:795
+#: ../src/event-list.c:801
 msgid "No rows have been selected."
 msgstr "Yhtään riviä ei ole valittu."
 
-#: ../src/event-list.c:796
+#: ../src/event-list.c:802
 msgid "Click a row to select it and after that you can copy it."
 msgstr "Napsauta rivi valitaaksesi sen, jonka jälkeen voit kopioida sen."
 
-#: ../src/event-list.c:992
+#: ../src/event-list.c:997
 msgid ""
 "You will permanently remove all\n"
 "selected appointments."
@@ -1380,35 +1380,35 @@ msgstr ""
 "Poistat lopullisesti kaikki\n"
 "valitut tapaamiset."
 
-#: ../src/event-list.c:995
+#: ../src/event-list.c:1000
 msgid "Yes, remove them"
 msgstr "Kyllä, poista"
 
-#: ../src/event-list.c:1207
+#: ../src/event-list.c:1212
 msgid "Back"
 msgstr "Takaisin"
 
-#: ../src/event-list.c:1211
+#: ../src/event-list.c:1216
 msgid "Forward"
 msgstr "Eteenpäin"
 
-#: ../src/event-list.c:1218
+#: ../src/event-list.c:1223
 msgid "Find"
 msgstr "Etsi"
 
-#: ../src/event-list.c:1225
+#: ../src/event-list.c:1230
 msgid "Dayview"
 msgstr "Päivänäkymä"
 
-#: ../src/event-list.c:1260
+#: ../src/event-list.c:1265
 msgid "Extra days to show:"
 msgstr "Näytettävät lisäpäivät:"
 
-#: ../src/event-list.c:1274
+#: ../src/event-list.c:1279
 msgid "only first repeating"
 msgstr "vain ensimmäinen toistuva"
 
-#: ../src/event-list.c:1282
+#: ../src/event-list.c:1287
 msgid ""
 "Check this if you only want to see the first repeating event. By default all are shown.\n"
 "Note that this also shows all urgencies.\n"
@@ -1418,11 +1418,11 @@ msgstr ""
 "Huomaa että tämä näyttä myös kaikki kiirellisyydet.\n"
 "Huomaa että toistuvat tapahtuvat voivat esiintyä aiemmin listassa koska vain ensimmäinen esiintymä näytetään."
 
-#: ../src/event-list.c:1287
+#: ../src/event-list.c:1292
 msgid "also old"
 msgstr "myös vanhat"
 
-#: ../src/event-list.c:1292
+#: ../src/event-list.c:1297
 msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed'."
@@ -1430,27 +1430,27 @@ msgstr ""
 "Valitse tämä jos haluat nähdä myös vanhat tapahtumat. Tämän voi valita vain jos 'vain ensimmäinen toistuva' on valittu erittäin pitkien listojen välttämiseksi.\n"
 "Huomaa että lisäpäivien valinnalla voi silti määrittää näytetäänkö uudemmat tapaamiset."
 
-#: ../src/event-list.c:1330
+#: ../src/event-list.c:1336
 msgid "Journal entries starting from:"
 msgstr "Päiväkirjamerkinnät alkaen:"
 
-#: ../src/event-list.c:1350
+#: ../src/event-list.c:1361
 msgid "Search"
 msgstr "Etsi"
 
-#: ../src/event-list.c:1353
+#: ../src/event-list.c:1364
 msgid "Search text "
 msgstr "Hakusanat"
 
-#: ../src/event-list.c:1419
+#: ../src/event-list.c:1430
 msgid "Flags"
 msgstr "Nimikkeet"
 
-#: ../src/event-list.c:1427
+#: ../src/event-list.c:1438
 msgid "Title"
 msgstr "Otsikko"
 
-#: ../src/event-list.c:1453
+#: ../src/event-list.c:1464
 msgid ""
 "Double click line to edit it.\n"
 "\n"
@@ -1478,7 +1478,7 @@ msgstr ""
 "\t 5. Tapaamisen tyyypi:\n"
 "\t\tE=tapahtuma T=tehtävä J=päiväkirja"
 
-#: ../src/ical-code.c:751
+#: ../src/ical-code.c:790
 msgid "Orage default alarm"
 msgstr "Oragen oletushälytys"
 
@@ -1712,7 +1712,7 @@ msgstr "Tämä sisäinen nimi näytetään käyttäjälle tiedoston nimen sijast
 msgid "Exchange data - Orage"
 msgstr "Vaihtotiedot - Orage"
 
-#: ../src/main.c:271
+#: ../src/main.c:273
 #, c-format
 msgid ""
 "\tThis is %s version %s\n"
@@ -1721,72 +1721,62 @@ msgstr ""
 "\tTämä on %s versio %s\n"
 "\n"
 
-#: ../src/main.c:273
+#: ../src/main.c:275
 #, c-format
 msgid "\tReleased under the terms of the GNU General Public License.\n"
 msgstr "Julkaistu GNU GPL -lisenssin version 2 ehdoilla\n"
 
-#: ../src/main.c:274
+#: ../src/main.c:276
 #, c-format
 msgid "\tCompiled against GTK+-%d.%d.%d, "
 msgstr "\tKäännetty versiolle GTK+-%d.%d.%d, "
 
-#: ../src/main.c:276
+#: ../src/main.c:278
 #, c-format
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "käyttäen versiota GTK+-%d.%d.%d.\n"
 
-#: ../src/main.c:279
+#: ../src/main.c:281
 #, c-format
 msgid "\tUsing DBUS for import.\n"
 msgstr "\tKäytetään DBusia tuomiseen.\n"
 
-#: ../src/main.c:281
+#: ../src/main.c:283
 #, c-format
 msgid "\tNot using DBUS. Import works only partially.\n"
 msgstr "\tEi käytetä DBusia. Tuominen toimii vain osittain.\n"
 
-#: ../src/main.c:284
+#: ../src/main.c:286
 #, c-format
 msgid "\tUsing libnotify.\n"
 msgstr "\tKäytetään libnotifyä.\n"
 
-#: ../src/main.c:286
+#: ../src/main.c:288
 #, c-format
 msgid "\tNot using libnotify.\n"
 msgstr "\tEi käytetä libnotifyä.\n"
 
-#: ../src/main.c:289
+#: ../src/main.c:291
 #, c-format
 msgid "\tUsing automatic archiving.\n"
 msgstr "\tKäytetään automaattista arkistointia.\n"
 
-#: ../src/main.c:291
+#: ../src/main.c:293
 #, c-format
 msgid "\tNot using archiving.\n"
 msgstr "\tEi käytetä arkistointia.\n"
 
-#: ../src/main.c:294
-#, c-format
-msgid "\tUsing operating system package libical.\n"
-msgstr "\tKäytetään käyttöjärjestelmän libical-pakettia.\n"
-
 #: ../src/main.c:296
-#, c-format
-msgid "\tUsing Orage local version of libical.\n"
-msgstr "\tKäytetään Oragen paikallista libical-versiota.\n"
-
-#: ../src/main.c:299
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
 msgstr ""
 
-#: ../src/main.c:301
+#: ../src/main.c:298
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
 msgstr ""
 
-#: ../src/main.c:314
+#: ../src/main.c:311
 msgid ""
 "Usage: orage [options] [files]\n"
 "\n"
@@ -1794,35 +1784,35 @@ msgstr ""
 "Käyttö: orage [valinnat] [tiedostot]\n"
 "\n"
 
-#: ../src/main.c:315
+#: ../src/main.c:312
 msgid "Options:\n"
 msgstr "Valinnat:\n"
 
-#: ../src/main.c:316
+#: ../src/main.c:313
 msgid "--version (-v) \t\tshow version of orage\n"
 msgstr "--version (-v) \t\tnäytä Oragen versio\n"
 
-#: ../src/main.c:317
+#: ../src/main.c:314
 msgid "--help (-h) \t\tprint this text\n"
 msgstr "--help (-h) \t\tnäytä tämä teksti\n"
 
-#: ../src/main.c:318
+#: ../src/main.c:315
 msgid "--preferences (-p) \tshow preferences form\n"
 msgstr "--preferences (-p) \tnäytä asetukset\n"
 
-#: ../src/main.c:319
+#: ../src/main.c:316
 msgid "--toggle (-t) \t\tmake orage visible/unvisible\n"
 msgstr "--toggle (-t) \t\tnäytä/piilota Orage\n"
 
-#: ../src/main.c:320
+#: ../src/main.c:317
 msgid "--add-foreign (-a) file [RW] [name] \tadd a foreign file\n"
 msgstr "--add-foreign (-a) tiedosto [RW] [nimi] \tlisää ulkoinen tiedosto\n"
 
-#: ../src/main.c:321
+#: ../src/main.c:318
 msgid "--remove-foreign (-r) file \tremove a foreign file\n"
 msgstr "--remove-foreign (-r) tiedosto \tpoista ulkoinen tiedosto\n"
 
-#: ../src/main.c:322
+#: ../src/main.c:319
 msgid ""
 "--export (-e) file [appointment...] \texport appointments from Orage to "
 "file\n"
@@ -1830,15 +1820,15 @@ msgstr ""
 "--export (-e) tiedosto [tapaaminen...] \tvie tapaamiset Oragesta "
 "tiedostoon\n"
 
-#: ../src/main.c:324
+#: ../src/main.c:321
 msgid "files=ical files to load into orage\n"
 msgstr "tiedostot=iCal-tiedostot jotka ladataan Orageen\n"
 
-#: ../src/main.c:326
+#: ../src/main.c:323
 msgid "\tdbus not included in orage. \n"
 msgstr "\tDBus ei sisälly Orageen. \n"
 
-#: ../src/main.c:327
+#: ../src/main.c:324
 msgid ""
 "\twithout dbus [files] and foreign file options(-a & -r) can only be used "
 "when starting orage \n"
@@ -1846,7 +1836,7 @@ msgstr ""
 "\tilman DBusia [tiedostot] ja ulkoisten tiedostojen valintoja (-a & -r) voi "
 "käyttää vain kun Orage käynnistetään \n"
 
-#: ../src/main.c:540
+#: ../src/main.c:537
 #, c-format
 msgid ""
 "\n"
@@ -1857,47 +1847,47 @@ msgstr ""
 "Tuntematon valinta %s\n"
 "\n"
 
-#: ../src/mainbox.c:216
+#: ../src/mainbox.c:225
 msgid "_Exchange data"
 msgstr "_Vaihtotiedot"
 
 #. Edit menu
-#: ../src/mainbox.c:227
+#: ../src/mainbox.c:236
 msgid "_Edit"
 msgstr "_Muokkaa"
 
-#: ../src/mainbox.c:237
+#: ../src/mainbox.c:246
 msgid "View selected _date"
 msgstr "Näytä valittu _päivä"
 
-#: ../src/mainbox.c:240
+#: ../src/mainbox.c:249
 msgid "View selected _week"
 msgstr "Näytä valittu _viikko"
 
-#: ../src/mainbox.c:246
+#: ../src/mainbox.c:255
 msgid "Select _Today"
 msgstr "Valitse _tämä päivä"
 
-#: ../src/mainbox.c:252
+#: ../src/mainbox.c:261
 msgid "Show _Globaltime"
 msgstr "Näytä _maailmanlaajuinen aika"
 
 #. Help menu
 #. the rest
-#: ../src/mainbox.c:256 ../src/parameters.c:1197
+#: ../src/mainbox.c:265 ../src/parameters.c:1197
 msgid "_Help"
 msgstr "_Ohje"
 
-#: ../src/mainbox.c:316 ../src/reminder.c:995
+#: ../src/mainbox.c:328 ../src/reminder.c:1027
 msgid "No title defined"
 msgstr "Otsikkoa ei määritelty"
 
-#: ../src/mainbox.c:379
+#: ../src/mainbox.c:386
 #, c-format
 msgid " Location: %s\n"
 msgstr "Sijainti: %s\n"
 
-#: ../src/mainbox.c:389
+#: ../src/mainbox.c:396
 #, c-format
 msgid ""
 "\n"
@@ -1908,11 +1898,11 @@ msgstr ""
 " Huomaa:\n"
 "%s"
 
-#: ../src/mainbox.c:397
+#: ../src/mainbox.c:404
 msgid "Never"
 msgstr "Ei koskaan"
 
-#: ../src/mainbox.c:403
+#: ../src/mainbox.c:412
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1925,7 +1915,7 @@ msgstr ""
 " Tehtävä ennen:\t%s\n"
 " Tila:\t%s%s"
 
-#: ../src/mainbox.c:411
+#: ../src/mainbox.c:419
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1936,16 +1926,16 @@ msgstr ""
 "%s Alkamisaika:\t%s\n"
 " Päättymisaika:\t%s%s"
 
-#: ../src/mainbox.c:489
+#: ../src/mainbox.c:498
 msgid "<b>To do:</b>"
 msgstr "<b>Tehtävälista:</b>"
 
-#: ../src/mainbox.c:525
+#: ../src/mainbox.c:535
 #, c-format
 msgid "<b>Events for %s:</b>"
 msgstr "<b>Tapahtumat - %s:</b>"
 
-#: ../src/mainbox.c:536
+#: ../src/mainbox.c:545
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>Tapahtumat ajalle %s - %s:</b>"
@@ -2172,39 +2162,39 @@ msgstr ""
 msgid "Orage Preferences"
 msgstr "Oragen asetukset"
 
-#: ../src/parameters.c:1200 ../src/reminder.c:673
+#: ../src/parameters.c:1200 ../src/reminder.c:712
 msgid "_Close"
 msgstr "_Sulje"
 
-#: ../src/reminder.c:466
+#: ../src/reminder.c:490
 msgid "Reminder "
 msgstr "Muistutus"
 
-#: ../src/reminder.c:495
+#: ../src/reminder.c:519
 msgid "Open"
 msgstr "Avaa"
 
-#: ../src/reminder.c:598
+#: ../src/reminder.c:637
 msgid "Reminder - Orage"
 msgstr "Muistutus - Orage"
 
-#: ../src/reminder.c:681
+#: ../src/reminder.c:720
 msgid "_Stop"
 msgstr "_Pysäytä"
 
-#: ../src/reminder.c:689
+#: ../src/reminder.c:728
 msgid "Postpone"
 msgstr "Siirrä myöhemmäksi"
 
-#: ../src/reminder.c:691
+#: ../src/reminder.c:730
 msgid "Remind me again after the specified time"
 msgstr "Muistuta minua uudelleen määritetyn ajan päästä"
 
-#: ../src/reminder.c:947
+#: ../src/reminder.c:995
 msgid "Next active alarms:"
 msgstr "Seuraavat päälle kytketyt hälytykset:"
 
-#: ../src/reminder.c:1002
+#: ../src/reminder.c:1034
 #, c-format
 msgid ""
 "\n"
@@ -2213,7 +2203,7 @@ msgstr ""
 "\n"
 "%02d päivää %02d tuntia %02d minuuttia tapahtumaan: %s"
 
-#: ../src/reminder.c:1011
+#: ../src/reminder.c:1046
 #, c-format
 msgid ""
 "\n"
@@ -4466,15 +4456,15 @@ msgstr "US/Pacific-New"
 msgid "US/Samoa"
 msgstr "US/Samoa"
 
-#: ../src/tray_icon.c:457
+#: ../src/tray_icon.c:469
 msgid "New appointment"
 msgstr "Uusi tapaminen"
 
-#: ../src/tray_icon.c:464
+#: ../src/tray_icon.c:476
 msgid "Preferences"
 msgstr "Asetukset"
 
-#: ../src/tray_icon.c:471
+#: ../src/tray_icon.c:483
 msgid "Quit"
 msgstr "Lopeta"
 
