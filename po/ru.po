@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-12 00:50+0100\n"
+"POT-Creation-Date: 2022-08-29 00:49+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Виктор Голованенко <drygdryg2014@yandex.ru>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/xfce/teams/16840/ru/)\n"
@@ -29,24 +29,24 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: ../globaltime/globaltime.c:59
+#: ../globaltime/globaltime.c:62
 msgid "no underline"
 msgstr "без подчёркивания"
 
-#: ../globaltime/globaltime.c:59
+#: ../globaltime/globaltime.c:62
 msgid "single"
 msgstr "одинарное"
 
-#: ../globaltime/globaltime.c:59
+#: ../globaltime/globaltime.c:62
 msgid "double"
 msgstr "двойное"
 
-#: ../globaltime/globaltime.c:59
+#: ../globaltime/globaltime.c:62
 msgid "low"
 msgstr "снизу"
 
 #. ********** timezone tooltip **********
-#: ../globaltime/globaltime.c:338
+#: ../globaltime/globaltime.c:341
 #, c-format
 msgid ""
 "%s\n"
@@ -55,11 +55,11 @@ msgstr ""
 "%s\n"
 "кликните для изменения временной метки"
 
-#: ../globaltime/globaltime.c:447
+#: ../globaltime/globaltime.c:450
 msgid "Localtime"
 msgstr "Местное время"
 
-#: ../globaltime/globaltime.c:536
+#: ../globaltime/globaltime.c:539
 msgid ""
 "button 1 to change preferences \n"
 "button 2 to adjust time of clocks"
@@ -67,16 +67,16 @@ msgstr ""
 "Кнопка 1 для изменения параметров \n"
 "Кнопка 2 для изменения времени метки"
 
-#: ../globaltime/globaltime.c:551
+#: ../globaltime/globaltime.c:554
 msgid "adjust to change hour"
 msgstr "Изменить час"
 
-#: ../globaltime/globaltime.c:567
+#: ../globaltime/globaltime.c:570
 msgid ""
 "adjust to change minute. Click arrows with button 2 to change only 1 minute."
 msgstr "Изменить минуту. Щелчок кнопкой 2 изменяет минуту с шагом 1."
 
-#: ../globaltime/globaltime.c:621
+#: ../globaltime/globaltime.c:624
 msgid "Global Time"
 msgstr "Мировое время"
 
@@ -154,10 +154,10 @@ msgid "Timezone of the clock:"
 msgstr "Часовой пояс метки:"
 
 #: ../globaltime/gt_prefs.c:683 ../globaltime/gt_prefs.c:1189
-#: ../panel-plugin/oc_config.c:374 ../src/appointment.c:3157
+#: ../panel-plugin/oc_config.c:374 ../src/appointment.c:3302
 #: ../src/interface.c:1047 ../src/interface.c:1093 ../src/interface.c:1269
 #: ../src/interface.c:1361 ../src/interface.c:1444 ../src/parameters.c:397
-#: ../src/parameters.c:620 ../src/reminder.c:666
+#: ../src/parameters.c:620 ../src/reminder.c:705
 msgid "_Open"
 msgstr "_Открыть"
 
@@ -288,7 +288,7 @@ msgstr "По умолчанию"
 msgid "Use normal decorations"
 msgstr "Использовать обычное оформление"
 
-#: ../globaltime/gt_prefs.c:1149 ../src/appointment.c:3406
+#: ../globaltime/gt_prefs.c:1149 ../src/appointment.c:3551
 msgid "None"
 msgstr "Нет"
 
@@ -321,69 +321,69 @@ msgid "Local timezone:"
 msgstr "Местный часовой пояс:"
 
 #: ../globaltime/timezone_selection.c:93
-#: ../panel-plugin/timezone_selection.c:92 ../src/timezone_selection.c:95
+#: ../panel-plugin/timezone_selection.c:92
 msgid " Other"
 msgstr "Прочее"
 
-#: ../globaltime/timezone_selection.c:146
-#: ../panel-plugin/timezone_selection.c:144 ../src/timezone_selection.c:165
+#: ../globaltime/timezone_selection.c:145
+#: ../panel-plugin/timezone_selection.c:144 ../src/timezone_selection.c:148
 #, c-format
 msgid "%d hour %d mins"
 msgstr "%d час. %d мин."
 
-#: ../globaltime/timezone_selection.c:149
-#: ../panel-plugin/timezone_selection.c:147 ../src/timezone_selection.c:168
+#: ../globaltime/timezone_selection.c:148
+#: ../panel-plugin/timezone_selection.c:147 ../src/timezone_selection.c:151
 #, c-format
 msgid "%d hour"
 msgstr "%d час."
 
-#: ../globaltime/timezone_selection.c:151
-#: ../panel-plugin/timezone_selection.c:149 ../src/timezone_selection.c:170
+#: ../globaltime/timezone_selection.c:150
+#: ../panel-plugin/timezone_selection.c:149 ../src/timezone_selection.c:153
 #, c-format
 msgid "%d mins"
 msgstr "%d мин."
 
-#: ../globaltime/timezone_selection.c:157
-#: ../panel-plugin/timezone_selection.c:155 ../src/timezone_selection.c:176
+#: ../globaltime/timezone_selection.c:156
+#: ../panel-plugin/timezone_selection.c:155 ../src/timezone_selection.c:159
 msgid "backward"
 msgstr "назад"
 
-#: ../globaltime/timezone_selection.c:160
-#: ../panel-plugin/timezone_selection.c:158 ../src/timezone_selection.c:179
+#: ../globaltime/timezone_selection.c:159
+#: ../panel-plugin/timezone_selection.c:158 ../src/timezone_selection.c:162
 msgid "forward"
 msgstr "вперёд"
 
-#: ../globaltime/timezone_selection.c:184
-#: ../panel-plugin/timezone_selection.c:182 ../src/timezone_selection.c:203
+#: ../globaltime/timezone_selection.c:183
+#: ../panel-plugin/timezone_selection.c:182 ../src/timezone_selection.c:186
 msgid "not changed"
 msgstr "не изменено"
 
-#: ../globaltime/timezone_selection.c:185
-#: ../panel-plugin/timezone_selection.c:183 ../src/timezone_selection.c:204
+#: ../globaltime/timezone_selection.c:184
+#: ../panel-plugin/timezone_selection.c:183 ../src/timezone_selection.c:187
 msgid "not changing"
 msgstr "не изменяется"
 
 #. location
-#: ../globaltime/timezone_selection.c:235
-#: ../globaltime/timezone_selection.c:240
+#: ../globaltime/timezone_selection.c:234
+#: ../globaltime/timezone_selection.c:239
 #: ../panel-plugin/timezone_selection.c:233
-#: ../panel-plugin/timezone_selection.c:238 ../src/appointment.c:2829
-#: ../src/timezone_selection.c:254 ../src/timezone_selection.c:259
+#: ../panel-plugin/timezone_selection.c:238 ../src/appointment.c:2974
+#: ../src/timezone_selection.c:237 ../src/timezone_selection.c:242
 msgid "Location"
 msgstr "Расположение"
 
-#: ../globaltime/timezone_selection.c:246
-#: ../panel-plugin/timezone_selection.c:244 ../src/timezone_selection.c:265
+#: ../globaltime/timezone_selection.c:245
+#: ../panel-plugin/timezone_selection.c:244 ../src/timezone_selection.c:248
 msgid "GMT Offset"
 msgstr "Разница с GMT"
 
-#: ../globaltime/timezone_selection.c:252
-#: ../panel-plugin/timezone_selection.c:250 ../src/timezone_selection.c:271
+#: ../globaltime/timezone_selection.c:251
+#: ../panel-plugin/timezone_selection.c:250 ../src/timezone_selection.c:254
 msgid "Previous/Next Change"
 msgstr "Предыдущее/следующее изменение"
 
-#: ../globaltime/timezone_selection.c:257
-#: ../panel-plugin/timezone_selection.c:255 ../src/timezone_selection.c:276
+#: ../globaltime/timezone_selection.c:256
+#: ../panel-plugin/timezone_selection.c:255 ../src/timezone_selection.c:259
 msgid "Country"
 msgstr "Страна"
 
@@ -392,39 +392,39 @@ msgstr "Страна"
 #. done very seldom and we do not want to allow "floating" here.
 #. This test is ugly, but it is not worth an extra parameter.
 #. this is normal appointment
-#: ../globaltime/timezone_selection.c:284
-#: ../globaltime/timezone_selection.c:294
+#: ../globaltime/timezone_selection.c:283
+#: ../globaltime/timezone_selection.c:293
 #: ../panel-plugin/timezone_selection.c:283
-#: ../panel-plugin/timezone_selection.c:293 ../src/timezone_selection.c:308
-#: ../src/timezone_selection.c:317 ../src/timezone_selection.c:328
+#: ../panel-plugin/timezone_selection.c:293 ../src/timezone_selection.c:291
+#: ../src/timezone_selection.c:300 ../src/timezone_selection.c:311
 msgid "Pick timezone"
 msgstr "Выбор часового пояса"
 
-#: ../globaltime/timezone_selection.c:287
-#: ../globaltime/timezone_selection.c:297
+#: ../globaltime/timezone_selection.c:286
+#: ../globaltime/timezone_selection.c:296
 #: ../panel-plugin/timezone_selection.c:286
-#: ../panel-plugin/timezone_selection.c:296 ../src/timezone_selection.c:311
-#: ../src/timezone_selection.c:320 ../src/timezone_selection.c:331
+#: ../panel-plugin/timezone_selection.c:296 ../src/timezone_selection.c:294
+#: ../src/timezone_selection.c:303 ../src/timezone_selection.c:314
 msgid "Change mode"
 msgstr "Изменить режим"
 
-#: ../globaltime/timezone_selection.c:288
-#: ../globaltime/timezone_selection.c:298
-#: ../globaltime/timezone_selection.c:337
+#: ../globaltime/timezone_selection.c:287
+#: ../globaltime/timezone_selection.c:297
+#: ../globaltime/timezone_selection.c:336
 #: ../panel-plugin/timezone_selection.c:287
 #: ../panel-plugin/timezone_selection.c:297
-#: ../panel-plugin/timezone_selection.c:337 ../src/timezone_selection.c:312
-#: ../src/timezone_selection.c:321 ../src/timezone_selection.c:332
-#: ../src/timezone_selection.c:371
+#: ../panel-plugin/timezone_selection.c:337 ../src/timezone_selection.c:295
+#: ../src/timezone_selection.c:304 ../src/timezone_selection.c:315
+#: ../src/timezone_selection.c:354
 msgid "UTC"
 msgstr "UTC"
 
 #. NOTE: this exists only if ical timezones are being used
-#: ../globaltime/timezone_selection.c:289
-#: ../globaltime/timezone_selection.c:342
+#: ../globaltime/timezone_selection.c:288
+#: ../globaltime/timezone_selection.c:341
 #: ../panel-plugin/timezone_selection.c:288
-#: ../panel-plugin/timezone_selection.c:342 ../src/timezone_selection.c:322
-#: ../src/timezone_selection.c:376
+#: ../panel-plugin/timezone_selection.c:342 ../src/timezone_selection.c:305
+#: ../src/timezone_selection.c:359
 msgid "floating"
 msgstr "плавающий"
 
@@ -437,7 +437,7 @@ msgid "Show clocks from different countries"
 msgstr "Показывать время других стран"
 
 #: ../globaltime/org.xfce.orage.globaltime.desktop.in.h:3
-#: ../src/tray_icon.c:477
+#: ../src/tray_icon.c:489
 msgid "Globaltime"
 msgstr "Мировое время"
 
@@ -560,8 +560,8 @@ msgstr ""
 msgid "Orage clock Preferences"
 msgstr "Настройки часов Orage"
 
-#: ../panel-plugin/oc_config.c:505 ../src/day-view.c:403
-#: ../src/event-list.c:1223 ../src/interface.c:876
+#: ../panel-plugin/oc_config.c:505 ../src/day-view.c:414
+#: ../src/event-list.c:1228 ../src/interface.c:876
 msgid "Close"
 msgstr "Закрыть"
 
@@ -593,207 +593,207 @@ msgstr ""
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
 #. end time
-#: ../src/appointment.c:321 ../src/appointment.c:361 ../src/appointment.c:2858
+#: ../src/appointment.c:325 ../src/appointment.c:365 ../src/appointment.c:3003
 msgid "End"
 msgstr "Завершение"
 
-#: ../src/appointment.c:341
+#: ../src/appointment.c:345
 msgid "Due"
 msgstr "Через"
 
-#: ../src/appointment.c:501 ../src/mainbox.c:695
+#: ../src/appointment.c:508 ../src/mainbox.c:693
 #: ../org.xfce.orage.appdata.xml.in.h:1
 msgid "Orage"
 msgstr "Календарь Orage"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
-#: ../src/appointment.c:688 ../src/interface.c:262 ../src/parameters.c:392
+#: ../src/appointment.c:699 ../src/interface.c:262 ../src/parameters.c:392
 msgid "Select a file..."
 msgstr "Выбор файла..."
 
-#: ../src/appointment.c:696
+#: ../src/appointment.c:707
 msgid "Sound Files"
 msgstr "Звуковые файлы"
 
-#: ../src/appointment.c:703 ../src/interface.c:275
+#: ../src/appointment.c:714 ../src/interface.c:275
 msgid "All Files"
 msgstr "Все файлы"
 
-#: ../src/appointment.c:754
+#: ../src/appointment.c:765
 msgid "The appointment information has been modified."
 msgstr "Информация о встрече была изменена."
 
-#: ../src/appointment.c:755 ../src/appointment.c:1292 ../src/event-list.c:993
+#: ../src/appointment.c:766 ../src/appointment.c:1340 ../src/event-list.c:998
 msgid "Do you want to continue?"
 msgstr "Хотите продолжить?"
 
-#: ../src/appointment.c:756
+#: ../src/appointment.c:767
 msgid "No, do not leave"
 msgstr "Нет, не закрывать"
 
-#: ../src/appointment.c:757
+#: ../src/appointment.c:768
 msgid "Yes, ignore modifications and leave"
 msgstr "Да, игнорировать изменения и закрыть"
 
-#: ../src/appointment.c:785
+#: ../src/appointment.c:796
 msgid "The end of this appointment is earlier than the beginning."
 msgstr "Время окончания встречи раньше времени начала."
 
-#: ../src/appointment.c:1050 ../src/appointment.c:1929
+#: ../src/appointment.c:1096 ../src/appointment.c:2015
 msgid "Not set"
 msgstr "Не установлено"
 
-#: ../src/appointment.c:1141
+#: ../src/appointment.c:1189
 msgid "Add new appointment to this file."
 msgstr "Добавить новую встречу в данный файл."
 
-#: ../src/appointment.c:1142 ../src/appointment.c:1190
+#: ../src/appointment.c:1190 ../src/appointment.c:1238
 msgid "Orage default file"
 msgstr "Файл Orage по умолчанию"
 
-#: ../src/appointment.c:1228
+#: ../src/appointment.c:1276
 msgid "Appointment addition failed."
 msgstr "Не удалось добавить встречу."
 
-#: ../src/appointment.c:1229
+#: ../src/appointment.c:1277
 msgid ""
 "Error happened when adding appointment. Look more details from the log file."
 msgstr ""
 "В ходе добавления встречи возникли ошибки. Дополнительные сведения "
 "содержатся в файле журнала."
 
-#: ../src/appointment.c:1240
+#: ../src/appointment.c:1288
 msgid "Appointment update failed."
 msgstr "Не удалось обновить встречу."
 
-#: ../src/appointment.c:1241
+#: ../src/appointment.c:1289
 msgid ""
 "Look more details from the log file. (Perhaps file was updated external from"
 " Orage?)"
 msgstr "См. подробности в файле журнала. (Вероятно, файл был внешне изменён?)"
 
-#: ../src/appointment.c:1291
+#: ../src/appointment.c:1339
 msgid "This appointment will be permanently removed."
 msgstr "Эта встреча будет окончательно удалена."
 
-#: ../src/appointment.c:1293 ../src/event-list.c:994
+#: ../src/appointment.c:1341 ../src/event-list.c:999
 msgid "No, cancel the removal"
 msgstr "Нет, отменить удаление"
 
-#: ../src/appointment.c:1294
+#: ../src/appointment.c:1342
 msgid "Yes, remove it"
 msgstr "Да, удалить"
 
-#: ../src/appointment.c:1387 ../src/appointment.c:1402 ../src/day-view.c:460
-#: ../src/event-list.c:1053
+#: ../src/appointment.c:1441 ../src/appointment.c:1456 ../src/day-view.c:471
+#: ../src/event-list.c:1058 ../src/functions.c:144
 msgid "Pick the date"
 msgstr "Выбор даты"
 
-#: ../src/appointment.c:1389 ../src/appointment.c:1404 ../src/day-view.c:389
-#: ../src/day-view.c:462 ../src/event-list.c:1055 ../src/event-list.c:1209
-#: ../src/tray_icon.c:450
+#: ../src/appointment.c:1443 ../src/appointment.c:1458 ../src/day-view.c:400
+#: ../src/day-view.c:473 ../src/event-list.c:1060 ../src/event-list.c:1214
+#: ../src/functions.c:146 ../src/tray_icon.c:462
 msgid "Today"
 msgstr "Сегодня"
 
-#: ../src/appointment.c:1821
+#: ../src/appointment.c:1885
 msgid "This appointment does not exist."
 msgstr "Эта встреча не существует."
 
-#: ../src/appointment.c:1822
+#: ../src/appointment.c:1886
 msgid "It was probably removed, please refresh your screen."
 msgstr "Вероятно, она была удалена, пожалуйста, обновите экран."
 
-#: ../src/appointment.c:2097 ../src/interface.c:672
+#: ../src/appointment.c:2183 ../src/interface.c:672
 msgid "_Remove"
 msgstr "_Удалить"
 
-#: ../src/appointment.c:2123
+#: ../src/appointment.c:2209
 msgid "Current categories"
 msgstr "Текущие категории"
 
-#: ../src/appointment.c:2145
+#: ../src/appointment.c:2231
 msgid "Add new category with color"
 msgstr "Добавить новую категорию и цвет"
 
-#: ../src/appointment.c:2156
+#: ../src/appointment.c:2242
 msgid "Category:"
 msgstr "Категория:"
 
-#: ../src/appointment.c:2172 ../src/interface.c:1451
+#: ../src/appointment.c:2258 ../src/interface.c:1451
 msgid "_Add"
 msgstr "До_бавить"
 
-#: ../src/appointment.c:2201
+#: ../src/appointment.c:2287
 msgid "Colors of categories - Orage"
 msgstr "Цвета категорий — Orage"
 
-#: ../src/appointment.c:2247
+#: ../src/appointment.c:2334
 msgid " *** COPY ***"
 msgstr " *** КОПИЯ ***"
 
-#: ../src/appointment.c:2515
+#: ../src/appointment.c:2617
 msgid "New appointment - Orage"
 msgstr "Новая встреча — Orage"
 
 #. File menu stuff
 #. ********* File menu *********
 #. File menu
-#: ../src/appointment.c:2543 ../src/day-view.c:283 ../src/event-list.c:1110
-#: ../src/interface.c:857 ../src/mainbox.c:208
+#: ../src/appointment.c:2645 ../src/day-view.c:294 ../src/event-list.c:1115
+#: ../src/interface.c:857 ../src/mainbox.c:217
 msgid "_File"
 msgstr "_Файл"
 
-#: ../src/appointment.c:2549
+#: ../src/appointment.c:2651
 msgid "Sav_e and close"
 msgstr "_Сохранить и закрыть"
 
-#: ../src/appointment.c:2562 ../src/event-list.c:1116
+#: ../src/appointment.c:2664 ../src/event-list.c:1121
 msgid "D_uplicate"
 msgstr "_Дублировать"
 
-#: ../src/appointment.c:2750
+#: ../src/appointment.c:2895
 msgid "Save"
 msgstr "Сохранить"
 
-#: ../src/appointment.c:2752
+#: ../src/appointment.c:2897
 msgid "Save and close"
 msgstr "Сохранить и закрыть"
 
-#: ../src/appointment.c:2757
+#: ../src/appointment.c:2902
 msgid "Revert"
 msgstr "Восстановить"
 
-#: ../src/appointment.c:2759 ../src/event-list.c:1200
+#: ../src/appointment.c:2904 ../src/event-list.c:1205
 msgid "Duplicate"
 msgstr "Дублировать"
 
-#: ../src/appointment.c:2764 ../src/event-list.c:1202
+#: ../src/appointment.c:2909 ../src/event-list.c:1207
 msgid "Delete"
 msgstr "Удалить"
 
-#: ../src/appointment.c:2782
+#: ../src/appointment.c:2927
 msgid "Free"
 msgstr "Свободен"
 
-#: ../src/appointment.c:2782
+#: ../src/appointment.c:2927
 msgid "Busy"
 msgstr "Занят"
 
-#: ../src/appointment.c:2786
+#: ../src/appointment.c:2931
 msgid "General"
 msgstr "Основное"
 
 #. type
-#: ../src/appointment.c:2792
+#: ../src/appointment.c:2937
 msgid "Type "
 msgstr "Тип "
 
-#: ../src/appointment.c:2794 ../src/event-list.c:1255
+#: ../src/appointment.c:2939 ../src/event-list.c:1260
 msgid "Event"
 msgstr "Событие"
 
-#: ../src/appointment.c:2799
+#: ../src/appointment.c:2944
 msgid ""
 "Event that will happen sometime. For example:\n"
 "Meeting or birthday or TV show."
@@ -801,11 +801,11 @@ msgstr ""
 "Событие, которое когда-либо случится. Например:\n"
 "встреча, день рождения или телевизионная передача."
 
-#: ../src/appointment.c:2802 ../src/event-list.c:1314
+#: ../src/appointment.c:2947 ../src/event-list.c:1319
 msgid "Todo"
 msgstr "Задача"
 
-#: ../src/appointment.c:2807
+#: ../src/appointment.c:2952
 msgid ""
 "Something that you should do sometime. For example:\n"
 "Wash your car or test new version of Orage."
@@ -813,11 +813,11 @@ msgstr ""
 "Что-либо, что необходимо когда-либо сделать. Например,\n"
 "помыть машину или протестировать новую версию Orage."
 
-#: ../src/appointment.c:2810 ../src/event-list.c:1327
+#: ../src/appointment.c:2955 ../src/event-list.c:1333
 msgid "Journal"
 msgstr "Дневник"
 
-#: ../src/appointment.c:2815
+#: ../src/appointment.c:2960
 msgid ""
 "Make a note that something happened. For example:\n"
 "Remark that your mother called or first snow came."
@@ -826,59 +826,59 @@ msgstr ""
 "пометка, что позвонила мама или выпал первый снег."
 
 #. title
-#: ../src/appointment.c:2822
+#: ../src/appointment.c:2967
 msgid "Title "
 msgstr "Название "
 
-#: ../src/appointment.c:2837
+#: ../src/appointment.c:2982
 msgid "All day event"
 msgstr "Событие на весь день"
 
 #. start time
-#: ../src/appointment.c:2843 ../src/appointment.c:3562 ../src/day-view.c:806
+#: ../src/appointment.c:2988 ../src/appointment.c:3707 ../src/day-view.c:841
 msgid "Start"
 msgstr "Начало"
 
-#: ../src/appointment.c:2863
+#: ../src/appointment.c:3008
 msgid "Set      "
 msgstr "Установить      "
 
-#: ../src/appointment.c:2886
+#: ../src/appointment.c:3031
 msgid "Duration"
 msgstr "Продолжительность"
 
-#: ../src/appointment.c:2890 ../src/appointment.c:3097 ../src/reminder.c:637
+#: ../src/appointment.c:3035 ../src/appointment.c:3242 ../src/reminder.c:676
 msgid "days"
 msgstr "дней"
 
-#: ../src/appointment.c:2892 ../src/appointment.c:3099 ../src/reminder.c:639
+#: ../src/appointment.c:3037 ../src/appointment.c:3244 ../src/reminder.c:678
 msgid "hours"
 msgstr "часов"
 
-#: ../src/appointment.c:2894 ../src/appointment.c:3101 ../src/reminder.c:641
+#: ../src/appointment.c:3039 ../src/appointment.c:3246 ../src/reminder.c:680
 msgid "mins"
 msgstr "минут"
 
 #. Availability (only for EVENT)
-#: ../src/appointment.c:2906
+#: ../src/appointment.c:3051
 msgid "Availability"
 msgstr "Занятость"
 
 #. completed (only for TODO)
-#: ../src/appointment.c:2914 ../src/appointment.c:3571
+#: ../src/appointment.c:3059 ../src/appointment.c:3716
 msgid "Completed"
 msgstr "Закончено"
 
-#: ../src/appointment.c:2917
+#: ../src/appointment.c:3062
 msgid "Done"
 msgstr "Готово"
 
 #. categories
-#: ../src/appointment.c:2942
+#: ../src/appointment.c:3087
 msgid "Categories"
 msgstr "Категории"
 
-#: ../src/appointment.c:2960
+#: ../src/appointment.c:3105
 msgid ""
 "This is special category, which can be used to color this appointment in "
 "list views."
@@ -886,20 +886,20 @@ msgstr ""
 "Это особая категория, которая используется для выделения цветом встреч в "
 "списке."
 
-#: ../src/appointment.c:2961
+#: ../src/appointment.c:3106
 msgid "_Colour"
 msgstr "_Цвет"
 
-#: ../src/appointment.c:2966
+#: ../src/appointment.c:3111
 msgid "update colors for categories."
 msgstr "Обновить цвета категорий."
 
 #. priority
-#: ../src/appointment.c:2972
+#: ../src/appointment.c:3117
 msgid "Priority"
 msgstr "Приоритет"
 
-#: ../src/appointment.c:2976
+#: ../src/appointment.c:3121
 msgid ""
 "If you set this 8 or bigger, the appointment is NOT shown on list windows.\n"
 "You can use that feature to unclutter your list windows, but it makes it more difficult to find this appointment.\n"
@@ -912,11 +912,11 @@ msgstr ""
 "(Есть недокументированный параметр для изменения ограничения по умолчанию 8.)"
 
 #. note
-#: ../src/appointment.c:2985
+#: ../src/appointment.c:3130
 msgid "Note"
 msgstr "Примечание"
 
-#: ../src/appointment.c:3006
+#: ../src/appointment.c:3151
 msgid ""
 "These shorthand commands take effect immediately:\n"
 "    <D> inserts current date in local date format\n"
@@ -936,32 +936,32 @@ msgstr ""
 "    <&Ynnnn> текущий год минус nnnn.\n"
 "(Например, для вычисления возраста в сообщении о юбилее.)"
 
-#: ../src/appointment.c:3079
+#: ../src/appointment.c:3224
 msgid "Before Start"
 msgstr "Перед началом"
 
-#: ../src/appointment.c:3079
+#: ../src/appointment.c:3224
 msgid "Before End"
 msgstr "Перед окончанием"
 
-#: ../src/appointment.c:3080
+#: ../src/appointment.c:3225
 msgid "After Start"
 msgstr "После начала"
 
-#: ../src/appointment.c:3080
+#: ../src/appointment.c:3225
 msgid "After End"
 msgstr "После окончания"
 
-#: ../src/appointment.c:3088
+#: ../src/appointment.c:3233
 msgid "Alarm"
 msgstr "Будильник"
 
 #. **** ALARM TIME ****
-#: ../src/appointment.c:3094
+#: ../src/appointment.c:3239
 msgid "Alarm time"
 msgstr "Время будильника"
 
-#: ../src/appointment.c:3119
+#: ../src/appointment.c:3264
 msgid ""
 "Often you want to get alarm:\n"
 " 1) before Event start\n"
@@ -973,11 +973,11 @@ msgstr ""
 " 2) перед завершением задачи\n"
 " 3) после начала задачи"
 
-#: ../src/appointment.c:3124
+#: ../src/appointment.c:3269
 msgid "Persistent alarm"
 msgstr "Постоянный будильник"
 
-#: ../src/appointment.c:3129
+#: ../src/appointment.c:3274
 msgid ""
 "Select this if you want Orage to remind you even if it has not been active "
 "when the alarm happened."
@@ -986,77 +986,77 @@ msgstr ""
 "приложение не активно."
 
 #. **** Audio Alarm ****
-#: ../src/appointment.c:3138
+#: ../src/appointment.c:3283
 msgid "Sound"
 msgstr "Звук"
 
-#: ../src/appointment.c:3142 ../src/appointment.c:3275
+#: ../src/appointment.c:3287 ../src/appointment.c:3420
 msgid "Use"
 msgstr "Использовать"
 
-#: ../src/appointment.c:3144
+#: ../src/appointment.c:3289
 msgid "Select this if you want audible alarm"
 msgstr "Выберите, если необходим слышимый будильник"
 
-#: ../src/appointment.c:3170
+#: ../src/appointment.c:3315
 msgid "Repeat alarm sound"
 msgstr "Повторять звук будильника"
 
-#: ../src/appointment.c:3185 ../src/appointment.c:3494
+#: ../src/appointment.c:3330 ../src/appointment.c:3639
 msgid "times"
 msgstr "раз"
 
-#: ../src/appointment.c:3201
+#: ../src/appointment.c:3346
 msgid "sec interval"
 msgstr "интервал в секундах"
 
 #. **** Display Alarm ****
-#: ../src/appointment.c:3211
+#: ../src/appointment.c:3356
 msgid "Visual"
 msgstr "Визуальный"
 
-#: ../src/appointment.c:3215
+#: ../src/appointment.c:3360
 msgid "Use Orage window"
 msgstr "Использовать окно Orage"
 
-#: ../src/appointment.c:3217
+#: ../src/appointment.c:3362
 msgid "Select this if you want Orage window alarm"
 msgstr "Укажите, если хотите использовать окно будильника Orage"
 
-#: ../src/appointment.c:3229
+#: ../src/appointment.c:3374
 msgid "Use notification"
 msgstr "Уведомление об использовании"
 
-#: ../src/appointment.c:3231
+#: ../src/appointment.c:3376
 msgid "Select this if you want notification alarm"
 msgstr "Укажите, если хотите будильник с уведомлениями"
 
-#: ../src/appointment.c:3239
+#: ../src/appointment.c:3384
 msgid "Set timeout"
 msgstr "Установить тайм-аут"
 
-#: ../src/appointment.c:3241
+#: ../src/appointment.c:3386
 msgid "Select this if you want notification to expire automatically"
 msgstr "Выберите, если хотите, чтобы уведомления заканчивались автоматически"
 
-#: ../src/appointment.c:3252
+#: ../src/appointment.c:3397
 msgid "0 = system default expiration time"
 msgstr "0 — системное время действия"
 
-#: ../src/appointment.c:3260
+#: ../src/appointment.c:3405
 msgid "seconds"
 msgstr "секунд"
 
 #. **** Procedure Alarm ****
-#: ../src/appointment.c:3271
+#: ../src/appointment.c:3416
 msgid "Procedure"
 msgstr "Процедура"
 
-#: ../src/appointment.c:3277
+#: ../src/appointment.c:3422
 msgid "Select this if you want procedure or script alarm"
 msgstr "Укажите, если хотите использовать процедуру или сценарий будильника"
 
-#: ../src/appointment.c:3287
+#: ../src/appointment.c:3432
 msgid ""
 "You must enter all escape etc characters yourself.\n"
 "This string is just given to shell to process.\n"
@@ -1076,105 +1076,105 @@ msgstr ""
 "\t<&ST> время начала\n"
 "\t<&ET> время окончания"
 
-#: ../src/appointment.c:3301 ../src/interface.c:1181 ../src/interface.c:1203
+#: ../src/appointment.c:3446 ../src/interface.c:1181 ../src/interface.c:1203
 msgid "_Execute"
 msgstr "_Исполнить"
 
-#: ../src/appointment.c:3303
+#: ../src/appointment.c:3448
 msgid "Test this alarm by raising it now"
 msgstr "Проверка установленного сигнала"
 
-#: ../src/appointment.c:3316
+#: ../src/appointment.c:3461
 msgid "<b>Default alarm</b>"
 msgstr "<b>Будильник по умолчанию</b>"
 
-#: ../src/appointment.c:3322 ../src/interface.c:1054 ../src/interface.c:1100
+#: ../src/appointment.c:3467 ../src/interface.c:1054 ../src/interface.c:1100
 #: ../src/interface.c:1275 ../src/interface.c:1367
 msgid "_Save"
 msgstr "_Сохранить"
 
-#: ../src/appointment.c:3330
+#: ../src/appointment.c:3475
 msgid "Store current settings as default alarm"
 msgstr "Установить текущие настройки как будильник по умолчанию"
 
-#: ../src/appointment.c:3332
+#: ../src/appointment.c:3477
 msgid "_Revert"
 msgstr "Восстановить"
 
-#: ../src/appointment.c:3340
+#: ../src/appointment.c:3485
 msgid "Set current settings from default alarm"
 msgstr "Установить текущие настройки из будильника по умолчанию"
 
-#: ../src/appointment.c:3406
+#: ../src/appointment.c:3551
 msgid "Daily"
 msgstr "Ежедневно"
 
-#: ../src/appointment.c:3406
+#: ../src/appointment.c:3551
 msgid "Weekly"
 msgstr "Еженедельно"
 
-#: ../src/appointment.c:3406
+#: ../src/appointment.c:3551
 msgid "Monthly"
 msgstr "Ежемесячно"
 
-#: ../src/appointment.c:3406
+#: ../src/appointment.c:3551
 msgid "Yearly"
 msgstr "Ежегодно"
 
-#: ../src/appointment.c:3406
+#: ../src/appointment.c:3551
 msgid "Hourly"
 msgstr "Каждый час"
 
-#: ../src/appointment.c:3408
+#: ../src/appointment.c:3553
 msgid "Mon"
 msgstr "Пн"
 
-#: ../src/appointment.c:3408
+#: ../src/appointment.c:3553
 msgid "Tue"
 msgstr "Вт"
 
-#: ../src/appointment.c:3408
+#: ../src/appointment.c:3553
 msgid "Wed"
 msgstr "Ср"
 
-#: ../src/appointment.c:3408
+#: ../src/appointment.c:3553
 msgid "Thu"
 msgstr "Чт"
 
-#: ../src/appointment.c:3408
+#: ../src/appointment.c:3553
 msgid "Fri"
 msgstr "Пт"
 
-#: ../src/appointment.c:3408
+#: ../src/appointment.c:3553
 msgid "Sat"
 msgstr "Сб"
 
-#: ../src/appointment.c:3408
+#: ../src/appointment.c:3553
 msgid "Sun"
 msgstr "Вс"
 
-#: ../src/appointment.c:3413
+#: ../src/appointment.c:3558
 msgid "Recurrence"
 msgstr "Повтор"
 
 #. complexity
-#: ../src/appointment.c:3419
+#: ../src/appointment.c:3564
 msgid "Complexity"
 msgstr "Шаблон"
 
-#: ../src/appointment.c:3422
+#: ../src/appointment.c:3567
 msgid "Basic"
 msgstr "Простой"
 
-#: ../src/appointment.c:3429
+#: ../src/appointment.c:3574
 msgid "Advanced"
 msgstr "Расширенный"
 
-#: ../src/appointment.c:3435
+#: ../src/appointment.c:3580
 msgid "Use this if you want regular repeating event"
 msgstr "Используйте, если хотите регулярного повторения события"
 
-#: ../src/appointment.c:3437
+#: ../src/appointment.c:3582
 msgid ""
 "Use this if you need complex times like:\n"
 " Every Saturday and Sunday or \n"
@@ -1185,19 +1185,19 @@ msgstr ""
 " Первую среду каждого месяца"
 
 #. frequency
-#: ../src/appointment.c:3443
+#: ../src/appointment.c:3588
 msgid "Frequency"
 msgstr "Повторяемость"
 
-#: ../src/appointment.c:3450
+#: ../src/appointment.c:3595
 msgid "Each"
 msgstr "Каждый"
 
-#: ../src/appointment.c:3461
+#: ../src/appointment.c:3606
 msgid "occurrence"
 msgstr "интервал"
 
-#: ../src/appointment.c:3468
+#: ../src/appointment.c:3613
 msgid ""
 "Limit frequency to certain interval.\n"
 " For example: Every third day:\n"
@@ -1207,32 +1207,32 @@ msgstr ""
 " Например, каждый третий день.\n"
 " Частота — Ежедневно и Интервал — 3"
 
-#: ../src/appointment.c:3475
+#: ../src/appointment.c:3620
 msgid "Limit"
 msgstr "Ограничение"
 
-#: ../src/appointment.c:3477
+#: ../src/appointment.c:3622
 msgid "Repeat forever"
 msgstr "Повторять бесконечно"
 
-#: ../src/appointment.c:3484
+#: ../src/appointment.c:3629
 msgid "Repeat "
 msgstr "Повторять "
 
-#: ../src/appointment.c:3508
+#: ../src/appointment.c:3653
 msgid "Repeat until "
 msgstr "Повторять до "
 
 #. weekdays (only for complex settings)
-#: ../src/appointment.c:3524
+#: ../src/appointment.c:3669
 msgid "Weekdays"
 msgstr "Дни недели"
 
-#: ../src/appointment.c:3541
+#: ../src/appointment.c:3686
 msgid "Which day"
 msgstr "В какой день"
 
-#: ../src/appointment.c:3552
+#: ../src/appointment.c:3697
 msgid ""
 "Specify which weekday for monthly and yearly events.\n"
 " For example:\n"
@@ -1248,11 +1248,11 @@ msgstr ""
 "\tВ какой день — укажите 2 в поле для среды."
 
 #. TODO base (only for TODOs)
-#: ../src/appointment.c:3559
+#: ../src/appointment.c:3704
 msgid "TODO base"
 msgstr "Начальная дата задачи"
 
-#: ../src/appointment.c:3578
+#: ../src/appointment.c:3723
 msgid ""
 "TODO reoccurs regularly starting on start time and repeating after each "
 "interval no matter when it was last completed"
@@ -1260,7 +1260,7 @@ msgstr ""
 "Время повтора задачи отсчитывается от времени её начала, и не зависит от "
 "того, была ли задача выполнена"
 
-#: ../src/appointment.c:3580
+#: ../src/appointment.c:3725
 msgid ""
 "TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
@@ -1269,11 +1269,11 @@ msgstr ""
 "(Учтите, что начальная дата задачи будет изменяться с каждым повторением.)"
 
 #. exceptions
-#: ../src/appointment.c:3586
+#: ../src/appointment.c:3731
 msgid "Exceptions"
 msgstr "Исключения"
 
-#: ../src/appointment.c:3612
+#: ../src/appointment.c:3757
 msgid ""
 "Add more exception dates by clicking the calendar days below.\n"
 "Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
@@ -1283,19 +1283,19 @@ msgstr ""
 "Исключения могут быть исключёнными (-) или включёнными (+).\n"
 "Щёлкните по дате, чтобы их удалить."
 
-#: ../src/appointment.c:3623
+#: ../src/appointment.c:3768
 msgid "Add excluded date (-)"
 msgstr "Добавить исключённую дату (-)"
 
-#: ../src/appointment.c:3625
+#: ../src/appointment.c:3770
 msgid "Excluded days are full days where this appointment is not happening"
 msgstr "В исключённые дни событие не наступает."
 
-#: ../src/appointment.c:3632
+#: ../src/appointment.c:3777
 msgid "Add included time (+)"
 msgstr "Добавить включённое время (+)"
 
-#: ../src/appointment.c:3634
+#: ../src/appointment.c:3779
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time"
@@ -1304,79 +1304,79 @@ msgstr ""
 "поясе, что и время начала события."
 
 #. calendars showing the action days
-#: ../src/appointment.c:3653
+#: ../src/appointment.c:3798
 msgid "Action dates"
 msgstr "Даты событий"
 
 #. ********* View menu *********
 #. View menu
-#: ../src/day-view.c:293 ../src/event-list.c:1133 ../src/mainbox.c:234
+#: ../src/day-view.c:304 ../src/event-list.c:1138 ../src/mainbox.c:243
 msgid "_View"
 msgstr "_Вид"
 
 #. ********* Go menu   *********
-#: ../src/day-view.c:307 ../src/event-list.c:1152
+#: ../src/day-view.c:318 ../src/event-list.c:1157
 msgid "_Go"
 msgstr "_Перейти"
 
-#: ../src/day-view.c:380 ../src/event-list.c:1198
+#: ../src/day-view.c:391 ../src/event-list.c:1203
 msgid "New"
 msgstr "Создать"
 
-#: ../src/day-view.c:385
+#: ../src/day-view.c:396
 msgid "Back one week"
 msgstr "Назад на одну неделю"
 
-#: ../src/day-view.c:387
+#: ../src/day-view.c:398
 msgid "Back one day"
 msgstr "Назад на один день"
 
-#: ../src/day-view.c:391
+#: ../src/day-view.c:402
 msgid "Forward one day"
 msgstr "Вперёд на один день"
 
-#: ../src/day-view.c:393
+#: ../src/day-view.c:404
 msgid "Forward one week"
 msgstr "Вперёд на одну неделю"
 
-#: ../src/day-view.c:398 ../src/event-list.c:1216
+#: ../src/day-view.c:409 ../src/event-list.c:1221
 msgid "Refresh"
 msgstr "Обновить"
 
-#: ../src/day-view.c:462
+#: ../src/day-view.c:473
 msgid "_OK"
 msgstr "_ОК"
 
-#: ../src/day-view.c:568
+#: ../src/day-view.c:596
 msgid "Unknown"
 msgstr "Неизвестно"
 
-#: ../src/day-view.c:815
+#: ../src/day-view.c:850
 msgid "       Number of days to show"
 msgstr "       Число дней"
 
-#: ../src/day-view.c:1045
+#: ../src/day-view.c:1081
 msgid "Orage - day view"
 msgstr "Просмотр дней — Orage"
 
 #. date only appointment
-#: ../src/event-list.c:192
+#: ../src/event-list.c:187
 msgid "All day"
 msgstr "Весь день"
 
-#: ../src/event-list.c:601 ../src/event-list.c:1411
+#: ../src/event-list.c:618 ../src/event-list.c:1422
 msgid "Time"
 msgstr "Время"
 
-#: ../src/event-list.c:795
+#: ../src/event-list.c:801
 msgid "No rows have been selected."
 msgstr "Не выбрано ни одной строки"
 
-#: ../src/event-list.c:796
+#: ../src/event-list.c:802
 msgid "Click a row to select it and after that you can copy it."
 msgstr "Кликните на строке перед её копированием."
 
-#: ../src/event-list.c:992
+#: ../src/event-list.c:997
 msgid ""
 "You will permanently remove all\n"
 "selected appointments."
@@ -1384,35 +1384,35 @@ msgstr ""
 "Вы окончательно удалите все\n"
 "выбранные встречи."
 
-#: ../src/event-list.c:995
+#: ../src/event-list.c:1000
 msgid "Yes, remove them"
 msgstr "Да, удалить"
 
-#: ../src/event-list.c:1207
+#: ../src/event-list.c:1212
 msgid "Back"
 msgstr "Назад"
 
-#: ../src/event-list.c:1211
+#: ../src/event-list.c:1216
 msgid "Forward"
 msgstr "Вперёд"
 
-#: ../src/event-list.c:1218
+#: ../src/event-list.c:1223
 msgid "Find"
 msgstr "Найти"
 
-#: ../src/event-list.c:1225
+#: ../src/event-list.c:1230
 msgid "Dayview"
 msgstr "Просмотр дней"
 
-#: ../src/event-list.c:1260
+#: ../src/event-list.c:1265
 msgid "Extra days to show:"
 msgstr "Показывать дополнительно дней:"
 
-#: ../src/event-list.c:1274
+#: ../src/event-list.c:1279
 msgid "only first repeating"
 msgstr "Только первое повторяющееся"
 
-#: ../src/event-list.c:1282
+#: ../src/event-list.c:1287
 msgid ""
 "Check this if you only want to see the first repeating event. By default all are shown.\n"
 "Note that this also shows all urgencies.\n"
@@ -1422,11 +1422,11 @@ msgstr ""
 "Заметьте, что это также отобрази все срочные события.\n"
 "Учтите, что при отображении только первого из повторяющихся событий, повторяющиеся события могут быть в списке ранее."
 
-#: ../src/event-list.c:1287
+#: ../src/event-list.c:1292
 msgid "also old"
 msgstr "Также старые"
 
-#: ../src/event-list.c:1292
+#: ../src/event-list.c:1297
 msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed'."
@@ -1434,27 +1434,27 @@ msgstr ""
 "Выберите если хотите видеть также и старые события. Параметр может быть выбран только при выбранном параметре «только первое повторяющееся» для предотвращения очень длинных списков.\n"
 "Заметьте, что выбор дополнительных дней по прежнему определяет отображение новых встреч."
 
-#: ../src/event-list.c:1330
+#: ../src/event-list.c:1336
 msgid "Journal entries starting from:"
 msgstr "Записи в дневнике, начиная с:"
 
-#: ../src/event-list.c:1350
+#: ../src/event-list.c:1361
 msgid "Search"
 msgstr "Поиск"
 
-#: ../src/event-list.c:1353
+#: ../src/event-list.c:1364
 msgid "Search text "
 msgstr "Текст поиска "
 
-#: ../src/event-list.c:1419
+#: ../src/event-list.c:1430
 msgid "Flags"
 msgstr "Флаги"
 
-#: ../src/event-list.c:1427
+#: ../src/event-list.c:1438
 msgid "Title"
 msgstr "Название"
 
-#: ../src/event-list.c:1453
+#: ../src/event-list.c:1464
 msgid ""
 "Double click line to edit it.\n"
 "\n"
@@ -1483,7 +1483,7 @@ msgstr ""
 "\t5. Тип события:\n"
 "\t\tE — «событие», T — «задача», J — «дневник»"
 
-#: ../src/ical-code.c:751
+#: ../src/ical-code.c:790
 msgid "Orage default alarm"
 msgstr "Будильник по умолчанию"
 
@@ -1716,79 +1716,69 @@ msgstr "Используется это внутреннее имя для от�
 msgid "Exchange data - Orage"
 msgstr "Обмен данными — Orage"
 
-#: ../src/main.c:271
+#: ../src/main.c:273
 #, c-format
 msgid ""
 "\tThis is %s version %s\n"
 "\n"
 msgstr "\t%s версии %s\n"
 
-#: ../src/main.c:273
+#: ../src/main.c:275
 #, c-format
 msgid "\tReleased under the terms of the GNU General Public License.\n"
 msgstr "\tРаспространяется согласно условиям GNU General Public License.\n"
 
-#: ../src/main.c:274
+#: ../src/main.c:276
 #, c-format
 msgid "\tCompiled against GTK+-%d.%d.%d, "
 msgstr "\tСкомпилирован с GTK+-%d.%d.%d, "
 
-#: ../src/main.c:276
+#: ../src/main.c:278
 #, c-format
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "используется GTK+-%d.%d.%d.\n"
 
-#: ../src/main.c:279
+#: ../src/main.c:281
 #, c-format
 msgid "\tUsing DBUS for import.\n"
 msgstr "\tИспользуется DBUS для импорта.\n"
 
-#: ../src/main.c:281
+#: ../src/main.c:283
 #, c-format
 msgid "\tNot using DBUS. Import works only partially.\n"
 msgstr "\tНе используется DBUS. Импорт работает частично.\n"
 
-#: ../src/main.c:284
+#: ../src/main.c:286
 #, c-format
 msgid "\tUsing libnotify.\n"
 msgstr "\tИспользуется libnotify.\n"
 
-#: ../src/main.c:286
+#: ../src/main.c:288
 #, c-format
 msgid "\tNot using libnotify.\n"
 msgstr "\tНе используется libnotify.\n"
 
-#: ../src/main.c:289
+#: ../src/main.c:291
 #, c-format
 msgid "\tUsing automatic archiving.\n"
 msgstr "\tИспользуется автоматическое архивирование.\n"
 
-#: ../src/main.c:291
+#: ../src/main.c:293
 #, c-format
 msgid "\tNot using archiving.\n"
 msgstr "\tНе используется архивирование.\n"
 
-#: ../src/main.c:294
-#, c-format
-msgid "\tUsing operating system package libical.\n"
-msgstr "\tИспользуется системная библиотека libical.\n"
-
 #: ../src/main.c:296
-#, c-format
-msgid "\tUsing Orage local version of libical.\n"
-msgstr "\tИспользуется версия Orage библиотеки libical.\n"
-
-#: ../src/main.c:299
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
 msgstr "\tИспользуется libxfce4ui: да\n"
 
-#: ../src/main.c:301
+#: ../src/main.c:298
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
 msgstr "\tИспользуется libxfce4ui: нет\n"
 
-#: ../src/main.c:314
+#: ../src/main.c:311
 msgid ""
 "Usage: orage [options] [files]\n"
 "\n"
@@ -1796,35 +1786,35 @@ msgstr ""
 "Использование: orage [параметры] [файлы]\n"
 "\n"
 
-#: ../src/main.c:315
+#: ../src/main.c:312
 msgid "Options:\n"
 msgstr "Параметры:\n"
 
-#: ../src/main.c:316
+#: ../src/main.c:313
 msgid "--version (-v) \t\tshow version of orage\n"
 msgstr "--version (-v) \t\tвывести версию Orage\n"
 
-#: ../src/main.c:317
+#: ../src/main.c:314
 msgid "--help (-h) \t\tprint this text\n"
 msgstr "--help (-h) \t\tвывести это описание\n"
 
-#: ../src/main.c:318
+#: ../src/main.c:315
 msgid "--preferences (-p) \tshow preferences form\n"
 msgstr "--preferences (-p) \tпоказать окно настроек\n"
 
-#: ../src/main.c:319
+#: ../src/main.c:316
 msgid "--toggle (-t) \t\tmake orage visible/unvisible\n"
 msgstr "--toggle (-t) \t\tпоказать/спрятать Orage\n"
 
-#: ../src/main.c:320
+#: ../src/main.c:317
 msgid "--add-foreign (-a) file [RW] [name] \tadd a foreign file\n"
 msgstr "--add-foreign (-a) ФАЙЛ [RW] [ИМЯ] \tдобавить внешний файл\n"
 
-#: ../src/main.c:321
+#: ../src/main.c:318
 msgid "--remove-foreign (-r) file \tremove a foreign file\n"
 msgstr "--remove-foreign (-r) ФАЙЛ \t\tудалить внешний файл\n"
 
-#: ../src/main.c:322
+#: ../src/main.c:319
 msgid ""
 "--export (-e) file [appointment...] \texport appointments from Orage to "
 "file\n"
@@ -1832,15 +1822,15 @@ msgstr ""
 "--export (-e) ФАЙЛ [ВСТРЕЧА...] \tэкспорт данных о встречах из Orage в "
 "файл\n"
 
-#: ../src/main.c:324
+#: ../src/main.c:321
 msgid "files=ical files to load into orage\n"
 msgstr "Файлы — файлы ical для загрузки в Orage\n"
 
-#: ../src/main.c:326
+#: ../src/main.c:323
 msgid "\tdbus not included in orage. \n"
 msgstr "\tdbus не включён в Orage. \n"
 
-#: ../src/main.c:327
+#: ../src/main.c:324
 msgid ""
 "\twithout dbus [files] and foreign file options(-a & -r) can only be used "
 "when starting orage \n"
@@ -1848,7 +1838,7 @@ msgstr ""
 "\tбез dbus [файлы] и внешнего файла опции (-a & -r) можно использовать "
 "только при запуске Orage \n"
 
-#: ../src/main.c:540
+#: ../src/main.c:537
 #, c-format
 msgid ""
 "\n"
@@ -1859,47 +1849,47 @@ msgstr ""
 "Неизвестный параметр %s\n"
 "\n"
 
-#: ../src/mainbox.c:216
+#: ../src/mainbox.c:225
 msgid "_Exchange data"
 msgstr "Об_мен данными"
 
 #. Edit menu
-#: ../src/mainbox.c:227
+#: ../src/mainbox.c:236
 msgid "_Edit"
 msgstr "_Правка"
 
-#: ../src/mainbox.c:237
+#: ../src/mainbox.c:246
 msgid "View selected _date"
 msgstr "Просмотр выбранной _даты"
 
-#: ../src/mainbox.c:240
+#: ../src/mainbox.c:249
 msgid "View selected _week"
 msgstr "Просмотр выбранной _недели"
 
-#: ../src/mainbox.c:246
+#: ../src/mainbox.c:255
 msgid "Select _Today"
 msgstr "Перейти к _сегодняшнему дню"
 
-#: ../src/mainbox.c:252
+#: ../src/mainbox.c:261
 msgid "Show _Globaltime"
 msgstr "_Мировое время"
 
 #. Help menu
 #. the rest
-#: ../src/mainbox.c:256 ../src/parameters.c:1197
+#: ../src/mainbox.c:265 ../src/parameters.c:1197
 msgid "_Help"
 msgstr "_Справка"
 
-#: ../src/mainbox.c:316 ../src/reminder.c:995
+#: ../src/mainbox.c:328 ../src/reminder.c:1027
 msgid "No title defined"
 msgstr "Без названия"
 
-#: ../src/mainbox.c:379
+#: ../src/mainbox.c:386
 #, c-format
 msgid " Location: %s\n"
 msgstr " Расположение: %s\n"
 
-#: ../src/mainbox.c:389
+#: ../src/mainbox.c:396
 #, c-format
 msgid ""
 "\n"
@@ -1910,11 +1900,11 @@ msgstr ""
 " Примечание:\n"
 "%s"
 
-#: ../src/mainbox.c:397
+#: ../src/mainbox.c:404
 msgid "Never"
 msgstr "Никогда"
 
-#: ../src/mainbox.c:403
+#: ../src/mainbox.c:412
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1927,7 +1917,7 @@ msgstr ""
 " Длительность:\t%s\n"
 " Окончание:\t%s%s"
 
-#: ../src/mainbox.c:411
+#: ../src/mainbox.c:419
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1938,16 +1928,16 @@ msgstr ""
 "%s Начало:\t%s\n"
 " Окончание:\t%s%s"
 
-#: ../src/mainbox.c:489
+#: ../src/mainbox.c:498
 msgid "<b>To do:</b>"
 msgstr "<b>Сделать:</b>"
 
-#: ../src/mainbox.c:525
+#: ../src/mainbox.c:535
 #, c-format
 msgid "<b>Events for %s:</b>"
 msgstr "<b>События для %s:</b>"
 
-#: ../src/mainbox.c:536
+#: ../src/mainbox.c:545
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>События с %s по %s:</b>"
@@ -2175,39 +2165,39 @@ msgstr ""
 msgid "Orage Preferences"
 msgstr "Настройки Orage"
 
-#: ../src/parameters.c:1200 ../src/reminder.c:673
+#: ../src/parameters.c:1200 ../src/reminder.c:712
 msgid "_Close"
 msgstr "_Закрыть"
 
-#: ../src/reminder.c:466
+#: ../src/reminder.c:490
 msgid "Reminder "
 msgstr "Напоминание "
 
-#: ../src/reminder.c:495
+#: ../src/reminder.c:519
 msgid "Open"
 msgstr "Открыть"
 
-#: ../src/reminder.c:598
+#: ../src/reminder.c:637
 msgid "Reminder - Orage"
 msgstr "Напоминания — Orage"
 
-#: ../src/reminder.c:681
+#: ../src/reminder.c:720
 msgid "_Stop"
 msgstr "_Стоп"
 
-#: ../src/reminder.c:689
+#: ../src/reminder.c:728
 msgid "Postpone"
 msgstr "Отложить"
 
-#: ../src/reminder.c:691
+#: ../src/reminder.c:730
 msgid "Remind me again after the specified time"
 msgstr "Напомнить через заданное время"
 
-#: ../src/reminder.c:947
+#: ../src/reminder.c:995
 msgid "Next active alarms:"
 msgstr "Следующий активный будильник:"
 
-#: ../src/reminder.c:1002
+#: ../src/reminder.c:1034
 #, c-format
 msgid ""
 "\n"
@@ -2216,7 +2206,7 @@ msgstr ""
 "\n"
 "%02d д %02d ч %02d мин до: %s"
 
-#: ../src/reminder.c:1011
+#: ../src/reminder.c:1046
 #, c-format
 msgid ""
 "\n"
@@ -4469,15 +4459,15 @@ msgstr "США/Тихий океан (новый)"
 msgid "US/Samoa"
 msgstr "США/Самоа"
 
-#: ../src/tray_icon.c:457
+#: ../src/tray_icon.c:469
 msgid "New appointment"
 msgstr "Новое событие"
 
-#: ../src/tray_icon.c:464
+#: ../src/tray_icon.c:476
 msgid "Preferences"
 msgstr "Настройки"
 
-#: ../src/tray_icon.c:471
+#: ../src/tray_icon.c:483
 msgid "Quit"
 msgstr "Выйти"
 
