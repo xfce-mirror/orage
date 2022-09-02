@@ -5,9 +5,6 @@ globaltime/gt_parfile.c
 globaltime/gt_prefs.c
 globaltime/timezone_selection.c
 globaltime/org.xfce.orage.globaltime.desktop.in
-panel-plugin/oc_config.c
-panel-plugin/xfce4-orageclock-plugin.c
-panel-plugin/timezone_selection.c
 src/about-xfcalendar.c
 src/appointment.c
 src/day-view.c
@@ -29,7 +26,6 @@ src/tray_icon.c
 src/tz_zoneinfo_read.c
 
 # files added by intltool-prepare.
-panel-plugin/org.xfce.orage.clock-plugin.desktop.in
 plugin/org.xfce.orage-settings.desktop.in
 org.xfce.orage.appdata.xml.in
 org.xfce.orage.desktop.in
