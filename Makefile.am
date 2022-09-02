@@ -7,8 +7,7 @@ SUBDIRS = icons			\
 	sounds			\
 	src			\
 	globaltime		\
-	plugin			\
-	panel-plugin
+	plugin
 
 desktopdir = $(datadir)/applications
 desktop_in_files = org.xfce.orage.desktop.in
