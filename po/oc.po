@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-29 00:49+0200\n"
+"POT-Creation-Date: 2022-09-03 00:49+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Cédric Valmary <cvalmary@yahoo.fr>, 2022\n"
 "Language-Team: Occitan (post 1500) (https://www.transifex.com/xfce/teams/16840/oc/)\n"
@@ -151,10 +151,9 @@ msgid "Timezone of the clock:"
 msgstr "Fus orari del relòtge :"
 
 #: ../globaltime/gt_prefs.c:683 ../globaltime/gt_prefs.c:1189
-#: ../panel-plugin/oc_config.c:374 ../src/appointment.c:3302
-#: ../src/interface.c:1047 ../src/interface.c:1093 ../src/interface.c:1269
-#: ../src/interface.c:1361 ../src/interface.c:1444 ../src/parameters.c:397
-#: ../src/parameters.c:620 ../src/reminder.c:705
+#: ../src/appointment.c:3302 ../src/interface.c:1047 ../src/interface.c:1093
+#: ../src/interface.c:1269 ../src/interface.c:1361 ../src/interface.c:1444
+#: ../src/parameters.c:397 ../src/parameters.c:620 ../src/reminder.c:705
 msgid "_Open"
 msgstr "_Dobrir"
 
@@ -324,69 +323,56 @@ msgid "Local timezone:"
 msgstr "Fus orari :"
 
 #: ../globaltime/timezone_selection.c:93
-#: ../panel-plugin/timezone_selection.c:92
 msgid " Other"
 msgstr "Autre"
 
-#: ../globaltime/timezone_selection.c:145
-#: ../panel-plugin/timezone_selection.c:144 ../src/timezone_selection.c:148
+#: ../globaltime/timezone_selection.c:145 ../src/timezone_selection.c:148
 #, c-format
 msgid "%d hour %d mins"
 msgstr "%d oras %d minutas"
 
-#: ../globaltime/timezone_selection.c:148
-#: ../panel-plugin/timezone_selection.c:147 ../src/timezone_selection.c:151
+#: ../globaltime/timezone_selection.c:148 ../src/timezone_selection.c:151
 #, c-format
 msgid "%d hour"
 msgstr "%d oras"
 
-#: ../globaltime/timezone_selection.c:150
-#: ../panel-plugin/timezone_selection.c:149 ../src/timezone_selection.c:153
+#: ../globaltime/timezone_selection.c:150 ../src/timezone_selection.c:153
 #, c-format
 msgid "%d mins"
 msgstr "%d minutas"
 
-#: ../globaltime/timezone_selection.c:156
-#: ../panel-plugin/timezone_selection.c:155 ../src/timezone_selection.c:159
+#: ../globaltime/timezone_selection.c:156 ../src/timezone_selection.c:159
 msgid "backward"
 msgstr "recuolar"
 
-#: ../globaltime/timezone_selection.c:159
-#: ../panel-plugin/timezone_selection.c:158 ../src/timezone_selection.c:162
+#: ../globaltime/timezone_selection.c:159 ../src/timezone_selection.c:162
 msgid "forward"
 msgstr "avançar"
 
-#: ../globaltime/timezone_selection.c:183
-#: ../panel-plugin/timezone_selection.c:182 ../src/timezone_selection.c:186
+#: ../globaltime/timezone_selection.c:183 ../src/timezone_selection.c:186
 msgid "not changed"
 msgstr "pas cambiat"
 
-#: ../globaltime/timezone_selection.c:184
-#: ../panel-plugin/timezone_selection.c:183 ../src/timezone_selection.c:187
+#: ../globaltime/timezone_selection.c:184 ../src/timezone_selection.c:187
 msgid "not changing"
 msgstr "càmbia pas"
 
 #. location
 #: ../globaltime/timezone_selection.c:234
-#: ../globaltime/timezone_selection.c:239
-#: ../panel-plugin/timezone_selection.c:233
-#: ../panel-plugin/timezone_selection.c:238 ../src/appointment.c:2974
+#: ../globaltime/timezone_selection.c:239 ../src/appointment.c:2974
 #: ../src/timezone_selection.c:237 ../src/timezone_selection.c:242
 msgid "Location"
 msgstr "Luòc"
 
-#: ../globaltime/timezone_selection.c:245
-#: ../panel-plugin/timezone_selection.c:244 ../src/timezone_selection.c:248
+#: ../globaltime/timezone_selection.c:245 ../src/timezone_selection.c:248
 msgid "GMT Offset"
 msgstr "Decalatge GMT"
 
-#: ../globaltime/timezone_selection.c:251
-#: ../panel-plugin/timezone_selection.c:250 ../src/timezone_selection.c:254
+#: ../globaltime/timezone_selection.c:251 ../src/timezone_selection.c:254
 msgid "Previous/Next Change"
 msgstr "Cambiament precedent/seguent"
 
-#: ../globaltime/timezone_selection.c:256
-#: ../panel-plugin/timezone_selection.c:255 ../src/timezone_selection.c:259
+#: ../globaltime/timezone_selection.c:256 ../src/timezone_selection.c:259
 msgid "Country"
 msgstr "País"
 
@@ -396,27 +382,20 @@ msgstr "País"
 #. This test is ugly, but it is not worth an extra parameter.
 #. this is normal appointment
 #: ../globaltime/timezone_selection.c:283
-#: ../globaltime/timezone_selection.c:293
-#: ../panel-plugin/timezone_selection.c:283
-#: ../panel-plugin/timezone_selection.c:293 ../src/timezone_selection.c:291
+#: ../globaltime/timezone_selection.c:293 ../src/timezone_selection.c:291
 #: ../src/timezone_selection.c:300 ../src/timezone_selection.c:311
 msgid "Pick timezone"
 msgstr "Causir la zòna orari"
 
 #: ../globaltime/timezone_selection.c:286
-#: ../globaltime/timezone_selection.c:296
-#: ../panel-plugin/timezone_selection.c:286
-#: ../panel-plugin/timezone_selection.c:296 ../src/timezone_selection.c:294
+#: ../globaltime/timezone_selection.c:296 ../src/timezone_selection.c:294
 #: ../src/timezone_selection.c:303 ../src/timezone_selection.c:314
 msgid "Change mode"
 msgstr "Cambiar lo mòde"
 
 #: ../globaltime/timezone_selection.c:287
 #: ../globaltime/timezone_selection.c:297
-#: ../globaltime/timezone_selection.c:336
-#: ../panel-plugin/timezone_selection.c:287
-#: ../panel-plugin/timezone_selection.c:297
-#: ../panel-plugin/timezone_selection.c:337 ../src/timezone_selection.c:295
+#: ../globaltime/timezone_selection.c:336 ../src/timezone_selection.c:295
 #: ../src/timezone_selection.c:304 ../src/timezone_selection.c:315
 #: ../src/timezone_selection.c:354
 msgid "UTC"
@@ -424,9 +403,7 @@ msgstr "UTC"
 
 #. NOTE: this exists only if ical timezones are being used
 #: ../globaltime/timezone_selection.c:288
-#: ../globaltime/timezone_selection.c:341
-#: ../panel-plugin/timezone_selection.c:288
-#: ../panel-plugin/timezone_selection.c:342 ../src/timezone_selection.c:305
+#: ../globaltime/timezone_selection.c:341 ../src/timezone_selection.c:305
 #: ../src/timezone_selection.c:359
 msgid "floating"
 msgstr "flotanta"
@@ -443,138 +420,6 @@ msgstr "Veire los relòtges de diferents païses"
 #: ../src/tray_icon.c:489
 msgid "Globaltime"
 msgstr "Temps Global"
-
-#: ../panel-plugin/oc_config.c:254
-msgid "No rotation"
-msgstr ""
-
-#: ../panel-plugin/oc_config.c:254
-msgid "Rotate left"
-msgstr ""
-
-#: ../panel-plugin/oc_config.c:254
-msgid "Rotate right"
-msgstr ""
-
-#: ../panel-plugin/oc_config.c:260
-msgid "Appearance"
-msgstr "Aparéncia"
-
-#. show frame
-#: ../panel-plugin/oc_config.c:267
-msgid "Show _frame"
-msgstr "Afichar lo quadre"
-
-#. foreground color
-#: ../panel-plugin/oc_config.c:273
-msgid "set foreground _color:"
-msgstr "definir la _color del primièr plan :"
-
-#. background color
-#: ../panel-plugin/oc_config.c:289
-msgid "set _background color:"
-msgstr "definir la color del _rèire plan :"
-
-#. clock size (=mbox size): height and width
-#: ../panel-plugin/oc_config.c:305
-msgid "set _height:"
-msgstr "definir la _nautor :"
-
-#: ../panel-plugin/oc_config.c:315
-msgid "Note that you can not change the height of horizontal panels"
-msgstr "Notatz que podètz pas modificar la nautor dels panèls orizontals"
-
-#: ../panel-plugin/oc_config.c:319
-msgid "set _width:"
-msgstr "Definir la _largor :"
-
-#: ../panel-plugin/oc_config.c:329
-msgid "Note that you can not change the width of vertical panels"
-msgstr "Notatz que podètz pas modificar la largor dels panèls verticals"
-
-#: ../panel-plugin/oc_config.c:339
-msgid "Show lines _vertically"
-msgstr ""
-
-#: ../panel-plugin/oc_config.c:359
-msgid "Clock Options"
-msgstr "Opcions de Relòtge"
-
-#. timezone
-#: ../panel-plugin/oc_config.c:371
-msgid "set timezone to:"
-msgstr "definir la zòna orària a :"
-
-#: ../panel-plugin/oc_config.c:390
-#, c-format
-msgid "Line %d:"
-msgstr "Linha %d :"
-
-#: ../panel-plugin/oc_config.c:400
-msgid "Enter any valid strftime function parameter."
-msgstr "Entratz quin paramètre valid que siá de la foncion strftime."
-
-#. Tooltip hint
-#: ../panel-plugin/oc_config.c:439
-msgid "Tooltip:"
-msgstr "Infobulla :"
-
-#. special timing for SUSPEND/HIBERNATE
-#: ../panel-plugin/oc_config.c:449
-msgid "fix time after suspend/hibernate"
-msgstr "ajustar l'ora aprèp una mesa en velha/mesa en ivernacion"
-
-#: ../panel-plugin/oc_config.c:453
-msgid ""
-"You only need this if you do short term (less than 5 hours) suspend or "
-"hibernate and your visible time does not include seconds. Under these "
-"circumstances it is possible that Orageclock shows time inaccurately unless "
-"you have this selected. (Selecting this prevents cpu and interrupt saving "
-"features from working.)"
-msgstr ""
-"Avètz besonh d'aquò se fasètz sus un temps cort (mens de 5 oras) una suspension o una mesa en ivernacion e vòstre temps visible comprend pas de segondas. Dins aquelas circonstàncias, es possible que lo relòtge Orage mòstre lp temps inexacte per rapòrt a lo qu'avètz seleccionat. (Seleccionar aquò empacha lo processor e interrompre las foncions d'estalvi \t\n"
-"a partir del trabalhar)."
-
-#: ../panel-plugin/oc_config.c:471
-msgid ""
-"This program uses strftime function to get time.\n"
-"Use any valid code to get time in the format you prefer.\n"
-"Some common codes are:\n"
-"\t%A = weekday\t\t\t%B = month\n"
-"\t%c = date & time\t\t%R = hour & minute\n"
-"\t%V = week number\t\t%Z = timezone in use\n"
-"\t%H = hours \t\t\t\t%M = minute\n"
-"\t%X = local time\t\t\t%x = local date"
-msgstr ""
-"Aqueste programa utiliza la foncion strftime per recuperar la data e l'ora.\n"
-"Utilizatz un còde valid per obténer l'ora dins lo format que vos agrada mai.\n"
-"Qualques còdes emplegats :\n"
-"\t%A = jorn de  la setmana\t\t\t%B = mes\n"
-"\t%c = data & ora\t\t%R = ora & minuta\n"
-"\t%V = numèro de setmana\t\t%Z = fus orari utilizat\n"
-"\t%H = oras \t\t\t\t%M = minuta\n"
-"\t%X = ora locala\t\t\t%x = data locala"
-
-#: ../panel-plugin/oc_config.c:501
-msgid "Orage clock Preferences"
-msgstr "Preferéncias del relòtge Orage"
-
-#: ../panel-plugin/oc_config.c:505 ../src/day-view.c:414
-#: ../src/event-list.c:1228 ../src/interface.c:876
-msgid "Close"
-msgstr "Tampar"
-
-#. TRANSLATORS: Use format characters from strftime(3)
-#. * to get the proper string for your locale.
-#. * I used these:
-#. * %A  : full weekday name
-#. * %d  : day of the month
-#. * %B  : full month name
-#. * %Y  : four digit year
-#. * %V  : ISO week number
-#: ../panel-plugin/xfce4-orageclock-plugin.c:717
-msgid "%A %d %B %Y/%V"
-msgstr "%A %d %B %Y/%V"
 
 #: ../src/about-xfcalendar.c:54 ../org.xfce.orage.appdata.xml.in.h:2
 msgid "Orage is a time-managing application for the Xfce desktop environment"
@@ -1342,6 +1187,10 @@ msgstr "Avançar d'una setmana"
 #: ../src/day-view.c:409 ../src/event-list.c:1221
 msgid "Refresh"
 msgstr "Resfrescar"
+
+#: ../src/day-view.c:414 ../src/event-list.c:1228 ../src/interface.c:876
+msgid "Close"
+msgstr "Tampar"
 
 #: ../src/day-view.c:473
 msgid "_OK"
@@ -4478,14 +4327,6 @@ msgstr "Preferéncias"
 #: ../src/tray_icon.c:483
 msgid "Quit"
 msgstr "Quitar"
-
-#: ../panel-plugin/org.xfce.orage.clock-plugin.desktop.in.h:1
-msgid "Orage Panel Clock"
-msgstr "Relòtge del panèl Orage"
-
-#: ../panel-plugin/org.xfce.orage.clock-plugin.desktop.in.h:2
-msgid "Show time and date?"
-msgstr "Afichar l'ora e la data ?"
 
 #: ../plugin/org.xfce.orage-settings.desktop.in.h:1
 msgid "Orage preferences"
