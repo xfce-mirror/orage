@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-12 00:50+0100\n"
+"POT-Creation-Date: 2022-09-03 00:49+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Nick Schermer <nick@xfce.org>, 2022\n"
 "Language-Team: Romanian (https://www.transifex.com/xfce/teams/16840/ro/)\n"
@@ -24,35 +24,35 @@ msgstr ""
 "Language: ro\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: ../globaltime/globaltime.c:59
+#: ../globaltime/globaltime.c:62
 msgid "no underline"
 msgstr ""
 
-#: ../globaltime/globaltime.c:59
+#: ../globaltime/globaltime.c:62
 msgid "single"
 msgstr ""
 
-#: ../globaltime/globaltime.c:59
+#: ../globaltime/globaltime.c:62
 msgid "double"
 msgstr ""
 
-#: ../globaltime/globaltime.c:59
+#: ../globaltime/globaltime.c:62
 msgid "low"
 msgstr ""
 
 #. ********** timezone tooltip **********
-#: ../globaltime/globaltime.c:338
+#: ../globaltime/globaltime.c:341
 #, c-format
 msgid ""
 "%s\n"
 "click to modify clock"
 msgstr ""
 
-#: ../globaltime/globaltime.c:447
+#: ../globaltime/globaltime.c:450
 msgid "Localtime"
 msgstr ""
 
-#: ../globaltime/globaltime.c:536
+#: ../globaltime/globaltime.c:539
 msgid ""
 "button 1 to change preferences \n"
 "button 2 to adjust time of clocks"
@@ -60,16 +60,16 @@ msgstr ""
 "butonul 1 pentru schimbarea opțiunilor \n"
 "butonul 2 pentru fixarea ceasurilor"
 
-#: ../globaltime/globaltime.c:551
+#: ../globaltime/globaltime.c:554
 msgid "adjust to change hour"
 msgstr ""
 
-#: ../globaltime/globaltime.c:567
+#: ../globaltime/globaltime.c:570
 msgid ""
 "adjust to change minute. Click arrows with button 2 to change only 1 minute."
 msgstr ""
 
-#: ../globaltime/globaltime.c:621
+#: ../globaltime/globaltime.c:624
 msgid "Global Time"
 msgstr ""
 
@@ -147,10 +147,9 @@ msgid "Timezone of the clock:"
 msgstr ""
 
 #: ../globaltime/gt_prefs.c:683 ../globaltime/gt_prefs.c:1189
-#: ../panel-plugin/oc_config.c:374 ../src/appointment.c:3157
-#: ../src/interface.c:1047 ../src/interface.c:1093 ../src/interface.c:1269
-#: ../src/interface.c:1361 ../src/interface.c:1444 ../src/parameters.c:397
-#: ../src/parameters.c:620 ../src/reminder.c:666
+#: ../src/appointment.c:3302 ../src/interface.c:1047 ../src/interface.c:1093
+#: ../src/interface.c:1269 ../src/interface.c:1361 ../src/interface.c:1444
+#: ../src/parameters.c:397 ../src/parameters.c:620 ../src/reminder.c:705
 msgid "_Open"
 msgstr "_Deschide"
 
@@ -281,7 +280,7 @@ msgstr "Standard"
 msgid "Use normal decorations"
 msgstr "Utilizează decorațiuni normale"
 
-#: ../globaltime/gt_prefs.c:1149 ../src/appointment.c:3406
+#: ../globaltime/gt_prefs.c:1149 ../src/appointment.c:3551
 msgid "None"
 msgstr "Niciuna"
 
@@ -314,69 +313,56 @@ msgid "Local timezone:"
 msgstr "Fus orar local:"
 
 #: ../globaltime/timezone_selection.c:93
-#: ../panel-plugin/timezone_selection.c:92 ../src/timezone_selection.c:95
 msgid " Other"
 msgstr ""
 
-#: ../globaltime/timezone_selection.c:146
-#: ../panel-plugin/timezone_selection.c:144 ../src/timezone_selection.c:165
+#: ../globaltime/timezone_selection.c:145 ../src/timezone_selection.c:148
 #, c-format
 msgid "%d hour %d mins"
 msgstr ""
 
-#: ../globaltime/timezone_selection.c:149
-#: ../panel-plugin/timezone_selection.c:147 ../src/timezone_selection.c:168
+#: ../globaltime/timezone_selection.c:148 ../src/timezone_selection.c:151
 #, c-format
 msgid "%d hour"
 msgstr ""
 
-#: ../globaltime/timezone_selection.c:151
-#: ../panel-plugin/timezone_selection.c:149 ../src/timezone_selection.c:170
+#: ../globaltime/timezone_selection.c:150 ../src/timezone_selection.c:153
 #, c-format
 msgid "%d mins"
 msgstr ""
 
-#: ../globaltime/timezone_selection.c:157
-#: ../panel-plugin/timezone_selection.c:155 ../src/timezone_selection.c:176
+#: ../globaltime/timezone_selection.c:156 ../src/timezone_selection.c:159
 msgid "backward"
 msgstr ""
 
-#: ../globaltime/timezone_selection.c:160
-#: ../panel-plugin/timezone_selection.c:158 ../src/timezone_selection.c:179
+#: ../globaltime/timezone_selection.c:159 ../src/timezone_selection.c:162
 msgid "forward"
 msgstr ""
 
-#: ../globaltime/timezone_selection.c:184
-#: ../panel-plugin/timezone_selection.c:182 ../src/timezone_selection.c:203
+#: ../globaltime/timezone_selection.c:183 ../src/timezone_selection.c:186
 msgid "not changed"
 msgstr ""
 
-#: ../globaltime/timezone_selection.c:185
-#: ../panel-plugin/timezone_selection.c:183 ../src/timezone_selection.c:204
+#: ../globaltime/timezone_selection.c:184 ../src/timezone_selection.c:187
 msgid "not changing"
 msgstr ""
 
 #. location
-#: ../globaltime/timezone_selection.c:235
-#: ../globaltime/timezone_selection.c:240
-#: ../panel-plugin/timezone_selection.c:233
-#: ../panel-plugin/timezone_selection.c:238 ../src/appointment.c:2829
-#: ../src/timezone_selection.c:254 ../src/timezone_selection.c:259
+#: ../globaltime/timezone_selection.c:234
+#: ../globaltime/timezone_selection.c:239 ../src/appointment.c:2974
+#: ../src/timezone_selection.c:237 ../src/timezone_selection.c:242
 msgid "Location"
 msgstr "Locație"
 
-#: ../globaltime/timezone_selection.c:246
-#: ../panel-plugin/timezone_selection.c:244 ../src/timezone_selection.c:265
+#: ../globaltime/timezone_selection.c:245 ../src/timezone_selection.c:248
 msgid "GMT Offset"
 msgstr ""
 
-#: ../globaltime/timezone_selection.c:252
-#: ../panel-plugin/timezone_selection.c:250 ../src/timezone_selection.c:271
+#: ../globaltime/timezone_selection.c:251 ../src/timezone_selection.c:254
 msgid "Previous/Next Change"
 msgstr ""
 
-#: ../globaltime/timezone_selection.c:257
-#: ../panel-plugin/timezone_selection.c:255 ../src/timezone_selection.c:276
+#: ../globaltime/timezone_selection.c:256 ../src/timezone_selection.c:259
 msgid "Country"
 msgstr ""
 
@@ -385,39 +371,30 @@ msgstr ""
 #. done very seldom and we do not want to allow "floating" here.
 #. This test is ugly, but it is not worth an extra parameter.
 #. this is normal appointment
-#: ../globaltime/timezone_selection.c:284
-#: ../globaltime/timezone_selection.c:294
-#: ../panel-plugin/timezone_selection.c:283
-#: ../panel-plugin/timezone_selection.c:293 ../src/timezone_selection.c:308
-#: ../src/timezone_selection.c:317 ../src/timezone_selection.c:328
+#: ../globaltime/timezone_selection.c:283
+#: ../globaltime/timezone_selection.c:293 ../src/timezone_selection.c:291
+#: ../src/timezone_selection.c:300 ../src/timezone_selection.c:311
 msgid "Pick timezone"
 msgstr "Alegeți un fus orar..."
 
-#: ../globaltime/timezone_selection.c:287
-#: ../globaltime/timezone_selection.c:297
-#: ../panel-plugin/timezone_selection.c:286
-#: ../panel-plugin/timezone_selection.c:296 ../src/timezone_selection.c:311
-#: ../src/timezone_selection.c:320 ../src/timezone_selection.c:331
+#: ../globaltime/timezone_selection.c:286
+#: ../globaltime/timezone_selection.c:296 ../src/timezone_selection.c:294
+#: ../src/timezone_selection.c:303 ../src/timezone_selection.c:314
 msgid "Change mode"
 msgstr ""
 
-#: ../globaltime/timezone_selection.c:288
-#: ../globaltime/timezone_selection.c:298
-#: ../globaltime/timezone_selection.c:337
-#: ../panel-plugin/timezone_selection.c:287
-#: ../panel-plugin/timezone_selection.c:297
-#: ../panel-plugin/timezone_selection.c:337 ../src/timezone_selection.c:312
-#: ../src/timezone_selection.c:321 ../src/timezone_selection.c:332
-#: ../src/timezone_selection.c:371
+#: ../globaltime/timezone_selection.c:287
+#: ../globaltime/timezone_selection.c:297
+#: ../globaltime/timezone_selection.c:336 ../src/timezone_selection.c:295
+#: ../src/timezone_selection.c:304 ../src/timezone_selection.c:315
+#: ../src/timezone_selection.c:354
 msgid "UTC"
 msgstr "UTC"
 
 #. NOTE: this exists only if ical timezones are being used
-#: ../globaltime/timezone_selection.c:289
-#: ../globaltime/timezone_selection.c:342
-#: ../panel-plugin/timezone_selection.c:288
-#: ../panel-plugin/timezone_selection.c:342 ../src/timezone_selection.c:322
-#: ../src/timezone_selection.c:376
+#: ../globaltime/timezone_selection.c:288
+#: ../globaltime/timezone_selection.c:341 ../src/timezone_selection.c:305
+#: ../src/timezone_selection.c:359
 msgid "floating"
 msgstr "floating"
 
@@ -430,139 +407,9 @@ msgid "Show clocks from different countries"
 msgstr ""
 
 #: ../globaltime/org.xfce.orage.globaltime.desktop.in.h:3
-#: ../src/tray_icon.c:477
+#: ../src/tray_icon.c:489
 msgid "Globaltime"
 msgstr ""
-
-#: ../panel-plugin/oc_config.c:254
-msgid "No rotation"
-msgstr ""
-
-#: ../panel-plugin/oc_config.c:254
-msgid "Rotate left"
-msgstr ""
-
-#: ../panel-plugin/oc_config.c:254
-msgid "Rotate right"
-msgstr ""
-
-#: ../panel-plugin/oc_config.c:260
-msgid "Appearance"
-msgstr "Aspect"
-
-#. show frame
-#: ../panel-plugin/oc_config.c:267
-msgid "Show _frame"
-msgstr "Arată ca_drul"
-
-#. foreground color
-#: ../panel-plugin/oc_config.c:273
-msgid "set foreground _color:"
-msgstr "Culoare te_xt:"
-
-#. background color
-#: ../panel-plugin/oc_config.c:289
-msgid "set _background color:"
-msgstr "Culoare _fundal:"
-
-#. clock size (=mbox size): height and width
-#: ../panel-plugin/oc_config.c:305
-msgid "set _height:"
-msgstr "Î_nălțime:"
-
-#: ../panel-plugin/oc_config.c:315
-msgid "Note that you can not change the height of horizontal panels"
-msgstr ""
-
-#: ../panel-plugin/oc_config.c:319
-msgid "set _width:"
-msgstr "_Lățime:"
-
-#: ../panel-plugin/oc_config.c:329
-msgid "Note that you can not change the width of vertical panels"
-msgstr ""
-
-#: ../panel-plugin/oc_config.c:339
-msgid "Show lines _vertically"
-msgstr ""
-
-#: ../panel-plugin/oc_config.c:359
-msgid "Clock Options"
-msgstr "Opțiuni ceas"
-
-#. timezone
-#: ../panel-plugin/oc_config.c:371
-msgid "set timezone to:"
-msgstr "Fus orar:"
-
-#: ../panel-plugin/oc_config.c:390
-#, c-format
-msgid "Line %d:"
-msgstr ""
-
-#: ../panel-plugin/oc_config.c:400
-msgid "Enter any valid strftime function parameter."
-msgstr "Introduceți orice parametru al funcției „strftime”"
-
-#. Tooltip hint
-#: ../panel-plugin/oc_config.c:439
-msgid "Tooltip:"
-msgstr "Sugestie:"
-
-#. special timing for SUSPEND/HIBERNATE
-#: ../panel-plugin/oc_config.c:449
-msgid "fix time after suspend/hibernate"
-msgstr ""
-
-#: ../panel-plugin/oc_config.c:453
-msgid ""
-"You only need this if you do short term (less than 5 hours) suspend or "
-"hibernate and your visible time does not include seconds. Under these "
-"circumstances it is possible that Orageclock shows time inaccurately unless "
-"you have this selected. (Selecting this prevents cpu and interrupt saving "
-"features from working.)"
-msgstr ""
-
-#: ../panel-plugin/oc_config.c:471
-msgid ""
-"This program uses strftime function to get time.\n"
-"Use any valid code to get time in the format you prefer.\n"
-"Some common codes are:\n"
-"\t%A = weekday\t\t\t%B = month\n"
-"\t%c = date & time\t\t%R = hour & minute\n"
-"\t%V = week number\t\t%Z = timezone in use\n"
-"\t%H = hours \t\t\t\t%M = minute\n"
-"\t%X = local time\t\t\t%x = local date"
-msgstr ""
-"Acest program utilizează funcția „strftime” pentru a obține datele.\n"
-"Utilizați orice parametru valid pentru formatul dorit.\n"
-"Exemple de parametri uzuali:\n"
-"\t%A = zi a săptămânii\t\t\t%B = lună\n"
-"\t%c = dată și oră\t\t%R = oră și minut\n"
-"\t%V = numărul săptămânii\t\t%Z = fus orar\n"
-"\t%H = ore \t\t\t%M = minute\n"
-"\t%X = timp local\t\t\t%x = dată locală"
-
-#: ../panel-plugin/oc_config.c:501
-msgid "Orage clock Preferences"
-msgstr ""
-
-#: ../panel-plugin/oc_config.c:505 ../src/day-view.c:403
-#: ../src/event-list.c:1223 ../src/interface.c:876
-msgid "Close"
-msgstr "Închide"
-
-#. TRANSLATORS: Use format characters from strftime(3)
-#. * to get the proper string for your locale.
-#. * I used these:
-#. * %A  : full weekday name
-#. * %d  : day of the month
-#. * %B  : full month name
-#. * %Y  : four digit year
-#. * %V  : ISO week number
-#: ../panel-plugin/xfce4-orageclock-plugin.c:717
-msgid "%A %d %B %Y/%V"
-msgstr "%A %d %B %Y"
 
 #: ../src/about-xfcalendar.c:54 ../org.xfce.orage.appdata.xml.in.h:2
 msgid "Orage is a time-managing application for the Xfce desktop environment"
@@ -575,303 +422,303 @@ msgstr "Mișu Moldovan <dumol@xfce.org>"
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
 #. end time
-#: ../src/appointment.c:321 ../src/appointment.c:361 ../src/appointment.c:2858
+#: ../src/appointment.c:325 ../src/appointment.c:365 ../src/appointment.c:3003
 msgid "End"
 msgstr "Sfârșit"
 
-#: ../src/appointment.c:341
+#: ../src/appointment.c:345
 msgid "Due"
 msgstr ""
 
-#: ../src/appointment.c:501 ../src/mainbox.c:695
+#: ../src/appointment.c:508 ../src/mainbox.c:693
 #: ../org.xfce.orage.appdata.xml.in.h:1
 msgid "Orage"
 msgstr "Orage"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
-#: ../src/appointment.c:688 ../src/interface.c:262 ../src/parameters.c:392
+#: ../src/appointment.c:699 ../src/interface.c:262 ../src/parameters.c:392
 msgid "Select a file..."
 msgstr "Selectați un fișier..."
 
-#: ../src/appointment.c:696
+#: ../src/appointment.c:707
 msgid "Sound Files"
 msgstr "Fișiere de sunet"
 
-#: ../src/appointment.c:703 ../src/interface.c:275
+#: ../src/appointment.c:714 ../src/interface.c:275
 msgid "All Files"
 msgstr "Toate fișierele"
 
-#: ../src/appointment.c:754
+#: ../src/appointment.c:765
 msgid "The appointment information has been modified."
 msgstr "Detaliile evenimentului au fost modificate."
 
-#: ../src/appointment.c:755 ../src/appointment.c:1292 ../src/event-list.c:993
+#: ../src/appointment.c:766 ../src/appointment.c:1340 ../src/event-list.c:998
 msgid "Do you want to continue?"
 msgstr "Doriți să continuați?"
 
-#: ../src/appointment.c:756
+#: ../src/appointment.c:767
 msgid "No, do not leave"
 msgstr ""
 
-#: ../src/appointment.c:757
+#: ../src/appointment.c:768
 msgid "Yes, ignore modifications and leave"
 msgstr ""
 
-#: ../src/appointment.c:785
+#: ../src/appointment.c:796
 msgid "The end of this appointment is earlier than the beginning."
 msgstr "Evenimentul pare să se termine înainte de a începe."
 
-#: ../src/appointment.c:1050 ../src/appointment.c:1929
+#: ../src/appointment.c:1096 ../src/appointment.c:2015
 msgid "Not set"
 msgstr "Neprecizate"
 
-#: ../src/appointment.c:1141
+#: ../src/appointment.c:1189
 msgid "Add new appointment to this file."
 msgstr ""
 
-#: ../src/appointment.c:1142 ../src/appointment.c:1190
+#: ../src/appointment.c:1190 ../src/appointment.c:1238
 msgid "Orage default file"
 msgstr ""
 
-#: ../src/appointment.c:1228
+#: ../src/appointment.c:1276
 msgid "Appointment addition failed."
 msgstr ""
 
-#: ../src/appointment.c:1229
+#: ../src/appointment.c:1277
 msgid ""
 "Error happened when adding appointment. Look more details from the log file."
 msgstr ""
 
-#: ../src/appointment.c:1240
+#: ../src/appointment.c:1288
 msgid "Appointment update failed."
 msgstr ""
 
-#: ../src/appointment.c:1241
+#: ../src/appointment.c:1289
 msgid ""
 "Look more details from the log file. (Perhaps file was updated external from"
 " Orage?)"
 msgstr ""
 
-#: ../src/appointment.c:1291
+#: ../src/appointment.c:1339
 msgid "This appointment will be permanently removed."
 msgstr "Acest eveniment va fi șters definitiv."
 
-#: ../src/appointment.c:1293 ../src/event-list.c:994
+#: ../src/appointment.c:1341 ../src/event-list.c:999
 msgid "No, cancel the removal"
 msgstr ""
 
-#: ../src/appointment.c:1294
+#: ../src/appointment.c:1342
 msgid "Yes, remove it"
 msgstr ""
 
-#: ../src/appointment.c:1387 ../src/appointment.c:1402 ../src/day-view.c:460
-#: ../src/event-list.c:1053
+#: ../src/appointment.c:1441 ../src/appointment.c:1456 ../src/day-view.c:471
+#: ../src/event-list.c:1058 ../src/functions.c:144
 msgid "Pick the date"
 msgstr "Alegeți o dată..."
 
-#: ../src/appointment.c:1389 ../src/appointment.c:1404 ../src/day-view.c:389
-#: ../src/day-view.c:462 ../src/event-list.c:1055 ../src/event-list.c:1209
-#: ../src/tray_icon.c:450
+#: ../src/appointment.c:1443 ../src/appointment.c:1458 ../src/day-view.c:400
+#: ../src/day-view.c:473 ../src/event-list.c:1060 ../src/event-list.c:1214
+#: ../src/functions.c:146 ../src/tray_icon.c:462
 msgid "Today"
 msgstr "Azi"
 
-#: ../src/appointment.c:1821
+#: ../src/appointment.c:1885
 msgid "This appointment does not exist."
 msgstr "Acest eveniment nu există."
 
-#: ../src/appointment.c:1822
+#: ../src/appointment.c:1886
 msgid "It was probably removed, please refresh your screen."
 msgstr "A fost probabil eliminat, reactualizați fereastra."
 
-#: ../src/appointment.c:2097 ../src/interface.c:672
+#: ../src/appointment.c:2183 ../src/interface.c:672
 msgid "_Remove"
 msgstr ""
 
-#: ../src/appointment.c:2123
+#: ../src/appointment.c:2209
 msgid "Current categories"
 msgstr "Categorii curente"
 
-#: ../src/appointment.c:2145
+#: ../src/appointment.c:2231
 msgid "Add new category with color"
 msgstr "Adaugă o nouă categorie colorată"
 
-#: ../src/appointment.c:2156
+#: ../src/appointment.c:2242
 msgid "Category:"
 msgstr "Categorie:"
 
-#: ../src/appointment.c:2172 ../src/interface.c:1451
+#: ../src/appointment.c:2258 ../src/interface.c:1451
 msgid "_Add"
 msgstr ""
 
-#: ../src/appointment.c:2201
+#: ../src/appointment.c:2287
 msgid "Colors of categories - Orage"
 msgstr "Culori de categorii - Orage"
 
-#: ../src/appointment.c:2247
+#: ../src/appointment.c:2334
 msgid " *** COPY ***"
 msgstr " *** COPIERE ***"
 
-#: ../src/appointment.c:2515
+#: ../src/appointment.c:2617
 msgid "New appointment - Orage"
 msgstr "Eveniment nou - Orage"
 
 #. File menu stuff
 #. ********* File menu *********
 #. File menu
-#: ../src/appointment.c:2543 ../src/day-view.c:283 ../src/event-list.c:1110
-#: ../src/interface.c:857 ../src/mainbox.c:208
+#: ../src/appointment.c:2645 ../src/day-view.c:294 ../src/event-list.c:1115
+#: ../src/interface.c:857 ../src/mainbox.c:217
 msgid "_File"
 msgstr "_Fișier"
 
-#: ../src/appointment.c:2549
+#: ../src/appointment.c:2651
 msgid "Sav_e and close"
 msgstr "Sal_vează și închide"
 
-#: ../src/appointment.c:2562 ../src/event-list.c:1116
+#: ../src/appointment.c:2664 ../src/event-list.c:1121
 msgid "D_uplicate"
 msgstr "D_uplică"
 
-#: ../src/appointment.c:2750
+#: ../src/appointment.c:2895
 msgid "Save"
 msgstr "Salvează"
 
-#: ../src/appointment.c:2752
+#: ../src/appointment.c:2897
 msgid "Save and close"
 msgstr "Salvează și închide"
 
-#: ../src/appointment.c:2757
+#: ../src/appointment.c:2902
 msgid "Revert"
 msgstr "Revino"
 
-#: ../src/appointment.c:2759 ../src/event-list.c:1200
+#: ../src/appointment.c:2904 ../src/event-list.c:1205
 msgid "Duplicate"
 msgstr "Duplică"
 
-#: ../src/appointment.c:2764 ../src/event-list.c:1202
+#: ../src/appointment.c:2909 ../src/event-list.c:1207
 msgid "Delete"
 msgstr "Șterge"
 
-#: ../src/appointment.c:2782
+#: ../src/appointment.c:2927
 msgid "Free"
 msgstr "Liber"
 
-#: ../src/appointment.c:2782
+#: ../src/appointment.c:2927
 msgid "Busy"
 msgstr "Ocupat"
 
-#: ../src/appointment.c:2786
+#: ../src/appointment.c:2931
 msgid "General"
 msgstr "Generale"
 
 #. type
-#: ../src/appointment.c:2792
+#: ../src/appointment.c:2937
 msgid "Type "
 msgstr "Tip"
 
-#: ../src/appointment.c:2794 ../src/event-list.c:1255
+#: ../src/appointment.c:2939 ../src/event-list.c:1260
 msgid "Event"
 msgstr "Eveniment"
 
-#: ../src/appointment.c:2799
+#: ../src/appointment.c:2944
 msgid ""
 "Event that will happen sometime. For example:\n"
 "Meeting or birthday or TV show."
 msgstr ""
 
-#: ../src/appointment.c:2802 ../src/event-list.c:1314
+#: ../src/appointment.c:2947 ../src/event-list.c:1319
 msgid "Todo"
 msgstr "Sarcini"
 
-#: ../src/appointment.c:2807
+#: ../src/appointment.c:2952
 msgid ""
 "Something that you should do sometime. For example:\n"
 "Wash your car or test new version of Orage."
 msgstr ""
 
-#: ../src/appointment.c:2810 ../src/event-list.c:1327
+#: ../src/appointment.c:2955 ../src/event-list.c:1333
 msgid "Journal"
 msgstr "Jurnal"
 
-#: ../src/appointment.c:2815
+#: ../src/appointment.c:2960
 msgid ""
 "Make a note that something happened. For example:\n"
 "Remark that your mother called or first snow came."
 msgstr ""
 
 #. title
-#: ../src/appointment.c:2822
+#: ../src/appointment.c:2967
 msgid "Title "
 msgstr "Titlu "
 
-#: ../src/appointment.c:2837
+#: ../src/appointment.c:2982
 msgid "All day event"
 msgstr "Eveniment pentru toată ziua"
 
 #. start time
-#: ../src/appointment.c:2843 ../src/appointment.c:3562 ../src/day-view.c:806
+#: ../src/appointment.c:2988 ../src/appointment.c:3707 ../src/day-view.c:841
 msgid "Start"
 msgstr "Început"
 
-#: ../src/appointment.c:2863
+#: ../src/appointment.c:3008
 msgid "Set      "
 msgstr ""
 
-#: ../src/appointment.c:2886
+#: ../src/appointment.c:3031
 msgid "Duration"
 msgstr "Durată"
 
-#: ../src/appointment.c:2890 ../src/appointment.c:3097 ../src/reminder.c:637
+#: ../src/appointment.c:3035 ../src/appointment.c:3242 ../src/reminder.c:676
 msgid "days"
 msgstr "zile"
 
-#: ../src/appointment.c:2892 ../src/appointment.c:3099 ../src/reminder.c:639
+#: ../src/appointment.c:3037 ../src/appointment.c:3244 ../src/reminder.c:678
 msgid "hours"
 msgstr "ore"
 
-#: ../src/appointment.c:2894 ../src/appointment.c:3101 ../src/reminder.c:641
+#: ../src/appointment.c:3039 ../src/appointment.c:3246 ../src/reminder.c:680
 msgid "mins"
 msgstr "minute"
 
 #. Availability (only for EVENT)
-#: ../src/appointment.c:2906
+#: ../src/appointment.c:3051
 msgid "Availability"
 msgstr "Disponibilitate"
 
 #. completed (only for TODO)
-#: ../src/appointment.c:2914 ../src/appointment.c:3571
+#: ../src/appointment.c:3059 ../src/appointment.c:3716
 msgid "Completed"
 msgstr ""
 
-#: ../src/appointment.c:2917
+#: ../src/appointment.c:3062
 msgid "Done"
 msgstr ""
 
 #. categories
-#: ../src/appointment.c:2942
+#: ../src/appointment.c:3087
 msgid "Categories"
 msgstr "Categorii"
 
-#: ../src/appointment.c:2960
+#: ../src/appointment.c:3105
 msgid ""
 "This is special category, which can be used to color this appointment in "
 "list views."
 msgstr ""
 
-#: ../src/appointment.c:2961
+#: ../src/appointment.c:3106
 msgid "_Colour"
 msgstr ""
 
-#: ../src/appointment.c:2966
+#: ../src/appointment.c:3111
 msgid "update colors for categories."
 msgstr ""
 
 #. priority
-#: ../src/appointment.c:2972
+#: ../src/appointment.c:3117
 msgid "Priority"
 msgstr ""
 
-#: ../src/appointment.c:2976
+#: ../src/appointment.c:3121
 msgid ""
 "If you set this 8 or bigger, the appointment is NOT shown on list windows.\n"
 "You can use that feature to unclutter your list windows, but it makes it more difficult to find this appointment.\n"
@@ -880,11 +727,11 @@ msgid ""
 msgstr ""
 
 #. note
-#: ../src/appointment.c:2985
+#: ../src/appointment.c:3130
 msgid "Note"
 msgstr "Notă"
 
-#: ../src/appointment.c:3006
+#: ../src/appointment.c:3151
 msgid ""
 "These shorthand commands take effect immediately:\n"
 "    <D> inserts current date in local date format\n"
@@ -896,32 +743,32 @@ msgid ""
 "(This can be used for example in birthday reminders to tell how old the person will be.)"
 msgstr ""
 
-#: ../src/appointment.c:3079
+#: ../src/appointment.c:3224
 msgid "Before Start"
 msgstr "Înainte de a începe"
 
-#: ../src/appointment.c:3079
+#: ../src/appointment.c:3224
 msgid "Before End"
 msgstr "Înainte de a se termina"
 
-#: ../src/appointment.c:3080
+#: ../src/appointment.c:3225
 msgid "After Start"
 msgstr "După începere"
 
-#: ../src/appointment.c:3080
+#: ../src/appointment.c:3225
 msgid "After End"
 msgstr "După terminare"
 
-#: ../src/appointment.c:3088
+#: ../src/appointment.c:3233
 msgid "Alarm"
 msgstr "Alarmă"
 
 #. **** ALARM TIME ****
-#: ../src/appointment.c:3094
+#: ../src/appointment.c:3239
 msgid "Alarm time"
 msgstr "Alarmare"
 
-#: ../src/appointment.c:3119
+#: ../src/appointment.c:3264
 msgid ""
 "Often you want to get alarm:\n"
 " 1) before Event start\n"
@@ -929,88 +776,88 @@ msgid ""
 " 3) after Todo start"
 msgstr ""
 
-#: ../src/appointment.c:3124
+#: ../src/appointment.c:3269
 msgid "Persistent alarm"
 msgstr "Alarmă persistentă"
 
-#: ../src/appointment.c:3129
+#: ../src/appointment.c:3274
 msgid ""
 "Select this if you want Orage to remind you even if it has not been active "
 "when the alarm happened."
 msgstr ""
 
 #. **** Audio Alarm ****
-#: ../src/appointment.c:3138
+#: ../src/appointment.c:3283
 msgid "Sound"
 msgstr "Sunet"
 
-#: ../src/appointment.c:3142 ../src/appointment.c:3275
+#: ../src/appointment.c:3287 ../src/appointment.c:3420
 msgid "Use"
 msgstr ""
 
-#: ../src/appointment.c:3144
+#: ../src/appointment.c:3289
 msgid "Select this if you want audible alarm"
 msgstr ""
 
-#: ../src/appointment.c:3170
+#: ../src/appointment.c:3315
 msgid "Repeat alarm sound"
 msgstr "Repetă sunetul de alarmă"
 
-#: ../src/appointment.c:3185 ../src/appointment.c:3494
+#: ../src/appointment.c:3330 ../src/appointment.c:3639
 msgid "times"
 msgstr "ori"
 
-#: ../src/appointment.c:3201
+#: ../src/appointment.c:3346
 msgid "sec interval"
 msgstr ""
 
 #. **** Display Alarm ****
-#: ../src/appointment.c:3211
+#: ../src/appointment.c:3356
 msgid "Visual"
 msgstr "Vizualizare"
 
-#: ../src/appointment.c:3215
+#: ../src/appointment.c:3360
 msgid "Use Orage window"
 msgstr "Utilizează fereastra Orage"
 
-#: ../src/appointment.c:3217
+#: ../src/appointment.c:3362
 msgid "Select this if you want Orage window alarm"
 msgstr ""
 
-#: ../src/appointment.c:3229
+#: ../src/appointment.c:3374
 msgid "Use notification"
 msgstr "Arată notificare"
 
-#: ../src/appointment.c:3231
+#: ../src/appointment.c:3376
 msgid "Select this if you want notification alarm"
 msgstr ""
 
-#: ../src/appointment.c:3239
+#: ../src/appointment.c:3384
 msgid "Set timeout"
 msgstr "Time-out"
 
-#: ../src/appointment.c:3241
+#: ../src/appointment.c:3386
 msgid "Select this if you want notification to expire automatically"
 msgstr ""
 
-#: ../src/appointment.c:3252
+#: ../src/appointment.c:3397
 msgid "0 = system default expiration time"
 msgstr ""
 
-#: ../src/appointment.c:3260
+#: ../src/appointment.c:3405
 msgid "seconds"
 msgstr "secunde"
 
 #. **** Procedure Alarm ****
-#: ../src/appointment.c:3271
+#: ../src/appointment.c:3416
 msgid "Procedure"
 msgstr "Procedură"
 
-#: ../src/appointment.c:3277
+#: ../src/appointment.c:3422
 msgid "Select this if you want procedure or script alarm"
 msgstr ""
 
-#: ../src/appointment.c:3287
+#: ../src/appointment.c:3432
 msgid ""
 "You must enter all escape etc characters yourself.\n"
 "This string is just given to shell to process.\n"
@@ -1022,105 +869,105 @@ msgid ""
 "\t<&ET> appointment end time"
 msgstr ""
 
-#: ../src/appointment.c:3301 ../src/interface.c:1181 ../src/interface.c:1203
+#: ../src/appointment.c:3446 ../src/interface.c:1181 ../src/interface.c:1203
 msgid "_Execute"
 msgstr ""
 
-#: ../src/appointment.c:3303
+#: ../src/appointment.c:3448
 msgid "Test this alarm by raising it now"
 msgstr ""
 
-#: ../src/appointment.c:3316
+#: ../src/appointment.c:3461
 msgid "<b>Default alarm</b>"
 msgstr ""
 
-#: ../src/appointment.c:3322 ../src/interface.c:1054 ../src/interface.c:1100
+#: ../src/appointment.c:3467 ../src/interface.c:1054 ../src/interface.c:1100
 #: ../src/interface.c:1275 ../src/interface.c:1367
 msgid "_Save"
 msgstr "_Salvează"
 
-#: ../src/appointment.c:3330
+#: ../src/appointment.c:3475
 msgid "Store current settings as default alarm"
 msgstr ""
 
-#: ../src/appointment.c:3332
+#: ../src/appointment.c:3477
 msgid "_Revert"
 msgstr ""
 
-#: ../src/appointment.c:3340
+#: ../src/appointment.c:3485
 msgid "Set current settings from default alarm"
 msgstr ""
 
-#: ../src/appointment.c:3406
+#: ../src/appointment.c:3551
 msgid "Daily"
 msgstr "Zilnic"
 
-#: ../src/appointment.c:3406
+#: ../src/appointment.c:3551
 msgid "Weekly"
 msgstr "Săptămânal"
 
-#: ../src/appointment.c:3406
+#: ../src/appointment.c:3551
 msgid "Monthly"
 msgstr "Lunar"
 
-#: ../src/appointment.c:3406
+#: ../src/appointment.c:3551
 msgid "Yearly"
 msgstr "Anual"
 
-#: ../src/appointment.c:3406
+#: ../src/appointment.c:3551
 msgid "Hourly"
 msgstr ""
 
-#: ../src/appointment.c:3408
+#: ../src/appointment.c:3553
 msgid "Mon"
 msgstr "Lu"
 
-#: ../src/appointment.c:3408
+#: ../src/appointment.c:3553
 msgid "Tue"
 msgstr "Ma"
 
-#: ../src/appointment.c:3408
+#: ../src/appointment.c:3553
 msgid "Wed"
 msgstr "Mi"
 
-#: ../src/appointment.c:3408
+#: ../src/appointment.c:3553
 msgid "Thu"
 msgstr "Jo"
 
-#: ../src/appointment.c:3408
+#: ../src/appointment.c:3553
 msgid "Fri"
 msgstr "Vi"
 
-#: ../src/appointment.c:3408
+#: ../src/appointment.c:3553
 msgid "Sat"
 msgstr "Sb"
 
-#: ../src/appointment.c:3408
+#: ../src/appointment.c:3553
 msgid "Sun"
 msgstr "Du"
 
-#: ../src/appointment.c:3413
+#: ../src/appointment.c:3558
 msgid "Recurrence"
 msgstr "Recurență"
 
 #. complexity
-#: ../src/appointment.c:3419
+#: ../src/appointment.c:3564
 msgid "Complexity"
 msgstr "Complexitate"
 
-#: ../src/appointment.c:3422
+#: ../src/appointment.c:3567
 msgid "Basic"
 msgstr "Standard"
 
-#: ../src/appointment.c:3429
+#: ../src/appointment.c:3574
 msgid "Advanced"
 msgstr "Avansat"
 
-#: ../src/appointment.c:3435
+#: ../src/appointment.c:3580
 msgid "Use this if you want regular repeating event"
 msgstr "Utilizați-o dacă doriți repetarea unui eveniment obișnuit"
 
-#: ../src/appointment.c:3437
+#: ../src/appointment.c:3582
 msgid ""
 "Use this if you need complex times like:\n"
 " Every Saturday and Sunday or \n"
@@ -1128,51 +975,51 @@ msgid ""
 msgstr ""
 
 #. frequency
-#: ../src/appointment.c:3443
+#: ../src/appointment.c:3588
 msgid "Frequency"
 msgstr "Frecvență"
 
-#: ../src/appointment.c:3450
+#: ../src/appointment.c:3595
 msgid "Each"
 msgstr "Fiecare"
 
-#: ../src/appointment.c:3461
+#: ../src/appointment.c:3606
 msgid "occurrence"
 msgstr "apariție"
 
-#: ../src/appointment.c:3468
+#: ../src/appointment.c:3613
 msgid ""
 "Limit frequency to certain interval.\n"
 " For example: Every third day:\n"
 " Frequency = Daily and Interval = 3"
 msgstr ""
 
-#: ../src/appointment.c:3475
+#: ../src/appointment.c:3620
 msgid "Limit"
 msgstr "Limită"
 
-#: ../src/appointment.c:3477
+#: ../src/appointment.c:3622
 msgid "Repeat forever"
 msgstr "Repetă la infinit"
 
-#: ../src/appointment.c:3484
+#: ../src/appointment.c:3629
 msgid "Repeat "
 msgstr "Repetă de "
 
-#: ../src/appointment.c:3508
+#: ../src/appointment.c:3653
 msgid "Repeat until "
 msgstr "Repetă până la "
 
 #. weekdays (only for complex settings)
-#: ../src/appointment.c:3524
+#: ../src/appointment.c:3669
 msgid "Weekdays"
 msgstr "zile din săptămână"
 
-#: ../src/appointment.c:3541
+#: ../src/appointment.c:3686
 msgid "Which day"
 msgstr "În ce zi"
 
-#: ../src/appointment.c:3552
+#: ../src/appointment.c:3697
 msgid ""
 "Specify which weekday for monthly and yearly events.\n"
 " For example:\n"
@@ -1189,126 +1036,130 @@ msgstr ""
 "\tCare zi de miercuri = selectați „2” din numărul de sub numele zilei"
 
 #. TODO base (only for TODOs)
-#: ../src/appointment.c:3559
+#: ../src/appointment.c:3704
 msgid "TODO base"
 msgstr ""
 
-#: ../src/appointment.c:3578
+#: ../src/appointment.c:3723
 msgid ""
 "TODO reoccurs regularly starting on start time and repeating after each "
 "interval no matter when it was last completed"
 msgstr ""
 
-#: ../src/appointment.c:3580
+#: ../src/appointment.c:3725
 msgid ""
 "TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
 msgstr ""
 
 #. exceptions
-#: ../src/appointment.c:3586
+#: ../src/appointment.c:3731
 msgid "Exceptions"
 msgstr ""
 
-#: ../src/appointment.c:3612
+#: ../src/appointment.c:3757
 msgid ""
 "Add more exception dates by clicking the calendar days below.\n"
 "Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
 "Remove by clicking the data."
 msgstr ""
 
-#: ../src/appointment.c:3623
+#: ../src/appointment.c:3768
 msgid "Add excluded date (-)"
 msgstr ""
 
-#: ../src/appointment.c:3625
+#: ../src/appointment.c:3770
 msgid "Excluded days are full days where this appointment is not happening"
 msgstr ""
 
-#: ../src/appointment.c:3632
+#: ../src/appointment.c:3777
 msgid "Add included time (+)"
 msgstr ""
 
-#: ../src/appointment.c:3634
+#: ../src/appointment.c:3779
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time"
 msgstr ""
 
 #. calendars showing the action days
-#: ../src/appointment.c:3653
+#: ../src/appointment.c:3798
 msgid "Action dates"
 msgstr ""
 
 #. ********* View menu *********
 #. View menu
-#: ../src/day-view.c:293 ../src/event-list.c:1133 ../src/mainbox.c:234
+#: ../src/day-view.c:304 ../src/event-list.c:1138 ../src/mainbox.c:243
 msgid "_View"
 msgstr "_Vizualizare"
 
 #. ********* Go menu   *********
-#: ../src/day-view.c:307 ../src/event-list.c:1152
+#: ../src/day-view.c:318 ../src/event-list.c:1157
 msgid "_Go"
 msgstr "_Du-te"
 
-#: ../src/day-view.c:380 ../src/event-list.c:1198
+#: ../src/day-view.c:391 ../src/event-list.c:1203
 msgid "New"
 msgstr "Nouă"
 
-#: ../src/day-view.c:385
+#: ../src/day-view.c:396
 msgid "Back one week"
 msgstr ""
 
-#: ../src/day-view.c:387
+#: ../src/day-view.c:398
 msgid "Back one day"
 msgstr ""
 
-#: ../src/day-view.c:391
+#: ../src/day-view.c:402
 msgid "Forward one day"
 msgstr ""
 
-#: ../src/day-view.c:393
+#: ../src/day-view.c:404
 msgid "Forward one week"
 msgstr ""
 
-#: ../src/day-view.c:398 ../src/event-list.c:1216
+#: ../src/day-view.c:409 ../src/event-list.c:1221
 msgid "Refresh"
 msgstr "Reactualizare"
 
-#: ../src/day-view.c:462
+#: ../src/day-view.c:414 ../src/event-list.c:1228 ../src/interface.c:876
+msgid "Close"
+msgstr "Închide"
+
+#: ../src/day-view.c:473
 msgid "_OK"
 msgstr "_OK"
 
-#: ../src/day-view.c:568
+#: ../src/day-view.c:596
 msgid "Unknown"
 msgstr "Necunoscut"
 
-#: ../src/day-view.c:815
+#: ../src/day-view.c:850
 msgid "       Number of days to show"
 msgstr ""
 
-#: ../src/day-view.c:1045
+#: ../src/day-view.c:1081
 msgid "Orage - day view"
 msgstr "Orage - vizualizare zi"
 
 #. date only appointment
-#: ../src/event-list.c:192
+#: ../src/event-list.c:187
 msgid "All day"
 msgstr "Toată ziua"
 
-#: ../src/event-list.c:601 ../src/event-list.c:1411
+#: ../src/event-list.c:618 ../src/event-list.c:1422
 msgid "Time"
 msgstr "Oră"
 
-#: ../src/event-list.c:795
+#: ../src/event-list.c:801
 msgid "No rows have been selected."
 msgstr "Nu s-a selectat nici un rând"
 
-#: ../src/event-list.c:796
+#: ../src/event-list.c:802
 msgid "Click a row to select it and after that you can copy it."
 msgstr "Clic pe un rând pentru a-l selecta, apoi puteți să-l copiați."
 
-#: ../src/event-list.c:992
+#: ../src/event-list.c:997
 msgid ""
 "You will permanently remove all\n"
 "selected appointments."
@@ -1316,72 +1167,72 @@ msgstr ""
 "Urmează să ștergeți definitiv\n"
 "toate evenimentele selectate."
 
-#: ../src/event-list.c:995
+#: ../src/event-list.c:1000
 msgid "Yes, remove them"
 msgstr ""
 
-#: ../src/event-list.c:1207
+#: ../src/event-list.c:1212
 msgid "Back"
 msgstr "Înapoi"
 
-#: ../src/event-list.c:1211
+#: ../src/event-list.c:1216
 msgid "Forward"
 msgstr "Înainte"
 
-#: ../src/event-list.c:1218
+#: ../src/event-list.c:1223
 msgid "Find"
 msgstr "Caută"
 
-#: ../src/event-list.c:1225
+#: ../src/event-list.c:1230
 msgid "Dayview"
 msgstr "Vizualizare zi"
 
-#: ../src/event-list.c:1260
+#: ../src/event-list.c:1265
 msgid "Extra days to show:"
 msgstr ""
 
-#: ../src/event-list.c:1274
+#: ../src/event-list.c:1279
 msgid "only first repeating"
 msgstr ""
 
-#: ../src/event-list.c:1282
+#: ../src/event-list.c:1287
 msgid ""
 "Check this if you only want to see the first repeating event. By default all are shown.\n"
 "Note that this also shows all urgencies.\n"
 "Note that repeating events may appear earlier in the list as the first occurrence only is listed."
 msgstr ""
 
-#: ../src/event-list.c:1287
+#: ../src/event-list.c:1292
 msgid "also old"
 msgstr ""
 
-#: ../src/event-list.c:1292
+#: ../src/event-list.c:1297
 msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed'."
 msgstr ""
 
-#: ../src/event-list.c:1330
+#: ../src/event-list.c:1336
 msgid "Journal entries starting from:"
 msgstr "Intrări în jurnal începând cu:"
 
-#: ../src/event-list.c:1350
+#: ../src/event-list.c:1361
 msgid "Search"
 msgstr "Căutare"
 
-#: ../src/event-list.c:1353
+#: ../src/event-list.c:1364
 msgid "Search text "
 msgstr "Cautare text "
 
-#: ../src/event-list.c:1419
+#: ../src/event-list.c:1430
 msgid "Flags"
 msgstr "Indicatori"
 
-#: ../src/event-list.c:1427
+#: ../src/event-list.c:1438
 msgid "Title"
 msgstr "Titlu"
 
-#: ../src/event-list.c:1453
+#: ../src/event-list.c:1464
 msgid ""
 "Double click line to edit it.\n"
 "\n"
@@ -1397,7 +1248,7 @@ msgid ""
 "\t\tE=Event T=Todo J=Journal"
 msgstr ""
 
-#: ../src/ical-code.c:751
+#: ../src/ical-code.c:790
 msgid "Orage default alarm"
 msgstr "Alarmă implicită Orage"
 
@@ -1616,79 +1467,69 @@ msgstr ""
 msgid "Exchange data - Orage"
 msgstr "Schimb de date - Orage"
 
-#: ../src/main.c:271
+#: ../src/main.c:273
 #, c-format
 msgid ""
 "\tThis is %s version %s\n"
 "\n"
 msgstr ""
 
-#: ../src/main.c:273
+#: ../src/main.c:275
 #, c-format
 msgid "\tReleased under the terms of the GNU General Public License.\n"
 msgstr "\tPublicat în termenii licenței GNU General Public License.\n"
 
-#: ../src/main.c:274
+#: ../src/main.c:276
 #, c-format
 msgid "\tCompiled against GTK+-%d.%d.%d, "
 msgstr "\tCompilat cu versiunea GTK+-%d.%d.%d, "
 
-#: ../src/main.c:276
+#: ../src/main.c:278
 #, c-format
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "utilizând GTK+-%d.%d.%d.\n"
 
-#: ../src/main.c:279
+#: ../src/main.c:281
 #, c-format
 msgid "\tUsing DBUS for import.\n"
 msgstr "\tUtilizând DBUS pentru import.\n"
 
-#: ../src/main.c:281
+#: ../src/main.c:283
 #, c-format
 msgid "\tNot using DBUS. Import works only partially.\n"
 msgstr "\tFără suport DBUS, importul funcționează doar parțial.\n"
 
-#: ../src/main.c:284
+#: ../src/main.c:286
 #, c-format
 msgid "\tUsing libnotify.\n"
 msgstr "\tUtilizând libnotify.\n"
 
-#: ../src/main.c:286
+#: ../src/main.c:288
 #, c-format
 msgid "\tNot using libnotify.\n"
 msgstr "\tUtilizând libnotify.\n"
 
-#: ../src/main.c:289
+#: ../src/main.c:291
 #, c-format
 msgid "\tUsing automatic archiving.\n"
 msgstr "\tUtilizând arhivare automată.\n"
 
-#: ../src/main.c:291
+#: ../src/main.c:293
 #, c-format
 msgid "\tNot using archiving.\n"
 msgstr "\tFără arhivare.\n"
 
-#: ../src/main.c:294
-#, c-format
-msgid "\tUsing operating system package libical.\n"
-msgstr ""
-
 #: ../src/main.c:296
-#, c-format
-msgid "\tUsing Orage local version of libical.\n"
-msgstr ""
-
-#: ../src/main.c:299
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
 msgstr ""
 
-#: ../src/main.c:301
+#: ../src/main.c:298
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
 msgstr ""
 
-#: ../src/main.c:314
+#: ../src/main.c:311
 msgid ""
 "Usage: orage [options] [files]\n"
 "\n"
@@ -1696,49 +1537,49 @@ msgstr ""
 "Utilizare: orage [opțiuni] [fișiere]\n"
 "\n"
 
-#: ../src/main.c:315
+#: ../src/main.c:312
 msgid "Options:\n"
 msgstr "Opțiuni:\n"
 
-#: ../src/main.c:316
+#: ../src/main.c:313
 msgid "--version (-v) \t\tshow version of orage\n"
 msgstr "--version (-v) \t\tarată versinea curentă\n"
 
-#: ../src/main.c:317
+#: ../src/main.c:314
 msgid "--help (-h) \t\tprint this text\n"
 msgstr "--help (-h) \t\tarată aceste informații\n"
 
-#: ../src/main.c:318
+#: ../src/main.c:315
 msgid "--preferences (-p) \tshow preferences form\n"
 msgstr "--preferences (-p) \tarată fereastra cu opțiuni\n"
 
-#: ../src/main.c:319
+#: ../src/main.c:316
 msgid "--toggle (-t) \t\tmake orage visible/unvisible\n"
 msgstr "--toggle (-t) \t\tface orage vizibil/invizibil\n"
 
-#: ../src/main.c:320
+#: ../src/main.c:317
 msgid "--add-foreign (-a) file [RW] [name] \tadd a foreign file\n"
 msgstr ""
 
-#: ../src/main.c:321
+#: ../src/main.c:318
 msgid "--remove-foreign (-r) file \tremove a foreign file\n"
 msgstr "--remove-foreign (-r) file \telimină un fișier extern\n"
 
-#: ../src/main.c:322
+#: ../src/main.c:319
 msgid ""
 "--export (-e) file [appointment...] \texport appointments from Orage to "
 "file\n"
 msgstr ""
 
-#: ../src/main.c:324
+#: ../src/main.c:321
 msgid "files=ical files to load into orage\n"
 msgstr "fișiere = fișiere ical de încărcat în orage\n"
 
-#: ../src/main.c:326
+#: ../src/main.c:323
 msgid "\tdbus not included in orage. \n"
 msgstr "\tdbus nu este inclus în orage. \n"
 
-#: ../src/main.c:327
+#: ../src/main.c:324
 msgid ""
 "\twithout dbus [files] and foreign file options(-a & -r) can only be used "
 "when starting orage \n"
@@ -1746,7 +1587,7 @@ msgstr ""
 "\tfără dbus opțiunea [fișiere] și opțiunile pentru fișiere externe (-a & -r)"
 " pot fi folosite doar la pornirea orage \n"
 
-#: ../src/main.c:540
+#: ../src/main.c:537
 #, c-format
 msgid ""
 "\n"
@@ -1757,47 +1598,47 @@ msgstr ""
 "Opțiune necunoscută %s\n"
 "\n"
 
-#: ../src/mainbox.c:216
+#: ../src/mainbox.c:225
 msgid "_Exchange data"
 msgstr "_Schimb de date"
 
 #. Edit menu
-#: ../src/mainbox.c:227
+#: ../src/mainbox.c:236
 msgid "_Edit"
 msgstr "_Editare"
 
-#: ../src/mainbox.c:237
+#: ../src/mainbox.c:246
 msgid "View selected _date"
 msgstr "Arată _data selectată"
 
-#: ../src/mainbox.c:240
+#: ../src/mainbox.c:249
 msgid "View selected _week"
 msgstr "Arată _săptămâna selectată"
 
-#: ../src/mainbox.c:246
+#: ../src/mainbox.c:255
 msgid "Select _Today"
 msgstr "_Ziua de azi"
 
-#: ../src/mainbox.c:252
+#: ../src/mainbox.c:261
 msgid "Show _Globaltime"
 msgstr ""
 
 #. Help menu
 #. the rest
-#: ../src/mainbox.c:256 ../src/parameters.c:1197
+#: ../src/mainbox.c:265 ../src/parameters.c:1197
 msgid "_Help"
 msgstr "_Ajutor"
 
-#: ../src/mainbox.c:316 ../src/reminder.c:995
+#: ../src/mainbox.c:328 ../src/reminder.c:1027
 msgid "No title defined"
 msgstr ""
 
-#: ../src/mainbox.c:379
+#: ../src/mainbox.c:386
 #, c-format
 msgid " Location: %s\n"
 msgstr ""
 
-#: ../src/mainbox.c:389
+#: ../src/mainbox.c:396
 #, c-format
 msgid ""
 "\n"
@@ -1805,11 +1646,11 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../src/mainbox.c:397
+#: ../src/mainbox.c:404
 msgid "Never"
 msgstr "Niciodată"
 
-#: ../src/mainbox.c:403
+#: ../src/mainbox.c:412
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1818,7 +1659,7 @@ msgid ""
 " Done:\t%s%s"
 msgstr ""
 
-#: ../src/mainbox.c:411
+#: ../src/mainbox.c:419
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1826,16 +1667,16 @@ msgid ""
 " End:\t%s%s"
 msgstr ""
 
-#: ../src/mainbox.c:489
+#: ../src/mainbox.c:498
 msgid "<b>To do:</b>"
 msgstr "<b>Sarcini:</b>"
 
-#: ../src/mainbox.c:525
+#: ../src/mainbox.c:535
 #, c-format
 msgid "<b>Events for %s:</b>"
 msgstr "<b>Evenimente în %s:</b>"
 
-#: ../src/mainbox.c:536
+#: ../src/mainbox.c:545
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr ""
@@ -2059,39 +1900,39 @@ msgstr ""
 msgid "Orage Preferences"
 msgstr "Preferințe Orage"
 
-#: ../src/parameters.c:1200 ../src/reminder.c:673
+#: ../src/parameters.c:1200 ../src/reminder.c:712
 msgid "_Close"
 msgstr "În_chide"
 
-#: ../src/reminder.c:466
+#: ../src/reminder.c:490
 msgid "Reminder "
 msgstr "Reamintire "
 
-#: ../src/reminder.c:495
+#: ../src/reminder.c:519
 msgid "Open"
 msgstr "Deschide"
 
-#: ../src/reminder.c:598
+#: ../src/reminder.c:637
 msgid "Reminder - Orage"
 msgstr ""
 
-#: ../src/reminder.c:681
+#: ../src/reminder.c:720
 msgid "_Stop"
 msgstr ""
 
-#: ../src/reminder.c:689
+#: ../src/reminder.c:728
 msgid "Postpone"
 msgstr ""
 
-#: ../src/reminder.c:691
+#: ../src/reminder.c:730
 msgid "Remind me again after the specified time"
 msgstr ""
 
-#: ../src/reminder.c:947
+#: ../src/reminder.c:995
 msgid "Next active alarms:"
 msgstr "Următoarele alarme active:"
 
-#: ../src/reminder.c:1002
+#: ../src/reminder.c:1034
 #, c-format
 msgid ""
 "\n"
@@ -2100,7 +1941,7 @@ msgstr ""
 "\n"
 "%02d z %02d o %02d min. până la: %s"
 
-#: ../src/reminder.c:1011
+#: ../src/reminder.c:1046
 #, c-format
 msgid ""
 "\n"
@@ -4353,24 +4194,16 @@ msgstr ""
 msgid "US/Samoa"
 msgstr ""
 
-#: ../src/tray_icon.c:457
+#: ../src/tray_icon.c:469
 msgid "New appointment"
 msgstr "Eveniment nouă"
 
-#: ../src/tray_icon.c:464
+#: ../src/tray_icon.c:476
 msgid "Preferences"
 msgstr "Preferințe"
 
-#: ../src/tray_icon.c:471
+#: ../src/tray_icon.c:483
 msgid "Quit"
-msgstr ""
-
-#: ../panel-plugin/org.xfce.orage.clock-plugin.desktop.in.h:1
-msgid "Orage Panel Clock"
-msgstr ""
-
-#: ../panel-plugin/org.xfce.orage.clock-plugin.desktop.in.h:2
-msgid "Show time and date?"
 msgstr ""
 
 #: ../plugin/org.xfce.orage-settings.desktop.in.h:1
