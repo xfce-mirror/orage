@@ -1,352 +1,369 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# truongap <truongap.ars@gmail.com>, 2014
-# Lâm Vĩnh Niên <nienvl@yahoo.ca>, 2004
-# Phan Vĩnh Thịnh <teppi@vnlinux.org>, 2006
+# Xfce Bot <transifex@xfce.org>, 2022
+# Nick Schermer <nick@xfce.org>, 2022
+# Duy Truong Nguyen <truongap.ars@gmail.com>, 2022
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Xfce Apps\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-02 18:30+0100\n"
-"PO-Revision-Date: 2014-04-08 10:17+0000\n"
-"Last-Translator: truongap <truongap.ars@gmail.com>\n"
-"Language-Team: Vietnamese (http://www.transifex.com/projects/p/xfce/language/vi/)\n"
+"POT-Creation-Date: 2022-09-03 00:49+0200\n"
+"PO-Revision-Date: 2022-02-01 14:01+0000\n"
+"Last-Translator: Duy Truong Nguyen <truongap.ars@gmail.com>, 2022\n"
+"Language-Team: Vietnamese (https://www.transifex.com/xfce/teams/16840/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../globaltime/globaltime.c:100
-msgid "Raising GlobalTime window..."
-msgstr "Mở rộng cửa sổ GlobalTime"
+#: ../globaltime/globaltime.c:62
+msgid "no underline"
+msgstr ""
 
-#: ../globaltime/globaltime.c:102
-msgid "GlobalTime window raise failed"
-msgstr "Mở rộng cửa sổ GlobalTime thất bại"
+#: ../globaltime/globaltime.c:62
+msgid "single"
+msgstr ""
+
+#: ../globaltime/globaltime.c:62
+msgid "double"
+msgstr ""
+
+#: ../globaltime/globaltime.c:62
+msgid "low"
+msgstr ""
 
 #. ********** timezone tooltip **********
-#: ../globaltime/globaltime.c:277
+#: ../globaltime/globaltime.c:341
 #, c-format
 msgid ""
 "%s\n"
 "click to modify clock"
-msgstr "%s\nnhấn để chỉnh sửa đồng hồ"
+msgstr ""
+"%s\n"
+"nhấn để chỉnh sửa đồng hồ"
 
-#: ../globaltime/globaltime.c:386
+#: ../globaltime/globaltime.c:450
 msgid "Localtime"
 msgstr "Giờ địa phương"
 
-#: ../globaltime/globaltime.c:464
+#: ../globaltime/globaltime.c:539
 msgid ""
 "button 1 to change preferences \n"
 "button 2 to adjust time of clocks"
-msgstr "nút 1 để thay đổi các tùy chọn\nnút 2 để điều chỉnh thời gian của đồng hồ"
+msgstr ""
+"nút 1 để thay đổi các tùy chọn\n"
+"nút 2 để điều chỉnh thời gian của đồng hồ"
 
-#: ../globaltime/globaltime.c:480
+#: ../globaltime/globaltime.c:554
 msgid "adjust to change hour"
 msgstr "điều chỉnh giờ"
 
-#: ../globaltime/globaltime.c:496
+#: ../globaltime/globaltime.c:570
 msgid ""
 "adjust to change minute. Click arrows with button 2 to change only 1 minute."
 msgstr "điều chỉnh phút. Nhấn vào 2 nút lên hoặc xuống để sẽ thay đổi 1 phút"
 
-#: ../globaltime/gt_prefs.c:265 ../globaltime/gt_prefs.c:266
+#: ../globaltime/globaltime.c:624
+msgid "Global Time"
+msgstr ""
+
+#: ../globaltime/gt_prefs.c:290 ../globaltime/gt_prefs.c:291
 msgid "NEW"
 msgstr "MỚI"
 
-#: ../globaltime/gt_prefs.c:289
+#: ../globaltime/gt_prefs.c:314
 msgid "NEW COPY"
 msgstr ""
 
-#: ../globaltime/gt_prefs.c:310
+#: ../globaltime/gt_prefs.c:336
 msgid "Not possible to delete the last clock."
 msgstr ""
 
-#: ../globaltime/gt_prefs.c:516
+#: ../globaltime/gt_prefs.c:577
 msgid "update this clock"
 msgstr "cập nhật đồng hồ này"
 
-#: ../globaltime/gt_prefs.c:521 ../globaltime/gt_prefs.c:1034
+#: ../globaltime/gt_prefs.c:582 ../globaltime/gt_prefs.c:1095
 msgid "add new empty clock"
 msgstr "thêm đồng hồ trống mới"
 
-#: ../globaltime/gt_prefs.c:526
+#: ../globaltime/gt_prefs.c:587
 msgid "add new clock using this clock as model"
 msgstr "thêm đồng hồ trống mới với cùng mẫu"
 
-#: ../globaltime/gt_prefs.c:531
+#: ../globaltime/gt_prefs.c:592
 msgid "delete this clock"
 msgstr "xóa đồng hồ này"
 
-#: ../globaltime/gt_prefs.c:539
+#: ../globaltime/gt_prefs.c:600
 msgid "move this clock first"
 msgstr "di chuyển đồng hồ này lên trước"
 
-#: ../globaltime/gt_prefs.c:544
+#: ../globaltime/gt_prefs.c:605
 msgid "move this clock left"
 msgstr "di chuyển đồng hồ này sang trái"
 
-#: ../globaltime/gt_prefs.c:549
+#: ../globaltime/gt_prefs.c:610
 msgid "move this clock right"
 msgstr "di chuyển đồng hồ này sang phải"
 
-#: ../globaltime/gt_prefs.c:554
+#: ../globaltime/gt_prefs.c:615
 msgid "move this clock last"
 msgstr "di chuyển đồng hồ này xuống cuối"
 
-#: ../globaltime/gt_prefs.c:562
+#: ../globaltime/gt_prefs.c:623
 msgid "set the timezone of this clock to be local timezone"
 msgstr "đặt múi giờ địa phương giống với múi giờ của đồng hồ này"
 
-#: ../globaltime/gt_prefs.c:568 ../globaltime/gt_prefs.c:1042
+#: ../globaltime/gt_prefs.c:629 ../globaltime/gt_prefs.c:1103
 msgid "close window and exit"
 msgstr "đóng cửa sổ và thoát"
 
-#: ../globaltime/gt_prefs.c:590
+#: ../globaltime/gt_prefs.c:652
 msgid "Globaltime preferences "
 msgstr "Tùy thích Globaltime"
 
 #. -----------------------HEADING-------------------------------------------
-#: ../globaltime/gt_prefs.c:603
+#: ../globaltime/gt_prefs.c:665
 msgid "Clock Parameters"
 msgstr ""
 
-#: ../globaltime/gt_prefs.c:607
+#: ../globaltime/gt_prefs.c:669
 msgid "Name of the clock:"
 msgstr "Tên đồng hồ"
 
-#: ../globaltime/gt_prefs.c:613
+#: ../globaltime/gt_prefs.c:678
 msgid "enter name of clock"
 msgstr "nhập tên đồng hồ"
 
-#: ../globaltime/gt_prefs.c:616
+#: ../globaltime/gt_prefs.c:681
 msgid "Timezone of the clock:"
 msgstr "Múi giờ của đồng hồ"
 
-#: ../globaltime/gt_prefs.c:643
+#: ../globaltime/gt_prefs.c:683 ../globaltime/gt_prefs.c:1189
+#: ../src/appointment.c:3302 ../src/interface.c:1047 ../src/interface.c:1093
+#: ../src/interface.c:1269 ../src/interface.c:1361 ../src/interface.c:1444
+#: ../src/parameters.c:397 ../src/parameters.c:620 ../src/reminder.c:705
+msgid "_Open"
+msgstr ""
+
+#: ../globaltime/gt_prefs.c:714
 msgid "Text Formatting"
 msgstr "Định dạnh văn bản"
 
 #. ------------------------background-------------------------
-#: ../globaltime/gt_prefs.c:649 ../globaltime/gt_prefs.c:856
+#: ../globaltime/gt_prefs.c:721 ../globaltime/gt_prefs.c:923
 msgid "Background color:"
 msgstr "Màu nền:"
 
-#: ../globaltime/gt_prefs.c:656
+#: ../globaltime/gt_prefs.c:728
 msgid "Click to change background colour for clock"
 msgstr "Nhấn để thay đổi màu nền của đồng hồ"
 
-#: ../globaltime/gt_prefs.c:665 ../globaltime/gt_prefs.c:697
-#: ../globaltime/gt_prefs.c:729 ../globaltime/gt_prefs.c:762
-#: ../globaltime/gt_prefs.c:796 ../globaltime/gt_prefs.c:826
-#: ../globaltime/gt_prefs.c:872 ../globaltime/gt_prefs.c:905
-#: ../globaltime/gt_prefs.c:938 ../globaltime/gt_prefs.c:972
+#: ../globaltime/gt_prefs.c:737 ../globaltime/gt_prefs.c:769
+#: ../globaltime/gt_prefs.c:801 ../globaltime/gt_prefs.c:833
+#: ../globaltime/gt_prefs.c:865 ../globaltime/gt_prefs.c:893
+#: ../globaltime/gt_prefs.c:939 ../globaltime/gt_prefs.c:971
+#: ../globaltime/gt_prefs.c:1003 ../globaltime/gt_prefs.c:1035
 msgid "Use default"
 msgstr "Sử dụng mặc định"
 
-#: ../globaltime/gt_prefs.c:670 ../globaltime/gt_prefs.c:702
-#: ../globaltime/gt_prefs.c:735 ../globaltime/gt_prefs.c:768
-#: ../globaltime/gt_prefs.c:802 ../globaltime/gt_prefs.c:832
+#: ../globaltime/gt_prefs.c:742 ../globaltime/gt_prefs.c:774
+#: ../globaltime/gt_prefs.c:806 ../globaltime/gt_prefs.c:838
+#: ../globaltime/gt_prefs.c:870 ../globaltime/gt_prefs.c:898
 msgid "Cross this to use default instead of selected value"
 msgstr ""
 
 #. ------------------------foreground-------------------------
-#: ../globaltime/gt_prefs.c:681 ../globaltime/gt_prefs.c:889
+#: ../globaltime/gt_prefs.c:753 ../globaltime/gt_prefs.c:955
 msgid "Foreground (=text) color:"
 msgstr ""
 
-#: ../globaltime/gt_prefs.c:688
+#: ../globaltime/gt_prefs.c:760
 msgid "Click to change foreground colour for clock"
 msgstr ""
 
 #. ------------------------name font-------------------------
-#: ../globaltime/gt_prefs.c:713 ../globaltime/gt_prefs.c:922
+#: ../globaltime/gt_prefs.c:785 ../globaltime/gt_prefs.c:987
 msgid "Font for name of clock:"
 msgstr "Phông cho tên đồng hồ"
 
-#: ../globaltime/gt_prefs.c:720
+#: ../globaltime/gt_prefs.c:792
 msgid "Click to change font for clock name"
 msgstr "Nhấn để thay đổi phông cho tên đồn hồ"
 
 #. ------------------------time font-------------------------
-#: ../globaltime/gt_prefs.c:746 ../globaltime/gt_prefs.c:956
+#: ../globaltime/gt_prefs.c:817 ../globaltime/gt_prefs.c:1019
 msgid "Font for time of clock:"
 msgstr "Phông cho thời gian của đồng hồ"
 
-#: ../globaltime/gt_prefs.c:753
+#: ../globaltime/gt_prefs.c:824
 msgid "Click to change font for clock time"
 msgstr "Nhấn để thay đổi phông cho thời gian của đồng hồ"
 
 #. ------------------------underline name--------------------
-#: ../globaltime/gt_prefs.c:780
+#: ../globaltime/gt_prefs.c:849
 msgid "Underline name of clock:"
 msgstr "Gạch chân tên đồng hồ"
 
 #. ------------------------underline time--------------------
-#: ../globaltime/gt_prefs.c:810
+#: ../globaltime/gt_prefs.c:877
 msgid "Underline time of clock:"
 msgstr "Gạch chân thời gian của đồng hồ"
 
-#: ../globaltime/gt_prefs.c:850
+#: ../globaltime/gt_prefs.c:916
 msgid "Text Default Formatting"
 msgstr "Định dạng chữ mặc định"
 
-#: ../globaltime/gt_prefs.c:863
+#: ../globaltime/gt_prefs.c:930
 msgid "Click to change default background colour for clocks"
 msgstr "Nhấn để thay đổi màu nền mặc định của đồng hồ"
 
-#: ../globaltime/gt_prefs.c:877 ../globaltime/gt_prefs.c:910
+#: ../globaltime/gt_prefs.c:944 ../globaltime/gt_prefs.c:976
 msgid "Cross this to use system default instead of selected color"
 msgstr ""
 
-#: ../globaltime/gt_prefs.c:896
+#: ../globaltime/gt_prefs.c:962
 msgid "Click to change default text colour for clocks"
 msgstr "Nhấn để thay đổi màu chữ mặc định của đồng hồ"
 
-#: ../globaltime/gt_prefs.c:929
+#: ../globaltime/gt_prefs.c:994
 msgid "Click to change default font for clock name"
 msgstr "Nhấn để thay đổi phông mặc định của tên đồng hồ"
 
-#: ../globaltime/gt_prefs.c:944 ../globaltime/gt_prefs.c:978
+#: ../globaltime/gt_prefs.c:1008 ../globaltime/gt_prefs.c:1040
 msgid "Cross this to use system default font instead of selected font"
 msgstr ""
 
-#: ../globaltime/gt_prefs.c:963
+#: ../globaltime/gt_prefs.c:1026
 msgid "Click to change default font for clock time"
 msgstr "Nhấn để thay đổi phông mặc định cho thời gian của đồng hồ"
 
 #. ------------------------underline name--------------------
-#: ../globaltime/gt_prefs.c:990
+#: ../globaltime/gt_prefs.c:1051
 msgid "Underline for name of clock:"
 msgstr "Gạch chân tên đồng hồ"
 
 #. ------------------------underline time--------------------
-#: ../globaltime/gt_prefs.c:1004
+#: ../globaltime/gt_prefs.c:1065
 msgid "Underline for time of clock:"
 msgstr "Gạch chân thời gian của đồng hồ"
 
-#: ../globaltime/gt_prefs.c:1027
+#: ../globaltime/gt_prefs.c:1088
 msgid "update preferences"
 msgstr "Cập nhật các tùy chỉnh"
 
-#: ../globaltime/gt_prefs.c:1062
+#: ../globaltime/gt_prefs.c:1122
 msgid "Globaltime Preferences"
 msgstr "Tùy chỉnh Globaltime"
 
 #. -----------------------HEADING--------------------------------------
-#: ../globaltime/gt_prefs.c:1073
+#: ../globaltime/gt_prefs.c:1133
 msgid "General Preferences"
 msgstr "Tùy chỉnh chung"
 
-#: ../globaltime/gt_prefs.c:1077
+#: ../globaltime/gt_prefs.c:1137
 msgid "Decorations:"
 msgstr ""
 
-#: ../globaltime/gt_prefs.c:1078
+#: ../globaltime/gt_prefs.c:1138
 msgid "Standard"
 msgstr "Chuẩn"
 
-#: ../globaltime/gt_prefs.c:1083
+#: ../globaltime/gt_prefs.c:1144
 msgid "Use normal decorations"
 msgstr ""
 
-#: ../globaltime/gt_prefs.c:1094
+#: ../globaltime/gt_prefs.c:1149 ../src/appointment.c:3551
+msgid "None"
+msgstr "Không"
+
+#: ../globaltime/gt_prefs.c:1156
 msgid "Do not show window decorations (borders)"
 msgstr ""
 
-#: ../globaltime/gt_prefs.c:1100
+#: ../globaltime/gt_prefs.c:1162
 msgid "Clock size:"
 msgstr "Kích cỡ đồng hồ"
 
-#: ../globaltime/gt_prefs.c:1101
+#: ../globaltime/gt_prefs.c:1163
 msgid "Equal"
 msgstr ""
 
-#: ../globaltime/gt_prefs.c:1106
+#: ../globaltime/gt_prefs.c:1170
 msgid "All clocks have same size"
 msgstr "Mọi đồng hồ đều có chung kích cỡ"
 
-#: ../globaltime/gt_prefs.c:1111
+#: ../globaltime/gt_prefs.c:1175
 msgid "Varying"
 msgstr ""
 
-#: ../globaltime/gt_prefs.c:1116
+#: ../globaltime/gt_prefs.c:1181
 msgid "Clock sizes vary"
 msgstr ""
 
-#: ../globaltime/gt_prefs.c:1122
+#: ../globaltime/gt_prefs.c:1187
 msgid "Local timezone:"
 msgstr "Múi giờ địa phương"
 
-#: ../globaltime/timezone_selection.c:101
-#: ../panel-plugin/timezone_selection.c:102 ../src/timezone_selection.c:102
+#: ../globaltime/timezone_selection.c:93
 msgid " Other"
 msgstr "Khác"
 
-#: ../globaltime/timezone_selection.c:156
-#: ../panel-plugin/timezone_selection.c:157 ../src/timezone_selection.c:168
+#: ../globaltime/timezone_selection.c:145 ../src/timezone_selection.c:148
 #, c-format
 msgid "%d hour %d mins"
 msgstr "%d giờ %d phút"
 
-#: ../globaltime/timezone_selection.c:159
-#: ../panel-plugin/timezone_selection.c:160 ../src/timezone_selection.c:171
+#: ../globaltime/timezone_selection.c:148 ../src/timezone_selection.c:151
 #, c-format
 msgid "%d hour"
 msgstr "%d giờ"
 
-#: ../globaltime/timezone_selection.c:161
-#: ../panel-plugin/timezone_selection.c:162 ../src/timezone_selection.c:173
+#: ../globaltime/timezone_selection.c:150 ../src/timezone_selection.c:153
 #, c-format
 msgid "%d mins"
 msgstr "%d phút"
 
-#: ../globaltime/timezone_selection.c:167
-#: ../panel-plugin/timezone_selection.c:168 ../src/timezone_selection.c:179
+#: ../globaltime/timezone_selection.c:156 ../src/timezone_selection.c:159
 msgid "backward"
 msgstr "lui lại"
 
-#: ../globaltime/timezone_selection.c:170
-#: ../panel-plugin/timezone_selection.c:171 ../src/timezone_selection.c:182
+#: ../globaltime/timezone_selection.c:159 ../src/timezone_selection.c:162
 msgid "forward"
 msgstr "tiến lên"
 
-#: ../globaltime/timezone_selection.c:194
-#: ../panel-plugin/timezone_selection.c:195 ../src/timezone_selection.c:206
+#: ../globaltime/timezone_selection.c:183 ../src/timezone_selection.c:186
 msgid "not changed"
 msgstr "đã không thay đổi"
 
-#: ../globaltime/timezone_selection.c:195
-#: ../panel-plugin/timezone_selection.c:196 ../src/timezone_selection.c:207
+#: ../globaltime/timezone_selection.c:184 ../src/timezone_selection.c:187
 msgid "not changing"
 msgstr "không thay đổi"
 
 #. location
-#: ../globaltime/timezone_selection.c:247
-#: ../globaltime/timezone_selection.c:252
-#: ../panel-plugin/timezone_selection.c:248
-#: ../panel-plugin/timezone_selection.c:253 ../src/appointment.c:2776
-#: ../src/timezone_selection.c:259 ../src/timezone_selection.c:264
+#: ../globaltime/timezone_selection.c:234
+#: ../globaltime/timezone_selection.c:239 ../src/appointment.c:2974
+#: ../src/timezone_selection.c:237 ../src/timezone_selection.c:242
 msgid "Location"
 msgstr "Vị trí"
 
-#: ../globaltime/timezone_selection.c:258
-#: ../panel-plugin/timezone_selection.c:259 ../src/timezone_selection.c:270
+#: ../globaltime/timezone_selection.c:245 ../src/timezone_selection.c:248
 msgid "GMT Offset"
 msgstr ""
 
-#: ../globaltime/timezone_selection.c:264
-#: ../panel-plugin/timezone_selection.c:265 ../src/timezone_selection.c:276
+#: ../globaltime/timezone_selection.c:251 ../src/timezone_selection.c:254
 msgid "Previous/Next Change"
 msgstr "Thay đổi trước/kế tiếp"
 
-#: ../globaltime/timezone_selection.c:269
-#: ../panel-plugin/timezone_selection.c:270 ../src/timezone_selection.c:281
+#: ../globaltime/timezone_selection.c:256 ../src/timezone_selection.c:259
 msgid "Country"
 msgstr "Quốc gia"
 
@@ -355,451 +372,362 @@ msgstr "Quốc gia"
 #. done very seldom and we do not want to allow "floating" here.
 #. This test is ugly, but it is not worth an extra parameter.
 #. this is normal appointment
-#: ../globaltime/timezone_selection.c:299
-#: ../globaltime/timezone_selection.c:309
-#: ../panel-plugin/timezone_selection.c:300
-#: ../panel-plugin/timezone_selection.c:310 ../src/timezone_selection.c:316
-#: ../src/timezone_selection.c:325 ../src/timezone_selection.c:336
+#: ../globaltime/timezone_selection.c:283
+#: ../globaltime/timezone_selection.c:293 ../src/timezone_selection.c:291
+#: ../src/timezone_selection.c:300 ../src/timezone_selection.c:311
 msgid "Pick timezone"
 msgstr "Chọn múi giờ"
 
-#: ../globaltime/timezone_selection.c:302
-#: ../globaltime/timezone_selection.c:312
-#: ../panel-plugin/timezone_selection.c:303
-#: ../panel-plugin/timezone_selection.c:313 ../src/timezone_selection.c:319
-#: ../src/timezone_selection.c:328 ../src/timezone_selection.c:339
+#: ../globaltime/timezone_selection.c:286
+#: ../globaltime/timezone_selection.c:296 ../src/timezone_selection.c:294
+#: ../src/timezone_selection.c:303 ../src/timezone_selection.c:314
 msgid "Change mode"
 msgstr "Thay đổi chế độ"
 
-#: ../globaltime/timezone_selection.c:303
-#: ../globaltime/timezone_selection.c:313
-#: ../globaltime/timezone_selection.c:352
-#: ../panel-plugin/timezone_selection.c:304
-#: ../panel-plugin/timezone_selection.c:314
-#: ../panel-plugin/timezone_selection.c:353 ../src/timezone_selection.c:320
-#: ../src/timezone_selection.c:329 ../src/timezone_selection.c:340
-#: ../src/timezone_selection.c:379
+#: ../globaltime/timezone_selection.c:287
+#: ../globaltime/timezone_selection.c:297
+#: ../globaltime/timezone_selection.c:336 ../src/timezone_selection.c:295
+#: ../src/timezone_selection.c:304 ../src/timezone_selection.c:315
+#: ../src/timezone_selection.c:354
 msgid "UTC"
 msgstr "UTC"
 
 #. NOTE: this exists only if ical timezones are being used
-#: ../globaltime/timezone_selection.c:304
-#: ../globaltime/timezone_selection.c:357
-#: ../panel-plugin/timezone_selection.c:305
-#: ../panel-plugin/timezone_selection.c:358 ../src/timezone_selection.c:330
-#: ../src/timezone_selection.c:384
+#: ../globaltime/timezone_selection.c:288
+#: ../globaltime/timezone_selection.c:341 ../src/timezone_selection.c:305
+#: ../src/timezone_selection.c:359
 msgid "floating"
 msgstr "không cố định"
 
-#: ../globaltime/globaltime.desktop.in.h:1
+#: ../globaltime/org.xfce.orage.globaltime.desktop.in.h:1
 msgid "Orage Globaltime"
 msgstr "Orage Globaltime"
 
-#: ../globaltime/globaltime.desktop.in.h:2
+#: ../globaltime/org.xfce.orage.globaltime.desktop.in.h:2
 msgid "Show clocks from different countries"
 msgstr "Hiển thị đồng hồ từ những quốc gia khác nhau"
 
-#: ../globaltime/globaltime.desktop.in.h:3 ../src/tray_icon.c:500
+#: ../globaltime/org.xfce.orage.globaltime.desktop.in.h:3
+#: ../src/tray_icon.c:489
 msgid "Globaltime"
 msgstr "Globaltime"
 
-#: ../panel-plugin/oc_config.c:224
-msgid "Appearance"
-msgstr "Diện mạo"
-
-#. show frame
-#: ../panel-plugin/oc_config.c:229
-msgid "Show _frame"
-msgstr "Hiện _khung"
-
-#. foreground color
-#: ../panel-plugin/oc_config.c:239
-msgid "set foreground _color:"
+#: ../src/about-xfcalendar.c:54 ../org.xfce.orage.appdata.xml.in.h:2
+msgid "Orage is a time-managing application for the Xfce desktop environment"
 msgstr ""
 
-#. background color
-#: ../panel-plugin/oc_config.c:253
-msgid "set _background color:"
-msgstr ""
-
-#. clock size (=vbox size): height and width
-#: ../panel-plugin/oc_config.c:267
-msgid "set _height:"
-msgstr ""
-
-#: ../panel-plugin/oc_config.c:277
-msgid "Note that you can not change the height of horizontal panels"
-msgstr ""
-
-#: ../panel-plugin/oc_config.c:282
-msgid "set _width:"
-msgstr ""
-
-#: ../panel-plugin/oc_config.c:293
-msgid "Note that you can not change the width of vertical panels"
-msgstr ""
-
-#: ../panel-plugin/oc_config.c:316
-msgid "Clock Options"
-msgstr "Tùy chọn đồng hồ"
-
-#. timezone
-#: ../panel-plugin/oc_config.c:326
-msgid "set timezone to:"
-msgstr "đặt múi giờ về:"
-
-#: ../panel-plugin/oc_config.c:347
-#, c-format
-msgid "Line %d:"
-msgstr ""
-
-#: ../panel-plugin/oc_config.c:357
-msgid "Enter any valid strftime function parameter."
-msgstr ""
-
-#. Tooltip hint
-#: ../panel-plugin/oc_config.c:401
-msgid "Tooltip:"
-msgstr "Chú thích:"
-
-#. special timing for SUSPEND/HIBERNATE
-#: ../panel-plugin/oc_config.c:411
-msgid "fix time after suspend/hibernate"
-msgstr "sửa thời gian sau khi tạm dừng / ngủ đông"
-
-#: ../panel-plugin/oc_config.c:415
-msgid ""
-"You only need this if you do short term (less than 5 hours) suspend or "
-"hibernate and your visible time does not include seconds. Under these "
-"circumstances it is possible that Orageclock shows time inaccurately unless "
-"you have this selected. (Selecting this prevents cpu and interrupt saving "
-"features from working.)"
-msgstr ""
-
-#: ../panel-plugin/oc_config.c:432
-msgid ""
-"This program uses strftime function to get time.\n"
-"Use any valid code to get time in the format you prefer.\n"
-"Some common codes are:\n"
-"\t%A = weekday\t\t\t%B = month\n"
-"\t%c = date & time\t\t%R = hour & minute\n"
-"\t%V = week number\t\t%Z = timezone in use\n"
-"\t%H = hours \t\t\t\t%M = minute\n"
-"\t%X = local time\t\t\t%x = local date"
-msgstr ""
-
-#: ../panel-plugin/oc_config.c:457
-msgid "Orage clock Preferences"
-msgstr "Tùy chỉnh đồng hồ Orage"
-
-#. no lines yet
-#. TRANSLATORS: Use format characters from strftime(3)
-#. * to get the proper string for your locale.
-#. * I used these:
-#. * %A  : full weekday name
-#. * %d  : day of the month
-#. * %B  : full month name
-#. * %Y  : four digit year
-#. * %V  : ISO week number
-#: ../panel-plugin/xfce4-orageclock-plugin.c:627
-msgid "%A %d %B %Y/%V"
-msgstr "%A %d %B %Y/%V"
-
-#: ../src/about-xfcalendar.c:40
-msgid "Maintainer"
-msgstr "Người bảo trì"
-
-#: ../src/about-xfcalendar.c:47
-msgid "Manage your time with Orage"
-msgstr "Quản lý thời gian với Orage"
+#: ../src/about-xfcalendar.c:58
+msgid "translator-credits"
+msgstr "giới thiêu người dịch"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
 #. end time
-#: ../src/appointment.c:313 ../src/appointment.c:353 ../src/appointment.c:2805
+#: ../src/appointment.c:325 ../src/appointment.c:365 ../src/appointment.c:3003
 msgid "End"
 msgstr "Kết thúc"
 
-#: ../src/appointment.c:333
+#: ../src/appointment.c:345
 msgid "Due"
 msgstr ""
 
-#: ../src/appointment.c:493 ../src/mainbox.c:862
+#: ../src/appointment.c:508 ../src/mainbox.c:693
+#: ../org.xfce.orage.appdata.xml.in.h:1
 msgid "Orage"
 msgstr "Orage"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
-#: ../src/appointment.c:672 ../src/interface.c:264 ../src/parameters.c:374
+#: ../src/appointment.c:699 ../src/interface.c:262 ../src/parameters.c:392
 msgid "Select a file..."
 msgstr "Chọn một tập tin..."
 
-#: ../src/appointment.c:680
+#: ../src/appointment.c:707
 msgid "Sound Files"
 msgstr "Tập tin Âm thanh"
 
-#: ../src/appointment.c:687 ../src/interface.c:277
+#: ../src/appointment.c:714 ../src/interface.c:275
 msgid "All Files"
 msgstr "Tất cả"
 
-#: ../src/appointment.c:738
+#: ../src/appointment.c:765
 msgid "The appointment information has been modified."
 msgstr "Đã thay đổi thông tin về cuộc hẹn."
 
-#: ../src/appointment.c:739 ../src/appointment.c:1287 ../src/event-list.c:969
+#: ../src/appointment.c:766 ../src/appointment.c:1340 ../src/event-list.c:998
 msgid "Do you want to continue?"
 msgstr "Tiếp tục?"
 
-#: ../src/appointment.c:740
+#: ../src/appointment.c:767
 msgid "No, do not leave"
 msgstr ""
 
-#: ../src/appointment.c:741
+#: ../src/appointment.c:768
 msgid "Yes, ignore modifications and leave"
 msgstr ""
 
-#: ../src/appointment.c:768
+#: ../src/appointment.c:796
 msgid "The end of this appointment is earlier than the beginning."
 msgstr "Thời gian kết thúc cuộc hẹn sớm hơn thời gian bắt đầu."
 
-#: ../src/appointment.c:1035 ../src/appointment.c:1923
+#: ../src/appointment.c:1096 ../src/appointment.c:2015
 msgid "Not set"
 msgstr "Không đặt"
 
-#: ../src/appointment.c:1138
+#: ../src/appointment.c:1189
 msgid "Add new appointment to this file."
 msgstr ""
 
-#: ../src/appointment.c:1139 ../src/appointment.c:1188
+#: ../src/appointment.c:1190 ../src/appointment.c:1238
 msgid "Orage default file"
 msgstr ""
 
-#: ../src/appointment.c:1225
+#: ../src/appointment.c:1276
 msgid "Appointment addition failed."
 msgstr ""
 
-#: ../src/appointment.c:1226
+#: ../src/appointment.c:1277
 msgid ""
 "Error happened when adding appointment. Look more details from the log file."
 msgstr ""
 
-#: ../src/appointment.c:1236
+#: ../src/appointment.c:1288
 msgid "Appointment update failed."
 msgstr ""
 
-#: ../src/appointment.c:1237
+#: ../src/appointment.c:1289
 msgid ""
 "Look more details from the log file. (Perhaps file was updated external from"
 " Orage?)"
 msgstr ""
 
-#: ../src/appointment.c:1286
+#: ../src/appointment.c:1339
 msgid "This appointment will be permanently removed."
 msgstr "Sẽ xóa cuộc hẹn này."
 
-#: ../src/appointment.c:1288 ../src/event-list.c:970
+#: ../src/appointment.c:1341 ../src/event-list.c:999
 msgid "No, cancel the removal"
 msgstr ""
 
-#: ../src/appointment.c:1289
+#: ../src/appointment.c:1342
 msgid "Yes, remove it"
 msgstr ""
 
-#: ../src/appointment.c:1378 ../src/appointment.c:1393 ../src/day-view.c:457
-#: ../src/event-list.c:1028
+#: ../src/appointment.c:1441 ../src/appointment.c:1456 ../src/day-view.c:471
+#: ../src/event-list.c:1058 ../src/functions.c:144
 msgid "Pick the date"
 msgstr "Chọn ngày"
 
-#: ../src/appointment.c:1380 ../src/appointment.c:1395 ../src/day-view.c:386
-#: ../src/day-view.c:459 ../src/event-list.c:1030 ../src/event-list.c:1180
-#: ../src/tray_icon.c:460
+#: ../src/appointment.c:1443 ../src/appointment.c:1458 ../src/day-view.c:400
+#: ../src/day-view.c:473 ../src/event-list.c:1060 ../src/event-list.c:1214
+#: ../src/functions.c:146 ../src/tray_icon.c:462
 msgid "Today"
 msgstr "Hôm nay"
 
-#: ../src/appointment.c:1803
+#: ../src/appointment.c:1885
 msgid "This appointment does not exist."
 msgstr "Cuộc hẹn này không tồn tại."
 
-#: ../src/appointment.c:1804
+#: ../src/appointment.c:1886
 msgid "It was probably removed, please refresh your screen."
 msgstr ""
 
-#: ../src/appointment.c:2105
+#: ../src/appointment.c:2183 ../src/interface.c:672
+msgid "_Remove"
+msgstr ""
+
+#: ../src/appointment.c:2209
 msgid "Current categories"
 msgstr ""
 
-#: ../src/appointment.c:2120
+#: ../src/appointment.c:2231
 msgid "Add new category with color"
 msgstr ""
 
-#: ../src/appointment.c:2124
+#: ../src/appointment.c:2242
 msgid "Category:"
 msgstr "Mục:"
 
-#: ../src/appointment.c:2155
+#: ../src/appointment.c:2258 ../src/interface.c:1451
+msgid "_Add"
+msgstr ""
+
+#: ../src/appointment.c:2287
 msgid "Colors of categories - Orage"
 msgstr "Màu của các mục - Orage"
 
-#: ../src/appointment.c:2201
+#: ../src/appointment.c:2334
 msgid " *** COPY ***"
 msgstr ""
 
-#: ../src/appointment.c:2466
+#: ../src/appointment.c:2617
 msgid "New appointment - Orage"
 msgstr "Cuộc hẹn mới - Orage"
 
 #. File menu stuff
 #. ********* File menu *********
 #. File menu
-#: ../src/appointment.c:2496 ../src/day-view.c:279 ../src/event-list.c:1081
-#: ../src/interface.c:813 ../src/mainbox.c:297
+#: ../src/appointment.c:2645 ../src/day-view.c:294 ../src/event-list.c:1115
+#: ../src/interface.c:857 ../src/mainbox.c:217
 msgid "_File"
 msgstr "_Tập tin"
 
-#: ../src/appointment.c:2502
+#: ../src/appointment.c:2651
 msgid "Sav_e and close"
 msgstr "Ghi _và đóng"
 
-#: ../src/appointment.c:2515 ../src/event-list.c:1087
+#: ../src/appointment.c:2664 ../src/event-list.c:1121
 msgid "D_uplicate"
 msgstr "_Sao chép"
 
-#: ../src/appointment.c:2702
+#: ../src/appointment.c:2895
 msgid "Save"
 msgstr "Ghi"
 
-#: ../src/appointment.c:2704
+#: ../src/appointment.c:2897
 msgid "Save and close"
 msgstr "Ghi và đóng"
 
-#: ../src/appointment.c:2709
+#: ../src/appointment.c:2902
 msgid "Revert"
 msgstr "Quay lại"
 
-#: ../src/appointment.c:2711 ../src/event-list.c:1171
+#: ../src/appointment.c:2904 ../src/event-list.c:1205
 msgid "Duplicate"
 msgstr "Sao"
 
-#: ../src/appointment.c:2716 ../src/event-list.c:1173
+#: ../src/appointment.c:2909 ../src/event-list.c:1207
 msgid "Delete"
 msgstr "Xóa"
 
-#: ../src/appointment.c:2734
+#: ../src/appointment.c:2927
 msgid "Free"
 msgstr "Rảnh"
 
-#: ../src/appointment.c:2734
+#: ../src/appointment.c:2927
 msgid "Busy"
 msgstr "Bận"
 
-#: ../src/appointment.c:2738
+#: ../src/appointment.c:2931
 msgid "General"
 msgstr "Chung"
 
 #. type
-#: ../src/appointment.c:2744
+#: ../src/appointment.c:2937
 msgid "Type "
 msgstr "Kiểu"
 
-#: ../src/appointment.c:2746 ../src/event-list.c:1226
+#: ../src/appointment.c:2939 ../src/event-list.c:1260
 msgid "Event"
 msgstr "Sự kiện"
 
-#: ../src/appointment.c:2749
+#: ../src/appointment.c:2944
 msgid ""
 "Event that will happen sometime. For example:\n"
 "Meeting or birthday or TV show."
-msgstr "Sự kiện xảy ra vào lúc nào đó. Ví dụ:\nCuộc họp hay ngày sinh nhật hay chương trình TV."
+msgstr ""
+"Sự kiện xảy ra vào lúc nào đó. Ví dụ:\n"
+"Cuộc họp hay ngày sinh nhật hay chương trình TV."
 
-#: ../src/appointment.c:2752 ../src/event-list.c:1274
+#: ../src/appointment.c:2947 ../src/event-list.c:1319
 msgid "Todo"
 msgstr "Làm"
 
-#: ../src/appointment.c:2755
+#: ../src/appointment.c:2952
 msgid ""
 "Something that you should do sometime. For example:\n"
 "Wash your car or test new version of Orage."
-msgstr "Một vài việc mà bạn làm vào lúc nào đó. Ví dụ:\nRửa xe hay thử phiên bản mới của Orage."
+msgstr ""
+"Một vài việc mà bạn làm vào lúc nào đó. Ví dụ:\n"
+"Rửa xe hay thử phiên bản mới của Orage."
 
-#: ../src/appointment.c:2758 ../src/event-list.c:1287
+#: ../src/appointment.c:2955 ../src/event-list.c:1333
 msgid "Journal"
 msgstr "Nhật ký"
 
-#: ../src/appointment.c:2762
+#: ../src/appointment.c:2960
 msgid ""
 "Make a note that something happened. For example:\n"
 "Remark that your mother called or first snow came."
-msgstr "Tạo ghi chú những thứ đã xảy ra. Ví dụ:\nĐánh dấu lại cuộc gọi của mẹ hay ngày đầu tiên tuyết rơi."
+msgstr ""
+"Tạo ghi chú những thứ đã xảy ra. Ví dụ:\n"
+"Đánh dấu lại cuộc gọi của mẹ hay ngày đầu tiên tuyết rơi."
 
 #. title
-#: ../src/appointment.c:2769
+#: ../src/appointment.c:2967
 msgid "Title "
 msgstr "Tên"
 
-#: ../src/appointment.c:2784
+#: ../src/appointment.c:2982
 msgid "All day event"
 msgstr "Tất cả sự kiện"
 
 #. start time
-#: ../src/appointment.c:2790 ../src/appointment.c:3453 ../src/day-view.c:801
+#: ../src/appointment.c:2988 ../src/appointment.c:3707 ../src/day-view.c:841
 msgid "Start"
 msgstr "Bắt đầu"
 
-#: ../src/appointment.c:2810
+#: ../src/appointment.c:3008
 msgid "Set      "
 msgstr "Đặt"
 
-#: ../src/appointment.c:2831
+#: ../src/appointment.c:3031
 msgid "Duration"
 msgstr "Khoảng thời gian"
 
-#: ../src/appointment.c:2835 ../src/appointment.c:3027 ../src/reminder.c:758
+#: ../src/appointment.c:3035 ../src/appointment.c:3242 ../src/reminder.c:676
 msgid "days"
 msgstr "ngày"
 
-#: ../src/appointment.c:2837 ../src/appointment.c:3029 ../src/reminder.c:760
+#: ../src/appointment.c:3037 ../src/appointment.c:3244 ../src/reminder.c:678
 msgid "hours"
 msgstr "giờ"
 
-#: ../src/appointment.c:2839 ../src/appointment.c:3031 ../src/reminder.c:762
+#: ../src/appointment.c:3039 ../src/appointment.c:3246 ../src/reminder.c:680
 msgid "mins"
 msgstr "phút"
 
 #. Availability (only for EVENT)
-#: ../src/appointment.c:2851
+#: ../src/appointment.c:3051
 msgid "Availability"
 msgstr "Khả năng"
 
 #. completed (only for TODO)
-#: ../src/appointment.c:2859 ../src/appointment.c:3459
+#: ../src/appointment.c:3059 ../src/appointment.c:3716
 msgid "Completed"
 msgstr "Đã hoàn thành"
 
-#: ../src/appointment.c:2862
+#: ../src/appointment.c:3062
 msgid "Done"
 msgstr "Xong"
 
 #. categories
-#: ../src/appointment.c:2883
+#: ../src/appointment.c:3087
 msgid "Categories"
 msgstr "Các mục"
 
-#: ../src/appointment.c:2895
+#: ../src/appointment.c:3105
 msgid ""
 "This is special category, which can be used to color this appointment in "
 "list views."
-msgstr "Đây là mục đặc biệt, bạn có thể sử dụng để tô màu cuộc hẹn ở chế độ xem danh sách."
+msgstr ""
+"Đây là mục đặc biệt, bạn có thể sử dụng để tô màu cuộc hẹn ở chế độ xem danh"
+" sách."
 
-#: ../src/appointment.c:2900
+#: ../src/appointment.c:3106
+msgid "_Colour"
+msgstr ""
+
+#: ../src/appointment.c:3111
 msgid "update colors for categories."
 msgstr "cập nhật màu cho các mục."
 
 #. priority
-#: ../src/appointment.c:2906
+#: ../src/appointment.c:3117
 msgid "Priority"
 msgstr "Ưu tiên"
 
-#: ../src/appointment.c:2910
+#: ../src/appointment.c:3121
 msgid ""
 "If you set this 8 or bigger, the appointment is NOT shown on list windows.\n"
 "You can use that feature to unclutter your list windows, but it makes it more difficult to find this appointment.\n"
@@ -808,11 +736,11 @@ msgid ""
 msgstr ""
 
 #. note
-#: ../src/appointment.c:2918
+#: ../src/appointment.c:3130
 msgid "Note"
 msgstr "Ghi chú"
 
-#: ../src/appointment.c:2939
+#: ../src/appointment.c:3151
 msgid ""
 "These shorthand commands take effect immediately:\n"
 "    <D> inserts current date in local date format\n"
@@ -824,32 +752,32 @@ msgid ""
 "(This can be used for example in birthday reminders to tell how old the person will be.)"
 msgstr ""
 
-#: ../src/appointment.c:3010
+#: ../src/appointment.c:3224
 msgid "Before Start"
 msgstr "Sau khi bắt đầu"
 
-#: ../src/appointment.c:3010
+#: ../src/appointment.c:3224
 msgid "Before End"
 msgstr "Sau khi kết thúc"
 
-#: ../src/appointment.c:3011
+#: ../src/appointment.c:3225
 msgid "After Start"
 msgstr "Trước khi bắt đầu"
 
-#: ../src/appointment.c:3011
+#: ../src/appointment.c:3225
 msgid "After End"
 msgstr "Trước khi kết thúc"
 
-#: ../src/appointment.c:3018
+#: ../src/appointment.c:3233
 msgid "Alarm"
 msgstr "Báo thức"
 
 #. **** ALARM TIME ****
-#: ../src/appointment.c:3024
+#: ../src/appointment.c:3239
 msgid "Alarm time"
 msgstr "Thời gian báo thức"
 
-#: ../src/appointment.c:3048
+#: ../src/appointment.c:3264
 msgid ""
 "Often you want to get alarm:\n"
 " 1) before Event start\n"
@@ -857,88 +785,88 @@ msgid ""
 " 3) after Todo start"
 msgstr ""
 
-#: ../src/appointment.c:3053
+#: ../src/appointment.c:3269
 msgid "Persistent alarm"
 msgstr ""
 
-#: ../src/appointment.c:3055
+#: ../src/appointment.c:3274
 msgid ""
 "Select this if you want Orage to remind you even if it has not been active "
 "when the alarm happened."
 msgstr ""
 
 #. **** Audio Alarm ****
-#: ../src/appointment.c:3064
+#: ../src/appointment.c:3283
 msgid "Sound"
 msgstr "Âm thanh"
 
-#: ../src/appointment.c:3068 ../src/appointment.c:3188
+#: ../src/appointment.c:3287 ../src/appointment.c:3420
 msgid "Use"
 msgstr "Dùng"
 
-#: ../src/appointment.c:3070
+#: ../src/appointment.c:3289
 msgid "Select this if you want audible alarm"
 msgstr "Chọn nếu bạn muốn có báo thức bằng âm thanh"
 
-#: ../src/appointment.c:3087
+#: ../src/appointment.c:3315
 msgid "Repeat alarm sound"
 msgstr "Lặp lại âm thanh báo thức"
 
-#: ../src/appointment.c:3103 ../src/appointment.c:3402
+#: ../src/appointment.c:3330 ../src/appointment.c:3639
 msgid "times"
 msgstr "thời gian"
 
-#: ../src/appointment.c:3119
+#: ../src/appointment.c:3346
 msgid "sec interval"
 msgstr ""
 
 #. **** Display Alarm ****
-#: ../src/appointment.c:3129
+#: ../src/appointment.c:3356
 msgid "Visual"
 msgstr ""
 
-#: ../src/appointment.c:3133
+#: ../src/appointment.c:3360
 msgid "Use Orage window"
 msgstr "Sử dụng cửa sổ Orage"
 
-#: ../src/appointment.c:3135
+#: ../src/appointment.c:3362
 msgid "Select this if you want Orage window alarm"
 msgstr "Chọn nếu bạn muốn báo thức bằng cửa sổ Orage"
 
-#: ../src/appointment.c:3147
+#: ../src/appointment.c:3374
 msgid "Use notification"
 msgstr "Sử dụng thông báo"
 
-#: ../src/appointment.c:3149
+#: ../src/appointment.c:3376
 msgid "Select this if you want notification alarm"
 msgstr "Chọn nếu bạn muốn báo thức bằng thông báo"
 
-#: ../src/appointment.c:3155
+#: ../src/appointment.c:3384
 msgid "Set timeout"
 msgstr ""
 
-#: ../src/appointment.c:3157
+#: ../src/appointment.c:3386
 msgid "Select this if you want notification to expire automatically"
 msgstr ""
 
-#: ../src/appointment.c:3168
+#: ../src/appointment.c:3397
 msgid "0 = system default expiration time"
 msgstr ""
 
-#: ../src/appointment.c:3173
+#: ../src/appointment.c:3405
 msgid "seconds"
 msgstr "giây"
 
 #. **** Procedure Alarm ****
-#: ../src/appointment.c:3184
+#: ../src/appointment.c:3416
 msgid "Procedure"
 msgstr ""
 
-#: ../src/appointment.c:3190
+#: ../src/appointment.c:3422
 msgid "Select this if you want procedure or script alarm"
 msgstr ""
 
-#: ../src/appointment.c:3196
+#: ../src/appointment.c:3432
 msgid ""
 "You must enter all escape etc characters yourself.\n"
 "This string is just given to shell to process.\n"
@@ -950,96 +878,105 @@ msgid ""
 "\t<&ET> appointment end time"
 msgstr ""
 
-#: ../src/appointment.c:3208
+#: ../src/appointment.c:3446 ../src/interface.c:1181 ../src/interface.c:1203
+msgid "_Execute"
+msgstr ""
+
+#: ../src/appointment.c:3448
 msgid "Test this alarm by raising it now"
 msgstr ""
 
-#: ../src/appointment.c:3215
+#: ../src/appointment.c:3461
 msgid "<b>Default alarm</b>"
 msgstr "<b>Báo thức mặc định</b>"
 
-#: ../src/appointment.c:3223
+#: ../src/appointment.c:3467 ../src/interface.c:1054 ../src/interface.c:1100
+#: ../src/interface.c:1275 ../src/interface.c:1367
+msgid "_Save"
+msgstr ""
+
+#: ../src/appointment.c:3475
 msgid "Store current settings as default alarm"
 msgstr "Lưu cài đặt hiện tại thành báo thức mặc định"
 
-#: ../src/appointment.c:3228
+#: ../src/appointment.c:3477
+msgid "_Revert"
+msgstr ""
+
+#: ../src/appointment.c:3485
 msgid "Set current settings from default alarm"
 msgstr "Đặt cài đặt hiện tại từ bao thức mặc định"
 
-#: ../src/appointment.c:3290
-msgid "None"
-msgstr "Không"
-
-#: ../src/appointment.c:3290
+#: ../src/appointment.c:3551
 msgid "Daily"
 msgstr "Hàng ngày"
 
-#: ../src/appointment.c:3290
+#: ../src/appointment.c:3551
 msgid "Weekly"
 msgstr "Hàng tuần"
 
-#: ../src/appointment.c:3290
+#: ../src/appointment.c:3551
 msgid "Monthly"
 msgstr "Hàng tháng"
 
-#: ../src/appointment.c:3290
+#: ../src/appointment.c:3551
 msgid "Yearly"
 msgstr "Hàng năm"
 
-#: ../src/appointment.c:3290
+#: ../src/appointment.c:3551
 msgid "Hourly"
 msgstr ""
 
-#: ../src/appointment.c:3292
+#: ../src/appointment.c:3553
 msgid "Mon"
 msgstr "Thứ 2"
 
-#: ../src/appointment.c:3292
+#: ../src/appointment.c:3553
 msgid "Tue"
 msgstr "Thứ 3"
 
-#: ../src/appointment.c:3292
+#: ../src/appointment.c:3553
 msgid "Wed"
 msgstr "Thứ 4"
 
-#: ../src/appointment.c:3292
+#: ../src/appointment.c:3553
 msgid "Thu"
 msgstr "Thứ 5"
 
-#: ../src/appointment.c:3292
+#: ../src/appointment.c:3553
 msgid "Fri"
 msgstr "Thứ 6"
 
-#: ../src/appointment.c:3292
+#: ../src/appointment.c:3553
 msgid "Sat"
 msgstr "Thứ 7"
 
-#: ../src/appointment.c:3292
+#: ../src/appointment.c:3553
 msgid "Sun"
 msgstr "CN"
 
-#: ../src/appointment.c:3297
+#: ../src/appointment.c:3558
 msgid "Recurrence"
 msgstr "Lặp lại"
 
 #. complexity
-#: ../src/appointment.c:3303
+#: ../src/appointment.c:3564
 msgid "Complexity"
 msgstr ""
 
-#: ../src/appointment.c:3306
+#: ../src/appointment.c:3567
 msgid "Basic"
 msgstr "Cơ bản"
 
-#: ../src/appointment.c:3312
+#: ../src/appointment.c:3574
 msgid "Advanced"
 msgstr "Nâng cao"
 
-#: ../src/appointment.c:3316
+#: ../src/appointment.c:3580
 msgid "Use this if you want regular repeating event"
 msgstr ""
 
-#: ../src/appointment.c:3318
+#: ../src/appointment.c:3582
 msgid ""
 "Use this if you need complex times like:\n"
 " Every Saturday and Sunday or \n"
@@ -1047,51 +984,51 @@ msgid ""
 msgstr ""
 
 #. frequency
-#: ../src/appointment.c:3324
+#: ../src/appointment.c:3588
 msgid "Frequency"
 msgstr "Độ thường xuyên"
 
-#: ../src/appointment.c:3330
+#: ../src/appointment.c:3595
 msgid "Each"
 msgstr ""
 
-#: ../src/appointment.c:3337
+#: ../src/appointment.c:3606
 msgid "occurrence"
 msgstr ""
 
-#: ../src/appointment.c:3341
+#: ../src/appointment.c:3613
 msgid ""
 "Limit frequency to certain interval.\n"
 " For example: Every third day:\n"
 " Frequency = Daily and Interval = 3"
 msgstr ""
 
-#: ../src/appointment.c:3386
+#: ../src/appointment.c:3620
 msgid "Limit"
 msgstr "Giới hạn"
 
-#: ../src/appointment.c:3388
+#: ../src/appointment.c:3622
 msgid "Repeat forever"
 msgstr "Lặp lại mãi"
 
-#: ../src/appointment.c:3394
+#: ../src/appointment.c:3629
 msgid "Repeat "
 msgstr "Lặp lại"
 
-#: ../src/appointment.c:3410
+#: ../src/appointment.c:3653
 msgid "Repeat until "
 msgstr "Lặp lại cho đến "
 
 #. weekdays (only for complex settings)
-#: ../src/appointment.c:3423
+#: ../src/appointment.c:3669
 msgid "Weekdays"
 msgstr ""
 
-#: ../src/appointment.c:3435
+#: ../src/appointment.c:3686
 msgid "Which day"
 msgstr ""
 
-#: ../src/appointment.c:3443
+#: ../src/appointment.c:3697
 msgid ""
 "Specify which weekday for monthly and yearly events.\n"
 " For example:\n"
@@ -1102,197 +1039,203 @@ msgid ""
 msgstr ""
 
 #. TODO base (only for TODOs)
-#: ../src/appointment.c:3450
+#: ../src/appointment.c:3704
 msgid "TODO base"
 msgstr ""
 
-#: ../src/appointment.c:3463
+#: ../src/appointment.c:3723
 msgid ""
 "TODO reoccurs regularly starting on start time and repeating after each "
 "interval no matter when it was last completed"
 msgstr ""
 
-#: ../src/appointment.c:3465
+#: ../src/appointment.c:3725
 msgid ""
 "TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
 msgstr ""
 
 #. exceptions
-#: ../src/appointment.c:3471
+#: ../src/appointment.c:3731
 msgid "Exceptions"
 msgstr "Ngoại lệ"
 
-#: ../src/appointment.c:3484
+#: ../src/appointment.c:3757
 msgid ""
 "Add more exception dates by clicking the calendar days below.\n"
 "Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
 "Remove by clicking the data."
 msgstr ""
 
-#: ../src/appointment.c:3489
+#: ../src/appointment.c:3768
 msgid "Add excluded date (-)"
 msgstr "Thêm vào ngày ngoại lệ (-)"
 
-#: ../src/appointment.c:3491
+#: ../src/appointment.c:3770
 msgid "Excluded days are full days where this appointment is not happening"
 msgstr ""
 
-#: ../src/appointment.c:3497
+#: ../src/appointment.c:3777
 msgid "Add included time (+)"
 msgstr ""
 
-#: ../src/appointment.c:3499
+#: ../src/appointment.c:3779
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time"
 msgstr ""
 
 #. calendars showing the action days
-#: ../src/appointment.c:3516
+#: ../src/appointment.c:3798
 msgid "Action dates"
 msgstr "Ngày làm việc"
 
 #. ********* View menu *********
 #. View menu
-#: ../src/day-view.c:289 ../src/event-list.c:1104 ../src/mainbox.c:323
+#: ../src/day-view.c:304 ../src/event-list.c:1138 ../src/mainbox.c:243
 msgid "_View"
 msgstr "_Xem"
 
 #. ********* Go menu   *********
-#: ../src/day-view.c:303 ../src/event-list.c:1123
+#: ../src/day-view.c:318 ../src/event-list.c:1157
 msgid "_Go"
 msgstr "_Chuyển tới"
 
-#: ../src/day-view.c:377 ../src/event-list.c:1169
+#: ../src/day-view.c:391 ../src/event-list.c:1203
 msgid "New"
 msgstr "Mới"
 
-#: ../src/day-view.c:382
+#: ../src/day-view.c:396
 msgid "Back one week"
 msgstr ""
 
-#: ../src/day-view.c:384
+#: ../src/day-view.c:398
 msgid "Back one day"
 msgstr ""
 
-#: ../src/day-view.c:388
+#: ../src/day-view.c:402
 msgid "Forward one day"
 msgstr ""
 
-#: ../src/day-view.c:390
+#: ../src/day-view.c:404
 msgid "Forward one week"
 msgstr ""
 
-#: ../src/day-view.c:395 ../src/event-list.c:1187
+#: ../src/day-view.c:409 ../src/event-list.c:1221
 msgid "Refresh"
 msgstr "Cập nhật"
 
-#: ../src/day-view.c:400 ../src/event-list.c:1194 ../src/interface.c:834
+#: ../src/day-view.c:414 ../src/event-list.c:1228 ../src/interface.c:876
 msgid "Close"
 msgstr "Đóng"
 
-#: ../src/day-view.c:549
+#: ../src/day-view.c:473
+msgid "_OK"
+msgstr ""
+
+#: ../src/day-view.c:596
 msgid "Unknown"
 msgstr "Không rõ"
 
-#: ../src/day-view.c:807
+#: ../src/day-view.c:850
 msgid "       Number of days to show"
 msgstr "Số ngày để hiển thị"
 
-#: ../src/day-view.c:1073
+#: ../src/day-view.c:1081
 msgid "Orage - day view"
 msgstr "Orage - hiển thị theo ngày"
 
 #. date only appointment
-#: ../src/event-list.c:191
+#: ../src/event-list.c:187
 msgid "All day"
 msgstr "Mọi ngày"
 
-#: ../src/event-list.c:596 ../src/event-list.c:1370
+#: ../src/event-list.c:618 ../src/event-list.c:1422
 msgid "Time"
 msgstr "Thời gian"
 
-#: ../src/event-list.c:784
+#: ../src/event-list.c:801
 msgid "No rows have been selected."
 msgstr "Không có hàng nào được chọn."
 
-#: ../src/event-list.c:785
+#: ../src/event-list.c:802
 msgid "Click a row to select it and after that you can copy it."
 msgstr "Nhấn vào một hàng để chọn sau đó bạn có thể sao chép nó."
 
-#: ../src/event-list.c:968
+#: ../src/event-list.c:997
 msgid ""
 "You will permanently remove all\n"
 "selected appointments."
-msgstr "Bạn sẽ xóa bỏ tất cả vĩnh viễn\ncác cuộc hẹn được chọn."
+msgstr ""
+"Bạn sẽ xóa bỏ tất cả vĩnh viễn\n"
+"các cuộc hẹn được chọn."
 
-#: ../src/event-list.c:971
+#: ../src/event-list.c:1000
 msgid "Yes, remove them"
 msgstr ""
 
-#: ../src/event-list.c:1178
+#: ../src/event-list.c:1212
 msgid "Back"
 msgstr "Quay lại"
 
-#: ../src/event-list.c:1182
+#: ../src/event-list.c:1216
 msgid "Forward"
 msgstr "Đi tới"
 
-#: ../src/event-list.c:1189
+#: ../src/event-list.c:1223
 msgid "Find"
 msgstr "Tìm"
 
-#: ../src/event-list.c:1196
+#: ../src/event-list.c:1230
 msgid "Dayview"
 msgstr "Hiển thị ngày"
 
-#: ../src/event-list.c:1231
+#: ../src/event-list.c:1265
 msgid "Extra days to show:"
 msgstr ""
 
-#: ../src/event-list.c:1240
+#: ../src/event-list.c:1279
 msgid "only first repeating"
 msgstr ""
 
-#: ../src/event-list.c:1245
+#: ../src/event-list.c:1287
 msgid ""
 "Check this if you only want to see the first repeating event. By default all are shown.\n"
 "Note that this also shows all urgencies.\n"
 "Note that repeating events may appear earlier in the list as the first occurrence only is listed."
 msgstr ""
 
-#: ../src/event-list.c:1250
+#: ../src/event-list.c:1292
 msgid "also old"
 msgstr ""
 
-#: ../src/event-list.c:1252
+#: ../src/event-list.c:1297
 msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed'."
 msgstr ""
 
-#: ../src/event-list.c:1290
+#: ../src/event-list.c:1336
 msgid "Journal entries starting from:"
 msgstr ""
 
-#: ../src/event-list.c:1310
+#: ../src/event-list.c:1361
 msgid "Search"
 msgstr "Tìm kiếm"
 
-#: ../src/event-list.c:1313
+#: ../src/event-list.c:1364
 msgid "Search text "
 msgstr "Tìm kiếm văn bản"
 
-#: ../src/event-list.c:1378
+#: ../src/event-list.c:1430
 msgid "Flags"
 msgstr "Đánh dấu"
 
-#: ../src/event-list.c:1386
+#: ../src/event-list.c:1438
 msgid "Title"
 msgstr "Tiêu đề"
 
-#: ../src/event-list.c:1412
+#: ../src/event-list.c:1464
 msgid ""
 "Double click line to edit it.\n"
 "\n"
@@ -1308,460 +1251,344 @@ msgid ""
 "\t\tE=Event T=Todo J=Journal"
 msgstr ""
 
-#. remove since it has ended
-#: ../src/ical-archive.c:267
-msgid "\tRecur ended, moving to archive file."
-msgstr ""
-
-#: ../src/ical-archive.c:330
-msgid "Archiving not enabled. Exiting"
-msgstr ""
-
-#: ../src/ical-archive.c:349
-#, c-format
-msgid "Archiving threshold: %d month(s)"
-msgstr ""
-
-#. yy mon day
-#: ../src/ical-archive.c:352
-#, c-format
-msgid "\tArchiving events, which are older than: %04d-%02d-%02d"
-msgstr ""
-
-#: ../src/ical-archive.c:379
-#, c-format
-msgid "Archiving uid: %s"
-msgstr ""
-
-#. VTODO not completed, do not archive
-#: ../src/ical-archive.c:385
-msgid "\tVTODO not complete; not archived"
-msgstr ""
-
-#. it is recurrent event
-#: ../src/ical-archive.c:390
-#, c-format
-msgid "\tRecurring. End year: %04d, month: %02d, day: %02d"
-msgstr ""
-
-#: ../src/ical-archive.c:407
-msgid "Archiving done\n"
-msgstr ""
-
-#. PHASE 1: go through base orage file and remove "repeat" shortcuts
-#: ../src/ical-archive.c:423
-msgid "Starting archive removal."
-msgstr ""
-
-#: ../src/ical-archive.c:424
-msgid "\tPHASE 1: reset recurring appointments"
-msgstr ""
-
-#. PHASE 2: go through archive file and add everything back to base orage.
-#. * After that delete the whole arch file
-#: ../src/ical-archive.c:446
-msgid "\tPHASE 2: return archived appointments"
-msgstr ""
-
-#: ../src/ical-archive.c:472
-msgid "Archive removal done\n"
-msgstr ""
-
-#: ../src/ical-code.c:972
+#: ../src/ical-code.c:790
 msgid "Orage default alarm"
 msgstr "Báo thức mặc định của Orage"
 
-#: ../src/ical-code.c:3179
-msgid "Created alarm list for main Orage file:"
-msgstr ""
-
-#: ../src/ical-code.c:3181
-#, c-format
-msgid "Created alarm list for foreign file: %s (%s)"
-msgstr ""
-
-#: ../src/ical-code.c:3183
-#, c-format
-msgid "\tAdded %d alarms. Processed %d events."
-msgstr ""
-
-#: ../src/ical-code.c:3185
-#, c-format
-msgid ""
-"\tFound %d alarms of which %d are active. (Searched %d recurring alarms.)"
-msgstr ""
-
-#: ../src/ical-expimp.c:123
-msgid "Starting import file preprocessing"
-msgstr ""
-
-#: ../src/ical-expimp.c:158
-msgid "... Patched DCREATED to be CREATED."
-msgstr ""
-
-#: ../src/ical-expimp.c:197
-msgid "... Patched timezone to Orage format."
-msgstr ""
-
-#: ../src/ical-expimp.c:206
-msgid "Import file preprocessing done"
-msgstr ""
-
-#: ../src/interface.c:89 ../src/interface.c:104
-#, c-format
-msgid "Found external update on file %s."
-msgstr ""
-
-#: ../src/interface.c:112
-msgid "Refreshing alarms and calendar due to external file update."
-msgstr ""
-
-#: ../src/interface.c:271
+#: ../src/interface.c:269
 msgid "Calendar files"
 msgstr "Tập tin lịch"
 
-#: ../src/interface.c:631
+#: ../src/interface.c:642
 msgid "Current foreign files"
 msgstr "Các tệp tin ngoại lai hiện tại"
 
-#: ../src/interface.c:648
+#: ../src/interface.c:665
 msgid "READ ONLY"
 msgstr "CHỈ ĐỌC"
 
-#: ../src/interface.c:650
+#: ../src/interface.c:667
 msgid "READ WRITE"
 msgstr "CHỈ GHI"
 
-#: ../src/interface.c:669
+#: ../src/interface.c:692
 msgid "***** No foreign files *****"
 msgstr "***** Không có tệp tin ngoại lai *****"
 
-#: ../src/interface.c:682
+#: ../src/interface.c:706
 msgid "Foreign file add failed"
 msgstr ""
 
-#: ../src/interface.c:689
+#: ../src/interface.c:715
 msgid "Orage can only handle 10 foreign files. Limit reached."
 msgstr ""
 
-#: ../src/interface.c:697
+#: ../src/interface.c:725
 msgid "Filename is empty."
 msgstr ""
 
-#: ../src/interface.c:705
+#: ../src/interface.c:735
 msgid "Name is empty."
 msgstr ""
 
-#: ../src/interface.c:713
+#: ../src/interface.c:746
 msgid "File does not exist."
 msgstr ""
 
-#: ../src/interface.c:722
+#: ../src/interface.c:758
 msgid "Same filename already exists in Orage."
 msgstr ""
 
-#: ../src/interface.c:730
+#: ../src/interface.c:769
 msgid "Same name already exists in Orage."
 msgstr ""
 
-#: ../src/interface.c:965
+#: ../src/interface.c:1022
 msgid "Import/export"
 msgstr "Nhập/xuất"
 
-#: ../src/interface.c:972
+#: ../src/interface.c:1029
 msgid "Import"
 msgstr "Nhập"
 
-#: ../src/interface.c:977
+#: ../src/interface.c:1037
 msgid "Read from file:"
 msgstr "Đọc tệp tin:"
 
-#: ../src/interface.c:994
+#: ../src/interface.c:1067
 msgid ""
 "Separate filenames with comma(,).\n"
 " NOTE: comma is not valid character in filenames for Orage."
-msgstr "Tách tên tệp tin với dấu phẩy(,).\nChú ý: dấu phẩy không phải là kí tự phù hợp cho tên tệp tin trong Orage."
+msgstr ""
+"Tách tên tệp tin với dấu phẩy(,).\n"
+"Chú ý: dấu phẩy không phải là kí tự phù hợp cho tên tệp tin trong Orage."
 
-#: ../src/interface.c:999
+#: ../src/interface.c:1072
 msgid "Export"
 msgstr "Xuất"
 
-#: ../src/interface.c:1004
+#: ../src/interface.c:1080
 msgid "Write to file:"
 msgstr "Ghi vào tệp:"
 
-#: ../src/interface.c:1025 ../src/interface.c:1037
+#: ../src/interface.c:1115 ../src/interface.c:1133
 msgid "Select"
 msgstr "Chọn"
 
-#: ../src/interface.c:1028
+#: ../src/interface.c:1120
 msgid "All appointments"
 msgstr "Mọi cuộc hẹn"
 
-#: ../src/interface.c:1041
-msgid "Named appointments: "
-msgstr "Cuộc hẹn được đặt tên:"
+#: ../src/interface.c:1139
+msgid "Named appointments:"
+msgstr ""
 
-#: ../src/interface.c:1053
+#: ../src/interface.c:1158
 msgid ""
 "Note that only main file appointments are read.\n"
 "Archived and Foreign events are not exported."
 msgstr ""
 
-#: ../src/interface.c:1056
+#: ../src/interface.c:1161
 msgid ""
 "Note that only main file appointments are read.\n"
 "Foreign events are not exported."
 msgstr ""
 
-#: ../src/interface.c:1059
+#: ../src/interface.c:1164
 msgid "You can easily drag these from event-list window."
 msgstr ""
 
-#: ../src/interface.c:1061
+#: ../src/interface.c:1166
 msgid "Orage appointment UIDs separated by commas."
 msgstr ""
 
-#: ../src/interface.c:1067
+#: ../src/interface.c:1172
 msgid "Archive"
 msgstr ""
 
-#: ../src/interface.c:1075
+#: ../src/interface.c:1187
 #, c-format
 msgid "Archive now (threshold: %d months)"
 msgstr ""
 
-#: ../src/interface.c:1085
+#: ../src/interface.c:1198
 msgid "You can change archive threshold in parameters"
 msgstr ""
 
-#: ../src/interface.c:1092
+#: ../src/interface.c:1210
 msgid "Revert archive now"
 msgstr ""
 
-#: ../src/interface.c:1098
+#: ../src/interface.c:1217
 msgid ""
 "Return all archived events into main orage file and remove arch file.\n"
 "This is useful for example when doing export and moving orage\n"
 "appointments to another system."
 msgstr ""
 
-#: ../src/interface.c:1109
+#: ../src/interface.c:1229
 msgid "Orage files"
 msgstr "Tệp tin Orage"
 
-#: ../src/interface.c:1116
+#: ../src/interface.c:1236
 msgid "Orage main calendar file"
 msgstr "Tệp tin lịch chính Orage"
 
-#: ../src/interface.c:1121 ../src/interface.c:1186
+#: ../src/interface.c:1245 ../src/interface.c:1338
 msgid "Current file:"
 msgstr ""
 
-#: ../src/interface.c:1128 ../src/interface.c:1193
+#: ../src/interface.c:1257 ../src/interface.c:1350
 msgid "New file:"
 msgstr ""
 
-#: ../src/interface.c:1144 ../src/interface.c:1210
+#: ../src/interface.c:1285 ../src/interface.c:1377
 msgid "Action options:"
 msgstr ""
 
-#: ../src/interface.c:1147 ../src/interface.c:1213
+#: ../src/interface.c:1289 ../src/interface.c:1381
 msgid "Rename"
 msgstr "Sửa tên"
 
-#: ../src/interface.c:1151
+#: ../src/interface.c:1295
 msgid ""
 "Orage internal file rename only.\n"
 "Does not touch external filesystem at all.\n"
 "New file must exist."
 msgstr ""
 
-#: ../src/interface.c:1155 ../src/interface.c:1218
+#: ../src/interface.c:1299 ../src/interface.c:1388
 msgid "Copy"
 msgstr "Sao chép"
 
-#: ../src/interface.c:1159
+#: ../src/interface.c:1305
 msgid "Current file is copied and stays unmodified in the old place."
 msgstr ""
 
-#: ../src/interface.c:1163 ../src/interface.c:1223
+#: ../src/interface.c:1309 ../src/interface.c:1395
 msgid "Move"
 msgstr "Di chuyển"
 
-#: ../src/interface.c:1167
+#: ../src/interface.c:1315
 msgid "Current file is moved and vanishes from the old place."
 msgstr ""
 
-#: ../src/interface.c:1181
+#: ../src/interface.c:1329
 msgid "Archive file"
 msgstr "Tập tin lưu"
 
-#: ../src/interface.c:1245
+#: ../src/interface.c:1420
 msgid "Foreign files"
 msgstr "Tệp tin ngoại lai"
 
-#: ../src/interface.c:1252
+#: ../src/interface.c:1427
 msgid "Add new foreign file"
 msgstr "Thêm tệp tin ngoại lai"
 
-#: ../src/interface.c:1257
+#: ../src/interface.c:1435
 msgid "Foreign file:"
 msgstr "Tệp tin ngoại lai:"
 
-#. label = gtk_label_new(_("Options:"));
-#. gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 5);
-#: ../src/interface.c:1279
+#: ../src/interface.c:1466
 msgid "Visible name:"
 msgstr ""
 
-#: ../src/interface.c:1285
+#: ../src/interface.c:1476
 msgid "Read only"
 msgstr "Chỉ đọc"
 
-#: ../src/interface.c:1292
+#: ../src/interface.c:1486
 msgid ""
 "Set this if you want to make sure that this file is never modified by Orage.\n"
 "Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
 msgstr ""
 
-#: ../src/interface.c:1294
+#: ../src/interface.c:1488
 msgid "This internal name is displayed to user instead of file name."
 msgstr ""
 
-#: ../src/interface.c:1308
+#: ../src/interface.c:1502
 msgid "Exchange data - Orage"
 msgstr ""
 
-#: ../src/main.c:275
+#: ../src/main.c:273
 #, c-format
 msgid ""
 "\tThis is %s version %s\n"
 "\n"
 msgstr ""
 
-#: ../src/main.c:277
+#: ../src/main.c:275
 #, c-format
 msgid "\tReleased under the terms of the GNU General Public License.\n"
 msgstr "Phát hành dưới những điều khoản của Giấy phép công cộng phổ biến GNU.\n"
 
-#: ../src/main.c:278
+#: ../src/main.c:276
 #, c-format
 msgid "\tCompiled against GTK+-%d.%d.%d, "
 msgstr "Biên dịch bằng GTK+-%d.%d.%d,"
 
-#: ../src/main.c:280
+#: ../src/main.c:278
 #, c-format
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "sử dụng GTK+-%d.%d.%d.\n"
 
-#: ../src/main.c:283
+#: ../src/main.c:281
 #, c-format
 msgid "\tUsing DBUS for import.\n"
 msgstr "Sử dụng DBUS để nhập.\n"
 
-#: ../src/main.c:285
+#: ../src/main.c:283
 #, c-format
 msgid "\tNot using DBUS. Import works only partially.\n"
 msgstr "Không sử dụng DBUS. Nhập chỉ làm việc một phần.\n"
 
-#: ../src/main.c:288
+#: ../src/main.c:286
 #, c-format
 msgid "\tUsing libnotify.\n"
 msgstr "Sử dụng libnotify.\n"
 
-#: ../src/main.c:290
+#: ../src/main.c:288
 #, c-format
 msgid "\tNot using libnotify.\n"
 msgstr "Không sử dụng libnotify.\n"
 
-#: ../src/main.c:293
+#: ../src/main.c:291
 #, c-format
 msgid "\tUsing automatic archiving.\n"
 msgstr ""
 
-#: ../src/main.c:295
+#: ../src/main.c:293
 #, c-format
 msgid "\tNot using archiving.\n"
 msgstr ""
 
-#: ../src/main.c:298
+#: ../src/main.c:296
 #, c-format
-msgid "\tUsing operating system package libical.\n"
+msgid "\tUsing libxfce4ui: yes\n"
 msgstr ""
 
-#: ../src/main.c:300
+#: ../src/main.c:298
 #, c-format
-msgid "\tUsing Orage local version of libical.\n"
-msgstr "Sử dụng phiên bản cục bộ của libical.\n"
+msgid "\tUsing libxfce4ui: no\n"
+msgstr ""
 
-#: ../src/main.c:313
-#, c-format
+#: ../src/main.c:311
 msgid ""
 "Usage: orage [options] [files]\n"
 "\n"
 msgstr "Cách sử dụng: orage [options] [files]\n"
 
-#: ../src/main.c:314
-#, c-format
+#: ../src/main.c:312
 msgid "Options:\n"
 msgstr "Tùy chọn:\n"
 
-#: ../src/main.c:315
-#, c-format
+#: ../src/main.c:313
 msgid "--version (-v) \t\tshow version of orage\n"
 msgstr ""
 
-#: ../src/main.c:316
-#, c-format
+#: ../src/main.c:314
 msgid "--help (-h) \t\tprint this text\n"
 msgstr ""
 
-#: ../src/main.c:317
-#, c-format
+#: ../src/main.c:315
 msgid "--preferences (-p) \tshow preferences form\n"
 msgstr ""
 
-#: ../src/main.c:318
-#, c-format
+#: ../src/main.c:316
 msgid "--toggle (-t) \t\tmake orage visible/unvisible\n"
 msgstr ""
 
-#: ../src/main.c:319
-#, c-format
+#: ../src/main.c:317
 msgid "--add-foreign (-a) file [RW] [name] \tadd a foreign file\n"
 msgstr ""
 
-#: ../src/main.c:320
-#, c-format
+#: ../src/main.c:318
 msgid "--remove-foreign (-r) file \tremove a foreign file\n"
 msgstr ""
 
-#: ../src/main.c:321
-#, c-format
+#: ../src/main.c:319
 msgid ""
 "--export (-e) file [appointment...] \texport appointments from Orage to "
 "file\n"
 msgstr ""
 
-#: ../src/main.c:323
-#, c-format
+#: ../src/main.c:321
 msgid "files=ical files to load into orage\n"
 msgstr ""
 
-#: ../src/main.c:325
-#, c-format
+#: ../src/main.c:323
 msgid "\tdbus not included in orage. \n"
 msgstr ""
 
-#: ../src/main.c:326
-#, c-format
+#: ../src/main.c:324
 msgid ""
 "\twithout dbus [files] and foreign file options(-a & -r) can only be used "
 "when starting orage \n"
 msgstr ""
 
-#: ../src/main.c:535
+#: ../src/main.c:537
 #, c-format
 msgid ""
 "\n"
@@ -1769,46 +1596,47 @@ msgid ""
 "\n"
 msgstr ""
 
-#: ../src/mainbox.c:305
+#: ../src/mainbox.c:225
 msgid "_Exchange data"
 msgstr ""
 
 #. Edit menu
-#: ../src/mainbox.c:316
+#: ../src/mainbox.c:236
 msgid "_Edit"
 msgstr "Th_ay đổi"
 
-#: ../src/mainbox.c:326
+#: ../src/mainbox.c:246
 msgid "View selected _date"
 msgstr "Xem _ngày đã chọn"
 
-#: ../src/mainbox.c:329
+#: ../src/mainbox.c:249
 msgid "View selected _week"
 msgstr "Hiển thị t_uần được chọn"
 
-#: ../src/mainbox.c:335
+#: ../src/mainbox.c:255
 msgid "Select _Today"
 msgstr "Chọn hôm na_y"
 
-#: ../src/mainbox.c:341
+#: ../src/mainbox.c:261
 msgid "Show _Globaltime"
 msgstr "Hiện _Globaltime"
 
 #. Help menu
-#: ../src/mainbox.c:345
+#. the rest
+#: ../src/mainbox.c:265 ../src/parameters.c:1197
 msgid "_Help"
 msgstr "_Giúp đỡ"
 
-#: ../src/mainbox.c:414 ../src/reminder.c:1138
+#: ../src/mainbox.c:328 ../src/reminder.c:1027
 msgid "No title defined"
 msgstr ""
 
-#: ../src/mainbox.c:471
+#: ../src/mainbox.c:386
 #, c-format
 msgid " Location: %s\n"
 msgstr ""
 
-#: ../src/mainbox.c:481
+#: ../src/mainbox.c:396
 #, c-format
 msgid ""
 "\n"
@@ -1816,11 +1644,11 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../src/mainbox.c:489
+#: ../src/mainbox.c:404
 msgid "Never"
 msgstr "Không bao giờ"
 
-#: ../src/mainbox.c:495
+#: ../src/mainbox.c:412
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1829,7 +1657,7 @@ msgid ""
 " Done:\t%s%s"
 msgstr ""
 
-#: ../src/mainbox.c:503
+#: ../src/mainbox.c:419
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1837,292 +1665,275 @@ msgid ""
 " End:\t%s%s"
 msgstr ""
 
-#: ../src/mainbox.c:613
+#: ../src/mainbox.c:498
 msgid "<b>To do:</b>"
 msgstr ""
 
-#: ../src/mainbox.c:649
+#: ../src/mainbox.c:535
 #, c-format
 msgid "<b>Events for %s:</b>"
 msgstr ""
 
-#: ../src/mainbox.c:660
+#: ../src/mainbox.c:545
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr ""
 
-#: ../src/parameters.c:492
+#: ../src/parameters.c:542
 msgid "Main settings"
 msgstr "Cài đặt chính"
 
-#: ../src/parameters.c:498
+#: ../src/parameters.c:548
 msgid "Timezone"
 msgstr "Múi giờ"
 
-#: ../src/parameters.c:513
+#: ../src/parameters.c:569
 msgid "You should always define your local timezone."
 msgstr "Bạn nên thường xuyên xác định múi giờ địa phương."
 
-#: ../src/parameters.c:521
+#: ../src/parameters.c:577
 msgid "Archive threshold (months)"
 msgstr ""
 
-#: ../src/parameters.c:531
+#: ../src/parameters.c:590
 msgid "(0 = no archiving)"
 msgstr ""
 
-#: ../src/parameters.c:534
+#: ../src/parameters.c:594
 msgid "Archiving is used to save time and space when handling events."
 msgstr ""
 
-#: ../src/parameters.c:542
+#: ../src/parameters.c:602
 msgid "Sound command"
 msgstr "Lệnh âm thanh"
 
-#: ../src/parameters.c:557
+#: ../src/parameters.c:630
 msgid "This command is given to shell to make sound in alarms."
 msgstr ""
 
-#: ../src/parameters.c:596
+#: ../src/parameters.c:661
 msgid "Calendar window"
 msgstr ""
 
-#: ../src/parameters.c:603
+#: ../src/parameters.c:668
 msgid "Calendar visual details"
 msgstr ""
 
-#: ../src/parameters.c:609
+#: ../src/parameters.c:675
 msgid "Show borders"
 msgstr ""
 
-#: ../src/parameters.c:614
+#: ../src/parameters.c:680
 msgid "Show menu"
 msgstr "Hiện thực đơn"
 
-#: ../src/parameters.c:622
+#: ../src/parameters.c:688
 msgid "Show day names"
 msgstr "Hiện tên ngày"
 
-#: ../src/parameters.c:627
+#: ../src/parameters.c:693
 msgid "Show week numbers"
 msgstr "Đáng số tuần"
 
-#: ../src/parameters.c:635
+#: ../src/parameters.c:701
 msgid "Show month and year"
 msgstr "Hiện tháng và năm"
 
-#: ../src/parameters.c:655
+#: ../src/parameters.c:721
 msgid "Calendar info boxes"
 msgstr ""
 
-#: ../src/parameters.c:660
+#: ../src/parameters.c:728
 msgid "Show todo list"
 msgstr "Hiện danh sách việc để làm"
 
-#: ../src/parameters.c:667
+#: ../src/parameters.c:735
 msgid "Number of days to show in event window"
 msgstr "Số ngày để hiện trên cửa sổ  sự kiện"
 
-#: ../src/parameters.c:673
+#: ../src/parameters.c:743
 msgid "0 = do not show event list at all"
 msgstr ""
 
-#: ../src/parameters.c:686
+#: ../src/parameters.c:757
 msgid "Calendar visibility"
 msgstr ""
 
-#: ../src/parameters.c:691
+#: ../src/parameters.c:763
 msgid "Show on all desktops"
 msgstr "Hiện trên tất cả bàn làm việc"
 
-#: ../src/parameters.c:696
+#: ../src/parameters.c:768
 msgid "Keep on top"
 msgstr "Giữ ở trên"
 
-#: ../src/parameters.c:704
+#: ../src/parameters.c:776
 msgid "Show in taskbar"
 msgstr "Hiện thị trên thanh công cụ"
 
-#: ../src/parameters.c:709
+#: ../src/parameters.c:781
 msgid "Show in pager"
 msgstr "Hiện trong chuyển trang"
 
-#: ../src/parameters.c:717
+#: ../src/parameters.c:789
 msgid "Show in systray"
 msgstr "Hiện thị trong khay"
 
-#: ../src/parameters.c:738
+#: ../src/parameters.c:811
 msgid "Calendar start"
 msgstr "Khởi động lịch"
 
-#: ../src/parameters.c:743
+#: ../src/parameters.c:817
 msgid "Show"
 msgstr "Hiện"
 
-#: ../src/parameters.c:755
+#: ../src/parameters.c:833
 msgid "Hide"
 msgstr "Ẩn"
 
-#: ../src/parameters.c:767
+#: ../src/parameters.c:850
 msgid "Minimized"
 msgstr "Thu nhỏ"
 
-#: ../src/parameters.c:787
+#: ../src/parameters.c:876
 msgid "On calendar window open"
 msgstr ""
 
-#: ../src/parameters.c:792
+#: ../src/parameters.c:882
 msgid "Select today's date"
 msgstr ""
 
-#: ../src/parameters.c:805
+#: ../src/parameters.c:899
 msgid "Select previously selected date"
 msgstr ""
 
-#: ../src/parameters.c:823
+#: ../src/parameters.c:923
 msgid "Calendar day double click shows"
 msgstr ""
 
-#: ../src/parameters.c:828
+#: ../src/parameters.c:929
 msgid "Days view"
 msgstr "Hiện theo ngày"
 
-#: ../src/parameters.c:840
+#: ../src/parameters.c:945
 msgid "Event list"
 msgstr "Danh sách sự kiện"
 
-#: ../src/parameters.c:862
+#: ../src/parameters.c:978
 msgid "Extra settings"
 msgstr "Cài đặt thêm"
 
-#: ../src/parameters.c:869
+#: ../src/parameters.c:985
 msgid "Event list window"
 msgstr ""
 
-#: ../src/parameters.c:874
+#: ../src/parameters.c:992
 msgid "Number of extra days to show in event list"
 msgstr ""
 
-#: ../src/parameters.c:883
+#: ../src/parameters.c:1002
 msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
 msgstr ""
 
-#: ../src/parameters.c:891
+#: ../src/parameters.c:1010
 msgid "Show only first repeating event"
 msgstr ""
 
-#: ../src/parameters.c:907
+#: ../src/parameters.c:1027
 msgid "Day view window default first day"
 msgstr ""
 
-#: ../src/parameters.c:912
+#: ../src/parameters.c:1034
 msgid "First day of week"
 msgstr ""
 
-#: ../src/parameters.c:925
+#: ../src/parameters.c:1051
 msgid "Selected day"
 msgstr ""
 
-#: ../src/parameters.c:943
-msgid "Use dynamic tray icon"
-msgstr "Sử dụng biểu tượng thực trên khay hệ thống"
-
-#: ../src/parameters.c:948
-msgid "Use dynamic icon"
-msgstr "Sử dụng biểu tượng thực"
-
-#: ../src/parameters.c:954
-msgid "Dynamic icon shows current month and day of the month."
-msgstr "Biểu tượng thực sẽ hiển thị ngày và tháng hiện tại."
-
-#: ../src/parameters.c:962 ../src/parameters.c:967
+#: ../src/parameters.c:1074 ../src/parameters.c:1081
 msgid "Use wakeup timer"
 msgstr ""
 
-#: ../src/parameters.c:973
+#: ../src/parameters.c:1089
 msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
 msgstr ""
 
-#: ../src/parameters.c:982
+#: ../src/parameters.c:1099
 msgid "Foreign file default visual alarm"
 msgstr ""
 
-#: ../src/parameters.c:987
+#: ../src/parameters.c:1106
 msgid "Orage window"
 msgstr ""
 
-#: ../src/parameters.c:1000
+#: ../src/parameters.c:1123
 msgid "Notify notification"
 msgstr ""
 
-#: ../src/parameters.c:1018
+#: ../src/parameters.c:1146
 msgid "Always quit when asked to close"
 msgstr ""
 
-#: ../src/parameters.c:1023
+#: ../src/parameters.c:1153
 msgid "Always quit"
 msgstr ""
 
-#: ../src/parameters.c:1029
+#: ../src/parameters.c:1160
 msgid ""
 "By default Orage stays open in the background when asked to close. This "
 "option changes Orage to quit and never stay in background when it is asked "
 "to close."
 msgstr ""
 
-#: ../src/parameters.c:1045
+#: ../src/parameters.c:1176
 msgid "Orage Preferences"
 msgstr "Tuỳ thích"
 
-#: ../src/parameters.c:1157
-msgid "First Orage start. Searching default timezone."
-msgstr ""
+#: ../src/parameters.c:1200 ../src/reminder.c:712
+msgid "_Close"
+msgstr "Đóng lại"
 
-#: ../src/parameters.c:1176
-#, c-format
-msgid "Default timezone set to %s."
-msgstr "Múi giờ mặc định đặt về %s."
-
-#: ../src/parameters.c:1179
-msgid "Default timezone not found, please, set it manually."
-msgstr "Không tìm thấy múi giờ mặc định, hãy đặt nó bằng tay."
-
-#: ../src/reminder.c:562
+#: ../src/reminder.c:490
 msgid "Reminder "
 msgstr "Nhắc "
 
-#: ../src/reminder.c:591
+#: ../src/reminder.c:519
 msgid "Open"
 msgstr "Mở"
 
-#: ../src/reminder.c:719
+#: ../src/reminder.c:637
 msgid "Reminder - Orage"
 msgstr "Nhắc nhở - Orage"
 
-#: ../src/reminder.c:803
+#: ../src/reminder.c:720
+msgid "_Stop"
+msgstr ""
+
+#: ../src/reminder.c:728
 msgid "Postpone"
 msgstr ""
 
-#: ../src/reminder.c:805
+#: ../src/reminder.c:730
 msgid "Remind me again after the specified time"
 msgstr ""
 
-#: ../src/reminder.c:1091
+#: ../src/reminder.c:995
 msgid "Next active alarms:"
 msgstr "Báo thức đang hoạt động tiếp theo:"
 
-#: ../src/reminder.c:1145
+#: ../src/reminder.c:1034
 #, c-format
 msgid ""
 "\n"
 "%02d d %02d h %02d min to: %s"
 msgstr ""
 
-#: ../src/reminder.c:1154
+#: ../src/reminder.c:1046
 #, c-format
 msgid ""
 "\n"
@@ -4377,39 +4188,50 @@ msgstr ""
 msgid "New appointment"
 msgstr "Cuộc hẹn mới"
 
-#: ../src/tray_icon.c:485
-msgid "About Orage"
-msgstr "Về Orage"
+#: ../src/tray_icon.c:476
+msgid "Preferences"
+msgstr "Tuỳ chỉnh"
 
-#: ../panel-plugin/xfce4-orageclock-plugin.desktop.in.in.h:1
-msgid "Orage Panel Clock"
+#: ../src/tray_icon.c:483
+msgid "Quit"
 msgstr ""
 
-#: ../panel-plugin/xfce4-orageclock-plugin.desktop.in.in.h:2
-msgid "Show time and date?"
-msgstr ""
-
-#: ../plugin/xfce-xfcalendar-settings.desktop.in.h:1
+#: ../plugin/org.xfce.orage-settings.desktop.in.h:1
 msgid "Orage preferences"
 msgstr ""
 
-#: ../plugin/xfce-xfcalendar-settings.desktop.in.h:2
+#: ../plugin/org.xfce.orage-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Calendar Application (Orage)"
 msgstr ""
 
-#: ../plugin/xfce-xfcalendar-settings.desktop.in.h:3
+#: ../plugin/org.xfce.orage-settings.desktop.in.h:3
 msgid "Orage Calendar Preferences"
 msgstr ""
 
-#: ../plugin/xfce-xfcalendar-settings.desktop.in.h:4
-#: ../xfcalendar.desktop.in.h:3
+#: ../plugin/org.xfce.orage-settings.desktop.in.h:4
+#: ../org.xfce.orage.desktop.in.h:3
 msgid "Calendar"
 msgstr "Lịch"
 
-#: ../xfcalendar.desktop.in.h:1
+#: ../org.xfce.orage.appdata.xml.in.h:3
+msgid ""
+"Orage aims to be a fast and easy to use graphical calendar. It uses portable"
+" ical format and includes common calendar features like repeating "
+"appointments and multiple alarming possibilities."
+msgstr ""
+
+#: ../org.xfce.orage.appdata.xml.in.h:4
+msgid ""
+"Orage does not have group calendar features, but can only be used for single"
+" user. It takes a list of files for ical files that should be imported. "
+"Contents of those files are read and converted into Orage, but those files "
+"are left untouched."
+msgstr ""
+
+#: ../org.xfce.orage.desktop.in.h:1
 msgid "Orage Calendar"
 msgstr ""
 
-#: ../xfcalendar.desktop.in.h:2
+#: ../org.xfce.orage.desktop.in.h:2
 msgid "Desktop calendar"
 msgstr "Lịch màn hình"
