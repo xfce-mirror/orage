@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-29 00:49+0200\n"
+"POT-Creation-Date: 2022-09-03 00:49+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2022\n"
 "Language-Team: Japanese (https://www.transifex.com/xfce/teams/16840/ja/)\n"
@@ -150,10 +150,9 @@ msgid "Timezone of the clock:"
 msgstr "時計のタイムゾーン:"
 
 #: ../globaltime/gt_prefs.c:683 ../globaltime/gt_prefs.c:1189
-#: ../panel-plugin/oc_config.c:374 ../src/appointment.c:3302
-#: ../src/interface.c:1047 ../src/interface.c:1093 ../src/interface.c:1269
-#: ../src/interface.c:1361 ../src/interface.c:1444 ../src/parameters.c:397
-#: ../src/parameters.c:620 ../src/reminder.c:705
+#: ../src/appointment.c:3302 ../src/interface.c:1047 ../src/interface.c:1093
+#: ../src/interface.c:1269 ../src/interface.c:1361 ../src/interface.c:1444
+#: ../src/parameters.c:397 ../src/parameters.c:620 ../src/reminder.c:705
 msgid "_Open"
 msgstr "開く(_O)"
 
@@ -317,69 +316,56 @@ msgid "Local timezone:"
 msgstr "現地のタイムゾーン:"
 
 #: ../globaltime/timezone_selection.c:93
-#: ../panel-plugin/timezone_selection.c:92
 msgid " Other"
 msgstr " その他"
 
-#: ../globaltime/timezone_selection.c:145
-#: ../panel-plugin/timezone_selection.c:144 ../src/timezone_selection.c:148
+#: ../globaltime/timezone_selection.c:145 ../src/timezone_selection.c:148
 #, c-format
 msgid "%d hour %d mins"
 msgstr "%d 時間 %d 分"
 
-#: ../globaltime/timezone_selection.c:148
-#: ../panel-plugin/timezone_selection.c:147 ../src/timezone_selection.c:151
+#: ../globaltime/timezone_selection.c:148 ../src/timezone_selection.c:151
 #, c-format
 msgid "%d hour"
 msgstr "%d 時間"
 
-#: ../globaltime/timezone_selection.c:150
-#: ../panel-plugin/timezone_selection.c:149 ../src/timezone_selection.c:153
+#: ../globaltime/timezone_selection.c:150 ../src/timezone_selection.c:153
 #, c-format
 msgid "%d mins"
 msgstr "%d 分"
 
-#: ../globaltime/timezone_selection.c:156
-#: ../panel-plugin/timezone_selection.c:155 ../src/timezone_selection.c:159
+#: ../globaltime/timezone_selection.c:156 ../src/timezone_selection.c:159
 msgid "backward"
 msgstr "-"
 
-#: ../globaltime/timezone_selection.c:159
-#: ../panel-plugin/timezone_selection.c:158 ../src/timezone_selection.c:162
+#: ../globaltime/timezone_selection.c:159 ../src/timezone_selection.c:162
 msgid "forward"
 msgstr "+"
 
-#: ../globaltime/timezone_selection.c:183
-#: ../panel-plugin/timezone_selection.c:182 ../src/timezone_selection.c:186
+#: ../globaltime/timezone_selection.c:183 ../src/timezone_selection.c:186
 msgid "not changed"
 msgstr "変更なし"
 
-#: ../globaltime/timezone_selection.c:184
-#: ../panel-plugin/timezone_selection.c:183 ../src/timezone_selection.c:187
+#: ../globaltime/timezone_selection.c:184 ../src/timezone_selection.c:187
 msgid "not changing"
 msgstr "変更なし"
 
 #. location
 #: ../globaltime/timezone_selection.c:234
-#: ../globaltime/timezone_selection.c:239
-#: ../panel-plugin/timezone_selection.c:233
-#: ../panel-plugin/timezone_selection.c:238 ../src/appointment.c:2974
+#: ../globaltime/timezone_selection.c:239 ../src/appointment.c:2974
 #: ../src/timezone_selection.c:237 ../src/timezone_selection.c:242
 msgid "Location"
 msgstr "場所"
 
-#: ../globaltime/timezone_selection.c:245
-#: ../panel-plugin/timezone_selection.c:244 ../src/timezone_selection.c:248
+#: ../globaltime/timezone_selection.c:245 ../src/timezone_selection.c:248
 msgid "GMT Offset"
 msgstr "GMT との時差"
 
-#: ../globaltime/timezone_selection.c:251
-#: ../panel-plugin/timezone_selection.c:250 ../src/timezone_selection.c:254
+#: ../globaltime/timezone_selection.c:251 ../src/timezone_selection.c:254
 msgid "Previous/Next Change"
 msgstr "前回/次回の変更"
 
-#: ../globaltime/timezone_selection.c:256
-#: ../panel-plugin/timezone_selection.c:255 ../src/timezone_selection.c:259
+#: ../globaltime/timezone_selection.c:256 ../src/timezone_selection.c:259
 msgid "Country"
 msgstr "国"
 
@@ -389,27 +375,20 @@ msgstr "国"
 #. This test is ugly, but it is not worth an extra parameter.
 #. this is normal appointment
 #: ../globaltime/timezone_selection.c:283
-#: ../globaltime/timezone_selection.c:293
-#: ../panel-plugin/timezone_selection.c:283
-#: ../panel-plugin/timezone_selection.c:293 ../src/timezone_selection.c:291
+#: ../globaltime/timezone_selection.c:293 ../src/timezone_selection.c:291
 #: ../src/timezone_selection.c:300 ../src/timezone_selection.c:311
 msgid "Pick timezone"
 msgstr "タイムゾーンを選択してください"
 
 #: ../globaltime/timezone_selection.c:286
-#: ../globaltime/timezone_selection.c:296
-#: ../panel-plugin/timezone_selection.c:286
-#: ../panel-plugin/timezone_selection.c:296 ../src/timezone_selection.c:294
+#: ../globaltime/timezone_selection.c:296 ../src/timezone_selection.c:294
 #: ../src/timezone_selection.c:303 ../src/timezone_selection.c:314
 msgid "Change mode"
 msgstr "モード変更"
 
 #: ../globaltime/timezone_selection.c:287
 #: ../globaltime/timezone_selection.c:297
-#: ../globaltime/timezone_selection.c:336
-#: ../panel-plugin/timezone_selection.c:287
-#: ../panel-plugin/timezone_selection.c:297
-#: ../panel-plugin/timezone_selection.c:337 ../src/timezone_selection.c:295
+#: ../globaltime/timezone_selection.c:336 ../src/timezone_selection.c:295
 #: ../src/timezone_selection.c:304 ../src/timezone_selection.c:315
 #: ../src/timezone_selection.c:354
 msgid "UTC"
@@ -417,9 +396,7 @@ msgstr "UTC"
 
 #. NOTE: this exists only if ical timezones are being used
 #: ../globaltime/timezone_selection.c:288
-#: ../globaltime/timezone_selection.c:341
-#: ../panel-plugin/timezone_selection.c:288
-#: ../panel-plugin/timezone_selection.c:342 ../src/timezone_selection.c:305
+#: ../globaltime/timezone_selection.c:341 ../src/timezone_selection.c:305
 #: ../src/timezone_selection.c:359
 msgid "floating"
 msgstr "フローティング"
@@ -436,139 +413,6 @@ msgstr "様々な地域の時刻を表示します。"
 #: ../src/tray_icon.c:489
 msgid "Globaltime"
 msgstr "世界時計"
-
-#: ../panel-plugin/oc_config.c:254
-msgid "No rotation"
-msgstr "回転なし"
-
-#: ../panel-plugin/oc_config.c:254
-msgid "Rotate left"
-msgstr "左に回転"
-
-#: ../panel-plugin/oc_config.c:254
-msgid "Rotate right"
-msgstr "右に回転"
-
-#: ../panel-plugin/oc_config.c:260
-msgid "Appearance"
-msgstr "外観"
-
-#. show frame
-#: ../panel-plugin/oc_config.c:267
-msgid "Show _frame"
-msgstr "枠を表示する(_F)"
-
-#. foreground color
-#: ../panel-plugin/oc_config.c:273
-msgid "set foreground _color:"
-msgstr "文字色(_C):"
-
-#. background color
-#: ../panel-plugin/oc_config.c:289
-msgid "set _background color:"
-msgstr "背景色(_B):"
-
-#. clock size (=mbox size): height and width
-#: ../panel-plugin/oc_config.c:305
-msgid "set _height:"
-msgstr "縦幅(_H):"
-
-#: ../panel-plugin/oc_config.c:315
-msgid "Note that you can not change the height of horizontal panels"
-msgstr "水平パネルの高さは変更されないことに注意してください"
-
-#: ../panel-plugin/oc_config.c:319
-msgid "set _width:"
-msgstr "横幅(_W):"
-
-#: ../panel-plugin/oc_config.c:329
-msgid "Note that you can not change the width of vertical panels"
-msgstr "垂直パネルの幅は変更されないことに注意してください"
-
-#: ../panel-plugin/oc_config.c:339
-msgid "Show lines _vertically"
-msgstr "線を縦に表示する(_V)"
-
-#: ../panel-plugin/oc_config.c:359
-msgid "Clock Options"
-msgstr "時計のオプション"
-
-#. timezone
-#: ../panel-plugin/oc_config.c:371
-msgid "set timezone to:"
-msgstr "タイムゾーン:"
-
-#: ../panel-plugin/oc_config.c:390
-#, c-format
-msgid "Line %d:"
-msgstr "%d 行目:"
-
-#: ../panel-plugin/oc_config.c:400
-msgid "Enter any valid strftime function parameter."
-msgstr "関数 strftime(3) の有効なパラメーターを入力してください。"
-
-#. Tooltip hint
-#: ../panel-plugin/oc_config.c:439
-msgid "Tooltip:"
-msgstr "ツールチップ:"
-
-#. special timing for SUSPEND/HIBERNATE
-#: ../panel-plugin/oc_config.c:449
-msgid "fix time after suspend/hibernate"
-msgstr "サスペンド/ハイバネート後に時刻を合わせる"
-
-#: ../panel-plugin/oc_config.c:453
-msgid ""
-"You only need this if you do short term (less than 5 hours) suspend or "
-"hibernate and your visible time does not include seconds. Under these "
-"circumstances it is possible that Orageclock shows time inaccurately unless "
-"you have this selected. (Selecting this prevents cpu and interrupt saving "
-"features from working.)"
-msgstr ""
-"このオプションは短時間 (5時間以下) "
-"のサスペンドまたはハイバネートを行い、時刻に秒を表示していない場合にのみ必要となります。その条件下でこのオプションを設定していない場合、 Orage "
-"時計は不正確な時刻を表示する可能性があります (これを設定すると CPU および割り込み保存が動作するのを抑止します)。"
-
-#: ../panel-plugin/oc_config.c:471
-msgid ""
-"This program uses strftime function to get time.\n"
-"Use any valid code to get time in the format you prefer.\n"
-"Some common codes are:\n"
-"\t%A = weekday\t\t\t%B = month\n"
-"\t%c = date & time\t\t%R = hour & minute\n"
-"\t%V = week number\t\t%Z = timezone in use\n"
-"\t%H = hours \t\t\t\t%M = minute\n"
-"\t%X = local time\t\t\t%x = local date"
-msgstr ""
-"このプログラムは時間を取得するのに関数 strftime(3) を利用します。\n"
-"有効なコードを使用すれば、お好きな表示方式で時間を表示できます。\n"
-"以下に一般的なコードの一部を掲載します:\n"
-"\t%A = 曜日\t\t\t\t%B = 月\n"
-"\t%c = 日付と時間\t\t\t%R = 時と分\n"
-"\t%V = 年頭からの経過週\t%Z = 現在のタイムゾーン\n"
-"\t%H = 時\t\t\t\t%M = 分\n"
-"\t%X = 現地の時間\t\t%x = 現地の日付"
-
-#: ../panel-plugin/oc_config.c:501
-msgid "Orage clock Preferences"
-msgstr "Orage 時計の設定"
-
-#: ../panel-plugin/oc_config.c:505 ../src/day-view.c:414
-#: ../src/event-list.c:1228 ../src/interface.c:876
-msgid "Close"
-msgstr "このウィンドウを閉じます"
-
-#. TRANSLATORS: Use format characters from strftime(3)
-#. * to get the proper string for your locale.
-#. * I used these:
-#. * %A  : full weekday name
-#. * %d  : day of the month
-#. * %B  : full month name
-#. * %Y  : four digit year
-#. * %V  : ISO week number
-#: ../panel-plugin/xfce4-orageclock-plugin.c:717
-msgid "%A %d %B %Y/%V"
-msgstr "%x %A"
 
 #: ../src/about-xfcalendar.c:54 ../org.xfce.orage.appdata.xml.in.h:2
 msgid "Orage is a time-managing application for the Xfce desktop environment"
@@ -1329,6 +1173,10 @@ msgstr "1 週間戻ります"
 #: ../src/day-view.c:409 ../src/event-list.c:1221
 msgid "Refresh"
 msgstr "このウィンドウを更新します"
+
+#: ../src/day-view.c:414 ../src/event-list.c:1228 ../src/interface.c:876
+msgid "Close"
+msgstr "このウィンドウを閉じます"
 
 #: ../src/day-view.c:473
 msgid "_OK"
@@ -4447,14 +4295,6 @@ msgstr "設定"
 #: ../src/tray_icon.c:483
 msgid "Quit"
 msgstr "終了"
-
-#: ../panel-plugin/org.xfce.orage.clock-plugin.desktop.in.h:1
-msgid "Orage Panel Clock"
-msgstr "Orage パネル時計"
-
-#: ../panel-plugin/org.xfce.orage.clock-plugin.desktop.in.h:2
-msgid "Show time and date?"
-msgstr "今の日付と時刻は?"
 
 #: ../plugin/org.xfce.orage-settings.desktop.in.h:1
 msgid "Orage preferences"
