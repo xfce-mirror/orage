@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-29 00:49+0200\n"
+"POT-Creation-Date: 2022-09-03 00:49+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: scootergrisen, 2022\n"
 "Language-Team: Danish (https://www.transifex.com/xfce/teams/16840/da/)\n"
@@ -150,10 +150,9 @@ msgid "Timezone of the clock:"
 msgstr "Tidszone på uret:"
 
 #: ../globaltime/gt_prefs.c:683 ../globaltime/gt_prefs.c:1189
-#: ../panel-plugin/oc_config.c:374 ../src/appointment.c:3302
-#: ../src/interface.c:1047 ../src/interface.c:1093 ../src/interface.c:1269
-#: ../src/interface.c:1361 ../src/interface.c:1444 ../src/parameters.c:397
-#: ../src/parameters.c:620 ../src/reminder.c:705
+#: ../src/appointment.c:3302 ../src/interface.c:1047 ../src/interface.c:1093
+#: ../src/interface.c:1269 ../src/interface.c:1361 ../src/interface.c:1444
+#: ../src/parameters.c:397 ../src/parameters.c:620 ../src/reminder.c:705
 msgid "_Open"
 msgstr "_Åbn"
 
@@ -320,69 +319,56 @@ msgid "Local timezone:"
 msgstr "Lokal tidszone:"
 
 #: ../globaltime/timezone_selection.c:93
-#: ../panel-plugin/timezone_selection.c:92
 msgid " Other"
 msgstr " Andre"
 
-#: ../globaltime/timezone_selection.c:145
-#: ../panel-plugin/timezone_selection.c:144 ../src/timezone_selection.c:148
+#: ../globaltime/timezone_selection.c:145 ../src/timezone_selection.c:148
 #, c-format
 msgid "%d hour %d mins"
 msgstr "%d timer %d minutter"
 
-#: ../globaltime/timezone_selection.c:148
-#: ../panel-plugin/timezone_selection.c:147 ../src/timezone_selection.c:151
+#: ../globaltime/timezone_selection.c:148 ../src/timezone_selection.c:151
 #, c-format
 msgid "%d hour"
 msgstr "%d timer"
 
-#: ../globaltime/timezone_selection.c:150
-#: ../panel-plugin/timezone_selection.c:149 ../src/timezone_selection.c:153
+#: ../globaltime/timezone_selection.c:150 ../src/timezone_selection.c:153
 #, c-format
 msgid "%d mins"
 msgstr "%d minutter"
 
-#: ../globaltime/timezone_selection.c:156
-#: ../panel-plugin/timezone_selection.c:155 ../src/timezone_selection.c:159
+#: ../globaltime/timezone_selection.c:156 ../src/timezone_selection.c:159
 msgid "backward"
 msgstr "tilbage"
 
-#: ../globaltime/timezone_selection.c:159
-#: ../panel-plugin/timezone_selection.c:158 ../src/timezone_selection.c:162
+#: ../globaltime/timezone_selection.c:159 ../src/timezone_selection.c:162
 msgid "forward"
 msgstr "fremad"
 
-#: ../globaltime/timezone_selection.c:183
-#: ../panel-plugin/timezone_selection.c:182 ../src/timezone_selection.c:186
+#: ../globaltime/timezone_selection.c:183 ../src/timezone_selection.c:186
 msgid "not changed"
 msgstr "ikke ændret"
 
-#: ../globaltime/timezone_selection.c:184
-#: ../panel-plugin/timezone_selection.c:183 ../src/timezone_selection.c:187
+#: ../globaltime/timezone_selection.c:184 ../src/timezone_selection.c:187
 msgid "not changing"
 msgstr "ændres ikke"
 
 #. location
 #: ../globaltime/timezone_selection.c:234
-#: ../globaltime/timezone_selection.c:239
-#: ../panel-plugin/timezone_selection.c:233
-#: ../panel-plugin/timezone_selection.c:238 ../src/appointment.c:2974
+#: ../globaltime/timezone_selection.c:239 ../src/appointment.c:2974
 #: ../src/timezone_selection.c:237 ../src/timezone_selection.c:242
 msgid "Location"
 msgstr "Område"
 
-#: ../globaltime/timezone_selection.c:245
-#: ../panel-plugin/timezone_selection.c:244 ../src/timezone_selection.c:248
+#: ../globaltime/timezone_selection.c:245 ../src/timezone_selection.c:248
 msgid "GMT Offset"
 msgstr "GMT-forskydning"
 
-#: ../globaltime/timezone_selection.c:251
-#: ../panel-plugin/timezone_selection.c:250 ../src/timezone_selection.c:254
+#: ../globaltime/timezone_selection.c:251 ../src/timezone_selection.c:254
 msgid "Previous/Next Change"
 msgstr "Forrige/næste ændring"
 
-#: ../globaltime/timezone_selection.c:256
-#: ../panel-plugin/timezone_selection.c:255 ../src/timezone_selection.c:259
+#: ../globaltime/timezone_selection.c:256 ../src/timezone_selection.c:259
 msgid "Country"
 msgstr "Land"
 
@@ -392,27 +378,20 @@ msgstr "Land"
 #. This test is ugly, but it is not worth an extra parameter.
 #. this is normal appointment
 #: ../globaltime/timezone_selection.c:283
-#: ../globaltime/timezone_selection.c:293
-#: ../panel-plugin/timezone_selection.c:283
-#: ../panel-plugin/timezone_selection.c:293 ../src/timezone_selection.c:291
+#: ../globaltime/timezone_selection.c:293 ../src/timezone_selection.c:291
 #: ../src/timezone_selection.c:300 ../src/timezone_selection.c:311
 msgid "Pick timezone"
 msgstr "Vælg tidszone"
 
 #: ../globaltime/timezone_selection.c:286
-#: ../globaltime/timezone_selection.c:296
-#: ../panel-plugin/timezone_selection.c:286
-#: ../panel-plugin/timezone_selection.c:296 ../src/timezone_selection.c:294
+#: ../globaltime/timezone_selection.c:296 ../src/timezone_selection.c:294
 #: ../src/timezone_selection.c:303 ../src/timezone_selection.c:314
 msgid "Change mode"
 msgstr "Skift tilstand"
 
 #: ../globaltime/timezone_selection.c:287
 #: ../globaltime/timezone_selection.c:297
-#: ../globaltime/timezone_selection.c:336
-#: ../panel-plugin/timezone_selection.c:287
-#: ../panel-plugin/timezone_selection.c:297
-#: ../panel-plugin/timezone_selection.c:337 ../src/timezone_selection.c:295
+#: ../globaltime/timezone_selection.c:336 ../src/timezone_selection.c:295
 #: ../src/timezone_selection.c:304 ../src/timezone_selection.c:315
 #: ../src/timezone_selection.c:354
 msgid "UTC"
@@ -420,9 +399,7 @@ msgstr "UTC"
 
 #. NOTE: this exists only if ical timezones are being used
 #: ../globaltime/timezone_selection.c:288
-#: ../globaltime/timezone_selection.c:341
-#: ../panel-plugin/timezone_selection.c:288
-#: ../panel-plugin/timezone_selection.c:342 ../src/timezone_selection.c:305
+#: ../globaltime/timezone_selection.c:341 ../src/timezone_selection.c:305
 #: ../src/timezone_selection.c:359
 msgid "floating"
 msgstr "flydende"
@@ -439,141 +416,6 @@ msgstr "Vis uret fra forskellige lande"
 #: ../src/tray_icon.c:489
 msgid "Globaltime"
 msgstr "Verdensur"
-
-#: ../panel-plugin/oc_config.c:254
-msgid "No rotation"
-msgstr "Ingen rotation"
-
-#: ../panel-plugin/oc_config.c:254
-msgid "Rotate left"
-msgstr "Drej til venstre"
-
-#: ../panel-plugin/oc_config.c:254
-msgid "Rotate right"
-msgstr "Drej til højre"
-
-#: ../panel-plugin/oc_config.c:260
-msgid "Appearance"
-msgstr "Udseende"
-
-#. show frame
-#: ../panel-plugin/oc_config.c:267
-msgid "Show _frame"
-msgstr "Vis _ramme"
-
-#. foreground color
-#: ../panel-plugin/oc_config.c:273
-msgid "set foreground _color:"
-msgstr "indstil _forgrundsfarve:"
-
-#. background color
-#: ../panel-plugin/oc_config.c:289
-msgid "set _background color:"
-msgstr "indstil _baggrundsfarve:"
-
-#. clock size (=mbox size): height and width
-#: ../panel-plugin/oc_config.c:305
-msgid "set _height:"
-msgstr "indstil _højde:"
-
-#: ../panel-plugin/oc_config.c:315
-msgid "Note that you can not change the height of horizontal panels"
-msgstr "Bemærk at du ikke kan ændre højden på vandrette paneler"
-
-#: ../panel-plugin/oc_config.c:319
-msgid "set _width:"
-msgstr "indstil _bredde:"
-
-#: ../panel-plugin/oc_config.c:329
-msgid "Note that you can not change the width of vertical panels"
-msgstr "Bemærk at du ikke kan ændre bredden på lodrette paneler"
-
-#: ../panel-plugin/oc_config.c:339
-msgid "Show lines _vertically"
-msgstr "Vis linjer _lodret"
-
-#: ../panel-plugin/oc_config.c:359
-msgid "Clock Options"
-msgstr "Valgmuligheder for ur"
-
-#. timezone
-#: ../panel-plugin/oc_config.c:371
-msgid "set timezone to:"
-msgstr "indstil tidszone til:"
-
-#: ../panel-plugin/oc_config.c:390
-#, c-format
-msgid "Line %d:"
-msgstr "Linje %d:"
-
-#: ../panel-plugin/oc_config.c:400
-msgid "Enter any valid strftime function parameter."
-msgstr "Indtast gyldig parameter til funktionen strftime."
-
-#. Tooltip hint
-#: ../panel-plugin/oc_config.c:439
-msgid "Tooltip:"
-msgstr "Værktøjstip:"
-
-#. special timing for SUSPEND/HIBERNATE
-#: ../panel-plugin/oc_config.c:449
-msgid "fix time after suspend/hibernate"
-msgstr "ret tid efter hvile/dvale"
-
-#: ../panel-plugin/oc_config.c:453
-msgid ""
-"You only need this if you do short term (less than 5 hours) suspend or "
-"hibernate and your visible time does not include seconds. Under these "
-"circumstances it is possible that Orageclock shows time inaccurately unless "
-"you have this selected. (Selecting this prevents cpu and interrupt saving "
-"features from working.)"
-msgstr ""
-"Du behøver kun dette hvis du foretager hvile eller dvale i korte perioder "
-"(mindre end 5 timer) og din synlige tid ikke inkluderer sekunder. Under "
-"disse omstændigheder kan det være at Orageclock viser tiden upræcist, "
-"medmindre du har tilvalgt dette. (tilvælges dette så forhindres faciliteter "
-"til CPU og gemning i at virke)."
-
-#: ../panel-plugin/oc_config.c:471
-msgid ""
-"This program uses strftime function to get time.\n"
-"Use any valid code to get time in the format you prefer.\n"
-"Some common codes are:\n"
-"\t%A = weekday\t\t\t%B = month\n"
-"\t%c = date & time\t\t%R = hour & minute\n"
-"\t%V = week number\t\t%Z = timezone in use\n"
-"\t%H = hours \t\t\t\t%M = minute\n"
-"\t%X = local time\t\t\t%x = local date"
-msgstr ""
-"Dette program bruger funktionen strftime til at hente tiden.\n"
-"Brug en vilkårlig gyldig kode for at hente tiden i dit foretrukne format.\n"
-"Her er nogle typiske koder:\n"
-"\t%A = ugedag\t\t\t%B = måned\n"
-"\t%c = dato og klokkeslæt\t%R = time og minut\n"
-"\t%V = ugetal\t\t\t%Z = anvendte tidszone\n"
-"\t%H = timer \t\t\t%M = minut\n"
-"\t%X = lokal klokkeslæt\t\t%x = lokal dato"
-
-#: ../panel-plugin/oc_config.c:501
-msgid "Orage clock Preferences"
-msgstr "Orage ur-præferencer"
-
-#: ../panel-plugin/oc_config.c:505 ../src/day-view.c:414
-#: ../src/event-list.c:1228 ../src/interface.c:876
-msgid "Close"
-msgstr "Luk"
-
-#. TRANSLATORS: Use format characters from strftime(3)
-#. * to get the proper string for your locale.
-#. * I used these:
-#. * %A  : full weekday name
-#. * %d  : day of the month
-#. * %B  : full month name
-#. * %Y  : four digit year
-#. * %V  : ISO week number
-#: ../panel-plugin/xfce4-orageclock-plugin.c:717
-msgid "%A %d %B %Y/%V"
-msgstr "%A %d. %B %Y/%V"
 
 #: ../src/about-xfcalendar.c:54 ../org.xfce.orage.appdata.xml.in.h:2
 msgid "Orage is a time-managing application for the Xfce desktop environment"
@@ -1341,6 +1183,10 @@ msgstr "Fremad én uge"
 #: ../src/day-view.c:409 ../src/event-list.c:1221
 msgid "Refresh"
 msgstr "Opdater"
+
+#: ../src/day-view.c:414 ../src/event-list.c:1228 ../src/interface.c:876
+msgid "Close"
+msgstr "Luk"
 
 #: ../src/day-view.c:473
 msgid "_OK"
@@ -4469,14 +4315,6 @@ msgstr "Præferencer"
 #: ../src/tray_icon.c:483
 msgid "Quit"
 msgstr "Afslut"
-
-#: ../panel-plugin/org.xfce.orage.clock-plugin.desktop.in.h:1
-msgid "Orage Panel Clock"
-msgstr "Orage panelur"
-
-#: ../panel-plugin/org.xfce.orage.clock-plugin.desktop.in.h:2
-msgid "Show time and date?"
-msgstr "Vis klokkeslæt og dato?"
 
 #: ../plugin/org.xfce.orage-settings.desktop.in.h:1
 msgid "Orage preferences"
