@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-29 00:49+0200\n"
+"POT-Creation-Date: 2022-09-03 00:49+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Pjotr <pjotrvertaalt@gmail.com>, 2022\n"
 "Language-Team: Dutch (https://www.transifex.com/xfce/teams/16840/nl/)\n"
@@ -149,10 +149,9 @@ msgid "Timezone of the clock:"
 msgstr "Tijdzone van de klok:"
 
 #: ../globaltime/gt_prefs.c:683 ../globaltime/gt_prefs.c:1189
-#: ../panel-plugin/oc_config.c:374 ../src/appointment.c:3302
-#: ../src/interface.c:1047 ../src/interface.c:1093 ../src/interface.c:1269
-#: ../src/interface.c:1361 ../src/interface.c:1444 ../src/parameters.c:397
-#: ../src/parameters.c:620 ../src/reminder.c:705
+#: ../src/appointment.c:3302 ../src/interface.c:1047 ../src/interface.c:1093
+#: ../src/interface.c:1269 ../src/interface.c:1361 ../src/interface.c:1444
+#: ../src/parameters.c:397 ../src/parameters.c:620 ../src/reminder.c:705
 msgid "_Open"
 msgstr "_Openen"
 
@@ -317,69 +316,56 @@ msgid "Local timezone:"
 msgstr "Plaatselijke tijdzone:"
 
 #: ../globaltime/timezone_selection.c:93
-#: ../panel-plugin/timezone_selection.c:92
 msgid " Other"
 msgstr "Andere"
 
-#: ../globaltime/timezone_selection.c:145
-#: ../panel-plugin/timezone_selection.c:144 ../src/timezone_selection.c:148
+#: ../globaltime/timezone_selection.c:145 ../src/timezone_selection.c:148
 #, c-format
 msgid "%d hour %d mins"
 msgstr "%d uur %d min"
 
-#: ../globaltime/timezone_selection.c:148
-#: ../panel-plugin/timezone_selection.c:147 ../src/timezone_selection.c:151
+#: ../globaltime/timezone_selection.c:148 ../src/timezone_selection.c:151
 #, c-format
 msgid "%d hour"
 msgstr "%d uur"
 
-#: ../globaltime/timezone_selection.c:150
-#: ../panel-plugin/timezone_selection.c:149 ../src/timezone_selection.c:153
+#: ../globaltime/timezone_selection.c:150 ../src/timezone_selection.c:153
 #, c-format
 msgid "%d mins"
 msgstr "% d min"
 
-#: ../globaltime/timezone_selection.c:156
-#: ../panel-plugin/timezone_selection.c:155 ../src/timezone_selection.c:159
+#: ../globaltime/timezone_selection.c:156 ../src/timezone_selection.c:159
 msgid "backward"
 msgstr "terug"
 
-#: ../globaltime/timezone_selection.c:159
-#: ../panel-plugin/timezone_selection.c:158 ../src/timezone_selection.c:162
+#: ../globaltime/timezone_selection.c:159 ../src/timezone_selection.c:162
 msgid "forward"
 msgstr "vooruit"
 
-#: ../globaltime/timezone_selection.c:183
-#: ../panel-plugin/timezone_selection.c:182 ../src/timezone_selection.c:186
+#: ../globaltime/timezone_selection.c:183 ../src/timezone_selection.c:186
 msgid "not changed"
 msgstr "niet veranderd"
 
-#: ../globaltime/timezone_selection.c:184
-#: ../panel-plugin/timezone_selection.c:183 ../src/timezone_selection.c:187
+#: ../globaltime/timezone_selection.c:184 ../src/timezone_selection.c:187
 msgid "not changing"
 msgstr "niet aan het veranderen"
 
 #. location
 #: ../globaltime/timezone_selection.c:234
-#: ../globaltime/timezone_selection.c:239
-#: ../panel-plugin/timezone_selection.c:233
-#: ../panel-plugin/timezone_selection.c:238 ../src/appointment.c:2974
+#: ../globaltime/timezone_selection.c:239 ../src/appointment.c:2974
 #: ../src/timezone_selection.c:237 ../src/timezone_selection.c:242
 msgid "Location"
 msgstr "Locatie"
 
-#: ../globaltime/timezone_selection.c:245
-#: ../panel-plugin/timezone_selection.c:244 ../src/timezone_selection.c:248
+#: ../globaltime/timezone_selection.c:245 ../src/timezone_selection.c:248
 msgid "GMT Offset"
 msgstr "GMT-afwijking"
 
-#: ../globaltime/timezone_selection.c:251
-#: ../panel-plugin/timezone_selection.c:250 ../src/timezone_selection.c:254
+#: ../globaltime/timezone_selection.c:251 ../src/timezone_selection.c:254
 msgid "Previous/Next Change"
 msgstr "Vorige/Volgende verandering"
 
-#: ../globaltime/timezone_selection.c:256
-#: ../panel-plugin/timezone_selection.c:255 ../src/timezone_selection.c:259
+#: ../globaltime/timezone_selection.c:256 ../src/timezone_selection.c:259
 msgid "Country"
 msgstr "Land"
 
@@ -389,27 +375,20 @@ msgstr "Land"
 #. This test is ugly, but it is not worth an extra parameter.
 #. this is normal appointment
 #: ../globaltime/timezone_selection.c:283
-#: ../globaltime/timezone_selection.c:293
-#: ../panel-plugin/timezone_selection.c:283
-#: ../panel-plugin/timezone_selection.c:293 ../src/timezone_selection.c:291
+#: ../globaltime/timezone_selection.c:293 ../src/timezone_selection.c:291
 #: ../src/timezone_selection.c:300 ../src/timezone_selection.c:311
 msgid "Pick timezone"
 msgstr "Kies tijdzone"
 
 #: ../globaltime/timezone_selection.c:286
-#: ../globaltime/timezone_selection.c:296
-#: ../panel-plugin/timezone_selection.c:286
-#: ../panel-plugin/timezone_selection.c:296 ../src/timezone_selection.c:294
+#: ../globaltime/timezone_selection.c:296 ../src/timezone_selection.c:294
 #: ../src/timezone_selection.c:303 ../src/timezone_selection.c:314
 msgid "Change mode"
 msgstr "Modus wijzigen"
 
 #: ../globaltime/timezone_selection.c:287
 #: ../globaltime/timezone_selection.c:297
-#: ../globaltime/timezone_selection.c:336
-#: ../panel-plugin/timezone_selection.c:287
-#: ../panel-plugin/timezone_selection.c:297
-#: ../panel-plugin/timezone_selection.c:337 ../src/timezone_selection.c:295
+#: ../globaltime/timezone_selection.c:336 ../src/timezone_selection.c:295
 #: ../src/timezone_selection.c:304 ../src/timezone_selection.c:315
 #: ../src/timezone_selection.c:354
 msgid "UTC"
@@ -417,9 +396,7 @@ msgstr "UTC"
 
 #. NOTE: this exists only if ical timezones are being used
 #: ../globaltime/timezone_selection.c:288
-#: ../globaltime/timezone_selection.c:341
-#: ../panel-plugin/timezone_selection.c:288
-#: ../panel-plugin/timezone_selection.c:342 ../src/timezone_selection.c:305
+#: ../globaltime/timezone_selection.c:341 ../src/timezone_selection.c:305
 #: ../src/timezone_selection.c:359
 msgid "floating"
 msgstr "zwevend"
@@ -436,143 +413,6 @@ msgstr "Toon klokken van verschillende landen"
 #: ../src/tray_icon.c:489
 msgid "Globaltime"
 msgstr "Wereldtijd"
-
-#: ../panel-plugin/oc_config.c:254
-msgid "No rotation"
-msgstr "Geen draaiing"
-
-#: ../panel-plugin/oc_config.c:254
-msgid "Rotate left"
-msgstr "Naar links draaien"
-
-#: ../panel-plugin/oc_config.c:254
-msgid "Rotate right"
-msgstr "Naar rechts draaien"
-
-#: ../panel-plugin/oc_config.c:260
-msgid "Appearance"
-msgstr "Uiterlijk"
-
-#. show frame
-#: ../panel-plugin/oc_config.c:267
-msgid "Show _frame"
-msgstr "Toon _omlijsting"
-
-#. foreground color
-#: ../panel-plugin/oc_config.c:273
-msgid "set foreground _color:"
-msgstr "stel voorgrond_kleur in:"
-
-#. background color
-#: ../panel-plugin/oc_config.c:289
-msgid "set _background color:"
-msgstr "stel _achtergrondkleur in:"
-
-#. clock size (=mbox size): height and width
-#: ../panel-plugin/oc_config.c:305
-msgid "set _height:"
-msgstr "stel _hoogte in:"
-
-#: ../panel-plugin/oc_config.c:315
-msgid "Note that you can not change the height of horizontal panels"
-msgstr ""
-"Let op dat u de hoogte van de horizontale werkbalken niet kunt wijzigen"
-
-#: ../panel-plugin/oc_config.c:319
-msgid "set _width:"
-msgstr "stel _breedte in:"
-
-#: ../panel-plugin/oc_config.c:329
-msgid "Note that you can not change the width of vertical panels"
-msgstr ""
-"Let op dat u de breedte van de verticale werkbalken niet kunt wijzigen"
-
-#: ../panel-plugin/oc_config.c:339
-msgid "Show lines _vertically"
-msgstr "Regels verticaal tonen"
-
-#: ../panel-plugin/oc_config.c:359
-msgid "Clock Options"
-msgstr "Klokopties"
-
-#. timezone
-#: ../panel-plugin/oc_config.c:371
-msgid "set timezone to:"
-msgstr "stel tijdzone in op:"
-
-#: ../panel-plugin/oc_config.c:390
-#, c-format
-msgid "Line %d:"
-msgstr "Regel %d:"
-
-#: ../panel-plugin/oc_config.c:400
-msgid "Enter any valid strftime function parameter."
-msgstr "Voer een geldige strftime-functieparameter in."
-
-#. Tooltip hint
-#: ../panel-plugin/oc_config.c:439
-msgid "Tooltip:"
-msgstr "Hulptip:"
-
-#. special timing for SUSPEND/HIBERNATE
-#: ../panel-plugin/oc_config.c:449
-msgid "fix time after suspend/hibernate"
-msgstr "herstel tijd na pauzestand/slaapstand"
-
-#: ../panel-plugin/oc_config.c:453
-msgid ""
-"You only need this if you do short term (less than 5 hours) suspend or "
-"hibernate and your visible time does not include seconds. Under these "
-"circumstances it is possible that Orageclock shows time inaccurately unless "
-"you have this selected. (Selecting this prevents cpu and interrupt saving "
-"features from working.)"
-msgstr ""
-"U hebt dit alleen nodig wanneer u pauzestand of slaapstand voor korte tijd "
-"(minder dan vijf uur) inschakelt en uw zichtbare tijd geen seconden omvat. "
-"Onder deze omstandigheden is het mogelijk dat OrageKlok de tijd onnauwkeurig"
-" weergeeft, tenzij u dit hebt gekozen. Let op: dit kiezen belemmert de "
-"werking van CPU- en interrupt-bespaarfuncties."
-
-#: ../panel-plugin/oc_config.c:471
-msgid ""
-"This program uses strftime function to get time.\n"
-"Use any valid code to get time in the format you prefer.\n"
-"Some common codes are:\n"
-"\t%A = weekday\t\t\t%B = month\n"
-"\t%c = date & time\t\t%R = hour & minute\n"
-"\t%V = week number\t\t%Z = timezone in use\n"
-"\t%H = hours \t\t\t\t%M = minute\n"
-"\t%X = local time\t\t\t%x = local date"
-msgstr ""
-"Dit programma gebruikt de strftime-functie om tijd op te halen.\n"
-"Gebruik een geldige code om tijd op te halen in de opmaak van \n"
-"uw voorkeur. Enkele gebruikelijke codes zijn:\n"
-"\t%A = weekdag\t\t\t%B = maand\n"
-"\t%c = datum & tijd\t\t%R = uur & minuut\n"
-"\t%V = weeknummer\t\t%Z = gebruikte tijdzone\n"
-"\t%H = uren \t\t\t\t%M = minuut\n"
-"\t%X = plaatselijke tijd\t\t\t%x = plaatselijke datum"
-
-#: ../panel-plugin/oc_config.c:501
-msgid "Orage clock Preferences"
-msgstr "Orage klokvoorkeuren"
-
-#: ../panel-plugin/oc_config.c:505 ../src/day-view.c:414
-#: ../src/event-list.c:1228 ../src/interface.c:876
-msgid "Close"
-msgstr "Sluiten"
-
-#. TRANSLATORS: Use format characters from strftime(3)
-#. * to get the proper string for your locale.
-#. * I used these:
-#. * %A  : full weekday name
-#. * %d  : day of the month
-#. * %B  : full month name
-#. * %Y  : four digit year
-#. * %V  : ISO week number
-#: ../panel-plugin/xfce4-orageclock-plugin.c:717
-msgid "%A %d %B %Y/%V"
-msgstr "%A %d %B %Y/%V"
 
 #: ../src/about-xfcalendar.c:54 ../org.xfce.orage.appdata.xml.in.h:2
 msgid "Orage is a time-managing application for the Xfce desktop environment"
@@ -1341,6 +1181,10 @@ msgstr "Week vooruit"
 #: ../src/day-view.c:409 ../src/event-list.c:1221
 msgid "Refresh"
 msgstr "Verversen"
+
+#: ../src/day-view.c:414 ../src/event-list.c:1228 ../src/interface.c:876
+msgid "Close"
+msgstr "Sluiten"
 
 #: ../src/day-view.c:473
 msgid "_OK"
@@ -4475,14 +4319,6 @@ msgstr "Voorkeuren"
 #: ../src/tray_icon.c:483
 msgid "Quit"
 msgstr "Sluiten"
-
-#: ../panel-plugin/org.xfce.orage.clock-plugin.desktop.in.h:1
-msgid "Orage Panel Clock"
-msgstr "Orage werkbalkklok"
-
-#: ../panel-plugin/org.xfce.orage.clock-plugin.desktop.in.h:2
-msgid "Show time and date?"
-msgstr "Tijd en datum tonen?"
 
 #: ../plugin/org.xfce.orage-settings.desktop.in.h:1
 msgid "Orage preferences"
