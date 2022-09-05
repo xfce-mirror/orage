@@ -169,7 +169,6 @@ po/Makefile.in
 sounds/Makefile
 src/Makefile
 plugin/Makefile
-globaltime/Makefile
 ])
 AC_OUTPUT
 

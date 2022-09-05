@@ -6,7 +6,6 @@ SUBDIRS = icons			\
 	po			\
 	sounds			\
 	src			\
-	globaltime		\
 	plugin
 
 desktopdir = $(datadir)/applications
