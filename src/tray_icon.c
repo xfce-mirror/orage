@@ -46,7 +46,6 @@
 #include "appointment.h"
 #include "parameters.h"
 #include "tray_icon.h"
-#include "../globaltime/globaltime.h"
 
 #ifdef HAVE_LIBXFCE4UI
 #include <libxfce4ui/libxfce4ui.h>
@@ -128,59 +127,6 @@ static void on_new_appointment_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
 
     create_appt_win (NEW_APPT_WIN, cur_date, gdt);
     g_date_time_unref (gdt);
-}
-
-static void on_globaltime_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
-                                    G_GNUC_UNUSED gpointer user_data)
-{
-    GError *error = NULL;
-
-    if (!orage_exec("globaltime", NULL, &error))
-        g_message("%s: start of %s failed: %s", "Orage", "globaltime"
-                , error->message);
-}
-
-static gboolean button_press_cb (G_GNUC_UNUSED GtkStatusIcon *status_icon,
-                                 GdkEventButton *event,
-                                 G_GNUC_UNUSED gpointer user_data)
-{
-    GdkAtom atom;
-    Window xwindow;
-    Display *display;
-    XEvent xevent;
-
-    if (event->type != GDK_BUTTON_PRESS) /* double or triple click */
-        return(FALSE); /* ignore */
-    else if (event->button == 2)
-    {
-        /* send message to program to check if it is running */
-        atom = gdk_atom_intern (GLOBALTIME_RUNNING, FALSE);
-        display = gdk_x11_get_default_xdisplay ();
-        if ((xwindow = XGetSelectionOwner (display,
-                gdk_x11_atom_to_xatom(atom))) != None) { /* yes, then toggle */
-            xevent.xclient.type = ClientMessage;
-            xevent.xclient.format = 8;
-            xevent.xclient.message_type =
-                    XInternAtom (display, GLOBALTIME_TOGGLE, FALSE);
-            xevent.xclient.send_event = TRUE;
-            xevent.xclient.window = xwindow;
-
-            if (XSendEvent (display, xwindow, FALSE, NoEventMask, &xevent))
-                g_debug ("Raising GlobalTime window");
-            else
-                g_warning ("GlobalTime window raise failed");
-
-            (void)XFlush (display);
-
-            return(TRUE);
-        }
-        else { /* not running, let's try to start it. Need to reset TZ! */
-            on_globaltime_activate(NULL, NULL);
-            return(TRUE);
-        }
-    }
-
-    return(FALSE);
 }
 
 static void toggle_visible_cb (G_GNUC_UNUSED GtkStatusIcon *status_icon,
@@ -486,10 +432,6 @@ static GtkWidget *create_TrayIcon_menu(void)
 
     menuItem = gtk_separator_menu_item_new();
     gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
-    menuItem = gtk_menu_item_new_with_label(_("Globaltime"));
-    g_signal_connect(menuItem, "activate"
-            , G_CALLBACK(on_globaltime_activate), NULL);
-    gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
 
     gtk_widget_show_all(trayMenu);
     return(trayMenu);
@@ -518,8 +460,6 @@ GtkStatusIcon* create_TrayIcon(GdkPixbuf *orage_logo)
     g_object_ref(trayIcon);
     g_object_ref_sink(trayIcon);
 
-    g_signal_connect(G_OBJECT(trayIcon), "button-press-event",
-    			   G_CALLBACK(button_press_cb), xfcal);
     g_signal_connect(G_OBJECT(trayIcon), "activate",
     			   G_CALLBACK(toggle_visible_cb), xfcal);
     g_signal_connect(G_OBJECT(trayIcon), "popup-menu",

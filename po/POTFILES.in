@@ -1,10 +1,5 @@
 # List of source files containing translatable strings.
 
-globaltime/globaltime.c
-globaltime/gt_parfile.c
-globaltime/gt_prefs.c
-globaltime/timezone_selection.c
-globaltime/org.xfce.orage.globaltime.desktop.in
 src/about-xfcalendar.c
 src/appointment.c
 src/day-view.c

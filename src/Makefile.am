@@ -1,11 +1,5 @@
 bin_PROGRAMS = orage
 
-noinst_LTLIBRARIES = liborage.la
-
-liborage_la_SOURCES =						\
-	functions.c functions.h					\
-	tz_zoneinfo_read.c tz_zoneinfo_read.h
-
 orage_SOURCES =							\
 	$(orage_dbus_sources)					\
 	about-xfcalendar.c					\
@@ -16,6 +10,8 @@ orage_SOURCES =							\
 	day-view.h						\
 	event-list.c						\
 	event-list.h						\
+	functions.c						\
+	functions.h						\
 	ical-archive.c						\
 	ical-code.c						\
 	ical-code.h						\
@@ -39,15 +35,10 @@ orage_SOURCES =							\
 	timezone_selection.h					\
 	tray_icon.c						\
 	tray_icon.h						\
+	tz_zoneinfo_read.c					\
+	tz_zoneinfo_read.h					\
 	xfical_exception.c					\
 	xfical_exception.h
-
-liborage_la_CPPFLAGS =						\
-	-DPACKAGE_DATA_DIR=\""$(datadir)"\"		        \
-	-DG_LOG_DOMAIN=\"liborage\"
-	
-liborage_la_CFLAGS =						\
-	$(LIBGTK_CFLAGS)
 	
 orage_CPPFLAGS =						\
 	-DPACKAGE_DATA_DIR=\""$(datadir)"\"			\
@@ -66,8 +57,7 @@ orage_LDADD =							\
 	$(LIBXFCE4UTIL_LIBS)					\
 	$(LIBICAL_LIBS)						\
 	-lm							\
-	$(INTLLIBS)						\
-	liborage.la
+	$(INTLLIBS)
 
 if HAVE_DBUS
 orage_dbus_sources =						\
