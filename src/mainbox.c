@@ -131,15 +131,6 @@ static void mView_selectToday_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem
     orage_select_today(GTK_CALENDAR(cal->mCalendar));
 }
 
-static void mView_StartGlobaltime_activate_cb (
-    G_GNUC_UNUSED GtkMenuItem *menuitem, G_GNUC_UNUSED gpointer user_data)
-{
-    GError *error = NULL;
-
-    if (!orage_exec("globaltime", NULL, &error))
-        g_warning ("start of globaltime failed: %s", error->message);
-}
-
 static void mHelp_help_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
                                     G_GNUC_UNUSED gpointer user_data)
 {
@@ -255,12 +246,6 @@ static void build_menu(void)
             orage_menu_item_new_with_mnemonic(_("Select _Today")
                     , cal->mView_menu);
 
-    (void)orage_separator_menu_item_new(cal->mView_menu);
-
-    cal->mView_StartGlobaltime = 
-            orage_menu_item_new_with_mnemonic(_("Show _Globaltime")
-                    , cal->mView_menu);
-
     /* Help menu */
     cal->mHelp_menu = orage_menu_new(_("_Help"), cal->mMenubar);
     cal->mHelp_help = orage_image_menu_item_new_from_stock("gtk-help"
@@ -287,8 +272,6 @@ static void build_menu(void)
             , G_CALLBACK(mView_ViewSelectedWeek_activate_cb),(gpointer) cal);
     g_signal_connect((gpointer) cal->mView_selectToday, "activate"
             , G_CALLBACK(mView_selectToday_activate_cb),(gpointer) cal);
-    g_signal_connect((gpointer) cal->mView_StartGlobaltime, "activate"
-            , G_CALLBACK(mView_StartGlobaltime_activate_cb),(gpointer) cal);
     g_signal_connect((gpointer) cal->mHelp_help, "activate"
             , G_CALLBACK(mHelp_help_activate_cb), NULL);
     g_signal_connect((gpointer) cal->mHelp_about, "activate"
