@@ -2,8 +2,7 @@
 
 iconsdir = $(datadir)/icons/hicolor/48x48/apps
 icons_DATA =								\
-	org.xfce.orage.png                          \
-	org.xfce.orage.globaltime.png
+	org.xfce.orage.png
 
 EXTRA_DIST =								\
 	$(icons_DATA)
