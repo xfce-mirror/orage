@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-03 00:49+0200\n"
+"POT-Creation-Date: 2022-09-11 12:51+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Moo, 2022\n"
 "Language-Team: Lithuanian (https://www.transifex.com/xfce/teams/16840/lt/)\n"
@@ -22,397 +22,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: lt\n"
 "Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);\n"
-
-#: ../globaltime/globaltime.c:62
-msgid "no underline"
-msgstr "be pabraukimo"
-
-#: ../globaltime/globaltime.c:62
-msgid "single"
-msgstr "viengubas"
-
-#: ../globaltime/globaltime.c:62
-msgid "double"
-msgstr "dvigubas"
-
-#: ../globaltime/globaltime.c:62
-msgid "low"
-msgstr "žemas"
-
-#. ********** timezone tooltip **********
-#: ../globaltime/globaltime.c:341
-#, c-format
-msgid ""
-"%s\n"
-"click to modify clock"
-msgstr ""
-"%s\n"
-"spustelėkite norėdami keisti laikrodį"
-
-#: ../globaltime/globaltime.c:450
-msgid "Localtime"
-msgstr "Vietinis laikas"
-
-#: ../globaltime/globaltime.c:539
-msgid ""
-"button 1 to change preferences \n"
-"button 2 to adjust time of clocks"
-msgstr ""
-"mygtukas 1 nuostatų keitimui\n"
-"mygtukas 2 laikrodžių laiko keitimui"
-
-#: ../globaltime/globaltime.c:554
-msgid "adjust to change hour"
-msgstr "pakeiskite norėdami pakeisti valandą"
-
-#: ../globaltime/globaltime.c:570
-msgid ""
-"adjust to change minute. Click arrows with button 2 to change only 1 minute."
-msgstr ""
-"reguliuokite norėdami pakeisti minutę. Norėdami pakeisti tik 1 minutę, "
-"spustelėkite rodyklę su mygtuku 2."
-
-#: ../globaltime/globaltime.c:624
-msgid "Global Time"
-msgstr "Pasaulio laikas"
-
-#: ../globaltime/gt_prefs.c:290 ../globaltime/gt_prefs.c:291
-msgid "NEW"
-msgstr "NAUJAS"
-
-#: ../globaltime/gt_prefs.c:314
-msgid "NEW COPY"
-msgstr "NAUJA KOPIJA"
-
-#: ../globaltime/gt_prefs.c:336
-msgid "Not possible to delete the last clock."
-msgstr "Ištrinti paskutinio laikrodžio neįmanoma."
-
-#: ../globaltime/gt_prefs.c:577
-msgid "update this clock"
-msgstr "atnaujinti šį laikrodį"
-
-#: ../globaltime/gt_prefs.c:582 ../globaltime/gt_prefs.c:1095
-msgid "add new empty clock"
-msgstr "pridėti naują tuščią laikrodį"
-
-#: ../globaltime/gt_prefs.c:587
-msgid "add new clock using this clock as model"
-msgstr "pridėti naują laikrodį naudojant šį laikrodį kaip šabloną"
-
-#: ../globaltime/gt_prefs.c:592
-msgid "delete this clock"
-msgstr "ištrinti šį laikrodį"
-
-#: ../globaltime/gt_prefs.c:600
-msgid "move this clock first"
-msgstr "perkelti šį laikrodį į pradžią"
-
-#: ../globaltime/gt_prefs.c:605
-msgid "move this clock left"
-msgstr "perkelti šį laikrodį į kairę"
-
-#: ../globaltime/gt_prefs.c:610
-msgid "move this clock right"
-msgstr "perkelti šį laikrodį į dešinę"
-
-#: ../globaltime/gt_prefs.c:615
-msgid "move this clock last"
-msgstr "perkelti šį laikrodį į galą"
-
-#: ../globaltime/gt_prefs.c:623
-msgid "set the timezone of this clock to be local timezone"
-msgstr "šiam laikrodžiui nustatyti vietinę laiko juostą"
-
-#: ../globaltime/gt_prefs.c:629 ../globaltime/gt_prefs.c:1103
-msgid "close window and exit"
-msgstr "užverti langą ir išeiti"
-
-#: ../globaltime/gt_prefs.c:652
-msgid "Globaltime preferences "
-msgstr "Pasaulio laiko nuostatos"
-
-#. -----------------------HEADING-------------------------------------------
-#: ../globaltime/gt_prefs.c:665
-msgid "Clock Parameters"
-msgstr "Laikrodžio parametrai"
-
-#: ../globaltime/gt_prefs.c:669
-msgid "Name of the clock:"
-msgstr "Laikrodžio pavadinimas:"
-
-#: ../globaltime/gt_prefs.c:678
-msgid "enter name of clock"
-msgstr "įveskite laikrodžio pavadinimą"
-
-#: ../globaltime/gt_prefs.c:681
-msgid "Timezone of the clock:"
-msgstr "Laikrodžio laiko juosta:"
-
-#: ../globaltime/gt_prefs.c:683 ../globaltime/gt_prefs.c:1189
-#: ../src/appointment.c:3302 ../src/interface.c:1047 ../src/interface.c:1093
-#: ../src/interface.c:1269 ../src/interface.c:1361 ../src/interface.c:1444
-#: ../src/parameters.c:397 ../src/parameters.c:620 ../src/reminder.c:705
-msgid "_Open"
-msgstr "_Atverti"
-
-#: ../globaltime/gt_prefs.c:714
-msgid "Text Formatting"
-msgstr "Teksto formatavimas"
-
-#. ------------------------background-------------------------
-#: ../globaltime/gt_prefs.c:721 ../globaltime/gt_prefs.c:923
-msgid "Background color:"
-msgstr "Fono spalva:"
-
-#: ../globaltime/gt_prefs.c:728
-msgid "Click to change background colour for clock"
-msgstr "Spustelėkite norėdami pakeisti laikrodžio fono spalvą"
-
-#: ../globaltime/gt_prefs.c:737 ../globaltime/gt_prefs.c:769
-#: ../globaltime/gt_prefs.c:801 ../globaltime/gt_prefs.c:833
-#: ../globaltime/gt_prefs.c:865 ../globaltime/gt_prefs.c:893
-#: ../globaltime/gt_prefs.c:939 ../globaltime/gt_prefs.c:971
-#: ../globaltime/gt_prefs.c:1003 ../globaltime/gt_prefs.c:1035
-msgid "Use default"
-msgstr "Naudoti numatytąjį"
-
-#: ../globaltime/gt_prefs.c:742 ../globaltime/gt_prefs.c:774
-#: ../globaltime/gt_prefs.c:806 ../globaltime/gt_prefs.c:838
-#: ../globaltime/gt_prefs.c:870 ../globaltime/gt_prefs.c:898
-msgid "Cross this to use default instead of selected value"
-msgstr "Pažymėkite norėdami naudoti numatytąjį vietoj pasirinktojo"
-
-#. ------------------------foreground-------------------------
-#: ../globaltime/gt_prefs.c:753 ../globaltime/gt_prefs.c:955
-msgid "Foreground (=text) color:"
-msgstr "Priekinio plano (teksto) spalva:"
-
-#: ../globaltime/gt_prefs.c:760
-msgid "Click to change foreground colour for clock"
-msgstr "Spustelėkite norėdami pakeisti laikrodžio priekinio plano spalvą"
-
-#. ------------------------name font-------------------------
-#: ../globaltime/gt_prefs.c:785 ../globaltime/gt_prefs.c:987
-msgid "Font for name of clock:"
-msgstr "Laikrodžio pavadinimo šriftas:"
-
-#: ../globaltime/gt_prefs.c:792
-msgid "Click to change font for clock name"
-msgstr "Spustelėkite norėdami pakeisti laikrodžio pavadinimo šriftą"
-
-#. ------------------------time font-------------------------
-#: ../globaltime/gt_prefs.c:817 ../globaltime/gt_prefs.c:1019
-msgid "Font for time of clock:"
-msgstr "Laikrodžio laiko spalva:"
-
-#: ../globaltime/gt_prefs.c:824
-msgid "Click to change font for clock time"
-msgstr "Spustelėkite norėdami pakeisti laikrodžio laiko šriftą"
-
-#. ------------------------underline name--------------------
-#: ../globaltime/gt_prefs.c:849
-msgid "Underline name of clock:"
-msgstr "Pabraukti laikrodžio pavadinimą:"
-
-#. ------------------------underline time--------------------
-#: ../globaltime/gt_prefs.c:877
-msgid "Underline time of clock:"
-msgstr "Pabraukti laikrodžio laiką:"
-
-#: ../globaltime/gt_prefs.c:916
-msgid "Text Default Formatting"
-msgstr "Numatytasis teksto formatavimas"
-
-#: ../globaltime/gt_prefs.c:930
-msgid "Click to change default background colour for clocks"
-msgstr "Spustelėkite norėdami pakeisti numatytąją laikrodžių spalvą"
-
-#: ../globaltime/gt_prefs.c:944 ../globaltime/gt_prefs.c:976
-msgid "Cross this to use system default instead of selected color"
-msgstr "Pažymėkite norėdami naudoti numatytąją spalvą vietoj pasirinktosios"
-
-#: ../globaltime/gt_prefs.c:962
-msgid "Click to change default text colour for clocks"
-msgstr "Spustelėkite norėdami pakeisti numatytąją laikrodžių teksto spalvą"
-
-#: ../globaltime/gt_prefs.c:994
-msgid "Click to change default font for clock name"
-msgstr "Spustelėkite norėdami pakeisti numatytąjį laikrodžių šriftą"
-
-#: ../globaltime/gt_prefs.c:1008 ../globaltime/gt_prefs.c:1040
-msgid "Cross this to use system default font instead of selected font"
-msgstr "Pažymėkite norėdami naudoti numatytąjį šriftą vietoj pasirinktojo"
-
-#: ../globaltime/gt_prefs.c:1026
-msgid "Click to change default font for clock time"
-msgstr "Spustelėkite norėdami pakeisti numatytąjį laikrodžio šriftą"
-
-#. ------------------------underline name--------------------
-#: ../globaltime/gt_prefs.c:1051
-msgid "Underline for name of clock:"
-msgstr "Laikrodžio pavadinimo pabraukimas:"
-
-#. ------------------------underline time--------------------
-#: ../globaltime/gt_prefs.c:1065
-msgid "Underline for time of clock:"
-msgstr "Laikrodžio laiko pabraukimas:"
-
-#: ../globaltime/gt_prefs.c:1088
-msgid "update preferences"
-msgstr "atnaujinti nuostatas"
-
-#: ../globaltime/gt_prefs.c:1122
-msgid "Globaltime Preferences"
-msgstr "Pasaulio laiko nuostatos"
-
-#. -----------------------HEADING--------------------------------------
-#: ../globaltime/gt_prefs.c:1133
-msgid "General Preferences"
-msgstr "Bendros nuostatos"
-
-#: ../globaltime/gt_prefs.c:1137
-msgid "Decorations:"
-msgstr "Dekoracijos:"
-
-#: ../globaltime/gt_prefs.c:1138
-msgid "Standard"
-msgstr "Standartinės"
-
-#: ../globaltime/gt_prefs.c:1144
-msgid "Use normal decorations"
-msgstr "Naudoti įprastas dekoracijas"
-
-#: ../globaltime/gt_prefs.c:1149 ../src/appointment.c:3551
-msgid "None"
-msgstr "Niekada"
-
-#: ../globaltime/gt_prefs.c:1156
-msgid "Do not show window decorations (borders)"
-msgstr "Nerodyti lango dekoracijų (rėmelių)"
-
-#: ../globaltime/gt_prefs.c:1162
-msgid "Clock size:"
-msgstr "Laikrodžio dydis:"
-
-#: ../globaltime/gt_prefs.c:1163
-msgid "Equal"
-msgstr "Suvienodinti"
-
-#: ../globaltime/gt_prefs.c:1170
-msgid "All clocks have same size"
-msgstr "Visų laikrodžių dydis vienodas"
-
-#: ../globaltime/gt_prefs.c:1175
-msgid "Varying"
-msgstr "Kintamas"
-
-#: ../globaltime/gt_prefs.c:1181
-msgid "Clock sizes vary"
-msgstr "Laikrodžio dydis keičiasi"
-
-#: ../globaltime/gt_prefs.c:1187
-msgid "Local timezone:"
-msgstr "Vietinė laiko juosta:"
-
-#: ../globaltime/timezone_selection.c:93
-msgid " Other"
-msgstr " Kita"
-
-#: ../globaltime/timezone_selection.c:145 ../src/timezone_selection.c:148
-#, c-format
-msgid "%d hour %d mins"
-msgstr "%d valanda %d minutė"
-
-#: ../globaltime/timezone_selection.c:148 ../src/timezone_selection.c:151
-#, c-format
-msgid "%d hour"
-msgstr "%d valanda"
-
-#: ../globaltime/timezone_selection.c:150 ../src/timezone_selection.c:153
-#, c-format
-msgid "%d mins"
-msgstr "%d min"
-
-#: ../globaltime/timezone_selection.c:156 ../src/timezone_selection.c:159
-msgid "backward"
-msgstr "atgal"
-
-#: ../globaltime/timezone_selection.c:159 ../src/timezone_selection.c:162
-msgid "forward"
-msgstr "pirmyn"
-
-#: ../globaltime/timezone_selection.c:183 ../src/timezone_selection.c:186
-msgid "not changed"
-msgstr "nepakeista"
-
-#: ../globaltime/timezone_selection.c:184 ../src/timezone_selection.c:187
-msgid "not changing"
-msgstr "nesikeičia"
-
-#. location
-#: ../globaltime/timezone_selection.c:234
-#: ../globaltime/timezone_selection.c:239 ../src/appointment.c:2974
-#: ../src/timezone_selection.c:237 ../src/timezone_selection.c:242
-msgid "Location"
-msgstr "Vieta"
-
-#: ../globaltime/timezone_selection.c:245 ../src/timezone_selection.c:248
-msgid "GMT Offset"
-msgstr "GMT poslinkis"
-
-#: ../globaltime/timezone_selection.c:251 ../src/timezone_selection.c:254
-msgid "Previous/Next Change"
-msgstr "Ankstesnis/Kitas pakeitimas"
-
-#: ../globaltime/timezone_selection.c:256 ../src/timezone_selection.c:259
-msgid "Country"
-msgstr "Šalis"
-
-#. We are actually setting the g_par parameter. In other words
-#. we are setting the global default timezone for Orage. This is
-#. done very seldom and we do not want to allow "floating" here.
-#. This test is ugly, but it is not worth an extra parameter.
-#. this is normal appointment
-#: ../globaltime/timezone_selection.c:283
-#: ../globaltime/timezone_selection.c:293 ../src/timezone_selection.c:291
-#: ../src/timezone_selection.c:300 ../src/timezone_selection.c:311
-msgid "Pick timezone"
-msgstr "Pasirinkite laiko juostą"
-
-#: ../globaltime/timezone_selection.c:286
-#: ../globaltime/timezone_selection.c:296 ../src/timezone_selection.c:294
-#: ../src/timezone_selection.c:303 ../src/timezone_selection.c:314
-msgid "Change mode"
-msgstr "Keisti veikseną"
-
-#: ../globaltime/timezone_selection.c:287
-#: ../globaltime/timezone_selection.c:297
-#: ../globaltime/timezone_selection.c:336 ../src/timezone_selection.c:295
-#: ../src/timezone_selection.c:304 ../src/timezone_selection.c:315
-#: ../src/timezone_selection.c:354
-msgid "UTC"
-msgstr "UTC"
-
-#. NOTE: this exists only if ical timezones are being used
-#: ../globaltime/timezone_selection.c:288
-#: ../globaltime/timezone_selection.c:341 ../src/timezone_selection.c:305
-#: ../src/timezone_selection.c:359
-msgid "floating"
-msgstr "slenkantis"
-
-#: ../globaltime/org.xfce.orage.globaltime.desktop.in.h:1
-msgid "Orage Globaltime"
-msgstr "Orage pasaulio laikas"
-
-#: ../globaltime/org.xfce.orage.globaltime.desktop.in.h:2
-msgid "Show clocks from different countries"
-msgstr "Rodo įvairių šalių laiką"
-
-#: ../globaltime/org.xfce.orage.globaltime.desktop.in.h:3
-#: ../src/tray_icon.c:489
-msgid "Globaltime"
-msgstr "Pasaulio laikas"
 
 #: ../src/about-xfcalendar.c:54 ../org.xfce.orage.appdata.xml.in.h:2
 msgid "Orage is a time-managing application for the Xfce desktop environment"
@@ -435,7 +44,7 @@ msgstr "Pabaiga"
 msgid "Due"
 msgstr "Trukmė"
 
-#: ../src/appointment.c:508 ../src/mainbox.c:693
+#: ../src/appointment.c:508 ../src/mainbox.c:676
 #: ../org.xfce.orage.appdata.xml.in.h:1
 msgid "Orage"
 msgstr "Orage"
@@ -528,7 +137,7 @@ msgstr "Pasirinkite datą"
 
 #: ../src/appointment.c:1443 ../src/appointment.c:1458 ../src/day-view.c:400
 #: ../src/day-view.c:473 ../src/event-list.c:1060 ../src/event-list.c:1214
-#: ../src/functions.c:146 ../src/tray_icon.c:462
+#: ../src/functions.c:146 ../src/tray_icon.c:408
 msgid "Today"
 msgstr "Šiandien"
 
@@ -576,7 +185,7 @@ msgstr "Naujas paskyrimas - Orage"
 #. ********* File menu *********
 #. File menu
 #: ../src/appointment.c:2645 ../src/day-view.c:294 ../src/event-list.c:1115
-#: ../src/interface.c:857 ../src/mainbox.c:217
+#: ../src/interface.c:857 ../src/mainbox.c:208
 msgid "_File"
 msgstr "_Failas"
 
@@ -665,6 +274,12 @@ msgstr ""
 #: ../src/appointment.c:2967
 msgid "Title "
 msgstr "Antraštė"
+
+#. location
+#: ../src/appointment.c:2974 ../src/timezone_selection.c:237
+#: ../src/timezone_selection.c:242
+msgid "Location"
+msgstr "Vieta"
 
 #: ../src/appointment.c:2982
 msgid "All day event"
@@ -834,6 +449,12 @@ msgstr "Naudoti"
 msgid "Select this if you want audible alarm"
 msgstr "Pasirinkite jei norite girdimo signalo"
 
+#: ../src/appointment.c:3302 ../src/interface.c:1047 ../src/interface.c:1093
+#: ../src/interface.c:1269 ../src/interface.c:1361 ../src/interface.c:1444
+#: ../src/parameters.c:397 ../src/parameters.c:620 ../src/reminder.c:705
+msgid "_Open"
+msgstr "_Atverti"
+
 #: ../src/appointment.c:3315
 msgid "Repeat alarm sound"
 msgstr "Kartoti signalą"
@@ -940,6 +561,10 @@ msgstr "_Sugrąžinti"
 #: ../src/appointment.c:3485
 msgid "Set current settings from default alarm"
 msgstr "Nustatyti dabartinius nustatymus iš numatytojo signalo"
+
+#: ../src/appointment.c:3551
+msgid "None"
+msgstr "Niekada"
 
 #: ../src/appointment.c:3551
 msgid "Daily"
@@ -1149,7 +774,7 @@ msgstr "Veiksmų datos"
 
 #. ********* View menu *********
 #. View menu
-#: ../src/day-view.c:304 ../src/event-list.c:1138 ../src/mainbox.c:243
+#: ../src/day-view.c:304 ../src/event-list.c:1138 ../src/mainbox.c:234
 msgid "_View"
 msgstr "R_odinys"
 
@@ -1697,47 +1322,43 @@ msgstr ""
 "Nežinomas parametras %s\n"
 "\n"
 
-#: ../src/mainbox.c:225
+#: ../src/mainbox.c:216
 msgid "_Exchange data"
 msgstr "_Keistis duomenimis"
 
 #. Edit menu
-#: ../src/mainbox.c:236
+#: ../src/mainbox.c:227
 msgid "_Edit"
 msgstr "_Taisa"
 
-#: ../src/mainbox.c:246
+#: ../src/mainbox.c:237
 msgid "View selected _date"
 msgstr "Peržiūrėti pasirinktą _datą"
 
-#: ../src/mainbox.c:249
+#: ../src/mainbox.c:240
 msgid "View selected _week"
 msgstr "Peržiūrėti pasirinktą _savaitę"
 
-#: ../src/mainbox.c:255
+#: ../src/mainbox.c:246
 msgid "Select _Today"
 msgstr "Pasirinkti š_iandieną"
 
-#: ../src/mainbox.c:261
-msgid "Show _Globaltime"
-msgstr "Rodyti _pasaulio laiką"
-
 #. Help menu
 #. the rest
-#: ../src/mainbox.c:265 ../src/parameters.c:1197
+#: ../src/mainbox.c:250 ../src/parameters.c:1197
 msgid "_Help"
 msgstr "_Žinynas"
 
-#: ../src/mainbox.c:328 ../src/reminder.c:1027
+#: ../src/mainbox.c:311 ../src/reminder.c:1027
 msgid "No title defined"
 msgstr "Nėra apibrėžta antraštė"
 
-#: ../src/mainbox.c:386
+#: ../src/mainbox.c:369
 #, c-format
 msgid " Location: %s\n"
 msgstr " Vieta: %s\n"
 
-#: ../src/mainbox.c:396
+#: ../src/mainbox.c:379
 #, c-format
 msgid ""
 "\n"
@@ -1748,11 +1369,11 @@ msgstr ""
 " Pastaba:\n"
 "%s"
 
-#: ../src/mainbox.c:404
+#: ../src/mainbox.c:387
 msgid "Never"
 msgstr "Niekada"
 
-#: ../src/mainbox.c:412
+#: ../src/mainbox.c:395
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1765,7 +1386,7 @@ msgstr ""
 " Trukmė:\t%s\n"
 " Atlikta:\t%s%s"
 
-#: ../src/mainbox.c:419
+#: ../src/mainbox.c:402
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1776,16 +1397,16 @@ msgstr ""
 "%s Pradžia:\t%s\n"
 " Pabaiga:\t%s%s"
 
-#: ../src/mainbox.c:498
+#: ../src/mainbox.c:481
 msgid "<b>To do:</b>"
 msgstr "<b>Darbai:</b>"
 
-#: ../src/mainbox.c:535
+#: ../src/mainbox.c:518
 #, c-format
 msgid "<b>Events for %s:</b>"
 msgstr "<b>Įvykiai %s:</b>"
 
-#: ../src/mainbox.c:545
+#: ../src/mainbox.c:528
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>Įvykiai %s - %s:</b>"
@@ -4306,15 +3927,83 @@ msgstr "JAV/Ramusis_vandenynas-naujasis"
 msgid "US/Samoa"
 msgstr "JAV/Amerikos_Samoa"
 
-#: ../src/tray_icon.c:469
+#: ../src/timezone_selection.c:148
+#, c-format
+msgid "%d hour %d mins"
+msgstr "%d valanda %d minutė"
+
+#: ../src/timezone_selection.c:151
+#, c-format
+msgid "%d hour"
+msgstr "%d valanda"
+
+#: ../src/timezone_selection.c:153
+#, c-format
+msgid "%d mins"
+msgstr "%d min"
+
+#: ../src/timezone_selection.c:159
+msgid "backward"
+msgstr "atgal"
+
+#: ../src/timezone_selection.c:162
+msgid "forward"
+msgstr "pirmyn"
+
+#: ../src/timezone_selection.c:186
+msgid "not changed"
+msgstr "nepakeista"
+
+#: ../src/timezone_selection.c:187
+msgid "not changing"
+msgstr "nesikeičia"
+
+#: ../src/timezone_selection.c:248
+msgid "GMT Offset"
+msgstr "GMT poslinkis"
+
+#: ../src/timezone_selection.c:254
+msgid "Previous/Next Change"
+msgstr "Ankstesnis/Kitas pakeitimas"
+
+#: ../src/timezone_selection.c:259
+msgid "Country"
+msgstr "Šalis"
+
+#. We are actually setting the g_par parameter. In other words
+#. we are setting the global default timezone for Orage. This is
+#. done very seldom and we do not want to allow "floating" here.
+#. This test is ugly, but it is not worth an extra parameter.
+#. this is normal appointment
+#: ../src/timezone_selection.c:291 ../src/timezone_selection.c:300
+#: ../src/timezone_selection.c:311
+msgid "Pick timezone"
+msgstr "Pasirinkite laiko juostą"
+
+#: ../src/timezone_selection.c:294 ../src/timezone_selection.c:303
+#: ../src/timezone_selection.c:314
+msgid "Change mode"
+msgstr "Keisti veikseną"
+
+#: ../src/timezone_selection.c:295 ../src/timezone_selection.c:304
+#: ../src/timezone_selection.c:315 ../src/timezone_selection.c:354
+msgid "UTC"
+msgstr "UTC"
+
+#. NOTE: this exists only if ical timezones are being used
+#: ../src/timezone_selection.c:305 ../src/timezone_selection.c:359
+msgid "floating"
+msgstr "slenkantis"
+
+#: ../src/tray_icon.c:415
 msgid "New appointment"
 msgstr "Naujas paskyrimas"
 
-#: ../src/tray_icon.c:476
+#: ../src/tray_icon.c:422
 msgid "Preferences"
 msgstr "Nuostatos"
 
-#: ../src/tray_icon.c:483
+#: ../src/tray_icon.c:429
 msgid "Quit"
 msgstr "Išeiti"
 
