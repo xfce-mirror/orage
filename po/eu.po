@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-03 00:49+0200\n"
+"POT-Creation-Date: 2022-09-11 12:51+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: beriain, 2022\n"
 "Language-Team: Basque (https://www.transifex.com/xfce/teams/16840/eu/)\n"
@@ -22,401 +22,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: eu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: ../globaltime/globaltime.c:62
-msgid "no underline"
-msgstr "azpimarrarik ez"
-
-#: ../globaltime/globaltime.c:62
-msgid "single"
-msgstr ""
-
-#: ../globaltime/globaltime.c:62
-msgid "double"
-msgstr ""
-
-#: ../globaltime/globaltime.c:62
-msgid "low"
-msgstr ""
-
-#. ********** timezone tooltip **********
-#: ../globaltime/globaltime.c:341
-#, c-format
-msgid ""
-"%s\n"
-"click to modify clock"
-msgstr ""
-"%s\n"
-"klikatu ordua aldatzeko"
-
-#: ../globaltime/globaltime.c:450
-msgid "Localtime"
-msgstr "Ordu-lokala"
-
-#: ../globaltime/globaltime.c:539
-msgid ""
-"button 1 to change preferences \n"
-"button 2 to adjust time of clocks"
-msgstr ""
-"1 botoia hobespenak aldatzeko \n"
-"2 botoia ordulariak doitzeko"
-
-#: ../globaltime/globaltime.c:554
-msgid "adjust to change hour"
-msgstr "doitu orduak aldatzeko"
-
-#: ../globaltime/globaltime.c:570
-msgid ""
-"adjust to change minute. Click arrows with button 2 to change only 1 minute."
-msgstr ""
-"doitu minutua aldatzeko. Sakatu geziak 2 botoiarekin minutu bakar bat "
-"aldatzeko."
-
-#: ../globaltime/globaltime.c:624
-msgid "Global Time"
-msgstr ""
-
-#: ../globaltime/gt_prefs.c:290 ../globaltime/gt_prefs.c:291
-msgid "NEW"
-msgstr "BERRIA"
-
-#: ../globaltime/gt_prefs.c:314
-msgid "NEW COPY"
-msgstr "KOPIA BERRIA"
-
-#: ../globaltime/gt_prefs.c:336
-msgid "Not possible to delete the last clock."
-msgstr "Ez da posible azken ordularia ezabatzea."
-
-#: ../globaltime/gt_prefs.c:577
-msgid "update this clock"
-msgstr "eguneratu ordulari hau"
-
-#: ../globaltime/gt_prefs.c:582 ../globaltime/gt_prefs.c:1095
-msgid "add new empty clock"
-msgstr "gehitu ordulari huts berri bat"
-
-#: ../globaltime/gt_prefs.c:587
-msgid "add new clock using this clock as model"
-msgstr "gehitu ordulari berri bat hau modelo gisa artuaz"
-
-#: ../globaltime/gt_prefs.c:592
-msgid "delete this clock"
-msgstr "ezabatu ordulari hau"
-
-#: ../globaltime/gt_prefs.c:600
-msgid "move this clock first"
-msgstr "mugitu ordulari hau lehenengora"
-
-#: ../globaltime/gt_prefs.c:605
-msgid "move this clock left"
-msgstr "mugitu ordulari hau ezkerrera"
-
-#: ../globaltime/gt_prefs.c:610
-msgid "move this clock right"
-msgstr "mugitu ordulari hau eskuinera"
-
-#: ../globaltime/gt_prefs.c:615
-msgid "move this clock last"
-msgstr "mugitu ordulari hau azkenera"
-
-#: ../globaltime/gt_prefs.c:623
-msgid "set the timezone of this clock to be local timezone"
-msgstr "ezarri ordulari honetako ordu zonaldea ordu zonalde lokala bezala"
-
-#: ../globaltime/gt_prefs.c:629 ../globaltime/gt_prefs.c:1103
-msgid "close window and exit"
-msgstr "itxi leihoa eta irten"
-
-#: ../globaltime/gt_prefs.c:652
-msgid "Globaltime preferences "
-msgstr "Ordu-global hobespenak "
-
-#. -----------------------HEADING-------------------------------------------
-#: ../globaltime/gt_prefs.c:665
-msgid "Clock Parameters"
-msgstr "Ordulari parameteoak"
-
-#: ../globaltime/gt_prefs.c:669
-msgid "Name of the clock:"
-msgstr "Ordulariaren izena:"
-
-#: ../globaltime/gt_prefs.c:678
-msgid "enter name of clock"
-msgstr "idatzi ordulariaren izena"
-
-#: ../globaltime/gt_prefs.c:681
-msgid "Timezone of the clock:"
-msgstr "Ordulariaren ordu zonaldea:"
-
-#: ../globaltime/gt_prefs.c:683 ../globaltime/gt_prefs.c:1189
-#: ../src/appointment.c:3302 ../src/interface.c:1047 ../src/interface.c:1093
-#: ../src/interface.c:1269 ../src/interface.c:1361 ../src/interface.c:1444
-#: ../src/parameters.c:397 ../src/parameters.c:620 ../src/reminder.c:705
-msgid "_Open"
-msgstr "_Ireki"
-
-#: ../globaltime/gt_prefs.c:714
-msgid "Text Formatting"
-msgstr "Testu formateatzea"
-
-#. ------------------------background-------------------------
-#: ../globaltime/gt_prefs.c:721 ../globaltime/gt_prefs.c:923
-msgid "Background color:"
-msgstr "Atzeko planoaren kolorea:"
-
-#: ../globaltime/gt_prefs.c:728
-msgid "Click to change background colour for clock"
-msgstr "Klikatu ordualraren atzeko planoko kolorea aldatzeko"
-
-#: ../globaltime/gt_prefs.c:737 ../globaltime/gt_prefs.c:769
-#: ../globaltime/gt_prefs.c:801 ../globaltime/gt_prefs.c:833
-#: ../globaltime/gt_prefs.c:865 ../globaltime/gt_prefs.c:893
-#: ../globaltime/gt_prefs.c:939 ../globaltime/gt_prefs.c:971
-#: ../globaltime/gt_prefs.c:1003 ../globaltime/gt_prefs.c:1035
-msgid "Use default"
-msgstr "Erabili lehenetsia"
-
-#: ../globaltime/gt_prefs.c:742 ../globaltime/gt_prefs.c:774
-#: ../globaltime/gt_prefs.c:806 ../globaltime/gt_prefs.c:838
-#: ../globaltime/gt_prefs.c:870 ../globaltime/gt_prefs.c:898
-msgid "Cross this to use default instead of selected value"
-msgstr "Hau aukeratu hautatutako balioaren ordez lehenetsia erabiltzeko"
-
-#. ------------------------foreground-------------------------
-#: ../globaltime/gt_prefs.c:753 ../globaltime/gt_prefs.c:955
-msgid "Foreground (=text) color:"
-msgstr "Lehen planoko (=testua) kolorea:"
-
-#: ../globaltime/gt_prefs.c:760
-msgid "Click to change foreground colour for clock"
-msgstr "Klikatu ordulariaren aurreko planoko kolorea aldatzeko"
-
-#. ------------------------name font-------------------------
-#: ../globaltime/gt_prefs.c:785 ../globaltime/gt_prefs.c:987
-msgid "Font for name of clock:"
-msgstr "Ordulari izenaren letra-tipoa:"
-
-#: ../globaltime/gt_prefs.c:792
-msgid "Click to change font for clock name"
-msgstr "Klikatu ordulariaren izenaren letra-tipoa aldatzeko"
-
-#. ------------------------time font-------------------------
-#: ../globaltime/gt_prefs.c:817 ../globaltime/gt_prefs.c:1019
-msgid "Font for time of clock:"
-msgstr "Ordulariaren orduaren letra-tipoa:"
-
-#: ../globaltime/gt_prefs.c:824
-msgid "Click to change font for clock time"
-msgstr "Klikatu ordulariko orduaren letra-tipoa aldatzeko"
-
-#. ------------------------underline name--------------------
-#: ../globaltime/gt_prefs.c:849
-msgid "Underline name of clock:"
-msgstr "Ordulari izenaren azpimarratua:"
-
-#. ------------------------underline time--------------------
-#: ../globaltime/gt_prefs.c:877
-msgid "Underline time of clock:"
-msgstr "Ordulariaren ordu azpimarratua:"
-
-#: ../globaltime/gt_prefs.c:916
-msgid "Text Default Formatting"
-msgstr "Testuaren lehenetsitako formatua"
-
-#: ../globaltime/gt_prefs.c:930
-msgid "Click to change default background colour for clocks"
-msgstr "Klikatu ordularien lehenetsitako atzeko-planoko kolorea aldatzeko"
-
-#: ../globaltime/gt_prefs.c:944 ../globaltime/gt_prefs.c:976
-msgid "Cross this to use system default instead of selected color"
-msgstr ""
-"Gurutze baten bidez markatu hautatutakoaren ordez sisteman lehenetsitako "
-"kolorea erabiltzeko"
-
-#: ../globaltime/gt_prefs.c:962
-msgid "Click to change default text colour for clocks"
-msgstr "Klikatu ordularien testuaren lehenetsitako kolorea aldatzeko"
-
-#: ../globaltime/gt_prefs.c:994
-msgid "Click to change default font for clock name"
-msgstr "Klikatu ordularien izenaren lehenetsitako letra-tipoa aldatzeko"
-
-#: ../globaltime/gt_prefs.c:1008 ../globaltime/gt_prefs.c:1040
-msgid "Cross this to use system default font instead of selected font"
-msgstr ""
-"Gurutze baten bidez markatu hautatutakoaren ordez sisteman lehenetsitako "
-"letra-tipoa erabiltzeko"
-
-#: ../globaltime/gt_prefs.c:1026
-msgid "Click to change default font for clock time"
-msgstr "Klikatu ordulariko orduaren lehenetsitako letra-tipoa aldatzeko"
-
-#. ------------------------underline name--------------------
-#: ../globaltime/gt_prefs.c:1051
-msgid "Underline for name of clock:"
-msgstr "Ordulariko izenaren azpimarratua:"
-
-#. ------------------------underline time--------------------
-#: ../globaltime/gt_prefs.c:1065
-msgid "Underline for time of clock:"
-msgstr "Ordulariko orduaren azpimarratua:"
-
-#: ../globaltime/gt_prefs.c:1088
-msgid "update preferences"
-msgstr "eguneratu hobespenak"
-
-#: ../globaltime/gt_prefs.c:1122
-msgid "Globaltime Preferences"
-msgstr "Ordu-global hobespenak"
-
-#. -----------------------HEADING--------------------------------------
-#: ../globaltime/gt_prefs.c:1133
-msgid "General Preferences"
-msgstr "Hobespen orokorrak"
-
-#: ../globaltime/gt_prefs.c:1137
-msgid "Decorations:"
-msgstr "Dekorazioak:"
-
-#: ../globaltime/gt_prefs.c:1138
-msgid "Standard"
-msgstr "Estandarra"
-
-#: ../globaltime/gt_prefs.c:1144
-msgid "Use normal decorations"
-msgstr "Erabili dekorazio arrunta"
-
-#: ../globaltime/gt_prefs.c:1149 ../src/appointment.c:3551
-msgid "None"
-msgstr "Batez"
-
-#: ../globaltime/gt_prefs.c:1156
-msgid "Do not show window decorations (borders)"
-msgstr "Ez erakutsi leoiho dekorazioak (ertzak)"
-
-#: ../globaltime/gt_prefs.c:1162
-msgid "Clock size:"
-msgstr "Ordulari tamaina:"
-
-#: ../globaltime/gt_prefs.c:1163
-msgid "Equal"
-msgstr "Berdin"
-
-#: ../globaltime/gt_prefs.c:1170
-msgid "All clocks have same size"
-msgstr "Ordulari guztiek tamaina berdina dute"
-
-#: ../globaltime/gt_prefs.c:1175
-msgid "Varying"
-msgstr "Aldakorrra"
-
-#: ../globaltime/gt_prefs.c:1181
-msgid "Clock sizes vary"
-msgstr "Ordulari tamaina aldaketa"
-
-#: ../globaltime/gt_prefs.c:1187
-msgid "Local timezone:"
-msgstr "Ordu-zonalde lokala:"
-
-#: ../globaltime/timezone_selection.c:93
-msgid " Other"
-msgstr " Besteak"
-
-#: ../globaltime/timezone_selection.c:145 ../src/timezone_selection.c:148
-#, c-format
-msgid "%d hour %d mins"
-msgstr "%d ordu %d minutu"
-
-#: ../globaltime/timezone_selection.c:148 ../src/timezone_selection.c:151
-#, c-format
-msgid "%d hour"
-msgstr "%d ordu"
-
-#: ../globaltime/timezone_selection.c:150 ../src/timezone_selection.c:153
-#, c-format
-msgid "%d mins"
-msgstr "%d minutu"
-
-#: ../globaltime/timezone_selection.c:156 ../src/timezone_selection.c:159
-msgid "backward"
-msgstr "atzera"
-
-#: ../globaltime/timezone_selection.c:159 ../src/timezone_selection.c:162
-msgid "forward"
-msgstr "aurrera"
-
-#: ../globaltime/timezone_selection.c:183 ../src/timezone_selection.c:186
-msgid "not changed"
-msgstr "aldatu gabe"
-
-#: ../globaltime/timezone_selection.c:184 ../src/timezone_selection.c:187
-msgid "not changing"
-msgstr "aldatzen"
-
-#. location
-#: ../globaltime/timezone_selection.c:234
-#: ../globaltime/timezone_selection.c:239 ../src/appointment.c:2974
-#: ../src/timezone_selection.c:237 ../src/timezone_selection.c:242
-msgid "Location"
-msgstr "Kokalekua"
-
-#: ../globaltime/timezone_selection.c:245 ../src/timezone_selection.c:248
-msgid "GMT Offset"
-msgstr "GMT ezberdintasuna"
-
-#: ../globaltime/timezone_selection.c:251 ../src/timezone_selection.c:254
-msgid "Previous/Next Change"
-msgstr "Aurreko/Hurrengo aldaketa"
-
-#: ../globaltime/timezone_selection.c:256 ../src/timezone_selection.c:259
-msgid "Country"
-msgstr "Estatua"
-
-#. We are actually setting the g_par parameter. In other words
-#. we are setting the global default timezone for Orage. This is
-#. done very seldom and we do not want to allow "floating" here.
-#. This test is ugly, but it is not worth an extra parameter.
-#. this is normal appointment
-#: ../globaltime/timezone_selection.c:283
-#: ../globaltime/timezone_selection.c:293 ../src/timezone_selection.c:291
-#: ../src/timezone_selection.c:300 ../src/timezone_selection.c:311
-msgid "Pick timezone"
-msgstr "Ordu zonaldea aukeratu"
-
-#: ../globaltime/timezone_selection.c:286
-#: ../globaltime/timezone_selection.c:296 ../src/timezone_selection.c:294
-#: ../src/timezone_selection.c:303 ../src/timezone_selection.c:314
-msgid "Change mode"
-msgstr "Aldatu modua"
-
-#: ../globaltime/timezone_selection.c:287
-#: ../globaltime/timezone_selection.c:297
-#: ../globaltime/timezone_selection.c:336 ../src/timezone_selection.c:295
-#: ../src/timezone_selection.c:304 ../src/timezone_selection.c:315
-#: ../src/timezone_selection.c:354
-msgid "UTC"
-msgstr "UTC"
-
-#. NOTE: this exists only if ical timezones are being used
-#: ../globaltime/timezone_selection.c:288
-#: ../globaltime/timezone_selection.c:341 ../src/timezone_selection.c:305
-#: ../src/timezone_selection.c:359
-msgid "floating"
-msgstr "mugikorra"
-
-#: ../globaltime/org.xfce.orage.globaltime.desktop.in.h:1
-msgid "Orage Globaltime"
-msgstr "Orage ordu-globala"
-
-#: ../globaltime/org.xfce.orage.globaltime.desktop.in.h:2
-msgid "Show clocks from different countries"
-msgstr "Ikusi herrialde ezberdinetako ordulariak"
-
-#: ../globaltime/org.xfce.orage.globaltime.desktop.in.h:3
-#: ../src/tray_icon.c:489
-msgid "Globaltime"
-msgstr "Ordu-globala"
 
 #: ../src/about-xfcalendar.c:54 ../org.xfce.orage.appdata.xml.in.h:2
 msgid "Orage is a time-managing application for the Xfce desktop environment"
@@ -437,7 +42,7 @@ msgstr "Amaitu"
 msgid "Due"
 msgstr "Arte"
 
-#: ../src/appointment.c:508 ../src/mainbox.c:693
+#: ../src/appointment.c:508 ../src/mainbox.c:676
 #: ../org.xfce.orage.appdata.xml.in.h:1
 msgid "Orage"
 msgstr "Orage"
@@ -526,7 +131,7 @@ msgstr "Data aukeratu"
 
 #: ../src/appointment.c:1443 ../src/appointment.c:1458 ../src/day-view.c:400
 #: ../src/day-view.c:473 ../src/event-list.c:1060 ../src/event-list.c:1214
-#: ../src/functions.c:146 ../src/tray_icon.c:462
+#: ../src/functions.c:146 ../src/tray_icon.c:408
 msgid "Today"
 msgstr "Gaur"
 
@@ -574,7 +179,7 @@ msgstr "Hitzordu berria - Orage"
 #. ********* File menu *********
 #. File menu
 #: ../src/appointment.c:2645 ../src/day-view.c:294 ../src/event-list.c:1115
-#: ../src/interface.c:857 ../src/mainbox.c:217
+#: ../src/interface.c:857 ../src/mainbox.c:208
 msgid "_File"
 msgstr "_Fitxategia"
 
@@ -663,6 +268,12 @@ msgstr ""
 #: ../src/appointment.c:2967
 msgid "Title "
 msgstr "Izenburua "
+
+#. location
+#: ../src/appointment.c:2974 ../src/timezone_selection.c:237
+#: ../src/timezone_selection.c:242
+msgid "Location"
+msgstr "Kokalekua"
 
 #: ../src/appointment.c:2982
 msgid "All day event"
@@ -820,6 +431,12 @@ msgstr "Erabili"
 msgid "Select this if you want audible alarm"
 msgstr "Hau hautatu soinu bidezko alarma nahi izanez gero"
 
+#: ../src/appointment.c:3302 ../src/interface.c:1047 ../src/interface.c:1093
+#: ../src/interface.c:1269 ../src/interface.c:1361 ../src/interface.c:1444
+#: ../src/parameters.c:397 ../src/parameters.c:620 ../src/reminder.c:705
+msgid "_Open"
+msgstr "_Ireki"
+
 #: ../src/appointment.c:3315
 msgid "Repeat alarm sound"
 msgstr "Errepikatu abisu soinua"
@@ -922,6 +539,10 @@ msgstr "Lehene_ratu"
 #: ../src/appointment.c:3485
 msgid "Set current settings from default alarm"
 msgstr "Ezarri ezarpenak lehenetsitako alarmatik"
+
+#: ../src/appointment.c:3551
+msgid "None"
+msgstr "Batez"
 
 #: ../src/appointment.c:3551
 msgid "Daily"
@@ -1123,7 +744,7 @@ msgstr "Ekintza datak"
 
 #. ********* View menu *********
 #. View menu
-#: ../src/day-view.c:304 ../src/event-list.c:1138 ../src/mainbox.c:243
+#: ../src/day-view.c:304 ../src/event-list.c:1138 ../src/mainbox.c:234
 msgid "_View"
 msgstr "_Ikusi"
 
@@ -1651,47 +1272,43 @@ msgstr ""
 "Aukera ezezaguna: %s\n"
 "\n"
 
-#: ../src/mainbox.c:225
+#: ../src/mainbox.c:216
 msgid "_Exchange data"
 msgstr "_Trukatze datuak"
 
 #. Edit menu
-#: ../src/mainbox.c:236
+#: ../src/mainbox.c:227
 msgid "_Edit"
 msgstr "_Editatu"
 
-#: ../src/mainbox.c:246
+#: ../src/mainbox.c:237
 msgid "View selected _date"
 msgstr "Bistarazi hautaturiko _data"
 
-#: ../src/mainbox.c:249
+#: ../src/mainbox.c:240
 msgid "View selected _week"
 msgstr "Bistarazi hautaturiko _astea"
 
-#: ../src/mainbox.c:255
+#: ../src/mainbox.c:246
 msgid "Select _Today"
 msgstr "Hautatu _Gaur"
 
-#: ../src/mainbox.c:261
-msgid "Show _Globaltime"
-msgstr "Ikusi ordu-globala"
-
 #. Help menu
 #. the rest
-#: ../src/mainbox.c:265 ../src/parameters.c:1197
+#: ../src/mainbox.c:250 ../src/parameters.c:1197
 msgid "_Help"
 msgstr "_Laguntza"
 
-#: ../src/mainbox.c:328 ../src/reminder.c:1027
+#: ../src/mainbox.c:311 ../src/reminder.c:1027
 msgid "No title defined"
 msgstr ""
 
-#: ../src/mainbox.c:386
+#: ../src/mainbox.c:369
 #, c-format
 msgid " Location: %s\n"
 msgstr " Kokapena: %s\n"
 
-#: ../src/mainbox.c:396
+#: ../src/mainbox.c:379
 #, c-format
 msgid ""
 "\n"
@@ -1702,11 +1319,11 @@ msgstr ""
 " Oharra:\n"
 "%s"
 
-#: ../src/mainbox.c:404
+#: ../src/mainbox.c:387
 msgid "Never"
 msgstr "Inoiz"
 
-#: ../src/mainbox.c:412
+#: ../src/mainbox.c:395
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1715,7 +1332,7 @@ msgid ""
 " Done:\t%s%s"
 msgstr ""
 
-#: ../src/mainbox.c:419
+#: ../src/mainbox.c:402
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1723,16 +1340,16 @@ msgid ""
 " End:\t%s%s"
 msgstr ""
 
-#: ../src/mainbox.c:498
+#: ../src/mainbox.c:481
 msgid "<b>To do:</b>"
 msgstr "<b>Egiteko:</b>"
 
-#: ../src/mainbox.c:535
+#: ../src/mainbox.c:518
 #, c-format
 msgid "<b>Events for %s:</b>"
 msgstr "<b>%s-ren geraterak:</b>"
 
-#: ../src/mainbox.c:545
+#: ../src/mainbox.c:528
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>%s - %s-ren gertaerak:</b>"
@@ -4253,15 +3870,83 @@ msgstr ""
 msgid "US/Samoa"
 msgstr ""
 
-#: ../src/tray_icon.c:469
+#: ../src/timezone_selection.c:148
+#, c-format
+msgid "%d hour %d mins"
+msgstr "%d ordu %d minutu"
+
+#: ../src/timezone_selection.c:151
+#, c-format
+msgid "%d hour"
+msgstr "%d ordu"
+
+#: ../src/timezone_selection.c:153
+#, c-format
+msgid "%d mins"
+msgstr "%d minutu"
+
+#: ../src/timezone_selection.c:159
+msgid "backward"
+msgstr "atzera"
+
+#: ../src/timezone_selection.c:162
+msgid "forward"
+msgstr "aurrera"
+
+#: ../src/timezone_selection.c:186
+msgid "not changed"
+msgstr "aldatu gabe"
+
+#: ../src/timezone_selection.c:187
+msgid "not changing"
+msgstr "aldatzen"
+
+#: ../src/timezone_selection.c:248
+msgid "GMT Offset"
+msgstr "GMT ezberdintasuna"
+
+#: ../src/timezone_selection.c:254
+msgid "Previous/Next Change"
+msgstr "Aurreko/Hurrengo aldaketa"
+
+#: ../src/timezone_selection.c:259
+msgid "Country"
+msgstr "Estatua"
+
+#. We are actually setting the g_par parameter. In other words
+#. we are setting the global default timezone for Orage. This is
+#. done very seldom and we do not want to allow "floating" here.
+#. This test is ugly, but it is not worth an extra parameter.
+#. this is normal appointment
+#: ../src/timezone_selection.c:291 ../src/timezone_selection.c:300
+#: ../src/timezone_selection.c:311
+msgid "Pick timezone"
+msgstr "Ordu zonaldea aukeratu"
+
+#: ../src/timezone_selection.c:294 ../src/timezone_selection.c:303
+#: ../src/timezone_selection.c:314
+msgid "Change mode"
+msgstr "Aldatu modua"
+
+#: ../src/timezone_selection.c:295 ../src/timezone_selection.c:304
+#: ../src/timezone_selection.c:315 ../src/timezone_selection.c:354
+msgid "UTC"
+msgstr "UTC"
+
+#. NOTE: this exists only if ical timezones are being used
+#: ../src/timezone_selection.c:305 ../src/timezone_selection.c:359
+msgid "floating"
+msgstr "mugikorra"
+
+#: ../src/tray_icon.c:415
 msgid "New appointment"
 msgstr "Hitzordu berria"
 
-#: ../src/tray_icon.c:476
+#: ../src/tray_icon.c:422
 msgid "Preferences"
 msgstr "Hobespenak"
 
-#: ../src/tray_icon.c:483
+#: ../src/tray_icon.c:429
 msgid "Quit"
 msgstr "Irten"
 
