@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-03 00:49+0200\n"
+"POT-Creation-Date: 2022-09-11 12:51+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2022\n"
 "Language-Team: Japanese (https://www.transifex.com/xfce/teams/16840/ja/)\n"
@@ -24,395 +24,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-#: ../globaltime/globaltime.c:62
-msgid "no underline"
-msgstr "下線なし"
-
-#: ../globaltime/globaltime.c:62
-msgid "single"
-msgstr "単線"
-
-#: ../globaltime/globaltime.c:62
-msgid "double"
-msgstr "二重線"
-
-#: ../globaltime/globaltime.c:62
-msgid "low"
-msgstr "下線"
-
-#. ********** timezone tooltip **********
-#: ../globaltime/globaltime.c:341
-#, c-format
-msgid ""
-"%s\n"
-"click to modify clock"
-msgstr ""
-"%s\n"
-"クリックで時刻を修正します"
-
-#: ../globaltime/globaltime.c:450
-msgid "Localtime"
-msgstr "現地時間"
-
-#: ../globaltime/globaltime.c:539
-msgid ""
-"button 1 to change preferences \n"
-"button 2 to adjust time of clocks"
-msgstr ""
-"マウスボタン1 で設定を変更します\n"
-"マウスボタン2 で時刻を調整します"
-
-#: ../globaltime/globaltime.c:554
-msgid "adjust to change hour"
-msgstr "時を調整してください"
-
-#: ../globaltime/globaltime.c:570
-msgid ""
-"adjust to change minute. Click arrows with button 2 to change only 1 minute."
-msgstr "分を調整してください。ボタン 2 で矢印ボタンをクリックすると 1 分ずつ変更します。"
-
-#: ../globaltime/globaltime.c:624
-msgid "Global Time"
-msgstr "世界時計"
-
-#: ../globaltime/gt_prefs.c:290 ../globaltime/gt_prefs.c:291
-msgid "NEW"
-msgstr "新規"
-
-#: ../globaltime/gt_prefs.c:314
-msgid "NEW COPY"
-msgstr "新規のコピー"
-
-#: ../globaltime/gt_prefs.c:336
-msgid "Not possible to delete the last clock."
-msgstr "最後の時計は削除できません。"
-
-#: ../globaltime/gt_prefs.c:577
-msgid "update this clock"
-msgstr "この時計を更新します"
-
-#: ../globaltime/gt_prefs.c:582 ../globaltime/gt_prefs.c:1095
-msgid "add new empty clock"
-msgstr "新規時計を追加します"
-
-#: ../globaltime/gt_prefs.c:587
-msgid "add new clock using this clock as model"
-msgstr "この時計をモデルにして新しい時計を追加します"
-
-#: ../globaltime/gt_prefs.c:592
-msgid "delete this clock"
-msgstr "この時計を削除します"
-
-#: ../globaltime/gt_prefs.c:600
-msgid "move this clock first"
-msgstr "この時計を先頭に移動します"
-
-#: ../globaltime/gt_prefs.c:605
-msgid "move this clock left"
-msgstr "この時計を左に移動します"
-
-#: ../globaltime/gt_prefs.c:610
-msgid "move this clock right"
-msgstr "この時計を右に移動します"
-
-#: ../globaltime/gt_prefs.c:615
-msgid "move this clock last"
-msgstr "この時計を最後に移動します"
-
-#: ../globaltime/gt_prefs.c:623
-msgid "set the timezone of this clock to be local timezone"
-msgstr "この時計のタイムゾーンを現地のタイムゾーンに設定します"
-
-#: ../globaltime/gt_prefs.c:629 ../globaltime/gt_prefs.c:1103
-msgid "close window and exit"
-msgstr "ウィンドウを閉じて終了します"
-
-#: ../globaltime/gt_prefs.c:652
-msgid "Globaltime preferences "
-msgstr "世界時計設定 "
-
-#. -----------------------HEADING-------------------------------------------
-#: ../globaltime/gt_prefs.c:665
-msgid "Clock Parameters"
-msgstr "時計のパラメーター"
-
-#: ../globaltime/gt_prefs.c:669
-msgid "Name of the clock:"
-msgstr "時計の名前:"
-
-#: ../globaltime/gt_prefs.c:678
-msgid "enter name of clock"
-msgstr "時計の名前を入力してください"
-
-#: ../globaltime/gt_prefs.c:681
-msgid "Timezone of the clock:"
-msgstr "時計のタイムゾーン:"
-
-#: ../globaltime/gt_prefs.c:683 ../globaltime/gt_prefs.c:1189
-#: ../src/appointment.c:3302 ../src/interface.c:1047 ../src/interface.c:1093
-#: ../src/interface.c:1269 ../src/interface.c:1361 ../src/interface.c:1444
-#: ../src/parameters.c:397 ../src/parameters.c:620 ../src/reminder.c:705
-msgid "_Open"
-msgstr "開く(_O)"
-
-#: ../globaltime/gt_prefs.c:714
-msgid "Text Formatting"
-msgstr "文字のフォーマット"
-
-#. ------------------------background-------------------------
-#: ../globaltime/gt_prefs.c:721 ../globaltime/gt_prefs.c:923
-msgid "Background color:"
-msgstr "背景色:"
-
-#: ../globaltime/gt_prefs.c:728
-msgid "Click to change background colour for clock"
-msgstr "クリックで時計の背景色を変更します"
-
-#: ../globaltime/gt_prefs.c:737 ../globaltime/gt_prefs.c:769
-#: ../globaltime/gt_prefs.c:801 ../globaltime/gt_prefs.c:833
-#: ../globaltime/gt_prefs.c:865 ../globaltime/gt_prefs.c:893
-#: ../globaltime/gt_prefs.c:939 ../globaltime/gt_prefs.c:971
-#: ../globaltime/gt_prefs.c:1003 ../globaltime/gt_prefs.c:1035
-msgid "Use default"
-msgstr "デフォルトを使用する"
-
-#: ../globaltime/gt_prefs.c:742 ../globaltime/gt_prefs.c:774
-#: ../globaltime/gt_prefs.c:806 ../globaltime/gt_prefs.c:838
-#: ../globaltime/gt_prefs.c:870 ../globaltime/gt_prefs.c:898
-msgid "Cross this to use default instead of selected value"
-msgstr "チェックマークをつけると既定値を使用します"
-
-#. ------------------------foreground-------------------------
-#: ../globaltime/gt_prefs.c:753 ../globaltime/gt_prefs.c:955
-msgid "Foreground (=text) color:"
-msgstr "文字色:"
-
-#: ../globaltime/gt_prefs.c:760
-msgid "Click to change foreground colour for clock"
-msgstr "クリックすると時計の文字色を変更します"
-
-#. ------------------------name font-------------------------
-#: ../globaltime/gt_prefs.c:785 ../globaltime/gt_prefs.c:987
-msgid "Font for name of clock:"
-msgstr "時計の名前のフォント:"
-
-#: ../globaltime/gt_prefs.c:792
-msgid "Click to change font for clock name"
-msgstr "クリックで時計の名前部分のフォントを変更します"
-
-#. ------------------------time font-------------------------
-#: ../globaltime/gt_prefs.c:817 ../globaltime/gt_prefs.c:1019
-msgid "Font for time of clock:"
-msgstr "時計の時刻のフォント:"
-
-#: ../globaltime/gt_prefs.c:824
-msgid "Click to change font for clock time"
-msgstr "クリックで時計の時刻部分のフォントを変更します"
-
-#. ------------------------underline name--------------------
-#: ../globaltime/gt_prefs.c:849
-msgid "Underline name of clock:"
-msgstr "時計の名前の下線:"
-
-#. ------------------------underline time--------------------
-#: ../globaltime/gt_prefs.c:877
-msgid "Underline time of clock:"
-msgstr "時計の時刻の下線:"
-
-#: ../globaltime/gt_prefs.c:916
-msgid "Text Default Formatting"
-msgstr "文字のデフォルトの書式"
-
-#: ../globaltime/gt_prefs.c:930
-msgid "Click to change default background colour for clocks"
-msgstr "クリックで時計の背景のデフォルト色を変更します"
-
-#: ../globaltime/gt_prefs.c:944 ../globaltime/gt_prefs.c:976
-msgid "Cross this to use system default instead of selected color"
-msgstr "チェックマークをつけるとシステムのデフォルト色を使用します"
-
-#: ../globaltime/gt_prefs.c:962
-msgid "Click to change default text colour for clocks"
-msgstr "クリックで時計の文字部分のデフォルトフォントを変更します"
-
-#: ../globaltime/gt_prefs.c:994
-msgid "Click to change default font for clock name"
-msgstr "クリックで時計の名前部分のデフォルトフォントを変更します"
-
-#: ../globaltime/gt_prefs.c:1008 ../globaltime/gt_prefs.c:1040
-msgid "Cross this to use system default font instead of selected font"
-msgstr "チェックマークをつけるとシステムのデフォルトフォントを使用します"
-
-#: ../globaltime/gt_prefs.c:1026
-msgid "Click to change default font for clock time"
-msgstr "クリックすると時計の時刻部分のフォントを変更します"
-
-#. ------------------------underline name--------------------
-#: ../globaltime/gt_prefs.c:1051
-msgid "Underline for name of clock:"
-msgstr "時計の名前の下線:"
-
-#. ------------------------underline time--------------------
-#: ../globaltime/gt_prefs.c:1065
-msgid "Underline for time of clock:"
-msgstr "時計の時刻の下線:"
-
-#: ../globaltime/gt_prefs.c:1088
-msgid "update preferences"
-msgstr "設定を更新します"
-
-#: ../globaltime/gt_prefs.c:1122
-msgid "Globaltime Preferences"
-msgstr "世界時計の設定"
-
-#. -----------------------HEADING--------------------------------------
-#: ../globaltime/gt_prefs.c:1133
-msgid "General Preferences"
-msgstr "全体設定"
-
-#: ../globaltime/gt_prefs.c:1137
-msgid "Decorations:"
-msgstr "ウィンドウの表示枠:"
-
-#: ../globaltime/gt_prefs.c:1138
-msgid "Standard"
-msgstr "標準"
-
-#: ../globaltime/gt_prefs.c:1144
-msgid "Use normal decorations"
-msgstr "ウィンドウの枠を表示します"
-
-#: ../globaltime/gt_prefs.c:1149 ../src/appointment.c:3551
-msgid "None"
-msgstr "なし"
-
-#: ../globaltime/gt_prefs.c:1156
-msgid "Do not show window decorations (borders)"
-msgstr "ウィンドウの枠を表示しません"
-
-#: ../globaltime/gt_prefs.c:1162
-msgid "Clock size:"
-msgstr "時計のサイズ:"
-
-#: ../globaltime/gt_prefs.c:1163
-msgid "Equal"
-msgstr "すべて同じ"
-
-#: ../globaltime/gt_prefs.c:1170
-msgid "All clocks have same size"
-msgstr "すべての時計を同じ大きさにします"
-
-#: ../globaltime/gt_prefs.c:1175
-msgid "Varying"
-msgstr "可変"
-
-#: ../globaltime/gt_prefs.c:1181
-msgid "Clock sizes vary"
-msgstr "時計の大きさは可変になります"
-
-#: ../globaltime/gt_prefs.c:1187
-msgid "Local timezone:"
-msgstr "現地のタイムゾーン:"
-
-#: ../globaltime/timezone_selection.c:93
-msgid " Other"
-msgstr " その他"
-
-#: ../globaltime/timezone_selection.c:145 ../src/timezone_selection.c:148
-#, c-format
-msgid "%d hour %d mins"
-msgstr "%d 時間 %d 分"
-
-#: ../globaltime/timezone_selection.c:148 ../src/timezone_selection.c:151
-#, c-format
-msgid "%d hour"
-msgstr "%d 時間"
-
-#: ../globaltime/timezone_selection.c:150 ../src/timezone_selection.c:153
-#, c-format
-msgid "%d mins"
-msgstr "%d 分"
-
-#: ../globaltime/timezone_selection.c:156 ../src/timezone_selection.c:159
-msgid "backward"
-msgstr "-"
-
-#: ../globaltime/timezone_selection.c:159 ../src/timezone_selection.c:162
-msgid "forward"
-msgstr "+"
-
-#: ../globaltime/timezone_selection.c:183 ../src/timezone_selection.c:186
-msgid "not changed"
-msgstr "変更なし"
-
-#: ../globaltime/timezone_selection.c:184 ../src/timezone_selection.c:187
-msgid "not changing"
-msgstr "変更なし"
-
-#. location
-#: ../globaltime/timezone_selection.c:234
-#: ../globaltime/timezone_selection.c:239 ../src/appointment.c:2974
-#: ../src/timezone_selection.c:237 ../src/timezone_selection.c:242
-msgid "Location"
-msgstr "場所"
-
-#: ../globaltime/timezone_selection.c:245 ../src/timezone_selection.c:248
-msgid "GMT Offset"
-msgstr "GMT との時差"
-
-#: ../globaltime/timezone_selection.c:251 ../src/timezone_selection.c:254
-msgid "Previous/Next Change"
-msgstr "前回/次回の変更"
-
-#: ../globaltime/timezone_selection.c:256 ../src/timezone_selection.c:259
-msgid "Country"
-msgstr "国"
-
-#. We are actually setting the g_par parameter. In other words
-#. we are setting the global default timezone for Orage. This is
-#. done very seldom and we do not want to allow "floating" here.
-#. This test is ugly, but it is not worth an extra parameter.
-#. this is normal appointment
-#: ../globaltime/timezone_selection.c:283
-#: ../globaltime/timezone_selection.c:293 ../src/timezone_selection.c:291
-#: ../src/timezone_selection.c:300 ../src/timezone_selection.c:311
-msgid "Pick timezone"
-msgstr "タイムゾーンを選択してください"
-
-#: ../globaltime/timezone_selection.c:286
-#: ../globaltime/timezone_selection.c:296 ../src/timezone_selection.c:294
-#: ../src/timezone_selection.c:303 ../src/timezone_selection.c:314
-msgid "Change mode"
-msgstr "モード変更"
-
-#: ../globaltime/timezone_selection.c:287
-#: ../globaltime/timezone_selection.c:297
-#: ../globaltime/timezone_selection.c:336 ../src/timezone_selection.c:295
-#: ../src/timezone_selection.c:304 ../src/timezone_selection.c:315
-#: ../src/timezone_selection.c:354
-msgid "UTC"
-msgstr "UTC"
-
-#. NOTE: this exists only if ical timezones are being used
-#: ../globaltime/timezone_selection.c:288
-#: ../globaltime/timezone_selection.c:341 ../src/timezone_selection.c:305
-#: ../src/timezone_selection.c:359
-msgid "floating"
-msgstr "フローティング"
-
-#: ../globaltime/org.xfce.orage.globaltime.desktop.in.h:1
-msgid "Orage Globaltime"
-msgstr "Orage 世界時計"
-
-#: ../globaltime/org.xfce.orage.globaltime.desktop.in.h:2
-msgid "Show clocks from different countries"
-msgstr "様々な地域の時刻を表示します。"
-
-#: ../globaltime/org.xfce.orage.globaltime.desktop.in.h:3
-#: ../src/tray_icon.c:489
-msgid "Globaltime"
-msgstr "世界時計"
 
 #: ../src/about-xfcalendar.c:54 ../org.xfce.orage.appdata.xml.in.h:2
 msgid "Orage is a time-managing application for the Xfce desktop environment"
@@ -437,7 +48,7 @@ msgstr "終了"
 msgid "Due"
 msgstr "締切"
 
-#: ../src/appointment.c:508 ../src/mainbox.c:693
+#: ../src/appointment.c:508 ../src/mainbox.c:676
 #: ../org.xfce.orage.appdata.xml.in.h:1
 msgid "Orage"
 msgstr "Orage"
@@ -526,7 +137,7 @@ msgstr "日付を選択してください"
 
 #: ../src/appointment.c:1443 ../src/appointment.c:1458 ../src/day-view.c:400
 #: ../src/day-view.c:473 ../src/event-list.c:1060 ../src/event-list.c:1214
-#: ../src/functions.c:146 ../src/tray_icon.c:462
+#: ../src/functions.c:146 ../src/tray_icon.c:408
 msgid "Today"
 msgstr "今日"
 
@@ -574,7 +185,7 @@ msgstr "新しい用件 - Orage"
 #. ********* File menu *********
 #. File menu
 #: ../src/appointment.c:2645 ../src/day-view.c:294 ../src/event-list.c:1115
-#: ../src/interface.c:857 ../src/mainbox.c:217
+#: ../src/interface.c:857 ../src/mainbox.c:208
 msgid "_File"
 msgstr "ファイル(_F)"
 
@@ -661,6 +272,12 @@ msgstr ""
 #: ../src/appointment.c:2967
 msgid "Title "
 msgstr "件名 "
+
+#. location
+#: ../src/appointment.c:2974 ../src/timezone_selection.c:237
+#: ../src/timezone_selection.c:242
+msgid "Location"
+msgstr "場所"
 
 #: ../src/appointment.c:2982
 msgid "All day event"
@@ -826,6 +443,12 @@ msgstr "使用する"
 msgid "Select this if you want audible alarm"
 msgstr "音で通知させたいときに設定します"
 
+#: ../src/appointment.c:3302 ../src/interface.c:1047 ../src/interface.c:1093
+#: ../src/interface.c:1269 ../src/interface.c:1361 ../src/interface.c:1444
+#: ../src/parameters.c:397 ../src/parameters.c:620 ../src/reminder.c:705
+msgid "_Open"
+msgstr "開く(_O)"
+
 #: ../src/appointment.c:3315
 msgid "Repeat alarm sound"
 msgstr "アラーム音を繰り返す"
@@ -932,6 +555,10 @@ msgstr "元に戻す(_R)"
 #: ../src/appointment.c:3485
 msgid "Set current settings from default alarm"
 msgstr "デフォルトのアラーム設定に戻します"
+
+#: ../src/appointment.c:3551
+msgid "None"
+msgstr "なし"
 
 #: ../src/appointment.c:3551
 msgid "Daily"
@@ -1141,7 +768,7 @@ msgstr "対象日"
 
 #. ********* View menu *********
 #. View menu
-#: ../src/day-view.c:304 ../src/event-list.c:1138 ../src/mainbox.c:243
+#: ../src/day-view.c:304 ../src/event-list.c:1138 ../src/mainbox.c:234
 msgid "_View"
 msgstr "表示(_V)"
 
@@ -1678,47 +1305,43 @@ msgstr ""
 "不明なオプション %s\n"
 "\n"
 
-#: ../src/mainbox.c:225
+#: ../src/mainbox.c:216
 msgid "_Exchange data"
 msgstr "データ交換(_E)"
 
 #. Edit menu
-#: ../src/mainbox.c:236
+#: ../src/mainbox.c:227
 msgid "_Edit"
 msgstr "編集(_E)"
 
-#: ../src/mainbox.c:246
+#: ../src/mainbox.c:237
 msgid "View selected _date"
 msgstr "選択した日を表示(_D)"
 
-#: ../src/mainbox.c:249
+#: ../src/mainbox.c:240
 msgid "View selected _week"
 msgstr "選択した週を表示(_W)"
 
-#: ../src/mainbox.c:255
+#: ../src/mainbox.c:246
 msgid "Select _Today"
 msgstr "今日の日付を選択(_T)"
 
-#: ../src/mainbox.c:261
-msgid "Show _Globaltime"
-msgstr "世界時計を表示(_G)"
-
 #. Help menu
 #. the rest
-#: ../src/mainbox.c:265 ../src/parameters.c:1197
+#: ../src/mainbox.c:250 ../src/parameters.c:1197
 msgid "_Help"
 msgstr "ヘルプ(_H)"
 
-#: ../src/mainbox.c:328 ../src/reminder.c:1027
+#: ../src/mainbox.c:311 ../src/reminder.c:1027
 msgid "No title defined"
 msgstr "件名なし"
 
-#: ../src/mainbox.c:386
+#: ../src/mainbox.c:369
 #, c-format
 msgid " Location: %s\n"
 msgstr " 場所: %s\n"
 
-#: ../src/mainbox.c:396
+#: ../src/mainbox.c:379
 #, c-format
 msgid ""
 "\n"
@@ -1729,11 +1352,11 @@ msgstr ""
 " 備考:\n"
 "%s"
 
-#: ../src/mainbox.c:404
+#: ../src/mainbox.c:387
 msgid "Never"
 msgstr "なし"
 
-#: ../src/mainbox.c:412
+#: ../src/mainbox.c:395
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1746,7 +1369,7 @@ msgstr ""
 " 締切:\t%s\n"
 " 完了:\t%s%s"
 
-#: ../src/mainbox.c:419
+#: ../src/mainbox.c:402
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1757,16 +1380,16 @@ msgstr ""
 "%s 開始:\t%s\n"
 " 終了:\t%s%s"
 
-#: ../src/mainbox.c:498
+#: ../src/mainbox.c:481
 msgid "<b>To do:</b>"
 msgstr "<b>To do:</b>"
 
-#: ../src/mainbox.c:535
+#: ../src/mainbox.c:518
 #, c-format
 msgid "<b>Events for %s:</b>"
 msgstr "<b>%s の予定:</b>"
 
-#: ../src/mainbox.c:545
+#: ../src/mainbox.c:528
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>%s - %s の予定:</b>"
@@ -4284,15 +3907,83 @@ msgstr "米国/太平洋 (新)"
 msgid "US/Samoa"
 msgstr "米国/サモア"
 
-#: ../src/tray_icon.c:469
+#: ../src/timezone_selection.c:148
+#, c-format
+msgid "%d hour %d mins"
+msgstr "%d 時間 %d 分"
+
+#: ../src/timezone_selection.c:151
+#, c-format
+msgid "%d hour"
+msgstr "%d 時間"
+
+#: ../src/timezone_selection.c:153
+#, c-format
+msgid "%d mins"
+msgstr "%d 分"
+
+#: ../src/timezone_selection.c:159
+msgid "backward"
+msgstr "-"
+
+#: ../src/timezone_selection.c:162
+msgid "forward"
+msgstr "+"
+
+#: ../src/timezone_selection.c:186
+msgid "not changed"
+msgstr "変更なし"
+
+#: ../src/timezone_selection.c:187
+msgid "not changing"
+msgstr "変更なし"
+
+#: ../src/timezone_selection.c:248
+msgid "GMT Offset"
+msgstr "GMT との時差"
+
+#: ../src/timezone_selection.c:254
+msgid "Previous/Next Change"
+msgstr "前回/次回の変更"
+
+#: ../src/timezone_selection.c:259
+msgid "Country"
+msgstr "国"
+
+#. We are actually setting the g_par parameter. In other words
+#. we are setting the global default timezone for Orage. This is
+#. done very seldom and we do not want to allow "floating" here.
+#. This test is ugly, but it is not worth an extra parameter.
+#. this is normal appointment
+#: ../src/timezone_selection.c:291 ../src/timezone_selection.c:300
+#: ../src/timezone_selection.c:311
+msgid "Pick timezone"
+msgstr "タイムゾーンを選択してください"
+
+#: ../src/timezone_selection.c:294 ../src/timezone_selection.c:303
+#: ../src/timezone_selection.c:314
+msgid "Change mode"
+msgstr "モード変更"
+
+#: ../src/timezone_selection.c:295 ../src/timezone_selection.c:304
+#: ../src/timezone_selection.c:315 ../src/timezone_selection.c:354
+msgid "UTC"
+msgstr "UTC"
+
+#. NOTE: this exists only if ical timezones are being used
+#: ../src/timezone_selection.c:305 ../src/timezone_selection.c:359
+msgid "floating"
+msgstr "フローティング"
+
+#: ../src/tray_icon.c:415
 msgid "New appointment"
 msgstr "新しい用件"
 
-#: ../src/tray_icon.c:476
+#: ../src/tray_icon.c:422
 msgid "Preferences"
 msgstr "設定"
 
-#: ../src/tray_icon.c:483
+#: ../src/tray_icon.c:429
 msgid "Quit"
 msgstr "終了"
 
