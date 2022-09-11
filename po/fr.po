@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-03 00:49+0200\n"
+"POT-Creation-Date: 2022-09-11 12:51+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Wallon Wallon, 2022\n"
 "Language-Team: French (https://www.transifex.com/xfce/teams/16840/fr/)\n"
@@ -28,405 +28,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
-
-#: ../globaltime/globaltime.c:62
-msgid "no underline"
-msgstr "sans interligne"
-
-#: ../globaltime/globaltime.c:62
-msgid "single"
-msgstr "simple"
-
-#: ../globaltime/globaltime.c:62
-msgid "double"
-msgstr "double"
-
-#: ../globaltime/globaltime.c:62
-msgid "low"
-msgstr "bas"
-
-#. ********** timezone tooltip **********
-#: ../globaltime/globaltime.c:341
-#, c-format
-msgid ""
-"%s\n"
-"click to modify clock"
-msgstr ""
-"%s\n"
-"cliquer pour modifier l’horloge"
-
-#: ../globaltime/globaltime.c:450
-msgid "Localtime"
-msgstr "Heure locale"
-
-#: ../globaltime/globaltime.c:539
-msgid ""
-"button 1 to change preferences \n"
-"button 2 to adjust time of clocks"
-msgstr ""
-"bouton 1 pour modifier les préférences \n"
-"bouton 2 pour ajuster l’heure des horloges"
-
-#: ../globaltime/globaltime.c:554
-msgid "adjust to change hour"
-msgstr "ajuster pour changer l’heure"
-
-#: ../globaltime/globaltime.c:570
-msgid ""
-"adjust to change minute. Click arrows with button 2 to change only 1 minute."
-msgstr ""
-"ajuster pour changer les minutes. Cliquer sur les flèches avec le bouton 2 "
-"pour changer seulement 1 minute."
-
-#: ../globaltime/globaltime.c:624
-msgid "Global Time"
-msgstr "Temps global"
-
-#: ../globaltime/gt_prefs.c:290 ../globaltime/gt_prefs.c:291
-msgid "NEW"
-msgstr "NOUVEAU"
-
-#: ../globaltime/gt_prefs.c:314
-msgid "NEW COPY"
-msgstr "NOUVELLE COPIE"
-
-#: ../globaltime/gt_prefs.c:336
-msgid "Not possible to delete the last clock."
-msgstr "Impossible de supprimer la dernière horloge."
-
-#: ../globaltime/gt_prefs.c:577
-msgid "update this clock"
-msgstr "mettre à jour cette horloge"
-
-#: ../globaltime/gt_prefs.c:582 ../globaltime/gt_prefs.c:1095
-msgid "add new empty clock"
-msgstr "ajouter une nouvelle horloge vide"
-
-#: ../globaltime/gt_prefs.c:587
-msgid "add new clock using this clock as model"
-msgstr "ajouter une nouvelle horloge en prenant celle-ci comme modèle"
-
-#: ../globaltime/gt_prefs.c:592
-msgid "delete this clock"
-msgstr "supprimer cette horloge"
-
-#: ../globaltime/gt_prefs.c:600
-msgid "move this clock first"
-msgstr "déplacer cette horloge au début"
-
-#: ../globaltime/gt_prefs.c:605
-msgid "move this clock left"
-msgstr "déplacer cette horloge vers la gauche"
-
-#: ../globaltime/gt_prefs.c:610
-msgid "move this clock right"
-msgstr "déplacer cette horloge vers la droite"
-
-#: ../globaltime/gt_prefs.c:615
-msgid "move this clock last"
-msgstr "déplacer cette horloge à la fin"
-
-#: ../globaltime/gt_prefs.c:623
-msgid "set the timezone of this clock to be local timezone"
-msgstr "définir le fuseau horaire de cette horloge comme heure locale"
-
-#: ../globaltime/gt_prefs.c:629 ../globaltime/gt_prefs.c:1103
-msgid "close window and exit"
-msgstr "fermer la fenêtre et quitter"
-
-#: ../globaltime/gt_prefs.c:652
-msgid "Globaltime preferences "
-msgstr "Préférences heure globale"
-
-#. -----------------------HEADING-------------------------------------------
-#: ../globaltime/gt_prefs.c:665
-msgid "Clock Parameters"
-msgstr "Paramètres de l’horloge"
-
-#: ../globaltime/gt_prefs.c:669
-msgid "Name of the clock:"
-msgstr "Nom de l’horloge :"
-
-#: ../globaltime/gt_prefs.c:678
-msgid "enter name of clock"
-msgstr "saisissez le nom de l’horloge"
-
-#: ../globaltime/gt_prefs.c:681
-msgid "Timezone of the clock:"
-msgstr "Fuseau horaire de l’horloge :"
-
-#: ../globaltime/gt_prefs.c:683 ../globaltime/gt_prefs.c:1189
-#: ../src/appointment.c:3302 ../src/interface.c:1047 ../src/interface.c:1093
-#: ../src/interface.c:1269 ../src/interface.c:1361 ../src/interface.c:1444
-#: ../src/parameters.c:397 ../src/parameters.c:620 ../src/reminder.c:705
-msgid "_Open"
-msgstr "_Ouvrir"
-
-#: ../globaltime/gt_prefs.c:714
-msgid "Text Formatting"
-msgstr "Formatage du texte"
-
-#. ------------------------background-------------------------
-#: ../globaltime/gt_prefs.c:721 ../globaltime/gt_prefs.c:923
-msgid "Background color:"
-msgstr "Couleur d’arrière-plan :"
-
-#: ../globaltime/gt_prefs.c:728
-msgid "Click to change background colour for clock"
-msgstr "Cliquez pour modifier la couleur d’arrière-plan de l’horloge"
-
-#: ../globaltime/gt_prefs.c:737 ../globaltime/gt_prefs.c:769
-#: ../globaltime/gt_prefs.c:801 ../globaltime/gt_prefs.c:833
-#: ../globaltime/gt_prefs.c:865 ../globaltime/gt_prefs.c:893
-#: ../globaltime/gt_prefs.c:939 ../globaltime/gt_prefs.c:971
-#: ../globaltime/gt_prefs.c:1003 ../globaltime/gt_prefs.c:1035
-msgid "Use default"
-msgstr "Valeur par défaut"
-
-#: ../globaltime/gt_prefs.c:742 ../globaltime/gt_prefs.c:774
-#: ../globaltime/gt_prefs.c:806 ../globaltime/gt_prefs.c:838
-#: ../globaltime/gt_prefs.c:870 ../globaltime/gt_prefs.c:898
-msgid "Cross this to use default instead of selected value"
-msgstr ""
-"Cochez cette option pour utiliser la valeur par défaut au lieu de la valeur "
-"sélectionnée"
-
-#. ------------------------foreground-------------------------
-#: ../globaltime/gt_prefs.c:753 ../globaltime/gt_prefs.c:955
-msgid "Foreground (=text) color:"
-msgstr "Couleur de premier plan (= texte) :"
-
-#: ../globaltime/gt_prefs.c:760
-msgid "Click to change foreground colour for clock"
-msgstr "Cliquez pour modifier la couleur de premier plan de l’horloge"
-
-#. ------------------------name font-------------------------
-#: ../globaltime/gt_prefs.c:785 ../globaltime/gt_prefs.c:987
-msgid "Font for name of clock:"
-msgstr "Police pour le nom de l’horloge :"
-
-#: ../globaltime/gt_prefs.c:792
-msgid "Click to change font for clock name"
-msgstr "Cliquez pour modifier la police du nom de l’horloge"
-
-#. ------------------------time font-------------------------
-#: ../globaltime/gt_prefs.c:817 ../globaltime/gt_prefs.c:1019
-msgid "Font for time of clock:"
-msgstr "Police pour l’heure de l’horloge :"
-
-#: ../globaltime/gt_prefs.c:824
-msgid "Click to change font for clock time"
-msgstr "Cliquez pour modifier la police de l’horloge"
-
-#. ------------------------underline name--------------------
-#: ../globaltime/gt_prefs.c:849
-msgid "Underline name of clock:"
-msgstr "Souligner le nom de l’horloge :"
-
-#. ------------------------underline time--------------------
-#: ../globaltime/gt_prefs.c:877
-msgid "Underline time of clock:"
-msgstr "Souligner l’heure de l’horloge :"
-
-#: ../globaltime/gt_prefs.c:916
-msgid "Text Default Formatting"
-msgstr "Formatage du texte par défaut"
-
-#: ../globaltime/gt_prefs.c:930
-msgid "Click to change default background colour for clocks"
-msgstr ""
-"Cliquez pour modifier la couleur d’arrière-plan par défaut des horloges"
-
-#: ../globaltime/gt_prefs.c:944 ../globaltime/gt_prefs.c:976
-msgid "Cross this to use system default instead of selected color"
-msgstr ""
-"Cochez cette option pour utiliser la valeur par défaut du système au lieu de"
-" la couleur sélectionnée"
-
-#: ../globaltime/gt_prefs.c:962
-msgid "Click to change default text colour for clocks"
-msgstr ""
-"Cliquez pour modifier la couleur par défaut du texte pour les horloges"
-
-#: ../globaltime/gt_prefs.c:994
-msgid "Click to change default font for clock name"
-msgstr "Cliquez pour modifier la police par défaut du nom de l’horloge"
-
-#: ../globaltime/gt_prefs.c:1008 ../globaltime/gt_prefs.c:1040
-msgid "Cross this to use system default font instead of selected font"
-msgstr ""
-"Cochez cette option pour utiliser la police par défaut du système au lieu de"
-" la police sélectionnée"
-
-#: ../globaltime/gt_prefs.c:1026
-msgid "Click to change default font for clock time"
-msgstr "Cliquez pour modifier la police par défaut de l’heure de l’horloge"
-
-#. ------------------------underline name--------------------
-#: ../globaltime/gt_prefs.c:1051
-msgid "Underline for name of clock:"
-msgstr "Souligner le nom de l’horloge :"
-
-#. ------------------------underline time--------------------
-#: ../globaltime/gt_prefs.c:1065
-msgid "Underline for time of clock:"
-msgstr "Souligner l’heure de l’horloge :"
-
-#: ../globaltime/gt_prefs.c:1088
-msgid "update preferences"
-msgstr "Mettre à jour les préférences"
-
-#: ../globaltime/gt_prefs.c:1122
-msgid "Globaltime Preferences"
-msgstr "Préférences heure globale"
-
-#. -----------------------HEADING--------------------------------------
-#: ../globaltime/gt_prefs.c:1133
-msgid "General Preferences"
-msgstr "Préférences générales"
-
-#: ../globaltime/gt_prefs.c:1137
-msgid "Decorations:"
-msgstr "Décorations :"
-
-#: ../globaltime/gt_prefs.c:1138
-msgid "Standard"
-msgstr "Standard"
-
-#: ../globaltime/gt_prefs.c:1144
-msgid "Use normal decorations"
-msgstr "Utiliser des décorations normales"
-
-#: ../globaltime/gt_prefs.c:1149 ../src/appointment.c:3551
-msgid "None"
-msgstr "Aucune"
-
-#: ../globaltime/gt_prefs.c:1156
-msgid "Do not show window decorations (borders)"
-msgstr "Ne pas afficher les décorations de la fenêtre (bordures)"
-
-#: ../globaltime/gt_prefs.c:1162
-msgid "Clock size:"
-msgstr "Taille de l’horloge :"
-
-#: ../globaltime/gt_prefs.c:1163
-msgid "Equal"
-msgstr "Égale"
-
-#: ../globaltime/gt_prefs.c:1170
-msgid "All clocks have same size"
-msgstr "Toutes les horloges ont la même taille"
-
-#: ../globaltime/gt_prefs.c:1175
-msgid "Varying"
-msgstr "Variable"
-
-#: ../globaltime/gt_prefs.c:1181
-msgid "Clock sizes vary"
-msgstr "La taille des horloges varie"
-
-#: ../globaltime/gt_prefs.c:1187
-msgid "Local timezone:"
-msgstr "Fuseau horaire local :"
-
-#: ../globaltime/timezone_selection.c:93
-msgid " Other"
-msgstr "Autre"
-
-#: ../globaltime/timezone_selection.c:145 ../src/timezone_selection.c:148
-#, c-format
-msgid "%d hour %d mins"
-msgstr "%d heures %d minutes"
-
-#: ../globaltime/timezone_selection.c:148 ../src/timezone_selection.c:151
-#, c-format
-msgid "%d hour"
-msgstr "%d heures"
-
-#: ../globaltime/timezone_selection.c:150 ../src/timezone_selection.c:153
-#, c-format
-msgid "%d mins"
-msgstr "%d min"
-
-#: ../globaltime/timezone_selection.c:156 ../src/timezone_selection.c:159
-msgid "backward"
-msgstr "reculer"
-
-#: ../globaltime/timezone_selection.c:159 ../src/timezone_selection.c:162
-msgid "forward"
-msgstr "avancer"
-
-#: ../globaltime/timezone_selection.c:183 ../src/timezone_selection.c:186
-msgid "not changed"
-msgstr "inchangé"
-
-#: ../globaltime/timezone_selection.c:184 ../src/timezone_selection.c:187
-msgid "not changing"
-msgstr "ne change pas"
-
-#. location
-#: ../globaltime/timezone_selection.c:234
-#: ../globaltime/timezone_selection.c:239 ../src/appointment.c:2974
-#: ../src/timezone_selection.c:237 ../src/timezone_selection.c:242
-msgid "Location"
-msgstr "Emplacement"
-
-#: ../globaltime/timezone_selection.c:245 ../src/timezone_selection.c:248
-msgid "GMT Offset"
-msgstr "Décalage GMT"
-
-#: ../globaltime/timezone_selection.c:251 ../src/timezone_selection.c:254
-msgid "Previous/Next Change"
-msgstr "Modification précédente / suivante"
-
-#: ../globaltime/timezone_selection.c:256 ../src/timezone_selection.c:259
-msgid "Country"
-msgstr "Pays"
-
-#. We are actually setting the g_par parameter. In other words
-#. we are setting the global default timezone for Orage. This is
-#. done very seldom and we do not want to allow "floating" here.
-#. This test is ugly, but it is not worth an extra parameter.
-#. this is normal appointment
-#: ../globaltime/timezone_selection.c:283
-#: ../globaltime/timezone_selection.c:293 ../src/timezone_selection.c:291
-#: ../src/timezone_selection.c:300 ../src/timezone_selection.c:311
-msgid "Pick timezone"
-msgstr "Choisir le fuseau horaire"
-
-#: ../globaltime/timezone_selection.c:286
-#: ../globaltime/timezone_selection.c:296 ../src/timezone_selection.c:294
-#: ../src/timezone_selection.c:303 ../src/timezone_selection.c:314
-msgid "Change mode"
-msgstr "Modifier le mode"
-
-#: ../globaltime/timezone_selection.c:287
-#: ../globaltime/timezone_selection.c:297
-#: ../globaltime/timezone_selection.c:336 ../src/timezone_selection.c:295
-#: ../src/timezone_selection.c:304 ../src/timezone_selection.c:315
-#: ../src/timezone_selection.c:354
-msgid "UTC"
-msgstr "UTC"
-
-#. NOTE: this exists only if ical timezones are being used
-#: ../globaltime/timezone_selection.c:288
-#: ../globaltime/timezone_selection.c:341 ../src/timezone_selection.c:305
-#: ../src/timezone_selection.c:359
-msgid "floating"
-msgstr "flottante"
-
-#: ../globaltime/org.xfce.orage.globaltime.desktop.in.h:1
-msgid "Orage Globaltime"
-msgstr "Heure globale Orage"
-
-#: ../globaltime/org.xfce.orage.globaltime.desktop.in.h:2
-msgid "Show clocks from different countries"
-msgstr "Afficher les horloges de différents pays"
-
-#: ../globaltime/org.xfce.orage.globaltime.desktop.in.h:3
-#: ../src/tray_icon.c:489
-msgid "Globaltime"
-msgstr "Heure globale"
 
 #: ../src/about-xfcalendar.c:54 ../org.xfce.orage.appdata.xml.in.h:2
 msgid "Orage is a time-managing application for the Xfce desktop environment"
@@ -449,7 +50,7 @@ msgstr "Fin"
 msgid "Due"
 msgstr "Échéance"
 
-#: ../src/appointment.c:508 ../src/mainbox.c:693
+#: ../src/appointment.c:508 ../src/mainbox.c:676
 #: ../org.xfce.orage.appdata.xml.in.h:1
 msgid "Orage"
 msgstr "Orage"
@@ -542,7 +143,7 @@ msgstr "Choisir la date"
 
 #: ../src/appointment.c:1443 ../src/appointment.c:1458 ../src/day-view.c:400
 #: ../src/day-view.c:473 ../src/event-list.c:1060 ../src/event-list.c:1214
-#: ../src/functions.c:146 ../src/tray_icon.c:462
+#: ../src/functions.c:146 ../src/tray_icon.c:408
 msgid "Today"
 msgstr "Aujourd’hui"
 
@@ -590,7 +191,7 @@ msgstr "Nouveau rendez-vous - Orage"
 #. ********* File menu *********
 #. File menu
 #: ../src/appointment.c:2645 ../src/day-view.c:294 ../src/event-list.c:1115
-#: ../src/interface.c:857 ../src/mainbox.c:217
+#: ../src/interface.c:857 ../src/mainbox.c:208
 msgid "_File"
 msgstr "_Fichier"
 
@@ -679,6 +280,12 @@ msgstr ""
 #: ../src/appointment.c:2967
 msgid "Title "
 msgstr "Titre"
+
+#. location
+#: ../src/appointment.c:2974 ../src/timezone_selection.c:237
+#: ../src/timezone_selection.c:242
+msgid "Location"
+msgstr "Emplacement"
 
 #: ../src/appointment.c:2982
 msgid "All day event"
@@ -848,6 +455,12 @@ msgstr "Utiliser"
 msgid "Select this if you want audible alarm"
 msgstr "Sélectionnez cette option si vous souhaitez une alarme sonore"
 
+#: ../src/appointment.c:3302 ../src/interface.c:1047 ../src/interface.c:1093
+#: ../src/interface.c:1269 ../src/interface.c:1361 ../src/interface.c:1444
+#: ../src/parameters.c:397 ../src/parameters.c:620 ../src/reminder.c:705
+msgid "_Open"
+msgstr "_Ouvrir"
+
 #: ../src/appointment.c:3315
 msgid "Repeat alarm sound"
 msgstr "Répéter le son de l’alarme"
@@ -958,6 +571,10 @@ msgstr "_Rétablir"
 #: ../src/appointment.c:3485
 msgid "Set current settings from default alarm"
 msgstr "Définir les paramètres actuels de l’alarme par défaut"
+
+#: ../src/appointment.c:3551
+msgid "None"
+msgstr "Aucune"
 
 #: ../src/appointment.c:3551
 msgid "Daily"
@@ -1167,7 +784,7 @@ msgstr "Dates des actions"
 
 #. ********* View menu *********
 #. View menu
-#: ../src/day-view.c:304 ../src/event-list.c:1138 ../src/mainbox.c:243
+#: ../src/day-view.c:304 ../src/event-list.c:1138 ../src/mainbox.c:234
 msgid "_View"
 msgstr "_Vue"
 
@@ -1713,47 +1330,43 @@ msgstr ""
 "Option inconnue %s\n"
 "\n"
 
-#: ../src/mainbox.c:225
+#: ../src/mainbox.c:216
 msgid "_Exchange data"
 msgstr "É_changer des données"
 
 #. Edit menu
-#: ../src/mainbox.c:236
+#: ../src/mainbox.c:227
 msgid "_Edit"
 msgstr "É_dition"
 
-#: ../src/mainbox.c:246
+#: ../src/mainbox.c:237
 msgid "View selected _date"
 msgstr "Voir le _jour choisi"
 
-#: ../src/mainbox.c:249
+#: ../src/mainbox.c:240
 msgid "View selected _week"
 msgstr "Voir la _semaine choisie"
 
-#: ../src/mainbox.c:255
+#: ../src/mainbox.c:246
 msgid "Select _Today"
 msgstr "Choisir _aujourd’hui"
 
-#: ../src/mainbox.c:261
-msgid "Show _Globaltime"
-msgstr "Afficher l’heure _globale"
-
 #. Help menu
 #. the rest
-#: ../src/mainbox.c:265 ../src/parameters.c:1197
+#: ../src/mainbox.c:250 ../src/parameters.c:1197
 msgid "_Help"
 msgstr "_Aide"
 
-#: ../src/mainbox.c:328 ../src/reminder.c:1027
+#: ../src/mainbox.c:311 ../src/reminder.c:1027
 msgid "No title defined"
 msgstr "Aucun titre défini"
 
-#: ../src/mainbox.c:386
+#: ../src/mainbox.c:369
 #, c-format
 msgid " Location: %s\n"
 msgstr " Emplacement : %s \n"
 
-#: ../src/mainbox.c:396
+#: ../src/mainbox.c:379
 #, c-format
 msgid ""
 "\n"
@@ -1764,11 +1377,11 @@ msgstr ""
 " Note :\n"
 "%s"
 
-#: ../src/mainbox.c:404
+#: ../src/mainbox.c:387
 msgid "Never"
 msgstr "Jamais"
 
-#: ../src/mainbox.c:412
+#: ../src/mainbox.c:395
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1781,7 +1394,7 @@ msgstr ""
 " Échéance :\t%s\n"
 " Fait :\t%s%s"
 
-#: ../src/mainbox.c:419
+#: ../src/mainbox.c:402
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1792,16 +1405,16 @@ msgstr ""
 "%s Début : \t%s\n"
 " Fin : \t%s%s"
 
-#: ../src/mainbox.c:498
+#: ../src/mainbox.c:481
 msgid "<b>To do:</b>"
 msgstr "<b>À faire :</b>"
 
-#: ../src/mainbox.c:535
+#: ../src/mainbox.c:518
 #, c-format
 msgid "<b>Events for %s:</b>"
 msgstr "<b>événements pour %s :</b>"
 
-#: ../src/mainbox.c:545
+#: ../src/mainbox.c:528
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>événements pour %s - %s :</b>"
@@ -4329,15 +3942,83 @@ msgstr "États-Unis/Nouveau-Pacifique"
 msgid "US/Samoa"
 msgstr "États-Unis/Samoa"
 
-#: ../src/tray_icon.c:469
+#: ../src/timezone_selection.c:148
+#, c-format
+msgid "%d hour %d mins"
+msgstr "%d heures %d minutes"
+
+#: ../src/timezone_selection.c:151
+#, c-format
+msgid "%d hour"
+msgstr "%d heures"
+
+#: ../src/timezone_selection.c:153
+#, c-format
+msgid "%d mins"
+msgstr "%d min"
+
+#: ../src/timezone_selection.c:159
+msgid "backward"
+msgstr "reculer"
+
+#: ../src/timezone_selection.c:162
+msgid "forward"
+msgstr "avancer"
+
+#: ../src/timezone_selection.c:186
+msgid "not changed"
+msgstr "inchangé"
+
+#: ../src/timezone_selection.c:187
+msgid "not changing"
+msgstr "ne change pas"
+
+#: ../src/timezone_selection.c:248
+msgid "GMT Offset"
+msgstr "Décalage GMT"
+
+#: ../src/timezone_selection.c:254
+msgid "Previous/Next Change"
+msgstr "Modification précédente / suivante"
+
+#: ../src/timezone_selection.c:259
+msgid "Country"
+msgstr "Pays"
+
+#. We are actually setting the g_par parameter. In other words
+#. we are setting the global default timezone for Orage. This is
+#. done very seldom and we do not want to allow "floating" here.
+#. This test is ugly, but it is not worth an extra parameter.
+#. this is normal appointment
+#: ../src/timezone_selection.c:291 ../src/timezone_selection.c:300
+#: ../src/timezone_selection.c:311
+msgid "Pick timezone"
+msgstr "Choisir le fuseau horaire"
+
+#: ../src/timezone_selection.c:294 ../src/timezone_selection.c:303
+#: ../src/timezone_selection.c:314
+msgid "Change mode"
+msgstr "Modifier le mode"
+
+#: ../src/timezone_selection.c:295 ../src/timezone_selection.c:304
+#: ../src/timezone_selection.c:315 ../src/timezone_selection.c:354
+msgid "UTC"
+msgstr "UTC"
+
+#. NOTE: this exists only if ical timezones are being used
+#: ../src/timezone_selection.c:305 ../src/timezone_selection.c:359
+msgid "floating"
+msgstr "flottante"
+
+#: ../src/tray_icon.c:415
 msgid "New appointment"
 msgstr "Nouveau rendez-vous"
 
-#: ../src/tray_icon.c:476
+#: ../src/tray_icon.c:422
 msgid "Preferences"
 msgstr "Préférences"
 
-#: ../src/tray_icon.c:483
+#: ../src/tray_icon.c:429
 msgid "Quit"
 msgstr "Quitter"
 
