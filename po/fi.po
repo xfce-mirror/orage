@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-03 00:49+0200\n"
+"POT-Creation-Date: 2022-09-11 12:51+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Pasi Lallinaho <pasi@shimmerproject.org>, 2022\n"
 "Language-Team: Finnish (https://www.transifex.com/xfce/teams/16840/fi/)\n"
@@ -23,399 +23,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fi\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: ../globaltime/globaltime.c:62
-msgid "no underline"
-msgstr "ei alleviivausta"
-
-#: ../globaltime/globaltime.c:62
-msgid "single"
-msgstr "kokonaisluku"
-
-#: ../globaltime/globaltime.c:62
-msgid "double"
-msgstr "desimaaliluku"
-
-#: ../globaltime/globaltime.c:62
-msgid "low"
-msgstr "matala"
-
-#. ********** timezone tooltip **********
-#: ../globaltime/globaltime.c:341
-#, c-format
-msgid ""
-"%s\n"
-"click to modify clock"
-msgstr ""
-"%s\n"
-"Napsauta muuttaaksesi kelloa"
-
-#: ../globaltime/globaltime.c:450
-msgid "Localtime"
-msgstr "Paikallinen aika"
-
-#: ../globaltime/globaltime.c:539
-msgid ""
-"button 1 to change preferences \n"
-"button 2 to adjust time of clocks"
-msgstr ""
-"Painike 1 muuttaa asetuksia\n"
-"Painike 2 säätää kellonaikaa"
-
-#: ../globaltime/globaltime.c:554
-msgid "adjust to change hour"
-msgstr "Säädä vaihtaaksesi tuntia"
-
-#: ../globaltime/globaltime.c:570
-msgid ""
-"adjust to change minute. Click arrows with button 2 to change only 1 minute."
-msgstr ""
-"Säädä vaihtaaksesi minuuttia. Napsauta nuolia painikkeella 2 siirtääksesi "
-"vain yhdellä minuutilla."
-
-#: ../globaltime/globaltime.c:624
-msgid "Global Time"
-msgstr "Kansainvälinen aika"
-
-#: ../globaltime/gt_prefs.c:290 ../globaltime/gt_prefs.c:291
-msgid "NEW"
-msgstr "UUSI"
-
-#: ../globaltime/gt_prefs.c:314
-msgid "NEW COPY"
-msgstr "UUSI KOPIO"
-
-#: ../globaltime/gt_prefs.c:336
-msgid "Not possible to delete the last clock."
-msgstr "Viimeisen kellon poistaminen ei ole mahdollista."
-
-#: ../globaltime/gt_prefs.c:577
-msgid "update this clock"
-msgstr "Säädä tätä kelloa"
-
-#: ../globaltime/gt_prefs.c:582 ../globaltime/gt_prefs.c:1095
-msgid "add new empty clock"
-msgstr "Lisää uusi tyhjä kello"
-
-#: ../globaltime/gt_prefs.c:587
-msgid "add new clock using this clock as model"
-msgstr "Lisää uusi kello ja käytä tätä mallina"
-
-#: ../globaltime/gt_prefs.c:592
-msgid "delete this clock"
-msgstr "Poista tämä kello"
-
-#: ../globaltime/gt_prefs.c:600
-msgid "move this clock first"
-msgstr "Siirrä tämä kello ensimmäiseksi"
-
-#: ../globaltime/gt_prefs.c:605
-msgid "move this clock left"
-msgstr "Siirrä tätä kelloa vasemmalle"
-
-#: ../globaltime/gt_prefs.c:610
-msgid "move this clock right"
-msgstr "Siirrä tätä kelloa oikealle"
-
-#: ../globaltime/gt_prefs.c:615
-msgid "move this clock last"
-msgstr "Siirrä tämä kello viimeiseksi"
-
-#: ../globaltime/gt_prefs.c:623
-msgid "set the timezone of this clock to be local timezone"
-msgstr "Aseta kellon aikavyöhykkeeksi paikallinen aika"
-
-#: ../globaltime/gt_prefs.c:629 ../globaltime/gt_prefs.c:1103
-msgid "close window and exit"
-msgstr "Sulje ikkuna ja lopeta"
-
-#: ../globaltime/gt_prefs.c:652
-msgid "Globaltime preferences "
-msgstr "Maailmanlaajuisen ajan asetukset"
-
-#. -----------------------HEADING-------------------------------------------
-#: ../globaltime/gt_prefs.c:665
-msgid "Clock Parameters"
-msgstr "Kellon parametrit"
-
-#: ../globaltime/gt_prefs.c:669
-msgid "Name of the clock:"
-msgstr "Kellon nimi:"
-
-#: ../globaltime/gt_prefs.c:678
-msgid "enter name of clock"
-msgstr "Kirjoita kellon nimi"
-
-#: ../globaltime/gt_prefs.c:681
-msgid "Timezone of the clock:"
-msgstr "Kellon aikavyöhyke:"
-
-#: ../globaltime/gt_prefs.c:683 ../globaltime/gt_prefs.c:1189
-#: ../src/appointment.c:3302 ../src/interface.c:1047 ../src/interface.c:1093
-#: ../src/interface.c:1269 ../src/interface.c:1361 ../src/interface.c:1444
-#: ../src/parameters.c:397 ../src/parameters.c:620 ../src/reminder.c:705
-msgid "_Open"
-msgstr "_Avaa"
-
-#: ../globaltime/gt_prefs.c:714
-msgid "Text Formatting"
-msgstr "Tekstin muotoilu"
-
-#. ------------------------background-------------------------
-#: ../globaltime/gt_prefs.c:721 ../globaltime/gt_prefs.c:923
-msgid "Background color:"
-msgstr "Taustaväri:"
-
-#: ../globaltime/gt_prefs.c:728
-msgid "Click to change background colour for clock"
-msgstr "Napsauta vaihtaaksesi kellon taustaväriä"
-
-#: ../globaltime/gt_prefs.c:737 ../globaltime/gt_prefs.c:769
-#: ../globaltime/gt_prefs.c:801 ../globaltime/gt_prefs.c:833
-#: ../globaltime/gt_prefs.c:865 ../globaltime/gt_prefs.c:893
-#: ../globaltime/gt_prefs.c:939 ../globaltime/gt_prefs.c:971
-#: ../globaltime/gt_prefs.c:1003 ../globaltime/gt_prefs.c:1035
-msgid "Use default"
-msgstr "Käytä oletusta"
-
-#: ../globaltime/gt_prefs.c:742 ../globaltime/gt_prefs.c:774
-#: ../globaltime/gt_prefs.c:806 ../globaltime/gt_prefs.c:838
-#: ../globaltime/gt_prefs.c:870 ../globaltime/gt_prefs.c:898
-msgid "Cross this to use default instead of selected value"
-msgstr "Valitse tämä käyttääksesi oletusta valitun arvon sijaan"
-
-#. ------------------------foreground-------------------------
-#: ../globaltime/gt_prefs.c:753 ../globaltime/gt_prefs.c:955
-msgid "Foreground (=text) color:"
-msgstr "Edustan (tekstin) väri:"
-
-#: ../globaltime/gt_prefs.c:760
-msgid "Click to change foreground colour for clock"
-msgstr "Napsauta vaihtaaksesi kellon edustaväriä"
-
-#. ------------------------name font-------------------------
-#: ../globaltime/gt_prefs.c:785 ../globaltime/gt_prefs.c:987
-msgid "Font for name of clock:"
-msgstr "Kellon nimen kirjasin:"
-
-#: ../globaltime/gt_prefs.c:792
-msgid "Click to change font for clock name"
-msgstr "Napsauta vaihtaaksesi kellon nimen fonttia"
-
-#. ------------------------time font-------------------------
-#: ../globaltime/gt_prefs.c:817 ../globaltime/gt_prefs.c:1019
-msgid "Font for time of clock:"
-msgstr "Kellonajan kirjasin:"
-
-#: ../globaltime/gt_prefs.c:824
-msgid "Click to change font for clock time"
-msgstr "Napsauta vaihtaaksesi kellon näyttämän ajan kirjasinta"
-
-#. ------------------------underline name--------------------
-#: ../globaltime/gt_prefs.c:849
-msgid "Underline name of clock:"
-msgstr "Alleviivaa kellon nimi:"
-
-#. ------------------------underline time--------------------
-#: ../globaltime/gt_prefs.c:877
-msgid "Underline time of clock:"
-msgstr "Alleviivaa kellonaika:"
-
-#: ../globaltime/gt_prefs.c:916
-msgid "Text Default Formatting"
-msgstr "Tekstin oletusmuotoilu"
-
-#: ../globaltime/gt_prefs.c:930
-msgid "Click to change default background colour for clocks"
-msgstr "Napsauta vaihtaaksesi kellojen oletustaustaväriä"
-
-#: ../globaltime/gt_prefs.c:944 ../globaltime/gt_prefs.c:976
-msgid "Cross this to use system default instead of selected color"
-msgstr "Valitse tämä käyttääksesi järjestelmän oletusta valtun värin sijaan"
-
-#: ../globaltime/gt_prefs.c:962
-msgid "Click to change default text colour for clocks"
-msgstr "Napsauta vaihtaaksesi kellojen oletustekstiväriä"
-
-#: ../globaltime/gt_prefs.c:994
-msgid "Click to change default font for clock name"
-msgstr "Napsauta vaihtaaksesi kellon nimen oletuskirjasinta"
-
-#: ../globaltime/gt_prefs.c:1008 ../globaltime/gt_prefs.c:1040
-msgid "Cross this to use system default font instead of selected font"
-msgstr ""
-"Valitse tämä käyttääksesi järjestelmän oletuskirjasinta valitun kirjasimen "
-"sijaan"
-
-#: ../globaltime/gt_prefs.c:1026
-msgid "Click to change default font for clock time"
-msgstr "Napsauta vaihtaaksesi kellonajan oletuskirjasinta"
-
-#. ------------------------underline name--------------------
-#: ../globaltime/gt_prefs.c:1051
-msgid "Underline for name of clock:"
-msgstr "Alleviivaa kellon nimi:"
-
-#. ------------------------underline time--------------------
-#: ../globaltime/gt_prefs.c:1065
-msgid "Underline for time of clock:"
-msgstr "Alleviivaa kellonaika:"
-
-#: ../globaltime/gt_prefs.c:1088
-msgid "update preferences"
-msgstr "Päivitä asetuksia"
-
-#: ../globaltime/gt_prefs.c:1122
-msgid "Globaltime Preferences"
-msgstr "Maailmanlaajuisen ajan asetukset"
-
-#. -----------------------HEADING--------------------------------------
-#: ../globaltime/gt_prefs.c:1133
-msgid "General Preferences"
-msgstr "Yleiset asetukset"
-
-#: ../globaltime/gt_prefs.c:1137
-msgid "Decorations:"
-msgstr "Koristelut:"
-
-#: ../globaltime/gt_prefs.c:1138
-msgid "Standard"
-msgstr "Tavallinen"
-
-#: ../globaltime/gt_prefs.c:1144
-msgid "Use normal decorations"
-msgstr "Käytä normaaleita koristeluja"
-
-#: ../globaltime/gt_prefs.c:1149 ../src/appointment.c:3551
-msgid "None"
-msgstr "Ei mitään"
-
-#: ../globaltime/gt_prefs.c:1156
-msgid "Do not show window decorations (borders)"
-msgstr "Älä näytä ikkunoiden reunukset"
-
-#: ../globaltime/gt_prefs.c:1162
-msgid "Clock size:"
-msgstr "Kellon koko:"
-
-#: ../globaltime/gt_prefs.c:1163
-msgid "Equal"
-msgstr "Samankokoinen"
-
-#: ../globaltime/gt_prefs.c:1170
-msgid "All clocks have same size"
-msgstr "Kaikki kellot ovat samankokoisia"
-
-#: ../globaltime/gt_prefs.c:1175
-msgid "Varying"
-msgstr "Vaihteleva"
-
-#: ../globaltime/gt_prefs.c:1181
-msgid "Clock sizes vary"
-msgstr "Kellojen koot vaihtelevat"
-
-#: ../globaltime/gt_prefs.c:1187
-msgid "Local timezone:"
-msgstr "Paikallinen aikavyöhyke:"
-
-#: ../globaltime/timezone_selection.c:93
-msgid " Other"
-msgstr "Muu"
-
-#: ../globaltime/timezone_selection.c:145 ../src/timezone_selection.c:148
-#, c-format
-msgid "%d hour %d mins"
-msgstr "%d tuntia %d minuuttia"
-
-#: ../globaltime/timezone_selection.c:148 ../src/timezone_selection.c:151
-#, c-format
-msgid "%d hour"
-msgstr "%d tuntia"
-
-#: ../globaltime/timezone_selection.c:150 ../src/timezone_selection.c:153
-#, c-format
-msgid "%d mins"
-msgstr "%d minuttia"
-
-#: ../globaltime/timezone_selection.c:156 ../src/timezone_selection.c:159
-msgid "backward"
-msgstr "Taaksepäin"
-
-#: ../globaltime/timezone_selection.c:159 ../src/timezone_selection.c:162
-msgid "forward"
-msgstr "Eteenpäin"
-
-#: ../globaltime/timezone_selection.c:183 ../src/timezone_selection.c:186
-msgid "not changed"
-msgstr "Ei muutettu"
-
-#: ../globaltime/timezone_selection.c:184 ../src/timezone_selection.c:187
-msgid "not changing"
-msgstr "Ei muuteta"
-
-#. location
-#: ../globaltime/timezone_selection.c:234
-#: ../globaltime/timezone_selection.c:239 ../src/appointment.c:2974
-#: ../src/timezone_selection.c:237 ../src/timezone_selection.c:242
-msgid "Location"
-msgstr "Sijainti"
-
-#: ../globaltime/timezone_selection.c:245 ../src/timezone_selection.c:248
-msgid "GMT Offset"
-msgstr "Ero GMT:hen"
-
-#: ../globaltime/timezone_selection.c:251 ../src/timezone_selection.c:254
-msgid "Previous/Next Change"
-msgstr "Edellinen/Seuraava vaihto"
-
-#: ../globaltime/timezone_selection.c:256 ../src/timezone_selection.c:259
-msgid "Country"
-msgstr "Maa"
-
-#. We are actually setting the g_par parameter. In other words
-#. we are setting the global default timezone for Orage. This is
-#. done very seldom and we do not want to allow "floating" here.
-#. This test is ugly, but it is not worth an extra parameter.
-#. this is normal appointment
-#: ../globaltime/timezone_selection.c:283
-#: ../globaltime/timezone_selection.c:293 ../src/timezone_selection.c:291
-#: ../src/timezone_selection.c:300 ../src/timezone_selection.c:311
-msgid "Pick timezone"
-msgstr "Valitse aikavyöhyke"
-
-#: ../globaltime/timezone_selection.c:286
-#: ../globaltime/timezone_selection.c:296 ../src/timezone_selection.c:294
-#: ../src/timezone_selection.c:303 ../src/timezone_selection.c:314
-msgid "Change mode"
-msgstr "Muuta tilaa"
-
-#: ../globaltime/timezone_selection.c:287
-#: ../globaltime/timezone_selection.c:297
-#: ../globaltime/timezone_selection.c:336 ../src/timezone_selection.c:295
-#: ../src/timezone_selection.c:304 ../src/timezone_selection.c:315
-#: ../src/timezone_selection.c:354
-msgid "UTC"
-msgstr "UTC"
-
-#. NOTE: this exists only if ical timezones are being used
-#: ../globaltime/timezone_selection.c:288
-#: ../globaltime/timezone_selection.c:341 ../src/timezone_selection.c:305
-#: ../src/timezone_selection.c:359
-msgid "floating"
-msgstr "Kelluva"
-
-#: ../globaltime/org.xfce.orage.globaltime.desktop.in.h:1
-msgid "Orage Globaltime"
-msgstr "Oragen maailmanlaajuinen aika"
-
-#: ../globaltime/org.xfce.orage.globaltime.desktop.in.h:2
-msgid "Show clocks from different countries"
-msgstr "Näytä muiden maiden kellot"
-
-#: ../globaltime/org.xfce.orage.globaltime.desktop.in.h:3
-#: ../src/tray_icon.c:489
-msgid "Globaltime"
-msgstr "Maailmanlaajuinen aika"
 
 #: ../src/about-xfcalendar.c:54 ../org.xfce.orage.appdata.xml.in.h:2
 msgid "Orage is a time-managing application for the Xfce desktop environment"
@@ -438,7 +45,7 @@ msgstr "Loppuajankohta"
 msgid "Due"
 msgstr "Viimeistään"
 
-#: ../src/appointment.c:508 ../src/mainbox.c:693
+#: ../src/appointment.c:508 ../src/mainbox.c:676
 #: ../org.xfce.orage.appdata.xml.in.h:1
 msgid "Orage"
 msgstr "Orage"
@@ -529,7 +136,7 @@ msgstr "Valitse päivä"
 
 #: ../src/appointment.c:1443 ../src/appointment.c:1458 ../src/day-view.c:400
 #: ../src/day-view.c:473 ../src/event-list.c:1060 ../src/event-list.c:1214
-#: ../src/functions.c:146 ../src/tray_icon.c:462
+#: ../src/functions.c:146 ../src/tray_icon.c:408
 msgid "Today"
 msgstr "Tänään"
 
@@ -577,7 +184,7 @@ msgstr "Uusi tapaaminen - Orage"
 #. ********* File menu *********
 #. File menu
 #: ../src/appointment.c:2645 ../src/day-view.c:294 ../src/event-list.c:1115
-#: ../src/interface.c:857 ../src/mainbox.c:217
+#: ../src/interface.c:857 ../src/mainbox.c:208
 msgid "_File"
 msgstr "_Tiedosto"
 
@@ -666,6 +273,12 @@ msgstr ""
 #: ../src/appointment.c:2967
 msgid "Title "
 msgstr "Otsikko"
+
+#. location
+#: ../src/appointment.c:2974 ../src/timezone_selection.c:237
+#: ../src/timezone_selection.c:242
+msgid "Location"
+msgstr "Sijainti"
 
 #: ../src/appointment.c:2982
 msgid "All day event"
@@ -834,6 +447,12 @@ msgstr "Käytä"
 msgid "Select this if you want audible alarm"
 msgstr "Käytä tätä jos haluat äänihälytyksen"
 
+#: ../src/appointment.c:3302 ../src/interface.c:1047 ../src/interface.c:1093
+#: ../src/interface.c:1269 ../src/interface.c:1361 ../src/interface.c:1444
+#: ../src/parameters.c:397 ../src/parameters.c:620 ../src/reminder.c:705
+msgid "_Open"
+msgstr "_Avaa"
+
 #: ../src/appointment.c:3315
 msgid "Repeat alarm sound"
 msgstr "Toista hälytysääni"
@@ -941,6 +560,10 @@ msgstr ""
 #: ../src/appointment.c:3485
 msgid "Set current settings from default alarm"
 msgstr "Lataa asetukset oletushälytyksestä"
+
+#: ../src/appointment.c:3551
+msgid "None"
+msgstr "Ei mitään"
 
 #: ../src/appointment.c:3551
 msgid "Daily"
@@ -1148,7 +771,7 @@ msgstr "Tapahtumapäivät"
 
 #. ********* View menu *********
 #. View menu
-#: ../src/day-view.c:304 ../src/event-list.c:1138 ../src/mainbox.c:243
+#: ../src/day-view.c:304 ../src/event-list.c:1138 ../src/mainbox.c:234
 msgid "_View"
 msgstr "_Näytä"
 
@@ -1693,47 +1316,43 @@ msgstr ""
 "Tuntematon valinta %s\n"
 "\n"
 
-#: ../src/mainbox.c:225
+#: ../src/mainbox.c:216
 msgid "_Exchange data"
 msgstr "_Vaihtotiedot"
 
 #. Edit menu
-#: ../src/mainbox.c:236
+#: ../src/mainbox.c:227
 msgid "_Edit"
 msgstr "_Muokkaa"
 
-#: ../src/mainbox.c:246
+#: ../src/mainbox.c:237
 msgid "View selected _date"
 msgstr "Näytä valittu _päivä"
 
-#: ../src/mainbox.c:249
+#: ../src/mainbox.c:240
 msgid "View selected _week"
 msgstr "Näytä valittu _viikko"
 
-#: ../src/mainbox.c:255
+#: ../src/mainbox.c:246
 msgid "Select _Today"
 msgstr "Valitse _tämä päivä"
 
-#: ../src/mainbox.c:261
-msgid "Show _Globaltime"
-msgstr "Näytä _maailmanlaajuinen aika"
-
 #. Help menu
 #. the rest
-#: ../src/mainbox.c:265 ../src/parameters.c:1197
+#: ../src/mainbox.c:250 ../src/parameters.c:1197
 msgid "_Help"
 msgstr "_Ohje"
 
-#: ../src/mainbox.c:328 ../src/reminder.c:1027
+#: ../src/mainbox.c:311 ../src/reminder.c:1027
 msgid "No title defined"
 msgstr "Otsikkoa ei määritelty"
 
-#: ../src/mainbox.c:386
+#: ../src/mainbox.c:369
 #, c-format
 msgid " Location: %s\n"
 msgstr "Sijainti: %s\n"
 
-#: ../src/mainbox.c:396
+#: ../src/mainbox.c:379
 #, c-format
 msgid ""
 "\n"
@@ -1744,11 +1363,11 @@ msgstr ""
 " Huomaa:\n"
 "%s"
 
-#: ../src/mainbox.c:404
+#: ../src/mainbox.c:387
 msgid "Never"
 msgstr "Ei koskaan"
 
-#: ../src/mainbox.c:412
+#: ../src/mainbox.c:395
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1761,7 +1380,7 @@ msgstr ""
 " Tehtävä ennen:\t%s\n"
 " Tila:\t%s%s"
 
-#: ../src/mainbox.c:419
+#: ../src/mainbox.c:402
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1772,16 +1391,16 @@ msgstr ""
 "%s Alkamisaika:\t%s\n"
 " Päättymisaika:\t%s%s"
 
-#: ../src/mainbox.c:498
+#: ../src/mainbox.c:481
 msgid "<b>To do:</b>"
 msgstr "<b>Tehtävälista:</b>"
 
-#: ../src/mainbox.c:535
+#: ../src/mainbox.c:518
 #, c-format
 msgid "<b>Events for %s:</b>"
 msgstr "<b>Tapahtumat - %s:</b>"
 
-#: ../src/mainbox.c:545
+#: ../src/mainbox.c:528
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>Tapahtumat ajalle %s - %s:</b>"
@@ -4302,15 +3921,83 @@ msgstr "US/Pacific-New"
 msgid "US/Samoa"
 msgstr "US/Samoa"
 
-#: ../src/tray_icon.c:469
+#: ../src/timezone_selection.c:148
+#, c-format
+msgid "%d hour %d mins"
+msgstr "%d tuntia %d minuuttia"
+
+#: ../src/timezone_selection.c:151
+#, c-format
+msgid "%d hour"
+msgstr "%d tuntia"
+
+#: ../src/timezone_selection.c:153
+#, c-format
+msgid "%d mins"
+msgstr "%d minuttia"
+
+#: ../src/timezone_selection.c:159
+msgid "backward"
+msgstr "Taaksepäin"
+
+#: ../src/timezone_selection.c:162
+msgid "forward"
+msgstr "Eteenpäin"
+
+#: ../src/timezone_selection.c:186
+msgid "not changed"
+msgstr "Ei muutettu"
+
+#: ../src/timezone_selection.c:187
+msgid "not changing"
+msgstr "Ei muuteta"
+
+#: ../src/timezone_selection.c:248
+msgid "GMT Offset"
+msgstr "Ero GMT:hen"
+
+#: ../src/timezone_selection.c:254
+msgid "Previous/Next Change"
+msgstr "Edellinen/Seuraava vaihto"
+
+#: ../src/timezone_selection.c:259
+msgid "Country"
+msgstr "Maa"
+
+#. We are actually setting the g_par parameter. In other words
+#. we are setting the global default timezone for Orage. This is
+#. done very seldom and we do not want to allow "floating" here.
+#. This test is ugly, but it is not worth an extra parameter.
+#. this is normal appointment
+#: ../src/timezone_selection.c:291 ../src/timezone_selection.c:300
+#: ../src/timezone_selection.c:311
+msgid "Pick timezone"
+msgstr "Valitse aikavyöhyke"
+
+#: ../src/timezone_selection.c:294 ../src/timezone_selection.c:303
+#: ../src/timezone_selection.c:314
+msgid "Change mode"
+msgstr "Muuta tilaa"
+
+#: ../src/timezone_selection.c:295 ../src/timezone_selection.c:304
+#: ../src/timezone_selection.c:315 ../src/timezone_selection.c:354
+msgid "UTC"
+msgstr "UTC"
+
+#. NOTE: this exists only if ical timezones are being used
+#: ../src/timezone_selection.c:305 ../src/timezone_selection.c:359
+msgid "floating"
+msgstr "Kelluva"
+
+#: ../src/tray_icon.c:415
 msgid "New appointment"
 msgstr "Uusi tapaminen"
 
-#: ../src/tray_icon.c:476
+#: ../src/tray_icon.c:422
 msgid "Preferences"
 msgstr "Asetukset"
 
-#: ../src/tray_icon.c:483
+#: ../src/tray_icon.c:429
 msgid "Quit"
 msgstr "Lopeta"
 
