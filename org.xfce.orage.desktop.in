@@ -2,7 +2,7 @@
 Version=1.0
 _Name=Orage Calendar
 _Comment=Desktop calendar
-Exec=orage
+Exec=orage %F
 Icon=org.xfce.orage
 StartupNotify=true
 MimeType=text/calendar;
