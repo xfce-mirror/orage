@@ -56,7 +56,7 @@ void create_wAbout (G_GNUC_UNUSED GtkWidget *widget,
   gtk_about_dialog_set_authors(about, authors);
   gtk_about_dialog_set_license_type(about, GTK_LICENSE_GPL_2_0);
   gtk_about_dialog_set_translator_credits(about, _("translator-credits"));
-  orage_logo = orage_create_icon(FALSE, 96);
+  orage_logo = orage_create_icon(TRUE, 96);
   gtk_about_dialog_set_logo(about, orage_logo);
 
   gtk_window_set_default_size(GTK_WINDOW(dialog), 520, 440);

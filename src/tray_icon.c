@@ -471,10 +471,9 @@ void orage_refresh_trayicon(void)
 {
     GdkPixbuf *orage_logo;
 
-    orage_logo = orage_create_icon(FALSE, 0);
-    if (!orage_logo) {
-        return;
-    }
+    orage_logo = orage_create_icon (FALSE, 0);
+    g_return_if_fail (orage_logo != NULL);
+
     if (g_par.show_systray) { /* refresh tray icon */
         if (ORAGE_TRAYICON && orage_status_icon_is_embedded (ORAGE_TRAYICON)) {
             orage_status_icon_set_visible (ORAGE_TRAYICON, FALSE);
@@ -483,9 +482,18 @@ void orage_refresh_trayicon(void)
         g_par.trayIcon = orage_create_trayicon(orage_logo);
         orage_status_icon_set_visible (ORAGE_TRAYICON, TRUE);
     }
-    gtk_window_set_default_icon(orage_logo);
-    /* main window is always active so we need to change it's icon also */
-    gtk_window_set_icon(GTK_WINDOW(((CalWin *)g_par.xfcal)->mWindow)
-            , orage_logo);
-    g_object_unref(orage_logo);
+
+    g_object_unref (orage_logo);
+}
+
+void orage_refresh_default_icon (void)
+{
+    GdkPixbuf *icon;
+
+    icon = orage_create_icon (TRUE, 96);
+    g_return_if_fail (icon != NULL);
+
+    gtk_window_set_default_icon (icon);
+    gtk_window_set_icon (GTK_WINDOW(((CalWin *)g_par.xfcal)->mWindow), icon);
+    g_object_unref (icon);
 }
