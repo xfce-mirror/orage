@@ -677,6 +677,7 @@ void build_mainWin(void)
     gtk_window_set_position(GTK_WINDOW(cal->mWindow), GTK_WIN_POS_NONE);
     gtk_window_set_resizable(GTK_WINDOW(cal->mWindow), TRUE);
     gtk_window_set_destroy_with_parent(GTK_WINDOW(cal->mWindow), TRUE);
+    orage_refresh_default_icon ();
 
     /* Build the vertical box */
     cal->mVbox = gtk_grid_new ();

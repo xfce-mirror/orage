@@ -889,7 +889,7 @@ gboolean orage_day_change(gpointer user_data)
         previous_year  = current_year;
         previous_month = current_month;
         previous_day   = current_day;
-        refresh_TrayIcon();
+        orage_refresh_trayicon();
         xfical_alarm_build_list(TRUE);  /* new l_alarm list when date changed */
         reset_orage_day_change(TRUE);   /* setup for next time */
     }

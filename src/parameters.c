@@ -324,7 +324,7 @@ static void set_systray(void)
     if (!(status_icon && orage_status_icon_is_embedded (status_icon)))
     {
         orage_logo = orage_create_icon(FALSE, 0);
-        status_icon = create_TrayIcon (orage_logo);
+        status_icon = orage_create_trayicon (orage_logo);
         g_par.trayIcon = status_icon;
         g_object_unref(orage_logo);
     }
@@ -1178,7 +1178,7 @@ static Itf *create_parameter_dialog(void)
             , GTK_WIN_POS_CENTER);
     gtk_window_set_modal(GTK_WINDOW(dialog->orage_dialog), FALSE);
     gtk_window_set_resizable(GTK_WINDOW(dialog->orage_dialog), TRUE);
-    orage_logo = orage_create_icon(FALSE, 48);
+    orage_logo = orage_create_icon(TRUE, 48);
     gtk_window_set_icon(GTK_WINDOW(dialog->orage_dialog), orage_logo);
     g_object_unref(orage_logo);
 
