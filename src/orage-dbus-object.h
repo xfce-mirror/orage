@@ -25,7 +25,7 @@
 
 #include <glib-object.h>
 
-G_BEGIN_DECLS;
+G_BEGIN_DECLS
 
 typedef struct _OrageDBusClass OrageDBusClass;
 typedef struct _OrageDBus      OrageDBus;
@@ -56,7 +56,7 @@ gboolean orage_dbus_service_remove_foreign(DBusGProxy *proxy
 void orage_dbus_start(void);
 
 
-G_END_DECLS;
+G_END_DECLS
 
 #endif /* !__ORAGE_DBUS_OBJECT_H__ */
 
