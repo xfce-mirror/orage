@@ -50,7 +50,7 @@ xfical_exception *xfical_exception_new (GDateTime *gdt,
     {
         time = orage_gdatetime_to_i18_time (gdt, FALSE);
         g_debug ("  NEW exception: %p, refcount=%d, gdt=%p, time='%s'",
-                 except, except->ref_count, gdt, time);
+                 (void *)except, except->ref_count, (void *)gdt, time);
         g_free (time);
     }
 
@@ -72,7 +72,7 @@ xfical_exception *xfical_exception_ref (xfical_exception *except)
         gdt = except->time;
         time = orage_gdatetime_to_i18_time (gdt, FALSE);
         g_debug ("  REF exception: %p, refcount=%d, gdt=%p, time='%s'",
-                 except, except->ref_count, gdt, time);
+                 (void *)except, except->ref_count, (void *)gdt, time);
         g_free (time);
     }
 
@@ -90,13 +90,13 @@ void xfical_exception_unref (xfical_exception *except)
     {
         time = orage_gdatetime_to_i18_time (except->time, FALSE);
         g_debug ("UNREF exception: %p, refcount=%d, gdt=%p, time='%s'",
-                 except, except->ref_count, except->time, time);
+                 (void *)except, except->ref_count, (void *)except->time, time);
         g_free (time);
     }
 
     if (g_atomic_int_dec_and_test (&except->ref_count))
     {
-        g_debug ("UNREF exception: free %p", except);
+        g_debug ("UNREF exception: free %p", (void *)except);
         g_date_time_unref (except->time);
         g_free (except);
     }
