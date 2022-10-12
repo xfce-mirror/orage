@@ -549,7 +549,6 @@ static void add_row (day_win *dw, const xfical_appt *appt)
     GDateTime *gdt_start;
     GDateTime *gdt_end;
     GDateTime *gdt_first;
-    gchar *format_bold = "<b> %s </b>";
     gint start_hour;
     gint end_hour;
 
@@ -594,7 +593,7 @@ static void add_row (day_win *dw, const xfical_appt *appt)
     /* then add the appointment */
     tmp_title = orage_process_text_commands(
             appt->title ? appt->title : _("Unknown"));
-    tip_title = g_markup_printf_escaped(format_bold, tmp_title);
+    tip_title = g_markup_printf_escaped("<b> %s </b>", tmp_title);
     tmp_note = orage_process_text_commands(
             appt->note ? appt->note : "");
     tmp_note = orage_limit_text(tmp_note, 50, 10);

@@ -52,6 +52,8 @@
 #include "tray_icon.h"
 #include "day-view.h"
 
+#define FORMAT_BOLD "<b> %s </b>"
+
 static guint month_change_timer=0;
 
 gboolean orage_mark_appointments(void)
@@ -299,7 +301,6 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
     CalWin *cal = (CalWin *)g_par.xfcal;
     gchar *tip, *tmp, *tmp_title, *tmp_note;
     gchar *tip_title, *tip_location, *tip_note;
-    gchar *format_bold = "<b> %s </b>";
     char  *s_time, *s_timeonly, *e_time, *c_time, *na;
     GDateTime *today;
     GDateTime *gdt_e_time;
@@ -363,9 +364,9 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
     }
 
     /***** set tooltip hint *****/
-    tip_title = g_markup_printf_escaped(format_bold, tmp_title);
+    tip_title = g_markup_printf_escaped(FORMAT_BOLD, tmp_title);
     if (appt->location) {
-        tmp = g_markup_printf_escaped(format_bold, appt->location);
+        tmp = g_markup_printf_escaped(FORMAT_BOLD, appt->location);
         tip_location = g_strdup_printf(_(" Location: %s\n"), tmp);
         g_free(tmp);
     }
