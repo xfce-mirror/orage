@@ -76,12 +76,6 @@
 #define TZ_CONVERT_PAR_FILENAME  "tz_convert.par"
 #define TZ_CONVERT_PAR_FILE_LOC  ORAGE_ZONEINFO_DIRECTORY TZ_CONVERT_PAR_FILENAME
 
-/** This is the filename of the file containing orage ical timezone names */
-#define ICAL_ZONES_TAB_FILENAME  "zones.tab"
-#define ICAL_ZONES_TAB_FILE_LOC  ORAGE_ZONEINFO_DIRECTORY ICAL_ZONES_TAB_FILENAME
-
-
-
 /* this contains all timezone data */
 orage_timezone_array tz_array= {0};
 

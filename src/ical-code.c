@@ -72,16 +72,6 @@
 
 static void xfical_alarm_build_list_internal(gboolean first_list_today);
 
-/** This is the toplevel directory where the timezone data is installed in. */
-#define ZONEINFO_DIRECTORY  PACKAGE_DATA_DIR "/orage/zoneinfo"
-
-/** This is the filename of the file containing the city names and
- *     coordinates of all the builtin timezones. */
-#define ZONES_TAB_FILENAME  "zones.tab"
-
-#define ZONES_TAB_FILE_LOC  ZONEINFO_DIRECTORY "/" ZONES_TAB_FILENAME
-
-
 typedef struct _xfical_timezone_array
 {
     int    count;     /* how many timezones we have */
