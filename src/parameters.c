@@ -1365,8 +1365,6 @@ void read_parameters(void)
     g_par.start_minimized = orage_rc_get_bool(orc, "Start minimized", FALSE);
     g_par.set_stick = orage_rc_get_bool(orc, "Set sticked", TRUE);
     g_par.set_ontop = orage_rc_get_bool(orc, "Set ontop", FALSE);
-    g_par.own_icon_file = orage_rc_get_str(orc, "Own icon file"
-            , PACKAGE_DATA_DIR "/icons/hicolor/160x160/apps/org.xfce.orage.xpm");
     g_par.own_icon_row1_data = orage_rc_get_str(orc
             , "Own icon row1 data", "%a");
     g_par.own_icon_row2_data = orage_rc_get_str(orc
@@ -1444,7 +1442,6 @@ void write_parameters(void)
     orage_rc_put_bool(orc, "Start minimized", g_par.start_minimized);
     orage_rc_put_bool(orc, "Set sticked", g_par.set_stick);
     orage_rc_put_bool(orc, "Set ontop", g_par.set_ontop);
-    orage_rc_put_str(orc, "Own icon file", g_par.own_icon_file);
     orage_rc_put_str(orc, "Own icon row1 data", g_par.own_icon_row1_data);
     orage_rc_put_str(orc, "Own icon row2 data", g_par.own_icon_row2_data);
     orage_rc_put_str(orc, "Own icon row3 data", g_par.own_icon_row3_data);

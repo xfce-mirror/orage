@@ -8,7 +8,7 @@ dnl
 
 dnl Version information
 m4_define([orage_version_major], [4])
-m4_define([orage_version_minor], [16])
+m4_define([orage_version_minor], [17])
 m4_define([orage_version_micro], [0])
 m4_define([orage_version_build], [@REVISION@])
 m4_define([orage_version_tag], [git]) # Leave empty for releases
@@ -163,7 +163,6 @@ icons/32x32/Makefile
 icons/48x48/Makefile
 icons/64x64/Makefile
 icons/128x128/Makefile
-icons/160x160/Makefile
 icons/scalable/Makefile
 po/Makefile.in
 sounds/Makefile

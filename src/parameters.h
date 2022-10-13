@@ -91,7 +91,6 @@ typedef struct _parameters
     /* tray icon */
     void *trayIcon; /* this is GtkStatusIcon * */
 
-    char *own_icon_file;
     char *own_icon_row1_data;
     char *own_icon_row2_data;
     char *own_icon_row3_data;

@@ -5,7 +5,8 @@
   event and then unset full day option). (!20)
 - Removed bundled libical (Issue #5)
 - Removed panel plugin (Issue #11)
-- Replaced old Orage icons (Issue #16)
+- Removed GlobalTime (Issue #12)
+- Replaced old Orage icons (Issue #16) and removed 160x160 icons
 
 4.16.0 (2022-03-17)
 ======
