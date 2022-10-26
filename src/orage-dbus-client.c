@@ -29,10 +29,10 @@
 #include <dbus/dbus-glib-lowlevel.h>
 
 #include "orage-dbus-client.h"
-/*
+#if 0
 #include "orage-dbus-object.h"
 #include "orage-dbus-service.h"
-*/
+#endif
 
 
 /* ********************************
@@ -53,13 +53,13 @@ gboolean orage_dbus_import_file(gchar *file_name)
         return(FALSE);
     }
 
-/* Create a proxy object for the "bus driver" (name "org.freedesktop.DBus") */
+    /* Create a proxy object for the "bus driver" (name "org.freedesktop.DBus") */
     proxy = dbus_g_proxy_new_for_name(connection
             , "org.xfce.orage", "/org/xfce/orage", "org.xfce.orage");
 
-    /*
+#if 0
     if (orage_dbus_service_load_file(proxy, file_name,  &error)) {
-    */
+#endif
     if (dbus_g_proxy_call(proxy, "LoadFile", &error
                 , G_TYPE_STRING, file_name
                 , G_TYPE_INVALID, G_TYPE_INVALID)) {
@@ -67,7 +67,7 @@ gboolean orage_dbus_import_file(gchar *file_name)
     }
     else {
         return(FALSE);
-    };
+    }
 }
 
 gboolean orage_dbus_export_file(gchar *file_name, gint type, gchar *uids)
@@ -94,7 +94,7 @@ gboolean orage_dbus_export_file(gchar *file_name, gint type, gchar *uids)
     }
     else {
         return(FALSE);
-    };
+    }
 }
 
 gboolean orage_dbus_foreign_add(gchar *file_name, gboolean read_only
@@ -122,7 +122,7 @@ gboolean orage_dbus_foreign_add(gchar *file_name, gboolean read_only
     }
     else {
         return(FALSE);
-    };
+    }
 }
 
 gboolean orage_dbus_foreign_remove(gchar *file_name)
@@ -147,5 +147,5 @@ gboolean orage_dbus_foreign_remove(gchar *file_name)
     }
     else {
         return(FALSE);
-    };
+    }
 }

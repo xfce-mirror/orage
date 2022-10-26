@@ -351,14 +351,11 @@ static void import_file(gboolean running, char *file_name, gboolean initialized)
 static void export_file(gboolean running, char *file_name, gboolean initialized
         , gchar *uid_list)
 {
-    gint type = 0;
+    const gint type = uid_list ? 1 : 0;
+
+    g_message ("%s: running=%d initialized= %d type=%d, file=%s, uids=%s",
+               G_STRFUNC, running, initialized, type, file_name, uid_list);
     
-    if (uid_list)
-        type = 1;
-    else
-        type = 0;
-    g_message ("export_file: running=%d initialized= %d type=%d, file=%s, uids=%s\n",
-               running, initialized, type, file_name, uid_list);
     if (running && !initialized) {
         /* let's use dbus since server is running there already */
 #ifdef HAVE_DBUS
