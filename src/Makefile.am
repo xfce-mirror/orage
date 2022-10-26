@@ -49,13 +49,15 @@ orage_CFLAGS =							\
 	$(LIBGTK_CFLAGS)					\
 	$(LIBX11_CFLAGS)					\
 	$(LIBXFCE4UTIL_CFLAGS)					\
-	$(LIBICAL_CFLAGS)
+	$(LIBICAL_CFLAGS)					\
+	$(GIO_CFLAGS)
 
 orage_LDADD =							\
 	$(LIBGTK_LIBS)						\
 	$(LIBX11_LIBS)						\
 	$(LIBXFCE4UTIL_LIBS)					\
 	$(LIBICAL_LIBS)						\
+	$(GIO_LIBS)						\
 	-lm							\
 	$(INTLLIBS)
 
