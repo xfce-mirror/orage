@@ -24,10 +24,11 @@
 #define __ORAGE_DBUS_H__
 
 void orage_dbus_start(void);
-gboolean orage_dbus_import_file(gchar *file_name);
-gboolean orage_dbus_export_file(gchar *file_name, gint type, gchar *uids);
-gboolean orage_dbus_foreign_add(gchar *file_name, gboolean read_only
-        , gchar *name);
-gboolean orage_dbus_foreign_remove(gchar *file_name);
+gboolean orage_dbus_import_file (const gchar *file_name);
+gboolean orage_dbus_export_file (const gchar *file_name, gint type,
+                                 const gchar *uids);
+gboolean orage_dbus_foreign_add (const gchar *file_name, gboolean read_only,
+                                 const gchar *name);
+gboolean orage_dbus_foreign_remove (const gchar *file_name);
 
 #endif /* !__ORAGE_DBUS_H__ */

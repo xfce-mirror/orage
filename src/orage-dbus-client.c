@@ -25,127 +25,81 @@
 #endif
 
 #include <glib-object.h>
-
-#include <dbus/dbus-glib-lowlevel.h>
+#include <gio/gio.h>
 
 #include "orage-dbus-client.h"
-#if 0
-#include "orage-dbus-object.h"
-#include "orage-dbus-service.h"
-#endif
 
+static gboolean dbus_call (const gchar *method, GVariant *parameters)
+{
+    GDBusConnection *connection;
+    GError *error = NULL;
+    GDBusProxy *proxy;
+    GVariant *export_result;
+    gboolean result;
+
+    connection = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, &error);
+    if (connection == NULL)
+    {
+        g_warning ("Failed to connect to the D-BUS session bus: %s",
+                   error->message);
+        g_error_free (error);
+        return FALSE;
+    }
+
+    proxy = g_dbus_proxy_new_sync (connection, G_DBUS_PROXY_FLAGS_NONE, NULL,
+                                   "org.xfce.orage", "/org/xfce/orage",
+                                   "org.xfce.orage", NULL, &error);
+    if (proxy == NULL)
+    {
+        g_warning ("Failed to create proxy: %s", error->message);
+        g_error_free (error);
+        return FALSE;
+    }
+
+    export_result = g_dbus_proxy_call_sync (proxy, method, parameters,
+                                            G_DBUS_CALL_FLAGS_NONE, -1, NULL,
+                                            &error);
+    if (export_result)
+    {
+        g_variant_unref (export_result);
+        result = TRUE;
+    }
+    else
+    {
+        g_warning ("Proxy call failed: %s", error->message);
+        g_error_free (error);
+        result = FALSE;
+    }
+
+    g_object_unref (proxy);
+
+    return result;
+}
 
 /* ********************************
- *      CLIENT side call 
+ *      CLIENT side call
  * ********************************
- * */
-gboolean orage_dbus_import_file(gchar *file_name)
+ */
+gboolean orage_dbus_import_file (const gchar *file_name)
 {
-    DBusGConnection *connection;
-    GError *error = NULL;
-    DBusGProxy *proxy;
-
-    connection = dbus_g_bus_get(DBUS_BUS_SESSION, &error);
-    if (connection == NULL) {
-          /* notify the user that D-BUS service won't be available */
-        g_warning("Failed to connect to the D-BUS session bus: %s"
-                , error->message);
-        return(FALSE);
-    }
-
-    /* Create a proxy object for the "bus driver" (name "org.freedesktop.DBus") */
-    proxy = dbus_g_proxy_new_for_name(connection
-            , "org.xfce.orage", "/org/xfce/orage", "org.xfce.orage");
-
-#if 0
-    if (orage_dbus_service_load_file(proxy, file_name,  &error)) {
-#endif
-    if (dbus_g_proxy_call(proxy, "LoadFile", &error
-                , G_TYPE_STRING, file_name
-                , G_TYPE_INVALID, G_TYPE_INVALID)) {
-        return(TRUE);
-    }
-    else {
-        return(FALSE);
-    }
+    return dbus_call ("LoadFile", g_variant_new ("(s)", file_name));
 }
 
-gboolean orage_dbus_export_file(gchar *file_name, gint type, gchar *uids)
+gboolean orage_dbus_export_file (const gchar *file_name, gint type,
+                                 const gchar *uids)
 {
-    DBusGConnection *connection;
-    GError *error = NULL;
-    DBusGProxy *proxy;
-
-    connection = dbus_g_bus_get(DBUS_BUS_SESSION, &error);
-    if (connection == NULL) {
-        g_warning("Failed to connect to the D-BUS session bus: %s"
-                , error->message);
-        return(FALSE);
-    }
-
-    proxy = dbus_g_proxy_new_for_name(connection
-            , "org.xfce.orage", "/org/xfce/orage", "org.xfce.orage");
-    if (dbus_g_proxy_call(proxy, "ExportFile", &error
-                , G_TYPE_STRING, file_name
-                , G_TYPE_INT, type
-                , G_TYPE_STRING, uids
-                , G_TYPE_INVALID, G_TYPE_INVALID)) {
-        return(TRUE);
-    }
-    else {
-        return(FALSE);
-    }
+    return dbus_call ("ExportFile",
+                      g_variant_new ("(sis)", file_name, type, uids ? uids : ""));
 }
 
-gboolean orage_dbus_foreign_add(gchar *file_name, gboolean read_only
-        , gchar *name)
+gboolean orage_dbus_foreign_add (const gchar *file_name, gboolean read_only,
+                                 const gchar *name)
 {
-    DBusGConnection *connection;
-    GError *error = NULL;
-    DBusGProxy *proxy;
-
-    connection = dbus_g_bus_get(DBUS_BUS_SESSION, &error);
-    if (connection == NULL) {
-        g_warning("Failed to connect to the D-BUS session bus: %s"
-                , error->message);
-        return(FALSE);
-    }
-
-    proxy = dbus_g_proxy_new_for_name(connection
-            , "org.xfce.orage", "/org/xfce/orage", "org.xfce.orage");
-    if (dbus_g_proxy_call(proxy, "AddForeign", &error
-                , G_TYPE_STRING, file_name
-                , G_TYPE_BOOLEAN, read_only
-                , G_TYPE_STRING, name
-                , G_TYPE_INVALID, G_TYPE_INVALID)) {
-        return(TRUE);
-    }
-    else {
-        return(FALSE);
-    }
+    return dbus_call ("AddForeign",
+                      g_variant_new ("(sbs)", file_name, read_only, name));
 }
 
-gboolean orage_dbus_foreign_remove(gchar *file_name)
+gboolean orage_dbus_foreign_remove (const gchar *file_name)
 {
-    DBusGConnection *connection;
-    GError *error = NULL;
-    DBusGProxy *proxy;
-
-    connection = dbus_g_bus_get(DBUS_BUS_SESSION, &error);
-    if (connection == NULL) {
-        g_warning("Failed to connect to the D-BUS session bus: %s"
-                , error->message);
-        return(FALSE);
-    }
-
-    proxy = dbus_g_proxy_new_for_name(connection
-            , "org.xfce.orage", "/org/xfce/orage", "org.xfce.orage");
-    if (dbus_g_proxy_call(proxy, "RemoveForeign", &error
-                , G_TYPE_STRING, file_name
-                , G_TYPE_INVALID, G_TYPE_INVALID)) {
-        return(TRUE);
-    }
-    else {
-        return(FALSE);
-    }
+    return dbus_call ("RemoveForeign", g_variant_new ("(s)", file_name));
 }
