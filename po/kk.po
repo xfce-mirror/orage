@@ -44,7 +44,7 @@ msgstr ""
 #: ../src/appointment.c:508 ../src/mainbox.c:676
 #: ../org.xfce.orage.appdata.xml.in.h:1
 msgid "Orage"
-msgstr ""
+msgstr "Orage"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
@@ -54,7 +54,7 @@ msgstr "Файлды таңдаңыз..."
 
 #: ../src/appointment.c:707
 msgid "Sound Files"
-msgstr ""
+msgstr "Дыбыс файлдары"
 
 #: ../src/appointment.c:714 ../src/interface.c:275
 msgid "All Files"
@@ -70,7 +70,7 @@ msgstr "Жалғастыруды қалайсыз ба?"
 
 #: ../src/appointment.c:767
 msgid "No, do not leave"
-msgstr ""
+msgstr "Жоқ, кетпеу"
 
 #: ../src/appointment.c:768
 msgid "Yes, ignore modifications and leave"
@@ -144,7 +144,7 @@ msgstr ""
 
 #: ../src/appointment.c:2183 ../src/interface.c:672
 msgid "_Remove"
-msgstr ""
+msgstr "Ө_шіру"
 
 #: ../src/appointment.c:2209
 msgid "Current categories"
@@ -160,7 +160,7 @@ msgstr "Санат: "
 
 #: ../src/appointment.c:2258 ../src/interface.c:1451
 msgid "_Add"
-msgstr ""
+msgstr "Қ_осу"
 
 #: ../src/appointment.c:2287
 msgid "Colors of categories - Orage"
