@@ -59,7 +59,7 @@ static gboolean dbus_call (const gchar *method, GVariant *parameters)
     export_result = g_dbus_proxy_call_sync (proxy, method, parameters,
                                             G_DBUS_CALL_FLAGS_NONE, -1, NULL,
                                             &error);
-    if (export_result)
+    if (G_LIKELY (export_result != NULL))
     {
         g_variant_unref (export_result);
         result = TRUE;
@@ -88,8 +88,9 @@ gboolean orage_dbus_import_file (const gchar *file_name)
 gboolean orage_dbus_export_file (const gchar *file_name, gint type,
                                  const gchar *uids)
 {
+    const gchar *_uids = uids ? uids : "";
     return dbus_call ("ExportFile",
-                      g_variant_new ("(sis)", file_name, type, uids ? uids : ""));
+                      g_variant_new ("(sis)", file_name, type, _uids));
 }
 
 gboolean orage_dbus_foreign_add (const gchar *file_name, gboolean read_only,
