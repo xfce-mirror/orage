@@ -29,15 +29,9 @@
 
 #include <gio/gio.h>
 
+#include "interface.h"
 #include "orage-dbus-object.h"
 #include "orage-dbus-service.h"
-
-/* defined in interface.c */
-gboolean orage_import_file(gchar *entry_filename);
-gboolean orage_export_file(gchar *filename, gint type, gchar *uids);
-gboolean orage_foreign_file_add(gchar *filename, gboolean read_only
-                , gchar *name);
-gboolean orage_foreign_file_remove(gchar *filename);
 
 static gboolean orage_dbus_service_load_file (OrageExportedService *skeleton,
                                               GDBusMethodInvocation *invocation,
