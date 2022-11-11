@@ -103,8 +103,10 @@ void orage_external_interface(CalWin *xfcal);
 gboolean orage_external_update_check(gpointer user_data);
 gboolean orage_foreign_file_add (const gchar *filename, gboolean read_only,
                                  const gchar *name);
-gboolean orage_foreign_file_remove(gchar *filename);
+gboolean orage_foreign_file_remove (const gchar *filename);
 gboolean orage_import_file (const gchar *entry_filename);
-gboolean orage_export_file(gchar *entry_filename, gint type, gchar *uids);
+gboolean orage_export_file (const gchar *entry_filename,
+                            gint type,
+                            const gchar *uids);
 
 #endif /* !__INTERFACE_H__ */

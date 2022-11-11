@@ -179,7 +179,7 @@ gboolean xfical_set_local_timezone(gboolean testing)
 }
 
 gboolean ic_internal_file_open(icalcomponent **p_ical
-        , icalset **p_fical, gchar *file_icalpath, gboolean read_only
+        , icalset **p_fical, const gchar *file_icalpath, gboolean read_only
         , gboolean test)
 {
     icalcomponent *iter;
