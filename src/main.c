@@ -568,6 +568,13 @@ static void mark_orage_alive(void)
     gdk_window_add_filter (window, client_message_filter, NULL);
 }
 
+static void orage_dbus_bus_acquired (G_GNUC_UNUSED GDBusConnection *connection,
+                                     G_GNUC_UNUSED const gchar     *name,
+                                     G_GNUC_UNUSED gpointer         user_data)
+{
+    orage_dbus_start ();
+}
+
 int main(int argc, char *argv[])
 {
     gboolean running, initialized = FALSE;
@@ -606,9 +613,13 @@ int main(int argc, char *argv[])
     * Now it's serious, the application is running, so we create the RC
     * directory and check for config files in old location.
     */
-#ifdef HAVE_DBUS
-    orage_dbus_start();
-#endif
+    g_bus_own_name (G_BUS_TYPE_SESSION,
+                    "org.xfce.orage",
+                    G_BUS_NAME_OWNER_FLAGS_NONE,
+                    orage_dbus_bus_acquired,
+                    NULL,
+                    NULL,
+                    NULL, NULL);
 
     /*
     * Create the orage.

@@ -27,7 +27,7 @@
 #include <glib.h>
 #include <glib-object.h>
 
-#include <dbus/dbus-glib-lowlevel.h>
+#include <gio/gio.h>
 
 #include "orage-dbus-object.h"
 #include "orage-dbus-service.h"
@@ -39,111 +39,179 @@ gboolean orage_foreign_file_add(gchar *filename, gboolean read_only
                 , gchar *name);
 gboolean orage_foreign_file_remove(gchar *filename);
 
+static gboolean orage_dbus_service_load_file (OrageExportedService *skeleton,
+                                              GDBusMethodInvocation *invocation,
+                                              const char *IN_file,
+                                              gpointer user_data);
+
+static gboolean orage_dbus_service_export_file (OrageExportedService *skeleton,
+                                                GDBusMethodInvocation *invocation,
+                                                const gchar *file,
+                                                gint type,
+                                                const gchar *uids,
+                                                gpointer user_data);
+
+static gboolean orage_dbus_service_add_foreign (OrageExportedService *skeleton,
+                                                GDBusMethodInvocation *invocation,
+                                                const char *IN_file,
+                                                const gboolean IN_mode,
+                                                const char *IN_name,
+                                                gpointer user_data);
+
+static gboolean orage_dbus_service_remove_foreign (OrageExportedService *skeleton,
+                                                   GDBusMethodInvocation *invocation,
+                                                   const char *IN_file,
+                                                   gpointer user_data);
+
 struct _OrageDBusClass
 {
-    GObjectClass parent;
+    OrageExportedServiceSkeletonClass __parent__;
 };
 
 struct _OrageDBus
 {
-    GObject parent;
-    DBusGConnection *connection;
+    OrageExportedServiceSkeletonClass __parent__;
+    GDBusConnection *connection;
 };
 
-G_DEFINE_TYPE(OrageDBus, orage_dbus, G_TYPE_OBJECT)
+G_DEFINE_TYPE(OrageDBus, orage_dbus, ORAGE_TYPE_EXPORTED_SERVICE_SKELETON)
 
 OrageDBus *orage_dbus;
 
-static void orage_dbus_class_init(OrageDBusClass *orage_class)
+static void orage_dbus_class_init (G_GNUC_UNUSED OrageDBusClass *orage_class)
 {
-    dbus_g_object_type_install_info(G_TYPE_FROM_CLASS(orage_class)
-            , &dbus_glib_orage_object_info);
 }
 
 static void orage_dbus_init(OrageDBus *o_dbus)
 {
     GError *error = NULL;
 
-  /* try to connect to the session bus */
-    o_dbus->connection = dbus_g_bus_get(DBUS_BUS_SESSION, &error);
-    if (o_dbus->connection == NULL) {
-      /* notify the user that D-BUS service won't be available */
-        g_warning("Failed to connect to the D-BUS session bus: %s"
-                , error->message);
-        g_error_free(error);
+    o_dbus->connection = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, &error);
+    if (G_UNLIKELY (o_dbus->connection == NULL))
+    {
+        g_warning ("Failed to connect to the D-BUS session bus: %s",
+                   error->message);
+        g_error_free (error);
+        return;
     }
-    else {
-      /* register the /org/xfce/orage object for orage */
-        dbus_g_connection_register_g_object(o_dbus->connection
-              , "/org/xfce/orage", G_OBJECT(o_dbus));
 
-      /* request the org.xfce.orage name for orage */
-        dbus_bus_request_name(dbus_g_connection_get_connection(
-                  o_dbus->connection), "org.xfce.orage"
-              , DBUS_NAME_FLAG_REPLACE_EXISTING, NULL);
+    if (G_UNLIKELY (g_dbus_interface_skeleton_export (G_DBUS_INTERFACE_SKELETON (o_dbus),
+                                                      o_dbus->connection,
+                                                      "/org/xfce/orage",
+                                                      &error)) == FALSE)
+    {
+        g_critical ("Failed to export panel D-BUS interface: %s",
+                    error->message);
+        g_error_free (error);
+        return;
     }
+
+    g_signal_connect (o_dbus, "handle_load_file",
+                      G_CALLBACK (orage_dbus_service_load_file), NULL);
+
+    g_signal_connect (o_dbus, "handle_export_file",
+                      G_CALLBACK (orage_dbus_service_export_file), NULL);
+
+    g_signal_connect (o_dbus, "handle_add_foreign",
+                      G_CALLBACK (orage_dbus_service_add_foreign), NULL);
+
+    g_signal_connect (o_dbus, "handle_remove_foreign",
+                      G_CALLBACK (orage_dbus_service_remove_foreign), NULL);
 }
 
-gboolean orage_dbus_service_load_file (G_GNUC_UNUSED DBusGProxy *proxy
-        , const char *IN_file
-        , GError **error)
+static gboolean orage_dbus_service_load_file (OrageExportedService *skeleton,
+                                              GDBusMethodInvocation *invocation,
+                                              const gchar *file,
+                                              G_GNUC_UNUSED gpointer user_data)
 {
-    if (orage_import_file((char *)IN_file)) {
-        g_message ("DBUS File added %s", IN_file);
-        return(TRUE);
+    if (orage_import_file (file))
+    {
+        g_message ("DBUS File added %s", file);
+        orage_exported_service_complete_load_file (skeleton, invocation);
     }
-    else {
-        g_warning("DBUS File add failed %s", IN_file);
-        g_set_error(error, G_FILE_ERROR, G_FILE_ERROR_INVAL
-                , "Invalid ical file \"%s\"", IN_file);
-        return(FALSE);
+    else
+    {
+        g_warning ("DBUS File add failed %s", file);
+        g_dbus_method_invocation_return_error (invocation, G_FILE_ERROR,
+                                               G_FILE_ERROR_INVAL,
+                                               "Invalid ical file '%s'",
+                                               file);
     }
+
+    return TRUE;
 }
 
-gboolean orage_dbus_service_export_file (G_GNUC_UNUSED DBusGProxy *proxy
-        , const char *IN_file, const int IN_type, const char *IN_uids
-        , G_GNUC_UNUSED GError **error)
+static gboolean orage_dbus_service_export_file (OrageExportedService *skeleton,
+                                                GDBusMethodInvocation *invocation,
+                                                const gchar *file,
+                                                gint type,
+                                                const gchar *uids,
+                                                G_GNUC_UNUSED gpointer user_data)
 {
-    if (orage_export_file((char *)IN_file, (gint)IN_type, (char *)IN_uids)) {
-        g_message ("DBUS File exported %s", IN_file);
-        return(TRUE);
+    if (orage_export_file (file, type, uids))
+    {
+        g_message ("DBUS file exported: %s", file);
+        orage_exported_service_complete_export_file (skeleton, invocation);
     }
-    else {
-        g_warning("DBUS File export failed %s", IN_file);
-        return(FALSE);
+    else
+    {
+        g_warning ("DBUS file export failed: %s", file);
+        g_dbus_method_invocation_return_error (invocation, G_FILE_ERROR,
+                                               G_FILE_ERROR_INVAL,
+                                               "DBUS file export failed: %s",
+                                               file);
     }
+
+    return TRUE;
 }
 
-gboolean orage_dbus_service_add_foreign (G_GNUC_UNUSED DBusGProxy *proxy
-        , const char *IN_file, const gboolean IN_mode, const char *IN_name
-        , G_GNUC_UNUSED GError **error)
+static gboolean orage_dbus_service_add_foreign (OrageExportedService *skeleton,
+                                                GDBusMethodInvocation *invocation,
+                                                const gchar *file,
+                                                const gboolean mode,
+                                                const gchar *name,
+                                                G_GNUC_UNUSED gpointer user_data)
 {
-    if (orage_foreign_file_add((char *)IN_file, (gboolean)IN_mode
-                , (char *)IN_name)) {
-        g_message ("DBUS Foreign file added %s", IN_file);
-        return(TRUE);
+    if (orage_foreign_file_add (file, mode, name))
+    {
+        g_message ("DBUS Foreign file added %s", file);
+        orage_exported_service_complete_add_foreign (skeleton, invocation);
     }
-    else {
-        g_warning("DBUS Foreign file add failed %s", IN_file);
-        return(FALSE);
+    else
+    {
+        g_warning ("DBUS Foreign file add failed %s", file);
+        g_dbus_method_invocation_return_error (invocation, G_FILE_ERROR,
+                                               G_FILE_ERROR_INVAL,
+                                               "DBUS Foreign file add failed: %s",
+                                               file);
     }
+
+    return TRUE;
 }
 
-gboolean orage_dbus_service_remove_foreign (G_GNUC_UNUSED DBusGProxy *proxy
-        , const char *IN_file
-        , G_GNUC_UNUSED GError **error)
+static gboolean orage_dbus_service_remove_foreign (OrageExportedService *skeleton,
+                                                   GDBusMethodInvocation *invocation,
+                                                   const gchar *file,
+                                                   G_GNUC_UNUSED gpointer user_data)
 {
-    if (orage_foreign_file_remove((char *)IN_file)) {
-        g_message ("DBUS Foreign file removed %s", IN_file);
-        return(TRUE);
+    if (orage_foreign_file_remove (file))
+    {
+        g_message ("DBUS Foreign file removed %s", file);
+        orage_exported_service_complete_remove_foreign (skeleton, invocation);
     }
-    else {
-        g_warning ("DBUS Foreign file remove failed %s", IN_file);
-        return(FALSE);
+    else
+    {
+        g_warning ("DBUS Foreign file remove failed %s", file);
+        g_dbus_method_invocation_return_error (invocation, G_FILE_ERROR,
+                                               G_FILE_ERROR_INVAL,
+                                               "DBUS Foreign file remove failed %s",
+                                               file);
     }
+
+    return TRUE;
 }
 
 void orage_dbus_start(void)
 {
-    orage_dbus = g_object_new(ORAGE_DBUS_TYPE, NULL);
+    orage_dbus = g_object_new (ORAGE_TYPE_DBUS, NULL);
 }
