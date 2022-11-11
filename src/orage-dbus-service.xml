@@ -22,7 +22,7 @@
 <node name="/org/xfce/orage">
 
   <interface name="org.xfce.orage">
-    <annotation name="org.freedesktop.DBus.GLib.CSymbol" value="orage_dbus_service"/>
+    <annotation name="org.gtk.GDBus.C.Name" value="ExportedService"/>
     <method name="LoadFile">
       <!-- This is optional, and in this case is redunundant -->
       <!-- x
