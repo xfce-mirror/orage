@@ -120,13 +120,6 @@ if test "$nl_ok" = "yes"; then
       [Define if _NL_TIME_FIRST_WEEKDAY is available])
 fi
 
-dnl **********************************
-dnl *** Optional support for D-BUS ***
-dnl **********************************
-XDT_CHECK_OPTIONAL_PACKAGE([DBUS], [dbus-glib-1],
-                           [dbus_minimum_version], [dbus],
-                           [D-BUS support])
-
 dnl **************************************
 dnl *** Optional support for libnotify ***
 dnl **************************************
@@ -187,12 +180,6 @@ dnl *** Print configuration ***
 dnl ***************************
 echo
 echo "Build Configuration:"
-echo
-if test x"$DBUS_FOUND" = x"yes"; then
-echo "* D-BUS support:             yes"
-else
-echo "* D-BUS support:             no"
-fi
 if test x"$NOTIFY_FOUND" = x"yes"; then
 echo "* LIBNOTIFY support:         yes"
 else
