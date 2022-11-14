@@ -26,6 +26,10 @@
 #include <glib.h>
 #include <glib-object.h>
 
+#define ORAGE_DBUS_NAME "org.xfce.orage"
+#define ORAGE_DBUS_PATH "/org/xfce/orage"
+#define ORAGE_DBUS_INTERFACE ORAGE_DBUS_NAME
+
 G_BEGIN_DECLS
 
 typedef struct _OrageDBusClass OrageDBusClass;
