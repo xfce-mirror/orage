@@ -205,7 +205,20 @@ static gboolean orage_dbus_service_remove_foreign (OrageExportedService *skeleto
     return TRUE;
 }
 
-void orage_dbus_start(void)
+static void orage_dbus_bus_acquired (G_GNUC_UNUSED GDBusConnection *connection,
+                                     G_GNUC_UNUSED const gchar     *name,
+                                     G_GNUC_UNUSED gpointer         user_data)
 {
     orage_dbus = g_object_new (ORAGE_TYPE_DBUS, NULL);
+}
+
+void orage_dbus_start(void)
+{
+    g_bus_own_name (G_BUS_TYPE_SESSION,
+                    "org.xfce.orage",
+                    G_BUS_NAME_OWNER_FLAGS_NONE,
+                    orage_dbus_bus_acquired,
+                    NULL,
+                    NULL,
+                    NULL, NULL);
 }
