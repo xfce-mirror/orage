@@ -6,7 +6,6 @@ orage_built_sources =						\
 
 orage_SOURCES =							\
 	$(orage_built_sources)					\
-	$(orage_dbus_sources)					\
 	about-xfcalendar.c					\
 	about-xfcalendar.h					\
 	appointment.c						\
@@ -29,6 +28,10 @@ orage_SOURCES =							\
 	mainbox.h						\
 	orage-css.c						\
 	orage-css.h						\
+	orage-dbus-object.c					\
+	orage-dbus-object.h					\
+	orage-dbus-client.c					\
+	orage-dbus-client.h					\
 	orage-i18n.h						\
 	parameters.c						\
 	parameters.h						\
@@ -66,19 +69,6 @@ orage_LDADD =							\
 	-lm							\
 	$(INTLLIBS)
 
-if HAVE_DBUS
-orage_dbus_sources =						\
-	orage-dbus-object.c					\
-	orage-dbus-object.h					\
-	orage-dbus-client.c					\
-	orage-dbus-client.h					\
-	orage-dbus-service.xml					\
-	orage-dbus-service.h
-
-orage_CPPFLAGS += -DDBUS_API_SUBJECT_TO_CHANGE
-orage_CFLAGS += $(DBUS_CFLAGS)
-orage_LDADD += $(DBUS_LIBS)
-
 orage-dbus-service.h:
 orage-dbus-service.c: orage-dbus-service.xml Makefile
 	$(AM_V_GEN) $(GDBUS_CODEGEN) \
@@ -89,7 +79,6 @@ orage-dbus-service.c: orage-dbus-service.xml Makefile
 
 BUILT_SOURCES = $(orage_built_sources)
 DISTCLEANFILES = $(orage_built_sources)
-endif
 
 if HAVE_NOTIFY
 orage_LDADD +=							\

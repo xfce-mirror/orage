@@ -18,13 +18,11 @@ appdata_in_files = org.xfce.orage.appdata.xml.in
 appdata_DATA = $(appdata_in_files:.xml.in=.xml)
 @INTLTOOL_XML_RULE@
 
-if HAVE_DBUS
 servicedir = $(datadir)/dbus-1/services
 service_in_files = org.xfce.orage.service.in
 service_DATA = $(service_in_files:.service.in=.service)
 %.service: %.service.in
 	$(AM_V_GEN) $(SED) -e "s,\@bindir\@,$(bindir),g" < $< > $@
-endif
 
 EXTRA_DIST =								\
 	intltool-extract.in						\
