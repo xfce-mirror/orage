@@ -58,7 +58,7 @@
 #include "tray_icon.h"
 #include "parameters.h"
 #include "interface.h"
-#ifdef HAVE_DBUS
+#if 0
 #include <dbus/dbus-glib-lowlevel.h>
 #endif
 
@@ -71,7 +71,7 @@ static SessionClient	*session_client = NULL;
 */
 static GdkAtom atom_alive;
 
-#ifdef HAVE_DBUS
+#if 0
 static gboolean resume_after_sleep (G_GNUC_UNUSED gpointer user_data)
 {
     g_message ("Resuming after sleep");
@@ -611,7 +611,7 @@ int main(int argc, char *argv[])
     initialized = TRUE;
     process_args(argc, argv, running, initialized);
 
-#ifdef HAVE_DBUS
+#if 0
     /* day change after resuming */
     handle_resuming();
 #endif
