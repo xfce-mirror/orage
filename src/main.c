@@ -50,6 +50,7 @@
 
 #include "orage-i18n.h"
 #include "orage-css.h"
+#include "orage-dbus-client.h"
 #include "functions.h"
 #include "mainbox.h"
 #include "reminder.h"
@@ -58,7 +59,6 @@
 #include "parameters.h"
 #include "interface.h"
 #ifdef HAVE_DBUS
-#include "orage-dbus-client.h"
 #include <dbus/dbus-glib-lowlevel.h>
 #endif
 
@@ -277,11 +277,7 @@ static void print_version(void)
             , GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION);
     g_print(_("using GTK+-%d.%d.%d.\n")
             , gtk_major_version, gtk_minor_version, gtk_micro_version);
-#ifdef HAVE_DBUS
     g_print(_("\tUsing DBUS for import.\n"));
-#else
-    g_print(_("\tNot using DBUS. Import works only partially.\n"));
-#endif
 #ifdef HAVE_NOTIFY
     g_print(_("\tUsing libnotify.\n"));
 #else
@@ -319,10 +315,6 @@ static void print_help(void (*print_func) (const gchar *, ...))
     print_func(_("--export (-e) file [appointment...] \texport appointments from Orage to file\n"));
     print_func("\n");
     print_func(_("files=ical files to load into orage\n"));
-#ifndef HAVE_DBUS
-    print_func(_("\tdbus not included in orage. \n"));
-    print_func(_("\twithout dbus [files] and foreign file options(-a & -r) can only be used when starting orage \n"));
-#endif
     print_func("\n");
 }
 
@@ -330,15 +322,10 @@ static void import_file(gboolean running, char *file_name, gboolean initialized)
 {
     if (running && !initialized) {
         /* let's use dbus since server is running there already */
-#ifdef HAVE_DBUS
         if (orage_dbus_import_file(file_name))
             g_message ("import done file=%s", file_name);
         else
             g_warning ("import failed file=%s", file_name);
-#else
-        g_warning("Can not do import without dbus. import failed file=%s",
-                  file_name);
-#endif
     }
     else if (!running && initialized) {/* do it self directly */
         if (xfical_import_file(file_name))
@@ -358,14 +345,10 @@ static void export_file(gboolean running, char *file_name, gboolean initialized
     
     if (running && !initialized) {
         /* let's use dbus since server is running there already */
-#ifdef HAVE_DBUS
         if (orage_dbus_export_file(file_name, type, uid_list))
             g_message ("export done to file=%s", file_name);
         else
             g_warning ("export failed file=%s", file_name);
-#else
-        g_warning("Can not do export without dbus. failed file=%s", file_name);
-#endif
     }
     else if (!running && initialized) { /* do it self directly */
         if (xfical_export_file(file_name, type, uid_list))
@@ -381,15 +364,10 @@ static void add_foreign(gboolean running, char *file_name, gboolean initialized
     g_message ("\nadd_foreign: file_name%s name:%s\n\n", file_name, name);
     if (running && !initialized) {
         /* let's use dbus since server is running there already */
-#ifdef HAVE_DBUS
         if (orage_dbus_foreign_add(file_name, read_only, name))
             g_message ("Add done online foreign file=%s", file_name);
         else
             g_warning ("Add failed online foreign file=%s", file_name);
-#else
-        g_warning ("Can not do add foreign file to running Orage without dbus. "
-                   "Add failed foreign file=%s", file_name);
-#endif
     }
     else if (!running && initialized) { /* do it self directly */
         if (orage_foreign_file_add(file_name, read_only, name))
@@ -403,15 +381,10 @@ static void remove_foreign(gboolean running, char *file_name, gboolean initializ
 {
     if (running && !initialized) {
         /* let's use dbus since server is running there already */
-#ifdef HAVE_DBUS
         if (orage_dbus_foreign_remove(file_name))
             g_message ("Remove done foreign file=%s", file_name);
         else
             g_warning ("Remove failed foreign file=%s", file_name);
-#else
-        g_warning ("Can not do remove foreign file without dbus. "
-                   "Remove failed foreign file=%s", file_name);
-#endif
     }
     else if (!running && initialized) { /* do it self directly */
         if (orage_foreign_file_remove(file_name))
