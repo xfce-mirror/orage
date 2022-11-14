@@ -91,7 +91,7 @@ static void orage_dbus_init(OrageDBus *o_dbus)
 
     if (G_UNLIKELY (g_dbus_interface_skeleton_export (G_DBUS_INTERFACE_SKELETON (o_dbus),
                                                       o_dbus->connection,
-                                                      "/org/xfce/orage",
+                                                      ORAGE_DBUS_PATH,
                                                       &error)) == FALSE)
     {
         g_critical ("Failed to export panel D-BUS interface: %s",
@@ -215,7 +215,7 @@ static void orage_dbus_bus_acquired (G_GNUC_UNUSED GDBusConnection *connection,
 void orage_dbus_start(void)
 {
     g_bus_own_name (G_BUS_TYPE_SESSION,
-                    "org.xfce.orage",
+                    ORAGE_DBUS_NAME,
                     G_BUS_NAME_OWNER_FLAGS_NONE,
                     orage_dbus_bus_acquired,
                     NULL,

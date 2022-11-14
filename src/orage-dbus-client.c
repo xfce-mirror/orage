@@ -28,6 +28,7 @@
 #include <gio/gio.h>
 
 #include "orage-dbus-client.h"
+#include "orage-dbus-object.h"
 
 static gboolean dbus_call (const gchar *method, GVariant *parameters)
 {
@@ -47,8 +48,8 @@ static gboolean dbus_call (const gchar *method, GVariant *parameters)
     }
 
     proxy = g_dbus_proxy_new_sync (connection, G_DBUS_PROXY_FLAGS_NONE, NULL,
-                                   "org.xfce.orage", "/org/xfce/orage",
-                                   "org.xfce.orage", NULL, &error);
+                                   ORAGE_DBUS_NAME, ORAGE_DBUS_PATH,
+                                   ORAGE_DBUS_INTERFACE, NULL, &error);
     if (proxy == NULL)
     {
         g_warning ("Failed to create proxy: %s", error->message);
