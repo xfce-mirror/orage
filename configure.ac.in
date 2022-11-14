@@ -60,6 +60,17 @@ AC_PROG_LN_S()
 m4_version_prereq([2.70], [AC_PROG_LEX(noyywrap)], [AC_PROG_LEX])
 AM_PROG_CC_C_O()
 
+dnl ***********************************
+dnl *** Check for gdbus-codegen ***
+dnl ***********************************
+AC_ARG_VAR([GDBUS_CODEGEN], [D-Bus code and documentation generator from XML D-Bus interface definitions])
+AC_PATH_PROG([GDBUS_CODEGEN], [gdbus-codegen], [no])
+if test x"$GDBUS_CODEGEN" = x"no"; then
+  AC_MSG_ERROR([could not find gdbus-codegen in \$PATH. You can run
+  ./configure GDBUS_CODEGEN=/path/to/gdbus-codegen to define
+  a custom location for it.])
+fi
+
 dnl Initialize libtool
 LT_PREREQ([2.2.6])
 LT_INIT([disable-static])
@@ -86,10 +97,10 @@ dnl *** Check for X11 installed ***
 dnl *******************************
 XDT_CHECK_LIBX11_REQUIRE()
 
-dnl XDT_CHECK_PACKAGE([LIBXFCEGUI4], [libxfcegui4-1.0], [xfce_minimum_version])
 AC_DEFINE(GLIB_VERSION_MAX_ALLOWED, GLIB_VERSION_2_52, Warn when using post 2_52 APIs)
 AC_DEFINE(GLIB_VERSION_MIN_REQUIRED, GLIB_VERSION_2_52, Don't warn about post 2_52 deprecations)
 XDT_CHECK_PACKAGE([GLIB], [glib-2.0], [glib_minimum_version])
+XDT_CHECK_PACKAGE([GIO], [gio-2.0], [glib_minimum_version])
 XDT_CHECK_PACKAGE([LIBGTK], [gtk+-3.0], [gtk_minimum_version])
 XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [xfce_minimum_version])
 XDT_CHECK_PACKAGE([LIBICAL], [libical], [libical_minimum_version])
@@ -108,13 +119,6 @@ if test "$nl_ok" = "yes"; then
   AC_DEFINE([HAVE__NL_TIME_FIRST_WEEKDAY], [1],
       [Define if _NL_TIME_FIRST_WEEKDAY is available])
 fi
-
-dnl **********************************
-dnl *** Optional support for D-BUS ***
-dnl **********************************
-XDT_CHECK_OPTIONAL_PACKAGE([DBUS], [dbus-glib-1],
-                           [dbus_minimum_version], [dbus],
-                           [D-BUS support])
 
 dnl **************************************
 dnl *** Optional support for libnotify ***
@@ -176,12 +180,6 @@ dnl *** Print configuration ***
 dnl ***************************
 echo
 echo "Build Configuration:"
-echo
-if test x"$DBUS_FOUND" = x"yes"; then
-echo "* D-BUS support:             yes"
-else
-echo "* D-BUS support:             no"
-fi
 if test x"$NOTIFY_FOUND" = x"yes"; then
 echo "* LIBNOTIFY support:         yes"
 else

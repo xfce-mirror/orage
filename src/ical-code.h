@@ -171,7 +171,9 @@ gboolean xfical_unarchive_uid(char *uid);
 #endif
 
 gboolean xfical_import_file(const gchar *file_name);
-gboolean xfical_export_file(char *file_name, int type, char *uids);
+gboolean xfical_export_file (const gchar *file_name,
+                             gint type,
+                             const gchar *uids);
 
 gboolean xfical_file_check(gchar *file_name);
 

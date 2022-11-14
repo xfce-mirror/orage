@@ -281,7 +281,7 @@ static gboolean export_prepare_write_file(const gchar *file_name)
     return(TRUE);
 }
 
-static gboolean export_all(char *file_name)
+static gboolean export_all (const gchar *file_name)
 {
     gchar *text;
     gsize text_len;
@@ -304,7 +304,7 @@ static gboolean export_all(char *file_name)
     return(TRUE);
 }
 
-static void export_selected_uid(icalcomponent *base, gchar *uid_int
+static void export_selected_uid(icalcomponent *base, const gchar *uid_int
         , icalcomponent *x_ical)
 {
     icalcomponent *c, *d;
@@ -326,11 +326,13 @@ static void export_selected_uid(icalcomponent *base, gchar *uid_int
         g_warning ("%s: not found %s from Orage", G_STRFUNC, uid_int);
 }
 
-static gboolean export_selected(char *file_name, char *uids)
+static gboolean export_selected (const gchar *file_name, const gchar *uids)
 {
     icalcomponent *x_ical = NULL;
     icalset *x_fical = NULL;
-    gchar *uid, *uid_end, *uid_int;
+    gchar *uid_end;
+    const gchar *uid;
+    const gchar *uid_int;
     gboolean more_uids;
     int i;
 
@@ -356,7 +358,7 @@ static gboolean export_selected(char *file_name, char *uids)
             return(FALSE);
         }
         uid_int = uid+4;
-        uid_end = g_strstr_len((const gchar *)uid, strlen(uid), ",");
+        uid_end = g_strstr_len (uid, strlen(uid), ",");
         if (uid_end != NULL)
             *uid_end = 0; /* uid ends here */
         /* FIXME: proper messages to screen */
@@ -391,7 +393,9 @@ static gboolean export_selected(char *file_name, char *uids)
     return(TRUE);
 }
 
-gboolean xfical_export_file(char *file_name, int type, char *uids)
+gboolean xfical_export_file (const gchar *file_name,
+                             const gint type,
+                             const gchar *uids)
 {
     if (type == 0) { /* copy the whole file */
         return(export_all(file_name));

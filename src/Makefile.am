@@ -1,7 +1,11 @@
 bin_PROGRAMS = orage
 
+orage_built_sources =						\
+	orage-dbus-service.c					\
+	orage-dbus-service.h
+
 orage_SOURCES =							\
-	$(orage_dbus_sources)					\
+	$(orage_built_sources)					\
 	about-xfcalendar.c					\
 	about-xfcalendar.h					\
 	appointment.c						\
@@ -24,6 +28,10 @@ orage_SOURCES =							\
 	mainbox.h						\
 	orage-css.c						\
 	orage-css.h						\
+	orage-dbus-object.c					\
+	orage-dbus-object.h					\
+	orage-dbus-client.c					\
+	orage-dbus-client.h					\
 	orage-i18n.h						\
 	parameters.c						\
 	parameters.h						\
@@ -49,35 +57,28 @@ orage_CFLAGS =							\
 	$(LIBGTK_CFLAGS)					\
 	$(LIBX11_CFLAGS)					\
 	$(LIBXFCE4UTIL_CFLAGS)					\
-	$(LIBICAL_CFLAGS)
+	$(LIBICAL_CFLAGS)					\
+	$(GIO_CFLAGS)
 
 orage_LDADD =							\
 	$(LIBGTK_LIBS)						\
 	$(LIBX11_LIBS)						\
 	$(LIBXFCE4UTIL_LIBS)					\
 	$(LIBICAL_LIBS)						\
+	$(GIO_LIBS)						\
 	-lm							\
 	$(INTLLIBS)
 
-if HAVE_DBUS
-orage_dbus_sources =						\
-	orage-dbus-object.c					\
-	orage-dbus-object.h					\
-	orage-dbus-client.c					\
-	orage-dbus-client.h					\
-	orage-dbus-service.xml					\
-	orage-dbus-service.h
+orage-dbus-service.h:
+orage-dbus-service.c: orage-dbus-service.xml Makefile
+	$(AM_V_GEN) $(GDBUS_CODEGEN) \
+	--interface-prefix org.xfce.Orage \
+	--c-namespace Orage   \
+	--generate-c-code orage-dbus-service \
+	$(srcdir)/orage-dbus-service.xml
 
-orage_CPPFLAGS += -DDBUS_API_SUBJECT_TO_CHANGE
-orage_CFLAGS += $(DBUS_CFLAGS)
-orage_LDADD += $(DBUS_LIBS)
-
-orage-dbus-service.h: $(srcdir)/orage-dbus-service.xml Makefile
-	dbus-binding-tool --prefix=orage --mode=glib-server $(srcdir)/orage-dbus-service.xml > orage-dbus-service.h
-
-BUILT_SOURCES = orage-dbus-service.h
-DISTCLEANFILES = orage-dbus-service.h
-endif
+BUILT_SOURCES = $(orage_built_sources)
+DISTCLEANFILES = $(orage_built_sources)
 
 if HAVE_NOTIFY
 orage_LDADD +=							\
@@ -91,5 +92,7 @@ orage_CFLAGS +=							\
 orage_LDADD +=							\
 	$(LIBXFCE4UI_LIBS)
 endif
+
+EXTRA_DIST = orage-dbus-service.xml
 
 # vi:set ts=8 sw=8 noet ai:
