@@ -51,6 +51,7 @@
 #include "orage-i18n.h"
 #include "orage-css.h"
 #include "orage-dbus-client.h"
+#include "orage-dbus-object.h"
 #include "functions.h"
 #include "mainbox.h"
 #include "reminder.h"

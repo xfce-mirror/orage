@@ -25,7 +25,6 @@
 
 #include <glib.h>
 
-void orage_dbus_start(void);
 gboolean orage_dbus_import_file (const gchar *file_name);
 gboolean orage_dbus_export_file (const gchar *file_name, gint type,
                                  const gchar *uids);
