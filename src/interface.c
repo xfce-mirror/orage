@@ -445,7 +445,9 @@ gboolean orage_import_file (const gchar *entry_filename)
         return(FALSE);
 }
 
-gboolean orage_export_file(gchar *entry_filename, gint type, gchar *uids) 
+gboolean orage_export_file (const gchar *entry_filename,
+                            const gint type,
+                            const gchar *uids)
 {
     return(xfical_export_file(entry_filename, type, uids));
 }
@@ -577,7 +579,7 @@ static void orage_foreign_file_remove_line(gint del_line)
     xfical_alarm_build_list(FALSE);
 }
 
-gboolean orage_foreign_file_remove(gchar *filename)
+gboolean orage_foreign_file_remove (const gchar *filename)
 {
     int i = 0;
     gboolean found = FALSE;
