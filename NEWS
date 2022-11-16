@@ -8,6 +8,7 @@
 - Removed GlobalTime (Issue #12)
 - Replaced old Orage icons (Issue #16) and removed 160x160 icons
 - Replaced deprecated dbus-glib with GDBus (Issue #4)
+- Changed event attach order in day view window (Issue #15)
 
 4.16.0 (2022-03-17)
 ======
