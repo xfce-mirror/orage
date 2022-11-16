@@ -1206,10 +1206,6 @@ static Itf *create_parameter_dialog(void)
             , G_CALLBACK(dialog_response), dialog);
 
     gtk_widget_show_all(dialog->orage_dialog);
-    /*
-    gdk_x11_window_set_user_time(GTK_WIDGET(dialog->orage_dialog)->window, 
-            gdk_x11_get_server_time(GTK_WIDGET(dialog->orage_dialog)->window));
-            */
 
     return(dialog);
 }
