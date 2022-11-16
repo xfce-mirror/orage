@@ -545,7 +545,6 @@ static void add_row (day_win *dw, const xfical_appt *appt)
     gchar *tip, *start_date, *end_date, *tmp_title, *tip_title;
     gchar *tmp_note, *tip_note;
     GtkWidget *ev, *lab, *hb;
-    GtkWidget *separator;
     GDateTime *gdt_start;
     GDateTime *gdt_end;
     GDateTime *gdt_first;
@@ -609,12 +608,8 @@ static void add_row (day_win *dw, const xfical_appt *appt)
             hb = gtk_grid_new ();
             dw->header[col] = hb;
         }
-        else {
+        else
             hb = dw->header[col];
-            separator = build_separator_bar (ORAGE_DAY_VIEW_TASK_SEPARATOR);
-            gtk_grid_attach_next_to (GTK_GRID (hb), separator, NULL,
-                    GTK_POS_RIGHT, 1, 1);
-        }
 
         start_date = orage_gdatetime_to_i18_time (gdt_start, TRUE);
         if (days == 0)
@@ -639,12 +634,8 @@ static void add_row (day_win *dw, const xfical_appt *appt)
             hb = gtk_grid_new ();
             dw->element[row][col] = hb;
         }
-        else {
+        else
             hb = dw->element[row][col];
-            separator = build_separator_bar (ORAGE_DAY_VIEW_TASK_SEPARATOR);
-            gtk_grid_attach_next_to (GTK_GRID (hb), separator, NULL,
-                    GTK_POS_RIGHT, 1, 1);
-        }
 
         if (days == 0)
         {
@@ -673,7 +664,7 @@ static void add_row (day_win *dw, const xfical_appt *appt)
     gtk_widget_set_tooltip_markup(ev, tip);
     g_object_set (ev, "expand", TRUE,
                       "margin-left", 1, "margin-right", 1, NULL);
-    gtk_grid_attach_next_to (GTK_GRID (hb), ev, NULL, GTK_POS_RIGHT, 1, 1);
+    gtk_grid_attach_next_to (GTK_GRID (hb), ev, NULL, GTK_POS_BOTTOM, 1, 1);
     g_object_set_data_full (G_OBJECT(ev), "UID", g_strdup (appt->uid), g_free);
     g_signal_connect (ev, "button-press-event",
                       G_CALLBACK (on_button_press_event_cb), dw);
