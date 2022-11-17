@@ -180,7 +180,6 @@ static gboolean mWindow_delete_event_cb (G_GNUC_UNUSED GtkWidget *widget,
 
 static void raise_window(void)
 {
-    GdkWindow *window;
     CalWin *cal = (CalWin *)g_par.xfcal;
 
     if (g_par.pos_x || g_par.pos_y)
@@ -192,9 +191,6 @@ static void raise_window(void)
         gtk_window_stick(GTK_WINDOW(cal->mWindow));
     gtk_window_set_keep_above(GTK_WINDOW(cal->mWindow)
             , g_par.set_ontop);
-    window = gtk_widget_get_window (GTK_WIDGET(cal->mWindow));
-    gdk_x11_window_set_user_time(window, gdk_x11_get_server_time(window));
-    gtk_widget_show(cal->mWindow);
     gtk_window_present(GTK_WINDOW(cal->mWindow));
 }
 
