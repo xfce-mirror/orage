@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-11 12:51+0200\n"
+"POT-Creation-Date: 2022-11-28 15:01+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Michael Martins <michaelfm21@gmail.com>, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/xfce/teams/16840/pt_BR/)\n"
@@ -49,7 +49,7 @@ msgstr "Fim"
 msgid "Due"
 msgstr "Prazo"
 
-#: ../src/appointment.c:508 ../src/mainbox.c:676
+#: ../src/appointment.c:508 ../src/mainbox.c:677
 #: ../org.xfce.orage.appdata.xml.in.h:1
 msgid "Orage"
 msgstr "Orage"
@@ -154,7 +154,7 @@ msgstr "Este compromisso não existe."
 msgid "It was probably removed, please refresh your screen."
 msgstr "Foi provavelmente removido, por favor recarregue sua rela."
 
-#: ../src/appointment.c:2183 ../src/interface.c:672
+#: ../src/appointment.c:2183 ../src/interface.c:674
 msgid "_Remove"
 msgstr "_Remover"
 
@@ -170,7 +170,7 @@ msgstr "Adicionar nova categoria com cor"
 msgid "Category:"
 msgstr "Categoria:"
 
-#: ../src/appointment.c:2258 ../src/interface.c:1451
+#: ../src/appointment.c:2258 ../src/interface.c:1453
 msgid "_Add"
 msgstr "_Adicionar"
 
@@ -190,7 +190,7 @@ msgstr "Novo compromisso - Orage"
 #. ********* File menu *********
 #. File menu
 #: ../src/appointment.c:2645 ../src/day-view.c:294 ../src/event-list.c:1115
-#: ../src/interface.c:857 ../src/mainbox.c:208
+#: ../src/interface.c:859 ../src/mainbox.c:210
 msgid "_File"
 msgstr "_Arquivo"
 
@@ -291,7 +291,7 @@ msgid "All day event"
 msgstr "Evento de um dia inteiro"
 
 #. start time
-#: ../src/appointment.c:2988 ../src/appointment.c:3707 ../src/day-view.c:841
+#: ../src/appointment.c:2988 ../src/appointment.c:3707 ../src/day-view.c:831
 msgid "Start"
 msgstr "Início"
 
@@ -454,8 +454,8 @@ msgstr "Usar"
 msgid "Select this if you want audible alarm"
 msgstr "Selecione isto se você deseja um alarme sonoro"
 
-#: ../src/appointment.c:3302 ../src/interface.c:1047 ../src/interface.c:1093
-#: ../src/interface.c:1269 ../src/interface.c:1361 ../src/interface.c:1444
+#: ../src/appointment.c:3302 ../src/interface.c:1049 ../src/interface.c:1095
+#: ../src/interface.c:1271 ../src/interface.c:1363 ../src/interface.c:1446
 #: ../src/parameters.c:397 ../src/parameters.c:620 ../src/reminder.c:705
 msgid "_Open"
 msgstr "_Abrir"
@@ -539,7 +539,7 @@ msgstr ""
 "\t<&ST> início do compromisso\n"
 "\t<&ET> final do compromisso"
 
-#: ../src/appointment.c:3446 ../src/interface.c:1181 ../src/interface.c:1203
+#: ../src/appointment.c:3446 ../src/interface.c:1183 ../src/interface.c:1205
 msgid "_Execute"
 msgstr "_Executar"
 
@@ -551,8 +551,8 @@ msgstr "Teste este alarme agora"
 msgid "<b>Default alarm</b>"
 msgstr "<b>Alarme padrão</b>"
 
-#: ../src/appointment.c:3467 ../src/interface.c:1054 ../src/interface.c:1100
-#: ../src/interface.c:1275 ../src/interface.c:1367
+#: ../src/appointment.c:3467 ../src/interface.c:1056 ../src/interface.c:1102
+#: ../src/interface.c:1277 ../src/interface.c:1369
 msgid "_Save"
 msgstr "_Salvar"
 
@@ -778,7 +778,7 @@ msgstr "Datas de ação"
 
 #. ********* View menu *********
 #. View menu
-#: ../src/day-view.c:304 ../src/event-list.c:1138 ../src/mainbox.c:234
+#: ../src/day-view.c:304 ../src/event-list.c:1138 ../src/mainbox.c:236
 msgid "_View"
 msgstr "_Visualizar"
 
@@ -811,7 +811,7 @@ msgstr "Avançar uma semana"
 msgid "Refresh"
 msgstr "Atualizar"
 
-#: ../src/day-view.c:414 ../src/event-list.c:1228 ../src/interface.c:876
+#: ../src/day-view.c:414 ../src/event-list.c:1228 ../src/interface.c:878
 msgid "Close"
 msgstr "Fechar"
 
@@ -819,15 +819,15 @@ msgstr "Fechar"
 msgid "_OK"
 msgstr "_OK"
 
-#: ../src/day-view.c:596
+#: ../src/day-view.c:594
 msgid "Unknown"
 msgstr "Desconhecido"
 
-#: ../src/day-view.c:850
+#: ../src/day-view.c:840
 msgid "       Number of days to show"
 msgstr "Número de dias para mostrar"
 
-#: ../src/day-view.c:1081
+#: ../src/day-view.c:1071
 msgid "Orage - day view"
 msgstr "Orage - visão do dia"
 
@@ -954,7 +954,7 @@ msgstr ""
 "\t 5. Tipo de compromisso:\n"
 "\t\tE=Evento T=Para fazer J=Diário"
 
-#: ../src/ical-code.c:790
+#: ../src/ical-code.c:780
 msgid "Orage default alarm"
 msgstr "Alarme padrão do Orage"
 
@@ -962,63 +962,63 @@ msgstr "Alarme padrão do Orage"
 msgid "Calendar files"
 msgstr "Arquivos de calendário"
 
-#: ../src/interface.c:642
+#: ../src/interface.c:644
 msgid "Current foreign files"
 msgstr "Arquivos atuais desconhecidos"
 
-#: ../src/interface.c:665
+#: ../src/interface.c:667
 msgid "READ ONLY"
 msgstr "SOMENTE LEITURA"
 
-#: ../src/interface.c:667
+#: ../src/interface.c:669
 msgid "READ WRITE"
 msgstr "SOMENTE ESCRITA"
 
-#: ../src/interface.c:692
+#: ../src/interface.c:694
 msgid "***** No foreign files *****"
 msgstr "***** Nenhum arquivo desconhecido *****"
 
-#: ../src/interface.c:706
+#: ../src/interface.c:708
 msgid "Foreign file add failed"
 msgstr "Falha ao adicionar arquivo externo"
 
-#: ../src/interface.c:715
+#: ../src/interface.c:717
 msgid "Orage can only handle 10 foreign files. Limit reached."
 msgstr "Orage pode lidar com apenas 10 arquivos externos. Limite alcançado."
 
-#: ../src/interface.c:725
+#: ../src/interface.c:727
 msgid "Filename is empty."
 msgstr "Nome de arquivo está vazio."
 
-#: ../src/interface.c:735
+#: ../src/interface.c:737
 msgid "Name is empty."
 msgstr "Nome está vazio."
 
-#: ../src/interface.c:746
+#: ../src/interface.c:748
 msgid "File does not exist."
 msgstr "Arquivo não existe."
 
-#: ../src/interface.c:758
+#: ../src/interface.c:760
 msgid "Same filename already exists in Orage."
 msgstr "O mesmo nome de arquivo existe no Orage."
 
-#: ../src/interface.c:769
+#: ../src/interface.c:771
 msgid "Same name already exists in Orage."
 msgstr "O mesmo nome existe no Orage."
 
-#: ../src/interface.c:1022
+#: ../src/interface.c:1024
 msgid "Import/export"
 msgstr "Importar/exportar"
 
-#: ../src/interface.c:1029
+#: ../src/interface.c:1031
 msgid "Import"
 msgstr "Importar"
 
-#: ../src/interface.c:1037
+#: ../src/interface.c:1039
 msgid "Read from file:"
 msgstr "Ler do arquivo:"
 
-#: ../src/interface.c:1067
+#: ../src/interface.c:1069
 msgid ""
 "Separate filenames with comma(,).\n"
 " NOTE: comma is not valid character in filenames for Orage."
@@ -1026,27 +1026,27 @@ msgstr ""
 "Separar nomes de arquivos com vírgulas(,).\n"
 "OBSERVAÇÃO: vírgulas não são caracteres válidos em nomes de arquivos no Orage."
 
-#: ../src/interface.c:1072
+#: ../src/interface.c:1074
 msgid "Export"
 msgstr "Exportar"
 
-#: ../src/interface.c:1080
+#: ../src/interface.c:1082
 msgid "Write to file:"
 msgstr "Salvar no arquivo:"
 
-#: ../src/interface.c:1115 ../src/interface.c:1133
+#: ../src/interface.c:1117 ../src/interface.c:1135
 msgid "Select"
 msgstr "Selecionar"
 
-#: ../src/interface.c:1120
+#: ../src/interface.c:1122
 msgid "All appointments"
 msgstr "Todos compromissos"
 
-#: ../src/interface.c:1139
+#: ../src/interface.c:1141
 msgid "Named appointments:"
 msgstr "Marcações nomeadas:"
 
-#: ../src/interface.c:1158
+#: ../src/interface.c:1160
 msgid ""
 "Note that only main file appointments are read.\n"
 "Archived and Foreign events are not exported."
@@ -1054,7 +1054,7 @@ msgstr ""
 "Observe que somente compromissos no arquivo principal são lidos.\n"
 "Eventos desconhecidos e arquivados não são exportados."
 
-#: ../src/interface.c:1161
+#: ../src/interface.c:1163
 msgid ""
 "Note that only main file appointments are read.\n"
 "Foreign events are not exported."
@@ -1062,32 +1062,32 @@ msgstr ""
 "Observe que somente compromissos no arquivo principal são lidos.\n"
 "Eventos desconhecidos não são exportados."
 
-#: ../src/interface.c:1164
+#: ../src/interface.c:1166
 msgid "You can easily drag these from event-list window."
 msgstr "Você pode facilmente arrastá-los da janela de lista de eventos."
 
-#: ../src/interface.c:1166
+#: ../src/interface.c:1168
 msgid "Orage appointment UIDs separated by commas."
 msgstr "UID de compromissos do Orage separados por vírgulas."
 
-#: ../src/interface.c:1172
+#: ../src/interface.c:1174
 msgid "Archive"
 msgstr "Arquivar"
 
-#: ../src/interface.c:1187
+#: ../src/interface.c:1189
 #, c-format
 msgid "Archive now (threshold: %d months)"
 msgstr "Arquivar agora (limite: %d meses)"
 
-#: ../src/interface.c:1198
+#: ../src/interface.c:1200
 msgid "You can change archive threshold in parameters"
 msgstr "Você pode modificar o limite de arquivamento nos parâmetros"
 
-#: ../src/interface.c:1210
+#: ../src/interface.c:1212
 msgid "Revert archive now"
 msgstr "Reverter o arquivamento agora"
 
-#: ../src/interface.c:1217
+#: ../src/interface.c:1219
 msgid ""
 "Return all archived events into main orage file and remove arch file.\n"
 "This is useful for example when doing export and moving orage\n"
@@ -1097,31 +1097,31 @@ msgstr ""
 "Isto é útil por exemplo quando exportando e movendo compromissos\n"
 "do Orage para outro sistema."
 
-#: ../src/interface.c:1229
+#: ../src/interface.c:1231
 msgid "Orage files"
 msgstr "Arquivos do Orage"
 
-#: ../src/interface.c:1236
+#: ../src/interface.c:1238
 msgid "Orage main calendar file"
 msgstr "Arquivo de calendário principal do Orage"
 
-#: ../src/interface.c:1245 ../src/interface.c:1338
+#: ../src/interface.c:1247 ../src/interface.c:1340
 msgid "Current file:"
 msgstr "Arquivo atual:"
 
-#: ../src/interface.c:1257 ../src/interface.c:1350
+#: ../src/interface.c:1259 ../src/interface.c:1352
 msgid "New file:"
 msgstr "Arquivo novo:"
 
-#: ../src/interface.c:1285 ../src/interface.c:1377
+#: ../src/interface.c:1287 ../src/interface.c:1379
 msgid "Action options:"
 msgstr "Opções de ação:"
 
-#: ../src/interface.c:1289 ../src/interface.c:1381
+#: ../src/interface.c:1291 ../src/interface.c:1383
 msgid "Rename"
 msgstr "Renomear"
 
-#: ../src/interface.c:1295
+#: ../src/interface.c:1297
 msgid ""
 "Orage internal file rename only.\n"
 "Does not touch external filesystem at all.\n"
@@ -1131,48 +1131,48 @@ msgstr ""
 "Não afeta de forma alguma os arquivos externos do sistema.\n"
 "Novo arquivo deve existir."
 
-#: ../src/interface.c:1299 ../src/interface.c:1388
+#: ../src/interface.c:1301 ../src/interface.c:1390
 msgid "Copy"
 msgstr "Copiar"
 
-#: ../src/interface.c:1305
+#: ../src/interface.c:1307
 msgid "Current file is copied and stays unmodified in the old place."
 msgstr ""
 "O arquivo atual é copiado e permanece sem modificações no local original."
 
-#: ../src/interface.c:1309 ../src/interface.c:1395
+#: ../src/interface.c:1311 ../src/interface.c:1397
 msgid "Move"
 msgstr "Mover"
 
-#: ../src/interface.c:1315
+#: ../src/interface.c:1317
 msgid "Current file is moved and vanishes from the old place."
 msgstr "O arquivo atual é movido e desaparece do local original."
 
-#: ../src/interface.c:1329
+#: ../src/interface.c:1331
 msgid "Archive file"
 msgstr "Arquivar o arquivo"
 
-#: ../src/interface.c:1420
+#: ../src/interface.c:1422
 msgid "Foreign files"
 msgstr "Arquivos desconhecidos"
 
-#: ../src/interface.c:1427
+#: ../src/interface.c:1429
 msgid "Add new foreign file"
 msgstr "Adicionar um novo arquivo desconhecido"
 
-#: ../src/interface.c:1435
+#: ../src/interface.c:1437
 msgid "Foreign file:"
 msgstr "Arquivo desconhecido:"
 
-#: ../src/interface.c:1466
+#: ../src/interface.c:1468
 msgid "Visible name:"
 msgstr "Nome visível:"
 
-#: ../src/interface.c:1476
+#: ../src/interface.c:1478
 msgid "Read only"
 msgstr "Somente leitura"
 
-#: ../src/interface.c:1486
+#: ../src/interface.c:1488
 msgid ""
 "Set this if you want to make sure that this file is never modified by Orage.\n"
 "Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
@@ -1180,15 +1180,15 @@ msgstr ""
 "Marque isto se você deseja  certificar-se que este arquivo nunca será modificado pelo Orage.\n"
 "Observe que modificando arquivos desconhecidos pode torná-los incompatíveis com a ferramenta original, de onde eles vieram!"
 
-#: ../src/interface.c:1488
+#: ../src/interface.c:1490
 msgid "This internal name is displayed to user instead of file name."
 msgstr "Este nome interno é exibido para o usuário em vez do nome de arquivo."
 
-#: ../src/interface.c:1502
+#: ../src/interface.c:1504
 msgid "Exchange data - Orage"
 msgstr "Trocar dados - Orage"
 
-#: ../src/main.c:273
+#: ../src/main.c:274
 #, c-format
 msgid ""
 "\tThis is %s version %s\n"
@@ -1197,17 +1197,17 @@ msgstr ""
 "\tEste é %s versão %s\n"
 "\n"
 
-#: ../src/main.c:275
+#: ../src/main.c:276
 #, c-format
 msgid "\tReleased under the terms of the GNU General Public License.\n"
 msgstr "\tLançado sob os termos da Licença Pública Geral GNU.\n"
 
-#: ../src/main.c:276
+#: ../src/main.c:277
 #, c-format
 msgid "\tCompiled against GTK+-%d.%d.%d, "
 msgstr "\tCompilado com GTK+-%d.%d.%d, "
 
-#: ../src/main.c:278
+#: ../src/main.c:279
 #, c-format
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "usando GTK+-%d.%d.%d.\n"
@@ -1219,40 +1219,35 @@ msgstr "\tUsando DBUS para importação.\n"
 
 #: ../src/main.c:283
 #, c-format
-msgid "\tNot using DBUS. Import works only partially.\n"
-msgstr "\tNão usando DBUS. Importação funcionando parcialmente.\n"
-
-#: ../src/main.c:286
-#, c-format
 msgid "\tUsing libnotify.\n"
 msgstr "\tUsando libnotify.\n"
 
-#: ../src/main.c:288
+#: ../src/main.c:285
 #, c-format
 msgid "\tNot using libnotify.\n"
 msgstr "\tNão usando libnotify.\n"
 
-#: ../src/main.c:291
+#: ../src/main.c:288
 #, c-format
 msgid "\tUsing automatic archiving.\n"
 msgstr "\tUsando arquivamento automático.\n"
 
-#: ../src/main.c:293
+#: ../src/main.c:290
 #, c-format
 msgid "\tNot using archiving.\n"
 msgstr "\tNão usar arquivamento.\n"
 
-#: ../src/main.c:296
+#: ../src/main.c:293
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
 msgstr "\tUsar libxfce4ui: sim\n"
 
-#: ../src/main.c:298
+#: ../src/main.c:295
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
 msgstr "\tUsar libxfce4ui: não\n"
 
-#: ../src/main.c:311
+#: ../src/main.c:308
 msgid ""
 "Usage: orage [options] [files]\n"
 "\n"
@@ -1260,35 +1255,35 @@ msgstr ""
 "Uso: orage [opções] [arquivos]\n"
 "\n"
 
-#: ../src/main.c:312
+#: ../src/main.c:309
 msgid "Options:\n"
 msgstr "Opções:\n"
 
-#: ../src/main.c:313
+#: ../src/main.c:310
 msgid "--version (-v) \t\tshow version of orage\n"
 msgstr "--version (-v) \t\tmostra a versão do orage\n"
 
-#: ../src/main.c:314
+#: ../src/main.c:311
 msgid "--help (-h) \t\tprint this text\n"
 msgstr "--help (-h) \t\timprime este texto\n"
 
-#: ../src/main.c:315
+#: ../src/main.c:312
 msgid "--preferences (-p) \tshow preferences form\n"
 msgstr "--preferences (-p) \tmostra o formulário de preferências\n"
 
-#: ../src/main.c:316
+#: ../src/main.c:313
 msgid "--toggle (-t) \t\tmake orage visible/unvisible\n"
 msgstr "--toggle (-t) \t\ttorna o orage visível/invisível\n"
 
-#: ../src/main.c:317
+#: ../src/main.c:314
 msgid "--add-foreign (-a) file [RW] [name] \tadd a foreign file\n"
 msgstr "--add-foreign (-a) file [RW] [nome] \tadiciona um arquivo externo\n"
 
-#: ../src/main.c:318
+#: ../src/main.c:315
 msgid "--remove-foreign (-r) file \tremove a foreign file\n"
 msgstr "--remove-foreign (-r) arquivo \tremove um arquivo desconhecido\n"
 
-#: ../src/main.c:319
+#: ../src/main.c:316
 msgid ""
 "--export (-e) file [appointment...] \texport appointments from Orage to "
 "file\n"
@@ -1296,23 +1291,11 @@ msgstr ""
 "--export (-e) arquivo [compromisso...] \texportar compromissos do Orage para"
 " arquivo\n"
 
-#: ../src/main.c:321
+#: ../src/main.c:318
 msgid "files=ical files to load into orage\n"
 msgstr "arquivo=arquivos ical para carregar no orage\n"
 
-#: ../src/main.c:323
-msgid "\tdbus not included in orage. \n"
-msgstr "\tdbus não incluído no orage. \n"
-
-#: ../src/main.c:324
-msgid ""
-"\twithout dbus [files] and foreign file options(-a & -r) can only be used "
-"when starting orage \n"
-msgstr ""
-"\tsem dbus [arquivos] e opções para arquivos desconhecidos(-a & -r) só podem"
-" ser usados quando iniciando o Orage \n"
-
-#: ../src/main.c:537
+#: ../src/main.c:508
 #, c-format
 msgid ""
 "\n"
@@ -1323,43 +1306,43 @@ msgstr ""
 "Opção desconhecida %s\n"
 "\n"
 
-#: ../src/mainbox.c:216
+#: ../src/mainbox.c:218
 msgid "_Exchange data"
 msgstr "_Trocar dados"
 
 #. Edit menu
-#: ../src/mainbox.c:227
+#: ../src/mainbox.c:229
 msgid "_Edit"
 msgstr "_Editar"
 
-#: ../src/mainbox.c:237
+#: ../src/mainbox.c:239
 msgid "View selected _date"
 msgstr "Ver _data selecionada"
 
-#: ../src/mainbox.c:240
+#: ../src/mainbox.c:242
 msgid "View selected _week"
 msgstr "Ver s_emana selecionada"
 
-#: ../src/mainbox.c:246
+#: ../src/mainbox.c:248
 msgid "Select _Today"
 msgstr "Selecionar Ho_je"
 
 #. Help menu
 #. the rest
-#: ../src/mainbox.c:250 ../src/parameters.c:1197
+#: ../src/mainbox.c:252 ../src/parameters.c:1197
 msgid "_Help"
 msgstr "A_juda"
 
-#: ../src/mainbox.c:311 ../src/reminder.c:1027
+#: ../src/mainbox.c:312 ../src/reminder.c:1027
 msgid "No title defined"
 msgstr "Nenhum título definido"
 
-#: ../src/mainbox.c:369
+#: ../src/mainbox.c:370
 #, c-format
 msgid " Location: %s\n"
 msgstr " Localização: %s\n"
 
-#: ../src/mainbox.c:379
+#: ../src/mainbox.c:380
 #, c-format
 msgid ""
 "\n"
@@ -1370,11 +1353,11 @@ msgstr ""
 " Nota:\n"
 "%s"
 
-#: ../src/mainbox.c:387
+#: ../src/mainbox.c:388
 msgid "Never"
 msgstr "Nunca"
 
-#: ../src/mainbox.c:395
+#: ../src/mainbox.c:396
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1387,7 +1370,7 @@ msgstr ""
 " Fim:\t%s\n"
 " Concluído:\t%s%s"
 
-#: ../src/mainbox.c:402
+#: ../src/mainbox.c:403
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1398,16 +1381,16 @@ msgstr ""
 "%s Início:\t%s\n"
 " Fim:\t%s%s"
 
-#: ../src/mainbox.c:481
+#: ../src/mainbox.c:482
 msgid "<b>To do:</b>"
 msgstr "<b>Tarefa:</b>"
 
-#: ../src/mainbox.c:518
+#: ../src/mainbox.c:519
 #, c-format
 msgid "<b>Events for %s:</b>"
 msgstr "<b>Eventos para %s:</b>"
 
-#: ../src/mainbox.c:528
+#: ../src/mainbox.c:529
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>Eventos para %s - %s:</b>"
