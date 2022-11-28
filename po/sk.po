@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-11 12:51+0200\n"
+"POT-Creation-Date: 2022-11-28 15:01+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Jan Ziak <0xe2.0x9a.0x9b@gmail.com>, 2022\n"
 "Language-Team: Slovak (https://www.transifex.com/xfce/teams/16840/sk/)\n"
@@ -45,7 +45,7 @@ msgstr "Koniec"
 msgid "Due"
 msgstr "Kvôli"
 
-#: ../src/appointment.c:508 ../src/mainbox.c:676
+#: ../src/appointment.c:508 ../src/mainbox.c:677
 #: ../org.xfce.orage.appdata.xml.in.h:1
 msgid "Orage"
 msgstr "Orage"
@@ -150,7 +150,7 @@ msgstr "Táto udalosť neexistuje."
 msgid "It was probably removed, please refresh your screen."
 msgstr "Pravdepodobne bolo odobrané, prosím aktualizujte obrazovku."
 
-#: ../src/appointment.c:2183 ../src/interface.c:672
+#: ../src/appointment.c:2183 ../src/interface.c:674
 msgid "_Remove"
 msgstr "O_dstrániť"
 
@@ -166,7 +166,7 @@ msgstr "Pridať novú farebnú kategóriu"
 msgid "Category:"
 msgstr "Kategória:"
 
-#: ../src/appointment.c:2258 ../src/interface.c:1451
+#: ../src/appointment.c:2258 ../src/interface.c:1453
 msgid "_Add"
 msgstr "_Pridať"
 
@@ -186,7 +186,7 @@ msgstr "Nová udalosť - Orage"
 #. ********* File menu *********
 #. File menu
 #: ../src/appointment.c:2645 ../src/day-view.c:294 ../src/event-list.c:1115
-#: ../src/interface.c:857 ../src/mainbox.c:208
+#: ../src/interface.c:859 ../src/mainbox.c:210
 msgid "_File"
 msgstr "_Záznam"
 
@@ -287,7 +287,7 @@ msgid "All day event"
 msgstr "Celodenná udalosť"
 
 #. start time
-#: ../src/appointment.c:2988 ../src/appointment.c:3707 ../src/day-view.c:841
+#: ../src/appointment.c:2988 ../src/appointment.c:3707 ../src/day-view.c:831
 msgid "Start"
 msgstr "Začiatok"
 
@@ -450,8 +450,8 @@ msgstr "Použiť"
 msgid "Select this if you want audible alarm"
 msgstr "Vyberte túto možnosť, ak si želáte zvukovú pripomienku"
 
-#: ../src/appointment.c:3302 ../src/interface.c:1047 ../src/interface.c:1093
-#: ../src/interface.c:1269 ../src/interface.c:1361 ../src/interface.c:1444
+#: ../src/appointment.c:3302 ../src/interface.c:1049 ../src/interface.c:1095
+#: ../src/interface.c:1271 ../src/interface.c:1363 ../src/interface.c:1446
 #: ../src/parameters.c:397 ../src/parameters.c:620 ../src/reminder.c:705
 msgid "_Open"
 msgstr "_Otvoriť"
@@ -537,7 +537,7 @@ msgstr ""
 "\t<&ST> začiatok udalosti\n"
 "\t<&ET> koniec udalosti"
 
-#: ../src/appointment.c:3446 ../src/interface.c:1181 ../src/interface.c:1203
+#: ../src/appointment.c:3446 ../src/interface.c:1183 ../src/interface.c:1205
 msgid "_Execute"
 msgstr "_Spustiť"
 
@@ -549,8 +549,8 @@ msgstr "Vyskúšať túto pripomienku ihneď"
 msgid "<b>Default alarm</b>"
 msgstr "Predvolená pripomienka"
 
-#: ../src/appointment.c:3467 ../src/interface.c:1054 ../src/interface.c:1100
-#: ../src/interface.c:1275 ../src/interface.c:1367
+#: ../src/appointment.c:3467 ../src/interface.c:1056 ../src/interface.c:1102
+#: ../src/interface.c:1277 ../src/interface.c:1369
 msgid "_Save"
 msgstr "_Uložiť"
 
@@ -776,7 +776,7 @@ msgstr "Dátumy akcií"
 
 #. ********* View menu *********
 #. View menu
-#: ../src/day-view.c:304 ../src/event-list.c:1138 ../src/mainbox.c:234
+#: ../src/day-view.c:304 ../src/event-list.c:1138 ../src/mainbox.c:236
 msgid "_View"
 msgstr "Zo_braziť"
 
@@ -809,7 +809,7 @@ msgstr "Budúci týždeň"
 msgid "Refresh"
 msgstr "Obnoviť"
 
-#: ../src/day-view.c:414 ../src/event-list.c:1228 ../src/interface.c:876
+#: ../src/day-view.c:414 ../src/event-list.c:1228 ../src/interface.c:878
 msgid "Close"
 msgstr "Zatvoriť"
 
@@ -817,15 +817,15 @@ msgstr "Zatvoriť"
 msgid "_OK"
 msgstr "_OK"
 
-#: ../src/day-view.c:596
+#: ../src/day-view.c:594
 msgid "Unknown"
 msgstr "Neznáma"
 
-#: ../src/day-view.c:850
+#: ../src/day-view.c:840
 msgid "       Number of days to show"
 msgstr "       Počet zobrazených dní"
 
-#: ../src/day-view.c:1081
+#: ../src/day-view.c:1071
 msgid "Orage - day view"
 msgstr "Orage - denný prehľad"
 
@@ -952,7 +952,7 @@ msgstr ""
 "\t 5. Typ udalosti:\n"
 "\t\tE=Event T=Todo J=Journal"
 
-#: ../src/ical-code.c:790
+#: ../src/ical-code.c:780
 msgid "Orage default alarm"
 msgstr "Prednastavená pripomienka kalendára"
 
@@ -960,63 +960,63 @@ msgstr "Prednastavená pripomienka kalendára"
 msgid "Calendar files"
 msgstr "Súbory kalendára"
 
-#: ../src/interface.c:642
+#: ../src/interface.c:644
 msgid "Current foreign files"
 msgstr "Aktuálne externé súbory"
 
-#: ../src/interface.c:665
+#: ../src/interface.c:667
 msgid "READ ONLY"
 msgstr "LEN NA ČÍTANIE"
 
-#: ../src/interface.c:667
+#: ../src/interface.c:669
 msgid "READ WRITE"
 msgstr "PRE ČÍTANIE AJ ZÁPIS"
 
-#: ../src/interface.c:692
+#: ../src/interface.c:694
 msgid "***** No foreign files *****"
 msgstr "***** Žiadne externé súbory *****"
 
-#: ../src/interface.c:706
+#: ../src/interface.c:708
 msgid "Foreign file add failed"
 msgstr "Pridanie externého súboru zlyhalo"
 
-#: ../src/interface.c:715
+#: ../src/interface.c:717
 msgid "Orage can only handle 10 foreign files. Limit reached."
 msgstr "Orage môže spracovať len 10 cudzích súborov. Limit dosiahnutý."
 
-#: ../src/interface.c:725
+#: ../src/interface.c:727
 msgid "Filename is empty."
 msgstr "Meno súboru je prázdne."
 
-#: ../src/interface.c:735
+#: ../src/interface.c:737
 msgid "Name is empty."
 msgstr "Názov je prázdny."
 
-#: ../src/interface.c:746
+#: ../src/interface.c:748
 msgid "File does not exist."
 msgstr "Súbor neexistuje."
 
-#: ../src/interface.c:758
+#: ../src/interface.c:760
 msgid "Same filename already exists in Orage."
 msgstr "Rovnaké meno súboru už v Orage existuje."
 
-#: ../src/interface.c:769
+#: ../src/interface.c:771
 msgid "Same name already exists in Orage."
 msgstr "Rovnaký názov už v Orage existuje."
 
-#: ../src/interface.c:1022
+#: ../src/interface.c:1024
 msgid "Import/export"
 msgstr "Import/export"
 
-#: ../src/interface.c:1029
+#: ../src/interface.c:1031
 msgid "Import"
 msgstr "Import"
 
-#: ../src/interface.c:1037
+#: ../src/interface.c:1039
 msgid "Read from file:"
 msgstr "Čítať zo súboru:"
 
-#: ../src/interface.c:1067
+#: ../src/interface.c:1069
 msgid ""
 "Separate filenames with comma(,).\n"
 " NOTE: comma is not valid character in filenames for Orage."
@@ -1024,27 +1024,27 @@ msgstr ""
 "Názvy súborov oddeľte čiarkami.\n"
 " Poznámka: čiarka nie je platným znakom v názvoch súborov aplikácie Orage."
 
-#: ../src/interface.c:1072
+#: ../src/interface.c:1074
 msgid "Export"
 msgstr "Export"
 
-#: ../src/interface.c:1080
+#: ../src/interface.c:1082
 msgid "Write to file:"
 msgstr "Zapísať do súboru:"
 
-#: ../src/interface.c:1115 ../src/interface.c:1133
+#: ../src/interface.c:1117 ../src/interface.c:1135
 msgid "Select"
 msgstr "Vybrať"
 
-#: ../src/interface.c:1120
+#: ../src/interface.c:1122
 msgid "All appointments"
 msgstr "Všetky udalosti"
 
-#: ../src/interface.c:1139
+#: ../src/interface.c:1141
 msgid "Named appointments:"
 msgstr "Pomenované udalosti:"
 
-#: ../src/interface.c:1158
+#: ../src/interface.c:1160
 msgid ""
 "Note that only main file appointments are read.\n"
 "Archived and Foreign events are not exported."
@@ -1052,7 +1052,7 @@ msgstr ""
 "Načítajú sa iba udalosti z hlavného súboru.\n"
 "Archivované a externé udalosti sa neexportujú."
 
-#: ../src/interface.c:1161
+#: ../src/interface.c:1163
 msgid ""
 "Note that only main file appointments are read.\n"
 "Foreign events are not exported."
@@ -1060,32 +1060,32 @@ msgstr ""
 "Načítajú sa iba udalosti z hlavného súboru.\n"
 "Externé udalosti sa neexportujú."
 
-#: ../src/interface.c:1164
+#: ../src/interface.c:1166
 msgid "You can easily drag these from event-list window."
 msgstr "Tieto položky môžete jednoducho pretiahnuť z okna zoznamu udalostí."
 
-#: ../src/interface.c:1166
+#: ../src/interface.c:1168
 msgid "Orage appointment UIDs separated by commas."
 msgstr "UID udalostí Orage oddelené čiarkami."
 
-#: ../src/interface.c:1172
+#: ../src/interface.c:1174
 msgid "Archive"
 msgstr "Archivovanie"
 
-#: ../src/interface.c:1187
+#: ../src/interface.c:1189
 #, c-format
 msgid "Archive now (threshold: %d months)"
 msgstr "Archivovať teraz (prah: %d mesiacov)"
 
-#: ../src/interface.c:1198
+#: ../src/interface.c:1200
 msgid "You can change archive threshold in parameters"
 msgstr "Prah archívu môžete zmeniť v parametroch"
 
-#: ../src/interface.c:1210
+#: ../src/interface.c:1212
 msgid "Revert archive now"
 msgstr "Obnovenie archívu do pôvodného stavu"
 
-#: ../src/interface.c:1217
+#: ../src/interface.c:1219
 msgid ""
 "Return all archived events into main orage file and remove arch file.\n"
 "This is useful for example when doing export and moving orage\n"
@@ -1095,31 +1095,31 @@ msgstr ""
 "Orage a odoberie súbor archívu. Táto funkcia je užitočná napríklad\n"
 "pri exporte a presune udalostí na iný systém."
 
-#: ../src/interface.c:1229
+#: ../src/interface.c:1231
 msgid "Orage files"
 msgstr "Súbory Orage"
 
-#: ../src/interface.c:1236
+#: ../src/interface.c:1238
 msgid "Orage main calendar file"
 msgstr "Hlavný súbor kalendára Orage"
 
-#: ../src/interface.c:1245 ../src/interface.c:1338
+#: ../src/interface.c:1247 ../src/interface.c:1340
 msgid "Current file:"
 msgstr "Aktuálny súbor:"
 
-#: ../src/interface.c:1257 ../src/interface.c:1350
+#: ../src/interface.c:1259 ../src/interface.c:1352
 msgid "New file:"
 msgstr "Nový súbor:"
 
-#: ../src/interface.c:1285 ../src/interface.c:1377
+#: ../src/interface.c:1287 ../src/interface.c:1379
 msgid "Action options:"
 msgstr "Voľby akcie:"
 
-#: ../src/interface.c:1289 ../src/interface.c:1381
+#: ../src/interface.c:1291 ../src/interface.c:1383
 msgid "Rename"
 msgstr "Premenovať"
 
-#: ../src/interface.c:1295
+#: ../src/interface.c:1297
 msgid ""
 "Orage internal file rename only.\n"
 "Does not touch external filesystem at all.\n"
@@ -1129,47 +1129,47 @@ msgstr ""
 "Nezasahuje do vonkajšieho systému súborov.\n"
 "Nový súbor už musí existovať."
 
-#: ../src/interface.c:1299 ../src/interface.c:1388
+#: ../src/interface.c:1301 ../src/interface.c:1390
 msgid "Copy"
 msgstr "Kopírovať"
 
-#: ../src/interface.c:1305
+#: ../src/interface.c:1307
 msgid "Current file is copied and stays unmodified in the old place."
 msgstr "Aktuálny súbor sa skopíruje a ostane nezmenený v pôvodnom umiestnení."
 
-#: ../src/interface.c:1309 ../src/interface.c:1395
+#: ../src/interface.c:1311 ../src/interface.c:1397
 msgid "Move"
 msgstr "Presunúť"
 
-#: ../src/interface.c:1315
+#: ../src/interface.c:1317
 msgid "Current file is moved and vanishes from the old place."
 msgstr "Aktuálny súbor sa presunie a z pôvodného umiestnenia bude vymazaný."
 
-#: ../src/interface.c:1329
+#: ../src/interface.c:1331
 msgid "Archive file"
 msgstr "Archívny súbor"
 
-#: ../src/interface.c:1420
+#: ../src/interface.c:1422
 msgid "Foreign files"
 msgstr "Externé súbory"
 
-#: ../src/interface.c:1427
+#: ../src/interface.c:1429
 msgid "Add new foreign file"
 msgstr "Pridať nový externý súbor"
 
-#: ../src/interface.c:1435
+#: ../src/interface.c:1437
 msgid "Foreign file:"
 msgstr "Externý súbor:"
 
-#: ../src/interface.c:1466
+#: ../src/interface.c:1468
 msgid "Visible name:"
 msgstr "Zobrazené meno:"
 
-#: ../src/interface.c:1476
+#: ../src/interface.c:1478
 msgid "Read only"
 msgstr "Len na čítanie"
 
-#: ../src/interface.c:1486
+#: ../src/interface.c:1488
 msgid ""
 "Set this if you want to make sure that this file is never modified by Orage.\n"
 "Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
@@ -1177,15 +1177,15 @@ msgstr ""
 "Túto možnosť nastavte, ak si chcete byť istí, že tento súbor aplikácia Orage nikdy nepozmení.\n"
 "Majte na pamäti, že pozmenením externých súborov ich môžete urobiť nekompatibilnými s pôvodnými nástrojmi, v ktorých boli vytvorené!"
 
-#: ../src/interface.c:1488
+#: ../src/interface.c:1490
 msgid "This internal name is displayed to user instead of file name."
 msgstr "Používateľovi je zobrazené toto interné meno namiesto mena súboru."
 
-#: ../src/interface.c:1502
+#: ../src/interface.c:1504
 msgid "Exchange data - Orage"
 msgstr "Výmena dát - Orage"
 
-#: ../src/main.c:273
+#: ../src/main.c:274
 #, c-format
 msgid ""
 "\tThis is %s version %s\n"
@@ -1194,17 +1194,17 @@ msgstr ""
 "\tToto je %s verzie %s\n"
 "\n"
 
-#: ../src/main.c:275
+#: ../src/main.c:276
 #, c-format
 msgid "\tReleased under the terms of the GNU General Public License.\n"
 msgstr "\tVydané pod podmienkami licencie GNU General Public License.\n"
 
-#: ../src/main.c:276
+#: ../src/main.c:277
 #, c-format
 msgid "\tCompiled against GTK+-%d.%d.%d, "
 msgstr "\tSkompilované proti GTK+-%d.%d.%d, "
 
-#: ../src/main.c:278
+#: ../src/main.c:279
 #, c-format
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "používa GTK+-%d.%d.%d.\n"
@@ -1216,40 +1216,35 @@ msgstr "\tPoužíva DBUS pre import.\n"
 
 #: ../src/main.c:283
 #, c-format
-msgid "\tNot using DBUS. Import works only partially.\n"
-msgstr "\tNepoužíva DBUS. Import bude pracovať len čiastočne.\n"
-
-#: ../src/main.c:286
-#, c-format
 msgid "\tUsing libnotify.\n"
 msgstr "\tPoužíva sa knižnica libnotify.\n"
 
-#: ../src/main.c:288
+#: ../src/main.c:285
 #, c-format
 msgid "\tNot using libnotify.\n"
 msgstr "\tNepoužíva sa knižnica libnotify \n"
 
-#: ../src/main.c:291
+#: ../src/main.c:288
 #, c-format
 msgid "\tUsing automatic archiving.\n"
 msgstr "\tPoužíva sa automatické archivovanie.\n"
 
-#: ../src/main.c:293
+#: ../src/main.c:290
 #, c-format
 msgid "\tNot using archiving.\n"
 msgstr "\tNepoužíva sa archivácia.\n"
 
-#: ../src/main.c:296
+#: ../src/main.c:293
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
 msgstr "\tPoužiť libxfce4ui: áno\n"
 
-#: ../src/main.c:298
+#: ../src/main.c:295
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
 msgstr "\tPoužiť libxfce4ui: nie\n"
 
-#: ../src/main.c:311
+#: ../src/main.c:308
 msgid ""
 "Usage: orage [options] [files]\n"
 "\n"
@@ -1257,35 +1252,35 @@ msgstr ""
 "Použitie: orage [voľby] [súbory]\n"
 "\n"
 
-#: ../src/main.c:312
+#: ../src/main.c:309
 msgid "Options:\n"
 msgstr "Voľby:\n"
 
-#: ../src/main.c:313
+#: ../src/main.c:310
 msgid "--version (-v) \t\tshow version of orage\n"
 msgstr "--version (-v) \t\tzobrazí verziu orage\n"
 
-#: ../src/main.c:314
+#: ../src/main.c:311
 msgid "--help (-h) \t\tprint this text\n"
 msgstr "--help (-h) \t\tvypíšte tento text\n"
 
-#: ../src/main.c:315
+#: ../src/main.c:312
 msgid "--preferences (-p) \tshow preferences form\n"
 msgstr "--preferences (-p) \tzobrazí formulár možností\n"
 
-#: ../src/main.c:316
+#: ../src/main.c:313
 msgid "--toggle (-t) \t\tmake orage visible/unvisible\n"
 msgstr "--toggle (-t) \t\tprepne orage na viditeľné/neviditeľné\n"
 
-#: ../src/main.c:317
+#: ../src/main.c:314
 msgid "--add-foreign (-a) file [RW] [name] \tadd a foreign file\n"
 msgstr "--add-foreign (-a) súbor [RW] [názov] \tpridá cudzí súbor\n"
 
-#: ../src/main.c:318
+#: ../src/main.c:315
 msgid "--remove-foreign (-r) file \tremove a foreign file\n"
 msgstr "--remove-foreign (-r) súbor \todoberie externý súbor\n"
 
-#: ../src/main.c:319
+#: ../src/main.c:316
 msgid ""
 "--export (-e) file [appointment...] \texport appointments from Orage to "
 "file\n"
@@ -1293,23 +1288,11 @@ msgstr ""
 "--export (-e) súbor [udalosť...] \texportuje udalosti z aplikácie Orage do "
 "súboru\n"
 
-#: ../src/main.c:321
+#: ../src/main.c:318
 msgid "files=ical files to load into orage\n"
 msgstr "súbory=súbory typu ical pre načítanie do aplikácie orage\n"
 
-#: ../src/main.c:323
-msgid "\tdbus not included in orage. \n"
-msgstr "\taplikácia orage nebola zostavená s podporou dbus. \n"
-
-#: ../src/main.c:324
-msgid ""
-"\twithout dbus [files] and foreign file options(-a & -r) can only be used "
-"when starting orage \n"
-msgstr ""
-"\tbez podpory dbus sa môžu [súbory] a možnosti externých súborov (-a & -r) "
-"použiť iba pri spúšťaní aplikácie orage\n"
-
-#: ../src/main.c:537
+#: ../src/main.c:508
 #, c-format
 msgid ""
 "\n"
@@ -1320,43 +1303,43 @@ msgstr ""
 "Neznáma voľba %s\n"
 "\n"
 
-#: ../src/mainbox.c:216
+#: ../src/mainbox.c:218
 msgid "_Exchange data"
 msgstr "_Výmena dát"
 
 #. Edit menu
-#: ../src/mainbox.c:227
+#: ../src/mainbox.c:229
 msgid "_Edit"
 msgstr "_Upraviť"
 
-#: ../src/mainbox.c:237
+#: ../src/mainbox.c:239
 msgid "View selected _date"
 msgstr "Zobraziť zvolený _dátum"
 
-#: ../src/mainbox.c:240
+#: ../src/mainbox.c:242
 msgid "View selected _week"
 msgstr "Zobraziť zvolený _týždeň"
 
-#: ../src/mainbox.c:246
+#: ../src/mainbox.c:248
 msgid "Select _Today"
 msgstr "Vybrať _dnešný dátum"
 
 #. Help menu
 #. the rest
-#: ../src/mainbox.c:250 ../src/parameters.c:1197
+#: ../src/mainbox.c:252 ../src/parameters.c:1197
 msgid "_Help"
 msgstr "_Pomocník"
 
-#: ../src/mainbox.c:311 ../src/reminder.c:1027
+#: ../src/mainbox.c:312 ../src/reminder.c:1027
 msgid "No title defined"
 msgstr "Názov nie je definovaný"
 
-#: ../src/mainbox.c:369
+#: ../src/mainbox.c:370
 #, c-format
 msgid " Location: %s\n"
 msgstr " Umiestnenie: %s\n"
 
-#: ../src/mainbox.c:379
+#: ../src/mainbox.c:380
 #, c-format
 msgid ""
 "\n"
@@ -1367,11 +1350,11 @@ msgstr ""
 " Poznámka:\n"
 "%s"
 
-#: ../src/mainbox.c:387
+#: ../src/mainbox.c:388
 msgid "Never"
 msgstr "Nikdy"
 
-#: ../src/mainbox.c:395
+#: ../src/mainbox.c:396
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1384,7 +1367,7 @@ msgstr ""
 " Koniec:\t%s\n"
 " Dokončené:\t%s%s"
 
-#: ../src/mainbox.c:402
+#: ../src/mainbox.c:403
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1395,16 +1378,16 @@ msgstr ""
 "%s Začiatok:\t%s\n"
 " Koniec:\t%s%s"
 
-#: ../src/mainbox.c:481
+#: ../src/mainbox.c:482
 msgid "<b>To do:</b>"
 msgstr "<b>Zoznam úloh:</b>"
 
-#: ../src/mainbox.c:518
+#: ../src/mainbox.c:519
 #, c-format
 msgid "<b>Events for %s:</b>"
 msgstr "<b>Udalosti pre %s:</b>"
 
-#: ../src/mainbox.c:528
+#: ../src/mainbox.c:529
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>Udalosti pre %s: - %s</b>"
