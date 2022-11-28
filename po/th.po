@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-11 12:51+0200\n"
+"POT-Creation-Date: 2022-11-28 15:01+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Theppitak Karoonboonyanan <theppitak@gmail.com>, 2022\n"
 "Language-Team: Thai (https://www.transifex.com/xfce/teams/16840/th/)\n"
@@ -41,7 +41,7 @@ msgstr "สิ้นสุด"
 msgid "Due"
 msgstr "กำหนดเสร็จ"
 
-#: ../src/appointment.c:508 ../src/mainbox.c:676
+#: ../src/appointment.c:508 ../src/mainbox.c:677
 #: ../org.xfce.orage.appdata.xml.in.h:1
 msgid "Orage"
 msgstr "Orage"
@@ -144,7 +144,7 @@ msgstr "ไม่มีนัดหมายนี้"
 msgid "It was probably removed, please refresh your screen."
 msgstr "นัดหมายดังกล่าวอาจถูกลบไปแล้ว กรุณาปรับข้อมูลหน้าจอของคุณ"
 
-#: ../src/appointment.c:2183 ../src/interface.c:672
+#: ../src/appointment.c:2183 ../src/interface.c:674
 msgid "_Remove"
 msgstr "_ตัดออก"
 
@@ -160,7 +160,7 @@ msgstr "เพิ่มหมวดใหม่พร้อมสีกำกั
 msgid "Category:"
 msgstr "หมวด:"
 
-#: ../src/appointment.c:2258 ../src/interface.c:1451
+#: ../src/appointment.c:2258 ../src/interface.c:1453
 msgid "_Add"
 msgstr "เ_พิ่ม"
 
@@ -180,7 +180,7 @@ msgstr "นัดหมายใหม่ - Orage"
 #. ********* File menu *********
 #. File menu
 #: ../src/appointment.c:2645 ../src/day-view.c:294 ../src/event-list.c:1115
-#: ../src/interface.c:857 ../src/mainbox.c:208
+#: ../src/interface.c:859 ../src/mainbox.c:210
 msgid "_File"
 msgstr "แ_ฟ้ม"
 
@@ -281,7 +281,7 @@ msgid "All day event"
 msgstr "เหตุการณ์ทั้งวัน"
 
 #. start time
-#: ../src/appointment.c:2988 ../src/appointment.c:3707 ../src/day-view.c:841
+#: ../src/appointment.c:2988 ../src/appointment.c:3707 ../src/day-view.c:831
 msgid "Start"
 msgstr "เริ่มต้น"
 
@@ -443,8 +443,8 @@ msgstr "ใช้"
 msgid "Select this if you want audible alarm"
 msgstr "เลือกตัวเลือกนี้ถ้าคุณต้องการให้ปลุกเตือนแบบมีเสียง"
 
-#: ../src/appointment.c:3302 ../src/interface.c:1047 ../src/interface.c:1093
-#: ../src/interface.c:1269 ../src/interface.c:1361 ../src/interface.c:1444
+#: ../src/appointment.c:3302 ../src/interface.c:1049 ../src/interface.c:1095
+#: ../src/interface.c:1271 ../src/interface.c:1363 ../src/interface.c:1446
 #: ../src/parameters.c:397 ../src/parameters.c:620 ../src/reminder.c:705
 msgid "_Open"
 msgstr "_เปิด"
@@ -528,7 +528,7 @@ msgstr ""
 "\t<&ST> เวลาเริ่มของนัดหมาย\n"
 "\t<&ET> เวลาจบของนัดหมาย"
 
-#: ../src/appointment.c:3446 ../src/interface.c:1181 ../src/interface.c:1203
+#: ../src/appointment.c:3446 ../src/interface.c:1183 ../src/interface.c:1205
 msgid "_Execute"
 msgstr ""
 
@@ -540,8 +540,8 @@ msgstr "ทดสอบการปลุกเตือนนี้โดยส
 msgid "<b>Default alarm</b>"
 msgstr "<b>การปลุกเตือนปริยาย</b>"
 
-#: ../src/appointment.c:3467 ../src/interface.c:1054 ../src/interface.c:1100
-#: ../src/interface.c:1275 ../src/interface.c:1367
+#: ../src/appointment.c:3467 ../src/interface.c:1056 ../src/interface.c:1102
+#: ../src/interface.c:1277 ../src/interface.c:1369
 msgid "_Save"
 msgstr "_บันทึก"
 
@@ -765,7 +765,7 @@ msgstr "วันที่กระทำ"
 
 #. ********* View menu *********
 #. View menu
-#: ../src/day-view.c:304 ../src/event-list.c:1138 ../src/mainbox.c:234
+#: ../src/day-view.c:304 ../src/event-list.c:1138 ../src/mainbox.c:236
 msgid "_View"
 msgstr "มุ_มมอง"
 
@@ -798,7 +798,7 @@ msgstr "ไปข้างหน้าหนึ่งสัปดาห์"
 msgid "Refresh"
 msgstr "ปรับแสดงใหม่"
 
-#: ../src/day-view.c:414 ../src/event-list.c:1228 ../src/interface.c:876
+#: ../src/day-view.c:414 ../src/event-list.c:1228 ../src/interface.c:878
 msgid "Close"
 msgstr "ปิด"
 
@@ -806,15 +806,15 @@ msgstr "ปิด"
 msgid "_OK"
 msgstr "_ตกลง"
 
-#: ../src/day-view.c:596
+#: ../src/day-view.c:594
 msgid "Unknown"
 msgstr "ไม่ทราบ"
 
-#: ../src/day-view.c:850
+#: ../src/day-view.c:840
 msgid "       Number of days to show"
 msgstr "       จำนวนวันที่จะแสดง"
 
-#: ../src/day-view.c:1081
+#: ../src/day-view.c:1071
 msgid "Orage - day view"
 msgstr "Orage - ข้อมูลรายวัน"
 
@@ -941,7 +941,7 @@ msgstr ""
 "\t 5. ชนิดของนัดหมาย:\n"
 "\t\tE=เหตุการณ์ T=สิ่งที่จะทำ J=บันทึก"
 
-#: ../src/ical-code.c:790
+#: ../src/ical-code.c:780
 msgid "Orage default alarm"
 msgstr "การปลุกเตือนปริยายของ Orage"
 
@@ -949,65 +949,65 @@ msgstr "การปลุกเตือนปริยายของ Orage"
 msgid "Calendar files"
 msgstr "แฟ้มปฏิทิน"
 
-#: ../src/interface.c:642
+#: ../src/interface.c:644
 msgid "Current foreign files"
 msgstr "แฟ้มต่างระบบปัจจุบัน"
 
-#: ../src/interface.c:665
+#: ../src/interface.c:667
 msgid "READ ONLY"
 msgstr "อ่านอย่างเดียว"
 
-#: ../src/interface.c:667
+#: ../src/interface.c:669
 msgid "READ WRITE"
 msgstr "อ่าน-เขียน"
 
-#: ../src/interface.c:692
+#: ../src/interface.c:694
 msgid "***** No foreign files *****"
 msgstr "***** ไม่มีแฟ้มต่างระบบ *****"
 
-#: ../src/interface.c:706
+#: ../src/interface.c:708
 msgid "Foreign file add failed"
 msgstr "เพิ่มแฟ้มต่างระบบไม่สำเร็จ"
 
-#: ../src/interface.c:715
+#: ../src/interface.c:717
 msgid "Orage can only handle 10 foreign files. Limit reached."
 msgstr ""
 "Orage สามารถจัดการแฟ้มต่างระบบได้เพียง 10 แฟ้มเท่านั้น "
 "ซึ่งได้ถึงขีดจำกัดแล้ว"
 
-#: ../src/interface.c:725
+#: ../src/interface.c:727
 msgid "Filename is empty."
 msgstr "ชื่อแฟ้มว่างเปล่า"
 
-#: ../src/interface.c:735
+#: ../src/interface.c:737
 msgid "Name is empty."
 msgstr "ชื่อว่างเปล่า"
 
-#: ../src/interface.c:746
+#: ../src/interface.c:748
 msgid "File does not exist."
 msgstr "ไม่มีแฟ้มนี้อยู่"
 
-#: ../src/interface.c:758
+#: ../src/interface.c:760
 msgid "Same filename already exists in Orage."
 msgstr "มีแฟ้มชื่อเดียวกันอยู่ก่อนแล้วใน Orage"
 
-#: ../src/interface.c:769
+#: ../src/interface.c:771
 msgid "Same name already exists in Orage."
 msgstr "มีชื่อเดียวกันอยู่ก่อนแล้วใน Orage"
 
-#: ../src/interface.c:1022
+#: ../src/interface.c:1024
 msgid "Import/export"
 msgstr "นำเข้า/ส่งออก"
 
-#: ../src/interface.c:1029
+#: ../src/interface.c:1031
 msgid "Import"
 msgstr "นำเข้า"
 
-#: ../src/interface.c:1037
+#: ../src/interface.c:1039
 msgid "Read from file:"
 msgstr "อ่านจากแฟ้ม:"
 
-#: ../src/interface.c:1067
+#: ../src/interface.c:1069
 msgid ""
 "Separate filenames with comma(,).\n"
 " NOTE: comma is not valid character in filenames for Orage."
@@ -1015,27 +1015,27 @@ msgstr ""
 "คั่นชื่อแฟ้มด้วยจุลภาค (,)\n"
 " หมายเหตุ: ห้ามใช้จุลภาคในชื่อแฟ้มสำหรับ Orage"
 
-#: ../src/interface.c:1072
+#: ../src/interface.c:1074
 msgid "Export"
 msgstr "ส่งออก"
 
-#: ../src/interface.c:1080
+#: ../src/interface.c:1082
 msgid "Write to file:"
 msgstr "เขียนลงในแฟ้ม:"
 
-#: ../src/interface.c:1115 ../src/interface.c:1133
+#: ../src/interface.c:1117 ../src/interface.c:1135
 msgid "Select"
 msgstr "เลือก"
 
-#: ../src/interface.c:1120
+#: ../src/interface.c:1122
 msgid "All appointments"
 msgstr "ทุกนัดหมาย"
 
-#: ../src/interface.c:1139
+#: ../src/interface.c:1141
 msgid "Named appointments:"
 msgstr ""
 
-#: ../src/interface.c:1158
+#: ../src/interface.c:1160
 msgid ""
 "Note that only main file appointments are read.\n"
 "Archived and Foreign events are not exported."
@@ -1043,7 +1043,7 @@ msgstr ""
 "สังเกตว่าจะอ่านเฉพาะนัดหมายในแฟ้มหลักเท่านั้น\n"
 "จะไม่ส่งออกเหตุการณ์ที่เก็บเข้ากรุแล้วและเหตุการณ์ต่างระบบ"
 
-#: ../src/interface.c:1161
+#: ../src/interface.c:1163
 msgid ""
 "Note that only main file appointments are read.\n"
 "Foreign events are not exported."
@@ -1051,32 +1051,32 @@ msgstr ""
 "สังเกตว่าจะอ่านเฉพาะนัดหมายในแฟ้มหลักเท่านั้น\n"
 "จะไม่ส่งออกเหตุการณ์ต่างระบบ"
 
-#: ../src/interface.c:1164
+#: ../src/interface.c:1166
 msgid "You can easily drag these from event-list window."
 msgstr "คุณสามารถลากมาวางจากหน้าต่างรายการเหตุการณ์ได้"
 
-#: ../src/interface.c:1166
+#: ../src/interface.c:1168
 msgid "Orage appointment UIDs separated by commas."
 msgstr "UID ของนัดหมายของ Orage คั่นด้วยจุลภาค"
 
-#: ../src/interface.c:1172
+#: ../src/interface.c:1174
 msgid "Archive"
 msgstr "กรุ"
 
-#: ../src/interface.c:1187
+#: ../src/interface.c:1189
 #, c-format
 msgid "Archive now (threshold: %d months)"
 msgstr "เก็บเข้ากรุเดี๋ยวนี้ (ขีดเริ่ม: %d เดือน)"
 
-#: ../src/interface.c:1198
+#: ../src/interface.c:1200
 msgid "You can change archive threshold in parameters"
 msgstr "คุณสามารถเปลี่ยนขีดเริ่มการเก็บเข้ากรุได้ในพารามิเตอร์"
 
-#: ../src/interface.c:1210
+#: ../src/interface.c:1212
 msgid "Revert archive now"
 msgstr "ดึงกลับจากกรุเดี๋ยวนี้"
 
-#: ../src/interface.c:1217
+#: ../src/interface.c:1219
 msgid ""
 "Return all archived events into main orage file and remove arch file.\n"
 "This is useful for example when doing export and moving orage\n"
@@ -1086,31 +1086,31 @@ msgstr ""
 "การดึงกลับนี้เป็นประโยชน์ในกรณีอย่างเช่นการส่งออกเพื่อย้ายนัดหมายของ Orage\n"
 "ไปยังระบบอื่น"
 
-#: ../src/interface.c:1229
+#: ../src/interface.c:1231
 msgid "Orage files"
 msgstr "แฟ้ม Orage"
 
-#: ../src/interface.c:1236
+#: ../src/interface.c:1238
 msgid "Orage main calendar file"
 msgstr "แฟ้มปฏิทินหลักของ Orage"
 
-#: ../src/interface.c:1245 ../src/interface.c:1338
+#: ../src/interface.c:1247 ../src/interface.c:1340
 msgid "Current file:"
 msgstr "แฟ้มปัจจุบัน:"
 
-#: ../src/interface.c:1257 ../src/interface.c:1350
+#: ../src/interface.c:1259 ../src/interface.c:1352
 msgid "New file:"
 msgstr "แฟ้มใหม่:"
 
-#: ../src/interface.c:1285 ../src/interface.c:1377
+#: ../src/interface.c:1287 ../src/interface.c:1379
 msgid "Action options:"
 msgstr "ตัวเลือกของการกระทำ:"
 
-#: ../src/interface.c:1289 ../src/interface.c:1381
+#: ../src/interface.c:1291 ../src/interface.c:1383
 msgid "Rename"
 msgstr "เปลี่ยนชื่อ"
 
-#: ../src/interface.c:1295
+#: ../src/interface.c:1297
 msgid ""
 "Orage internal file rename only.\n"
 "Does not touch external filesystem at all.\n"
@@ -1120,47 +1120,47 @@ msgstr ""
 "จะไม่แตะต้องระบบแฟ้มภายนอกใดๆ\n"
 "แฟ้มใหม่ต้องมีอยู่"
 
-#: ../src/interface.c:1299 ../src/interface.c:1388
+#: ../src/interface.c:1301 ../src/interface.c:1390
 msgid "Copy"
 msgstr "คัดลอก"
 
-#: ../src/interface.c:1305
+#: ../src/interface.c:1307
 msgid "Current file is copied and stays unmodified in the old place."
 msgstr "แฟ้มปัจจุบันจะถูกคัดลอกและคงอยู่ที่เดิมโดยไม่มีการเปลี่ยนแปลง"
 
-#: ../src/interface.c:1309 ../src/interface.c:1395
+#: ../src/interface.c:1311 ../src/interface.c:1397
 msgid "Move"
 msgstr "ย้าย"
 
-#: ../src/interface.c:1315
+#: ../src/interface.c:1317
 msgid "Current file is moved and vanishes from the old place."
 msgstr "แฟ้มปัจจุบันจะถูกย้ายและจะหายไปจากที่เดิม"
 
-#: ../src/interface.c:1329
+#: ../src/interface.c:1331
 msgid "Archive file"
 msgstr "แฟ้มกรุ"
 
-#: ../src/interface.c:1420
+#: ../src/interface.c:1422
 msgid "Foreign files"
 msgstr "แฟ้มต่างระบบ"
 
-#: ../src/interface.c:1427
+#: ../src/interface.c:1429
 msgid "Add new foreign file"
 msgstr "เพิ่มแฟ้มต่างระบบแฟ้มใหม่"
 
-#: ../src/interface.c:1435
+#: ../src/interface.c:1437
 msgid "Foreign file:"
 msgstr "แฟ้มต่างระบบ:"
 
-#: ../src/interface.c:1466
+#: ../src/interface.c:1468
 msgid "Visible name:"
 msgstr "ชื่อที่ปรากฏ:"
 
-#: ../src/interface.c:1476
+#: ../src/interface.c:1478
 msgid "Read only"
 msgstr "อ่านอย่างเดียว"
 
-#: ../src/interface.c:1486
+#: ../src/interface.c:1488
 msgid ""
 "Set this if you want to make sure that this file is never modified by Orage.\n"
 "Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
@@ -1168,15 +1168,15 @@ msgstr ""
 "กำหนดค่านี้ถ้าคุณต้องการแน่ใจว่าแฟ้มนี้จะไม่มีถูก Orage เปลี่ยนแปลงเลย\n"
 "สังเกตว่าการเปลี่ยนแปลงแฟ้มต่างระบบอาจทำให้แฟ้มดังกล่าวไม่สามารถเข้ากับเครื่องมือเดิมที่เป็นต้นตอ!"
 
-#: ../src/interface.c:1488
+#: ../src/interface.c:1490
 msgid "This internal name is displayed to user instead of file name."
 msgstr "ชื่อภายในชื่อนี้จะปรากฏต่อผู้ใช้แทนการใช้ชื่อแฟ้ม"
 
-#: ../src/interface.c:1502
+#: ../src/interface.c:1504
 msgid "Exchange data - Orage"
 msgstr "แลกเปลี่ยนข้อมูล - Orage"
 
-#: ../src/main.c:273
+#: ../src/main.c:274
 #, c-format
 msgid ""
 "\tThis is %s version %s\n"
@@ -1185,17 +1185,17 @@ msgstr ""
 "\tนี่คือ %s รุ่น %s\n"
 "\n"
 
-#: ../src/main.c:275
+#: ../src/main.c:276
 #, c-format
 msgid "\tReleased under the terms of the GNU General Public License.\n"
 msgstr "\tเผยแพร่ภายใต้เงื่อนไขของ GNU General Public License\n"
 
-#: ../src/main.c:276
+#: ../src/main.c:277
 #, c-format
 msgid "\tCompiled against GTK+-%d.%d.%d, "
 msgstr "\tคอมไพล์กับ GTK+-%d.%d.%d, "
 
-#: ../src/main.c:278
+#: ../src/main.c:279
 #, c-format
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "กำลังใช้ GTK+-%d.%d.%d\n"
@@ -1207,40 +1207,35 @@ msgstr "\tใช้ DBUS ในการนำเข้า\n"
 
 #: ../src/main.c:283
 #, c-format
-msgid "\tNot using DBUS. Import works only partially.\n"
-msgstr "\tไม่ได้ใช้ DBUS การนำเข้าจะทำงานได้เพียงบางส่วนเท่านั้น\n"
-
-#: ../src/main.c:286
-#, c-format
 msgid "\tUsing libnotify.\n"
 msgstr "\tใช้ libnotify\n"
 
-#: ../src/main.c:288
+#: ../src/main.c:285
 #, c-format
 msgid "\tNot using libnotify.\n"
 msgstr "\tไม่ได้ใช้ libnotify\n"
 
-#: ../src/main.c:291
+#: ../src/main.c:288
 #, c-format
 msgid "\tUsing automatic archiving.\n"
 msgstr "\tใช้การทำกรุอัตโนมัติ\n"
 
-#: ../src/main.c:293
+#: ../src/main.c:290
 #, c-format
 msgid "\tNot using archiving.\n"
 msgstr "\tไม่ได้ใช้การทำกรุ\n"
 
-#: ../src/main.c:296
+#: ../src/main.c:293
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
 msgstr ""
 
-#: ../src/main.c:298
+#: ../src/main.c:295
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
 msgstr ""
 
-#: ../src/main.c:311
+#: ../src/main.c:308
 msgid ""
 "Usage: orage [options] [files]\n"
 "\n"
@@ -1248,57 +1243,45 @@ msgstr ""
 "วิธีใช้: orage [ตัวเลือก] [แฟ้ม]\n"
 "\n"
 
-#: ../src/main.c:312
+#: ../src/main.c:309
 msgid "Options:\n"
 msgstr "ตัวเลือก:\n"
 
-#: ../src/main.c:313
+#: ../src/main.c:310
 msgid "--version (-v) \t\tshow version of orage\n"
 msgstr "--version (-v) \t\tแสดงรุ่นของ orage\n"
 
-#: ../src/main.c:314
+#: ../src/main.c:311
 msgid "--help (-h) \t\tprint this text\n"
 msgstr "--help (-h) \t\tแสดงข้อความนี้\n"
 
-#: ../src/main.c:315
+#: ../src/main.c:312
 msgid "--preferences (-p) \tshow preferences form\n"
 msgstr "--preferences (-p) \tแสดงหน้าต่างปรับแต่ง\n"
 
-#: ../src/main.c:316
+#: ../src/main.c:313
 msgid "--toggle (-t) \t\tmake orage visible/unvisible\n"
 msgstr "--toggle (-t) \t\tสั่งแสดง/ซ่อน orage\n"
 
-#: ../src/main.c:317
+#: ../src/main.c:314
 msgid "--add-foreign (-a) file [RW] [name] \tadd a foreign file\n"
 msgstr "--add-foreign (-a) แฟ้ม [RW] [ชื่อ] \tเพิ่มแฟ้มต่างระบบ\n"
 
-#: ../src/main.c:318
+#: ../src/main.c:315
 msgid "--remove-foreign (-r) file \tremove a foreign file\n"
 msgstr "--remove-foreign (-r) แฟ้ม \tลบแฟ้มต่างระบบ\n"
 
-#: ../src/main.c:319
+#: ../src/main.c:316
 msgid ""
 "--export (-e) file [appointment...] \texport appointments from Orage to "
 "file\n"
 msgstr "--export (-e) แฟ้ม [นัดหมาย...] \tส่งออกนัดหมายจาก Orage ลงในแฟ้ม\n"
 
-#: ../src/main.c:321
+#: ../src/main.c:318
 msgid "files=ical files to load into orage\n"
 msgstr "files=แฟ้ม ical ที่จะโหลดเข้า orage\n"
 
-#: ../src/main.c:323
-msgid "\tdbus not included in orage. \n"
-msgstr "\tไม่ได้รวม dbus เข้าใน orage\n"
-
-#: ../src/main.c:324
-msgid ""
-"\twithout dbus [files] and foreign file options(-a & -r) can only be used "
-"when starting orage \n"
-msgstr ""
-"\tถ้าไม่มี dbus [แฟ้ม] และตัวเลือกเกี่ยวกับแฟ้มต่างระบบ (-a & -r) "
-"จะสามารถใช้ได้ขณะเปิดใช้ Orage เท่านั้น\n"
-
-#: ../src/main.c:537
+#: ../src/main.c:508
 #, c-format
 msgid ""
 "\n"
@@ -1309,43 +1292,43 @@ msgstr ""
 "ไม่รู้จักตัวเลือก %s\n"
 "\n"
 
-#: ../src/mainbox.c:216
+#: ../src/mainbox.c:218
 msgid "_Exchange data"
 msgstr "แ_ลกเปลี่ยนข้อมูล"
 
 #. Edit menu
-#: ../src/mainbox.c:227
+#: ../src/mainbox.c:229
 msgid "_Edit"
 msgstr "แ_ก้ไข"
 
-#: ../src/mainbox.c:237
+#: ../src/mainbox.c:239
 msgid "View selected _date"
 msgstr "ดู_วันที่เลือก"
 
-#: ../src/mainbox.c:240
+#: ../src/mainbox.c:242
 msgid "View selected _week"
 msgstr "ดู_สัปดาห์ที่เลือก"
 
-#: ../src/mainbox.c:246
+#: ../src/mainbox.c:248
 msgid "Select _Today"
 msgstr "เลือกวัน_นี้"
 
 #. Help menu
 #. the rest
-#: ../src/mainbox.c:250 ../src/parameters.c:1197
+#: ../src/mainbox.c:252 ../src/parameters.c:1197
 msgid "_Help"
 msgstr "_วิธีใช้"
 
-#: ../src/mainbox.c:311 ../src/reminder.c:1027
+#: ../src/mainbox.c:312 ../src/reminder.c:1027
 msgid "No title defined"
 msgstr "ไม่ได้กำหนดชื่อเรื่อง"
 
-#: ../src/mainbox.c:369
+#: ../src/mainbox.c:370
 #, c-format
 msgid " Location: %s\n"
 msgstr " สถานที่: %s\n"
 
-#: ../src/mainbox.c:379
+#: ../src/mainbox.c:380
 #, c-format
 msgid ""
 "\n"
@@ -1356,11 +1339,11 @@ msgstr ""
 " หมายเหตุ:\n"
 "%s"
 
-#: ../src/mainbox.c:387
+#: ../src/mainbox.c:388
 msgid "Never"
 msgstr "ไม่มี"
 
-#: ../src/mainbox.c:395
+#: ../src/mainbox.c:396
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1373,7 +1356,7 @@ msgstr ""
 " กำหนดเสร็จ:\t%s\n"
 " เสร็จ:\t%s%s"
 
-#: ../src/mainbox.c:402
+#: ../src/mainbox.c:403
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1384,16 +1367,16 @@ msgstr ""
 "%s เริ่ม:\t%s\n"
 " จบ:\t%s%s"
 
-#: ../src/mainbox.c:481
+#: ../src/mainbox.c:482
 msgid "<b>To do:</b>"
 msgstr "<b>สิ่งที่จะทำ:</b>"
 
-#: ../src/mainbox.c:518
+#: ../src/mainbox.c:519
 #, c-format
 msgid "<b>Events for %s:</b>"
 msgstr "<b>เหตุการณ์สำหรับ %s:</b>"
 
-#: ../src/mainbox.c:528
+#: ../src/mainbox.c:529
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>เหตุการณ์สำหรับ %s - %s:</b>"
