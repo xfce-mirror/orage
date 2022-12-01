@@ -139,7 +139,7 @@ static gboolean mWindow_delete_event_cb (G_GNUC_UNUSED GtkWidget *widget,
                                          CalWin *cal)
 {
     if (g_par.close_means_quit) {
-        gtk_main_quit();
+        orage_quit ();
     }
     else {
         gtk_widget_hide (cal->mWindow);
@@ -267,6 +267,7 @@ static void activate (GtkApplication *app, AppOptions *app_options)
 static void shutdown (G_GNUC_UNUSED GtkApplication *app,
                       G_GNUC_UNUSED gpointer user_data)
 {
+    g_debug ("%s", G_STRFUNC);
     keep_tidy ();
 }
 
@@ -561,6 +562,11 @@ void orage_toggle_visible (void)
     }
     else
         raise_window ();
+}
+
+void orage_quit (void)
+{
+    g_application_quit (G_APPLICATION (orage_app));
 }
 
 int main (int argc, char **argv)
