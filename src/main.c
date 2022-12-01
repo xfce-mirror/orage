@@ -471,8 +471,7 @@ static gint command_line (GApplication *application,
     return EXIT_SUCCESS;
 }
 
-static void g_application_init_cmd_parameters (GApplication *app,
-                                               G_GNUC_UNUSED AppOptions *options)
+static void g_application_init_cmd_parameters (GApplication *app)
 {
     const GOptionEntry cmd_params[] =
     {
@@ -577,7 +576,7 @@ int main (int argc, char **argv)
     g_signal_connect (orage_app, "open", G_CALLBACK (open), NULL);
     g_signal_connect (orage_app, "handle-local-options", G_CALLBACK (handle_local_options), NULL);
     g_signal_connect (orage_app, "command-line", G_CALLBACK (command_line), &app_options);
-    g_application_init_cmd_parameters (G_APPLICATION (orage_app), &app_options);
+    g_application_init_cmd_parameters (G_APPLICATION (orage_app));
     status = g_application_run (G_APPLICATION (orage_app), argc, argv);
     g_object_unref (orage_app);
 
