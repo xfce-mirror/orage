@@ -75,6 +75,7 @@ typedef struct
     gboolean preferences_option;
 } AppOptions;
 
+static GtkApplication *orage_app;
 static AppOptions app_options;
 
 #if 0
@@ -120,12 +121,6 @@ static void handle_resuming(void)
     }
 }
 #endif
-
-void orage_toggle_visible(void)
-{
-#warning "Fix impelementation"
-    g_debug ("%s: FIXME reimplement this function", G_STRFUNC);
-}
 
 static gboolean keep_tidy(void)
 {
@@ -552,23 +547,39 @@ static void g_application_init_cmd_parameters (GApplication *app,
     g_application_add_main_option_entries (app, cmd_params);
 }
 
+void orage_toggle_visible (void)
+{
+    GList *list;
+
+    list = gtk_application_get_windows (orage_app);
+
+    g_return_if_fail (list != NULL);
+
+    if (gtk_widget_get_visible (GTK_WIDGET (list->data)))
+    {
+        write_parameters ();
+        gtk_widget_hide (GTK_WIDGET (list->data));
+    }
+    else
+        raise_window ();
+}
+
 int main (int argc, char **argv)
 {
-    GtkApplication *app;
     int status;
 
-    app = gtk_application_new ("org.gtk.TestApplication",
-                               G_APPLICATION_HANDLES_COMMAND_LINE |
-                               G_APPLICATION_HANDLES_OPEN);
-    g_signal_connect (app, "startup", G_CALLBACK (startup), NULL);
-    g_signal_connect (app, "activate", G_CALLBACK (activate), &app_options);
-    g_signal_connect (app, "shutdown", G_CALLBACK (shutdown), NULL);
-    g_signal_connect (app, "open", G_CALLBACK (open), NULL);
-    g_signal_connect (app, "handle-local-options", G_CALLBACK (handle_local_options), NULL);
-    g_signal_connect (app, "command-line", G_CALLBACK (command_line), &app_options);
-    g_application_init_cmd_parameters (G_APPLICATION (app), &app_options);
-    status = g_application_run (G_APPLICATION (app), argc, argv);
-    g_object_unref (app);
+    orage_app = gtk_application_new ("org.gtk.TestApplication",
+                                     G_APPLICATION_HANDLES_COMMAND_LINE |
+                                     G_APPLICATION_HANDLES_OPEN);
+    g_signal_connect (orage_app, "startup", G_CALLBACK (startup), NULL);
+    g_signal_connect (orage_app, "activate", G_CALLBACK (activate), &app_options);
+    g_signal_connect (orage_app, "shutdown", G_CALLBACK (shutdown), NULL);
+    g_signal_connect (orage_app, "open", G_CALLBACK (open), NULL);
+    g_signal_connect (orage_app, "handle-local-options", G_CALLBACK (handle_local_options), NULL);
+    g_signal_connect (orage_app, "command-line", G_CALLBACK (command_line), &app_options);
+    g_application_init_cmd_parameters (G_APPLICATION (orage_app), &app_options);
+    status = g_application_run (G_APPLICATION (orage_app), argc, argv);
+    g_object_unref (orage_app);
 
     return status;
 }
