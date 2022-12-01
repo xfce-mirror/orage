@@ -27,9 +27,6 @@
 #include <glib.h>
 #include <gtk/gtk.h>
 
-#define CALENDAR_RUNNING "_XFCE_CALENDAR_RUNNING"
-#define CALENDAR_TOGGLE_EVENT "_XFCE_CALENDAR_TOGGLE_HERE"
-
 #define ORAGE_DIR "orage" G_DIR_SEPARATOR_S
 #define ORAGE_PAR_FILE  "oragerc"
 #define ORAGE_PAR_DIR_FILE ORAGE_DIR ORAGE_PAR_FILE

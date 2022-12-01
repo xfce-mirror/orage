@@ -1404,10 +1404,14 @@ void write_parameters(void)
 #endif
     orage_rc_put_str(orc, "Orage file", g_par.orage_file);
     orage_rc_put_str(orc, "Sound application", g_par.sound_application);
+#if 0
     gtk_window_get_size(GTK_WINDOW(((CalWin *)g_par.xfcal)->mWindow)
             , &g_par.size_x, &g_par.size_y);
     gtk_window_get_position(GTK_WINDOW(((CalWin *)g_par.xfcal)->mWindow)
             , &g_par.pos_x, &g_par.pos_y);
+#else
+#warning "FIXME: this is NP with --add-foreign"
+#endif
     orage_rc_put_int(orc, "Main window X", g_par.pos_x);
     orage_rc_put_int(orc, "Main window Y", g_par.pos_y);
     orage_rc_put_int(orc, "Main window size X", g_par.size_x);
