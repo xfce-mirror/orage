@@ -91,7 +91,7 @@ static void mFile_close_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
     CalWin *cal = (CalWin *)user_data;
 
     if (g_par.close_means_quit)
-        gtk_main_quit();
+        orage_quit ();
     else
         gtk_widget_hide(cal->mWindow);
 }
@@ -99,7 +99,7 @@ static void mFile_close_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
 static void mFile_quit_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
                                     G_GNUC_UNUSED gpointer user_data)
 {
-    gtk_main_quit();
+    orage_quit ();
 }
 
 static void mEdit_preferences_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
