@@ -1175,8 +1175,8 @@ msgid ""
 "Set this if you want to make sure that this file is never modified by Orage.\n"
 "Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
 msgstr ""
-"Bu özelliği, eğer Orage dosyaya hiç müdahale etmemişse kullanın.\n"
-"Eğer yabancı dosyaya müdahale ettiyseniz, dosyayı aldığınız programla uyumsuzluk gösterebilir!"
+"Bu özelliği, eğer Orage dosyaya hiç dokunmamışsa kullanın.\n"
+"Eğer yabancı dosyaya dokunduysanız, dosyayı aldığınız programla uyumsuzluk gösterebilir!"
 
 #: ../src/interface.c:1490
 msgid "This internal name is displayed to user instead of file name."
