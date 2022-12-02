@@ -39,6 +39,7 @@
 #endif
 #include <time.h>
 
+#include <signal.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -547,6 +548,11 @@ static void g_application_init_cmd_parameters (GApplication *app)
     g_application_add_main_option_entries (app, cmd_params);
 }
 
+static void close_cb (G_GNUC_UNUSED int s)
+{
+    orage_quit ();
+}
+
 void orage_toggle_visible (void)
 {
     GList *list;
@@ -572,6 +578,11 @@ void orage_quit (void)
 int main (int argc, char **argv)
 {
     int status;
+    struct sigaction sig_int_handler;
+
+    sig_int_handler.sa_handler = close_cb;
+    sigemptyset (&sig_int_handler.sa_mask);
+    sig_int_handler.sa_flags = 0;
 
     orage_app = gtk_application_new ("org.xfce.orage",
                                      G_APPLICATION_HANDLES_COMMAND_LINE |
@@ -583,6 +594,8 @@ int main (int argc, char **argv)
     g_signal_connect (orage_app, "handle-local-options", G_CALLBACK (handle_local_options), NULL);
     g_signal_connect (orage_app, "command-line", G_CALLBACK (command_line), &app_options);
     g_application_init_cmd_parameters (G_APPLICATION (orage_app));
+
+    sigaction (SIGINT, &sig_int_handler, NULL);
     status = g_application_run (G_APPLICATION (orage_app), argc, argv);
     g_object_unref (orage_app);
 
