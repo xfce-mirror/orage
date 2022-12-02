@@ -60,7 +60,10 @@ gboolean orage_mark_appointments(void)
 {
     if (!xfical_file_open(TRUE))
         return(FALSE);
-    xfical_mark_calendar(GTK_CALENDAR(((CalWin *)g_par.xfcal)->mCalendar));
+
+    if (g_par.xfcal)
+        xfical_mark_calendar (GTK_CALENDAR (((CalWin *)g_par.xfcal)->mCalendar));
+
     xfical_file_close(TRUE);
     return(TRUE);
 }
@@ -561,6 +564,8 @@ static void build_mainbox_todo_info(void)
     gint i;
     GList *todo_list=NULL;
 
+    g_return_if_fail (cal != NULL);
+
     if (g_par.show_todos) {
         gdt = g_date_time_new_now_local ();
         ical_type = XFICAL_TYPE_TODO;
@@ -598,6 +603,8 @@ static void build_mainbox_event_info(void)
     gint i;
     GList *event_list=NULL;
     GDateTime *gdt;
+
+    g_return_if_fail (cal != NULL);
 
     if (g_par.show_event_days) {
         gdt = orage_cal_to_gdatetime (GTK_CALENDAR (cal->mCalendar), 1, 1);
