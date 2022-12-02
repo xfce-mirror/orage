@@ -573,7 +573,7 @@ int main (int argc, char **argv)
 {
     int status;
 
-    orage_app = gtk_application_new ("org.gtk.TestApplication",
+    orage_app = gtk_application_new ("org.xfce.orage",
                                      G_APPLICATION_HANDLES_COMMAND_LINE |
                                      G_APPLICATION_HANDLES_OPEN);
     g_signal_connect (orage_app, "startup", G_CALLBACK (startup), NULL);
