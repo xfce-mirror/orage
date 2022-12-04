@@ -26,7 +26,7 @@ msgstr ""
 
 #: ../src/about-xfcalendar.c:54 ../org.xfce.orage.appdata.xml.in.h:2
 msgid "Orage is a time-managing application for the Xfce desktop environment"
-msgstr ""
+msgstr "Orage je aplikace pro správu času pro desktopové prostředí Xfce"
 
 #: ../src/about-xfcalendar.c:58
 msgid "translator-credits"
@@ -340,7 +340,7 @@ msgstr ""
 
 #: ../src/appointment.c:3106
 msgid "_Colour"
-msgstr ""
+msgstr "_Barva"
 
 #: ../src/appointment.c:3111
 msgid "update colors for categories."
@@ -537,7 +537,7 @@ msgstr ""
 
 #: ../src/appointment.c:3446 ../src/interface.c:1183 ../src/interface.c:1205
 msgid "_Execute"
-msgstr ""
+msgstr "_Spustit"
 
 #: ../src/appointment.c:3448
 msgid "Test this alarm by raising it now"
@@ -1041,7 +1041,7 @@ msgstr "Všechny schůzky"
 
 #: ../src/interface.c:1141
 msgid "Named appointments:"
-msgstr ""
+msgstr "Pojmenované schůzky:"
 
 #: ../src/interface.c:1160
 msgid ""
@@ -1240,12 +1240,12 @@ msgstr "\tBez archivace.\n"
 #: ../src/main.c:293
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
-msgstr ""
+msgstr "\tPoužívá se knihovna libxfce4ui: ano\n"
 
 #: ../src/main.c:295
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
-msgstr ""
+msgstr "\tPoužívá se knihovna libxfce4ui: ne\n"
 
 #: ../src/main.c:308
 msgid ""
@@ -4019,6 +4019,9 @@ msgid ""
 " ical format and includes common calendar features like repeating "
 "appointments and multiple alarming possibilities."
 msgstr ""
+"Orage má za cíl být rychlým a snadno použitelným grafickým kalendářem. "
+"Používá přenositelný formát ical a obsahuje běžné funkce kalendáře jako "
+"opakující se schůzky a více možností upozornění."
 
 #: ../org.xfce.orage.appdata.xml.in.h:4
 msgid ""
@@ -4027,6 +4030,10 @@ msgid ""
 "Contents of those files are read and converted into Orage, but those files "
 "are left untouched."
 msgstr ""
+"Orage neobsahuje funkce skupinového kalendáře, lze jej použít pouze pro "
+"jednoho uživatele. Přijímá seznam souborů pro soubory ical, které mají být "
+"importovány. Obsah těchto souborů je přečten a převeden do aplikace Orage, "
+"ale tyto soubory zůstanou nezměněny."
 
 #: ../org.xfce.orage.desktop.in.h:1
 msgid "Orage Calendar"
