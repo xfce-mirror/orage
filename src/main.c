@@ -541,7 +541,13 @@ static void g_application_init_cmd_parameters (GApplication *app)
             .arg_description = "[files...]",
         },
         {
-            NULL
+            .long_name = NULL,
+            .short_name = '\0',
+            .flags = 0,
+            .arg = 0,
+            .arg_data = NULL,
+            .description = NULL,
+            .arg_description = NULL,
         }
     };
 
