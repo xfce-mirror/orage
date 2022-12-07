@@ -199,7 +199,9 @@ static void startup (G_GNUC_UNUSED GtkApplication *app,
     /* init i18n = nls to use gettext */
     xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
     register_css_provider ();
+#if 0
     orage_dbus_start ();
+#endif
     read_parameters ();
 }
 
