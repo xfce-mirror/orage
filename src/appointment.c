@@ -3890,7 +3890,6 @@ appt_win *create_appt_win (const appt_win_action action, const gchar *par,
                            GDateTime *gdt_par)
 {
     appt_win *apptw;
-    GdkWindow *window;
 
     /*  initialisation + main window + base vbox */
     apptw = g_new(appt_win, 1);
@@ -3937,9 +3936,6 @@ appt_win *create_appt_win (const appt_win_action action, const gchar *par,
         g_signal_connect((gpointer)apptw->Notebook, "switch-page"
                 , G_CALLBACK(on_notebook_page_switch), apptw);
         gtk_widget_grab_focus(apptw->Title_entry);
-        window = gtk_widget_get_window (GTK_WIDGET(apptw->Window));
-        gdk_x11_window_set_user_time(window, gdk_x11_get_server_time(window));
-        gtk_window_present(GTK_WINDOW(apptw->Window));
     }
     else { /* failed to get data */
         app_free_memory(apptw);

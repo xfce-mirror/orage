@@ -60,7 +60,10 @@ gboolean orage_mark_appointments(void)
 {
     if (!xfical_file_open(TRUE))
         return(FALSE);
-    xfical_mark_calendar(GTK_CALENDAR(((CalWin *)g_par.xfcal)->mCalendar));
+
+    if (g_par.xfcal)
+        xfical_mark_calendar (GTK_CALENDAR (((CalWin *)g_par.xfcal)->mCalendar));
+
     xfical_file_close(TRUE);
     return(TRUE);
 }
@@ -91,7 +94,7 @@ static void mFile_close_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
     CalWin *cal = (CalWin *)user_data;
 
     if (g_par.close_means_quit)
-        gtk_main_quit();
+        orage_quit ();
     else
         gtk_widget_hide(cal->mWindow);
 }
@@ -99,7 +102,7 @@ static void mFile_close_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
 static void mFile_quit_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
                                     G_GNUC_UNUSED gpointer user_data)
 {
-    gtk_main_quit();
+    orage_quit ();
 }
 
 static void mEdit_preferences_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
@@ -561,6 +564,8 @@ static void build_mainbox_todo_info(void)
     gint i;
     GList *todo_list=NULL;
 
+    g_return_if_fail (cal != NULL);
+
     if (g_par.show_todos) {
         gdt = g_date_time_new_now_local ();
         ical_type = XFICAL_TYPE_TODO;
@@ -598,6 +603,8 @@ static void build_mainbox_event_info(void)
     gint i;
     GList *event_list=NULL;
     GDateTime *gdt;
+
+    g_return_if_fail (cal != NULL);
 
     if (g_par.show_event_days) {
         gdt = orage_cal_to_gdatetime (GTK_CALENDAR (cal->mCalendar), 1, 1);

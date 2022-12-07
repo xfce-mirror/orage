@@ -39,10 +39,15 @@
 #endif
 #include <time.h>
 
+#include <signal.h>
+#include <stdlib.h>
+#include <string.h>
+
 #include <glib.h>
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
+#include <gio/gio.h>
 
 #include <libxfce4util/libxfce4util.h>
 
@@ -59,18 +64,20 @@
 #include "tray_icon.h"
 #include "parameters.h"
 #include "interface.h"
-#if 0
-#include <dbus/dbus-glib-lowlevel.h>
-#endif
 
-#define CALENDAR_RAISE_EVENT "_XFCE_CALENDAR_RAISE"
-#define CALENDAR_PREFERENCES_EVENT "_XFCE_CALENDAR_PREFERENCES"
+#define HINT_ADD 'a'
+#define HINT_EXPORT 'x'
+#define HINT_IMPORT 'i'
+#define HINT_REMOVE 'r'
 
-/* session client handler */
-/*
-static SessionClient	*session_client = NULL;
-*/
-static GdkAtom atom_alive;
+typedef struct
+{
+    gboolean toggle_option;
+    gboolean preferences_option;
+} AppOptions;
+
+static GtkApplication *orage_app;
+static AppOptions app_options;
 
 #if 0
 static gboolean resume_after_sleep (G_GNUC_UNUSED gpointer user_data)
@@ -105,52 +112,16 @@ static void handle_resuming(void)
            dbus_g_proxy_add_signal(proxy, "Resuming", G_TYPE_INVALID);
            dbus_g_proxy_connect_signal(proxy, "Resuming"
                    , G_CALLBACK(resuming_cb), NULL, NULL);
-       } 
+       }
        else {
            g_warning("Failed to create proxy object");
        }
-    } 
+    }
     else {
         g_warning("Failed to connect to D-BUS daemon: %s", error->message);
     }
 }
 #endif
-
-static void send_event (const char *event)
-{
-    XEvent xevent;
-    Window xwindow;
-    Display *display;
-
-    (void)memset (&xevent, 0, sizeof (xevent));
-
-    display = gdk_x11_get_default_xdisplay ();
-    xwindow = XGetSelectionOwner (display, gdk_x11_atom_to_xatom (atom_alive));
-
-    xevent.xclient.type = ClientMessage;
-    xevent.xclient.display = display;
-    xevent.xclient.window = xwindow;
-    xevent.xclient.send_event = TRUE;
-    xevent.xclient.message_type = XInternAtom (display, event, FALSE);
-    xevent.xclient.format = 8;
-
-    if (XSendEvent (display, xwindow, FALSE, NoEventMask, &xevent) == 0)
-        g_warning ("send message to %s failed", event);
-
-    (void)XFlush (display);
-}
-
-void orage_toggle_visible(void)
-{
-    g_debug ("%s: send '" CALENDAR_TOGGLE_EVENT "' event", G_STRFUNC);
-    send_event (CALENDAR_TOGGLE_EVENT);
-}
-
-static void raise_orage(void)
-{
-    g_debug ("%s: send '" CALENDAR_RAISE_EVENT "' event", G_STRFUNC);
-    send_event (CALENDAR_RAISE_EVENT);
-}
 
 static gboolean keep_tidy(void)
 {
@@ -159,20 +130,20 @@ static gboolean keep_tidy(void)
        calendar file smaller and faster */
     xfical_archive();
 #endif
-    
+
     write_parameters();
     return(TRUE);
 }
 
 static gboolean mWindow_delete_event_cb (G_GNUC_UNUSED GtkWidget *widget,
                                          G_GNUC_UNUSED GdkEvent *event,
-                                         G_GNUC_UNUSED gpointer user_data)
+                                         CalWin *cal)
 {
     if (g_par.close_means_quit) {
-        gtk_main_quit();
+        orage_quit ();
     }
     else {
-        orage_toggle_visible();
+        gtk_widget_hide (cal->mWindow);
     }
 
     return(TRUE);
@@ -180,7 +151,6 @@ static gboolean mWindow_delete_event_cb (G_GNUC_UNUSED GtkWidget *widget,
 
 static void raise_window(void)
 {
-    GdkWindow *window;
     CalWin *cal = (CalWin *)g_par.xfcal;
 
     if (g_par.pos_x || g_par.pos_y)
@@ -192,82 +162,8 @@ static void raise_window(void)
         gtk_window_stick(GTK_WINDOW(cal->mWindow));
     gtk_window_set_keep_above(GTK_WINDOW(cal->mWindow)
             , g_par.set_ontop);
-    window = gtk_widget_get_window (GTK_WIDGET(cal->mWindow));
-    gdk_x11_window_set_user_time(window, gdk_x11_get_server_time(window));
-    gtk_widget_show(cal->mWindow);
     gtk_window_present(GTK_WINDOW(cal->mWindow));
 }
-
-static GdkFilterReturn client_message_filter (GdkXEvent *gdkxevent,
-                                              G_GNUC_UNUSED GdkEvent *event,
-                                              G_GNUC_UNUSED gpointer data)
-{
-    XClientMessageEvent *evt;
-    XEvent *xevent = (XEvent *)gdkxevent;
-    CalWin *cal = (CalWin *)g_par.xfcal;
-
-    if (xevent->type != ClientMessage)
-        return GDK_FILTER_CONTINUE;
-
-    evt = (XClientMessageEvent *)gdkxevent;
-
-    if (evt->message_type ==
-            XInternAtom (evt->display, CALENDAR_RAISE_EVENT, FALSE))
-    {
-        g_debug ("received '" CALENDAR_RAISE_EVENT "' event");
-        raise_window ();
-        return GDK_FILTER_REMOVE;
-    }
-    else if (evt->message_type ==
-             XInternAtom (evt->display, CALENDAR_TOGGLE_EVENT, FALSE))
-    {
-        g_debug ("received '" CALENDAR_TOGGLE_EVENT "' event");
-        if (gtk_widget_get_visible (cal->mWindow))
-        {
-            write_parameters ();
-            gtk_widget_hide (cal->mWindow);
-        }
-        else
-            raise_window ();
-
-        return GDK_FILTER_REMOVE;
-    }
-    else if (evt->message_type ==
-            XInternAtom (evt->display, CALENDAR_PREFERENCES_EVENT, FALSE))
-    {
-        g_debug ("received '" CALENDAR_PREFERENCES_EVENT "' event");
-        show_parameters ();
-        return GDK_FILTER_REMOVE;
-    }
-
-    return GDK_FILTER_CONTINUE;
-}
-
-/*
- * SaveYourself callback
- *
- * This is called when the session manager requests the client to save its
- * state.
- */
-/*
-void save_yourself_cb(gpointer data, int save_style, gboolean shutdown
-        , int interact_style, gboolean fast)
-{
-    write_parameters();
-}
-*/
-
-/*
- * Die callback
- *
- * This is called when the session manager requests the client to go down.
- */
-/*
-void die_cb(gpointer data)
-{
-    gtk_main_quit();
-}
-*/
 
 static void print_version(void)
 {
@@ -297,327 +193,419 @@ static void print_version(void)
     g_print("\n");
 }
 
-static void preferences(void)
+static void startup (G_GNUC_UNUSED GtkApplication *app,
+                     G_GNUC_UNUSED gpointer user_data)
 {
-    send_event (CALENDAR_RAISE_EVENT);
-    send_event (CALENDAR_PREFERENCES_EVENT);
-}
-
-static void print_help(void (*print_func) (const gchar *, ...))
-{
-    print_func(_("Usage: orage [options] [files]\n\n"));
-    print_func(_("Options:\n"));
-    print_func(_("--version (-v) \t\tshow version of orage\n"));
-    print_func(_("--help (-h) \t\tprint this text\n"));
-    print_func(_("--preferences (-p) \tshow preferences form\n"));
-    print_func(_("--toggle (-t) \t\tmake orage visible/unvisible\n"));
-    print_func(_("--add-foreign (-a) file [RW] [name] \tadd a foreign file\n"));
-    print_func(_("--remove-foreign (-r) file \tremove a foreign file\n"));
-    print_func(_("--export (-e) file [appointment...] \texport appointments from Orage to file\n"));
-    print_func("\n");
-    print_func(_("files=ical files to load into orage\n"));
-    print_func("\n");
-}
-
-static void import_file(gboolean running, char *file_name, gboolean initialized)
-{
-    if (running && !initialized) {
-        /* let's use dbus since server is running there already */
-        if (orage_dbus_import_file(file_name))
-            g_message ("import done file=%s", file_name);
-        else
-            g_warning ("import failed file=%s", file_name);
-    }
-    else if (!running && initialized) {/* do it self directly */
-        if (xfical_import_file(file_name))
-            g_message ("import done file=%s", file_name);
-        else
-            g_warning ("import failed file=%s", file_name);
-    }
-}
-
-static void export_file(gboolean running, char *file_name, gboolean initialized
-        , gchar *uid_list)
-{
-    const gint type = uid_list ? 1 : 0;
-
-    g_message ("%s: running=%d initialized= %d type=%d, file=%s, uids=%s",
-               G_STRFUNC, running, initialized, type, file_name, uid_list);
-    
-    if (running && !initialized) {
-        /* let's use dbus since server is running there already */
-        if (orage_dbus_export_file(file_name, type, uid_list))
-            g_message ("export done to file=%s", file_name);
-        else
-            g_warning ("export failed file=%s", file_name);
-    }
-    else if (!running && initialized) { /* do it self directly */
-        if (xfical_export_file(file_name, type, uid_list))
-            g_message ("export done to file=%s", file_name);
-        else
-            g_warning ("export failed file=%s", file_name);
-    }
-}
-
-static void add_foreign(gboolean running, char *file_name, gboolean initialized
-        , gboolean read_only, char *name)
-{
-    g_message ("\nadd_foreign: file_name%s name:%s\n\n", file_name, name);
-    if (running && !initialized) {
-        /* let's use dbus since server is running there already */
-        if (orage_dbus_foreign_add(file_name, read_only, name))
-            g_message ("Add done online foreign file=%s", file_name);
-        else
-            g_warning ("Add failed online foreign file=%s", file_name);
-    }
-    else if (!running && initialized) { /* do it self directly */
-        if (orage_foreign_file_add(file_name, read_only, name))
-            g_message ("Add done foreign file=%s", file_name);
-        else
-            g_warning ("Add failed foreign file=%s", file_name);
-    }
-}
-
-static void remove_foreign(gboolean running, char *file_name, gboolean initialized)
-{
-    if (running && !initialized) {
-        /* let's use dbus since server is running there already */
-        if (orage_dbus_foreign_remove(file_name))
-            g_message ("Remove done foreign file=%s", file_name);
-        else
-            g_warning ("Remove failed foreign file=%s", file_name);
-    }
-    else if (!running && initialized) { /* do it self directly */
-        if (orage_foreign_file_remove(file_name))
-            g_message ("Remove done foreign file=%s", file_name);
-        else
-            g_warning ("Remove failed foreign file=%s", file_name);
-    }
-}
-
-static gboolean process_args(int argc, char *argv[], gboolean running
-        , gboolean initialized)
-{
-    int argi;
-    gboolean end = FALSE;
-    gboolean foreign_file_read_only = TRUE;
-    gboolean foreign_file_name_parameter = FALSE;
-    gchar *export_uid_list = NULL;
-    gchar *file_name = NULL;
-
-    if (running && argc == 1) { /* no parameters */
-        raise_orage();
-        return(TRUE);
-    }
-    end = running;
-    for (argi = 1; argi < argc; argi++) {
-        if (!strcmp(argv[argi], "--sm-client-id")) {
-            argi++; /* skip the parameter also */
-        }
-        else if (!strcmp(argv[argi], "--version") || 
-                 !strcmp(argv[argi], "-v")        ||
-                 !strcmp(argv[argi], "-V")) {
-            print_version();
-            end = TRUE;
-        }
-        else if (!strcmp(argv[argi], "--help") || 
-                 !strcmp(argv[argi], "-h")     ||
-                 !strcmp(argv[argi], "-?")) {
-            print_help(g_print);
-            end = TRUE;
-        }
-        else if (!strcmp(argv[argi], "--preferences") || 
-                 !strcmp(argv[argi], "-p")) {
-            if (running && !initialized) {
-                preferences();
-                end = TRUE;
-            }
-            else if (!running && initialized) {
-                preferences();
-            }
-            /* if (!running && !initialized) Do nothing 
-             * if (running && initialized) impossible
-             */
-        }
-        else if (!strcmp(argv[argi], "--toggle") || 
-                 !strcmp(argv[argi], "-t")) {
-            orage_toggle_visible();
-            end = TRUE;
-        }
-        else if (!strcmp(argv[argi], "--add-foreign") ||
-                 !strcmp(argv[argi], "-a")) {
-            if (argi+1 >= argc) {
-                g_printerr("\nFile not specified\n\n");
-                print_help(g_printerr);
-                end = TRUE;
-            } 
-            else {
-                if (argi+2 < argc && (
-                    !strcmp(argv[argi+2], "RW") ||
-                    !strcmp(argv[argi+2], "READWRITE"))) {
-                    foreign_file_read_only = FALSE;
-                    if (argi+3 < argc) {
-                        file_name = g_strdup(argv[argi+3]);
-                        foreign_file_name_parameter = TRUE;
-                    }
-                }
-                else if (argi+2 < argc) { /* take argi+2 as name of file */
-                    file_name = g_strdup(argv[argi+2]);
-                    foreign_file_name_parameter = TRUE;
-                }
-                if (!file_name) {
-                    file_name = g_path_get_basename(argv[argi+1]);
-                }
-                add_foreign(running, argv[++argi], initialized
-                        , foreign_file_read_only, file_name);
-                if (!foreign_file_read_only)
-                    ++argi;
-                if (foreign_file_name_parameter) {
-                    ++argi;
-                }
-                g_free(file_name);
-            }
-        }
-        else if (!strcmp(argv[argi], "--remove-foreign") ||
-                 !strcmp(argv[argi], "-r")) {
-            if (argi+1 >= argc) {
-                g_printerr("\nFile not specified\n\n");
-                print_help(g_printerr);
-                end = TRUE;
-            } 
-            else {
-                remove_foreign(running, argv[++argi], initialized);
-            }
-        }
-        else if (!strcmp(argv[argi], "--export") ||
-                 !strcmp(argv[argi], "-e")) {
-            if (argi+1 >= argc) {
-                g_printerr("\nFile not specified\n\n");
-                print_help(g_printerr);
-                end = TRUE;
-            } 
-            else {
-                file_name = argv[++argi];
-                if (argi+1 < argc) {
-                    export_uid_list = argv[++argi];
-                }
-                export_file(running, file_name, initialized, export_uid_list);
-            }
-        }
-        else if (argv[argi][0] == '-') {
-            g_printerr(_("\nUnknown option %s\n\n"), argv[argi]);
-            print_help(g_printerr);
-            end = TRUE;
-        }
-        else {
-            import_file(running, argv[argi], initialized);
-            raise_orage();
-        }
-    }
-    return(end);
-}
-
-static gboolean check_orage_alive(void)
-{
-    if (XGetSelectionOwner(gdk_x11_get_default_xdisplay(),
-                           gdk_x11_atom_to_xatom(atom_alive)) != None)
-        return(TRUE); /* yes, we got selection owner, so orage must be there */
-    else /* no selction owner, so orage is not running yet */
-        return(FALSE);
-}
-
-static void mark_orage_alive(void)
-{
-    GtkWidget *hidden;
-    GdkWindow *window;
-
-    hidden = gtk_invisible_new();
-    gtk_widget_show(hidden);
-    window = gtk_widget_get_window (hidden);
-    if (!gdk_selection_owner_set(window, atom_alive
-                , gdk_x11_get_server_time(window), FALSE)) {
-        g_error("Unable acquire ownership of selection");
-    }
-
-    gdk_window_add_filter (window, client_message_filter, NULL);
-}
-
-int main(int argc, char *argv[])
-{
-    gboolean running, initialized = FALSE;
-
     /* init i18n = nls to use gettext */
     xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
-
-    gtk_init(&argc, &argv);
     register_css_provider ();
-
-    atom_alive = gdk_atom_intern (CALENDAR_RUNNING, FALSE);
-    running = check_orage_alive();
-    if (process_args(argc, argv, running, initialized)) 
-        return(EXIT_SUCCESS);
-    /* we need to start since orage was not found to be running already */
-    mark_orage_alive();
-
-    g_par.xfcal = g_new(CalWin, 1);
-    /* Create the main window */
-    ((CalWin *)g_par.xfcal)->mWindow = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-    g_signal_connect((gpointer) ((CalWin *)g_par.xfcal)->mWindow, "delete_event"
-            , G_CALLBACK(mWindow_delete_event_cb), (gpointer)g_par.xfcal);
-
-    /* 
-    * try to connect to the session manager
-    */
-    /*
-    session_client = client_session_new(argc, argv, NULL
-            , SESSION_RESTART_IF_RUNNING, 50);
-    session_client->save_yourself = save_yourself_cb;
-    session_client->die = die_cb;
-    (void)session_init(session_client);
-    */
-
-    /*
-    * Now it's serious, the application is running, so we create the RC
-    * directory and check for config files in old location.
-    */
-
-    orage_dbus_start ();
-
-    /*
-    * Create the orage.
-    */
-    read_parameters();
-    build_mainWin();
-    set_parameters();
-    if (g_par.start_visible) {
-        gtk_widget_show(((CalWin *)g_par.xfcal)->mWindow);
-    }
-    else if (g_par.start_minimized) {
-        gtk_window_iconify(GTK_WINDOW(((CalWin *)g_par.xfcal)->mWindow));
-        gtk_widget_show(((CalWin *)g_par.xfcal)->mWindow);
-    }
-    else { /* hidden */
-        gtk_widget_realize(((CalWin *)g_par.xfcal)->mWindow);
-        gtk_widget_hide(((CalWin *)g_par.xfcal)->mWindow);
-    }
-    alarm_read();
-    orage_day_change(NULL); /* first day change after we start */
-    mCalendar_month_changed_cb(
-            (GtkCalendar *)((CalWin *)g_par.xfcal)->mCalendar, NULL);
-
-    /* start monitoring external file updates */
-    g_timeout_add_seconds(30, (GSourceFunc)orage_external_update_check, NULL);
-
-    /* let's check if I got filename as a parameter */
-    initialized = TRUE;
-    process_args(argc, argv, running, initialized);
-
 #if 0
-    /* day change after resuming */
-    handle_resuming();
+    orage_dbus_start ();
 #endif
+    read_parameters ();
+}
 
-    gtk_main();
-    keep_tidy();
-    return(EXIT_SUCCESS);
+static void activate (GtkApplication *app, AppOptions *app_options)
+{
+    GList *list;
+
+    list = gtk_application_get_windows (app);
+
+    if (list)
+    {
+        if (gtk_widget_get_visible (GTK_WIDGET (list->data)) &&
+            app_options->toggle_option)
+        {
+            write_parameters ();
+            gtk_widget_hide (GTK_WIDGET (list->data));
+        }
+        else
+            raise_window ();
+    }
+    else
+    {
+        g_par.xfcal = g_new (CalWin, 1);
+
+        /* Create the main window */
+        ((CalWin *)g_par.xfcal)->mWindow = gtk_application_window_new (app);
+
+        g_signal_connect((gpointer) ((CalWin *)g_par.xfcal)->mWindow, "delete_event"
+                , G_CALLBACK(mWindow_delete_event_cb), (gpointer)g_par.xfcal);
+
+        build_mainWin();
+        set_parameters();
+        if (g_par.start_visible)
+        {
+            gtk_widget_show(((CalWin *)g_par.xfcal)->mWindow);
+        }
+        else if (g_par.start_minimized)
+        {
+            gtk_window_iconify(GTK_WINDOW(((CalWin *)g_par.xfcal)->mWindow));
+            gtk_widget_show(((CalWin *)g_par.xfcal)->mWindow);
+        }
+        else
+        {
+            /* hidden */
+            gtk_widget_realize(((CalWin *)g_par.xfcal)->mWindow);
+            gtk_widget_hide(((CalWin *)g_par.xfcal)->mWindow);
+        }
+
+        alarm_read();
+        orage_day_change(NULL); /* first day change after we start */
+        mCalendar_month_changed_cb (
+                (GtkCalendar *)((CalWin *)g_par.xfcal)->mCalendar, NULL);
+
+        /* start monitoring external file updates */
+        g_timeout_add_seconds(30, (GSourceFunc)orage_external_update_check, NULL);
+#if 0
+        /* day change after resuming */
+        handle_resuming();
+#endif
+    }
+
+    if (app_options->preferences_option)
+        show_parameters ();
+}
+
+static void shutdown (G_GNUC_UNUSED GtkApplication *app,
+                      G_GNUC_UNUSED gpointer user_data)
+{
+    g_debug ("%s", G_STRFUNC);
+    keep_tidy ();
+}
+
+static void open (G_GNUC_UNUSED GApplication *application,
+                  GFile **files,
+                  gint n_files,
+                  const gchar *hint)
+{
+    gchar **hint_array;
+    gint i;
+    gchar *file;
+    gchar *file_name;
+    gint export_type;
+    gboolean foreign_file_read_only;
+
+    for (i = 0; i < n_files; i++)
+    {
+        switch (hint[0])
+        {
+            case HINT_ADD:
+                file = g_file_get_path (files[i]);
+                hint_array = g_strsplit (hint, ":", 3);
+                file_name = NULL;
+
+                if (hint_array[1])
+                {
+                    foreign_file_read_only =
+                            (g_ascii_strcasecmp (hint_array[1], "RW") != 0) &&
+                            (g_ascii_strcasecmp (hint_array[1], "READWRITE") != 0);
+
+                    if (hint_array[2])
+                        file_name = g_strdup (hint_array[2]);
+                }
+                else
+                    foreign_file_read_only = TRUE;
+
+                if (file_name == NULL)
+                    file_name = g_file_get_basename (files[i]);
+
+                g_debug ("add foreign file='%s', file_name='%s', ro=%d",
+                         file, file_name, foreign_file_read_only);
+
+                if (orage_foreign_file_add (file, foreign_file_read_only, file_name))
+                    g_message ("add done, foreign file=%s", file);
+                else
+                    g_warning ("add failed, foreign file=%s", file);
+
+                g_free (file_name);
+                g_free (file);
+                g_strfreev (hint_array);
+                break;
+
+            case HINT_EXPORT:
+                file = g_file_get_path (files[i]);
+                hint_array = g_strsplit (hint, ":", 2);
+                export_type = hint_array[1] ? 1 : 0;
+                g_debug ("exporting to='%s', uids='%s'", file, hint_array[1]);
+
+                if (xfical_export_file (file, export_type, hint_array[1]))
+                    g_message ("export done to file=%s", file);
+                else
+                    g_warning ("export failed file=%s", file);
+
+                g_free (file);
+                g_strfreev (hint_array);
+                break;
+
+            case HINT_IMPORT:
+                file = g_file_get_path (files[i]);
+                g_debug ("import, file=%s", file);
+
+                if (xfical_import_file (file))
+                    g_message ("import done, file=%s", file);
+                else
+                    g_warning ("import failed, file=%s", file);
+
+                g_free (file);
+                break;
+
+            case HINT_REMOVE:
+                file = g_file_get_path (files[i]);
+
+                g_debug ("remove foreign, file=%s", file);
+                if (orage_foreign_file_remove (file))
+                    g_message ("remove done, foreign file=%s", file);
+                else
+                    g_warning ("remove failed, foreign file=%s", file);
+
+                g_free (file);
+
+                break;
+
+            default:
+                g_assert_not_reached ();
+                break;
+        }
+    }
+
+    /* Note: when doing a longer-lasting action here that returns to the
+     * mainloop, you should use g_application_hold() and g_application_release()
+     * to keep the application alive until the action is completed.
+     */
+}
+
+static gint handle_local_options (G_GNUC_UNUSED GApplication *application,
+                                  GVariantDict *options,
+                                  G_GNUC_UNUSED gpointer user_data)
+{
+    if (g_variant_dict_contains (options, "version"))
+    {
+        print_version ();
+        return EXIT_SUCCESS;
+    }
+
+    return -1;
+}
+
+static gint command_line (GApplication *application,
+                          GApplicationCommandLine *cmdline,
+                          AppOptions *app_options)
+{
+    GFile **files;
+    GFile *file;
+    const gchar **filenames = NULL;
+    const gchar *file_name;
+    gchar **str_array;
+    gchar *hint;
+    gchar key[2] = {'\0'};
+    GVariantDict *options;
+    gint n_files;
+    gint n;
+
+    options = g_application_command_line_get_options_dict (cmdline);
+
+    if (g_variant_dict_contains (options, "preferences"))
+        app_options->preferences_option = TRUE;
+
+    if (g_variant_dict_contains (options, "toggle"))
+        app_options->toggle_option = TRUE;
+
+    if (g_variant_dict_lookup (options, "add-foreign", "^&ay", &file_name))
+    {
+        str_array = g_strsplit (file_name, ":", 2);
+        key[0] = HINT_ADD;
+        hint = g_strjoin (":", key, str_array[1], NULL);
+        g_strfreev (str_array);
+
+        file = g_application_command_line_create_file_for_arg (cmdline,
+                                                               str_array[0]);
+        g_application_open (application, &file, 1, hint);
+        g_free (hint);
+        g_object_unref (file);
+    }
+
+    if (g_variant_dict_lookup (options, "remove-foreign", "^&ay", &file_name))
+    {
+        file = g_application_command_line_create_file_for_arg (cmdline,
+                                                               file_name);
+        key[0] = HINT_REMOVE;
+        g_application_open (application, &file, 1, key);
+        g_object_unref (file);
+    }
+
+    if (g_variant_dict_lookup (options, "export", "^&ay", &file_name))
+    {
+        str_array = g_strsplit (file_name, ":", 2);
+        key[0] = HINT_EXPORT;
+        hint = g_strjoin (":", key, str_array[1], NULL);
+        g_strfreev (str_array);
+
+        file = g_application_command_line_create_file_for_arg (cmdline,
+                                                               str_array[0]);
+        g_application_open (application, &file, 1, hint);
+        g_free (hint);
+        g_object_unref (file);
+    }
+
+    g_variant_dict_lookup (options, G_OPTION_REMAINING, "^a&ay", &filenames);
+
+    if (filenames != NULL && (n_files = g_strv_length ((gchar **)filenames)) > 0)
+    {
+        files = g_new (GFile *, n_files);
+
+        for (n = 0; n < n_files; n++)
+        {
+            file = g_application_command_line_create_file_for_arg (cmdline,
+                                                                   filenames[n]);
+            files[n] = file;
+        }
+
+        key[0] = HINT_IMPORT;
+        g_application_open (application, files, n_files, key);
+
+        for (n = 0; n < n_files; n++)
+            g_object_unref (files[n]);
+
+        g_free (files);
+    }
+
+    g_application_activate (application);
+
+    return EXIT_SUCCESS;
+}
+
+static void g_application_init_cmd_parameters (GApplication *app)
+{
+    const GOptionEntry cmd_params[] =
+    {
+        {
+            .long_name = "version",
+            .short_name = 'v',
+            .flags = G_OPTION_FLAG_NONE,
+            .arg = G_OPTION_ARG_NONE,
+            .arg_data = NULL,
+            .description = _("Show version of orage"),
+            .arg_description = NULL,
+        },
+        {
+            .long_name = "preferences",
+            .short_name = 'p',
+            .flags = G_OPTION_FLAG_NONE,
+            .arg = G_OPTION_ARG_NONE,
+            .arg_data = NULL,
+            .description = _("Show preferences form"),
+            .arg_description = NULL,
+        },
+        {
+            .long_name = "toggle",
+            .short_name = 't',
+            .flags = G_OPTION_FLAG_NONE,
+            .arg = G_OPTION_ARG_NONE,
+            .arg_data = NULL,
+            .description = _("Make Orage visible/unvisible"),
+            .arg_description = NULL,
+        },
+        {
+            .long_name = "add-foreign",
+            .short_name = 'a',
+            .flags = G_OPTION_FLAG_NONE,
+            .arg = G_OPTION_ARG_FILENAME,
+            .arg_data = NULL,
+            .description = _("Add a foreign file"),
+            .arg_description = "<file>:[RW]:[name]",
+        },
+        {
+            .long_name = "remove-foreign",
+            .short_name = 'r',
+            .flags = G_OPTION_FLAG_NONE,
+            .arg = G_OPTION_ARG_FILENAME,
+            .arg_data = NULL,
+            .description = "Remove a foreign file",
+            .arg_description = "<file>",
+        },
+        {
+            .long_name = "export",
+            .short_name = 'e',
+            .flags = G_OPTION_FLAG_NONE,
+            .arg = G_OPTION_ARG_FILENAME,
+            .arg_data = NULL,
+            .description = _("Export appointments from Orage to file"),
+            .arg_description = "<file>:[appointment...]",
+        },
+        {
+            .long_name = G_OPTION_REMAINING,
+            .short_name = '\0',
+            .flags = G_OPTION_FLAG_NONE,
+            .arg = G_OPTION_ARG_FILENAME_ARRAY,
+            .arg_data = NULL,
+            .description = NULL,
+            .arg_description = "[files...]",
+        },
+        {
+            .long_name = NULL,
+            .short_name = '\0',
+            .flags = 0,
+            .arg = 0,
+            .arg_data = NULL,
+            .description = NULL,
+            .arg_description = NULL,
+        }
+    };
+
+    g_application_add_main_option_entries (app, cmd_params);
+}
+
+static void close_cb (G_GNUC_UNUSED int s)
+{
+    orage_quit ();
+}
+
+void orage_toggle_visible (void)
+{
+    GList *list;
+
+    list = gtk_application_get_windows (orage_app);
+
+    g_return_if_fail (list != NULL);
+
+    if (gtk_widget_get_visible (GTK_WIDGET (list->data)))
+    {
+        write_parameters ();
+        gtk_widget_hide (GTK_WIDGET (list->data));
+    }
+    else
+        raise_window ();
+}
+
+void orage_quit (void)
+{
+    g_application_quit (G_APPLICATION (orage_app));
+}
+
+int main (int argc, char **argv)
+{
+    int status;
+    struct sigaction sig_int_handler;
+
+    sig_int_handler.sa_handler = close_cb;
+    sigemptyset (&sig_int_handler.sa_mask);
+    sig_int_handler.sa_flags = 0;
+
+    orage_app = gtk_application_new ("org.xfce.orage",
+                                     G_APPLICATION_HANDLES_COMMAND_LINE |
+                                     G_APPLICATION_HANDLES_OPEN);
+    g_signal_connect (orage_app, "startup", G_CALLBACK (startup), NULL);
+    g_signal_connect (orage_app, "activate", G_CALLBACK (activate), &app_options);
+    g_signal_connect (orage_app, "shutdown", G_CALLBACK (shutdown), NULL);
+    g_signal_connect (orage_app, "open", G_CALLBACK (open), NULL);
+    g_signal_connect (orage_app, "handle-local-options", G_CALLBACK (handle_local_options), NULL);
+    g_signal_connect (orage_app, "command-line", G_CALLBACK (command_line), &app_options);
+    g_application_init_cmd_parameters (G_APPLICATION (orage_app));
+
+    sigaction (SIGINT, &sig_int_handler, NULL);
+    status = g_application_run (G_APPLICATION (orage_app), argc, argv);
+    g_object_unref (orage_app);
+
+    return status;
 }
