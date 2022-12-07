@@ -581,7 +581,7 @@ static void orage_foreign_file_remove_line(gint del_line)
 
 gboolean orage_foreign_file_remove (const gchar *filename)
 {
-    int i = 0;
+    gint i = 0;
     gboolean found = FALSE;
 
     if (interface_lock) {
@@ -589,17 +589,19 @@ gboolean orage_foreign_file_remove (const gchar *filename)
         return(FALSE);
     }
     if (!ORAGE_STR_EXISTS(filename)) {
-        g_warning("File is empty. Not removed.");
+        g_warning("File '%s' is empty. Not removed.", filename);
         return(FALSE);
     }
     for (i = 0; i < g_par.foreign_count && !found; i++) {
+        g_warning("file '%s'", g_par.foreign_data[i].file);
+        g_warning("name '%s'", g_par.foreign_data[i].name);
         if (strcmp(g_par.foreign_data[i].file, filename) == 0 ||
             strcmp(g_par.foreign_data[i].name, filename) == 0) {
             found = TRUE;
         }
     }
     if (!found) {
-        g_warning("File not found. Not removed.");
+        g_warning("File '%s' not found. Not removed.", filename);
         return(FALSE);
     }
 
