@@ -77,7 +77,6 @@ typedef struct
 } AppOptions;
 
 static GtkApplication *orage_app;
-static AppOptions app_options;
 
 #if 0
 static gboolean resume_after_sleep (G_GNUC_UNUSED gpointer user_data)
@@ -587,6 +586,11 @@ int main (int argc, char **argv)
 {
     int status;
     struct sigaction sig_int_handler;
+    AppOptions app_options =
+    {
+        .preferences_option = FALSE,
+        .toggle_option = FALSE
+    };
 
     sig_int_handler.sa_handler = close_cb;
     sigemptyset (&sig_int_handler.sa_mask);
