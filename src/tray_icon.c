@@ -427,7 +427,7 @@ static GtkWidget *create_TrayIcon_menu(void)
     menuItem = gtk_separator_menu_item_new();
     gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
     menuItem = orage_image_menu_item(_("Quit"), "application-exit");
-    g_signal_connect(menuItem, "activate", G_CALLBACK(gtk_main_quit), NULL);
+    g_signal_connect (menuItem, "activate", G_CALLBACK (orage_quit), NULL);
     gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
 
     menuItem = gtk_separator_menu_item_new();
