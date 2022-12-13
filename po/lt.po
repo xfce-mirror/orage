@@ -900,7 +900,7 @@ msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed'."
 msgstr ""
-"Pažymėkite tai jei norite matyti ir senus įvykius. Tai gali būti pasirinkta tik pažymėjus \"tik pirmą pasikartojantį\", siekiant išvengti labai ilgų sąrašų.\n"
+"Pažymėkite tai jei norite matyti ir senus įvykius. Tai gali būti pasirinkta tik pažymėjus „tik pirmą pasikartojantį“, siekiant išvengti labai ilgų sąrašų.\n"
 "Atkreipkite dėmesį, kad papildomų dienų pasirinkimas vis tik apibrėžia ar yra rodomi naujesni paskyrimai."
 
 #: ../src/event-list.c:1336
