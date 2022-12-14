@@ -44,13 +44,16 @@
 
 #include "orage-i18n.h"
 #include "functions.h"
-#include "tray_icon.h"
 #include "ical-code.h"
 #include "timezone_selection.h"
 #include "parameters.h"
 #include "parameters_internal.h"
 #include "mainbox.h"
 #include "reminder.h"
+
+#ifdef HAVE_X11_TRAY_ICON
+#include "tray_icon.h"
+#endif
 
 static Itf *global_itf = NULL;
 
@@ -316,6 +319,7 @@ static void pager_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
     set_pager();
 }
 
+#ifdef HAVE_X11_TRAY_ICON
 static void set_systray(void)
 {
     GdkPixbuf *orage_logo;
@@ -341,6 +345,7 @@ static void systray_changed (G_GNUC_UNUSED GtkWidget *dialog,
             itf->show_systray_checkbutton));
     set_systray();
 }
+#endif
 
 static void start_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
 {
@@ -784,13 +789,14 @@ static void create_parameter_dialog_calendar_setup_tab(Itf *dialog)
 
     table_add_row(table, dialog->show_taskbar_checkbutton
             , dialog->show_pager_checkbutton, ++row);
-
+#ifdef HAVE_X11_TRAY_ICON
     dialog->show_systray_checkbutton = gtk_check_button_new_with_mnemonic(
             _("Show in systray"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(
             dialog->show_systray_checkbutton), g_par.show_systray);
 
     table_add_row(table, dialog->show_systray_checkbutton, NULL, ++row);
+#endif
 
     g_signal_connect(G_OBJECT(dialog->set_stick_checkbutton), "toggled"
             , G_CALLBACK(stick_changed), dialog);
@@ -800,8 +806,10 @@ static void create_parameter_dialog_calendar_setup_tab(Itf *dialog)
             , G_CALLBACK(taskbar_changed), dialog);
     g_signal_connect(G_OBJECT(dialog->show_pager_checkbutton), "toggled"
             , G_CALLBACK(pager_changed), dialog);
+#ifdef HAVE_X11_TRAY_ICON
     g_signal_connect(G_OBJECT(dialog->show_systray_checkbutton), "toggled"
             , G_CALLBACK(systray_changed), dialog);
+#endif
 
     /***** how to show when started (show/hide/minimize) *****/
     dialog->visibility_radiobutton_group = NULL;
@@ -1166,7 +1174,6 @@ static void create_parameter_dialog_extra_setup_tab(Itf *dialog)
 static Itf *create_parameter_dialog(void)
 {
     Itf *dialog;
-    GdkPixbuf *orage_logo;
 
     dialog = g_new(Itf, 1);
 
@@ -1178,9 +1185,7 @@ static Itf *create_parameter_dialog(void)
             , GTK_WIN_POS_CENTER);
     gtk_window_set_modal(GTK_WINDOW(dialog->orage_dialog), FALSE);
     gtk_window_set_resizable(GTK_WINDOW(dialog->orage_dialog), TRUE);
-    orage_logo = orage_create_icon(TRUE, 48);
-    gtk_window_set_icon(GTK_WINDOW(dialog->orage_dialog), orage_logo);
-    g_object_unref(orage_logo);
+    gtk_window_set_icon_name (GTK_WINDOW (dialog->orage_dialog), ORAGE_APP_ID);
 
     dialog->dialog_vbox1 =
             gtk_dialog_get_content_area (GTK_DIALOG(dialog->orage_dialog));
@@ -1206,10 +1211,6 @@ static Itf *create_parameter_dialog(void)
             , G_CALLBACK(dialog_response), dialog);
 
     gtk_widget_show_all(dialog->orage_dialog);
-    /*
-    gdk_x11_window_set_user_time(GTK_WIDGET(dialog->orage_dialog)->window, 
-            gdk_x11_get_server_time(GTK_WIDGET(dialog->orage_dialog)->window));
-            */
 
     return(dialog);
 }
@@ -1359,7 +1360,9 @@ void read_parameters(void)
     g_par.show_todos = orage_rc_get_bool(orc, "Show todos", TRUE);
     g_par.show_event_days = orage_rc_get_int(orc, "Show event days", 1);
     g_par.show_pager = orage_rc_get_bool(orc, "Show in pager", TRUE);
+#ifdef HAVE_X11_TRAY_ICON
     g_par.show_systray = orage_rc_get_bool(orc, "Show in systray", TRUE);
+#endif
     g_par.show_taskbar = orage_rc_get_bool(orc, "Show in taskbar", TRUE);
     g_par.start_visible = orage_rc_get_bool(orc, "Start visible", TRUE);
     g_par.start_minimized = orage_rc_get_bool(orc, "Start minimized", FALSE);
@@ -1397,6 +1400,7 @@ void write_parameters(void)
     OrageRc *orc;
     gint i;
     gchar f_par[50];
+    GtkWidget *window;
 
     orc = orage_parameters_file_open(FALSE);
 
@@ -1408,10 +1412,17 @@ void write_parameters(void)
 #endif
     orage_rc_put_str(orc, "Orage file", g_par.orage_file);
     orage_rc_put_str(orc, "Sound application", g_par.sound_application);
-    gtk_window_get_size(GTK_WINDOW(((CalWin *)g_par.xfcal)->mWindow)
-            , &g_par.size_x, &g_par.size_y);
-    gtk_window_get_position(GTK_WINDOW(((CalWin *)g_par.xfcal)->mWindow)
-            , &g_par.pos_x, &g_par.pos_y);
+
+    if (g_par.xfcal)
+    {
+        window = ((CalWin *)g_par.xfcal)->mWindow;
+        gtk_window_get_size (GTK_WINDOW (window), &g_par.size_x, &g_par.size_y);
+        gtk_window_get_position (GTK_WINDOW (window),
+                                 &g_par.pos_x, &g_par.pos_y);
+    }
+    else
+        g_warning ("g_par.xfcal == NULL");
+
     orage_rc_put_int(orc, "Main window X", g_par.pos_x);
     orage_rc_put_int(orc, "Main window Y", g_par.pos_y);
     orage_rc_put_int(orc, "Main window size X", g_par.size_x);
@@ -1436,7 +1447,9 @@ void write_parameters(void)
     orage_rc_put_bool(orc, "Show todos", g_par.show_todos);
     orage_rc_put_int(orc, "Show event days", g_par.show_event_days);
     orage_rc_put_bool(orc, "Show in pager", g_par.show_pager);
+#ifdef HAVE_X11_TRAY_ICON
     orage_rc_put_bool(orc, "Show in systray", g_par.show_systray);
+#endif
     orage_rc_put_bool(orc, "Show in taskbar", g_par.show_taskbar);
     orage_rc_put_bool(orc, "Start visible", g_par.start_visible);
     orage_rc_put_bool(orc, "Start minimized", g_par.start_minimized);
@@ -1496,9 +1509,9 @@ void set_parameters(void)
     set_taskbar();
     set_pager();
     set_calendar();
-    /*
+#if 0
     set_systray();
-    */
+#endif
     set_stick();
     set_ontop();
     set_wakeup_timer();

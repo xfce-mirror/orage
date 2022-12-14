@@ -53,8 +53,11 @@
 #include "event-list.h"
 #include "appointment.h"
 #include "reminder.h"
-#include "tray_icon.h"
 #include "parameters.h"
+
+#ifdef HAVE_X11_TRAY_ICON
+#include "tray_icon.h"
+#endif
 
 /* Compatibility macro for < libnotify-0.7 */
 /* NOTIFY_CHECK_VERSION was created in 0.5.2 */
@@ -889,7 +892,9 @@ gboolean orage_day_change(gpointer user_data)
         previous_year  = current_year;
         previous_month = current_month;
         previous_day   = current_day;
+#ifdef HAVE_X11_TRAY_ICON
         orage_refresh_trayicon();
+#endif
         xfical_alarm_build_list(TRUE);  /* new l_alarm list when date changed */
         reset_orage_day_change(TRUE);   /* setup for next time */
     }
@@ -975,6 +980,7 @@ static void reset_orage_alarm_clock(void)
 /* refresh trayicon tooltip once per minute */
 static gboolean orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
 {
+#ifdef HAVE_X11_TRAY_ICON
     GDateTime *gdt;
     GList *alarm_l;
     alarm_struct *cur_alarm;
@@ -1050,6 +1056,9 @@ static gboolean orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
     g_string_free(tooltip, TRUE);
 
     return(TRUE);
+#else
+    return FALSE;
+#endif
 }
 
 /* start timer to fire every minute to keep tooltip accurate */
