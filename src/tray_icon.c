@@ -360,7 +360,7 @@ GdkPixbuf *orage_create_icon(gboolean static_icon, gint size)
     icon_theme = gtk_icon_theme_get_default();
     if (static_icon)
     { /* load static icon */
-        pixbuf = gtk_icon_theme_load_icon(icon_theme, "org.xfce.orage", size
+        pixbuf = gtk_icon_theme_load_icon(icon_theme, ORAGE_APP_ID, size
                 , GTK_ICON_LOOKUP_USE_BUILTIN, &error);
     }
     else { /***** dynamic icon build starts now *****/
@@ -375,7 +375,7 @@ GdkPixbuf *orage_create_icon(gboolean static_icon, gint size)
 
         if (pixbuf == NULL) {
             g_warning ("%s: dynamic icon creation failed", G_STRFUNC);
-            pixbuf = gtk_icon_theme_load_icon(icon_theme, "org.xfce.orage", size
+            pixbuf = gtk_icon_theme_load_icon(icon_theme, ORAGE_APP_ID, size
                     , GTK_ICON_LOOKUP_USE_BUILTIN, &error);
         }
     }
@@ -484,16 +484,4 @@ void orage_refresh_trayicon(void)
     }
 
     g_object_unref (orage_logo);
-}
-
-void orage_refresh_default_icon (void)
-{
-    GdkPixbuf *icon;
-
-    icon = orage_create_icon (TRUE, 96);
-    g_return_if_fail (icon != NULL);
-
-    gtk_window_set_default_icon (icon);
-    gtk_window_set_icon (GTK_WINDOW(((CalWin *)g_par.xfcal)->mWindow), icon);
-    g_object_unref (icon);
 }

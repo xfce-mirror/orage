@@ -30,15 +30,13 @@
 #include <glib.h>
 
 #include "orage-i18n.h"
-#include "tray_icon.h"
 #include "about-xfcalendar.h"
-
+#include "functions.h"
 
 void create_wAbout (G_GNUC_UNUSED GtkWidget *widget,
                     G_GNUC_UNUSED gpointer user_data)
 {
   GtkWidget *dialog;
-  GdkPixbuf *orage_logo;
   GtkAboutDialog *about;
   const gchar *authors[] = {"Erkki Moorits <erkki.moorits@mail.ee>",
                             "Juha Kautto <juha@xfce.org>",
@@ -56,12 +54,10 @@ void create_wAbout (G_GNUC_UNUSED GtkWidget *widget,
   gtk_about_dialog_set_authors(about, authors);
   gtk_about_dialog_set_license_type(about, GTK_LICENSE_GPL_2_0);
   gtk_about_dialog_set_translator_credits(about, _("translator-credits"));
-  orage_logo = orage_create_icon(TRUE, 96);
-  gtk_about_dialog_set_logo(about, orage_logo);
+  gtk_about_dialog_set_logo_icon_name(about, ORAGE_APP_ID);
 
   gtk_window_set_default_size(GTK_WINDOW(dialog), 520, 440);
 
   gtk_dialog_run(GTK_DIALOG(dialog));
   gtk_widget_destroy(dialog);
-  g_object_unref(orage_logo);
 }

@@ -25,8 +25,9 @@
 
 #include <glib.h>
 #include <glib-object.h>
+#include "functions.h"
 
-#define ORAGE_DBUS_NAME "org.xfce.orage"
+#define ORAGE_DBUS_NAME ORAGE_APP_ID
 #define ORAGE_DBUS_PATH "/org/xfce/orage"
 #define ORAGE_DBUS_INTERFACE ORAGE_DBUS_NAME
 
