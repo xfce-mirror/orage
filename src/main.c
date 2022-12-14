@@ -61,9 +61,12 @@
 #include "mainbox.h"
 #include "reminder.h"
 #include "ical-code.h"
-#include "tray_icon.h"
 #include "parameters.h"
 #include "interface.h"
+
+#ifdef HAVE_X11_TRAY_ICON
+#include "tray_icon.h"
+#endif
 
 #define HINT_ADD 'a'
 #define HINT_EXPORT 'x'
@@ -596,7 +599,7 @@ int main (int argc, char **argv)
     sigemptyset (&sig_int_handler.sa_mask);
     sig_int_handler.sa_flags = 0;
 
-    orage_app = gtk_application_new ("org.xfce.orage",
+    orage_app = gtk_application_new (ORAGE_APP_ID,
                                      G_APPLICATION_HANDLES_COMMAND_LINE |
                                      G_APPLICATION_HANDLES_OPEN);
     g_signal_connect (orage_app, "startup", G_CALLBACK (startup), NULL);
