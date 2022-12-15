@@ -327,7 +327,7 @@ static void set_systray(void)
 
     if (!(status_icon && orage_status_icon_is_embedded (status_icon)))
     {
-        orage_logo = orage_create_icon(FALSE, 0);
+        orage_logo = orage_create_icon ();
         status_icon = orage_create_trayicon (orage_logo);
         g_par.trayIcon = status_icon;
         g_object_unref(orage_logo);

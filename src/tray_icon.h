@@ -26,7 +26,7 @@
 
 #include <gtk/gtk.h>
 
-GdkPixbuf *orage_create_icon(gboolean static_icon, gint size);
+GdkPixbuf *orage_create_icon (void);
 
 GtkStatusIcon *orage_create_trayicon(GdkPixbuf *orage_logo);
 
