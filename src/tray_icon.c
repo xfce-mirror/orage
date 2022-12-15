@@ -351,41 +351,29 @@ static GdkPixbuf *create_dynamic_icon (void)
     return pixbuf;
 }
 
-GdkPixbuf *orage_create_icon(gboolean static_icon, gint size)
+GdkPixbuf *orage_create_icon (void)
 {
     GError *error = NULL;
     GtkIconTheme *icon_theme = NULL;
-    GdkPixbuf *pixbuf, *pixbuf2;
+    GdkPixbuf *pixbuf;
 
     icon_theme = gtk_icon_theme_get_default();
-    if (static_icon)
-    { /* load static icon */
-        pixbuf = gtk_icon_theme_load_icon(icon_theme, ORAGE_APP_ID, size
-                , GTK_ICON_LOOKUP_USE_BUILTIN, &error);
-    }
-    else { /***** dynamic icon build starts now *****/
-        pixbuf = create_dynamic_icon ();
 
-        if (size) {
-            pixbuf2 = gdk_pixbuf_scale_simple(pixbuf, size, size
-                    , GDK_INTERP_BILINEAR);
-            g_object_unref(pixbuf);
-            pixbuf = pixbuf2;
-        }
+    pixbuf = create_dynamic_icon ();
 
-        if (pixbuf == NULL) {
-            g_warning ("%s: dynamic icon creation failed", G_STRFUNC);
-            pixbuf = gtk_icon_theme_load_icon(icon_theme, ORAGE_APP_ID, size
-                    , GTK_ICON_LOOKUP_USE_BUILTIN, &error);
-        }
+    if (pixbuf == NULL)
+    {
+        g_warning ("%s: dynamic icon creation failed", G_STRFUNC);
+        pixbuf = gtk_icon_theme_load_icon (icon_theme, ORAGE_APP_ID, 0,
+                                           GTK_ICON_LOOKUP_USE_BUILTIN, &error);
     }
 
     if (pixbuf == NULL) {
         g_warning ("%s: static icon creation failed, using default About icon",
                    G_STRFUNC);
         /* dynamic icon also tries static before giving up */
-        pixbuf = gtk_icon_theme_load_icon(icon_theme, "help-about", size
-                , GTK_ICON_LOOKUP_USE_BUILTIN, &error);
+        pixbuf = gtk_icon_theme_load_icon (icon_theme, "help-about", 0,
+                                           GTK_ICON_LOOKUP_USE_BUILTIN, &error);
     }
 
     if (pixbuf == NULL)
@@ -471,7 +459,7 @@ void orage_refresh_trayicon(void)
 {
     GdkPixbuf *orage_logo;
 
-    orage_logo = orage_create_icon (FALSE, 0);
+    orage_logo = orage_create_icon ();
     g_return_if_fail (orage_logo != NULL);
 
     if (g_par.show_systray) { /* refresh tray icon */
