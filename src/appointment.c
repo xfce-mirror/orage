@@ -67,8 +67,6 @@
 #define CATEGORIES_SPACING 10
 #define EXCEPTION_KEY "xfical_exception_key"
 
-#define USE_GLIB_258 (GLIB_CHECK_VERSION (2, 58, 0))
-
 typedef struct _orage_category_win
 {
     GtkWidget *window;
@@ -982,13 +980,7 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
 
     gdt_tmp = g_object_get_data (G_OBJECT (apptw->StartDate_button),
                                  DATE_KEY);
-#if USE_GLIB_258
-    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gtz = g_date_time_get_timezone (gdt_tmp);
-    G_GNUC_END_IGNORE_DEPRECATIONS
-#else
-    gtz = g_time_zone_new (g_date_time_get_timezone_abbreviation (gdt_tmp));
-#endif
     orage_gdatetime_unref (appt->starttime);
     appt->starttime = g_date_time_new (gtz,
                            g_date_time_get_year (gdt_tmp),
@@ -1000,10 +992,6 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
                                     GTK_SPIN_BUTTON (apptw->StartTime_spin_mm)),
                            0);
 
-#if (USE_GLIB_258 == 0)
-    g_time_zone_unref (gtz);
-#endif
-
     /* end date and time.
      * Note that timezone is kept upto date all the time
      */
@@ -1012,13 +1000,7 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
 
     gdt_tmp = g_object_get_data (G_OBJECT (apptw->EndDate_button),
                                  DATE_KEY);
-#if USE_GLIB_258
-    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gtz = g_date_time_get_timezone (gdt_tmp);
-    G_GNUC_END_IGNORE_DEPRECATIONS
-#else
-    gtz = g_time_zone_new (g_date_time_get_timezone_abbreviation (gdt_tmp));
-#endif
     orage_gdatetime_unref (appt->endtime);
     appt->endtime = g_date_time_new (gtz,
                            g_date_time_get_year (gdt_tmp),
@@ -1029,10 +1011,6 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
                            gtk_spin_button_get_value_as_int (
                                     GTK_SPIN_BUTTON (apptw->EndTime_spin_mm)),
                            0);
-
-#if (USE_GLIB_258 == 0)
-    g_time_zone_unref (gtz);
-#endif
 
     /* duration */
     appt->use_duration = gtk_toggle_button_get_active(
@@ -1060,15 +1038,7 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
 
     gdt_tmp = g_object_get_data (G_OBJECT (apptw->CompletedDate_button),
                                  DATE_KEY);
-
-#if USE_GLIB_258
-    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gtz = g_date_time_get_timezone (gdt_tmp);
-    G_GNUC_END_IGNORE_DEPRECATIONS
-#else
-    gtz = g_time_zone_new (g_date_time_get_timezone_abbreviation (gdt_tmp));
-#endif
-
     orage_gdatetime_unref (appt->completedtime);
     appt->completedtime = g_date_time_new (gtz,
                            g_date_time_get_year (gdt_tmp),
@@ -1079,10 +1049,6 @@ static gboolean fill_appt_from_apptw(xfical_appt *appt, appt_win *apptw)
                            gtk_spin_button_get_value_as_int (
                                     GTK_SPIN_BUTTON (apptw->CompletedTime_spin_mm)),
                            0);
-
-#if (USE_GLIB_258 == 0)
-    g_time_zone_unref (gtz);
-#endif
 
     /* availability */
     appt->availability = gtk_combo_box_get_active(
