@@ -351,41 +351,29 @@ static GdkPixbuf *create_dynamic_icon (void)
     return pixbuf;
 }
 
-GdkPixbuf *orage_create_icon(gboolean static_icon, gint size)
+static GdkPixbuf *orage_create_icon (void)
 {
     GError *error = NULL;
     GtkIconTheme *icon_theme = NULL;
-    GdkPixbuf *pixbuf, *pixbuf2;
+    GdkPixbuf *pixbuf;
 
     icon_theme = gtk_icon_theme_get_default();
-    if (static_icon)
-    { /* load static icon */
-        pixbuf = gtk_icon_theme_load_icon(icon_theme, "org.xfce.orage", size
-                , GTK_ICON_LOOKUP_USE_BUILTIN, &error);
-    }
-    else { /***** dynamic icon build starts now *****/
-        pixbuf = create_dynamic_icon ();
 
-        if (size) {
-            pixbuf2 = gdk_pixbuf_scale_simple(pixbuf, size, size
-                    , GDK_INTERP_BILINEAR);
-            g_object_unref(pixbuf);
-            pixbuf = pixbuf2;
-        }
+    pixbuf = create_dynamic_icon ();
 
-        if (pixbuf == NULL) {
-            g_warning ("%s: dynamic icon creation failed", G_STRFUNC);
-            pixbuf = gtk_icon_theme_load_icon(icon_theme, "org.xfce.orage", size
-                    , GTK_ICON_LOOKUP_USE_BUILTIN, &error);
-        }
+    if (pixbuf == NULL)
+    {
+        g_warning ("%s: dynamic icon creation failed", G_STRFUNC);
+        pixbuf = gtk_icon_theme_load_icon (icon_theme, ORAGE_APP_ID, 0,
+                                           GTK_ICON_LOOKUP_USE_BUILTIN, &error);
     }
 
     if (pixbuf == NULL) {
         g_warning ("%s: static icon creation failed, using default About icon",
                    G_STRFUNC);
         /* dynamic icon also tries static before giving up */
-        pixbuf = gtk_icon_theme_load_icon(icon_theme, "help-about", size
-                , GTK_ICON_LOOKUP_USE_BUILTIN, &error);
+        pixbuf = gtk_icon_theme_load_icon (icon_theme, "help-about", 0,
+                                           GTK_ICON_LOOKUP_USE_BUILTIN, &error);
     }
 
     if (pixbuf == NULL)
@@ -427,7 +415,7 @@ static GtkWidget *create_TrayIcon_menu(void)
     menuItem = gtk_separator_menu_item_new();
     gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
     menuItem = orage_image_menu_item(_("Quit"), "application-exit");
-    g_signal_connect(menuItem, "activate", G_CALLBACK(gtk_main_quit), NULL);
+    g_signal_connect (menuItem, "activate", G_CALLBACK (orage_quit), NULL);
     gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
 
     menuItem = gtk_separator_menu_item_new();
@@ -442,23 +430,26 @@ static void destroy_TrayIcon(GtkStatusIcon *trayIcon)
     g_object_unref(trayIcon);
 }
 
-GtkStatusIcon* orage_create_trayicon(GdkPixbuf *orage_logo)
+GtkStatusIcon* orage_create_trayicon ()
 {
     CalWin *xfcal = (CalWin *)g_par.xfcal;
     GtkWidget *trayMenu;
     GtkStatusIcon *trayIcon = NULL;
+    GdkPixbuf *orage_logo;
 
-    /*
-     * Create the tray icon popup menu
-     */
-    trayMenu = create_TrayIcon_menu();
+    orage_logo = orage_create_icon ();
+    g_return_val_if_fail (orage_logo != NULL, NULL);
 
     /*
      * Create the tray icon
      */
     trayIcon = orage_status_icon_new_from_pixbuf (orage_logo);
+    g_object_unref (orage_logo);
     g_object_ref(trayIcon);
     g_object_ref_sink(trayIcon);
+
+    /* Create the tray icon popup menu. */
+    trayMenu = create_TrayIcon_menu();
 
     g_signal_connect(G_OBJECT(trayIcon), "activate",
     			   G_CALLBACK(toggle_visible_cb), xfcal);
@@ -469,31 +460,18 @@ GtkStatusIcon* orage_create_trayicon(GdkPixbuf *orage_logo)
 
 void orage_refresh_trayicon(void)
 {
-    GdkPixbuf *orage_logo;
-
-    orage_logo = orage_create_icon (FALSE, 0);
-    g_return_if_fail (orage_logo != NULL);
+    GtkStatusIcon *trayIcon;
 
     if (g_par.show_systray) { /* refresh tray icon */
         if (ORAGE_TRAYICON && orage_status_icon_is_embedded (ORAGE_TRAYICON)) {
             orage_status_icon_set_visible (ORAGE_TRAYICON, FALSE);
             destroy_TrayIcon(ORAGE_TRAYICON);
         }
-        g_par.trayIcon = orage_create_trayicon(orage_logo);
-        orage_status_icon_set_visible (ORAGE_TRAYICON, TRUE);
+
+        trayIcon = orage_create_trayicon ();
+        g_return_if_fail (trayIcon != NULL);
+
+        orage_status_icon_set_visible (trayIcon, TRUE);
+        g_par.trayIcon = trayIcon;
     }
-
-    g_object_unref (orage_logo);
-}
-
-void orage_refresh_default_icon (void)
-{
-    GdkPixbuf *icon;
-
-    icon = orage_create_icon (TRUE, 96);
-    g_return_if_fail (icon != NULL);
-
-    gtk_window_set_default_icon (icon);
-    gtk_window_set_icon (GTK_WINDOW(((CalWin *)g_par.xfcal)->mWindow), icon);
-    g_object_unref (icon);
 }
