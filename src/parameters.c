@@ -52,6 +52,7 @@
 #include "reminder.h"
 
 #ifdef HAVE_X11_TRAY_ICON
+#include <gdk/gdkx.h>
 #include "tray_icon.h"
 #endif
 
@@ -804,8 +805,11 @@ static void create_parameter_dialog_calendar_setup_tab(Itf *dialog)
     g_signal_connect(G_OBJECT(dialog->show_pager_checkbutton), "toggled"
             , G_CALLBACK(pager_changed), dialog);
 #ifdef HAVE_X11_TRAY_ICON
-    g_signal_connect(G_OBJECT(dialog->show_systray_checkbutton), "toggled"
-            , G_CALLBACK(systray_changed), dialog);
+    if (GDK_IS_X11_DISPLAY (gdk_display_get_default ()))
+    {
+        g_signal_connect (G_OBJECT (dialog->show_systray_checkbutton),
+                          "toggled", G_CALLBACK (systray_changed), dialog);
+    }
 #endif
 
     /***** how to show when started (show/hide/minimize) *****/

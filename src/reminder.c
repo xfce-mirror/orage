@@ -56,6 +56,7 @@
 #include "parameters.h"
 
 #ifdef HAVE_X11_TRAY_ICON
+#include <gdk/gdkx.h>
 #include "tray_icon.h"
 #endif
 
@@ -893,7 +894,8 @@ gboolean orage_day_change(gpointer user_data)
         previous_month = current_month;
         previous_day   = current_day;
 #ifdef HAVE_X11_TRAY_ICON
-        orage_refresh_trayicon();
+        if (GDK_IS_X11_DISPLAY (gdk_display_get_default ()))
+            orage_refresh_trayicon ();
 #endif
         xfical_alarm_build_list(TRUE);  /* new l_alarm list when date changed */
         reset_orage_day_change(TRUE);   /* setup for next time */
