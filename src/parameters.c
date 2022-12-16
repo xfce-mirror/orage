@@ -322,15 +322,12 @@ static void pager_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
 #ifdef HAVE_X11_TRAY_ICON
 static void set_systray(void)
 {
-    GdkPixbuf *orage_logo;
     GtkStatusIcon *status_icon = (GtkStatusIcon *)g_par.trayIcon;
 
     if (!(status_icon && orage_status_icon_is_embedded (status_icon)))
     {
-        orage_logo = orage_create_icon ();
-        status_icon = orage_create_trayicon (orage_logo);
+        status_icon = orage_create_trayicon ();
         g_par.trayIcon = status_icon;
-        g_object_unref(orage_logo);
     }
 
     orage_status_icon_set_visible (status_icon, g_par.show_systray);

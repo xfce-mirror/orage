@@ -351,7 +351,7 @@ static GdkPixbuf *create_dynamic_icon (void)
     return pixbuf;
 }
 
-GdkPixbuf *orage_create_icon (void)
+static GdkPixbuf *orage_create_icon (void)
 {
     GError *error = NULL;
     GtkIconTheme *icon_theme = NULL;
@@ -430,23 +430,26 @@ static void destroy_TrayIcon(GtkStatusIcon *trayIcon)
     g_object_unref(trayIcon);
 }
 
-GtkStatusIcon* orage_create_trayicon(GdkPixbuf *orage_logo)
+GtkStatusIcon* orage_create_trayicon ()
 {
     CalWin *xfcal = (CalWin *)g_par.xfcal;
     GtkWidget *trayMenu;
     GtkStatusIcon *trayIcon = NULL;
+    GdkPixbuf *orage_logo;
 
-    /*
-     * Create the tray icon popup menu
-     */
-    trayMenu = create_TrayIcon_menu();
+    orage_logo = orage_create_icon ();
+    g_return_val_if_fail (orage_logo != NULL, NULL);
 
     /*
      * Create the tray icon
      */
     trayIcon = orage_status_icon_new_from_pixbuf (orage_logo);
+    g_object_unref (orage_logo);
     g_object_ref(trayIcon);
     g_object_ref_sink(trayIcon);
+
+    /* Create the tray icon popup menu. */
+    trayMenu = create_TrayIcon_menu();
 
     g_signal_connect(G_OBJECT(trayIcon), "activate",
     			   G_CALLBACK(toggle_visible_cb), xfcal);
@@ -457,19 +460,18 @@ GtkStatusIcon* orage_create_trayicon(GdkPixbuf *orage_logo)
 
 void orage_refresh_trayicon(void)
 {
-    GdkPixbuf *orage_logo;
-
-    orage_logo = orage_create_icon ();
-    g_return_if_fail (orage_logo != NULL);
+    GtkStatusIcon *trayIcon;
 
     if (g_par.show_systray) { /* refresh tray icon */
         if (ORAGE_TRAYICON && orage_status_icon_is_embedded (ORAGE_TRAYICON)) {
             orage_status_icon_set_visible (ORAGE_TRAYICON, FALSE);
             destroy_TrayIcon(ORAGE_TRAYICON);
         }
-        g_par.trayIcon = orage_create_trayicon(orage_logo);
-        orage_status_icon_set_visible (ORAGE_TRAYICON, TRUE);
-    }
 
-    g_object_unref (orage_logo);
+        trayIcon = orage_create_trayicon ();
+        g_return_if_fail (trayIcon != NULL);
+
+        orage_status_icon_set_visible (trayIcon, TRUE);
+        g_par.trayIcon = trayIcon;
+    }
 }
