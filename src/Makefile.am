@@ -41,12 +41,16 @@ orage_SOURCES =							\
 	timezone_names.c					\
 	timezone_selection.c					\
 	timezone_selection.h					\
-	tray_icon.c						\
-	tray_icon.h						\
 	tz_zoneinfo_read.c					\
 	tz_zoneinfo_read.h					\
 	xfical_exception.c					\
 	xfical_exception.h
+
+if HAVE_X11_TRAY_ICON
+orage_SOURCES +=						\
+	tray_icon.c						\
+	tray_icon.h
+endif
 	
 orage_CPPFLAGS =						\
 	-DPACKAGE_DATA_DIR=\""$(datadir)"\"			\

@@ -23,6 +23,10 @@
 #ifndef __ORAGE_PARAMETERS_H__
 #define __ORAGE_PARAMETERS_H__
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #define ORAGE_WAKEUP_TIMER_PERIOD 60
 
 typedef struct _foreign_file
@@ -46,7 +50,9 @@ typedef struct _parameters
     gboolean show_todos;
     gint     show_event_days;
     gboolean show_pager;
+#ifdef HAVE_X11_TRAY_ICON
     gboolean show_systray;
+#endif
     gboolean show_taskbar;
     gboolean start_visible;
     gboolean start_minimized;

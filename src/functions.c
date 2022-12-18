@@ -1269,6 +1269,7 @@ gint orage_error_dialog (GtkWindow *parent, const gchar *primary_text,
     return(result);
 }
 
+#ifdef HAVE_X11_TRAY_ICON
 gboolean orage_status_icon_is_embedded (GtkStatusIcon *status_icon)
 {
     gboolean is_embedded;
@@ -1306,6 +1307,7 @@ void orage_status_icon_set_tooltip_markup (GtkStatusIcon *status_icon,
     gtk_status_icon_set_tooltip_markup (status_icon, markup);
     G_GNUC_END_IGNORE_DEPRECATIONS
 }
+#endif
 
 GtkWidget *orage_util_image_button (const gchar *icon_name, const gchar *label)
 {
