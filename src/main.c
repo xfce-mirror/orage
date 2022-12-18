@@ -137,9 +137,9 @@ static gboolean keep_tidy(void)
     return(TRUE);
 }
 
-static gboolean mWindow_delete_event_cb (G_GNUC_UNUSED GtkWidget *widget,
-                                         G_GNUC_UNUSED GdkEvent *event,
-                                         CalWin *cal)
+static gboolean window_delete_event_cb (G_GNUC_UNUSED GtkWidget *widget,
+                                        G_GNUC_UNUSED GdkEvent *event,
+                                        CalWin *cal)
 {
     if (g_par.close_means_quit) {
         orage_quit ();
@@ -232,7 +232,7 @@ static void activate (GtkApplication *app, AppOptions *app_options)
         ((CalWin *)g_par.xfcal)->mWindow = gtk_application_window_new (app);
 
         g_signal_connect((gpointer) ((CalWin *)g_par.xfcal)->mWindow, "delete_event"
-                , G_CALLBACK(mWindow_delete_event_cb), (gpointer)g_par.xfcal);
+                , G_CALLBACK(window_delete_event_cb), (gpointer)g_par.xfcal);
 
         build_mainWin();
         set_parameters();
@@ -272,7 +272,6 @@ static void activate (GtkApplication *app, AppOptions *app_options)
 static void shutdown (G_GNUC_UNUSED GtkApplication *app,
                       G_GNUC_UNUSED gpointer user_data)
 {
-    g_debug ("%s", G_STRFUNC);
     keep_tidy ();
 }
 
@@ -477,7 +476,7 @@ static gint command_line (GApplication *application,
     return EXIT_SUCCESS;
 }
 
-static void g_application_init_cmd_parameters (GApplication *app)
+static void init_cmd_parameters (GApplication *app)
 {
     const GOptionEntry cmd_params[] =
     {
@@ -558,7 +557,7 @@ static void g_application_init_cmd_parameters (GApplication *app)
     g_application_add_main_option_entries (app, cmd_params);
 }
 
-static void close_cb (G_GNUC_UNUSED int s)
+static void quit_handler (G_GNUC_UNUSED int s)
 {
     orage_quit ();
 }
@@ -595,7 +594,7 @@ int main (int argc, char **argv)
         .toggle_option = FALSE
     };
 
-    sig_int_handler.sa_handler = close_cb;
+    sig_int_handler.sa_handler = quit_handler;
     sigemptyset (&sig_int_handler.sa_mask);
     sig_int_handler.sa_flags = 0;
 
@@ -608,7 +607,7 @@ int main (int argc, char **argv)
     g_signal_connect (orage_app, "open", G_CALLBACK (open), NULL);
     g_signal_connect (orage_app, "handle-local-options", G_CALLBACK (handle_local_options), NULL);
     g_signal_connect (orage_app, "command-line", G_CALLBACK (command_line), &app_options);
-    g_application_init_cmd_parameters (G_APPLICATION (orage_app));
+    init_cmd_parameters (G_APPLICATION (orage_app));
 
     sigaction (SIGINT, &sig_int_handler, NULL);
     status = g_application_run (G_APPLICATION (orage_app), argc, argv);
