@@ -27,9 +27,7 @@
 #include <glib.h>
 #include <gtk/gtk.h>
 
-#define CALENDAR_RUNNING "_XFCE_CALENDAR_RUNNING"
-#define CALENDAR_TOGGLE_EVENT "_XFCE_CALENDAR_TOGGLE_HERE"
-
+#define ORAGE_APP_ID "org.xfce.orage"
 #define ORAGE_DIR "orage" G_DIR_SEPARATOR_S
 #define ORAGE_PAR_FILE  "oragerc"
 #define ORAGE_PAR_DIR_FILE ORAGE_DIR ORAGE_PAR_FILE
@@ -194,9 +192,11 @@ GtkWidget *orage_create_framebox_with_content (const gchar *title,
                                                GtkShadowType shadow_type,
                                                GtkWidget *content);
 
-/* NOTE: the following is in main.c */
+/* NOTE: the followings two function are implemented in main.c */
 void orage_toggle_visible(void);
+void orage_quit (void);
 
+#ifdef HAVE_X11_TRAY_ICON
 /* This is wrapper for deprecated 'gtk_status_icon_is_embedded', it is used only
  * for suppress deprecated warning message.
  */
@@ -218,7 +218,7 @@ GtkStatusIcon *orage_status_icon_new_from_pixbuf (GdkPixbuf *pixbuf);
  */
 void orage_status_icon_set_tooltip_markup (GtkStatusIcon *status_icon,
                                            const gchar *markup);
-
+#endif
 /** Create button with image. This code is taken from Mousepad.
  *
  *  @note This function is direct replacement for gtk_button_new_from_stock.

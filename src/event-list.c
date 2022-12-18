@@ -61,8 +61,11 @@
 #include "event-list.h"
 #include "appointment.h"
 #include "parameters.h"
-#include "tray_icon.h"
 #include "day-view.h"
+
+#ifdef HAVE_X11_TRAY_ICON
+#include "tray_icon.h"
+#endif
 
 #define BORDER_SIZE 10
 #define DATE_KEY "button-date"
@@ -1469,7 +1472,6 @@ static void build_event_list(el_win *el)
 
 el_win *create_el_win (GDateTime *gdt)
 {
-    GdkPixbuf *pixbuf;
     el_win *el;
 
     /* initialisation + main window + base vbox */
@@ -1510,9 +1512,7 @@ el_win *create_el_win (GDateTime *gdt)
 
     gtk_drag_source_set(el->TreeView, GDK_BUTTON1_MASK
             , drag_targets, DRAG_TARGET_COUNT, GDK_ACTION_COPY);
-    pixbuf = orage_create_icon(TRUE, 16);
-    gtk_drag_source_set_icon_pixbuf(el->TreeView, pixbuf);
-    g_object_unref(pixbuf);
+    gtk_drag_source_set_icon_name (el->TreeView, ORAGE_APP_ID);
     g_signal_connect(el->TreeView, "drag_data_get"
             , G_CALLBACK(drag_data_get), NULL);
 
