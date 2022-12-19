@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 15:01+0100\n"
+"POT-Creation-Date: 2022-12-19 00:47+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>, 2022\n"
 "Language-Team: Czech (https://www.transifex.com/xfce/teams/16840/cs/)\n"
@@ -24,11 +24,11 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: ../src/about-xfcalendar.c:54 ../org.xfce.orage.appdata.xml.in.h:2
+#: ../src/about-xfcalendar.c:52 ../org.xfce.orage.appdata.xml.in.h:2
 msgid "Orage is a time-managing application for the Xfce desktop environment"
 msgstr "Orage je aplikace pro správu času pro desktopové prostředí Xfce"
 
-#: ../src/about-xfcalendar.c:58
+#: ../src/about-xfcalendar.c:56
 msgid "translator-credits"
 msgstr ""
 "Michal Várady (miko.vaji@gmail.com)\n"
@@ -45,14 +45,14 @@ msgstr "Konec"
 msgid "Due"
 msgstr "Termín dokončení"
 
-#: ../src/appointment.c:508 ../src/mainbox.c:677
+#: ../src/appointment.c:508 ../src/mainbox.c:683
 #: ../org.xfce.orage.appdata.xml.in.h:1
 msgid "Orage"
 msgstr "Orage - kalendář"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
-#: ../src/appointment.c:699 ../src/interface.c:262 ../src/parameters.c:392
+#: ../src/appointment.c:699 ../src/interface.c:262 ../src/parameters.c:395
 msgid "Select a file..."
 msgstr "Vyberte soubor..."
 
@@ -68,7 +68,7 @@ msgstr "Všechny soubory"
 msgid "The appointment information has been modified."
 msgstr "Informace o schůzce byla změněna."
 
-#: ../src/appointment.c:766 ../src/appointment.c:1340 ../src/event-list.c:998
+#: ../src/appointment.c:766 ../src/appointment.c:1340 ../src/event-list.c:1001
 msgid "Do you want to continue?"
 msgstr "Chcete pokračovat?"
 
@@ -123,7 +123,7 @@ msgstr ""
 msgid "This appointment will be permanently removed."
 msgstr "Tato schůzka bude trvale odebrána."
 
-#: ../src/appointment.c:1341 ../src/event-list.c:999
+#: ../src/appointment.c:1341 ../src/event-list.c:1002
 msgid "No, cancel the removal"
 msgstr "Ne, zrušit odstranění"
 
@@ -132,13 +132,13 @@ msgid "Yes, remove it"
 msgstr "Ano, odstranit ho"
 
 #: ../src/appointment.c:1441 ../src/appointment.c:1456 ../src/day-view.c:471
-#: ../src/event-list.c:1058 ../src/functions.c:144
+#: ../src/event-list.c:1061 ../src/functions.c:144
 msgid "Pick the date"
 msgstr "Zvolte datum"
 
 #: ../src/appointment.c:1443 ../src/appointment.c:1458 ../src/day-view.c:400
-#: ../src/day-view.c:473 ../src/event-list.c:1060 ../src/event-list.c:1214
-#: ../src/functions.c:146 ../src/tray_icon.c:408
+#: ../src/day-view.c:473 ../src/event-list.c:1063 ../src/event-list.c:1217
+#: ../src/functions.c:146 ../src/tray_icon.c:396
 msgid "Today"
 msgstr "Dnes"
 
@@ -150,7 +150,7 @@ msgstr "Tato schůzka neexistuje."
 msgid "It was probably removed, please refresh your screen."
 msgstr "Bylo pravděpodobně odebráno, aktualizujte obrazovku."
 
-#: ../src/appointment.c:2183 ../src/interface.c:674
+#: ../src/appointment.c:2183 ../src/interface.c:676
 msgid "_Remove"
 msgstr "_Odebrat"
 
@@ -166,7 +166,7 @@ msgstr "Přidat novou barevnou kategorii"
 msgid "Category:"
 msgstr "Kategorie:"
 
-#: ../src/appointment.c:2258 ../src/interface.c:1453
+#: ../src/appointment.c:2258 ../src/interface.c:1455
 msgid "_Add"
 msgstr "Přid_at"
 
@@ -185,8 +185,8 @@ msgstr "Nová schůzka – Orage"
 #. File menu stuff
 #. ********* File menu *********
 #. File menu
-#: ../src/appointment.c:2645 ../src/day-view.c:294 ../src/event-list.c:1115
-#: ../src/interface.c:859 ../src/mainbox.c:210
+#: ../src/appointment.c:2645 ../src/day-view.c:294 ../src/event-list.c:1118
+#: ../src/interface.c:861 ../src/mainbox.c:212
 msgid "_File"
 msgstr "_Soubor"
 
@@ -194,7 +194,7 @@ msgstr "_Soubor"
 msgid "Sav_e and close"
 msgstr "Uložit _a zavřít"
 
-#: ../src/appointment.c:2664 ../src/event-list.c:1121
+#: ../src/appointment.c:2664 ../src/event-list.c:1124
 msgid "D_uplicate"
 msgstr "D_uplikovat"
 
@@ -210,11 +210,11 @@ msgstr "Uložit a zavřít"
 msgid "Revert"
 msgstr "Obnovit původní"
 
-#: ../src/appointment.c:2904 ../src/event-list.c:1205
+#: ../src/appointment.c:2904 ../src/event-list.c:1208
 msgid "Duplicate"
 msgstr "Duplikovat"
 
-#: ../src/appointment.c:2909 ../src/event-list.c:1207
+#: ../src/appointment.c:2909 ../src/event-list.c:1210
 msgid "Delete"
 msgstr "Smazat"
 
@@ -235,7 +235,7 @@ msgstr "Hlavní"
 msgid "Type "
 msgstr "Typ "
 
-#: ../src/appointment.c:2939 ../src/event-list.c:1260
+#: ../src/appointment.c:2939 ../src/event-list.c:1263
 msgid "Event"
 msgstr "Události"
 
@@ -247,7 +247,7 @@ msgstr ""
 "Událost, která nastane. Například:\n"
 "Schůzka, narozeniny nebo televizní pořad."
 
-#: ../src/appointment.c:2947 ../src/event-list.c:1319
+#: ../src/appointment.c:2947 ../src/event-list.c:1322
 msgid "Todo"
 msgstr "Úkoly"
 
@@ -259,7 +259,7 @@ msgstr ""
 "Něco, co byste měli v budoucnu udělat. Například:\n"
 "Umyjte si auto nebo otestujte novou verzi aplikace Orage."
 
-#: ../src/appointment.c:2955 ../src/event-list.c:1333
+#: ../src/appointment.c:2955 ../src/event-list.c:1336
 msgid "Journal"
 msgstr "Žurnál"
 
@@ -299,15 +299,15 @@ msgstr "Nastavit"
 msgid "Duration"
 msgstr "Délka"
 
-#: ../src/appointment.c:3035 ../src/appointment.c:3242 ../src/reminder.c:676
+#: ../src/appointment.c:3035 ../src/appointment.c:3242 ../src/reminder.c:680
 msgid "days"
 msgstr "dnů"
 
-#: ../src/appointment.c:3037 ../src/appointment.c:3244 ../src/reminder.c:678
+#: ../src/appointment.c:3037 ../src/appointment.c:3244 ../src/reminder.c:682
 msgid "hours"
 msgstr "hodin"
 
-#: ../src/appointment.c:3039 ../src/appointment.c:3246 ../src/reminder.c:680
+#: ../src/appointment.c:3039 ../src/appointment.c:3246 ../src/reminder.c:684
 msgid "mins"
 msgstr "minut"
 
@@ -450,9 +450,9 @@ msgstr "Použít"
 msgid "Select this if you want audible alarm"
 msgstr "Chcete-li povolit akustickou výstrahu, vyberte tuto možnost"
 
-#: ../src/appointment.c:3302 ../src/interface.c:1049 ../src/interface.c:1095
-#: ../src/interface.c:1271 ../src/interface.c:1363 ../src/interface.c:1446
-#: ../src/parameters.c:397 ../src/parameters.c:620 ../src/reminder.c:705
+#: ../src/appointment.c:3302 ../src/interface.c:1051 ../src/interface.c:1097
+#: ../src/interface.c:1273 ../src/interface.c:1365 ../src/interface.c:1448
+#: ../src/parameters.c:400 ../src/parameters.c:623 ../src/reminder.c:709
 msgid "_Open"
 msgstr "_Otevřít"
 
@@ -535,7 +535,7 @@ msgstr ""
 "\t<&ST> zahájení schůzky\n"
 "\t<&ET> ukončení schůzky"
 
-#: ../src/appointment.c:3446 ../src/interface.c:1183 ../src/interface.c:1205
+#: ../src/appointment.c:3446 ../src/interface.c:1185 ../src/interface.c:1207
 msgid "_Execute"
 msgstr "_Spustit"
 
@@ -547,8 +547,8 @@ msgstr "Vyzkoušet tuto výstrahu nyní"
 msgid "<b>Default alarm</b>"
 msgstr "<b>Výchozí výstraha</b>"
 
-#: ../src/appointment.c:3467 ../src/interface.c:1056 ../src/interface.c:1102
-#: ../src/interface.c:1277 ../src/interface.c:1369
+#: ../src/appointment.c:3467 ../src/interface.c:1058 ../src/interface.c:1104
+#: ../src/interface.c:1279 ../src/interface.c:1371
 msgid "_Save"
 msgstr "_Uložit"
 
@@ -774,16 +774,16 @@ msgstr "Data akcí"
 
 #. ********* View menu *********
 #. View menu
-#: ../src/day-view.c:304 ../src/event-list.c:1138 ../src/mainbox.c:236
+#: ../src/day-view.c:304 ../src/event-list.c:1141 ../src/mainbox.c:238
 msgid "_View"
 msgstr "_Zobrazit"
 
 #. ********* Go menu   *********
-#: ../src/day-view.c:318 ../src/event-list.c:1157
+#: ../src/day-view.c:318 ../src/event-list.c:1160
 msgid "_Go"
 msgstr "_Přejít"
 
-#: ../src/day-view.c:391 ../src/event-list.c:1203
+#: ../src/day-view.c:391 ../src/event-list.c:1206
 msgid "New"
 msgstr "Nový"
 
@@ -803,11 +803,11 @@ msgstr "Vpřed o jeden den"
 msgid "Forward one week"
 msgstr "Vpřed o jeden týden"
 
-#: ../src/day-view.c:409 ../src/event-list.c:1221
+#: ../src/day-view.c:409 ../src/event-list.c:1224
 msgid "Refresh"
 msgstr "Aktualizovvat"
 
-#: ../src/day-view.c:414 ../src/event-list.c:1228 ../src/interface.c:878
+#: ../src/day-view.c:414 ../src/event-list.c:1231 ../src/interface.c:880
 msgid "Close"
 msgstr "Zavřít"
 
@@ -828,23 +828,23 @@ msgid "Orage - day view"
 msgstr "Orage - pohled na den"
 
 #. date only appointment
-#: ../src/event-list.c:187
+#: ../src/event-list.c:190
 msgid "All day"
 msgstr "Celý den"
 
-#: ../src/event-list.c:618 ../src/event-list.c:1422
+#: ../src/event-list.c:621 ../src/event-list.c:1425
 msgid "Time"
 msgstr "Čas"
 
-#: ../src/event-list.c:801
+#: ../src/event-list.c:804
 msgid "No rows have been selected."
 msgstr "Nevybrali jste žádné řádky."
 
-#: ../src/event-list.c:802
+#: ../src/event-list.c:805
 msgid "Click a row to select it and after that you can copy it."
 msgstr "Kliknutím vyberete řádek, poté jej můžete zkopírovat."
 
-#: ../src/event-list.c:997
+#: ../src/event-list.c:1000
 msgid ""
 "You will permanently remove all\n"
 "selected appointments."
@@ -852,35 +852,35 @@ msgstr ""
 "Tímto trvale odstraníte všechny\n"
 "vybrané schůzky."
 
-#: ../src/event-list.c:1000
+#: ../src/event-list.c:1003
 msgid "Yes, remove them"
 msgstr "Ano, odstranit je"
 
-#: ../src/event-list.c:1212
+#: ../src/event-list.c:1215
 msgid "Back"
 msgstr "Zpět"
 
-#: ../src/event-list.c:1216
+#: ../src/event-list.c:1219
 msgid "Forward"
 msgstr "Vpřed"
 
-#: ../src/event-list.c:1223
+#: ../src/event-list.c:1226
 msgid "Find"
 msgstr "Najít"
 
-#: ../src/event-list.c:1230
+#: ../src/event-list.c:1233
 msgid "Dayview"
 msgstr "Přehled více dnů"
 
-#: ../src/event-list.c:1265
+#: ../src/event-list.c:1268
 msgid "Extra days to show:"
 msgstr "Zobrazit položky pro tento počet následujících dní:"
 
-#: ../src/event-list.c:1279
+#: ../src/event-list.c:1282
 msgid "only first repeating"
 msgstr "opakovat pouze první"
 
-#: ../src/event-list.c:1287
+#: ../src/event-list.c:1290
 msgid ""
 "Check this if you only want to see the first repeating event. By default all are shown.\n"
 "Note that this also shows all urgencies.\n"
@@ -890,11 +890,11 @@ msgstr ""
 "Zobrazuje také urgence.\n"
 "Opakované události se mohou objevit v seznamu dříve, protože se zobrazuje pouze první výskyt."
 
-#: ../src/event-list.c:1292
+#: ../src/event-list.c:1295
 msgid "also old"
 msgstr "také staré"
 
-#: ../src/event-list.c:1297
+#: ../src/event-list.c:1300
 msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed'."
@@ -902,27 +902,27 @@ msgstr ""
 "Zaškrtněte tuto volbu, pokud chcete vidět také staré události. Tuto možnost lze vybrat pouze pokud je povolena volba \"pouze první opakující se položku\", aby se zabránilo tvorbě příliš dlouhých seznamů.\n"
 "Výběr následujících dní navíc stále určuje, zda jsou vypisovány novější schůzky."
 
-#: ../src/event-list.c:1336
+#: ../src/event-list.c:1339
 msgid "Journal entries starting from:"
 msgstr "Položky žurnálu počínaje od:"
 
-#: ../src/event-list.c:1361
+#: ../src/event-list.c:1364
 msgid "Search"
 msgstr "Hledat"
 
-#: ../src/event-list.c:1364
+#: ../src/event-list.c:1367
 msgid "Search text "
 msgstr "Hledat text"
 
-#: ../src/event-list.c:1430
+#: ../src/event-list.c:1433
 msgid "Flags"
 msgstr "Příznaky"
 
-#: ../src/event-list.c:1438
+#: ../src/event-list.c:1441
 msgid "Title"
 msgstr "Titulek"
 
-#: ../src/event-list.c:1464
+#: ../src/event-list.c:1467
 msgid ""
 "Double click line to edit it.\n"
 "\n"
@@ -958,64 +958,64 @@ msgstr "Výchozí výstraha Orage"
 msgid "Calendar files"
 msgstr "Soubory kalendáře"
 
-#: ../src/interface.c:644
+#: ../src/interface.c:646
 msgid "Current foreign files"
 msgstr "Aktuální externí soubory"
 
-#: ../src/interface.c:667
+#: ../src/interface.c:669
 msgid "READ ONLY"
 msgstr "POUZE PRO ČTENÍ"
 
-#: ../src/interface.c:669
+#: ../src/interface.c:671
 msgid "READ WRITE"
 msgstr "PRO ČTENÍ I ZÁPIS"
 
-#: ../src/interface.c:694
+#: ../src/interface.c:696
 msgid "***** No foreign files *****"
 msgstr "***** Žádné externí soubory *****"
 
-#: ../src/interface.c:708
+#: ../src/interface.c:710
 msgid "Foreign file add failed"
 msgstr "Přidání externího souboru se nezdařilo"
 
-#: ../src/interface.c:717
+#: ../src/interface.c:719
 msgid "Orage can only handle 10 foreign files. Limit reached."
 msgstr ""
 "Orage dokáže pracovat pouze s 10 externími soubory. Limit byl dosažen."
 
-#: ../src/interface.c:727
+#: ../src/interface.c:729
 msgid "Filename is empty."
 msgstr "Název souboru je prázdný."
 
-#: ../src/interface.c:737
+#: ../src/interface.c:739
 msgid "Name is empty."
 msgstr "Název je prázdný."
 
-#: ../src/interface.c:748
+#: ../src/interface.c:750
 msgid "File does not exist."
 msgstr "Soubor neexistuje."
 
-#: ../src/interface.c:760
+#: ../src/interface.c:762
 msgid "Same filename already exists in Orage."
 msgstr "V aplikaci Orage již existuje soubor se shodným názvem."
 
-#: ../src/interface.c:771
+#: ../src/interface.c:773
 msgid "Same name already exists in Orage."
 msgstr "V aplikaci Orage již tento název existuje."
 
-#: ../src/interface.c:1024
+#: ../src/interface.c:1026
 msgid "Import/export"
 msgstr "Import a export"
 
-#: ../src/interface.c:1031
+#: ../src/interface.c:1033
 msgid "Import"
 msgstr "Import"
 
-#: ../src/interface.c:1039
+#: ../src/interface.c:1041
 msgid "Read from file:"
 msgstr "Načíst ze souboru:"
 
-#: ../src/interface.c:1069
+#: ../src/interface.c:1071
 msgid ""
 "Separate filenames with comma(,).\n"
 " NOTE: comma is not valid character in filenames for Orage."
@@ -1023,27 +1023,27 @@ msgstr ""
 "Názvy souborů oddělte čárkami.\n"
 " POZNÁMKA: Čárka není platným znakem v názvech souborů aplikace Orage."
 
-#: ../src/interface.c:1074
+#: ../src/interface.c:1076
 msgid "Export"
 msgstr "Export"
 
-#: ../src/interface.c:1082
+#: ../src/interface.c:1084
 msgid "Write to file:"
 msgstr "Zapsat do souboru:"
 
-#: ../src/interface.c:1117 ../src/interface.c:1135
+#: ../src/interface.c:1119 ../src/interface.c:1137
 msgid "Select"
 msgstr "Vybrat"
 
-#: ../src/interface.c:1122
+#: ../src/interface.c:1124
 msgid "All appointments"
 msgstr "Všechny schůzky"
 
-#: ../src/interface.c:1141
+#: ../src/interface.c:1143
 msgid "Named appointments:"
 msgstr "Pojmenované schůzky:"
 
-#: ../src/interface.c:1160
+#: ../src/interface.c:1162
 msgid ""
 "Note that only main file appointments are read.\n"
 "Archived and Foreign events are not exported."
@@ -1051,7 +1051,7 @@ msgstr ""
 "Načítají se pouze schůzky z hlavního souboru.\n"
 "Archivované a externí události se neexportují."
 
-#: ../src/interface.c:1163
+#: ../src/interface.c:1165
 msgid ""
 "Note that only main file appointments are read.\n"
 "Foreign events are not exported."
@@ -1059,32 +1059,32 @@ msgstr ""
 "Načítají se pouze schůzky z hlavního souboru.\n"
 "Externí události se neexportují."
 
-#: ../src/interface.c:1166
+#: ../src/interface.c:1168
 msgid "You can easily drag these from event-list window."
 msgstr "Tyto položky můžete jednoduše přetáhnout z okna seznamu událostí."
 
-#: ../src/interface.c:1168
+#: ../src/interface.c:1170
 msgid "Orage appointment UIDs separated by commas."
 msgstr "Čísla schůzek UID aplikace Orage oddělená čárkami."
 
-#: ../src/interface.c:1174
+#: ../src/interface.c:1176
 msgid "Archive"
 msgstr "Archiv"
 
-#: ../src/interface.c:1189
+#: ../src/interface.c:1191
 #, c-format
 msgid "Archive now (threshold: %d months)"
 msgstr "Okamžitá archivace (práh: %d měsíců)"
 
-#: ../src/interface.c:1200
+#: ../src/interface.c:1202
 msgid "You can change archive threshold in parameters"
 msgstr "Práh archivu můžete změnit v parametrech."
 
-#: ../src/interface.c:1212
+#: ../src/interface.c:1214
 msgid "Revert archive now"
 msgstr "Obnovení archivu do původního stavu"
 
-#: ../src/interface.c:1219
+#: ../src/interface.c:1221
 msgid ""
 "Return all archived events into main orage file and remove arch file.\n"
 "This is useful for example when doing export and moving orage\n"
@@ -1094,31 +1094,31 @@ msgstr ""
 "Orage a odebere soubor archivu. Tato funkce je užitečná například\n"
 "při exportu a přesunu schůzek na jiný systém."
 
-#: ../src/interface.c:1231
+#: ../src/interface.c:1233
 msgid "Orage files"
 msgstr "Soubory aplikace Orage"
 
-#: ../src/interface.c:1238
+#: ../src/interface.c:1240
 msgid "Orage main calendar file"
 msgstr "Hlavní soubor kalendáře aplikace Orage"
 
-#: ../src/interface.c:1247 ../src/interface.c:1340
+#: ../src/interface.c:1249 ../src/interface.c:1342
 msgid "Current file:"
 msgstr "Aktuální soubor:"
 
-#: ../src/interface.c:1259 ../src/interface.c:1352
+#: ../src/interface.c:1261 ../src/interface.c:1354
 msgid "New file:"
 msgstr "Nový soubor:"
 
-#: ../src/interface.c:1287 ../src/interface.c:1379
+#: ../src/interface.c:1289 ../src/interface.c:1381
 msgid "Action options:"
 msgstr "Dostupné akce:"
 
-#: ../src/interface.c:1291 ../src/interface.c:1383
+#: ../src/interface.c:1293 ../src/interface.c:1385
 msgid "Rename"
 msgstr "Přejmenovat"
 
-#: ../src/interface.c:1297
+#: ../src/interface.c:1299
 msgid ""
 "Orage internal file rename only.\n"
 "Does not touch external filesystem at all.\n"
@@ -1128,51 +1128,51 @@ msgstr ""
 "Nezasahuje do vnějšího systémů souborů.\n"
 "Nový soubor již musí existovat."
 
-#: ../src/interface.c:1301 ../src/interface.c:1390
+#: ../src/interface.c:1303 ../src/interface.c:1392
 msgid "Copy"
 msgstr "Kopírovat"
 
-#: ../src/interface.c:1307
+#: ../src/interface.c:1309
 msgid "Current file is copied and stays unmodified in the old place."
 msgstr ""
 "Aktuální soubor se zkopíruje a\n"
 "v původním umístění zůstane nezměněn."
 
-#: ../src/interface.c:1311 ../src/interface.c:1397
+#: ../src/interface.c:1313 ../src/interface.c:1399
 msgid "Move"
 msgstr "Přesunout"
 
-#: ../src/interface.c:1317
+#: ../src/interface.c:1319
 msgid "Current file is moved and vanishes from the old place."
 msgstr ""
 "Aktuální soubor se přesune a\n"
 "z původního umístění bude vymazán."
 
-#: ../src/interface.c:1331
+#: ../src/interface.c:1333
 msgid "Archive file"
 msgstr "Soubor archivu"
 
-#: ../src/interface.c:1422
+#: ../src/interface.c:1424
 msgid "Foreign files"
 msgstr "Externí soubory"
 
-#: ../src/interface.c:1429
+#: ../src/interface.c:1431
 msgid "Add new foreign file"
 msgstr "Přidat nový externí soubor"
 
-#: ../src/interface.c:1437
+#: ../src/interface.c:1439
 msgid "Foreign file:"
 msgstr "Externí soubor:"
 
-#: ../src/interface.c:1468
+#: ../src/interface.c:1470
 msgid "Visible name:"
 msgstr "Viditelný název:"
 
-#: ../src/interface.c:1478
+#: ../src/interface.c:1480
 msgid "Read only"
 msgstr "Pouze pro čtení"
 
-#: ../src/interface.c:1488
+#: ../src/interface.c:1490
 msgid ""
 "Set this if you want to make sure that this file is never modified by Orage.\n"
 "Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
@@ -1180,15 +1180,15 @@ msgstr ""
 "Tuto možnost nastavte, chcete-li si být jisti, že tento aplikace Orage tento soubor nikdy nepozmění.\n"
 "Zapamatujte si, že pozměněním externích souborů je můžete učinit nekompatibilními s původními nástroji, v nichž byly vytvořeny!"
 
-#: ../src/interface.c:1490
+#: ../src/interface.c:1492
 msgid "This internal name is displayed to user instead of file name."
 msgstr "Místo názvu souboru se uživateli zobrazí tento interní název."
 
-#: ../src/interface.c:1504
+#: ../src/interface.c:1506
 msgid "Exchange data - Orage"
 msgstr "Správa datových souborů - Orage"
 
-#: ../src/main.c:274
+#: ../src/main.c:172
 #, c-format
 msgid ""
 "\tThis is %s version %s\n"
@@ -1197,156 +1197,113 @@ msgstr ""
 "\tToto je %s verze %s\n"
 "\n"
 
-#: ../src/main.c:276
+#: ../src/main.c:174
 #, c-format
 msgid "\tReleased under the terms of the GNU General Public License.\n"
 msgstr "\tVydáno pod podmínkami licence GNU General Public Licence.\n"
 
-#: ../src/main.c:277
+#: ../src/main.c:175
 #, c-format
 msgid "\tCompiled against GTK+-%d.%d.%d, "
 msgstr "\tZkompilováno proti knihovnám GTK+-%d.%d.%d, "
 
-#: ../src/main.c:279
+#: ../src/main.c:177
 #, c-format
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "používá knihovny GTK+-%d.%d.%d.\n"
 
-#: ../src/main.c:281
+#: ../src/main.c:179
 #, c-format
 msgid "\tUsing DBUS for import.\n"
 msgstr "\tPoužívá DBUS pro import.\n"
 
-#: ../src/main.c:283
+#: ../src/main.c:181
 #, c-format
 msgid "\tUsing libnotify.\n"
 msgstr "\tPoužívá se knihovna libnotify.\n"
 
-#: ../src/main.c:285
+#: ../src/main.c:183
 #, c-format
 msgid "\tNot using libnotify.\n"
 msgstr "\tNepoužívá se knihovna libnotify.\n"
 
-#: ../src/main.c:288
+#: ../src/main.c:186
 #, c-format
 msgid "\tUsing automatic archiving.\n"
 msgstr "\tPoužívá se automatické archivování.\n"
 
-#: ../src/main.c:290
+#: ../src/main.c:188
 #, c-format
 msgid "\tNot using archiving.\n"
 msgstr "\tBez archivace.\n"
 
-#: ../src/main.c:293
+#: ../src/main.c:191
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
 msgstr "\tPoužívá se knihovna libxfce4ui: ano\n"
 
-#: ../src/main.c:295
+#: ../src/main.c:193
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
 msgstr "\tPoužívá se knihovna libxfce4ui: ne\n"
 
-#: ../src/main.c:308
-msgid ""
-"Usage: orage [options] [files]\n"
-"\n"
+#: ../src/main.c:489
+msgid "Show version of orage"
 msgstr ""
-"Použití: orage [volby] [soubory]\n"
-"\n"
 
-#: ../src/main.c:309
-msgid "Options:\n"
-msgstr "Možnosti:\n"
-
-#: ../src/main.c:310
-msgid "--version (-v) \t\tshow version of orage\n"
-msgstr "--version (-v) \t\tzobrazí verzi aplikace orage\n"
-
-#: ../src/main.c:311
-msgid "--help (-h) \t\tprint this text\n"
-msgstr "--help (-h) \t\tzobrazí tento text\n"
-
-#: ../src/main.c:312
-msgid "--preferences (-p) \tshow preferences form\n"
-msgstr "--preferences (-p) \tzobrazí formulář možnosti\n"
-
-#: ../src/main.c:313
-msgid "--toggle (-t) \t\tmake orage visible/unvisible\n"
+#: ../src/main.c:498
+msgid "Show preferences form"
 msgstr ""
-"--toggle (-t) \t\tpřepne aplikaci orage do viditelného nebo neviditelného "
-"stavu\n"
 
-#: ../src/main.c:314
-msgid "--add-foreign (-a) file [RW] [name] \tadd a foreign file\n"
+#: ../src/main.c:507
+msgid "Make Orage visible/unvisible"
 msgstr ""
-"--add-foreign (-a) soubor [RW] [název] \tpřidá externí soubor\n"
-"\n"
 
-#: ../src/main.c:315
-msgid "--remove-foreign (-r) file \tremove a foreign file\n"
-msgstr "--remove-foreign (-r) soubor       odebere externí soubor\n"
-
-#: ../src/main.c:316
-msgid ""
-"--export (-e) file [appointment...] \texport appointments from Orage to "
-"file\n"
+#: ../src/main.c:516
+msgid "Add a foreign file"
 msgstr ""
-"--export (-e) soubor [schůzka...]  exportuje schůzky z aplikace Orage do "
-"souboru\n"
 
-#: ../src/main.c:318
-msgid "files=ical files to load into orage\n"
-msgstr "soubory=soubory typu ical pro načtení do aplikace orage\n"
-
-#: ../src/main.c:508
-#, c-format
-msgid ""
-"\n"
-"Unknown option %s\n"
-"\n"
+#: ../src/main.c:534
+msgid "Export appointments from Orage to file"
 msgstr ""
-"\n"
-"Neznámá volba %s\n"
-"\n"
 
-#: ../src/mainbox.c:218
+#: ../src/mainbox.c:220
 msgid "_Exchange data"
 msgstr "_Správa datových souborů"
 
 #. Edit menu
-#: ../src/mainbox.c:229
+#: ../src/mainbox.c:231
 msgid "_Edit"
 msgstr "_Upravit"
 
-#: ../src/mainbox.c:239
+#: ../src/mainbox.c:241
 msgid "View selected _date"
 msgstr "Zobrazit vybrané _datum"
 
-#: ../src/mainbox.c:242
+#: ../src/mainbox.c:244
 msgid "View selected _week"
 msgstr "Zobrazit vybraný _týden"
 
-#: ../src/mainbox.c:248
+#: ../src/mainbox.c:250
 msgid "Select _Today"
 msgstr "_Přejít na dnešní den"
 
 #. Help menu
 #. the rest
-#: ../src/mainbox.c:252 ../src/parameters.c:1197
+#: ../src/mainbox.c:254 ../src/parameters.c:1203
 msgid "_Help"
 msgstr "_Nápověda"
 
-#: ../src/mainbox.c:312 ../src/reminder.c:1027
+#: ../src/mainbox.c:314 ../src/reminder.c:1035
 msgid "No title defined"
 msgstr "Bez názvu"
 
-#: ../src/mainbox.c:370
+#: ../src/mainbox.c:372
 #, c-format
 msgid " Location: %s\n"
 msgstr "Umístění: %s\n"
 
-#: ../src/mainbox.c:380
+#: ../src/mainbox.c:382
 #, c-format
 msgid ""
 "\n"
@@ -1357,11 +1314,11 @@ msgstr ""
 " Poznámka:\n"
 "%s"
 
-#: ../src/mainbox.c:388
+#: ../src/mainbox.c:390
 msgid "Never"
 msgstr "Nikdy"
 
-#: ../src/mainbox.c:396
+#: ../src/mainbox.c:398
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1374,7 +1331,7 @@ msgstr ""
 "Termín:\t%s\n"
 "Dokončeno:\t%s%s"
 
-#: ../src/mainbox.c:403
+#: ../src/mainbox.c:405
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1385,173 +1342,173 @@ msgstr ""
 "%s Začátek:\t%s\n"
 " Konec:\t%s%s"
 
-#: ../src/mainbox.c:482
+#: ../src/mainbox.c:484
 msgid "<b>To do:</b>"
 msgstr "<b>Úkoly:</b>"
 
-#: ../src/mainbox.c:519
+#: ../src/mainbox.c:521
 #, c-format
 msgid "<b>Events for %s:</b>"
 msgstr "<b>Události pro %s:</b>"
 
-#: ../src/mainbox.c:529
+#: ../src/mainbox.c:531
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>Události pro %s - %s:</b>"
 
-#: ../src/parameters.c:542
+#: ../src/parameters.c:545
 msgid "Main settings"
 msgstr "Hlavní nastavení"
 
-#: ../src/parameters.c:548
+#: ../src/parameters.c:551
 msgid "Timezone"
 msgstr "Časové pásmo"
 
-#: ../src/parameters.c:569
+#: ../src/parameters.c:572
 msgid "You should always define your local timezone."
 msgstr "Vždy byste měli definovat místní časové pásmo."
 
-#: ../src/parameters.c:577
+#: ../src/parameters.c:580
 msgid "Archive threshold (months)"
 msgstr "Práh archivu (v měsících)"
 
-#: ../src/parameters.c:590
+#: ../src/parameters.c:593
 msgid "(0 = no archiving)"
 msgstr "(0 = bez archivace)"
 
-#: ../src/parameters.c:594
+#: ../src/parameters.c:597
 msgid "Archiving is used to save time and space when handling events."
 msgstr "Archivace se používá pro úsporu času a místa při zpracování událostí."
 
-#: ../src/parameters.c:602
+#: ../src/parameters.c:605
 msgid "Sound command"
 msgstr "Příkaz pro přehrání zvuku"
 
-#: ../src/parameters.c:630
+#: ../src/parameters.c:633
 msgid "This command is given to shell to make sound in alarms."
 msgstr "Tento příkaz je předán shellu za účelem přehrání zvuku výstrah."
 
-#: ../src/parameters.c:661
+#: ../src/parameters.c:664
 msgid "Calendar window"
 msgstr "Okno kalendáře"
 
-#: ../src/parameters.c:668
+#: ../src/parameters.c:671
 msgid "Calendar visual details"
 msgstr "Podrobnosti zobrazení kalendáře"
 
-#: ../src/parameters.c:675
+#: ../src/parameters.c:678
 msgid "Show borders"
 msgstr "Zobrazit okraje"
 
-#: ../src/parameters.c:680
+#: ../src/parameters.c:683
 msgid "Show menu"
 msgstr "Zobrazit nabídku"
 
-#: ../src/parameters.c:688
+#: ../src/parameters.c:691
 msgid "Show day names"
 msgstr "Zobrazit názvy dnů"
 
-#: ../src/parameters.c:693
+#: ../src/parameters.c:696
 msgid "Show week numbers"
 msgstr "Zobrazit čísla týdnů"
 
-#: ../src/parameters.c:701
+#: ../src/parameters.c:704
 msgid "Show month and year"
 msgstr "Zobrazit měsíc a rok"
 
-#: ../src/parameters.c:721
+#: ../src/parameters.c:724
 msgid "Calendar info boxes"
 msgstr "Informační okna kalendáře"
 
-#: ../src/parameters.c:728
+#: ../src/parameters.c:731
 msgid "Show todo list"
 msgstr "Zobrazit seznam úkolů"
 
-#: ../src/parameters.c:735
+#: ../src/parameters.c:738
 msgid "Number of days to show in event window"
 msgstr "Počet dní ke zobrazení v okně událostí"
 
-#: ../src/parameters.c:743
+#: ../src/parameters.c:746
 msgid "0 = do not show event list at all"
 msgstr "0 = nezobrazovat seznam událostí"
 
-#: ../src/parameters.c:757
+#: ../src/parameters.c:760
 msgid "Calendar visibility"
 msgstr "Viditelnost kalendáře"
 
-#: ../src/parameters.c:763
+#: ../src/parameters.c:766
 msgid "Show on all desktops"
 msgstr "Zobrazit na všech pracovních plochách"
 
-#: ../src/parameters.c:768
+#: ../src/parameters.c:771
 msgid "Keep on top"
 msgstr "Vždy navrchu"
 
-#: ../src/parameters.c:776
+#: ../src/parameters.c:779
 msgid "Show in taskbar"
 msgstr "Zobrazit v panelu úloh"
 
-#: ../src/parameters.c:781
+#: ../src/parameters.c:784
 msgid "Show in pager"
 msgstr "Zobrazit v přepínači ploch"
 
-#: ../src/parameters.c:789
+#: ../src/parameters.c:792
 msgid "Show in systray"
 msgstr "Zobrazit v systémové oblasti"
 
-#: ../src/parameters.c:811
+#: ../src/parameters.c:820
 msgid "Calendar start"
 msgstr "Stav kalendáře po spuštění"
 
-#: ../src/parameters.c:817
+#: ../src/parameters.c:826
 msgid "Show"
 msgstr "Zobrazený"
 
-#: ../src/parameters.c:833
+#: ../src/parameters.c:842
 msgid "Hide"
 msgstr "Skrytý"
 
-#: ../src/parameters.c:850
+#: ../src/parameters.c:859
 msgid "Minimized"
 msgstr "Minimalizovaný"
 
-#: ../src/parameters.c:876
+#: ../src/parameters.c:885
 msgid "On calendar window open"
 msgstr "Při otevření okna kalendáře"
 
-#: ../src/parameters.c:882
+#: ../src/parameters.c:891
 msgid "Select today's date"
 msgstr "Vyberte dnešní datum"
 
-#: ../src/parameters.c:899
+#: ../src/parameters.c:908
 msgid "Select previously selected date"
 msgstr "Označit předchozí vybrané datum"
 
-#: ../src/parameters.c:923
+#: ../src/parameters.c:932
 msgid "Calendar day double click shows"
 msgstr "Dvojité kliknutí na den v kalendáři zobrazí"
 
-#: ../src/parameters.c:929
+#: ../src/parameters.c:938
 msgid "Days view"
 msgstr "Pohled na dny"
 
-#: ../src/parameters.c:945
+#: ../src/parameters.c:954
 msgid "Event list"
 msgstr "Seznam událostí"
 
-#: ../src/parameters.c:978
+#: ../src/parameters.c:987
 msgid "Extra settings"
 msgstr "Další nastavení"
 
-#: ../src/parameters.c:985
+#: ../src/parameters.c:994
 msgid "Event list window"
 msgstr "Okno seznamu událostí"
 
-#: ../src/parameters.c:992
+#: ../src/parameters.c:1001
 msgid "Number of extra days to show in event list"
 msgstr "Počet zbývajících dní ke zobrazení v seznamu událostí"
 
-#: ../src/parameters.c:1002
+#: ../src/parameters.c:1011
 msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
@@ -1559,27 +1516,27 @@ msgstr ""
 "Toto je pouze výchozí hodnota, kterou můžete změnit v okně seznamu "
 "aktuálních událostí."
 
-#: ../src/parameters.c:1010
+#: ../src/parameters.c:1019
 msgid "Show only first repeating event"
 msgstr "Zobrazovat pouze první opakující se položku"
 
-#: ../src/parameters.c:1027
+#: ../src/parameters.c:1036
 msgid "Day view window default first day"
 msgstr "Výchozí první den okna denního pohledu"
 
-#: ../src/parameters.c:1034
+#: ../src/parameters.c:1043
 msgid "First day of week"
 msgstr "První den v týdnu"
 
-#: ../src/parameters.c:1051
+#: ../src/parameters.c:1060
 msgid "Selected day"
 msgstr "Vybraný den"
 
-#: ../src/parameters.c:1074 ../src/parameters.c:1081
+#: ../src/parameters.c:1083 ../src/parameters.c:1090
 msgid "Use wakeup timer"
 msgstr "Použít budík"
 
-#: ../src/parameters.c:1089
+#: ../src/parameters.c:1098
 msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
@@ -1588,27 +1545,27 @@ msgstr ""
 "uspání nebo hibernaci. (Například pokud se ikona v systémové oblasti "
 "nepřekresluje nebo se nespouštějí výstrahy.)"
 
-#: ../src/parameters.c:1099
+#: ../src/parameters.c:1108
 msgid "Foreign file default visual alarm"
 msgstr "Vizuální výstraha výchozího cizího souboru"
 
-#: ../src/parameters.c:1106
+#: ../src/parameters.c:1115
 msgid "Orage window"
 msgstr "Okno aplikace Orage"
 
-#: ../src/parameters.c:1123
+#: ../src/parameters.c:1132
 msgid "Notify notification"
 msgstr "Používat oznámení"
 
-#: ../src/parameters.c:1146
+#: ../src/parameters.c:1155
 msgid "Always quit when asked to close"
 msgstr "Při ukončit při žádosti o ukončení"
 
-#: ../src/parameters.c:1153
+#: ../src/parameters.c:1162
 msgid "Always quit"
 msgstr "Vždy ukončit"
 
-#: ../src/parameters.c:1160
+#: ../src/parameters.c:1169
 msgid ""
 "By default Orage stays open in the background when asked to close. This "
 "option changes Orage to quit and never stay in background when it is asked "
@@ -1618,43 +1575,43 @@ msgstr ""
 "pozadí. Tato volba mění chování aplikace Orage tak, že se po žádosti o "
 "uzavření ukončí."
 
-#: ../src/parameters.c:1176
+#: ../src/parameters.c:1184
 msgid "Orage Preferences"
 msgstr "Nastavení aplikace Orage"
 
-#: ../src/parameters.c:1200 ../src/reminder.c:712
+#: ../src/parameters.c:1206 ../src/reminder.c:716
 msgid "_Close"
 msgstr "_Zavřít"
 
-#: ../src/reminder.c:490
+#: ../src/reminder.c:494
 msgid "Reminder "
 msgstr "Upomínka"
 
-#: ../src/reminder.c:519
+#: ../src/reminder.c:523
 msgid "Open"
 msgstr "Otevřít"
 
-#: ../src/reminder.c:637
+#: ../src/reminder.c:641
 msgid "Reminder - Orage"
 msgstr "Upomínka - Orage"
 
-#: ../src/reminder.c:720
+#: ../src/reminder.c:724
 msgid "_Stop"
 msgstr "Za_stavit"
 
-#: ../src/reminder.c:728
+#: ../src/reminder.c:732
 msgid "Postpone"
 msgstr "Odložit"
 
-#: ../src/reminder.c:730
+#: ../src/reminder.c:734
 msgid "Remind me again after the specified time"
 msgstr "Opětovně připomenout po zadaném čase"
 
-#: ../src/reminder.c:995
+#: ../src/reminder.c:1003
 msgid "Next active alarms:"
 msgstr "Následující aktivní výstrahy:"
 
-#: ../src/reminder.c:1034
+#: ../src/reminder.c:1042
 #, c-format
 msgid ""
 "\n"
@@ -1663,7 +1620,7 @@ msgstr ""
 "\n"
 "%02d d %02d h %02d minut do: %s"
 
-#: ../src/reminder.c:1046
+#: ../src/reminder.c:1054
 #, c-format
 msgid ""
 "\n"
@@ -3984,15 +3941,15 @@ msgstr "UTC"
 msgid "floating"
 msgstr "nezávislý na čas. pásmu"
 
-#: ../src/tray_icon.c:415
+#: ../src/tray_icon.c:403
 msgid "New appointment"
 msgstr "Nová schůzka"
 
-#: ../src/tray_icon.c:422
+#: ../src/tray_icon.c:410
 msgid "Preferences"
 msgstr "Předvolby"
 
-#: ../src/tray_icon.c:429
+#: ../src/tray_icon.c:417
 msgid "Quit"
 msgstr "Ukončit"
 
