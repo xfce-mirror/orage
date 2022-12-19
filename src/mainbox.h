@@ -59,11 +59,11 @@ typedef struct _CalWin
     GtkWidget *mEvent_rows_vbox;
 } CalWin;
 
-void build_mainWin();
-gboolean orage_mark_appointments();
-void build_mainbox_info();
-void build_mainbox_event_box();
-void build_mainbox_todo_box();
+void build_mainWin (void);
+gboolean orage_mark_appointments (void);
+void build_mainbox_info (void);
+void build_mainbox_event_box (void);
+void build_mainbox_todo_box (void);
 void mCalendar_month_changed_cb(GtkCalendar *calendar, gpointer user_data);
 
 #endif /* !__MAINBOX_H__ */

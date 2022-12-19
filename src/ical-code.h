@@ -129,7 +129,7 @@ gboolean xfical_file_open(gboolean foreign);
 void xfical_file_close(gboolean foreign);
 void xfical_file_close_force(void);
 
-xfical_appt *xfical_appt_alloc();
+xfical_appt *xfical_appt_alloc (void);
 char *xfical_appt_add(char *ical_file_id, xfical_appt *appt);
 xfical_appt *xfical_appt_get(const gchar *ical_id);
 void xfical_appt_free(xfical_appt *appt);

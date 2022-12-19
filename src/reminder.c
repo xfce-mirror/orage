@@ -91,7 +91,7 @@ typedef struct _orage_ddmmhh_hbox
 } orage_ddmmhh_hbox_struct;
 
 static void create_notify_reminder(alarm_struct *l_alarm);
-static void reset_orage_alarm_clock();
+static void reset_orage_alarm_clock (void);
 
 static void alarm_free(gpointer galarm)
 {

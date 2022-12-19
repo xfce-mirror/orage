@@ -430,7 +430,7 @@ static void destroy_TrayIcon(GtkStatusIcon *trayIcon)
     g_object_unref(trayIcon);
 }
 
-GtkStatusIcon* orage_create_trayicon ()
+GtkStatusIcon *orage_create_trayicon (void)
 {
     CalWin *xfcal = (CalWin *)g_par.xfcal;
     GtkWidget *trayMenu;
