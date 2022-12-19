@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 15:01+0100\n"
+"POT-Creation-Date: 2022-12-19 00:47+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>, 2022\n"
 "Language-Team: Korean (https://www.transifex.com/xfce/teams/16840/ko/)\n"
@@ -23,11 +23,11 @@ msgstr ""
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../src/about-xfcalendar.c:54 ../org.xfce.orage.appdata.xml.in.h:2
+#: ../src/about-xfcalendar.c:52 ../org.xfce.orage.appdata.xml.in.h:2
 msgid "Orage is a time-managing application for the Xfce desktop environment"
-msgstr ""
+msgstr "오라주는 Xfce 데스크톱 환경용 시간 관리 프로그램입니다."
 
-#: ../src/about-xfcalendar.c:58
+#: ../src/about-xfcalendar.c:56
 msgid "translator-credits"
 msgstr ""
 "Kibum Han <yui@yui.pe.kr>\n"
@@ -45,14 +45,14 @@ msgstr "말일"
 msgid "Due"
 msgstr "기한"
 
-#: ../src/appointment.c:508 ../src/mainbox.c:677
+#: ../src/appointment.c:508 ../src/mainbox.c:683
 #: ../org.xfce.orage.appdata.xml.in.h:1
 msgid "Orage"
-msgstr "Orage"
+msgstr "오라주"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
-#: ../src/appointment.c:699 ../src/interface.c:262 ../src/parameters.c:392
+#: ../src/appointment.c:699 ../src/interface.c:262 ../src/parameters.c:395
 msgid "Select a file..."
 msgstr "파일 선택..."
 
@@ -68,7 +68,7 @@ msgstr "모든 파일"
 msgid "The appointment information has been modified."
 msgstr "일정 정보를 변경하였습니다."
 
-#: ../src/appointment.c:766 ../src/appointment.c:1340 ../src/event-list.c:998
+#: ../src/appointment.c:766 ../src/appointment.c:1340 ../src/event-list.c:1001
 msgid "Do you want to continue?"
 msgstr "계속 진행하시렵니까?"
 
@@ -94,7 +94,7 @@ msgstr "새 일정을 이 파일에 추가합니다."
 
 #: ../src/appointment.c:1190 ../src/appointment.c:1238
 msgid "Orage default file"
-msgstr "Orage 기본 파일"
+msgstr "오라주 기본 파일"
 
 #: ../src/appointment.c:1276
 msgid "Appointment addition failed."
@@ -113,13 +113,13 @@ msgstr "일정 업데이트에 실패했습니다."
 msgid ""
 "Look more details from the log file. (Perhaps file was updated external from"
 " Orage?)"
-msgstr "자세한 내용은 로그 파일을 보십시오.(아마 파일 내용이 Orage 외부에서 업데이트 되었을지도?)"
+msgstr "자세한 내용은 로그 파일을 보십시오.(아마 파일 내용이 오라주 외부에서 업데이트 되었을지도?)"
 
 #: ../src/appointment.c:1339
 msgid "This appointment will be permanently removed."
 msgstr "이 일정을 완전히 제거합니다."
 
-#: ../src/appointment.c:1341 ../src/event-list.c:999
+#: ../src/appointment.c:1341 ../src/event-list.c:1002
 msgid "No, cancel the removal"
 msgstr "아니요, 제거하지 않습니다"
 
@@ -128,13 +128,13 @@ msgid "Yes, remove it"
 msgstr "예, 제거합니다"
 
 #: ../src/appointment.c:1441 ../src/appointment.c:1456 ../src/day-view.c:471
-#: ../src/event-list.c:1058 ../src/functions.c:144
+#: ../src/event-list.c:1061 ../src/functions.c:144
 msgid "Pick the date"
 msgstr "날짜 선택"
 
 #: ../src/appointment.c:1443 ../src/appointment.c:1458 ../src/day-view.c:400
-#: ../src/day-view.c:473 ../src/event-list.c:1060 ../src/event-list.c:1214
-#: ../src/functions.c:146 ../src/tray_icon.c:408
+#: ../src/day-view.c:473 ../src/event-list.c:1063 ../src/event-list.c:1217
+#: ../src/functions.c:146 ../src/tray_icon.c:396
 msgid "Today"
 msgstr "오늘"
 
@@ -146,7 +146,7 @@ msgstr "이 일정이 없습니다."
 msgid "It was probably removed, please refresh your screen."
 msgstr "아마도 지워진 것 같습니다. 화면을 새로 고침 하십시오."
 
-#: ../src/appointment.c:2183 ../src/interface.c:674
+#: ../src/appointment.c:2183 ../src/interface.c:676
 msgid "_Remove"
 msgstr "제거(_R)"
 
@@ -162,13 +162,13 @@ msgstr "색을 지정해서 새로운 분류 더하기"
 msgid "Category:"
 msgstr "분류:"
 
-#: ../src/appointment.c:2258 ../src/interface.c:1453
+#: ../src/appointment.c:2258 ../src/interface.c:1455
 msgid "_Add"
 msgstr "추가(_A)"
 
 #: ../src/appointment.c:2287
 msgid "Colors of categories - Orage"
-msgstr "분류에 대한 색 - Orage"
+msgstr "분류 색상 - 오라주"
 
 #: ../src/appointment.c:2334
 msgid " *** COPY ***"
@@ -176,13 +176,13 @@ msgstr " *** 복사 ***"
 
 #: ../src/appointment.c:2617
 msgid "New appointment - Orage"
-msgstr "새 일정 - Orage"
+msgstr "새 일정 - 오라주"
 
 #. File menu stuff
 #. ********* File menu *********
 #. File menu
-#: ../src/appointment.c:2645 ../src/day-view.c:294 ../src/event-list.c:1115
-#: ../src/interface.c:859 ../src/mainbox.c:210
+#: ../src/appointment.c:2645 ../src/day-view.c:294 ../src/event-list.c:1118
+#: ../src/interface.c:861 ../src/mainbox.c:212
 msgid "_File"
 msgstr "파일(_F)"
 
@@ -190,7 +190,7 @@ msgstr "파일(_F)"
 msgid "Sav_e and close"
 msgstr "저장하고 종료(_E)"
 
-#: ../src/appointment.c:2664 ../src/event-list.c:1121
+#: ../src/appointment.c:2664 ../src/event-list.c:1124
 msgid "D_uplicate"
 msgstr "복사(_U)"
 
@@ -206,11 +206,11 @@ msgstr "저장하고 닫기"
 msgid "Revert"
 msgstr "되돌리기"
 
-#: ../src/appointment.c:2904 ../src/event-list.c:1205
+#: ../src/appointment.c:2904 ../src/event-list.c:1208
 msgid "Duplicate"
 msgstr "복사"
 
-#: ../src/appointment.c:2909 ../src/event-list.c:1207
+#: ../src/appointment.c:2909 ../src/event-list.c:1210
 msgid "Delete"
 msgstr "삭제"
 
@@ -231,7 +231,7 @@ msgstr "일반"
 msgid "Type "
 msgstr "형태"
 
-#: ../src/appointment.c:2939 ../src/event-list.c:1260
+#: ../src/appointment.c:2939 ../src/event-list.c:1263
 msgid "Event"
 msgstr "행사"
 
@@ -243,7 +243,7 @@ msgstr ""
 "가끔 일어나는 행사입니다. 예:\n"
 "모임, 생일, 또는 TV쇼가 있습니다."
 
-#: ../src/appointment.c:2947 ../src/event-list.c:1319
+#: ../src/appointment.c:2947 ../src/event-list.c:1322
 msgid "Todo"
 msgstr "할 일"
 
@@ -253,9 +253,9 @@ msgid ""
 "Wash your car or test new version of Orage."
 msgstr ""
 "가끔 해야할 일. 예:\n"
-"세차, Orage 새버전 테스트."
+"세차, 오라주 새 버전 시험."
 
-#: ../src/appointment.c:2955 ../src/event-list.c:1333
+#: ../src/appointment.c:2955 ../src/event-list.c:1336
 msgid "Journal"
 msgstr "저널"
 
@@ -295,15 +295,15 @@ msgstr "설정     "
 msgid "Duration"
 msgstr "주기"
 
-#: ../src/appointment.c:3035 ../src/appointment.c:3242 ../src/reminder.c:676
+#: ../src/appointment.c:3035 ../src/appointment.c:3242 ../src/reminder.c:680
 msgid "days"
 msgstr "일"
 
-#: ../src/appointment.c:3037 ../src/appointment.c:3244 ../src/reminder.c:678
+#: ../src/appointment.c:3037 ../src/appointment.c:3244 ../src/reminder.c:682
 msgid "hours"
 msgstr "시간"
 
-#: ../src/appointment.c:3039 ../src/appointment.c:3246 ../src/reminder.c:680
+#: ../src/appointment.c:3039 ../src/appointment.c:3246 ../src/reminder.c:684
 msgid "mins"
 msgstr "분"
 
@@ -334,7 +334,7 @@ msgstr "특별한 분류 항목이기 때문에, 목록에 있는 일정을 표�
 
 #: ../src/appointment.c:3106
 msgid "_Colour"
-msgstr ""
+msgstr "색상(_C)"
 
 #: ../src/appointment.c:3111
 msgid "update colors for categories."
@@ -442,9 +442,9 @@ msgstr "사용"
 msgid "Select this if you want audible alarm"
 msgstr "소리나는 알림을 사용하려면 선택하십시오."
 
-#: ../src/appointment.c:3302 ../src/interface.c:1049 ../src/interface.c:1095
-#: ../src/interface.c:1271 ../src/interface.c:1363 ../src/interface.c:1446
-#: ../src/parameters.c:397 ../src/parameters.c:620 ../src/reminder.c:705
+#: ../src/appointment.c:3302 ../src/interface.c:1051 ../src/interface.c:1097
+#: ../src/interface.c:1273 ../src/interface.c:1365 ../src/interface.c:1448
+#: ../src/parameters.c:400 ../src/parameters.c:623 ../src/reminder.c:709
 msgid "_Open"
 msgstr "열기(_O)"
 
@@ -467,7 +467,7 @@ msgstr "눈에 보이는 알림"
 
 #: ../src/appointment.c:3360
 msgid "Use Orage window"
-msgstr "Orage 창 사용"
+msgstr "오라주 창 사용"
 
 #: ../src/appointment.c:3362
 msgid "Select this if you want Orage window alarm"
@@ -526,9 +526,9 @@ msgstr ""
 "\t<&ST> 일정 시작 시간\n"
 "\t<&ET> 일정 마감 시간"
 
-#: ../src/appointment.c:3446 ../src/interface.c:1183 ../src/interface.c:1205
+#: ../src/appointment.c:3446 ../src/interface.c:1185 ../src/interface.c:1207
 msgid "_Execute"
-msgstr ""
+msgstr "실행(_E):"
 
 #: ../src/appointment.c:3448
 msgid "Test this alarm by raising it now"
@@ -538,8 +538,8 @@ msgstr "이것을 지금 띄워서 알림을 시험하기"
 msgid "<b>Default alarm</b>"
 msgstr "<b>기본 알림</b>"
 
-#: ../src/appointment.c:3467 ../src/interface.c:1056 ../src/interface.c:1102
-#: ../src/interface.c:1277 ../src/interface.c:1369
+#: ../src/appointment.c:3467 ../src/interface.c:1058 ../src/interface.c:1104
+#: ../src/interface.c:1279 ../src/interface.c:1371
 msgid "_Save"
 msgstr "저장(_S)"
 
@@ -762,16 +762,16 @@ msgstr "실행 일자"
 
 #. ********* View menu *********
 #. View menu
-#: ../src/day-view.c:304 ../src/event-list.c:1138 ../src/mainbox.c:236
+#: ../src/day-view.c:304 ../src/event-list.c:1141 ../src/mainbox.c:238
 msgid "_View"
 msgstr "보기(_V)"
 
 #. ********* Go menu   *********
-#: ../src/day-view.c:318 ../src/event-list.c:1157
+#: ../src/day-view.c:318 ../src/event-list.c:1160
 msgid "_Go"
 msgstr "이동(_G)"
 
-#: ../src/day-view.c:391 ../src/event-list.c:1203
+#: ../src/day-view.c:391 ../src/event-list.c:1206
 msgid "New"
 msgstr "새로 만들기"
 
@@ -791,11 +791,11 @@ msgstr "하루 앞으로"
 msgid "Forward one week"
 msgstr "일주일 앞으로"
 
-#: ../src/day-view.c:409 ../src/event-list.c:1221
+#: ../src/day-view.c:409 ../src/event-list.c:1224
 msgid "Refresh"
 msgstr "새로 고침"
 
-#: ../src/day-view.c:414 ../src/event-list.c:1228 ../src/interface.c:878
+#: ../src/day-view.c:414 ../src/event-list.c:1231 ../src/interface.c:880
 msgid "Close"
 msgstr "닫기"
 
@@ -813,26 +813,26 @@ msgstr "       보여줄 기간 수"
 
 #: ../src/day-view.c:1071
 msgid "Orage - day view"
-msgstr "Orage - 날짜로 보기"
+msgstr "오라주 - 날짜 보기"
 
 #. date only appointment
-#: ../src/event-list.c:187
+#: ../src/event-list.c:190
 msgid "All day"
 msgstr "하루 종일"
 
-#: ../src/event-list.c:618 ../src/event-list.c:1422
+#: ../src/event-list.c:621 ../src/event-list.c:1425
 msgid "Time"
 msgstr "시간"
 
-#: ../src/event-list.c:801
+#: ../src/event-list.c:804
 msgid "No rows have been selected."
 msgstr "뭘 좀 고르시지요."
 
-#: ../src/event-list.c:802
+#: ../src/event-list.c:805
 msgid "Click a row to select it and after that you can copy it."
 msgstr "눌러서 줄을 선택하면 복사할 수 있습니다."
 
-#: ../src/event-list.c:997
+#: ../src/event-list.c:1000
 msgid ""
 "You will permanently remove all\n"
 "selected appointments."
@@ -840,35 +840,35 @@ msgstr ""
 "션택한 모든 일정을 완전히\n"
 "제거합니다."
 
-#: ../src/event-list.c:1000
+#: ../src/event-list.c:1003
 msgid "Yes, remove them"
 msgstr "예, 그것을 제거했습니다."
 
-#: ../src/event-list.c:1212
+#: ../src/event-list.c:1215
 msgid "Back"
 msgstr "뒤로"
 
-#: ../src/event-list.c:1216
+#: ../src/event-list.c:1219
 msgid "Forward"
 msgstr "앞으로"
 
-#: ../src/event-list.c:1223
+#: ../src/event-list.c:1226
 msgid "Find"
 msgstr "찾기"
 
-#: ../src/event-list.c:1230
+#: ../src/event-list.c:1233
 msgid "Dayview"
 msgstr "날짜별"
 
-#: ../src/event-list.c:1265
+#: ../src/event-list.c:1268
 msgid "Extra days to show:"
 msgstr "표시할 추가 날짜 수:"
 
-#: ../src/event-list.c:1279
+#: ../src/event-list.c:1282
 msgid "only first repeating"
 msgstr "처음 반복되는 행사만"
 
-#: ../src/event-list.c:1287
+#: ../src/event-list.c:1290
 msgid ""
 "Check this if you only want to see the first repeating event. By default all are shown.\n"
 "Note that this also shows all urgencies.\n"
@@ -878,11 +878,11 @@ msgstr ""
 "참고로 모든 긴급 사항에 대해서도 표시합니다.\n"
 "게다가 반복되는 행사는 처음 일어나는 행사만 표시하는 것처럼 먼저 나타날 수 있습니다."
 
-#: ../src/event-list.c:1292
+#: ../src/event-list.c:1295
 msgid "also old"
 msgstr "이전 행사 포함"
 
-#: ../src/event-list.c:1297
+#: ../src/event-list.c:1300
 msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed'."
@@ -890,27 +890,27 @@ msgstr ""
 "이전 행사도 보려면 이 옵션을 표시하십시오. 이 옵션은 '처음 반복되는 행사만' 옵션을 표시한 다음 목록이 상당히 길어지는 현상을 막으려는 경우에만 선택할 수 있습니다.\n"
 "참고로 추가 날짜 선택은 새 일정을 목록에 표시했을 경우에 정의할 수 있습니다."
 
-#: ../src/event-list.c:1336
+#: ../src/event-list.c:1339
 msgid "Journal entries starting from:"
 msgstr "일지를 적기 시작한 날짜:"
 
-#: ../src/event-list.c:1361
+#: ../src/event-list.c:1364
 msgid "Search"
 msgstr "검색"
 
-#: ../src/event-list.c:1364
+#: ../src/event-list.c:1367
 msgid "Search text "
 msgstr "문장 검색 "
 
-#: ../src/event-list.c:1430
+#: ../src/event-list.c:1433
 msgid "Flags"
 msgstr "플래그"
 
-#: ../src/event-list.c:1438
+#: ../src/event-list.c:1441
 msgid "Title"
 msgstr "제목"
 
-#: ../src/event-list.c:1464
+#: ../src/event-list.c:1467
 msgid ""
 "Double click line to edit it.\n"
 "\n"
@@ -928,109 +928,109 @@ msgstr ""
 "줄을 두 번 눌러서 편집하십시오.\n"
 "\n"
 "순서별 플래그:\n"
-"⇥ 1. Alarm: n=알림 없음\n"
-"⇥⇥ A=알림 설정함 P=지속 알림 설정\n"
-"⇥ 2. Recurrence: n=반복 안함\n"
-"⇥⇥ H=시간별 D=일일 W=주간 M=월간 Y=연간\n"
-"⇥ 3. Type: f=용무 없음 B=용무 있음\n"
-"⇥ 4. 파일 위치:\n"
-"⇥⇥O=Orage A=아카이브 F=외부\n"
-"⇥ 5. 일정 형식\n"
-"⇥⇥E=행사 T=할 일 J=일기"
+"\t 1. Alarm: n=알림 없음\n"
+"\t\t A=알림 설정함 P=지속 알림 설정\n"
+"\t 2. Recurrence: n=반복 안함\n"
+"\t\t H=시간별 D=일일 W=주간 M=월간 Y=연간\n"
+"\t 3. Type: f=용무 없음 B=용무 있음\n"
+"\t 4. 파일 위치:\n"
+"\t\tO=오라주 A=아카이브 F=외부\n"
+"\t 5. 일정 형식\n"
+"\t\tE=행사 T=할 일 J=일기"
 
 #: ../src/ical-code.c:780
 msgid "Orage default alarm"
-msgstr "Orage 기본 알림"
+msgstr "오라주 기본 알림"
 
 #: ../src/interface.c:269
 msgid "Calendar files"
 msgstr "달력 파일"
 
-#: ../src/interface.c:644
+#: ../src/interface.c:646
 msgid "Current foreign files"
 msgstr "사용중인 외부 파일"
 
-#: ../src/interface.c:667
+#: ../src/interface.c:669
 msgid "READ ONLY"
 msgstr "읽기 전용"
 
-#: ../src/interface.c:669
+#: ../src/interface.c:671
 msgid "READ WRITE"
 msgstr "읽고 쓰기 가능"
 
-#: ../src/interface.c:694
+#: ../src/interface.c:696
 msgid "***** No foreign files *****"
 msgstr "***** 외부 파일 없음 *****"
 
-#: ../src/interface.c:708
+#: ../src/interface.c:710
 msgid "Foreign file add failed"
 msgstr "외부 파일 추가에 실패했습니다"
 
-#: ../src/interface.c:717
+#: ../src/interface.c:719
 msgid "Orage can only handle 10 foreign files. Limit reached."
-msgstr "Orage는 외부 파일을 10개 까지만 처리할 수 있습니다. 한계에 도달했습니다."
+msgstr "오라주는 외부 파일을 10개 까지만 처리할 수 있습니다. 한계에 도달했습니다."
 
-#: ../src/interface.c:727
+#: ../src/interface.c:729
 msgid "Filename is empty."
 msgstr "파일 이름이 없습니다."
 
-#: ../src/interface.c:737
+#: ../src/interface.c:739
 msgid "Name is empty."
 msgstr "이름이 없습니다."
 
-#: ../src/interface.c:748
+#: ../src/interface.c:750
 msgid "File does not exist."
 msgstr "파일이 없습니다."
 
-#: ../src/interface.c:760
+#: ../src/interface.c:762
 msgid "Same filename already exists in Orage."
-msgstr "Orage에 같은 파일 이름이 있습니다."
+msgstr "오라주에 같은 파일 이름이 있습니다."
 
-#: ../src/interface.c:771
+#: ../src/interface.c:773
 msgid "Same name already exists in Orage."
-msgstr "Orage에 같은 이름이 있습니다."
+msgstr "오라주에 같은 이름이 있습니다."
 
-#: ../src/interface.c:1024
+#: ../src/interface.c:1026
 msgid "Import/export"
 msgstr "가져오기/내보내기"
 
-#: ../src/interface.c:1031
+#: ../src/interface.c:1033
 msgid "Import"
 msgstr "가져오기"
 
-#: ../src/interface.c:1039
+#: ../src/interface.c:1041
 msgid "Read from file:"
 msgstr "파일에서 읽기:"
 
-#: ../src/interface.c:1069
+#: ../src/interface.c:1071
 msgid ""
 "Separate filenames with comma(,).\n"
 " NOTE: comma is not valid character in filenames for Orage."
 msgstr ""
 "쉼표(,)로 파일 이름을 분리하십시오.\n"
-" 알림:쉼표는 Orage의 파일 이름으로 사용할 수 없는 문자"
+" 알림:쉼표는 오라주의 파일 이름으로 사용할 수 없는 문자입니다."
 
-#: ../src/interface.c:1074
+#: ../src/interface.c:1076
 msgid "Export"
 msgstr "내보내기"
 
-#: ../src/interface.c:1082
+#: ../src/interface.c:1084
 msgid "Write to file:"
 msgstr "저장할 파일:"
 
-#: ../src/interface.c:1117 ../src/interface.c:1135
+#: ../src/interface.c:1119 ../src/interface.c:1137
 msgid "Select"
 msgstr "선택"
 
-#: ../src/interface.c:1122
+#: ../src/interface.c:1124
 msgid "All appointments"
 msgstr "모든 일정"
 
-#: ../src/interface.c:1141
+#: ../src/interface.c:1143
 msgid "Named appointments:"
-msgstr ""
+msgstr "명명 일정:"
 
-#: ../src/interface.c:1160
+#: ../src/interface.c:1162
 msgid ""
 "Note that only main file appointments are read.\n"
 "Archived and Foreign events are not exported."
@@ -1038,7 +1038,7 @@ msgstr ""
 "메인 파일의 일정만 읽어 들입니다.\n"
 "보관한 행사와 외부 행사는 내보내지 않습니다."
 
-#: ../src/interface.c:1163
+#: ../src/interface.c:1165
 msgid ""
 "Note that only main file appointments are read.\n"
 "Foreign events are not exported."
@@ -1046,132 +1046,132 @@ msgstr ""
 "메인 파일의 일정만 읽어 들입니다.\n"
 "일정은 내보내지 않습니다."
 
-#: ../src/interface.c:1166
+#: ../src/interface.c:1168
 msgid "You can easily drag these from event-list window."
 msgstr "이벤트 목록 창에 쉽게 끌어다 놓을 수 있습니다."
 
-#: ../src/interface.c:1168
+#: ../src/interface.c:1170
 msgid "Orage appointment UIDs separated by commas."
-msgstr "쉼표로 분리된 Orage의 일정 UID입니다."
+msgstr "쉼표로 분리한 오라주의 일정 UID입니다."
 
-#: ../src/interface.c:1174
+#: ../src/interface.c:1176
 msgid "Archive"
 msgstr "보관"
 
-#: ../src/interface.c:1189
+#: ../src/interface.c:1191
 #, c-format
 msgid "Archive now (threshold: %d months)"
 msgstr "현재 보관 기준( %d 개월)"
 
-#: ../src/interface.c:1200
+#: ../src/interface.c:1202
 msgid "You can change archive threshold in parameters"
 msgstr "매개변수로 보관 주기를 바꿀 수 있습니다."
 
-#: ../src/interface.c:1212
+#: ../src/interface.c:1214
 msgid "Revert archive now"
 msgstr "지금 보관내용 복귀"
 
-#: ../src/interface.c:1219
+#: ../src/interface.c:1221
 msgid ""
 "Return all archived events into main orage file and remove arch file.\n"
 "This is useful for example when doing export and moving orage\n"
 "appointments to another system."
 msgstr ""
-"보관된 모든 행사를 메인 orage에 돌려 주고 보관 파일을 제거합니다.\n"
-"orage 일정을 내보내서 다른 시스템으로 옮기려는 경우에 \n"
+"보관한 모든 행사를 메인 오라주 파일에 넘겨주고 보관 파일을 제거합니다.\n"
+"오라주 일정을 내보내서 다른 시스템으로 옮기려는 경우에 \n"
 "상당히 편리한 기능입니다."
 
-#: ../src/interface.c:1231
+#: ../src/interface.c:1233
 msgid "Orage files"
-msgstr "Orage 파일"
+msgstr "오라주 파일"
 
-#: ../src/interface.c:1238
+#: ../src/interface.c:1240
 msgid "Orage main calendar file"
-msgstr "Orage 달력 파일"
+msgstr "오라주 달력 파일"
 
-#: ../src/interface.c:1247 ../src/interface.c:1340
+#: ../src/interface.c:1249 ../src/interface.c:1342
 msgid "Current file:"
 msgstr "현재 파일:"
 
-#: ../src/interface.c:1259 ../src/interface.c:1352
+#: ../src/interface.c:1261 ../src/interface.c:1354
 msgid "New file:"
 msgstr "새 파일:"
 
-#: ../src/interface.c:1287 ../src/interface.c:1379
+#: ../src/interface.c:1289 ../src/interface.c:1381
 msgid "Action options:"
 msgstr "동작 옵션:"
 
-#: ../src/interface.c:1291 ../src/interface.c:1383
+#: ../src/interface.c:1293 ../src/interface.c:1385
 msgid "Rename"
 msgstr "이름 변경"
 
-#: ../src/interface.c:1297
+#: ../src/interface.c:1299
 msgid ""
 "Orage internal file rename only.\n"
 "Does not touch external filesystem at all.\n"
 "New file must exist."
 msgstr ""
-"Orage 내부 파일만 이름을 바꿉니다.\n"
+"오라주 내부 파일만 이름을 바꿉니다.\n"
 "외부 파일 시스템에 대해서는 아무 짓도 안합니다.\n"
 "새로운 파일이 있어야만 합니다."
 
-#: ../src/interface.c:1301 ../src/interface.c:1390
+#: ../src/interface.c:1303 ../src/interface.c:1392
 msgid "Copy"
 msgstr "복사"
 
-#: ../src/interface.c:1307
+#: ../src/interface.c:1309
 msgid "Current file is copied and stays unmodified in the old place."
 msgstr "현재의 파일을 복사하기 때문에 원본은 그대로 남아있습니다."
 
-#: ../src/interface.c:1311 ../src/interface.c:1397
+#: ../src/interface.c:1313 ../src/interface.c:1399
 msgid "Move"
 msgstr "이동"
 
-#: ../src/interface.c:1317
+#: ../src/interface.c:1319
 msgid "Current file is moved and vanishes from the old place."
 msgstr "현재의 파일을 다른 곳으로 옮깁니다."
 
-#: ../src/interface.c:1331
+#: ../src/interface.c:1333
 msgid "Archive file"
 msgstr "보관파일"
 
-#: ../src/interface.c:1422
+#: ../src/interface.c:1424
 msgid "Foreign files"
 msgstr "외부파일"
 
-#: ../src/interface.c:1429
+#: ../src/interface.c:1431
 msgid "Add new foreign file"
 msgstr "새로운 외부파일을 추가"
 
-#: ../src/interface.c:1437
+#: ../src/interface.c:1439
 msgid "Foreign file:"
 msgstr "외부 파일:"
 
-#: ../src/interface.c:1468
+#: ../src/interface.c:1470
 msgid "Visible name:"
 msgstr "표시할 이름:"
 
-#: ../src/interface.c:1478
+#: ../src/interface.c:1480
 msgid "Read only"
 msgstr "읽기 전용"
 
-#: ../src/interface.c:1488
+#: ../src/interface.c:1490
 msgid ""
 "Set this if you want to make sure that this file is never modified by Orage.\n"
 "Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
 msgstr ""
-"Orage에서 이 파일을 절대로 변경하지 않기를 바라면 선택하십시오.\n"
+"오라주에서 이 파일을 절대로 변경하지 않기를 바라면 선택하십시오.\n"
 "외부파일을 수정하면, 원래 그 파일을 이용하던 프로그램과의 호환성을 읽을 지도 모름니다!"
 
-#: ../src/interface.c:1490
+#: ../src/interface.c:1492
 msgid "This internal name is displayed to user instead of file name."
 msgstr "이 내부 이름은 사용자에게 파일 이름 대신 보여줍니다."
 
-#: ../src/interface.c:1504
+#: ../src/interface.c:1506
 msgid "Exchange data - Orage"
-msgstr "데이터 교환 - Orage"
+msgstr "데이터 교환 - 오라주"
 
-#: ../src/main.c:274
+#: ../src/main.c:172
 #, c-format
 msgid ""
 "\tThis is %s version %s\n"
@@ -1180,150 +1180,113 @@ msgstr ""
 "\t%s 버전 %s입니다\n"
 "\n"
 
-#: ../src/main.c:276
+#: ../src/main.c:174
 #, c-format
 msgid "\tReleased under the terms of the GNU General Public License.\n"
 msgstr "GNU General Public License 조항에 따라 릴리즈했습니다.\n"
 
-#: ../src/main.c:277
+#: ../src/main.c:175
 #, c-format
 msgid "\tCompiled against GTK+-%d.%d.%d, "
 msgstr "\tGTK+-%d.%d.%d(으)로 컴파일했고, "
 
-#: ../src/main.c:279
+#: ../src/main.c:177
 #, c-format
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "GTK+-%d.%d.%d을(를) 사용합니다.\n"
 
-#: ../src/main.c:281
+#: ../src/main.c:179
 #, c-format
 msgid "\tUsing DBUS for import.\n"
 msgstr "\t가져오기위해 DBUS를 사용합니다.\n"
 
-#: ../src/main.c:283
+#: ../src/main.c:181
 #, c-format
 msgid "\tUsing libnotify.\n"
 msgstr "\t libnotify를 사용합니다.\n"
 
-#: ../src/main.c:285
+#: ../src/main.c:183
 #, c-format
 msgid "\tNot using libnotify.\n"
 msgstr "\tlibnotify를 사용하지 않습니다.\n"
 
-#: ../src/main.c:288
+#: ../src/main.c:186
 #, c-format
 msgid "\tUsing automatic archiving.\n"
 msgstr "\t자동 보관을 사용합니다.\n"
 
-#: ../src/main.c:290
+#: ../src/main.c:188
 #, c-format
 msgid "\tNot using archiving.\n"
 msgstr "\t보관기능 사용안함.\n"
 
-#: ../src/main.c:293
+#: ../src/main.c:191
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
-msgstr ""
+msgstr "\tlibxfce4ui 활용: 예\n"
 
-#: ../src/main.c:295
+#: ../src/main.c:193
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
-msgstr ""
+msgstr "\tlibxfce4ui 활용: 아니요\n"
 
-#: ../src/main.c:308
-msgid ""
-"Usage: orage [options] [files]\n"
-"\n"
-msgstr ""
-"사용법: orage [옵션] [파일]\n"
-"\n"
+#: ../src/main.c:489
+msgid "Show version of orage"
+msgstr "오라주 버전 표시"
 
-#: ../src/main.c:309
-msgid "Options:\n"
-msgstr "옵션:\n"
+#: ../src/main.c:498
+msgid "Show preferences form"
+msgstr "기본 설정 양식 표시"
 
-#: ../src/main.c:310
-msgid "--version (-v) \t\tshow version of orage\n"
-msgstr "--version (-v) \t\torage의 버전을 보여줍니다.\n"
+#: ../src/main.c:507
+msgid "Make Orage visible/unvisible"
+msgstr "오라주 표시/숨김"
 
-#: ../src/main.c:311
-msgid "--help (-h) \t\tprint this text\n"
-msgstr "--help (-h) \t\t지금 보고 있는 내용을 보여줍니다.\n"
+#: ../src/main.c:516
+msgid "Add a foreign file"
+msgstr "외부 파일 추가"
 
-#: ../src/main.c:312
-msgid "--preferences (-p) \tshow preferences form\n"
-msgstr "--preferences (-p) \t기본 설정 창을 보여줍니다.\n"
+#: ../src/main.c:534
+msgid "Export appointments from Orage to file"
+msgstr "오라주 약속을 파일로 내보내기"
 
-#: ../src/main.c:313
-msgid "--toggle (-t) \t\tmake orage visible/unvisible\n"
-msgstr "--toggle (-t) \t\torage를 보여주거나 감춤니다.\n"
-
-#: ../src/main.c:314
-msgid "--add-foreign (-a) file [RW] [name] \tadd a foreign file\n"
-msgstr "--add-foreign (-a) 파일 [RW] [이름] ⇥외부 파일을 추가합니다\n"
-
-#: ../src/main.c:315
-msgid "--remove-foreign (-r) file \tremove a foreign file\n"
-msgstr "--remove-foreign (-r) 파일 \t외부 파일을 제거합니다.\n"
-
-#: ../src/main.c:316
-msgid ""
-"--export (-e) file [appointment...] \texport appointments from Orage to "
-"file\n"
-msgstr "--export (-e) file [appointment...] \tOrage 일정을 파일로 내보냅니다\n"
-
-#: ../src/main.c:318
-msgid "files=ical files to load into orage\n"
-msgstr "파일=orage로 읽어들일 파일\n"
-
-#: ../src/main.c:508
-#, c-format
-msgid ""
-"\n"
-"Unknown option %s\n"
-"\n"
-msgstr ""
-"\n"
-"알 수 없는 옵션 %s\n"
-"\n"
-
-#: ../src/mainbox.c:218
+#: ../src/mainbox.c:220
 msgid "_Exchange data"
 msgstr "데이터 교환(_E)"
 
 #. Edit menu
-#: ../src/mainbox.c:229
+#: ../src/mainbox.c:231
 msgid "_Edit"
 msgstr "편집(_E)"
 
-#: ../src/mainbox.c:239
+#: ../src/mainbox.c:241
 msgid "View selected _date"
 msgstr "선택한 날짜 보기(_D)"
 
-#: ../src/mainbox.c:242
+#: ../src/mainbox.c:244
 msgid "View selected _week"
 msgstr "선택한 주 보기(_W)"
 
-#: ../src/mainbox.c:248
+#: ../src/mainbox.c:250
 msgid "Select _Today"
 msgstr "오늘 선택(_T)"
 
 #. Help menu
 #. the rest
-#: ../src/mainbox.c:252 ../src/parameters.c:1197
+#: ../src/mainbox.c:254 ../src/parameters.c:1203
 msgid "_Help"
 msgstr "도움말(_H)"
 
-#: ../src/mainbox.c:312 ../src/reminder.c:1027
+#: ../src/mainbox.c:314 ../src/reminder.c:1035
 msgid "No title defined"
 msgstr "지정한 제목이 없습니다"
 
-#: ../src/mainbox.c:370
+#: ../src/mainbox.c:372
 #, c-format
 msgid " Location: %s\n"
 msgstr "위치: %s\n"
 
-#: ../src/mainbox.c:380
+#: ../src/mainbox.c:382
 #, c-format
 msgid ""
 "\n"
@@ -1334,11 +1297,11 @@ msgstr ""
 "참고:\n"
 "%s"
 
-#: ../src/mainbox.c:388
+#: ../src/mainbox.c:390
 msgid "Never"
 msgstr "안함"
 
-#: ../src/mainbox.c:396
+#: ../src/mainbox.c:398
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1351,7 +1314,7 @@ msgstr ""
 "기한:⇥%s\n"
 "완료:⇥%s%s"
 
-#: ../src/mainbox.c:403
+#: ../src/mainbox.c:405
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1362,272 +1325,272 @@ msgstr ""
 "%s 시작:⇥%s⏎\n"
 "종료:⇥%s%s"
 
-#: ../src/mainbox.c:482
+#: ../src/mainbox.c:484
 msgid "<b>To do:</b>"
 msgstr "<b>할 일:</b>"
 
-#: ../src/mainbox.c:519
+#: ../src/mainbox.c:521
 #, c-format
 msgid "<b>Events for %s:</b>"
 msgstr "<b>%s의 행사:</b>"
 
-#: ../src/mainbox.c:529
+#: ../src/mainbox.c:531
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>%s - %s의 행사:</b>"
 
-#: ../src/parameters.c:542
+#: ../src/parameters.c:545
 msgid "Main settings"
 msgstr "메인 설정"
 
-#: ../src/parameters.c:548
+#: ../src/parameters.c:551
 msgid "Timezone"
 msgstr "시간대"
 
-#: ../src/parameters.c:569
+#: ../src/parameters.c:572
 msgid "You should always define your local timezone."
 msgstr "지역 시간대를 항상 정의하셔야 합니다."
 
-#: ../src/parameters.c:577
+#: ../src/parameters.c:580
 msgid "Archive threshold (months)"
 msgstr "보관 기준(개월)"
 
-#: ../src/parameters.c:590
+#: ../src/parameters.c:593
 msgid "(0 = no archiving)"
 msgstr "(0 = 보관 안함)"
 
-#: ../src/parameters.c:594
+#: ../src/parameters.c:597
 msgid "Archiving is used to save time and space when handling events."
 msgstr "보관기능을 이용해서 시간과 공간을 절약하십시오."
 
-#: ../src/parameters.c:602
+#: ../src/parameters.c:605
 msgid "Sound command"
 msgstr "소리 명령어"
 
-#: ../src/parameters.c:630
+#: ../src/parameters.c:633
 msgid "This command is given to shell to make sound in alarms."
 msgstr "알림 기능에서 소리를 내도록 쉘에 전달하는 명령어입니다."
 
-#: ../src/parameters.c:661
+#: ../src/parameters.c:664
 msgid "Calendar window"
 msgstr "달력 창"
 
-#: ../src/parameters.c:668
+#: ../src/parameters.c:671
 msgid "Calendar visual details"
 msgstr "달력 시각 요소 세부사항"
 
-#: ../src/parameters.c:675
+#: ../src/parameters.c:678
 msgid "Show borders"
 msgstr "틀 표시"
 
-#: ../src/parameters.c:680
+#: ../src/parameters.c:683
 msgid "Show menu"
 msgstr "메뉴 표시"
 
-#: ../src/parameters.c:688
+#: ../src/parameters.c:691
 msgid "Show day names"
 msgstr "요일 이름 표시"
 
-#: ../src/parameters.c:693
+#: ../src/parameters.c:696
 msgid "Show week numbers"
 msgstr "몇번째 주인지 표시"
 
-#: ../src/parameters.c:701
+#: ../src/parameters.c:704
 msgid "Show month and year"
 msgstr "연 월 표시"
 
-#: ../src/parameters.c:721
+#: ../src/parameters.c:724
 msgid "Calendar info boxes"
 msgstr "달력 정보 상자"
 
-#: ../src/parameters.c:728
+#: ../src/parameters.c:731
 msgid "Show todo list"
 msgstr "할 일 목록 표시"
 
-#: ../src/parameters.c:735
+#: ../src/parameters.c:738
 msgid "Number of days to show in event window"
 msgstr "행사 창에 보여줄 날짜 수"
 
-#: ../src/parameters.c:743
+#: ../src/parameters.c:746
 msgid "0 = do not show event list at all"
 msgstr "0 = 모든 행사 목록을 표시하지 않습니다"
 
-#: ../src/parameters.c:757
+#: ../src/parameters.c:760
 msgid "Calendar visibility"
 msgstr "달력 모양새"
 
-#: ../src/parameters.c:763
+#: ../src/parameters.c:766
 msgid "Show on all desktops"
 msgstr "모든 데스크톱에 표시"
 
-#: ../src/parameters.c:768
+#: ../src/parameters.c:771
 msgid "Keep on top"
 msgstr "맨 위에 유지"
 
-#: ../src/parameters.c:776
+#: ../src/parameters.c:779
 msgid "Show in taskbar"
 msgstr "작업표시줄에 표시"
 
-#: ../src/parameters.c:781
+#: ../src/parameters.c:784
 msgid "Show in pager"
 msgstr "페이저에 표시"
 
-#: ../src/parameters.c:789
+#: ../src/parameters.c:792
 msgid "Show in systray"
 msgstr "트레이에 표시"
 
-#: ../src/parameters.c:811
+#: ../src/parameters.c:820
 msgid "Calendar start"
 msgstr "시작하면서 달력을"
 
-#: ../src/parameters.c:817
+#: ../src/parameters.c:826
 msgid "Show"
 msgstr "보이기"
 
-#: ../src/parameters.c:833
+#: ../src/parameters.c:842
 msgid "Hide"
 msgstr "숨기기"
 
-#: ../src/parameters.c:850
+#: ../src/parameters.c:859
 msgid "Minimized"
 msgstr "최소화"
 
-#: ../src/parameters.c:876
+#: ../src/parameters.c:885
 msgid "On calendar window open"
 msgstr "달력 창을 열었을 때"
 
-#: ../src/parameters.c:882
+#: ../src/parameters.c:891
 msgid "Select today's date"
 msgstr "오늘 날짜를 선택하십시오"
 
-#: ../src/parameters.c:899
+#: ../src/parameters.c:908
 msgid "Select previously selected date"
 msgstr "이전에 선택한 날짜를 선택하십시오"
 
-#: ../src/parameters.c:923
+#: ../src/parameters.c:932
 msgid "Calendar day double click shows"
 msgstr "표시할 달력 날짜를 두번 누르십시오"
 
-#: ../src/parameters.c:929
+#: ../src/parameters.c:938
 msgid "Days view"
 msgstr "일 단위 보기"
 
-#: ../src/parameters.c:945
+#: ../src/parameters.c:954
 msgid "Event list"
 msgstr "행사 목록"
 
-#: ../src/parameters.c:978
+#: ../src/parameters.c:987
 msgid "Extra settings"
 msgstr "추가 설정"
 
-#: ../src/parameters.c:985
+#: ../src/parameters.c:994
 msgid "Event list window"
 msgstr "행사 목록 창"
 
-#: ../src/parameters.c:992
+#: ../src/parameters.c:1001
 msgid "Number of extra days to show in event list"
 msgstr "행사 목록에 보여줄 추가 날짜 수"
 
-#: ../src/parameters.c:1002
+#: ../src/parameters.c:1011
 msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
 msgstr "단지 기본값일 뿐입니다. 행사 목록 창에서 바꿀 수 있습니다."
 
-#: ../src/parameters.c:1010
+#: ../src/parameters.c:1019
 msgid "Show only first repeating event"
 msgstr "처음 반복하는 행사만 표시"
 
-#: ../src/parameters.c:1027
+#: ../src/parameters.c:1036
 msgid "Day view window default first day"
 msgstr "첫째날을 기본으로 하는 날짜 보기 창"
 
-#: ../src/parameters.c:1034
+#: ../src/parameters.c:1043
 msgid "First day of week"
 msgstr "주 첫째날"
 
-#: ../src/parameters.c:1051
+#: ../src/parameters.c:1060
 msgid "Selected day"
 msgstr "선택한 날"
 
-#: ../src/parameters.c:1074 ../src/parameters.c:1081
+#: ../src/parameters.c:1083 ../src/parameters.c:1090
 msgid "Use wakeup timer"
 msgstr "기상 시계 사용"
 
-#: ../src/parameters.c:1089
+#: ../src/parameters.c:1098
 msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
 msgstr ""
-"대기 또는 최대 절전 이후에 적절하게 시스템 상태를 복귀하는데 Orage에 문제가 있다면 이 시계를 사용합니다. (예를 들어 표시줄 "
-"아이콘을 새로 고치지 않거나 알림을 시작하지 않는 경우.)"
+"대기 또는 최대 절전 이후에 시스템 상태를 제대로 복귀할 때 오라주에 문제가 있다면 이 시계를 사용합니다. (예를 들어 표시줄 아이콘을 "
+"새로 고치지 않거나 알림을 시작하지 않는 경우.)"
 
-#: ../src/parameters.c:1099
+#: ../src/parameters.c:1108
 msgid "Foreign file default visual alarm"
 msgstr "외부 파일에 시각 알림 기본 적용"
 
-#: ../src/parameters.c:1106
+#: ../src/parameters.c:1115
 msgid "Orage window"
-msgstr "Orage 창"
+msgstr "오라주 창"
 
-#: ../src/parameters.c:1123
+#: ../src/parameters.c:1132
 msgid "Notify notification"
 msgstr "공지 알림"
 
-#: ../src/parameters.c:1146
+#: ../src/parameters.c:1155
 msgid "Always quit when asked to close"
 msgstr "닫기 요청을 받으면 항상 끝내기"
 
-#: ../src/parameters.c:1153
+#: ../src/parameters.c:1162
 msgid "Always quit"
 msgstr "항상 끝내기"
 
-#: ../src/parameters.c:1160
+#: ../src/parameters.c:1169
 msgid ""
 "By default Orage stays open in the background when asked to close. This "
 "option changes Orage to quit and never stay in background when it is asked "
 "to close."
 msgstr ""
-"기본적으로 Orage는 닫기 요청을 받으면 백그라운드에 연 상태로 둡니다. 이 옵션은 닫기 요청을 받으면 Orage를 끝내도록 하고 "
-"백그라운드에 남아있지 않도록 합니다."
+"기본적으로 오라주는 닫기 요청을 받으면 백그라운드에 연 상태로 둡니다. 이 옵션은 닫기 요청을 받으면 오라주를 끝내도록 하고 백그라운드에"
+" 남아있지 않도록 합니다."
 
-#: ../src/parameters.c:1176
+#: ../src/parameters.c:1184
 msgid "Orage Preferences"
-msgstr "Orage 기본 설정"
+msgstr "오라주 기본 설정"
 
-#: ../src/parameters.c:1200 ../src/reminder.c:712
+#: ../src/parameters.c:1206 ../src/reminder.c:716
 msgid "_Close"
 msgstr "닫기(_C)"
 
-#: ../src/reminder.c:490
+#: ../src/reminder.c:494
 msgid "Reminder "
 msgstr "알리미"
 
-#: ../src/reminder.c:519
+#: ../src/reminder.c:523
 msgid "Open"
 msgstr "열기"
 
-#: ../src/reminder.c:637
+#: ../src/reminder.c:641
 msgid "Reminder - Orage"
-msgstr "알리미 - Orage"
+msgstr "알리미 - 오라주"
 
-#: ../src/reminder.c:720
+#: ../src/reminder.c:724
 msgid "_Stop"
 msgstr "정지(_S)"
 
-#: ../src/reminder.c:728
+#: ../src/reminder.c:732
 msgid "Postpone"
 msgstr "연기"
 
-#: ../src/reminder.c:730
+#: ../src/reminder.c:734
 msgid "Remind me again after the specified time"
 msgstr "시간을 정하고 나면 다시 알려주기"
 
-#: ../src/reminder.c:995
+#: ../src/reminder.c:1003
 msgid "Next active alarms:"
 msgstr "다음 활성 알림:"
 
-#: ../src/reminder.c:1034
+#: ../src/reminder.c:1042
 #, c-format
 msgid ""
 "\n"
@@ -1636,7 +1599,7 @@ msgstr ""
 "\n"
 "%02d 일 %02d 시간 %02d 분을: %s"
 
-#: ../src/reminder.c:1046
+#: ../src/reminder.c:1054
 #, c-format
 msgid ""
 "\n"
@@ -3957,29 +3920,29 @@ msgstr "UTC"
 msgid "floating"
 msgstr "띄우기"
 
-#: ../src/tray_icon.c:415
+#: ../src/tray_icon.c:403
 msgid "New appointment"
 msgstr "새 일정"
 
-#: ../src/tray_icon.c:422
+#: ../src/tray_icon.c:410
 msgid "Preferences"
 msgstr "기본 설정"
 
-#: ../src/tray_icon.c:429
+#: ../src/tray_icon.c:417
 msgid "Quit"
 msgstr "끝내기"
 
 #: ../plugin/org.xfce.orage-settings.desktop.in.h:1
 msgid "Orage preferences"
-msgstr "Orage 기본 설정"
+msgstr "오라주 기본 설정"
 
 #: ../plugin/org.xfce.orage-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Calendar Application (Orage)"
-msgstr "Xfce 4 달력 프로그램(Orage)을 설정합니다"
+msgstr "Xfce 4 달력 프로그램(오라주)을 설정합니다"
 
 #: ../plugin/org.xfce.orage-settings.desktop.in.h:3
 msgid "Orage Calendar Preferences"
-msgstr "Orage 달력 기본 설정"
+msgstr "오라주 달력 기본 설정"
 
 #: ../plugin/org.xfce.orage-settings.desktop.in.h:4
 #: ../org.xfce.orage.desktop.in.h:3
@@ -3992,6 +3955,8 @@ msgid ""
 " ical format and includes common calendar features like repeating "
 "appointments and multiple alarming possibilities."
 msgstr ""
+"오라주는 빠르고 사용하기 쉬운 그래픽 달력을 지향합니다. 간편한 ical 형식을 활용하며 약속 반복 및 다중 알림 기능 등의 일반 달력 "
+"기능이 들어있습니다."
 
 #: ../org.xfce.orage.appdata.xml.in.h:4
 msgid ""
@@ -4000,10 +3965,12 @@ msgid ""
 "Contents of those files are read and converted into Orage, but those files "
 "are left untouched."
 msgstr ""
+"오라주에 그룹 달력 기능은 없지만, 개인용으로 사용할 수 있습니다. 가져올 ical 파일을 여러개 가져올 수 있습니다. 파일 내용을 읽어"
+" 오라주에 변환하여 저장하지만, 파일 내용 자체는 내버려두고 건드리지 않습니다."
 
 #: ../org.xfce.orage.desktop.in.h:1
 msgid "Orage Calendar"
-msgstr "Orage 달력"
+msgstr "오라주 달력"
 
 #: ../org.xfce.orage.desktop.in.h:2
 msgid "Desktop calendar"
