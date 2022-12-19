@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 15:01+0100\n"
+"POT-Creation-Date: 2022-12-19 00:47+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2022\n"
 "Language-Team: Japanese (https://www.transifex.com/xfce/teams/16840/ja/)\n"
@@ -25,11 +25,11 @@ msgstr ""
 "Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../src/about-xfcalendar.c:54 ../org.xfce.orage.appdata.xml.in.h:2
+#: ../src/about-xfcalendar.c:52 ../org.xfce.orage.appdata.xml.in.h:2
 msgid "Orage is a time-managing application for the Xfce desktop environment"
 msgstr "Orage は、Xfce デスクトップ環境向けの時間管理アプリケーションです。"
 
-#: ../src/about-xfcalendar.c:58
+#: ../src/about-xfcalendar.c:56
 msgid "translator-credits"
 msgstr ""
 "Tarot Osuji <tarot@sdf.lonestar.org>, 2004.\n"
@@ -48,14 +48,14 @@ msgstr "終了"
 msgid "Due"
 msgstr "締切"
 
-#: ../src/appointment.c:508 ../src/mainbox.c:677
+#: ../src/appointment.c:508 ../src/mainbox.c:683
 #: ../org.xfce.orage.appdata.xml.in.h:1
 msgid "Orage"
 msgstr "Orage"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
-#: ../src/appointment.c:699 ../src/interface.c:262 ../src/parameters.c:392
+#: ../src/appointment.c:699 ../src/interface.c:262 ../src/parameters.c:395
 msgid "Select a file..."
 msgstr "ファイルを選択してください..."
 
@@ -71,7 +71,7 @@ msgstr "すべてのファイル"
 msgid "The appointment information has been modified."
 msgstr "この用件情報は変更されています。"
 
-#: ../src/appointment.c:766 ../src/appointment.c:1340 ../src/event-list.c:998
+#: ../src/appointment.c:766 ../src/appointment.c:1340 ../src/event-list.c:1001
 msgid "Do you want to continue?"
 msgstr "続行しますか?"
 
@@ -122,7 +122,7 @@ msgstr "詳細についてはログファイルを参照してください。(�
 msgid "This appointment will be permanently removed."
 msgstr "この用件は永久に削除されます。"
 
-#: ../src/appointment.c:1341 ../src/event-list.c:999
+#: ../src/appointment.c:1341 ../src/event-list.c:1002
 msgid "No, cancel the removal"
 msgstr "いいえ、削除しません"
 
@@ -131,13 +131,13 @@ msgid "Yes, remove it"
 msgstr "はい、削除します"
 
 #: ../src/appointment.c:1441 ../src/appointment.c:1456 ../src/day-view.c:471
-#: ../src/event-list.c:1058 ../src/functions.c:144
+#: ../src/event-list.c:1061 ../src/functions.c:144
 msgid "Pick the date"
 msgstr "日付を選択してください"
 
 #: ../src/appointment.c:1443 ../src/appointment.c:1458 ../src/day-view.c:400
-#: ../src/day-view.c:473 ../src/event-list.c:1060 ../src/event-list.c:1214
-#: ../src/functions.c:146 ../src/tray_icon.c:408
+#: ../src/day-view.c:473 ../src/event-list.c:1063 ../src/event-list.c:1217
+#: ../src/functions.c:146 ../src/tray_icon.c:396
 msgid "Today"
 msgstr "今日"
 
@@ -149,7 +149,7 @@ msgstr "この用件は存在しません。"
 msgid "It was probably removed, please refresh your screen."
 msgstr "これはおそらく削除されています。画面を更新してください。"
 
-#: ../src/appointment.c:2183 ../src/interface.c:674
+#: ../src/appointment.c:2183 ../src/interface.c:676
 msgid "_Remove"
 msgstr "削除(_R)"
 
@@ -165,7 +165,7 @@ msgstr "新規カテゴリを色付きで追加します"
 msgid "Category:"
 msgstr "カテゴリ:"
 
-#: ../src/appointment.c:2258 ../src/interface.c:1453
+#: ../src/appointment.c:2258 ../src/interface.c:1455
 msgid "_Add"
 msgstr "追加(_A)"
 
@@ -184,8 +184,8 @@ msgstr "新しい用件 - Orage"
 #. File menu stuff
 #. ********* File menu *********
 #. File menu
-#: ../src/appointment.c:2645 ../src/day-view.c:294 ../src/event-list.c:1115
-#: ../src/interface.c:859 ../src/mainbox.c:210
+#: ../src/appointment.c:2645 ../src/day-view.c:294 ../src/event-list.c:1118
+#: ../src/interface.c:861 ../src/mainbox.c:212
 msgid "_File"
 msgstr "ファイル(_F)"
 
@@ -193,7 +193,7 @@ msgstr "ファイル(_F)"
 msgid "Sav_e and close"
 msgstr "保存して閉じる(_E)"
 
-#: ../src/appointment.c:2664 ../src/event-list.c:1121
+#: ../src/appointment.c:2664 ../src/event-list.c:1124
 msgid "D_uplicate"
 msgstr "複製(_U)"
 
@@ -209,11 +209,11 @@ msgstr "保存して閉じます"
 msgid "Revert"
 msgstr "元に戻します"
 
-#: ../src/appointment.c:2904 ../src/event-list.c:1205
+#: ../src/appointment.c:2904 ../src/event-list.c:1208
 msgid "Duplicate"
 msgstr "複製を作成します"
 
-#: ../src/appointment.c:2909 ../src/event-list.c:1207
+#: ../src/appointment.c:2909 ../src/event-list.c:1210
 msgid "Delete"
 msgstr "削除します"
 
@@ -234,7 +234,7 @@ msgstr "一般"
 msgid "Type "
 msgstr "タイプ "
 
-#: ../src/appointment.c:2939 ../src/event-list.c:1260
+#: ../src/appointment.c:2939 ../src/event-list.c:1263
 msgid "Event"
 msgstr "予定"
 
@@ -244,7 +244,7 @@ msgid ""
 "Meeting or birthday or TV show."
 msgstr "いつか起こる出来事です。例: 会議、誕生日、TV番組など"
 
-#: ../src/appointment.c:2947 ../src/event-list.c:1319
+#: ../src/appointment.c:2947 ../src/event-list.c:1322
 msgid "Todo"
 msgstr "ToDo"
 
@@ -256,7 +256,7 @@ msgstr ""
 "いつかやらなければならないことです。\n"
 "例: 洗車、新しいバージョンの Orage のテストなど"
 
-#: ../src/appointment.c:2955 ../src/event-list.c:1333
+#: ../src/appointment.c:2955 ../src/event-list.c:1336
 msgid "Journal"
 msgstr "記録"
 
@@ -296,15 +296,15 @@ msgstr "あり    "
 msgid "Duration"
 msgstr "期間"
 
-#: ../src/appointment.c:3035 ../src/appointment.c:3242 ../src/reminder.c:676
+#: ../src/appointment.c:3035 ../src/appointment.c:3242 ../src/reminder.c:680
 msgid "days"
 msgstr "日"
 
-#: ../src/appointment.c:3037 ../src/appointment.c:3244 ../src/reminder.c:678
+#: ../src/appointment.c:3037 ../src/appointment.c:3244 ../src/reminder.c:682
 msgid "hours"
 msgstr "時"
 
-#: ../src/appointment.c:3039 ../src/appointment.c:3246 ../src/reminder.c:680
+#: ../src/appointment.c:3039 ../src/appointment.c:3246 ../src/reminder.c:684
 msgid "mins"
 msgstr "分"
 
@@ -443,9 +443,9 @@ msgstr "使用する"
 msgid "Select this if you want audible alarm"
 msgstr "音で通知させたいときに設定します"
 
-#: ../src/appointment.c:3302 ../src/interface.c:1049 ../src/interface.c:1095
-#: ../src/interface.c:1271 ../src/interface.c:1363 ../src/interface.c:1446
-#: ../src/parameters.c:397 ../src/parameters.c:620 ../src/reminder.c:705
+#: ../src/appointment.c:3302 ../src/interface.c:1051 ../src/interface.c:1097
+#: ../src/interface.c:1273 ../src/interface.c:1365 ../src/interface.c:1448
+#: ../src/parameters.c:400 ../src/parameters.c:623 ../src/reminder.c:709
 msgid "_Open"
 msgstr "開く(_O)"
 
@@ -527,7 +527,7 @@ msgstr ""
 "\t<&ST> 用件の開始日時\n"
 "\t<&ET> 用件の終了日時"
 
-#: ../src/appointment.c:3446 ../src/interface.c:1183 ../src/interface.c:1205
+#: ../src/appointment.c:3446 ../src/interface.c:1185 ../src/interface.c:1207
 msgid "_Execute"
 msgstr "実行(_E)"
 
@@ -539,8 +539,8 @@ msgstr "このアラームを今すぐテストします"
 msgid "<b>Default alarm</b>"
 msgstr "<b>デフォルトアラーム</b>"
 
-#: ../src/appointment.c:3467 ../src/interface.c:1056 ../src/interface.c:1102
-#: ../src/interface.c:1277 ../src/interface.c:1369
+#: ../src/appointment.c:3467 ../src/interface.c:1058 ../src/interface.c:1104
+#: ../src/interface.c:1279 ../src/interface.c:1371
 msgid "_Save"
 msgstr "保存(_S)"
 
@@ -768,16 +768,16 @@ msgstr "対象日"
 
 #. ********* View menu *********
 #. View menu
-#: ../src/day-view.c:304 ../src/event-list.c:1138 ../src/mainbox.c:236
+#: ../src/day-view.c:304 ../src/event-list.c:1141 ../src/mainbox.c:238
 msgid "_View"
 msgstr "表示(_V)"
 
 #. ********* Go menu   *********
-#: ../src/day-view.c:318 ../src/event-list.c:1157
+#: ../src/day-view.c:318 ../src/event-list.c:1160
 msgid "_Go"
 msgstr "移動(_G)"
 
-#: ../src/day-view.c:391 ../src/event-list.c:1203
+#: ../src/day-view.c:391 ../src/event-list.c:1206
 msgid "New"
 msgstr "新しい用件を作成します"
 
@@ -797,11 +797,11 @@ msgstr "1 日進みます"
 msgid "Forward one week"
 msgstr "1 週間戻ります"
 
-#: ../src/day-view.c:409 ../src/event-list.c:1221
+#: ../src/day-view.c:409 ../src/event-list.c:1224
 msgid "Refresh"
 msgstr "このウィンドウを更新します"
 
-#: ../src/day-view.c:414 ../src/event-list.c:1228 ../src/interface.c:878
+#: ../src/day-view.c:414 ../src/event-list.c:1231 ../src/interface.c:880
 msgid "Close"
 msgstr "このウィンドウを閉じます"
 
@@ -822,57 +822,57 @@ msgid "Orage - day view"
 msgstr "Orage - 日別表示"
 
 #. date only appointment
-#: ../src/event-list.c:187
+#: ../src/event-list.c:190
 msgid "All day"
 msgstr "一日中"
 
-#: ../src/event-list.c:618 ../src/event-list.c:1422
+#: ../src/event-list.c:621 ../src/event-list.c:1425
 msgid "Time"
 msgstr "時間"
 
-#: ../src/event-list.c:801
+#: ../src/event-list.c:804
 msgid "No rows have been selected."
 msgstr "行が選択されていません"
 
-#: ../src/event-list.c:802
+#: ../src/event-list.c:805
 msgid "Click a row to select it and after that you can copy it."
 msgstr "行をクリックして選択した後にコピーできます。"
 
-#: ../src/event-list.c:997
+#: ../src/event-list.c:1000
 msgid ""
 "You will permanently remove all\n"
 "selected appointments."
 msgstr "選択したすべての用件が削除されます。"
 
-#: ../src/event-list.c:1000
+#: ../src/event-list.c:1003
 msgid "Yes, remove them"
 msgstr "はい、削除します"
 
-#: ../src/event-list.c:1212
+#: ../src/event-list.c:1215
 msgid "Back"
 msgstr "前日に移動します"
 
-#: ../src/event-list.c:1216
+#: ../src/event-list.c:1219
 msgid "Forward"
 msgstr "翌日に移動します"
 
-#: ../src/event-list.c:1223
+#: ../src/event-list.c:1226
 msgid "Find"
 msgstr "検索します"
 
-#: ../src/event-list.c:1230
+#: ../src/event-list.c:1233
 msgid "Dayview"
 msgstr "日ごとの一覧を表示します"
 
-#: ../src/event-list.c:1265
+#: ../src/event-list.c:1268
 msgid "Extra days to show:"
 msgstr "追加表示する日数"
 
-#: ../src/event-list.c:1279
+#: ../src/event-list.c:1282
 msgid "only first repeating"
 msgstr "繰り返しの初回のみ"
 
-#: ../src/event-list.c:1287
+#: ../src/event-list.c:1290
 msgid ""
 "Check this if you only want to see the first repeating event. By default all are shown.\n"
 "Note that this also shows all urgencies.\n"
@@ -882,11 +882,11 @@ msgstr ""
 "これは緊急の用件も表示します。\n"
 "初回のみ表示の場合繰り返し設定されている予定は一覧の先に表示されます。"
 
-#: ../src/event-list.c:1292
+#: ../src/event-list.c:1295
 msgid "also old"
 msgstr "古いものも"
 
-#: ../src/event-list.c:1297
+#: ../src/event-list.c:1300
 msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed'."
@@ -894,27 +894,27 @@ msgstr ""
 "このオプションにチェックマークをつけると、古い用件も表示します。リストがとても長くなることのないよう、'繰り返しの初回のみ' が有効になっている場合のみ選択できます。\n"
 "追加表示日数が指定されていれば、新しい用件も表示されます。"
 
-#: ../src/event-list.c:1336
+#: ../src/event-list.c:1339
 msgid "Journal entries starting from:"
 msgstr "エントリの表示開始日"
 
-#: ../src/event-list.c:1361
+#: ../src/event-list.c:1364
 msgid "Search"
 msgstr "検索"
 
-#: ../src/event-list.c:1364
+#: ../src/event-list.c:1367
 msgid "Search text "
 msgstr "検索文字列: "
 
-#: ../src/event-list.c:1430
+#: ../src/event-list.c:1433
 msgid "Flags"
 msgstr "フラグ"
 
-#: ../src/event-list.c:1438
+#: ../src/event-list.c:1441
 msgid "Title"
 msgstr "件名"
 
-#: ../src/event-list.c:1464
+#: ../src/event-list.c:1467
 msgid ""
 "Double click line to edit it.\n"
 "\n"
@@ -950,63 +950,63 @@ msgstr "Orage のデフォルトアラーム"
 msgid "Calendar files"
 msgstr "カレンダーファイル"
 
-#: ../src/interface.c:644
+#: ../src/interface.c:646
 msgid "Current foreign files"
 msgstr "現在の外部ファイル"
 
-#: ../src/interface.c:667
+#: ../src/interface.c:669
 msgid "READ ONLY"
 msgstr "読み込み専用"
 
-#: ../src/interface.c:669
+#: ../src/interface.c:671
 msgid "READ WRITE"
 msgstr "読み込み/書き込み"
 
-#: ../src/interface.c:694
+#: ../src/interface.c:696
 msgid "***** No foreign files *****"
 msgstr "***** 外部ファイルなし *****"
 
-#: ../src/interface.c:708
+#: ../src/interface.c:710
 msgid "Foreign file add failed"
 msgstr "外部ファイルの追加に失敗しました"
 
-#: ../src/interface.c:717
+#: ../src/interface.c:719
 msgid "Orage can only handle 10 foreign files. Limit reached."
 msgstr "Orage は 10 個の外部ファイルまで扱えます。上限に達しました。"
 
-#: ../src/interface.c:727
+#: ../src/interface.c:729
 msgid "Filename is empty."
 msgstr "ファイル名が空です。"
 
-#: ../src/interface.c:737
+#: ../src/interface.c:739
 msgid "Name is empty."
 msgstr "名前が空です。"
 
-#: ../src/interface.c:748
+#: ../src/interface.c:750
 msgid "File does not exist."
 msgstr "ファイルが存在しません。"
 
-#: ../src/interface.c:760
+#: ../src/interface.c:762
 msgid "Same filename already exists in Orage."
 msgstr "Orage 内で同じ名前のファイルが存在します。"
 
-#: ../src/interface.c:771
+#: ../src/interface.c:773
 msgid "Same name already exists in Orage."
 msgstr "Orage 内で同じ名前が存在します。"
 
-#: ../src/interface.c:1024
+#: ../src/interface.c:1026
 msgid "Import/export"
 msgstr "インポート/エクスポート"
 
-#: ../src/interface.c:1031
+#: ../src/interface.c:1033
 msgid "Import"
 msgstr "インポート"
 
-#: ../src/interface.c:1039
+#: ../src/interface.c:1041
 msgid "Read from file:"
 msgstr "読み込むファイル:"
 
-#: ../src/interface.c:1069
+#: ../src/interface.c:1071
 msgid ""
 "Separate filenames with comma(,).\n"
 " NOTE: comma is not valid character in filenames for Orage."
@@ -1014,27 +1014,27 @@ msgstr ""
 "ファイル名はカンマ(,)で区切ってください。\n"
 " 注意: カンマはファイル名および Orage で使用できない文字です。"
 
-#: ../src/interface.c:1074
+#: ../src/interface.c:1076
 msgid "Export"
 msgstr "エクスポート"
 
-#: ../src/interface.c:1082
+#: ../src/interface.c:1084
 msgid "Write to file:"
 msgstr "書き出すファイル:"
 
-#: ../src/interface.c:1117 ../src/interface.c:1135
+#: ../src/interface.c:1119 ../src/interface.c:1137
 msgid "Select"
 msgstr "エクスポートする用件"
 
-#: ../src/interface.c:1122
+#: ../src/interface.c:1124
 msgid "All appointments"
 msgstr "すべての用件"
 
-#: ../src/interface.c:1141
+#: ../src/interface.c:1143
 msgid "Named appointments:"
 msgstr "名前付きの用件"
 
-#: ../src/interface.c:1160
+#: ../src/interface.c:1162
 msgid ""
 "Note that only main file appointments are read.\n"
 "Archived and Foreign events are not exported."
@@ -1042,7 +1042,7 @@ msgstr ""
 "メインファイルの用件のみ読み込まれることに注意してください。\n"
 "アーカイブおよび外部ファイルはエクスポートされません。"
 
-#: ../src/interface.c:1163
+#: ../src/interface.c:1165
 msgid ""
 "Note that only main file appointments are read.\n"
 "Foreign events are not exported."
@@ -1050,32 +1050,32 @@ msgstr ""
 "メインファイルの用件のみ読み込まれることに注意してください。\n"
 "外部ファイルはエクスポートされません。"
 
-#: ../src/interface.c:1166
+#: ../src/interface.c:1168
 msgid "You can easily drag these from event-list window."
 msgstr "予定リストウィンドウからドラッグして追加できます。"
 
-#: ../src/interface.c:1168
+#: ../src/interface.c:1170
 msgid "Orage appointment UIDs separated by commas."
 msgstr "Orage 用件 UID をカンマで区切って指定してください。"
 
-#: ../src/interface.c:1174
+#: ../src/interface.c:1176
 msgid "Archive"
 msgstr "アーカイブ"
 
-#: ../src/interface.c:1189
+#: ../src/interface.c:1191
 #, c-format
 msgid "Archive now (threshold: %d months)"
 msgstr "直ちにアーカイブする (しきい値: %d ヵ月)"
 
-#: ../src/interface.c:1200
+#: ../src/interface.c:1202
 msgid "You can change archive threshold in parameters"
 msgstr "しきい値はパラメーターで変更できます"
 
-#: ../src/interface.c:1212
+#: ../src/interface.c:1214
 msgid "Revert archive now"
 msgstr "直ちにアーカイブを元に戻す"
 
-#: ../src/interface.c:1219
+#: ../src/interface.c:1221
 msgid ""
 "Return all archived events into main orage file and remove arch file.\n"
 "This is useful for example when doing export and moving orage\n"
@@ -1084,31 +1084,31 @@ msgstr ""
 "すべてのアーカイブされた情報をメインの Orage ファイルに復帰しアーカイブファイルを除去します。\n"
 "これは例えば他のシステムへ Orage 用件を移行するときなどに便利です。"
 
-#: ../src/interface.c:1231
+#: ../src/interface.c:1233
 msgid "Orage files"
 msgstr "Orage ファイル"
 
-#: ../src/interface.c:1238
+#: ../src/interface.c:1240
 msgid "Orage main calendar file"
 msgstr "Orage メインカレンダーファイル"
 
-#: ../src/interface.c:1247 ../src/interface.c:1340
+#: ../src/interface.c:1249 ../src/interface.c:1342
 msgid "Current file:"
 msgstr "現在のファイル:"
 
-#: ../src/interface.c:1259 ../src/interface.c:1352
+#: ../src/interface.c:1261 ../src/interface.c:1354
 msgid "New file:"
 msgstr "新規ファイル:"
 
-#: ../src/interface.c:1287 ../src/interface.c:1379
+#: ../src/interface.c:1289 ../src/interface.c:1381
 msgid "Action options:"
 msgstr "動作オプション:"
 
-#: ../src/interface.c:1291 ../src/interface.c:1383
+#: ../src/interface.c:1293 ../src/interface.c:1385
 msgid "Rename"
 msgstr "名前の変更"
 
-#: ../src/interface.c:1297
+#: ../src/interface.c:1299
 msgid ""
 "Orage internal file rename only.\n"
 "Does not touch external filesystem at all.\n"
@@ -1118,47 +1118,47 @@ msgstr ""
 "外部のファイルシステムにはタッチしません。\n"
 "新しいファイルが存在していなくてはなりません。"
 
-#: ../src/interface.c:1301 ../src/interface.c:1390
+#: ../src/interface.c:1303 ../src/interface.c:1392
 msgid "Copy"
 msgstr "コピー"
 
-#: ../src/interface.c:1307
+#: ../src/interface.c:1309
 msgid "Current file is copied and stays unmodified in the old place."
 msgstr "現在のファイルはコピーされ元のファイルの場所は変更されません。"
 
-#: ../src/interface.c:1311 ../src/interface.c:1397
+#: ../src/interface.c:1313 ../src/interface.c:1399
 msgid "Move"
 msgstr "移動"
 
-#: ../src/interface.c:1317
+#: ../src/interface.c:1319
 msgid "Current file is moved and vanishes from the old place."
 msgstr "現在のファイルは移動され元の場所からは消去されます。"
 
-#: ../src/interface.c:1331
+#: ../src/interface.c:1333
 msgid "Archive file"
 msgstr "アーカイブファイル"
 
-#: ../src/interface.c:1422
+#: ../src/interface.c:1424
 msgid "Foreign files"
 msgstr "外部ファイル"
 
-#: ../src/interface.c:1429
+#: ../src/interface.c:1431
 msgid "Add new foreign file"
 msgstr "新規外部ファイルの追加"
 
-#: ../src/interface.c:1437
+#: ../src/interface.c:1439
 msgid "Foreign file:"
 msgstr "外部ファイル:"
 
-#: ../src/interface.c:1468
+#: ../src/interface.c:1470
 msgid "Visible name:"
 msgstr "表示名:"
 
-#: ../src/interface.c:1478
+#: ../src/interface.c:1480
 msgid "Read only"
 msgstr "読み込み専用"
 
-#: ../src/interface.c:1488
+#: ../src/interface.c:1490
 msgid ""
 "Set this if you want to make sure that this file is never modified by Orage.\n"
 "Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
@@ -1166,15 +1166,15 @@ msgstr ""
 "このファイルが Orage によって変更されたくない場合に設定してください。\n"
 "外部ファイルを変更するとオリジナルのアプリケーションとの互換性が失われるかもしれないことに注意してください。"
 
-#: ../src/interface.c:1490
+#: ../src/interface.c:1492
 msgid "This internal name is displayed to user instead of file name."
 msgstr "この内部名はファイル名の代わりに表示されます。"
 
-#: ../src/interface.c:1504
+#: ../src/interface.c:1506
 msgid "Exchange data - Orage"
 msgstr "データ交換 - Orage"
 
-#: ../src/main.c:274
+#: ../src/main.c:172
 #, c-format
 msgid ""
 "\tThis is %s version %s\n"
@@ -1183,150 +1183,113 @@ msgstr ""
 "\tこれは %s バージョン %s です｡\n"
 "\n"
 
-#: ../src/main.c:276
+#: ../src/main.c:174
 #, c-format
 msgid "\tReleased under the terms of the GNU General Public License.\n"
 msgstr "\tGNU一般公有使用許諾書の制約の下にリリースされています。\n"
 
-#: ../src/main.c:277
+#: ../src/main.c:175
 #, c-format
 msgid "\tCompiled against GTK+-%d.%d.%d, "
 msgstr "\tGTK+-%d.%d.%d に対してコンパイルしたものであり、"
 
-#: ../src/main.c:279
+#: ../src/main.c:177
 #, c-format
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "GTK+-%d.%d.%d を使用しています。\n"
 
-#: ../src/main.c:281
+#: ../src/main.c:179
 #, c-format
 msgid "\tUsing DBUS for import.\n"
 msgstr "\tインポートに D-Bus を使用しています。\n"
 
-#: ../src/main.c:283
+#: ../src/main.c:181
 #, c-format
 msgid "\tUsing libnotify.\n"
 msgstr "\tlibnotify を使用しています。\n"
 
-#: ../src/main.c:285
+#: ../src/main.c:183
 #, c-format
 msgid "\tNot using libnotify.\n"
 msgstr "\tlibnotify を使用していません。\n"
 
-#: ../src/main.c:288
+#: ../src/main.c:186
 #, c-format
 msgid "\tUsing automatic archiving.\n"
 msgstr "\t自動アーカイブを使用しています。\n"
 
-#: ../src/main.c:290
+#: ../src/main.c:188
 #, c-format
 msgid "\tNot using archiving.\n"
 msgstr "\tアーカイブ化を使用していません。\n"
 
-#: ../src/main.c:293
+#: ../src/main.c:191
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
 msgstr "libxfce4ui の使用: はい\n"
 
-#: ../src/main.c:295
+#: ../src/main.c:193
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
 msgstr "libxfce4ui の使用: いいえ\n"
 
-#: ../src/main.c:308
-msgid ""
-"Usage: orage [options] [files]\n"
-"\n"
+#: ../src/main.c:489
+msgid "Show version of orage"
 msgstr ""
-"使用法: orage [オプション] [ファイル]\n"
-"\n"
 
-#: ../src/main.c:309
-msgid "Options:\n"
-msgstr "オプション:\n"
-
-#: ../src/main.c:310
-msgid "--version (-v) \t\tshow version of orage\n"
-msgstr "--version (-v)\t\t\torage のバージョンを表示します\n"
-
-#: ../src/main.c:311
-msgid "--help (-h) \t\tprint this text\n"
-msgstr "--help (-h)\t\t\tこのメッセージを表示します\n"
-
-#: ../src/main.c:312
-msgid "--preferences (-p) \tshow preferences form\n"
-msgstr "--preferences (-p) \t\t設定フォームを表示します\n"
-
-#: ../src/main.c:313
-msgid "--toggle (-t) \t\tmake orage visible/unvisible\n"
-msgstr "--toggle (-t) \t\t\torage の表示/非表示を切り替えます\n"
-
-#: ../src/main.c:314
-msgid "--add-foreign (-a) file [RW] [name] \tadd a foreign file\n"
-msgstr "--add-foreign (-a) file [RW] [ファイル名]\t外部ファイルを追加します\n"
-
-#: ../src/main.c:315
-msgid "--remove-foreign (-r) file \tremove a foreign file\n"
-msgstr "--remove-foreign (-r) file \t外部ファイルを削除します\n"
-
-#: ../src/main.c:316
-msgid ""
-"--export (-e) file [appointment...] \texport appointments from Orage to "
-"file\n"
-msgstr "--export (-e) file [用件...] \t用件を Orage からファイルにエクスポートします\n"
-
-#: ../src/main.c:318
-msgid "files=ical files to load into orage\n"
-msgstr "file = orage が読み込む iCal ファイル\n"
-
-#: ../src/main.c:508
-#, c-format
-msgid ""
-"\n"
-"Unknown option %s\n"
-"\n"
+#: ../src/main.c:498
+msgid "Show preferences form"
 msgstr ""
-"\n"
-"不明なオプション %s\n"
-"\n"
 
-#: ../src/mainbox.c:218
+#: ../src/main.c:507
+msgid "Make Orage visible/unvisible"
+msgstr ""
+
+#: ../src/main.c:516
+msgid "Add a foreign file"
+msgstr ""
+
+#: ../src/main.c:534
+msgid "Export appointments from Orage to file"
+msgstr ""
+
+#: ../src/mainbox.c:220
 msgid "_Exchange data"
 msgstr "データ交換(_E)"
 
 #. Edit menu
-#: ../src/mainbox.c:229
+#: ../src/mainbox.c:231
 msgid "_Edit"
 msgstr "編集(_E)"
 
-#: ../src/mainbox.c:239
+#: ../src/mainbox.c:241
 msgid "View selected _date"
 msgstr "選択した日を表示(_D)"
 
-#: ../src/mainbox.c:242
+#: ../src/mainbox.c:244
 msgid "View selected _week"
 msgstr "選択した週を表示(_W)"
 
-#: ../src/mainbox.c:248
+#: ../src/mainbox.c:250
 msgid "Select _Today"
 msgstr "今日の日付を選択(_T)"
 
 #. Help menu
 #. the rest
-#: ../src/mainbox.c:252 ../src/parameters.c:1197
+#: ../src/mainbox.c:254 ../src/parameters.c:1203
 msgid "_Help"
 msgstr "ヘルプ(_H)"
 
-#: ../src/mainbox.c:312 ../src/reminder.c:1027
+#: ../src/mainbox.c:314 ../src/reminder.c:1035
 msgid "No title defined"
 msgstr "件名なし"
 
-#: ../src/mainbox.c:370
+#: ../src/mainbox.c:372
 #, c-format
 msgid " Location: %s\n"
 msgstr " 場所: %s\n"
 
-#: ../src/mainbox.c:380
+#: ../src/mainbox.c:382
 #, c-format
 msgid ""
 "\n"
@@ -1337,11 +1300,11 @@ msgstr ""
 " 備考:\n"
 "%s"
 
-#: ../src/mainbox.c:388
+#: ../src/mainbox.c:390
 msgid "Never"
 msgstr "なし"
 
-#: ../src/mainbox.c:396
+#: ../src/mainbox.c:398
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1354,7 +1317,7 @@ msgstr ""
 " 締切:\t%s\n"
 " 完了:\t%s%s"
 
-#: ../src/mainbox.c:403
+#: ../src/mainbox.c:405
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1365,199 +1328,199 @@ msgstr ""
 "%s 開始:\t%s\n"
 " 終了:\t%s%s"
 
-#: ../src/mainbox.c:482
+#: ../src/mainbox.c:484
 msgid "<b>To do:</b>"
 msgstr "<b>To do:</b>"
 
-#: ../src/mainbox.c:519
+#: ../src/mainbox.c:521
 #, c-format
 msgid "<b>Events for %s:</b>"
 msgstr "<b>%s の予定:</b>"
 
-#: ../src/mainbox.c:529
+#: ../src/mainbox.c:531
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>%s - %s の予定:</b>"
 
-#: ../src/parameters.c:542
+#: ../src/parameters.c:545
 msgid "Main settings"
 msgstr "基本設定"
 
-#: ../src/parameters.c:548
+#: ../src/parameters.c:551
 msgid "Timezone"
 msgstr "タイムゾーン"
 
-#: ../src/parameters.c:569
+#: ../src/parameters.c:572
 msgid "You should always define your local timezone."
 msgstr "常にあなたの地域のタイムゾーンを設定するべきです。"
 
-#: ../src/parameters.c:577
+#: ../src/parameters.c:580
 msgid "Archive threshold (months)"
 msgstr "アーカイブまでの期間 (月)"
 
-#: ../src/parameters.c:590
+#: ../src/parameters.c:593
 msgid "(0 = no archiving)"
 msgstr "(0 = アーカイブしません)"
 
-#: ../src/parameters.c:594
+#: ../src/parameters.c:597
 msgid "Archiving is used to save time and space when handling events."
 msgstr "アーカイブ化は予定を扱う際の時間と領域を節約します。"
 
-#: ../src/parameters.c:602
+#: ../src/parameters.c:605
 msgid "Sound command"
 msgstr "サウンドコマンド"
 
-#: ../src/parameters.c:630
+#: ../src/parameters.c:633
 msgid "This command is given to shell to make sound in alarms."
 msgstr "このコマンドはアラーム時にサウンドを鳴らすためにシェルに渡されます。"
 
-#: ../src/parameters.c:661
+#: ../src/parameters.c:664
 msgid "Calendar window"
 msgstr "カレンダーウィンドウ"
 
-#: ../src/parameters.c:668
+#: ../src/parameters.c:671
 msgid "Calendar visual details"
 msgstr "カレンダー表示詳細"
 
-#: ../src/parameters.c:675
+#: ../src/parameters.c:678
 msgid "Show borders"
 msgstr "枠を表示する"
 
-#: ../src/parameters.c:680
+#: ../src/parameters.c:683
 msgid "Show menu"
 msgstr "メニューを表示する"
 
-#: ../src/parameters.c:688
+#: ../src/parameters.c:691
 msgid "Show day names"
 msgstr "曜日を表示する"
 
-#: ../src/parameters.c:693
+#: ../src/parameters.c:696
 msgid "Show week numbers"
 msgstr "年内通算週を表示する"
 
-#: ../src/parameters.c:701
+#: ../src/parameters.c:704
 msgid "Show month and year"
 msgstr "年と月を表示する"
 
-#: ../src/parameters.c:721
+#: ../src/parameters.c:724
 msgid "Calendar info boxes"
 msgstr "カレンダー情報ボックス"
 
-#: ../src/parameters.c:728
+#: ../src/parameters.c:731
 msgid "Show todo list"
 msgstr "ToDo リストを表示する"
 
-#: ../src/parameters.c:735
+#: ../src/parameters.c:738
 msgid "Number of days to show in event window"
 msgstr "予定ウィンドウに表示する日数"
 
-#: ../src/parameters.c:743
+#: ../src/parameters.c:746
 msgid "0 = do not show event list at all"
 msgstr "0 = すべての予定リストを表示しません"
 
-#: ../src/parameters.c:757
+#: ../src/parameters.c:760
 msgid "Calendar visibility"
 msgstr "カレンダー表示場所"
 
-#: ../src/parameters.c:763
+#: ../src/parameters.c:766
 msgid "Show on all desktops"
 msgstr "すべてのデスクトップで表示する"
 
-#: ../src/parameters.c:768
+#: ../src/parameters.c:771
 msgid "Keep on top"
 msgstr "常に最前面に置く"
 
-#: ../src/parameters.c:776
+#: ../src/parameters.c:779
 msgid "Show in taskbar"
 msgstr "タスクバーに表示する"
 
-#: ../src/parameters.c:781
+#: ../src/parameters.c:784
 msgid "Show in pager"
 msgstr "ページャーに表示する"
 
-#: ../src/parameters.c:789
+#: ../src/parameters.c:792
 msgid "Show in systray"
 msgstr "システムトレイに表示する"
 
-#: ../src/parameters.c:811
+#: ../src/parameters.c:820
 msgid "Calendar start"
 msgstr "起動時の振る舞い"
 
-#: ../src/parameters.c:817
+#: ../src/parameters.c:826
 msgid "Show"
 msgstr "表示する"
 
-#: ../src/parameters.c:833
+#: ../src/parameters.c:842
 msgid "Hide"
 msgstr "表示しない"
 
-#: ../src/parameters.c:850
+#: ../src/parameters.c:859
 msgid "Minimized"
 msgstr "最小化する"
 
-#: ../src/parameters.c:876
+#: ../src/parameters.c:885
 msgid "On calendar window open"
 msgstr "カレンダーウィンドウを開いたとき"
 
-#: ../src/parameters.c:882
+#: ../src/parameters.c:891
 msgid "Select today's date"
 msgstr "今日の日付を選択する"
 
-#: ../src/parameters.c:899
+#: ../src/parameters.c:908
 msgid "Select previously selected date"
 msgstr "直前に選択していた日付を選択する"
 
-#: ../src/parameters.c:923
+#: ../src/parameters.c:932
 msgid "Calendar day double click shows"
 msgstr "カレンダーの日付をダブルクリックしたときに表示するもの"
 
-#: ../src/parameters.c:929
+#: ../src/parameters.c:938
 msgid "Days view"
 msgstr "日別表示"
 
-#: ../src/parameters.c:945
+#: ../src/parameters.c:954
 msgid "Event list"
 msgstr "予定リスト"
 
-#: ../src/parameters.c:978
+#: ../src/parameters.c:987
 msgid "Extra settings"
 msgstr "拡張設定"
 
-#: ../src/parameters.c:985
+#: ../src/parameters.c:994
 msgid "Event list window"
 msgstr "予定リストウィンドウ"
 
-#: ../src/parameters.c:992
+#: ../src/parameters.c:1001
 msgid "Number of extra days to show in event list"
 msgstr "予定リストに表示する拡張日数"
 
-#: ../src/parameters.c:1002
+#: ../src/parameters.c:1011
 msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
 msgstr "これはデフォルト値になります。実際の予定リストウィンドウで変更できます。"
 
-#: ../src/parameters.c:1010
+#: ../src/parameters.c:1019
 msgid "Show only first repeating event"
 msgstr "繰り返し設定されている予定は初回のみ表示する"
 
-#: ../src/parameters.c:1027
+#: ../src/parameters.c:1036
 msgid "Day view window default first day"
 msgstr "日表示ウィンドウでのデフォルトの第 1 日"
 
-#: ../src/parameters.c:1034
+#: ../src/parameters.c:1043
 msgid "First day of week"
 msgstr "週の初日"
 
-#: ../src/parameters.c:1051
+#: ../src/parameters.c:1060
 msgid "Selected day"
 msgstr "選択した日"
 
-#: ../src/parameters.c:1074 ../src/parameters.c:1081
+#: ../src/parameters.c:1083 ../src/parameters.c:1090
 msgid "Use wakeup timer"
 msgstr "復帰タイマー"
 
-#: ../src/parameters.c:1089
+#: ../src/parameters.c:1098
 msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
@@ -1565,27 +1528,27 @@ msgstr ""
 "サスペンドまたはハイバネートからの復帰時に Orage に問題が発生する場合 (例えば、トレイアイコンが更新されない、アラームが鳴らない、など) "
 "はこのタイマーを使用してください。"
 
-#: ../src/parameters.c:1099
+#: ../src/parameters.c:1108
 msgid "Foreign file default visual alarm"
 msgstr "外部ファイルのデフォルトの視覚アラーム"
 
-#: ../src/parameters.c:1106
+#: ../src/parameters.c:1115
 msgid "Orage window"
 msgstr "Orage ウィンドウ"
 
-#: ../src/parameters.c:1123
+#: ../src/parameters.c:1132
 msgid "Notify notification"
 msgstr "デスクトップ通知"
 
-#: ../src/parameters.c:1146
+#: ../src/parameters.c:1155
 msgid "Always quit when asked to close"
 msgstr "ウィンドウを閉じたときの振る舞い"
 
-#: ../src/parameters.c:1153
+#: ../src/parameters.c:1162
 msgid "Always quit"
 msgstr "Orage を終了する"
 
-#: ../src/parameters.c:1160
+#: ../src/parameters.c:1169
 msgid ""
 "By default Orage stays open in the background when asked to close. This "
 "option changes Orage to quit and never stay in background when it is asked "
@@ -1594,43 +1557,43 @@ msgstr ""
 "デフォルトでは、Orage はウィンドウが閉じられたときもバックグラウンドで動作します。このオプションを有効にすると、ウィンドウを閉じたときに "
 "Orage は終了します。"
 
-#: ../src/parameters.c:1176
+#: ../src/parameters.c:1184
 msgid "Orage Preferences"
 msgstr "Orage の設定"
 
-#: ../src/parameters.c:1200 ../src/reminder.c:712
+#: ../src/parameters.c:1206 ../src/reminder.c:716
 msgid "_Close"
 msgstr "閉じる(_C)"
 
-#: ../src/reminder.c:490
+#: ../src/reminder.c:494
 msgid "Reminder "
 msgstr "備忘録 "
 
-#: ../src/reminder.c:519
+#: ../src/reminder.c:523
 msgid "Open"
 msgstr "開く"
 
-#: ../src/reminder.c:637
+#: ../src/reminder.c:641
 msgid "Reminder - Orage"
 msgstr "備忘録 - Orage"
 
-#: ../src/reminder.c:720
+#: ../src/reminder.c:724
 msgid "_Stop"
 msgstr "停止(_S)"
 
-#: ../src/reminder.c:728
+#: ../src/reminder.c:732
 msgid "Postpone"
 msgstr "後で"
 
-#: ../src/reminder.c:730
+#: ../src/reminder.c:734
 msgid "Remind me again after the specified time"
 msgstr "指定時刻後に再度通知します"
 
-#: ../src/reminder.c:995
+#: ../src/reminder.c:1003
 msgid "Next active alarms:"
 msgstr "次回の有効なアラーム:"
 
-#: ../src/reminder.c:1034
+#: ../src/reminder.c:1042
 #, c-format
 msgid ""
 "\n"
@@ -1639,7 +1602,7 @@ msgstr ""
 "\n"
 "あと %02d 日 %02d 時間 %02d 分: %s"
 
-#: ../src/reminder.c:1046
+#: ../src/reminder.c:1054
 #, c-format
 msgid ""
 "\n"
@@ -3960,15 +3923,15 @@ msgstr "UTC"
 msgid "floating"
 msgstr "フローティング"
 
-#: ../src/tray_icon.c:415
+#: ../src/tray_icon.c:403
 msgid "New appointment"
 msgstr "新しい用件"
 
-#: ../src/tray_icon.c:422
+#: ../src/tray_icon.c:410
 msgid "Preferences"
 msgstr "設定"
 
-#: ../src/tray_icon.c:429
+#: ../src/tray_icon.c:417
 msgid "Quit"
 msgstr "終了"
 
