@@ -646,8 +646,6 @@ static int check_parameters(void)
 
 static void read_os_timezones(void)
 {
-#define MAX_AREA_LENGTH 100
-
     char *tz_dir, *zone_tab_file_name;
     int zoneinfo_len=strlen("zoneinfo/");
     FILE *zone_tab_file;
