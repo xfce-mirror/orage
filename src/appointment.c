@@ -1272,7 +1272,7 @@ static gboolean save_xfical_from_appt_win(appt_win *apptw)
             }
             else {
                 g_warning ("%s: Addition failed: %s", G_STRFUNC, apptw->xf_uid);
-                (void)orage_error_dialog(GTK_WINDOW(apptw->Window)
+                orage_error_dialog (GTK_WINDOW (apptw->Window)
                         , _("Appointment addition failed.")
                         , _("Error happened when adding appointment. Look more details from the log file."));
             }
@@ -1284,7 +1284,7 @@ static gboolean save_xfical_from_appt_win(appt_win *apptw)
             else {
                 g_warning ("%s: Modification failed: %s",
                            G_STRFUNC, apptw->xf_uid);
-                (void)orage_error_dialog(GTK_WINDOW(apptw->Window)
+                orage_error_dialog (GTK_WINDOW (apptw->Window)
                         , _("Appointment update failed.")
                         , _("Look more details from the log file. (Perhaps file was updated external from Orage?)"));
             }

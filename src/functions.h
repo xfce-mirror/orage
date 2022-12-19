@@ -177,7 +177,7 @@ void orage_rc_del_item(OrageRc *orc, const gchar *key);
 gboolean orage_rc_read_color (OrageRc *orc, const gchar *key,
                               GdkRGBA *rgba, const gchar *def);
 
-gint orage_info_dialog (GtkWindow *parent, const gchar *primary_text,
+void orage_info_dialog (GtkWindow *parent, const gchar *primary_text,
                                            const gchar *secondary_text);
 
 gint orage_warning_dialog (GtkWindow *parent, const gchar *primary_text,
@@ -185,7 +185,7 @@ gint orage_warning_dialog (GtkWindow *parent, const gchar *primary_text,
                                               const gchar *no_text,
                                               const gchar *yes_text);
 
-gint orage_error_dialog (GtkWindow *parent, const gchar *primary_text,
+void orage_error_dialog (GtkWindow *parent, const gchar *primary_text,
                                             const gchar *secondary_text);
 
 GtkWidget *orage_create_framebox_with_content (const gchar *title,
