@@ -2306,6 +2306,7 @@ static void on_categories_button_clicked_cb (G_GNUC_UNUSED GtkWidget *button
 static void fill_appt_window_general(appt_win *apptw, xfical_appt *appt
         , const appt_win_action action)
 {
+    gchar *copy_str;
     int i;
 
     /* type */
@@ -2327,10 +2328,12 @@ static void fill_appt_window_general(appt_win *apptw, xfical_appt *appt
 
     if (action == COPY_APPT_WIN)
     {
+        copy_str = g_strconcat (" ", _("*** COPY ***"), NULL);
         gtk_editable_set_position(GTK_EDITABLE(apptw->Title_entry), -1);
         i = gtk_editable_get_position(GTK_EDITABLE(apptw->Title_entry));
-        gtk_editable_insert_text(GTK_EDITABLE(apptw->Title_entry)
-                , _(" *** COPY ***"), strlen(_(" *** COPY ***")), &i);
+        gtk_editable_insert_text (GTK_EDITABLE (apptw->Title_entry), copy_str,
+                                 strlen (copy_str), &i);
+        g_free (copy_str);
     }
 
     /* location */
@@ -2933,7 +2936,7 @@ static void build_general_page(appt_win *apptw)
             , apptw->General_notebook_page, apptw->General_tab_label);
 
     /* type */
-    apptw->Type_label = gtk_label_new(_("Type "));
+    apptw->Type_label = gtk_label_new(_("Type"));
     hbox =  gtk_grid_new ();
     apptw->Type_event_rb = gtk_radio_button_new_with_label(NULL, _("Event"));
     g_object_set (apptw->Type_event_rb, "margin", 15, NULL);
@@ -2963,7 +2966,7 @@ static void build_general_page(appt_win *apptw)
             , row = 0, (GTK_EXPAND | GTK_FILL), (0));
 
     /* title */
-    apptw->Title_label = gtk_label_new(_("Title "));
+    apptw->Title_label = gtk_label_new (_("Title"));
     apptw->Title_entry = gtk_entry_new();
     orage_table_add_row(apptw->TableGeneral
             , apptw->Title_label, apptw->Title_entry
@@ -3001,10 +3004,9 @@ static void build_general_page(appt_win *apptw)
     /* end time */
     apptw->End_label = gtk_label_new(_("End"));
     apptw->End_hbox = gtk_grid_new ();
-    /* translators: leave some spaces after this so that it looks better on
-     * the screen */
-    apptw->End_checkbutton = 
-            gtk_check_button_new_with_mnemonic(_("Set      "));
+    apptw->End_checkbutton =
+            gtk_check_button_new_with_mnemonic(_("Set"));
+    g_object_set (apptw->End_checkbutton, "margin-right", 20, NULL);
     gtk_grid_attach_next_to (GTK_GRID (apptw->End_hbox),
             apptw->End_checkbutton, NULL, GTK_POS_RIGHT, 1, 1);
     apptw->EndDate_button = gtk_button_new();
