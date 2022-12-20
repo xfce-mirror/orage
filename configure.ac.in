@@ -14,7 +14,7 @@ m4_define([orage_version_build], [@REVISION@])
 m4_define([orage_version_tag], [git]) # Leave empty for releases
 m4_define([orage_version], [orage_version_major().orage_version_minor().orage_version_micro()ifelse(orage_version_tag(), [git], [orage_version_tag()-orage_version_build()], [orage_version_tag()])])
 
-m4_define([glib_minimum_version], [2.52.0])
+m4_define([glib_minimum_version], [2.58.0])
 m4_define([gtk_minimum_version], [3.24.0])
 m4_define([xfce_minimum_version], [4.16.0])
 m4_define([dbus_minimum_version], [0.1])
@@ -97,8 +97,6 @@ dnl *** Check for X11 installed ***
 dnl *******************************
 XDT_CHECK_LIBX11_REQUIRE()
 
-AC_DEFINE(GLIB_VERSION_MAX_ALLOWED, GLIB_VERSION_2_52, Warn when using post 2_52 APIs)
-AC_DEFINE(GLIB_VERSION_MIN_REQUIRED, GLIB_VERSION_2_52, Don't warn about post 2_52 deprecations)
 XDT_CHECK_PACKAGE([GLIB], [glib-2.0], [glib_minimum_version])
 XDT_CHECK_PACKAGE([GIO], [gio-2.0], [glib_minimum_version])
 XDT_CHECK_PACKAGE([LIBGTK], [gtk+-3.0], [gtk_minimum_version])
