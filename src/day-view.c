@@ -836,9 +836,8 @@ static void build_day_view_header (day_win *dw, GDateTime *start_date)
     dw->StartDate_button = gtk_button_new();
     gtk_grid_attach_next_to (GTK_GRID (grid), dw->StartDate_button, start_label,
                              GTK_POS_RIGHT, 1, 1);
-
-    no_days_label = gtk_label_new(_("       Number of days to show"));
-    g_object_set (no_days_label, "margin-left", 10, "margin-right", 10, NULL);
+    no_days_label = gtk_label_new (_("Number of days to show"));
+    g_object_set (no_days_label, "margin-left", 40, "margin-right", 10, NULL);
     gtk_grid_attach_next_to (GTK_GRID (grid), no_days_label,
                              dw->StartDate_button, GTK_POS_RIGHT, 1, 1);
 
