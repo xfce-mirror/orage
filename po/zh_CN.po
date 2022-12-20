@@ -1237,23 +1237,23 @@ msgstr "\t使用 libxfce4ui：否\n"
 
 #: ../src/main.c:489
 msgid "Show version of orage"
-msgstr ""
+msgstr "显示 orage 版本"
 
 #: ../src/main.c:498
 msgid "Show preferences form"
-msgstr ""
+msgstr "显示首选项窗体"
 
 #: ../src/main.c:507
 msgid "Make Orage visible/unvisible"
-msgstr ""
+msgstr "使 Orage 可见/不可见"
 
 #: ../src/main.c:516
 msgid "Add a foreign file"
-msgstr ""
+msgstr "添加外部文件"
 
 #: ../src/main.c:534
 msgid "Export appointments from Orage to file"
-msgstr ""
+msgstr "从 Orage 导出约会到文件"
 
 #: ../src/mainbox.c:220
 msgid "_Exchange data"
