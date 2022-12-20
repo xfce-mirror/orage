@@ -1235,23 +1235,23 @@ msgstr "libxfce4ui の使用: いいえ\n"
 
 #: ../src/main.c:489
 msgid "Show version of orage"
-msgstr ""
+msgstr "Orage のバージョンを表示"
 
 #: ../src/main.c:498
 msgid "Show preferences form"
-msgstr ""
+msgstr "設定フォームを表示"
 
 #: ../src/main.c:507
 msgid "Make Orage visible/unvisible"
-msgstr ""
+msgstr "Orage を表示/非表示にする"
 
 #: ../src/main.c:516
 msgid "Add a foreign file"
-msgstr ""
+msgstr "外部ファイルを追加"
 
 #: ../src/main.c:534
 msgid "Export appointments from Orage to file"
-msgstr ""
+msgstr "Orage からファイルに予定をエクスポートする"
 
 #: ../src/mainbox.c:220
 msgid "_Exchange data"
