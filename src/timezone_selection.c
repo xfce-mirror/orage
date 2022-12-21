@@ -219,8 +219,6 @@ static gint sortEvent_comp(GtkTreeModel *model
 
 static GtkWidget *tz_button_create_view(gboolean details, GtkTreeStore *store)
 {
-#define MAX_AREA_LENGTH 100
-
     GtkWidget *tree;
     GtkTreeSortable  *TreeSortable;
     GtkCellRenderer *rend;

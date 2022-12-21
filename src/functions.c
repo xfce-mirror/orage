@@ -1208,23 +1208,34 @@ gboolean orage_rc_read_color (OrageRc *orc, const gchar *key,
  * dialog functions
  *******************************************************/
 
-gint orage_info_dialog (GtkWindow *parent
-        , const gchar *primary_text, const gchar *secondary_text)
+static void orage_gen_info_dialog (GtkWindow *parent,
+                                   const GtkMessageType message_type,
+                                   const gchar *primary_text,
+                                   const gchar *secondary_text)
 {
     GtkWidget *dialog;
-    gint result;
 
-    dialog = gtk_message_dialog_new(parent
-            , GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT
-            , GTK_MESSAGE_INFO
-            , GTK_BUTTONS_OK
-            , "%s", primary_text);
-    if (secondary_text) 
-        gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog)
-                , "%s", secondary_text);
-    result = gtk_dialog_run(GTK_DIALOG(dialog));
-    gtk_widget_destroy(dialog);
-    return(result);
+    dialog = gtk_message_dialog_new (parent,
+                                     GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+                                     message_type, GTK_BUTTONS_OK, "%s",
+                                     primary_text);
+
+    if (secondary_text)
+    {
+        gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
+                                                  "%s", secondary_text);
+    }
+
+    (void)gtk_dialog_run (GTK_DIALOG (dialog));
+    gtk_widget_destroy (dialog);
+}
+
+void orage_info_dialog (GtkWindow *parent,
+                        const gchar *primary_text,
+                        const gchar *secondary_text)
+{
+    orage_gen_info_dialog (parent, GTK_MESSAGE_INFO, primary_text,
+                           secondary_text);
 }
 
 gint orage_warning_dialog (GtkWindow *parent, const gchar *primary_text,
@@ -1250,23 +1261,11 @@ gint orage_warning_dialog (GtkWindow *parent, const gchar *primary_text,
     return(result);
 }
 
-gint orage_error_dialog (GtkWindow *parent, const gchar *primary_text,
+void orage_error_dialog (GtkWindow *parent, const gchar *primary_text,
                                             const gchar *secondary_text)
 {
-    GtkWidget *dialog;
-    gint result;
-
-    dialog = gtk_message_dialog_new(parent
-            , GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT
-            , GTK_MESSAGE_ERROR
-            , GTK_BUTTONS_OK
-            , "%s", primary_text);
-    if (secondary_text) 
-        gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog)
-                , "%s", secondary_text);
-    result = gtk_dialog_run(GTK_DIALOG(dialog));
-    gtk_widget_destroy(dialog);
-    return(result);
+    orage_gen_info_dialog (parent, GTK_MESSAGE_ERROR, primary_text,
+                           secondary_text);
 }
 
 #ifdef HAVE_X11_TRAY_ICON

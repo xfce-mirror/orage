@@ -126,6 +126,13 @@ static unsigned long timecnt;  /* points when time changes */
 static unsigned long typecnt;  /* table of different time changes = types */
 static unsigned long charcnt;  /* length of timezone name table */
 
+/* silence -Wformat-y2k warning when using %c or %x (see man strftime.3) */
+static inline size_t orage_strftime (char *s, size_t max,
+                                     const char *fmt, const struct tm *tm)
+{
+    return strftime (s, max, fmt, tm);
+}
+
 static void read_file(const char *file_name, const struct stat *file_stat)
 {
     FILE *file;
@@ -363,12 +370,12 @@ static int write_ical_file(void)
              * 03:59 is returned as 03:59 (change did not yet happen) */
             prev_tc_time -= 1;
             localtime_r((const time_t *)&prev_tc_time, &cur_gm_time);
-            _strftime(s_prev, 100, "%c", &cur_gm_time);
+            orage_strftime(s_prev, 100, "%c", &cur_gm_time);
             tz_array.prev[tz_array.count] = g_strdup(s_prev);
 
             tc_time -= 1;
             localtime_r((const time_t *)&tc_time, &cur_gm_time);
-            _strftime(s_next, 100, "%c", &cur_gm_time);
+            orage_strftime(s_next, 100, "%c", &cur_gm_time);
             tz_array.next[tz_array.count] = g_strdup(s_next);
             /* get timechange type index */
             if (timecnt) {
@@ -394,7 +401,7 @@ static int write_ical_file(void)
         if (details && prev_tc_time) {
             prev_tc_time -= 1;
             localtime_r((const time_t *)&prev_tc_time, &cur_gm_time);
-            _strftime(s_prev, 100, "%c", &cur_gm_time);
+            orage_strftime(s_prev, 100, "%c", &cur_gm_time);
             tz_array.prev[tz_array.count] = g_strdup(s_prev);
         }
         else
@@ -646,8 +653,6 @@ static int check_parameters(void)
 
 static void read_os_timezones(void)
 {
-#define MAX_AREA_LENGTH 100
-
     char *tz_dir, *zone_tab_file_name;
     int zoneinfo_len=strlen("zoneinfo/");
     FILE *zone_tab_file;
