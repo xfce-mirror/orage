@@ -714,7 +714,7 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
                    "New file not added.", G_STRFUNC);
         if (main_window)
         {
-            (void)orage_error_dialog(GTK_WINDOW(main_window)
+            orage_error_dialog (GTK_WINDOW (main_window)
                     , add_failed
                     , _("Orage can only handle 10 foreign files. Limit reached."));
         }
@@ -724,7 +724,7 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
         g_warning ("%s: File is empty. New file not added.", G_STRFUNC);
         if (main_window)
         {
-            (void)orage_error_dialog(GTK_WINDOW(main_window)
+            orage_error_dialog (GTK_WINDOW (main_window)
                     , add_failed
                     , _("Filename is empty."));
         }
@@ -734,7 +734,7 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
         g_warning ("%s: Name is empty. New file not added.", G_STRFUNC);
         if (main_window)
         {
-            (void)orage_error_dialog(GTK_WINDOW(main_window)
+            orage_error_dialog (GTK_WINDOW (main_window)
                     , add_failed
                     , _("Name is empty."));
         }
@@ -745,7 +745,7 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
                    G_STRFUNC, filename);
         if (main_window)
         {
-            (void)orage_error_dialog(GTK_WINDOW(main_window)
+            orage_error_dialog (GTK_WINDOW (main_window)
                     , add_failed
                     , _("File does not exist."));
         }
@@ -757,7 +757,7 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
                        G_STRFUNC);
             if (main_window)
             {
-                (void)orage_error_dialog(GTK_WINDOW(main_window)
+                orage_error_dialog (GTK_WINDOW (main_window)
                         , add_failed
                         , _("Same filename already exists in Orage."));
             }
@@ -768,7 +768,7 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
                        "New file not added", G_STRFUNC);
             if (main_window)
             {
-                (void)orage_error_dialog(GTK_WINDOW(main_window)
+                orage_error_dialog (GTK_WINDOW (main_window)
                         , add_failed
                         , _("Same name already exists in Orage."));
             }
