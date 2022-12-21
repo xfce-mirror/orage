@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-19 00:47+0100\n"
+"POT-Creation-Date: 2022-12-21 12:48+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: enolp <enolp@softastur.org>, 2022\n"
 "Language-Team: Asturian (https://www.transifex.com/xfce/teams/16840/ast/)\n"
@@ -33,81 +33,81 @@ msgstr "Softastur <alministradores@softastur.org>"
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
 #. end time
-#: ../src/appointment.c:325 ../src/appointment.c:365 ../src/appointment.c:3003
+#: ../src/appointment.c:322 ../src/appointment.c:362 ../src/appointment.c:2971
 msgid "End"
 msgstr "Fin"
 
-#: ../src/appointment.c:345
+#: ../src/appointment.c:342
 msgid "Due"
 msgstr "Data llímite"
 
-#: ../src/appointment.c:508 ../src/mainbox.c:683
+#: ../src/appointment.c:505 ../src/mainbox.c:683
 #: ../org.xfce.orage.appdata.xml.in.h:1
 msgid "Orage"
 msgstr "Orage"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
-#: ../src/appointment.c:699 ../src/interface.c:262 ../src/parameters.c:395
+#: ../src/appointment.c:696 ../src/interface.c:262 ../src/parameters.c:395
 msgid "Select a file..."
 msgstr "Seleiciona un ficheru..."
 
-#: ../src/appointment.c:707
+#: ../src/appointment.c:704
 msgid "Sound Files"
 msgstr "Ficheros de soníu"
 
-#: ../src/appointment.c:714 ../src/interface.c:275
+#: ../src/appointment.c:711 ../src/interface.c:275
 msgid "All Files"
 msgstr "Tolos ficheros"
 
-#: ../src/appointment.c:765
+#: ../src/appointment.c:762
 msgid "The appointment information has been modified."
 msgstr "La información de la cita modificóse."
 
-#: ../src/appointment.c:766 ../src/appointment.c:1340 ../src/event-list.c:1001
+#: ../src/appointment.c:763 ../src/appointment.c:1305 ../src/event-list.c:1001
 msgid "Do you want to continue?"
 msgstr "¿Quies siguir?"
 
-#: ../src/appointment.c:767
+#: ../src/appointment.c:764
 msgid "No, do not leave"
 msgstr "Non, nun colar"
 
-#: ../src/appointment.c:768
+#: ../src/appointment.c:765
 msgid "Yes, ignore modifications and leave"
 msgstr "Sí, inorar les camudancies y colar"
 
-#: ../src/appointment.c:796
+#: ../src/appointment.c:793
 msgid "The end of this appointment is earlier than the beginning."
 msgstr "El fin d'esta cita ye anterior al so aniciu."
 
-#: ../src/appointment.c:1096 ../src/appointment.c:2015
+#: ../src/appointment.c:1061 ../src/appointment.c:1980
 msgid "Not set"
 msgstr "Nun afitáu"
 
-#: ../src/appointment.c:1189
+#: ../src/appointment.c:1154
 msgid "Add new appointment to this file."
 msgstr "Amestar un cita nueva a esti ficheru."
 
-#: ../src/appointment.c:1190 ../src/appointment.c:1238
+#: ../src/appointment.c:1155 ../src/appointment.c:1203
 msgid "Orage default file"
 msgstr "Ficheru por defeutu Orage"
 
-#: ../src/appointment.c:1276
+#: ../src/appointment.c:1241
 msgid "Appointment addition failed."
 msgstr "Fallu na amestanza de la cita."
 
-#: ../src/appointment.c:1277
+#: ../src/appointment.c:1242
 msgid ""
 "Error happened when adding appointment. Look more details from the log file."
 msgstr ""
 "Asocedió un fallu cuando s'amestaba la cita. Mira más detalles nel ficheru "
 "de rexistru."
 
-#: ../src/appointment.c:1288
+#: ../src/appointment.c:1253
 msgid "Appointment update failed."
 msgstr "Fallu nel anovamientu de la cita."
 
-#: ../src/appointment.c:1289
+#: ../src/appointment.c:1254
 msgid ""
 "Look more details from the log file. (Perhaps file was updated external from"
 " Orage?)"
@@ -115,127 +115,127 @@ msgstr ""
 "Mira más detalles nel ficheru de rexistru. (¿Nun s'anovaría'l ficheru "
 "esternamente?)"
 
-#: ../src/appointment.c:1339
+#: ../src/appointment.c:1304
 msgid "This appointment will be permanently removed."
 msgstr "Esta cita desaniciaráse dafechu."
 
-#: ../src/appointment.c:1341 ../src/event-list.c:1002
+#: ../src/appointment.c:1306 ../src/event-list.c:1002
 msgid "No, cancel the removal"
 msgstr "Non, encaboxar el desaniciu"
 
-#: ../src/appointment.c:1342
+#: ../src/appointment.c:1307
 msgid "Yes, remove it"
 msgstr "Sí, desanicialu"
 
-#: ../src/appointment.c:1441 ../src/appointment.c:1456 ../src/day-view.c:471
+#: ../src/appointment.c:1406 ../src/appointment.c:1421 ../src/day-view.c:471
 #: ../src/event-list.c:1061 ../src/functions.c:144
 msgid "Pick the date"
 msgstr "Escueye la data"
 
-#: ../src/appointment.c:1443 ../src/appointment.c:1458 ../src/day-view.c:400
+#: ../src/appointment.c:1408 ../src/appointment.c:1423 ../src/day-view.c:400
 #: ../src/day-view.c:473 ../src/event-list.c:1063 ../src/event-list.c:1217
 #: ../src/functions.c:146 ../src/tray_icon.c:396
 msgid "Today"
 msgstr "Güei"
 
-#: ../src/appointment.c:1885
+#: ../src/appointment.c:1850
 msgid "This appointment does not exist."
 msgstr "Esta cita nun esiste."
 
-#: ../src/appointment.c:1886
+#: ../src/appointment.c:1851
 msgid "It was probably removed, please refresh your screen."
 msgstr "Probablemente desanicióse. Por favor, refresque la pantalla."
 
-#: ../src/appointment.c:2183 ../src/interface.c:676
+#: ../src/appointment.c:2148 ../src/interface.c:676
 msgid "_Remove"
 msgstr ""
 
-#: ../src/appointment.c:2209
+#: ../src/appointment.c:2174
 msgid "Current categories"
 msgstr "Categoríes actuales"
 
-#: ../src/appointment.c:2231
+#: ../src/appointment.c:2196
 msgid "Add new category with color"
 msgstr "Amestar una nueva categoría con color"
 
-#: ../src/appointment.c:2242
+#: ../src/appointment.c:2207
 msgid "Category:"
 msgstr "Categoría:"
 
-#: ../src/appointment.c:2258 ../src/interface.c:1455
+#: ../src/appointment.c:2223 ../src/interface.c:1455
 msgid "_Add"
 msgstr ""
 
-#: ../src/appointment.c:2287
+#: ../src/appointment.c:2252
 msgid "Colors of categories - Orage"
 msgstr "Colores de categoríes - Orage"
 
-#: ../src/appointment.c:2334
-msgid " *** COPY ***"
-msgstr " *** COPIAR ***"
+#: ../src/appointment.c:2297
+msgid "*** COPY ***"
+msgstr ""
 
-#: ../src/appointment.c:2617
+#: ../src/appointment.c:2585
 msgid "New appointment - Orage"
 msgstr "Nueva cita - Orage"
 
 #. File menu stuff
 #. ********* File menu *********
 #. File menu
-#: ../src/appointment.c:2645 ../src/day-view.c:294 ../src/event-list.c:1118
+#: ../src/appointment.c:2613 ../src/day-view.c:294 ../src/event-list.c:1118
 #: ../src/interface.c:861 ../src/mainbox.c:212
 msgid "_File"
 msgstr "_Ficheru"
 
-#: ../src/appointment.c:2651
+#: ../src/appointment.c:2619
 msgid "Sav_e and close"
 msgstr "_Guardar y zarrar"
 
-#: ../src/appointment.c:2664 ../src/event-list.c:1124
+#: ../src/appointment.c:2632 ../src/event-list.c:1124
 msgid "D_uplicate"
 msgstr "D_uplicar"
 
-#: ../src/appointment.c:2895
+#: ../src/appointment.c:2863
 msgid "Save"
 msgstr "Guardar"
 
-#: ../src/appointment.c:2897
+#: ../src/appointment.c:2865
 msgid "Save and close"
 msgstr "Guardar y zarrar"
 
-#: ../src/appointment.c:2902
+#: ../src/appointment.c:2870
 msgid "Revert"
 msgstr "Revertir"
 
-#: ../src/appointment.c:2904 ../src/event-list.c:1208
+#: ../src/appointment.c:2872 ../src/event-list.c:1208
 msgid "Duplicate"
 msgstr "Duplicar"
 
-#: ../src/appointment.c:2909 ../src/event-list.c:1210
+#: ../src/appointment.c:2877 ../src/event-list.c:1210
 msgid "Delete"
 msgstr "Desaniciar"
 
-#: ../src/appointment.c:2927
+#: ../src/appointment.c:2895
 msgid "Free"
 msgstr "Lliberar"
 
-#: ../src/appointment.c:2927
+#: ../src/appointment.c:2895
 msgid "Busy"
 msgstr "Ocupáu"
 
-#: ../src/appointment.c:2931
+#: ../src/appointment.c:2899
 msgid "General"
 msgstr "Xeneral"
 
 #. type
-#: ../src/appointment.c:2937
-msgid "Type "
-msgstr "Triba"
+#: ../src/appointment.c:2905
+msgid "Type"
+msgstr ""
 
-#: ../src/appointment.c:2939 ../src/event-list.c:1263
+#: ../src/appointment.c:2907 ../src/event-list.c:1263
 msgid "Event"
 msgstr "Eventu"
 
-#: ../src/appointment.c:2944
+#: ../src/appointment.c:2912
 msgid ""
 "Event that will happen sometime. For example:\n"
 "Meeting or birthday or TV show."
@@ -243,11 +243,11 @@ msgstr ""
 "Eventu qu'ocurrirá en dalgún intre. Por exemplu:\n"
 "Cita, cumpleaños o programa TV."
 
-#: ../src/appointment.c:2947 ../src/event-list.c:1322
+#: ../src/appointment.c:2915 ../src/event-list.c:1322
 msgid "Todo"
 msgstr "Xeres pendientes"
 
-#: ../src/appointment.c:2952
+#: ../src/appointment.c:2920
 msgid ""
 "Something that you should do sometime. For example:\n"
 "Wash your car or test new version of Orage."
@@ -255,11 +255,11 @@ msgstr ""
 "Daqué que tendría de facer en dalguna ocasión. Por exemplu:\n"
 "Llavar el so coche o prebar la nueva versión d'Orage."
 
-#: ../src/appointment.c:2955 ../src/event-list.c:1336
+#: ../src/appointment.c:2923 ../src/event-list.c:1336
 msgid "Journal"
 msgstr "Diariu"
 
-#: ../src/appointment.c:2960
+#: ../src/appointment.c:2928
 msgid ""
 "Make a note that something happened. For example:\n"
 "Remark that your mother called or first snow came."
@@ -268,65 +268,65 @@ msgstr ""
 "Remembre que la so madre llamó o que cayó la primer nevada."
 
 #. title
-#: ../src/appointment.c:2967
-msgid "Title "
+#: ../src/appointment.c:2935 ../src/event-list.c:1441
+msgid "Title"
 msgstr "Títulu"
 
 #. location
-#: ../src/appointment.c:2974 ../src/timezone_selection.c:237
-#: ../src/timezone_selection.c:242
+#: ../src/appointment.c:2942 ../src/timezone_selection.c:235
+#: ../src/timezone_selection.c:240
 msgid "Location"
 msgstr "Allugamientu"
 
-#: ../src/appointment.c:2982
+#: ../src/appointment.c:2950
 msgid "All day event"
 msgstr "Eventu que dura tol día"
 
 #. start time
-#: ../src/appointment.c:2988 ../src/appointment.c:3707 ../src/day-view.c:831
+#: ../src/appointment.c:2956 ../src/appointment.c:3674 ../src/day-view.c:831
 msgid "Start"
 msgstr "Aniciu"
 
-#: ../src/appointment.c:3008
-msgid "Set      "
-msgstr "Afitar"
+#: ../src/appointment.c:2974
+msgid "Set"
+msgstr ""
 
-#: ../src/appointment.c:3031
+#: ../src/appointment.c:2998
 msgid "Duration"
 msgstr "Duración"
 
-#: ../src/appointment.c:3035 ../src/appointment.c:3242 ../src/reminder.c:680
+#: ../src/appointment.c:3002 ../src/appointment.c:3209 ../src/reminder.c:680
 msgid "days"
 msgstr "díes"
 
-#: ../src/appointment.c:3037 ../src/appointment.c:3244 ../src/reminder.c:682
+#: ../src/appointment.c:3004 ../src/appointment.c:3211 ../src/reminder.c:682
 msgid "hours"
 msgstr "hores"
 
-#: ../src/appointment.c:3039 ../src/appointment.c:3246 ../src/reminder.c:684
+#: ../src/appointment.c:3006 ../src/appointment.c:3213 ../src/reminder.c:684
 msgid "mins"
 msgstr "minutos"
 
 #. Availability (only for EVENT)
-#: ../src/appointment.c:3051
+#: ../src/appointment.c:3018
 msgid "Availability"
 msgstr "Disponibilidá"
 
 #. completed (only for TODO)
-#: ../src/appointment.c:3059 ../src/appointment.c:3716
+#: ../src/appointment.c:3026 ../src/appointment.c:3683
 msgid "Completed"
 msgstr "Completáu"
 
-#: ../src/appointment.c:3062
+#: ../src/appointment.c:3029
 msgid "Done"
 msgstr "Fecho"
 
 #. categories
-#: ../src/appointment.c:3087
+#: ../src/appointment.c:3054
 msgid "Categories"
 msgstr "Categoríes"
 
-#: ../src/appointment.c:3105
+#: ../src/appointment.c:3072
 msgid ""
 "This is special category, which can be used to color this appointment in "
 "list views."
@@ -334,20 +334,20 @@ msgstr ""
 "Ésta ye una categoría especial que pue usase pa colorear esta cita nes "
 "vistes como llista."
 
-#: ../src/appointment.c:3106
+#: ../src/appointment.c:3073
 msgid "_Colour"
 msgstr ""
 
-#: ../src/appointment.c:3111
+#: ../src/appointment.c:3078
 msgid "update colors for categories."
 msgstr "anovar colores de categoríes."
 
 #. priority
-#: ../src/appointment.c:3117
+#: ../src/appointment.c:3084
 msgid "Priority"
 msgstr "Prioridá"
 
-#: ../src/appointment.c:3121
+#: ../src/appointment.c:3088
 msgid ""
 "If you set this 8 or bigger, the appointment is NOT shown on list windows.\n"
 "You can use that feature to unclutter your list windows, but it makes it more difficult to find this appointment.\n"
@@ -360,11 +360,11 @@ msgstr ""
 "(Hai un parámetru ensin documentar nel que pues camudar el llimite por defeutu de 8.)"
 
 #. note
-#: ../src/appointment.c:3130
+#: ../src/appointment.c:3097
 msgid "Note"
 msgstr "Nota"
 
-#: ../src/appointment.c:3151
+#: ../src/appointment.c:3118
 msgid ""
 "These shorthand commands take effect immediately:\n"
 "    <D> inserts current date in local date format\n"
@@ -376,32 +376,32 @@ msgid ""
 "(This can be used for example in birthday reminders to tell how old the person will be.)"
 msgstr ""
 
-#: ../src/appointment.c:3224
+#: ../src/appointment.c:3191
 msgid "Before Start"
 msgstr "Enantes del aniciu"
 
-#: ../src/appointment.c:3224
+#: ../src/appointment.c:3191
 msgid "Before End"
 msgstr "Enantes del fin"
 
-#: ../src/appointment.c:3225
+#: ../src/appointment.c:3192
 msgid "After Start"
 msgstr "Dempués del aniciu"
 
-#: ../src/appointment.c:3225
+#: ../src/appointment.c:3192
 msgid "After End"
 msgstr "Dempués del fin"
 
-#: ../src/appointment.c:3233
+#: ../src/appointment.c:3200
 msgid "Alarm"
 msgstr "Alarma"
 
 #. **** ALARM TIME ****
-#: ../src/appointment.c:3239
+#: ../src/appointment.c:3206
 msgid "Alarm time"
 msgstr "Hora d'alarma"
 
-#: ../src/appointment.c:3264
+#: ../src/appointment.c:3231
 msgid ""
 "Often you want to get alarm:\n"
 " 1) before Event start\n"
@@ -413,11 +413,11 @@ msgstr ""
 " 2) enantes del fin de xeres pendientes\n"
 " 3) dempués del aniciu de xeres pendientes"
 
-#: ../src/appointment.c:3269
+#: ../src/appointment.c:3236
 msgid "Persistent alarm"
 msgstr "Alarma persistente"
 
-#: ../src/appointment.c:3274
+#: ../src/appointment.c:3241
 msgid ""
 "Select this if you want Orage to remind you even if it has not been active "
 "when the alarm happened."
@@ -426,87 +426,87 @@ msgstr ""
 "cuando ocurrió l'alarma."
 
 #. **** Audio Alarm ****
-#: ../src/appointment.c:3283
+#: ../src/appointment.c:3250
 msgid "Sound"
 msgstr "Soníu"
 
-#: ../src/appointment.c:3287 ../src/appointment.c:3420
+#: ../src/appointment.c:3254 ../src/appointment.c:3387
 msgid "Use"
 msgstr "Usar"
 
-#: ../src/appointment.c:3289
+#: ../src/appointment.c:3256
 msgid "Select this if you want audible alarm"
 msgstr "Seleiciona esta opción si quies una alarma sonora"
 
-#: ../src/appointment.c:3302 ../src/interface.c:1051 ../src/interface.c:1097
+#: ../src/appointment.c:3269 ../src/interface.c:1051 ../src/interface.c:1097
 #: ../src/interface.c:1273 ../src/interface.c:1365 ../src/interface.c:1448
 #: ../src/parameters.c:400 ../src/parameters.c:623 ../src/reminder.c:709
 msgid "_Open"
 msgstr ""
 
-#: ../src/appointment.c:3315
+#: ../src/appointment.c:3282
 msgid "Repeat alarm sound"
 msgstr "Repetir soníu d'alarma"
 
-#: ../src/appointment.c:3330 ../src/appointment.c:3639
+#: ../src/appointment.c:3297 ../src/appointment.c:3606
 msgid "times"
 msgstr "vegaes"
 
-#: ../src/appointment.c:3346
+#: ../src/appointment.c:3313
 msgid "sec interval"
 msgstr "intervalu en seg."
 
 #. **** Display Alarm ****
-#: ../src/appointment.c:3356
+#: ../src/appointment.c:3323
 msgid "Visual"
 msgstr "Visual"
 
-#: ../src/appointment.c:3360
+#: ../src/appointment.c:3327
 msgid "Use Orage window"
 msgstr "Usar ventana d'Orage"
 
-#: ../src/appointment.c:3362
+#: ../src/appointment.c:3329
 msgid "Select this if you want Orage window alarm"
 msgstr "Seleiciona esta opción si quies la ventana d'alarma d'Orage"
 
-#: ../src/appointment.c:3374
+#: ../src/appointment.c:3341
 msgid "Use notification"
 msgstr "Usar notificación"
 
-#: ../src/appointment.c:3376
+#: ../src/appointment.c:3343
 msgid "Select this if you want notification alarm"
 msgstr "Seleiciona esta opción si quies l'alarma de notificación"
 
-#: ../src/appointment.c:3384
+#: ../src/appointment.c:3351
 msgid "Set timeout"
 msgstr "Afitar tiempu d'expiración"
 
-#: ../src/appointment.c:3386
+#: ../src/appointment.c:3353
 msgid "Select this if you want notification to expire automatically"
 msgstr ""
 "Seleiciona esta opción si quies que les notificaciones acaben "
 "automáticamente"
 
-#: ../src/appointment.c:3397
+#: ../src/appointment.c:3364
 msgid "0 = system default expiration time"
 msgstr "0 = tiempu d'acabu predetermináu del sistema"
 
-#: ../src/appointment.c:3405
+#: ../src/appointment.c:3372
 msgid "seconds"
 msgstr "segundos"
 
 #. **** Procedure Alarm ****
-#: ../src/appointment.c:3416
+#: ../src/appointment.c:3383
 msgid "Procedure"
 msgstr "Procedimientu"
 
-#: ../src/appointment.c:3422
+#: ../src/appointment.c:3389
 msgid "Select this if you want procedure or script alarm"
 msgstr ""
 "Seleiciona esta opción si quies una alarma per aciu de procedimientu o "
 "script"
 
-#: ../src/appointment.c:3432
+#: ../src/appointment.c:3399
 msgid ""
 "You must enter all escape etc characters yourself.\n"
 "This string is just given to shell to process.\n"
@@ -518,109 +518,109 @@ msgid ""
 "\t<&ET> appointment end time"
 msgstr ""
 
-#: ../src/appointment.c:3446 ../src/interface.c:1185 ../src/interface.c:1207
+#: ../src/appointment.c:3413 ../src/interface.c:1185 ../src/interface.c:1207
 msgid "_Execute"
 msgstr ""
 
-#: ../src/appointment.c:3448
+#: ../src/appointment.c:3415
 msgid "Test this alarm by raising it now"
 msgstr ""
 
-#: ../src/appointment.c:3461
+#: ../src/appointment.c:3428
 msgid "<b>Default alarm</b>"
 msgstr "<b>Alarma por defeutu</b>"
 
-#: ../src/appointment.c:3467 ../src/interface.c:1058 ../src/interface.c:1104
+#: ../src/appointment.c:3434 ../src/interface.c:1058 ../src/interface.c:1104
 #: ../src/interface.c:1279 ../src/interface.c:1371
 msgid "_Save"
 msgstr "_Guardar"
 
-#: ../src/appointment.c:3475
+#: ../src/appointment.c:3442
 msgid "Store current settings as default alarm"
 msgstr "Atroxar la configuración d'anguaño como alarma predeterminada"
 
-#: ../src/appointment.c:3477
+#: ../src/appointment.c:3444
 msgid "_Revert"
 msgstr ""
 
-#: ../src/appointment.c:3485
+#: ../src/appointment.c:3452
 msgid "Set current settings from default alarm"
 msgstr "Afitar la configuración d'anguaño dende la de l'alarma predeterminada"
 
-#: ../src/appointment.c:3551
+#: ../src/appointment.c:3518
 msgid "None"
 msgstr "Dengún"
 
-#: ../src/appointment.c:3551
+#: ../src/appointment.c:3518
 msgid "Daily"
 msgstr "Diariu"
 
-#: ../src/appointment.c:3551
+#: ../src/appointment.c:3518
 msgid "Weekly"
 msgstr "Selmanal"
 
-#: ../src/appointment.c:3551
+#: ../src/appointment.c:3518
 msgid "Monthly"
 msgstr "Mensual"
 
-#: ../src/appointment.c:3551
+#: ../src/appointment.c:3518
 msgid "Yearly"
 msgstr "Añal"
 
-#: ../src/appointment.c:3551
+#: ../src/appointment.c:3518
 msgid "Hourly"
 msgstr ""
 
-#: ../src/appointment.c:3553
+#: ../src/appointment.c:3520
 msgid "Mon"
 msgstr "Llun"
 
-#: ../src/appointment.c:3553
+#: ../src/appointment.c:3520
 msgid "Tue"
 msgstr "Mar"
 
-#: ../src/appointment.c:3553
+#: ../src/appointment.c:3520
 msgid "Wed"
 msgstr "Mié"
 
-#: ../src/appointment.c:3553
+#: ../src/appointment.c:3520
 msgid "Thu"
 msgstr "Xue"
 
-#: ../src/appointment.c:3553
+#: ../src/appointment.c:3520
 msgid "Fri"
 msgstr "Vie"
 
-#: ../src/appointment.c:3553
+#: ../src/appointment.c:3520
 msgid "Sat"
 msgstr "Sáb"
 
-#: ../src/appointment.c:3553
+#: ../src/appointment.c:3520
 msgid "Sun"
 msgstr "Dom"
 
-#: ../src/appointment.c:3558
+#: ../src/appointment.c:3525
 msgid "Recurrence"
 msgstr "Repetición"
 
 #. complexity
-#: ../src/appointment.c:3564
+#: ../src/appointment.c:3531
 msgid "Complexity"
 msgstr "Complexidá"
 
-#: ../src/appointment.c:3567
+#: ../src/appointment.c:3534
 msgid "Basic"
 msgstr "Básicu"
 
-#: ../src/appointment.c:3574
+#: ../src/appointment.c:3541
 msgid "Advanced"
 msgstr "Avanzáu"
 
-#: ../src/appointment.c:3580
+#: ../src/appointment.c:3547
 msgid "Use this if you want regular repeating event"
 msgstr "Use esta opción si quier la repetición regular del eventu"
 
-#: ../src/appointment.c:3582
+#: ../src/appointment.c:3549
 msgid ""
 "Use this if you need complex times like:\n"
 " Every Saturday and Sunday or \n"
@@ -631,19 +631,19 @@ msgstr ""
 " el primer xueves de cada mes"
 
 #. frequency
-#: ../src/appointment.c:3588
+#: ../src/appointment.c:3555
 msgid "Frequency"
 msgstr "Frecuencia"
 
-#: ../src/appointment.c:3595
+#: ../src/appointment.c:3562
 msgid "Each"
 msgstr "Cada"
 
-#: ../src/appointment.c:3606
+#: ../src/appointment.c:3573
 msgid "occurrence"
 msgstr "ocurrencia"
 
-#: ../src/appointment.c:3613
+#: ../src/appointment.c:3580
 msgid ""
 "Limit frequency to certain interval.\n"
 " For example: Every third day:\n"
@@ -653,32 +653,32 @@ msgstr ""
 " Por exemplu: Cada tercer día:\n"
 " Frecuencia = Diaria ya Intervalu = 3"
 
-#: ../src/appointment.c:3620
+#: ../src/appointment.c:3587
 msgid "Limit"
 msgstr "Llimitar"
 
-#: ../src/appointment.c:3622
+#: ../src/appointment.c:3589
 msgid "Repeat forever"
 msgstr "Repetir pa siempres"
 
-#: ../src/appointment.c:3629
+#: ../src/appointment.c:3596
 msgid "Repeat "
 msgstr "Repetir "
 
-#: ../src/appointment.c:3653
+#: ../src/appointment.c:3620
 msgid "Repeat until "
 msgstr "Repetir fasta "
 
 #. weekdays (only for complex settings)
-#: ../src/appointment.c:3669
+#: ../src/appointment.c:3636
 msgid "Weekdays"
 msgstr "Díes de la selmana"
 
-#: ../src/appointment.c:3686
+#: ../src/appointment.c:3653
 msgid "Which day"
 msgstr "Qué día"
 
-#: ../src/appointment.c:3697
+#: ../src/appointment.c:3664
 msgid ""
 "Specify which weekday for monthly and yearly events.\n"
 " For example:\n"
@@ -695,54 +695,54 @@ msgstr ""
 "\tQué día = seleiciona 2 del númberu debaxo de miércoles"
 
 #. TODO base (only for TODOs)
-#: ../src/appointment.c:3704
+#: ../src/appointment.c:3671
 msgid "TODO base"
 msgstr ""
 
-#: ../src/appointment.c:3723
+#: ../src/appointment.c:3690
 msgid ""
 "TODO reoccurs regularly starting on start time and repeating after each "
 "interval no matter when it was last completed"
 msgstr ""
 
-#: ../src/appointment.c:3725
+#: ../src/appointment.c:3692
 msgid ""
 "TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
 msgstr ""
 
 #. exceptions
-#: ../src/appointment.c:3731
+#: ../src/appointment.c:3698
 msgid "Exceptions"
 msgstr "Esceiciones"
 
-#: ../src/appointment.c:3757
+#: ../src/appointment.c:3724
 msgid ""
 "Add more exception dates by clicking the calendar days below.\n"
 "Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
 "Remove by clicking the data."
 msgstr ""
 
-#: ../src/appointment.c:3768
+#: ../src/appointment.c:3735
 msgid "Add excluded date (-)"
 msgstr "Amestar data escluyida (-)"
 
-#: ../src/appointment.c:3770
+#: ../src/appointment.c:3737
 msgid "Excluded days are full days where this appointment is not happening"
 msgstr ""
 
-#: ../src/appointment.c:3777
+#: ../src/appointment.c:3744
 msgid "Add included time (+)"
 msgstr "Amestar hora incluyida (+)"
 
-#: ../src/appointment.c:3779
+#: ../src/appointment.c:3746
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time"
 msgstr ""
 
 #. calendars showing the action days
-#: ../src/appointment.c:3798
+#: ../src/appointment.c:3765
 msgid "Action dates"
 msgstr ""
 
@@ -793,11 +793,11 @@ msgstr ""
 msgid "Unknown"
 msgstr "Desconocíu"
 
-#: ../src/day-view.c:840
-msgid "       Number of days to show"
-msgstr "Númberu de díes p'amosar"
+#: ../src/day-view.c:839
+msgid "Number of days to show"
+msgstr ""
 
-#: ../src/day-view.c:1071
+#: ../src/day-view.c:1070
 msgid "Orage - day view"
 msgstr "Orage - Vista de día"
 
@@ -891,10 +891,6 @@ msgstr "Guetar testu"
 #: ../src/event-list.c:1433
 msgid "Flags"
 msgstr "Marques"
-
-#: ../src/event-list.c:1441
-msgid "Title"
-msgstr "Títulu"
 
 #: ../src/event-list.c:1467
 msgid ""
@@ -3856,15 +3852,15 @@ msgstr "non camudáu"
 msgid "not changing"
 msgstr "non camudar"
 
-#: ../src/timezone_selection.c:248
+#: ../src/timezone_selection.c:246
 msgid "GMT Offset"
 msgstr "Offset GMT"
 
-#: ../src/timezone_selection.c:254
+#: ../src/timezone_selection.c:252
 msgid "Previous/Next Change"
 msgstr ""
 
-#: ../src/timezone_selection.c:259
+#: ../src/timezone_selection.c:257
 msgid "Country"
 msgstr "País"
 
@@ -3873,23 +3869,23 @@ msgstr "País"
 #. done very seldom and we do not want to allow "floating" here.
 #. This test is ugly, but it is not worth an extra parameter.
 #. this is normal appointment
-#: ../src/timezone_selection.c:291 ../src/timezone_selection.c:300
-#: ../src/timezone_selection.c:311
+#: ../src/timezone_selection.c:289 ../src/timezone_selection.c:298
+#: ../src/timezone_selection.c:309
 msgid "Pick timezone"
 msgstr "Escueya estaya horaria"
 
-#: ../src/timezone_selection.c:294 ../src/timezone_selection.c:303
-#: ../src/timezone_selection.c:314
+#: ../src/timezone_selection.c:292 ../src/timezone_selection.c:301
+#: ../src/timezone_selection.c:312
 msgid "Change mode"
 msgstr "Mou cambéu"
 
-#: ../src/timezone_selection.c:295 ../src/timezone_selection.c:304
-#: ../src/timezone_selection.c:315 ../src/timezone_selection.c:354
+#: ../src/timezone_selection.c:293 ../src/timezone_selection.c:302
+#: ../src/timezone_selection.c:313 ../src/timezone_selection.c:352
 msgid "UTC"
 msgstr "UTC"
 
 #. NOTE: this exists only if ical timezones are being used
-#: ../src/timezone_selection.c:305 ../src/timezone_selection.c:359
+#: ../src/timezone_selection.c:303 ../src/timezone_selection.c:357
 msgid "floating"
 msgstr "flotante"
 
