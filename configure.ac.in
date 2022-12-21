@@ -128,13 +128,6 @@ XDT_CHECK_OPTIONAL_PACKAGE([NOTIFY], [libnotify],
                            [LIBNOTIFY support])
 
 dnl ************************************************
-dnl *** Optional support for 4.6 Xfce            ***
-dnl ************************************************
-dnl XDT_CHECK_OPTIONAL_PACKAGE([LIBXFCEGUI4], [libxfcegui4-1.0],
-dnl                            [xfce_minimum_version], [libxfcegui4],
-dnl                            [LIBXFCEGUI4 support])
-
-dnl ************************************************
 dnl *** Optional support for Xfce                ***
 dnl ************************************************
 XDT_CHECK_OPTIONAL_PACKAGE([LIBXFCE4UI], [libxfce4ui-2],
@@ -142,7 +135,6 @@ XDT_CHECK_OPTIONAL_PACKAGE([LIBXFCE4UI], [libxfce4ui-2],
                            [LIBXFCE4UI support])
 
 dnl Check for debugging support
-dnl BM_DEBUG_SUPPORT()
 XDT_FEATURE_DEBUG
 
 dnl ************************************************
