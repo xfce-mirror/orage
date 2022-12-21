@@ -7,15 +7,16 @@
 # Xfce Bot <transifex@xfce.org>, 2022
 # Красимир Беров, 2022
 # Kiril Kirilov <cybercop_montana@abv.bg>, 2022
+# Nick Schermer <nick@xfce.org>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-19 00:47+0100\n"
+"POT-Creation-Date: 2022-12-21 12:48+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Kiril Kirilov <cybercop_montana@abv.bg>, 2022\n"
+"Last-Translator: Nick Schermer <nick@xfce.org>, 2022\n"
 "Language-Team: Bulgarian (https://www.transifex.com/xfce/teams/16840/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,81 +39,81 @@ msgstr ""
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
 #. end time
-#: ../src/appointment.c:325 ../src/appointment.c:365 ../src/appointment.c:3003
+#: ../src/appointment.c:322 ../src/appointment.c:362 ../src/appointment.c:2971
 msgid "End"
 msgstr "Край"
 
-#: ../src/appointment.c:345
+#: ../src/appointment.c:342
 msgid "Due"
 msgstr "Времетраене"
 
-#: ../src/appointment.c:508 ../src/mainbox.c:683
+#: ../src/appointment.c:505 ../src/mainbox.c:683
 #: ../org.xfce.orage.appdata.xml.in.h:1
 msgid "Orage"
 msgstr "Orage"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
-#: ../src/appointment.c:699 ../src/interface.c:262 ../src/parameters.c:395
+#: ../src/appointment.c:696 ../src/interface.c:262 ../src/parameters.c:395
 msgid "Select a file..."
 msgstr "Избор на файл..."
 
-#: ../src/appointment.c:707
+#: ../src/appointment.c:704
 msgid "Sound Files"
 msgstr "Звукови файлове"
 
-#: ../src/appointment.c:714 ../src/interface.c:275
+#: ../src/appointment.c:711 ../src/interface.c:275
 msgid "All Files"
 msgstr "Всички файлове"
 
-#: ../src/appointment.c:765
+#: ../src/appointment.c:762
 msgid "The appointment information has been modified."
 msgstr "Информацията за събитието е променена."
 
-#: ../src/appointment.c:766 ../src/appointment.c:1340 ../src/event-list.c:1001
+#: ../src/appointment.c:763 ../src/appointment.c:1305 ../src/event-list.c:1001
 msgid "Do you want to continue?"
 msgstr "Искате ли да продължите?"
 
-#: ../src/appointment.c:767
+#: ../src/appointment.c:764
 msgid "No, do not leave"
 msgstr "Не, не напускай"
 
-#: ../src/appointment.c:768
+#: ../src/appointment.c:765
 msgid "Yes, ignore modifications and leave"
 msgstr "Да, откажи промените и напусни"
 
-#: ../src/appointment.c:796
+#: ../src/appointment.c:793
 msgid "The end of this appointment is earlier than the beginning."
 msgstr "Краят на това събитие е по ранен от началото."
 
-#: ../src/appointment.c:1096 ../src/appointment.c:2015
+#: ../src/appointment.c:1061 ../src/appointment.c:1980
 msgid "Not set"
 msgstr "Не е зададено"
 
-#: ../src/appointment.c:1189
+#: ../src/appointment.c:1154
 msgid "Add new appointment to this file."
 msgstr "Добави нова среща в този файл."
 
-#: ../src/appointment.c:1190 ../src/appointment.c:1238
+#: ../src/appointment.c:1155 ../src/appointment.c:1203
 msgid "Orage default file"
 msgstr "Файл по подразбиране за Orage."
 
-#: ../src/appointment.c:1276
+#: ../src/appointment.c:1241
 msgid "Appointment addition failed."
 msgstr "Неуспешно добавяне на среща."
 
-#: ../src/appointment.c:1277
+#: ../src/appointment.c:1242
 msgid ""
 "Error happened when adding appointment. Look more details from the log file."
 msgstr ""
 "Възникна грешка при добавянето на среща. Погледнете за подробности лог "
 "файла."
 
-#: ../src/appointment.c:1288
+#: ../src/appointment.c:1253
 msgid "Appointment update failed."
 msgstr "Неуспешно актуализиране на среща."
 
-#: ../src/appointment.c:1289
+#: ../src/appointment.c:1254
 msgid ""
 "Look more details from the log file. (Perhaps file was updated external from"
 " Orage?)"
@@ -120,127 +121,127 @@ msgstr ""
 "За повече подробности, вижте лог файла. (Може би файлът е актуализиран "
 "външно от Orage?)"
 
-#: ../src/appointment.c:1339
+#: ../src/appointment.c:1304
 msgid "This appointment will be permanently removed."
 msgstr "Това събитие ще бъде премахнато окончателно."
 
-#: ../src/appointment.c:1341 ../src/event-list.c:1002
+#: ../src/appointment.c:1306 ../src/event-list.c:1002
 msgid "No, cancel the removal"
 msgstr "Не, прекрати премахването"
 
-#: ../src/appointment.c:1342
+#: ../src/appointment.c:1307
 msgid "Yes, remove it"
 msgstr "Да, премахни го"
 
-#: ../src/appointment.c:1441 ../src/appointment.c:1456 ../src/day-view.c:471
+#: ../src/appointment.c:1406 ../src/appointment.c:1421 ../src/day-view.c:471
 #: ../src/event-list.c:1061 ../src/functions.c:144
 msgid "Pick the date"
 msgstr "Избор на дата"
 
-#: ../src/appointment.c:1443 ../src/appointment.c:1458 ../src/day-view.c:400
+#: ../src/appointment.c:1408 ../src/appointment.c:1423 ../src/day-view.c:400
 #: ../src/day-view.c:473 ../src/event-list.c:1063 ../src/event-list.c:1217
 #: ../src/functions.c:146 ../src/tray_icon.c:396
 msgid "Today"
 msgstr "Днес"
 
-#: ../src/appointment.c:1885
+#: ../src/appointment.c:1850
 msgid "This appointment does not exist."
 msgstr "Това събитие не съществува."
 
-#: ../src/appointment.c:1886
+#: ../src/appointment.c:1851
 msgid "It was probably removed, please refresh your screen."
 msgstr "Това вероятно е било премахнато, моля, обновете вашият екран."
 
-#: ../src/appointment.c:2183 ../src/interface.c:676
+#: ../src/appointment.c:2148 ../src/interface.c:676
 msgid "_Remove"
 msgstr "_Премахване"
 
-#: ../src/appointment.c:2209
+#: ../src/appointment.c:2174
 msgid "Current categories"
 msgstr "Текущи категории"
 
-#: ../src/appointment.c:2231
+#: ../src/appointment.c:2196
 msgid "Add new category with color"
 msgstr "Добавяне на нова категория с цвят"
 
-#: ../src/appointment.c:2242
+#: ../src/appointment.c:2207
 msgid "Category:"
 msgstr "Категория:"
 
-#: ../src/appointment.c:2258 ../src/interface.c:1455
+#: ../src/appointment.c:2223 ../src/interface.c:1455
 msgid "_Add"
 msgstr "_Добавяне"
 
-#: ../src/appointment.c:2287
+#: ../src/appointment.c:2252
 msgid "Colors of categories - Orage"
 msgstr "Цветове на категории - Orage"
 
-#: ../src/appointment.c:2334
-msgid " *** COPY ***"
-msgstr " *** КОПИЕ ***"
+#: ../src/appointment.c:2297
+msgid "*** COPY ***"
+msgstr ""
 
-#: ../src/appointment.c:2617
+#: ../src/appointment.c:2585
 msgid "New appointment - Orage"
 msgstr "Ново събитие - Orage"
 
 #. File menu stuff
 #. ********* File menu *********
 #. File menu
-#: ../src/appointment.c:2645 ../src/day-view.c:294 ../src/event-list.c:1118
+#: ../src/appointment.c:2613 ../src/day-view.c:294 ../src/event-list.c:1118
 #: ../src/interface.c:861 ../src/mainbox.c:212
 msgid "_File"
 msgstr "_Файл"
 
-#: ../src/appointment.c:2651
+#: ../src/appointment.c:2619
 msgid "Sav_e and close"
 msgstr "Запазване и затваряне"
 
-#: ../src/appointment.c:2664 ../src/event-list.c:1124
+#: ../src/appointment.c:2632 ../src/event-list.c:1124
 msgid "D_uplicate"
 msgstr "Дублиране"
 
-#: ../src/appointment.c:2895
+#: ../src/appointment.c:2863
 msgid "Save"
 msgstr "Запазване"
 
-#: ../src/appointment.c:2897
+#: ../src/appointment.c:2865
 msgid "Save and close"
 msgstr "Запазване и затваряне"
 
-#: ../src/appointment.c:2902
+#: ../src/appointment.c:2870
 msgid "Revert"
 msgstr "Възстановяване"
 
-#: ../src/appointment.c:2904 ../src/event-list.c:1208
+#: ../src/appointment.c:2872 ../src/event-list.c:1208
 msgid "Duplicate"
 msgstr "Дублиране"
 
-#: ../src/appointment.c:2909 ../src/event-list.c:1210
+#: ../src/appointment.c:2877 ../src/event-list.c:1210
 msgid "Delete"
 msgstr "Изтриване"
 
-#: ../src/appointment.c:2927
+#: ../src/appointment.c:2895
 msgid "Free"
 msgstr "Свободно"
 
-#: ../src/appointment.c:2927
+#: ../src/appointment.c:2895
 msgid "Busy"
 msgstr "Заето"
 
-#: ../src/appointment.c:2931
+#: ../src/appointment.c:2899
 msgid "General"
 msgstr "Основен"
 
 #. type
-#: ../src/appointment.c:2937
-msgid "Type "
+#: ../src/appointment.c:2905
+msgid "Type"
 msgstr "Тип"
 
-#: ../src/appointment.c:2939 ../src/event-list.c:1263
+#: ../src/appointment.c:2907 ../src/event-list.c:1263
 msgid "Event"
 msgstr "Събитие"
 
-#: ../src/appointment.c:2944
+#: ../src/appointment.c:2912
 msgid ""
 "Event that will happen sometime. For example:\n"
 "Meeting or birthday or TV show."
@@ -248,11 +249,11 @@ msgstr ""
 "Събитие, което някога ще се случи. Например:\n"
 "среща, рожден ден или телевизионно предаване."
 
-#: ../src/appointment.c:2947 ../src/event-list.c:1322
+#: ../src/appointment.c:2915 ../src/event-list.c:1322
 msgid "Todo"
 msgstr "Задача"
 
-#: ../src/appointment.c:2952
+#: ../src/appointment.c:2920
 msgid ""
 "Something that you should do sometime. For example:\n"
 "Wash your car or test new version of Orage."
@@ -260,11 +261,11 @@ msgstr ""
 "Нещо, което някога трябва да свършите. Например:\n"
 "да измиете колата си или да тествате новата версия на Orage."
 
-#: ../src/appointment.c:2955 ../src/event-list.c:1336
+#: ../src/appointment.c:2923 ../src/event-list.c:1336
 msgid "Journal"
 msgstr "Дневник"
 
-#: ../src/appointment.c:2960
+#: ../src/appointment.c:2928
 msgid ""
 "Make a note that something happened. For example:\n"
 "Remark that your mother called or first snow came."
@@ -273,65 +274,65 @@ msgstr ""
 "Отбележете, че вашата майка ви е поздравила по случай първият сняг."
 
 #. title
-#: ../src/appointment.c:2967
-msgid "Title "
+#: ../src/appointment.c:2935 ../src/event-list.c:1441
+msgid "Title"
 msgstr "Заглавие"
 
 #. location
-#: ../src/appointment.c:2974 ../src/timezone_selection.c:237
-#: ../src/timezone_selection.c:242
+#: ../src/appointment.c:2942 ../src/timezone_selection.c:235
+#: ../src/timezone_selection.c:240
 msgid "Location"
 msgstr "Местоположение"
 
-#: ../src/appointment.c:2982
+#: ../src/appointment.c:2950
 msgid "All day event"
 msgstr "Събитията от целият ден"
 
 #. start time
-#: ../src/appointment.c:2988 ../src/appointment.c:3707 ../src/day-view.c:831
+#: ../src/appointment.c:2956 ../src/appointment.c:3674 ../src/day-view.c:831
 msgid "Start"
 msgstr "Стартиране"
 
-#: ../src/appointment.c:3008
-msgid "Set      "
-msgstr "Задаване    "
+#: ../src/appointment.c:2974
+msgid "Set"
+msgstr ""
 
-#: ../src/appointment.c:3031
+#: ../src/appointment.c:2998
 msgid "Duration"
 msgstr "Продължителност"
 
-#: ../src/appointment.c:3035 ../src/appointment.c:3242 ../src/reminder.c:680
+#: ../src/appointment.c:3002 ../src/appointment.c:3209 ../src/reminder.c:680
 msgid "days"
 msgstr "дни"
 
-#: ../src/appointment.c:3037 ../src/appointment.c:3244 ../src/reminder.c:682
+#: ../src/appointment.c:3004 ../src/appointment.c:3211 ../src/reminder.c:682
 msgid "hours"
 msgstr "часове"
 
-#: ../src/appointment.c:3039 ../src/appointment.c:3246 ../src/reminder.c:684
+#: ../src/appointment.c:3006 ../src/appointment.c:3213 ../src/reminder.c:684
 msgid "mins"
 msgstr "минути"
 
 #. Availability (only for EVENT)
-#: ../src/appointment.c:3051
+#: ../src/appointment.c:3018
 msgid "Availability"
 msgstr "Наличност"
 
 #. completed (only for TODO)
-#: ../src/appointment.c:3059 ../src/appointment.c:3716
+#: ../src/appointment.c:3026 ../src/appointment.c:3683
 msgid "Completed"
 msgstr "Завършено"
 
-#: ../src/appointment.c:3062
+#: ../src/appointment.c:3029
 msgid "Done"
 msgstr "Готово"
 
 #. categories
-#: ../src/appointment.c:3087
+#: ../src/appointment.c:3054
 msgid "Categories"
 msgstr "Категории"
 
-#: ../src/appointment.c:3105
+#: ../src/appointment.c:3072
 msgid ""
 "This is special category, which can be used to color this appointment in "
 "list views."
@@ -339,20 +340,20 @@ msgstr ""
 "Това е специална категория, която може да се използва, за да оцветите тези "
 "събития в списъка."
 
-#: ../src/appointment.c:3106
+#: ../src/appointment.c:3073
 msgid "_Colour"
 msgstr "_Цвят"
 
-#: ../src/appointment.c:3111
+#: ../src/appointment.c:3078
 msgid "update colors for categories."
 msgstr "обновяване на цветовете за категориите."
 
 #. priority
-#: ../src/appointment.c:3117
+#: ../src/appointment.c:3084
 msgid "Priority"
 msgstr "Приоритет"
 
-#: ../src/appointment.c:3121
+#: ../src/appointment.c:3088
 msgid ""
 "If you set this 8 or bigger, the appointment is NOT shown on list windows.\n"
 "You can use that feature to unclutter your list windows, but it makes it more difficult to find this appointment.\n"
@@ -365,11 +366,11 @@ msgstr ""
 "(Това е недокоментиран параметър, така, че може да промените стойностите по подразбиране на 8.)"
 
 #. note
-#: ../src/appointment.c:3130
+#: ../src/appointment.c:3097
 msgid "Note"
 msgstr "Пояснение"
 
-#: ../src/appointment.c:3151
+#: ../src/appointment.c:3118
 msgid ""
 "These shorthand commands take effect immediately:\n"
 "    <D> inserts current date in local date format\n"
@@ -389,32 +390,32 @@ msgstr ""
 "    <&Ynnnn> текущата година минус nnnn.\n"
 "(например, за изчисляване на възрастта в съобщенията за рожден ден.)"
 
-#: ../src/appointment.c:3224
+#: ../src/appointment.c:3191
 msgid "Before Start"
 msgstr "Преди стартиране"
 
-#: ../src/appointment.c:3224
+#: ../src/appointment.c:3191
 msgid "Before End"
 msgstr "Преди края"
 
-#: ../src/appointment.c:3225
+#: ../src/appointment.c:3192
 msgid "After Start"
 msgstr "След стартиране"
 
-#: ../src/appointment.c:3225
+#: ../src/appointment.c:3192
 msgid "After End"
 msgstr "След края"
 
-#: ../src/appointment.c:3233
+#: ../src/appointment.c:3200
 msgid "Alarm"
 msgstr "Аларма"
 
 #. **** ALARM TIME ****
-#: ../src/appointment.c:3239
+#: ../src/appointment.c:3206
 msgid "Alarm time"
 msgstr "Време за алармата"
 
-#: ../src/appointment.c:3264
+#: ../src/appointment.c:3231
 msgid ""
 "Often you want to get alarm:\n"
 " 1) before Event start\n"
@@ -426,11 +427,11 @@ msgstr ""
 " 2) преди да приключи събитие\n"
 " 3) след началото на задачата"
 
-#: ../src/appointment.c:3269
+#: ../src/appointment.c:3236
 msgid "Persistent alarm"
 msgstr "Постоянна аларма"
 
-#: ../src/appointment.c:3274
+#: ../src/appointment.c:3241
 msgid ""
 "Select this if you want Orage to remind you even if it has not been active "
 "when the alarm happened."
@@ -439,83 +440,83 @@ msgstr ""
 "активна, когато времето за задействане на алармата настъпи."
 
 #. **** Audio Alarm ****
-#: ../src/appointment.c:3283
+#: ../src/appointment.c:3250
 msgid "Sound"
 msgstr "Звук"
 
-#: ../src/appointment.c:3287 ../src/appointment.c:3420
+#: ../src/appointment.c:3254 ../src/appointment.c:3387
 msgid "Use"
 msgstr "Използване"
 
-#: ../src/appointment.c:3289
+#: ../src/appointment.c:3256
 msgid "Select this if you want audible alarm"
 msgstr "Изберете това, ако ви е необходима звукова аларма"
 
-#: ../src/appointment.c:3302 ../src/interface.c:1051 ../src/interface.c:1097
+#: ../src/appointment.c:3269 ../src/interface.c:1051 ../src/interface.c:1097
 #: ../src/interface.c:1273 ../src/interface.c:1365 ../src/interface.c:1448
 #: ../src/parameters.c:400 ../src/parameters.c:623 ../src/reminder.c:709
 msgid "_Open"
 msgstr "_Отвори"
 
-#: ../src/appointment.c:3315
+#: ../src/appointment.c:3282
 msgid "Repeat alarm sound"
 msgstr "Повтаряне на звука на алармата"
 
-#: ../src/appointment.c:3330 ../src/appointment.c:3639
+#: ../src/appointment.c:3297 ../src/appointment.c:3606
 msgid "times"
 msgstr "пъти"
 
-#: ../src/appointment.c:3346
+#: ../src/appointment.c:3313
 msgid "sec interval"
 msgstr "интервал в секунди"
 
 #. **** Display Alarm ****
-#: ../src/appointment.c:3356
+#: ../src/appointment.c:3323
 msgid "Visual"
 msgstr "Визуално"
 
-#: ../src/appointment.c:3360
+#: ../src/appointment.c:3327
 msgid "Use Orage window"
 msgstr "Използване на прозореца на Orage"
 
-#: ../src/appointment.c:3362
+#: ../src/appointment.c:3329
 msgid "Select this if you want Orage window alarm"
 msgstr "Изберете това, ако искате да ви уведомява прозорецът на Orage"
 
-#: ../src/appointment.c:3374
+#: ../src/appointment.c:3341
 msgid "Use notification"
 msgstr "Използване на уведомление"
 
-#: ../src/appointment.c:3376
+#: ../src/appointment.c:3343
 msgid "Select this if you want notification alarm"
 msgstr "Изберето това, ако искате аларма с уведомление"
 
-#: ../src/appointment.c:3384
+#: ../src/appointment.c:3351
 msgid "Set timeout"
 msgstr "Задаване на изчакване"
 
-#: ../src/appointment.c:3386
+#: ../src/appointment.c:3353
 msgid "Select this if you want notification to expire automatically"
 msgstr "Изберете това, ако искате уведомлението да завърши автоматично"
 
-#: ../src/appointment.c:3397
+#: ../src/appointment.c:3364
 msgid "0 = system default expiration time"
 msgstr "0 = системно време по подразбиране"
 
-#: ../src/appointment.c:3405
+#: ../src/appointment.c:3372
 msgid "seconds"
 msgstr "секунди"
 
 #. **** Procedure Alarm ****
-#: ../src/appointment.c:3416
+#: ../src/appointment.c:3383
 msgid "Procedure"
 msgstr "Процедура"
 
-#: ../src/appointment.c:3422
+#: ../src/appointment.c:3389
 msgid "Select this if you want procedure or script alarm"
 msgstr "Изберете това, ако искате процедура или скрипт за алармата"
 
-#: ../src/appointment.c:3432
+#: ../src/appointment.c:3399
 msgid ""
 "You must enter all escape etc characters yourself.\n"
 "This string is just given to shell to process.\n"
@@ -535,109 +536,109 @@ msgstr ""
 "\t<&ST> време на започване\n"
 "\t<&ET> време на завършване"
 
-#: ../src/appointment.c:3446 ../src/interface.c:1185 ../src/interface.c:1207
+#: ../src/appointment.c:3413 ../src/interface.c:1185 ../src/interface.c:1207
 msgid "_Execute"
 msgstr "_Изпълнение"
 
-#: ../src/appointment.c:3448
+#: ../src/appointment.c:3415
 msgid "Test this alarm by raising it now"
 msgstr "Проверка на зададеният сигнал за аларма"
 
-#: ../src/appointment.c:3461
+#: ../src/appointment.c:3428
 msgid "<b>Default alarm</b>"
 msgstr "<b>Аларма по подразбиране</b>"
 
-#: ../src/appointment.c:3467 ../src/interface.c:1058 ../src/interface.c:1104
+#: ../src/appointment.c:3434 ../src/interface.c:1058 ../src/interface.c:1104
 #: ../src/interface.c:1279 ../src/interface.c:1371
 msgid "_Save"
 msgstr "_Запазване"
 
-#: ../src/appointment.c:3475
+#: ../src/appointment.c:3442
 msgid "Store current settings as default alarm"
 msgstr "Запазване на текущите настройки като алармата по подразбиране"
 
-#: ../src/appointment.c:3477
+#: ../src/appointment.c:3444
 msgid "_Revert"
 msgstr "_Връщане"
 
-#: ../src/appointment.c:3485
+#: ../src/appointment.c:3452
 msgid "Set current settings from default alarm"
 msgstr "Задаване на текущи настройки от алармата по подразбиране"
 
-#: ../src/appointment.c:3551
+#: ../src/appointment.c:3518
 msgid "None"
 msgstr "Без"
 
-#: ../src/appointment.c:3551
+#: ../src/appointment.c:3518
 msgid "Daily"
 msgstr "Ежедневно"
 
-#: ../src/appointment.c:3551
+#: ../src/appointment.c:3518
 msgid "Weekly"
 msgstr "Седмично"
 
-#: ../src/appointment.c:3551
+#: ../src/appointment.c:3518
 msgid "Monthly"
 msgstr "Месечно"
 
-#: ../src/appointment.c:3551
+#: ../src/appointment.c:3518
 msgid "Yearly"
 msgstr "Годишно"
 
-#: ../src/appointment.c:3551
+#: ../src/appointment.c:3518
 msgid "Hourly"
 msgstr "Всеки час"
 
-#: ../src/appointment.c:3553
+#: ../src/appointment.c:3520
 msgid "Mon"
 msgstr "Пн"
 
-#: ../src/appointment.c:3553
+#: ../src/appointment.c:3520
 msgid "Tue"
 msgstr "Вт"
 
-#: ../src/appointment.c:3553
+#: ../src/appointment.c:3520
 msgid "Wed"
 msgstr "Ср"
 
-#: ../src/appointment.c:3553
+#: ../src/appointment.c:3520
 msgid "Thu"
 msgstr "Чт"
 
-#: ../src/appointment.c:3553
+#: ../src/appointment.c:3520
 msgid "Fri"
 msgstr "Пт"
 
-#: ../src/appointment.c:3553
+#: ../src/appointment.c:3520
 msgid "Sat"
 msgstr "Сб"
 
-#: ../src/appointment.c:3553
+#: ../src/appointment.c:3520
 msgid "Sun"
 msgstr "Нд"
 
-#: ../src/appointment.c:3558
+#: ../src/appointment.c:3525
 msgid "Recurrence"
 msgstr "Повторение"
 
 #. complexity
-#: ../src/appointment.c:3564
+#: ../src/appointment.c:3531
 msgid "Complexity"
 msgstr "Осложнен"
 
-#: ../src/appointment.c:3567
+#: ../src/appointment.c:3534
 msgid "Basic"
 msgstr "Обикновен"
 
-#: ../src/appointment.c:3574
+#: ../src/appointment.c:3541
 msgid "Advanced"
 msgstr "Разширен"
 
-#: ../src/appointment.c:3580
+#: ../src/appointment.c:3547
 msgid "Use this if you want regular repeating event"
 msgstr "Използвайте това, ако искате събитието да се повтаря периодично"
 
-#: ../src/appointment.c:3582
+#: ../src/appointment.c:3549
 msgid ""
 "Use this if you need complex times like:\n"
 " Every Saturday and Sunday or \n"
@@ -648,19 +649,19 @@ msgstr ""
 "Първият вторник на всеки месец"
 
 #. frequency
-#: ../src/appointment.c:3588
+#: ../src/appointment.c:3555
 msgid "Frequency"
 msgstr "Повторяемост"
 
-#: ../src/appointment.c:3595
+#: ../src/appointment.c:3562
 msgid "Each"
 msgstr "Всеки"
 
-#: ../src/appointment.c:3606
+#: ../src/appointment.c:3573
 msgid "occurrence"
 msgstr "интервал"
 
-#: ../src/appointment.c:3613
+#: ../src/appointment.c:3580
 msgid ""
 "Limit frequency to certain interval.\n"
 " For example: Every third day:\n"
@@ -670,32 +671,32 @@ msgstr ""
 " Например: Всеки трети ден:\n"
 " Честота = Ежедневно и Интервал = 3"
 
-#: ../src/appointment.c:3620
+#: ../src/appointment.c:3587
 msgid "Limit"
 msgstr "Ограничение"
 
-#: ../src/appointment.c:3622
+#: ../src/appointment.c:3589
 msgid "Repeat forever"
 msgstr "Постоянно повтаряне"
 
-#: ../src/appointment.c:3629
+#: ../src/appointment.c:3596
 msgid "Repeat "
 msgstr "Повтаряне"
 
-#: ../src/appointment.c:3653
+#: ../src/appointment.c:3620
 msgid "Repeat until "
 msgstr "Повтаряне до"
 
 #. weekdays (only for complex settings)
-#: ../src/appointment.c:3669
+#: ../src/appointment.c:3636
 msgid "Weekdays"
 msgstr "Дни от седмицата"
 
-#: ../src/appointment.c:3686
+#: ../src/appointment.c:3653
 msgid "Which day"
 msgstr "В кой ден"
 
-#: ../src/appointment.c:3697
+#: ../src/appointment.c:3664
 msgid ""
 "Specify which weekday for monthly and yearly events.\n"
 " For example:\n"
@@ -712,11 +713,11 @@ msgstr ""
 "В кой ден = изберете 2 от номерата до сряда"
 
 #. TODO base (only for TODOs)
-#: ../src/appointment.c:3704
+#: ../src/appointment.c:3671
 msgid "TODO base"
 msgstr "Начална дата на задача"
 
-#: ../src/appointment.c:3723
+#: ../src/appointment.c:3690
 msgid ""
 "TODO reoccurs regularly starting on start time and repeating after each "
 "interval no matter when it was last completed"
@@ -724,7 +725,7 @@ msgstr ""
 "Времето за повторение на задачата се отчита от нейното начало и не зависи от"
 " това, дали е била изпълнена"
 
-#: ../src/appointment.c:3725
+#: ../src/appointment.c:3692
 msgid ""
 "TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
@@ -733,11 +734,11 @@ msgstr ""
 "(Имайте в предвид, че началната дата на задачата ще бъде променяна с всяко повторение.)"
 
 #. exceptions
-#: ../src/appointment.c:3731
+#: ../src/appointment.c:3698
 msgid "Exceptions"
 msgstr "Изключения"
 
-#: ../src/appointment.c:3757
+#: ../src/appointment.c:3724
 msgid ""
 "Add more exception dates by clicking the calendar days below.\n"
 "Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
@@ -747,19 +748,19 @@ msgstr ""
 "Изключение е или изключване (-) или включване (+), в зависимост от селекцията\n"
 "Премахнете с кликване върху датата."
 
-#: ../src/appointment.c:3768
+#: ../src/appointment.c:3735
 msgid "Add excluded date (-)"
 msgstr "Добавяне на изключена дата (-)"
 
-#: ../src/appointment.c:3770
+#: ../src/appointment.c:3737
 msgid "Excluded days are full days where this appointment is not happening"
 msgstr "В изключените дни не настъпва събитие"
 
-#: ../src/appointment.c:3777
+#: ../src/appointment.c:3744
 msgid "Add included time (+)"
 msgstr "Добавянето на включено време (+)"
 
-#: ../src/appointment.c:3779
+#: ../src/appointment.c:3746
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time"
@@ -768,7 +769,7 @@ msgstr ""
 "​​могат да имат различно време"
 
 #. calendars showing the action days
-#: ../src/appointment.c:3798
+#: ../src/appointment.c:3765
 msgid "Action dates"
 msgstr "Дата на събитие"
 
@@ -819,11 +820,11 @@ msgstr "_ОК"
 msgid "Unknown"
 msgstr "Неизвестно"
 
-#: ../src/day-view.c:840
-msgid "       Number of days to show"
-msgstr "       Ден, който да се показва"
+#: ../src/day-view.c:839
+msgid "Number of days to show"
+msgstr ""
 
-#: ../src/day-view.c:1071
+#: ../src/day-view.c:1070
 msgid "Orage - day view"
 msgstr "Orage - показване на ден"
 
@@ -917,10 +918,6 @@ msgstr "Търсене на текст"
 #: ../src/event-list.c:1433
 msgid "Flags"
 msgstr "Знамена"
-
-#: ../src/event-list.c:1441
-msgid "Title"
-msgstr "Заглавие"
 
 #: ../src/event-list.c:1467
 msgid ""
@@ -3902,15 +3899,15 @@ msgstr "без промяна"
 msgid "not changing"
 msgstr "не се променя"
 
-#: ../src/timezone_selection.c:248
+#: ../src/timezone_selection.c:246
 msgid "GMT Offset"
 msgstr "Разлика с GMT"
 
-#: ../src/timezone_selection.c:254
+#: ../src/timezone_selection.c:252
 msgid "Previous/Next Change"
 msgstr "Предишна/следваща промяна"
 
-#: ../src/timezone_selection.c:259
+#: ../src/timezone_selection.c:257
 msgid "Country"
 msgstr "Страна"
 
@@ -3919,23 +3916,23 @@ msgstr "Страна"
 #. done very seldom and we do not want to allow "floating" here.
 #. This test is ugly, but it is not worth an extra parameter.
 #. this is normal appointment
-#: ../src/timezone_selection.c:291 ../src/timezone_selection.c:300
-#: ../src/timezone_selection.c:311
+#: ../src/timezone_selection.c:289 ../src/timezone_selection.c:298
+#: ../src/timezone_selection.c:309
 msgid "Pick timezone"
 msgstr "Избор на часова зона"
 
-#: ../src/timezone_selection.c:294 ../src/timezone_selection.c:303
-#: ../src/timezone_selection.c:314
+#: ../src/timezone_selection.c:292 ../src/timezone_selection.c:301
+#: ../src/timezone_selection.c:312
 msgid "Change mode"
 msgstr "Промяна на режима"
 
-#: ../src/timezone_selection.c:295 ../src/timezone_selection.c:304
-#: ../src/timezone_selection.c:315 ../src/timezone_selection.c:354
+#: ../src/timezone_selection.c:293 ../src/timezone_selection.c:302
+#: ../src/timezone_selection.c:313 ../src/timezone_selection.c:352
 msgid "UTC"
 msgstr "UTC"
 
 #. NOTE: this exists only if ical timezones are being used
-#: ../src/timezone_selection.c:305 ../src/timezone_selection.c:359
+#: ../src/timezone_selection.c:303 ../src/timezone_selection.c:357
 msgid "floating"
 msgstr "плаващо"
 
