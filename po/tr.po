@@ -9,8 +9,8 @@
 # Serdar Sağlam <teknomobil@msn.com>, 2022
 # Necdet Yücel <necdetyucel@gmail.com>, 2022
 # Demiray Muhterem <mdemiray@msn.com>, 2022
-# Emin Tufan Çetin <etcetin@gmail.com>, 2022
 # Nick Schermer <nick@xfce.org>, 2022
+# Emin Tufan Çetin <etcetin@gmail.com>, 2022
 # 
 #, fuzzy
 msgid ""
@@ -19,7 +19,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-21 12:48+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Nick Schermer <nick@xfce.org>, 2022\n"
+"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>, 2022\n"
 "Language-Team: Turkish (https://www.transifex.com/xfce/teams/16840/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -182,7 +182,7 @@ msgstr "Kategorilerin renkleri - Orage"
 
 #: ../src/appointment.c:2297
 msgid "*** COPY ***"
-msgstr ""
+msgstr "*** KOPYA ***"
 
 #: ../src/appointment.c:2585
 msgid "New appointment - Orage"
@@ -299,7 +299,7 @@ msgstr "Başlangıç"
 
 #: ../src/appointment.c:2974
 msgid "Set"
-msgstr ""
+msgstr "Belirle"
 
 #: ../src/appointment.c:2998
 msgid "Duration"
@@ -826,7 +826,7 @@ msgstr "Bilinmeyen"
 
 #: ../src/day-view.c:839
 msgid "Number of days to show"
-msgstr ""
+msgstr "Gösterilecek gün sayısı"
 
 #: ../src/day-view.c:1070
 msgid "Orage - day view"
@@ -1244,23 +1244,23 @@ msgstr "\tlibxfce4ui kullanımı: hayır\n"
 
 #: ../src/main.c:489
 msgid "Show version of orage"
-msgstr ""
+msgstr "Orage'nin sürümünü göster"
 
 #: ../src/main.c:498
 msgid "Show preferences form"
-msgstr ""
+msgstr "Tercihler formunu göster"
 
 #: ../src/main.c:507
 msgid "Make Orage visible/unvisible"
-msgstr ""
+msgstr "Orage'yi görünür/gizli kıl"
 
 #: ../src/main.c:516
 msgid "Add a foreign file"
-msgstr ""
+msgstr "Yabancı dosya ekle"
 
 #: ../src/main.c:534
 msgid "Export appointments from Orage to file"
-msgstr ""
+msgstr "Orage'deki görevleri dosyaya aktar"
 
 #: ../src/mainbox.c:220
 msgid "_Exchange data"
