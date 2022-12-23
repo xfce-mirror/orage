@@ -8,10 +8,10 @@
 # Vinzenz Vietzke <vinz@vinzv.de>, 2022
 # Tobias Bannert <tobannert@gmail.com>, 2022
 # Markus, 2022
-# Ettore Atalan <atalanttore@googlemail.com>, 2022
 # Ingo Brückl <ib@wupperonline.de>, 2022
 # Andreas Eitel <github-aneitel@online.de>, 2022
 # Nick Schermer <nick@xfce.org>, 2022
+# Ettore Atalan <atalanttore@googlemail.com>, 2022
 # 
 #, fuzzy
 msgid ""
@@ -20,7 +20,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-21 12:48+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Nick Schermer <nick@xfce.org>, 2022\n"
+"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>, 2022\n"
 "Language-Team: German (https://www.transifex.com/xfce/teams/16840/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -183,7 +183,7 @@ msgstr "Farben von Rubriken - Orage"
 
 #: ../src/appointment.c:2297
 msgid "*** COPY ***"
-msgstr ""
+msgstr "*** KOPIE ***"
 
 #: ../src/appointment.c:2585
 msgid "New appointment - Orage"
@@ -300,7 +300,7 @@ msgstr "Beginn"
 
 #: ../src/appointment.c:2974
 msgid "Set"
-msgstr ""
+msgstr "Festlegen"
 
 #: ../src/appointment.c:2998
 msgid "Duration"
@@ -835,7 +835,7 @@ msgstr "Unbekannt"
 
 #: ../src/day-view.c:839
 msgid "Number of days to show"
-msgstr ""
+msgstr "Anzahl der anzuzeigenden Tage"
 
 #: ../src/day-view.c:1070
 msgid "Orage - day view"
@@ -1254,15 +1254,15 @@ msgstr "\tBenutze libxfce4ui: nein\n"
 
 #: ../src/main.c:489
 msgid "Show version of orage"
-msgstr ""
+msgstr "Version von orage anzeigen"
 
 #: ../src/main.c:498
 msgid "Show preferences form"
-msgstr ""
+msgstr "Einstellungsformular anzeigen"
 
 #: ../src/main.c:507
 msgid "Make Orage visible/unvisible"
-msgstr ""
+msgstr "Orage sichtbar/unsichtbar machen"
 
 #: ../src/main.c:516
 msgid "Add a foreign file"
