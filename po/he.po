@@ -170,7 +170,7 @@ msgstr "צבעים של קטגוריות - Orage "
 
 #: ../src/appointment.c:2297
 msgid "*** COPY ***"
-msgstr ""
+msgstr "*** העתק ***"
 
 #: ../src/appointment.c:2585
 msgid "New appointment - Orage"
@@ -227,7 +227,7 @@ msgstr "כללי"
 #. type
 #: ../src/appointment.c:2905
 msgid "Type"
-msgstr ""
+msgstr "סוג"
 
 #: ../src/appointment.c:2907 ../src/event-list.c:1263
 msgid "Event"
@@ -287,7 +287,7 @@ msgstr "התחלה"
 
 #: ../src/appointment.c:2974
 msgid "Set"
-msgstr ""
+msgstr "סט"
 
 #: ../src/appointment.c:2998
 msgid "Duration"
@@ -812,7 +812,7 @@ msgstr "לא ידוע"
 
 #: ../src/day-view.c:839
 msgid "Number of days to show"
-msgstr ""
+msgstr "מספר ימים להצגה"
 
 #: ../src/day-view.c:1070
 msgid "Orage - day view"
@@ -1231,23 +1231,23 @@ msgstr "\tUsing libxfce4ui: no\n"
 
 #: ../src/main.c:489
 msgid "Show version of orage"
-msgstr ""
+msgstr "הצג גרסה של orage"
 
 #: ../src/main.c:498
 msgid "Show preferences form"
-msgstr ""
+msgstr "הצג טופס העדפות"
 
 #: ../src/main.c:507
 msgid "Make Orage visible/unvisible"
-msgstr ""
+msgstr "הפוך את Orage גלוי/בלתי נראה"
 
 #: ../src/main.c:516
 msgid "Add a foreign file"
-msgstr ""
+msgstr "הוסף קובץ זר"
 
 #: ../src/main.c:534
 msgid "Export appointments from Orage to file"
-msgstr ""
+msgstr "ייצא פגישות מ-Orage לקובץ"
 
 #: ../src/mainbox.c:220
 msgid "_Exchange data"
