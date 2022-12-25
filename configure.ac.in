@@ -85,7 +85,7 @@ AC_TYPE_MODE_T()
 AC_STRUCT_TM()
 
 dnl Checks for library functions (libical)
-AC_CHECK_FUNCS([gmtime_r iswspace strdup snprintf])
+AC_CHECK_FUNCS([gmtime_r])
 
 dnl Check for i18n support
 XDT_I18N([@LINGUAS@])
