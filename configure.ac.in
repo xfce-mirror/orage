@@ -85,7 +85,7 @@ AC_TYPE_MODE_T()
 AC_STRUCT_TM()
 
 dnl Checks for library functions (libical)
-AC_CHECK_FUNCS([gmtime_r iswspace strdup snprintf])
+AC_CHECK_FUNCS([gmtime_r])
 
 dnl Check for i18n support
 XDT_I18N([@LINGUAS@])
@@ -102,6 +102,10 @@ XDT_CHECK_PACKAGE([GIO], [gio-2.0], [glib_minimum_version])
 XDT_CHECK_PACKAGE([LIBGTK], [gtk+-3.0], [gtk_minimum_version])
 XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [xfce_minimum_version])
 XDT_CHECK_PACKAGE([LIBICAL], [libical], [libical_minimum_version])
+
+if test "$LIBICAL_VERSION" = "3.0.15"; then
+	AC_MSG_ERROR(["unsupported libical version $LIBICAL_VERSION, see https://gitlab.xfce.org/apps/orage/-/issues/20"])
+fi
 
 dnl **********************************
 dnl *** check if we have _NL_TIME_FIRST_WEEKDAY 
