@@ -103,6 +103,10 @@ XDT_CHECK_PACKAGE([LIBGTK], [gtk+-3.0], [gtk_minimum_version])
 XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [xfce_minimum_version])
 XDT_CHECK_PACKAGE([LIBICAL], [libical], [libical_minimum_version])
 
+if test "$LIBICAL_VERSION" = "3.0.15"; then
+	AC_MSG_ERROR(["unsupported libical version $LIBICAL_VERSION, see https://gitlab.xfce.org/apps/orage/-/issues/20"])
+fi
+
 dnl **********************************
 dnl *** check if we have _NL_TIME_FIRST_WEEKDAY 
 dnl *** note that it is an enum and not a define
