@@ -248,8 +248,8 @@ void orage_rc_put_gdatetime (OrageRc *orc, const gchar *key, GDateTime *gdt)
     g_free (icaltime);
 }
 
-gboolean orage_rc_read_color (OrageRc *orc, const gchar *key,
-                              GdkRGBA *rgba, const gchar *def)
+gboolean orage_rc_get_color (OrageRc *orc, const gchar *key,
+                             GdkRGBA *rgba, const gchar *def)
 {
     gboolean result;
     gchar *color_str;
