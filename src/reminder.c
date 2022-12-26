@@ -47,6 +47,7 @@
 #endif
 
 #include "orage-i18n.h"
+#include "orage-rc-file.h"
 #include "functions.h"
 #include "mainbox.h"
 #include "ical-code.h"
