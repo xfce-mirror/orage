@@ -57,6 +57,7 @@
 #include "appointment.h"
 #include "parameters.h"
 #include "reminder.h"
+#include "orage-rc-file.h"
 #include "xfical_exception.h"
 
 #define BORDER_SIZE 20
