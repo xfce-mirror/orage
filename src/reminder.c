@@ -240,22 +240,34 @@ static alarm_struct *alarm_copy(alarm_struct *l_alarm, gboolean init)
 /* persistent alarms start                                  */
 /************************************************************/
 
-static OrageRc *orage_persistent_file_open(gboolean read_only)
+static OrageRc *orage_persistent_file_open (void)
 {
     gchar *fpath;
     OrageRc *orc;
 
     fpath = orage_data_file_location(ORAGE_PERSISTENT_ALARMS_DIR_FILE);
-    if (!read_only)  /* we need to empty it before each write */
-        if (g_remove(fpath)) {
-            g_warning ("%s: g_remove failed.", G_STRFUNC);
-        }
-    if ((orc = (OrageRc *)orage_rc_file_open(fpath, read_only)) == NULL) {
+
+    if ((orc = orage_rc_file_open (fpath, TRUE)) == NULL) {
         g_warning ("%s: persistent alarms file open failed.", G_STRFUNC);
     }
     g_free(fpath);
 
     return(orc);
+}
+
+static OrageRc *orage_persistent_file_new (void)
+{
+    gchar *fpath;
+    OrageRc *orc;
+
+    fpath = orage_data_file_location (ORAGE_PERSISTENT_ALARMS_DIR_FILE);
+
+    if ((orc = orage_rc_file_new (fpath)) == NULL)
+        g_warning ("%s: persistent alarms file open failed.", G_STRFUNC);
+
+    g_free (fpath);
+
+    return orc;
 }
 
 static alarm_struct *alarm_read_next_alarm(OrageRc *orc, GDateTime *gdt)
@@ -313,7 +325,7 @@ void alarm_read(void)
     gint i;
 
     time_now = g_date_time_new_now_local ();
-    orc = orage_persistent_file_open(TRUE);
+    orc = orage_persistent_file_open ();
     alarm_groups = orage_rc_get_groups(orc);
     for (i = 0; alarm_groups[i] != NULL; i++) {
         orage_rc_set_group(orc, alarm_groups[i]);
@@ -361,7 +373,7 @@ static void store_persistent_alarms(void)
 {
     OrageRc *orc;
 
-    orc = orage_persistent_file_open(FALSE);
+    orc = orage_persistent_file_new ();
     g_list_foreach(g_par.alarm_list, alarm_store, (gpointer)orc);
     orage_rc_file_close(orc);
 }
