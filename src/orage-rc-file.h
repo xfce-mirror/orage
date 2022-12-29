@@ -28,7 +28,7 @@
 
 typedef struct _OrageRc OrageRc;
 
-OrageRc *orage_rc_file_open (const gchar *fpath, gboolean read_only);
+OrageRc *orage_rc_file_open (gchar *fpath, gboolean read_only);
 void orage_rc_file_close (OrageRc *orc);
 
 gchar **orage_rc_get_groups (OrageRc *orc);

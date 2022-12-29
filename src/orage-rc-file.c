@@ -38,22 +38,44 @@ struct _OrageRc
     gchar *cur_group;
 };
 
-OrageRc *orage_rc_file_open (const gchar *fpath, gboolean read_only)
+static OrageRc *orage_rc_new (GKeyFile *grc,
+                              const gchar *fpath,
+                              const gboolean read_only)
 {
-    OrageRc *orc = NULL;
+    OrageRc *orc;
+
+    orc = g_new (OrageRc, 1);
+    orc->rc = grc;
+    orc->read_only = read_only;
+    orc->file_name = g_strdup (fpath);
+    orc->cur_group = NULL;
+
+    g_debug ("%s: %p", G_STRFUNC, (void *)orc);
+
+    return orc;
+}
+
+static void orage_rc_free (OrageRc *orc)
+{
+    g_debug ("%s: %p", G_STRFUNC, (void *)orc);
+
+    g_key_file_free (orc->rc);
+    g_free (orc->file_name);
+    g_free (orc->cur_group);
+    g_free (orc);
+}
+
+OrageRc *orage_rc_file_open (gchar *fpath, const gboolean read_only)
+{
+    OrageRc *orc;
     GKeyFile *grc;
     GError *error = NULL;
 
+    g_debug ("%s: fpath='%s', %s", G_STRFUNC, fpath, read_only ? "RO" : "RW");
+
     grc = g_key_file_new ();
-    if (g_key_file_load_from_file (grc, fpath, G_KEY_FILE_KEEP_COMMENTS,
-                                   &error))
-    {
-        orc = g_new (OrageRc, 1);
-        orc->rc = grc;
-        orc->read_only = read_only;
-        orc->file_name = g_strdup (fpath);
-        orc->cur_group = NULL;
-    }
+    if (g_key_file_load_from_file (grc, fpath, G_KEY_FILE_KEEP_COMMENTS, &error))
+        orc = orage_rc_new (grc, fpath, read_only);
     else
     {
         g_warning ("Unable to open RC file (%s). Creating it. (%s)", fpath,
@@ -61,13 +83,7 @@ OrageRc *orage_rc_file_open (const gchar *fpath, gboolean read_only)
 
         g_clear_error (&error);
         if (g_file_set_contents (fpath, "#Created by Orage", -1, &error))
-        {
-            orc = g_new (OrageRc, 1);
-            orc->rc = grc;
-            orc->read_only = read_only;
-            orc->file_name = g_strdup (fpath);
-            orc->cur_group = NULL;
-        }
+            orc = orage_rc_new (grc, fpath, read_only);
         else
         {
             g_warning ("Unable to open (create) RC file (%s). (%s)", fpath,
@@ -85,31 +101,27 @@ OrageRc *orage_rc_file_open (const gchar *fpath, gboolean read_only)
 void orage_rc_file_close (OrageRc *orc)
 {
     GError *error = NULL;
-    gchar *file_content = NULL;
-    gsize length;
 
-    if (orc)
+    if (orc == NULL)
     {
-        if (!orc->read_only)
-        {
-            file_content = g_key_file_to_data (orc->rc, &length, NULL);
-            if (file_content &&
-                    !g_file_set_contents (orc->file_name, file_content, -1,
-                    &error))
-            {
-                g_warning ("%s: File save failed. RC file (%s). (%s)",
-                           G_STRFUNC, orc->file_name, error->message);
-                g_error_free (error);
-            }
-            g_free (file_content);
-        }
-        g_key_file_free (orc->rc);
-        g_free (orc->file_name);
-        g_free (orc->cur_group);
-        g_free (orc);
-    }
-    else
         g_debug ("%s: closing empty file.", G_STRFUNC);
+        return;
+    }
+
+    g_debug ("%s: close='%s'", G_STRFUNC, orc->file_name);
+
+    if (orc->read_only == FALSE)
+    {
+        g_debug ("%s: saving content='%s'", G_STRFUNC, orc->file_name);
+        if (g_key_file_save_to_file (orc->rc, orc->file_name, &error) == FALSE)
+        {
+            g_warning ("%s: File save failed. RC file (%s). (%s)",
+                       G_STRFUNC, orc->file_name, error->message);
+            g_error_free (error);
+        }
+    }
+
+    orage_rc_free (orc);
 }
 
 gchar **orage_rc_get_groups (OrageRc *orc)
