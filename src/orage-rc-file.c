@@ -96,6 +96,28 @@ OrageRc *orage_rc_file_open (gchar *fpath, const gboolean read_only)
     return orc;
 }
 
+OrageRc *orage_rc_file_new (const gchar *fpath)
+{
+    OrageRc *orc;
+    GKeyFile *grc;
+    GError *error = NULL;
+
+    g_debug ("%s: fpath='%s'", G_STRFUNC, fpath);
+
+    grc = g_key_file_new ();
+    if (g_file_set_contents (fpath, "#Created by Orage", -1, &error))
+        orc = orage_rc_new (grc, fpath, FALSE);
+    else
+    {
+        g_warning ("Unable to open (create) RC file (%s). (%s)", fpath,
+                   error->message);
+        g_key_file_free (grc);
+        g_error_free (error);
+    }
+
+    return orc;
+}
+
 /* FIXME: check if file contents have been changed and only write when needed or
  * build separate save function */
 void orage_rc_file_close (OrageRc *orc)
