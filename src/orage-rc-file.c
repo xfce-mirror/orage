@@ -50,15 +50,11 @@ static OrageRc *orage_rc_new (GKeyFile *grc,
     orc->file_name = g_strdup (fpath);
     orc->cur_group = NULL;
 
-    g_debug ("%s: %p", G_STRFUNC, (void *)orc);
-
     return orc;
 }
 
 static void orage_rc_free (OrageRc *orc)
 {
-    g_debug ("%s: %p", G_STRFUNC, (void *)orc);
-
     g_key_file_free (orc->rc);
     g_free (orc->file_name);
     g_free (orc->cur_group);
