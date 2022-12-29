@@ -86,7 +86,7 @@ OrageRc *orage_rc_file_open (const gchar *fpath, const gboolean read_only)
 
 OrageRc *orage_rc_file_new (const gchar *fpath)
 {
-    OrageRc *orc;
+    OrageRc *orc = NULL;
     GKeyFile *grc;
     GError *error = NULL;
 
