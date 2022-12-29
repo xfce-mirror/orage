@@ -46,14 +46,6 @@
 
 #define DATE_KEY "button-date"
 
-typedef struct _OrageRc
-{
-    GKeyFile *rc;
-    gboolean read_only;
-    gchar *file_name;
-    gchar *cur_group;
-} OrageRc;
-
 #if 0
 void program_log (const char *format, ...);
 #endif
@@ -147,35 +139,6 @@ void orage_select_today(GtkCalendar *cal);
 gboolean orage_copy_file (const gchar *source, const gchar *target);
 gchar *orage_data_file_location(const gchar *dir_name);
 gchar *orage_config_file_location (const gchar *dir_name);
-
-OrageRc *orage_rc_file_open(const gchar *fpath, gboolean read_only);
-void orage_rc_file_close(OrageRc *orc);
-gchar **orage_rc_get_groups(OrageRc *orc);
-void orage_rc_set_group(OrageRc *orc, const gchar *grp);
-void orage_rc_del_group(OrageRc *orc, const gchar *grp);
-gchar *orage_rc_get_group(OrageRc *orc);
-gchar *orage_rc_get_str(OrageRc *orc, const gchar *key, const gchar *def);
-gint   orage_rc_get_int(OrageRc *orc, const gchar *key, gint def);
-gboolean orage_rc_get_bool(OrageRc *orc, const gchar *key, gboolean def);
-GDateTime *orage_rc_get_gdatetime (OrageRc *orc, const gchar *key, GDateTime *def);
-void orage_rc_put_str(OrageRc *orc, const gchar *key, const gchar *val);
-void orage_rc_put_int(OrageRc *orc, const gchar *key, gint val);
-void orage_rc_put_bool(OrageRc *orc, const gchar *key, gboolean val);
-void orage_rc_put_gdatetime (OrageRc *orc, const gchar *key, GDateTime *gdt);
-gboolean orage_rc_exists_item(OrageRc *orc, const gchar *key);
-void orage_rc_del_item(OrageRc *orc, const gchar *key);
-
-/** Read RGBA colour from configuration file.
- *  described in orage rc, then if colour is not
- *  @param orc Orage RC file refernce
- *  @param key key for colour
- *  @param rgba output colour.
- *  @param def default colour. This colour is used only when colour is not
- *         present or not pareseable in given rc file.
- *  @retrun true when output rgba is updated, false if output not updated.
- */
-gboolean orage_rc_read_color (OrageRc *orc, const gchar *key,
-                              GdkRGBA *rgba, const gchar *def);
 
 void orage_info_dialog (GtkWindow *parent, const gchar *primary_text,
                                            const gchar *secondary_text);

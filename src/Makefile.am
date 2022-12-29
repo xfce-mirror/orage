@@ -33,6 +33,8 @@ orage_SOURCES =							\
 	orage-dbus-client.c					\
 	orage-dbus-client.h					\
 	orage-i18n.h						\
+	orage-rc-file.c						\
+	orage-rc-file.h						\
 	parameters.c						\
 	parameters.h						\
 	parameters_internal.h					\
