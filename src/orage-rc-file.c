@@ -65,7 +65,7 @@ static void orage_rc_free (OrageRc *orc)
     g_free (orc);
 }
 
-OrageRc *orage_rc_file_open (gchar *fpath, const gboolean read_only)
+OrageRc *orage_rc_file_open (const gchar *fpath, const gboolean read_only)
 {
     OrageRc *orc;
     GKeyFile *grc;
@@ -80,17 +80,9 @@ OrageRc *orage_rc_file_open (gchar *fpath, const gboolean read_only)
     {
         g_warning ("Unable to open RC file (%s). Creating it. (%s)", fpath,
                    error->message);
-
         g_clear_error (&error);
-        if (g_file_set_contents (fpath, "#Created by Orage", -1, &error))
-            orc = orage_rc_new (grc, fpath, read_only);
-        else
-        {
-            g_warning ("Unable to open (create) RC file (%s). (%s)", fpath,
-                       error->message);
-            g_key_file_free (grc);
-            g_error_free (error);
-        }
+        g_key_file_free (grc);
+        orc = orage_rc_file_new (fpath);
     }
 
     return orc;
@@ -109,7 +101,7 @@ OrageRc *orage_rc_file_new (const gchar *fpath)
         orc = orage_rc_new (grc, fpath, FALSE);
     else
     {
-        g_warning ("Unable to open (create) RC file (%s). (%s)", fpath,
+        g_warning ("Unable to create RC file (%s). (%s)", fpath,
                    error->message);
         g_key_file_free (grc);
         g_error_free (error);
