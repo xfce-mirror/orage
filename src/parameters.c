@@ -43,6 +43,7 @@
 #include <gdk/gdk.h>
 
 #include "orage-i18n.h"
+#include "orage-rc-file.h"
 #include "functions.h"
 #include "ical-code.h"
 #include "timezone_selection.h"
