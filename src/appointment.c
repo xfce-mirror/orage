@@ -57,6 +57,7 @@
 #include "appointment.h"
 #include "parameters.h"
 #include "reminder.h"
+#include "orage-rc-file.h"
 #include "xfical_exception.h"
 
 #define BORDER_SIZE 20
@@ -1956,7 +1957,7 @@ void orage_category_get_list(void)
     cat_groups = orage_rc_get_groups(orc);
     for (i = 0; cat_groups[i] != NULL; i++) {
         orage_rc_set_group(orc, cat_groups[i]);
-        if (orage_rc_read_color (orc, ORAGE_RC_COLOUR, &rgba, NULL))
+        if (orage_rc_get_color (orc, ORAGE_RC_COLOUR, &rgba, NULL))
         {
             cat = g_new(orage_category_struct, 1);
             cat->category = g_strdup(cat_groups[i]);
