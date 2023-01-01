@@ -1,6 +1,6 @@
 /*      Orage - Calendar and alarm handler
  *
- * Copyright (c) 2022 Erkki Moorits
+ * Copyright (c) 2023 Erkki Moorits
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,9 +20,34 @@
 
  */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include "orage-application.h"
+
+#include "reminder.h"
+#include "parameters.h"
+#include "orage-i18n.h"
+#include "orage-css.h"
+#include "mainbox.h"
+#include "interface.h"
+#include "ical-code.h"
 #include "functions.h"
+#include <libxfce4util/libxfce4util.h>
 #include <gtk/gtk.h>
+#include <glib-2.0/gio/gapplication.h>
+
+#define HINT_ADD 'a'
+#define HINT_EXPORT 'x'
+#define HINT_IMPORT 'i'
+#define HINT_REMOVE 'r'
+
+typedef struct
+{
+    gboolean toggle_option;
+    gboolean preferences_option;
+} AppOptions;
 
 struct _OrageApplication
 {
@@ -30,27 +55,473 @@ struct _OrageApplication
 #if 0
     GtkWidget *window;
 #endif
+
+    AppOptions app_options;
 };
 
 G_DEFINE_TYPE (OrageApplication, orage_application, GTK_TYPE_APPLICATION);
 
-static void orage_application_class_init (OrageApplicationClass *klass)
+static gboolean window_delete_event_cb (G_GNUC_UNUSED GtkWidget *widget,
+                                        G_GNUC_UNUSED GdkEvent *event,
+                                        CalWin *cal)
 {
-    GObjectClass *object_class;
-    GApplicationClass *application_class;
+    if (g_par.close_means_quit)
+        orage_quit ();
+    else
+        gtk_widget_hide (cal->mWindow);
 
-    object_class = G_OBJECT_CLASS(klass);
+    return TRUE;
+}
+
+static void print_version (void)
+{
+    g_print (_("\tThis is %s version %s\n\n")
+            , PACKAGE, VERSION);
+    g_print (_("\tReleased under the terms of the GNU General Public License.\n"));
+    g_print (_("\tCompiled against GTK+-%d.%d.%d, ")
+            , GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION);
+    g_print (_("using GTK+-%d.%d.%d.\n")
+            , gtk_major_version, gtk_minor_version, gtk_micro_version);
+    g_print (_("\tUsing DBUS for import.\n"));
+#ifdef HAVE_NOTIFY
+    g_print (_("\tUsing libnotify.\n"));
+#else
+    g_print (_("\tNot using libnotify.\n"));
+#endif
+#ifdef HAVE_ARCHIVE
+    g_print (_("\tUsing automatic archiving.\n"));
+#else
+    g_print (_("\tNot using archiving.\n"));
+#endif
+#ifdef HAVE_LIBXFCE4UI
+    g_print (_("\tUsing libxfce4ui: yes\n"));
+#else
+    g_print (_("\tUsing libxfce4ui: no\n"));
+#endif
+    g_print ("\n");
+}
+
+static void raise_window (void)
+{
+    CalWin *cal = (CalWin *)g_par.xfcal;
+
+    if (g_par.pos_x || g_par.pos_y)
+        gtk_window_move (GTK_WINDOW (cal->mWindow), g_par.pos_x, g_par.pos_y);
+
+    if (g_par.select_always_today)
+        orage_select_today (GTK_CALENDAR (cal->mCalendar));
+
+    if (g_par.set_stick)
+        gtk_window_stick (GTK_WINDOW (cal->mWindow));
+
+    gtk_window_set_keep_above (GTK_WINDOW (cal->mWindow), g_par.set_ontop);
+    gtk_window_present (GTK_WINDOW (cal->mWindow));
+}
+
+static void orage_application_startup (GApplication *app)
+{
+    G_APPLICATION_CLASS (orage_application_parent_class)->startup (app);
     
-    application_class = G_APPLICATION_CLASS(klass);
+    /* init i18n = nls to use gettext */
+    xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
+    register_css_provider ();
 #if 0
-    application_class->activate = ocal_application_activate;
-    application_class->open = ocal_application_open;
-    application_class->command_line = ocal_application_command_line;
+    orage_dbus_start ();
+#endif
+    read_parameters ();
+}
+
+static void orage_application_activate (GApplication *app)
+{
+    GList *list;
+    OrageApplication *self;
+
+    self = ORAGE_APPLICATION (app);
+#if 0
+    if (!self->window)
+    {
+        self->window = g_object_new (ORAGE_WINDOW_TYPE,
+                                     "application", self,
+                                     NULL);
+
+        g_object_add_weak_pointer (G_OBJECT(self->window),
+                                   (gpointer *)&self->window);
+        gtk_widget_show (self->window);
+    }
+
+    gtk_window_resize (GTK_WINDOW (self->window), 480, 600);
+    gtk_window_present (GTK_WINDOW (self->window));
+#else
+
+    list = gtk_application_get_windows (GTK_APPLICATION (app));
+
+    if (list)
+    {
+        if (gtk_widget_get_visible (GTK_WIDGET (list->data)) &&
+            self->app_options.toggle_option)
+        {
+            write_parameters ();
+            gtk_widget_hide (GTK_WIDGET (list->data));
+        }
+        else
+            raise_window ();
+    }
+    else
+    {
+        g_par.xfcal = g_new (CalWin, 1);
+
+        /* Create the main window */
+        ((CalWin *)g_par.xfcal)->mWindow =
+                gtk_application_window_new (GTK_APPLICATION (app));
+
+        g_signal_connect ((gpointer) ((CalWin *)g_par.xfcal)->mWindow,
+                          "delete_event",
+                          G_CALLBACK(window_delete_event_cb),
+                          (gpointer)g_par.xfcal);
+
+        build_mainWin ();
+        set_parameters ();
+        if (g_par.start_visible)
+            gtk_widget_show (((CalWin *)g_par.xfcal)->mWindow);
+        else if (g_par.start_minimized)
+        {
+            gtk_window_iconify (GTK_WINDOW (((CalWin *)g_par.xfcal)->mWindow));
+            gtk_widget_show (((CalWin *)g_par.xfcal)->mWindow);
+        }
+        else
+        {
+            /* hidden */
+            gtk_widget_realize (((CalWin *)g_par.xfcal)->mWindow);
+            gtk_widget_hide (((CalWin *)g_par.xfcal)->mWindow);
+        }
+
+        alarm_read ();
+        orage_day_change (NULL); /* first day change after we start */
+        mCalendar_month_changed_cb (
+                (GtkCalendar *)((CalWin *)g_par.xfcal)->mCalendar, NULL);
+
+        /* start monitoring external file updates */
+        g_timeout_add_seconds (30, orage_external_update_check, NULL);
+#if 0
+        /* day change after resuming */
+        handle_resuming();
+#endif
+    }
+
+    if (self->app_options.preferences_option)
+        show_parameters ();
 #endif
 }
 
-static void orage_application_init (OrageApplication *self)
+static void orage_application_shutdown (GApplication *app)
 {
+#ifdef HAVE_ARCHIVE
+    /* move old appointment to other file to keep the active
+       calendar file smaller and faster */
+    xfical_archive ();
+#endif
+
+    write_parameters ();
+
+    G_APPLICATION_CLASS (orage_application_parent_class)->shutdown (app);
+}
+
+static gint orage_application_handle_local_options (
+    G_GNUC_UNUSED GApplication *app,
+    GVariantDict *options)
+{
+    if (g_variant_dict_contains (options, "version"))
+    {
+        print_version ();
+        return EXIT_SUCCESS;
+    }
+
+    return -1;
+}
+
+static gint orage_application_command_line (GApplication *app,
+                                            GApplicationCommandLine *cmdline)
+{
+    GFile **files;
+    GFile *file;
+    const gchar **filenames = NULL;
+    const gchar *file_name;
+    gchar **str_array;
+    gchar *hint;
+    gchar key[2] = {'\0'};
+    GVariantDict *options;
+    gint n_files;
+    gint n;
+    OrageApplication *self;
+
+    self = ORAGE_APPLICATION (app);
+
+    options = g_application_command_line_get_options_dict (cmdline);
+
+    if (g_variant_dict_contains (options, "preferences"))
+        self->app_options.preferences_option = TRUE;
+
+    if (g_variant_dict_contains (options, "toggle"))
+        self->app_options.toggle_option = TRUE;
+
+    if (g_variant_dict_lookup (options, "add-foreign", "^&ay", &file_name))
+    {
+        str_array = g_strsplit (file_name, ":", 2);
+        key[0] = HINT_ADD;
+        hint = g_strjoin (":", key, str_array[1], NULL);
+
+        file = g_application_command_line_create_file_for_arg (cmdline,
+                                                               str_array[0]);
+        g_strfreev (str_array);
+        g_application_open (app, &file, 1, hint);
+        g_free (hint);
+        g_object_unref (file);
+    }
+
+    if (g_variant_dict_lookup (options, "remove-foreign", "^&ay", &file_name))
+    {
+        file = g_application_command_line_create_file_for_arg (cmdline,
+                                                               file_name);
+        key[0] = HINT_REMOVE;
+        g_application_open (app, &file, 1, key);
+        g_object_unref (file);
+    }
+
+    if (g_variant_dict_lookup (options, "export", "^&ay", &file_name))
+    {
+        str_array = g_strsplit (file_name, ":", 2);
+        key[0] = HINT_EXPORT;
+        hint = g_strjoin (":", key, str_array[1], NULL);
+
+        file = g_application_command_line_create_file_for_arg (cmdline,
+                                                               str_array[0]);
+        g_strfreev (str_array);
+        g_application_open (app, &file, 1, hint);
+        g_free (hint);
+        g_object_unref (file);
+    }
+
+    g_variant_dict_lookup (options, G_OPTION_REMAINING, "^a&ay", &filenames);
+
+    if (filenames != NULL && (n_files = g_strv_length ((gchar **)filenames)) > 0)
+    {
+        files = g_new (GFile *, n_files);
+
+        for (n = 0; n < n_files; n++)
+        {
+            file = g_application_command_line_create_file_for_arg (cmdline,
+                                                                   filenames[n]);
+            files[n] = file;
+        }
+
+        key[0] = HINT_IMPORT;
+        g_application_open (app, files, n_files, key);
+
+        for (n = 0; n < n_files; n++)
+            g_object_unref (files[n]);
+
+        g_free (files);
+    }
+
+    g_application_activate (app);
+
+    return EXIT_SUCCESS;
+}
+
+static void orage_application_open (G_GNUC_UNUSED GApplication *app,
+                                    GFile **files,
+                                    gint n_files,
+                                    const gchar *hint)
+{
+    gchar **hint_array;
+    gint i;
+    gchar *file;
+    gchar *file_name;
+    gint export_type;
+    gboolean foreign_file_read_only;
+
+    for (i = 0; i < n_files; i++)
+    {
+        switch (hint[0])
+        {
+            case HINT_ADD:
+                file = g_file_get_path (files[i]);
+                hint_array = g_strsplit (hint, ":", 3);
+                file_name = NULL;
+
+                if (hint_array[1])
+                {
+                    foreign_file_read_only =
+                            (g_ascii_strcasecmp (hint_array[1], "RW") != 0) &&
+                            (g_ascii_strcasecmp (hint_array[1], "READWRITE") != 0);
+
+                    if (hint_array[2])
+                        file_name = g_strdup (hint_array[2]);
+                }
+                else
+                    foreign_file_read_only = TRUE;
+
+                if (file_name == NULL)
+                    file_name = g_file_get_basename (files[i]);
+
+                g_debug ("add foreign file='%s', file_name='%s', ro=%d",
+                         file, file_name, foreign_file_read_only);
+
+                if (orage_foreign_file_add (file, foreign_file_read_only, file_name))
+                    g_message ("add done, foreign file=%s", file);
+                else
+                    g_warning ("add failed, foreign file=%s", file);
+
+                g_free (file_name);
+                g_free (file);
+                g_strfreev (hint_array);
+                break;
+
+            case HINT_EXPORT:
+                file = g_file_get_path (files[i]);
+                hint_array = g_strsplit (hint, ":", 2);
+                export_type = hint_array[1] ? 1 : 0;
+                g_debug ("exporting to='%s', uids='%s'", file, hint_array[1]);
+
+                if (xfical_export_file (file, export_type, hint_array[1]))
+                    g_message ("export done to file=%s", file);
+                else
+                    g_warning ("export failed file=%s", file);
+
+                g_free (file);
+                g_strfreev (hint_array);
+                break;
+
+            case HINT_IMPORT:
+                file = g_file_get_path (files[i]);
+                g_debug ("import, file=%s", file);
+
+                if (xfical_import_file (file))
+                    g_message ("import done, file=%s", file);
+                else
+                    g_warning ("import failed, file=%s", file);
+
+                g_free (file);
+                break;
+
+            case HINT_REMOVE:
+                file = g_file_get_path (files[i]);
+
+                g_debug ("remove foreign, file=%s", file);
+                if (orage_foreign_file_remove (file))
+                    g_message ("remove done, foreign file=%s", file);
+                else
+                    g_warning ("remove failed, foreign file=%s", file);
+
+                g_free (file);
+
+                break;
+
+            default:
+                g_assert_not_reached ();
+                break;
+        }
+    }
+
+    /* Note: when doing a longer-lasting action here that returns to the
+     * mainloop, you should use g_application_hold() and g_application_release()
+     * to keep the application alive until the action is completed.
+     */
+}
+
+static void orage_application_class_init (OrageApplicationClass *klass)
+{
+    GApplicationClass *application_class;
+
+    application_class = G_APPLICATION_CLASS (klass);
+    application_class->startup = orage_application_startup;
+    application_class->activate = orage_application_activate;
+    application_class->shutdown = orage_application_shutdown;
+    application_class->open = orage_application_open;
+    application_class->handle_local_options = orage_application_handle_local_options;
+    application_class->command_line = orage_application_command_line;
+}
+
+static void orage_application_init (OrageApplication *application)
+{
+    const GOptionEntry option_entries[] =
+    {
+        {
+            .long_name = "version",
+            .short_name = 'v',
+            .flags = G_OPTION_FLAG_NONE,
+            .arg = G_OPTION_ARG_NONE,
+            .arg_data = NULL,
+            .description = _("Show version of orage"),
+            .arg_description = NULL,
+        },
+        {
+            .long_name = "preferences",
+            .short_name = 'p',
+            .flags = G_OPTION_FLAG_NONE,
+            .arg = G_OPTION_ARG_NONE,
+            .arg_data = NULL,
+            .description = _("Show preferences form"),
+            .arg_description = NULL,
+        },
+        {
+            .long_name = "toggle",
+            .short_name = 't',
+            .flags = G_OPTION_FLAG_NONE,
+            .arg = G_OPTION_ARG_NONE,
+            .arg_data = NULL,
+            .description = _("Make Orage visible/unvisible"),
+            .arg_description = NULL,
+        },
+        {
+            .long_name = "add-foreign",
+            .short_name = 'a',
+            .flags = G_OPTION_FLAG_NONE,
+            .arg = G_OPTION_ARG_FILENAME,
+            .arg_data = NULL,
+            .description = _("Add a foreign file"),
+            .arg_description = "<file>:[RW]:[name]",
+        },
+        {
+            .long_name = "remove-foreign",
+            .short_name = 'r',
+            .flags = G_OPTION_FLAG_NONE,
+            .arg = G_OPTION_ARG_FILENAME,
+            .arg_data = NULL,
+            .description = "Remove a foreign file",
+            .arg_description = "<file>",
+        },
+        {
+            .long_name = "export",
+            .short_name = 'e',
+            .flags = G_OPTION_FLAG_NONE,
+            .arg = G_OPTION_ARG_FILENAME,
+            .arg_data = NULL,
+            .description = _("Export appointments from Orage to file"),
+            .arg_description = "<file>:[appointment...]",
+        },
+        {
+            .long_name = G_OPTION_REMAINING,
+            .short_name = '\0',
+            .flags = G_OPTION_FLAG_NONE,
+            .arg = G_OPTION_ARG_FILENAME_ARRAY,
+            .arg_data = NULL,
+            .description = NULL,
+            .arg_description = "[files...]",
+        },
+        {
+            .long_name = NULL,
+            .short_name = '\0',
+            .flags = 0,
+            .arg = 0,
+            .arg_data = NULL,
+            .description = NULL,
+            .arg_description = NULL,
+        }
+    };
+
+    g_application_add_main_option_entries (G_APPLICATION (application),
+                                           option_entries);
 }
 
 OrageApplication *orage_application_new (void)

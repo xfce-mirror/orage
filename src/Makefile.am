@@ -26,6 +26,8 @@ orage_SOURCES =							\
 	main.c							\
 	mainbox.c						\
 	mainbox.h						\
+	orage-application.c					\
+	orage-application.h					\
 	orage-css.c						\
 	orage-css.h						\
 	orage-dbus-object.c					\
