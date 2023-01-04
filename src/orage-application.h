@@ -1,6 +1,6 @@
 /*      Orage - Calendar and alarm handler
  *
- * Copyright (c) 2006-2011 Juha Kautto  (juha at xfce.org)
+ * Copyright (c) 2022 Erkki Moorits
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -13,23 +13,25 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the 
+ * along with this program; if not, write to the
        Free Software Foundation
        51 Franklin Street, 5th Floor
        Boston, MA 02110-1301 USA
 
  */
 
-#ifndef __ORAGE_DBUS_H__
-#define __ORAGE_DBUS_H__
+#ifndef ORAGE_APPLICATION_H
+#define ORAGE_APPLICATION_H 1
 
-#include <glib.h>
+#include <gtk/gtk.h>
 
-gboolean orage_dbus_import_file (const gchar *file_name);
-gboolean orage_dbus_export_file (const gchar *file_name, gint type,
-                                 const gchar *uids);
-gboolean orage_dbus_foreign_add (const gchar *file_name, gboolean read_only,
-                                 const gchar *name);
-gboolean orage_dbus_foreign_remove (const gchar *file_name);
+G_BEGIN_DECLS
 
-#endif /* !__ORAGE_DBUS_H__ */
+#define ORAGE_APPLICATION_TYPE (orage_application_get_type ())
+G_DECLARE_FINAL_TYPE (OrageApplication, orage_application, ORAGE, APPLICATION, GtkApplication)
+
+OrageApplication *orage_application_new (void);
+
+G_END_DECLS
+
+#endif
