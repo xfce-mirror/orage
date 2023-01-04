@@ -82,6 +82,4 @@ orage_LDADD +=							\
 	$(LIBXFCE4UI_LIBS)
 endif
 
-EXTRA_DIST = orage-dbus-service.xml
-
 # vi:set ts=8 sw=8 noet ai:

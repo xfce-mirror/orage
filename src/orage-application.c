@@ -61,7 +61,7 @@ struct _OrageApplication
     guint prepare_for_sleep_id;
 };
 
-G_DEFINE_TYPE (OrageApplication, orage_application, GTK_TYPE_APPLICATION);
+G_DEFINE_TYPE (OrageApplication, orage_application, GTK_TYPE_APPLICATION)
 
 static gboolean window_delete_event_cb (G_GNUC_UNUSED GtkWidget *widget,
                                         G_GNUC_UNUSED GdkEvent *event,
