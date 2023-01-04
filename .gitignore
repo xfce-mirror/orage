@@ -35,7 +35,5 @@ po/.intltool-merge-cache*
 po/Makefile.in.in
 po/POTFILES
 po/stamp-it
-src/orage-dbus-service.c
-src/orage-dbus-service.h
 src/orage
 stamp-h1
