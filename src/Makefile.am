@@ -1,9 +1,5 @@
 bin_PROGRAMS = orage
 
-orage_built_sources =						\
-	orage-dbus-service.c					\
-	orage-dbus-service.h
-
 orage_SOURCES =							\
 	$(orage_built_sources)					\
 	about-xfcalendar.c					\
@@ -26,12 +22,10 @@ orage_SOURCES =							\
 	main.c							\
 	mainbox.c						\
 	mainbox.h						\
+	orage-application.c					\
+	orage-application.h					\
 	orage-css.c						\
 	orage-css.h						\
-	orage-dbus-object.c					\
-	orage-dbus-object.h					\
-	orage-dbus-client.c					\
-	orage-dbus-client.h					\
 	orage-i18n.h						\
 	orage-rc-file.c						\
 	orage-rc-file.h						\
@@ -75,17 +69,6 @@ orage_LDADD =							\
 	-lm							\
 	$(INTLLIBS)
 
-orage-dbus-service.h:
-orage-dbus-service.c: orage-dbus-service.xml Makefile
-	$(AM_V_GEN) $(GDBUS_CODEGEN) \
-	--interface-prefix org.xfce.Orage \
-	--c-namespace Orage   \
-	--generate-c-code orage-dbus-service \
-	$(srcdir)/orage-dbus-service.xml
-
-BUILT_SOURCES = $(orage_built_sources)
-DISTCLEANFILES = $(orage_built_sources)
-
 if HAVE_NOTIFY
 orage_LDADD +=							\
 	$(NOTIFY_LIBS)
@@ -98,7 +81,5 @@ orage_CFLAGS +=							\
 orage_LDADD +=							\
 	$(LIBXFCE4UI_LIBS)
 endif
-
-EXTRA_DIST = orage-dbus-service.xml
 
 # vi:set ts=8 sw=8 noet ai:
