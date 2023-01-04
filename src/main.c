@@ -44,50 +44,6 @@
 
 static OrageApplication *orage_app;
 
-#if 0
-static gboolean resume_after_sleep (G_GNUC_UNUSED gpointer user_data)
-{
-    g_message ("Resuming after sleep");
-    alarm_read();
-    orage_day_change(&g_par);
-
-    return(FALSE); /* only once */
-}
-
-static void resuming_cb (G_GNUC_UNUSED DBusGProxy *proxy,
-                         G_GNUC_UNUSED gpointer user_data)
-{
-    g_message ("Resuming");
-    /* we need this delay to prevent updating tray icon too quickly when
-       the normal code handles it also */
-    g_timeout_add_seconds(2, (GSourceFunc) resume_after_sleep, NULL);
-}
-
-static void handle_resuming(void)
-{
-    DBusGConnection *connection;
-    GError *error = NULL;
-    DBusGProxy *proxy;
-
-    connection = dbus_g_bus_get(DBUS_BUS_SYSTEM, &error);
-    if (connection) {
-       proxy = dbus_g_proxy_new_for_name(connection, "org.freedesktop.UPower"
-               , "/org/freedesktop/UPower", "org.freedesktop.UPower");
-       if (proxy) {
-           dbus_g_proxy_add_signal(proxy, "Resuming", G_TYPE_INVALID);
-           dbus_g_proxy_connect_signal(proxy, "Resuming"
-                   , G_CALLBACK(resuming_cb), NULL, NULL);
-       }
-       else {
-           g_warning("Failed to create proxy object");
-       }
-    }
-    else {
-        g_warning("Failed to connect to D-BUS daemon: %s", error->message);
-    }
-}
-#endif
-
 static void raise_window (void)
 {
     CalWin *cal = (CalWin *)g_par.xfcal;

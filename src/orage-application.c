@@ -43,6 +43,10 @@
 #define HINT_IMPORT 'i'
 #define HINT_REMOVE 'r'
 
+#define LOGIND_BUS_NAME "org.freedesktop.login1"
+#define LOGIND_IFACE_NAME "org.freedesktop.login1.Manager"
+#define LOGIND_OBJ_PATH "/org/freedesktop/login1"
+
 typedef struct
 {
     gboolean toggle_option;
@@ -57,6 +61,8 @@ struct _OrageApplication
 #endif
 
     AppOptions app_options;
+    GDBusConnection *connection;
+    guint prepare_for_sleep_id;
 };
 
 G_DEFINE_TYPE (OrageApplication, orage_application, GTK_TYPE_APPLICATION);
@@ -71,6 +77,93 @@ static gboolean window_delete_event_cb (G_GNUC_UNUSED GtkWidget *widget,
         gtk_widget_hide (cal->mWindow);
 
     return TRUE;
+}
+
+static gboolean resuming_after_delay (G_GNUC_UNUSED gpointer user_data)
+{
+    g_message ("resuming after sleep");
+
+    alarm_read ();
+    orage_day_change (&g_par);
+
+    return FALSE;
+}
+
+static void resuming_cb (G_GNUC_UNUSED GDBusConnection *connection,
+                         const gchar *sender_name,
+                         const gchar *object_path,
+                         const gchar *interface_name,
+                         const gchar *signal_name,
+                         GVariant *parameters,
+                         G_GNUC_UNUSED gpointer user_data)
+{
+    gboolean prepare_for_sleep;
+
+    g_debug ("%s: sender_name='%s', object_path='%s', %s.%s %s", G_STRFUNC,
+             sender_name, object_path, interface_name,
+             signal_name, g_variant_print (parameters, TRUE));
+
+    if (!g_variant_check_format_string (parameters, "(b)", FALSE))
+    {
+        g_warning ("received incorrect parameter for PrepareForSleep signal");
+        return;
+    }
+
+    g_variant_get (parameters, "(b)", &prepare_for_sleep);
+
+    if (prepare_for_sleep == FALSE)
+    {
+        g_debug ("received resuming signal");
+
+        /* We need this delay to prevent updating tray icon too quickly when the
+         * normal code handles it also.
+         */
+        g_timeout_add_seconds (2, resuming_after_delay, NULL);
+    }
+}
+
+static void resuming_handler_register (OrageApplication *self)
+{
+    GError *error = NULL;
+
+    self->connection = g_bus_get_sync (G_BUS_TYPE_SYSTEM, NULL, &error);
+    if (self->connection == NULL)
+    {
+        g_warning ("failed to connect to the D-BUS session bus: %s",
+                   error->message);
+        g_error_free (error);
+        return;
+    }
+
+    self->prepare_for_sleep_id = g_dbus_connection_signal_subscribe (
+            self->connection,
+            LOGIND_BUS_NAME,
+            LOGIND_IFACE_NAME,
+            "PrepareForSleep",
+            LOGIND_OBJ_PATH,
+            NULL,
+            G_DBUS_SIGNAL_FLAGS_NONE,
+            resuming_cb,
+            NULL,
+            NULL);
+
+    g_debug ("%s: prepare_for_sleep_id=%d", G_STRFUNC,
+             self->prepare_for_sleep_id);
+}
+
+static void resuming_handler_unregister (OrageApplication *self)
+{
+    g_debug ("%s: prepare_for_sleep_id=%d", G_STRFUNC,
+             self->prepare_for_sleep_id);
+
+    if (self->prepare_for_sleep_id)
+    {
+        g_dbus_connection_signal_unsubscribe (self->connection,
+                                              self->prepare_for_sleep_id);
+    }
+
+    if (self->connection)
+        g_object_unref (self->connection);
 }
 
 static void print_version (void)
@@ -202,10 +295,9 @@ static void orage_application_activate (GApplication *app)
 
         /* start monitoring external file updates */
         g_timeout_add_seconds (30, orage_external_update_check, NULL);
-#if 0
+
         /* day change after resuming */
-        handle_resuming();
-#endif
+        resuming_handler_register (self);
     }
 
     if (self->app_options.preferences_option)
@@ -215,6 +307,12 @@ static void orage_application_activate (GApplication *app)
 
 static void orage_application_shutdown (GApplication *app)
 {
+    OrageApplication *self;
+
+    self = ORAGE_APPLICATION (app);
+
+    resuming_handler_unregister (self);
+
 #ifdef HAVE_ARCHIVE
     /* move old appointment to other file to keep the active
        calendar file smaller and faster */
