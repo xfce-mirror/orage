@@ -56,10 +56,6 @@ typedef struct
 struct _OrageApplication
 {
     GtkApplication parent;
-#if 0
-    GtkWidget *window;
-#endif
-
     AppOptions app_options;
     GDBusConnection *connection;
     guint prepare_for_sleep_id;
@@ -218,9 +214,6 @@ static void orage_application_startup (GApplication *app)
     /* init i18n = nls to use gettext */
     xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
     register_css_provider ();
-#if 0
-    orage_dbus_start ();
-#endif
     read_parameters ();
 }
 
@@ -230,21 +223,6 @@ static void orage_application_activate (GApplication *app)
     OrageApplication *self;
 
     self = ORAGE_APPLICATION (app);
-#if 0
-    if (!self->window)
-    {
-        self->window = g_object_new (ORAGE_WINDOW_TYPE,
-                                     "application", self,
-                                     NULL);
-
-        g_object_add_weak_pointer (G_OBJECT(self->window),
-                                   (gpointer *)&self->window);
-        gtk_widget_show (self->window);
-    }
-
-    gtk_window_resize (GTK_WINDOW (self->window), 480, 600);
-    gtk_window_present (GTK_WINDOW (self->window));
-#else
 
     list = gtk_application_get_windows (GTK_APPLICATION (app));
 
@@ -302,7 +280,6 @@ static void orage_application_activate (GApplication *app)
 
     if (self->app_options.preferences_option)
         show_parameters ();
-#endif
 }
 
 static void orage_application_shutdown (GApplication *app)
