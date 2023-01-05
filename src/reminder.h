@@ -24,49 +24,7 @@
 #ifndef __REMINDER_H__
 #define __REMINDER_H__
 
-typedef struct _active_alarm_struct
-{
-    gboolean sound_active; /* sound is currently being played */
-    GtkWidget *stop_noise_reminder;
-    gpointer active_notify; /* this is NotifyNotification, but it may not be
-                               linked in, so need to be done like this */
-    gboolean notify_stop_noise_action;
-} active_alarm_struct;
-
-typedef struct _alarm_struct
-{
-    GDateTime *alarm_time;
-    gchar   *action_time; /* alarm is based on this time */
-    gchar   *uid;
-    gchar   *title;
-    gchar   *description;
-    gboolean persistent;
-    gboolean temporary; /* alarm, which is not stored in ical file */
-
-    gboolean display_orage;
-    gboolean display_orage_orig;
-    gboolean display_notify;
-    gboolean display_notify_orig;
-    gboolean notify_refresh;
-    gint     notify_timeout;
-
-    gboolean audio;
-    gboolean audio_orig;
-    gchar   *sound;
-    gchar   *sound_cmd; /* contains the whole command to play */
-    gint     repeat_cnt;
-    gint     repeat_cnt_orig;
-    gint     repeat_delay;
-
-    gboolean procedure;
-    gchar   *cmd;
-/* gboolean email; */
-
-    /* this is used to control active alarms */
-    active_alarm_struct *active_alarm;
-    /* pointer to special data needed for orage window alarm */
-    gpointer orage_display_data;
-} alarm_struct;
+#include "orage-alarm-structure.h"
 
 gboolean orage_day_change(gpointer user_data);
 void setup_orage_alarm_clock(void);
