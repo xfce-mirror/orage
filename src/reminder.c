@@ -95,23 +95,6 @@ typedef struct _orage_ddmmhh_hbox
 static void create_notify_reminder(alarm_struct *l_alarm);
 static void reset_orage_alarm_clock (void);
 
-static void alarm_free(gpointer galarm)
-{
-    alarm_struct *l_alarm = (alarm_struct *)galarm;
-
-    orage_gdatetime_unref (l_alarm->alarm_time);
-    g_free(l_alarm->action_time);
-    g_free(l_alarm->uid);
-    g_free(l_alarm->title);
-    g_free(l_alarm->description);
-    g_free(l_alarm->sound);
-    g_free(l_alarm->sound_cmd);
-    g_free(l_alarm->cmd);
-    g_free(l_alarm->active_alarm);
-    g_free(l_alarm->orage_display_data);
-    g_free(l_alarm);
-}
-
 static gint alarm_order(gconstpointer a, gconstpointer b)
 {
     const alarm_struct *alarm_a = (const alarm_struct *)a;
@@ -153,7 +136,7 @@ void alarm_list_free(void)
         }
         else { /* get rid of that l_alarm element */
             g_par.alarm_list=g_list_remove(g_par.alarm_list, l_alarm);
-            alarm_free(l_alarm);
+            orage_alarm_free(l_alarm);
         }
     }
     g_date_time_unref (time_now);
@@ -169,7 +152,7 @@ static void alarm_free_memory(alarm_struct *l_alarm)
 {
     if (!l_alarm->display_orage && !l_alarm->display_notify && !l_alarm->audio)
         /* all gone, need to clean memory */
-        alarm_free(l_alarm);
+        orage_alarm_free(l_alarm);
     else if (!l_alarm->display_orage && !l_alarm->display_notify)
         /* if both visuals are gone we can't stop audio anymore, so stop it 
          * now before it is too late */
@@ -310,7 +293,7 @@ static alarm_struct *alarm_read_next_alarm(OrageRc *orc, GDateTime *gdt)
             /* we need to store this or it will get lost */
             alarm_add(new_alarm);
         else  /* we can ignore this as it will be created again soon */
-            alarm_free(new_alarm);
+            orage_alarm_free(new_alarm);
         return(NULL);
     }
 
@@ -332,7 +315,7 @@ void alarm_read(void)
         orage_rc_set_group(orc, alarm_groups[i]);
         if ((new_alarm = alarm_read_next_alarm(orc, time_now)) != NULL) {
             create_reminders(new_alarm);
-            alarm_free(new_alarm);
+            orage_alarm_free(new_alarm);
         }
     }
     g_date_time_unref (time_now);
