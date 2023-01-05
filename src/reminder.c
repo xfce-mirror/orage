@@ -95,19 +95,6 @@ typedef struct _orage_ddmmhh_hbox
 static void create_notify_reminder(alarm_struct *l_alarm);
 static void reset_orage_alarm_clock (void);
 
-static gint alarm_order(gconstpointer a, gconstpointer b)
-{
-    const alarm_struct *alarm_a = (const alarm_struct *)a;
-    const alarm_struct *alarm_b = (const alarm_struct *)b;
-
-    if (alarm_a->alarm_time == NULL)
-        return(1);
-    else if (alarm_b->alarm_time == NULL)
-        return(-1);
-
-    return g_date_time_compare (alarm_a->alarm_time, alarm_b->alarm_time);
-}
-
 void alarm_list_free(void)
 {
     GDateTime *time_now;
@@ -136,7 +123,7 @@ void alarm_list_free(void)
         }
         else { /* get rid of that l_alarm element */
             g_par.alarm_list=g_list_remove(g_par.alarm_list, l_alarm);
-            orage_alarm_free(l_alarm);
+            orage_alarm_unref (l_alarm);
         }
     }
     g_date_time_unref (time_now);
@@ -144,7 +131,7 @@ void alarm_list_free(void)
     g_par.alarm_list = NULL;
     if (g_list_length(kept_l)) {
         g_par.alarm_list = g_list_concat(g_par.alarm_list, kept_l);
-        g_par.alarm_list = g_list_sort(g_par.alarm_list, alarm_order);
+        g_par.alarm_list = g_list_sort(g_par.alarm_list, orage_alarm_order);
     }
 }
 
@@ -152,7 +139,7 @@ static void alarm_free_memory(alarm_struct *l_alarm)
 {
     if (!l_alarm->display_orage && !l_alarm->display_notify && !l_alarm->audio)
         /* all gone, need to clean memory */
-        orage_alarm_free(l_alarm);
+        orage_alarm_unref (l_alarm);
     else if (!l_alarm->display_orage && !l_alarm->display_notify)
         /* if both visuals are gone we can't stop audio anymore, so stop it 
          * now before it is too late */
@@ -194,7 +181,7 @@ static alarm_struct *alarm_copy(alarm_struct *l_alarm, gboolean init)
     n_alarm->orage_display_data = g_new0(orage_ddmmhh_hbox_struct, 1);
 
     /* then l_alarm values which are modified during the l_alarm handling */
-    if (init) { 
+    if (init) {
         /* first call for this l_alarm, we can and must use real values.
            We do not have orig values yet. */
         n_alarm->display_orage = l_alarm->display_orage;
@@ -202,8 +189,8 @@ static alarm_struct *alarm_copy(alarm_struct *l_alarm, gboolean init)
         n_alarm->audio = l_alarm->audio;
         n_alarm->repeat_cnt = l_alarm->repeat_cnt;
     }
-    else { 
-        /* this is reminder based on earlier l_alarm, 
+    else {
+        /* this is reminder based on earlier l_alarm,
            we need to use unmodifed original values */
         n_alarm->display_orage = l_alarm->display_orage_orig;
         n_alarm->display_notify = l_alarm->display_notify_orig;
@@ -259,7 +246,7 @@ static alarm_struct *alarm_read_next_alarm(OrageRc *orc, GDateTime *gdt)
     gint cmp_result;
     alarm_struct *new_alarm;
 
-    new_alarm = g_new0(alarm_struct, 1);
+    new_alarm = orage_alarm_new ();
 
     new_alarm->uid = orage_rc_get_group(orc);
     new_alarm->alarm_time = orage_rc_get_gdatetime (orc, RC_ALARM_TIME, NULL);
@@ -293,7 +280,7 @@ static alarm_struct *alarm_read_next_alarm(OrageRc *orc, GDateTime *gdt)
             /* we need to store this or it will get lost */
             alarm_add(new_alarm);
         else  /* we can ignore this as it will be created again soon */
-            orage_alarm_free(new_alarm);
+            orage_alarm_unref (new_alarm);
         return(NULL);
     }
 
@@ -315,7 +302,7 @@ void alarm_read(void)
         orage_rc_set_group(orc, alarm_groups[i]);
         if ((new_alarm = alarm_read_next_alarm(orc, time_now)) != NULL) {
             create_reminders(new_alarm);
-            orage_alarm_free(new_alarm);
+            orage_alarm_unref (new_alarm);
         }
     }
     g_date_time_unref (time_now);
@@ -1100,7 +1087,7 @@ static gboolean reset_orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
 void setup_orage_alarm_clock(void)
 {
     /* order the list */
-    g_par.alarm_list = g_list_sort(g_par.alarm_list, alarm_order);
+    g_par.alarm_list = g_list_sort(g_par.alarm_list, orage_alarm_order);
     reset_orage_alarm_clock();
     store_persistent_alarms(); /* keep track of alarms when orage is down */
     /* We need to use timer since for some reason it does not work if we
