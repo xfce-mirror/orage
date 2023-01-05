@@ -58,6 +58,7 @@
 
 #define ICAL_MAIN
 
+#include "orage-alarm-structure.h"
 #include "orage-i18n.h"
 #include "functions.h"
 #include "mainbox.h"

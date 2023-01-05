@@ -46,6 +46,7 @@
 #include <libnotify/notify.h>
 #endif
 
+#include "orage-alarm-structure.h"
 #include "orage-i18n.h"
 #include "orage-rc-file.h"
 #include "functions.h"

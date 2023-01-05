@@ -22,6 +22,7 @@ orage_SOURCES =							\
 	main.c							\
 	mainbox.c						\
 	mainbox.h						\
+	orage-alarm-structure.h					\
 	orage-application.c					\
 	orage-application.h					\
 	orage-css.c						\
