@@ -425,11 +425,6 @@ static GtkWidget *create_TrayIcon_menu(void)
     return(trayMenu);
 }
 
-static void destroy_TrayIcon(GtkStatusIcon *trayIcon)
-{
-    g_object_unref(trayIcon);
-}
-
 GtkStatusIcon *orage_create_trayicon (void)
 {
     CalWin *xfcal = (CalWin *)g_par.xfcal;
@@ -463,9 +458,9 @@ void orage_refresh_trayicon(void)
     GtkStatusIcon *trayIcon;
 
     if (g_par.show_systray) { /* refresh tray icon */
-        if (ORAGE_TRAYICON && orage_status_icon_is_embedded (ORAGE_TRAYICON)) {
+        if (ORAGE_TRAYICON) {
             orage_status_icon_set_visible (ORAGE_TRAYICON, FALSE);
-            destroy_TrayIcon(ORAGE_TRAYICON);
+            g_object_unref (ORAGE_TRAYICON);
         }
 
         trayIcon = orage_create_trayicon ();

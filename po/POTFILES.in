@@ -11,8 +11,7 @@ src/ical-expimp.c
 src/interface.c
 src/main.c
 src/mainbox.c
-src/orage-dbus-client.c
-src/orage-dbus-object.c
+src/orage-application.c
 src/parameters.c
 src/reminder.c
 src/timezone_names.c
