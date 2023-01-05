@@ -84,4 +84,6 @@ typedef struct _alarm_struct
     gpointer orage_display_data;
 } alarm_struct;
 
+void orage_alarm_free (alarm_struct *alarm);
+
 #endif
