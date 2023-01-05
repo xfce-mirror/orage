@@ -2019,7 +2019,7 @@ static void xfical_appt_get_fill_internal (xfical_appt *appt,
 }
 
 static xfical_appt *appt_get_any(const char *ical_uid, icalcomponent *base
-        , char *file_type)
+        , const gchar *file_type)
 {
     xfical_appt *appt;
 
@@ -3593,9 +3593,9 @@ static gchar *find_prev(gchar *beg, gchar *cur, gchar *str)
   *          successfull. 
   *          You must deallocate the appt after the call
   */
-static xfical_appt *xfical_appt_get_next_with_string_internal(char *str
-        , gboolean first, char *search_file, icalcomponent *base
-        , gchar *file_type)
+static xfical_appt *xfical_appt_get_next_with_string_internal (
+    const gchar *str, gboolean first, char *search_file, icalcomponent *base,
+    const gchar *file_type)
 {
     static gchar *text_upper, *text, *beg, *end;
     static gboolean upper_text;
@@ -3766,17 +3766,9 @@ static xfical_appt *xfical_appt_get_next_with_string_internal(char *str
     return(NULL);
 }
 
- /* Read next EVENT/TODO/JOURNAL which contains the specified string 
-  * from ical datafile.
-  * str:     string to search
-  * first:   get first appointment is TRUE, if not get next.
-  * returns: NULL if failed.
-  *          xfical_appt pointer to xfical_appt struct filled with data if 
-  *          successfull. 
-  *          You must deallocate the appt after the call
-  */
-xfical_appt *xfical_appt_get_next_with_string(char *str, gboolean first
-        , gchar *file_type)
+xfical_appt *xfical_appt_get_next_with_string (const gchar *str,
+                                               const gboolean first,
+                                               const gchar *file_type)
 {
     gint i;
 

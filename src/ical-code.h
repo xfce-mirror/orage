@@ -151,8 +151,16 @@ xfical_appt *xfical_appt_get_next_on_day (GDateTime *gdt, gboolean first,
                                           gint days, xfical_type type,
                                           gchar *file_type);
 
-xfical_appt *xfical_appt_get_next_with_string(char *str, gboolean first
-        , gchar *file_type);
+/** Read next EVENT/TODO/JOURNAL which contains the specified string from ical
+ *  datafile. You must deallocate the appt after the call
+ *  @param str string to search
+  * @param first get first appointment is TRUE, if not get next
+ *  @return NULL if failed, xfical_appt pointer to xfical_appt struct filled
+ *          with data if successfull
+  */
+xfical_appt *xfical_appt_get_next_with_string (const gchar *str, gboolean first,
+                                               const gchar *file_type);
+
 void xfical_get_each_app_within_time (GDateTime *a_day, int days
         , xfical_type type, const gchar *file_type , GList **data);
 
