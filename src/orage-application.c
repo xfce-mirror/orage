@@ -47,18 +47,13 @@
 #define LOGIND_IFACE_NAME "org.freedesktop.login1.Manager"
 #define LOGIND_OBJ_PATH "/org/freedesktop/login1"
 
-typedef struct
-{
-    gboolean toggle_option;
-    gboolean preferences_option;
-} AppOptions;
-
 struct _OrageApplication
 {
     GtkApplication parent;
-    AppOptions app_options;
     GDBusConnection *connection;
     guint prepare_for_sleep_id;
+    gboolean toggle_option;
+    gboolean preferences_option;
 };
 
 G_DEFINE_TYPE (OrageApplication, orage_application, GTK_TYPE_APPLICATION)
@@ -229,7 +224,7 @@ static void orage_application_activate (GApplication *app)
     if (list)
     {
         if (gtk_widget_get_visible (GTK_WIDGET (list->data)) &&
-            self->app_options.toggle_option)
+            self->toggle_option)
         {
             write_parameters ();
             gtk_widget_hide (GTK_WIDGET (list->data));
@@ -278,7 +273,7 @@ static void orage_application_activate (GApplication *app)
         resuming_handler_register (self);
     }
 
-    if (self->app_options.preferences_option)
+    if (self->preferences_option)
         show_parameters ();
 }
 
@@ -334,10 +329,10 @@ static gint orage_application_command_line (GApplication *app,
     options = g_application_command_line_get_options_dict (cmdline);
 
     if (g_variant_dict_contains (options, "preferences"))
-        self->app_options.preferences_option = TRUE;
+        self->preferences_option = TRUE;
 
     if (g_variant_dict_contains (options, "toggle"))
-        self->app_options.toggle_option = TRUE;
+        self->toggle_option = TRUE;
 
     if (g_variant_dict_lookup (options, "add-foreign", "^&ay", &file_name))
     {
