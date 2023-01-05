@@ -82,8 +82,13 @@ typedef struct _alarm_struct
 
     /** Pointer to special data needed for orage window alarm. */
     gpointer orage_display_data;
+
+    gint ref_count;
 } alarm_struct;
 
-void orage_alarm_free (alarm_struct *alarm);
+alarm_struct *orage_alarm_new (void);
+alarm_struct *orage_alarm_ref (alarm_struct *alarm);
+void orage_alarm_unref (alarm_struct *alarm);
+gint orage_alarm_order (gconstpointer a, gconstpointer b);
 
 #endif
