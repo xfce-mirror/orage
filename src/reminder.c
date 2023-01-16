@@ -424,14 +424,15 @@ static void create_notify_reminder(alarm_struct *l_alarm)
     if (orage_notify_init () == FALSE)
         return;
 
-    g_strlcpy(heading, _("Reminder "), sizeof (heading));
+    g_strlcpy(heading, _("Reminder"), sizeof (heading));
+    g_strlcat(heading, " ", sizeof (heading));
     /* l_alarm will be unreferenced with notify_closed callback function. */
     orage_alarm_ref (l_alarm);
     if (l_alarm->title)
-        g_strlcat(heading, l_alarm->title, 150);
+        g_strlcat(heading, l_alarm->title, sizeof (heading));
     if (l_alarm->action_time) {
-        g_strlcat(heading, "\n", 160);
-        g_strlcat(heading, l_alarm->action_time, 250);
+        g_strlcat(heading, "\n", sizeof (heading));
+        g_strlcat(heading, l_alarm->action_time, sizeof (heading));
     }
     /* since version 0.7.0, libnotify does not have the widget parameter in 
        notify_notification_new and it does not have function
@@ -461,7 +462,7 @@ static void create_notify_reminder(alarm_struct *l_alarm)
                 , l_alarm, NULL);
     }
     if ((l_alarm->audio) && (l_alarm->repeat_cnt > 1)) {
-        notify_notification_add_action(n, "stop", "Silence"
+        notify_notification_add_action(n, "stop", _("Silence")
                 , (NotifyActionCallback)notify_action_silence
                 , l_alarm, NULL);
         /* this let's sound l_alarm to know that we have notify active with
