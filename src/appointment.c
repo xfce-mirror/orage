@@ -2805,7 +2805,6 @@ static void on_test_button_clicked_cb (G_GNUC_UNUSED GtkButton *button
     cur_alarm->persistent = appt->alarm_persistent;
     cur_alarm->display_orage = appt->display_alarm_orage;
     cur_alarm->display_notify = appt->display_alarm_notify;
-    cur_alarm->notify_refresh = TRUE; /* not needed ? */
     cur_alarm->notify_timeout = appt->display_notify_timeout;
     cur_alarm->audio = appt->sound_alarm;
     cur_alarm->sound = (appt->sound) ? g_strdup (appt->sound) : NULL;

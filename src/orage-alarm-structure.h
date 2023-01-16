@@ -39,6 +39,15 @@ typedef struct _active_alarm_struct
     gboolean notify_stop_noise_action;
 } active_alarm_struct;
 
+typedef struct _orage_ddmmhh_hbox
+{
+    GtkWidget *time_hbox
+       , *spin_dd, *spin_dd_label
+       , *spin_hh, *spin_hh_label
+       , *spin_mm, *spin_mm_label;
+    GtkWidget *dialog;
+} orage_ddmmhh_hbox_struct;
+
 typedef struct _alarm_struct
 {
     GDateTime *alarm_time;
@@ -54,10 +63,7 @@ typedef struct _alarm_struct
     gboolean temporary;
 
     gboolean display_orage;
-    gboolean display_orage_orig;
     gboolean display_notify;
-    gboolean display_notify_orig;
-    gboolean notify_refresh;
     gint     notify_timeout;
 
     gboolean audio;
@@ -67,7 +73,6 @@ typedef struct _alarm_struct
     /** Contains the whole command to play. */
     gchar   *sound_cmd;
     gint     repeat_cnt;
-    gint     repeat_cnt_orig;
     gint     repeat_delay;
 
     gboolean procedure;
@@ -90,5 +95,6 @@ alarm_struct *orage_alarm_new (void);
 alarm_struct *orage_alarm_ref (alarm_struct *alarm);
 void orage_alarm_unref (alarm_struct *alarm);
 gint orage_alarm_order (gconstpointer a, gconstpointer b);
+alarm_struct *orage_alarm_copy (const alarm_struct *l_alarm);
 
 #endif

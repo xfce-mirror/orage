@@ -32,5 +32,6 @@ void alarm_add(alarm_struct *alarm);
 void alarm_read (void);
 void alarm_list_free (void);
 void create_reminders(alarm_struct *alarm);
+void orage_notify_uninit (void);
 
 #endif /* !__REMINDER_H__ */

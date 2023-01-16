@@ -285,6 +285,10 @@ static void orage_application_shutdown (GApplication *app)
 
     resuming_handler_unregister (self);
 
+#ifdef HAVE_NOTIFY
+    orage_notify_uninit ();
+#endif
+
 #ifdef HAVE_ARCHIVE
     /* move old appointment to other file to keep the active
        calendar file smaller and faster */

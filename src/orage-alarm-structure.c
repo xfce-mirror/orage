@@ -24,7 +24,6 @@
 #include "functions.h"
 #include <glib.h>
 
-
 static void orage_alarm_free (alarm_struct *alarm)
 {
     orage_gdatetime_unref (alarm->alarm_time);
@@ -44,6 +43,8 @@ alarm_struct *orage_alarm_new (void)
 {
     alarm_struct *alarm = g_new0 (alarm_struct, 1);
 
+    alarm->active_alarm = g_new0 (active_alarm_struct, 1);
+    alarm->orage_display_data = g_new0 (orage_ddmmhh_hbox_struct, 1);
     alarm->ref_count = 1;
 
     g_debug ("%s: %p", G_STRFUNC, (void *)alarm);
@@ -57,7 +58,7 @@ alarm_struct *orage_alarm_ref (alarm_struct *alarm)
     g_return_val_if_fail (alarm->ref_count > 0, NULL);
 
     g_atomic_int_inc (&alarm->ref_count);
-    g_debug ("%s: %p, refcount=%d", G_STRFUNC, (void *)alarm, alarm->ref_count);
+    g_debug ("%s: %p, new refcount=%d", G_STRFUNC, (void *)alarm, alarm->ref_count);
 
     return alarm;
 }
@@ -67,11 +68,12 @@ void orage_alarm_unref (alarm_struct *alarm)
     g_return_if_fail (alarm != NULL);
     g_return_if_fail (alarm->ref_count > 0);
 
-    g_debug ("%s: %p, refcount=%d", G_STRFUNC, (void *)alarm, alarm->ref_count);
+    g_debug ("%s: %p, current refcount=%d",
+             G_STRFUNC, (void *)alarm, alarm->ref_count);
 
     if (g_atomic_int_dec_and_test (&alarm->ref_count))
     {
-        g_debug ("%s: free %p", G_STRFUNC, (void *)alarm);
+        g_debug ("%s: %p, freed", G_STRFUNC, (void *)alarm);
         orage_alarm_free (alarm);
     }
 }
@@ -87,4 +89,56 @@ gint orage_alarm_order (gconstpointer a, gconstpointer b)
         return -1;
 
     return g_date_time_compare (alarm_a->alarm_time, alarm_b->alarm_time);
+}
+
+alarm_struct *orage_alarm_copy (const alarm_struct *l_alarm)
+{
+    alarm_struct *n_alarm;
+
+    g_return_val_if_fail (l_alarm != NULL, NULL);
+    g_return_val_if_fail (l_alarm->ref_count > 0, NULL);
+
+    n_alarm = orage_alarm_new ();
+
+    /* first l_alarm values which are not modified */
+    if (l_alarm->alarm_time != NULL)
+        n_alarm->alarm_time = g_date_time_ref (l_alarm->alarm_time);
+
+    if (l_alarm->action_time != NULL)
+        n_alarm->action_time = g_strdup (l_alarm->action_time);
+
+    if (l_alarm->uid != NULL)
+        n_alarm->uid = g_strdup (l_alarm->uid);
+
+    if (l_alarm->title != NULL)
+        n_alarm->title = orage_process_text_commands (l_alarm->title);
+
+    if (l_alarm->description != NULL)
+    {
+        n_alarm->description =
+                orage_process_text_commands (l_alarm->description);
+    }
+
+    n_alarm->persistent = l_alarm->persistent;
+    n_alarm->temporary = l_alarm->temporary;
+    n_alarm->notify_timeout = l_alarm->notify_timeout;
+
+    if (l_alarm->sound != NULL)
+        n_alarm->sound = g_strdup (l_alarm->sound);
+
+    if (l_alarm->sound_cmd != NULL)
+        n_alarm->sound_cmd = g_strdup (l_alarm->sound_cmd);
+
+    n_alarm->repeat_delay = l_alarm->repeat_delay;
+    n_alarm->procedure = l_alarm->procedure;
+
+    if (l_alarm->cmd != NULL)
+        n_alarm->cmd = g_strdup (l_alarm->cmd);
+
+    n_alarm->display_orage = l_alarm->display_orage;
+    n_alarm->display_notify = l_alarm->display_notify;
+    n_alarm->audio = l_alarm->audio;
+    n_alarm->repeat_cnt = l_alarm->repeat_cnt;
+
+    return n_alarm;
 }
