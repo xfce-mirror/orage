@@ -1,8 +1,8 @@
-4.17.0 (2023-01-04)
-- Changed Orage internal time and data strings to GDateTime (!20)
+4.17.0 (2023-01-17)
+- Changed Orage internal time and data strings to GDateTime (MR !20)
 - In event list, fixed event hiding when event start at 00:00 and end 00:00 in
   same date (this kind event can be created when creating full day event, save
-  event and then unset full day option). (!20)
+  event and then unset full day option). (MR !20)
 - Removed bundled libical (Issue #5)
 - Removed panel plugin (Issue #11)
 - Removed GlobalTime (Issue #12)
@@ -12,6 +12,8 @@
 - Added Wayland support (Issue #2)
 - Fixed orage_persistent_alarms.txt not found messages (MR !35)
 - Fixed after wakeup tray icon updating (Issue #14)
+- Changed alarm_structure to reference counted structure. This fixes warnings
+  about memory leaks (MR !38, replaces MR !8)
 
 4.16.0 (2022-03-17)
 ======
