@@ -67,7 +67,6 @@ typedef struct _alarm_struct
     gint     notify_timeout;
 
     gboolean audio;
-    gboolean audio_orig;
     gchar   *sound;
 
     /** Contains the whole command to play. */
@@ -77,10 +76,6 @@ typedef struct _alarm_struct
 
     gboolean procedure;
     gchar   *cmd;
-    
-#if 0
-    gboolean email;
-#endif
 
     /** This is used to control active alarms. */
     active_alarm_struct *active_alarm;
