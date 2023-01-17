@@ -47,6 +47,7 @@
 #include <glib/gprintf.h>
 #include <glib/gstdio.h>
 
+#include "orage-alarm-structure.h"
 #include "orage-i18n.h"
 #include "functions.h"
 #include "mainbox.h"
@@ -2790,46 +2791,33 @@ static void on_test_button_clicked_cb (G_GNUC_UNUSED GtkButton *button
 {
     appt_win *apptw = (appt_win *)user_data;
     xfical_appt *appt = (xfical_appt *)apptw->xf_appt;
-    alarm_struct cur_alarm;
+    alarm_struct *cur_alarm = orage_alarm_new ();
 
     fill_appt_from_apptw(appt, apptw);
 
     /* no need for alarm time as we are doing this now */
-    cur_alarm.alarm_time = NULL;
-    if (appt->uid)
-        cur_alarm.uid = g_strdup(appt->uid);
-    else
-        cur_alarm.uid = NULL;
+    cur_alarm->alarm_time = NULL;
+    cur_alarm->uid = (appt->uid) ? g_strdup (appt->uid) : NULL;
+    cur_alarm->action_time = create_action_time (appt);
 
-    cur_alarm.action_time = create_action_time (appt);
+    cur_alarm->title = g_strdup (appt->title);
+    cur_alarm->description = g_strdup (appt->note);
+    cur_alarm->persistent = appt->alarm_persistent;
+    cur_alarm->display_orage = appt->display_alarm_orage;
+    cur_alarm->display_notify = appt->display_alarm_notify;
+    cur_alarm->notify_timeout = appt->display_notify_timeout;
+    cur_alarm->audio = appt->sound_alarm;
+    cur_alarm->sound = (appt->sound) ? g_strdup (appt->sound) : NULL;
+    cur_alarm->repeat_cnt = appt->soundrepeat_cnt;
+    cur_alarm->repeat_delay = appt->soundrepeat_len;
+    cur_alarm->procedure = appt->procedure_alarm;
+    cur_alarm->cmd = (appt->procedure_alarm)
+                   ? g_strconcat (appt->procedure_cmd, " ",
+                                  appt->procedure_params, NULL)
+                   : NULL;
 
-    cur_alarm.title = g_strdup(appt->title);
-    cur_alarm.description = g_strdup(appt->note);
-    cur_alarm.persistent = appt->alarm_persistent;
-    cur_alarm.display_orage = appt->display_alarm_orage;
-    cur_alarm.display_notify = appt->display_alarm_notify;
-    cur_alarm.notify_refresh = TRUE; /* not needed ? */
-    cur_alarm.notify_timeout = appt->display_notify_timeout;
-    cur_alarm.audio = appt->sound_alarm;
-    if (appt->sound)
-        cur_alarm.sound = g_strdup(appt->sound);
-    else 
-        cur_alarm.sound = NULL;
-    cur_alarm.repeat_cnt = appt->soundrepeat_cnt;
-    cur_alarm.repeat_delay = appt->soundrepeat_len;
-    cur_alarm.procedure = appt->procedure_alarm;
-    if (appt->procedure_alarm)
-        cur_alarm.cmd = g_strconcat(appt->procedure_cmd, " "
-                , appt->procedure_params, NULL);
-    else
-        cur_alarm.cmd = NULL;
-    create_reminders(&cur_alarm);
-    g_free(cur_alarm.uid);
-    g_free(cur_alarm.action_time);
-    g_free(cur_alarm.title);
-    g_free(cur_alarm.description);
-    g_free(cur_alarm.sound);
-    g_free(cur_alarm.cmd);
+    create_reminders (cur_alarm);
+    orage_alarm_unref (cur_alarm);
 }
 
 static void on_appDefault_save_button_clicked_cb (
