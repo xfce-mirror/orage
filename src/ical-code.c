@@ -58,6 +58,7 @@
 
 #define ICAL_MAIN
 
+#include "orage-alarm-structure.h"
 #include "orage-i18n.h"
 #include "functions.h"
 #include "mainbox.h"
@@ -2578,7 +2579,7 @@ struct icaltimetype exdatetime;
     }
 
     if (trg_active) {
-        new_alarm = g_new0(alarm_struct, 1);
+        new_alarm = orage_alarm_new ();
         /* If we had a date, we now have the time already in local time and
            no conversion is needed. This is due to the hack in date time
            calculation in count_first_alarm_time. We just need to set it to
