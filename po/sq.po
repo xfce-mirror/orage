@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-21 12:48+0100\n"
+"POT-Creation-Date: 2023-01-18 12:52+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>, 2023\n"
 "Language-Team: Albanian (https://www.transifex.com/xfce/teams/16840/sq/)\n"
@@ -34,81 +34,81 @@ msgstr "Besnik Bleta"
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
 #. end time
-#: ../src/appointment.c:322 ../src/appointment.c:362 ../src/appointment.c:2971
+#: ../src/appointment.c:324 ../src/appointment.c:364 ../src/appointment.c:2960
 msgid "End"
 msgstr "Fund"
 
-#: ../src/appointment.c:342
+#: ../src/appointment.c:344
 msgid "Due"
 msgstr "Afat"
 
-#: ../src/appointment.c:505 ../src/mainbox.c:683
+#: ../src/appointment.c:507 ../src/mainbox.c:683
 #: ../org.xfce.orage.appdata.xml.in.h:1
 msgid "Orage"
 msgstr "Orage"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
-#: ../src/appointment.c:696 ../src/interface.c:262 ../src/parameters.c:395
+#: ../src/appointment.c:698 ../src/interface.c:262 ../src/parameters.c:396
 msgid "Select a file..."
 msgstr "Përzgjidhni një kartelë…"
 
-#: ../src/appointment.c:704
+#: ../src/appointment.c:706
 msgid "Sound Files"
 msgstr "Kartela Tingulli"
 
-#: ../src/appointment.c:711 ../src/interface.c:275
+#: ../src/appointment.c:713 ../src/interface.c:275
 msgid "All Files"
 msgstr "Tërë Kartelat"
 
-#: ../src/appointment.c:762
+#: ../src/appointment.c:764
 msgid "The appointment information has been modified."
 msgstr "Të dhënat për takimin u ndryshuan."
 
-#: ../src/appointment.c:763 ../src/appointment.c:1305 ../src/event-list.c:1001
+#: ../src/appointment.c:765 ../src/appointment.c:1307 ../src/event-list.c:1001
 msgid "Do you want to continue?"
 msgstr "Doni të vazhdohet?"
 
-#: ../src/appointment.c:764
+#: ../src/appointment.c:766
 msgid "No, do not leave"
 msgstr "Jo, mos dil"
 
-#: ../src/appointment.c:765
+#: ../src/appointment.c:767
 msgid "Yes, ignore modifications and leave"
 msgstr "Po, shpërfilli ndryshimet dhe dil"
 
-#: ../src/appointment.c:793
+#: ../src/appointment.c:795
 msgid "The end of this appointment is earlier than the beginning."
 msgstr "Fundi i këtij takimi bie më herët se fillimi."
 
-#: ../src/appointment.c:1061 ../src/appointment.c:1980
+#: ../src/appointment.c:1063 ../src/appointment.c:1982
 msgid "Not set"
 msgstr "E parregulluar"
 
-#: ../src/appointment.c:1154
+#: ../src/appointment.c:1156
 msgid "Add new appointment to this file."
 msgstr "Shtoni te kjo kartelë takim të ri."
 
-#: ../src/appointment.c:1155 ../src/appointment.c:1203
+#: ../src/appointment.c:1157 ../src/appointment.c:1205
 msgid "Orage default file"
 msgstr "Kartelë parazgjedhje Orage"
 
-#: ../src/appointment.c:1241
+#: ../src/appointment.c:1243
 msgid "Appointment addition failed."
 msgstr "Shtimi i takimit dështoi."
 
-#: ../src/appointment.c:1242
+#: ../src/appointment.c:1244
 msgid ""
 "Error happened when adding appointment. Look more details from the log file."
 msgstr ""
 "Ndodhi një gabim kur shtohej takimi. Për më tepër hollësi shihni te kartela "
 "regjistër."
 
-#: ../src/appointment.c:1253
+#: ../src/appointment.c:1255
 msgid "Appointment update failed."
 msgstr "Përditësimi i takimit dështoi."
 
-#: ../src/appointment.c:1254
+#: ../src/appointment.c:1256
 msgid ""
 "Look more details from the log file. (Perhaps file was updated external from"
 " Orage?)"
@@ -116,127 +116,127 @@ msgstr ""
 "Për më tepër hollësi shihni te kartela regjistër. (Ndoshta kartela qe "
 "përditësuar nga jashtë Orage-it?)"
 
-#: ../src/appointment.c:1304
+#: ../src/appointment.c:1306
 msgid "This appointment will be permanently removed."
 msgstr "Ky takim do të hiqet përfundimisht."
 
-#: ../src/appointment.c:1306 ../src/event-list.c:1002
+#: ../src/appointment.c:1308 ../src/event-list.c:1002
 msgid "No, cancel the removal"
 msgstr "Jo, anuloje heqjen"
 
-#: ../src/appointment.c:1307
+#: ../src/appointment.c:1309
 msgid "Yes, remove it"
 msgstr "Po, hiqe"
 
-#: ../src/appointment.c:1406 ../src/appointment.c:1421 ../src/day-view.c:471
+#: ../src/appointment.c:1408 ../src/appointment.c:1423 ../src/day-view.c:471
 #: ../src/event-list.c:1061 ../src/functions.c:144
 msgid "Pick the date"
 msgstr "Zgjidhni një datë"
 
-#: ../src/appointment.c:1408 ../src/appointment.c:1423 ../src/day-view.c:400
+#: ../src/appointment.c:1410 ../src/appointment.c:1425 ../src/day-view.c:400
 #: ../src/day-view.c:473 ../src/event-list.c:1063 ../src/event-list.c:1217
 #: ../src/functions.c:146 ../src/tray_icon.c:396
 msgid "Today"
 msgstr "Sot"
 
-#: ../src/appointment.c:1850
+#: ../src/appointment.c:1852
 msgid "This appointment does not exist."
 msgstr "Ky takim s’ekziston."
 
-#: ../src/appointment.c:1851
+#: ../src/appointment.c:1853
 msgid "It was probably removed, please refresh your screen."
 msgstr "Ka shumë mundësi të qe hequr, ju lutemi, rifreskoni ekranin."
 
-#: ../src/appointment.c:2148 ../src/interface.c:676
+#: ../src/appointment.c:2150 ../src/interface.c:676
 msgid "_Remove"
 msgstr "_Hiqe"
 
-#: ../src/appointment.c:2174
+#: ../src/appointment.c:2176
 msgid "Current categories"
 msgstr "Kategori të tanishme"
 
-#: ../src/appointment.c:2196
+#: ../src/appointment.c:2198
 msgid "Add new category with color"
 msgstr "Shto kategori të re me ngjyrë"
 
-#: ../src/appointment.c:2207
+#: ../src/appointment.c:2209
 msgid "Category:"
 msgstr "Kategori:"
 
-#: ../src/appointment.c:2223 ../src/interface.c:1455
+#: ../src/appointment.c:2225 ../src/interface.c:1455
 msgid "_Add"
 msgstr "_Shtoje"
 
-#: ../src/appointment.c:2252
+#: ../src/appointment.c:2254
 msgid "Colors of categories - Orage"
 msgstr "Ngjyra kategorish - Orage"
 
-#: ../src/appointment.c:2297
+#: ../src/appointment.c:2299
 msgid "*** COPY ***"
 msgstr ""
 
-#: ../src/appointment.c:2585
+#: ../src/appointment.c:2587
 msgid "New appointment - Orage"
 msgstr "Takim i ri - Orage"
 
 #. File menu stuff
 #. ********* File menu *********
 #. File menu
-#: ../src/appointment.c:2613 ../src/day-view.c:294 ../src/event-list.c:1118
+#: ../src/appointment.c:2615 ../src/day-view.c:294 ../src/event-list.c:1118
 #: ../src/interface.c:861 ../src/mainbox.c:212
 msgid "_File"
 msgstr "_Kartelë"
 
-#: ../src/appointment.c:2619
+#: ../src/appointment.c:2621
 msgid "Sav_e and close"
 msgstr "R_uaje dhe mbylle"
 
-#: ../src/appointment.c:2632 ../src/event-list.c:1124
+#: ../src/appointment.c:2634 ../src/event-list.c:1124
 msgid "D_uplicate"
 msgstr "_Përsëdyte"
 
-#: ../src/appointment.c:2863
+#: ../src/appointment.c:2852
 msgid "Save"
 msgstr "Ruaje"
 
-#: ../src/appointment.c:2865
+#: ../src/appointment.c:2854
 msgid "Save and close"
 msgstr "Ruaje dhe mbylle"
 
-#: ../src/appointment.c:2870
+#: ../src/appointment.c:2859
 msgid "Revert"
 msgstr "Riktheje"
 
-#: ../src/appointment.c:2872 ../src/event-list.c:1208
+#: ../src/appointment.c:2861 ../src/event-list.c:1208
 msgid "Duplicate"
 msgstr "Përsëdyte"
 
-#: ../src/appointment.c:2877 ../src/event-list.c:1210
+#: ../src/appointment.c:2866 ../src/event-list.c:1210
 msgid "Delete"
 msgstr "Fshije"
 
-#: ../src/appointment.c:2895
+#: ../src/appointment.c:2884
 msgid "Free"
 msgstr "I lirë"
 
-#: ../src/appointment.c:2895
+#: ../src/appointment.c:2884
 msgid "Busy"
 msgstr "I zënë"
 
-#: ../src/appointment.c:2899
+#: ../src/appointment.c:2888
 msgid "General"
 msgstr "Të përgjithshme"
 
 #. type
-#: ../src/appointment.c:2905
+#: ../src/appointment.c:2894
 msgid "Type"
 msgstr "Lloj"
 
-#: ../src/appointment.c:2907 ../src/event-list.c:1263
+#: ../src/appointment.c:2896 ../src/event-list.c:1263
 msgid "Event"
 msgstr "Veprimtari"
 
-#: ../src/appointment.c:2912
+#: ../src/appointment.c:2901
 msgid ""
 "Event that will happen sometime. For example:\n"
 "Meeting or birthday or TV show."
@@ -244,11 +244,11 @@ msgstr ""
 "Veprimtari që do të ndodhë një ditë. Për shembull:\n"
 "Mbledhje, ose ditëlindje, ose shfaqje në TV."
 
-#: ../src/appointment.c:2915 ../src/event-list.c:1322
+#: ../src/appointment.c:2904 ../src/event-list.c:1322
 msgid "Todo"
 msgstr "Për T’u Bërë"
 
-#: ../src/appointment.c:2920
+#: ../src/appointment.c:2909
 msgid ""
 "Something that you should do sometime. For example:\n"
 "Wash your car or test new version of Orage."
@@ -256,11 +256,11 @@ msgstr ""
 "Diçka që do të duhej ta bënit dikur. Për shembull:\n"
 "Lani makinën ose provoni versionin e ri të Orage-it."
 
-#: ../src/appointment.c:2923 ../src/event-list.c:1336
+#: ../src/appointment.c:2912 ../src/event-list.c:1336
 msgid "Journal"
 msgstr "Ditar"
 
-#: ../src/appointment.c:2928
+#: ../src/appointment.c:2917
 msgid ""
 "Make a note that something happened. For example:\n"
 "Remark that your mother called or first snow came."
@@ -269,65 +269,65 @@ msgstr ""
 "Shënoni që ju telefonoi prindi ose ra bora e parë."
 
 #. title
-#: ../src/appointment.c:2935 ../src/event-list.c:1441
+#: ../src/appointment.c:2924 ../src/event-list.c:1441
 msgid "Title"
 msgstr "Titull"
 
 #. location
-#: ../src/appointment.c:2942 ../src/timezone_selection.c:235
+#: ../src/appointment.c:2931 ../src/timezone_selection.c:235
 #: ../src/timezone_selection.c:240
 msgid "Location"
 msgstr "Vendndodhje"
 
-#: ../src/appointment.c:2950
+#: ../src/appointment.c:2939
 msgid "All day event"
 msgstr "Veprimtari për tërë ditën"
 
 #. start time
-#: ../src/appointment.c:2956 ../src/appointment.c:3674 ../src/day-view.c:831
+#: ../src/appointment.c:2945 ../src/appointment.c:3663 ../src/day-view.c:831
 msgid "Start"
 msgstr "Fillim"
 
-#: ../src/appointment.c:2974
+#: ../src/appointment.c:2963
 msgid "Set"
 msgstr ""
 
-#: ../src/appointment.c:2998
+#: ../src/appointment.c:2987
 msgid "Duration"
 msgstr "Kohëzgjatje"
 
-#: ../src/appointment.c:3002 ../src/appointment.c:3209 ../src/reminder.c:680
+#: ../src/appointment.c:2991 ../src/appointment.c:3198 ../src/reminder.c:623
 msgid "days"
 msgstr "ditë"
 
-#: ../src/appointment.c:3004 ../src/appointment.c:3211 ../src/reminder.c:682
+#: ../src/appointment.c:2993 ../src/appointment.c:3200 ../src/reminder.c:625
 msgid "hours"
 msgstr "orë"
 
-#: ../src/appointment.c:3006 ../src/appointment.c:3213 ../src/reminder.c:684
+#: ../src/appointment.c:2995 ../src/appointment.c:3202 ../src/reminder.c:627
 msgid "mins"
 msgstr "min"
 
 #. Availability (only for EVENT)
-#: ../src/appointment.c:3018
+#: ../src/appointment.c:3007
 msgid "Availability"
 msgstr "Pasje"
 
 #. completed (only for TODO)
-#: ../src/appointment.c:3026 ../src/appointment.c:3683
+#: ../src/appointment.c:3015 ../src/appointment.c:3672
 msgid "Completed"
 msgstr "E plotësuar"
 
-#: ../src/appointment.c:3029
+#: ../src/appointment.c:3018
 msgid "Done"
 msgstr "E kryer"
 
 #. categories
-#: ../src/appointment.c:3054
+#: ../src/appointment.c:3043
 msgid "Categories"
 msgstr "Kategori"
 
-#: ../src/appointment.c:3072
+#: ../src/appointment.c:3061
 msgid ""
 "This is special category, which can be used to color this appointment in "
 "list views."
@@ -335,20 +335,20 @@ msgstr ""
 "Kjo është një kategori speciale, e cila mund të përdoret për të ngjyrosur "
 "këtë takim te paraqitjet në formë listash."
 
-#: ../src/appointment.c:3073
+#: ../src/appointment.c:3062
 msgid "_Colour"
 msgstr "_Ngjyrë"
 
-#: ../src/appointment.c:3078
+#: ../src/appointment.c:3067
 msgid "update colors for categories."
 msgstr "përditëso ngjyra për kategoritë."
 
 #. priority
-#: ../src/appointment.c:3084
+#: ../src/appointment.c:3073
 msgid "Priority"
 msgstr "Përparësi"
 
-#: ../src/appointment.c:3088
+#: ../src/appointment.c:3077
 msgid ""
 "If you set this 8 or bigger, the appointment is NOT shown on list windows.\n"
 "You can use that feature to unclutter your list windows, but it makes it more difficult to find this appointment.\n"
@@ -361,11 +361,11 @@ msgstr ""
 "(Ky është një parametër i padokumentuar, për t’ju dhënë mundësinë të ndryshoni kufirin parazgjedhje prej 8.)"
 
 #. note
-#: ../src/appointment.c:3097
+#: ../src/appointment.c:3086
 msgid "Note"
 msgstr "Shënim"
 
-#: ../src/appointment.c:3118
+#: ../src/appointment.c:3107
 msgid ""
 "These shorthand commands take effect immediately:\n"
 "    <D> inserts current date in local date format\n"
@@ -385,32 +385,32 @@ msgstr ""
 "    <&Ynnnn> përkthehet në vitin e tanishëm minus nnnn.\n"
 "(Kjo mund të përdoret, për shembull, në kujtues datëlindjesh, për të treguar se sa vjeç do të jetë personi.)"
 
-#: ../src/appointment.c:3191
+#: ../src/appointment.c:3180
 msgid "Before Start"
 msgstr "Para Fillimit"
 
-#: ../src/appointment.c:3191
+#: ../src/appointment.c:3180
 msgid "Before End"
 msgstr "Para Përfundimit"
 
-#: ../src/appointment.c:3192
+#: ../src/appointment.c:3181
 msgid "After Start"
 msgstr "Pas Fillimit"
 
-#: ../src/appointment.c:3192
+#: ../src/appointment.c:3181
 msgid "After End"
 msgstr "Pas Përfundimit"
 
-#: ../src/appointment.c:3200
+#: ../src/appointment.c:3189
 msgid "Alarm"
 msgstr "Alarm"
 
 #. **** ALARM TIME ****
-#: ../src/appointment.c:3206
+#: ../src/appointment.c:3195
 msgid "Alarm time"
 msgstr "Kohë alarmi"
 
-#: ../src/appointment.c:3231
+#: ../src/appointment.c:3220
 msgid ""
 "Often you want to get alarm:\n"
 " 1) before Event start\n"
@@ -422,11 +422,11 @@ msgstr ""
 " 2) para përfundimit të një Për-T’u-Bërë\n"
 " 3) pas fillimit të një Për-T’u-Bërë"
 
-#: ../src/appointment.c:3236
+#: ../src/appointment.c:3225
 msgid "Persistent alarm"
 msgstr "Alarm i përhershëm"
 
-#: ../src/appointment.c:3241
+#: ../src/appointment.c:3230
 msgid ""
 "Select this if you want Orage to remind you even if it has not been active "
 "when the alarm happened."
@@ -435,83 +435,83 @@ msgstr ""
 "ndodh alarmi."
 
 #. **** Audio Alarm ****
-#: ../src/appointment.c:3250
+#: ../src/appointment.c:3239
 msgid "Sound"
 msgstr "Tingull"
 
-#: ../src/appointment.c:3254 ../src/appointment.c:3387
+#: ../src/appointment.c:3243 ../src/appointment.c:3376
 msgid "Use"
 msgstr "Përdore"
 
-#: ../src/appointment.c:3256
+#: ../src/appointment.c:3245
 msgid "Select this if you want audible alarm"
 msgstr "Përzgjidheni nëse doni alarm të dëgjueshëm"
 
-#: ../src/appointment.c:3269 ../src/interface.c:1051 ../src/interface.c:1097
+#: ../src/appointment.c:3258 ../src/interface.c:1051 ../src/interface.c:1097
 #: ../src/interface.c:1273 ../src/interface.c:1365 ../src/interface.c:1448
-#: ../src/parameters.c:400 ../src/parameters.c:623 ../src/reminder.c:709
+#: ../src/parameters.c:401 ../src/parameters.c:624 ../src/reminder.c:652
 msgid "_Open"
 msgstr "_Hape"
 
-#: ../src/appointment.c:3282
+#: ../src/appointment.c:3271
 msgid "Repeat alarm sound"
 msgstr "Përsërit tingullin e alarmit"
 
-#: ../src/appointment.c:3297 ../src/appointment.c:3606
+#: ../src/appointment.c:3286 ../src/appointment.c:3595
 msgid "times"
 msgstr "herë"
 
-#: ../src/appointment.c:3313
+#: ../src/appointment.c:3302
 msgid "sec interval"
 msgstr ""
 
 #. **** Display Alarm ****
-#: ../src/appointment.c:3323
+#: ../src/appointment.c:3312
 msgid "Visual"
 msgstr "Pamore"
 
-#: ../src/appointment.c:3327
+#: ../src/appointment.c:3316
 msgid "Use Orage window"
 msgstr "Përdor dritare Orage-i"
 
-#: ../src/appointment.c:3329
+#: ../src/appointment.c:3318
 msgid "Select this if you want Orage window alarm"
 msgstr "Përzgjidheni nëse doni dritare alarmi Orage"
 
-#: ../src/appointment.c:3341
+#: ../src/appointment.c:3330
 msgid "Use notification"
 msgstr "Përdor njoftim"
 
-#: ../src/appointment.c:3343
+#: ../src/appointment.c:3332
 msgid "Select this if you want notification alarm"
 msgstr "Përzgjidheni nëse doni alarm njoftimi"
 
-#: ../src/appointment.c:3351
+#: ../src/appointment.c:3340
 msgid "Set timeout"
 msgstr "Caktoni skadimin"
 
-#: ../src/appointment.c:3353
+#: ../src/appointment.c:3342
 msgid "Select this if you want notification to expire automatically"
 msgstr "Përzgjidheni nëse doni që njoftimi të skadojë vetvetiu"
 
-#: ../src/appointment.c:3364
+#: ../src/appointment.c:3353
 msgid "0 = system default expiration time"
 msgstr "0 = kohës skadimi parazgjedhje e sistemit"
 
-#: ../src/appointment.c:3372
+#: ../src/appointment.c:3361
 msgid "seconds"
 msgstr "sekonda"
 
 #. **** Procedure Alarm ****
-#: ../src/appointment.c:3383
+#: ../src/appointment.c:3372
 msgid "Procedure"
 msgstr "Procedurë"
 
-#: ../src/appointment.c:3389
+#: ../src/appointment.c:3378
 msgid "Select this if you want procedure or script alarm"
 msgstr "Përzgjidheni nëse doni alarm procedure ose programthi"
 
-#: ../src/appointment.c:3399
+#: ../src/appointment.c:3388
 msgid ""
 "You must enter all escape etc characters yourself.\n"
 "This string is just given to shell to process.\n"
@@ -531,110 +531,110 @@ msgstr ""
 "\t<&ST> kohë fillimi takimi\n"
 "\t<&ET> kohë mbarimi takimi"
 
-#: ../src/appointment.c:3413 ../src/interface.c:1185 ../src/interface.c:1207
+#: ../src/appointment.c:3402 ../src/interface.c:1185 ../src/interface.c:1207
 msgid "_Execute"
 msgstr "_Kryeje"
 
-#: ../src/appointment.c:3415
+#: ../src/appointment.c:3404
 msgid "Test this alarm by raising it now"
 msgstr "Provojeni këtë alarm duke e vënë në punë tani"
 
-#: ../src/appointment.c:3428
+#: ../src/appointment.c:3417
 msgid "<b>Default alarm</b>"
 msgstr "<b>Alarm parazgjedhje</b>"
 
-#: ../src/appointment.c:3434 ../src/interface.c:1058 ../src/interface.c:1104
+#: ../src/appointment.c:3423 ../src/interface.c:1058 ../src/interface.c:1104
 #: ../src/interface.c:1279 ../src/interface.c:1371
 msgid "_Save"
 msgstr "_Ruaje"
 
-#: ../src/appointment.c:3442
+#: ../src/appointment.c:3431
 msgid "Store current settings as default alarm"
 msgstr "Depozitoji rregullimet e tanishme si alarm parazgjedhje"
 
-#: ../src/appointment.c:3444
+#: ../src/appointment.c:3433
 msgid "_Revert"
 msgstr "_Prapaktheje"
 
-#: ../src/appointment.c:3452
+#: ../src/appointment.c:3441
 msgid "Set current settings from default alarm"
 msgstr "Caktoji rregullimet e tanishme nga alarm parazgjedhje"
 
-#: ../src/appointment.c:3518
+#: ../src/appointment.c:3507
 msgid "None"
 msgstr "Asnjë"
 
-#: ../src/appointment.c:3518
+#: ../src/appointment.c:3507
 msgid "Daily"
 msgstr "Ditore"
 
-#: ../src/appointment.c:3518
+#: ../src/appointment.c:3507
 msgid "Weekly"
 msgstr "Javore"
 
-#: ../src/appointment.c:3518
+#: ../src/appointment.c:3507
 msgid "Monthly"
 msgstr "Mujore"
 
-#: ../src/appointment.c:3518
+#: ../src/appointment.c:3507
 msgid "Yearly"
 msgstr "Vjetore"
 
-#: ../src/appointment.c:3518
+#: ../src/appointment.c:3507
 msgid "Hourly"
 msgstr "Një herë në orë"
 
-#: ../src/appointment.c:3520
+#: ../src/appointment.c:3509
 msgid "Mon"
 msgstr "Hën"
 
-#: ../src/appointment.c:3520
+#: ../src/appointment.c:3509
 msgid "Tue"
 msgstr "Mar"
 
-#: ../src/appointment.c:3520
+#: ../src/appointment.c:3509
 msgid "Wed"
 msgstr "Mër"
 
-#: ../src/appointment.c:3520
+#: ../src/appointment.c:3509
 msgid "Thu"
 msgstr "Enj"
 
-#: ../src/appointment.c:3520
+#: ../src/appointment.c:3509
 msgid "Fri"
 msgstr "Pre"
 
-#: ../src/appointment.c:3520
+#: ../src/appointment.c:3509
 msgid "Sat"
 msgstr "Sht"
 
-#: ../src/appointment.c:3520
+#: ../src/appointment.c:3509
 msgid "Sun"
 msgstr "Die"
 
-#: ../src/appointment.c:3525
+#: ../src/appointment.c:3514
 msgid "Recurrence"
 msgstr "Përsëritje"
 
 #. complexity
-#: ../src/appointment.c:3531
+#: ../src/appointment.c:3520
 msgid "Complexity"
 msgstr "Ndërlikueshmëri"
 
-#: ../src/appointment.c:3534
+#: ../src/appointment.c:3523
 msgid "Basic"
 msgstr "E thjeshtë"
 
-#: ../src/appointment.c:3541
+#: ../src/appointment.c:3530
 msgid "Advanced"
 msgstr "E thelluar"
 
-#: ../src/appointment.c:3547
+#: ../src/appointment.c:3536
 msgid "Use this if you want regular repeating event"
 msgstr ""
 "Përdoreni këtë kur dëshironi përsëritje të rregullt të një veprimtarie"
 
-#: ../src/appointment.c:3549
+#: ../src/appointment.c:3538
 msgid ""
 "Use this if you need complex times like:\n"
 " Every Saturday and Sunday or \n"
@@ -645,19 +645,19 @@ msgstr ""
 " Të Martën e parë të çdo muaji"
 
 #. frequency
-#: ../src/appointment.c:3555
+#: ../src/appointment.c:3544
 msgid "Frequency"
 msgstr "Shpeshti"
 
-#: ../src/appointment.c:3562
+#: ../src/appointment.c:3551
 msgid "Each"
 msgstr "Çdo"
 
-#: ../src/appointment.c:3573
+#: ../src/appointment.c:3562
 msgid "occurrence"
 msgstr "hasje"
 
-#: ../src/appointment.c:3580
+#: ../src/appointment.c:3569
 msgid ""
 "Limit frequency to certain interval.\n"
 " For example: Every third day:\n"
@@ -667,32 +667,32 @@ msgstr ""
 " Për shembull: Çdo ditën e tretë:\n"
 " Shpeshti = Përditë dhe Interval = 3"
 
-#: ../src/appointment.c:3587
+#: ../src/appointment.c:3576
 msgid "Limit"
 msgstr "Kufi"
 
-#: ../src/appointment.c:3589
+#: ../src/appointment.c:3578
 msgid "Repeat forever"
 msgstr "Përsërite përgjithmonë"
 
-#: ../src/appointment.c:3596
+#: ../src/appointment.c:3585
 msgid "Repeat "
 msgstr "Përsërite "
 
-#: ../src/appointment.c:3620
+#: ../src/appointment.c:3609
 msgid "Repeat until "
 msgstr "Përsërite derisa "
 
 #. weekdays (only for complex settings)
-#: ../src/appointment.c:3636
+#: ../src/appointment.c:3625
 msgid "Weekdays"
 msgstr "Ditë të javës"
 
-#: ../src/appointment.c:3653
+#: ../src/appointment.c:3642
 msgid "Which day"
 msgstr "Cilën ditë"
 
-#: ../src/appointment.c:3664
+#: ../src/appointment.c:3653
 msgid ""
 "Specify which weekday for monthly and yearly events.\n"
 " For example:\n"
@@ -709,11 +709,11 @@ msgstr ""
 "\tCilën ditë = përzgjidhni 2 nga numrat poshtë të mërkurës"
 
 #. TODO base (only for TODOs)
-#: ../src/appointment.c:3671
+#: ../src/appointment.c:3660
 msgid "TODO base"
 msgstr "Bazë PËR_TU_BËRË-ash"
 
-#: ../src/appointment.c:3690
+#: ../src/appointment.c:3679
 msgid ""
 "TODO reoccurs regularly starting on start time and repeating after each "
 "interval no matter when it was last completed"
@@ -722,7 +722,7 @@ msgstr ""
 "duke u përsëritur pas çdo intervali, pavarësisht se kur qe plotësuar për "
 "herë të fundit"
 
-#: ../src/appointment.c:3692
+#: ../src/appointment.c:3681
 msgid ""
 "TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
@@ -731,11 +731,11 @@ msgstr ""
 "(Kini parasysh që s’mund të thoni gjë mbi historikun e akteve PËR_T’U_BËRË, ngaqë baza e ripërsëritjes ndryshon pas çdo plotësimi.)"
 
 #. exceptions
-#: ../src/appointment.c:3698
+#: ../src/appointment.c:3687
 msgid "Exceptions"
 msgstr "Përjashtime"
 
-#: ../src/appointment.c:3724
+#: ../src/appointment.c:3713
 msgid ""
 "Add more exception dates by clicking the calendar days below.\n"
 "Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
@@ -745,20 +745,20 @@ msgstr ""
 "Përjashtim ose është përjashtim(-), ose përfshirje(+), varet nga përzgjedhja.\n"
 "Hiqeni duke klikuar mbi datën."
 
-#: ../src/appointment.c:3735
+#: ../src/appointment.c:3724
 msgid "Add excluded date (-)"
 msgstr "Shtoni datë të përjashtuar date (-)"
 
-#: ../src/appointment.c:3737
+#: ../src/appointment.c:3726
 msgid "Excluded days are full days where this appointment is not happening"
 msgstr ""
 "Ditët e përjashtuara janë ditë të plota gjatë të cilave nuk ndodhin takime"
 
-#: ../src/appointment.c:3744
+#: ../src/appointment.c:3733
 msgid "Add included time (+)"
 msgstr "Shtoni kohë të përfshirë (+)"
 
-#: ../src/appointment.c:3746
+#: ../src/appointment.c:3735
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time"
@@ -767,7 +767,7 @@ msgstr ""
 "të kenë kohë tjetër"
 
 #. calendars showing the action days
-#: ../src/appointment.c:3765
+#: ../src/appointment.c:3754
 msgid "Action dates"
 msgstr "Data veprimi"
 
@@ -946,7 +946,7 @@ msgstr ""
 "\t 5. Caktuar për:\n"
 "\t\tE=Veprimtari T=Për T’u Bërë J=Ditar"
 
-#: ../src/ical-code.c:780
+#: ../src/ical-code.c:781
 msgid "Orage default alarm"
 msgstr "Alarm parazgjedhje i Orage-it"
 
@@ -1182,87 +1182,6 @@ msgstr ""
 msgid "Exchange data - Orage"
 msgstr "Shkëmbeni të dhëna - Orage"
 
-#: ../src/main.c:172
-#, c-format
-msgid ""
-"\tThis is %s version %s\n"
-"\n"
-msgstr ""
-"\tKy është %s version %s\n"
-"\n"
-
-#: ../src/main.c:174
-#, c-format
-msgid "\tReleased under the terms of the GNU General Public License.\n"
-msgstr ""
-"\tHedhur në qarkullim sipas kushteve të licencës GNU General Public "
-"License.\n"
-
-#: ../src/main.c:175
-#, c-format
-msgid "\tCompiled against GTK+-%d.%d.%d, "
-msgstr "\tPërpiluar kundrejt GTK+-%d.%d.%d, "
-
-#: ../src/main.c:177
-#, c-format
-msgid "using GTK+-%d.%d.%d.\n"
-msgstr "përdor GTK+-%d.%d.%d.\n"
-
-#: ../src/main.c:179
-#, c-format
-msgid "\tUsing DBUS for import.\n"
-msgstr "\tMe përdorim të DBUS-it për importim.\n"
-
-#: ../src/main.c:181
-#, c-format
-msgid "\tUsing libnotify.\n"
-msgstr "\tMe përdorim të libnotify-t.\n"
-
-#: ../src/main.c:183
-#, c-format
-msgid "\tNot using libnotify.\n"
-msgstr "\tPa përdorim të libnotify-it.\n"
-
-#: ../src/main.c:186
-#, c-format
-msgid "\tUsing automatic archiving.\n"
-msgstr "\tMe përdorim arkivimi të automatizuar.\n"
-
-#: ../src/main.c:188
-#, c-format
-msgid "\tNot using archiving.\n"
-msgstr "\tPa përdorur arkivim.\n"
-
-#: ../src/main.c:191
-#, c-format
-msgid "\tUsing libxfce4ui: yes\n"
-msgstr "\tMe përdorim të libxfce4ui: po\n"
-
-#: ../src/main.c:193
-#, c-format
-msgid "\tUsing libxfce4ui: no\n"
-msgstr "\tMe përdorim të libxfce4ui: jo\n"
-
-#: ../src/main.c:489
-msgid "Show version of orage"
-msgstr "Shfaq version orage-i"
-
-#: ../src/main.c:498
-msgid "Show preferences form"
-msgstr "Shfaq formular parapëlqimesh"
-
-#: ../src/main.c:507
-msgid "Make Orage visible/unvisible"
-msgstr "Bëje Orage-in të dukshëm/të padukshëm"
-
-#: ../src/main.c:516
-msgid "Add a foreign file"
-msgstr "Shtoni një kartelë të huaj"
-
-#: ../src/main.c:534
-msgid "Export appointments from Orage to file"
-msgstr "Eksportoni takime nga Orage-i në kartelë"
-
 #: ../src/mainbox.c:220
 msgid "_Exchange data"
 msgstr "_Shkëmbe të dhëna"
@@ -1286,11 +1205,11 @@ msgstr "Përzgjidhni _Sot"
 
 #. Help menu
 #. the rest
-#: ../src/mainbox.c:254 ../src/parameters.c:1203
+#: ../src/mainbox.c:254 ../src/parameters.c:1204
 msgid "_Help"
 msgstr "_Ndihmë"
 
-#: ../src/mainbox.c:314 ../src/reminder.c:1035
+#: ../src/mainbox.c:314 ../src/reminder.c:981
 msgid "No title defined"
 msgstr "S’është përcaktuar titull"
 
@@ -1352,161 +1271,242 @@ msgstr "<b>Veprimtari për %s:</b>"
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>Veprimtari për %s - %s:</b>"
 
-#: ../src/parameters.c:545
+#: ../src/orage-application.c:162
+#, c-format
+msgid ""
+"\tThis is %s version %s\n"
+"\n"
+msgstr ""
+"\tKy është %s version %s\n"
+"\n"
+
+#: ../src/orage-application.c:164
+#, c-format
+msgid "\tReleased under the terms of the GNU General Public License.\n"
+msgstr ""
+"\tHedhur në qarkullim sipas kushteve të licencës GNU General Public "
+"License.\n"
+
+#: ../src/orage-application.c:165
+#, c-format
+msgid "\tCompiled against GTK+-%d.%d.%d, "
+msgstr "\tPërpiluar kundrejt GTK+-%d.%d.%d, "
+
+#: ../src/orage-application.c:167
+#, c-format
+msgid "using GTK+-%d.%d.%d.\n"
+msgstr "përdor GTK+-%d.%d.%d.\n"
+
+#: ../src/orage-application.c:169
+#, c-format
+msgid "\tUsing DBUS for import.\n"
+msgstr "\tMe përdorim të DBUS-it për importim.\n"
+
+#: ../src/orage-application.c:171
+#, c-format
+msgid "\tUsing libnotify.\n"
+msgstr "\tMe përdorim të libnotify-t.\n"
+
+#: ../src/orage-application.c:173
+#, c-format
+msgid "\tNot using libnotify.\n"
+msgstr "\tPa përdorim të libnotify-it.\n"
+
+#: ../src/orage-application.c:176
+#, c-format
+msgid "\tUsing automatic archiving.\n"
+msgstr "\tMe përdorim arkivimi të automatizuar.\n"
+
+#: ../src/orage-application.c:178
+#, c-format
+msgid "\tNot using archiving.\n"
+msgstr "\tPa përdorur arkivim.\n"
+
+#: ../src/orage-application.c:181
+#, c-format
+msgid "\tUsing libxfce4ui: yes\n"
+msgstr "\tMe përdorim të libxfce4ui: po\n"
+
+#: ../src/orage-application.c:183
+#, c-format
+msgid "\tUsing libxfce4ui: no\n"
+msgstr "\tMe përdorim të libxfce4ui: jo\n"
+
+#: ../src/orage-application.c:529
+msgid "Show version of orage"
+msgstr "Shfaq version orage-i"
+
+#: ../src/orage-application.c:538
+msgid "Show preferences form"
+msgstr "Shfaq formular parapëlqimesh"
+
+#: ../src/orage-application.c:547
+msgid "Make Orage visible/unvisible"
+msgstr "Bëje Orage-in të dukshëm/të padukshëm"
+
+#: ../src/orage-application.c:556
+msgid "Add a foreign file"
+msgstr "Shtoni një kartelë të huaj"
+
+#: ../src/orage-application.c:574
+msgid "Export appointments from Orage to file"
+msgstr "Eksportoni takime nga Orage-i në kartelë"
+
+#: ../src/parameters.c:546
 msgid "Main settings"
 msgstr "Rregullimet kryesore"
 
-#: ../src/parameters.c:551
+#: ../src/parameters.c:552
 msgid "Timezone"
 msgstr "Zonë kohore"
 
-#: ../src/parameters.c:572
+#: ../src/parameters.c:573
 msgid "You should always define your local timezone."
 msgstr "Duhet të përcaktoni gjithmonë zonën tuaj kohore."
 
-#: ../src/parameters.c:580
+#: ../src/parameters.c:581
 msgid "Archive threshold (months)"
 msgstr "Prag arkivi (muaj)"
 
-#: ../src/parameters.c:593
+#: ../src/parameters.c:594
 msgid "(0 = no archiving)"
 msgstr "(0 = pa arkivim)"
 
-#: ../src/parameters.c:597
+#: ../src/parameters.c:598
 msgid "Archiving is used to save time and space when handling events."
 msgstr ""
 "Arkivimi përdoret për të kursyer kohë dhe hapësirë gjatë trajtimit të "
 "veprimtarive."
 
-#: ../src/parameters.c:605
+#: ../src/parameters.c:606
 msgid "Sound command"
 msgstr "Urdhër tingulli"
 
-#: ../src/parameters.c:633
+#: ../src/parameters.c:634
 msgid "This command is given to shell to make sound in alarms."
 msgstr "Ky urdhër i kalohet shellit për të prodhuar tingull gjatë alarmesh."
 
-#: ../src/parameters.c:664
+#: ../src/parameters.c:665
 msgid "Calendar window"
 msgstr "Dritare kalendari"
 
-#: ../src/parameters.c:671
+#: ../src/parameters.c:672
 msgid "Calendar visual details"
 msgstr "Hollësi pamore kalendari"
 
-#: ../src/parameters.c:678
+#: ../src/parameters.c:679
 msgid "Show borders"
 msgstr "Shfaq anë"
 
-#: ../src/parameters.c:683
+#: ../src/parameters.c:684
 msgid "Show menu"
 msgstr "Shfaq menu"
 
-#: ../src/parameters.c:691
+#: ../src/parameters.c:692
 msgid "Show day names"
 msgstr "Shfaq emra ditësh"
 
-#: ../src/parameters.c:696
+#: ../src/parameters.c:697
 msgid "Show week numbers"
 msgstr "Shfaq numra javësh"
 
-#: ../src/parameters.c:704
+#: ../src/parameters.c:705
 msgid "Show month and year"
 msgstr "Shfaq vit dhe muaj"
 
-#: ../src/parameters.c:724
+#: ../src/parameters.c:725
 msgid "Calendar info boxes"
 msgstr "Kuti të dhënash kalendari"
 
-#: ../src/parameters.c:731
+#: ../src/parameters.c:732
 msgid "Show todo list"
 msgstr "Shfaq listë zërash për t’u bërë"
 
-#: ../src/parameters.c:738
+#: ../src/parameters.c:739
 msgid "Number of days to show in event window"
 msgstr "Numër ditësh për shfaqje në dritare veprimtarie"
 
-#: ../src/parameters.c:746
+#: ../src/parameters.c:747
 msgid "0 = do not show event list at all"
 msgstr "0 = mos shfaq fare listë veprimtarish"
 
-#: ../src/parameters.c:760
+#: ../src/parameters.c:761
 msgid "Calendar visibility"
 msgstr "Dukshmëri kalendari"
 
-#: ../src/parameters.c:766
+#: ../src/parameters.c:767
 msgid "Show on all desktops"
 msgstr "Shfaqe në krejt desktopët"
 
-#: ../src/parameters.c:771
+#: ../src/parameters.c:772
 msgid "Keep on top"
 msgstr "Mbaje përsipër"
 
-#: ../src/parameters.c:779
+#: ../src/parameters.c:780
 msgid "Show in taskbar"
 msgstr "Shfaqe në shtyllë veprimesh"
 
-#: ../src/parameters.c:784
+#: ../src/parameters.c:785
 msgid "Show in pager"
 msgstr "Shfaqe në faques"
 
-#: ../src/parameters.c:792
+#: ../src/parameters.c:793
 msgid "Show in systray"
 msgstr "Shfaqe në shtyllë sistemi"
 
-#: ../src/parameters.c:820
+#: ../src/parameters.c:821
 msgid "Calendar start"
 msgstr "Fillim kalendari"
 
-#: ../src/parameters.c:826
+#: ../src/parameters.c:827
 msgid "Show"
 msgstr "Shfaqe"
 
-#: ../src/parameters.c:842
+#: ../src/parameters.c:843
 msgid "Hide"
 msgstr "Fshihe"
 
-#: ../src/parameters.c:859
+#: ../src/parameters.c:860
 msgid "Minimized"
 msgstr "Minimizuar"
 
-#: ../src/parameters.c:885
+#: ../src/parameters.c:886
 msgid "On calendar window open"
 msgstr "Gjatë hapjesh dritareje kalendari"
 
-#: ../src/parameters.c:891
+#: ../src/parameters.c:892
 msgid "Select today's date"
 msgstr "Përzgjidhni datën e sotme"
 
-#: ../src/parameters.c:908
+#: ../src/parameters.c:909
 msgid "Select previously selected date"
 msgstr "Përzgjidhni datë të përzgjedhur më parë"
 
-#: ../src/parameters.c:932
+#: ../src/parameters.c:933
 msgid "Calendar day double click shows"
 msgstr "Dyklikimi mbi ditë kalendari shfaq"
 
-#: ../src/parameters.c:938
+#: ../src/parameters.c:939
 msgid "Days view"
 msgstr "Parje ditësh"
 
-#: ../src/parameters.c:954
+#: ../src/parameters.c:955
 msgid "Event list"
 msgstr "Listë veprimtarish"
 
-#: ../src/parameters.c:987
+#: ../src/parameters.c:988
 msgid "Extra settings"
 msgstr "Rregullime ekstra"
 
-#: ../src/parameters.c:994
+#: ../src/parameters.c:995
 msgid "Event list window"
 msgstr "Dritare liste veprimtarish"
 
-#: ../src/parameters.c:1001
+#: ../src/parameters.c:1002
 msgid "Number of extra days to show in event list"
 msgstr "Numër ditësh ekstra për shfaqje në listë veprimtarish"
 
-#: ../src/parameters.c:1011
+#: ../src/parameters.c:1012
 msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
@@ -1514,27 +1514,27 @@ msgstr ""
 "Kjo është thjesht vlera parazgjedhje, mund ta ndryshoni te dritarja faktike "
 "e listës së veprimtarive."
 
-#: ../src/parameters.c:1019
+#: ../src/parameters.c:1020
 msgid "Show only first repeating event"
 msgstr "Shfaq vetëm veprimtarinë e përsëritjes së parë"
 
-#: ../src/parameters.c:1036
+#: ../src/parameters.c:1037
 msgid "Day view window default first day"
 msgstr "Parazgjedhja për dritare të pamjes së ditëve është dita e parë"
 
-#: ../src/parameters.c:1043
+#: ../src/parameters.c:1044
 msgid "First day of week"
 msgstr "Dita e parë e javës"
 
-#: ../src/parameters.c:1060
+#: ../src/parameters.c:1061
 msgid "Selected day"
 msgstr "Dita e përzgjedhur"
 
-#: ../src/parameters.c:1083 ../src/parameters.c:1090
+#: ../src/parameters.c:1084 ../src/parameters.c:1091
 msgid "Use wakeup timer"
 msgstr "Përdor afatmatës zgjimesh"
 
-#: ../src/parameters.c:1098
+#: ../src/parameters.c:1099
 msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
@@ -1543,27 +1543,27 @@ msgstr ""
 "pezullimesh apo plogështimesh. (Për shembull, ikona në panelin e sistemit "
 "nuk rifreskohet, ose alarmet nuk bien.)"
 
-#: ../src/parameters.c:1108
+#: ../src/parameters.c:1109
 msgid "Foreign file default visual alarm"
 msgstr "Alarm pamor parazgjedhje për kartela të jashtme"
 
-#: ../src/parameters.c:1115
+#: ../src/parameters.c:1116
 msgid "Orage window"
 msgstr "Dritare Orage-i"
 
-#: ../src/parameters.c:1132
+#: ../src/parameters.c:1133
 msgid "Notify notification"
 msgstr "Shënim njoftimi"
 
-#: ../src/parameters.c:1155
+#: ../src/parameters.c:1156
 msgid "Always quit when asked to close"
 msgstr "Dil përherë, kur kërkohet të mbyllet"
 
-#: ../src/parameters.c:1162
+#: ../src/parameters.c:1163
 msgid "Always quit"
 msgstr "Dil përherë"
 
-#: ../src/parameters.c:1169
+#: ../src/parameters.c:1170
 msgid ""
 "By default Orage stays open in the background when asked to close. This "
 "option changes Orage to quit and never stay in background when it is asked "
@@ -1573,43 +1573,47 @@ msgstr ""
 " e tij. Kjo mundësi e ndryshon këtë sjellje që Orage të mbyllet dhe të mos "
 "qëndrojë kurrë në prapaskenë, kur kërkohet mbyllja e tij."
 
-#: ../src/parameters.c:1184
+#: ../src/parameters.c:1185
 msgid "Orage Preferences"
 msgstr "Parapëlqime për Orage-in"
 
-#: ../src/parameters.c:1206 ../src/reminder.c:716
+#: ../src/parameters.c:1207 ../src/reminder.c:659
 msgid "_Close"
 msgstr "_Mbylle"
 
-#: ../src/reminder.c:494
-msgid "Reminder "
-msgstr "Kujtues "
+#: ../src/reminder.c:427
+msgid "Reminder"
+msgstr ""
 
-#: ../src/reminder.c:523
+#: ../src/reminder.c:460
 msgid "Open"
 msgstr "Hap"
 
-#: ../src/reminder.c:641
+#: ../src/reminder.c:465
+msgid "Silence"
+msgstr ""
+
+#: ../src/reminder.c:584
 msgid "Reminder - Orage"
 msgstr "Kujtues - Orage"
 
-#: ../src/reminder.c:724
+#: ../src/reminder.c:667
 msgid "_Stop"
 msgstr "_Ndale"
 
-#: ../src/reminder.c:732
+#: ../src/reminder.c:675
 msgid "Postpone"
 msgstr "Shtyjeni"
 
-#: ../src/reminder.c:734
+#: ../src/reminder.c:677
 msgid "Remind me again after the specified time"
 msgstr "Rikujtoma pas kohës së caktuar"
 
-#: ../src/reminder.c:1003
+#: ../src/reminder.c:949
 msgid "Next active alarms:"
 msgstr "Alarmet pasues aktive:"
 
-#: ../src/reminder.c:1042
+#: ../src/reminder.c:988
 #, c-format
 msgid ""
 "\n"
@@ -1618,7 +1622,7 @@ msgstr ""
 "\n"
 "%02d d %02d h %02d miuta deri në: %s"
 
-#: ../src/reminder.c:1054
+#: ../src/reminder.c:1002
 #, c-format
 msgid ""
 "\n"
