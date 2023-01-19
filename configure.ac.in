@@ -17,11 +17,9 @@ m4_define([orage_version], [orage_version_major().orage_version_minor().orage_ve
 m4_define([glib_minimum_version], [2.58.0])
 m4_define([gtk_minimum_version], [3.24.0])
 m4_define([xfce_minimum_version], [4.16.0])
-m4_define([dbus_minimum_version], [0.1])
-m4_define([notify_minimum_version], [0.3.2])
+m4_define([notify_minimum_version], [0.7.0])
 m4_define([intltool_minimum_version], [0.35])
 m4_define([libical_minimum_version], [3.0])
-m4_define([libpopt_minimum_version], [1.18])
 
 
 dnl # DO NOT MODIFY ANYTHING BELOW THIS LINE, UNLESS YOU KNOW WHAT
