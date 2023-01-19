@@ -5,11 +5,11 @@
 # 
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2022
-# Emanuele Petriglia <transifex@emanuelepetriglia.com>, 2022
 # Cristian Marchi <cri.penta@gmail.com>, 2022
 # Vincenzo Reale <vinx.reale@gmail.com>, 2022
 # Nick Schermer <nick@xfce.org>, 2022
 # Dmytro Tokayev, 2023
+# Emanuele Petriglia <transifex@emanuelepetriglia.com>, 2023
 # 
 #, fuzzy
 msgid ""
@@ -18,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-18 12:52+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Dmytro Tokayev, 2023\n"
+"Last-Translator: Emanuele Petriglia <transifex@emanuelepetriglia.com>, 2023\n"
 "Language-Team: Italian (https://www.transifex.com/xfce/teams/16840/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1595,7 +1595,7 @@ msgstr "_Chiudi"
 
 #: ../src/reminder.c:427
 msgid "Reminder"
-msgstr ""
+msgstr "Promemoria"
 
 #: ../src/reminder.c:460
 msgid "Open"
@@ -1603,7 +1603,7 @@ msgstr "Apri"
 
 #: ../src/reminder.c:465
 msgid "Silence"
-msgstr ""
+msgstr "Silenzia"
 
 #: ../src/reminder.c:584
 msgid "Reminder - Orage"
