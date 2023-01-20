@@ -7,6 +7,7 @@
 # Xfce Bot <transifex@xfce.org>, 2022
 # Nick Schermer <nick@xfce.org>, 2022
 # Priit Jõerüüt <transifex@joeruut.com>, 2023
+# Erkki Moorits, 2023
 # 
 #, fuzzy
 msgid ""
@@ -15,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-18 12:52+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Priit Jõerüüt <transifex@joeruut.com>, 2023\n"
+"Last-Translator: Erkki Moorits, 2023\n"
 "Language-Team: Estonian (https://www.transifex.com/xfce/teams/16840/et/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -290,7 +291,7 @@ msgstr "Algus"
 
 #: ../src/appointment.c:2963
 msgid "Set"
-msgstr ""
+msgstr "Määratud"
 
 #: ../src/appointment.c:2987
 msgid "Duration"
@@ -354,6 +355,10 @@ msgid ""
 "(Alarms will still fire normally.)\n"
 "(There is undocumented parameter so that you can change the default limit of 8.)"
 msgstr ""
+"Kui määrate selle 8 või suuremaks, EI näidata kohtumist loendiakendes.\n"
+"Saate seda funktsiooni kasutada oma loendiakende korrastamiseks, kuid see muudab selle kohtumise leidmise keerulisemaks.\n"
+"(Alarmid töötavad ikka normaalselt.)\n"
+"(On dokumenteerimata parameeter, mis võimaldab muuta vaikepiirangut 8.)"
 
 #. note
 #: ../src/appointment.c:3086
@@ -446,7 +451,7 @@ msgstr "Korda alarmi helinat"
 
 #: ../src/appointment.c:3286 ../src/appointment.c:3595
 msgid "times"
-msgstr "kordi"
+msgstr "korda"
 
 #: ../src/appointment.c:3302
 msgid "sec interval"
@@ -706,7 +711,7 @@ msgstr ""
 #. exceptions
 #: ../src/appointment.c:3687
 msgid "Exceptions"
-msgstr ""
+msgstr "Erandid"
 
 #: ../src/appointment.c:3713
 msgid ""
@@ -736,7 +741,7 @@ msgstr ""
 #. calendars showing the action days
 #: ../src/appointment.c:3754
 msgid "Action dates"
-msgstr ""
+msgstr "Tegevuse kuupäevad"
 
 #. ********* View menu *********
 #. View menu
