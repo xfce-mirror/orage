@@ -1538,7 +1538,7 @@ msgstr "Ava"
 
 #: ../src/reminder.c:465
 msgid "Silence"
-msgstr ""
+msgstr "Vaigista"
 
 #: ../src/reminder.c:584
 msgid "Reminder - Orage"
@@ -3925,6 +3925,9 @@ msgid ""
 " ical format and includes common calendar features like repeating "
 "appointments and multiple alarming possibilities."
 msgstr ""
+"Orage on kiire ja hõlpsasti kasutatav graafiline kalender, mis kasutab "
+"portatiivset ical vormingut ja sisaldab enamlevinud kalendrifunktsioone, "
+"nagu kohtumiste kordamine ja mitmeid alarmide võimalusi."
 
 #: ../org.xfce.orage.appdata.xml.in.h:4
 msgid ""
@@ -3933,6 +3936,10 @@ msgid ""
 "Contents of those files are read and converted into Orage, but those files "
 "are left untouched."
 msgstr ""
+"Orage'il puuduvad grupikalendri funktsioonid, seda saab kasutada ainult ühe "
+"kasutaja kalendrina. Orage kasutab ical failide loendit mida saab importida."
+" Imporditud failide sisu salvestatakse Orage kalendris ja imporditavad faile"
+" ei muudeta."
 
 #: ../org.xfce.orage.desktop.in.h:1
 msgid "Orage Calendar"
