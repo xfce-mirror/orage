@@ -8,9 +8,9 @@
 # Xfce Bot <transifex@xfce.org>, 2022
 # Serdar Sağlam <teknomobil@msn.com>, 2022
 # Necdet Yücel <necdetyucel@gmail.com>, 2022
-# Demiray Muhterem <mdemiray@msn.com>, 2022
 # Nick Schermer <nick@xfce.org>, 2022
 # Emin Tufan Çetin <etcetin@gmail.com>, 2022
+# Demiray Muhterem <mdemiray@msn.com>, 2023
 # 
 #, fuzzy
 msgid ""
@@ -19,7 +19,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-18 12:52+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>, 2022\n"
+"Last-Translator: Demiray Muhterem <mdemiray@msn.com>, 2023\n"
 "Language-Team: Turkish (https://www.transifex.com/xfce/teams/16840/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1581,7 +1581,7 @@ msgstr "_Kapat"
 
 #: ../src/reminder.c:427
 msgid "Reminder"
-msgstr ""
+msgstr "Hatırlatma"
 
 #: ../src/reminder.c:460
 msgid "Open"
@@ -1589,7 +1589,7 @@ msgstr "Aç"
 
 #: ../src/reminder.c:465
 msgid "Silence"
-msgstr ""
+msgstr "Sessiz"
 
 #: ../src/reminder.c:584
 msgid "Reminder - Orage"
