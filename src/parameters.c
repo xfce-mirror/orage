@@ -57,6 +57,10 @@
 #include "tray_icon.h"
 #endif
 
+#ifndef DEFAULT_SOUND_COMMAND
+#define DEFAULT_SOUND_COMMAND "play"
+#endif
+
 static Itf *global_itf = NULL;
 
 /* Return the first day of the week, where 0=monday, 6=sunday.
@@ -1336,7 +1340,8 @@ void read_parameters(void)
     fpath = orage_data_file_location(ORAGE_APP_DIR_FILE);
     g_par.orage_file = orage_rc_get_str(orc, "Orage file", fpath);
     g_free(fpath);
-    g_par.sound_application=orage_rc_get_str(orc, "Sound application", "play");
+    g_par.sound_application = orage_rc_get_str (orc, "Sound application",
+                                                DEFAULT_SOUND_COMMAND);
     g_par.pos_x = orage_rc_get_int(orc, "Main window X", 0);
     g_par.pos_y = orage_rc_get_int(orc, "Main window Y", 0);
     g_par.size_x = orage_rc_get_int(orc, "Main window size X", 0);
