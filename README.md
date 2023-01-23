@@ -26,14 +26,14 @@ Orage depends on the following packages:
 
 * [GLib](https://wiki.gnome.org/Projects/GLib) >= 2.52.0
 * [GTK](https://www.gtk.org) >= 3.24.0
+* [Libical](https://github.com/libical/libical) >= 3.0.0
 
 ### Optional Packages
 
 Orage optionally depends on the following packages:
 
-* [Libical](https://github.com/libical/libical) >= 3.0.0
-* [Libnotify](https://gitlab.gnome.org/GNOME/libnotify) >= 0.3.2
-* [D-Bus](https://wiki.freedesktop.org/www/Software/dbus/) >= 0.1.0
+* [Libnotify](https://gitlab.gnome.org/GNOME/libnotify) >= 0.7.0
+* For audible reminder any audio command which play wav and ogg files (sox, play, etc...)
 
 ### Source Code Repository
 
