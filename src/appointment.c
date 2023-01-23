@@ -3174,7 +3174,6 @@ static void enable_general_page_signals(appt_win *apptw)
 static void build_alarm_page(appt_win *apptw)
 {
     gboolean audio_enabled;
-    gchar *audio_checkbox_hint;
     gint row;
     GtkWidget *event, *vbox;
     GtkWidget *separator;
