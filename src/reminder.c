@@ -310,8 +310,8 @@ static gboolean sound_alarm(gpointer data)
                              &l_alarm->active_alarm->sound_active, &error);
         if (status == FALSE)
         {
-            g_warning ("%s: play failed (%s) %s", G_STRFUNC, l_alarm->sound,
-                       error->message);
+            g_warning ("%s: sound command failed (%s) %s", G_STRFUNC,
+                       l_alarm->sound, error->message);
 #ifdef HAVE_NOTIFY
             notify_cleanup = TRUE;
 #endif

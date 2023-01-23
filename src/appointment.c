@@ -3173,6 +3173,7 @@ static void enable_general_page_signals(appt_win *apptw)
 
 static void build_alarm_page(appt_win *apptw)
 {
+    gboolean audio_enabled;
     gint row;
     GtkWidget *event, *vbox;
     GtkWidget *separator;
@@ -3236,13 +3237,24 @@ static void build_alarm_page(appt_win *apptw)
             , ++row, (GTK_FILL), (GTK_FILL));
 
     /***** Audio Alarm *****/
+    audio_enabled = ORAGE_STR_EXISTS (g_par.sound_application);
     apptw->Sound_label = gtk_label_new(_("Sound"));
 
     apptw->Sound_hbox = gtk_grid_new ();
     apptw->Sound_checkbutton = 
             gtk_check_button_new_with_mnemonic(_("Use"));
-    gtk_widget_set_tooltip_text(apptw->Sound_checkbutton
-            , _("Select this if you want audible alarm"));
+
+    if (audio_enabled)
+    {
+        gtk_widget_set_tooltip_text (apptw->Sound_checkbutton,
+                                    _("Select this if you want audible alarm"));
+    }
+    else
+    {
+        gtk_widget_set_tooltip_text (apptw->Sound_hbox,
+                                     _("Sound command is not set"));
+    }
+
     gtk_grid_attach_next_to (GTK_GRID (apptw->Sound_hbox),
                              apptw->Sound_checkbutton, NULL, GTK_POS_RIGHT,
                              1, 1);
@@ -3258,6 +3270,7 @@ static void build_alarm_page(appt_win *apptw)
     apptw->Sound_button = orage_util_image_button ("document-open", _("_Open"));
     g_object_set (apptw->Sound_button, "halign", GTK_ALIGN_FILL,
                                        "hexpand", FALSE, NULL);
+    gtk_widget_set_sensitive (GTK_WIDGET (apptw->Sound_hbox), audio_enabled);
     gtk_grid_attach_next_to (GTK_GRID (apptw->Sound_hbox),
                              apptw->Sound_button, NULL, GTK_POS_RIGHT,
                              1, 1);
