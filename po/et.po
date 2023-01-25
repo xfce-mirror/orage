@@ -852,7 +852,7 @@ msgstr ""
 
 #: ../src/event-list.c:1282
 msgid "only first repeating"
-msgstr ""
+msgstr "ainult esimene kordus"
 
 #: ../src/event-list.c:1290
 msgid ""
@@ -863,7 +863,7 @@ msgstr ""
 
 #: ../src/event-list.c:1295
 msgid "also old"
-msgstr ""
+msgstr "lisaks vana"
 
 #: ../src/event-list.c:1300
 msgid ""
@@ -1348,7 +1348,7 @@ msgstr "Kalendri välimus"
 
 #: ../src/parameters.c:683
 msgid "Show borders"
-msgstr "Näitaraame"
+msgstr "Näita raame"
 
 #: ../src/parameters.c:688
 msgid "Show menu"
@@ -1368,7 +1368,7 @@ msgstr "Näita kuud ja aastat"
 
 #: ../src/parameters.c:729
 msgid "Calendar info boxes"
-msgstr ""
+msgstr "Kalendri teabeväljad"
 
 #: ../src/parameters.c:736
 msgid "Show todo list"
