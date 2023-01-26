@@ -24,6 +24,8 @@
 #ifndef __ICAL_CODE_H__
 #define __ICAL_CODE_H__
 
+#include "ical-expimp.h"
+
 #define XFICAL_UID_LEN 200
 
 typedef enum
@@ -177,11 +179,6 @@ gboolean xfical_archive(void);
 gboolean xfical_unarchive(void);
 gboolean xfical_unarchive_uid(char *uid);
 #endif
-
-gboolean xfical_import_file(const gchar *file_name);
-gboolean xfical_export_file (const gchar *file_name,
-                             gint type,
-                             const gchar *uids);
 
 gboolean xfical_file_check(gchar *file_name);
 
