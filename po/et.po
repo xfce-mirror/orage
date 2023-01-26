@@ -725,21 +725,23 @@ msgstr ""
 
 #: ../src/appointment.c:3737
 msgid "Add excluded date (-)"
-msgstr ""
+msgstr "Lisa välja jäetud kuupäev (-)"
 
 #: ../src/appointment.c:3739
 msgid "Excluded days are full days where this appointment is not happening"
-msgstr ""
+msgstr "Välja jäetud päevad on täispäevad, mil seda kohtumist ei toimu"
 
 #: ../src/appointment.c:3746
 msgid "Add included time (+)"
-msgstr ""
+msgstr "Lisa kaasatud aeg (+)"
 
 #: ../src/appointment.c:3748
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time"
 msgstr ""
+"Kaasatud kellaaegadel on sama ajavöönd kui algusajal, kuid neil võib olla "
+"erinev aeg"
 
 #. calendars showing the action days
 #: ../src/appointment.c:3767
