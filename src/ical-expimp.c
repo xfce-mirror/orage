@@ -66,9 +66,9 @@
 #include "parameters.h"
 #include "interface.h"
 
-static gboolean add_event(icalcomponent *c)
+static void add_event(icalcomponent *c)
 {
-    icalcomponent *ca = NULL;
+    icalcomponent *ca;
     char *uid;
 
     ca = icalcomponent_new_clone(c);
@@ -77,18 +77,17 @@ static gboolean add_event(icalcomponent *c)
         icalcomponent_add_property(ca,  icalproperty_new_uid(uid));
         g_message ("Generated UID %s", uid);
         g_free(uid);
-
     }
     if (!xfical_file_open(FALSE)) {
         g_critical ("%s: ical file open failed", G_STRFUNC);
-        return(FALSE);
+        return;
     }
     icalcomponent_add_component(ic_ical, ca);
     ic_file_modified = TRUE;
     icalset_mark(ic_fical);
     icalset_commit(ic_fical);
     xfical_file_close(FALSE);
-    return(TRUE);
+    return;
 }
 
 /* pre process the file to rule out some features, which orage does not
@@ -196,10 +195,10 @@ static gboolean pre_format(const gchar *file_name_in,
 
 gboolean xfical_import_file(const gchar *file_name)
 {
-    icalset *file_ical = NULL;
-    char *ical_file_name = NULL;
+    icalset *file_ical;
+    gchar *ical_file_name;
     icalcomponent *c1, *c2;
-    int cnt1 = 0, cnt2 = 0;
+    gint cnt1 = 0, cnt2 = 0;
 
     ical_file_name = g_strdup_printf("%s.orage", file_name);
     if (!pre_format(file_name, ical_file_name)) {
