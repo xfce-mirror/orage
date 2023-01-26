@@ -60,6 +60,7 @@
 #include "mainbox.h"
 #include "reminder.h"
 #include "ical-code.h"
+#include "ical-expimp.h"
 #include "ical-internal.h"
 #include "event-list.h"
 #include "appointment.h"
