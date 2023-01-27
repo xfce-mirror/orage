@@ -166,7 +166,6 @@ static void print_version (void)
             , GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION);
     g_print (_("using GTK+-%d.%d.%d.\n")
             , gtk_major_version, gtk_minor_version, gtk_micro_version);
-    g_print (_("\tUsing DBUS for import.\n"));
 #ifdef HAVE_NOTIFY
     g_print (_("\tUsing libnotify.\n"));
 #else
