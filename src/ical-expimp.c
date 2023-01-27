@@ -60,15 +60,16 @@
 #include "mainbox.h"
 #include "reminder.h"
 #include "ical-code.h"
+#include "ical-expimp.h"
 #include "ical-internal.h"
 #include "event-list.h"
 #include "appointment.h"
 #include "parameters.h"
 #include "interface.h"
 
-static gboolean add_event(icalcomponent *c)
+static void add_event (icalcomponent *c, gboolean *ical_opened)
 {
-    icalcomponent *ca = NULL;
+    icalcomponent *ca;
     char *uid;
 
     ca = icalcomponent_new_clone(c);
@@ -77,18 +78,23 @@ static gboolean add_event(icalcomponent *c)
         icalcomponent_add_property(ca,  icalproperty_new_uid(uid));
         g_message ("Generated UID %s", uid);
         g_free(uid);
+    }
 
+    if (*ical_opened == FALSE)
+    {
+        if (xfical_file_open (FALSE) == FALSE)
+        {
+            g_critical ("%s: ical file open failed", G_STRFUNC);
+            return;
+        }
+
+        *ical_opened = TRUE;
     }
-    if (!xfical_file_open(FALSE)) {
-        g_critical ("%s: ical file open failed", G_STRFUNC);
-        return(FALSE);
-    }
+
     icalcomponent_add_component(ic_ical, ca);
     ic_file_modified = TRUE;
     icalset_mark(ic_fical);
     icalset_commit(ic_fical);
-    xfical_file_close(FALSE);
-    return(TRUE);
 }
 
 /* pre process the file to rule out some features, which orage does not
@@ -196,10 +202,11 @@ static gboolean pre_format(const gchar *file_name_in,
 
 gboolean xfical_import_file(const gchar *file_name)
 {
-    icalset *file_ical = NULL;
-    char *ical_file_name = NULL;
+    icalset *file_ical;
+    gchar *ical_file_name;
     icalcomponent *c1, *c2;
-    int cnt1 = 0, cnt2 = 0;
+    gint cnt1 = 0, cnt2 = 0;
+    gboolean ical_opened = FALSE;
 
     ical_file_name = g_strdup_printf("%s.orage", file_name);
     if (!pre_format(file_name, ical_file_name)) {
@@ -224,7 +231,7 @@ gboolean xfical_import_file(const gchar *file_name)
                 ||  (icalcomponent_isa(c2) == ICAL_VTODO_COMPONENT)
                 ||  (icalcomponent_isa(c2) == ICAL_VJOURNAL_COMPONENT)) {
                     cnt2++;
-                    add_event(c2);
+                    add_event (c2, &ical_opened);
                 }
                 /* we ignore TIMEZONE component; Orage only uses internal
                  * timezones from libical */
@@ -241,6 +248,10 @@ gboolean xfical_import_file(const gchar *file_name)
                     , icalcomponent_kind_to_string(icalcomponent_isa(c1))
                     , ical_file_name);
     }
+
+    if (ical_opened)
+        xfical_file_close (FALSE);
+
     if (cnt1 == 0) {
         g_warning ("%s: No valid icalset components found", G_STRFUNC);
         g_free(ical_file_name);
