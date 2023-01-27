@@ -704,6 +704,8 @@ msgid ""
 "TODO reoccurs regularly starting on start time and repeating after each "
 "interval no matter when it was last completed"
 msgstr ""
+"Agenda kordub perioodiliselt, alates algusajast ja sõltumata sellest kuna "
+"see viimati lõppes"
 
 #: ../src/appointment.c:3694
 msgid ""
@@ -797,7 +799,7 @@ msgstr "Tundmatu"
 
 #: ../src/day-view.c:839
 msgid "Number of days to show"
-msgstr ""
+msgstr "Päevade arv"
 
 #: ../src/day-view.c:1070
 msgid "Orage - day view"
@@ -850,7 +852,7 @@ msgstr "Päevavaade"
 
 #: ../src/event-list.c:1268
 msgid "Extra days to show:"
-msgstr ""
+msgstr "Näita lisapäevi:"
 
 #: ../src/event-list.c:1282
 msgid "only first repeating"
@@ -1305,7 +1307,7 @@ msgstr "Lisa väline fail"
 
 #: ../src/orage-application.c:574
 msgid "Export appointments from Orage to file"
-msgstr ""
+msgstr "Ekspordi kohtumised Orage'ist faili"
 
 #: ../src/parameters.c:550
 msgid "Main settings"
@@ -1382,7 +1384,7 @@ msgstr "Sündmuste aknas näita päevade arvu"
 
 #: ../src/parameters.c:751
 msgid "0 = do not show event list at all"
-msgstr ""
+msgstr "0 = ära näita üldse sündmuste loendit"
 
 #: ../src/parameters.c:765
 msgid "Calendar visibility"
@@ -1394,7 +1396,7 @@ msgstr "Näita kõikidel töölaudadel"
 
 #: ../src/parameters.c:776
 msgid "Keep on top"
-msgstr ""
+msgstr "Hoia peal"
 
 #: ../src/parameters.c:784
 msgid "Show in taskbar"
@@ -1426,19 +1428,19 @@ msgstr "Minimeeritud"
 
 #: ../src/parameters.c:890
 msgid "On calendar window open"
-msgstr ""
+msgstr "Kalendri akna avamisel"
 
 #: ../src/parameters.c:896
 msgid "Select today's date"
-msgstr ""
+msgstr "Valige tänane kuupäev"
 
 #: ../src/parameters.c:913
 msgid "Select previously selected date"
-msgstr ""
+msgstr "Valige eelnevalt valitud kuupäev"
 
 #: ../src/parameters.c:937
 msgid "Calendar day double click shows"
-msgstr ""
+msgstr "Topeltklikk kalendripäevale kuvab"
 
 #: ../src/parameters.c:943
 msgid "Days view"
@@ -1458,13 +1460,14 @@ msgstr "Sündmuste loendi aken"
 
 #: ../src/parameters.c:1006
 msgid "Number of extra days to show in event list"
-msgstr ""
+msgstr "Lisapäevade arv sündmuste loendis kuvamiseks"
 
 #: ../src/parameters.c:1016
 msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
 msgstr ""
+"See on vaid vaikeväärtus, seda saate muuta tegelikus sündmuste loendi aknas."
 
 #: ../src/parameters.c:1024
 msgid "Show only first repeating event"
@@ -1505,7 +1508,7 @@ msgstr "Orage'i aken"
 
 #: ../src/parameters.c:1137
 msgid "Notify notification"
-msgstr ""
+msgstr "Notify märguanne"
 
 #: ../src/parameters.c:1160
 msgid "Always quit when asked to close"
@@ -1535,7 +1538,7 @@ msgstr "_Sulge"
 
 #: ../src/reminder.c:421
 msgid "Reminder"
-msgstr ""
+msgstr "Meeldetuletus"
 
 #: ../src/reminder.c:444
 msgid "Open"
@@ -3852,11 +3855,11 @@ msgstr "edasi"
 
 #: ../src/timezone_selection.c:186
 msgid "not changed"
-msgstr ""
+msgstr "pole muudetud"
 
 #: ../src/timezone_selection.c:187
 msgid "not changing"
-msgstr ""
+msgstr "ei muudeta"
 
 #: ../src/timezone_selection.c:246
 msgid "GMT Offset"
@@ -3864,7 +3867,7 @@ msgstr "GMT ajanihe"
 
 #: ../src/timezone_selection.c:252
 msgid "Previous/Next Change"
-msgstr ""
+msgstr "Eelmine/Järgmine muudatus"
 
 #: ../src/timezone_selection.c:257
 msgid "Country"
@@ -3883,7 +3886,7 @@ msgstr "Vali ajavöönd"
 #: ../src/timezone_selection.c:292 ../src/timezone_selection.c:301
 #: ../src/timezone_selection.c:312
 msgid "Change mode"
-msgstr ""
+msgstr "Muuda režiimi"
 
 #: ../src/timezone_selection.c:293 ../src/timezone_selection.c:302
 #: ../src/timezone_selection.c:313 ../src/timezone_selection.c:352
