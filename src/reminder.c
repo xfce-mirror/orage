@@ -601,7 +601,7 @@ static void create_orage_reminder(alarm_struct *l_alarm)
 
     gtk_container_add (GTK_CONTAINER (swReminder), lbReminder);
 
- /* TIME AREA */
+    /* TIME AREA */
     ddmmhh_hbox = (orage_ddmmhh_hbox_struct *)l_alarm->orage_display_data;
     ddmmhh_hbox->spin_dd = gtk_spin_button_new_with_range(0, 100, 1);
     ddmmhh_hbox->spin_dd_label = gtk_label_new(_("days"));
@@ -880,6 +880,7 @@ static void reset_orage_alarm_clock(void)
 {
     GList *alarm_l;
     alarm_struct *cur_alarm;
+    GTimeSpan t_diff;
     gint secs_to_alarm;
     GDateTime *gdt_now;
 
@@ -895,13 +896,13 @@ static void reset_orage_alarm_clock(void)
         /* Let's find out how much time we have until l_alarm happens. Adding
          * 999999 to time difference before dividing is for ceiling value.
          */
-        secs_to_alarm = (g_date_time_difference (cur_alarm->alarm_time, gdt_now)
-                      + 999999) / 1000000;
-
+        t_diff = g_date_time_difference (cur_alarm->alarm_time, gdt_now);
         g_date_time_unref (gdt_now);
         orage_alarm_unref (cur_alarm);
 
-        secs_to_alarm += 1; /* alarm needs to come a bit later */
+        t_diff = (t_diff + 999999) / 1000000;
+        /* alarm needs to come a bit later */
+        secs_to_alarm = (gint)t_diff + 1;
         if (secs_to_alarm < 1) /* rare, but possible */
             secs_to_alarm = 1;
         g_par.alarm_timer = g_timeout_add_seconds(secs_to_alarm
@@ -1047,9 +1048,6 @@ void orage_notify_uninit (void)
 {
 #ifdef HAVE_NOTIFY
     if (orage_notify_initted && notify_is_initted ())
-    {
-        g_debug ("%s: notify_uninit", G_STRFUNC);
         notify_uninit ();
-    }
 #endif
 }
