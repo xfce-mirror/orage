@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-18 12:52+0100\n"
+"POT-Creation-Date: 2023-01-28 00:49+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Nick Schermer <nick@xfce.org>, 2022\n"
 "Language-Team: Hungarian (https://www.transifex.com/xfce/teams/16840/hu/)\n"
@@ -52,7 +52,7 @@ msgstr "Orage"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
-#: ../src/appointment.c:698 ../src/interface.c:262 ../src/parameters.c:396
+#: ../src/appointment.c:698 ../src/interface.c:262 ../src/parameters.c:400
 msgid "Select a file..."
 msgstr "Válasszon fájlt…"
 
@@ -287,7 +287,7 @@ msgid "All day event"
 msgstr "Egész napos esemény"
 
 #. start time
-#: ../src/appointment.c:2945 ../src/appointment.c:3663 ../src/day-view.c:831
+#: ../src/appointment.c:2945 ../src/appointment.c:3676 ../src/day-view.c:831
 msgid "Start"
 msgstr "Kezdés"
 
@@ -299,15 +299,15 @@ msgstr ""
 msgid "Duration"
 msgstr "Időtartam"
 
-#: ../src/appointment.c:2991 ../src/appointment.c:3198 ../src/reminder.c:623
+#: ../src/appointment.c:2991 ../src/appointment.c:3199 ../src/reminder.c:607
 msgid "days"
 msgstr "nap"
 
-#: ../src/appointment.c:2993 ../src/appointment.c:3200 ../src/reminder.c:625
+#: ../src/appointment.c:2993 ../src/appointment.c:3201 ../src/reminder.c:609
 msgid "hours"
 msgstr "óra"
 
-#: ../src/appointment.c:2995 ../src/appointment.c:3202 ../src/reminder.c:627
+#: ../src/appointment.c:2995 ../src/appointment.c:3203 ../src/reminder.c:611
 msgid "mins"
 msgstr "perc"
 
@@ -317,7 +317,7 @@ msgid "Availability"
 msgstr "Elérhetőség"
 
 #. completed (only for TODO)
-#: ../src/appointment.c:3015 ../src/appointment.c:3672
+#: ../src/appointment.c:3015 ../src/appointment.c:3685
 msgid "Completed"
 msgstr "Befejezve"
 
@@ -388,32 +388,32 @@ msgstr ""
 "    <&Ynnnn> a jelenlegi év mínusz nnnn.\n"
 "(Ez például születésnap-emlékeztetőkben használható az adott személy életkorának meghatározására.)"
 
-#: ../src/appointment.c:3180
+#: ../src/appointment.c:3181
 msgid "Before Start"
 msgstr "Kezdés előtt"
 
-#: ../src/appointment.c:3180
+#: ../src/appointment.c:3181
 msgid "Before End"
 msgstr "Befejezés előtt"
 
-#: ../src/appointment.c:3181
+#: ../src/appointment.c:3182
 msgid "After Start"
 msgstr "Kezdés után"
 
-#: ../src/appointment.c:3181
+#: ../src/appointment.c:3182
 msgid "After End"
 msgstr "Befejezés után"
 
-#: ../src/appointment.c:3189
+#: ../src/appointment.c:3190
 msgid "Alarm"
 msgstr "Figyelmeztetés"
 
 #. **** ALARM TIME ****
-#: ../src/appointment.c:3195
+#: ../src/appointment.c:3196
 msgid "Alarm time"
 msgstr "Figyelmeztetés ideje"
 
-#: ../src/appointment.c:3220
+#: ../src/appointment.c:3221
 msgid ""
 "Often you want to get alarm:\n"
 " 1) before Event start\n"
@@ -425,11 +425,11 @@ msgstr ""
 "– teendő befejezése előtt\n"
 "– teendő kezdete után"
 
-#: ../src/appointment.c:3225
+#: ../src/appointment.c:3226
 msgid "Persistent alarm"
 msgstr "Folyamatos figyelmeztetés"
 
-#: ../src/appointment.c:3230
+#: ../src/appointment.c:3231
 msgid ""
 "Select this if you want Orage to remind you even if it has not been active "
 "when the alarm happened."
@@ -437,84 +437,87 @@ msgstr ""
 "Az Orage akkor is emlékeztessen, ha nem volt aktív a figyelmeztetés "
 "bekövetkeztekor."
 
-#. **** Audio Alarm ****
-#: ../src/appointment.c:3239
+#: ../src/appointment.c:3241
 msgid "Sound"
 msgstr "Hang"
 
-#: ../src/appointment.c:3243 ../src/appointment.c:3376
+#: ../src/appointment.c:3245 ../src/appointment.c:3389
 msgid "Use"
 msgstr "Használandó:"
 
-#: ../src/appointment.c:3245
+#: ../src/appointment.c:3250
 msgid "Select this if you want audible alarm"
 msgstr "Hallható hang bekapcsolása"
 
-#: ../src/appointment.c:3258 ../src/interface.c:1051 ../src/interface.c:1097
+#: ../src/appointment.c:3255
+msgid "Sound command is not set"
+msgstr ""
+
+#: ../src/appointment.c:3270 ../src/interface.c:1051 ../src/interface.c:1097
 #: ../src/interface.c:1273 ../src/interface.c:1365 ../src/interface.c:1448
-#: ../src/parameters.c:401 ../src/parameters.c:624 ../src/reminder.c:652
+#: ../src/parameters.c:405 ../src/parameters.c:628 ../src/reminder.c:636
 msgid "_Open"
 msgstr "_Megnyitás"
 
-#: ../src/appointment.c:3271
+#: ../src/appointment.c:3284
 msgid "Repeat alarm sound"
 msgstr "Figyelmeztető hang ismétlése"
 
-#: ../src/appointment.c:3286 ../src/appointment.c:3595
+#: ../src/appointment.c:3299 ../src/appointment.c:3608
 msgid "times"
 msgstr "alkalommal"
 
-#: ../src/appointment.c:3302
+#: ../src/appointment.c:3315
 msgid "sec interval"
 msgstr "mp időközzel"
 
 #. **** Display Alarm ****
-#: ../src/appointment.c:3312
+#: ../src/appointment.c:3325
 msgid "Visual"
 msgstr "Vizuális"
 
-#: ../src/appointment.c:3316
+#: ../src/appointment.c:3329
 msgid "Use Orage window"
 msgstr "Orage ablak használata"
 
-#: ../src/appointment.c:3318
+#: ../src/appointment.c:3331
 msgid "Select this if you want Orage window alarm"
 msgstr "Az Orage ablak használata figyelmeztetésre"
 
-#: ../src/appointment.c:3330
+#: ../src/appointment.c:3343
 msgid "Use notification"
 msgstr "Értesítés használata"
 
-#: ../src/appointment.c:3332
+#: ../src/appointment.c:3345
 msgid "Select this if you want notification alarm"
 msgstr "Értesítés ablak használata a figyelmeztetésre"
 
-#: ../src/appointment.c:3340
+#: ../src/appointment.c:3353
 msgid "Set timeout"
 msgstr "Időtúllépés beállítása"
 
-#: ../src/appointment.c:3342
+#: ../src/appointment.c:3355
 msgid "Select this if you want notification to expire automatically"
 msgstr "Az értesítés automatikusan járjon le"
 
-#: ../src/appointment.c:3353
+#: ../src/appointment.c:3366
 msgid "0 = system default expiration time"
 msgstr "0 = a rendszer alapértelmezett lejárati ideje"
 
-#: ../src/appointment.c:3361
+#: ../src/appointment.c:3374
 msgid "seconds"
 msgstr "másodperc"
 
 #. **** Procedure Alarm ****
-#: ../src/appointment.c:3372
+#: ../src/appointment.c:3385
 msgid "Procedure"
 msgstr "Eljárás"
 
-#: ../src/appointment.c:3378
+#: ../src/appointment.c:3391
 msgid "Select this if you want procedure or script alarm"
 msgstr "Eljárás vagy figyelmeztető parancsfájl használata"
 
-#: ../src/appointment.c:3388
+#: ../src/appointment.c:3401
 msgid ""
 "You must enter all escape etc characters yourself.\n"
 "This string is just given to shell to process.\n"
@@ -534,109 +537,109 @@ msgstr ""
 "\t<&ST> találkozó kezdési ideje\n"
 "\t<&ET> találkozó befejezési ideje"
 
-#: ../src/appointment.c:3402 ../src/interface.c:1185 ../src/interface.c:1207
+#: ../src/appointment.c:3415 ../src/interface.c:1185 ../src/interface.c:1207
 msgid "_Execute"
 msgstr "_Végrehajtás"
 
-#: ../src/appointment.c:3404
+#: ../src/appointment.c:3417
 msgid "Test this alarm by raising it now"
 msgstr "Figyelmeztetés tesztelése az azonnali aktiválásával"
 
-#: ../src/appointment.c:3417
+#: ../src/appointment.c:3430
 msgid "<b>Default alarm</b>"
 msgstr "<b>Alapértelmezett figyelmeztetés</b>"
 
-#: ../src/appointment.c:3423 ../src/interface.c:1058 ../src/interface.c:1104
+#: ../src/appointment.c:3436 ../src/interface.c:1058 ../src/interface.c:1104
 #: ../src/interface.c:1279 ../src/interface.c:1371
 msgid "_Save"
 msgstr "M_entés"
 
-#: ../src/appointment.c:3431
+#: ../src/appointment.c:3444
 msgid "Store current settings as default alarm"
 msgstr "Aktuális beállítások mentése alapértelmezett figyelmeztetésként"
 
-#: ../src/appointment.c:3433
+#: ../src/appointment.c:3446
 msgid "_Revert"
 msgstr "_Visszaállítás"
 
-#: ../src/appointment.c:3441
+#: ../src/appointment.c:3454
 msgid "Set current settings from default alarm"
 msgstr "Aktuális beállítások betöltése az alapértelmezett figyelmeztetésből"
 
-#: ../src/appointment.c:3507
+#: ../src/appointment.c:3520
 msgid "None"
 msgstr "Nincs"
 
-#: ../src/appointment.c:3507
+#: ../src/appointment.c:3520
 msgid "Daily"
 msgstr "Naponta"
 
-#: ../src/appointment.c:3507
+#: ../src/appointment.c:3520
 msgid "Weekly"
 msgstr "Hetente"
 
-#: ../src/appointment.c:3507
+#: ../src/appointment.c:3520
 msgid "Monthly"
 msgstr "Havonta"
 
-#: ../src/appointment.c:3507
+#: ../src/appointment.c:3520
 msgid "Yearly"
 msgstr "Évente"
 
-#: ../src/appointment.c:3507
+#: ../src/appointment.c:3520
 msgid "Hourly"
 msgstr "Óránként"
 
-#: ../src/appointment.c:3509
+#: ../src/appointment.c:3522
 msgid "Mon"
 msgstr "Hé"
 
-#: ../src/appointment.c:3509
+#: ../src/appointment.c:3522
 msgid "Tue"
 msgstr "Ke"
 
-#: ../src/appointment.c:3509
+#: ../src/appointment.c:3522
 msgid "Wed"
 msgstr "Sze"
 
-#: ../src/appointment.c:3509
+#: ../src/appointment.c:3522
 msgid "Thu"
 msgstr "Csü"
 
-#: ../src/appointment.c:3509
+#: ../src/appointment.c:3522
 msgid "Fri"
 msgstr "Pé"
 
-#: ../src/appointment.c:3509
+#: ../src/appointment.c:3522
 msgid "Sat"
 msgstr "Szo"
 
-#: ../src/appointment.c:3509
+#: ../src/appointment.c:3522
 msgid "Sun"
 msgstr "Vas"
 
-#: ../src/appointment.c:3514
+#: ../src/appointment.c:3527
 msgid "Recurrence"
 msgstr "Ismétlődés"
 
 #. complexity
-#: ../src/appointment.c:3520
+#: ../src/appointment.c:3533
 msgid "Complexity"
 msgstr "Összetettség"
 
-#: ../src/appointment.c:3523
+#: ../src/appointment.c:3536
 msgid "Basic"
 msgstr "Alap"
 
-#: ../src/appointment.c:3530
+#: ../src/appointment.c:3543
 msgid "Advanced"
 msgstr "Speciális"
 
-#: ../src/appointment.c:3536
+#: ../src/appointment.c:3549
 msgid "Use this if you want regular repeating event"
 msgstr "Egyszerű ismétlődő esemény"
 
-#: ../src/appointment.c:3538
+#: ../src/appointment.c:3551
 msgid ""
 "Use this if you need complex times like:\n"
 " Every Saturday and Sunday or \n"
@@ -647,19 +650,19 @@ msgstr ""
 " Minden hónap első keddje"
 
 #. frequency
-#: ../src/appointment.c:3544
+#: ../src/appointment.c:3557
 msgid "Frequency"
 msgstr "Gyakoriság"
 
-#: ../src/appointment.c:3551
+#: ../src/appointment.c:3564
 msgid "Each"
 msgstr "Minden"
 
-#: ../src/appointment.c:3562
+#: ../src/appointment.c:3575
 msgid "occurrence"
 msgstr "alkalommal"
 
-#: ../src/appointment.c:3569
+#: ../src/appointment.c:3582
 msgid ""
 "Limit frequency to certain interval.\n"
 " For example: Every third day:\n"
@@ -669,32 +672,32 @@ msgstr ""
 " Például: minden harmadik nap:\n"
 " Gyakoriság = naponta, intervallum = 3"
 
-#: ../src/appointment.c:3576
+#: ../src/appointment.c:3589
 msgid "Limit"
 msgstr "Korlátozás"
 
-#: ../src/appointment.c:3578
+#: ../src/appointment.c:3591
 msgid "Repeat forever"
 msgstr "Ismétlés végtelenségig"
 
-#: ../src/appointment.c:3585
+#: ../src/appointment.c:3598
 msgid "Repeat "
 msgstr "Ismétlés "
 
-#: ../src/appointment.c:3609
+#: ../src/appointment.c:3622
 msgid "Repeat until "
 msgstr "Ismétlés eddig: "
 
 #. weekdays (only for complex settings)
-#: ../src/appointment.c:3625
+#: ../src/appointment.c:3638
 msgid "Weekdays"
 msgstr "Hét napjai"
 
-#: ../src/appointment.c:3642
+#: ../src/appointment.c:3655
 msgid "Which day"
 msgstr "Mely napon"
 
-#: ../src/appointment.c:3653
+#: ../src/appointment.c:3666
 msgid ""
 "Specify which weekday for monthly and yearly events.\n"
 " For example:\n"
@@ -711,11 +714,11 @@ msgstr ""
 "\tMely napon = A Sze alatti mezőben adja meg a 2 értéket"
 
 #. TODO base (only for TODOs)
-#: ../src/appointment.c:3660
+#: ../src/appointment.c:3673
 msgid "TODO base"
 msgstr "Teendő alapja"
 
-#: ../src/appointment.c:3679
+#: ../src/appointment.c:3692
 msgid ""
 "TODO reoccurs regularly starting on start time and repeating after each "
 "interval no matter when it was last completed"
@@ -723,7 +726,7 @@ msgstr ""
 "A teendő rendszeresen ismétlődik a kezdési idővel kezdődően, és minden "
 "időköz után ismétlődik az utolsó befejezés idejétől függetlenül"
 
-#: ../src/appointment.c:3681
+#: ../src/appointment.c:3694
 msgid ""
 "TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
@@ -732,11 +735,11 @@ msgstr ""
 "(A teendő előzményeiről semmit nem lehet tudni, mivel az ismétlődés alapja minden befejezés után változik.)"
 
 #. exceptions
-#: ../src/appointment.c:3687
+#: ../src/appointment.c:3700
 msgid "Exceptions"
 msgstr "Kivételek"
 
-#: ../src/appointment.c:3713
+#: ../src/appointment.c:3726
 msgid ""
 "Add more exception dates by clicking the calendar days below.\n"
 "Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
@@ -746,20 +749,20 @@ msgstr ""
 "A kivétel kizárás(-) vagy felvétel(+) lehet, a választásától függően.\n"
 "Az adatokra kattintva eltávolíthatja azokat."
 
-#: ../src/appointment.c:3724
+#: ../src/appointment.c:3737
 msgid "Add excluded date (-)"
 msgstr "Kizárt dátum hozzáadása(-)"
 
-#: ../src/appointment.c:3726
+#: ../src/appointment.c:3739
 msgid "Excluded days are full days where this appointment is not happening"
 msgstr ""
 "A kizárt napok azok a teljes napok, amelyeken ez a találkozó nem jön létre"
 
-#: ../src/appointment.c:3733
+#: ../src/appointment.c:3746
 msgid "Add included time (+)"
 msgstr "Felvett idő hozzáadása(+)"
 
-#: ../src/appointment.c:3735
+#: ../src/appointment.c:3748
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time"
@@ -768,7 +771,7 @@ msgstr ""
 "időpontok"
 
 #. calendars showing the action days
-#: ../src/appointment.c:3754
+#: ../src/appointment.c:3767
 msgid "Action dates"
 msgstr "Művelet dátumai"
 
@@ -1202,11 +1205,11 @@ msgstr "_Mai nap kijelölése"
 
 #. Help menu
 #. the rest
-#: ../src/mainbox.c:254 ../src/parameters.c:1204
+#: ../src/mainbox.c:254 ../src/parameters.c:1208
 msgid "_Help"
 msgstr "_Súgó"
 
-#: ../src/mainbox.c:314 ../src/reminder.c:981
+#: ../src/mainbox.c:314 ../src/reminder.c:966
 msgid "No title defined"
 msgstr "Nincs cím megadva"
 
@@ -1292,243 +1295,238 @@ msgstr "\tÖsszeállítva a GTK+-%d.%d.%d használatával,"
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "fut a GTK+-%d.%d.%d használatával.\n"
 
-#: ../src/orage-application.c:169
-#, c-format
-msgid "\tUsing DBUS for import.\n"
-msgstr "\tD-Bus használatban az importáláshoz.\n"
-
-#: ../src/orage-application.c:171
+#: ../src/orage-application.c:170
 #, c-format
 msgid "\tUsing libnotify.\n"
 msgstr "\tA libnotify használatban.\n"
 
-#: ../src/orage-application.c:173
+#: ../src/orage-application.c:172
 #, c-format
 msgid "\tNot using libnotify.\n"
 msgstr "\tA libnotify nincs használatban.\n"
 
-#: ../src/orage-application.c:176
+#: ../src/orage-application.c:175
 #, c-format
 msgid "\tUsing automatic archiving.\n"
 msgstr "\tAutomatikus archiválás használatban.\n"
 
-#: ../src/orage-application.c:178
+#: ../src/orage-application.c:177
 #, c-format
 msgid "\tNot using archiving.\n"
 msgstr "\tAz archiválás nincs használatban.\n"
 
-#: ../src/orage-application.c:181
+#: ../src/orage-application.c:180
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
 msgstr "\tlibxfce4ui használata: igen\n"
 
-#: ../src/orage-application.c:183
+#: ../src/orage-application.c:182
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
 msgstr "\tlibxfce4ui használata: nem\n"
 
-#: ../src/orage-application.c:529
+#: ../src/orage-application.c:528
 msgid "Show version of orage"
 msgstr ""
 
-#: ../src/orage-application.c:538
+#: ../src/orage-application.c:537
 msgid "Show preferences form"
 msgstr ""
 
-#: ../src/orage-application.c:547
+#: ../src/orage-application.c:546
 msgid "Make Orage visible/unvisible"
 msgstr ""
 
-#: ../src/orage-application.c:556
+#: ../src/orage-application.c:555
 msgid "Add a foreign file"
 msgstr ""
 
-#: ../src/orage-application.c:574
+#: ../src/orage-application.c:573
 msgid "Export appointments from Orage to file"
 msgstr ""
 
-#: ../src/parameters.c:546
+#: ../src/parameters.c:550
 msgid "Main settings"
 msgstr "Elsődleges beállítások"
 
-#: ../src/parameters.c:552
+#: ../src/parameters.c:556
 msgid "Timezone"
 msgstr "Időzóna"
 
-#: ../src/parameters.c:573
+#: ../src/parameters.c:577
 msgid "You should always define your local timezone."
 msgstr "Mindig meg kell adnia a helyi időzónáját."
 
-#: ../src/parameters.c:581
+#: ../src/parameters.c:585
 msgid "Archive threshold (months)"
 msgstr "Archiválási küszöb (hónap)"
 
-#: ../src/parameters.c:594
+#: ../src/parameters.c:598
 msgid "(0 = no archiving)"
 msgstr "(0 = nincs archiválás)"
 
-#: ../src/parameters.c:598
+#: ../src/parameters.c:602
 msgid "Archiving is used to save time and space when handling events."
 msgstr ""
 "Az archiválás célja az események kezelésekor történő idő- és helyspórolás."
 
-#: ../src/parameters.c:606
+#: ../src/parameters.c:610
 msgid "Sound command"
 msgstr "Hang parancs"
 
-#: ../src/parameters.c:634
+#: ../src/parameters.c:638
 msgid "This command is given to shell to make sound in alarms."
 msgstr ""
 "Ezen parancs futtatása a figyelmeztetések hangjának megszólaltatásához."
 
-#: ../src/parameters.c:665
+#: ../src/parameters.c:669
 msgid "Calendar window"
 msgstr "Naptár ablak"
 
-#: ../src/parameters.c:672
+#: ../src/parameters.c:676
 msgid "Calendar visual details"
 msgstr "Naptár vizuális részletek"
 
-#: ../src/parameters.c:679
+#: ../src/parameters.c:683
 msgid "Show borders"
 msgstr "Szegélyek megjelenítése"
 
-#: ../src/parameters.c:684
+#: ../src/parameters.c:688
 msgid "Show menu"
 msgstr "Menü megjelenítése"
 
-#: ../src/parameters.c:692
+#: ../src/parameters.c:696
 msgid "Show day names"
 msgstr "Napnevek megjelenítése"
 
-#: ../src/parameters.c:697
+#: ../src/parameters.c:701
 msgid "Show week numbers"
 msgstr "Hétszámok megjelenítése"
 
-#: ../src/parameters.c:705
+#: ../src/parameters.c:709
 msgid "Show month and year"
 msgstr "Hónap és év megjelenítése"
 
-#: ../src/parameters.c:725
+#: ../src/parameters.c:729
 msgid "Calendar info boxes"
 msgstr "Naptár információs dobozok"
 
-#: ../src/parameters.c:732
+#: ../src/parameters.c:736
 msgid "Show todo list"
 msgstr "Teendőlista megjelenítése"
 
-#: ../src/parameters.c:739
+#: ../src/parameters.c:743
 msgid "Number of days to show in event window"
 msgstr "Az eseményablakban megjelenítendő napok száma"
 
-#: ../src/parameters.c:747
+#: ../src/parameters.c:751
 msgid "0 = do not show event list at all"
 msgstr "0 = ne jelenjen meg az eseménylista"
 
-#: ../src/parameters.c:761
+#: ../src/parameters.c:765
 msgid "Calendar visibility"
 msgstr "Naptár láthatóság"
 
-#: ../src/parameters.c:767
+#: ../src/parameters.c:771
 msgid "Show on all desktops"
 msgstr "Megjelenítés minden asztalon"
 
-#: ../src/parameters.c:772
+#: ../src/parameters.c:776
 msgid "Keep on top"
 msgstr "Mindig felül tartás"
 
-#: ../src/parameters.c:780
+#: ../src/parameters.c:784
 msgid "Show in taskbar"
 msgstr "Megjelenítés a feladatsávon"
 
-#: ../src/parameters.c:785
+#: ../src/parameters.c:789
 msgid "Show in pager"
 msgstr "Megjelenítés a lapozóban"
 
-#: ../src/parameters.c:793
+#: ../src/parameters.c:797
 msgid "Show in systray"
 msgstr "Megjelenítés az értesítési területen"
 
-#: ../src/parameters.c:821
+#: ../src/parameters.c:825
 msgid "Calendar start"
 msgstr "Naptár indítása"
 
-#: ../src/parameters.c:827
+#: ../src/parameters.c:831
 msgid "Show"
 msgstr "Megjelenítés"
 
-#: ../src/parameters.c:843
+#: ../src/parameters.c:847
 msgid "Hide"
 msgstr "Elrejtés"
 
-#: ../src/parameters.c:860
+#: ../src/parameters.c:864
 msgid "Minimized"
 msgstr "Minimalizálás"
 
-#: ../src/parameters.c:886
+#: ../src/parameters.c:890
 msgid "On calendar window open"
 msgstr "Naptár főablakának megnyitásakor"
 
-#: ../src/parameters.c:892
+#: ../src/parameters.c:896
 msgid "Select today's date"
 msgstr "Mai dátum kiválasztása"
 
-#: ../src/parameters.c:909
+#: ../src/parameters.c:913
 msgid "Select previously selected date"
 msgstr "Előzőleg kiválasztott dátum kiválasztása"
 
-#: ../src/parameters.c:933
+#: ../src/parameters.c:937
 msgid "Calendar day double click shows"
 msgstr "A naptári napra dupla kattintáskor megjelenik"
 
-#: ../src/parameters.c:939
+#: ../src/parameters.c:943
 msgid "Days view"
 msgstr "Napi nézet"
 
-#: ../src/parameters.c:955
+#: ../src/parameters.c:959
 msgid "Event list"
 msgstr "Eseménylista"
 
-#: ../src/parameters.c:988
+#: ../src/parameters.c:992
 msgid "Extra settings"
 msgstr "További beállítások"
 
-#: ../src/parameters.c:995
+#: ../src/parameters.c:999
 msgid "Event list window"
 msgstr "Eseménylista ablak"
 
-#: ../src/parameters.c:1002
+#: ../src/parameters.c:1006
 msgid "Number of extra days to show in event list"
 msgstr "Az eseménylistában megjelenítendő további napok száma"
 
-#: ../src/parameters.c:1012
+#: ../src/parameters.c:1016
 msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
 msgstr ""
 "Ez csak az alapértelmezett érték, az eseménylista ablakban módosítható."
 
-#: ../src/parameters.c:1020
+#: ../src/parameters.c:1024
 msgid "Show only first repeating event"
 msgstr "Csak az első ismétlődő esemény megjelenítése"
 
-#: ../src/parameters.c:1037
+#: ../src/parameters.c:1041
 msgid "Day view window default first day"
 msgstr "Napi nézet ablak alapértelmezett első napja"
 
-#: ../src/parameters.c:1044
+#: ../src/parameters.c:1048
 msgid "First day of week"
 msgstr "Hét első napja"
 
-#: ../src/parameters.c:1061
+#: ../src/parameters.c:1065
 msgid "Selected day"
 msgstr "Kiválasztott nap"
 
-#: ../src/parameters.c:1084 ../src/parameters.c:1091
+#: ../src/parameters.c:1088 ../src/parameters.c:1095
 msgid "Use wakeup timer"
 msgstr "Ébredési időzítő használata"
 
-#: ../src/parameters.c:1099
+#: ../src/parameters.c:1103
 msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
@@ -1537,27 +1535,27 @@ msgstr ""
 "felfüggesztés vagy hibernálás után. (Például a tálcaikon nem frissül, vagy "
 "az értesítések nem jelennek meg időben.)"
 
-#: ../src/parameters.c:1109
+#: ../src/parameters.c:1113
 msgid "Foreign file default visual alarm"
 msgstr "Külső fájl alapértelmezett vizuális riasztása"
 
-#: ../src/parameters.c:1116
+#: ../src/parameters.c:1120
 msgid "Orage window"
 msgstr "Orage ablak"
 
-#: ../src/parameters.c:1133
+#: ../src/parameters.c:1137
 msgid "Notify notification"
 msgstr "Értesítési üzenet"
 
-#: ../src/parameters.c:1156
+#: ../src/parameters.c:1160
 msgid "Always quit when asked to close"
 msgstr "Bezáráskor mindig lépjen ki"
 
-#: ../src/parameters.c:1163
+#: ../src/parameters.c:1167
 msgid "Always quit"
 msgstr "Mindig lépjen ki"
 
-#: ../src/parameters.c:1170
+#: ../src/parameters.c:1174
 msgid ""
 "By default Orage stays open in the background when asked to close. This "
 "option changes Orage to quit and never stay in background when it is asked "
@@ -1567,47 +1565,47 @@ msgstr ""
 "beállítja, hogy az Orage ténylegesen lépjen ki, és sose maradjon a háttérben"
 " ha bezárja."
 
-#: ../src/parameters.c:1185
+#: ../src/parameters.c:1189
 msgid "Orage Preferences"
 msgstr "Orage beállításai"
 
-#: ../src/parameters.c:1207 ../src/reminder.c:659
+#: ../src/parameters.c:1211 ../src/reminder.c:643
 msgid "_Close"
 msgstr "_Bezárás"
 
-#: ../src/reminder.c:427
+#: ../src/reminder.c:421
 msgid "Reminder"
 msgstr ""
 
-#: ../src/reminder.c:460
+#: ../src/reminder.c:444
 msgid "Open"
 msgstr "Megnyitás"
 
-#: ../src/reminder.c:465
+#: ../src/reminder.c:449
 msgid "Silence"
 msgstr ""
 
-#: ../src/reminder.c:584
+#: ../src/reminder.c:568
 msgid "Reminder - Orage"
 msgstr "Emlékeztető – Orage"
 
-#: ../src/reminder.c:667
+#: ../src/reminder.c:651
 msgid "_Stop"
 msgstr "_Leállítás"
 
-#: ../src/reminder.c:675
+#: ../src/reminder.c:659
 msgid "Postpone"
 msgstr "Elhalasztás"
 
-#: ../src/reminder.c:677
+#: ../src/reminder.c:661
 msgid "Remind me again after the specified time"
 msgstr "Emlékeztessen a megadott idő után"
 
-#: ../src/reminder.c:949
+#: ../src/reminder.c:934
 msgid "Next active alarms:"
 msgstr "Következő aktív figyelmeztetések:"
 
-#: ../src/reminder.c:988
+#: ../src/reminder.c:973
 #, c-format
 msgid ""
 "\n"
@@ -1616,7 +1614,7 @@ msgstr ""
 "\n"
 "%02d n %02d ó %02d perc eddig: %s"
 
-#: ../src/reminder.c:1002
+#: ../src/reminder.c:987
 #, c-format
 msgid ""
 "\n"
