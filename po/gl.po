@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-18 12:52+0100\n"
+"POT-Creation-Date: 2023-01-28 00:49+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Nick Schermer <nick@xfce.org>, 2022\n"
 "Language-Team: Galician (https://www.transifex.com/xfce/teams/16840/gl/)\n"
@@ -53,7 +53,7 @@ msgstr "Orage"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
-#: ../src/appointment.c:698 ../src/interface.c:262 ../src/parameters.c:396
+#: ../src/appointment.c:698 ../src/interface.c:262 ../src/parameters.c:400
 msgid "Select a file..."
 msgstr "Seleccione un ficheiro..."
 
@@ -288,7 +288,7 @@ msgid "All day event"
 msgstr "Actividade de día completo"
 
 #. start time
-#: ../src/appointment.c:2945 ../src/appointment.c:3663 ../src/day-view.c:831
+#: ../src/appointment.c:2945 ../src/appointment.c:3676 ../src/day-view.c:831
 msgid "Start"
 msgstr "Comezo"
 
@@ -300,15 +300,15 @@ msgstr ""
 msgid "Duration"
 msgstr "Duración"
 
-#: ../src/appointment.c:2991 ../src/appointment.c:3198 ../src/reminder.c:623
+#: ../src/appointment.c:2991 ../src/appointment.c:3199 ../src/reminder.c:607
 msgid "days"
 msgstr "días"
 
-#: ../src/appointment.c:2993 ../src/appointment.c:3200 ../src/reminder.c:625
+#: ../src/appointment.c:2993 ../src/appointment.c:3201 ../src/reminder.c:609
 msgid "hours"
 msgstr "horas"
 
-#: ../src/appointment.c:2995 ../src/appointment.c:3202 ../src/reminder.c:627
+#: ../src/appointment.c:2995 ../src/appointment.c:3203 ../src/reminder.c:611
 msgid "mins"
 msgstr "minutos"
 
@@ -318,7 +318,7 @@ msgid "Availability"
 msgstr "Dispoñibilidade"
 
 #. completed (only for TODO)
-#: ../src/appointment.c:3015 ../src/appointment.c:3672
+#: ../src/appointment.c:3015 ../src/appointment.c:3685
 msgid "Completed"
 msgstr "Completado"
 
@@ -389,32 +389,32 @@ msgstr ""
 "<& Ynnnn> tradúcese ao ano en curso menos nnnn.\n"
 "(Isto pódese usar, por exemplo, nos recordatorios de aniversario para indicar a cantidade de anos que fai a persoa)."
 
-#: ../src/appointment.c:3180
+#: ../src/appointment.c:3181
 msgid "Before Start"
 msgstr "Antes do comezo"
 
-#: ../src/appointment.c:3180
+#: ../src/appointment.c:3181
 msgid "Before End"
 msgstr "Antes de finalizar"
 
-#: ../src/appointment.c:3181
+#: ../src/appointment.c:3182
 msgid "After Start"
 msgstr "Despois do comezo"
 
-#: ../src/appointment.c:3181
+#: ../src/appointment.c:3182
 msgid "After End"
 msgstr "Despois de finalizar"
 
-#: ../src/appointment.c:3189
+#: ../src/appointment.c:3190
 msgid "Alarm"
 msgstr "Alarma"
 
 #. **** ALARM TIME ****
-#: ../src/appointment.c:3195
+#: ../src/appointment.c:3196
 msgid "Alarm time"
 msgstr "Hora da alarma"
 
-#: ../src/appointment.c:3220
+#: ../src/appointment.c:3221
 msgid ""
 "Often you want to get alarm:\n"
 " 1) before Event start\n"
@@ -426,11 +426,11 @@ msgstr ""
 "2) antes de que a tarefa remate\n"
 "3) despois de que a tarefa comece"
 
-#: ../src/appointment.c:3225
+#: ../src/appointment.c:3226
 msgid "Persistent alarm"
 msgstr "Alarma persistente"
 
-#: ../src/appointment.c:3230
+#: ../src/appointment.c:3231
 msgid ""
 "Select this if you want Orage to remind you even if it has not been active "
 "when the alarm happened."
@@ -438,84 +438,87 @@ msgstr ""
 "Seleccione isto se quere que Orage o lembre mesmo se non estivo activo cando"
 " a alarma aconteceu."
 
-#. **** Audio Alarm ****
-#: ../src/appointment.c:3239
+#: ../src/appointment.c:3241
 msgid "Sound"
 msgstr "Son"
 
-#: ../src/appointment.c:3243 ../src/appointment.c:3376
+#: ../src/appointment.c:3245 ../src/appointment.c:3389
 msgid "Use"
 msgstr "Utilización"
 
-#: ../src/appointment.c:3245
+#: ../src/appointment.c:3250
 msgid "Select this if you want audible alarm"
 msgstr "Seleccione isto se desexa unha alarma sonora"
 
-#: ../src/appointment.c:3258 ../src/interface.c:1051 ../src/interface.c:1097
+#: ../src/appointment.c:3255
+msgid "Sound command is not set"
+msgstr ""
+
+#: ../src/appointment.c:3270 ../src/interface.c:1051 ../src/interface.c:1097
 #: ../src/interface.c:1273 ../src/interface.c:1365 ../src/interface.c:1448
-#: ../src/parameters.c:401 ../src/parameters.c:624 ../src/reminder.c:652
+#: ../src/parameters.c:405 ../src/parameters.c:628 ../src/reminder.c:636
 msgid "_Open"
 msgstr "_Abrir"
 
-#: ../src/appointment.c:3271
+#: ../src/appointment.c:3284
 msgid "Repeat alarm sound"
 msgstr "Repetir o son da alarma"
 
-#: ../src/appointment.c:3286 ../src/appointment.c:3595
+#: ../src/appointment.c:3299 ../src/appointment.c:3608
 msgid "times"
 msgstr "veces"
 
-#: ../src/appointment.c:3302
+#: ../src/appointment.c:3315
 msgid "sec interval"
 msgstr "intervalo en segundos"
 
 #. **** Display Alarm ****
-#: ../src/appointment.c:3312
+#: ../src/appointment.c:3325
 msgid "Visual"
 msgstr "Visual"
 
-#: ../src/appointment.c:3316
+#: ../src/appointment.c:3329
 msgid "Use Orage window"
 msgstr "Usar a xanela de Orage"
 
-#: ../src/appointment.c:3318
+#: ../src/appointment.c:3331
 msgid "Select this if you want Orage window alarm"
 msgstr "Seleccione isto se quere unha alarma de xanela do Orage"
 
-#: ../src/appointment.c:3330
+#: ../src/appointment.c:3343
 msgid "Use notification"
 msgstr "Usar notificación"
 
-#: ../src/appointment.c:3332
+#: ../src/appointment.c:3345
 msgid "Select this if you want notification alarm"
 msgstr "Seleccione isto se desexa alarma de notificación"
 
-#: ../src/appointment.c:3340
+#: ../src/appointment.c:3353
 msgid "Set timeout"
 msgstr "Definir o prazo"
 
-#: ../src/appointment.c:3342
+#: ../src/appointment.c:3355
 msgid "Select this if you want notification to expire automatically"
 msgstr "Seleccione isto se desexa que a notificación expire automaticamente"
 
-#: ../src/appointment.c:3353
+#: ../src/appointment.c:3366
 msgid "0 = system default expiration time"
 msgstr "0 = tempo de expiración predeterminado do sistema"
 
-#: ../src/appointment.c:3361
+#: ../src/appointment.c:3374
 msgid "seconds"
 msgstr "segundos"
 
 #. **** Procedure Alarm ****
-#: ../src/appointment.c:3372
+#: ../src/appointment.c:3385
 msgid "Procedure"
 msgstr "Procedemento"
 
-#: ../src/appointment.c:3378
+#: ../src/appointment.c:3391
 msgid "Select this if you want procedure or script alarm"
 msgstr "Seleccione isto se quere unha alarma por procedemento ou código"
 
-#: ../src/appointment.c:3388
+#: ../src/appointment.c:3401
 msgid ""
 "You must enter all escape etc characters yourself.\n"
 "This string is just given to shell to process.\n"
@@ -535,109 +538,109 @@ msgstr ""
 "\t<&ST> hora de comezo da cita\n"
 "\t<&ET> hora de finalizado da cita"
 
-#: ../src/appointment.c:3402 ../src/interface.c:1185 ../src/interface.c:1207
+#: ../src/appointment.c:3415 ../src/interface.c:1185 ../src/interface.c:1207
 msgid "_Execute"
 msgstr ""
 
-#: ../src/appointment.c:3404
+#: ../src/appointment.c:3417
 msgid "Test this alarm by raising it now"
 msgstr "Proba esta alarma executándoa agora"
 
-#: ../src/appointment.c:3417
+#: ../src/appointment.c:3430
 msgid "<b>Default alarm</b>"
 msgstr "<b>Alarma predeterminada</b>"
 
-#: ../src/appointment.c:3423 ../src/interface.c:1058 ../src/interface.c:1104
+#: ../src/appointment.c:3436 ../src/interface.c:1058 ../src/interface.c:1104
 #: ../src/interface.c:1279 ../src/interface.c:1371
 msgid "_Save"
 msgstr "_Gardar"
 
-#: ../src/appointment.c:3431
+#: ../src/appointment.c:3444
 msgid "Store current settings as default alarm"
 msgstr "Gardar a configuración actual como alarma predeterminada"
 
-#: ../src/appointment.c:3433
+#: ../src/appointment.c:3446
 msgid "_Revert"
 msgstr "_Reverter"
 
-#: ../src/appointment.c:3441
+#: ../src/appointment.c:3454
 msgid "Set current settings from default alarm"
 msgstr "Definir a configuración actual a partir da alarma predeterminada"
 
-#: ../src/appointment.c:3507
+#: ../src/appointment.c:3520
 msgid "None"
 msgstr "Ningún"
 
-#: ../src/appointment.c:3507
+#: ../src/appointment.c:3520
 msgid "Daily"
 msgstr "Diariamente"
 
-#: ../src/appointment.c:3507
+#: ../src/appointment.c:3520
 msgid "Weekly"
 msgstr "Semanalmente"
 
-#: ../src/appointment.c:3507
+#: ../src/appointment.c:3520
 msgid "Monthly"
 msgstr "Mensualmente"
 
-#: ../src/appointment.c:3507
+#: ../src/appointment.c:3520
 msgid "Yearly"
 msgstr "Anualmente"
 
-#: ../src/appointment.c:3507
+#: ../src/appointment.c:3520
 msgid "Hourly"
 msgstr "A cada hora"
 
-#: ../src/appointment.c:3509
+#: ../src/appointment.c:3522
 msgid "Mon"
 msgstr "Lun"
 
-#: ../src/appointment.c:3509
+#: ../src/appointment.c:3522
 msgid "Tue"
 msgstr "Mar"
 
-#: ../src/appointment.c:3509
+#: ../src/appointment.c:3522
 msgid "Wed"
 msgstr "Mér"
 
-#: ../src/appointment.c:3509
+#: ../src/appointment.c:3522
 msgid "Thu"
 msgstr "Xov"
 
-#: ../src/appointment.c:3509
+#: ../src/appointment.c:3522
 msgid "Fri"
 msgstr "Ven"
 
-#: ../src/appointment.c:3509
+#: ../src/appointment.c:3522
 msgid "Sat"
 msgstr "Sáb"
 
-#: ../src/appointment.c:3509
+#: ../src/appointment.c:3522
 msgid "Sun"
 msgstr "Dom"
 
-#: ../src/appointment.c:3514
+#: ../src/appointment.c:3527
 msgid "Recurrence"
 msgstr "Repetición"
 
 #. complexity
-#: ../src/appointment.c:3520
+#: ../src/appointment.c:3533
 msgid "Complexity"
 msgstr "Complexidade"
 
-#: ../src/appointment.c:3523
+#: ../src/appointment.c:3536
 msgid "Basic"
 msgstr "Básico"
 
-#: ../src/appointment.c:3530
+#: ../src/appointment.c:3543
 msgid "Advanced"
 msgstr "Avanzado"
 
-#: ../src/appointment.c:3536
+#: ../src/appointment.c:3549
 msgid "Use this if you want regular repeating event"
 msgstr "Empregue isto se desexa unha actividade que se repita regularmente"
 
-#: ../src/appointment.c:3538
+#: ../src/appointment.c:3551
 msgid ""
 "Use this if you need complex times like:\n"
 " Every Saturday and Sunday or \n"
@@ -648,19 +651,19 @@ msgstr ""
 " primeiro martes cada mes"
 
 #. frequency
-#: ../src/appointment.c:3544
+#: ../src/appointment.c:3557
 msgid "Frequency"
 msgstr "Frecuencia"
 
-#: ../src/appointment.c:3551
+#: ../src/appointment.c:3564
 msgid "Each"
 msgstr "cada"
 
-#: ../src/appointment.c:3562
+#: ../src/appointment.c:3575
 msgid "occurrence"
 msgstr "aparición"
 
-#: ../src/appointment.c:3569
+#: ../src/appointment.c:3582
 msgid ""
 "Limit frequency to certain interval.\n"
 " For example: Every third day:\n"
@@ -670,32 +673,32 @@ msgstr ""
 "Por exemplo: a cada terceiro dia:\n"
 "Frecuencia = diaria e intervalo = 3"
 
-#: ../src/appointment.c:3576
+#: ../src/appointment.c:3589
 msgid "Limit"
 msgstr "Límite"
 
-#: ../src/appointment.c:3578
+#: ../src/appointment.c:3591
 msgid "Repeat forever"
 msgstr "Repetir sempre"
 
-#: ../src/appointment.c:3585
+#: ../src/appointment.c:3598
 msgid "Repeat "
 msgstr "Repetir "
 
-#: ../src/appointment.c:3609
+#: ../src/appointment.c:3622
 msgid "Repeat until "
 msgstr "Repetir ata "
 
 #. weekdays (only for complex settings)
-#: ../src/appointment.c:3625
+#: ../src/appointment.c:3638
 msgid "Weekdays"
 msgstr "Días laborábeis"
 
-#: ../src/appointment.c:3642
+#: ../src/appointment.c:3655
 msgid "Which day"
 msgstr "Que día"
 
-#: ../src/appointment.c:3653
+#: ../src/appointment.c:3666
 msgid ""
 "Specify which weekday for monthly and yearly events.\n"
 " For example:\n"
@@ -712,11 +715,11 @@ msgstr ""
 "\tQue día=seleccionar 2 do número debaixo do mércores"
 
 #. TODO base (only for TODOs)
-#: ../src/appointment.c:3660
+#: ../src/appointment.c:3673
 msgid "TODO base"
 msgstr "Tarefa base"
 
-#: ../src/appointment.c:3679
+#: ../src/appointment.c:3692
 msgid ""
 "TODO reoccurs regularly starting on start time and repeating after each "
 "interval no matter when it was last completed"
@@ -724,7 +727,7 @@ msgstr ""
 "A tarefa repítese regularmente a partir do momento de inicio e despois de "
 "cada intervalo, sen importar cando se completou por última vez"
 
-#: ../src/appointment.c:3681
+#: ../src/appointment.c:3694
 msgid ""
 "TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
@@ -733,11 +736,11 @@ msgstr ""
 "(Ten en conta que non se pode dicir nada sobre o historial das tarefas desde que se produciron os cambios de base despois de cada unha das veces que se completou)."
 
 #. exceptions
-#: ../src/appointment.c:3687
+#: ../src/appointment.c:3700
 msgid "Exceptions"
 msgstr "Excepcións"
 
-#: ../src/appointment.c:3713
+#: ../src/appointment.c:3726
 msgid ""
 "Add more exception dates by clicking the calendar days below.\n"
 "Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
@@ -747,19 +750,19 @@ msgstr ""
 "A excepción é exclusión (-) ou inclusión (+) en función da selección.\n"
 "Elimínea facendo clic nos datos."
 
-#: ../src/appointment.c:3724
+#: ../src/appointment.c:3737
 msgid "Add excluded date (-)"
 msgstr "Engadir unha data excluída (-)"
 
-#: ../src/appointment.c:3726
+#: ../src/appointment.c:3739
 msgid "Excluded days are full days where this appointment is not happening"
 msgstr "Os días excluídos son días completos onde esta cita non ocorre."
 
-#: ../src/appointment.c:3733
+#: ../src/appointment.c:3746
 msgid "Add included time (+)"
 msgstr "Engadir unha hora incluída (+)"
 
-#: ../src/appointment.c:3735
+#: ../src/appointment.c:3748
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time"
@@ -768,7 +771,7 @@ msgstr ""
 "poden ter horas diferentes"
 
 #. calendars showing the action days
-#: ../src/appointment.c:3754
+#: ../src/appointment.c:3767
 msgid "Action dates"
 msgstr "Datas de acción"
 
@@ -1204,11 +1207,11 @@ msgstr "Seleccionar _hoxe"
 
 #. Help menu
 #. the rest
-#: ../src/mainbox.c:254 ../src/parameters.c:1204
+#: ../src/mainbox.c:254 ../src/parameters.c:1208
 msgid "_Help"
 msgstr "A_xuda"
 
-#: ../src/mainbox.c:314 ../src/reminder.c:981
+#: ../src/mainbox.c:314 ../src/reminder.c:966
 msgid "No title defined"
 msgstr "Non hai ningún título definido"
 
@@ -1294,217 +1297,212 @@ msgstr "\tCompilado con GTK+-%d.%d.%d, "
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "usando GTK+-%d.%d.%d.\n"
 
-#: ../src/orage-application.c:169
-#, c-format
-msgid "\tUsing DBUS for import.\n"
-msgstr "\tUsando DBUS para importar.\n"
-
-#: ../src/orage-application.c:171
+#: ../src/orage-application.c:170
 #, c-format
 msgid "\tUsing libnotify.\n"
 msgstr "\tUsando libnotify.\n"
 
-#: ../src/orage-application.c:173
+#: ../src/orage-application.c:172
 #, c-format
 msgid "\tNot using libnotify.\n"
 msgstr "\tNon usa libnotify.\n"
 
-#: ../src/orage-application.c:176
+#: ../src/orage-application.c:175
 #, c-format
 msgid "\tUsing automatic archiving.\n"
 msgstr "\tEmprega o arquivamento automático.\n"
 
-#: ../src/orage-application.c:178
+#: ../src/orage-application.c:177
 #, c-format
 msgid "\tNot using archiving.\n"
 msgstr "\tNon se usa o arquivamento.\n"
 
-#: ../src/orage-application.c:181
+#: ../src/orage-application.c:180
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
 msgstr ""
 
-#: ../src/orage-application.c:183
+#: ../src/orage-application.c:182
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
 msgstr ""
 
-#: ../src/orage-application.c:529
+#: ../src/orage-application.c:528
 msgid "Show version of orage"
 msgstr ""
 
-#: ../src/orage-application.c:538
+#: ../src/orage-application.c:537
 msgid "Show preferences form"
 msgstr ""
 
-#: ../src/orage-application.c:547
+#: ../src/orage-application.c:546
 msgid "Make Orage visible/unvisible"
 msgstr ""
 
-#: ../src/orage-application.c:556
+#: ../src/orage-application.c:555
 msgid "Add a foreign file"
 msgstr ""
 
-#: ../src/orage-application.c:574
+#: ../src/orage-application.c:573
 msgid "Export appointments from Orage to file"
 msgstr ""
 
-#: ../src/parameters.c:546
+#: ../src/parameters.c:550
 msgid "Main settings"
 msgstr "Configuración principal"
 
-#: ../src/parameters.c:552
+#: ../src/parameters.c:556
 msgid "Timezone"
 msgstr "Fuso horario"
 
-#: ../src/parameters.c:573
+#: ../src/parameters.c:577
 msgid "You should always define your local timezone."
 msgstr "Sempre debe definir o seu fuso horario."
 
-#: ../src/parameters.c:581
+#: ../src/parameters.c:585
 msgid "Archive threshold (months)"
 msgstr "Límite para o arquivamento (meses)"
 
-#: ../src/parameters.c:594
+#: ../src/parameters.c:598
 msgid "(0 = no archiving)"
 msgstr "(0 = sen arquivamento)"
 
-#: ../src/parameters.c:598
+#: ../src/parameters.c:602
 msgid "Archiving is used to save time and space when handling events."
 msgstr ""
 "O arquivado úsase para aforrar tempo e espazo ao xestionar as actividades."
 
-#: ../src/parameters.c:606
+#: ../src/parameters.c:610
 msgid "Sound command"
 msgstr "Orde de son"
 
-#: ../src/parameters.c:634
+#: ../src/parameters.c:638
 msgid "This command is given to shell to make sound in alarms."
 msgstr ""
 "Proporciónaselle esta orde ao intérprete de ordes para reproducir os sons "
 "das alarmas."
 
-#: ../src/parameters.c:665
+#: ../src/parameters.c:669
 msgid "Calendar window"
 msgstr "Xanela do calendario"
 
-#: ../src/parameters.c:672
+#: ../src/parameters.c:676
 msgid "Calendar visual details"
 msgstr "Detalles visuais do calendario"
 
-#: ../src/parameters.c:679
+#: ../src/parameters.c:683
 msgid "Show borders"
 msgstr "Amosar os bordos"
 
-#: ../src/parameters.c:684
+#: ../src/parameters.c:688
 msgid "Show menu"
 msgstr "Amosar o menú"
 
-#: ../src/parameters.c:692
+#: ../src/parameters.c:696
 msgid "Show day names"
 msgstr "Amosar os nomes dos días"
 
-#: ../src/parameters.c:697
+#: ../src/parameters.c:701
 msgid "Show week numbers"
 msgstr "Amosar os números das semanas"
 
-#: ../src/parameters.c:705
+#: ../src/parameters.c:709
 msgid "Show month and year"
 msgstr "Amosar mes e ano"
 
-#: ../src/parameters.c:725
+#: ../src/parameters.c:729
 msgid "Calendar info boxes"
 msgstr "Caixas de información do calendario"
 
-#: ../src/parameters.c:732
+#: ../src/parameters.c:736
 msgid "Show todo list"
 msgstr "Amosar a lista de tarefas pendentes"
 
-#: ../src/parameters.c:739
+#: ../src/parameters.c:743
 msgid "Number of days to show in event window"
 msgstr "Número de días para amosar na xanela de actividades"
 
-#: ../src/parameters.c:747
+#: ../src/parameters.c:751
 msgid "0 = do not show event list at all"
 msgstr "0 = non amosar a lista de actividades para nada"
 
-#: ../src/parameters.c:761
+#: ../src/parameters.c:765
 msgid "Calendar visibility"
 msgstr "Visibilidade do calendario"
 
-#: ../src/parameters.c:767
+#: ../src/parameters.c:771
 msgid "Show on all desktops"
 msgstr "Amosar en todos os escritorios"
 
-#: ../src/parameters.c:772
+#: ../src/parameters.c:776
 msgid "Keep on top"
 msgstr "Manter enriba"
 
-#: ../src/parameters.c:780
+#: ../src/parameters.c:784
 msgid "Show in taskbar"
 msgstr "Amosar na barra de tarefas"
 
-#: ../src/parameters.c:785
+#: ../src/parameters.c:789
 msgid "Show in pager"
 msgstr "Amosar no paxinador"
 
-#: ../src/parameters.c:793
+#: ../src/parameters.c:797
 msgid "Show in systray"
 msgstr "Amosar na zona de notificación"
 
-#: ../src/parameters.c:821
+#: ../src/parameters.c:825
 msgid "Calendar start"
 msgstr "Comezo do calendario"
 
-#: ../src/parameters.c:827
+#: ../src/parameters.c:831
 msgid "Show"
 msgstr "Amosar"
 
-#: ../src/parameters.c:843
+#: ../src/parameters.c:847
 msgid "Hide"
 msgstr "Agochar"
 
-#: ../src/parameters.c:860
+#: ../src/parameters.c:864
 msgid "Minimized"
 msgstr "Minimizada"
 
-#: ../src/parameters.c:886
+#: ../src/parameters.c:890
 msgid "On calendar window open"
 msgstr "Ao abrir a xanela do calendario"
 
-#: ../src/parameters.c:892
+#: ../src/parameters.c:896
 msgid "Select today's date"
 msgstr "Seleccionar a data de hoxe"
 
-#: ../src/parameters.c:909
+#: ../src/parameters.c:913
 msgid "Select previously selected date"
 msgstr "Seleccionar a data previamente seleccionada"
 
-#: ../src/parameters.c:933
+#: ../src/parameters.c:937
 msgid "Calendar day double click shows"
 msgstr "Amosar ao facer dobre clic no día do calendario"
 
-#: ../src/parameters.c:939
+#: ../src/parameters.c:943
 msgid "Days view"
 msgstr "Visualización dos días"
 
-#: ../src/parameters.c:955
+#: ../src/parameters.c:959
 msgid "Event list"
 msgstr "Lista de actividades"
 
-#: ../src/parameters.c:988
+#: ../src/parameters.c:992
 msgid "Extra settings"
 msgstr "Configuracións adicionais"
 
-#: ../src/parameters.c:995
+#: ../src/parameters.c:999
 msgid "Event list window"
 msgstr "Xanela de lista de actividades"
 
-#: ../src/parameters.c:1002
+#: ../src/parameters.c:1006
 msgid "Number of extra days to show in event list"
 msgstr "Número de días extra que amosar na lista de actividades"
 
-#: ../src/parameters.c:1012
+#: ../src/parameters.c:1016
 msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
@@ -1512,27 +1510,27 @@ msgstr ""
 "Este é só o valor por omisión; pódese cambiar na xanela de lista de "
 "actividades mesma."
 
-#: ../src/parameters.c:1020
+#: ../src/parameters.c:1024
 msgid "Show only first repeating event"
 msgstr "Amosar só a primeira actividade que se repita"
 
-#: ../src/parameters.c:1037
+#: ../src/parameters.c:1041
 msgid "Day view window default first day"
 msgstr "Primeiro día predeterminado na xanela de visualización por día"
 
-#: ../src/parameters.c:1044
+#: ../src/parameters.c:1048
 msgid "First day of week"
 msgstr "Primeiro día da semana"
 
-#: ../src/parameters.c:1061
+#: ../src/parameters.c:1065
 msgid "Selected day"
 msgstr "Día seleccionado"
 
-#: ../src/parameters.c:1084 ../src/parameters.c:1091
+#: ../src/parameters.c:1088 ../src/parameters.c:1095
 msgid "Use wakeup timer"
 msgstr "Use o temporizador de alarma"
 
-#: ../src/parameters.c:1099
+#: ../src/parameters.c:1103
 msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
@@ -1541,27 +1539,27 @@ msgstr ""
 "despois de suspender ou hibernar. (Por exemplo, a icona da zona do sistema "
 "non se actualiza ou as alarmas non se executan.)"
 
-#: ../src/parameters.c:1109
+#: ../src/parameters.c:1113
 msgid "Foreign file default visual alarm"
 msgstr "Alarma visual predeterminada do ficheiro externo"
 
-#: ../src/parameters.c:1116
+#: ../src/parameters.c:1120
 msgid "Orage window"
 msgstr "Xanela do Orage"
 
-#: ../src/parameters.c:1133
+#: ../src/parameters.c:1137
 msgid "Notify notification"
 msgstr "Notificar a notificación"
 
-#: ../src/parameters.c:1156
+#: ../src/parameters.c:1160
 msgid "Always quit when asked to close"
 msgstr "Saír sempre cando se pregunte por pechar."
 
-#: ../src/parameters.c:1163
+#: ../src/parameters.c:1167
 msgid "Always quit"
 msgstr "Saír sempre"
 
-#: ../src/parameters.c:1170
+#: ../src/parameters.c:1174
 msgid ""
 "By default Orage stays open in the background when asked to close. This "
 "option changes Orage to quit and never stay in background when it is asked "
@@ -1571,47 +1569,47 @@ msgstr ""
 " pregunte para pechar. Esta opción muda o comportamento do Orage para saír e"
 " nunca ficar en segundo plano cando se lle pide pechar."
 
-#: ../src/parameters.c:1185
+#: ../src/parameters.c:1189
 msgid "Orage Preferences"
 msgstr "Preferencias de Orage"
 
-#: ../src/parameters.c:1207 ../src/reminder.c:659
+#: ../src/parameters.c:1211 ../src/reminder.c:643
 msgid "_Close"
 msgstr "_Pechar"
 
-#: ../src/reminder.c:427
+#: ../src/reminder.c:421
 msgid "Reminder"
 msgstr ""
 
-#: ../src/reminder.c:460
+#: ../src/reminder.c:444
 msgid "Open"
 msgstr "Abrir"
 
-#: ../src/reminder.c:465
+#: ../src/reminder.c:449
 msgid "Silence"
 msgstr ""
 
-#: ../src/reminder.c:584
+#: ../src/reminder.c:568
 msgid "Reminder - Orage"
 msgstr "Recordatorio - Orage"
 
-#: ../src/reminder.c:667
+#: ../src/reminder.c:651
 msgid "_Stop"
 msgstr "_Deter"
 
-#: ../src/reminder.c:675
+#: ../src/reminder.c:659
 msgid "Postpone"
 msgstr "Adiar"
 
-#: ../src/reminder.c:677
+#: ../src/reminder.c:661
 msgid "Remind me again after the specified time"
 msgstr "Lembrarme novamente despois do intervalo especificado"
 
-#: ../src/reminder.c:949
+#: ../src/reminder.c:934
 msgid "Next active alarms:"
 msgstr "Seguintes alarmas activas:"
 
-#: ../src/reminder.c:988
+#: ../src/reminder.c:973
 #, c-format
 msgid ""
 "\n"
@@ -1620,7 +1618,7 @@ msgstr ""
 "\n"
 "%02d d %02d h %02d min para: %s"
 
-#: ../src/reminder.c:1002
+#: ../src/reminder.c:987
 #, c-format
 msgid ""
 "\n"
