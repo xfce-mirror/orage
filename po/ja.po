@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-24 00:49+0100\n"
+"POT-Creation-Date: 2023-01-28 00:49+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2023\n"
 "Language-Team: Japanese (https://www.transifex.com/xfce/teams/16840/ja/)\n"
@@ -1200,7 +1200,7 @@ msgstr "今日の日付を選択(_T)"
 msgid "_Help"
 msgstr "ヘルプ(_H)"
 
-#: ../src/mainbox.c:314 ../src/reminder.c:965
+#: ../src/mainbox.c:314 ../src/reminder.c:966
 msgid "No title defined"
 msgstr "件名なし"
 
@@ -1286,58 +1286,53 @@ msgstr "\tGTK+-%d.%d.%d に対してコンパイルしたものであり、"
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "GTK+-%d.%d.%d を使用しています。\n"
 
-#: ../src/orage-application.c:169
-#, c-format
-msgid "\tUsing DBUS for import.\n"
-msgstr "\tインポートに D-Bus を使用しています。\n"
-
-#: ../src/orage-application.c:171
+#: ../src/orage-application.c:170
 #, c-format
 msgid "\tUsing libnotify.\n"
 msgstr "\tlibnotify を使用しています。\n"
 
-#: ../src/orage-application.c:173
+#: ../src/orage-application.c:172
 #, c-format
 msgid "\tNot using libnotify.\n"
 msgstr "\tlibnotify を使用していません。\n"
 
-#: ../src/orage-application.c:176
+#: ../src/orage-application.c:175
 #, c-format
 msgid "\tUsing automatic archiving.\n"
 msgstr "\t自動アーカイブを使用しています。\n"
 
-#: ../src/orage-application.c:178
+#: ../src/orage-application.c:177
 #, c-format
 msgid "\tNot using archiving.\n"
 msgstr "\tアーカイブ化を使用していません。\n"
 
-#: ../src/orage-application.c:181
+#: ../src/orage-application.c:180
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
 msgstr "libxfce4ui の使用: はい\n"
 
-#: ../src/orage-application.c:183
+#: ../src/orage-application.c:182
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
 msgstr "libxfce4ui の使用: いいえ\n"
 
-#: ../src/orage-application.c:529
+#: ../src/orage-application.c:528
 msgid "Show version of orage"
 msgstr "Orage のバージョンを表示"
 
-#: ../src/orage-application.c:538
+#: ../src/orage-application.c:537
 msgid "Show preferences form"
 msgstr "設定フォームを表示"
 
-#: ../src/orage-application.c:547
+#: ../src/orage-application.c:546
 msgid "Make Orage visible/unvisible"
 msgstr "Orage を表示/非表示にする"
 
-#: ../src/orage-application.c:556
+#: ../src/orage-application.c:555
 msgid "Add a foreign file"
 msgstr "外部ファイルを追加"
 
-#: ../src/orage-application.c:574
+#: ../src/orage-application.c:573
 msgid "Export appointments from Orage to file"
 msgstr "Orage からファイルに予定をエクスポートする"
 
@@ -1592,11 +1587,11 @@ msgstr "後で"
 msgid "Remind me again after the specified time"
 msgstr "指定時刻後に再度通知します"
 
-#: ../src/reminder.c:933
+#: ../src/reminder.c:934
 msgid "Next active alarms:"
 msgstr "次回の有効なアラーム:"
 
-#: ../src/reminder.c:972
+#: ../src/reminder.c:973
 #, c-format
 msgid ""
 "\n"
@@ -1605,7 +1600,7 @@ msgstr ""
 "\n"
 "あと %02d 日 %02d 時間 %02d 分: %s"
 
-#: ../src/reminder.c:986
+#: ../src/reminder.c:987
 #, c-format
 msgid ""
 "\n"
