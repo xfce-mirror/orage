@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-24 00:49+0100\n"
+"POT-Creation-Date: 2023-01-28 00:49+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Andreas Eitel <github-aneitel@online.de>, 2023\n"
 "Language-Team: German (https://www.transifex.com/xfce/teams/16840/de/)\n"
@@ -1223,7 +1223,7 @@ msgstr "Heutiger _Tag"
 msgid "_Help"
 msgstr "_Hilfe"
 
-#: ../src/mainbox.c:314 ../src/reminder.c:965
+#: ../src/mainbox.c:314 ../src/reminder.c:966
 msgid "No title defined"
 msgstr "Kein Titel definiert"
 
@@ -1309,58 +1309,53 @@ msgstr "\tKompilliert mit GTK+-%d.%d.%d, "
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "benutzt GTK+-%d.%d.%d.\n"
 
-#: ../src/orage-application.c:169
-#, c-format
-msgid "\tUsing DBUS for import.\n"
-msgstr "\tBenutzt D-Bus zum Import.\n"
-
-#: ../src/orage-application.c:171
+#: ../src/orage-application.c:170
 #, c-format
 msgid "\tUsing libnotify.\n"
 msgstr "\tBenutzt libnotify.\n"
 
-#: ../src/orage-application.c:173
+#: ../src/orage-application.c:172
 #, c-format
 msgid "\tNot using libnotify.\n"
 msgstr "\tBenutzt libnotify nicht.\n"
 
-#: ../src/orage-application.c:176
+#: ../src/orage-application.c:175
 #, c-format
 msgid "\tUsing automatic archiving.\n"
 msgstr "\tBenutzt Archivierung.\n"
 
-#: ../src/orage-application.c:178
+#: ../src/orage-application.c:177
 #, c-format
 msgid "\tNot using archiving.\n"
 msgstr "\tBenutzt Archivierung nicht.\n"
 
-#: ../src/orage-application.c:181
+#: ../src/orage-application.c:180
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
 msgstr "\tBenutze libxfce4ui: ja\n"
 
-#: ../src/orage-application.c:183
+#: ../src/orage-application.c:182
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
 msgstr "\tBenutze libxfce4ui: nein\n"
 
-#: ../src/orage-application.c:529
+#: ../src/orage-application.c:528
 msgid "Show version of orage"
 msgstr "Version von orage anzeigen"
 
-#: ../src/orage-application.c:538
+#: ../src/orage-application.c:537
 msgid "Show preferences form"
 msgstr "Einstellungsformular anzeigen"
 
-#: ../src/orage-application.c:547
+#: ../src/orage-application.c:546
 msgid "Make Orage visible/unvisible"
 msgstr "Orage sichtbar/unsichtbar machen"
 
-#: ../src/orage-application.c:556
+#: ../src/orage-application.c:555
 msgid "Add a foreign file"
 msgstr "Fremddatei hinzufügen"
 
-#: ../src/orage-application.c:574
+#: ../src/orage-application.c:573
 msgid "Export appointments from Orage to file"
 msgstr "Termine aus Orage in eine Datei exportieren"
 
@@ -1624,11 +1619,11 @@ msgstr "Später einnnern"
 msgid "Remind me again after the specified time"
 msgstr "Nach gewisser Zeit wieder erinnern"
 
-#: ../src/reminder.c:933
+#: ../src/reminder.c:934
 msgid "Next active alarms:"
 msgstr "Nächste aktiven Erinnerungen:"
 
-#: ../src/reminder.c:972
+#: ../src/reminder.c:973
 #, c-format
 msgid ""
 "\n"
@@ -1637,7 +1632,7 @@ msgstr ""
 "\n"
 "%02d Tag(e), %02d Stunde(n), %02d Minute(n) bis: %s"
 
-#: ../src/reminder.c:986
+#: ../src/reminder.c:987
 #, c-format
 msgid ""
 "\n"
