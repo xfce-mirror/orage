@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-18 12:52+0100\n"
+"POT-Creation-Date: 2023-01-28 00:49+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Theppitak Karoonboonyanan <theppitak@gmail.com>, 2022\n"
 "Language-Team: Thai (https://www.transifex.com/xfce/teams/16840/th/)\n"
@@ -48,7 +48,7 @@ msgstr "Orage"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
-#: ../src/appointment.c:698 ../src/interface.c:262 ../src/parameters.c:396
+#: ../src/appointment.c:698 ../src/interface.c:262 ../src/parameters.c:400
 msgid "Select a file..."
 msgstr "เลือกแฟ้ม..."
 
@@ -281,7 +281,7 @@ msgid "All day event"
 msgstr "เหตุการณ์ทั้งวัน"
 
 #. start time
-#: ../src/appointment.c:2945 ../src/appointment.c:3663 ../src/day-view.c:831
+#: ../src/appointment.c:2945 ../src/appointment.c:3676 ../src/day-view.c:831
 msgid "Start"
 msgstr "เริ่มต้น"
 
@@ -293,15 +293,15 @@ msgstr ""
 msgid "Duration"
 msgstr "ระยะเวลา"
 
-#: ../src/appointment.c:2991 ../src/appointment.c:3198 ../src/reminder.c:623
+#: ../src/appointment.c:2991 ../src/appointment.c:3199 ../src/reminder.c:607
 msgid "days"
 msgstr "วัน"
 
-#: ../src/appointment.c:2993 ../src/appointment.c:3200 ../src/reminder.c:625
+#: ../src/appointment.c:2993 ../src/appointment.c:3201 ../src/reminder.c:609
 msgid "hours"
 msgstr "ชั่วโมง"
 
-#: ../src/appointment.c:2995 ../src/appointment.c:3202 ../src/reminder.c:627
+#: ../src/appointment.c:2995 ../src/appointment.c:3203 ../src/reminder.c:611
 msgid "mins"
 msgstr "นาที"
 
@@ -311,7 +311,7 @@ msgid "Availability"
 msgstr "สถานะว่าง/ไม่ว่าง"
 
 #. completed (only for TODO)
-#: ../src/appointment.c:3015 ../src/appointment.c:3672
+#: ../src/appointment.c:3015 ../src/appointment.c:3685
 msgid "Completed"
 msgstr "เสร็จสิ้น"
 
@@ -381,32 +381,32 @@ msgstr ""
 "    <&Ynnnn> จะถูกแปลงเป็นปีปัจจุบันลบด้วย nnnn\n"
 "(สามารถใช้ได้ในกรณีอย่างเช่นการเตือนวันเกิด เพื่อบอกว่าบุคคลนั้นอายุเท่าไรแล้ว)"
 
-#: ../src/appointment.c:3180
+#: ../src/appointment.c:3181
 msgid "Before Start"
 msgstr "ก่อนเริ่ม"
 
-#: ../src/appointment.c:3180
+#: ../src/appointment.c:3181
 msgid "Before End"
 msgstr "ก่อนจบ"
 
-#: ../src/appointment.c:3181
+#: ../src/appointment.c:3182
 msgid "After Start"
 msgstr "หลังเริ่ม"
 
-#: ../src/appointment.c:3181
+#: ../src/appointment.c:3182
 msgid "After End"
 msgstr "หลังจบ"
 
-#: ../src/appointment.c:3189
+#: ../src/appointment.c:3190
 msgid "Alarm"
 msgstr "การปลุกเตือน"
 
 #. **** ALARM TIME ****
-#: ../src/appointment.c:3195
+#: ../src/appointment.c:3196
 msgid "Alarm time"
 msgstr "เวลาปลุกเตือน"
 
-#: ../src/appointment.c:3220
+#: ../src/appointment.c:3221
 msgid ""
 "Often you want to get alarm:\n"
 " 1) before Event start\n"
@@ -418,11 +418,11 @@ msgstr ""
 " 2) ก่อนที่สิ่งที่จะทำจะจบลง\n"
 " 3) หลังจากที่สิ่งที่จะทำเริ่มขึ้น"
 
-#: ../src/appointment.c:3225
+#: ../src/appointment.c:3226
 msgid "Persistent alarm"
 msgstr "ปลุกเตือนแบบติดแน่น"
 
-#: ../src/appointment.c:3230
+#: ../src/appointment.c:3231
 msgid ""
 "Select this if you want Orage to remind you even if it has not been active "
 "when the alarm happened."
@@ -430,85 +430,88 @@ msgstr ""
 "เลือกตัวเลือกนี้ถ้าคุณต้องการให้ Orage "
 "เตือนคุณแม้จะไม่ได้ทำงานอยู่ในขณะที่การปลุกเตือนเกิดขึ้น"
 
-#. **** Audio Alarm ****
-#: ../src/appointment.c:3239
+#: ../src/appointment.c:3241
 msgid "Sound"
 msgstr "เสียง"
 
-#: ../src/appointment.c:3243 ../src/appointment.c:3376
+#: ../src/appointment.c:3245 ../src/appointment.c:3389
 msgid "Use"
 msgstr "ใช้"
 
-#: ../src/appointment.c:3245
+#: ../src/appointment.c:3250
 msgid "Select this if you want audible alarm"
 msgstr "เลือกตัวเลือกนี้ถ้าคุณต้องการให้ปลุกเตือนแบบมีเสียง"
 
-#: ../src/appointment.c:3258 ../src/interface.c:1051 ../src/interface.c:1097
+#: ../src/appointment.c:3255
+msgid "Sound command is not set"
+msgstr ""
+
+#: ../src/appointment.c:3270 ../src/interface.c:1051 ../src/interface.c:1097
 #: ../src/interface.c:1273 ../src/interface.c:1365 ../src/interface.c:1448
-#: ../src/parameters.c:401 ../src/parameters.c:624 ../src/reminder.c:652
+#: ../src/parameters.c:405 ../src/parameters.c:628 ../src/reminder.c:636
 msgid "_Open"
 msgstr "_เปิด"
 
-#: ../src/appointment.c:3271
+#: ../src/appointment.c:3284
 msgid "Repeat alarm sound"
 msgstr "ซ้ำเสียงปลุก"
 
-#: ../src/appointment.c:3286 ../src/appointment.c:3595
+#: ../src/appointment.c:3299 ../src/appointment.c:3608
 msgid "times"
 msgstr "ครั้ง"
 
-#: ../src/appointment.c:3302
+#: ../src/appointment.c:3315
 msgid "sec interval"
 msgstr "วินาทีต่อครั้ง"
 
 #. **** Display Alarm ****
-#: ../src/appointment.c:3312
+#: ../src/appointment.c:3325
 msgid "Visual"
 msgstr "ภาพ"
 
-#: ../src/appointment.c:3316
+#: ../src/appointment.c:3329
 msgid "Use Orage window"
 msgstr "ใช้หน้าต่าง Orage"
 
-#: ../src/appointment.c:3318
+#: ../src/appointment.c:3331
 msgid "Select this if you want Orage window alarm"
 msgstr "เลือกตัวเลือกนี้ถ้าคุณต้องการใช้การปลุกเตือนด้วยหน้าต่างของ Orage"
 
-#: ../src/appointment.c:3330
+#: ../src/appointment.c:3343
 msgid "Use notification"
 msgstr "ใช้การแจ้งเหตุ"
 
-#: ../src/appointment.c:3332
+#: ../src/appointment.c:3345
 msgid "Select this if you want notification alarm"
 msgstr "เลือกตัวเลือกนี้ถ้าคุณต้องการใช้การปลุกเตือนด้วยการแจ้งเหตุ"
 
-#: ../src/appointment.c:3340
+#: ../src/appointment.c:3353
 msgid "Set timeout"
 msgstr "ตั้งเวลาคอย"
 
-#: ../src/appointment.c:3342
+#: ../src/appointment.c:3355
 msgid "Select this if you want notification to expire automatically"
 msgstr "เลือกตัวเลือกนี้ถ้าคุณต้องการให้การแจ้งเหตุหมดอายุเองโดยอัตโนมัติ"
 
-#: ../src/appointment.c:3353
+#: ../src/appointment.c:3366
 msgid "0 = system default expiration time"
 msgstr "0 = ใช้เวลาหมดอายุปริยายของระบบ"
 
-#: ../src/appointment.c:3361
+#: ../src/appointment.c:3374
 msgid "seconds"
 msgstr "วินาที"
 
 #. **** Procedure Alarm ****
-#: ../src/appointment.c:3372
+#: ../src/appointment.c:3385
 msgid "Procedure"
 msgstr "โปรแกรม"
 
-#: ../src/appointment.c:3378
+#: ../src/appointment.c:3391
 msgid "Select this if you want procedure or script alarm"
 msgstr ""
 "เลือกตัวเลือกนี้ถ้าคุณต้องการใช้การปลุกเตือนแบบเรียกโปรแกรมหรือสคริปต์"
 
-#: ../src/appointment.c:3388
+#: ../src/appointment.c:3401
 msgid ""
 "You must enter all escape etc characters yourself.\n"
 "This string is just given to shell to process.\n"
@@ -528,109 +531,109 @@ msgstr ""
 "\t<&ST> เวลาเริ่มของนัดหมาย\n"
 "\t<&ET> เวลาจบของนัดหมาย"
 
-#: ../src/appointment.c:3402 ../src/interface.c:1185 ../src/interface.c:1207
+#: ../src/appointment.c:3415 ../src/interface.c:1185 ../src/interface.c:1207
 msgid "_Execute"
 msgstr ""
 
-#: ../src/appointment.c:3404
+#: ../src/appointment.c:3417
 msgid "Test this alarm by raising it now"
 msgstr "ทดสอบการปลุกเตือนนี้โดยสั่งปลุกเดี๋ยวนี้"
 
-#: ../src/appointment.c:3417
+#: ../src/appointment.c:3430
 msgid "<b>Default alarm</b>"
 msgstr "<b>การปลุกเตือนปริยาย</b>"
 
-#: ../src/appointment.c:3423 ../src/interface.c:1058 ../src/interface.c:1104
+#: ../src/appointment.c:3436 ../src/interface.c:1058 ../src/interface.c:1104
 #: ../src/interface.c:1279 ../src/interface.c:1371
 msgid "_Save"
 msgstr "_บันทึก"
 
-#: ../src/appointment.c:3431
+#: ../src/appointment.c:3444
 msgid "Store current settings as default alarm"
 msgstr "บันทึกค่าตั้งปัจจุบันเป็นค่าการปลุกเตือนปริยาย"
 
-#: ../src/appointment.c:3433
+#: ../src/appointment.c:3446
 msgid "_Revert"
 msgstr ""
 
-#: ../src/appointment.c:3441
+#: ../src/appointment.c:3454
 msgid "Set current settings from default alarm"
 msgstr "ตั้งค่าปัจจุบันจากค่าการปลุกเตือนปริยาย"
 
-#: ../src/appointment.c:3507
+#: ../src/appointment.c:3520
 msgid "None"
 msgstr "ไม่มี"
 
-#: ../src/appointment.c:3507
+#: ../src/appointment.c:3520
 msgid "Daily"
 msgstr "ทุกวัน"
 
-#: ../src/appointment.c:3507
+#: ../src/appointment.c:3520
 msgid "Weekly"
 msgstr "ทุกสัปดาห์"
 
-#: ../src/appointment.c:3507
+#: ../src/appointment.c:3520
 msgid "Monthly"
 msgstr "ทุกเดือน"
 
-#: ../src/appointment.c:3507
+#: ../src/appointment.c:3520
 msgid "Yearly"
 msgstr "ทุกปี"
 
-#: ../src/appointment.c:3507
+#: ../src/appointment.c:3520
 msgid "Hourly"
 msgstr "ทุกชั่วโมง"
 
-#: ../src/appointment.c:3509
+#: ../src/appointment.c:3522
 msgid "Mon"
 msgstr "จ."
 
-#: ../src/appointment.c:3509
+#: ../src/appointment.c:3522
 msgid "Tue"
 msgstr "อ."
 
-#: ../src/appointment.c:3509
+#: ../src/appointment.c:3522
 msgid "Wed"
 msgstr "พ."
 
-#: ../src/appointment.c:3509
+#: ../src/appointment.c:3522
 msgid "Thu"
 msgstr "พฤ."
 
-#: ../src/appointment.c:3509
+#: ../src/appointment.c:3522
 msgid "Fri"
 msgstr "ศ."
 
-#: ../src/appointment.c:3509
+#: ../src/appointment.c:3522
 msgid "Sat"
 msgstr "ส."
 
-#: ../src/appointment.c:3509
+#: ../src/appointment.c:3522
 msgid "Sun"
 msgstr "อา."
 
-#: ../src/appointment.c:3514
+#: ../src/appointment.c:3527
 msgid "Recurrence"
 msgstr "การเวียนซ้ำ"
 
 #. complexity
-#: ../src/appointment.c:3520
+#: ../src/appointment.c:3533
 msgid "Complexity"
 msgstr "ความซับซ้อน"
 
-#: ../src/appointment.c:3523
+#: ../src/appointment.c:3536
 msgid "Basic"
 msgstr "พื้นฐาน"
 
-#: ../src/appointment.c:3530
+#: ../src/appointment.c:3543
 msgid "Advanced"
 msgstr "ขั้นสูง"
 
-#: ../src/appointment.c:3536
+#: ../src/appointment.c:3549
 msgid "Use this if you want regular repeating event"
 msgstr "ใช้ตัวเลือกนี้ถ้าคุณต้องการการเวียนซ้ำแบบสม่ำเสมอ"
 
-#: ../src/appointment.c:3538
+#: ../src/appointment.c:3551
 msgid ""
 "Use this if you need complex times like:\n"
 " Every Saturday and Sunday or \n"
@@ -641,19 +644,19 @@ msgstr ""
 " ทุกวันอังคารแรกของเดือน"
 
 #. frequency
-#: ../src/appointment.c:3544
+#: ../src/appointment.c:3557
 msgid "Frequency"
 msgstr "ความถี่"
 
-#: ../src/appointment.c:3551
+#: ../src/appointment.c:3564
 msgid "Each"
 msgstr "ทุกๆ"
 
-#: ../src/appointment.c:3562
+#: ../src/appointment.c:3575
 msgid "occurrence"
 msgstr "ครั้ง"
 
-#: ../src/appointment.c:3569
+#: ../src/appointment.c:3582
 msgid ""
 "Limit frequency to certain interval.\n"
 " For example: Every third day:\n"
@@ -663,32 +666,32 @@ msgstr ""
 " ตัวอย่างเช่น: ทุกสามวัน:\n"
 " ความถี่ = ทุกวัน และ ระยะ = 3"
 
-#: ../src/appointment.c:3576
+#: ../src/appointment.c:3589
 msgid "Limit"
 msgstr "จำกัด"
 
-#: ../src/appointment.c:3578
+#: ../src/appointment.c:3591
 msgid "Repeat forever"
 msgstr "เวียนซ้ำไปตลอด"
 
-#: ../src/appointment.c:3585
+#: ../src/appointment.c:3598
 msgid "Repeat "
 msgstr "เวียนซ้ำ "
 
-#: ../src/appointment.c:3609
+#: ../src/appointment.c:3622
 msgid "Repeat until "
 msgstr "เวียนซ้ำจนถึง "
 
 #. weekdays (only for complex settings)
-#: ../src/appointment.c:3625
+#: ../src/appointment.c:3638
 msgid "Weekdays"
 msgstr "วันในสัปดาห์"
 
-#: ../src/appointment.c:3642
+#: ../src/appointment.c:3655
 msgid "Which day"
 msgstr "วันไหน"
 
-#: ../src/appointment.c:3653
+#: ../src/appointment.c:3666
 msgid ""
 "Specify which weekday for monthly and yearly events.\n"
 " For example:\n"
@@ -705,11 +708,11 @@ msgstr ""
 "\tวันไหน = เลือกเลข 2 ที่ปุ่มปรับเลขใต้วันพุธ"
 
 #. TODO base (only for TODOs)
-#: ../src/appointment.c:3660
+#: ../src/appointment.c:3673
 msgid "TODO base"
 msgstr "ฐานเวลาของสิ่งที่จะทำ"
 
-#: ../src/appointment.c:3679
+#: ../src/appointment.c:3692
 msgid ""
 "TODO reoccurs regularly starting on start time and repeating after each "
 "interval no matter when it was last completed"
@@ -717,7 +720,7 @@ msgstr ""
 "สิ่งที่จะทำเกิดซ้ำเป็นประจำโดยเริ่มจากเวลาเริ่ม "
 "และเวียนซ้ำหลังระยะเวลาผ่านไป ไม่ว่ารายการนั้นจะเสร็จสิ้นครั้งล่าสุดเมื่อใด"
 
-#: ../src/appointment.c:3681
+#: ../src/appointment.c:3694
 msgid ""
 "TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
@@ -726,11 +729,11 @@ msgstr ""
 "(สังเกตว่าคุณจะไม่สามารถบอกได้เกี่ยวกับประวัติของสิ่งที่จะทำนี้ เนื่องจากฐานการนับเวลาเวียนซ้ำจะเปลี่ยนไปทุกครั้งหลังงานเสร็จสิ้น)"
 
 #. exceptions
-#: ../src/appointment.c:3687
+#: ../src/appointment.c:3700
 msgid "Exceptions"
 msgstr "ยกเว้น"
 
-#: ../src/appointment.c:3713
+#: ../src/appointment.c:3726
 msgid ""
 "Add more exception dates by clicking the calendar days below.\n"
 "Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
@@ -740,26 +743,26 @@ msgstr ""
 "ข้อยกเว้นจะเป็นการไม่นับรวม (-) หรือการนับเพิ่ม (+) ขึ้นอยู่กับการเลือก\n"
 "ลบได้ด้วยการคลิกที่ข้อมูลที่จะลบ"
 
-#: ../src/appointment.c:3724
+#: ../src/appointment.c:3737
 msgid "Add excluded date (-)"
 msgstr "เพิ่มวันที่ไม่นับรวม (-)"
 
-#: ../src/appointment.c:3726
+#: ../src/appointment.c:3739
 msgid "Excluded days are full days where this appointment is not happening"
 msgstr "วันที่ไม่นับรวมคือวันทั้งวันที่นัดหมายนี้จะไม่เกิดขึ้น"
 
-#: ../src/appointment.c:3733
+#: ../src/appointment.c:3746
 msgid "Add included time (+)"
 msgstr "เพิ่มเวลาที่นับเพิ่ม (+)"
 
-#: ../src/appointment.c:3735
+#: ../src/appointment.c:3748
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time"
 msgstr "เวลาที่นับเพิ่มจะอยู่ในเขตเวลาเดียวกับเวลาเริ่ม แต่เวลาอาจจะต่างกัน"
 
 #. calendars showing the action days
-#: ../src/appointment.c:3754
+#: ../src/appointment.c:3767
 msgid "Action dates"
 msgstr "วันที่กระทำ"
 
@@ -1195,11 +1198,11 @@ msgstr "เลือกวัน_นี้"
 
 #. Help menu
 #. the rest
-#: ../src/mainbox.c:254 ../src/parameters.c:1204
+#: ../src/mainbox.c:254 ../src/parameters.c:1208
 msgid "_Help"
 msgstr "_วิธีใช้"
 
-#: ../src/mainbox.c:314 ../src/reminder.c:981
+#: ../src/mainbox.c:314 ../src/reminder.c:966
 msgid "No title defined"
 msgstr "ไม่ได้กำหนดชื่อเรื่อง"
 
@@ -1285,214 +1288,209 @@ msgstr "\tคอมไพล์กับ GTK+-%d.%d.%d, "
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "กำลังใช้ GTK+-%d.%d.%d\n"
 
-#: ../src/orage-application.c:169
-#, c-format
-msgid "\tUsing DBUS for import.\n"
-msgstr "\tใช้ DBUS ในการนำเข้า\n"
-
-#: ../src/orage-application.c:171
+#: ../src/orage-application.c:170
 #, c-format
 msgid "\tUsing libnotify.\n"
 msgstr "\tใช้ libnotify\n"
 
-#: ../src/orage-application.c:173
+#: ../src/orage-application.c:172
 #, c-format
 msgid "\tNot using libnotify.\n"
 msgstr "\tไม่ได้ใช้ libnotify\n"
 
-#: ../src/orage-application.c:176
+#: ../src/orage-application.c:175
 #, c-format
 msgid "\tUsing automatic archiving.\n"
 msgstr "\tใช้การทำกรุอัตโนมัติ\n"
 
-#: ../src/orage-application.c:178
+#: ../src/orage-application.c:177
 #, c-format
 msgid "\tNot using archiving.\n"
 msgstr "\tไม่ได้ใช้การทำกรุ\n"
 
-#: ../src/orage-application.c:181
+#: ../src/orage-application.c:180
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
 msgstr ""
 
-#: ../src/orage-application.c:183
+#: ../src/orage-application.c:182
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
 msgstr ""
 
-#: ../src/orage-application.c:529
+#: ../src/orage-application.c:528
 msgid "Show version of orage"
 msgstr ""
 
-#: ../src/orage-application.c:538
+#: ../src/orage-application.c:537
 msgid "Show preferences form"
 msgstr ""
 
-#: ../src/orage-application.c:547
+#: ../src/orage-application.c:546
 msgid "Make Orage visible/unvisible"
 msgstr ""
 
-#: ../src/orage-application.c:556
+#: ../src/orage-application.c:555
 msgid "Add a foreign file"
 msgstr ""
 
-#: ../src/orage-application.c:574
+#: ../src/orage-application.c:573
 msgid "Export appointments from Orage to file"
 msgstr ""
 
-#: ../src/parameters.c:546
+#: ../src/parameters.c:550
 msgid "Main settings"
 msgstr "ค่าตั้งหลักๆ"
 
-#: ../src/parameters.c:552
+#: ../src/parameters.c:556
 msgid "Timezone"
 msgstr "เขตเวลา"
 
-#: ../src/parameters.c:573
+#: ../src/parameters.c:577
 msgid "You should always define your local timezone."
 msgstr "คุณควรกำหนดเขตเวลาท้องถิ่นของคุณเสมอ"
 
-#: ../src/parameters.c:581
+#: ../src/parameters.c:585
 msgid "Archive threshold (months)"
 msgstr "ขีดเริ่มการเก็บเข้ากรุ (เดือน)"
 
-#: ../src/parameters.c:594
+#: ../src/parameters.c:598
 msgid "(0 = no archiving)"
 msgstr "(0 = ไม่เก็บเข้ากรุ)"
 
-#: ../src/parameters.c:598
+#: ../src/parameters.c:602
 msgid "Archiving is used to save time and space when handling events."
 msgstr "การทำกรุช่วยประหยัดเวลาและเนื้อที่ในการจัดการเหตุการณ์ต่างๆ"
 
-#: ../src/parameters.c:606
+#: ../src/parameters.c:610
 msgid "Sound command"
 msgstr "คำสั่งเล่นเสียง"
 
-#: ../src/parameters.c:634
+#: ../src/parameters.c:638
 msgid "This command is given to shell to make sound in alarms."
 msgstr "คำสั่งนี้จะส่งให้เชลล์เรียกทำงานเพื่อเล่นเสียงในการปลุกเตือน"
 
-#: ../src/parameters.c:665
+#: ../src/parameters.c:669
 msgid "Calendar window"
 msgstr "หน้าต่างปฏิทิน"
 
-#: ../src/parameters.c:672
+#: ../src/parameters.c:676
 msgid "Calendar visual details"
 msgstr "รายละเอียดการแสดงปฏิทิน"
 
-#: ../src/parameters.c:679
+#: ../src/parameters.c:683
 msgid "Show borders"
 msgstr "แสดงกรอบหน้าต่าง"
 
-#: ../src/parameters.c:684
+#: ../src/parameters.c:688
 msgid "Show menu"
 msgstr "แสดงเมนู"
 
-#: ../src/parameters.c:692
+#: ../src/parameters.c:696
 msgid "Show day names"
 msgstr "แสดงชื่อวัน"
 
-#: ../src/parameters.c:697
+#: ../src/parameters.c:701
 msgid "Show week numbers"
 msgstr "แสดงสัปดาห์ที่"
 
-#: ../src/parameters.c:705
+#: ../src/parameters.c:709
 msgid "Show month and year"
 msgstr "แสดงเดือนและปี"
 
-#: ../src/parameters.c:725
+#: ../src/parameters.c:729
 msgid "Calendar info boxes"
 msgstr "กล่องข้อมูลปฏิทิน"
 
-#: ../src/parameters.c:732
+#: ../src/parameters.c:736
 msgid "Show todo list"
 msgstr "แสดงรายการสิ่งที่จะทำ"
 
-#: ../src/parameters.c:739
+#: ../src/parameters.c:743
 msgid "Number of days to show in event window"
 msgstr "จำนวนวันที่แสดงในหน้าต่างเหตุการณ์"
 
-#: ../src/parameters.c:747
+#: ../src/parameters.c:751
 msgid "0 = do not show event list at all"
 msgstr "0 = ไม่แสดงรายการเหตุการณ์เลย"
 
-#: ../src/parameters.c:761
+#: ../src/parameters.c:765
 msgid "Calendar visibility"
 msgstr "การปรากฏของปฏิทิน"
 
-#: ../src/parameters.c:767
+#: ../src/parameters.c:771
 msgid "Show on all desktops"
 msgstr "แสดงบนทุกพื้นโต๊ะ"
 
-#: ../src/parameters.c:772
+#: ../src/parameters.c:776
 msgid "Keep on top"
 msgstr "วางไว้บนสุด"
 
-#: ../src/parameters.c:780
+#: ../src/parameters.c:784
 msgid "Show in taskbar"
 msgstr "แสดงในแถบงาน"
 
-#: ../src/parameters.c:785
+#: ../src/parameters.c:789
 msgid "Show in pager"
 msgstr "แสดงในเครื่องมือสลับพื้นที่ทำงาน"
 
-#: ../src/parameters.c:793
+#: ../src/parameters.c:797
 msgid "Show in systray"
 msgstr "แสดงในถาดระบบ"
 
-#: ../src/parameters.c:821
+#: ../src/parameters.c:825
 msgid "Calendar start"
 msgstr "การเริ่มเปิดปฏิทิน"
 
-#: ../src/parameters.c:827
+#: ../src/parameters.c:831
 msgid "Show"
 msgstr "แสดง"
 
-#: ../src/parameters.c:843
+#: ../src/parameters.c:847
 msgid "Hide"
 msgstr "ซ่อน"
 
-#: ../src/parameters.c:860
+#: ../src/parameters.c:864
 msgid "Minimized"
 msgstr "ย่อเก็บ"
 
-#: ../src/parameters.c:886
+#: ../src/parameters.c:890
 msgid "On calendar window open"
 msgstr "ขณะเปิดหน้าต่างปฏิทิน"
 
-#: ../src/parameters.c:892
+#: ../src/parameters.c:896
 msgid "Select today's date"
 msgstr "เลือกวันนี้"
 
-#: ../src/parameters.c:909
+#: ../src/parameters.c:913
 msgid "Select previously selected date"
 msgstr "เลือกวันที่ที่เลือกไว้ครั้งก่อน"
 
-#: ../src/parameters.c:933
+#: ../src/parameters.c:937
 msgid "Calendar day double click shows"
 msgstr "เมื่อดับเบิลคลิกที่วันในปฏิทินจะแสดง"
 
-#: ../src/parameters.c:939
+#: ../src/parameters.c:943
 msgid "Days view"
 msgstr "ข้อมูลรายวัน"
 
-#: ../src/parameters.c:955
+#: ../src/parameters.c:959
 msgid "Event list"
 msgstr "รายการเหตุการณ์"
 
-#: ../src/parameters.c:988
+#: ../src/parameters.c:992
 msgid "Extra settings"
 msgstr "ค่าตั้งเพิ่มเติม"
 
-#: ../src/parameters.c:995
+#: ../src/parameters.c:999
 msgid "Event list window"
 msgstr "หน้าต่างรายการเหตุการณ์"
 
-#: ../src/parameters.c:1002
+#: ../src/parameters.c:1006
 msgid "Number of extra days to show in event list"
 msgstr "จำนวนวันที่จะแสดงเพิ่มในรายการเหตุการณ์"
 
-#: ../src/parameters.c:1012
+#: ../src/parameters.c:1016
 msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
@@ -1500,27 +1498,27 @@ msgstr ""
 "นี่เป็นค่าปริยายเท่านั้น "
 "คุณสามารถเปลี่ยนจำนวนวันจริงได้ในหน้าต่างรายการเหตุการณ์"
 
-#: ../src/parameters.c:1020
+#: ../src/parameters.c:1024
 msgid "Show only first repeating event"
 msgstr "แสดงเฉพาะครั้งแรกของเหตุการณ์ที่เวียนซ้ำ"
 
-#: ../src/parameters.c:1037
+#: ../src/parameters.c:1041
 msgid "Day view window default first day"
 msgstr "วันแรกโดยปริยายของหน้าต่างข้อมูลรายวัน"
 
-#: ../src/parameters.c:1044
+#: ../src/parameters.c:1048
 msgid "First day of week"
 msgstr "วันแรกของสัปดาห์"
 
-#: ../src/parameters.c:1061
+#: ../src/parameters.c:1065
 msgid "Selected day"
 msgstr "วันที่เลือก"
 
-#: ../src/parameters.c:1084 ../src/parameters.c:1091
+#: ../src/parameters.c:1088 ../src/parameters.c:1095
 msgid "Use wakeup timer"
 msgstr "ใช้การตั้งเวลาตื่น"
 
-#: ../src/parameters.c:1099
+#: ../src/parameters.c:1103
 msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
@@ -1528,27 +1526,27 @@ msgstr ""
 "ใช้การตั้งเวลานี้ถ้า Orage มีปัญหาในการตื่นหลังจากพักเครื่องหรือจำศีลเครื่อง"
 " (ตัวอย่างเช่น ไอคอนถาดไม่ปรับตามหรือรายการปลุกเตือนไม่ยอมปลุก)"
 
-#: ../src/parameters.c:1109
+#: ../src/parameters.c:1113
 msgid "Foreign file default visual alarm"
 msgstr "การปลุกเตือนด้วยภาพโดยปริยายสำหรับแฟ้มต่างระบบ"
 
-#: ../src/parameters.c:1116
+#: ../src/parameters.c:1120
 msgid "Orage window"
 msgstr "หน้าต่าง Orage"
 
-#: ../src/parameters.c:1133
+#: ../src/parameters.c:1137
 msgid "Notify notification"
 msgstr "การแจ้งเหตุ"
 
-#: ../src/parameters.c:1156
+#: ../src/parameters.c:1160
 msgid "Always quit when asked to close"
 msgstr "จบโปรแกรมเสมอเมื่อสั่งปิด"
 
-#: ../src/parameters.c:1163
+#: ../src/parameters.c:1167
 msgid "Always quit"
 msgstr "จบโปรแกรมเสมอ"
 
-#: ../src/parameters.c:1170
+#: ../src/parameters.c:1174
 msgid ""
 "By default Orage stays open in the background when asked to close. This "
 "option changes Orage to quit and never stay in background when it is asked "
@@ -1557,47 +1555,47 @@ msgstr ""
 "โดยปกติ Orage จะยังคงเปิดทำงานเบื้องหลังอยู่เมื่อสั่งปิด "
 "ตัวเลือกนี้จะเปลี่ยนให้ Orage จบการทำงานและไม่ทำงานเบื้องหลังเมื่อสั่งปิด"
 
-#: ../src/parameters.c:1185
+#: ../src/parameters.c:1189
 msgid "Orage Preferences"
 msgstr "ปรับแต่ง Orage"
 
-#: ../src/parameters.c:1207 ../src/reminder.c:659
+#: ../src/parameters.c:1211 ../src/reminder.c:643
 msgid "_Close"
 msgstr "ปิ_ด"
 
-#: ../src/reminder.c:427
+#: ../src/reminder.c:421
 msgid "Reminder"
 msgstr ""
 
-#: ../src/reminder.c:460
+#: ../src/reminder.c:444
 msgid "Open"
 msgstr "เปิด"
 
-#: ../src/reminder.c:465
+#: ../src/reminder.c:449
 msgid "Silence"
 msgstr ""
 
-#: ../src/reminder.c:584
+#: ../src/reminder.c:568
 msgid "Reminder - Orage"
 msgstr "แจ้งเตือน - Orage"
 
-#: ../src/reminder.c:667
+#: ../src/reminder.c:651
 msgid "_Stop"
 msgstr "_หยุด"
 
-#: ../src/reminder.c:675
+#: ../src/reminder.c:659
 msgid "Postpone"
 msgstr "เลื่อน"
 
-#: ../src/reminder.c:677
+#: ../src/reminder.c:661
 msgid "Remind me again after the specified time"
 msgstr "เตือนฉันอีกครั้งหลังเวลาที่ระบุ"
 
-#: ../src/reminder.c:949
+#: ../src/reminder.c:934
 msgid "Next active alarms:"
 msgstr "การปลุกเตือนถัดไป:"
 
-#: ../src/reminder.c:988
+#: ../src/reminder.c:973
 #, c-format
 msgid ""
 "\n"
@@ -1606,7 +1604,7 @@ msgstr ""
 "\n"
 "อีก %02d วัน %02d ชม. %02d นาที: %s"
 
-#: ../src/reminder.c:1002
+#: ../src/reminder.c:987
 #, c-format
 msgid ""
 "\n"
