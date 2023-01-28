@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-18 12:52+0100\n"
+"POT-Creation-Date: 2023-01-28 00:49+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: 玉堂白鹤 <yjwork@qq.com>, 2023\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/xfce/teams/16840/zh_CN/)\n"
@@ -57,7 +57,7 @@ msgstr "Orage"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
-#: ../src/appointment.c:698 ../src/interface.c:262 ../src/parameters.c:396
+#: ../src/appointment.c:698 ../src/interface.c:262 ../src/parameters.c:400
 msgid "Select a file..."
 msgstr "选择文件..."
 
@@ -288,7 +288,7 @@ msgid "All day event"
 msgstr "全天事件"
 
 #. start time
-#: ../src/appointment.c:2945 ../src/appointment.c:3663 ../src/day-view.c:831
+#: ../src/appointment.c:2945 ../src/appointment.c:3676 ../src/day-view.c:831
 msgid "Start"
 msgstr "开始"
 
@@ -300,15 +300,15 @@ msgstr "设置"
 msgid "Duration"
 msgstr "持续时间"
 
-#: ../src/appointment.c:2991 ../src/appointment.c:3198 ../src/reminder.c:623
+#: ../src/appointment.c:2991 ../src/appointment.c:3199 ../src/reminder.c:607
 msgid "days"
 msgstr "天"
 
-#: ../src/appointment.c:2993 ../src/appointment.c:3200 ../src/reminder.c:625
+#: ../src/appointment.c:2993 ../src/appointment.c:3201 ../src/reminder.c:609
 msgid "hours"
 msgstr "小时"
 
-#: ../src/appointment.c:2995 ../src/appointment.c:3202 ../src/reminder.c:627
+#: ../src/appointment.c:2995 ../src/appointment.c:3203 ../src/reminder.c:611
 msgid "mins"
 msgstr "分钟"
 
@@ -318,7 +318,7 @@ msgid "Availability"
 msgstr "有效性"
 
 #. completed (only for TODO)
-#: ../src/appointment.c:3015 ../src/appointment.c:3672
+#: ../src/appointment.c:3015 ../src/appointment.c:3685
 msgid "Completed"
 msgstr "完成"
 
@@ -387,32 +387,32 @@ msgstr ""
 "    <&Ynnnn> 转换为当前的年减去 nnnn。\n"
 "(此用来如在生日提醒中显示这个人的年龄。)"
 
-#: ../src/appointment.c:3180
+#: ../src/appointment.c:3181
 msgid "Before Start"
 msgstr "开始前"
 
-#: ../src/appointment.c:3180
+#: ../src/appointment.c:3181
 msgid "Before End"
 msgstr "结束前"
 
-#: ../src/appointment.c:3181
+#: ../src/appointment.c:3182
 msgid "After Start"
 msgstr "开始后"
 
-#: ../src/appointment.c:3181
+#: ../src/appointment.c:3182
 msgid "After End"
 msgstr "结束后"
 
-#: ../src/appointment.c:3189
+#: ../src/appointment.c:3190
 msgid "Alarm"
 msgstr "闹铃"
 
 #. **** ALARM TIME ****
-#: ../src/appointment.c:3195
+#: ../src/appointment.c:3196
 msgid "Alarm time"
 msgstr "闹铃时间"
 
-#: ../src/appointment.c:3220
+#: ../src/appointment.c:3221
 msgid ""
 "Often you want to get alarm:\n"
 " 1) before Event start\n"
@@ -424,94 +424,97 @@ msgstr ""
 " 2) 待办结束前\n"
 " 3) 待办开始后"
 
-#: ../src/appointment.c:3225
+#: ../src/appointment.c:3226
 msgid "Persistent alarm"
 msgstr "持续闹铃"
 
-#: ../src/appointment.c:3230
+#: ../src/appointment.c:3231
 msgid ""
 "Select this if you want Orage to remind you even if it has not been active "
 "when the alarm happened."
 msgstr "闹铃响时，如果您要即使还没激活 Orage 时也提醒您，选择此项。"
 
-#. **** Audio Alarm ****
-#: ../src/appointment.c:3239
+#: ../src/appointment.c:3241
 msgid "Sound"
 msgstr "声音"
 
-#: ../src/appointment.c:3243 ../src/appointment.c:3376
+#: ../src/appointment.c:3245 ../src/appointment.c:3389
 msgid "Use"
 msgstr "使用"
 
-#: ../src/appointment.c:3245
+#: ../src/appointment.c:3250
 msgid "Select this if you want audible alarm"
 msgstr "如果您要可听的闹铃则选择此项"
 
-#: ../src/appointment.c:3258 ../src/interface.c:1051 ../src/interface.c:1097
+#: ../src/appointment.c:3255
+msgid "Sound command is not set"
+msgstr "未设置声音命令"
+
+#: ../src/appointment.c:3270 ../src/interface.c:1051 ../src/interface.c:1097
 #: ../src/interface.c:1273 ../src/interface.c:1365 ../src/interface.c:1448
-#: ../src/parameters.c:401 ../src/parameters.c:624 ../src/reminder.c:652
+#: ../src/parameters.c:405 ../src/parameters.c:628 ../src/reminder.c:636
 msgid "_Open"
 msgstr "打开(&O)"
 
-#: ../src/appointment.c:3271
+#: ../src/appointment.c:3284
 msgid "Repeat alarm sound"
 msgstr "重复闹铃声音"
 
-#: ../src/appointment.c:3286 ../src/appointment.c:3595
+#: ../src/appointment.c:3299 ../src/appointment.c:3608
 msgid "times"
 msgstr "时间"
 
-#: ../src/appointment.c:3302
+#: ../src/appointment.c:3315
 msgid "sec interval"
 msgstr "秒间隔"
 
 #. **** Display Alarm ****
-#: ../src/appointment.c:3312
+#: ../src/appointment.c:3325
 msgid "Visual"
 msgstr "可见"
 
-#: ../src/appointment.c:3316
+#: ../src/appointment.c:3329
 msgid "Use Orage window"
 msgstr "使用 Orage 窗口"
 
-#: ../src/appointment.c:3318
+#: ../src/appointment.c:3331
 msgid "Select this if you want Orage window alarm"
 msgstr "如果您要 Orage 窗口闹铃则选择此项"
 
-#: ../src/appointment.c:3330
+#: ../src/appointment.c:3343
 msgid "Use notification"
 msgstr "使用通知"
 
-#: ../src/appointment.c:3332
+#: ../src/appointment.c:3345
 msgid "Select this if you want notification alarm"
 msgstr "如果您要通知闹铃则选择此项"
 
-#: ../src/appointment.c:3340
+#: ../src/appointment.c:3353
 msgid "Set timeout"
 msgstr "设置超时"
 
-#: ../src/appointment.c:3342
+#: ../src/appointment.c:3355
 msgid "Select this if you want notification to expire automatically"
 msgstr "如果您要通知自动终止则选择此项"
 
-#: ../src/appointment.c:3353
+#: ../src/appointment.c:3366
 msgid "0 = system default expiration time"
 msgstr "0 为系统默认终止时间"
 
-#: ../src/appointment.c:3361
+#: ../src/appointment.c:3374
 msgid "seconds"
 msgstr "秒"
 
 #. **** Procedure Alarm ****
-#: ../src/appointment.c:3372
+#: ../src/appointment.c:3385
 msgid "Procedure"
 msgstr "步骤"
 
-#: ../src/appointment.c:3378
+#: ../src/appointment.c:3391
 msgid "Select this if you want procedure or script alarm"
 msgstr "如果您要步骤或脚本闹铃则选择此项"
 
-#: ../src/appointment.c:3388
+#: ../src/appointment.c:3401
 msgid ""
 "You must enter all escape etc characters yourself.\n"
 "This string is just given to shell to process.\n"
@@ -531,109 +534,109 @@ msgstr ""
 "\t<&ST> 约会开始时间\n"
 "\t<&ET> 约会结束时间"
 
-#: ../src/appointment.c:3402 ../src/interface.c:1185 ../src/interface.c:1207
+#: ../src/appointment.c:3415 ../src/interface.c:1185 ../src/interface.c:1207
 msgid "_Execute"
 msgstr "执行(_E)"
 
-#: ../src/appointment.c:3404
+#: ../src/appointment.c:3417
 msgid "Test this alarm by raising it now"
 msgstr "现在触发闹铃来测试"
 
-#: ../src/appointment.c:3417
+#: ../src/appointment.c:3430
 msgid "<b>Default alarm</b>"
 msgstr "<b>默认闹铃</b>"
 
-#: ../src/appointment.c:3423 ../src/interface.c:1058 ../src/interface.c:1104
+#: ../src/appointment.c:3436 ../src/interface.c:1058 ../src/interface.c:1104
 #: ../src/interface.c:1279 ../src/interface.c:1371
 msgid "_Save"
 msgstr "保存(_S)"
 
-#: ../src/appointment.c:3431
+#: ../src/appointment.c:3444
 msgid "Store current settings as default alarm"
 msgstr "把当前设置存为默认闹铃"
 
-#: ../src/appointment.c:3433
+#: ../src/appointment.c:3446
 msgid "_Revert"
 msgstr "还原(_R)"
 
-#: ../src/appointment.c:3441
+#: ../src/appointment.c:3454
 msgid "Set current settings from default alarm"
 msgstr "从默认闹铃设置当前设置"
 
-#: ../src/appointment.c:3507
+#: ../src/appointment.c:3520
 msgid "None"
 msgstr "无"
 
-#: ../src/appointment.c:3507
+#: ../src/appointment.c:3520
 msgid "Daily"
 msgstr "每天"
 
-#: ../src/appointment.c:3507
+#: ../src/appointment.c:3520
 msgid "Weekly"
 msgstr "每周"
 
-#: ../src/appointment.c:3507
+#: ../src/appointment.c:3520
 msgid "Monthly"
 msgstr "每月"
 
-#: ../src/appointment.c:3507
+#: ../src/appointment.c:3520
 msgid "Yearly"
 msgstr "每年"
 
-#: ../src/appointment.c:3507
+#: ../src/appointment.c:3520
 msgid "Hourly"
 msgstr "每小时"
 
-#: ../src/appointment.c:3509
+#: ../src/appointment.c:3522
 msgid "Mon"
 msgstr "星期一"
 
-#: ../src/appointment.c:3509
+#: ../src/appointment.c:3522
 msgid "Tue"
 msgstr "星期二"
 
-#: ../src/appointment.c:3509
+#: ../src/appointment.c:3522
 msgid "Wed"
 msgstr "星期三"
 
-#: ../src/appointment.c:3509
+#: ../src/appointment.c:3522
 msgid "Thu"
 msgstr "星期四"
 
-#: ../src/appointment.c:3509
+#: ../src/appointment.c:3522
 msgid "Fri"
 msgstr "星期五"
 
-#: ../src/appointment.c:3509
+#: ../src/appointment.c:3522
 msgid "Sat"
 msgstr "星期六"
 
-#: ../src/appointment.c:3509
+#: ../src/appointment.c:3522
 msgid "Sun"
 msgstr "星期日"
 
-#: ../src/appointment.c:3514
+#: ../src/appointment.c:3527
 msgid "Recurrence"
 msgstr "重复发生"
 
 #. complexity
-#: ../src/appointment.c:3520
+#: ../src/appointment.c:3533
 msgid "Complexity"
 msgstr "复杂度"
 
-#: ../src/appointment.c:3523
+#: ../src/appointment.c:3536
 msgid "Basic"
 msgstr "基本"
 
-#: ../src/appointment.c:3530
+#: ../src/appointment.c:3543
 msgid "Advanced"
 msgstr "高级"
 
-#: ../src/appointment.c:3536
+#: ../src/appointment.c:3549
 msgid "Use this if you want regular repeating event"
 msgstr "如果您要规则的重复事件则使用它"
 
-#: ../src/appointment.c:3538
+#: ../src/appointment.c:3551
 msgid ""
 "Use this if you need complex times like:\n"
 " Every Saturday and Sunday or \n"
@@ -644,19 +647,19 @@ msgstr ""
 "  每月的第一个星期二"
 
 #. frequency
-#: ../src/appointment.c:3544
+#: ../src/appointment.c:3557
 msgid "Frequency"
 msgstr "频率"
 
-#: ../src/appointment.c:3551
+#: ../src/appointment.c:3564
 msgid "Each"
 msgstr "每个"
 
-#: ../src/appointment.c:3562
+#: ../src/appointment.c:3575
 msgid "occurrence"
 msgstr "发生"
 
-#: ../src/appointment.c:3569
+#: ../src/appointment.c:3582
 msgid ""
 "Limit frequency to certain interval.\n"
 " For example: Every third day:\n"
@@ -666,32 +669,32 @@ msgstr ""
 " 比如：每三天：\n"
 " 频率为每天且间隔为 3"
 
-#: ../src/appointment.c:3576
+#: ../src/appointment.c:3589
 msgid "Limit"
 msgstr "限定"
 
-#: ../src/appointment.c:3578
+#: ../src/appointment.c:3591
 msgid "Repeat forever"
 msgstr "一直重复"
 
-#: ../src/appointment.c:3585
+#: ../src/appointment.c:3598
 msgid "Repeat "
 msgstr "重复 "
 
-#: ../src/appointment.c:3609
+#: ../src/appointment.c:3622
 msgid "Repeat until "
 msgstr "重复直到 "
 
 #. weekdays (only for complex settings)
-#: ../src/appointment.c:3625
+#: ../src/appointment.c:3638
 msgid "Weekdays"
 msgstr "工作日"
 
-#: ../src/appointment.c:3642
+#: ../src/appointment.c:3655
 msgid "Which day"
 msgstr "哪一天"
 
-#: ../src/appointment.c:3653
+#: ../src/appointment.c:3666
 msgid ""
 "Specify which weekday for monthly and yearly events.\n"
 " For example:\n"
@@ -708,17 +711,17 @@ msgstr ""
 "\t哪一天为从星期三下的数字中选择 2"
 
 #. TODO base (only for TODOs)
-#: ../src/appointment.c:3660
+#: ../src/appointment.c:3673
 msgid "TODO base"
 msgstr "待办基本"
 
-#: ../src/appointment.c:3679
+#: ../src/appointment.c:3692
 msgid ""
 "TODO reoccurs regularly starting on start time and repeating after each "
 "interval no matter when it was last completed"
 msgstr "待办有规律地在开始时间启动并在每个间隔后重复，它会重复发生而不管上次是何时完成的"
 
-#: ../src/appointment.c:3681
+#: ../src/appointment.c:3694
 msgid ""
 "TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
@@ -727,11 +730,11 @@ msgstr ""
 "(注意重复发生基本在每次完成后改变，所以您不能知道待办的任何相关历史。)"
 
 #. exceptions
-#: ../src/appointment.c:3687
+#: ../src/appointment.c:3700
 msgid "Exceptions"
 msgstr "例外"
 
-#: ../src/appointment.c:3713
+#: ../src/appointment.c:3726
 msgid ""
 "Add more exception dates by clicking the calendar days below.\n"
 "Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
@@ -741,26 +744,26 @@ msgstr ""
 "例外取决于选择要么排除(-)要么包括(+)。\n"
 "点击数据移除。"
 
-#: ../src/appointment.c:3724
+#: ../src/appointment.c:3737
 msgid "Add excluded date (-)"
 msgstr "添加排除日期(-)"
 
-#: ../src/appointment.c:3726
+#: ../src/appointment.c:3739
 msgid "Excluded days are full days where this appointment is not happening"
 msgstr "排除天数是约会不会发生的全天"
 
-#: ../src/appointment.c:3733
+#: ../src/appointment.c:3746
 msgid "Add included time (+)"
 msgstr "添加包括时间(+)"
 
-#: ../src/appointment.c:3735
+#: ../src/appointment.c:3748
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time"
 msgstr "包括时间与开始时间的时区相同，但可能时间不同"
 
 #. calendars showing the action days
-#: ../src/appointment.c:3754
+#: ../src/appointment.c:3767
 msgid "Action dates"
 msgstr "动作日期"
 
@@ -1196,11 +1199,11 @@ msgstr "选择今天(_T)"
 
 #. Help menu
 #. the rest
-#: ../src/mainbox.c:254 ../src/parameters.c:1204
+#: ../src/mainbox.c:254 ../src/parameters.c:1208
 msgid "_Help"
 msgstr "帮助(_H)"
 
-#: ../src/mainbox.c:314 ../src/reminder.c:981
+#: ../src/mainbox.c:314 ../src/reminder.c:966
 msgid "No title defined"
 msgstr "未定义标题"
 
@@ -1286,313 +1289,308 @@ msgstr "\t对 GTK+-%d.%d.%d 编译，"
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "使用 GTK+-%d.%d.%d。\n"
 
-#: ../src/orage-application.c:169
-#, c-format
-msgid "\tUsing DBUS for import.\n"
-msgstr "\t使用 DBUS 导入。\n"
-
-#: ../src/orage-application.c:171
+#: ../src/orage-application.c:170
 #, c-format
 msgid "\tUsing libnotify.\n"
 msgstr "\t使用 libnotify。\n"
 
-#: ../src/orage-application.c:173
+#: ../src/orage-application.c:172
 #, c-format
 msgid "\tNot using libnotify.\n"
 msgstr "\t不使用 libnotify。\n"
 
-#: ../src/orage-application.c:176
+#: ../src/orage-application.c:175
 #, c-format
 msgid "\tUsing automatic archiving.\n"
 msgstr "\t使用自动归档。\n"
 
-#: ../src/orage-application.c:178
+#: ../src/orage-application.c:177
 #, c-format
 msgid "\tNot using archiving.\n"
 msgstr "\t不使用归档。\n"
 
-#: ../src/orage-application.c:181
+#: ../src/orage-application.c:180
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
 msgstr "\t使用 libxfce4ui：是\n"
 
-#: ../src/orage-application.c:183
+#: ../src/orage-application.c:182
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
 msgstr "\t使用 libxfce4ui：否\n"
 
-#: ../src/orage-application.c:529
+#: ../src/orage-application.c:528
 msgid "Show version of orage"
 msgstr "显示 orage 版本"
 
-#: ../src/orage-application.c:538
+#: ../src/orage-application.c:537
 msgid "Show preferences form"
 msgstr "显示首选项窗体"
 
-#: ../src/orage-application.c:547
+#: ../src/orage-application.c:546
 msgid "Make Orage visible/unvisible"
 msgstr "使 Orage 可见/不可见"
 
-#: ../src/orage-application.c:556
+#: ../src/orage-application.c:555
 msgid "Add a foreign file"
 msgstr "添加外部文件"
 
-#: ../src/orage-application.c:574
+#: ../src/orage-application.c:573
 msgid "Export appointments from Orage to file"
 msgstr "从 Orage 导出约会到文件"
 
-#: ../src/parameters.c:546
+#: ../src/parameters.c:550
 msgid "Main settings"
 msgstr "主设置"
 
-#: ../src/parameters.c:552
+#: ../src/parameters.c:556
 msgid "Timezone"
 msgstr "时区"
 
-#: ../src/parameters.c:573
+#: ../src/parameters.c:577
 msgid "You should always define your local timezone."
 msgstr "您应该总是定义您的本地时区。"
 
-#: ../src/parameters.c:581
+#: ../src/parameters.c:585
 msgid "Archive threshold (months)"
 msgstr "归档阈值(月)"
 
-#: ../src/parameters.c:594
+#: ../src/parameters.c:598
 msgid "(0 = no archiving)"
 msgstr "(0 为不归档)"
 
-#: ../src/parameters.c:598
+#: ../src/parameters.c:602
 msgid "Archiving is used to save time and space when handling events."
 msgstr "处理事件时归档用于节省时间和空间。"
 
-#: ../src/parameters.c:606
+#: ../src/parameters.c:610
 msgid "Sound command"
 msgstr "声音命令"
 
-#: ../src/parameters.c:634
+#: ../src/parameters.c:638
 msgid "This command is given to shell to make sound in alarms."
 msgstr "此命令传递给 shell 用来放闹铃声音。"
 
-#: ../src/parameters.c:665
+#: ../src/parameters.c:669
 msgid "Calendar window"
 msgstr "日历窗口"
 
-#: ../src/parameters.c:672
+#: ../src/parameters.c:676
 msgid "Calendar visual details"
 msgstr "日历视觉详情"
 
-#: ../src/parameters.c:679
+#: ../src/parameters.c:683
 msgid "Show borders"
 msgstr "显示边框"
 
-#: ../src/parameters.c:684
+#: ../src/parameters.c:688
 msgid "Show menu"
 msgstr "显示菜单"
 
-#: ../src/parameters.c:692
+#: ../src/parameters.c:696
 msgid "Show day names"
 msgstr "显示天名称"
 
-#: ../src/parameters.c:697
+#: ../src/parameters.c:701
 msgid "Show week numbers"
 msgstr "显示周数"
 
-#: ../src/parameters.c:705
+#: ../src/parameters.c:709
 msgid "Show month and year"
 msgstr "显示月和年"
 
-#: ../src/parameters.c:725
+#: ../src/parameters.c:729
 msgid "Calendar info boxes"
 msgstr "日历信息窗口"
 
-#: ../src/parameters.c:732
+#: ../src/parameters.c:736
 msgid "Show todo list"
 msgstr "显示待办列表"
 
-#: ../src/parameters.c:739
+#: ../src/parameters.c:743
 msgid "Number of days to show in event window"
 msgstr "在事件窗口中要显示的天数"
 
-#: ../src/parameters.c:747
+#: ../src/parameters.c:751
 msgid "0 = do not show event list at all"
 msgstr "0 为绝不显示事件列表"
 
-#: ../src/parameters.c:761
+#: ../src/parameters.c:765
 msgid "Calendar visibility"
 msgstr "日历视觉效果"
 
-#: ../src/parameters.c:767
+#: ../src/parameters.c:771
 msgid "Show on all desktops"
 msgstr "在所有桌面显示"
 
-#: ../src/parameters.c:772
+#: ../src/parameters.c:776
 msgid "Keep on top"
 msgstr "置顶"
 
-#: ../src/parameters.c:780
+#: ../src/parameters.c:784
 msgid "Show in taskbar"
 msgstr "在任务栏中显示"
 
-#: ../src/parameters.c:785
+#: ../src/parameters.c:789
 msgid "Show in pager"
 msgstr "在页面中显示"
 
-#: ../src/parameters.c:793
+#: ../src/parameters.c:797
 msgid "Show in systray"
 msgstr "在系统托盘中显示"
 
-#: ../src/parameters.c:821
+#: ../src/parameters.c:825
 msgid "Calendar start"
 msgstr "日历开始"
 
-#: ../src/parameters.c:827
+#: ../src/parameters.c:831
 msgid "Show"
 msgstr "显示"
 
-#: ../src/parameters.c:843
+#: ../src/parameters.c:847
 msgid "Hide"
 msgstr "隐藏"
 
-#: ../src/parameters.c:860
+#: ../src/parameters.c:864
 msgid "Minimized"
 msgstr "最小化"
 
-#: ../src/parameters.c:886
+#: ../src/parameters.c:890
 msgid "On calendar window open"
 msgstr "在日历窗口中打开"
 
-#: ../src/parameters.c:892
+#: ../src/parameters.c:896
 msgid "Select today's date"
 msgstr "选择今天的日期"
 
-#: ../src/parameters.c:909
+#: ../src/parameters.c:913
 msgid "Select previously selected date"
 msgstr "选择以前选中的日期"
 
-#: ../src/parameters.c:933
+#: ../src/parameters.c:937
 msgid "Calendar day double click shows"
 msgstr "在日历的天上双击时显示"
 
-#: ../src/parameters.c:939
+#: ../src/parameters.c:943
 msgid "Days view"
 msgstr "日视图"
 
-#: ../src/parameters.c:955
+#: ../src/parameters.c:959
 msgid "Event list"
 msgstr "事件列表"
 
-#: ../src/parameters.c:988
+#: ../src/parameters.c:992
 msgid "Extra settings"
 msgstr "额外设置"
 
-#: ../src/parameters.c:995
+#: ../src/parameters.c:999
 msgid "Event list window"
 msgstr "事件列表窗口"
 
-#: ../src/parameters.c:1002
+#: ../src/parameters.c:1006
 msgid "Number of extra days to show in event list"
 msgstr "在事件列表中显示的额外天数"
 
-#: ../src/parameters.c:1012
+#: ../src/parameters.c:1016
 msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
 msgstr "这只是默认值，您可以在实际的事件列表窗口中更改它。"
 
-#: ../src/parameters.c:1020
+#: ../src/parameters.c:1024
 msgid "Show only first repeating event"
 msgstr "仅显示第一个重复事件"
 
-#: ../src/parameters.c:1037
+#: ../src/parameters.c:1041
 msgid "Day view window default first day"
 msgstr "日视图窗口默认第一天"
 
-#: ../src/parameters.c:1044
+#: ../src/parameters.c:1048
 msgid "First day of week"
 msgstr "每周第一天"
 
-#: ../src/parameters.c:1061
+#: ../src/parameters.c:1065
 msgid "Selected day"
 msgstr "选中的天"
 
-#: ../src/parameters.c:1084 ../src/parameters.c:1091
+#: ../src/parameters.c:1088 ../src/parameters.c:1095
 msgid "Use wakeup timer"
 msgstr "使用唤醒定时器"
 
-#: ../src/parameters.c:1099
+#: ../src/parameters.c:1103
 msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
 msgstr "如果 Orage 在挂起或休眠后正常唤醒时有问题则使用此定时器(比如托盘图标没有刷新或闹铃没有启动。)。"
 
-#: ../src/parameters.c:1109
+#: ../src/parameters.c:1113
 msgid "Foreign file default visual alarm"
 msgstr "外部文件默认可见闹钟"
 
-#: ../src/parameters.c:1116
+#: ../src/parameters.c:1120
 msgid "Orage window"
 msgstr "Orage 窗口"
 
-#: ../src/parameters.c:1133
+#: ../src/parameters.c:1137
 msgid "Notify notification"
 msgstr "注意通知"
 
-#: ../src/parameters.c:1156
+#: ../src/parameters.c:1160
 msgid "Always quit when asked to close"
 msgstr "要求关闭时总是退出"
 
-#: ../src/parameters.c:1163
+#: ../src/parameters.c:1167
 msgid "Always quit"
 msgstr "总是退出。"
 
-#: ../src/parameters.c:1170
+#: ../src/parameters.c:1174
 msgid ""
 "By default Orage stays open in the background when asked to close. This "
 "option changes Orage to quit and never stay in background when it is asked "
 "to close."
 msgstr "Orage在默认条件下保持在后台打开时要求关闭。该选项使得Orage在要求关闭时退出且不在后台运行。"
 
-#: ../src/parameters.c:1185
+#: ../src/parameters.c:1189
 msgid "Orage Preferences"
 msgstr "Orage 首选项"
 
-#: ../src/parameters.c:1207 ../src/reminder.c:659
+#: ../src/parameters.c:1211 ../src/reminder.c:643
 msgid "_Close"
 msgstr "关闭(_C)"
 
-#: ../src/reminder.c:427
+#: ../src/reminder.c:421
 msgid "Reminder"
 msgstr "提醒"
 
-#: ../src/reminder.c:460
+#: ../src/reminder.c:444
 msgid "Open"
 msgstr "打开"
 
-#: ../src/reminder.c:465
+#: ../src/reminder.c:449
 msgid "Silence"
 msgstr "无声"
 
-#: ../src/reminder.c:584
+#: ../src/reminder.c:568
 msgid "Reminder - Orage"
 msgstr "提醒-Orage"
 
-#: ../src/reminder.c:667
+#: ../src/reminder.c:651
 msgid "_Stop"
 msgstr "停止(_S)"
 
-#: ../src/reminder.c:675
+#: ../src/reminder.c:659
 msgid "Postpone"
 msgstr "延期"
 
-#: ../src/reminder.c:677
+#: ../src/reminder.c:661
 msgid "Remind me again after the specified time"
 msgstr "在指定时间后再次提醒我"
 
-#: ../src/reminder.c:949
+#: ../src/reminder.c:934
 msgid "Next active alarms:"
 msgstr "下一个活动闹铃："
 
-#: ../src/reminder.c:988
+#: ../src/reminder.c:973
 #, c-format
 msgid ""
 "\n"
@@ -1601,7 +1599,7 @@ msgstr ""
 "\n"
 "%02d 天 %02d 小时 %02d 分钟到：%s"
 
-#: ../src/reminder.c:1002
+#: ../src/reminder.c:987
 #, c-format
 msgid ""
 "\n"
