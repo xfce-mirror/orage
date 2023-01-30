@@ -444,7 +444,7 @@ msgstr "若您想聽見鬧鈴提醒請選取這個選項"
 
 #: ../src/appointment.c:3255
 msgid "Sound command is not set"
-msgstr ""
+msgstr "未設定音效指令"
 
 #: ../src/appointment.c:3270 ../src/interface.c:1051 ../src/interface.c:1097
 #: ../src/interface.c:1273 ../src/interface.c:1365 ../src/interface.c:1448
