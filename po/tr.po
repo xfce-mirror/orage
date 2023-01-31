@@ -457,7 +457,7 @@ msgstr "Sesli alârm için bu özelliği seçiniz"
 
 #: ../src/appointment.c:3255
 msgid "Sound command is not set"
-msgstr ""
+msgstr "Ses komutu ayarlanmadı"
 
 #: ../src/appointment.c:3270 ../src/interface.c:1051 ../src/interface.c:1097
 #: ../src/interface.c:1273 ../src/interface.c:1365 ../src/interface.c:1448
