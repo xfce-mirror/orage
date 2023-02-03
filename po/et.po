@@ -376,6 +376,14 @@ msgid ""
 "    <&Ynnnn> is translated to current year minus nnnn.\n"
 "(This can be used for example in birthday reminders to tell how old the person will be.)"
 msgstr ""
+"Järgnevaid käsulühendeid rakendatakse koheselt:\n"
+"    <D> lisab kuupäeva kohalikus ajaformaadis\n"
+"    <T> lisab kellaaja\n"
+"    <DT> lisab kellaaja ja kuupäeva\n"
+"\n"
+"Järgnev käsulühend konverteeritakse kuvamise hetkel:\n"
+"    <&Ynnnn> konverteeritakse kui käesolev aasta millest on lahutatud nnnn.\n"
+"(Seda saab kasutada näiteks sünnipäeva meeldetuletusel vanuse näitamiseks.)"
 
 #: ../src/appointment.c:3181
 msgid "Before Start"
@@ -517,6 +525,14 @@ msgid ""
 "\t<&ST> appointment start time\n"
 "\t<&ET> appointment end time"
 msgstr ""
+"Pead sisestama kõik pao- muud kontrollmärgid ise.\n"
+"See tekstirida antakse kestale täita..\n"
+"Järgnevad erikäsud asendatakse töökäigus:\n"
+"\t<&T>  kohtumise pealkiri\n"
+"\t<&D>  kohtumise kirjeldus\n"
+"\t<&AT> alarmi aeg\n"
+"\t<&ST> kohtumise algusaeg\n"
+"\t<&ET> kohtumise lõpuaeg"
 
 #: ../src/appointment.c:3415 ../src/interface.c:1185 ../src/interface.c:1207
 msgid "_Execute"
@@ -541,7 +557,7 @@ msgstr "Säilita käesolevad seadistused vaikimisi alarmina"
 
 #: ../src/appointment.c:3446
 msgid "_Revert"
-msgstr "Pöö_ra tagasi"
+msgstr "_Taasta"
 
 #: ../src/appointment.c:3454
 msgid "Set current settings from default alarm"
@@ -724,6 +740,9 @@ msgid ""
 "Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
 "Remove by clicking the data."
 msgstr ""
+"Klikkides all olevat kalendrit, saab lisada veel erandite kuupäevi.\n"
+"Sõltuvalt valikust on erandid kas välitamine(-) või kaasamine(+).\n"
+"Erandeid saab eemaldada nendel klikkides."
 
 #: ../src/appointment.c:3737
 msgid "Add excluded date (-)"
