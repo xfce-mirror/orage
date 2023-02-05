@@ -457,7 +457,7 @@ msgstr "Seleccione esta opción si quiere una alarma sonora"
 
 #: ../src/appointment.c:3255
 msgid "Sound command is not set"
-msgstr ""
+msgstr "No se ha configurado la orden de sonido"
 
 #: ../src/appointment.c:3270 ../src/interface.c:1051 ../src/interface.c:1097
 #: ../src/interface.c:1273 ../src/interface.c:1365 ../src/interface.c:1448
