@@ -728,6 +728,8 @@ msgid ""
 "TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
 msgstr ""
+"Agenda kordumine alus põhineb lõpetamise ajale ja kordub peale igat intervalli alates viimasest lõpetatud ajast.\n"
+"(Pange tähele, et ei ole võimalik teada midagi agenda kordumiste algusest, kuna kordumise alus muutub pärast iga lõpetamist.)"
 
 #. exceptions
 #: ../src/appointment.c:3700
@@ -883,6 +885,9 @@ msgid ""
 "Note that this also shows all urgencies.\n"
 "Note that repeating events may appear earlier in the list as the first occurrence only is listed."
 msgstr ""
+"Vali see kui tahate näha ainult esimest korduvat sündmust. Vaikimisi näidatakse kõike.\n"
+"Märkus, see näitab ka kõiki edasilükkamatuid.\n"
+"Märkus, korduvad sündmused võivad ilmuda nimekirjas eespool, kuna näidatakse ainult esimesi sündmusi."
 
 #: ../src/event-list.c:1295
 msgid "also old"
@@ -893,6 +898,8 @@ msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed'."
 msgstr ""
+"Vali see kui tahate näha ka vanu sündmusi. Seda saab valida ainult siist kui 'ainult esimene kordus' on lubatud, see aitab ära hoida väga pikkade nimistute näitamist.\n"
+"Märkus, lisapäevade valik määrab kas uuemaid kohtumisi ka näidatakse."
 
 #: ../src/event-list.c:1339
 msgid "Journal entries starting from:"
@@ -925,6 +932,18 @@ msgid ""
 "\t 5. Appointment type:\n"
 "\t\tE=Event T=Todo J=Journal"
 msgstr ""
+"Rea muutmiseks teha topeltklikk reale.\n"
+"\n"
+"Lipud näitamise järjekorras:\n"
+"\t 1. Alarm: n=ei ole alarmi\n"
+"\t\t A=alarm on määratud, P=püsiv alarm on määratud\n"
+"\t 2. Kordused: n=ei kordu\n"
+"\t\t H=iga tund, D=iga päev, W=iga nädal, M=iga kuu, Y=iga aasta\n"
+"\t 3. Tüüp: f=vaba B=hõivatud\n"
+"\t 4. Asub failis:\n"
+"\t\tO=Orage, A=arhiiv, F=väline\n"
+"\t 5. Kohtumise tüüp:\n"
+"\t\tE=sündmus, T=agenda, J=päevik"
 
 #: ../src/ical-code.c:781
 msgid "Orage default alarm"
