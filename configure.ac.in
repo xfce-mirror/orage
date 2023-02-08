@@ -1,6 +1,6 @@
 dnl Orage - Calendar application for Xfce
 dnl
-dnl Copyright (c) 2003-2022
+dnl Copyright (c) 2003-2023
 dnl         The Xfce development team. All rights reserved.
 dnl
 dnl Written for Xfce by Juha Kautto <juha@xfce.org>
@@ -8,10 +8,10 @@ dnl
 
 dnl Version information
 m4_define([orage_version_major], [4])
-m4_define([orage_version_minor], [17])
+m4_define([orage_version_minor], [18])
 m4_define([orage_version_micro], [0])
 m4_define([orage_version_build], [@REVISION@])
-m4_define([orage_version_tag], [git]) # Leave empty for releases
+m4_define([orage_version_tag], []) # Leave empty for releases
 m4_define([orage_version], [orage_version_major().orage_version_minor().orage_version_micro()ifelse(orage_version_tag(), [git], [orage_version_tag()-orage_version_build()], [orage_version_tag()])])
 
 m4_define([glib_minimum_version], [2.58.0])
@@ -27,7 +27,7 @@ dnl # YOU ARE DOING.
 
 
 dnl Initialize autoconf
-AC_COPYRIGHT([Copyright (c) 2003-2022
+AC_COPYRIGHT([Copyright (c) 2003-2023
         The Xfce development team. All rights reserved.
 
 Written for Xfce by Juha Kautto <juha@xfce.org>.])

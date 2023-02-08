@@ -1,4 +1,4 @@
-4.17.0 (2023-02-01)
+4.18.0 (2023-02-08)
 ======
 - Changed Orage internal time and data strings to GDateTime (MR !20)
 - In event list, fixed event hiding when event start at 00:00 and end 00:00 in
@@ -25,9 +25,10 @@
   Kingdom), Esperanto, Estonian, Finnish, French, Galician, German,
   Greek, Hebrew, Hungarian, Icelandic, Indonesian, Italian, Japanese,
   Kazakh, Korean, Latvian, Lithuanian, Malay, Norwegian Bokmål,
-  Norwegian Nynorsk, Occitan (post 1500), Polish, Portuguese (Brazil),
-  Portuguese, Romanian, Russian, Serbian, Slovak, Spanish, Swedish,
-  Thai, Turkish, Ukrainian, Urdu (Pakistan), Urdu, Uyghur, Vietnamese
+  Norwegian Nynorsk, Occitan (post 1500), Polish, Portuguese,
+  Portuguese (Brazil), Romanian, Russian, Serbian, Slovak, Spanish,
+  Swedish, Thai, Turkish, Ukrainian, Urdu, Urdu (Pakistan), Uyghur,
+  Vietnamese
 
 4.16.0 (2022-03-17)
 ======
