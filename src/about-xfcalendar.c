@@ -1,8 +1,8 @@
 /*      Orage - Calendar and alarm handler
  *
- * Copyright (c) 2021 Erkki Moorits     (erkki.moorits at mail.ee)
- * Copyright (c) 2005-2011 Juha Kautto  (juha at xfce.org)
- * Copyright (c) 2004-2006 Mickael Graf (korbinus at xfce.org)
+ * Copyright (c) 2021-2023 Erkki Moorits (erkki.moorits at mail.ee)
+ * Copyright (c) 2005-2011 Juha Kautto   (juha at xfce.org)
+ * Copyright (c) 2004-2006 Mickael Graf  (korbinus at xfce.org)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -48,7 +48,7 @@ void create_wAbout (G_GNUC_UNUSED GtkWidget *widget,
   about = (GtkAboutDialog *) dialog;
   gtk_about_dialog_set_program_name(about, "Orage");
   gtk_about_dialog_set_version(about, VERSION);
-  gtk_about_dialog_set_copyright(about, "Copyright © 2003-2022 Orage Team");
+  gtk_about_dialog_set_copyright(about, "Copyright © 2003-2023 Orage Team");
   gtk_about_dialog_set_comments(about, _("Orage is a time-managing application for the Xfce desktop environment"));
   gtk_about_dialog_set_website(about, "https://docs.xfce.org/apps/orage/start");
   gtk_about_dialog_set_authors(about, authors);
