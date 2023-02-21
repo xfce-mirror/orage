@@ -1,6 +1,5 @@
-/*      Orage - Calendar and alarm handler
- *
- * Copyright (c) 2021 Erkki Moorits  (erkki.moorits at mail.ee)
+/*
+ * Copyright (c) 2021-2023 Erkki Moorits
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,10 +13,9 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the
-       Free Software Foundation
-       51 Franklin Street, 5th Floor
-       Boston, MA 02110-1301 USA
-
+ *     Free Software Foundation
+ *     51 Franklin Street, 5th Floor
+ *     Boston, MA 02110-1301 USA
  */
 
 #ifndef ORAGE_CSS_H

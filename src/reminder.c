@@ -1,5 +1,5 @@
-/*      Orage - Calendar and alarm handler
- *
+/*
+ * Copyright (c) 2021-2023 Erkki Moorits
  * Copyright (c) 2005-2013 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2003-2006 Mickael Graf (korbinus at xfce.org)
  *
@@ -14,11 +14,10 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the 
-       Free Software Foundation
-       51 Franklin Street, 5th Floor
-       Boston, MA 02110-1301 USA
-
+ * along with this program; if not, write to the
+ *     Free Software Foundation
+ *     51 Franklin Street, 5th Floor
+ *     Boston, MA 02110-1301 USA
  */
 
 #ifdef HAVE_CONFIG_H

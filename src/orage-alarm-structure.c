@@ -1,5 +1,4 @@
-/*      Orage - Calendar and alarm handler
- *
+/*
  * Copyright (c) 2023 Erkki Moorits
  *
  * This program is free software; you can redistribute it and/or modify
@@ -14,10 +13,9 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the
-       Free Software Foundation
-       51 Franklin Street, 5th Floor
-       Boston, MA 02110-1301 USA
-
+ *     Free Software Foundation
+ *     51 Franklin Street, 5th Floor
+ *     Boston, MA 02110-1301 USA
  */
 
 #include "orage-alarm-structure.h"
