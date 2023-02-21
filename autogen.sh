@@ -1,8 +1,6 @@
 #!/bin/sh
 #
-# $Id$
-#
-# Copyright (c) 2002-2005
+# Copyright (c) 2002-2023
 #         The Xfce development team. All rights reserved.
 #
 # Written for Xfce by Benedikt Meurer <benny@xfce.org>.
