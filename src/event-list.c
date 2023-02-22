@@ -55,7 +55,6 @@
 #include "functions.h"
 #include "mainbox.h"
 #include "reminder.h"
-#include "about-xfcalendar.h"
 #include "ical-code.h"
 #include "event-list.h"
 #include "appointment.h"

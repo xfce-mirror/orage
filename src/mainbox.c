@@ -42,7 +42,7 @@
 #include "orage-css.h"
 #include "functions.h"
 #include "mainbox.h"
-#include "about-xfcalendar.h"
+#include "orage-about.h"
 #include "ical-code.h"
 #include "event-list.h"
 #include "appointment.h"
@@ -153,9 +153,10 @@ static void mHelp_help_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
     }
 }
 
-static void mHelp_about_activate_cb(GtkMenuItem *menuitem, gpointer user_data)
+static void mHelp_about_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
+                                     G_GNUC_UNUSED gpointer user_data)
 {
-    create_wAbout((GtkWidget *)menuitem, user_data);
+    orage_show_about (NULL);
 }
 
 static void mCalendar_day_selected_double_click_cb(GtkCalendar *calendar
