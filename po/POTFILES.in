@@ -1,6 +1,5 @@
 # List of source files containing translatable strings.
 
-src/about-xfcalendar.c
 src/appointment.c
 src/day-view.c
 src/event-list.c
@@ -11,6 +10,7 @@ src/ical-expimp.c
 src/interface.c
 src/main.c
 src/mainbox.c
+src/orage-about.c
 src/orage-application.c
 src/parameters.c
 src/reminder.c
