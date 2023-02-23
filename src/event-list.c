@@ -55,7 +55,6 @@
 #include "functions.h"
 #include "mainbox.h"
 #include "reminder.h"
-#include "about-xfcalendar.h"
 #include "ical-code.h"
 #include "event-list.h"
 #include "appointment.h"
@@ -1296,7 +1295,7 @@ static void build_event_tab(el_win *el)
                                                   "margin-left", 15,
                                                   NULL);
     gtk_widget_set_tooltip_text(el->event_show_old_checkbutton
-            , _("Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\nNote that extra days selection still defines if newer appointments are listed'."));
+            , _("Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\nNote that extra days selection still defines if newer appointments are listed."));
     gtk_toggle_button_set_active(
             GTK_TOGGLE_BUTTON(el->event_show_old_checkbutton), el->only_first);
     gtk_widget_set_sensitive(el->event_show_old_checkbutton, el->only_first);
