@@ -2,8 +2,6 @@ bin_PROGRAMS = orage
 
 orage_SOURCES =							\
 	$(orage_built_sources)					\
-	about-xfcalendar.c					\
-	about-xfcalendar.h					\
 	appointment.c						\
 	appointment.h						\
 	day-view.c						\
@@ -23,8 +21,10 @@ orage_SOURCES =							\
 	main.c							\
 	mainbox.c						\
 	mainbox.h						\
-	orage-alarm-structure.h					\
+	orage-about.c						\
+	orage-about.h						\
 	orage-alarm-structure.c					\
+	orage-alarm-structure.h					\
 	orage-application.c					\
 	orage-application.h					\
 	orage-css.c						\

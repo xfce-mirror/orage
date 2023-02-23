@@ -39,7 +39,6 @@
 #include "orage-i18n.h"
 #include "functions.h"
 #include "mainbox.h"
-#include "about-xfcalendar.h"
 #include "ical-code.h"
 #include "event-list.h"
 #include "appointment.h"

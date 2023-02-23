@@ -20,9 +20,11 @@
  *     Boston, MA 02110-1301 USA
  */
 
-#ifndef __ABOUT_XFCALENDAR_H__
-#define __ABOUT_XFCALENDAR_H__
+#ifndef ORAGE_ABOUT_H
+#define ORAGE_ABOUT_H 1
 
-void create_wAbout(GtkWidget *widget, gpointer user_data);
+#include <gtk/gtk.h>
 
-#endif /* !__ABOUT_XFCALENDAR_H__ */
+void orage_show_about (GtkWindow *parent);
+
+#endif

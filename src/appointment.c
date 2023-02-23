@@ -3103,7 +3103,7 @@ static void build_general_page(appt_win *apptw)
             , ++row, (GTK_EXPAND | GTK_FILL), (GTK_EXPAND | GTK_FILL));
 
     gtk_widget_set_tooltip_text(event
-            , _("These shorthand commands take effect immediately:\n    <D> inserts current date in local date format\n    <T> inserts time and\n    <DT> inserts date and time.\n\nThese are converted only later when they are seen:\n    <&Ynnnn> is translated to current year minus nnnn.\n(This can be used for example in birthday reminders to tell how old the person will be.)"));
+            , _("These shorthand commands take effect immediately:\n    <D> inserts current date in local date format\n    <T> inserts time\n    <DT> inserts date and time.\n\nThese are converted only later when they are seen:\n    <&Ynnnn> is translated to current year minus nnnn.\n(This can be used for example in birthday reminders to tell how old the person will be.)"));
 
     /* Take care of the title entry to build the appointment window title */
     g_signal_connect((gpointer)apptw->Title_entry, "changed"
