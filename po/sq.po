@@ -164,7 +164,7 @@ msgstr "Ngjyra kategorish - Orage"
 
 #: ../src/appointment.c:2298
 msgid "*** COPY ***"
-msgstr ""
+msgstr " *** KOPJOJE ***"
 
 #: ../src/appointment.c:2586
 msgid "New appointment - Orage"
@@ -367,6 +367,14 @@ msgid ""
 "    <&Ynnnn> is translated to current year minus nnnn.\n"
 "(This can be used for example in birthday reminders to tell how old the person will be.)"
 msgstr ""
+"Këta urdhra të shkurtër përmbushen menjëherë:\n"
+"    <D> fut datën e tanishme në format date vendore\n"
+"    <T> fut kohën\n"
+"    <DT> fut datën dhe kohën.\n"
+"\n"
+"Shndërrohen vetëm më vonë, kur shihen:\n"
+"    <&Ynnnn> përkthehet në vitin e tanishëm minus nnnn.\n"
+"(Kjo mund të përdoret, për shembull, në kujtues datëlindjesh, për të treguar se sa vjeç do të jetë personi.)"
 
 #: ../src/appointment.c:3180
 msgid "Before Start"
@@ -885,6 +893,8 @@ msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed."
 msgstr ""
+"I vini shenjë kësaj, nëse doni të shihni edhe veprimtari të vjetra. Kjo mund të përzgjidhet vetëm pasi të jetë aktivizuar 'vetëm përsëritjen e parë', për të shmangur lista shumë të gjata.\n"
+"Mbani parasysh se përzgjedhja e ditëve ekstra ende përcakton nëse shfaqen takime më të reja."
 
 #: ../src/event-list.c:1337
 msgid "Journal entries starting from:"
