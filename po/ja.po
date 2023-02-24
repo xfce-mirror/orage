@@ -7,8 +7,8 @@
 # Xfce Bot <transifex@xfce.org>, 2022
 # Masato HASHIMOTO <cabezon.hashimoto@gmail.com>, 2022
 # Nick Schermer <nick@xfce.org>, 2022
-# Nobuhiro Iwamatsu <iwamatsu@nigauri.org>, 2023
 # UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2023
+# Nobuhiro Iwamatsu <iwamatsu@nigauri.org>, 2023
 # 
 #, fuzzy
 msgid ""
@@ -17,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-23 12:48+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2023\n"
+"Last-Translator: Nobuhiro Iwamatsu <iwamatsu@nigauri.org>, 2023\n"
 "Language-Team: Japanese (https://www.transifex.com/xfce/teams/16840/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -362,6 +362,14 @@ msgid ""
 "    <&Ynnnn> is translated to current year minus nnnn.\n"
 "(This can be used for example in birthday reminders to tell how old the person will be.)"
 msgstr ""
+"以下のショートハンドコマンドは即座に解釈されます:\n"
+"    <D> 現在の日付をローカル日付フォーマットで挿入します\n"
+"    <T> 時刻を挿入します\n"
+"    <DT> 日付と時刻を挿入します\n"
+"\n"
+"以下はそれらが表示されたときのみ変換されます:\n"
+"    <&Ynnnn> は現在の年から nnnn を引いたものに変換されます。\n"
+"(これは例えば誕生日の通知などで、その人が何歳になったかを表示する場合に使用できます)"
 
 #: ../src/appointment.c:3180
 msgid "Before Start"
