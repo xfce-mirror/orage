@@ -882,6 +882,8 @@ msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed."
 msgstr ""
+"このオプションにチェックマークをつけると、古い用件も表示します。リストがとても長くなることのないよう、'繰り返しの初回のみ' が有効になっている場合のみ選択できます。\n"
+"追加表示日数が指定されていれば、新しい用件も表示されます。"
 
 #: ../src/event-list.c:1337
 msgid "Journal entries starting from:"
