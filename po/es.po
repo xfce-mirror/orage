@@ -373,6 +373,14 @@ msgid ""
 "    <&Ynnnn> is translated to current year minus nnnn.\n"
 "(This can be used for example in birthday reminders to tell how old the person will be.)"
 msgstr ""
+"Estas órdenes abreviadas surtirán efecto inmediatamente:\n"
+"  <D> inserta la fecha actual en formato de fecha local\n"
+"  <T> inserta la hora\n"
+"  <DT> inserta la fecha y la hora.\n"
+"\n"
+"Esta se convierte solo cuando se ve:\n"
+"  <&Ynnnn> se traduce como el año actual menos nnnn.\n"
+"(Puede usarse, por ejemplo, en recordatorios de cumpleaños para saber qué edad cumplirá la persona.)"
 
 #: ../src/appointment.c:3180
 msgid "Before Start"
@@ -628,7 +636,7 @@ msgstr "Avanzado"
 
 #: ../src/appointment.c:3548
 msgid "Use this if you want regular repeating event"
-msgstr "Use esta opción si desea la repetición regular del evento"
+msgstr "Use esta opción si quiere que el evento se repita con regularidad"
 
 #: ../src/appointment.c:3550
 msgid ""
@@ -874,7 +882,7 @@ msgstr "Días extras a mostrar:"
 
 #: ../src/event-list.c:1280
 msgid "only first repeating"
-msgstr "solamente primera repetición:"
+msgstr "solo la primera repetición:"
 
 #: ../src/event-list.c:1288
 msgid ""
@@ -882,9 +890,9 @@ msgid ""
 "Note that this also shows all urgencies.\n"
 "Note that repeating events may appear earlier in the list as the first occurrence only is listed."
 msgstr ""
-"Seleccione esta opción si solamente desea ver el primer evento repetitivo. Por omisión se muestran todos.\n"
-"Tenga en cuenta que esto también muestra todas las urgencias.\n"
-"También que los eventos que se repiten pueden aparecer antes en la lista, así como que solamente el primer caso se enumerará."
+"Marque esta opción si solo quiere ver el primer evento repetido. Por defecto se muestran todos.\n"
+"Tenga en cuenta que también se muestran todas las urgencias.\n"
+"Tenga en cuenta que los sucesos repetidos pueden aparecer antes en la lista, ya que solo se muestra el primero."
 
 #: ../src/event-list.c:1293
 msgid "also old"
@@ -895,6 +903,8 @@ msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed."
 msgstr ""
+"Marque esta opción si también quiere ver los eventos antiguos. Solo se puede seleccionar después de activar solo la primera repetición para evitar listas muy largas.\n"
+"Tenga en cuenta que la selección de días adicionales aún define si se enumeran las citas más recientes."
 
 #: ../src/event-list.c:1337
 msgid "Journal entries starting from:"
@@ -1518,7 +1528,7 @@ msgstr ""
 
 #: ../src/parameters.c:1023
 msgid "Show only first repeating event"
-msgstr "Mostrar solamente la primera cita repetitiva"
+msgstr "Mostrar solo el primer evento repetido"
 
 #: ../src/parameters.c:1040
 msgid "Day view window default first day"
