@@ -371,6 +371,14 @@ msgid ""
 "    <&Ynnnn> is translated to current year minus nnnn.\n"
 "(This can be used for example in birthday reminders to tell how old the person will be.)"
 msgstr ""
+"Estes comandos têm efeitos imediatos:\n"
+"    <D> insere a data atual no formato local\n"
+"    <T> insere a hora\n"
+"    <DT> insere a data e hora.\n"
+"\n"
+"Estas apenas serão convertidas quando forem vistas:\n"
+"    <&Ynnnn> é traduzido para o ano atual menos nnnn.\n"
+"(Pode ser utilizado em lembretes de aniversários para informar a idade da pessoa.)"
 
 #: ../src/appointment.c:3180
 msgid "Before Start"
@@ -886,6 +894,8 @@ msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed."
 msgstr ""
+"Selecione isto se quer ver também antigos acontecimentos. Isto pode ser apenas selecionado depois de ligar 'apenas primeira repetição' para evitar listas muito longas.\n"
+"Note que selecionar dias extra ainda define se novos compromissos são listados."
 
 #: ../src/event-list.c:1337
 msgid "Journal entries starting from:"
