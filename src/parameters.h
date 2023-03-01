@@ -75,7 +75,7 @@ typedef struct _parameters
     gboolean use_foreign_display_alarm_notify; /* changes alarm to notify */
 
     /* other */
-    char *orage_file;
+    gchar *orage_file;
     time_t latest_file_change;
     char *sound_application;
 
