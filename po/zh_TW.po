@@ -364,6 +364,14 @@ msgid ""
 "    <&Ynnnn> is translated to current year minus nnnn.\n"
 "(This can be used for example in birthday reminders to tell how old the person will be.)"
 msgstr ""
+"此等快捷指令會馬上生效：\n"
+"    <D> 以本地日期格式插入目前日期\n"
+"    <T> 插入時間\n"
+"    <DT> 插入日期和時間。\n"
+"\n"
+"只有在見到之後才會轉換：\n"
+"    <&Ynnnn> 會轉換為目前年份減 nnnn。\n"
+"(例如可用來提醒某人現在多少歲。)"
 
 #: ../src/appointment.c:3180
 msgid "Before Start"
@@ -872,6 +880,8 @@ msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed."
 msgstr ""
+"如果您也想要看到舊的事件，勾選這個。這將只能在「僅首先重複」選項開啟時啟動以避免過長的列表。\n"
+"請注意，額外的天數選擇仍有限制，如果有較新的約會被列出。"
 
 #: ../src/event-list.c:1337
 msgid "Journal entries starting from:"
