@@ -1,3 +1,6 @@
+4.19.0 (2023-03-01)
+- Added commandline parameter '-i' to import ICS file
+
 4.18.0 (2023-02-08)
 ======
 - Changed Orage internal time and data strings to GDateTime (MR !20)
