@@ -40,6 +40,7 @@
 #define HINT_EXPORT 'x'
 #define HINT_IMPORT 'i'
 #define HINT_REMOVE 'r'
+#define HINT_OPEN 'o'
 
 #define LOGIND_BUS_NAME "org.freedesktop.login1"
 #define LOGIND_IFACE_NAME "org.freedesktop.login1.Manager"
@@ -372,6 +373,19 @@ static gint orage_application_command_line (GApplication *app,
         g_object_unref (file);
     }
 
+    if (g_variant_dict_lookup (options, "import", "^&ay", &file_name))
+    {
+        str_array = g_strsplit (file_name, ":", 2);
+        key[0] = HINT_IMPORT;
+        hint = g_strjoin (":", key, str_array[1], NULL);
+        file = g_application_command_line_create_file_for_arg (cmdline,
+                                                               str_array[0]);
+        g_strfreev (str_array);
+        g_application_open (app, &file, 1, hint);
+        g_free (hint);
+        g_object_unref (file);
+    }
+
     g_variant_dict_lookup (options, G_OPTION_REMAINING, "^a&ay", &filenames);
 
     if (filenames != NULL && (n_files = g_strv_length ((gchar **)filenames)) > 0)
@@ -385,7 +399,7 @@ static gint orage_application_command_line (GApplication *app,
             files[n] = file;
         }
 
-        key[0] = HINT_IMPORT;
+        key[0] = HINT_OPEN;
         g_application_open (app, files, n_files, key);
 
         for (n = 0; n < n_files; n++)
@@ -415,6 +429,10 @@ static void orage_application_open (G_GNUC_UNUSED GApplication *app,
     {
         switch (hint[0])
         {
+            case HINT_OPEN:
+                g_message ("open not yet implemented");
+                break;
+
             case HINT_ADD:
                 file = g_file_get_path (files[i]);
                 hint_array = g_strsplit (hint, ":", 3);
@@ -559,8 +577,17 @@ static void orage_application_init (OrageApplication *application)
             .flags = G_OPTION_FLAG_NONE,
             .arg = G_OPTION_ARG_FILENAME,
             .arg_data = NULL,
-            .description = "Remove a foreign file",
+            .description = _("Remove a foreign file"),
             .arg_description = "<file>",
+        },
+        {
+            .long_name = "import",
+            .short_name = 'i',
+            .flags = G_OPTION_FLAG_NONE,
+            .arg = G_OPTION_ARG_FILENAME,
+            .arg_data = NULL,
+            .description = _("Import appointments from file to Orage"),
+            .arg_description = "<file>:[appointment...]",
         },
         {
             .long_name = "export",
