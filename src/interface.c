@@ -305,8 +305,8 @@ static void orage_file_open_button_clicked (G_GNUC_UNUSED GtkButton *button
     gchar *rcfile, *rcdir;
     gchar *s;
 
-    rcdir = g_path_get_dirname((const gchar *)g_par.orage_file);
-    rcfile = g_path_get_basename((const gchar *)g_par.orage_file);
+    rcdir = g_path_get_dirname (g_par.orage_file);
+    rcfile = g_path_get_basename (g_par.orage_file);
     f_chooser = orage_file_chooser(intf_w->main_window, TRUE
             , g_par.orage_file, rcdir, rcfile);
     g_free(rcdir);
@@ -1248,7 +1248,7 @@ static void create_orage_file_tab(intf_win *intf_w)
     label = gtk_label_new(_("Current file:"));
     g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
-    label = gtk_label_new((const gchar *)g_par.orage_file);
+    label = gtk_label_new (g_par.orage_file);
     g_object_set (label, "margin-right", 5,
                          "hexpand", TRUE, "halign", GTK_ALIGN_START,
                          NULL);
@@ -1261,8 +1261,7 @@ static void create_orage_file_tab(intf_win *intf_w)
     g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
     intf_w->orage_file_entry = gtk_entry_new();
-    gtk_entry_set_text(GTK_ENTRY(intf_w->orage_file_entry)
-            , (const gchar *)g_par.orage_file);
+    gtk_entry_set_text (GTK_ENTRY(intf_w->orage_file_entry), g_par.orage_file);
     g_object_set (intf_w->orage_file_entry,
                   "hexpand", TRUE, "halign", GTK_ALIGN_FILL, NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->orage_file_entry, NULL,
