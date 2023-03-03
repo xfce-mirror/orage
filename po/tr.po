@@ -371,6 +371,13 @@ msgid ""
 "    <&Ynnnn> is translated to current year minus nnnn.\n"
 "(This can be used for example in birthday reminders to tell how old the person will be.)"
 msgstr ""
+"Bu kısayolkomutları hemen etkili olur:\n"
+"    <D> geçerli tarihi yerel tarih biçiminde ekler \n"
+"    <T> zaman ekler\n"
+"    <DT> tarih ve saat ekler.\n"
+"\n"
+"Bunlar ancak daha sonra görüldüklerinde dönüştürülür:\n"
+"    <&Ynnnn> cari yıl eksi nnnn olarak çevrilir. (Bu, örneğin kişinin kaç yaşında olacağını söylemek için doğum günü hatırlatmalarında kullanılabilir.)"
 
 #: ../src/appointment.c:3180
 msgid "Before Start"
@@ -884,6 +891,8 @@ msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed."
 msgstr ""
+"Eski etkinlikleri de görmek istiyorsanız bunu işaretleyin. Bu, çok uzun listelerden kaçınmak için yalnızca 'yalnızca ilk tekrarlama' etkinleştirildikten sonra seçilebilir. \n"
+"Ek gün seçiminin, daha yeni randevuların listelenip listelenmediğini belirlemeye devam ettiğini unutmayın."
 
 #: ../src/event-list.c:1337
 msgid "Journal entries starting from:"
