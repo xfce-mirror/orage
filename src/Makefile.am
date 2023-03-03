@@ -38,6 +38,7 @@ orage_SOURCES =							\
 	reminder.c						\
 	reminder.h						\
 	timezone_names.c					\
+	timezone_names.h					\
 	timezone_selection.c					\
 	timezone_selection.h					\
 	tz_zoneinfo_read.c					\
