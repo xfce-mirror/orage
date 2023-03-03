@@ -60,6 +60,8 @@
 #define DEFAULT_SOUND_COMMAND "play"
 #endif
 
+#define ORAGE_WAKEUP_TIMER_PERIOD 60
+
 static Itf *global_itf = NULL;
 
 /* Return the first day of the week, where 0=monday, 6=sunday.

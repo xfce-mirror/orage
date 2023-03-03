@@ -22,11 +22,12 @@
 #ifndef __ORAGE_PARAMETERS_H__
 #define __ORAGE_PARAMETERS_H__
 
+#include <glib.h>
+#include <time.h>
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
-
-#define ORAGE_WAKEUP_TIMER_PERIOD 60
 
 typedef struct _foreign_file
 {
