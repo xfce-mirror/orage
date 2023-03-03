@@ -19,13 +19,9 @@
  *     Boston, MA 02110-1301 USA
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
-#include <gdk/gdk.h>
-
+#include "timezone_names.h"
 #include "orage-i18n.h"
+#include <glib.h>
 
 /* Remember to keep this string table in sync with zones.tab
  * This file is used only for translations purposes. 
@@ -594,4 +590,3 @@ const gchar *trans_timezone[] = {
     N_("US/Pacific-New"),
     N_("US/Samoa"),
 };
-
