@@ -580,7 +580,7 @@ static void orage_foreign_file_remove_line(gint del_line)
 
 gboolean orage_foreign_file_remove (const gchar *filename)
 {
-    gint i = 0;
+    gint i;
     gboolean found = FALSE;
 
     if (interface_lock) {
