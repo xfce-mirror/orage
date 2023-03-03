@@ -130,11 +130,7 @@ typedef struct _parameters
     gint file_close_delay;
 } global_parameters; /* global parameters */
 
-#ifdef ORAGE_MAIN
-global_parameters g_par; /* real, static global parameters. Only in main !!! */
-#else
-extern global_parameters g_par; /* refer to existing global parameters */
-#endif
+extern global_parameters g_par;
 
 void show_parameters(void);
 void write_parameters(void);
