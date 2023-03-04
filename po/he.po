@@ -363,6 +363,14 @@ msgid ""
 "    <&Ynnnn> is translated to current year minus nnnn.\n"
 "(This can be used for example in birthday reminders to tell how old the person will be.)"
 msgstr ""
+"הפקודות המקוצרות האלו נכנסות לתוקף מיידי:\n"
+"<D>מכניסה תאריך נוכחי בפורמט תאריך מקומי\n"
+"<T>מכניסה שעה\n"
+"<DT>מכניסה תאריך ושעה.\n"
+"\n"
+"אלו מומרות רק מאוחר יותר כאשר הן נראות:\n"
+"<&Ynnnn> מתורגמת לשנה נוכחית פחות nnnn.\n"
+"(זה ניתן לשימוש לדוגמה בתזכורות לימי הולדת כדי להגיד בן כמה הבן אדם יהיה.)"
 
 #: ../src/appointment.c:3180
 msgid "Before Start"
@@ -427,7 +435,7 @@ msgstr "בחר בזה אם ברצונך באזעקה קולית"
 
 #: ../src/appointment.c:3254
 msgid "Sound command is not set"
-msgstr ""
+msgstr "פקודת קול אינה מוגדרת"
 
 #: ../src/appointment.c:3269 ../src/interface.c:1050 ../src/interface.c:1096
 #: ../src/interface.c:1272 ../src/interface.c:1364 ../src/interface.c:1447
@@ -877,6 +885,8 @@ msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed."
 msgstr ""
+"בחר בזה אם אתה רוצה לראות גם אירועים ישנים. זה ניתן לבחירה רק לאחר ש'רק חזרה ראשונה' מופעלת כדי להימנע מרשימות ארוכות מאוד.\n"
+"שים לב שבחירת ימים עודפים עדיין מגדירה אם פגישות חדשות יותר יהיו רשומות. "
 
 #: ../src/event-list.c:1337
 msgid "Journal entries starting from:"
