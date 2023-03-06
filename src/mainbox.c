@@ -24,6 +24,8 @@
 #  include <config.h>
 #endif
 
+#define ENABLE_SYNC 1 /* This will be later moved to config.h. */
+
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
@@ -77,6 +79,14 @@ static void mFile_newApp_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
     create_appt_win (NEW_APPT_WIN, NULL, gdt);
     g_date_time_unref (gdt);
 }
+
+#ifdef ENABLE_SYNC
+static void mFile_refresh_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
+                                       G_GNUC_UNUSED gpointer user_data)
+{
+    g_debug ("%s called", G_STRFUNC);
+}
+#endif
 
 static void mFile_interface_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem
         , gpointer user_data)
@@ -216,6 +226,13 @@ static void build_menu(void)
 
     (void)orage_separator_menu_item_new(cal->mFile_menu);
 
+#ifdef ENABLE_SYNC
+    cal->mFile_refresh =
+            orage_image_menu_item_new_from_stock ("gtk-refresh",
+                                                  cal->mFile_menu,
+                                                  cal->mAccel_group);
+#endif
+
     cal->mFile_interface = 
             orage_menu_item_new_with_mnemonic(_("_Exchange data")
                     , cal->mFile_menu);
@@ -260,26 +277,30 @@ static void build_menu(void)
     gtk_widget_show_all(((CalWin *)g_par.xfcal)->mMenubar);
 
     /* Signals */
-    g_signal_connect((gpointer) cal->mFile_newApp, "activate"
-            , G_CALLBACK(mFile_newApp_activate_cb),(gpointer) cal);
-    g_signal_connect((gpointer) cal->mFile_interface, "activate"
-            , G_CALLBACK(mFile_interface_activate_cb),(gpointer) cal);
-    g_signal_connect((gpointer) cal->mFile_close, "activate"
-            , G_CALLBACK(mFile_close_activate_cb),(gpointer) cal);
-    g_signal_connect((gpointer) cal->mFile_quit, "activate"
-            , G_CALLBACK(mFile_quit_activate_cb),(gpointer) cal);
-    g_signal_connect((gpointer) cal->mEdit_preferences, "activate"
-            , G_CALLBACK(mEdit_preferences_activate_cb), NULL);
-    g_signal_connect((gpointer) cal->mView_ViewSelectedDate, "activate"
-            , G_CALLBACK(mView_ViewSelectedDate_activate_cb),(gpointer) cal);
-    g_signal_connect((gpointer) cal->mView_ViewSelectedWeek, "activate"
-            , G_CALLBACK(mView_ViewSelectedWeek_activate_cb),(gpointer) cal);
-    g_signal_connect((gpointer) cal->mView_selectToday, "activate"
-            , G_CALLBACK(mView_selectToday_activate_cb),(gpointer) cal);
-    g_signal_connect((gpointer) cal->mHelp_help, "activate"
-            , G_CALLBACK(mHelp_help_activate_cb), NULL);
-    g_signal_connect((gpointer) cal->mHelp_about, "activate"
-            , G_CALLBACK(mHelp_about_activate_cb),(gpointer) cal);
+    g_signal_connect (cal->mFile_newApp, "activate",
+                      G_CALLBACK (mFile_newApp_activate_cb), cal);
+#ifdef ENABLE_SYNC
+    g_signal_connect (cal->mFile_refresh, "activate",
+                      G_CALLBACK (mFile_refresh_activate_cb), cal);
+#endif
+    g_signal_connect (cal->mFile_interface, "activate",
+                      G_CALLBACK (mFile_interface_activate_cb), cal);
+    g_signal_connect (cal->mFile_close, "activate",
+                      G_CALLBACK (mFile_close_activate_cb), cal);
+    g_signal_connect (cal->mFile_quit, "activate",
+                      G_CALLBACK (mFile_quit_activate_cb), cal);
+    g_signal_connect (cal->mEdit_preferences, "activate",
+                      G_CALLBACK (mEdit_preferences_activate_cb), NULL);
+    g_signal_connect (cal->mView_ViewSelectedDate, "activate",
+                      G_CALLBACK (mView_ViewSelectedDate_activate_cb), cal);
+    g_signal_connect (cal->mView_ViewSelectedWeek, "activate",
+                      G_CALLBACK (mView_ViewSelectedWeek_activate_cb), cal);
+    g_signal_connect (cal->mView_selectToday, "activate",
+                      G_CALLBACK(mView_selectToday_activate_cb), cal);
+    g_signal_connect (cal->mHelp_help, "activate",
+                      G_CALLBACK (mHelp_help_activate_cb), NULL);
+    g_signal_connect (cal->mHelp_about, "activate",
+                      G_CALLBACK (mHelp_about_activate_cb), cal);
 }
 
 static void todo_clicked(GtkWidget *widget
