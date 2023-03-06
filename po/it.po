@@ -371,6 +371,14 @@ msgid ""
 "    <&Ynnnn> is translated to current year minus nnnn.\n"
 "(This can be used for example in birthday reminders to tell how old the person will be.)"
 msgstr ""
+"I seguenti comandi rapidi hanno effetto immediato:\n"
+"    <D> inserisce la data corrente in formato ora locale\n"
+"    <T> inserisce l'ora\n"
+"    <DT> inserisce la data e l'ora.\n"
+"\n"
+"Quanto segue è convertito solo dopo essere stato esaminato:\n"
+"    <&Ynnnn> è tradotto in anno corrente meno nnnn.\n"
+"(Può essere utilizzato per esempio in promemoria di compleanni per sapere quanti anni ha la persona)"
 
 #: ../src/appointment.c:3180
 msgid "Before Start"
@@ -893,6 +901,8 @@ msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed."
 msgstr ""
+"Selezionare questa opzione per vedere solo i vecchi eventi. L'opzione può essere selezionata solo dopo aver abilitato \"solo la prima ricorrenza\" per evitare la visualizzazione di un elenco molto lungo.\n"
+"La selezione per i giorni aggiuntivi definisce se devono essere elencati i nuovi appuntamenti."
 
 #: ../src/event-list.c:1337
 msgid "Journal entries starting from:"
