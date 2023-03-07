@@ -1,0 +1,3998 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# ansich <mojmejlzaforume@gmail.com>, 2022
+# Nick Schermer <nick@xfce.org>, 2022
+# Xfce Bot <transifex@xfce.org>, 2022
+# 8b03701f910565d01acaec9ce3f558ab_e9f0fee <b5b06e8f85fb8288fe43ad0bc2422d94_32848>, 2022
+# Martin Srebotnjak <miles@filmsi.net>, 2022
+# Arnold Marko <arnold.marko@gmail.com>, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-23 12:48+0100\n"
+"PO-Revision-Date: 2022-02-01 14:01+0000\n"
+"Last-Translator: Arnold Marko <arnold.marko@gmail.com>, 2023\n"
+"Language-Team: Slovenian (https://www.transifex.com/xfce/teams/16840/sl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sl\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+
+#. if (gtk_toggle_button_get_active(
+#. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
+#. end time
+#: ../src/appointment.c:323 ../src/appointment.c:363 ../src/appointment.c:2959
+msgid "End"
+msgstr "Konec"
+
+#: ../src/appointment.c:343
+msgid "Due"
+msgstr "Čas"
+
+#: ../src/appointment.c:506 ../src/mainbox.c:683
+#: ../org.xfce.orage.appdata.xml.in.h:1
+msgid "Orage"
+msgstr "Orage"
+
+#. to avoid timing problems when updating entry
+#. Create file chooser
+#: ../src/appointment.c:697 ../src/interface.c:261 ../src/parameters.c:399
+msgid "Select a file..."
+msgstr "Izberi datoteko..."
+
+#: ../src/appointment.c:705
+msgid "Sound Files"
+msgstr "Zvočne datoteke"
+
+#: ../src/appointment.c:712 ../src/interface.c:274
+msgid "All Files"
+msgstr "Vse datoteke"
+
+#: ../src/appointment.c:763
+msgid "The appointment information has been modified."
+msgstr "Podatki o sestanku so bili spremenjeni."
+
+#: ../src/appointment.c:764 ../src/appointment.c:1306 ../src/event-list.c:999
+msgid "Do you want to continue?"
+msgstr "Ali želite nadaljevati?"
+
+#: ../src/appointment.c:765
+msgid "No, do not leave"
+msgstr "Ne, ne zapusti"
+
+#: ../src/appointment.c:766
+msgid "Yes, ignore modifications and leave"
+msgstr "Da, prezri opozorila in zapusti"
+
+#: ../src/appointment.c:794
+msgid "The end of this appointment is earlier than the beginning."
+msgstr "Konec tega sestanka je pred začetkom"
+
+#: ../src/appointment.c:1062 ../src/appointment.c:1981
+msgid "Not set"
+msgstr "Ni določeno"
+
+#: ../src/appointment.c:1155
+msgid "Add new appointment to this file."
+msgstr "Dodaj nov sestanek v to datoteko."
+
+#: ../src/appointment.c:1156 ../src/appointment.c:1204
+msgid "Orage default file"
+msgstr "Privzeta datoteka Orage"
+
+#: ../src/appointment.c:1242
+msgid "Appointment addition failed."
+msgstr "Dodajanje sestanka ni uspelo."
+
+#: ../src/appointment.c:1243
+msgid ""
+"Error happened when adding appointment. Look more details from the log file."
+msgstr ""
+"Pri dodajanju sestanka je prišlo do napake. Več podatkov je v dnevniški "
+"datoteki."
+
+#: ../src/appointment.c:1254
+msgid "Appointment update failed."
+msgstr "Posodabljanje sestanka ni uspelo."
+
+#: ../src/appointment.c:1255
+msgid ""
+"Look more details from the log file. (Perhaps file was updated external from"
+" Orage?)"
+msgstr ""
+"Več podatkov poiščite v dnevniški datoteki (morda je datoteko posobil Orage "
+"od zunaj)."
+
+#: ../src/appointment.c:1305
+msgid "This appointment will be permanently removed."
+msgstr "Ta sestanek bo trajno izbrisan."
+
+#: ../src/appointment.c:1307 ../src/event-list.c:1000
+msgid "No, cancel the removal"
+msgstr "Ne, prekliči odstranitev"
+
+#: ../src/appointment.c:1308
+msgid "Yes, remove it"
+msgstr "Da, odstrani ga"
+
+#: ../src/appointment.c:1407 ../src/appointment.c:1422 ../src/day-view.c:470
+#: ../src/event-list.c:1059 ../src/functions.c:143
+msgid "Pick the date"
+msgstr "Izberi datum"
+
+#: ../src/appointment.c:1409 ../src/appointment.c:1424 ../src/day-view.c:399
+#: ../src/day-view.c:472 ../src/event-list.c:1061 ../src/event-list.c:1215
+#: ../src/functions.c:145 ../src/tray_icon.c:394
+msgid "Today"
+msgstr "Danes"
+
+#: ../src/appointment.c:1851
+msgid "This appointment does not exist."
+msgstr "Ta sestanek ne obstaja."
+
+#: ../src/appointment.c:1852
+msgid "It was probably removed, please refresh your screen."
+msgstr "Verjetno je bil odstranjen. Osvežite zaslon."
+
+#: ../src/appointment.c:2149 ../src/interface.c:675
+msgid "_Remove"
+msgstr "Odst_rani"
+
+#: ../src/appointment.c:2175
+msgid "Current categories"
+msgstr "Trenutne kategorije"
+
+#: ../src/appointment.c:2197
+msgid "Add new category with color"
+msgstr "Dodaj novo kategorijo z barvo"
+
+#: ../src/appointment.c:2208
+msgid "Category:"
+msgstr "Kategorija:"
+
+#: ../src/appointment.c:2224 ../src/interface.c:1454
+msgid "_Add"
+msgstr "Dod_aj"
+
+#: ../src/appointment.c:2253
+msgid "Colors of categories - Orage"
+msgstr "Barve kategorij - Orage"
+
+#: ../src/appointment.c:2298
+msgid "*** COPY ***"
+msgstr " *** KOPIJA ***"
+
+#: ../src/appointment.c:2586
+msgid "New appointment - Orage"
+msgstr "Nov sestanek - Orage"
+
+#. File menu stuff
+#. ********* File menu *********
+#. File menu
+#: ../src/appointment.c:2614 ../src/day-view.c:293 ../src/event-list.c:1116
+#: ../src/interface.c:860 ../src/mainbox.c:212
+msgid "_File"
+msgstr "_Datoteka"
+
+#: ../src/appointment.c:2620
+msgid "Sav_e and close"
+msgstr "_Shrani in zapri"
+
+#: ../src/appointment.c:2633 ../src/event-list.c:1122
+msgid "D_uplicate"
+msgstr "_Podvoji"
+
+#: ../src/appointment.c:2851
+msgid "Save"
+msgstr "Save"
+
+#: ../src/appointment.c:2853
+msgid "Save and close"
+msgstr "Shrani in zapri"
+
+#: ../src/appointment.c:2858
+msgid "Revert"
+msgstr "Povrni"
+
+#: ../src/appointment.c:2860 ../src/event-list.c:1206
+msgid "Duplicate"
+msgstr "Podvoji"
+
+#: ../src/appointment.c:2865 ../src/event-list.c:1208
+msgid "Delete"
+msgstr "Izbriši"
+
+#: ../src/appointment.c:2883
+msgid "Free"
+msgstr "Prosto"
+
+#: ../src/appointment.c:2883
+msgid "Busy"
+msgstr "Zasedeno"
+
+#: ../src/appointment.c:2887
+msgid "General"
+msgstr "Splošno"
+
+#. type
+#: ../src/appointment.c:2893
+msgid "Type"
+msgstr "Vrsta"
+
+#: ../src/appointment.c:2895 ../src/event-list.c:1261
+msgid "Event"
+msgstr "Dogodek"
+
+#: ../src/appointment.c:2900
+msgid ""
+"Event that will happen sometime. For example:\n"
+"Meeting or birthday or TV show."
+msgstr ""
+"Dogodek, ki se bo nekoč zgodil. Npr.: \n"
+"Srečanje ali rojstni dan ali tv serija."
+
+#: ../src/appointment.c:2903 ../src/event-list.c:1320
+msgid "Todo"
+msgstr "Opravila"
+
+#: ../src/appointment.c:2908
+msgid ""
+"Something that you should do sometime. For example:\n"
+"Wash your car or test new version of Orage."
+msgstr ""
+"Nekaj, kar želite nekoč opraviti. Npr.: \n"
+"Operi avto ali preizkusi novo različico Orage."
+
+#: ../src/appointment.c:2911 ../src/event-list.c:1334
+msgid "Journal"
+msgstr "Dnevnik"
+
+#: ../src/appointment.c:2916
+msgid ""
+"Make a note that something happened. For example:\n"
+"Remark that your mother called or first snow came."
+msgstr ""
+"Ustvari opombo, da se je nekaj zgodilo. Npr.:\n"
+"Opomba, da je klicala mati ali da je padel prvi sneg."
+
+#. title
+#: ../src/appointment.c:2923 ../src/event-list.c:1439
+msgid "Title"
+msgstr "Naslov"
+
+#. location
+#: ../src/appointment.c:2930 ../src/timezone_selection.c:234
+#: ../src/timezone_selection.c:239
+msgid "Location"
+msgstr "Lokacija"
+
+#: ../src/appointment.c:2938
+msgid "All day event"
+msgstr "Celodnevni dogodek"
+
+#. start time
+#: ../src/appointment.c:2944 ../src/appointment.c:3675 ../src/day-view.c:830
+msgid "Start"
+msgstr "Začetek"
+
+#: ../src/appointment.c:2962
+msgid "Set"
+msgstr "Nastavi"
+
+#: ../src/appointment.c:2986
+msgid "Duration"
+msgstr "Trajanje"
+
+#: ../src/appointment.c:2990 ../src/appointment.c:3198 ../src/reminder.c:606
+msgid "days"
+msgstr "dni"
+
+#: ../src/appointment.c:2992 ../src/appointment.c:3200 ../src/reminder.c:608
+msgid "hours"
+msgstr "ur"
+
+#: ../src/appointment.c:2994 ../src/appointment.c:3202 ../src/reminder.c:610
+msgid "mins"
+msgstr "minut"
+
+#. Availability (only for EVENT)
+#: ../src/appointment.c:3006
+msgid "Availability"
+msgstr "Razpoložljivost"
+
+#. completed (only for TODO)
+#: ../src/appointment.c:3014 ../src/appointment.c:3684
+msgid "Completed"
+msgstr "Končano"
+
+#: ../src/appointment.c:3017
+msgid "Done"
+msgstr "Opravljeno"
+
+#. categories
+#: ../src/appointment.c:3042
+msgid "Categories"
+msgstr "Kategorije"
+
+#: ../src/appointment.c:3060
+msgid ""
+"This is special category, which can be used to color this appointment in "
+"list views."
+msgstr ""
+"To je posebna kategorija, ki se jo lahko uporabi za obarvanje tega sestanka "
+"v prikazu seznama."
+
+#: ../src/appointment.c:3061
+msgid "_Colour"
+msgstr "_Barva"
+
+#: ../src/appointment.c:3066
+msgid "update colors for categories."
+msgstr "posodobi bravo kategorij."
+
+#. priority
+#: ../src/appointment.c:3072
+msgid "Priority"
+msgstr "Prednost"
+
+#: ../src/appointment.c:3076
+msgid ""
+"If you set this 8 or bigger, the appointment is NOT shown on list windows.\n"
+"You can use that feature to unclutter your list windows, but it makes it more difficult to find this appointment.\n"
+"(Alarms will still fire normally.)\n"
+"(There is undocumented parameter so that you can change the default limit of 8.)"
+msgstr ""
+"Če tu določite 8 ali več, sestanek NE BO prikazan v oknih s seznamom.\n"
+"To funkcijo lahko uporabite za pospravljanje oken s seznami, vendar je sestanek posledično težje najti.\n"
+"(Alarmi se bodo sprožili normalno.)\n"
+"(Obstaja nedokumentiran parameter za spremembo omejitve 8.)"
+
+#. note
+#: ../src/appointment.c:3085
+msgid "Note"
+msgstr "Opomba"
+
+#: ../src/appointment.c:3106
+msgid ""
+"These shorthand commands take effect immediately:\n"
+"    <D> inserts current date in local date format\n"
+"    <T> inserts time\n"
+"    <DT> inserts date and time.\n"
+"\n"
+"These are converted only later when they are seen:\n"
+"    <&Ynnnn> is translated to current year minus nnnn.\n"
+"(This can be used for example in birthday reminders to tell how old the person will be.)"
+msgstr ""
+"Ti kratki ukazi bodo izvedeni takoj:\n"
+"    <D> vstavi trenutni datum v lokalni obliki:\n"
+"    <T> vstavi čas\n"
+"    <DT> vstavi datum in čas.\n"
+"Pretvorjeni bodo šele kasneje, ko bodo prikazani:\n"
+"    <&Ynnnn> se pretvori v trenutno leto minus nnnn.\n"
+"(To se lahko uporabi npr. pri opomnikih rojstnih dnevov, ko želimo videti tudi starost osebe.)"
+
+#: ../src/appointment.c:3180
+msgid "Before Start"
+msgstr "Pred začetkom"
+
+#: ../src/appointment.c:3180
+msgid "Before End"
+msgstr "Pred koncem"
+
+#: ../src/appointment.c:3181
+msgid "After Start"
+msgstr "Po začetku"
+
+#: ../src/appointment.c:3181
+msgid "After End"
+msgstr "Po koncu"
+
+#: ../src/appointment.c:3189
+msgid "Alarm"
+msgstr "Alarm"
+
+#. **** ALARM TIME ****
+#: ../src/appointment.c:3195
+msgid "Alarm time"
+msgstr "Čas alarma"
+
+#: ../src/appointment.c:3220
+msgid ""
+"Often you want to get alarm:\n"
+" 1) before Event start\n"
+" 2) before Todo end\n"
+" 3) after Todo start"
+msgstr ""
+"Pogosto je potreben alarm:\n"
+" 1) pred začetkom dogodka\n"
+" 2) pred koncem opravila\n"
+" 3) po začetku opravila"
+
+#: ../src/appointment.c:3225
+msgid "Persistent alarm"
+msgstr "Obstojen alarm"
+
+#: ../src/appointment.c:3230
+msgid ""
+"Select this if you want Orage to remind you even if it has not been active "
+"when the alarm happened."
+msgstr ""
+"Izberite to, kadar si želite, da vas Orage opozori tudi v primeru, da ni bil"
+" aktiven, ko se je alarm zgodil."
+
+#: ../src/appointment.c:3240
+msgid "Sound"
+msgstr "Zvok"
+
+#: ../src/appointment.c:3244 ../src/appointment.c:3388
+msgid "Use"
+msgstr "Uporabi"
+
+#: ../src/appointment.c:3249
+msgid "Select this if you want audible alarm"
+msgstr "Izberite to za zvočni alarm"
+
+#: ../src/appointment.c:3254
+msgid "Sound command is not set"
+msgstr "Zvočni ukaz ni določen"
+
+#: ../src/appointment.c:3269 ../src/interface.c:1050 ../src/interface.c:1096
+#: ../src/interface.c:1272 ../src/interface.c:1364 ../src/interface.c:1447
+#: ../src/parameters.c:404 ../src/parameters.c:627 ../src/reminder.c:635
+msgid "_Open"
+msgstr "_Odpri"
+
+#: ../src/appointment.c:3283
+msgid "Repeat alarm sound"
+msgstr "Ponavljaj zvok alarma"
+
+#: ../src/appointment.c:3298 ../src/appointment.c:3607
+msgid "times"
+msgstr "krat"
+
+#: ../src/appointment.c:3314
+msgid "sec interval"
+msgstr "sekundni interval"
+
+#. **** Display Alarm ****
+#: ../src/appointment.c:3324
+msgid "Visual"
+msgstr "Vizualno"
+
+#: ../src/appointment.c:3328
+msgid "Use Orage window"
+msgstr "Uporabi Orage okno"
+
+#: ../src/appointment.c:3330
+msgid "Select this if you want Orage window alarm"
+msgstr "Izberite to, če želite alarm preko Orage okna"
+
+#: ../src/appointment.c:3342
+msgid "Use notification"
+msgstr "Uporabi obvestilo"
+
+#: ../src/appointment.c:3344
+msgid "Select this if you want notification alarm"
+msgstr "Izberite to, če želite alarm preko obvestila"
+
+#: ../src/appointment.c:3352
+msgid "Set timeout"
+msgstr "Čas izteka"
+
+#: ../src/appointment.c:3354
+msgid "Select this if you want notification to expire automatically"
+msgstr "Izberite to, če želite, da obvestilo izgine samodejno"
+
+#: ../src/appointment.c:3365
+msgid "0 = system default expiration time"
+msgstr "0 = privzet sistemski čas izteka"
+
+#: ../src/appointment.c:3373
+msgid "seconds"
+msgstr "sekunde"
+
+#. **** Procedure Alarm ****
+#: ../src/appointment.c:3384
+msgid "Procedure"
+msgstr "Procedura"
+
+#: ../src/appointment.c:3390
+msgid "Select this if you want procedure or script alarm"
+msgstr "Izberite to, če želite proceduralni ali skriptni alarm"
+
+#: ../src/appointment.c:3400
+msgid ""
+"You must enter all escape etc characters yourself.\n"
+"This string is just given to shell to process.\n"
+"The following special commands are replaced at run time:\n"
+"\t<&T>  appointment title\n"
+"\t<&D>  appointment description\n"
+"\t<&AT> alarm time\n"
+"\t<&ST> appointment start time\n"
+"\t<&ET> appointment end time"
+msgstr ""
+"Vse ubežne sekvence morate vnesti sami.\n"
+"Ta niz je podan le kot okvir procedure.\n"
+"Naslednji posebni ukazi se med zagonom zamenjajo:\n"
+"\t<&T>  naslov sestanka\n"
+"\t<&D>  opis sestanka\n"
+"\t<&AT> čas opozorila\n"
+"\t<&ST> začetek sestanka\n"
+"\t<&ET> konec sestanka"
+
+#: ../src/appointment.c:3414 ../src/interface.c:1184 ../src/interface.c:1206
+msgid "_Execute"
+msgstr "Izv_edi"
+
+#: ../src/appointment.c:3416
+msgid "Test this alarm by raising it now"
+msgstr "Preizkusite alarm, tako da ga sprožite"
+
+#: ../src/appointment.c:3429
+msgid "<b>Default alarm</b>"
+msgstr "<b>Privzeti alarm</b>"
+
+#: ../src/appointment.c:3435 ../src/interface.c:1057 ../src/interface.c:1103
+#: ../src/interface.c:1278 ../src/interface.c:1370
+msgid "_Save"
+msgstr "_Shrani"
+
+#: ../src/appointment.c:3443
+msgid "Store current settings as default alarm"
+msgstr "Shrani trenutne nastavitve kot privzeti alarm"
+
+#: ../src/appointment.c:3445
+msgid "_Revert"
+msgstr "Pov_rni"
+
+#: ../src/appointment.c:3453
+msgid "Set current settings from default alarm"
+msgstr "Prevzemi trenutne nastavitve iz privzetega alarma"
+
+#: ../src/appointment.c:3519
+msgid "None"
+msgstr "brez"
+
+#: ../src/appointment.c:3519
+msgid "Daily"
+msgstr "dnevno"
+
+#: ../src/appointment.c:3519
+msgid "Weekly"
+msgstr "tedensko"
+
+#: ../src/appointment.c:3519
+msgid "Monthly"
+msgstr "mesečno"
+
+#: ../src/appointment.c:3519
+msgid "Yearly"
+msgstr "letno"
+
+#: ../src/appointment.c:3519
+msgid "Hourly"
+msgstr "urno"
+
+#: ../src/appointment.c:3521
+msgid "Mon"
+msgstr "pon"
+
+#: ../src/appointment.c:3521
+msgid "Tue"
+msgstr "tor"
+
+#: ../src/appointment.c:3521
+msgid "Wed"
+msgstr "sre"
+
+#: ../src/appointment.c:3521
+msgid "Thu"
+msgstr "čet"
+
+#: ../src/appointment.c:3521
+msgid "Fri"
+msgstr "pet"
+
+#: ../src/appointment.c:3521
+msgid "Sat"
+msgstr "sob"
+
+#: ../src/appointment.c:3521
+msgid "Sun"
+msgstr "ned"
+
+#: ../src/appointment.c:3526
+msgid "Recurrence"
+msgstr "Ponavljanje"
+
+#. complexity
+#: ../src/appointment.c:3532
+msgid "Complexity"
+msgstr "Kompleksnost"
+
+#: ../src/appointment.c:3535
+msgid "Basic"
+msgstr "Osnovno"
+
+#: ../src/appointment.c:3542
+msgid "Advanced"
+msgstr "Napredno"
+
+#: ../src/appointment.c:3548
+msgid "Use this if you want regular repeating event"
+msgstr "Uporabite to, če želte, da se dogodek redno ponavlja"
+
+#: ../src/appointment.c:3550
+msgid ""
+"Use this if you need complex times like:\n"
+" Every Saturday and Sunday or \n"
+" First Tuesday every month"
+msgstr ""
+"Uporabite to, če potrebujete kompleksne termine, kot so:\n"
+"Vsako soboto  ali nedeljo ali\n"
+"vsak prvi torek v mesecu"
+
+#. frequency
+#: ../src/appointment.c:3556
+msgid "Frequency"
+msgstr "frekvenca"
+
+#: ../src/appointment.c:3563
+msgid "Each"
+msgstr "vsak"
+
+#: ../src/appointment.c:3574
+msgid "occurrence"
+msgstr "pojavnost"
+
+#: ../src/appointment.c:3581
+msgid ""
+"Limit frequency to certain interval.\n"
+" For example: Every third day:\n"
+" Frequency = Daily and Interval = 3"
+msgstr ""
+"Omeji pojavnost na določen interval.\n"
+" Npr.: Vsak tretji dan:\n"
+"Frekvenca = dnevno in Interval = 3"
+
+#: ../src/appointment.c:3588
+msgid "Limit"
+msgstr "omejitev"
+
+#: ../src/appointment.c:3590
+msgid "Repeat forever"
+msgstr "ponavljaj za vedno"
+
+#: ../src/appointment.c:3597
+msgid "Repeat "
+msgstr "ponavljaj"
+
+#: ../src/appointment.c:3621
+msgid "Repeat until "
+msgstr "ponavljaj do"
+
+#. weekdays (only for complex settings)
+#: ../src/appointment.c:3637
+msgid "Weekdays"
+msgstr "delavniki"
+
+#: ../src/appointment.c:3654
+msgid "Which day"
+msgstr "kateri dan"
+
+#: ../src/appointment.c:3665
+msgid ""
+"Specify which weekday for monthly and yearly events.\n"
+" For example:\n"
+" Second Wednesday each month:\n"
+"\tFrequency = Monthly,\n"
+"\tWeekdays = check only Wednesday,\n"
+"\tWhich day = select 2 from the number below Wednesday"
+msgstr ""
+"Določite dan v tednu za mesečne in letne dogodke.\n"
+"Na primer:\n"
+"Vsako drugo sredo v tednu:\n"
+"\tfrekvenca = mesečno,\n"
+"\tdnevi v tednu= izberite le sredo,\n"
+"\tkateri dan = izberite številko 2 pod sredo"
+
+#. TODO base (only for TODOs)
+#: ../src/appointment.c:3672
+msgid "TODO base"
+msgstr "OPRAVILA osnova"
+
+#: ../src/appointment.c:3691
+msgid ""
+"TODO reoccurs regularly starting on start time and repeating after each "
+"interval no matter when it was last completed"
+msgstr ""
+"OPRAVILA se pojavljajo ponavljajoče, začenši ob začetnem času in "
+"ponavljanjem glede na interval, ne glede na to ali je bilo zadnje opravilo "
+"dokončano"
+
+#: ../src/appointment.c:3693
+msgid ""
+"TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
+"(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
+msgstr ""
+"OPRAVILA se pojavljajo ob času zaključka in se ponavljajo glede na interval, ki se šteje od časa zaključka.\n"
+"(O zgodovini OPRAVILA ni mogoče ničesar povedati, ker se osnova ponavljanja spreminja po vsakem dokončanju)."
+
+#. exceptions
+#: ../src/appointment.c:3699
+msgid "Exceptions"
+msgstr "Izjeme"
+
+#: ../src/appointment.c:3725
+msgid ""
+"Add more exception dates by clicking the calendar days below.\n"
+"Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
+"Remove by clicking the data."
+msgstr ""
+"Dodaj več izjem s klikanjem na dneve v spodnjem koledarju.\n"
+"Izjema pomeni bodosi izključi(-) ali vključi(+), odvisno od izbire.\n"
+"Odstranite s klikanjem na podatke."
+
+#: ../src/appointment.c:3736
+msgid "Add excluded date (-)"
+msgstr "Izključi datum  (-)"
+
+#: ../src/appointment.c:3738
+msgid "Excluded days are full days where this appointment is not happening"
+msgstr "Izključeni datumi so celi dnevi, ko se ta sestanek ne zgodi."
+
+#: ../src/appointment.c:3745
+msgid "Add included time (+)"
+msgstr "Vključi uro (+)"
+
+#: ../src/appointment.c:3747
+msgid ""
+"Included times have same timezone than start time, but they may have "
+"different time"
+msgstr ""
+"Vključene ure imajo enak časovni pas kot začetni čas, vendar se lahko njohov"
+" čas razlikuje."
+
+#. calendars showing the action days
+#: ../src/appointment.c:3766
+msgid "Action dates"
+msgstr "Datumi dejanj"
+
+#. ********* View menu *********
+#. View menu
+#: ../src/day-view.c:303 ../src/event-list.c:1139 ../src/mainbox.c:238
+msgid "_View"
+msgstr "_Prikaz"
+
+#. ********* Go menu   *********
+#: ../src/day-view.c:317 ../src/event-list.c:1158
+msgid "_Go"
+msgstr "Poj_di"
+
+#: ../src/day-view.c:390 ../src/event-list.c:1204
+msgid "New"
+msgstr "Nov"
+
+#: ../src/day-view.c:395
+msgid "Back one week"
+msgstr "Nazaj en teden"
+
+#: ../src/day-view.c:397
+msgid "Back one day"
+msgstr "Nazaj en dan"
+
+#: ../src/day-view.c:401
+msgid "Forward one day"
+msgstr "Naprej en dan"
+
+#: ../src/day-view.c:403
+msgid "Forward one week"
+msgstr "Naprej en teden"
+
+#: ../src/day-view.c:408 ../src/event-list.c:1222
+msgid "Refresh"
+msgstr "Osveži"
+
+#: ../src/day-view.c:413 ../src/event-list.c:1229 ../src/interface.c:879
+msgid "Close"
+msgstr "Zapri"
+
+#: ../src/day-view.c:472
+msgid "_OK"
+msgstr "_V redu"
+
+#: ../src/day-view.c:593
+msgid "Unknown"
+msgstr "Neznano"
+
+#: ../src/day-view.c:838
+msgid "Number of days to show"
+msgstr "Število prikazanih dni"
+
+#: ../src/day-view.c:1069
+msgid "Orage - day view"
+msgstr "Orage - prikaz dneva"
+
+#. date only appointment
+#: ../src/event-list.c:188
+msgid "All day"
+msgstr "Cel dan"
+
+#: ../src/event-list.c:619 ../src/event-list.c:1423
+msgid "Time"
+msgstr "Čas"
+
+#: ../src/event-list.c:802
+msgid "No rows have been selected."
+msgstr "Nobena vrstica ni izbrana"
+
+#: ../src/event-list.c:803
+msgid "Click a row to select it and after that you can copy it."
+msgstr "Kliknite na vrstico, da jo izberete, nato jo lahko kopirate."
+
+#: ../src/event-list.c:998
+msgid ""
+"You will permanently remove all\n"
+"selected appointments."
+msgstr ""
+"Vsi izbrani sestanki bodo\n"
+"trajno izbirisani."
+
+#: ../src/event-list.c:1001
+msgid "Yes, remove them"
+msgstr "Da, odstrani jih"
+
+#: ../src/event-list.c:1213
+msgid "Back"
+msgstr "Nazaj"
+
+#: ../src/event-list.c:1217
+msgid "Forward"
+msgstr "Naprej"
+
+#: ../src/event-list.c:1224
+msgid "Find"
+msgstr "Najdi"
+
+#: ../src/event-list.c:1231
+msgid "Dayview"
+msgstr "Dnevni prikazPrikaz dneva"
+
+#: ../src/event-list.c:1266
+msgid "Extra days to show:"
+msgstr "Dodatni dnevi za prikaz:"
+
+#: ../src/event-list.c:1280
+msgid "only first repeating"
+msgstr "le prvo ponovitev"
+
+#: ../src/event-list.c:1288
+msgid ""
+"Check this if you only want to see the first repeating event. By default all are shown.\n"
+"Note that this also shows all urgencies.\n"
+"Note that repeating events may appear earlier in the list as the first occurrence only is listed."
+msgstr ""
+"To izberite, če želite videti le prvo ponovitev dogodka. Privzeto so prikazani vsi.\n"
+"To prikaže tudi vse nujno.\n"
+"Bodite pozorni na to, da se lahko ponavljajoči se dogodki na seznamu prikažejo prej, ker je prikazana le prva ponovitev."
+
+#: ../src/event-list.c:1293
+msgid "also old"
+msgstr "tudi starejši"
+
+#: ../src/event-list.c:1298
+msgid ""
+"Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
+"Note that extra days selection still defines if newer appointments are listed."
+msgstr ""
+"Izberite to, če želite videti tudi starejše dogodke. To je mogoče izbrati le, kadar je vklopljeno 'le prvo ponovitev', da seznami niso predolgi.\n"
+"Izbira dodatnih dnevov še vedno velja, če so prikazani novejši sestanki."
+
+#: ../src/event-list.c:1337
+msgid "Journal entries starting from:"
+msgstr "Vnosi v dnevnik, začenši z:"
+
+#: ../src/event-list.c:1362
+msgid "Search"
+msgstr "Išči"
+
+#: ../src/event-list.c:1365
+msgid "Search text "
+msgstr "Išči besedilo"
+
+#: ../src/event-list.c:1431
+msgid "Flags"
+msgstr "Zastavice"
+
+#: ../src/event-list.c:1465
+msgid ""
+"Double click line to edit it.\n"
+"\n"
+"Flags in order:\n"
+"\t 1. Alarm: n=no alarm\n"
+"\t\t A=Alarm is set P=Persistent alarm is set\n"
+"\t 2. Recurrence: n=no recurrence\n"
+"\t\t H=Hourly D=Daily W=Weekly M=Monthly Y=Yearly\n"
+"\t 3. Type: f=free B=Busy\n"
+"\t 4. Located in file:\n"
+"\t\tO=Orage A=Archive F=Foreign\n"
+"\t 5. Appointment type:\n"
+"\t\tE=Event T=Todo J=Journal"
+msgstr ""
+"Dvojni klik za vrstično urejanje.\n"
+"\n"
+"Zastavice po vrstnem redu:\n"
+" 1. Alarm: n=ni alarma\n"
+"\t\t A=Alarm je nastavljen P=Nastavljen je trajen alarm\n"
+"\t 2. Ponavljanje: n=ni ponavljanja\n"
+"\t\t H=vsako uro D=dnevno W=tedensko M=mesečno Y=letno\n"
+"\t 3. Vrsta: f=prosto B=zasedeno\n"
+"\t 4. V datoteki:\n"
+"\t\tO=Orage A=arhiv F=tuj\n"
+"\t 5. Vrsta sestanka:\n"
+"\t\tE=dogodek T=opravilo J=dnevnik"
+
+#: ../src/ical-code.c:780
+msgid "Orage default alarm"
+msgstr "Privzeti alarm Orage"
+
+#: ../src/interface.c:268
+msgid "Calendar files"
+msgstr "Datoteke koledarja"
+
+#: ../src/interface.c:645
+msgid "Current foreign files"
+msgstr "Trenutne tuje datoteke"
+
+#: ../src/interface.c:668
+msgid "READ ONLY"
+msgstr "SAMO ZA BRANJE"
+
+#: ../src/interface.c:670
+msgid "READ WRITE"
+msgstr "BRANJE IN PISANJE"
+
+#: ../src/interface.c:695
+msgid "***** No foreign files *****"
+msgstr "***** Ni tujih datotek *****"
+
+#: ../src/interface.c:709
+msgid "Foreign file add failed"
+msgstr "Dodajanje tujih datotek ni uspelo"
+
+#: ../src/interface.c:718
+msgid "Orage can only handle 10 foreign files. Limit reached."
+msgstr ""
+"Orage lahko dela  z do desetimi tujimi datotekami. Omejitev je dosežena."
+
+#: ../src/interface.c:728
+msgid "Filename is empty."
+msgstr "Ime datoteke je prazno."
+
+#: ../src/interface.c:738
+msgid "Name is empty."
+msgstr "Ime je prazno."
+
+#: ../src/interface.c:749
+msgid "File does not exist."
+msgstr "Datoteka ne obstaja."
+
+#: ../src/interface.c:761
+msgid "Same filename already exists in Orage."
+msgstr "Datoteka z enakim imenom že obstaja v Orageu"
+
+#: ../src/interface.c:772
+msgid "Same name already exists in Orage."
+msgstr "To ime v Orageu že obstaja."
+
+#: ../src/interface.c:1025
+msgid "Import/export"
+msgstr "Uvozi/izvozi"
+
+#: ../src/interface.c:1032
+msgid "Import"
+msgstr "Uvoz"
+
+#: ../src/interface.c:1040
+msgid "Read from file:"
+msgstr "Preberi iz datoteke:"
+
+#: ../src/interface.c:1070
+msgid ""
+"Separate filenames with comma(,).\n"
+" NOTE: comma is not valid character in filenames for Orage."
+msgstr ""
+"Ločite imena datotek z vejico(,).\n"
+"OPOMOBA: vejica ni dovoljen znak za imena Orage datotek."
+
+#: ../src/interface.c:1075
+msgid "Export"
+msgstr "Izvoz"
+
+#: ../src/interface.c:1083
+msgid "Write to file:"
+msgstr "Zapiši v datoteko:"
+
+#: ../src/interface.c:1118 ../src/interface.c:1136
+msgid "Select"
+msgstr "Izberi"
+
+#: ../src/interface.c:1123
+msgid "All appointments"
+msgstr "Vsi sestanki"
+
+#: ../src/interface.c:1142
+msgid "Named appointments:"
+msgstr "Poimenovani sestanki:"
+
+#: ../src/interface.c:1161
+msgid ""
+"Note that only main file appointments are read.\n"
+"Archived and Foreign events are not exported."
+msgstr ""
+"Upoštevani bodo samo glavni sestanki datoteke.\n"
+"Arhivirani in tuji dogodki ne bodo izvoženi."
+
+#: ../src/interface.c:1164
+msgid ""
+"Note that only main file appointments are read.\n"
+"Foreign events are not exported."
+msgstr ""
+"Upoštevani bodo samo glavni sestanki datoteke.\n"
+"Tuji dogodki ne bodo izvoženi."
+
+#: ../src/interface.c:1167
+msgid "You can easily drag these from event-list window."
+msgstr "Te dogodke lahko preprosto povlečete iz okna s seznamom dogodkov."
+
+#: ../src/interface.c:1169
+msgid "Orage appointment UIDs separated by commas."
+msgstr "UID Orage sestankov ločenih z vejicami."
+
+#: ../src/interface.c:1175
+msgid "Archive"
+msgstr "Arhiviraj"
+
+#: ../src/interface.c:1190
+#, c-format
+msgid "Archive now (threshold: %d months)"
+msgstr "Arhiviraj zdaj (prag: %d mesecev)"
+
+#: ../src/interface.c:1201
+msgid "You can change archive threshold in parameters"
+msgstr "Prah arhiviranja lahko spremenite v parametrih"
+
+#: ../src/interface.c:1213
+msgid "Revert archive now"
+msgstr "Zdaj obnovi arhiv"
+
+#: ../src/interface.c:1220
+msgid ""
+"Return all archived events into main orage file and remove arch file.\n"
+"This is useful for example when doing export and moving orage\n"
+"appointments to another system."
+msgstr ""
+"V glavno orage datoteko vnese vse arhivirane dogodke in odstrani\n"
+"vse arhivske datoteke.\n"
+"To je uporabno, če želite npr. želi izvoz ob prenosu orage sestankov\n"
+"na drug sistem."
+
+#: ../src/interface.c:1232
+msgid "Orage files"
+msgstr "Datoteke Orage"
+
+#: ../src/interface.c:1239
+msgid "Orage main calendar file"
+msgstr "Glavna koledarska datoteka Orage-a"
+
+#: ../src/interface.c:1248 ../src/interface.c:1341
+msgid "Current file:"
+msgstr "Trenutna datoteka:"
+
+#: ../src/interface.c:1260 ../src/interface.c:1353
+msgid "New file:"
+msgstr "Nova datoteka:"
+
+#: ../src/interface.c:1288 ../src/interface.c:1380
+msgid "Action options:"
+msgstr "Možnosti dejanja:"
+
+#: ../src/interface.c:1292 ../src/interface.c:1384
+msgid "Rename"
+msgstr "Preimenuj"
+
+#: ../src/interface.c:1298
+msgid ""
+"Orage internal file rename only.\n"
+"Does not touch external filesystem at all.\n"
+"New file must exist."
+msgstr ""
+"Preimenuj orage datoteko zgolj inetrno.\n"
+"Ne spremni ničesar v zunanjem datotečnem sistemu.\n"
+"Nova datoteka mora obstajati."
+
+#: ../src/interface.c:1302 ../src/interface.c:1391
+msgid "Copy"
+msgstr "Kopiraj"
+
+#: ../src/interface.c:1308
+msgid "Current file is copied and stays unmodified in the old place."
+msgstr ""
+"Trenutna datoteka se kopira in ostane nespremenjena na stari lokaciji."
+
+#: ../src/interface.c:1312 ../src/interface.c:1398
+msgid "Move"
+msgstr "Premakni"
+
+#: ../src/interface.c:1318
+msgid "Current file is moved and vanishes from the old place."
+msgstr "Trenutna datoteka se premakne in izgine s stare lokacije."
+
+#: ../src/interface.c:1332
+msgid "Archive file"
+msgstr "Datoteka arhiva"
+
+#: ../src/interface.c:1423
+msgid "Foreign files"
+msgstr "Tuje datoteke"
+
+#: ../src/interface.c:1430
+msgid "Add new foreign file"
+msgstr "Doaj novo tujo doatoteko"
+
+#: ../src/interface.c:1438
+msgid "Foreign file:"
+msgstr "Tuja datoteka:"
+
+#: ../src/interface.c:1469
+msgid "Visible name:"
+msgstr "Prikazno ime:"
+
+#: ../src/interface.c:1479
+msgid "Read only"
+msgstr "Samo za branje"
+
+#: ../src/interface.c:1489
+msgid ""
+"Set this if you want to make sure that this file is never modified by Orage.\n"
+"Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
+msgstr ""
+"Izberite, če želite zagotoviti, da Orage te datoteke ne spreminja.\n"
+"Spreminjanje tujih datotek lahko povzroči, da te niso več združljive z izvirnim orodjem!"
+
+#: ../src/interface.c:1491
+msgid "This internal name is displayed to user instead of file name."
+msgstr ""
+"Uporabniku je prikazano to interno poimenovanje namesto imena datoteke."
+
+#: ../src/interface.c:1505
+msgid "Exchange data - Orage"
+msgstr "Izmenjava podatkov - Orage"
+
+#: ../src/mainbox.c:220
+msgid "_Exchange data"
+msgstr "Izm_enjava podatkov"
+
+#. Edit menu
+#: ../src/mainbox.c:231
+msgid "_Edit"
+msgstr "Ur_edi"
+
+#: ../src/mainbox.c:241
+msgid "View selected _date"
+msgstr "Poglej izbran _datum"
+
+#: ../src/mainbox.c:244
+msgid "View selected _week"
+msgstr "Poglej izbran _teden"
+
+#: ../src/mainbox.c:250
+msgid "Select _Today"
+msgstr "Izberi _danes"
+
+#. Help menu
+#. the rest
+#: ../src/mainbox.c:254 ../src/parameters.c:1207
+msgid "_Help"
+msgstr "_Pomoč"
+
+#: ../src/mainbox.c:314 ../src/reminder.c:965
+msgid "No title defined"
+msgstr "Naslov ni podan"
+
+#: ../src/mainbox.c:372
+#, c-format
+msgid " Location: %s\n"
+msgstr " Lokacija: %s\n"
+
+#: ../src/mainbox.c:382
+#, c-format
+msgid ""
+"\n"
+" Note:\n"
+"%s"
+msgstr ""
+"\n"
+" Opomba:\n"
+"%s"
+
+#: ../src/mainbox.c:390
+msgid "Never"
+msgstr "Nikoli"
+
+#: ../src/mainbox.c:398
+#, c-format
+msgid ""
+"Title: %s\n"
+"%s Start:\t%s\n"
+" Due:\t%s\n"
+" Done:\t%s%s"
+msgstr ""
+"Naslov: %s\n"
+"%s Začetek:\t%s\n"
+"Čas:\t%s\n"
+"Zaključek:\t%s%s"
+
+#: ../src/mainbox.c:405
+#, c-format
+msgid ""
+"Title: %s\n"
+"%s Start:\t%s\n"
+" End:\t%s%s"
+msgstr ""
+"Naslov: %s\n"
+"%s Začetek:\t%s\n"
+"konec:\t%s%s"
+
+#: ../src/mainbox.c:484
+msgid "<b>To do:</b>"
+msgstr "<b>Opravila:</b>"
+
+#: ../src/mainbox.c:521
+#, c-format
+msgid "<b>Events for %s:</b>"
+msgstr "<b>Dogodki za %s:</b>"
+
+#: ../src/mainbox.c:531
+#, c-format
+msgid "<b>Events for %s - %s:</b>"
+msgstr "<b>Dogodki za %s - %s:</b>"
+
+#: ../src/orage-about.c:50 ../org.xfce.orage.appdata.xml.in.h:2
+msgid "Orage is a time-managing application for the Xfce desktop environment"
+msgstr "Orage je aplikacija za upravljanje časa za Xfce namizno okolje"
+
+#: ../src/orage-about.c:54
+msgid "translator-credits"
+msgstr ""
+"Prevedli:\n"
+"Arni<atomicmind@yahoo.com>,Gašper <gasper@gmx.com>, Nenad <nenadlatinovic@lavabit.com>"
+
+#: ../src/orage-application.c:160
+#, c-format
+msgid ""
+"\tThis is %s version %s\n"
+"\n"
+msgstr ""
+"\tTo je %s različice %s\n"
+"\n"
+
+#: ../src/orage-application.c:162
+#, c-format
+msgid "\tReleased under the terms of the GNU General Public License.\n"
+msgstr "Izdano pod pogoji sploščne javne GNU licence.\n"
+
+#: ../src/orage-application.c:163
+#, c-format
+msgid "\tCompiled against GTK+-%d.%d.%d, "
+msgstr "\tPrevedno napram GTK+-%d.%d.%d,"
+
+#: ../src/orage-application.c:165
+#, c-format
+msgid "using GTK+-%d.%d.%d.\n"
+msgstr "ob uporabi GTK+-%d.%d.%d.\n"
+
+#: ../src/orage-application.c:168
+#, c-format
+msgid "\tUsing libnotify.\n"
+msgstr "\tz uporabo libnotify.\n"
+
+#: ../src/orage-application.c:170
+#, c-format
+msgid "\tNot using libnotify.\n"
+msgstr "\tbrez uporabe libnotify.\n"
+
+#: ../src/orage-application.c:173
+#, c-format
+msgid "\tUsing automatic archiving.\n"
+msgstr "\tz uporabo samodejnega arhiviranja.\n"
+
+#: ../src/orage-application.c:175
+#, c-format
+msgid "\tNot using archiving.\n"
+msgstr "\tbrez uporabe arhiviranja\n"
+
+#: ../src/orage-application.c:178
+#, c-format
+msgid "\tUsing libxfce4ui: yes\n"
+msgstr "\tRaba libxfce4ui: da\n"
+
+#: ../src/orage-application.c:180
+#, c-format
+msgid "\tUsing libxfce4ui: no\n"
+msgstr "\tRaba libxfce4ui: ne\n"
+
+#: ../src/orage-application.c:526
+msgid "Show version of orage"
+msgstr "Prikaži orage različico"
+
+#: ../src/orage-application.c:535
+msgid "Show preferences form"
+msgstr "Prikaži pogovorno okno nastavitev"
+
+#: ../src/orage-application.c:544
+msgid "Make Orage visible/unvisible"
+msgstr "Skrij/prikaži Orage"
+
+#: ../src/orage-application.c:553
+msgid "Add a foreign file"
+msgstr "Dodaj tujo datoteko"
+
+#: ../src/orage-application.c:571
+msgid "Export appointments from Orage to file"
+msgstr "Izvozi Orage sestanke v datoteko"
+
+#: ../src/parameters.c:549
+msgid "Main settings"
+msgstr "Glavne nastavitve"
+
+#: ../src/parameters.c:555
+msgid "Timezone"
+msgstr "Časovni pas"
+
+#: ../src/parameters.c:576
+msgid "You should always define your local timezone."
+msgstr "Vedno določite vaš časovni pas."
+
+#: ../src/parameters.c:584
+msgid "Archive threshold (months)"
+msgstr "Prag arhiviranja (meseci)"
+
+#: ../src/parameters.c:597
+msgid "(0 = no archiving)"
+msgstr "(0 = brez arhiviranja)"
+
+#: ../src/parameters.c:601
+msgid "Archiving is used to save time and space when handling events."
+msgstr "Arhiviranje prihrani čas in prostor pri obdelavi dogodkov."
+
+#: ../src/parameters.c:609
+msgid "Sound command"
+msgstr "Zvočni ukaz"
+
+#: ../src/parameters.c:637
+msgid "This command is given to shell to make sound in alarms."
+msgstr "Ta ukaz se posreduje lupini, da ustvari zvok ob alarmu."
+
+#: ../src/parameters.c:668
+msgid "Calendar window"
+msgstr "Okno koledarja"
+
+#: ../src/parameters.c:675
+msgid "Calendar visual details"
+msgstr "Vidne podrobnosti koledarja"
+
+#: ../src/parameters.c:682
+msgid "Show borders"
+msgstr "Pokaži obrobe"
+
+#: ../src/parameters.c:687
+msgid "Show menu"
+msgstr "Pokaži meni"
+
+#: ../src/parameters.c:695
+msgid "Show day names"
+msgstr "Pokaži imena dnevov"
+
+#: ../src/parameters.c:700
+msgid "Show week numbers"
+msgstr "Pokaži številke tednov"
+
+#: ../src/parameters.c:708
+msgid "Show month and year"
+msgstr "Pokaži mesec in leto"
+
+#: ../src/parameters.c:728
+msgid "Calendar info boxes"
+msgstr "Podatkovni okvirji koledarja"
+
+#: ../src/parameters.c:735
+msgid "Show todo list"
+msgstr "Prikaži seznam opravil"
+
+#: ../src/parameters.c:742
+msgid "Number of days to show in event window"
+msgstr "Število dni za prikaz v oknu dogodkov"
+
+#: ../src/parameters.c:750
+msgid "0 = do not show event list at all"
+msgstr "0 = sploh ne prikaži seznama dogodkov"
+
+#: ../src/parameters.c:764
+msgid "Calendar visibility"
+msgstr "Vidnost koledarja"
+
+#: ../src/parameters.c:770
+msgid "Show on all desktops"
+msgstr "Pokaži na vseh namizjih"
+
+#: ../src/parameters.c:775
+msgid "Keep on top"
+msgstr "Ohrani na vrhu"
+
+#: ../src/parameters.c:783
+msgid "Show in taskbar"
+msgstr "Pokaži v opravilni vrstici"
+
+#: ../src/parameters.c:788
+msgid "Show in pager"
+msgstr "Prikaži v pozivniku"
+
+#: ../src/parameters.c:796
+msgid "Show in systray"
+msgstr "Pokaži v sistemski pasici"
+
+#: ../src/parameters.c:824
+msgid "Calendar start"
+msgstr "Začetek koledarja"
+
+#: ../src/parameters.c:830
+msgid "Show"
+msgstr "Pokaži"
+
+#: ../src/parameters.c:846
+msgid "Hide"
+msgstr "Skrij"
+
+#: ../src/parameters.c:863
+msgid "Minimized"
+msgstr "Pomanjšano"
+
+#: ../src/parameters.c:889
+msgid "On calendar window open"
+msgstr "Ob odprtju okna koledarja"
+
+#: ../src/parameters.c:895
+msgid "Select today's date"
+msgstr "Izberi današnji datum"
+
+#: ../src/parameters.c:912
+msgid "Select previously selected date"
+msgstr "Izberi predhodno izbrani datum"
+
+#: ../src/parameters.c:936
+msgid "Calendar day double click shows"
+msgstr "Dvojni klik na koledar prikaže"
+
+#: ../src/parameters.c:942
+msgid "Days view"
+msgstr "Dnevni pogled"
+
+#: ../src/parameters.c:958
+msgid "Event list"
+msgstr "Seznam dogodkov"
+
+#: ../src/parameters.c:991
+msgid "Extra settings"
+msgstr "Dodatne nastavitve"
+
+#: ../src/parameters.c:998
+msgid "Event list window"
+msgstr "Okno seznama dogodkov"
+
+#: ../src/parameters.c:1005
+msgid "Number of extra days to show in event list"
+msgstr "Število dodatnih dni za prikaz v seznamu dogodkov"
+
+#: ../src/parameters.c:1015
+msgid ""
+"This is just the default value, you can change it in the actual eventlist "
+"window."
+msgstr ""
+"To je zgolj privzeta vrednost, ki jo lahko spremenite v oknu z dejanskim "
+"seznamom dogodkov."
+
+#: ../src/parameters.c:1023
+msgid "Show only first repeating event"
+msgstr "Prikaži le prvi ponavljajoči se dogodek"
+
+#: ../src/parameters.c:1040
+msgid "Day view window default first day"
+msgstr "Privzeti prvi dan okna s prikazom dnevov"
+
+#: ../src/parameters.c:1047
+msgid "First day of week"
+msgstr "Prvi dan v tednu"
+
+#: ../src/parameters.c:1064
+msgid "Selected day"
+msgstr "Izbran dan"
+
+#: ../src/parameters.c:1087 ../src/parameters.c:1094
+msgid "Use wakeup timer"
+msgstr "Uporabi budilko"
+
+#: ../src/parameters.c:1102
+msgid ""
+"Use this timer if Orage has problems waking up properly after suspend or "
+"hibernate. (For example tray icon not refreshed or alarms not firing.)"
+msgstr ""
+"Uporabite ta časovnik, če ima Orage težave s pravilnim prebujanjem iz stanja"
+" mirovanja ali hibernacije. (Če se npr. sistemska pasica ne osveži, alrami "
+"pa ne sprožijo)."
+
+#: ../src/parameters.c:1112
+msgid "Foreign file default visual alarm"
+msgstr "Privzeti vizualni alarm tuje datoteteke"
+
+#: ../src/parameters.c:1119
+msgid "Orage window"
+msgstr "Okno Orage"
+
+#: ../src/parameters.c:1136
+msgid "Notify notification"
+msgstr "Obveščanje o obvestilu"
+
+#: ../src/parameters.c:1159
+msgid "Always quit when asked to close"
+msgstr "Končaj po potrditvi zapiranja"
+
+#: ../src/parameters.c:1166
+msgid "Always quit"
+msgstr "Vedno končaj"
+
+#: ../src/parameters.c:1173
+msgid ""
+"By default Orage stays open in the background when asked to close. This "
+"option changes Orage to quit and never stay in background when it is asked "
+"to close."
+msgstr ""
+"Privzeto je, da Orage ostane odprt v ozadju, tudi ko potrdimo njegovo "
+"zapiranje. Ta možnost poskrbi, da Orage ne ostane odprt v ozadju, potem ko "
+"potrdimo njegovo zapiranje."
+
+#: ../src/parameters.c:1188
+msgid "Orage Preferences"
+msgstr "Nastavitve Orage"
+
+#: ../src/parameters.c:1210 ../src/reminder.c:642
+msgid "_Close"
+msgstr "_Zapri"
+
+#: ../src/reminder.c:420
+msgid "Reminder"
+msgstr "Opomnik"
+
+#: ../src/reminder.c:443
+msgid "Open"
+msgstr "Odpri"
+
+#: ../src/reminder.c:448
+msgid "Silence"
+msgstr "Tišina"
+
+#: ../src/reminder.c:567
+msgid "Reminder - Orage"
+msgstr "Opomnik - Orage"
+
+#: ../src/reminder.c:650
+msgid "_Stop"
+msgstr "_Stop"
+
+#: ../src/reminder.c:658
+msgid "Postpone"
+msgstr "Preloži"
+
+#: ../src/reminder.c:660
+msgid "Remind me again after the specified time"
+msgstr "Ponovno me opomni po določenem času"
+
+#: ../src/reminder.c:933
+msgid "Next active alarms:"
+msgstr "Naslednji aktivni alarmi:"
+
+#: ../src/reminder.c:972
+#, c-format
+msgid ""
+"\n"
+"%02d d %02d h %02d min to: %s"
+msgstr ""
+"\n"
+"%02d d %02d ur %02d min do: %s"
+
+#: ../src/reminder.c:986
+#, c-format
+msgid ""
+"\n"
+"No active alarms found"
+msgstr ""
+"\n"
+"Ni najdenih aktivnih alarmov"
+
+#: ../src/timezone_names.c:35
+msgid "Africa"
+msgstr "Afrika"
+
+#: ../src/timezone_names.c:36
+msgid "Africa/Abidjan"
+msgstr "Afrika/Abidžan"
+
+#: ../src/timezone_names.c:37
+msgid "Africa/Accra"
+msgstr "Afrika/Akra"
+
+#: ../src/timezone_names.c:38
+msgid "Africa/Addis_Ababa"
+msgstr "Afrika/Addis_Abeba"
+
+#: ../src/timezone_names.c:39
+msgid "Africa/Algiers"
+msgstr "Afrika/Alžir"
+
+#: ../src/timezone_names.c:40
+msgid "Africa/Asmara"
+msgstr "Afrika/Asmara"
+
+#: ../src/timezone_names.c:41
+msgid "Africa/Asmera"
+msgstr "Afrika/Asmera"
+
+#: ../src/timezone_names.c:42
+msgid "Africa/Bamako"
+msgstr "Afrika/Bamako"
+
+#: ../src/timezone_names.c:43
+msgid "Africa/Bangui"
+msgstr "Afrika/Bangui"
+
+#: ../src/timezone_names.c:44
+msgid "Africa/Banjul"
+msgstr "Afrika/Banjul"
+
+#: ../src/timezone_names.c:45
+msgid "Africa/Bissau"
+msgstr "Afrika/Bissau"
+
+#: ../src/timezone_names.c:46
+msgid "Africa/Blantyre"
+msgstr "Afrika/Blantyre"
+
+#: ../src/timezone_names.c:47
+msgid "Africa/Brazzaville"
+msgstr "Afrika/Brazzaville"
+
+#: ../src/timezone_names.c:48
+msgid "Africa/Bujumbura"
+msgstr "Afrika/Bujumbura"
+
+#: ../src/timezone_names.c:49
+msgid "Africa/Cairo"
+msgstr "Afrika/Kairo"
+
+#: ../src/timezone_names.c:50
+msgid "Africa/Casablanca"
+msgstr "Afrika/Casablanca"
+
+#: ../src/timezone_names.c:51
+msgid "Africa/Ceuta"
+msgstr "Afrika/Ceuta"
+
+#: ../src/timezone_names.c:52
+msgid "Africa/Conakry"
+msgstr "Afrika/Conakry"
+
+#: ../src/timezone_names.c:53
+msgid "Africa/Dakar"
+msgstr "Afrika/Dakar"
+
+#: ../src/timezone_names.c:54
+msgid "Africa/Dar_es_Salaam"
+msgstr "Afrika/Dar_es_Salaam"
+
+#: ../src/timezone_names.c:55
+msgid "Africa/Djibouti"
+msgstr "Afrika/Džibuti"
+
+#: ../src/timezone_names.c:56
+msgid "Africa/Douala"
+msgstr "Afrika/Douala"
+
+#: ../src/timezone_names.c:57
+msgid "Africa/El_Aaiun"
+msgstr "Afrika/El_Aaiun"
+
+#: ../src/timezone_names.c:58
+msgid "Africa/Freetown"
+msgstr "Afrika/Freetown"
+
+#: ../src/timezone_names.c:59
+msgid "Africa/Gaborone"
+msgstr "Afrika/Gaborone"
+
+#: ../src/timezone_names.c:60
+msgid "Africa/Harare"
+msgstr "Afrika/Harare"
+
+#: ../src/timezone_names.c:61
+msgid "Africa/Juba"
+msgstr "Afrika/Džuba"
+
+#: ../src/timezone_names.c:62
+msgid "Africa/Johannesburg"
+msgstr "Afrika/Johannesburg"
+
+#: ../src/timezone_names.c:63
+msgid "Africa/Kampala"
+msgstr "Afrika/Kampala"
+
+#: ../src/timezone_names.c:64
+msgid "Africa/Khartoum"
+msgstr "Afrika/Kartum"
+
+#: ../src/timezone_names.c:65
+msgid "Africa/Kigali"
+msgstr "Afrika/Kigali"
+
+#: ../src/timezone_names.c:66
+msgid "Africa/Kinshasa"
+msgstr "Afrika/Kinšasa"
+
+#: ../src/timezone_names.c:67
+msgid "Africa/Lagos"
+msgstr "Afrika/Lagos"
+
+#: ../src/timezone_names.c:68
+msgid "Africa/Libreville"
+msgstr "Afrika/Libreville"
+
+#: ../src/timezone_names.c:69
+msgid "Africa/Lome"
+msgstr "Afrika/Lome"
+
+#: ../src/timezone_names.c:70
+msgid "Africa/Luanda"
+msgstr "Afrika/Luanda"
+
+#: ../src/timezone_names.c:71
+msgid "Africa/Lubumbashi"
+msgstr "Afrika/Lubumbaši"
+
+#: ../src/timezone_names.c:72
+msgid "Africa/Lusaka"
+msgstr "Afrika/Lusaka"
+
+#: ../src/timezone_names.c:73
+msgid "Africa/Malabo"
+msgstr "Afrika/Malabo"
+
+#: ../src/timezone_names.c:74
+msgid "Africa/Maputo"
+msgstr "Afrika/Maputo"
+
+#: ../src/timezone_names.c:75
+msgid "Africa/Maseru"
+msgstr "Afrika/Maseru"
+
+#: ../src/timezone_names.c:76
+msgid "Africa/Mbabane"
+msgstr "Afrika/Mbabane"
+
+#: ../src/timezone_names.c:77
+msgid "Africa/Mogadishu"
+msgstr "Afrika/Mogadišu"
+
+#: ../src/timezone_names.c:78
+msgid "Africa/Monrovia"
+msgstr "Afrika/Monrovija"
+
+#: ../src/timezone_names.c:79
+msgid "Africa/Nairobi"
+msgstr "Afrika/Nairobi"
+
+#: ../src/timezone_names.c:80
+msgid "Africa/Ndjamena"
+msgstr "Afrika/Ndjamena"
+
+#: ../src/timezone_names.c:81
+msgid "Africa/Niamey"
+msgstr "Afrika/Niamey"
+
+#: ../src/timezone_names.c:82
+msgid "Africa/Nouakchott"
+msgstr "Afrika/Nouakchott"
+
+#: ../src/timezone_names.c:83
+msgid "Africa/Ouagadougou"
+msgstr "Afrika/Ouagadougou"
+
+#: ../src/timezone_names.c:84
+msgid "Africa/Porto-Novo"
+msgstr "Afrika/Porto-Novo"
+
+#: ../src/timezone_names.c:85
+msgid "Africa/Sao_Tome"
+msgstr "Afrika/Sao_Tome"
+
+#: ../src/timezone_names.c:86
+msgid "Africa/Timbuktu"
+msgstr "Afrika/Timbuktu"
+
+#: ../src/timezone_names.c:87
+msgid "Africa/Tripoli"
+msgstr "Afrika/Tripoli"
+
+#: ../src/timezone_names.c:88
+msgid "Africa/Tunis"
+msgstr "Afrika/Tunis"
+
+#: ../src/timezone_names.c:89
+msgid "Africa/Windhoek"
+msgstr "Afrika/Windhoek"
+
+#: ../src/timezone_names.c:90
+msgid "America"
+msgstr "Amerika"
+
+#: ../src/timezone_names.c:91
+msgid "America/Adak"
+msgstr "Amerika/Adak"
+
+#: ../src/timezone_names.c:92
+msgid "America/Anchorage"
+msgstr "Amerika/Anchorage"
+
+#: ../src/timezone_names.c:93
+msgid "America/Anguilla"
+msgstr "Amerika/Anguilla"
+
+#: ../src/timezone_names.c:94
+msgid "America/Antigua"
+msgstr "Amerika/Antigua"
+
+#: ../src/timezone_names.c:95
+msgid "America/Araguaina"
+msgstr "Amerika/Araguaina"
+
+#: ../src/timezone_names.c:96
+msgid "America/Argentina/Buenos_Aires"
+msgstr "Amerika/Argentina/Buenos_Aires"
+
+#: ../src/timezone_names.c:97
+msgid "America/Argentina/Catamarca"
+msgstr "Amerika/Argentina/Catamarca"
+
+#: ../src/timezone_names.c:98
+msgid "America/Argentina/ComodRivadavia"
+msgstr "Amerika/Argentina/ComodRivadavia"
+
+#: ../src/timezone_names.c:99
+msgid "America/Argentina/Cordoba"
+msgstr "Amerika/Argentina/Cordoba"
+
+#: ../src/timezone_names.c:100
+msgid "America/Argentina/Jujuy"
+msgstr "Amerika/Argentina/Jujuy"
+
+#: ../src/timezone_names.c:101
+msgid "America/Argentina/La_Rioja"
+msgstr "Amerika/Argentina/La_Rioja"
+
+#: ../src/timezone_names.c:102
+msgid "America/Argentina/Mendoza"
+msgstr "Amerika/Argentina/Mendoza"
+
+#: ../src/timezone_names.c:103
+msgid "America/Argentina/Rio_Gallegos"
+msgstr "Amerika/Argentina/Rio_Gallegos"
+
+#: ../src/timezone_names.c:104
+msgid "America/Argentina/Salta"
+msgstr "Amerika/Argentina/Salta"
+
+#: ../src/timezone_names.c:105
+msgid "America/Argentina/San_Juan"
+msgstr "Amerika/Argentina/San_Juan"
+
+#: ../src/timezone_names.c:106
+msgid "America/Argentina/San_Luis"
+msgstr "Amerika/Argentina/San_Luis"
+
+#: ../src/timezone_names.c:107
+msgid "America/Argentina/Tucuman"
+msgstr "Amerika/Argentina/Tucuman"
+
+#: ../src/timezone_names.c:108
+msgid "America/Argentina/Ushuaia"
+msgstr "Amerika/Argentina/Ushuaia"
+
+#: ../src/timezone_names.c:109
+msgid "America/Aruba"
+msgstr "Amerika/Aruba"
+
+#: ../src/timezone_names.c:110
+msgid "America/Asuncion"
+msgstr "Amerika/Asuncion"
+
+#: ../src/timezone_names.c:111
+msgid "America/Atikokan"
+msgstr "Amerika/Atikokan"
+
+#: ../src/timezone_names.c:112
+msgid "America/Atka"
+msgstr "Amerika/Atka"
+
+#: ../src/timezone_names.c:113
+msgid "America/Bahia"
+msgstr "Amerika/Bahia"
+
+#: ../src/timezone_names.c:114
+msgid "America/Bahia_Banderas"
+msgstr "Amerika/Bahia_Banderas"
+
+#: ../src/timezone_names.c:115
+msgid "America/Barbados"
+msgstr "Amerika/Barbados"
+
+#: ../src/timezone_names.c:116
+msgid "America/Belem"
+msgstr "Amerika/Belem"
+
+#: ../src/timezone_names.c:117
+msgid "America/Belize"
+msgstr "Amerika/Belize"
+
+#: ../src/timezone_names.c:118
+msgid "America/Blanc-Sablon"
+msgstr "Amerika/Blanc-Sablon"
+
+#: ../src/timezone_names.c:119
+msgid "America/Boa_Vista"
+msgstr "Amerika/Boa_Vista"
+
+#: ../src/timezone_names.c:120
+msgid "America/Bogota"
+msgstr "Amerika/Bogota"
+
+#: ../src/timezone_names.c:121
+msgid "America/Boise"
+msgstr "Amerika/Boise"
+
+#: ../src/timezone_names.c:122
+msgid "America/Buenos_Aires"
+msgstr "Amerika/Buenos_Aires"
+
+#: ../src/timezone_names.c:123
+msgid "America/Cambridge_Bay"
+msgstr "Amerika/Cambridge_Bay"
+
+#: ../src/timezone_names.c:124
+msgid "America/Campo_Grande"
+msgstr "Amerika/Campo_Grande"
+
+#: ../src/timezone_names.c:125
+msgid "America/Cancun"
+msgstr "Amerika/Cancun"
+
+#: ../src/timezone_names.c:126
+msgid "America/Caracas"
+msgstr "Amerika/Caracas"
+
+#: ../src/timezone_names.c:127
+msgid "America/Catamarca"
+msgstr "Amerika/Catamarca"
+
+#: ../src/timezone_names.c:128
+msgid "America/Cayenne"
+msgstr "Amerika/Cayenne"
+
+#: ../src/timezone_names.c:129
+msgid "America/Cayman"
+msgstr "Amerika/Cayman"
+
+#: ../src/timezone_names.c:130
+msgid "America/Chicago"
+msgstr "Amerika/Chicago"
+
+#: ../src/timezone_names.c:131
+msgid "America/Chihuahua"
+msgstr "Amerika/Chihuahua"
+
+#: ../src/timezone_names.c:132
+msgid "America/Coral_Harbour"
+msgstr "Amerika/Coral_Harbour"
+
+#: ../src/timezone_names.c:133
+msgid "America/Cordoba"
+msgstr "Amerika/Cordoba"
+
+#: ../src/timezone_names.c:134
+msgid "America/Costa_Rica"
+msgstr "Amerika/Costa_Rica"
+
+#: ../src/timezone_names.c:135
+msgid "America/Creston"
+msgstr "Amerika/Creston"
+
+#: ../src/timezone_names.c:136
+msgid "America/Cuiaba"
+msgstr "Amerika/Cuiaba"
+
+#: ../src/timezone_names.c:137
+msgid "America/Curacao"
+msgstr "Amerika/Curacao"
+
+#: ../src/timezone_names.c:138
+msgid "America/Danmarkshavn"
+msgstr "Amerika/Danmarkshavn"
+
+#: ../src/timezone_names.c:139
+msgid "America/Dawson"
+msgstr "Amerika/Dawson"
+
+#: ../src/timezone_names.c:140
+msgid "America/Dawson_Creek"
+msgstr "Amerika/Dawson_Creek"
+
+#: ../src/timezone_names.c:141
+msgid "America/Denver"
+msgstr "Amerika/Denver"
+
+#: ../src/timezone_names.c:142
+msgid "America/Detroit"
+msgstr "Amerika/Detroit"
+
+#: ../src/timezone_names.c:143
+msgid "America/Dominica"
+msgstr "Amerika/Dominica"
+
+#: ../src/timezone_names.c:144
+msgid "America/Edmonton"
+msgstr "Amerika/Edmonton"
+
+#: ../src/timezone_names.c:145
+msgid "America/Ensenada"
+msgstr "Amerika/Ensenada"
+
+#: ../src/timezone_names.c:146
+msgid "America/Eirunepe"
+msgstr "Amerika/Eirunepe"
+
+#: ../src/timezone_names.c:147
+msgid "America/El_Salvador"
+msgstr "Amerika/El_Salvador"
+
+#: ../src/timezone_names.c:148
+msgid "America/Fortaleza"
+msgstr "Amerika/Fortaleza"
+
+#: ../src/timezone_names.c:149
+msgid "America/Fort_Wayne"
+msgstr "Amerika/Fort_Wayne"
+
+#: ../src/timezone_names.c:150
+msgid "America/Glace_Bay"
+msgstr "Amerika/Glace_Bay"
+
+#: ../src/timezone_names.c:151
+msgid "America/Godthab"
+msgstr "Amerika/Godthab"
+
+#: ../src/timezone_names.c:152
+msgid "America/Goose_Bay"
+msgstr "Amerika/Goose_Bay"
+
+#: ../src/timezone_names.c:153
+msgid "America/Grand_Turk"
+msgstr "Amerika/Grand_Turk"
+
+#: ../src/timezone_names.c:154
+msgid "America/Grenada"
+msgstr "Amerika/Grenada"
+
+#: ../src/timezone_names.c:155
+msgid "America/Guadeloupe"
+msgstr "Amerika/Guadeloupe"
+
+#: ../src/timezone_names.c:156
+msgid "America/Guatemala"
+msgstr "Amerika/Guatemala"
+
+#: ../src/timezone_names.c:157
+msgid "America/Guayaquil"
+msgstr "Amerika/Guayaquil"
+
+#: ../src/timezone_names.c:158
+msgid "America/Guyana"
+msgstr "Amerika/Guyana"
+
+#: ../src/timezone_names.c:159
+msgid "America/Halifax"
+msgstr "Amerika/Halifax"
+
+#: ../src/timezone_names.c:160
+msgid "America/Havana"
+msgstr "Amerika/Havana"
+
+#: ../src/timezone_names.c:161
+msgid "America/Hermosillo"
+msgstr "Amerika/Hermosillo"
+
+#: ../src/timezone_names.c:162
+msgid "America/Indiana/Indianapolis"
+msgstr "Amerika/Indiana/Indianapolis"
+
+#: ../src/timezone_names.c:163
+msgid "America/Indiana/Knox"
+msgstr "Amerika/Indiana/Knox"
+
+#: ../src/timezone_names.c:164
+msgid "America/Indiana/Marengo"
+msgstr "Amerika/Indiana/Marengo"
+
+#: ../src/timezone_names.c:165
+msgid "America/Indiana/Petersburg"
+msgstr "Amerika/Indiana/Petersburg"
+
+#: ../src/timezone_names.c:166
+msgid "America/Indiana/Tell_City"
+msgstr "Amerika/Indiana/Tell_City"
+
+#: ../src/timezone_names.c:167
+msgid "America/Indiana/Vevay"
+msgstr "Amerika/Indiana/Vevay"
+
+#: ../src/timezone_names.c:168
+msgid "America/Indiana/Vincennes"
+msgstr "Amerika/Indiana/Vincennes"
+
+#: ../src/timezone_names.c:169
+msgid "America/Indiana/Winamac"
+msgstr "Amerika/Indiana/Winamac"
+
+#: ../src/timezone_names.c:170
+msgid "America/Indianapolis"
+msgstr "Amerika/Indianapolis"
+
+#: ../src/timezone_names.c:171
+msgid "America/Inuvik"
+msgstr "Amerika/Inuvik"
+
+#: ../src/timezone_names.c:172
+msgid "America/Iqaluit"
+msgstr "Amerika/Iqaluit"
+
+#: ../src/timezone_names.c:173
+msgid "America/Jamaica"
+msgstr "Amerika/Jamaica"
+
+#: ../src/timezone_names.c:174
+msgid "America/Jujuy"
+msgstr "Amerika/Jujuy"
+
+#: ../src/timezone_names.c:175
+msgid "America/Juneau"
+msgstr "Amerika/Juneau"
+
+#: ../src/timezone_names.c:176
+msgid "America/Kentucky/Louisville"
+msgstr "Amerika/Kentucky/Louisville"
+
+#: ../src/timezone_names.c:177
+msgid "America/Kentucky/Monticello"
+msgstr "Amerika/Kentucky/Monticello"
+
+#: ../src/timezone_names.c:178
+msgid "America/Knox_IN"
+msgstr "Amerika/Knox_IN"
+
+#: ../src/timezone_names.c:179
+msgid "America/Kralendijk"
+msgstr "Amerika/Kralendijk"
+
+#: ../src/timezone_names.c:180
+msgid "America/La_Paz"
+msgstr "Amerika/La_Paz"
+
+#: ../src/timezone_names.c:181
+msgid "America/Lima"
+msgstr "Amerika/Lima"
+
+#: ../src/timezone_names.c:182
+msgid "America/Los_Angeles"
+msgstr "Amerika/Los_Angeles"
+
+#: ../src/timezone_names.c:183
+msgid "America/Louisville"
+msgstr "Amerika/Louisville"
+
+#: ../src/timezone_names.c:184
+msgid "America/Lower_Princes"
+msgstr "Amerika/Lower_Princes"
+
+#: ../src/timezone_names.c:185
+msgid "America/Maceio"
+msgstr "Amerika/Maceio"
+
+#: ../src/timezone_names.c:186
+msgid "America/Managua"
+msgstr "Amerika/Managua"
+
+#: ../src/timezone_names.c:187
+msgid "America/Manaus"
+msgstr "Amerika/Manaus"
+
+#: ../src/timezone_names.c:188
+msgid "America/Marigot"
+msgstr "Amerika/Marigot"
+
+#: ../src/timezone_names.c:189
+msgid "America/Martinique"
+msgstr "Amerika/Martinique"
+
+#: ../src/timezone_names.c:190
+msgid "America/Matamoros"
+msgstr "Amerika/Matamoros"
+
+#: ../src/timezone_names.c:191
+msgid "America/Mazatlan"
+msgstr "Amerika/Mazatlan"
+
+#: ../src/timezone_names.c:192
+msgid "America/Mendoza"
+msgstr "Amerika/Mendoza"
+
+#: ../src/timezone_names.c:193
+msgid "America/Menominee"
+msgstr "Amerika/Menominee"
+
+#: ../src/timezone_names.c:194
+msgid "America/Merida"
+msgstr "Amerika/Merida"
+
+#: ../src/timezone_names.c:195
+msgid "America/Metlakatla"
+msgstr "Amerika/Metlakatla"
+
+#: ../src/timezone_names.c:196
+msgid "America/Mexico_City"
+msgstr "Amerika/Mexico_City"
+
+#: ../src/timezone_names.c:197
+msgid "America/Miquelon"
+msgstr "Amerika/Miquelon"
+
+#: ../src/timezone_names.c:198
+msgid "America/Moncton"
+msgstr "Amerika/Moncton"
+
+#: ../src/timezone_names.c:199
+msgid "America/Monterrey"
+msgstr "Amerika/Monterrey"
+
+#: ../src/timezone_names.c:200
+msgid "America/Montevideo"
+msgstr "Amerika/Montevideo"
+
+#: ../src/timezone_names.c:201
+msgid "America/Montreal"
+msgstr "Amerika/Montreal"
+
+#: ../src/timezone_names.c:202
+msgid "America/Montserrat"
+msgstr "Amerika/Montserrat"
+
+#: ../src/timezone_names.c:203
+msgid "America/Nassau"
+msgstr "Amerika/Nassau"
+
+#: ../src/timezone_names.c:204
+msgid "America/New_York"
+msgstr "Amerika/New_York"
+
+#: ../src/timezone_names.c:205
+msgid "America/Nipigon"
+msgstr "Amerika/Nipigon"
+
+#: ../src/timezone_names.c:206
+msgid "America/Nome"
+msgstr "Amerika/Nome"
+
+#: ../src/timezone_names.c:207
+msgid "America/North_Dakota/Beulah"
+msgstr "Amerika/North_Dakota/Beulah"
+
+#: ../src/timezone_names.c:208
+msgid "America/North_Dakota/Center"
+msgstr "Amerika/North_Dakota/Center"
+
+#: ../src/timezone_names.c:209
+msgid "America/North_Dakota/New_Salem"
+msgstr "Amerika/North_Dakota/New_Salem"
+
+#: ../src/timezone_names.c:210
+msgid "America/Noronha"
+msgstr "Amerika/Noronha"
+
+#: ../src/timezone_names.c:211
+msgid "America/Ojinaga"
+msgstr "Amerika/Ojinaga"
+
+#: ../src/timezone_names.c:212
+msgid "America/Panama"
+msgstr "Amerika/Panama"
+
+#: ../src/timezone_names.c:213
+msgid "America/Pangnirtung"
+msgstr "Amerika/Pangnirtung"
+
+#: ../src/timezone_names.c:214
+msgid "America/Paramaribo"
+msgstr "Amerika/Paramaribo"
+
+#: ../src/timezone_names.c:215
+msgid "America/Phoenix"
+msgstr "Amerika/Phoenix"
+
+#: ../src/timezone_names.c:216
+msgid "America/Port-au-Prince"
+msgstr "Amerika/Port-au-Prince"
+
+#: ../src/timezone_names.c:217
+msgid "America/Port_of_Spain"
+msgstr "Amerika/Port_of_Spain"
+
+#: ../src/timezone_names.c:218
+msgid "America/Porto_Acre"
+msgstr "Amerika/Porto_Acre"
+
+#: ../src/timezone_names.c:219
+msgid "America/Porto_Velho"
+msgstr "Amerika/Porto_Velho"
+
+#: ../src/timezone_names.c:220
+msgid "America/Puerto_Rico"
+msgstr "Amerika/Puerto_Rico"
+
+#: ../src/timezone_names.c:221
+msgid "America/Rainy_River"
+msgstr "Amerika/Rainy_River"
+
+#: ../src/timezone_names.c:222
+msgid "America/Rankin_Inlet"
+msgstr "Amerika/Rankin_Inlet"
+
+#: ../src/timezone_names.c:223
+msgid "America/Recife"
+msgstr "Amerika/Recife"
+
+#: ../src/timezone_names.c:224
+msgid "America/Regina"
+msgstr "Amerika/Regina"
+
+#: ../src/timezone_names.c:225
+msgid "America/Resolute"
+msgstr "Amerika/Resolute"
+
+#: ../src/timezone_names.c:226
+msgid "America/Rio_Branco"
+msgstr "Amerika/Rio_Branco"
+
+#: ../src/timezone_names.c:227
+msgid "America/Rosario"
+msgstr "Amerika/Rosario"
+
+#: ../src/timezone_names.c:228
+msgid "America/Santa_Isabel"
+msgstr "Amerika/Santa_Isabel"
+
+#: ../src/timezone_names.c:229
+msgid "America/Santarem"
+msgstr "Amerika/Santarem"
+
+#: ../src/timezone_names.c:230
+msgid "America/Santiago"
+msgstr "Amerika/Santiago"
+
+#: ../src/timezone_names.c:231
+msgid "America/Santo_Domingo"
+msgstr "Amerika/Santo_Domingo"
+
+#: ../src/timezone_names.c:232
+msgid "America/Sao_Paulo"
+msgstr "Amerika/Sao_Paulo"
+
+#: ../src/timezone_names.c:233
+msgid "America/Scoresbysund"
+msgstr "Amerika/Scoresbysund"
+
+#: ../src/timezone_names.c:234
+msgid "America/Shiprock"
+msgstr "Amerika/Shiprock"
+
+#: ../src/timezone_names.c:235
+msgid "America/Sitka"
+msgstr "Amerika/Sitka"
+
+#: ../src/timezone_names.c:236
+msgid "America/St_Barthelemy"
+msgstr "Amerika/St_Barthelemy"
+
+#: ../src/timezone_names.c:237
+msgid "America/St_Johns"
+msgstr "Amerika/St_Johns"
+
+#: ../src/timezone_names.c:238
+msgid "America/St_Kitts"
+msgstr "Amerika/St_Kitts"
+
+#: ../src/timezone_names.c:239
+msgid "America/St_Lucia"
+msgstr "Amerika/St_Lucia"
+
+#: ../src/timezone_names.c:240
+msgid "America/St_Thomas"
+msgstr "Amerika/St_Thomas"
+
+#: ../src/timezone_names.c:241
+msgid "America/St_Vincent"
+msgstr "Amerika/St_Vincent"
+
+#: ../src/timezone_names.c:242
+msgid "America/Swift_Current"
+msgstr "Amerika/Swift_Current"
+
+#: ../src/timezone_names.c:243
+msgid "America/Tegucigalpa"
+msgstr "Amerika/Tegucigalpa"
+
+#: ../src/timezone_names.c:244
+msgid "America/Thule"
+msgstr "Amerika/Thule"
+
+#: ../src/timezone_names.c:245
+msgid "America/Thunder_Bay"
+msgstr "Amerika/Thunder_Bay"
+
+#: ../src/timezone_names.c:246
+msgid "America/Tijuana"
+msgstr "Amerika/Tijuana"
+
+#: ../src/timezone_names.c:247
+msgid "America/Toronto"
+msgstr "Amerika/Toronto"
+
+#: ../src/timezone_names.c:248
+msgid "America/Tortola"
+msgstr "Amerika/Tortola"
+
+#: ../src/timezone_names.c:249
+msgid "America/Vancouver"
+msgstr "Amerika/Vancouver"
+
+#: ../src/timezone_names.c:250
+msgid "America/Virgin"
+msgstr "Amerika/Virgin"
+
+#: ../src/timezone_names.c:251
+msgid "America/Whitehorse"
+msgstr "Amerika/Whitehorse"
+
+#: ../src/timezone_names.c:252
+msgid "America/Winnipeg"
+msgstr "Amerika/Winnipeg"
+
+#: ../src/timezone_names.c:253
+msgid "America/Yakutat"
+msgstr "Amerika/Yakutat"
+
+#: ../src/timezone_names.c:254
+msgid "America/Yellowknife"
+msgstr "Amerika/Yellowknife"
+
+#: ../src/timezone_names.c:255
+msgid "Antarctica"
+msgstr "Antarktika"
+
+#: ../src/timezone_names.c:256
+msgid "Antarctica/Casey"
+msgstr "Antarktika/Casey"
+
+#: ../src/timezone_names.c:257
+msgid "Antarctica/Davis"
+msgstr "Antarktika/Davis"
+
+#: ../src/timezone_names.c:258
+msgid "Antarctica/DumontDUrville"
+msgstr "Antarktika/DumontDUrville"
+
+#: ../src/timezone_names.c:259
+msgid "Antarctica/Macquarie"
+msgstr "Antarktika/Macquarie"
+
+#: ../src/timezone_names.c:260
+msgid "Antarctica/Mawson"
+msgstr "Antarktika/Mawson"
+
+#: ../src/timezone_names.c:261
+msgid "Antarctica/McMurdo"
+msgstr "Antarktika/McMurdo"
+
+#: ../src/timezone_names.c:262
+msgid "Antarctica/Palmer"
+msgstr "Antarktika/Palmer"
+
+#: ../src/timezone_names.c:263
+msgid "Antarctica/Rothera"
+msgstr "Antarktika/Rothera"
+
+#: ../src/timezone_names.c:264
+msgid "Antarctica/South_Pole"
+msgstr "Antarktika/Južni_pol"
+
+#: ../src/timezone_names.c:265
+msgid "Antarctica/Syowa"
+msgstr "Antarktika/Syowa"
+
+#: ../src/timezone_names.c:266
+msgid "Antarctica/Vostok"
+msgstr "Antarktika/Vostok"
+
+#: ../src/timezone_names.c:267
+msgid "Arctic"
+msgstr "Arktika"
+
+#: ../src/timezone_names.c:268
+msgid "Arctic/Longyearbyen"
+msgstr "Arktika/Longyearbyen"
+
+#: ../src/timezone_names.c:269
+msgid "Asia"
+msgstr "Azija"
+
+#: ../src/timezone_names.c:270
+msgid "Asia/Aden"
+msgstr "Azija/Aden"
+
+#: ../src/timezone_names.c:271
+msgid "Asia/Almaty"
+msgstr "Azija/Almati"
+
+#: ../src/timezone_names.c:272
+msgid "Asia/Amman"
+msgstr "Azija/Aman"
+
+#: ../src/timezone_names.c:273
+msgid "Asia/Anadyr"
+msgstr "Azija/Anadir"
+
+#: ../src/timezone_names.c:274
+msgid "Asia/Aqtau"
+msgstr "Azija/Aqtau"
+
+#: ../src/timezone_names.c:275
+msgid "Asia/Aqtobe"
+msgstr "Azija/Aqtobe"
+
+#: ../src/timezone_names.c:276
+msgid "Asia/Ashgabat"
+msgstr "Azija/Ašgabat"
+
+#: ../src/timezone_names.c:277
+msgid "Asia/Ashkhabad"
+msgstr "Azija/Ašhabat"
+
+#: ../src/timezone_names.c:278
+msgid "Asia/Baghdad"
+msgstr "Azija/Bagdad"
+
+#: ../src/timezone_names.c:279
+msgid "Asia/Bahrain"
+msgstr "Azija/Bahrajn"
+
+#: ../src/timezone_names.c:280
+msgid "Asia/Baku"
+msgstr "Azija/Baku"
+
+#: ../src/timezone_names.c:281
+msgid "Asia/Bangkok"
+msgstr "Azija/Bangkok"
+
+#: ../src/timezone_names.c:282
+msgid "Asia/Beirut"
+msgstr "Azija/Bejrut"
+
+#: ../src/timezone_names.c:283
+msgid "Asia/Bishkek"
+msgstr "Azija/Biškek"
+
+#: ../src/timezone_names.c:284
+msgid "Asia/Brunei"
+msgstr "Azija/Brunei"
+
+#: ../src/timezone_names.c:285
+msgid "Asia/Calcutta"
+msgstr "Azija/Kalkuta"
+
+#: ../src/timezone_names.c:286
+msgid "Asia/Choibalsan"
+msgstr "Azija/Čoibalsan"
+
+#: ../src/timezone_names.c:287
+msgid "Asia/Chongqing"
+msgstr "Azija/Čongqing"
+
+#: ../src/timezone_names.c:288
+msgid "Asia/Chungking"
+msgstr "Azija/Čungking"
+
+#: ../src/timezone_names.c:289
+msgid "Asia/Colombo"
+msgstr "Azija/Kolombo"
+
+#: ../src/timezone_names.c:290
+msgid "Asia/Dacca"
+msgstr "Azija/Daka"
+
+#: ../src/timezone_names.c:291
+msgid "Asia/Damascus"
+msgstr "Azija/Damask"
+
+#: ../src/timezone_names.c:292
+msgid "Asia/Dhaka"
+msgstr "Azija/Daka"
+
+#: ../src/timezone_names.c:293
+msgid "Asia/Dili"
+msgstr "Azija/Dili"
+
+#: ../src/timezone_names.c:294
+msgid "Asia/Dubai"
+msgstr "Azija/Dubai"
+
+#: ../src/timezone_names.c:295
+msgid "Asia/Dushanbe"
+msgstr "Azija/Dušanbe"
+
+#: ../src/timezone_names.c:296
+msgid "Asia/Gaza"
+msgstr "Azija/Gaza"
+
+#: ../src/timezone_names.c:297
+msgid "Asia/Harbin"
+msgstr "Azija/Harbin"
+
+#: ../src/timezone_names.c:298
+msgid "Asia/Hebron"
+msgstr "Azija/Hebron"
+
+#: ../src/timezone_names.c:299
+msgid "Asia/Hong_Kong"
+msgstr "Azija/Hong_Kong"
+
+#: ../src/timezone_names.c:300
+msgid "Asia/Ho_Chi_Minh"
+msgstr "Azija/Ho_Či_Min"
+
+#: ../src/timezone_names.c:301
+msgid "Asia/Hovd"
+msgstr "Azija/Hovd"
+
+#: ../src/timezone_names.c:302
+msgid "Asia/Irkutsk"
+msgstr "Azija/Irkutsk"
+
+#: ../src/timezone_names.c:303
+msgid "Asia/Istanbul"
+msgstr "Azija/Istanbul"
+
+#: ../src/timezone_names.c:304
+msgid "Asia/Jakarta"
+msgstr "Azija/Džakarta"
+
+#: ../src/timezone_names.c:305
+msgid "Asia/Jayapura"
+msgstr "Azija/Džajapura"
+
+#: ../src/timezone_names.c:306
+msgid "Asia/Jerusalem"
+msgstr "Azija/Jeruzalem"
+
+#: ../src/timezone_names.c:307
+msgid "Asia/Kabul"
+msgstr "Azija/Kabul"
+
+#: ../src/timezone_names.c:308
+msgid "Asia/Kamchatka"
+msgstr "Azija/Kamčatka"
+
+#: ../src/timezone_names.c:309
+msgid "Asia/Karachi"
+msgstr "Azija/Karači"
+
+#: ../src/timezone_names.c:310
+msgid "Asia/Kashgar"
+msgstr "Azija/Kašgar"
+
+#: ../src/timezone_names.c:311
+msgid "Asia/Kathmandu"
+msgstr "Azija/Katmandu"
+
+#: ../src/timezone_names.c:312
+msgid "Asia/Katmandu"
+msgstr "Azija/Katmandu"
+
+#: ../src/timezone_names.c:313
+msgid "Asia/Khandyga"
+msgstr "Azija/Kandiga"
+
+#: ../src/timezone_names.c:314
+msgid "Asia/Kolkata"
+msgstr "Azija/Kolkata"
+
+#: ../src/timezone_names.c:315
+msgid "Asia/Krasnoyarsk"
+msgstr "Azija/Krasnojarsk"
+
+#: ../src/timezone_names.c:316
+msgid "Asia/Kuala_Lumpur"
+msgstr "Azija/Kuala_Lumpur"
+
+#: ../src/timezone_names.c:317
+msgid "Asia/Kuching"
+msgstr "Azija/Kučing"
+
+#: ../src/timezone_names.c:318
+msgid "Asia/Kuwait"
+msgstr "Azija/Kuvajt"
+
+#: ../src/timezone_names.c:319
+msgid "Asia/Macao"
+msgstr "Azija/Makao"
+
+#: ../src/timezone_names.c:320
+msgid "Asia/Macau"
+msgstr "Azija/Makav"
+
+#: ../src/timezone_names.c:321
+msgid "Asia/Magadan"
+msgstr "Azija/Magadan"
+
+#: ../src/timezone_names.c:322
+msgid "Asia/Makassar"
+msgstr "Azija/Makasar"
+
+#: ../src/timezone_names.c:323
+msgid "Asia/Manila"
+msgstr "Azija/Manila"
+
+#: ../src/timezone_names.c:324
+msgid "Asia/Muscat"
+msgstr "Azija/Muškat"
+
+#: ../src/timezone_names.c:325
+msgid "Asia/Nicosia"
+msgstr "Azija/Nicozija"
+
+#: ../src/timezone_names.c:326
+msgid "Asia/Novokuznetsk"
+msgstr "Azija/Novokuznetsk"
+
+#: ../src/timezone_names.c:327
+msgid "Asia/Novosibirsk"
+msgstr "Azija/Novosibirsk"
+
+#: ../src/timezone_names.c:328
+msgid "Asia/Omsk"
+msgstr "Azija/Omsk"
+
+#: ../src/timezone_names.c:329
+msgid "Asia/Oral"
+msgstr "Azija/Oral"
+
+#: ../src/timezone_names.c:330
+msgid "Asia/Phnom_Penh"
+msgstr "Azija/Phnom_Penh"
+
+#: ../src/timezone_names.c:331
+msgid "Asia/Pontianak"
+msgstr "Azija/Pontianak"
+
+#: ../src/timezone_names.c:332
+msgid "Asia/Pyongyang"
+msgstr "Azija/Pjongjang"
+
+#: ../src/timezone_names.c:333
+msgid "Asia/Qatar"
+msgstr "Azija/Katar"
+
+#: ../src/timezone_names.c:334
+msgid "Asia/Qyzylorda"
+msgstr "Azija/Kizilorda"
+
+#: ../src/timezone_names.c:335
+msgid "Asia/Rangoon"
+msgstr "Azija/Rangun"
+
+#: ../src/timezone_names.c:336
+msgid "Asia/Riyadh"
+msgstr "Azija/Rijad"
+
+#: ../src/timezone_names.c:337
+msgid "Asia/Riyadh87"
+msgstr "Azija/Rijad87"
+
+#: ../src/timezone_names.c:338
+msgid "Asia/Riyadh88"
+msgstr "Azija/Rijad88"
+
+#: ../src/timezone_names.c:339
+msgid "Asia/Riyadh89"
+msgstr "Azija/Rijad89"
+
+#: ../src/timezone_names.c:340
+msgid "Asia/Saigon"
+msgstr "Azija/Sajgon"
+
+#: ../src/timezone_names.c:341
+msgid "Asia/Sakhalin"
+msgstr "Azija/Sakalin"
+
+#: ../src/timezone_names.c:342
+msgid "Asia/Samarkand"
+msgstr "Azija/Samarkand"
+
+#: ../src/timezone_names.c:343
+msgid "Asia/Seoul"
+msgstr "Azija/Seul"
+
+#: ../src/timezone_names.c:344
+msgid "Asia/Shanghai"
+msgstr "Azija/Šanghaj"
+
+#: ../src/timezone_names.c:345
+msgid "Asia/Singapore"
+msgstr "Azija/Singapur"
+
+#: ../src/timezone_names.c:346
+msgid "Asia/Taipei"
+msgstr "Azija/Tajpej"
+
+#: ../src/timezone_names.c:347
+msgid "Asia/Tashkent"
+msgstr "Azija/Taškent"
+
+#: ../src/timezone_names.c:348
+msgid "Asia/Tbilisi"
+msgstr "Azija/Tbilisi"
+
+#: ../src/timezone_names.c:349
+msgid "Asia/Tehran"
+msgstr "Azija/Teheran"
+
+#: ../src/timezone_names.c:350
+msgid "Asia/Tel_Aviv"
+msgstr "Azija/Tel_Aviv"
+
+#: ../src/timezone_names.c:351
+msgid "Asia/Thimbu"
+msgstr "Azija/Timbu"
+
+#: ../src/timezone_names.c:352
+msgid "Asia/Thimphu"
+msgstr "Azija/Timphu"
+
+#: ../src/timezone_names.c:353
+msgid "Asia/Tokyo"
+msgstr "Azija/Tokijo"
+
+#: ../src/timezone_names.c:354
+msgid "Asia/Ujung_Pandang"
+msgstr "Azija/Ujung_Pandang"
+
+#: ../src/timezone_names.c:355
+msgid "Asia/Ulaanbaatar"
+msgstr "Azija/Ulan Bator"
+
+#: ../src/timezone_names.c:356
+msgid "Asia/Ulan_Bator"
+msgstr "Azija/Ulan_Bator"
+
+#: ../src/timezone_names.c:357
+msgid "Asia/Urumqi"
+msgstr "Azija/Urumki"
+
+#: ../src/timezone_names.c:358
+msgid "Asia/Ust-Nera"
+msgstr "Azija/Ust-Nera"
+
+#: ../src/timezone_names.c:359
+msgid "Asia/Vientiane"
+msgstr "Azija/Vientiane"
+
+#: ../src/timezone_names.c:360
+msgid "Asia/Vladivostok"
+msgstr "Azija/Vladivostok"
+
+#: ../src/timezone_names.c:361
+msgid "Asia/Yakutsk"
+msgstr "Azija/Jakutsk"
+
+#: ../src/timezone_names.c:362
+msgid "Asia/Yekaterinburg"
+msgstr "Azija/Jekaterinburg"
+
+#: ../src/timezone_names.c:363
+msgid "Asia/Yerevan"
+msgstr "Azija/Eerevan"
+
+#: ../src/timezone_names.c:364
+msgid "Atlantic"
+msgstr "Atlantik"
+
+#: ../src/timezone_names.c:365
+msgid "Atlantic/Azores"
+msgstr "Atlantik/Azori"
+
+#: ../src/timezone_names.c:366
+msgid "Atlantic/Bermuda"
+msgstr "Atlantik/Bermuda"
+
+#: ../src/timezone_names.c:367
+msgid "Atlantic/Canary"
+msgstr "Atlantik/Kanarski_otoki"
+
+#: ../src/timezone_names.c:368
+msgid "Atlantic/Cape_Verde"
+msgstr "Atlantik/Zelenortski_otoki"
+
+#: ../src/timezone_names.c:369
+msgid "Atlantic/Faeroe"
+msgstr "Atlantik/Ferski_otoki"
+
+#: ../src/timezone_names.c:370
+msgid "Atlantic/Faroe"
+msgstr "Atlantik/Ferski_otoki"
+
+#: ../src/timezone_names.c:371
+msgid "Atlantic/Jan_Mayen"
+msgstr "Atlantik/Jan_Mayen"
+
+#: ../src/timezone_names.c:372
+msgid "Atlantic/Madeira"
+msgstr "Atlantik/Madeira"
+
+#: ../src/timezone_names.c:373
+msgid "Atlantic/Reykjavik"
+msgstr "Atlantik/Reykjavik"
+
+#: ../src/timezone_names.c:374
+msgid "Atlantic/South_Georgia"
+msgstr "Atlantik/Južna_Georgija"
+
+#: ../src/timezone_names.c:375
+msgid "Atlantic/St_Helena"
+msgstr "Atlantik/Sveta_Helena"
+
+#: ../src/timezone_names.c:376
+msgid "Atlantic/Stanley"
+msgstr "Atlantik/Stanley"
+
+#: ../src/timezone_names.c:377
+msgid "Australia"
+msgstr "Avstralija"
+
+#: ../src/timezone_names.c:378
+msgid "Australia/ACT"
+msgstr "Avstralija/ACT"
+
+#: ../src/timezone_names.c:379
+msgid "Australia/Adelaide"
+msgstr "Avstralija/Adelaide"
+
+#: ../src/timezone_names.c:380
+msgid "Australia/Brisbane"
+msgstr "Avstralija/Brisbane"
+
+#: ../src/timezone_names.c:381
+msgid "Australia/Broken_Hill"
+msgstr "Avstralija/Broken_Hill"
+
+#: ../src/timezone_names.c:382
+msgid "Australia/Currie"
+msgstr "Avstralija/Currie"
+
+#: ../src/timezone_names.c:383
+msgid "Australia/Darwin"
+msgstr "Avstralija/Darwin"
+
+#: ../src/timezone_names.c:384
+msgid "Australia/Eucla"
+msgstr "Avstralija/Eucla"
+
+#: ../src/timezone_names.c:385
+msgid "Australia/Hobart"
+msgstr "Avstralija/Hobart"
+
+#: ../src/timezone_names.c:386
+msgid "Australia/Lindeman"
+msgstr "Avstralija/Lindeman"
+
+#: ../src/timezone_names.c:387
+msgid "Australia/Lord_Howe"
+msgstr "Avstralija/Lord_Howe"
+
+#: ../src/timezone_names.c:388
+msgid "Australia/Melbourne"
+msgstr "Avstralija/Melbourne"
+
+#: ../src/timezone_names.c:389
+msgid "Australia/Perth"
+msgstr "Avstralija/Perth"
+
+#: ../src/timezone_names.c:390
+msgid "Australia/Sydney"
+msgstr "Avstralija/Sydney"
+
+#: ../src/timezone_names.c:391
+msgid "Brazil"
+msgstr "Brazilija"
+
+#: ../src/timezone_names.c:392
+msgid "Brazil/Acre"
+msgstr "Brazilija/Acre"
+
+#: ../src/timezone_names.c:393
+msgid "Brazil/DeNoronha"
+msgstr "Brazilija/DeNoronha"
+
+#: ../src/timezone_names.c:394
+msgid "Brazil/East"
+msgstr "Brazilija/Vzhodna"
+
+#: ../src/timezone_names.c:395
+msgid "Brazil/West"
+msgstr "Brazilija/Zahodna"
+
+#: ../src/timezone_names.c:396
+msgid "Canada"
+msgstr "Kanada"
+
+#: ../src/timezone_names.c:397
+msgid "Canada/Atlantic"
+msgstr "Kanada/Atlantik"
+
+#: ../src/timezone_names.c:398
+msgid "Canada/Central"
+msgstr "Kanada/Osrednja"
+
+#: ../src/timezone_names.c:399
+msgid "Canada/East-Saskatchewan"
+msgstr "Kanada/Vzhodni-Saskatchewan"
+
+#: ../src/timezone_names.c:400
+msgid "Canada/Eastern"
+msgstr "Kanada/Vzhodna"
+
+#: ../src/timezone_names.c:401
+msgid "Canada/Mountain"
+msgstr "Kanada/Gorska"
+
+#: ../src/timezone_names.c:402
+msgid "Canada/Newfoundland"
+msgstr "Kanada/Nova_Fundlandija"
+
+#: ../src/timezone_names.c:403
+msgid "Canada/Pacific"
+msgstr "Kanada/Pacifik"
+
+#: ../src/timezone_names.c:404
+msgid "Canada/Saskatchewan"
+msgstr "Kanada/Saskatchewan"
+
+#: ../src/timezone_names.c:405
+msgid "Canada/Yukon"
+msgstr "Kanada/Jukon"
+
+#: ../src/timezone_names.c:406
+msgid "Chile"
+msgstr "Čile"
+
+#: ../src/timezone_names.c:407
+msgid "Chile/Continental"
+msgstr "Čile/Celinski"
+
+#: ../src/timezone_names.c:408
+msgid "Chile/EasterIsland"
+msgstr "Chile/Velikonočni_otok"
+
+#: ../src/timezone_names.c:409
+msgid "Etc"
+msgstr "Etc"
+
+#: ../src/timezone_names.c:410
+msgid "Etc/GMT"
+msgstr "Etc/GMT"
+
+#: ../src/timezone_names.c:411
+msgid "Etc/GMT+0"
+msgstr "Etc/GMT+0"
+
+#: ../src/timezone_names.c:412
+msgid "Etc/GMT+1"
+msgstr "Etc/GMT+1"
+
+#: ../src/timezone_names.c:413
+msgid "Etc/GMT+10"
+msgstr "Etc/GMT+10"
+
+#: ../src/timezone_names.c:414
+msgid "Etc/GMT+11"
+msgstr "Etc/GMT+11"
+
+#: ../src/timezone_names.c:415
+msgid "Etc/GMT+12"
+msgstr "Etc/GMT+12"
+
+#: ../src/timezone_names.c:416
+msgid "Etc/GMT+2"
+msgstr "Etc/GMT+2"
+
+#: ../src/timezone_names.c:417
+msgid "Etc/GMT+3"
+msgstr "Etc/GMT+3"
+
+#: ../src/timezone_names.c:418
+msgid "Etc/GMT+4"
+msgstr "Etc/GMT+4"
+
+#: ../src/timezone_names.c:419
+msgid "Etc/GMT+5"
+msgstr "Etc/GMT+5"
+
+#: ../src/timezone_names.c:420
+msgid "Etc/GMT+6"
+msgstr "Etc/GMT+6"
+
+#: ../src/timezone_names.c:421
+msgid "Etc/GMT+7"
+msgstr "Etc/GMT+7"
+
+#: ../src/timezone_names.c:422
+msgid "Etc/GMT+8"
+msgstr "Etc/GMT+8"
+
+#: ../src/timezone_names.c:423
+msgid "Etc/GMT+9"
+msgstr "Etc/GMT+9"
+
+#: ../src/timezone_names.c:424
+msgid "Etc/GMT-0"
+msgstr "Etc/GMT-0"
+
+#: ../src/timezone_names.c:425
+msgid "Etc/GMT-1"
+msgstr "Etc/GMT-1"
+
+#: ../src/timezone_names.c:426
+msgid "Etc/GMT-10"
+msgstr "Etc/GMT-10"
+
+#: ../src/timezone_names.c:427
+msgid "Etc/GMT-11"
+msgstr "Etc/GMT-11"
+
+#: ../src/timezone_names.c:428
+msgid "Etc/GMT-12"
+msgstr "Etc/GMT-12"
+
+#: ../src/timezone_names.c:429
+msgid "Etc/GMT-13"
+msgstr "Etc/GMT-13"
+
+#: ../src/timezone_names.c:430
+msgid "Etc/GMT-14"
+msgstr "Etc/GMT-14"
+
+#: ../src/timezone_names.c:431
+msgid "Etc/GMT-2"
+msgstr "Etc/GMT-2"
+
+#: ../src/timezone_names.c:432
+msgid "Etc/GMT-3"
+msgstr "Etc/GMT-3"
+
+#: ../src/timezone_names.c:433
+msgid "Etc/GMT-4"
+msgstr "Etc/GMT-4"
+
+#: ../src/timezone_names.c:434
+msgid "Etc/GMT-5"
+msgstr "Etc/GMT-5"
+
+#: ../src/timezone_names.c:435
+msgid "Etc/GMT-6"
+msgstr "Etc/GMT-6"
+
+#: ../src/timezone_names.c:436
+msgid "Etc/GMT-7"
+msgstr "Etc/GMT-7"
+
+#: ../src/timezone_names.c:437
+msgid "Etc/GMT-8"
+msgstr "Etc/GMT-8"
+
+#: ../src/timezone_names.c:438
+msgid "Etc/GMT-9"
+msgstr "Etc/GMT-9"
+
+#: ../src/timezone_names.c:439
+msgid "Etc/GMT0"
+msgstr "Etc/GMT0"
+
+#: ../src/timezone_names.c:440
+msgid "Etc/Greenwich"
+msgstr "Etc/Greenwich"
+
+#: ../src/timezone_names.c:441
+msgid "Etc/UCT"
+msgstr "Etc/UCT"
+
+#: ../src/timezone_names.c:442
+msgid "Etc/UTC"
+msgstr "Etc/UTC"
+
+#: ../src/timezone_names.c:443
+msgid "Etc/Universal"
+msgstr "Etc/Universal"
+
+#: ../src/timezone_names.c:444
+msgid "Etc/Zulu"
+msgstr "Etc/Zulu"
+
+#: ../src/timezone_names.c:445
+msgid "Europe"
+msgstr "Evropa"
+
+#: ../src/timezone_names.c:446
+msgid "Europe/Amsterdam"
+msgstr "Evropa/Amsterdam"
+
+#: ../src/timezone_names.c:447
+msgid "Europe/Andorra"
+msgstr "Evropa/Andora"
+
+#: ../src/timezone_names.c:448
+msgid "Europe/Athens"
+msgstr "Evropa/Atene"
+
+#: ../src/timezone_names.c:449
+msgid "Europe/Belfast"
+msgstr "Evropa/Belfast"
+
+#: ../src/timezone_names.c:450
+msgid "Europe/Belgrade"
+msgstr "Evropa/Beograd"
+
+#: ../src/timezone_names.c:451
+msgid "Europe/Berlin"
+msgstr "Evropa/Berlin"
+
+#: ../src/timezone_names.c:452
+msgid "Europe/Bratislava"
+msgstr "Evropa/Bratislava"
+
+#: ../src/timezone_names.c:453
+msgid "Europe/Brussels"
+msgstr "Evropa/Bruselj"
+
+#: ../src/timezone_names.c:454
+msgid "Europe/Bucharest"
+msgstr "Evropa/Bukarešta"
+
+#: ../src/timezone_names.c:455
+msgid "Europe/Budapest"
+msgstr "Evropa/Budimpešta"
+
+#: ../src/timezone_names.c:456
+msgid "Europe/Busingen"
+msgstr "Evropa/Busingen"
+
+#: ../src/timezone_names.c:457
+msgid "Europe/Chisinau"
+msgstr "Evropa/Kišinjev"
+
+#: ../src/timezone_names.c:458
+msgid "Europe/Copenhagen"
+msgstr "Evropa/Kobenhavn"
+
+#: ../src/timezone_names.c:459
+msgid "Europe/Dublin"
+msgstr "Evropa/Dublin"
+
+#: ../src/timezone_names.c:460
+msgid "Europe/Gibraltar"
+msgstr "Evropa/Gibraltar"
+
+#: ../src/timezone_names.c:461
+msgid "Europe/Guernsey"
+msgstr "Evropa/Guernsey"
+
+#: ../src/timezone_names.c:462
+msgid "Europe/Helsinki"
+msgstr "Evropa/Helsinki"
+
+#: ../src/timezone_names.c:463
+msgid "Europe/Isle_of_Man"
+msgstr "Evropa/Otok_Man"
+
+#: ../src/timezone_names.c:464
+msgid "Europe/Istanbul"
+msgstr "Evropa/Istanbul"
+
+#: ../src/timezone_names.c:465
+msgid "Europe/Jersey"
+msgstr "Evropa/Jersey"
+
+#: ../src/timezone_names.c:466
+msgid "Europe/Kaliningrad"
+msgstr "Evropa/Kaliningrad"
+
+#: ../src/timezone_names.c:467
+msgid "Europe/Kiev"
+msgstr "Evropa/Kijev"
+
+#: ../src/timezone_names.c:468
+msgid "Europe/Lisbon"
+msgstr "Evropa/Lizbona"
+
+#: ../src/timezone_names.c:469
+msgid "Europe/Ljubljana"
+msgstr "Evropa/Ljubljana"
+
+#: ../src/timezone_names.c:470
+msgid "Europe/London"
+msgstr "Evropa/London"
+
+#: ../src/timezone_names.c:471
+msgid "Europe/Luxembourg"
+msgstr "Evropa/Luksemburg"
+
+#: ../src/timezone_names.c:472
+msgid "Europe/Madrid"
+msgstr "Evropa/Madrid"
+
+#: ../src/timezone_names.c:473
+msgid "Europe/Malta"
+msgstr "Evropa/Malta"
+
+#: ../src/timezone_names.c:474
+msgid "Europe/Mariehamn"
+msgstr "Evropa/Mariehamn"
+
+#: ../src/timezone_names.c:475
+msgid "Europe/Minsk"
+msgstr "Evropa/Minsk"
+
+#: ../src/timezone_names.c:476
+msgid "Europe/Monaco"
+msgstr "Evropa/Monako"
+
+#: ../src/timezone_names.c:477
+msgid "Europe/Moscow"
+msgstr "Evropa/Moskva"
+
+#: ../src/timezone_names.c:478
+msgid "Europe/Nicosia"
+msgstr "Evropa/Nikozija"
+
+#: ../src/timezone_names.c:479
+msgid "Europe/Oslo"
+msgstr "Evropa/Oslo"
+
+#: ../src/timezone_names.c:480
+msgid "Europe/Paris"
+msgstr "Evropa/Pariz"
+
+#: ../src/timezone_names.c:481
+msgid "Europe/Podgorica"
+msgstr "Evropa/Podgorica"
+
+#: ../src/timezone_names.c:482
+msgid "Europe/Prague"
+msgstr "Evropa/Praga"
+
+#: ../src/timezone_names.c:483
+msgid "Europe/Riga"
+msgstr "Evropa/Riga"
+
+#: ../src/timezone_names.c:484
+msgid "Europe/Rome"
+msgstr "Evropa/Rim"
+
+#: ../src/timezone_names.c:485
+msgid "Europe/Samara"
+msgstr "Evropa/Samara"
+
+#: ../src/timezone_names.c:486
+msgid "Europe/San_Marino"
+msgstr "Evropa/San_Marino"
+
+#: ../src/timezone_names.c:487
+msgid "Europe/Sarajevo"
+msgstr "Evropa/Sarajevo"
+
+#: ../src/timezone_names.c:488
+msgid "Europe/Simferopol"
+msgstr "Evropa/Simferopol"
+
+#: ../src/timezone_names.c:489
+msgid "Europe/Skopje"
+msgstr "Evropa/Skopje"
+
+#: ../src/timezone_names.c:490
+msgid "Europe/Sofia"
+msgstr "Evropa/Sofija"
+
+#: ../src/timezone_names.c:491
+msgid "Europe/Stockholm"
+msgstr "Evropa/Stockholm"
+
+#: ../src/timezone_names.c:492
+msgid "Europe/Tallinn"
+msgstr "Evropa/Tallin"
+
+#: ../src/timezone_names.c:493
+msgid "Europe/Tirane"
+msgstr "Evropa/Tirana"
+
+#: ../src/timezone_names.c:494
+msgid "Europe/Tiraspol"
+msgstr "Evropa/Tiraspol"
+
+#: ../src/timezone_names.c:495
+msgid "Europe/Uzhgorod"
+msgstr "Evropa/Užgorod"
+
+#: ../src/timezone_names.c:496
+msgid "Europe/Vaduz"
+msgstr "Evropa/Vaduz"
+
+#: ../src/timezone_names.c:497
+msgid "Europe/Vatican"
+msgstr "Evropa/Vatikan"
+
+#: ../src/timezone_names.c:498
+msgid "Europe/Vienna"
+msgstr "Evropa/Dunaj"
+
+#: ../src/timezone_names.c:499
+msgid "Europe/Vilnius"
+msgstr "Evropa/Vilnius"
+
+#: ../src/timezone_names.c:500
+msgid "Europe/Volgograd"
+msgstr "Evropa/Volgograd"
+
+#: ../src/timezone_names.c:501
+msgid "Europe/Warsaw"
+msgstr "Evropa/Varšava"
+
+#: ../src/timezone_names.c:502
+msgid "Europe/Zagreb"
+msgstr "Evropa/Zagreb"
+
+#: ../src/timezone_names.c:503
+msgid "Europe/Zaporozhye"
+msgstr "Evropa/Zaporožje"
+
+#: ../src/timezone_names.c:504
+msgid "Europe/Zurich"
+msgstr "Evropa/Zürich"
+
+#: ../src/timezone_names.c:505
+msgid "Indian"
+msgstr "Indijski"
+
+#: ../src/timezone_names.c:506
+msgid "Indian/Antananarivo"
+msgstr "Indijski/Antananarivo"
+
+#: ../src/timezone_names.c:507
+msgid "Indian/Chagos"
+msgstr "Indijski/Chagos"
+
+#: ../src/timezone_names.c:508
+msgid "Indian/Christmas"
+msgstr "Indijski/Božični_otok"
+
+#: ../src/timezone_names.c:509
+msgid "Indian/Cocos"
+msgstr "Indijski/Kokosovi_otoki"
+
+#: ../src/timezone_names.c:510
+msgid "Indian/Comoro"
+msgstr "Indijski/Komori"
+
+#: ../src/timezone_names.c:511
+msgid "Indian/Kerguelen"
+msgstr "Indijski/Kerguelen"
+
+#: ../src/timezone_names.c:512
+msgid "Indian/Mahe"
+msgstr "Indijski/Mahe"
+
+#: ../src/timezone_names.c:513
+msgid "Indian/Maldives"
+msgstr "Indijski/Maldivi"
+
+#: ../src/timezone_names.c:514
+msgid "Indian/Mauritius"
+msgstr "Indijski/Mavricij"
+
+#: ../src/timezone_names.c:515
+msgid "Indian/Mayotte"
+msgstr "Indijski/Mayotte"
+
+#: ../src/timezone_names.c:516
+msgid "Indian/Reunion"
+msgstr "Indijski/Reunion"
+
+#: ../src/timezone_names.c:517
+msgid "Mexico"
+msgstr "Mehika"
+
+#: ../src/timezone_names.c:518
+msgid "Mexico/BajaNorte"
+msgstr "Mehika/BajaNorte"
+
+#: ../src/timezone_names.c:519
+msgid "Mexico/BajaSur"
+msgstr "Mehika/BajaSur"
+
+#: ../src/timezone_names.c:520
+msgid "Mexico/General"
+msgstr "Mexico/Splošno"
+
+#: ../src/timezone_names.c:521
+msgid "Mideast"
+msgstr "Bližnji_vzhod"
+
+#: ../src/timezone_names.c:522
+msgid "Mideast/Riyadh87"
+msgstr "Bližnji_vzhod/Riad87"
+
+#: ../src/timezone_names.c:523
+msgid "Mideast/Riyadh88"
+msgstr "Bližnji_vzhod/Riad88"
+
+#: ../src/timezone_names.c:524
+msgid "Mideast/Riyadh89"
+msgstr "Bližnji_vzhod/Riad89"
+
+#: ../src/timezone_names.c:525
+msgid "Pacific"
+msgstr "Pacifik"
+
+#: ../src/timezone_names.c:526
+msgid "Pacific/Apia"
+msgstr "Pacifik/Apia"
+
+#: ../src/timezone_names.c:527
+msgid "Pacific/Auckland"
+msgstr "Pacifik/Auckland"
+
+#: ../src/timezone_names.c:528
+msgid "Pacific/Chatham"
+msgstr "Pacifik/Chatham"
+
+#: ../src/timezone_names.c:529
+msgid "Pacific/Chuuk"
+msgstr "Pacifik/Chuuk"
+
+#: ../src/timezone_names.c:530
+msgid "Pacific/Easter"
+msgstr "Pacifik/Božični_otok"
+
+#: ../src/timezone_names.c:531
+msgid "Pacific/Efate"
+msgstr "Pacifik/Efate"
+
+#: ../src/timezone_names.c:532
+msgid "Pacific/Enderbury"
+msgstr "Pacifik/Enderbury"
+
+#: ../src/timezone_names.c:533
+msgid "Pacific/Fakaofo"
+msgstr "Pacifik/Fakaofo"
+
+#: ../src/timezone_names.c:534
+msgid "Pacific/Fiji"
+msgstr "Pacifik/Fidži"
+
+#: ../src/timezone_names.c:535
+msgid "Pacific/Funafuti"
+msgstr "Pacifik/Funafuti"
+
+#: ../src/timezone_names.c:536
+msgid "Pacific/Galapagos"
+msgstr "Pacifik/Galapagos"
+
+#: ../src/timezone_names.c:537
+msgid "Pacific/Gambier"
+msgstr "Pacifik/Gambier"
+
+#: ../src/timezone_names.c:538
+msgid "Pacific/Guadalcanal"
+msgstr "Pacifik/Guadalcanal"
+
+#: ../src/timezone_names.c:539
+msgid "Pacific/Guam"
+msgstr "Pacifik/Guam"
+
+#: ../src/timezone_names.c:540
+msgid "Pacific/Honolulu"
+msgstr "Pacifik/Honolulu"
+
+#: ../src/timezone_names.c:541
+msgid "Pacific/Johnston"
+msgstr "Pacifik/Johnston"
+
+#: ../src/timezone_names.c:542
+msgid "Pacific/Kiritimati"
+msgstr "Pacifik/Kiritimati"
+
+#: ../src/timezone_names.c:543
+msgid "Pacific/Kosrae"
+msgstr "Pacifik/Kosrae"
+
+#: ../src/timezone_names.c:544
+msgid "Pacific/Kwajalein"
+msgstr "Pacifik/Kwajalein"
+
+#: ../src/timezone_names.c:545
+msgid "Pacific/Majuro"
+msgstr "Pacifik/Majuro"
+
+#: ../src/timezone_names.c:546
+msgid "Pacific/Marquesas"
+msgstr "Pacifik/Marquesas"
+
+#: ../src/timezone_names.c:547
+msgid "Pacific/Midway"
+msgstr "Pacifik/Midway"
+
+#: ../src/timezone_names.c:548
+msgid "Pacific/Nauru"
+msgstr "Pacifik/Nauru"
+
+#: ../src/timezone_names.c:549
+msgid "Pacific/Niue"
+msgstr "Pacifik/Niue"
+
+#: ../src/timezone_names.c:550
+msgid "Pacific/Norfolk"
+msgstr "Pacifik/Norfolk"
+
+#: ../src/timezone_names.c:551
+msgid "Pacific/Noumea"
+msgstr "Pacifik/Noumea"
+
+#: ../src/timezone_names.c:552
+msgid "Pacific/Pago_Pago"
+msgstr "Pacifik/Pago_Pago"
+
+#: ../src/timezone_names.c:553
+msgid "Pacific/Palau"
+msgstr "Pacifik/Palau"
+
+#: ../src/timezone_names.c:554
+msgid "Pacific/Pitcairn"
+msgstr "Pacifik/Pitcairn"
+
+#: ../src/timezone_names.c:555
+msgid "Pacific/Pohnpei"
+msgstr "Pacifik/Pohnpei"
+
+#: ../src/timezone_names.c:556
+msgid "Pacific/Ponape"
+msgstr "Pacifik/Ponape"
+
+#: ../src/timezone_names.c:557
+msgid "Pacific/Port_Moresby"
+msgstr "Pacifik/Port_Moresby"
+
+#: ../src/timezone_names.c:558
+msgid "Pacific/Rarotonga"
+msgstr "Pacifik/Rarotonga"
+
+#: ../src/timezone_names.c:559
+msgid "Pacific/Saipan"
+msgstr "Pacifik/Saipan"
+
+#: ../src/timezone_names.c:560
+msgid "Pacific/Samoa"
+msgstr "Pacifik/Samoa"
+
+#: ../src/timezone_names.c:561
+msgid "Pacific/Tahiti"
+msgstr "Pacifik/Tahiti"
+
+#: ../src/timezone_names.c:562
+msgid "Pacific/Tarawa"
+msgstr "Pacifik/Tarava"
+
+#: ../src/timezone_names.c:563
+msgid "Pacific/Tongatapu"
+msgstr "Pacifik/Tongatapu"
+
+#: ../src/timezone_names.c:564
+msgid "Pacific/Truk"
+msgstr "Pacifik/Truk"
+
+#: ../src/timezone_names.c:565
+msgid "Pacific/Wake"
+msgstr "Pacifik/Wake"
+
+#: ../src/timezone_names.c:566
+msgid "Pacific/Wallis"
+msgstr "Pacifik/Wallis"
+
+#: ../src/timezone_names.c:567
+msgid "Pacific/Yap"
+msgstr "Pacifik/Yap"
+
+#: ../src/timezone_names.c:568
+msgid "SystemV"
+msgstr "SystemV"
+
+#: ../src/timezone_names.c:569
+msgid "SystemV/AST4"
+msgstr "SystemV/AST4"
+
+#: ../src/timezone_names.c:570
+msgid "SystemV/AST4ADT"
+msgstr "SystemV/AST4ADT"
+
+#: ../src/timezone_names.c:571
+msgid "SystemV/CST6"
+msgstr "SystemV/CST6"
+
+#: ../src/timezone_names.c:572
+msgid "SystemV/CST6CDT"
+msgstr "SystemV/CST6CDT"
+
+#: ../src/timezone_names.c:573
+msgid "SystemV/EST5"
+msgstr "SystemV/EST5"
+
+#: ../src/timezone_names.c:574
+msgid "SystemV/EST5/EDT"
+msgstr "SystemV/EST5/EDT"
+
+#: ../src/timezone_names.c:575
+msgid "SystemV/HST10"
+msgstr "SystemV/HST10"
+
+#: ../src/timezone_names.c:576
+msgid "SystemV/MST7"
+msgstr "SystemV/MST7"
+
+#: ../src/timezone_names.c:577
+msgid "SystemV/MST7/MNT"
+msgstr "SystemV/MST7/MNT"
+
+#: ../src/timezone_names.c:578
+msgid "SystemV/PST8"
+msgstr "SystemV/PST8"
+
+#: ../src/timezone_names.c:579
+msgid "SystemV/PST8/PDT"
+msgstr "SystemV/PST8/PDT"
+
+#: ../src/timezone_names.c:580
+msgid "SystemV/YST9"
+msgstr "SystemV/YST9"
+
+#: ../src/timezone_names.c:581
+msgid "SystemV/YST9/YDT"
+msgstr "SystemV/YST9/YDT"
+
+#: ../src/timezone_names.c:582
+msgid "US"
+msgstr "ZDA"
+
+#: ../src/timezone_names.c:583
+msgid "US/Alaska"
+msgstr "ZDA/Alaska"
+
+#: ../src/timezone_names.c:584
+msgid "US/Aleutian"
+msgstr "ZDA/Aleuti"
+
+#: ../src/timezone_names.c:585
+msgid "US/Arizona"
+msgstr "ZDA/Arizona"
+
+#: ../src/timezone_names.c:586
+msgid "US/Central"
+msgstr "ZDA/Osrednje"
+
+#: ../src/timezone_names.c:587
+msgid "US/Eastern"
+msgstr "ZDA/Vzhodne"
+
+#: ../src/timezone_names.c:588
+msgid "US/East-Indiana"
+msgstr "ZDA/Vzhodna_Indidana"
+
+#: ../src/timezone_names.c:589
+msgid "US/Hawaii"
+msgstr "ZDA/Hawaji"
+
+#: ../src/timezone_names.c:590
+msgid "US/Indiana-Starke"
+msgstr "ZDA/Indiana-Starke"
+
+#: ../src/timezone_names.c:591
+msgid "US/Michigan"
+msgstr "ZDA/Michigan"
+
+#: ../src/timezone_names.c:592
+msgid "US/Mountain"
+msgstr "ZDA/Gorate"
+
+#: ../src/timezone_names.c:593
+msgid "US/Pacific"
+msgstr "ZDA/Pacifiške"
+
+#: ../src/timezone_names.c:594
+msgid "US/Pacific-New"
+msgstr "ZDA/Pacifiške-nov"
+
+#: ../src/timezone_names.c:595
+msgid "US/Samoa"
+msgstr "ZDA/Samoa"
+
+#: ../src/timezone_selection.c:147
+#, c-format
+msgid "%d hour %d mins"
+msgstr "%d ur %d minut"
+
+#: ../src/timezone_selection.c:150
+#, c-format
+msgid "%d hour"
+msgstr "%d ur"
+
+#: ../src/timezone_selection.c:152
+#, c-format
+msgid "%d mins"
+msgstr "%d minut"
+
+#: ../src/timezone_selection.c:158
+msgid "backward"
+msgstr "nazaj"
+
+#: ../src/timezone_selection.c:161
+msgid "forward"
+msgstr "naprej"
+
+#: ../src/timezone_selection.c:185
+msgid "not changed"
+msgstr "nespremenjeno"
+
+#: ../src/timezone_selection.c:186
+msgid "not changing"
+msgstr "brez sprememb"
+
+#: ../src/timezone_selection.c:245
+msgid "GMT Offset"
+msgstr "GMT zamik"
+
+#: ../src/timezone_selection.c:251
+msgid "Previous/Next Change"
+msgstr "Prejšnja/naslednja sprememba"
+
+#: ../src/timezone_selection.c:256
+msgid "Country"
+msgstr "Država"
+
+#. We are actually setting the g_par parameter. In other words
+#. we are setting the global default timezone for Orage. This is
+#. done very seldom and we do not want to allow "floating" here.
+#. This test is ugly, but it is not worth an extra parameter.
+#. this is normal appointment
+#: ../src/timezone_selection.c:288 ../src/timezone_selection.c:297
+#: ../src/timezone_selection.c:308
+msgid "Pick timezone"
+msgstr "Izberi časovni pas"
+
+#: ../src/timezone_selection.c:291 ../src/timezone_selection.c:300
+#: ../src/timezone_selection.c:311
+msgid "Change mode"
+msgstr "Zamenjaj način"
+
+#: ../src/timezone_selection.c:292 ../src/timezone_selection.c:301
+#: ../src/timezone_selection.c:312 ../src/timezone_selection.c:351
+msgid "UTC"
+msgstr "UTC"
+
+#. NOTE: this exists only if ical timezones are being used
+#: ../src/timezone_selection.c:302 ../src/timezone_selection.c:356
+msgid "floating"
+msgstr "plavajoče"
+
+#: ../src/tray_icon.c:401
+msgid "New appointment"
+msgstr "Nov sestanek"
+
+#: ../src/tray_icon.c:408
+msgid "Preferences"
+msgstr "Nastavitve"
+
+#: ../src/tray_icon.c:415
+msgid "Quit"
+msgstr "Končaj"
+
+#: ../plugin/org.xfce.orage-settings.desktop.in.h:1
+msgid "Orage preferences"
+msgstr "Nastavitve Orage"
+
+#: ../plugin/org.xfce.orage-settings.desktop.in.h:2
+msgid "Settings for the Xfce 4 Calendar Application (Orage)"
+msgstr "Nastavitve za program koledarja Xfce 4 (Orage)"
+
+#: ../plugin/org.xfce.orage-settings.desktop.in.h:3
+msgid "Orage Calendar Preferences"
+msgstr "Nastavitve koledarja Orage"
+
+#: ../plugin/org.xfce.orage-settings.desktop.in.h:4
+#: ../org.xfce.orage.desktop.in.h:3
+msgid "Calendar"
+msgstr "Koledar"
+
+#: ../org.xfce.orage.appdata.xml.in.h:3
+msgid ""
+"Orage aims to be a fast and easy to use graphical calendar. It uses portable"
+" ical format and includes common calendar features like repeating "
+"appointments and multiple alarming possibilities."
+msgstr ""
+"Orage je hiter in enostaven grafični koledar. Uporablja prenosljiv ical "
+"zapis in vsebuje običajne zmožnosti koledarjev, kot je ponavljanje sestankov"
+" in številne možnosti obveščanja."
+
+#: ../org.xfce.orage.appdata.xml.in.h:4
+msgid ""
+"Orage does not have group calendar features, but can only be used for single"
+" user. It takes a list of files for ical files that should be imported. "
+"Contents of those files are read and converted into Orage, but those files "
+"are left untouched."
+msgstr ""
+"Orage ne pozna skupin in je uproaben le za enega uporabnika. Zna uporabiti "
+"seznam datotek z ical datotekami in jih uvoziti. Vsebino teh datotek prebere"
+" in pretvori v Orage, same datoteke pa ostanejo nespremenjene."
+
+#: ../org.xfce.orage.desktop.in.h:1
+msgid "Orage Calendar"
+msgstr "Koledar Orage"
+
+#: ../org.xfce.orage.desktop.in.h:2
+msgid "Desktop calendar"
+msgstr "Namizni koledar"
