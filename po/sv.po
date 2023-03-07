@@ -370,6 +370,14 @@ msgid ""
 "    <&Ynnnn> is translated to current year minus nnnn.\n"
 "(This can be used for example in birthday reminders to tell how old the person will be.)"
 msgstr ""
+"Dessa snabbkommandon träder omedelbart i kraft:\n"
+"    <D> infogar aktuellt datum i lokalt datumformat\n"
+"    <T> infogar tid\n"
+"    <DT> infogar datum och tid.\n"
+"\n"
+"Dessa konverteras först senare när de ses:\n"
+"    <&Ynnnn> översätts till aktuellt år minus åååå.\n"
+"(Detta kan användas till exempel för påminnelser om födelsedagar för att visa hur gammal personen blir.)"
 
 #: ../src/appointment.c:3180
 msgid "Before Start"
@@ -884,6 +892,8 @@ msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed."
 msgstr ""
+"Markera detta om du vill se gamla händelser också. Detta kan bara väljas efter det att 'upprepa bara första' är aktiverat för att undvika mycket långa listor.\n"
+"Notera att markering av extra dagar fortfarande definierar om nyare möten är listade."
 
 #: ../src/event-list.c:1337
 msgid "Journal entries starting from:"
