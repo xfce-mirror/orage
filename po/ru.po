@@ -14,6 +14,7 @@
 # Виктор Голованенко <drygdryg2014@yandex.ru>, 2022
 # Nick Schermer <nick@xfce.org>, 2022
 # Andrei Stepanov, 2023
+# Igor Vornovskii, 2023
 # 
 #, fuzzy
 msgid ""
@@ -22,7 +23,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-23 12:48+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Andrei Stepanov, 2023\n"
+"Last-Translator: Igor Vornovskii, 2023\n"
 "Language-Team: Russian (https://www.transifex.com/xfce/teams/16840/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -373,6 +374,14 @@ msgid ""
 "    <&Ynnnn> is translated to current year minus nnnn.\n"
 "(This can be used for example in birthday reminders to tell how old the person will be.)"
 msgstr ""
+"Эти сокращенные команды применяются сразу:\n"
+"    <D> вставить текущую дату в местном формате\n"
+"    <T> вставить время\n"
+"    <DT> вставить дату и время.\n"
+"\n"
+"Эти преобразуются позже при просмотре:\n"
+"    <&Ynnnn> переводится в текущий год минус nnnn.\n"
+"(Это можно использовать, например, в напоминаниях о дне рождения, чтобы узнать, сколько человеку будет лет.)"
 
 #: ../src/appointment.c:3180
 msgid "Before Start"
@@ -886,6 +895,9 @@ msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed."
 msgstr ""
+"Отметьте это, если вы хотите видеть также и старые события. Это можно выбрать только после включения \"Только первое повторяющееся\", чтобы избежать очень длинных списков.\n"
+"\n"
+"Обратите внимание, что выбор дополнительных дней по-прежнему определяет, отображаются ли в списке более новые встречи."
 
 #: ../src/event-list.c:1337
 msgid "Journal entries starting from:"
