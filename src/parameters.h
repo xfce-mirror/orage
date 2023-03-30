@@ -37,6 +37,12 @@ typedef struct _foreign_file
     char *name;
 } foreign_file;
 
+typedef struct _sync_conf_t
+{
+    gchar *uri;
+    guint period;
+}
+sync_conf_t;
 
 typedef struct _parameters
 {
@@ -128,6 +134,12 @@ typedef struct _parameters
 
     /* delayed close length in seconds. 0 = close immediately */
     gint file_close_delay;
+
+    /** Number of sync sources. */
+    gint sync_source_count;
+
+    /** Sync configurations. */
+    sync_conf_t sync_conf[10];
 } global_parameters; /* global parameters */
 
 extern global_parameters g_par;
