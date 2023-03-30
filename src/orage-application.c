@@ -36,6 +36,11 @@
 #include <gtk/gtk.h>
 #include <glib-2.0/gio/gapplication.h>
 
+#ifdef ENABLE_SYNC
+#include "orage-sync-ext-command.h"
+#include "orage-task-runner.h"
+#endif
+
 #define HINT_ADD 'a'
 #define HINT_EXPORT 'x'
 #define HINT_IMPORT 'i'
@@ -50,6 +55,7 @@ struct _OrageApplication
 {
     GtkApplication parent;
     GDBusConnection *connection;
+    OrageTaskRunner *sync;
     guint prepare_for_sleep_id;
     gboolean toggle_option;
     gboolean preferences_option;
@@ -183,6 +189,21 @@ static void print_version (void)
     g_print ("\n");
 }
 
+#ifdef ENABLE_SYNC
+void load_sync_conf (OrageTaskRunner *sync)
+{
+    guint i;
+    orage_task_runner_conf *conf;
+
+    for (i = 0; i < (guint)g_par.sync_source_count; i++)
+    {
+        conf = orage_task_runner_conf_new (g_par.sync_conf[i].uri,
+                                           g_par.sync_conf[i].period);
+        orage_task_runner_add (sync, orage_sync_ext_command, conf);
+    }
+}
+#endif
+
 static void raise_window (void)
 {
     CalWin *cal = (CalWin *)g_par.xfcal;
@@ -202,12 +223,20 @@ static void raise_window (void)
 
 static void orage_application_startup (GApplication *app)
 {
+#ifdef ENABLE_SYNC
+    OrageApplication *self = ORAGE_APPLICATION (app);
+#endif
+
     G_APPLICATION_CLASS (orage_application_parent_class)->startup (app);
     
     /* init i18n = nls to use gettext */
     xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
     register_css_provider ();
     read_parameters ();
+#ifdef ENABLE_SYNC
+    self->sync = g_object_new (ORAGE_TASK_RUNNER_TYPE, NULL);
+    load_sync_conf (self->sync);
+#endif
 }
 
 static void orage_application_activate (GApplication *app)
@@ -233,6 +262,8 @@ static void orage_application_activate (GApplication *app)
     else
     {
         g_par.xfcal = g_new (CalWin, 1);
+
+        ((CalWin *)g_par.xfcal)->mApplication = self;
 
         /* Create the main window */
         ((CalWin *)g_par.xfcal)->mWindow =
@@ -277,9 +308,11 @@ static void orage_application_activate (GApplication *app)
 
 static void orage_application_shutdown (GApplication *app)
 {
-    OrageApplication *self;
+#ifdef ENABLE_SYNC
+    OrageApplication *self = ORAGE_APPLICATION (app);
 
-    self = ORAGE_APPLICATION (app);
+    g_object_unref (self->sync);
+#endif
 
     resuming_handler_unregister (self);
 
@@ -324,9 +357,7 @@ static gint orage_application_command_line (GApplication *app,
     GVariantDict *options;
     gint n_files;
     gint n;
-    OrageApplication *self;
-
-    self = ORAGE_APPLICATION (app);
+    OrageApplication *self = ORAGE_APPLICATION (app);
 
     options = g_application_command_line_get_options_dict (cmdline);
 
@@ -630,4 +661,9 @@ OrageApplication *orage_application_new (void)
                          "flags", G_APPLICATION_HANDLES_COMMAND_LINE |
                                   G_APPLICATION_HANDLES_OPEN,
                          NULL);
+}
+
+OrageTaskRunner *orage_application_get_sync (OrageApplication *application)
+{
+    return application->sync;
 }

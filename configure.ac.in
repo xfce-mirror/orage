@@ -152,6 +152,9 @@ if test x"$enable_x11_tray_icon" = x"yes"; then
 fi
 AM_CONDITIONAL([HAVE_X11_TRAY_ICON], [test x"$enable_x11_tray_icon" = x"yes"])
 
+dnl TODO: Add switch or condition to enable sync code
+AC_DEFINE([ENABLE_SYNC], [1], [Enable experimental sync code])
+
 AC_CONFIG_FILES([
 Makefile
 icons/Makefile

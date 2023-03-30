@@ -62,6 +62,10 @@
 
 #define ORAGE_WAKEUP_TIMER_PERIOD 60
 
+#define SYNC_SOURCE_COUNT "Sync source count"
+#define SYNC_URI "Sync %02d uri"
+#define SYNC_PERIOD "Sync %02d period"
+
 static Itf *global_itf = NULL;
 
 /* Return the first day of the week, where 0=monday, 6=sunday.
@@ -1400,6 +1404,15 @@ void read_parameters(void)
     g_par.close_means_quit = orage_rc_get_bool(orc, "Always quit", FALSE);
     g_par.file_close_delay = orage_rc_get_int(orc, "File close delay", 600);
 
+    g_par.sync_source_count = orage_rc_get_int (orc, SYNC_SOURCE_COUNT, 0);
+    for (i = 0; i < g_par.sync_source_count; i++)
+    {
+        g_snprintf (f_par, sizeof (f_par), SYNC_URI, i);
+        g_par.sync_conf[i].uri = orage_rc_get_str (orc, f_par, NULL);
+        g_snprintf (f_par, sizeof (f_par), SYNC_PERIOD, i);
+        g_par.sync_conf[i].period = orage_rc_get_int (orc, f_par, 0);
+    }
+
     orage_rc_file_close(orc);
 }
 
@@ -1496,6 +1509,35 @@ void write_parameters(void)
     orage_rc_put_bool(orc, "Use wakeup timer", g_par.use_wakeup_timer);
     orage_rc_put_bool(orc, "Always quit", g_par.close_means_quit);
     orage_rc_put_int(orc, "File close delay", g_par.file_close_delay);
+
+    orage_rc_put_int (orc, SYNC_SOURCE_COUNT, g_par.sync_source_count);
+    for (i = 0; i < g_par.sync_source_count; i++)
+    {
+        g_snprintf (f_par, sizeof (f_par), SYNC_URI, i);
+        g_par.sync_conf[i].uri = orage_rc_get_str (orc, f_par, NULL);
+        g_snprintf(f_par, sizeof (f_par), SYNC_PERIOD, i);
+        g_par.sync_conf[i].period = orage_rc_get_int (orc, f_par, TRUE);
+    }
+
+    for (i = 0; i < g_par.sync_source_count; i++)
+    {
+        g_snprintf (f_par, sizeof (f_par), SYNC_URI, i);
+        orage_rc_put_str (orc, f_par, g_par.sync_conf[i].uri);
+
+        g_snprintf (f_par, sizeof (f_par), SYNC_PERIOD, i);
+        orage_rc_put_int (orc, f_par, g_par.sync_conf[i].period);
+    }
+
+    for (i = g_par.sync_source_count; i < 10; i++)
+    {
+        g_snprintf (f_par, sizeof (f_par), SYNC_URI, i);
+        if (!orage_rc_exists_item (orc, f_par))
+            break;
+
+        orage_rc_del_item (orc, f_par);
+        g_snprintf (f_par, sizeof (f_par), SYNC_PERIOD, i);
+        orage_rc_del_item (orc, f_par);
+    }
 
     orage_rc_file_close(orc);
 }

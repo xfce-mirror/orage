@@ -24,8 +24,6 @@
 #  include <config.h>
 #endif
 
-#define ENABLE_SYNC 1 /* This will be later moved to config.h. */
-
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
@@ -51,6 +49,11 @@
 #include "interface.h"
 #include "parameters.h"
 #include "day-view.h"
+
+#ifdef ENABLE_SYNC
+#include "orage-application.h"
+#include "orage-task-runner.h"
+#endif
 
 #define FORMAT_BOLD "<b> %s </b>"
 
@@ -82,9 +85,11 @@ static void mFile_newApp_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
 
 #ifdef ENABLE_SYNC
 static void mFile_refresh_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
-                                       G_GNUC_UNUSED gpointer user_data)
+                                       gpointer user_data)
 {
-    g_debug ("%s called", G_STRFUNC);
+    CalWin *cal = (CalWin *)user_data;
+
+    orage_task_runne_trigger (orage_application_get_sync (cal->mApplication));
 }
 #endif
 
