@@ -12,8 +12,8 @@
 # Andre Miranda <andre42m@gmail.com>, 2022
 # Yannick Le Guen <leguen.yannick@gmail.com>, 2022
 # Nick Schermer <nick@xfce.org>, 2022
-# Wallon Wallon, 2023
 # jc1 <jc1.quebecos@gmail.com>, 2023
+# Wallon Wallon, 2023
 # 
 #, fuzzy
 msgid ""
@@ -22,8 +22,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-23 12:48+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: jc1 <jc1.quebecos@gmail.com>, 2023\n"
-"Language-Team: French (https://www.transifex.com/xfce/teams/16840/fr/)\n"
+"Last-Translator: Wallon Wallon, 2023\n"
+"Language-Team: French (https://app.transifex.com/xfce/teams/16840/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -113,7 +113,7 @@ msgid ""
 " Orage?)"
 msgstr ""
 "Voir plus de détails dans le fichier journal (Peut-être que le fichier a été"
-" mis à jour en dehors d'Orage ?)"
+" mis à jour en dehors d’Orage ?)"
 
 #: ../src/appointment.c:1305
 msgid "This appointment will be permanently removed."
@@ -1277,7 +1277,7 @@ msgstr "<b>événements pour %s - %s :</b>"
 #: ../src/orage-about.c:50 ../org.xfce.orage.appdata.xml.in.h:2
 msgid "Orage is a time-managing application for the Xfce desktop environment"
 msgstr ""
-"Orage est une application de gestion du temps pour l'environnement de bureau"
+"Orage est une application de gestion du temps pour l’environnement de bureau"
 " Xfce."
 
 #: ../src/orage-about.c:54
@@ -1372,7 +1372,7 @@ msgstr "Vous devez toujours définir votre fuseau horaire local."
 
 #: ../src/parameters.c:584
 msgid "Archive threshold (months)"
-msgstr "Seuil d'archivage (mois)"
+msgstr "Seuil d’archivage (mois)"
 
 #: ../src/parameters.c:597
 msgid "(0 = no archiving)"
@@ -3991,7 +3991,7 @@ msgstr ""
 "Orage se veut être un calendrier graphique rapide et facile à utiliser. Il "
 "utilise le format ical portable et inclut les fonctionnalités courantes des "
 "calendriers, comme la répétition des rendez-vous et les possibilités "
-"d'alarmes multiples."
+"d’alarmes multiples."
 
 #: ../org.xfce.orage.appdata.xml.in.h:4
 msgid ""
@@ -4000,7 +4000,7 @@ msgid ""
 "Contents of those files are read and converted into Orage, but those files "
 "are left untouched."
 msgstr ""
-"Orage n'a pas de fonctionnalités pour gérer le calendrier d'un groupe et "
+"Orage n’a pas de fonctionnalités pour gérer le calendrier d’un groupe et "
 "peut être utilisé que par un seul utilisateur. Il prend une liste de "
 "fichiers pour les fichiers ical qui doivent être importés. Le contenu de ces"
 " fichiers est lu et converti dans Orage mais ces derniers ne sont pas "
