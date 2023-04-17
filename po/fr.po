@@ -447,7 +447,7 @@ msgstr "Sélectionnez cette option si vous souhaitez une alarme sonore"
 
 #: ../src/appointment.c:3254
 msgid "Sound command is not set"
-msgstr "La commande du son n'est pas définie"
+msgstr "La commande du son n’est pas définie"
 
 #: ../src/appointment.c:3269 ../src/interface.c:1050 ../src/interface.c:1096
 #: ../src/interface.c:1272 ../src/interface.c:1364 ../src/interface.c:1447
@@ -1340,7 +1340,7 @@ msgstr "Utiliser libxfce4ui : non\n"
 
 #: ../src/orage-application.c:526
 msgid "Show version of orage"
-msgstr "Afficher la version d'Orage"
+msgstr "Afficher la version d’Orage"
 
 #: ../src/orage-application.c:535
 msgid "Show preferences form"
@@ -1356,7 +1356,7 @@ msgstr "Ajouter un fichier externe"
 
 #: ../src/orage-application.c:571
 msgid "Export appointments from Orage to file"
-msgstr "Exporter les rendez-vous d'Orage vers un fichier"
+msgstr "Exporter les rendez-vous d’Orage vers un fichier"
 
 #: ../src/parameters.c:549
 msgid "Main settings"
