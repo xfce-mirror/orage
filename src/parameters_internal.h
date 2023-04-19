@@ -112,6 +112,14 @@ typedef struct _Itf
     GtkWidget *always_quit_frame;
     GtkWidget *always_quit_checkbutton;
 
+    /***** Sync Tab *****/
+    GtkWidget *sync_tab;
+    GtkWidget *sync_tab_label;
+    GtkWidget *sync_vbox;
+    GtkWidget *sync_sources_frame;
+    GtkWidget *sync_entries_list;
+    GtkWidget *sync_scrolled_window;
+
     /***** the rest in all tabs *****/
     GtkWidget *close_button;
     GtkWidget *help_button;
