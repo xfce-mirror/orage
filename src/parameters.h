@@ -39,6 +39,7 @@ typedef struct _foreign_file
 
 typedef struct _sync_conf_t
 {
+    gchar *description;
     gchar *uri;
     guint period;
 }
