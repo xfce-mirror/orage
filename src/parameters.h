@@ -22,6 +22,8 @@
 #ifndef __ORAGE_PARAMETERS_H__
 #define __ORAGE_PARAMETERS_H__
 
+#include "orage-task-runner.h"
+#include "orage-application.h"
 #include <glib.h>
 #include <time.h>
 
@@ -36,14 +38,6 @@ typedef struct _foreign_file
     time_t latest_file_change;
     char *name;
 } foreign_file;
-
-typedef struct _sync_conf_t
-{
-    gchar *description;
-    gchar *uri;
-    guint period;
-}
-sync_conf_t;
 
 typedef struct _parameters
 {
@@ -140,14 +134,19 @@ typedef struct _parameters
     gint sync_source_count;
 
     /** Sync configurations. */
-    sync_conf_t sync_conf[10];
+    orage_task_runner_conf sync_conf[10];
 } global_parameters; /* global parameters */
 
 extern global_parameters g_par;
 
 void show_parameters(void);
 void write_parameters(void);
-void read_parameters(void);
+
+/** Read parameters from config file.
+ *  @param appl parent application
+ */
+void read_parameters (OrageApplication *appl);
+
 void set_parameters(void);
 
 #endif /* !__ORAGE_PARAMETERS_H__ */

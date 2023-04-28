@@ -41,8 +41,10 @@
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 
+#include "orage-task-runner.h"
 #include "orage-i18n.h"
 #include "orage-rc-file.h"
+#include "orage-application.h"
 #include "functions.h"
 #include "ical-code.h"
 #include "timezone_selection.h"
@@ -68,9 +70,10 @@
 #define SYNC_PERIOD "Sync %02d period"
 
 static void fill_sync_entries (gpointer data, gpointer user_data);
-static void orage_sync_task_remove (const sync_conf_t *conf);
+static void orage_sync_task_remove (const orage_task_runner_conf *conf);
 
 static Itf *global_itf = NULL;
+static OrageApplication *parent;
 
 /* Return the first day of the week, where 0=monday, 6=sunday.
  *     Borrowed from GTK+:s Calendar Widget, but modified
@@ -577,7 +580,7 @@ static void on_sync_edit_clicked_cb (G_GNUC_UNUSED GtkButton *b,
 static void on_sync_remove_clicked_remove_cb (G_GNUC_UNUSED GtkButton *b,
                                               gpointer user_data)
 {
-    sync_conf_t *conf = (sync_conf_t *)user_data;
+    orage_task_runner_conf *conf = (orage_task_runner_conf *)user_data;
     gint result;
 
     g_message ("%s: Removing sync task %s", G_STRFUNC, conf->description);
@@ -590,8 +593,14 @@ static void on_sync_remove_clicked_remove_cb (G_GNUC_UNUSED GtkButton *b,
 
     if (result == GTK_RESPONSE_YES)
     {
-        g_debug ("%s: remove sync='%s'", G_STRFUNC, conf->description);
+        g_debug ("%s: remove sync='%s' @ %p",
+                 G_STRFUNC, conf->description, (void*)conf);
 
+        /* As orage_sync_task_remove reorder configuration in global
+         * parameters list, then orage_task_runner_remove should be always
+         * before orage_sync_task_remove.
+         */
+        orage_task_runner_remove (orage_application_get_sync (parent), conf);
         orage_sync_task_remove (conf);
     }
 }
@@ -1281,7 +1290,7 @@ static void create_parameter_dialog_extra_setup_tab(Itf *dialog)
 
 static void fill_sync_entries (gpointer data, gpointer user_data)
 {
-    sync_conf_t *conf = (sync_conf_t *)data;
+    orage_task_runner_conf *conf = (orage_task_runner_conf *)data;
     Itf *dialog = (Itf *)user_data;
     GtkGrid *list_grid = GTK_GRID (dialog->sync_entries_list);
     GtkWidget *grid;
@@ -1392,7 +1401,10 @@ static Itf *create_parameter_dialog(void)
     return(dialog);
 }
 
-static void orage_sync_task_remove (const sync_conf_t *conf)
+/** Remove task from configuration and reorder configuration structures.
+ *  @param conf pointer to configuration that will be removed
+ */
+static void orage_sync_task_remove (const orage_task_runner_conf *conf)
 {
     gboolean found = FALSE;
     gint i;
@@ -1523,13 +1535,14 @@ static void init_default_timezone(void)
     }
 }
 
-void read_parameters(void)
+void read_parameters (OrageApplication *appl)
 {
     gchar *fpath;
     OrageRc *orc;
     gint i;
     gchar f_par[100];
 
+    parent = appl;
     orc = orage_parameters_file_open(TRUE);
 
     orage_rc_set_group(orc, "PARAMETERS");
