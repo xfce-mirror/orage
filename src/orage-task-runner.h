@@ -36,8 +36,9 @@ GType orage_task_runner_get_type (void) G_GNUC_CONST;
 
 struct _orage_task_runner_conf
 {
+    gchar *description;
+    gchar *uri;
     guint period;
-    gchar *site;
     gboolean sync_active;
 };
 
@@ -46,16 +47,23 @@ typedef struct _orage_task_runner_conf orage_task_runner_conf;
 /** Add new task function.
  *  @param task_runner instance of task runner
  *  @param task_func task function
- *  @param conf periodic task configuration
+ *  @param conf periodic task configuration, data is owned by caller
  */
 void orage_task_runner_add (OrageTaskRunner *task_runner,
                             GTaskThreadFunc task_func,
                             orage_task_runner_conf *conf);
 
+/** Remove task from task runner.
+ *  @param task_runner instance of task runner
+ *  @param conf periodic task configuration, data is owned by caller
+ */
+void orage_task_runner_remove (OrageTaskRunner *task_runner,
+                               const orage_task_runner_conf *conf);
+
 /** Run all tasks now.
  *  @param task_runner instance of task runner
  */
-void orage_task_runne_trigger (OrageTaskRunner *task_runner);
+void orage_task_runner_trigger (OrageTaskRunner *task_runner);
 
 /** Interrupt all running tasks.
  *  @param task_runner instance of task runner
@@ -68,7 +76,8 @@ void orage_task_runne_interrupt (OrageTaskRunner *task_runner);
  *  @return newly allocated periodic task configuration. Caller is responsible
  *          for freeing it.
  */
-orage_task_runner_conf *orage_task_runner_conf_new (const gchar *site, guint period);
+orage_task_runner_conf *orage_task_runner_conf_new (const gchar *site,
+                                                    guint period);
 
 G_END_DECLS
 

@@ -29,10 +29,13 @@ void orage_sync_ext_command (G_GNUC_UNUSED GTask *task,
                              gpointer task_data,
                              G_GNUC_UNUSED GCancellable *cancellable)
 {
+    gboolean succeed;
     GError *error = NULL;
     orage_task_runner_conf *sync_conf = (orage_task_runner_conf *)task_data;
 
-    g_message ("sync '%s'", sync_conf->site);
+    g_return_if_fail (sync_conf->uri != NULL);
+
+    g_message ("sync '%s'", sync_conf->uri);
 
     if (sync_conf->sync_active)
     {
@@ -40,11 +43,17 @@ void orage_sync_ext_command (G_GNUC_UNUSED GTask *task,
         return;
     }
 
-    if (orage_exec (sync_conf->site, &sync_conf->sync_active, &error) == FALSE)
-    {
-        g_message ("sync command '%s' failed with message '%s'",
-                   sync_conf->site, error->message);
+    succeed = orage_exec (sync_conf->uri, &sync_conf->sync_active, &error);
 
-        g_clear_error (&error);
+    if (G_UNLIKELY (succeed == FALSE))
+    {
+        if (error != NULL)
+        {
+            g_warning ("sync command '%s' failed with message '%s'",
+                       sync_conf->uri, error->message);
+            g_clear_error (&error);
+        }
+        else
+            g_warning ("sync command '%s' failed", sync_conf->uri);
     }
 }

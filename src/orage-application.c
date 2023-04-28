@@ -190,16 +190,14 @@ static void print_version (void)
 }
 
 #ifdef ENABLE_SYNC
-void load_sync_conf (OrageTaskRunner *sync)
+static void load_sync_conf (OrageTaskRunner *sync)
 {
     guint i;
-    orage_task_runner_conf *conf;
 
     for (i = 0; i < (guint)g_par.sync_source_count; i++)
     {
-        conf = orage_task_runner_conf_new (g_par.sync_conf[i].uri,
-                                           g_par.sync_conf[i].period);
-        orage_task_runner_add (sync, orage_sync_ext_command, conf);
+        orage_task_runner_add (sync, orage_sync_ext_command,
+                               &g_par.sync_conf[i]);
     }
 }
 #endif
@@ -232,7 +230,7 @@ static void orage_application_startup (GApplication *app)
     /* init i18n = nls to use gettext */
     xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
     register_css_provider ();
-    read_parameters ();
+    read_parameters (self);
 #ifdef ENABLE_SYNC
     self->sync = g_object_new (ORAGE_TASK_RUNNER_TYPE, NULL);
     load_sync_conf (self->sync);

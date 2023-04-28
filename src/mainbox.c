@@ -89,7 +89,7 @@ static void mFile_refresh_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
 {
     CalWin *cal = (CalWin *)user_data;
 
-    orage_task_runne_trigger (orage_application_get_sync (cal->mApplication));
+    orage_task_runner_trigger (orage_application_get_sync (cal->mApplication));
 }
 #endif
 
