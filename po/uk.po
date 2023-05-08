@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-23 12:48+0100\n"
+"POT-Creation-Date: 2023-05-05 10:52+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Gordon Freeman, 2023\n"
 "Language-Team: Ukrainian (https://app.transifex.com/xfce/teams/16840/uk/)\n"
@@ -1329,7 +1329,7 @@ msgstr "Показати версію Orage"
 
 #: ../src/orage-application.c:535
 msgid "Show preferences form"
-msgstr ""
+msgstr "Показати форму налаштувань"
 
 #: ../src/orage-application.c:544
 msgid "Make Orage visible/unvisible"
@@ -1341,7 +1341,7 @@ msgstr "Додати сторонній файл"
 
 #: ../src/orage-application.c:571
 msgid "Export appointments from Orage to file"
-msgstr ""
+msgstr "Експорт зустрічей з Orage у файл"
 
 #: ../src/parameters.c:549
 msgid "Main settings"
