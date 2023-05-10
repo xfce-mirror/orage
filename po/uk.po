@@ -1574,7 +1574,7 @@ msgstr "_Закрити"
 
 #: ../src/reminder.c:420
 msgid "Reminder"
-msgstr ""
+msgstr "Нагадування"
 
 #: ../src/reminder.c:443
 msgid "Open"
