@@ -374,6 +374,14 @@ msgid ""
 "    <&Ynnnn> is translated to current year minus nnnn.\n"
 "(This can be used for example in birthday reminders to tell how old the person will be.)"
 msgstr ""
+"Ці скорочені команди починають діяти негайно:\n"
+"    <D> вставити поточну дату в локальному форматі дати\n"
+"    <T> вставити час\n"
+"    <DT> вставити дату та час.\n"
+"\n"
+"Ці конвертуються лише пізніше, коли їх бачать:\n"
+"    <&Ynnnn> переводиться в поточний рік мінус nnnn.\n"
+"(Це можна використовувати, наприклад, у нагадуваннях про день народження, щоб повідомити, скільки років людині буде.)"
 
 #: ../src/appointment.c:3180
 msgid "Before Start"
@@ -1333,7 +1341,7 @@ msgstr "Показати форму налаштувань"
 
 #: ../src/orage-application.c:544
 msgid "Make Orage visible/unvisible"
-msgstr ""
+msgstr "Зробити Orage видимим/невидимим"
 
 #: ../src/orage-application.c:553
 msgid "Add a foreign file"
@@ -1582,7 +1590,7 @@ msgstr "Відкрити"
 
 #: ../src/reminder.c:448
 msgid "Silence"
-msgstr ""
+msgstr "Тиша"
 
 #: ../src/reminder.c:567
 msgid "Reminder - Orage"
