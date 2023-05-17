@@ -37,7 +37,7 @@ GType orage_task_runner_get_type (void) G_GNUC_CONST;
 struct _orage_task_runner_conf
 {
     gchar *description;
-    gchar *uri;
+    gchar *command;
     guint period;
     gboolean sync_active;
 };

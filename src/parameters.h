@@ -31,6 +31,8 @@
 #include <config.h>
 #endif
 
+#define NUMBER_OF_SYNC_SOURCES 10
+
 typedef struct _foreign_file
 {
     char *file;
@@ -134,7 +136,7 @@ typedef struct _parameters
     gint sync_source_count;
 
     /** Sync configurations. */
-    orage_task_runner_conf sync_conf[10];
+    orage_task_runner_conf sync_conf[NUMBER_OF_SYNC_SOURCES];
 } global_parameters; /* global parameters */
 
 extern global_parameters g_par;
