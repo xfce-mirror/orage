@@ -1,7 +1,6 @@
 bin_PROGRAMS = orage
 
 orage_SOURCES =							\
-	$(orage_built_sources)					\
 	appointment.c						\
 	appointment.h						\
 	day-view.c						\
@@ -32,6 +31,8 @@ orage_SOURCES =							\
 	orage-i18n.h						\
 	orage-rc-file.c						\
 	orage-rc-file.h						\
+	orage-sync-edit-dialog.c				\
+	orage-sync-edit-dialog.h				\
 	orage-sync-ext-command.c				\
 	orage-sync-ext-command.h				\
 	orage-task-runner.c					\

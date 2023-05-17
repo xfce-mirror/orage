@@ -69,15 +69,12 @@ static void orage_task_runner_class_init (OrageTaskRunnerClass *klass)
 {
     GObjectClass *gobject_class;
 
-    g_debug ("%s", G_STRFUNC);
-
     gobject_class = G_OBJECT_CLASS (klass);
     gobject_class->finalize = orage_task_runner_finalize;
 }
 
 static void orage_task_runner_init (G_GNUC_UNUSED OrageTaskRunner *task_runner)
 {
-    g_debug ("%s", G_STRFUNC);
 }
 
 static void task_ready_callback (G_GNUC_UNUSED GObject *source_object,
@@ -85,8 +82,6 @@ static void task_ready_callback (G_GNUC_UNUSED GObject *source_object,
                                  gpointer user_data)
 {
     orage_task_runner_data *task_data = (orage_task_runner_data *)user_data;
-
-    g_debug ("%s: data=%p", G_STRFUNC, user_data);
 
     task_data->task = NULL;
 }
@@ -96,7 +91,7 @@ static gboolean start_task_runner_thread (gpointer data)
     GCancellable *cancel;
     orage_task_runner_data *task_data = (orage_task_runner_data *)data;
 
-    g_debug ("%s: '%s' @ %p", G_STRFUNC, task_data->conf->description, data);
+    g_debug ("starting task runner '%s'", task_data->conf->description);
 
     if (task_data->task != NULL)
     {
@@ -118,14 +113,10 @@ static gboolean start_task_runner_thread (gpointer data)
 
 static void remove_timer (gpointer data)
 {
-    gboolean result;
     const orage_task_runner_data *task_data =
         (const orage_task_runner_data *)data;
 
-    result = g_source_remove (task_data->timer_id);
-
-    g_debug ("%s: timer %d removed: %s",
-             G_STRFUNC, task_data->timer_id, result ? "OK" : "failed");
+    (void)g_source_remove (task_data->timer_id);
 }
 
 static gint task_callback_conf_compare (gconstpointer pa, gconstpointer pb)
@@ -153,7 +144,7 @@ static gint task_callback_conf_compare (gconstpointer pa, gconstpointer pb)
     if (strcmp (data_a->conf->description, data_b->description))
         return 1;
 
-    if (strcmp (data_a->conf->uri, data_b->uri))
+    if (strcmp (data_a->conf->command, data_b->command))
         return 1;
 
     return 0;
@@ -187,7 +178,7 @@ static orage_task_runner_conf *orage_task_runner_conf_clone (
 {
     orage_task_runner_conf *cloned_conf;
 
-    cloned_conf = orage_task_runner_conf_new (conf->uri, conf->period);
+    cloned_conf = orage_task_runner_conf_new (conf->command, conf->period);
     cloned_conf->description = g_strdup (conf->description);
     cloned_conf->sync_active = conf->sync_active;
 
@@ -199,7 +190,7 @@ static void orage_task_runner_conf_free (orage_task_runner_conf *conf)
     g_return_if_fail (conf != NULL);
 
     g_debug ("FREE conf: free %p", (void *)conf);
-    g_free (conf->uri);
+    g_free (conf->command);
     g_free (conf->description);
     g_free (conf);
 }
@@ -238,8 +229,6 @@ void orage_task_runner_remove (OrageTaskRunner *task_runner,
 {
     GSList *found;
 
-    g_debug ("%s: '%s' @ %p", G_STRFUNC, conf->description, (void *)conf);
-
     found = g_slist_find_custom (task_runner->task_runner_callbacks, conf,
                                  task_callback_conf_compare);
 
@@ -257,31 +246,27 @@ void orage_task_runner_remove (OrageTaskRunner *task_runner,
 
 void orage_task_runner_trigger (OrageTaskRunner *task_runner)
 {
-    g_debug ("%s", G_STRFUNC);
-
     g_slist_foreach (task_runner->task_runner_callbacks,
                      task_runner_and_restart_timer, NULL);
 }
 
 void orage_task_runne_interrupt (OrageTaskRunner *task_runner)
 {
-    g_debug ("%s", G_STRFUNC);
-
     g_slist_foreach (task_runner->task_runner_callbacks, cancel_task_runner,
                      NULL);
 }
 
-orage_task_runner_conf *orage_task_runner_conf_new (const gchar *site,
+orage_task_runner_conf *orage_task_runner_conf_new (const gchar *command,
                                                     const guint period)
 {
     orage_task_runner_conf *conf = g_new (orage_task_runner_conf, 1);
 
     conf->description = NULL;
-    conf->uri = g_strdup (site);
+    conf->command = g_strdup (command);
     conf->period = period;
 
-    g_debug (" NEW conf: %p, site='%s', period=%d",
-             (void *)conf, site, period);
+    g_debug (" NEW conf: %p, command='%s', period=%d",
+             (void *)conf, command, period);
 
     return conf;
 }

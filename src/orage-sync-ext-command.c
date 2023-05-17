@@ -33,9 +33,9 @@ void orage_sync_ext_command (G_GNUC_UNUSED GTask *task,
     GError *error = NULL;
     orage_task_runner_conf *sync_conf = (orage_task_runner_conf *)task_data;
 
-    g_return_if_fail (sync_conf->uri != NULL);
+    g_return_if_fail (sync_conf->command != NULL);
 
-    g_message ("sync '%s'", sync_conf->uri);
+    g_message ("sync '%s': '%s'", sync_conf->description, sync_conf->command);
 
     if (sync_conf->sync_active)
     {
@@ -43,17 +43,17 @@ void orage_sync_ext_command (G_GNUC_UNUSED GTask *task,
         return;
     }
 
-    succeed = orage_exec (sync_conf->uri, &sync_conf->sync_active, &error);
+    succeed = orage_exec (sync_conf->command, &sync_conf->sync_active, &error);
 
     if (G_UNLIKELY (succeed == FALSE))
     {
         if (error != NULL)
         {
             g_warning ("sync command '%s' failed with message '%s'",
-                       sync_conf->uri, error->message);
+                       sync_conf->command, error->message);
             g_clear_error (&error);
         }
         else
-            g_warning ("sync command '%s' failed", sync_conf->uri);
+            g_warning ("sync command '%s' failed", sync_conf->command);
     }
 }
