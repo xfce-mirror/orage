@@ -24,6 +24,8 @@
 #include "functions.h"
 #include <gtk/gtk.h>
 
+#define SPACING 4
+
 struct _OrageSyncEditDialog
 {
     GtkDialog parent;
@@ -86,7 +88,7 @@ static GtkSpinButton *create_spinner (OrageSyncEditDialog *self)
 
     spinner = gtk_spin_button_new_with_range (1, 60, 1);
     g_object_set (spinner, "vexpand", FALSE,
-                           "hexpand", TRUE,
+                           "hexpand", FALSE,
                            NULL);
 
     g_signal_connect (spinner, "value-changed",
@@ -110,13 +112,22 @@ static void orage_sync_edit_dialog_constructed (GObject *object)
     GtkWidget *description_label;
     GtkWidget *command_label;
     GtkWidget *period_label;
+    GtkBox *minute_box;
+    GtkWidget *minute_label;
     GtkWidget *close_button;
 
     G_OBJECT_CLASS (orage_sync_edit_dialog_parent_class)->constructed (object);
 
     grid = GTK_GRID (gtk_grid_new ());
-    gtk_grid_set_column_spacing (grid, 4);
-    gtk_grid_set_row_spacing (grid, 4);
+    minute_box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, SPACING));
+    gtk_grid_set_column_spacing (grid, SPACING);
+    gtk_grid_set_row_spacing (grid, SPACING);
+
+    g_object_set (minute_box, "vexpand", FALSE,
+                              "valign", GTK_ALIGN_FILL,
+                              "hexpand", FALSE,
+                              "halign", GTK_ALIGN_START,
+                              NULL);
 
     description_label = create_label (_("Description:"));
     dialog->description_entry = create_entry (dialog);
@@ -124,16 +135,32 @@ static void orage_sync_edit_dialog_constructed (GObject *object)
     dialog->command_entry = create_entry (dialog);
     period_label = create_label (_("Period:"));
     dialog->period_entry = create_spinner (dialog);
+    minute_label = create_label (_("minutes"));
+
+    gtk_widget_set_tooltip_text (GTK_WIDGET (dialog->description_entry),
+        _("The name or description of this synchronization task"));
+
+    gtk_widget_set_tooltip_text (GTK_WIDGET (dialog->command_entry),
+        _("Command for synchronization"));
+
+    gtk_widget_set_tooltip_text (GTK_WIDGET (dialog->period_entry),
+        _("Synchronization period in minutes"));
+
+    gtk_box_pack_start (minute_box, GTK_WIDGET (dialog->period_entry),
+                        FALSE, FALSE, 0);
+    gtk_box_pack_end (minute_box, minute_label,
+                      TRUE, TRUE, SPACING);
 
     gtk_grid_attach (grid, description_label,                      0, 0, 1, 1);
     gtk_grid_attach (grid, GTK_WIDGET (dialog->description_entry), 1, 0, 1, 1);
     gtk_grid_attach (grid, command_label,                          0, 1, 1, 1);
     gtk_grid_attach (grid, GTK_WIDGET (dialog->command_entry),     1, 1, 1, 1);
     gtk_grid_attach (grid, period_label,                           0, 2, 1, 1);
-    gtk_grid_attach (grid, GTK_WIDGET (dialog->period_entry),      1, 2, 1, 1);
+    gtk_grid_attach (grid, GTK_WIDGET (minute_box),                1, 2, 1, 1);
 
     content_area = gtk_dialog_get_content_area (GTK_DIALOG (dialog));
-    gtk_box_pack_start (GTK_BOX (content_area), GTK_WIDGET (grid), TRUE, TRUE, 3);
+    gtk_box_pack_start (GTK_BOX (content_area), GTK_WIDGET (grid),
+                        TRUE, TRUE, SPACING);
     gtk_widget_show_all (content_area);
     
     close_button = orage_util_image_button ("window-close", _("_Close"));
