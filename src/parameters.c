@@ -1737,10 +1737,10 @@ void read_parameters (OrageApplication *appl)
     for (i = 0; i < g_par.sync_source_count; i++)
     {
         g_snprintf (f_par, sizeof (f_par), SYNC_DESCRIPTION, i);
-        g_par.sync_conf[i].description = orage_rc_get_str (orc, f_par, NULL);
+        g_par.sync_conf[i].description = orage_rc_get_str (orc, f_par, "");
 
         g_snprintf (f_par, sizeof (f_par), SYNC_COMMAND, i);
-        g_par.sync_conf[i].command = orage_rc_get_str (orc, f_par, NULL);
+        g_par.sync_conf[i].command = orage_rc_get_str (orc, f_par, "");
 
         g_snprintf (f_par, sizeof (f_par), SYNC_PERIOD, i);
         g_par.sync_conf[i].period = orage_rc_get_int (orc, f_par, 0);
