@@ -1850,6 +1850,11 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
 
                     break;
                 }
+                if (g_str_has_prefix (text, "X-GOOGLE-CONFERENCE"))
+                {
+                    /* Ignore, Orage does not support this now. */
+                    break;
+                }
                 g_warning ("%s: unknown X property %s", G_STRFUNC, text);
                 break; /* ICAL_X_PROPERTY: */
             case ICAL_PRIORITY_PROPERTY:
@@ -1910,6 +1915,10 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
             case ICAL_CREATED_PROPERTY:
             case ICAL_LASTMODIFIED_PROPERTY:
             case ICAL_SEQUENCE_PROPERTY:
+            case ICAL_ORGANIZER_PROPERTY:
+            case ICAL_STATUS_PROPERTY:
+            case ICAL_ATTENDEE_PROPERTY:
+            case ICAL_RECURRENCEID_PROPERTY:
                 break;
             default:
                 g_message ("%s: unknown property %s", G_STRFUNC,
