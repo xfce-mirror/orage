@@ -55,9 +55,6 @@ static void orage_task_runner_finalize (GObject *object)
 {
     OrageTaskRunner *task_runner = ORAGE_TASK_RUNNER (object);
 
-    g_debug ("%s: cb=%p", G_STRFUNC,
-             (void *)task_runner->task_runner_callbacks);
-
     orage_task_runne_interrupt (task_runner);
     g_slist_free_full (task_runner->task_runner_callbacks,
                        (GDestroyNotify)orage_task_runner_free);
@@ -91,8 +88,6 @@ static gboolean start_task_runner_thread (gpointer data)
     GCancellable *cancel;
     orage_task_runner_data *task_data = (orage_task_runner_data *)data;
 
-    g_debug ("starting task runner '%s'", task_data->conf->description);
-
     if (task_data->task != NULL)
     {
         g_info ("task_runner task @ %p already started", data);
@@ -123,17 +118,6 @@ static gint task_callback_conf_compare (gconstpointer pa, gconstpointer pb)
 {
     const orage_task_runner_data *data_a = (const orage_task_runner_data*)pa;
     const orage_task_runner_conf *data_b = (const orage_task_runner_conf*)pb;
-
-    g_debug ("%s: data_a->conf=%p, pb=%p",
-             G_STRFUNC, (void *)data_a->conf, pb);
-
-    g_debug ("%s: task_data->conf->description='%s'",
-             G_STRFUNC, data_a->conf->description);
-    g_debug ("%s: data_a->conf->period=%d",
-             G_STRFUNC, data_a->conf->period);
-
-    g_debug ("%s: pb->description='%s'",
-             G_STRFUNC, data_b->description);
 
     if (data_a->conf == pb)
         return 0;
@@ -178,8 +162,10 @@ static orage_task_runner_conf *orage_task_runner_conf_clone (
 {
     orage_task_runner_conf *cloned_conf;
 
-    cloned_conf = orage_task_runner_conf_new (conf->command, conf->period);
+    cloned_conf = g_new (orage_task_runner_conf, 1);
     cloned_conf->description = g_strdup (conf->description);
+    cloned_conf->command = g_strdup (conf->command);
+    cloned_conf->period = conf->period;
     cloned_conf->sync_active = conf->sync_active;
 
     return cloned_conf;
@@ -189,7 +175,6 @@ static void orage_task_runner_conf_free (orage_task_runner_conf *conf)
 {
     g_return_if_fail (conf != NULL);
 
-    g_debug ("FREE conf: free %p", (void *)conf);
     g_free (conf->command);
     g_free (conf->description);
     g_free (conf);
@@ -197,8 +182,6 @@ static void orage_task_runner_conf_free (orage_task_runner_conf *conf)
 
 static void orage_task_runner_free (orage_task_runner_data *data)
 {
-    g_debug ("%s: '%s' @ %p", G_STRFUNC, data->conf->description, (void *)data);
-
     remove_timer (data);
     cancel_task_runner (data, NULL);
     orage_task_runner_conf_free (data->conf);
@@ -216,12 +199,8 @@ void orage_task_runner_add (OrageTaskRunner *task_runner,
     task_data->timer_id = g_timeout_add_seconds (task_runner_conf->period,
                                                  start_task_runner_thread,
                                                  task_data);
-
     task_runner->task_runner_callbacks =
             g_slist_append (task_runner->task_runner_callbacks, task_data);
-
-    g_debug ("%s: created callback %p for '%s'",
-             G_STRFUNC, (void *)task_data, task_data->conf->description);
 }
 
 void orage_task_runner_remove (OrageTaskRunner *task_runner,
@@ -254,19 +233,4 @@ void orage_task_runne_interrupt (OrageTaskRunner *task_runner)
 {
     g_slist_foreach (task_runner->task_runner_callbacks, cancel_task_runner,
                      NULL);
-}
-
-orage_task_runner_conf *orage_task_runner_conf_new (const gchar *command,
-                                                    const guint period)
-{
-    orage_task_runner_conf *conf = g_new (orage_task_runner_conf, 1);
-
-    conf->description = NULL;
-    conf->command = g_strdup (command);
-    conf->period = period;
-
-    g_debug (" NEW conf: %p, command='%s', period=%d",
-             (void *)conf, command, period);
-
-    return conf;
 }
