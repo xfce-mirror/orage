@@ -29,8 +29,8 @@ G_BEGIN_DECLS
 typedef struct _OrageTaskRunnerClass OrageTaskRunnerClass;
 typedef struct _OrageTaskRunner      OrageTaskRunner;
 
-#define ORAGE_TASK_RUNNER_TYPE            (orage_task_runner_get_type ())
-#define ORAGE_TASK_RUNNER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), ORAGE_TASK_RUNNER_TYPE, OrageTaskRunner))
+#define ORAGE_TASK_RUNNER_TYPE (orage_task_runner_get_type ())
+#define ORAGE_TASK_RUNNER(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), ORAGE_TASK_RUNNER_TYPE, OrageTaskRunner))
 
 GType orage_task_runner_get_type (void) G_GNUC_CONST;
 
@@ -60,7 +60,7 @@ void orage_task_runner_add (OrageTaskRunner *task_runner,
 void orage_task_runner_remove (OrageTaskRunner *task_runner,
                                const orage_task_runner_conf *conf);
 
-/** Run all tasks now.
+/** Run all tasks.
  *  @param task_runner instance of task runner
  */
 void orage_task_runner_trigger (OrageTaskRunner *task_runner);
@@ -69,15 +69,6 @@ void orage_task_runner_trigger (OrageTaskRunner *task_runner);
  *  @param task_runner instance of task runner
  */
 void orage_task_runne_interrupt (OrageTaskRunner *task_runner);
-
-/** Create task runner configuration.
- *  @param site site of ICAL file
- *  @param period sync period in seconds
- *  @return newly allocated periodic task configuration. Caller is responsible
- *          for freeing it.
- */
-orage_task_runner_conf *orage_task_runner_conf_new (const gchar *site,
-                                                    guint period);
 
 G_END_DECLS
 
