@@ -230,7 +230,7 @@ static void orage_application_startup (GApplication *app)
     /* init i18n = nls to use gettext */
     xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
     register_css_provider ();
-    read_parameters (self);
+    read_parameters ();
 #ifdef ENABLE_SYNC
     self->sync = g_object_new (ORAGE_TASK_RUNNER_TYPE, NULL);
     load_sync_conf (self->sync);
@@ -260,8 +260,6 @@ static void orage_application_activate (GApplication *app)
     else
     {
         g_par.xfcal = g_new (CalWin, 1);
-
-        ((CalWin *)g_par.xfcal)->mApplication = self;
 
         /* Create the main window */
         ((CalWin *)g_par.xfcal)->mWindow =

@@ -29,7 +29,6 @@ typedef struct _CalWin
 {
     GtkAccelGroup *mAccel_group;
 
-    OrageApplication *mApplication;
     GtkWidget *mWindow;
     GtkWidget *mVbox;
 

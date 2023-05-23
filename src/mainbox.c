@@ -85,11 +85,11 @@ static void mFile_newApp_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
 
 #ifdef ENABLE_SYNC
 static void mFile_refresh_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
-                                       gpointer user_data)
+                                       G_GNUC_UNUSED gpointer user_data)
 {
-    CalWin *cal = (CalWin *)user_data;
+    OrageApplication *app = ORAGE_APPLICATION (g_application_get_default ());
 
-    orage_task_runner_trigger (orage_application_get_sync (cal->mApplication));
+    orage_task_runner_trigger (orage_application_get_sync (app));
 }
 #endif
 
@@ -286,7 +286,7 @@ static void build_menu(void)
                       G_CALLBACK (mFile_newApp_activate_cb), cal);
 #ifdef ENABLE_SYNC
     g_signal_connect (cal->mFile_refresh, "activate",
-                      G_CALLBACK (mFile_refresh_activate_cb), cal);
+                      G_CALLBACK (mFile_refresh_activate_cb), NULL);
 #endif
     g_signal_connect (cal->mFile_interface, "activate",
                       G_CALLBACK (mFile_interface_activate_cb), cal);
