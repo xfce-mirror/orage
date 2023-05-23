@@ -23,7 +23,6 @@
 #define __ORAGE_PARAMETERS_H__
 
 #include "orage-task-runner.h"
-#include "orage-application.h"
 #include <glib.h>
 #include <time.h>
 
@@ -147,7 +146,7 @@ void write_parameters(void);
 /** Read parameters from config file.
  *  @param appl parent application
  */
-void read_parameters (OrageApplication *appl);
+void read_parameters (void);
 
 void set_parameters(void);
 

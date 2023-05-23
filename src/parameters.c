@@ -83,7 +83,6 @@ static void orage_sync_task_change (const orage_task_runner_conf *conf,
                                     const guint period);
 
 static Itf *global_itf = NULL;
-static OrageApplication *parent;
 
 /* Return the first day of the week, where 0=monday, 6=sunday.
  *     Borrowed from GTK+:s Calendar Widget, but modified
@@ -611,6 +610,7 @@ static void on_sync_add_clicked_cb (G_GNUC_UNUSED GtkButton *b,
     gint idx;
     gint result;
     OrageSyncEditDialog *dialog;
+    OrageApplication *app;
 
     dialog = ORAGE_SYNC_EDIT_DIALOG (orage_sync_edit_dialog_new ());
     result = gtk_dialog_run (GTK_DIALOG (dialog));
@@ -624,7 +624,8 @@ static void on_sync_add_clicked_cb (G_GNUC_UNUSED GtkButton *b,
         idx = orage_sync_task_add (description, command, period);
         if (idx >= 0)
         {
-            orage_task_runner_add (orage_application_get_sync (parent),
+            app = ORAGE_APPLICATION (g_application_get_default ());
+            orage_task_runner_add (orage_application_get_sync (app),
                                    orage_sync_ext_command,
                                    &g_par.sync_conf[idx]);
         }
@@ -643,6 +644,8 @@ static void on_sync_edit_clicked_cb (G_GNUC_UNUSED GtkButton *b,
     guint period;
     OrageSyncEditDialog *dialog;
     orage_task_runner_conf *conf = (orage_task_runner_conf *)user_data;
+    OrageApplication *app;
+    OrageTaskRunner *runner;
 
     g_message ("%s: edit sync task '%s'", G_STRFUNC, conf->description);
 
@@ -662,10 +665,11 @@ static void on_sync_edit_clicked_cb (G_GNUC_UNUSED GtkButton *b,
         g_message ("%s:  conf->command='%s'", G_STRFUNC, command);
         g_message ("%s:  conf->period=%d", G_STRFUNC, period);
 
-        orage_task_runner_remove (orage_application_get_sync (parent), conf);
+        app = ORAGE_APPLICATION (g_application_get_default ());
+        runner = orage_application_get_sync (app);
+        orage_task_runner_remove (runner, conf);
         orage_sync_task_change (conf, description, command, period);
-        orage_task_runner_add (orage_application_get_sync (parent),
-                               orage_sync_ext_command, conf);
+        orage_task_runner_add (runner, orage_sync_ext_command, conf);
     }
 
     gtk_widget_destroy (GTK_WIDGET (dialog));
@@ -675,6 +679,7 @@ static void on_sync_remove_clicked_remove_cb (G_GNUC_UNUSED GtkButton *b,
                                               gpointer user_data)
 {
     orage_task_runner_conf *conf = (orage_task_runner_conf *)user_data;
+    OrageApplication *app;
     gint result;
 
     g_message ("%s: removing sync task %s", G_STRFUNC, conf->description);
@@ -687,14 +692,12 @@ static void on_sync_remove_clicked_remove_cb (G_GNUC_UNUSED GtkButton *b,
 
     if (result == GTK_RESPONSE_YES)
     {
-        g_debug ("%s: remove sync='%s' @ %p",
-                 G_STRFUNC, conf->description, (void*)conf);
-
         /* As orage_sync_task_remove reorder configuration in global
          * parameters list, then orage_task_runner_remove should be always
          * before orage_sync_task_remove.
          */
-        orage_task_runner_remove (orage_application_get_sync (parent), conf);
+        app = ORAGE_APPLICATION (g_application_get_default ());
+        orage_task_runner_remove (orage_application_get_sync (app), conf);
         orage_sync_task_remove (conf);
     }
 }
@@ -1650,14 +1653,13 @@ static void init_default_timezone(void)
     }
 }
 
-void read_parameters (OrageApplication *appl)
+void read_parameters (void)
 {
     gchar *fpath;
     OrageRc *orc;
     gint i;
     gchar f_par[100];
 
-    parent = appl;
     orc = orage_parameters_file_open(TRUE);
 
     orage_rc_set_group(orc, "PARAMETERS");

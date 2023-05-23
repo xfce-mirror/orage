@@ -151,10 +151,7 @@ static void cancel_task_runner (gpointer data, G_GNUC_UNUSED gpointer user_data)
     orage_task_runner_data *task_data = (orage_task_runner_data *)data;
 
     if (task_data->task)
-    {
-        g_debug ("%s: cancel %s", G_STRFUNC, g_task_get_name (task_data->task));
         g_cancellable_cancel (g_task_get_cancellable (task_data->task));
-    }
 }
 
 static orage_task_runner_conf *orage_task_runner_conf_clone (
