@@ -25,8 +25,6 @@
 
 #include "ical-expimp.h"
 
-#define XFICAL_UID_LEN 200
-
 typedef enum
 {
     XFICAL_FREQ_NONE = 0

@@ -68,6 +68,8 @@
 #include "interface.h"
 #include "xfical_exception.h"
 
+#define XFICAL_UID_LEN 200
+
 icalset *ic_fical = NULL;
 icalcomponent *ic_ical = NULL;
 #ifdef HAVE_ARCHIVE
@@ -730,19 +732,22 @@ xfical_appt *xfical_appt_alloc(void)
 
 char *ic_generate_uid(void)
 {
-    gchar xf_host[XFICAL_UID_LEN/2+1];
+    gchar xf_host[XFICAL_UID_LEN / 2 + 1];
     gchar *xf_uid;
-    static int seq = 0;
+    static guint seq = 0;
     struct icaltimetype dtstamp;
 
-    xf_uid = g_new(char, XFICAL_UID_LEN+1);
-    dtstamp = icaltime_current_time_with_zone(utc_icaltimezone);
-    gethostname(xf_host, XFICAL_UID_LEN/2);
-    xf_host[XFICAL_UID_LEN/2] = '\0';
-    g_snprintf(xf_uid, XFICAL_UID_LEN, "Orage-%s%d-%lu@%s"
-            , icaltime_as_ical_string(dtstamp), seq, (long) getuid(), xf_host);
+    xf_uid = g_new (gchar, XFICAL_UID_LEN);
+    dtstamp = icaltime_current_time_with_zone (utc_icaltimezone);
+    gethostname (xf_host, XFICAL_UID_LEN / 2);
+    xf_host[XFICAL_UID_LEN / 2] = '\0';
+    g_snprintf (xf_uid, XFICAL_UID_LEN, "Orage-%s%u-%lu@%s",
+                icaltime_as_ical_string (dtstamp), seq, (long)getuid (),
+                xf_host);
+
     if (++seq > 999)
         seq = 0;
+
     return(xf_uid);
 }
 
