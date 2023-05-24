@@ -214,10 +214,10 @@ void orage_task_runner_remove (OrageTaskRunner *task_runner,
         return;
     }
 
-    orage_task_runner_free ((orage_task_runner_data *)found->data);
-
     task_runner->task_runner_callbacks =
             g_slist_remove (task_runner->task_runner_callbacks, found->data);
+
+    orage_task_runner_free ((orage_task_runner_data *)found->data);
 }
 
 void orage_task_runner_trigger (OrageTaskRunner *task_runner)
