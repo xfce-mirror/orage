@@ -90,7 +90,7 @@ static gboolean start_task_runner_thread (gpointer data)
 
     if (task_data->task != NULL)
     {
-        g_info ("task_runner task @ %p already started", data);
+        g_info ("task @ %p already started", data);
         return TRUE;
     }
 
