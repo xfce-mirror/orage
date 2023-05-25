@@ -1512,7 +1512,7 @@ static gint orage_sync_task_add (const gchar *description,
     g_debug ("%s: description='%s'", G_STRFUNC, description);
     g_debug ("%s: command='%s'", G_STRFUNC, command);
     g_debug ("%s: period=%u", G_STRFUNC, period);
-    
+
     if (g_par.sync_source_count >= NUMBER_OF_SYNC_SOURCES)
     {
         g_info ("sync sources limit reached");

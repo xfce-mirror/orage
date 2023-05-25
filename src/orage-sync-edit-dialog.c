@@ -56,7 +56,7 @@ static void on_entry_changed_cb (G_GNUC_UNUSED GtkEditable *self,
                                  gpointer user_data)
 {
     OrageSyncEditDialog *dialog = ORAGE_SYNC_EDIT_DIALOG (user_data);
-    
+
     dialog->changed = TRUE;
 }
 
@@ -100,7 +100,7 @@ static GtkSpinButton *create_spinner (OrageSyncEditDialog *self)
 static void orage_sync_edit_dialog_finalize (GObject *object)
 {
     g_return_if_fail (ORAGE_IS_SYNC_EDIT_DIALOG (object));
-    
+
     G_OBJECT_CLASS (orage_sync_edit_dialog_parent_class)->finalize (object);
 }
 
@@ -162,7 +162,7 @@ static void orage_sync_edit_dialog_constructed (GObject *object)
     gtk_box_pack_start (GTK_BOX (content_area), GTK_WIDGET (grid),
                         TRUE, TRUE, SPACING);
     gtk_widget_show_all (content_area);
-    
+
     close_button = orage_util_image_button ("window-close", _("_Close"));
     gtk_dialog_add_action_widget (GTK_DIALOG (dialog), close_button,
                                   GTK_RESPONSE_OK);
