@@ -23,6 +23,8 @@
 #ifndef __MAINBOX_H__
 #define __MAINBOX_H__
 
+#include "orage-application.h"
+
 typedef struct _CalWin
 {
     GtkAccelGroup *mAccel_group;
@@ -33,6 +35,9 @@ typedef struct _CalWin
     GtkWidget *mMenubar;
     GtkWidget *mFile_menu;
     GtkWidget *mFile_newApp;
+#ifdef ENABLE_SYNC
+    GtkWidget *mFile_refresh;
+#endif
     GtkWidget *mFile_interface;
     GtkWidget *mFile_close;
     GtkWidget *mFile_quit;

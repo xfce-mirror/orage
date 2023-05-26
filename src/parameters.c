@@ -41,8 +41,12 @@
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 
-#include "orage-i18n.h"
+#include "orage-task-runner.h"
+#include "orage-sync-ext-command.h"
+#include "orage-sync-edit-dialog.h"
 #include "orage-rc-file.h"
+#include "orage-i18n.h"
+#include "orage-application.h"
 #include "functions.h"
 #include "ical-code.h"
 #include "timezone_selection.h"
@@ -59,6 +63,24 @@
 #ifndef DEFAULT_SOUND_COMMAND
 #define DEFAULT_SOUND_COMMAND "play"
 #endif
+
+#define ORAGE_WAKEUP_TIMER_PERIOD 60
+
+#define SYNC_SOURCE_COUNT "Sync source count"
+#define SYNC_DESCRIPTION "Sync %02d description"
+#define SYNC_COMMAND "Sync %02d command"
+#define SYNC_PERIOD "Sync %02d period"
+
+static void fill_sync_entries (gpointer data, gpointer user_data);
+static void orage_sync_task_remove (const orage_task_runner_conf *conf);
+static gint orage_sync_task_add (const gchar *description,
+                                 const gchar *command,
+                                 const uint period);
+
+static void orage_sync_task_change (const orage_task_runner_conf *conf,
+                                    const gchar *description,
+                                    const gchar *command,
+                                    const guint period);
 
 static Itf *global_itf = NULL;
 
@@ -117,6 +139,17 @@ static gint get_first_weekday (OrageRc *orc)
     return (first_week_day == -1) ? get_first_weekday_from_locale ()
                                   : first_week_day;
 #endif
+}
+
+static GSList *get_sync_entries_list (void)
+{
+    GSList *list = NULL;
+    guint i;
+
+    for (i = 0; i < (guint)g_par.sync_source_count; i++)
+        list = g_slist_append (list, &g_par.sync_conf[i]);
+
+    return list;
 }
 
 static void dialog_response(GtkWidget *dialog, gint response_id
@@ -531,6 +564,148 @@ static void always_quit_changed (G_GNUC_UNUSED GtkWidget *dialog,
 
     g_par.close_means_quit = gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(itf->always_quit_checkbutton));
+}
+
+static void refresh_sync_entries (Itf *dialog)
+{
+    GSList *list;
+
+    if (dialog->sync_scrolled_window)
+        gtk_widget_destroy (dialog->sync_scrolled_window);
+
+    dialog->sync_entries_list = gtk_grid_new ();
+
+    g_object_set (dialog->sync_entries_list, "hexpand", TRUE,
+                                             "halign", GTK_ALIGN_FILL,
+                                             "vexpand", TRUE,
+                                             "valign", GTK_ALIGN_FILL,
+                                             "margin-top", 10,
+                                             "row-spacing", 5,
+                                             "column-spacing", 5,
+                                             NULL);
+
+    list = get_sync_entries_list ();
+    g_slist_foreach (list, fill_sync_entries, dialog);
+    g_slist_free (list);
+
+    dialog->sync_scrolled_window = gtk_scrolled_window_new (NULL, NULL);
+    gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (dialog->sync_scrolled_window),
+                                    GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
+    gtk_container_add (GTK_CONTAINER (dialog->sync_scrolled_window),
+                       dialog->sync_entries_list);
+    gtk_grid_attach_next_to (GTK_GRID (dialog->sync_vbox),
+                             dialog->sync_scrolled_window,
+                             NULL, GTK_POS_BOTTOM, 1, 1);
+
+    gtk_widget_show_all (dialog->sync_scrolled_window);
+}
+
+/* Show empty dialog->save dialog results->refresh parameters. */
+static void on_sync_add_clicked_cb (G_GNUC_UNUSED GtkButton *b,
+                                    gpointer user_data)
+{
+    const gchar *description;
+    const gchar *command;
+    guint period;
+    gint idx;
+    gint result;
+    OrageSyncEditDialog *dialog;
+    OrageApplication *app;
+
+    dialog = ORAGE_SYNC_EDIT_DIALOG (orage_sync_edit_dialog_new ());
+    result = gtk_dialog_run (GTK_DIALOG (dialog));
+
+    if ((result == GTK_RESPONSE_OK) && orage_sync_edit_dialog_is_changed (dialog))
+    {
+        description = orage_sync_edit_dialog_get_description (dialog);
+        command = orage_sync_edit_dialog_get_command (dialog);
+        period = orage_sync_edit_dialog_get_period (dialog) * 60;
+
+        idx = orage_sync_task_add (description, command, period);
+        if (idx >= 0)
+        {
+            app = ORAGE_APPLICATION (g_application_get_default ());
+            orage_task_runner_add (orage_application_get_sync (app),
+                                   orage_sync_ext_command,
+                                   &g_par.sync_conf[idx]);
+        }
+    }
+
+    gtk_widget_destroy (GTK_WIDGET (dialog));
+    refresh_sync_entries ((Itf *)user_data);
+}
+
+static void on_sync_edit_clicked_cb (G_GNUC_UNUSED GtkButton *b,
+                                     gpointer user_data)
+{
+    gint result;
+    const gchar *description;
+    const gchar *command;
+    guint period;
+    OrageSyncEditDialog *dialog;
+    orage_task_runner_conf *conf = (orage_task_runner_conf *)user_data;
+    OrageApplication *app;
+    OrageTaskRunner *runner;
+
+    g_message ("%s: edit sync task '%s'", G_STRFUNC, conf->description);
+
+    dialog = ORAGE_SYNC_EDIT_DIALOG (
+            orage_sync_edit_dialog_new_with_defaults (conf->description,
+                                                      conf->command,
+                                                      conf->period / 60));
+
+    result = gtk_dialog_run (GTK_DIALOG (dialog));
+    if ((result == GTK_RESPONSE_OK) && orage_sync_edit_dialog_is_changed (dialog))
+    {
+        description = orage_sync_edit_dialog_get_description (dialog);
+        command = orage_sync_edit_dialog_get_command (dialog);
+        period = orage_sync_edit_dialog_get_period (dialog) * 60;
+
+        g_message ("%s:  conf->description='%s'", G_STRFUNC, description);
+        g_message ("%s:  conf->command='%s'", G_STRFUNC, command);
+        g_message ("%s:  conf->period=%d", G_STRFUNC, period);
+
+        app = ORAGE_APPLICATION (g_application_get_default ());
+        runner = orage_application_get_sync (app);
+        orage_task_runner_remove (runner, conf);
+        orage_sync_task_change (conf, description, command, period);
+        orage_task_runner_add (runner, orage_sync_ext_command, conf);
+    }
+
+    gtk_widget_destroy (GTK_WIDGET (dialog));
+}
+
+static void on_sync_remove_clicked_remove_cb (G_GNUC_UNUSED GtkButton *b,
+                                              gpointer user_data)
+{
+    orage_task_runner_conf *conf = (orage_task_runner_conf *)user_data;
+    OrageApplication *app;
+    gint result;
+
+    g_message ("%s: removing sync task %s", G_STRFUNC, conf->description);
+
+    result = orage_warning_dialog (NULL,
+                                   _("Remove selected synchronization task."),
+                                   _("Do you want to continue?"),
+                                   _("No, cancel the removal"),
+                                   _("Yes, remove"));
+
+    if (result == GTK_RESPONSE_YES)
+    {
+        /* As orage_sync_task_remove reorder configuration in global
+         * parameters list, then orage_task_runner_remove should be always
+         * before orage_sync_task_remove.
+         */
+        app = ORAGE_APPLICATION (g_application_get_default ());
+        orage_task_runner_remove (orage_application_get_sync (app), conf);
+        orage_sync_task_remove (conf);
+    }
+}
+
+static void on_clicked_refresh_cb (G_GNUC_UNUSED GtkButton *b,
+                                   gpointer user_data)
+{
+    refresh_sync_entries ((Itf *)user_data);
 }
 
 static void create_parameter_dialog_main_setup_tab(Itf *dialog)
@@ -1176,11 +1351,81 @@ static void create_parameter_dialog_extra_setup_tab(Itf *dialog)
             , G_CALLBACK(always_quit_changed), dialog);
 }
 
+static void fill_sync_entries (gpointer conf_p, gpointer dialog_p)
+{
+    orage_task_runner_conf *conf = (orage_task_runner_conf *)conf_p;
+    Itf *dialog = (Itf *)dialog_p;
+    GtkGrid *list_grid = GTK_GRID (dialog->sync_entries_list);
+    GtkWidget *grid;
+    GtkWidget *description;
+    GtkWidget *edit_button;
+    GtkWidget *remove_button;
+
+    description = gtk_label_new (conf->description);
+    g_object_set (description, "hexpand", TRUE,
+                               "halign", GTK_ALIGN_START,
+                               NULL);
+    gtk_label_set_ellipsize (GTK_LABEL (description), PANGO_ELLIPSIZE_END);
+    edit_button = gtk_button_new_from_icon_name ("document-open", GTK_ICON_SIZE_BUTTON);
+    remove_button = gtk_button_new_from_icon_name ("list-remove", GTK_ICON_SIZE_BUTTON);
+
+    grid = gtk_grid_new ();
+    gtk_grid_attach_next_to (GTK_GRID (grid), description, NULL, GTK_POS_RIGHT, 1, 1);
+    gtk_grid_attach_next_to (GTK_GRID (grid), edit_button, description, GTK_POS_RIGHT, 1, 1);
+    gtk_grid_attach_next_to (GTK_GRID (grid), remove_button, edit_button, GTK_POS_RIGHT, 1, 1);
+
+    gtk_grid_attach_next_to (list_grid, grid, NULL, GTK_POS_BOTTOM, 1, 1);
+
+    g_signal_connect (edit_button, "clicked",
+                      G_CALLBACK (on_sync_edit_clicked_cb), conf_p);
+    g_signal_connect_after (edit_button, "clicked",
+                            G_CALLBACK (on_clicked_refresh_cb), dialog_p);
+
+    g_signal_connect (remove_button, "clicked",
+                      G_CALLBACK (on_sync_remove_clicked_remove_cb), conf_p);
+    g_signal_connect_after (remove_button, "clicked",
+                            G_CALLBACK (on_clicked_refresh_cb), dialog_p);
+}
+
+static void create_parameter_dialog_sync_tab (Itf *dialog)
+{
+    GtkWidget *new_button;
+    GtkWidget *vbox;
+
+    dialog->sync_vbox = gtk_grid_new ();
+    dialog->sync_tab = orage_create_framebox_with_content (
+            NULL, GTK_SHADOW_NONE,  dialog->sync_vbox);
+    g_object_set (dialog->sync_vbox, "row-spacing", 10,
+                                     "margin-top", 10, NULL);
+
+    dialog->sync_tab_label = gtk_label_new (_("Synchronization settings"));
+    gtk_notebook_append_page (GTK_NOTEBOOK (dialog->notebook),
+                              dialog->sync_tab, dialog->sync_tab_label);
+
+    vbox = gtk_grid_new ();
+    dialog->sync_sources_frame = orage_create_framebox_with_content(
+            _("Synchronization sources"), GTK_SHADOW_NONE, vbox);
+
+    gtk_grid_attach_next_to (GTK_GRID (dialog->sync_vbox),
+                             dialog->sync_sources_frame, NULL, GTK_POS_BOTTOM,
+                             1, 1);
+
+    new_button = orage_util_image_button ("list-add", _("_Add"));
+    gtk_widget_set_halign (new_button, GTK_ALIGN_END);
+    gtk_grid_attach_next_to (GTK_GRID (vbox), new_button, NULL,
+                             GTK_POS_TOP, 1, 1);
+
+    refresh_sync_entries (dialog);
+
+    g_signal_connect (new_button, "clicked",
+                      G_CALLBACK (on_sync_add_clicked_cb), dialog);
+}
+
 static Itf *create_parameter_dialog(void)
 {
     Itf *dialog;
 
-    dialog = g_new(Itf, 1);
+    dialog = g_new0 (Itf, 1);
 
     dialog->orage_dialog = gtk_dialog_new();
     gtk_window_set_default_size(GTK_WINDOW(dialog->orage_dialog), 300, 350);
@@ -1202,6 +1447,7 @@ static Itf *create_parameter_dialog(void)
     create_parameter_dialog_main_setup_tab(dialog);
     create_parameter_dialog_calendar_setup_tab(dialog);
     create_parameter_dialog_extra_setup_tab(dialog);
+    create_parameter_dialog_sync_tab (dialog);
 
     /* the rest */
     dialog->help_button = orage_util_image_button ("help-browser", _("_Help"));
@@ -1218,6 +1464,97 @@ static Itf *create_parameter_dialog(void)
     gtk_widget_show_all(dialog->orage_dialog);
 
     return(dialog);
+}
+
+/** Remove task from configuration and reorder configuration structures.
+ *  @param conf pointer to configuration that will be removed
+ */
+static void orage_sync_task_remove (const orage_task_runner_conf *conf)
+{
+    gboolean found = FALSE;
+    gint i;
+
+    for (i = 0; i < g_par.sync_source_count; i++)
+    {
+        if (&g_par.sync_conf[i] == conf)
+        {
+            found = TRUE;
+            break;
+        }
+    }
+
+    if (found == FALSE)
+        return;
+
+    g_free (g_par.sync_conf[i].description);
+    g_free (g_par.sync_conf[i].command);
+    g_par.sync_source_count--;
+
+    for (; i < g_par.sync_source_count; i++)
+    {
+        g_par.sync_conf[i].description = g_par.sync_conf[i + 1].description;
+        g_par.sync_conf[i].command = g_par.sync_conf[i + 1].command;
+        g_par.sync_conf[i].period = g_par.sync_conf[i + 1].period;
+    }
+
+    g_par.sync_conf[i].description = NULL;
+    g_par.sync_conf[i].command = NULL;
+    g_par.sync_conf[i].period = 0;
+
+    write_parameters ();
+}
+
+static gint orage_sync_task_add (const gchar *description,
+                                 const gchar *command,
+                                 const guint period)
+{
+    guint idx;
+    g_debug ("%s: description='%s'", G_STRFUNC, description);
+    g_debug ("%s: command='%s'", G_STRFUNC, command);
+    g_debug ("%s: period=%u", G_STRFUNC, period);
+
+    if (g_par.sync_source_count >= NUMBER_OF_SYNC_SOURCES)
+    {
+        g_info ("sync sources limit reached");
+        return -1;
+    }
+
+    idx = g_par.sync_source_count;
+    g_par.sync_conf[idx].description = g_strdup (description);
+    g_par.sync_conf[idx].command = g_strdup (command);
+    g_par.sync_conf[idx].period = period;
+    g_par.sync_source_count++;
+
+    write_parameters ();
+
+    return idx;
+}
+
+static void orage_sync_task_change (const orage_task_runner_conf *conf,
+                                    const gchar *description,
+                                    const gchar *command,
+                                    const guint period)
+{
+    gint i;
+
+    for (i = 0; i < g_par.sync_source_count; i++)
+    {
+        if (&g_par.sync_conf[i] == conf)
+        {
+            if (g_par.sync_conf[i].description)
+                g_free (g_par.sync_conf[i].description);
+
+            if (g_par.sync_conf[i].command)
+                g_free (g_par.sync_conf[i].command);
+
+            g_par.sync_conf[i].description = g_strdup (description);
+            g_par.sync_conf[i].command = g_strdup (command);
+            g_par.sync_conf[i].period = period;
+
+            write_parameters ();
+            return;
+        }
+    }
 }
 
 static OrageRc *orage_parameters_file_open(gboolean read_only)
@@ -1316,7 +1653,7 @@ static void init_default_timezone(void)
     }
 }
 
-void read_parameters(void)
+void read_parameters (void)
 {
     gchar *fpath;
     OrageRc *orc;
@@ -1397,6 +1734,19 @@ void read_parameters(void)
     g_par.use_wakeup_timer = orage_rc_get_bool(orc, "Use wakeup timer", TRUE);
     g_par.close_means_quit = orage_rc_get_bool(orc, "Always quit", FALSE);
     g_par.file_close_delay = orage_rc_get_int(orc, "File close delay", 600);
+
+    g_par.sync_source_count = orage_rc_get_int (orc, SYNC_SOURCE_COUNT, 0);
+    for (i = 0; i < g_par.sync_source_count; i++)
+    {
+        g_snprintf (f_par, sizeof (f_par), SYNC_DESCRIPTION, i);
+        g_par.sync_conf[i].description = orage_rc_get_str (orc, f_par, "");
+
+        g_snprintf (f_par, sizeof (f_par), SYNC_COMMAND, i);
+        g_par.sync_conf[i].command = orage_rc_get_str (orc, f_par, "");
+
+        g_snprintf (f_par, sizeof (f_par), SYNC_PERIOD, i);
+        g_par.sync_conf[i].period = orage_rc_get_int (orc, f_par, 0);
+    }
 
     orage_rc_file_close(orc);
 }
@@ -1494,6 +1844,35 @@ void write_parameters(void)
     orage_rc_put_bool(orc, "Use wakeup timer", g_par.use_wakeup_timer);
     orage_rc_put_bool(orc, "Always quit", g_par.close_means_quit);
     orage_rc_put_int(orc, "File close delay", g_par.file_close_delay);
+
+    orage_rc_put_int (orc, SYNC_SOURCE_COUNT, g_par.sync_source_count);
+
+    for (i = 0; i < g_par.sync_source_count; i++)
+    {
+        g_snprintf (f_par, sizeof (f_par), SYNC_DESCRIPTION, i);
+        orage_rc_put_str (orc, f_par, g_par.sync_conf[i].description);
+
+        g_snprintf (f_par, sizeof (f_par), SYNC_COMMAND, i);
+        orage_rc_put_str (orc, f_par, g_par.sync_conf[i].command);
+
+        g_snprintf (f_par, sizeof (f_par), SYNC_PERIOD, i);
+        orage_rc_put_int (orc, f_par, g_par.sync_conf[i].period);
+    }
+
+    for (i = g_par.sync_source_count; i < 10; i++)
+    {
+        g_snprintf (f_par, sizeof (f_par), SYNC_DESCRIPTION, i);
+        if (!orage_rc_exists_item (orc, f_par))
+            break;
+
+        orage_rc_del_item (orc, f_par);
+
+        g_snprintf (f_par, sizeof (f_par), SYNC_COMMAND, i);
+        orage_rc_del_item (orc, f_par);
+
+        g_snprintf (f_par, sizeof (f_par), SYNC_PERIOD, i);
+        orage_rc_del_item (orc, f_par);
+    }
 
     orage_rc_file_close(orc);
 }

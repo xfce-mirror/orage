@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2022-2023 Erkki Moorits
+ * Copyright (c) 2021-2023 Erkki Moorits
+ * Copyright (c) 2008-2011 Juha Kautto  (juha at xfce.org)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,20 +19,12 @@
  *     Boston, MA 02110-1301 USA
  */
 
-#ifndef ORAGE_APPLICATION_H
-#define ORAGE_APPLICATION_H 1
+#ifndef TIMEZONE_NAMES_H
+#define TIMEZONE_NAMES_H 1
 
-#include "orage-task-runner.h"
-#include <gtk/gtk.h>
+#include <glib.h>
 
-G_BEGIN_DECLS
-
-#define ORAGE_APPLICATION_TYPE (orage_application_get_type ())
-G_DECLARE_FINAL_TYPE (OrageApplication, orage_application, ORAGE, APPLICATION, GtkApplication)
-
-OrageApplication *orage_application_new (void);
-OrageTaskRunner *orage_application_get_sync (OrageApplication *application);
-
-G_END_DECLS
+/* in timezone_names.c */
+extern const gchar *trans_timezone[];
 
 #endif

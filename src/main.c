@@ -33,14 +33,13 @@
 #include <gdk/gdk.h>
 #include <gio/gio.h>
 
-#define ORAGE_MAIN "orage"
-
 #include "functions.h"
 #include "mainbox.h"
 #include "parameters.h"
 
 #include "orage-application.h"
 
+global_parameters g_par;
 static OrageApplication *orage_app;
 
 static void raise_window (void)

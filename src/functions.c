@@ -214,12 +214,14 @@ static void child_watch_cb (GPid pid, G_GNUC_UNUSED gint status, gpointer data)
 
 gboolean orage_exec(const gchar *cmd, gboolean *cmd_active, GError **error)
 {
-    char **argv;
+    gchar **argv;
     gboolean success;
     int spawn_flags = G_SPAWN_SEARCH_PATH;
     GPid pid;
 
-    if (!g_shell_parse_argv(cmd, NULL, &argv, error))
+    g_return_val_if_fail (cmd != NULL, FALSE);
+
+    if (G_UNLIKELY (!g_shell_parse_argv(cmd, NULL, &argv, error)))
         return(FALSE);
 
     if (cmd_active) {
