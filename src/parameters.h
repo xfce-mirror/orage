@@ -22,11 +22,15 @@
 #ifndef __ORAGE_PARAMETERS_H__
 #define __ORAGE_PARAMETERS_H__
 
+#include "orage-task-runner.h"
+#include <glib.h>
+#include <time.h>
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
 
-#define ORAGE_WAKEUP_TIMER_PERIOD 60
+#define NUMBER_OF_SYNC_SOURCES 10
 
 typedef struct _foreign_file
 {
@@ -35,7 +39,6 @@ typedef struct _foreign_file
     time_t latest_file_change;
     char *name;
 } foreign_file;
-
 
 typedef struct _parameters
 {
@@ -70,12 +73,12 @@ typedef struct _parameters
     char *archive_file;
 
     /* foreign files */
-    int foreign_count;
+    gint foreign_count;
     foreign_file foreign_data[10];
     gboolean use_foreign_display_alarm_notify; /* changes alarm to notify */
 
     /* other */
-    char *orage_file;
+    gchar *orage_file;
     time_t latest_file_change;
     char *sound_application;
 
@@ -127,17 +130,24 @@ typedef struct _parameters
 
     /* delayed close length in seconds. 0 = close immediately */
     gint file_close_delay;
+
+    /** Number of sync sources. */
+    gint sync_source_count;
+
+    /** Sync configurations. */
+    orage_task_runner_conf sync_conf[NUMBER_OF_SYNC_SOURCES];
 } global_parameters; /* global parameters */
 
-#ifdef ORAGE_MAIN
-global_parameters g_par; /* real, static global parameters. Only in main !!! */
-#else
-extern global_parameters g_par; /* refer to existing global parameters */
-#endif
+extern global_parameters g_par;
 
 void show_parameters(void);
 void write_parameters(void);
-void read_parameters(void);
+
+/** Read parameters from config file.
+ *  @param appl parent application
+ */
+void read_parameters (void);
+
 void set_parameters(void);
 
 #endif /* !__ORAGE_PARAMETERS_H__ */

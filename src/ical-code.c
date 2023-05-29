@@ -55,8 +55,6 @@
 #include <libical/ical.h>
 #include <libical/icalss.h>
 
-#define ICAL_MAIN
-
 #include "orage-alarm-structure.h"
 #include "orage-i18n.h"
 #include "functions.h"
@@ -69,6 +67,17 @@
 #include "parameters.h"
 #include "interface.h"
 #include "xfical_exception.h"
+
+#define XFICAL_UID_LEN 200
+
+icalset *ic_fical = NULL;
+icalcomponent *ic_ical = NULL;
+#ifdef HAVE_ARCHIVE
+icalset *ic_afical = NULL;
+icalcomponent *ic_aical = NULL;
+#endif
+gboolean ic_file_modified = FALSE; /* has any ical file been changed */
+ic_foreign_ical_files ic_f_ical[10];
 
 static void xfical_alarm_build_list_internal(gboolean first_list_today);
 
@@ -102,9 +111,6 @@ typedef struct _excluded_time
 /* timezone handling */
 static icaltimezone *utc_icaltimezone = NULL;
 static icaltimezone *local_icaltimezone = NULL;
-
-/* in timezone_names.c */
-extern const gchar *trans_timezone[];
 
 static struct icaltimetype icaltimetype_from_gdatetime (GDateTime *gdt,
                                                         const gboolean date_only)
@@ -726,19 +732,22 @@ xfical_appt *xfical_appt_alloc(void)
 
 char *ic_generate_uid(void)
 {
-    gchar xf_host[XFICAL_UID_LEN/2+1];
+    gchar xf_host[XFICAL_UID_LEN / 2 + 1];
     gchar *xf_uid;
-    static int seq = 0;
+    static guint seq = 0;
     struct icaltimetype dtstamp;
 
-    xf_uid = g_new(char, XFICAL_UID_LEN+1);
-    dtstamp = icaltime_current_time_with_zone(utc_icaltimezone);
-    gethostname(xf_host, XFICAL_UID_LEN/2);
-    xf_host[XFICAL_UID_LEN/2] = '\0';
-    g_snprintf(xf_uid, XFICAL_UID_LEN, "Orage-%s%d-%lu@%s"
-            , icaltime_as_ical_string(dtstamp), seq, (long) getuid(), xf_host);
+    xf_uid = g_new (gchar, XFICAL_UID_LEN);
+    dtstamp = icaltime_current_time_with_zone (utc_icaltimezone);
+    gethostname (xf_host, XFICAL_UID_LEN / 2);
+    xf_host[XFICAL_UID_LEN / 2] = '\0';
+    g_snprintf (xf_uid, XFICAL_UID_LEN, "Orage-%s%u-%lu@%s",
+                icaltime_as_ical_string (dtstamp), seq, (long)getuid (),
+                xf_host);
+
     if (++seq > 999)
         seq = 0;
+
     return(xf_uid);
 }
 
@@ -1846,6 +1855,11 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
 
                     break;
                 }
+                if (g_str_has_prefix (text, "X-GOOGLE-CONFERENCE"))
+                {
+                    /* Ignore, Orage does not support this now. */
+                    break;
+                }
                 g_warning ("%s: unknown X property %s", G_STRFUNC, text);
                 break; /* ICAL_X_PROPERTY: */
             case ICAL_PRIORITY_PROPERTY:
@@ -1906,6 +1920,10 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
             case ICAL_CREATED_PROPERTY:
             case ICAL_LASTMODIFIED_PROPERTY:
             case ICAL_SEQUENCE_PROPERTY:
+            case ICAL_ORGANIZER_PROPERTY:
+            case ICAL_STATUS_PROPERTY:
+            case ICAL_ATTENDEE_PROPERTY:
+            case ICAL_RECURRENCEID_PROPERTY:
                 break;
             default:
                 g_message ("%s: unknown property %s", G_STRFUNC,
