@@ -1360,11 +1360,11 @@ msgstr "Aggiungi un file esterno"
 
 #: ../src/orage-application.c:607
 msgid "Remove a foreign file"
-msgstr ""
+msgstr "Rimuovi un file esterno"
 
 #: ../src/orage-application.c:616
 msgid "Import appointments from file to Orage"
-msgstr ""
+msgstr "Importa appuntamenti da un file a Orage"
 
 #: ../src/orage-application.c:625
 msgid "Export appointments from Orage to file"
@@ -1372,15 +1372,15 @@ msgstr "Esporta appuntamenti da Orage a file"
 
 #: ../src/orage-sync-edit-dialog.c:132
 msgid "Description:"
-msgstr ""
+msgstr "Descrizione:"
 
 #: ../src/orage-sync-edit-dialog.c:134
 msgid "Command:"
-msgstr ""
+msgstr "Comando:"
 
 #: ../src/orage-sync-edit-dialog.c:136
 msgid "Period:"
-msgstr ""
+msgstr "Periodo:"
 
 #: ../src/orage-sync-edit-dialog.c:138
 msgid "minutes"
@@ -1388,15 +1388,15 @@ msgstr "minuti"
 
 #: ../src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task"
-msgstr ""
+msgstr "Il nome o la descrizione di questa attività di sincronizzazione"
 
 #: ../src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization"
-msgstr ""
+msgstr "Comando per la sincronizzazione"
 
 #: ../src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes"
-msgstr ""
+msgstr "Periodo di sincronizzazione in minuti"
 
 #: ../src/orage-sync-edit-dialog.c:166 ../src/parameters.c:1456
 #: ../src/reminder.c:642
@@ -1405,11 +1405,11 @@ msgstr "_Chiudi"
 
 #: ../src/parameters.c:688
 msgid "Remove selected synchronization task."
-msgstr ""
+msgstr "Rimuove le attività di sincronizzazione selezionate."
 
 #: ../src/parameters.c:691
 msgid "Yes, remove"
-msgstr ""
+msgstr "Sì, rimuovi"
 
 #: ../src/parameters.c:724
 msgid "Main settings"
@@ -1635,11 +1635,11 @@ msgstr ""
 
 #: ../src/parameters.c:1401
 msgid "Synchronization settings"
-msgstr ""
+msgstr "Impostazioni di sincronizzazione"
 
 #: ../src/parameters.c:1407
 msgid "Synchronization sources"
-msgstr ""
+msgstr "Fonti di sincronizzazione"
 
 #: ../src/parameters.c:1433
 msgid "Orage Preferences"
