@@ -1345,11 +1345,11 @@ msgstr "Добавяне на външен файл"
 
 #: ../src/orage-application.c:607
 msgid "Remove a foreign file"
-msgstr ""
+msgstr "Премахване на чуждия файл"
 
 #: ../src/orage-application.c:616
 msgid "Import appointments from file to Orage"
-msgstr ""
+msgstr "Импортиране на събития от файл в Orage"
 
 #: ../src/orage-application.c:625
 msgid "Export appointments from Orage to file"
@@ -1357,15 +1357,15 @@ msgstr "Експортиране на срещите от Orage във файл"
 
 #: ../src/orage-sync-edit-dialog.c:132
 msgid "Description:"
-msgstr ""
+msgstr "Описание:"
 
 #: ../src/orage-sync-edit-dialog.c:134
 msgid "Command:"
-msgstr ""
+msgstr "Команда:"
 
 #: ../src/orage-sync-edit-dialog.c:136
 msgid "Period:"
-msgstr ""
+msgstr "Период:"
 
 #: ../src/orage-sync-edit-dialog.c:138
 msgid "minutes"
@@ -1373,15 +1373,15 @@ msgstr "минути"
 
 #: ../src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task"
-msgstr ""
+msgstr "Името или описанието на тази задача за синхронизиране"
 
 #: ../src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization"
-msgstr ""
+msgstr "Команда за синхронизиране"
 
 #: ../src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes"
-msgstr ""
+msgstr "Период на синхронизиране в минути"
 
 #: ../src/orage-sync-edit-dialog.c:166 ../src/parameters.c:1456
 #: ../src/reminder.c:642
@@ -1390,11 +1390,11 @@ msgstr "_Затваряне"
 
 #: ../src/parameters.c:688
 msgid "Remove selected synchronization task."
-msgstr ""
+msgstr "Премахване на избраната задача за синхронизиране."
 
 #: ../src/parameters.c:691
 msgid "Yes, remove"
-msgstr ""
+msgstr "Да, премахване"
 
 #: ../src/parameters.c:724
 msgid "Main settings"
@@ -1620,11 +1620,11 @@ msgstr ""
 
 #: ../src/parameters.c:1401
 msgid "Synchronization settings"
-msgstr ""
+msgstr "Настройки на синхронизацията"
 
 #: ../src/parameters.c:1407
 msgid "Synchronization sources"
-msgstr ""
+msgstr "Източници за синхронизация"
 
 #: ../src/parameters.c:1433
 msgid "Orage Preferences"
