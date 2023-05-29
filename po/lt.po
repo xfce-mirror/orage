@@ -1348,11 +1348,11 @@ msgstr "Pridėti svetimą failą"
 
 #: ../src/orage-application.c:607
 msgid "Remove a foreign file"
-msgstr ""
+msgstr "Šalinti svetimą failą"
 
 #: ../src/orage-application.c:616
 msgid "Import appointments from file to Orage"
-msgstr ""
+msgstr "Importuoti paskyrimus iš failo į Orage"
 
 #: ../src/orage-application.c:625
 msgid "Export appointments from Orage to file"
@@ -1360,15 +1360,15 @@ msgstr "Eksportuoti paskyrimus iš Orage į failą"
 
 #: ../src/orage-sync-edit-dialog.c:132
 msgid "Description:"
-msgstr ""
+msgstr "Aprašas:"
 
 #: ../src/orage-sync-edit-dialog.c:134
 msgid "Command:"
-msgstr ""
+msgstr "Komanda:"
 
 #: ../src/orage-sync-edit-dialog.c:136
 msgid "Period:"
-msgstr ""
+msgstr "Laikotarpis:"
 
 #: ../src/orage-sync-edit-dialog.c:138
 msgid "minutes"
@@ -1376,15 +1376,15 @@ msgstr "min."
 
 #: ../src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task"
-msgstr ""
+msgstr "Šios sinchronizavimo užduoties pavadinimas ar aprašas"
 
 #: ../src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization"
-msgstr ""
+msgstr "Sinchronizavimo komanda"
 
 #: ../src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes"
-msgstr ""
+msgstr "Sinchronizavimo laikotarpis, minutėmis"
 
 #: ../src/orage-sync-edit-dialog.c:166 ../src/parameters.c:1456
 #: ../src/reminder.c:642
@@ -1393,11 +1393,11 @@ msgstr "_Užverti"
 
 #: ../src/parameters.c:688
 msgid "Remove selected synchronization task."
-msgstr ""
+msgstr "Šalinti pasirinktą sinchronizavimo užduotį."
 
 #: ../src/parameters.c:691
 msgid "Yes, remove"
-msgstr ""
+msgstr "Taip, šalinti"
 
 #: ../src/parameters.c:724
 msgid "Main settings"
@@ -1619,11 +1619,11 @@ msgstr ""
 
 #: ../src/parameters.c:1401
 msgid "Synchronization settings"
-msgstr ""
+msgstr "Sinchronizavimo nustatymai"
 
 #: ../src/parameters.c:1407
 msgid "Synchronization sources"
-msgstr ""
+msgstr "Sinchronizavimo šaltiniai"
 
 #: ../src/parameters.c:1433
 msgid "Orage Preferences"
