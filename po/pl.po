@@ -30,7 +30,7 @@ msgstr ""
 #. end time
 #: ../src/appointment.c:323 ../src/appointment.c:363 ../src/appointment.c:2959
 msgid "End"
-msgstr "Koniec:"
+msgstr "Koniec"
 
 #: ../src/appointment.c:343
 msgid "Due"
@@ -45,7 +45,7 @@ msgstr "Orage"
 #. Create file chooser
 #: ../src/appointment.c:697 ../src/interface.c:261 ../src/parameters.c:432
 msgid "Select a file..."
-msgstr "Wybór pliku"
+msgstr "Wybór pliku..."
 
 #: ../src/appointment.c:705
 msgid "Sound Files"
@@ -62,7 +62,7 @@ msgstr "Informacje o spotkaniu zostały zmodyfikowane."
 #: ../src/appointment.c:764 ../src/appointment.c:1306 ../src/event-list.c:999
 #: ../src/parameters.c:689
 msgid "Do you want to continue?"
-msgstr "Kontynuować?"
+msgstr "Czy chcesz kontynuować?"
 
 #: ../src/appointment.c:765
 msgid "No, do not leave"
@@ -273,7 +273,7 @@ msgstr "Nazwa"
 #: ../src/appointment.c:2930 ../src/timezone_selection.c:234
 #: ../src/timezone_selection.c:239
 msgid "Location"
-msgstr "Lokalizacja:"
+msgstr "Lokalizacja"
 
 #: ../src/appointment.c:2938
 msgid "All day event"
@@ -282,7 +282,7 @@ msgstr "Wydarzenie całodniowe"
 #. start time
 #: ../src/appointment.c:2944 ../src/appointment.c:3675 ../src/day-view.c:830
 msgid "Start"
-msgstr "Początek:"
+msgstr "Początek"
 
 #: ../src/appointment.c:2962
 msgid "Set"
@@ -307,12 +307,12 @@ msgstr "minut"
 #. Availability (only for EVENT)
 #: ../src/appointment.c:3006
 msgid "Availability"
-msgstr "Dostępność:"
+msgstr "Dostępność"
 
 #. completed (only for TODO)
 #: ../src/appointment.c:3014 ../src/appointment.c:3684
 msgid "Completed"
-msgstr "Stan:"
+msgstr "Ukończono"
 
 #: ../src/appointment.c:3017
 msgid "Done"
@@ -321,7 +321,7 @@ msgstr "Wykonano"
 #. categories
 #: ../src/appointment.c:3042
 msgid "Categories"
-msgstr "Kategoria:"
+msgstr "Kategoria"
 
 #: ../src/appointment.c:3060
 msgid ""
@@ -335,12 +335,12 @@ msgstr "_Kolor"
 
 #: ../src/appointment.c:3066
 msgid "update colors for categories."
-msgstr "Przypisuje kategoriom kolory"
+msgstr "Przypisuje kategoriom kolory."
 
 #. priority
 #: ../src/appointment.c:3072
 msgid "Priority"
-msgstr "Priorytet:"
+msgstr "Priorytet"
 
 #: ../src/appointment.c:3076
 msgid ""
@@ -357,7 +357,7 @@ msgstr ""
 #. note
 #: ../src/appointment.c:3085
 msgid "Note"
-msgstr "Opis:"
+msgstr "Opis"
 
 #: ../src/appointment.c:3106
 msgid ""
@@ -402,7 +402,7 @@ msgstr "Alarm"
 #. **** ALARM TIME ****
 #: ../src/appointment.c:3195
 msgid "Alarm time"
-msgstr "Czas alarmu:"
+msgstr "Czas alarmu"
 
 #: ../src/appointment.c:3220
 msgid ""
@@ -431,7 +431,7 @@ msgstr ""
 
 #: ../src/appointment.c:3240
 msgid "Sound"
-msgstr "Dźwięk:"
+msgstr "Dźwięk"
 
 #: ../src/appointment.c:3244 ../src/appointment.c:3388
 msgid "Use"
@@ -466,7 +466,7 @@ msgstr "Interwał"
 #. **** Display Alarm ****
 #: ../src/appointment.c:3324
 msgid "Visual"
-msgstr "Wyświetlanie:"
+msgstr "Wyświetlanie"
 
 #: ../src/appointment.c:3328
 msgid "Use Orage window"
@@ -503,7 +503,7 @@ msgstr "sekund"
 #. **** Procedure Alarm ****
 #: ../src/appointment.c:3384
 msgid "Procedure"
-msgstr "Procedura:"
+msgstr "Procedura"
 
 #: ../src/appointment.c:3390
 msgid "Select this if you want procedure or script alarm"
@@ -539,7 +539,7 @@ msgstr "Testuje alarm"
 
 #: ../src/appointment.c:3429
 msgid "<b>Default alarm</b>"
-msgstr "<b>Domyślny alarm:</b>"
+msgstr "<b>Domyślny alarm</b>"
 
 #: ../src/appointment.c:3435 ../src/interface.c:1057 ../src/interface.c:1103
 #: ../src/interface.c:1277 ../src/interface.c:1369
@@ -617,7 +617,7 @@ msgstr "Rekurencja"
 #. complexity
 #: ../src/appointment.c:3532
 msgid "Complexity"
-msgstr "Złożoność:"
+msgstr "Złożoność"
 
 #: ../src/appointment.c:3535
 msgid "Basic"
@@ -643,7 +643,7 @@ msgstr ""
 #. frequency
 #: ../src/appointment.c:3556
 msgid "Frequency"
-msgstr "Częstotliwość:"
+msgstr "Częstotliwość"
 
 #: ../src/appointment.c:3563
 msgid "Each"
@@ -665,7 +665,7 @@ msgstr ""
 
 #: ../src/appointment.c:3588
 msgid "Limit"
-msgstr "Limit:"
+msgstr "Limit"
 
 #: ../src/appointment.c:3590
 msgid "Repeat forever"
@@ -682,11 +682,11 @@ msgstr "Powtarzanie do "
 #. weekdays (only for complex settings)
 #: ../src/appointment.c:3637
 msgid "Weekdays"
-msgstr "Dni tygodnia:"
+msgstr "Dni tygodnia"
 
 #: ../src/appointment.c:3654
 msgid "Which day"
-msgstr "Wystąpienia:"
+msgstr "Wystąpienia"
 
 #: ../src/appointment.c:3665
 msgid ""
@@ -726,7 +726,7 @@ msgstr ""
 #. exceptions
 #: ../src/appointment.c:3699
 msgid "Exceptions"
-msgstr "Wyjątki:"
+msgstr "Wyjątki"
 
 #: ../src/appointment.c:3725
 msgid ""
@@ -902,7 +902,7 @@ msgstr "Wyszukiwanie"
 
 #: ../src/event-list.c:1365
 msgid "Search text "
-msgstr "Tekst:"
+msgstr "Tekst"
 
 #: ../src/event-list.c:1431
 msgid "Flags"
@@ -1343,11 +1343,11 @@ msgstr "Dodaj plik zewnętrzny"
 
 #: ../src/orage-application.c:607
 msgid "Remove a foreign file"
-msgstr ""
+msgstr "Usuń plik zewnętrzny"
 
 #: ../src/orage-application.c:616
 msgid "Import appointments from file to Orage"
-msgstr ""
+msgstr "Importuj spotkania z pliku do Orage"
 
 #: ../src/orage-application.c:625
 msgid "Export appointments from Orage to file"
@@ -1355,15 +1355,15 @@ msgstr "Eksportuj spotkania z Orage do pliku"
 
 #: ../src/orage-sync-edit-dialog.c:132
 msgid "Description:"
-msgstr ""
+msgstr "Opis:"
 
 #: ../src/orage-sync-edit-dialog.c:134
 msgid "Command:"
-msgstr ""
+msgstr "Polecenie:"
 
 #: ../src/orage-sync-edit-dialog.c:136
 msgid "Period:"
-msgstr ""
+msgstr "Okres:"
 
 #: ../src/orage-sync-edit-dialog.c:138
 msgid "minutes"
@@ -1371,15 +1371,15 @@ msgstr "minut"
 
 #: ../src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task"
-msgstr ""
+msgstr "Nazwa lub opis tego zadania synchronizacji"
 
 #: ../src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization"
-msgstr ""
+msgstr "Polecenie synchronizacji"
 
 #: ../src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes"
-msgstr ""
+msgstr "Okres synchronizacji w minutach"
 
 #: ../src/orage-sync-edit-dialog.c:166 ../src/parameters.c:1456
 #: ../src/reminder.c:642
@@ -1388,11 +1388,11 @@ msgstr "Za_mknij"
 
 #: ../src/parameters.c:688
 msgid "Remove selected synchronization task."
-msgstr ""
+msgstr "Usuń wybrane zadanie synchronizacji."
 
 #: ../src/parameters.c:691
 msgid "Yes, remove"
-msgstr ""
+msgstr "Tak, usuń"
 
 #: ../src/parameters.c:724
 msgid "Main settings"
@@ -1618,11 +1618,11 @@ msgstr ""
 
 #: ../src/parameters.c:1401
 msgid "Synchronization settings"
-msgstr ""
+msgstr "Ustawienia synchronizacji"
 
 #: ../src/parameters.c:1407
 msgid "Synchronization sources"
-msgstr ""
+msgstr "Źródła synchronizacji"
 
 #: ../src/parameters.c:1433
 msgid "Orage Preferences"
@@ -3020,7 +3020,7 @@ msgstr "Atlantyk/Wyspy_Owcze"
 
 #: ../src/timezone_names.c:366
 msgid "Atlantic/Faroe"
-msgstr "Atlantic/Faroe"
+msgstr "Atlantyk/Faroe"
 
 #: ../src/timezone_names.c:367
 msgid "Atlantic/Jan_Mayen"
@@ -3628,15 +3628,15 @@ msgstr "Bliski_Wschód"
 
 #: ../src/timezone_names.c:518
 msgid "Mideast/Riyadh87"
-msgstr "Mideast/Riyadh87"
+msgstr "Bliski_Wschód/Rijad87"
 
 #: ../src/timezone_names.c:519
 msgid "Mideast/Riyadh88"
-msgstr "Mideast/Riyadh88"
+msgstr "Bliski_Wschód/Rijad88"
 
 #: ../src/timezone_names.c:520
 msgid "Mideast/Riyadh89"
-msgstr "Mideast/Riyadh89"
+msgstr "Bliski_Wschód/Rijad89"
 
 #: ../src/timezone_names.c:521
 msgid "Pacific"
@@ -4008,7 +4008,7 @@ msgstr "Preferencje Orage"
 
 #: ../plugin/org.xfce.orage-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Calendar Application (Orage)"
-msgstr "Konfiguruje ustawienia kalendarza Orange"
+msgstr "Konfiguruje ustawienia kalendarza Xfce 4 (Orange)"
 
 #: ../plugin/org.xfce.orage-settings.desktop.in.h:3
 msgid "Orage Calendar Preferences"
