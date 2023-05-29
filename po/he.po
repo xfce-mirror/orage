@@ -6,7 +6,7 @@
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2022
 # gk <genghiskhan@gmx.ca>, 2022
-# עומר א״ש <omeritzicschwartz@gmail.com>, 2022
+# 63f334ffc0709ba0fc2361b80bf3c0f0_00ffd1e <ab96c93ca0ac55ba7fa06385427e60dd_878890>, 2022
 # Elishai Eliyahu <elishai@mailfence.com>, 2023
 # 
 #, fuzzy
@@ -14,10 +14,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-23 12:48+0100\n"
+"POT-Creation-Date: 2023-05-29 11:57+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Elishai Eliyahu <elishai@mailfence.com>, 2023\n"
-"Language-Team: Hebrew (https://www.transifex.com/xfce/teams/16840/he/)\n"
+"Language-Team: Hebrew (https://app.transifex.com/xfce/teams/16840/he/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -35,14 +35,14 @@ msgstr "סיום"
 msgid "Due"
 msgstr "מגיע"
 
-#: ../src/appointment.c:506 ../src/mainbox.c:683
+#: ../src/appointment.c:506 ../src/mainbox.c:709
 #: ../org.xfce.orage.appdata.xml.in.h:1
 msgid "Orage"
 msgstr "Orage"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
-#: ../src/appointment.c:697 ../src/interface.c:261 ../src/parameters.c:399
+#: ../src/appointment.c:697 ../src/interface.c:261 ../src/parameters.c:432
 msgid "Select a file..."
 msgstr "בחר קובץ..."
 
@@ -59,6 +59,7 @@ msgid "The appointment information has been modified."
 msgstr "המידע אודות הפגישה שונה."
 
 #: ../src/appointment.c:764 ../src/appointment.c:1306 ../src/event-list.c:999
+#: ../src/parameters.c:689
 msgid "Do you want to continue?"
 msgstr "האם ברצונך להמשיך?"
 
@@ -109,7 +110,7 @@ msgstr "ראה קובץ יומן לפרטים נוספים. (אולי קובץ �
 msgid "This appointment will be permanently removed."
 msgstr "הפגישה תוסר לצמיתות."
 
-#: ../src/appointment.c:1307 ../src/event-list.c:1000
+#: ../src/appointment.c:1307 ../src/event-list.c:1000 ../src/parameters.c:690
 msgid "No, cancel the removal"
 msgstr "לא, בטל את ההסרה"
 
@@ -152,7 +153,7 @@ msgstr "הוסף קטגוריה חדשה עם צבע"
 msgid "Category:"
 msgstr "קטגוריה:"
 
-#: ../src/appointment.c:2224 ../src/interface.c:1454
+#: ../src/appointment.c:2224 ../src/interface.c:1453 ../src/parameters.c:1413
 msgid "_Add"
 msgstr "הו_סף"
 
@@ -172,7 +173,7 @@ msgstr "פגישה חדשה - Orage"
 #. ********* File menu *********
 #. File menu
 #: ../src/appointment.c:2614 ../src/day-view.c:293 ../src/event-list.c:1116
-#: ../src/interface.c:860 ../src/mainbox.c:212
+#: ../src/interface.c:860 ../src/mainbox.c:227
 msgid "_File"
 msgstr "_קובץ"
 
@@ -438,8 +439,8 @@ msgid "Sound command is not set"
 msgstr "פקודת קול אינה מוגדרת"
 
 #: ../src/appointment.c:3269 ../src/interface.c:1050 ../src/interface.c:1096
-#: ../src/interface.c:1272 ../src/interface.c:1364 ../src/interface.c:1447
-#: ../src/parameters.c:404 ../src/parameters.c:627 ../src/reminder.c:635
+#: ../src/interface.c:1271 ../src/interface.c:1363 ../src/interface.c:1446
+#: ../src/parameters.c:437 ../src/parameters.c:802 ../src/reminder.c:635
 msgid "_Open"
 msgstr "_פתח"
 
@@ -534,7 +535,7 @@ msgid "<b>Default alarm</b>"
 msgstr "<b>אזעקת ברירת מחדל</b> "
 
 #: ../src/appointment.c:3435 ../src/interface.c:1057 ../src/interface.c:1103
-#: ../src/interface.c:1278 ../src/interface.c:1370
+#: ../src/interface.c:1277 ../src/interface.c:1369
 msgid "_Save"
 msgstr "_שמור"
 
@@ -760,7 +761,7 @@ msgstr "תאריכי פעולה"
 
 #. ********* View menu *********
 #. View menu
-#: ../src/day-view.c:303 ../src/event-list.c:1139 ../src/mainbox.c:238
+#: ../src/day-view.c:303 ../src/event-list.c:1139 ../src/mainbox.c:260
 msgid "_View"
 msgstr "הצ_ג"
 
@@ -932,7 +933,7 @@ msgstr ""
 "5. סוג פגישה:\n"
 "E = אירוע T = דברים לעשות J = יומן"
 
-#: ../src/ical-code.c:780
+#: ../src/ical-code.c:789
 msgid "Orage default alarm"
 msgstr "התראת ברירת המחדל של Orage"
 
@@ -1083,23 +1084,23 @@ msgstr "קבצי Orage "
 msgid "Orage main calendar file"
 msgstr "קובץ יומן עיקרי Orage "
 
-#: ../src/interface.c:1248 ../src/interface.c:1341
+#: ../src/interface.c:1248 ../src/interface.c:1340
 msgid "Current file:"
 msgstr "קובץ נוכחי:"
 
-#: ../src/interface.c:1260 ../src/interface.c:1353
+#: ../src/interface.c:1260 ../src/interface.c:1352
 msgid "New file:"
 msgstr "קובץ חדש:"
 
-#: ../src/interface.c:1288 ../src/interface.c:1380
+#: ../src/interface.c:1287 ../src/interface.c:1379
 msgid "Action options:"
 msgstr "אפשרויות פעולה:"
 
-#: ../src/interface.c:1292 ../src/interface.c:1384
+#: ../src/interface.c:1291 ../src/interface.c:1383
 msgid "Rename"
 msgstr "שנה שם"
 
-#: ../src/interface.c:1298
+#: ../src/interface.c:1297
 msgid ""
 "Orage internal file rename only.\n"
 "Does not touch external filesystem at all.\n"
@@ -1109,47 +1110,47 @@ msgstr ""
 "לא נוגע כלל במערכת קבצים חיצונית.\n"
 "קובץ חדש חייב להיות קיים."
 
-#: ../src/interface.c:1302 ../src/interface.c:1391
+#: ../src/interface.c:1301 ../src/interface.c:1390
 msgid "Copy"
 msgstr "העתק"
 
-#: ../src/interface.c:1308
+#: ../src/interface.c:1307
 msgid "Current file is copied and stays unmodified in the old place."
 msgstr "קובץ נוכחי מועתק ונשאר ללא שינוי במיקום הישן."
 
-#: ../src/interface.c:1312 ../src/interface.c:1398
+#: ../src/interface.c:1311 ../src/interface.c:1397
 msgid "Move"
 msgstr "העבר"
 
-#: ../src/interface.c:1318
+#: ../src/interface.c:1317
 msgid "Current file is moved and vanishes from the old place."
 msgstr "קובץ נוכחי מועבר ונעלם מהמיקום הישן."
 
-#: ../src/interface.c:1332
+#: ../src/interface.c:1331
 msgid "Archive file"
 msgstr "קובץ ארכיב"
 
-#: ../src/interface.c:1423
+#: ../src/interface.c:1422
 msgid "Foreign files"
 msgstr "קבצים זרים"
 
-#: ../src/interface.c:1430
+#: ../src/interface.c:1429
 msgid "Add new foreign file"
 msgstr "הוסף קובץ זר חדש"
 
-#: ../src/interface.c:1438
+#: ../src/interface.c:1437
 msgid "Foreign file:"
 msgstr "קובץ זר:"
 
-#: ../src/interface.c:1469
+#: ../src/interface.c:1468
 msgid "Visible name:"
 msgstr "שם נראה:"
 
-#: ../src/interface.c:1479
+#: ../src/interface.c:1478
 msgid "Read only"
 msgstr "קריאה בלבד"
 
-#: ../src/interface.c:1489
+#: ../src/interface.c:1488
 msgid ""
 "Set this if you want to make sure that this file is never modified by Orage.\n"
 "Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
@@ -1157,51 +1158,51 @@ msgstr ""
 "קבע זאת אם ברצונך לוודא שקובץ זה לעולם לא ישונה ע\"י Orage. \n"
 "שים לב ששינוי קבצים זרים עלול להפוך אותם ללא מתאימים לכלי המקורי, מהיכן שהם באים!"
 
-#: ../src/interface.c:1491
+#: ../src/interface.c:1490
 msgid "This internal name is displayed to user instead of file name."
 msgstr "שם פנימי זה מוצג למשתמש במקום שם הקובץ."
 
-#: ../src/interface.c:1505
+#: ../src/interface.c:1504
 msgid "Exchange data - Orage"
 msgstr "מידע החלפה - Orage "
 
-#: ../src/mainbox.c:220
+#: ../src/mainbox.c:242
 msgid "_Exchange data"
 msgstr "החלף מידע"
 
 #. Edit menu
-#: ../src/mainbox.c:231
+#: ../src/mainbox.c:253
 msgid "_Edit"
 msgstr "ע_ריכה"
 
-#: ../src/mainbox.c:241
+#: ../src/mainbox.c:263
 msgid "View selected _date"
 msgstr "הצג _תאריך נבחר"
 
-#: ../src/mainbox.c:244
+#: ../src/mainbox.c:266
 msgid "View selected _week"
 msgstr "צפה בשבוע נבחר"
 
-#: ../src/mainbox.c:250
+#: ../src/mainbox.c:272
 msgid "Select _Today"
 msgstr "_בחר את היום"
 
 #. Help menu
 #. the rest
-#: ../src/mainbox.c:254 ../src/parameters.c:1207
+#: ../src/mainbox.c:276 ../src/parameters.c:1453
 msgid "_Help"
 msgstr "_עזרה"
 
-#: ../src/mainbox.c:314 ../src/reminder.c:965
+#: ../src/mainbox.c:340 ../src/reminder.c:965
 msgid "No title defined"
 msgstr "אף שם לא הוגדר"
 
-#: ../src/mainbox.c:372
+#: ../src/mainbox.c:398
 #, c-format
 msgid " Location: %s\n"
 msgstr "מיקום: %s \n"
 
-#: ../src/mainbox.c:382
+#: ../src/mainbox.c:408
 #, c-format
 msgid ""
 "\n"
@@ -1212,11 +1213,11 @@ msgstr ""
 "שים לב:\n"
 "%s "
 
-#: ../src/mainbox.c:390
+#: ../src/mainbox.c:416
 msgid "Never"
 msgstr "אף פעם"
 
-#: ../src/mainbox.c:398
+#: ../src/mainbox.c:424
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1229,7 +1230,7 @@ msgstr ""
 "אמור ל: %s \n"
 "סיום: %s%s "
 
-#: ../src/mainbox.c:405
+#: ../src/mainbox.c:431
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1240,16 +1241,16 @@ msgstr ""
 "%s התחלה: %s \n"
 "סיום: %s%s "
 
-#: ../src/mainbox.c:484
+#: ../src/mainbox.c:510
 msgid "<b>To do:</b>"
 msgstr "<b>לעשות:</b> "
 
-#: ../src/mainbox.c:521
+#: ../src/mainbox.c:547
 #, c-format
 msgid "<b>Events for %s:</b>"
 msgstr "<b>אירועים ל-%s:</b>"
 
-#: ../src/mainbox.c:531
+#: ../src/mainbox.c:557
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>אירועים ל %s - %s:</b>"
@@ -1262,7 +1263,7 @@ msgstr "Orage הוא ישום ניהול זמן לסביבת שולחן עבוד
 msgid "translator-credits"
 msgstr "צוות תרגום Xfce לעברית"
 
-#: ../src/orage-application.c:160
+#: ../src/orage-application.c:167
 #, c-format
 msgid ""
 "\tThis is %s version %s\n"
@@ -1271,250 +1272,299 @@ msgstr ""
 "זה %s גרסה %s \n"
 "\n"
 
-#: ../src/orage-application.c:162
+#: ../src/orage-application.c:169
 #, c-format
 msgid "\tReleased under the terms of the GNU General Public License.\n"
 msgstr "פורסם לפי התנאים של רישיון GNU לציבור הכללי.\n"
 
-#: ../src/orage-application.c:163
+#: ../src/orage-application.c:170
 #, c-format
 msgid "\tCompiled against GTK+-%d.%d.%d, "
 msgstr "עבר הדרה כנגד GTK+-%d.%d.%d, "
 
-#: ../src/orage-application.c:165
+#: ../src/orage-application.c:172
 #, c-format
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "משתמש ב- GTK+-%d.%d.%d.\n"
 
-#: ../src/orage-application.c:168
+#: ../src/orage-application.c:175
 #, c-format
 msgid "\tUsing libnotify.\n"
 msgstr "משתמש ב- libnotify. \n"
 
-#: ../src/orage-application.c:170
+#: ../src/orage-application.c:177
 #, c-format
 msgid "\tNot using libnotify.\n"
 msgstr "לא משתמש ב- libnotify. \n"
 
-#: ../src/orage-application.c:173
+#: ../src/orage-application.c:180
 #, c-format
 msgid "\tUsing automatic archiving.\n"
 msgstr "משתמש בארכיון אוטומטי.\n"
 
-#: ../src/orage-application.c:175
+#: ../src/orage-application.c:182
 #, c-format
 msgid "\tNot using archiving.\n"
 msgstr "לא משתמש בארכיון.\n"
 
-#: ../src/orage-application.c:178
+#: ../src/orage-application.c:185
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
 msgstr "\tUsing libxfce4ui: yes\n"
 
-#: ../src/orage-application.c:180
+#: ../src/orage-application.c:187
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
 msgstr "\tUsing libxfce4ui: no\n"
 
-#: ../src/orage-application.c:526
+#: ../src/orage-application.c:571
 msgid "Show version of orage"
 msgstr "הצג גרסה של orage"
 
-#: ../src/orage-application.c:535
+#: ../src/orage-application.c:580
 msgid "Show preferences form"
 msgstr "הצג טופס העדפות"
 
-#: ../src/orage-application.c:544
+#: ../src/orage-application.c:589
 msgid "Make Orage visible/unvisible"
 msgstr "הפוך את Orage גלוי/בלתי נראה"
 
-#: ../src/orage-application.c:553
+#: ../src/orage-application.c:598
 msgid "Add a foreign file"
 msgstr "הוסף קובץ זר"
 
-#: ../src/orage-application.c:571
+#: ../src/orage-application.c:607
+msgid "Remove a foreign file"
+msgstr ""
+
+#: ../src/orage-application.c:616
+msgid "Import appointments from file to Orage"
+msgstr ""
+
+#: ../src/orage-application.c:625
 msgid "Export appointments from Orage to file"
 msgstr "ייצא פגישות מ-Orage לקובץ"
 
-#: ../src/parameters.c:549
+#: ../src/orage-sync-edit-dialog.c:132
+msgid "Description:"
+msgstr ""
+
+#: ../src/orage-sync-edit-dialog.c:134
+msgid "Command:"
+msgstr ""
+
+#: ../src/orage-sync-edit-dialog.c:136
+msgid "Period:"
+msgstr ""
+
+#: ../src/orage-sync-edit-dialog.c:138
+msgid "minutes"
+msgstr "דקות"
+
+#: ../src/orage-sync-edit-dialog.c:141
+msgid "The name or description of this synchronization task"
+msgstr ""
+
+#: ../src/orage-sync-edit-dialog.c:144
+msgid "Command for synchronization"
+msgstr ""
+
+#: ../src/orage-sync-edit-dialog.c:147
+msgid "Synchronization period in minutes"
+msgstr ""
+
+#: ../src/orage-sync-edit-dialog.c:166 ../src/parameters.c:1456
+#: ../src/reminder.c:642
+msgid "_Close"
+msgstr "_סגור"
+
+#: ../src/parameters.c:688
+msgid "Remove selected synchronization task."
+msgstr ""
+
+#: ../src/parameters.c:691
+msgid "Yes, remove"
+msgstr ""
+
+#: ../src/parameters.c:724
 msgid "Main settings"
 msgstr "הגדרות עיקריות"
 
-#: ../src/parameters.c:555
+#: ../src/parameters.c:730
 msgid "Timezone"
 msgstr "אזור-זמן"
 
-#: ../src/parameters.c:576
+#: ../src/parameters.c:751
 msgid "You should always define your local timezone."
 msgstr "אתה תמיד צריך להגדיר את איזור הזמן המקומי שלך."
 
-#: ../src/parameters.c:584
+#: ../src/parameters.c:759
 msgid "Archive threshold (months)"
 msgstr "סף ארכיון (חודשים)"
 
-#: ../src/parameters.c:597
+#: ../src/parameters.c:772
 msgid "(0 = no archiving)"
 msgstr "(0 = ללא ארכיון)"
 
-#: ../src/parameters.c:601
+#: ../src/parameters.c:776
 msgid "Archiving is used to save time and space when handling events."
 msgstr "ארכיון משמש לחסוך זמן ומקום בעת טיפול באירועים."
 
-#: ../src/parameters.c:609
+#: ../src/parameters.c:784
 msgid "Sound command"
 msgstr "פקודת קול"
 
-#: ../src/parameters.c:637
+#: ../src/parameters.c:812
 msgid "This command is given to shell to make sound in alarms."
 msgstr "פקודה זו ניתנת ל-shell ליצירת קול באזעקות."
 
-#: ../src/parameters.c:668
+#: ../src/parameters.c:843
 msgid "Calendar window"
 msgstr "חלון יומן"
 
-#: ../src/parameters.c:675
+#: ../src/parameters.c:850
 msgid "Calendar visual details"
 msgstr "פרטים ויזואלים יומן"
 
-#: ../src/parameters.c:682
+#: ../src/parameters.c:857
 msgid "Show borders"
 msgstr "הצג גבולות"
 
-#: ../src/parameters.c:687
+#: ../src/parameters.c:862
 msgid "Show menu"
 msgstr "הצג תפריט"
 
-#: ../src/parameters.c:695
+#: ../src/parameters.c:870
 msgid "Show day names"
 msgstr "הצג שמות ימים"
 
-#: ../src/parameters.c:700
+#: ../src/parameters.c:875
 msgid "Show week numbers"
 msgstr "הצג מספרי שבועות"
 
-#: ../src/parameters.c:708
+#: ../src/parameters.c:883
 msgid "Show month and year"
 msgstr "הצג חודש ושנה"
 
-#: ../src/parameters.c:728
+#: ../src/parameters.c:903
 msgid "Calendar info boxes"
 msgstr "קופסאות מידע יומן"
 
-#: ../src/parameters.c:735
+#: ../src/parameters.c:910
 msgid "Show todo list"
 msgstr "הצג רשימת דברים לעשות"
 
-#: ../src/parameters.c:742
+#: ../src/parameters.c:917
 msgid "Number of days to show in event window"
 msgstr "מספר ימים להצגה בחלון אירוע"
 
-#: ../src/parameters.c:750
+#: ../src/parameters.c:925
 msgid "0 = do not show event list at all"
 msgstr "0 = אל תציג רשימת אירועים כלל "
 
-#: ../src/parameters.c:764
+#: ../src/parameters.c:939
 msgid "Calendar visibility"
 msgstr "נראות יומן"
 
-#: ../src/parameters.c:770
+#: ../src/parameters.c:945
 msgid "Show on all desktops"
 msgstr "הצג בכל שולחנות העבודה"
 
-#: ../src/parameters.c:775
+#: ../src/parameters.c:950
 msgid "Keep on top"
 msgstr "שמור מעל"
 
-#: ../src/parameters.c:783
+#: ../src/parameters.c:958
 msgid "Show in taskbar"
 msgstr "הצג בסרגל המשימות"
 
-#: ../src/parameters.c:788
+#: ../src/parameters.c:963
 msgid "Show in pager"
 msgstr "הצג במחליף סביבות העבודה"
 
-#: ../src/parameters.c:796
+#: ../src/parameters.c:971
 msgid "Show in systray"
 msgstr "הצג במגש המערכת"
 
-#: ../src/parameters.c:824
+#: ../src/parameters.c:999
 msgid "Calendar start"
 msgstr "תחילת לוח השנה"
 
-#: ../src/parameters.c:830
+#: ../src/parameters.c:1005
 msgid "Show"
 msgstr "הצג"
 
-#: ../src/parameters.c:846
+#: ../src/parameters.c:1021
 msgid "Hide"
 msgstr "הסתר"
 
-#: ../src/parameters.c:863
+#: ../src/parameters.c:1038
 msgid "Minimized"
 msgstr "ממוזער"
 
-#: ../src/parameters.c:889
+#: ../src/parameters.c:1064
 msgid "On calendar window open"
 msgstr "בעת פתיחת חלון יומן"
 
-#: ../src/parameters.c:895
+#: ../src/parameters.c:1070
 msgid "Select today's date"
 msgstr "בחר בתאריך של היום"
 
-#: ../src/parameters.c:912
+#: ../src/parameters.c:1087
 msgid "Select previously selected date"
 msgstr "בחר בתאריך שנבחר קודם"
 
-#: ../src/parameters.c:936
+#: ../src/parameters.c:1111
 msgid "Calendar day double click shows"
 msgstr "קליק כפול ביום יומן מראה"
 
-#: ../src/parameters.c:942
+#: ../src/parameters.c:1117
 msgid "Days view"
 msgstr "מבט ימים"
 
-#: ../src/parameters.c:958
+#: ../src/parameters.c:1133
 msgid "Event list"
 msgstr "רשימת אירועים"
 
-#: ../src/parameters.c:991
+#: ../src/parameters.c:1166
 msgid "Extra settings"
 msgstr "הגדרות נוספות"
 
-#: ../src/parameters.c:998
+#: ../src/parameters.c:1173
 msgid "Event list window"
 msgstr "חלון רשימת אירועים"
 
-#: ../src/parameters.c:1005
+#: ../src/parameters.c:1180
 msgid "Number of extra days to show in event list"
 msgstr "מספר ימים נוספים להצגה ברשימת אירועים"
 
-#: ../src/parameters.c:1015
+#: ../src/parameters.c:1190
 msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
 msgstr "זה רק ערך ברירת מחדל, אתה יכול לשנות אותו בחלון רשימת אירועים עצמו."
 
-#: ../src/parameters.c:1023
+#: ../src/parameters.c:1198
 msgid "Show only first repeating event"
 msgstr "הצג רק אירוע חוזר ראשון"
 
-#: ../src/parameters.c:1040
+#: ../src/parameters.c:1215
 msgid "Day view window default first day"
 msgstr "ברירת מחדל של יום ראשון במספר בחלון מבט יום"
 
-#: ../src/parameters.c:1047
+#: ../src/parameters.c:1222
 msgid "First day of week"
 msgstr "יום ראשון במספר בשבוע"
 
-#: ../src/parameters.c:1064
+#: ../src/parameters.c:1239
 msgid "Selected day"
 msgstr "יום נבחר"
 
-#: ../src/parameters.c:1087 ../src/parameters.c:1094
+#: ../src/parameters.c:1262 ../src/parameters.c:1269
 msgid "Use wakeup timer"
 msgstr "השתמש בטיימר התעוררות"
 
-#: ../src/parameters.c:1102
+#: ../src/parameters.c:1277
 msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
@@ -1522,27 +1572,27 @@ msgstr ""
 "השתמש בטיימר זה אם ל-Orage יש בעיות להתעורר כנדרש לאחר הפסקה או שינה. "
 "(לדוגמה אייקון מגש שלא מרוענן או אזעקות שלא מופעלות.)"
 
-#: ../src/parameters.c:1112
+#: ../src/parameters.c:1287
 msgid "Foreign file default visual alarm"
 msgstr "ברירת מחדל של אזעקה ויזואלית לקובץ זר"
 
-#: ../src/parameters.c:1119
+#: ../src/parameters.c:1294
 msgid "Orage window"
 msgstr "חלון Orage "
 
-#: ../src/parameters.c:1136
+#: ../src/parameters.c:1311
 msgid "Notify notification"
 msgstr "הודעת יידע"
 
-#: ../src/parameters.c:1159
+#: ../src/parameters.c:1334
 msgid "Always quit when asked to close"
 msgstr "הפסק תמיד כאשר תתבקש לסגור"
 
-#: ../src/parameters.c:1166
+#: ../src/parameters.c:1341
 msgid "Always quit"
 msgstr "הפסק תמיד"
 
-#: ../src/parameters.c:1173
+#: ../src/parameters.c:1348
 msgid ""
 "By default Orage stays open in the background when asked to close. This "
 "option changes Orage to quit and never stay in background when it is asked "
@@ -1551,13 +1601,17 @@ msgstr ""
 "כברירת מחדל Orage נשאר פתוח ברקע כאשר הוא מתבקש לסגור. אפשרות זו משנה את "
 "Orage להפסיק ולעולם לא להישאר ברקע כאשר הוא מתבקש לסגור."
 
-#: ../src/parameters.c:1188
+#: ../src/parameters.c:1401
+msgid "Synchronization settings"
+msgstr ""
+
+#: ../src/parameters.c:1407
+msgid "Synchronization sources"
+msgstr ""
+
+#: ../src/parameters.c:1433
 msgid "Orage Preferences"
 msgstr "העדפות Orage"
-
-#: ../src/parameters.c:1210 ../src/reminder.c:642
-msgid "_Close"
-msgstr "_סגור"
 
 #: ../src/reminder.c:420
 msgid "Reminder"
@@ -1609,2247 +1663,2247 @@ msgstr ""
 "\n"
 "לא נמצאו אזעקות פעילות"
 
-#: ../src/timezone_names.c:35
+#: ../src/timezone_names.c:31
 msgid "Africa"
 msgstr "אפריקה"
 
-#: ../src/timezone_names.c:36
+#: ../src/timezone_names.c:32
 msgid "Africa/Abidjan"
 msgstr "אפריקה/אבידג'ן"
 
-#: ../src/timezone_names.c:37
+#: ../src/timezone_names.c:33
 msgid "Africa/Accra"
 msgstr "אפריקה/אקרה"
 
-#: ../src/timezone_names.c:38
+#: ../src/timezone_names.c:34
 msgid "Africa/Addis_Ababa"
 msgstr "אפריקה/אדיס אבבה"
 
-#: ../src/timezone_names.c:39
+#: ../src/timezone_names.c:35
 msgid "Africa/Algiers"
 msgstr "אפריקה/אלג'יר"
 
-#: ../src/timezone_names.c:40
+#: ../src/timezone_names.c:36
 msgid "Africa/Asmara"
 msgstr "אפריקה/אסמרה"
 
-#: ../src/timezone_names.c:41
+#: ../src/timezone_names.c:37
 msgid "Africa/Asmera"
 msgstr "אפריקה/אסמרה"
 
-#: ../src/timezone_names.c:42
+#: ../src/timezone_names.c:38
 msgid "Africa/Bamako"
 msgstr "אפריקה/במקו"
 
-#: ../src/timezone_names.c:43
+#: ../src/timezone_names.c:39
 msgid "Africa/Bangui"
 msgstr "אפריקה/באנגי"
 
-#: ../src/timezone_names.c:44
+#: ../src/timezone_names.c:40
 msgid "Africa/Banjul"
 msgstr "אפריקה/בנג'ול"
 
-#: ../src/timezone_names.c:45
+#: ../src/timezone_names.c:41
 msgid "Africa/Bissau"
 msgstr "אפריקה/ביסאו"
 
-#: ../src/timezone_names.c:46
+#: ../src/timezone_names.c:42
 msgid "Africa/Blantyre"
 msgstr "אפריקה/בלנטיר"
 
-#: ../src/timezone_names.c:47
+#: ../src/timezone_names.c:43
 msgid "Africa/Brazzaville"
 msgstr "אפריקה/ברזוויל"
 
-#: ../src/timezone_names.c:48
+#: ../src/timezone_names.c:44
 msgid "Africa/Bujumbura"
 msgstr "אפריקה/בוג'ומבורה"
 
-#: ../src/timezone_names.c:49
+#: ../src/timezone_names.c:45
 msgid "Africa/Cairo"
 msgstr "אפריקה/קהיר"
 
-#: ../src/timezone_names.c:50
+#: ../src/timezone_names.c:46
 msgid "Africa/Casablanca"
 msgstr "אפריקה/קזבלנקה"
 
-#: ../src/timezone_names.c:51
+#: ../src/timezone_names.c:47
 msgid "Africa/Ceuta"
 msgstr "אפריקה/סאוטה"
 
-#: ../src/timezone_names.c:52
+#: ../src/timezone_names.c:48
 msgid "Africa/Conakry"
 msgstr "אפריקה/קונקרי"
 
-#: ../src/timezone_names.c:53
+#: ../src/timezone_names.c:49
 msgid "Africa/Dakar"
 msgstr "אפריקה/דקר"
 
-#: ../src/timezone_names.c:54
+#: ../src/timezone_names.c:50
 msgid "Africa/Dar_es_Salaam"
 msgstr "אפריקה/דאר א-סלאם"
 
-#: ../src/timezone_names.c:55
+#: ../src/timezone_names.c:51
 msgid "Africa/Djibouti"
 msgstr "אפריקה/ג'יבוטי"
 
-#: ../src/timezone_names.c:56
+#: ../src/timezone_names.c:52
 msgid "Africa/Douala"
 msgstr "אפריקה/דואלה"
 
-#: ../src/timezone_names.c:57
+#: ../src/timezone_names.c:53
 msgid "Africa/El_Aaiun"
 msgstr "אפריקה/עיון"
 
-#: ../src/timezone_names.c:58
+#: ../src/timezone_names.c:54
 msgid "Africa/Freetown"
 msgstr "אפריקה/פריטאון"
 
-#: ../src/timezone_names.c:59
+#: ../src/timezone_names.c:55
 msgid "Africa/Gaborone"
 msgstr "אפריקה/גבורונה"
 
-#: ../src/timezone_names.c:60
+#: ../src/timezone_names.c:56
 msgid "Africa/Harare"
 msgstr "אפריקה/הרארה"
 
-#: ../src/timezone_names.c:61
+#: ../src/timezone_names.c:57
 msgid "Africa/Juba"
 msgstr "אפריקה/ג'ובה"
 
-#: ../src/timezone_names.c:62
+#: ../src/timezone_names.c:58
 msgid "Africa/Johannesburg"
 msgstr "אפריקה/יוהנסבורג"
 
-#: ../src/timezone_names.c:63
+#: ../src/timezone_names.c:59
 msgid "Africa/Kampala"
 msgstr "אפריקה/קמפלה"
 
-#: ../src/timezone_names.c:64
+#: ../src/timezone_names.c:60
 msgid "Africa/Khartoum"
 msgstr "אפריקה/חרטום"
 
-#: ../src/timezone_names.c:65
+#: ../src/timezone_names.c:61
 msgid "Africa/Kigali"
 msgstr "אפריקה/קיגאלי"
 
-#: ../src/timezone_names.c:66
+#: ../src/timezone_names.c:62
 msgid "Africa/Kinshasa"
 msgstr "אפריקה/קינשסה"
 
-#: ../src/timezone_names.c:67
+#: ../src/timezone_names.c:63
 msgid "Africa/Lagos"
 msgstr "אפריקה/לאגוס"
 
-#: ../src/timezone_names.c:68
+#: ../src/timezone_names.c:64
 msgid "Africa/Libreville"
 msgstr "אפריקה/ליברוויל"
 
-#: ../src/timezone_names.c:69
+#: ../src/timezone_names.c:65
 msgid "Africa/Lome"
 msgstr "אפריקה/לומה"
 
-#: ../src/timezone_names.c:70
+#: ../src/timezone_names.c:66
 msgid "Africa/Luanda"
 msgstr "אפריקה/לואנדה"
 
-#: ../src/timezone_names.c:71
+#: ../src/timezone_names.c:67
 msgid "Africa/Lubumbashi"
 msgstr "אפריקה/לובומבשי"
 
-#: ../src/timezone_names.c:72
+#: ../src/timezone_names.c:68
 msgid "Africa/Lusaka"
 msgstr "אפריקה/לוסקה"
 
-#: ../src/timezone_names.c:73
+#: ../src/timezone_names.c:69
 msgid "Africa/Malabo"
 msgstr "אפריקה/מלאבו"
 
-#: ../src/timezone_names.c:74
+#: ../src/timezone_names.c:70
 msgid "Africa/Maputo"
 msgstr "אפריקה/מאפוטו"
 
-#: ../src/timezone_names.c:75
+#: ../src/timezone_names.c:71
 msgid "Africa/Maseru"
 msgstr "אפריקה/מאסרו"
 
-#: ../src/timezone_names.c:76
+#: ../src/timezone_names.c:72
 msgid "Africa/Mbabane"
 msgstr "אפריקה/מבבאנה"
 
-#: ../src/timezone_names.c:77
+#: ../src/timezone_names.c:73
 msgid "Africa/Mogadishu"
 msgstr "אפריקה/מוגדישו"
 
-#: ../src/timezone_names.c:78
+#: ../src/timezone_names.c:74
 msgid "Africa/Monrovia"
 msgstr "אפריקה/מונרוביה"
 
-#: ../src/timezone_names.c:79
+#: ../src/timezone_names.c:75
 msgid "Africa/Nairobi"
 msgstr "אפריקה/ניירובי"
 
-#: ../src/timezone_names.c:80
+#: ../src/timezone_names.c:76
 msgid "Africa/Ndjamena"
 msgstr "אפריקה/נג'מנה"
 
-#: ../src/timezone_names.c:81
+#: ../src/timezone_names.c:77
 msgid "Africa/Niamey"
 msgstr "אפריקה/ניאמי"
 
-#: ../src/timezone_names.c:82
+#: ../src/timezone_names.c:78
 msgid "Africa/Nouakchott"
 msgstr "אפריקה/נוקשוט"
 
-#: ../src/timezone_names.c:83
+#: ../src/timezone_names.c:79
 msgid "Africa/Ouagadougou"
 msgstr "אפריקה/ואגאדוגו"
 
-#: ../src/timezone_names.c:84
+#: ../src/timezone_names.c:80
 msgid "Africa/Porto-Novo"
 msgstr "אפריקה/פורטו נובו"
 
-#: ../src/timezone_names.c:85
+#: ../src/timezone_names.c:81
 msgid "Africa/Sao_Tome"
 msgstr "אפריקה/סאו טומה"
 
-#: ../src/timezone_names.c:86
+#: ../src/timezone_names.c:82
 msgid "Africa/Timbuktu"
 msgstr "אפריקה/טימבוקטו"
 
-#: ../src/timezone_names.c:87
+#: ../src/timezone_names.c:83
 msgid "Africa/Tripoli"
 msgstr "אפריקה/טריפולי"
 
-#: ../src/timezone_names.c:88
+#: ../src/timezone_names.c:84
 msgid "Africa/Tunis"
 msgstr "אפריקה/תוניס"
 
-#: ../src/timezone_names.c:89
+#: ../src/timezone_names.c:85
 msgid "Africa/Windhoek"
 msgstr "אפריקה/וינדהוק"
 
-#: ../src/timezone_names.c:90
+#: ../src/timezone_names.c:86
 msgid "America"
 msgstr "אמריקה"
 
-#: ../src/timezone_names.c:91
+#: ../src/timezone_names.c:87
 msgid "America/Adak"
 msgstr "אמריקה/אדאק"
 
-#: ../src/timezone_names.c:92
+#: ../src/timezone_names.c:88
 msgid "America/Anchorage"
 msgstr "אמריקה/אנקורג'"
 
-#: ../src/timezone_names.c:93
+#: ../src/timezone_names.c:89
 msgid "America/Anguilla"
 msgstr "אמריקה/אנגווילה"
 
-#: ../src/timezone_names.c:94
+#: ../src/timezone_names.c:90
 msgid "America/Antigua"
 msgstr "אמריקה/אנטיגואה"
 
-#: ../src/timezone_names.c:95
+#: ../src/timezone_names.c:91
 msgid "America/Araguaina"
 msgstr "אמריקה/אראגואינה"
 
-#: ../src/timezone_names.c:96
+#: ../src/timezone_names.c:92
 msgid "America/Argentina/Buenos_Aires"
 msgstr "אמריקה/ארגנטינה/בואנוס איירס"
 
-#: ../src/timezone_names.c:97
+#: ../src/timezone_names.c:93
 msgid "America/Argentina/Catamarca"
 msgstr "אמריקה/ארגנטינה/קטמרקה"
 
-#: ../src/timezone_names.c:98
+#: ../src/timezone_names.c:94
 msgid "America/Argentina/ComodRivadavia"
 msgstr "אמריקה/ארגנטינה/קומודריוואדוויה"
 
-#: ../src/timezone_names.c:99
+#: ../src/timezone_names.c:95
 msgid "America/Argentina/Cordoba"
 msgstr "אמריקה/ארגנטינה/קורדובה"
 
-#: ../src/timezone_names.c:100
+#: ../src/timezone_names.c:96
 msgid "America/Argentina/Jujuy"
 msgstr "אמריקה/ארגנטינה/ג'וג'וי"
 
-#: ../src/timezone_names.c:101
+#: ../src/timezone_names.c:97
 msgid "America/Argentina/La_Rioja"
 msgstr "אמריקה/ארגנטינה/לה ריוג'ה"
 
-#: ../src/timezone_names.c:102
+#: ../src/timezone_names.c:98
 msgid "America/Argentina/Mendoza"
 msgstr "אמריקה/ארגנטינה/מנדוזה"
 
-#: ../src/timezone_names.c:103
+#: ../src/timezone_names.c:99
 msgid "America/Argentina/Rio_Gallegos"
 msgstr "אמריקה/ארגנטינה/ריו גלגוס"
 
-#: ../src/timezone_names.c:104
+#: ../src/timezone_names.c:100
 msgid "America/Argentina/Salta"
 msgstr "אמריקה/ארגנטינה/סלטה"
 
-#: ../src/timezone_names.c:105
+#: ../src/timezone_names.c:101
 msgid "America/Argentina/San_Juan"
 msgstr "אמריקה/ארגנטינה/סאן חואן"
 
-#: ../src/timezone_names.c:106
+#: ../src/timezone_names.c:102
 msgid "America/Argentina/San_Luis"
 msgstr "אמריקה/ארגנטינה/סאן לואיס"
 
-#: ../src/timezone_names.c:107
+#: ../src/timezone_names.c:103
 msgid "America/Argentina/Tucuman"
 msgstr "אמריקה/ארגנטינה/טוקומן"
 
-#: ../src/timezone_names.c:108
+#: ../src/timezone_names.c:104
 msgid "America/Argentina/Ushuaia"
 msgstr "אמריקה/ארגנטינה/אושואיה"
 
-#: ../src/timezone_names.c:109
+#: ../src/timezone_names.c:105
 msgid "America/Aruba"
 msgstr "אמריקה/ארובה"
 
-#: ../src/timezone_names.c:110
+#: ../src/timezone_names.c:106
 msgid "America/Asuncion"
 msgstr "אמריקה/אסונסיון"
 
-#: ../src/timezone_names.c:111
+#: ../src/timezone_names.c:107
 msgid "America/Atikokan"
 msgstr "אמריקה/אטיקוקן"
 
-#: ../src/timezone_names.c:112
+#: ../src/timezone_names.c:108
 msgid "America/Atka"
 msgstr "אמריקה/אטקה"
 
-#: ../src/timezone_names.c:113
+#: ../src/timezone_names.c:109
 msgid "America/Bahia"
 msgstr "אמריקה/בהיה"
 
-#: ../src/timezone_names.c:114
+#: ../src/timezone_names.c:110
 msgid "America/Bahia_Banderas"
 msgstr "אמריקה/בהיה בנדרס"
 
-#: ../src/timezone_names.c:115
+#: ../src/timezone_names.c:111
 msgid "America/Barbados"
 msgstr "אמריקה/ברבדוס"
 
-#: ../src/timezone_names.c:116
+#: ../src/timezone_names.c:112
 msgid "America/Belem"
 msgstr "אמריקה/בלם"
 
-#: ../src/timezone_names.c:117
+#: ../src/timezone_names.c:113
 msgid "America/Belize"
 msgstr "אמריקה/בליז"
 
-#: ../src/timezone_names.c:118
+#: ../src/timezone_names.c:114
 msgid "America/Blanc-Sablon"
 msgstr "אמריקה/בלנק-סבלון"
 
-#: ../src/timezone_names.c:119
+#: ../src/timezone_names.c:115
 msgid "America/Boa_Vista"
 msgstr "אמריקה/בואה ויסטה"
 
-#: ../src/timezone_names.c:120
+#: ../src/timezone_names.c:116
 msgid "America/Bogota"
 msgstr "אמריקה/בוגוטה"
 
-#: ../src/timezone_names.c:121
+#: ../src/timezone_names.c:117
 msgid "America/Boise"
 msgstr "אמריקה/בויסי"
 
-#: ../src/timezone_names.c:122
+#: ../src/timezone_names.c:118
 msgid "America/Buenos_Aires"
 msgstr "אמריקה/בואנוס איירס"
 
-#: ../src/timezone_names.c:123
+#: ../src/timezone_names.c:119
 msgid "America/Cambridge_Bay"
 msgstr "אמריקה/קיימברידג' ביי"
 
-#: ../src/timezone_names.c:124
+#: ../src/timezone_names.c:120
 msgid "America/Campo_Grande"
 msgstr "אמריקה/קמפו גרנדה"
 
-#: ../src/timezone_names.c:125
+#: ../src/timezone_names.c:121
 msgid "America/Cancun"
 msgstr "אמריקה/קאנקון"
 
-#: ../src/timezone_names.c:126
+#: ../src/timezone_names.c:122
 msgid "America/Caracas"
 msgstr "אמריקה/קראקס"
 
-#: ../src/timezone_names.c:127
+#: ../src/timezone_names.c:123
 msgid "America/Catamarca"
 msgstr "אמריקה/קטמרקה"
 
-#: ../src/timezone_names.c:128
+#: ../src/timezone_names.c:124
 msgid "America/Cayenne"
 msgstr "אמריקה/קאיין"
 
-#: ../src/timezone_names.c:129
+#: ../src/timezone_names.c:125
 msgid "America/Cayman"
 msgstr "אמריקה/איי קיימן"
 
-#: ../src/timezone_names.c:130
+#: ../src/timezone_names.c:126
 msgid "America/Chicago"
 msgstr "אמריקה/שיקגו"
 
-#: ../src/timezone_names.c:131
+#: ../src/timezone_names.c:127
 msgid "America/Chihuahua"
 msgstr "אמריקה/צ'יוואווה"
 
-#: ../src/timezone_names.c:132
+#: ../src/timezone_names.c:128
 msgid "America/Coral_Harbour"
 msgstr "אמריקה/קורל הרבור"
 
-#: ../src/timezone_names.c:133
+#: ../src/timezone_names.c:129
 msgid "America/Cordoba"
 msgstr "אמריקה/קורדובה"
 
-#: ../src/timezone_names.c:134
+#: ../src/timezone_names.c:130
 msgid "America/Costa_Rica"
 msgstr "אמריקה/קוסטה ריקה"
 
-#: ../src/timezone_names.c:135
+#: ../src/timezone_names.c:131
 msgid "America/Creston"
 msgstr "אמריקה/קרסטון"
 
-#: ../src/timezone_names.c:136
+#: ../src/timezone_names.c:132
 msgid "America/Cuiaba"
 msgstr "אמריקה/קויאבה"
 
-#: ../src/timezone_names.c:137
+#: ../src/timezone_names.c:133
 msgid "America/Curacao"
 msgstr "אמריקה/קורסאו"
 
-#: ../src/timezone_names.c:138
+#: ../src/timezone_names.c:134
 msgid "America/Danmarkshavn"
 msgstr "אמריקה/דנמרקסהייבן"
 
-#: ../src/timezone_names.c:139
+#: ../src/timezone_names.c:135
 msgid "America/Dawson"
 msgstr "אמריקה/דוסון"
 
-#: ../src/timezone_names.c:140
+#: ../src/timezone_names.c:136
 msgid "America/Dawson_Creek"
 msgstr "אמריקה/דוסון קריק"
 
-#: ../src/timezone_names.c:141
+#: ../src/timezone_names.c:137
 msgid "America/Denver"
 msgstr "אמריקה/דנבר"
 
-#: ../src/timezone_names.c:142
+#: ../src/timezone_names.c:138
 msgid "America/Detroit"
 msgstr "אמריקה/דטרויט"
 
-#: ../src/timezone_names.c:143
+#: ../src/timezone_names.c:139
 msgid "America/Dominica"
 msgstr "אמריקה/דומיניקה"
 
-#: ../src/timezone_names.c:144
+#: ../src/timezone_names.c:140
 msgid "America/Edmonton"
 msgstr "אמריקה/אדמונטון"
 
-#: ../src/timezone_names.c:145
+#: ../src/timezone_names.c:141
 msgid "America/Ensenada"
 msgstr "אמריקה/אנסנדה"
 
-#: ../src/timezone_names.c:146
+#: ../src/timezone_names.c:142
 msgid "America/Eirunepe"
 msgstr "אמריקה/אירונפה"
 
-#: ../src/timezone_names.c:147
+#: ../src/timezone_names.c:143
 msgid "America/El_Salvador"
 msgstr "אמריקה/אל סלבדור"
 
-#: ../src/timezone_names.c:148
+#: ../src/timezone_names.c:144
 msgid "America/Fortaleza"
 msgstr "אמריקה/פורטלזה"
 
-#: ../src/timezone_names.c:149
+#: ../src/timezone_names.c:145
 msgid "America/Fort_Wayne"
 msgstr "אמריקה/פורט ויין"
 
-#: ../src/timezone_names.c:150
+#: ../src/timezone_names.c:146
 msgid "America/Glace_Bay"
 msgstr "אמריקה/גלייס ביי"
 
-#: ../src/timezone_names.c:151
+#: ../src/timezone_names.c:147
 msgid "America/Godthab"
 msgstr "אמריקה/גוטהוב"
 
-#: ../src/timezone_names.c:152
+#: ../src/timezone_names.c:148
 msgid "America/Goose_Bay"
 msgstr "אמריקה/גוס ביי"
 
-#: ../src/timezone_names.c:153
+#: ../src/timezone_names.c:149
 msgid "America/Grand_Turk"
 msgstr "אמריקה/גרנד טרק"
 
-#: ../src/timezone_names.c:154
+#: ../src/timezone_names.c:150
 msgid "America/Grenada"
 msgstr "אמריקה/גרנדה"
 
-#: ../src/timezone_names.c:155
+#: ../src/timezone_names.c:151
 msgid "America/Guadeloupe"
 msgstr "אמריקה/גוודלופ"
 
-#: ../src/timezone_names.c:156
+#: ../src/timezone_names.c:152
 msgid "America/Guatemala"
 msgstr "אמריקה/גואטמלה"
 
-#: ../src/timezone_names.c:157
+#: ../src/timezone_names.c:153
 msgid "America/Guayaquil"
 msgstr "אמריקה/גואיאקיל"
 
-#: ../src/timezone_names.c:158
+#: ../src/timezone_names.c:154
 msgid "America/Guyana"
 msgstr "אמריקה/גויאנה"
 
-#: ../src/timezone_names.c:159
+#: ../src/timezone_names.c:155
 msgid "America/Halifax"
 msgstr "אמריקה/הליפקס"
 
-#: ../src/timezone_names.c:160
+#: ../src/timezone_names.c:156
 msgid "America/Havana"
 msgstr "אמריקה/הוואנה"
 
-#: ../src/timezone_names.c:161
+#: ../src/timezone_names.c:157
 msgid "America/Hermosillo"
 msgstr "אמריקה/ארמוסיו"
 
-#: ../src/timezone_names.c:162
+#: ../src/timezone_names.c:158
 msgid "America/Indiana/Indianapolis"
 msgstr "אמריקה/אינדיאנה/אינדיאנפוליס"
 
-#: ../src/timezone_names.c:163
+#: ../src/timezone_names.c:159
 msgid "America/Indiana/Knox"
 msgstr "אמריקה/אינדיאנה/נוקס"
 
-#: ../src/timezone_names.c:164
+#: ../src/timezone_names.c:160
 msgid "America/Indiana/Marengo"
 msgstr "אמריקה/אינדיאנה/מרנגו"
 
-#: ../src/timezone_names.c:165
+#: ../src/timezone_names.c:161
 msgid "America/Indiana/Petersburg"
 msgstr "אמריקה/אינדיאנה/פטרסבורג"
 
-#: ../src/timezone_names.c:166
+#: ../src/timezone_names.c:162
 msgid "America/Indiana/Tell_City"
 msgstr "אמריקה/אינדיאנה/טל סיטי"
 
-#: ../src/timezone_names.c:167
+#: ../src/timezone_names.c:163
 msgid "America/Indiana/Vevay"
 msgstr "אמריקה/אינדיאנה/וביי"
 
-#: ../src/timezone_names.c:168
+#: ../src/timezone_names.c:164
 msgid "America/Indiana/Vincennes"
 msgstr "אמריקה/אינדיאנה/וינסנס"
 
-#: ../src/timezone_names.c:169
+#: ../src/timezone_names.c:165
 msgid "America/Indiana/Winamac"
 msgstr "אמריקה/אינדיאנה/וינמק"
 
-#: ../src/timezone_names.c:170
+#: ../src/timezone_names.c:166
 msgid "America/Indianapolis"
 msgstr "אמריקה/אינדיאנפוליס"
 
-#: ../src/timezone_names.c:171
+#: ../src/timezone_names.c:167
 msgid "America/Inuvik"
 msgstr "אמריקה/אינוויק"
 
-#: ../src/timezone_names.c:172
+#: ../src/timezone_names.c:168
 msgid "America/Iqaluit"
 msgstr "אמריקה/איקלוויט"
 
-#: ../src/timezone_names.c:173
+#: ../src/timezone_names.c:169
 msgid "America/Jamaica"
 msgstr "אמריקה/ג'מייקה"
 
-#: ../src/timezone_names.c:174
+#: ../src/timezone_names.c:170
 msgid "America/Jujuy"
 msgstr "אמריקה/חוחוי"
 
-#: ../src/timezone_names.c:175
+#: ../src/timezone_names.c:171
 msgid "America/Juneau"
 msgstr "אמריקה/ג'ונו"
 
-#: ../src/timezone_names.c:176
+#: ../src/timezone_names.c:172
 msgid "America/Kentucky/Louisville"
 msgstr "אמריקה/קנטקי/לואיסוויל"
 
-#: ../src/timezone_names.c:177
+#: ../src/timezone_names.c:173
 msgid "America/Kentucky/Monticello"
 msgstr "אמריקה/קנטקי/מונטיסלו"
 
-#: ../src/timezone_names.c:178
+#: ../src/timezone_names.c:174
 msgid "America/Knox_IN"
 msgstr "אמריקה/נוקס אין"
 
-#: ../src/timezone_names.c:179
+#: ../src/timezone_names.c:175
 msgid "America/Kralendijk"
 msgstr "אמריקה/קרלנדיק"
 
-#: ../src/timezone_names.c:180
+#: ../src/timezone_names.c:176
 msgid "America/La_Paz"
 msgstr "אמריקה/לה פס"
 
-#: ../src/timezone_names.c:181
+#: ../src/timezone_names.c:177
 msgid "America/Lima"
 msgstr "אמריקה/לימה"
 
-#: ../src/timezone_names.c:182
+#: ../src/timezone_names.c:178
 msgid "America/Los_Angeles"
 msgstr "אמריקה/לוס אנג'לס"
 
-#: ../src/timezone_names.c:183
+#: ../src/timezone_names.c:179
 msgid "America/Louisville"
 msgstr "אמריקה/לואיסוויל"
 
-#: ../src/timezone_names.c:184
+#: ../src/timezone_names.c:180
 msgid "America/Lower_Princes"
 msgstr "אמריקה/לוור פרינסס"
 
-#: ../src/timezone_names.c:185
+#: ../src/timezone_names.c:181
 msgid "America/Maceio"
 msgstr "אמריקה/מסיאו"
 
-#: ../src/timezone_names.c:186
+#: ../src/timezone_names.c:182
 msgid "America/Managua"
 msgstr "אמריקה/מנגווה"
 
-#: ../src/timezone_names.c:187
+#: ../src/timezone_names.c:183
 msgid "America/Manaus"
 msgstr "אמריקה/מנוס"
 
-#: ../src/timezone_names.c:188
+#: ../src/timezone_names.c:184
 msgid "America/Marigot"
 msgstr "אמריקה/מריגוט"
 
-#: ../src/timezone_names.c:189
+#: ../src/timezone_names.c:185
 msgid "America/Martinique"
 msgstr "אמריקה/מרטיניק"
 
-#: ../src/timezone_names.c:190
+#: ../src/timezone_names.c:186
 msgid "America/Matamoros"
 msgstr "אמריקה/מטמורוס"
 
-#: ../src/timezone_names.c:191
+#: ../src/timezone_names.c:187
 msgid "America/Mazatlan"
 msgstr "אמריקה/מזטלאן"
 
-#: ../src/timezone_names.c:192
+#: ../src/timezone_names.c:188
 msgid "America/Mendoza"
 msgstr "אמריקה/מנדוסה"
 
-#: ../src/timezone_names.c:193
+#: ../src/timezone_names.c:189
 msgid "America/Menominee"
 msgstr "אמריקה/מנומיני"
 
-#: ../src/timezone_names.c:194
+#: ../src/timezone_names.c:190
 msgid "America/Merida"
 msgstr "אמריקה/מרידה"
 
-#: ../src/timezone_names.c:195
+#: ../src/timezone_names.c:191
 msgid "America/Metlakatla"
 msgstr "אמריקה/מטלקטלה"
 
-#: ../src/timezone_names.c:196
+#: ../src/timezone_names.c:192
 msgid "America/Mexico_City"
 msgstr "אמריקה/מקסיקו"
 
-#: ../src/timezone_names.c:197
+#: ../src/timezone_names.c:193
 msgid "America/Miquelon"
 msgstr "אמריקה/מיקלון"
 
-#: ../src/timezone_names.c:198
+#: ../src/timezone_names.c:194
 msgid "America/Moncton"
 msgstr "אמריקה/מונקטון"
 
-#: ../src/timezone_names.c:199
+#: ../src/timezone_names.c:195
 msgid "America/Monterrey"
 msgstr "אמריקה/מונטריי"
 
-#: ../src/timezone_names.c:200
+#: ../src/timezone_names.c:196
 msgid "America/Montevideo"
 msgstr "אמריקה/מונטבידאו"
 
-#: ../src/timezone_names.c:201
+#: ../src/timezone_names.c:197
 msgid "America/Montreal"
 msgstr "אמריקה/מונטריאול"
 
-#: ../src/timezone_names.c:202
+#: ../src/timezone_names.c:198
 msgid "America/Montserrat"
 msgstr "אמריקה/מונטסראט"
 
-#: ../src/timezone_names.c:203
+#: ../src/timezone_names.c:199
 msgid "America/Nassau"
 msgstr "אמריקה/נסאו"
 
-#: ../src/timezone_names.c:204
+#: ../src/timezone_names.c:200
 msgid "America/New_York"
 msgstr "אמריקה/ניו יורק"
 
-#: ../src/timezone_names.c:205
+#: ../src/timezone_names.c:201
 msgid "America/Nipigon"
 msgstr "אמריקה/ניפיגון"
 
-#: ../src/timezone_names.c:206
+#: ../src/timezone_names.c:202
 msgid "America/Nome"
 msgstr "אמריקה/נומה"
 
-#: ../src/timezone_names.c:207
+#: ../src/timezone_names.c:203
 msgid "America/North_Dakota/Beulah"
 msgstr "אמריקה/נורת' דקוטה/ביולה"
 
-#: ../src/timezone_names.c:208
+#: ../src/timezone_names.c:204
 msgid "America/North_Dakota/Center"
 msgstr "אמריקה/נורת' דקוטה/סנטר"
 
-#: ../src/timezone_names.c:209
+#: ../src/timezone_names.c:205
 msgid "America/North_Dakota/New_Salem"
 msgstr "אמריקה/נורת' דקוטה/ניו סלם"
 
-#: ../src/timezone_names.c:210
+#: ../src/timezone_names.c:206
 msgid "America/Noronha"
 msgstr "אמריקה/נורוניה"
 
-#: ../src/timezone_names.c:211
+#: ../src/timezone_names.c:207
 msgid "America/Ojinaga"
 msgstr "אמריקה/אוג'ינגה"
 
-#: ../src/timezone_names.c:212
+#: ../src/timezone_names.c:208
 msgid "America/Panama"
 msgstr "אמריקה/פנמה"
 
-#: ../src/timezone_names.c:213
+#: ../src/timezone_names.c:209
 msgid "America/Pangnirtung"
 msgstr "אמריקה/פנגנירטונג"
 
-#: ../src/timezone_names.c:214
+#: ../src/timezone_names.c:210
 msgid "America/Paramaribo"
 msgstr "אמריקה/פרמריבו"
 
-#: ../src/timezone_names.c:215
+#: ../src/timezone_names.c:211
 msgid "America/Phoenix"
 msgstr "אמריקה/פניקס"
 
-#: ../src/timezone_names.c:216
+#: ../src/timezone_names.c:212
 msgid "America/Port-au-Prince"
 msgstr "אמריקה/פורט או-פרינס"
 
-#: ../src/timezone_names.c:217
+#: ../src/timezone_names.c:213
 msgid "America/Port_of_Spain"
 msgstr "אמריקה/פורט אוף ספיין"
 
-#: ../src/timezone_names.c:218
+#: ../src/timezone_names.c:214
 msgid "America/Porto_Acre"
 msgstr "אמריקה/פורטו אקרה"
 
-#: ../src/timezone_names.c:219
+#: ../src/timezone_names.c:215
 msgid "America/Porto_Velho"
 msgstr "אמריקה/פורטו ולהו"
 
-#: ../src/timezone_names.c:220
+#: ../src/timezone_names.c:216
 msgid "America/Puerto_Rico"
 msgstr "אמריקה/פורטו ריקו"
 
-#: ../src/timezone_names.c:221
+#: ../src/timezone_names.c:217
 msgid "America/Rainy_River"
 msgstr "אמריקה/רייני ריבר"
 
-#: ../src/timezone_names.c:222
+#: ../src/timezone_names.c:218
 msgid "America/Rankin_Inlet"
 msgstr "אמריקה/רנקין אינלט"
 
-#: ../src/timezone_names.c:223
+#: ../src/timezone_names.c:219
 msgid "America/Recife"
 msgstr "אמריקה/רסיפה"
 
-#: ../src/timezone_names.c:224
+#: ../src/timezone_names.c:220
 msgid "America/Regina"
 msgstr "אמריקה/רג'ינה"
 
-#: ../src/timezone_names.c:225
+#: ../src/timezone_names.c:221
 msgid "America/Resolute"
 msgstr "אמריקה/רזולוט"
 
-#: ../src/timezone_names.c:226
+#: ../src/timezone_names.c:222
 msgid "America/Rio_Branco"
 msgstr "אמריקה/ריו ברנקו"
 
-#: ../src/timezone_names.c:227
+#: ../src/timezone_names.c:223
 msgid "America/Rosario"
 msgstr "אמריקה/רוסריו"
 
-#: ../src/timezone_names.c:228
+#: ../src/timezone_names.c:224
 msgid "America/Santa_Isabel"
 msgstr "אמריקה/סנטה איזבל"
 
-#: ../src/timezone_names.c:229
+#: ../src/timezone_names.c:225
 msgid "America/Santarem"
 msgstr "אמריקה/סנטרם"
 
-#: ../src/timezone_names.c:230
+#: ../src/timezone_names.c:226
 msgid "America/Santiago"
 msgstr "אמריקה/סנטיאגו"
 
-#: ../src/timezone_names.c:231
+#: ../src/timezone_names.c:227
 msgid "America/Santo_Domingo"
 msgstr "אמריקה/סנטו דומינגו"
 
-#: ../src/timezone_names.c:232
+#: ../src/timezone_names.c:228
 msgid "America/Sao_Paulo"
 msgstr "אמריקה/סאו פאולו"
 
-#: ../src/timezone_names.c:233
+#: ../src/timezone_names.c:229
 msgid "America/Scoresbysund"
 msgstr "אמריקה/סקורסביסונד"
 
-#: ../src/timezone_names.c:234
+#: ../src/timezone_names.c:230
 msgid "America/Shiprock"
 msgstr "אמריקה/שיפרוק"
 
-#: ../src/timezone_names.c:235
+#: ../src/timezone_names.c:231
 msgid "America/Sitka"
 msgstr "אמריקה/סיטקה"
 
-#: ../src/timezone_names.c:236
+#: ../src/timezone_names.c:232
 msgid "America/St_Barthelemy"
 msgstr "אמריקה/סנט ברתלמי"
 
-#: ../src/timezone_names.c:237
+#: ../src/timezone_names.c:233
 msgid "America/St_Johns"
 msgstr "אמריקה/סנט ג'ונס"
 
-#: ../src/timezone_names.c:238
+#: ../src/timezone_names.c:234
 msgid "America/St_Kitts"
 msgstr "אמריקה/סנט קיטס"
 
-#: ../src/timezone_names.c:239
+#: ../src/timezone_names.c:235
 msgid "America/St_Lucia"
 msgstr "אמריקה/סנטה לוסיה"
 
-#: ../src/timezone_names.c:240
+#: ../src/timezone_names.c:236
 msgid "America/St_Thomas"
 msgstr "אמריקה/סנט תומאס"
 
-#: ../src/timezone_names.c:241
+#: ../src/timezone_names.c:237
 msgid "America/St_Vincent"
 msgstr "אמריקה/סנט וינסנט"
 
-#: ../src/timezone_names.c:242
+#: ../src/timezone_names.c:238
 msgid "America/Swift_Current"
 msgstr "אמריקה/סוויפט קארנט"
 
-#: ../src/timezone_names.c:243
+#: ../src/timezone_names.c:239
 msgid "America/Tegucigalpa"
 msgstr "אמריקה/טגוסיגלפה"
 
-#: ../src/timezone_names.c:244
+#: ../src/timezone_names.c:240
 msgid "America/Thule"
 msgstr "אמריקה/תולה"
 
-#: ../src/timezone_names.c:245
+#: ../src/timezone_names.c:241
 msgid "America/Thunder_Bay"
 msgstr "אמריקה/ת'נדר ביי"
 
-#: ../src/timezone_names.c:246
+#: ../src/timezone_names.c:242
 msgid "America/Tijuana"
 msgstr "אמריקה/טיחואנה"
 
-#: ../src/timezone_names.c:247
+#: ../src/timezone_names.c:243
 msgid "America/Toronto"
 msgstr "אמריקה/טורונטו"
 
-#: ../src/timezone_names.c:248
+#: ../src/timezone_names.c:244
 msgid "America/Tortola"
 msgstr "אמריקה/טורטולה"
 
-#: ../src/timezone_names.c:249
+#: ../src/timezone_names.c:245
 msgid "America/Vancouver"
 msgstr "אמריקה/ונקובר"
 
-#: ../src/timezone_names.c:250
+#: ../src/timezone_names.c:246
 msgid "America/Virgin"
 msgstr "אמריקה/וירג'ין"
 
-#: ../src/timezone_names.c:251
+#: ../src/timezone_names.c:247
 msgid "America/Whitehorse"
 msgstr "אמריקה/וייטהורס"
 
-#: ../src/timezone_names.c:252
+#: ../src/timezone_names.c:248
 msgid "America/Winnipeg"
 msgstr "אמריקה/ויניפג"
 
-#: ../src/timezone_names.c:253
+#: ../src/timezone_names.c:249
 msgid "America/Yakutat"
 msgstr "אמריקה/יקוטט"
 
-#: ../src/timezone_names.c:254
+#: ../src/timezone_names.c:250
 msgid "America/Yellowknife"
 msgstr "אמריקה/ילונייף"
 
-#: ../src/timezone_names.c:255
+#: ../src/timezone_names.c:251
 msgid "Antarctica"
 msgstr "אנטרטיקה"
 
-#: ../src/timezone_names.c:256
+#: ../src/timezone_names.c:252
 msgid "Antarctica/Casey"
 msgstr "אנטארקטיקה/קייסי"
 
-#: ../src/timezone_names.c:257
+#: ../src/timezone_names.c:253
 msgid "Antarctica/Davis"
 msgstr "אנטארקטיקה/דייויס"
 
-#: ../src/timezone_names.c:258
+#: ../src/timezone_names.c:254
 msgid "Antarctica/DumontDUrville"
 msgstr "אנטארקטיקה/דימון דירוויל"
 
-#: ../src/timezone_names.c:259
+#: ../src/timezone_names.c:255
 msgid "Antarctica/Macquarie"
 msgstr "אנטרטיקה/מקוארי"
 
-#: ../src/timezone_names.c:260
+#: ../src/timezone_names.c:256
 msgid "Antarctica/Mawson"
 msgstr "אנטארקטיקה/מוסון"
 
-#: ../src/timezone_names.c:261
+#: ../src/timezone_names.c:257
 msgid "Antarctica/McMurdo"
 msgstr "אנטארקטיקה/מקמורדו"
 
-#: ../src/timezone_names.c:262
+#: ../src/timezone_names.c:258
 msgid "Antarctica/Palmer"
 msgstr "אנטארקטיקה/פאלמר"
 
-#: ../src/timezone_names.c:263
+#: ../src/timezone_names.c:259
 msgid "Antarctica/Rothera"
 msgstr "אנטרטיקה/רותרה"
 
-#: ../src/timezone_names.c:264
+#: ../src/timezone_names.c:260
 msgid "Antarctica/South_Pole"
 msgstr "אנטארקטיקה/הקוטב הדרומי"
 
-#: ../src/timezone_names.c:265
+#: ../src/timezone_names.c:261
 msgid "Antarctica/Syowa"
 msgstr "אנטארקטיקה/שווה"
 
-#: ../src/timezone_names.c:266
+#: ../src/timezone_names.c:262
 msgid "Antarctica/Vostok"
 msgstr "אנטארקטיקה/ווסטוק"
 
-#: ../src/timezone_names.c:267
+#: ../src/timezone_names.c:263
 msgid "Arctic"
 msgstr "חוג הקוטב הצפוני"
 
-#: ../src/timezone_names.c:268
+#: ../src/timezone_names.c:264
 msgid "Arctic/Longyearbyen"
 msgstr "חוג הקוטב הצפוני/לונגיירביין"
 
-#: ../src/timezone_names.c:269
+#: ../src/timezone_names.c:265
 msgid "Asia"
 msgstr "אסיה"
 
-#: ../src/timezone_names.c:270
+#: ../src/timezone_names.c:266
 msgid "Asia/Aden"
 msgstr "אסיה/עדן"
 
-#: ../src/timezone_names.c:271
+#: ../src/timezone_names.c:267
 msgid "Asia/Almaty"
 msgstr "אסיה/אלמאטי"
 
-#: ../src/timezone_names.c:272
+#: ../src/timezone_names.c:268
 msgid "Asia/Amman"
 msgstr "אסיה/עמאן"
 
-#: ../src/timezone_names.c:273
+#: ../src/timezone_names.c:269
 msgid "Asia/Anadyr"
 msgstr "אסיה/אנדיר"
 
-#: ../src/timezone_names.c:274
+#: ../src/timezone_names.c:270
 msgid "Asia/Aqtau"
 msgstr "אסיה/אקטאו"
 
-#: ../src/timezone_names.c:275
+#: ../src/timezone_names.c:271
 msgid "Asia/Aqtobe"
 msgstr "אסיה/אקטיובינסק"
 
-#: ../src/timezone_names.c:276
+#: ../src/timezone_names.c:272
 msgid "Asia/Ashgabat"
 msgstr "אסיה/אשחבאד"
 
-#: ../src/timezone_names.c:277
+#: ../src/timezone_names.c:273
 msgid "Asia/Ashkhabad"
 msgstr "אסיה/אשקבד"
 
-#: ../src/timezone_names.c:278
+#: ../src/timezone_names.c:274
 msgid "Asia/Baghdad"
 msgstr "אסיה/בגדד"
 
-#: ../src/timezone_names.c:279
+#: ../src/timezone_names.c:275
 msgid "Asia/Bahrain"
 msgstr "אסיה/בחריין"
 
-#: ../src/timezone_names.c:280
+#: ../src/timezone_names.c:276
 msgid "Asia/Baku"
 msgstr "אסיה/באקו"
 
-#: ../src/timezone_names.c:281
+#: ../src/timezone_names.c:277
 msgid "Asia/Bangkok"
 msgstr "אסיה/בנגקוק"
 
-#: ../src/timezone_names.c:282
+#: ../src/timezone_names.c:278
 msgid "Asia/Beirut"
 msgstr "אסיה/ביירות"
 
-#: ../src/timezone_names.c:283
+#: ../src/timezone_names.c:279
 msgid "Asia/Bishkek"
 msgstr "אסיה/בישקק"
 
-#: ../src/timezone_names.c:284
+#: ../src/timezone_names.c:280
 msgid "Asia/Brunei"
 msgstr "אסיה/ברוניי"
 
-#: ../src/timezone_names.c:285
+#: ../src/timezone_names.c:281
 msgid "Asia/Calcutta"
 msgstr "אסיה/כלכותה"
 
-#: ../src/timezone_names.c:286
+#: ../src/timezone_names.c:282
 msgid "Asia/Choibalsan"
 msgstr "אסיה/צ'ויבלסן"
 
-#: ../src/timezone_names.c:287
+#: ../src/timezone_names.c:283
 msgid "Asia/Chongqing"
 msgstr "אסיה/צ'ונגקינג"
 
-#: ../src/timezone_names.c:288
+#: ../src/timezone_names.c:284
 msgid "Asia/Chungking"
 msgstr "אסיה/צ'ונגקינג"
 
-#: ../src/timezone_names.c:289
+#: ../src/timezone_names.c:285
 msgid "Asia/Colombo"
 msgstr "אסיה/קולומבו"
 
-#: ../src/timezone_names.c:290
+#: ../src/timezone_names.c:286
 msgid "Asia/Dacca"
 msgstr "אסיה/דכה"
 
-#: ../src/timezone_names.c:291
+#: ../src/timezone_names.c:287
 msgid "Asia/Damascus"
 msgstr "אסיה/דמשק"
 
-#: ../src/timezone_names.c:292
+#: ../src/timezone_names.c:288
 msgid "Asia/Dhaka"
 msgstr "אסיה/דאקה"
 
-#: ../src/timezone_names.c:293
+#: ../src/timezone_names.c:289
 msgid "Asia/Dili"
 msgstr "אסיה/דילי"
 
-#: ../src/timezone_names.c:294
+#: ../src/timezone_names.c:290
 msgid "Asia/Dubai"
 msgstr "אסיה/דובאי"
 
-#: ../src/timezone_names.c:295
+#: ../src/timezone_names.c:291
 msgid "Asia/Dushanbe"
 msgstr "אסיה/דושנבה"
 
-#: ../src/timezone_names.c:296
+#: ../src/timezone_names.c:292
 msgid "Asia/Gaza"
 msgstr "אסיה/עזה"
 
-#: ../src/timezone_names.c:297
+#: ../src/timezone_names.c:293
 msgid "Asia/Harbin"
 msgstr "אסיה/חרבין"
 
-#: ../src/timezone_names.c:298
+#: ../src/timezone_names.c:294
 msgid "Asia/Hebron"
 msgstr "אסיה/חברון"
 
-#: ../src/timezone_names.c:299
+#: ../src/timezone_names.c:295
 msgid "Asia/Hong_Kong"
 msgstr "אסיה/הונג קונג"
 
-#: ../src/timezone_names.c:300
+#: ../src/timezone_names.c:296
 msgid "Asia/Ho_Chi_Minh"
 msgstr "אסיה/הו צ'י מין"
 
-#: ../src/timezone_names.c:301
+#: ../src/timezone_names.c:297
 msgid "Asia/Hovd"
 msgstr "אסיה/חובד"
 
-#: ../src/timezone_names.c:302
+#: ../src/timezone_names.c:298
 msgid "Asia/Irkutsk"
 msgstr "אסיה/אירקוצק"
 
-#: ../src/timezone_names.c:303
+#: ../src/timezone_names.c:299
 msgid "Asia/Istanbul"
 msgstr "אירופה/איסטנבול"
 
-#: ../src/timezone_names.c:304
+#: ../src/timezone_names.c:300
 msgid "Asia/Jakarta"
 msgstr "אסיה/ג'קרטה"
 
-#: ../src/timezone_names.c:305
+#: ../src/timezone_names.c:301
 msgid "Asia/Jayapura"
 msgstr "אסיה/ג'יאפורה"
 
-#: ../src/timezone_names.c:306
+#: ../src/timezone_names.c:302
 msgid "Asia/Jerusalem"
 msgstr "אסיה/ירושלים"
 
-#: ../src/timezone_names.c:307
+#: ../src/timezone_names.c:303
 msgid "Asia/Kabul"
 msgstr "אסיה/קאבול"
 
-#: ../src/timezone_names.c:308
+#: ../src/timezone_names.c:304
 msgid "Asia/Kamchatka"
 msgstr "אסיה/קמצ'טקה"
 
-#: ../src/timezone_names.c:309
+#: ../src/timezone_names.c:305
 msgid "Asia/Karachi"
 msgstr "אסיה/קראצ'י"
 
-#: ../src/timezone_names.c:310
+#: ../src/timezone_names.c:306
 msgid "Asia/Kashgar"
 msgstr "אסיה/קשגאר"
 
-#: ../src/timezone_names.c:311
+#: ../src/timezone_names.c:307
 msgid "Asia/Kathmandu"
 msgstr "אסיה/קטמנדו"
 
-#: ../src/timezone_names.c:312
+#: ../src/timezone_names.c:308
 msgid "Asia/Katmandu"
 msgstr "אסיה/קטמנדו"
 
-#: ../src/timezone_names.c:313
+#: ../src/timezone_names.c:309
 msgid "Asia/Khandyga"
 msgstr "אסיה/קנדיגה"
 
-#: ../src/timezone_names.c:314
+#: ../src/timezone_names.c:310
 msgid "Asia/Kolkata"
 msgstr "אסיה/קולקטה"
 
-#: ../src/timezone_names.c:315
+#: ../src/timezone_names.c:311
 msgid "Asia/Krasnoyarsk"
 msgstr "אסיה/קרסנויארסק"
 
-#: ../src/timezone_names.c:316
+#: ../src/timezone_names.c:312
 msgid "Asia/Kuala_Lumpur"
 msgstr "אסיה/קואלה לומפור"
 
-#: ../src/timezone_names.c:317
+#: ../src/timezone_names.c:313
 msgid "Asia/Kuching"
 msgstr "אסיה/קוצ'ינג"
 
-#: ../src/timezone_names.c:318
+#: ../src/timezone_names.c:314
 msgid "Asia/Kuwait"
 msgstr "אסיה/כווית"
 
-#: ../src/timezone_names.c:319
+#: ../src/timezone_names.c:315
 msgid "Asia/Macao"
 msgstr "אסיה/מקאו"
 
-#: ../src/timezone_names.c:320
+#: ../src/timezone_names.c:316
 msgid "Asia/Macau"
 msgstr "אסיה/מקאו"
 
-#: ../src/timezone_names.c:321
+#: ../src/timezone_names.c:317
 msgid "Asia/Magadan"
 msgstr "אסיה/מגדן"
 
-#: ../src/timezone_names.c:322
+#: ../src/timezone_names.c:318
 msgid "Asia/Makassar"
 msgstr "אסיה/מקסר"
 
-#: ../src/timezone_names.c:323
+#: ../src/timezone_names.c:319
 msgid "Asia/Manila"
 msgstr "אסיה/מנילה"
 
-#: ../src/timezone_names.c:324
+#: ../src/timezone_names.c:320
 msgid "Asia/Muscat"
 msgstr "אסיה/מסקט"
 
-#: ../src/timezone_names.c:325
+#: ../src/timezone_names.c:321
 msgid "Asia/Nicosia"
 msgstr "אסיה/ניקוסיה"
 
-#: ../src/timezone_names.c:326
+#: ../src/timezone_names.c:322
 msgid "Asia/Novokuznetsk"
 msgstr "אסיה/נובוקוזנטסק"
 
-#: ../src/timezone_names.c:327
+#: ../src/timezone_names.c:323
 msgid "Asia/Novosibirsk"
 msgstr "אסיה/נובוסיבירסק"
 
-#: ../src/timezone_names.c:328
+#: ../src/timezone_names.c:324
 msgid "Asia/Omsk"
 msgstr "אסיה/אומסק"
 
-#: ../src/timezone_names.c:329
+#: ../src/timezone_names.c:325
 msgid "Asia/Oral"
 msgstr "אסיה/אורל"
 
-#: ../src/timezone_names.c:330
+#: ../src/timezone_names.c:326
 msgid "Asia/Phnom_Penh"
 msgstr "אסיה/פנום פן"
 
-#: ../src/timezone_names.c:331
+#: ../src/timezone_names.c:327
 msgid "Asia/Pontianak"
 msgstr "אסיה/פונטיאנק"
 
-#: ../src/timezone_names.c:332
+#: ../src/timezone_names.c:328
 msgid "Asia/Pyongyang"
 msgstr "אסיה/פיונגיאנג"
 
-#: ../src/timezone_names.c:333
+#: ../src/timezone_names.c:329
 msgid "Asia/Qatar"
 msgstr "אסיה/קטאר"
 
-#: ../src/timezone_names.c:334
+#: ../src/timezone_names.c:330
 msgid "Asia/Qyzylorda"
 msgstr "אסיה/קיזילורדה"
 
-#: ../src/timezone_names.c:335
+#: ../src/timezone_names.c:331
 msgid "Asia/Rangoon"
 msgstr "אסיה/רנגון"
 
-#: ../src/timezone_names.c:336
+#: ../src/timezone_names.c:332
 msgid "Asia/Riyadh"
 msgstr "אסיה/ריאד"
 
-#: ../src/timezone_names.c:337
+#: ../src/timezone_names.c:333
 msgid "Asia/Riyadh87"
 msgstr "אסיה/ריאד87"
 
-#: ../src/timezone_names.c:338
+#: ../src/timezone_names.c:334
 msgid "Asia/Riyadh88"
 msgstr "אסיה/ריאד88"
 
-#: ../src/timezone_names.c:339
+#: ../src/timezone_names.c:335
 msgid "Asia/Riyadh89"
 msgstr "אסיה/ריאד89"
 
-#: ../src/timezone_names.c:340
+#: ../src/timezone_names.c:336
 msgid "Asia/Saigon"
 msgstr "אסיה/סייגון"
 
-#: ../src/timezone_names.c:341
+#: ../src/timezone_names.c:337
 msgid "Asia/Sakhalin"
 msgstr "אסיה/סקלין"
 
-#: ../src/timezone_names.c:342
+#: ../src/timezone_names.c:338
 msgid "Asia/Samarkand"
 msgstr "אסיה/סמרקנד"
 
-#: ../src/timezone_names.c:343
+#: ../src/timezone_names.c:339
 msgid "Asia/Seoul"
 msgstr "אסיה/סיאול"
 
-#: ../src/timezone_names.c:344
+#: ../src/timezone_names.c:340
 msgid "Asia/Shanghai"
 msgstr "אסיה/שנגחאי"
 
-#: ../src/timezone_names.c:345
+#: ../src/timezone_names.c:341
 msgid "Asia/Singapore"
 msgstr "אסיה/סינגפור"
 
-#: ../src/timezone_names.c:346
+#: ../src/timezone_names.c:342
 msgid "Asia/Taipei"
 msgstr "אסיה/טייפה"
 
-#: ../src/timezone_names.c:347
+#: ../src/timezone_names.c:343
 msgid "Asia/Tashkent"
 msgstr "אסיה/טשקנט"
 
-#: ../src/timezone_names.c:348
+#: ../src/timezone_names.c:344
 msgid "Asia/Tbilisi"
 msgstr "אסיה/טביליסי"
 
-#: ../src/timezone_names.c:349
+#: ../src/timezone_names.c:345
 msgid "Asia/Tehran"
 msgstr "אסיה/טהרן"
 
-#: ../src/timezone_names.c:350
+#: ../src/timezone_names.c:346
 msgid "Asia/Tel_Aviv"
 msgstr "אסיה/תל אביב"
 
-#: ../src/timezone_names.c:351
+#: ../src/timezone_names.c:347
 msgid "Asia/Thimbu"
 msgstr "אסיה/תימבו"
 
-#: ../src/timezone_names.c:352
+#: ../src/timezone_names.c:348
 msgid "Asia/Thimphu"
 msgstr "אסיה/טימפו"
 
-#: ../src/timezone_names.c:353
+#: ../src/timezone_names.c:349
 msgid "Asia/Tokyo"
 msgstr "אסיה/טוקיו"
 
-#: ../src/timezone_names.c:354
+#: ../src/timezone_names.c:350
 msgid "Asia/Ujung_Pandang"
 msgstr "אסיה/אויונג פדאנג"
 
-#: ../src/timezone_names.c:355
+#: ../src/timezone_names.c:351
 msgid "Asia/Ulaanbaatar"
 msgstr "אסיה/אולן בטור"
 
-#: ../src/timezone_names.c:356
+#: ../src/timezone_names.c:352
 msgid "Asia/Ulan_Bator"
 msgstr "אסיה/אולן בטור"
 
-#: ../src/timezone_names.c:357
+#: ../src/timezone_names.c:353
 msgid "Asia/Urumqi"
 msgstr "אסיה/אורומצ'י"
 
-#: ../src/timezone_names.c:358
+#: ../src/timezone_names.c:354
 msgid "Asia/Ust-Nera"
 msgstr "אסיה/אוסט-נרה"
 
-#: ../src/timezone_names.c:359
+#: ../src/timezone_names.c:355
 msgid "Asia/Vientiane"
 msgstr "אסיה/ויינטיין"
 
-#: ../src/timezone_names.c:360
+#: ../src/timezone_names.c:356
 msgid "Asia/Vladivostok"
 msgstr "אסיה/ולדיווסטוק"
 
-#: ../src/timezone_names.c:361
+#: ../src/timezone_names.c:357
 msgid "Asia/Yakutsk"
 msgstr "אסיה/יקוצק"
 
-#: ../src/timezone_names.c:362
+#: ../src/timezone_names.c:358
 msgid "Asia/Yekaterinburg"
 msgstr "אסיה/יקטרינבורג"
 
-#: ../src/timezone_names.c:363
+#: ../src/timezone_names.c:359
 msgid "Asia/Yerevan"
 msgstr "אסיה/ירבאן"
 
-#: ../src/timezone_names.c:364
+#: ../src/timezone_names.c:360
 msgid "Atlantic"
 msgstr "האוקינוס האטלנטי"
 
-#: ../src/timezone_names.c:365
+#: ../src/timezone_names.c:361
 msgid "Atlantic/Azores"
 msgstr "האוקיינוס האטלנטי/איי האזורים"
 
-#: ../src/timezone_names.c:366
+#: ../src/timezone_names.c:362
 msgid "Atlantic/Bermuda"
 msgstr "האוקיינוס האטלנטי/ברמודה"
 
-#: ../src/timezone_names.c:367
+#: ../src/timezone_names.c:363
 msgid "Atlantic/Canary"
 msgstr "האוקיינוס האטלנטי/האיים הקנריים"
 
-#: ../src/timezone_names.c:368
+#: ../src/timezone_names.c:364
 msgid "Atlantic/Cape_Verde"
 msgstr "האוקיינוס האטלנטי/כף ורדה"
 
-#: ../src/timezone_names.c:369
+#: ../src/timezone_names.c:365
 msgid "Atlantic/Faeroe"
 msgstr "האוקיינוס האטלנטי/איי פארו"
 
-#: ../src/timezone_names.c:370
+#: ../src/timezone_names.c:366
 msgid "Atlantic/Faroe"
 msgstr "אטלנטיק/פארו"
 
-#: ../src/timezone_names.c:371
+#: ../src/timezone_names.c:367
 msgid "Atlantic/Jan_Mayen"
 msgstr "האוקיינוס האטלנטי/יאן מאיין"
 
-#: ../src/timezone_names.c:372
+#: ../src/timezone_names.c:368
 msgid "Atlantic/Madeira"
 msgstr "האוקיינוס האטלנטי/מדירה"
 
-#: ../src/timezone_names.c:373
+#: ../src/timezone_names.c:369
 msgid "Atlantic/Reykjavik"
 msgstr "האוקיינוס האטלנטי/רייקיאוויק"
 
-#: ../src/timezone_names.c:374
+#: ../src/timezone_names.c:370
 msgid "Atlantic/South_Georgia"
 msgstr "האוקיינוס האטלנטי/איי ג'ורג'יה הדרומית"
 
-#: ../src/timezone_names.c:375
+#: ../src/timezone_names.c:371
 msgid "Atlantic/St_Helena"
 msgstr "האוקיינוס האטלנטי/סנט הלנה"
 
-#: ../src/timezone_names.c:376
+#: ../src/timezone_names.c:372
 msgid "Atlantic/Stanley"
 msgstr "האוקיינוס האטלנטי/סטנלי"
 
-#: ../src/timezone_names.c:377
+#: ../src/timezone_names.c:373
 msgid "Australia"
 msgstr "אוסטרליה"
 
-#: ../src/timezone_names.c:378
+#: ../src/timezone_names.c:374
 msgid "Australia/ACT"
 msgstr "אוסטרליה/ACT "
 
-#: ../src/timezone_names.c:379
+#: ../src/timezone_names.c:375
 msgid "Australia/Adelaide"
 msgstr "אוסטרליה/אדליד"
 
-#: ../src/timezone_names.c:380
+#: ../src/timezone_names.c:376
 msgid "Australia/Brisbane"
 msgstr "אוסטרליה/בריסביין"
 
-#: ../src/timezone_names.c:381
+#: ../src/timezone_names.c:377
 msgid "Australia/Broken_Hill"
 msgstr "אוסטרליה/ברוקן היל"
 
-#: ../src/timezone_names.c:382
+#: ../src/timezone_names.c:378
 msgid "Australia/Currie"
 msgstr "אוסטרליה/קרי"
 
-#: ../src/timezone_names.c:383
+#: ../src/timezone_names.c:379
 msgid "Australia/Darwin"
 msgstr "אוסטרליה/דרווין"
 
-#: ../src/timezone_names.c:384
+#: ../src/timezone_names.c:380
 msgid "Australia/Eucla"
 msgstr "אוסטרליה/יוקלה"
 
-#: ../src/timezone_names.c:385
+#: ../src/timezone_names.c:381
 msgid "Australia/Hobart"
 msgstr "אוסטרליה/הוברט"
 
-#: ../src/timezone_names.c:386
+#: ../src/timezone_names.c:382
 msgid "Australia/Lindeman"
 msgstr "אוסטרליה/לינדמן"
 
-#: ../src/timezone_names.c:387
+#: ../src/timezone_names.c:383
 msgid "Australia/Lord_Howe"
 msgstr "אוסטרליה/איי לורד הו"
 
-#: ../src/timezone_names.c:388
+#: ../src/timezone_names.c:384
 msgid "Australia/Melbourne"
 msgstr "אוסטרליה/מלבורן"
 
-#: ../src/timezone_names.c:389
+#: ../src/timezone_names.c:385
 msgid "Australia/Perth"
 msgstr "אוסטרליה/פרת'"
 
-#: ../src/timezone_names.c:390
+#: ../src/timezone_names.c:386
 msgid "Australia/Sydney"
 msgstr "אוסטרליה/סידני"
 
-#: ../src/timezone_names.c:391
+#: ../src/timezone_names.c:387
 msgid "Brazil"
 msgstr "ברזיל"
 
-#: ../src/timezone_names.c:392
+#: ../src/timezone_names.c:388
 msgid "Brazil/Acre"
 msgstr "ברזיל/אקרה"
 
-#: ../src/timezone_names.c:393
+#: ../src/timezone_names.c:389
 msgid "Brazil/DeNoronha"
 msgstr "ברזיל/דהנורונהא"
 
-#: ../src/timezone_names.c:394
+#: ../src/timezone_names.c:390
 msgid "Brazil/East"
 msgstr "ברזיל/מזרח"
 
-#: ../src/timezone_names.c:395
+#: ../src/timezone_names.c:391
 msgid "Brazil/West"
 msgstr "ברזיל/מערב"
 
-#: ../src/timezone_names.c:396
+#: ../src/timezone_names.c:392
 msgid "Canada"
 msgstr "קנדה"
 
-#: ../src/timezone_names.c:397
+#: ../src/timezone_names.c:393
 msgid "Canada/Atlantic"
 msgstr "קנדה/אטלנטיק"
 
-#: ../src/timezone_names.c:398
+#: ../src/timezone_names.c:394
 msgid "Canada/Central"
 msgstr "קנדה/מרכז"
 
-#: ../src/timezone_names.c:399
+#: ../src/timezone_names.c:395
 msgid "Canada/East-Saskatchewan"
 msgstr "קנדה/איסט-ססקצ'וואן"
 
-#: ../src/timezone_names.c:400
+#: ../src/timezone_names.c:396
 msgid "Canada/Eastern"
 msgstr "קנדה/מזרח"
 
-#: ../src/timezone_names.c:401
+#: ../src/timezone_names.c:397
 msgid "Canada/Mountain"
 msgstr "קנדה/מאונטיין"
 
-#: ../src/timezone_names.c:402
+#: ../src/timezone_names.c:398
 msgid "Canada/Newfoundland"
 msgstr "קנדה/ניופאונדלנד"
 
-#: ../src/timezone_names.c:403
+#: ../src/timezone_names.c:399
 msgid "Canada/Pacific"
 msgstr "קנדה/פסיפיק"
 
-#: ../src/timezone_names.c:404
+#: ../src/timezone_names.c:400
 msgid "Canada/Saskatchewan"
 msgstr "קנדה/ססקצ'וואן"
 
-#: ../src/timezone_names.c:405
+#: ../src/timezone_names.c:401
 msgid "Canada/Yukon"
 msgstr "קנדה/יוקון"
 
-#: ../src/timezone_names.c:406
+#: ../src/timezone_names.c:402
 msgid "Chile"
 msgstr "צ'ילה"
 
-#: ../src/timezone_names.c:407
+#: ../src/timezone_names.c:403
 msgid "Chile/Continental"
 msgstr "צ'ילה/קונטיננטל"
 
-#: ../src/timezone_names.c:408
+#: ../src/timezone_names.c:404
 msgid "Chile/EasterIsland"
 msgstr "צ'ילה/איסטראיילנד"
 
-#: ../src/timezone_names.c:409
+#: ../src/timezone_names.c:405
 msgid "Etc"
 msgstr "Etc"
 
-#: ../src/timezone_names.c:410
+#: ../src/timezone_names.c:406
 msgid "Etc/GMT"
 msgstr "Etc/GMT"
 
-#: ../src/timezone_names.c:411
+#: ../src/timezone_names.c:407
 msgid "Etc/GMT+0"
 msgstr "Etc/GMT+0"
 
-#: ../src/timezone_names.c:412
+#: ../src/timezone_names.c:408
 msgid "Etc/GMT+1"
 msgstr "Etc/GMT+1"
 
-#: ../src/timezone_names.c:413
+#: ../src/timezone_names.c:409
 msgid "Etc/GMT+10"
 msgstr "Etc/GMT+10"
 
-#: ../src/timezone_names.c:414
+#: ../src/timezone_names.c:410
 msgid "Etc/GMT+11"
 msgstr "Etc/GMT+11"
 
-#: ../src/timezone_names.c:415
+#: ../src/timezone_names.c:411
 msgid "Etc/GMT+12"
 msgstr "Etc/GMT+12"
 
-#: ../src/timezone_names.c:416
+#: ../src/timezone_names.c:412
 msgid "Etc/GMT+2"
 msgstr "Etc/GMT+2"
 
-#: ../src/timezone_names.c:417
+#: ../src/timezone_names.c:413
 msgid "Etc/GMT+3"
 msgstr "Etc/GMT+3"
 
-#: ../src/timezone_names.c:418
+#: ../src/timezone_names.c:414
 msgid "Etc/GMT+4"
 msgstr "Etc/GMT+4"
 
-#: ../src/timezone_names.c:419
+#: ../src/timezone_names.c:415
 msgid "Etc/GMT+5"
 msgstr "Etc/GMT+5"
 
-#: ../src/timezone_names.c:420
+#: ../src/timezone_names.c:416
 msgid "Etc/GMT+6"
 msgstr "Etc/GMT+6"
 
-#: ../src/timezone_names.c:421
+#: ../src/timezone_names.c:417
 msgid "Etc/GMT+7"
 msgstr "Etc/GMT+7"
 
-#: ../src/timezone_names.c:422
+#: ../src/timezone_names.c:418
 msgid "Etc/GMT+8"
 msgstr "Etc/GMT+8"
 
-#: ../src/timezone_names.c:423
+#: ../src/timezone_names.c:419
 msgid "Etc/GMT+9"
 msgstr "Etc/GMT+9"
 
-#: ../src/timezone_names.c:424
+#: ../src/timezone_names.c:420
 msgid "Etc/GMT-0"
 msgstr "Etc/GMT-0"
 
-#: ../src/timezone_names.c:425
+#: ../src/timezone_names.c:421
 msgid "Etc/GMT-1"
 msgstr "Etc/GMT-1"
 
-#: ../src/timezone_names.c:426
+#: ../src/timezone_names.c:422
 msgid "Etc/GMT-10"
 msgstr "Etc/GMT-10"
 
-#: ../src/timezone_names.c:427
+#: ../src/timezone_names.c:423
 msgid "Etc/GMT-11"
 msgstr "Etc/GMT-11"
 
-#: ../src/timezone_names.c:428
+#: ../src/timezone_names.c:424
 msgid "Etc/GMT-12"
 msgstr "Etc/GMT-12"
 
-#: ../src/timezone_names.c:429
+#: ../src/timezone_names.c:425
 msgid "Etc/GMT-13"
 msgstr "Etc/GMT-13"
 
-#: ../src/timezone_names.c:430
+#: ../src/timezone_names.c:426
 msgid "Etc/GMT-14"
 msgstr "Etc/GMT-14"
 
-#: ../src/timezone_names.c:431
+#: ../src/timezone_names.c:427
 msgid "Etc/GMT-2"
 msgstr "Etc/GMT-2"
 
-#: ../src/timezone_names.c:432
+#: ../src/timezone_names.c:428
 msgid "Etc/GMT-3"
 msgstr "Etc/GMT-3"
 
-#: ../src/timezone_names.c:433
+#: ../src/timezone_names.c:429
 msgid "Etc/GMT-4"
 msgstr "Etc/GMT-4"
 
-#: ../src/timezone_names.c:434
+#: ../src/timezone_names.c:430
 msgid "Etc/GMT-5"
 msgstr "Etc/GMT-5"
 
-#: ../src/timezone_names.c:435
+#: ../src/timezone_names.c:431
 msgid "Etc/GMT-6"
 msgstr "Etc/GMT-6"
 
-#: ../src/timezone_names.c:436
+#: ../src/timezone_names.c:432
 msgid "Etc/GMT-7"
 msgstr "Etc/GMT-7"
 
-#: ../src/timezone_names.c:437
+#: ../src/timezone_names.c:433
 msgid "Etc/GMT-8"
 msgstr "Etc/GMT-8"
 
-#: ../src/timezone_names.c:438
+#: ../src/timezone_names.c:434
 msgid "Etc/GMT-9"
 msgstr "Etc/GMT-9"
 
-#: ../src/timezone_names.c:439
+#: ../src/timezone_names.c:435
 msgid "Etc/GMT0"
 msgstr "Etc/GMT0"
 
-#: ../src/timezone_names.c:440
+#: ../src/timezone_names.c:436
 msgid "Etc/Greenwich"
 msgstr "Etc/Greenwich"
 
-#: ../src/timezone_names.c:441
+#: ../src/timezone_names.c:437
 msgid "Etc/UCT"
 msgstr "Etc/UCT"
 
-#: ../src/timezone_names.c:442
+#: ../src/timezone_names.c:438
 msgid "Etc/UTC"
 msgstr "Etc/UTC"
 
-#: ../src/timezone_names.c:443
+#: ../src/timezone_names.c:439
 msgid "Etc/Universal"
 msgstr "Etc/Universal"
 
-#: ../src/timezone_names.c:444
+#: ../src/timezone_names.c:440
 msgid "Etc/Zulu"
 msgstr "Etc/Zulu"
 
-#: ../src/timezone_names.c:445
+#: ../src/timezone_names.c:441
 msgid "Europe"
 msgstr "אירופה"
 
-#: ../src/timezone_names.c:446
+#: ../src/timezone_names.c:442
 msgid "Europe/Amsterdam"
 msgstr "אירופה/אמסטרדם"
 
-#: ../src/timezone_names.c:447
+#: ../src/timezone_names.c:443
 msgid "Europe/Andorra"
 msgstr "אירופה/אנדורה"
 
-#: ../src/timezone_names.c:448
+#: ../src/timezone_names.c:444
 msgid "Europe/Athens"
 msgstr "אירופה/אתונה"
 
-#: ../src/timezone_names.c:449
+#: ../src/timezone_names.c:445
 msgid "Europe/Belfast"
 msgstr "אירופה/בלפסט"
 
-#: ../src/timezone_names.c:450
+#: ../src/timezone_names.c:446
 msgid "Europe/Belgrade"
 msgstr "אירופה/בלגרד"
 
-#: ../src/timezone_names.c:451
+#: ../src/timezone_names.c:447
 msgid "Europe/Berlin"
 msgstr "אירופה/ברלין"
 
-#: ../src/timezone_names.c:452
+#: ../src/timezone_names.c:448
 msgid "Europe/Bratislava"
 msgstr "אירופה/ברטיסלבה"
 
-#: ../src/timezone_names.c:453
+#: ../src/timezone_names.c:449
 msgid "Europe/Brussels"
 msgstr "אירופה/בריסל"
 
-#: ../src/timezone_names.c:454
+#: ../src/timezone_names.c:450
 msgid "Europe/Bucharest"
 msgstr "אירופה/בוקרשט"
 
-#: ../src/timezone_names.c:455
+#: ../src/timezone_names.c:451
 msgid "Europe/Budapest"
 msgstr "אירופה/בודפשט"
 
-#: ../src/timezone_names.c:456
+#: ../src/timezone_names.c:452
 msgid "Europe/Busingen"
 msgstr "אירופה/בוסינגן"
 
-#: ../src/timezone_names.c:457
+#: ../src/timezone_names.c:453
 msgid "Europe/Chisinau"
 msgstr "אירופה/קישינב"
 
-#: ../src/timezone_names.c:458
+#: ../src/timezone_names.c:454
 msgid "Europe/Copenhagen"
 msgstr "אירופה/קופנהגן"
 
-#: ../src/timezone_names.c:459
+#: ../src/timezone_names.c:455
 msgid "Europe/Dublin"
 msgstr "אירופה/דבלין"
 
-#: ../src/timezone_names.c:460
+#: ../src/timezone_names.c:456
 msgid "Europe/Gibraltar"
 msgstr "אירופה/גיברלטר"
 
-#: ../src/timezone_names.c:461
+#: ../src/timezone_names.c:457
 msgid "Europe/Guernsey"
 msgstr "אירופה/גרנזי"
 
-#: ../src/timezone_names.c:462
+#: ../src/timezone_names.c:458
 msgid "Europe/Helsinki"
 msgstr "אירופה/הלסינקי"
 
-#: ../src/timezone_names.c:463
+#: ../src/timezone_names.c:459
 msgid "Europe/Isle_of_Man"
 msgstr "אירופה/אייסל אוף מן"
 
-#: ../src/timezone_names.c:464
+#: ../src/timezone_names.c:460
 msgid "Europe/Istanbul"
 msgstr "אירופה/איסטנבול"
 
-#: ../src/timezone_names.c:465
+#: ../src/timezone_names.c:461
 msgid "Europe/Jersey"
 msgstr "אירופה/ג'רסי"
 
-#: ../src/timezone_names.c:466
+#: ../src/timezone_names.c:462
 msgid "Europe/Kaliningrad"
 msgstr "אירופה/קלינינגרד"
 
-#: ../src/timezone_names.c:467
+#: ../src/timezone_names.c:463
 msgid "Europe/Kiev"
 msgstr "אירופה/קייב"
 
-#: ../src/timezone_names.c:468
+#: ../src/timezone_names.c:464
 msgid "Europe/Lisbon"
 msgstr "אירופה/ליסבון"
 
-#: ../src/timezone_names.c:469
+#: ../src/timezone_names.c:465
 msgid "Europe/Ljubljana"
 msgstr "אירופה/ליובלינה"
 
-#: ../src/timezone_names.c:470
+#: ../src/timezone_names.c:466
 msgid "Europe/London"
 msgstr "אירופה/לונדון"
 
-#: ../src/timezone_names.c:471
+#: ../src/timezone_names.c:467
 msgid "Europe/Luxembourg"
 msgstr "אירופה/לוקסמבורג"
 
-#: ../src/timezone_names.c:472
+#: ../src/timezone_names.c:468
 msgid "Europe/Madrid"
 msgstr "אירופה/מדריד"
 
-#: ../src/timezone_names.c:473
+#: ../src/timezone_names.c:469
 msgid "Europe/Malta"
 msgstr "אירופה/מלטה"
 
-#: ../src/timezone_names.c:474
+#: ../src/timezone_names.c:470
 msgid "Europe/Mariehamn"
 msgstr "אירופה/מריהמן"
 
-#: ../src/timezone_names.c:475
+#: ../src/timezone_names.c:471
 msgid "Europe/Minsk"
 msgstr "אירופה/מינסק"
 
-#: ../src/timezone_names.c:476
+#: ../src/timezone_names.c:472
 msgid "Europe/Monaco"
 msgstr "אירופה/מונקו"
 
-#: ../src/timezone_names.c:477
+#: ../src/timezone_names.c:473
 msgid "Europe/Moscow"
 msgstr "אירופה/מוסקבה"
 
-#: ../src/timezone_names.c:478
+#: ../src/timezone_names.c:474
 msgid "Europe/Nicosia"
 msgstr "אסיה/ניקוסיה"
 
-#: ../src/timezone_names.c:479
+#: ../src/timezone_names.c:475
 msgid "Europe/Oslo"
 msgstr "אירופה/אוסלו"
 
-#: ../src/timezone_names.c:480
+#: ../src/timezone_names.c:476
 msgid "Europe/Paris"
 msgstr "אירופה/פריז"
 
-#: ../src/timezone_names.c:481
+#: ../src/timezone_names.c:477
 msgid "Europe/Podgorica"
 msgstr "אירופה/פודגוריקה"
 
-#: ../src/timezone_names.c:482
+#: ../src/timezone_names.c:478
 msgid "Europe/Prague"
 msgstr "אירופה/פראג"
 
-#: ../src/timezone_names.c:483
+#: ../src/timezone_names.c:479
 msgid "Europe/Riga"
 msgstr "אירופה/ריגה"
 
-#: ../src/timezone_names.c:484
+#: ../src/timezone_names.c:480
 msgid "Europe/Rome"
 msgstr "אירופה/רומא"
 
-#: ../src/timezone_names.c:485
+#: ../src/timezone_names.c:481
 msgid "Europe/Samara"
 msgstr "אירופה/סמרה"
 
-#: ../src/timezone_names.c:486
+#: ../src/timezone_names.c:482
 msgid "Europe/San_Marino"
 msgstr "אירופה/סן מרינו"
 
-#: ../src/timezone_names.c:487
+#: ../src/timezone_names.c:483
 msgid "Europe/Sarajevo"
 msgstr "אירופה/סרייבו"
 
-#: ../src/timezone_names.c:488
+#: ../src/timezone_names.c:484
 msgid "Europe/Simferopol"
 msgstr "אירופה/סימפרופול"
 
-#: ../src/timezone_names.c:489
+#: ../src/timezone_names.c:485
 msgid "Europe/Skopje"
 msgstr "אירופה/סקופייה"
 
-#: ../src/timezone_names.c:490
+#: ../src/timezone_names.c:486
 msgid "Europe/Sofia"
 msgstr "אירופה/סופיה"
 
-#: ../src/timezone_names.c:491
+#: ../src/timezone_names.c:487
 msgid "Europe/Stockholm"
 msgstr "אירופה/שטוקהולם"
 
-#: ../src/timezone_names.c:492
+#: ../src/timezone_names.c:488
 msgid "Europe/Tallinn"
 msgstr "אירופה/טאלין"
 
-#: ../src/timezone_names.c:493
+#: ../src/timezone_names.c:489
 msgid "Europe/Tirane"
 msgstr "אירופה/טירנה"
 
-#: ../src/timezone_names.c:494
+#: ../src/timezone_names.c:490
 msgid "Europe/Tiraspol"
 msgstr "אירופה/טירספול"
 
-#: ../src/timezone_names.c:495
+#: ../src/timezone_names.c:491
 msgid "Europe/Uzhgorod"
 msgstr "אירופה/אוז'גורוד"
 
-#: ../src/timezone_names.c:496
+#: ../src/timezone_names.c:492
 msgid "Europe/Vaduz"
 msgstr "אירופה/ודוז"
 
-#: ../src/timezone_names.c:497
+#: ../src/timezone_names.c:493
 msgid "Europe/Vatican"
 msgstr "אירופה/הותיקן"
 
-#: ../src/timezone_names.c:498
+#: ../src/timezone_names.c:494
 msgid "Europe/Vienna"
 msgstr "אירופה/וינה"
 
-#: ../src/timezone_names.c:499
+#: ../src/timezone_names.c:495
 msgid "Europe/Vilnius"
 msgstr "אירופה/וילנה"
 
-#: ../src/timezone_names.c:500
+#: ../src/timezone_names.c:496
 msgid "Europe/Volgograd"
 msgstr "אירופה/וולגוגרד"
 
-#: ../src/timezone_names.c:501
+#: ../src/timezone_names.c:497
 msgid "Europe/Warsaw"
 msgstr "אירופה/ורשה"
 
-#: ../src/timezone_names.c:502
+#: ../src/timezone_names.c:498
 msgid "Europe/Zagreb"
 msgstr "אירופה/זאגרב"
 
-#: ../src/timezone_names.c:503
+#: ../src/timezone_names.c:499
 msgid "Europe/Zaporozhye"
 msgstr "אירופה/זפורוז'יה"
 
-#: ../src/timezone_names.c:504
+#: ../src/timezone_names.c:500
 msgid "Europe/Zurich"
 msgstr "אירופה/ציריך"
 
-#: ../src/timezone_names.c:505
+#: ../src/timezone_names.c:501
 msgid "Indian"
 msgstr "האוקינוס ההודי"
 
-#: ../src/timezone_names.c:506
+#: ../src/timezone_names.c:502
 msgid "Indian/Antananarivo"
 msgstr "האוקיינוס ההודי/אנטננריבו"
 
-#: ../src/timezone_names.c:507
+#: ../src/timezone_names.c:503
 msgid "Indian/Chagos"
 msgstr "האוקיינוס ההודי/איי צ'גוס"
 
-#: ../src/timezone_names.c:508
+#: ../src/timezone_names.c:504
 msgid "Indian/Christmas"
 msgstr "האוקיינוס ההודי/איי חג המולד"
 
-#: ../src/timezone_names.c:509
+#: ../src/timezone_names.c:505
 msgid "Indian/Cocos"
 msgstr "האוקיינוס ההודי/איי קוקוס"
 
-#: ../src/timezone_names.c:510
+#: ../src/timezone_names.c:506
 msgid "Indian/Comoro"
 msgstr "האוקיינוס ההודי/איי קומורו"
 
-#: ../src/timezone_names.c:511
+#: ../src/timezone_names.c:507
 msgid "Indian/Kerguelen"
 msgstr "האוקיינוס ההודי/קרגלן"
 
-#: ../src/timezone_names.c:512
+#: ../src/timezone_names.c:508
 msgid "Indian/Mahe"
 msgstr "האוקיינוס ההודי/מאה"
 
-#: ../src/timezone_names.c:513
+#: ../src/timezone_names.c:509
 msgid "Indian/Maldives"
 msgstr "האוקיינוס ההודי/האיים המלדיבים"
 
-#: ../src/timezone_names.c:514
+#: ../src/timezone_names.c:510
 msgid "Indian/Mauritius"
 msgstr "האוקיינוס ההודי/מאוריציוס"
 
-#: ../src/timezone_names.c:515
+#: ../src/timezone_names.c:511
 msgid "Indian/Mayotte"
 msgstr "האוקיינוס ההודי/מאיוט"
 
-#: ../src/timezone_names.c:516
+#: ../src/timezone_names.c:512
 msgid "Indian/Reunion"
 msgstr "האוקיינוס ההודי/ראוניון"
 
-#: ../src/timezone_names.c:517
+#: ../src/timezone_names.c:513
 msgid "Mexico"
 msgstr "מקסיקו"
 
-#: ../src/timezone_names.c:518
+#: ../src/timezone_names.c:514
 msgid "Mexico/BajaNorte"
 msgstr "מקסיקו/ביהנורטה"
 
-#: ../src/timezone_names.c:519
+#: ../src/timezone_names.c:515
 msgid "Mexico/BajaSur"
 msgstr "מקסיקו/ביהסור"
 
-#: ../src/timezone_names.c:520
+#: ../src/timezone_names.c:516
 msgid "Mexico/General"
 msgstr "מקסיקו/ג'נרל"
 
-#: ../src/timezone_names.c:521
+#: ../src/timezone_names.c:517
 msgid "Mideast"
 msgstr "מזרח תיכון"
 
-#: ../src/timezone_names.c:522
+#: ../src/timezone_names.c:518
 msgid "Mideast/Riyadh87"
 msgstr "מזרח תיכון/ריאד87"
 
-#: ../src/timezone_names.c:523
+#: ../src/timezone_names.c:519
 msgid "Mideast/Riyadh88"
 msgstr "מזרח תיכון/ריאד88"
 
-#: ../src/timezone_names.c:524
+#: ../src/timezone_names.c:520
 msgid "Mideast/Riyadh89"
 msgstr "מזרח תיכון/ריאד89"
 
-#: ../src/timezone_names.c:525
+#: ../src/timezone_names.c:521
 msgid "Pacific"
 msgstr "האוקינוס השקט"
 
-#: ../src/timezone_names.c:526
+#: ../src/timezone_names.c:522
 msgid "Pacific/Apia"
 msgstr "האוקיינוס השקט/אפיה"
 
-#: ../src/timezone_names.c:527
+#: ../src/timezone_names.c:523
 msgid "Pacific/Auckland"
 msgstr "האוקיינוס השקט/אוקלנד"
 
-#: ../src/timezone_names.c:528
+#: ../src/timezone_names.c:524
 msgid "Pacific/Chatham"
 msgstr "האוקיינוס השקט/צ'טם"
 
-#: ../src/timezone_names.c:529
+#: ../src/timezone_names.c:525
 msgid "Pacific/Chuuk"
 msgstr "פסיפיק/צ'ואוק"
 
-#: ../src/timezone_names.c:530
+#: ../src/timezone_names.c:526
 msgid "Pacific/Easter"
 msgstr "האוקיינוס השקט/איי הפסחא"
 
-#: ../src/timezone_names.c:531
+#: ../src/timezone_names.c:527
 msgid "Pacific/Efate"
 msgstr "האוקיינוס השקט/אפטה"
 
-#: ../src/timezone_names.c:532
+#: ../src/timezone_names.c:528
 msgid "Pacific/Enderbury"
 msgstr "האוקיינוס השקט/אנדרברי"
 
-#: ../src/timezone_names.c:533
+#: ../src/timezone_names.c:529
 msgid "Pacific/Fakaofo"
 msgstr "האוקיינוס השקט/פקאופו"
 
-#: ../src/timezone_names.c:534
+#: ../src/timezone_names.c:530
 msgid "Pacific/Fiji"
 msgstr "האוקיינוס השקט/פיג'י"
 
-#: ../src/timezone_names.c:535
+#: ../src/timezone_names.c:531
 msgid "Pacific/Funafuti"
 msgstr "האוקיינוס השקט/פונפוטי"
 
-#: ../src/timezone_names.c:536
+#: ../src/timezone_names.c:532
 msgid "Pacific/Galapagos"
 msgstr "האוקיינוס השקט/איי גלפגוס"
 
-#: ../src/timezone_names.c:537
+#: ../src/timezone_names.c:533
 msgid "Pacific/Gambier"
 msgstr "האוקיינוס השקט/איי גמביר"
 
-#: ../src/timezone_names.c:538
+#: ../src/timezone_names.c:534
 msgid "Pacific/Guadalcanal"
 msgstr "האוקיינוס השקט/גואדלקנל"
 
-#: ../src/timezone_names.c:539
+#: ../src/timezone_names.c:535
 msgid "Pacific/Guam"
 msgstr "האוקיינוס השקט/גואם"
 
-#: ../src/timezone_names.c:540
+#: ../src/timezone_names.c:536
 msgid "Pacific/Honolulu"
 msgstr "האוקיינוס השקט/הונולולו"
 
-#: ../src/timezone_names.c:541
+#: ../src/timezone_names.c:537
 msgid "Pacific/Johnston"
 msgstr "האוקיינוס השקט/ג'ונסטון"
 
-#: ../src/timezone_names.c:542
+#: ../src/timezone_names.c:538
 msgid "Pacific/Kiritimati"
 msgstr "האוקיינוס השקט/קיריטימטי"
 
-#: ../src/timezone_names.c:543
+#: ../src/timezone_names.c:539
 msgid "Pacific/Kosrae"
 msgstr "האוקיינוס השקט/קוסרה"
 
-#: ../src/timezone_names.c:544
+#: ../src/timezone_names.c:540
 msgid "Pacific/Kwajalein"
 msgstr "האוקיינוס השקט/קואג'לין"
 
-#: ../src/timezone_names.c:545
+#: ../src/timezone_names.c:541
 msgid "Pacific/Majuro"
 msgstr "האוקיינוס השקט/מג'ורו"
 
-#: ../src/timezone_names.c:546
+#: ../src/timezone_names.c:542
 msgid "Pacific/Marquesas"
 msgstr "האוקיינוס השקט/איי מרקיז"
 
-#: ../src/timezone_names.c:547
+#: ../src/timezone_names.c:543
 msgid "Pacific/Midway"
 msgstr "האוקיינוס השקט/מידווי"
 
-#: ../src/timezone_names.c:548
+#: ../src/timezone_names.c:544
 msgid "Pacific/Nauru"
 msgstr "האוקיינוס השקט/נאורו"
 
-#: ../src/timezone_names.c:549
+#: ../src/timezone_names.c:545
 msgid "Pacific/Niue"
 msgstr "האוקיינוס השקט/ניואה"
 
-#: ../src/timezone_names.c:550
+#: ../src/timezone_names.c:546
 msgid "Pacific/Norfolk"
 msgstr "האוקיינוס השקט/נורפולק"
 
-#: ../src/timezone_names.c:551
+#: ../src/timezone_names.c:547
 msgid "Pacific/Noumea"
 msgstr "האוקיינוס השקט/נומאה"
 
-#: ../src/timezone_names.c:552
+#: ../src/timezone_names.c:548
 msgid "Pacific/Pago_Pago"
 msgstr "האוקיינוס השקט/פאגו פאגו"
 
-#: ../src/timezone_names.c:553
+#: ../src/timezone_names.c:549
 msgid "Pacific/Palau"
 msgstr "האוקיינוס השקט/פלאו"
 
-#: ../src/timezone_names.c:554
+#: ../src/timezone_names.c:550
 msgid "Pacific/Pitcairn"
 msgstr "האוקיינוס השקט/פיטקרן"
 
-#: ../src/timezone_names.c:555
+#: ../src/timezone_names.c:551
 msgid "Pacific/Pohnpei"
 msgstr "פסיפיק/פונפיי"
 
-#: ../src/timezone_names.c:556
+#: ../src/timezone_names.c:552
 msgid "Pacific/Ponape"
 msgstr "האוקיינוס השקט/פונפה"
 
-#: ../src/timezone_names.c:557
+#: ../src/timezone_names.c:553
 msgid "Pacific/Port_Moresby"
 msgstr "האוקיינוס השקט/פורט מורסבי"
 
-#: ../src/timezone_names.c:558
+#: ../src/timezone_names.c:554
 msgid "Pacific/Rarotonga"
 msgstr "האוקיינוס השקט/ררוטונגה"
 
-#: ../src/timezone_names.c:559
+#: ../src/timezone_names.c:555
 msgid "Pacific/Saipan"
 msgstr "האוקיינוס השקט/סייפן"
 
-#: ../src/timezone_names.c:560
+#: ../src/timezone_names.c:556
 msgid "Pacific/Samoa"
 msgstr "פסיפיק/סמואה"
 
-#: ../src/timezone_names.c:561
+#: ../src/timezone_names.c:557
 msgid "Pacific/Tahiti"
 msgstr "האוקיינוס השקט/טהיטי"
 
-#: ../src/timezone_names.c:562
+#: ../src/timezone_names.c:558
 msgid "Pacific/Tarawa"
 msgstr "האוקיינוס השקט/טראווה"
 
-#: ../src/timezone_names.c:563
+#: ../src/timezone_names.c:559
 msgid "Pacific/Tongatapu"
 msgstr "האוקיינוס השקט/טונגטפו"
 
-#: ../src/timezone_names.c:564
+#: ../src/timezone_names.c:560
 msgid "Pacific/Truk"
 msgstr "האוקיינוס השקט/טרוק"
 
-#: ../src/timezone_names.c:565
+#: ../src/timezone_names.c:561
 msgid "Pacific/Wake"
 msgstr "האוקיינוס השקט/וויק"
 
-#: ../src/timezone_names.c:566
+#: ../src/timezone_names.c:562
 msgid "Pacific/Wallis"
 msgstr "האוקיינוס השקט/ווליס"
 
-#: ../src/timezone_names.c:567
+#: ../src/timezone_names.c:563
 msgid "Pacific/Yap"
 msgstr "האוקיינוס השקט/יאפ"
 
-#: ../src/timezone_names.c:568
+#: ../src/timezone_names.c:564
 msgid "SystemV"
 msgstr "SystemV"
 
-#: ../src/timezone_names.c:569
+#: ../src/timezone_names.c:565
 msgid "SystemV/AST4"
 msgstr "SystemV/AST4"
 
-#: ../src/timezone_names.c:570
+#: ../src/timezone_names.c:566
 msgid "SystemV/AST4ADT"
 msgstr "SystemV/AST4ADT"
 
-#: ../src/timezone_names.c:571
+#: ../src/timezone_names.c:567
 msgid "SystemV/CST6"
 msgstr "SystemV/CST6"
 
-#: ../src/timezone_names.c:572
+#: ../src/timezone_names.c:568
 msgid "SystemV/CST6CDT"
 msgstr "SystemV/CST6CDT"
 
-#: ../src/timezone_names.c:573
+#: ../src/timezone_names.c:569
 msgid "SystemV/EST5"
 msgstr "SystemV/EST5"
 
-#: ../src/timezone_names.c:574
+#: ../src/timezone_names.c:570
 msgid "SystemV/EST5/EDT"
 msgstr "SystemV/EST5/EDT"
 
-#: ../src/timezone_names.c:575
+#: ../src/timezone_names.c:571
 msgid "SystemV/HST10"
 msgstr "SystemV/HST10"
 
-#: ../src/timezone_names.c:576
+#: ../src/timezone_names.c:572
 msgid "SystemV/MST7"
 msgstr "SystemV/MST7"
 
-#: ../src/timezone_names.c:577
+#: ../src/timezone_names.c:573
 msgid "SystemV/MST7/MNT"
 msgstr "SystemV/MST7/MNT"
 
-#: ../src/timezone_names.c:578
+#: ../src/timezone_names.c:574
 msgid "SystemV/PST8"
 msgstr "SystemV/PST8"
 
-#: ../src/timezone_names.c:579
+#: ../src/timezone_names.c:575
 msgid "SystemV/PST8/PDT"
 msgstr "SystemV/PST8/PDT"
 
-#: ../src/timezone_names.c:580
+#: ../src/timezone_names.c:576
 msgid "SystemV/YST9"
 msgstr "SystemV/YST9"
 
-#: ../src/timezone_names.c:581
+#: ../src/timezone_names.c:577
 msgid "SystemV/YST9/YDT"
 msgstr "SystemV/YST9/YDT"
 
-#: ../src/timezone_names.c:582
+#: ../src/timezone_names.c:578
 msgid "US"
 msgstr "ארה\"ב"
 
-#: ../src/timezone_names.c:583
+#: ../src/timezone_names.c:579
 msgid "US/Alaska"
 msgstr "ארה\"ב/אלסקה"
 
-#: ../src/timezone_names.c:584
+#: ../src/timezone_names.c:580
 msgid "US/Aleutian"
 msgstr "ארה\"ב/אלושיין"
 
-#: ../src/timezone_names.c:585
+#: ../src/timezone_names.c:581
 msgid "US/Arizona"
 msgstr "ארה\"ב/אריזונה"
 
-#: ../src/timezone_names.c:586
+#: ../src/timezone_names.c:582
 msgid "US/Central"
 msgstr "ארה\"ב/מרכז"
 
-#: ../src/timezone_names.c:587
+#: ../src/timezone_names.c:583
 msgid "US/Eastern"
 msgstr "ארה\"ב/מזרח"
 
-#: ../src/timezone_names.c:588
+#: ../src/timezone_names.c:584
 msgid "US/East-Indiana"
 msgstr "ארה\"ב/איסט-אינדיאנה"
 
-#: ../src/timezone_names.c:589
+#: ../src/timezone_names.c:585
 msgid "US/Hawaii"
 msgstr "ארה\"ב/הוואי"
 
-#: ../src/timezone_names.c:590
+#: ../src/timezone_names.c:586
 msgid "US/Indiana-Starke"
 msgstr "ארה\"ב/אינדיאנה-סטרק"
 
-#: ../src/timezone_names.c:591
+#: ../src/timezone_names.c:587
 msgid "US/Michigan"
 msgstr "ארה\"ב/מישיגן"
 
-#: ../src/timezone_names.c:592
+#: ../src/timezone_names.c:588
 msgid "US/Mountain"
 msgstr "ארה\"ב/מאונטיין"
 
-#: ../src/timezone_names.c:593
+#: ../src/timezone_names.c:589
 msgid "US/Pacific"
 msgstr "ארה\"ב/פסיפיק"
 
-#: ../src/timezone_names.c:594
+#: ../src/timezone_names.c:590
 msgid "US/Pacific-New"
 msgstr "ארה\"ב/פסיפיק-ניו"
 
-#: ../src/timezone_names.c:595
+#: ../src/timezone_names.c:591
 msgid "US/Samoa"
 msgstr "ארה\"ב/סמואה"
 
