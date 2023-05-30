@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-29 11:57+0200\n"
+"POT-Creation-Date: 2023-05-30 00:50+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Саша Петровић <salepetronije@gmail.com>, 2023\n"
 "Language-Team: Serbian (https://app.transifex.com/xfce/teams/16840/sr/)\n"
@@ -1078,8 +1078,8 @@ msgid ""
 "This is useful for example when doing export and moving orage\n"
 "appointments to another system."
 msgstr ""
-"Вратите све складиштене догађаје у главну оражову датотеку и уклоните датотеку архиве.\n"
-"Ово је корисно на пример када обављате извоз и премештате оражове\n"
+"Вратите све складиштене догађаје у главну Оражову датотеку и уклоните датотеку складишта.\n"
+"Ово је корисно, на пример, када обављате извоз и премештате Оражове\n"
 "састанке на други систем."
 
 #: ../src/interface.c:1232
@@ -1306,12 +1306,12 @@ msgstr "        Не користи библиотеку обавештења.\n
 #: ../src/orage-application.c:180
 #, c-format
 msgid "\tUsing automatic archiving.\n"
-msgstr "        Користи самостално архивирање.\n"
+msgstr "        Користи самостално складиштење.\n"
 
 #: ../src/orage-application.c:182
 #, c-format
 msgid "\tNot using archiving.\n"
-msgstr "        Не користи архивирање.\n"
+msgstr "        Не користи складиштење.\n"
 
 #: ../src/orage-application.c:185
 #, c-format
@@ -1341,11 +1341,11 @@ msgstr "Додај вањску датотеку"
 
 #: ../src/orage-application.c:607
 msgid "Remove a foreign file"
-msgstr ""
+msgstr "Уклони вањску датотеку"
 
 #: ../src/orage-application.c:616
 msgid "Import appointments from file to Orage"
-msgstr ""
+msgstr "Увези састанке из датотеке у Ораж"
 
 #: ../src/orage-application.c:625
 msgid "Export appointments from Orage to file"
@@ -1353,15 +1353,15 @@ msgstr "Извези састанке из Оража у датотеку"
 
 #: ../src/orage-sync-edit-dialog.c:132
 msgid "Description:"
-msgstr ""
+msgstr "Опис:"
 
 #: ../src/orage-sync-edit-dialog.c:134
 msgid "Command:"
-msgstr ""
+msgstr "Наредба:"
 
 #: ../src/orage-sync-edit-dialog.c:136
 msgid "Period:"
-msgstr ""
+msgstr "Међувреме:"
 
 #: ../src/orage-sync-edit-dialog.c:138
 msgid "minutes"
@@ -1369,15 +1369,15 @@ msgstr "минута"
 
 #: ../src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task"
-msgstr ""
+msgstr "Име или опис овог задатка усклађивања"
 
 #: ../src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization"
-msgstr ""
+msgstr "Наредба за усклађивање"
 
 #: ../src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes"
-msgstr ""
+msgstr "Међувреме усклађивања у минутима"
 
 #: ../src/orage-sync-edit-dialog.c:166 ../src/parameters.c:1456
 #: ../src/reminder.c:642
@@ -1386,11 +1386,11 @@ msgstr "_Затвори"
 
 #: ../src/parameters.c:688
 msgid "Remove selected synchronization task."
-msgstr ""
+msgstr "Уклони означени задатак усклађивања."
 
 #: ../src/parameters.c:691
 msgid "Yes, remove"
-msgstr ""
+msgstr "Да, уклони"
 
 #: ../src/parameters.c:724
 msgid "Main settings"
@@ -1410,12 +1410,12 @@ msgstr "Праг складиштења (месеци)"
 
 #: ../src/parameters.c:772
 msgid "(0 = no archiving)"
-msgstr "(0 = без архивирања)"
+msgstr "(0 = без складиштења)"
 
 #: ../src/parameters.c:776
 msgid "Archiving is used to save time and space when handling events."
 msgstr ""
-"Архивирање се користи за уштеду на времену и простору приликом руковања "
+"Складиштење се користи за уштеду на времену и простору приликом руковања "
 "догађајима."
 
 #: ../src/parameters.c:784
@@ -1615,11 +1615,11 @@ msgstr ""
 
 #: ../src/parameters.c:1401
 msgid "Synchronization settings"
-msgstr ""
+msgstr "Поставке усклађивања"
 
 #: ../src/parameters.c:1407
 msgid "Synchronization sources"
-msgstr ""
+msgstr "Извори усклађивања"
 
 #: ../src/parameters.c:1433
 msgid "Orage Preferences"
