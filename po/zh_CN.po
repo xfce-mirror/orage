@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-29 11:57+0200\n"
+"POT-Creation-Date: 2023-05-30 00:50+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: 玉堂白鹤 <yjwork@qq.com>, 2023\n"
 "Language-Team: Chinese (China) (https://app.transifex.com/xfce/teams/16840/zh_CN/)\n"
@@ -1338,7 +1338,7 @@ msgstr "添加外部文件"
 
 #: ../src/orage-application.c:607
 msgid "Remove a foreign file"
-msgstr ""
+msgstr "移除外部文件"
 
 #: ../src/orage-application.c:616
 msgid "Import appointments from file to Orage"
