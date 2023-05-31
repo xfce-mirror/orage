@@ -1402,11 +1402,11 @@ msgstr "_Fermer"
 
 #: ../src/parameters.c:688
 msgid "Remove selected synchronization task."
-msgstr ""
+msgstr "Supprimer la tâche de synchronisation sélectionnée."
 
 #: ../src/parameters.c:691
 msgid "Yes, remove"
-msgstr ""
+msgstr "Oui, supprimer"
 
 #: ../src/parameters.c:724
 msgid "Main settings"
@@ -1635,11 +1635,11 @@ msgstr ""
 
 #: ../src/parameters.c:1401
 msgid "Synchronization settings"
-msgstr ""
+msgstr "Paramètres de synchronisation"
 
 #: ../src/parameters.c:1407
 msgid "Synchronization sources"
-msgstr ""
+msgstr "Sources de synchronisation"
 
 #: ../src/parameters.c:1433
 msgid "Orage Preferences"
