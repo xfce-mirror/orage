@@ -13,18 +13,18 @@
 # Olesya Gerasimenko <gammaray@basealt.ru>, 2022
 # Victor Golovanenko <drygdryg2014@yandex.ru>, 2022
 # Nick Schermer <nick@xfce.org>, 2022
-# Andrei Stepanov, 2023
 # Igor Vornovskii, 2023
 # Владимир <vladi105@yandex.ru>, 2023
+# Andrei Stepanov, 2023
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-29 11:57+0200\n"
+"POT-Creation-Date: 2023-05-30 00:50+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Владимир <vladi105@yandex.ru>, 2023\n"
+"Last-Translator: Andrei Stepanov, 2023\n"
 "Language-Team: Russian (https://app.transifex.com/xfce/teams/16840/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1351,11 +1351,11 @@ msgstr "Добавить внешний файл"
 
 #: ../src/orage-application.c:607
 msgid "Remove a foreign file"
-msgstr ""
+msgstr "Удалить посторонний файл"
 
 #: ../src/orage-application.c:616
 msgid "Import appointments from file to Orage"
-msgstr ""
+msgstr "Импорт назначений из файла в Orage"
 
 #: ../src/orage-application.c:625
 msgid "Export appointments from Orage to file"
@@ -1363,15 +1363,15 @@ msgstr "Экспортировать встречи из Orange в файл"
 
 #: ../src/orage-sync-edit-dialog.c:132
 msgid "Description:"
-msgstr ""
+msgstr "Описание:"
 
 #: ../src/orage-sync-edit-dialog.c:134
 msgid "Command:"
-msgstr ""
+msgstr "Команда:"
 
 #: ../src/orage-sync-edit-dialog.c:136
 msgid "Period:"
-msgstr ""
+msgstr "Период:"
 
 #: ../src/orage-sync-edit-dialog.c:138
 msgid "minutes"
@@ -1379,15 +1379,15 @@ msgstr "минут"
 
 #: ../src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task"
-msgstr ""
+msgstr "Имя или описание этой задачи синхронизации"
 
 #: ../src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization"
-msgstr ""
+msgstr "Команда для синхронизации"
 
 #: ../src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes"
-msgstr ""
+msgstr "Период синхронизации в минутах"
 
 #: ../src/orage-sync-edit-dialog.c:166 ../src/parameters.c:1456
 #: ../src/reminder.c:642
@@ -1396,11 +1396,11 @@ msgstr "_Закрыть"
 
 #: ../src/parameters.c:688
 msgid "Remove selected synchronization task."
-msgstr ""
+msgstr "Удалить выбранную задачу синхронизации."
 
 #: ../src/parameters.c:691
 msgid "Yes, remove"
-msgstr ""
+msgstr "Да, удалить"
 
 #: ../src/parameters.c:724
 msgid "Main settings"
@@ -1623,11 +1623,11 @@ msgstr ""
 
 #: ../src/parameters.c:1401
 msgid "Synchronization settings"
-msgstr ""
+msgstr "Настройки синхронизации"
 
 #: ../src/parameters.c:1407
 msgid "Synchronization sources"
-msgstr ""
+msgstr "Источники синхронизации"
 
 #: ../src/parameters.c:1433
 msgid "Orage Preferences"
