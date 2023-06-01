@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-29 11:57+0200\n"
+"POT-Creation-Date: 2023-05-30 00:50+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Andreas Eitel <github-aneitel@online.de>, 2023\n"
 "Language-Team: German (https://app.transifex.com/xfce/teams/16840/de/)\n"
@@ -1358,11 +1358,11 @@ msgstr "Fremddatei hinzufügen"
 
 #: ../src/orage-application.c:607
 msgid "Remove a foreign file"
-msgstr ""
+msgstr "Fremddatei entfernen"
 
 #: ../src/orage-application.c:616
 msgid "Import appointments from file to Orage"
-msgstr ""
+msgstr "Termine aus einer Datei in Orage importieren"
 
 #: ../src/orage-application.c:625
 msgid "Export appointments from Orage to file"
@@ -1370,15 +1370,15 @@ msgstr "Termine aus Orage in eine Datei exportieren"
 
 #: ../src/orage-sync-edit-dialog.c:132
 msgid "Description:"
-msgstr ""
+msgstr "Beschreibung:"
 
 #: ../src/orage-sync-edit-dialog.c:134
 msgid "Command:"
-msgstr ""
+msgstr "Befehl:"
 
 #: ../src/orage-sync-edit-dialog.c:136
 msgid "Period:"
-msgstr ""
+msgstr "Zeitraum:"
 
 #: ../src/orage-sync-edit-dialog.c:138
 msgid "minutes"
@@ -1386,15 +1386,15 @@ msgstr "Minuten"
 
 #: ../src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task"
-msgstr ""
+msgstr "Der Name oder die Beschreibung dieser Synchronisationsaufgabe"
 
 #: ../src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization"
-msgstr ""
+msgstr "Befehl zur Synchronisierung"
 
 #: ../src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes"
-msgstr ""
+msgstr "Synchronisationszeitraum in Minuten"
 
 #: ../src/orage-sync-edit-dialog.c:166 ../src/parameters.c:1456
 #: ../src/reminder.c:642
@@ -1403,11 +1403,11 @@ msgstr "S_chließen"
 
 #: ../src/parameters.c:688
 msgid "Remove selected synchronization task."
-msgstr ""
+msgstr "Ausgewählte Synchronisationsaufgabe entfernen."
 
 #: ../src/parameters.c:691
 msgid "Yes, remove"
-msgstr ""
+msgstr "Ja, entfernen"
 
 #: ../src/parameters.c:724
 msgid "Main settings"
@@ -1635,11 +1635,11 @@ msgstr ""
 
 #: ../src/parameters.c:1401
 msgid "Synchronization settings"
-msgstr ""
+msgstr "Synchronisierungseinstellungen"
 
 #: ../src/parameters.c:1407
 msgid "Synchronization sources"
-msgstr ""
+msgstr "Synchronisierungsquellen"
 
 #: ../src/parameters.c:1433
 msgid "Orage Preferences"
