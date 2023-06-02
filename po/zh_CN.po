@@ -1342,7 +1342,7 @@ msgstr "移除外部文件"
 
 #: ../src/orage-application.c:616
 msgid "Import appointments from file to Orage"
-msgstr ""
+msgstr "从文件导出约会到 Orage"
 
 #: ../src/orage-application.c:625
 msgid "Export appointments from Orage to file"
@@ -1350,15 +1350,15 @@ msgstr "从 Orage 导出约会到文件"
 
 #: ../src/orage-sync-edit-dialog.c:132
 msgid "Description:"
-msgstr ""
+msgstr "描述："
 
 #: ../src/orage-sync-edit-dialog.c:134
 msgid "Command:"
-msgstr ""
+msgstr "命令："
 
 #: ../src/orage-sync-edit-dialog.c:136
 msgid "Period:"
-msgstr ""
+msgstr "周期："
 
 #: ../src/orage-sync-edit-dialog.c:138
 msgid "minutes"
@@ -1366,15 +1366,15 @@ msgstr " 分钟"
 
 #: ../src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task"
-msgstr ""
+msgstr "此同步任务的名称或说明"
 
 #: ../src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization"
-msgstr ""
+msgstr "同步命令"
 
 #: ../src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes"
-msgstr ""
+msgstr "同步周期（分钟）"
 
 #: ../src/orage-sync-edit-dialog.c:166 ../src/parameters.c:1456
 #: ../src/reminder.c:642
@@ -1383,11 +1383,11 @@ msgstr "关闭(_C)"
 
 #: ../src/parameters.c:688
 msgid "Remove selected synchronization task."
-msgstr ""
+msgstr "移除所选同步任务。"
 
 #: ../src/parameters.c:691
 msgid "Yes, remove"
-msgstr ""
+msgstr "是的，移除"
 
 #: ../src/parameters.c:724
 msgid "Main settings"
@@ -1602,11 +1602,11 @@ msgstr "Orage在默认条件下保持在后台打开时要求关闭。该选项�
 
 #: ../src/parameters.c:1401
 msgid "Synchronization settings"
-msgstr ""
+msgstr "同步设置"
 
 #: ../src/parameters.c:1407
 msgid "Synchronization sources"
-msgstr ""
+msgstr "同步来源"
 
 #: ../src/parameters.c:1433
 msgid "Orage Preferences"
