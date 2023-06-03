@@ -6,17 +6,17 @@
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2022
 # Nick Schermer <nick@xfce.org>, 2022
-# Erkki Moorits, 2023
 # Priit Jõerüüt <transifex@joeruut.com>, 2023
+# Erkki Moorits, 2023
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-29 11:57+0200\n"
+"POT-Creation-Date: 2023-05-30 00:50+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Priit Jõerüüt <transifex@joeruut.com>, 2023\n"
+"Last-Translator: Erkki Moorits, 2023\n"
 "Language-Team: Estonian (https://app.transifex.com/xfce/teams/16840/et/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1341,11 +1341,11 @@ msgstr "Lisa väline fail"
 
 #: ../src/orage-application.c:607
 msgid "Remove a foreign file"
-msgstr ""
+msgstr "Eemalda väline fail"
 
 #: ../src/orage-application.c:616
 msgid "Import appointments from file to Orage"
-msgstr ""
+msgstr "Impordi kohtumised failist Orage'i"
 
 #: ../src/orage-application.c:625
 msgid "Export appointments from Orage to file"
@@ -1353,15 +1353,15 @@ msgstr "Ekspordi kohtumised Orage'ist faili"
 
 #: ../src/orage-sync-edit-dialog.c:132
 msgid "Description:"
-msgstr ""
+msgstr "Kirjeldus:"
 
 #: ../src/orage-sync-edit-dialog.c:134
 msgid "Command:"
-msgstr ""
+msgstr "Käsk:"
 
 #: ../src/orage-sync-edit-dialog.c:136
 msgid "Period:"
-msgstr ""
+msgstr "Periood:"
 
 #: ../src/orage-sync-edit-dialog.c:138
 msgid "minutes"
@@ -1369,15 +1369,15 @@ msgstr "minutit"
 
 #: ../src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task"
-msgstr ""
+msgstr "Sünkroonimisülesande nimi või kirjeldus"
 
 #: ../src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization"
-msgstr ""
+msgstr "Sünkroniseerimise käsk"
 
 #: ../src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes"
-msgstr ""
+msgstr "Sünkroniseerimise periood minutites"
 
 #: ../src/orage-sync-edit-dialog.c:166 ../src/parameters.c:1456
 #: ../src/reminder.c:642
@@ -1386,11 +1386,11 @@ msgstr "_Sulge"
 
 #: ../src/parameters.c:688
 msgid "Remove selected synchronization task."
-msgstr ""
+msgstr "Eemalda valitud sünkroniseerimise ülesanne."
 
 #: ../src/parameters.c:691
 msgid "Yes, remove"
-msgstr ""
+msgstr "Jah, eemalda"
 
 #: ../src/parameters.c:724
 msgid "Main settings"
@@ -1613,11 +1613,11 @@ msgstr ""
 
 #: ../src/parameters.c:1401
 msgid "Synchronization settings"
-msgstr ""
+msgstr "Sünkroniseerimise seadistused"
 
 #: ../src/parameters.c:1407
 msgid "Synchronization sources"
-msgstr ""
+msgstr "Sünkroniseerimiseallikad"
 
 #: ../src/parameters.c:1433
 msgid "Orage Preferences"
