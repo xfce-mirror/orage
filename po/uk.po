@@ -11,17 +11,17 @@
 # Yarema aka Knedlyk <yupadmin@gmail.com>, 2022
 # Andrii Protsun <minamotosoft@gmail.com>, 2022
 # Nick Schermer <nick@xfce.org>, 2022
-# Gordon Freeman, 2023
 # f977cb811fcf66493f48eac227fd7473_b98aa5d <2419f1d8d12d92441152e78ae3e3bde0_722180>, 2023
+# Gordon Freeman, 2023
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-29 11:57+0200\n"
+"POT-Creation-Date: 2023-05-30 00:50+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: f977cb811fcf66493f48eac227fd7473_b98aa5d <2419f1d8d12d92441152e78ae3e3bde0_722180>, 2023\n"
+"Last-Translator: Gordon Freeman, 2023\n"
 "Language-Team: Ukrainian (https://app.transifex.com/xfce/teams/16840/uk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1350,11 +1350,11 @@ msgstr "Додати сторонній файл"
 
 #: ../src/orage-application.c:607
 msgid "Remove a foreign file"
-msgstr ""
+msgstr "Видалити сторонній файл"
 
 #: ../src/orage-application.c:616
 msgid "Import appointments from file to Orage"
-msgstr ""
+msgstr "Імпорт зустрічей з файлу у Orage"
 
 #: ../src/orage-application.c:625
 msgid "Export appointments from Orage to file"
@@ -1362,15 +1362,15 @@ msgstr "Експорт зустрічей з Orage у файл"
 
 #: ../src/orage-sync-edit-dialog.c:132
 msgid "Description:"
-msgstr ""
+msgstr "Опис:"
 
 #: ../src/orage-sync-edit-dialog.c:134
 msgid "Command:"
-msgstr ""
+msgstr "Команда:"
 
 #: ../src/orage-sync-edit-dialog.c:136
 msgid "Period:"
-msgstr ""
+msgstr "Період:"
 
 #: ../src/orage-sync-edit-dialog.c:138
 msgid "minutes"
@@ -1378,15 +1378,15 @@ msgstr "хвилин"
 
 #: ../src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task"
-msgstr ""
+msgstr "Назва або опис цього завдання синхронізації"
 
 #: ../src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization"
-msgstr ""
+msgstr "Команда для синхронізації"
 
 #: ../src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes"
-msgstr ""
+msgstr "Період синхронізації у хвилинах"
 
 #: ../src/orage-sync-edit-dialog.c:166 ../src/parameters.c:1456
 #: ../src/reminder.c:642
@@ -1395,11 +1395,11 @@ msgstr "_Закрити"
 
 #: ../src/parameters.c:688
 msgid "Remove selected synchronization task."
-msgstr ""
+msgstr "Видалити вибране завдання синхронізації."
 
 #: ../src/parameters.c:691
 msgid "Yes, remove"
-msgstr ""
+msgstr "Так, видалити"
 
 #: ../src/parameters.c:724
 msgid "Main settings"
@@ -1624,11 +1624,11 @@ msgstr ""
 
 #: ../src/parameters.c:1401
 msgid "Synchronization settings"
-msgstr ""
+msgstr "Налаштування синхронізації"
 
 #: ../src/parameters.c:1407
 msgid "Synchronization sources"
-msgstr ""
+msgstr "Джерела синхронізації"
 
 #: ../src/parameters.c:1433
 msgid "Orage Preferences"
