@@ -1950,23 +1950,23 @@ msgstr "America/Argentina/Rio_Gallegos"
 
 #: ../src/timezone_names.c:100
 msgid "America/Argentina/Salta"
-msgstr ""
+msgstr "America/Argentina/Salta"
 
 #: ../src/timezone_names.c:101
 msgid "America/Argentina/San_Juan"
-msgstr ""
+msgstr "America/Argentina/San_Juan"
 
 #: ../src/timezone_names.c:102
 msgid "America/Argentina/San_Luis"
-msgstr ""
+msgstr "America/Argentina/San_Luis"
 
 #: ../src/timezone_names.c:103
 msgid "America/Argentina/Tucuman"
-msgstr ""
+msgstr "America/Argentina/Tucuman"
 
 #: ../src/timezone_names.c:104
 msgid "America/Argentina/Ushuaia"
-msgstr ""
+msgstr "America/Argentina/Ushuaia"
 
 #: ../src/timezone_names.c:105
 msgid "America/Aruba"
@@ -1978,19 +1978,19 @@ msgstr "America/Asuncion"
 
 #: ../src/timezone_names.c:107
 msgid "America/Atikokan"
-msgstr ""
+msgstr "America/Atikokan"
 
 #: ../src/timezone_names.c:108
 msgid "America/Atka"
-msgstr ""
+msgstr "America/Atka"
 
 #: ../src/timezone_names.c:109
 msgid "America/Bahia"
-msgstr ""
+msgstr "America/Bahia"
 
 #: ../src/timezone_names.c:110
 msgid "America/Bahia_Banderas"
-msgstr ""
+msgstr "America/Bahia_Banderas"
 
 #: ../src/timezone_names.c:111
 msgid "America/Barbados"
@@ -2006,7 +2006,7 @@ msgstr "America/Belize"
 
 #: ../src/timezone_names.c:114
 msgid "America/Blanc-Sablon"
-msgstr ""
+msgstr "America/Blanc-Sablon"
 
 #: ../src/timezone_names.c:115
 msgid "America/Boa_Vista"
@@ -2030,7 +2030,7 @@ msgstr "America/Cambridge_Bay"
 
 #: ../src/timezone_names.c:120
 msgid "America/Campo_Grande"
-msgstr ""
+msgstr "America/Campo_Grande"
 
 #: ../src/timezone_names.c:121
 msgid "America/Cancun"
@@ -2062,7 +2062,7 @@ msgstr "America/Chihuahua"
 
 #: ../src/timezone_names.c:128
 msgid "America/Coral_Harbour"
-msgstr ""
+msgstr "America/Coral_Harbour"
 
 #: ../src/timezone_names.c:129
 msgid "America/Cordoba"
@@ -2074,7 +2074,7 @@ msgstr "America/Costa_Rica"
 
 #: ../src/timezone_names.c:131
 msgid "America/Creston"
-msgstr ""
+msgstr "America/Creston"
 
 #: ../src/timezone_names.c:132
 msgid "America/Cuiaba"
@@ -2086,7 +2086,7 @@ msgstr "America/Curacao"
 
 #: ../src/timezone_names.c:134
 msgid "America/Danmarkshavn"
-msgstr ""
+msgstr "America/Danmarkshavn"
 
 #: ../src/timezone_names.c:135
 msgid "America/Dawson"
@@ -2114,7 +2114,7 @@ msgstr "America/Edmonton"
 
 #: ../src/timezone_names.c:141
 msgid "America/Ensenada"
-msgstr ""
+msgstr "America/Ensenada"
 
 #: ../src/timezone_names.c:142
 msgid "America/Eirunepe"
@@ -2130,7 +2130,7 @@ msgstr "America/Fortaleza"
 
 #: ../src/timezone_names.c:145
 msgid "America/Fort_Wayne"
-msgstr ""
+msgstr "America/Fort_Wayne"
 
 #: ../src/timezone_names.c:146
 msgid "America/Glace_Bay"
@@ -2194,11 +2194,11 @@ msgstr "America/Indiana/Marengo"
 
 #: ../src/timezone_names.c:161
 msgid "America/Indiana/Petersburg"
-msgstr ""
+msgstr "America/Indiana/Petersburg"
 
 #: ../src/timezone_names.c:162
 msgid "America/Indiana/Tell_City"
-msgstr ""
+msgstr "America/Indiana/Tell_City"
 
 #: ../src/timezone_names.c:163
 msgid "America/Indiana/Vevay"
@@ -2206,11 +2206,11 @@ msgstr "America/Indiana/Vevay"
 
 #: ../src/timezone_names.c:164
 msgid "America/Indiana/Vincennes"
-msgstr ""
+msgstr "America/Indiana/Vincennes"
 
 #: ../src/timezone_names.c:165
 msgid "America/Indiana/Winamac"
-msgstr ""
+msgstr "America/Indiana/Winamac"
 
 #: ../src/timezone_names.c:166
 msgid "America/Indianapolis"
@@ -2246,11 +2246,11 @@ msgstr "America/Kentucky/Monticello"
 
 #: ../src/timezone_names.c:174
 msgid "America/Knox_IN"
-msgstr ""
+msgstr "America/Knox_IN"
 
 #: ../src/timezone_names.c:175
 msgid "America/Kralendijk"
-msgstr ""
+msgstr "America/Kralendijk"
 
 #: ../src/timezone_names.c:176
 msgid "America/La_Paz"
@@ -2270,7 +2270,7 @@ msgstr "America/Louisville"
 
 #: ../src/timezone_names.c:180
 msgid "America/Lower_Princes"
-msgstr ""
+msgstr "America/Lower_Princes"
 
 #: ../src/timezone_names.c:181
 msgid "America/Maceio"
@@ -2286,7 +2286,7 @@ msgstr "America/Manaus"
 
 #: ../src/timezone_names.c:184
 msgid "America/Marigot"
-msgstr ""
+msgstr "America/Marigot"
 
 #: ../src/timezone_names.c:185
 msgid "America/Martinique"
@@ -2294,7 +2294,7 @@ msgstr "America/Martinique"
 
 #: ../src/timezone_names.c:186
 msgid "America/Matamoros"
-msgstr ""
+msgstr "America/Matamoros"
 
 #: ../src/timezone_names.c:187
 msgid "America/Mazatlan"
@@ -2314,7 +2314,7 @@ msgstr "America/Merida"
 
 #: ../src/timezone_names.c:191
 msgid "America/Metlakatla"
-msgstr ""
+msgstr "America/Metlakatla"
 
 #: ../src/timezone_names.c:192
 msgid "America/Mexico_City"
@@ -2326,7 +2326,7 @@ msgstr "America/Miquelon"
 
 #: ../src/timezone_names.c:194
 msgid "America/Moncton"
-msgstr ""
+msgstr "America/Moncton"
 
 #: ../src/timezone_names.c:195
 msgid "America/Monterrey"
@@ -2362,15 +2362,15 @@ msgstr "America/Nome"
 
 #: ../src/timezone_names.c:203
 msgid "America/North_Dakota/Beulah"
-msgstr ""
+msgstr "America/North_Dakota/Beulah"
 
 #: ../src/timezone_names.c:204
 msgid "America/North_Dakota/Center"
-msgstr ""
+msgstr "America/North_Dakota/Center"
 
 #: ../src/timezone_names.c:205
 msgid "America/North_Dakota/New_Salem"
-msgstr ""
+msgstr "America/North_Dakota/New_Salem"
 
 #: ../src/timezone_names.c:206
 msgid "America/Noronha"
@@ -2378,7 +2378,7 @@ msgstr "America/Noronha"
 
 #: ../src/timezone_names.c:207
 msgid "America/Ojinaga"
-msgstr ""
+msgstr "America/Ojinaga"
 
 #: ../src/timezone_names.c:208
 msgid "America/Panama"
@@ -2406,7 +2406,7 @@ msgstr "America/Port_of_Spain"
 
 #: ../src/timezone_names.c:214
 msgid "America/Porto_Acre"
-msgstr ""
+msgstr "America/Porto_Acre"
 
 #: ../src/timezone_names.c:215
 msgid "America/Porto_Velho"
@@ -2434,7 +2434,7 @@ msgstr "America/Regina"
 
 #: ../src/timezone_names.c:221
 msgid "America/Resolute"
-msgstr ""
+msgstr "America/Resolute"
 
 #: ../src/timezone_names.c:222
 msgid "America/Rio_Branco"
@@ -2446,11 +2446,11 @@ msgstr "America/Rosario"
 
 #: ../src/timezone_names.c:224
 msgid "America/Santa_Isabel"
-msgstr ""
+msgstr "America/Santa_Isabel"
 
 #: ../src/timezone_names.c:225
 msgid "America/Santarem"
-msgstr ""
+msgstr "America/Santarem"
 
 #: ../src/timezone_names.c:226
 msgid "America/Santiago"
@@ -2474,11 +2474,11 @@ msgstr "America/Shiprock"
 
 #: ../src/timezone_names.c:231
 msgid "America/Sitka"
-msgstr ""
+msgstr "America/Sitka"
 
 #: ../src/timezone_names.c:232
 msgid "America/St_Barthelemy"
-msgstr ""
+msgstr "America/St_Barthelemy"
 
 #: ../src/timezone_names.c:233
 msgid "America/St_Johns"
@@ -2522,7 +2522,7 @@ msgstr "America/Tijuana"
 
 #: ../src/timezone_names.c:243
 msgid "America/Toronto"
-msgstr ""
+msgstr "America/Toronto"
 
 #: ../src/timezone_names.c:244
 msgid "America/Tortola"
@@ -2534,7 +2534,7 @@ msgstr "America/Vancouver"
 
 #: ../src/timezone_names.c:246
 msgid "America/Virgin"
-msgstr ""
+msgstr "America/Virgin"
 
 #: ../src/timezone_names.c:247
 msgid "America/Whitehorse"
@@ -2570,7 +2570,7 @@ msgstr "Antarctica/DumontDUrville"
 
 #: ../src/timezone_names.c:255
 msgid "Antarctica/Macquarie"
-msgstr ""
+msgstr "Antarctica/Macquarie"
 
 #: ../src/timezone_names.c:256
 msgid "Antarctica/Mawson"
@@ -2642,7 +2642,7 @@ msgstr "Asia/Ashgabat"
 
 #: ../src/timezone_names.c:273
 msgid "Asia/Ashkhabad"
-msgstr ""
+msgstr "Asia/Ashkhabad"
 
 #: ../src/timezone_names.c:274
 msgid "Asia/Baghdad"
@@ -2678,7 +2678,7 @@ msgstr "Asia/Calcutta"
 
 #: ../src/timezone_names.c:282
 msgid "Asia/Choibalsan"
-msgstr ""
+msgstr "Asia/Choibalsan"
 
 #: ../src/timezone_names.c:283
 msgid "Asia/Chongqing"
