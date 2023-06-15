@@ -1163,16 +1163,22 @@ static void add_file_select_cb(appt_win *apptw)
         }
     }
 
-    if (!use_list) { /* it is not needed after all */
-        gtk_widget_destroy(apptw->File_insert_cb);
+    if (use_list)
+    {
+        /* Add insert file combobox to toolbar */
+        (void)orage_toolbar_append_separator (apptw->Toolbar, -1);
+        tool_item = GTK_WIDGET (gtk_tool_item_new ());
+
+        gtk_container_add (GTK_CONTAINER (tool_item), apptw->File_insert_cb);
+        gtk_toolbar_insert (GTK_TOOLBAR (apptw->Toolbar),
+                            GTK_TOOL_ITEM (tool_item), -1);
+    }
+    else
+    {
+        /* It is not needed after all. */
+        gtk_widget_destroy (apptw->File_insert_cb);
         apptw->File_insert_cb = NULL;
     }
-
-    /* Add insert file combobox to toolbar */
-    (void)orage_toolbar_append_separator(apptw->Toolbar, -1);
-    tool_item = GTK_WIDGET(gtk_tool_item_new());
-    gtk_container_add(GTK_CONTAINER(tool_item), apptw->File_insert_cb);
-    gtk_toolbar_insert(GTK_TOOLBAR(apptw->Toolbar), GTK_TOOL_ITEM(tool_item), -1);
 }
 
 static void remove_file_select_cb(appt_win *apptw)
