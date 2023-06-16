@@ -55,7 +55,7 @@
 struct _OrageApplication
 {
     GtkApplication parent;
-    ClockSleepMonitor *sleep_monitor;
+    OrageSleepMonitor *sleep_monitor;
     OrageTaskRunner *sync;
     guint prepare_for_sleep_id;
     gboolean toggle_option;
@@ -98,7 +98,7 @@ void woke_up_cb (void)
 
 static void resuming_handler_register (OrageApplication *self)
 {
-    self->sleep_monitor = clock_sleep_monitor_create ();
+    self->sleep_monitor = orage_sleep_monitor_create ();
 
     g_signal_connect_swapped (G_OBJECT (self->sleep_monitor), "woke-up",
                               G_CALLBACK (woke_up_cb), NULL);

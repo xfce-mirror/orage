@@ -52,20 +52,20 @@
  * of wakeup events.
  */
 
-static guint clock_sleep_monitor_woke_up_signal = 0;
+static guint orage_sleep_monitor_woke_up_signal = 0;
 
-G_DEFINE_ABSTRACT_TYPE (ClockSleepMonitor, clock_sleep_monitor, G_TYPE_OBJECT)
+G_DEFINE_ABSTRACT_TYPE (OrageSleepMonitor, orage_sleep_monitor, G_TYPE_OBJECT)
 
-static void clock_sleep_monitor_finalize (GObject *object);
+static void orage_sleep_monitor_finalize (GObject *object);
 
-static void clock_sleep_monitor_class_init (ClockSleepMonitorClass *klass)
+static void orage_sleep_monitor_class_init (OrageSleepMonitorClass *klass)
 {
   GObjectClass *gobject_class;
 
   gobject_class = G_OBJECT_CLASS (klass);
-  gobject_class->finalize = clock_sleep_monitor_finalize;
+  gobject_class->finalize = orage_sleep_monitor_finalize;
 
-  clock_sleep_monitor_woke_up_signal =
+  orage_sleep_monitor_woke_up_signal =
     g_signal_new (
       g_intern_static_string ("woke-up"),
       G_TYPE_FROM_CLASS (gobject_class),
@@ -75,52 +75,52 @@ static void clock_sleep_monitor_class_init (ClockSleepMonitorClass *klass)
       G_TYPE_NONE, 0);
 }
 
-static void clock_sleep_monitor_init (ClockSleepMonitor *monitor)
+static void orage_sleep_monitor_init (OrageSleepMonitor *monitor)
 {
 }
 
-static void clock_sleep_monitor_finalize (GObject *object)
+static void orage_sleep_monitor_finalize (GObject *object)
 {
-  G_OBJECT_CLASS (clock_sleep_monitor_parent_class)->finalize (object);
+  G_OBJECT_CLASS (orage_sleep_monitor_parent_class)->finalize (object);
 }
 
 
 
 #if defined (SLEEP_MONITOR_USE_LOGIND) || defined (SLEEP_MONITOR_USE_CONSOLEKIT)
 
-struct _ClockSleepDBusMonitor
+struct _OrageSleepDBusMonitor
 {
-  ClockSleepMonitor parent_instance;
+  OrageSleepMonitor parent_instance;
   GDBusProxy *monitor_proxy;
 };
 
-#define CLOCK_TYPE_SLEEP_DBUS_MONITOR (clock_sleep_dbus_monitor_get_type ())
+#define ORAGE_TYPE_SLEEP_DBUS_MONITOR (orage_sleep_dbus_monitor_get_type ())
 
-G_DECLARE_FINAL_TYPE (ClockSleepDBusMonitor, clock_sleep_dbus_monitor, CLOCK, SLEEP_DBUS_MONITOR, ClockSleepMonitor)
+G_DECLARE_FINAL_TYPE (OrageSleepDBusMonitor, orage_sleep_dbus_monitor, ORAGE, SLEEP_DBUS_MONITOR, OrageSleepMonitor)
 
 #if GLIB_VERSION_MAX_ALLOWED >= GLIB_VERSION_2_70
-G_DEFINE_FINAL_TYPE (ClockSleepDBusMonitor, clock_sleep_dbus_monitor, CLOCK_TYPE_SLEEP_MONITOR)
+G_DEFINE_FINAL_TYPE (OrageSleepDBusMonitor, orage_sleep_dbus_monitor, ORAGE_TYPE_SLEEP_MONITOR)
 #else
-G_DEFINE_TYPE (ClockSleepDBusMonitor, clock_sleep_dbus_monitor, CLOCK_TYPE_SLEEP_MONITOR)
+G_DEFINE_TYPE (OrageSleepDBusMonitor, orage_sleep_dbus_monitor, ORAGE_TYPE_SLEEP_MONITOR)
 #endif
 
-static void clock_sleep_dbus_monitor_finalize (GObject *object);
+static void orage_sleep_dbus_monitor_finalize (GObject *object);
 
-static void clock_sleep_dbus_monitor_class_init (ClockSleepDBusMonitorClass *klass)
+static void orage_sleep_dbus_monitor_class_init (OrageSleepDBusMonitorClass *klass)
 {
   GObjectClass *gobject_class;
 
   gobject_class = G_OBJECT_CLASS (klass);
-  gobject_class->finalize = clock_sleep_dbus_monitor_finalize;
+  gobject_class->finalize = orage_sleep_dbus_monitor_finalize;
 }
 
-static void clock_sleep_dbus_monitor_init (ClockSleepDBusMonitor *monitor)
+static void orage_sleep_dbus_monitor_init (OrageSleepDBusMonitor *monitor)
 {
 }
 
-static void clock_sleep_dbus_monitor_finalize (GObject *object)
+static void orage_sleep_dbus_monitor_finalize (GObject *object)
 {
-  ClockSleepDBusMonitor *monitor = CLOCK_SLEEP_DBUS_MONITOR (object);
+  OrageSleepDBusMonitor *monitor = ORAGE_SLEEP_DBUS_MONITOR (object);
   g_return_if_fail (monitor != NULL);
 
   if (monitor->monitor_proxy != NULL)
@@ -129,14 +129,14 @@ static void clock_sleep_dbus_monitor_finalize (GObject *object)
       g_object_unref (G_OBJECT (monitor->monitor_proxy));
     }
 
-  G_OBJECT_CLASS (clock_sleep_dbus_monitor_parent_class)->finalize (object);
+  G_OBJECT_CLASS (orage_sleep_dbus_monitor_parent_class)->finalize (object);
 }
 
 static void on_prepare_sleep_signal (GDBusProxy *proxy,
                                      gchar *sender_name,
                                      gchar *signal_name,
                                      GVariant *parameters,
-                                     ClockSleepMonitor *monitor)
+                                     OrageSleepMonitor *monitor)
 {
   const gchar *format_string = "(b)";
   gboolean going_to_sleep;
@@ -146,26 +146,27 @@ static void on_prepare_sleep_signal (GDBusProxy *proxy,
 
   if (!g_variant_check_format_string (parameters, format_string, FALSE))
     {
-      g_critical ("unexpected format string: %s", g_variant_get_type_string (parameters));
+      g_critical ("unexpected format string: %s",
+                  g_variant_get_type_string (parameters));
       return;
     }
 
   g_variant_get (parameters, format_string, &going_to_sleep);
 
   if (!going_to_sleep)
-    g_signal_emit (G_OBJECT (monitor), clock_sleep_monitor_woke_up_signal, 0);
+    g_signal_emit (G_OBJECT (monitor), orage_sleep_monitor_woke_up_signal, 0);
 }
 
-static ClockSleepMonitor* clock_sleep_dbus_monitor_create (const gchar *name,
+static OrageSleepMonitor* orage_sleep_dbus_monitor_create (const gchar *name,
                                                            const gchar *object_path,
                                                            const gchar *interface_name)
 {
-  ClockSleepDBusMonitor *monitor;
+  OrageSleepDBusMonitor *monitor;
   gchar *owner_name;
 
   g_debug ("trying to instantiate sleep monitor %s", name);
 
-  monitor = g_object_new (CLOCK_TYPE_SLEEP_DBUS_MONITOR, NULL);
+  monitor = g_object_new (ORAGE_TYPE_SLEEP_DBUS_MONITOR, NULL);
   monitor->monitor_proxy = g_dbus_proxy_new_for_bus_sync (
       G_BUS_TYPE_SYSTEM,
       G_DBUS_PROXY_FLAGS_NONE,
@@ -194,13 +195,13 @@ static ClockSleepMonitor* clock_sleep_dbus_monitor_create (const gchar *name,
   g_signal_connect (monitor->monitor_proxy, "g-signal",
                     G_CALLBACK (on_prepare_sleep_signal), monitor);
 
-  return CLOCK_SLEEP_MONITOR (monitor);
+  return ORAGE_SLEEP_MONITOR (monitor);
 }
 #endif
 
 #ifdef SLEEP_MONITOR_USE_LOGIND
 /* Logind-based implementation */
-static ClockSleepMonitor* clock_sleep_monitor_logind_create (void)
+static OrageSleepMonitor* orage_sleep_monitor_logind_create (void)
 {
   if (!LOGIND_RUNNING ())
     {
@@ -208,7 +209,7 @@ static ClockSleepMonitor* clock_sleep_monitor_logind_create (void)
       return NULL;
     }
 
-  return clock_sleep_dbus_monitor_create (
+  return orage_sleep_dbus_monitor_create (
       "org.freedesktop.login1",
       "/org/freedesktop/login1",
       "org.freedesktop.login1.Manager");
@@ -216,9 +217,9 @@ static ClockSleepMonitor* clock_sleep_monitor_logind_create (void)
 #endif /* defined SLEEP_MONITOR_USE_LOGIND */
 
 #ifdef SLEEP_MONITOR_USE_CONSOLEKIT
-static ClockSleepMonitor* clock_sleep_monitor_consolekit_create (void)
+static OrageSleepMonitor* orage_sleep_monitor_consolekit_create (void)
 {
-  return clock_sleep_dbus_monitor_create (
+  return orage_sleep_dbus_monitor_create (
       "org.freedesktop.ConsoleKit",
       "/org/freedesktop/ConsoleKit/Manager",
       "org.freedesktop.ConsoleKit.Manager");
@@ -231,23 +232,23 @@ static ClockSleepMonitor* clock_sleep_monitor_consolekit_create (void)
  * Collect available implementations in a reasonable order.
  */
 
-typedef ClockSleepMonitor* (*SleepMonitorFactory) (void);
+typedef OrageSleepMonitor* (*SleepMonitorFactory) (void);
 
 static SleepMonitorFactory sleep_monitor_factories[] =
 {
   #ifdef SLEEP_MONITOR_USE_LOGIND
-  clock_sleep_monitor_logind_create,
+  orage_sleep_monitor_logind_create,
   #endif
   #ifdef SLEEP_MONITOR_USE_CONSOLEKIT
-  clock_sleep_monitor_consolekit_create,
+  orage_sleep_monitor_consolekit_create,
   #endif
   NULL
 };
 
-ClockSleepMonitor *clock_sleep_monitor_create (void)
+OrageSleepMonitor *orage_sleep_monitor_create (void)
 {
   SleepMonitorFactory *factory_ptr = &sleep_monitor_factories[0];
-  ClockSleepMonitor *monitor = NULL;
+  OrageSleepMonitor *monitor = NULL;
 
   for (; monitor == NULL && *factory_ptr != NULL; factory_ptr++)
     monitor = (*factory_ptr) ();
