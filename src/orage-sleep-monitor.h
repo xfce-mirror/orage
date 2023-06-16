@@ -24,10 +24,10 @@
 
 G_BEGIN_DECLS
 
-#define CLOCK_TYPE_SLEEP_MONITOR (clock_sleep_monitor_get_type ())
-G_DECLARE_DERIVABLE_TYPE (ClockSleepMonitor, clock_sleep_monitor, CLOCK, SLEEP_MONITOR, GObject)
+#define ORAGE_TYPE_SLEEP_MONITOR (orage_sleep_monitor_get_type ())
+G_DECLARE_DERIVABLE_TYPE (OrageSleepMonitor, orage_sleep_monitor, ORAGE, SLEEP_MONITOR, GObject)
 
-struct _ClockSleepMonitorClass
+struct _OrageSleepMonitorClass
 {
   GObjectClass parent_class;
 };
@@ -38,6 +38,6 @@ struct _ClockSleepMonitorClass
  * The sleep monitor emits a signal `woke-up()` when it detects wakeup
  * from a sleep state.
  */
-ClockSleepMonitor* clock_sleep_monitor_create (void);
+OrageSleepMonitor* orage_sleep_monitor_create (void);
 
 G_END_DECLS
