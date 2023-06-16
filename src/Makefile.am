@@ -31,6 +31,8 @@ orage_SOURCES =							\
 	orage-i18n.h						\
 	orage-rc-file.c						\
 	orage-rc-file.h						\
+	orage-sleep-monitor.c					\
+	orage-sleep-monitor.h					\
 	orage-sync-edit-dialog.c				\
 	orage-sync-edit-dialog.h				\
 	orage-sync-ext-command.c				\
