@@ -28,6 +28,7 @@
 #include "parameters.h"
 #include "orage-i18n.h"
 #include "orage-css.h"
+#include "orage-sleep-monitor.h"
 #include "mainbox.h"
 #include "interface.h"
 #include "ical-code.h"
@@ -54,7 +55,7 @@
 struct _OrageApplication
 {
     GtkApplication parent;
-    GDBusConnection *connection;
+    OrageSleepMonitor *sleep_monitor;
     OrageTaskRunner *sync;
     guint prepare_for_sleep_id;
     gboolean toggle_option;
@@ -85,81 +86,23 @@ static gboolean resuming_after_delay (G_GNUC_UNUSED gpointer user_data)
     return FALSE;
 }
 
-static void resuming_cb (G_GNUC_UNUSED GDBusConnection *connection,
-                         const gchar *sender_name,
-                         const gchar *object_path,
-                         const gchar *interface_name,
-                         const gchar *signal_name,
-                         GVariant *parameters,
-                         G_GNUC_UNUSED gpointer user_data)
+static void woke_up_cb (void)
 {
-    gboolean prepare_for_sleep;
+    g_debug ("received resuming signal");
 
-    g_debug ("%s: sender_name='%s', object_path='%s', %s.%s %s", G_STRFUNC,
-             sender_name, object_path, interface_name,
-             signal_name, g_variant_print (parameters, TRUE));
-
-    if (!g_variant_check_format_string (parameters, "(b)", FALSE))
-    {
-        g_warning ("received incorrect parameter for PrepareForSleep signal");
-        return;
-    }
-
-    g_variant_get (parameters, "(b)", &prepare_for_sleep);
-
-    if (prepare_for_sleep == FALSE)
-    {
-        g_debug ("received resuming signal");
-
-        /* We need this delay to prevent updating tray icon too quickly when the
-         * normal code handles it also.
-         */
-        g_timeout_add_seconds (2, resuming_after_delay, NULL);
-    }
+    /* We need this delay to prevent updating tray icon too quickly when the
+     * normal code handles it also.
+     */
+    g_timeout_add_seconds (2, resuming_after_delay, NULL);
 }
 
 static void resuming_handler_register (OrageApplication *self)
 {
-    GError *error = NULL;
+    self->sleep_monitor = orage_sleep_monitor_create ();
 
-    self->connection = g_bus_get_sync (G_BUS_TYPE_SYSTEM, NULL, &error);
-    if (self->connection == NULL)
-    {
-        g_warning ("failed to connect to the D-BUS session bus: %s",
-                   error->message);
-        g_error_free (error);
-        return;
-    }
-
-    self->prepare_for_sleep_id = g_dbus_connection_signal_subscribe (
-            self->connection,
-            LOGIND_BUS_NAME,
-            LOGIND_IFACE_NAME,
-            "PrepareForSleep",
-            LOGIND_OBJ_PATH,
-            NULL,
-            G_DBUS_SIGNAL_FLAGS_NONE,
-            resuming_cb,
-            NULL,
-            NULL);
-
-    g_debug ("%s: prepare_for_sleep_id=%d", G_STRFUNC,
-             self->prepare_for_sleep_id);
-}
-
-static void resuming_handler_unregister (OrageApplication *self)
-{
-    g_debug ("%s: prepare_for_sleep_id=%d", G_STRFUNC,
-             self->prepare_for_sleep_id);
-
-    if (self->prepare_for_sleep_id)
-    {
-        g_dbus_connection_signal_unsubscribe (self->connection,
-                                              self->prepare_for_sleep_id);
-    }
-
-    if (self->connection)
-        g_object_unref (self->connection);
+    g_signal_connect_swapped (G_OBJECT (self->sleep_monitor), "woke-up",
+                              G_CALLBACK (woke_up_cb), NULL);
+    g_object_ref (G_OBJECT (self->sleep_monitor));
 }
 
 static void print_version (void)
@@ -310,7 +253,7 @@ static void orage_application_shutdown (GApplication *app)
     g_object_unref (self->sync);
 #endif
 
-    resuming_handler_unregister (self);
+    g_object_unref (G_OBJECT (self->sleep_monitor));
 
 #ifdef HAVE_NOTIFY
     orage_notify_uninit ();
