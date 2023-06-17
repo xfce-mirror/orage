@@ -86,7 +86,7 @@ static gboolean resuming_after_delay (G_GNUC_UNUSED gpointer user_data)
     return FALSE;
 }
 
-void woke_up_cb (void)
+static void woke_up_cb (void)
 {
     g_debug ("received resuming signal");
 
