@@ -68,7 +68,7 @@ static void parsing_error_cb (GtkCssProvider *provider,
     }
 }
 
-void register_css_provider (void)
+void orage_css_set_theme (void)
 {
     gchar *file;
     gchar **files;
