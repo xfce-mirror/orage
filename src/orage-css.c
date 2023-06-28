@@ -37,10 +37,10 @@ static void append_error_value (GString *string,
 {
     GEnumClass *enum_class;
     GEnumValue *enum_value;
-    
+
     enum_class = g_type_class_ref (enum_type);
     enum_value = g_enum_get_value (enum_class, value);
-    
+
     g_string_append (string, enum_value->value_name);
 
     g_type_class_unref (enum_class);
@@ -52,7 +52,7 @@ static void parsing_error_cb (GtkCssProvider *provider,
                               GString        *errors)
 {
     char *path;
-    
+
     path = g_file_get_path (gtk_css_section_get_file (section));
     g_string_append_printf (errors, "%s:%u - error: ",
                             path, gtk_css_section_get_end_line (section) + 1);
