@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 4.19.0 (2023-06-28)
 - Moved internal CSS string to separte theme file
+=======
+4.19.0 (2023-06-16)
+>>>>>>> b32e8679467e17dd302d70defc400d2eb8406dea
 - Added command line parameter '-i' to import ICS files
 - Rudimentary synchronization support: added support for calling a user-specified
   synchronization command
