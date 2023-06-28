@@ -86,7 +86,11 @@ static gboolean resuming_after_delay (G_GNUC_UNUSED gpointer user_data)
     return FALSE;
 }
 
+<<<<<<< HEAD
+void woke_up_cb (void)
+=======
 static void woke_up_cb (void)
+>>>>>>> b32e8679467e17dd302d70defc400d2eb8406dea
 {
     g_debug ("received resuming signal");
 
@@ -172,7 +176,7 @@ static void orage_application_startup (GApplication *app)
     
     /* init i18n = nls to use gettext */
     xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
-    register_css_provider ();
+    orage_css_set_theme ();
     read_parameters ();
 #ifdef ENABLE_SYNC
     self->sync = g_object_new (ORAGE_TASK_RUNNER_TYPE, NULL);

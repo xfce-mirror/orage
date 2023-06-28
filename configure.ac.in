@@ -169,6 +169,7 @@ po/Makefile.in
 sounds/Makefile
 src/Makefile
 plugin/Makefile
+themes/Makefile
 ])
 AC_OUTPUT
 
