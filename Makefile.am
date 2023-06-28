@@ -6,7 +6,8 @@ SUBDIRS = icons			\
 	po			\
 	sounds			\
 	src			\
-	plugin
+	plugin			\
+	themes
 
 desktopdir = $(datadir)/applications
 desktop_in_files = org.xfce.orage.desktop.in

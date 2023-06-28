@@ -1,4 +1,4 @@
-4.19.0 (2023-06-16)
+4.19.0 (2023-06-28)
 - Added command line parameter '-i' to import ICS files
 - Rudimentary synchronization support: added support for calling a user-specified
   synchronization command

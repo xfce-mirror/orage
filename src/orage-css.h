@@ -32,6 +32,6 @@
 #define ORAGE_MAINBOX_RED "orage_mainbox_red"
 #define ORAGE_MAINBOX_BLUE "orage_mainbox_blue"
 
-extern void register_css_provider (void);
+extern void orage_css_set_theme (void);
 
 #endif

@@ -23,100 +23,59 @@
 #endif
 
 #include "orage-css.h"
+#include <libxfce4util/libxfce4util.h>
 #include <gtk/gtk.h>
 #include <glib.h>
 
-static const gchar orage_css_style[] =
-"orage_tray_icon" \
-"{\n" \
-"   background-color: rgb(239, 235, 230);\n" \
-"   border-color: black;\n" \
-"   border-radius: 16px;\n" \
-"   border-top-width: 2px;\n" \
-"   border-right-width: 5px;\n" \
-"   border-bottom-width: 5px;\n" \
-"   border-left-width: 2px;\n" \
-"   border-style:solid;\n" \
-"   font-size: 85px;\n" \
-"}" \
-"orage_tray_icon > row1" \
-"{\n" \
-"   font-family: Ariel;\n" \
-"   font-size: 41%;\n" \
-"   color: blue;\n" \
-"}" \
-"orage_tray_icon > row2" \
-"{\n" \
-"   font-family: Sans;\n" \
-"   font-weight: bold;\n" \
-"   font-size: 100%;\n" \
-"   color: red;\n" \
-"}\n" \
-"orage_tray_icon > row3" \
-"{\n" \
-"   font-family: Ariel;\n" \
-"   font-weight: bold;\n" \
-"   font-size: 44%;\n" \
-"   color: blue;\n" \
-"}\n" \
-"#" ORAGE_DAY_VIEW_TODAY \
-"{\n" \
-"   background: gold;\n" \
-"   font-weight: bold;\n" \
-"   border-width: 1px;\n" \
-"}\n"\
-"#" ORAGE_DAY_VIEW_SUNDAY \
-"{\n" \
-"   color: red;\n" \
-"}"\
-"#" ORAGE_DAY_VIEW_ALL_DAY_EVENT \
-"{\n" \
-"   background: lightgray;\n" \
-"}"\
-"#" ORAGE_DAY_VIEW_ODD_HOURS \
-"{\n" \
-"   background: lightgray;\n" \
-"   padding: 4px\n" \
-"}" \
-"#" ORAGE_DAY_VIEW_EVEN_HOURS \
-"{\n" \
-"   background: rgb(239, 235, 230);\n" \
-"   padding: 4px\n" \
-"}" \
-"#" ORAGE_DAY_VIEW_SEPARATOR_BAR \
-"{\n" \
-"   background: white;\n" \
-"   min-width: 3px;\n" \
-"}\n" \
-"#" ORAGE_DAY_VIEW_OCCUPIED_HOUR_LINE \
-"{\n" \
-"   background: black;\n" \
-"   min-width: 3px;\n" \
-"}\n" \
-"#" ORAGE_DAY_VIEW_TASK_SEPARATOR \
-"{\n" \
-"   background: black;\n" \
-"   min-width: 1px;\n" \
-"}\n" \
-"#" ORAGE_MAINBOX_RED \
-"{\n" \
-"   color: red;\n" \
-"}\n" \
-"#" ORAGE_MAINBOX_BLUE \
-"{\n" \
-"   color: blue;\n" \
-"}";
+#define ORAGE_CSS_VERSION "orage-4.0"
+#define ORAGE_CSS_NAME "gtk.css"
+#define ORAGE_DEFAULT_THEME "themes/Default/" ORAGE_CSS_VERSION "/" ORAGE_CSS_NAME
 
-static gboolean css_registered = FALSE;
-
-void register_css_provider (void)
+static void append_error_value (GString *string,
+                                GType    enum_type,
+                                guint    value)
 {
+    GEnumClass *enum_class;
+    GEnumValue *enum_value;
+
+    enum_class = g_type_class_ref (enum_type);
+    enum_value = g_enum_get_value (enum_class, value);
+
+    g_string_append (string, enum_value->value_name);
+
+    g_type_class_unref (enum_class);
+}
+
+static void parsing_error_cb (GtkCssProvider *provider,
+                              GtkCssSection  *section,
+                              const GError   *error,
+                              GString        *errors)
+{
+    char *path;
+
+    path = g_file_get_path (gtk_css_section_get_file (section));
+    g_string_append_printf (errors, "%s:%u - error: ",
+                            path, gtk_css_section_get_end_line (section) + 1);
+    g_free (path);
+
+    if (error->domain == GTK_CSS_PROVIDER_ERROR)
+        append_error_value (errors, GTK_TYPE_CSS_PROVIDER_ERROR, error->code);
+    else
+    {
+        g_string_append_printf (errors, "%s %u",
+                                g_quark_to_string (error->domain),
+                                error->code);
+    }
+}
+
+void orage_css_set_theme (void)
+{
+    gchar *file;
+    gchar **files;
     GtkCssProvider *provider;
     GdkDisplay *display;
     GdkScreen *screen;
-
-    if (css_registered == TRUE)
-        return;
+    GString *errors;
 
     provider = gtk_css_provider_new ();
     display = gdk_display_get_default ();
@@ -127,9 +86,37 @@ void register_css_provider (void)
             GTK_STYLE_PROVIDER (provider),
             GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-    gtk_css_provider_load_from_data (GTK_CSS_PROVIDER (provider),
-                                     orage_css_style, -1, NULL);
+    file = g_build_filename (xfce_get_homedir (), ".themes",
+                             ORAGE_CSS_VERSION, ORAGE_CSS_NAME, NULL);
+
+    if (g_file_test (file, G_FILE_TEST_EXISTS) == FALSE)
+    {
+        g_free (file);
+        files = xfce_resource_lookup_all (XFCE_RESOURCE_THEMES,
+                                          ORAGE_DEFAULT_THEME);
+
+        if ((files == NULL) || (files[0] == NULL))
+        {
+            g_warning ("Theme '" ORAGE_CSS_VERSION "/" ORAGE_CSS_NAME
+                       "' is not found anywhere in themes directories");
+            return;
+        }
+
+        file = g_strdup (files[0]);
+        g_strfreev (files);
+    }
+
+    errors = g_string_new ("");
+    g_signal_connect (provider, "parsing-error",
+                      G_CALLBACK (parsing_error_cb), errors);
+
+    gtk_css_provider_load_from_path (provider, file, NULL);
+
+    if (errors->str[0])
+        g_warning ("Failed to parse CSS file '%s'", errors->str);
+
+    g_string_free (errors, TRUE);
+    g_free (file);
 
     g_object_unref (provider);
-    css_registered = TRUE;
 }
