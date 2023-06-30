@@ -36,6 +36,7 @@
 #include "functions.h"
 #include "mainbox.h"
 #include "parameters.h"
+#include "orage-i18n.h"
 
 #include "orage-application.h"
 
@@ -90,7 +91,7 @@ int main (int argc, char **argv)
     int status;
     struct sigaction sig_int_handler;
 
-    g_set_application_name ("Orage");
+    g_set_application_name (_("Orage"));
 
     orage_app = orage_application_new ();
 
