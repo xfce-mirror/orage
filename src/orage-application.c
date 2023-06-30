@@ -66,12 +66,12 @@ G_DEFINE_TYPE (OrageApplication, orage_application, GTK_TYPE_APPLICATION)
 
 static gboolean window_delete_event_cb (G_GNUC_UNUSED GtkWidget *widget,
                                         G_GNUC_UNUSED GdkEvent *event,
-                                        CalWin *cal)
+                                        GtkWidget *window)
 {
     if (g_par.close_means_quit)
         orage_quit ();
     else
-        gtk_widget_hide (cal->mWindow);
+        gtk_widget_hide (window);
 
     return TRUE;
 }
@@ -147,19 +147,19 @@ static void load_sync_conf (OrageTaskRunner *sync)
 
 static void raise_window (void)
 {
-    CalWin *cal = (CalWin *)g_par.xfcal;
+    GtkWindow *window = GTK_WINDOW (g_par.xfcal);
 
     if (g_par.pos_x || g_par.pos_y)
-        gtk_window_move (GTK_WINDOW (cal->mWindow), g_par.pos_x, g_par.pos_y);
+        gtk_window_move (window, g_par.pos_x, g_par.pos_y);
 
     if (g_par.select_always_today)
-        orage_select_today (GTK_CALENDAR (cal->mCalendar));
+        orage_select_today (orage_window_get_calendar (ORAGE_WINDOW (window)));
 
     if (g_par.set_stick)
-        gtk_window_stick (GTK_WINDOW (cal->mWindow));
+        gtk_window_stick (window);
 
-    gtk_window_set_keep_above (GTK_WINDOW (cal->mWindow), g_par.set_ontop);
-    gtk_window_present (GTK_WINDOW (cal->mWindow));
+    gtk_window_set_keep_above (window, g_par.set_ontop);
+    gtk_window_present (window);
 }
 
 static void orage_application_startup (GApplication *app)
@@ -184,6 +184,7 @@ static void orage_application_activate (GApplication *app)
 {
     GList *list;
     OrageApplication *self;
+    GtkWidget *window;
 
     self = ORAGE_APPLICATION (app);
 
@@ -202,36 +203,34 @@ static void orage_application_activate (GApplication *app)
     }
     else
     {
-        g_par.xfcal = g_new (CalWin, 1);
-
         /* Create the main window */
-        ((CalWin *)g_par.xfcal)->mWindow = orage_window_new (self);
+        window = orage_window_new (self);
 
-        g_signal_connect ((gpointer) ((CalWin *)g_par.xfcal)->mWindow,
-                          "delete_event",
-                          G_CALLBACK(window_delete_event_cb),
-                          (gpointer)g_par.xfcal);
+        g_signal_connect (window, "delete_event",
+                          G_CALLBACK (window_delete_event_cb), window);
 
-        build_mainWin ();
+        g_par.xfcal = window;
+
+        build_mainWin (ORAGE_WINDOW (window));
         set_parameters ();
         if (g_par.start_visible)
-            gtk_widget_show (((CalWin *)g_par.xfcal)->mWindow);
+            gtk_widget_show (window);
         else if (g_par.start_minimized)
         {
-            gtk_window_iconify (GTK_WINDOW (((CalWin *)g_par.xfcal)->mWindow));
-            gtk_widget_show (((CalWin *)g_par.xfcal)->mWindow);
+            gtk_window_iconify (GTK_WINDOW (window));
+            gtk_widget_show (window);
         }
         else
         {
             /* hidden */
-            gtk_widget_realize (((CalWin *)g_par.xfcal)->mWindow);
-            gtk_widget_hide (((CalWin *)g_par.xfcal)->mWindow);
+            gtk_widget_realize (window);
+            gtk_widget_hide (window);
         }
 
         alarm_read ();
         orage_day_change (NULL); /* first day change after we start */
         mCalendar_month_changed_cb (
-                (GtkCalendar *)((CalWin *)g_par.xfcal)->mCalendar, NULL);
+                orage_window_get_calendar (ORAGE_WINDOW (window)), NULL);
 
         /* start monitoring external file updates */
         g_timeout_add_seconds (30, orage_external_update_check, NULL);

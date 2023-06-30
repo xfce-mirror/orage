@@ -96,10 +96,10 @@ static void on_Today_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
                                gpointer user_data)
 {
     GDateTime *gdt;
-    CalWin *xfcal = (CalWin *)user_data;
 
     gdt = g_date_time_new_now_local ();
-    orage_select_date (GTK_CALENDAR (xfcal->mCalendar), gdt);
+    orage_select_date (orage_window_get_calendar (ORAGE_WINDOW (user_data)),
+                       gdt);
     g_date_time_unref (gdt);
     (void)create_el_win (NULL);
 }
@@ -247,7 +247,6 @@ static void create_own_icon_pango_layout (gint line,
                                           gint width,
                                           gint height)
 {
-    CalWin *xfcal = (CalWin *)g_par.xfcal;
     PangoRectangle real_rect, log_rect;
     gint x_size, x_offset, y_offset;
     gint y_size;
@@ -260,7 +259,7 @@ static void create_own_icon_pango_layout (gint line,
 
     g_assert ((line >= 1) && (line <= 3));
 
-    pl = gtk_widget_create_pango_layout (xfcal->mWindow, "x");
+    pl = gtk_widget_create_pango_layout (g_par.xfcal, "x");
     sub_style_context = get_row_style (style_context, line);
     style_context_state = gtk_style_context_get_state (sub_style_context);
 
@@ -385,15 +384,14 @@ static GdkPixbuf *orage_create_icon (void)
 
 static GtkWidget *create_TrayIcon_menu(void)
 {
-    CalWin *xfcal = (CalWin *)g_par.xfcal;
     GtkWidget *trayMenu;
     GtkWidget *menuItem;
 
     trayMenu = gtk_menu_new();
 
     menuItem = orage_image_menu_item (_("Today"), "go-home");
-    g_signal_connect(menuItem, "activate"
-            , G_CALLBACK(on_Today_activate), xfcal);
+    g_signal_connect (menuItem, "activate", G_CALLBACK(on_Today_activate),
+                      g_par.xfcal);
     gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
 
     menuItem = gtk_separator_menu_item_new();
@@ -425,7 +423,6 @@ static GtkWidget *create_TrayIcon_menu(void)
 
 GtkStatusIcon *orage_create_trayicon (void)
 {
-    CalWin *xfcal = (CalWin *)g_par.xfcal;
     GtkWidget *trayMenu;
     GtkStatusIcon *trayIcon = NULL;
     GdkPixbuf *orage_logo;
@@ -444,8 +441,8 @@ GtkStatusIcon *orage_create_trayicon (void)
     /* Create the tray icon popup menu. */
     trayMenu = create_TrayIcon_menu();
 
-    g_signal_connect(G_OBJECT(trayIcon), "activate",
-    			   G_CALLBACK(toggle_visible_cb), xfcal);
+    g_signal_connect (G_OBJECT (trayIcon), "activate",
+                      G_CALLBACK (toggle_visible_cb), NULL);
     g_signal_connect(G_OBJECT(trayIcon), "popup-menu",
     			   G_CALLBACK(show_menu), trayMenu);
     return(trayIcon);

@@ -28,59 +28,32 @@
 
 G_BEGIN_DECLS
 
-typedef struct _CalWin
-{
-    GtkAccelGroup *mAccel_group;
-
-    GtkWidget *mWindow;
-    GtkWidget *mVbox;
-
-    GtkWidget *mMenubar;
-    GtkWidget *mFile_menu;
-    GtkWidget *mFile_newApp;
-#ifdef ENABLE_SYNC
-    GtkWidget *mFile_refresh;
-#endif
-    GtkWidget *mFile_interface;
-    GtkWidget *mFile_close;
-    GtkWidget *mFile_quit;
-    GtkWidget *mEdit_menu;
-    GtkWidget *mEdit_preferences;
-    GtkWidget *mView_menu;
-    GtkWidget *mView_ViewSelectedDate;
-    GtkWidget *mView_ViewSelectedWeek;
-    GtkWidget *mView_selectToday;
-    GtkWidget *mHelp_menu;
-    GtkWidget *mHelp_help;
-    GtkWidget *mHelp_about;
-
-    GtkWidget *mCalendar;
-
-    GtkWidget *mTodo_vbox;
-    GtkWidget *mTodo_label;
-    GtkWidget *mTodo_scrolledWin;
-    GtkWidget *mTodo_rows_vbox;
-    GtkWidget *mEvent_vbox;
-    GtkWidget *mEvent_label;
-    GtkWidget *mEvent_scrolledWin;
-    GtkWidget *mEvent_rows_vbox;
-} CalWin;
-
 #define ORAGE_TYPE_WINDOW (orage_window_get_type ())
 
 G_DECLARE_FINAL_TYPE (OrageWindow, orage_window, ORAGE, WINDOW, GtkApplicationWindow)
 
-void build_mainWin (void);
+void build_mainWin (OrageWindow *window);
 gboolean orage_mark_appointments (void);
-void build_mainbox_info (void);
-void build_mainbox_event_box (void);
-void build_mainbox_todo_box (void);
+
+/** This routine is called from ical-code xfical_alarm_build_list_internal and
+ *  ical files are already open at that time. So make sure ical files are opened
+ *  before and closed after this call.
+ */
+void orage_window_build_info (OrageWindow *window);
+void orage_window_build_events (OrageWindow *window);
+void orage_window_build_todo (OrageWindow *window);
 void mCalendar_month_changed_cb(GtkCalendar *calendar, gpointer user_data);
 
 /** Creates a new OrageWindow
  *  @return a newly created OrageWindow
  */
 GtkWidget *orage_window_new (OrageApplication *application);
+
+void orage_window_show_menubar (OrageWindow *window);
+void orage_window_hide_menubar (OrageWindow *window);
+void orage_window_hide_todo (OrageWindow *window);
+void orage_window_hide_event (OrageWindow *window);
+GtkCalendar *orage_window_get_calendar (OrageWindow *window);
 
 G_END_DECLS
 

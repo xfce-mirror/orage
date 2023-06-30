@@ -97,7 +97,7 @@ typedef struct _intf_win
     GtkAccelGroup *accelgroup;
 } intf_win;  /* interface = export/import window */
 
-void orage_external_interface(CalWin *xfcal);
+void orage_external_interface (void);
 
 gboolean orage_external_update_check(gpointer user_data);
 gboolean orage_foreign_file_add (const gchar *filename, gboolean read_only,

@@ -2861,7 +2861,9 @@ static void xfical_alarm_build_list_internal(gboolean first_list_today)
                 , ic_f_ical[i].ical, file_type, g_par.foreign_data[i].name);
     }
     setup_orage_alarm_clock(); /* keep reminders upto date */
-    build_mainbox_info();      /* refresh main calendar window lists */
+
+    /* Refresh main calendar window lists. */
+    orage_window_build_info (ORAGE_WINDOW (g_par.xfcal));
 }
 
 void xfical_alarm_build_list(gboolean first_list_today)

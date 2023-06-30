@@ -1492,7 +1492,7 @@ static void create_foreign_file_tab(intf_win *intf_w)
     refresh_foreign_files(intf_w, TRUE);
 }
 
-void orage_external_interface (G_GNUC_UNUSED CalWin *xfcal)
+void orage_external_interface (void)
 {
     intf_win *intf_w = g_new(intf_win, 1);
 

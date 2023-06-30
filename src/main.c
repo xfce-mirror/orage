@@ -45,18 +45,19 @@ static OrageApplication *orage_app;
 
 static void raise_window (void)
 {
-    CalWin *cal = (CalWin *)g_par.xfcal;
+    GtkWindow *window = GTK_WINDOW (g_par.xfcal);
 
     if (g_par.pos_x || g_par.pos_y)
-        gtk_window_move(GTK_WINDOW(cal->mWindow)
-                , g_par.pos_x, g_par.pos_y);
+        gtk_window_move (window, g_par.pos_x, g_par.pos_y);
+    
     if (g_par.select_always_today)
-        orage_select_today(GTK_CALENDAR(cal->mCalendar));
+        orage_select_today (orage_window_get_calendar (ORAGE_WINDOW (window)));
+
     if (g_par.set_stick)
-        gtk_window_stick(GTK_WINDOW(cal->mWindow));
-    gtk_window_set_keep_above(GTK_WINDOW(cal->mWindow)
-            , g_par.set_ontop);
-    gtk_window_present(GTK_WINDOW(cal->mWindow));
+        gtk_window_stick (window);
+    
+    gtk_window_set_keep_above (window, g_par.set_ontop);
+    gtk_window_present (window);
 }
 
 static void quit_handler (G_GNUC_UNUSED int s)
