@@ -52,8 +52,8 @@
 #include <glib/gprintf.h>
 
 #include "orage-i18n.h"
+#include "orage-window.h"
 #include "functions.h"
-#include "mainbox.h"
 #include "reminder.h"
 #include "ical-code.h"
 #include "event-list.h"

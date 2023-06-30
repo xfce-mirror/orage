@@ -38,12 +38,11 @@
 #include <gdk/gdkkeysyms.h>
 
 #include "orage-i18n.h"
+#include "orage-window.h"
 #include "functions.h"
-#include "mainbox.h"
 #include "interface.h"
 #include "ical-code.h"
 #include "parameters.h"
-
 
 enum {
     DRAG_TARGET_URILIST = 0

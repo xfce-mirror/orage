@@ -48,8 +48,8 @@
 
 #include "orage-alarm-structure.h"
 #include "orage-i18n.h"
+#include "orage-window.h"
 #include "functions.h"
-#include "mainbox.h"
 #include "ical-code.h"
 #include "timezone_selection.h"
 #include "event-list.h"

@@ -38,11 +38,11 @@
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 
-#include "orage-i18n.h"
-#include "orage-css.h"
-#include "functions.h"
-#include "mainbox.h"
 #include "orage-about.h"
+#include "orage-css.h"
+#include "orage-i18n.h"
+#include "orage-window.h"
+#include "functions.h"
 #include "ical-code.h"
 #include "event-list.h"
 #include "appointment.h"

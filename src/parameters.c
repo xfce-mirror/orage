@@ -46,13 +46,13 @@
 #include "orage-sync-edit-dialog.h"
 #include "orage-rc-file.h"
 #include "orage-i18n.h"
+#include "orage-window.h"
 #include "orage-application.h"
 #include "functions.h"
 #include "ical-code.h"
 #include "timezone_selection.h"
 #include "parameters.h"
 #include "parameters_internal.h"
-#include "mainbox.h"
 #include "reminder.h"
 
 #ifdef HAVE_X11_TRAY_ICON

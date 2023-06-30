@@ -22,8 +22,8 @@
 #ifndef __INTERFACE_H__
 #define __INTERFACE_H__
 
+#include "orage-window.h"
 #include <gtk/gtk.h>
-#include "mainbox.h"
 
 typedef struct _intf_win
 {

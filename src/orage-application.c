@@ -29,7 +29,7 @@
 #include "orage-i18n.h"
 #include "orage-css.h"
 #include "orage-sleep-monitor.h"
-#include "mainbox.h"
+#include "orage-window.h"
 #include "interface.h"
 #include "ical-code.h"
 #include "functions.h"

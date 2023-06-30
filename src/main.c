@@ -34,9 +34,9 @@
 #include <gio/gio.h>
 
 #include "functions.h"
-#include "mainbox.h"
 #include "parameters.h"
 #include "orage-i18n.h"
+#include "orage-window.h"
 
 #include "orage-application.h"
 
