@@ -713,11 +713,9 @@ void build_mainWin(void)
 
     cal->mAccel_group = gtk_accel_group_new();
 
-    gtk_window_set_title(GTK_WINDOW(cal->mWindow), _("Orage"));
     gtk_window_set_position(GTK_WINDOW(cal->mWindow), GTK_WIN_POS_NONE);
     gtk_window_set_resizable(GTK_WINDOW(cal->mWindow), TRUE);
     gtk_window_set_destroy_with_parent(GTK_WINDOW(cal->mWindow), TRUE);
-    gtk_window_set_icon_name (GTK_WINDOW (cal->mWindow), ORAGE_APP_ID);
 
     /* Build the vertical box */
     cal->mVbox = gtk_grid_new ();
@@ -734,11 +732,6 @@ void build_mainWin(void)
                                   NULL);
     gtk_grid_attach_next_to (GTK_GRID(cal->mVbox), cal->mCalendar, NULL,
                              GTK_POS_BOTTOM, 1, 1);
-    /*
-    gtk_calendar_set_display_options(GTK_CALENDAR(cal->mCalendar)
-            , GTK_CALENDAR_SHOW_HEADING | GTK_CALENDAR_SHOW_DAY_NAMES
-            | GTK_CALENDAR_SHOW_WEEK_NUMBERS);
-    */
     gtk_widget_show(cal->mCalendar);
 
     /* Build the Info boxes */
@@ -762,9 +755,6 @@ void build_mainWin(void)
                 , g_par.size_x, g_par.size_y);
     if (g_par.pos_x || g_par.pos_y)
         gtk_window_move(GTK_WINDOW(cal->mWindow), g_par.pos_x, g_par.pos_y);
-    /*
-    gtk_window_stick(GTK_WINDOW(cal->mWindow));
-    */
 }
 
 static void orage_window_class_init (OrageWindowClass *klass)
