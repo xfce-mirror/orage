@@ -57,6 +57,13 @@
 
 #define FORMAT_BOLD "<b> %s </b>"
 
+struct _OrageWindow
+{
+    GtkApplicationWindow __parent__;
+};
+
+G_DEFINE_TYPE (OrageWindow, orage_window, GTK_TYPE_APPLICATION_WINDOW)
+
 static guint month_change_timer=0;
 
 gboolean orage_mark_appointments(void)
@@ -758,4 +765,19 @@ void build_mainWin(void)
     /*
     gtk_window_stick(GTK_WINDOW(cal->mWindow));
     */
+}
+
+static void orage_window_class_init (OrageWindowClass *klass)
+{
+}
+
+static void orage_window_init (OrageWindow *self)
+{
+}
+
+GtkWidget *orage_window_new (OrageApplication *application)
+{
+    return g_object_new (ORAGE_TYPE_WINDOW,
+                         "application", GTK_APPLICATION (application),
+                         NULL);
 }

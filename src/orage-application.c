@@ -205,8 +205,7 @@ static void orage_application_activate (GApplication *app)
         g_par.xfcal = g_new (CalWin, 1);
 
         /* Create the main window */
-        ((CalWin *)g_par.xfcal)->mWindow =
-                gtk_application_window_new (GTK_APPLICATION (app));
+        ((CalWin *)g_par.xfcal)->mWindow = orage_window_new (self);
 
         g_signal_connect ((gpointer) ((CalWin *)g_par.xfcal)->mWindow,
                           "delete_event",

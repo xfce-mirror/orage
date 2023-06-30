@@ -20,10 +20,13 @@
  *     Boston, MA 02110-1301 USA
  */
 
-#ifndef __MAINBOX_H__
-#define __MAINBOX_H__
+#ifndef ORAGE_WINDOW_H
+#define ORAGE_WINDOW_H 1
 
 #include "orage-application.h"
+#include <glib.h>
+
+G_BEGIN_DECLS
 
 typedef struct _CalWin
 {
@@ -63,6 +66,10 @@ typedef struct _CalWin
     GtkWidget *mEvent_rows_vbox;
 } CalWin;
 
+#define ORAGE_TYPE_WINDOW (orage_window_get_type ())
+
+G_DECLARE_FINAL_TYPE (OrageWindow, orage_window, ORAGE, WINDOW, GtkApplicationWindow)
+
 void build_mainWin (void);
 gboolean orage_mark_appointments (void);
 void build_mainbox_info (void);
@@ -70,4 +77,11 @@ void build_mainbox_event_box (void);
 void build_mainbox_todo_box (void);
 void mCalendar_month_changed_cb(GtkCalendar *calendar, gpointer user_data);
 
-#endif /* !__MAINBOX_H__ */
+/** Creates a new OrageWindow
+ *  @return a newly created OrageWindow
+ */
+GtkWidget *orage_window_new (OrageApplication *application);
+
+G_END_DECLS
+
+#endif
