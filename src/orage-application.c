@@ -211,7 +211,11 @@ static void orage_application_activate (GApplication *app)
 
         g_par.xfcal = window;
 
-        build_mainWin (ORAGE_WINDOW (window));
+        /* XXX: TODO check if this line is needed for main window (it is copied
+         * from original code).
+         */
+        gtk_window_set_destroy_with_parent (GTK_WINDOW (window), TRUE);
+
         set_parameters ();
         if (g_par.start_visible)
             gtk_widget_show (window);

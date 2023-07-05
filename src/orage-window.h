@@ -32,7 +32,6 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (OrageWindow, orage_window, ORAGE, WINDOW, GtkApplicationWindow)
 
-void build_mainWin (OrageWindow *window);
 gboolean orage_mark_appointments (void);
 
 /** This routine is called from ical-code xfical_alarm_build_list_internal and

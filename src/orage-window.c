@@ -100,6 +100,8 @@ struct _OrageWindow
 
 G_DEFINE_TYPE (OrageWindow, orage_window, GTK_TYPE_APPLICATION_WINDOW)
 
+static void orage_window_restore_geometry (OrageWindow *window);
+
 static guint month_change_timer=0;
 
 gboolean orage_mark_appointments(void)
@@ -218,6 +220,19 @@ static void mHelp_about_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
     orage_show_about (NULL);
 }
 
+static void orage_window_post_init_cb (OrageWindow *window)
+{
+    guint rc;
+
+    rc = g_signal_handlers_disconnect_by_func (window,
+                                               orage_window_post_init_cb,
+                                               NULL);
+
+    g_debug ("%s: %d handlers disconnected", G_STRFUNC, rc);
+
+    orage_window_restore_geometry (window);
+}
+
 static void mCalendar_day_selected_double_click_cb (GtkCalendar *calendar,
                                                     G_GNUC_UNUSED gpointer user_data)
 {
@@ -257,6 +272,19 @@ void mCalendar_month_changed_cb (GtkCalendar *calendar,
 
     gtk_calendar_clear_marks(calendar);
     month_change_timer = g_timeout_add(400, (GSourceFunc)upd_calendar, calendar);
+}
+
+static void orage_window_restore_geometry (OrageWindow *window)
+{
+    GtkWindow *gwin = GTK_WINDOW (window);
+
+    gtk_window_set_position (gwin, GTK_WIN_POS_NONE);
+
+    if (g_par.size_x || g_par.size_y)
+        gtk_window_set_default_size (gwin, g_par.size_x, g_par.size_y);
+
+    if (g_par.pos_x || g_par.pos_y)
+        gtk_window_move (gwin, g_par.pos_x, g_par.pos_y);
 }
 
 static void build_menu (OrageWindow *window)
@@ -722,14 +750,7 @@ void orage_window_build_todo (OrageWindow *window)
 
 void build_mainWin (OrageWindow *window)
 {
-    gtk_window_set_position (GTK_WINDOW (window), GTK_WIN_POS_NONE);
-    gtk_window_set_destroy_with_parent (GTK_WINDOW (window), TRUE);
 
-    if (g_par.size_x || g_par.size_y)
-        gtk_window_set_default_size (GTK_WINDOW (window), g_par.size_x, g_par.size_y);
-
-    if (g_par.pos_x || g_par.pos_y)
-        gtk_window_move (GTK_WINDOW (window), g_par.pos_x, g_par.pos_y);
 }
 
 static void orage_window_class_init (OrageWindowClass *klass)
@@ -763,6 +784,8 @@ static void orage_window_init (OrageWindow *self)
     gtk_window_add_accel_group (GTK_WINDOW (self), self->mAccel_group);
 
     /* Signals */
+    g_signal_connect (self, "notify::application",
+                      G_CALLBACK (orage_window_post_init_cb), NULL);
     g_signal_connect (self->mCalendar, "day_selected_double_click",
                       G_CALLBACK (mCalendar_day_selected_double_click_cb), NULL);
     g_signal_connect (self->mCalendar, "day_selected",
