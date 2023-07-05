@@ -723,39 +723,7 @@ void orage_window_build_todo (OrageWindow *window)
 void build_mainWin (OrageWindow *window)
 {
     gtk_window_set_position (GTK_WINDOW (window), GTK_WIN_POS_NONE);
-    gtk_window_set_resizable (GTK_WINDOW (window), TRUE);
     gtk_window_set_destroy_with_parent (GTK_WINDOW (window), TRUE);
-
-    /* Build the vertical box */
-    window->mVbox = gtk_grid_new ();
-    gtk_container_add (GTK_CONTAINER (window), window->mVbox);
-    gtk_widget_show (window->mVbox);
-
-    /* Build the menu */
-    build_menu (window);
-
-    /* Build the calendar */
-    window->mCalendar = gtk_calendar_new();
-    g_object_set (window->mCalendar, "hexpand", TRUE,
-                                     "halign", GTK_ALIGN_FILL,
-                                     NULL);
-    gtk_grid_attach_next_to (GTK_GRID(window->mVbox), window->mCalendar, NULL,
-                             GTK_POS_BOTTOM, 1, 1);
-    gtk_widget_show (window->mCalendar);
-
-    /* Build the Info boxes */
-    create_mainbox_todo_info (window);
-    create_mainbox_event_info_box (window);
-
-    /* Signals */
-    g_signal_connect (window->mCalendar, "day_selected_double_click",
-                      G_CALLBACK (mCalendar_day_selected_double_click_cb), NULL);
-    g_signal_connect (window->mCalendar, "day_selected",
-                      G_CALLBACK (mCalendar_day_selected_cb), window);
-    g_signal_connect (window->mCalendar, "month-changed",
-                      G_CALLBACK (mCalendar_month_changed_cb), NULL);
-
-    gtk_window_add_accel_group (GTK_WINDOW (window), window->mAccel_group);
 
     if (g_par.size_x || g_par.size_y)
         gtk_window_set_default_size (GTK_WINDOW (window), g_par.size_x, g_par.size_y);
@@ -770,7 +738,37 @@ static void orage_window_class_init (OrageWindowClass *klass)
 
 static void orage_window_init (OrageWindow *self)
 {
+    self->mVbox = gtk_grid_new ();
+    gtk_container_add (GTK_CONTAINER (self), self->mVbox);
+    gtk_widget_show (self->mVbox);
+
     self->mAccel_group = gtk_accel_group_new ();
+
+    /* Build the menu */
+    build_menu (self);
+
+    /* Build the calendar */
+    self->mCalendar = gtk_calendar_new ();
+    g_object_set (self->mCalendar, "hexpand", TRUE,
+                                   "halign", GTK_ALIGN_FILL,
+                                   NULL);
+    gtk_grid_attach_next_to (GTK_GRID (self->mVbox), self->mCalendar, NULL,
+                             GTK_POS_BOTTOM, 1, 1);
+    gtk_widget_show (self->mCalendar);
+
+    /* Build the Info boxes */
+    create_mainbox_todo_info (self);
+    create_mainbox_event_info_box (self);
+
+    gtk_window_add_accel_group (GTK_WINDOW (self), self->mAccel_group);
+
+    /* Signals */
+    g_signal_connect (self->mCalendar, "day_selected_double_click",
+                      G_CALLBACK (mCalendar_day_selected_double_click_cb), NULL);
+    g_signal_connect (self->mCalendar, "day_selected",
+                      G_CALLBACK (mCalendar_day_selected_cb), self);
+    g_signal_connect (self->mCalendar, "month-changed",
+                      G_CALLBACK (mCalendar_month_changed_cb), NULL);
 }
 
 GtkWidget *orage_window_new (OrageApplication *application)
