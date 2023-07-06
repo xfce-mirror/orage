@@ -233,8 +233,7 @@ static void orage_application_activate (GApplication *app)
 
         alarm_read ();
         orage_day_change (NULL); /* first day change after we start */
-        mCalendar_month_changed_cb (
-                orage_window_get_calendar (ORAGE_WINDOW (window)), NULL);
+        orage_window_month_changed (ORAGE_WINDOW (window));
 
         /* start monitoring external file updates */
         g_timeout_add_seconds (30, orage_external_update_check, NULL);

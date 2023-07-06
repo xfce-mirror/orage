@@ -88,13 +88,9 @@ struct _OrageWindow
     GtkWidget *mHelp_about;
 
     GtkWidget *mTodo_vbox;
-    GtkWidget *mTodo_label;
-    GtkWidget *mTodo_scrolledWin;
     GtkWidget *mTodo_rows_vbox;
 
     GtkWidget *mEvent_vbox;
-    GtkWidget *mEvent_label;
-    GtkWidget *mEvent_scrolledWin;
     GtkWidget *mEvent_rows_vbox;
 };
 
@@ -104,12 +100,12 @@ static void orage_window_restore_geometry (OrageWindow *window);
 
 static guint month_change_timer=0;
 
-gboolean orage_mark_appointments(void)
+void orage_mark_appointments (void)
 {
     OrageWindow *window;
 
     if (!xfical_file_open(TRUE))
-        return(FALSE);
+        return;
 
     if (g_par.xfcal)
     {
@@ -118,7 +114,6 @@ gboolean orage_mark_appointments(void)
     }
 
     xfical_file_close(TRUE);
-    return(TRUE);
 }
 
 static void mFile_newApp_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
@@ -248,7 +243,7 @@ static void mCalendar_day_selected_double_click_cb (GtkCalendar *calendar,
         (void)create_el_win(NULL);
 }
 
-static gboolean upd_calendar (G_GNUC_UNUSED GtkCalendar *calendar)
+static gboolean upd_calendar (G_GNUC_UNUSED gpointer calendar)
 {
     orage_mark_appointments();
     month_change_timer = 0;
@@ -256,8 +251,8 @@ static gboolean upd_calendar (G_GNUC_UNUSED GtkCalendar *calendar)
     return(FALSE); /* we do this only once */
 }
 
-void mCalendar_month_changed_cb (GtkCalendar *calendar,
-                                 G_GNUC_UNUSED gpointer user_data)
+static void mCalendar_month_changed_cb (GtkCalendar *calendar,
+                                        G_GNUC_UNUSED gpointer user_data)
 {
     /* orage_mark_appointments is rather heavy (=slow), so doing
      * it here is not a good idea. We can't keep up with the autorepeat
@@ -271,7 +266,7 @@ void mCalendar_month_changed_cb (GtkCalendar *calendar,
     }
 
     gtk_calendar_clear_marks(calendar);
-    month_change_timer = g_timeout_add(400, (GSourceFunc)upd_calendar, calendar);
+    month_change_timer = g_timeout_add (400, upd_calendar, calendar);
 }
 
 static void orage_window_restore_geometry (OrageWindow *window)
@@ -562,34 +557,34 @@ static void info_process(gpointer a, gpointer pbox)
 
 static void create_mainbox_todo_info (OrageWindow *window)
 {
+    GtkScrolledWindow *sw;
+    GtkWidget *todo_label;
+
     window->mTodo_vbox = gtk_grid_new ();
     g_object_set (window->mTodo_vbox, "vexpand", TRUE,
-                                   "valign", GTK_ALIGN_FILL,
-                                   NULL);
+                                      "valign", GTK_ALIGN_FILL,
+                                      NULL);
     gtk_grid_attach_next_to (GTK_GRID (window->mVbox), window->mTodo_vbox, NULL,
                              GTK_POS_BOTTOM, 1, 1);
-    window->mTodo_label = gtk_label_new (NULL);
-    gtk_label_set_markup (GTK_LABEL (window->mTodo_label), _("<b>To do:</b>"));
-    gtk_grid_attach_next_to (GTK_GRID (window->mTodo_vbox), window->mTodo_label,
+    todo_label = gtk_label_new (NULL);
+    gtk_label_set_markup (GTK_LABEL (todo_label), _("<b>To do:</b>"));
+    gtk_grid_attach_next_to (GTK_GRID (window->mTodo_vbox), todo_label,
                              NULL, GTK_POS_BOTTOM, 1, 1);
-    g_object_set (window->mTodo_label, "xalign", 0.0, "yalign", 0.5, NULL);
-    window->mTodo_scrolledWin = gtk_scrolled_window_new (NULL, NULL);
-    gtk_scrolled_window_set_policy (
-            GTK_SCROLLED_WINDOW (window->mTodo_scrolledWin),
-            GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
-    gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (
-            window->mTodo_scrolledWin), GTK_SHADOW_NONE);
-    g_object_set (window->mTodo_scrolledWin, "vexpand", TRUE, NULL);
+    g_object_set (todo_label, "xalign", 0.0, "yalign", 0.5, NULL);
+    sw = GTK_SCROLLED_WINDOW (gtk_scrolled_window_new (NULL, NULL));
+    gtk_scrolled_window_set_policy (sw, GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
+    gtk_scrolled_window_set_shadow_type (sw, GTK_SHADOW_NONE);
+    g_object_set (sw, "vexpand", TRUE, NULL);
     gtk_grid_attach_next_to (GTK_GRID (window->mTodo_vbox),
-                             window->mTodo_scrolledWin, NULL, GTK_POS_BOTTOM,
-                             1, 1);
+                             GTK_WIDGET (sw), NULL, GTK_POS_BOTTOM, 1, 1);
     window->mTodo_rows_vbox = gtk_grid_new ();
-    gtk_container_add (GTK_CONTAINER (window->mTodo_scrolledWin),
-                                      window->mTodo_rows_vbox);
+    gtk_container_add (GTK_CONTAINER (sw), window->mTodo_rows_vbox);
 }
 
 static void create_mainbox_event_info_box (OrageWindow *window)
 {
+    GtkScrolledWindow *sw;
+    GtkWidget *event_label;
     gchar *tmp, *tmp2, *tmp3;
     GDateTime *gdt;
     GDateTime *gdt_tmp;
@@ -602,7 +597,7 @@ static void create_mainbox_event_info_box (OrageWindow *window)
                                        NULL);
     gtk_grid_attach_next_to (GTK_GRID (window->mVbox), window->mEvent_vbox, NULL,
                              GTK_POS_BOTTOM, 1, 1);
-    window->mEvent_label = gtk_label_new (NULL);
+    event_label = gtk_label_new (NULL);
     if (g_par.show_event_days) {
     /* bug 7836: we call this routine also with 0 = no event data at all */
         if (g_par.show_event_days == 1) {
@@ -621,27 +616,22 @@ static void create_mainbox_event_info_box (OrageWindow *window)
             g_free(tmp2);
             g_free(tmp3);
         }
-        gtk_label_set_markup (GTK_LABEL (window->mEvent_label), tmp);
+        gtk_label_set_markup (GTK_LABEL (event_label), tmp);
         g_free(tmp);
     }
 
     g_date_time_unref (gdt);
-    g_object_set (window->mEvent_label, "xalign", 0.0, "yalign", 0.5, NULL);
+    g_object_set (event_label, "xalign", 0.0, "yalign", 0.5, NULL);
     gtk_grid_attach_next_to (GTK_GRID (window->mEvent_vbox),
-                             window->mEvent_label, NULL, GTK_POS_BOTTOM, 1, 1);
-    window->mEvent_scrolledWin = gtk_scrolled_window_new (NULL, NULL);
-    gtk_scrolled_window_set_policy (
-            GTK_SCROLLED_WINDOW (window->mEvent_scrolledWin),
-            GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
-    gtk_scrolled_window_set_shadow_type (
-            GTK_SCROLLED_WINDOW (window->mEvent_scrolledWin), GTK_SHADOW_NONE);
-    g_object_set (window->mEvent_scrolledWin, "expand", TRUE, NULL);
+                             event_label, NULL, GTK_POS_BOTTOM, 1, 1);
+    sw = GTK_SCROLLED_WINDOW (gtk_scrolled_window_new (NULL, NULL));
+    gtk_scrolled_window_set_policy (sw, GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
+    gtk_scrolled_window_set_shadow_type (sw, GTK_SHADOW_NONE);
+    g_object_set (sw, "expand", TRUE, NULL);
     gtk_grid_attach_next_to (GTK_GRID (window->mEvent_vbox),
-                             window->mEvent_scrolledWin, NULL, GTK_POS_BOTTOM,
-                             1, 1);
+                             GTK_WIDGET (sw), NULL, GTK_POS_BOTTOM, 1, 1);
     window->mEvent_rows_vbox = gtk_grid_new ();
-    gtk_container_add (GTK_CONTAINER (window->mEvent_scrolledWin),
-                                      window->mEvent_rows_vbox);
+    gtk_container_add (GTK_CONTAINER (sw), window->mEvent_rows_vbox);
 }
 
 static void build_mainbox_todo_info (OrageWindow *window)
@@ -748,11 +738,6 @@ void orage_window_build_todo (OrageWindow *window)
     xfical_file_close(TRUE);   
 }
 
-void build_mainWin (OrageWindow *window)
-{
-
-}
-
 static void orage_window_class_init (OrageWindowClass *klass)
 {
 }
@@ -830,4 +815,9 @@ void orage_window_build_info (OrageWindow *window)
 {
     build_mainbox_todo_info (window);
     build_mainbox_event_info (window);
+}
+
+void orage_window_month_changed (OrageWindow *window)
+{
+    mCalendar_month_changed_cb (orage_window_get_calendar (window), NULL);
 }

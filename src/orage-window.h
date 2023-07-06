@@ -32,7 +32,7 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (OrageWindow, orage_window, ORAGE, WINDOW, GtkApplicationWindow)
 
-gboolean orage_mark_appointments (void);
+void orage_mark_appointments (void);
 
 /** This routine is called from ical-code xfical_alarm_build_list_internal and
  *  ical files are already open at that time. So make sure ical files are opened
@@ -41,7 +41,7 @@ gboolean orage_mark_appointments (void);
 void orage_window_build_info (OrageWindow *window);
 void orage_window_build_events (OrageWindow *window);
 void orage_window_build_todo (OrageWindow *window);
-void mCalendar_month_changed_cb(GtkCalendar *calendar, gpointer user_data);
+void orage_window_month_changed (OrageWindow *window);
 
 /** Creates a new OrageWindow
  *  @return a newly created OrageWindow
