@@ -100,19 +100,15 @@ static void orage_window_restore_geometry (OrageWindow *window);
 
 static guint month_change_timer=0;
 
-void orage_mark_appointments (void)
+void orage_mark_appointments (OrageWindow *window)
 {
-    OrageWindow *window;
+    if (window == NULL)
+        return;
 
     if (!xfical_file_open(TRUE))
         return;
 
-    if (g_par.xfcal)
-    {
-        window = ORAGE_WINDOW (g_par.xfcal);
-        xfical_mark_calendar (orage_window_get_calendar (window));
-    }
-
+    xfical_mark_calendar (orage_window_get_calendar (window));
     xfical_file_close(TRUE);
 }
 
@@ -245,7 +241,7 @@ static void mCalendar_day_selected_double_click_cb (GtkCalendar *calendar,
 
 static gboolean upd_calendar (G_GNUC_UNUSED gpointer calendar)
 {
-    orage_mark_appointments();
+    orage_mark_appointments (ORAGE_WINDOW (g_par.xfcal));
     month_change_timer = 0;
 
     return(FALSE); /* we do this only once */

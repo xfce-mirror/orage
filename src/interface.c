@@ -106,7 +106,7 @@ gboolean orage_external_update_check (G_GNUC_UNUSED gpointer user_data)
         g_message ("Refreshing alarms and calendar due to external file update");
         xfical_file_close_force();
         xfical_alarm_build_list(FALSE);
-        orage_mark_appointments();
+        orage_mark_appointments (ORAGE_WINDOW (g_par.xfcal));
     }
 
     return(TRUE); /* keep running */
@@ -435,7 +435,7 @@ static void on_unarchive_button_clicked_cb (G_GNUC_UNUSED GtkButton *button,
 gboolean orage_import_file (const gchar *entry_filename)
 {
     if (xfical_import_file(entry_filename)) {
-        orage_mark_appointments();
+        orage_mark_appointments (ORAGE_WINDOW (g_par.xfcal));
         xfical_alarm_build_list(FALSE);
         return(TRUE);
     }
@@ -573,7 +573,7 @@ static void orage_foreign_file_remove_line(gint del_line)
     g_par.foreign_data[i].name = NULL;
 
     write_parameters();
-    orage_mark_appointments();
+    orage_mark_appointments (ORAGE_WINDOW (g_par.xfcal));
     xfical_alarm_build_list(FALSE);
 }
 
@@ -781,7 +781,7 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
     g_par.foreign_count++;
 
     write_parameters();
-    orage_mark_appointments();
+    orage_mark_appointments (ORAGE_WINDOW (g_par.xfcal));
     xfical_alarm_build_list(FALSE);
     return(TRUE);
 }

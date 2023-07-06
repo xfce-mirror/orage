@@ -1035,7 +1035,7 @@ static void delete_appointment(el_win *el)
         }
         xfical_file_close(TRUE);
         refresh_el_win(el);
-        orage_mark_appointments();
+        orage_mark_appointments (ORAGE_WINDOW (g_par.xfcal));
         g_list_foreach(list, (GFunc)(GCallback)gtk_tree_path_free, NULL);
         g_list_free(list);
     }

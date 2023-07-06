@@ -594,7 +594,7 @@ static void refresh_dependent_data(appt_win *apptw)
         refresh_el_win((el_win *)apptw->el);
     if (apptw->dw != NULL)
         refresh_day_win((day_win *)apptw->dw);
-    orage_mark_appointments();
+    orage_mark_appointments (ORAGE_WINDOW (g_par.xfcal));
 }
 
 static void on_appNote_buffer_changed_cb (G_GNUC_UNUSED GtkTextBuffer *b,

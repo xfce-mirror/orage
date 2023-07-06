@@ -32,7 +32,7 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (OrageWindow, orage_window, ORAGE, WINDOW, GtkApplicationWindow)
 
-void orage_mark_appointments (void);
+void orage_mark_appointments (OrageWindow *window);
 
 /** This routine is called from ical-code xfical_alarm_build_list_internal and
  *  ical files are already open at that time. So make sure ical files are opened
