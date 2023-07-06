@@ -211,10 +211,7 @@ static void set_menu(void)
 {
     OrageWindow *window = ORAGE_WINDOW (g_par.xfcal);
 
-    if (g_par.show_menu)
-        orage_window_show_menubar (window);
-    else
-        orage_window_hide_menubar (window);
+    orage_window_show_menubar (window, g_par.show_menu);
 }
 
 static void menu_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)

@@ -48,8 +48,7 @@ void orage_window_month_changed (OrageWindow *window);
  */
 GtkWidget *orage_window_new (OrageApplication *application);
 
-void orage_window_show_menubar (OrageWindow *window);
-void orage_window_hide_menubar (OrageWindow *window);
+void orage_window_show_menubar (OrageWindow *window, gboolean show);
 void orage_window_hide_todo (OrageWindow *window);
 void orage_window_hide_event (OrageWindow *window);
 GtkCalendar *orage_window_get_calendar (OrageWindow *window);

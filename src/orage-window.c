@@ -786,14 +786,12 @@ GtkWidget *orage_window_new (OrageApplication *application)
                          NULL);
 }
 
-void orage_window_show_menubar (OrageWindow *window)
+void orage_window_show_menubar (OrageWindow *window, const gboolean show)
 {
-    gtk_widget_show (window->mMenubar);
-}
-
-void orage_window_hide_menubar (OrageWindow *window)
-{
-    gtk_widget_hide (window->mMenubar);
+    if (show)
+        gtk_widget_show (window->mMenubar);
+    else
+        gtk_widget_hide (window->mMenubar);
 }
 
 void orage_window_hide_todo (OrageWindow *window)
