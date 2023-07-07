@@ -29,7 +29,7 @@
 
 #define ORAGE_CSS_VERSION "orage-4.0"
 #define ORAGE_CSS_NAME "gtk.css"
-#define ORAGE_DEFAULT_THEME "themes/Default/" ORAGE_CSS_VERSION "/" ORAGE_CSS_NAME
+#define ORAGE_DEFAULT_THEME "Default/" ORAGE_CSS_VERSION "/" ORAGE_CSS_NAME
 
 static void append_error_value (GString *string,
                                 GType    enum_type,
