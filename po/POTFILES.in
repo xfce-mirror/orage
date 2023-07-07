@@ -9,10 +9,10 @@ src/ical-code.c
 src/ical-expimp.c
 src/interface.c
 src/main.c
-src/mainbox.c
 src/orage-about.c
 src/orage-application.c
 src/orage-sync-edit-dialog.c
+src/orage-window.c
 src/parameters.c
 src/reminder.c
 src/timezone_names.c
