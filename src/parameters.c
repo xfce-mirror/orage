@@ -46,13 +46,13 @@
 #include "orage-sync-edit-dialog.h"
 #include "orage-rc-file.h"
 #include "orage-i18n.h"
+#include "orage-window.h"
 #include "orage-application.h"
 #include "functions.h"
 #include "ical-code.h"
 #include "timezone_selection.h"
 #include "parameters.h"
 #include "parameters_internal.h"
-#include "mainbox.h"
 #include "reminder.h"
 
 #ifdef HAVE_X11_TRAY_ICON
@@ -194,8 +194,7 @@ static void sound_application_changed (G_GNUC_UNUSED GtkWidget *dialog,
 
 static void set_border(void)
 {
-    gtk_window_set_decorated(GTK_WINDOW(((CalWin *)g_par.xfcal)->mWindow)
-            , g_par.show_borders);
+    gtk_window_set_decorated (GTK_WINDOW (g_par.xfcal), g_par.show_borders);
 }
 
 static void borders_changed (G_GNUC_UNUSED GtkWidget *dialog,
@@ -210,10 +209,9 @@ static void borders_changed (G_GNUC_UNUSED GtkWidget *dialog,
 
 static void set_menu(void)
 {
-    if (g_par.show_menu)
-        gtk_widget_show(((CalWin *)g_par.xfcal)->mMenubar);
-    else
-        gtk_widget_hide(((CalWin *)g_par.xfcal)->mMenubar);
+    OrageWindow *window = ORAGE_WINDOW (g_par.xfcal);
+
+    orage_window_show_menubar (window, g_par.show_menu);
 }
 
 static void menu_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
@@ -227,9 +225,9 @@ static void menu_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
 
 static void set_calendar(void)
 {
-    gtk_calendar_set_display_options(
-            GTK_CALENDAR(((CalWin *)g_par.xfcal)->mCalendar)
-                    , (g_par.show_heading ? GTK_CALENDAR_SHOW_HEADING : 0)
+    OrageWindow *window = ORAGE_WINDOW (g_par.xfcal);
+    gtk_calendar_set_display_options (orage_window_get_calendar (window),
+                      (g_par.show_heading ? GTK_CALENDAR_SHOW_HEADING : 0)
                     | (g_par.show_day_names ? GTK_CALENDAR_SHOW_DAY_NAMES : 0)
                     | (g_par.show_weeks ? GTK_CALENDAR_SHOW_WEEK_NUMBERS : 0));
 }
@@ -264,42 +262,45 @@ static void weeks_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
 
 static void todos_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
 {
+    OrageWindow *window = ORAGE_WINDOW (g_par.xfcal);
     Itf *itf = (Itf *)user_data;
 
     g_par.show_todos = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->show_todos_checkbutton));
     if (g_par.show_todos)
-        build_mainbox_todo_box();
+        orage_window_build_todo (window);
     else {
-        gtk_widget_hide(((CalWin *)g_par.xfcal)->mTodo_vbox);
+        orage_window_hide_todo (window);
         /* hide the whole area if also event box does not exist */
         if (!g_par.show_event_days)
-            gtk_window_resize(GTK_WINDOW(((CalWin *)g_par.xfcal)->mWindow)
-                    , g_par.size_x, 1);
+            gtk_window_resize (GTK_WINDOW (g_par.xfcal), g_par.size_x, 1);
     }
 }
 
 static void show_events_spin_changed (GtkSpinButton *sb,
                                       G_GNUC_UNUSED gpointer user_data)
 {
+    OrageWindow *window = ORAGE_WINDOW (g_par.xfcal);
+
     g_par.show_event_days = gtk_spin_button_get_value(sb);
     if (g_par.show_event_days)
-        build_mainbox_event_box();
+        orage_window_build_events (window);
     else {
-        gtk_widget_hide(((CalWin *)g_par.xfcal)->mEvent_vbox);
+        orage_window_hide_event (window);
         /* hide the whole area if also todo box does not exist */
         if (!g_par.show_todos)
-            gtk_window_resize(GTK_WINDOW(((CalWin *)g_par.xfcal)->mWindow)
-                    , g_par.size_x, 1);
+            gtk_window_resize (GTK_WINDOW (g_par.xfcal), g_par.size_x, 1);
     }
 }
 
 static void set_stick(void)
 {
+    GtkWindow *window = GTK_WINDOW (g_par.xfcal);
+
     if (g_par.set_stick)
-        gtk_window_stick(GTK_WINDOW(((CalWin *)g_par.xfcal)->mWindow));
+        gtk_window_stick (window);
     else
-        gtk_window_unstick(GTK_WINDOW(((CalWin *)g_par.xfcal)->mWindow));
+        gtk_window_unstick (window);
 }
 
 static void stick_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
@@ -313,8 +314,7 @@ static void stick_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
 
 static void set_ontop(void)
 {
-    gtk_window_set_keep_above(GTK_WINDOW(((CalWin *)g_par.xfcal)->mWindow)
-            , g_par.set_ontop);
+    gtk_window_set_keep_above (GTK_WINDOW (g_par.xfcal), g_par.set_ontop);
 }
 
 static void ontop_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
@@ -328,8 +328,8 @@ static void ontop_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
 
 static void set_taskbar(void)
 {
-    gtk_window_set_skip_taskbar_hint(
-            GTK_WINDOW(((CalWin *)g_par.xfcal)->mWindow), !g_par.show_taskbar);
+    gtk_window_set_skip_taskbar_hint (GTK_WINDOW (g_par.xfcal),
+                                      !g_par.show_taskbar);
 }
 
 static void taskbar_changed (G_GNUC_UNUSED GtkWidget *dialog,
@@ -344,8 +344,7 @@ static void taskbar_changed (G_GNUC_UNUSED GtkWidget *dialog,
 
 static void set_pager(void)
 {
-    gtk_window_set_skip_pager_hint(GTK_WINDOW(((CalWin *)g_par.xfcal)->mWindow)
-            , !g_par.show_pager);
+    gtk_window_set_skip_pager_hint (GTK_WINDOW (g_par.xfcal), !g_par.show_pager);
 }
 
 static void pager_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
@@ -1756,7 +1755,7 @@ void write_parameters(void)
     OrageRc *orc;
     gint i;
     gchar f_par[50];
-    GtkWidget *window;
+    GtkWindow *window;
 
     orc = orage_parameters_file_open(FALSE);
 
@@ -1771,10 +1770,9 @@ void write_parameters(void)
 
     if (g_par.xfcal)
     {
-        window = ((CalWin *)g_par.xfcal)->mWindow;
-        gtk_window_get_size (GTK_WINDOW (window), &g_par.size_x, &g_par.size_y);
-        gtk_window_get_position (GTK_WINDOW (window),
-                                 &g_par.pos_x, &g_par.pos_y);
+        window = GTK_WINDOW (g_par.xfcal);
+        gtk_window_get_size (window, &g_par.size_x, &g_par.size_y);
+        gtk_window_get_position (window, &g_par.pos_x, &g_par.pos_y);
     }
     else
         g_warning ("g_par.xfcal == NULL");

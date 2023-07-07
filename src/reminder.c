@@ -48,8 +48,8 @@
 #include "orage-alarm-structure.h"
 #include "orage-i18n.h"
 #include "orage-rc-file.h"
+#include "orage-window.h"
 #include "functions.h"
-#include "mainbox.h"
 #include "ical-code.h"
 #include "event-list.h"
 #include "appointment.h"
@@ -779,6 +779,7 @@ static void reset_orage_day_change(gboolean changed)
  */
 gboolean orage_day_change(gpointer user_data)
 {
+    GtkCalendar *calendar;
     GDateTime *gdt;
     gint year;
     gint month;
@@ -805,16 +806,17 @@ gboolean orage_day_change(gpointer user_data)
         current_month = month;
         current_day   = day;
         /* Get the selected date from calendar */
-        gtk_calendar_get_date(GTK_CALENDAR(((CalWin *)g_par.xfcal)->mCalendar),
-                 &selected_year, &selected_month, &selected_day);
+        calendar = orage_window_get_calendar (ORAGE_WINDOW (g_par.xfcal));
+        
+        gtk_calendar_get_date (calendar, &selected_year, &selected_month,
+                               &selected_day);
         selected_month++;
         if ((gint)selected_year == previous_year
         && (gint)selected_month == previous_month
         && (gint)selected_day == previous_day) {
             /* previous day was indeed selected,
                keep it current automatically */
-            orage_select_date (GTK_CALENDAR(((CalWin *)g_par.xfcal)->mCalendar),
-                                gdt);
+            orage_select_date (calendar, gdt);
         }
         previous_year  = current_year;
         previous_month = current_month;

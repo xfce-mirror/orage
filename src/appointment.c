@@ -48,8 +48,8 @@
 
 #include "orage-alarm-structure.h"
 #include "orage-i18n.h"
+#include "orage-window.h"
 #include "functions.h"
-#include "mainbox.h"
 #include "ical-code.h"
 #include "timezone_selection.h"
 #include "event-list.h"
@@ -594,7 +594,7 @@ static void refresh_dependent_data(appt_win *apptw)
         refresh_el_win((el_win *)apptw->el);
     if (apptw->dw != NULL)
         refresh_day_win((day_win *)apptw->dw);
-    orage_mark_appointments();
+    orage_mark_appointments (ORAGE_WINDOW (g_par.xfcal));
 }
 
 static void on_appNote_buffer_changed_cb (G_GNUC_UNUSED GtkTextBuffer *b,

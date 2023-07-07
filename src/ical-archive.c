@@ -56,8 +56,8 @@
 #include <libical/icalss.h>
 
 #include "orage-i18n.h"
+#include "orage-window.h"
 #include "functions.h"
-#include "mainbox.h"
 #include "reminder.h"
 #include "ical-code.h"
 #include "ical-internal.h"

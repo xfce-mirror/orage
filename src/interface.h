@@ -22,8 +22,8 @@
 #ifndef __INTERFACE_H__
 #define __INTERFACE_H__
 
+#include "orage-window.h"
 #include <gtk/gtk.h>
-#include "mainbox.h"
 
 typedef struct _intf_win
 {
@@ -97,7 +97,7 @@ typedef struct _intf_win
     GtkAccelGroup *accelgroup;
 } intf_win;  /* interface = export/import window */
 
-void orage_external_interface(CalWin *xfcal);
+void orage_external_interface (void);
 
 gboolean orage_external_update_check(gpointer user_data);
 gboolean orage_foreign_file_add (const gchar *filename, gboolean read_only,

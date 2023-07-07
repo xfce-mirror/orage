@@ -52,8 +52,8 @@
 #include <glib/gprintf.h>
 
 #include "orage-i18n.h"
+#include "orage-window.h"
 #include "functions.h"
-#include "mainbox.h"
 #include "reminder.h"
 #include "ical-code.h"
 #include "event-list.h"
@@ -772,9 +772,9 @@ static void set_el_data (el_win *el, GDateTime *gdt)
 static void set_el_data_from_cal(el_win *el)
 {
     GDateTime *gdt;
+    OrageWindow *window = ORAGE_WINDOW (g_par.xfcal);
 
-    gdt = orage_cal_to_gdatetime (
-            GTK_CALENDAR(((CalWin *)g_par.xfcal)->mCalendar), 0, 0);
+    gdt = orage_cal_to_gdatetime (orage_window_get_calendar (window), 0, 0);
     set_el_data (el, gdt);
     g_date_time_unref (gdt);
 }
@@ -893,10 +893,12 @@ static void changeSelectedDate (el_win *el, const gint day)
 {
     GDateTime *gdt1;
     GDateTime *gdt2;
+    OrageWindow *window;
 
     gdt1 = g_object_get_data (G_OBJECT (el->Window), DATE_KEY);
     gdt2 = g_date_time_add_days (gdt1, day);
-    orage_select_date (GTK_CALENDAR(((CalWin *)g_par.xfcal)->mCalendar), gdt2);
+    window = ORAGE_WINDOW (g_par.xfcal);
+    orage_select_date (orage_window_get_calendar (window), gdt2);
     g_date_time_unref (gdt2);
 
     set_el_data_from_cal(el);
@@ -915,7 +917,8 @@ static void on_Go_previous_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
 
 static void go_to_today(el_win *el)
 {
-    orage_select_today(GTK_CALENDAR(((CalWin *)g_par.xfcal)->mCalendar));
+    OrageWindow *window = ORAGE_WINDOW (g_par.xfcal);
+    orage_select_today (orage_window_get_calendar (window));
     set_el_data_from_cal(el);
 }
 
@@ -1032,7 +1035,7 @@ static void delete_appointment(el_win *el)
         }
         xfical_file_close(TRUE);
         refresh_el_win(el);
-        orage_mark_appointments();
+        orage_mark_appointments (ORAGE_WINDOW (g_par.xfcal));
         g_list_foreach(list, (GFunc)(GCallback)gtk_tree_path_free, NULL);
         g_list_free(list);
     }

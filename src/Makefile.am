@@ -18,8 +18,6 @@ orage_SOURCES =							\
 	interface.c						\
 	interface.h						\
 	main.c							\
-	mainbox.c						\
-	mainbox.h						\
 	orage-about.c						\
 	orage-about.h						\
 	orage-alarm-structure.c					\
@@ -39,6 +37,8 @@ orage_SOURCES =							\
 	orage-sync-ext-command.h				\
 	orage-task-runner.c					\
 	orage-task-runner.h    					\
+	orage-window.c						\
+	orage-window.h						\
 	parameters.c						\
 	parameters.h						\
 	parameters_internal.h					\
