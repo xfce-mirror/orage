@@ -8,20 +8,21 @@
 # Marcelo Tobias <marcelo.tobbias@gmail.com>, 2022
 # Lucas Wilm <lucaswilm@gmail.com>, 2022
 # C. E., 2022
-# Andre Miranda <andre42m@gmail.com>, 2022
+# Andre Miranda <andre@andreldm.com>, 2022
 # Wellington Almeida <wsalmeida6@gmail.com>, 2022
 # Michael Martins <michaelfm21@gmail.com>, 2022
 # Nick Schermer <nick@xfce.org>, 2022
 # Rafael Fontenelle <rffontenelle@gmail.com>, 2023
+# The Cat, 2023
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-29 11:57+0200\n"
+"POT-Creation-Date: 2023-05-30 00:50+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Rafael Fontenelle <rffontenelle@gmail.com>, 2023\n"
+"Last-Translator: The Cat, 2023\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/xfce/teams/16840/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -172,7 +173,7 @@ msgstr "Cores de categorias - Orage"
 
 #: ../src/appointment.c:2298
 msgid "*** COPY ***"
-msgstr ""
+msgstr "*** COPIAR ***"
 
 #: ../src/appointment.c:2586
 msgid "New appointment - Orage"
@@ -289,7 +290,7 @@ msgstr "Início"
 
 #: ../src/appointment.c:2962
 msgid "Set"
-msgstr ""
+msgstr "Definir"
 
 #: ../src/appointment.c:2986
 msgid "Duration"
@@ -375,6 +376,14 @@ msgid ""
 "    <&Ynnnn> is translated to current year minus nnnn.\n"
 "(This can be used for example in birthday reminders to tell how old the person will be.)"
 msgstr ""
+"Estes comandos têm efeitos imediatos:\n"
+"    <D> insere a data atual no formato local\n"
+"    <T> insere a hora\n"
+"    <DT> insere a data e hora.\n"
+"\n"
+"Estes apenas serão convertidas quando forem vistos:\n"
+"    <&Ynnnn> é traduzido para o ano atual menos nnnn.\n"
+"(Pode ser utilizado em lembretes de aniversários para informar a idade da pessoa.)"
 
 #: ../src/appointment.c:3180
 msgid "Before Start"
@@ -439,7 +448,7 @@ msgstr "Selecione isto se você deseja um alarme sonoro"
 
 #: ../src/appointment.c:3254
 msgid "Sound command is not set"
-msgstr ""
+msgstr "O comando de som não está configurado"
 
 #: ../src/appointment.c:3269 ../src/interface.c:1050 ../src/interface.c:1096
 #: ../src/interface.c:1271 ../src/interface.c:1363 ../src/interface.c:1446
@@ -812,7 +821,7 @@ msgstr "Desconhecido"
 
 #: ../src/day-view.c:838
 msgid "Number of days to show"
-msgstr ""
+msgstr "Número de dias para exibir"
 
 #: ../src/day-view.c:1069
 msgid "Orage - day view"
@@ -890,6 +899,8 @@ msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed."
 msgstr ""
+"Selecione isto se quer ver também eventos já passados. Isto pode ser apenas selecionado depois de ativar 'repetir somente uma vez' para evitar listas muito longas.\n"
+"Note que selecionar dias extras ainda define se novos compromissos serão listados."
 
 #: ../src/event-list.c:1337
 msgid "Journal entries starting from:"
@@ -1324,43 +1335,43 @@ msgstr "\tUsar libxfce4ui: não\n"
 
 #: ../src/orage-application.c:571
 msgid "Show version of orage"
-msgstr ""
+msgstr "Mostrar a versão do orage"
 
 #: ../src/orage-application.c:580
 msgid "Show preferences form"
-msgstr ""
+msgstr "Mostrar formulário de preferências"
 
 #: ../src/orage-application.c:589
 msgid "Make Orage visible/unvisible"
-msgstr ""
+msgstr "Tornar o Orage visível/invisível"
 
 #: ../src/orage-application.c:598
 msgid "Add a foreign file"
-msgstr ""
+msgstr "Adicionar um arquivo externo"
 
 #: ../src/orage-application.c:607
 msgid "Remove a foreign file"
-msgstr ""
+msgstr "Remover um arquivo externo"
 
 #: ../src/orage-application.c:616
 msgid "Import appointments from file to Orage"
-msgstr ""
+msgstr "Importar compromissos do arquivo para o Orage"
 
 #: ../src/orage-application.c:625
 msgid "Export appointments from Orage to file"
-msgstr ""
+msgstr "Exportar compromissos do Orage para um arquivo"
 
 #: ../src/orage-sync-edit-dialog.c:132
 msgid "Description:"
-msgstr ""
+msgstr "Descrição:"
 
 #: ../src/orage-sync-edit-dialog.c:134
 msgid "Command:"
-msgstr ""
+msgstr "Comando:"
 
 #: ../src/orage-sync-edit-dialog.c:136
 msgid "Period:"
-msgstr ""
+msgstr "Período:"
 
 #: ../src/orage-sync-edit-dialog.c:138
 msgid "minutes"
@@ -1368,15 +1379,15 @@ msgstr "minutos"
 
 #: ../src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task"
-msgstr ""
+msgstr "O nome ou a descrição desta tarefa de sincronização"
 
 #: ../src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization"
-msgstr ""
+msgstr "Comando para sincronização"
 
 #: ../src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes"
-msgstr ""
+msgstr "Período de sincronização em minutos"
 
 #: ../src/orage-sync-edit-dialog.c:166 ../src/parameters.c:1456
 #: ../src/reminder.c:642
@@ -1385,11 +1396,11 @@ msgstr "F_echar"
 
 #: ../src/parameters.c:688
 msgid "Remove selected synchronization task."
-msgstr ""
+msgstr "Remover a tarefa de sincronização selecionada."
 
 #: ../src/parameters.c:691
 msgid "Yes, remove"
-msgstr ""
+msgstr "Sim, remover"
 
 #: ../src/parameters.c:724
 msgid "Main settings"
@@ -1613,11 +1624,11 @@ msgstr ""
 
 #: ../src/parameters.c:1401
 msgid "Synchronization settings"
-msgstr ""
+msgstr "Definições de sincronização"
 
 #: ../src/parameters.c:1407
 msgid "Synchronization sources"
-msgstr ""
+msgstr "Fontes de sincronização"
 
 #: ../src/parameters.c:1433
 msgid "Orage Preferences"
@@ -1625,7 +1636,7 @@ msgstr "Preferências do Orage"
 
 #: ../src/reminder.c:420
 msgid "Reminder"
-msgstr ""
+msgstr "Lembrete"
 
 #: ../src/reminder.c:443
 msgid "Open"
@@ -1633,7 +1644,7 @@ msgstr "Abrir"
 
 #: ../src/reminder.c:448
 msgid "Silence"
-msgstr ""
+msgstr "Silêncio"
 
 #: ../src/reminder.c:567
 msgid "Reminder - Orage"
