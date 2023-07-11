@@ -1020,7 +1020,7 @@ static void delete_appointment(el_win *el)
                     /* note that file id changes after archive */ 
                     uid[0]='O';
                     /* xfical_unarchive_uid closes the file */
-                    if (!xfical_file_open(TRUE)) 
+                    if (!xfical_file_open(TRUE))
                         return;
                 }
                 g_free(flags);

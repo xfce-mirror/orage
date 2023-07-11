@@ -1608,7 +1608,7 @@ static void init_dtz_check_dir(gchar *tz_dirname, gchar *tz_local, gint len)
                 error = NULL;
             }
             /* if we found a candidate, test that libical knows it */
-            if (g_par.local_timezone && !xfical_set_local_timezone(TRUE)) { 
+            if (g_par.local_timezone && !xfical_set_local_timezone(TRUE)) {
                 /* candidate is not known by libical, remove it */
                 g_free(g_par.local_timezone);
                 g_par.local_timezone = NULL;
@@ -1634,7 +1634,7 @@ static void init_default_timezone(void)
         if (len > 2) /* get rid of the \n at the end */
             g_par.local_timezone[len-1] = 0;
             /* we have a candidate, test that libical knows it */
-        if (!xfical_set_local_timezone(TRUE)) { 
+        if (!xfical_set_local_timezone(TRUE)) {
             g_free(g_par.local_timezone);
             g_par.local_timezone = NULL;
         }
