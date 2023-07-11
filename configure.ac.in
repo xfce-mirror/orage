@@ -90,7 +90,7 @@ XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [xfce_minimum_version])
 XDT_CHECK_PACKAGE([LIBICAL], [libical], [libical_minimum_version])
 
 if test "$LIBICAL_VERSION" = "3.0.15"; then
-	AC_MSG_ERROR(["unsupported libical version $LIBICAL_VERSION, see https://gitlab.xfce.org/apps/orage/-/issues/20"])
+    AC_MSG_ERROR(["unsupported libical version $LIBICAL_VERSION, see https://gitlab.xfce.org/apps/orage/-/issues/20"])
 fi
 
 dnl **********************************

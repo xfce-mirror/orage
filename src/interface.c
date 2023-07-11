@@ -443,13 +443,6 @@ gboolean orage_import_file (const gchar *entry_filename)
         return(FALSE);
 }
 
-gboolean orage_export_file (const gchar *entry_filename,
-                            const gint type,
-                            const gchar *uids)
-{
-    return(xfical_export_file(entry_filename, type, uids));
-}
-
 static void imp_save_button_clicked (G_GNUC_UNUSED GtkButton *button,
                                      gpointer user_data)
 {
@@ -510,7 +503,7 @@ static void exp_save_button_clicked (G_GNUC_UNUSED GtkButton *button,
             g_warning ("UNKNOWN select appointment");
         }
 
-        if (orage_export_file(entry_filename, app_count, entry_uids))
+        if (xfical_export_file (entry_filename, app_count, entry_uids))
             g_message ("Export done %s", entry_filename);
         else
             g_warning ("export failed file=%s", entry_filename);

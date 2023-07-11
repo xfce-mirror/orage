@@ -723,7 +723,7 @@ void orage_window_build_events (OrageWindow *window)
     if (!xfical_file_open(TRUE))
         return;
     build_mainbox_event_info (window);
-    xfical_file_close(TRUE);   
+    xfical_file_close(TRUE);
 }
 
 void orage_window_build_todo (OrageWindow *window)
@@ -731,7 +731,7 @@ void orage_window_build_todo (OrageWindow *window)
     if (!xfical_file_open(TRUE))
         return;
     build_mainbox_todo_info (window);
-    xfical_file_close(TRUE);   
+    xfical_file_close(TRUE);
 }
 
 static void orage_window_class_init (OrageWindowClass *klass)

@@ -325,7 +325,7 @@ gboolean xfical_file_open(gboolean foreign)
     return(ok);
 }
 
-gboolean xfical_file_check(gchar *file_name)
+gboolean xfical_file_check (const gchar *file_name)
 {
     icalcomponent *x_ical = NULL;
     icalset *x_fical = NULL;
@@ -672,7 +672,7 @@ static struct icaltimetype convert_to_zone(struct icaltimetype t, gchar *tz)
     return(wtime);
 }
 
-int xfical_compare_times(xfical_appt *appt)
+gint xfical_compare_times (xfical_appt *appt)
 {
     struct icaltimetype stime, etime;
     const char *text;
@@ -711,10 +711,6 @@ int xfical_compare_times(xfical_appt *appt)
     }
 }
 
- /* allocates memory and initializes it for new ical_type structure
-  * returns: NULL if failed and pointer to xfical_appt if successfull.
-  *         You must free it after not being used anymore. (g_free())
-  */
 xfical_appt *xfical_appt_alloc(void)
 {
     xfical_appt *appt;
@@ -1226,8 +1222,8 @@ static void appt_add_completedtime_internal(xfical_appt *appt
     }
 }
 
-static char *appt_add_internal(xfical_appt *appt, gboolean add, char *uid
-        , struct icaltimetype cre_time)
+static gchar *appt_add_internal (xfical_appt *appt, gboolean add, gchar *uid,
+                                 struct icaltimetype cre_time)
 {
     icalcomponent *icmp;
     struct icaltimetype dtstamp, create_time;
@@ -1342,14 +1338,7 @@ static char *appt_add_internal(xfical_appt *appt, gboolean add, char *uid
     return(ext_uid);
 }
 
- /* add EVENT/TODO/JOURNAL type ical appointment to ical file
-  * appt: pointer to filled xfical_appt structure, which is to be stored
-  *       Caller is responsible for filling and allocating and freeing it.
-  *  returns: NULL if failed and new ical id if successfully added. 
-  *           This ical id is owned by the routine. Do not deallocate it.
-  *           It will be overwrittewritten by next invocation of this function.
-  */
-char *xfical_appt_add(char *ical_file_id, xfical_appt *appt)
+gchar *xfical_appt_add (gchar *ical_file_id, xfical_appt *appt)
 {
     return(appt_add_internal(appt, TRUE, ical_file_id, icaltime_null_time()));
 }
@@ -2047,16 +2036,6 @@ static xfical_appt *appt_get_any(const char *ical_uid, icalcomponent *base
     return(appt);
 }
 
- /* Read EVENT from ical datafile.
-  * ical_uid:  key of ical EVENT appt-> is to be read
-  * returns: if failed: NULL
-  *          if successfull: xfical_appt pointer to xfical_appt struct 
-  *             filled with data.
-  *             You must free it after not being used anymore
-  *             using xfical_appt_free.
-  *          NOTE: This routine does not fill starttimecur nor endtimecur,
-  *                Those are always initialized to null string
-  */
 xfical_appt *xfical_appt_get(const gchar *uid)
 {
     xfical_appt *appt;
@@ -2126,16 +2105,11 @@ void xfical_appt_free(xfical_appt *appt)
     g_free(appt);
 }
 
- /* modify EVENT type ical appointment in ical file
-  * ical_uid: char pointer to ical ical_uid to modify
-  * app: pointer to filled xfical_appt structure, which is stored
-  *      Caller is responsible for filling and allocating and freeing it.
-  * returns: TRUE is successfull, FALSE if failed
-  */
-gboolean xfical_appt_mod(char *ical_uid, xfical_appt *appt)
+gboolean xfical_appt_mod (gchar *ical_uid, xfical_appt *appt)
 {
     icalcomponent *c, *base;
-    char *uid, *int_uid;
+    gchar *uid;
+    const gchar *int_uid;
     icalproperty *p = NULL;
     gboolean key_found = FALSE;
     struct icaltimetype create_time = icaltime_null_time();
@@ -2188,11 +2162,7 @@ gboolean xfical_appt_mod(char *ical_uid, xfical_appt *appt)
     return(TRUE);
 }
 
- /* removes EVENT with ical_uid from ical file
-  * ical_uid: pointer to ical_uid to be deleted
-  * returns: TRUE is successfull, FALSE if failed
-  */
-gboolean xfical_appt_del(char *ical_uid)
+gboolean xfical_appt_del (gchar *ical_uid)
 {
     icalcomponent *c, *base;
     icalset *fbase;
@@ -3509,7 +3479,7 @@ static void xfical_get_each_app_within_time_internal (const gchar *a_day,
 }
 
 /* This will (probably) replace xfical_appt_get_next_on_day */
-void xfical_get_each_app_within_time (GDateTime *a_day, gint days,
+void xfical_get_each_app_within_time (GDateTime *a_day, const gint days,
                                       xfical_type type, const gchar *file_type,
                                       GList **data)
 {
