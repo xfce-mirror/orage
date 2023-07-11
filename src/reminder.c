@@ -779,6 +779,7 @@ static void reset_orage_day_change(gboolean changed)
  */
 gboolean orage_day_change(gpointer user_data)
 {
+    OrageApplication *app;
     GtkCalendar *calendar;
     GDateTime *gdt;
     gint year;
@@ -806,7 +807,8 @@ gboolean orage_day_change(gpointer user_data)
         current_month = month;
         current_day   = day;
         /* Get the selected date from calendar */
-        calendar = orage_window_get_calendar (ORAGE_WINDOW (g_par.xfcal));
+        app = ORAGE_APPLICATION (g_application_get_default ());
+        calendar = orage_window_get_calendar (ORAGE_WINDOW (orage_application_get_window (app)));
         
         gtk_calendar_get_date (calendar, &selected_year, &selected_month,
                                &selected_day);

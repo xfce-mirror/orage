@@ -70,6 +70,7 @@ static void refresh_foreign_files(intf_win *intf_w, const gboolean first);
 gboolean orage_external_update_check (G_GNUC_UNUSED gpointer user_data)
 {
     struct stat s;
+    OrageApplication *app;
     gint i;
     gboolean external_changes_present = FALSE;
 
@@ -106,7 +107,8 @@ gboolean orage_external_update_check (G_GNUC_UNUSED gpointer user_data)
         g_message ("Refreshing alarms and calendar due to external file update");
         xfical_file_close_force();
         xfical_alarm_build_list(FALSE);
-        orage_mark_appointments (ORAGE_WINDOW (g_par.xfcal));
+        app = ORAGE_APPLICATION (g_application_get_default ());
+        orage_mark_appointments (ORAGE_WINDOW (orage_application_get_window (app)));
     }
 
     return(TRUE); /* keep running */
@@ -434,8 +436,10 @@ static void on_unarchive_button_clicked_cb (G_GNUC_UNUSED GtkButton *button,
 
 gboolean orage_import_file (const gchar *entry_filename)
 {
+    OrageApplication *app;
     if (xfical_import_file(entry_filename)) {
-        orage_mark_appointments (ORAGE_WINDOW (g_par.xfcal));
+        app = ORAGE_APPLICATION (g_application_get_default ());
+        orage_mark_appointments (ORAGE_WINDOW (orage_application_get_window (app)));
         xfical_alarm_build_list(FALSE);
         return(TRUE);
     }
@@ -552,6 +556,7 @@ static void for_open_button_clicked (G_GNUC_UNUSED GtkButton *button,
 static void orage_foreign_file_remove_line(gint del_line)
 {
     int i;
+    OrageApplication *app;
 
     g_free(g_par.foreign_data[del_line].file);
     g_free(g_par.foreign_data[del_line].name);
@@ -566,7 +571,8 @@ static void orage_foreign_file_remove_line(gint del_line)
     g_par.foreign_data[i].name = NULL;
 
     write_parameters();
-    orage_mark_appointments (ORAGE_WINDOW (g_par.xfcal));
+    app = ORAGE_APPLICATION (g_application_get_default ());
+    orage_mark_appointments (ORAGE_WINDOW (orage_application_get_window (app)));
     xfical_alarm_build_list(FALSE);
 }
 
@@ -698,6 +704,7 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
                                                  GtkWidget *main_window)
 {
     gint i = 0;
+    OrageApplication *app;
     const gchar *add_failed = _("Foreign file add failed");
 
     if (g_par.foreign_count > 9) {
@@ -774,7 +781,8 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
     g_par.foreign_count++;
 
     write_parameters();
-    orage_mark_appointments (ORAGE_WINDOW (g_par.xfcal));
+    app = ORAGE_APPLICATION (g_application_get_default ());
+    orage_mark_appointments (ORAGE_WINDOW (orage_application_get_window (app)));
     xfical_alarm_build_list(FALSE);
     return(TRUE);
 }

@@ -255,11 +255,13 @@ static void create_own_icon_pango_layout (gint line,
     GdkRGBA color;
     GtkStyleContext *sub_style_context;
     GtkStateFlags style_context_state;
+    OrageApplication *app;
     const char *row_x_data;
 
     g_assert ((line >= 1) && (line <= 3));
 
-    pl = gtk_widget_create_pango_layout (g_par.xfcal, "x");
+    app = ORAGE_APPLICATION (g_application_get_default ());
+    pl = gtk_widget_create_pango_layout (orage_application_get_window (app), "x");
     sub_style_context = get_row_style (style_context, line);
     style_context_state = gtk_style_context_get_state (sub_style_context);
 
@@ -386,12 +388,14 @@ static GtkWidget *create_TrayIcon_menu(void)
 {
     GtkWidget *trayMenu;
     GtkWidget *menuItem;
+    OrageApplication *app;
 
     trayMenu = gtk_menu_new();
 
     menuItem = orage_image_menu_item (_("Today"), "go-home");
+    app = ORAGE_APPLICATION (g_application_get_default ());
     g_signal_connect (menuItem, "activate", G_CALLBACK(on_Today_activate),
-                      g_par.xfcal);
+                      orage_application_get_window (app));
     gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
 
     menuItem = gtk_separator_menu_item_new();

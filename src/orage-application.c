@@ -55,6 +55,7 @@
 struct _OrageApplication
 {
     GtkApplication parent;
+    GtkWidget *window;
     OrageSleepMonitor *sleep_monitor;
     OrageTaskRunner *sync;
     guint prepare_for_sleep_id;
@@ -145,9 +146,9 @@ static void load_sync_conf (OrageTaskRunner *sync)
 }
 #endif
 
-static void raise_window (void)
+static void raise_window (OrageApplication *self)
 {
-    GtkWindow *window = GTK_WINDOW (g_par.xfcal);
+    GtkWindow *window = GTK_WINDOW (self->window);
 
     if (g_par.pos_x || g_par.pos_y)
         gtk_window_move (window, g_par.pos_x, g_par.pos_y);
@@ -199,7 +200,7 @@ static void orage_application_activate (GApplication *app)
             gtk_widget_hide (GTK_WIDGET (list->data));
         }
         else
-            raise_window ();
+            raise_window (self);
     }
     else
     {
@@ -209,7 +210,7 @@ static void orage_application_activate (GApplication *app)
         g_signal_connect (window, "delete_event",
                           G_CALLBACK (window_delete_event_cb), window);
 
-        g_par.xfcal = window;
+        self->window = window;
 
         /* XXX: TODO check if this line is needed for main window (it is copied
          * from original code).
@@ -606,4 +607,9 @@ OrageApplication *orage_application_new (void)
 OrageTaskRunner *orage_application_get_sync (OrageApplication *application)
 {
     return application->sync;
+}
+
+GtkWidget *orage_application_get_window (OrageApplication *application)
+{
+    return application->window;
 }

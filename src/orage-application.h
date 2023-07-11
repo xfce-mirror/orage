@@ -31,6 +31,7 @@ G_DECLARE_FINAL_TYPE (OrageApplication, orage_application, ORAGE, APPLICATION, G
 
 OrageApplication *orage_application_new (void);
 OrageTaskRunner *orage_application_get_sync (OrageApplication *application);
+GtkWidget *orage_application_get_window (OrageApplication *application);
 
 G_END_DECLS
 

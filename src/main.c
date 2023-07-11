@@ -45,7 +45,7 @@ static OrageApplication *orage_app;
 
 static void raise_window (void)
 {
-    GtkWindow *window = GTK_WINDOW (g_par.xfcal);
+    GtkWindow *window = GTK_WINDOW (orage_application_get_window (orage_app));
 
     if (g_par.pos_x || g_par.pos_y)
         gtk_window_move (window, g_par.pos_x, g_par.pos_y);

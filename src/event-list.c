@@ -772,8 +772,11 @@ static void set_el_data (el_win *el, GDateTime *gdt)
 static void set_el_data_from_cal(el_win *el)
 {
     GDateTime *gdt;
-    OrageWindow *window = ORAGE_WINDOW (g_par.xfcal);
+    OrageApplication *app;
+    OrageWindow *window;
 
+    app = ORAGE_APPLICATION (g_application_get_default ());
+    window = ORAGE_WINDOW (orage_application_get_window (app));
     gdt = orage_cal_to_gdatetime (orage_window_get_calendar (window), 0, 0);
     set_el_data (el, gdt);
     g_date_time_unref (gdt);
@@ -894,10 +897,12 @@ static void changeSelectedDate (el_win *el, const gint day)
     GDateTime *gdt1;
     GDateTime *gdt2;
     OrageWindow *window;
+    OrageApplication *app;
 
     gdt1 = g_object_get_data (G_OBJECT (el->Window), DATE_KEY);
     gdt2 = g_date_time_add_days (gdt1, day);
-    window = ORAGE_WINDOW (g_par.xfcal);
+    app = ORAGE_APPLICATION (g_application_get_default ());
+    window = ORAGE_WINDOW (orage_application_get_window (app));
     orage_select_date (orage_window_get_calendar (window), gdt2);
     g_date_time_unref (gdt2);
 
@@ -917,7 +922,8 @@ static void on_Go_previous_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
 
 static void go_to_today(el_win *el)
 {
-    OrageWindow *window = ORAGE_WINDOW (g_par.xfcal);
+    OrageApplication *app = ORAGE_APPLICATION (g_application_get_default ());
+    OrageWindow *window = ORAGE_WINDOW (orage_application_get_window (app));
     orage_select_today (orage_window_get_calendar (window));
     set_el_data_from_cal(el);
 }
@@ -988,6 +994,7 @@ static void on_show_old_clicked (G_GNUC_UNUSED GtkCheckButton *b,
 
 static void delete_appointment(el_win *el)
 {
+    OrageApplication *app;
     gint result;
     GtkTreeSelection *sel;
     GtkTreeModel     *model;
@@ -1035,7 +1042,8 @@ static void delete_appointment(el_win *el)
         }
         xfical_file_close(TRUE);
         refresh_el_win(el);
-        orage_mark_appointments (ORAGE_WINDOW (g_par.xfcal));
+        app = ORAGE_APPLICATION (g_application_get_default ());
+        orage_mark_appointments (ORAGE_WINDOW (orage_application_get_window (app)));
         g_list_foreach(list, (GFunc)(GCallback)gtk_tree_path_free, NULL);
         g_list_free(list);
     }
