@@ -241,7 +241,9 @@ static void mCalendar_day_selected_double_click_cb (GtkCalendar *calendar,
 
 static gboolean upd_calendar (G_GNUC_UNUSED gpointer calendar)
 {
-    orage_mark_appointments (ORAGE_WINDOW (g_par.xfcal));
+    OrageApplication *app;
+    app = ORAGE_APPLICATION (g_application_get_default ());
+    orage_mark_appointments (ORAGE_WINDOW (orage_application_get_window (app)));
     month_change_timer = 0;
 
     return(FALSE); /* we do this only once */
@@ -542,7 +544,8 @@ static void info_process(gpointer a, gpointer pbox)
 {
     xfical_appt *appt = (xfical_appt *)a;
     GtkGrid *box= GTK_GRID (pbox);
-    OrageWindow *window = ORAGE_WINDOW (g_par.xfcal);
+    OrageApplication *app = ORAGE_APPLICATION (g_application_get_default ());
+    OrageWindow *window = ORAGE_WINDOW (ORAGE_WINDOW (orage_application_get_window (app)));
     gboolean todo;
 
     todo = (pbox == window->mTodo_rows_vbox) ? TRUE : FALSE;
@@ -638,7 +641,7 @@ static void build_mainbox_todo_info (OrageWindow *window)
     gint i;
     GList *todo_list=NULL;
 
-    g_return_if_fail (g_par.xfcal != NULL);
+    g_return_if_fail (window != NULL);
 
     if (g_par.show_todos) {
         gdt = g_date_time_new_now_local ();
@@ -676,7 +679,7 @@ static void build_mainbox_event_info (OrageWindow *window)
     GList *event_list=NULL;
     GDateTime *gdt;
 
-    g_return_if_fail (g_par.xfcal != NULL);
+    g_return_if_fail (window != NULL);
 
     if (g_par.show_event_days) {
         gdt = orage_cal_to_gdatetime (GTK_CALENDAR (window->mCalendar), 1, 1);

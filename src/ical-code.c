@@ -2814,6 +2814,7 @@ static void xfical_alarm_build_list_internal_real(gboolean first_list_today
 
 static void xfical_alarm_build_list_internal(gboolean first_list_today)
 {
+    OrageApplication *app;
     gchar file_type[8];
     gint i;
 
@@ -2833,7 +2834,8 @@ static void xfical_alarm_build_list_internal(gboolean first_list_today)
     setup_orage_alarm_clock(); /* keep reminders upto date */
 
     /* Refresh main calendar window lists. */
-    orage_window_build_info (ORAGE_WINDOW (g_par.xfcal));
+    app = ORAGE_APPLICATION (g_application_get_default ());
+    orage_window_build_info (ORAGE_WINDOW (orage_application_get_window (app)));
 }
 
 void xfical_alarm_build_list(gboolean first_list_today)
