@@ -65,7 +65,7 @@ struct _OrageWindow
 
     GtkWidget *mCalendar;
     
-    GtkWidget *mVbox;
+    GtkWidget *main_box;
     GtkWidget *mMenubar;
     GtkWidget *mFile_menu;
     GtkWidget *mFile_newApp;
@@ -283,7 +283,7 @@ static void orage_window_restore_geometry (OrageWindow *window)
 static void build_menu (OrageWindow *window)
 {
     window->mMenubar = gtk_menu_bar_new();
-    gtk_grid_attach_next_to (GTK_GRID (window->mVbox), window->mMenubar, NULL,
+    gtk_grid_attach_next_to (GTK_GRID (window->main_box), window->mMenubar, NULL,
                              GTK_POS_BOTTOM, 1, 1);
 
     /* File menu */
@@ -563,7 +563,7 @@ static void create_mainbox_todo_info (OrageWindow *window)
     g_object_set (window->mTodo_vbox, "vexpand", TRUE,
                                       "valign", GTK_ALIGN_FILL,
                                       NULL);
-    gtk_grid_attach_next_to (GTK_GRID (window->mVbox), window->mTodo_vbox, NULL,
+    gtk_grid_attach_next_to (GTK_GRID (window->main_box), window->mTodo_vbox, NULL,
                              GTK_POS_BOTTOM, 1, 1);
     todo_label = gtk_label_new (NULL);
     gtk_label_set_markup (GTK_LABEL (todo_label), _("<b>To do:</b>"));
@@ -594,7 +594,7 @@ static void create_mainbox_event_info_box (OrageWindow *window)
     g_object_set (window->mEvent_vbox, "vexpand", TRUE,
                                        "valign", GTK_ALIGN_FILL,
                                        NULL);
-    gtk_grid_attach_next_to (GTK_GRID (window->mVbox), window->mEvent_vbox, NULL,
+    gtk_grid_attach_next_to (GTK_GRID (window->main_box), window->mEvent_vbox, NULL,
                              GTK_POS_BOTTOM, 1, 1);
     event_label = gtk_label_new (NULL);
     if (g_par.show_event_days) {
@@ -743,9 +743,9 @@ static void orage_window_class_init (OrageWindowClass *klass)
 
 static void orage_window_init (OrageWindow *self)
 {
-    self->mVbox = gtk_grid_new ();
-    gtk_container_add (GTK_CONTAINER (self), self->mVbox);
-    gtk_widget_show (self->mVbox);
+    self->main_box = gtk_grid_new ();
+    gtk_container_add (GTK_CONTAINER (self), self->main_box);
+    gtk_widget_show (self->main_box);
 
     self->mAccel_group = gtk_accel_group_new ();
 
@@ -757,7 +757,7 @@ static void orage_window_init (OrageWindow *self)
     g_object_set (self->mCalendar, "hexpand", TRUE,
                                    "halign", GTK_ALIGN_FILL,
                                    NULL);
-    gtk_grid_attach_next_to (GTK_GRID (self->mVbox), self->mCalendar, NULL,
+    gtk_grid_attach_next_to (GTK_GRID (self->main_box), self->mCalendar, NULL,
                              GTK_POS_BOTTOM, 1, 1);
     gtk_widget_show (self->mCalendar);
 
