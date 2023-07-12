@@ -31,31 +31,24 @@
 #include "orage-about.h"
 #include "functions.h"
 
-void orage_show_about (G_GNUC_UNUSED GtkWindow *parent)
+void orage_show_about (GtkWindow *parent)
 {
-    GtkWidget *dialog;
-    GtkAboutDialog *about;
     static const gchar *authors[] = {"Erkki Moorits <erkki.moorits@mail.ee>",
                                      "Juha Kautto <juha@xfce.org>",
                                      "Benedikt Meurer <benny@xfce.org>",
                                      "Mickael Graf <korbinus@xfce.org>",
                                      NULL};
 
-    dialog = gtk_about_dialog_new ();
-    about = (GtkAboutDialog *)dialog;
-    gtk_about_dialog_set_program_name (about, "Orage");
-    gtk_about_dialog_set_version (about, VERSION);
-    gtk_about_dialog_set_copyright (about, "Copyright \xc2\xa9 2003-2023 Orage Team");
-    gtk_about_dialog_set_comments (about,
-        _("Orage is a time-managing application for the Xfce desktop environment"));
-    gtk_about_dialog_set_website (about, "https://docs.xfce.org/apps/orage/start");
-    gtk_about_dialog_set_authors (about, authors);
-    gtk_about_dialog_set_license_type (about, GTK_LICENSE_GPL_2_0);
-    gtk_about_dialog_set_translator_credits (about, _("translator-credits"));
-    gtk_about_dialog_set_logo_icon_name (about, ORAGE_APP_ID);
-
-    gtk_window_set_default_size (GTK_WINDOW (dialog), 520, 440);
-
-    gtk_dialog_run (GTK_DIALOG (dialog));
-    gtk_widget_destroy (dialog);
+    gtk_show_about_dialog (parent,
+                           "authors", authors,
+                           "comments", _("Orage is a time-managing application for the Xfce desktop environment"),
+                           "copyright", "Copyright \xc2\xa9 2003-2023 Orage Team",
+                           "destroy-with-parent", TRUE,
+                           "license-type", GTK_LICENSE_GPL_2_0,
+                           "logo-icon-name", ORAGE_APP_ID,
+                           "program-name", "Orage",
+                           "version", VERSION,
+                           "translator-credits", _("translator-credits"),
+                           "website", "https://docs.xfce.org/apps/orage/start",
+                           NULL);
 }

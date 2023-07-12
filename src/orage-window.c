@@ -206,9 +206,9 @@ static void mHelp_help_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
 }
 
 static void mHelp_about_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
-                                     G_GNUC_UNUSED gpointer user_data)
+                                     gpointer user_data)
 {
-    orage_show_about (NULL);
+    orage_show_about (user_data);
 }
 
 static void orage_window_post_init_cb (OrageWindow *window)
@@ -364,7 +364,7 @@ static void build_menu (OrageWindow *window)
     g_signal_connect (window->mHelp_help, "activate",
                       G_CALLBACK (mHelp_help_activate_cb), NULL);
     g_signal_connect (window->mHelp_about, "activate",
-                      G_CALLBACK (mHelp_about_activate_cb), NULL);
+                      G_CALLBACK (mHelp_about_activate_cb), window);
 }
 
 static void todo_clicked (GtkWidget *widget, GdkEventButton *event,
