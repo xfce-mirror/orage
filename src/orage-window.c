@@ -239,18 +239,16 @@ static void mCalendar_day_selected_double_click_cb (GtkCalendar *calendar,
         (void)create_el_win(NULL);
 }
 
-static gboolean upd_calendar (G_GNUC_UNUSED gpointer calendar)
+static gboolean upd_calendar (gpointer user_data)
 {
-    OrageApplication *app;
-    app = ORAGE_APPLICATION (g_application_get_default ());
-    orage_mark_appointments (ORAGE_WINDOW (orage_application_get_window (app)));
+    orage_mark_appointments (ORAGE_WINDOW (user_data));
     month_change_timer = 0;
 
     return(FALSE); /* we do this only once */
 }
 
 static void mCalendar_month_changed_cb (GtkCalendar *calendar,
-                                        G_GNUC_UNUSED gpointer user_data)
+                                        gpointer user_data)
 {
     /* orage_mark_appointments is rather heavy (=slow), so doing
      * it here is not a good idea. We can't keep up with the autorepeat
@@ -264,7 +262,7 @@ static void mCalendar_month_changed_cb (GtkCalendar *calendar,
     }
 
     gtk_calendar_clear_marks(calendar);
-    month_change_timer = g_timeout_add (400, upd_calendar, calendar);
+    month_change_timer = g_timeout_add (400, upd_calendar, user_data);
 }
 
 static void orage_window_restore_geometry (OrageWindow *window)
@@ -775,7 +773,7 @@ static void orage_window_init (OrageWindow *self)
     g_signal_connect (self->mCalendar, "day_selected",
                       G_CALLBACK (mCalendar_day_selected_cb), self);
     g_signal_connect (self->mCalendar, "month-changed",
-                      G_CALLBACK (mCalendar_month_changed_cb), NULL);
+                      G_CALLBACK (mCalendar_month_changed_cb), self);
 }
 
 GtkWidget *orage_window_new (OrageApplication *application)
@@ -816,5 +814,5 @@ void orage_window_build_info (OrageWindow *window)
 
 void orage_window_month_changed (OrageWindow *window)
 {
-    mCalendar_month_changed_cb (orage_window_get_calendar (window), NULL);
+    mCalendar_month_changed_cb (orage_window_get_calendar (window), window);
 }
