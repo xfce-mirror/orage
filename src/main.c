@@ -62,7 +62,7 @@ static void raise_window (void)
 
 static void quit_handler (G_GNUC_UNUSED int s)
 {
-    orage_quit ();
+    g_application_quit (G_APPLICATION (orage_app));
 }
 
 void orage_toggle_visible (void)
@@ -80,11 +80,6 @@ void orage_toggle_visible (void)
     }
     else
         raise_window ();
-}
-
-void orage_quit (void)
-{
-    g_application_quit (G_APPLICATION (orage_app));
 }
 
 int main (int argc, char **argv)
