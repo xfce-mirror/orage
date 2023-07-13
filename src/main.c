@@ -24,39 +24,37 @@
 #include <config.h>
 #endif
 
-#include <signal.h>
-#include <stdlib.h>
-#include <string.h>
+#include "orage-i18n.h"
+#include "orage-application.h"
 
 #include <glib.h>
 #include <gio/gio.h>
 
-#include "orage-i18n.h"
-#include "orage-window.h"
+#ifdef G_OS_UNIX
+#include <signal.h>
+#include <glib-unix.h>
 
-#include "orage-application.h"
-
-static OrageApplication *orage_app;
-
-static void quit_handler (G_GNUC_UNUSED int s)
+static gboolean quit_handler (gpointer orage_app)
 {
     g_application_quit (G_APPLICATION (orage_app));
+
+    return G_SOURCE_REMOVE;
 }
+#endif
 
 int main (int argc, char **argv)
 {
     int status;
-    struct sigaction sig_int_handler;
+    OrageApplication *orage_app;
 
     g_set_application_name (_("Orage"));
 
     orage_app = orage_application_new ();
 
-    sig_int_handler.sa_handler = quit_handler;
-    sigemptyset (&sig_int_handler.sa_mask);
-    sig_int_handler.sa_flags = 0;
+#ifdef G_OS_UNIX
+    (void)g_unix_signal_add (SIGINT, quit_handler, orage_app);
+#endif
 
-    sigaction (SIGINT, &sig_int_handler, NULL);
     status = g_application_run (G_APPLICATION (orage_app), argc, argv);
     g_object_unref (orage_app);
 
