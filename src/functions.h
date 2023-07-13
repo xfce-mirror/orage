@@ -154,9 +154,6 @@ GtkWidget *orage_create_framebox_with_content (const gchar *title,
                                                GtkShadowType shadow_type,
                                                GtkWidget *content);
 
-/* NOTE: the followings two function are implemented in main.c */
-void orage_toggle_visible(void);
-
 #ifdef HAVE_X11_TRAY_ICON
 /* This is wrapper for deprecated 'gtk_status_icon_is_embedded', it is used only
  * for suppress deprecated warning message.
