@@ -29,18 +29,13 @@
 #include <string.h>
 
 #include <glib.h>
-#include <gtk/gtk.h>
-#include <gdk/gdk.h>
 #include <gio/gio.h>
 
-#include "functions.h"
-#include "parameters.h"
 #include "orage-i18n.h"
 #include "orage-window.h"
 
 #include "orage-application.h"
 
-global_parameters g_par;
 static OrageApplication *orage_app;
 
 static void quit_handler (G_GNUC_UNUSED int s)
