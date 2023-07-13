@@ -149,7 +149,7 @@ static void mFile_close_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
 static void mFile_quit_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
                                     G_GNUC_UNUSED gpointer user_data)
 {
-    orage_quit ();
+    g_application_quit (G_APPLICATION (g_application_get_default ()));
 }
 
 static void mEdit_preferences_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,

@@ -110,6 +110,12 @@ static void on_preferences_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
     show_parameters ();
 }
 
+static void on_orage_quit_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
+                                    gpointer orage_app)
+{
+    g_application_quit (G_APPLICATION (orage_app));
+}
+
 static void on_new_appointment_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
                                          G_GNUC_UNUSED gpointer user_data)
 {
@@ -415,7 +421,8 @@ static GtkWidget *create_TrayIcon_menu(void)
     menuItem = gtk_separator_menu_item_new();
     gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
     menuItem = orage_image_menu_item(_("Quit"), "application-exit");
-    g_signal_connect (menuItem, "activate", G_CALLBACK (orage_quit), NULL);
+    g_signal_connect (menuItem, "activate",
+                      G_CALLBACK (on_orage_quit_activate), app);
     gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
 
     menuItem = gtk_separator_menu_item_new();
