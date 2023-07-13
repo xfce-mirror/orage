@@ -84,6 +84,8 @@ static void orage_sync_task_change (const orage_task_runner_conf *conf,
 
 static Itf *global_itf = NULL;
 
+global_parameters g_par;
+
 /* Return the first day of the week, where 0=monday, 6=sunday.
  *     Borrowed from GTK+:s Calendar Widget, but modified
  *     to return 0..6 mon..sun, which is what libical uses */
