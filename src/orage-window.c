@@ -813,3 +813,20 @@ void orage_window_month_changed (OrageWindow *window)
 {
     mCalendar_month_changed_cb (orage_window_get_calendar (window), window);
 }
+
+void orage_window_raise (OrageWindow *window)
+{
+    GtkWindow *gtk_window = GTK_WINDOW (window);
+
+    if (g_par.pos_x || g_par.pos_y)
+        gtk_window_move (gtk_window, g_par.pos_x, g_par.pos_y);
+
+    if (g_par.select_always_today)
+        orage_select_today (orage_window_get_calendar (window));
+
+    if (g_par.set_stick)
+        gtk_window_stick (gtk_window);
+
+    gtk_window_set_keep_above (gtk_window, g_par.set_ontop);
+    gtk_window_present (gtk_window);
+}

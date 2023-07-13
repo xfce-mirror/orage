@@ -136,7 +136,21 @@ static void on_new_appointment_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
 static void toggle_visible_cb (G_GNUC_UNUSED GtkStatusIcon *status_icon,
                                G_GNUC_UNUSED gpointer user_data)
 {
-    orage_toggle_visible();
+    OrageApplication *app;
+    GList *list;
+
+    app = ORAGE_APPLICATION (g_application_get_default ());
+    list = gtk_application_get_windows (GTK_APPLICATION (app));
+
+    g_return_if_fail (list != NULL);
+
+    if (gtk_widget_get_visible (GTK_WIDGET (list->data)))
+    {
+        write_parameters ();
+        gtk_widget_hide (GTK_WIDGET (list->data));
+    }
+    else
+        orage_window_raise (ORAGE_WINDOW (orage_application_get_window (app)));
 }
 
 static void show_menu (G_GNUC_UNUSED GtkStatusIcon *status_icon,

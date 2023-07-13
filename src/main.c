@@ -43,43 +43,9 @@
 global_parameters g_par;
 static OrageApplication *orage_app;
 
-static void raise_window (void)
-{
-    GtkWindow *window = GTK_WINDOW (orage_application_get_window (orage_app));
-
-    if (g_par.pos_x || g_par.pos_y)
-        gtk_window_move (window, g_par.pos_x, g_par.pos_y);
-    
-    if (g_par.select_always_today)
-        orage_select_today (orage_window_get_calendar (ORAGE_WINDOW (window)));
-
-    if (g_par.set_stick)
-        gtk_window_stick (window);
-    
-    gtk_window_set_keep_above (window, g_par.set_ontop);
-    gtk_window_present (window);
-}
-
 static void quit_handler (G_GNUC_UNUSED int s)
 {
     g_application_quit (G_APPLICATION (orage_app));
-}
-
-void orage_toggle_visible (void)
-{
-    GList *list;
-
-    list = gtk_application_get_windows (GTK_APPLICATION (orage_app));
-
-    g_return_if_fail (list != NULL);
-
-    if (gtk_widget_get_visible (GTK_WIDGET (list->data)))
-    {
-        write_parameters ();
-        gtk_widget_hide (GTK_WIDGET (list->data));
-    }
-    else
-        raise_window ();
 }
 
 int main (int argc, char **argv)
