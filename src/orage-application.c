@@ -67,12 +67,9 @@ G_DEFINE_TYPE (OrageApplication, orage_application, GTK_TYPE_APPLICATION)
 
 static gboolean window_delete_event_cb (G_GNUC_UNUSED GtkWidget *widget,
                                         G_GNUC_UNUSED GdkEvent *event,
-                                        GtkWidget *window)
+                                        OrageApplication *app)
 {
-    if (g_par.close_means_quit)
-        orage_quit ();
-    else
-        gtk_widget_hide (window);
+    orage_application_close (app);
 
     return TRUE;
 }
@@ -208,7 +205,7 @@ static void orage_application_activate (GApplication *app)
         window = orage_window_new (self);
 
         g_signal_connect (window, "delete_event",
-                          G_CALLBACK (window_delete_event_cb), window);
+                          G_CALLBACK (window_delete_event_cb), self);
 
         self->window = window;
 
@@ -612,4 +609,12 @@ OrageTaskRunner *orage_application_get_sync (OrageApplication *application)
 GtkWidget *orage_application_get_window (OrageApplication *application)
 {
     return application->window;
+}
+
+void orage_application_close (OrageApplication *application)
+{
+    if (g_par.close_means_quit)
+        g_application_quit (G_APPLICATION (application));
+    else
+        gtk_widget_hide (orage_application_get_window (application));
 }

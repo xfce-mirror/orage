@@ -141,12 +141,9 @@ static void mFile_interface_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
 }
 
 static void mFile_close_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
-                                     gpointer user_data)
+                                     G_GNUC_UNUSED gpointer user_data)
 {
-    if (g_par.close_means_quit)
-        orage_quit ();
-    else
-        gtk_widget_hide (user_data);
+    orage_application_close (ORAGE_APPLICATION (g_application_get_default ()));
 }
 
 static void mFile_quit_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
@@ -348,7 +345,7 @@ static void build_menu (OrageWindow *window)
     g_signal_connect (window->mFile_interface, "activate",
                       G_CALLBACK (mFile_interface_activate_cb), NULL);
     g_signal_connect (window->mFile_close, "activate",
-                      G_CALLBACK (mFile_close_activate_cb), window);
+                      G_CALLBACK (mFile_close_activate_cb), NULL);
     g_signal_connect (window->mFile_quit, "activate",
                       G_CALLBACK (mFile_quit_activate_cb), NULL);
     g_signal_connect (window->mEdit_preferences, "activate",
