@@ -110,6 +110,12 @@ static void on_preferences_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
     show_parameters ();
 }
 
+static void on_orage_quit_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
+                                    gpointer orage_app)
+{
+    g_application_quit (G_APPLICATION (orage_app));
+}
+
 static void on_new_appointment_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
                                          G_GNUC_UNUSED gpointer user_data)
 {
@@ -130,7 +136,21 @@ static void on_new_appointment_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
 static void toggle_visible_cb (G_GNUC_UNUSED GtkStatusIcon *status_icon,
                                G_GNUC_UNUSED gpointer user_data)
 {
-    orage_toggle_visible();
+    OrageApplication *app;
+    GList *list;
+
+    app = ORAGE_APPLICATION (g_application_get_default ());
+    list = gtk_application_get_windows (GTK_APPLICATION (app));
+
+    g_return_if_fail (list != NULL);
+
+    if (gtk_widget_get_visible (GTK_WIDGET (list->data)))
+    {
+        write_parameters ();
+        gtk_widget_hide (GTK_WIDGET (list->data));
+    }
+    else
+        orage_window_raise (ORAGE_WINDOW (orage_application_get_window (app)));
 }
 
 static void show_menu (G_GNUC_UNUSED GtkStatusIcon *status_icon,
@@ -255,11 +275,13 @@ static void create_own_icon_pango_layout (gint line,
     GdkRGBA color;
     GtkStyleContext *sub_style_context;
     GtkStateFlags style_context_state;
+    OrageApplication *app;
     const char *row_x_data;
 
     g_assert ((line >= 1) && (line <= 3));
 
-    pl = gtk_widget_create_pango_layout (g_par.xfcal, "x");
+    app = ORAGE_APPLICATION (g_application_get_default ());
+    pl = gtk_widget_create_pango_layout (orage_application_get_window (app), "x");
     sub_style_context = get_row_style (style_context, line);
     style_context_state = gtk_style_context_get_state (sub_style_context);
 
@@ -386,12 +408,14 @@ static GtkWidget *create_TrayIcon_menu(void)
 {
     GtkWidget *trayMenu;
     GtkWidget *menuItem;
+    OrageApplication *app;
 
     trayMenu = gtk_menu_new();
 
     menuItem = orage_image_menu_item (_("Today"), "go-home");
+    app = ORAGE_APPLICATION (g_application_get_default ());
     g_signal_connect (menuItem, "activate", G_CALLBACK(on_Today_activate),
-                      g_par.xfcal);
+                      orage_application_get_window (app));
     gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
 
     menuItem = gtk_separator_menu_item_new();
@@ -411,7 +435,8 @@ static GtkWidget *create_TrayIcon_menu(void)
     menuItem = gtk_separator_menu_item_new();
     gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
     menuItem = orage_image_menu_item(_("Quit"), "application-exit");
-    g_signal_connect (menuItem, "activate", G_CALLBACK (orage_quit), NULL);
+    g_signal_connect (menuItem, "activate",
+                      G_CALLBACK (on_orage_quit_activate), app);
     gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
 
     menuItem = gtk_separator_menu_item_new();

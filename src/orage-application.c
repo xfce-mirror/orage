@@ -55,6 +55,7 @@
 struct _OrageApplication
 {
     GtkApplication parent;
+    GtkWidget *window;
     OrageSleepMonitor *sleep_monitor;
     OrageTaskRunner *sync;
     guint prepare_for_sleep_id;
@@ -66,12 +67,9 @@ G_DEFINE_TYPE (OrageApplication, orage_application, GTK_TYPE_APPLICATION)
 
 static gboolean window_delete_event_cb (G_GNUC_UNUSED GtkWidget *widget,
                                         G_GNUC_UNUSED GdkEvent *event,
-                                        GtkWidget *window)
+                                        OrageApplication *app)
 {
-    if (g_par.close_means_quit)
-        orage_quit ();
-    else
-        gtk_widget_hide (window);
+    orage_application_close (app);
 
     return TRUE;
 }
@@ -145,9 +143,9 @@ static void load_sync_conf (OrageTaskRunner *sync)
 }
 #endif
 
-static void raise_window (void)
+static void raise_window (OrageApplication *self)
 {
-    GtkWindow *window = GTK_WINDOW (g_par.xfcal);
+    GtkWindow *window = GTK_WINDOW (self->window);
 
     if (g_par.pos_x || g_par.pos_y)
         gtk_window_move (window, g_par.pos_x, g_par.pos_y);
@@ -199,7 +197,7 @@ static void orage_application_activate (GApplication *app)
             gtk_widget_hide (GTK_WIDGET (list->data));
         }
         else
-            raise_window ();
+            raise_window (self);
     }
     else
     {
@@ -207,9 +205,9 @@ static void orage_application_activate (GApplication *app)
         window = orage_window_new (self);
 
         g_signal_connect (window, "delete_event",
-                          G_CALLBACK (window_delete_event_cb), window);
+                          G_CALLBACK (window_delete_event_cb), self);
 
-        g_par.xfcal = window;
+        self->window = window;
 
         /* XXX: TODO check if this line is needed for main window (it is copied
          * from original code).
@@ -606,4 +604,17 @@ OrageApplication *orage_application_new (void)
 OrageTaskRunner *orage_application_get_sync (OrageApplication *application)
 {
     return application->sync;
+}
+
+GtkWidget *orage_application_get_window (OrageApplication *application)
+{
+    return application->window;
+}
+
+void orage_application_close (OrageApplication *application)
+{
+    if (g_par.close_means_quit)
+        g_application_quit (G_APPLICATION (application));
+    else
+        gtk_widget_hide (orage_application_get_window (application));
 }

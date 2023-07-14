@@ -590,11 +590,15 @@ static void app_checkbutton_clicked_cb (G_GNUC_UNUSED GtkCheckButton *cb,
 
 static void refresh_dependent_data(appt_win *apptw)
 {
+    OrageApplication *app;
+
     if (apptw->el != NULL)
         refresh_el_win((el_win *)apptw->el);
     if (apptw->dw != NULL)
         refresh_day_win((day_win *)apptw->dw);
-    orage_mark_appointments (ORAGE_WINDOW (g_par.xfcal));
+
+    app = ORAGE_APPLICATION (g_application_get_default ());
+    orage_mark_appointments (ORAGE_WINDOW (orage_application_get_window (app)));
 }
 
 static void on_appNote_buffer_changed_cb (G_GNUC_UNUSED GtkTextBuffer *b,

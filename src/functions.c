@@ -1163,3 +1163,23 @@ gboolean orage_is_debug_logging_enabled (void)
 
     return enabled;
 }
+
+void orage_open_help_page (void)
+{
+    const gchar *helpdoc;
+    GError *error = NULL;
+
+    helpdoc = "exo-open " ORAGE_DOC_ADDRESS;
+    if (orage_exec (helpdoc, NULL, &error) == FALSE)
+    {
+        g_message ("%s failed: %s. Trying firefox", helpdoc, error->message);
+        g_clear_error (&error);
+
+        helpdoc = "firefox " ORAGE_DOC_ADDRESS;
+        if (orage_exec (helpdoc, NULL, &error) == FALSE)
+        {
+            g_warning ("start of %s failed: %s", helpdoc, error->message);
+            g_clear_error (&error);
+        }
+    }
+}
