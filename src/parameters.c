@@ -163,12 +163,12 @@ static void dialog_response(GtkWidget *dialog, gint response_id
 
     if (response_id == GTK_RESPONSE_HELP) {
         /* Needs to be in " to keep # */
-        helpdoc = "exo-open https://docs.xfce.org/apps/orage/start";
+        helpdoc = "exo-open " ORAGE_DOC_ADDRESS;
         if (!orage_exec(helpdoc, NULL, &error)) {
             g_message ("%s failed: %s. Trying firefox", helpdoc
                     , error->message);
             g_clear_error(&error);
-            helpdoc = "firefox https://docs.xfce.org/apps/orage/start";
+            helpdoc = "firefox " ORAGE_DOC_ADDRESS;
             if (!orage_exec(helpdoc, NULL, &error)) {
                 g_warning ("start of %s failed: %s", helpdoc, error->message);
                 g_clear_error(&error);

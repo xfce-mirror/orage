@@ -40,6 +40,7 @@
 #define ORAGE_PERSISTENT_ALARMS_DIR_FILE ORAGE_DIR ORAGE_PERSISTENT_ALARMS_FILE
 #define ORAGE_DEFAULT_ALARM_FILE "orage_default_alarm.txt"
 #define ORAGE_DEFAULT_ALARM_DIR_FILE ORAGE_DIR ORAGE_DEFAULT_ALARM_FILE
+#define ORAGE_DOC_ADDRESS "https://docs.xfce.org/apps/orage/start"
 
 #define ORAGE_STR_EXISTS(str) ((str != NULL) && (str[0] != 0))
 

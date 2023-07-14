@@ -189,12 +189,12 @@ static void mHelp_help_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
     const gchar *helpdoc;
     GError *error = NULL;
 
-    helpdoc = "exo-open https://docs.xfce.org/apps/orage/start";
+    helpdoc = "exo-open " ORAGE_DOC_ADDRESS;
     if (!orage_exec(helpdoc, NULL, &error)) {
         g_message ("%s failed: %s. Trying firefox", helpdoc
                                     , error->message);
         g_clear_error(&error);
-        helpdoc = "firefox https://docs.xfce.org/apps/orage/start";
+        helpdoc = "firefox " ORAGE_DOC_ADDRESS;
         if (!orage_exec(helpdoc, NULL, &error)) {
             g_warning ("start of %s failed: %s", helpdoc, error->message);
             g_clear_error(&error);
