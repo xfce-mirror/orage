@@ -77,9 +77,7 @@ gboolean xfical_archive_open(void)
     return(ic_internal_file_open(&ic_aical, &ic_afical, g_par.archive_file
             , FALSE, FALSE));
 }
-#endif
 
-#ifdef HAVE_ARCHIVE
 void xfical_archive_close(void)
 {
     if (!ORAGE_STR_EXISTS(g_par.archive_file))
@@ -427,12 +425,12 @@ gboolean xfical_unarchive(void)
     return(TRUE);
 }
 
-gboolean xfical_unarchive_uid(char *uid)
+gboolean xfical_unarchive_uid (const gchar *uid)
 {
     icalcomponent *c, *d;
     gboolean key_found = FALSE;
     const char *text;
-    char *ical_uid;
+    const gchar *ical_uid;
 
     ical_uid = uid+4; /* skip file id (which is A00. now)*/
     if (!xfical_file_open(FALSE) || !xfical_archive_open()) {

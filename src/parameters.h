@@ -92,7 +92,6 @@ typedef struct _parameters
     guint wakeup_timer;  /* controls wakeup after suspend/hibernate */
 
     /* main window */
-    GtkWidget *xfcal;     /* this is main calendar CalWin * */
     gint pos_x, pos_y;
     gint size_x, size_y;
 

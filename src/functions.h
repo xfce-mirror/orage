@@ -40,6 +40,7 @@
 #define ORAGE_PERSISTENT_ALARMS_DIR_FILE ORAGE_DIR ORAGE_PERSISTENT_ALARMS_FILE
 #define ORAGE_DEFAULT_ALARM_FILE "orage_default_alarm.txt"
 #define ORAGE_DEFAULT_ALARM_DIR_FILE ORAGE_DIR ORAGE_DEFAULT_ALARM_FILE
+#define ORAGE_DOC_ADDRESS "https://docs.xfce.org/apps/orage/start"
 
 #define ORAGE_STR_EXISTS(str) ((str != NULL) && (str[0] != 0))
 
@@ -154,10 +155,6 @@ GtkWidget *orage_create_framebox_with_content (const gchar *title,
                                                GtkShadowType shadow_type,
                                                GtkWidget *content);
 
-/* NOTE: the followings two function are implemented in main.c */
-void orage_toggle_visible(void);
-void orage_quit (void);
-
 #ifdef HAVE_X11_TRAY_ICON
 /* This is wrapper for deprecated 'gtk_status_icon_is_embedded', it is used only
  * for suppress deprecated warning message.
@@ -208,5 +205,7 @@ gboolean orage_str_to_rgba (const gchar *color_str,
  */
 gboolean orage_is_debug_logging_enabled (void);
 
+/** Open documentation web page. */
+void orage_open_help_page (void);
 
 #endif /* !__ORAGE_FUNCTIONS_H__ */

@@ -128,12 +128,47 @@ gboolean xfical_file_open(gboolean foreign);
 void xfical_file_close(gboolean foreign);
 void xfical_file_close_force(void);
 
+/** Allocates memory and initializes it for new ical_type structure
+ *  @return NULL if failed and pointer to xfical_appt if successfull. You must
+ *          free it after not being used anymore. (g_free())
+ */
 xfical_appt *xfical_appt_alloc (void);
-char *xfical_appt_add(char *ical_file_id, xfical_appt *appt);
+
+/** Add EVENT/TODO/JOURNAL type ical appointment to ical file
+ *  @param appt pointer to filled xfical_appt structure, which is to be stored.
+ *              Caller is responsible for filling and allocating and freeing it.
+ *  @returns NULL if failed and new ical id if successfully added. This ical id
+ *           is owned by the routine. Do not deallocate it. It will be
+ *           overwrittewritten by next invocation of this function.
+ */
+gchar *xfical_appt_add (gchar *ical_file_id, xfical_appt *appt);
+
+/** Read EVENT from ical datafile.
+ *  @param ical_uid key of ical EVENT appt-> is to be read
+ *  @return if failed: NULL
+ *          if successfull: xfical_appt pointer to xfical_appt struct filled
+ *                          with data. You must free it after not being used
+ *                          anymore using xfical_appt_free.
+ *
+ *  @note This routine does not fill starttimecur nor endtimecur, those are
+ *  always initialized to null string
+ */
 xfical_appt *xfical_appt_get(const gchar *ical_id);
 void xfical_appt_free(xfical_appt *appt);
-gboolean xfical_appt_mod(char *ical_id, xfical_appt *appt);
-gboolean xfical_appt_del(char *ical_id);
+
+ /** Modify EVENT type ical appointment in ical file.
+  *  @param ical_uid char pointer to ical ical_uid to modify
+  *  @param app pointer to filled xfical_appt structure, which is stored. Caller
+  *         is responsible for filling and allocating and freeing it.
+  *  @return TRUE is successfull, FALSE if failed
+  */
+gboolean xfical_appt_mod (gchar *ical_id, xfical_appt *appt);
+
+/** Removes EVENT with ical_uid from ical file
+ *  @param ical_uid pointer to ical_uid to be deleted
+ *  @returns: TRUE is successfull, FALSE if failed
+ */
+gboolean xfical_appt_del (gchar *ical_id);
 
 /** Read next EVENT/TODO/JOURNAL component on the specified date from ical
  *  datafile.
@@ -160,7 +195,7 @@ xfical_appt *xfical_appt_get_next_on_day (GDateTime *gdt, gboolean first,
 xfical_appt *xfical_appt_get_next_with_string (const gchar *str, gboolean first,
                                                const gchar *file_type);
 
-void xfical_get_each_app_within_time (GDateTime *a_day, int days
+void xfical_get_each_app_within_time (GDateTime *a_day, gint days
         , xfical_type type, const gchar *file_type , GList **data);
 
 void xfical_mark_calendar(GtkCalendar *gtkcal);
@@ -168,15 +203,15 @@ void xfical_mark_calendar_recur(GtkCalendar *gtkcal, xfical_appt *appt);
 
 void xfical_alarm_build_list(gboolean first_list_today);
 
-int xfical_compare_times(xfical_appt *appt);
+gint xfical_compare_times (xfical_appt *appt);
 #ifdef HAVE_ARCHIVE
 gboolean xfical_archive_open(void);
 void xfical_archive_close(void);
 gboolean xfical_archive(void);
 gboolean xfical_unarchive(void);
-gboolean xfical_unarchive_uid(char *uid);
+gboolean xfical_unarchive_uid (const gchar *uid);
 #endif
 
-gboolean xfical_file_check(gchar *file_name);
+gboolean xfical_file_check (const gchar *file_name);
 
 #endif /* !__ICAL_CODE_H__ */

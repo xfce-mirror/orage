@@ -52,6 +52,7 @@ void orage_window_show_menubar (OrageWindow *window, gboolean show);
 void orage_window_hide_todo (OrageWindow *window);
 void orage_window_hide_event (OrageWindow *window);
 GtkCalendar *orage_window_get_calendar (OrageWindow *window);
+void orage_window_raise (OrageWindow *window);
 
 G_END_DECLS
 
