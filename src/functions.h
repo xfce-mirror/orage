@@ -205,5 +205,7 @@ gboolean orage_str_to_rgba (const gchar *color_str,
  */
 gboolean orage_is_debug_logging_enabled (void);
 
+/** Open documentation web page. */
+void orage_open_help_page (void);
 
 #endif /* !__ORAGE_FUNCTIONS_H__ */
