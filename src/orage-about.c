@@ -49,6 +49,6 @@ void orage_show_about (GtkWindow *parent)
                            "program-name", "Orage",
                            "version", VERSION,
                            "translator-credits", _("translator-credits"),
-                           "website", "https://docs.xfce.org/apps/orage/start",
+                           "website", ORAGE_DOC_ADDRESS,
                            NULL);
 }
