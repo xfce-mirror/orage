@@ -186,20 +186,7 @@ static void mView_selectToday_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
 static void mHelp_help_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
                                     G_GNUC_UNUSED gpointer user_data)
 {
-    const gchar *helpdoc;
-    GError *error = NULL;
-
-    helpdoc = "exo-open " ORAGE_DOC_ADDRESS;
-    if (!orage_exec(helpdoc, NULL, &error)) {
-        g_message ("%s failed: %s. Trying firefox", helpdoc
-                                    , error->message);
-        g_clear_error(&error);
-        helpdoc = "firefox " ORAGE_DOC_ADDRESS;
-        if (!orage_exec(helpdoc, NULL, &error)) {
-            g_warning ("start of %s failed: %s", helpdoc, error->message);
-            g_clear_error(&error);
-        }
-    }
+    orage_open_help_page ();
 }
 
 static void mHelp_about_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,

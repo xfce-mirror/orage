@@ -158,23 +158,9 @@ static void dialog_response(GtkWidget *dialog, gint response_id
         , gpointer user_data)
 {
     Itf *itf = (Itf *)user_data;
-    const gchar *helpdoc;
-    GError *error = NULL;
 
-    if (response_id == GTK_RESPONSE_HELP) {
-        /* Needs to be in " to keep # */
-        helpdoc = "exo-open " ORAGE_DOC_ADDRESS;
-        if (!orage_exec(helpdoc, NULL, &error)) {
-            g_message ("%s failed: %s. Trying firefox", helpdoc
-                    , error->message);
-            g_clear_error(&error);
-            helpdoc = "firefox " ORAGE_DOC_ADDRESS;
-            if (!orage_exec(helpdoc, NULL, &error)) {
-                g_warning ("start of %s failed: %s", helpdoc, error->message);
-                g_clear_error(&error);
-            }
-        }
-    }
+    if (response_id == GTK_RESPONSE_HELP)
+        orage_open_help_page ();
     else { /* delete signal or close response */
         write_parameters();
         gtk_widget_destroy(dialog);
