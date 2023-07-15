@@ -54,7 +54,7 @@
 #include "timezone_selection.h"
 #include "event-list.h"
 #include "day-view.h"
-#include "appointment.h"
+#include "orage-appointment-window.h"
 #include "parameters.h"
 #include "reminder.h"
 #include "orage-rc-file.h"

@@ -52,7 +52,7 @@
 #include "functions.h"
 #include "ical-code.h"
 #include "event-list.h"
-#include "appointment.h"
+#include "orage-appointment-window.h"
 #include "reminder.h"
 #include "parameters.h"
 

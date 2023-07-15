@@ -38,7 +38,7 @@
 #include "ical-code.h"
 #include "parameters.h"
 #include "event-list.h"
-#include "appointment.h"
+#include "orage-appointment-window.h"
 
 #define BUTTON_ROW 0
 #define FULL_DAY_ROW (BUTTON_ROW + 1)

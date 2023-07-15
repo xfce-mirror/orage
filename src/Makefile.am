@@ -1,8 +1,6 @@
 bin_PROGRAMS = orage
 
 orage_SOURCES =							\
-	appointment.c						\
-	appointment.h						\
 	day-view.c						\
 	day-view.h						\
 	event-list.c						\
@@ -24,6 +22,8 @@ orage_SOURCES =							\
 	orage-alarm-structure.h					\
 	orage-application.c					\
 	orage-application.h					\
+	orage-appointment-window.c				\
+	orage-appointment-window.h				\
 	orage-css.c						\
 	orage-css.h						\
 	orage-i18n.h						\
