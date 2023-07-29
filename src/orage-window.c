@@ -116,11 +116,13 @@ static void mFile_newApp_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
                                       gpointer user_data)
 {
     GDateTime *gdt;
+    GtkWidget *appointment_window;
     OrageWindow *window = ORAGE_WINDOW (user_data);
 
     /* cal has always a day selected here, so it is safe to read it */
-    gdt = orage_cal_to_gdatetime (orage_window_get_calendar (window), 1, 1);
-    create_appt_win (NEW_APPT_WIN, NULL, gdt);
+    gdt = orage_cal_to_gdatetime (orage_window_get_calendar (window), 1, 1);    
+    appointment_window = orage_appointment_window_new (gdt);
+    gtk_window_present (GTK_WINDOW (appointment_window));
     g_date_time_unref (gdt);
 }
 
@@ -353,13 +355,12 @@ static void todo_clicked (GtkWidget *widget, GdkEventButton *event,
                           G_GNUC_UNUSED gpointer *user_data)
 {
     gchar *uid;
-    GDateTime *gdt;
+    GtkWidget *appointment_window;
 
     if (event->type==GDK_2BUTTON_PRESS) {
         uid = g_object_get_data(G_OBJECT(widget), "UID");
-        gdt = g_date_time_new_now_local ();
-        create_appt_win (UPDATE_APPT_WIN, uid, gdt);
-        g_date_time_unref (gdt);
+        appointment_window = orage_appointment_window_new_update (uid);
+        gtk_window_present (GTK_WINDOW (appointment_window));
     }
 }
 
