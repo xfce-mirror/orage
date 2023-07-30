@@ -307,10 +307,10 @@ typedef struct _orage_category_win
 
 static void refresh_categories(category_win_struct *catw);
 static void read_default_alarm(xfical_appt *appt);
-static void fill_appt_window_2 (OrageAppointmentWindow *apptw,
+static void fill_appt_window (OrageAppointmentWindow *apptw,
                                 appt_win_action action,
                                 const gchar *par, GDateTime *gdt_par);
-static gboolean fill_appt_from_apptw_2(xfical_appt *appt, OrageAppointmentWindow *apptw);
+static gboolean fill_appt_from_apptw(xfical_appt *appt, OrageAppointmentWindow *apptw);
 
 static GtkWidget *datetime_hbox_new(GtkWidget *date_button
         , GtkWidget *spin_hh, GtkWidget *spin_mm
@@ -352,7 +352,7 @@ static GtkWidget *datetime_hbox_new(GtkWidget *date_button
     return grid;
 }
 
-static void mark_appointment_changed_2 (OrageAppointmentWindow *apptw)
+static void mark_appointment_changed (OrageAppointmentWindow *apptw)
 {
     if (!apptw->appointment_changed) {
         apptw->appointment_changed = TRUE;
@@ -361,7 +361,7 @@ static void mark_appointment_changed_2 (OrageAppointmentWindow *apptw)
     }
 }
 
-static void mark_appointment_unchanged_2 (OrageAppointmentWindow *apptw)
+static void mark_appointment_unchanged (OrageAppointmentWindow *apptw)
 {
     if (apptw->appointment_changed) {
         apptw->appointment_changed = FALSE;
@@ -370,7 +370,7 @@ static void mark_appointment_unchanged_2 (OrageAppointmentWindow *apptw)
     }
 }
 
-static void set_time_sensitivity_2 (OrageAppointmentWindow *apptw)
+static void set_time_sensitivity (OrageAppointmentWindow *apptw)
 {
     gboolean dur_act, allDay_act, comp_act, due_act;
 
@@ -447,7 +447,7 @@ static void set_time_sensitivity_2 (OrageAppointmentWindow *apptw)
     gtk_widget_set_sensitive(apptw->CompletedTimezone_button, comp_act);
 }
 
-static void set_repeat_sensitivity_2 (OrageAppointmentWindow *apptw)
+static void set_repeat_sensitivity (OrageAppointmentWindow *apptw)
 {
     gint freq, i;
 
@@ -516,7 +516,7 @@ static void set_repeat_sensitivity_2 (OrageAppointmentWindow *apptw)
     }
 }
 
-static void recur_hide_show_2 (OrageAppointmentWindow *apptw)
+static void recur_hide_show (OrageAppointmentWindow *apptw)
 {
     if (gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(apptw->Recur_feature_normal_rb))) {
@@ -533,7 +533,7 @@ static void recur_hide_show_2 (OrageAppointmentWindow *apptw)
     }
 }
 
-static void type_hide_show_2 (OrageAppointmentWindow *apptw)
+static void type_hide_show (OrageAppointmentWindow *apptw)
 {
     if (gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(apptw->Type_event_rb))) {
@@ -595,10 +595,10 @@ static void type_hide_show_2 (OrageAppointmentWindow *apptw)
         gtk_widget_hide(apptw->Recur_todo_base_label);
         gtk_widget_hide(apptw->Recur_todo_base_hbox);
     }
-    set_time_sensitivity_2 (apptw); /* todo has different settings */
+    set_time_sensitivity (apptw); /* todo has different settings */
 }
 
-static void readonly_hide_show_2 (OrageAppointmentWindow *apptw)
+static void readonly_hide_show (OrageAppointmentWindow *apptw)
 {
     if (((xfical_appt *)apptw->xf_appt)->readonly) {
         gtk_widget_set_sensitive(apptw->General_notebook_page, FALSE);
@@ -619,7 +619,7 @@ static void readonly_hide_show_2 (OrageAppointmentWindow *apptw)
     }
 }
 
-static void set_sound_sensitivity_2 (OrageAppointmentWindow *apptw)
+static void set_sound_sensitivity (OrageAppointmentWindow *apptw)
 {
     gboolean sound_act, repeat_act;
 
@@ -653,7 +653,7 @@ static void set_sound_sensitivity_2 (OrageAppointmentWindow *apptw)
     }
 }
 
-static void set_notify_sensitivity_2 (OrageAppointmentWindow *apptw)
+static void set_notify_sensitivity (OrageAppointmentWindow *apptw)
 {
 #ifdef HAVE_NOTIFY
     gboolean notify_act, expire_act;
@@ -690,7 +690,7 @@ static void set_notify_sensitivity_2 (OrageAppointmentWindow *apptw)
 #endif
 }
 
-static void set_proc_sensitivity_2 (OrageAppointmentWindow *apptw)
+static void set_proc_sensitivity (OrageAppointmentWindow *apptw)
 {
     gboolean proc_act;
 
@@ -705,15 +705,15 @@ static void set_proc_sensitivity_2 (OrageAppointmentWindow *apptw)
     }
 }
 
-static void app_type_checkbutton_clicked_cb_2 (G_GNUC_UNUSED GtkCheckButton *cb
+static void app_type_checkbutton_clicked_cb (G_GNUC_UNUSED GtkCheckButton *cb
         , gpointer user_data)
 {
     OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
-    type_hide_show_2 (apptw);
-    mark_appointment_changed_2 (apptw);
+    type_hide_show (apptw);
+    mark_appointment_changed (apptw);
 }
 
-static void on_appTitle_entry_changed_cb_2 (G_GNUC_UNUSED GtkEditable *entry
+static void on_appTitle_entry_changed_cb (G_GNUC_UNUSED GtkEditable *entry
         , gpointer user_data)
 {
     gchar *title, *application_name;
@@ -731,25 +731,25 @@ static void on_appTitle_entry_changed_cb_2 (G_GNUC_UNUSED GtkEditable *entry
     gtk_window_set_title (GTK_WINDOW (apptw), title);
 
     g_free(title);
-    mark_appointment_changed_2 (apptw);
+    mark_appointment_changed (apptw);
 }
 
-static void app_time_checkbutton_clicked_cb_2 (G_GNUC_UNUSED GtkCheckButton *cb
+static void app_time_checkbutton_clicked_cb (G_GNUC_UNUSED GtkCheckButton *cb
         , gpointer user_data)
 {
     OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
-    set_time_sensitivity_2 (apptw);
-    mark_appointment_changed_2 (apptw);
+    set_time_sensitivity (apptw);
+    mark_appointment_changed (apptw);
 }
 
-static void refresh_recur_calendars_2 (OrageAppointmentWindow *apptw)
+static void refresh_recur_calendars (OrageAppointmentWindow *apptw)
 {
     GtkCalendar *cal;
     xfical_appt *appt;
 
     appt = (xfical_appt *)apptw->xf_appt;
     if (apptw->appointment_changed)
-        fill_appt_from_apptw_2 (appt, apptw);
+        fill_appt_from_apptw (appt, apptw);
 
     cal = GTK_CALENDAR (apptw->Recur_calendar1);
     xfical_mark_calendar_recur (cal, appt);
@@ -757,64 +757,64 @@ static void refresh_recur_calendars_2 (OrageAppointmentWindow *apptw)
     xfical_mark_calendar_recur (cal, appt);
 }
 
-static void on_notebook_page_switch_2 (G_GNUC_UNUSED GtkNotebook *notebook,
+static void on_notebook_page_switch (G_GNUC_UNUSED GtkNotebook *notebook,
                                      G_GNUC_UNUSED GtkWidget *page,
                                      guint page_num, gpointer user_data)
 {
     if (page_num == 2)
-        refresh_recur_calendars_2 (ORAGE_APPOINTMENT_WINDOW (user_data));
+        refresh_recur_calendars (ORAGE_APPOINTMENT_WINDOW (user_data));
 }
 
-static void app_recur_checkbutton_clicked_cb_2 (
+static void app_recur_checkbutton_clicked_cb (
     G_GNUC_UNUSED GtkCheckButton *checkbutton, gpointer user_data)
 {
     OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
-    set_repeat_sensitivity_2 (apptw);
-    mark_appointment_changed_2 (apptw);
-    refresh_recur_calendars_2 (apptw);
+    set_repeat_sensitivity (apptw);
+    mark_appointment_changed (apptw);
+    refresh_recur_calendars (apptw);
 }
 
-static void app_recur_feature_checkbutton_clicked_cb_2 (
+static void app_recur_feature_checkbutton_clicked_cb (
     G_GNUC_UNUSED GtkCheckButton *cb, gpointer user_data)
 {
     OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
-    recur_hide_show_2 (apptw);
-    mark_appointment_changed_2 (apptw);
+    recur_hide_show (apptw);
+    mark_appointment_changed (apptw);
 }
 
-static void app_sound_checkbutton_clicked_cb_2 (G_GNUC_UNUSED GtkCheckButton *cb
+static void app_sound_checkbutton_clicked_cb (G_GNUC_UNUSED GtkCheckButton *cb
         , gpointer user_data)
 {
     OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
-    set_sound_sensitivity_2 (apptw);
-    mark_appointment_changed_2 (apptw);
+    set_sound_sensitivity (apptw);
+    mark_appointment_changed (apptw);
 }
 
 #ifdef HAVE_NOTIFY
-static void app_notify_checkbutton_clicked_cb_2 (G_GNUC_UNUSED GtkCheckButton *cb
+static void app_notify_checkbutton_clicked_cb (G_GNUC_UNUSED GtkCheckButton *cb
         , gpointer user_data)
 {
     OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
-    set_notify_sensitivity_2 (apptw);
-    mark_appointment_changed_2 (apptw);
+    set_notify_sensitivity (apptw);
+    mark_appointment_changed (apptw);
 }
 #endif
 
-static void app_proc_checkbutton_clicked_cb_2 (G_GNUC_UNUSED GtkCheckButton *cb
+static void app_proc_checkbutton_clicked_cb (G_GNUC_UNUSED GtkCheckButton *cb
         , gpointer user_data)
 {
     OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
-    set_proc_sensitivity_2 (apptw);
-    mark_appointment_changed_2 (apptw);
+    set_proc_sensitivity (apptw);
+    mark_appointment_changed (apptw);
 }
 
-static void app_checkbutton_clicked_cb_2 (G_GNUC_UNUSED GtkCheckButton *cb,
+static void app_checkbutton_clicked_cb (G_GNUC_UNUSED GtkCheckButton *cb,
                                         gpointer user_data)
 {
-    mark_appointment_changed_2 (ORAGE_APPOINTMENT_WINDOW (user_data));
+    mark_appointment_changed (ORAGE_APPOINTMENT_WINDOW (user_data));
 }
 
-static void refresh_dependent_data_2 (OrageAppointmentWindow *apptw)
+static void refresh_dependent_data (OrageAppointmentWindow *apptw)
 {
     OrageApplication *app;
 
@@ -827,7 +827,7 @@ static void refresh_dependent_data_2 (OrageAppointmentWindow *apptw)
     orage_mark_appointments (ORAGE_WINDOW (orage_application_get_window (app)));
 }
 
-static void on_appNote_buffer_changed_cb_2 (G_GNUC_UNUSED GtkTextBuffer *b,
+static void on_appNote_buffer_changed_cb (G_GNUC_UNUSED GtkTextBuffer *b,
                                           gpointer user_data)
 {
     OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
@@ -869,46 +869,46 @@ static void on_appNote_buffer_changed_cb_2 (G_GNUC_UNUSED GtkTextBuffer *b,
         g_free (time_str);
     }
 
-    mark_appointment_changed_2 (apptw);
+    mark_appointment_changed (apptw);
 }
 
-static void on_app_entry_changed_cb_2 (G_GNUC_UNUSED GtkEditable *entry,
+static void on_app_entry_changed_cb (G_GNUC_UNUSED GtkEditable *entry,
                                      gpointer user_data)
 {
-    mark_appointment_changed_2 (ORAGE_APPOINTMENT_WINDOW (user_data));
+    mark_appointment_changed (ORAGE_APPOINTMENT_WINDOW (user_data));
 }
 
-static void on_freq_combobox_changed_cb_2 (G_GNUC_UNUSED GtkComboBox *cb,
+static void on_freq_combobox_changed_cb (G_GNUC_UNUSED GtkComboBox *cb,
                                            gpointer user_data)
 {
     OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
-    set_repeat_sensitivity_2 (apptw);
-    mark_appointment_changed_2 (apptw);
-    refresh_recur_calendars_2 (apptw);
+    set_repeat_sensitivity (apptw);
+    mark_appointment_changed (apptw);
+    refresh_recur_calendars (apptw);
 }
 
-static void on_app_combobox_changed_cb_2 (G_GNUC_UNUSED GtkComboBox *cb,
+static void on_app_combobox_changed_cb (G_GNUC_UNUSED GtkComboBox *cb,
                                         gpointer user_data)
 {
-    mark_appointment_changed_2 (ORAGE_APPOINTMENT_WINDOW (user_data));
+    mark_appointment_changed (ORAGE_APPOINTMENT_WINDOW (user_data));
 }
 
-static void on_app_spin_button_changed_cb_2 (G_GNUC_UNUSED GtkSpinButton *sb,
+static void on_app_spin_button_changed_cb (G_GNUC_UNUSED GtkSpinButton *sb,
                                            gpointer user_data)
 {
-    mark_appointment_changed_2 (ORAGE_APPOINTMENT_WINDOW (user_data));
+    mark_appointment_changed (ORAGE_APPOINTMENT_WINDOW (user_data));
 }
 
-static void on_recur_spin_button_changed_cb_2 (G_GNUC_UNUSED GtkSpinButton *sb
+static void on_recur_spin_button_changed_cb (G_GNUC_UNUSED GtkSpinButton *sb
         , gpointer user_data)
 {
     OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
 
-    mark_appointment_changed_2 (apptw);
-    refresh_recur_calendars_2 (apptw);
+    mark_appointment_changed (apptw);
+    refresh_recur_calendars (apptw);
 }
 
-static void on_appSound_button_clicked_cb_2 (G_GNUC_UNUSED GtkButton *button,
+static void on_appSound_button_clicked_cb (G_GNUC_UNUSED GtkButton *button,
                                            gpointer user_data)
 {
     OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
@@ -970,12 +970,12 @@ static void on_appSound_button_clicked_cb_2 (G_GNUC_UNUSED GtkButton *button,
     g_free(appSound_entry_filename);
 }
 
-static void app_free_memory_2 (OrageAppointmentWindow *apptw)
+static void app_free_memory (OrageAppointmentWindow *apptw)
 {
     gtk_widget_destroy (GTK_WIDGET (apptw));
 }
 
-static gboolean appWindow_check_and_close_2 (OrageAppointmentWindow *apptw)
+static gboolean appWindow_check_and_close (OrageAppointmentWindow *apptw)
 {
     gint result;
 
@@ -987,23 +987,23 @@ static gboolean appWindow_check_and_close_2 (OrageAppointmentWindow *apptw)
                 , _("Yes, ignore modifications and leave"));
 
         if (result == GTK_RESPONSE_YES) {
-            app_free_memory_2 (apptw);
+            app_free_memory (apptw);
         }
     }
     else {
-        app_free_memory_2 (apptw);
+        app_free_memory (apptw);
     }
     return(TRUE);
 }
 
-static gboolean on_appWindow_delete_event_cb_2 (G_GNUC_UNUSED GtkWidget *widget,
+static gboolean on_appWindow_delete_event_cb (G_GNUC_UNUSED GtkWidget *widget,
                                                 G_GNUC_UNUSED GdkEvent *event,
                                                 gpointer user_data)
 {
-    return appWindow_check_and_close_2 (ORAGE_APPOINTMENT_WINDOW (user_data));
+    return appWindow_check_and_close (ORAGE_APPOINTMENT_WINDOW (user_data));
 }
 
-static gboolean orage_validate_datetime_2 (OrageAppointmentWindow *apptw, xfical_appt *appt)
+static gboolean orage_validate_datetime (OrageAppointmentWindow *apptw, xfical_appt *appt)
 {
     /* Journal does not have end time so no need to check */
     if (appt->type == XFICAL_TYPE_JOURNAL
@@ -1021,7 +1021,7 @@ static gboolean orage_validate_datetime_2 (OrageAppointmentWindow *apptw, xfical
     }
 }
 
-static void fill_appt_from_apptw_alarm_2 (xfical_appt *appt,
+static void fill_appt_from_apptw_alarm (xfical_appt *appt,
                                           OrageAppointmentWindow *apptw)
 {
     gint i, j, k, l;
@@ -1148,7 +1148,7 @@ static void fill_appt_from_apptw_alarm_2 (xfical_appt *appt,
  * Function fills an appointment with the contents of an appointment 
  * window
  */
-static gboolean fill_appt_from_apptw_2 (xfical_appt *appt,
+static gboolean fill_appt_from_apptw (xfical_appt *appt,
                                         OrageAppointmentWindow *apptw)
 {
     GtkTextIter start, end;
@@ -1250,7 +1250,7 @@ static gboolean fill_appt_from_apptw_2 (xfical_appt *appt,
                 GTK_SPIN_BUTTON(apptw->Dur_spin_mm)) *       60;
 
     /* Check that end time is after start time. */
-    if (!orage_validate_datetime_2 (apptw, appt))
+    if (!orage_validate_datetime (apptw, appt))
         return(FALSE);
 
     /* completed date and time.
@@ -1305,7 +1305,7 @@ static gboolean fill_appt_from_apptw_2 (xfical_appt *appt,
     appt->note = gtk_text_iter_get_text(&start, &end);
 
             /*********** ALARM TAB ***********/
-    fill_appt_from_apptw_alarm_2 (appt, apptw);
+    fill_appt_from_apptw_alarm (appt, apptw);
 
             /*********** RECURRENCE TAB ***********/
     /* recurrence */
@@ -1361,7 +1361,7 @@ static gboolean fill_appt_from_apptw_2 (xfical_appt *appt,
     return(TRUE);
 }
 
-static void add_file_select_cb_2 (OrageAppointmentWindow *apptw)
+static void add_file_select_cb (OrageAppointmentWindow *apptw)
 {
     GtkWidget *tool_item;
     gint i = 0;
@@ -1404,20 +1404,20 @@ static void add_file_select_cb_2 (OrageAppointmentWindow *apptw)
     }
 }
 
-static void remove_file_select_cb_2 (OrageAppointmentWindow *apptw)
+static void remove_file_select_cb (OrageAppointmentWindow *apptw)
 {
     if (apptw->File_insert_cb)
         gtk_widget_destroy(apptw->File_insert_cb);
 }
 
-static gboolean save_xfical_from_appt_win_2 (OrageAppointmentWindow *apptw)
+static gboolean save_xfical_from_appt_win (OrageAppointmentWindow *apptw)
 {
     gint i;
     gboolean ok = FALSE, found = FALSE;
     xfical_appt *appt = (xfical_appt *)apptw->xf_appt;
     char *xf_file_id, *tmp;
 
-    if (fill_appt_from_apptw_2 (appt, apptw)) {
+    if (fill_appt_from_apptw (appt, apptw)) {
         ok = TRUE;
         /* Here we try to save the event... */
         if (!xfical_file_open(TRUE)) {
@@ -1463,7 +1463,7 @@ static gboolean save_xfical_from_appt_win_2 (OrageAppointmentWindow *apptw)
                 gtk_widget_set_sensitive(apptw->Duplicate, TRUE);
                 gtk_widget_set_sensitive(apptw->File_menu_duplicate, TRUE);
                 g_message ("Added: %s", apptw->xf_uid);
-                remove_file_select_cb_2 (apptw);
+                remove_file_select_cb (apptw);
             }
             else {
                 g_warning ("%s: Addition failed: %s", G_STRFUNC, apptw->xf_uid);
@@ -1487,45 +1487,45 @@ static gboolean save_xfical_from_appt_win_2 (OrageAppointmentWindow *apptw)
         xfical_file_close(TRUE);
         if (ok) {
             apptw->appointment_new = FALSE;
-            mark_appointment_unchanged_2 (apptw);
-            refresh_dependent_data_2 (apptw);
+            mark_appointment_unchanged (apptw);
+            refresh_dependent_data (apptw);
         }
     }
     return(ok);
 }
 
-static void on_appFileSave_menu_activate_cb_2 (G_GNUC_UNUSED GtkMenuItem *mi,
+static void on_appFileSave_menu_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
                                              gpointer user_data)
 {
-    save_xfical_from_appt_win_2 (ORAGE_APPOINTMENT_WINDOW (user_data));
+    save_xfical_from_appt_win (ORAGE_APPOINTMENT_WINDOW (user_data));
 }
 
-static void on_appSave_clicked_cb_2 (G_GNUC_UNUSED GtkButton *b,
+static void on_appSave_clicked_cb (G_GNUC_UNUSED GtkButton *b,
                                      gpointer user_data)
 {
-    save_xfical_from_appt_win_2 (ORAGE_APPOINTMENT_WINDOW (user_data));
+    save_xfical_from_appt_win (ORAGE_APPOINTMENT_WINDOW (user_data));
 }
 
-static void save_xfical_from_appt_win_and_close_2 (OrageAppointmentWindow *apptw)
+static void save_xfical_from_appt_win_and_close (OrageAppointmentWindow *apptw)
 {
-    if (save_xfical_from_appt_win_2 (apptw)) {
-        app_free_memory_2 (apptw);
+    if (save_xfical_from_appt_win (apptw)) {
+        app_free_memory (apptw);
     }
 }
 
-static void on_appFileSaveClose_menu_activate_cb_2 (G_GNUC_UNUSED GtkMenuItem *mi
+static void on_appFileSaveClose_menu_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi
         , gpointer user_data)
 {
-    save_xfical_from_appt_win_and_close_2 (ORAGE_APPOINTMENT_WINDOW (user_data));
+    save_xfical_from_appt_win_and_close (ORAGE_APPOINTMENT_WINDOW (user_data));
 }
 
-static void on_appSaveClose_clicked_cb_2 (G_GNUC_UNUSED GtkButton *b,
+static void on_appSaveClose_clicked_cb (G_GNUC_UNUSED GtkButton *b,
                                           gpointer user_data)
 {
-    save_xfical_from_appt_win_and_close_2 (ORAGE_APPOINTMENT_WINDOW (user_data));
+    save_xfical_from_appt_win_and_close (ORAGE_APPOINTMENT_WINDOW (user_data));
 }
 
-static void delete_xfical_from_appt_win_2 (OrageAppointmentWindow *apptw)
+static void delete_xfical_from_appt_win (OrageAppointmentWindow *apptw)
 {
     gint result;
     gboolean ok = FALSE;
@@ -1551,30 +1551,30 @@ static void delete_xfical_from_appt_win_2 (OrageAppointmentWindow *apptw)
             xfical_file_close(TRUE);
         }
 
-        refresh_dependent_data_2 (apptw);
-        app_free_memory_2 (apptw);
+        refresh_dependent_data (apptw);
+        app_free_memory (apptw);
     }
 }
 
-static void on_appDelete_clicked_cb_2 (G_GNUC_UNUSED GtkButton *b,
+static void on_appDelete_clicked_cb (G_GNUC_UNUSED GtkButton *b,
                                      gpointer user_data)
 {
-    delete_xfical_from_appt_win_2 (ORAGE_APPOINTMENT_WINDOW (user_data));
+    delete_xfical_from_appt_win (ORAGE_APPOINTMENT_WINDOW (user_data));
 }
 
-static void on_appFileDelete_menu_activate_cb_2 (G_GNUC_UNUSED GtkMenuItem *mi
+static void on_appFileDelete_menu_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi
         , gpointer user_data)
 {
-    delete_xfical_from_appt_win_2 (ORAGE_APPOINTMENT_WINDOW (user_data));
+    delete_xfical_from_appt_win (ORAGE_APPOINTMENT_WINDOW (user_data));
 }
 
-static void on_appFileClose_menu_activate_cb_2 (G_GNUC_UNUSED GtkMenuItem *mi
+static void on_appFileClose_menu_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi
         , gpointer user_data)
 {
-    appWindow_check_and_close_2 (ORAGE_APPOINTMENT_WINDOW (user_data));
+    appWindow_check_and_close (ORAGE_APPOINTMENT_WINDOW (user_data));
 }
 
-static void duplicate_xfical_from_appt_win_2 (OrageAppointmentWindow *apptw)
+static void duplicate_xfical_from_appt_win (OrageAppointmentWindow *apptw)
 {
     gint x, y;
     OrageAppointmentWindow *apptw2;
@@ -1587,44 +1587,44 @@ static void duplicate_xfical_from_appt_win_2 (OrageAppointmentWindow *apptw)
     }
 }
 
-static void on_appFileDuplicate_menu_activate_cb_2 (G_GNUC_UNUSED GtkMenuItem *mi
+static void on_appFileDuplicate_menu_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi
         , gpointer user_data)
 {
-    duplicate_xfical_from_appt_win_2 (ORAGE_APPOINTMENT_WINDOW (user_data));
+    duplicate_xfical_from_appt_win (ORAGE_APPOINTMENT_WINDOW (user_data));
 }
 
-static void on_appDuplicate_clicked_cb_2 (G_GNUC_UNUSED GtkButton *b,
+static void on_appDuplicate_clicked_cb (G_GNUC_UNUSED GtkButton *b,
                                         gpointer user_data)
 {
-    duplicate_xfical_from_appt_win_2 (ORAGE_APPOINTMENT_WINDOW (user_data));
+    duplicate_xfical_from_appt_win (ORAGE_APPOINTMENT_WINDOW (user_data));
 }
 
-static void revert_xfical_to_last_saved_2 (OrageAppointmentWindow *apptw)
+static void revert_xfical_to_last_saved (OrageAppointmentWindow *apptw)
 {
     GDateTime *gdt;
     if (!apptw->appointment_new) {
         gdt = g_date_time_new_now_local ();
-        fill_appt_window_2 (apptw, UPDATE_APPT_WIN, apptw->xf_uid, gdt);
+        fill_appt_window (apptw, UPDATE_APPT_WIN, apptw->xf_uid, gdt);
         g_date_time_unref (gdt);
     }
     else {
-        fill_appt_window_2 (apptw, NEW_APPT_WIN, NULL, apptw->appointment_time);
+        fill_appt_window (apptw, NEW_APPT_WIN, NULL, apptw->appointment_time);
     }
 }
 
-static void on_appFileRevert_menu_activate_cb_2 (G_GNUC_UNUSED GtkMenuItem *mi
+static void on_appFileRevert_menu_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi
         , gpointer user_data)
 {
-    revert_xfical_to_last_saved_2 (ORAGE_APPOINTMENT_WINDOW (user_data));
+    revert_xfical_to_last_saved (ORAGE_APPOINTMENT_WINDOW (user_data));
 }
 
-static void on_appRevert_clicked_cb_2 (G_GNUC_UNUSED GtkWidget *b,
+static void on_appRevert_clicked_cb (G_GNUC_UNUSED GtkWidget *b,
                                      gpointer *user_data)
 {
-    revert_xfical_to_last_saved_2 (ORAGE_APPOINTMENT_WINDOW (user_data));
+    revert_xfical_to_last_saved (ORAGE_APPOINTMENT_WINDOW (user_data));
 }
 
-static void on_Date_button_clicked_cb_2 (GtkWidget *button, gpointer *user_data)
+static void on_Date_button_clicked_cb (GtkWidget *button, gpointer *user_data)
 {
     OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
     GtkWidget *selDate_dialog;
@@ -1635,10 +1635,10 @@ static void on_Date_button_clicked_cb_2 (GtkWidget *button, gpointer *user_data)
             _("Today"), 1, "_OK", GTK_RESPONSE_ACCEPT, NULL);
 
     if (orage_date_button_clicked (button, selDate_dialog))
-        mark_appointment_changed_2 (apptw);
+        mark_appointment_changed (apptw);
 }
 
-static void on_recur_Date_button_clicked_cb_2 (GtkWidget *button
+static void on_recur_Date_button_clicked_cb (GtkWidget *button
         , gpointer *user_data)
 {
     OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
@@ -1650,12 +1650,12 @@ static void on_recur_Date_button_clicked_cb_2 (GtkWidget *button
             _("Today"), 1, "_OK", GTK_RESPONSE_ACCEPT, NULL);
 
     if (orage_date_button_clicked (button, selDate_dialog))
-        mark_appointment_changed_2 (apptw);
+        mark_appointment_changed (apptw);
 
-    refresh_recur_calendars_2 (apptw);
+    refresh_recur_calendars (apptw);
 }
 
-static void on_appStartTimezone_clicked_cb_2 (GtkButton *button
+static void on_appStartTimezone_clicked_cb (GtkButton *button
         , gpointer *user_data)
 {
     OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
@@ -1664,10 +1664,10 @@ static void on_appStartTimezone_clicked_cb_2 (GtkButton *button
     appt = (xfical_appt *)apptw->xf_appt;
     if (orage_timezone_button_clicked(button, GTK_WINDOW (apptw)
             , &appt->start_tz_loc, TRUE, g_par.local_timezone))
-        mark_appointment_changed_2 (apptw);
+        mark_appointment_changed (apptw);
 }
 
-static void on_appEndTimezone_clicked_cb_2 (GtkButton *button
+static void on_appEndTimezone_clicked_cb (GtkButton *button
         , gpointer *user_data)
 {
     OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
@@ -1676,10 +1676,10 @@ static void on_appEndTimezone_clicked_cb_2 (GtkButton *button
     appt = (xfical_appt *)apptw->xf_appt;
     if (orage_timezone_button_clicked(button, GTK_WINDOW(apptw)
             , &appt->end_tz_loc, TRUE, g_par.local_timezone))
-        mark_appointment_changed_2 (apptw);
+        mark_appointment_changed (apptw);
 }
 
-static void on_appCompletedTimezone_clicked_cb_2 (GtkButton *button
+static void on_appCompletedTimezone_clicked_cb (GtkButton *button
         , gpointer *user_data)
 {
     OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
@@ -1688,7 +1688,7 @@ static void on_appCompletedTimezone_clicked_cb_2 (GtkButton *button
     appt = (xfical_appt *)apptw->xf_appt;
     if (orage_timezone_button_clicked(button, GTK_WINDOW(apptw)
             , &appt->completed_tz_loc, TRUE, g_par.local_timezone))
-        mark_appointment_changed_2 (apptw);
+        mark_appointment_changed (apptw);
 }
 
 static gint check_exists(gconstpointer a, gconstpointer b)
@@ -1711,7 +1711,7 @@ static gint check_exists(gconstpointer a, gconstpointer b)
     }
 }
 
-static void recur_row_clicked_2 (GtkWidget *widget
+static void recur_row_clicked (GtkWidget *widget
         , GdkEventButton *event, gpointer *user_data)
 {
     OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
@@ -1748,12 +1748,12 @@ static void recur_row_clicked_2 (GtkWidget *widget
 
         /* and finally update the display */
         gtk_widget_destroy(widget);
-        mark_appointment_changed_2 (apptw);
-        refresh_recur_calendars_2 (apptw);
+        mark_appointment_changed (apptw);
+        refresh_recur_calendars (apptw);
     }
 }
 
-static gboolean add_recur_exception_row_2 (xfical_exception *except,
+static gboolean add_recur_exception_row (xfical_exception *except,
                                            OrageAppointmentWindow *apptw,
                                            const gboolean only_window)
 {
@@ -1798,25 +1798,25 @@ static gboolean add_recur_exception_row_2 (xfical_exception *except,
     gtk_container_add(GTK_CONTAINER(ev), label);
     gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_exception_rows_vbox),
                              ev, NULL, GTK_POS_BOTTOM, 1, 1);
-    g_signal_connect(ev, "button-press-event", G_CALLBACK (recur_row_clicked_2),
+    g_signal_connect(ev, "button-press-event", G_CALLBACK (recur_row_clicked),
                      apptw);
     gtk_widget_show(label);
     gtk_widget_show(ev);
     return(TRUE); /* we added the value */
 }
 
-static void recur_month_changed_cb_2 (GtkCalendar *calendar, gpointer user_data)
+static void recur_month_changed_cb (GtkCalendar *calendar, gpointer user_data)
 {
     OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
     xfical_appt *appt = (xfical_appt *)apptw->xf_appt;
 
     /* actually we do not have to do fill_appt_from_apptw always,
      * but as we are not keeping track of changes, we just do it always */
-    fill_appt_from_apptw_2 (appt, apptw);
+    fill_appt_from_apptw (appt, apptw);
     xfical_mark_calendar_recur(calendar, appt);
 }
 
-static void recur_day_selected_double_click_cb_2 (GtkCalendar *calendar
+static void recur_day_selected_double_click_cb (GtkCalendar *calendar
         , gpointer user_data)
 {
     OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
@@ -1860,16 +1860,15 @@ static void recur_day_selected_double_click_cb_2 (GtkCalendar *calendar
     except = xfical_exception_new (gdt, all_day, type);
     g_date_time_unref (gdt);
 
-    if (add_recur_exception_row_2 (except, apptw, FALSE)) { /* new data */
-        mark_appointment_changed_2 (apptw);
-        g_debug ("%s", G_STRFUNC);
-        refresh_recur_calendars_2 (apptw);
+    if (add_recur_exception_row (except, apptw, FALSE)) { /* new data */
+        mark_appointment_changed (apptw);
+        refresh_recur_calendars (apptw);
     }
 
     xfical_exception_unref (except);
 }
 
-static void fill_appt_window_times_2 (OrageAppointmentWindow *apptw,
+static void fill_appt_window_times (OrageAppointmentWindow *apptw,
                                       xfical_appt *appt)
 {
     gchar *date_to_display;
@@ -2058,7 +2057,7 @@ static xfical_appt *fill_appt_window_get_new_appt (GDateTime *par_gdt)
     return appt;
 }
 
-static xfical_appt *fill_appt_window_update_appt_2 (OrageAppointmentWindow *apptw,
+static xfical_appt *fill_appt_window_update_appt (OrageAppointmentWindow *apptw,
                                                     const gchar *uid)
 {
     xfical_appt *appt;
@@ -2081,7 +2080,7 @@ static xfical_appt *fill_appt_window_update_appt_2 (OrageAppointmentWindow *appt
     return appt;
 }
 
-static xfical_appt *fill_appt_window_get_appt_2 (OrageAppointmentWindow *apptw,
+static xfical_appt *fill_appt_window_get_appt (OrageAppointmentWindow *apptw,
                                                  const appt_win_action action,
                                                  const gchar *uid,
                                                  GDateTime *par_gdt)
@@ -2096,7 +2095,7 @@ static xfical_appt *fill_appt_window_get_appt_2 (OrageAppointmentWindow *apptw,
 
         case UPDATE_APPT_WIN:
         case COPY_APPT_WIN:
-            appt = fill_appt_window_update_appt_2 (apptw, uid);
+            appt = fill_appt_window_update_appt (apptw, uid);
             break;
 
         default:
@@ -2237,7 +2236,7 @@ static void orage_category_refill_cb (OrageAppointmentWindow *apptw)
     gtk_widget_show(apptw->Categories_cb);
 }
 
-static void fill_category_data_2 (OrageAppointmentWindow *apptw,
+static void fill_category_data (OrageAppointmentWindow *apptw,
                                   xfical_appt *appt)
 {
     gchar *tmp = NULL;
@@ -2464,7 +2463,7 @@ static void create_cat_win(category_win_struct *catw)
     refresh_categories(catw);
 }
 
-static void on_categories_button_clicked_cb_2 (G_GNUC_UNUSED GtkWidget *button
+static void on_categories_button_clicked_cb (G_GNUC_UNUSED GtkWidget *button
         , gpointer *user_data)
 {
     category_win_struct *catw;
@@ -2494,7 +2493,7 @@ static void on_categories_button_clicked_cb_2 (G_GNUC_UNUSED GtkWidget *button
 /* categories end.                                        */
 /**********************************************************/
 
-static void fill_appt_window_general_2 (OrageAppointmentWindow *apptw,
+static void fill_appt_window_general (OrageAppointmentWindow *apptw,
                                         xfical_appt *appt,
                                         const appt_win_action action)
 {
@@ -2533,7 +2532,7 @@ static void fill_appt_window_general_2 (OrageAppointmentWindow *apptw,
             , (appt->location ? appt->location : ""));
 
     /* times */
-    fill_appt_window_times_2 (apptw, appt);
+    fill_appt_window_times (apptw, appt);
 
     /* availability */
     if (appt->availability != -1) {
@@ -2542,7 +2541,7 @@ static void fill_appt_window_general_2 (OrageAppointmentWindow *apptw,
     }
 
     /* categories */
-    fill_category_data_2 (apptw, appt);
+    fill_category_data (apptw, appt);
 
     /* priority */
     gtk_spin_button_set_value(GTK_SPIN_BUTTON(apptw->Priority_spin)
@@ -2553,7 +2552,7 @@ static void fill_appt_window_general_2 (OrageAppointmentWindow *apptw,
                               (appt->note ? appt->note : ""), -1);
 }
 
-static void fill_appt_window_alarm_2 (OrageAppointmentWindow *apptw,
+static void fill_appt_window_alarm (OrageAppointmentWindow *apptw,
                                       xfical_appt *appt)
 {
     int day, hours, minutes;
@@ -2642,7 +2641,7 @@ static void fill_appt_window_alarm_2 (OrageAppointmentWindow *apptw,
     g_free(tmp);
 }
 
-static void fill_appt_window_recurrence_2 (OrageAppointmentWindow *apptw,
+static void fill_appt_window_recurrence (OrageAppointmentWindow *apptw,
                                            xfical_appt *appt)
 {
     gchar *untildate_to_display;
@@ -2726,13 +2725,13 @@ static void fill_appt_window_recurrence_2 (OrageAppointmentWindow *apptw,
          tmp != NULL;
          tmp = g_list_next(tmp)) {
         recur_exception = (xfical_exception *)tmp->data;
-        add_recur_exception_row_2 (recur_exception, apptw, TRUE);
+        add_recur_exception_row (recur_exception, apptw, TRUE);
     }
     /* note: include times is setup in the fill_appt_window_times */
 }
 
 /** Fill appointment window with data. */
-static void fill_appt_window_2 (OrageAppointmentWindow *apptw,
+static void fill_appt_window (OrageAppointmentWindow *apptw,
                                 const appt_win_action action,
                                 const gchar *par, GDateTime *gdt_par)
 {
@@ -2741,7 +2740,7 @@ static void fill_appt_window_2 (OrageAppointmentWindow *apptw,
     gchar *appointment_id;
 
     /********************* INIT *********************/
-    appt = fill_appt_window_get_appt_2 (apptw, action, par, gdt_par);
+    appt = fill_appt_window_get_appt (apptw, action, par, gdt_par);
     g_return_if_fail (appt != NULL);
 
     apptw->xf_appt = appt;
@@ -2790,7 +2789,7 @@ static void fill_appt_window_2 (OrageAppointmentWindow *apptw,
     apptw->appointment_changed = FALSE;
 
     if (apptw->appointment_add) {
-        add_file_select_cb_2 (apptw);
+        add_file_select_cb (apptw);
     }
     if (!appt->completed) { /* some nice default */
         orage_gdatetime_unref (appt->completedtime);
@@ -2808,24 +2807,24 @@ static void fill_appt_window_2 (OrageAppointmentWindow *apptw,
     gtk_window_set_title(GTK_WINDOW(apptw), _("New appointment - Orage"));
 
     /********************* GENERAL tab *********************/
-    fill_appt_window_general_2 (apptw, appt, action);
+    fill_appt_window_general (apptw, appt, action);
 
     /********************* ALARM tab *********************/
-    fill_appt_window_alarm_2 (apptw, appt);
+    fill_appt_window_alarm (apptw, appt);
 
     /********************* RECURRENCE tab *********************/
-    fill_appt_window_recurrence_2 (apptw, appt);
+    fill_appt_window_recurrence (apptw, appt);
 
     /********************* FINALIZE *********************/
-    set_time_sensitivity_2 (apptw);
-    set_repeat_sensitivity_2 (apptw);
-    set_sound_sensitivity_2 (apptw);
-    set_notify_sensitivity_2 (apptw);
-    set_proc_sensitivity_2 (apptw);
-    mark_appointment_unchanged_2 (apptw);
+    set_time_sensitivity (apptw);
+    set_repeat_sensitivity (apptw);
+    set_sound_sensitivity (apptw);
+    set_notify_sensitivity (apptw);
+    set_proc_sensitivity (apptw);
+    mark_appointment_unchanged (apptw);
 }
 
-static void build_menu_2 (OrageAppointmentWindow *apptw)
+static void build_menu (OrageAppointmentWindow *apptw)
 {
     /* Menu bar */
     apptw->Menubar = gtk_menu_bar_new();
@@ -2868,17 +2867,17 @@ static void build_menu_2 (OrageAppointmentWindow *apptw)
             , apptw->File_menu, apptw->accel_group);
 
     g_signal_connect((gpointer)apptw->File_menu_save, "activate"
-            , G_CALLBACK(on_appFileSave_menu_activate_cb_2), apptw);
+            , G_CALLBACK(on_appFileSave_menu_activate_cb), apptw);
     g_signal_connect((gpointer)apptw->File_menu_saveclose, "activate"
-            , G_CALLBACK(on_appFileSaveClose_menu_activate_cb_2), apptw);
+            , G_CALLBACK(on_appFileSaveClose_menu_activate_cb), apptw);
     g_signal_connect((gpointer)apptw->File_menu_duplicate, "activate"
-            , G_CALLBACK(on_appFileDuplicate_menu_activate_cb_2), apptw);
+            , G_CALLBACK(on_appFileDuplicate_menu_activate_cb), apptw);
     g_signal_connect((gpointer)apptw->File_menu_revert, "activate"
-            , G_CALLBACK(on_appFileRevert_menu_activate_cb_2), apptw);
+            , G_CALLBACK(on_appFileRevert_menu_activate_cb), apptw);
     g_signal_connect((gpointer)apptw->File_menu_delete, "activate"
-            , G_CALLBACK(on_appFileDelete_menu_activate_cb_2), apptw);
+            , G_CALLBACK(on_appFileDelete_menu_activate_cb), apptw);
     g_signal_connect((gpointer)apptw->File_menu_close, "activate"
-            , G_CALLBACK(on_appFileClose_menu_activate_cb_2), apptw);
+            , G_CALLBACK(on_appFileClose_menu_activate_cb), apptw);
 }
 
 static OrageRc *orage_alarm_file_open(gboolean read_only)
@@ -3006,14 +3005,14 @@ static gchar *create_action_time (xfical_appt *appt)
     return action_time;
 }
 
-static void on_test_button_clicked_cb_2 (G_GNUC_UNUSED GtkButton *button
+static void on_test_button_clicked_cb (G_GNUC_UNUSED GtkButton *button
         , gpointer user_data)
 {
     OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
     xfical_appt *appt = (xfical_appt *)apptw->xf_appt;
     alarm_struct *cur_alarm = orage_alarm_new ();
 
-    fill_appt_from_apptw_2 (appt, apptw);
+    fill_appt_from_apptw (appt, apptw);
 
     /* no need for alarm time as we are doing this now */
     cur_alarm->alarm_time = NULL;
@@ -3040,27 +3039,27 @@ static void on_test_button_clicked_cb_2 (G_GNUC_UNUSED GtkButton *button
     orage_alarm_unref (cur_alarm);
 }
 
-static void on_appDefault_save_button_clicked_cb_2 (
+static void on_appDefault_save_button_clicked_cb (
     G_GNUC_UNUSED GtkButton *button, gpointer user_data)
 {
     OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
     xfical_appt *appt = (xfical_appt *)apptw->xf_appt;
 
-    fill_appt_from_apptw_alarm_2 (appt, apptw);
+    fill_appt_from_apptw_alarm (appt, apptw);
     store_default_alarm(appt);
 }
 
-static void on_appDefault_read_button_clicked_cb_2 (
+static void on_appDefault_read_button_clicked_cb (
     G_GNUC_UNUSED GtkButton *button, gpointer user_data)
 {
     OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
     xfical_appt *appt = (xfical_appt *)apptw->xf_appt;
 
     read_default_alarm(appt);
-    fill_appt_window_alarm_2(apptw, appt);
+    fill_appt_window_alarm(apptw, appt);
 }
 
-static void build_toolbar_2 (OrageAppointmentWindow *apptw)
+static void build_toolbar (OrageAppointmentWindow *apptw)
 {
     gint i = 0;
 
@@ -3086,18 +3085,18 @@ static void build_toolbar_2 (OrageAppointmentWindow *apptw)
             , "edit-delete", _("Delete"), i++);
 
     g_signal_connect ((gpointer)apptw->Save, "clicked"
-            , G_CALLBACK(on_appSave_clicked_cb_2), apptw);
+            , G_CALLBACK(on_appSave_clicked_cb), apptw);
     g_signal_connect((gpointer)apptw->SaveClose, "clicked"
-            , G_CALLBACK(on_appSaveClose_clicked_cb_2), apptw);
+            , G_CALLBACK(on_appSaveClose_clicked_cb), apptw);
     g_signal_connect((gpointer)apptw->Revert, "clicked"
-            , G_CALLBACK(on_appRevert_clicked_cb_2), apptw);
+            , G_CALLBACK(on_appRevert_clicked_cb), apptw);
     g_signal_connect((gpointer)apptw->Duplicate, "clicked"
-            , G_CALLBACK(on_appDuplicate_clicked_cb_2), apptw);
+            , G_CALLBACK(on_appDuplicate_clicked_cb), apptw);
     g_signal_connect((gpointer)apptw->Delete, "clicked"
-            , G_CALLBACK(on_appDelete_clicked_cb_2), apptw);
+            , G_CALLBACK(on_appDelete_clicked_cb), apptw);
 }
 
-static void build_general_page_2 (OrageAppointmentWindow *apptw)
+static void build_general_page (OrageAppointmentWindow *apptw)
 {
     gint row;
     GtkWidget *label, *event, *hbox;
@@ -3328,70 +3327,70 @@ static void build_general_page_2 (OrageAppointmentWindow *apptw)
 
     /* Take care of the title entry to build the appointment window title */
     g_signal_connect((gpointer)apptw->Title_entry, "changed"
-            , G_CALLBACK(on_appTitle_entry_changed_cb_2), apptw);
+            , G_CALLBACK(on_appTitle_entry_changed_cb), apptw);
 }
 
-static void enable_general_page_signals_2 (OrageAppointmentWindow *apptw)
+static void enable_general_page_signals (OrageAppointmentWindow *apptw)
 {
     g_signal_connect (apptw->Type_event_rb, "clicked",
-                      G_CALLBACK (app_type_checkbutton_clicked_cb_2), apptw);
+                      G_CALLBACK (app_type_checkbutton_clicked_cb), apptw);
     g_signal_connect (apptw->Type_todo_rb, "clicked",
-                      G_CALLBACK (app_type_checkbutton_clicked_cb_2), apptw);
+                      G_CALLBACK (app_type_checkbutton_clicked_cb), apptw);
     g_signal_connect (apptw->Type_journal_rb, "clicked",
-                      G_CALLBACK (app_type_checkbutton_clicked_cb_2), apptw);
+                      G_CALLBACK (app_type_checkbutton_clicked_cb), apptw);
     g_signal_connect (apptw->AllDay_checkbutton, "clicked",
-                      G_CALLBACK (app_time_checkbutton_clicked_cb_2), apptw);
+                      G_CALLBACK (app_time_checkbutton_clicked_cb), apptw);
     g_signal_connect (apptw->StartDate_button, "clicked",
-                      G_CALLBACK (on_Date_button_clicked_cb_2), apptw);
+                      G_CALLBACK (on_Date_button_clicked_cb), apptw);
     g_signal_connect (apptw->StartTime_spin_hh, "changed",
-                      G_CALLBACK (on_app_spin_button_changed_cb_2), apptw);
+                      G_CALLBACK (on_app_spin_button_changed_cb), apptw);
     g_signal_connect (apptw->StartTime_spin_mm, "changed",
-                      G_CALLBACK (on_app_spin_button_changed_cb_2), apptw);
+                      G_CALLBACK (on_app_spin_button_changed_cb), apptw);
     g_signal_connect (apptw->StartTimezone_button, "clicked",
-                      G_CALLBACK (on_appStartTimezone_clicked_cb_2), apptw);
+                      G_CALLBACK (on_appStartTimezone_clicked_cb), apptw);
     g_signal_connect (apptw->End_checkbutton, "clicked",
-                      G_CALLBACK (app_time_checkbutton_clicked_cb_2), apptw);
+                      G_CALLBACK (app_time_checkbutton_clicked_cb), apptw);
     g_signal_connect (apptw->EndDate_button, "clicked",
-                      G_CALLBACK (on_Date_button_clicked_cb_2), apptw);
+                      G_CALLBACK (on_Date_button_clicked_cb), apptw);
     g_signal_connect (apptw->EndTime_spin_hh, "changed",
-                      G_CALLBACK (on_app_spin_button_changed_cb_2), apptw);
+                      G_CALLBACK (on_app_spin_button_changed_cb), apptw);
     g_signal_connect (apptw->EndTime_spin_mm, "changed",
-                      G_CALLBACK (on_app_spin_button_changed_cb_2), apptw);
+                      G_CALLBACK (on_app_spin_button_changed_cb), apptw);
     g_signal_connect (apptw->EndTimezone_button, "clicked",
-                      G_CALLBACK (on_appEndTimezone_clicked_cb_2), apptw);
+                      G_CALLBACK (on_appEndTimezone_clicked_cb), apptw);
     g_signal_connect (apptw->Dur_checkbutton, "clicked",
-                      G_CALLBACK (app_time_checkbutton_clicked_cb_2), apptw);
+                      G_CALLBACK (app_time_checkbutton_clicked_cb), apptw);
     g_signal_connect (apptw->Dur_spin_dd, "value-changed",
-                      G_CALLBACK (on_app_spin_button_changed_cb_2), apptw);
+                      G_CALLBACK (on_app_spin_button_changed_cb), apptw);
     g_signal_connect (apptw->Dur_spin_hh, "value-changed",
-                      G_CALLBACK (on_app_spin_button_changed_cb_2), apptw);
+                      G_CALLBACK (on_app_spin_button_changed_cb), apptw);
     g_signal_connect (apptw->Dur_spin_mm, "value-changed",
-                      G_CALLBACK (on_app_spin_button_changed_cb_2), apptw);
+                      G_CALLBACK (on_app_spin_button_changed_cb), apptw);
     g_signal_connect (apptw->Completed_checkbutton, "clicked",
-                      G_CALLBACK (app_time_checkbutton_clicked_cb_2), apptw);
+                      G_CALLBACK (app_time_checkbutton_clicked_cb), apptw);
     g_signal_connect (apptw->CompletedDate_button, "clicked",
-                      G_CALLBACK (on_Date_button_clicked_cb_2), apptw);
+                      G_CALLBACK (on_Date_button_clicked_cb), apptw);
     g_signal_connect (apptw->CompletedTime_spin_hh, "changed",
-                      G_CALLBACK (on_app_spin_button_changed_cb_2), apptw);
+                      G_CALLBACK (on_app_spin_button_changed_cb), apptw);
     g_signal_connect (apptw->CompletedTime_spin_mm, "changed",
-                      G_CALLBACK (on_app_spin_button_changed_cb_2), apptw);
+                      G_CALLBACK (on_app_spin_button_changed_cb), apptw);
     g_signal_connect (apptw->CompletedTimezone_button, "clicked",
-                      G_CALLBACK (on_appCompletedTimezone_clicked_cb_2), apptw);
+                      G_CALLBACK (on_appCompletedTimezone_clicked_cb), apptw);
     g_signal_connect (apptw->Location_entry, "changed",
-                      G_CALLBACK (on_app_entry_changed_cb_2), apptw);
+                      G_CALLBACK (on_app_entry_changed_cb), apptw);
     g_signal_connect (apptw->Categories_entry, "changed",
-                      G_CALLBACK (on_app_entry_changed_cb_2), apptw);
+                      G_CALLBACK (on_app_entry_changed_cb), apptw);
     g_signal_connect (apptw->Categories_cb, "changed",
-                      G_CALLBACK (on_app_combobox_changed_cb_2), apptw);
+                      G_CALLBACK (on_app_combobox_changed_cb), apptw);
     g_signal_connect (apptw->Categories_button, "clicked",
-                      G_CALLBACK (on_categories_button_clicked_cb_2), apptw);
+                      G_CALLBACK (on_categories_button_clicked_cb), apptw);
     g_signal_connect (apptw->Availability_cb, "changed",
-                      G_CALLBACK (on_app_combobox_changed_cb_2), apptw);
+                      G_CALLBACK (on_app_combobox_changed_cb), apptw);
     g_signal_connect (apptw->Note_buffer, "changed",
-                      G_CALLBACK (on_appNote_buffer_changed_cb_2), apptw);
+                      G_CALLBACK (on_appNote_buffer_changed_cb), apptw);
 }
 
-static void build_alarm_page_2 (OrageAppointmentWindow *apptw)
+static void build_alarm_page (OrageAppointmentWindow *apptw)
 {
     gboolean audio_enabled;
     gint row;
@@ -3681,58 +3680,58 @@ static void build_alarm_page_2 (OrageAppointmentWindow *apptw)
                              GTK_POS_BOTTOM, 1, 1);
 }
 
-static void enable_alarm_page_signals_2 (OrageAppointmentWindow *apptw)
+static void enable_alarm_page_signals (OrageAppointmentWindow *apptw)
 {
     g_signal_connect((gpointer)apptw->Alarm_spin_dd, "value-changed"
-            , G_CALLBACK(on_app_spin_button_changed_cb_2), apptw);
+            , G_CALLBACK(on_app_spin_button_changed_cb), apptw);
     g_signal_connect((gpointer)apptw->Alarm_spin_hh, "value-changed"
-            , G_CALLBACK(on_app_spin_button_changed_cb_2), apptw);
+            , G_CALLBACK(on_app_spin_button_changed_cb), apptw);
     g_signal_connect((gpointer)apptw->Alarm_spin_mm, "value-changed"
-            , G_CALLBACK(on_app_spin_button_changed_cb_2), apptw);
+            , G_CALLBACK(on_app_spin_button_changed_cb), apptw);
     g_signal_connect((gpointer)apptw->Alarm_when_cb, "changed"
-            , G_CALLBACK(on_app_combobox_changed_cb_2), apptw);
+            , G_CALLBACK(on_app_combobox_changed_cb), apptw);
 
     g_signal_connect((gpointer)apptw->Sound_checkbutton, "clicked"
-            , G_CALLBACK(app_sound_checkbutton_clicked_cb_2), apptw);
+            , G_CALLBACK(app_sound_checkbutton_clicked_cb), apptw);
     g_signal_connect((gpointer)apptw->Sound_entry, "changed"
-            , G_CALLBACK(on_app_entry_changed_cb_2), apptw);
+            , G_CALLBACK(on_app_entry_changed_cb), apptw);
     g_signal_connect((gpointer)apptw->Sound_button, "clicked"
-            , G_CALLBACK(on_appSound_button_clicked_cb_2), apptw);
+            , G_CALLBACK(on_appSound_button_clicked_cb), apptw);
     g_signal_connect((gpointer)apptw->SoundRepeat_checkbutton, "clicked"
-            , G_CALLBACK(app_sound_checkbutton_clicked_cb_2), apptw);
+            , G_CALLBACK(app_sound_checkbutton_clicked_cb), apptw);
     g_signal_connect((gpointer)apptw->SoundRepeat_spin_cnt, "value-changed"
-            , G_CALLBACK(on_app_spin_button_changed_cb_2), apptw);
+            , G_CALLBACK(on_app_spin_button_changed_cb), apptw);
     g_signal_connect((gpointer)apptw->SoundRepeat_spin_len, "value-changed"
-            , G_CALLBACK(on_app_spin_button_changed_cb_2), apptw);
+            , G_CALLBACK(on_app_spin_button_changed_cb), apptw);
 
     g_signal_connect((gpointer)apptw->Display_checkbutton_orage, "clicked"
-            , G_CALLBACK(app_checkbutton_clicked_cb_2), apptw);
+            , G_CALLBACK(app_checkbutton_clicked_cb), apptw);
 #ifdef HAVE_NOTIFY
     g_signal_connect((gpointer)apptw->Display_checkbutton_notify, "clicked"
-            , G_CALLBACK(app_notify_checkbutton_clicked_cb_2), apptw);
+            , G_CALLBACK(app_notify_checkbutton_clicked_cb), apptw);
     g_signal_connect((gpointer)apptw->Display_checkbutton_expire_notify
             , "clicked"
-            , G_CALLBACK(app_notify_checkbutton_clicked_cb_2), apptw);
+            , G_CALLBACK(app_notify_checkbutton_clicked_cb), apptw);
     g_signal_connect((gpointer)apptw->Display_spin_expire_notify
             , "value-changed"
-            , G_CALLBACK(on_app_spin_button_changed_cb_2), apptw);
+            , G_CALLBACK(on_app_spin_button_changed_cb), apptw);
 #endif
 
     g_signal_connect((gpointer)apptw->Proc_checkbutton, "clicked"
-            , G_CALLBACK(app_proc_checkbutton_clicked_cb_2), apptw);
+            , G_CALLBACK(app_proc_checkbutton_clicked_cb), apptw);
     g_signal_connect((gpointer)apptw->Proc_entry, "changed"
-            , G_CALLBACK(on_app_entry_changed_cb_2), apptw);
+            , G_CALLBACK(on_app_entry_changed_cb), apptw);
 
     g_signal_connect((gpointer)apptw->Test_button, "clicked"
-            , G_CALLBACK(on_test_button_clicked_cb_2), apptw);
+            , G_CALLBACK(on_test_button_clicked_cb), apptw);
 
     g_signal_connect((gpointer)apptw->Default_savebutton, "clicked"
-            , G_CALLBACK(on_appDefault_save_button_clicked_cb_2), apptw);
+            , G_CALLBACK(on_appDefault_save_button_clicked_cb), apptw);
     g_signal_connect((gpointer)apptw->Default_readbutton, "clicked"
-            , G_CALLBACK(on_appDefault_read_button_clicked_cb_2), apptw);
+            , G_CALLBACK(on_appDefault_read_button_clicked_cb), apptw);
 }
 
-static void build_recurrence_page_2 (OrageAppointmentWindow *apptw)
+static void build_recurrence_page (OrageAppointmentWindow *apptw)
 {
     gint row, i;
     guint y, m;
@@ -4025,67 +4024,67 @@ static void build_recurrence_page_2 (OrageAppointmentWindow *apptw)
             , ++row ,(GTK_EXPAND | GTK_FILL), (0));
 }
 
-static void enable_recurrence_page_signals_2 (OrageAppointmentWindow *apptw)
+static void enable_recurrence_page_signals (OrageAppointmentWindow *apptw)
 {
     gint i;
 
     g_signal_connect((gpointer)apptw->Recur_feature_normal_rb, "clicked"
-            , G_CALLBACK(app_recur_feature_checkbutton_clicked_cb_2), apptw);
+            , G_CALLBACK(app_recur_feature_checkbutton_clicked_cb), apptw);
     g_signal_connect((gpointer)apptw->Recur_feature_advanced_rb, "clicked"
-            , G_CALLBACK(app_recur_feature_checkbutton_clicked_cb_2), apptw);
+            , G_CALLBACK(app_recur_feature_checkbutton_clicked_cb), apptw);
     g_signal_connect((gpointer)apptw->Recur_freq_cb, "changed"
-            , G_CALLBACK(on_freq_combobox_changed_cb_2), apptw);
+            , G_CALLBACK(on_freq_combobox_changed_cb), apptw);
     g_signal_connect((gpointer)apptw->Recur_int_spin, "value-changed"
-            , G_CALLBACK(on_recur_spin_button_changed_cb_2), apptw);
+            , G_CALLBACK(on_recur_spin_button_changed_cb), apptw);
     g_signal_connect((gpointer)apptw->Recur_limit_rb, "clicked"
-            , G_CALLBACK(app_recur_checkbutton_clicked_cb_2), apptw);
+            , G_CALLBACK(app_recur_checkbutton_clicked_cb), apptw);
     g_signal_connect((gpointer)apptw->Recur_count_rb, "clicked"
-            , G_CALLBACK(app_recur_checkbutton_clicked_cb_2), apptw);
+            , G_CALLBACK(app_recur_checkbutton_clicked_cb), apptw);
     g_signal_connect((gpointer)apptw->Recur_count_spin, "value-changed"
-            , G_CALLBACK(on_recur_spin_button_changed_cb_2), apptw);
+            , G_CALLBACK(on_recur_spin_button_changed_cb), apptw);
     g_signal_connect((gpointer)apptw->Recur_until_rb, "clicked"
-            , G_CALLBACK(app_recur_checkbutton_clicked_cb_2), apptw);
+            , G_CALLBACK(app_recur_checkbutton_clicked_cb), apptw);
     g_signal_connect((gpointer)apptw->Recur_until_button, "clicked"
-            , G_CALLBACK(on_recur_Date_button_clicked_cb_2), apptw);
+            , G_CALLBACK(on_recur_Date_button_clicked_cb), apptw);
     for (i=0; i <= 6; i++) {
         g_signal_connect((gpointer)apptw->Recur_byday_cb[i], "clicked"
-                , G_CALLBACK(app_recur_checkbutton_clicked_cb_2), apptw);
+                , G_CALLBACK(app_recur_checkbutton_clicked_cb), apptw);
         g_signal_connect((gpointer)apptw->Recur_byday_spin[i], "value-changed"
-                , G_CALLBACK(on_recur_spin_button_changed_cb_2), apptw);
+                , G_CALLBACK(on_recur_spin_button_changed_cb), apptw);
     }
     g_signal_connect((gpointer)apptw->Recur_todo_base_start_rb, "clicked"
-            , G_CALLBACK(app_recur_checkbutton_clicked_cb_2), apptw);
+            , G_CALLBACK(app_recur_checkbutton_clicked_cb), apptw);
     g_signal_connect((gpointer)apptw->Recur_todo_base_done_rb, "clicked"
-            , G_CALLBACK(app_recur_checkbutton_clicked_cb_2), apptw);
+            , G_CALLBACK(app_recur_checkbutton_clicked_cb), apptw);
     g_signal_connect((gpointer)apptw->Recur_calendar1, "month-changed"
-            , G_CALLBACK(recur_month_changed_cb_2), apptw);
+            , G_CALLBACK(recur_month_changed_cb), apptw);
     g_signal_connect((gpointer)apptw->Recur_calendar2, "month-changed"
-            , G_CALLBACK(recur_month_changed_cb_2), apptw);
+            , G_CALLBACK(recur_month_changed_cb), apptw);
     g_signal_connect((gpointer)apptw->Recur_calendar3, "month-changed"
-            , G_CALLBACK(recur_month_changed_cb_2), apptw);
+            , G_CALLBACK(recur_month_changed_cb), apptw);
     g_signal_connect((gpointer)apptw->Recur_calendar1
             , "day_selected_double_click"
-            , G_CALLBACK(recur_day_selected_double_click_cb_2), apptw);
+            , G_CALLBACK(recur_day_selected_double_click_cb), apptw);
     g_signal_connect((gpointer)apptw->Recur_calendar2
             , "day_selected_double_click"
-            , G_CALLBACK(recur_day_selected_double_click_cb_2), apptw);
+            , G_CALLBACK(recur_day_selected_double_click_cb), apptw);
     g_signal_connect((gpointer)apptw->Recur_calendar3
             , "day_selected_double_click"
-            , G_CALLBACK(recur_day_selected_double_click_cb_2), apptw);
+            , G_CALLBACK(recur_day_selected_double_click_cb), apptw);
 }
 
 static void orage_appointment_window_constructed (GObject *object)
 {
     OrageAppointmentWindow *self = (OrageAppointmentWindow *)object;
     
-    fill_appt_window_2 (self, self->action, self->par, self->appointment_time_2);
-    enable_general_page_signals_2 (self);
-    enable_alarm_page_signals_2 (self);
-    enable_recurrence_page_signals_2 (self);
+    fill_appt_window (self, self->action, self->par, self->appointment_time_2);
+    enable_general_page_signals (self);
+    enable_alarm_page_signals (self);
+    enable_recurrence_page_signals (self);
     gtk_widget_show_all (GTK_WIDGET (self));
-    recur_hide_show_2 (self);
-    type_hide_show_2 (self);
-    readonly_hide_show_2 (self);
+    recur_hide_show (self);
+    type_hide_show (self);
+    readonly_hide_show (self);
     gtk_widget_grab_focus (self->Title_entry);
 
     G_OBJECT_CLASS (orage_appointment_window_parent_class)->constructed (object);
@@ -4122,8 +4121,6 @@ static void orage_appointment_window_get_property (GObject *object,
                                                     GParamSpec *pspec)
 {
     const OrageAppointmentWindow *self = ORAGE_APPOINTMENT_WINDOW (object);
-
-    g_debug ("%s", G_STRFUNC);
     
     switch (prop_id)
     {
@@ -4223,8 +4220,6 @@ static void orage_appointment_window_class_init (OrageAppointmentWindowClass *kl
 
 static void orage_appointment_window_init (OrageAppointmentWindow *self)
 {
-    g_debug ("%s", G_STRFUNC);
-
     self->xf_uid = NULL;
     self->appointment_time = g_date_time_new_now_local ();
     self->xf_appt = NULL;
@@ -4238,22 +4233,22 @@ static void orage_appointment_window_init (OrageAppointmentWindow *self)
 
     gtk_container_add (GTK_CONTAINER (self), self->Vbox);
 
-    build_menu_2 (self);
-    build_toolbar_2 (self);
+    build_menu (self);
+    build_toolbar (self);
 
     /* ********** Here begins tabs ********** */
     self->Notebook = gtk_notebook_new ();
     gtk_grid_attach (GTK_GRID (self->Vbox), self->Notebook, 1, 3, 1, 1);
     gtk_container_set_border_width (GTK_CONTAINER (self->Notebook), 5);
 
-    build_general_page_2 (self);
-    build_alarm_page_2 (self);
-    build_recurrence_page_2 (self);
+    build_general_page (self);
+    build_alarm_page (self);
+    build_recurrence_page (self);
 
     g_signal_connect (self, "delete-event",
-                      G_CALLBACK (on_appWindow_delete_event_cb_2), self);
+                      G_CALLBACK (on_appWindow_delete_event_cb), self);
     g_signal_connect (self->Notebook, "switch-page",
-                      G_CALLBACK (on_notebook_page_switch_2), self);
+                      G_CALLBACK (on_notebook_page_switch), self);
 }
 
 static GtkWidget *orage_appointment_window_new_by_uid (const gchar *uid,
