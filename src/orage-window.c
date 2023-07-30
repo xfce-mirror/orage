@@ -120,7 +120,7 @@ static void mFile_newApp_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
     OrageWindow *window = ORAGE_WINDOW (user_data);
 
     /* cal has always a day selected here, so it is safe to read it */
-    gdt = orage_cal_to_gdatetime (orage_window_get_calendar (window), 1, 1);    
+    gdt = orage_cal_to_gdatetime (orage_window_get_calendar (window), 1, 1);
     appointment_window = orage_appointment_window_new (gdt);
     gtk_window_present (GTK_WINDOW (appointment_window));
     g_date_time_unref (gdt);

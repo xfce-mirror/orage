@@ -122,7 +122,7 @@ static void on_new_appointment_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
     GDateTime *gdt;
     GtkWidget *appointment_window;
 
-    gdt = g_date_time_new_now_local ();    
+    gdt = g_date_time_new_now_local ();
     appointment_window = orage_appointment_window_new (gdt);
     gtk_window_present (GTK_WINDOW (appointment_window));
     g_date_time_unref (gdt);
