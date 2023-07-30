@@ -83,7 +83,7 @@ struct _OrageAppointmentWindow
     GtkWindow __parent__;
 
     GtkAccelGroup *accel_group;
-    
+
     GtkWidget *Vbox;
 
     GtkWidget *Menubar;
@@ -4076,7 +4076,7 @@ static void enable_recurrence_page_signals (OrageAppointmentWindow *apptw)
 static void orage_appointment_window_constructed (GObject *object)
 {
     OrageAppointmentWindow *self = (OrageAppointmentWindow *)object;
-    
+
     fill_appt_window (self, self->action, self->par, self->appointment_time_2);
     enable_general_page_signals (self);
     enable_alarm_page_signals (self);
@@ -4121,7 +4121,7 @@ static void orage_appointment_window_get_property (GObject *object,
                                                     GParamSpec *pspec)
 {
     const OrageAppointmentWindow *self = ORAGE_APPOINTMENT_WINDOW (object);
-    
+
     switch (prop_id)
     {
         case PROP_APPOINTMENT_TIME:
@@ -4156,7 +4156,7 @@ static void orage_appointment_window_set_property (GObject *object,
             g_assert (self->appointment_time_2 == NULL);
             self->appointment_time_2 = (GDateTime *)g_value_dup_boxed (value);
             break;
-            
+
         case PROP_APPOINTMENT_ACTION:
             self->action = g_value_get_uint (value);
             break;
