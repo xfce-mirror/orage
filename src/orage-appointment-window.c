@@ -879,7 +879,7 @@ static void on_app_entry_changed_cb (G_GNUC_UNUSED GtkEditable *entry,
 }
 
 static void on_freq_combobox_changed_cb (G_GNUC_UNUSED GtkComboBox *cb,
-                                           gpointer user_data)
+                                         gpointer user_data)
 {
     OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
     set_repeat_sensitivity (apptw);
@@ -1022,7 +1022,7 @@ static gboolean orage_validate_datetime (OrageAppointmentWindow *apptw, xfical_a
 }
 
 static void fill_appt_from_apptw_alarm (xfical_appt *appt,
-                                          OrageAppointmentWindow *apptw)
+                                        OrageAppointmentWindow *apptw)
 {
     gint i, j, k, l;
     gchar *tmp;
@@ -2789,7 +2789,7 @@ static void fill_appt_window (OrageAppointmentWindow *apptw,
     apptw->appointment_changed = FALSE;
 
     if (apptw->appointment_add) {
-        add_file_select_cb (apptw);
+        add_file_select_cb(apptw);
     }
     if (!appt->completed) { /* some nice default */
         orage_gdatetime_unref (appt->completedtime);
@@ -2807,21 +2807,21 @@ static void fill_appt_window (OrageAppointmentWindow *apptw,
     gtk_window_set_title(GTK_WINDOW(apptw), _("New appointment - Orage"));
 
     /********************* GENERAL tab *********************/
-    fill_appt_window_general (apptw, appt, action);
+    fill_appt_window_general(apptw, appt, action);
 
     /********************* ALARM tab *********************/
-    fill_appt_window_alarm (apptw, appt);
+    fill_appt_window_alarm(apptw, appt);
 
     /********************* RECURRENCE tab *********************/
-    fill_appt_window_recurrence (apptw, appt);
+    fill_appt_window_recurrence(apptw, appt);
 
     /********************* FINALIZE *********************/
-    set_time_sensitivity (apptw);
-    set_repeat_sensitivity (apptw);
-    set_sound_sensitivity (apptw);
-    set_notify_sensitivity (apptw);
-    set_proc_sensitivity (apptw);
-    mark_appointment_unchanged (apptw);
+    set_time_sensitivity(apptw);
+    set_repeat_sensitivity(apptw);
+    set_sound_sensitivity(apptw);
+    set_notify_sensitivity(apptw);
+    set_proc_sensitivity(apptw);
+    mark_appointment_unchanged(apptw);
 }
 
 static void build_menu (OrageAppointmentWindow *apptw)
@@ -3332,62 +3332,62 @@ static void build_general_page (OrageAppointmentWindow *apptw)
 
 static void enable_general_page_signals (OrageAppointmentWindow *apptw)
 {
-    g_signal_connect (apptw->Type_event_rb, "clicked",
-                      G_CALLBACK (app_type_checkbutton_clicked_cb), apptw);
-    g_signal_connect (apptw->Type_todo_rb, "clicked",
-                      G_CALLBACK (app_type_checkbutton_clicked_cb), apptw);
-    g_signal_connect (apptw->Type_journal_rb, "clicked",
-                      G_CALLBACK (app_type_checkbutton_clicked_cb), apptw);
-    g_signal_connect (apptw->AllDay_checkbutton, "clicked",
-                      G_CALLBACK (app_time_checkbutton_clicked_cb), apptw);
-    g_signal_connect (apptw->StartDate_button, "clicked",
-                      G_CALLBACK (on_Date_button_clicked_cb), apptw);
-    g_signal_connect (apptw->StartTime_spin_hh, "changed",
-                      G_CALLBACK (on_app_spin_button_changed_cb), apptw);
-    g_signal_connect (apptw->StartTime_spin_mm, "changed",
-                      G_CALLBACK (on_app_spin_button_changed_cb), apptw);
-    g_signal_connect (apptw->StartTimezone_button, "clicked",
-                      G_CALLBACK (on_appStartTimezone_clicked_cb), apptw);
-    g_signal_connect (apptw->End_checkbutton, "clicked",
-                      G_CALLBACK (app_time_checkbutton_clicked_cb), apptw);
-    g_signal_connect (apptw->EndDate_button, "clicked",
-                      G_CALLBACK (on_Date_button_clicked_cb), apptw);
-    g_signal_connect (apptw->EndTime_spin_hh, "changed",
-                      G_CALLBACK (on_app_spin_button_changed_cb), apptw);
-    g_signal_connect (apptw->EndTime_spin_mm, "changed",
-                      G_CALLBACK (on_app_spin_button_changed_cb), apptw);
-    g_signal_connect (apptw->EndTimezone_button, "clicked",
-                      G_CALLBACK (on_appEndTimezone_clicked_cb), apptw);
-    g_signal_connect (apptw->Dur_checkbutton, "clicked",
-                      G_CALLBACK (app_time_checkbutton_clicked_cb), apptw);
-    g_signal_connect (apptw->Dur_spin_dd, "value-changed",
-                      G_CALLBACK (on_app_spin_button_changed_cb), apptw);
-    g_signal_connect (apptw->Dur_spin_hh, "value-changed",
-                      G_CALLBACK (on_app_spin_button_changed_cb), apptw);
-    g_signal_connect (apptw->Dur_spin_mm, "value-changed",
-                      G_CALLBACK (on_app_spin_button_changed_cb), apptw);
-    g_signal_connect (apptw->Completed_checkbutton, "clicked",
-                      G_CALLBACK (app_time_checkbutton_clicked_cb), apptw);
-    g_signal_connect (apptw->CompletedDate_button, "clicked",
-                      G_CALLBACK (on_Date_button_clicked_cb), apptw);
-    g_signal_connect (apptw->CompletedTime_spin_hh, "changed",
-                      G_CALLBACK (on_app_spin_button_changed_cb), apptw);
-    g_signal_connect (apptw->CompletedTime_spin_mm, "changed",
-                      G_CALLBACK (on_app_spin_button_changed_cb), apptw);
-    g_signal_connect (apptw->CompletedTimezone_button, "clicked",
-                      G_CALLBACK (on_appCompletedTimezone_clicked_cb), apptw);
-    g_signal_connect (apptw->Location_entry, "changed",
-                      G_CALLBACK (on_app_entry_changed_cb), apptw);
-    g_signal_connect (apptw->Categories_entry, "changed",
-                      G_CALLBACK (on_app_entry_changed_cb), apptw);
-    g_signal_connect (apptw->Categories_cb, "changed",
-                      G_CALLBACK (on_app_combobox_changed_cb), apptw);
-    g_signal_connect (apptw->Categories_button, "clicked",
-                      G_CALLBACK (on_categories_button_clicked_cb), apptw);
-    g_signal_connect (apptw->Availability_cb, "changed",
-                      G_CALLBACK (on_app_combobox_changed_cb), apptw);
-    g_signal_connect (apptw->Note_buffer, "changed",
-                      G_CALLBACK (on_appNote_buffer_changed_cb), apptw);
+    g_signal_connect((gpointer)apptw->Type_event_rb, "clicked"
+            , G_CALLBACK(app_type_checkbutton_clicked_cb), apptw);
+    g_signal_connect((gpointer)apptw->Type_todo_rb, "clicked"
+            , G_CALLBACK(app_type_checkbutton_clicked_cb), apptw);
+    g_signal_connect((gpointer)apptw->Type_journal_rb, "clicked"
+            , G_CALLBACK(app_type_checkbutton_clicked_cb), apptw);
+    g_signal_connect((gpointer)apptw->AllDay_checkbutton, "clicked"
+            , G_CALLBACK(app_time_checkbutton_clicked_cb), apptw);
+    g_signal_connect((gpointer)apptw->StartDate_button, "clicked"
+            , G_CALLBACK(on_Date_button_clicked_cb), apptw);
+    g_signal_connect((gpointer)apptw->StartTime_spin_hh, "changed"
+            , G_CALLBACK(on_app_spin_button_changed_cb), apptw);
+    g_signal_connect((gpointer)apptw->StartTime_spin_mm, "changed"
+            , G_CALLBACK(on_app_spin_button_changed_cb), apptw);
+    g_signal_connect((gpointer)apptw->StartTimezone_button, "clicked"
+            , G_CALLBACK(on_appStartTimezone_clicked_cb), apptw);
+    g_signal_connect((gpointer)apptw->End_checkbutton, "clicked"
+            , G_CALLBACK(app_time_checkbutton_clicked_cb), apptw);
+    g_signal_connect((gpointer)apptw->EndDate_button, "clicked"
+            , G_CALLBACK(on_Date_button_clicked_cb), apptw);
+    g_signal_connect((gpointer)apptw->EndTime_spin_hh, "changed"
+            , G_CALLBACK(on_app_spin_button_changed_cb), apptw);
+    g_signal_connect((gpointer)apptw->EndTime_spin_mm, "changed"
+            , G_CALLBACK(on_app_spin_button_changed_cb), apptw);
+    g_signal_connect((gpointer)apptw->EndTimezone_button, "clicked"
+            , G_CALLBACK(on_appEndTimezone_clicked_cb), apptw);
+    g_signal_connect((gpointer)apptw->Dur_checkbutton, "clicked"
+            , G_CALLBACK(app_time_checkbutton_clicked_cb), apptw);
+    g_signal_connect((gpointer)apptw->Dur_spin_dd, "value-changed"
+            , G_CALLBACK(on_app_spin_button_changed_cb), apptw);
+    g_signal_connect((gpointer)apptw->Dur_spin_hh, "value-changed"
+            , G_CALLBACK(on_app_spin_button_changed_cb), apptw);
+    g_signal_connect((gpointer)apptw->Dur_spin_mm, "value-changed"
+            , G_CALLBACK(on_app_spin_button_changed_cb), apptw);
+    g_signal_connect((gpointer)apptw->Completed_checkbutton, "clicked"
+            , G_CALLBACK(app_time_checkbutton_clicked_cb), apptw);
+    g_signal_connect((gpointer)apptw->CompletedDate_button, "clicked"
+            , G_CALLBACK(on_Date_button_clicked_cb), apptw);
+    g_signal_connect((gpointer)apptw->CompletedTime_spin_hh, "changed"
+            , G_CALLBACK(on_app_spin_button_changed_cb), apptw);
+    g_signal_connect((gpointer)apptw->CompletedTime_spin_mm, "changed"
+            , G_CALLBACK(on_app_spin_button_changed_cb), apptw);
+    g_signal_connect((gpointer)apptw->CompletedTimezone_button, "clicked"
+            , G_CALLBACK(on_appCompletedTimezone_clicked_cb), apptw);
+    g_signal_connect((gpointer)apptw->Location_entry, "changed"
+            , G_CALLBACK(on_app_entry_changed_cb), apptw);
+    g_signal_connect((gpointer)apptw->Categories_entry, "changed"
+            , G_CALLBACK(on_app_entry_changed_cb), apptw);
+    g_signal_connect((gpointer)apptw->Categories_cb, "changed"
+            , G_CALLBACK(on_app_combobox_changed_cb), apptw);
+    g_signal_connect((gpointer)apptw->Categories_button, "clicked"
+            , G_CALLBACK(on_categories_button_clicked_cb), apptw);
+    g_signal_connect((gpointer)apptw->Availability_cb, "changed"
+            , G_CALLBACK(on_app_combobox_changed_cb), apptw);
+    g_signal_connect((gpointer)apptw->Note_buffer, "changed"
+            , G_CALLBACK(on_appNote_buffer_changed_cb), apptw);
 }
 
 static void build_alarm_page (OrageAppointmentWindow *apptw)

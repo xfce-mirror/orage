@@ -485,9 +485,7 @@ static void on_button_press_event_cb(GtkWidget *widget
     gchar *uid;
     day_win *dw = (day_win *)user_data;
 
-    if (event->type == GDK_2BUTTON_PRESS)
-    {
-        g_debug ("%s", G_STRFUNC);
+    if (event->type == GDK_2BUTTON_PRESS) {
         uid = g_object_get_data(G_OBJECT(widget), "UID");
         appointment_window = orage_appointment_window_new_update (uid);
 
@@ -501,23 +499,6 @@ static void on_button_press_event_cb(GtkWidget *widget
         dw->apptw_list = g_list_prepend(dw->apptw_list, appointment_window);
     }
 }
-
-#if 0
-static void create_new_appointment(day_win *dw)
-{
-    GDateTime *gdt;
-    GtkWidget *appointment_window;
-
-    gdt = g_object_get_data (G_OBJECT (dw->StartDate_button), DATE_KEY);
-    appointment_window = orage_appointment_window_new (gdt);
-    /* inform the appointment that we are interested in it */
-    orage_appointment_window_set_day_window (
-            ORAGE_APPOINTMENT_WINDOW (appointment_window), dw);
-    gtk_window_present (GTK_WINDOW (appointment_window));
-    /* we started this, so keep track of it */
-    dw->apptw_list = g_list_prepend (dw->apptw_list, appointment_window);
-}
-#endif
 
 static void on_arrow_up_press_event_cb (G_GNUC_UNUSED GtkWidget *widget,
                                         G_GNUC_UNUSED GdkEventButton *event,
