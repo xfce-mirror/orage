@@ -199,11 +199,16 @@ static void mHelp_about_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
 
 static void orage_window_post_init_cb (OrageWindow *window)
 {
+    union
+    {
+        gpointer ptr;
+        GCallback callback;
+    }
+    func_ptr;
     guint rc;
 
-    rc = g_signal_handlers_disconnect_by_func (window,
-                                               (gpointer)orage_window_post_init_cb,
-                                               NULL);
+    func_ptr.callback = (GCallback)orage_window_post_init_cb;
+    rc = g_signal_handlers_disconnect_by_func (window, func_ptr.ptr, NULL);
 
     g_debug ("%s: %d handlers disconnected", G_STRFUNC, rc);
 
