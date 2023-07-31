@@ -202,7 +202,7 @@ static void orage_window_post_init_cb (OrageWindow *window)
     guint rc;
 
     rc = g_signal_handlers_disconnect_by_func (window,
-                                               orage_window_post_init_cb,
+                                               (gpointer)orage_window_post_init_cb,
                                                NULL);
 
     g_debug ("%s: %d handlers disconnected", G_STRFUNC, rc);
