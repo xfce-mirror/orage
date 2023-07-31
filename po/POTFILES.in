@@ -1,6 +1,5 @@
 # List of source files containing translatable strings.
 
-src/appointment.c
 src/day-view.c
 src/event-list.c
 src/functions.c
@@ -11,6 +10,7 @@ src/interface.c
 src/main.c
 src/orage-about.c
 src/orage-application.c
+src/orage-appointment-window.c
 src/orage-sync-edit-dialog.c
 src/orage-window.c
 src/parameters.c
