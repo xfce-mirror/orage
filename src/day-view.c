@@ -38,26 +38,12 @@
 #include "ical-code.h"
 #include "parameters.h"
 #include "event-list.h"
-#include "appointment.h"
+#include "orage-appointment-window.h"
 
 #define BUTTON_ROW 0
 #define FULL_DAY_ROW (BUTTON_ROW + 1)
 #define FIRST_HOUR_ROW (FULL_DAY_ROW + 1)
 #define DATE_KEY "button-date"
-
-static void do_appt_win (const appt_win_action mode, const gchar *uid,
-                         day_win *dw, GDateTime *gdt)
-{
-    appt_win *apptw;
-
-    apptw = create_appt_win (mode, uid, gdt);
-    if (apptw) {
-        /* we started this, so keep track of it */
-        dw->apptw_list = g_list_prepend(dw->apptw_list, apptw);
-        /* inform the appointment that we are interested in it */
-        apptw->dw = dw;
-    }
-}
 
 static void set_scroll_position(const day_win *dw)
 {
@@ -115,7 +101,7 @@ static GtkWidget *build_line (const GtkWidget *hour_line)
 
 static void close_window(day_win *dw)
 {
-    appt_win *apptw;
+    OrageAppointmentWindow *apptw;
     GList *apptw_list;
 
     gtk_window_get_size(GTK_WINDOW(dw->Window)
@@ -130,9 +116,12 @@ static void close_window(day_win *dw)
     for (apptw_list = g_list_first(apptw_list);
          apptw_list != NULL;
          apptw_list = g_list_next(apptw_list)) {
-        apptw = (appt_win *)apptw_list->data;
+        apptw = ORAGE_APPOINTMENT_WINDOW (apptw_list->data);
         if (apptw) /* appointment window is still alive */
-            apptw->dw = NULL; /* not interested anymore */
+        {
+            /* not interested anymore */
+            orage_appointment_window_set_day_window (apptw, NULL);
+        }
         else
             g_warning ("%s: not null appt window", G_STRFUNC);
     }
@@ -166,11 +155,17 @@ static void on_Close_clicked (G_GNUC_UNUSED GtkButton *b, gpointer user_data)
 
 static void create_new_appointment(day_win *dw)
 {
-    GDateTime *a_day;
+    GDateTime *gdt;
+    GtkWidget *appointment_window;
 
-    a_day = g_object_get_data (G_OBJECT (dw->StartDate_button), DATE_KEY);
-
-    do_appt_win (NEW_APPT_WIN, NULL, dw, a_day);
+    gdt = g_object_get_data (G_OBJECT (dw->StartDate_button), DATE_KEY);
+    appointment_window = orage_appointment_window_new (gdt);
+    /* inform the appointment that we are interested in it */
+    orage_appointment_window_set_day_window (
+            ORAGE_APPOINTMENT_WINDOW (appointment_window), dw);
+    gtk_window_present (GTK_WINDOW (appointment_window));
+    /* we started this, so keep track of it */
+    dw->apptw_list = g_list_prepend (dw->apptw_list, appointment_window);
 }
 
 static void on_File_newApp_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
@@ -486,15 +481,22 @@ static void header_button_clicked_cb (GtkWidget *button,
 static void on_button_press_event_cb(GtkWidget *widget
         , GdkEventButton *event, gpointer *user_data)
 {
-    GDateTime *gdt;
-    day_win *dw = (day_win *)user_data;
+    GtkWidget *appointment_window;
     gchar *uid;
+    day_win *dw = (day_win *)user_data;
 
     if (event->type == GDK_2BUTTON_PRESS) {
         uid = g_object_get_data(G_OBJECT(widget), "UID");
-        gdt = g_date_time_new_now_local ();
-        do_appt_win (UPDATE_APPT_WIN, uid, dw, gdt);
-        g_date_time_unref (gdt);
+        appointment_window = orage_appointment_window_new_update (uid);
+
+        /* inform the appointment that we are interested in it */
+        orage_appointment_window_set_day_window (
+            ORAGE_APPOINTMENT_WINDOW (appointment_window), dw);
+
+        gtk_window_present (GTK_WINDOW (appointment_window));
+
+        /* we started this, so keep track of it */
+        dw->apptw_list = g_list_prepend(dw->apptw_list, appointment_window);
     }
 }
 

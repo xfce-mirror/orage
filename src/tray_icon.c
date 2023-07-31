@@ -41,7 +41,7 @@
 #include "functions.h"
 #include "ical-code.h"
 #include "event-list.h"
-#include "appointment.h"
+#include "orage-appointment-window.h"
 #include "parameters.h"
 #include "tray_icon.h"
 
@@ -120,16 +120,11 @@ static void on_new_appointment_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
                                          G_GNUC_UNUSED gpointer user_data)
 {
     GDateTime *gdt;
-    char cur_date[9];
-    gint year;
-    gint month;
-    gint day;
+    GtkWidget *appointment_window;
 
     gdt = g_date_time_new_now_local ();
-    g_date_time_get_ymd (gdt, &year, &month, &day);
-    g_snprintf (cur_date, sizeof (cur_date), "%04d%02d%02d", year, month, day);
-
-    create_appt_win (NEW_APPT_WIN, cur_date, gdt);
+    appointment_window = orage_appointment_window_new (gdt);
+    gtk_window_present (GTK_WINDOW (appointment_window));
     g_date_time_unref (gdt);
 }
 

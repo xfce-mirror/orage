@@ -52,7 +52,7 @@
 #include "functions.h"
 #include "ical-code.h"
 #include "event-list.h"
-#include "appointment.h"
+#include "orage-appointment-window.h"
 #include "reminder.h"
 #include "parameters.h"
 
@@ -278,12 +278,11 @@ static void store_persistent_alarms(void)
 static void notify_action_open (G_GNUC_UNUSED NotifyNotification *n,
                                 G_GNUC_UNUSED const char *action, gpointer par)
 {
-    GDateTime *gdt;
+    GtkWidget *appointment_window;
     alarm_struct *l_alarm = (alarm_struct *)par;
 
-    gdt = g_date_time_new_now_local ();
-    create_appt_win (UPDATE_APPT_WIN, l_alarm->uid, gdt);
-    g_date_time_unref (gdt);
+    appointment_window = orage_appointment_window_new_update (l_alarm->uid);
+    gtk_window_present (GTK_WINDOW (appointment_window));
 }
 #endif
 
@@ -495,12 +494,11 @@ static void on_btOkReminder_clicked (G_GNUC_UNUSED GtkButton *button,
 static void on_btOpenReminder_clicked (G_GNUC_UNUSED GtkButton *button,
                                        gpointer user_data)
 {
-    GDateTime *gdt;
+    GtkWidget *appointment_window;
     alarm_struct *l_alarm = (alarm_struct *)user_data;
 
-    gdt = g_date_time_new_now_local ();
-    create_appt_win (UPDATE_APPT_WIN, l_alarm->uid, gdt);
-    g_date_time_unref (gdt);
+    appointment_window = orage_appointment_window_new_update (l_alarm->uid);
+    gtk_window_present (GTK_WINDOW (appointment_window));
 }
 
 static void on_btRecreateReminder_clicked (G_GNUC_UNUSED GtkButton *button,

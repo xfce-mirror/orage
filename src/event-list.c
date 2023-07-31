@@ -57,7 +57,7 @@
 #include "reminder.h"
 #include "ical-code.h"
 #include "event-list.h"
-#include "appointment.h"
+#include "orage-appointment-window.h"
 #include "parameters.h"
 #include "day-view.h"
 
@@ -87,24 +87,10 @@ static const GtkTargetEntry drag_targets[] =
     { "STRING", 0, DRAG_TARGET_STRING }
 };
 
-static void do_appt_win (const appt_win_action mode, char *uid, el_win *el,
-                         GDateTime *gdt)
-{
-    appt_win *apptw;
-
-    apptw = create_appt_win(mode, uid, gdt);
-    if (apptw) {
-        /* we started this, so keep track of it */
-        el->apptw_list = g_list_prepend(el->apptw_list, apptw);
-        /* inform the appointment that we are interested in it */
-        apptw->el = el;
-    }
-}
-
-static void start_appt_win (const appt_win_action mode,  el_win *el
+static void start_appt_win (const gboolean copy_appt_win, el_win *el
         , GtkTreeModel *model, GtkTreeIter *iter, GtkTreePath *path)
 {
-    GDateTime *gdt;
+    GtkWidget *apptw;
     gchar *uid = NULL, *flags = NULL;
 
     if (gtk_tree_model_get_iter(model, iter, path)) {
@@ -119,10 +105,21 @@ static void start_appt_win (const appt_win_action mode,  el_win *el
         }
         g_free(flags);
 #endif
-        gdt = g_date_time_new_now_local ();
-        do_appt_win(mode, uid, el, gdt);
-        g_date_time_unref (gdt);
+        if (copy_appt_win)
+            apptw = orage_appointment_window_new_copy (uid);
+        else
+            apptw = orage_appointment_window_new_update (uid);
+
         g_free(uid);
+
+        /* inform the appointment that we are interested in it */
+        orage_appointment_window_set_event_list (
+                ORAGE_APPOINTMENT_WINDOW (apptw), el);
+
+        gtk_window_present (GTK_WINDOW (apptw));
+
+        /* we started this, so keep track of it */
+        el->apptw_list = g_list_prepend (el->apptw_list, apptw);
     }
 }
 
@@ -134,7 +131,7 @@ static void editEvent(GtkTreeView *view, GtkTreePath *path
     GtkTreeIter   iter;
 
     model = gtk_tree_view_get_model(view);
-    start_appt_win (UPDATE_APPT_WIN, el, model, &iter, path);
+    start_appt_win (FALSE, el, model, &iter, path);
 }
 
 static gint sortEvent_comp(GtkTreeModel *model
@@ -798,7 +795,7 @@ static void duplicate_appointment(el_win *el)
         if (list_len > 1)
             g_warning ("Copy: too many rows selected");
         path = (GtkTreePath *)g_list_nth_data(list, 0);
-        start_appt_win (COPY_APPT_WIN, el, model, &iter, path);
+        start_appt_win (TRUE, el, model, &iter, path);
     }
     else {
         orage_info_dialog(GTK_WINDOW(el->Window)
@@ -824,7 +821,7 @@ static void on_File_duplicate_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
 
 static void close_window(el_win *el)
 {
-    appt_win *apptw;
+    OrageAppointmentWindow *apptw;
     GList *apptw_list;
 
     gtk_window_get_size(GTK_WINDOW(el->Window)
@@ -839,9 +836,12 @@ static void close_window(el_win *el)
     for (apptw_list = g_list_first(apptw_list);
          apptw_list != NULL;
          apptw_list = g_list_next(apptw_list)) {
-        apptw = (appt_win *)apptw_list->data;
+        apptw = ORAGE_APPOINTMENT_WINDOW (apptw_list->data);
         if (apptw) /* appointment window is still alive */
-            apptw->el = NULL; /* not interested anymore */
+        {
+            /* not interested anymore */
+            orage_appointment_window_set_event_list  (apptw, NULL);
+        }
         else
             g_warning ("%s: not null appt window", G_STRFUNC);
     }
@@ -953,9 +953,16 @@ static void on_Go_next_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
 static void create_new_appointment(el_win *el)
 {
     GDateTime *gdt;
+    GtkWidget *appointment_window;
 
     gdt = g_object_get_data (G_OBJECT (el->Window), DATE_KEY);
-    do_appt_win (NEW_APPT_WIN, NULL, el, gdt);
+    appointment_window = orage_appointment_window_new (gdt);
+    /* inform the appointment that we are interested in it */
+    orage_appointment_window_set_event_list (
+            ORAGE_APPOINTMENT_WINDOW (appointment_window), el);
+    gtk_window_present (GTK_WINDOW (appointment_window));
+    /* we started this, so keep track of it */
+    el->apptw_list = g_list_prepend (el->apptw_list, appointment_window);
 }
 
 static void on_File_newApp_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
