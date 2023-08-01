@@ -63,7 +63,7 @@
 #include "ical-code.h"
 #include "ical-internal.h"
 #include "event-list.h"
-#include "appointment.h"
+#include "orage-appointment-window.h"
 #include "parameters.h"
 #include "interface.h"
 #include "xfical_exception.h"
