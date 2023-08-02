@@ -24,6 +24,8 @@ orage_SOURCES =							\
 	orage-application.h					\
 	orage-appointment-window.c				\
 	orage-appointment-window.h				\
+	orage-category.c					\
+	orage-category.h					\
 	orage-css.c						\
 	orage-css.h						\
 	orage-i18n.h						\
