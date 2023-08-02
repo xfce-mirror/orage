@@ -51,13 +51,14 @@
 #include <glib.h>
 #include <glib/gprintf.h>
 
+#include "orage-appointment-window.h"
+#include "orage-category.h"
 #include "orage-i18n.h"
 #include "orage-window.h"
 #include "functions.h"
 #include "reminder.h"
 #include "ical-code.h"
 #include "event-list.h"
-#include "orage-appointment-window.h"
 #include "parameters.h"
 #include "day-view.h"
 
