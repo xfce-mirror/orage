@@ -37,6 +37,10 @@ G_BEGIN_DECLS
 
 OrageRc *orage_category_file_open (const gboolean read_only);
 GdkRGBA *orage_category_list_contains (const gchar *categories);
+
+/** Load category list to static variable and return pointer of this variable.
+ *  @return pointer to static category list
+ */
 GList *orage_category_get_list (void);
 void orage_category_write_entry (const gchar *category, const GdkRGBA *color);
 void orage_category_remove_entry (const gchar *category);
