@@ -51,13 +51,14 @@
 #include <glib.h>
 #include <glib/gprintf.h>
 
+#include "orage-appointment-window.h"
+#include "orage-category.h"
 #include "orage-i18n.h"
 #include "orage-window.h"
 #include "functions.h"
 #include "reminder.h"
 #include "ical-code.h"
 #include "event-list.h"
-#include "orage-appointment-window.h"
 #include "parameters.h"
 #include "day-view.h"
 
@@ -678,7 +679,7 @@ static void journal_data(el_win *el)
 
 void refresh_el_win(el_win *el)
 {
-    orage_category_get_list();
+    (void)orage_category_get_list (); /* Uses side effects. */
     if (el->Window && el->ListStore && el->TreeView) {
         gtk_list_store_clear(el->ListStore);
         el->page = gtk_notebook_get_current_page(GTK_NOTEBOOK(el->Notebook));

@@ -39,6 +39,7 @@
 #include "parameters.h"
 #include "event-list.h"
 #include "orage-appointment-window.h"
+#include "orage-category.h"
 
 #define BUTTON_ROW 0
 #define FULL_DAY_ROW (BUTTON_ROW + 1)
@@ -975,7 +976,7 @@ static void build_day_view_table (day_win *dw)
     GDateTime *gdt0;
     GDateTime *gdt_today;
 
-    orage_category_get_list();
+    (void)orage_category_get_list (); /* Uses side effects. */
     days = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(dw->day_spin));
     days_n1 = days + 1;
     gdt0 = g_date_time_ref (

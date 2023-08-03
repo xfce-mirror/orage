@@ -20,28 +20,30 @@
  *     Boston, MA 02110-1301 USA
  */
 
-#ifndef ORAGE_APPOINTMENT_WINDOW_H
-#define ORAGE_APPOINTMENT_WINDOW_H 1
+#ifndef ORAGE_CATEGORY_H
+#define ORAGE_CATEGORY_H 1
 
-#include <glib-object.h>
+#include "orage-rc-file.h"
 #include <glib.h>
-#include <gtk/gtk.h>
+#include <gdk/gdk.h>
+
+typedef struct _orage_category
+{
+    gchar *category;
+    GdkRGBA color;
+} orage_category_struct;
 
 G_BEGIN_DECLS
 
-#define ORAGE_TYPE_APPOINTMENT_WINDOW (orage_appointment_window_get_type ())
+OrageRc *orage_category_file_open (const gboolean read_only);
+GdkRGBA *orage_category_list_contains (const gchar *categories);
 
-G_DECLARE_FINAL_TYPE (OrageAppointmentWindow, orage_appointment_window, ORAGE, APPOINTMENT_WINDOW, GtkWindow)
-
-GtkWidget *orage_appointment_window_new (GDateTime *gdt);
-GtkWidget *orage_appointment_window_new_copy (const gchar *uid);
-GtkWidget *orage_appointment_window_new_update (const gchar *uid);
-
-void orage_appointment_window_set_event_list (OrageAppointmentWindow *apptw,
-                                              void *el);
-
-void orage_appointment_window_set_day_window (OrageAppointmentWindow *apptw,
-                                              void *dw);
+/** Load category list to static variable and return pointer of this variable.
+ *  @return pointer to static category list
+ */
+GList *orage_category_get_list (void);
+void orage_category_write_entry (const gchar *category, const GdkRGBA *color);
+void orage_category_remove_entry (const gchar *category);
 
 G_END_DECLS
 
