@@ -3019,12 +3019,12 @@ static GtkWidget *build_daily_box (void)
 
     repeat_days_rbutton = gtk_radio_button_new_with_mnemonic_from_widget (
             repeat_forever_rbutton, _("Every"));
-    g_object_set (repeat_days_rbutton, "margin-right", 5, NULL);
     repeat_days_spin = gtk_spin_button_new_with_range (2, 100, 1);
+    g_object_set (repeat_days_spin, "valign", GTK_ALIGN_CENTER,
+                                    "vexpand", FALSE, NULL);
     gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (repeat_days_spin), TRUE);
     repeat_days_label = gtk_label_new (_("day(s)"));
-    g_object_set (repeat_days_label, "margin-left", 5, NULL);
-    repeat_days_box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0));
+    repeat_days_box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 5));
     gtk_box_pack_start (repeat_days_box, repeat_days_rbutton, FALSE, FALSE, 0);
     gtk_box_pack_start (repeat_days_box, repeat_days_spin, FALSE, FALSE, 0);
     gtk_box_pack_start (repeat_days_box, repeat_days_label, FALSE, FALSE, 0);
@@ -3057,8 +3057,9 @@ static GtkWidget *build_weekly_box (void)
     GtkWidget *repeat_weeks_spin;
 
     repeat_weeks_label1 = gtk_label_new (_("Every"));
-    g_object_set (repeat_weeks_label1, "margin-right", 5, NULL);
     repeat_weeks_spin = gtk_spin_button_new_with_range (1, 100, 1);
+    g_object_set (repeat_weeks_spin, "valign", GTK_ALIGN_CENTER,
+                                     "vexpand", FALSE, NULL);
     gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (repeat_weeks_spin), TRUE);
     repeat_weeks_label2 = gtk_label_new (_("week(s) on:"));
     repeat_weeks_box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 7));
@@ -3070,7 +3071,6 @@ static GtkWidget *build_weekly_box (void)
     for (i = 0; i <= 6; i++)
     {
         weekday[i] = gtk_check_button_new_with_mnemonic (weekday_array[i]);
-        g_object_set (weekday[i], "halign", GTK_ALIGN_CENTER, NULL);
         gtk_box_pack_start (weekday_box, weekday[i], FALSE, FALSE, 7);
     }
 
@@ -3099,7 +3099,6 @@ static GtkWidget *build_monthly_box (void)
 
     GtkBox *box;
     GtkWidget *box_widget;
-    GtkWidget *separator_label;
     GtkBox *beginning_box;
     GtkRadioButton *beginning_selector;
     GtkWidget *beginning_spinner;
@@ -3113,33 +3112,28 @@ static GtkWidget *build_monthly_box (void)
 
     beginning_selector = GTK_RADIO_BUTTON (
             gtk_radio_button_new_with_label (NULL,
-            _("From the beginning of the month")));
-    separator_label = gtk_label_new (":");
+            _("From the beginning of the month:")));
     beginning_spinner = gtk_spin_button_new_with_range (1, 28, 1);
     beginning_box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0));
     gtk_box_pack_start (beginning_box, GTK_WIDGET (beginning_selector), FALSE, FALSE, 0);
-    gtk_box_pack_start (beginning_box, separator_label, FALSE, FALSE, 0);
     gtk_box_pack_start (beginning_box, beginning_spinner, FALSE, FALSE, 0);
 
     end_selector = gtk_radio_button_new_with_mnemonic_from_widget (
-            GTK_RADIO_BUTTON (beginning_selector), _("From the end of the month"));
-    separator_label = gtk_label_new (":");
+            GTK_RADIO_BUTTON (beginning_selector),
+            _("From the end of the month:"));
     end_sepinner = gtk_spin_button_new_with_range (1, 28, 1);
     end_box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0));
     gtk_box_pack_start (end_box, end_selector, FALSE, FALSE, 0);
-    gtk_box_pack_start (end_box, separator_label, FALSE, FALSE, 0);
     gtk_box_pack_start (end_box, end_sepinner, FALSE, FALSE, 0);
 
     every_selector = gtk_radio_button_new_with_mnemonic_from_widget (
-            beginning_selector, _("Every"));
-    separator_label = gtk_label_new (":");
+            beginning_selector, _("Every:"));
     every_week_selector = orage_create_combo_box_with_content (
             week_list, 5);
     every_day_selector = orage_create_combo_box_with_content (
             weekday_list, 10);
     every_box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0));
     gtk_box_pack_start (every_box, every_selector, FALSE, FALSE, 0);
-    gtk_box_pack_start (every_box, separator_label, FALSE, FALSE, 0);
     gtk_box_pack_start (every_box, every_week_selector, FALSE, FALSE, 0);
     gtk_box_pack_start (every_box, every_day_selector, FALSE, FALSE, 0);
 
@@ -3177,7 +3171,6 @@ static GtkWidget *build_yearly_box (void)
     GtkBox *box;
     GtkWidget *box_widget;
     GtkBox *monthly_box;
-    GtkWidget *separator_label1;
     GtkWidget *separator_label2;
     GtkRadioButton *monthly_selector;
     GtkWidget *monthly_button;
@@ -3188,17 +3181,14 @@ static GtkWidget *build_yearly_box (void)
     GtkWidget *every_month_selector;
 
     monthly_selector = GTK_RADIO_BUTTON (gtk_radio_button_new_with_label (NULL,
-                                         _("Monthly")));
-    separator_label1 = gtk_label_new (":");
+                                         _("Monthly:")));
     monthly_button = gtk_button_new_with_label ("start date");
     monthly_box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0));
     gtk_box_pack_start (monthly_box, GTK_WIDGET (monthly_selector), FALSE, FALSE, 0);
-    gtk_box_pack_start (monthly_box, separator_label1, FALSE, FALSE, 0);
     gtk_box_pack_start (monthly_box, monthly_button, FALSE, FALSE, 0);
 
     every_selector = gtk_radio_button_new_with_mnemonic_from_widget (
-            monthly_selector, _("Every"));
-    separator_label1 = gtk_label_new (":");
+            monthly_selector, _("Every:"));
     every_week_selector = orage_create_combo_box_with_content (
             week_list, 5);
     every_week_day_selector = orage_create_combo_box_with_content (
@@ -3211,9 +3201,8 @@ static GtkWidget *build_yearly_box (void)
     separator_label2 = gtk_label_new (_("of"));
     every_month_selector = orage_create_combo_box_with_content (
             month_list, 12);
-    every_box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0));
+    every_box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 5));
     gtk_box_pack_start (every_box, every_selector, FALSE, FALSE, 0);
-    gtk_box_pack_start (every_box, separator_label1, FALSE, FALSE, 0);
     gtk_box_pack_start (every_box, every_week_selector, FALSE, FALSE, 0);
     gtk_box_pack_start (every_box, every_week_day_selector, FALSE, FALSE, 0);
     gtk_box_pack_start (every_box, separator_label2, FALSE, FALSE, 0);
@@ -3240,6 +3229,13 @@ static GtkWidget *build_empty_box (void)
     gtk_widget_set_visible (box_widget, TRUE);
 
     return box_widget;
+}
+
+static GtkWidget *align_box_contents (GtkWidget *box)
+{
+    g_object_set (box, "valign", GTK_ALIGN_START, NULL);
+
+    return box;
 }
 
 static void build_toolbar (OrageAppointmentWindow *apptw)
@@ -4255,13 +4251,13 @@ static void build_recurrence_page (OrageAppointmentWindow *apptw)
     gtk_stack_add_named (GTK_STACK (apptw->recurrence_limit_box),
                          build_empty_box (), "none");
     gtk_stack_add_named (GTK_STACK (apptw->recurrence_limit_box),
-                         build_daily_box (), "daily");
+                         align_box_contents (build_daily_box ()), "daily");
     gtk_stack_add_named (GTK_STACK (apptw->recurrence_limit_box),
-                         build_weekly_box (), "weekly");
+                         align_box_contents (build_weekly_box ()), "weekly");
     gtk_stack_add_named (GTK_STACK (apptw->recurrence_limit_box),
-                         build_monthly_box (), "monthly");
+                         align_box_contents (build_monthly_box ()), "monthly");
     gtk_stack_add_named (GTK_STACK (apptw->recurrence_limit_box),
-                         build_yearly_box (), "yearly");
+                         align_box_contents (build_yearly_box ()), "yearly");
     gtk_stack_add_named (GTK_STACK (apptw->recurrence_limit_box),
                          build_empty_box (), "hourly");
 #if 0
