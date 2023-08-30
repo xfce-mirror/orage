@@ -3015,8 +3015,8 @@ static void on_appDefault_read_button_clicked_cb (
     fill_appt_window_alarm(apptw, appt);
 }
 
-static void daily_repeat_checkbutton_toggled_cb (GtkToggleButton *button,
-                                                 gpointer user_data)
+static void on_recur_daily_toggled_cb (GtkToggleButton *button,
+                                       gpointer user_data)
 {
     OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
     const gboolean enabled =
@@ -3025,8 +3025,8 @@ static void daily_repeat_checkbutton_toggled_cb (GtkToggleButton *button,
     gtk_widget_set_sensitive (apptw->recurrence_daily_spin, enabled);
 }
 
-static void monthly_begin_checkbutton_toggled_cb (GtkToggleButton *button,
-                                                  gpointer user_data)
+static void on_recur_monthly_begin_toggled_cb (GtkToggleButton *button,
+                                               gpointer user_data)
 {
     OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
     const gboolean enabled =
@@ -3035,8 +3035,8 @@ static void monthly_begin_checkbutton_toggled_cb (GtkToggleButton *button,
     gtk_widget_set_sensitive (apptw->recurrence_monthly_begin_spin, enabled);
 }
 
-static void monthly_end_checkbutton_toggled_cb (GtkToggleButton *button,
-                                                gpointer user_data)
+static void on_recur_monthly_end_toggled_cb (GtkToggleButton *button,
+                                             gpointer user_data)
 {
     OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
     const gboolean enabled =
@@ -3045,8 +3045,8 @@ static void monthly_end_checkbutton_toggled_cb (GtkToggleButton *button,
     gtk_widget_set_sensitive (apptw->recurrence_monthly_end_spin, enabled);
 }
 
-static void monthly_every_checkbutton_toggled_cb (GtkToggleButton *button,
-                                                  gpointer user_data)
+static void on_recur_monthly_every_toggled_cb (GtkToggleButton *button,
+                                               gpointer user_data)
 {
     OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
     const gboolean enabled =
@@ -3056,8 +3056,8 @@ static void monthly_every_checkbutton_toggled_cb (GtkToggleButton *button,
     gtk_widget_set_sensitive (apptw->recurrence_monthly_day_selector, enabled);
 }
 
-static void yearly_repeat_checkbutton_toggled_cb (GtkToggleButton *button,
-                                                  gpointer user_data)
+static void on_recur_yearly_toggled_cb (GtkToggleButton *button,
+                                        gpointer user_data)
 {
     OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
     const gboolean enabled =
@@ -3097,7 +3097,7 @@ static GtkWidget *build_daily_box (OrageAppointmentWindow *apptw)
     gtk_box_pack_start (box, GTK_WIDGET (repeat_days_box), FALSE, FALSE, 0);
 
     g_signal_connect (apptw->recurrence_daily_limit, "toggled",
-                      G_CALLBACK (daily_repeat_checkbutton_toggled_cb), apptw);
+                      G_CALLBACK (on_recur_daily_toggled_cb), apptw);
 
     box_widget = (GtkWidget *)box;
     gtk_widget_set_visible (box_widget, TRUE);
@@ -3213,11 +3213,11 @@ static GtkWidget *build_monthly_box (OrageAppointmentWindow *apptw)
     gtk_box_pack_start (box, GTK_WIDGET (every_box), FALSE, FALSE, 0);
 
     g_signal_connect (beginning_selector, "toggled",
-                      G_CALLBACK (monthly_begin_checkbutton_toggled_cb), apptw);
+                      G_CALLBACK (on_recur_monthly_begin_toggled_cb), apptw);
     g_signal_connect (end_selector, "toggled",
-                      G_CALLBACK (monthly_end_checkbutton_toggled_cb), apptw);
+                      G_CALLBACK (on_recur_monthly_end_toggled_cb), apptw);
     g_signal_connect (every_selector, "toggled",
-                      G_CALLBACK (monthly_every_checkbutton_toggled_cb), apptw);
+                      G_CALLBACK (on_recur_monthly_every_toggled_cb), apptw);
 
     box_widget = (GtkWidget *)box;
     gtk_widget_set_visible (box_widget, TRUE);
@@ -3293,7 +3293,7 @@ static GtkWidget *build_yearly_box (OrageAppointmentWindow *apptw)
     gtk_box_pack_start (box, GTK_WIDGET (every_box), FALSE, FALSE, 0);
 
     g_signal_connect (every_selector, "toggled",
-                      G_CALLBACK (yearly_repeat_checkbutton_toggled_cb), apptw);
+                      G_CALLBACK (on_recur_yearly_toggled_cb), apptw);
 
     box_widget = (GtkWidget *)box;
     gtk_widget_set_visible (box_widget, TRUE);
