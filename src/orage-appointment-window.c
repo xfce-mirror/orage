@@ -261,6 +261,9 @@ struct _OrageAppointmentWindow
     GtkWidget *Recur_calendar3;
 
     GtkWidget *recurrence_limit_box;
+    GtkWidget *recurrence_daily_forever;
+    GtkWidget *recurrence_daily_limit;
+    GtkWidget *recurrence_daily_spin;
 
     GDateTime *appointment_time;
     GDateTime *appointment_time_2;
@@ -3004,34 +3007,46 @@ static void on_appDefault_read_button_clicked_cb (
     fill_appt_window_alarm(apptw, appt);
 }
 
-static GtkWidget *build_daily_box (void)
+static void daily_repeat_checkbutton_toggled_cb (GtkToggleButton *button,
+                                                 gpointer user_data)
+{
+    OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
+
+    if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button)))
+        gtk_widget_set_sensitive (apptw->recurrence_daily_spin, TRUE);
+    else
+        gtk_widget_set_sensitive (apptw->recurrence_daily_spin, FALSE);
+}
+
+static GtkWidget *build_daily_box (OrageAppointmentWindow *apptw)
 {
     GtkBox *box;
     GtkWidget *box_widget;
-    GtkRadioButton *repeat_forever_rbutton;
     GtkBox *repeat_days_box;
-    GtkWidget *repeat_days_rbutton;
-    GtkWidget *repeat_days_spin;
     GtkWidget *repeat_days_label;
 
-    repeat_forever_rbutton = GTK_RADIO_BUTTON (
-            gtk_radio_button_new_with_label (NULL, _("Every day")));
+    apptw->recurrence_daily_forever =
+            gtk_radio_button_new_with_label (NULL, _("Every day"));
 
-    repeat_days_rbutton = gtk_radio_button_new_with_mnemonic_from_widget (
-            repeat_forever_rbutton, _("Every"));
-    repeat_days_spin = gtk_spin_button_new_with_range (2, 100, 1);
-    g_object_set (repeat_days_spin, "valign", GTK_ALIGN_CENTER,
+    apptw->recurrence_daily_limit = gtk_radio_button_new_with_mnemonic_from_widget (
+            GTK_RADIO_BUTTON (apptw->recurrence_daily_forever), _("Every"));
+    apptw->recurrence_daily_spin = gtk_spin_button_new_with_range (2, 100, 1);
+    g_object_set (apptw->recurrence_daily_spin, "valign", GTK_ALIGN_CENTER,
                                     "vexpand", FALSE, NULL);
-    gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (repeat_days_spin), TRUE);
+    gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (apptw->recurrence_daily_spin), TRUE);
+    gtk_widget_set_sensitive (apptw->recurrence_daily_spin, FALSE);
     repeat_days_label = gtk_label_new (_("day(s)"));
     repeat_days_box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 5));
-    gtk_box_pack_start (repeat_days_box, repeat_days_rbutton, FALSE, FALSE, 0);
-    gtk_box_pack_start (repeat_days_box, repeat_days_spin, FALSE, FALSE, 0);
+    gtk_box_pack_start (repeat_days_box, apptw->recurrence_daily_limit, FALSE, FALSE, 0);
+    gtk_box_pack_start (repeat_days_box, apptw->recurrence_daily_spin, FALSE, FALSE, 0);
     gtk_box_pack_start (repeat_days_box, repeat_days_label, FALSE, FALSE, 0);
 
     box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 20));
-    gtk_box_pack_start (box, GTK_WIDGET (repeat_forever_rbutton), FALSE, FALSE, 0);
+    gtk_box_pack_start (box, GTK_WIDGET (apptw->recurrence_daily_forever), FALSE, FALSE, 0);
     gtk_box_pack_start (box, GTK_WIDGET (repeat_days_box), FALSE, FALSE, 0);
+
+    g_signal_connect (apptw->recurrence_daily_limit, "toggled",
+                      G_CALLBACK (daily_repeat_checkbutton_toggled_cb), apptw);
 
     box_widget = (GtkWidget *)box;
     gtk_widget_set_visible (box_widget, TRUE);
@@ -4251,7 +4266,7 @@ static void build_recurrence_page (OrageAppointmentWindow *apptw)
     gtk_stack_add_named (GTK_STACK (apptw->recurrence_limit_box),
                          build_empty_box (), "none");
     gtk_stack_add_named (GTK_STACK (apptw->recurrence_limit_box),
-                         align_box_contents (build_daily_box ()), "daily");
+                         align_box_contents (build_daily_box (apptw)), "daily");
     gtk_stack_add_named (GTK_STACK (apptw->recurrence_limit_box),
                          align_box_contents (build_weekly_box ()), "weekly");
     gtk_stack_add_named (GTK_STACK (apptw->recurrence_limit_box),
