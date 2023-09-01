@@ -71,6 +71,13 @@
 #define APPOINTMENT_ACTION_PROPERTY "appointment-action"
 #define APPOINTMENT_PARAMETER_PROPERTY "appointment-parameter"
 
+#define RECURRENCE_NONE "none"
+#define RECURRENCE_DAILY "daily"
+#define RECURRENCE_WEEKLY "weekly"
+#define RECURRENCE_MONTHLY "monthly"
+#define RECURRENCE_YEARLY "yearly"
+#define RECURRENCE_HOURLY "hourly"
+
 #define RECUR_FREQ_ARRAY_ELEMENTS 6
 
 typedef enum
@@ -260,7 +267,7 @@ struct _OrageAppointmentWindow
     GtkWidget *Recur_calendar2;
     GtkWidget *Recur_calendar3;
 
-    GtkWidget *recurrence_limit_box;
+    GtkStack  *recurrence_limit_box;
     GtkWidget *recurrence_daily_limit;
     GtkWidget *recurrence_daily_spin;
 
@@ -560,32 +567,32 @@ static void reurrence_set_visible (OrageAppointmentWindow *apptw)
     {
         case XFICAL_FREQ_NONE:
             gtk_stack_set_visible_child_name (
-                    GTK_STACK (apptw->recurrence_limit_box), "none");
+                    GTK_STACK (apptw->recurrence_limit_box), RECURRENCE_NONE);
             break;
 
         case XFICAL_FREQ_DAILY:
             gtk_stack_set_visible_child_name (
-                    GTK_STACK (apptw->recurrence_limit_box), "daily");
+                    GTK_STACK (apptw->recurrence_limit_box), RECURRENCE_DAILY);
             break;
 
         case XFICAL_FREQ_WEEKLY:
             gtk_stack_set_visible_child_name (
-                    GTK_STACK (apptw->recurrence_limit_box), "weekly");
+                    GTK_STACK (apptw->recurrence_limit_box), RECURRENCE_WEEKLY);
             break;
 
         case XFICAL_FREQ_MONTHLY:
             gtk_stack_set_visible_child_name (
-                    GTK_STACK (apptw->recurrence_limit_box), "monthly");
+                    GTK_STACK (apptw->recurrence_limit_box), RECURRENCE_MONTHLY);
             break;
 
         case XFICAL_FREQ_YEARLY:
             gtk_stack_set_visible_child_name (
-                    GTK_STACK (apptw->recurrence_limit_box), "yearly");
+                    GTK_STACK (apptw->recurrence_limit_box), RECURRENCE_YEARLY);
             break;
 
         case XFICAL_FREQ_HOURLY:
             gtk_stack_set_visible_child_name (
-                    GTK_STACK (apptw->recurrence_limit_box), "hourly");
+                    GTK_STACK (apptw->recurrence_limit_box), RECURRENCE_HOURLY);
             break;
 
         default:
@@ -1218,6 +1225,7 @@ static void fill_appt_from_recurrence (xfical_appt *appt,
     gint month;
     gint day;
     gint i;
+    const gchar *visible_stack_name;
 
     appt->freq = gtk_combo_box_get_active (GTK_COMBO_BOX (apptw->Recur_freq_cb));
 
@@ -1270,6 +1278,39 @@ static void fill_appt_from_recurrence (xfical_appt *appt,
     /* recurrence todo base */
     appt->recur_todo_base_start = gtk_toggle_button_get_active (
             GTK_TOGGLE_BUTTON (apptw->Recur_todo_base_start_rb));
+
+    /**************************************************************************/
+    visible_stack_name =
+            gtk_stack_get_visible_child_name (apptw->recurrence_limit_box);
+
+    if (g_strcmp0 (visible_stack_name, RECURRENCE_NONE) == 0)
+    {
+        g_debug ("%s: RECURRENCE_NONE", G_STRFUNC);
+    }
+    else if (g_strcmp0 (visible_stack_name, RECURRENCE_DAILY) == 0)
+    {
+        g_debug ("%s: RECURRENCE_DAILY", G_STRFUNC);
+    }
+    else if (g_strcmp0 (visible_stack_name, RECURRENCE_WEEKLY) == 0)
+    {
+        g_debug ("%s: RECURRENCE_WEEKLY", G_STRFUNC);
+    }
+    else if (g_strcmp0 (visible_stack_name, RECURRENCE_MONTHLY) == 0)
+    {
+        g_debug ("%s: RECURRENCE_MONTHLY", G_STRFUNC);
+    }
+    else if (g_strcmp0 (visible_stack_name, RECURRENCE_YEARLY) == 0)
+    {
+        g_debug ("%s: RECURRENCE_YEARLY", G_STRFUNC);
+    }
+    else if (g_strcmp0 (visible_stack_name, RECURRENCE_HOURLY) == 0)
+    {
+        g_debug ("%s: RECURRENCE_HOURLY", G_STRFUNC);
+    }
+    else
+    {
+        g_assert_not_reached ();
+    }
 }
 
 /*
@@ -4337,27 +4378,27 @@ static void build_recurrence_page (OrageAppointmentWindow *apptw)
                          (GTK_EXPAND | GTK_FILL), (GTK_FILL));
 
     /****************************** Recurrence ********************************/
-    apptw->recurrence_limit_box = gtk_stack_new ();
-    gtk_stack_add_named (GTK_STACK (apptw->recurrence_limit_box),
-                         build_empty_box (), "none");
-    gtk_stack_add_named (GTK_STACK (apptw->recurrence_limit_box),
-                         align_box_contents (build_daily_box (apptw)), "daily");
-    gtk_stack_add_named (GTK_STACK (apptw->recurrence_limit_box),
-                         align_box_contents (build_weekly_box ()), "weekly");
-    gtk_stack_add_named (GTK_STACK (apptw->recurrence_limit_box),
-                         align_box_contents (build_monthly_box (apptw)), "monthly");
-    gtk_stack_add_named (GTK_STACK (apptw->recurrence_limit_box),
-                         align_box_contents (build_yearly_box (apptw)), "yearly");
-    gtk_stack_add_named (GTK_STACK (apptw->recurrence_limit_box),
-                         build_empty_box (), "hourly");
+    apptw->recurrence_limit_box = GTK_STACK (gtk_stack_new ());
+    gtk_stack_add_named (apptw->recurrence_limit_box,
+                         build_empty_box (), RECURRENCE_NONE);
+    gtk_stack_add_named (apptw->recurrence_limit_box,
+                         align_box_contents (build_daily_box (apptw)), RECURRENCE_DAILY);
+    gtk_stack_add_named (apptw->recurrence_limit_box,
+                         align_box_contents (build_weekly_box ()), RECURRENCE_WEEKLY);
+    gtk_stack_add_named (apptw->recurrence_limit_box,
+                         align_box_contents (build_monthly_box (apptw)), RECURRENCE_MONTHLY);
+    gtk_stack_add_named (apptw->recurrence_limit_box,
+                         align_box_contents (build_yearly_box (apptw)), RECURRENCE_YEARLY);
+    gtk_stack_add_named (apptw->recurrence_limit_box,
+                         build_empty_box (), RECURRENCE_HOURLY);
 #if 0
-    gtk_stack_set_transition_duration (GTK_STACK (apptw->recurrence_limit_box),
-                                       200);
-    gtk_stack_set_transition_type (GTK_STACK (apptw->recurrence_limit_box),
+    gtk_stack_set_transition_duration (apptw->recurrence_limit_box, 200);
+    gtk_stack_set_transition_type (pptw->recurrence_limit_box,
                                    GTK_STACK_TRANSITION_TYPE_SLIDE_UP_DOWN);
 #endif
 
-    orage_table_add_row (recur_table, NULL, apptw->recurrence_limit_box, row,
+    orage_table_add_row (recur_table, NULL,
+                         GTK_WIDGET (apptw->recurrence_limit_box), row,
                          (GTK_EXPAND | GTK_FILL), (0));
     row++;
 
