@@ -243,7 +243,6 @@ struct _OrageAppointmentWindow
     GtkWidget *Recur_until_button;
     GtkWidget *Recur_byday_label;
     GtkWidget *Recur_byday_hbox;
-    GtkWidget *Recur_byday_cb[7];    /* 0=Mo, 1=Tu ... 6=Su */
     GtkWidget *Recur_byday_spin_label;
     GtkWidget *Recur_byday_spin_hbox;
     GtkWidget *Recur_byday_spin[7];  /* 0=Mo, 1=Tu ... 6=Su */
@@ -270,6 +269,7 @@ struct _OrageAppointmentWindow
     GtkStack  *recurrence_limit_box;
     GtkWidget *recurrence_daily_limit;
     GtkWidget *recurrence_daily_spin;
+    GtkWidget *recurrence_daily_byday[7]; /* 0=Mo, 1=Tu ... 6=Su */
 
     GtkWidget *recurrence_monthly_begin_spin;
     GtkWidget *recurrence_monthly_end_spin;
@@ -483,20 +483,14 @@ static void set_repeat_sensitivity (OrageAppointmentWindow *apptw)
         gtk_widget_set_sensitive(apptw->Recur_count_label, FALSE);
         gtk_widget_set_sensitive(apptw->Recur_until_rb, FALSE);
         gtk_widget_set_sensitive(apptw->Recur_until_button, FALSE);
-        for (i=0; i <= 6; i++) {
-            gtk_widget_set_sensitive(apptw->Recur_byday_cb[i], FALSE);
-            gtk_widget_set_sensitive(apptw->Recur_byday_spin[i], FALSE);
-        }
 #if 0
         gtk_widget_set_sensitive(apptw->Recur_int_spin, FALSE);
         gtk_widget_set_sensitive(apptw->Recur_int_spin_label1, FALSE);
         gtk_widget_set_sensitive(apptw->Recur_int_spin_label2, FALSE);
-#endif
-        gtk_widget_set_sensitive(apptw->Recur_todo_base_hbox, FALSE);
-#if 0
         gtk_widget_set_sensitive(apptw->Recur_exception_hbox, FALSE);
         gtk_widget_set_sensitive(apptw->Recur_calendar_hbox, FALSE);
 #endif
+        gtk_widget_set_sensitive(apptw->Recur_todo_base_hbox, FALSE);
     }
     else {
         gtk_widget_set_sensitive(apptw->Recur_limit_rb, TRUE);
@@ -518,9 +512,6 @@ static void set_repeat_sensitivity (OrageAppointmentWindow *apptw)
         else {
             gtk_widget_set_sensitive(apptw->Recur_until_button, FALSE);
         }
-        for (i=0; i <= 6; i++) {
-            gtk_widget_set_sensitive(apptw->Recur_byday_cb[i], TRUE);
-        }
         if (freq == XFICAL_FREQ_MONTHLY || freq == XFICAL_FREQ_YEARLY) {
             for (i=0; i <= 6; i++) {
                 gtk_widget_set_sensitive(apptw->Recur_byday_spin[i], TRUE);
@@ -536,8 +527,6 @@ static void set_repeat_sensitivity (OrageAppointmentWindow *apptw)
         gtk_widget_set_sensitive(apptw->Recur_int_spin_label1, TRUE);
         gtk_widget_set_sensitive(apptw->Recur_int_spin_label2, TRUE);
         gtk_widget_set_sensitive(apptw->Recur_todo_base_hbox, TRUE);
-#endif
-#if 0
         gtk_widget_set_sensitive(apptw->Recur_exception_hbox, TRUE);
         gtk_widget_set_sensitive(apptw->Recur_calendar_hbox, TRUE);
 #endif
@@ -842,6 +831,15 @@ static void app_recur_checkbutton_clicked_cb (
     refresh_recur_calendars (apptw);
 }
 
+static void on_app_recur_checkbutton_clicked_cb (
+    G_GNUC_UNUSED GtkCheckButton *checkbutton, gpointer user_data)
+{
+    OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
+
+    mark_appointment_changed (apptw);
+    refresh_recur_calendars (apptw);
+}
+
 static void app_recur_feature_checkbutton_clicked_cb (
     G_GNUC_UNUSED GtkCheckButton *cb, gpointer user_data)
 {
@@ -1069,13 +1067,14 @@ static gboolean appWindow_check_and_close (OrageAppointmentWindow *apptw)
 }
 
 static gboolean on_appWindow_delete_event_cb (G_GNUC_UNUSED GtkWidget *widget,
-                                                G_GNUC_UNUSED GdkEvent *event,
-                                                gpointer user_data)
+                                              G_GNUC_UNUSED GdkEvent *event,
+                                              gpointer user_data)
 {
     return appWindow_check_and_close (ORAGE_APPOINTMENT_WINDOW (user_data));
 }
 
-static gboolean orage_validate_datetime (OrageAppointmentWindow *apptw, xfical_appt *appt)
+static gboolean orage_validate_datetime (OrageAppointmentWindow *apptw,
+                                         xfical_appt *appt)
 {
     /* Journal does not have end time so no need to check */
     if (appt->type == XFICAL_TYPE_JOURNAL
@@ -1091,6 +1090,45 @@ static gboolean orage_validate_datetime (OrageAppointmentWindow *apptw, xfical_a
     else {
         return(TRUE);
     }
+}
+
+static void fill_appt_from_recurrence_none (G_GNUC_UNUSED xfical_appt *appt)
+{
+    g_debug ("%s: RECURRENCE_NONE", G_STRFUNC);
+}
+
+static void fill_appt_from_recurrence_daily (G_GNUC_UNUSED xfical_appt *appt)
+{
+    g_debug ("%s: RECURRENCE_DAILY", G_STRFUNC);
+}
+
+static void fill_appt_from_recurrence_weekly (xfical_appt *appt,
+                                              OrageAppointmentWindow *apptw)
+{
+    guint i;
+
+    g_debug ("%s: RECURRENCE_WEEKLY", G_STRFUNC);
+
+    for (i = 0; i <= 6; i++)
+    {
+        appt->recur_byday[i] = gtk_toggle_button_get_active (
+                GTK_TOGGLE_BUTTON (apptw->recurrence_daily_byday[i]));
+    }
+}
+
+static void fill_appt_from_recurrence_monthly (G_GNUC_UNUSED xfical_appt *appt)
+{
+    g_debug ("%s: RECURRENCE_MONTHLY", G_STRFUNC);
+}
+
+static void fill_appt_from_recurrence_yearly (G_GNUC_UNUSED xfical_appt *appt)
+{
+    g_debug ("%s: RECURRENCE_YEARLY", G_STRFUNC);
+}
+
+static void fill_appt_from_recurrence_hoyrly (G_GNUC_UNUSED xfical_appt *appt)
+{
+    g_debug ("%s: RECURRENCE_HOURLY", G_STRFUNC);
 }
 
 static void fill_appt_from_apptw_alarm (xfical_appt *appt,
@@ -1224,8 +1262,6 @@ static void fill_appt_from_recurrence (xfical_appt *appt,
     gint year;
     gint month;
     gint day;
-    gint i;
-    const gchar *visible_stack_name;
 
     appt->freq = gtk_combo_box_get_active (GTK_COMBO_BOX (apptw->Recur_freq_cb));
 
@@ -1264,52 +1300,41 @@ static void fill_appt_from_recurrence (xfical_appt *appt,
     else
         g_warning ("%s: coding error, illegal recurrence", G_STRFUNC);
 
-    /* recurrence weekdays */
-    for (i=0; i <= 6; i++)
-    {
-        appt->recur_byday[i] = gtk_toggle_button_get_active (
-                GTK_TOGGLE_BUTTON (apptw->Recur_byday_cb[i]));
-
-        /* recurrence weekday selection for month/yearly case */
-        appt->recur_byday_cnt[i] = gtk_spin_button_get_value_as_int (
-                GTK_SPIN_BUTTON (apptw->Recur_byday_spin[i]));
-    }
-
     /* recurrence todo base */
     appt->recur_todo_base_start = gtk_toggle_button_get_active (
             GTK_TOGGLE_BUTTON (apptw->Recur_todo_base_start_rb));
 
     /**************************************************************************/
-    visible_stack_name =
-            gtk_stack_get_visible_child_name (apptw->recurrence_limit_box);
 
-    if (g_strcmp0 (visible_stack_name, RECURRENCE_NONE) == 0)
+    switch (appt->freq)
     {
-        g_debug ("%s: RECURRENCE_NONE", G_STRFUNC);
-    }
-    else if (g_strcmp0 (visible_stack_name, RECURRENCE_DAILY) == 0)
-    {
-        g_debug ("%s: RECURRENCE_DAILY", G_STRFUNC);
-    }
-    else if (g_strcmp0 (visible_stack_name, RECURRENCE_WEEKLY) == 0)
-    {
-        g_debug ("%s: RECURRENCE_WEEKLY", G_STRFUNC);
-    }
-    else if (g_strcmp0 (visible_stack_name, RECURRENCE_MONTHLY) == 0)
-    {
-        g_debug ("%s: RECURRENCE_MONTHLY", G_STRFUNC);
-    }
-    else if (g_strcmp0 (visible_stack_name, RECURRENCE_YEARLY) == 0)
-    {
-        g_debug ("%s: RECURRENCE_YEARLY", G_STRFUNC);
-    }
-    else if (g_strcmp0 (visible_stack_name, RECURRENCE_HOURLY) == 0)
-    {
-        g_debug ("%s: RECURRENCE_HOURLY", G_STRFUNC);
-    }
-    else
-    {
-        g_assert_not_reached ();
+        case XFICAL_FREQ_NONE:
+            fill_appt_from_recurrence_none (appt);
+            break;
+
+        case XFICAL_FREQ_DAILY:
+            fill_appt_from_recurrence_daily (appt);
+            break;
+
+        case XFICAL_FREQ_WEEKLY:
+            fill_appt_from_recurrence_weekly (appt, apptw);
+            break;
+
+        case XFICAL_FREQ_MONTHLY:
+            fill_appt_from_recurrence_monthly (appt);
+            break;
+
+        case XFICAL_FREQ_YEARLY:
+            fill_appt_from_recurrence_yearly (appt);
+            break;
+
+        case XFICAL_FREQ_HOURLY:
+            fill_appt_from_recurrence_hoyrly (appt);
+            break;
+
+        default:
+            g_assert_not_reached ();
+            break;
     }
 }
 
@@ -2644,7 +2669,7 @@ static void fill_appt_window_alarm (OrageAppointmentWindow *apptw,
 }
 
 static void fill_appt_window_recurrence (OrageAppointmentWindow *apptw,
-                                           xfical_appt *appt)
+                                         xfical_appt *appt)
 {
     gchar *untildate_to_display;
     gdouble recur_count;
@@ -2691,7 +2716,7 @@ static void fill_appt_window_recurrence (OrageAppointmentWindow *apptw,
     /* weekdays */
     for (i=0; i <= 6; i++) {
         gtk_toggle_button_set_active(
-                GTK_TOGGLE_BUTTON(apptw->Recur_byday_cb[i])
+                GTK_TOGGLE_BUTTON(apptw->recurrence_daily_byday[i])
                         , appt->recur_byday[i]);
         /* which weekday of month / year */
         gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->Recur_byday_spin[i]),
@@ -3153,7 +3178,7 @@ static GtkWidget *build_daily_box (OrageAppointmentWindow *apptw)
     return box_widget;
 }
 
-static GtkWidget *build_weekly_box (void)
+static GtkWidget *build_weekly_box (OrageAppointmentWindow *apptw)
 {
     const gchar *weekday_array[7] =
     {
@@ -3161,7 +3186,6 @@ static GtkWidget *build_weekly_box (void)
     };
 
     guint i;
-    GtkWidget *weekday[7];
     GtkBox *box;
     GtkWidget *box_widget;
     GtkBox *weekday_box;
@@ -3184,8 +3208,14 @@ static GtkWidget *build_weekly_box (void)
     weekday_box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0));
     for (i = 0; i <= 6; i++)
     {
-        weekday[i] = gtk_check_button_new_with_mnemonic (weekday_array[i]);
-        gtk_box_pack_start (weekday_box, weekday[i], FALSE, FALSE, 7);
+        apptw->recurrence_daily_byday[i] =
+                gtk_check_button_new_with_mnemonic (weekday_array[i]);
+        gtk_box_pack_start (weekday_box, apptw->recurrence_daily_byday[i],
+                            FALSE, FALSE, 7);
+
+        g_signal_connect (apptw->recurrence_daily_byday[i], "clicked",
+                          G_CALLBACK (on_app_recur_checkbutton_clicked_cb),
+                          apptw);
     }
 
     box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 7));
@@ -4346,11 +4376,6 @@ static void build_recurrence_page (OrageAppointmentWindow *apptw)
         _("Monthly"), _("Yearly"), _("Hourly")
     };
 
-    const gchar *weekday_array[7] =
-    {
-        _("Mon"), _("Tue"), _("Wed"), _("Thu"), _("Fri"), _("Sat"), _("Sun")
-    };
-
     GtkWidget *hbox;
     GtkWidget *recur_table;
 
@@ -4384,7 +4409,7 @@ static void build_recurrence_page (OrageAppointmentWindow *apptw)
     gtk_stack_add_named (apptw->recurrence_limit_box,
                          align_box_contents (build_daily_box (apptw)), RECURRENCE_DAILY);
     gtk_stack_add_named (apptw->recurrence_limit_box,
-                         align_box_contents (build_weekly_box ()), RECURRENCE_WEEKLY);
+                         align_box_contents (build_weekly_box (apptw)), RECURRENCE_WEEKLY);
     gtk_stack_add_named (apptw->recurrence_limit_box,
                          align_box_contents (build_monthly_box (apptw)), RECURRENCE_MONTHLY);
     gtk_stack_add_named (apptw->recurrence_limit_box,
@@ -4461,15 +4486,6 @@ static void build_recurrence_page (OrageAppointmentWindow *apptw)
     apptw->Recur_byday_hbox = gtk_grid_new ();
     g_object_set (apptw->Recur_byday_hbox, "column-homogeneous", TRUE,
                                            NULL);
-    for (i=0; i <= 6; i++) {
-        apptw->Recur_byday_cb[i] =
-                gtk_check_button_new_with_mnemonic(weekday_array[i]);
-        g_object_set (apptw->Recur_byday_cb[i], "halign", GTK_ALIGN_CENTER,
-                                                NULL);
-        gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_byday_hbox),
-                                 apptw->Recur_byday_cb[i], NULL,
-                                 GTK_POS_RIGHT, 1, 1);
-    }
     orage_table_add_row (recur_table
             , apptw->Recur_byday_label, apptw->Recur_byday_hbox
             , ++row, (GTK_EXPAND | GTK_FILL), (0));
@@ -4680,8 +4696,6 @@ static void enable_recurrence_page_signals (OrageAppointmentWindow *apptw)
     g_signal_connect((gpointer)apptw->Recur_until_button, "clicked"
             , G_CALLBACK(on_recur_Date_button_clicked_cb), apptw);
     for (i=0; i <= 6; i++) {
-        g_signal_connect((gpointer)apptw->Recur_byday_cb[i], "clicked"
-                , G_CALLBACK(app_recur_checkbutton_clicked_cb), apptw);
         g_signal_connect((gpointer)apptw->Recur_byday_spin[i], "value-changed"
                 , G_CALLBACK(on_recur_spin_button_changed_cb), apptw);
     }
