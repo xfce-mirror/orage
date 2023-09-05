@@ -227,18 +227,10 @@ struct _OrageAppointmentWindow
     GtkWidget *Recur_freq_label;
     GtkWidget *Recur_freq_hbox;
     GtkWidget *Recur_freq_cb;
-#if 0
-    GtkWidget *Recur_int_spin;
-    GtkWidget *Recur_int_spin_label1;
-    GtkWidget *Recur_int_spin_label2;
-#endif
     GtkWidget *Recur_limit_rb;
-    GtkWidget *Recur_limit_label;
-    GtkWidget *Recur_count_hbox;
     GtkWidget *Recur_count_rb;
     GtkWidget *Recur_count_spin;
     GtkWidget *Recur_count_label;
-    GtkWidget *Recur_until_hbox;
     GtkWidget *Recur_until_rb;
     GtkWidget *Recur_until_button;
     GtkWidget *Recur_byday_label;
@@ -483,13 +475,6 @@ static void set_repeat_sensitivity (OrageAppointmentWindow *apptw)
         gtk_widget_set_sensitive(apptw->Recur_count_label, FALSE);
         gtk_widget_set_sensitive(apptw->Recur_until_rb, FALSE);
         gtk_widget_set_sensitive(apptw->Recur_until_button, FALSE);
-#if 0
-        gtk_widget_set_sensitive(apptw->Recur_int_spin, FALSE);
-        gtk_widget_set_sensitive(apptw->Recur_int_spin_label1, FALSE);
-        gtk_widget_set_sensitive(apptw->Recur_int_spin_label2, FALSE);
-        gtk_widget_set_sensitive(apptw->Recur_exception_hbox, FALSE);
-        gtk_widget_set_sensitive(apptw->Recur_calendar_hbox, FALSE);
-#endif
         gtk_widget_set_sensitive(apptw->Recur_todo_base_hbox, FALSE);
     }
     else {
@@ -522,14 +507,6 @@ static void set_repeat_sensitivity (OrageAppointmentWindow *apptw)
                 gtk_widget_set_sensitive(apptw->Recur_byday_spin[i], FALSE);
             }
         }
-#if 0
-        gtk_widget_set_sensitive(apptw->Recur_int_spin, TRUE);
-        gtk_widget_set_sensitive(apptw->Recur_int_spin_label1, TRUE);
-        gtk_widget_set_sensitive(apptw->Recur_int_spin_label2, TRUE);
-        gtk_widget_set_sensitive(apptw->Recur_todo_base_hbox, TRUE);
-        gtk_widget_set_sensitive(apptw->Recur_exception_hbox, TRUE);
-        gtk_widget_set_sensitive(apptw->Recur_calendar_hbox, TRUE);
-#endif
     }
 }
 
@@ -1126,7 +1103,7 @@ static void fill_appt_from_recurrence_yearly (G_GNUC_UNUSED xfical_appt *appt)
     g_debug ("%s: RECURRENCE_YEARLY", G_STRFUNC);
 }
 
-static void fill_appt_from_recurrence_hoyrly (G_GNUC_UNUSED xfical_appt *appt)
+static void fill_appt_from_recurrence_hourly (G_GNUC_UNUSED xfical_appt *appt)
 {
     g_debug ("%s: RECURRENCE_HOURLY", G_STRFUNC);
 }
@@ -1265,12 +1242,6 @@ static void fill_appt_from_recurrence (xfical_appt *appt,
 
     appt->freq = gtk_combo_box_get_active (GTK_COMBO_BOX (apptw->Recur_freq_cb));
 
-#if 0
-    /* recurrence interval */
-    appt->interval = gtk_spin_button_get_value_as_int(
-            GTK_SPIN_BUTTON(apptw->Recur_int_spin));
-#endif
-
     /* recurrence ending */
     if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (apptw->Recur_limit_rb)))
     {
@@ -1329,7 +1300,7 @@ static void fill_appt_from_recurrence (xfical_appt *appt,
             break;
 
         case XFICAL_FREQ_HOURLY:
-            fill_appt_from_recurrence_hoyrly (appt);
+            fill_appt_from_recurrence_hourly (appt);
             break;
 
         default:
@@ -4367,18 +4338,21 @@ static void build_recurrence_page (OrageAppointmentWindow *apptw)
 #else
 static void build_recurrence_page (OrageAppointmentWindow *apptw)
 {
-    guint row = 0;
-    gint i;
-    guint y, m;
     const gchar *recur_freq_array[RECUR_FREQ_ARRAY_ELEMENTS] =
     {
         _("None"), _("Daily"), _("Weekly"),
         _("Monthly"), _("Yearly"), _("Hourly")
     };
 
-    GtkWidget *hbox;
-    GtkWidget *recur_table;
+    guint row = 0;
+    gint i;
+    guint y, m;
 
+    GtkWidget *recur_table;
+    GtkBox *limit_box;
+    GtkWidget *limit_label;
+    GtkWidget *limit_repeat_box;
+    GtkBox *limit_until_box;
     GtkWidget *frequency_label;
     GtkGrid *frequency_box;
 
@@ -4390,6 +4364,40 @@ static void build_recurrence_page (OrageAppointmentWindow *apptw)
                               apptw->Recur_notebook_page,
                               apptw->Recur_tab_label);
 
+    /******************************* Limit ************************************/
+    limit_box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 20));
+    limit_label = gtk_label_new (_("Limit"));
+    apptw->Recur_limit_rb =
+            gtk_radio_button_new_with_label (NULL, _("Repeat forever"));
+    gtk_box_pack_start (limit_box, apptw->Recur_limit_rb, FALSE, FALSE, 0);
+
+    limit_repeat_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 5);
+    apptw->Recur_count_rb = gtk_radio_button_new_with_mnemonic_from_widget (
+            GTK_RADIO_BUTTON (apptw->Recur_limit_rb), _("Repeat"));
+    gtk_box_pack_start (GTK_BOX (limit_repeat_box), apptw->Recur_count_rb,
+                        FALSE, FALSE, 0);
+    apptw->Recur_count_spin = gtk_spin_button_new_with_range (1, 100, 1);
+    gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (apptw->Recur_count_spin), TRUE);
+    gtk_box_pack_start (GTK_BOX (limit_repeat_box), apptw->Recur_count_spin,
+                        FALSE, FALSE, 0);
+    apptw->Recur_count_label = gtk_label_new (_("times"));
+    gtk_box_pack_start (GTK_BOX (limit_repeat_box), apptw->Recur_count_label,
+                        FALSE, FALSE, 0);
+    gtk_box_pack_start (limit_box, limit_repeat_box, FALSE, FALSE, 0);
+
+    limit_until_box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 5));
+    apptw->Recur_until_rb = gtk_radio_button_new_with_mnemonic_from_widget(
+            GTK_RADIO_BUTTON(apptw->Recur_limit_rb), _("Repeat until"));
+    gtk_box_pack_start (limit_until_box, apptw->Recur_until_rb,
+                        FALSE, FALSE, 0);
+    apptw->Recur_until_button = gtk_button_new ();
+    gtk_box_pack_start (limit_until_box, apptw->Recur_until_button,
+                        FALSE, FALSE, 0);
+    gtk_box_pack_start (limit_box, GTK_WIDGET (limit_until_box),
+                        FALSE, FALSE, 0);
+    orage_table_add_row (recur_table, limit_label, GTK_WIDGET (limit_box),
+                         row++, GTK_EXPAND | GTK_FILL, 0);
+
     /******************************* Frequency ********************************/
     frequency_label = gtk_label_new (_("Frequency"));
     frequency_box = (GtkGrid *)gtk_grid_new ();
@@ -4400,7 +4408,7 @@ static void build_recurrence_page (OrageAppointmentWindow *apptw)
                              GTK_POS_RIGHT, 1, 1);
     orage_table_add_row (recur_table, frequency_label,
                          GTK_WIDGET (frequency_box), row++,
-                         (GTK_EXPAND | GTK_FILL), (GTK_FILL));
+                         GTK_EXPAND | GTK_FILL, GTK_FILL);
 
     /****************************** Recurrence ********************************/
     apptw->recurrence_limit_box = GTK_STACK (gtk_stack_new ());
@@ -4423,63 +4431,12 @@ static void build_recurrence_page (OrageAppointmentWindow *apptw)
 #endif
 
     orage_table_add_row (recur_table, NULL,
-                         GTK_WIDGET (apptw->recurrence_limit_box), row,
-                         (GTK_EXPAND | GTK_FILL), (0));
-    row++;
+                         GTK_WIDGET (apptw->recurrence_limit_box), row++,
+                         GTK_EXPAND | GTK_FILL, 0);
 
 
 
 
-
-    /* limitation */
-    hbox = gtk_grid_new ();
-    apptw->Recur_limit_label = gtk_label_new(_("Limit"));
-    apptw->Recur_limit_rb = gtk_radio_button_new_with_label(NULL
-            , _("Repeat forever"));
-    gtk_grid_attach_next_to (GTK_GRID (hbox),
-                             apptw->Recur_limit_rb, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-
-    apptw->Recur_count_hbox = gtk_grid_new ();
-    apptw->Recur_count_rb = gtk_radio_button_new_with_mnemonic_from_widget(
-            GTK_RADIO_BUTTON(apptw->Recur_limit_rb), _("Repeat "));
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_count_hbox),
-                             apptw->Recur_count_rb, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-    apptw->Recur_count_spin = gtk_spin_button_new_with_range(1, 100, 1);
-    gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(apptw->Recur_count_spin)
-            , TRUE);
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_count_hbox),
-                             apptw->Recur_count_spin, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-    apptw->Recur_count_label = gtk_label_new(_("times"));
-    g_object_set (apptw->Recur_count_label, "margin-left", 5,
-                                            "margin-right", 5, NULL);
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_count_hbox),
-                             apptw->Recur_count_label, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-    g_object_set (apptw->Recur_count_hbox, "margin-left", 20,
-                                           "margin-right", 20, NULL);
-    gtk_grid_attach_next_to (GTK_GRID (hbox),
-                             apptw->Recur_count_hbox, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-
-    apptw->Recur_until_hbox = gtk_grid_new ();
-    apptw->Recur_until_rb = gtk_radio_button_new_with_mnemonic_from_widget(
-            GTK_RADIO_BUTTON(apptw->Recur_limit_rb), _("Repeat until "));
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_until_hbox),
-                             apptw->Recur_until_rb, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-    apptw->Recur_until_button = gtk_button_new();
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_until_hbox),
-                             apptw->Recur_until_button, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-    gtk_grid_attach_next_to (GTK_GRID (hbox),
-                             apptw->Recur_until_hbox, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-    orage_table_add_row (recur_table
-            , apptw->Recur_limit_label, hbox
-            , ++row, (GTK_EXPAND | GTK_FILL), (0));
 
     /* weekdays (only for complex settings) */
     apptw->Recur_byday_label = gtk_label_new(_("Weekdays"));
@@ -4681,10 +4638,6 @@ static void enable_recurrence_page_signals (OrageAppointmentWindow *apptw)
             , G_CALLBACK(app_recur_feature_checkbutton_clicked_cb), apptw);
     g_signal_connect((gpointer)apptw->Recur_freq_cb, "changed"
             , G_CALLBACK(on_freq_combobox_changed_cb), apptw);
-#if 0
-    g_signal_connect((gpointer)apptw->Recur_int_spin, "value-changed"
-            , G_CALLBACK(on_recur_spin_button_changed_cb), apptw);
-#endif
     g_signal_connect((gpointer)apptw->Recur_limit_rb, "clicked"
             , G_CALLBACK(app_recur_checkbutton_clicked_cb), apptw);
     g_signal_connect((gpointer)apptw->Recur_count_rb, "clicked"
