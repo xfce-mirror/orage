@@ -230,7 +230,6 @@ struct _OrageAppointmentWindow
     GtkWidget *Recur_limit_rb;
     GtkWidget *Recur_count_rb;
     GtkWidget *Recur_count_spin;
-    GtkWidget *Recur_count_label;
     GtkWidget *Recur_until_rb;
     GtkWidget *Recur_until_button;
     GtkWidget *Recur_byday_label;
@@ -471,23 +470,7 @@ static void set_repeat_sensitivity (OrageAppointmentWindow *apptw)
 
     freq = gtk_combo_box_get_active(GTK_COMBO_BOX(apptw->Recur_freq_cb));
     if (freq != XFICAL_FREQ_NONE){
-        if (gtk_toggle_button_get_active(
-                GTK_TOGGLE_BUTTON(apptw->Recur_count_rb))) {
-            gtk_widget_set_sensitive(apptw->Recur_count_spin, TRUE);
-            gtk_widget_set_sensitive(apptw->Recur_count_label, TRUE);
-        }
-        else {
-            gtk_widget_set_sensitive(apptw->Recur_count_spin, FALSE);
-            gtk_widget_set_sensitive(apptw->Recur_count_label, FALSE);
-        }
         gtk_widget_set_sensitive(apptw->Recur_until_rb, TRUE);
-        if (gtk_toggle_button_get_active(
-                GTK_TOGGLE_BUTTON(apptw->Recur_until_rb))) {
-            gtk_widget_set_sensitive(apptw->Recur_until_button, TRUE);
-        }
-        else {
-            gtk_widget_set_sensitive(apptw->Recur_until_button, FALSE);
-        }
         if (freq == XFICAL_FREQ_MONTHLY || freq == XFICAL_FREQ_YEARLY) {
             for (i=0; i <= 6; i++) {
                 gtk_widget_set_sensitive(apptw->Recur_byday_spin[i], TRUE);
@@ -3113,6 +3096,48 @@ static void on_recur_yearly_toggled_cb (GtkToggleButton *button,
     gtk_widget_set_sensitive (apptw->recurecnce_yearly_month_selector, enabled);
 }
 
+static void on_recur_limit_toggled_cb (GtkToggleButton *button,
+                                       gpointer user_data)
+{
+    OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
+    const gboolean enabled =
+        gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button));
+
+    if (enabled)
+    {
+        gtk_widget_set_sensitive (apptw->Recur_count_spin, FALSE);
+        gtk_widget_set_sensitive (apptw->Recur_until_button, FALSE);
+    }
+}
+
+static void on_recur_count_toggled_cb (GtkToggleButton *button,
+                                       gpointer user_data)
+{
+    OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
+    const gboolean enabled =
+        gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button));
+
+    if (enabled)
+    {
+        gtk_widget_set_sensitive (apptw->Recur_count_spin, TRUE);
+        gtk_widget_set_sensitive (apptw->Recur_until_button, FALSE);
+    }
+}
+
+static void on_recur_until_toggled_cb (GtkToggleButton *button,
+                                       gpointer user_data)
+{
+    OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
+    const gboolean enabled =
+        gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button));
+
+    if (enabled)
+    {
+        gtk_widget_set_sensitive (apptw->Recur_count_spin, FALSE);
+        gtk_widget_set_sensitive (apptw->Recur_until_button, TRUE);
+    }
+}
+
 static GtkWidget *build_daily_box (OrageAppointmentWindow *apptw)
 {
     GtkBox *box;
@@ -3366,28 +3391,29 @@ static GtkWidget *build_empty_box (void)
 
 static GtkWidget *build_limits_box (OrageAppointmentWindow *apptw)
 {
-    GtkWidget *limit_repeat_box;
-    GtkBox *limit_until_box;
     GtkBox *box;
+    GtkBox *limit_repeat_box;
+    GtkBox *limit_until_box;
+    GtkWidget *limit_repeat_label;
 
     box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 20));
     apptw->Recur_limit_rb =
             gtk_radio_button_new_with_label (NULL, _("Repeat forever"));
     gtk_box_pack_start (box, apptw->Recur_limit_rb, FALSE, FALSE, 0);
 
-    limit_repeat_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 5);
+    limit_repeat_box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 5));
     apptw->Recur_count_rb = gtk_radio_button_new_with_mnemonic_from_widget (
             GTK_RADIO_BUTTON (apptw->Recur_limit_rb), _("Repeat"));
-    gtk_box_pack_start (GTK_BOX (limit_repeat_box), apptw->Recur_count_rb,
+    gtk_box_pack_start (limit_repeat_box, apptw->Recur_count_rb,
                         FALSE, FALSE, 0);
     apptw->Recur_count_spin = gtk_spin_button_new_with_range (1, 100, 1);
+    gtk_widget_set_sensitive (apptw->Recur_count_spin, FALSE);
     gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (apptw->Recur_count_spin), TRUE);
-    gtk_box_pack_start (GTK_BOX (limit_repeat_box), apptw->Recur_count_spin,
+    gtk_box_pack_start (limit_repeat_box, apptw->Recur_count_spin,
                         FALSE, FALSE, 0);
-    apptw->Recur_count_label = gtk_label_new (_("times"));
-    gtk_box_pack_start (GTK_BOX (limit_repeat_box), apptw->Recur_count_label,
-                        FALSE, FALSE, 0);
-    gtk_box_pack_start (box, limit_repeat_box, FALSE, FALSE, 0);
+    limit_repeat_label = gtk_label_new (_("times"));
+    gtk_box_pack_start (limit_repeat_box, limit_repeat_label, FALSE, FALSE, 0);
+    gtk_box_pack_start (box, GTK_WIDGET (limit_repeat_box), FALSE, FALSE, 0);
 
     limit_until_box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 5));
     apptw->Recur_until_rb = gtk_radio_button_new_with_mnemonic_from_widget(
@@ -3395,9 +3421,17 @@ static GtkWidget *build_limits_box (OrageAppointmentWindow *apptw)
     gtk_box_pack_start (limit_until_box, apptw->Recur_until_rb,
                         FALSE, FALSE, 0);
     apptw->Recur_until_button = gtk_button_new ();
+    gtk_widget_set_sensitive (apptw->Recur_until_button, FALSE);
     gtk_box_pack_start (limit_until_box, apptw->Recur_until_button,
                         FALSE, FALSE, 0);
     gtk_box_pack_start (box, GTK_WIDGET (limit_until_box), FALSE, FALSE, 0);
+
+    g_signal_connect (apptw->Recur_limit_rb, "toggled",
+        G_CALLBACK (on_recur_limit_toggled_cb), apptw);
+    g_signal_connect (apptw->Recur_count_rb, "toggled",
+        G_CALLBACK (on_recur_count_toggled_cb), apptw);
+    g_signal_connect (apptw->Recur_until_rb, "toggled",
+        G_CALLBACK (on_recur_until_toggled_cb), apptw);
 
     return (GtkWidget *)box;
 }
