@@ -42,6 +42,13 @@ typedef enum
    ,XFICAL_TYPE_JOURNAL
 } xfical_type;
 
+typedef enum
+{
+    XFICAL_RECUR_NO_LIMIT = 0,
+    XFICAL_RECUR_COUNT = 1,
+    XFICAL_RECUR_UNTIL = 2
+} xfical_recur_limit;
+
 typedef struct _xfical_appt
 {
     xfical_type type;
@@ -111,7 +118,7 @@ typedef struct _xfical_appt
     GDateTime *starttimecur;
     GDateTime *endtimecur;
     xfical_freq freq;
-    gint   recur_limit; /* 0 = no limit  1 = count  2 = until */
+    xfical_recur_limit recur_limit;
     gint   recur_count;
 
     GDateTime *recur_until;
