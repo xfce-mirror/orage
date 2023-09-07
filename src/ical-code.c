@@ -1032,10 +1032,10 @@ static void appt_add_recur_internal(xfical_appt *appt, icalcomponent *icmp)
     if (appt->interval > 1) { /* not default, need to insert it */
         recur_p += g_sprintf(recur_p, ";INTERVAL=%d", appt->interval);
     }
-    if (appt->recur_limit == 1) {
+    if (appt->recur_limit == XFICAL_RECUR_COUNT) {
         recur_p += g_sprintf(recur_p, ";COUNT=%d", appt->recur_count);
     }
-    else if (appt->recur_limit == 2) { /* needs to be in UTC */
+    else if (appt->recur_limit == XFICAL_RECUR_UNTIL) { /* needs to be in UTC */
 /* BUG 2937: convert recur_until to utc from start time timezone */
         wtime = icaltimetype_from_gdatetime (appt->recur_until, FALSE);
         if ORAGE_STR_EXISTS(appt->start_tz_loc) {
@@ -1623,7 +1623,7 @@ static void ical_appt_get_rrule_internal (G_GNUC_UNUSED icalcomponent *c,
             break;
     }
     if ((appt->recur_count = rrule.count))
-        appt->recur_limit = 1;
+        appt->recur_limit = XFICAL_RECUR_COUNT;
     else if(! icaltime_is_null_time(rrule.until)) {
         const char *text;
 
@@ -1633,10 +1633,10 @@ static void ical_appt_get_rrule_internal (G_GNUC_UNUSED icalcomponent *c,
         {
             orage_gdatetime_unref (appt->recur_until);
             appt->recur_until = gdt;
-            appt->recur_limit = 2;
+            appt->recur_limit = XFICAL_RECUR_UNTIL;
         }
         else
-            appt->recur_limit = 0;
+            appt->recur_limit = XFICAL_RECUR_NO_LIMIT;
     }
     if (rrule.by_day[0] != ICAL_RECURRENCE_ARRAY_MAX) {
         for (i=0; i <= 6; i++)
@@ -1726,7 +1726,7 @@ static void appt_init(xfical_appt *appt)
     appt->starttimecur = g_date_time_new_now_local ();
     appt->endtimecur = g_date_time_ref (appt->starttimecur);
     appt->freq = XFICAL_FREQ_NONE;
-    appt->recur_limit = 0;
+    appt->recur_limit = XFICAL_RECUR_NO_LIMIT;
     appt->recur_count = 0;
     appt->recur_until = NULL;
 #if 0
@@ -1945,7 +1945,7 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
             appt->endtime = orage_icaltime_to_gdatetime (text);
         }
     }
-    if (appt->recur_limit == 2) { /* BUG 2937: convert back from UTC */
+    if (appt->recur_limit == XFICAL_RECUR_UNTIL) { /* BUG 2937: convert back from UTC */
         wtime = icaltimetype_from_gdatetime (appt->recur_until, FALSE);
         if (! ORAGE_STR_EXISTS(appt->start_tz_loc) )
             wtime = icaltime_convert_to_zone(wtime, local_icaltimezone);
