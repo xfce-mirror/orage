@@ -259,7 +259,7 @@ struct _OrageAppointmentWindow
 
     GtkStack  *recurrence_frequency_box;
     GtkWidget *recurrence_daily_limit;
-    GtkWidget *recurrence_daily_spin;
+    GtkWidget *recurrence_daily_interval_spin;
     GtkWidget *recurrence_daily_byday[7]; /* 0=Mo, 1=Tu ... 6=Su */
 
     GtkWidget *recurrence_monthly_begin_spin;
@@ -1058,9 +1058,23 @@ static void fill_appt_from_recurrence_none (G_GNUC_UNUSED xfical_appt *appt)
     g_debug ("%s: RECURRENCE_NONE", G_STRFUNC);
 }
 
-static void fill_appt_from_recurrence_daily (G_GNUC_UNUSED xfical_appt *appt)
+static void fill_appt_from_recurrence_daily (xfical_appt *appt,
+                                             OrageAppointmentWindow *apptw)
 {
-    g_debug ("%s: RECURRENCE_DAILY", G_STRFUNC);
+    gint interval;
+
+    if (gtk_toggle_button_get_active (
+        GTK_TOGGLE_BUTTON (apptw->recurrence_daily_limit)))
+    {
+        interval = gtk_spin_button_get_value_as_int (
+                GTK_SPIN_BUTTON (apptw->recurrence_daily_interval_spin));
+    }
+    else
+        interval = 1;
+
+    appt->interval = interval;
+
+    g_debug ("%s: interval=%d", G_STRFUNC, interval);
 }
 
 static void fill_appt_from_recurrence_weekly (xfical_appt *appt,
@@ -1269,7 +1283,7 @@ static void fill_appt_from_recurrence (xfical_appt *appt,
             break;
 
         case XFICAL_FREQ_DAILY:
-            fill_appt_from_recurrence_daily (appt);
+            fill_appt_from_recurrence_daily (appt, apptw);
             break;
 
         case XFICAL_FREQ_WEEKLY:
@@ -2683,13 +2697,6 @@ static void fill_appt_window_recurrence (OrageAppointmentWindow *apptw,
                                    appt->recur_byday_cnt[i]);
     }
 
-#if 0
-    /* interval */
-    gtk_spin_button_set_value(
-            GTK_SPIN_BUTTON(apptw->Recur_int_spin)
-                    , (gdouble)appt->interval);
-#endif
-
     if (!appt->recur_byday[0] || !appt->recur_byday[1] || !appt->recur_byday[2]
     ||  !appt->recur_byday[3] || !appt->recur_byday[4] || !appt->recur_byday[5]
     ||  !appt->recur_byday[6]) {
@@ -3056,7 +3063,7 @@ static void on_recur_daily_toggled_cb (GtkToggleButton *button,
     const gboolean enabled =
         gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button));
 
-    gtk_widget_set_sensitive (apptw->recurrence_daily_spin, enabled);
+    gtk_widget_set_sensitive (apptw->recurrence_daily_interval_spin, enabled);
 }
 
 static void on_recur_monthly_begin_toggled_cb (GtkToggleButton *button,
@@ -3166,15 +3173,15 @@ static GtkWidget *build_daily_box (OrageAppointmentWindow *apptw)
 
     apptw->recurrence_daily_limit = gtk_radio_button_new_with_mnemonic_from_widget (
             GTK_RADIO_BUTTON (recurrence_daily_forever), _("Every"));
-    apptw->recurrence_daily_spin = gtk_spin_button_new_with_range (2, 100, 1);
-    g_object_set (apptw->recurrence_daily_spin, "valign", GTK_ALIGN_CENTER,
+    apptw->recurrence_daily_interval_spin = gtk_spin_button_new_with_range (2, 100, 1);
+    g_object_set (apptw->recurrence_daily_interval_spin, "valign", GTK_ALIGN_CENTER,
                                     "vexpand", FALSE, NULL);
-    gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (apptw->recurrence_daily_spin), TRUE);
-    gtk_widget_set_sensitive (apptw->recurrence_daily_spin, FALSE);
+    gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (apptw->recurrence_daily_interval_spin), TRUE);
+    gtk_widget_set_sensitive (apptw->recurrence_daily_interval_spin, FALSE);
     repeat_days_label = gtk_label_new (_("day(s)"));
     repeat_days_box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 5));
     gtk_box_pack_start (repeat_days_box, apptw->recurrence_daily_limit, FALSE, FALSE, 0);
-    gtk_box_pack_start (repeat_days_box, apptw->recurrence_daily_spin, FALSE, FALSE, 0);
+    gtk_box_pack_start (repeat_days_box, apptw->recurrence_daily_interval_spin, FALSE, FALSE, 0);
     gtk_box_pack_start (repeat_days_box, repeat_days_label, FALSE, FALSE, 0);
 
     box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 20));
@@ -3451,6 +3458,32 @@ static GtkWidget *build_limits_cell (OrageAppointmentWindow *apptw)
         G_CALLBACK (on_recur_spin_button_changed_cb), apptw);
     g_signal_connect (apptw->Recur_until_button, "clicked",
         G_CALLBACK (on_recur_Date_button_clicked_cb), apptw);
+
+    return (GtkWidget *)box;
+}
+
+static GtkWidget *build_todo_box_cell (OrageAppointmentWindow *apptw)
+{
+    GtkBox *box;
+
+    box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 20));
+    apptw->Recur_todo_base_start_rb =
+            gtk_radio_button_new_with_label (NULL, _("Start"));
+    gtk_box_pack_start (box, apptw->Recur_todo_base_start_rb, FALSE, FALSE, 0);
+    apptw->Recur_todo_base_done_rb =
+            gtk_radio_button_new_with_mnemonic_from_widget (
+                GTK_RADIO_BUTTON (apptw->Recur_todo_base_start_rb),
+                _("Completed"));
+    gtk_box_pack_start (box, apptw->Recur_todo_base_done_rb, FALSE, FALSE, 0);
+    gtk_widget_set_tooltip_text (apptw->Recur_todo_base_start_rb,
+        _("TODO reoccurs regularly starting on start time and repeating after each interval no matter when it was last completed"));
+    gtk_widget_set_tooltip_text (apptw->Recur_todo_base_done_rb,
+        _("TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"));
+
+    g_signal_connect (apptw->Recur_todo_base_start_rb, "clicked",
+                      G_CALLBACK (app_recur_checkbutton_clicked_cb), apptw);
+    g_signal_connect (apptw->Recur_todo_base_done_rb, "clicked",
+                      G_CALLBACK (app_recur_checkbutton_clicked_cb), apptw);
 
     return (GtkWidget *)box;
 }
@@ -4134,300 +4167,6 @@ static void enable_alarm_page_signals (OrageAppointmentWindow *apptw)
             , G_CALLBACK(on_appDefault_read_button_clicked_cb), apptw);
 }
 
-#if 0
-static void build_recurrence_page (OrageAppointmentWindow *apptw)
-{
-    gint row, i;
-    guint y, m;
-    const gchar *recur_freq_array[6] = {
-        _("None"), _("Daily"), _("Weekly"), _("Monthly"), _("Yearly"), _("Hourly")};
-    char *weekday_array[7] = {
-        _("Mon"), _("Tue"), _("Wed"), _("Thu"), _("Fri"), _("Sat"), _("Sun")};
-    GtkWidget *hbox;
-
-    apptw->TableRecur = orage_table_new (BORDER_SIZE);
-    apptw->Recur_notebook_page = apptw->TableRecur;
-    apptw->Recur_tab_label = gtk_label_new(_("Recurrence"));
-
-    gtk_notebook_append_page(GTK_NOTEBOOK(apptw->Notebook)
-            , apptw->Recur_notebook_page, apptw->Recur_tab_label);
-
-    /* complexity */
-    apptw->Recur_feature_label = gtk_label_new(_("Complexity"));
-    apptw->Recur_feature_hbox = gtk_grid_new ();
-    apptw->Recur_feature_normal_rb = gtk_radio_button_new_with_label(NULL
-            , _("Basic"));
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_feature_hbox),
-                             apptw->Recur_feature_normal_rb, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-    apptw->Recur_feature_advanced_rb =
-            gtk_radio_button_new_with_mnemonic_from_widget(
-                    GTK_RADIO_BUTTON(apptw->Recur_feature_normal_rb)
-                            , _("Advanced"));
-    g_object_set (apptw->Recur_feature_advanced_rb, "margin-left", 20, NULL);
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_feature_hbox),
-                             apptw->Recur_feature_advanced_rb, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-    gtk_widget_set_tooltip_text(apptw->Recur_feature_normal_rb
-            , _("Use this if you want regular repeating event"));
-    gtk_widget_set_tooltip_text(apptw->Recur_feature_advanced_rb
-            , _("Use this if you need complex times like:\n Every Saturday and Sunday or \n First Tuesday every month"));
-    orage_table_add_row(apptw->TableRecur
-            , apptw->Recur_feature_label, apptw->Recur_feature_hbox
-            , row = 0, (GTK_EXPAND | GTK_FILL), (0));
-
-    /* frequency */
-    apptw->Recur_freq_label = gtk_label_new(_("Frequency"));
-    apptw->Recur_freq_hbox = gtk_grid_new ();
-    apptw->Recur_freq_cb = orage_create_combo_box_with_content(
-            recur_freq_array, 6);
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_freq_hbox),
-                             apptw->Recur_freq_cb, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-    apptw->Recur_int_spin_label1 = gtk_label_new(_("Each"));
-    g_object_set (apptw->Recur_int_spin_label1, "margin-left", 5,
-                                                "margin-right", 5, NULL);
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_freq_hbox),
-                             apptw->Recur_int_spin_label1, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-    apptw->Recur_int_spin = gtk_spin_button_new_with_range(1, 100, 1);
-    gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(apptw->Recur_int_spin), TRUE);
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_freq_hbox),
-                             apptw->Recur_int_spin, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-    apptw->Recur_int_spin_label2 = gtk_label_new(_("occurrence"));
-    g_object_set (apptw->Recur_int_spin_label2, "margin-left", 5,
-                                                "margin-right", 5, NULL);
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_freq_hbox),
-                             apptw->Recur_int_spin_label2, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-    gtk_widget_set_tooltip_text(apptw->Recur_int_spin
-            , _("Limit frequency to certain interval.\n For example: Every third day:\n Frequency = Daily and Interval = 3"));
-    orage_table_add_row(apptw->TableRecur
-            , apptw->Recur_freq_label, apptw->Recur_freq_hbox
-            , ++row, (GTK_EXPAND | GTK_FILL), (GTK_FILL));
-
-    /* limitation */
-    hbox = gtk_grid_new ();
-    apptw->Recur_limit_label = gtk_label_new(_("Limit"));
-    apptw->Recur_limit_rb = gtk_radio_button_new_with_label(NULL
-            , _("Repeat forever"));
-    gtk_grid_attach_next_to (GTK_GRID (hbox),
-                             apptw->Recur_limit_rb, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-
-    apptw->Recur_count_hbox = gtk_grid_new ();
-    apptw->Recur_count_rb = gtk_radio_button_new_with_mnemonic_from_widget(
-            GTK_RADIO_BUTTON(apptw->Recur_limit_rb), _("Repeat "));
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_count_hbox),
-                             apptw->Recur_count_rb, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-    apptw->Recur_count_spin = gtk_spin_button_new_with_range(1, 100, 1);
-    gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(apptw->Recur_count_spin)
-            , TRUE);
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_count_hbox),
-                             apptw->Recur_count_spin, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-    apptw->Recur_count_label = gtk_label_new(_("times"));
-    g_object_set (apptw->Recur_count_label, "margin-left", 5,
-                                            "margin-right", 5, NULL);
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_count_hbox),
-                             apptw->Recur_count_label, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-    g_object_set (apptw->Recur_count_hbox, "margin-left", 20,
-                                           "margin-right", 20, NULL);
-    gtk_grid_attach_next_to (GTK_GRID (hbox),
-                             apptw->Recur_count_hbox, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-
-    apptw->Recur_until_hbox = gtk_grid_new ();
-    apptw->Recur_until_rb = gtk_radio_button_new_with_mnemonic_from_widget(
-            GTK_RADIO_BUTTON(apptw->Recur_limit_rb), _("Repeat until "));
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_until_hbox),
-                             apptw->Recur_until_rb, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-    apptw->Recur_until_button = gtk_button_new();
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_until_hbox),
-                             apptw->Recur_until_button, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-    gtk_grid_attach_next_to (GTK_GRID (hbox),
-                             apptw->Recur_until_hbox, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-    orage_table_add_row(apptw->TableRecur
-            , apptw->Recur_limit_label, hbox
-            , ++row, (GTK_EXPAND | GTK_FILL), (0));
-
-    /* weekdays (only for complex settings) */
-    apptw->Recur_byday_label = gtk_label_new(_("Weekdays"));
-    apptw->Recur_byday_hbox = gtk_grid_new ();
-    g_object_set (apptw->Recur_byday_hbox, "column-homogeneous", TRUE,
-                                           NULL);
-    for (i=0; i <= 6; i++) {
-        apptw->Recur_byday_cb[i] =
-                gtk_check_button_new_with_mnemonic(weekday_array[i]);
-        g_object_set (apptw->Recur_byday_cb[i], "halign", GTK_ALIGN_CENTER,
-                                                NULL);
-        gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_byday_hbox),
-                                 apptw->Recur_byday_cb[i], NULL,
-                                 GTK_POS_RIGHT, 1, 1);
-    }
-    orage_table_add_row(apptw->TableRecur
-            , apptw->Recur_byday_label, apptw->Recur_byday_hbox
-            , ++row, (GTK_EXPAND | GTK_FILL), (0));
-
-    apptw->Recur_byday_spin_label = gtk_label_new(_("Which day"));
-    apptw->Recur_byday_spin_hbox = gtk_grid_new ();
-    g_object_set (apptw->Recur_byday_spin_hbox, "column-homogeneous", TRUE,
-                                                NULL);
-    for (i=0; i <= 6; i++) {
-        apptw->Recur_byday_spin[i] =
-                gtk_spin_button_new_with_range(-9, 9, 1);
-        gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_byday_spin_hbox),
-                                 apptw->Recur_byday_spin[i], NULL,
-                                 GTK_POS_RIGHT, 1, 1);
-        gtk_widget_set_tooltip_text(apptw->Recur_byday_spin[i]
-                , _("Specify which weekday for monthly and yearly events.\n For example:\n Second Wednesday each month:\n\tFrequency = Monthly,\n\tWeekdays = check only Wednesday,\n\tWhich day = select 2 from the number below Wednesday"));
-    }
-    orage_table_add_row(apptw->TableRecur
-            , apptw->Recur_byday_spin_label, apptw->Recur_byday_spin_hbox
-            , ++row ,(GTK_EXPAND | GTK_FILL), (0));
-
-    /* TODO base (only for TODOs) */
-    apptw->Recur_todo_base_label = gtk_label_new(_("TODO base"));
-    apptw->Recur_todo_base_hbox = gtk_grid_new ();
-    apptw->Recur_todo_base_start_rb = gtk_radio_button_new_with_label(NULL
-            , _("Start"));
-    g_object_set (apptw->Recur_todo_base_start_rb, "margin-left", 15,
-                                                   "margin-right", 15, NULL);
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_todo_base_hbox),
-                             apptw->Recur_todo_base_start_rb, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-    apptw->Recur_todo_base_done_rb =
-            gtk_radio_button_new_with_mnemonic_from_widget(
-                    GTK_RADIO_BUTTON(apptw->Recur_todo_base_start_rb)
-                            , _("Completed"));
-    g_object_set (apptw->Recur_todo_base_done_rb, "margin-left", 15,
-                                                  "margin-right", 15, NULL);
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_todo_base_hbox),
-                             apptw->Recur_todo_base_done_rb, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-    gtk_widget_set_tooltip_text(apptw->Recur_todo_base_start_rb
-            , _("TODO reoccurs regularly starting on start time and repeating after each interval no matter when it was last completed"));
-    gtk_widget_set_tooltip_text(apptw->Recur_todo_base_done_rb
-            , _("TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"));
-    orage_table_add_row(apptw->TableRecur
-            , apptw->Recur_todo_base_label, apptw->Recur_todo_base_hbox
-            , ++row ,(GTK_EXPAND | GTK_FILL), (0));
-
-    /* exceptions */
-    apptw->Recur_exception_label = gtk_label_new(_("Exceptions"));
-    apptw->Recur_exception_hbox = gtk_grid_new ();
-    apptw->Recur_exception_scroll_win = gtk_scrolled_window_new(NULL, NULL);
-
-    /* FIXME: Using width-request is hack. Recur_exception_scroll_win should
-     * take all remaing space from grid and Recur_exception_type_vbox should
-     * aligned to end. But we don't know width of other wigets in this tab and
-     * this leads to streched exception row. Ideal solution would be
-     * Recur_exception_type_vbox "halign" set to GTK_ALIGN_END and
-     * Recur_exception_scroll_win "width-request" is removed.
-     */
-    g_object_set (apptw->Recur_exception_scroll_win, "hexpand", TRUE,
-                                                     "width-request", 80,
-                                                     NULL);
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_exception_hbox),
-                             apptw->Recur_exception_scroll_win, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-    gtk_scrolled_window_set_policy(
-            GTK_SCROLLED_WINDOW(apptw->Recur_exception_scroll_win)
-            , GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
-    apptw->Recur_exception_rows_vbox = gtk_grid_new ();
-
-    gtk_container_add (GTK_CONTAINER (apptw->Recur_exception_scroll_win),
-                                      apptw->Recur_exception_rows_vbox);
-
-    gtk_widget_set_tooltip_text(apptw->Recur_exception_scroll_win
-            , _("Add more exception dates by clicking the calendar days below.\nException is either exclusion(-) or inclusion(+) depending on the selection.\nRemove by clicking the data."));
-    apptw->Recur_exception_type_vbox = gtk_grid_new ();
-    g_object_set (apptw->Recur_exception_type_vbox, "hexpand", TRUE,
-                                                    "halign", GTK_ALIGN_FILL,
-                                                    "margin-left", 5,
-                                                    "margin-right", 15,
-                                                    NULL);
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_exception_hbox),
-                             apptw->Recur_exception_type_vbox, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-    apptw->Recur_exception_excl_rb = gtk_radio_button_new_with_label(NULL
-            , _("Add excluded date (-)"));
-    gtk_widget_set_tooltip_text(apptw->Recur_exception_excl_rb
-            , _("Excluded days are full days where this appointment is not happening"));
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_exception_type_vbox),
-                             apptw->Recur_exception_excl_rb, NULL,
-                             GTK_POS_BOTTOM, 1, 1);
-    apptw->Recur_exception_incl_rb =
-            gtk_radio_button_new_with_mnemonic_from_widget(
-                    GTK_RADIO_BUTTON(apptw->Recur_exception_excl_rb)
-                    , _("Add included time (+)"));
-    gtk_widget_set_tooltip_text(apptw->Recur_exception_incl_rb
-            , _("Included times have same timezone than start time, but they may have different time"));
-    apptw->Recur_exception_incl_spin_hh =
-            gtk_spin_button_new_with_range(0, 23, 1);
-    apptw->Recur_exception_incl_spin_mm =
-            gtk_spin_button_new_with_range(0, 59, 1);
-    apptw->Recur_exception_incl_time_hbox = datetime_hbox_new(
-            apptw->Recur_exception_incl_rb
-            , apptw->Recur_exception_incl_spin_hh
-            , apptw->Recur_exception_incl_spin_mm, NULL);
-
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_exception_type_vbox),
-                             apptw->Recur_exception_incl_time_hbox, NULL,
-                             GTK_POS_BOTTOM, 1, 1);
-
-    orage_table_add_row(apptw->TableRecur
-            , apptw->Recur_exception_label, apptw->Recur_exception_hbox
-            , ++row ,(GTK_EXPAND | GTK_FILL), (0));
-
-    /* calendars showing the action days */
-    apptw->Recur_calendar_label = gtk_label_new(_("Action dates"));
-    apptw->Recur_calendar_hbox = gtk_grid_new ();
-    apptw->Recur_calendar1 = gtk_calendar_new();
-    gtk_calendar_set_display_options(GTK_CALENDAR(apptw->Recur_calendar1)
-            , GTK_CALENDAR_SHOW_HEADING | GTK_CALENDAR_SHOW_DAY_NAMES);
-    gtk_calendar_get_date(GTK_CALENDAR(apptw->Recur_calendar1), &y, &m, NULL);
-    gtk_calendar_select_day(GTK_CALENDAR(apptw->Recur_calendar1), 0);
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_calendar_hbox),
-                             apptw->Recur_calendar1, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-
-    apptw->Recur_calendar2 = gtk_calendar_new();
-    gtk_calendar_set_display_options(GTK_CALENDAR(apptw->Recur_calendar2)
-            , GTK_CALENDAR_SHOW_HEADING | GTK_CALENDAR_SHOW_DAY_NAMES);
-    if (++m>11) {
-        m=0;
-        y++;
-    }
-    gtk_calendar_select_month(GTK_CALENDAR(apptw->Recur_calendar2), m, y);
-    gtk_calendar_select_day(GTK_CALENDAR(apptw->Recur_calendar2), 0);
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_calendar_hbox),
-                             apptw->Recur_calendar2, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-
-    apptw->Recur_calendar3 = gtk_calendar_new();
-    gtk_calendar_set_display_options(GTK_CALENDAR(apptw->Recur_calendar3)
-            , GTK_CALENDAR_SHOW_HEADING | GTK_CALENDAR_SHOW_DAY_NAMES);
-    if (++m>11) {
-        m=0;
-        y++;
-    }
-    gtk_calendar_select_month(GTK_CALENDAR(apptw->Recur_calendar3), m, y);
-    gtk_calendar_select_day(GTK_CALENDAR(apptw->Recur_calendar3), 0);
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_calendar_hbox),
-                             apptw->Recur_calendar3, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-    orage_table_add_row(apptw->TableRecur
-            , apptw->Recur_calendar_label, apptw->Recur_calendar_hbox
-            , ++row ,(GTK_EXPAND | GTK_FILL), (0));
-}
-#else
 static void build_recurrence_page (OrageAppointmentWindow *apptw)
 {
     const gchar *recur_freq_array[RECUR_FREQ_ARRAY_ELEMENTS] =
@@ -4499,6 +4238,15 @@ static void build_recurrence_page (OrageAppointmentWindow *apptw)
     orage_table_add_row (recur_table, limit_label, apptw->recurrence_limit_box,
                          row++, GTK_EXPAND | GTK_FILL, 0);
 
+    /******************************* TODO base (only for TODOs) ***************/
+    apptw->Recur_todo_base_label = gtk_label_new (_("TODO base"));
+    apptw->Recur_todo_base_hbox = build_todo_box_cell (apptw);
+    orage_table_add_row (recur_table, apptw->Recur_todo_base_label,
+                         apptw->Recur_todo_base_hbox, row++,
+                         GTK_EXPAND | GTK_FILL, 0);
+
+
+
 
 
 
@@ -4530,33 +4278,6 @@ static void build_recurrence_page (OrageAppointmentWindow *apptw)
     }
     orage_table_add_row (recur_table
             , apptw->Recur_byday_spin_label, apptw->Recur_byday_spin_hbox
-            , ++row ,(GTK_EXPAND | GTK_FILL), (0));
-
-    /* TODO base (only for TODOs) */
-    apptw->Recur_todo_base_label = gtk_label_new(_("TODO base"));
-    apptw->Recur_todo_base_hbox = gtk_grid_new ();
-    apptw->Recur_todo_base_start_rb = gtk_radio_button_new_with_label(NULL
-            , _("Start"));
-    g_object_set (apptw->Recur_todo_base_start_rb, "margin-left", 15,
-                                                   "margin-right", 15, NULL);
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_todo_base_hbox),
-                             apptw->Recur_todo_base_start_rb, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-    apptw->Recur_todo_base_done_rb =
-            gtk_radio_button_new_with_mnemonic_from_widget(
-                    GTK_RADIO_BUTTON(apptw->Recur_todo_base_start_rb)
-                            , _("Completed"));
-    g_object_set (apptw->Recur_todo_base_done_rb, "margin-left", 15,
-                                                  "margin-right", 15, NULL);
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_todo_base_hbox),
-                             apptw->Recur_todo_base_done_rb, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-    gtk_widget_set_tooltip_text(apptw->Recur_todo_base_start_rb
-            , _("TODO reoccurs regularly starting on start time and repeating after each interval no matter when it was last completed"));
-    gtk_widget_set_tooltip_text(apptw->Recur_todo_base_done_rb
-            , _("TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"));
-    orage_table_add_row (recur_table
-            , apptw->Recur_todo_base_label, apptw->Recur_todo_base_hbox
             , ++row ,(GTK_EXPAND | GTK_FILL), (0));
 
     /* exceptions */
@@ -4694,7 +4415,6 @@ static void build_recurrence_page (OrageAppointmentWindow *apptw)
             , apptw->Recur_feature_label, apptw->Recur_feature_hbox
             , row++, (GTK_EXPAND | GTK_FILL), (0));
 }
-#endif
 
 static void enable_recurrence_page_signals (OrageAppointmentWindow *apptw)
 {
@@ -4710,10 +4430,6 @@ static void enable_recurrence_page_signals (OrageAppointmentWindow *apptw)
         g_signal_connect((gpointer)apptw->Recur_byday_spin[i], "value-changed"
                 , G_CALLBACK(on_recur_spin_button_changed_cb), apptw);
     }
-    g_signal_connect((gpointer)apptw->Recur_todo_base_start_rb, "clicked"
-            , G_CALLBACK(app_recur_checkbutton_clicked_cb), apptw);
-    g_signal_connect((gpointer)apptw->Recur_todo_base_done_rb, "clicked"
-            , G_CALLBACK(app_recur_checkbutton_clicked_cb), apptw);
     g_signal_connect((gpointer)apptw->Recur_calendar1, "month-changed"
             , G_CALLBACK(recur_month_changed_cb), apptw);
     g_signal_connect((gpointer)apptw->Recur_calendar2, "month-changed"
