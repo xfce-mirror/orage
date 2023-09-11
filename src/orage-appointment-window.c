@@ -258,6 +258,11 @@ struct _OrageAppointmentWindow
     GtkWidget *Recur_calendar3;
 
     GtkStack  *recurrence_frequency_box;
+    GtkWidget *recurrence_limit_box;
+
+    GtkWidget *recurrence_hourly_limit;
+    GtkWidget *recurrence_hourly_interval_spin;
+
     GtkWidget *recurrence_daily_limit;
     GtkWidget *recurrence_daily_interval_spin;
 
@@ -273,8 +278,6 @@ struct _OrageAppointmentWindow
     GtkWidget *recurecnce_yearly_day_selector;
     GtkWidget *recurecnce_yearly_month_selector;
     GtkWidget *recurecnce_yearly_month_button;
-
-    GtkWidget *recurrence_limit_box;
 
     GDateTime *appointment_time;
     GDateTime *appointment_time_2;
@@ -1091,7 +1094,7 @@ static void fill_appt_from_recurrence_weekly (xfical_appt *appt,
                 GTK_TOGGLE_BUTTON (apptw->recurrence_weekly_byday[i]));
     }
 
-    appt->interval =  gtk_spin_button_get_value_as_int (
+    appt->interval = gtk_spin_button_get_value_as_int (
                 GTK_SPIN_BUTTON (apptw->recurrence_weekly_interval_spin));
 
     g_debug ("%s: interval=%d", G_STRFUNC, appt->interval);
@@ -1107,9 +1110,23 @@ static void fill_appt_from_recurrence_yearly (G_GNUC_UNUSED xfical_appt *appt)
     g_debug ("%s: RECURRENCE_YEARLY", G_STRFUNC);
 }
 
-static void fill_appt_from_recurrence_hourly (G_GNUC_UNUSED xfical_appt *appt)
+static void fill_appt_from_recurrence_hourly (G_GNUC_UNUSED xfical_appt *appt,
+                                              OrageAppointmentWindow *apptw)
 {
-    g_debug ("%s: RECURRENCE_HOURLY", G_STRFUNC);
+    gint interval;
+
+    if (gtk_toggle_button_get_active (
+        GTK_TOGGLE_BUTTON (apptw->recurrence_hourly_limit)))
+    {
+        interval = gtk_spin_button_get_value_as_int (
+                GTK_SPIN_BUTTON (apptw->recurrence_hourly_interval_spin));
+    }
+    else
+        interval = 1;
+
+    appt->interval = interval;
+
+    g_debug ("%s: interval=%d", G_STRFUNC, interval);
 }
 
 static void fill_appt_from_apptw_alarm (xfical_appt *appt,
@@ -1305,7 +1322,7 @@ static void fill_appt_from_recurrence (xfical_appt *appt,
             break;
 
         case XFICAL_FREQ_HOURLY:
-            fill_appt_from_recurrence_hourly (appt);
+            fill_appt_from_recurrence_hourly (appt, apptw);
             break;
 
         default:
@@ -3075,6 +3092,19 @@ static void on_recur_daily_toggled_cb (GtkToggleButton *button,
     refresh_recur_calendars (apptw);
 }
 
+static void on_recur_hourly_toggled_cb (GtkToggleButton *button,
+                                        gpointer user_data)
+{
+    OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
+    const gboolean enabled =
+        gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button));
+
+    gtk_widget_set_sensitive (apptw->recurrence_hourly_interval_spin, enabled);
+
+    mark_appointment_changed (apptw);
+    refresh_recur_calendars (apptw);
+}
+
 static void on_recur_monthly_begin_toggled_cb (GtkToggleButton *button,
                                                gpointer user_data)
 {
@@ -3449,7 +3479,48 @@ static GtkWidget *build_recurrence_box_yearly (OrageAppointmentWindow *apptw)
     return box_widget;
 }
 
-static GtkWidget *build_recurrence_box_empty (void)
+static GtkWidget *build_recurrence_box_hourly (OrageAppointmentWindow *apptw)
+{
+    GtkBox *box;
+    GtkWidget *recurrence_hourly_forever;
+    GtkWidget *box_widget;
+    GtkBox *repeat_hours_box;
+    GtkWidget *repeat_hours_label;
+
+    recurrence_hourly_forever =
+            gtk_radio_button_new_with_label (NULL, _("Every hour"));
+
+    apptw->recurrence_hourly_limit = gtk_radio_button_new_with_mnemonic_from_widget (
+            GTK_RADIO_BUTTON (recurrence_hourly_forever), _("Every"));
+    apptw->recurrence_hourly_interval_spin = gtk_spin_button_new_with_range (2, 24, 1);
+    g_object_set (apptw->recurrence_hourly_interval_spin,
+                  "valign", GTK_ALIGN_CENTER,
+                  "vexpand", FALSE,
+                  NULL);
+    gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (apptw->recurrence_hourly_interval_spin), TRUE);
+    gtk_widget_set_sensitive (apptw->recurrence_hourly_interval_spin, FALSE);
+    repeat_hours_label = gtk_label_new (_("hour(s)"));
+    repeat_hours_box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 5));
+    gtk_box_pack_start (repeat_hours_box, apptw->recurrence_hourly_limit, FALSE, FALSE, 0);
+    gtk_box_pack_start (repeat_hours_box, apptw->recurrence_hourly_interval_spin, FALSE, FALSE, 0);
+    gtk_box_pack_start (repeat_hours_box, repeat_hours_label, FALSE, FALSE, 0);
+
+    box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 20));
+    gtk_box_pack_start (box, GTK_WIDGET (recurrence_hourly_forever), FALSE, FALSE, 0);
+    gtk_box_pack_start (box, GTK_WIDGET (repeat_hours_box), FALSE, FALSE, 0);
+
+    g_signal_connect (apptw->recurrence_hourly_limit, "toggled",
+                      G_CALLBACK (on_recur_hourly_toggled_cb), apptw);
+    g_signal_connect (apptw->recurrence_hourly_interval_spin, "value-changed",
+        G_CALLBACK (on_recur_spin_button_changed_cb), apptw);
+
+    box_widget = (GtkWidget *)box;
+    gtk_widget_set_visible (box_widget, TRUE);
+
+    return box_widget;
+}
+
+static GtkWidget *build_recurrence_box_none (void)
 {
     GtkWidget *box;
     GtkWidget *box_widget;
@@ -4258,7 +4329,7 @@ static void build_recurrence_page (OrageAppointmentWindow *apptw)
     /****************************** Recurrence ********************************/
     apptw->recurrence_frequency_box = GTK_STACK (gtk_stack_new ());
     gtk_stack_add_named (apptw->recurrence_frequency_box,
-                         build_recurrence_box_empty (), RECURRENCE_NONE);
+                         build_recurrence_box_none (), RECURRENCE_NONE);
     gtk_stack_add_named (apptw->recurrence_frequency_box,
                          align_box_contents (build_recurrence_box_daily (apptw)),
                          RECURRENCE_DAILY);
@@ -4272,7 +4343,8 @@ static void build_recurrence_page (OrageAppointmentWindow *apptw)
                          align_box_contents (build_recurrence_box_yearly (apptw)),
                          RECURRENCE_YEARLY);
     gtk_stack_add_named (apptw->recurrence_frequency_box,
-                         build_recurrence_box_empty (), RECURRENCE_HOURLY);
+                         align_box_contents (build_recurrence_box_hourly (apptw)),
+                         RECURRENCE_HOURLY);
 #if 0
     gtk_stack_set_transition_duration (apptw->recurrence_frequency_box, 200);
     gtk_stack_set_transition_type (pptw->recurrence_limit_box,
