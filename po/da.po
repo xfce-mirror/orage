@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-29 11:57+0200\n"
+"POT-Creation-Date: 2023-05-30 00:50+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: scootergrisen, 2023\n"
 "Language-Team: Danish (https://app.transifex.com/xfce/teams/16840/da/)\n"
@@ -167,7 +167,7 @@ msgstr "Kategorifarver - Orage"
 
 #: ../src/appointment.c:2298
 msgid "*** COPY ***"
-msgstr ""
+msgstr "*** KOPI ***"
 
 #: ../src/appointment.c:2586
 msgid "New appointment - Orage"
@@ -1346,15 +1346,15 @@ msgstr ""
 
 #: ../src/orage-sync-edit-dialog.c:132
 msgid "Description:"
-msgstr ""
+msgstr "Beskrivelse:"
 
 #: ../src/orage-sync-edit-dialog.c:134
 msgid "Command:"
-msgstr ""
+msgstr "Kommando:"
 
 #: ../src/orage-sync-edit-dialog.c:136
 msgid "Period:"
-msgstr ""
+msgstr "Periode:"
 
 #: ../src/orage-sync-edit-dialog.c:138
 msgid "minutes"
@@ -1383,7 +1383,7 @@ msgstr ""
 
 #: ../src/parameters.c:691
 msgid "Yes, remove"
-msgstr ""
+msgstr "Ja, fjern"
 
 #: ../src/parameters.c:724
 msgid "Main settings"
