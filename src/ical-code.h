@@ -45,9 +45,39 @@ typedef enum
 typedef enum
 {
     XFICAL_RECUR_NO_LIMIT = 0,
-    XFICAL_RECUR_COUNT = 1,
-    XFICAL_RECUR_UNTIL = 2
+    XFICAL_RECUR_COUNT,
+    XFICAL_RECUR_UNTIL
 } xfical_recur_limit;
+
+typedef enum
+{
+    XFICAL_RECUR_MONTH_TYPE_BEGIN = 0,
+    XFICAL_RECUR_MONTH_TYPE_END,
+    XFICAL_RECUR_MONTH_TYPE_EVERY
+} xfical_recur_month_type;
+
+typedef enum
+{
+    XFICAL_RECUR_MONTH_WEEK_FIRST = 0,
+    XFICAL_RECUR_MONTH_WEEK_SECOND,
+    XFICAL_RECUR_MONTH_WEEK_THIRD,
+    XFICAL_RECUR_MONTH_WEEK_FOURTH,
+    XFICAL_RECUR_MONTH_WEEK_LAST
+} xfical_recur_month_week_sel;
+
+typedef enum
+{
+    XFICAL_RECUR_MONTH_DAY_DAY = 0,
+    XFICAL_RECUR_MONTH_DAY_WEEKDAY,
+    XFICAL_RECUR_MONTH_DAY_WEEKEND_DAY,
+    XFICAL_RECUR_MONTH_DAY_MON,
+    XFICAL_RECUR_MONTH_DAY_TUE,
+    XFICAL_RECUR_MONTH_DAY_WED,
+    XFICAL_RECUR_MONTH_DAY_THU,
+    XFICAL_RECUR_MONTH_DAY_FRI,
+    XFICAL_RECUR_MONTH_DAY_SAT,
+    XFICAL_RECUR_MONTH_DAY_SUN
+} xfical_recur_month_day_sel;
 
 typedef struct _xfical_appt
 {
@@ -119,7 +149,11 @@ typedef struct _xfical_appt
     GDateTime *endtimecur;
     xfical_freq freq;
     xfical_recur_limit recur_limit;
-    gint   recur_count;
+    gint recur_count;
+    xfical_recur_month_type recur_month_type;
+    guint recur_month_days;
+    xfical_recur_month_week_sel recur_month_week_sel;
+    xfical_recur_month_day_sel recur_month_day_sel;
 
     GDateTime *recur_until;
     gboolean recur_byday[7]; /* 0=Mo, 1=Tu, 2=We, 3=Th, 4=Fr, 5=Sa, 6=Su */

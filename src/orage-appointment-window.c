@@ -269,6 +269,9 @@ struct _OrageAppointmentWindow
     GtkWidget *recurrence_weekly_byday[7]; /* 0=Mo, 1=Tu ... 6=Su */
     GtkWidget *recurrence_weekly_interval_spin;
 
+    GtkWidget *recurrence_monthly_beginning_selector;
+    GtkWidget *recurrence_monthly_end_selector;
+    GtkWidget *recurrence_monthly_every_selector;
     GtkWidget *recurrence_monthly_begin_spin;
     GtkWidget *recurrence_monthly_end_spin;
     GtkWidget *recurrence_monthly_week_selector;
@@ -1079,8 +1082,6 @@ static void fill_appt_from_recurrence_daily (xfical_appt *appt,
         interval = 1;
 
     appt->interval = interval;
-
-    g_debug ("%s: interval=%d", G_STRFUNC, interval);
 }
 
 static void fill_appt_from_recurrence_weekly (xfical_appt *appt,
@@ -1096,13 +1097,36 @@ static void fill_appt_from_recurrence_weekly (xfical_appt *appt,
 
     appt->interval = gtk_spin_button_get_value_as_int (
                 GTK_SPIN_BUTTON (apptw->recurrence_weekly_interval_spin));
-
-    g_debug ("%s: interval=%d", G_STRFUNC, appt->interval);
 }
 
-static void fill_appt_from_recurrence_monthly (G_GNUC_UNUSED xfical_appt *appt)
+static void fill_appt_from_recurrence_monthly (xfical_appt *appt,
+                                               OrageAppointmentWindow *apptw)
 {
-    g_debug ("%s: RECURRENCE_MONTHLY", G_STRFUNC);
+    if (gtk_toggle_button_get_active (
+        GTK_TOGGLE_BUTTON (apptw->recurrence_monthly_beginning_selector)))
+    {
+        appt->recur_month_type = XFICAL_RECUR_MONTH_TYPE_BEGIN;
+        appt->recur_month_days = gtk_spin_button_get_value_as_int (
+                GTK_SPIN_BUTTON (apptw->recurrence_monthly_begin_spin));
+    }
+    else if (gtk_toggle_button_get_active (
+             GTK_TOGGLE_BUTTON (apptw->recurrence_monthly_end_selector)))
+    {
+        appt->recur_month_type = XFICAL_RECUR_MONTH_TYPE_END;
+        appt->recur_month_days = gtk_spin_button_get_value_as_int (
+                GTK_SPIN_BUTTON (apptw->recurrence_monthly_end_spin));
+    }
+    else if (gtk_toggle_button_get_active (
+             GTK_TOGGLE_BUTTON (apptw->recurrence_monthly_every_selector)))
+    {
+        appt->recur_month_type = XFICAL_RECUR_MONTH_TYPE_EVERY;
+        appt->recur_month_week_sel = gtk_combo_box_get_active (
+                GTK_COMBO_BOX (apptw->recurrence_monthly_week_selector));
+        appt->recur_month_day_sel = gtk_combo_box_get_active (
+                GTK_COMBO_BOX (apptw->recurrence_monthly_day_selector));
+    }
+    else
+        g_assert_not_reached ();
 }
 
 static void fill_appt_from_recurrence_yearly (G_GNUC_UNUSED xfical_appt *appt)
@@ -1314,7 +1338,7 @@ static void fill_appt_from_recurrence (xfical_appt *appt,
             break;
 
         case XFICAL_FREQ_MONTHLY:
-            fill_appt_from_recurrence_monthly (appt);
+            fill_appt_from_recurrence_monthly (appt, apptw);
             break;
 
         case XFICAL_FREQ_YEARLY:
@@ -3327,34 +3351,38 @@ static GtkWidget *build_recurrence_box_monthly (OrageAppointmentWindow *apptw)
     GtkBox *box;
     GtkWidget *box_widget;
     GtkBox *beginning_box;
-    GtkRadioButton *beginning_selector;
     GtkBox *end_box;
-    GtkWidget *end_selector;
     GtkBox *every_box;
-    GtkWidget *every_selector;
 
-    beginning_selector = GTK_RADIO_BUTTON (
+    apptw->recurrence_monthly_beginning_selector = (
             gtk_radio_button_new_with_label (NULL,
             _("From the beginning of the month:")));
     apptw->recurrence_monthly_begin_spin =
             gtk_spin_button_new_with_range (1, 28, 1);
     beginning_box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0));
-    gtk_box_pack_start (beginning_box, GTK_WIDGET (beginning_selector), FALSE, FALSE, 0);
+    gtk_box_pack_start (beginning_box,
+                        apptw->recurrence_monthly_beginning_selector, FALSE,
+                        FALSE, 0);
     gtk_box_pack_start (beginning_box, apptw->recurrence_monthly_begin_spin,
                         FALSE, FALSE, 0);
 
-    end_selector = gtk_radio_button_new_with_mnemonic_from_widget (
-            GTK_RADIO_BUTTON (beginning_selector),
+    apptw->recurrence_monthly_end_selector =
+            gtk_radio_button_new_with_mnemonic_from_widget (
+            GTK_RADIO_BUTTON (apptw->recurrence_monthly_beginning_selector),
             _("From the end of the month:"));
-    apptw->recurrence_monthly_end_spin = gtk_spin_button_new_with_range (1, 28, 1);
+    apptw->recurrence_monthly_end_spin =
+            gtk_spin_button_new_with_range (1, 28, 1);
     gtk_widget_set_sensitive (apptw->recurrence_monthly_end_spin, FALSE);
     end_box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0));
-    gtk_box_pack_start (end_box, end_selector, FALSE, FALSE, 0);
+    gtk_box_pack_start (end_box, apptw->recurrence_monthly_end_selector,
+                        FALSE, FALSE, 0);
     gtk_box_pack_start (end_box, apptw->recurrence_monthly_end_spin,
                         FALSE, FALSE, 0);
 
-    every_selector = gtk_radio_button_new_with_mnemonic_from_widget (
-            beginning_selector, _("Every:"));
+    apptw->recurrence_monthly_every_selector =
+            gtk_radio_button_new_with_mnemonic_from_widget (
+            GTK_RADIO_BUTTON (apptw->recurrence_monthly_beginning_selector),
+            _("Every:"));
     apptw->recurrence_monthly_week_selector =
             orage_create_combo_box_with_content (week_list, 5);
     apptw->recurrence_monthly_day_selector =
@@ -3362,7 +3390,8 @@ static GtkWidget *build_recurrence_box_monthly (OrageAppointmentWindow *apptw)
     gtk_widget_set_sensitive (apptw->recurrence_monthly_week_selector, FALSE);
     gtk_widget_set_sensitive (apptw->recurrence_monthly_day_selector, FALSE);
     every_box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 5));
-    gtk_box_pack_start (every_box, every_selector, FALSE, FALSE, 0);
+    gtk_box_pack_start (every_box, apptw->recurrence_monthly_every_selector,
+                        FALSE, FALSE, 0);
     gtk_box_pack_start (every_box, apptw->recurrence_monthly_week_selector,
                         FALSE, FALSE, 0);
     gtk_box_pack_start (every_box, apptw->recurrence_monthly_day_selector,
@@ -3373,11 +3402,11 @@ static GtkWidget *build_recurrence_box_monthly (OrageAppointmentWindow *apptw)
     gtk_box_pack_start (box, GTK_WIDGET (end_box), FALSE, FALSE, 0);
     gtk_box_pack_start (box, GTK_WIDGET (every_box), FALSE, FALSE, 0);
 
-    g_signal_connect (beginning_selector, "toggled",
+    g_signal_connect (apptw->recurrence_monthly_beginning_selector, "toggled",
                       G_CALLBACK (on_recur_monthly_begin_toggled_cb), apptw);
-    g_signal_connect (end_selector, "toggled",
+    g_signal_connect (apptw->recurrence_monthly_end_selector, "toggled",
                       G_CALLBACK (on_recur_monthly_end_toggled_cb), apptw);
-    g_signal_connect (every_selector, "toggled",
+    g_signal_connect (apptw->recurrence_monthly_every_selector, "toggled",
                       G_CALLBACK (on_recur_monthly_every_toggled_cb), apptw);
 
     g_signal_connect (apptw->recurrence_monthly_begin_spin, "value-changed",
