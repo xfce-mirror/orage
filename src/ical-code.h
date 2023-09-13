@@ -58,15 +58,6 @@ typedef enum
 
 typedef enum
 {
-    XFICAL_RECUR_MONTH_WEEK_FIRST = 0,
-    XFICAL_RECUR_MONTH_WEEK_SECOND,
-    XFICAL_RECUR_MONTH_WEEK_THIRD,
-    XFICAL_RECUR_MONTH_WEEK_FOURTH,
-    XFICAL_RECUR_MONTH_WEEK_LAST
-} xfical_recur_month_week_sel;
-
-typedef enum
-{
     XFICAL_RECUR_MONTH_DAY_DAY = 0,
     XFICAL_RECUR_MONTH_DAY_WEEKDAY,
     XFICAL_RECUR_MONTH_DAY_WEEKEND_DAY,
@@ -77,7 +68,32 @@ typedef enum
     XFICAL_RECUR_MONTH_DAY_FRI,
     XFICAL_RECUR_MONTH_DAY_SAT,
     XFICAL_RECUR_MONTH_DAY_SUN
-} xfical_recur_month_day_sel;
+} xfical_recur_day_sel;
+
+typedef enum
+{
+    XFICAL_RECUR_MONTH_WEEK_FIRST = 0,
+    XFICAL_RECUR_MONTH_WEEK_SECOND,
+    XFICAL_RECUR_MONTH_WEEK_THIRD,
+    XFICAL_RECUR_MONTH_WEEK_FOURTH,
+    XFICAL_RECUR_MONTH_WEEK_LAST
+} xfical_recur_week_sel;
+
+typedef enum
+{
+    XFICAL_RECUR_MONTH_JAN = 0,
+    XFICAL_RECUR_MONTH_FEB,
+    XFICAL_RECUR_MONTH_MAR,
+    XFICAL_RECUR_MONTH_APR,
+    XFICAL_RECUR_MONTH_MAY,
+    XFICAL_RECUR_MONTH_JUN,
+    XFICAL_RECUR_MONTH_JUL,
+    XFICAL_RECUR_MONTH_AUG,
+    XFICAL_RECUR_MONTH_SEP,
+    XFICAL_RECUR_MONTH_OCT,
+    XFICAL_RECUR_MONTH_NOV,
+    XFICAL_RECUR_MONTH_DEC
+} xfical_recur_month_sel;
 
 typedef struct _xfical_appt
 {
@@ -152,8 +168,9 @@ typedef struct _xfical_appt
     gint recur_count;
     xfical_recur_month_type recur_month_type;
     guint recur_month_days;
-    xfical_recur_month_week_sel recur_month_week_sel;
-    xfical_recur_month_day_sel recur_month_day_sel;
+    xfical_recur_week_sel recur_week_sel;
+    xfical_recur_day_sel recur_day_sel;
+    xfical_recur_month_sel recur_month_sel;
 
     GDateTime *recur_until;
     gboolean recur_byday[7]; /* 0=Mo, 1=Tu, 2=We, 3=Th, 4=Fr, 5=Sa, 6=Su */
