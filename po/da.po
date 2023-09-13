@@ -1619,7 +1619,7 @@ msgstr "Orage-præferencer"
 
 #: ../src/reminder.c:420
 msgid "Reminder"
-msgstr ""
+msgstr "Påmindelse "
 
 #: ../src/reminder.c:443
 msgid "Open"
