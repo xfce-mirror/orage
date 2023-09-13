@@ -3196,15 +3196,6 @@ static void on_recur_yearly_toggled_cb (GtkToggleButton *button,
     gtk_widget_set_sensitive (apptw->recurecnce_yearly_month_selector, enabled);
 }
 
-static void on_recur_yearly_button_cb (G_GNUC_UNUSED GtkButton *b,
-                                       gpointer user_data)
-{
-    OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
-
-    mark_appointment_changed (apptw);
-    refresh_recur_calendars (apptw);
-}
-
 static void on_recur_limit_toggled_cb (GtkToggleButton *button,
                                        gpointer user_data)
 {
@@ -3527,7 +3518,7 @@ static GtkWidget *build_recurrence_box_yearly (OrageAppointmentWindow *apptw)
     g_signal_connect (apptw->recurecnce_yearly_month_selector, "changed",
                       G_CALLBACK (on_app_combobox_changed_cb), apptw);
     g_signal_connect (apptw->recurecnce_yearly_month_button, "clicked",
-                      G_CALLBACK (on_recur_yearly_button_cb), apptw);
+                      G_CALLBACK (on_recur_Date_button_clicked_cb), apptw);
 
     box_widget = (GtkWidget *)box;
     gtk_widget_set_visible (box_widget, TRUE);
