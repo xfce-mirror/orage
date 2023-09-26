@@ -1169,8 +1169,6 @@ static void fill_appt_from_recurrence_hourly (xfical_appt *appt,
         interval = 1;
 
     appt->interval = interval;
-
-    g_debug ("%s: interval=%d", G_STRFUNC, interval);
 }
 
 static void fill_appt_from_apptw_alarm (xfical_appt *appt,
@@ -3348,10 +3346,10 @@ static GtkWidget *build_recurrence_box_monthly (OrageAppointmentWindow *apptw)
         _("first"), _("second"), _("third"), _("fourth"), _("last")
     };
 
-    const gchar *weekday_list[10] =
+    const gchar *weekday_list[7] =
     {
-        _("day"), _("weekday"), _("weekend day"), _("Monday"), _("Tuesday"),
-        _("Wednesday"), _("Thursday"), _("Friday"), _("Saturday"), _("Sunday"),
+        _("Monday"), _("Tuesday"), _("Wednesday"), _("Thursday"), _("Friday"),
+        _("Saturday"), _("Sunday")
     };
 
     GtkBox *box;
@@ -3392,7 +3390,7 @@ static GtkWidget *build_recurrence_box_monthly (OrageAppointmentWindow *apptw)
     apptw->recurrence_monthly_week_selector =
             orage_create_combo_box_with_content (week_list, 5);
     apptw->recurrence_monthly_day_selector =
-            orage_create_combo_box_with_content (weekday_list, 10);
+            orage_create_combo_box_with_content (weekday_list, 7);
     gtk_widget_set_sensitive (apptw->recurrence_monthly_week_selector, FALSE);
     gtk_widget_set_sensitive (apptw->recurrence_monthly_day_selector, FALSE);
     every_box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 5));

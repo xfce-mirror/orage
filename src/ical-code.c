@@ -1078,8 +1078,8 @@ static void appt_add_recur_internal(xfical_appt *appt, icalcomponent *icmp)
     else if (appt->interval > 1 && appt->freq == XFICAL_FREQ_WEEKLY) {
         /* we have BYDAY rule, let's check week starting date:
          * WKST has meaning only in two cases:
-         * 1) WEEKLY rule && interval > 1 && BYDAY rule is in use 
-         * 2) YEARLY rule && BYWEEKNO rule is in use 
+         * 1) WEEKLY rule && interval > 1 && BYDAY rule is in use
+         * 2) YEARLY rule && BYWEEKNO rule is in use
          * BUT Orage is not using BYWEEKNO rule, so we only check 1)
          * Monday is default, so we can skip that, too
          * */

@@ -97,10 +97,12 @@ static void woke_up_cb (void)
 static void resuming_handler_register (OrageApplication *self)
 {
     self->sleep_monitor = orage_sleep_monitor_create ();
-
-    g_signal_connect_swapped (G_OBJECT (self->sleep_monitor), "woke-up",
-                              G_CALLBACK (woke_up_cb), NULL);
-    g_object_ref (G_OBJECT (self->sleep_monitor));
+    if (self->sleep_monitor)
+    {
+        g_signal_connect_swapped (G_OBJECT (self->sleep_monitor), "woke-up",
+                                  G_CALLBACK (woke_up_cb), NULL);
+        g_object_ref (G_OBJECT (self->sleep_monitor));
+    }
 }
 
 static void print_version (void)
@@ -246,13 +248,14 @@ static void orage_application_activate (GApplication *app)
 
 static void orage_application_shutdown (GApplication *app)
 {
-#ifdef ENABLE_SYNC
     OrageApplication *self = ORAGE_APPLICATION (app);
 
+#ifdef ENABLE_SYNC
     g_object_unref (self->sync);
 #endif
 
-    g_object_unref (G_OBJECT (self->sleep_monitor));
+    if (self->sleep_monitor)
+        g_object_unref (G_OBJECT (self->sleep_monitor));
 
 #ifdef HAVE_NOTIFY
     orage_notify_uninit ();
