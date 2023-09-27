@@ -1003,6 +1003,7 @@ static void appt_add_recur_internal(xfical_appt *appt, icalcomponent *icmp)
     gchar *byday_a[] = {"MO", "TU", "WE", "TH", "FR", "SA", "SU"};
     const char *text;
     int i, cnt;
+    gint week;
     icaltimezone *l_icaltimezone = NULL;
 
     if (appt->freq == XFICAL_FREQ_NONE) {
@@ -1056,36 +1057,68 @@ static void appt_add_recur_internal(xfical_appt *appt, icalcomponent *icmp)
         text  = icaltime_as_ical_string(wtime);
         recur_p += g_sprintf(recur_p, ";UNTIL=%s", text);
     }
-    recur_p2 = recur_p; /* store current pointer */
-    for (i = 0, cnt = 0; i <= 6; i++) {
-        if (appt->recur_byday[i]) {
-            if (cnt == 0) /* first day found */
-                recur_p = g_stpcpy(recur_p, ";BYDAY=");
-            else /* continue the list */
-                recur_p = g_stpcpy(recur_p, ",");
-            if ((appt->freq == XFICAL_FREQ_MONTHLY
-                    || appt->freq == XFICAL_FREQ_YEARLY)
-                && (appt->recur_byday_cnt[i])) /* number defined */
-                    recur_p += g_sprintf(recur_p, "%d"
-                            , appt->recur_byday_cnt[i]);
-            recur_p = g_stpcpy(recur_p, byday_a[i]);
-            cnt++;
-        }
+
+    switch (appt->freq)
+    {
+        case XFICAL_FREQ_MONTHLY:
+            switch (appt->recur_month_type)
+            {
+                case XFICAL_RECUR_MONTH_TYPE_BEGIN:
+                    recur_p += g_sprintf (recur_p, ";BYMONTHDAY=%d",
+                                          appt->recur_month_days);
+                    break;
+
+                case XFICAL_RECUR_MONTH_TYPE_END:
+                    recur_p += g_sprintf (recur_p, ";BYMONTHDAY=-%d",
+                                          appt->recur_month_days);
+                    break;
+
+                case XFICAL_RECUR_MONTH_TYPE_EVERY:
+                    if ((int)appt->recur_day_sel < 0)
+                        break;
+
+                    week = (appt->recur_week_sel == XFICAL_RECUR_MONTH_WEEK_LAST)
+                         ? -1 : (int)appt->recur_week_sel + 1   ;
+
+                    recur_p += g_sprintf (recur_p, ";BYDAY=%d%s",
+                                          week, byday_a[appt->recur_day_sel]);
+                    break;
+            }
+            break;
+        case XFICAL_FREQ_YEARLY:
+            break;
+        default:
+            recur_p2 = recur_p; /* store current pointer */
+            for (i = 0, cnt = 0; i <= 6; i++) {
+                if (appt->recur_byday[i]) {
+                    if (cnt == 0) /* first day found */
+                        recur_p = g_stpcpy(recur_p, ";BYDAY=");
+                    else /* continue the list */
+                        recur_p = g_stpcpy(recur_p, ",");
+                    if ((appt->freq == XFICAL_FREQ_YEARLY) && (appt->recur_byday_cnt[i])) /* number defined */
+                            recur_p += g_sprintf(recur_p, "%d"
+                                    , appt->recur_byday_cnt[i]);
+                    recur_p = g_stpcpy(recur_p, byday_a[i]);
+                    cnt++;
+                }
+            }
+            if (cnt == 7) { /* all days defined... */
+                *recur_p2 = *recur_p; /* ...reset to null... */
+            }
+            else if (appt->interval > 1 && appt->freq == XFICAL_FREQ_WEEKLY) {
+                /* we have BYDAY rule, let's check week starting date:
+                 * WKST has meaning only in two cases:
+                 * 1) WEEKLY rule && interval > 1 && BYDAY rule is in use
+                 * 2) YEARLY rule && BYWEEKNO rule is in use
+                 * BUT Orage is not using BYWEEKNO rule, so we only check 1)
+                 * Monday is default, so we can skip that, too
+                 * */
+                if (g_par.ical_weekstartday)
+                    g_sprintf(recur_p, ";WKST=%s", byday_a[g_par.ical_weekstartday]);
+            }
+            break;
     }
-    if (cnt == 7) { /* all days defined... */
-        *recur_p2 = *recur_p; /* ...reset to null... */
-    }
-    else if (appt->interval > 1 && appt->freq == XFICAL_FREQ_WEEKLY) {
-        /* we have BYDAY rule, let's check week starting date:
-         * WKST has meaning only in two cases:
-         * 1) WEEKLY rule && interval > 1 && BYDAY rule is in use
-         * 2) YEARLY rule && BYWEEKNO rule is in use
-         * BUT Orage is not using BYWEEKNO rule, so we only check 1)
-         * Monday is default, so we can skip that, too
-         * */
-        if (g_par.ical_weekstartday)
-            g_sprintf(recur_p, ";WKST=%s", byday_a[g_par.ical_weekstartday]);
-    }
+
     rrule = icalrecurrencetype_from_string(recur_str);
     icalcomponent_add_property(icmp, icalproperty_new_rrule(rrule));
     if (appt->type == XFICAL_TYPE_TODO) {
