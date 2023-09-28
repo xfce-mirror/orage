@@ -714,7 +714,13 @@ gint xfical_compare_times (xfical_appt *appt)
 xfical_appt *xfical_appt_alloc(void)
 {
     xfical_appt *appt;
-    int i;
+    guint i;
+    guint weekday;
+    GDateTime *gdt;
+
+    gdt = g_date_time_new_now_local ();
+    weekday = g_date_time_get_day_of_week (gdt) - 1;
+    g_date_time_unref (gdt);
 
     appt = g_new0(xfical_appt, 1);
     appt->availability = 1;
@@ -722,7 +728,8 @@ xfical_appt *xfical_appt_alloc(void)
     appt->interval = 1;
     appt->starttimecur = g_date_time_new_now_local ();
     for (i=0; i <= 6; i++)
-        appt->recur_byday[i] = TRUE;
+        appt->recur_byday[i] = (weekday == i);
+
     return(appt);
 }
 
@@ -1111,9 +1118,6 @@ static void appt_add_recur_internal(xfical_appt *appt, icalcomponent *icmp)
                         recur_p = g_stpcpy(recur_p, ";BYDAY=");
                     else /* continue the list */
                         recur_p = g_stpcpy(recur_p, ",");
-                    if ((appt->freq == XFICAL_FREQ_YEARLY) && (appt->recur_byday_cnt[i])) /* number defined */
-                            recur_p += g_sprintf(recur_p, "%d"
-                                    , appt->recur_byday_cnt[i]);
                     recur_p = g_stpcpy(recur_p, byday_a[i]);
                     cnt++;
                 }
@@ -1736,7 +1740,13 @@ static void ical_appt_get_rrule_internal (G_GNUC_UNUSED icalcomponent *c,
 
 static void appt_init(xfical_appt *appt)
 {
-    int i;
+    guint i;
+    guint weekday;
+    GDateTime *gdt;
+
+    gdt = g_date_time_new_now_local ();
+    weekday = g_date_time_get_day_of_week (gdt) - 1;
+    g_date_time_unref (gdt);
 
     appt->uid = NULL;
     appt->title = NULL;
@@ -1783,7 +1793,7 @@ static void appt_init(xfical_appt *appt)
     appt->email_attendees = NULL;
 #endif
     for (i=0; i <= 6; i++) {
-        appt->recur_byday[i] = TRUE;
+        appt->recur_byday[i] = (weekday == i);
         appt->recur_byday_cnt[i] = 0;
     }
     appt->interval = 1;
