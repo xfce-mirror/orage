@@ -3218,6 +3218,27 @@ static void on_recur_until_toggled_cb (GtkToggleButton *button,
     refresh_recur_calendars (apptw);
 }
 
+GtkWidget *create_week_combo_box (void)
+{
+    const gchar *week_list[5] =
+    {
+        _("first"), _("second"), _("third"), _("fourth"), _("last")
+    };
+
+    return orage_create_combo_box_with_content (week_list, 5);
+}
+
+GtkWidget *create_weekday_combo_box (void)
+{
+    const gchar *weekday_list[7] =
+    {
+        _("Monday"), _("Tuesday"), _("Wednesday"), _("Thursday"), _("Friday"),
+        _("Saturday"), _("Sunday")
+    };
+
+    return orage_create_combo_box_with_content (weekday_list, 7);
+}
+
 static GtkWidget *build_recurrence_box_daily (OrageAppointmentWindow *apptw)
 {
     GtkBox *box;
@@ -3233,7 +3254,7 @@ static GtkWidget *build_recurrence_box_daily (OrageAppointmentWindow *apptw)
             GTK_RADIO_BUTTON (recurrence_daily_forever), _("Every"));
     apptw->recurrence_daily_interval_spin = gtk_spin_button_new_with_range (2, 100, 1);
     g_object_set (apptw->recurrence_daily_interval_spin, "valign", GTK_ALIGN_CENTER,
-                                    "vexpand", FALSE, NULL);
+                                                         "vexpand", FALSE, NULL);
     gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (apptw->recurrence_daily_interval_spin), TRUE);
     gtk_widget_set_sensitive (apptw->recurrence_daily_interval_spin, FALSE);
     repeat_days_label = gtk_label_new (_("day(s)"));
@@ -3314,17 +3335,6 @@ static GtkWidget *build_recurrence_box_weekly (OrageAppointmentWindow *apptw)
 
 static GtkWidget *build_recurrence_box_monthly (OrageAppointmentWindow *apptw)
 {
-    const gchar *week_list[5] =
-    {
-        _("first"), _("second"), _("third"), _("fourth"), _("last")
-    };
-
-    const gchar *weekday_list[7] =
-    {
-        _("Monday"), _("Tuesday"), _("Wednesday"), _("Thursday"), _("Friday"),
-        _("Saturday"), _("Sunday")
-    };
-
     GtkBox *box;
     GtkWidget *box_widget;
     GtkBox *beginning_box;
@@ -3360,10 +3370,8 @@ static GtkWidget *build_recurrence_box_monthly (OrageAppointmentWindow *apptw)
             gtk_radio_button_new_with_mnemonic_from_widget (
             GTK_RADIO_BUTTON (apptw->recurrence_monthly_beginning_selector),
             _("Every:"));
-    apptw->recurrence_monthly_week_selector =
-            orage_create_combo_box_with_content (week_list, 5);
-    apptw->recurrence_monthly_day_selector =
-            orage_create_combo_box_with_content (weekday_list, 7);
+    apptw->recurrence_monthly_week_selector = create_week_combo_box ();
+    apptw->recurrence_monthly_day_selector = create_weekday_combo_box ();
     gtk_widget_set_sensitive (apptw->recurrence_monthly_week_selector, FALSE);
     gtk_widget_set_sensitive (apptw->recurrence_monthly_day_selector, FALSE);
     every_box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 5));
@@ -3403,17 +3411,6 @@ static GtkWidget *build_recurrence_box_monthly (OrageAppointmentWindow *apptw)
 
 static GtkWidget *build_recurrence_box_yearly (OrageAppointmentWindow *apptw)
 {
-    const gchar *week_list[5] =
-    {
-        _("first"), _("second"), _("third"), _("fourth"), _("last")
-    };
-
-    const gchar *weekday_list[7] =
-    {
-        _("Monday"), _("Tuesday"), _("Wednesday"), _("Thursday"), _("Friday"),
-        _("Saturday"), _("Sunday")
-    };
-
     const gchar *month_list[12] =
     {
         _("January"), _("February"), _("March"), _("April"), _("May"),
@@ -3427,10 +3424,8 @@ static GtkWidget *build_recurrence_box_yearly (OrageAppointmentWindow *apptw)
     GtkWidget *every_label;
 
     every_label = gtk_label_new (_("Every:"));
-    apptw->recurecnce_yearly_week_selector =
-            orage_create_combo_box_with_content (week_list, 5);
-    apptw->recurecnce_yearly_day_selector =
-            orage_create_combo_box_with_content (weekday_list, 7);
+    apptw->recurecnce_yearly_week_selector = create_week_combo_box ();
+    apptw->recurecnce_yearly_day_selector = create_weekday_combo_box ();
 
     /* TRANSLATORS: this string is part of date line, for example
      * "second Thursday of August". In some languages ​​it is not necessary to use
