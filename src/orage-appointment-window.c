@@ -234,9 +234,6 @@ struct _OrageAppointmentWindow
     GtkWidget *Recur_until_button;
     GtkWidget *Recur_byday_label;
     GtkWidget *Recur_byday_hbox;
-    GtkWidget *Recur_byday_spin_label;
-    GtkWidget *Recur_byday_spin_hbox;
-    GtkWidget *Recur_byday_spin[7];  /* 0=Mo, 1=Tu ... 6=Su */
     GtkWidget *Recur_todo_base_label;
     GtkWidget *Recur_todo_base_hbox;
     GtkWidget *Recur_todo_base_start_rb;
@@ -475,22 +472,11 @@ static void set_time_sensitivity (OrageAppointmentWindow *apptw)
 
 static void set_repeat_sensitivity (OrageAppointmentWindow *apptw)
 {
-    gint freq, i;
+    gint freq;
 
     freq = gtk_combo_box_get_active(GTK_COMBO_BOX(apptw->Recur_freq_cb));
-    if (freq != XFICAL_FREQ_NONE){
+    if (freq != XFICAL_FREQ_NONE)
         gtk_widget_set_sensitive(apptw->Recur_until_rb, TRUE);
-        if (freq == XFICAL_FREQ_MONTHLY || freq == XFICAL_FREQ_YEARLY)
-        {
-            for (i=0; i <= 6; i++)
-                gtk_widget_set_sensitive(apptw->Recur_byday_spin[i], TRUE);
-        }
-        else
-        {
-            for (i=0; i <= 6; i++)
-                gtk_widget_set_sensitive(apptw->Recur_byday_spin[i], FALSE);
-        }
-    }
 }
 
 static void recur_hide_show (OrageAppointmentWindow *apptw)
@@ -499,14 +485,10 @@ static void recur_hide_show (OrageAppointmentWindow *apptw)
             GTK_TOGGLE_BUTTON(apptw->Recur_feature_normal_rb))) {
         gtk_widget_hide(apptw->Recur_byday_label);
         gtk_widget_hide(apptw->Recur_byday_hbox);
-        gtk_widget_hide(apptw->Recur_byday_spin_label);
-        gtk_widget_hide(apptw->Recur_byday_spin_hbox);
     }
     else {
         gtk_widget_show(apptw->Recur_byday_label);
         gtk_widget_show(apptw->Recur_byday_hbox);
-        gtk_widget_show(apptw->Recur_byday_spin_label);
-        gtk_widget_show(apptw->Recur_byday_spin_hbox);
     }
 }
 
@@ -2737,9 +2719,6 @@ static void fill_appt_window_recurrence (OrageAppointmentWindow *apptw,
         gtk_toggle_button_set_active(
                 GTK_TOGGLE_BUTTON(apptw->recurrence_weekly_byday[i])
                         , appt->recur_byday[i]);
-        /* which weekday of month / year */
-        gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->Recur_byday_spin[i]),
-                                   appt->recur_byday_cnt[i]);
     }
 
     if (!appt->recur_byday[0] || !appt->recur_byday[1] || !appt->recur_byday[2]
@@ -4276,7 +4255,6 @@ static void build_recurrence_page (OrageAppointmentWindow *apptw)
     };
 
     guint row = 0;
-    gint i;
     guint y, m;
 
     GtkWidget *recur_table;
@@ -4363,23 +4341,6 @@ static void build_recurrence_page (OrageAppointmentWindow *apptw)
     orage_table_add_row (recur_table
             , apptw->Recur_byday_label, apptw->Recur_byday_hbox
             , ++row, (GTK_EXPAND | GTK_FILL), (0));
-
-    apptw->Recur_byday_spin_label = gtk_label_new(_("Which day"));
-    apptw->Recur_byday_spin_hbox = gtk_grid_new ();
-    g_object_set (apptw->Recur_byday_spin_hbox, "column-homogeneous", TRUE,
-                                                NULL);
-    for (i=0; i <= 6; i++) {
-        apptw->Recur_byday_spin[i] =
-                gtk_spin_button_new_with_range(-9, 9, 1);
-        gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_byday_spin_hbox),
-                                 apptw->Recur_byday_spin[i], NULL,
-                                 GTK_POS_RIGHT, 1, 1);
-        gtk_widget_set_tooltip_text(apptw->Recur_byday_spin[i]
-                , _("Specify which weekday for monthly and yearly events.\n For example:\n Second Wednesday each month:\n\tFrequency = Monthly,\n\tWeekdays = check only Wednesday,\n\tWhich day = select 2 from the number below Wednesday"));
-    }
-    orage_table_add_row (recur_table
-            , apptw->Recur_byday_spin_label, apptw->Recur_byday_spin_hbox
-            , ++row ,(GTK_EXPAND | GTK_FILL), (0));
 
     /* exceptions */
     apptw->Recur_exception_label = gtk_label_new(_("Exceptions"));
@@ -4519,18 +4480,12 @@ static void build_recurrence_page (OrageAppointmentWindow *apptw)
 
 static void enable_recurrence_page_signals (OrageAppointmentWindow *apptw)
 {
-    gint i;
-
     g_signal_connect((gpointer)apptw->Recur_feature_normal_rb, "clicked"
             , G_CALLBACK(app_recur_feature_checkbutton_clicked_cb), apptw);
     g_signal_connect((gpointer)apptw->Recur_feature_advanced_rb, "clicked"
             , G_CALLBACK(app_recur_feature_checkbutton_clicked_cb), apptw);
     g_signal_connect((gpointer)apptw->Recur_freq_cb, "changed"
             , G_CALLBACK(on_freq_combobox_changed_cb), apptw);
-    for (i=0; i <= 6; i++) {
-        g_signal_connect((gpointer)apptw->Recur_byday_spin[i], "value-changed"
-                , G_CALLBACK(on_recur_spin_button_changed_cb), apptw);
-    }
     g_signal_connect((gpointer)apptw->Recur_calendar1, "month-changed"
             , G_CALLBACK(recur_month_changed_cb), apptw);
     g_signal_connect((gpointer)apptw->Recur_calendar2, "month-changed"
