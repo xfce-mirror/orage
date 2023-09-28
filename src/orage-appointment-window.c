@@ -277,11 +277,9 @@ struct _OrageAppointmentWindow
     GtkWidget *recurrence_monthly_week_selector;
     GtkWidget *recurrence_monthly_day_selector;
 
-    GtkWidget *recurrence_yearly_by_date_selector;
     GtkWidget *recurecnce_yearly_week_selector;
     GtkWidget *recurecnce_yearly_day_selector;
     GtkWidget *recurecnce_yearly_month_selector;
-    GtkWidget *recurecnce_yearly_month_button;
 
     GDateTime *appointment_time;
     GDateTime *appointment_time_2;
@@ -1133,25 +1131,12 @@ static void fill_appt_from_recurrence_monthly (xfical_appt *appt,
 static void fill_appt_from_recurrence_yearly (xfical_appt *appt,
                                               OrageAppointmentWindow *apptw)
 {
-    GDateTime *gdt;
-
-    if (gtk_toggle_button_get_active (
-        GTK_TOGGLE_BUTTON (apptw->recurrence_yearly_by_date_selector)))
-    {
-        gdt = g_object_get_data (
-                G_OBJECT (apptw->recurecnce_yearly_month_button), DATE_KEY);
-        orage_gdatetime_unref (appt->starttimecur);
-        appt->starttimecur= g_date_time_ref (gdt);
-    }
-    else
-    {
-        appt->recur_week_sel = gtk_combo_box_get_active (
-                GTK_COMBO_BOX (apptw->recurecnce_yearly_week_selector));
-        appt->recur_day_sel = gtk_combo_box_get_active (
-                GTK_COMBO_BOX (apptw->recurecnce_yearly_day_selector));
-        appt->recur_month_sel = gtk_combo_box_get_active (
-                GTK_COMBO_BOX (apptw->recurecnce_yearly_month_selector));
-    }
+    appt->recur_week_sel = gtk_combo_box_get_active (
+            GTK_COMBO_BOX (apptw->recurecnce_yearly_week_selector));
+    appt->recur_day_sel = gtk_combo_box_get_active (
+            GTK_COMBO_BOX (apptw->recurecnce_yearly_day_selector));
+    appt->recur_month_sel = gtk_combo_box_get_active (
+            GTK_COMBO_BOX (apptw->recurecnce_yearly_month_selector));
 }
 
 static void fill_appt_from_recurrence_hourly (xfical_appt *appt,
@@ -3182,18 +3167,6 @@ static void on_recur_monthly_every_toggled_cb (GtkToggleButton *button,
     refresh_recur_calendars (apptw);
 }
 
-static void on_recur_yearly_toggled_cb (GtkToggleButton *button,
-                                        gpointer user_data)
-{
-    OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
-    const gboolean enabled =
-        gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button));
-
-    gtk_widget_set_sensitive (apptw->recurecnce_yearly_week_selector, enabled);
-    gtk_widget_set_sensitive (apptw->recurecnce_yearly_day_selector, enabled);
-    gtk_widget_set_sensitive (apptw->recurecnce_yearly_month_selector, enabled);
-}
-
 static void on_recur_limit_toggled_cb (GtkToggleButton *button,
                                        gpointer user_data)
 {
@@ -3435,10 +3408,10 @@ static GtkWidget *build_recurrence_box_yearly (OrageAppointmentWindow *apptw)
         _("first"), _("second"), _("third"), _("fourth"), _("last")
     };
 
-    const gchar *weekday_list[10] =
+    const gchar *weekday_list[7] =
     {
-        _("day"), _("weekday"), _("weekend day"), _("Monday"), _("Tuesday"),
-        _("Wednesday"), _("Thursday"), _("Friday"), _("Saturday"), _("Sunday"),
+        _("Monday"), _("Tuesday"), _("Wednesday"), _("Thursday"), _("Friday"),
+        _("Saturday"), _("Sunday")
     };
 
     const gchar *month_list[12] =
@@ -3448,40 +3421,16 @@ static GtkWidget *build_recurrence_box_yearly (OrageAppointmentWindow *apptw)
         _("November"), _("December")
     };
 
-    GtkBox *box;
     GtkWidget *box_widget;
-    GtkBox *monthly_box;
     GtkWidget *separator_label2;
-    GtkBox *every_box;
-    GtkWidget *every_selector;
-    GDateTime *gdt;
-    gchar *date_to_display;
+    GtkBox *box;
+    GtkWidget *every_label;
 
-    gdt = g_date_time_new_now_local ();
-    date_to_display = orage_gdatetime_to_i18_time (gdt, TRUE);
-
-    apptw->recurrence_yearly_by_date_selector =
-            gtk_radio_button_new_with_label (NULL, _("Monthly:"));
-
-    apptw->recurecnce_yearly_month_button =
-            gtk_button_new_with_label (date_to_display);
-    g_free (date_to_display);
-    g_object_set_data_full (G_OBJECT (apptw->recurecnce_yearly_month_button),
-                            DATE_KEY, gdt,
-                            (GDestroyNotify)g_date_time_unref);
-    monthly_box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0));
-    gtk_box_pack_start (monthly_box, apptw->recurrence_yearly_by_date_selector,
-                        FALSE, FALSE, 0);
-    gtk_box_pack_start (monthly_box, apptw->recurecnce_yearly_month_button,
-                        FALSE, FALSE, 0);
-
-    every_selector = gtk_radio_button_new_with_mnemonic_from_widget (
-            GTK_RADIO_BUTTON (apptw->recurrence_yearly_by_date_selector),
-            _("Every:"));
+    every_label = gtk_label_new (_("Every:"));
     apptw->recurecnce_yearly_week_selector =
             orage_create_combo_box_with_content (week_list, 5);
     apptw->recurecnce_yearly_day_selector =
-            orage_create_combo_box_with_content (weekday_list, 10);
+            orage_create_combo_box_with_content (weekday_list, 7);
 
     /* TRANSLATORS: this string is part of date line, for example
      * "second Thursday of August". In some languages ​​it is not necessary to use
@@ -3490,33 +3439,22 @@ static GtkWidget *build_recurrence_box_yearly (OrageAppointmentWindow *apptw)
     separator_label2 = gtk_label_new (_("of"));
     apptw->recurecnce_yearly_month_selector =
             orage_create_combo_box_with_content (month_list, 12);
-    gtk_widget_set_sensitive (apptw->recurecnce_yearly_week_selector, FALSE);
-    gtk_widget_set_sensitive (apptw->recurecnce_yearly_day_selector, FALSE);
-    gtk_widget_set_sensitive (apptw->recurecnce_yearly_month_selector, FALSE);
-    every_box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 5));
-    gtk_box_pack_start (every_box, every_selector, FALSE, FALSE, 0);
-    gtk_box_pack_start (every_box, apptw->recurecnce_yearly_week_selector,
+    box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 5));
+    gtk_box_pack_start (box, every_label, FALSE, FALSE, 0);
+    gtk_box_pack_start (box, apptw->recurecnce_yearly_week_selector,
                         FALSE, FALSE, 0);
-    gtk_box_pack_start (every_box, apptw->recurecnce_yearly_day_selector,
+    gtk_box_pack_start (box, apptw->recurecnce_yearly_day_selector,
                         FALSE, FALSE, 0);
-    gtk_box_pack_start (every_box, separator_label2, FALSE, FALSE, 0);
-    gtk_box_pack_start (every_box, apptw->recurecnce_yearly_month_selector,
+    gtk_box_pack_start (box, separator_label2, FALSE, FALSE, 0);
+    gtk_box_pack_start (box, apptw->recurecnce_yearly_month_selector,
                         FALSE, FALSE, 0);
 
-    box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_VERTICAL, 7));
-    gtk_box_pack_start (box, GTK_WIDGET (monthly_box), FALSE, FALSE, 0);
-    gtk_box_pack_start (box, GTK_WIDGET (every_box), FALSE, FALSE, 0);
-
-    g_signal_connect (every_selector, "toggled",
-                      G_CALLBACK (on_recur_yearly_toggled_cb), apptw);
     g_signal_connect (apptw->recurecnce_yearly_week_selector, "changed",
                       G_CALLBACK (on_app_combobox_changed_cb), apptw);
     g_signal_connect (apptw->recurecnce_yearly_day_selector, "changed",
                       G_CALLBACK (on_app_combobox_changed_cb), apptw);
     g_signal_connect (apptw->recurecnce_yearly_month_selector, "changed",
                       G_CALLBACK (on_app_combobox_changed_cb), apptw);
-    g_signal_connect (apptw->recurecnce_yearly_month_button, "clicked",
-                      G_CALLBACK (on_recur_Date_button_clicked_cb), apptw);
 
     box_widget = (GtkWidget *)box;
     gtk_widget_set_visible (box_widget, TRUE);

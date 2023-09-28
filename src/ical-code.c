@@ -995,6 +995,11 @@ static void appt_add_exception_internal(xfical_appt *appt
     }
 }
 
+/** Fill recurrence rule.
+ *  NOTE: This function create RRULE string and then tranfer RRULE data to
+ *  libical structure. RRULE string creation is needed because libical does not
+ *  support numbers before day (ie. 1MO).
+ */
 static void appt_add_recur_internal(xfical_appt *appt, icalcomponent *icmp)
 {
     gchar recur_str[1001], *recur_p, *recur_p2;
@@ -1078,7 +1083,7 @@ static void appt_add_recur_internal(xfical_appt *appt, icalcomponent *icmp)
                         break;
 
                     week = (appt->recur_week_sel == XFICAL_RECUR_MONTH_WEEK_LAST)
-                         ? -1 : (int)appt->recur_week_sel + 1   ;
+                         ? -1 : (int)appt->recur_week_sel + 1;
 
                     recur_p += g_sprintf (recur_p, ";BYDAY=%d%s",
                                           week, byday_a[appt->recur_day_sel]);
@@ -1086,6 +1091,17 @@ static void appt_add_recur_internal(xfical_appt *appt, icalcomponent *icmp)
             }
             break;
         case XFICAL_FREQ_YEARLY:
+            if ((int)appt->recur_day_sel < 0)
+                break;
+            else if ((int)appt->recur_month_sel < 0)
+                break;
+
+            week = (appt->recur_week_sel == XFICAL_RECUR_MONTH_WEEK_LAST)
+                 ? -1 : (int)appt->recur_week_sel + 1;
+
+            recur_p += g_sprintf (recur_p, ";BYDAY=%d%s;BYMONTH=%d",
+                                  week, byday_a[appt->recur_day_sel],
+                                  appt->recur_month_sel + 1);
             break;
         default:
             recur_p2 = recur_p; /* store current pointer */
