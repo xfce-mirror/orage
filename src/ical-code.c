@@ -715,11 +715,15 @@ xfical_appt *xfical_appt_alloc(void)
 {
     xfical_appt *appt;
     guint i;
+    guint week;
     guint weekday;
+    guint month;
     GDateTime *gdt;
 
     gdt = g_date_time_new_now_local ();
+    week = 0; /* TODO: find week of month, locale should be taken acount also. */
     weekday = g_date_time_get_day_of_week (gdt) - 1;
+    month = g_date_time_get_month (gdt) - 1;
     g_date_time_unref (gdt);
 
     appt = g_new0(xfical_appt, 1);
@@ -727,6 +731,10 @@ xfical_appt *xfical_appt_alloc(void)
     appt->freq = XFICAL_FREQ_NONE;
     appt->interval = 1;
     appt->starttimecur = g_date_time_new_now_local ();
+    appt->recur_week_sel = week;
+    appt->recur_day_sel = weekday;
+    appt->recur_month_sel = month;
+
     for (i=0; i <= 6; i++)
         appt->recur_byday[i] = (weekday == i);
 
@@ -1086,8 +1094,7 @@ static void appt_add_recur_internal(xfical_appt *appt, icalcomponent *icmp)
                     break;
 
                 case XFICAL_RECUR_MONTH_TYPE_EVERY:
-                    if ((int)appt->recur_day_sel < 0)
-                        break;
+                    g_assert ((int)appt->recur_day_sel >= 0);
 
                     week = (appt->recur_week_sel == XFICAL_RECUR_MONTH_WEEK_LAST)
                          ? -1 : (int)appt->recur_week_sel + 1;
@@ -1098,10 +1105,8 @@ static void appt_add_recur_internal(xfical_appt *appt, icalcomponent *icmp)
             }
             break;
         case XFICAL_FREQ_YEARLY:
-            if ((int)appt->recur_day_sel < 0)
-                break;
-            else if ((int)appt->recur_month_sel < 0)
-                break;
+            g_assert ((int)appt->recur_day_sel >= 0);
+            g_assert ((int)appt->recur_month_sel >= 0);
 
             week = (appt->recur_week_sel == XFICAL_RECUR_MONTH_WEEK_LAST)
                  ? -1 : (int)appt->recur_week_sel + 1;

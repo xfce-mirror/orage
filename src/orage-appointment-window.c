@@ -2714,6 +2714,22 @@ static void fill_appt_window_recurrence (OrageAppointmentWindow *apptw,
                           untildate_to_display);
     g_free (untildate_to_display);
 
+    gtk_combo_box_set_active (
+            GTK_COMBO_BOX (apptw->recurecnce_yearly_week_selector),
+            appt->recur_week_sel);
+    gtk_combo_box_set_active (
+            GTK_COMBO_BOX (apptw->recurecnce_yearly_day_selector),
+            appt->recur_day_sel);
+    gtk_combo_box_set_active (
+            GTK_COMBO_BOX (apptw->recurecnce_yearly_month_selector),
+            appt->recur_month_sel);
+    gtk_combo_box_set_active (
+            GTK_COMBO_BOX (apptw->recurrence_monthly_week_selector),
+            appt->recur_week_sel);
+    gtk_combo_box_set_active (
+            GTK_COMBO_BOX (apptw->recurrence_monthly_day_selector),
+            appt->recur_day_sel);
+
     /* weekdays */
     for (i=0; i <= 6; i++) {
         gtk_toggle_button_set_active(
