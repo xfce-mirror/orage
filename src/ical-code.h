@@ -171,7 +171,6 @@ typedef struct _xfical_appt
 
     GDateTime *recur_until;
     gboolean recur_byday[7]; /* 0=Mo, 1=Tu, 2=We, 3=Th, 4=Fr, 5=Sa, 6=Su */
-    gint   recur_byday_cnt[7]; /* monthly/early: 1=first -1=last 2=second... */
     gint   interval;    /* 1=every day/week..., 2=every second day/week,... */
     gboolean recur_todo_base_start; /* TRUE=start time, FALSE=completed time */
     GList  *recur_exceptions; /* EXDATE and RDATE list xfical_exception */

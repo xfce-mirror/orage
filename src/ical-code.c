@@ -711,9 +711,8 @@ gint xfical_compare_times (xfical_appt *appt)
     }
 }
 
-xfical_appt *xfical_appt_alloc(void)
+static void xfical_appt_init0 (xfical_appt *appt)
 {
-    xfical_appt *appt;
     guint i;
     guint week;
     guint weekday;
@@ -737,8 +736,16 @@ xfical_appt *xfical_appt_alloc(void)
 
     for (i=0; i <= 6; i++)
         appt->recur_byday[i] = (weekday == i);
+}
 
-    return(appt);
+xfical_appt *xfical_appt_alloc(void)
+{
+    xfical_appt *appt;
+
+    appt = g_new0(xfical_appt, 1);
+    xfical_appt_init0 (appt);
+
+    return appt;
 }
 
 char *ic_generate_uid(void)
@@ -1705,31 +1712,24 @@ static void ical_appt_get_rrule_internal (G_GNUC_UNUSED icalcomponent *c,
             switch (day) {
                 case ICAL_MONDAY_WEEKDAY:
                     appt->recur_byday[0] = TRUE;
-                    appt->recur_byday_cnt[0] = cnt;
                     break;
                 case ICAL_TUESDAY_WEEKDAY:
                     appt->recur_byday[1] = TRUE;
-                    appt->recur_byday_cnt[1] = cnt;
                     break;
                 case ICAL_WEDNESDAY_WEEKDAY:
                     appt->recur_byday[2] = TRUE;
-                    appt->recur_byday_cnt[2] = cnt;
                     break;
                 case ICAL_THURSDAY_WEEKDAY:
                     appt->recur_byday[3] = TRUE;
-                    appt->recur_byday_cnt[3] = cnt;
                     break;
                 case ICAL_FRIDAY_WEEKDAY:
                     appt->recur_byday[4] = TRUE;
-                    appt->recur_byday_cnt[4] = cnt;
                     break;
                 case ICAL_SATURDAY_WEEKDAY:
                     appt->recur_byday[5] = TRUE;
-                    appt->recur_byday_cnt[5] = cnt;
                     break;
                 case ICAL_SUNDAY_WEEKDAY:
                     appt->recur_byday[6] = TRUE;
-                    appt->recur_byday_cnt[6] = cnt;
                     break;
                 case ICAL_NO_WEEKDAY:
                     break;
@@ -1745,13 +1745,7 @@ static void ical_appt_get_rrule_internal (G_GNUC_UNUSED icalcomponent *c,
 
 static void appt_init(xfical_appt *appt)
 {
-    guint i;
-    guint weekday;
-    GDateTime *gdt;
-
-    gdt = g_date_time_new_now_local ();
-    weekday = g_date_time_get_day_of_week (gdt) - 1;
-    g_date_time_unref (gdt);
+    xfical_appt_init0 (appt);
 
     appt->uid = NULL;
     appt->title = NULL;
@@ -1787,9 +1781,7 @@ static void appt_init(xfical_appt *appt)
     appt->procedure_alarm = FALSE;
     appt->procedure_cmd = NULL;
     appt->procedure_params = NULL;
-    appt->starttimecur = g_date_time_new_now_local ();
     appt->endtimecur = g_date_time_ref (appt->starttimecur);
-    appt->freq = XFICAL_FREQ_NONE;
     appt->recur_limit = XFICAL_RECUR_NO_LIMIT;
     appt->recur_count = 0;
     appt->recur_until = NULL;
@@ -1797,11 +1789,7 @@ static void appt_init(xfical_appt *appt)
     appt->email_alarm = FALSE;
     appt->email_attendees = NULL;
 #endif
-    for (i=0; i <= 6; i++) {
-        appt->recur_byday[i] = (weekday == i);
-        appt->recur_byday_cnt[i] = 0;
-    }
-    appt->interval = 1;
+
     appt->recur_todo_base_start = TRUE;
     appt->recur_exceptions = NULL;
 }
