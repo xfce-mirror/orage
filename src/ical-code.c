@@ -723,18 +723,16 @@ static void xfical_appt_init0 (xfical_appt *appt)
     week = 0; /* TODO: find week of month, locale should be taken acount also. */
     weekday = g_date_time_get_day_of_week (gdt) - 1;
     month = g_date_time_get_month (gdt) - 1;
-    g_date_time_unref (gdt);
 
-    appt = g_new0(xfical_appt, 1);
     appt->availability = 1;
     appt->freq = XFICAL_FREQ_NONE;
     appt->interval = 1;
-    appt->starttimecur = g_date_time_new_now_local ();
+    appt->starttimecur = gdt;
     appt->recur_week_sel = week;
     appt->recur_day_sel = weekday;
     appt->recur_month_sel = month;
 
-    for (i=0; i <= 6; i++)
+    for (i = 0; i <= 6; i++)
         appt->recur_byday[i] = (weekday == i);
 }
 
