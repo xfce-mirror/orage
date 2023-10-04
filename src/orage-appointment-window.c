@@ -220,10 +220,6 @@ struct _OrageAppointmentWindow
     GtkWidget *Recur_notebook_page;
     GtkWidget *Recur_tab_label;
     GtkWidget *TableRecur;
-    GtkWidget *Recur_feature_label;
-    GtkWidget *Recur_feature_hbox;
-    GtkWidget *Recur_feature_normal_rb;
-    GtkWidget *Recur_feature_advanced_rb;
     GtkWidget *Recur_freq_label;
     GtkWidget *Recur_freq_hbox;
     GtkWidget *Recur_freq_cb;
@@ -232,8 +228,6 @@ struct _OrageAppointmentWindow
     GtkWidget *Recur_count_spin;
     GtkWidget *Recur_until_rb;
     GtkWidget *Recur_until_button;
-    GtkWidget *Recur_byday_label;
-    GtkWidget *Recur_byday_hbox;
     GtkWidget *Recur_todo_base_label;
     GtkWidget *Recur_todo_base_hbox;
     GtkWidget *Recur_todo_base_start_rb;
@@ -475,19 +469,6 @@ static void set_repeat_sensitivity (OrageAppointmentWindow *apptw)
     freq = gtk_combo_box_get_active(GTK_COMBO_BOX(apptw->Recur_freq_cb));
     if (freq != XFICAL_FREQ_NONE)
         gtk_widget_set_sensitive(apptw->Recur_until_rb, TRUE);
-}
-
-static void recur_hide_show (OrageAppointmentWindow *apptw)
-{
-    if (gtk_toggle_button_get_active(
-            GTK_TOGGLE_BUTTON(apptw->Recur_feature_normal_rb))) {
-        gtk_widget_hide(apptw->Recur_byday_label);
-        gtk_widget_hide(apptw->Recur_byday_hbox);
-    }
-    else {
-        gtk_widget_show(apptw->Recur_byday_label);
-        gtk_widget_show(apptw->Recur_byday_hbox);
-    }
 }
 
 static void reurrence_set_visible (OrageAppointmentWindow *apptw)
@@ -788,14 +769,6 @@ static void on_app_recur_checkbutton_clicked_cb (
 
     mark_appointment_changed (apptw);
     refresh_recur_calendars (apptw);
-}
-
-static void app_recur_feature_checkbutton_clicked_cb (
-    G_GNUC_UNUSED GtkCheckButton *cb, gpointer user_data)
-{
-    OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
-    recur_hide_show (apptw);
-    mark_appointment_changed (apptw);
 }
 
 static void app_sound_checkbutton_clicked_cb (G_GNUC_UNUSED GtkCheckButton *cb
@@ -2715,17 +2688,6 @@ static void fill_appt_window_recurrence (OrageAppointmentWindow *apptw,
                         , appt->recur_byday[i]);
     }
 
-    if (!appt->recur_byday[0] || !appt->recur_byday[1] || !appt->recur_byday[2]
-    ||  !appt->recur_byday[3] || !appt->recur_byday[4] || !appt->recur_byday[5]
-    ||  !appt->recur_byday[6]) {
-        gtk_toggle_button_set_active(
-                GTK_TOGGLE_BUTTON(apptw->Recur_feature_advanced_rb), TRUE);
-    }
-    else {
-        gtk_toggle_button_set_active(
-                GTK_TOGGLE_BUTTON(apptw->Recur_feature_normal_rb), TRUE);
-    }
-
     /* todo base */
     if (appt->recur_todo_base_start)
         gtk_toggle_button_set_active(
@@ -4278,15 +4240,6 @@ static void build_recurrence_page (OrageAppointmentWindow *apptw)
 
 
 
-    /* weekdays (only for complex settings) */
-    apptw->Recur_byday_label = gtk_label_new(_("Weekdays"));
-    apptw->Recur_byday_hbox = gtk_grid_new ();
-    g_object_set (apptw->Recur_byday_hbox, "column-homogeneous", TRUE,
-                                           NULL);
-    orage_table_add_row (recur_table
-            , apptw->Recur_byday_label, apptw->Recur_byday_hbox
-            , ++row, (GTK_EXPAND | GTK_FILL), (0));
-
     /* exceptions */
     apptw->Recur_exception_label = gtk_label_new(_("Exceptions"));
     apptw->Recur_exception_hbox = gtk_grid_new ();
@@ -4394,41 +4347,10 @@ static void build_recurrence_page (OrageAppointmentWindow *apptw)
     orage_table_add_row (recur_table
             , apptw->Recur_calendar_label, apptw->Recur_calendar_hbox
             , ++row ,(GTK_EXPAND | GTK_FILL), (0));
-
-
-    /* Old code, remove this--------------------------------------------------*/
-
-    /* complexity */
-    apptw->Recur_feature_label = gtk_label_new(_("Complexity"));
-    apptw->Recur_feature_hbox = gtk_grid_new ();
-    apptw->Recur_feature_normal_rb = gtk_radio_button_new_with_label(NULL
-            , _("Basic"));
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_feature_hbox),
-                             apptw->Recur_feature_normal_rb, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-    apptw->Recur_feature_advanced_rb =
-            gtk_radio_button_new_with_mnemonic_from_widget(
-                    GTK_RADIO_BUTTON(apptw->Recur_feature_normal_rb)
-                            , _("Advanced"));
-    g_object_set (apptw->Recur_feature_advanced_rb, "margin-left", 20, NULL);
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_feature_hbox),
-                             apptw->Recur_feature_advanced_rb, NULL,
-                             GTK_POS_RIGHT, 1, 1);
-    gtk_widget_set_tooltip_text(apptw->Recur_feature_normal_rb
-            , _("Use this if you want regular repeating event"));
-    gtk_widget_set_tooltip_text(apptw->Recur_feature_advanced_rb
-            , _("Use this if you need complex times like:\n Every Saturday and Sunday or \n First Tuesday every month"));
-    orage_table_add_row (recur_table
-            , apptw->Recur_feature_label, apptw->Recur_feature_hbox
-            , row++, (GTK_EXPAND | GTK_FILL), (0));
 }
 
 static void enable_recurrence_page_signals (OrageAppointmentWindow *apptw)
 {
-    g_signal_connect((gpointer)apptw->Recur_feature_normal_rb, "clicked"
-            , G_CALLBACK(app_recur_feature_checkbutton_clicked_cb), apptw);
-    g_signal_connect((gpointer)apptw->Recur_feature_advanced_rb, "clicked"
-            , G_CALLBACK(app_recur_feature_checkbutton_clicked_cb), apptw);
     g_signal_connect((gpointer)apptw->Recur_freq_cb, "changed"
             , G_CALLBACK(on_freq_combobox_changed_cb), apptw);
     g_signal_connect((gpointer)apptw->Recur_calendar1, "month-changed"
@@ -4457,7 +4379,6 @@ static void orage_appointment_window_constructed (GObject *object)
     enable_alarm_page_signals (self);
     enable_recurrence_page_signals (self);
     gtk_widget_show_all (GTK_WIDGET (self));
-    recur_hide_show (self);
     reurrence_set_visible (self);
     type_hide_show (self);
     readonly_hide_show (self);
