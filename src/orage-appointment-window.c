@@ -3434,6 +3434,7 @@ static GtkWidget *build_limits_cell (OrageAppointmentWindow *apptw)
                         FALSE, FALSE, 0);
     gtk_box_pack_start (box, GTK_WIDGET (limit_until_box), FALSE, FALSE, 0);
 
+#if 0
     g_signal_connect (apptw->Recur_limit_rb, "toggled",
         G_CALLBACK (on_recur_limit_toggled_cb), apptw);
     g_signal_connect (apptw->Recur_count_rb, "toggled",
@@ -3444,7 +3445,7 @@ static GtkWidget *build_limits_cell (OrageAppointmentWindow *apptw)
         G_CALLBACK (on_recur_spin_button_changed_cb), apptw);
     g_signal_connect (apptw->Recur_until_button, "clicked",
         G_CALLBACK (on_recur_Date_button_clicked_cb), apptw);
-
+#endif
     return (GtkWidget *)box;
 }
 
@@ -4368,6 +4369,18 @@ static void enable_recurrence_page_signals (OrageAppointmentWindow *apptw)
     g_signal_connect((gpointer)apptw->Recur_calendar3
             , "day_selected_double_click"
             , G_CALLBACK(recur_day_selected_double_click_cb), apptw);
+#if 1
+    g_signal_connect (apptw->Recur_limit_rb, "toggled",
+        G_CALLBACK (on_recur_limit_toggled_cb), apptw);
+    g_signal_connect (apptw->Recur_count_rb, "toggled",
+        G_CALLBACK (on_recur_count_toggled_cb), apptw);
+    g_signal_connect (apptw->Recur_until_rb, "toggled",
+        G_CALLBACK (on_recur_until_toggled_cb), apptw);
+    g_signal_connect (apptw->Recur_count_spin, "value-changed",
+        G_CALLBACK (on_recur_spin_button_changed_cb), apptw);
+    g_signal_connect (apptw->Recur_until_button, "clicked",
+        G_CALLBACK (on_recur_Date_button_clicked_cb), apptw);
+#endif
 }
 
 static void orage_appointment_window_constructed (GObject *object)
