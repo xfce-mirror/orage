@@ -3172,9 +3172,6 @@ static GtkWidget *build_recurrence_box_daily (OrageAppointmentWindow *apptw)
                         FALSE, FALSE, 0);
     gtk_box_pack_start (box, repeat_days_label2, FALSE, FALSE, 0);
 
-    g_signal_connect (apptw->recurrence_daily_interval_spin, "value-changed",
-        G_CALLBACK (on_recur_spin_button_changed_cb), apptw);
-
     box_widget = (GtkWidget *)box;
     gtk_widget_set_visible (box_widget, TRUE);
 
@@ -3222,9 +3219,6 @@ static GtkWidget *build_recurrence_box_weekly (OrageAppointmentWindow *apptw)
     box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 7));
     gtk_box_pack_start (box, GTK_WIDGET (repeat_weeks_box), FALSE, FALSE, 0);
     gtk_box_pack_start (box, GTK_WIDGET (weekday_box), FALSE, FALSE, 0);
-
-    g_signal_connect (apptw->recurrence_weekly_interval_spin, "value-changed",
-                      G_CALLBACK (on_recur_spin_button_changed_cb), apptw);
 
     box_widget = (GtkWidget *)box;
     gtk_widget_set_visible (box_widget, TRUE);
@@ -3286,22 +3280,6 @@ static GtkWidget *build_recurrence_box_monthly (OrageAppointmentWindow *apptw)
     gtk_box_pack_start (box, GTK_WIDGET (end_box), FALSE, FALSE, 0);
     gtk_box_pack_start (box, GTK_WIDGET (every_box), FALSE, FALSE, 0);
 
-    g_signal_connect (apptw->recurrence_monthly_beginning_selector, "toggled",
-                      G_CALLBACK (on_recur_monthly_begin_toggled_cb), apptw);
-    g_signal_connect (apptw->recurrence_monthly_end_selector, "toggled",
-                      G_CALLBACK (on_recur_monthly_end_toggled_cb), apptw);
-    g_signal_connect (apptw->recurrence_monthly_every_selector, "toggled",
-                      G_CALLBACK (on_recur_monthly_every_toggled_cb), apptw);
-
-    g_signal_connect (apptw->recurrence_monthly_begin_spin, "value-changed",
-                      G_CALLBACK (on_recur_spin_button_changed_cb), apptw);
-    g_signal_connect (apptw->recurrence_monthly_end_spin, "value-changed",
-                      G_CALLBACK (on_recur_spin_button_changed_cb), apptw);
-    g_signal_connect (apptw->recurrence_monthly_week_selector, "changed",
-                      G_CALLBACK (on_app_combobox_changed_cb), apptw);
-    g_signal_connect (apptw->recurrence_monthly_day_selector, "changed",
-                      G_CALLBACK (on_app_combobox_changed_cb), apptw);
-
     box_widget = (GtkWidget *)box;
     gtk_widget_set_visible (box_widget, TRUE);
 
@@ -3343,13 +3321,6 @@ static GtkWidget *build_recurrence_box_yearly (OrageAppointmentWindow *apptw)
     gtk_box_pack_start (box, apptw->recurecnce_yearly_month_selector,
                         FALSE, FALSE, 0);
 
-    g_signal_connect (apptw->recurecnce_yearly_week_selector, "changed",
-                      G_CALLBACK (on_app_combobox_changed_cb), apptw);
-    g_signal_connect (apptw->recurecnce_yearly_day_selector, "changed",
-                      G_CALLBACK (on_app_combobox_changed_cb), apptw);
-    g_signal_connect (apptw->recurecnce_yearly_month_selector, "changed",
-                      G_CALLBACK (on_app_combobox_changed_cb), apptw);
-
     box_widget = (GtkWidget *)box;
     gtk_widget_set_visible (box_widget, TRUE);
 
@@ -3375,9 +3346,6 @@ static GtkWidget *build_recurrence_box_hourly (OrageAppointmentWindow *apptw)
     gtk_box_pack_start (box, apptw->recurrence_hourly_interval_spin,
                         FALSE, FALSE, 0);
     gtk_box_pack_start (box, repeat_hours_label2, FALSE, FALSE, 0);
-
-    g_signal_connect (apptw->recurrence_hourly_interval_spin, "value-changed",
-        G_CALLBACK (on_recur_spin_button_changed_cb), apptw);
 
     box_widget = (GtkWidget *)box;
     gtk_widget_set_visible (box_widget, TRUE);
@@ -3435,18 +3403,6 @@ static GtkWidget *build_limits_cell (OrageAppointmentWindow *apptw)
                         FALSE, FALSE, 0);
     gtk_box_pack_start (box, GTK_WIDGET (limit_until_box), FALSE, FALSE, 0);
 
-#if 0
-    g_signal_connect (apptw->Recur_limit_rb, "toggled",
-        G_CALLBACK (on_recur_limit_toggled_cb), apptw);
-    g_signal_connect (apptw->Recur_count_rb, "toggled",
-        G_CALLBACK (on_recur_count_toggled_cb), apptw);
-    g_signal_connect (apptw->Recur_until_rb, "toggled",
-        G_CALLBACK (on_recur_until_toggled_cb), apptw);
-    g_signal_connect (apptw->Recur_count_spin, "value-changed",
-        G_CALLBACK (on_recur_spin_button_changed_cb), apptw);
-    g_signal_connect (apptw->Recur_until_button, "clicked",
-        G_CALLBACK (on_recur_Date_button_clicked_cb), apptw);
-#endif
     return (GtkWidget *)box;
 }
 
@@ -4233,15 +4189,6 @@ static void build_recurrence_page (OrageAppointmentWindow *apptw)
                          apptw->Recur_todo_base_hbox, row++,
                          GTK_EXPAND | GTK_FILL, 0);
 
-
-
-
-
-
-
-
-
-
     /* exceptions */
     apptw->Recur_exception_label = gtk_label_new(_("Exceptions"));
     apptw->Recur_exception_hbox = gtk_grid_new ();
@@ -4355,34 +4302,59 @@ static void enable_recurrence_page_signals (OrageAppointmentWindow *apptw)
 {
     guint i;
 
-    g_signal_connect((gpointer)apptw->Recur_freq_cb, "changed"
-            , G_CALLBACK(on_freq_combobox_changed_cb), apptw);
-    g_signal_connect((gpointer)apptw->Recur_calendar1, "month-changed"
-            , G_CALLBACK(recur_month_changed_cb), apptw);
-    g_signal_connect((gpointer)apptw->Recur_calendar2, "month-changed"
-            , G_CALLBACK(recur_month_changed_cb), apptw);
-    g_signal_connect((gpointer)apptw->Recur_calendar3, "month-changed"
-            , G_CALLBACK(recur_month_changed_cb), apptw);
-    g_signal_connect((gpointer)apptw->Recur_calendar1
-            , "day_selected_double_click"
-            , G_CALLBACK(recur_day_selected_double_click_cb), apptw);
-    g_signal_connect((gpointer)apptw->Recur_calendar2
-            , "day_selected_double_click"
-            , G_CALLBACK(recur_day_selected_double_click_cb), apptw);
-    g_signal_connect((gpointer)apptw->Recur_calendar3
-            , "day_selected_double_click"
-            , G_CALLBACK(recur_day_selected_double_click_cb), apptw);
-#if 1
+    g_signal_connect (apptw->Recur_freq_cb, "changed",
+                      G_CALLBACK (on_freq_combobox_changed_cb), apptw);
+    g_signal_connect (apptw->Recur_calendar1, "month-changed",
+                      G_CALLBACK (recur_month_changed_cb), apptw);
+    g_signal_connect (apptw->Recur_calendar2, "month-changed",
+                      G_CALLBACK (recur_month_changed_cb), apptw);
+    g_signal_connect (apptw->Recur_calendar3, "month-changed",
+                      G_CALLBACK (recur_month_changed_cb), apptw);
+    g_signal_connect (apptw->Recur_calendar1, "day_selected_double_click",
+                      G_CALLBACK (recur_day_selected_double_click_cb), apptw);
+    g_signal_connect (apptw->Recur_calendar2, "day_selected_double_click",
+                      G_CALLBACK(recur_day_selected_double_click_cb), apptw);
+    g_signal_connect (apptw->Recur_calendar3, "day_selected_double_click",
+                      G_CALLBACK(recur_day_selected_double_click_cb), apptw);
+
     g_signal_connect (apptw->Recur_limit_rb, "toggled",
-        G_CALLBACK (on_recur_limit_toggled_cb), apptw);
+                      G_CALLBACK (on_recur_limit_toggled_cb), apptw);
     g_signal_connect (apptw->Recur_count_rb, "toggled",
-        G_CALLBACK (on_recur_count_toggled_cb), apptw);
+                      G_CALLBACK (on_recur_count_toggled_cb), apptw);
     g_signal_connect (apptw->Recur_until_rb, "toggled",
-        G_CALLBACK (on_recur_until_toggled_cb), apptw);
+                      G_CALLBACK (on_recur_until_toggled_cb), apptw);
     g_signal_connect (apptw->Recur_count_spin, "value-changed",
-        G_CALLBACK (on_recur_spin_button_changed_cb), apptw);
+                      G_CALLBACK (on_recur_spin_button_changed_cb), apptw);
     g_signal_connect (apptw->Recur_until_button, "clicked",
-        G_CALLBACK (on_recur_Date_button_clicked_cb), apptw);
+                      G_CALLBACK (on_recur_Date_button_clicked_cb), apptw);
+    g_signal_connect (apptw->recurrence_daily_interval_spin, "value-changed",
+                      G_CALLBACK (on_recur_spin_button_changed_cb), apptw);
+    g_signal_connect (apptw->recurrence_hourly_interval_spin, "value-changed",
+                      G_CALLBACK (on_recur_spin_button_changed_cb), apptw);
+
+    g_signal_connect (apptw->recurrence_monthly_beginning_selector, "toggled",
+                      G_CALLBACK (on_recur_monthly_begin_toggled_cb), apptw);
+    g_signal_connect (apptw->recurrence_monthly_end_selector, "toggled",
+                      G_CALLBACK (on_recur_monthly_end_toggled_cb), apptw);
+    g_signal_connect (apptw->recurrence_monthly_every_selector, "toggled",
+                      G_CALLBACK (on_recur_monthly_every_toggled_cb), apptw);
+
+    g_signal_connect (apptw->recurrence_monthly_begin_spin, "value-changed",
+                      G_CALLBACK (on_recur_spin_button_changed_cb), apptw);
+    g_signal_connect (apptw->recurrence_monthly_end_spin, "value-changed",
+                      G_CALLBACK (on_recur_spin_button_changed_cb), apptw);
+    g_signal_connect (apptw->recurrence_monthly_week_selector, "changed",
+                      G_CALLBACK (on_app_combobox_changed_cb), apptw);
+    g_signal_connect (apptw->recurrence_monthly_day_selector, "changed",
+                      G_CALLBACK (on_app_combobox_changed_cb), apptw);
+    g_signal_connect (apptw->recurrence_weekly_interval_spin, "value-changed",
+                      G_CALLBACK (on_recur_spin_button_changed_cb), apptw);
+    g_signal_connect (apptw->recurecnce_yearly_week_selector, "changed",
+                      G_CALLBACK (on_app_combobox_changed_cb), apptw);
+    g_signal_connect (apptw->recurecnce_yearly_day_selector, "changed",
+                      G_CALLBACK (on_app_combobox_changed_cb), apptw);
+    g_signal_connect (apptw->recurecnce_yearly_month_selector, "changed",
+                      G_CALLBACK (on_app_combobox_changed_cb), apptw);
 
     for (i = 0; i <= 6; i++)
     {
@@ -4390,7 +4362,6 @@ static void enable_recurrence_page_signals (OrageAppointmentWindow *apptw)
                           G_CALLBACK (on_app_recur_checkbutton_clicked_cb),
                           apptw);
     }
-#endif
 }
 
 static void orage_appointment_window_constructed (GObject *object)
