@@ -2682,6 +2682,10 @@ static void fill_appt_window_recurrence (OrageAppointmentWindow *apptw,
             GTK_COMBO_BOX (apptw->recurrence_monthly_day_selector),
             appt->recur_day_sel);
 
+    gtk_spin_button_set_value (
+            GTK_SPIN_BUTTON (apptw->recurrence_hourly_interval_spin),
+            appt->interval);
+
     /* weekdays */
     for (i=0; i <= 6; i++) {
         gtk_toggle_button_set_active(
@@ -3213,10 +3217,6 @@ static GtkWidget *build_recurrence_box_weekly (OrageAppointmentWindow *apptw)
                 gtk_check_button_new_with_mnemonic (weekday_array[i]);
         gtk_box_pack_start (weekday_box, apptw->recurrence_weekly_byday[i],
                             FALSE, FALSE, 7);
-
-        g_signal_connect (apptw->recurrence_weekly_byday[i], "clicked",
-                          G_CALLBACK (on_app_recur_checkbutton_clicked_cb),
-                          apptw);
     }
 
     box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 7));
@@ -4353,6 +4353,8 @@ static void build_recurrence_page (OrageAppointmentWindow *apptw)
 
 static void enable_recurrence_page_signals (OrageAppointmentWindow *apptw)
 {
+    guint i;
+
     g_signal_connect((gpointer)apptw->Recur_freq_cb, "changed"
             , G_CALLBACK(on_freq_combobox_changed_cb), apptw);
     g_signal_connect((gpointer)apptw->Recur_calendar1, "month-changed"
@@ -4381,6 +4383,13 @@ static void enable_recurrence_page_signals (OrageAppointmentWindow *apptw)
         G_CALLBACK (on_recur_spin_button_changed_cb), apptw);
     g_signal_connect (apptw->Recur_until_button, "clicked",
         G_CALLBACK (on_recur_Date_button_clicked_cb), apptw);
+
+    for (i = 0; i <= 6; i++)
+    {
+        g_signal_connect (apptw->recurrence_weekly_byday[i], "clicked",
+                          G_CALLBACK (on_app_recur_checkbutton_clicked_cb),
+                          apptw);
+    }
 #endif
 }
 
