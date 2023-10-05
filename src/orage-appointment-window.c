@@ -1244,6 +1244,7 @@ static void fill_appt_from_recurrence (xfical_appt *appt,
         g_object_set_data_full (G_OBJECT (apptw->Recur_until_button),
                                 DATE_KEY, gdt,
                                 (GDestroyNotify)g_date_time_unref);
+        gtk_widget_set_sensitive (apptw->Recur_until_button, TRUE);
     }
     else
         g_assert_not_reached ();
