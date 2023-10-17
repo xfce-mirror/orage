@@ -741,7 +741,11 @@ static void refresh_recur_calendars (OrageAppointmentWindow *apptw)
 
     cal = GTK_CALENDAR (apptw->Recur_calendar1);
     xfical_mark_calendar_recur (cal, appt);
+
+    cal = GTK_CALENDAR (apptw->Recur_calendar2);
     xfical_mark_calendar_recur (cal, appt);
+
+    cal = GTK_CALENDAR (apptw->Recur_calendar3);
     xfical_mark_calendar_recur (cal, appt);
 }
 
@@ -1902,7 +1906,7 @@ static void recur_month_changed_cb (GtkCalendar *calendar, gpointer user_data)
     /* actually we do not have to do fill_appt_from_apptw always,
      * but as we are not keeping track of changes, we just do it always */
     fill_appt_from_apptw (appt, apptw);
-    xfical_mark_calendar_recur(calendar, appt);
+    xfical_mark_calendar_recur (calendar, appt);
 }
 
 static void recur_day_selected_double_click_cb (GtkCalendar *calendar
