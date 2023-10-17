@@ -1709,9 +1709,6 @@ static void ical_appt_get_rrule_internal (G_GNUC_UNUSED icalcomponent *c,
                 cnt = icalrecurrencetype_day_position (rrule.by_day[0]);
                 day = icalrecurrencetype_day_day_of_week (rrule.by_day[0]);
 
-                g_debug ("%s: by_day=%d", G_STRFUNC, rrule.by_day[0]);
-                g_debug ("%s: day=%d, cnt=%d", G_STRFUNC, day, cnt);
-
                 appt->recur_week_sel = cnt < 0 ? XFICAL_RECUR_MONTH_WEEK_LAST : cnt;
                 appt->recur_day_sel = day;
             }
