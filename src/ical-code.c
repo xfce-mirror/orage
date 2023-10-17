@@ -1030,6 +1030,7 @@ static void appt_add_recur_internal(xfical_appt *appt, icalcomponent *icmp)
     int i, cnt;
     gint week;
     icaltimezone *l_icaltimezone = NULL;
+    gboolean add_interval = FALSE;
 
     if (appt->freq == XFICAL_FREQ_NONE) {
         return;
@@ -1038,9 +1039,11 @@ static void appt_add_recur_internal(xfical_appt *appt, icalcomponent *icmp)
     switch(appt->freq) {
         case XFICAL_FREQ_DAILY:
             recur_p = g_stpcpy(recur_p, "DAILY");
+            add_interval = (appt->interval > 1);
             break;
         case XFICAL_FREQ_WEEKLY:
             recur_p = g_stpcpy(recur_p, "WEEKLY");
+            add_interval = (appt->interval > 1);
             break;
         case XFICAL_FREQ_MONTHLY:
             recur_p = g_stpcpy(recur_p, "MONTHLY");
@@ -1050,12 +1053,13 @@ static void appt_add_recur_internal(xfical_appt *appt, icalcomponent *icmp)
             break;
         case XFICAL_FREQ_HOURLY:
             recur_p = g_stpcpy(recur_p, "HOURLY");
+            add_interval = (appt->interval > 1);
             break;
         default:
             g_warning ("%s: Unsupported freq", G_STRFUNC);
             icalrecurrencetype_clear(&rrule);
     }
-    if (appt->interval > 1) { /* not default, need to insert it */
+    if (add_interval) { /* not default, need to insert it */
         recur_p += g_sprintf(recur_p, ";INTERVAL=%d", appt->interval);
     }
     if (appt->recur_limit == XFICAL_RECUR_COUNT) {
@@ -1672,6 +1676,7 @@ static void ical_appt_get_rrule_internal (G_GNUC_UNUSED icalcomponent *c,
     struct icalrecurrencetype rrule;
     int i, cnt, day;
     GDateTime *gdt;
+    gint month_day;
 
     rrule = icalproperty_get_rrule(p);
     switch (rrule.freq) {
@@ -1683,6 +1688,36 @@ static void ical_appt_get_rrule_internal (G_GNUC_UNUSED icalcomponent *c,
             break;
         case ICAL_MONTHLY_RECURRENCE:
             appt->freq = XFICAL_FREQ_MONTHLY;
+            month_day = rrule.by_month_day[0];
+            if (month_day != ICAL_RECURRENCE_ARRAY_MAX)
+            {
+                if (month_day > 0)
+                {
+                    appt->recur_month_type = XFICAL_RECUR_MONTH_TYPE_BEGIN;
+                    appt->recur_month_days = month_day;
+                }
+                else
+                {
+                    appt->recur_month_type = XFICAL_RECUR_MONTH_TYPE_END;
+                    appt->recur_month_days = -1 * month_day;
+                }
+            }
+            else if (rrule.by_day[0] != ICAL_RECURRENCE_ARRAY_MAX)
+            {
+                appt->recur_month_type = XFICAL_RECUR_MONTH_TYPE_EVERY;
+
+                cnt = icalrecurrencetype_day_position (rrule.by_day[0]);
+                day = icalrecurrencetype_day_day_of_week (rrule.by_day[0]);
+
+                g_debug ("%s: by_day=%d", G_STRFUNC, rrule.by_day[0]);
+                g_debug ("%s: day=%d, cnt=%d", G_STRFUNC, day, cnt);
+
+                appt->recur_week_sel = cnt < 0 ? XFICAL_RECUR_MONTH_WEEK_LAST : cnt;
+                appt->recur_day_sel = day;
+            }
+            else
+                g_critical ("%s: unknown weekday for %s", G_STRFUNC, appt->uid);
+
             break;
         case ICAL_YEARLY_RECURRENCE:
             appt->freq = XFICAL_FREQ_YEARLY;
@@ -3219,9 +3254,9 @@ static void xfical_mark_calendar_from_component(GtkCalendar *gtkcal
             nedate.month = 1;
             nedate.year++;
         }
-        /*
+#if 0
         icaltime_adjust(&nedate, 0, 0, 0, 0);
-        */
+#endif
         /* FIXME: we read the whole appointent just to get start and end 
          * timezones for mark_calendar. too heavy? */
         /* 1970 check due to bug 9507 */
@@ -3236,11 +3271,11 @@ static void xfical_mark_calendar_from_component(GtkCalendar *gtkcal
            what the time is in, libical returns wrong time in span.
            But as the hour only changes with HOURLY repeating appointments,
            we can replace received hour with the hour from start time */
-            /*
+#if 0
             p = icalcomponent_get_first_property(c, ICAL_DTEND_PROPERTY);
             start = icalproperty_get_dtend(p);
             cal_data.orig_end_hour = start.hour;
-            */
+#endif
             p = icalcomponent_get_first_property(c, ICAL_DTSTART_PROPERTY);
             start = icalproperty_get_dtstart(p);
             cal_data.orig_start_hour = start.hour;
