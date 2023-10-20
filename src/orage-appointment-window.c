@@ -2151,7 +2151,7 @@ static xfical_appt *fill_appt_window_get_new_appt (GDateTime *par_gdt)
 }
 
 static xfical_appt *fill_appt_window_update_appt (OrageAppointmentWindow *apptw,
-                                                    const gchar *uid)
+                                                  const gchar *uid)
 {
     xfical_appt *appt;
 

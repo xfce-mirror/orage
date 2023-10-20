@@ -112,6 +112,31 @@ typedef struct _excluded_time
 static icaltimezone *utc_icaltimezone = NULL;
 static icaltimezone *local_icaltimezone = NULL;
 
+guint orage_recurrence_type_to_day_of_week (short by_day)
+{
+    const icalrecurrencetype_weekday wd =
+        icalrecurrencetype_day_day_of_week (by_day);
+
+    switch (wd)
+    {
+        case ICAL_SUNDAY_WEEKDAY:
+            return 6;
+
+        case ICAL_MONDAY_WEEKDAY:
+        case ICAL_TUESDAY_WEEKDAY:
+        case ICAL_WEDNESDAY_WEEKDAY:
+        case ICAL_THURSDAY_WEEKDAY:
+        case ICAL_FRIDAY_WEEKDAY:
+        case ICAL_SATURDAY_WEEKDAY:
+            return wd - ICAL_MONDAY_WEEKDAY;
+
+        case ICAL_NO_WEEKDAY:
+        default:
+            g_warning ("%s: invalid by_day value from RRULE", G_STRFUNC);
+            return 0;
+    }
+}
+
 static struct icaltimetype icaltimetype_from_gdatetime (GDateTime *gdt,
                                                         const gboolean date_only)
 {
@@ -966,14 +991,14 @@ static void appt_add_alarm_internal(xfical_appt *appt, icalcomponent *ievent)
         icalcomponent_add_component(ievent, ialarm);
     }
 
+#if 0
     /********** EMAIL **********/
-    /*
     if ORAGE_STR_EXISTS(appt->sound) {
         ialarm = appt_add_alarm_internal_base(appt, trg);
         appt_add_alarm_internal_email(appt, ialarm);
         icalcomponent_add_component(ievent, ialarm);
     }
-    */
+#endif
 
     /********** PROCEDURE **********/
     if (appt->procedure_alarm && ORAGE_STR_EXISTS(appt->procedure_cmd)) {
@@ -983,11 +1008,11 @@ static void appt_add_alarm_internal(xfical_appt *appt, icalcomponent *ievent)
     }
 }
 
-static void appt_add_exception_internal(xfical_appt *appt
+static void appt_add_exception_internal(const xfical_appt *appt
         , icalcomponent *icmp)
 {
     struct icaltimetype wtime;
-    GList *gl_tmp;
+    const GList *gl_tmp;
     xfical_exception *excp;
     struct icaldatetimeperiodtype rdate;
     xfical_exception_type type;
@@ -1017,10 +1042,10 @@ static void appt_add_exception_internal(xfical_appt *appt
 
 /** Fill recurrence rule.
  *  NOTE: This function create RRULE string and then tranfer RRULE data to
- *  libical structure. RRULE string creation is needed because libical does not
- *  support numbers before day (ie. 1MO).
+ *  libical structure.
  */
-static void appt_add_recur_internal(xfical_appt *appt, icalcomponent *icmp)
+static void appt_add_recur_internal (const xfical_appt *appt,
+                                     icalcomponent *icmp)
 {
     gchar recur_str[1001], *recur_p, *recur_p2;
     struct icalrecurrencetype rrule;
@@ -1029,6 +1054,7 @@ static void appt_add_recur_internal(xfical_appt *appt, icalcomponent *icmp)
     const char *text;
     int i, cnt;
     gint week;
+    gint week_sel;
     icaltimezone *l_icaltimezone = NULL;
     gboolean add_interval = FALSE;
 
@@ -1137,8 +1163,8 @@ static void appt_add_recur_internal(xfical_appt *appt, icalcomponent *icmp)
                 case XFICAL_RECUR_MONTH_TYPE_EVERY:
                     g_assert ((int)appt->recur_day_sel >= 0);
 
-                    week = (appt->recur_week_sel == XFICAL_RECUR_MONTH_WEEK_LAST)
-                         ? -1 : (int)appt->recur_week_sel + 1;
+                    week_sel = appt->recur_week_sel;
+                    week = (week_sel == XFICAL_RECUR_MONTH_WEEK_LAST) ? -1 : week_sel + 1;
 
                     recur_p += g_sprintf (recur_p, ";BYDAY=%d%s",
                                           week, byday_a[appt->recur_day_sel]);
@@ -1176,7 +1202,8 @@ static void appt_add_recur_internal(xfical_appt *appt, icalcomponent *icmp)
     }
 }
 
-static void appt_add_starttime_internal(xfical_appt *appt, icalcomponent *icmp)
+static void appt_add_starttime_internal (const xfical_appt *appt,
+                                         icalcomponent *icmp)
 {
     struct icaltimetype wtime;
 
@@ -1211,7 +1238,8 @@ static void appt_add_starttime_internal(xfical_appt *appt, icalcomponent *icmp)
     }
 }
 
-static void appt_add_endtime_internal(xfical_appt *appt, icalcomponent *icmp)
+static void appt_add_endtime_internal (const xfical_appt *appt,
+                                       icalcomponent *icmp)
 {
     struct icaltimetype wtime;
     gboolean end_time_done;
@@ -1266,8 +1294,8 @@ static void appt_add_endtime_internal(xfical_appt *appt, icalcomponent *icmp)
     }
 }
 
-static void appt_add_completedtime_internal(xfical_appt *appt
-        , icalcomponent *icmp)
+static void appt_add_completedtime_internal (const xfical_appt *appt,
+                                             icalcomponent *icmp)
 {
     struct icaltimetype wtime;
     icaltimezone *l_icaltimezone = NULL;
@@ -1707,9 +1735,10 @@ static void ical_appt_get_rrule_internal (G_GNUC_UNUSED icalcomponent *c,
                 appt->recur_month_type = XFICAL_RECUR_MONTH_TYPE_EVERY;
 
                 cnt = icalrecurrencetype_day_position (rrule.by_day[0]);
-                day = icalrecurrencetype_day_day_of_week (rrule.by_day[0]);
+                day = orage_recurrence_type_to_day_of_week (rrule.by_day[0]);
 
-                appt->recur_week_sel = cnt < 0 ? XFICAL_RECUR_MONTH_WEEK_LAST : cnt;
+                appt->recur_week_sel =
+                        cnt < 0 ? XFICAL_RECUR_MONTH_WEEK_LAST : cnt - 1;
                 appt->recur_day_sel = day;
             }
             else
@@ -3347,7 +3376,7 @@ static void xfical_mark_calendar_from_component(GtkCalendar *gtkcal
     } /* ICAL_VTODO_COMPONENT */
 }
 
-void xfical_mark_calendar_recur(GtkCalendar *gtkcal, xfical_appt *appt)
+void xfical_mark_calendar_recur(GtkCalendar *gtkcal, const xfical_appt *appt)
 {
     guint year, month, day;
     icalcomponent_kind ikind = ICAL_VEVENT_COMPONENT;
