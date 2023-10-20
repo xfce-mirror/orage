@@ -253,7 +253,7 @@ void xfical_get_each_app_within_time (GDateTime *a_day, gint days
         , xfical_type type, const gchar *file_type , GList **data);
 
 void xfical_mark_calendar(GtkCalendar *gtkcal);
-void xfical_mark_calendar_recur(GtkCalendar *gtkcal, xfical_appt *appt);
+void xfical_mark_calendar_recur(GtkCalendar *gtkcal, const xfical_appt *appt);
 
 void xfical_alarm_build_list(gboolean first_list_today);
 
