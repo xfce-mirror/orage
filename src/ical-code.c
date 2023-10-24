@@ -1735,11 +1735,11 @@ static void ical_appt_get_rrule_internal (G_GNUC_UNUSED icalcomponent *c,
                 appt->recur_month_type = XFICAL_RECUR_MONTH_TYPE_EVERY;
 
                 cnt = icalrecurrencetype_day_position (rrule.by_day[0]);
-                day = orage_recurrence_type_to_day_of_week (rrule.by_day[0]);
 
                 appt->recur_week_sel =
                         cnt < 0 ? XFICAL_RECUR_MONTH_WEEK_LAST : cnt - 1;
-                appt->recur_day_sel = day;
+                appt->recur_day_sel =
+                        orage_recurrence_type_to_day_of_week (rrule.by_day[0]);
             }
             else
                 g_critical ("%s: unknown weekday for %s", G_STRFUNC, appt->uid);
@@ -1747,6 +1747,15 @@ static void ical_appt_get_rrule_internal (G_GNUC_UNUSED icalcomponent *c,
             break;
         case ICAL_YEARLY_RECURRENCE:
             appt->freq = XFICAL_FREQ_YEARLY;
+
+            cnt = icalrecurrencetype_day_position (rrule.by_day[0]);
+
+            appt->recur_week_sel =
+                    cnt < 0 ? XFICAL_RECUR_MONTH_WEEK_LAST : cnt - 1;
+            appt->recur_day_sel =
+                    orage_recurrence_type_to_day_of_week (rrule.by_day[0]);
+            appt->recur_month_sel =
+                    icalrecurrencetype_month_month (rrule.by_month[0]) - 1;
             break;
         case ICAL_HOURLY_RECURRENCE:
             appt->freq = XFICAL_FREQ_HOURLY;

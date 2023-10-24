@@ -2622,82 +2622,9 @@ static void fill_appt_window_alarm (OrageAppointmentWindow *apptw,
     g_free(tmp);
 }
 
-static void fill_appt_window_recurrence (OrageAppointmentWindow *apptw,
-                                         xfical_appt *appt)
+static void fill_appt_window_monthly_recurrence (OrageAppointmentWindow *apptw,
+                                                 const xfical_appt *appt)
 {
-    gchar *untildate_to_display;
-    gdouble recur_count;
-    GList *tmp;
-    GDateTime *gdt;
-    xfical_exception *recur_exception;
-    gint i;
-
-    gtk_combo_box_set_active(GTK_COMBO_BOX(apptw->Recur_freq_cb), appt->freq);
-    switch(appt->recur_limit) {
-        case XFICAL_RECUR_NO_LIMIT:
-            gtk_toggle_button_set_active(
-                    GTK_TOGGLE_BUTTON(apptw->Recur_limit_rb), TRUE);
-            recur_count = 1;
-            gdt = g_date_time_new_now_local ();
-            break;
-
-        case XFICAL_RECUR_COUNT:
-            gtk_toggle_button_set_active(
-                    GTK_TOGGLE_BUTTON(apptw->Recur_count_rb), TRUE);
-            gtk_widget_set_sensitive (apptw->Recur_count_spin, TRUE);
-            recur_count = appt->recur_count;
-            gdt = g_date_time_new_now_local ();
-            break;
-
-        case XFICAL_RECUR_UNTIL:
-            gtk_toggle_button_set_active(
-                    GTK_TOGGLE_BUTTON(apptw->Recur_until_rb), TRUE);
-            gtk_widget_set_sensitive (apptw->Recur_until_button, TRUE);
-            recur_count = 1;
-            gdt = g_date_time_ref (appt->recur_until);
-            break;
-
-        default:
-            g_assert_not_reached ();
-            break;
-    }
-
-    gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->Recur_count_spin),
-                               recur_count);
-    untildate_to_display = orage_gdatetime_to_i18_time (gdt, TRUE);
-    g_object_set_data_full (G_OBJECT (apptw->Recur_until_button),
-                            DATE_KEY, gdt,
-                            (GDestroyNotify)g_date_time_unref);
-    gtk_button_set_label (GTK_BUTTON (apptw->Recur_until_button),
-                          untildate_to_display);
-    g_free (untildate_to_display);
-
-    gtk_combo_box_set_active (
-            GTK_COMBO_BOX (apptw->recurecnce_yearly_week_selector),
-            appt->recur_week_sel);
-    gtk_combo_box_set_active (
-            GTK_COMBO_BOX (apptw->recurecnce_yearly_day_selector),
-            appt->recur_day_sel);
-    gtk_combo_box_set_active (
-            GTK_COMBO_BOX (apptw->recurecnce_yearly_month_selector),
-            appt->recur_month_sel);
-    gtk_combo_box_set_active (
-            GTK_COMBO_BOX (apptw->recurrence_monthly_week_selector),
-            appt->recur_week_sel);
-    gtk_combo_box_set_active (
-            GTK_COMBO_BOX (apptw->recurrence_monthly_day_selector),
-            appt->recur_day_sel);
-
-    gtk_spin_button_set_value (
-            GTK_SPIN_BUTTON (apptw->recurrence_daily_interval_spin),
-            appt->interval);
-    gtk_spin_button_set_value (
-            GTK_SPIN_BUTTON (apptw->recurrence_weekly_interval_spin),
-            appt->interval);
-    gtk_spin_button_set_value (
-            GTK_SPIN_BUTTON (apptw->recurrence_hourly_interval_spin),
-            appt->interval);
-
     switch (appt->recur_month_type)
     {
         case XFICAL_RECUR_MONTH_TYPE_BEGIN:
@@ -2756,6 +2683,102 @@ static void fill_appt_window_recurrence (OrageAppointmentWindow *apptw,
 
         default:
             g_assert_not_reached ();
+    }
+}
+
+static void fill_appt_window_yearly_recurrence (OrageAppointmentWindow *apptw,
+                                                const xfical_appt *appt)
+{
+    gtk_combo_box_set_active (
+            GTK_COMBO_BOX (apptw->recurecnce_yearly_week_selector),
+            appt->recur_week_sel);
+    gtk_combo_box_set_active (
+            GTK_COMBO_BOX (apptw->recurecnce_yearly_day_selector),
+            appt->recur_day_sel);
+    gtk_combo_box_set_active (
+            GTK_COMBO_BOX (apptw->recurecnce_yearly_month_selector),
+            appt->recur_month_sel);
+}
+
+static void fill_appt_window_recurrence (OrageAppointmentWindow *apptw,
+                                         xfical_appt *appt)
+{
+    gchar *untildate_to_display;
+    gdouble recur_count;
+    GList *tmp;
+    GDateTime *gdt;
+    xfical_exception *recur_exception;
+    gint i;
+
+    gtk_combo_box_set_active(GTK_COMBO_BOX(apptw->Recur_freq_cb), appt->freq);
+    switch(appt->recur_limit) {
+        case XFICAL_RECUR_NO_LIMIT:
+            gtk_toggle_button_set_active(
+                    GTK_TOGGLE_BUTTON(apptw->Recur_limit_rb), TRUE);
+            recur_count = 1;
+            gdt = g_date_time_new_now_local ();
+            break;
+
+        case XFICAL_RECUR_COUNT:
+            gtk_toggle_button_set_active(
+                    GTK_TOGGLE_BUTTON(apptw->Recur_count_rb), TRUE);
+            gtk_widget_set_sensitive (apptw->Recur_count_spin, TRUE);
+            recur_count = appt->recur_count;
+            gdt = g_date_time_new_now_local ();
+            break;
+
+        case XFICAL_RECUR_UNTIL:
+            gtk_toggle_button_set_active(
+                    GTK_TOGGLE_BUTTON(apptw->Recur_until_rb), TRUE);
+            gtk_widget_set_sensitive (apptw->Recur_until_button, TRUE);
+            recur_count = 1;
+            gdt = g_date_time_ref (appt->recur_until);
+            break;
+
+        default:
+            g_assert_not_reached ();
+            break;
+    }
+
+    gtk_spin_button_set_value (GTK_SPIN_BUTTON (apptw->Recur_count_spin),
+                               recur_count);
+    untildate_to_display = orage_gdatetime_to_i18_time (gdt, TRUE);
+    g_object_set_data_full (G_OBJECT (apptw->Recur_until_button),
+                            DATE_KEY, gdt,
+                            (GDestroyNotify)g_date_time_unref);
+    gtk_button_set_label (GTK_BUTTON (apptw->Recur_until_button),
+                          untildate_to_display);
+    g_free (untildate_to_display);
+
+    gtk_combo_box_set_active (
+            GTK_COMBO_BOX (apptw->recurrence_monthly_week_selector),
+            appt->recur_week_sel);
+    gtk_combo_box_set_active (
+            GTK_COMBO_BOX (apptw->recurrence_monthly_day_selector),
+            appt->recur_day_sel);
+
+    gtk_spin_button_set_value (
+            GTK_SPIN_BUTTON (apptw->recurrence_daily_interval_spin),
+            appt->interval);
+    gtk_spin_button_set_value (
+            GTK_SPIN_BUTTON (apptw->recurrence_weekly_interval_spin),
+            appt->interval);
+    gtk_spin_button_set_value (
+            GTK_SPIN_BUTTON (apptw->recurrence_hourly_interval_spin),
+            appt->interval);
+
+    switch (appt->freq)
+    {
+        case XFICAL_FREQ_MONTHLY:
+            fill_appt_window_monthly_recurrence (apptw, appt);
+            break;
+
+        case XFICAL_FREQ_YEARLY:
+            fill_appt_window_yearly_recurrence (apptw, appt);
+            break;
+
+        default:
+            break;
     }
 
     /* weekdays */
