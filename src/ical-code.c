@@ -744,13 +744,14 @@ static void xfical_appt_init0 (xfical_appt *appt)
     guint month;
     GDateTime *gdt;
 
+    memset (appt, 0, sizeof (xfical_appt));
+
     gdt = g_date_time_new_now_local ();
     week = 0; /* TODO: find week of month, locale should be taken acount also. */
     weekday = g_date_time_get_day_of_week (gdt) - 1;
     month = g_date_time_get_month (gdt) - 1;
 
     appt->availability = 1;
-    appt->freq = XFICAL_FREQ_NONE;
     appt->interval = 1;
     appt->starttimecur = gdt;
     appt->recur_week_sel = week;
@@ -765,7 +766,7 @@ xfical_appt *xfical_appt_alloc(void)
 {
     xfical_appt *appt;
 
-    appt = g_new0(xfical_appt, 1);
+    appt = g_new (xfical_appt, 1);
     xfical_appt_init0 (appt);
 
     return appt;
@@ -2110,8 +2111,10 @@ static xfical_appt *xfical_appt_get_internal(const char *ical_uid
     gboolean key_found = FALSE;
     const char *text;
 
+    xfical_appt_init0 (&appt);
+
     for (c = icalcomponent_get_first_component(base, ICAL_ANY_COMPONENT); 
-         c != 0 && !key_found;
+         c != 0 && (key_found == FALSE);
          c = icalcomponent_get_next_component(base, ICAL_ANY_COMPONENT)) {
         text = icalcomponent_get_uid(c);
 
