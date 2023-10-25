@@ -2174,9 +2174,9 @@ static xfical_appt *fill_appt_window_update_appt (OrageAppointmentWindow *apptw,
 }
 
 static xfical_appt *fill_appt_window_get_appt (OrageAppointmentWindow *apptw,
-                                                 const appt_win_action action,
-                                                 const gchar *uid,
-                                                 GDateTime *par_gdt)
+                                               const appt_win_action action,
+                                               const gchar *uid,
+                                               GDateTime *par_gdt)
 {
     xfical_appt *appt;
 
@@ -2625,6 +2625,10 @@ static void fill_appt_window_alarm (OrageAppointmentWindow *apptw,
 static void fill_appt_window_monthly_recurrence (OrageAppointmentWindow *apptw,
                                                  const xfical_appt *appt)
 {
+    gtk_combo_box_set_active (
+            GTK_COMBO_BOX (apptw->recurrence_monthly_week_selector),
+            appt->recur_week_sel);
+
     switch (appt->recur_month_type)
     {
         case XFICAL_RECUR_MONTH_TYPE_BEGIN:
@@ -2751,9 +2755,6 @@ static void fill_appt_window_recurrence (OrageAppointmentWindow *apptw,
     g_free (untildate_to_display);
 
     gtk_combo_box_set_active (
-            GTK_COMBO_BOX (apptw->recurrence_monthly_week_selector),
-            appt->recur_week_sel);
-    gtk_combo_box_set_active (
             GTK_COMBO_BOX (apptw->recurrence_monthly_day_selector),
             appt->recur_day_sel);
 
@@ -2767,19 +2768,8 @@ static void fill_appt_window_recurrence (OrageAppointmentWindow *apptw,
             GTK_SPIN_BUTTON (apptw->recurrence_hourly_interval_spin),
             appt->interval);
 
-    switch (appt->freq)
-    {
-        case XFICAL_FREQ_MONTHLY:
-            fill_appt_window_monthly_recurrence (apptw, appt);
-            break;
-
-        case XFICAL_FREQ_YEARLY:
-            fill_appt_window_yearly_recurrence (apptw, appt);
-            break;
-
-        default:
-            break;
-    }
+    fill_appt_window_monthly_recurrence (apptw, appt);
+    fill_appt_window_yearly_recurrence (apptw, appt);
 
     /* weekdays */
     for (i=0; i <= 6; i++) {
