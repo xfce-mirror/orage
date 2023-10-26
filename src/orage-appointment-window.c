@@ -905,6 +905,15 @@ static void on_recur_spin_button_changed_cb (G_GNUC_UNUSED GtkSpinButton *sb
     refresh_recur_calendars (apptw);
 }
 
+static void on_recur_combobox_changed_cb (G_GNUC_UNUSED GtkComboBox *cb,
+                                          gpointer user_data)
+{
+    OrageAppointmentWindow *apptw = ORAGE_APPOINTMENT_WINDOW (user_data);
+
+    mark_appointment_changed (apptw);
+    refresh_recur_calendars (apptw);
+}
+
 static void on_appSound_button_clicked_cb (G_GNUC_UNUSED GtkButton *button,
                                            gpointer user_data)
 {
@@ -4429,17 +4438,17 @@ static void enable_recurrence_page_signals (OrageAppointmentWindow *apptw)
     g_signal_connect (apptw->recurrence_monthly_end_spin, "value-changed",
                       G_CALLBACK (on_recur_spin_button_changed_cb), apptw);
     g_signal_connect (apptw->recurrence_monthly_week_selector, "changed",
-                      G_CALLBACK (on_app_combobox_changed_cb), apptw);
+                      G_CALLBACK (on_recur_combobox_changed_cb), apptw);
     g_signal_connect (apptw->recurrence_monthly_day_selector, "changed",
-                      G_CALLBACK (on_app_combobox_changed_cb), apptw);
+                      G_CALLBACK (on_recur_combobox_changed_cb), apptw);
     g_signal_connect (apptw->recurrence_weekly_interval_spin, "value-changed",
                       G_CALLBACK (on_recur_spin_button_changed_cb), apptw);
     g_signal_connect (apptw->recurecnce_yearly_week_selector, "changed",
-                      G_CALLBACK (on_app_combobox_changed_cb), apptw);
+                      G_CALLBACK (on_recur_combobox_changed_cb), apptw);
     g_signal_connect (apptw->recurecnce_yearly_day_selector, "changed",
-                      G_CALLBACK (on_app_combobox_changed_cb), apptw);
+                      G_CALLBACK (on_recur_combobox_changed_cb), apptw);
     g_signal_connect (apptw->recurecnce_yearly_month_selector, "changed",
-                      G_CALLBACK (on_app_combobox_changed_cb), apptw);
+                      G_CALLBACK (on_recur_combobox_changed_cb), apptw);
 
     for (i = 0; i <= 6; i++)
     {
