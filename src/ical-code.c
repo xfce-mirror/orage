@@ -112,7 +112,7 @@ typedef struct _excluded_time
 static icaltimezone *utc_icaltimezone = NULL;
 static icaltimezone *local_icaltimezone = NULL;
 
-guint orage_recurrence_type_to_day_of_week (short by_day)
+static guint orage_recurrence_type_to_day_of_week (short by_day)
 {
     const icalrecurrencetype_weekday wd =
         icalrecurrencetype_day_day_of_week (by_day);
@@ -1152,13 +1152,13 @@ static void appt_add_recur_internal (const xfical_appt *appt,
             switch (appt->recur_month_type)
             {
                 case XFICAL_RECUR_MONTH_TYPE_BEGIN:
-                    recur_p += g_sprintf (recur_p, ";BYMONTHDAY=%d",
-                                          appt->recur_month_days);
+                    g_sprintf (recur_p, ";BYMONTHDAY=%d",
+                               appt->recur_month_days);
                     break;
 
                 case XFICAL_RECUR_MONTH_TYPE_END:
-                    recur_p += g_sprintf (recur_p, ";BYMONTHDAY=-%d",
-                                          appt->recur_month_days);
+                    g_sprintf (recur_p, ";BYMONTHDAY=-%d",
+                               appt->recur_month_days);
                     break;
 
                 case XFICAL_RECUR_MONTH_TYPE_EVERY:
@@ -1167,8 +1167,8 @@ static void appt_add_recur_internal (const xfical_appt *appt,
                     week_sel = appt->recur_week_sel;
                     week = (week_sel == XFICAL_RECUR_MONTH_WEEK_LAST) ? -1 : week_sel + 1;
 
-                    recur_p += g_sprintf (recur_p, ";BYDAY=%d%s",
-                                          week, byday_a[appt->recur_day_sel]);
+                    g_sprintf (recur_p, ";BYDAY=%d%s",
+                               week, byday_a[appt->recur_day_sel]);
                     break;
             }
             break;
@@ -1180,9 +1180,9 @@ static void appt_add_recur_internal (const xfical_appt *appt,
             week = (appt->recur_week_sel == XFICAL_RECUR_MONTH_WEEK_LAST)
                  ? -1 : (int)appt->recur_week_sel + 1;
 
-            recur_p += g_sprintf (recur_p, ";BYDAY=%d%s;BYMONTH=%d",
-                                  week, byday_a[appt->recur_day_sel],
-                                  appt->recur_month_sel + 1);
+            g_sprintf (recur_p, ";BYDAY=%d%s;BYMONTH=%d",
+                       week, byday_a[appt->recur_day_sel],
+                       appt->recur_month_sel + 1);
             break;
 
         default:
