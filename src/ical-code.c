@@ -112,6 +112,31 @@ typedef struct _excluded_time
 static icaltimezone *utc_icaltimezone = NULL;
 static icaltimezone *local_icaltimezone = NULL;
 
+guint orage_recurrence_type_to_day_of_week (short by_day)
+{
+    const icalrecurrencetype_weekday wd =
+        icalrecurrencetype_day_day_of_week (by_day);
+
+    switch (wd)
+    {
+        case ICAL_SUNDAY_WEEKDAY:
+            return 6;
+
+        case ICAL_MONDAY_WEEKDAY:
+        case ICAL_TUESDAY_WEEKDAY:
+        case ICAL_WEDNESDAY_WEEKDAY:
+        case ICAL_THURSDAY_WEEKDAY:
+        case ICAL_FRIDAY_WEEKDAY:
+        case ICAL_SATURDAY_WEEKDAY:
+            return wd - ICAL_MONDAY_WEEKDAY;
+
+        case ICAL_NO_WEEKDAY:
+        default:
+            g_warning ("%s: invalid by_day value from RRULE", G_STRFUNC);
+            return 0;
+    }
+}
+
 static struct icaltimetype icaltimetype_from_gdatetime (GDateTime *gdt,
                                                         const gboolean date_only)
 {
@@ -711,19 +736,40 @@ gint xfical_compare_times (xfical_appt *appt)
     }
 }
 
+static void xfical_appt_init0 (xfical_appt *appt)
+{
+    guint i;
+    guint week;
+    guint weekday;
+    guint month;
+    GDateTime *gdt;
+
+    memset (appt, 0, sizeof (xfical_appt));
+
+    gdt = g_date_time_new_now_local ();
+    week = 0; /* TODO: find week of month, locale should be taken acount also. */
+    weekday = g_date_time_get_day_of_week (gdt) - 1;
+    month = g_date_time_get_month (gdt) - 1;
+
+    appt->availability = 1;
+    appt->interval = 1;
+    appt->starttimecur = gdt;
+    appt->recur_week_sel = week;
+    appt->recur_day_sel = weekday;
+    appt->recur_month_sel = month;
+
+    for (i = 0; i <= 6; i++)
+        appt->recur_byday[i] = (weekday == i);
+}
+
 xfical_appt *xfical_appt_alloc(void)
 {
     xfical_appt *appt;
-    int i;
 
-    appt = g_new0(xfical_appt, 1);
-    appt->availability = 1;
-    appt->freq = XFICAL_FREQ_NONE;
-    appt->interval = 1;
-    appt->starttimecur = g_date_time_new_now_local ();
-    for (i=0; i <= 6; i++)
-        appt->recur_byday[i] = TRUE;
-    return(appt);
+    appt = g_new (xfical_appt, 1);
+    xfical_appt_init0 (appt);
+
+    return appt;
 }
 
 char *ic_generate_uid(void)
@@ -946,14 +992,14 @@ static void appt_add_alarm_internal(xfical_appt *appt, icalcomponent *ievent)
         icalcomponent_add_component(ievent, ialarm);
     }
 
+#if 0
     /********** EMAIL **********/
-    /*
     if ORAGE_STR_EXISTS(appt->sound) {
         ialarm = appt_add_alarm_internal_base(appt, trg);
         appt_add_alarm_internal_email(appt, ialarm);
         icalcomponent_add_component(ievent, ialarm);
     }
-    */
+#endif
 
     /********** PROCEDURE **********/
     if (appt->procedure_alarm && ORAGE_STR_EXISTS(appt->procedure_cmd)) {
@@ -963,11 +1009,11 @@ static void appt_add_alarm_internal(xfical_appt *appt, icalcomponent *ievent)
     }
 }
 
-static void appt_add_exception_internal(xfical_appt *appt
+static void appt_add_exception_internal(const xfical_appt *appt
         , icalcomponent *icmp)
 {
     struct icaltimetype wtime;
-    GList *gl_tmp;
+    const GList *gl_tmp;
     xfical_exception *excp;
     struct icaldatetimeperiodtype rdate;
     xfical_exception_type type;
@@ -995,7 +1041,12 @@ static void appt_add_exception_internal(xfical_appt *appt
     }
 }
 
-static void appt_add_recur_internal(xfical_appt *appt, icalcomponent *icmp)
+/** Fill recurrence rule.
+ *  NOTE: This function create RRULE string and then tranfer RRULE data to
+ *  libical structure.
+ */
+static void appt_add_recur_internal (const xfical_appt *appt,
+                                     icalcomponent *icmp)
 {
     gchar recur_str[1001], *recur_p, *recur_p2;
     struct icalrecurrencetype rrule;
@@ -1003,7 +1054,10 @@ static void appt_add_recur_internal(xfical_appt *appt, icalcomponent *icmp)
     gchar *byday_a[] = {"MO", "TU", "WE", "TH", "FR", "SA", "SU"};
     const char *text;
     int i, cnt;
+    gint week;
+    gint week_sel;
     icaltimezone *l_icaltimezone = NULL;
+    gboolean add_interval = FALSE;
 
     if (appt->freq == XFICAL_FREQ_NONE) {
         return;
@@ -1012,9 +1066,11 @@ static void appt_add_recur_internal(xfical_appt *appt, icalcomponent *icmp)
     switch(appt->freq) {
         case XFICAL_FREQ_DAILY:
             recur_p = g_stpcpy(recur_p, "DAILY");
+            add_interval = (appt->interval > 1);
             break;
         case XFICAL_FREQ_WEEKLY:
             recur_p = g_stpcpy(recur_p, "WEEKLY");
+            add_interval = (appt->interval > 1);
             break;
         case XFICAL_FREQ_MONTHLY:
             recur_p = g_stpcpy(recur_p, "MONTHLY");
@@ -1024,18 +1080,19 @@ static void appt_add_recur_internal(xfical_appt *appt, icalcomponent *icmp)
             break;
         case XFICAL_FREQ_HOURLY:
             recur_p = g_stpcpy(recur_p, "HOURLY");
+            add_interval = (appt->interval > 1);
             break;
         default:
             g_warning ("%s: Unsupported freq", G_STRFUNC);
             icalrecurrencetype_clear(&rrule);
     }
-    if (appt->interval > 1) { /* not default, need to insert it */
+    if (add_interval) { /* not default, need to insert it */
         recur_p += g_sprintf(recur_p, ";INTERVAL=%d", appt->interval);
     }
-    if (appt->recur_limit == 1) {
+    if (appt->recur_limit == XFICAL_RECUR_COUNT) {
         recur_p += g_sprintf(recur_p, ";COUNT=%d", appt->recur_count);
     }
-    else if (appt->recur_limit == 2) { /* needs to be in UTC */
+    else if (appt->recur_limit == XFICAL_RECUR_UNTIL) { /* needs to be in UTC */
 /* BUG 2937: convert recur_until to utc from start time timezone */
         wtime = icaltimetype_from_gdatetime (appt->recur_until, FALSE);
         if ORAGE_STR_EXISTS(appt->start_tz_loc) {
@@ -1056,36 +1113,82 @@ static void appt_add_recur_internal(xfical_appt *appt, icalcomponent *icmp)
         text  = icaltime_as_ical_string(wtime);
         recur_p += g_sprintf(recur_p, ";UNTIL=%s", text);
     }
-    recur_p2 = recur_p; /* store current pointer */
-    for (i = 0, cnt = 0; i <= 6; i++) {
-        if (appt->recur_byday[i]) {
-            if (cnt == 0) /* first day found */
-                recur_p = g_stpcpy(recur_p, ";BYDAY=");
-            else /* continue the list */
-                recur_p = g_stpcpy(recur_p, ",");
-            if ((appt->freq == XFICAL_FREQ_MONTHLY
-                    || appt->freq == XFICAL_FREQ_YEARLY)
-                && (appt->recur_byday_cnt[i])) /* number defined */
-                    recur_p += g_sprintf(recur_p, "%d"
-                            , appt->recur_byday_cnt[i]);
-            recur_p = g_stpcpy(recur_p, byday_a[i]);
-            cnt++;
-        }
+
+    switch (appt->freq)
+    {
+        case XFICAL_FREQ_WEEKLY:
+            recur_p2 = recur_p; /* store current pointer */
+            for (i = 0, cnt = 0; i <= 6; i++)
+            {
+                if (appt->recur_byday[i])
+                {
+                    if (cnt == 0) /* first day found */
+                        recur_p = g_stpcpy (recur_p, ";BYDAY=");
+                    else /* continue the list */
+                        recur_p = g_stpcpy (recur_p, ",");
+                    recur_p = g_stpcpy (recur_p, byday_a[i]);
+                    cnt++;
+                }
+            }
+
+            if (cnt == 7) { /* all days defined... */
+                *recur_p2 = *recur_p; /* ...reset to null... */
+            }
+            else if (appt->interval > 1)
+            {
+                /* we have BYDAY rule, let's check week starting date:
+                 * WKST has meaning only in two cases:
+                 * 1) WEEKLY rule && interval > 1 && BYDAY rule is in use
+                 * 2) YEARLY rule && BYWEEKNO rule is in use
+                 * BUT Orage is not using BYWEEKNO rule, so we only check 1)
+                 * Monday is default, so we can skip that, too
+                 * */
+                if (g_par.ical_weekstartday)
+                    g_sprintf(recur_p, ";WKST=%s", byday_a[g_par.ical_weekstartday]);
+            }
+            break;
+
+        case XFICAL_FREQ_MONTHLY:
+            switch (appt->recur_month_type)
+            {
+                case XFICAL_RECUR_MONTH_TYPE_BEGIN:
+                    recur_p += g_sprintf (recur_p, ";BYMONTHDAY=%d",
+                                          appt->recur_month_days);
+                    break;
+
+                case XFICAL_RECUR_MONTH_TYPE_END:
+                    recur_p += g_sprintf (recur_p, ";BYMONTHDAY=-%d",
+                                          appt->recur_month_days);
+                    break;
+
+                case XFICAL_RECUR_MONTH_TYPE_EVERY:
+                    g_assert ((int)appt->recur_day_sel >= 0);
+
+                    week_sel = appt->recur_week_sel;
+                    week = (week_sel == XFICAL_RECUR_MONTH_WEEK_LAST) ? -1 : week_sel + 1;
+
+                    recur_p += g_sprintf (recur_p, ";BYDAY=%d%s",
+                                          week, byday_a[appt->recur_day_sel]);
+                    break;
+            }
+            break;
+
+        case XFICAL_FREQ_YEARLY:
+            g_assert ((int)appt->recur_day_sel >= 0);
+            g_assert ((int)appt->recur_month_sel >= 0);
+
+            week = (appt->recur_week_sel == XFICAL_RECUR_MONTH_WEEK_LAST)
+                 ? -1 : (int)appt->recur_week_sel + 1;
+
+            recur_p += g_sprintf (recur_p, ";BYDAY=%d%s;BYMONTH=%d",
+                                  week, byday_a[appt->recur_day_sel],
+                                  appt->recur_month_sel + 1);
+            break;
+
+        default:
+            break;
     }
-    if (cnt == 7) { /* all days defined... */
-        *recur_p2 = *recur_p; /* ...reset to null... */
-    }
-    else if (appt->interval > 1 && appt->freq == XFICAL_FREQ_WEEKLY) {
-        /* we have BYDAY rule, let's check week starting date:
-         * WKST has meaning only in two cases:
-         * 1) WEEKLY rule && interval > 1 && BYDAY rule is in use 
-         * 2) YEARLY rule && BYWEEKNO rule is in use 
-         * BUT Orage is not using BYWEEKNO rule, so we only check 1)
-         * Monday is default, so we can skip that, too
-         * */
-        if (g_par.ical_weekstartday)
-            g_sprintf(recur_p, ";WKST=%s", byday_a[g_par.ical_weekstartday]);
-    }
+
     rrule = icalrecurrencetype_from_string(recur_str);
     icalcomponent_add_property(icmp, icalproperty_new_rrule(rrule));
     if (appt->type == XFICAL_TYPE_TODO) {
@@ -1100,7 +1203,8 @@ static void appt_add_recur_internal(xfical_appt *appt, icalcomponent *icmp)
     }
 }
 
-static void appt_add_starttime_internal(xfical_appt *appt, icalcomponent *icmp)
+static void appt_add_starttime_internal (const xfical_appt *appt,
+                                         icalcomponent *icmp)
 {
     struct icaltimetype wtime;
 
@@ -1135,7 +1239,8 @@ static void appt_add_starttime_internal(xfical_appt *appt, icalcomponent *icmp)
     }
 }
 
-static void appt_add_endtime_internal(xfical_appt *appt, icalcomponent *icmp)
+static void appt_add_endtime_internal (const xfical_appt *appt,
+                                       icalcomponent *icmp)
 {
     struct icaltimetype wtime;
     gboolean end_time_done;
@@ -1190,8 +1295,8 @@ static void appt_add_endtime_internal(xfical_appt *appt, icalcomponent *icmp)
     }
 }
 
-static void appt_add_completedtime_internal(xfical_appt *appt
-        , icalcomponent *icmp)
+static void appt_add_completedtime_internal (const xfical_appt *appt,
+                                             icalcomponent *icmp)
 {
     struct icaltimetype wtime;
     icaltimezone *l_icaltimezone = NULL;
@@ -1600,6 +1705,7 @@ static void ical_appt_get_rrule_internal (G_GNUC_UNUSED icalcomponent *c,
     struct icalrecurrencetype rrule;
     int i, cnt, day;
     GDateTime *gdt;
+    gint month_day;
 
     rrule = icalproperty_get_rrule(p);
     switch (rrule.freq) {
@@ -1611,9 +1717,46 @@ static void ical_appt_get_rrule_internal (G_GNUC_UNUSED icalcomponent *c,
             break;
         case ICAL_MONTHLY_RECURRENCE:
             appt->freq = XFICAL_FREQ_MONTHLY;
+            month_day = rrule.by_month_day[0];
+            if (month_day != ICAL_RECURRENCE_ARRAY_MAX)
+            {
+                if (month_day > 0)
+                {
+                    appt->recur_month_type = XFICAL_RECUR_MONTH_TYPE_BEGIN;
+                    appt->recur_month_days = month_day;
+                }
+                else
+                {
+                    appt->recur_month_type = XFICAL_RECUR_MONTH_TYPE_END;
+                    appt->recur_month_days = -1 * month_day;
+                }
+            }
+            else if (rrule.by_day[0] != ICAL_RECURRENCE_ARRAY_MAX)
+            {
+                appt->recur_month_type = XFICAL_RECUR_MONTH_TYPE_EVERY;
+
+                cnt = icalrecurrencetype_day_position (rrule.by_day[0]);
+
+                appt->recur_week_sel =
+                        cnt < 0 ? XFICAL_RECUR_MONTH_WEEK_LAST : cnt - 1;
+                appt->recur_day_sel =
+                        orage_recurrence_type_to_day_of_week (rrule.by_day[0]);
+            }
+            else
+                g_critical ("%s: unknown weekday for %s", G_STRFUNC, appt->uid);
+
             break;
         case ICAL_YEARLY_RECURRENCE:
             appt->freq = XFICAL_FREQ_YEARLY;
+
+            cnt = icalrecurrencetype_day_position (rrule.by_day[0]);
+
+            appt->recur_week_sel =
+                    cnt < 0 ? XFICAL_RECUR_MONTH_WEEK_LAST : cnt - 1;
+            appt->recur_day_sel =
+                    orage_recurrence_type_to_day_of_week (rrule.by_day[0]);
+            appt->recur_month_sel =
+                    icalrecurrencetype_month_month (rrule.by_month[0]) - 1;
             break;
         case ICAL_HOURLY_RECURRENCE:
             appt->freq = XFICAL_FREQ_HOURLY;
@@ -1623,7 +1766,7 @@ static void ical_appt_get_rrule_internal (G_GNUC_UNUSED icalcomponent *c,
             break;
     }
     if ((appt->recur_count = rrule.count))
-        appt->recur_limit = 1;
+        appt->recur_limit = XFICAL_RECUR_COUNT;
     else if(! icaltime_is_null_time(rrule.until)) {
         const char *text;
 
@@ -1633,10 +1776,10 @@ static void ical_appt_get_rrule_internal (G_GNUC_UNUSED icalcomponent *c,
         {
             orage_gdatetime_unref (appt->recur_until);
             appt->recur_until = gdt;
-            appt->recur_limit = 2;
+            appt->recur_limit = XFICAL_RECUR_UNTIL;
         }
         else
-            appt->recur_limit = 0;
+            appt->recur_limit = XFICAL_RECUR_NO_LIMIT;
     }
     if (rrule.by_day[0] != ICAL_RECURRENCE_ARRAY_MAX) {
         for (i=0; i <= 6; i++)
@@ -1647,31 +1790,24 @@ static void ical_appt_get_rrule_internal (G_GNUC_UNUSED icalcomponent *c,
             switch (day) {
                 case ICAL_MONDAY_WEEKDAY:
                     appt->recur_byday[0] = TRUE;
-                    appt->recur_byday_cnt[0] = cnt;
                     break;
                 case ICAL_TUESDAY_WEEKDAY:
                     appt->recur_byday[1] = TRUE;
-                    appt->recur_byday_cnt[1] = cnt;
                     break;
                 case ICAL_WEDNESDAY_WEEKDAY:
                     appt->recur_byday[2] = TRUE;
-                    appt->recur_byday_cnt[2] = cnt;
                     break;
                 case ICAL_THURSDAY_WEEKDAY:
                     appt->recur_byday[3] = TRUE;
-                    appt->recur_byday_cnt[3] = cnt;
                     break;
                 case ICAL_FRIDAY_WEEKDAY:
                     appt->recur_byday[4] = TRUE;
-                    appt->recur_byday_cnt[4] = cnt;
                     break;
                 case ICAL_SATURDAY_WEEKDAY:
                     appt->recur_byday[5] = TRUE;
-                    appt->recur_byday_cnt[5] = cnt;
                     break;
                 case ICAL_SUNDAY_WEEKDAY:
                     appt->recur_byday[6] = TRUE;
-                    appt->recur_byday_cnt[6] = cnt;
                     break;
                 case ICAL_NO_WEEKDAY:
                     break;
@@ -1687,7 +1823,7 @@ static void ical_appt_get_rrule_internal (G_GNUC_UNUSED icalcomponent *c,
 
 static void appt_init(xfical_appt *appt)
 {
-    int i;
+    xfical_appt_init0 (appt);
 
     appt->uid = NULL;
     appt->title = NULL;
@@ -1723,21 +1859,15 @@ static void appt_init(xfical_appt *appt)
     appt->procedure_alarm = FALSE;
     appt->procedure_cmd = NULL;
     appt->procedure_params = NULL;
-    appt->starttimecur = g_date_time_new_now_local ();
     appt->endtimecur = g_date_time_ref (appt->starttimecur);
-    appt->freq = XFICAL_FREQ_NONE;
-    appt->recur_limit = 0;
+    appt->recur_limit = XFICAL_RECUR_NO_LIMIT;
     appt->recur_count = 0;
     appt->recur_until = NULL;
 #if 0
     appt->email_alarm = FALSE;
     appt->email_attendees = NULL;
 #endif
-    for (i=0; i <= 6; i++) {
-        appt->recur_byday[i] = TRUE;
-        appt->recur_byday_cnt[i] = 0;
-    }
-    appt->interval = 1;
+
     appt->recur_todo_base_start = TRUE;
     appt->recur_exceptions = NULL;
 }
@@ -1945,7 +2075,7 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
             appt->endtime = orage_icaltime_to_gdatetime (text);
         }
     }
-    if (appt->recur_limit == 2) { /* BUG 2937: convert back from UTC */
+    if (appt->recur_limit == XFICAL_RECUR_UNTIL) { /* BUG 2937: convert back from UTC */
         wtime = icaltimetype_from_gdatetime (appt->recur_until, FALSE);
         if (! ORAGE_STR_EXISTS(appt->start_tz_loc) )
             wtime = icaltime_convert_to_zone(wtime, local_icaltimezone);
@@ -1981,8 +2111,10 @@ static xfical_appt *xfical_appt_get_internal(const char *ical_uid
     gboolean key_found = FALSE;
     const char *text;
 
+    xfical_appt_init0 (&appt);
+
     for (c = icalcomponent_get_first_component(base, ICAL_ANY_COMPONENT); 
-         c != 0 && !key_found;
+         c != 0 && (key_found == FALSE);
          c = icalcomponent_get_next_component(base, ICAL_ANY_COMPONENT)) {
         text = icalcomponent_get_uid(c);
 
@@ -3160,9 +3292,9 @@ static void xfical_mark_calendar_from_component(GtkCalendar *gtkcal
             nedate.month = 1;
             nedate.year++;
         }
-        /*
+#if 0
         icaltime_adjust(&nedate, 0, 0, 0, 0);
-        */
+#endif
         /* FIXME: we read the whole appointent just to get start and end 
          * timezones for mark_calendar. too heavy? */
         /* 1970 check due to bug 9507 */
@@ -3177,11 +3309,11 @@ static void xfical_mark_calendar_from_component(GtkCalendar *gtkcal
            what the time is in, libical returns wrong time in span.
            But as the hour only changes with HOURLY repeating appointments,
            we can replace received hour with the hour from start time */
-            /*
+#if 0
             p = icalcomponent_get_first_property(c, ICAL_DTEND_PROPERTY);
             start = icalproperty_get_dtend(p);
             cal_data.orig_end_hour = start.hour;
-            */
+#endif
             p = icalcomponent_get_first_property(c, ICAL_DTSTART_PROPERTY);
             start = icalproperty_get_dtstart(p);
             cal_data.orig_start_hour = start.hour;
@@ -3256,7 +3388,7 @@ static void xfical_mark_calendar_from_component(GtkCalendar *gtkcal
     } /* ICAL_VTODO_COMPONENT */
 }
 
-void xfical_mark_calendar_recur(GtkCalendar *gtkcal, xfical_appt *appt)
+void xfical_mark_calendar_recur(GtkCalendar *gtkcal, const xfical_appt *appt)
 {
     guint year, month, day;
     icalcomponent_kind ikind = ICAL_VEVENT_COMPONENT;
