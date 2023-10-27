@@ -3226,7 +3226,7 @@ static void on_recur_until_toggled_cb (GtkToggleButton *button,
     refresh_recur_calendars (apptw);
 }
 
-GtkWidget *create_week_combo_box (void)
+static GtkWidget *create_week_combo_box (void)
 {
     const gchar *week_list[5] =
     {
@@ -3236,7 +3236,7 @@ GtkWidget *create_week_combo_box (void)
     return orage_create_combo_box_with_content (week_list, 5);
 }
 
-GtkWidget *create_weekday_combo_box (void)
+static GtkWidget *create_weekday_combo_box (void)
 {
     const gchar *weekday_list[7] =
     {
