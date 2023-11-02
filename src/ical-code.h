@@ -42,6 +42,56 @@ typedef enum
    ,XFICAL_TYPE_JOURNAL
 } xfical_type;
 
+typedef enum
+{
+    XFICAL_RECUR_NO_LIMIT = 0,
+    XFICAL_RECUR_COUNT,
+    XFICAL_RECUR_UNTIL
+} xfical_recur_limit;
+
+typedef enum
+{
+    XFICAL_RECUR_MONTH_TYPE_BEGIN = 0,
+    XFICAL_RECUR_MONTH_TYPE_END,
+    XFICAL_RECUR_MONTH_TYPE_EVERY
+} xfical_recur_month_type;
+
+typedef enum
+{
+    XFICAL_RECUR_MONTH_DAY_MON = 0,
+    XFICAL_RECUR_MONTH_DAY_TUE,
+    XFICAL_RECUR_MONTH_DAY_WED,
+    XFICAL_RECUR_MONTH_DAY_THU,
+    XFICAL_RECUR_MONTH_DAY_FRI,
+    XFICAL_RECUR_MONTH_DAY_SAT,
+    XFICAL_RECUR_MONTH_DAY_SUN
+} xfical_recur_day_sel;
+
+typedef enum
+{
+    XFICAL_RECUR_MONTH_WEEK_FIRST = 0,
+    XFICAL_RECUR_MONTH_WEEK_SECOND,
+    XFICAL_RECUR_MONTH_WEEK_THIRD,
+    XFICAL_RECUR_MONTH_WEEK_FOURTH,
+    XFICAL_RECUR_MONTH_WEEK_LAST
+} xfical_recur_week_sel;
+
+typedef enum
+{
+    XFICAL_RECUR_MONTH_JAN = 0,
+    XFICAL_RECUR_MONTH_FEB,
+    XFICAL_RECUR_MONTH_MAR,
+    XFICAL_RECUR_MONTH_APR,
+    XFICAL_RECUR_MONTH_MAY,
+    XFICAL_RECUR_MONTH_JUN,
+    XFICAL_RECUR_MONTH_JUL,
+    XFICAL_RECUR_MONTH_AUG,
+    XFICAL_RECUR_MONTH_SEP,
+    XFICAL_RECUR_MONTH_OCT,
+    XFICAL_RECUR_MONTH_NOV,
+    XFICAL_RECUR_MONTH_DEC
+} xfical_recur_month_sel;
+
 typedef struct _xfical_appt
 {
     xfical_type type;
@@ -111,12 +161,16 @@ typedef struct _xfical_appt
     GDateTime *starttimecur;
     GDateTime *endtimecur;
     xfical_freq freq;
-    gint   recur_limit; /* 0 = no limit  1 = count  2 = until */
-    gint   recur_count;
+    xfical_recur_limit recur_limit;
+    gint recur_count;
+    xfical_recur_month_type recur_month_type;
+    guint recur_month_days;
+    xfical_recur_week_sel recur_week_sel;
+    xfical_recur_day_sel recur_day_sel;
+    xfical_recur_month_sel recur_month_sel;
 
     GDateTime *recur_until;
     gboolean recur_byday[7]; /* 0=Mo, 1=Tu, 2=We, 3=Th, 4=Fr, 5=Sa, 6=Su */
-    gint   recur_byday_cnt[7]; /* monthly/early: 1=first -1=last 2=second... */
     gint   interval;    /* 1=every day/week..., 2=every second day/week,... */
     gboolean recur_todo_base_start; /* TRUE=start time, FALSE=completed time */
     GList  *recur_exceptions; /* EXDATE and RDATE list xfical_exception */
@@ -199,7 +253,7 @@ void xfical_get_each_app_within_time (GDateTime *a_day, gint days
         , xfical_type type, const gchar *file_type , GList **data);
 
 void xfical_mark_calendar(GtkCalendar *gtkcal);
-void xfical_mark_calendar_recur(GtkCalendar *gtkcal, xfical_appt *appt);
+void xfical_mark_calendar_recur(GtkCalendar *gtkcal, const xfical_appt *appt);
 
 void xfical_alarm_build_list(gboolean first_list_today);
 
