@@ -1,4 +1,5 @@
-4.19.0 (2023-07-07)
+4.19.0 (2024-10-27)
+- Redesigned appointment window recurrence tab. Related with Issue #23.
 - Internal changes, changed appontment window to subclass of GtkWindow
 - Internal changes, changed mainbox to subclass of GtkApplicationWindow
 - Moved internal CSS string to separte theme file
