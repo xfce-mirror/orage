@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-29 11:57+0200\n"
+"POT-Creation-Date: 2023-11-03 00:49+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Źmicier Turok <nashtlumach@gmail.com>, 2023\n"
 "Language-Team: Belarusian (https://app.transifex.com/xfce/teams/16840/be/)\n"
@@ -22,809 +22,107 @@ msgstr ""
 "Language: be\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#. if (gtk_toggle_button_get_active(
-#. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
-#. end time
-#: ../src/appointment.c:323 ../src/appointment.c:363 ../src/appointment.c:2959
-msgid "End"
-msgstr "Канец"
-
-#: ../src/appointment.c:343
-msgid "Due"
-msgstr "Праз"
-
-#: ../src/appointment.c:506 ../src/mainbox.c:709
-#: ../org.xfce.orage.appdata.xml.in.h:1
-msgid "Orage"
-msgstr "Orage"
-
-#. to avoid timing problems when updating entry
-#. Create file chooser
-#: ../src/appointment.c:697 ../src/interface.c:261 ../src/parameters.c:432
-msgid "Select a file..."
-msgstr "Абраць файл..."
-
-#: ../src/appointment.c:705
-msgid "Sound Files"
-msgstr "Гукавыя файлы"
-
-#: ../src/appointment.c:712 ../src/interface.c:274
-msgid "All Files"
-msgstr "Усе файлы"
-
-#: ../src/appointment.c:763
-msgid "The appointment information has been modified."
-msgstr "Звесткі па прызначэнні зменены."
-
-#: ../src/appointment.c:764 ../src/appointment.c:1306 ../src/event-list.c:999
-#: ../src/parameters.c:689
-msgid "Do you want to continue?"
-msgstr "Працягваць?"
-
-#: ../src/appointment.c:765
-msgid "No, do not leave"
-msgstr "Не, не пакідаць"
-
-#: ../src/appointment.c:766
-msgid "Yes, ignore modifications and leave"
-msgstr "Так, не зважаць на змены і закрыць"
-
-#: ../src/appointment.c:794
-msgid "The end of this appointment is earlier than the beginning."
-msgstr "Канец прызначэння ранейшы за пачатак."
-
-#: ../src/appointment.c:1062 ../src/appointment.c:1981
-msgid "Not set"
-msgstr "Не вызначана"
-
-#: ../src/appointment.c:1155
-msgid "Add new appointment to this file."
-msgstr "Дадаць новае прызначэнне ў гэты файл."
-
-#: ../src/appointment.c:1156 ../src/appointment.c:1204
-msgid "Orage default file"
-msgstr "Прадвызначаны файл Orage"
-
-#: ../src/appointment.c:1242
-msgid "Appointment addition failed."
-msgstr "Не атрымалася дадаць прызначэнне."
-
-#: ../src/appointment.c:1243
-msgid ""
-"Error happened when adding appointment. Look more details from the log file."
-msgstr ""
-"Падчас дадання прызначэння адбылася памылка. Больш падрабязней глядзіце ў "
-"лозе."
-
-#: ../src/appointment.c:1254
-msgid "Appointment update failed."
-msgstr "Не атрымалася абнавіць прызначэнне."
-
-#: ../src/appointment.c:1255
-msgid ""
-"Look more details from the log file. (Perhaps file was updated external from"
-" Orage?)"
-msgstr ""
-"Больш падрабязней можна паглядзець у лозе. (Магчыма, файл быў зменены "
-"звонку?)"
-
-#: ../src/appointment.c:1305
-msgid "This appointment will be permanently removed."
-msgstr "Прызначэнне будзе назаўсёды выдалена."
-
-#: ../src/appointment.c:1307 ../src/event-list.c:1000 ../src/parameters.c:690
-msgid "No, cancel the removal"
-msgstr "Не, скасаваць выдаленне"
-
-#: ../src/appointment.c:1308
-msgid "Yes, remove it"
-msgstr "Так, выдаліць"
-
-#: ../src/appointment.c:1407 ../src/appointment.c:1422 ../src/day-view.c:470
-#: ../src/event-list.c:1059 ../src/functions.c:143
-msgid "Pick the date"
-msgstr "Абраць дату"
-
-#: ../src/appointment.c:1409 ../src/appointment.c:1424 ../src/day-view.c:399
-#: ../src/day-view.c:472 ../src/event-list.c:1061 ../src/event-list.c:1215
-#: ../src/functions.c:145 ../src/tray_icon.c:394
-msgid "Today"
-msgstr "Сёння"
-
-#: ../src/appointment.c:1851
-msgid "This appointment does not exist."
-msgstr "Няма такога прызначэння."
-
-#: ../src/appointment.c:1852
-msgid "It was probably removed, please refresh your screen."
-msgstr "Магчыма, яно было выдалена, калі ласка, абнавіце экран."
-
-#: ../src/appointment.c:2149 ../src/interface.c:675
-msgid "_Remove"
-msgstr "_Выдаліць"
-
-#: ../src/appointment.c:2175
-msgid "Current categories"
-msgstr "Бягучыя катэгорыі"
-
-#: ../src/appointment.c:2197
-msgid "Add new category with color"
-msgstr "Дадаць катэгорыю з колерам"
-
-#: ../src/appointment.c:2208
-msgid "Category:"
-msgstr "Катэгорыя:"
-
-#: ../src/appointment.c:2224 ../src/interface.c:1453 ../src/parameters.c:1413
-msgid "_Add"
-msgstr "_Дадаць"
-
-#: ../src/appointment.c:2253
-msgid "Colors of categories - Orage"
-msgstr "Колеры катэгорый - Orage"
-
-#: ../src/appointment.c:2298
-msgid "*** COPY ***"
-msgstr ""
-
-#: ../src/appointment.c:2586
-msgid "New appointment - Orage"
-msgstr "Новае прызначэнне - Orage"
-
-#. File menu stuff
 #. ********* File menu *********
 #. File menu
-#: ../src/appointment.c:2614 ../src/day-view.c:293 ../src/event-list.c:1116
-#: ../src/interface.c:860 ../src/mainbox.c:227
+#. File menu stuff
+#. File menu
+#: ../src/day-view.c:289 ../src/event-list.c:1135 ../src/interface.c:860
+#: ../src/orage-appointment-window.c:2910 ../src/orage-window.c:279
 msgid "_File"
 msgstr "_Файл"
 
-#: ../src/appointment.c:2620
-msgid "Sav_e and close"
-msgstr "Захаваць і закрыць"
-
-#: ../src/appointment.c:2633 ../src/event-list.c:1122
-msgid "D_uplicate"
-msgstr "Д_убляваць"
-
-#: ../src/appointment.c:2851
-msgid "Save"
-msgstr "Захаваць"
-
-#: ../src/appointment.c:2853
-msgid "Save and close"
-msgstr "Захаваць і закрыць"
-
-#: ../src/appointment.c:2858
-msgid "Revert"
-msgstr "Адвярнуць"
-
-#: ../src/appointment.c:2860 ../src/event-list.c:1206
-msgid "Duplicate"
-msgstr "Прадубляваць"
-
-#: ../src/appointment.c:2865 ../src/event-list.c:1208
-msgid "Delete"
-msgstr "Выдаліць"
-
-#: ../src/appointment.c:2883
-msgid "Free"
-msgstr "Вольны"
-
-#: ../src/appointment.c:2883
-msgid "Busy"
-msgstr "Заняты"
-
-#: ../src/appointment.c:2887
-msgid "General"
-msgstr "Асноўныя"
-
-#. type
-#: ../src/appointment.c:2893
-msgid "Type"
-msgstr "Тып"
-
-#: ../src/appointment.c:2895 ../src/event-list.c:1261
-msgid "Event"
-msgstr "Падзея"
-
-#: ../src/appointment.c:2900
-msgid ""
-"Event that will happen sometime. For example:\n"
-"Meeting or birthday or TV show."
-msgstr ""
-"Падзея, якая мусіць некалі адбыцца. Напрыклад:\n"
-"Сустрэча, ці дзень нараджэння, ці тэлевезійнае шоў."
-
-#: ../src/appointment.c:2903 ../src/event-list.c:1320
-msgid "Todo"
-msgstr "Сталая задача"
-
-#: ../src/appointment.c:2908
-msgid ""
-"Something that you should do sometime. For example:\n"
-"Wash your car or test new version of Orage."
-msgstr ""
-"Нешта, што вы мусіце некалі зрабіць. Напрыклад:\n"
-"Памыць сваю машыну ці выпрабаваць новую версію Orage."
-
-#: ../src/appointment.c:2911 ../src/event-list.c:1334
-msgid "Journal"
-msgstr "Лог"
-
-#: ../src/appointment.c:2916
-msgid ""
-"Make a note that something happened. For example:\n"
-"Remark that your mother called or first snow came."
-msgstr ""
-"Зрабіце запіс, калі нешта адбылося. Напрыклад:\n"
-"Адзначце, што тэлефанавала маці, ці пайшоў першы снег."
-
-#. title
-#: ../src/appointment.c:2923 ../src/event-list.c:1439
-msgid "Title"
-msgstr "Загаловак"
-
-#. location
-#: ../src/appointment.c:2930 ../src/timezone_selection.c:234
-#: ../src/timezone_selection.c:239
-msgid "Location"
-msgstr "Размяшчэнне"
-
-#: ../src/appointment.c:2938
-msgid "All day event"
-msgstr "На ўвесь дзень"
-
-#. start time
-#: ../src/appointment.c:2944 ../src/appointment.c:3675 ../src/day-view.c:830
-msgid "Start"
-msgstr "Пачаць"
-
-#: ../src/appointment.c:2962
-msgid "Set"
-msgstr ""
-
-#: ../src/appointment.c:2986
-msgid "Duration"
-msgstr "Працягласць"
-
-#: ../src/appointment.c:2990 ../src/appointment.c:3198 ../src/reminder.c:606
-msgid "days"
-msgstr "дзён"
-
-#: ../src/appointment.c:2992 ../src/appointment.c:3200 ../src/reminder.c:608
-msgid "hours"
-msgstr "гадзін"
-
-#: ../src/appointment.c:2994 ../src/appointment.c:3202 ../src/reminder.c:610
-msgid "mins"
-msgstr "хвілін"
-
-#. Availability (only for EVENT)
-#: ../src/appointment.c:3006
-msgid "Availability"
-msgstr "Даступнасць"
-
-#. completed (only for TODO)
-#: ../src/appointment.c:3014 ../src/appointment.c:3684
-msgid "Completed"
-msgstr "Выканана"
-
-#: ../src/appointment.c:3017
-msgid "Done"
-msgstr "Завершана"
-
-#. categories
-#: ../src/appointment.c:3042
-msgid "Categories"
-msgstr "Катэгорыі"
-
-#: ../src/appointment.c:3060
-msgid ""
-"This is special category, which can be used to color this appointment in "
-"list views."
-msgstr ""
-"Гэта асаблівая катэгорыя, што выкарыстоўваецца для вызначэння прызначэнняў у"
-" спісе."
-
-#: ../src/appointment.c:3061
-msgid "_Colour"
-msgstr ""
-
-#: ../src/appointment.c:3066
-msgid "update colors for categories."
-msgstr "абнавіць колеры катэгорый."
-
-#. priority
-#: ../src/appointment.c:3072
-msgid "Priority"
-msgstr "Прыярытэт"
-
-#: ../src/appointment.c:3076
-msgid ""
-"If you set this 8 or bigger, the appointment is NOT shown on list windows.\n"
-"You can use that feature to unclutter your list windows, but it makes it more difficult to find this appointment.\n"
-"(Alarms will still fire normally.)\n"
-"(There is undocumented parameter so that you can change the default limit of 8.)"
-msgstr ""
-"Калі вы абярэце 8 альбо больш, прызначэнне не будзе адлюстроўвацца ў спісе "
-"акон. Вы можаце выкарыстоўваць гэтую функцыю, каб ачысціць ваш спіс акон, "
-"але пры гэтым адшукаць прызначэнне будзе складаней."
-
-#. note
-#: ../src/appointment.c:3085
-msgid "Note"
-msgstr "Нататка"
-
-#: ../src/appointment.c:3106
-msgid ""
-"These shorthand commands take effect immediately:\n"
-"    <D> inserts current date in local date format\n"
-"    <T> inserts time\n"
-"    <DT> inserts date and time.\n"
-"\n"
-"These are converted only later when they are seen:\n"
-"    <&Ynnnn> is translated to current year minus nnnn.\n"
-"(This can be used for example in birthday reminders to tell how old the person will be.)"
-msgstr ""
-
-#: ../src/appointment.c:3180
-msgid "Before Start"
-msgstr "Перад пачаткам"
-
-#: ../src/appointment.c:3180
-msgid "Before End"
-msgstr "Перад канцом"
-
-#: ../src/appointment.c:3181
-msgid "After Start"
-msgstr "Пасля пачатку"
-
-#: ../src/appointment.c:3181
-msgid "After End"
-msgstr "Пасля канца"
-
-#: ../src/appointment.c:3189
-msgid "Alarm"
-msgstr "Небяспека"
-
-#. **** ALARM TIME ****
-#: ../src/appointment.c:3195
-msgid "Alarm time"
-msgstr "Час сігнала"
-
-#: ../src/appointment.c:3220
-msgid ""
-"Often you want to get alarm:\n"
-" 1) before Event start\n"
-" 2) before Todo end\n"
-" 3) after Todo start"
-msgstr ""
-"Калі вы хочаце атрымаць сігнал:\n"
-" 1) да пачатку падзеі\n"
-" 2) перад канцом задачы\n"
-" 3) пасля пачатку задачы"
-
-#: ../src/appointment.c:3225
-msgid "Persistent alarm"
-msgstr "Сталы будзільнік"
-
-#: ../src/appointment.c:3230
-msgid ""
-"Select this if you want Orage to remind you even if it has not been active "
-"when the alarm happened."
-msgstr ""
-"Абярыце гэты параметр калі хочаце, каб Orage вывеў сігнал нават калі "
-"выключаны."
-
-#: ../src/appointment.c:3240
-msgid "Sound"
-msgstr "Гук"
-
-#: ../src/appointment.c:3244 ../src/appointment.c:3388
-msgid "Use"
-msgstr "Ужыць"
-
-#: ../src/appointment.c:3249
-msgid "Select this if you want audible alarm"
-msgstr "Абярыце, каб атрымліваць гукавы сігнал"
-
-#: ../src/appointment.c:3254
-msgid "Sound command is not set"
-msgstr ""
-
-#: ../src/appointment.c:3269 ../src/interface.c:1050 ../src/interface.c:1096
-#: ../src/interface.c:1271 ../src/interface.c:1363 ../src/interface.c:1446
-#: ../src/parameters.c:437 ../src/parameters.c:802 ../src/reminder.c:635
-msgid "_Open"
-msgstr "_Адкрыць"
-
-#: ../src/appointment.c:3283
-msgid "Repeat alarm sound"
-msgstr "Паўтараць гук сігнала"
-
-#: ../src/appointment.c:3298 ../src/appointment.c:3607
-msgid "times"
-msgstr "разы"
-
-#: ../src/appointment.c:3314
-msgid "sec interval"
-msgstr "сек. інтрэрвал"
-
-#. **** Display Alarm ****
-#: ../src/appointment.c:3324
-msgid "Visual"
-msgstr "Візуальны"
-
-#: ../src/appointment.c:3328
-msgid "Use Orage window"
-msgstr "Ужываць акно Orage"
-
-#: ../src/appointment.c:3330
-msgid "Select this if you want Orage window alarm"
-msgstr "Абярыце, каб атрымліваць сігнал акном Orage"
-
-#: ../src/appointment.c:3342
-msgid "Use notification"
-msgstr "Ужываць апавяшчэнне"
-
-#: ../src/appointment.c:3344
-msgid "Select this if you want notification alarm"
-msgstr "Абярыце, каб атрымліваць апавяшчэнне пра сігнал"
-
-#: ../src/appointment.c:3352
-msgid "Set timeout"
-msgstr "Задаць затрымку"
-
-#: ../src/appointment.c:3354
-msgid "Select this if you want notification to expire automatically"
-msgstr "Абярыце, каб перад апавяшчэннем была затрымка"
-
-#: ../src/appointment.c:3365
-msgid "0 = system default expiration time"
-msgstr "0 = прадвызначаны сістэмны час"
-
-#: ../src/appointment.c:3373
-msgid "seconds"
-msgstr "секунд"
-
-#. **** Procedure Alarm ****
-#: ../src/appointment.c:3384
-msgid "Procedure"
-msgstr "Працэдура"
-
-#: ../src/appointment.c:3390
-msgid "Select this if you want procedure or script alarm"
-msgstr "Абярыце, каб выкарыстоўваць працэдуру ці скрыпт будзільніка"
-
-#: ../src/appointment.c:3400
-msgid ""
-"You must enter all escape etc characters yourself.\n"
-"This string is just given to shell to process.\n"
-"The following special commands are replaced at run time:\n"
-"\t<&T>  appointment title\n"
-"\t<&D>  appointment description\n"
-"\t<&AT> alarm time\n"
-"\t<&ST> appointment start time\n"
-"\t<&ET> appointment end time"
-msgstr ""
-"Вы мусіце ўводзіць усе сімвалы escape і яму падобныя ўласнаручна.\n"
-"Гэты радок перадаецца абалонцы для апрацоўкі.\n"
-"Падчас выканання загаду будуць замяняцца наступныя адмысловыя загады:\n"
-"\t<&T>  назва прызначэння\n"
-"\t<&D>  апісанне прызначэння\n"
-"\t<&AT> час сігналу\n"
-"\t<&ST> час пачатку прызначэння\n"
-"\t<&ET> час завяршэння прызначэння"
-
-#: ../src/appointment.c:3414 ../src/interface.c:1184 ../src/interface.c:1206
-msgid "_Execute"
-msgstr ""
-
-#: ../src/appointment.c:3416
-msgid "Test this alarm by raising it now"
-msgstr "Праверыць гэты сігнал"
-
-#: ../src/appointment.c:3429
-msgid "<b>Default alarm</b>"
-msgstr "<b>Прадвызначаны будзільнік</b>"
-
-#: ../src/appointment.c:3435 ../src/interface.c:1057 ../src/interface.c:1103
-#: ../src/interface.c:1277 ../src/interface.c:1369
-msgid "_Save"
-msgstr "За_хаваць"
-
-#: ../src/appointment.c:3443
-msgid "Store current settings as default alarm"
-msgstr "Захаваць бягучыя налады як звычайны сігнал"
-
-#: ../src/appointment.c:3445
-msgid "_Revert"
-msgstr "_Адрабіць"
-
-#: ../src/appointment.c:3453
-msgid "Set current settings from default alarm"
-msgstr "Узяць бягучыя налады са звычайнага сігнала"
-
-#: ../src/appointment.c:3519
-msgid "None"
-msgstr "Няма"
-
-#: ../src/appointment.c:3519
-msgid "Daily"
-msgstr "Дзённы"
-
-#: ../src/appointment.c:3519
-msgid "Weekly"
-msgstr "Тыднёвы"
-
-#: ../src/appointment.c:3519
-msgid "Monthly"
-msgstr "Месячны"
-
-#: ../src/appointment.c:3519
-msgid "Yearly"
-msgstr "Гадавы"
-
-#: ../src/appointment.c:3519
-msgid "Hourly"
-msgstr "Гадзінны"
-
-#: ../src/appointment.c:3521
-msgid "Mon"
-msgstr "Пан"
-
-#: ../src/appointment.c:3521
-msgid "Tue"
-msgstr "Аўт"
-
-#: ../src/appointment.c:3521
-msgid "Wed"
-msgstr "Сер"
-
-#: ../src/appointment.c:3521
-msgid "Thu"
-msgstr "Чцв"
-
-#: ../src/appointment.c:3521
-msgid "Fri"
-msgstr "Пт"
-
-#: ../src/appointment.c:3521
-msgid "Sat"
-msgstr "Суб"
-
-#: ../src/appointment.c:3521
-msgid "Sun"
-msgstr "Няд"
-
-#: ../src/appointment.c:3526
-msgid "Recurrence"
-msgstr "Паўторы"
-
-#. complexity
-#: ../src/appointment.c:3532
-msgid "Complexity"
-msgstr "Складанасць"
-
-#: ../src/appointment.c:3535
-msgid "Basic"
-msgstr "Базавыя"
-
-#: ../src/appointment.c:3542
-msgid "Advanced"
-msgstr "Дадаткова"
-
-#: ../src/appointment.c:3548
-msgid "Use this if you want regular repeating event"
-msgstr "Выкарыстоўвайце, калі хочаце каб прызначэнне паўтаралася"
-
-#: ../src/appointment.c:3550
-msgid ""
-"Use this if you need complex times like:\n"
-" Every Saturday and Sunday or \n"
-" First Tuesday every month"
-msgstr ""
-"Выкарыстоўвайце, калі вам патрэбна ўжываць складаную перыядычнасць кшталту:\n"
-"- Кожную суботу альбо нядзелю альбо\n"
-"- Першы панядзелак кожнага месяца"
-
-#. frequency
-#: ../src/appointment.c:3556
-msgid "Frequency"
-msgstr "Чашчыня"
-
-#: ../src/appointment.c:3563
-msgid "Each"
-msgstr "Кожнае"
-
-#: ../src/appointment.c:3574
-msgid "occurrence"
-msgstr "з'яўленне"
-
-#: ../src/appointment.c:3581
-msgid ""
-"Limit frequency to certain interval.\n"
-" For example: Every third day:\n"
-" Frequency = Daily and Interval = 3"
-msgstr ""
-"Абмяжоўваць чашчыню да пэўнага інтэрвала.\n"
-"Напрыклад: Кожны трэці дзень:\n"
-"Чашчыня = штодзённа і інтэрвал = 3"
-
-#: ../src/appointment.c:3588
-msgid "Limit"
-msgstr "Абмежаваць"
-
-#: ../src/appointment.c:3590
-msgid "Repeat forever"
-msgstr "Паўтараць бясконца"
-
-#: ../src/appointment.c:3597
-msgid "Repeat "
-msgstr "Паўтор "
-
-#: ../src/appointment.c:3621
-msgid "Repeat until "
-msgstr "Паўтараць да "
-
-#. weekdays (only for complex settings)
-#: ../src/appointment.c:3637
-msgid "Weekdays"
-msgstr "Дзень тыдня"
-
-#: ../src/appointment.c:3654
-msgid "Which day"
-msgstr "Які дзень"
-
-#: ../src/appointment.c:3665
-msgid ""
-"Specify which weekday for monthly and yearly events.\n"
-" For example:\n"
-" Second Wednesday each month:\n"
-"\tFrequency = Monthly,\n"
-"\tWeekdays = check only Wednesday,\n"
-"\tWhich day = select 2 from the number below Wednesday"
-msgstr ""
-"Вызначыць дзень тыдня для штомесячных і штогадовых падзей.\n"
-" Напрыклад:\n"
-" Другая серада кожнага месяца:\n"
-"\tЧашчыня = Штомесяц,\n"
-"\tДзень тыдня = правяраць толькі ў сераду,\n"
-"\tЯкі дзень = абярыце 2 да серады"
-
-#. TODO base (only for TODOs)
-#: ../src/appointment.c:3672
-msgid "TODO base"
-msgstr "Пачатковая дата сталай задачы"
-
-#: ../src/appointment.c:3691
-msgid ""
-"TODO reoccurs regularly starting on start time and repeating after each "
-"interval no matter when it was last completed"
-msgstr ""
-"Сталая задача будзе выконвацца пачынаючы з даты пачатку і паўтараюцца праз "
-"пэўны інтэрвал, незалежна ад таго, калі яна была завершана"
-
-#: ../src/appointment.c:3693
-msgid ""
-"TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
-"(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
-msgstr ""
-"Сталая задача будзе выконвацца пачынаючы з даты яе завяршэння.\n"
-"(Майце на ўвазе, што пачатковая дата будзе змяняцца з кожным паўторам)."
-
-#. exceptions
-#: ../src/appointment.c:3699
-msgid "Exceptions"
-msgstr "Выключэнні"
-
-#: ../src/appointment.c:3725
-msgid ""
-"Add more exception dates by clicking the calendar days below.\n"
-"Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
-"Remove by clicking the data."
-msgstr ""
-"Больш выключэнняў можна дадаць пстрыкнуўшы па днях у каляндары.\n"
-"Выключэнні могуць быць выключанымі(-) альбо ўключанымі(+).\n"
-"Пстрыкніце па даце, каб выдаліць іх."
-
-#: ../src/appointment.c:3736
-msgid "Add excluded date (-)"
-msgstr "Дадаць выключаную дату (-)"
-
-#: ../src/appointment.c:3738
-msgid "Excluded days are full days where this appointment is not happening"
-msgstr "У выключаныя дні прызначэнне не адбудзецца"
-
-#: ../src/appointment.c:3745
-msgid "Add included time (+)"
-msgstr "Дадаць уключаны час (+)"
-
-#: ../src/appointment.c:3747
-msgid ""
-"Included times have same timezone than start time, but they may have "
-"different time"
-msgstr "Падзея адбудзецца ва ўключаны час"
-
-#. calendars showing the action days
-#: ../src/appointment.c:3766
-msgid "Action dates"
-msgstr "Даты дзеяння"
-
 #. ********* View menu *********
 #. View menu
-#: ../src/day-view.c:303 ../src/event-list.c:1139 ../src/mainbox.c:260
+#: ../src/day-view.c:299 ../src/event-list.c:1158 ../src/orage-window.c:310
 msgid "_View"
 msgstr "Вы_гляд"
 
 #. ********* Go menu   *********
-#: ../src/day-view.c:317 ../src/event-list.c:1158
+#: ../src/day-view.c:313 ../src/event-list.c:1177
 msgid "_Go"
 msgstr "Пера_ход"
 
-#: ../src/day-view.c:390 ../src/event-list.c:1204
+#: ../src/day-view.c:386 ../src/event-list.c:1223
 msgid "New"
 msgstr "Новае"
 
-#: ../src/day-view.c:395
+#: ../src/day-view.c:391
 msgid "Back one week"
 msgstr "На тыдзень таму"
 
-#: ../src/day-view.c:397
+#: ../src/day-view.c:393
 msgid "Back one day"
 msgstr "На дзень таму"
 
-#: ../src/day-view.c:401
+#: ../src/day-view.c:395 ../src/day-view.c:468 ../src/event-list.c:1080
+#: ../src/event-list.c:1234 ../src/functions.c:145
+#: ../src/orage-appointment-window.c:1737
+#: ../src/orage-appointment-window.c:1752 ../src/tray_icon.c:410
+msgid "Today"
+msgstr "Сёння"
+
+#: ../src/day-view.c:397
 msgid "Forward one day"
 msgstr "На дзень наперад"
 
-#: ../src/day-view.c:403
+#: ../src/day-view.c:399
 msgid "Forward one week"
 msgstr "На тыдзень наперад"
 
-#: ../src/day-view.c:408 ../src/event-list.c:1222
+#: ../src/day-view.c:404 ../src/event-list.c:1241
 msgid "Refresh"
 msgstr "Абнавіць"
 
-#: ../src/day-view.c:413 ../src/event-list.c:1229 ../src/interface.c:879
+#: ../src/day-view.c:409 ../src/event-list.c:1248 ../src/interface.c:879
 msgid "Close"
 msgstr "Закрыць"
 
-#: ../src/day-view.c:472
+#: ../src/day-view.c:466 ../src/event-list.c:1078 ../src/functions.c:143
+#: ../src/orage-appointment-window.c:1735
+#: ../src/orage-appointment-window.c:1750
+msgid "Pick the date"
+msgstr "Абраць дату"
+
+#: ../src/day-view.c:468
 msgid "_OK"
 msgstr "_Добра"
 
-#: ../src/day-view.c:593
+#: ../src/day-view.c:596
 msgid "Unknown"
 msgstr "Невядома"
 
-#: ../src/day-view.c:838
+#. start time
+#: ../src/day-view.c:833 ../src/orage-appointment-window.c:3509
+#: ../src/orage-appointment-window.c:3638
+msgid "Start"
+msgstr "Пачаць"
+
+#: ../src/day-view.c:841
 msgid "Number of days to show"
 msgstr ""
 
-#: ../src/day-view.c:1069
+#: ../src/day-view.c:1072
 msgid "Orage - day view"
 msgstr "Orage - прагляд дзён"
 
 #. date only appointment
-#: ../src/event-list.c:188
+#: ../src/event-list.c:186
 msgid "All day"
 msgstr "Увесь дзень"
 
-#: ../src/event-list.c:619 ../src/event-list.c:1423
+#: ../src/event-list.c:617 ../src/event-list.c:1442
 msgid "Time"
 msgstr "Час"
 
-#: ../src/event-list.c:802
+#: ../src/event-list.c:803
 msgid "No rows have been selected."
 msgstr "Не абраны ніводны радок."
 
-#: ../src/event-list.c:803
+#: ../src/event-list.c:804
 msgid "Click a row to select it and after that you can copy it."
 msgstr "Націсніце на радок, каб абраць, потым вы зможаце яго скапіяваць."
 
-#: ../src/event-list.c:998
+#: ../src/event-list.c:1016
 msgid ""
 "You will permanently remove all\n"
 "selected appointments."
@@ -832,35 +130,61 @@ msgstr ""
 "Вы назаўсёды выдаліце ўсе\n"
 "абраныя прызначэнні."
 
-#: ../src/event-list.c:1001
+#: ../src/event-list.c:1017 ../src/orage-appointment-window.c:991
+#: ../src/orage-appointment-window.c:1637 ../src/parameters.c:687
+msgid "Do you want to continue?"
+msgstr "Працягваць?"
+
+#: ../src/event-list.c:1018 ../src/orage-appointment-window.c:1638
+#: ../src/parameters.c:688
+msgid "No, cancel the removal"
+msgstr "Не, скасаваць выдаленне"
+
+#: ../src/event-list.c:1019
 msgid "Yes, remove them"
 msgstr "Так, выдаліць іх"
 
-#: ../src/event-list.c:1213
+#: ../src/event-list.c:1141 ../src/orage-appointment-window.c:2929
+msgid "D_uplicate"
+msgstr "Д_убляваць"
+
+#: ../src/event-list.c:1225 ../src/orage-appointment-window.c:3554
+msgid "Duplicate"
+msgstr "Прадубляваць"
+
+#: ../src/event-list.c:1227 ../src/orage-appointment-window.c:3559
+msgid "Delete"
+msgstr "Выдаліць"
+
+#: ../src/event-list.c:1232
 msgid "Back"
 msgstr "Назад"
 
-#: ../src/event-list.c:1217
+#: ../src/event-list.c:1236
 msgid "Forward"
 msgstr "Перанакіраваць"
 
-#: ../src/event-list.c:1224
+#: ../src/event-list.c:1243
 msgid "Find"
 msgstr "Знайсці"
 
-#: ../src/event-list.c:1231
+#: ../src/event-list.c:1250
 msgid "Dayview"
 msgstr "Прагляд дзён"
 
-#: ../src/event-list.c:1266
+#: ../src/event-list.c:1280 ../src/orage-appointment-window.c:3589
+msgid "Event"
+msgstr "Падзея"
+
+#: ../src/event-list.c:1285
 msgid "Extra days to show:"
 msgstr "Дадаткова паказваць дзён:"
 
-#: ../src/event-list.c:1280
+#: ../src/event-list.c:1299
 msgid "only first repeating"
 msgstr "толькі першую паўторную"
 
-#: ../src/event-list.c:1288
+#: ../src/event-list.c:1307
 msgid ""
 "Check this if you only want to see the first repeating event. By default all are shown.\n"
 "Note that this also shows all urgencies.\n"
@@ -870,33 +194,46 @@ msgstr ""
 "Майце на ўвазе, што таксама будуць адлюстроўвацца ўсе тэрміновыя падзеі.\n"
 "Таксама, пры адлюстраванні толькі першай падзеі, паўторныя падзеі могуць быць у спісе раней."
 
-#: ../src/event-list.c:1293
+#: ../src/event-list.c:1312
 msgid "also old"
 msgstr "таксама старыя"
 
-#: ../src/event-list.c:1298
+#: ../src/event-list.c:1317
 msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed."
 msgstr ""
 
-#: ../src/event-list.c:1337
+#: ../src/event-list.c:1339 ../src/orage-appointment-window.c:3597
+msgid "Todo"
+msgstr "Сталая задача"
+
+#: ../src/event-list.c:1353 ../src/orage-appointment-window.c:3605
+msgid "Journal"
+msgstr "Лог"
+
+#: ../src/event-list.c:1356
 msgid "Journal entries starting from:"
 msgstr "Паказваць запісы ў лозе пачынаючы з:"
 
-#: ../src/event-list.c:1362
+#: ../src/event-list.c:1381
 msgid "Search"
 msgstr "Пошук"
 
-#: ../src/event-list.c:1365
+#: ../src/event-list.c:1384
 msgid "Search text "
 msgstr "Шукаць тэкст "
 
-#: ../src/event-list.c:1431
+#: ../src/event-list.c:1450
 msgid "Flags"
 msgstr "Сцягі"
 
-#: ../src/event-list.c:1465
+#. title
+#: ../src/event-list.c:1458 ../src/orage-appointment-window.c:3617
+msgid "Title"
+msgstr "Загаловак"
+
+#: ../src/event-list.c:1484
 msgid ""
 "Double click line to edit it.\n"
 "\n"
@@ -924,55 +261,70 @@ msgstr ""
 "\t 5. Тып прызначэння:\n"
 "\t\tE=Падзея T=Сталая падзея J=нататнік"
 
-#: ../src/ical-code.c:789
+#: ../src/ical-code.c:831
 msgid "Orage default alarm"
 msgstr "Прадвызначаны сігнал Orage"
 
-#: ../src/interface.c:268
+#. to avoid timing problems when updating entry
+#. Create file chooser
+#: ../src/interface.c:262 ../src/orage-appointment-window.c:936
+#: ../src/parameters.c:430
+msgid "Select a file..."
+msgstr "Абраць файл..."
+
+#: ../src/interface.c:269
 msgid "Calendar files"
 msgstr "Файлы каляндара"
 
-#: ../src/interface.c:645
+#: ../src/interface.c:275 ../src/orage-appointment-window.c:951
+msgid "All Files"
+msgstr "Усе файлы"
+
+#: ../src/interface.c:643
 msgid "Current foreign files"
 msgstr "Бягучыя вонкавыя файлы"
 
-#: ../src/interface.c:668
+#: ../src/interface.c:666
 msgid "READ ONLY"
 msgstr "ТОЛЬКІ ЧЫТАННЕ"
 
-#: ../src/interface.c:670
+#: ../src/interface.c:668
 msgid "READ WRITE"
 msgstr "ЧЫТАННЕ І ЗАПІС"
 
-#: ../src/interface.c:695
+#: ../src/interface.c:673 ../src/orage-appointment-window.c:2362
+msgid "_Remove"
+msgstr "_Выдаліць"
+
+#: ../src/interface.c:693
 msgid "***** No foreign files *****"
 msgstr "***** Няма вонкавых файлаў *****"
 
-#: ../src/interface.c:709
+#: ../src/interface.c:708
 msgid "Foreign file add failed"
 msgstr "Не атрымалася дадаць вонкавы файл"
 
-#: ../src/interface.c:718
+#: ../src/interface.c:717
 msgid "Orage can only handle 10 foreign files. Limit reached."
 msgstr "Orage падтрымлівае толькі 10 вонкавых файлаў. Ліміт дасягнуты."
 
-#: ../src/interface.c:728
+#: ../src/interface.c:727
 msgid "Filename is empty."
 msgstr "Назва файла пустая."
 
-#: ../src/interface.c:738
+#: ../src/interface.c:737
 msgid "Name is empty."
 msgstr "Назва пустая."
 
-#: ../src/interface.c:749
+#: ../src/interface.c:748
 msgid "File does not exist."
 msgstr "Файл не існуе."
 
-#: ../src/interface.c:761
+#: ../src/interface.c:760
 msgid "Same filename already exists in Orage."
 msgstr "Файл з такой назвай ужо існуе ў Orage."
 
-#: ../src/interface.c:772
+#: ../src/interface.c:771
 msgid "Same name already exists in Orage."
 msgstr "Такая назва ўжо існуе ў Orage."
 
@@ -987,6 +339,18 @@ msgstr "Імпарт"
 #: ../src/interface.c:1040
 msgid "Read from file:"
 msgstr "Чытаць з файла:"
+
+#: ../src/interface.c:1050 ../src/interface.c:1096 ../src/interface.c:1271
+#: ../src/interface.c:1363 ../src/interface.c:1446
+#: ../src/orage-appointment-window.c:3963 ../src/parameters.c:435
+#: ../src/parameters.c:800 ../src/reminder.c:633
+msgid "_Open"
+msgstr "_Адкрыць"
+
+#: ../src/interface.c:1057 ../src/interface.c:1103 ../src/interface.c:1277
+#: ../src/interface.c:1369 ../src/orage-appointment-window.c:4129
+msgid "_Save"
+msgstr "За_хаваць"
 
 #: ../src/interface.c:1070
 msgid ""
@@ -1043,6 +407,11 @@ msgstr "UIDы прызначэнняў Orage, падзеленыя коскам�
 #: ../src/interface.c:1175
 msgid "Archive"
 msgstr "Архіў"
+
+#: ../src/interface.c:1184 ../src/interface.c:1206
+#: ../src/orage-appointment-window.c:4108
+msgid "_Execute"
+msgstr ""
 
 #: ../src/interface.c:1190
 #, c-format
@@ -1133,6 +502,11 @@ msgstr "Дадаць вонкавы файл"
 msgid "Foreign file:"
 msgstr "Вонкавы файл:"
 
+#: ../src/interface.c:1453 ../src/orage-appointment-window.c:2438
+#: ../src/parameters.c:1411
+msgid "_Add"
+msgstr "_Дадаць"
+
 #: ../src/interface.c:1468
 msgid "Visible name:"
 msgstr "Адлюстроўваемая назва:"
@@ -1157,104 +531,20 @@ msgstr "Для адлюстравання замест назвы файла б�
 msgid "Exchange data - Orage"
 msgstr "Абмен данымі - Orage"
 
-#: ../src/mainbox.c:242
-msgid "_Exchange data"
-msgstr "Абмен да_нымі"
+#: ../src/main.c:50 ../src/orage-appointment-window.c:712
+#: ../org.xfce.orage.appdata.xml.in.h:1
+msgid "Orage"
+msgstr "Orage"
 
-#. Edit menu
-#: ../src/mainbox.c:253
-msgid "_Edit"
-msgstr "_Рэдагаваць"
-
-#: ../src/mainbox.c:263
-msgid "View selected _date"
-msgstr "Паказаць _абраны дзень"
-
-#: ../src/mainbox.c:266
-msgid "View selected _week"
-msgstr "Паказа_ць абраны тыдзень"
-
-#: ../src/mainbox.c:272
-msgid "Select _Today"
-msgstr "Абраць сённяшні дз_ень"
-
-#. Help menu
-#. the rest
-#: ../src/mainbox.c:276 ../src/parameters.c:1453
-msgid "_Help"
-msgstr "_Даведка"
-
-#: ../src/mainbox.c:340 ../src/reminder.c:965
-msgid "No title defined"
-msgstr "Без назвы"
-
-#: ../src/mainbox.c:398
-#, c-format
-msgid " Location: %s\n"
-msgstr " Размяшчэнне: %s\n"
-
-#: ../src/mainbox.c:408
-#, c-format
-msgid ""
-"\n"
-" Note:\n"
-"%s"
-msgstr ""
-"\n"
-" Нататка:\n"
-"%s"
-
-#: ../src/mainbox.c:416
-msgid "Never"
-msgstr "Ніколі"
-
-#: ../src/mainbox.c:424
-#, c-format
-msgid ""
-"Title: %s\n"
-"%s Start:\t%s\n"
-" Due:\t%s\n"
-" Done:\t%s%s"
-msgstr ""
-"Назва: %s\n"
-"%s Пачатак:\t%s\n"
-" Працягласць:\t%s\n"
-" Завяршэнне:\t%s%s"
-
-#: ../src/mainbox.c:431
-#, c-format
-msgid ""
-"Title: %s\n"
-"%s Start:\t%s\n"
-" End:\t%s%s"
-msgstr ""
-"Назва: %s\n"
-"%s Пачатак:\t%s\n"
-" Завяршэнне:\t%s%s"
-
-#: ../src/mainbox.c:510
-msgid "<b>To do:</b>"
-msgstr "<b>Зрабіць:</b>"
-
-#: ../src/mainbox.c:547
-#, c-format
-msgid "<b>Events for %s:</b>"
-msgstr "<b>Падзеі для %s:</b>"
-
-#: ../src/mainbox.c:557
-#, c-format
-msgid "<b>Events for %s - %s:</b>"
-msgstr "<b>Падзеі для %s - %s:</b>"
-
-#: ../src/orage-about.c:50 ../org.xfce.orage.appdata.xml.in.h:2
+#: ../src/orage-about.c:44 ../org.xfce.orage.appdata.xml.in.h:2
 msgid "Orage is a time-managing application for the Xfce desktop environment"
 msgstr ""
 
-#: ../src/orage-about.c:54
+#: ../src/orage-about.c:51
 msgid "translator-credits"
 msgstr "Źmicier Turok <nashtlumach@gmail.com>"
 
-#: ../src/orage-application.c:167
+#: ../src/orage-application.c:110
 #, c-format
 msgid ""
 "\tThis is %s version %s\n"
@@ -1263,78 +553,788 @@ msgstr ""
 "\tГэта %s версіі %s\n"
 "\n"
 
-#: ../src/orage-application.c:169
+#: ../src/orage-application.c:112
 #, c-format
 msgid "\tReleased under the terms of the GNU General Public License.\n"
 msgstr "\tВыдадзена на ўмовах агульнай грамадскай ліцэнзіі GNU (GPL).\n"
 
-#: ../src/orage-application.c:170
+#: ../src/orage-application.c:113
 #, c-format
 msgid "\tCompiled against GTK+-%d.%d.%d, "
 msgstr "\tСкампілявана з GTK+-%d.%d.%d, "
 
-#: ../src/orage-application.c:172
+#: ../src/orage-application.c:115
 #, c-format
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "выкарыстоўваецца GTK+-%d.%d.%d.\n"
 
-#: ../src/orage-application.c:175
+#: ../src/orage-application.c:118
 #, c-format
 msgid "\tUsing libnotify.\n"
 msgstr "\tВыкарыстоўваецца libnotify.\n"
 
-#: ../src/orage-application.c:177
+#: ../src/orage-application.c:120
 #, c-format
 msgid "\tNot using libnotify.\n"
 msgstr "\tlibnotify не выкарыстоўваецца.\n"
 
-#: ../src/orage-application.c:180
+#: ../src/orage-application.c:123
 #, c-format
 msgid "\tUsing automatic archiving.\n"
 msgstr "\tВыкарыстоўваецца аўтаматычная архівацыя.\n"
 
-#: ../src/orage-application.c:182
+#: ../src/orage-application.c:125
 #, c-format
 msgid "\tNot using archiving.\n"
 msgstr "\tАрхівацыя не выкарыстоўваецца\n"
 
-#: ../src/orage-application.c:185
+#: ../src/orage-application.c:128
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
 msgstr ""
 
-#: ../src/orage-application.c:187
+#: ../src/orage-application.c:130
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
 msgstr ""
 
-#: ../src/orage-application.c:571
+#: ../src/orage-application.c:516
 msgid "Show version of orage"
 msgstr ""
 
-#: ../src/orage-application.c:580
+#: ../src/orage-application.c:525
 msgid "Show preferences form"
 msgstr ""
 
-#: ../src/orage-application.c:589
+#: ../src/orage-application.c:534
 msgid "Make Orage visible/unvisible"
 msgstr ""
 
-#: ../src/orage-application.c:598
+#: ../src/orage-application.c:543
 msgid "Add a foreign file"
 msgstr ""
 
-#: ../src/orage-application.c:607
+#: ../src/orage-application.c:552
 msgid "Remove a foreign file"
 msgstr ""
 
-#: ../src/orage-application.c:616
+#: ../src/orage-application.c:561
 msgid "Import appointments from file to Orage"
 msgstr ""
 
-#: ../src/orage-application.c:625
+#: ../src/orage-application.c:570
 msgid "Export appointments from Orage to file"
 msgstr ""
+
+#. if (gtk_toggle_button_get_active(
+#. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
+#. end time
+#: ../src/orage-appointment-window.c:528 ../src/orage-appointment-window.c:568
+#: ../src/orage-appointment-window.c:3653
+msgid "End"
+msgstr "Канец"
+
+#: ../src/orage-appointment-window.c:548
+msgid "Due"
+msgstr "Праз"
+
+#: ../src/orage-appointment-window.c:944
+msgid "Sound Files"
+msgstr "Гукавыя файлы"
+
+#: ../src/orage-appointment-window.c:990
+msgid "The appointment information has been modified."
+msgstr "Звесткі па прызначэнні зменены."
+
+#: ../src/orage-appointment-window.c:992
+msgid "No, do not leave"
+msgstr "Не, не пакідаць"
+
+#: ../src/orage-appointment-window.c:993
+msgid "Yes, ignore modifications and leave"
+msgstr "Так, не зважаць на змены і закрыць"
+
+#: ../src/orage-appointment-window.c:1022
+msgid "The end of this appointment is earlier than the beginning."
+msgstr "Канец прызначэння ранейшы за пачатак."
+
+#: ../src/orage-appointment-window.c:1435
+#: ../src/orage-appointment-window.c:2224
+msgid "Not set"
+msgstr "Не вызначана"
+
+#: ../src/orage-appointment-window.c:1480
+msgid "Add new appointment to this file."
+msgstr "Дадаць новае прызначэнне ў гэты файл."
+
+#: ../src/orage-appointment-window.c:1481
+#: ../src/orage-appointment-window.c:1535
+msgid "Orage default file"
+msgstr "Прадвызначаны файл Orage"
+
+#: ../src/orage-appointment-window.c:1573
+msgid "Appointment addition failed."
+msgstr "Не атрымалася дадаць прызначэнне."
+
+#: ../src/orage-appointment-window.c:1574
+msgid ""
+"Error happened when adding appointment. Look more details from the log file."
+msgstr ""
+"Падчас дадання прызначэння адбылася памылка. Больш падрабязней глядзіце ў "
+"лозе."
+
+#: ../src/orage-appointment-window.c:1585
+msgid "Appointment update failed."
+msgstr "Не атрымалася абнавіць прызначэнне."
+
+#: ../src/orage-appointment-window.c:1586
+msgid ""
+"Look more details from the log file. (Perhaps file was updated external from"
+" Orage?)"
+msgstr ""
+"Больш падрабязней можна паглядзець у лозе. (Магчыма, файл быў зменены "
+"звонку?)"
+
+#: ../src/orage-appointment-window.c:1636
+msgid "This appointment will be permanently removed."
+msgstr "Прызначэнне будзе назаўсёды выдалена."
+
+#: ../src/orage-appointment-window.c:1639
+msgid "Yes, remove it"
+msgstr "Так, выдаліць"
+
+#: ../src/orage-appointment-window.c:2176
+msgid "This appointment does not exist."
+msgstr "Няма такога прызначэння."
+
+#: ../src/orage-appointment-window.c:2177
+msgid "It was probably removed, please refresh your screen."
+msgstr "Магчыма, яно было выдалена, калі ласка, абнавіце экран."
+
+#: ../src/orage-appointment-window.c:2389
+msgid "Current categories"
+msgstr "Бягучыя катэгорыі"
+
+#: ../src/orage-appointment-window.c:2411
+msgid "Add new category with color"
+msgstr "Дадаць катэгорыю з колерам"
+
+#: ../src/orage-appointment-window.c:2422
+msgid "Category:"
+msgstr "Катэгорыя:"
+
+#: ../src/orage-appointment-window.c:2466
+msgid "Colors of categories - Orage"
+msgstr "Колеры катэгорый - Orage"
+
+#: ../src/orage-appointment-window.c:2512
+msgid "*** COPY ***"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:2565
+#: ../src/orage-appointment-window.c:3874
+msgid "Before Start"
+msgstr "Перад пачаткам"
+
+#: ../src/orage-appointment-window.c:2565
+#: ../src/orage-appointment-window.c:3874
+msgid "Before End"
+msgstr "Перад канцом"
+
+#: ../src/orage-appointment-window.c:2565
+#: ../src/orage-appointment-window.c:3875
+msgid "After Start"
+msgstr "Пасля пачатку"
+
+#: ../src/orage-appointment-window.c:2565
+#: ../src/orage-appointment-window.c:3875
+msgid "After End"
+msgstr "Пасля канца"
+
+#. window title
+#: ../src/orage-appointment-window.c:2883
+msgid "New appointment - Orage"
+msgstr "Новае прызначэнне - Orage"
+
+#: ../src/orage-appointment-window.c:2916
+msgid "Sav_e and close"
+msgstr "Захаваць і закрыць"
+
+#: ../src/orage-appointment-window.c:3233
+msgid "first"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3233
+msgid "second"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3233
+msgid "third"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3233
+msgid "fourth"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3233
+msgid "last"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3243
+msgid "Monday"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3243
+msgid "Tuesday"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3243
+msgid "Wednesday"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3243
+msgid "Thursday"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3243
+msgid "Friday"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3244
+msgid "Saturday"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3244
+msgid "Sunday"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3257
+#: ../src/orage-appointment-window.c:3290
+#: ../src/orage-appointment-window.c:3397
+#: ../src/orage-appointment-window.c:3431
+msgid "Every"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3262
+msgid "day(s)"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3279
+msgid "Mon"
+msgstr "Пан"
+
+#: ../src/orage-appointment-window.c:3279
+msgid "Tue"
+msgstr "Аўт"
+
+#: ../src/orage-appointment-window.c:3279
+msgid "Wed"
+msgstr "Сер"
+
+#: ../src/orage-appointment-window.c:3279
+msgid "Thu"
+msgstr "Чцв"
+
+#: ../src/orage-appointment-window.c:3279
+msgid "Fri"
+msgstr "Пт"
+
+#: ../src/orage-appointment-window.c:3279
+msgid "Sat"
+msgstr "Суб"
+
+#: ../src/orage-appointment-window.c:3279
+msgid "Sun"
+msgstr "Няд"
+
+#: ../src/orage-appointment-window.c:3297
+msgid "week(s) on:"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3333
+msgid "From the beginning of the month:"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3346
+msgid "From the end of the month:"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3359
+msgid "Every:"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3387
+msgid "January"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3387
+msgid "February"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3387
+msgid "March"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3387
+msgid "April"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3387
+msgid "May"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3388
+msgid "June"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3388
+msgid "July"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3388
+msgid "August"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3388
+msgid "September"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3388
+msgid "October"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3389
+msgid "November"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3389
+msgid "December"
+msgstr ""
+
+#. TRANSLATORS: this string is part of date line, for example
+#. * "second Thursday of August". In some languages ​​it is not necessary to
+#. use
+#. * the string "of", it can be replaced with an empty string.
+#: ../src/orage-appointment-window.c:3405
+msgid "of"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3436
+msgid "hour(s)"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3472
+msgid "Repeat forever"
+msgstr "Паўтараць бясконца"
+
+#: ../src/orage-appointment-window.c:3477
+msgid "Repeat"
+msgstr "Паўтор"
+
+#: ../src/orage-appointment-window.c:3485
+#: ../src/orage-appointment-window.c:3992
+msgid "times"
+msgstr "разы"
+
+#: ../src/orage-appointment-window.c:3491
+msgid "Repeat until"
+msgstr ""
+
+#. completed (only for TODO)
+#: ../src/orage-appointment-window.c:3514
+#: ../src/orage-appointment-window.c:3708
+msgid "Completed"
+msgstr "Выканана"
+
+#: ../src/orage-appointment-window.c:3517
+msgid ""
+"TODO reoccurs regularly starting on start time and repeating after each "
+"interval no matter when it was last completed"
+msgstr ""
+"Сталая задача будзе выконвацца пачынаючы з даты пачатку і паўтараюцца праз "
+"пэўны інтэрвал, незалежна ад таго, калі яна была завершана"
+
+#: ../src/orage-appointment-window.c:3519
+msgid ""
+"TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
+"(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
+msgstr ""
+"Сталая задача будзе выконвацца пачынаючы з даты яе завяршэння.\n"
+"(Майце на ўвазе, што пачатковая дата будзе змяняцца з кожным паўторам)."
+
+#: ../src/orage-appointment-window.c:3545
+msgid "Save"
+msgstr "Захаваць"
+
+#: ../src/orage-appointment-window.c:3547
+msgid "Save and close"
+msgstr "Захаваць і закрыць"
+
+#: ../src/orage-appointment-window.c:3552
+msgid "Revert"
+msgstr "Адвярнуць"
+
+#: ../src/orage-appointment-window.c:3577
+msgid "Free"
+msgstr "Вольны"
+
+#: ../src/orage-appointment-window.c:3577
+msgid "Busy"
+msgstr "Заняты"
+
+#: ../src/orage-appointment-window.c:3581
+msgid "General"
+msgstr "Асноўныя"
+
+#. type
+#: ../src/orage-appointment-window.c:3587
+msgid "Type"
+msgstr "Тып"
+
+#: ../src/orage-appointment-window.c:3594
+msgid ""
+"Event that will happen sometime. For example:\n"
+"Meeting or birthday or TV show."
+msgstr ""
+"Падзея, якая мусіць некалі адбыцца. Напрыклад:\n"
+"Сустрэча, ці дзень нараджэння, ці тэлевезійнае шоў."
+
+#: ../src/orage-appointment-window.c:3602
+msgid ""
+"Something that you should do sometime. For example:\n"
+"Wash your car or test new version of Orage."
+msgstr ""
+"Нешта, што вы мусіце некалі зрабіць. Напрыклад:\n"
+"Памыць сваю машыну ці выпрабаваць новую версію Orage."
+
+#: ../src/orage-appointment-window.c:3610
+msgid ""
+"Make a note that something happened. For example:\n"
+"Remark that your mother called or first snow came."
+msgstr ""
+"Зрабіце запіс, калі нешта адбылося. Напрыклад:\n"
+"Адзначце, што тэлефанавала маці, ці пайшоў першы снег."
+
+#. location
+#: ../src/orage-appointment-window.c:3624 ../src/timezone_selection.c:234
+#: ../src/timezone_selection.c:239
+msgid "Location"
+msgstr "Размяшчэнне"
+
+#: ../src/orage-appointment-window.c:3632
+msgid "All day event"
+msgstr "На ўвесь дзень"
+
+#: ../src/orage-appointment-window.c:3656
+msgid "Set"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3680
+msgid "Duration"
+msgstr "Працягласць"
+
+#: ../src/orage-appointment-window.c:3684
+#: ../src/orage-appointment-window.c:3892 ../src/reminder.c:604
+msgid "days"
+msgstr "дзён"
+
+#: ../src/orage-appointment-window.c:3686
+#: ../src/orage-appointment-window.c:3894 ../src/reminder.c:606
+msgid "hours"
+msgstr "гадзін"
+
+#: ../src/orage-appointment-window.c:3688
+#: ../src/orage-appointment-window.c:3896 ../src/reminder.c:608
+msgid "mins"
+msgstr "хвілін"
+
+#. Availability (only for EVENT)
+#: ../src/orage-appointment-window.c:3700
+msgid "Availability"
+msgstr "Даступнасць"
+
+#: ../src/orage-appointment-window.c:3711
+msgid "Done"
+msgstr "Завершана"
+
+#. categories
+#: ../src/orage-appointment-window.c:3736
+msgid "Categories"
+msgstr "Катэгорыі"
+
+#: ../src/orage-appointment-window.c:3754
+msgid ""
+"This is special category, which can be used to color this appointment in "
+"list views."
+msgstr ""
+"Гэта асаблівая катэгорыя, што выкарыстоўваецца для вызначэння прызначэнняў у"
+" спісе."
+
+#: ../src/orage-appointment-window.c:3755
+msgid "_Colour"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3760
+msgid "update colors for categories."
+msgstr "абнавіць колеры катэгорый."
+
+#. priority
+#: ../src/orage-appointment-window.c:3766
+msgid "Priority"
+msgstr "Прыярытэт"
+
+#: ../src/orage-appointment-window.c:3770
+msgid ""
+"If you set this 8 or bigger, the appointment is NOT shown on list windows.\n"
+"You can use that feature to unclutter your list windows, but it makes it more difficult to find this appointment.\n"
+"(Alarms will still fire normally.)\n"
+"(There is undocumented parameter so that you can change the default limit of 8.)"
+msgstr ""
+"Калі вы абярэце 8 альбо больш, прызначэнне не будзе адлюстроўвацца ў спісе "
+"акон. Вы можаце выкарыстоўваць гэтую функцыю, каб ачысціць ваш спіс акон, "
+"але пры гэтым адшукаць прызначэнне будзе складаней."
+
+#. note
+#: ../src/orage-appointment-window.c:3779
+msgid "Note"
+msgstr "Нататка"
+
+#: ../src/orage-appointment-window.c:3800
+msgid ""
+"These shorthand commands take effect immediately:\n"
+"    <D> inserts current date in local date format\n"
+"    <T> inserts time\n"
+"    <DT> inserts date and time.\n"
+"\n"
+"These are converted only later when they are seen:\n"
+"    <&Ynnnn> is translated to current year minus nnnn.\n"
+"(This can be used for example in birthday reminders to tell how old the person will be.)"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3883
+msgid "Alarm"
+msgstr "Небяспека"
+
+#. **** ALARM TIME ****
+#: ../src/orage-appointment-window.c:3889
+msgid "Alarm time"
+msgstr "Час сігнала"
+
+#: ../src/orage-appointment-window.c:3914
+msgid ""
+"Often you want to get alarm:\n"
+" 1) before Event start\n"
+" 2) before Todo end\n"
+" 3) after Todo start"
+msgstr ""
+"Калі вы хочаце атрымаць сігнал:\n"
+" 1) да пачатку падзеі\n"
+" 2) перад канцом задачы\n"
+" 3) пасля пачатку задачы"
+
+#: ../src/orage-appointment-window.c:3919
+msgid "Persistent alarm"
+msgstr "Сталы будзільнік"
+
+#: ../src/orage-appointment-window.c:3924
+msgid ""
+"Select this if you want Orage to remind you even if it has not been active "
+"when the alarm happened."
+msgstr ""
+"Абярыце гэты параметр калі хочаце, каб Orage вывеў сігнал нават калі "
+"выключаны."
+
+#: ../src/orage-appointment-window.c:3934
+msgid "Sound"
+msgstr "Гук"
+
+#: ../src/orage-appointment-window.c:3938
+#: ../src/orage-appointment-window.c:4082
+msgid "Use"
+msgstr "Ужыць"
+
+#: ../src/orage-appointment-window.c:3943
+msgid "Select this if you want audible alarm"
+msgstr "Абярыце, каб атрымліваць гукавы сігнал"
+
+#: ../src/orage-appointment-window.c:3948
+msgid "Sound command is not set"
+msgstr ""
+
+#: ../src/orage-appointment-window.c:3977
+msgid "Repeat alarm sound"
+msgstr "Паўтараць гук сігнала"
+
+#: ../src/orage-appointment-window.c:4008
+msgid "sec interval"
+msgstr "сек. інтрэрвал"
+
+#. **** Display Alarm ****
+#: ../src/orage-appointment-window.c:4018
+msgid "Visual"
+msgstr "Візуальны"
+
+#: ../src/orage-appointment-window.c:4022
+msgid "Use Orage window"
+msgstr "Ужываць акно Orage"
+
+#: ../src/orage-appointment-window.c:4024
+msgid "Select this if you want Orage window alarm"
+msgstr "Абярыце, каб атрымліваць сігнал акном Orage"
+
+#: ../src/orage-appointment-window.c:4036
+msgid "Use notification"
+msgstr "Ужываць апавяшчэнне"
+
+#: ../src/orage-appointment-window.c:4038
+msgid "Select this if you want notification alarm"
+msgstr "Абярыце, каб атрымліваць апавяшчэнне пра сігнал"
+
+#: ../src/orage-appointment-window.c:4046
+msgid "Set timeout"
+msgstr "Задаць затрымку"
+
+#: ../src/orage-appointment-window.c:4048
+msgid "Select this if you want notification to expire automatically"
+msgstr "Абярыце, каб перад апавяшчэннем была затрымка"
+
+#: ../src/orage-appointment-window.c:4059
+msgid "0 = system default expiration time"
+msgstr "0 = прадвызначаны сістэмны час"
+
+#: ../src/orage-appointment-window.c:4067
+msgid "seconds"
+msgstr "секунд"
+
+#. **** Procedure Alarm ****
+#: ../src/orage-appointment-window.c:4078
+msgid "Procedure"
+msgstr "Працэдура"
+
+#: ../src/orage-appointment-window.c:4084
+msgid "Select this if you want procedure or script alarm"
+msgstr "Абярыце, каб выкарыстоўваць працэдуру ці скрыпт будзільніка"
+
+#: ../src/orage-appointment-window.c:4094
+msgid ""
+"You must enter all escape etc characters yourself.\n"
+"This string is just given to shell to process.\n"
+"The following special commands are replaced at run time:\n"
+"\t<&T>  appointment title\n"
+"\t<&D>  appointment description\n"
+"\t<&AT> alarm time\n"
+"\t<&ST> appointment start time\n"
+"\t<&ET> appointment end time"
+msgstr ""
+"Вы мусіце ўводзіць усе сімвалы escape і яму падобныя ўласнаручна.\n"
+"Гэты радок перадаецца абалонцы для апрацоўкі.\n"
+"Падчас выканання загаду будуць замяняцца наступныя адмысловыя загады:\n"
+"\t<&T>  назва прызначэння\n"
+"\t<&D>  апісанне прызначэння\n"
+"\t<&AT> час сігналу\n"
+"\t<&ST> час пачатку прызначэння\n"
+"\t<&ET> час завяршэння прызначэння"
+
+#: ../src/orage-appointment-window.c:4110
+msgid "Test this alarm by raising it now"
+msgstr "Праверыць гэты сігнал"
+
+#: ../src/orage-appointment-window.c:4123
+msgid "<b>Default alarm</b>"
+msgstr "<b>Прадвызначаны будзільнік</b>"
+
+#: ../src/orage-appointment-window.c:4137
+msgid "Store current settings as default alarm"
+msgstr "Захаваць бягучыя налады як звычайны сігнал"
+
+#: ../src/orage-appointment-window.c:4139
+msgid "_Revert"
+msgstr "_Адрабіць"
+
+#: ../src/orage-appointment-window.c:4147
+msgid "Set current settings from default alarm"
+msgstr "Узяць бягучыя налады са звычайнага сігнала"
+
+#: ../src/orage-appointment-window.c:4212
+msgid "None"
+msgstr "Няма"
+
+#: ../src/orage-appointment-window.c:4212
+msgid "Daily"
+msgstr "Дзённы"
+
+#: ../src/orage-appointment-window.c:4212
+msgid "Weekly"
+msgstr "Тыднёвы"
+
+#: ../src/orage-appointment-window.c:4213
+msgid "Monthly"
+msgstr "Месячны"
+
+#: ../src/orage-appointment-window.c:4213
+msgid "Yearly"
+msgstr "Гадавы"
+
+#: ../src/orage-appointment-window.c:4213
+msgid "Hourly"
+msgstr "Гадзінны"
+
+#: ../src/orage-appointment-window.c:4226
+msgid "Recurrence"
+msgstr "Паўторы"
+
+#. ****************************** Frequency *******************************
+#: ../src/orage-appointment-window.c:4233
+msgid "Frequency"
+msgstr "Чашчыня"
+
+#. ****************************** Limit ***********************************
+#: ../src/orage-appointment-window.c:4274
+msgid "Limit"
+msgstr "Абмежаваць"
+
+#. ****************************** TODO base (only for TODOs) **************
+#: ../src/orage-appointment-window.c:4280
+msgid "TODO base"
+msgstr "Пачатковая дата сталай задачы"
+
+#. exceptions
+#: ../src/orage-appointment-window.c:4287
+msgid "Exceptions"
+msgstr "Выключэнні"
+
+#: ../src/orage-appointment-window.c:4313
+msgid ""
+"Add more exception dates by clicking the calendar days below.\n"
+"Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
+"Remove by clicking the data."
+msgstr ""
+"Больш выключэнняў можна дадаць пстрыкнуўшы па днях у каляндары.\n"
+"Выключэнні могуць быць выключанымі(-) альбо ўключанымі(+).\n"
+"Пстрыкніце па даце, каб выдаліць іх."
+
+#: ../src/orage-appointment-window.c:4324
+msgid "Add excluded date (-)"
+msgstr "Дадаць выключаную дату (-)"
+
+#: ../src/orage-appointment-window.c:4326
+msgid "Excluded days are full days where this appointment is not happening"
+msgstr "У выключаныя дні прызначэнне не адбудзецца"
+
+#: ../src/orage-appointment-window.c:4333
+msgid "Add included time (+)"
+msgstr "Дадаць уключаны час (+)"
+
+#: ../src/orage-appointment-window.c:4335
+msgid ""
+"Included times have same timezone than start time, but they may have "
+"different time"
+msgstr "Падзея адбудзецца ва ўключаны час"
+
+#. calendars showing the action days
+#: ../src/orage-appointment-window.c:4354
+msgid "Action dates"
+msgstr "Даты дзеяння"
 
 #: ../src/orage-sync-edit-dialog.c:132
 msgid "Description:"
@@ -1364,201 +1364,290 @@ msgstr ""
 msgid "Synchronization period in minutes"
 msgstr ""
 
-#: ../src/orage-sync-edit-dialog.c:166 ../src/parameters.c:1456
-#: ../src/reminder.c:642
+#: ../src/orage-sync-edit-dialog.c:166 ../src/parameters.c:1454
+#: ../src/reminder.c:640
 msgid "_Close"
 msgstr "_Закрыць"
 
-#: ../src/parameters.c:688
+#: ../src/orage-window.c:294
+msgid "_Exchange data"
+msgstr "Абмен да_нымі"
+
+#. Edit menu
+#: ../src/orage-window.c:304
+msgid "_Edit"
+msgstr "_Рэдагаваць"
+
+#: ../src/orage-window.c:313
+msgid "View selected _date"
+msgstr "Паказаць _абраны дзень"
+
+#: ../src/orage-window.c:316
+msgid "View selected _week"
+msgstr "Паказа_ць абраны тыдзень"
+
+#: ../src/orage-window.c:321
+msgid "Select _Today"
+msgstr "Абраць сённяшні дз_ень"
+
+#. Help menu
+#. the rest
+#: ../src/orage-window.c:324 ../src/parameters.c:1451
+msgid "_Help"
+msgstr "_Даведка"
+
+#: ../src/orage-window.c:386 ../src/reminder.c:967
+msgid "No title defined"
+msgstr "Без назвы"
+
+#: ../src/orage-window.c:443
+#, c-format
+msgid " Location: %s\n"
+msgstr " Размяшчэнне: %s\n"
+
+#: ../src/orage-window.c:453
+#, c-format
+msgid ""
+"\n"
+" Note:\n"
+"%s"
+msgstr ""
+"\n"
+" Нататка:\n"
+"%s"
+
+#: ../src/orage-window.c:461
+msgid "Never"
+msgstr "Ніколі"
+
+#: ../src/orage-window.c:469
+#, c-format
+msgid ""
+"Title: %s\n"
+"%s Start:\t%s\n"
+" Due:\t%s\n"
+" Done:\t%s%s"
+msgstr ""
+"Назва: %s\n"
+"%s Пачатак:\t%s\n"
+" Працягласць:\t%s\n"
+" Завяршэнне:\t%s%s"
+
+#: ../src/orage-window.c:476
+#, c-format
+msgid ""
+"Title: %s\n"
+"%s Start:\t%s\n"
+" End:\t%s%s"
+msgstr ""
+"Назва: %s\n"
+"%s Пачатак:\t%s\n"
+" Завяршэнне:\t%s%s"
+
+#: ../src/orage-window.c:557
+msgid "<b>To do:</b>"
+msgstr "<b>Зрабіць:</b>"
+
+#: ../src/orage-window.c:592
+#, c-format
+msgid "<b>Events for %s:</b>"
+msgstr "<b>Падзеі для %s:</b>"
+
+#: ../src/orage-window.c:602
+#, c-format
+msgid "<b>Events for %s - %s:</b>"
+msgstr "<b>Падзеі для %s - %s:</b>"
+
+#: ../src/parameters.c:686
 msgid "Remove selected synchronization task."
 msgstr ""
 
-#: ../src/parameters.c:691
+#: ../src/parameters.c:689
 msgid "Yes, remove"
 msgstr ""
 
-#: ../src/parameters.c:724
+#: ../src/parameters.c:722
 msgid "Main settings"
 msgstr "Асноўныя налады"
 
-#: ../src/parameters.c:730
+#: ../src/parameters.c:728
 msgid "Timezone"
 msgstr "Часавы пояс"
 
-#: ../src/parameters.c:751
+#: ../src/parameters.c:749
 msgid "You should always define your local timezone."
 msgstr "Вы мусіце заўсёды вызначаць свой мясцовы часавы пояс."
 
-#: ../src/parameters.c:759
+#: ../src/parameters.c:757
 msgid "Archive threshold (months)"
 msgstr "Парог архівацыі (месяцаў)"
 
-#: ../src/parameters.c:772
+#: ../src/parameters.c:770
 msgid "(0 = no archiving)"
 msgstr "(0 = не архіваваць)"
 
-#: ../src/parameters.c:776
+#: ../src/parameters.c:774
 msgid "Archiving is used to save time and space when handling events."
 msgstr ""
 "Архівацыя выкарыстоўваецца для эканоміі часу і прасторы падчас апрацоўкі "
 "падзей."
 
-#: ../src/parameters.c:784
+#: ../src/parameters.c:782
 msgid "Sound command"
 msgstr "Загад гуку"
 
-#: ../src/parameters.c:812
+#: ../src/parameters.c:810
 msgid "This command is given to shell to make sound in alarms."
 msgstr "Гэты загад даецца абалонцы, каб падаць гукавы сігнал."
 
-#: ../src/parameters.c:843
+#: ../src/parameters.c:841
 msgid "Calendar window"
 msgstr "Акно каляндара"
 
-#: ../src/parameters.c:850
+#: ../src/parameters.c:848
 msgid "Calendar visual details"
 msgstr "Візуальныя элементы каляндара"
 
-#: ../src/parameters.c:857
+#: ../src/parameters.c:855
 msgid "Show borders"
 msgstr "Паказваць межы"
 
-#: ../src/parameters.c:862
+#: ../src/parameters.c:860
 msgid "Show menu"
 msgstr "Паказваць меню"
 
-#: ../src/parameters.c:870
+#: ../src/parameters.c:868
 msgid "Show day names"
 msgstr "Паказваць назвы дзён"
 
-#: ../src/parameters.c:875
+#: ../src/parameters.c:873
 msgid "Show week numbers"
 msgstr "Паказваць нумары тыдняў"
 
-#: ../src/parameters.c:883
+#: ../src/parameters.c:881
 msgid "Show month and year"
 msgstr "Паказваць месяц і год"
 
-#: ../src/parameters.c:903
+#: ../src/parameters.c:901
 msgid "Calendar info boxes"
 msgstr "Інфармацыйныя блокі каляндара"
 
-#: ../src/parameters.c:910
+#: ../src/parameters.c:908
 msgid "Show todo list"
 msgstr "Паказваць спіс задач"
 
-#: ../src/parameters.c:917
+#: ../src/parameters.c:915
 msgid "Number of days to show in event window"
 msgstr "Колькі дзён паказваць у акне падзей"
 
-#: ../src/parameters.c:925
+#: ../src/parameters.c:923
 msgid "0 = do not show event list at all"
 msgstr "0 = не паказваць спіс падзей зусім"
 
-#: ../src/parameters.c:939
+#: ../src/parameters.c:937
 msgid "Calendar visibility"
 msgstr "Бачнасць каляндара"
 
-#: ../src/parameters.c:945
+#: ../src/parameters.c:943
 msgid "Show on all desktops"
 msgstr "Паказваць на ўсіх прасторах"
 
-#: ../src/parameters.c:950
+#: ../src/parameters.c:948
 msgid "Keep on top"
 msgstr "Трымаць наверсе"
 
-#: ../src/parameters.c:958
+#: ../src/parameters.c:956
 msgid "Show in taskbar"
 msgstr "Паказваць на панэлі задач"
 
-#: ../src/parameters.c:963
+#: ../src/parameters.c:961
 msgid "Show in pager"
 msgstr "Паказваць у пэйджары"
 
-#: ../src/parameters.c:971
+#: ../src/parameters.c:969
 msgid "Show in systray"
 msgstr "Паказваць на прасторы апавяшчэнняў"
 
-#: ../src/parameters.c:999
+#: ../src/parameters.c:997
 msgid "Calendar start"
 msgstr "Запуск каляндара"
 
-#: ../src/parameters.c:1005
+#: ../src/parameters.c:1003
 msgid "Show"
 msgstr "Паказваць"
 
-#: ../src/parameters.c:1021
+#: ../src/parameters.c:1019
 msgid "Hide"
 msgstr "Хаваць"
 
-#: ../src/parameters.c:1038
+#: ../src/parameters.c:1036
 msgid "Minimized"
 msgstr "Мінімізаваць"
 
-#: ../src/parameters.c:1064
+#: ../src/parameters.c:1062
 msgid "On calendar window open"
 msgstr "Падчас адкрыцця каляндара"
 
-#: ../src/parameters.c:1070
+#: ../src/parameters.c:1068
 msgid "Select today's date"
 msgstr "Абраць сённяшнюю дату"
 
-#: ../src/parameters.c:1087
+#: ../src/parameters.c:1085
 msgid "Select previously selected date"
 msgstr "Абраць папярэднюю дату"
 
-#: ../src/parameters.c:1111
+#: ../src/parameters.c:1109
 msgid "Calendar day double click shows"
 msgstr "Падвойная пстрычка па каляндары адлюстроўвае"
 
-#: ../src/parameters.c:1117
+#: ../src/parameters.c:1115
 msgid "Days view"
 msgstr "Дні"
 
-#: ../src/parameters.c:1133
+#: ../src/parameters.c:1131
 msgid "Event list"
 msgstr "Падзеі"
 
-#: ../src/parameters.c:1166
+#: ../src/parameters.c:1164
 msgid "Extra settings"
 msgstr "Дадатковыя налады"
 
-#: ../src/parameters.c:1173
+#: ../src/parameters.c:1171
 msgid "Event list window"
 msgstr "Акно спіса падзей"
 
-#: ../src/parameters.c:1180
+#: ../src/parameters.c:1178
 msgid "Number of extra days to show in event list"
 msgstr "Колькі дадатковых дзён паказваць у спісе падзей"
 
-#: ../src/parameters.c:1190
+#: ../src/parameters.c:1188
 msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
 msgstr ""
 "Гэта толькі прадвызначанае значэнне, яго можна змяніць у акне спіса падзей."
 
-#: ../src/parameters.c:1198
+#: ../src/parameters.c:1196
 msgid "Show only first repeating event"
 msgstr "Паказваць толькі першую паўторную падзею"
 
-#: ../src/parameters.c:1215
+#: ../src/parameters.c:1213
 msgid "Day view window default first day"
 msgstr "Першы дзень для прадвызначанага выгяду дня"
 
-#: ../src/parameters.c:1222
+#: ../src/parameters.c:1220
 msgid "First day of week"
 msgstr "Першы дзень тыдня"
 
-#: ../src/parameters.c:1239
+#: ../src/parameters.c:1237
 msgid "Selected day"
 msgstr "Абраны дзень"
 
-#: ../src/parameters.c:1262 ../src/parameters.c:1269
+#: ../src/parameters.c:1260 ../src/parameters.c:1267
 msgid "Use wakeup timer"
 msgstr "Выкарыстоўваць таймер абуджэння"
 
-#: ../src/parameters.c:1277
+#: ../src/parameters.c:1275
 msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
@@ -1567,27 +1656,27 @@ msgstr ""
 "чакання альбо сну. (Напрыклад, не абнаўляецца значок альбо не працуюць "
 "апавяшчэнні)."
 
-#: ../src/parameters.c:1287
+#: ../src/parameters.c:1285
 msgid "Foreign file default visual alarm"
 msgstr "Прадвызначаны візуальны будзільнік для вонкавага файла"
 
-#: ../src/parameters.c:1294
+#: ../src/parameters.c:1292
 msgid "Orage window"
 msgstr "Акно Orage"
 
-#: ../src/parameters.c:1311
+#: ../src/parameters.c:1309
 msgid "Notify notification"
 msgstr "Апавяшчэнне"
 
-#: ../src/parameters.c:1334
+#: ../src/parameters.c:1332
 msgid "Always quit when asked to close"
 msgstr "Заўсёды выходзіць пры закрыцці"
 
-#: ../src/parameters.c:1341
+#: ../src/parameters.c:1339
 msgid "Always quit"
 msgstr "Заўсёды выходзіць"
 
-#: ../src/parameters.c:1348
+#: ../src/parameters.c:1346
 msgid ""
 "By default Orage stays open in the background when asked to close. This "
 "option changes Orage to quit and never stay in background when it is asked "
@@ -1596,51 +1685,51 @@ msgstr ""
 "Прадвызначана Orage працягвае працаваць у фоне падчас закрыцця. З гэтым "
 "параметрам Orage будзе закрывацца."
 
-#: ../src/parameters.c:1401
+#: ../src/parameters.c:1399
 msgid "Synchronization settings"
 msgstr ""
 
-#: ../src/parameters.c:1407
+#: ../src/parameters.c:1405
 msgid "Synchronization sources"
 msgstr ""
 
-#: ../src/parameters.c:1433
+#: ../src/parameters.c:1431
 msgid "Orage Preferences"
 msgstr "Налады Orage"
 
-#: ../src/reminder.c:420
+#: ../src/reminder.c:419
 msgid "Reminder"
 msgstr ""
 
-#: ../src/reminder.c:443
+#: ../src/reminder.c:442
 msgid "Open"
 msgstr "Адкрыць"
 
-#: ../src/reminder.c:448
+#: ../src/reminder.c:447
 msgid "Silence"
 msgstr ""
 
-#: ../src/reminder.c:567
+#: ../src/reminder.c:565
 msgid "Reminder - Orage"
 msgstr "Напамін - Orage"
 
-#: ../src/reminder.c:650
+#: ../src/reminder.c:648
 msgid "_Stop"
 msgstr "_Спыніць"
 
-#: ../src/reminder.c:658
+#: ../src/reminder.c:656
 msgid "Postpone"
 msgstr "Адкласці"
 
-#: ../src/reminder.c:660
+#: ../src/reminder.c:658
 msgid "Remind me again after the specified time"
 msgstr "Нагадаць зноў пасля вызначанага часу"
 
-#: ../src/reminder.c:933
+#: ../src/reminder.c:935
 msgid "Next active alarms:"
 msgstr "Наступныя дзейныя сігналы:"
 
-#: ../src/reminder.c:972
+#: ../src/reminder.c:974
 #, c-format
 msgid ""
 "\n"
@@ -1649,7 +1738,7 @@ msgstr ""
 "\n"
 "%02d д %02d г %02d хвіл да: %s"
 
-#: ../src/reminder.c:986
+#: ../src/reminder.c:988
 #, c-format
 msgid ""
 "\n"
@@ -3970,15 +4059,15 @@ msgstr "UTC"
 msgid "floating"
 msgstr "плаваючы"
 
-#: ../src/tray_icon.c:401
+#: ../src/tray_icon.c:418
 msgid "New appointment"
 msgstr "Новае прызначэнне"
 
-#: ../src/tray_icon.c:408
+#: ../src/tray_icon.c:425
 msgid "Preferences"
 msgstr "Налады"
 
-#: ../src/tray_icon.c:415
+#: ../src/tray_icon.c:432
 msgid "Quit"
 msgstr "Выйсці"
 
