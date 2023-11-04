@@ -6,8 +6,8 @@
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2022
 # Chris Darnell <chris@cedeel.com>, 2022
-# scootergrisen, 2023
 # Nick Schermer <nick@xfce.org>, 2023
+# scootergrisen, 2023
 # 
 #, fuzzy
 msgid ""
@@ -16,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-03 00:49+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Nick Schermer <nick@xfce.org>, 2023\n"
+"Last-Translator: scootergrisen, 2023\n"
 "Language-Team: Danish (https://app.transifex.com/xfce/teams/16840/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -769,90 +769,90 @@ msgstr "_Gem og luk"
 
 #: ../src/orage-appointment-window.c:3233
 msgid "first"
-msgstr ""
+msgstr "første"
 
 #: ../src/orage-appointment-window.c:3233
 msgid "second"
-msgstr ""
+msgstr "anden"
 
 #: ../src/orage-appointment-window.c:3233
 msgid "third"
-msgstr ""
+msgstr "tredje"
 
 #: ../src/orage-appointment-window.c:3233
 msgid "fourth"
-msgstr ""
+msgstr "fjerde"
 
 #: ../src/orage-appointment-window.c:3233
 msgid "last"
-msgstr ""
+msgstr "sidste"
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Monday"
-msgstr ""
+msgstr "Mandag"
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Tuesday"
-msgstr ""
+msgstr "Tirsdag"
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Wednesday"
-msgstr ""
+msgstr "Onsdag"
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Thursday"
-msgstr ""
+msgstr "Torsdag"
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Friday"
-msgstr ""
+msgstr "Fredag"
 
 #: ../src/orage-appointment-window.c:3244
 msgid "Saturday"
-msgstr ""
+msgstr "Lørdag"
 
 #: ../src/orage-appointment-window.c:3244
 msgid "Sunday"
-msgstr ""
+msgstr "Søndag"
 
 #: ../src/orage-appointment-window.c:3257
 #: ../src/orage-appointment-window.c:3290
 #: ../src/orage-appointment-window.c:3397
 #: ../src/orage-appointment-window.c:3431
 msgid "Every"
-msgstr ""
+msgstr "Hver"
 
 #: ../src/orage-appointment-window.c:3262
 msgid "day(s)"
-msgstr ""
+msgstr "dag(e)"
 
 #: ../src/orage-appointment-window.c:3279
 msgid "Mon"
-msgstr "Man"
+msgstr "man"
 
 #: ../src/orage-appointment-window.c:3279
 msgid "Tue"
-msgstr "Tirs"
+msgstr "tirs"
 
 #: ../src/orage-appointment-window.c:3279
 msgid "Wed"
-msgstr "Ons"
+msgstr "ons"
 
 #: ../src/orage-appointment-window.c:3279
 msgid "Thu"
-msgstr "Tors"
+msgstr "tors"
 
 #: ../src/orage-appointment-window.c:3279
 msgid "Fri"
-msgstr "Fre"
+msgstr "fre"
 
 #: ../src/orage-appointment-window.c:3279
 msgid "Sat"
-msgstr "Lør"
+msgstr "lør"
 
 #: ../src/orage-appointment-window.c:3279
 msgid "Sun"
-msgstr "Søn"
+msgstr "søn"
 
 #: ../src/orage-appointment-window.c:3297
 msgid "week(s) on:"
@@ -860,63 +860,63 @@ msgstr ""
 
 #: ../src/orage-appointment-window.c:3333
 msgid "From the beginning of the month:"
-msgstr ""
+msgstr "Fra månedens begyndelse:"
 
 #: ../src/orage-appointment-window.c:3346
 msgid "From the end of the month:"
-msgstr ""
+msgstr "Fra månedens slutning:"
 
 #: ../src/orage-appointment-window.c:3359
 msgid "Every:"
-msgstr ""
+msgstr "Hver:"
 
 #: ../src/orage-appointment-window.c:3387
 msgid "January"
-msgstr ""
+msgstr "januar"
 
 #: ../src/orage-appointment-window.c:3387
 msgid "February"
-msgstr ""
+msgstr "februar"
 
 #: ../src/orage-appointment-window.c:3387
 msgid "March"
-msgstr ""
+msgstr "marts"
 
 #: ../src/orage-appointment-window.c:3387
 msgid "April"
-msgstr ""
+msgstr "april"
 
 #: ../src/orage-appointment-window.c:3387
 msgid "May"
-msgstr ""
+msgstr "maj"
 
 #: ../src/orage-appointment-window.c:3388
 msgid "June"
-msgstr ""
+msgstr "juni"
 
 #: ../src/orage-appointment-window.c:3388
 msgid "July"
-msgstr ""
+msgstr "juli"
 
 #: ../src/orage-appointment-window.c:3388
 msgid "August"
-msgstr ""
+msgstr "august"
 
 #: ../src/orage-appointment-window.c:3388
 msgid "September"
-msgstr ""
+msgstr "september"
 
 #: ../src/orage-appointment-window.c:3388
 msgid "October"
-msgstr ""
+msgstr "oktober"
 
 #: ../src/orage-appointment-window.c:3389
 msgid "November"
-msgstr ""
+msgstr "november"
 
 #: ../src/orage-appointment-window.c:3389
 msgid "December"
-msgstr ""
+msgstr "december"
 
 #. TRANSLATORS: this string is part of date line, for example
 #. * "second Thursday of August". In some languages ​​it is not necessary to
@@ -924,11 +924,11 @@ msgstr ""
 #. * the string "of", it can be replaced with an empty string.
 #: ../src/orage-appointment-window.c:3405
 msgid "of"
-msgstr ""
+msgstr "i"
 
 #: ../src/orage-appointment-window.c:3436
 msgid "hour(s)"
-msgstr ""
+msgstr "time(r)"
 
 #: ../src/orage-appointment-window.c:3472
 msgid "Repeat forever"
@@ -945,7 +945,7 @@ msgstr "gange"
 
 #: ../src/orage-appointment-window.c:3491
 msgid "Repeat until"
-msgstr ""
+msgstr "Gentag indtil"
 
 #. completed (only for TODO)
 #: ../src/orage-appointment-window.c:3514
