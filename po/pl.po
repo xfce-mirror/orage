@@ -78,7 +78,7 @@ msgstr "Wczytuje ponownie zawartość"
 
 #: ../src/day-view.c:409 ../src/event-list.c:1248 ../src/interface.c:879
 msgid "Close"
-msgstr "Zamyka okno"
+msgstr "Zamknij"
 
 #: ../src/day-view.c:466 ../src/event-list.c:1078 ../src/functions.c:143
 #: ../src/orage-appointment-window.c:1735
