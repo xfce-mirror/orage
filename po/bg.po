@@ -790,42 +790,42 @@ msgstr "последен"
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Monday"
-msgstr ""
+msgstr "Понеделник"
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Tuesday"
-msgstr ""
+msgstr "Вторник"
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Wednesday"
-msgstr ""
+msgstr "Сряда"
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Thursday"
-msgstr ""
+msgstr "Четвъртък"
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Friday"
-msgstr ""
+msgstr "Петък"
 
 #: ../src/orage-appointment-window.c:3244
 msgid "Saturday"
-msgstr ""
+msgstr "Събота"
 
 #: ../src/orage-appointment-window.c:3244
 msgid "Sunday"
-msgstr ""
+msgstr "Неделя"
 
 #: ../src/orage-appointment-window.c:3257
 #: ../src/orage-appointment-window.c:3290
 #: ../src/orage-appointment-window.c:3397
 #: ../src/orage-appointment-window.c:3431
 msgid "Every"
-msgstr ""
+msgstr "Всеки"
 
 #: ../src/orage-appointment-window.c:3262
 msgid "day(s)"
-msgstr ""
+msgstr "ден(дни)"
 
 #: ../src/orage-appointment-window.c:3279
 msgid "Mon"
@@ -857,67 +857,67 @@ msgstr "Нд"
 
 #: ../src/orage-appointment-window.c:3297
 msgid "week(s) on:"
-msgstr ""
+msgstr "Седмица(и) от:"
 
 #: ../src/orage-appointment-window.c:3333
 msgid "From the beginning of the month:"
-msgstr ""
+msgstr "От началото на месеца:"
 
 #: ../src/orage-appointment-window.c:3346
 msgid "From the end of the month:"
-msgstr ""
+msgstr "От края на месеца:"
 
 #: ../src/orage-appointment-window.c:3359
 msgid "Every:"
-msgstr ""
+msgstr "Всеки:"
 
 #: ../src/orage-appointment-window.c:3387
 msgid "January"
-msgstr ""
+msgstr "Януари"
 
 #: ../src/orage-appointment-window.c:3387
 msgid "February"
-msgstr ""
+msgstr "Февруари"
 
 #: ../src/orage-appointment-window.c:3387
 msgid "March"
-msgstr ""
+msgstr "Март"
 
 #: ../src/orage-appointment-window.c:3387
 msgid "April"
-msgstr ""
+msgstr "Април"
 
 #: ../src/orage-appointment-window.c:3387
 msgid "May"
-msgstr ""
+msgstr "Май"
 
 #: ../src/orage-appointment-window.c:3388
 msgid "June"
-msgstr ""
+msgstr "Юни"
 
 #: ../src/orage-appointment-window.c:3388
 msgid "July"
-msgstr ""
+msgstr "Юли"
 
 #: ../src/orage-appointment-window.c:3388
 msgid "August"
-msgstr ""
+msgstr "Август"
 
 #: ../src/orage-appointment-window.c:3388
 msgid "September"
-msgstr ""
+msgstr "Септември"
 
 #: ../src/orage-appointment-window.c:3388
 msgid "October"
-msgstr ""
+msgstr "Октомври"
 
 #: ../src/orage-appointment-window.c:3389
 msgid "November"
-msgstr ""
+msgstr "Ноември"
 
 #: ../src/orage-appointment-window.c:3389
 msgid "December"
-msgstr ""
+msgstr "Декември"
 
 #. TRANSLATORS: this string is part of date line, for example
 #. * "second Thursday of August". In some languages ​​it is not necessary to
@@ -925,11 +925,11 @@ msgstr ""
 #. * the string "of", it can be replaced with an empty string.
 #: ../src/orage-appointment-window.c:3405
 msgid "of"
-msgstr ""
+msgstr "на"
 
 #: ../src/orage-appointment-window.c:3436
 msgid "hour(s)"
-msgstr ""
+msgstr "час(а)"
 
 #: ../src/orage-appointment-window.c:3472
 msgid "Repeat forever"
@@ -946,7 +946,7 @@ msgstr "пъти"
 
 #: ../src/orage-appointment-window.c:3491
 msgid "Repeat until"
-msgstr ""
+msgstr "Повтаряне, докато"
 
 #. completed (only for TODO)
 #: ../src/orage-appointment-window.c:3514
