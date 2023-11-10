@@ -856,7 +856,7 @@ msgstr "søn"
 
 #: ../src/orage-appointment-window.c:3297
 msgid "week(s) on:"
-msgstr ""
+msgstr "uge(r) på:"
 
 #: ../src/orage-appointment-window.c:3333
 msgid "From the beginning of the month:"
