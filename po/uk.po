@@ -824,7 +824,7 @@ msgstr "Неділя"
 #: ../src/orage-appointment-window.c:3397
 #: ../src/orage-appointment-window.c:3431
 msgid "Every"
-msgstr ""
+msgstr "Кожен"
 
 #: ../src/orage-appointment-window.c:3262
 msgid "day(s)"
@@ -860,7 +860,7 @@ msgstr "Ндл"
 
 #: ../src/orage-appointment-window.c:3297
 msgid "week(s) on:"
-msgstr ""
+msgstr "тиждень(і) на:"
 
 #: ../src/orage-appointment-window.c:3333
 msgid "From the beginning of the month:"
@@ -928,11 +928,11 @@ msgstr "Грудень"
 #. * the string "of", it can be replaced with an empty string.
 #: ../src/orage-appointment-window.c:3405
 msgid "of"
-msgstr ""
+msgstr " "
 
 #: ../src/orage-appointment-window.c:3436
 msgid "hour(s)"
-msgstr ""
+msgstr "годин(а)"
 
 #: ../src/orage-appointment-window.c:3472
 msgid "Repeat forever"
