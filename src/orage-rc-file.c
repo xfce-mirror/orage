@@ -179,9 +179,9 @@ gchar *orage_rc_get_str (OrageRc *orc, const gchar *key, const gchar *def)
     if (!ret && error)
     {
         ret = g_strdup (def);
-        g_warning ("str (%s) group (%s) in RC file (%s) not found, "
-                   "using default (%s)", key, orc->cur_group,
-                   orc->file_name, ret);
+        g_debug ("str (%s) group (%s) in RC file (%s) not found, "
+                 "using default (%s)", key, orc->cur_group,
+                 orc->file_name, ret);
         
         g_error_free (error);
     }
@@ -203,9 +203,9 @@ gint orage_rc_get_int (OrageRc *orc, const gchar *key, const gint def)
     if (!ret && error)
     {
         ret = def;
-        g_warning ("str (%s) group (%s) in RC file (%s) not found, "
-                   "using default (%d)", key, orc->cur_group, orc->file_name,
-                   ret);
+        g_debug ("str (%s) group (%s) in RC file (%s) not found, "
+                 "using default (%d)", key, orc->cur_group, orc->file_name,
+                 ret);
         g_error_free (error);
     }
 
@@ -226,9 +226,9 @@ gboolean orage_rc_get_bool (OrageRc *orc, const gchar *key, const gboolean def)
     if (!ret && error)
     {
         ret = def;
-        g_warning ("str (%s) group (%s) in RC file (%s) not found, "
-                   "using default (%d)", key, orc->cur_group, orc->file_name,
-                   ret);
+        g_debug ("str (%s) group (%s) in RC file (%s) not found, "
+                 "using default (%d)", key, orc->cur_group, orc->file_name,
+                 ret);
         g_error_free (error);
     }
 
@@ -240,7 +240,8 @@ void orage_rc_put_bool (OrageRc *orc, const gchar *key, const gboolean val)
     g_key_file_set_boolean (orc->rc, orc->cur_group, key, val);
 }
 
-GDateTime *orage_rc_get_gdatetime (OrageRc *orc, const gchar *key, GDateTime *def)
+GDateTime *orage_rc_get_gdatetime (OrageRc *orc, const gchar *key,
+                                   GDateTime *def)
 {
     GError *error = NULL;
     gchar *ret;
@@ -250,8 +251,8 @@ GDateTime *orage_rc_get_gdatetime (OrageRc *orc, const gchar *key, GDateTime *de
     if ((ret == NULL) && error)
     {
         gdt = def ? g_date_time_ref (def) : NULL;
-        g_warning ("str (%s) group (%s) in RC file (%s) not found, "
-                   "using default", key, orc->cur_group, orc->file_name);
+        g_debug ("str (%s) group (%s) in RC file (%s) not found, "
+                 "using default", key, orc->cur_group, orc->file_name);
         g_error_free (error);
     }
     else
