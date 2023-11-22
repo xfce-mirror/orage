@@ -3259,8 +3259,10 @@ static void mark_calendar (G_GNUC_UNUSED icalcomponent *c,
   * year: Year to be searched
   * month: Month to be searched
   */
-static void xfical_mark_calendar_from_component(GtkCalendar *gtkcal
-        , icalcomponent *c, int year, int month)
+static void xfical_mark_calendar_from_component (GtkCalendar *gtkcal,
+                                                 icalcomponent *c,
+                                                 guint year,
+                                                 guint month)
 {
     xfical_period per;
     struct icaltimetype nsdate, nedate;
@@ -3269,7 +3271,7 @@ static void xfical_mark_calendar_from_component(GtkCalendar *gtkcal
     icalproperty *p = NULL;
     gboolean marked;
     icalcomponent_kind kind;
-    char *tmp;
+    gchar *tmp;
     struct icaltimetype start;
     struct mark_calendar_data {
         GtkCalendar *cal;
@@ -3288,7 +3290,7 @@ static void xfical_mark_calendar_from_component(GtkCalendar *gtkcal
         g_free(tmp);
         nedate = nsdate;
         nedate.month++; 
-        if (nedate.month > 12) { /* next year */
+        if ((unsigned int)nedate.month > 12) { /* next year */
             nedate.month = 1;
             nedate.year++;
         }
@@ -3336,7 +3338,7 @@ static void xfical_mark_calendar_from_component(GtkCalendar *gtkcal
                 for (nsdate = icalrecur_iterator_next(ri),
                         nedate = icaltime_add(nsdate, per.duration);
                      !icaltime_is_null_time(nsdate)
-                        && (nsdate.year*12+nsdate.month) <= (year*12+month);
+                        && (nsdate.year*12+nsdate.month) <= (int)(year*12+month);
                      nsdate = icalrecur_iterator_next(ri),
                         nedate = icaltime_add(nsdate, per.duration)) {
                     if (!icalproperty_recurrence_is_excluded(c, &per.stime
@@ -3347,7 +3349,7 @@ static void xfical_mark_calendar_from_component(GtkCalendar *gtkcal
                 }
                 icalrecur_iterator_free(ri);
             } 
-        } 
+        }
     } /* ICAL_VEVENT_COMPONENT */
     else if (kind == ICAL_VTODO_COMPONENT) {
         per = ic_get_period(c, TRUE);
@@ -3369,7 +3371,7 @@ static void xfical_mark_calendar_from_component(GtkCalendar *gtkcal
             ri = icalrecur_iterator_new(rrule, per.stime);
             for (nsdate = icalrecur_iterator_next(ri);
                  !icaltime_is_null_time(nsdate)
-                    && (((nsdate.year*12+nsdate.month) <= (year*12+month)
+                    && (((nsdate.year*12+nsdate.month) <= (int)(year*12+month)
                         && (local_compare(nsdate, per.ctime) <= 0))
                         || icalproperty_recurrence_is_excluded(c, &per.stime
                         , &nsdate));
@@ -3419,8 +3421,8 @@ void xfical_mark_calendar_recur(GtkCalendar *gtkcal, const xfical_appt *appt)
 
  /* Get all appointments from the file and mark calendar for EVENTs and TODOs
   */
-static void xfical_mark_calendar_file(GtkCalendar *gtkcal
-        , icalcomponent *base, int year, int month)
+static void xfical_mark_calendar_file (GtkCalendar *gtkcal, icalcomponent *base,
+                                       guint year, guint month)
 {
     icalcomponent *c;
 
