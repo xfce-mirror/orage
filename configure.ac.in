@@ -20,6 +20,7 @@ m4_define([xfce_minimum_version], [4.16.0])
 m4_define([notify_minimum_version], [0.7.0])
 m4_define([intltool_minimum_version], [0.35])
 m4_define([libical_minimum_version], [3.0])
+m4_define([ayatana_appindicator_minimum_version], [0.5.92])
 
 
 dnl # DO NOT MODIFY ANYTHING BELOW THIS LINE, UNLESS YOU KNOW WHAT
@@ -141,16 +142,34 @@ fi
 dnl ************************************************
 dnl *** Support for Orage tray icon              ***
 dnl ************************************************
-have_x11_tray_icon="no"
-AC_ARG_ENABLE([x11_tray_icon],
-AS_HELP_STRING([--enable-x11-tray-icon], [add X11 tray icon, not comptible with Wayland (defaut=yes)])
-AS_HELP_STRING([--disable-x11-tray-icon], [do not add tray icon, Wayland compatible]),
-    [], [enable_x11_tray_icon=yes])
-if test x"$enable_x11_tray_icon" = x"yes"; then
-    AC_DEFINE([HAVE_X11_TRAY_ICON], [1], [Define to enable X11 tray icon])
-    have_x11_tray_icon="yes"
-fi
-AM_CONDITIONAL([HAVE_X11_TRAY_ICON], [test x"$enable_x11_tray_icon" = x"yes"])
+AC_ARG_WITH([tray-icon],
+AS_HELP_STRING([--with-tray-icon=<option>], [add tray icon: x11 (default) or ayatana])
+AS_HELP_STRING([--without-tray-icon], [do not add tray icon]),
+        [with_tray_icon="$withval"], [with_tray_icon=check])
+
+tray_icon=no
+tray_icon_desc="no"
+AS_IF([test "x$with_tray_icon" == xcheck], [with_tray_icon="x11"])
+AS_IF([test "x$with_tray_icon" == xyes], [with_tray_icon="x11"])
+AS_IF([test "x$with_tray_icon" == xx11],
+      [tray_icon_desc="X11"
+       tray_icon=x11
+       AC_DEFINE([HAVE_X11_TRAY_ICON], [1], [Define to enable X11 tray icon])
+      ])
+AS_IF([test "x$with_tray_icon" == xayatana],
+      [XDT_CHECK_PACKAGE([LIBAYATANA_APPINDICATOR],
+                         [ayatana-appindicator3-0.1],
+                         [ayatana_appindicator_minimum_version],
+                         [tray_icon_desc="Ayatana Application Indicator"
+                          tray_icon=ayatana
+                          AC_DEFINE([HAVE_AYATANA_APPINDICATOR], [1],
+                                    [Define to enable Ayatana Application Indicator])
+                         ])
+      ])
+
+AM_CONDITIONAL([HAVE_X11_TRAY_ICON], [test x"$tray_icon" = x"x11"])
+AM_CONDITIONAL([HAVE_AYATANA_APPINDICATOR], [test x"$tray_icon" = x"ayatana"])
+AM_CONDITIONAL([HAVE_TRAY_ICON], [test x"$tray_icon" = x"x11" -o x"$tray_icon" = x"ayatana"])
 
 dnl TODO: Add switch or condition to enable sync code
 AC_DEFINE([ENABLE_SYNC], [1], [Enable experimental sync code])
@@ -189,5 +208,5 @@ echo "* LIBXFCE4UI support:        yes"
 else
 echo "* LIBXFCE4UI support:        no"
 fi
-echo "* X11 tray icon:             $have_x11_tray_icon"
+echo "* Tray icon:                 $tray_icon_desc"
 echo
