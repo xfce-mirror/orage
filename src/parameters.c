@@ -55,9 +55,11 @@
 #include "parameters_internal.h"
 #include "reminder.h"
 
-#ifdef HAVE_X11_TRAY_ICON
+#if defined (HAVE_X11_TRAY_ICON)
 #include <gdk/gdkx.h>
 #include "tray_icon.h"
+#elif defined (HAVE_AYATANA_APPINDICATOR)
+#include "orage-appindicator.h"
 #endif
 
 #ifndef DEFAULT_SOUND_COMMAND
@@ -355,9 +357,10 @@ static void pager_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
     set_pager();
 }
 
-#ifdef HAVE_X11_TRAY_ICON
+#if defined (HAVE_X11_TRAY_ICON) || defined (HAVE_AYATANA_APPINDICATOR)
 static void set_systray(void)
 {
+#if defined (HAVE_X11_TRAY_ICON)
     GtkStatusIcon *status_icon = (GtkStatusIcon *)g_par.trayIcon;
 
     if (!(status_icon && orage_status_icon_is_embedded (status_icon)))
@@ -367,6 +370,12 @@ static void set_systray(void)
     }
 
     orage_status_icon_set_visible (status_icon, g_par.show_systray);
+#elif defined (HAVE_AYATANA_APPINDICATOR)
+    if (g_par.trayIcon == NULL)
+        g_par.trayIcon = orage_appindicator_create ();
+
+    orage_appindicator_set_visible (g_par.trayIcon, g_par.show_systray);
+#endif
 }
 
 static void systray_changed (G_GNUC_UNUSED GtkWidget *dialog,
@@ -964,7 +973,7 @@ static void create_parameter_dialog_calendar_setup_tab(Itf *dialog)
 
     table_add_row(table, dialog->show_taskbar_checkbutton
             , dialog->show_pager_checkbutton, ++row);
-#ifdef HAVE_X11_TRAY_ICON
+#if defined (HAVE_X11_TRAY_ICON) || defined (HAVE_AYATANA_APPINDICATOR)
     dialog->show_systray_checkbutton = gtk_check_button_new_with_mnemonic(
             _("Show in systray"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(
@@ -981,12 +990,15 @@ static void create_parameter_dialog_calendar_setup_tab(Itf *dialog)
             , G_CALLBACK(taskbar_changed), dialog);
     g_signal_connect(G_OBJECT(dialog->show_pager_checkbutton), "toggled"
             , G_CALLBACK(pager_changed), dialog);
-#ifdef HAVE_X11_TRAY_ICON
+#if defined (HAVE_X11_TRAY_ICON)
     if (GDK_IS_X11_DISPLAY (gdk_display_get_default ()))
     {
         g_signal_connect (G_OBJECT (dialog->show_systray_checkbutton),
                           "toggled", G_CALLBACK (systray_changed), dialog);
     }
+#elif defined (HAVE_AYATANA_APPINDICATOR)
+    g_signal_connect (G_OBJECT (dialog->show_systray_checkbutton),
+                      "toggled", G_CALLBACK (systray_changed), dialog);
 #endif
 
     /***** how to show when started (show/hide/minimize) *****/
@@ -1701,7 +1713,7 @@ void read_parameters (void)
     g_par.show_todos = orage_rc_get_bool(orc, "Show todos", TRUE);
     g_par.show_event_days = orage_rc_get_int(orc, "Show event days", 1);
     g_par.show_pager = orage_rc_get_bool(orc, "Show in pager", TRUE);
-#ifdef HAVE_X11_TRAY_ICON
+#if defined (HAVE_X11_TRAY_ICON) || defined (HAVE_AYATANA_APPINDICATOR)
     g_par.show_systray = orage_rc_get_bool(orc, "Show in systray", TRUE);
 #endif
     g_par.show_taskbar = orage_rc_get_bool(orc, "Show in taskbar", TRUE);
@@ -1802,7 +1814,7 @@ void write_parameters(void)
     orage_rc_put_bool(orc, "Show todos", g_par.show_todos);
     orage_rc_put_int(orc, "Show event days", g_par.show_event_days);
     orage_rc_put_bool(orc, "Show in pager", g_par.show_pager);
-#ifdef HAVE_X11_TRAY_ICON
+#if defined (HAVE_X11_TRAY_ICON) || defined (HAVE_AYATANA_APPINDICATOR)
     orage_rc_put_bool(orc, "Show in systray", g_par.show_systray);
 #endif
     orage_rc_put_bool(orc, "Show in taskbar", g_par.show_taskbar);

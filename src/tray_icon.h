@@ -26,6 +26,9 @@
 #include <gtk/gtk.h>
 
 GtkStatusIcon *orage_create_trayicon (void);
-void orage_refresh_trayicon(void);
+void orage_refresh_trayicon (void);
+void orage_status_icon_set_title (void *icon, const gchar *title);
+void orage_status_icon_set_description (void *icon, const gchar *desc);
+void orage_status_icon_cleanup (void);
 
 #endif /* !__TRAY_ICON_H__ */
