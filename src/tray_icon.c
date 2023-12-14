@@ -55,6 +55,20 @@
 static gchar *title_str = NULL;
 static gchar *desc_str = NULL;
 
+/* This is wrapper for deprecated 'gtk_status_icon_new_from_pixbuf', it is used
+ * only for suppress deprecated warning message.
+ */
+static inline GtkStatusIcon *orage_status_icon_new_from_pixbuf (GdkPixbuf *pixbuf)
+{
+    GtkStatusIcon *status_icon;
+
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+    status_icon = gtk_status_icon_new_from_pixbuf (pixbuf);
+    G_GNUC_END_IGNORE_DEPRECATIONS
+
+    return status_icon;
+}
+
 static GtkStyleContext *get_style (GtkStyleContext *parent,
                                    const char *selector)
 {
