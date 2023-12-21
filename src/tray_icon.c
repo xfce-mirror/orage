@@ -36,7 +36,6 @@
 #include <gdk/gdkevents.h>
 #include <gdk/gdkx.h>
 
-#include "orage-i18n.h"
 #include "orage-window.h"
 #include "functions.h"
 #include "ical-code.h"

@@ -22,7 +22,6 @@
 #include "orage-appindicator.h"
 #include <libayatana-appindicator/app-indicator.h>
 #include "orage-window.h"
-#include "orage-i18n.h"
 #include "functions.h"
 #include "event-list.h"
 #include "orage-tray-icon-common.h"
