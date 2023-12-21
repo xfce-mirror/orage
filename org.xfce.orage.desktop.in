@@ -10,3 +10,8 @@ Terminal=false
 Type=Application
 Categories=X-XFCE;Office;Calendar;GTK;
 _GenericName=Calendar
+Actions=Preferences;
+
+[Desktop Action Preferences]
+_Name=Orage Preferences
+Exec=orage --preferences
