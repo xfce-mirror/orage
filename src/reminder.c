@@ -56,9 +56,11 @@
 #include "reminder.h"
 #include "parameters.h"
 
-#ifdef HAVE_X11_TRAY_ICON
+#if defined (HAVE_X11_TRAY_ICON)
 #include <gdk/gdkx.h>
 #include "tray_icon.h"
+#elif defined (HAVE_AYATANA_APPINDICATOR)
+#include "orage-appindicator.h"
 #endif
 
 #define RC_ALARM_TIME "ALARM_TIME"
@@ -821,9 +823,11 @@ gboolean orage_day_change(gpointer user_data)
         previous_year  = current_year;
         previous_month = current_month;
         previous_day   = current_day;
-#ifdef HAVE_X11_TRAY_ICON
+#if defined (HAVE_X11_TRAY_ICON)
         if (GDK_IS_X11_DISPLAY (gdk_display_get_default ()))
             orage_refresh_trayicon ();
+#elif defined (HAVE_AYATANA_APPINDICATOR)
+        orage_appindicator_refresh ();
 #endif
         xfical_alarm_build_list(TRUE);  /* new l_alarm list when date changed */
         reset_orage_day_change(TRUE);   /* setup for next time */
@@ -914,82 +918,146 @@ static void reset_orage_alarm_clock(void)
 /* refresh trayicon tooltip once per minute */
 static gboolean orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
 {
-#ifdef HAVE_X11_TRAY_ICON
+#if defined (HAVE_X11_TRAY_ICON) || defined (HAVE_AYATANA_APPINDICATOR)
+    const gint tooltip_alarm_limit = 5;
     GDateTime *gdt;
     GList *alarm_l;
     alarm_struct *cur_alarm;
     gboolean more_alarms=TRUE;
-    GString *tooltip=NULL, *tooltip_highlight_helper=NULL;
+    GString *alarm_title = NULL;
+    GString *alarms_str = NULL;
     gint alarm_cnt=0;
-    gint tooltip_alarm_limit=5;
     gint hour, minute;
     gint dd, hh, min;
     gchar *tmp;
+    gboolean first_line = TRUE;
 
-    if (!(g_par.trayIcon 
-    && orage_status_icon_is_embedded ((GtkStatusIcon *)g_par.trayIcon))) {
-           /* no trayicon => no need to update the tooltip */
+#if defined (HAVE_X11_TRAY_ICON)
+    gchar *title_str;
+#endif
+
+    if (g_par.trayIcon == NULL)
+    {
+        /* no trayicon => no need to update the tooltip */
         return(FALSE);
     }
-    gdt = g_date_time_new_now_local ();
-    tooltip = g_string_new(_("Next active alarms:"));
-    g_string_prepend(tooltip, "<span foreground=\"blue\" weight=\"bold\" underline=\"single\">");
-    g_string_append(tooltip, " </span>");
-    /* Check if there are any alarms to show */
-    for (alarm_l = g_list_first(g_par.alarm_list);
-         alarm_l != NULL && more_alarms;
-         alarm_l = g_list_next(alarm_l)) {
-        /* remember that it is sorted list */
-        cur_alarm = orage_alarm_ref ((alarm_struct *)alarm_l->data);
-        if (alarm_cnt < tooltip_alarm_limit) {
-            hour = g_date_time_get_hour (cur_alarm->alarm_time);
-            minute = g_date_time_get_minute (cur_alarm->alarm_time);
-            dd = orage_gdatetime_days_between (gdt, cur_alarm->alarm_time);
-            hh = hour - g_date_time_get_hour (gdt);
-            min = minute - g_date_time_get_minute (gdt);
-            if (min < 0) {
-                min += 60;
-                hh -= 1;
+
+#if defined (HAVE_X11_TRAY_ICON)
+    if (orage_status_icon_is_embedded ((GtkStatusIcon *)g_par.trayIcon) == FALSE)
+        return FALSE;
+#endif
+
+    if (g_list_length (g_par.alarm_list))
+    {
+        tmp = _("Next active alarms:");
+
+#if defined (HAVE_X11_TRAY_ICON)
+        title_str = g_strconcat (
+            "<span foreground=\"blue\" weight=\"bold\" underline=\"single\">",
+            tmp, "</span>", NULL);
+        orage_status_icon_set_title (g_par.trayIcon, title_str);
+        g_free (title_str);
+#elif defined (HAVE_AYATANA_APPINDICATOR)
+        orage_appindicator_set_title (g_par.trayIcon, tmp);
+#endif
+
+        gdt = g_date_time_new_now_local ();
+        alarms_str = g_string_new ("");
+
+        /* Check if there are any alarms to show */
+        for (alarm_l = g_list_first (g_par.alarm_list);
+             alarm_l != NULL && more_alarms;
+             alarm_l = g_list_next (alarm_l))
+        {
+            /* remember that it is sorted list */
+            cur_alarm = orage_alarm_ref ((alarm_struct *)alarm_l->data);
+            if (alarm_cnt < tooltip_alarm_limit)
+            {
+                hour = g_date_time_get_hour (cur_alarm->alarm_time);
+                minute = g_date_time_get_minute (cur_alarm->alarm_time);
+                dd = orage_gdatetime_days_between (gdt, cur_alarm->alarm_time);
+                hh = hour - g_date_time_get_hour (gdt);
+                min = minute - g_date_time_get_minute (gdt);
+                if (min < 0)
+                {
+                    min += 60;
+                    hh -= 1;
+                }
+
+                if (hh < 0)
+                {
+                    hh += 24;
+                    dd -= 1;
+                }
+
+                alarm_title = g_string_new ("");
+
+                if (cur_alarm->temporary)
+                {
+                    /* let's add a small mark */
+                    g_string_append_c (alarm_title, '[');
+                }
+
+                tmp = cur_alarm->title ?
+                    g_markup_escape_text (cur_alarm->title, strlen (cur_alarm->title))
+                                       : g_strdup (_("No title defined"));
+                g_string_append (alarm_title, tmp);
+                g_free (tmp);
+                if (cur_alarm->temporary)
+                {
+                    /* let's add a small mark */
+                    g_string_append_c (alarm_title, ']');
+                }
+
+                if (first_line)
+                    first_line = FALSE;
+                else
+                    g_string_append_c (alarms_str, '\n');
+
+#if defined (HAVE_X11_TRAY_ICON)
+                g_string_append (alarms_str, "<span weight=\"bold\">");
+#endif
+                g_string_append_printf (alarms_str,
+                                        _("%02d d %02d h %02d min to:"),
+                                        dd, hh, min);
+
+#if defined (HAVE_X11_TRAY_ICON)
+                g_string_append (alarms_str, "</span>");
+#endif
+                g_string_append_c (alarms_str, ' ');
+                g_string_append (alarms_str, alarm_title->str);
+                g_string_free (alarm_title, TRUE);
+                alarm_cnt++;
             }
-            if (hh < 0) {
-                hh += 24;
-                dd -= 1;
+            else
+            {
+                /* sorted so scan can be stopped */
+                more_alarms = FALSE;
             }
 
-            g_string_append(tooltip, "<span weight=\"bold\">");
-            tooltip_highlight_helper = g_string_new(" </span>");
-            if (cur_alarm->temporary) { /* let's add a small mark */
-                g_string_append_c(tooltip_highlight_helper, '[');
-            }
-            tmp = cur_alarm->title 
-                ? g_markup_escape_text(cur_alarm->title
-                        , strlen(cur_alarm->title))
-                : g_strdup(_("No title defined"));
-            g_string_append_printf(tooltip_highlight_helper, "%s", tmp);
-            g_free(tmp);
-            if (cur_alarm->temporary) { /* let's add a small mark */
-                g_string_append_c(tooltip_highlight_helper, ']');
-            }
-            g_string_append_printf(tooltip, 
-                    _("\n%02d d %02d h %02d min to: %s"),
-                    dd, hh, min, tooltip_highlight_helper->str);
-            g_string_free(tooltip_highlight_helper, TRUE);
-            alarm_cnt++;
+            orage_alarm_unref (cur_alarm);
         }
-        else /* sorted so scan can be stopped */
-            more_alarms = FALSE;
 
-        orage_alarm_unref (cur_alarm);
+        g_date_time_unref (gdt);
+
+#if defined (HAVE_X11_TRAY_ICON)
+        orage_status_icon_set_description (g_par.trayIcon, alarms_str->str);
+#elif defined (HAVE_AYATANA_APPINDICATOR)
+        orage_appindicator_set_description (g_par.trayIcon, alarms_str->str);
+#endif
+        g_string_free (alarms_str, TRUE);
     }
-
-    g_date_time_unref (gdt);
-
-    if (alarm_cnt == 0)
-        g_string_append_printf(tooltip, _("\nNo active alarms found"));
-
-    orage_status_icon_set_tooltip_markup ((GtkStatusIcon *)g_par.trayIcon, tooltip->str);
-
-    g_string_free(tooltip, TRUE);
+    else
+    {
+        tmp = _("No active alarms found");
+#if defined (HAVE_X11_TRAY_ICON)
+        orage_status_icon_set_title (g_par.trayIcon, tmp);
+        orage_status_icon_set_description (g_par.trayIcon, NULL);
+#elif defined (HAVE_AYATANA_APPINDICATOR)
+        orage_appindicator_set_title (g_par.trayIcon, tmp);
+        orage_appindicator_set_description (g_par.trayIcon, NULL);
+#endif
+    }
 
     return(TRUE);
 #else
