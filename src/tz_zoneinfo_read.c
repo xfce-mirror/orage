@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Erkki Moorits
+ * Copyright (c) 2021-2024 Erkki Moorits
  * Copyright (c) 2008-2011 Juha Kautto  (juha at xfce.org)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -81,7 +81,8 @@ orage_timezone_array tz_array= {0};
 
 static char *zone_tab_buf = NULL, *country_buf = NULL, *zones_tab_buf = NULL;
 
-static int file_cnt = 0; /* number of processed files */
+/** Number of processed files. */
+static guint number_of_proccessed_files = 0;
 
 static unsigned char *in_buf, *in_head, *in_tail;
 static int in_file_base_offset = 0;
@@ -155,6 +156,7 @@ static void read_file(const char *file_name, const struct stat *file_stat)
             return;
         }
     fclose(file);
+    number_of_proccessed_files++;
 }
 
 static int get_long(void)
@@ -495,7 +497,6 @@ static int file_call(const char *file_name, const struct stat *sb, int flags
     int i;
 #endif
 
-    file_cnt++;
     /* we are only interested about files and directories we can access */
     if (flags == FTW_F || flags == FTW_SL) { /* we got file */
         if (file_call_process_file(file_name, sb, flags))
@@ -804,7 +805,8 @@ orage_timezone_array get_orage_timezones(int show_details, int ical)
             exit(EXIT_FAILURE);
         }
 
-        g_message ("Processed %d timezone files from (%s)", file_cnt, in_file);
+        g_message ("processed %d timezone file(s) from (%s)",
+                   number_of_proccessed_files, in_file);
 
         g_free(in_file);
 
@@ -872,5 +874,5 @@ void free_orage_timezones (void)
         g_free(zones_tab_buf);
         zones_tab_buf = NULL;
     }
-    file_cnt = 0; /* number of processed files */
+    number_of_proccessed_files = 0;
 }
