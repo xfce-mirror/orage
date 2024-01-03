@@ -764,73 +764,79 @@ static void read_countries(void)
 orage_timezone_array get_orage_timezones(int show_details, int ical)
 {
 #ifdef FTW_ACTIONRETVAL
-    int tz_array_size = 1000; /* FIXME: this needs to be counted */
+    const guint tz_array_size = 1000; /* FIXME: this needs to be counted */
+    const int nftw_flags = FTW_PHYS | FTW_ACTIONRETVAL;
 #else
-    int tz_array_size = 2000; /* BSD can not skip unneeded directories */
+    const guint tz_array_size = 2000; /* BSD can not skip unneeded directories */
+    const int nftw_flags = FTW_PHYS;
 #endif
 
     details = show_details;
     check_ical = ical;
-    if (tz_array.count == 0) {
-        tz_array.city = g_new(char *, tz_array_size+2);
-        tz_array.utc_offset = g_new(int, tz_array_size+2);
-        tz_array.dst = g_new(int, tz_array_size+2);
-        tz_array.tz = g_new(char *, tz_array_size+2);
-        tz_array.prev = g_new(char *, tz_array_size+2);
-        tz_array.next = g_new(char *, tz_array_size+2);
-        tz_array.next_utc_offset = g_new(int, tz_array_size+2);
-        tz_array.country = g_new(char *, tz_array_size+2);
-        tz_array.cc = g_new(char *, tz_array_size+2);
-        check_parameters();
 
-        g_debug ("Processing %s files", in_file);
+    if (tz_array.count)
+        return tz_array;
 
-        if (details) {
-            read_os_timezones();
-            read_countries();
-        }
-        if (check_ical)
-            read_os_timezones();
+    tz_array.city = g_new (char *, tz_array_size+2);
+    tz_array.utc_offset = g_new (int, tz_array_size+2);
+    tz_array.dst = g_new (int, tz_array_size+2);
+    tz_array.tz = g_new (char *, tz_array_size+2);
+    tz_array.prev = g_new (char *, tz_array_size+2);
+    tz_array.next = g_new (char *, tz_array_size+2);
+    tz_array.next_utc_offset = g_new (int, tz_array_size+2);
+    tz_array.country = g_new (char *, tz_array_size+2);
+    tz_array.cc = g_new (char *, tz_array_size+2);
+    check_parameters ();
 
-    /* nftw goes through the whole file structure and calls "file_call"
-     * with each file. It returns 0 when everything has been done and -1
-     * if it run into an error. 
-     * BSD lacks FTW_ACTIONRETVAL, so we only use it when available. */
-#ifdef FTW_ACTIONRETVAL
-        if (nftw(in_file, file_call, 10, FTW_PHYS | FTW_ACTIONRETVAL) == -1) {
-#else
-        if (nftw(in_file, file_call, 10, FTW_PHYS) == -1) {
-#endif
-            g_critical ("nftw error in file handling: %s", g_strerror (errno));
-            exit(EXIT_FAILURE);
-        }
+    g_debug ("processing files from '%s'", in_file);
 
-        g_message ("processed %d timezone file(s) from (%s)",
-                   number_of_proccessed_files, in_file);
-
-        g_free(in_file);
-
-        tz_array.utc_offset[tz_array.count] = 0;
-        tz_array.dst[tz_array.count] = 0;
-        tz_array.tz[tz_array.count] = g_strdup("UTC");
-        tz_array.prev[tz_array.count] = NULL;
-        tz_array.next[tz_array.count] = NULL;
-        tz_array.next_utc_offset[tz_array.count] = 0;
-        tz_array.country[tz_array.count] = NULL;
-        tz_array.cc[tz_array.count] = NULL;
-        tz_array.city[tz_array.count++] = g_strdup("UTC");
-
-        tz_array.utc_offset[tz_array.count] = 0;
-        tz_array.dst[tz_array.count] = 0;
-        tz_array.tz[tz_array.count] = NULL;
-        tz_array.prev[tz_array.count] = NULL;
-        tz_array.next[tz_array.count] = NULL;
-        tz_array.next_utc_offset[tz_array.count] = 0;
-        tz_array.country[tz_array.count] = NULL;
-        tz_array.cc[tz_array.count] = NULL;
-        tz_array.city[tz_array.count++] = g_strdup("floating");
+    if (details)
+    {
+        read_os_timezones ();
+        read_countries ();
     }
-    return(tz_array);
+
+    if (check_ical)
+        read_os_timezones ();
+
+    /* nftw goes through the whole file structure and calls "file_call" with
+     * each file. It returns 0 when everything has been done and -1 if it run
+     * into an error.
+     */
+    if (nftw (in_file, file_call, 10, nftw_flags) == -1)
+    {
+        g_critical ("nftw error in file handling: %s", g_strerror (errno));
+        exit (EXIT_FAILURE);
+    }
+
+    g_message ("processed %d timezone file(s) from '%s'",
+               number_of_proccessed_files, in_file);
+
+    g_free (in_file);
+
+    tz_array.utc_offset[tz_array.count] = 0;
+    tz_array.dst[tz_array.count] = 0;
+    tz_array.tz[tz_array.count] = g_strdup ("UTC");
+    tz_array.prev[tz_array.count] = NULL;
+    tz_array.next[tz_array.count] = NULL;
+    tz_array.next_utc_offset[tz_array.count] = 0;
+    tz_array.country[tz_array.count] = NULL;
+    tz_array.cc[tz_array.count] = NULL;
+    tz_array.city[tz_array.count] = g_strdup ("UTC");
+    tz_array.count++;
+
+    tz_array.utc_offset[tz_array.count] = 0;
+    tz_array.dst[tz_array.count] = 0;
+    tz_array.tz[tz_array.count] = NULL;
+    tz_array.prev[tz_array.count] = NULL;
+    tz_array.next[tz_array.count] = NULL;
+    tz_array.next_utc_offset[tz_array.count] = 0;
+    tz_array.country[tz_array.count] = NULL;
+    tz_array.cc[tz_array.count] = NULL;
+    tz_array.city[tz_array.count] = g_strdup ("floating");
+    tz_array.count++;
+
+    return tz_array;
 }
 
 void free_orage_timezones (void)
