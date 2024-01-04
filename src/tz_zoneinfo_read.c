@@ -30,6 +30,7 @@
     /* malloc, atoi, free, setenv */
 
 #include <stdio.h>
+#include <glib/gstdio.h>
     /* printf, fopen, fread, fclose, perror, rename */
 
 #include <sys/types.h>
@@ -143,7 +144,7 @@ static void read_file(const char *file_name, const struct stat *file_stat)
     in_buf = g_new0(unsigned char, file_stat->st_size);
     in_head = in_buf;
     in_tail = in_buf + file_stat->st_size - 1;
-    file = fopen(file_name, "r");
+    file = g_fopen (file_name, "r");
     if (!file) {
         g_warning ("file open error (%s): %s", file_name, g_strerror (errno));
         return;
@@ -462,7 +463,7 @@ static int file_call_process_file(const char *file_name
     /* we know it is symbolic link, so we actually need stat instead of lstat
     which nftw gives us!
     (lstat = information from the real file istead of the link) */ 
-        if (stat(file_name, &file_stat)) {
+        if (g_stat (file_name, &file_stat)) {
             g_warning ("file open error (%s): %s", file_name,
                        g_strerror (errno));
             g_free(in_timezone_name);
@@ -538,9 +539,9 @@ static int check_parameters(void)
     struct stat par_file_stat;
 
     in_file = NULL;
-    par_file = fopen(TZ_CONVERT_PAR_FILE_LOC, "r");
+    par_file = g_fopen (TZ_CONVERT_PAR_FILE_LOC, "r");
     if (par_file != NULL) { /* does exist and no error */
-        if (stat(TZ_CONVERT_PAR_FILE_LOC, &par_file_stat) == -1) {
+        if (g_stat(TZ_CONVERT_PAR_FILE_LOC, &par_file_stat) == -1) {
             /* error reading the parameter file */
             g_warning ("in_file name not found from (%s)",
                        TZ_CONVERT_PAR_FILE_LOC);
@@ -561,7 +562,7 @@ static int check_parameters(void)
                 else
                     in_file[par_file_stat.st_size] = '\0';
                 /* test that it is fine */
-                if (stat(in_file, &par_file_stat) == -1) { /* error */
+                if (g_stat (in_file, &par_file_stat) == -1) { /* error */
                     g_warning ("error reading (%s) (from %s)", in_file,
                                TZ_CONVERT_PAR_FILE_LOC);
                     g_free(in_file);
@@ -579,7 +580,7 @@ static int check_parameters(void)
                    in_file);
         return(1);
     }
-    if (stat(in_file, &in_stat) == -1) { /* error */
+    if (g_stat(in_file, &in_stat) == -1) { /* error */
         g_warning ("file error (%s): %s", in_file, g_strerror (errno));
         return(2);
     }
@@ -678,13 +679,13 @@ static void read_os_timezones(void)
 
     g_free(tz_dir);
 
-    if (!(zone_tab_file = fopen(zone_tab_file_name, "r"))) {
+    if (!(zone_tab_file = g_fopen (zone_tab_file_name, "r"))) {
         g_warning ("zone.tab file open failed (%s): %s", zone_tab_file_name,
                    g_strerror (errno));
         g_free(zone_tab_file_name);
         return;
     }
-    if (stat(zone_tab_file_name, &zone_tab_file_stat) == -1) {
+    if (g_stat (zone_tab_file_name, &zone_tab_file_stat) == -1) {
         g_warning ("zone.tab file stat failed (%s): %s", zone_tab_file_name,
                    g_strerror (errno));
         g_free(zone_tab_file_name);
@@ -734,13 +735,13 @@ static void read_countries(void)
     g_strlcat (country_file_name, COUNTRY_FILE, len);
     g_free(tz_dir);
 
-    if (!(country_file = fopen(country_file_name, "r"))) {
+    if (!(country_file = g_fopen (country_file_name, "r"))) {
         g_warning ("iso3166.tab file open failed (%s): %s", country_file_name,
                    g_strerror (errno));
         g_free(country_file_name);
         return;
     }
-    if (stat(country_file_name, &country_file_stat) == -1) {
+    if (g_stat (country_file_name, &country_file_stat) == -1) {
         g_warning ("iso3166.tab file stat failed (%s): %s", country_file_name,
                    g_strerror (errno));
         g_free(country_file_name);
