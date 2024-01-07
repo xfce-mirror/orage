@@ -1,4 +1,6 @@
-4.19.0 (2024-10-27)
+4.19.0 (2023-12-19)
+- Added support for Ayatana Application Indicator. Allows to use tray icon with
+  Wayland.
 - Redesigned appointment window recurrence tab. Related with Issue #23.
 - Internal changes, changed appontment window to subclass of GtkWindow
 - Internal changes, changed mainbox to subclass of GtkApplicationWindow
