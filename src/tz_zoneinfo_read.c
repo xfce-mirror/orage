@@ -587,7 +587,7 @@ static gboolean check_parameters (void)
         fclose(par_file);
     }
     if (in_file == NULL) /* in file not found */
-        in_file = get_zoneinfo_directory (); 
+        in_file = get_zoneinfo_directory ();
 
     if (in_file[0] != '/') {
         g_warning ("in_file name (%s) is not absolute file name. Ending",
