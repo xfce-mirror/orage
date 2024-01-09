@@ -134,6 +134,19 @@ static inline size_t orage_strftime (char *s, size_t max,
     return strftime (s, max, fmt, tm);
 }
 
+static gchar *get_zoneinfo_directory (void)
+{
+    const gchar *env_tzdir;
+    gchar *tzdir;
+
+    env_tzdir = g_getenv ("TZDIR");
+    tzdir = g_strdup (env_tzdir ? env_tzdir : DEFAULT_OS_ZONEINFO_DIRECTORY);
+
+    g_debug ("tzdir: '%s'", tzdir);
+
+    return tzdir;
+}
+
 static void read_file(const char *file_name, const struct stat *file_stat)
 {
     FILE *file;
@@ -574,7 +587,7 @@ static gboolean check_parameters (void)
         fclose(par_file);
     }
     if (in_file == NULL) /* in file not found */
-        in_file = g_strdup(DEFAULT_OS_ZONEINFO_DIRECTORY);
+        in_file = get_zoneinfo_directory ();
 
     if (in_file[0] != '/') {
         g_warning ("in_file name (%s) is not absolute file name. Ending",
