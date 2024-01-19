@@ -1,6 +1,5 @@
 =======
 4.19.0 (2024-01-08)
->>>>>>> db1f9f610b9b63b443ec5ac71fc670abc8c8a8a4
 - Redesigned appointment window recurrence tab. Related with Issue #23.
 - Internal changes, changed appontment window to subclass of GtkWindow
 - Internal changes, changed mainbox to subclass of GtkApplicationWindow
