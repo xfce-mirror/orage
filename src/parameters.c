@@ -59,7 +59,7 @@
 #include <gdk/gdkx.h>
 #include "tray_icon.h"
 #elif defined (HAVE_AYATANA_APPINDICATOR)
-#include "orage-appindicator.h"
+#include "orage-status-icon.h"
 #endif
 
 #ifndef DEFAULT_SOUND_COMMAND

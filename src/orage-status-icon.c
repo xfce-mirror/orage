@@ -19,13 +19,15 @@
  */
 
 #include <config.h>
-#include "orage-appindicator.h"
-#include <libayatana-appindicator/app-indicator.h>
+#include "orage-status-icon.h"
 #include "orage-window.h"
 #include "functions.h"
 #include "event-list.h"
 #include "orage-tray-icon-common.h"
 #include "parameters.h"
+
+#include <libayatana-appindicator/app-indicator.h>
+#include <gtk/gtk.h>
 
 void *orage_appindicator_create (void)
 {

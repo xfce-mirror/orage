@@ -68,12 +68,12 @@ endif
 
 if HAVE_AYATANA_APPINDICATOR
 orage_SOURCES +=						\
-	orage-appindicator.c					\
-	orage-appindicator.h
+	orage-status-icon.c					\
+	orage-status-icon.h
 endif
 
 endif
-	
+
 orage_CPPFLAGS =						\
 	-DPACKAGE_DATA_DIR=\""$(datadir)"\"			\
 	-DPACKAGE_LOCALE_DIR=\""$(localedir)"\"			\
