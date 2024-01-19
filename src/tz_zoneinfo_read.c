@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Erkki Moorits
+ * Copyright (c) 2021-2024 Erkki Moorits
  * Copyright (c) 2008-2011 Juha Kautto  (juha at xfce.org)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -30,6 +30,7 @@
     /* malloc, atoi, free, setenv */
 
 #include <stdio.h>
+#include <glib/gstdio.h>
     /* printf, fopen, fread, fclose, perror, rename */
 
 #include <sys/types.h>
@@ -81,7 +82,8 @@ orage_timezone_array tz_array= {0};
 
 static char *zone_tab_buf = NULL, *country_buf = NULL, *zones_tab_buf = NULL;
 
-static int file_cnt = 0; /* number of processed files */
+/** Number of processed files. */
+static guint number_of_proccessed_files = 0;
 
 static unsigned char *in_buf, *in_head, *in_tail;
 static int in_file_base_offset = 0;
@@ -90,8 +92,7 @@ static int details;     /* show extra data (country and next change time) */
 static int check_ical;  /* check that we have also the ical timezone data */
 
 static char *in_file = NULL, *out_file = NULL;
-static int in_file_is_dir = 0;
-static int excl_dir_cnt = -1;
+static gint excl_dir_cnt = -1;
 static char **excl_dir = NULL;
 
 /* in_timezone_name is the real timezone name from the infile 
@@ -133,6 +134,19 @@ static inline size_t orage_strftime (char *s, size_t max,
     return strftime (s, max, fmt, tm);
 }
 
+static gchar *get_zoneinfo_directory (void)
+{
+    const gchar *env_tzdir;
+    gchar *tzdir;
+
+    env_tzdir = g_getenv ("TZDIR");
+    tzdir = g_strdup (env_tzdir ? env_tzdir : DEFAULT_OS_ZONEINFO_DIRECTORY);
+
+    g_debug ("tzdir: '%s'", tzdir);
+
+    return tzdir;
+}
+
 static void read_file(const char *file_name, const struct stat *file_stat)
 {
     FILE *file;
@@ -142,7 +156,7 @@ static void read_file(const char *file_name, const struct stat *file_stat)
     in_buf = g_new0(unsigned char, file_stat->st_size);
     in_head = in_buf;
     in_tail = in_buf + file_stat->st_size - 1;
-    file = fopen(file_name, "r");
+    file = g_fopen (file_name, "r");
     if (!file) {
         g_warning ("file open error (%s): %s", file_name, g_strerror (errno));
         return;
@@ -155,6 +169,7 @@ static void read_file(const char *file_name, const struct stat *file_stat)
             return;
         }
     fclose(file);
+    number_of_proccessed_files++;
 }
 
 static int get_long(void)
@@ -460,7 +475,7 @@ static int file_call_process_file(const char *file_name
     /* we know it is symbolic link, so we actually need stat instead of lstat
     which nftw gives us!
     (lstat = information from the real file istead of the link) */ 
-        if (stat(file_name, &file_stat)) {
+        if (g_stat (file_name, &file_stat)) {
             g_warning ("file open error (%s): %s", file_name,
                        g_strerror (errno));
             g_free(in_timezone_name);
@@ -495,7 +510,6 @@ static int file_call(const char *file_name, const struct stat *sb, int flags
     int i;
 #endif
 
-    file_cnt++;
     /* we are only interested about files and directories we can access */
     if (flags == FTW_F || flags == FTW_SL) { /* we got file */
         if (file_call_process_file(file_name, sb, flags))
@@ -528,18 +542,20 @@ static int file_call(const char *file_name, const struct stat *sb, int flags
 }
 
 /* check the parameters and use defaults when possible */
-static int check_parameters(void)
+static gboolean check_parameters (void)
 {
     char *s_tz, *last_tz = NULL, tz[]="/zoneinfo", tz2[]="zoneinfo/";
-    int tz_len, i;
+    int tz_len;
+    gint i;
     struct stat in_stat;
     FILE *par_file;
     struct stat par_file_stat;
+    gboolean in_file_is_dir;
 
     in_file = NULL;
-    par_file = fopen(TZ_CONVERT_PAR_FILE_LOC, "r");
+    par_file = g_fopen (TZ_CONVERT_PAR_FILE_LOC, "r");
     if (par_file != NULL) { /* does exist and no error */
-        if (stat(TZ_CONVERT_PAR_FILE_LOC, &par_file_stat) == -1) {
+        if (g_stat(TZ_CONVERT_PAR_FILE_LOC, &par_file_stat) == -1) {
             /* error reading the parameter file */
             g_warning ("in_file name not found from (%s)",
                        TZ_CONVERT_PAR_FILE_LOC);
@@ -560,7 +576,7 @@ static int check_parameters(void)
                 else
                     in_file[par_file_stat.st_size] = '\0';
                 /* test that it is fine */
-                if (stat(in_file, &par_file_stat) == -1) { /* error */
+                if (g_stat (in_file, &par_file_stat) == -1) { /* error */
                     g_warning ("error reading (%s) (from %s)", in_file,
                                TZ_CONVERT_PAR_FILE_LOC);
                     g_free(in_file);
@@ -571,38 +587,40 @@ static int check_parameters(void)
         fclose(par_file);
     }
     if (in_file == NULL) /* in file not found */
-        in_file = g_strdup(DEFAULT_OS_ZONEINFO_DIRECTORY);
+        in_file = get_zoneinfo_directory ();
 
     if (in_file[0] != '/') {
         g_warning ("in_file name (%s) is not absolute file name. Ending",
                    in_file);
-        return(1);
+        return FALSE;
     }
-    if (stat(in_file, &in_stat) == -1) { /* error */
-        g_warning ("file error (%s): %s", in_file, g_strerror (errno));
-        return(2);
+
+    if (g_stat (in_file, &in_stat) == -1) { /* error */
+        g_warning ("file error '%s': %s", in_file, g_strerror (errno));
+        return FALSE;
     }
+
     if (S_ISDIR(in_stat.st_mode)) {
-        in_file_is_dir = 1;
+        in_file_is_dir = TRUE;
         if (timezone_name) {
             g_warning ("when infile (%s) is directory, you can not specify "
                        "timezone name (%s), but it is copied from each in "
                        "file. Ending", in_file, timezone_name);
-            return(3);
+            return FALSE;
         }
         if (out_file) {
             g_warning ("when infile (%s) is directory, you can not specify "
                        "outfile name (%s), but it is copied from each in file. "
                        "Ending", in_file, out_file);
-            return(3);
+            return FALSE;
         }
     }
     else {
-        in_file_is_dir = 0;
+        in_file_is_dir = FALSE;
         if (!S_ISREG(in_stat.st_mode)) {
             g_warning ("in_file (%s) is not directory nor normal file. Ending",
                        in_file);
-            return(3);
+            return FALSE;
         }
     }
 
@@ -619,12 +637,12 @@ static int check_parameters(void)
     if (last_tz == NULL) {
         g_warning ("in_file name (%s) does not contain (%s). Ending", in_file,
                    tz);
-        return(4);
+        return FALSE;
     }
 
     in_file_base_offset = last_tz - in_file + 1; /* skip '/' */
 
-    if (!in_file_is_dir) {
+    if (in_file_is_dir == FALSE) {
         in_timezone_name = g_strdup(&in_file[in_file_base_offset + strlen(tz2)]);
         if (timezone_name == NULL)
             timezone_name = g_strdup(in_timezone_name);
@@ -637,21 +655,21 @@ static int check_parameters(void)
         excl_dir[1] = g_strdup("right");
     }
 
-    g_message ("Infile: (%s) %s", in_file,
+    g_message ("infile: '%s' is %s", in_file,
                in_file_is_dir ? "directory" : "normal file");
-    g_debug ("Year limit: %d", ignore_older);
-    g_debug ("Infile timezone: (%s)", in_timezone_name);
-    g_debug ("Outfile: (%s)", out_file);
-    g_debug ("Outfile timezone: (%s)", timezone_name);
-    g_debug ("Maximum exclude directory count: (%d)", excl_dir_cnt);
+    g_debug ("year limit: %d", ignore_older);
+    g_debug ("infile timezone: '%s'", in_timezone_name);
+    g_debug ("outfile: '%s'", out_file);
+    g_debug ("outfile timezone: '%s'", timezone_name);
+    g_debug ("maximum exclude directory count: %d", excl_dir_cnt);
 
     for (i = 0; (i <= excl_dir_cnt) && excl_dir[i]; i++)
-        g_debug ("exclude directory %d: (%s)" , i, excl_dir[i]);
+        g_debug ("exclude directory %d: '%s'" , i, excl_dir[i]);
 
-    return(0); /* continue */
+    return TRUE;
 }
 
-static void read_os_timezones(void)
+static gboolean read_os_timezones (void)
 {
     char *tz_dir, *zone_tab_file_name;
     int zoneinfo_len=strlen("zoneinfo/");
@@ -661,7 +679,7 @@ static void read_os_timezones(void)
 
     /****** zone.tab file ******/
     if (zone_tab_buf) {
-        return;
+        return TRUE;
     }
 
     len = in_file_base_offset + zoneinfo_len + 1;
@@ -677,18 +695,18 @@ static void read_os_timezones(void)
 
     g_free(tz_dir);
 
-    if (!(zone_tab_file = fopen(zone_tab_file_name, "r"))) {
+    if (!(zone_tab_file = g_fopen (zone_tab_file_name, "r"))) {
         g_warning ("zone.tab file open failed (%s): %s", zone_tab_file_name,
                    g_strerror (errno));
         g_free(zone_tab_file_name);
-        return;
+        return FALSE;
     }
-    if (stat(zone_tab_file_name, &zone_tab_file_stat) == -1) {
+    if (g_stat (zone_tab_file_name, &zone_tab_file_stat) == -1) {
         g_warning ("zone.tab file stat failed (%s): %s", zone_tab_file_name,
                    g_strerror (errno));
         g_free(zone_tab_file_name);
         fclose(zone_tab_file);
-        return;
+        return FALSE;
     }
     zone_tab_buf = g_new(char, zone_tab_file_stat.st_size+1);
     if (((off_t)fread(zone_tab_buf, 1, zone_tab_file_stat.st_size, zone_tab_file) < zone_tab_file_stat.st_size)
@@ -697,14 +715,16 @@ static void read_os_timezones(void)
                    g_strerror (errno));
         g_free(zone_tab_file_name);
         fclose(zone_tab_file);
-        return;
+        return FALSE;
     }
     zone_tab_buf[zone_tab_file_stat.st_size] = '\0';
     g_free(zone_tab_file_name);
     fclose(zone_tab_file);
+
+    return TRUE;
 }
 
-static void read_countries(void)
+static gboolean read_countries (void)
 {
     char *tz_dir, *country_file_name;
     int zoneinfo_len=strlen("zoneinfo/");
@@ -714,7 +734,7 @@ static void read_countries(void)
 
     /****** country=iso3166.tab file ******/
     if (country_buf) { /* we have read it already */
-        return;
+        return TRUE;
     }
 
     len = in_file_base_offset + zoneinfo_len + 1;
@@ -733,18 +753,18 @@ static void read_countries(void)
     g_strlcat (country_file_name, COUNTRY_FILE, len);
     g_free(tz_dir);
 
-    if (!(country_file = fopen(country_file_name, "r"))) {
+    if (!(country_file = g_fopen (country_file_name, "r"))) {
         g_warning ("iso3166.tab file open failed (%s): %s", country_file_name,
                    g_strerror (errno));
         g_free(country_file_name);
-        return;
+        return FALSE;
     }
-    if (stat(country_file_name, &country_file_stat) == -1) {
+    if (g_stat (country_file_name, &country_file_stat) == -1) {
         g_warning ("iso3166.tab file stat failed (%s): %s", country_file_name,
                    g_strerror (errno));
         g_free(country_file_name);
         fclose(country_file);
-        return;
+        return FALSE;
     }
     country_buf = g_new(char, country_file_stat.st_size+1);
     if (((off_t)fread(country_buf, 1, country_file_stat.st_size, country_file) < country_file_stat.st_size)
@@ -753,82 +773,100 @@ static void read_countries(void)
                    g_strerror (errno));
         g_free(country_file_name);
         fclose(country_file);
-        return;
+        return FALSE;
     }
     country_buf[country_file_stat.st_size] = '\0';
     g_free(country_file_name);
     fclose(country_file);
+    return TRUE;
 }
 
 orage_timezone_array get_orage_timezones(int show_details, int ical)
 {
 #ifdef FTW_ACTIONRETVAL
-    int tz_array_size = 1000; /* FIXME: this needs to be counted */
+    const guint tz_array_size = 1000; /* FIXME: this needs to be counted */
+    const int nftw_flags = FTW_PHYS | FTW_ACTIONRETVAL;
 #else
-    int tz_array_size = 2000; /* BSD can not skip unneeded directories */
+    const guint tz_array_size = 2000; /* BSD can not skip unneeded directories */
+    const int nftw_flags = FTW_PHYS;
 #endif
 
     details = show_details;
     check_ical = ical;
-    if (tz_array.count == 0) {
-        tz_array.city = g_new(char *, tz_array_size+2);
-        tz_array.utc_offset = g_new(int, tz_array_size+2);
-        tz_array.dst = g_new(int, tz_array_size+2);
-        tz_array.tz = g_new(char *, tz_array_size+2);
-        tz_array.prev = g_new(char *, tz_array_size+2);
-        tz_array.next = g_new(char *, tz_array_size+2);
-        tz_array.next_utc_offset = g_new(int, tz_array_size+2);
-        tz_array.country = g_new(char *, tz_array_size+2);
-        tz_array.cc = g_new(char *, tz_array_size+2);
-        check_parameters();
 
-        g_debug ("Processing %s files", in_file);
+    if (tz_array.count)
+        return tz_array;
 
-        if (details) {
-            read_os_timezones();
-            read_countries();
-        }
-        if (check_ical)
-            read_os_timezones();
+    tz_array.city = g_new (char *, tz_array_size+2);
+    tz_array.utc_offset = g_new (int, tz_array_size+2);
+    tz_array.dst = g_new (int, tz_array_size+2);
+    tz_array.tz = g_new (char *, tz_array_size+2);
+    tz_array.prev = g_new (char *, tz_array_size+2);
+    tz_array.next = g_new (char *, tz_array_size+2);
+    tz_array.next_utc_offset = g_new (int, tz_array_size+2);
+    tz_array.country = g_new (char *, tz_array_size+2);
+    tz_array.cc = g_new (char *, tz_array_size+2);
 
-    /* nftw goes through the whole file structure and calls "file_call"
-     * with each file. It returns 0 when everything has been done and -1
-     * if it run into an error. 
-     * BSD lacks FTW_ACTIONRETVAL, so we only use it when available. */
-#ifdef FTW_ACTIONRETVAL
-        if (nftw(in_file, file_call, 10, FTW_PHYS | FTW_ACTIONRETVAL) == -1) {
-#else
-        if (nftw(in_file, file_call, 10, FTW_PHYS) == -1) {
-#endif
-            g_critical ("nftw error in file handling: %s", g_strerror (errno));
-            exit(EXIT_FAILURE);
-        }
+    if (check_parameters () == FALSE)
+        goto out;
 
-        g_message ("Processed %d timezone files from (%s)", file_cnt, in_file);
+    g_debug ("processing files from '%s'", in_file);
 
-        g_free(in_file);
+    if (details)
+    {
+        if (read_os_timezones () == FALSE)
+            goto out;
 
-        tz_array.utc_offset[tz_array.count] = 0;
-        tz_array.dst[tz_array.count] = 0;
-        tz_array.tz[tz_array.count] = g_strdup("UTC");
-        tz_array.prev[tz_array.count] = NULL;
-        tz_array.next[tz_array.count] = NULL;
-        tz_array.next_utc_offset[tz_array.count] = 0;
-        tz_array.country[tz_array.count] = NULL;
-        tz_array.cc[tz_array.count] = NULL;
-        tz_array.city[tz_array.count++] = g_strdup("UTC");
-
-        tz_array.utc_offset[tz_array.count] = 0;
-        tz_array.dst[tz_array.count] = 0;
-        tz_array.tz[tz_array.count] = NULL;
-        tz_array.prev[tz_array.count] = NULL;
-        tz_array.next[tz_array.count] = NULL;
-        tz_array.next_utc_offset[tz_array.count] = 0;
-        tz_array.country[tz_array.count] = NULL;
-        tz_array.cc[tz_array.count] = NULL;
-        tz_array.city[tz_array.count++] = g_strdup("floating");
+        if (read_countries () == FALSE)
+            goto out;
     }
-    return(tz_array);
+
+    if (check_ical)
+    {
+        if (read_os_timezones () == FALSE)
+            goto out;
+    }
+
+    /* nftw goes through the whole file structure and calls "file_call" with
+     * each file. It returns 0 when everything has been done and -1 if it run
+     * into an error.
+     */
+    if (nftw (in_file, file_call, 10, nftw_flags) == -1)
+    {
+        g_critical ("nftw error in file handling: %s", g_strerror (errno));
+        exit (EXIT_FAILURE);
+    }
+
+    g_message ("processed %d timezone file(s) from '%s'",
+               number_of_proccessed_files, in_file);
+
+out:
+    g_debug ("adding default timezone entries");
+    g_free (in_file);
+
+    tz_array.utc_offset[tz_array.count] = 0;
+    tz_array.dst[tz_array.count] = 0;
+    tz_array.tz[tz_array.count] = g_strdup ("UTC");
+    tz_array.prev[tz_array.count] = NULL;
+    tz_array.next[tz_array.count] = NULL;
+    tz_array.next_utc_offset[tz_array.count] = 0;
+    tz_array.country[tz_array.count] = NULL;
+    tz_array.cc[tz_array.count] = NULL;
+    tz_array.city[tz_array.count] = g_strdup ("UTC");
+    tz_array.count++;
+
+    tz_array.utc_offset[tz_array.count] = 0;
+    tz_array.dst[tz_array.count] = 0;
+    tz_array.tz[tz_array.count] = NULL;
+    tz_array.prev[tz_array.count] = NULL;
+    tz_array.next[tz_array.count] = NULL;
+    tz_array.next_utc_offset[tz_array.count] = 0;
+    tz_array.country[tz_array.count] = NULL;
+    tz_array.cc[tz_array.count] = NULL;
+    tz_array.city[tz_array.count] = g_strdup ("floating");
+    tz_array.count++;
+
+    return tz_array;
 }
 
 void free_orage_timezones (void)
@@ -872,5 +910,5 @@ void free_orage_timezones (void)
         g_free(zones_tab_buf);
         zones_tab_buf = NULL;
     }
-    file_cnt = 0; /* number of processed files */
+    number_of_proccessed_files = 0;
 }

@@ -8,6 +8,7 @@
 # Davidmp <medipas@gmail.com>, 2022
 # Nick Schermer <nick@xfce.org>, 2022
 # Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2023
+# Oscar Perez <oscarpc@gmail.com>, 2024
 # 
 #, fuzzy
 msgid ""
@@ -16,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-03 00:49+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2023\n"
+"Last-Translator: Oscar Perez <oscarpc@gmail.com>, 2024\n"
 "Language-Team: Catalan (https://app.transifex.com/xfce/teams/16840/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -101,7 +102,7 @@ msgstr "Començament"
 
 #: ../src/day-view.c:841
 msgid "Number of days to show"
-msgstr ""
+msgstr "Nombre de dies a mostrar"
 
 #: ../src/day-view.c:1072
 msgid "Orage - day view"
@@ -205,6 +206,8 @@ msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed."
 msgstr ""
+"Marqueu això si també voleu veure els esdeveniments anteriors. Només es pot seleccionar després d'habilitar \"únicament la primera repetició\" per evitar llistes llargues.\n"
+"Tingueu en compte que la selecció de més dies encara defineix si es llisten cites noves."
 
 #: ../src/event-list.c:1339 ../src/orage-appointment-window.c:3597
 msgid "Todo"
@@ -381,7 +384,7 @@ msgstr "Totes les cites"
 
 #: ../src/interface.c:1142
 msgid "Named appointments:"
-msgstr ""
+msgstr "Cites amb nom:"
 
 #: ../src/interface.c:1161
 msgid ""
@@ -415,7 +418,7 @@ msgstr "Arxiu"
 #: ../src/interface.c:1184 ../src/interface.c:1206
 #: ../src/orage-appointment-window.c:4108
 msgid "_Execute"
-msgstr ""
+msgstr "_Executa"
 
 #: ../src/interface.c:1190
 #, c-format
@@ -543,6 +546,8 @@ msgstr "Orage"
 #: ../src/orage-about.c:44 ../org.xfce.orage.appdata.xml.in.h:2
 msgid "Orage is a time-managing application for the Xfce desktop environment"
 msgstr ""
+"L'Orage és una aplicació de gestió del temps per a l'entorn d'escriptori "
+"Xfce"
 
 #: ../src/orage-about.c:51
 msgid "translator-credits"
@@ -598,40 +603,40 @@ msgstr "\tSense utilitzar l'arxivament.\n"
 #: ../src/orage-application.c:128
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
-msgstr ""
+msgstr "\tUsant libxfce4ui: sí\n"
 
 #: ../src/orage-application.c:130
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
-msgstr ""
+msgstr "\tUsant libxfce4ui: no\n"
 
 #: ../src/orage-application.c:516
 msgid "Show version of orage"
-msgstr ""
+msgstr "Mostra la versió de l'Orage"
 
 #: ../src/orage-application.c:525
 msgid "Show preferences form"
-msgstr ""
+msgstr "Mostra el diàleg de preferències"
 
 #: ../src/orage-application.c:534
 msgid "Make Orage visible/unvisible"
-msgstr ""
+msgstr "Fes visible/invisible l'Orage"
 
 #: ../src/orage-application.c:543
 msgid "Add a foreign file"
-msgstr ""
+msgstr "Afegeix un fitxer extern"
 
 #: ../src/orage-application.c:552
 msgid "Remove a foreign file"
-msgstr ""
+msgstr "Elimina un fitxer extern"
 
 #: ../src/orage-application.c:561
 msgid "Import appointments from file to Orage"
-msgstr ""
+msgstr "Importa les cites d'un fitxer a l'Orage"
 
 #: ../src/orage-application.c:570
 msgid "Export appointments from Orage to file"
-msgstr ""
+msgstr "Exporta les cites de l'Orage a un fitxer"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -736,7 +741,7 @@ msgstr "Colors de les categories - Orage"
 
 #: ../src/orage-appointment-window.c:2512
 msgid "*** COPY ***"
-msgstr ""
+msgstr "*** CÒPIA ***"
 
 #: ../src/orage-appointment-window.c:2565
 #: ../src/orage-appointment-window.c:3874
@@ -769,62 +774,62 @@ msgstr "D_esa i tanca"
 
 #: ../src/orage-appointment-window.c:3233
 msgid "first"
-msgstr ""
+msgstr "primer"
 
 #: ../src/orage-appointment-window.c:3233
 msgid "second"
-msgstr ""
+msgstr "segon"
 
 #: ../src/orage-appointment-window.c:3233
 msgid "third"
-msgstr ""
+msgstr "tercer"
 
 #: ../src/orage-appointment-window.c:3233
 msgid "fourth"
-msgstr ""
+msgstr "quart"
 
 #: ../src/orage-appointment-window.c:3233
 msgid "last"
-msgstr ""
+msgstr "darrer"
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Monday"
-msgstr ""
+msgstr "Dilluns"
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Tuesday"
-msgstr ""
+msgstr "Dimarts"
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Wednesday"
-msgstr ""
+msgstr "Dimecres"
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Thursday"
-msgstr ""
+msgstr "Dijous"
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Friday"
-msgstr ""
+msgstr "Divendres"
 
 #: ../src/orage-appointment-window.c:3244
 msgid "Saturday"
-msgstr ""
+msgstr "Dissabte"
 
 #: ../src/orage-appointment-window.c:3244
 msgid "Sunday"
-msgstr ""
+msgstr "Diumenge"
 
 #: ../src/orage-appointment-window.c:3257
 #: ../src/orage-appointment-window.c:3290
 #: ../src/orage-appointment-window.c:3397
 #: ../src/orage-appointment-window.c:3431
 msgid "Every"
-msgstr ""
+msgstr "Cada"
 
 #: ../src/orage-appointment-window.c:3262
 msgid "day(s)"
-msgstr ""
+msgstr "dia(es)"
 
 #: ../src/orage-appointment-window.c:3279
 msgid "Mon"
@@ -856,67 +861,67 @@ msgstr "dg."
 
 #: ../src/orage-appointment-window.c:3297
 msgid "week(s) on:"
-msgstr ""
+msgstr "setmana(es) el:"
 
 #: ../src/orage-appointment-window.c:3333
 msgid "From the beginning of the month:"
-msgstr ""
+msgstr "Des de l'inici del mes:"
 
 #: ../src/orage-appointment-window.c:3346
 msgid "From the end of the month:"
-msgstr ""
+msgstr "Des del final del mes:"
 
 #: ../src/orage-appointment-window.c:3359
 msgid "Every:"
-msgstr ""
+msgstr "Cada:"
 
 #: ../src/orage-appointment-window.c:3387
 msgid "January"
-msgstr ""
+msgstr "Gener"
 
 #: ../src/orage-appointment-window.c:3387
 msgid "February"
-msgstr ""
+msgstr "Febrer"
 
 #: ../src/orage-appointment-window.c:3387
 msgid "March"
-msgstr ""
+msgstr "Març"
 
 #: ../src/orage-appointment-window.c:3387
 msgid "April"
-msgstr ""
+msgstr "Abril"
 
 #: ../src/orage-appointment-window.c:3387
 msgid "May"
-msgstr ""
+msgstr "Maig"
 
 #: ../src/orage-appointment-window.c:3388
 msgid "June"
-msgstr ""
+msgstr "Juny"
 
 #: ../src/orage-appointment-window.c:3388
 msgid "July"
-msgstr ""
+msgstr "Juliol"
 
 #: ../src/orage-appointment-window.c:3388
 msgid "August"
-msgstr ""
+msgstr "Agost"
 
 #: ../src/orage-appointment-window.c:3388
 msgid "September"
-msgstr ""
+msgstr "Setembre"
 
 #: ../src/orage-appointment-window.c:3388
 msgid "October"
-msgstr ""
+msgstr "Octubre"
 
 #: ../src/orage-appointment-window.c:3389
 msgid "November"
-msgstr ""
+msgstr "Novembre"
 
 #: ../src/orage-appointment-window.c:3389
 msgid "December"
-msgstr ""
+msgstr "Desembre"
 
 #. TRANSLATORS: this string is part of date line, for example
 #. * "second Thursday of August". In some languages ​​it is not necessary to
@@ -924,11 +929,11 @@ msgstr ""
 #. * the string "of", it can be replaced with an empty string.
 #: ../src/orage-appointment-window.c:3405
 msgid "of"
-msgstr ""
+msgstr "de"
 
 #: ../src/orage-appointment-window.c:3436
 msgid "hour(s)"
-msgstr ""
+msgstr "hora(es)"
 
 #: ../src/orage-appointment-window.c:3472
 msgid "Repeat forever"
@@ -945,7 +950,7 @@ msgstr "vegad(a/es)"
 
 #: ../src/orage-appointment-window.c:3491
 msgid "Repeat until"
-msgstr ""
+msgstr "Repeteix fins"
 
 #. completed (only for TODO)
 #: ../src/orage-appointment-window.c:3514
@@ -1035,7 +1040,7 @@ msgstr "Tot el dia"
 
 #: ../src/orage-appointment-window.c:3656
 msgid "Set"
-msgstr ""
+msgstr "Estableix"
 
 #: ../src/orage-appointment-window.c:3680
 msgid "Duration"
@@ -1080,7 +1085,7 @@ msgstr ""
 
 #: ../src/orage-appointment-window.c:3755
 msgid "_Colour"
-msgstr ""
+msgstr "_Color"
 
 #: ../src/orage-appointment-window.c:3760
 msgid "update colors for categories."
@@ -1119,6 +1124,14 @@ msgid ""
 "    <&Ynnnn> is translated to current year minus nnnn.\n"
 "(This can be used for example in birthday reminders to tell how old the person will be.)"
 msgstr ""
+"Aquestes abreviatures tenen efecte immediatament:\n"
+"    <D> insereix la data actual amb el format de l'hora local\n"
+"    <T> insereix l'hora\n"
+"    <DT> insereix la data i hora.\n"
+"\n"
+"Aquestes es converteixen únicament després, quan es mostrin:\n"
+"    <&Ynnnn> es tradueix com l'any actual menys «nnnn».\n"
+"(Es poden utilitzar, per exemple, com a recordatoris d'aniversaris perquè us digui quants anys farà la persona)."
 
 #: ../src/orage-appointment-window.c:3883
 msgid "Alarm"
@@ -1168,7 +1181,7 @@ msgstr "Seleccioneu-ho si voleu que l'alarma sigui audible"
 
 #: ../src/orage-appointment-window.c:3948
 msgid "Sound command is not set"
-msgstr ""
+msgstr "La comanda per al so no està establerta"
 
 #: ../src/orage-appointment-window.c:3977
 msgid "Repeat alarm sound"

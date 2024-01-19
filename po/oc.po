@@ -6,8 +6,8 @@
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2022
 # Andre Miranda <andre@andreldm.com>, 2022
-# Quentin PAGÈS, 2023
 # Cédric Valmary <cvalmary@yahoo.fr>, 2023
+# Quentin PAGÈS, 2023
 # 
 #, fuzzy
 msgid ""
@@ -16,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-03 00:49+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Cédric Valmary <cvalmary@yahoo.fr>, 2023\n"
+"Last-Translator: Quentin PAGÈS, 2023\n"
 "Language-Team: Occitan (post 1500) (https://app.transifex.com/xfce/teams/16840/oc/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -101,7 +101,7 @@ msgstr "Començament"
 
 #: ../src/day-view.c:841
 msgid "Number of days to show"
-msgstr ""
+msgstr "Nom de jorns d’afichar"
 
 #: ../src/day-view.c:1072
 msgid "Orage - day view"
@@ -413,7 +413,7 @@ msgstr "Archiu"
 #: ../src/interface.c:1184 ../src/interface.c:1206
 #: ../src/orage-appointment-window.c:4108
 msgid "_Execute"
-msgstr ""
+msgstr "_Executar"
 
 #: ../src/interface.c:1190
 #, c-format
@@ -786,42 +786,42 @@ msgstr ""
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Monday"
-msgstr ""
+msgstr "Diluns"
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Tuesday"
-msgstr ""
+msgstr "Dimars"
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Wednesday"
-msgstr ""
+msgstr "Dimècres"
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Thursday"
-msgstr ""
+msgstr "Dijòus"
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Friday"
-msgstr ""
+msgstr "Divendres"
 
 #: ../src/orage-appointment-window.c:3244
 msgid "Saturday"
-msgstr ""
+msgstr "Dissabte"
 
 #: ../src/orage-appointment-window.c:3244
 msgid "Sunday"
-msgstr ""
+msgstr "Dimenge"
 
 #: ../src/orage-appointment-window.c:3257
 #: ../src/orage-appointment-window.c:3290
 #: ../src/orage-appointment-window.c:3397
 #: ../src/orage-appointment-window.c:3431
 msgid "Every"
-msgstr ""
+msgstr "Cada"
 
 #: ../src/orage-appointment-window.c:3262
 msgid "day(s)"
-msgstr ""
+msgstr "jorn(s)"
 
 #: ../src/orage-appointment-window.c:3279
 msgid "Mon"
@@ -865,55 +865,55 @@ msgstr ""
 
 #: ../src/orage-appointment-window.c:3359
 msgid "Every:"
-msgstr ""
+msgstr "Cada :"
 
 #: ../src/orage-appointment-window.c:3387
 msgid "January"
-msgstr ""
+msgstr "Genièr"
 
 #: ../src/orage-appointment-window.c:3387
 msgid "February"
-msgstr ""
+msgstr "Febrièr"
 
 #: ../src/orage-appointment-window.c:3387
 msgid "March"
-msgstr ""
+msgstr "Març"
 
 #: ../src/orage-appointment-window.c:3387
 msgid "April"
-msgstr ""
+msgstr "Abril"
 
 #: ../src/orage-appointment-window.c:3387
 msgid "May"
-msgstr ""
+msgstr "Mai"
 
 #: ../src/orage-appointment-window.c:3388
 msgid "June"
-msgstr ""
+msgstr "Junh"
 
 #: ../src/orage-appointment-window.c:3388
 msgid "July"
-msgstr ""
+msgstr "Julhet"
 
 #: ../src/orage-appointment-window.c:3388
 msgid "August"
-msgstr ""
+msgstr "Agost"
 
 #: ../src/orage-appointment-window.c:3388
 msgid "September"
-msgstr ""
+msgstr "Setembre"
 
 #: ../src/orage-appointment-window.c:3388
 msgid "October"
-msgstr ""
+msgstr "Octòbre"
 
 #: ../src/orage-appointment-window.c:3389
 msgid "November"
-msgstr ""
+msgstr "Novembre"
 
 #: ../src/orage-appointment-window.c:3389
 msgid "December"
-msgstr ""
+msgstr "Decembre"
 
 #. TRANSLATORS: this string is part of date line, for example
 #. * "second Thursday of August". In some languages ​​it is not necessary to
@@ -1031,7 +1031,7 @@ msgstr "Eveniment del quotidian"
 
 #: ../src/orage-appointment-window.c:3656
 msgid "Set"
-msgstr ""
+msgstr "Definir"
 
 #: ../src/orage-appointment-window.c:3680
 msgid "Duration"
@@ -1076,7 +1076,7 @@ msgstr ""
 
 #: ../src/orage-appointment-window.c:3755
 msgid "_Colour"
-msgstr ""
+msgstr "_Color"
 
 #: ../src/orage-appointment-window.c:3760
 msgid "update colors for categories."
@@ -1348,15 +1348,15 @@ msgstr "Datas de las accions"
 
 #: ../src/orage-sync-edit-dialog.c:132
 msgid "Description:"
-msgstr ""
+msgstr "Descripcion :"
 
 #: ../src/orage-sync-edit-dialog.c:134
 msgid "Command:"
-msgstr ""
+msgstr "Comanda :"
 
 #: ../src/orage-sync-edit-dialog.c:136
 msgid "Period:"
-msgstr ""
+msgstr "Periòde :"
 
 #: ../src/orage-sync-edit-dialog.c:138
 msgid "minutes"
@@ -1714,7 +1714,7 @@ msgstr "Preferéncias d'Orage"
 
 #: ../src/reminder.c:419
 msgid "Reminder"
-msgstr ""
+msgstr "Rapèl"
 
 #: ../src/reminder.c:442
 msgid "Open"
@@ -1722,7 +1722,7 @@ msgstr "Dobrir"
 
 #: ../src/reminder.c:447
 msgid "Silence"
-msgstr ""
+msgstr "Silenci"
 
 #: ../src/reminder.c:565
 msgid "Reminder - Orage"
@@ -1730,7 +1730,7 @@ msgstr "Rapèl - Orage"
 
 #: ../src/reminder.c:648
 msgid "_Stop"
-msgstr ""
+msgstr "_Arrestar"
 
 #: ../src/reminder.c:656
 msgid "Postpone"

@@ -7,7 +7,7 @@
 # Xfce Bot <transifex@xfce.org>, 2022
 # Nick Schermer <nick@xfce.org>, 2022
 # Erkki Moorits, 2023
-# Priit Jõerüüt <transifex@joeruut.com>, 2023
+# Priit Jõerüüt <transifex@joeruut.com>, 2024
 # 
 #, fuzzy
 msgid ""
@@ -16,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-03 00:49+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Priit Jõerüüt <transifex@joeruut.com>, 2023\n"
+"Last-Translator: Priit Jõerüüt <transifex@joeruut.com>, 2024\n"
 "Language-Team: Estonian (https://app.transifex.com/xfce/teams/16840/et/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -767,62 +767,62 @@ msgstr "Salv_esta ja sulge"
 
 #: ../src/orage-appointment-window.c:3233
 msgid "first"
-msgstr ""
+msgstr "esimene"
 
 #: ../src/orage-appointment-window.c:3233
 msgid "second"
-msgstr ""
+msgstr "teine"
 
 #: ../src/orage-appointment-window.c:3233
 msgid "third"
-msgstr ""
+msgstr "kolmas"
 
 #: ../src/orage-appointment-window.c:3233
 msgid "fourth"
-msgstr ""
+msgstr "neljas"
 
 #: ../src/orage-appointment-window.c:3233
 msgid "last"
-msgstr ""
+msgstr "viimane"
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Monday"
-msgstr ""
+msgstr "esmaspäev"
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Tuesday"
-msgstr ""
+msgstr "teisipäev"
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Wednesday"
-msgstr ""
+msgstr "kolmapäev"
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Thursday"
-msgstr ""
+msgstr "neljapäev"
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Friday"
-msgstr ""
+msgstr "reede"
 
 #: ../src/orage-appointment-window.c:3244
 msgid "Saturday"
-msgstr ""
+msgstr "laupäev"
 
 #: ../src/orage-appointment-window.c:3244
 msgid "Sunday"
-msgstr ""
+msgstr "pühapäev"
 
 #: ../src/orage-appointment-window.c:3257
 #: ../src/orage-appointment-window.c:3290
 #: ../src/orage-appointment-window.c:3397
 #: ../src/orage-appointment-window.c:3431
 msgid "Every"
-msgstr ""
+msgstr "iga"
 
 #: ../src/orage-appointment-window.c:3262
 msgid "day(s)"
-msgstr ""
+msgstr "päev(a)"
 
 #: ../src/orage-appointment-window.c:3279
 msgid "Mon"
@@ -854,67 +854,67 @@ msgstr "Pühap"
 
 #: ../src/orage-appointment-window.c:3297
 msgid "week(s) on:"
-msgstr ""
+msgstr "nädala kestel:"
 
 #: ../src/orage-appointment-window.c:3333
 msgid "From the beginning of the month:"
-msgstr ""
+msgstr "Kuu algusest:"
 
 #: ../src/orage-appointment-window.c:3346
 msgid "From the end of the month:"
-msgstr ""
+msgstr "Kuu lõpust:"
 
 #: ../src/orage-appointment-window.c:3359
 msgid "Every:"
-msgstr ""
+msgstr "Iga:"
 
 #: ../src/orage-appointment-window.c:3387
 msgid "January"
-msgstr ""
+msgstr "Jaanuar"
 
 #: ../src/orage-appointment-window.c:3387
 msgid "February"
-msgstr ""
+msgstr "Veebruar"
 
 #: ../src/orage-appointment-window.c:3387
 msgid "March"
-msgstr ""
+msgstr "Märts"
 
 #: ../src/orage-appointment-window.c:3387
 msgid "April"
-msgstr ""
+msgstr "Aprill"
 
 #: ../src/orage-appointment-window.c:3387
 msgid "May"
-msgstr ""
+msgstr "Mai"
 
 #: ../src/orage-appointment-window.c:3388
 msgid "June"
-msgstr ""
+msgstr "Juuni"
 
 #: ../src/orage-appointment-window.c:3388
 msgid "July"
-msgstr ""
+msgstr "Juuli"
 
 #: ../src/orage-appointment-window.c:3388
 msgid "August"
-msgstr ""
+msgstr "August"
 
 #: ../src/orage-appointment-window.c:3388
 msgid "September"
-msgstr ""
+msgstr "September"
 
 #: ../src/orage-appointment-window.c:3388
 msgid "October"
-msgstr ""
+msgstr "Oktoober"
 
 #: ../src/orage-appointment-window.c:3389
 msgid "November"
-msgstr ""
+msgstr "November"
 
 #: ../src/orage-appointment-window.c:3389
 msgid "December"
-msgstr ""
+msgstr "Detsember"
 
 #. TRANSLATORS: this string is part of date line, for example
 #. * "second Thursday of August". In some languages ​​it is not necessary to
@@ -922,11 +922,11 @@ msgstr ""
 #. * the string "of", it can be replaced with an empty string.
 #: ../src/orage-appointment-window.c:3405
 msgid "of"
-msgstr ""
+msgstr "/"
 
 #: ../src/orage-appointment-window.c:3436
 msgid "hour(s)"
-msgstr ""
+msgstr "tund(i)"
 
 #: ../src/orage-appointment-window.c:3472
 msgid "Repeat forever"
@@ -943,7 +943,7 @@ msgstr "korda"
 
 #: ../src/orage-appointment-window.c:3491
 msgid "Repeat until"
-msgstr ""
+msgstr "Korda kuni "
 
 #. completed (only for TODO)
 #: ../src/orage-appointment-window.c:3514
