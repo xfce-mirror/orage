@@ -119,13 +119,10 @@ static void on_orage_quit_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
 static void on_new_appointment_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
                                          G_GNUC_UNUSED gpointer user_data)
 {
-    GDateTime *gdt;
     GtkWidget *appointment_window;
 
-    gdt = g_date_time_new_now_local ();
-    appointment_window = orage_appointment_window_new (gdt);
+    appointment_window = orage_appointment_window_new_now ();
     gtk_window_present (GTK_WINDOW (appointment_window));
-    g_date_time_unref (gdt);
 }
 
 static void toggle_visible_cb (G_GNUC_UNUSED GtkStatusIcon *status_icon,
