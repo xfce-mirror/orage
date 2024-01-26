@@ -284,6 +284,11 @@ static void orage_application_activate (GApplication *app)
         gtk_widget_hide (window);
     else
         gtk_widget_show (window);
+
+    self->toggle_option = FALSE;
+    self->preferences_option = FALSE;
+    self->new_appointment_option = FALSE;
+    self->today_option = FALSE;
 }
 
 static void orage_application_shutdown (GApplication *app)
