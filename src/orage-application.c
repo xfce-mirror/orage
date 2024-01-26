@@ -543,10 +543,10 @@ static void orage_application_class_init (OrageApplicationClass *klass)
     application_class = G_APPLICATION_CLASS (klass);
     application_class->startup = orage_application_startup;
     application_class->activate = orage_application_activate;
-    application_class->shutdown = orage_application_shutdown;
     application_class->open = orage_application_open;
-    application_class->handle_local_options = orage_application_handle_local_options;
     application_class->command_line = orage_application_command_line;
+    application_class->shutdown = orage_application_shutdown;
+    application_class->handle_local_options = orage_application_handle_local_options;
 }
 
 static void orage_application_init (OrageApplication *application)
