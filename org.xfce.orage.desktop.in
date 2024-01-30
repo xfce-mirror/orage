@@ -10,3 +10,16 @@ Terminal=false
 Type=Application
 Categories=X-XFCE;Office;Calendar;GTK;
 _GenericName=Calendar
+Actions=Today;NewAppointment;Preferences;
+
+[Desktop Action Today]
+_Name=Show Today
+Exec=orage --today
+
+[Desktop Action NewAppointment]
+_Name=New Appointment
+Exec=orage --new-appointment
+
+[Desktop Action Preferences]
+_Name=Orage Preferences
+Exec=orage --preferences
