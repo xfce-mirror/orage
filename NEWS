@@ -12,7 +12,7 @@
 - Fixed memory leak and error handling when timezone info loading fails.
   (MR !56)
 - Added support for TZDIR environment variable (Issue #28).
-- Added desktop actions for 'today' and 'new appointment' (MR !57)
+- Added desktop actions for 'today' and 'new appointment' (MR !58)
 
 4.18.0 (2023-02-08)
 ======
