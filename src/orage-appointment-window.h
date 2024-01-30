@@ -34,6 +34,11 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (OrageAppointmentWindow, orage_appointment_window, ORAGE, APPOINTMENT_WINDOW, GtkWindow)
 
 GtkWidget *orage_appointment_window_new (GDateTime *gdt);
+
+/** Create new appointment window to current time.
+ *  @return appointment window
+ */
+GtkWidget *orage_appointment_window_new_now (void);
 GtkWidget *orage_appointment_window_new_copy (const gchar *uid);
 GtkWidget *orage_appointment_window_new_update (const gchar *uid);
 
