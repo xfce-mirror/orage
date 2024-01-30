@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-03 00:49+0100\n"
+"POT-Creation-Date: 2024-01-30 12:48+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>, 2023\n"
 "Language-Team: Turkish (https://app.transifex.com/xfce/teams/16840/tr/)\n"
@@ -63,7 +63,7 @@ msgstr "Bir gün geri"
 #: ../src/day-view.c:395 ../src/day-view.c:468 ../src/event-list.c:1080
 #: ../src/event-list.c:1234 ../src/functions.c:145
 #: ../src/orage-appointment-window.c:1737
-#: ../src/orage-appointment-window.c:1752 ../src/tray_icon.c:410
+#: ../src/orage-appointment-window.c:1752 ../src/tray_icon.c:407
 msgid "Today"
 msgstr "Bugün"
 
@@ -557,7 +557,7 @@ msgstr ""
 "Serdar Sağlam\n"
 "Emin Tufan Çetin"
 
-#: ../src/orage-application.c:110
+#: ../src/orage-application.c:114
 #, c-format
 msgid ""
 "\tThis is %s version %s\n"
@@ -566,78 +566,86 @@ msgstr ""
 "\tBu %s sürüm %s\n"
 "\n"
 
-#: ../src/orage-application.c:112
+#: ../src/orage-application.c:116
 #, c-format
 msgid "\tReleased under the terms of the GNU General Public License.\n"
 msgstr "\tGNU Genel Kamu Lisansı hükümleri altında dağıtılmaktadır.\n"
 
-#: ../src/orage-application.c:113
+#: ../src/orage-application.c:117
 #, c-format
 msgid "\tCompiled against GTK+-%d.%d.%d, "
 msgstr "\tGTK+-%d.%d.%d sürümü kullanılarak derlenmiştir,"
 
-#: ../src/orage-application.c:115
+#: ../src/orage-application.c:119
 #, c-format
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "GTK+-%d.%d.%d kullanılıyor.\n"
 
-#: ../src/orage-application.c:118
+#: ../src/orage-application.c:122
 #, c-format
 msgid "\tUsing libnotify.\n"
 msgstr "\tlibnotify kullanılıyor.\n"
 
-#: ../src/orage-application.c:120
+#: ../src/orage-application.c:124
 #, c-format
 msgid "\tNot using libnotify.\n"
 msgstr "\tlibnotify kullanılmıyor.\n"
 
-#: ../src/orage-application.c:123
+#: ../src/orage-application.c:127
 #, c-format
 msgid "\tUsing automatic archiving.\n"
 msgstr "\tKendiliğinden arşivleme kullanılıyor.\n"
 
-#: ../src/orage-application.c:125
+#: ../src/orage-application.c:129
 #, c-format
 msgid "\tNot using archiving.\n"
 msgstr "\tArşivleme kullanılmıyor.\n"
 
-#: ../src/orage-application.c:128
+#: ../src/orage-application.c:132
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
 msgstr "\tlibxfce4ui kullanımı: evet\n"
 
-#: ../src/orage-application.c:130
+#: ../src/orage-application.c:134
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
 msgstr "\tlibxfce4ui kullanımı: hayır\n"
 
-#: ../src/orage-application.c:516
-msgid "Show version of orage"
-msgstr "Orage'nin sürümünü göster"
+#: ../src/orage-application.c:567
+msgid "Open today's tasks"
+msgstr ""
 
-#: ../src/orage-application.c:525
+#: ../src/orage-application.c:576
+msgid "Add new appointment"
+msgstr ""
+
+#: ../src/orage-application.c:585
 msgid "Show preferences form"
 msgstr "Tercihler formunu göster"
 
-#: ../src/orage-application.c:534
+#: ../src/orage-application.c:594
 msgid "Make Orage visible/unvisible"
 msgstr "Orage'yi görünür/gizli kıl"
 
-#: ../src/orage-application.c:543
+#: ../src/orage-application.c:603
 msgid "Add a foreign file"
 msgstr "Yabancı dosya ekle"
 
-#: ../src/orage-application.c:552
+#: ../src/orage-application.c:612
 msgid "Remove a foreign file"
 msgstr "Yabancı bir dosyayı kaldırın"
 
-#: ../src/orage-application.c:561
+#: ../src/orage-application.c:621
 msgid "Import appointments from file to Orage"
 msgstr "Randevuları dosyadan Orage'a aktarın"
 
-#: ../src/orage-application.c:570
+#: ../src/orage-application.c:630
 msgid "Export appointments from Orage to file"
 msgstr "Orage'deki görevleri dosyaya aktar"
+
+#: ../src/orage-application.c:639
+msgid "Show version of Orage"
+msgstr ""
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -1716,7 +1724,7 @@ msgstr "Senkronizasyon ayarları"
 msgid "Synchronization sources"
 msgstr "Senkronizasyon kaynakları"
 
-#: ../src/parameters.c:1431
+#: ../src/parameters.c:1431 ../org.xfce.orage.desktop.in.h:6
 msgid "Orage Preferences"
 msgstr "Orage Özellikleri"
 
@@ -4082,15 +4090,15 @@ msgstr "UTC"
 msgid "floating"
 msgstr "kayan"
 
-#: ../src/tray_icon.c:418
+#: ../src/tray_icon.c:415
 msgid "New appointment"
 msgstr "Yeni görevi"
 
-#: ../src/tray_icon.c:425
+#: ../src/tray_icon.c:422
 msgid "Preferences"
 msgstr "Tercihler"
 
-#: ../src/tray_icon.c:432
+#: ../src/tray_icon.c:429
 msgid "Quit"
 msgstr "Çık"
 
@@ -4140,3 +4148,11 @@ msgstr "Orage  Takvim"
 #: ../org.xfce.orage.desktop.in.h:2
 msgid "Desktop calendar"
 msgstr "Masaüstü takvimi"
+
+#: ../org.xfce.orage.desktop.in.h:4
+msgid "Show Today"
+msgstr ""
+
+#: ../org.xfce.orage.desktop.in.h:5
+msgid "New Appointment"
+msgstr ""
