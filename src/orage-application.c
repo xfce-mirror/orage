@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Erkki Moorits
+ * Copyright (c) 2023-2024 Erkki Moorits
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,6 +26,7 @@
 
 #include "reminder.h"
 #include "parameters.h"
+#include "orage-appointment-window.h"
 #include "orage-i18n.h"
 #include "orage-css.h"
 #include "orage-sleep-monitor.h"
@@ -33,6 +34,7 @@
 #include "interface.h"
 #include "ical-code.h"
 #include "functions.h"
+#include "event-list.h"
 #include <libxfce4util/libxfce4util.h>
 #include <gtk/gtk.h>
 #include <glib-2.0/gio/gapplication.h>
@@ -61,6 +63,8 @@ struct _OrageApplication
     guint prepare_for_sleep_id;
     gboolean toggle_option;
     gboolean preferences_option;
+    gboolean today_option;
+    gboolean new_appointment_option;
 };
 
 G_DEFINE_TYPE (OrageApplication, orage_application, GTK_TYPE_APPLICATION)
@@ -180,13 +184,35 @@ static void orage_application_startup (GApplication *app)
 #endif
 }
 
+static void open_new_appointment_window (void)
+{
+    GtkWidget *appointment_window;
+
+    appointment_window = orage_appointment_window_new_now ();
+    gtk_window_present (GTK_WINDOW (appointment_window));
+}
+
+static void orage_open_today_window (OrageWindow *window)
+{
+    GDateTime *gdt;
+
+    gdt = g_date_time_new_now_local ();
+    orage_select_date (orage_window_get_calendar (window), gdt);
+    g_date_time_unref (gdt);
+    (void)create_el_win (NULL);
+}
+
 static void orage_application_activate (GApplication *app)
 {
     GList *list;
     OrageApplication *self;
     GtkWidget *window;
+    gboolean hide_main_window;
 
     self = ORAGE_APPLICATION (app);
+    hide_main_window = self->preferences_option
+                     | self->new_appointment_option
+                     | self->today_option;
 
     list = gtk_application_get_windows (GTK_APPLICATION (app));
 
@@ -197,9 +223,12 @@ static void orage_application_activate (GApplication *app)
         {
             write_parameters ();
             gtk_widget_hide (GTK_WIDGET (list->data));
+            hide_main_window = TRUE;
         }
-        else
+        else if (hide_main_window == FALSE)
             raise_window (self);
+
+        window = self->window;
     }
     else
     {
@@ -217,18 +246,18 @@ static void orage_application_activate (GApplication *app)
         gtk_window_set_destroy_with_parent (GTK_WINDOW (window), TRUE);
 
         set_parameters ();
-        if (g_par.start_visible)
-            gtk_widget_show (window);
+        if (g_par.start_visible == FALSE)
+            hide_main_window = TRUE;
         else if (g_par.start_minimized)
         {
             gtk_window_iconify (GTK_WINDOW (window));
-            gtk_widget_show (window);
+            hide_main_window = TRUE;
         }
         else
         {
             /* hidden */
             gtk_widget_realize (window);
-            gtk_widget_hide (window);
+            hide_main_window = TRUE;
         }
 
         alarm_read ();
@@ -244,6 +273,22 @@ static void orage_application_activate (GApplication *app)
 
     if (self->preferences_option)
         show_parameters ();
+
+    if (self->new_appointment_option)
+        open_new_appointment_window ();
+
+    if (self->today_option)
+        orage_open_today_window (ORAGE_WINDOW (window));
+
+    if (hide_main_window)
+        gtk_widget_hide (window);
+    else
+        gtk_widget_show (window);
+
+    self->toggle_option = FALSE;
+    self->preferences_option = FALSE;
+    self->new_appointment_option = FALSE;
+    self->today_option = FALSE;
 }
 
 static void orage_application_shutdown (GApplication *app)
@@ -301,6 +346,12 @@ static gint orage_application_command_line (GApplication *app,
     OrageApplication *self = ORAGE_APPLICATION (app);
 
     options = g_application_command_line_get_options_dict (cmdline);
+
+    if (g_variant_dict_contains (options, "today"))
+        self->today_option = TRUE;
+
+    if (g_variant_dict_contains (options, "new-appointment"))
+        self->new_appointment_option = TRUE;
 
     if (g_variant_dict_contains (options, "preferences"))
         self->preferences_option = TRUE;
@@ -497,10 +548,10 @@ static void orage_application_class_init (OrageApplicationClass *klass)
     application_class = G_APPLICATION_CLASS (klass);
     application_class->startup = orage_application_startup;
     application_class->activate = orage_application_activate;
-    application_class->shutdown = orage_application_shutdown;
     application_class->open = orage_application_open;
-    application_class->handle_local_options = orage_application_handle_local_options;
     application_class->command_line = orage_application_command_line;
+    application_class->shutdown = orage_application_shutdown;
+    application_class->handle_local_options = orage_application_handle_local_options;
 }
 
 static void orage_application_init (OrageApplication *application)
@@ -508,12 +559,21 @@ static void orage_application_init (OrageApplication *application)
     const GOptionEntry option_entries[] =
     {
         {
-            .long_name = "version",
-            .short_name = 'v',
+            .long_name = "today",
+            .short_name = 'T',
             .flags = G_OPTION_FLAG_NONE,
             .arg = G_OPTION_ARG_NONE,
             .arg_data = NULL,
-            .description = _("Show version of orage"),
+            .description = _("Open today's tasks"),
+            .arg_description = NULL,
+        },
+                {
+            .long_name = "new-appointment",
+            .short_name = 'n',
+            .flags = G_OPTION_FLAG_NONE,
+            .arg = G_OPTION_ARG_NONE,
+            .arg_data = NULL,
+            .description = _("Add new appointment"),
             .arg_description = NULL,
         },
         {
@@ -569,6 +629,15 @@ static void orage_application_init (OrageApplication *application)
             .arg_data = NULL,
             .description = _("Export appointments from Orage to file"),
             .arg_description = "<file>:[appointment...]",
+        },
+        {
+            .long_name = "version",
+            .short_name = 'v',
+            .flags = G_OPTION_FLAG_NONE,
+            .arg = G_OPTION_ARG_NONE,
+            .arg_data = NULL,
+            .description = _("Show version of Orage"),
+            .arg_description = NULL,
         },
         {
             .long_name = G_OPTION_REMAINING,
