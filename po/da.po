@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-03 00:49+0100\n"
+"POT-Creation-Date: 2024-01-30 12:48+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: scootergrisen, 2023\n"
 "Language-Team: Danish (https://app.transifex.com/xfce/teams/16840/da/)\n"
@@ -59,7 +59,7 @@ msgstr "Tilbage én dag"
 #: ../src/day-view.c:395 ../src/day-view.c:468 ../src/event-list.c:1080
 #: ../src/event-list.c:1234 ../src/functions.c:145
 #: ../src/orage-appointment-window.c:1737
-#: ../src/orage-appointment-window.c:1752 ../src/tray_icon.c:410
+#: ../src/orage-appointment-window.c:1752 ../src/tray_icon.c:407
 msgid "Today"
 msgstr "I dag"
 
@@ -551,7 +551,7 @@ msgstr ""
 "Aputsiak Niels Janussen\n"
 "scootergrisen"
 
-#: ../src/orage-application.c:110
+#: ../src/orage-application.c:114
 #, c-format
 msgid ""
 "\tThis is %s version %s\n"
@@ -560,78 +560,86 @@ msgstr ""
 "\tDette er %s version %s\n"
 "\n"
 
-#: ../src/orage-application.c:112
+#: ../src/orage-application.c:116
 #, c-format
 msgid "\tReleased under the terms of the GNU General Public License.\n"
 msgstr "\tUdgivet under vilkårene i GNU General Public License.\n"
 
-#: ../src/orage-application.c:113
+#: ../src/orage-application.c:117
 #, c-format
 msgid "\tCompiled against GTK+-%d.%d.%d, "
 msgstr "\tKompileret mod GTK+-%d.%d.%d, "
 
-#: ../src/orage-application.c:115
+#: ../src/orage-application.c:119
 #, c-format
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "bruger GTK+-%d.%d.%d.\n"
 
-#: ../src/orage-application.c:118
+#: ../src/orage-application.c:122
 #, c-format
 msgid "\tUsing libnotify.\n"
 msgstr "\tAnvender libnotify.\n"
 
-#: ../src/orage-application.c:120
+#: ../src/orage-application.c:124
 #, c-format
 msgid "\tNot using libnotify.\n"
 msgstr "\tAnvender ikke libnotify.\n"
 
-#: ../src/orage-application.c:123
+#: ../src/orage-application.c:127
 #, c-format
 msgid "\tUsing automatic archiving.\n"
 msgstr "\tAnvender automatisk arkivering.\n"
 
-#: ../src/orage-application.c:125
+#: ../src/orage-application.c:129
 #, c-format
 msgid "\tNot using archiving.\n"
 msgstr "\tAnvender ikke arkivering.\n"
 
-#: ../src/orage-application.c:128
+#: ../src/orage-application.c:132
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
 msgstr "\tBruger libxfce4ui: ja\n"
 
-#: ../src/orage-application.c:130
+#: ../src/orage-application.c:134
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
 msgstr "\tBruger libxfce4ui: nej\n"
 
-#: ../src/orage-application.c:516
-msgid "Show version of orage"
-msgstr "Vis orage's version"
+#: ../src/orage-application.c:567
+msgid "Open today's tasks"
+msgstr ""
 
-#: ../src/orage-application.c:525
+#: ../src/orage-application.c:576
+msgid "Add new appointment"
+msgstr ""
+
+#: ../src/orage-application.c:585
 msgid "Show preferences form"
 msgstr "Vis præferencer-formular"
 
-#: ../src/orage-application.c:534
+#: ../src/orage-application.c:594
 msgid "Make Orage visible/unvisible"
 msgstr "Gør Orage synlig/usynlig"
 
-#: ../src/orage-application.c:543
+#: ../src/orage-application.c:603
 msgid "Add a foreign file"
 msgstr "Tilføj en fremmede fil"
 
-#: ../src/orage-application.c:552
+#: ../src/orage-application.c:612
 msgid "Remove a foreign file"
 msgstr "Fjern en fremmede fil"
 
-#: ../src/orage-application.c:561
+#: ../src/orage-application.c:621
 msgid "Import appointments from file to Orage"
 msgstr "Importér aftaler fra fil til Orage"
 
-#: ../src/orage-application.c:570
+#: ../src/orage-application.c:630
 msgid "Export appointments from Orage to file"
 msgstr "Eksportér aftaler fra Orage til fil"
+
+#: ../src/orage-application.c:639
+msgid "Show version of Orage"
+msgstr ""
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -1712,7 +1720,7 @@ msgstr "Synkroniseringsindstillinger"
 msgid "Synchronization sources"
 msgstr "Synkroniseringskilder"
 
-#: ../src/parameters.c:1431
+#: ../src/parameters.c:1431 ../org.xfce.orage.desktop.in.h:6
 msgid "Orage Preferences"
 msgstr "Orage-præferencer"
 
@@ -4078,15 +4086,15 @@ msgstr "UTC"
 msgid "floating"
 msgstr "flydende"
 
-#: ../src/tray_icon.c:418
+#: ../src/tray_icon.c:415
 msgid "New appointment"
 msgstr "Ny aftale"
 
-#: ../src/tray_icon.c:425
+#: ../src/tray_icon.c:422
 msgid "Preferences"
 msgstr "Præferencer"
 
-#: ../src/tray_icon.c:432
+#: ../src/tray_icon.c:429
 msgid "Quit"
 msgstr "Afslut"
 
@@ -4137,3 +4145,11 @@ msgstr "Orage kalender"
 #: ../org.xfce.orage.desktop.in.h:2
 msgid "Desktop calendar"
 msgstr "Skrivebordskalender"
+
+#: ../org.xfce.orage.desktop.in.h:4
+msgid "Show Today"
+msgstr ""
+
+#: ../org.xfce.orage.desktop.in.h:5
+msgid "New Appointment"
+msgstr ""
