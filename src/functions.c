@@ -1061,17 +1061,6 @@ void orage_status_icon_set_visible (GtkStatusIcon *status_icon,
     G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
-GtkStatusIcon *orage_status_icon_new_from_pixbuf (GdkPixbuf *pixbuf)
-{
-    GtkStatusIcon *status_icon;
-
-    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-    status_icon = gtk_status_icon_new_from_pixbuf (pixbuf);
-    G_GNUC_END_IGNORE_DEPRECATIONS
-
-    return status_icon;
-}
-
 void orage_status_icon_set_tooltip_markup (GtkStatusIcon *status_icon,
                                            const gchar *markup)
 {
