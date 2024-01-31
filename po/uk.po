@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-03 00:49+0100\n"
+"POT-Creation-Date: 2024-01-30 12:48+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Gordon Freeman, 2023\n"
 "Language-Team: Ukrainian (https://app.transifex.com/xfce/teams/16840/uk/)\n"
@@ -64,7 +64,7 @@ msgstr "Назад на день"
 #: ../src/day-view.c:395 ../src/day-view.c:468 ../src/event-list.c:1080
 #: ../src/event-list.c:1234 ../src/functions.c:145
 #: ../src/orage-appointment-window.c:1737
-#: ../src/orage-appointment-window.c:1752 ../src/tray_icon.c:410
+#: ../src/orage-appointment-window.c:1752 ../src/tray_icon.c:407
 msgid "Today"
 msgstr "Сьогодні"
 
@@ -555,7 +555,7 @@ msgstr "Orage це \"машина часу\" для програм оточен�
 msgid "translator-credits"
 msgstr "Yarema aka Knedlyk <yupadmin@gmail.com>"
 
-#: ../src/orage-application.c:110
+#: ../src/orage-application.c:114
 #, c-format
 msgid ""
 "\tThis is %s version %s\n"
@@ -564,78 +564,86 @@ msgstr ""
 "\tЦе є %s версія %s\n"
 "\n"
 
-#: ../src/orage-application.c:112
+#: ../src/orage-application.c:116
 #, c-format
 msgid "\tReleased under the terms of the GNU General Public License.\n"
 msgstr "\tВипущено під ліцензією GNU General Public License.\n"
 
-#: ../src/orage-application.c:113
+#: ../src/orage-application.c:117
 #, c-format
 msgid "\tCompiled against GTK+-%d.%d.%d, "
 msgstr "\tСкомпільовано з GTK+-%d.%d.%d, "
 
-#: ../src/orage-application.c:115
+#: ../src/orage-application.c:119
 #, c-format
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "Використовує GTK+-%d.%d.%d.\n"
 
-#: ../src/orage-application.c:118
+#: ../src/orage-application.c:122
 #, c-format
 msgid "\tUsing libnotify.\n"
 msgstr "\tВикористовувати libnotify.\n"
 
-#: ../src/orage-application.c:120
+#: ../src/orage-application.c:124
 #, c-format
 msgid "\tNot using libnotify.\n"
 msgstr "\tНе використовувати libnotify.\n"
 
-#: ../src/orage-application.c:123
+#: ../src/orage-application.c:127
 #, c-format
 msgid "\tUsing automatic archiving.\n"
 msgstr "\tВикористовувати автоматичне архівування.\n"
 
-#: ../src/orage-application.c:125
+#: ../src/orage-application.c:129
 #, c-format
 msgid "\tNot using archiving.\n"
 msgstr "\tНе використовувати архівування.\n"
 
-#: ../src/orage-application.c:128
+#: ../src/orage-application.c:132
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
 msgstr "\tВикористання libxfce4ui: так\n"
 
-#: ../src/orage-application.c:130
+#: ../src/orage-application.c:134
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
 msgstr "\tВикористання libxfce4ui: ні\n"
 
-#: ../src/orage-application.c:516
-msgid "Show version of orage"
-msgstr "Показати версію Orage"
+#: ../src/orage-application.c:567
+msgid "Open today's tasks"
+msgstr ""
 
-#: ../src/orage-application.c:525
+#: ../src/orage-application.c:576
+msgid "Add new appointment"
+msgstr ""
+
+#: ../src/orage-application.c:585
 msgid "Show preferences form"
 msgstr "Показати форму налаштувань"
 
-#: ../src/orage-application.c:534
+#: ../src/orage-application.c:594
 msgid "Make Orage visible/unvisible"
 msgstr "Зробити Orage видимим/невидимим"
 
-#: ../src/orage-application.c:543
+#: ../src/orage-application.c:603
 msgid "Add a foreign file"
 msgstr "Додати сторонній файл"
 
-#: ../src/orage-application.c:552
+#: ../src/orage-application.c:612
 msgid "Remove a foreign file"
 msgstr "Видалити сторонній файл"
 
-#: ../src/orage-application.c:561
+#: ../src/orage-application.c:621
 msgid "Import appointments from file to Orage"
 msgstr "Імпорт зустрічей з файлу у Orage"
 
-#: ../src/orage-application.c:570
+#: ../src/orage-application.c:630
 msgid "Export appointments from Orage to file"
 msgstr "Експорт зустрічей з Orage у файл"
+
+#: ../src/orage-application.c:639
+msgid "Show version of Orage"
+msgstr ""
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -1719,7 +1727,7 @@ msgstr "Налаштування синхронізації"
 msgid "Synchronization sources"
 msgstr "Джерела синхронізації"
 
-#: ../src/parameters.c:1431
+#: ../src/parameters.c:1431 ../org.xfce.orage.desktop.in.h:6
 msgid "Orage Preferences"
 msgstr "Уподобання Orage"
 
@@ -4085,15 +4093,15 @@ msgstr "Світовий час UTC"
 msgid "floating"
 msgstr "плаваюче"
 
-#: ../src/tray_icon.c:418
+#: ../src/tray_icon.c:415
 msgid "New appointment"
 msgstr "Нова подія"
 
-#: ../src/tray_icon.c:425
+#: ../src/tray_icon.c:422
 msgid "Preferences"
 msgstr "Налаштування"
 
-#: ../src/tray_icon.c:432
+#: ../src/tray_icon.c:429
 msgid "Quit"
 msgstr "Вийти"
 
@@ -4144,3 +4152,11 @@ msgstr "Календар Orage"
 #: ../org.xfce.orage.desktop.in.h:2
 msgid "Desktop calendar"
 msgstr "Календар стільниці"
+
+#: ../org.xfce.orage.desktop.in.h:4
+msgid "Show Today"
+msgstr ""
+
+#: ../org.xfce.orage.desktop.in.h:5
+msgid "New Appointment"
+msgstr ""

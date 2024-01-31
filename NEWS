@@ -1,5 +1,4 @@
-=======
-4.19.0 (2024-01-08)
+4.19.0 (2024-01-30)
 - Redesigned appointment window recurrence tab. Related with Issue #23.
 - Internal changes, changed appontment window to subclass of GtkWindow
 - Internal changes, changed mainbox to subclass of GtkApplicationWindow
@@ -13,6 +12,7 @@
 - Fixed memory leak and error handling when timezone info loading fails.
   (MR !56)
 - Added support for TZDIR environment variable (Issue #28).
+- Added desktop actions for 'today' and 'new appointment' (MR !58)
 - Added support for Ayatana Application Indicator. Allows to use tray icon with
   Wayland.
 

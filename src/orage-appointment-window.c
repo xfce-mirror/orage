@@ -4653,6 +4653,18 @@ static GtkWidget *orage_appointment_window_new_by_uid (const gchar *uid,
     return window;
 }
 
+GtkWidget *orage_appointment_window_new_now (void)
+{
+    GDateTime *gdt;
+    GtkWidget *window;
+
+    gdt = g_date_time_new_now_local ();
+    window = orage_appointment_window_new (gdt);
+    g_date_time_unref (gdt);
+
+    return window;
+}
+
 GtkWidget *orage_appointment_window_new (GDateTime *gdt)
 {
     return g_object_new (ORAGE_TYPE_APPOINTMENT_WINDOW,
