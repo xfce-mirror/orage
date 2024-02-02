@@ -367,7 +367,7 @@ static GdkPixbuf *orage_create_icon (void)
     return(pixbuf);
 }
 
-void update_tooltip (void *icon)
+static void update_tooltip (void *icon)
 {
     gchar *tooltip_str;
     GtkStatusIcon *status_icon = GTK_STATUS_ICON (icon);
