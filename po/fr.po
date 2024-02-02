@@ -13,7 +13,7 @@
 # jc1 <jc1.quebecos@gmail.com>, 2023
 # Yannick Le Guen <leguen.yannick@gmail.com>, 2023
 # Nick Schermer <nick@xfce.org>, 2023
-# Wallon Wallon, 2023
+# Wallon Wallon, 2024
 # 
 #, fuzzy
 msgid ""
@@ -22,7 +22,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-30 12:48+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Wallon Wallon, 2023\n"
+"Last-Translator: Wallon Wallon, 2024\n"
 "Language-Team: French (https://app.transifex.com/xfce/teams/16840/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -614,11 +614,11 @@ msgstr "Utiliser libxfce4ui : non\n"
 
 #: ../src/orage-application.c:567
 msgid "Open today's tasks"
-msgstr ""
+msgstr "Ouvrir les tâches du jour"
 
 #: ../src/orage-application.c:576
 msgid "Add new appointment"
-msgstr ""
+msgstr "Ajouter un nouveau rendez-vous"
 
 #: ../src/orage-application.c:585
 msgid "Show preferences form"
@@ -646,7 +646,7 @@ msgstr "Exporter les rendez-vous d’Orage vers un fichier"
 
 #: ../src/orage-application.c:639
 msgid "Show version of Orage"
-msgstr ""
+msgstr "Afficher la version d’Orage"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -4167,8 +4167,8 @@ msgstr "Calendrier du bureau"
 
 #: ../org.xfce.orage.desktop.in.h:4
 msgid "Show Today"
-msgstr ""
+msgstr "Afficher aujourd'hui"
 
 #: ../org.xfce.orage.desktop.in.h:5
 msgid "New Appointment"
-msgstr ""
+msgstr "Nouveau rendez-vous"
