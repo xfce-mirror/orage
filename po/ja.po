@@ -6,9 +6,9 @@
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2022
 # Masato HASHIMOTO <cabezon.hashimoto@gmail.com>, 2022
-# UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2023
 # Nick Schermer <nick@xfce.org>, 2023
 # Nobuhiro Iwamatsu <iwamatsu@nigauri.org>, 2023
+# UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2024
 # 
 #, fuzzy
 msgid ""
@@ -17,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-30 12:48+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Nobuhiro Iwamatsu <iwamatsu@nigauri.org>, 2023\n"
+"Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2024\n"
 "Language-Team: Japanese (https://app.transifex.com/xfce/teams/16840/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -606,11 +606,11 @@ msgstr "libxfce4ui の使用: いいえ\n"
 
 #: ../src/orage-application.c:567
 msgid "Open today's tasks"
-msgstr ""
+msgstr "今日のタスクを開く"
 
 #: ../src/orage-application.c:576
 msgid "Add new appointment"
-msgstr ""
+msgstr "新しい予定を追加"
 
 #: ../src/orage-application.c:585
 msgid "Show preferences form"
@@ -638,7 +638,7 @@ msgstr "Orage からファイルに予定をエクスポートする"
 
 #: ../src/orage-application.c:639
 msgid "Show version of Orage"
-msgstr ""
+msgstr "Orage のバージョンを表示"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -4124,8 +4124,8 @@ msgstr "卓上カレンダー"
 
 #: ../org.xfce.orage.desktop.in.h:4
 msgid "Show Today"
-msgstr ""
+msgstr "今日を表示"
 
 #: ../org.xfce.orage.desktop.in.h:5
 msgid "New Appointment"
-msgstr ""
+msgstr "新しい予定"
