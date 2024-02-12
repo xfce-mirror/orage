@@ -612,11 +612,11 @@ msgstr "\tUsant libxfce4ui: no\n"
 
 #: ../src/orage-application.c:567
 msgid "Open today's tasks"
-msgstr ""
+msgstr "Obtemles tasques per avui"
 
 #: ../src/orage-application.c:576
 msgid "Add new appointment"
-msgstr ""
+msgstr "Afegeix una nova cita"
 
 #: ../src/orage-application.c:585
 msgid "Show preferences form"
@@ -644,7 +644,7 @@ msgstr "Exporta les cites de l'Orage a un fitxer"
 
 #: ../src/orage-application.c:639
 msgid "Show version of Orage"
-msgstr ""
+msgstr "Mostra la versió de l'Orage"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -1370,15 +1370,15 @@ msgstr "Dates d'acció"
 
 #: ../src/orage-sync-edit-dialog.c:132
 msgid "Description:"
-msgstr ""
+msgstr "Descripció:"
 
 #: ../src/orage-sync-edit-dialog.c:134
 msgid "Command:"
-msgstr ""
+msgstr "Comanda:"
 
 #: ../src/orage-sync-edit-dialog.c:136
 msgid "Period:"
-msgstr ""
+msgstr "Període:"
 
 #: ../src/orage-sync-edit-dialog.c:138
 msgid "minutes"
@@ -1386,15 +1386,15 @@ msgstr "minuts"
 
 #: ../src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task"
-msgstr ""
+msgstr "Nom o descripció d'aquesta tasca de sincronització"
 
 #: ../src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization"
-msgstr ""
+msgstr "Comanda per a la sincronització"
 
 #: ../src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes"
-msgstr ""
+msgstr "Període de sincronització en minuts"
 
 #: ../src/orage-sync-edit-dialog.c:166 ../src/parameters.c:1454
 #: ../src/reminder.c:640
@@ -1492,11 +1492,11 @@ msgstr "<b>Esdeveniments per %s - %s:</b>"
 
 #: ../src/parameters.c:686
 msgid "Remove selected synchronization task."
-msgstr ""
+msgstr "Elimina la tasca de sincronització seleccionada."
 
 #: ../src/parameters.c:689
 msgid "Yes, remove"
-msgstr ""
+msgstr "Sí, elimina-la"
 
 #: ../src/parameters.c:722
 msgid "Main settings"
@@ -1721,11 +1721,11 @@ msgstr ""
 
 #: ../src/parameters.c:1399
 msgid "Synchronization settings"
-msgstr ""
+msgstr "Ajusts de sincronització"
 
 #: ../src/parameters.c:1405
 msgid "Synchronization sources"
-msgstr ""
+msgstr "Fonts de sincronització"
 
 #: ../src/parameters.c:1431 ../org.xfce.orage.desktop.in.h:6
 msgid "Orage Preferences"
@@ -1733,7 +1733,7 @@ msgstr "Preferències d'Orage"
 
 #: ../src/reminder.c:419
 msgid "Reminder"
-msgstr ""
+msgstr "Recordatori"
 
 #: ../src/reminder.c:442
 msgid "Open"
@@ -1741,7 +1741,7 @@ msgstr "Obre"
 
 #: ../src/reminder.c:447
 msgid "Silence"
-msgstr ""
+msgstr "Silenci"
 
 #: ../src/reminder.c:565
 msgid "Reminder - Orage"
@@ -4128,6 +4128,9 @@ msgid ""
 " ical format and includes common calendar features like repeating "
 "appointments and multiple alarming possibilities."
 msgstr ""
+"L'Orage pretén ser un calendari gràfic ràpid i fàcil d'usar. Utilitza el "
+"format portable ical i inclou característiques de calendari comuns com la "
+"repetició d'esdeveniments i múltiples possibilitats d'alarmes."
 
 #: ../org.xfce.orage.appdata.xml.in.h:4
 msgid ""
@@ -4136,6 +4139,10 @@ msgid ""
 "Contents of those files are read and converted into Orage, but those files "
 "are left untouched."
 msgstr ""
+"L'Orage no té característiques de calendari grupal, només pot ser usat per "
+"un sol usuari. Pren una llista de fitxers ical que han de ser importats. "
+"Llegeix els continguts d'aquesta fitxers i els converteix a Orange, però no "
+"els modifica."
 
 #: ../org.xfce.orage.desktop.in.h:1
 msgid "Orage Calendar"
@@ -4147,8 +4154,8 @@ msgstr "Calendari d'escriptori"
 
 #: ../org.xfce.orage.desktop.in.h:4
 msgid "Show Today"
-msgstr ""
+msgstr "Mostra avui"
 
 #: ../org.xfce.orage.desktop.in.h:5
 msgid "New Appointment"
-msgstr ""
+msgstr "Nou esdeveniment"
