@@ -554,7 +554,7 @@ msgstr "Orage je aplikacija za upravljanje časa za Xfce namizno okolje"
 msgid "translator-credits"
 msgstr ""
 "Prevedli:\n"
-"Arni<atomicmind@yahoo.com>,Gašper <gasper@gmx.com>, Nenad <nenadlatinovic@lavabit.com>"
+"Arnold Marko<atomicmind@yahoo.com>,Gašper <gasper@gmx.com>, Nenad <nenadlatinovic@lavabit.com>"
 
 #: ../src/orage-application.c:114
 #, c-format
