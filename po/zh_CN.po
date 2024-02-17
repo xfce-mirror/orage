@@ -6,7 +6,6 @@
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2022
 # Mingcong Bai <jeffbai@aosc.xyz>, 2022
-# Cally Mal <zhouxiaobo.500@gmail.com>, 2022
 # Zhou Yuheng <wojiushixxx@126.com>, 2022
 # Nick Schermer <nick@xfce.org>, 2023
 # 玉堂白鹤 <yjwork@qq.com>, 2024
@@ -137,7 +136,7 @@ msgstr ""
 #: ../src/event-list.c:1017 ../src/orage-appointment-window.c:991
 #: ../src/orage-appointment-window.c:1637 ../src/parameters.c:687
 msgid "Do you want to continue?"
-msgstr "你要继续吗？"
+msgstr "请问您要继续吗？"
 
 #: ../src/event-list.c:1018 ../src/orage-appointment-window.c:1638
 #: ../src/parameters.c:688
@@ -308,7 +307,7 @@ msgstr "***** 无外部文件 *****"
 
 #: ../src/interface.c:708
 msgid "Foreign file add failed"
-msgstr "外部文件添加失败。"
+msgstr "外部文件添加失败"
 
 #: ../src/interface.c:717
 msgid "Orage can only handle 10 foreign files. Limit reached."
@@ -528,8 +527,8 @@ msgid ""
 "Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
 msgstr ""
 "如果您确定 Orage 将永不修改此文件则设置\n"
-"此项。注意修改外部文件将使与其来源的源工具\n"
-"不兼容。"
+"此项。请注意，修改外部文件将使与其来源的源工具\n"
+"不兼容！"
 
 #: ../src/interface.c:1490
 msgid "This internal name is displayed to user instead of file name."
@@ -554,7 +553,7 @@ msgstr ""
 "Hunt Xu <huntxu@live.cn>, 2009.\n"
 "Chipong Luo <chipong.luo@yahoo.com>, 2011, 2012.\n"
 "xiaohao <qinghao1@foxmail.com>, 2012.\n"
-"玉堂白鹤 <yjwork@qq.com>, 2016.\n"
+"玉堂白鹤 <yjwork@qq.com>, 2016,2024.\n"
 "Xiaobo Zhou <zhouxiaobo.500@gmail.com>, 2013, 2014, 2017, 2018, 2021."
 
 #: ../src/orage-application.c:114
@@ -779,23 +778,23 @@ msgstr "保存并关闭(_E)"
 
 #: ../src/orage-appointment-window.c:3233
 msgid "first"
-msgstr ""
+msgstr "第一个"
 
 #: ../src/orage-appointment-window.c:3233
 msgid "second"
-msgstr ""
+msgstr "第二个"
 
 #: ../src/orage-appointment-window.c:3233
 msgid "third"
-msgstr ""
+msgstr "第三个"
 
 #: ../src/orage-appointment-window.c:3233
 msgid "fourth"
-msgstr ""
+msgstr "第四个"
 
 #: ../src/orage-appointment-window.c:3233
 msgid "last"
-msgstr ""
+msgstr "最后一个"
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Monday"
@@ -830,11 +829,11 @@ msgstr "星期日"
 #: ../src/orage-appointment-window.c:3397
 #: ../src/orage-appointment-window.c:3431
 msgid "Every"
-msgstr ""
+msgstr "每"
 
 #: ../src/orage-appointment-window.c:3262
 msgid "day(s)"
-msgstr ""
+msgstr "天"
 
 #: ../src/orage-appointment-window.c:3279
 msgid "Mon"
@@ -866,19 +865,19 @@ msgstr "星期日"
 
 #: ../src/orage-appointment-window.c:3297
 msgid "week(s) on:"
-msgstr ""
+msgstr "周的："
 
 #: ../src/orage-appointment-window.c:3333
 msgid "From the beginning of the month:"
-msgstr ""
+msgstr "从月初开始："
 
 #: ../src/orage-appointment-window.c:3346
 msgid "From the end of the month:"
-msgstr ""
+msgstr "从月底倒数："
 
 #: ../src/orage-appointment-window.c:3359
 msgid "Every:"
-msgstr ""
+msgstr "每月："
 
 #: ../src/orage-appointment-window.c:3387
 msgid "January"
@@ -934,7 +933,7 @@ msgstr "十二月"
 #. * the string "of", it can be replaced with an empty string.
 #: ../src/orage-appointment-window.c:3405
 msgid "of"
-msgstr ""
+msgstr "在"
 
 #: ../src/orage-appointment-window.c:3436
 msgid "hour(s)"
@@ -1106,7 +1105,7 @@ msgstr ""
 "如果您将该值设为 8 或更大，该约会将\"不会\"显示在列表窗口。\n"
 "您可以使用该功能来整理您的列表窗口，但可能导致它更难找到该约会。\n"
 "(闹钟功能将会正常运行。)\n"
-"(该功能未正式记录，所以你可以更改此默认为8的限制。)"
+"(该功能未正式记录，所以您可以更改此默认为 8 的限制。)"
 
 #. note
 #: ../src/orage-appointment-window.c:3779
@@ -1281,23 +1280,23 @@ msgstr "无"
 
 #: ../src/orage-appointment-window.c:4212
 msgid "Daily"
-msgstr "每天"
+msgstr "天"
 
 #: ../src/orage-appointment-window.c:4212
 msgid "Weekly"
-msgstr "每周"
+msgstr "周"
 
 #: ../src/orage-appointment-window.c:4213
 msgid "Monthly"
-msgstr "每月"
+msgstr "月"
 
 #: ../src/orage-appointment-window.c:4213
 msgid "Yearly"
-msgstr "每年"
+msgstr "年"
 
 #: ../src/orage-appointment-window.c:4213
 msgid "Hourly"
-msgstr "每小时"
+msgstr "小时"
 
 #: ../src/orage-appointment-window.c:4226
 msgid "Recurrence"
@@ -1370,7 +1369,7 @@ msgstr "周期："
 
 #: ../src/orage-sync-edit-dialog.c:138
 msgid "minutes"
-msgstr " 分钟"
+msgstr "分钟"
 
 #: ../src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task"
@@ -1688,7 +1687,7 @@ msgstr "要求关闭时总是退出"
 
 #: ../src/parameters.c:1339
 msgid "Always quit"
-msgstr "总是退出。"
+msgstr "总是退出"
 
 #: ../src/parameters.c:1346
 msgid ""
@@ -4127,8 +4126,8 @@ msgstr "桌面日历"
 
 #: ../org.xfce.orage.desktop.in.h:4
 msgid "Show Today"
-msgstr ""
+msgstr "显示今日"
 
 #: ../org.xfce.orage.desktop.in.h:5
 msgid "New Appointment"
-msgstr ""
+msgstr "新建约会"
