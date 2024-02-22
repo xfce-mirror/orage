@@ -44,6 +44,10 @@
 #include "orage-task-runner.h"
 #endif
 
+#ifdef HAVE_X11_TRAY_ICON
+#include "tray_icon.h"
+#endif
+
 #define HINT_ADD 'a'
 #define HINT_EXPORT 'x'
 #define HINT_IMPORT 'i'
@@ -313,6 +317,10 @@ static void orage_application_shutdown (GApplication *app)
 #endif
 
     write_parameters ();
+
+#ifdef HAVE_X11_TRAY_ICON
+    orage_status_icon_cleanup ();
+#endif
 
     G_APPLICATION_CLASS (orage_application_parent_class)->shutdown (app);
 }
