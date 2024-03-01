@@ -6,21 +6,19 @@
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2022
 # Efstathios Iosifidis <iefstathios@gmail.com>, 2022
-# Georgios Zarkadas <georgios.zarkadas@gmail.com>, 2022
 # Πέτρος Σαμαράς <psamaras1@gmail.com>, 2022
-# Ioannis LM, 2022
-# Vangelis Skarmoutsos (SkarmoutsosV) <skarmoutsosv@gmail.com>, 2022
 # Ápo. <apostolos.papadimitriu@gmail.com>, 2023
 # Nick Schermer <nick@xfce.org>, 2023
+# Ioannis LM, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-03 00:49+0100\n"
+"POT-Creation-Date: 2024-01-30 12:48+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Nick Schermer <nick@xfce.org>, 2023\n"
+"Last-Translator: Ioannis LM, 2024\n"
 "Language-Team: Greek (https://app.transifex.com/xfce/teams/16840/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -63,7 +61,7 @@ msgstr "Πίσω μια ημέρα"
 #: ../src/day-view.c:395 ../src/day-view.c:468 ../src/event-list.c:1080
 #: ../src/event-list.c:1234 ../src/functions.c:145
 #: ../src/orage-appointment-window.c:1737
-#: ../src/orage-appointment-window.c:1752 ../src/tray_icon.c:410
+#: ../src/orage-appointment-window.c:1752 ../src/tray_icon.c:407
 msgid "Today"
 msgstr "Σήμερα"
 
@@ -91,7 +89,7 @@ msgstr "Επιλογή ημερομηνίας"
 
 #: ../src/day-view.c:468
 msgid "_OK"
-msgstr "_ΟΚ"
+msgstr "_Εντάξει"
 
 #: ../src/day-view.c:596
 msgid "Unknown"
@@ -105,7 +103,7 @@ msgstr "Έναρξη"
 
 #: ../src/day-view.c:841
 msgid "Number of days to show"
-msgstr ""
+msgstr "Αριθμός εμφανιζόμενων ημερών"
 
 #: ../src/day-view.c:1072
 msgid "Orage - day view"
@@ -114,7 +112,7 @@ msgstr "Orage - Προβολή ημέρας"
 #. date only appointment
 #: ../src/event-list.c:186
 msgid "All day"
-msgstr "Ολόκληρη τη μέρα"
+msgstr "Ολόκληρη ημέρα"
 
 #: ../src/event-list.c:617 ../src/event-list.c:1442
 msgid "Time"
@@ -122,26 +120,26 @@ msgstr "Ώρα"
 
 #: ../src/event-list.c:803
 msgid "No rows have been selected."
-msgstr "Δεν έχουν επιλεγεί γραμμές"
+msgstr "Δεν έχετε επιλέξει γραμμές."
 
 #: ../src/event-list.c:804
 msgid "Click a row to select it and after that you can copy it."
 msgstr ""
-"Κάντε κλικ σε μια γραμμή για να την επιλέξετε και μετά από αυτό μπορείτε να "
-"την αντιγράψετε."
+"Κάντε κλικ σε μια γραμμή για να την επιλέξετε και μετά μπορείτε να την "
+"αντιγράψετε."
 
 #: ../src/event-list.c:1016
 msgid ""
 "You will permanently remove all\n"
 "selected appointments."
 msgstr ""
-"Θα διαγραφούν όλα τα\n"
-"επιλεγμένα ραντεβού."
+"Θα αφαιρεθούν όλες οι επιλεγμένες\n"
+"καταχωρήσεις."
 
 #: ../src/event-list.c:1017 ../src/orage-appointment-window.c:991
 #: ../src/orage-appointment-window.c:1637 ../src/parameters.c:687
 msgid "Do you want to continue?"
-msgstr "Επιθυμείτε να συνεχίσετε;"
+msgstr "Θέλετε να συνεχίσετε;"
 
 #: ../src/event-list.c:1018 ../src/orage-appointment-window.c:1638
 #: ../src/parameters.c:688
@@ -150,7 +148,7 @@ msgstr "Όχι, να ακυρωθεί η αφαίρεση"
 
 #: ../src/event-list.c:1019
 msgid "Yes, remove them"
-msgstr "Ναι, να αφαιρεθούν"
+msgstr "Ναί, να αφαιρεθούν"
 
 #: ../src/event-list.c:1141 ../src/orage-appointment-window.c:2929
 msgid "D_uplicate"
@@ -162,7 +160,7 @@ msgstr "Αντίγραφο"
 
 #: ../src/event-list.c:1227 ../src/orage-appointment-window.c:3559
 msgid "Delete"
-msgstr "Διαγραφή"
+msgstr "Αφαίρεση"
 
 #: ../src/event-list.c:1232
 msgid "Back"
@@ -182,15 +180,15 @@ msgstr "Προβολή ημέρας"
 
 #: ../src/event-list.c:1280 ../src/orage-appointment-window.c:3589
 msgid "Event"
-msgstr "Συμβάν"
+msgstr "Γεγονός"
 
 #: ../src/event-list.c:1285
 msgid "Extra days to show:"
-msgstr "Επιπλέον ημέρες προς εμφάνιση"
+msgstr "Πρόσθετες εμφανιζόμενες ημέρες"
 
 #: ../src/event-list.c:1299
 msgid "only first repeating"
-msgstr ""
+msgstr "μόνο το πρώτο επαναλαμβανόμενο"
 
 #: ../src/event-list.c:1307
 msgid ""
@@ -198,28 +196,33 @@ msgid ""
 "Note that this also shows all urgencies.\n"
 "Note that repeating events may appear earlier in the list as the first occurrence only is listed."
 msgstr ""
+"Επιλέξτε το εάν θέλετε να βλέπετε μόνο το πρώτο επαναλαμβανόμενο γεγονός. Από προεπιλογή εμφανίζονται όλα.\n"
+"Σημειώστε ότι αυτό, εμφανίζει επίσης και όλα τα επείγοντα.\n"
+"Και ενδεχομένως, τα επαναλαμβανόμενα γεγονότα να εμφανίζονται νωρίτερα καθώς παρατίθεται μόνο η πρώτη εμφάνιση."
 
 #: ../src/event-list.c:1312
 msgid "also old"
-msgstr ""
+msgstr "και τα παλιά"
 
 #: ../src/event-list.c:1317
 msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed."
 msgstr ""
+"Επιλέξτε το εάν θέλετε να βλέπετε επίσης και τα παλιά. Αυτό μπορείτε να το επιλέξετε μόνο μετά την ενεργοποίηση του 'μόνο το πρώτο επαναλαμβανόμενο' για την αποφυγή πολύ μεγάλης λίστας.\n"
+"Σημειώστε ότι, η επιλογή επιπλέον ημερών εξακολουθεί να καθορίζει εάν εμφανίζονται στη λίστα οι νεώτερς καταχωρήσεις."
 
 #: ../src/event-list.c:1339 ../src/orage-appointment-window.c:3597
 msgid "Todo"
-msgstr ""
+msgstr "Ενέργεια"
 
 #: ../src/event-list.c:1353 ../src/orage-appointment-window.c:3605
 msgid "Journal"
-msgstr "Ημερολόγιο"
+msgstr "Σημείωμα"
 
 #: ../src/event-list.c:1356
 msgid "Journal entries starting from:"
-msgstr "Καταχωρήσεις ημερολογίου που ξεκινάνε απο:"
+msgstr "Οι καταχωρήσεις σημειωμάτων ξεκινάνε από:"
 
 #: ../src/event-list.c:1381
 msgid "Search"
@@ -253,6 +256,18 @@ msgid ""
 "\t 5. Appointment type:\n"
 "\t\tE=Event T=Todo J=Journal"
 msgstr ""
+"Διπλό κλικ στη γραμμή για επεξεργασία.\n"
+"\n"
+"Διακόπτες με τη σειρά:\n"
+"\t 1. Ειδοποίηση: n=Χωρίς ειδοποίηση\n"
+"\t\t A=Ορίστηκε ειδοποίηση P=Ορίστηκε παραμένουσα ειδοποίηση\n"
+"\t 2. Επανάληψη: n=Χωρίς επανάληψη\n"
+"\t\t H=Ώρα D=Ημέρα W=Εβδομάδα M=Μήνας Y=Έτος\n"
+"\t 3. Type: f=Διαθέσιμος/η B=Απασχολημένος/η\n"
+"\t 4. Βρίσκεται σε αρχείο:\n"
+"\t\tO=Orage A=Αρχείο F=Εξωτερικό\n"
+"\t 5. Τύπος καταχώρισης:\n"
+"\t\tE=Γεγονός T=Ενέργεια J=Σημείωμα"
 
 #: ../src/ical-code.c:831
 msgid "Orage default alarm"
@@ -275,7 +290,7 @@ msgstr "Όλα τα αρχεία"
 
 #: ../src/interface.c:643
 msgid "Current foreign files"
-msgstr ""
+msgstr "Πρόσφατα εξωτερικά αρχεία"
 
 #: ../src/interface.c:666
 msgid "READ ONLY"
@@ -291,15 +306,16 @@ msgstr "_Αφαίρεση"
 
 #: ../src/interface.c:693
 msgid "***** No foreign files *****"
-msgstr ""
+msgstr "***** Χωρίς εξωτερικά αρχεία *****"
 
 #: ../src/interface.c:708
 msgid "Foreign file add failed"
-msgstr ""
+msgstr "Απέτυχε η προσθήκη εξωτερικού αρχείου"
 
 #: ../src/interface.c:717
 msgid "Orage can only handle 10 foreign files. Limit reached."
 msgstr ""
+"Το Orage μπορεί να διαχειριστεί 10 εξωτερικά αρχεία. Συμπληρώθηκε το όριο."
 
 #: ../src/interface.c:727
 msgid "Filename is empty."
@@ -315,11 +331,11 @@ msgstr "Το αρχείο δεν υπάρχει."
 
 #: ../src/interface.c:760
 msgid "Same filename already exists in Orage."
-msgstr "Υπάρχει ήδη το ίδιο όνομα αρχείου στο Orange."
+msgstr "Υπάρχει ήδη στο Orange το ίδιο όνομα αρχείου."
 
 #: ../src/interface.c:771
 msgid "Same name already exists in Orage."
-msgstr ""
+msgstr "Υπάρχει ήδη στο Orange το ίδιο όνομα."
 
 #: ../src/interface.c:1025
 msgid "Import/export"
@@ -338,18 +354,20 @@ msgstr "Ανάγνωση από αρχείο:"
 #: ../src/orage-appointment-window.c:3963 ../src/parameters.c:435
 #: ../src/parameters.c:800 ../src/reminder.c:633
 msgid "_Open"
-msgstr "Άν_οιγμα"
+msgstr "Άνοι_γμα"
 
 #: ../src/interface.c:1057 ../src/interface.c:1103 ../src/interface.c:1277
 #: ../src/interface.c:1369 ../src/orage-appointment-window.c:4129
 msgid "_Save"
-msgstr "Α_ποθήκευση"
+msgstr "Απο_θήκευση"
 
 #: ../src/interface.c:1070
 msgid ""
 "Separate filenames with comma(,).\n"
 " NOTE: comma is not valid character in filenames for Orage."
 msgstr ""
+"Τα ονόματα αρχείων διαχωρίζονται με κόμμα (,).\n"
+" ΣΗΜΕΙΩΣΗ: Το κόμμα δεν είναι έγκυρος χαρακτήρας ονόματος για το Orage."
 
 #: ../src/interface.c:1075
 msgid "Export"
@@ -361,57 +379,61 @@ msgstr "Εγγραφή στο αρχείο:"
 
 #: ../src/interface.c:1118 ../src/interface.c:1136
 msgid "Select"
-msgstr "Επιλογή"
+msgstr "Επιλέξτε"
 
 #: ../src/interface.c:1123
 msgid "All appointments"
-msgstr "Όλα τα ραντεβού"
+msgstr "Όλες τις καταχωρίσεις"
 
 #: ../src/interface.c:1142
 msgid "Named appointments:"
-msgstr ""
+msgstr "Όνομασίες καταχωρίσεων:"
 
 #: ../src/interface.c:1161
 msgid ""
 "Note that only main file appointments are read.\n"
 "Archived and Foreign events are not exported."
 msgstr ""
+"Σημειώστε ότι διαβάζονται μόνο οι καταχωρίσεις του βασικού αρχείου.\n"
+"Δεν εξάγονται τα αρχειοθετημένα και τα εξωτερικά γεγονότα."
 
 #: ../src/interface.c:1164
 msgid ""
 "Note that only main file appointments are read.\n"
 "Foreign events are not exported."
 msgstr ""
+"Σημειώστε ότι διαβάζονται μόνο οι καταχωρίσεις του βασικού αρχείου.\n"
+"Δεν εξάγονται τα εξωτερικά γεγονότα."
 
 #: ../src/interface.c:1167
 msgid "You can easily drag these from event-list window."
-msgstr ""
+msgstr "Μπορείτε εύκολα να σύρετε καταχωρήσεις από τα παράθυρα της λίστας"
 
 #: ../src/interface.c:1169
 msgid "Orage appointment UIDs separated by commas."
-msgstr ""
+msgstr "Αναγνωριστικά καταχωρίσεων (UIDs) του Orage διαχωρισμένα με κόμματα."
 
 #: ../src/interface.c:1175
 msgid "Archive"
-msgstr "Συμπιεσμένα αρχεία"
+msgstr "Αρχειοθέτηση"
 
 #: ../src/interface.c:1184 ../src/interface.c:1206
 #: ../src/orage-appointment-window.c:4108
 msgid "_Execute"
-msgstr ""
+msgstr "Ε_κτέλεση"
 
 #: ../src/interface.c:1190
 #, c-format
 msgid "Archive now (threshold: %d months)"
-msgstr ""
+msgstr "Αρχειοθέτηση τώρα (όριο: %d μήνες)"
 
 #: ../src/interface.c:1201
 msgid "You can change archive threshold in parameters"
-msgstr ""
+msgstr "Μπορείτε να αλλάξετε το όριο στις παραμέτρους αρχειοθέτησης"
 
 #: ../src/interface.c:1213
 msgid "Revert archive now"
-msgstr ""
+msgstr "Ανάκληση αρχειοθέτησης τώρα"
 
 #: ../src/interface.c:1220
 msgid ""
@@ -419,6 +441,9 @@ msgid ""
 "This is useful for example when doing export and moving orage\n"
 "appointments to another system."
 msgstr ""
+"Επιστροφή όλων των αρχειοθετημένων γεγονότων στο βασικό αρχείο του\n"
+"Orage και αφαίρεση του αρχείου αρχειοθέτησης. Αυτό σας είναι χρήσιμο\n"
+"όταν εξάγετε και μετακινείτε τις καταχωρίσεις του Orage σε άλλο σύστημα."
 
 #: ../src/interface.c:1232
 msgid "Orage files"
@@ -426,7 +451,7 @@ msgstr "Αρχεία Orage"
 
 #: ../src/interface.c:1239
 msgid "Orage main calendar file"
-msgstr "Κύριο αρχείο ημερολογίου Orage"
+msgstr "Βασικό αρχείο ημερολογίου Orage"
 
 #: ../src/interface.c:1248 ../src/interface.c:1340
 msgid "Current file:"
@@ -438,7 +463,7 @@ msgstr "Νέο αρχείο:"
 
 #: ../src/interface.c:1287 ../src/interface.c:1379
 msgid "Action options:"
-msgstr ""
+msgstr "Επιλογές ενέργειας:"
 
 #: ../src/interface.c:1291 ../src/interface.c:1383
 msgid "Rename"
@@ -450,6 +475,9 @@ msgid ""
 "Does not touch external filesystem at all.\n"
 "New file must exist."
 msgstr ""
+"Μόνο εσωτερική μετονομασία του αρχείου Orage.\n"
+"Δεν αφορά το εξωτερικό σύστημα αρχείων.\n"
+"Πρέπει να υπάρχει το νέο αρχείο."
 
 #: ../src/interface.c:1301 ../src/interface.c:1390
 msgid "Copy"
@@ -458,6 +486,7 @@ msgstr "Αντιγραφή"
 #: ../src/interface.c:1307
 msgid "Current file is copied and stays unmodified in the old place."
 msgstr ""
+"Το τρέχον αρχείο αντιγράφεται και παραμένει αμετάβλητο στην παλιά του θέση."
 
 #: ../src/interface.c:1311 ../src/interface.c:1397
 msgid "Move"
@@ -465,7 +494,7 @@ msgstr "Μετακίνηση"
 
 #: ../src/interface.c:1317
 msgid "Current file is moved and vanishes from the old place."
-msgstr ""
+msgstr "Το τρέχον αρχείο μετακινείται και διαγράφεται από την παλιά του θέση."
 
 #: ../src/interface.c:1331
 msgid "Archive file"
@@ -473,15 +502,15 @@ msgstr "Όνομα αρχείου"
 
 #: ../src/interface.c:1422
 msgid "Foreign files"
-msgstr ""
+msgstr "Εξωτερικά αρχεία"
 
 #: ../src/interface.c:1429
 msgid "Add new foreign file"
-msgstr ""
+msgstr "Προσθήκη νέου εξωτερικού αρχείου"
 
 #: ../src/interface.c:1437
 msgid "Foreign file:"
-msgstr ""
+msgstr "Εξωτερικό αρχείο"
 
 #: ../src/interface.c:1453 ../src/orage-appointment-window.c:2438
 #: ../src/parameters.c:1411
@@ -490,7 +519,7 @@ msgstr "_Προσθήκη"
 
 #: ../src/interface.c:1468
 msgid "Visible name:"
-msgstr ""
+msgstr "Εμφανιζόμενο όνομα:"
 
 #: ../src/interface.c:1478
 msgid "Read only"
@@ -501,10 +530,14 @@ msgid ""
 "Set this if you want to make sure that this file is never modified by Orage.\n"
 "Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
 msgstr ""
+"Επιλέξτε το εάν θέλετε αυτό το αρχείο να μην αλλάξει ποτέ από το Orage.\n"
+"Σημειώστε ότι, η αλλαγή εξωτερικών αρχείων μπορεί να τα καταστήσει ασύμβατα με το αρχικό εργαλείο από το οποίο προήλθαν!"
 
 #: ../src/interface.c:1490
 msgid "This internal name is displayed to user instead of file name."
 msgstr ""
+"Αυτό το εσωτερικό όνομα εμφανίζεται στο χρήστη αντί για το όνομα του "
+"αρχείου."
 
 #: ../src/interface.c:1504
 msgid "Exchange data - Orage"
@@ -518,93 +551,105 @@ msgstr "Orage"
 #: ../src/orage-about.c:44 ../org.xfce.orage.appdata.xml.in.h:2
 msgid "Orage is a time-managing application for the Xfce desktop environment"
 msgstr ""
+"Το Orage είναι μια εφαρμογή διαχείρισης χρόνου για το περιβάλλον του Xfce"
 
 #: ../src/orage-about.c:51
 msgid "translator-credits"
 msgstr ""
 "Ευάγγελος Σκαρμούτσος <skarmoutsosv@gmail.com>, 2020\n"
 "Απόστολος Παπαδημητρίου <apostolos.papadimitriu@gmail.com>, 2015\n"
-"Γιώργος Στεφανάκης <nonviotale@gmail.com>, 2013"
+"Γιώργος Στεφανάκης <nonviotale@gmail.com>, 2013\n"
+"Ιωάννης, 2024"
 
-#: ../src/orage-application.c:110
+#: ../src/orage-application.c:114
 #, c-format
 msgid ""
 "\tThis is %s version %s\n"
 "\n"
 msgstr ""
+"\tΕίναι το %s στην έκδοση %s\n"
+"\n"
 
-#: ../src/orage-application.c:112
+#: ../src/orage-application.c:116
 #, c-format
 msgid "\tReleased under the terms of the GNU General Public License.\n"
-msgstr ""
+msgstr "\tΔιατίθεται σύμφωνα με τους όρους της Γενικής δημόσιας άδειας GNU.\n"
 
-#: ../src/orage-application.c:113
+#: ../src/orage-application.c:117
 #, c-format
 msgid "\tCompiled against GTK+-%d.%d.%d, "
-msgstr ""
+msgstr "\tΜεταγλώττιση από GTK+-%d.%d.%d, "
 
-#: ../src/orage-application.c:115
+#: ../src/orage-application.c:119
 #, c-format
 msgid "using GTK+-%d.%d.%d.\n"
-msgstr ""
+msgstr "χρησιμοποιώντας το GTK+-%d.%d.%d.\n"
 
-#: ../src/orage-application.c:118
+#: ../src/orage-application.c:122
 #, c-format
 msgid "\tUsing libnotify.\n"
-msgstr ""
+msgstr "\tΧρήση του libnotify.\n"
 
-#: ../src/orage-application.c:120
+#: ../src/orage-application.c:124
 #, c-format
 msgid "\tNot using libnotify.\n"
-msgstr ""
+msgstr "\tΧωρίς χρήση του libnotify.\n"
 
-#: ../src/orage-application.c:123
+#: ../src/orage-application.c:127
 #, c-format
 msgid "\tUsing automatic archiving.\n"
-msgstr ""
+msgstr "\tΧρήση αυτόματης αρχειοθέτησης .\n"
 
-#: ../src/orage-application.c:125
+#: ../src/orage-application.c:129
 #, c-format
 msgid "\tNot using archiving.\n"
-msgstr ""
+msgstr "\tΧωρίς αρχειοθέτηση.\n"
 
-#: ../src/orage-application.c:128
+#: ../src/orage-application.c:132
 #, c-format
 msgid "\tUsing libxfce4ui: yes\n"
-msgstr ""
+msgstr "\tΧρήση του libxfce4ui: ναί\n"
 
-#: ../src/orage-application.c:130
+#: ../src/orage-application.c:134
 #, c-format
 msgid "\tUsing libxfce4ui: no\n"
-msgstr ""
+msgstr "\tΧρήση του libxfce4ui: όχι\n"
 
-#: ../src/orage-application.c:516
-msgid "Show version of orage"
-msgstr ""
+#: ../src/orage-application.c:567
+msgid "Open today's tasks"
+msgstr "Άνοιγμα των σημερινών εργασιών"
 
-#: ../src/orage-application.c:525
+#: ../src/orage-application.c:576
+msgid "Add new appointment"
+msgstr "Προσθήκη νέας καταχώρισης"
+
+#: ../src/orage-application.c:585
 msgid "Show preferences form"
-msgstr ""
+msgstr "Εμφάνιση προτιμήσεων"
 
-#: ../src/orage-application.c:534
+#: ../src/orage-application.c:594
 msgid "Make Orage visible/unvisible"
-msgstr ""
+msgstr "Το Orage να είναι ορατό/μή ορατό"
 
-#: ../src/orage-application.c:543
+#: ../src/orage-application.c:603
 msgid "Add a foreign file"
-msgstr ""
+msgstr "Προσθήκη εξωτερικού αρχείου"
 
-#: ../src/orage-application.c:552
+#: ../src/orage-application.c:612
 msgid "Remove a foreign file"
-msgstr ""
+msgstr "Αφαίρεση εξωτερικού αρχείου"
 
-#: ../src/orage-application.c:561
+#: ../src/orage-application.c:621
 msgid "Import appointments from file to Orage"
-msgstr ""
+msgstr "Εισαγωγή καταχωρίσεων από αρχείο στο Orage"
 
-#: ../src/orage-application.c:570
+#: ../src/orage-application.c:630
 msgid "Export appointments from Orage to file"
-msgstr ""
+msgstr "Εξαγωγή καταχωρίσεων από το Orage σε αρχείο"
+
+#: ../src/orage-application.c:639
+msgid "Show version of Orage"
+msgstr "Εμφάνιση έκδοσης του Orage"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -616,7 +661,7 @@ msgstr "Τέλος"
 
 #: ../src/orage-appointment-window.c:548
 msgid "Due"
-msgstr ""
+msgstr "Λήξη"
 
 #: ../src/orage-appointment-window.c:944
 msgid "Sound Files"
@@ -624,28 +669,28 @@ msgstr "Αρχεία ήχου"
 
 #: ../src/orage-appointment-window.c:990
 msgid "The appointment information has been modified."
-msgstr "Οι πληροφορίες του ραντεβού έχουν τροποποιηθεί."
+msgstr "Έχουν αλλάξει οι πληροφορίες της καταχώρισης."
 
 #: ../src/orage-appointment-window.c:992
 msgid "No, do not leave"
-msgstr "Όχι. Ακύρωση αποχώρησης."
+msgstr "Όχι, ακύρωση αποχώρησης."
 
 #: ../src/orage-appointment-window.c:993
 msgid "Yes, ignore modifications and leave"
-msgstr "Ναι, να αγνοηθούν οι τροποποιήσεις. Αποχώρηση."
+msgstr "Ναί, αγνόηση των αλλαγών και αποχώρηση."
 
 #: ../src/orage-appointment-window.c:1022
 msgid "The end of this appointment is earlier than the beginning."
-msgstr "Το τέλος αυτού του ραντεβού είναι νωρίτερα από την αρχή του."
+msgstr "Το τέλος αυτής της καταχώρισης είναι νωρίτερα από την αρχή της."
 
 #: ../src/orage-appointment-window.c:1435
 #: ../src/orage-appointment-window.c:2224
 msgid "Not set"
-msgstr "Δεν έχει οριστεί"
+msgstr "Δεν καθορίστηκε"
 
 #: ../src/orage-appointment-window.c:1480
 msgid "Add new appointment to this file."
-msgstr "Προσθήκη νέου ραντεβού σε αυτό το αρχείο"
+msgstr "Προσθήκη νέας καταχώρισης σε αυτό το αρχείο."
 
 #: ../src/orage-appointment-window.c:1481
 #: ../src/orage-appointment-window.c:1535
@@ -654,46 +699,46 @@ msgstr "Προεπιλεγμένο αρχείο Orage"
 
 #: ../src/orage-appointment-window.c:1573
 msgid "Appointment addition failed."
-msgstr "Η προσθήκη ραντεβού απέτυχε"
+msgstr "Η προσθήκη καταχώρισης απέτυχε."
 
 #: ../src/orage-appointment-window.c:1574
 msgid ""
 "Error happened when adding appointment. Look more details from the log file."
 msgstr ""
-"Συνέβη ένα σφάλμα κατά την προσθήκη ραντεβού. Κοιτάξτε το αρχείο καταγραφής "
-"για περισσότερες πληροφορίες."
+"Παρουσιάστηκε σφάλμα στη προσθήκη της καταχώρισης. Δείτε περισσότερες "
+"λεπτομέρειες στο αρχείο καταγραφής."
 
 #: ../src/orage-appointment-window.c:1585
 msgid "Appointment update failed."
-msgstr "Αποτυχία ανανέωσης ραντεβού."
+msgstr "Απέτυχε η ενημέρωση των καταχωρίσεων."
 
 #: ../src/orage-appointment-window.c:1586
 msgid ""
 "Look more details from the log file. (Perhaps file was updated external from"
 " Orage?)"
 msgstr ""
-"Ελέγξτε το αρχείο καταγραφής για περισσότερες λεπτομέρειες. (Ενδεχομένως το "
-"αρχείο τροποποιήθηκε έξω από το Orage;)"
+"Δείτε περισσότερες λεπτομέρειες στο αρχείο καταγραφής. (Ενδεχομένως το "
+"αρχείο να ενημερώθηκε εξωτερικά από το Orage;)"
 
 #: ../src/orage-appointment-window.c:1636
 msgid "This appointment will be permanently removed."
-msgstr "Αυτό το ραντεβού θα απομακρυνθεί οριστικά."
+msgstr "Αυτή η καταχώριση θα αφαιρεθεί οριστικά."
 
 #: ../src/orage-appointment-window.c:1639
 msgid "Yes, remove it"
-msgstr "Ναι, να αφαιρεθεί"
+msgstr "Ναί, να αφαιρεθεί"
 
 #: ../src/orage-appointment-window.c:2176
 msgid "This appointment does not exist."
-msgstr "Αυτό το ραντεβού δεν υπάρχει."
+msgstr "Αυτή η καταχώριση δεν υπάρχει."
 
 #: ../src/orage-appointment-window.c:2177
 msgid "It was probably removed, please refresh your screen."
-msgstr "Πιθανώς έχει αφαιρεθεί, παρακαλώ ανανεώστε την οθόνη σας."
+msgstr "Πιθανώς έχει αφαιρεθεί, παρακαλώ κάνετε ανανέωση."
 
 #: ../src/orage-appointment-window.c:2389
 msgid "Current categories"
-msgstr "Τρέχουσες κατηγορίες"
+msgstr "Υπάρχουσες κατηγορίες"
 
 #: ../src/orage-appointment-window.c:2411
 msgid "Add new category with color"
@@ -709,7 +754,7 @@ msgstr "Χρώματα κατηγοριών - Orage"
 
 #: ../src/orage-appointment-window.c:2512
 msgid "*** COPY ***"
-msgstr ""
+msgstr "*** ΑΝΤΙΓΡΑΦΗ ***"
 
 #: ../src/orage-appointment-window.c:2565
 #: ../src/orage-appointment-window.c:3874
@@ -734,70 +779,70 @@ msgstr "Μετά το τέλος"
 #. window title
 #: ../src/orage-appointment-window.c:2883
 msgid "New appointment - Orage"
-msgstr "Νέο ραντεβού - Orage"
+msgstr "Νέα καταχώριση - Orage"
 
 #: ../src/orage-appointment-window.c:2916
 msgid "Sav_e and close"
-msgstr "Αποθήκ_ευση και κλείσιμο"
+msgstr "Αποθ_ήκευση και κλείσιμο"
 
 #: ../src/orage-appointment-window.c:3233
 msgid "first"
-msgstr ""
+msgstr "πρώτη"
 
 #: ../src/orage-appointment-window.c:3233
 msgid "second"
-msgstr ""
+msgstr "δεύτερη"
 
 #: ../src/orage-appointment-window.c:3233
 msgid "third"
-msgstr ""
+msgstr "τρίτη"
 
 #: ../src/orage-appointment-window.c:3233
 msgid "fourth"
-msgstr ""
+msgstr "τέταρτη"
 
 #: ../src/orage-appointment-window.c:3233
 msgid "last"
-msgstr ""
+msgstr "τελευταία"
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Monday"
-msgstr ""
+msgstr "Δευτέρα"
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Tuesday"
-msgstr ""
+msgstr "Τρίτη"
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Wednesday"
-msgstr ""
+msgstr "Τετάρτη"
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Thursday"
-msgstr ""
+msgstr "Πέμπτη"
 
 #: ../src/orage-appointment-window.c:3243
 msgid "Friday"
-msgstr ""
+msgstr "Παρασκευή"
 
 #: ../src/orage-appointment-window.c:3244
 msgid "Saturday"
-msgstr ""
+msgstr "Σάββατο"
 
 #: ../src/orage-appointment-window.c:3244
 msgid "Sunday"
-msgstr ""
+msgstr "Κυριακή"
 
 #: ../src/orage-appointment-window.c:3257
 #: ../src/orage-appointment-window.c:3290
 #: ../src/orage-appointment-window.c:3397
 #: ../src/orage-appointment-window.c:3431
 msgid "Every"
-msgstr ""
+msgstr "Κάθε"
 
 #: ../src/orage-appointment-window.c:3262
 msgid "day(s)"
-msgstr ""
+msgstr "ημέρα(ες)"
 
 #: ../src/orage-appointment-window.c:3279
 msgid "Mon"
@@ -829,67 +874,67 @@ msgstr "Κυρ"
 
 #: ../src/orage-appointment-window.c:3297
 msgid "week(s) on:"
-msgstr ""
+msgstr "εβδομάδα(ες):"
 
 #: ../src/orage-appointment-window.c:3333
 msgid "From the beginning of the month:"
-msgstr ""
+msgstr "Από την αρχή του μήνα:"
 
 #: ../src/orage-appointment-window.c:3346
 msgid "From the end of the month:"
-msgstr ""
+msgstr "Από το τέλος του μήνα:"
 
 #: ../src/orage-appointment-window.c:3359
 msgid "Every:"
-msgstr ""
+msgstr "Κάθε:"
 
 #: ../src/orage-appointment-window.c:3387
 msgid "January"
-msgstr ""
+msgstr "Ιανουάριο"
 
 #: ../src/orage-appointment-window.c:3387
 msgid "February"
-msgstr ""
+msgstr "Φεβρουάριο"
 
 #: ../src/orage-appointment-window.c:3387
 msgid "March"
-msgstr ""
+msgstr "Μάρτιο"
 
 #: ../src/orage-appointment-window.c:3387
 msgid "April"
-msgstr ""
+msgstr "Απρίλιο"
 
 #: ../src/orage-appointment-window.c:3387
 msgid "May"
-msgstr ""
+msgstr "Μάιο"
 
 #: ../src/orage-appointment-window.c:3388
 msgid "June"
-msgstr ""
+msgstr "Ιούνιο"
 
 #: ../src/orage-appointment-window.c:3388
 msgid "July"
-msgstr ""
+msgstr "Ιούλιο"
 
 #: ../src/orage-appointment-window.c:3388
 msgid "August"
-msgstr ""
+msgstr "Αύγουστο"
 
 #: ../src/orage-appointment-window.c:3388
 msgid "September"
-msgstr ""
+msgstr "Σεπτέμβριο"
 
 #: ../src/orage-appointment-window.c:3388
 msgid "October"
-msgstr ""
+msgstr "Οκτώβριο"
 
 #: ../src/orage-appointment-window.c:3389
 msgid "November"
-msgstr ""
+msgstr "Μοέμβριο"
 
 #: ../src/orage-appointment-window.c:3389
 msgid "December"
-msgstr ""
+msgstr "Δεκέμβριο"
 
 #. TRANSLATORS: this string is part of date line, for example
 #. * "second Thursday of August". In some languages ​​it is not necessary to
@@ -897,15 +942,15 @@ msgstr ""
 #. * the string "of", it can be replaced with an empty string.
 #: ../src/orage-appointment-window.c:3405
 msgid "of"
-msgstr ""
+msgstr "του"
 
 #: ../src/orage-appointment-window.c:3436
 msgid "hour(s)"
-msgstr ""
+msgstr "ώρα(ες)"
 
 #: ../src/orage-appointment-window.c:3472
 msgid "Repeat forever"
-msgstr "Συνεχές"
+msgstr "Συνέχεια"
 
 #: ../src/orage-appointment-window.c:3477
 msgid "Repeat"
@@ -918,25 +963,30 @@ msgstr "φορές"
 
 #: ../src/orage-appointment-window.c:3491
 msgid "Repeat until"
-msgstr ""
+msgstr "Επανάληψη μέχρι"
 
 #. completed (only for TODO)
 #: ../src/orage-appointment-window.c:3514
 #: ../src/orage-appointment-window.c:3708
 msgid "Completed"
-msgstr "Ολοκληρώθηκαν"
+msgstr "Ολοκληρωμένη"
 
 #: ../src/orage-appointment-window.c:3517
 msgid ""
 "TODO reoccurs regularly starting on start time and repeating after each "
 "interval no matter when it was last completed"
 msgstr ""
+"Η ενέργεια επαναλαμβάνεται τακτικά ξεκινώντας από την ώρα έναρξης και "
+"επαναλαμβάνεται μετά από κάθε διακοπή, ανεξάρτητα από το πότε ολοκληρώθηκε "
+"τη τελευταία φορά"
 
 #: ../src/orage-appointment-window.c:3519
 msgid ""
 "TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
 msgstr ""
+"Η επανάληψη της ενέργειας βασίζεται στον πλήρη χρόνο και επαναλαμβάνεται μετά το χρονικό διάστημα που μετράται από την ολοκλήρωση της τελευταίας φοράς.\n"
+"(Σημειώστε ότι, δεν μπορείτε να γνωρίζετε το ιστορικό της αφού η βάση επανάληψης αλλάζει μετά από κάθε ολοκλήρωση.)"
 
 #: ../src/orage-appointment-window.c:3545
 msgid "Save"
@@ -972,8 +1022,8 @@ msgid ""
 "Event that will happen sometime. For example:\n"
 "Meeting or birthday or TV show."
 msgstr ""
-"Συμβάν που θα συμβεί κάποια στιγμή. Για παράδειγμα:\n"
-"Συνάντηση ή γενέθλια ή εκπομπή της τηλεόρασης."
+"Ένα γεγονός που θα συμβεί κάποια στιγμή. Για παράδειγμα:\n"
+"Μια συνάντηση ή γενέθλια ή κάποια εκπομπή της τηλεόρασης."
 
 #: ../src/orage-appointment-window.c:3602
 msgid ""
@@ -981,15 +1031,15 @@ msgid ""
 "Wash your car or test new version of Orage."
 msgstr ""
 "Κάτι που θα πρέπει να κάνετε κάποια στιγμή. Για παράδειγμα:\n"
-"Πλύντε το αυτοκίνητό σας ή δοκιμάστε τη νέα έκδοση του Orage."
+"Να πλύνετε το αυτοκίνητό σας ή να δοκιμάστε τη νέα έκδοση του Orage."
 
 #: ../src/orage-appointment-window.c:3610
 msgid ""
 "Make a note that something happened. For example:\n"
 "Remark that your mother called or first snow came."
 msgstr ""
-"Κάντε μια σημείωση οτι κάτι συνέβη. Για παράδειγμα:\n"
-"Σημειώστε οτι σας κάλεσε η μητέρα σας ή οτι μόλις χιόνισε."
+"Σημειώστε ότι κάτι συνέβη. Για παράδειγμα:\n"
+"Σας κάλεσε η μητέρα σας ή χιόνισε για πρώτη φορά."
 
 #. location
 #: ../src/orage-appointment-window.c:3624 ../src/timezone_selection.c:234
@@ -999,11 +1049,11 @@ msgstr "Τοποθεσία"
 
 #: ../src/orage-appointment-window.c:3632
 msgid "All day event"
-msgstr "Νέο γεγονός ολόκληρης της μέρας"
+msgstr "Ολόκληρη ημέρα"
 
 #: ../src/orage-appointment-window.c:3656
 msgid "Set"
-msgstr ""
+msgstr "Ορισμός"
 
 #: ../src/orage-appointment-window.c:3680
 msgid "Duration"
@@ -1031,7 +1081,7 @@ msgstr "Διαθεσιμότητα"
 
 #: ../src/orage-appointment-window.c:3711
 msgid "Done"
-msgstr "Ολοκληρώθηκε"
+msgstr "Ολοκληρώνεται"
 
 #. categories
 #: ../src/orage-appointment-window.c:3736
@@ -1043,14 +1093,16 @@ msgid ""
 "This is special category, which can be used to color this appointment in "
 "list views."
 msgstr ""
+"Πρόκειται για ειδική κατηγορία, η οποία μπορεί να χρησιμοποιηθεί για το "
+"χρωματισμό της καταχώρισης σε προβολές λίστας."
 
 #: ../src/orage-appointment-window.c:3755
 msgid "_Colour"
-msgstr ""
+msgstr "_Χρώμα"
 
 #: ../src/orage-appointment-window.c:3760
 msgid "update colors for categories."
-msgstr "ανανέωση χρωμάτων για τις κατηγορίες."
+msgstr "χρώματα κατηγοριών."
 
 #. priority
 #: ../src/orage-appointment-window.c:3766
@@ -1064,6 +1116,10 @@ msgid ""
 "(Alarms will still fire normally.)\n"
 "(There is undocumented parameter so that you can change the default limit of 8.)"
 msgstr ""
+"Εάν εδώ επιλέξετε το 8 ή μεγαλύτερο, ΔΕΝ θα εμφανίζεται η καταχώριση στη λίστα γεγονότων.\n"
+"Μπορείτε να χρησιμοποιήσετε αυτή τη λειτουργία για να συμμαζέψετε τα παράθυρα της λίστας σας, αλλά θα δυσκολεύει την εύρεση του.\n"
+"(Οι ειδοποιήσεις θα εξακολουθούν να λειτουργούν κανονικά.)\n"
+"(Δεν υπάρχει κατοχυρωμένη παράμετρος και έτσι μπορείτε να αλλάξετε τη προεπιλογή 8.)"
 
 #. note
 #: ../src/orage-appointment-window.c:3779
@@ -1081,6 +1137,14 @@ msgid ""
 "    <&Ynnnn> is translated to current year minus nnnn.\n"
 "(This can be used for example in birthday reminders to tell how old the person will be.)"
 msgstr ""
+"Αυτές οι σύντομες εντολές εφαρμόζονται αμέσως:\n"
+"    <D> εισάγει την τρέχουσα ημερομηνία σε τοπική μορφή ημερομηνίας\n"
+"    <T> εισάγει την ώρα\n"
+"    <DT> εισάγει την ημερομηνία και την ώρα.\n"
+"\n"
+"Αυτές αργότερα όταν φαίνονται:\n"
+"    <&Ynnnn> μετατρέπει το τρέχον έτος μείον το nnnn.\n"
+"(Αυτό μπορεί να χρησιμοποιηθεί π.χ σε γενέθλια για να υπολογίσετε την ηλικία του ατόμου.)"
 
 #: ../src/orage-appointment-window.c:3883
 msgid "Alarm"
@@ -1089,7 +1153,7 @@ msgstr "Ειδοποίηση"
 #. **** ALARM TIME ****
 #: ../src/orage-appointment-window.c:3889
 msgid "Alarm time"
-msgstr "Ώρα αφύπνισης"
+msgstr "Χρόνος ειδοποίησης"
 
 #: ../src/orage-appointment-window.c:3914
 msgid ""
@@ -1098,10 +1162,14 @@ msgid ""
 " 2) before Todo end\n"
 " 3) after Todo start"
 msgstr ""
+"Θέλετε να εμφανίζεται η ειδοποίηση:\n"
+" 1) πριν την εκκίνηση του γεγονότος\n"
+" 2) πριν το τέλος της ενέργειας\n"
+" 3) μετά την εκκίνηση της ενέργιας"
 
 #: ../src/orage-appointment-window.c:3919
 msgid "Persistent alarm"
-msgstr "Επίμονη αφύπνισης"
+msgstr "Παραμένουσα ειδοποίηση"
 
 #: ../src/orage-appointment-window.c:3924
 msgid ""
@@ -1109,11 +1177,11 @@ msgid ""
 "when the alarm happened."
 msgstr ""
 "Επιλέξτε το αν επιθυμείτε να λάβετε υπενθύμιση από το Orage ακόμα κι αν δεν "
-"είναι ενεργό τη στιγμή της ειδοποίησης."
+"ήταν ενεργό τη στιγμή της ειδοποίησης."
 
 #: ../src/orage-appointment-window.c:3934
 msgid "Sound"
-msgstr "Ήχοι"
+msgstr "Ήχος"
 
 #: ../src/orage-appointment-window.c:3938
 #: ../src/orage-appointment-window.c:4082
@@ -1126,7 +1194,7 @@ msgstr "Επιλέξτε το αν επιθυμείτε μια ηχητική ε
 
 #: ../src/orage-appointment-window.c:3948
 msgid "Sound command is not set"
-msgstr ""
+msgstr "Δεν καθορίστηκε εντολή για ήχο"
 
 #: ../src/orage-appointment-window.c:3977
 msgid "Repeat alarm sound"
@@ -1134,12 +1202,12 @@ msgstr "Επανάληψη ήχου ειδοποίησης"
 
 #: ../src/orage-appointment-window.c:4008
 msgid "sec interval"
-msgstr ""
+msgstr "δευτ. διακοπή"
 
 #. **** Display Alarm ****
 #: ../src/orage-appointment-window.c:4018
 msgid "Visual"
-msgstr "Ορατό"
+msgstr "Οπτικοποίηση"
 
 #: ../src/orage-appointment-window.c:4022
 msgid "Use Orage window"
@@ -1147,27 +1215,28 @@ msgstr "Χρήση του παραθύρου Orage"
 
 #: ../src/orage-appointment-window.c:4024
 msgid "Select this if you want Orage window alarm"
-msgstr ""
+msgstr "Επιλέξτε το αν επιθυμείτε ειδοποίηση από το παράθυρο του Orage"
 
 #: ../src/orage-appointment-window.c:4036
 msgid "Use notification"
-msgstr "Χρήση ειδοποίησης"
+msgstr "Χρήση ειδοποίησης συστήματος"
 
 #: ../src/orage-appointment-window.c:4038
 msgid "Select this if you want notification alarm"
-msgstr ""
+msgstr "Επιλέξτε το αν επιθυμείτε ειδοποίηση από το σύστημα"
 
 #: ../src/orage-appointment-window.c:4046
 msgid "Set timeout"
-msgstr ""
+msgstr "Διακοπή"
 
 #: ../src/orage-appointment-window.c:4048
 msgid "Select this if you want notification to expire automatically"
-msgstr "Επιλέξτε το αν επιθυμείτε η ειδοποίηση να λήξη αυτόματα"
+msgstr ""
+"Επιλέξτε το αν επιθυμείτε η ειδοποίηση του συστήματος να λήγει αυτόματα"
 
 #: ../src/orage-appointment-window.c:4059
 msgid "0 = system default expiration time"
-msgstr "0 = ο προεπιλεγμένος χρόνος λήξης συστήματος"
+msgstr "0 = προεπιλεγμένος χρόνος λήξης"
 
 #: ../src/orage-appointment-window.c:4067
 msgid "seconds"
@@ -1180,7 +1249,7 @@ msgstr "Διαδικασία"
 
 #: ../src/orage-appointment-window.c:4084
 msgid "Select this if you want procedure or script alarm"
-msgstr ""
+msgstr "Επιλέξτε το αν επιθυμείτε ειδοποίηση με διαδικασία ή σενάριο"
 
 #: ../src/orage-appointment-window.c:4094
 msgid ""
@@ -1193,50 +1262,58 @@ msgid ""
 "\t<&ST> appointment start time\n"
 "\t<&ET> appointment end time"
 msgstr ""
+"Πρέπει μόνοι σας να εισάγετε όλους τους χαρακτήρες διαφυγής κλπ..\n"
+"Αυτή η συμβολοσειρά δίνεται απλά για επεξεργασία στο κέλυφος.\n"
+"Οι ακόλουθες ειδικές εντολές αντικαθίστανται κατά την εκτέλεση:\n"
+"\t<&T>  τίτλος καταχώρισης\n"
+"\t<&D>  περιγραφή καταχώρισης\n"
+"\t<&AT> χρόνος ειδοποίησης\n"
+"\t<&ST> χρόνος έναρξης καταχώρισης\n"
+"\t<&ET> χρόνος λήξης καταχώρισης"
 
 #: ../src/orage-appointment-window.c:4110
 msgid "Test this alarm by raising it now"
-msgstr ""
+msgstr "Έλεγχος ειδοποίησης τώρα"
 
 #: ../src/orage-appointment-window.c:4123
 msgid "<b>Default alarm</b>"
-msgstr "<b>Προεπιλεγμένη ειδοποίηση</b>"
+msgstr "<b>Προεπιλογή ειδοποίησης</b>"
 
 #: ../src/orage-appointment-window.c:4137
 msgid "Store current settings as default alarm"
-msgstr "Αποθήκευση τρεχουσών ρυθμίσεων ως προεπιλεγμένη ειδοποίηση"
+msgstr "Αποθήκευση των τρεχουσών ρυθμίσεων ως προεπιλογή"
 
 #: ../src/orage-appointment-window.c:4139
 msgid "_Revert"
-msgstr "Επαναφορά"
+msgstr "Επα_ναφορά"
 
 #: ../src/orage-appointment-window.c:4147
 msgid "Set current settings from default alarm"
-msgstr "Ορίστε τις τρέχουσες ρυθμίσεις από την προεπιλεγμένη ειδοποίηση"
+msgstr "Επαναφορά των ρυθμίσεων ειδοποίησης από την προεπιλογή"
 
 #: ../src/orage-appointment-window.c:4212
 msgid "None"
-msgstr "Κανένα"
+msgstr "Ποτέ"
 
 #: ../src/orage-appointment-window.c:4212
 msgid "Daily"
-msgstr "Ημερήσια"
+msgstr "Κάθε ημέρα"
 
 #: ../src/orage-appointment-window.c:4212
 msgid "Weekly"
-msgstr "Εβδομαδιαία"
+msgstr "Κάθε εβδομάδα"
 
 #: ../src/orage-appointment-window.c:4213
 msgid "Monthly"
-msgstr "Μηνιαία"
+msgstr "Κάθε μήνα"
 
 #: ../src/orage-appointment-window.c:4213
 msgid "Yearly"
-msgstr "Ετήσια"
+msgstr "Κάθε έτος"
 
 #: ../src/orage-appointment-window.c:4213
 msgid "Hourly"
-msgstr "Ωραιαία"
+msgstr "Κάθε ώρα"
 
 #: ../src/orage-appointment-window.c:4226
 msgid "Recurrence"
@@ -1255,7 +1332,7 @@ msgstr "Όριο"
 #. ****************************** TODO base (only for TODOs) **************
 #: ../src/orage-appointment-window.c:4280
 msgid "TODO base"
-msgstr ""
+msgstr "Βάση ενέργειας"
 
 #. exceptions
 #: ../src/orage-appointment-window.c:4287
@@ -1268,41 +1345,48 @@ msgid ""
 "Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
 "Remove by clicking the data."
 msgstr ""
+"Προσθέστε περισσότερες ημερομηνίες εξαίρεσης κάνοντας κλικ στις παρακάτω ημέρες του ημερολογίου.\n"
+"Η εξαίρεση είναι είτε αποκλεισμός(-) είτε προσθήκη(+) ανάλογα με την επιλογή.\n"
+"Αφαιρείτε κάνοντας κλικ στα δεδομένα."
 
 #: ../src/orage-appointment-window.c:4324
 msgid "Add excluded date (-)"
-msgstr ""
+msgstr "Προσθήκη ημερομηνίας εξαίρεσης (-)"
 
 #: ../src/orage-appointment-window.c:4326
 msgid "Excluded days are full days where this appointment is not happening"
 msgstr ""
+"Οι εξαιρούμενες ημέρες είναι ολόκληρες ημέρες στις οποίες αυτή η καταχώριση "
+"δε κάνει κάτι"
 
 #: ../src/orage-appointment-window.c:4333
 msgid "Add included time (+)"
-msgstr ""
+msgstr "Προσθήκη συμπεριλαμβανόμενης ώρας (+)"
 
 #: ../src/orage-appointment-window.c:4335
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time"
 msgstr ""
+"Οι συμπεριλαμβανόμενες ώρες έχουν την ίδια ζώνη ώρας με την ώρα έναρξης αλλά"
+" μπορεί να έχουν διαφορετική ώρα"
 
 #. calendars showing the action days
 #: ../src/orage-appointment-window.c:4354
 msgid "Action dates"
-msgstr ""
+msgstr "Ημερομηνίες δράσης"
 
 #: ../src/orage-sync-edit-dialog.c:132
 msgid "Description:"
-msgstr ""
+msgstr "Περιγραφή:"
 
 #: ../src/orage-sync-edit-dialog.c:134
 msgid "Command:"
-msgstr ""
+msgstr "Εντολή:"
 
 #: ../src/orage-sync-edit-dialog.c:136
 msgid "Period:"
-msgstr ""
+msgstr "Περίοδος:"
 
 #: ../src/orage-sync-edit-dialog.c:138
 msgid "minutes"
@@ -1310,15 +1394,15 @@ msgstr "λεπτά"
 
 #: ../src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task"
-msgstr ""
+msgstr "Το όνομα ή η περιγραφή του συγχρονισμού"
 
 #: ../src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization"
-msgstr ""
+msgstr "Εντολή για συγχρονισμό"
 
 #: ../src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes"
-msgstr ""
+msgstr "Περίοδος συγχρονισμού σε λεπτά"
 
 #: ../src/orage-sync-edit-dialog.c:166 ../src/parameters.c:1454
 #: ../src/reminder.c:640
@@ -1336,15 +1420,15 @@ msgstr "_Επεξεργασία"
 
 #: ../src/orage-window.c:313
 msgid "View selected _date"
-msgstr "Προβολή της επιλεγμένης _ημερομηνίας"
+msgstr "Προβολή επιλεγμένης _ημερομηνίας"
 
 #: ../src/orage-window.c:316
 msgid "View selected _week"
-msgstr "Προβολή της επιλεγμένης _εβδομάδας"
+msgstr "Προβολή επιλεγμένης _εβδομάδας"
 
 #: ../src/orage-window.c:321
 msgid "Select _Today"
-msgstr "Επιλογή σημερινής ημέρας"
+msgstr "Επιλογή _σημερινής ημέρας"
 
 #. Help menu
 #. the rest
@@ -1354,7 +1438,7 @@ msgstr "_Βοήθεια"
 
 #: ../src/orage-window.c:386 ../src/reminder.c:967
 msgid "No title defined"
-msgstr "Δεν ορίστηκε τίτλος"
+msgstr "Δεν καταχωρήθηκε τίτλος"
 
 #: ../src/orage-window.c:443
 #, c-format
@@ -1386,8 +1470,8 @@ msgid ""
 msgstr ""
 "Τίτλος: %s\n"
 "%s Έναρξη:\t%s\n"
-" Προθεσμία:\t%s\n"
-" Έγινε:\t%s%s"
+" Λήξη:\t%s\n"
+" Ολοκλήρωση:\t%s%s"
 
 #: ../src/orage-window.c:476
 #, c-format
@@ -1402,7 +1486,7 @@ msgstr ""
 
 #: ../src/orage-window.c:557
 msgid "<b>To do:</b>"
-msgstr "<b>Προς ενέργεια:</b>"
+msgstr "<b>Ενέργεια:</b>"
 
 #: ../src/orage-window.c:592
 #, c-format
@@ -1416,11 +1500,11 @@ msgstr "<b>Γεγονότα για %s - %s:</b>"
 
 #: ../src/parameters.c:686
 msgid "Remove selected synchronization task."
-msgstr ""
+msgstr "Κατάργηση επιλεγμένης εργασίας συγχρονισμού."
 
 #: ../src/parameters.c:689
 msgid "Yes, remove"
-msgstr ""
+msgstr "Ναί, αφαίρεση"
 
 #: ../src/parameters.c:722
 msgid "Main settings"
@@ -1432,21 +1516,19 @@ msgstr "Ζώνη ώρας"
 
 #: ../src/parameters.c:749
 msgid "You should always define your local timezone."
-msgstr "Θα πρέπει πάντα να ορίζετε την τοπική σας ζώνη ώρας."
+msgstr "Πρέπει πάντα να καθορίζετε τη τοπική ζώνη ώρας."
 
 #: ../src/parameters.c:757
 msgid "Archive threshold (months)"
-msgstr "Όριο αρχειοθέτησης (μήνες)"
+msgstr "Όριο αρχειοθέτησης (σε μήνες)"
 
 #: ../src/parameters.c:770
 msgid "(0 = no archiving)"
-msgstr "(0 = καθόλου αρχειοθέτηση)"
+msgstr "(0 = χωρίς αρχειοθέτηση)"
 
 #: ../src/parameters.c:774
 msgid "Archiving is used to save time and space when handling events."
-msgstr ""
-"Η αρχειοθέτηση χρησιμοποιείται για την εξοικονόμηση χρόνου και χώρου κατά τη"
-" διαχείριση των συμβάντων."
+msgstr "Η αρχειοθέτηση χρησιμοποιείται για την εξοικονόμηση χρόνου και χώρου."
 
 #: ../src/parameters.c:782
 msgid "Sound command"
@@ -1455,7 +1537,7 @@ msgstr "Εντολή ήχου"
 #: ../src/parameters.c:810
 msgid "This command is given to shell to make sound in alarms."
 msgstr ""
-"Αυτή η εντολή δίδεται στο κέλυφος ώστε να ακούγονται ήχοι στις ειδοποιήσεις."
+"Αυτή η εντολή δίδεται στο κέλυφος για να ακούγεται ήχος στις ειδοποιήσεις."
 
 #: ../src/parameters.c:841
 msgid "Calendar window"
@@ -1463,7 +1545,7 @@ msgstr "Παράθυρο ημερολογίου"
 
 #: ../src/parameters.c:848
 msgid "Calendar visual details"
-msgstr "Οπτικές λεπτομέρειες ημερολογίου"
+msgstr "Εμφανή στοιχεία ημερολογίου"
 
 #: ../src/parameters.c:855
 msgid "Show borders"
@@ -1487,23 +1569,23 @@ msgstr "Εμφάνιση μήνα και έτους"
 
 #: ../src/parameters.c:901
 msgid "Calendar info boxes"
-msgstr "Κουτιά πληροφοριών ημερολογίου"
+msgstr "Πλαίσια πληροφοριών"
 
 #: ../src/parameters.c:908
 msgid "Show todo list"
-msgstr ""
+msgstr "Εμφάνιση λίστας ενεργειών"
 
 #: ../src/parameters.c:915
 msgid "Number of days to show in event window"
-msgstr "Αριθμός ημερών προς εμφάνιση στο παράθυρο συμβάντων"
+msgstr "Αριθμός ημερών που θα εμφανίζονται στο παράθυρο γεγονότων"
 
 #: ../src/parameters.c:923
 msgid "0 = do not show event list at all"
-msgstr "0 = να μην εμφανίζεται η λίστα συμβάντων καθόλου"
+msgstr "0 = να μην εμφανίζεται η λίστα γεγονότων"
 
 #: ../src/parameters.c:937
 msgid "Calendar visibility"
-msgstr "Ορατότητα ημερολογίου"
+msgstr "Παρουσίαση ημερολογίου"
 
 #: ../src/parameters.c:943
 msgid "Show on all desktops"
@@ -1511,27 +1593,27 @@ msgstr "Εμφάνιση σε όλες τις επιφάνειες εργασί�
 
 #: ../src/parameters.c:948
 msgid "Keep on top"
-msgstr "Διατήρηση στην επιφάνεια"
+msgstr "Παραμονή στην επιφάνεια"
 
 #: ../src/parameters.c:956
 msgid "Show in taskbar"
-msgstr "Προβολή στη μπάρα εργασιών"
+msgstr "Εμφάνιση στη γραμμή εργασιών"
 
 #: ../src/parameters.c:961
 msgid "Show in pager"
-msgstr "Προβολή στον ειδοποιητή"
+msgstr "Εμφάνιση στον ειδοποιητή"
 
 #: ../src/parameters.c:969
 msgid "Show in systray"
-msgstr "Προβολή στον πίνακα συστήματος"
+msgstr "Εμφάνιση στο ταμπλό του συστήματος"
 
 #: ../src/parameters.c:997
 msgid "Calendar start"
-msgstr "Εκκίνηση"
+msgstr "Εκκίνηση ημερολογίου"
 
 #: ../src/parameters.c:1003
 msgid "Show"
-msgstr "Προβολή"
+msgstr "Εμφάνιση"
 
 #: ../src/parameters.c:1019
 msgid "Hide"
@@ -1543,7 +1625,7 @@ msgstr "Ελαχιστοποιημένο"
 
 #: ../src/parameters.c:1062
 msgid "On calendar window open"
-msgstr "Κατά το άνοιγμα παραθύρου του ημερολογίου"
+msgstr "Στο άνοιγμα παραθύρου του ημερολογίου"
 
 #: ../src/parameters.c:1068
 msgid "Select today's date"
@@ -1551,19 +1633,19 @@ msgstr "Επιλογή σημερινής ημερομηνίας"
 
 #: ../src/parameters.c:1085
 msgid "Select previously selected date"
-msgstr "Επιλογή προηγουμένως επιλεγμένης ημερομηνίας"
+msgstr "Επιλογή προηγούμενης επιλεγμένης ημερομηνίας"
 
 #: ../src/parameters.c:1109
 msgid "Calendar day double click shows"
-msgstr ""
+msgstr "Το διπλό κλικ στην ημέρα του ημερολογίου εμφανίζει"
 
 #: ../src/parameters.c:1115
 msgid "Days view"
-msgstr "Προβολή ημέρας"
+msgstr "Προβολή της ημέρας"
 
 #: ../src/parameters.c:1131
 msgid "Event list"
-msgstr "Λίστα συμβάντων"
+msgstr "Λίστα γεγονότων"
 
 #: ../src/parameters.c:1164
 msgid "Extra settings"
@@ -1571,17 +1653,19 @@ msgstr "Περισσότερες ρυθμίσεις"
 
 #: ../src/parameters.c:1171
 msgid "Event list window"
-msgstr "Παράθυρο λίστας συμβάντων"
+msgstr "Παράθυρο λίστας γεγονότων"
 
 #: ../src/parameters.c:1178
 msgid "Number of extra days to show in event list"
-msgstr "Αριθμός επιπλέον ημερών προς εμφάνιση στη λίστα συμβάντων"
+msgstr "Αριθμός πρόσθετων εμφανιζόμενων ημερών στη λίστα γεγονότων"
 
 #: ../src/parameters.c:1188
 msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
 msgstr ""
+"Αυτή είναι απλώς η προεπιλεγμένη τιμή, μπορείτε να την αλλάξετε στο παράθυρο"
+" της λίστας γεγονότων."
 
 #: ../src/parameters.c:1196
 msgid "Show only first repeating event"
@@ -1589,7 +1673,7 @@ msgstr "Εμφάνιση μόνο του πρώτου επαναλαμβανόμ
 
 #: ../src/parameters.c:1213
 msgid "Day view window default first day"
-msgstr "Προεπιλεγμένη πρώτη ημέρα του παραθύρου προβολής ημέρας"
+msgstr "Προεπιλεγμένη πρώτη ημέρα στο παράθυρο προβολής ημέρας"
 
 #: ../src/parameters.c:1220
 msgid "First day of week"
@@ -1601,20 +1685,20 @@ msgstr "Επιλεγμένη ημέρα"
 
 #: ../src/parameters.c:1260 ../src/parameters.c:1267
 msgid "Use wakeup timer"
-msgstr "Χρήση χρονομέτρου αφύπνισης"
+msgstr "Χρήση χρονομέτρου ενεργοποίησης"
 
 #: ../src/parameters.c:1275
 msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
 msgstr ""
-"Χρησιμοποιήστε αυτό το χρονόμετρο αν το Orage έχει προβλήματα να επανέλθει "
-"μετά από αναστολή ή αδρανοποίηση. (Για παράδειγμα το εικονίδιο πλαισίου "
-"συστήματος δεν εμφανίζεται ή οι προειδοποιήσεις δεν λειτουργούν)"
+"Χρησιμοποιήστε αυτό το χρονόμετρο αν το Orage έχει προβλήματα επαναφοράς "
+"μετά από αναστολή ή αδρανοποίηση. (Για παράδειγμα δεν ενημερώνεται το "
+"εικονίδιο ή δεν λειτουργούν οι ειδοποιήσεις)"
 
 #: ../src/parameters.c:1285
 msgid "Foreign file default visual alarm"
-msgstr ""
+msgstr "Προεπιλογή οπτικής ειδοποίησης εξωτερικού αρχείου"
 
 #: ../src/parameters.c:1292
 msgid "Orage window"
@@ -1622,15 +1706,15 @@ msgstr "Παράθυρο Orage"
 
 #: ../src/parameters.c:1309
 msgid "Notify notification"
-msgstr ""
+msgstr "Ειδοποίηση συστήματος"
 
 #: ../src/parameters.c:1332
 msgid "Always quit when asked to close"
-msgstr "Τερματισμός κάθε φορά που ζητάτε να κλείσει"
+msgstr "Πάντα έξοδος όταν ζητείται κλείσιμο"
 
 #: ../src/parameters.c:1339
 msgid "Always quit"
-msgstr "Τερματισμός κάθε φορά"
+msgstr "Πάντα έξοδος"
 
 #: ../src/parameters.c:1346
 msgid ""
@@ -1638,25 +1722,25 @@ msgid ""
 "option changes Orage to quit and never stay in background when it is asked "
 "to close."
 msgstr ""
-"Από προεπιλογή το Orage παραμένει στο παρασκήνιο όταν ζητείται να κλείσει. "
+"Από προεπιλογή το Orage παραμένει στο παρασκήνιο όταν ζητείται κλείσιμο. "
 "Αυτή η επιλογή θα κάνει το Orage να κλείνει και να μην εκτελείται ποτέ στο "
-"παρασκήνιο όταν ζητάτε να κλείσει."
+"παρασκήνιο όταν ζητείται κλείσιμο."
 
 #: ../src/parameters.c:1399
 msgid "Synchronization settings"
-msgstr ""
+msgstr "Ρυθμίσεις συγχρονισμού"
 
 #: ../src/parameters.c:1405
 msgid "Synchronization sources"
-msgstr ""
+msgstr "Πηγές συγχρονισμού"
 
-#: ../src/parameters.c:1431
+#: ../src/parameters.c:1431 ../org.xfce.orage.desktop.in.h:6
 msgid "Orage Preferences"
 msgstr "Προτιμήσεις Orage"
 
 #: ../src/reminder.c:419
 msgid "Reminder"
-msgstr ""
+msgstr "Υπενθύμιση"
 
 #: ../src/reminder.c:442
 msgid "Open"
@@ -1664,7 +1748,7 @@ msgstr "Άνοιγμα"
 
 #: ../src/reminder.c:447
 msgid "Silence"
-msgstr ""
+msgstr "Σιωπή"
 
 #: ../src/reminder.c:565
 msgid "Reminder - Orage"
@@ -1692,6 +1776,8 @@ msgid ""
 "\n"
 "%02d d %02d h %02d min to: %s"
 msgstr ""
+"\n"
+"%02d η %02d ω %02d λεπ. για: %s"
 
 #: ../src/reminder.c:988
 #, c-format
@@ -1716,7 +1802,7 @@ msgstr "Αφρική/Άκρα"
 
 #: ../src/timezone_names.c:34
 msgid "Africa/Addis_Ababa"
-msgstr "Αφρική/Αντίς Αμπέμπα"
+msgstr "Αφρική/Αντίς-Αμπέμπα"
 
 #: ../src/timezone_names.c:35
 msgid "Africa/Algiers"
@@ -1724,7 +1810,7 @@ msgstr "Αφρική/Αλγέρι"
 
 #: ../src/timezone_names.c:36
 msgid "Africa/Asmara"
-msgstr ""
+msgstr "Αφρική/Ασμάρα"
 
 #: ../src/timezone_names.c:37
 msgid "Africa/Asmera"
@@ -1792,7 +1878,7 @@ msgstr "Αφρική/Ντουάλα"
 
 #: ../src/timezone_names.c:53
 msgid "Africa/El_Aaiun"
-msgstr "Αφρική/Ελ Αγιούν"
+msgstr "Αφρική/Ελ-Αγιούν"
 
 #: ../src/timezone_names.c:54
 msgid "Africa/Freetown"
@@ -1808,7 +1894,7 @@ msgstr "Αφρική/Χαράρε"
 
 #: ../src/timezone_names.c:57
 msgid "Africa/Juba"
-msgstr ""
+msgstr "Αφρική/Τζούμπα"
 
 #: ../src/timezone_names.c:58
 msgid "Africa/Johannesburg"
@@ -1904,7 +1990,7 @@ msgstr "Αφρική/Πόρτο-Νόβο"
 
 #: ../src/timezone_names.c:81
 msgid "Africa/Sao_Tome"
-msgstr "Αφρική/Σάο Τόμε"
+msgstr "Αφρική/Σάο-Τομέ"
 
 #: ../src/timezone_names.c:82
 msgid "Africa/Timbuktu"
@@ -1948,7 +2034,7 @@ msgstr "Αμερική/Αραγκουάινα"
 
 #: ../src/timezone_names.c:92
 msgid "America/Argentina/Buenos_Aires"
-msgstr "Αμερική/Αργεντινή/_Μπουένος Άιρες"
+msgstr "Αμερική/Αργεντινή/Μπουένος-Άιρες"
 
 #: ../src/timezone_names.c:93
 msgid "America/Argentina/Catamarca"
@@ -1956,7 +2042,7 @@ msgstr "Αμερική/Αργεντινή/Καταμάρκα"
 
 #: ../src/timezone_names.c:94
 msgid "America/Argentina/ComodRivadavia"
-msgstr ""
+msgstr "Αμερική/Αργεντινή/ΚομόντΡιβαδαβία"
 
 #: ../src/timezone_names.c:95
 msgid "America/Argentina/Cordoba"
@@ -1968,7 +2054,7 @@ msgstr "Αμερική/Αργεντινή/Γιούγιουι"
 
 #: ../src/timezone_names.c:97
 msgid "America/Argentina/La_Rioja"
-msgstr ""
+msgstr "Αμερική/Αργεντινή/Λα-Ριόχα"
 
 #: ../src/timezone_names.c:98
 msgid "America/Argentina/Mendoza"
@@ -1976,27 +2062,27 @@ msgstr "Αμερική/Αργεντινή/Μεντόζα"
 
 #: ../src/timezone_names.c:99
 msgid "America/Argentina/Rio_Gallegos"
-msgstr ""
+msgstr "Αμερική/Αργεντινή/Ρίο-Γκαλέγκος"
 
 #: ../src/timezone_names.c:100
 msgid "America/Argentina/Salta"
-msgstr ""
+msgstr "Αμερική/Αργεντινή/Σάλτα"
 
 #: ../src/timezone_names.c:101
 msgid "America/Argentina/San_Juan"
-msgstr ""
+msgstr "Αμερική/Αργεντινή/Σαν-Χουάν"
 
 #: ../src/timezone_names.c:102
 msgid "America/Argentina/San_Luis"
-msgstr ""
+msgstr "Αμερική/Αργεντινή/Σαν-Λιούις"
 
 #: ../src/timezone_names.c:103
 msgid "America/Argentina/Tucuman"
-msgstr ""
+msgstr "Αμερική/Αργεντινή/Τουκουμάν"
 
 #: ../src/timezone_names.c:104
 msgid "America/Argentina/Ushuaia"
-msgstr ""
+msgstr "Αμερική/Αργεντινή/Ουσουαΐα"
 
 #: ../src/timezone_names.c:105
 msgid "America/Aruba"
@@ -2008,19 +2094,19 @@ msgstr "Αμερική/Ασουνθιόν"
 
 #: ../src/timezone_names.c:107
 msgid "America/Atikokan"
-msgstr ""
+msgstr "Αμερική/Αττικοκάν"
 
 #: ../src/timezone_names.c:108
 msgid "America/Atka"
-msgstr ""
+msgstr "Αμερική/Ατκά"
 
 #: ../src/timezone_names.c:109
 msgid "America/Bahia"
-msgstr ""
+msgstr "Αμερική/Μπαΐα"
 
 #: ../src/timezone_names.c:110
 msgid "America/Bahia_Banderas"
-msgstr ""
+msgstr "Αμερική/Μπαΐα-Μπαντέρας"
 
 #: ../src/timezone_names.c:111
 msgid "America/Barbados"
@@ -2036,11 +2122,11 @@ msgstr "Αμερική/Μπελίζ"
 
 #: ../src/timezone_names.c:114
 msgid "America/Blanc-Sablon"
-msgstr ""
+msgstr "Αμερική/Μπλάνκ-Σαμπλόν"
 
 #: ../src/timezone_names.c:115
 msgid "America/Boa_Vista"
-msgstr "Αμερική/Μπόα Βίστα"
+msgstr "Αμερική/Μπόα-Βίστα"
 
 #: ../src/timezone_names.c:116
 msgid "America/Bogota"
@@ -2052,15 +2138,15 @@ msgstr "Αμερική/Μπόιζ"
 
 #: ../src/timezone_names.c:118
 msgid "America/Buenos_Aires"
-msgstr "Αμερική/Μπουένος Άιρες"
+msgstr "Αμερική/Μπουένος-Άιρες"
 
 #: ../src/timezone_names.c:119
 msgid "America/Cambridge_Bay"
-msgstr "Αμερική/Κέμπριτζ Μπέυ"
+msgstr "Αμερική/Κέμπριτζ-Μπέυ"
 
 #: ../src/timezone_names.c:120
 msgid "America/Campo_Grande"
-msgstr ""
+msgstr "Αμερική/Κάμπο-Κράντε"
 
 #: ../src/timezone_names.c:121
 msgid "America/Cancun"
@@ -2092,7 +2178,7 @@ msgstr "Αμερική/Τσιουάουα"
 
 #: ../src/timezone_names.c:128
 msgid "America/Coral_Harbour"
-msgstr ""
+msgstr "Αμερική/Κόραλ-Χάρμπορ"
 
 #: ../src/timezone_names.c:129
 msgid "America/Cordoba"
@@ -2100,11 +2186,11 @@ msgstr "Αμερική/Κόρντομπα"
 
 #: ../src/timezone_names.c:130
 msgid "America/Costa_Rica"
-msgstr "Αμερική/Κόστα Ρίκα"
+msgstr "Αμερική/Κόστα-Ρίκα"
 
 #: ../src/timezone_names.c:131
 msgid "America/Creston"
-msgstr ""
+msgstr "Αμερική/Κρέστον"
 
 #: ../src/timezone_names.c:132
 msgid "America/Cuiaba"
@@ -2116,7 +2202,7 @@ msgstr "Αμερική/Κουρασάο"
 
 #: ../src/timezone_names.c:134
 msgid "America/Danmarkshavn"
-msgstr ""
+msgstr "Αμερική/Ντένμαρκσβαν"
 
 #: ../src/timezone_names.c:135
 msgid "America/Dawson"
@@ -2124,7 +2210,7 @@ msgstr "Αμερική/Ντώσον"
 
 #: ../src/timezone_names.c:136
 msgid "America/Dawson_Creek"
-msgstr "Αμερική/Ντώσον Κρηκ"
+msgstr "Αμερική/Ντώσον-Κρηκ"
 
 #: ../src/timezone_names.c:137
 msgid "America/Denver"
@@ -2144,7 +2230,7 @@ msgstr "Αμερική/Έντμοντον"
 
 #: ../src/timezone_names.c:141
 msgid "America/Ensenada"
-msgstr ""
+msgstr "Αμερική/Ενσενάντα"
 
 #: ../src/timezone_names.c:142
 msgid "America/Eirunepe"
@@ -2152,7 +2238,7 @@ msgstr "Αμερική/Εϊρουνέπε"
 
 #: ../src/timezone_names.c:143
 msgid "America/El_Salvador"
-msgstr "Αμερική/Ελ Σαλβαδόρ"
+msgstr "Αμερική/Ελ-Σαλβαδόρ"
 
 #: ../src/timezone_names.c:144
 msgid "America/Fortaleza"
@@ -2160,11 +2246,11 @@ msgstr "Αμερική/Φορταλέζα"
 
 #: ../src/timezone_names.c:145
 msgid "America/Fort_Wayne"
-msgstr ""
+msgstr "Αμερική/Φορτ-Γουέϊν"
 
 #: ../src/timezone_names.c:146
 msgid "America/Glace_Bay"
-msgstr "Αμερική/Γκλέις Μπέυ"
+msgstr "Αμερική/Γκλέις-Μπέυ"
 
 #: ../src/timezone_names.c:147
 msgid "America/Godthab"
@@ -2172,11 +2258,11 @@ msgstr "Αμερική/Γκόντχαμπ"
 
 #: ../src/timezone_names.c:148
 msgid "America/Goose_Bay"
-msgstr "Αμερική/Γκουζ Μπέυ"
+msgstr "Αμερική/Γκουζ-Μπέυ"
 
 #: ../src/timezone_names.c:149
 msgid "America/Grand_Turk"
-msgstr "Αμερική/Γκραντ Τουρκ"
+msgstr "Αμερική/Γκραντ-Τουρκ"
 
 #: ../src/timezone_names.c:150
 msgid "America/Grenada"
@@ -2212,35 +2298,35 @@ msgstr "Αμερική/Ερμοσίλλο"
 
 #: ../src/timezone_names.c:158
 msgid "America/Indiana/Indianapolis"
-msgstr "Αμερική/Ινδιάνα/Ινδιανάπολη"
+msgstr "Αμερική/Ιντιάνα/Ινδιανάπολη"
 
 #: ../src/timezone_names.c:159
 msgid "America/Indiana/Knox"
-msgstr "Αμερική/Ινδιάνα/Νοξ"
+msgstr "Αμερική/Ιντιάνα/Νοξ"
 
 #: ../src/timezone_names.c:160
 msgid "America/Indiana/Marengo"
-msgstr "Αμερική/Ινδιάνα/Μαρένγκο"
+msgstr "Αμερική/Ιντιάνα/Μαρένγκο"
 
 #: ../src/timezone_names.c:161
 msgid "America/Indiana/Petersburg"
-msgstr ""
+msgstr "Αμερική/Ιντιάνα/Πέτερσμπεργκ"
 
 #: ../src/timezone_names.c:162
 msgid "America/Indiana/Tell_City"
-msgstr ""
+msgstr "Αμερική/Ιντιάνα/Τέλ-Σίτυ"
 
 #: ../src/timezone_names.c:163
 msgid "America/Indiana/Vevay"
-msgstr "Αμερική/Ινδιάνα/Βέβεϋ"
+msgstr "Αμερική/Ιντιάνα/Βέβεϋ"
 
 #: ../src/timezone_names.c:164
 msgid "America/Indiana/Vincennes"
-msgstr ""
+msgstr "Αμερική/Ιντιάνα/Βίνσενς"
 
 #: ../src/timezone_names.c:165
 msgid "America/Indiana/Winamac"
-msgstr ""
+msgstr "Αμερική/Ιντιάνα/Γουινάμεκ"
 
 #: ../src/timezone_names.c:166
 msgid "America/Indianapolis"
@@ -2276,15 +2362,15 @@ msgstr "Αμερική/Κεντάκυ/Μοντισέλλο"
 
 #: ../src/timezone_names.c:174
 msgid "America/Knox_IN"
-msgstr ""
+msgstr "Αμερική/Νοξ-Ιν"
 
 #: ../src/timezone_names.c:175
 msgid "America/Kralendijk"
-msgstr ""
+msgstr "Αμερική/Κράλενταϊκ"
 
 #: ../src/timezone_names.c:176
 msgid "America/La_Paz"
-msgstr "Αμερική/Λα Παζ"
+msgstr "Αμερική/Λα-Παζ"
 
 #: ../src/timezone_names.c:177
 msgid "America/Lima"
@@ -2292,7 +2378,7 @@ msgstr "Αμερική/Λίμα"
 
 #: ../src/timezone_names.c:178
 msgid "America/Los_Angeles"
-msgstr "Αμερική/Λος Άντζελες"
+msgstr "Αμερική/Λος-Άντζελες"
 
 #: ../src/timezone_names.c:179
 msgid "America/Louisville"
@@ -2300,7 +2386,7 @@ msgstr "Αμερική/Λούισβιλ"
 
 #: ../src/timezone_names.c:180
 msgid "America/Lower_Princes"
-msgstr ""
+msgstr "Αμερική/Λόουερ-Πρίνσες"
 
 #: ../src/timezone_names.c:181
 msgid "America/Maceio"
@@ -2316,7 +2402,7 @@ msgstr "Αμερική/Μανάους"
 
 #: ../src/timezone_names.c:184
 msgid "America/Marigot"
-msgstr ""
+msgstr "Αμερική/Μάριγκοτ"
 
 #: ../src/timezone_names.c:185
 msgid "America/Martinique"
@@ -2324,7 +2410,7 @@ msgstr "Αμερική/Μαρτινίκα"
 
 #: ../src/timezone_names.c:186
 msgid "America/Matamoros"
-msgstr ""
+msgstr "Αμερική/Μεταμόρος"
 
 #: ../src/timezone_names.c:187
 msgid "America/Mazatlan"
@@ -2344,11 +2430,11 @@ msgstr "Αμερική/Μερίντα"
 
 #: ../src/timezone_names.c:191
 msgid "America/Metlakatla"
-msgstr ""
+msgstr "Αμερική/Μετλακάτλα"
 
 #: ../src/timezone_names.c:192
 msgid "America/Mexico_City"
-msgstr "Αμερική/Πόλη του Μεξικού"
+msgstr "Αμερική/Μέξικο-Σίτυ"
 
 #: ../src/timezone_names.c:193
 msgid "America/Miquelon"
@@ -2356,7 +2442,7 @@ msgstr "Αμερική/Μικελόν"
 
 #: ../src/timezone_names.c:194
 msgid "America/Moncton"
-msgstr ""
+msgstr "Αμερική/Μονκτόν"
 
 #: ../src/timezone_names.c:195
 msgid "America/Monterrey"
@@ -2380,7 +2466,7 @@ msgstr "Αμερική/Νασσάου"
 
 #: ../src/timezone_names.c:200
 msgid "America/New_York"
-msgstr "Αμερική/Νέα Υόρκη"
+msgstr "Αμερική/Νέα-Υόρκη"
 
 #: ../src/timezone_names.c:201
 msgid "America/Nipigon"
@@ -2392,15 +2478,15 @@ msgstr "Αμερική/Νόμε"
 
 #: ../src/timezone_names.c:203
 msgid "America/North_Dakota/Beulah"
-msgstr ""
+msgstr "Αμερική/Βόρεια-Ντακότα/Μπιούλα"
 
 #: ../src/timezone_names.c:204
 msgid "America/North_Dakota/Center"
-msgstr ""
+msgstr "Αμερική/Βόρεια-Ντακότα/Κεντρικά"
 
 #: ../src/timezone_names.c:205
 msgid "America/North_Dakota/New_Salem"
-msgstr ""
+msgstr "Αμερική/Βόρεια-Ντακότα/Νιού-Σάλεμ"
 
 #: ../src/timezone_names.c:206
 msgid "America/Noronha"
@@ -2408,7 +2494,7 @@ msgstr "Αμερική/Νορόνα"
 
 #: ../src/timezone_names.c:207
 msgid "America/Ojinaga"
-msgstr ""
+msgstr "Αμερική/Οτζινάγκα"
 
 #: ../src/timezone_names.c:208
 msgid "America/Panama"
@@ -2436,23 +2522,23 @@ msgstr "Αμερική/Πορτ-Οβ-Σπέιν"
 
 #: ../src/timezone_names.c:214
 msgid "America/Porto_Acre"
-msgstr ""
+msgstr "Αμερική/Πόρτο-Άκρε"
 
 #: ../src/timezone_names.c:215
 msgid "America/Porto_Velho"
-msgstr "Αμερική/Πόρτο Βέλο"
+msgstr "Αμερική/Πόρτο-Βέλο"
 
 #: ../src/timezone_names.c:216
 msgid "America/Puerto_Rico"
-msgstr "Αμερική/Πουέρτο Ρίκο"
+msgstr "Αμερική/Πουέρτο-Ρίκο"
 
 #: ../src/timezone_names.c:217
 msgid "America/Rainy_River"
-msgstr "Αμερική/Ρέινυ Ρίβερ"
+msgstr "Αμερική/Ρέινυ-Ρίβερ"
 
 #: ../src/timezone_names.c:218
 msgid "America/Rankin_Inlet"
-msgstr "Αμερική/Ράνκιν_Ίνλετ"
+msgstr "Αμερική/Ράνκιν-Ίνλετ"
 
 #: ../src/timezone_names.c:219
 msgid "America/Recife"
@@ -2464,11 +2550,11 @@ msgstr "Αμερική/Ρεγκίνα"
 
 #: ../src/timezone_names.c:221
 msgid "America/Resolute"
-msgstr ""
+msgstr "Αμερική/Ρεσολουτέ"
 
 #: ../src/timezone_names.c:222
 msgid "America/Rio_Branco"
-msgstr "Αμερική/Ρίο Μπράνκο"
+msgstr "Αμερική/Ρίο-Μπράνκο"
 
 #: ../src/timezone_names.c:223
 msgid "America/Rosario"
@@ -2476,11 +2562,11 @@ msgstr "Αμερική/Ροσάριο"
 
 #: ../src/timezone_names.c:224
 msgid "America/Santa_Isabel"
-msgstr ""
+msgstr "Αμερική/Σάντα-Ισαμπέλα"
 
 #: ../src/timezone_names.c:225
 msgid "America/Santarem"
-msgstr ""
+msgstr "Αμερική/Σαντάρεμ"
 
 #: ../src/timezone_names.c:226
 msgid "America/Santiago"
@@ -2488,11 +2574,11 @@ msgstr "Αμερική/Σαντιάγκο"
 
 #: ../src/timezone_names.c:227
 msgid "America/Santo_Domingo"
-msgstr "Αμερική/Σάντο Ντομίνγκο"
+msgstr "Αμερική/Σάντο-Ντομίνγκο"
 
 #: ../src/timezone_names.c:228
 msgid "America/Sao_Paulo"
-msgstr "Αμερική/Σάο Πάολο"
+msgstr "Αμερική/Σάο-Πάολο"
 
 #: ../src/timezone_names.c:229
 msgid "America/Scoresbysund"
@@ -2504,19 +2590,19 @@ msgstr "Αμερική/Σίπροκ"
 
 #: ../src/timezone_names.c:231
 msgid "America/Sitka"
-msgstr ""
+msgstr "Αμερική/Σίτκα"
 
 #: ../src/timezone_names.c:232
 msgid "America/St_Barthelemy"
-msgstr ""
+msgstr "Αμερική/Σαιντ-Μπαρθέλεμι"
 
 #: ../src/timezone_names.c:233
 msgid "America/St_Johns"
-msgstr "Αμερική/Σαιντ Τζωνς"
+msgstr "Αμερική/Σαιντ-Τζωνς"
 
 #: ../src/timezone_names.c:234
 msgid "America/St_Kitts"
-msgstr "Αμερική/Σαιντ Κιτς"
+msgstr "Αμερική/Σαιντ-Κιτς"
 
 #: ../src/timezone_names.c:235
 msgid "America/St_Lucia"
@@ -2524,15 +2610,15 @@ msgstr "Αμερική/Σαντα Λουτσία"
 
 #: ../src/timezone_names.c:236
 msgid "America/St_Thomas"
-msgstr "Αμερική/Σαιντ Τόμας"
+msgstr "Αμερική/Σαιντ-Τόμας"
 
 #: ../src/timezone_names.c:237
 msgid "America/St_Vincent"
-msgstr "Αμερική/Σαιντ Βίνσεντ"
+msgstr "Αμερική/Σαιντ-Βίνσεντ"
 
 #: ../src/timezone_names.c:238
 msgid "America/Swift_Current"
-msgstr "Αμερική/Σουίφτ Κάρρεντ"
+msgstr "Αμερική/Σουίφτ-Κάρρεντ"
 
 #: ../src/timezone_names.c:239
 msgid "America/Tegucigalpa"
@@ -2544,7 +2630,7 @@ msgstr "Αμερική/Θούλη"
 
 #: ../src/timezone_names.c:241
 msgid "America/Thunder_Bay"
-msgstr "Αμερική/Θάντερ Μπέυ"
+msgstr "Αμερική/Θάντερ-Μπέυ"
 
 #: ../src/timezone_names.c:242
 msgid "America/Tijuana"
@@ -2552,7 +2638,7 @@ msgstr "Αμερική/Τιχουάνα"
 
 #: ../src/timezone_names.c:243
 msgid "America/Toronto"
-msgstr ""
+msgstr "Αμερική/Τορόντο"
 
 #: ../src/timezone_names.c:244
 msgid "America/Tortola"
@@ -2564,7 +2650,7 @@ msgstr "Αμερική/Βανκούβερ"
 
 #: ../src/timezone_names.c:246
 msgid "America/Virgin"
-msgstr ""
+msgstr "Αμερική/Βέρτζιν"
 
 #: ../src/timezone_names.c:247
 msgid "America/Whitehorse"
@@ -2588,7 +2674,7 @@ msgstr "Ανταρκτική"
 
 #: ../src/timezone_names.c:252
 msgid "Antarctica/Casey"
-msgstr "Ανταρκτική/Κέισυ"
+msgstr "Ανταρκτική/Κέϊσυ"
 
 #: ../src/timezone_names.c:253
 msgid "Antarctica/Davis"
@@ -2596,11 +2682,11 @@ msgstr "Ανταρκτική/Ντέιβις"
 
 #: ../src/timezone_names.c:254
 msgid "Antarctica/DumontDUrville"
-msgstr "Ανταρκτική/Ντυμόντ Ντ' Ουρβίλ"
+msgstr "Ανταρκτική/Ντυμόντ-Ντ'-Ουρβίλ"
 
 #: ../src/timezone_names.c:255
 msgid "Antarctica/Macquarie"
-msgstr ""
+msgstr "Ανταρκτική/Μακουάρι"
 
 #: ../src/timezone_names.c:256
 msgid "Antarctica/Mawson"
@@ -2616,11 +2702,11 @@ msgstr "Ανταρκτική/Πάλμερ"
 
 #: ../src/timezone_names.c:259
 msgid "Antarctica/Rothera"
-msgstr ""
+msgstr "Ανταρκτική/Ρόδερα"
 
 #: ../src/timezone_names.c:260
 msgid "Antarctica/South_Pole"
-msgstr "Ανταρκτική/Νότιος Πόλος"
+msgstr "Ανταρκτική/Νότιος-Πόλος"
 
 #: ../src/timezone_names.c:261
 msgid "Antarctica/Syowa"
@@ -2672,7 +2758,7 @@ msgstr "Ασία/Ασγκαμπάτ"
 
 #: ../src/timezone_names.c:273
 msgid "Asia/Ashkhabad"
-msgstr ""
+msgstr "Ασία/Ασκαμπάντ"
 
 #: ../src/timezone_names.c:274
 msgid "Asia/Baghdad"
@@ -2708,11 +2794,11 @@ msgstr "Ασία/Καλκούτα"
 
 #: ../src/timezone_names.c:282
 msgid "Asia/Choibalsan"
-msgstr ""
+msgstr "Ασία/Τσοϊμπαλσάν"
 
 #: ../src/timezone_names.c:283
 msgid "Asia/Chongqing"
-msgstr ""
+msgstr "Ασία/Τσόνγκινγκ"
 
 #: ../src/timezone_names.c:284
 msgid "Asia/Chungking"
@@ -2724,7 +2810,7 @@ msgstr "Ασία/Κολόμπο"
 
 #: ../src/timezone_names.c:286
 msgid "Asia/Dacca"
-msgstr ""
+msgstr "Ασία/Ντάκα"
 
 #: ../src/timezone_names.c:287
 msgid "Asia/Damascus"
@@ -2756,15 +2842,15 @@ msgstr "Ασία/Χαρμπίν"
 
 #: ../src/timezone_names.c:294
 msgid "Asia/Hebron"
-msgstr ""
+msgstr "Ασία/Χεβρώνα"
 
 #: ../src/timezone_names.c:295
 msgid "Asia/Hong_Kong"
-msgstr "Ασία/Χονγκ Κονγκ"
+msgstr "Ασία/Χονγκ-Κονγκ"
 
 #: ../src/timezone_names.c:296
 msgid "Asia/Ho_Chi_Minh"
-msgstr ""
+msgstr "Ασία/Χο-Τσι-Μιν"
 
 #: ../src/timezone_names.c:297
 msgid "Asia/Hovd"
@@ -2808,7 +2894,7 @@ msgstr "Ασία/Κασγκάρ"
 
 #: ../src/timezone_names.c:307
 msgid "Asia/Kathmandu"
-msgstr ""
+msgstr "Ασία/Καθμαντού"
 
 #: ../src/timezone_names.c:308
 msgid "Asia/Katmandu"
@@ -2816,11 +2902,11 @@ msgstr "Ασία/Κατμαντού"
 
 #: ../src/timezone_names.c:309
 msgid "Asia/Khandyga"
-msgstr ""
+msgstr "Ασία/Χαντίγκα"
 
 #: ../src/timezone_names.c:310
 msgid "Asia/Kolkata"
-msgstr ""
+msgstr "Ασία/Κολκάτα"
 
 #: ../src/timezone_names.c:311
 msgid "Asia/Krasnoyarsk"
@@ -2828,7 +2914,7 @@ msgstr "Ασία/Κρασνόγιαρσκ"
 
 #: ../src/timezone_names.c:312
 msgid "Asia/Kuala_Lumpur"
-msgstr "Ασία/Κουάλα Λουμπούρ"
+msgstr "Ασία/Κουάλα-Λουμπούρ"
 
 #: ../src/timezone_names.c:313
 msgid "Asia/Kuching"
@@ -2844,7 +2930,7 @@ msgstr "Ασία/Μακάο"
 
 #: ../src/timezone_names.c:316
 msgid "Asia/Macau"
-msgstr ""
+msgstr "Ασία/Μακάου"
 
 #: ../src/timezone_names.c:317
 msgid "Asia/Magadan"
@@ -2852,7 +2938,7 @@ msgstr "Ασία/Μαγκαντάν"
 
 #: ../src/timezone_names.c:318
 msgid "Asia/Makassar"
-msgstr ""
+msgstr "Ασία/Μακάσαρ"
 
 #: ../src/timezone_names.c:319
 msgid "Asia/Manila"
@@ -2868,7 +2954,7 @@ msgstr "Ασία/Λευκωσία"
 
 #: ../src/timezone_names.c:322
 msgid "Asia/Novokuznetsk"
-msgstr ""
+msgstr "Ασία/Νοβοκουζνέτσκ"
 
 #: ../src/timezone_names.c:323
 msgid "Asia/Novosibirsk"
@@ -2876,15 +2962,15 @@ msgstr "Ασία/Νοβοσιμπίρσκ"
 
 #: ../src/timezone_names.c:324
 msgid "Asia/Omsk"
-msgstr "Ασία/Ομσκ"
+msgstr "Ασία/Όμσκ"
 
 #: ../src/timezone_names.c:325
 msgid "Asia/Oral"
-msgstr ""
+msgstr "Ασία/Οράλ"
 
 #: ../src/timezone_names.c:326
 msgid "Asia/Phnom_Penh"
-msgstr "Ασία/Πνομ Πενχ"
+msgstr "Ασία/Πνομ-Πενχ"
 
 #: ../src/timezone_names.c:327
 msgid "Asia/Pontianak"
@@ -2892,7 +2978,7 @@ msgstr "Ασία/Ποντιάνακ"
 
 #: ../src/timezone_names.c:328
 msgid "Asia/Pyongyang"
-msgstr "Ασία/Πιονγκ Γιανγκ"
+msgstr "Ασία/Πιονγκ-Γιανγκ"
 
 #: ../src/timezone_names.c:329
 msgid "Asia/Qatar"
@@ -2900,7 +2986,7 @@ msgstr "Ασία/Κατάρ"
 
 #: ../src/timezone_names.c:330
 msgid "Asia/Qyzylorda"
-msgstr ""
+msgstr "Ασία/Κιζιλόρτα"
 
 #: ../src/timezone_names.c:331
 msgid "Asia/Rangoon"
@@ -2912,15 +2998,15 @@ msgstr "Ασία/Ριάντ"
 
 #: ../src/timezone_names.c:333
 msgid "Asia/Riyadh87"
-msgstr ""
+msgstr "Ασία/Ριάντ87"
 
 #: ../src/timezone_names.c:334
 msgid "Asia/Riyadh88"
-msgstr ""
+msgstr "Ασία/Ριάντ88"
 
 #: ../src/timezone_names.c:335
 msgid "Asia/Riyadh89"
-msgstr ""
+msgstr "Ασία/Ριάντ89"
 
 #: ../src/timezone_names.c:336
 msgid "Asia/Saigon"
@@ -2928,7 +3014,7 @@ msgstr "Ασία/Σαϊγκόν"
 
 #: ../src/timezone_names.c:337
 msgid "Asia/Sakhalin"
-msgstr ""
+msgstr "Ασία/Σακαλίνη"
 
 #: ../src/timezone_names.c:338
 msgid "Asia/Samarkand"
@@ -2964,11 +3050,11 @@ msgstr "Ασία/Τεχεράνη"
 
 #: ../src/timezone_names.c:346
 msgid "Asia/Tel_Aviv"
-msgstr ""
+msgstr "Ασία/Τελ-Αβίβ"
 
 #: ../src/timezone_names.c:347
 msgid "Asia/Thimbu"
-msgstr ""
+msgstr "Ασία/Τίμπου"
 
 #: ../src/timezone_names.c:348
 msgid "Asia/Thimphu"
@@ -2980,15 +3066,15 @@ msgstr "Ασία/Τόκιο"
 
 #: ../src/timezone_names.c:350
 msgid "Asia/Ujung_Pandang"
-msgstr "Ασία/Ουγιούνγκ Παντάνγκ"
+msgstr "Ασία/Ουγιούνγκ-Παντάνγκ"
 
 #: ../src/timezone_names.c:351
 msgid "Asia/Ulaanbaatar"
-msgstr "Ασία/Ουλάν Μπατόρ"
+msgstr "Ασία/Ουλάνμπατάρ"
 
 #: ../src/timezone_names.c:352
 msgid "Asia/Ulan_Bator"
-msgstr ""
+msgstr "Ασία/Ουλάν-Μπατόρ"
 
 #: ../src/timezone_names.c:353
 msgid "Asia/Urumqi"
@@ -2996,7 +3082,7 @@ msgstr "Ασία/Ουρούμκι"
 
 #: ../src/timezone_names.c:354
 msgid "Asia/Ust-Nera"
-msgstr ""
+msgstr "Ασία/Ουστ-Νέρα"
 
 #: ../src/timezone_names.c:355
 msgid "Asia/Vientiane"
@@ -3032,11 +3118,11 @@ msgstr "Ατλαντικός/Βερμούδες"
 
 #: ../src/timezone_names.c:363
 msgid "Atlantic/Canary"
-msgstr "Ατλαντικός/Κανάριοι Νήσοι"
+msgstr "Ατλαντικός/Κανάριοι-Νήσοι"
 
 #: ../src/timezone_names.c:364
 msgid "Atlantic/Cape_Verde"
-msgstr "Ατλαντικός/Πράσινο Ακρωτήριο"
+msgstr "Ατλαντικός/Πράσινο-Ακρωτήριο"
 
 #: ../src/timezone_names.c:365
 msgid "Atlantic/Faeroe"
@@ -3044,11 +3130,11 @@ msgstr "Ατλαντικός/Φερόες"
 
 #: ../src/timezone_names.c:366
 msgid "Atlantic/Faroe"
-msgstr ""
+msgstr "Ατλαντικός/Φαρόες"
 
 #: ../src/timezone_names.c:367
 msgid "Atlantic/Jan_Mayen"
-msgstr "Ατλαντικός/Γιαν Μάυεν"
+msgstr "Ατλαντικός/Γιαν-Μάυεν"
 
 #: ../src/timezone_names.c:368
 msgid "Atlantic/Madeira"
@@ -3060,11 +3146,11 @@ msgstr "Ατλαντικός/Ρέυκιαβικ"
 
 #: ../src/timezone_names.c:370
 msgid "Atlantic/South_Georgia"
-msgstr "Ατλαντικός/Σάουθ Τζώρτζια"
+msgstr "Ατλαντικός/Σάουθ-Τζώρτζια"
 
 #: ../src/timezone_names.c:371
 msgid "Atlantic/St_Helena"
-msgstr "Ατλαντικός/Σάντα Ελένα"
+msgstr "Ατλαντικός/Σάντα-Ελένα"
 
 #: ../src/timezone_names.c:372
 msgid "Atlantic/Stanley"
@@ -3076,7 +3162,7 @@ msgstr "Αυστραλία"
 
 #: ../src/timezone_names.c:374
 msgid "Australia/ACT"
-msgstr ""
+msgstr "Αυστραλία/ACT"
 
 #: ../src/timezone_names.c:375
 msgid "Australia/Adelaide"
@@ -3088,11 +3174,11 @@ msgstr "Αυστραλία/Μπρισμπέιν"
 
 #: ../src/timezone_names.c:377
 msgid "Australia/Broken_Hill"
-msgstr "Αυστραλία/Μπρόκεν Χιλ"
+msgstr "Αυστραλία/Μπρόκεν-Χιλ"
 
 #: ../src/timezone_names.c:378
 msgid "Australia/Currie"
-msgstr ""
+msgstr "Αυστραλία/Κάρι"
 
 #: ../src/timezone_names.c:379
 msgid "Australia/Darwin"
@@ -3100,7 +3186,7 @@ msgstr "Αυστραλία/Ντάργουιν"
 
 #: ../src/timezone_names.c:380
 msgid "Australia/Eucla"
-msgstr ""
+msgstr "Αυστραλία/Γιούκλα"
 
 #: ../src/timezone_names.c:381
 msgid "Australia/Hobart"
@@ -3112,7 +3198,7 @@ msgstr "Αυστραλία/Λίντεμαν"
 
 #: ../src/timezone_names.c:383
 msgid "Australia/Lord_Howe"
-msgstr "Αυστραλία/Λορντ Χάου"
+msgstr "Αυστραλία/Λορντ-Χάου"
 
 #: ../src/timezone_names.c:384
 msgid "Australia/Melbourne"
@@ -3128,23 +3214,23 @@ msgstr "Αυστραλία/Σύδνεϋ"
 
 #: ../src/timezone_names.c:387
 msgid "Brazil"
-msgstr ""
+msgstr "Βραζιλία"
 
 #: ../src/timezone_names.c:388
 msgid "Brazil/Acre"
-msgstr ""
+msgstr "Βραζιλία/Άκρε"
 
 #: ../src/timezone_names.c:389
 msgid "Brazil/DeNoronha"
-msgstr ""
+msgstr "Βραζιλία/Ντενορόνχα"
 
 #: ../src/timezone_names.c:390
 msgid "Brazil/East"
-msgstr ""
+msgstr "Βραζιλία/Ανατολική"
 
 #: ../src/timezone_names.c:391
 msgid "Brazil/West"
-msgstr ""
+msgstr "Βραζιλία/Δυτική"
 
 #: ../src/timezone_names.c:392
 msgid "Canada"
@@ -3156,35 +3242,35 @@ msgstr "Καναδάς/Ατλαντικός"
 
 #: ../src/timezone_names.c:394
 msgid "Canada/Central"
-msgstr ""
+msgstr "Καναδάς/Κεντρική"
 
 #: ../src/timezone_names.c:395
 msgid "Canada/East-Saskatchewan"
-msgstr ""
+msgstr "Καναδάς/Ανατολική-Σασκατσουάν"
 
 #: ../src/timezone_names.c:396
 msgid "Canada/Eastern"
-msgstr ""
+msgstr "Καναδάς/Ανατολική"
 
 #: ../src/timezone_names.c:397
 msgid "Canada/Mountain"
-msgstr ""
+msgstr "Καναδάς/Ορεινή"
 
 #: ../src/timezone_names.c:398
 msgid "Canada/Newfoundland"
-msgstr ""
+msgstr "Καναδάς/Νιουφάουντλαντ"
 
 #: ../src/timezone_names.c:399
 msgid "Canada/Pacific"
-msgstr ""
+msgstr "Καναδάς/Ειρηνικός"
 
 #: ../src/timezone_names.c:400
 msgid "Canada/Saskatchewan"
-msgstr ""
+msgstr "Καναδάς/Σασκατσουάν"
 
 #: ../src/timezone_names.c:401
 msgid "Canada/Yukon"
-msgstr ""
+msgstr "Καναδάς/Γιούκον"
 
 #: ../src/timezone_names.c:402
 msgid "Chile"
@@ -3192,11 +3278,11 @@ msgstr "Χιλή"
 
 #: ../src/timezone_names.c:403
 msgid "Chile/Continental"
-msgstr ""
+msgstr "Χιλή/Ηπειρωτική"
 
 #: ../src/timezone_names.c:404
 msgid "Chile/EasterIsland"
-msgstr ""
+msgstr "Χιλή/Νησί-του-Πάσχα"
 
 #: ../src/timezone_names.c:405
 msgid "Etc"
@@ -3324,7 +3410,7 @@ msgstr "Etc/GMT0"
 
 #: ../src/timezone_names.c:436
 msgid "Etc/Greenwich"
-msgstr ""
+msgstr "Etc/Greenwich"
 
 #: ../src/timezone_names.c:437
 msgid "Etc/UCT"
@@ -3336,11 +3422,11 @@ msgstr "Etc/UTC"
 
 #: ../src/timezone_names.c:439
 msgid "Etc/Universal"
-msgstr ""
+msgstr "Etc/Universal"
 
 #: ../src/timezone_names.c:440
 msgid "Etc/Zulu"
-msgstr ""
+msgstr "Etc/Zulu"
 
 #: ../src/timezone_names.c:441
 msgid "Europe"
@@ -3388,7 +3474,7 @@ msgstr "Ευρώπη/Βουδαπέστη"
 
 #: ../src/timezone_names.c:452
 msgid "Europe/Busingen"
-msgstr ""
+msgstr "Ευρώπη/Μπούσινγκεν"
 
 #: ../src/timezone_names.c:453
 msgid "Europe/Chisinau"
@@ -3408,7 +3494,7 @@ msgstr "Ευρώπη/Γιβραλτάρ"
 
 #: ../src/timezone_names.c:457
 msgid "Europe/Guernsey"
-msgstr ""
+msgstr "Ευρώπη/Γκέρνσεϊ"
 
 #: ../src/timezone_names.c:458
 msgid "Europe/Helsinki"
@@ -3416,7 +3502,7 @@ msgstr "Ευρώπη/Ελσίνκι"
 
 #: ../src/timezone_names.c:459
 msgid "Europe/Isle_of_Man"
-msgstr ""
+msgstr "Ευρώπη/Νήσος-του-Μαν"
 
 #: ../src/timezone_names.c:460
 msgid "Europe/Istanbul"
@@ -3460,7 +3546,7 @@ msgstr "Ευρώπη/Μάλτα"
 
 #: ../src/timezone_names.c:470
 msgid "Europe/Mariehamn"
-msgstr ""
+msgstr "Ευρώπη/Μάριεχαμν"
 
 #: ../src/timezone_names.c:471
 msgid "Europe/Minsk"
@@ -3488,7 +3574,7 @@ msgstr "Ευρώπη/Παρίσι"
 
 #: ../src/timezone_names.c:477
 msgid "Europe/Podgorica"
-msgstr ""
+msgstr "Ευρώπη/Μποντγκόριτσα"
 
 #: ../src/timezone_names.c:478
 msgid "Europe/Prague"
@@ -3508,7 +3594,7 @@ msgstr "Ευρώπη/Σαμάρα"
 
 #: ../src/timezone_names.c:482
 msgid "Europe/San_Marino"
-msgstr "Ευρώπη/Άγιος Μαρίνος"
+msgstr "Ευρώπη/Άγιος-Μαρίνος"
 
 #: ../src/timezone_names.c:483
 msgid "Europe/Sarajevo"
@@ -3516,7 +3602,7 @@ msgstr "Ευρώπη/Σεράγιεβο"
 
 #: ../src/timezone_names.c:484
 msgid "Europe/Simferopol"
-msgstr "Ευρώπη/Σιμφερόπολ"
+msgstr "Ευρώπη/Σιμφερόπολη"
 
 #: ../src/timezone_names.c:485
 msgid "Europe/Skopje"
@@ -3540,7 +3626,7 @@ msgstr "Ευρώπη/Τίρανα"
 
 #: ../src/timezone_names.c:490
 msgid "Europe/Tiraspol"
-msgstr ""
+msgstr "Ευρώπη/Τιρασπούπολη"
 
 #: ../src/timezone_names.c:491
 msgid "Europe/Uzhgorod"
@@ -3592,15 +3678,15 @@ msgstr "Ινδικός/Ανταναναρίβο"
 
 #: ../src/timezone_names.c:503
 msgid "Indian/Chagos"
-msgstr "Ινδικός/Chagos"
+msgstr "Ινδικός/Τσάγκος"
 
 #: ../src/timezone_names.c:504
 msgid "Indian/Christmas"
-msgstr "Ινδικός/Christmas"
+msgstr "Ινδικός/Κρίστμας"
 
 #: ../src/timezone_names.c:505
 msgid "Indian/Cocos"
-msgstr "Ινδικός/Cocos"
+msgstr "Ινδικός/Κόκος"
 
 #: ../src/timezone_names.c:506
 msgid "Indian/Comoro"
@@ -3608,7 +3694,7 @@ msgstr "Ινδικός/Κομόρες"
 
 #: ../src/timezone_names.c:507
 msgid "Indian/Kerguelen"
-msgstr "Ινδικός/Kerguelen"
+msgstr "Ινδικός/Κεργουέλεν"
 
 #: ../src/timezone_names.c:508
 msgid "Indian/Mahe"
@@ -3636,31 +3722,31 @@ msgstr "Μεξικό"
 
 #: ../src/timezone_names.c:514
 msgid "Mexico/BajaNorte"
-msgstr ""
+msgstr "Μεξικό/ΜπάχαΝόρτε"
 
 #: ../src/timezone_names.c:515
 msgid "Mexico/BajaSur"
-msgstr ""
+msgstr "Μεξικό/ΜπάχαΣουρ"
 
 #: ../src/timezone_names.c:516
 msgid "Mexico/General"
-msgstr ""
+msgstr "Μεξικό/Γενική"
 
 #: ../src/timezone_names.c:517
 msgid "Mideast"
-msgstr ""
+msgstr "Μέση Ανατολή"
 
 #: ../src/timezone_names.c:518
 msgid "Mideast/Riyadh87"
-msgstr ""
+msgstr "Μέση Ανατολή/Ριάντ87"
 
 #: ../src/timezone_names.c:519
 msgid "Mideast/Riyadh88"
-msgstr ""
+msgstr "Μέση Ανατολή/Ριάντ88"
 
 #: ../src/timezone_names.c:520
 msgid "Mideast/Riyadh89"
-msgstr ""
+msgstr "Μέση Ανατολή/Ριάντ89"
 
 #: ../src/timezone_names.c:521
 msgid "Pacific"
@@ -3668,7 +3754,7 @@ msgstr "Ειρηνικός"
 
 #: ../src/timezone_names.c:522
 msgid "Pacific/Apia"
-msgstr "Ειρηνικός/Apia"
+msgstr "Ειρηνικός/Άπια"
 
 #: ../src/timezone_names.c:523
 msgid "Pacific/Auckland"
@@ -3680,11 +3766,11 @@ msgstr "Ειρηνικός/Τσάτχαμ"
 
 #: ../src/timezone_names.c:525
 msgid "Pacific/Chuuk"
-msgstr ""
+msgstr "Ειρηνικός/Τσουούκ"
 
 #: ../src/timezone_names.c:526
 msgid "Pacific/Easter"
-msgstr "Ειρηνικός/Πάσχα"
+msgstr "Ειρηνικός/Ίστερ"
 
 #: ../src/timezone_names.c:527
 msgid "Pacific/Efate"
@@ -3720,7 +3806,7 @@ msgstr "Ειρηνικός/Γκουανταλκανάλ"
 
 #: ../src/timezone_names.c:535
 msgid "Pacific/Guam"
-msgstr "Ειρηνικός/Γουάμ"
+msgstr "Ειρηνικός/Γκουάμ"
 
 #: ../src/timezone_names.c:536
 msgid "Pacific/Honolulu"
@@ -3772,7 +3858,7 @@ msgstr "Ειρηνικός/Νουμία"
 
 #: ../src/timezone_names.c:548
 msgid "Pacific/Pago_Pago"
-msgstr "Ειρηνικός/Πάγκο Πάγκο"
+msgstr "Ειρηνικός/Πάγκο-Πάγκο"
 
 #: ../src/timezone_names.c:549
 msgid "Pacific/Palau"
@@ -3784,7 +3870,7 @@ msgstr "Ειρηνικός/Νήσοι Πίτκαιρν"
 
 #: ../src/timezone_names.c:551
 msgid "Pacific/Pohnpei"
-msgstr ""
+msgstr "Ειρηνικός/Πονπέι"
 
 #: ../src/timezone_names.c:552
 msgid "Pacific/Ponape"
@@ -3792,7 +3878,7 @@ msgstr "Ειρηνικός/Πονάπε"
 
 #: ../src/timezone_names.c:553
 msgid "Pacific/Port_Moresby"
-msgstr "Ειρηνικός/Πορτ Μόρσμπι"
+msgstr "Ειρηνικός/Πορτ-Μόρσμπι"
 
 #: ../src/timezone_names.c:554
 msgid "Pacific/Rarotonga"
@@ -3804,7 +3890,7 @@ msgstr "Ειρηνικός/Σαϊπάν"
 
 #: ../src/timezone_names.c:556
 msgid "Pacific/Samoa"
-msgstr ""
+msgstr "Ειρηνικός/Σαμόα"
 
 #: ../src/timezone_names.c:557
 msgid "Pacific/Tahiti"
@@ -3840,55 +3926,55 @@ msgstr "SystemV"
 
 #: ../src/timezone_names.c:565
 msgid "SystemV/AST4"
-msgstr ""
+msgstr "SystemV/AST4"
 
 #: ../src/timezone_names.c:566
 msgid "SystemV/AST4ADT"
-msgstr ""
+msgstr "SystemV/AST4ADT"
 
 #: ../src/timezone_names.c:567
 msgid "SystemV/CST6"
-msgstr ""
+msgstr "SystemV/CST6"
 
 #: ../src/timezone_names.c:568
 msgid "SystemV/CST6CDT"
-msgstr ""
+msgstr "SystemV/CST6CDT"
 
 #: ../src/timezone_names.c:569
 msgid "SystemV/EST5"
-msgstr ""
+msgstr "SystemV/EST5"
 
 #: ../src/timezone_names.c:570
 msgid "SystemV/EST5/EDT"
-msgstr ""
+msgstr "SystemV/EST5/EDT"
 
 #: ../src/timezone_names.c:571
 msgid "SystemV/HST10"
-msgstr ""
+msgstr "SystemV/HST10"
 
 #: ../src/timezone_names.c:572
 msgid "SystemV/MST7"
-msgstr ""
+msgstr "SystemV/MST7"
 
 #: ../src/timezone_names.c:573
 msgid "SystemV/MST7/MNT"
-msgstr ""
+msgstr "SystemV/MST7/MNT"
 
 #: ../src/timezone_names.c:574
 msgid "SystemV/PST8"
-msgstr ""
+msgstr "SystemV/PST8"
 
 #: ../src/timezone_names.c:575
 msgid "SystemV/PST8/PDT"
-msgstr ""
+msgstr "SystemV/PST8/PDT"
 
 #: ../src/timezone_names.c:576
 msgid "SystemV/YST9"
-msgstr ""
+msgstr "SystemV/YST9"
 
 #: ../src/timezone_names.c:577
 msgid "SystemV/YST9/YDT"
-msgstr ""
+msgstr "SystemV/YST9/YDT"
 
 #: ../src/timezone_names.c:578
 msgid "US"
@@ -3900,7 +3986,7 @@ msgstr "ΗΠΑ/Αλάσκα"
 
 #: ../src/timezone_names.c:580
 msgid "US/Aleutian"
-msgstr ""
+msgstr "ΗΠΑ/Αλεούτιες Νήσοι"
 
 #: ../src/timezone_names.c:581
 msgid "US/Arizona"
@@ -3908,15 +3994,15 @@ msgstr "ΗΠΑ/Αριζόνα"
 
 #: ../src/timezone_names.c:582
 msgid "US/Central"
-msgstr ""
+msgstr "ΗΠΑ/Κεντρική"
 
 #: ../src/timezone_names.c:583
 msgid "US/Eastern"
-msgstr ""
+msgstr "ΗΠΑ/Ανατολική"
 
 #: ../src/timezone_names.c:584
 msgid "US/East-Indiana"
-msgstr ""
+msgstr "ΗΠΑ/Ανατολική-Ιντιάνα"
 
 #: ../src/timezone_names.c:585
 msgid "US/Hawaii"
@@ -3924,7 +4010,7 @@ msgstr "ΗΠΑ/Χαβάη"
 
 #: ../src/timezone_names.c:586
 msgid "US/Indiana-Starke"
-msgstr ""
+msgstr "ΗΠΑ/Ιντιάνα-Starke"
 
 #: ../src/timezone_names.c:587
 msgid "US/Michigan"
@@ -3932,19 +4018,19 @@ msgstr "ΗΠΑ/Μίτσιγκαν"
 
 #: ../src/timezone_names.c:588
 msgid "US/Mountain"
-msgstr ""
+msgstr "ΗΠΑ/Ορεινή"
 
 #: ../src/timezone_names.c:589
 msgid "US/Pacific"
-msgstr ""
+msgstr "ΗΠΑ/Ειρηνικός"
 
 #: ../src/timezone_names.c:590
 msgid "US/Pacific-New"
-msgstr ""
+msgstr "ΗΠΑ/Ειρηνικός-Νέα"
 
 #: ../src/timezone_names.c:591
 msgid "US/Samoa"
-msgstr ""
+msgstr "ΗΠΑ/Σαμόα"
 
 #: ../src/timezone_selection.c:147
 #, c-format
@@ -3979,11 +4065,11 @@ msgstr "δεν αλλάζει"
 
 #: ../src/timezone_selection.c:245
 msgid "GMT Offset"
-msgstr ""
+msgstr "Διαφορά από ώρα Greenwich (GMT)"
 
 #: ../src/timezone_selection.c:251
 msgid "Previous/Next Change"
-msgstr "Προηγούμενη/Επόμενη αλλαγή"
+msgstr "Προηγούμενη/Επόμενη αλλαγή ώρας"
 
 #: ../src/timezone_selection.c:256
 msgid "Country"
@@ -4002,7 +4088,7 @@ msgstr "Επιλογή ζώνης ώρας"
 #: ../src/timezone_selection.c:291 ../src/timezone_selection.c:300
 #: ../src/timezone_selection.c:311
 msgid "Change mode"
-msgstr "Αλλαγή κατάστασης"
+msgstr "Αλλαγή εμφάνισης"
 
 #: ../src/timezone_selection.c:292 ../src/timezone_selection.c:301
 #: ../src/timezone_selection.c:312 ../src/timezone_selection.c:351
@@ -4012,17 +4098,17 @@ msgstr "UTC"
 #. NOTE: this exists only if ical timezones are being used
 #: ../src/timezone_selection.c:302 ../src/timezone_selection.c:356
 msgid "floating"
-msgstr "μετακινούμενη"
+msgstr "σταθερή ώρα"
 
-#: ../src/tray_icon.c:418
+#: ../src/tray_icon.c:415
 msgid "New appointment"
-msgstr "Νέο ραντεβού"
+msgstr "Νέα καταχώριση"
 
-#: ../src/tray_icon.c:425
+#: ../src/tray_icon.c:422
 msgid "Preferences"
 msgstr "Προτιμήσεις"
 
-#: ../src/tray_icon.c:432
+#: ../src/tray_icon.c:429
 msgid "Quit"
 msgstr "Κλείσιμο"
 
@@ -4049,6 +4135,10 @@ msgid ""
 " ical format and includes common calendar features like repeating "
 "appointments and multiple alarming possibilities."
 msgstr ""
+"Το Orage αποσκοπεί στο να είναι ένα γρήγορο και εύχρηστο ημερολόγιο με "
+"γραφικό περιβάλλον. Χρησιμοποιεί τη συμβατή μορφή ical και διαθέτει τις "
+"λειτουργίες ενός ημερολογίου όπως, την επανάληψη των καταχωρήσεων καθώς και "
+"πολλαπλές δυνατότητες ειδοποιήσεων."
 
 #: ../org.xfce.orage.appdata.xml.in.h:4
 msgid ""
@@ -4057,6 +4147,10 @@ msgid ""
 "Contents of those files are read and converted into Orage, but those files "
 "are left untouched."
 msgstr ""
+"Το Orage δεν διαθέτει χαρακτηριστικά ημερολογίου ομάδας, μπορεί να "
+"χρησιμοποιηθεί μόνο για έναν χρήστη. Λαμβάνει μια λίστα αρχείων για τα "
+"αρχεία ical που πρόκειται να εισαχθούν. Τα περιεχόμενα αυτών των αρχείων "
+"διαβάζονται και μετατρέπονται στο Orage, αλλά παραμένουν αμετάβλητα."
 
 #: ../org.xfce.orage.desktop.in.h:1
 msgid "Orage Calendar"
@@ -4065,3 +4159,11 @@ msgstr "Ημερολόγιο Orage"
 #: ../org.xfce.orage.desktop.in.h:2
 msgid "Desktop calendar"
 msgstr "Ημερολόγιο γραφείου"
+
+#: ../org.xfce.orage.desktop.in.h:4
+msgid "Show Today"
+msgstr "Σήμερα"
+
+#: ../org.xfce.orage.desktop.in.h:5
+msgid "New Appointment"
+msgstr "Νέα καταχώριση"
