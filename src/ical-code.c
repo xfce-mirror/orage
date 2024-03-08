@@ -736,17 +736,15 @@ gint xfical_compare_times (xfical_appt *appt)
     }
 }
 
-static void xfical_appt_init0 (xfical_appt *appt)
+static void xfical_appt_init0_gdt (xfical_appt *appt, GDateTime *gdt)
 {
     guint i;
     guint week;
     guint weekday;
     guint month;
-    GDateTime *gdt;
 
     memset (appt, 0, sizeof (xfical_appt));
 
-    gdt = g_date_time_new_now_local ();
     week = 0; /* TODO: find week of month, locale should be taken acount also. */
     weekday = g_date_time_get_day_of_week (gdt) - 1;
     month = g_date_time_get_month (gdt) - 1;
@@ -762,12 +760,28 @@ static void xfical_appt_init0 (xfical_appt *appt)
         appt->recur_byday[i] = (weekday == i);
 }
 
+static void xfical_appt_init0 (xfical_appt *appt)
+{
+    xfical_appt_init0_gdt (appt, g_date_time_new_now_local ());
+}
+
 xfical_appt *xfical_appt_alloc(void)
 {
     xfical_appt *appt;
 
     appt = g_new (xfical_appt, 1);
     xfical_appt_init0 (appt);
+
+    return appt;
+}
+
+xfical_appt *xfical_appt_new_day (GDateTime *gdt)
+{
+    xfical_appt *appt;
+
+    appt = g_new (xfical_appt, 1);
+
+    xfical_appt_init0_gdt (appt, g_date_time_ref (gdt));
 
     return appt;
 }
