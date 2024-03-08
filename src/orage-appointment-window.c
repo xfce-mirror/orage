@@ -2092,7 +2092,7 @@ static xfical_appt *fill_appt_window_get_new_appt (GDateTime *par_gdt)
     gint start_minute;
     gint end_minute;
 
-    appt = xfical_appt_alloc ();
+    appt = xfical_appt_new_day (par_gdt);
     gdt_now = g_date_time_new_now_local ();
     hour = g_date_time_get_hour (gdt_now);
 
