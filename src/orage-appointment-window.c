@@ -3332,7 +3332,7 @@ static GtkWidget *build_recurrence_box_monthly (OrageAppointmentWindow *apptw)
             gtk_radio_button_new_with_label (NULL,
             _("From the beginning of the month:")));
     apptw->recurrence_monthly_begin_spin =
-            gtk_spin_button_new_with_range (1, 28, 1);
+            gtk_spin_button_new_with_range (1, MAX_MONTH_RECURRENCE_DAY, 1);
     beginning_box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0));
     gtk_box_pack_start (beginning_box,
                         apptw->recurrence_monthly_beginning_selector, FALSE,
