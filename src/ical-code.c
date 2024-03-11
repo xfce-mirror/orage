@@ -742,12 +742,15 @@ static void xfical_appt_init0_gdt (xfical_appt *appt, GDateTime *gdt)
     guint week;
     guint weekday;
     guint month;
+    gint month_day;
 
     memset (appt, 0, sizeof (xfical_appt));
 
     week = 0; /* TODO: find week of month, locale should be taken acount also. */
     weekday = g_date_time_get_day_of_week (gdt) - 1;
     month = g_date_time_get_month (gdt) - 1;
+    month_day = CLAMP (g_date_time_get_day_of_month (gdt),
+                       1, MAX_MONTH_RECURRENCE_DAY);
 
     appt->availability = 1;
     appt->interval = 1;
@@ -755,6 +758,7 @@ static void xfical_appt_init0_gdt (xfical_appt *appt, GDateTime *gdt)
     appt->recur_week_sel = week;
     appt->recur_day_sel = weekday;
     appt->recur_month_sel = month;
+    appt->recur_month_days = month_day;
 
     for (i = 0; i <= 6; i++)
         appt->recur_byday[i] = (weekday == i);

@@ -25,6 +25,8 @@
 
 #include "ical-expimp.h"
 
+#define MAX_MONTH_RECURRENCE_DAY 28
+
 typedef enum
 {
     XFICAL_FREQ_NONE = 0
