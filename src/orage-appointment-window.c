@@ -79,6 +79,7 @@
 #define RECURRENCE_HOURLY "hourly"
 
 #define RECUR_FREQ_ARRAY_ELEMENTS 6
+#define NR_OF_RECUR_CALENDARS 3
 
 typedef enum
 {
@@ -244,9 +245,7 @@ struct _OrageAppointmentWindow
     GtkWidget *Recur_exception_incl_spin_mm;
     GtkWidget *Recur_calendar_label;
     GtkWidget *Recur_calendar_hbox;
-    GtkWidget *Recur_calendar1;
-    GtkWidget *Recur_calendar2;
-    GtkWidget *Recur_calendar3;
+    GtkWidget *Recur_calendar[NR_OF_RECUR_CALENDARS];
 
     GtkStack  *recurrence_frequency_box;
     GtkWidget *recurrence_limit_box;
@@ -732,6 +731,7 @@ static void app_time_checkbutton_clicked_cb (G_GNUC_UNUSED GtkCheckButton *cb
 
 static void refresh_recur_calendars (OrageAppointmentWindow *apptw)
 {
+    guint i;
     GtkCalendar *cal;
     xfical_appt *appt;
 
@@ -739,14 +739,11 @@ static void refresh_recur_calendars (OrageAppointmentWindow *apptw)
     if (apptw->appointment_changed)
         fill_appt_from_apptw (appt, apptw);
 
-    cal = GTK_CALENDAR (apptw->Recur_calendar1);
-    xfical_mark_calendar_recur (cal, appt);
-
-    cal = GTK_CALENDAR (apptw->Recur_calendar2);
-    xfical_mark_calendar_recur (cal, appt);
-
-    cal = GTK_CALENDAR (apptw->Recur_calendar3);
-    xfical_mark_calendar_recur (cal, appt);
+    for (i = 0; i < NR_OF_RECUR_CALENDARS; i++)
+    {
+        cal = GTK_CALENDAR (apptw->Recur_calendar[i]);
+        xfical_mark_calendar_recur (cal, appt);
+    }
 }
 
 static void on_notebook_page_switch (G_GNUC_UNUSED GtkNotebook *notebook,
@@ -4215,11 +4212,13 @@ static void build_recurrence_page (OrageAppointmentWindow *apptw)
 
     guint row = 0;
     guint y, m;
+    guint i;
 
     GtkWidget *recur_table;
     GtkWidget *limit_label;
     GtkWidget *frequency_label;
     GtkGrid *frequency_box;
+    GtkCalendar *calendar;
 
     recur_table = orage_table_new (BORDER_SIZE);
     apptw->Recur_notebook_page = recur_table;
@@ -4353,40 +4352,37 @@ static void build_recurrence_page (OrageAppointmentWindow *apptw)
     /* calendars showing the action days */
     apptw->Recur_calendar_label = gtk_label_new(_("Action dates"));
     apptw->Recur_calendar_hbox = gtk_grid_new ();
-    apptw->Recur_calendar1 = gtk_calendar_new();
-    gtk_calendar_set_display_options(GTK_CALENDAR(apptw->Recur_calendar1)
-            , GTK_CALENDAR_SHOW_HEADING | GTK_CALENDAR_SHOW_DAY_NAMES);
-    gtk_calendar_get_date(GTK_CALENDAR(apptw->Recur_calendar1), &y, &m, NULL);
-    gtk_calendar_select_day(GTK_CALENDAR(apptw->Recur_calendar1), 0);
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_calendar_hbox),
-                             apptw->Recur_calendar1, NULL,
-                             GTK_POS_RIGHT, 1, 1);
 
-    apptw->Recur_calendar2 = gtk_calendar_new();
-    gtk_calendar_set_display_options(GTK_CALENDAR(apptw->Recur_calendar2)
-            , GTK_CALENDAR_SHOW_HEADING | GTK_CALENDAR_SHOW_DAY_NAMES);
-    if (++m>11) {
-        m=0;
-        y++;
-    }
-    gtk_calendar_select_month(GTK_CALENDAR(apptw->Recur_calendar2), m, y);
-    gtk_calendar_select_day(GTK_CALENDAR(apptw->Recur_calendar2), 0);
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_calendar_hbox),
-                             apptw->Recur_calendar2, NULL,
-                             GTK_POS_RIGHT, 1, 1);
+    for (i = 0; i < NR_OF_RECUR_CALENDARS; i++)
+    {
+        apptw->Recur_calendar[i] = gtk_calendar_new ();
+        calendar = GTK_CALENDAR (apptw->Recur_calendar[i]);
 
-    apptw->Recur_calendar3 = gtk_calendar_new();
-    gtk_calendar_set_display_options(GTK_CALENDAR(apptw->Recur_calendar3)
-            , GTK_CALENDAR_SHOW_HEADING | GTK_CALENDAR_SHOW_DAY_NAMES);
-    if (++m>11) {
-        m=0;
-        y++;
+        gtk_calendar_set_display_options (calendar,
+                                          GTK_CALENDAR_SHOW_HEADING |
+                                          GTK_CALENDAR_SHOW_DAY_NAMES);
+
+        gtk_calendar_select_day (calendar, 0);
+
+        gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_calendar_hbox),
+                                 apptw->Recur_calendar[i], NULL,
+                                 GTK_POS_RIGHT, 1, 1);
     }
-    gtk_calendar_select_month(GTK_CALENDAR(apptw->Recur_calendar3), m, y);
-    gtk_calendar_select_day(GTK_CALENDAR(apptw->Recur_calendar3), 0);
-    gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_calendar_hbox),
-                             apptw->Recur_calendar3, NULL,
-                             GTK_POS_RIGHT, 1, 1);
+
+    gtk_calendar_get_date (GTK_CALENDAR (apptw->Recur_calendar[0]),
+                           &y, &m, NULL);
+    for (i = 1; i < NR_OF_RECUR_CALENDARS; i++)
+    {
+        if (++m > 11)
+        {
+            m = 0;
+            y++;
+        }
+
+        gtk_calendar_select_month (GTK_CALENDAR (apptw->Recur_calendar[i]),
+                                   m, y);
+    }
+
     orage_table_add_row (recur_table
             , apptw->Recur_calendar_label, apptw->Recur_calendar_hbox
             , ++row ,(GTK_EXPAND | GTK_FILL), (0));
@@ -4398,18 +4394,15 @@ static void enable_recurrence_page_signals (OrageAppointmentWindow *apptw)
 
     g_signal_connect (apptw->Recur_freq_cb, "changed",
                       G_CALLBACK (on_freq_combobox_changed_cb), apptw);
-    g_signal_connect (apptw->Recur_calendar1, "month-changed",
-                      G_CALLBACK (recur_month_changed_cb), apptw);
-    g_signal_connect (apptw->Recur_calendar2, "month-changed",
-                      G_CALLBACK (recur_month_changed_cb), apptw);
-    g_signal_connect (apptw->Recur_calendar3, "month-changed",
-                      G_CALLBACK (recur_month_changed_cb), apptw);
-    g_signal_connect (apptw->Recur_calendar1, "day_selected_double_click",
+
+    for (i = 0; i < NR_OF_RECUR_CALENDARS; i++)
+    {
+        g_signal_connect (apptw->Recur_calendar[i], "month-changed",
+                          G_CALLBACK (recur_month_changed_cb), apptw);
+
+        g_signal_connect (apptw->Recur_calendar[i], "day_selected_double_click",
                       G_CALLBACK (recur_day_selected_double_click_cb), apptw);
-    g_signal_connect (apptw->Recur_calendar2, "day_selected_double_click",
-                      G_CALLBACK(recur_day_selected_double_click_cb), apptw);
-    g_signal_connect (apptw->Recur_calendar3, "day_selected_double_click",
-                      G_CALLBACK(recur_day_selected_double_click_cb), apptw);
+    }
 
     g_signal_connect (apptw->Recur_limit_rb, "toggled",
                       G_CALLBACK (on_recur_limit_toggled_cb), apptw);

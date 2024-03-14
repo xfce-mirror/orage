@@ -3410,11 +3410,11 @@ static void xfical_mark_calendar_from_component (GtkCalendar *gtkcal,
 
 void xfical_mark_calendar_recur(GtkCalendar *gtkcal, const xfical_appt *appt)
 {
-    guint year, month, day;
+    guint year, month;
     icalcomponent_kind ikind = ICAL_VEVENT_COMPONENT;
     icalcomponent *icmp;
 
-    gtk_calendar_get_date(gtkcal, &year, &month, &day);
+    gtk_calendar_get_date(gtkcal, &year, &month, NULL);
     gtk_calendar_clear_marks(gtkcal);
     if (appt->type == XFICAL_TYPE_EVENT)
         ikind = ICAL_VEVENT_COMPONENT;
