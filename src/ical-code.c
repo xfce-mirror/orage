@@ -108,6 +108,15 @@ typedef struct _excluded_time
     struct icaltimetype e_time;
 } excluded_time;
 
+typedef struct _mark_calendar_data
+{
+    GtkCalendar *cal;
+    guint year;
+    guint month;
+    gint orig_start_hour, orig_end_hour;
+    xfical_appt appt;
+} mark_calendar_data;
+
 /* timezone handling */
 static icaltimezone *utc_icaltimezone = NULL;
 static icaltimezone *local_icaltimezone = NULL;
@@ -3215,20 +3224,14 @@ static void mark_calendar (G_GNUC_UNUSED icalcomponent *c,
                            void *data)
 {
     struct icaltimetype sdate, edate;
-    struct mark_calendar_data {
-        GtkCalendar *cal;
-        guint year;
-        guint month;
-        gint orig_start_hour, orig_end_hour;
-        xfical_appt appt;
-    } *cal_data;
+    mark_calendar_data *cal_data;
     gchar *str;
     GDateTime *gdt_start;
     GDateTime *gdt_end;
     GDateTime *gdt_tmp;
 
     /*FIXME: find times from the span */
-    cal_data = (struct mark_calendar_data *)data;
+    cal_data = (mark_calendar_data *)data;
 
     gdt_start = g_date_time_new_from_unix_utc (span->start);
     gdt_end = g_date_time_new_from_unix_utc (span->end);
@@ -3268,9 +3271,10 @@ static void mark_calendar (G_GNUC_UNUSED icalcomponent *c,
        Only has effect when end date is midnight */
     icaltime_adjust(&edate, 0, 0, 0, -1);
 
-    xfical_mark_calendar_days(cal_data->cal, cal_data->year, cal_data->month
-            , sdate.year, sdate.month, sdate.day
-            , edate.year, edate.month, edate.day);
+    (void)xfical_mark_calendar_days (cal_data->cal, cal_data->year,
+                                     cal_data->month, sdate.year, sdate.month,
+                                     sdate.day, edate.year, edate.month,
+                                     edate.day);
 }
 
  /* Mark days from appointment c into calendar
@@ -3291,13 +3295,7 @@ static void xfical_mark_calendar_from_component (GtkCalendar *gtkcal,
     icalcomponent_kind kind;
     gchar *tmp;
     struct icaltimetype start;
-    struct mark_calendar_data {
-        GtkCalendar *cal;
-        guint year; 
-        guint month;
-        gint orig_start_hour, orig_end_hour;
-        xfical_appt appt;
-    } cal_data;
+    mark_calendar_data cal_data;
 
     /* Note that all VEVENTS are marked, but only the first VTODO
      * end date is marked */
@@ -3345,9 +3343,10 @@ static void xfical_mark_calendar_from_component (GtkCalendar *gtkcal,
         }
         else {
             per = ic_get_period(c, TRUE);
-            xfical_mark_calendar_days(gtkcal, year, month
-                    , per.stime.year, per.stime.month, per.stime.day
-                    , per.etime.year, per.etime.month, per.etime.day);
+            (void)xfical_mark_calendar_days (gtkcal, year, month,
+                                             per.stime.year, per.stime.month,
+                                             per.stime.day, per.etime.year,
+                                             per.etime.month, per.etime.day);
             if ((p = icalcomponent_get_first_property(c
                     , ICAL_RRULE_PROPERTY)) != 0) {
                 nsdate = icaltime_null_time();
@@ -3361,9 +3360,13 @@ static void xfical_mark_calendar_from_component (GtkCalendar *gtkcal,
                         nedate = icaltime_add(nsdate, per.duration)) {
                     if (!icalproperty_recurrence_is_excluded(c, &per.stime
                                 , &nsdate))
-                        xfical_mark_calendar_days(gtkcal, year, month
-                                , nsdate.year, nsdate.month, nsdate.day
-                                , nedate.year, nedate.month, nedate.day);
+                        (void)xfical_mark_calendar_days (gtkcal, year, month,
+                                                         nsdate.year,
+                                                         nsdate.month,
+                                                         nsdate.day,
+                                                         nedate.year,
+                                                         nedate.month,
+                                                         nedate.day);
                 }
                 icalrecur_iterator_free(ri);
             } 
@@ -3400,9 +3403,10 @@ static void xfical_mark_calendar_from_component (GtkCalendar *gtkcal,
             icalrecur_iterator_free(ri);
             if (!icaltime_is_null_time(nsdate)) {
                 nedate = icaltime_add(nsdate, per.duration);
-                xfical_mark_calendar_days(gtkcal, year, month
-                        , nedate.year, nedate.month, nedate.day
-                        , nedate.year, nedate.month, nedate.day);
+                (void)xfical_mark_calendar_days (gtkcal, year, month,
+                                                 nedate.year, nedate.month,
+                                                 nedate.day, nedate.year,
+                                                 nedate.month, nedate.day);
             }
         } 
     } /* ICAL_VTODO_COMPONENT */
