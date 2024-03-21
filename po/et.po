@@ -549,7 +549,7 @@ msgstr "Orage on ajahalduse rakendus Xfce töölauakeskkonna jaoks"
 msgid "translator-credits"
 msgstr ""
 "Kristjan Siimson <epost@ksiimson.se> &amp; tolge.pingviin.org\n"
-"Priit Jõerüüt 2020-2022"
+"Priit Jõerüüt 2020-2024"
 
 #: ../src/orage-application.c:114
 #, c-format
@@ -607,11 +607,11 @@ msgstr "\tKasutusel on libxfce4ui: ei\n"
 
 #: ../src/orage-application.c:567
 msgid "Open today's tasks"
-msgstr ""
+msgstr "Ava tänased ülesanded"
 
 #: ../src/orage-application.c:576
 msgid "Add new appointment"
-msgstr ""
+msgstr "Lisa uus kohtumine"
 
 #: ../src/orage-application.c:585
 msgid "Show preferences form"
@@ -639,7 +639,7 @@ msgstr "Ekspordi kohtumised Orage'ist faili"
 
 #: ../src/orage-application.c:639
 msgid "Show version of Orage"
-msgstr ""
+msgstr "Näita Orage'i versiooni"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -4143,8 +4143,8 @@ msgstr "Töölaua kalender"
 
 #: ../org.xfce.orage.desktop.in.h:4
 msgid "Show Today"
-msgstr ""
+msgstr "Näita tänast päeva"
 
 #: ../org.xfce.orage.desktop.in.h:5
 msgid "New Appointment"
-msgstr ""
+msgstr "Uus kohtumine"

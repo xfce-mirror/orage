@@ -8,7 +8,7 @@
 # Hsiu-Ming Chang <cges30901@gmail.com>, 2022
 # Walter Cheuk <wwycheuk@gmail.com>, 2022
 # Nick Schermer <nick@xfce.org>, 2023
-# 黃柏諺 <s8321414@gmail.com>, 2023
+# 黃柏諺 <s8321414@gmail.com>, 2024
 # 
 #, fuzzy
 msgid ""
@@ -17,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-30 12:48+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: 黃柏諺 <s8321414@gmail.com>, 2023\n"
+"Last-Translator: 黃柏諺 <s8321414@gmail.com>, 2024\n"
 "Language-Team: Chinese (Taiwan) (https://app.transifex.com/xfce/teams/16840/zh_TW/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -607,11 +607,11 @@ msgstr "\t使用 libxfce4ui：否\n"
 
 #: ../src/orage-application.c:567
 msgid "Open today's tasks"
-msgstr ""
+msgstr "開啟今日工作項目"
 
 #: ../src/orage-application.c:576
 msgid "Add new appointment"
-msgstr ""
+msgstr "新增約會"
 
 #: ../src/orage-application.c:585
 msgid "Show preferences form"
@@ -639,7 +639,7 @@ msgstr "從 Orage 匯出約會到檔案"
 
 #: ../src/orage-application.c:639
 msgid "Show version of Orage"
-msgstr ""
+msgstr "顯示 Orage 版本"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -4122,8 +4122,8 @@ msgstr "桌面行事曆"
 
 #: ../org.xfce.orage.desktop.in.h:4
 msgid "Show Today"
-msgstr ""
+msgstr "顯示今日"
 
 #: ../org.xfce.orage.desktop.in.h:5
 msgid "New Appointment"
-msgstr ""
+msgstr "新約會"

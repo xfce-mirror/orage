@@ -9,7 +9,7 @@
 # Ingemar Karlsson <ingemar@ingk.se>, 2022
 # Arve Eriksson <031299870@telia.com>, 2023
 # Nick Schermer <nick@xfce.org>, 2023
-# Luna Jernberg <bittin@cafe8bitar.se>, 2023
+# Luna Jernberg <bittin@cafe8bitar.se>, 2024
 # 
 #, fuzzy
 msgid ""
@@ -18,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-30 12:48+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Luna Jernberg <bittin@cafe8bitar.se>, 2023\n"
+"Last-Translator: Luna Jernberg <bittin@cafe8bitar.se>, 2024\n"
 "Language-Team: Swedish (https://app.transifex.com/xfce/teams/16840/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -607,11 +607,11 @@ msgstr "\tAnvänder libxfce4ui: nej\n"
 
 #: ../src/orage-application.c:567
 msgid "Open today's tasks"
-msgstr ""
+msgstr "Öppna dagens uppgifter"
 
 #: ../src/orage-application.c:576
 msgid "Add new appointment"
-msgstr ""
+msgstr "Lägg till nytt möte"
 
 #: ../src/orage-application.c:585
 msgid "Show preferences form"
@@ -639,7 +639,7 @@ msgstr "Exportera möten från Orage till fil"
 
 #: ../src/orage-application.c:639
 msgid "Show version of Orage"
-msgstr ""
+msgstr "Visa version av Orage"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -4147,8 +4147,8 @@ msgstr "Skrivbordskalender"
 
 #: ../org.xfce.orage.desktop.in.h:4
 msgid "Show Today"
-msgstr ""
+msgstr "Visa idag"
 
 #: ../org.xfce.orage.desktop.in.h:5
 msgid "New Appointment"
-msgstr ""
+msgstr "Nytt möte"

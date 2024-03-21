@@ -25,6 +25,8 @@
 
 #include "ical-expimp.h"
 
+#define MAX_MONTH_RECURRENCE_DAY 28
+
 typedef enum
 {
     XFICAL_FREQ_NONE = 0
@@ -182,11 +184,19 @@ gboolean xfical_file_open(gboolean foreign);
 void xfical_file_close(gboolean foreign);
 void xfical_file_close_force(void);
 
-/** Allocates memory and initializes it for new ical_type structure
+/** Allocates memory and initializes it for new ical_type structure.
  *  @return NULL if failed and pointer to xfical_appt if successfull. You must
  *          free it after not being used anymore. (g_free())
  */
 xfical_appt *xfical_appt_alloc (void);
+
+/** Allocates memory and initializes for given data it for new ical_type
+ *  structure.
+ *  @param gdt date for initialization
+ *  @return NULL if failed and pointer to xfical_appt if successfull. You must
+ *          free it after not being used anymore. (g_free())
+ */
+xfical_appt *xfical_appt_new_day (GDateTime *gdt);
 
 /** Add EVENT/TODO/JOURNAL type ical appointment to ical file
  *  @param appt pointer to filled xfical_appt structure, which is to be stored.

@@ -9,7 +9,7 @@
 # Allan Nordhøy <epost@anotheragency.no>, 2022
 # Nick Schermer <nick@xfce.org>, 2022
 # Harald H. <haarektrans@gmail.com>, 2023
-# Kaci Heskjestad, 2023
+# Kaci Heskjestad, 2024
 # 
 #, fuzzy
 msgid ""
@@ -18,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-30 12:48+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Kaci Heskjestad, 2023\n"
+"Last-Translator: Kaci Heskjestad, 2024\n"
 "Language-Team: Norwegian Bokmål (https://app.transifex.com/xfce/teams/16840/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -609,11 +609,11 @@ msgstr "\tBruker libxfce4ui: nei\n"
 
 #: ../src/orage-application.c:567
 msgid "Open today's tasks"
-msgstr ""
+msgstr "Åpne dagens oppgaver"
 
 #: ../src/orage-application.c:576
 msgid "Add new appointment"
-msgstr ""
+msgstr "Legg til ny avtale"
 
 #: ../src/orage-application.c:585
 msgid "Show preferences form"
@@ -641,7 +641,7 @@ msgstr "Eksporter avtaler fra Orage til fil"
 
 #: ../src/orage-application.c:639
 msgid "Show version of Orage"
-msgstr ""
+msgstr "Vis Orages versjonsnummer"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -4145,8 +4145,8 @@ msgstr "Skrivebordskalender"
 
 #: ../org.xfce.orage.desktop.in.h:4
 msgid "Show Today"
-msgstr ""
+msgstr "Vis idag"
 
 #: ../org.xfce.orage.desktop.in.h:5
 msgid "New Appointment"
-msgstr ""
+msgstr "Ny avtale"

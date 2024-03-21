@@ -6,10 +6,10 @@
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2022
 # Cristian Marchi <cri.penta@gmail.com>, 2022
-# Vincenzo Reale <vinx.reale@gmail.com>, 2022
 # Dmytro Tokayev, 2023
 # Nick Schermer <nick@xfce.org>, 2023
 # Emanuele Petriglia <transifex@emanuelepetriglia.com>, 2024
+# Vincenzo Reale <vinx.reale@gmail.com>, 2024
 # 
 #, fuzzy
 msgid ""
@@ -18,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-30 12:48+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Emanuele Petriglia <transifex@emanuelepetriglia.com>, 2024\n"
+"Last-Translator: Vincenzo Reale <vinx.reale@gmail.com>, 2024\n"
 "Language-Team: Italian (https://app.transifex.com/xfce/teams/16840/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -257,7 +257,7 @@ msgstr ""
 "Doppio clic sulla riga per modificarla.\n"
 "\n"
 "Attributi in ordine:\n"
-"\t1. Allarme: n=nessun allarme\n"
+"\t 1. Allarme: n=nessun allarme\n"
 "\t\t A=Allarme visivo S=Solo allarme sonoro\n"
 "\t 2. Ricorrente: n=non ricorrente\n"
 "\t\t H=Orario D=Giornaliero W=Settimanale M=Mensile Y=Annuale\n"
@@ -284,7 +284,7 @@ msgstr "File del calendario"
 
 #: ../src/interface.c:275 ../src/orage-appointment-window.c:951
 msgid "All Files"
-msgstr "Tutti i File"
+msgstr "Tutti i file"
 
 #: ../src/interface.c:643
 msgid "Current foreign files"
@@ -405,7 +405,7 @@ msgstr ""
 
 #: ../src/interface.c:1167
 msgid "You can easily drag these from event-list window."
-msgstr "É possibile trascinarli facilmente dalla finestra della lista eventi."
+msgstr "È possibile trascinarli facilmente dalla finestra della lista eventi."
 
 #: ../src/interface.c:1169
 msgid "Orage appointment UIDs separated by commas."
@@ -554,7 +554,7 @@ msgstr ""
 #: ../src/orage-about.c:51
 msgid "translator-credits"
 msgstr ""
-"Vincenzo Reale, <smart2128@baslug.org> 2020\n"
+"Vincenzo Reale, <smart2128vr@gmail.com> 2020\n"
 "Emanuele Petriglia <inbox@emanuelepetriglia.com> 2018-2019\n"
 "Cristian Marchi <cri.penta@gmail.com>, 2009\n"
 "Gianluca Foddis <gianluca.foddis@gmail.com>, 2009"
@@ -564,9 +564,7 @@ msgstr ""
 msgid ""
 "\tThis is %s version %s\n"
 "\n"
-msgstr ""
-"\tQuesta è la versione %2$s di %1$s\n"
-"\n"
+msgstr "\tQuesta è la versione %s di %s\n"
 
 #: ../src/orage-application.c:116
 #, c-format
@@ -1114,8 +1112,8 @@ msgid ""
 "(Alarms will still fire normally.)\n"
 "(There is undocumented parameter so that you can change the default limit of 8.)"
 msgstr ""
-"Impostanto a 8 o superiore, l'appuntamento NON è visualizzato nell'elenco.\n"
-"Si può utilizzare questa funzionalità per riordinare l'elenco, ma rende più difficile trovare questo appuntamento\n"
+"Impostando questo valore a 8 o superiore, l'appuntamento NON è visualizzato nell'elenco.\n"
+"Si può utilizzare questa funzionalità per riordinare l'elenco, ma rende più difficile trovare questo appuntamento.\n"
 "(Gli allarmi verranno comunque avviati normalmente)\n"
 "(C'è un parametro non documentato che permette di modificare il limite predefinito pari a 8)."
 
@@ -1363,14 +1361,14 @@ msgstr ""
 
 #: ../src/orage-appointment-window.c:4333
 msgid "Add included time (+)"
-msgstr "Aggiungi tempi inclusi (+)"
+msgstr "Aggiungi orario incluso (+)"
 
 #: ../src/orage-appointment-window.c:4335
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time"
 msgstr ""
-"I tempi inclusi hanno lo stesso fuso orario dell'istante di inizio, ma "
+"Gli orari inclusi hanno lo stesso fuso orario dell'istante di inizio, ma "
 "possono avere diversi orari"
 
 #. calendars showing the action days
@@ -1764,7 +1762,7 @@ msgstr "_Interrompi"
 
 #: ../src/reminder.c:656
 msgid "Postpone"
-msgstr "Postponi"
+msgstr "Posticipa"
 
 #: ../src/reminder.c:658
 msgid "Remind me again after the specified time"
@@ -4151,10 +4149,10 @@ msgid ""
 "Contents of those files are read and converted into Orage, but those files "
 "are left untouched."
 msgstr ""
-"Orage non possiede caratteristiche di un calendario condiviso, ma puo' "
-"essere utilizzato solo da utenti singoli. Esso prende una lista di file per "
-"file ical che devono essere importate. I contenuti di tali file vengono "
-"letti e convertiti in Orage, ma i file stessi rimangono immutati."
+"Orage non possiede caratteristiche di un calendario condiviso, ma può essere"
+" utilizzato solo da utenti singoli. Esso prende una lista di file per file "
+"ical che devono essere importate. I contenuti di tali file vengono letti e "
+"convertiti in Orage, ma i file stessi rimangono immutati."
 
 #: ../org.xfce.orage.desktop.in.h:1
 msgid "Orage Calendar"
