@@ -11,9 +11,9 @@
 # Andre Miranda <andre@andreldm.com>, 2022
 # Wellington Almeida <wsalmeida6@gmail.com>, 2022
 # Michael Martins <michaelfm21@gmail.com>, 2022
-# Rafael Fontenelle <rffontenelle@gmail.com>, 2023
 # Nick Schermer <nick@xfce.org>, 2023
 # The Cat, 2024
+# Rafael Fontenelle <rffontenelle@gmail.com>, 2024
 # 
 #, fuzzy
 msgid ""
@@ -22,7 +22,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-30 12:48+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: The Cat, 2024\n"
+"Last-Translator: Rafael Fontenelle <rffontenelle@gmail.com>, 2024\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/xfce/teams/16840/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -613,39 +613,39 @@ msgstr "\tUsar libxfce4ui: não\n"
 
 #: ../src/orage-application.c:567
 msgid "Open today's tasks"
-msgstr ""
+msgstr "Abre as tarefas de hoje"
 
 #: ../src/orage-application.c:576
 msgid "Add new appointment"
-msgstr ""
+msgstr "Adiciona novo compromisso"
 
 #: ../src/orage-application.c:585
 msgid "Show preferences form"
-msgstr "Mostrar formulário de preferências"
+msgstr "Mostra o formulário de preferências"
 
 #: ../src/orage-application.c:594
 msgid "Make Orage visible/unvisible"
-msgstr "Tornar o Orage visível/invisível"
+msgstr "Torna o Orage visível/invisível"
 
 #: ../src/orage-application.c:603
 msgid "Add a foreign file"
-msgstr "Adicionar um arquivo externo"
+msgstr "Adiciona um arquivo externo"
 
 #: ../src/orage-application.c:612
 msgid "Remove a foreign file"
-msgstr "Remover um arquivo externo"
+msgstr "Remove um arquivo externo"
 
 #: ../src/orage-application.c:621
 msgid "Import appointments from file to Orage"
-msgstr "Importar compromissos do arquivo para o Orage"
+msgstr "Importa compromissos do arquivo para o Orage"
 
 #: ../src/orage-application.c:630
 msgid "Export appointments from Orage to file"
-msgstr "Exportar compromissos do Orage para um arquivo"
+msgstr "Exporta compromissos do Orage para um arquivo"
 
 #: ../src/orage-application.c:639
 msgid "Show version of Orage"
-msgstr ""
+msgstr "Mostra a versão do Orage"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -4154,8 +4154,8 @@ msgstr "Calendário do Ambiente de Trabalho"
 
 #: ../org.xfce.orage.desktop.in.h:4
 msgid "Show Today"
-msgstr ""
+msgstr "Mostrar hoje"
 
 #: ../org.xfce.orage.desktop.in.h:5
 msgid "New Appointment"
-msgstr ""
+msgstr "Novo compromisso"
