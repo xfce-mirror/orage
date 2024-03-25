@@ -23,6 +23,8 @@
 #ifndef ORAGE_APPOINTMENT_WINDOW_H
 #define ORAGE_APPOINTMENT_WINDOW_H 1
 
+#include "day-view.h"
+#include "event-list.h"
 #include <glib-object.h>
 #include <glib.h>
 #include <gtk/gtk.h>
@@ -43,10 +45,10 @@ GtkWidget *orage_appointment_window_new_copy (const gchar *uid);
 GtkWidget *orage_appointment_window_new_update (const gchar *uid);
 
 void orage_appointment_window_set_event_list (OrageAppointmentWindow *apptw,
-                                              void *el);
+                                              el_win *el);
 
 void orage_appointment_window_set_day_window (OrageAppointmentWindow *apptw,
-                                              void *dw);
+                                              day_win *dw);
 
 G_END_DECLS
 
