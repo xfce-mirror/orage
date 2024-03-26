@@ -173,9 +173,7 @@ static void orage_application_startup (GApplication *app)
 #endif
 
     G_APPLICATION_CLASS (orage_application_parent_class)->startup (app);
-    
-    /* init i18n = nls to use gettext */
-    xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
+
     orage_css_set_theme ();
     read_parameters ();
 #ifdef ENABLE_SYNC
