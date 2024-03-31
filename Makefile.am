@@ -3,21 +3,25 @@ ACLOCAL_AMFLAGS = -I m4
 AUTOMAKE_OPTIONS = 1.8 dist-bzip2
 
 SUBDIRS = icons			\
-	po			\
 	sounds			\
 	src			\
 	plugin			\
-	themes
+	themes			\
+	po
 
 desktopdir = $(datadir)/applications
 desktop_in_files = org.xfce.orage.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
-@INTLTOOL_DESKTOP_RULE@
+
+org.xfce.orage.desktop: org.xfce.orage.desktop.in
+	$(AM_V_GEN)$(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
 appdatadir = $(datadir)/metainfo
 appdata_in_files = org.xfce.orage.appdata.xml.in
 appdata_DATA = $(appdata_in_files:.xml.in=.xml)
-@INTLTOOL_XML_RULE@
+
+org.xfce.orage.appdata.xml: org.xfce.orage.appdata.xml.in
+	$(AM_V_GEN)$(MSGFMT) --xml --template $< -d $(top_srcdir)/po -o $@
 
 servicedir = $(datadir)/dbus-1/services
 service_in_files = org.xfce.orage.service.in
@@ -26,18 +30,11 @@ service_DATA = $(service_in_files:.service.in=.service)
 	$(AM_V_GEN) $(SED) -e "s,\@bindir\@,$(bindir),g" < $< > $@
 
 EXTRA_DIST =								\
-	intltool-extract.in						\
-	intltool-merge.in						\
-	intltool-update.in						\
 	$(desktop_in_files)						\
 	$(appdata_in_files)						\
 	$(service_in_files)
 
 DISTCLEANFILES =							\
-	intltool-extract						\
-	intltool-merge							\
-	intltool-update							\
-	po/.intltool-merge-cache.lock \
 	$(desktop_DATA)							\
 	$(appdata_DATA)							\
 	$(service_DATA)
