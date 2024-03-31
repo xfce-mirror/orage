@@ -18,7 +18,6 @@ m4_define([glib_minimum_version], [2.58.0])
 m4_define([gtk_minimum_version], [3.24.0])
 m4_define([xfce_minimum_version], [4.16.0])
 m4_define([notify_minimum_version], [0.7.0])
-m4_define([intltool_minimum_version], [0.35])
 m4_define([libical_minimum_version], [3.0])
 
 
@@ -51,7 +50,6 @@ AM_CONDITIONAL([HAVE_CYGWIN], [test "`uname | grep \"CYGWIN\"`" != ""])
 
 dnl Check for basic programs
 AC_PROG_INSTALL()
-IT_PROG_INTLTOOL([intltool_minimum_version])
 AC_PROG_SED()
 AC_PROG_YACC()
 AC_PROG_LN_S()
@@ -74,7 +72,12 @@ dnl Checks for library functions (libical)
 AC_CHECK_FUNCS([gmtime_r])
 
 dnl Check for i18n support
-XDT_I18N([@LINGUAS@])
+GETTEXT_PACKAGE="$PACKAGE"
+AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE], ["$GETTEXT_PACKAGE"], [Name of default gettext domain])
+AC_SUBST([GETTEXT_PACKAGE])
+
+AM_GNU_GETTEXT([external])
+AM_GNU_GETTEXT_VERSION([0.19.8])
 
 dnl Check for required packages
 
