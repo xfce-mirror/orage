@@ -7,12 +7,7 @@ dnl Written for Xfce by Juha Kautto <juha@xfce.org>
 dnl
 
 dnl Version information
-m4_define([orage_version_major], [4])
-m4_define([orage_version_minor], [19])
-m4_define([orage_version_micro], [0])
-m4_define([orage_version_build], [@REVISION@])
-m4_define([orage_version_tag], [git]) # Leave empty for releases
-m4_define([orage_version], [orage_version_major().orage_version_minor().orage_version_micro()ifelse(orage_version_tag(), [git], [orage_version_tag()-orage_version_build()], [orage_version_tag()])])
+XDT_VERSION_INIT([4.19.0], [git])
 
 m4_define([glib_minimum_version], [2.58.0])
 m4_define([gtk_minimum_version], [3.24.0])
@@ -30,10 +25,10 @@ AC_COPYRIGHT([Copyright (c) 2003-2023
         The Xfce development team. All rights reserved.
 
 Written for Xfce by Juha Kautto <juha@xfce.org>.])
-AC_INIT([orage], [orage_version], [xfce4-dev@xfce.org])
+AC_INIT([orage], [xdt_version], [https://gitlab.xfce.org/apps/orage])
 AC_CONFIG_MACRO_DIRS([m4])
-AC_PREREQ([2.50])
-AC_REVISION([$Id$])
+AC_PREREQ([2.69])
+AC_REVISION([xdt_version_build])
 
 dnl Initialize automake
 AM_INIT_AUTOMAKE(1.8 no-dist-gzip dist-bzip2 tar-ustar foreign)
@@ -126,7 +121,7 @@ XDT_CHECK_OPTIONAL_PACKAGE([LIBXFCE4UI], [libxfce4ui-2],
                            [LIBXFCE4UI support])
 
 dnl Check for debugging support
-XDT_FEATURE_DEBUG
+XDT_FEATURE_DEBUG([xdt_debug_default])
 
 dnl ************************************************
 dnl *** Optional support for automatic archiving ***
