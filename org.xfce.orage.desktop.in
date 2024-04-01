@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
-_Name=Orage Calendar
-_Comment=Desktop calendar
+Name=Orage Calendar
+Comment=Desktop calendar
 Exec=orage %F
 Icon=org.xfce.orage
 StartupNotify=true
@@ -9,17 +9,17 @@ MimeType=text/calendar;
 Terminal=false
 Type=Application
 Categories=X-XFCE;Office;Calendar;GTK;
-_GenericName=Calendar
+GenericName=Calendar
 Actions=Today;NewAppointment;Preferences;
 
 [Desktop Action Today]
-_Name=Show Today
+Name=Show Today
 Exec=orage --today
 
 [Desktop Action NewAppointment]
-_Name=New Appointment
+Name=New Appointment
 Exec=orage --new-appointment
 
 [Desktop Action Preferences]
-_Name=Orage Preferences
+Name=Orage Preferences
 Exec=orage --preferences
