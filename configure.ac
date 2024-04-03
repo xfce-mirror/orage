@@ -36,7 +36,7 @@ AM_SILENT_RULES([yes])
 AC_CONFIG_HEADERS([config.h])
 AM_MAINTAINER_MODE()
 
-AC_PROG_CC([cc gcc clang])
+AC_PROG_CC()
 
 dnl Check for UNIX variants
 AC_USE_SYSTEM_EXTENSIONS()
