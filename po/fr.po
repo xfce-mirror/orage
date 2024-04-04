@@ -12,8 +12,8 @@
 # jc1 <jc1.quebecos@gmail.com>, 2023
 # Yannick Le Guen <leguen.yannick@gmail.com>, 2023
 # Nick Schermer <nick@xfce.org>, 2023
-# Wallon Wallon, 2024
 # Xfce Bot <transifex@xfce.org>, 2024
+# Wallon Wallon, 2024
 # 
 #, fuzzy
 msgid ""
@@ -22,7 +22,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2024-04-04 00:51+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>, 2024\n"
+"Last-Translator: Wallon Wallon, 2024\n"
 "Language-Team: French (https://app.transifex.com/xfce/teams/16840/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -141,7 +141,7 @@ msgstr ""
 #: src/event-list.c:1017 src/orage-appointment-window.c:988
 #: src/orage-appointment-window.c:1634 src/parameters.c:687
 msgid "Do you want to continue?"
-msgstr "Voulez-vous continuer ?"
+msgstr "Voulez-vous continuer ?"
 
 #: src/event-list.c:1018 src/orage-appointment-window.c:1635
 #: src/parameters.c:688
@@ -347,7 +347,7 @@ msgstr "Importer"
 
 #: src/interface.c:1040
 msgid "Read from file:"
-msgstr "Lire depuis un fichier :"
+msgstr "Lire depuis un fichier :"
 
 #: src/interface.c:1050 src/interface.c:1096 src/interface.c:1271
 #: src/interface.c:1363 src/interface.c:1446
@@ -375,7 +375,7 @@ msgstr "Exporter"
 
 #: src/interface.c:1083
 msgid "Write to file:"
-msgstr "Écrire dans le fichier :"
+msgstr "Écrire dans le fichier :"
 
 #: src/interface.c:1118 src/interface.c:1136
 msgid "Select"
@@ -387,7 +387,7 @@ msgstr "Tous les rendez-vous"
 
 #: src/interface.c:1142
 msgid "Named appointments:"
-msgstr "Rendez-vous nommés :"
+msgstr "Rendez-vous nommés :"
 
 #: src/interface.c:1161
 msgid ""
@@ -455,15 +455,15 @@ msgstr "Fichier calendrier principal d’Orage"
 
 #: src/interface.c:1248 src/interface.c:1340
 msgid "Current file:"
-msgstr "Fichier actuel :"
+msgstr "Fichier actuel :"
 
 #: src/interface.c:1260 src/interface.c:1352
 msgid "New file:"
-msgstr "Nouveau fichier :"
+msgstr "Nouveau fichier :"
 
 #: src/interface.c:1287 src/interface.c:1379
 msgid "Action options:"
-msgstr "Options d’action :"
+msgstr "Options d’action :"
 
 #: src/interface.c:1291 src/interface.c:1383
 msgid "Rename"
@@ -509,7 +509,7 @@ msgstr "Ajouter un nouveau fichier externe"
 
 #: src/interface.c:1437
 msgid "Foreign file:"
-msgstr "Fichier externe :"
+msgstr "Fichier externe :"
 
 #: src/interface.c:1453 src/orage-appointment-window.c:2435
 #: src/parameters.c:1411
@@ -518,7 +518,7 @@ msgstr "_Ajouter"
 
 #: src/interface.c:1468
 msgid "Visible name:"
-msgstr "Nom visible :"
+msgstr "Nom visible :"
 
 #: src/interface.c:1478
 msgid "Read only"
@@ -530,7 +530,7 @@ msgid ""
 "Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
 msgstr ""
 "Permet d’être certain que ce fichier ne soit jamais modifié par Orage.\n"
-"Notez que la modification des fichiers externes les rend incompatibles avec l’outil qui a servi à les créer !"
+"Notez que la modification des fichiers externes les rend incompatibles avec l’outil qui a servi à les créer !"
 
 #: src/interface.c:1490
 msgid "This internal name is displayed to user instead of file name."
@@ -597,11 +597,11 @@ msgstr "\tArchivage non utilisé.\n"
 
 #: src/orage-application.c:132
 msgid "\tUsing libxfce4ui: yes\n"
-msgstr "\tUtiliser libxfce4ui : oui\n"
+msgstr "\tUtiliser libxfce4ui : oui\n"
 
 #: src/orage-application.c:134
 msgid "\tUsing libxfce4ui: no\n"
-msgstr "Utiliser libxfce4ui : non\n"
+msgstr "Utiliser libxfce4ui : non\n"
 
 #: src/orage-application.c:567
 msgid "Open today's tasks"
@@ -704,7 +704,7 @@ msgid ""
 " Orage?)"
 msgstr ""
 "Voir plus de détails dans le fichier journal (Peut-être que le fichier a été"
-" mis à jour en dehors d’Orage ?)"
+" mis à jour en dehors d’Orage ?)"
 
 #: src/orage-appointment-window.c:1633
 msgid "This appointment will be permanently removed."
@@ -1357,15 +1357,15 @@ msgstr "Dates des actions"
 
 #: src/orage-sync-edit-dialog.c:132
 msgid "Description:"
-msgstr "Description :"
+msgstr "Description :"
 
 #: src/orage-sync-edit-dialog.c:134
 msgid "Command:"
-msgstr "Commande :"
+msgstr "Commande :"
 
 #: src/orage-sync-edit-dialog.c:136
 msgid "Period:"
-msgstr "Période :"
+msgstr "Période :"
 
 #: src/orage-sync-edit-dialog.c:138
 msgid "minutes"
@@ -1751,7 +1751,7 @@ msgstr "Rappelez-moi à nouveau après le délai spécifié"
 
 #: src/reminder.c:935
 msgid "Next active alarms:"
-msgstr "Prochaines alarmes actives :"
+msgstr "Prochaines alarmes actives :"
 
 #: src/reminder.c:974
 #, c-format
@@ -4132,7 +4132,7 @@ msgstr ""
 
 #: org.xfce.orage.appdata.xml.in:35
 msgid "Orage Team"
-msgstr ""
+msgstr "L’équipe d’Orage"
 
 #: org.xfce.orage.desktop.in:4
 msgid "Orage Calendar"
@@ -4148,7 +4148,7 @@ msgstr "Calendrier"
 
 #: org.xfce.orage.desktop.in:17
 msgid "Show Today"
-msgstr "Afficher aujourd'hui"
+msgstr "Afficher aujourd’hui"
 
 #: org.xfce.orage.desktop.in:21
 msgid "New Appointment"
