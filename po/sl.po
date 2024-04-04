@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-30 12:48+0100\n"
+"POT-Creation-Date: 2024-04-03 12:51+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Arnold Marko <arnold.marko@gmail.com>, 2024\n"
 "Language-Team: Slovenian (https://app.transifex.com/xfce/teams/16840/sl/)\n"
@@ -31,7 +31,7 @@ msgstr ""
 #. File menu stuff
 #. File menu
 #: ../src/day-view.c:289 ../src/event-list.c:1135 ../src/interface.c:860
-#: ../src/orage-appointment-window.c:2910 ../src/orage-window.c:279
+#: ../src/orage-appointment-window.c:2907 ../src/orage-window.c:279
 msgid "_File"
 msgstr "_Datoteka"
 
@@ -60,8 +60,8 @@ msgstr "Nazaj en dan"
 
 #: ../src/day-view.c:395 ../src/day-view.c:468 ../src/event-list.c:1080
 #: ../src/event-list.c:1234 ../src/functions.c:145
-#: ../src/orage-appointment-window.c:1737
-#: ../src/orage-appointment-window.c:1752 ../src/tray_icon.c:407
+#: ../src/orage-appointment-window.c:1734
+#: ../src/orage-appointment-window.c:1749 ../src/tray_icon.c:407
 msgid "Today"
 msgstr "Danes"
 
@@ -82,8 +82,8 @@ msgid "Close"
 msgstr "Zapri"
 
 #: ../src/day-view.c:466 ../src/event-list.c:1078 ../src/functions.c:143
-#: ../src/orage-appointment-window.c:1735
-#: ../src/orage-appointment-window.c:1750
+#: ../src/orage-appointment-window.c:1732
+#: ../src/orage-appointment-window.c:1747
 msgid "Pick the date"
 msgstr "Izberi datum"
 
@@ -96,8 +96,8 @@ msgid "Unknown"
 msgstr "Neznano"
 
 #. start time
-#: ../src/day-view.c:833 ../src/orage-appointment-window.c:3509
-#: ../src/orage-appointment-window.c:3638
+#: ../src/day-view.c:833 ../src/orage-appointment-window.c:3506
+#: ../src/orage-appointment-window.c:3635
 msgid "Start"
 msgstr "Začetek"
 
@@ -134,12 +134,12 @@ msgstr ""
 "Vsi izbrani sestanki bodo\n"
 "trajno izbirisani."
 
-#: ../src/event-list.c:1017 ../src/orage-appointment-window.c:991
-#: ../src/orage-appointment-window.c:1637 ../src/parameters.c:687
+#: ../src/event-list.c:1017 ../src/orage-appointment-window.c:988
+#: ../src/orage-appointment-window.c:1634 ../src/parameters.c:687
 msgid "Do you want to continue?"
 msgstr "Ali želite nadaljevati?"
 
-#: ../src/event-list.c:1018 ../src/orage-appointment-window.c:1638
+#: ../src/event-list.c:1018 ../src/orage-appointment-window.c:1635
 #: ../src/parameters.c:688
 msgid "No, cancel the removal"
 msgstr "Ne, prekliči odstranitev"
@@ -148,15 +148,15 @@ msgstr "Ne, prekliči odstranitev"
 msgid "Yes, remove them"
 msgstr "Da, odstrani jih"
 
-#: ../src/event-list.c:1141 ../src/orage-appointment-window.c:2929
+#: ../src/event-list.c:1141 ../src/orage-appointment-window.c:2926
 msgid "D_uplicate"
 msgstr "_Podvoji"
 
-#: ../src/event-list.c:1225 ../src/orage-appointment-window.c:3554
+#: ../src/event-list.c:1225 ../src/orage-appointment-window.c:3551
 msgid "Duplicate"
 msgstr "Podvoji"
 
-#: ../src/event-list.c:1227 ../src/orage-appointment-window.c:3559
+#: ../src/event-list.c:1227 ../src/orage-appointment-window.c:3556
 msgid "Delete"
 msgstr "Izbriši"
 
@@ -176,7 +176,7 @@ msgstr "Najdi"
 msgid "Dayview"
 msgstr "Dnevni prikazPrikaz dneva"
 
-#: ../src/event-list.c:1280 ../src/orage-appointment-window.c:3589
+#: ../src/event-list.c:1280 ../src/orage-appointment-window.c:3586
 msgid "Event"
 msgstr "Dogodek"
 
@@ -210,11 +210,11 @@ msgstr ""
 "Izberite to, če želite videti tudi starejše dogodke. To je mogoče izbrati le, kadar je vklopljeno 'le prvo ponovitev', da seznami niso predolgi.\n"
 "Izbira dodatnih dnevov še vedno velja, če so prikazani novejši sestanki."
 
-#: ../src/event-list.c:1339 ../src/orage-appointment-window.c:3597
+#: ../src/event-list.c:1339 ../src/orage-appointment-window.c:3594
 msgid "Todo"
 msgstr "Opravila"
 
-#: ../src/event-list.c:1353 ../src/orage-appointment-window.c:3605
+#: ../src/event-list.c:1353 ../src/orage-appointment-window.c:3602
 msgid "Journal"
 msgstr "Dnevnik"
 
@@ -235,7 +235,7 @@ msgid "Flags"
 msgstr "Zastavice"
 
 #. title
-#: ../src/event-list.c:1458 ../src/orage-appointment-window.c:3617
+#: ../src/event-list.c:1458 ../src/orage-appointment-window.c:3614
 msgid "Title"
 msgstr "Naslov"
 
@@ -267,13 +267,13 @@ msgstr ""
 "\t 5. Vrsta sestanka:\n"
 "\t\tE=dogodek T=opravilo J=dnevnik"
 
-#: ../src/ical-code.c:831
+#: ../src/ical-code.c:858
 msgid "Orage default alarm"
 msgstr "Privzeti alarm Orage"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
-#: ../src/interface.c:262 ../src/orage-appointment-window.c:936
+#: ../src/interface.c:262 ../src/orage-appointment-window.c:933
 #: ../src/parameters.c:430
 msgid "Select a file..."
 msgstr "Izberi datoteko..."
@@ -282,7 +282,7 @@ msgstr "Izberi datoteko..."
 msgid "Calendar files"
 msgstr "Datoteke koledarja"
 
-#: ../src/interface.c:275 ../src/orage-appointment-window.c:951
+#: ../src/interface.c:275 ../src/orage-appointment-window.c:948
 msgid "All Files"
 msgstr "Vse datoteke"
 
@@ -298,7 +298,7 @@ msgstr "SAMO ZA BRANJE"
 msgid "READ WRITE"
 msgstr "BRANJE IN PISANJE"
 
-#: ../src/interface.c:673 ../src/orage-appointment-window.c:2362
+#: ../src/interface.c:673 ../src/orage-appointment-window.c:2359
 msgid "_Remove"
 msgstr "Odst_rani"
 
@@ -349,13 +349,13 @@ msgstr "Preberi iz datoteke:"
 
 #: ../src/interface.c:1050 ../src/interface.c:1096 ../src/interface.c:1271
 #: ../src/interface.c:1363 ../src/interface.c:1446
-#: ../src/orage-appointment-window.c:3963 ../src/parameters.c:435
+#: ../src/orage-appointment-window.c:3960 ../src/parameters.c:435
 #: ../src/parameters.c:800 ../src/reminder.c:633
 msgid "_Open"
 msgstr "_Odpri"
 
 #: ../src/interface.c:1057 ../src/interface.c:1103 ../src/interface.c:1277
-#: ../src/interface.c:1369 ../src/orage-appointment-window.c:4129
+#: ../src/interface.c:1369 ../src/orage-appointment-window.c:4126
 msgid "_Save"
 msgstr "_Shrani"
 
@@ -416,7 +416,7 @@ msgid "Archive"
 msgstr "Arhiviraj"
 
 #: ../src/interface.c:1184 ../src/interface.c:1206
-#: ../src/orage-appointment-window.c:4108
+#: ../src/orage-appointment-window.c:4105
 msgid "_Execute"
 msgstr "Izv_edi"
 
@@ -511,7 +511,7 @@ msgstr "Doaj novo tujo doatoteko"
 msgid "Foreign file:"
 msgstr "Tuja datoteka:"
 
-#: ../src/interface.c:1453 ../src/orage-appointment-window.c:2438
+#: ../src/interface.c:1453 ../src/orage-appointment-window.c:2435
 #: ../src/parameters.c:1411
 msgid "_Add"
 msgstr "Dod_aj"
@@ -541,12 +541,11 @@ msgstr ""
 msgid "Exchange data - Orage"
 msgstr "Izmenjava podatkov - Orage"
 
-#: ../src/main.c:50 ../src/orage-appointment-window.c:712
-#: ../org.xfce.orage.appdata.xml.in.h:1
+#: ../src/main.c:50 ../src/orage-appointment-window.c:711
 msgid "Orage"
 msgstr "Orage"
 
-#: ../src/orage-about.c:44 ../org.xfce.orage.appdata.xml.in.h:2
+#: ../src/orage-about.c:44
 msgid "Orage is a time-managing application for the Xfce desktop environment"
 msgstr "Orage je aplikacija za upravljanje časa za Xfce namizno okolje"
 
@@ -649,65 +648,65 @@ msgstr "Prikaži Orage različico"
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
 #. end time
-#: ../src/orage-appointment-window.c:528 ../src/orage-appointment-window.c:568
-#: ../src/orage-appointment-window.c:3653
+#: ../src/orage-appointment-window.c:527 ../src/orage-appointment-window.c:567
+#: ../src/orage-appointment-window.c:3650
 msgid "End"
 msgstr "Konec"
 
-#: ../src/orage-appointment-window.c:548
+#: ../src/orage-appointment-window.c:547
 msgid "Due"
 msgstr "Čas"
 
-#: ../src/orage-appointment-window.c:944
+#: ../src/orage-appointment-window.c:941
 msgid "Sound Files"
 msgstr "Zvočne datoteke"
 
-#: ../src/orage-appointment-window.c:990
+#: ../src/orage-appointment-window.c:987
 msgid "The appointment information has been modified."
 msgstr "Podatki o sestanku so bili spremenjeni."
 
-#: ../src/orage-appointment-window.c:992
+#: ../src/orage-appointment-window.c:989
 msgid "No, do not leave"
 msgstr "Ne, ne zapusti"
 
-#: ../src/orage-appointment-window.c:993
+#: ../src/orage-appointment-window.c:990
 msgid "Yes, ignore modifications and leave"
 msgstr "Da, prezri opozorila in zapusti"
 
-#: ../src/orage-appointment-window.c:1022
+#: ../src/orage-appointment-window.c:1019
 msgid "The end of this appointment is earlier than the beginning."
 msgstr "Konec tega sestanka je pred začetkom"
 
-#: ../src/orage-appointment-window.c:1435
-#: ../src/orage-appointment-window.c:2224
+#: ../src/orage-appointment-window.c:1432
+#: ../src/orage-appointment-window.c:2221
 msgid "Not set"
 msgstr "Ni določeno"
 
-#: ../src/orage-appointment-window.c:1480
+#: ../src/orage-appointment-window.c:1477
 msgid "Add new appointment to this file."
 msgstr "Dodaj nov sestanek v to datoteko."
 
-#: ../src/orage-appointment-window.c:1481
-#: ../src/orage-appointment-window.c:1535
+#: ../src/orage-appointment-window.c:1478
+#: ../src/orage-appointment-window.c:1532
 msgid "Orage default file"
 msgstr "Privzeta datoteka Orage"
 
-#: ../src/orage-appointment-window.c:1573
+#: ../src/orage-appointment-window.c:1570
 msgid "Appointment addition failed."
 msgstr "Dodajanje sestanka ni uspelo."
 
-#: ../src/orage-appointment-window.c:1574
+#: ../src/orage-appointment-window.c:1571
 msgid ""
 "Error happened when adding appointment. Look more details from the log file."
 msgstr ""
 "Pri dodajanju sestanka je prišlo do napake. Več podatkov je v dnevniški "
 "datoteki."
 
-#: ../src/orage-appointment-window.c:1585
+#: ../src/orage-appointment-window.c:1582
 msgid "Appointment update failed."
 msgstr "Posodabljanje sestanka ni uspelo."
 
-#: ../src/orage-appointment-window.c:1586
+#: ../src/orage-appointment-window.c:1583
 msgid ""
 "Look more details from the log file. (Perhaps file was updated external from"
 " Orage?)"
@@ -715,219 +714,219 @@ msgstr ""
 "Več podatkov poiščite v dnevniški datoteki (morda je datoteko posobil Orage "
 "od zunaj)."
 
-#: ../src/orage-appointment-window.c:1636
+#: ../src/orage-appointment-window.c:1633
 msgid "This appointment will be permanently removed."
 msgstr "Ta sestanek bo trajno izbrisan."
 
-#: ../src/orage-appointment-window.c:1639
+#: ../src/orage-appointment-window.c:1636
 msgid "Yes, remove it"
 msgstr "Da, odstrani ga"
 
-#: ../src/orage-appointment-window.c:2176
+#: ../src/orage-appointment-window.c:2173
 msgid "This appointment does not exist."
 msgstr "Ta sestanek ne obstaja."
 
-#: ../src/orage-appointment-window.c:2177
+#: ../src/orage-appointment-window.c:2174
 msgid "It was probably removed, please refresh your screen."
 msgstr "Verjetno je bil odstranjen. Osvežite zaslon."
 
-#: ../src/orage-appointment-window.c:2389
+#: ../src/orage-appointment-window.c:2386
 msgid "Current categories"
 msgstr "Trenutne kategorije"
 
-#: ../src/orage-appointment-window.c:2411
+#: ../src/orage-appointment-window.c:2408
 msgid "Add new category with color"
 msgstr "Dodaj novo kategorijo z barvo"
 
-#: ../src/orage-appointment-window.c:2422
+#: ../src/orage-appointment-window.c:2419
 msgid "Category:"
 msgstr "Kategorija:"
 
-#: ../src/orage-appointment-window.c:2466
+#: ../src/orage-appointment-window.c:2463
 msgid "Colors of categories - Orage"
 msgstr "Barve kategorij - Orage"
 
-#: ../src/orage-appointment-window.c:2512
+#: ../src/orage-appointment-window.c:2509
 msgid "*** COPY ***"
 msgstr " *** KOPIJA ***"
 
-#: ../src/orage-appointment-window.c:2565
-#: ../src/orage-appointment-window.c:3874
+#: ../src/orage-appointment-window.c:2562
+#: ../src/orage-appointment-window.c:3871
 msgid "Before Start"
 msgstr "Pred začetkom"
 
-#: ../src/orage-appointment-window.c:2565
-#: ../src/orage-appointment-window.c:3874
+#: ../src/orage-appointment-window.c:2562
+#: ../src/orage-appointment-window.c:3871
 msgid "Before End"
 msgstr "Pred koncem"
 
-#: ../src/orage-appointment-window.c:2565
-#: ../src/orage-appointment-window.c:3875
+#: ../src/orage-appointment-window.c:2562
+#: ../src/orage-appointment-window.c:3872
 msgid "After Start"
 msgstr "Po začetku"
 
-#: ../src/orage-appointment-window.c:2565
-#: ../src/orage-appointment-window.c:3875
+#: ../src/orage-appointment-window.c:2562
+#: ../src/orage-appointment-window.c:3872
 msgid "After End"
 msgstr "Po koncu"
 
 #. window title
-#: ../src/orage-appointment-window.c:2883
+#: ../src/orage-appointment-window.c:2880
 msgid "New appointment - Orage"
 msgstr "Nov sestanek - Orage"
 
-#: ../src/orage-appointment-window.c:2916
+#: ../src/orage-appointment-window.c:2913
 msgid "Sav_e and close"
 msgstr "_Shrani in zapri"
 
-#: ../src/orage-appointment-window.c:3233
+#: ../src/orage-appointment-window.c:3230
 msgid "first"
 msgstr "prvi"
 
-#: ../src/orage-appointment-window.c:3233
+#: ../src/orage-appointment-window.c:3230
 msgid "second"
 msgstr "drugi"
 
-#: ../src/orage-appointment-window.c:3233
+#: ../src/orage-appointment-window.c:3230
 msgid "third"
 msgstr "tretji"
 
-#: ../src/orage-appointment-window.c:3233
+#: ../src/orage-appointment-window.c:3230
 msgid "fourth"
 msgstr "četrti"
 
-#: ../src/orage-appointment-window.c:3233
+#: ../src/orage-appointment-window.c:3230
 msgid "last"
 msgstr "zadnji"
 
-#: ../src/orage-appointment-window.c:3243
+#: ../src/orage-appointment-window.c:3240
 msgid "Monday"
 msgstr "ponedeljek"
 
-#: ../src/orage-appointment-window.c:3243
+#: ../src/orage-appointment-window.c:3240
 msgid "Tuesday"
 msgstr "torek"
 
-#: ../src/orage-appointment-window.c:3243
+#: ../src/orage-appointment-window.c:3240
 msgid "Wednesday"
 msgstr "sreda"
 
-#: ../src/orage-appointment-window.c:3243
+#: ../src/orage-appointment-window.c:3240
 msgid "Thursday"
 msgstr "četrtek"
 
-#: ../src/orage-appointment-window.c:3243
+#: ../src/orage-appointment-window.c:3240
 msgid "Friday"
 msgstr "petek"
 
-#: ../src/orage-appointment-window.c:3244
+#: ../src/orage-appointment-window.c:3241
 msgid "Saturday"
 msgstr "sobota"
 
-#: ../src/orage-appointment-window.c:3244
+#: ../src/orage-appointment-window.c:3241
 msgid "Sunday"
 msgstr "nedelja"
 
-#: ../src/orage-appointment-window.c:3257
-#: ../src/orage-appointment-window.c:3290
-#: ../src/orage-appointment-window.c:3397
-#: ../src/orage-appointment-window.c:3431
+#: ../src/orage-appointment-window.c:3254
+#: ../src/orage-appointment-window.c:3287
+#: ../src/orage-appointment-window.c:3394
+#: ../src/orage-appointment-window.c:3428
 msgid "Every"
 msgstr "vsak"
 
-#: ../src/orage-appointment-window.c:3262
+#: ../src/orage-appointment-window.c:3259
 msgid "day(s)"
 msgstr "dan (dni)"
 
-#: ../src/orage-appointment-window.c:3279
+#: ../src/orage-appointment-window.c:3276
 msgid "Mon"
 msgstr "pon"
 
-#: ../src/orage-appointment-window.c:3279
+#: ../src/orage-appointment-window.c:3276
 msgid "Tue"
 msgstr "tor"
 
-#: ../src/orage-appointment-window.c:3279
+#: ../src/orage-appointment-window.c:3276
 msgid "Wed"
 msgstr "sre"
 
-#: ../src/orage-appointment-window.c:3279
+#: ../src/orage-appointment-window.c:3276
 msgid "Thu"
 msgstr "čet"
 
-#: ../src/orage-appointment-window.c:3279
+#: ../src/orage-appointment-window.c:3276
 msgid "Fri"
 msgstr "pet"
 
-#: ../src/orage-appointment-window.c:3279
+#: ../src/orage-appointment-window.c:3276
 msgid "Sat"
 msgstr "sob"
 
-#: ../src/orage-appointment-window.c:3279
+#: ../src/orage-appointment-window.c:3276
 msgid "Sun"
 msgstr "ned"
 
-#: ../src/orage-appointment-window.c:3297
+#: ../src/orage-appointment-window.c:3294
 msgid "week(s) on:"
 msgstr "teden (tednov) na:"
 
-#: ../src/orage-appointment-window.c:3333
+#: ../src/orage-appointment-window.c:3330
 msgid "From the beginning of the month:"
 msgstr "Od začetka meseca;"
 
-#: ../src/orage-appointment-window.c:3346
+#: ../src/orage-appointment-window.c:3343
 msgid "From the end of the month:"
 msgstr "Od konca meseca:"
 
-#: ../src/orage-appointment-window.c:3359
+#: ../src/orage-appointment-window.c:3356
 msgid "Every:"
 msgstr "Vsak:"
 
-#: ../src/orage-appointment-window.c:3387
+#: ../src/orage-appointment-window.c:3384
 msgid "January"
 msgstr "januarju"
 
-#: ../src/orage-appointment-window.c:3387
+#: ../src/orage-appointment-window.c:3384
 msgid "February"
 msgstr "februarju"
 
-#: ../src/orage-appointment-window.c:3387
+#: ../src/orage-appointment-window.c:3384
 msgid "March"
 msgstr "marcu"
 
-#: ../src/orage-appointment-window.c:3387
+#: ../src/orage-appointment-window.c:3384
 msgid "April"
 msgstr "aprilu"
 
-#: ../src/orage-appointment-window.c:3387
+#: ../src/orage-appointment-window.c:3384
 msgid "May"
 msgstr "maju"
 
-#: ../src/orage-appointment-window.c:3388
+#: ../src/orage-appointment-window.c:3385
 msgid "June"
 msgstr "juniju"
 
-#: ../src/orage-appointment-window.c:3388
+#: ../src/orage-appointment-window.c:3385
 msgid "July"
 msgstr "juliju"
 
-#: ../src/orage-appointment-window.c:3388
+#: ../src/orage-appointment-window.c:3385
 msgid "August"
 msgstr "avgustu"
 
-#: ../src/orage-appointment-window.c:3388
+#: ../src/orage-appointment-window.c:3385
 msgid "September"
 msgstr "septembru"
 
-#: ../src/orage-appointment-window.c:3388
+#: ../src/orage-appointment-window.c:3385
 msgid "October"
 msgstr "oktobru"
 
-#: ../src/orage-appointment-window.c:3389
+#: ../src/orage-appointment-window.c:3386
 msgid "November"
 msgstr "novembru"
 
-#: ../src/orage-appointment-window.c:3389
+#: ../src/orage-appointment-window.c:3386
 msgid "December"
 msgstr "decembru"
 
@@ -935,38 +934,38 @@ msgstr "decembru"
 #. * "second Thursday of August". In some languages ​​it is not necessary to
 #. use
 #. * the string "of", it can be replaced with an empty string.
-#: ../src/orage-appointment-window.c:3405
+#: ../src/orage-appointment-window.c:3402
 msgid "of"
 msgstr "v"
 
-#: ../src/orage-appointment-window.c:3436
+#: ../src/orage-appointment-window.c:3433
 msgid "hour(s)"
 msgstr "ur(o)"
 
-#: ../src/orage-appointment-window.c:3472
+#: ../src/orage-appointment-window.c:3469
 msgid "Repeat forever"
 msgstr "ponavljaj za vedno"
 
-#: ../src/orage-appointment-window.c:3477
+#: ../src/orage-appointment-window.c:3474
 msgid "Repeat"
 msgstr "Ponavljaj"
 
-#: ../src/orage-appointment-window.c:3485
-#: ../src/orage-appointment-window.c:3992
+#: ../src/orage-appointment-window.c:3482
+#: ../src/orage-appointment-window.c:3989
 msgid "times"
 msgstr "krat"
 
-#: ../src/orage-appointment-window.c:3491
+#: ../src/orage-appointment-window.c:3488
 msgid "Repeat until"
 msgstr "Ponavljaj dokler"
 
 #. completed (only for TODO)
-#: ../src/orage-appointment-window.c:3514
-#: ../src/orage-appointment-window.c:3708
+#: ../src/orage-appointment-window.c:3511
+#: ../src/orage-appointment-window.c:3705
 msgid "Completed"
 msgstr "Končano"
 
-#: ../src/orage-appointment-window.c:3517
+#: ../src/orage-appointment-window.c:3514
 msgid ""
 "TODO reoccurs regularly starting on start time and repeating after each "
 "interval no matter when it was last completed"
@@ -975,7 +974,7 @@ msgstr ""
 "ponavljanjem glede na interval, ne glede na to ali je bilo zadnje opravilo "
 "dokončano"
 
-#: ../src/orage-appointment-window.c:3519
+#: ../src/orage-appointment-window.c:3516
 msgid ""
 "TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
@@ -983,36 +982,36 @@ msgstr ""
 "OPRAVILA se pojavljajo ob času zaključka in se ponavljajo glede na interval, ki se šteje od časa zaključka.\n"
 "(O zgodovini OPRAVILA ni mogoče ničesar povedati, ker se osnova ponavljanja spreminja po vsakem dokončanju)."
 
-#: ../src/orage-appointment-window.c:3545
+#: ../src/orage-appointment-window.c:3542
 msgid "Save"
 msgstr "Save"
 
-#: ../src/orage-appointment-window.c:3547
+#: ../src/orage-appointment-window.c:3544
 msgid "Save and close"
 msgstr "Shrani in zapri"
 
-#: ../src/orage-appointment-window.c:3552
+#: ../src/orage-appointment-window.c:3549
 msgid "Revert"
 msgstr "Povrni"
 
-#: ../src/orage-appointment-window.c:3577
+#: ../src/orage-appointment-window.c:3574
 msgid "Free"
 msgstr "Prosto"
 
-#: ../src/orage-appointment-window.c:3577
+#: ../src/orage-appointment-window.c:3574
 msgid "Busy"
 msgstr "Zasedeno"
 
-#: ../src/orage-appointment-window.c:3581
+#: ../src/orage-appointment-window.c:3578
 msgid "General"
 msgstr "Splošno"
 
 #. type
-#: ../src/orage-appointment-window.c:3587
+#: ../src/orage-appointment-window.c:3584
 msgid "Type"
 msgstr "Vrsta"
 
-#: ../src/orage-appointment-window.c:3594
+#: ../src/orage-appointment-window.c:3591
 msgid ""
 "Event that will happen sometime. For example:\n"
 "Meeting or birthday or TV show."
@@ -1020,7 +1019,7 @@ msgstr ""
 "Dogodek, ki se bo nekoč zgodil. Npr.: \n"
 "Srečanje, rojstni dan ali tv serija."
 
-#: ../src/orage-appointment-window.c:3602
+#: ../src/orage-appointment-window.c:3599
 msgid ""
 "Something that you should do sometime. For example:\n"
 "Wash your car or test new version of Orage."
@@ -1028,7 +1027,7 @@ msgstr ""
 "Nekaj, kar želite nekoč opraviti. Npr.: \n"
 "Operi avto ali preizkusi novo različico Orage."
 
-#: ../src/orage-appointment-window.c:3610
+#: ../src/orage-appointment-window.c:3607
 msgid ""
 "Make a note that something happened. For example:\n"
 "Remark that your mother called or first snow came."
@@ -1037,53 +1036,53 @@ msgstr ""
 "Opomba, da je klicala mati ali da je padel prvi sneg."
 
 #. location
-#: ../src/orage-appointment-window.c:3624 ../src/timezone_selection.c:234
+#: ../src/orage-appointment-window.c:3621 ../src/timezone_selection.c:234
 #: ../src/timezone_selection.c:239
 msgid "Location"
 msgstr "Lokacija"
 
-#: ../src/orage-appointment-window.c:3632
+#: ../src/orage-appointment-window.c:3629
 msgid "All day event"
 msgstr "Celodnevni dogodek"
 
-#: ../src/orage-appointment-window.c:3656
+#: ../src/orage-appointment-window.c:3653
 msgid "Set"
 msgstr "Nastavi"
 
-#: ../src/orage-appointment-window.c:3680
+#: ../src/orage-appointment-window.c:3677
 msgid "Duration"
 msgstr "Trajanje"
 
-#: ../src/orage-appointment-window.c:3684
-#: ../src/orage-appointment-window.c:3892 ../src/reminder.c:604
+#: ../src/orage-appointment-window.c:3681
+#: ../src/orage-appointment-window.c:3889 ../src/reminder.c:604
 msgid "days"
 msgstr "dni"
 
-#: ../src/orage-appointment-window.c:3686
-#: ../src/orage-appointment-window.c:3894 ../src/reminder.c:606
+#: ../src/orage-appointment-window.c:3683
+#: ../src/orage-appointment-window.c:3891 ../src/reminder.c:606
 msgid "hours"
 msgstr "ur"
 
-#: ../src/orage-appointment-window.c:3688
-#: ../src/orage-appointment-window.c:3896 ../src/reminder.c:608
+#: ../src/orage-appointment-window.c:3685
+#: ../src/orage-appointment-window.c:3893 ../src/reminder.c:608
 msgid "mins"
 msgstr "minut"
 
 #. Availability (only for EVENT)
-#: ../src/orage-appointment-window.c:3700
+#: ../src/orage-appointment-window.c:3697
 msgid "Availability"
 msgstr "Razpoložljivost"
 
-#: ../src/orage-appointment-window.c:3711
+#: ../src/orage-appointment-window.c:3708
 msgid "Done"
 msgstr "Opravljeno"
 
 #. categories
-#: ../src/orage-appointment-window.c:3736
+#: ../src/orage-appointment-window.c:3733
 msgid "Categories"
 msgstr "Kategorije"
 
-#: ../src/orage-appointment-window.c:3754
+#: ../src/orage-appointment-window.c:3751
 msgid ""
 "This is special category, which can be used to color this appointment in "
 "list views."
@@ -1091,20 +1090,20 @@ msgstr ""
 "To je posebna kategorija, ki se jo lahko uporabi za obarvanje tega sestanka "
 "v prikazu seznama."
 
-#: ../src/orage-appointment-window.c:3755
+#: ../src/orage-appointment-window.c:3752
 msgid "_Colour"
 msgstr "_Barva"
 
-#: ../src/orage-appointment-window.c:3760
+#: ../src/orage-appointment-window.c:3757
 msgid "update colors for categories."
 msgstr "posodobi bravo kategorij."
 
 #. priority
-#: ../src/orage-appointment-window.c:3766
+#: ../src/orage-appointment-window.c:3763
 msgid "Priority"
 msgstr "Prednost"
 
-#: ../src/orage-appointment-window.c:3770
+#: ../src/orage-appointment-window.c:3767
 msgid ""
 "If you set this 8 or bigger, the appointment is NOT shown on list windows.\n"
 "You can use that feature to unclutter your list windows, but it makes it more difficult to find this appointment.\n"
@@ -1117,11 +1116,11 @@ msgstr ""
 "(Obstaja nedokumentiran parameter za spremembo omejitve 8.)"
 
 #. note
-#: ../src/orage-appointment-window.c:3779
+#: ../src/orage-appointment-window.c:3776
 msgid "Note"
 msgstr "Opomba"
 
-#: ../src/orage-appointment-window.c:3800
+#: ../src/orage-appointment-window.c:3797
 msgid ""
 "These shorthand commands take effect immediately:\n"
 "    <D> inserts current date in local date format\n"
@@ -1140,16 +1139,16 @@ msgstr ""
 "    <&Ynnnn> se pretvori v trenutno leto minus nnnn.\n"
 "(To se lahko uporabi npr. pri opomnikih rojstnih dnevov, ko želimo videti tudi starost osebe.)"
 
-#: ../src/orage-appointment-window.c:3883
+#: ../src/orage-appointment-window.c:3880
 msgid "Alarm"
 msgstr "Alarm"
 
 #. **** ALARM TIME ****
-#: ../src/orage-appointment-window.c:3889
+#: ../src/orage-appointment-window.c:3886
 msgid "Alarm time"
 msgstr "Čas alarma"
 
-#: ../src/orage-appointment-window.c:3914
+#: ../src/orage-appointment-window.c:3911
 msgid ""
 "Often you want to get alarm:\n"
 " 1) before Event start\n"
@@ -1161,11 +1160,11 @@ msgstr ""
 " 2) pred koncem opravila\n"
 " 3) po začetku opravila"
 
-#: ../src/orage-appointment-window.c:3919
+#: ../src/orage-appointment-window.c:3916
 msgid "Persistent alarm"
 msgstr "Obstojen alarm"
 
-#: ../src/orage-appointment-window.c:3924
+#: ../src/orage-appointment-window.c:3921
 msgid ""
 "Select this if you want Orage to remind you even if it has not been active "
 "when the alarm happened."
@@ -1173,78 +1172,78 @@ msgstr ""
 "Izberite to, kadar si želite, da vas Orage opozori tudi v primeru, da ni bil"
 " aktiven, ko se je alarm zgodil."
 
-#: ../src/orage-appointment-window.c:3934
+#: ../src/orage-appointment-window.c:3931
 msgid "Sound"
 msgstr "Zvok"
 
-#: ../src/orage-appointment-window.c:3938
-#: ../src/orage-appointment-window.c:4082
+#: ../src/orage-appointment-window.c:3935
+#: ../src/orage-appointment-window.c:4079
 msgid "Use"
 msgstr "Uporabi"
 
-#: ../src/orage-appointment-window.c:3943
+#: ../src/orage-appointment-window.c:3940
 msgid "Select this if you want audible alarm"
 msgstr "Izberite to za zvočni alarm"
 
-#: ../src/orage-appointment-window.c:3948
+#: ../src/orage-appointment-window.c:3945
 msgid "Sound command is not set"
 msgstr "Zvočni ukaz ni določen"
 
-#: ../src/orage-appointment-window.c:3977
+#: ../src/orage-appointment-window.c:3974
 msgid "Repeat alarm sound"
 msgstr "Ponavljaj zvok alarma"
 
-#: ../src/orage-appointment-window.c:4008
+#: ../src/orage-appointment-window.c:4005
 msgid "sec interval"
 msgstr "sekundni interval"
 
 #. **** Display Alarm ****
-#: ../src/orage-appointment-window.c:4018
+#: ../src/orage-appointment-window.c:4015
 msgid "Visual"
 msgstr "Vizualno"
 
-#: ../src/orage-appointment-window.c:4022
+#: ../src/orage-appointment-window.c:4019
 msgid "Use Orage window"
 msgstr "Uporabi Orage okno"
 
-#: ../src/orage-appointment-window.c:4024
+#: ../src/orage-appointment-window.c:4021
 msgid "Select this if you want Orage window alarm"
 msgstr "Izberite to, če želite alarm preko Orage okna"
 
-#: ../src/orage-appointment-window.c:4036
+#: ../src/orage-appointment-window.c:4033
 msgid "Use notification"
 msgstr "Uporabi obvestilo"
 
-#: ../src/orage-appointment-window.c:4038
+#: ../src/orage-appointment-window.c:4035
 msgid "Select this if you want notification alarm"
 msgstr "Izberite to, če želite alarm preko obvestila"
 
-#: ../src/orage-appointment-window.c:4046
+#: ../src/orage-appointment-window.c:4043
 msgid "Set timeout"
 msgstr "Čas izteka"
 
-#: ../src/orage-appointment-window.c:4048
+#: ../src/orage-appointment-window.c:4045
 msgid "Select this if you want notification to expire automatically"
 msgstr "Izberite to, če želite, da obvestilo izgine samodejno"
 
-#: ../src/orage-appointment-window.c:4059
+#: ../src/orage-appointment-window.c:4056
 msgid "0 = system default expiration time"
 msgstr "0 = privzet sistemski čas izteka"
 
-#: ../src/orage-appointment-window.c:4067
+#: ../src/orage-appointment-window.c:4064
 msgid "seconds"
 msgstr "sekunde"
 
 #. **** Procedure Alarm ****
-#: ../src/orage-appointment-window.c:4078
+#: ../src/orage-appointment-window.c:4075
 msgid "Procedure"
 msgstr "Procedura"
 
-#: ../src/orage-appointment-window.c:4084
+#: ../src/orage-appointment-window.c:4081
 msgid "Select this if you want procedure or script alarm"
 msgstr "Izberite to, če želite proceduralni ali skriptni alarm"
 
-#: ../src/orage-appointment-window.c:4094
+#: ../src/orage-appointment-window.c:4091
 msgid ""
 "You must enter all escape etc characters yourself.\n"
 "This string is just given to shell to process.\n"
@@ -1264,75 +1263,75 @@ msgstr ""
 "\t<&ST> začetek sestanka\n"
 "\t<&ET> konec sestanka"
 
-#: ../src/orage-appointment-window.c:4110
+#: ../src/orage-appointment-window.c:4107
 msgid "Test this alarm by raising it now"
 msgstr "Preizkusite alarm, tako da ga sprožite"
 
-#: ../src/orage-appointment-window.c:4123
+#: ../src/orage-appointment-window.c:4120
 msgid "<b>Default alarm</b>"
 msgstr "<b>Privzeti alarm</b>"
 
-#: ../src/orage-appointment-window.c:4137
+#: ../src/orage-appointment-window.c:4134
 msgid "Store current settings as default alarm"
 msgstr "Shrani trenutne nastavitve kot privzeti alarm"
 
-#: ../src/orage-appointment-window.c:4139
+#: ../src/orage-appointment-window.c:4136
 msgid "_Revert"
 msgstr "Pov_rni"
 
-#: ../src/orage-appointment-window.c:4147
+#: ../src/orage-appointment-window.c:4144
 msgid "Set current settings from default alarm"
 msgstr "Prevzemi trenutne nastavitve iz privzetega alarma"
 
-#: ../src/orage-appointment-window.c:4212
+#: ../src/orage-appointment-window.c:4209
 msgid "None"
 msgstr "brez"
 
-#: ../src/orage-appointment-window.c:4212
+#: ../src/orage-appointment-window.c:4209
 msgid "Daily"
 msgstr "dnevno"
 
-#: ../src/orage-appointment-window.c:4212
+#: ../src/orage-appointment-window.c:4209
 msgid "Weekly"
 msgstr "tedensko"
 
-#: ../src/orage-appointment-window.c:4213
+#: ../src/orage-appointment-window.c:4210
 msgid "Monthly"
 msgstr "mesečno"
 
-#: ../src/orage-appointment-window.c:4213
+#: ../src/orage-appointment-window.c:4210
 msgid "Yearly"
 msgstr "letno"
 
-#: ../src/orage-appointment-window.c:4213
+#: ../src/orage-appointment-window.c:4210
 msgid "Hourly"
 msgstr "urno"
 
-#: ../src/orage-appointment-window.c:4226
+#: ../src/orage-appointment-window.c:4225
 msgid "Recurrence"
 msgstr "Ponavljanje"
 
 #. ****************************** Frequency *******************************
-#: ../src/orage-appointment-window.c:4233
+#: ../src/orage-appointment-window.c:4232
 msgid "Frequency"
 msgstr "frekvenca"
 
 #. ****************************** Limit ***********************************
-#: ../src/orage-appointment-window.c:4274
+#: ../src/orage-appointment-window.c:4273
 msgid "Limit"
 msgstr "omejitev"
 
 #. ****************************** TODO base (only for TODOs) **************
-#: ../src/orage-appointment-window.c:4280
+#: ../src/orage-appointment-window.c:4279
 msgid "TODO base"
 msgstr "OPRAVILA osnova"
 
 #. exceptions
-#: ../src/orage-appointment-window.c:4287
+#: ../src/orage-appointment-window.c:4286
 msgid "Exceptions"
 msgstr "Izjeme"
 
-#: ../src/orage-appointment-window.c:4313
+#: ../src/orage-appointment-window.c:4312
 msgid ""
 "Add more exception dates by clicking the calendar days below.\n"
 "Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
@@ -1342,19 +1341,19 @@ msgstr ""
 "Izjema pomeni bodosi izključi(-) ali vključi(+), odvisno od izbire.\n"
 "Odstranite s klikanjem na podatke."
 
-#: ../src/orage-appointment-window.c:4324
+#: ../src/orage-appointment-window.c:4323
 msgid "Add excluded date (-)"
 msgstr "Izključi datum  (-)"
 
-#: ../src/orage-appointment-window.c:4326
+#: ../src/orage-appointment-window.c:4325
 msgid "Excluded days are full days where this appointment is not happening"
 msgstr "Izključeni datumi so celi dnevi, ko se ta sestanek ne zgodi."
 
-#: ../src/orage-appointment-window.c:4333
+#: ../src/orage-appointment-window.c:4332
 msgid "Add included time (+)"
 msgstr "Vključi uro (+)"
 
-#: ../src/orage-appointment-window.c:4335
+#: ../src/orage-appointment-window.c:4334
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time"
@@ -1363,7 +1362,7 @@ msgstr ""
 " čas razlikuje."
 
 #. calendars showing the action days
-#: ../src/orage-appointment-window.c:4354
+#: ../src/orage-appointment-window.c:4353
 msgid "Action dates"
 msgstr "Datumi dejanj"
 
@@ -1724,7 +1723,7 @@ msgstr "Nastavitve sinhronizacije"
 msgid "Synchronization sources"
 msgstr "Viri sinhronizacije"
 
-#: ../src/parameters.c:1431 ../org.xfce.orage.desktop.in.h:6
+#: ../src/parameters.c:1431
 msgid "Orage Preferences"
 msgstr "Nastavitve Orage"
 
@@ -4101,57 +4100,3 @@ msgstr "Nastavitve"
 #: ../src/tray_icon.c:429
 msgid "Quit"
 msgstr "Končaj"
-
-#: ../plugin/org.xfce.orage-settings.desktop.in.h:1
-msgid "Orage preferences"
-msgstr "Nastavitve Orage"
-
-#: ../plugin/org.xfce.orage-settings.desktop.in.h:2
-msgid "Settings for the Xfce 4 Calendar Application (Orage)"
-msgstr "Nastavitve za program koledarja Xfce 4 (Orage)"
-
-#: ../plugin/org.xfce.orage-settings.desktop.in.h:3
-msgid "Orage Calendar Preferences"
-msgstr "Nastavitve koledarja Orage"
-
-#: ../plugin/org.xfce.orage-settings.desktop.in.h:4
-#: ../org.xfce.orage.desktop.in.h:3
-msgid "Calendar"
-msgstr "Koledar"
-
-#: ../org.xfce.orage.appdata.xml.in.h:3
-msgid ""
-"Orage aims to be a fast and easy to use graphical calendar. It uses portable"
-" ical format and includes common calendar features like repeating "
-"appointments and multiple alarming possibilities."
-msgstr ""
-"Orage je hiter in enostaven grafični koledar. Uporablja prenosljiv ical "
-"zapis in vsebuje običajne zmožnosti koledarjev, kot je ponavljanje sestankov"
-" in številne možnosti obveščanja."
-
-#: ../org.xfce.orage.appdata.xml.in.h:4
-msgid ""
-"Orage does not have group calendar features, but can only be used for single"
-" user. It takes a list of files for ical files that should be imported. "
-"Contents of those files are read and converted into Orage, but those files "
-"are left untouched."
-msgstr ""
-"Orage ne pozna skupin in je uproaben le za enega uporabnika. Zna uporabiti "
-"seznam datotek z ical datotekami in jih uvoziti. Vsebino teh datotek prebere"
-" in pretvori v Orage, same datoteke pa ostanejo nespremenjene."
-
-#: ../org.xfce.orage.desktop.in.h:1
-msgid "Orage Calendar"
-msgstr "Koledar Orage"
-
-#: ../org.xfce.orage.desktop.in.h:2
-msgid "Desktop calendar"
-msgstr "Namizni koledar"
-
-#: ../org.xfce.orage.desktop.in.h:4
-msgid "Show Today"
-msgstr "Današnji prikaz"
-
-#: ../org.xfce.orage.desktop.in.h:5
-msgid "New Appointment"
-msgstr "Nov sestanek"

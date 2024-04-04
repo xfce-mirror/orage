@@ -7,18 +7,12 @@ dnl Written for Xfce by Juha Kautto <juha@xfce.org>
 dnl
 
 dnl Version information
-m4_define([orage_version_major], [4])
-m4_define([orage_version_minor], [19])
-m4_define([orage_version_micro], [0])
-m4_define([orage_version_build], [@REVISION@])
-m4_define([orage_version_tag], [git]) # Leave empty for releases
-m4_define([orage_version], [orage_version_major().orage_version_minor().orage_version_micro()ifelse(orage_version_tag(), [git], [orage_version_tag()-orage_version_build()], [orage_version_tag()])])
+XDT_VERSION_INIT([4.19.0], [git])
 
 m4_define([glib_minimum_version], [2.58.0])
 m4_define([gtk_minimum_version], [3.24.0])
 m4_define([xfce_minimum_version], [4.16.0])
 m4_define([notify_minimum_version], [0.7.0])
-m4_define([intltool_minimum_version], [0.35])
 m4_define([libical_minimum_version], [3.0])
 m4_define([ayatana_appindicator_minimum_version], [0.5.92])
 
@@ -32,10 +26,10 @@ AC_COPYRIGHT([Copyright (c) 2003-2023
         The Xfce development team. All rights reserved.
 
 Written for Xfce by Juha Kautto <juha@xfce.org>.])
-AC_INIT([orage], [orage_version], [xfce4-dev@xfce.org])
+AC_INIT([orage], [xdt_version], [https://gitlab.xfce.org/apps/orage])
 AC_CONFIG_MACRO_DIRS([m4])
-AC_PREREQ([2.50])
-AC_REVISION([$Id$])
+AC_PREREQ([2.69])
+AC_REVISION([xdt_version_build])
 
 dnl Initialize automake
 AM_INIT_AUTOMAKE(1.8 no-dist-gzip dist-bzip2 tar-ustar foreign)
@@ -43,7 +37,7 @@ AM_SILENT_RULES([yes])
 AC_CONFIG_HEADERS([config.h])
 AM_MAINTAINER_MODE()
 
-AC_PROG_CC([cc gcc clang])
+AC_PROG_CC()
 
 dnl Check for UNIX variants
 AC_USE_SYSTEM_EXTENSIONS()
@@ -52,7 +46,6 @@ AM_CONDITIONAL([HAVE_CYGWIN], [test "`uname | grep \"CYGWIN\"`" != ""])
 
 dnl Check for basic programs
 AC_PROG_INSTALL()
-IT_PROG_INTLTOOL([intltool_minimum_version])
 AC_PROG_SED()
 AC_PROG_YACC()
 AC_PROG_LN_S()
@@ -75,7 +68,12 @@ dnl Checks for library functions (libical)
 AC_CHECK_FUNCS([gmtime_r])
 
 dnl Check for i18n support
-XDT_I18N([@LINGUAS@])
+GETTEXT_PACKAGE="$PACKAGE"
+AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE], ["$GETTEXT_PACKAGE"], [Name of default gettext domain])
+AC_SUBST([GETTEXT_PACKAGE])
+
+AM_GNU_GETTEXT([external])
+AM_GNU_GETTEXT_VERSION([0.19.8])
 
 dnl Check for required packages
 
@@ -124,7 +122,7 @@ XDT_CHECK_OPTIONAL_PACKAGE([LIBXFCE4UI], [libxfce4ui-2],
                            [LIBXFCE4UI support])
 
 dnl Check for debugging support
-XDT_FEATURE_DEBUG
+XDT_FEATURE_DEBUG([xdt_debug_default])
 
 dnl ************************************************
 dnl *** Optional support for automatic archiving ***
