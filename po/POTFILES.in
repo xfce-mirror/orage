@@ -12,12 +12,12 @@ src/orage-about.c
 src/orage-application.c
 src/orage-appointment-window.c
 src/orage-sync-edit-dialog.c
+src/orage-tray-icon-common.c
 src/orage-window.c
 src/parameters.c
 src/reminder.c
 src/timezone_names.c
 src/timezone_selection.c
-src/tray_icon.c
 src/tz_zoneinfo_read.c
 
 plugin/org.xfce.orage-settings.desktop.in
