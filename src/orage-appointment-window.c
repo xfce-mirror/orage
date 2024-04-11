@@ -280,8 +280,8 @@ struct _OrageAppointmentWindow
     void *xf_appt; /* this is xfical_appt */
     gchar *xf_uid;
 
-    void  *el;          /* used to refresh calling event list */
-    void  *dw;          /* used to refresh calling day list */
+    el_win *el;          /* used to refresh calling event list */
+    day_win *dw;         /* used to refresh calling day list */
 
     appt_win_action action;
     gchar *par;
@@ -809,9 +809,9 @@ static void refresh_dependent_data (OrageAppointmentWindow *apptw)
     OrageApplication *app;
 
     if (apptw->el != NULL)
-        refresh_el_win((el_win *)apptw->el);
+        refresh_el_win (apptw->el);
     if (apptw->dw != NULL)
-        refresh_day_win((day_win *)apptw->dw);
+        refresh_day_win (apptw->dw);
 
     app = ORAGE_APPLICATION (g_application_get_default ());
     orage_mark_appointments (ORAGE_WINDOW (orage_application_get_window (app)));
@@ -4475,14 +4475,12 @@ static void orage_appointment_window_finalize (GObject *object)
     if (self->el)
     {
         /* Remove myself from event list appointment monitoring list. */
-        ((el_win *)self->el)->apptw_list =
-                g_list_remove (((el_win *)self->el)->apptw_list, self);
+        self->el->apptw_list = g_list_remove (self->el->apptw_list, self);
     }
     else if (self->dw)
     {
         /* Remove myself from day list appointment monitoring list/ */
-        ((day_win *)self->dw)->apptw_list =
-                g_list_remove (((day_win *)self->dw)->apptw_list, self);
+        self->dw->apptw_list = g_list_remove (self->dw->apptw_list, self);
     }
 
     g_free (self->xf_uid);
@@ -4677,13 +4675,13 @@ GtkWidget *orage_appointment_window_new_update (const gchar *uid)
 }
 
 void orage_appointment_window_set_event_list (OrageAppointmentWindow *apptw,
-                                              void *el)
+                                              el_win *el)
 {
     apptw->el = el;
 }
 
 void orage_appointment_window_set_day_window (OrageAppointmentWindow *apptw,
-                                              void *dw)
+                                              day_win *dw)
 {
     apptw->dw = dw;
 }

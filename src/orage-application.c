@@ -177,9 +177,7 @@ static void orage_application_startup (GApplication *app)
 #endif
 
     G_APPLICATION_CLASS (orage_application_parent_class)->startup (app);
-    
-    /* init i18n = nls to use gettext */
-    xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
+
     orage_css_set_theme ();
     read_parameters ();
 #ifdef ENABLE_SYNC
@@ -250,12 +248,12 @@ static void orage_application_activate (GApplication *app)
         gtk_window_set_destroy_with_parent (GTK_WINDOW (window), TRUE);
 
         set_parameters ();
-        if (g_par.start_visible == FALSE)
-            hide_main_window = TRUE;
+        if (g_par.start_visible)
+            hide_main_window = FALSE;
         else if (g_par.start_minimized)
         {
             gtk_window_iconify (GTK_WINDOW (window));
-            hide_main_window = TRUE;
+            hide_main_window = FALSE;
         }
         else
         {

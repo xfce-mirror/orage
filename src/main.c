@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Erkki Moorits
+ * Copyright (c) 2021-2024 Erkki Moorits
  * Copyright (c) 2005-2013 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2003-2006 Mickael Graf (korbinus at xfce.org)
  *
@@ -30,6 +30,8 @@
 #include <glib.h>
 #include <gio/gio.h>
 
+#include <libxfce4util/libxfce4util.h>
+
 #ifdef G_OS_UNIX
 #include <signal.h>
 #include <glib-unix.h>
@@ -44,8 +46,9 @@ static gboolean quit_handler (gpointer orage_app)
 
 int main (int argc, char **argv)
 {
-    int status;
-    OrageApplication *orage_app;
+    g_autoptr (OrageApplication) orage_app = NULL;
+
+    xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 
     g_set_application_name (_("Orage"));
 
@@ -55,8 +58,5 @@ int main (int argc, char **argv)
     (void)g_unix_signal_add (SIGINT, quit_handler, orage_app);
 #endif
 
-    status = g_application_run (G_APPLICATION (orage_app), argc, argv);
-    g_object_unref (orage_app);
-
-    return status;
+    return g_application_run (G_APPLICATION (orage_app), argc, argv);;
 }

@@ -1,20 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR Xfce
+# This file is distributed under the same license as the xfce-apps.orage package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Xfce Bot <transifex@xfce.org>, 2022
 # Sveinn í Felli <sv1@fellsnet.is>, 2023
+# Xfce Bot <transifex@xfce.org>, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-03 12:51+0200\n"
+"Project-Id-Version: xfce-apps.orage\n"
+"Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
+"POT-Creation-Date: 2024-04-04 00:51+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Sveinn í Felli <sv1@fellsnet.is>, 2023\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>, 2024\n"
 "Language-Team: Icelandic (https://app.transifex.com/xfce/teams/16840/is/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,103 +26,102 @@ msgstr ""
 #. File menu
 #. File menu stuff
 #. File menu
-#: ../src/day-view.c:289 ../src/event-list.c:1135 ../src/interface.c:860
-#: ../src/orage-appointment-window.c:2907 ../src/orage-window.c:279
+#: src/day-view.c:289 src/event-list.c:1135 src/interface.c:860
+#: src/orage-appointment-window.c:2907 src/orage-window.c:279
 msgid "_File"
 msgstr "_Skrá"
 
 #. ********* View menu *********
 #. View menu
-#: ../src/day-view.c:299 ../src/event-list.c:1158 ../src/orage-window.c:310
+#: src/day-view.c:299 src/event-list.c:1158 src/orage-window.c:310
 msgid "_View"
 msgstr "S_koða"
 
 #. ********* Go menu   *********
-#: ../src/day-view.c:313 ../src/event-list.c:1177
+#: src/day-view.c:313 src/event-list.c:1177
 msgid "_Go"
 msgstr "Fa_ra"
 
-#: ../src/day-view.c:386 ../src/event-list.c:1223
+#: src/day-view.c:386 src/event-list.c:1223
 msgid "New"
 msgstr "Nýtt"
 
-#: ../src/day-view.c:391
+#: src/day-view.c:391
 msgid "Back one week"
 msgstr "Til baka um eina viku"
 
-#: ../src/day-view.c:393
+#: src/day-view.c:393
 msgid "Back one day"
 msgstr "Til baka um einn dag"
 
-#: ../src/day-view.c:395 ../src/day-view.c:468 ../src/event-list.c:1080
-#: ../src/event-list.c:1234 ../src/functions.c:145
-#: ../src/orage-appointment-window.c:1734
-#: ../src/orage-appointment-window.c:1749 ../src/tray_icon.c:407
+#: src/day-view.c:395 src/day-view.c:468 src/event-list.c:1080
+#: src/event-list.c:1234 src/functions.c:145
+#: src/orage-appointment-window.c:1734 src/orage-appointment-window.c:1749
+#: src/tray_icon.c:407
 msgid "Today"
 msgstr "Í dag"
 
-#: ../src/day-view.c:397
+#: src/day-view.c:397
 msgid "Forward one day"
 msgstr "Áfram um einn dag"
 
-#: ../src/day-view.c:399
+#: src/day-view.c:399
 msgid "Forward one week"
 msgstr "Áfram um eina viku"
 
-#: ../src/day-view.c:404 ../src/event-list.c:1241
+#: src/day-view.c:404 src/event-list.c:1241
 msgid "Refresh"
 msgstr "Uppfæra"
 
-#: ../src/day-view.c:409 ../src/event-list.c:1248 ../src/interface.c:879
+#: src/day-view.c:409 src/event-list.c:1248 src/interface.c:879
 msgid "Close"
 msgstr "Loka"
 
-#: ../src/day-view.c:466 ../src/event-list.c:1078 ../src/functions.c:143
-#: ../src/orage-appointment-window.c:1732
-#: ../src/orage-appointment-window.c:1747
+#: src/day-view.c:466 src/event-list.c:1078 src/functions.c:143
+#: src/orage-appointment-window.c:1732 src/orage-appointment-window.c:1747
 msgid "Pick the date"
 msgstr "Veldu dagsetninguna"
 
-#: ../src/day-view.c:468
+#: src/day-view.c:468
 msgid "_OK"
 msgstr "Í _lagi"
 
-#: ../src/day-view.c:596
+#: src/day-view.c:596
 msgid "Unknown"
 msgstr "Óþekkt"
 
 #. start time
-#: ../src/day-view.c:833 ../src/orage-appointment-window.c:3506
-#: ../src/orage-appointment-window.c:3635
+#: src/day-view.c:833 src/orage-appointment-window.c:3506
+#: src/orage-appointment-window.c:3635
 msgid "Start"
 msgstr "Byrja"
 
-#: ../src/day-view.c:841
+#: src/day-view.c:841
 msgid "Number of days to show"
 msgstr ""
 
-#: ../src/day-view.c:1072
+#: src/day-view.c:1072
 msgid "Orage - day view"
 msgstr "Orage - dagasýn"
 
 #. date only appointment
-#: ../src/event-list.c:186
+#: src/event-list.c:186
 msgid "All day"
 msgstr "Allan daginn"
 
-#: ../src/event-list.c:617 ../src/event-list.c:1442
+#: src/event-list.c:617 src/event-list.c:1442
 msgid "Time"
 msgstr "Tími"
 
-#: ../src/event-list.c:803
+#: src/event-list.c:803
 msgid "No rows have been selected."
 msgstr "Engar raðir hafa verið valdar."
 
-#: ../src/event-list.c:804
+#: src/event-list.c:804
 msgid "Click a row to select it and after that you can copy it."
 msgstr "Smelltu á röð til að velja hana og þá geturðu afritað hana."
 
-#: ../src/event-list.c:1016
+#: src/event-list.c:1016
 msgid ""
 "You will permanently remove all\n"
 "selected appointments."
@@ -130,107 +129,107 @@ msgstr ""
 "Þú munt eyða endanlega öllum\n"
 "völdum stefnumótum."
 
-#: ../src/event-list.c:1017 ../src/orage-appointment-window.c:988
-#: ../src/orage-appointment-window.c:1634 ../src/parameters.c:687
+#: src/event-list.c:1017 src/orage-appointment-window.c:988
+#: src/orage-appointment-window.c:1634 src/parameters.c:687
 msgid "Do you want to continue?"
 msgstr "Viltu halda áfram?"
 
-#: ../src/event-list.c:1018 ../src/orage-appointment-window.c:1635
-#: ../src/parameters.c:688
+#: src/event-list.c:1018 src/orage-appointment-window.c:1635
+#: src/parameters.c:688
 msgid "No, cancel the removal"
 msgstr "Nei, hætta við að fjarlægja"
 
-#: ../src/event-list.c:1019
+#: src/event-list.c:1019
 msgid "Yes, remove them"
 msgstr "Já, fjarlægja þau"
 
-#: ../src/event-list.c:1141 ../src/orage-appointment-window.c:2926
+#: src/event-list.c:1141 src/orage-appointment-window.c:2926
 msgid "D_uplicate"
 msgstr "_Tvöfalda"
 
-#: ../src/event-list.c:1225 ../src/orage-appointment-window.c:3551
+#: src/event-list.c:1225 src/orage-appointment-window.c:3551
 msgid "Duplicate"
 msgstr "Tvöfalda"
 
-#: ../src/event-list.c:1227 ../src/orage-appointment-window.c:3556
+#: src/event-list.c:1227 src/orage-appointment-window.c:3556
 msgid "Delete"
 msgstr "Eyða"
 
-#: ../src/event-list.c:1232
+#: src/event-list.c:1232
 msgid "Back"
 msgstr "Til baka"
 
-#: ../src/event-list.c:1236
+#: src/event-list.c:1236
 msgid "Forward"
 msgstr "Áfram"
 
-#: ../src/event-list.c:1243
+#: src/event-list.c:1243
 msgid "Find"
 msgstr "Finna"
 
-#: ../src/event-list.c:1250
+#: src/event-list.c:1250
 msgid "Dayview"
 msgstr "Dagasýn"
 
-#: ../src/event-list.c:1280 ../src/orage-appointment-window.c:3586
+#: src/event-list.c:1280 src/orage-appointment-window.c:3586
 msgid "Event"
 msgstr "Atburður"
 
-#: ../src/event-list.c:1285
+#: src/event-list.c:1285
 msgid "Extra days to show:"
 msgstr "Aukadagar sem á að sýna:"
 
-#: ../src/event-list.c:1299
+#: src/event-list.c:1299
 msgid "only first repeating"
 msgstr "einungis fyrstu endurtekningu"
 
-#: ../src/event-list.c:1307
+#: src/event-list.c:1307
 msgid ""
 "Check this if you only want to see the first repeating event. By default all are shown.\n"
 "Note that this also shows all urgencies.\n"
 "Note that repeating events may appear earlier in the list as the first occurrence only is listed."
 msgstr ""
 
-#: ../src/event-list.c:1312
+#: src/event-list.c:1312
 msgid "also old"
 msgstr "einnig eldra"
 
-#: ../src/event-list.c:1317
+#: src/event-list.c:1317
 msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed."
 msgstr ""
 
-#: ../src/event-list.c:1339 ../src/orage-appointment-window.c:3594
+#: src/event-list.c:1339 src/orage-appointment-window.c:3594
 msgid "Todo"
 msgstr "Verkefnalisti"
 
-#: ../src/event-list.c:1353 ../src/orage-appointment-window.c:3602
+#: src/event-list.c:1353 src/orage-appointment-window.c:3602
 msgid "Journal"
 msgstr "Dagbók"
 
-#: ../src/event-list.c:1356
+#: src/event-list.c:1356
 msgid "Journal entries starting from:"
 msgstr "Dagbókarfærslur frá og með:"
 
-#: ../src/event-list.c:1381
+#: src/event-list.c:1381
 msgid "Search"
 msgstr "Leita"
 
-#: ../src/event-list.c:1384
+#: src/event-list.c:1384
 msgid "Search text "
 msgstr "Leita í texta "
 
-#: ../src/event-list.c:1450
+#: src/event-list.c:1450
 msgid "Flags"
 msgstr "Flögg"
 
 #. title
-#: ../src/event-list.c:1458 ../src/orage-appointment-window.c:3614
+#: src/event-list.c:1458 src/orage-appointment-window.c:3614
 msgid "Title"
 msgstr "Titill"
 
-#: ../src/event-list.c:1484
+#: src/event-list.c:1484
 msgid ""
 "Double click line to edit it.\n"
 "\n"
@@ -258,99 +257,98 @@ msgstr ""
 "\t 5. Tegund stefnumóts:\n"
 "\t\tE=Atburður T=Verk J=Dagbók"
 
-#: ../src/ical-code.c:858
+#: src/ical-code.c:858
 msgid "Orage default alarm"
 msgstr "Sjálfgefin áminning Orage"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
-#: ../src/interface.c:262 ../src/orage-appointment-window.c:933
-#: ../src/parameters.c:430
+#: src/interface.c:262 src/orage-appointment-window.c:933 src/parameters.c:430
 msgid "Select a file..."
 msgstr "Veldu skrá..."
 
-#: ../src/interface.c:269
+#: src/interface.c:269
 msgid "Calendar files"
 msgstr "Dagatalsskrár"
 
-#: ../src/interface.c:275 ../src/orage-appointment-window.c:948
+#: src/interface.c:275 src/orage-appointment-window.c:948
 msgid "All Files"
 msgstr "Allar skrár"
 
-#: ../src/interface.c:643
+#: src/interface.c:643
 msgid "Current foreign files"
 msgstr "Fyrirliggjandi utanaðkomandi skrár"
 
-#: ../src/interface.c:666
+#: src/interface.c:666
 msgid "READ ONLY"
 msgstr "SKRIFVARIÐ"
 
-#: ../src/interface.c:668
+#: src/interface.c:668
 msgid "READ WRITE"
 msgstr "LES- OG SKRIFANLEGT"
 
-#: ../src/interface.c:673 ../src/orage-appointment-window.c:2359
+#: src/interface.c:673 src/orage-appointment-window.c:2359
 msgid "_Remove"
 msgstr ""
 
-#: ../src/interface.c:693
+#: src/interface.c:693
 msgid "***** No foreign files *****"
 msgstr "***** Engar utanaðkomandi skrár *****"
 
-#: ../src/interface.c:708
+#: src/interface.c:708
 msgid "Foreign file add failed"
 msgstr "Viðbæting á utanaðkomandi skrá mistókst"
 
-#: ../src/interface.c:717
+#: src/interface.c:717
 msgid "Orage can only handle 10 foreign files. Limit reached."
 msgstr ""
 "Orage getur einungis meðhöndlað 10 utanaðkomandi skrár. Hámarki er náð."
 
-#: ../src/interface.c:727
+#: src/interface.c:727
 msgid "Filename is empty."
 msgstr "Skráarheitið er tómt."
 
-#: ../src/interface.c:737
+#: src/interface.c:737
 msgid "Name is empty."
 msgstr "Heitið vantar."
 
-#: ../src/interface.c:748
+#: src/interface.c:748
 msgid "File does not exist."
 msgstr "Skráin er ekki til."
 
-#: ../src/interface.c:760
+#: src/interface.c:760
 msgid "Same filename already exists in Orage."
 msgstr "Sama skráarheiti er þegar til í Orage."
 
-#: ../src/interface.c:771
+#: src/interface.c:771
 msgid "Same name already exists in Orage."
 msgstr "Sama nafn er þegar til í Orage."
 
-#: ../src/interface.c:1025
+#: src/interface.c:1025
 msgid "Import/export"
 msgstr "Inn/útflutningur"
 
-#: ../src/interface.c:1032
+#: src/interface.c:1032
 msgid "Import"
 msgstr "Flytja inn"
 
-#: ../src/interface.c:1040
+#: src/interface.c:1040
 msgid "Read from file:"
 msgstr "Lesa úr skrá:"
 
-#: ../src/interface.c:1050 ../src/interface.c:1096 ../src/interface.c:1271
-#: ../src/interface.c:1363 ../src/interface.c:1446
-#: ../src/orage-appointment-window.c:3960 ../src/parameters.c:435
-#: ../src/parameters.c:800 ../src/reminder.c:633
+#: src/interface.c:1050 src/interface.c:1096 src/interface.c:1271
+#: src/interface.c:1363 src/interface.c:1446
+#: src/orage-appointment-window.c:3960 src/parameters.c:435
+#: src/parameters.c:800 src/reminder.c:633
 msgid "_Open"
 msgstr "_Opna"
 
-#: ../src/interface.c:1057 ../src/interface.c:1103 ../src/interface.c:1277
-#: ../src/interface.c:1369 ../src/orage-appointment-window.c:4126
+#: src/interface.c:1057 src/interface.c:1103 src/interface.c:1277
+#: src/interface.c:1369 src/orage-appointment-window.c:4126
 msgid "_Save"
 msgstr "Vi_sta"
 
-#: ../src/interface.c:1070
+#: src/interface.c:1070
 msgid ""
 "Separate filenames with comma(,).\n"
 " NOTE: comma is not valid character in filenames for Orage."
@@ -358,100 +356,100 @@ msgstr ""
 "Aðskildu skráaheiti með kommu (,).\n"
 " ATH: komma er ekki gild sem stafur í skráaheitum í Orage."
 
-#: ../src/interface.c:1075
+#: src/interface.c:1075
 msgid "Export"
 msgstr "Flytja út"
 
-#: ../src/interface.c:1083
+#: src/interface.c:1083
 msgid "Write to file:"
 msgstr "Skrifa í skrá:"
 
-#: ../src/interface.c:1118 ../src/interface.c:1136
+#: src/interface.c:1118 src/interface.c:1136
 msgid "Select"
 msgstr "Velja"
 
-#: ../src/interface.c:1123
+#: src/interface.c:1123
 msgid "All appointments"
 msgstr "Öll stefnumót"
 
-#: ../src/interface.c:1142
+#: src/interface.c:1142
 msgid "Named appointments:"
 msgstr ""
 
-#: ../src/interface.c:1161
+#: src/interface.c:1161
 msgid ""
 "Note that only main file appointments are read.\n"
 "Archived and Foreign events are not exported."
 msgstr ""
 
-#: ../src/interface.c:1164
+#: src/interface.c:1164
 msgid ""
 "Note that only main file appointments are read.\n"
 "Foreign events are not exported."
 msgstr ""
 
-#: ../src/interface.c:1167
+#: src/interface.c:1167
 msgid "You can easily drag these from event-list window."
 msgstr "Þú getur einfaldlega dregið þetta af atburðalistaglugganum."
 
-#: ../src/interface.c:1169
+#: src/interface.c:1169
 msgid "Orage appointment UIDs separated by commas."
 msgstr ""
 
-#: ../src/interface.c:1175
+#: src/interface.c:1175
 msgid "Archive"
 msgstr "Safnskrá"
 
-#: ../src/interface.c:1184 ../src/interface.c:1206
-#: ../src/orage-appointment-window.c:4105
+#: src/interface.c:1184 src/interface.c:1206
+#: src/orage-appointment-window.c:4105
 msgid "_Execute"
 msgstr ""
 
-#: ../src/interface.c:1190
+#: src/interface.c:1190
 #, c-format
 msgid "Archive now (threshold: %d months)"
 msgstr ""
 
-#: ../src/interface.c:1201
+#: src/interface.c:1201
 msgid "You can change archive threshold in parameters"
 msgstr ""
 
-#: ../src/interface.c:1213
+#: src/interface.c:1213
 msgid "Revert archive now"
 msgstr ""
 
-#: ../src/interface.c:1220
+#: src/interface.c:1220
 msgid ""
 "Return all archived events into main orage file and remove arch file.\n"
 "This is useful for example when doing export and moving orage\n"
 "appointments to another system."
 msgstr ""
 
-#: ../src/interface.c:1232
+#: src/interface.c:1232
 msgid "Orage files"
 msgstr "Orage skrár"
 
-#: ../src/interface.c:1239
+#: src/interface.c:1239
 msgid "Orage main calendar file"
 msgstr "Aðaldagatalsskrá Orage"
 
-#: ../src/interface.c:1248 ../src/interface.c:1340
+#: src/interface.c:1248 src/interface.c:1340
 msgid "Current file:"
 msgstr "Núverandi skrá:"
 
-#: ../src/interface.c:1260 ../src/interface.c:1352
+#: src/interface.c:1260 src/interface.c:1352
 msgid "New file:"
 msgstr "Ný skrá:"
 
-#: ../src/interface.c:1287 ../src/interface.c:1379
+#: src/interface.c:1287 src/interface.c:1379
 msgid "Action options:"
 msgstr "Valkostir aðgerðar:"
 
-#: ../src/interface.c:1291 ../src/interface.c:1383
+#: src/interface.c:1291 src/interface.c:1383
 msgid "Rename"
 msgstr "Endurnefna"
 
-#: ../src/interface.c:1297
+#: src/interface.c:1297
 msgid ""
 "Orage internal file rename only.\n"
 "Does not touch external filesystem at all.\n"
@@ -461,78 +459,79 @@ msgstr ""
 "Snertir alls ekki ytri skráakerfi.\n"
 "Ný skrá verður að vera til."
 
-#: ../src/interface.c:1301 ../src/interface.c:1390
+#: src/interface.c:1301 src/interface.c:1390
 msgid "Copy"
 msgstr "Afrita"
 
-#: ../src/interface.c:1307
+#: src/interface.c:1307
 msgid "Current file is copied and stays unmodified in the old place."
 msgstr "Núverandi skrá er afrituð og helst óbreytt á gamla staðnum."
 
-#: ../src/interface.c:1311 ../src/interface.c:1397
+#: src/interface.c:1311 src/interface.c:1397
 msgid "Move"
 msgstr "Færa"
 
-#: ../src/interface.c:1317
+#: src/interface.c:1317
 msgid "Current file is moved and vanishes from the old place."
 msgstr "Núverandi skrá er færð og hverfur af gamla staðnum."
 
-#: ../src/interface.c:1331
+#: src/interface.c:1331
 msgid "Archive file"
 msgstr "Safnskrá"
 
-#: ../src/interface.c:1422
+#: src/interface.c:1422
 msgid "Foreign files"
 msgstr "Utanaðkomandi skrár:"
 
-#: ../src/interface.c:1429
+#: src/interface.c:1429
 msgid "Add new foreign file"
 msgstr "Bæta við nýrri utanaðkomandi skrá"
 
-#: ../src/interface.c:1437
+#: src/interface.c:1437
 msgid "Foreign file:"
 msgstr "Utanaðkomandi skrá:"
 
-#: ../src/interface.c:1453 ../src/orage-appointment-window.c:2435
-#: ../src/parameters.c:1411
+#: src/interface.c:1453 src/orage-appointment-window.c:2435
+#: src/parameters.c:1411
 msgid "_Add"
 msgstr "Bæt_a við"
 
-#: ../src/interface.c:1468
+#: src/interface.c:1468
 msgid "Visible name:"
 msgstr "Sýnilegt nafn:"
 
-#: ../src/interface.c:1478
+#: src/interface.c:1478
 msgid "Read only"
 msgstr "Skrifvarið"
 
-#: ../src/interface.c:1488
+#: src/interface.c:1488
 msgid ""
 "Set this if you want to make sure that this file is never modified by Orage.\n"
 "Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
 msgstr ""
 
-#: ../src/interface.c:1490
+#: src/interface.c:1490
 msgid "This internal name is displayed to user instead of file name."
 msgstr ""
 
-#: ../src/interface.c:1504
+#: src/interface.c:1504
 msgid "Exchange data - Orage"
 msgstr "Gagnaskipti - Orage"
 
-#: ../src/main.c:50 ../src/orage-appointment-window.c:711
+#: src/main.c:50 src/orage-appointment-window.c:711
+#: org.xfce.orage.appdata.xml.in:7
 msgid "Orage"
 msgstr "Orage"
 
-#: ../src/orage-about.c:44
+#: src/orage-about.c:44 org.xfce.orage.appdata.xml.in:8
 msgid "Orage is a time-managing application for the Xfce desktop environment"
 msgstr ""
 
-#: ../src/orage-about.c:51
+#: src/orage-about.c:51
 msgid "translator-credits"
 msgstr "Sveinn í Felli <sv1@fellsnet.is>"
 
-#: ../src/orage-application.c:114
+#: src/orage-application.c:114
 #, c-format
 msgid ""
 "\tThis is %s version %s\n"
@@ -541,367 +540,352 @@ msgstr ""
 "\tÞetta er %s útgáfa %s\n"
 "\n"
 
-#: ../src/orage-application.c:116
-#, c-format
+#: src/orage-application.c:116
 msgid "\tReleased under the terms of the GNU General Public License.\n"
 msgstr ""
 "\tÞessi hugbúnaður er gefinn út með GNU General Public License "
 "notkunarleyfinu.\n"
 
-#: ../src/orage-application.c:117
+#: src/orage-application.c:117
 #, c-format
 msgid "\tCompiled against GTK+-%d.%d.%d, "
 msgstr "\tVistþýtt á móti GTK+-%d.%d.%d, "
 
-#: ../src/orage-application.c:119
+#: src/orage-application.c:119
 #, c-format
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "nota GTK+-%d.%d.%d.\n"
 
-#: ../src/orage-application.c:122
-#, c-format
+#: src/orage-application.c:122
 msgid "\tUsing libnotify.\n"
 msgstr "\tNota libnotify.\n"
 
-#: ../src/orage-application.c:124
-#, c-format
+#: src/orage-application.c:124
 msgid "\tNot using libnotify.\n"
 msgstr "\tNota ekki libnotify.\n"
 
-#: ../src/orage-application.c:127
-#, c-format
+#: src/orage-application.c:127
 msgid "\tUsing automatic archiving.\n"
 msgstr ""
 
-#: ../src/orage-application.c:129
-#, c-format
+#: src/orage-application.c:129
 msgid "\tNot using archiving.\n"
 msgstr ""
 
-#: ../src/orage-application.c:132
-#, c-format
+#: src/orage-application.c:132
 msgid "\tUsing libxfce4ui: yes\n"
 msgstr ""
 
-#: ../src/orage-application.c:134
-#, c-format
+#: src/orage-application.c:134
 msgid "\tUsing libxfce4ui: no\n"
 msgstr ""
 
-#: ../src/orage-application.c:567
+#: src/orage-application.c:567
 msgid "Open today's tasks"
 msgstr ""
 
-#: ../src/orage-application.c:576
+#: src/orage-application.c:576
 msgid "Add new appointment"
 msgstr ""
 
-#: ../src/orage-application.c:585
+#: src/orage-application.c:585
 msgid "Show preferences form"
 msgstr ""
 
-#: ../src/orage-application.c:594
+#: src/orage-application.c:594
 msgid "Make Orage visible/unvisible"
 msgstr ""
 
-#: ../src/orage-application.c:603
+#: src/orage-application.c:603
 msgid "Add a foreign file"
 msgstr ""
 
-#: ../src/orage-application.c:612
+#: src/orage-application.c:612
 msgid "Remove a foreign file"
 msgstr ""
 
-#: ../src/orage-application.c:621
+#: src/orage-application.c:621
 msgid "Import appointments from file to Orage"
 msgstr ""
 
-#: ../src/orage-application.c:630
+#: src/orage-application.c:630
 msgid "Export appointments from Orage to file"
 msgstr ""
 
-#: ../src/orage-application.c:639
+#: src/orage-application.c:639
 msgid "Show version of Orage"
 msgstr ""
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
 #. end time
-#: ../src/orage-appointment-window.c:527 ../src/orage-appointment-window.c:567
-#: ../src/orage-appointment-window.c:3650
+#: src/orage-appointment-window.c:527 src/orage-appointment-window.c:567
+#: src/orage-appointment-window.c:3650
 msgid "End"
 msgstr "Enda"
 
-#: ../src/orage-appointment-window.c:547
+#: src/orage-appointment-window.c:547
 msgid "Due"
 msgstr "Lokið fyrir"
 
-#: ../src/orage-appointment-window.c:941
+#: src/orage-appointment-window.c:941
 msgid "Sound Files"
 msgstr "Hljóðskrár"
 
-#: ../src/orage-appointment-window.c:987
+#: src/orage-appointment-window.c:987
 msgid "The appointment information has been modified."
 msgstr "Upplýsingum um stefnumótið hefur verið breytt."
 
-#: ../src/orage-appointment-window.c:989
+#: src/orage-appointment-window.c:989
 msgid "No, do not leave"
 msgstr "Nei, ekki fara"
 
-#: ../src/orage-appointment-window.c:990
+#: src/orage-appointment-window.c:990
 msgid "Yes, ignore modifications and leave"
 msgstr "Já, hunsa breytingar og fara"
 
-#: ../src/orage-appointment-window.c:1019
+#: src/orage-appointment-window.c:1019
 msgid "The end of this appointment is earlier than the beginning."
 msgstr "Endir þessa stefnumóts er á undan upphafi þess."
 
-#: ../src/orage-appointment-window.c:1432
-#: ../src/orage-appointment-window.c:2221
+#: src/orage-appointment-window.c:1432 src/orage-appointment-window.c:2221
 msgid "Not set"
 msgstr "Ekki stillt"
 
-#: ../src/orage-appointment-window.c:1477
+#: src/orage-appointment-window.c:1477
 msgid "Add new appointment to this file."
 msgstr "Bæta við nýju stefnumóti í þessa skrá."
 
-#: ../src/orage-appointment-window.c:1478
-#: ../src/orage-appointment-window.c:1532
+#: src/orage-appointment-window.c:1478 src/orage-appointment-window.c:1532
 msgid "Orage default file"
 msgstr "Sjálfgefin Orage skrá"
 
-#: ../src/orage-appointment-window.c:1570
+#: src/orage-appointment-window.c:1570
 msgid "Appointment addition failed."
 msgstr "Mistókst að bæta við stefnumóti"
 
-#: ../src/orage-appointment-window.c:1571
+#: src/orage-appointment-window.c:1571
 msgid ""
 "Error happened when adding appointment. Look more details from the log file."
 msgstr ""
 
-#: ../src/orage-appointment-window.c:1582
+#: src/orage-appointment-window.c:1582
 msgid "Appointment update failed."
 msgstr "Mistókst að uppfæra stefnumót"
 
-#: ../src/orage-appointment-window.c:1583
+#: src/orage-appointment-window.c:1583
 msgid ""
 "Look more details from the log file. (Perhaps file was updated external from"
 " Orage?)"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:1633
+#: src/orage-appointment-window.c:1633
 msgid "This appointment will be permanently removed."
 msgstr "Stefnumótið verður endanlega fjarlægt."
 
-#: ../src/orage-appointment-window.c:1636
+#: src/orage-appointment-window.c:1636
 msgid "Yes, remove it"
 msgstr "Já, fjarlægja það"
 
-#: ../src/orage-appointment-window.c:2173
+#: src/orage-appointment-window.c:2173
 msgid "This appointment does not exist."
 msgstr "Þetta stefnumót er ekki til."
 
-#: ../src/orage-appointment-window.c:2174
+#: src/orage-appointment-window.c:2174
 msgid "It was probably removed, please refresh your screen."
 msgstr ""
 
-#: ../src/orage-appointment-window.c:2386
+#: src/orage-appointment-window.c:2386
 msgid "Current categories"
 msgstr "Núverandi flokkar"
 
-#: ../src/orage-appointment-window.c:2408
+#: src/orage-appointment-window.c:2408
 msgid "Add new category with color"
 msgstr "Bæta við nýjum flokki með lit"
 
-#: ../src/orage-appointment-window.c:2419
+#: src/orage-appointment-window.c:2419
 msgid "Category:"
 msgstr "Flokkur:"
 
-#: ../src/orage-appointment-window.c:2463
+#: src/orage-appointment-window.c:2463
 msgid "Colors of categories - Orage"
 msgstr "Litir flokka - Orage"
 
-#: ../src/orage-appointment-window.c:2509
+#: src/orage-appointment-window.c:2509
 msgid "*** COPY ***"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:2562
-#: ../src/orage-appointment-window.c:3871
+#: src/orage-appointment-window.c:2562 src/orage-appointment-window.c:3871
 msgid "Before Start"
 msgstr "Fyrir upphaf"
 
-#: ../src/orage-appointment-window.c:2562
-#: ../src/orage-appointment-window.c:3871
+#: src/orage-appointment-window.c:2562 src/orage-appointment-window.c:3871
 msgid "Before End"
 msgstr "Fyrir endi"
 
-#: ../src/orage-appointment-window.c:2562
-#: ../src/orage-appointment-window.c:3872
+#: src/orage-appointment-window.c:2562 src/orage-appointment-window.c:3872
 msgid "After Start"
 msgstr "Eftir upphaf"
 
-#: ../src/orage-appointment-window.c:2562
-#: ../src/orage-appointment-window.c:3872
+#: src/orage-appointment-window.c:2562 src/orage-appointment-window.c:3872
 msgid "After End"
 msgstr "Eftir endi"
 
 #. window title
-#: ../src/orage-appointment-window.c:2880
+#: src/orage-appointment-window.c:2880
 msgid "New appointment - Orage"
 msgstr "Nýtt stefnumót - Orage"
 
-#: ../src/orage-appointment-window.c:2913
+#: src/orage-appointment-window.c:2913
 msgid "Sav_e and close"
 msgstr "Vist_a og loka..."
 
-#: ../src/orage-appointment-window.c:3230
+#: src/orage-appointment-window.c:3230
 msgid "first"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3230
+#: src/orage-appointment-window.c:3230
 msgid "second"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3230
+#: src/orage-appointment-window.c:3230
 msgid "third"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3230
+#: src/orage-appointment-window.c:3230
 msgid "fourth"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3230
+#: src/orage-appointment-window.c:3230
 msgid "last"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3240
+#: src/orage-appointment-window.c:3240
 msgid "Monday"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3240
+#: src/orage-appointment-window.c:3240
 msgid "Tuesday"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3240
+#: src/orage-appointment-window.c:3240
 msgid "Wednesday"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3240
+#: src/orage-appointment-window.c:3240
 msgid "Thursday"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3240
+#: src/orage-appointment-window.c:3240
 msgid "Friday"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3241
+#: src/orage-appointment-window.c:3241
 msgid "Saturday"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3241
+#: src/orage-appointment-window.c:3241
 msgid "Sunday"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3254
-#: ../src/orage-appointment-window.c:3287
-#: ../src/orage-appointment-window.c:3394
-#: ../src/orage-appointment-window.c:3428
+#: src/orage-appointment-window.c:3254 src/orage-appointment-window.c:3287
+#: src/orage-appointment-window.c:3394 src/orage-appointment-window.c:3428
 msgid "Every"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3259
+#: src/orage-appointment-window.c:3259
 msgid "day(s)"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3276
+#: src/orage-appointment-window.c:3276
 msgid "Mon"
 msgstr "Mán"
 
-#: ../src/orage-appointment-window.c:3276
+#: src/orage-appointment-window.c:3276
 msgid "Tue"
 msgstr "Þri"
 
-#: ../src/orage-appointment-window.c:3276
+#: src/orage-appointment-window.c:3276
 msgid "Wed"
 msgstr "Mið"
 
-#: ../src/orage-appointment-window.c:3276
+#: src/orage-appointment-window.c:3276
 msgid "Thu"
 msgstr "Fim"
 
-#: ../src/orage-appointment-window.c:3276
+#: src/orage-appointment-window.c:3276
 msgid "Fri"
 msgstr "Fös"
 
-#: ../src/orage-appointment-window.c:3276
+#: src/orage-appointment-window.c:3276
 msgid "Sat"
 msgstr "Lau"
 
-#: ../src/orage-appointment-window.c:3276
+#: src/orage-appointment-window.c:3276
 msgid "Sun"
 msgstr "Sun"
 
-#: ../src/orage-appointment-window.c:3294
+#: src/orage-appointment-window.c:3294
 msgid "week(s) on:"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3330
+#: src/orage-appointment-window.c:3330
 msgid "From the beginning of the month:"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3343
+#: src/orage-appointment-window.c:3343
 msgid "From the end of the month:"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3356
+#: src/orage-appointment-window.c:3356
 msgid "Every:"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3384
+#: src/orage-appointment-window.c:3384
 msgid "January"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3384
+#: src/orage-appointment-window.c:3384
 msgid "February"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3384
+#: src/orage-appointment-window.c:3384
 msgid "March"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3384
+#: src/orage-appointment-window.c:3384
 msgid "April"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3384
+#: src/orage-appointment-window.c:3384
 msgid "May"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3385
+#: src/orage-appointment-window.c:3385
 msgid "June"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3385
+#: src/orage-appointment-window.c:3385
 msgid "July"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3385
+#: src/orage-appointment-window.c:3385
 msgid "August"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3385
+#: src/orage-appointment-window.c:3385
 msgid "September"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3385
+#: src/orage-appointment-window.c:3385
 msgid "October"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3386
+#: src/orage-appointment-window.c:3386
 msgid "November"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3386
+#: src/orage-appointment-window.c:3386
 msgid "December"
 msgstr ""
 
@@ -909,163 +893,161 @@ msgstr ""
 #. * "second Thursday of August". In some languages ​​it is not necessary to
 #. use
 #. * the string "of", it can be replaced with an empty string.
-#: ../src/orage-appointment-window.c:3402
+#: src/orage-appointment-window.c:3402
 msgid "of"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3433
+#: src/orage-appointment-window.c:3433
 msgid "hour(s)"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3469
+#: src/orage-appointment-window.c:3469
 msgid "Repeat forever"
 msgstr "Endurtaka endalaust"
 
-#: ../src/orage-appointment-window.c:3474
+#: src/orage-appointment-window.c:3474
 msgid "Repeat"
 msgstr "Endurtaka"
 
-#: ../src/orage-appointment-window.c:3482
-#: ../src/orage-appointment-window.c:3989
+#: src/orage-appointment-window.c:3482 src/orage-appointment-window.c:3989
 msgid "times"
 msgstr "sinnum"
 
-#: ../src/orage-appointment-window.c:3488
+#: src/orage-appointment-window.c:3488
 msgid "Repeat until"
 msgstr ""
 
 #. completed (only for TODO)
-#: ../src/orage-appointment-window.c:3511
-#: ../src/orage-appointment-window.c:3705
+#: src/orage-appointment-window.c:3511 src/orage-appointment-window.c:3705
 msgid "Completed"
 msgstr "Lokið"
 
-#: ../src/orage-appointment-window.c:3514
+#: src/orage-appointment-window.c:3514
 msgid ""
 "TODO reoccurs regularly starting on start time and repeating after each "
 "interval no matter when it was last completed"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3516
+#: src/orage-appointment-window.c:3516
 msgid ""
 "TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3542
+#: src/orage-appointment-window.c:3542
 msgid "Save"
 msgstr "Vista"
 
-#: ../src/orage-appointment-window.c:3544
+#: src/orage-appointment-window.c:3544
 msgid "Save and close"
 msgstr "Vista og loka..."
 
-#: ../src/orage-appointment-window.c:3549
+#: src/orage-appointment-window.c:3549
 msgid "Revert"
 msgstr "Afturkalla"
 
-#: ../src/orage-appointment-window.c:3574
+#: src/orage-appointment-window.c:3574
 msgid "Free"
 msgstr "Laust"
 
-#: ../src/orage-appointment-window.c:3574
+#: src/orage-appointment-window.c:3574
 msgid "Busy"
 msgstr "Upptekinn"
 
-#: ../src/orage-appointment-window.c:3578
+#: src/orage-appointment-window.c:3578
 msgid "General"
 msgstr "Almennt"
 
 #. type
-#: ../src/orage-appointment-window.c:3584
+#: src/orage-appointment-window.c:3584
 msgid "Type"
 msgstr "Tegund"
 
-#: ../src/orage-appointment-window.c:3591
+#: src/orage-appointment-window.c:3591
 msgid ""
 "Event that will happen sometime. For example:\n"
 "Meeting or birthday or TV show."
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3599
+#: src/orage-appointment-window.c:3599
 msgid ""
 "Something that you should do sometime. For example:\n"
 "Wash your car or test new version of Orage."
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3607
+#: src/orage-appointment-window.c:3607
 msgid ""
 "Make a note that something happened. For example:\n"
 "Remark that your mother called or first snow came."
 msgstr ""
 
 #. location
-#: ../src/orage-appointment-window.c:3621 ../src/timezone_selection.c:234
-#: ../src/timezone_selection.c:239
+#: src/orage-appointment-window.c:3621 src/timezone_selection.c:234
+#: src/timezone_selection.c:239
 msgid "Location"
 msgstr "Staðsetning"
 
-#: ../src/orage-appointment-window.c:3629
+#: src/orage-appointment-window.c:3629
 msgid "All day event"
 msgstr "Heilsdagsviðburður"
 
-#: ../src/orage-appointment-window.c:3653
+#: src/orage-appointment-window.c:3653
 msgid "Set"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3677
+#: src/orage-appointment-window.c:3677
 msgid "Duration"
 msgstr "Lengd"
 
-#: ../src/orage-appointment-window.c:3681
-#: ../src/orage-appointment-window.c:3889 ../src/reminder.c:604
+#: src/orage-appointment-window.c:3681 src/orage-appointment-window.c:3889
+#: src/reminder.c:604
 msgid "days"
 msgstr "dagar"
 
-#: ../src/orage-appointment-window.c:3683
-#: ../src/orage-appointment-window.c:3891 ../src/reminder.c:606
+#: src/orage-appointment-window.c:3683 src/orage-appointment-window.c:3891
+#: src/reminder.c:606
 msgid "hours"
 msgstr "klukkustundir"
 
-#: ../src/orage-appointment-window.c:3685
-#: ../src/orage-appointment-window.c:3893 ../src/reminder.c:608
+#: src/orage-appointment-window.c:3685 src/orage-appointment-window.c:3893
+#: src/reminder.c:608
 msgid "mins"
 msgstr "mínútur"
 
 #. Availability (only for EVENT)
-#: ../src/orage-appointment-window.c:3697
+#: src/orage-appointment-window.c:3697
 msgid "Availability"
 msgstr "Tiltækileiki"
 
-#: ../src/orage-appointment-window.c:3708
+#: src/orage-appointment-window.c:3708
 msgid "Done"
 msgstr "Búið"
 
 #. categories
-#: ../src/orage-appointment-window.c:3733
+#: src/orage-appointment-window.c:3733
 msgid "Categories"
 msgstr "Flokkar"
 
-#: ../src/orage-appointment-window.c:3751
+#: src/orage-appointment-window.c:3751
 msgid ""
 "This is special category, which can be used to color this appointment in "
 "list views."
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3752
+#: src/orage-appointment-window.c:3752
 msgid "_Colour"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3757
+#: src/orage-appointment-window.c:3757
 msgid "update colors for categories."
 msgstr "uppfæra liti fyrir flokka."
 
 #. priority
-#: ../src/orage-appointment-window.c:3763
+#: src/orage-appointment-window.c:3763
 msgid "Priority"
 msgstr "Forgangur"
 
-#: ../src/orage-appointment-window.c:3767
+#: src/orage-appointment-window.c:3767
 msgid ""
 "If you set this 8 or bigger, the appointment is NOT shown on list windows.\n"
 "You can use that feature to unclutter your list windows, but it makes it more difficult to find this appointment.\n"
@@ -1074,11 +1056,11 @@ msgid ""
 msgstr ""
 
 #. note
-#: ../src/orage-appointment-window.c:3776
+#: src/orage-appointment-window.c:3776
 msgid "Note"
 msgstr "Athuga"
 
-#: ../src/orage-appointment-window.c:3797
+#: src/orage-appointment-window.c:3797
 msgid ""
 "These shorthand commands take effect immediately:\n"
 "    <D> inserts current date in local date format\n"
@@ -1090,16 +1072,16 @@ msgid ""
 "(This can be used for example in birthday reminders to tell how old the person will be.)"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3880
+#: src/orage-appointment-window.c:3880
 msgid "Alarm"
 msgstr "Áminning"
 
 #. **** ALARM TIME ****
-#: ../src/orage-appointment-window.c:3886
+#: src/orage-appointment-window.c:3886
 msgid "Alarm time"
 msgstr "Tími áminningar"
 
-#: ../src/orage-appointment-window.c:3911
+#: src/orage-appointment-window.c:3911
 msgid ""
 "Often you want to get alarm:\n"
 " 1) before Event start\n"
@@ -1111,88 +1093,87 @@ msgstr ""
 " 2) Fyrir lok verkefnis\n"
 " 3) Eftir að verkefni hefst"
 
-#: ../src/orage-appointment-window.c:3916
+#: src/orage-appointment-window.c:3916
 msgid "Persistent alarm"
 msgstr "Viðvarandi áminning"
 
-#: ../src/orage-appointment-window.c:3921
+#: src/orage-appointment-window.c:3921
 msgid ""
 "Select this if you want Orage to remind you even if it has not been active "
 "when the alarm happened."
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3931
+#: src/orage-appointment-window.c:3931
 msgid "Sound"
 msgstr "Hljóð"
 
-#: ../src/orage-appointment-window.c:3935
-#: ../src/orage-appointment-window.c:4079
+#: src/orage-appointment-window.c:3935 src/orage-appointment-window.c:4079
 msgid "Use"
 msgstr "Nota"
 
-#: ../src/orage-appointment-window.c:3940
+#: src/orage-appointment-window.c:3940
 msgid "Select this if you want audible alarm"
 msgstr "Veldu þetta ef þú vilt hljóðáminningu"
 
-#: ../src/orage-appointment-window.c:3945
+#: src/orage-appointment-window.c:3945
 msgid "Sound command is not set"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:3974
+#: src/orage-appointment-window.c:3974
 msgid "Repeat alarm sound"
 msgstr "Endurtaka hljóð áminningar"
 
-#: ../src/orage-appointment-window.c:4005
+#: src/orage-appointment-window.c:4005
 msgid "sec interval"
 msgstr "sek millibili"
 
 #. **** Display Alarm ****
-#: ../src/orage-appointment-window.c:4015
+#: src/orage-appointment-window.c:4015
 msgid "Visual"
 msgstr "Myndrænt"
 
-#: ../src/orage-appointment-window.c:4019
+#: src/orage-appointment-window.c:4019
 msgid "Use Orage window"
 msgstr "Nota Orage glugga"
 
-#: ../src/orage-appointment-window.c:4021
+#: src/orage-appointment-window.c:4021
 msgid "Select this if you want Orage window alarm"
 msgstr "Veldu þetta ef þú vilt áminningu í Orage-glugga"
 
-#: ../src/orage-appointment-window.c:4033
+#: src/orage-appointment-window.c:4033
 msgid "Use notification"
 msgstr "Nota tilkynningu"
 
-#: ../src/orage-appointment-window.c:4035
+#: src/orage-appointment-window.c:4035
 msgid "Select this if you want notification alarm"
 msgstr "Veldu þetta ef þú vilt hljóðáminningu"
 
-#: ../src/orage-appointment-window.c:4043
+#: src/orage-appointment-window.c:4043
 msgid "Set timeout"
 msgstr "Setja tímamörk"
 
-#: ../src/orage-appointment-window.c:4045
+#: src/orage-appointment-window.c:4045
 msgid "Select this if you want notification to expire automatically"
 msgstr "Veldu þetta ef þú vilt að tilkynningin renni út sjálfkrafa"
 
-#: ../src/orage-appointment-window.c:4056
+#: src/orage-appointment-window.c:4056
 msgid "0 = system default expiration time"
 msgstr "0 = sjálfgefinn gildistími kerfisins"
 
-#: ../src/orage-appointment-window.c:4064
+#: src/orage-appointment-window.c:4064
 msgid "seconds"
 msgstr "sekúndur"
 
 #. **** Procedure Alarm ****
-#: ../src/orage-appointment-window.c:4075
+#: src/orage-appointment-window.c:4075
 msgid "Procedure"
 msgstr "Ferli"
 
-#: ../src/orage-appointment-window.c:4081
+#: src/orage-appointment-window.c:4081
 msgid "Select this if you want procedure or script alarm"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:4091
+#: src/orage-appointment-window.c:4091
 msgid ""
 "You must enter all escape etc characters yourself.\n"
 "This string is just given to shell to process.\n"
@@ -1204,174 +1185,173 @@ msgid ""
 "\t<&ET> appointment end time"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:4107
+#: src/orage-appointment-window.c:4107
 msgid "Test this alarm by raising it now"
 msgstr "Prófaðu þessa áminningu með því að ræsa hana núna"
 
-#: ../src/orage-appointment-window.c:4120
+#: src/orage-appointment-window.c:4120
 msgid "<b>Default alarm</b>"
 msgstr "<b>Sjálfgefin áminning</b>"
 
-#: ../src/orage-appointment-window.c:4134
+#: src/orage-appointment-window.c:4134
 msgid "Store current settings as default alarm"
 msgstr "Vista núverandi stillingar sem sjálfgefna áminningu"
 
-#: ../src/orage-appointment-window.c:4136
+#: src/orage-appointment-window.c:4136
 msgid "_Revert"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:4144
+#: src/orage-appointment-window.c:4144
 msgid "Set current settings from default alarm"
 msgstr "Settu núverandi stillingar út frá sjálfgefinni áminningu"
 
-#: ../src/orage-appointment-window.c:4209
+#: src/orage-appointment-window.c:4209
 msgid "None"
 msgstr "Ekkert"
 
-#: ../src/orage-appointment-window.c:4209
+#: src/orage-appointment-window.c:4209
 msgid "Daily"
 msgstr "Daglega"
 
-#: ../src/orage-appointment-window.c:4209
+#: src/orage-appointment-window.c:4209
 msgid "Weekly"
 msgstr "Vikulega"
 
-#: ../src/orage-appointment-window.c:4210
+#: src/orage-appointment-window.c:4210
 msgid "Monthly"
 msgstr "Mánaðarlega"
 
-#: ../src/orage-appointment-window.c:4210
+#: src/orage-appointment-window.c:4210
 msgid "Yearly"
 msgstr "Árlega"
 
-#: ../src/orage-appointment-window.c:4210
+#: src/orage-appointment-window.c:4210
 msgid "Hourly"
 msgstr "Á klukkustundar fresti"
 
-#: ../src/orage-appointment-window.c:4225
+#: src/orage-appointment-window.c:4225
 msgid "Recurrence"
 msgstr "Endurtekning"
 
 #. ****************************** Frequency *******************************
-#: ../src/orage-appointment-window.c:4232
+#: src/orage-appointment-window.c:4232
 msgid "Frequency"
 msgstr "Tíðni"
 
 #. ****************************** Limit ***********************************
-#: ../src/orage-appointment-window.c:4273
+#: src/orage-appointment-window.c:4273
 msgid "Limit"
 msgstr "Takmörk"
 
 #. ****************************** TODO base (only for TODOs) **************
-#: ../src/orage-appointment-window.c:4279
+#: src/orage-appointment-window.c:4279
 msgid "TODO base"
 msgstr ""
 
 #. exceptions
-#: ../src/orage-appointment-window.c:4286
+#: src/orage-appointment-window.c:4286
 msgid "Exceptions"
 msgstr "Undantekningar"
 
-#: ../src/orage-appointment-window.c:4312
+#: src/orage-appointment-window.c:4312
 msgid ""
 "Add more exception dates by clicking the calendar days below.\n"
 "Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
 "Remove by clicking the data."
 msgstr ""
 
-#: ../src/orage-appointment-window.c:4323
+#: src/orage-appointment-window.c:4323
 msgid "Add excluded date (-)"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:4325
+#: src/orage-appointment-window.c:4325
 msgid "Excluded days are full days where this appointment is not happening"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:4332
+#: src/orage-appointment-window.c:4332
 msgid "Add included time (+)"
 msgstr ""
 
-#: ../src/orage-appointment-window.c:4334
+#: src/orage-appointment-window.c:4334
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time"
 msgstr ""
 
 #. calendars showing the action days
-#: ../src/orage-appointment-window.c:4353
+#: src/orage-appointment-window.c:4353
 msgid "Action dates"
 msgstr "Dagsetningar aðgerða"
 
-#: ../src/orage-sync-edit-dialog.c:132
+#: src/orage-sync-edit-dialog.c:132
 msgid "Description:"
 msgstr ""
 
-#: ../src/orage-sync-edit-dialog.c:134
+#: src/orage-sync-edit-dialog.c:134
 msgid "Command:"
 msgstr ""
 
-#: ../src/orage-sync-edit-dialog.c:136
+#: src/orage-sync-edit-dialog.c:136
 msgid "Period:"
 msgstr ""
 
-#: ../src/orage-sync-edit-dialog.c:138
+#: src/orage-sync-edit-dialog.c:138
 msgid "minutes"
 msgstr "mínútur"
 
-#: ../src/orage-sync-edit-dialog.c:141
+#: src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task"
 msgstr ""
 
-#: ../src/orage-sync-edit-dialog.c:144
+#: src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization"
 msgstr ""
 
-#: ../src/orage-sync-edit-dialog.c:147
+#: src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes"
 msgstr ""
 
-#: ../src/orage-sync-edit-dialog.c:166 ../src/parameters.c:1454
-#: ../src/reminder.c:640
+#: src/orage-sync-edit-dialog.c:166 src/parameters.c:1454 src/reminder.c:640
 msgid "_Close"
 msgstr "_Loka"
 
-#: ../src/orage-window.c:294
+#: src/orage-window.c:294
 msgid "_Exchange data"
 msgstr "_Gagnaskipti"
 
 #. Edit menu
-#: ../src/orage-window.c:304
+#: src/orage-window.c:304
 msgid "_Edit"
 msgstr "Br_eyta"
 
-#: ../src/orage-window.c:313
+#: src/orage-window.c:313
 msgid "View selected _date"
 msgstr "Skoða valinn _dag"
 
-#: ../src/orage-window.c:316
+#: src/orage-window.c:316
 msgid "View selected _week"
 msgstr "Skoða valda _viku"
 
-#: ../src/orage-window.c:321
+#: src/orage-window.c:321
 msgid "Select _Today"
 msgstr "Velja daginn í _dag"
 
 #. Help menu
 #. the rest
-#: ../src/orage-window.c:324 ../src/parameters.c:1451
+#: src/orage-window.c:324 src/parameters.c:1451
 msgid "_Help"
 msgstr "_Hjálp"
 
-#: ../src/orage-window.c:386 ../src/reminder.c:967
+#: src/orage-window.c:386 src/reminder.c:967
 msgid "No title defined"
 msgstr "Enginn titill tilgreindur"
 
-#: ../src/orage-window.c:443
+#: src/orage-window.c:443
 #, c-format
 msgid " Location: %s\n"
 msgstr " Staðsetning: %s\n"
 
-#: ../src/orage-window.c:453
+#: src/orage-window.c:453
 #, c-format
 msgid ""
 "\n"
@@ -1382,11 +1362,11 @@ msgstr ""
 " Athugið:\n"
 "%s"
 
-#: ../src/orage-window.c:461
+#: src/orage-window.c:461
 msgid "Never"
 msgstr "Aldrei"
 
-#: ../src/orage-window.c:469
+#: src/orage-window.c:469
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1399,7 +1379,7 @@ msgstr ""
 " Lokið fyrir:\t%s\n"
 " Lýkur:\t%s%s"
 
-#: ../src/orage-window.c:476
+#: src/orage-window.c:476
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1410,284 +1390,284 @@ msgstr ""
 "%s byrjar:\t%s\n"
 " Lýkur:\t%s%s"
 
-#: ../src/orage-window.c:557
+#: src/orage-window.c:557
 msgid "<b>To do:</b>"
 msgstr "<b>Verkefni:</b>"
 
-#: ../src/orage-window.c:592
+#: src/orage-window.c:592
 #, c-format
 msgid "<b>Events for %s:</b>"
 msgstr "<b>Atburðir fyrir %s:</b>"
 
-#: ../src/orage-window.c:602
+#: src/orage-window.c:602
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>Atburðir fyrir %s - %s:</b>"
 
-#: ../src/parameters.c:686
+#: src/parameters.c:686
 msgid "Remove selected synchronization task."
 msgstr ""
 
-#: ../src/parameters.c:689
+#: src/parameters.c:689
 msgid "Yes, remove"
 msgstr ""
 
-#: ../src/parameters.c:722
+#: src/parameters.c:722
 msgid "Main settings"
 msgstr "Aðalstillingar"
 
-#: ../src/parameters.c:728
+#: src/parameters.c:728
 msgid "Timezone"
 msgstr "Tímabelti"
 
-#: ../src/parameters.c:749
+#: src/parameters.c:749
 msgid "You should always define your local timezone."
 msgstr "Þú ættir alltaf að skilgreina staðværa tímabeltið þitt."
 
-#: ../src/parameters.c:757
+#: src/parameters.c:757
 msgid "Archive threshold (months)"
 msgstr ""
 
-#: ../src/parameters.c:770
+#: src/parameters.c:770
 msgid "(0 = no archiving)"
 msgstr ""
 
-#: ../src/parameters.c:774
+#: src/parameters.c:774
 msgid "Archiving is used to save time and space when handling events."
 msgstr ""
 
-#: ../src/parameters.c:782
+#: src/parameters.c:782
 msgid "Sound command"
 msgstr "Hljóðskipun"
 
-#: ../src/parameters.c:810
+#: src/parameters.c:810
 msgid "This command is given to shell to make sound in alarms."
 msgstr ""
 
-#: ../src/parameters.c:841
+#: src/parameters.c:841
 msgid "Calendar window"
 msgstr "Dagatalsgluggi"
 
-#: ../src/parameters.c:848
+#: src/parameters.c:848
 msgid "Calendar visual details"
 msgstr "Sjónræn atriði dagatals"
 
-#: ../src/parameters.c:855
+#: src/parameters.c:855
 msgid "Show borders"
 msgstr "Birta jaðra"
 
-#: ../src/parameters.c:860
+#: src/parameters.c:860
 msgid "Show menu"
 msgstr "Birta valmynd"
 
-#: ../src/parameters.c:868
+#: src/parameters.c:868
 msgid "Show day names"
 msgstr "Birta nöfn daga"
 
-#: ../src/parameters.c:873
+#: src/parameters.c:873
 msgid "Show week numbers"
 msgstr "Birta vikunúmer"
 
-#: ../src/parameters.c:881
+#: src/parameters.c:881
 msgid "Show month and year"
 msgstr "Birta mánuð og ár"
 
-#: ../src/parameters.c:901
+#: src/parameters.c:901
 msgid "Calendar info boxes"
 msgstr "Upplýsingareitir dagatals"
 
-#: ../src/parameters.c:908
+#: src/parameters.c:908
 msgid "Show todo list"
 msgstr "Birta verkefnalista"
 
-#: ../src/parameters.c:915
+#: src/parameters.c:915
 msgid "Number of days to show in event window"
 msgstr "Fjöldi daga sem á að sýna í atburðaglugga"
 
-#: ../src/parameters.c:923
+#: src/parameters.c:923
 msgid "0 = do not show event list at all"
 msgstr "0 = ekki birta neinn atburðalista"
 
-#: ../src/parameters.c:937
+#: src/parameters.c:937
 msgid "Calendar visibility"
 msgstr "Sýnileiki dagatals"
 
-#: ../src/parameters.c:943
+#: src/parameters.c:943
 msgid "Show on all desktops"
 msgstr "Birta á öllum skjáborðum"
 
-#: ../src/parameters.c:948
+#: src/parameters.c:948
 msgid "Keep on top"
 msgstr "Halda efst"
 
-#: ../src/parameters.c:956
+#: src/parameters.c:956
 msgid "Show in taskbar"
 msgstr "Birta í verkefnastiku"
 
-#: ../src/parameters.c:961
+#: src/parameters.c:961
 msgid "Show in pager"
 msgstr "Birta í fletti"
 
-#: ../src/parameters.c:969
+#: src/parameters.c:969
 msgid "Show in systray"
 msgstr "Birta í kerfisbakka"
 
-#: ../src/parameters.c:997
+#: src/parameters.c:997
 msgid "Calendar start"
 msgstr "Upphaf dagatals"
 
-#: ../src/parameters.c:1003
+#: src/parameters.c:1003
 msgid "Show"
 msgstr "Birta"
 
-#: ../src/parameters.c:1019
+#: src/parameters.c:1019
 msgid "Hide"
 msgstr "Fela"
 
-#: ../src/parameters.c:1036
+#: src/parameters.c:1036
 msgid "Minimized"
 msgstr "Lágmarkað"
 
-#: ../src/parameters.c:1062
+#: src/parameters.c:1062
 msgid "On calendar window open"
 msgstr "Við opnun dagatalsglugga"
 
-#: ../src/parameters.c:1068
+#: src/parameters.c:1068
 msgid "Select today's date"
 msgstr "Veldu daginn í dag"
 
-#: ../src/parameters.c:1085
+#: src/parameters.c:1085
 msgid "Select previously selected date"
 msgstr "Veldu áður valinn dag"
 
-#: ../src/parameters.c:1109
+#: src/parameters.c:1109
 msgid "Calendar day double click shows"
 msgstr "Ef tvísmellt er á dag í dagatali birtist"
 
-#: ../src/parameters.c:1115
+#: src/parameters.c:1115
 msgid "Days view"
 msgstr "Dagasýn"
 
-#: ../src/parameters.c:1131
+#: src/parameters.c:1131
 msgid "Event list"
 msgstr "Atburðalisti"
 
-#: ../src/parameters.c:1164
+#: src/parameters.c:1164
 msgid "Extra settings"
 msgstr "Aukastillingar"
 
-#: ../src/parameters.c:1171
+#: src/parameters.c:1171
 msgid "Event list window"
 msgstr "Gluggi með atburðalista"
 
-#: ../src/parameters.c:1178
+#: src/parameters.c:1178
 msgid "Number of extra days to show in event list"
 msgstr "Fjöldi aukadaga sem á að sýna í atburðalista"
 
-#: ../src/parameters.c:1188
+#: src/parameters.c:1188
 msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
 msgstr ""
 
-#: ../src/parameters.c:1196
+#: src/parameters.c:1196
 msgid "Show only first repeating event"
 msgstr "Einungis birta fyrstu endurtekningu atburðar"
 
-#: ../src/parameters.c:1213
+#: src/parameters.c:1213
 msgid "Day view window default first day"
 msgstr ""
 
-#: ../src/parameters.c:1220
+#: src/parameters.c:1220
 msgid "First day of week"
 msgstr "Fyrsti dagur viku"
 
-#: ../src/parameters.c:1237
+#: src/parameters.c:1237
 msgid "Selected day"
 msgstr "Valinn dagur"
 
-#: ../src/parameters.c:1260 ../src/parameters.c:1267
+#: src/parameters.c:1260 src/parameters.c:1267
 msgid "Use wakeup timer"
 msgstr "Nota niðurteljara"
 
-#: ../src/parameters.c:1275
+#: src/parameters.c:1275
 msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
 msgstr ""
 
-#: ../src/parameters.c:1285
+#: src/parameters.c:1285
 msgid "Foreign file default visual alarm"
 msgstr ""
 
-#: ../src/parameters.c:1292
+#: src/parameters.c:1292
 msgid "Orage window"
 msgstr "Orage gluggi"
 
-#: ../src/parameters.c:1309
+#: src/parameters.c:1309
 msgid "Notify notification"
 msgstr "Tilkynning um tilkynningu"
 
-#: ../src/parameters.c:1332
+#: src/parameters.c:1332
 msgid "Always quit when asked to close"
 msgstr "Ávallt hætta þegar beðið er um að loka"
 
-#: ../src/parameters.c:1339
+#: src/parameters.c:1339
 msgid "Always quit"
 msgstr "Ávallt hætta"
 
-#: ../src/parameters.c:1346
+#: src/parameters.c:1346
 msgid ""
 "By default Orage stays open in the background when asked to close. This "
 "option changes Orage to quit and never stay in background when it is asked "
 "to close."
 msgstr ""
 
-#: ../src/parameters.c:1399
+#: src/parameters.c:1399
 msgid "Synchronization settings"
 msgstr ""
 
-#: ../src/parameters.c:1405
+#: src/parameters.c:1405
 msgid "Synchronization sources"
 msgstr ""
 
-#: ../src/parameters.c:1431
+#: src/parameters.c:1431 org.xfce.orage.desktop.in:25
 msgid "Orage Preferences"
 msgstr "Kjörstillingar Orage"
 
-#: ../src/reminder.c:419
+#: src/reminder.c:419
 msgid "Reminder"
 msgstr ""
 
-#: ../src/reminder.c:442
+#: src/reminder.c:442
 msgid "Open"
 msgstr "Opna"
 
-#: ../src/reminder.c:447
+#: src/reminder.c:447
 msgid "Silence"
 msgstr ""
 
-#: ../src/reminder.c:565
+#: src/reminder.c:565
 msgid "Reminder - Orage"
 msgstr "Áminning - Orage"
 
-#: ../src/reminder.c:648
+#: src/reminder.c:648
 msgid "_Stop"
 msgstr ""
 
-#: ../src/reminder.c:656
+#: src/reminder.c:656
 msgid "Postpone"
 msgstr "Fresta"
 
-#: ../src/reminder.c:658
+#: src/reminder.c:658
 msgid "Remind me again after the specified time"
 msgstr "Minna mig aftur á eftir tiltekinn tíma"
 
-#: ../src/reminder.c:935
+#: src/reminder.c:935
 msgid "Next active alarms:"
 msgstr "Næstu virkar áminningar:"
 
-#: ../src/reminder.c:974
+#: src/reminder.c:974
 #, c-format
 msgid ""
 "\n"
@@ -1696,8 +1676,7 @@ msgstr ""
 "\n"
 "%02d d %02d klst. %02d mín til: %s"
 
-#: ../src/reminder.c:988
-#, c-format
+#: src/reminder.c:988
 msgid ""
 "\n"
 "No active alarms found"
@@ -1705,2290 +1684,2290 @@ msgstr ""
 "\n"
 "Engar virkar áminningar fundust"
 
-#: ../src/timezone_names.c:31
+#: src/timezone_names.c:31
 msgid "Africa"
 msgstr "Afríka"
 
-#: ../src/timezone_names.c:32
+#: src/timezone_names.c:32
 msgid "Africa/Abidjan"
 msgstr "Afríka/Abidjan"
 
-#: ../src/timezone_names.c:33
+#: src/timezone_names.c:33
 msgid "Africa/Accra"
 msgstr "Afríka/Accra"
 
-#: ../src/timezone_names.c:34
+#: src/timezone_names.c:34
 msgid "Africa/Addis_Ababa"
 msgstr "Afríka/Addis_Ababa"
 
-#: ../src/timezone_names.c:35
+#: src/timezone_names.c:35
 msgid "Africa/Algiers"
 msgstr "Afríka/Algeirsborg"
 
-#: ../src/timezone_names.c:36
+#: src/timezone_names.c:36
 msgid "Africa/Asmara"
 msgstr "Afríka/Asmara"
 
-#: ../src/timezone_names.c:37
+#: src/timezone_names.c:37
 msgid "Africa/Asmera"
 msgstr "Afríka/Asmera"
 
-#: ../src/timezone_names.c:38
+#: src/timezone_names.c:38
 msgid "Africa/Bamako"
 msgstr "Afríka/Bamako"
 
-#: ../src/timezone_names.c:39
+#: src/timezone_names.c:39
 msgid "Africa/Bangui"
 msgstr "Afríka/Bangui"
 
-#: ../src/timezone_names.c:40
+#: src/timezone_names.c:40
 msgid "Africa/Banjul"
 msgstr "Afríka/Banjul"
 
-#: ../src/timezone_names.c:41
+#: src/timezone_names.c:41
 msgid "Africa/Bissau"
 msgstr "Afríka/Bissau"
 
-#: ../src/timezone_names.c:42
+#: src/timezone_names.c:42
 msgid "Africa/Blantyre"
 msgstr "Afríka/Blantyre"
 
-#: ../src/timezone_names.c:43
+#: src/timezone_names.c:43
 msgid "Africa/Brazzaville"
 msgstr "Afríka/Brazzaville"
 
-#: ../src/timezone_names.c:44
+#: src/timezone_names.c:44
 msgid "Africa/Bujumbura"
 msgstr "Afríka/Bujumbura"
 
-#: ../src/timezone_names.c:45
+#: src/timezone_names.c:45
 msgid "Africa/Cairo"
 msgstr "Afríka/Kairó"
 
-#: ../src/timezone_names.c:46
+#: src/timezone_names.c:46
 msgid "Africa/Casablanca"
 msgstr "Afríka/Casablanca"
 
-#: ../src/timezone_names.c:47
+#: src/timezone_names.c:47
 msgid "Africa/Ceuta"
 msgstr "Afríka/Ceuta"
 
-#: ../src/timezone_names.c:48
+#: src/timezone_names.c:48
 msgid "Africa/Conakry"
 msgstr "Afríka/Conakry"
 
-#: ../src/timezone_names.c:49
+#: src/timezone_names.c:49
 msgid "Africa/Dakar"
 msgstr "Afríka/Dakar"
 
-#: ../src/timezone_names.c:50
+#: src/timezone_names.c:50
 msgid "Africa/Dar_es_Salaam"
 msgstr "Afríka/Dar_es_Salaam"
 
-#: ../src/timezone_names.c:51
+#: src/timezone_names.c:51
 msgid "Africa/Djibouti"
 msgstr "Afríka/Djibútí"
 
-#: ../src/timezone_names.c:52
+#: src/timezone_names.c:52
 msgid "Africa/Douala"
 msgstr "Afríka/Douala"
 
-#: ../src/timezone_names.c:53
+#: src/timezone_names.c:53
 msgid "Africa/El_Aaiun"
 msgstr "Afríka/El_Aaiun"
 
-#: ../src/timezone_names.c:54
+#: src/timezone_names.c:54
 msgid "Africa/Freetown"
 msgstr "Afríka/Freetown"
 
-#: ../src/timezone_names.c:55
+#: src/timezone_names.c:55
 msgid "Africa/Gaborone"
 msgstr "Afríka/Gaborone"
 
-#: ../src/timezone_names.c:56
+#: src/timezone_names.c:56
 msgid "Africa/Harare"
 msgstr "Afríka/Harare"
 
-#: ../src/timezone_names.c:57
+#: src/timezone_names.c:57
 msgid "Africa/Juba"
 msgstr "Afríka/Juba"
 
-#: ../src/timezone_names.c:58
+#: src/timezone_names.c:58
 msgid "Africa/Johannesburg"
 msgstr "Afríka/Jóhannesarborg"
 
-#: ../src/timezone_names.c:59
+#: src/timezone_names.c:59
 msgid "Africa/Kampala"
 msgstr "Afríka/Kampala"
 
-#: ../src/timezone_names.c:60
+#: src/timezone_names.c:60
 msgid "Africa/Khartoum"
 msgstr "Afríka/Khartoum"
 
-#: ../src/timezone_names.c:61
+#: src/timezone_names.c:61
 msgid "Africa/Kigali"
 msgstr "Afríka/Kigali"
 
-#: ../src/timezone_names.c:62
+#: src/timezone_names.c:62
 msgid "Africa/Kinshasa"
 msgstr "Afríka/Kinshasa"
 
-#: ../src/timezone_names.c:63
+#: src/timezone_names.c:63
 msgid "Africa/Lagos"
 msgstr "Afríka/Lagos"
 
-#: ../src/timezone_names.c:64
+#: src/timezone_names.c:64
 msgid "Africa/Libreville"
 msgstr "Afríka/Libreville"
 
-#: ../src/timezone_names.c:65
+#: src/timezone_names.c:65
 msgid "Africa/Lome"
 msgstr "Afríka/Lome"
 
-#: ../src/timezone_names.c:66
+#: src/timezone_names.c:66
 msgid "Africa/Luanda"
 msgstr "Afríka/Luanda"
 
-#: ../src/timezone_names.c:67
+#: src/timezone_names.c:67
 msgid "Africa/Lubumbashi"
 msgstr "Afríka/Lubumbashi"
 
-#: ../src/timezone_names.c:68
+#: src/timezone_names.c:68
 msgid "Africa/Lusaka"
 msgstr "Afríka/Lusaka"
 
-#: ../src/timezone_names.c:69
+#: src/timezone_names.c:69
 msgid "Africa/Malabo"
 msgstr "Afríka/Malabo"
 
-#: ../src/timezone_names.c:70
+#: src/timezone_names.c:70
 msgid "Africa/Maputo"
 msgstr "Afríka/Maputo"
 
-#: ../src/timezone_names.c:71
+#: src/timezone_names.c:71
 msgid "Africa/Maseru"
 msgstr "Afríka/Maseru"
 
-#: ../src/timezone_names.c:72
+#: src/timezone_names.c:72
 msgid "Africa/Mbabane"
 msgstr "Afríka/Mbabane"
 
-#: ../src/timezone_names.c:73
+#: src/timezone_names.c:73
 msgid "Africa/Mogadishu"
 msgstr "Afríka/Mogadishu"
 
-#: ../src/timezone_names.c:74
+#: src/timezone_names.c:74
 msgid "Africa/Monrovia"
 msgstr "Afríka/Monróvía"
 
-#: ../src/timezone_names.c:75
+#: src/timezone_names.c:75
 msgid "Africa/Nairobi"
 msgstr "Afríka/Nairóbí"
 
-#: ../src/timezone_names.c:76
+#: src/timezone_names.c:76
 msgid "Africa/Ndjamena"
 msgstr "Afríka/Ndjamena"
 
-#: ../src/timezone_names.c:77
+#: src/timezone_names.c:77
 msgid "Africa/Niamey"
 msgstr "Afríka/Niamey"
 
-#: ../src/timezone_names.c:78
+#: src/timezone_names.c:78
 msgid "Africa/Nouakchott"
 msgstr "Afríka/Nouakchott"
 
-#: ../src/timezone_names.c:79
+#: src/timezone_names.c:79
 msgid "Africa/Ouagadougou"
 msgstr "Afríka/Ouagadougou"
 
-#: ../src/timezone_names.c:80
+#: src/timezone_names.c:80
 msgid "Africa/Porto-Novo"
 msgstr "Afríka/Porto-Novo"
 
-#: ../src/timezone_names.c:81
+#: src/timezone_names.c:81
 msgid "Africa/Sao_Tome"
 msgstr "Afríka/Sao_Tome"
 
-#: ../src/timezone_names.c:82
+#: src/timezone_names.c:82
 msgid "Africa/Timbuktu"
 msgstr "Afríka/Timbúktú"
 
-#: ../src/timezone_names.c:83
+#: src/timezone_names.c:83
 msgid "Africa/Tripoli"
 msgstr "Afríka/Trípolí"
 
-#: ../src/timezone_names.c:84
+#: src/timezone_names.c:84
 msgid "Africa/Tunis"
 msgstr "Afríka/Túnis"
 
-#: ../src/timezone_names.c:85
+#: src/timezone_names.c:85
 msgid "Africa/Windhoek"
 msgstr "Afríka/Windhoek"
 
-#: ../src/timezone_names.c:86
+#: src/timezone_names.c:86
 msgid "America"
 msgstr "Ameríka"
 
-#: ../src/timezone_names.c:87
+#: src/timezone_names.c:87
 msgid "America/Adak"
 msgstr "Ameríka/Adak"
 
-#: ../src/timezone_names.c:88
+#: src/timezone_names.c:88
 msgid "America/Anchorage"
 msgstr "Ameríka/Anchorage"
 
-#: ../src/timezone_names.c:89
+#: src/timezone_names.c:89
 msgid "America/Anguilla"
 msgstr "Ameríka/Angvíla"
 
-#: ../src/timezone_names.c:90
+#: src/timezone_names.c:90
 msgid "America/Antigua"
 msgstr "Ameríka/Antígva"
 
-#: ../src/timezone_names.c:91
+#: src/timezone_names.c:91
 msgid "America/Araguaina"
 msgstr "Ameríka/Araguaina"
 
-#: ../src/timezone_names.c:92
+#: src/timezone_names.c:92
 msgid "America/Argentina/Buenos_Aires"
 msgstr "Ameríka/Argentína/Buenos_Aires"
 
-#: ../src/timezone_names.c:93
+#: src/timezone_names.c:93
 msgid "America/Argentina/Catamarca"
 msgstr "Ameríka/Argentína/Catamarca"
 
-#: ../src/timezone_names.c:94
+#: src/timezone_names.c:94
 msgid "America/Argentina/ComodRivadavia"
 msgstr "Ameríka/Argentína/ComodRivadavia"
 
-#: ../src/timezone_names.c:95
+#: src/timezone_names.c:95
 msgid "America/Argentina/Cordoba"
 msgstr "Ameríka/Argentína/Cordoba"
 
-#: ../src/timezone_names.c:96
+#: src/timezone_names.c:96
 msgid "America/Argentina/Jujuy"
 msgstr "Ameríka/Argentína/Jujuy"
 
-#: ../src/timezone_names.c:97
+#: src/timezone_names.c:97
 msgid "America/Argentina/La_Rioja"
 msgstr "Ameríka/Argentína/La_Rioja"
 
-#: ../src/timezone_names.c:98
+#: src/timezone_names.c:98
 msgid "America/Argentina/Mendoza"
 msgstr "Ameríka/Argentína/Mendoza"
 
-#: ../src/timezone_names.c:99
+#: src/timezone_names.c:99
 msgid "America/Argentina/Rio_Gallegos"
 msgstr "Ameríka/Argentína/Rio_Gallegos"
 
-#: ../src/timezone_names.c:100
+#: src/timezone_names.c:100
 msgid "America/Argentina/Salta"
 msgstr "Ameríka/Argentína/Salta"
 
-#: ../src/timezone_names.c:101
+#: src/timezone_names.c:101
 msgid "America/Argentina/San_Juan"
 msgstr "Ameríka/Argentína/San_Juan"
 
-#: ../src/timezone_names.c:102
+#: src/timezone_names.c:102
 msgid "America/Argentina/San_Luis"
 msgstr "Ameríka/Argentína/San_Luis"
 
-#: ../src/timezone_names.c:103
+#: src/timezone_names.c:103
 msgid "America/Argentina/Tucuman"
 msgstr "Ameríka/Argentína/Tucuman"
 
-#: ../src/timezone_names.c:104
+#: src/timezone_names.c:104
 msgid "America/Argentina/Ushuaia"
 msgstr "Ameríka/Argentína/Ushuaia"
 
-#: ../src/timezone_names.c:105
+#: src/timezone_names.c:105
 msgid "America/Aruba"
 msgstr "Ameríka/Aruba"
 
-#: ../src/timezone_names.c:106
+#: src/timezone_names.c:106
 msgid "America/Asuncion"
 msgstr "Ameríka/Asuncion"
 
-#: ../src/timezone_names.c:107
+#: src/timezone_names.c:107
 msgid "America/Atikokan"
 msgstr "Ameríka/Atikokan"
 
-#: ../src/timezone_names.c:108
+#: src/timezone_names.c:108
 msgid "America/Atka"
 msgstr "Ameríka/Atka"
 
-#: ../src/timezone_names.c:109
+#: src/timezone_names.c:109
 msgid "America/Bahia"
 msgstr "Ameríka/Bahia"
 
-#: ../src/timezone_names.c:110
+#: src/timezone_names.c:110
 msgid "America/Bahia_Banderas"
 msgstr "Ameríka/Bahia_Banderas"
 
-#: ../src/timezone_names.c:111
+#: src/timezone_names.c:111
 msgid "America/Barbados"
 msgstr "Ameríka/Barbados"
 
-#: ../src/timezone_names.c:112
+#: src/timezone_names.c:112
 msgid "America/Belem"
 msgstr "Ameríka/Belem"
 
-#: ../src/timezone_names.c:113
+#: src/timezone_names.c:113
 msgid "America/Belize"
 msgstr "Ameríka/Belís"
 
-#: ../src/timezone_names.c:114
+#: src/timezone_names.c:114
 msgid "America/Blanc-Sablon"
 msgstr "Ameríka/Blanc-Sablon"
 
-#: ../src/timezone_names.c:115
+#: src/timezone_names.c:115
 msgid "America/Boa_Vista"
 msgstr "Ameríka/Boa_Vista"
 
-#: ../src/timezone_names.c:116
+#: src/timezone_names.c:116
 msgid "America/Bogota"
 msgstr "Ameríka/Bogota"
 
-#: ../src/timezone_names.c:117
+#: src/timezone_names.c:117
 msgid "America/Boise"
 msgstr "Ameríka/Boise"
 
-#: ../src/timezone_names.c:118
+#: src/timezone_names.c:118
 msgid "America/Buenos_Aires"
 msgstr "Ameríka/Buenos_Aires"
 
-#: ../src/timezone_names.c:119
+#: src/timezone_names.c:119
 msgid "America/Cambridge_Bay"
 msgstr "Ameríka/Cambridge_Bay"
 
-#: ../src/timezone_names.c:120
+#: src/timezone_names.c:120
 msgid "America/Campo_Grande"
 msgstr "Ameríka/Campo_Grande"
 
-#: ../src/timezone_names.c:121
+#: src/timezone_names.c:121
 msgid "America/Cancun"
 msgstr "Ameríka/Cancún"
 
-#: ../src/timezone_names.c:122
+#: src/timezone_names.c:122
 msgid "America/Caracas"
 msgstr "Ameríka/Caracas"
 
-#: ../src/timezone_names.c:123
+#: src/timezone_names.c:123
 msgid "America/Catamarca"
 msgstr "Ameríka/Catamarca"
 
-#: ../src/timezone_names.c:124
+#: src/timezone_names.c:124
 msgid "America/Cayenne"
 msgstr "Ameríka/Cayenne"
 
-#: ../src/timezone_names.c:125
+#: src/timezone_names.c:125
 msgid "America/Cayman"
 msgstr "Ameríka/Cayman"
 
-#: ../src/timezone_names.c:126
+#: src/timezone_names.c:126
 msgid "America/Chicago"
 msgstr "Ameríka/Chicago"
 
-#: ../src/timezone_names.c:127
+#: src/timezone_names.c:127
 msgid "America/Chihuahua"
 msgstr "Ameríka/Chihuahua"
 
-#: ../src/timezone_names.c:128
+#: src/timezone_names.c:128
 msgid "America/Coral_Harbour"
 msgstr "Ameríka/Coral_Harbour"
 
-#: ../src/timezone_names.c:129
+#: src/timezone_names.c:129
 msgid "America/Cordoba"
 msgstr "Ameríka/Cordoba"
 
-#: ../src/timezone_names.c:130
+#: src/timezone_names.c:130
 msgid "America/Costa_Rica"
 msgstr "Ameríka/Kosta_Ríka"
 
-#: ../src/timezone_names.c:131
+#: src/timezone_names.c:131
 msgid "America/Creston"
 msgstr "Ameríka/Creston"
 
-#: ../src/timezone_names.c:132
+#: src/timezone_names.c:132
 msgid "America/Cuiaba"
 msgstr "Ameríka/Cuiaba"
 
-#: ../src/timezone_names.c:133
+#: src/timezone_names.c:133
 msgid "America/Curacao"
 msgstr "Ameríka/Curacao"
 
-#: ../src/timezone_names.c:134
+#: src/timezone_names.c:134
 msgid "America/Danmarkshavn"
 msgstr "Ameríka/Danmarkshavn"
 
-#: ../src/timezone_names.c:135
+#: src/timezone_names.c:135
 msgid "America/Dawson"
 msgstr "Ameríka/Dawson"
 
-#: ../src/timezone_names.c:136
+#: src/timezone_names.c:136
 msgid "America/Dawson_Creek"
 msgstr "Ameríka/Dawson_Creek"
 
-#: ../src/timezone_names.c:137
+#: src/timezone_names.c:137
 msgid "America/Denver"
 msgstr "Ameríka/Denver"
 
-#: ../src/timezone_names.c:138
+#: src/timezone_names.c:138
 msgid "America/Detroit"
 msgstr "Ameríka/Detroit"
 
-#: ../src/timezone_names.c:139
+#: src/timezone_names.c:139
 msgid "America/Dominica"
 msgstr "Ameríka/Dominica"
 
-#: ../src/timezone_names.c:140
+#: src/timezone_names.c:140
 msgid "America/Edmonton"
 msgstr "Ameríka/Edmonton"
 
-#: ../src/timezone_names.c:141
+#: src/timezone_names.c:141
 msgid "America/Ensenada"
 msgstr "Ameríka/Ensenada"
 
-#: ../src/timezone_names.c:142
+#: src/timezone_names.c:142
 msgid "America/Eirunepe"
 msgstr "Ameríka/Eirunepe"
 
-#: ../src/timezone_names.c:143
+#: src/timezone_names.c:143
 msgid "America/El_Salvador"
 msgstr "Ameríka/El_Salvador"
 
-#: ../src/timezone_names.c:144
+#: src/timezone_names.c:144
 msgid "America/Fortaleza"
 msgstr "Ameríka/Fortaleza"
 
-#: ../src/timezone_names.c:145
+#: src/timezone_names.c:145
 msgid "America/Fort_Wayne"
 msgstr "Ameríka/Fort_Wayne"
 
-#: ../src/timezone_names.c:146
+#: src/timezone_names.c:146
 msgid "America/Glace_Bay"
 msgstr "Ameríka/Glace_Bay"
 
-#: ../src/timezone_names.c:147
+#: src/timezone_names.c:147
 msgid "America/Godthab"
 msgstr "Ameríka/Godthab"
 
-#: ../src/timezone_names.c:148
+#: src/timezone_names.c:148
 msgid "America/Goose_Bay"
 msgstr "Ameríka/Goose_Bay"
 
-#: ../src/timezone_names.c:149
+#: src/timezone_names.c:149
 msgid "America/Grand_Turk"
 msgstr "Ameríka/Grand_Turk"
 
-#: ../src/timezone_names.c:150
+#: src/timezone_names.c:150
 msgid "America/Grenada"
 msgstr "Ameríka/Grenada"
 
-#: ../src/timezone_names.c:151
+#: src/timezone_names.c:151
 msgid "America/Guadeloupe"
 msgstr "Ameríka/Gvadalúp"
 
-#: ../src/timezone_names.c:152
+#: src/timezone_names.c:152
 msgid "America/Guatemala"
 msgstr "Ameríka/Gvatemala"
 
-#: ../src/timezone_names.c:153
+#: src/timezone_names.c:153
 msgid "America/Guayaquil"
 msgstr "Ameríka/Guayaquil"
 
-#: ../src/timezone_names.c:154
+#: src/timezone_names.c:154
 msgid "America/Guyana"
 msgstr "Ameríka/Gvæyana"
 
-#: ../src/timezone_names.c:155
+#: src/timezone_names.c:155
 msgid "America/Halifax"
 msgstr "Ameríka/Halifax"
 
-#: ../src/timezone_names.c:156
+#: src/timezone_names.c:156
 msgid "America/Havana"
 msgstr "Ameríka/Havana"
 
-#: ../src/timezone_names.c:157
+#: src/timezone_names.c:157
 msgid "America/Hermosillo"
 msgstr "Ameríka/Hermosillo"
 
-#: ../src/timezone_names.c:158
+#: src/timezone_names.c:158
 msgid "America/Indiana/Indianapolis"
 msgstr "Ameríka/Indiana/Indianapolis"
 
-#: ../src/timezone_names.c:159
+#: src/timezone_names.c:159
 msgid "America/Indiana/Knox"
 msgstr "Ameríka/Indiana/Knox"
 
-#: ../src/timezone_names.c:160
+#: src/timezone_names.c:160
 msgid "America/Indiana/Marengo"
 msgstr "Ameríka/Indiana/Marengo"
 
-#: ../src/timezone_names.c:161
+#: src/timezone_names.c:161
 msgid "America/Indiana/Petersburg"
 msgstr "Ameríka/Indiana/Petersburg"
 
-#: ../src/timezone_names.c:162
+#: src/timezone_names.c:162
 msgid "America/Indiana/Tell_City"
 msgstr "Ameríka/Indiana/Tell_City"
 
-#: ../src/timezone_names.c:163
+#: src/timezone_names.c:163
 msgid "America/Indiana/Vevay"
 msgstr "Ameríka/Indiana/Vevay"
 
-#: ../src/timezone_names.c:164
+#: src/timezone_names.c:164
 msgid "America/Indiana/Vincennes"
 msgstr "Ameríka/Indiana/Vincennes"
 
-#: ../src/timezone_names.c:165
+#: src/timezone_names.c:165
 msgid "America/Indiana/Winamac"
 msgstr "Ameríka/Indiana/Winamac"
 
-#: ../src/timezone_names.c:166
+#: src/timezone_names.c:166
 msgid "America/Indianapolis"
 msgstr "Ameríka/Indianapolis"
 
-#: ../src/timezone_names.c:167
+#: src/timezone_names.c:167
 msgid "America/Inuvik"
 msgstr "Ameríka/Inuvik"
 
-#: ../src/timezone_names.c:168
+#: src/timezone_names.c:168
 msgid "America/Iqaluit"
 msgstr "Ameríka/Iqaluit"
 
-#: ../src/timezone_names.c:169
+#: src/timezone_names.c:169
 msgid "America/Jamaica"
 msgstr "Ameríka/Jamaíka"
 
-#: ../src/timezone_names.c:170
+#: src/timezone_names.c:170
 msgid "America/Jujuy"
 msgstr "Ameríka/Jujuy"
 
-#: ../src/timezone_names.c:171
+#: src/timezone_names.c:171
 msgid "America/Juneau"
 msgstr "Ameríka/Juneau"
 
-#: ../src/timezone_names.c:172
+#: src/timezone_names.c:172
 msgid "America/Kentucky/Louisville"
 msgstr "Ameríka/Kentucky/Louisville"
 
-#: ../src/timezone_names.c:173
+#: src/timezone_names.c:173
 msgid "America/Kentucky/Monticello"
 msgstr "Ameríka/Kentucky/Monticello"
 
-#: ../src/timezone_names.c:174
+#: src/timezone_names.c:174
 msgid "America/Knox_IN"
 msgstr "Ameríka/Knox_IN"
 
-#: ../src/timezone_names.c:175
+#: src/timezone_names.c:175
 msgid "America/Kralendijk"
 msgstr "Ameríka/Kralendijk"
 
-#: ../src/timezone_names.c:176
+#: src/timezone_names.c:176
 msgid "America/La_Paz"
 msgstr "Ameríka/La_Paz"
 
-#: ../src/timezone_names.c:177
+#: src/timezone_names.c:177
 msgid "America/Lima"
 msgstr "Ameríka/Líma"
 
-#: ../src/timezone_names.c:178
+#: src/timezone_names.c:178
 msgid "America/Los_Angeles"
 msgstr "Ameríka/Los_Angeles"
 
-#: ../src/timezone_names.c:179
+#: src/timezone_names.c:179
 msgid "America/Louisville"
 msgstr "Ameríka/Louisville"
 
-#: ../src/timezone_names.c:180
+#: src/timezone_names.c:180
 msgid "America/Lower_Princes"
 msgstr "Ameríka/Lower_Princes"
 
-#: ../src/timezone_names.c:181
+#: src/timezone_names.c:181
 msgid "America/Maceio"
 msgstr "Ameríka/Maceio"
 
-#: ../src/timezone_names.c:182
+#: src/timezone_names.c:182
 msgid "America/Managua"
 msgstr "Ameríka/Managua"
 
-#: ../src/timezone_names.c:183
+#: src/timezone_names.c:183
 msgid "America/Manaus"
 msgstr "Ameríka/Manaus"
 
-#: ../src/timezone_names.c:184
+#: src/timezone_names.c:184
 msgid "America/Marigot"
 msgstr "Ameríka/Marigot"
 
-#: ../src/timezone_names.c:185
+#: src/timezone_names.c:185
 msgid "America/Martinique"
 msgstr "Ameríka/Martíník"
 
-#: ../src/timezone_names.c:186
+#: src/timezone_names.c:186
 msgid "America/Matamoros"
 msgstr "Ameríka/Matamoros"
 
-#: ../src/timezone_names.c:187
+#: src/timezone_names.c:187
 msgid "America/Mazatlan"
 msgstr "Ameríka/Mazatlan"
 
-#: ../src/timezone_names.c:188
+#: src/timezone_names.c:188
 msgid "America/Mendoza"
 msgstr "Ameríka/Mendoza"
 
-#: ../src/timezone_names.c:189
+#: src/timezone_names.c:189
 msgid "America/Menominee"
 msgstr "Ameríka/Menominee"
 
-#: ../src/timezone_names.c:190
+#: src/timezone_names.c:190
 msgid "America/Merida"
 msgstr "Ameríka/Merida"
 
-#: ../src/timezone_names.c:191
+#: src/timezone_names.c:191
 msgid "America/Metlakatla"
 msgstr "Ameríka/Metlakatla"
 
-#: ../src/timezone_names.c:192
+#: src/timezone_names.c:192
 msgid "America/Mexico_City"
 msgstr "Ameríka/Mexíkóborg"
 
-#: ../src/timezone_names.c:193
+#: src/timezone_names.c:193
 msgid "America/Miquelon"
 msgstr "Ameríka/Miquelon"
 
-#: ../src/timezone_names.c:194
+#: src/timezone_names.c:194
 msgid "America/Moncton"
 msgstr "Ameríka/Moncton"
 
-#: ../src/timezone_names.c:195
+#: src/timezone_names.c:195
 msgid "America/Monterrey"
 msgstr "Ameríka/Monterrey"
 
-#: ../src/timezone_names.c:196
+#: src/timezone_names.c:196
 msgid "America/Montevideo"
 msgstr "Ameríka/Montevideo"
 
-#: ../src/timezone_names.c:197
+#: src/timezone_names.c:197
 msgid "America/Montreal"
 msgstr "Ameríka/Montreal"
 
-#: ../src/timezone_names.c:198
+#: src/timezone_names.c:198
 msgid "America/Montserrat"
 msgstr "Ameríka/Montserrat"
 
-#: ../src/timezone_names.c:199
+#: src/timezone_names.c:199
 msgid "America/Nassau"
 msgstr "Ameríka/Nassá"
 
-#: ../src/timezone_names.c:200
+#: src/timezone_names.c:200
 msgid "America/New_York"
 msgstr "Ameríka/New_York"
 
-#: ../src/timezone_names.c:201
+#: src/timezone_names.c:201
 msgid "America/Nipigon"
 msgstr "Ameríka/Nipigon"
 
-#: ../src/timezone_names.c:202
+#: src/timezone_names.c:202
 msgid "America/Nome"
 msgstr "Ameríka/Nome"
 
-#: ../src/timezone_names.c:203
+#: src/timezone_names.c:203
 msgid "America/North_Dakota/Beulah"
 msgstr "Ameríka/Norður_Dakóta/Beulah"
 
-#: ../src/timezone_names.c:204
+#: src/timezone_names.c:204
 msgid "America/North_Dakota/Center"
 msgstr "Ameríka/Norður_Dakóta/Mið"
 
-#: ../src/timezone_names.c:205
+#: src/timezone_names.c:205
 msgid "America/North_Dakota/New_Salem"
 msgstr "Ameríka/Norður_Dakóta/Nýja_Salem"
 
-#: ../src/timezone_names.c:206
+#: src/timezone_names.c:206
 msgid "America/Noronha"
 msgstr "Ameríka/Noronha"
 
-#: ../src/timezone_names.c:207
+#: src/timezone_names.c:207
 msgid "America/Ojinaga"
 msgstr "Ameríka/Ojinaga"
 
-#: ../src/timezone_names.c:208
+#: src/timezone_names.c:208
 msgid "America/Panama"
 msgstr "Ameríka/Panama"
 
-#: ../src/timezone_names.c:209
+#: src/timezone_names.c:209
 msgid "America/Pangnirtung"
 msgstr "Ameríka/Pangnirtung"
 
-#: ../src/timezone_names.c:210
+#: src/timezone_names.c:210
 msgid "America/Paramaribo"
 msgstr "Ameríka/Paramaribo"
 
-#: ../src/timezone_names.c:211
+#: src/timezone_names.c:211
 msgid "America/Phoenix"
 msgstr "Ameríka/Phoenix"
 
-#: ../src/timezone_names.c:212
+#: src/timezone_names.c:212
 msgid "America/Port-au-Prince"
 msgstr "Ameríka/Port-au-Prince"
 
-#: ../src/timezone_names.c:213
+#: src/timezone_names.c:213
 msgid "America/Port_of_Spain"
 msgstr "Ameríka/Port_of_Spain"
 
-#: ../src/timezone_names.c:214
+#: src/timezone_names.c:214
 msgid "America/Porto_Acre"
 msgstr "Ameríka/Porto_Acre"
 
-#: ../src/timezone_names.c:215
+#: src/timezone_names.c:215
 msgid "America/Porto_Velho"
 msgstr "Ameríka/Porto_Velho"
 
-#: ../src/timezone_names.c:216
+#: src/timezone_names.c:216
 msgid "America/Puerto_Rico"
 msgstr "Ameríka/Puerto_Rico"
 
-#: ../src/timezone_names.c:217
+#: src/timezone_names.c:217
 msgid "America/Rainy_River"
 msgstr "Ameríka/Rainy_River"
 
-#: ../src/timezone_names.c:218
+#: src/timezone_names.c:218
 msgid "America/Rankin_Inlet"
 msgstr "Ameríka/Rankin_Inlet"
 
-#: ../src/timezone_names.c:219
+#: src/timezone_names.c:219
 msgid "America/Recife"
 msgstr "Ameríka/Recife"
 
-#: ../src/timezone_names.c:220
+#: src/timezone_names.c:220
 msgid "America/Regina"
 msgstr "Ameríka/Regina"
 
-#: ../src/timezone_names.c:221
+#: src/timezone_names.c:221
 msgid "America/Resolute"
 msgstr "Ameríka/Resolute"
 
-#: ../src/timezone_names.c:222
+#: src/timezone_names.c:222
 msgid "America/Rio_Branco"
 msgstr "Ameríka/Rio_Branco"
 
-#: ../src/timezone_names.c:223
+#: src/timezone_names.c:223
 msgid "America/Rosario"
 msgstr "Ameríka/Rosario"
 
-#: ../src/timezone_names.c:224
+#: src/timezone_names.c:224
 msgid "America/Santa_Isabel"
 msgstr "Ameríka/Santa_Isabel"
 
-#: ../src/timezone_names.c:225
+#: src/timezone_names.c:225
 msgid "America/Santarem"
 msgstr "Ameríka/Santarem"
 
-#: ../src/timezone_names.c:226
+#: src/timezone_names.c:226
 msgid "America/Santiago"
 msgstr "Ameríka/Santíagó"
 
-#: ../src/timezone_names.c:227
+#: src/timezone_names.c:227
 msgid "America/Santo_Domingo"
 msgstr "Ameríka/Santo_Domingo"
 
-#: ../src/timezone_names.c:228
+#: src/timezone_names.c:228
 msgid "America/Sao_Paulo"
 msgstr "Ameríka/Sao_Paulo"
 
-#: ../src/timezone_names.c:229
+#: src/timezone_names.c:229
 msgid "America/Scoresbysund"
 msgstr "Ameríka/Skoresbysund"
 
-#: ../src/timezone_names.c:230
+#: src/timezone_names.c:230
 msgid "America/Shiprock"
 msgstr "Ameríka/Shiprock"
 
-#: ../src/timezone_names.c:231
+#: src/timezone_names.c:231
 msgid "America/Sitka"
 msgstr "Ameríka/Sitka"
 
-#: ../src/timezone_names.c:232
+#: src/timezone_names.c:232
 msgid "America/St_Barthelemy"
 msgstr "Ameríka/St_Barthelemy"
 
-#: ../src/timezone_names.c:233
+#: src/timezone_names.c:233
 msgid "America/St_Johns"
 msgstr "Ameríka/St_Johns"
 
-#: ../src/timezone_names.c:234
+#: src/timezone_names.c:234
 msgid "America/St_Kitts"
 msgstr "Ameríka/St_Kitts"
 
-#: ../src/timezone_names.c:235
+#: src/timezone_names.c:235
 msgid "America/St_Lucia"
 msgstr "Ameríka/St_Lucia"
 
-#: ../src/timezone_names.c:236
+#: src/timezone_names.c:236
 msgid "America/St_Thomas"
 msgstr "Ameríka/St_Thomas"
 
-#: ../src/timezone_names.c:237
+#: src/timezone_names.c:237
 msgid "America/St_Vincent"
 msgstr "Ameríka/St_Vincent"
 
-#: ../src/timezone_names.c:238
+#: src/timezone_names.c:238
 msgid "America/Swift_Current"
 msgstr "Ameríka/Swift_Current"
 
-#: ../src/timezone_names.c:239
+#: src/timezone_names.c:239
 msgid "America/Tegucigalpa"
 msgstr "Ameríka/Tegucigalpa"
 
-#: ../src/timezone_names.c:240
+#: src/timezone_names.c:240
 msgid "America/Thule"
 msgstr "Ameríka/Thule"
 
-#: ../src/timezone_names.c:241
+#: src/timezone_names.c:241
 msgid "America/Thunder_Bay"
 msgstr "Ameríka/Thunder_Bay"
 
-#: ../src/timezone_names.c:242
+#: src/timezone_names.c:242
 msgid "America/Tijuana"
 msgstr "Ameríka/Tijuana"
 
-#: ../src/timezone_names.c:243
+#: src/timezone_names.c:243
 msgid "America/Toronto"
 msgstr "Ameríka/Toronto"
 
-#: ../src/timezone_names.c:244
+#: src/timezone_names.c:244
 msgid "America/Tortola"
 msgstr "Ameríka/Tortóla"
 
-#: ../src/timezone_names.c:245
+#: src/timezone_names.c:245
 msgid "America/Vancouver"
 msgstr "Ameríka/Vancouver"
 
-#: ../src/timezone_names.c:246
+#: src/timezone_names.c:246
 msgid "America/Virgin"
 msgstr "Ameríka/Virgin"
 
-#: ../src/timezone_names.c:247
+#: src/timezone_names.c:247
 msgid "America/Whitehorse"
 msgstr "Ameríka/Whitehorse"
 
-#: ../src/timezone_names.c:248
+#: src/timezone_names.c:248
 msgid "America/Winnipeg"
 msgstr "Ameríka/Winnipeg"
 
-#: ../src/timezone_names.c:249
+#: src/timezone_names.c:249
 msgid "America/Yakutat"
 msgstr "Ameríka/Yakutat"
 
-#: ../src/timezone_names.c:250
+#: src/timezone_names.c:250
 msgid "America/Yellowknife"
 msgstr "Ameríka/Yellowknife"
 
-#: ../src/timezone_names.c:251
+#: src/timezone_names.c:251
 msgid "Antarctica"
 msgstr "Suðurskaut"
 
-#: ../src/timezone_names.c:252
+#: src/timezone_names.c:252
 msgid "Antarctica/Casey"
 msgstr "Suðurskaut/Casey"
 
-#: ../src/timezone_names.c:253
+#: src/timezone_names.c:253
 msgid "Antarctica/Davis"
 msgstr "Suðurskaut/Davis"
 
-#: ../src/timezone_names.c:254
+#: src/timezone_names.c:254
 msgid "Antarctica/DumontDUrville"
 msgstr "Suðurskaut/DumontDUrville"
 
-#: ../src/timezone_names.c:255
+#: src/timezone_names.c:255
 msgid "Antarctica/Macquarie"
 msgstr "Suðurskaut/Macquarie"
 
-#: ../src/timezone_names.c:256
+#: src/timezone_names.c:256
 msgid "Antarctica/Mawson"
 msgstr "Suðurskaut/Mawson"
 
-#: ../src/timezone_names.c:257
+#: src/timezone_names.c:257
 msgid "Antarctica/McMurdo"
 msgstr "Suðurskaut/McMurdo"
 
-#: ../src/timezone_names.c:258
+#: src/timezone_names.c:258
 msgid "Antarctica/Palmer"
 msgstr "Suðurskaut/Palmer"
 
-#: ../src/timezone_names.c:259
+#: src/timezone_names.c:259
 msgid "Antarctica/Rothera"
 msgstr "Suðurskaut/Rothera"
 
-#: ../src/timezone_names.c:260
+#: src/timezone_names.c:260
 msgid "Antarctica/South_Pole"
 msgstr "Suðurskaut/Suður_póll"
 
-#: ../src/timezone_names.c:261
+#: src/timezone_names.c:261
 msgid "Antarctica/Syowa"
 msgstr "Suðurskaut/Syowa"
 
-#: ../src/timezone_names.c:262
+#: src/timezone_names.c:262
 msgid "Antarctica/Vostok"
 msgstr "Suðurskaut/Vostok"
 
-#: ../src/timezone_names.c:263
+#: src/timezone_names.c:263
 msgid "Arctic"
 msgstr "Norðurskaut"
 
-#: ../src/timezone_names.c:264
+#: src/timezone_names.c:264
 msgid "Arctic/Longyearbyen"
 msgstr "Norðurskaut/Longyearbyen"
 
-#: ../src/timezone_names.c:265
+#: src/timezone_names.c:265
 msgid "Asia"
 msgstr "Asía"
 
-#: ../src/timezone_names.c:266
+#: src/timezone_names.c:266
 msgid "Asia/Aden"
 msgstr "Asía/Aden"
 
-#: ../src/timezone_names.c:267
+#: src/timezone_names.c:267
 msgid "Asia/Almaty"
 msgstr "Asía/Almaty"
 
-#: ../src/timezone_names.c:268
+#: src/timezone_names.c:268
 msgid "Asia/Amman"
 msgstr "Asía/Amman"
 
-#: ../src/timezone_names.c:269
+#: src/timezone_names.c:269
 msgid "Asia/Anadyr"
 msgstr "Asía/Anadyr"
 
-#: ../src/timezone_names.c:270
+#: src/timezone_names.c:270
 msgid "Asia/Aqtau"
 msgstr "Asía/Aqtau"
 
-#: ../src/timezone_names.c:271
+#: src/timezone_names.c:271
 msgid "Asia/Aqtobe"
 msgstr "Asía/Aqtobe"
 
-#: ../src/timezone_names.c:272
+#: src/timezone_names.c:272
 msgid "Asia/Ashgabat"
 msgstr "Asía/Ashgabat"
 
-#: ../src/timezone_names.c:273
+#: src/timezone_names.c:273
 msgid "Asia/Ashkhabad"
 msgstr "Asía/Ashkhabad"
 
-#: ../src/timezone_names.c:274
+#: src/timezone_names.c:274
 msgid "Asia/Baghdad"
 msgstr "Asía/Baghdad"
 
-#: ../src/timezone_names.c:275
+#: src/timezone_names.c:275
 msgid "Asia/Bahrain"
 msgstr "Asía/Bahrain"
 
-#: ../src/timezone_names.c:276
+#: src/timezone_names.c:276
 msgid "Asia/Baku"
 msgstr "Asía/Bakú"
 
-#: ../src/timezone_names.c:277
+#: src/timezone_names.c:277
 msgid "Asia/Bangkok"
 msgstr "Asía/Bangkok"
 
-#: ../src/timezone_names.c:278
+#: src/timezone_names.c:278
 msgid "Asia/Beirut"
 msgstr "Asía/Beirút"
 
-#: ../src/timezone_names.c:279
+#: src/timezone_names.c:279
 msgid "Asia/Bishkek"
 msgstr "Asía/Bishkek"
 
-#: ../src/timezone_names.c:280
+#: src/timezone_names.c:280
 msgid "Asia/Brunei"
 msgstr "Asía/Brúnei"
 
-#: ../src/timezone_names.c:281
+#: src/timezone_names.c:281
 msgid "Asia/Calcutta"
 msgstr "Asía/Kalkútta"
 
-#: ../src/timezone_names.c:282
+#: src/timezone_names.c:282
 msgid "Asia/Choibalsan"
 msgstr "Asía/Choibalsan"
 
-#: ../src/timezone_names.c:283
+#: src/timezone_names.c:283
 msgid "Asia/Chongqing"
 msgstr "Asía/Chongqing"
 
-#: ../src/timezone_names.c:284
+#: src/timezone_names.c:284
 msgid "Asia/Chungking"
 msgstr "Asía/Chungking"
 
-#: ../src/timezone_names.c:285
+#: src/timezone_names.c:285
 msgid "Asia/Colombo"
 msgstr "Asía/Colombo"
 
-#: ../src/timezone_names.c:286
+#: src/timezone_names.c:286
 msgid "Asia/Dacca"
 msgstr "Asía/Dacca"
 
-#: ../src/timezone_names.c:287
+#: src/timezone_names.c:287
 msgid "Asia/Damascus"
 msgstr "Asía/Damaskus"
 
-#: ../src/timezone_names.c:288
+#: src/timezone_names.c:288
 msgid "Asia/Dhaka"
 msgstr "Asía/Dhaka"
 
-#: ../src/timezone_names.c:289
+#: src/timezone_names.c:289
 msgid "Asia/Dili"
 msgstr "Asía/Dili"
 
-#: ../src/timezone_names.c:290
+#: src/timezone_names.c:290
 msgid "Asia/Dubai"
 msgstr "Asía/Dúbai"
 
-#: ../src/timezone_names.c:291
+#: src/timezone_names.c:291
 msgid "Asia/Dushanbe"
 msgstr "Asía/Dushanbe"
 
-#: ../src/timezone_names.c:292
+#: src/timezone_names.c:292
 msgid "Asia/Gaza"
 msgstr "Asía/Gaza"
 
-#: ../src/timezone_names.c:293
+#: src/timezone_names.c:293
 msgid "Asia/Harbin"
 msgstr "Asía/Harbin"
 
-#: ../src/timezone_names.c:294
+#: src/timezone_names.c:294
 msgid "Asia/Hebron"
 msgstr "Asía/Hebron"
 
-#: ../src/timezone_names.c:295
+#: src/timezone_names.c:295
 msgid "Asia/Hong_Kong"
 msgstr "Asía/Hong_Kong"
 
-#: ../src/timezone_names.c:296
+#: src/timezone_names.c:296
 msgid "Asia/Ho_Chi_Minh"
 msgstr "Asía/Ho_Chi_Minh"
 
-#: ../src/timezone_names.c:297
+#: src/timezone_names.c:297
 msgid "Asia/Hovd"
 msgstr "Asía/Hovd"
 
-#: ../src/timezone_names.c:298
+#: src/timezone_names.c:298
 msgid "Asia/Irkutsk"
 msgstr "Asía/Irkutsk"
 
-#: ../src/timezone_names.c:299
+#: src/timezone_names.c:299
 msgid "Asia/Istanbul"
 msgstr "Asía/Istanbúl"
 
-#: ../src/timezone_names.c:300
+#: src/timezone_names.c:300
 msgid "Asia/Jakarta"
 msgstr "Asía/Jakarta"
 
-#: ../src/timezone_names.c:301
+#: src/timezone_names.c:301
 msgid "Asia/Jayapura"
 msgstr "Asía/Jayapura"
 
-#: ../src/timezone_names.c:302
+#: src/timezone_names.c:302
 msgid "Asia/Jerusalem"
 msgstr "Asía/Jerúsalem"
 
-#: ../src/timezone_names.c:303
+#: src/timezone_names.c:303
 msgid "Asia/Kabul"
 msgstr "Asía/Kabúl"
 
-#: ../src/timezone_names.c:304
+#: src/timezone_names.c:304
 msgid "Asia/Kamchatka"
 msgstr "Asía/Kamchatka"
 
-#: ../src/timezone_names.c:305
+#: src/timezone_names.c:305
 msgid "Asia/Karachi"
 msgstr "Asía/Karachi"
 
-#: ../src/timezone_names.c:306
+#: src/timezone_names.c:306
 msgid "Asia/Kashgar"
 msgstr "Asía/Kashgar"
 
-#: ../src/timezone_names.c:307
+#: src/timezone_names.c:307
 msgid "Asia/Kathmandu"
 msgstr "Asía/Kathmandu"
 
-#: ../src/timezone_names.c:308
+#: src/timezone_names.c:308
 msgid "Asia/Katmandu"
 msgstr "Asía/Katmandú"
 
-#: ../src/timezone_names.c:309
+#: src/timezone_names.c:309
 msgid "Asia/Khandyga"
 msgstr "Asía/Khandyga"
 
-#: ../src/timezone_names.c:310
+#: src/timezone_names.c:310
 msgid "Asia/Kolkata"
 msgstr "Asía/Kolkata"
 
-#: ../src/timezone_names.c:311
+#: src/timezone_names.c:311
 msgid "Asia/Krasnoyarsk"
 msgstr "Asía/Krasnoyarsk"
 
-#: ../src/timezone_names.c:312
+#: src/timezone_names.c:312
 msgid "Asia/Kuala_Lumpur"
 msgstr "Asía/Kúala_Lúmpúr"
 
-#: ../src/timezone_names.c:313
+#: src/timezone_names.c:313
 msgid "Asia/Kuching"
 msgstr "Asía/Kuching"
 
-#: ../src/timezone_names.c:314
+#: src/timezone_names.c:314
 msgid "Asia/Kuwait"
 msgstr "Asía/Kúveit"
 
-#: ../src/timezone_names.c:315
+#: src/timezone_names.c:315
 msgid "Asia/Macao"
 msgstr "Asía/Macaó"
 
-#: ../src/timezone_names.c:316
+#: src/timezone_names.c:316
 msgid "Asia/Macau"
 msgstr "Asía/Macau"
 
-#: ../src/timezone_names.c:317
+#: src/timezone_names.c:317
 msgid "Asia/Magadan"
 msgstr "Asía/Magadan"
 
-#: ../src/timezone_names.c:318
+#: src/timezone_names.c:318
 msgid "Asia/Makassar"
 msgstr "Asía/Makassar"
 
-#: ../src/timezone_names.c:319
+#: src/timezone_names.c:319
 msgid "Asia/Manila"
 msgstr "Asía/Manila"
 
-#: ../src/timezone_names.c:320
+#: src/timezone_names.c:320
 msgid "Asia/Muscat"
 msgstr "Asía/Muscat"
 
-#: ../src/timezone_names.c:321
+#: src/timezone_names.c:321
 msgid "Asia/Nicosia"
 msgstr "Asía/Níkósía"
 
-#: ../src/timezone_names.c:322
+#: src/timezone_names.c:322
 msgid "Asia/Novokuznetsk"
 msgstr "Asía/Novokuznetsk"
 
-#: ../src/timezone_names.c:323
+#: src/timezone_names.c:323
 msgid "Asia/Novosibirsk"
 msgstr "Asía/Novosibirsk"
 
-#: ../src/timezone_names.c:324
+#: src/timezone_names.c:324
 msgid "Asia/Omsk"
 msgstr "Asía/Omsk"
 
-#: ../src/timezone_names.c:325
+#: src/timezone_names.c:325
 msgid "Asia/Oral"
 msgstr "Asía/Oral"
 
-#: ../src/timezone_names.c:326
+#: src/timezone_names.c:326
 msgid "Asia/Phnom_Penh"
 msgstr "Asía/Phnom_Penh"
 
-#: ../src/timezone_names.c:327
+#: src/timezone_names.c:327
 msgid "Asia/Pontianak"
 msgstr "Asía/Pontianak"
 
-#: ../src/timezone_names.c:328
+#: src/timezone_names.c:328
 msgid "Asia/Pyongyang"
 msgstr "Asía/Pyongyang"
 
-#: ../src/timezone_names.c:329
+#: src/timezone_names.c:329
 msgid "Asia/Qatar"
 msgstr "Asía/Katar"
 
-#: ../src/timezone_names.c:330
+#: src/timezone_names.c:330
 msgid "Asia/Qyzylorda"
 msgstr "Asía/Qyzylorda"
 
-#: ../src/timezone_names.c:331
+#: src/timezone_names.c:331
 msgid "Asia/Rangoon"
 msgstr "Asía/Rangún"
 
-#: ../src/timezone_names.c:332
+#: src/timezone_names.c:332
 msgid "Asia/Riyadh"
 msgstr "Asía/Riyadh"
 
-#: ../src/timezone_names.c:333
+#: src/timezone_names.c:333
 msgid "Asia/Riyadh87"
 msgstr "Asía/Riyadh87"
 
-#: ../src/timezone_names.c:334
+#: src/timezone_names.c:334
 msgid "Asia/Riyadh88"
 msgstr "Asía/Riyadh88"
 
-#: ../src/timezone_names.c:335
+#: src/timezone_names.c:335
 msgid "Asia/Riyadh89"
 msgstr "Asía/Riyadh89"
 
-#: ../src/timezone_names.c:336
+#: src/timezone_names.c:336
 msgid "Asia/Saigon"
 msgstr "Asía/Saigon"
 
-#: ../src/timezone_names.c:337
+#: src/timezone_names.c:337
 msgid "Asia/Sakhalin"
 msgstr "Asía/Sakhalin"
 
-#: ../src/timezone_names.c:338
+#: src/timezone_names.c:338
 msgid "Asia/Samarkand"
 msgstr "Asía/Samarkand"
 
-#: ../src/timezone_names.c:339
+#: src/timezone_names.c:339
 msgid "Asia/Seoul"
 msgstr "Asía/Seoúl"
 
-#: ../src/timezone_names.c:340
+#: src/timezone_names.c:340
 msgid "Asia/Shanghai"
 msgstr "Asía/Shanghæ"
 
-#: ../src/timezone_names.c:341
+#: src/timezone_names.c:341
 msgid "Asia/Singapore"
 msgstr "Asía/Singapúr"
 
-#: ../src/timezone_names.c:342
+#: src/timezone_names.c:342
 msgid "Asia/Taipei"
 msgstr "Asía/Taipei"
 
-#: ../src/timezone_names.c:343
+#: src/timezone_names.c:343
 msgid "Asia/Tashkent"
 msgstr "Asía/Tashkent"
 
-#: ../src/timezone_names.c:344
+#: src/timezone_names.c:344
 msgid "Asia/Tbilisi"
 msgstr "Asía/Tbilisi"
 
-#: ../src/timezone_names.c:345
+#: src/timezone_names.c:345
 msgid "Asia/Tehran"
 msgstr "Asía/Tehran"
 
-#: ../src/timezone_names.c:346
+#: src/timezone_names.c:346
 msgid "Asia/Tel_Aviv"
 msgstr "Asía/Tel_Aviv"
 
-#: ../src/timezone_names.c:347
+#: src/timezone_names.c:347
 msgid "Asia/Thimbu"
 msgstr "Asía/Thimbu"
 
-#: ../src/timezone_names.c:348
+#: src/timezone_names.c:348
 msgid "Asia/Thimphu"
 msgstr "Asía/Thimphu"
 
-#: ../src/timezone_names.c:349
+#: src/timezone_names.c:349
 msgid "Asia/Tokyo"
 msgstr "Asía/Tókýo"
 
-#: ../src/timezone_names.c:350
+#: src/timezone_names.c:350
 msgid "Asia/Ujung_Pandang"
 msgstr "Asía/Ujung_Pandang"
 
-#: ../src/timezone_names.c:351
+#: src/timezone_names.c:351
 msgid "Asia/Ulaanbaatar"
 msgstr "Asía/Ulaanbaatar"
 
-#: ../src/timezone_names.c:352
+#: src/timezone_names.c:352
 msgid "Asia/Ulan_Bator"
 msgstr "Asía/Ulan_Bator"
 
-#: ../src/timezone_names.c:353
+#: src/timezone_names.c:353
 msgid "Asia/Urumqi"
 msgstr "Asía/Urumqi"
 
-#: ../src/timezone_names.c:354
+#: src/timezone_names.c:354
 msgid "Asia/Ust-Nera"
 msgstr "Asía/Ust-Nera"
 
-#: ../src/timezone_names.c:355
+#: src/timezone_names.c:355
 msgid "Asia/Vientiane"
 msgstr "Asía/Vientiane"
 
-#: ../src/timezone_names.c:356
+#: src/timezone_names.c:356
 msgid "Asia/Vladivostok"
 msgstr "Asía/Vladivostok"
 
-#: ../src/timezone_names.c:357
+#: src/timezone_names.c:357
 msgid "Asia/Yakutsk"
 msgstr "Asía/Yakutsk"
 
-#: ../src/timezone_names.c:358
+#: src/timezone_names.c:358
 msgid "Asia/Yekaterinburg"
 msgstr "Asía/Yekaterinburg"
 
-#: ../src/timezone_names.c:359
+#: src/timezone_names.c:359
 msgid "Asia/Yerevan"
 msgstr "Asía/Yerevan"
 
-#: ../src/timezone_names.c:360
+#: src/timezone_names.c:360
 msgid "Atlantic"
 msgstr "Atlantshafstími"
 
-#: ../src/timezone_names.c:361
+#: src/timezone_names.c:361
 msgid "Atlantic/Azores"
 msgstr "Atlantshaf/Azoreyjar"
 
-#: ../src/timezone_names.c:362
+#: src/timezone_names.c:362
 msgid "Atlantic/Bermuda"
 msgstr "Atlantshaf/Bermúda"
 
-#: ../src/timezone_names.c:363
+#: src/timezone_names.c:363
 msgid "Atlantic/Canary"
 msgstr "Atlantshaf/Kanaríeyjar"
 
-#: ../src/timezone_names.c:364
+#: src/timezone_names.c:364
 msgid "Atlantic/Cape_Verde"
 msgstr "Atlantshaf/Grænhöfðaeyjar"
 
-#: ../src/timezone_names.c:365
+#: src/timezone_names.c:365
 msgid "Atlantic/Faeroe"
 msgstr "Atlantshaf/Færeyjar"
 
-#: ../src/timezone_names.c:366
+#: src/timezone_names.c:366
 msgid "Atlantic/Faroe"
 msgstr "Atlantshaf/Færeyjar"
 
-#: ../src/timezone_names.c:367
+#: src/timezone_names.c:367
 msgid "Atlantic/Jan_Mayen"
 msgstr "Atlantshaf/Jan_Mayen"
 
-#: ../src/timezone_names.c:368
+#: src/timezone_names.c:368
 msgid "Atlantic/Madeira"
 msgstr "Atlantshaf/Madeira"
 
-#: ../src/timezone_names.c:369
+#: src/timezone_names.c:369
 msgid "Atlantic/Reykjavik"
 msgstr "Atlantshaf/Reykjavík"
 
-#: ../src/timezone_names.c:370
+#: src/timezone_names.c:370
 msgid "Atlantic/South_Georgia"
 msgstr "Atlandshaf/Suður_Georgia"
 
-#: ../src/timezone_names.c:371
+#: src/timezone_names.c:371
 msgid "Atlantic/St_Helena"
 msgstr "Atlantshaf/St_Helena"
 
-#: ../src/timezone_names.c:372
+#: src/timezone_names.c:372
 msgid "Atlantic/Stanley"
 msgstr "Atlantshaf/Stanley"
 
-#: ../src/timezone_names.c:373
+#: src/timezone_names.c:373
 msgid "Australia"
 msgstr "Ástralía"
 
-#: ../src/timezone_names.c:374
+#: src/timezone_names.c:374
 msgid "Australia/ACT"
 msgstr "Ástralia/ACT"
 
-#: ../src/timezone_names.c:375
+#: src/timezone_names.c:375
 msgid "Australia/Adelaide"
 msgstr "Ástralía/Adelaide"
 
-#: ../src/timezone_names.c:376
+#: src/timezone_names.c:376
 msgid "Australia/Brisbane"
 msgstr "Ástralía/Brisbane"
 
-#: ../src/timezone_names.c:377
+#: src/timezone_names.c:377
 msgid "Australia/Broken_Hill"
 msgstr "Ástralía/Broken_Hill"
 
-#: ../src/timezone_names.c:378
+#: src/timezone_names.c:378
 msgid "Australia/Currie"
 msgstr "Ástralia/Currie"
 
-#: ../src/timezone_names.c:379
+#: src/timezone_names.c:379
 msgid "Australia/Darwin"
 msgstr "Ástralía/Darwin"
 
-#: ../src/timezone_names.c:380
+#: src/timezone_names.c:380
 msgid "Australia/Eucla"
 msgstr "Ástralía/Eucla"
 
-#: ../src/timezone_names.c:381
+#: src/timezone_names.c:381
 msgid "Australia/Hobart"
 msgstr "Ástralía/Hobart"
 
-#: ../src/timezone_names.c:382
+#: src/timezone_names.c:382
 msgid "Australia/Lindeman"
 msgstr "Ástralía/Lindeman"
 
-#: ../src/timezone_names.c:383
+#: src/timezone_names.c:383
 msgid "Australia/Lord_Howe"
 msgstr "Ástralía/Lord_Howe"
 
-#: ../src/timezone_names.c:384
+#: src/timezone_names.c:384
 msgid "Australia/Melbourne"
 msgstr "Ástralía/Melbourne"
 
-#: ../src/timezone_names.c:385
+#: src/timezone_names.c:385
 msgid "Australia/Perth"
 msgstr "Ástralía/Perth"
 
-#: ../src/timezone_names.c:386
+#: src/timezone_names.c:386
 msgid "Australia/Sydney"
 msgstr "Ástralía/Sydney"
 
-#: ../src/timezone_names.c:387
+#: src/timezone_names.c:387
 msgid "Brazil"
 msgstr "Brasilía"
 
-#: ../src/timezone_names.c:388
+#: src/timezone_names.c:388
 msgid "Brazil/Acre"
 msgstr "Brasilía/Acre"
 
-#: ../src/timezone_names.c:389
+#: src/timezone_names.c:389
 msgid "Brazil/DeNoronha"
 msgstr "Brasilía/DeNoronha"
 
-#: ../src/timezone_names.c:390
+#: src/timezone_names.c:390
 msgid "Brazil/East"
 msgstr "Brasilía/Austur"
 
-#: ../src/timezone_names.c:391
+#: src/timezone_names.c:391
 msgid "Brazil/West"
 msgstr "Brasilía/Vestur"
 
-#: ../src/timezone_names.c:392
+#: src/timezone_names.c:392
 msgid "Canada"
 msgstr "Kanada"
 
-#: ../src/timezone_names.c:393
+#: src/timezone_names.c:393
 msgid "Canada/Atlantic"
 msgstr "Kanada/Atlantshafs"
 
-#: ../src/timezone_names.c:394
+#: src/timezone_names.c:394
 msgid "Canada/Central"
 msgstr "Kanada/Mið"
 
-#: ../src/timezone_names.c:395
+#: src/timezone_names.c:395
 msgid "Canada/East-Saskatchewan"
 msgstr "Kanada/Austur-Saskatchewan"
 
-#: ../src/timezone_names.c:396
+#: src/timezone_names.c:396
 msgid "Canada/Eastern"
 msgstr "Kanada/Austur"
 
-#: ../src/timezone_names.c:397
+#: src/timezone_names.c:397
 msgid "Canada/Mountain"
 msgstr "Kanada/Klettafjöll"
 
-#: ../src/timezone_names.c:398
+#: src/timezone_names.c:398
 msgid "Canada/Newfoundland"
 msgstr "Kanada/Nýfundnaland"
 
-#: ../src/timezone_names.c:399
+#: src/timezone_names.c:399
 msgid "Canada/Pacific"
 msgstr "Kanada/Kyrrahafs"
 
-#: ../src/timezone_names.c:400
+#: src/timezone_names.c:400
 msgid "Canada/Saskatchewan"
 msgstr "Kanada/Saskatchewan"
 
-#: ../src/timezone_names.c:401
+#: src/timezone_names.c:401
 msgid "Canada/Yukon"
 msgstr "Kanada/Yukon"
 
-#: ../src/timezone_names.c:402
+#: src/timezone_names.c:402
 msgid "Chile"
 msgstr "Chile"
 
-#: ../src/timezone_names.c:403
+#: src/timezone_names.c:403
 msgid "Chile/Continental"
 msgstr "Chile/Meginland"
 
-#: ../src/timezone_names.c:404
+#: src/timezone_names.c:404
 msgid "Chile/EasterIsland"
 msgstr "Chile/Páskaeyja"
 
-#: ../src/timezone_names.c:405
+#: src/timezone_names.c:405
 msgid "Etc"
 msgstr "Etc"
 
-#: ../src/timezone_names.c:406
+#: src/timezone_names.c:406
 msgid "Etc/GMT"
 msgstr "Etc/GMT"
 
-#: ../src/timezone_names.c:407
+#: src/timezone_names.c:407
 msgid "Etc/GMT+0"
 msgstr "Etc/GMT+0"
 
-#: ../src/timezone_names.c:408
+#: src/timezone_names.c:408
 msgid "Etc/GMT+1"
 msgstr "Etc/GMT+1"
 
-#: ../src/timezone_names.c:409
+#: src/timezone_names.c:409
 msgid "Etc/GMT+10"
 msgstr "Etc/GMT+10"
 
-#: ../src/timezone_names.c:410
+#: src/timezone_names.c:410
 msgid "Etc/GMT+11"
 msgstr "Etc/GMT+11"
 
-#: ../src/timezone_names.c:411
+#: src/timezone_names.c:411
 msgid "Etc/GMT+12"
 msgstr "Etc/GMT+12"
 
-#: ../src/timezone_names.c:412
+#: src/timezone_names.c:412
 msgid "Etc/GMT+2"
 msgstr "Etc/GMT+2"
 
-#: ../src/timezone_names.c:413
+#: src/timezone_names.c:413
 msgid "Etc/GMT+3"
 msgstr "Etc/GMT+3"
 
-#: ../src/timezone_names.c:414
+#: src/timezone_names.c:414
 msgid "Etc/GMT+4"
 msgstr "Etc/GMT+4"
 
-#: ../src/timezone_names.c:415
+#: src/timezone_names.c:415
 msgid "Etc/GMT+5"
 msgstr "Etc/GMT+5"
 
-#: ../src/timezone_names.c:416
+#: src/timezone_names.c:416
 msgid "Etc/GMT+6"
 msgstr "Etc/GMT+6"
 
-#: ../src/timezone_names.c:417
+#: src/timezone_names.c:417
 msgid "Etc/GMT+7"
 msgstr "Etc/GMT+7"
 
-#: ../src/timezone_names.c:418
+#: src/timezone_names.c:418
 msgid "Etc/GMT+8"
 msgstr "Etc/GMT+8"
 
-#: ../src/timezone_names.c:419
+#: src/timezone_names.c:419
 msgid "Etc/GMT+9"
 msgstr "Etc/GMT+9"
 
-#: ../src/timezone_names.c:420
+#: src/timezone_names.c:420
 msgid "Etc/GMT-0"
 msgstr "Etc/GMT-0"
 
-#: ../src/timezone_names.c:421
+#: src/timezone_names.c:421
 msgid "Etc/GMT-1"
 msgstr "Etc/GMT-1"
 
-#: ../src/timezone_names.c:422
+#: src/timezone_names.c:422
 msgid "Etc/GMT-10"
 msgstr "Etc/GMT-10"
 
-#: ../src/timezone_names.c:423
+#: src/timezone_names.c:423
 msgid "Etc/GMT-11"
 msgstr "Etc/GMT-11"
 
-#: ../src/timezone_names.c:424
+#: src/timezone_names.c:424
 msgid "Etc/GMT-12"
 msgstr "Etc/GMT-12"
 
-#: ../src/timezone_names.c:425
+#: src/timezone_names.c:425
 msgid "Etc/GMT-13"
 msgstr "Etc/GMT-13"
 
-#: ../src/timezone_names.c:426
+#: src/timezone_names.c:426
 msgid "Etc/GMT-14"
 msgstr "Etc/GMT-14"
 
-#: ../src/timezone_names.c:427
+#: src/timezone_names.c:427
 msgid "Etc/GMT-2"
 msgstr "Etc/GMT-2"
 
-#: ../src/timezone_names.c:428
+#: src/timezone_names.c:428
 msgid "Etc/GMT-3"
 msgstr "Etc/GMT-3"
 
-#: ../src/timezone_names.c:429
+#: src/timezone_names.c:429
 msgid "Etc/GMT-4"
 msgstr "Etc/GMT-4"
 
-#: ../src/timezone_names.c:430
+#: src/timezone_names.c:430
 msgid "Etc/GMT-5"
 msgstr "Etc/GMT-5"
 
-#: ../src/timezone_names.c:431
+#: src/timezone_names.c:431
 msgid "Etc/GMT-6"
 msgstr "Etc/GMT-6"
 
-#: ../src/timezone_names.c:432
+#: src/timezone_names.c:432
 msgid "Etc/GMT-7"
 msgstr "Etc/GMT-7"
 
-#: ../src/timezone_names.c:433
+#: src/timezone_names.c:433
 msgid "Etc/GMT-8"
 msgstr "Etc/GMT-8"
 
-#: ../src/timezone_names.c:434
+#: src/timezone_names.c:434
 msgid "Etc/GMT-9"
 msgstr "Etc/GMT-9"
 
-#: ../src/timezone_names.c:435
+#: src/timezone_names.c:435
 msgid "Etc/GMT0"
 msgstr "Etc/GMT0"
 
-#: ../src/timezone_names.c:436
+#: src/timezone_names.c:436
 msgid "Etc/Greenwich"
 msgstr "Etc/Greenwich"
 
-#: ../src/timezone_names.c:437
+#: src/timezone_names.c:437
 msgid "Etc/UCT"
 msgstr "Etc/UCT"
 
-#: ../src/timezone_names.c:438
+#: src/timezone_names.c:438
 msgid "Etc/UTC"
 msgstr "Etc/UTC"
 
-#: ../src/timezone_names.c:439
+#: src/timezone_names.c:439
 msgid "Etc/Universal"
 msgstr "Etc/Universal"
 
-#: ../src/timezone_names.c:440
+#: src/timezone_names.c:440
 msgid "Etc/Zulu"
 msgstr "Etc/Zulu"
 
-#: ../src/timezone_names.c:441
+#: src/timezone_names.c:441
 msgid "Europe"
 msgstr "Evrópa"
 
-#: ../src/timezone_names.c:442
+#: src/timezone_names.c:442
 msgid "Europe/Amsterdam"
 msgstr "Evrópa/Amsterdam"
 
-#: ../src/timezone_names.c:443
+#: src/timezone_names.c:443
 msgid "Europe/Andorra"
 msgstr "Evrópa/Andorra"
 
-#: ../src/timezone_names.c:444
+#: src/timezone_names.c:444
 msgid "Europe/Athens"
 msgstr "Evrópa/Aþena"
 
-#: ../src/timezone_names.c:445
+#: src/timezone_names.c:445
 msgid "Europe/Belfast"
 msgstr "Evrópa/Belfast"
 
-#: ../src/timezone_names.c:446
+#: src/timezone_names.c:446
 msgid "Europe/Belgrade"
 msgstr "Evrópa/Belgrað"
 
-#: ../src/timezone_names.c:447
+#: src/timezone_names.c:447
 msgid "Europe/Berlin"
 msgstr "Evrópa/Berlín"
 
-#: ../src/timezone_names.c:448
+#: src/timezone_names.c:448
 msgid "Europe/Bratislava"
 msgstr "Evrópa/Bratislava"
 
-#: ../src/timezone_names.c:449
+#: src/timezone_names.c:449
 msgid "Europe/Brussels"
 msgstr "Evrópa/Brussel"
 
-#: ../src/timezone_names.c:450
+#: src/timezone_names.c:450
 msgid "Europe/Bucharest"
 msgstr "Evrópa/Búkarest"
 
-#: ../src/timezone_names.c:451
+#: src/timezone_names.c:451
 msgid "Europe/Budapest"
 msgstr "Evrópa/Búdapest"
 
-#: ../src/timezone_names.c:452
+#: src/timezone_names.c:452
 msgid "Europe/Busingen"
 msgstr "Evrópa/Busingen"
 
-#: ../src/timezone_names.c:453
+#: src/timezone_names.c:453
 msgid "Europe/Chisinau"
 msgstr "Evrópa/Chisinau"
 
-#: ../src/timezone_names.c:454
+#: src/timezone_names.c:454
 msgid "Europe/Copenhagen"
 msgstr "Evrópa/Kaupmannahöfn"
 
-#: ../src/timezone_names.c:455
+#: src/timezone_names.c:455
 msgid "Europe/Dublin"
 msgstr "Evrópa/Dublin"
 
-#: ../src/timezone_names.c:456
+#: src/timezone_names.c:456
 msgid "Europe/Gibraltar"
 msgstr "Evrópa/Gíbraltar"
 
-#: ../src/timezone_names.c:457
+#: src/timezone_names.c:457
 msgid "Europe/Guernsey"
 msgstr "Evrópa/Guernsey"
 
-#: ../src/timezone_names.c:458
+#: src/timezone_names.c:458
 msgid "Europe/Helsinki"
 msgstr "Evrópa/Helsinki"
 
-#: ../src/timezone_names.c:459
+#: src/timezone_names.c:459
 msgid "Europe/Isle_of_Man"
 msgstr "Evrópa/Isle_of_Man"
 
-#: ../src/timezone_names.c:460
+#: src/timezone_names.c:460
 msgid "Europe/Istanbul"
 msgstr "Evrópa/Istanbúl"
 
-#: ../src/timezone_names.c:461
+#: src/timezone_names.c:461
 msgid "Europe/Jersey"
 msgstr "Evrópa/Jersey"
 
-#: ../src/timezone_names.c:462
+#: src/timezone_names.c:462
 msgid "Europe/Kaliningrad"
 msgstr "Evrópa/Kalíningrad"
 
-#: ../src/timezone_names.c:463
+#: src/timezone_names.c:463
 msgid "Europe/Kiev"
 msgstr "Evrópa/Kíev"
 
-#: ../src/timezone_names.c:464
+#: src/timezone_names.c:464
 msgid "Europe/Lisbon"
 msgstr "Evrópa/Lissabon"
 
-#: ../src/timezone_names.c:465
+#: src/timezone_names.c:465
 msgid "Europe/Ljubljana"
 msgstr "Evrópa/Ljubljana"
 
-#: ../src/timezone_names.c:466
+#: src/timezone_names.c:466
 msgid "Europe/London"
 msgstr "Evrópa/London"
 
-#: ../src/timezone_names.c:467
+#: src/timezone_names.c:467
 msgid "Europe/Luxembourg"
 msgstr "Evrópa/Luxemborg"
 
-#: ../src/timezone_names.c:468
+#: src/timezone_names.c:468
 msgid "Europe/Madrid"
 msgstr "Evrópa/Madríd"
 
-#: ../src/timezone_names.c:469
+#: src/timezone_names.c:469
 msgid "Europe/Malta"
 msgstr "Evrópa/Malta"
 
-#: ../src/timezone_names.c:470
+#: src/timezone_names.c:470
 msgid "Europe/Mariehamn"
 msgstr "Evrópa/Mariehamn"
 
-#: ../src/timezone_names.c:471
+#: src/timezone_names.c:471
 msgid "Europe/Minsk"
 msgstr "Evrópa/Minsk"
 
-#: ../src/timezone_names.c:472
+#: src/timezone_names.c:472
 msgid "Europe/Monaco"
 msgstr "Evrópa/Mónakó"
 
-#: ../src/timezone_names.c:473
+#: src/timezone_names.c:473
 msgid "Europe/Moscow"
 msgstr "Evrópa/Moskva"
 
-#: ../src/timezone_names.c:474
+#: src/timezone_names.c:474
 msgid "Europe/Nicosia"
 msgstr "Evrópa/Níkósía"
 
-#: ../src/timezone_names.c:475
+#: src/timezone_names.c:475
 msgid "Europe/Oslo"
 msgstr "Evrópa/Osló"
 
-#: ../src/timezone_names.c:476
+#: src/timezone_names.c:476
 msgid "Europe/Paris"
 msgstr "Evrópa/París"
 
-#: ../src/timezone_names.c:477
+#: src/timezone_names.c:477
 msgid "Europe/Podgorica"
 msgstr "Evrópa/Podgorica"
 
-#: ../src/timezone_names.c:478
+#: src/timezone_names.c:478
 msgid "Europe/Prague"
 msgstr "Evrópa/Prag"
 
-#: ../src/timezone_names.c:479
+#: src/timezone_names.c:479
 msgid "Europe/Riga"
 msgstr "Evrópa/Ríga"
 
-#: ../src/timezone_names.c:480
+#: src/timezone_names.c:480
 msgid "Europe/Rome"
 msgstr "Evrópa/Róm"
 
-#: ../src/timezone_names.c:481
+#: src/timezone_names.c:481
 msgid "Europe/Samara"
 msgstr "Evrópa/Samara"
 
-#: ../src/timezone_names.c:482
+#: src/timezone_names.c:482
 msgid "Europe/San_Marino"
 msgstr "Evrópa/San_Marínó"
 
-#: ../src/timezone_names.c:483
+#: src/timezone_names.c:483
 msgid "Europe/Sarajevo"
 msgstr "Evrópa/Sarajevo"
 
-#: ../src/timezone_names.c:484
+#: src/timezone_names.c:484
 msgid "Europe/Simferopol"
 msgstr "Evrópa/Simferopol"
 
-#: ../src/timezone_names.c:485
+#: src/timezone_names.c:485
 msgid "Europe/Skopje"
 msgstr "Evrópa/Skópje"
 
-#: ../src/timezone_names.c:486
+#: src/timezone_names.c:486
 msgid "Europe/Sofia"
 msgstr "Evrópa/Sofía"
 
-#: ../src/timezone_names.c:487
+#: src/timezone_names.c:487
 msgid "Europe/Stockholm"
 msgstr "Evrópa/Stokkhólmur"
 
-#: ../src/timezone_names.c:488
+#: src/timezone_names.c:488
 msgid "Europe/Tallinn"
 msgstr "Evrópa/Tallinn"
 
-#: ../src/timezone_names.c:489
+#: src/timezone_names.c:489
 msgid "Europe/Tirane"
 msgstr "Evrópa/Tirana"
 
-#: ../src/timezone_names.c:490
+#: src/timezone_names.c:490
 msgid "Europe/Tiraspol"
 msgstr "Evrópa/Tiraspol"
 
-#: ../src/timezone_names.c:491
+#: src/timezone_names.c:491
 msgid "Europe/Uzhgorod"
 msgstr "Evrópa/Uzhgorod"
 
-#: ../src/timezone_names.c:492
+#: src/timezone_names.c:492
 msgid "Europe/Vaduz"
 msgstr "Evrópa/Vaduz"
 
-#: ../src/timezone_names.c:493
+#: src/timezone_names.c:493
 msgid "Europe/Vatican"
 msgstr "Evrópa/Vatíkanið"
 
-#: ../src/timezone_names.c:494
+#: src/timezone_names.c:494
 msgid "Europe/Vienna"
 msgstr "Evrópa/Vín"
 
-#: ../src/timezone_names.c:495
+#: src/timezone_names.c:495
 msgid "Europe/Vilnius"
 msgstr "Evrópa/Vilníus"
 
-#: ../src/timezone_names.c:496
+#: src/timezone_names.c:496
 msgid "Europe/Volgograd"
 msgstr "Evrópa/Volgograd"
 
-#: ../src/timezone_names.c:497
+#: src/timezone_names.c:497
 msgid "Europe/Warsaw"
 msgstr "Evrópa/Varsjá"
 
-#: ../src/timezone_names.c:498
+#: src/timezone_names.c:498
 msgid "Europe/Zagreb"
 msgstr "Evrópa/Zagreb"
 
-#: ../src/timezone_names.c:499
+#: src/timezone_names.c:499
 msgid "Europe/Zaporozhye"
 msgstr "Evrópa/Zaporozhye"
 
-#: ../src/timezone_names.c:500
+#: src/timezone_names.c:500
 msgid "Europe/Zurich"
 msgstr "Evrópa/Zurich"
 
-#: ../src/timezone_names.c:501
+#: src/timezone_names.c:501
 msgid "Indian"
 msgstr "Indlandshaf"
 
-#: ../src/timezone_names.c:502
+#: src/timezone_names.c:502
 msgid "Indian/Antananarivo"
 msgstr "Indíur/Antananarivo"
 
-#: ../src/timezone_names.c:503
+#: src/timezone_names.c:503
 msgid "Indian/Chagos"
 msgstr "Indíur/Chagos"
 
-#: ../src/timezone_names.c:504
+#: src/timezone_names.c:504
 msgid "Indian/Christmas"
 msgstr "Indíur/Jólaeyjar"
 
-#: ../src/timezone_names.c:505
+#: src/timezone_names.c:505
 msgid "Indian/Cocos"
 msgstr "Indíur/Cocos"
 
-#: ../src/timezone_names.c:506
+#: src/timezone_names.c:506
 msgid "Indian/Comoro"
 msgstr "Indíur/Comoro"
 
-#: ../src/timezone_names.c:507
+#: src/timezone_names.c:507
 msgid "Indian/Kerguelen"
 msgstr "Indíur/Kerguelen"
 
-#: ../src/timezone_names.c:508
+#: src/timezone_names.c:508
 msgid "Indian/Mahe"
 msgstr "Indíur/Mahe"
 
-#: ../src/timezone_names.c:509
+#: src/timezone_names.c:509
 msgid "Indian/Maldives"
 msgstr "Indíur/Maldívur"
 
-#: ../src/timezone_names.c:510
+#: src/timezone_names.c:510
 msgid "Indian/Mauritius"
 msgstr "Indíur/Máritíus"
 
-#: ../src/timezone_names.c:511
+#: src/timezone_names.c:511
 msgid "Indian/Mayotte"
 msgstr "Indíur/Mayotte"
 
-#: ../src/timezone_names.c:512
+#: src/timezone_names.c:512
 msgid "Indian/Reunion"
 msgstr "Indíur/Reunion"
 
-#: ../src/timezone_names.c:513
+#: src/timezone_names.c:513
 msgid "Mexico"
 msgstr "Mexíkó"
 
-#: ../src/timezone_names.c:514
+#: src/timezone_names.c:514
 msgid "Mexico/BajaNorte"
 msgstr "Mexikó/BajaNorte"
 
-#: ../src/timezone_names.c:515
+#: src/timezone_names.c:515
 msgid "Mexico/BajaSur"
 msgstr "Mexikó/BajaSur"
 
-#: ../src/timezone_names.c:516
+#: src/timezone_names.c:516
 msgid "Mexico/General"
 msgstr "Mexíkó/Almennt"
 
-#: ../src/timezone_names.c:517
+#: src/timezone_names.c:517
 msgid "Mideast"
 msgstr "Miðausturlönd"
 
-#: ../src/timezone_names.c:518
+#: src/timezone_names.c:518
 msgid "Mideast/Riyadh87"
 msgstr "Miðausturlönd/Riyadh87"
 
-#: ../src/timezone_names.c:519
+#: src/timezone_names.c:519
 msgid "Mideast/Riyadh88"
 msgstr "Miðausturlönd/Riyadh88"
 
-#: ../src/timezone_names.c:520
+#: src/timezone_names.c:520
 msgid "Mideast/Riyadh89"
 msgstr "Miðausturlönd/Riyadh89"
 
-#: ../src/timezone_names.c:521
+#: src/timezone_names.c:521
 msgid "Pacific"
 msgstr "Kyrrahaf"
 
-#: ../src/timezone_names.c:522
+#: src/timezone_names.c:522
 msgid "Pacific/Apia"
 msgstr "Eyjaálfa/Apia"
 
-#: ../src/timezone_names.c:523
+#: src/timezone_names.c:523
 msgid "Pacific/Auckland"
 msgstr "Eyjaálfa/Auckland"
 
-#: ../src/timezone_names.c:524
+#: src/timezone_names.c:524
 msgid "Pacific/Chatham"
 msgstr "Eyjaálfa/Chatham"
 
-#: ../src/timezone_names.c:525
+#: src/timezone_names.c:525
 msgid "Pacific/Chuuk"
 msgstr "Eyjaálfa/Chuuk"
 
-#: ../src/timezone_names.c:526
+#: src/timezone_names.c:526
 msgid "Pacific/Easter"
 msgstr "Eyjaálfa/Páskaey"
 
-#: ../src/timezone_names.c:527
+#: src/timezone_names.c:527
 msgid "Pacific/Efate"
 msgstr "Eyjaálfa/Efate"
 
-#: ../src/timezone_names.c:528
+#: src/timezone_names.c:528
 msgid "Pacific/Enderbury"
 msgstr "Eyjaálfa/Enderbury"
 
-#: ../src/timezone_names.c:529
+#: src/timezone_names.c:529
 msgid "Pacific/Fakaofo"
 msgstr "Eyjaálfa/Fakaofo"
 
-#: ../src/timezone_names.c:530
+#: src/timezone_names.c:530
 msgid "Pacific/Fiji"
 msgstr "Eyjaálfa/Fiji"
 
-#: ../src/timezone_names.c:531
+#: src/timezone_names.c:531
 msgid "Pacific/Funafuti"
 msgstr "Eyjaálfa/Funafuti"
 
-#: ../src/timezone_names.c:532
+#: src/timezone_names.c:532
 msgid "Pacific/Galapagos"
 msgstr "Eyjaálfa/Galapagos"
 
-#: ../src/timezone_names.c:533
+#: src/timezone_names.c:533
 msgid "Pacific/Gambier"
 msgstr "Eyjaálfa/Gambier"
 
-#: ../src/timezone_names.c:534
+#: src/timezone_names.c:534
 msgid "Pacific/Guadalcanal"
 msgstr "Eyjaálfa/Guadalcanal"
 
-#: ../src/timezone_names.c:535
+#: src/timezone_names.c:535
 msgid "Pacific/Guam"
 msgstr "Eyjaálfa/Guam"
 
-#: ../src/timezone_names.c:536
+#: src/timezone_names.c:536
 msgid "Pacific/Honolulu"
 msgstr "Eyjaálfa/Honolúlú"
 
-#: ../src/timezone_names.c:537
+#: src/timezone_names.c:537
 msgid "Pacific/Johnston"
 msgstr "Eyjaálfa/Johnston"
 
-#: ../src/timezone_names.c:538
+#: src/timezone_names.c:538
 msgid "Pacific/Kiritimati"
 msgstr "Eyjaálfa/Kiritimati"
 
-#: ../src/timezone_names.c:539
+#: src/timezone_names.c:539
 msgid "Pacific/Kosrae"
 msgstr "Eyjaálfa/Kosrae"
 
-#: ../src/timezone_names.c:540
+#: src/timezone_names.c:540
 msgid "Pacific/Kwajalein"
 msgstr "Eyjaálfa/Kwajalein"
 
-#: ../src/timezone_names.c:541
+#: src/timezone_names.c:541
 msgid "Pacific/Majuro"
 msgstr "Eyjaálfa/Majuro"
 
-#: ../src/timezone_names.c:542
+#: src/timezone_names.c:542
 msgid "Pacific/Marquesas"
 msgstr "Eyjaálfa/Marquesas"
 
-#: ../src/timezone_names.c:543
+#: src/timezone_names.c:543
 msgid "Pacific/Midway"
 msgstr "Eyjaálfa/Midway"
 
-#: ../src/timezone_names.c:544
+#: src/timezone_names.c:544
 msgid "Pacific/Nauru"
 msgstr "Eyjaálfa/Nauru"
 
-#: ../src/timezone_names.c:545
+#: src/timezone_names.c:545
 msgid "Pacific/Niue"
 msgstr "Eyjaálfa/Niue"
 
-#: ../src/timezone_names.c:546
+#: src/timezone_names.c:546
 msgid "Pacific/Norfolk"
 msgstr "Eyjaálfa/Norfolk"
 
-#: ../src/timezone_names.c:547
+#: src/timezone_names.c:547
 msgid "Pacific/Noumea"
 msgstr "Eyjaálfa/Noumea"
 
-#: ../src/timezone_names.c:548
+#: src/timezone_names.c:548
 msgid "Pacific/Pago_Pago"
 msgstr "Eyjaálfa/Pago_Pago"
 
-#: ../src/timezone_names.c:549
+#: src/timezone_names.c:549
 msgid "Pacific/Palau"
 msgstr "Eyjaálfa/Palau"
 
-#: ../src/timezone_names.c:550
+#: src/timezone_names.c:550
 msgid "Pacific/Pitcairn"
 msgstr "Eyjaálfa/Pitcairn"
 
-#: ../src/timezone_names.c:551
+#: src/timezone_names.c:551
 msgid "Pacific/Pohnpei"
 msgstr "Eyjaálfa/Ponapei"
 
-#: ../src/timezone_names.c:552
+#: src/timezone_names.c:552
 msgid "Pacific/Ponape"
 msgstr "Eyjaálfa/Ponape"
 
-#: ../src/timezone_names.c:553
+#: src/timezone_names.c:553
 msgid "Pacific/Port_Moresby"
 msgstr "Eyjaálfa/Port_Moresby"
 
-#: ../src/timezone_names.c:554
+#: src/timezone_names.c:554
 msgid "Pacific/Rarotonga"
 msgstr "Eyjaálfa/Rarotonga"
 
-#: ../src/timezone_names.c:555
+#: src/timezone_names.c:555
 msgid "Pacific/Saipan"
 msgstr "Eyjaálfa/Saipan"
 
-#: ../src/timezone_names.c:556
+#: src/timezone_names.c:556
 msgid "Pacific/Samoa"
 msgstr "Eyjaálfa/Samóa"
 
-#: ../src/timezone_names.c:557
+#: src/timezone_names.c:557
 msgid "Pacific/Tahiti"
 msgstr "Eyjaálfa/Tahítí"
 
-#: ../src/timezone_names.c:558
+#: src/timezone_names.c:558
 msgid "Pacific/Tarawa"
 msgstr "Eyjaálfa/Tarawa"
 
-#: ../src/timezone_names.c:559
+#: src/timezone_names.c:559
 msgid "Pacific/Tongatapu"
 msgstr "Eyjaálfa/Tongatapu"
 
-#: ../src/timezone_names.c:560
+#: src/timezone_names.c:560
 msgid "Pacific/Truk"
 msgstr "Eyjaálfa/Truk"
 
-#: ../src/timezone_names.c:561
+#: src/timezone_names.c:561
 msgid "Pacific/Wake"
 msgstr "Eyjaálfa/Wake"
 
-#: ../src/timezone_names.c:562
+#: src/timezone_names.c:562
 msgid "Pacific/Wallis"
 msgstr "Eyjaálfa/Wallis"
 
-#: ../src/timezone_names.c:563
+#: src/timezone_names.c:563
 msgid "Pacific/Yap"
 msgstr "Eyjaálfa/Yap"
 
-#: ../src/timezone_names.c:564
+#: src/timezone_names.c:564
 msgid "SystemV"
 msgstr "SystemV"
 
-#: ../src/timezone_names.c:565
+#: src/timezone_names.c:565
 msgid "SystemV/AST4"
 msgstr "SystemV/AST4"
 
-#: ../src/timezone_names.c:566
+#: src/timezone_names.c:566
 msgid "SystemV/AST4ADT"
 msgstr "SystemV/AST4ADT"
 
-#: ../src/timezone_names.c:567
+#: src/timezone_names.c:567
 msgid "SystemV/CST6"
 msgstr "SystemV/CST6"
 
-#: ../src/timezone_names.c:568
+#: src/timezone_names.c:568
 msgid "SystemV/CST6CDT"
 msgstr "SystemV/CST6CDT"
 
-#: ../src/timezone_names.c:569
+#: src/timezone_names.c:569
 msgid "SystemV/EST5"
 msgstr "SystemV/EST5"
 
-#: ../src/timezone_names.c:570
+#: src/timezone_names.c:570
 msgid "SystemV/EST5/EDT"
 msgstr "SystemV/EST5/EDT"
 
-#: ../src/timezone_names.c:571
+#: src/timezone_names.c:571
 msgid "SystemV/HST10"
 msgstr "SystemV/HST10"
 
-#: ../src/timezone_names.c:572
+#: src/timezone_names.c:572
 msgid "SystemV/MST7"
 msgstr "SystemV/MST7"
 
-#: ../src/timezone_names.c:573
+#: src/timezone_names.c:573
 msgid "SystemV/MST7/MNT"
 msgstr "SystemV/MST7/MNT"
 
-#: ../src/timezone_names.c:574
+#: src/timezone_names.c:574
 msgid "SystemV/PST8"
 msgstr "SystemV/PST8"
 
-#: ../src/timezone_names.c:575
+#: src/timezone_names.c:575
 msgid "SystemV/PST8/PDT"
 msgstr "SystemV/PST8/PDT"
 
-#: ../src/timezone_names.c:576
+#: src/timezone_names.c:576
 msgid "SystemV/YST9"
 msgstr "SystemV/YST9"
 
-#: ../src/timezone_names.c:577
+#: src/timezone_names.c:577
 msgid "SystemV/YST9/YDT"
 msgstr "SystemV/YST9/YDT"
 
-#: ../src/timezone_names.c:578
+#: src/timezone_names.c:578
 msgid "US"
 msgstr "BNA"
 
-#: ../src/timezone_names.c:579
+#: src/timezone_names.c:579
 msgid "US/Alaska"
 msgstr "BNA/Alaska"
 
-#: ../src/timezone_names.c:580
+#: src/timezone_names.c:580
 msgid "US/Aleutian"
 msgstr "BNA/Aljúta"
 
-#: ../src/timezone_names.c:581
+#: src/timezone_names.c:581
 msgid "US/Arizona"
 msgstr "BNA/Arizona"
 
-#: ../src/timezone_names.c:582
+#: src/timezone_names.c:582
 msgid "US/Central"
 msgstr "BNA/Miðfylki"
 
-#: ../src/timezone_names.c:583
+#: src/timezone_names.c:583
 msgid "US/Eastern"
 msgstr "BNA/Austurfylki"
 
-#: ../src/timezone_names.c:584
+#: src/timezone_names.c:584
 msgid "US/East-Indiana"
 msgstr "BNA/Austur-Indiana"
 
-#: ../src/timezone_names.c:585
+#: src/timezone_names.c:585
 msgid "US/Hawaii"
 msgstr "BNA/Havaí"
 
-#: ../src/timezone_names.c:586
+#: src/timezone_names.c:586
 msgid "US/Indiana-Starke"
 msgstr "BNA/Indiana-Starke"
 
-#: ../src/timezone_names.c:587
+#: src/timezone_names.c:587
 msgid "US/Michigan"
 msgstr "BNA/Michigan"
 
-#: ../src/timezone_names.c:588
+#: src/timezone_names.c:588
 msgid "US/Mountain"
 msgstr "BNA/Klettafjöll"
 
-#: ../src/timezone_names.c:589
+#: src/timezone_names.c:589
 msgid "US/Pacific"
 msgstr "BNA/Kyrrahafs"
 
-#: ../src/timezone_names.c:590
+#: src/timezone_names.c:590
 msgid "US/Pacific-New"
 msgstr "BNA/Kyrrahafs-Ný"
 
-#: ../src/timezone_names.c:591
+#: src/timezone_names.c:591
 msgid "US/Samoa"
 msgstr "BNA/Samóa"
 
-#: ../src/timezone_selection.c:147
+#: src/timezone_selection.c:147
 #, c-format
 msgid "%d hour %d mins"
 msgstr "%d klst %d mín"
 
-#: ../src/timezone_selection.c:150
+#: src/timezone_selection.c:150
 #, c-format
 msgid "%d hour"
 msgstr "%d klst"
 
-#: ../src/timezone_selection.c:152
+#: src/timezone_selection.c:152
 #, c-format
 msgid "%d mins"
 msgstr "%d mín"
 
-#: ../src/timezone_selection.c:158
+#: src/timezone_selection.c:158
 msgid "backward"
 msgstr "afturábak"
 
-#: ../src/timezone_selection.c:161
+#: src/timezone_selection.c:161
 msgid "forward"
 msgstr "áfram"
 
-#: ../src/timezone_selection.c:185
+#: src/timezone_selection.c:185
 msgid "not changed"
 msgstr "óbreytt"
 
-#: ../src/timezone_selection.c:186
+#: src/timezone_selection.c:186
 msgid "not changing"
 msgstr "breytist ekki"
 
-#: ../src/timezone_selection.c:245
+#: src/timezone_selection.c:245
 msgid "GMT Offset"
 msgstr "GMT hliðrun"
 
-#: ../src/timezone_selection.c:251
+#: src/timezone_selection.c:251
 msgid "Previous/Next Change"
 msgstr "Fyrri/Næsta breyting"
 
-#: ../src/timezone_selection.c:256
+#: src/timezone_selection.c:256
 msgid "Country"
 msgstr "Land"
 
@@ -3997,34 +3976,85 @@ msgstr "Land"
 #. done very seldom and we do not want to allow "floating" here.
 #. This test is ugly, but it is not worth an extra parameter.
 #. this is normal appointment
-#: ../src/timezone_selection.c:288 ../src/timezone_selection.c:297
-#: ../src/timezone_selection.c:308
+#: src/timezone_selection.c:288 src/timezone_selection.c:297
+#: src/timezone_selection.c:308
 msgid "Pick timezone"
 msgstr "Veldu tímabelti"
 
-#: ../src/timezone_selection.c:291 ../src/timezone_selection.c:300
-#: ../src/timezone_selection.c:311
+#: src/timezone_selection.c:291 src/timezone_selection.c:300
+#: src/timezone_selection.c:311
 msgid "Change mode"
 msgstr "Skipta um ham"
 
-#: ../src/timezone_selection.c:292 ../src/timezone_selection.c:301
-#: ../src/timezone_selection.c:312 ../src/timezone_selection.c:351
+#: src/timezone_selection.c:292 src/timezone_selection.c:301
+#: src/timezone_selection.c:312 src/timezone_selection.c:351
 msgid "UTC"
 msgstr "UTC"
 
 #. NOTE: this exists only if ical timezones are being used
-#: ../src/timezone_selection.c:302 ../src/timezone_selection.c:356
+#: src/timezone_selection.c:302 src/timezone_selection.c:356
 msgid "floating"
 msgstr "fljótandi"
 
-#: ../src/tray_icon.c:415
+#: src/tray_icon.c:415
 msgid "New appointment"
 msgstr "Nýtt stefnumót"
 
-#: ../src/tray_icon.c:422
+#: src/tray_icon.c:422
 msgid "Preferences"
 msgstr "Kjörstillingar"
 
-#: ../src/tray_icon.c:429
+#: src/tray_icon.c:429
 msgid "Quit"
 msgstr "Hætta"
+
+#: plugin/org.xfce.orage-settings.desktop.in:4
+msgid "Orage preferences"
+msgstr "Kjörstillingar Orage"
+
+#: plugin/org.xfce.orage-settings.desktop.in:5
+msgid "Settings for the Xfce 4 Calendar Application (Orage)"
+msgstr "Stillingar fyrir Xfce 4 dagatalsforritið (Orage)"
+
+#: plugin/org.xfce.orage-settings.desktop.in:12
+msgid "Orage Calendar Preferences"
+msgstr "Stillingar Orage dagatals"
+
+#: org.xfce.orage.appdata.xml.in:11
+msgid ""
+"Orage aims to be a fast and easy to use graphical calendar. It uses portable"
+" ical format and includes common calendar features like repeating "
+"appointments and multiple alarming possibilities."
+msgstr ""
+
+#: org.xfce.orage.appdata.xml.in:15
+msgid ""
+"Orage does not have group calendar features, but can only be used for single"
+" user. It takes a list of files for ical files that should be imported. "
+"Contents of those files are read and converted into Orage, but those files "
+"are left untouched."
+msgstr ""
+
+#: org.xfce.orage.appdata.xml.in:35
+msgid "Orage Team"
+msgstr ""
+
+#: org.xfce.orage.desktop.in:4
+msgid "Orage Calendar"
+msgstr "Orage dagatal"
+
+#: org.xfce.orage.desktop.in:5
+msgid "Desktop calendar"
+msgstr "Skjáborðsdagatal"
+
+#: org.xfce.orage.desktop.in:13
+msgid "Calendar"
+msgstr "Dagatal"
+
+#: org.xfce.orage.desktop.in:17
+msgid "Show Today"
+msgstr ""
+
+#: org.xfce.orage.desktop.in:21
+msgid "New Appointment"
+msgstr ""

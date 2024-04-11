@@ -169,12 +169,12 @@ static void mView_ViewSelectedDate_activate_cb (
 static void mView_ViewSelectedWeek_activate_cb (
     G_GNUC_UNUSED GtkMenuItem *menuitem, gpointer user_data)
 {
-    GDateTime *date;
+    GDateTime *gdt;
     OrageWindow *window = ORAGE_WINDOW (user_data);
 
-    date = orage_cal_to_gdatetime (orage_window_get_calendar (window), 1, 1);
-    create_day_win (date);
-    g_date_time_unref (date);
+    gdt = orage_cal_to_gdatetime (orage_window_get_calendar (window), 1, 1);
+    create_day_win (gdt);
+    g_date_time_unref (gdt);
 }
 
 static void mView_selectToday_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
@@ -218,13 +218,13 @@ static void orage_window_post_init_cb (OrageWindow *window)
 static void mCalendar_day_selected_double_click_cb (GtkCalendar *calendar,
                                                     G_GNUC_UNUSED gpointer user_data)
 {
-    GDateTime *date;
+    GDateTime *gdt;
 
     if (g_par.show_days)
     {
-        date = orage_cal_to_gdatetime (calendar, 1, 1);
-        create_day_win (date);
-        g_date_time_unref (date);
+        gdt = orage_cal_to_gdatetime (calendar, 1, 1);
+        create_day_win (gdt);
+        g_date_time_unref (gdt);
     }
     else
         (void)create_el_win(NULL);
