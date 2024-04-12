@@ -4108,7 +4108,7 @@ msgstr ""
 
 #: org.xfce.orage.appdata.xml.in:35
 msgid "Orage Team"
-msgstr ""
+msgstr "Orage'i arendustiim"
 
 #: org.xfce.orage.desktop.in:4
 msgid "Orage Calendar"
