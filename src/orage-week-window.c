@@ -34,7 +34,7 @@
 #include "orage-i18n.h"
 #include "orage-css.h"
 #include "functions.h"
-#include "day-view.h"
+#include "orage-week-window.h"
 #include "ical-code.h"
 #include "parameters.h"
 #include "event-list.h"

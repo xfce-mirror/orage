@@ -60,7 +60,7 @@
 #include "ical-code.h"
 #include "event-list.h"
 #include "parameters.h"
-#include "day-view.h"
+#include "orage-week-window.h"
 
 #ifdef HAVE_X11_TRAY_ICON
 #include "tray_icon.h"
