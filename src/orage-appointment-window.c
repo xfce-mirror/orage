@@ -54,7 +54,7 @@
 #include "ical-code.h"
 #include "timezone_selection.h"
 #include "event-list.h"
-#include "day-view.h"
+#include "orage-week-window.h"
 #include "orage-appointment-window.h"
 #include "parameters.h"
 #include "reminder.h"

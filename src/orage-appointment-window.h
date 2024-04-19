@@ -23,7 +23,7 @@
 #ifndef ORAGE_APPOINTMENT_WINDOW_H
 #define ORAGE_APPOINTMENT_WINDOW_H 1
 
-#include "day-view.h"
+#include "orage-week-window.h"
 #include "event-list.h"
 #include <glib-object.h>
 #include <glib.h>
