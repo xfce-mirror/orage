@@ -1,6 +1,5 @@
 # List of source files containing translatable strings.
 
-src/day-view.c
 src/event-list.c
 src/functions.c
 src/ical-archive.c
@@ -12,7 +11,11 @@ src/orage-about.c
 src/orage-application.c
 src/orage-appointment-window.c
 src/orage-sync-edit-dialog.c
+<<<<<<< HEAD
 src/orage-tray-icon-common.c
+=======
+src/orage-week-window.c
+>>>>>>> a50365b9 (Renamed day-view to orage-week-window)
 src/orage-window.c
 src/parameters.c
 src/reminder.c

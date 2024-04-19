@@ -60,7 +60,7 @@
 #include "ical-code.h"
 #include "event-list.h"
 #include "parameters.h"
-#include "day-view.h"
+#include "orage-week-window.h"
 
 #define BORDER_SIZE 10
 #define DATE_KEY "button-date"

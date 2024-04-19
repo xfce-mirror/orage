@@ -48,7 +48,7 @@
 #include "orage-appointment-window.h"
 #include "interface.h"
 #include "parameters.h"
-#include "day-view.h"
+#include "orage-week-window.h"
 
 #ifdef ENABLE_SYNC
 #include "orage-application.h"
