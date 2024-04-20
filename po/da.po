@@ -6,8 +6,8 @@
 # Translators:
 # Chris Darnell <chris@cedeel.com>, 2022
 # Nick Schermer <nick@xfce.org>, 2023
-# scootergrisen, 2024
 # Xfce Bot <transifex@xfce.org>, 2024
+# scootergrisen, 2024
 # 
 #, fuzzy
 msgid ""
@@ -16,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2024-04-04 00:51+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>, 2024\n"
+"Last-Translator: scootergrisen, 2024\n"
 "Language-Team: Danish (https://app.transifex.com/xfce/teams/16840/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -4113,7 +4113,7 @@ msgstr ""
 
 #: org.xfce.orage.appdata.xml.in:35
 msgid "Orage Team"
-msgstr ""
+msgstr "Orage's team"
 
 #: org.xfce.orage.desktop.in:4
 msgid "Orage Calendar"
