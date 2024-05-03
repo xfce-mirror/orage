@@ -75,7 +75,15 @@ typedef struct _day_win
     gint days;      /* how many days to show */
 } day_win;
 
-day_win *create_day_win (GDateTime *start_date);
 void refresh_day_win(day_win *dw);
 
-#endif /* !__DAY_VIEW_H__ */
+#define ORAGE_WEEK_WINDOW_TYPE (orage_week_window_get_type ())
+G_DECLARE_FINAL_TYPE (OrageWeekWindow, orage_week_window, ORAGE, WEEK_WINDOW,
+                      GtkWindow)
+
+/** Create new week window for specified start date.
+ *  @param date window start date
+ */
+OrageWeekWindow *orage_week_window_new (GDateTime *date);
+
+#endif
