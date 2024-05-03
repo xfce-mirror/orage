@@ -864,7 +864,7 @@ static void on_Dayview_clicked (G_GNUC_UNUSED GtkButton *b, gpointer user_data)
     GDateTime *gdt;
 
     gdt = g_object_get_data (G_OBJECT (el->Window), DATE_KEY);
-    create_day_win (gdt);
+    orage_week_window_new (gdt);
 }
 
 static void on_File_close_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,

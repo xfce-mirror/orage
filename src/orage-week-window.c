@@ -46,6 +46,13 @@
 #define FIRST_HOUR_ROW (FULL_DAY_ROW + 1)
 #define DATE_KEY "button-date"
 
+struct _OrageWeekWindow
+{
+    GtkApplication parent;
+};
+
+G_DEFINE_TYPE (OrageWeekWindow, orage_week_window, GTK_TYPE_WINDOW)
+
 static void set_scroll_position(const day_win *dw)
 {
     GtkAdjustment *v_adj;
@@ -1053,7 +1060,7 @@ void refresh_day_win(day_win *dw)
     g_timeout_add(100, (GSourceFunc)scroll_position_timer, (gpointer)dw);
 }
 
-day_win *create_day_win (GDateTime *start_date)
+static day_win *create_day_win (GDateTime *start_date)
 {
     day_win *dw;
 
@@ -1085,4 +1092,23 @@ day_win *create_day_win (GDateTime *start_date)
     set_scroll_position(dw);
 
     return(dw);
+}
+
+static void orage_week_window_class_init (OrageWeekWindowClass *klass)
+{
+}
+
+static void orage_week_window_init (OrageWeekWindow *week_window)
+{
+}
+
+OrageWeekWindow *orage_week_window_new (GDateTime *date)
+{
+    OrageWeekWindow *window;
+
+    window = (OrageWeekWindow *)g_object_new (ORAGE_WEEK_WINDOW_TYPE, NULL);
+
+    (void)create_day_win (date);
+
+    return window;
 }
