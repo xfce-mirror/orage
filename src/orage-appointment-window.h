@@ -33,7 +33,8 @@ G_BEGIN_DECLS
 
 #define ORAGE_TYPE_APPOINTMENT_WINDOW (orage_appointment_window_get_type ())
 
-G_DECLARE_FINAL_TYPE (OrageAppointmentWindow, orage_appointment_window, ORAGE, APPOINTMENT_WINDOW, GtkWindow)
+G_DECLARE_FINAL_TYPE (OrageAppointmentWindow, orage_appointment_window, ORAGE,
+                      APPOINTMENT_WINDOW, GtkWindow)
 
 GtkWidget *orage_appointment_window_new (GDateTime *gdt);
 
@@ -48,7 +49,7 @@ void orage_appointment_window_set_event_list (OrageAppointmentWindow *apptw,
                                               el_win *el);
 
 void orage_appointment_window_set_day_window (OrageAppointmentWindow *apptw,
-                                              day_win *dw);
+                                              gpointer dw);
 
 G_END_DECLS
 
