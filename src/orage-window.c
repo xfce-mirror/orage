@@ -173,7 +173,7 @@ static void mView_ViewSelectedWeek_activate_cb (
     OrageWindow *window = ORAGE_WINDOW (user_data);
 
     gdt = orage_cal_to_gdatetime (orage_window_get_calendar (window), 1, 1);
-    orage_week_window_new (gdt);
+    orage_week_window_build (gdt);
     g_date_time_unref (gdt);
 }
 
@@ -223,7 +223,7 @@ static void mCalendar_day_selected_double_click_cb (GtkCalendar *calendar,
     if (g_par.show_days)
     {
         gdt = orage_cal_to_gdatetime (calendar, 1, 1);
-        orage_week_window_new (gdt);
+        orage_week_window_build (gdt);
         g_date_time_unref (gdt);
     }
     else

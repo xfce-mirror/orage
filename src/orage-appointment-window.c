@@ -281,7 +281,7 @@ struct _OrageAppointmentWindow
     gchar *xf_uid;
 
     el_win *el;          /* used to refresh calling event list */
-    day_win *dw;         /* used to refresh calling day list */
+    OrageWeekWindow *dw; /* used to refresh calling day list */
 
     appt_win_action action;
     gchar *par;
@@ -811,7 +811,7 @@ static void refresh_dependent_data (OrageAppointmentWindow *apptw)
     if (apptw->el != NULL)
         refresh_el_win (apptw->el);
     if (apptw->dw != NULL)
-        refresh_day_win (apptw->dw);
+        orage_week_window_refresh (apptw->dw);
 
     app = ORAGE_APPLICATION (g_application_get_default ());
     orage_mark_appointments (ORAGE_WINDOW (orage_application_get_window (app)));
@@ -4479,8 +4479,8 @@ static void orage_appointment_window_finalize (GObject *object)
     }
     else if (self->dw)
     {
-        /* Remove myself from day list appointment monitoring list/ */
-        self->dw->apptw_list = g_list_remove (self->dw->apptw_list, self);
+        /* Remove myself from day list appointment monitoring list. */
+        orage_week_window_remove_appointment_window (self->dw, self);
     }
 
     g_free (self->xf_uid);
@@ -4681,7 +4681,7 @@ void orage_appointment_window_set_event_list (OrageAppointmentWindow *apptw,
 }
 
 void orage_appointment_window_set_day_window (OrageAppointmentWindow *apptw,
-                                              day_win *dw)
+                                              gpointer dw)
 {
-    apptw->dw = dw;
+    apptw->dw = ORAGE_WEEK_WINDOW (dw);
 }
