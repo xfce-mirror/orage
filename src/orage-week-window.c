@@ -1123,6 +1123,29 @@ void orage_week_window_refresh (OrageWeekWindow *dw)
     g_timeout_add(100, (GSourceFunc)scroll_position_timer, (gpointer)dw);
 }
 
+static void orage_week_window_constructed (GObject *object)
+{
+    OrageWeekWindow *self = (OrageWeekWindow *)object;
+
+    if (g_par.dw_size_x || g_par.dw_size_y)
+    {
+        gtk_window_set_default_size (GTK_WINDOW (self),
+                                     g_par.dw_size_x, g_par.dw_size_y);
+    }
+
+    if (g_par.dw_pos_x || g_par.dw_pos_y)
+        gtk_window_move (GTK_WINDOW (self), g_par.dw_pos_x, g_par.dw_pos_y);
+
+    build_menu (self);
+    build_toolbar (self);
+    build_day_view_header (self);
+    build_day_view_table (self);
+    gtk_widget_show_all (GTK_WIDGET (self));
+    set_scroll_position (self);
+
+    G_OBJECT_CLASS (orage_week_window_parent_class)->constructed (object);
+}
+
 static void orage_week_window_finalize (GObject *object)
 {
     OrageWeekWindow *self = (OrageWeekWindow *)object;
@@ -1174,8 +1197,8 @@ static void orage_week_window_class_init (OrageWeekWindowClass *klass)
 {
     GObjectClass *object_class;
 
-    g_debug ("%s", G_STRFUNC);
     object_class = G_OBJECT_CLASS (klass);
+    object_class->constructed = orage_week_window_constructed;
     object_class->finalize = orage_week_window_finalize;
     object_class->get_property = orage_week_window_get_property;
     object_class->set_property = orage_week_window_set_property;
@@ -1195,42 +1218,19 @@ static void orage_week_window_class_init (OrageWeekWindowClass *klass)
 
 static void orage_week_window_init (OrageWeekWindow *self)
 {
-    g_debug ("%s", G_STRFUNC);
-
     self->scroll_pos = -1; /* not set */
     self->accel_group = gtk_accel_group_new ();
     self->a_day = g_date_time_new_now_local ();
     self->Vbox = gtk_grid_new ();
 
-    build_menu (self);
-    build_toolbar (self);
-    build_day_view_header (self);
-    build_day_view_table (self);
-    set_scroll_position (self);
-
     gtk_window_set_title (GTK_WINDOW (self), _("Orage - day view"));
     gtk_window_add_accel_group (GTK_WINDOW (self), self->accel_group);
     gtk_container_add (GTK_CONTAINER (self), self->Vbox);
-
-    if (g_par.dw_size_x || g_par.dw_size_y)
-    {
-        gtk_window_set_default_size (GTK_WINDOW (self),
-                                     g_par.dw_size_x, g_par.dw_size_y);
-    }
-
-    if (g_par.dw_pos_x || g_par.dw_pos_y)
-        gtk_window_move (GTK_WINDOW (self), g_par.dw_pos_x, g_par.dw_pos_y);
-
-#if 0
-    gtk_widget_show_all (GTK_WINDOW (self));
-#endif
 }
 
 OrageWeekWindow *orage_week_window_new (GDateTime *date)
 {
     OrageWeekWindow *window;
-
-    g_debug ("%s", G_STRFUNC);
 
     window = g_object_new (ORAGE_WEEK_WINDOW_TYPE,
                            "type", GTK_WINDOW_TOPLEVEL,
@@ -1243,8 +1243,6 @@ OrageWeekWindow *orage_week_window_new (GDateTime *date)
 void orage_week_window_build (GDateTime *date)
 {
     OrageWeekWindow *window;
-
-    g_debug ("%s", G_STRFUNC);
 
     window = orage_week_window_new (date);
 
