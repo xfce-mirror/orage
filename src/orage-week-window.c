@@ -193,7 +193,6 @@ static void close_window (OrageWeekWindow *window)
         else
             g_warning ("%s: not null appt window", G_STRFUNC);
     }
-    g_list_free (window->apptw_list);
 
     gtk_widget_destroy (GTK_WIDGET (window));
 }
@@ -1150,7 +1149,9 @@ static void orage_week_window_finalize (GObject *object)
 {
     OrageWeekWindow *self = (OrageWeekWindow *)object;
 
+    g_list_free (self->apptw_list);
     g_date_time_unref (self->a_day);
+    g_date_time_unref (self->start_date);
 
     G_OBJECT_CLASS (orage_week_window_parent_class)->finalize (object);
 }
