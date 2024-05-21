@@ -96,7 +96,7 @@ struct _OrageWeekWindow
 
     GList *apptw_list; /* keep track of appointments being updated */
     GDateTime *a_day; /* Start date. FIXME: only one start date. */
-    GDateTime *start_date; /* Another start date. FIXME: only one start date. */
+    GDateTime *start_date; /* FIXME: another start date. */
 };
 
 G_DEFINE_TYPE (OrageWeekWindow, orage_week_window, GTK_TYPE_WINDOW)
@@ -110,7 +110,7 @@ enum
 
 static GParamSpec *properties[N_PROPS] = {NULL,};
 
-static void set_scroll_position(const OrageWeekWindow *dw)
+static void set_scroll_position (const OrageWeekWindow *dw)
 {
     GtkAdjustment *v_adj;
 
@@ -531,10 +531,10 @@ static void on_Date_button_clicked_cb(GtkWidget *button, gpointer *user_data)
 {
     OrageWeekWindow *window = ORAGE_WEEK_WINDOW (user_data);
     GtkWidget *selDate_dialog;
-    selDate_dialog = gtk_dialog_new_with_buttons(
-            _("Pick the date"), GTK_WINDOW (window),
-            GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-            _("Today"), 1, _("_OK"), GTK_RESPONSE_ACCEPT, NULL);
+    selDate_dialog = gtk_dialog_new_with_buttons (
+        _("Pick the date"), GTK_WINDOW (window),
+        GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+        _("Today"), 1, _("_OK"), GTK_RESPONSE_ACCEPT, NULL);
 
     if (orage_date_button_clicked (button, selDate_dialog))
         orage_week_window_refresh (window);
@@ -949,8 +949,7 @@ static void build_day_view_header (OrageWeekWindow *dw)
 }
 
 static void fill_hour (OrageWeekWindow *dw,
-                       const gint col,
-                       const gint row,
+                       const gint col, const gint row,
                        const gchar *text)
 {
     GtkWidget *name, *ev;
@@ -1157,8 +1156,7 @@ static void orage_week_window_finalize (GObject *object)
 }
 
 static void orage_week_window_get_property (GObject *object,
-                                            const guint prop_id,
-                                            GValue *value,
+                                            const guint prop_id, GValue *value,
                                             GParamSpec *pspec)
 {
     const OrageWeekWindow *self = ORAGE_WEEK_WINDOW (object);
