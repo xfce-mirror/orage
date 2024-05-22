@@ -164,10 +164,11 @@ static GtkWidget *build_line (const GtkWidget *hour_line)
     return build_separator_bar (type_name);
 }
 
-static void close_window (OrageWeekWindow *window)
+static void close_window (gpointer user_data)
 {
     OrageAppointmentWindow *apptw;
     GList *apptw_list;
+    OrageWeekWindow *window = ORAGE_WEEK_WINDOW (user_data);
 
     gtk_window_get_size (GTK_WINDOW (window),
                          &g_par.dw_size_x,
@@ -201,9 +202,7 @@ static gboolean on_Window_delete_event (G_GNUC_UNUSED GtkWidget *w,
                                         G_GNUC_UNUSED GdkEvent *e,
                                         gpointer user_data)
 {
-    OrageWeekWindow *window = ORAGE_WEEK_WINDOW (user_data);
-
-    close_window (window);
+    close_window (user_data);
 
     return(FALSE);
 }
@@ -211,16 +210,12 @@ static gboolean on_Window_delete_event (G_GNUC_UNUSED GtkWidget *w,
 static void on_File_close_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
                                        gpointer user_data)
 {
-    OrageWeekWindow *window = ORAGE_WEEK_WINDOW (user_data);
-
-    close_window (window);
+    close_window (user_data);
 }
 
 static void on_Close_clicked (G_GNUC_UNUSED GtkButton *b, gpointer user_data)
 {
-    OrageWeekWindow *window = ORAGE_WEEK_WINDOW (user_data);
-
-    close_window (window);
+    close_window (user_data);
 }
 
 static void create_new_appointment (OrageWeekWindow *dw)
