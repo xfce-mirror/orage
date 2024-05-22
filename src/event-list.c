@@ -62,10 +62,6 @@
 #include "parameters.h"
 #include "day-view.h"
 
-#ifdef HAVE_X11_TRAY_ICON
-#include "tray_icon.h"
-#endif
-
 #define BORDER_SIZE 10
 #define DATE_KEY "button-date"
 
