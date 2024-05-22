@@ -1,8 +1,6 @@
 bin_PROGRAMS = orage
 
 orage_SOURCES =							\
-	day-view.c						\
-	day-view.h						\
 	event-list.c						\
 	event-list.h						\
 	functions.c						\
@@ -39,6 +37,8 @@ orage_SOURCES =							\
 	orage-sync-ext-command.h				\
 	orage-task-runner.c					\
 	orage-task-runner.h    					\
+	orage-week-window.c					\
+	orage-week-window.h					\
 	orage-window.c						\
 	orage-window.h						\
 	parameters.c						\
