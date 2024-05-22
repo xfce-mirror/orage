@@ -60,7 +60,7 @@
 #include "ical-code.h"
 #include "event-list.h"
 #include "parameters.h"
-#include "day-view.h"
+#include "orage-week-window.h"
 
 #ifdef HAVE_X11_TRAY_ICON
 #include "tray_icon.h"
@@ -864,7 +864,7 @@ static void on_Dayview_clicked (G_GNUC_UNUSED GtkButton *b, gpointer user_data)
     GDateTime *gdt;
 
     gdt = g_object_get_data (G_OBJECT (el->Window), DATE_KEY);
-    create_day_win (gdt);
+    orage_week_window_build (gdt);
 }
 
 static void on_File_close_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,

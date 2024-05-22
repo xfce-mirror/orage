@@ -34,19 +34,83 @@
 #include "orage-i18n.h"
 #include "orage-css.h"
 #include "functions.h"
-#include "day-view.h"
+#include "orage-week-window.h"
 #include "ical-code.h"
 #include "parameters.h"
 #include "event-list.h"
 #include "orage-appointment-window.h"
 #include "orage-category.h"
 
+#define MAX_DAYS 40
+
 #define BUTTON_ROW 0
 #define FULL_DAY_ROW (BUTTON_ROW + 1)
 #define FIRST_HOUR_ROW (FULL_DAY_ROW + 1)
 #define DATE_KEY "button-date"
+#define ORAGE_WEEK_WINDOW_START_DATE_PROPERTY "day-window-start-date"
 
-static void set_scroll_position(const day_win *dw)
+struct _OrageWeekWindow
+{
+    GtkWindow parent;
+
+    GtkAccelGroup *accel_group;
+
+    GtkWidget *Vbox;
+    GtkWidget *Menubar;
+    GtkWidget *File_menu;
+    GtkWidget *File_menu_new;
+    GtkWidget *File_menu_close;
+    GtkWidget *View_menu;
+    GtkWidget *View_menu_refresh;
+    GtkWidget *Go_menu;
+    GtkWidget *Go_menu_today;
+    GtkWidget *Go_menu_prev_day;
+    GtkWidget *Go_menu_prev_week;
+    GtkWidget *Go_menu_next_day;
+    GtkWidget *Go_menu_next_week;
+
+    GtkWidget *Toolbar;
+    GtkWidget *Create_toolbutton;
+    GtkWidget *Previous_week_toolbutton;
+    GtkWidget *Previous_day_toolbutton;
+    GtkWidget *Today_toolbutton;
+    GtkWidget *Next_day_toolbutton;
+    GtkWidget *Next_week_toolbutton;
+    GtkWidget *Refresh_toolbutton;
+    GtkWidget *Close_toolbutton;
+    GtkWidget *StartDate_button;
+#if 0
+    GtkRequisition StartDate_button_req;
+#endif
+    GtkWidget *day_spin;
+
+    GtkWidget *scroll_win;
+    GtkWidget *dtable; /* day table */
+    GtkWidget *header[MAX_DAYS];
+    GtkWidget *element[24][MAX_DAYS];
+    GtkWidget *line[24][MAX_DAYS];
+    guint upd_timer;
+    gdouble scroll_pos; /* remember the scroll position */
+
+    gint days; /* how many days to show */
+
+    GList *apptw_list; /* keep track of appointments being updated */
+    GDateTime *a_day; /* Start date. FIXME: only one start date. */
+    GDateTime *start_date; /* FIXME: another start date. */
+};
+
+G_DEFINE_TYPE (OrageWeekWindow, orage_week_window, GTK_TYPE_WINDOW)
+
+enum
+{
+    PROP_0,
+    PROP_START_DATE,
+    N_PROPS
+};
+
+static GParamSpec *properties[N_PROPS] = {NULL,};
+
+static void set_scroll_position (const OrageWeekWindow *dw)
 {
     GtkAdjustment *v_adj;
 
@@ -63,12 +127,12 @@ static void set_scroll_position(const day_win *dw)
 
 static gboolean scroll_position_timer (const gpointer user_data)
 {
-    set_scroll_position((const day_win *)user_data);
+    set_scroll_position (ORAGE_WEEK_WINDOW (user_data));
 
     return(FALSE); /* only once */
 }
 
-static void get_scroll_position(day_win *dw)
+static void get_scroll_position (OrageWeekWindow *dw)
 {
     GtkAdjustment *v_adj;
 
@@ -100,20 +164,24 @@ static GtkWidget *build_line (const GtkWidget *hour_line)
     return build_separator_bar (type_name);
 }
 
-static void close_window(day_win *dw)
+static void close_window (gpointer user_data)
 {
     OrageAppointmentWindow *apptw;
     GList *apptw_list;
+    OrageWeekWindow *window = ORAGE_WEEK_WINDOW (user_data);
 
-    gtk_window_get_size(GTK_WINDOW(dw->Window)
-            , &g_par.dw_size_x, &g_par.dw_size_y);
-    gtk_window_get_position(GTK_WINDOW(dw->Window)
-            , &g_par.dw_pos_x, &g_par.dw_pos_y);
+    gtk_window_get_size (GTK_WINDOW (window),
+                         &g_par.dw_size_x,
+                         &g_par.dw_size_y);
+
+    gtk_window_get_position (GTK_WINDOW (window),
+                             &g_par.dw_pos_x,
+                             &g_par.dw_pos_y);
     write_parameters();
 
     /* need to clean the appointment list and inform all appointments that
      * we are not interested anymore (= should not get updated) */
-    apptw_list = dw->apptw_list;
+    apptw_list = window->apptw_list;
     for (apptw_list = g_list_first(apptw_list);
          apptw_list != NULL;
          apptw_list = g_list_next(apptw_list)) {
@@ -126,19 +194,15 @@ static void close_window(day_win *dw)
         else
             g_warning ("%s: not null appt window", G_STRFUNC);
     }
-    g_list_free(dw->apptw_list);
 
-    gtk_widget_destroy(dw->Window);
-    g_date_time_unref (dw->a_day);
-    g_free(dw);
-    dw = NULL;
+    gtk_widget_destroy (GTK_WIDGET (window));
 }
 
 static gboolean on_Window_delete_event (G_GNUC_UNUSED GtkWidget *w,
                                         G_GNUC_UNUSED GdkEvent *e,
                                         gpointer user_data)
 {
-    close_window((day_win *)user_data);
+    close_window (user_data);
 
     return(FALSE);
 }
@@ -146,15 +210,15 @@ static gboolean on_Window_delete_event (G_GNUC_UNUSED GtkWidget *w,
 static void on_File_close_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
                                        gpointer user_data)
 {
-    close_window((day_win *)user_data);
+    close_window (user_data);
 }
 
 static void on_Close_clicked (G_GNUC_UNUSED GtkButton *b, gpointer user_data)
 {
-    close_window((day_win *)user_data);
+    close_window (user_data);
 }
 
-static void create_new_appointment(day_win *dw)
+static void create_new_appointment (OrageWeekWindow *dw)
 {
     GDateTime *gdt;
     GtkWidget *appointment_window;
@@ -172,27 +236,27 @@ static void create_new_appointment(day_win *dw)
 static void on_File_newApp_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
                                         gpointer user_data)
 {
-    create_new_appointment((day_win *)user_data);
+    create_new_appointment (ORAGE_WEEK_WINDOW (user_data));
 }
 
 static void on_Create_toolbutton_clicked_cb (G_GNUC_UNUSED GtkButton *mi,
                                              gpointer user_data)
 {
-    create_new_appointment((day_win *)user_data);
+    create_new_appointment (ORAGE_WEEK_WINDOW (user_data));
 }
 
 static void on_View_refresh_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
                                          gpointer user_data)
 {
-    refresh_day_win((day_win *)user_data);
+    orage_week_window_refresh (ORAGE_WEEK_WINDOW (user_data));
 }
 
 static void on_Refresh_clicked (G_GNUC_UNUSED GtkButton *b, gpointer user_data)
 {
-    refresh_day_win((day_win *)user_data);
+    orage_week_window_refresh (ORAGE_WEEK_WINDOW (user_data));
 }
 
-static void changeSelectedDate(day_win *dw, const gint day)
+static void changeSelectedDate (OrageWeekWindow *dw, const gint day)
 {
     gchar *label;
     GDateTime *gdt_o;
@@ -205,10 +269,10 @@ static void changeSelectedDate(day_win *dw, const gint day)
     g_object_set_data_full (G_OBJECT (dw->StartDate_button),
                             DATE_KEY, gdt_m, (GDestroyNotify)g_date_time_unref);
     g_free (label);
-    refresh_day_win(dw);
+    orage_week_window_refresh (dw);
 }
 
-static void go_to_today(day_win *dw)
+static void go_to_today (OrageWeekWindow *dw)
 {
     GDateTime *gdt;
     gchar *today;
@@ -219,68 +283,68 @@ static void go_to_today(day_win *dw)
     g_object_set_data_full (G_OBJECT (dw->StartDate_button),
                             DATE_KEY, gdt, (GDestroyNotify)g_date_time_unref);
     g_free (today);
-    refresh_day_win(dw);
+    orage_week_window_refresh (dw);
 }
 
 static void on_Today_clicked (G_GNUC_UNUSED GtkButton *b, gpointer user_data)
 {
-    go_to_today((day_win *)user_data);
+    go_to_today (ORAGE_WEEK_WINDOW (user_data));
 }
 
 static void on_Go_today_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
                                      gpointer user_data)
 {
-    go_to_today((day_win *)user_data);
+    go_to_today (ORAGE_WEEK_WINDOW (user_data));
 }
 
 static void on_Go_previous_week_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
                                              gpointer user_data)
 {
-    changeSelectedDate((day_win *)user_data, -7);
+    changeSelectedDate (ORAGE_WEEK_WINDOW (user_data), -7);
 }
 
 static void on_Go_previous_day_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
                                             gpointer user_data)
 {
-    changeSelectedDate((day_win *)user_data, -1);
+    changeSelectedDate (ORAGE_WEEK_WINDOW (user_data), -1);
 }
 
 static void on_Previous_day_clicked (G_GNUC_UNUSED GtkButton *b,
                                      gpointer user_data)
 {
-    changeSelectedDate((day_win *)user_data, -1);
+    changeSelectedDate (ORAGE_WEEK_WINDOW (user_data), -1);
 }
 
 static void on_Previous_week_clicked (G_GNUC_UNUSED GtkButton *b,
                                       gpointer user_data)
 {
-    changeSelectedDate((day_win *)user_data, -7);
+    changeSelectedDate (ORAGE_WEEK_WINDOW (user_data), -7);
 }
 
 static void on_Go_next_day_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
                                         gpointer user_data)
 {
-    changeSelectedDate((day_win *)user_data, 1);
+    changeSelectedDate (ORAGE_WEEK_WINDOW (user_data), 1);
 }
 
 static void on_Go_next_week_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
                                          gpointer user_data)
 {
-    changeSelectedDate((day_win *)user_data, 7);
+    changeSelectedDate (ORAGE_WEEK_WINDOW (user_data), 7);
 }
 
 static void on_Next_day_clicked (G_GNUC_UNUSED GtkButton *b, gpointer user_data)
 {
-    changeSelectedDate((day_win *)user_data, 1);
+    changeSelectedDate (ORAGE_WEEK_WINDOW (user_data), 1);
 }
 
 static void on_Next_week_clicked (G_GNUC_UNUSED GtkButton *b,
                                   gpointer user_data)
 {
-    changeSelectedDate((day_win *)user_data, 7);
+    changeSelectedDate (ORAGE_WEEK_WINDOW (user_data), 7);
 }
 
-static void build_menu(day_win *dw)
+static void build_menu (OrageWeekWindow *dw)
 {
     dw->Menubar = gtk_menu_bar_new();
     gtk_grid_attach (GTK_GRID (dw->Vbox), dw->Menubar, 0, 0, 1, 1);
@@ -375,7 +439,7 @@ static void build_menu(day_win *dw)
             , G_CALLBACK(on_Go_next_week_activate_cb), dw);
 }
 
-static void build_toolbar(day_win *dw)
+static void build_toolbar (OrageWeekWindow *dw)
 {
     int i = 0;
 
@@ -426,7 +490,7 @@ static void build_toolbar(day_win *dw)
              , G_CALLBACK(on_Close_clicked), dw);
 }
 
-static gboolean upd_day_view(day_win *dw)
+static gboolean upd_day_view (OrageWeekWindow *dw)
 {
     static guint day_cnt=-1;
     guint day_cnt_n;
@@ -436,7 +500,7 @@ static gboolean upd_day_view(day_win *dw)
      * to show only the last one, which is visible */
     day_cnt_n = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(dw->day_spin));
     if (day_cnt != day_cnt_n) { /* need really do it */
-        refresh_day_win(dw);
+        orage_week_window_refresh (dw);
         day_cnt = day_cnt_n;
     }
     dw->upd_timer = 0;
@@ -446,7 +510,7 @@ static gboolean upd_day_view(day_win *dw)
 static void on_spin_changed (G_GNUC_UNUSED GtkSpinButton *b,
                              gpointer *user_data)
 {
-    day_win *dw = (day_win *)user_data;
+    OrageWeekWindow *dw = ORAGE_WEEK_WINDOW (user_data);
 
     /* refresh_day_win is rather heavy (=slow), so doing it here 
      * is not a good idea. We can't keep up with repeated quick presses 
@@ -460,15 +524,15 @@ static void on_spin_changed (G_GNUC_UNUSED GtkSpinButton *b,
 
 static void on_Date_button_clicked_cb(GtkWidget *button, gpointer *user_data)
 {
-    day_win *dw = (day_win *)user_data;
+    OrageWeekWindow *window = ORAGE_WEEK_WINDOW (user_data);
     GtkWidget *selDate_dialog;
-    selDate_dialog = gtk_dialog_new_with_buttons(
-            _("Pick the date"), GTK_WINDOW(dw->Window),
-            GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-            _("Today"), 1, _("_OK"), GTK_RESPONSE_ACCEPT, NULL);
+    selDate_dialog = gtk_dialog_new_with_buttons (
+        _("Pick the date"), GTK_WINDOW (window),
+        GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+        _("Today"), 1, _("_OK"), GTK_RESPONSE_ACCEPT, NULL);
 
     if (orage_date_button_clicked (button, selDate_dialog))
-        refresh_day_win(dw);
+        orage_week_window_refresh (window);
 }
 
 static void header_button_clicked_cb (GtkWidget *button,
@@ -484,7 +548,7 @@ static void on_button_press_event_cb(GtkWidget *widget
 {
     GtkWidget *appointment_window;
     gchar *uid;
-    day_win *dw = (day_win *)user_data;
+    OrageWeekWindow *dw = ORAGE_WEEK_WINDOW (user_data);
 
     if (event->type == GDK_2BUTTON_PRESS) {
         uid = g_object_get_data(G_OBJECT(widget), "UID");
@@ -505,28 +569,28 @@ static void on_arrow_up_press_event_cb (G_GNUC_UNUSED GtkWidget *widget,
                                         G_GNUC_UNUSED GdkEventButton *event,
                                         gpointer *user_data)
 {
-    changeSelectedDate((day_win *)user_data, -7);
+    changeSelectedDate (ORAGE_WEEK_WINDOW (user_data), -7);
 }
 
 static void on_arrow_left_press_event_cb (G_GNUC_UNUSED GtkWidget *widget,
                                           G_GNUC_UNUSED GdkEventButton *event,
                                           gpointer *user_data)
 {
-    changeSelectedDate((day_win *)user_data, -1);
+    changeSelectedDate (ORAGE_WEEK_WINDOW (user_data), -1);
 }
 
 static void on_arrow_right_press_event_cb (G_GNUC_UNUSED GtkWidget *widget,
                                            G_GNUC_UNUSED GdkEventButton *event,
                                            gpointer *user_data)
 {
-    changeSelectedDate((day_win *)user_data, 1);
+    changeSelectedDate (ORAGE_WEEK_WINDOW (user_data), 1);
 }
 
 static void on_arrow_down_press_event_cb (G_GNUC_UNUSED GtkWidget *widget,
                                           G_GNUC_UNUSED GdkEventButton *event,
                                           gpointer *user_data)
 {
-    changeSelectedDate((day_win *)user_data, 7);
+    changeSelectedDate (ORAGE_WEEK_WINDOW (user_data), 7);
 }
 
 static gchar *get_row_colour (const gint row)
@@ -539,7 +603,7 @@ static gchar *get_row_colour (const gint row)
         return ORAGE_DAY_VIEW_ODD_HOURS;
 }
 
-static void add_row (day_win *dw, const xfical_appt *appt)
+static void add_row (OrageWeekWindow *dw, const xfical_appt *appt)
 {
     gint row, start_row, end_row, days;
     gint row_mod;
@@ -699,7 +763,7 @@ add_row_cleanup:
     g_date_time_unref (gdt_end);
 }
 
-static void app_rows (day_win *dw,
+static void app_rows (OrageWeekWindow *dw,
                       const xfical_type ical_type,
                       const gchar *file_type)
 {
@@ -720,7 +784,7 @@ static void app_rows (day_win *dw,
     g_list_free(appt_list);
 }
 
-static void app_data(day_win *dw)
+static void app_data (OrageWeekWindow *dw)
 {
     xfical_type ical_type;
     gchar file_type[8];
@@ -748,7 +812,7 @@ static void app_data(day_win *dw)
     xfical_file_close(TRUE);
 }
 
-static void fill_days (day_win *dw, const gint days)
+static void fill_days (OrageWeekWindow *dw, const gint days)
 {
     const gint days_n1 = days + 1;
     gint row, col;
@@ -817,7 +881,7 @@ static void fill_days (day_win *dw, const gint days)
     }
 }
 
-static void build_day_view_header (day_win *dw, GDateTime *start_date)
+static void build_day_view_header (OrageWeekWindow *dw)
 {
     GtkWidget *start_label;
     GtkWidget *no_days_label;
@@ -851,19 +915,19 @@ static void build_day_view_header (day_win *dw, GDateTime *start_date)
 
     /* initial values */
     if (g_par.dw_week_mode) { /* we want to start form week start day */
-        diff_to_weeks_first_day = g_date_time_get_day_of_week (start_date)
+        diff_to_weeks_first_day = g_date_time_get_day_of_week (dw->start_date)
                                 - (g_par.ical_weekstartday + 1);
         if (diff_to_weeks_first_day == 0) {
             /* we are on week start day */
-            gdt = g_date_time_ref (start_date);
+            gdt = g_date_time_ref (dw->start_date);
         }
         else {
-            gdt = g_date_time_add_days (start_date,
+            gdt = g_date_time_add_days (dw->start_date,
                                         -1 * diff_to_weeks_first_day);
         }
     }
     else
-        gdt = g_date_time_ref (start_date);
+        gdt = g_date_time_ref (dw->start_date);
 
     first_date = orage_gdatetime_to_i18_time (gdt, TRUE);
     gtk_button_set_label (GTK_BUTTON(dw->StartDate_button), first_date);
@@ -879,9 +943,8 @@ static void build_day_view_header (day_win *dw, GDateTime *start_date)
     g_free (first_date);
 }
 
-static void fill_hour (day_win *dw,
-                       const gint col,
-                       const gint row,
+static void fill_hour (OrageWeekWindow *dw,
+                       const gint col, const gint row,
                        const gchar *text)
 {
     GtkWidget *name, *ev;
@@ -894,7 +957,7 @@ static void fill_hour (day_win *dw,
     gtk_grid_attach (GTK_GRID(dw->dtable), ev, col, row + FIRST_HOUR_ROW, 1, 1);
 }
 
-static void fill_hour_arrow (day_win *dw, const gint col)
+static void fill_hour_arrow (OrageWeekWindow *dw, const gint col)
 {
     GtkWidget *arrow, *ev;
 
@@ -965,7 +1028,7 @@ static GtkWidget *build_scroll_window (void)
 
 /* row 1= day header buttons
  * row 2= full day events after the buttons */
-static void build_day_view_table (day_win *dw)
+static void build_day_view_table (OrageWeekWindow *dw)
 {
     gint days;   /* number of days to show */
     gint days_n1;
@@ -1042,7 +1105,7 @@ static void build_day_view_table (day_win *dw)
     fill_days(dw, days);
 }
 
-void refresh_day_win(day_win *dw)
+void orage_week_window_refresh (OrageWeekWindow *dw)
 {
     get_scroll_position(dw);
     gtk_widget_destroy(dw->scroll_win);
@@ -1053,36 +1116,136 @@ void refresh_day_win(day_win *dw)
     g_timeout_add(100, (GSourceFunc)scroll_position_timer, (gpointer)dw);
 }
 
-day_win *create_day_win (GDateTime *start_date)
+static void orage_week_window_constructed (GObject *object)
 {
-    day_win *dw;
+    OrageWeekWindow *self = (OrageWeekWindow *)object;
 
-    /* initialisation + main window + base vbox */
-    dw = g_new0(day_win, 1);
-    dw->a_day = g_date_time_new_now_local ();
-    dw->scroll_pos = -1; /* not set */
-    dw->accel_group = gtk_accel_group_new();
-
-    dw->Window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     if (g_par.dw_size_x || g_par.dw_size_y)
-        gtk_window_set_default_size(GTK_WINDOW(dw->Window)
-                , g_par.dw_size_x, g_par.dw_size_y);
+    {
+        gtk_window_set_default_size (GTK_WINDOW (self),
+                                     g_par.dw_size_x, g_par.dw_size_y);
+    }
+
     if (g_par.dw_pos_x || g_par.dw_pos_y)
-        gtk_window_move(GTK_WINDOW(dw->Window), g_par.dw_pos_x, g_par.dw_pos_y);
-    gtk_window_set_title(GTK_WINDOW(dw->Window), _("Orage - day view"));
-    gtk_window_add_accel_group(GTK_WINDOW(dw->Window), dw->accel_group);
+        gtk_window_move (GTK_WINDOW (self), g_par.dw_pos_x, g_par.dw_pos_y);
 
-    dw->Vbox = gtk_grid_new ();
-    gtk_container_add(GTK_CONTAINER(dw->Window), dw->Vbox);
-    g_signal_connect((gpointer)dw->Window, "delete_event"
-            , G_CALLBACK(on_Window_delete_event), dw);
+    build_menu (self);
+    build_toolbar (self);
+    build_day_view_header (self);
+    build_day_view_table (self);
+    gtk_widget_show_all (GTK_WIDGET (self));
+    set_scroll_position (self);
 
-    build_menu(dw);
-    build_toolbar(dw);
-    build_day_view_header(dw, start_date);
-    build_day_view_table(dw);
-    gtk_widget_show_all(dw->Window);
-    set_scroll_position(dw);
+    G_OBJECT_CLASS (orage_week_window_parent_class)->constructed (object);
+}
 
-    return(dw);
+static void orage_week_window_finalize (GObject *object)
+{
+    OrageWeekWindow *self = (OrageWeekWindow *)object;
+
+    g_list_free (self->apptw_list);
+    g_date_time_unref (self->a_day);
+    g_date_time_unref (self->start_date);
+
+    G_OBJECT_CLASS (orage_week_window_parent_class)->finalize (object);
+}
+
+static void orage_week_window_get_property (GObject *object,
+                                            const guint prop_id, GValue *value,
+                                            GParamSpec *pspec)
+{
+    const OrageWeekWindow *self = ORAGE_WEEK_WINDOW (object);
+
+    switch (prop_id)
+    {
+        case PROP_START_DATE:
+            g_value_set_boxed (value, self->start_date);
+            break;
+
+        default:
+            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+            break;
+    }
+}
+
+static void orage_week_window_set_property (GObject *object,
+                                            const guint prop_id,
+                                            const GValue *value,
+                                            GParamSpec *pspec)
+{
+    OrageWeekWindow *self = ORAGE_WEEK_WINDOW (object);
+
+    switch (prop_id)
+    {
+        case PROP_START_DATE:
+            g_assert (self->start_date == NULL);
+            self->start_date = (GDateTime *)g_value_dup_boxed (value);
+            break;
+
+        default:
+            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+    }
+}
+
+static void orage_week_window_class_init (OrageWeekWindowClass *klass)
+{
+    GObjectClass *object_class;
+
+    object_class = G_OBJECT_CLASS (klass);
+    object_class->constructed = orage_week_window_constructed;
+    object_class->finalize = orage_week_window_finalize;
+    object_class->get_property = orage_week_window_get_property;
+    object_class->set_property = orage_week_window_set_property;
+
+    properties[PROP_START_DATE] =
+            g_param_spec_boxed (ORAGE_WEEK_WINDOW_START_DATE_PROPERTY,
+                                ORAGE_WEEK_WINDOW_START_DATE_PROPERTY,
+                                "An GDateTime for week window start date",
+                                G_TYPE_DATE_TIME,
+                                G_PARAM_STATIC_STRINGS |
+                                G_PARAM_READWRITE |
+                                G_PARAM_CONSTRUCT_ONLY |
+                                G_PARAM_EXPLICIT_NOTIFY);
+
+    g_object_class_install_properties (object_class, N_PROPS, properties);
+}
+
+static void orage_week_window_init (OrageWeekWindow *self)
+{
+    self->scroll_pos = -1; /* not set */
+    self->accel_group = gtk_accel_group_new ();
+    self->a_day = g_date_time_new_now_local ();
+    self->Vbox = gtk_grid_new ();
+
+    gtk_window_set_title (GTK_WINDOW (self), _("Orage - day view"));
+    gtk_window_add_accel_group (GTK_WINDOW (self), self->accel_group);
+    gtk_container_add (GTK_CONTAINER (self), self->Vbox);
+}
+
+OrageWeekWindow *orage_week_window_new (GDateTime *date)
+{
+    OrageWeekWindow *window;
+
+    window = g_object_new (ORAGE_WEEK_WINDOW_TYPE,
+                           "type", GTK_WINDOW_TOPLEVEL,
+                           ORAGE_WEEK_WINDOW_START_DATE_PROPERTY, date,
+                           NULL);
+
+    return window;
+}
+
+void orage_week_window_build (GDateTime *date)
+{
+    OrageWeekWindow *window;
+
+    window = orage_week_window_new (date);
+
+    g_signal_connect (window, "delete_event",
+                      G_CALLBACK (on_Window_delete_event), window);
+}
+
+void orage_week_window_remove_appointment_window (OrageWeekWindow *self,
+                                                  gconstpointer apptw)
+{
+    self->apptw_list = g_list_remove (self->apptw_list, apptw);
 }
