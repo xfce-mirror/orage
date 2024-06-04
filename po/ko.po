@@ -598,11 +598,11 @@ msgstr "\tlibxfce4ui 활용: 아니요\n"
 
 #: src/orage-application.c:567
 msgid "Open today's tasks"
-msgstr ""
+msgstr "오늘 할 일 열기"
 
 #: src/orage-application.c:576
 msgid "Add new appointment"
-msgstr ""
+msgstr "새 약속 추가"
 
 #: src/orage-application.c:585
 msgid "Show preferences form"
@@ -630,7 +630,7 @@ msgstr "오라주 약속을 파일로 내보내기"
 
 #: src/orage-application.c:639
 msgid "Show version of Orage"
-msgstr ""
+msgstr "오라주 버전 표시"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -758,60 +758,60 @@ msgstr "저장하고 종료(_E)"
 
 #: src/orage-appointment-window.c:3230
 msgid "first"
-msgstr ""
+msgstr "첫번째"
 
 #: src/orage-appointment-window.c:3230
 msgid "second"
-msgstr ""
+msgstr "두번째"
 
 #: src/orage-appointment-window.c:3230
 msgid "third"
-msgstr ""
+msgstr "세번째"
 
 #: src/orage-appointment-window.c:3230
 msgid "fourth"
-msgstr ""
+msgstr "네번째"
 
 #: src/orage-appointment-window.c:3230
 msgid "last"
-msgstr ""
+msgstr "마지막"
 
 #: src/orage-appointment-window.c:3240
 msgid "Monday"
-msgstr ""
+msgstr "월요일"
 
 #: src/orage-appointment-window.c:3240
 msgid "Tuesday"
-msgstr ""
+msgstr "화요일"
 
 #: src/orage-appointment-window.c:3240
 msgid "Wednesday"
-msgstr ""
+msgstr "수요일"
 
 #: src/orage-appointment-window.c:3240
 msgid "Thursday"
-msgstr ""
+msgstr "목요일"
 
 #: src/orage-appointment-window.c:3240
 msgid "Friday"
-msgstr ""
+msgstr "금요일"
 
 #: src/orage-appointment-window.c:3241
 msgid "Saturday"
-msgstr ""
+msgstr "토요일"
 
 #: src/orage-appointment-window.c:3241
 msgid "Sunday"
-msgstr ""
+msgstr "일요일"
 
 #: src/orage-appointment-window.c:3254 src/orage-appointment-window.c:3287
 #: src/orage-appointment-window.c:3394 src/orage-appointment-window.c:3428
 msgid "Every"
-msgstr ""
+msgstr "매"
 
 #: src/orage-appointment-window.c:3259
 msgid "day(s)"
-msgstr ""
+msgstr "일"
 
 #: src/orage-appointment-window.c:3276
 msgid "Mon"
@@ -843,67 +843,67 @@ msgstr "일"
 
 #: src/orage-appointment-window.c:3294
 msgid "week(s) on:"
-msgstr ""
+msgstr "주: "
 
 #: src/orage-appointment-window.c:3330
 msgid "From the beginning of the month:"
-msgstr ""
+msgstr "월 중 시작일:"
 
 #: src/orage-appointment-window.c:3343
 msgid "From the end of the month:"
-msgstr ""
+msgstr "월 중 종료일:"
 
 #: src/orage-appointment-window.c:3356
 msgid "Every:"
-msgstr ""
+msgstr "매:"
 
 #: src/orage-appointment-window.c:3384
 msgid "January"
-msgstr ""
+msgstr "1월"
 
 #: src/orage-appointment-window.c:3384
 msgid "February"
-msgstr ""
+msgstr "2월"
 
 #: src/orage-appointment-window.c:3384
 msgid "March"
-msgstr ""
+msgstr "3월"
 
 #: src/orage-appointment-window.c:3384
 msgid "April"
-msgstr ""
+msgstr "4월"
 
 #: src/orage-appointment-window.c:3384
 msgid "May"
-msgstr ""
+msgstr "5월"
 
 #: src/orage-appointment-window.c:3385
 msgid "June"
-msgstr ""
+msgstr "6월"
 
 #: src/orage-appointment-window.c:3385
 msgid "July"
-msgstr ""
+msgstr "7월"
 
 #: src/orage-appointment-window.c:3385
 msgid "August"
-msgstr ""
+msgstr "8월"
 
 #: src/orage-appointment-window.c:3385
 msgid "September"
-msgstr ""
+msgstr "9월"
 
 #: src/orage-appointment-window.c:3385
 msgid "October"
-msgstr ""
+msgstr "10월"
 
 #: src/orage-appointment-window.c:3386
 msgid "November"
-msgstr ""
+msgstr "11월"
 
 #: src/orage-appointment-window.c:3386
 msgid "December"
-msgstr ""
+msgstr "12월"
 
 #. TRANSLATORS: this string is part of date line, for example
 #. * "second Thursday of August". In some languages ​​it is not necessary to
@@ -911,11 +911,11 @@ msgstr ""
 #. * the string "of", it can be replaced with an empty string.
 #: src/orage-appointment-window.c:3402
 msgid "of"
-msgstr ""
+msgstr "/"
 
 #: src/orage-appointment-window.c:3433
 msgid "hour(s)"
-msgstr ""
+msgstr "시간"
 
 #: src/orage-appointment-window.c:3469
 msgid "Repeat forever"
@@ -931,7 +931,7 @@ msgstr "번"
 
 #: src/orage-appointment-window.c:3488
 msgid "Repeat until"
-msgstr ""
+msgstr "다음 까지 반복: "
 
 #. completed (only for TODO)
 #: src/orage-appointment-window.c:3511 src/orage-appointment-window.c:3705
@@ -4093,7 +4093,7 @@ msgstr ""
 
 #: org.xfce.orage.appdata.xml.in:35
 msgid "Orage Team"
-msgstr ""
+msgstr "오라주 팀"
 
 #: org.xfce.orage.desktop.in:4
 msgid "Orage Calendar"
@@ -4109,8 +4109,8 @@ msgstr "달력"
 
 #: org.xfce.orage.desktop.in:17
 msgid "Show Today"
-msgstr ""
+msgstr "오늘 표시"
 
 #: org.xfce.orage.desktop.in:21
 msgid "New Appointment"
-msgstr ""
+msgstr "새 약속"
