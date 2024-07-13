@@ -10,10 +10,10 @@
 # Joel Barrios <darkshram@gmail.com>, 2022
 # Jaime Marquínez Ferrándiz, 2023
 # Nick Schermer <nick@xfce.org>, 2023
-# Adolfo Jayme-Barrientos, 2023
-# Casper, 2023
+# Adolfo Jayme Barrientos, 2023
 # Toni Estévez <toni.estevez@gmail.com>, 2024
 # Xfce Bot <transifex@xfce.org>, 2024
+# Casper, 2024
 # 
 #, fuzzy
 msgid ""
@@ -22,7 +22,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2024-04-04 00:51+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>, 2024\n"
+"Last-Translator: Casper, 2024\n"
 "Language-Team: Spanish (https://app.transifex.com/xfce/teams/16840/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -611,11 +611,11 @@ msgstr "\tUsando libxfce4ui: no\n"
 
 #: src/orage-application.c:567
 msgid "Open today's tasks"
-msgstr ""
+msgstr "Abrir las tareas de hoy"
 
 #: src/orage-application.c:576
 msgid "Add new appointment"
-msgstr ""
+msgstr "Añadir nueva cita"
 
 #: src/orage-application.c:585
 msgid "Show preferences form"
@@ -643,7 +643,7 @@ msgstr "Exportar citas de Orage a un archivo"
 
 #: src/orage-application.c:639
 msgid "Show version of Orage"
-msgstr ""
+msgstr "Mostrar la versión de Orage"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -4133,7 +4133,7 @@ msgstr ""
 
 #: org.xfce.orage.appdata.xml.in:35
 msgid "Orage Team"
-msgstr ""
+msgstr "Equipo de Orage"
 
 #: org.xfce.orage.desktop.in:4
 msgid "Orage Calendar"
@@ -4149,8 +4149,8 @@ msgstr "Calendario"
 
 #: org.xfce.orage.desktop.in:17
 msgid "Show Today"
-msgstr ""
+msgstr "Mostrar hoy"
 
 #: org.xfce.orage.desktop.in:21
 msgid "New Appointment"
-msgstr ""
+msgstr "Nueva cita"
