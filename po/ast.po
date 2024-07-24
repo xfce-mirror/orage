@@ -281,7 +281,7 @@ msgstr "LLECTURA/ESCRITURA"
 
 #: src/interface.c:673 src/orage-appointment-window.c:2359
 msgid "_Remove"
-msgstr ""
+msgstr "Desanicia_r"
 
 #: src/interface.c:693
 msgid "***** No foreign files *****"
