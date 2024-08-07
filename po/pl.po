@@ -1358,7 +1358,7 @@ msgstr "Okres:"
 
 #: src/orage-sync-edit-dialog.c:138
 msgid "minutes"
-msgstr "minut"
+msgstr "min"
 
 #: src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task"

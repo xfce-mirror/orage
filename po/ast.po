@@ -6,6 +6,7 @@
 # Translators:
 # enolp <enolp@softastur.org>, 2022
 # Xfce Bot <transifex@xfce.org>, 2024
+# Ḥavi Margallo, 2024
 # 
 #, fuzzy
 msgid ""
@@ -14,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2024-04-04 00:51+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>, 2024\n"
+"Last-Translator: Ḥavi Margallo, 2024\n"
 "Language-Team: Asturian (https://app.transifex.com/xfce/teams/16840/ast/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -84,7 +85,7 @@ msgstr "Escueye la data"
 
 #: src/day-view.c:468
 msgid "_OK"
-msgstr ""
+msgstr "_OK"
 
 #: src/day-view.c:596
 msgid "Unknown"
@@ -280,7 +281,7 @@ msgstr "LLECTURA/ESCRITURA"
 
 #: src/interface.c:673 src/orage-appointment-window.c:2359
 msgid "_Remove"
-msgstr ""
+msgstr "Desanicia_r"
 
 #: src/interface.c:693
 msgid "***** No foreign files *****"
@@ -331,7 +332,7 @@ msgstr "Lleer de ficheru:"
 #: src/orage-appointment-window.c:3960 src/parameters.c:435
 #: src/parameters.c:800 src/reminder.c:633
 msgid "_Open"
-msgstr ""
+msgstr "Abrir (_o)"
 
 #: src/interface.c:1057 src/interface.c:1103 src/interface.c:1277
 #: src/interface.c:1369 src/orage-appointment-window.c:4126
@@ -494,7 +495,7 @@ msgstr "Ficheru esternu:"
 #: src/interface.c:1453 src/orage-appointment-window.c:2435
 #: src/parameters.c:1411
 msgid "_Add"
-msgstr ""
+msgstr "_Añedir"
 
 #: src/interface.c:1468
 msgid "Visible name:"
@@ -4028,7 +4029,7 @@ msgstr "Preferencies"
 
 #: src/tray_icon.c:429
 msgid "Quit"
-msgstr ""
+msgstr "Colar"
 
 #: plugin/org.xfce.orage-settings.desktop.in:4
 msgid "Orage preferences"

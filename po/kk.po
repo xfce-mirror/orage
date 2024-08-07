@@ -5,8 +5,8 @@
 # 
 # Translators:
 # Nick Schermer <nick@xfce.org>, 2022
-# Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2023
 # Xfce Bot <transifex@xfce.org>, 2024
+# Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2024
 # 
 #, fuzzy
 msgid ""
@@ -15,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2024-04-04 00:51+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>, 2024\n"
+"Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2024\n"
 "Language-Team: Kazakh (https://app.transifex.com/xfce/teams/16840/kk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -49,11 +49,11 @@ msgstr "Жаңа"
 
 #: src/day-view.c:391
 msgid "Back one week"
-msgstr ""
+msgstr "Бір аптаға артқа"
 
 #: src/day-view.c:393
 msgid "Back one day"
-msgstr ""
+msgstr "Бір күнге артқа"
 
 #: src/day-view.c:395 src/day-view.c:468 src/event-list.c:1080
 #: src/event-list.c:1234 src/functions.c:145
@@ -64,11 +64,11 @@ msgstr "Бүгін"
 
 #: src/day-view.c:397
 msgid "Forward one day"
-msgstr ""
+msgstr "Бір күнге алға"
 
 #: src/day-view.c:399
 msgid "Forward one week"
-msgstr ""
+msgstr "Бір аптаға алға"
 
 #: src/day-view.c:404 src/event-list.c:1241
 msgid "Refresh"
@@ -108,7 +108,7 @@ msgstr ""
 #. date only appointment
 #: src/event-list.c:186
 msgid "All day"
-msgstr ""
+msgstr "Толық күн"
 
 #: src/event-list.c:617 src/event-list.c:1442
 msgid "Time"
@@ -256,7 +256,7 @@ msgstr "Файлды таңдаңыз..."
 
 #: src/interface.c:269
 msgid "Calendar files"
-msgstr ""
+msgstr "Күнтізбе файлдары"
 
 #: src/interface.c:275 src/orage-appointment-window.c:948
 msgid "All Files"
