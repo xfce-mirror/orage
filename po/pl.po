@@ -203,7 +203,7 @@ msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed."
 msgstr ""
-"Zaznacz to, jeśli chcesz zobaczyć także stare wydarzenia. Można to wybrać tylko po włączeniu opcji 'tylko pierwsze powtórzenie', aby uniknąć bardzo długich list.\n"
+"Zaznacz to, jeśli chcesz zobaczyć także stare wydarzenia. Można to wybrać tylko po włączeniu opcji „tylko pierwsze powtórzenie”, aby uniknąć bardzo długich list.\n"
 "Zauważ, że dodatkowy wybór dni nadal definiuje, czy są wyświetlane nowsze spotkania."
 
 #: src/event-list.c:1339 src/orage-appointment-window.c:3594
@@ -542,7 +542,7 @@ msgstr "Orage"
 #: src/orage-about.c:44 org.xfce.orage.appdata.xml.in:8
 msgid "Orage is a time-managing application for the Xfce desktop environment"
 msgstr ""
-"Orage to aplikacja do zarządzania czasem dla środowiska graficznego Xfce"
+"Orage to program do zarządzania czasem dla środowiska graficznego Xfce"
 
 #: src/orage-about.c:51
 msgid "translator-credits"
@@ -1209,7 +1209,7 @@ msgstr "0 = domyślny czas wygaśnięcia"
 
 #: src/orage-appointment-window.c:4064
 msgid "seconds"
-msgstr "sekund"
+msgstr "sek."
 
 #. **** Procedure Alarm ****
 #: src/orage-appointment-window.c:4075
