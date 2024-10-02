@@ -1,7 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Erkki Moorits
- * Copyright (c) 2005-2011 Juha Kautto  (juha at xfce.org)
- * Copyright (c) 2004-2006 Mickael Graf (korbinus at xfce.org)
+ * Copyright (c) 2023 Erkki Moorits
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,15 +18,20 @@
  *     Boston, MA 02110-1301 USA
  */
 
-#ifndef __TRAY_ICON_H__
-#define __TRAY_ICON_H__
+#ifndef ORAGE_APPINDICATOR_H
+#define ORAGE_APPINDICATOR_H 1
 
 #include <gtk/gtk.h>
+#include <glib.h>
 
-GtkStatusIcon *orage_create_trayicon (void);
-void orage_refresh_trayicon (void);
-void orage_status_icon_set_title (void *icon, const gchar *title);
-void orage_status_icon_set_description (void *icon, const gchar *desc);
-void orage_status_icon_cleanup (void);
+G_BEGIN_DECLS
 
-#endif /* !__TRAY_ICON_H__ */
+void *orage_appindicator_create (void);
+void orage_appindicator_refresh (void);
+void orage_appindicator_set_visible (void *tray_icon, gboolean show_systray);
+void orage_appindicator_set_title (void *appindicator, const gchar *title);
+void orage_appindicator_set_description (void *appindicator, const gchar *desc);
+
+G_END_DECLS
+
+#endif
