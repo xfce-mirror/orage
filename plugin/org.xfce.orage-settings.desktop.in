@@ -10,3 +10,4 @@ Categories=X-XFCE;Settings;DesktopSettings;X-XfceSettingsDialog;
 OnlyShowIn=XFCE;
 GenericName=Orage Calendar Preferences
 X-XfceSettingsName=Calendar
+Keywords=calendar;date;schedule;appointment;time;
