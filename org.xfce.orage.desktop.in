@@ -11,6 +11,7 @@ Type=Application
 Categories=X-XFCE;Office;Calendar;GTK;
 GenericName=Calendar
 Actions=Today;NewAppointment;Preferences;
+Keywords=calendar;date;schedule;appointment;time;
 
 [Desktop Action Today]
 Name=Show Today
