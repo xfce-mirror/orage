@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-04-04 00:51+0200\n"
+"POT-Creation-Date: 2024-10-16 12:50+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Moo, 2024\n"
 "Language-Team: Lithuanian (https://app.transifex.com/xfce/teams/16840/lt/)\n"
@@ -22,88 +22,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: lt\n"
 "Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);\n"
-
-#. ********* File menu *********
-#. File menu
-#. File menu stuff
-#. File menu
-#: src/day-view.c:289 src/event-list.c:1135 src/interface.c:860
-#: src/orage-appointment-window.c:2907 src/orage-window.c:279
-msgid "_File"
-msgstr "_Failas"
-
-#. ********* View menu *********
-#. View menu
-#: src/day-view.c:299 src/event-list.c:1158 src/orage-window.c:310
-msgid "_View"
-msgstr "R_odinys"
-
-#. ********* Go menu   *********
-#: src/day-view.c:313 src/event-list.c:1177
-msgid "_Go"
-msgstr "_Eiti"
-
-#: src/day-view.c:386 src/event-list.c:1223
-msgid "New"
-msgstr "Nauja"
-
-#: src/day-view.c:391
-msgid "Back one week"
-msgstr "Viena savaite atgal"
-
-#: src/day-view.c:393
-msgid "Back one day"
-msgstr "Viena diena atgal"
-
-#: src/day-view.c:395 src/day-view.c:468 src/event-list.c:1080
-#: src/event-list.c:1234 src/functions.c:145
-#: src/orage-appointment-window.c:1734 src/orage-appointment-window.c:1749
-#: src/tray_icon.c:407
-msgid "Today"
-msgstr "Šiandien"
-
-#: src/day-view.c:397
-msgid "Forward one day"
-msgstr "Viena diena pirmyn"
-
-#: src/day-view.c:399
-msgid "Forward one week"
-msgstr "Viena savaite pirmyn"
-
-#: src/day-view.c:404 src/event-list.c:1241
-msgid "Refresh"
-msgstr "Atnaujinti"
-
-#: src/day-view.c:409 src/event-list.c:1248 src/interface.c:879
-msgid "Close"
-msgstr "Užverti"
-
-#: src/day-view.c:466 src/event-list.c:1078 src/functions.c:143
-#: src/orage-appointment-window.c:1732 src/orage-appointment-window.c:1747
-msgid "Pick the date"
-msgstr "Pasirinkite datą"
-
-#: src/day-view.c:468
-msgid "_OK"
-msgstr "_Gerai"
-
-#: src/day-view.c:596
-msgid "Unknown"
-msgstr "Nežinoma"
-
-#. start time
-#: src/day-view.c:833 src/orage-appointment-window.c:3506
-#: src/orage-appointment-window.c:3635
-msgid "Start"
-msgstr "Pradžia"
-
-#: src/day-view.c:841
-msgid "Number of days to show"
-msgstr "Kiek dienų rodyti"
-
-#: src/day-view.c:1072
-msgid "Orage - day view"
-msgstr "Orage - dienos rodinys"
 
 #. date only appointment
 #: src/event-list.c:186
@@ -145,9 +63,47 @@ msgstr "Ne, atšaukti šalinimą"
 msgid "Yes, remove them"
 msgstr "Taip, pašalinti juos"
 
+#: src/event-list.c:1078 src/functions.c:143
+#: src/orage-appointment-window.c:1732 src/orage-appointment-window.c:1747
+#: src/orage-week-window.c:530
+msgid "Pick the date"
+msgstr "Pasirinkite datą"
+
+#: src/event-list.c:1080 src/event-list.c:1234 src/functions.c:145
+#: src/orage-appointment-window.c:1734 src/orage-appointment-window.c:1749
+#: src/orage-week-window.c:459 src/orage-week-window.c:532 src/tray_icon.c:407
+msgid "Today"
+msgstr "Šiandien"
+
+#. ********* File menu *********
+#. File menu
+#. File menu stuff
+#. ********* File menu *********
+#. File menu
+#: src/event-list.c:1135 src/interface.c:860
+#: src/orage-appointment-window.c:2907 src/orage-week-window.c:353
+#: src/orage-window.c:279
+msgid "_File"
+msgstr "_Failas"
+
 #: src/event-list.c:1141 src/orage-appointment-window.c:2926
 msgid "D_uplicate"
 msgstr "D_ubliuoti"
+
+#. ********* View menu *********
+#. View menu
+#: src/event-list.c:1158 src/orage-week-window.c:363 src/orage-window.c:310
+msgid "_View"
+msgstr "R_odinys"
+
+#. ********* Go menu   *********
+#: src/event-list.c:1177 src/orage-week-window.c:377
+msgid "_Go"
+msgstr "_Eiti"
+
+#: src/event-list.c:1223 src/orage-week-window.c:450
+msgid "New"
+msgstr "Nauja"
 
 #: src/event-list.c:1225 src/orage-appointment-window.c:3551
 msgid "Duplicate"
@@ -165,9 +121,17 @@ msgstr "Atgal"
 msgid "Forward"
 msgstr "Pirmyn"
 
+#: src/event-list.c:1241 src/orage-week-window.c:468
+msgid "Refresh"
+msgstr "Atnaujinti"
+
 #: src/event-list.c:1243
 msgid "Find"
 msgstr "Ieškoti"
+
+#: src/event-list.c:1248 src/interface.c:879 src/orage-week-window.c:473
+msgid "Close"
+msgstr "Užverti"
 
 #: src/event-list.c:1250
 msgid "Dayview"
@@ -536,7 +500,7 @@ msgstr ""
 msgid "Exchange data - Orage"
 msgstr "Duomenų keitimasis - Orage"
 
-#: src/main.c:50 src/orage-appointment-window.c:711
+#: src/main.c:53 src/orage-appointment-window.c:711
 #: org.xfce.orage.appdata.xml.in:7
 msgid "Orage"
 msgstr "Orage"
@@ -598,39 +562,39 @@ msgstr "\tNaudojama libxfce4ui: taip\n"
 msgid "\tUsing libxfce4ui: no\n"
 msgstr "\tNaudojama libxfce4ui: ne\n"
 
-#: src/orage-application.c:567
+#: src/orage-application.c:565
 msgid "Open today's tasks"
 msgstr "Atverti šiandienos užduotis"
 
-#: src/orage-application.c:576
+#: src/orage-application.c:574
 msgid "Add new appointment"
 msgstr "Pridėti naują paskyrimą"
 
-#: src/orage-application.c:585
+#: src/orage-application.c:583
 msgid "Show preferences form"
 msgstr "Rodyti nuostatų formą"
 
-#: src/orage-application.c:594
+#: src/orage-application.c:592
 msgid "Make Orage visible/unvisible"
 msgstr "Padaryto Orage matoma/nematoma"
 
-#: src/orage-application.c:603
+#: src/orage-application.c:601
 msgid "Add a foreign file"
 msgstr "Pridėti svetimą failą"
 
-#: src/orage-application.c:612
+#: src/orage-application.c:610
 msgid "Remove a foreign file"
 msgstr "Šalinti svetimą failą"
 
-#: src/orage-application.c:621
+#: src/orage-application.c:619
 msgid "Import appointments from file to Orage"
 msgstr "Importuoti paskyrimus iš failo į Orage"
 
-#: src/orage-application.c:630
+#: src/orage-application.c:628
 msgid "Export appointments from Orage to file"
 msgstr "Eksportuoti paskyrimus iš Orage į failą"
 
-#: src/orage-application.c:639
+#: src/orage-application.c:637
 msgid "Show version of Orage"
 msgstr "Rodyti Orage versiją"
 
@@ -938,6 +902,12 @@ msgstr "kartą(-us)"
 #: src/orage-appointment-window.c:3488
 msgid "Repeat until"
 msgstr "Kartoti iki"
+
+#. start time
+#: src/orage-appointment-window.c:3506 src/orage-appointment-window.c:3635
+#: src/orage-week-window.c:897
+msgid "Start"
+msgstr "Pradžia"
 
 #. completed (only for TODO)
 #: src/orage-appointment-window.c:3511 src/orage-appointment-window.c:3705
@@ -1378,6 +1348,38 @@ msgstr "Sinchronizavimo laikotarpis, minutėmis"
 msgid "_Close"
 msgstr "_Užverti"
 
+#: src/orage-week-window.c:455
+msgid "Back one week"
+msgstr "Viena savaite atgal"
+
+#: src/orage-week-window.c:457
+msgid "Back one day"
+msgstr "Viena diena atgal"
+
+#: src/orage-week-window.c:461
+msgid "Forward one day"
+msgstr "Viena diena pirmyn"
+
+#: src/orage-week-window.c:463
+msgid "Forward one week"
+msgstr "Viena savaite pirmyn"
+
+#: src/orage-week-window.c:532
+msgid "_OK"
+msgstr "_Gerai"
+
+#: src/orage-week-window.c:660
+msgid "Unknown"
+msgstr "Nežinoma"
+
+#: src/orage-week-window.c:905
+msgid "Number of days to show"
+msgstr "Kiek dienų rodyti"
+
+#: src/orage-week-window.c:1220
+msgid "Orage - day view"
+msgstr "Orage - dienos rodinys"
+
 #: src/orage-window.c:294
 msgid "_Exchange data"
 msgstr "_Keistis duomenimis"
@@ -1701,7 +1703,7 @@ msgstr "Sinchronizavimo nustatymai"
 msgid "Synchronization sources"
 msgstr "Sinchronizavimo šaltiniai"
 
-#: src/parameters.c:1431 org.xfce.orage.desktop.in:25
+#: src/parameters.c:1431 org.xfce.orage.desktop.in:26
 msgid "Orage Preferences"
 msgstr "Orage nuostatos"
 
@@ -4090,6 +4092,11 @@ msgstr "Xfce4 kalendoriaus programos (Orage) nustatymai"
 msgid "Orage Calendar Preferences"
 msgstr "Orage kalendoriaus nuostatos"
 
+#: plugin/org.xfce.orage-settings.desktop.in:14 org.xfce.orage.desktop.in:15
+msgid "calendar;date;schedule;appointment;time;"
+msgstr ""
+"kalendorius;data;tvarkaraštis;darbotvarkė;tvarkarastis;darbotvarke;planas;grafikas;paskyrimas;susitikimas;laikas;"
+
 #: org.xfce.orage.appdata.xml.in:11
 msgid ""
 "Orage aims to be a fast and easy to use graphical calendar. It uses portable"
@@ -4129,10 +4136,10 @@ msgstr "Darbalaukio kalendorius"
 msgid "Calendar"
 msgstr "Kalendorius"
 
-#: org.xfce.orage.desktop.in:17
+#: org.xfce.orage.desktop.in:18
 msgid "Show Today"
 msgstr "Rodyti šiandieną"
 
-#: org.xfce.orage.desktop.in:21
+#: org.xfce.orage.desktop.in:22
 msgid "New Appointment"
 msgstr "Naujas paskyrimas"
