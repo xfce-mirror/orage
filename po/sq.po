@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-04-04 00:51+0200\n"
+"POT-Creation-Date: 2024-10-16 12:50+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>, 2024\n"
 "Language-Team: Albanian (https://app.transifex.com/xfce/teams/16840/sq/)\n"
@@ -21,88 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: sq\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#. ********* File menu *********
-#. File menu
-#. File menu stuff
-#. File menu
-#: src/day-view.c:289 src/event-list.c:1135 src/interface.c:860
-#: src/orage-appointment-window.c:2907 src/orage-window.c:279
-msgid "_File"
-msgstr "_Kartelë"
-
-#. ********* View menu *********
-#. View menu
-#: src/day-view.c:299 src/event-list.c:1158 src/orage-window.c:310
-msgid "_View"
-msgstr "_Parje"
-
-#. ********* Go menu   *********
-#: src/day-view.c:313 src/event-list.c:1177
-msgid "_Go"
-msgstr "_Shko"
-
-#: src/day-view.c:386 src/event-list.c:1223
-msgid "New"
-msgstr "E re"
-
-#: src/day-view.c:391
-msgid "Back one week"
-msgstr "Mbrapsht një javë"
-
-#: src/day-view.c:393
-msgid "Back one day"
-msgstr "Mbrapsht një ditë"
-
-#: src/day-view.c:395 src/day-view.c:468 src/event-list.c:1080
-#: src/event-list.c:1234 src/functions.c:145
-#: src/orage-appointment-window.c:1734 src/orage-appointment-window.c:1749
-#: src/tray_icon.c:407
-msgid "Today"
-msgstr "Sot"
-
-#: src/day-view.c:397
-msgid "Forward one day"
-msgstr "Përpara një ditë"
-
-#: src/day-view.c:399
-msgid "Forward one week"
-msgstr "Përpara një javë"
-
-#: src/day-view.c:404 src/event-list.c:1241
-msgid "Refresh"
-msgstr "Rifreskoje"
-
-#: src/day-view.c:409 src/event-list.c:1248 src/interface.c:879
-msgid "Close"
-msgstr "Mbylle"
-
-#: src/day-view.c:466 src/event-list.c:1078 src/functions.c:143
-#: src/orage-appointment-window.c:1732 src/orage-appointment-window.c:1747
-msgid "Pick the date"
-msgstr "Zgjidhni një datë"
-
-#: src/day-view.c:468
-msgid "_OK"
-msgstr "_OK"
-
-#: src/day-view.c:596
-msgid "Unknown"
-msgstr "E panjohur"
-
-#. start time
-#: src/day-view.c:833 src/orage-appointment-window.c:3506
-#: src/orage-appointment-window.c:3635
-msgid "Start"
-msgstr "Fillim"
-
-#: src/day-view.c:841
-msgid "Number of days to show"
-msgstr "Numër ditësh për shfaqje"
-
-#: src/day-view.c:1072
-msgid "Orage - day view"
-msgstr "Orage - pamje ditësh"
 
 #. date only appointment
 #: src/event-list.c:186
@@ -144,9 +62,47 @@ msgstr "Jo, anuloje heqjen"
 msgid "Yes, remove them"
 msgstr "Po, hiqi"
 
+#: src/event-list.c:1078 src/functions.c:143
+#: src/orage-appointment-window.c:1732 src/orage-appointment-window.c:1747
+#: src/orage-week-window.c:530
+msgid "Pick the date"
+msgstr "Zgjidhni një datë"
+
+#: src/event-list.c:1080 src/event-list.c:1234 src/functions.c:145
+#: src/orage-appointment-window.c:1734 src/orage-appointment-window.c:1749
+#: src/orage-week-window.c:459 src/orage-week-window.c:532 src/tray_icon.c:407
+msgid "Today"
+msgstr "Sot"
+
+#. ********* File menu *********
+#. File menu
+#. File menu stuff
+#. ********* File menu *********
+#. File menu
+#: src/event-list.c:1135 src/interface.c:860
+#: src/orage-appointment-window.c:2907 src/orage-week-window.c:353
+#: src/orage-window.c:279
+msgid "_File"
+msgstr "_Kartelë"
+
 #: src/event-list.c:1141 src/orage-appointment-window.c:2926
 msgid "D_uplicate"
 msgstr "_Përsëdyte"
+
+#. ********* View menu *********
+#. View menu
+#: src/event-list.c:1158 src/orage-week-window.c:363 src/orage-window.c:310
+msgid "_View"
+msgstr "_Parje"
+
+#. ********* Go menu   *********
+#: src/event-list.c:1177 src/orage-week-window.c:377
+msgid "_Go"
+msgstr "_Shko"
+
+#: src/event-list.c:1223 src/orage-week-window.c:450
+msgid "New"
+msgstr "E re"
 
 #: src/event-list.c:1225 src/orage-appointment-window.c:3551
 msgid "Duplicate"
@@ -164,9 +120,17 @@ msgstr "Prapa"
 msgid "Forward"
 msgstr "Përpara"
 
+#: src/event-list.c:1241 src/orage-week-window.c:468
+msgid "Refresh"
+msgstr "Rifreskoje"
+
 #: src/event-list.c:1243
 msgid "Find"
 msgstr "Gjej"
+
+#: src/event-list.c:1248 src/interface.c:879 src/orage-week-window.c:473
+msgid "Close"
+msgstr "Mbylle"
 
 #: src/event-list.c:1250
 msgid "Dayview"
@@ -535,7 +499,7 @@ msgstr ""
 msgid "Exchange data - Orage"
 msgstr "Shkëmbeni të dhëna - Orage"
 
-#: src/main.c:50 src/orage-appointment-window.c:711
+#: src/main.c:53 src/orage-appointment-window.c:711
 #: org.xfce.orage.appdata.xml.in:7
 msgid "Orage"
 msgstr "Orage"
@@ -598,39 +562,39 @@ msgstr "\tMe përdorim të libxfce4ui: po\n"
 msgid "\tUsing libxfce4ui: no\n"
 msgstr "\tMe përdorim të libxfce4ui: jo\n"
 
-#: src/orage-application.c:567
+#: src/orage-application.c:565
 msgid "Open today's tasks"
 msgstr "Hap punët për sot"
 
-#: src/orage-application.c:576
+#: src/orage-application.c:574
 msgid "Add new appointment"
 msgstr "Shtoni takim të ri"
 
-#: src/orage-application.c:585
+#: src/orage-application.c:583
 msgid "Show preferences form"
 msgstr "Shfaq formular parapëlqimesh"
 
-#: src/orage-application.c:594
+#: src/orage-application.c:592
 msgid "Make Orage visible/unvisible"
 msgstr "Bëje Orage-in të dukshëm/të padukshëm"
 
-#: src/orage-application.c:603
+#: src/orage-application.c:601
 msgid "Add a foreign file"
 msgstr "Shtoni një kartelë të huaj"
 
-#: src/orage-application.c:612
+#: src/orage-application.c:610
 msgid "Remove a foreign file"
 msgstr "Hiqni një kartelë të huaj"
 
-#: src/orage-application.c:621
+#: src/orage-application.c:619
 msgid "Import appointments from file to Orage"
 msgstr "Importoni takime nga kartelë në Orage"
 
-#: src/orage-application.c:630
+#: src/orage-application.c:628
 msgid "Export appointments from Orage to file"
 msgstr "Eksportoni takime nga Orage-i në kartelë"
 
-#: src/orage-application.c:639
+#: src/orage-application.c:637
 msgid "Show version of Orage"
 msgstr "Shfaq version Orage-i"
 
@@ -938,6 +902,12 @@ msgstr "herë"
 #: src/orage-appointment-window.c:3488
 msgid "Repeat until"
 msgstr "Përsërite deri "
+
+#. start time
+#: src/orage-appointment-window.c:3506 src/orage-appointment-window.c:3635
+#: src/orage-week-window.c:897
+msgid "Start"
+msgstr "Fillim"
 
 #. completed (only for TODO)
 #: src/orage-appointment-window.c:3511 src/orage-appointment-window.c:3705
@@ -1378,6 +1348,38 @@ msgstr "Periudhë njëkohësimi, në minuta"
 msgid "_Close"
 msgstr "_Mbylle"
 
+#: src/orage-week-window.c:455
+msgid "Back one week"
+msgstr "Mbrapsht një javë"
+
+#: src/orage-week-window.c:457
+msgid "Back one day"
+msgstr "Mbrapsht një ditë"
+
+#: src/orage-week-window.c:461
+msgid "Forward one day"
+msgstr "Përpara një ditë"
+
+#: src/orage-week-window.c:463
+msgid "Forward one week"
+msgstr "Përpara një javë"
+
+#: src/orage-week-window.c:532
+msgid "_OK"
+msgstr "_OK"
+
+#: src/orage-week-window.c:660
+msgid "Unknown"
+msgstr "E panjohur"
+
+#: src/orage-week-window.c:905
+msgid "Number of days to show"
+msgstr "Numër ditësh për shfaqje"
+
+#: src/orage-week-window.c:1220
+msgid "Orage - day view"
+msgstr "Orage - pamje ditësh"
+
 #: src/orage-window.c:294
 msgid "_Exchange data"
 msgstr "_Shkëmbe të dhëna"
@@ -1704,7 +1706,7 @@ msgstr "Rregullime njëkohësimi"
 msgid "Synchronization sources"
 msgstr "Burime njëkohësimi"
 
-#: src/parameters.c:1431 org.xfce.orage.desktop.in:25
+#: src/parameters.c:1431 org.xfce.orage.desktop.in:26
 msgid "Orage Preferences"
 msgstr "Parapëlqime për Orage-in"
 
@@ -4093,6 +4095,10 @@ msgstr "Rregullime për Aplikacionin Kalendat të Xfce-së (Orage)"
 msgid "Orage Calendar Preferences"
 msgstr "Parapëlqime Kalendari Orage"
 
+#: plugin/org.xfce.orage-settings.desktop.in:14 org.xfce.orage.desktop.in:15
+msgid "calendar;date;schedule;appointment;time;"
+msgstr "kalendar;datë;planifikim;takim;kohë;"
+
 #: org.xfce.orage.appdata.xml.in:11
 msgid ""
 "Orage aims to be a fast and easy to use graphical calendar. It uses portable"
@@ -4131,10 +4137,10 @@ msgstr "Kalendar desktopi"
 msgid "Calendar"
 msgstr "Kalendar"
 
-#: org.xfce.orage.desktop.in:17
+#: org.xfce.orage.desktop.in:18
 msgid "Show Today"
 msgstr "Shfaq të Sotmen"
 
-#: org.xfce.orage.desktop.in:21
+#: org.xfce.orage.desktop.in:22
 msgid "New Appointment"
 msgstr "Takim i Ri"
