@@ -10,7 +10,7 @@
 # Joel Barrios <darkshram@gmail.com>, 2022
 # Jaime Marquínez Ferrándiz, 2023
 # Nick Schermer <nick@xfce.org>, 2023
-# Adolfo Jayme Barrientos, 2023
+# Adolfo Jayme-Barrientos, 2023
 # Toni Estévez <toni.estevez@gmail.com>, 2024
 # Xfce Bot <transifex@xfce.org>, 2024
 # Casper, 2024
@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-04-04 00:51+0200\n"
+"POT-Creation-Date: 2024-10-16 12:50+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Casper, 2024\n"
 "Language-Team: Spanish (https://app.transifex.com/xfce/teams/16840/es/)\n"
@@ -29,88 +29,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: es\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
-
-#. ********* File menu *********
-#. File menu
-#. File menu stuff
-#. File menu
-#: src/day-view.c:289 src/event-list.c:1135 src/interface.c:860
-#: src/orage-appointment-window.c:2907 src/orage-window.c:279
-msgid "_File"
-msgstr "_Archivo"
-
-#. ********* View menu *********
-#. View menu
-#: src/day-view.c:299 src/event-list.c:1158 src/orage-window.c:310
-msgid "_View"
-msgstr "_Ver"
-
-#. ********* Go menu   *********
-#: src/day-view.c:313 src/event-list.c:1177
-msgid "_Go"
-msgstr "_Ir"
-
-#: src/day-view.c:386 src/event-list.c:1223
-msgid "New"
-msgstr "Nuevo"
-
-#: src/day-view.c:391
-msgid "Back one week"
-msgstr "Una semana atrás"
-
-#: src/day-view.c:393
-msgid "Back one day"
-msgstr "Un día atrás"
-
-#: src/day-view.c:395 src/day-view.c:468 src/event-list.c:1080
-#: src/event-list.c:1234 src/functions.c:145
-#: src/orage-appointment-window.c:1734 src/orage-appointment-window.c:1749
-#: src/tray_icon.c:407
-msgid "Today"
-msgstr "Hoy"
-
-#: src/day-view.c:397
-msgid "Forward one day"
-msgstr "Avance un día"
-
-#: src/day-view.c:399
-msgid "Forward one week"
-msgstr "Avance una semana"
-
-#: src/day-view.c:404 src/event-list.c:1241
-msgid "Refresh"
-msgstr "Refrescar"
-
-#: src/day-view.c:409 src/event-list.c:1248 src/interface.c:879
-msgid "Close"
-msgstr "Cerrar"
-
-#: src/day-view.c:466 src/event-list.c:1078 src/functions.c:143
-#: src/orage-appointment-window.c:1732 src/orage-appointment-window.c:1747
-msgid "Pick the date"
-msgstr "Escoja la fecha"
-
-#: src/day-view.c:468
-msgid "_OK"
-msgstr "_Aceptar"
-
-#: src/day-view.c:596
-msgid "Unknown"
-msgstr "Desconocido"
-
-#. start time
-#: src/day-view.c:833 src/orage-appointment-window.c:3506
-#: src/orage-appointment-window.c:3635
-msgid "Start"
-msgstr "Inicio"
-
-#: src/day-view.c:841
-msgid "Number of days to show"
-msgstr "Número de días que se mostrará"
-
-#: src/day-view.c:1072
-msgid "Orage - day view"
-msgstr "Orage - Vista de día"
 
 #. date only appointment
 #: src/event-list.c:186
@@ -152,9 +70,47 @@ msgstr "No, cancele la remoción"
 msgid "Yes, remove them"
 msgstr "Sí, eliminarlas también"
 
+#: src/event-list.c:1078 src/functions.c:143
+#: src/orage-appointment-window.c:1732 src/orage-appointment-window.c:1747
+#: src/orage-week-window.c:530
+msgid "Pick the date"
+msgstr "Escoja la fecha"
+
+#: src/event-list.c:1080 src/event-list.c:1234 src/functions.c:145
+#: src/orage-appointment-window.c:1734 src/orage-appointment-window.c:1749
+#: src/orage-week-window.c:459 src/orage-week-window.c:532 src/tray_icon.c:407
+msgid "Today"
+msgstr "Hoy"
+
+#. ********* File menu *********
+#. File menu
+#. File menu stuff
+#. ********* File menu *********
+#. File menu
+#: src/event-list.c:1135 src/interface.c:860
+#: src/orage-appointment-window.c:2907 src/orage-week-window.c:353
+#: src/orage-window.c:279
+msgid "_File"
+msgstr "_Archivo"
+
 #: src/event-list.c:1141 src/orage-appointment-window.c:2926
 msgid "D_uplicate"
 msgstr "D_uplicar"
+
+#. ********* View menu *********
+#. View menu
+#: src/event-list.c:1158 src/orage-week-window.c:363 src/orage-window.c:310
+msgid "_View"
+msgstr "_Ver"
+
+#. ********* Go menu   *********
+#: src/event-list.c:1177 src/orage-week-window.c:377
+msgid "_Go"
+msgstr "_Ir"
+
+#: src/event-list.c:1223 src/orage-week-window.c:450
+msgid "New"
+msgstr "Nuevo"
 
 #: src/event-list.c:1225 src/orage-appointment-window.c:3551
 msgid "Duplicate"
@@ -172,9 +128,17 @@ msgstr "Atrás"
 msgid "Forward"
 msgstr "Adelante"
 
+#: src/event-list.c:1241 src/orage-week-window.c:468
+msgid "Refresh"
+msgstr "Refrescar"
+
 #: src/event-list.c:1243
 msgid "Find"
 msgstr "Buscar"
+
+#: src/event-list.c:1248 src/interface.c:879 src/orage-week-window.c:473
+msgid "Close"
+msgstr "Cerrar"
 
 #: src/event-list.c:1250
 msgid "Dayview"
@@ -545,7 +509,7 @@ msgstr "Este nombre interno será mostrado en lugar del nombre del archivo."
 msgid "Exchange data - Orage"
 msgstr "Intercambio de datos - Orage"
 
-#: src/main.c:50 src/orage-appointment-window.c:711
+#: src/main.c:53 src/orage-appointment-window.c:711
 #: org.xfce.orage.appdata.xml.in:7
 msgid "Orage"
 msgstr "Orage"
@@ -609,39 +573,39 @@ msgstr "\tUsando libxfce4ui: sí\n"
 msgid "\tUsing libxfce4ui: no\n"
 msgstr "\tUsando libxfce4ui: no\n"
 
-#: src/orage-application.c:567
+#: src/orage-application.c:565
 msgid "Open today's tasks"
 msgstr "Abrir las tareas de hoy"
 
-#: src/orage-application.c:576
+#: src/orage-application.c:574
 msgid "Add new appointment"
 msgstr "Añadir nueva cita"
 
-#: src/orage-application.c:585
+#: src/orage-application.c:583
 msgid "Show preferences form"
 msgstr "Mostrar el formulario de preferencias"
 
-#: src/orage-application.c:594
+#: src/orage-application.c:592
 msgid "Make Orage visible/unvisible"
 msgstr "Mostrar/ocultar Orage"
 
-#: src/orage-application.c:603
+#: src/orage-application.c:601
 msgid "Add a foreign file"
 msgstr "Añadir un archivo externo"
 
-#: src/orage-application.c:612
+#: src/orage-application.c:610
 msgid "Remove a foreign file"
 msgstr "Eliminar un archivo externo"
 
-#: src/orage-application.c:621
+#: src/orage-application.c:619
 msgid "Import appointments from file to Orage"
 msgstr "Importar citas desde un archivo a Orage"
 
-#: src/orage-application.c:630
+#: src/orage-application.c:628
 msgid "Export appointments from Orage to file"
 msgstr "Exportar citas de Orage a un archivo"
 
-#: src/orage-application.c:639
+#: src/orage-application.c:637
 msgid "Show version of Orage"
 msgstr "Mostrar la versión de Orage"
 
@@ -948,6 +912,12 @@ msgstr "veces"
 #: src/orage-appointment-window.c:3488
 msgid "Repeat until"
 msgstr "Repetir hasta"
+
+#. start time
+#: src/orage-appointment-window.c:3506 src/orage-appointment-window.c:3635
+#: src/orage-week-window.c:897
+msgid "Start"
+msgstr "Inicio"
 
 #. completed (only for TODO)
 #: src/orage-appointment-window.c:3511 src/orage-appointment-window.c:3705
@@ -1393,6 +1363,38 @@ msgstr "Período de sincronización en minutos"
 msgid "_Close"
 msgstr "_Cerrar"
 
+#: src/orage-week-window.c:455
+msgid "Back one week"
+msgstr "Una semana atrás"
+
+#: src/orage-week-window.c:457
+msgid "Back one day"
+msgstr "Un día atrás"
+
+#: src/orage-week-window.c:461
+msgid "Forward one day"
+msgstr "Avance un día"
+
+#: src/orage-week-window.c:463
+msgid "Forward one week"
+msgstr "Avance una semana"
+
+#: src/orage-week-window.c:532
+msgid "_OK"
+msgstr "_Aceptar"
+
+#: src/orage-week-window.c:660
+msgid "Unknown"
+msgstr "Desconocido"
+
+#: src/orage-week-window.c:905
+msgid "Number of days to show"
+msgstr "Número de días que se mostrará"
+
+#: src/orage-week-window.c:1220
+msgid "Orage - day view"
+msgstr "Orage - Vista de día"
+
 #: src/orage-window.c:294
 msgid "_Exchange data"
 msgstr "_Intercambiar datos"
@@ -1720,7 +1722,7 @@ msgstr "Configuración de sincronización"
 msgid "Synchronization sources"
 msgstr "Fuentes de sincronización"
 
-#: src/parameters.c:1431 org.xfce.orage.desktop.in:25
+#: src/parameters.c:1431 org.xfce.orage.desktop.in:26
 msgid "Orage Preferences"
 msgstr "Preferencias de Orage"
 
@@ -4109,6 +4111,10 @@ msgstr "Configuración de la aplicación de calendario de Xfce 4 (Orage)"
 msgid "Orage Calendar Preferences"
 msgstr "Preferencias del calendario Orage"
 
+#: plugin/org.xfce.orage-settings.desktop.in:14 org.xfce.orage.desktop.in:15
+msgid "calendar;date;schedule;appointment;time;"
+msgstr "calendario;fecha;horario;cita;hora;"
+
 #: org.xfce.orage.appdata.xml.in:11
 msgid ""
 "Orage aims to be a fast and easy to use graphical calendar. It uses portable"
@@ -4147,10 +4153,10 @@ msgstr "Calendario de escritorio"
 msgid "Calendar"
 msgstr "Calendario"
 
-#: org.xfce.orage.desktop.in:17
+#: org.xfce.orage.desktop.in:18
 msgid "Show Today"
 msgstr "Mostrar hoy"
 
-#: org.xfce.orage.desktop.in:21
+#: org.xfce.orage.desktop.in:22
 msgid "New Appointment"
 msgstr "Nueva cita"
