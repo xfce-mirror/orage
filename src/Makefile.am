@@ -55,12 +55,25 @@ orage_SOURCES =							\
 	xfical_exception.c					\
 	xfical_exception.h
 
+if HAVE_TRAY_ICON
+orage_SOURCES +=						\
+	orage-tray-icon-common.c				\
+	orage-tray-icon-common.h
+
 if HAVE_X11_TRAY_ICON
 orage_SOURCES +=						\
 	tray_icon.c						\
 	tray_icon.h
 endif
-	
+
+if HAVE_AYATANA_APPINDICATOR
+orage_SOURCES +=						\
+	orage-status-icon.c					\
+	orage-status-icon.h
+endif
+
+endif
+
 orage_CPPFLAGS =						\
 	-DPACKAGE_DATA_DIR=\""$(datadir)"\"			\
 	-DPACKAGE_LOCALE_DIR=\""$(localedir)"\"			\
@@ -85,6 +98,14 @@ orage_LDADD =							\
 if HAVE_NOTIFY
 orage_LDADD +=							\
 	$(NOTIFY_LIBS)
+endif
+
+if HAVE_AYATANA_APPINDICATOR
+orage_CFLAGS +=							\
+	$(LIBAYATANA_APPINDICATOR_CFLAGS)
+
+orage_LDADD +=							\
+	$(LIBAYATANA_APPINDICATOR_LIBS)
 endif
 
 if HAVE_LIBXFCE4UI
