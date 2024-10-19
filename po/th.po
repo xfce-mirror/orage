@@ -4,105 +4,23 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Theppitak Karoonboonyanan <theppitak@gmail.com>, 2023
 # Xfce Bot <transifex@xfce.org>, 2024
+# Theppitak Karoonboonyanan <theppitak@gmail.com>, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-04-04 00:51+0200\n"
+"POT-Creation-Date: 2024-10-16 12:50+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>, 2024\n"
+"Last-Translator: Theppitak Karoonboonyanan <theppitak@gmail.com>, 2024\n"
 "Language-Team: Thai (https://app.transifex.com/xfce/teams/16840/th/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: th\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-#. ********* File menu *********
-#. File menu
-#. File menu stuff
-#. File menu
-#: src/day-view.c:289 src/event-list.c:1135 src/interface.c:860
-#: src/orage-appointment-window.c:2907 src/orage-window.c:279
-msgid "_File"
-msgstr "แ_ฟ้ม"
-
-#. ********* View menu *********
-#. View menu
-#: src/day-view.c:299 src/event-list.c:1158 src/orage-window.c:310
-msgid "_View"
-msgstr "มุ_มมอง"
-
-#. ********* Go menu   *********
-#: src/day-view.c:313 src/event-list.c:1177
-msgid "_Go"
-msgstr "ไ_ป"
-
-#: src/day-view.c:386 src/event-list.c:1223
-msgid "New"
-msgstr "ใหม่"
-
-#: src/day-view.c:391
-msgid "Back one week"
-msgstr "ถอยกลับหนึ่งสัปดาห์"
-
-#: src/day-view.c:393
-msgid "Back one day"
-msgstr "ถอยกลับหนึ่งวัน"
-
-#: src/day-view.c:395 src/day-view.c:468 src/event-list.c:1080
-#: src/event-list.c:1234 src/functions.c:145
-#: src/orage-appointment-window.c:1734 src/orage-appointment-window.c:1749
-#: src/tray_icon.c:407
-msgid "Today"
-msgstr "วันนี้"
-
-#: src/day-view.c:397
-msgid "Forward one day"
-msgstr "ไปข้างหน้าหนึ่งวัน"
-
-#: src/day-view.c:399
-msgid "Forward one week"
-msgstr "ไปข้างหน้าหนึ่งสัปดาห์"
-
-#: src/day-view.c:404 src/event-list.c:1241
-msgid "Refresh"
-msgstr "ปรับแสดงใหม่"
-
-#: src/day-view.c:409 src/event-list.c:1248 src/interface.c:879
-msgid "Close"
-msgstr "ปิด"
-
-#: src/day-view.c:466 src/event-list.c:1078 src/functions.c:143
-#: src/orage-appointment-window.c:1732 src/orage-appointment-window.c:1747
-msgid "Pick the date"
-msgstr "เลือกวันที่"
-
-#: src/day-view.c:468
-msgid "_OK"
-msgstr "_ตกลง"
-
-#: src/day-view.c:596
-msgid "Unknown"
-msgstr "ไม่ทราบ"
-
-#. start time
-#: src/day-view.c:833 src/orage-appointment-window.c:3506
-#: src/orage-appointment-window.c:3635
-msgid "Start"
-msgstr "เริ่มต้น"
-
-#: src/day-view.c:841
-msgid "Number of days to show"
-msgstr ""
-
-#: src/day-view.c:1072
-msgid "Orage - day view"
-msgstr "Orage - ข้อมูลรายวัน"
 
 #. date only appointment
 #: src/event-list.c:186
@@ -143,9 +61,47 @@ msgstr "ไม่ ยกเลิกการลบ"
 msgid "Yes, remove them"
 msgstr "ใช่ ลบเลย"
 
+#: src/event-list.c:1078 src/functions.c:143
+#: src/orage-appointment-window.c:1732 src/orage-appointment-window.c:1747
+#: src/orage-week-window.c:530
+msgid "Pick the date"
+msgstr "เลือกวันที่"
+
+#: src/event-list.c:1080 src/event-list.c:1234 src/functions.c:145
+#: src/orage-appointment-window.c:1734 src/orage-appointment-window.c:1749
+#: src/orage-week-window.c:459 src/orage-week-window.c:532 src/tray_icon.c:407
+msgid "Today"
+msgstr "วันนี้"
+
+#. ********* File menu *********
+#. File menu
+#. File menu stuff
+#. ********* File menu *********
+#. File menu
+#: src/event-list.c:1135 src/interface.c:860
+#: src/orage-appointment-window.c:2907 src/orage-week-window.c:353
+#: src/orage-window.c:279
+msgid "_File"
+msgstr "แ_ฟ้ม"
+
 #: src/event-list.c:1141 src/orage-appointment-window.c:2926
 msgid "D_uplicate"
 msgstr "_ทำซ้ำ"
+
+#. ********* View menu *********
+#. View menu
+#: src/event-list.c:1158 src/orage-week-window.c:363 src/orage-window.c:310
+msgid "_View"
+msgstr "มุ_มมอง"
+
+#. ********* Go menu   *********
+#: src/event-list.c:1177 src/orage-week-window.c:377
+msgid "_Go"
+msgstr "ไ_ป"
+
+#: src/event-list.c:1223 src/orage-week-window.c:450
+msgid "New"
+msgstr "ใหม่"
 
 #: src/event-list.c:1225 src/orage-appointment-window.c:3551
 msgid "Duplicate"
@@ -163,9 +119,17 @@ msgstr "ถอยกลับ"
 msgid "Forward"
 msgstr "ไปข้างหน้า"
 
+#: src/event-list.c:1241 src/orage-week-window.c:468
+msgid "Refresh"
+msgstr "ปรับแสดงใหม่"
+
 #: src/event-list.c:1243
 msgid "Find"
 msgstr "หา"
+
+#: src/event-list.c:1248 src/interface.c:879 src/orage-week-window.c:473
+msgid "Close"
+msgstr "ปิด"
 
 #: src/event-list.c:1250
 msgid "Dayview"
@@ -202,6 +166,8 @@ msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed."
 msgstr ""
+"เลือกตัวเลือกนี้ถ้าคุณต้องการดูเหตุการณ์เก่าด้วย ตัวเลือกนี้จะสามารถเลือกได้หลังจากเลือก 'แสดงเฉพาะครั้งแรกที่เวียนซ้ำ' แล้วเท่านั้น เพื่อไม่ให้รายการยาวเกินไป\n"
+"สังเกตว่าการเลือกแสดงวันเพิ่มเติมยังคงมีผลถ้ามีการแสดงนัดหมายใหม่ๆ"
 
 #: src/event-list.c:1339 src/orage-appointment-window.c:3594
 msgid "Todo"
@@ -378,7 +344,7 @@ msgstr "ทุกนัดหมาย"
 
 #: src/interface.c:1142
 msgid "Named appointments:"
-msgstr ""
+msgstr "นัดหมายที่ตั้งชื่อ:"
 
 #: src/interface.c:1161
 msgid ""
@@ -411,7 +377,7 @@ msgstr "กรุ"
 #: src/interface.c:1184 src/interface.c:1206
 #: src/orage-appointment-window.c:4105
 msgid "_Execute"
-msgstr ""
+msgstr "เ_รียกทำงาน"
 
 #: src/interface.c:1190
 #, c-format
@@ -531,14 +497,14 @@ msgstr "ชื่อภายในชื่อนี้จะปรากฏต
 msgid "Exchange data - Orage"
 msgstr "แลกเปลี่ยนข้อมูล - Orage"
 
-#: src/main.c:50 src/orage-appointment-window.c:711
+#: src/main.c:53 src/orage-appointment-window.c:711
 #: org.xfce.orage.appdata.xml.in:7
 msgid "Orage"
 msgstr "Orage"
 
 #: src/orage-about.c:44 org.xfce.orage.appdata.xml.in:8
 msgid "Orage is a time-managing application for the Xfce desktop environment"
-msgstr ""
+msgstr "Orage คือแอปพลิเคชันจัดการตารางเวลาสำหรับสภาพแวดล้อมเดสก์ท็อป Xfce"
 
 #: src/orage-about.c:51
 msgid "translator-credits"
@@ -585,47 +551,47 @@ msgstr "\tไม่ได้ใช้การทำกรุ\n"
 
 #: src/orage-application.c:132
 msgid "\tUsing libxfce4ui: yes\n"
-msgstr ""
+msgstr "\tการใช้ libxfce4ui: ใช้\n"
 
 #: src/orage-application.c:134
 msgid "\tUsing libxfce4ui: no\n"
-msgstr ""
+msgstr "\tการใช้ libxfce4ui: ไม่ใช้\n"
 
-#: src/orage-application.c:567
+#: src/orage-application.c:565
 msgid "Open today's tasks"
-msgstr ""
+msgstr "เปิดภารกิจวันนี้"
 
-#: src/orage-application.c:576
+#: src/orage-application.c:574
 msgid "Add new appointment"
-msgstr ""
+msgstr "เพิ่มนัดหมายใหม่"
 
-#: src/orage-application.c:585
+#: src/orage-application.c:583
 msgid "Show preferences form"
-msgstr ""
+msgstr "แสดงแบบฟอร์มสำหรับปรับแต่ง"
 
-#: src/orage-application.c:594
+#: src/orage-application.c:592
 msgid "Make Orage visible/unvisible"
-msgstr ""
+msgstr "ทำให้ Orage ปรากฏ/ไม่ปรากฏ"
 
-#: src/orage-application.c:603
+#: src/orage-application.c:601
 msgid "Add a foreign file"
-msgstr ""
+msgstr "เพิ่มแฟ้มต่างระบบ"
 
-#: src/orage-application.c:612
+#: src/orage-application.c:610
 msgid "Remove a foreign file"
-msgstr ""
+msgstr "ลบแฟ้มต่างระบบ"
 
-#: src/orage-application.c:621
+#: src/orage-application.c:619
 msgid "Import appointments from file to Orage"
-msgstr ""
+msgstr "นำเข้านัดหมายจากแฟ้มเข้าสู่ Orage"
 
-#: src/orage-application.c:630
+#: src/orage-application.c:628
 msgid "Export appointments from Orage to file"
-msgstr ""
+msgstr "ส่งออกนัดหมายจาก Orage ออกสู่แฟ้ม"
 
-#: src/orage-application.c:639
+#: src/orage-application.c:637
 msgid "Show version of Orage"
-msgstr ""
+msgstr "แสดงข้อมูลรุ่นของ Orage"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -726,7 +692,7 @@ msgstr "สีกำกับหมวด - Orage"
 
 #: src/orage-appointment-window.c:2509
 msgid "*** COPY ***"
-msgstr ""
+msgstr "*** สำเนา ***"
 
 #: src/orage-appointment-window.c:2562 src/orage-appointment-window.c:3871
 msgid "Before Start"
@@ -755,60 +721,60 @@ msgstr "บันทึ_กและปิด"
 
 #: src/orage-appointment-window.c:3230
 msgid "first"
-msgstr ""
+msgstr "สัปดาห์แรก"
 
 #: src/orage-appointment-window.c:3230
 msgid "second"
-msgstr ""
+msgstr "สัปดาห์ที่สอง"
 
 #: src/orage-appointment-window.c:3230
 msgid "third"
-msgstr ""
+msgstr "สัปดาห์ที่สาม"
 
 #: src/orage-appointment-window.c:3230
 msgid "fourth"
-msgstr ""
+msgstr "สัปดาห์ที่สี่"
 
 #: src/orage-appointment-window.c:3230
 msgid "last"
-msgstr ""
+msgstr "สัปดาห์สุดท้าย"
 
 #: src/orage-appointment-window.c:3240
 msgid "Monday"
-msgstr ""
+msgstr "วันจันทร์"
 
 #: src/orage-appointment-window.c:3240
 msgid "Tuesday"
-msgstr ""
+msgstr "วันอังคาร"
 
 #: src/orage-appointment-window.c:3240
 msgid "Wednesday"
-msgstr ""
+msgstr "วันพุธ"
 
 #: src/orage-appointment-window.c:3240
 msgid "Thursday"
-msgstr ""
+msgstr "วันพฤหัสบดี"
 
 #: src/orage-appointment-window.c:3240
 msgid "Friday"
-msgstr ""
+msgstr "วันศุกร์"
 
 #: src/orage-appointment-window.c:3241
 msgid "Saturday"
-msgstr ""
+msgstr "วันเสาร์"
 
 #: src/orage-appointment-window.c:3241
 msgid "Sunday"
-msgstr ""
+msgstr "วันอาทิตย์"
 
 #: src/orage-appointment-window.c:3254 src/orage-appointment-window.c:3287
 #: src/orage-appointment-window.c:3394 src/orage-appointment-window.c:3428
 msgid "Every"
-msgstr ""
+msgstr "ทุกๆ"
 
 #: src/orage-appointment-window.c:3259
 msgid "day(s)"
-msgstr ""
+msgstr "วัน"
 
 #: src/orage-appointment-window.c:3276
 msgid "Mon"
@@ -840,67 +806,67 @@ msgstr "อา."
 
 #: src/orage-appointment-window.c:3294
 msgid "week(s) on:"
-msgstr ""
+msgstr "สัปดาห์ ในวัน:"
 
 #: src/orage-appointment-window.c:3330
 msgid "From the beginning of the month:"
-msgstr ""
+msgstr "นับจากต้นเดือน:"
 
 #: src/orage-appointment-window.c:3343
 msgid "From the end of the month:"
-msgstr ""
+msgstr "นับจากท้ายเดือน:"
 
 #: src/orage-appointment-window.c:3356
 msgid "Every:"
-msgstr ""
+msgstr "ทุกๆ:"
 
 #: src/orage-appointment-window.c:3384
 msgid "January"
-msgstr ""
+msgstr "เดือนมกราคม"
 
 #: src/orage-appointment-window.c:3384
 msgid "February"
-msgstr ""
+msgstr "เดือนกุมภาพันธ์"
 
 #: src/orage-appointment-window.c:3384
 msgid "March"
-msgstr ""
+msgstr "เดือนมีนาคม"
 
 #: src/orage-appointment-window.c:3384
 msgid "April"
-msgstr ""
+msgstr "เดือนเมษายน"
 
 #: src/orage-appointment-window.c:3384
 msgid "May"
-msgstr ""
+msgstr "เดือนพฤษภาคม"
 
 #: src/orage-appointment-window.c:3385
 msgid "June"
-msgstr ""
+msgstr "เดือนมิถุนายน"
 
 #: src/orage-appointment-window.c:3385
 msgid "July"
-msgstr ""
+msgstr "เดือนกรกฎาคม"
 
 #: src/orage-appointment-window.c:3385
 msgid "August"
-msgstr ""
+msgstr "เดือนสิงหาคม"
 
 #: src/orage-appointment-window.c:3385
 msgid "September"
-msgstr ""
+msgstr "เดือนกันยายน"
 
 #: src/orage-appointment-window.c:3385
 msgid "October"
-msgstr ""
+msgstr "เดือนตุลาคม"
 
 #: src/orage-appointment-window.c:3386
 msgid "November"
-msgstr ""
+msgstr "เดือนพฤศจิกายน"
 
 #: src/orage-appointment-window.c:3386
 msgid "December"
-msgstr ""
+msgstr "เดือนธันวาคม"
 
 #. TRANSLATORS: this string is part of date line, for example
 #. * "second Thursday of August". In some languages ​​it is not necessary to
@@ -908,11 +874,11 @@ msgstr ""
 #. * the string "of", it can be replaced with an empty string.
 #: src/orage-appointment-window.c:3402
 msgid "of"
-msgstr ""
+msgstr "ของ"
 
 #: src/orage-appointment-window.c:3433
 msgid "hour(s)"
-msgstr ""
+msgstr "ชั่วโมง"
 
 #: src/orage-appointment-window.c:3469
 msgid "Repeat forever"
@@ -920,7 +886,7 @@ msgstr "เวียนซ้ำไปตลอด"
 
 #: src/orage-appointment-window.c:3474
 msgid "Repeat"
-msgstr "เล่นซ้ำ"
+msgstr "เวียนซ้ำ"
 
 #: src/orage-appointment-window.c:3482 src/orage-appointment-window.c:3989
 msgid "times"
@@ -928,7 +894,13 @@ msgstr "ครั้ง"
 
 #: src/orage-appointment-window.c:3488
 msgid "Repeat until"
-msgstr ""
+msgstr "เวียนซ้ำจนถึง"
+
+#. start time
+#: src/orage-appointment-window.c:3506 src/orage-appointment-window.c:3635
+#: src/orage-week-window.c:897
+msgid "Start"
+msgstr "เริ่มต้น"
 
 #. completed (only for TODO)
 #: src/orage-appointment-window.c:3511 src/orage-appointment-window.c:3705
@@ -941,15 +913,16 @@ msgid ""
 "interval no matter when it was last completed"
 msgstr ""
 "สิ่งที่จะทำเกิดซ้ำเป็นประจำโดยเริ่มจากเวลาเริ่ม "
-"และเวียนซ้ำหลังระยะเวลาผ่านไป ไม่ว่ารายการนั้นจะเสร็จสิ้นครั้งล่าสุดเมื่อใด"
+"และเวียนซ้ำอีกเมื่อระยะเวลาผ่านไป "
+"ไม่ว่ารายการนั้นจะเสร็จสิ้นครั้งล่าสุดเมื่อใด"
 
 #: src/orage-appointment-window.c:3516
 msgid ""
 "TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
 msgstr ""
-"การเกิดซ้ำของสิ่งที่จะทำนับจากเวลาที่ทำเสร็จ และเวียนซ้ำหลังระยะเวลาผ่านไป โดยนับจากเวลาที่เสร็จสิ้นครั้งล่าสุด\n"
-"(สังเกตว่าคุณจะไม่สามารถบอกได้เกี่ยวกับประวัติของสิ่งที่จะทำนี้ เนื่องจากฐานการนับเวลาเวียนซ้ำจะเปลี่ยนไปทุกครั้งหลังงานเสร็จสิ้น)"
+"การเกิดซ้ำของสิ่งที่จะทำนับจากเวลาที่ทำเสร็จ และเวียนซ้ำอีกเมื่อระยะเวลาผ่านไป โดยนับจากเวลาที่เสร็จสิ้นครั้งล่าสุด\n"
+"(สังเกตว่าคุณจะไม่สามารถบอกได้แน่นอนถึงช่วงเวลาที่เกิดสิ่งที่จะทำนี้ เนื่องจากฐานการนับเวลาเวียนซ้ำจะเปลี่ยนไปทุกครั้งหลังงานเสร็จสิ้น)"
 
 #: src/orage-appointment-window.c:3542
 msgid "Save"
@@ -1016,7 +989,7 @@ msgstr "เหตุการณ์ทั้งวัน"
 
 #: src/orage-appointment-window.c:3653
 msgid "Set"
-msgstr ""
+msgstr "กำหนด"
 
 #: src/orage-appointment-window.c:3677
 msgid "Duration"
@@ -1060,7 +1033,7 @@ msgstr ""
 
 #: src/orage-appointment-window.c:3752
 msgid "_Colour"
-msgstr ""
+msgstr "_สี"
 
 #: src/orage-appointment-window.c:3757
 msgid "update colors for categories."
@@ -1081,7 +1054,7 @@ msgstr ""
 "ถ้าคุณกำหนดค่านี้เป็นค่า 8 ขึ้นไป นัดหมายก็จะไม่แสดงในหน้าต่างรายการเลย\n"
 "คุณสามารถใช้ความสามารถนี้เพื่อทำให้หน้าต่างรายการสะอาดขึ้นได้ แต่ก็จะทำให้หานัดหมายนี้ได้ยากขึ้นด้วย\n"
 "(การปลุกเตือนยังคงมีผลตามปกติ)\n"
-"(มีพารามิเตอร์หนึ่งที่ไม่ได้อธิบายในเอกสาร เพื่อให้คุณเปลี่ยนค่าขีดจำกัดปริยายจากค่า 8 ได้)"
+"(มีพารามิเตอร์หนึ่งที่ไม่ได้อธิบายในเอกสาร ที่ให้คุณเปลี่ยนค่าขีดจำกัดปริยายจากค่า 8 ได้)"
 
 #. note
 #: src/orage-appointment-window.c:3776
@@ -1099,6 +1072,14 @@ msgid ""
 "    <&Ynnnn> is translated to current year minus nnnn.\n"
 "(This can be used for example in birthday reminders to tell how old the person will be.)"
 msgstr ""
+"คำสั่งย่อเหล่านี้จะมีผลทันที:\n"
+"    <D> แทรกวันที่ปัจจุบันในรูปแบบวันที่ของท้องถิ่น\n"
+"    <T> แทรกเวลา\n"
+"    <DT> แทรกวันที่และเวลา\n"
+"\n"
+"คำสั่งย่อเหล่านี้จะแปลงเมื่อจะแสดงข้อความเท่านั้น:\n"
+"    <&Ynnnn> จะถูกแปลงเป็นค่าปี ค.ศ. ปัจจุบันลบด้วย nnnn\n"
+"(ตัวอย่างการใช้เช่น ใช้ในการแจ้งเตือนวันเกิดพร้อมกับบอกอายุของเจ้าของวันเกิด)"
 
 #: src/orage-appointment-window.c:3880
 msgid "Alarm"
@@ -1119,11 +1100,11 @@ msgstr ""
 "บ่อยครั้งที่คุณต้องการการปลุกเตือน:\n"
 " 1) ก่อนที่เหตุการณ์จะเริ่ม\n"
 " 2) ก่อนที่สิ่งที่จะทำจะจบลง\n"
-" 3) หลังจากที่สิ่งที่จะทำเริ่มขึ้น"
+" 3) หลังจากที่สิ่งที่จะทำได้เริ่มขึ้น"
 
 #: src/orage-appointment-window.c:3916
 msgid "Persistent alarm"
-msgstr "ปลุกเตือนแบบติดแน่น"
+msgstr "ปลุกเตือนแบบเหนียวแน่น"
 
 #: src/orage-appointment-window.c:3921
 msgid ""
@@ -1131,7 +1112,7 @@ msgid ""
 "when the alarm happened."
 msgstr ""
 "เลือกตัวเลือกนี้ถ้าคุณต้องการให้ Orage "
-"เตือนคุณแม้จะไม่ได้ทำงานอยู่ในขณะที่การปลุกเตือนเกิดขึ้น"
+"เตือนคุณแม้มันจะไม่ได้ทำงานอยู่ในขณะที่การปลุกเตือนเกิดขึ้น"
 
 #: src/orage-appointment-window.c:3931
 msgid "Sound"
@@ -1147,7 +1128,7 @@ msgstr "เลือกตัวเลือกนี้ถ้าคุณต้
 
 #: src/orage-appointment-window.c:3945
 msgid "Sound command is not set"
-msgstr ""
+msgstr "ไม่ได้กำหนดคำสั่งเล่นเสียง"
 
 #: src/orage-appointment-window.c:3974
 msgid "Repeat alarm sound"
@@ -1238,11 +1219,11 @@ msgstr "บันทึกค่าตั้งปัจจุบันเป็
 
 #: src/orage-appointment-window.c:4136
 msgid "_Revert"
-msgstr ""
+msgstr "_คืนกลับ"
 
 #: src/orage-appointment-window.c:4144
 msgid "Set current settings from default alarm"
-msgstr "ตั้งค่าปัจจุบันจากค่าการปลุกเตือนปริยาย"
+msgstr "ตั้งค่าปัจจุบันโดยใช้ค่าการปลุกเตือนปริยาย"
 
 #: src/orage-appointment-window.c:4209
 msgid "None"
@@ -1323,19 +1304,19 @@ msgstr "เวลาที่นับเพิ่มจะอยู่ในเ
 #. calendars showing the action days
 #: src/orage-appointment-window.c:4353
 msgid "Action dates"
-msgstr "วันที่กระทำ"
+msgstr "วันที่ปฏิบัติ"
 
 #: src/orage-sync-edit-dialog.c:132
 msgid "Description:"
-msgstr ""
+msgstr "คำบรรยาย:"
 
 #: src/orage-sync-edit-dialog.c:134
 msgid "Command:"
-msgstr ""
+msgstr "คำสั่ง:"
 
 #: src/orage-sync-edit-dialog.c:136
 msgid "Period:"
-msgstr ""
+msgstr "ช่วงเวลา:"
 
 #: src/orage-sync-edit-dialog.c:138
 msgid "minutes"
@@ -1343,19 +1324,51 @@ msgstr "นาที"
 
 #: src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task"
-msgstr ""
+msgstr "ชื่อหรือคำบรรยายของการปรับให้ตรงกันนี้"
 
 #: src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization"
-msgstr ""
+msgstr "คำสั่งสำหรับการปรับให้ตรงกัน"
 
 #: src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes"
-msgstr ""
+msgstr "ช่วงเวลาของการปรับให้ตรงกันเป็นนาที"
 
 #: src/orage-sync-edit-dialog.c:166 src/parameters.c:1454 src/reminder.c:640
 msgid "_Close"
 msgstr "ปิ_ด"
+
+#: src/orage-week-window.c:455
+msgid "Back one week"
+msgstr "ถอยกลับหนึ่งสัปดาห์"
+
+#: src/orage-week-window.c:457
+msgid "Back one day"
+msgstr "ถอยกลับหนึ่งวัน"
+
+#: src/orage-week-window.c:461
+msgid "Forward one day"
+msgstr "ไปข้างหน้าหนึ่งวัน"
+
+#: src/orage-week-window.c:463
+msgid "Forward one week"
+msgstr "ไปข้างหน้าหนึ่งสัปดาห์"
+
+#: src/orage-week-window.c:532
+msgid "_OK"
+msgstr "_ตกลง"
+
+#: src/orage-week-window.c:660
+msgid "Unknown"
+msgstr "ไม่ทราบ"
+
+#: src/orage-week-window.c:905
+msgid "Number of days to show"
+msgstr "จำนวนวันที่จะแสดง"
+
+#: src/orage-week-window.c:1220
+msgid "Orage - day view"
+msgstr "Orage - ข้อมูลรายวัน"
 
 #: src/orage-window.c:294
 msgid "_Exchange data"
@@ -1448,11 +1461,11 @@ msgstr "<b>เหตุการณ์สำหรับ %s - %s:</b>"
 
 #: src/parameters.c:686
 msgid "Remove selected synchronization task."
-msgstr ""
+msgstr "ลบรายการการปรับให้ตรงกันที่เลือก"
 
 #: src/parameters.c:689
 msgid "Yes, remove"
-msgstr ""
+msgstr "ใช่ ลบเลย"
 
 #: src/parameters.c:722
 msgid "Main settings"
@@ -1673,19 +1686,19 @@ msgstr ""
 
 #: src/parameters.c:1399
 msgid "Synchronization settings"
-msgstr ""
+msgstr "การตั้งค่าการปรับให้ครงกัน"
 
 #: src/parameters.c:1405
 msgid "Synchronization sources"
-msgstr ""
+msgstr "แหล่งที่ปรับให้ตรงกัน"
 
-#: src/parameters.c:1431 org.xfce.orage.desktop.in:25
+#: src/parameters.c:1431 org.xfce.orage.desktop.in:26
 msgid "Orage Preferences"
 msgstr "ปรับแต่ง Orage"
 
 #: src/reminder.c:419
 msgid "Reminder"
-msgstr ""
+msgstr "แจ้งเตือน"
 
 #: src/reminder.c:442
 msgid "Open"
@@ -1693,7 +1706,7 @@ msgstr "เปิด"
 
 #: src/reminder.c:447
 msgid "Silence"
-msgstr ""
+msgstr "เงียบ"
 
 #: src/reminder.c:565
 msgid "Reminder - Orage"
@@ -1822,7 +1835,7 @@ msgstr "แอฟริกา/ดูอาลา"
 
 #: src/timezone_names.c:53
 msgid "Africa/El_Aaiun"
-msgstr ""
+msgstr "แอฟริกา/เอลอายูน"
 
 #: src/timezone_names.c:54
 msgid "Africa/Freetown"
@@ -1958,7 +1971,7 @@ msgstr "อเมริกา"
 
 #: src/timezone_names.c:87
 msgid "America/Adak"
-msgstr ""
+msgstr "อเมริกา/เอแด็ก"
 
 #: src/timezone_names.c:88
 msgid "America/Anchorage"
@@ -1982,11 +1995,11 @@ msgstr "อเมริกา/อาร์เจนตินา/บัวโน�
 
 #: src/timezone_names.c:93
 msgid "America/Argentina/Catamarca"
-msgstr ""
+msgstr "อเมริกา/อาร์เจนตินา/กาตามาร์กา"
 
 #: src/timezone_names.c:94
 msgid "America/Argentina/ComodRivadavia"
-msgstr ""
+msgstr "อเมริกา/อาร์เจนตินา/โกโมโดโรริบาดาเบีย"
 
 #: src/timezone_names.c:95
 msgid "America/Argentina/Cordoba"
@@ -1994,11 +2007,11 @@ msgstr "อเมริกา/อาร์เจนตินา/กอร์โ�
 
 #: src/timezone_names.c:96
 msgid "America/Argentina/Jujuy"
-msgstr ""
+msgstr "อเมริกา/อาร์เจนตินา/ฆูฆุย"
 
 #: src/timezone_names.c:97
 msgid "America/Argentina/La_Rioja"
-msgstr "อเมริกา/อาร์เจนตินา/ลารีโอฮา"
+msgstr "อเมริกา/อาร์เจนตินา/ลาริโอฆา"
 
 #: src/timezone_names.c:98
 msgid "America/Argentina/Mendoza"
@@ -2014,19 +2027,19 @@ msgstr "อเมริกา/อาร์เจนตินา/ซัลตา"
 
 #: src/timezone_names.c:101
 msgid "America/Argentina/San_Juan"
-msgstr "อเมริกา/อาร์เจนตินา/ซันฮวน"
+msgstr "อเมริกา/อาร์เจนตินา/ซานฆวน"
 
 #: src/timezone_names.c:102
 msgid "America/Argentina/San_Luis"
-msgstr "อเมริกา/อาร์เจนตินา/ซันลุยส์"
+msgstr "อเมริกา/อาร์เจนตินา/ซานลุยส์"
 
 #: src/timezone_names.c:103
 msgid "America/Argentina/Tucuman"
-msgstr ""
+msgstr "อเมริกา/อาร์เจนตินา/ตูกูมัน"
 
 #: src/timezone_names.c:104
 msgid "America/Argentina/Ushuaia"
-msgstr ""
+msgstr "อเมริกา/อาร์เจนตินา/อุซวายา"
 
 #: src/timezone_names.c:105
 msgid "America/Aruba"
@@ -2042,7 +2055,7 @@ msgstr "อเมริกา/แอติโคคัน"
 
 #: src/timezone_names.c:108
 msgid "America/Atka"
-msgstr ""
+msgstr "อเมริกา/แอตคา"
 
 #: src/timezone_names.c:109
 msgid "America/Bahia"
@@ -2050,7 +2063,7 @@ msgstr "อเมริกา/บาเยีย"
 
 #: src/timezone_names.c:110
 msgid "America/Bahia_Banderas"
-msgstr ""
+msgstr "อเมริกา/บาเยีย-บันเดรัส"
 
 #: src/timezone_names.c:111
 msgid "America/Barbados"
@@ -2066,7 +2079,7 @@ msgstr "อเมริกา/เบลีซ"
 
 #: src/timezone_names.c:114
 msgid "America/Blanc-Sablon"
-msgstr ""
+msgstr "อเมริกา/บลองค์-ซาบลอน"
 
 #: src/timezone_names.c:115
 msgid "America/Boa_Vista"
@@ -2102,7 +2115,7 @@ msgstr "อเมริกา/การากัส"
 
 #: src/timezone_names.c:123
 msgid "America/Catamarca"
-msgstr ""
+msgstr "อเมริกา/กาตามาร์กา"
 
 #: src/timezone_names.c:124
 msgid "America/Cayenne"
@@ -2146,7 +2159,7 @@ msgstr "อเมริกา/กูราเซา"
 
 #: src/timezone_names.c:134
 msgid "America/Danmarkshavn"
-msgstr ""
+msgstr "อเมริกา/เดนมาร์กชาว์น"
 
 #: src/timezone_names.c:135
 msgid "America/Dawson"
@@ -2178,7 +2191,7 @@ msgstr "อเมริกา/เอนเซนาดา"
 
 #: src/timezone_names.c:142
 msgid "America/Eirunepe"
-msgstr ""
+msgstr "อเมริกา/เอรูเนเป"
 
 #: src/timezone_names.c:143
 msgid "America/El_Salvador"
@@ -2194,7 +2207,7 @@ msgstr "อเมริกา/ฟอร์ตเวย์น"
 
 #: src/timezone_names.c:146
 msgid "America/Glace_Bay"
-msgstr ""
+msgstr "อเมริกา/เกลซเบย์"
 
 #: src/timezone_names.c:147
 msgid "America/Godthab"
@@ -2250,7 +2263,7 @@ msgstr "อเมริกา/อินดีแอนา/นอกซ์"
 
 #: src/timezone_names.c:160
 msgid "America/Indiana/Marengo"
-msgstr ""
+msgstr "อเมริกา/อินดีแอนา/มาเร็งโก"
 
 #: src/timezone_names.c:161
 msgid "America/Indiana/Petersburg"
@@ -2258,11 +2271,11 @@ msgstr "อเมริกา/อินดีแอนา/ปีเตอร์�
 
 #: src/timezone_names.c:162
 msgid "America/Indiana/Tell_City"
-msgstr ""
+msgstr "อเมริกา/อินดีแอนา/เทลล์ซิตี"
 
 #: src/timezone_names.c:163
 msgid "America/Indiana/Vevay"
-msgstr ""
+msgstr "อเมริกา/อินดีแอนา/วีวีย์"
 
 #: src/timezone_names.c:164
 msgid "America/Indiana/Vincennes"
@@ -2270,7 +2283,7 @@ msgstr "อเมริกา/อินดีแอนา/วินเซนส�
 
 #: src/timezone_names.c:165
 msgid "America/Indiana/Winamac"
-msgstr ""
+msgstr "อเมริกา/อินดีแอนา/วินาแมก"
 
 #: src/timezone_names.c:166
 msgid "America/Indianapolis"
@@ -2290,7 +2303,7 @@ msgstr "อเมริกา/จาเมกา"
 
 #: src/timezone_names.c:170
 msgid "America/Jujuy"
-msgstr ""
+msgstr "อเมริกา/ฆูฆุย"
 
 #: src/timezone_names.c:171
 msgid "America/Juneau"
@@ -2310,7 +2323,7 @@ msgstr "America/นอกซ์-IN"
 
 #: src/timezone_names.c:175
 msgid "America/Kralendijk"
-msgstr ""
+msgstr "America/คราเลนไดก์"
 
 #: src/timezone_names.c:176
 msgid "America/La_Paz"
@@ -2330,7 +2343,7 @@ msgstr "อเมริกา/ลุยสวิล"
 
 #: src/timezone_names.c:180
 msgid "America/Lower_Princes"
-msgstr ""
+msgstr "อเมริกา/โลเวอร์พรินซ์"
 
 #: src/timezone_names.c:181
 msgid "America/Maceio"
@@ -2374,7 +2387,7 @@ msgstr "อเมริกา/เมรีดา"
 
 #: src/timezone_names.c:191
 msgid "America/Metlakatla"
-msgstr ""
+msgstr "อเมริกา/เมตลาแคตลา"
 
 #: src/timezone_names.c:192
 msgid "America/Mexico_City"
@@ -2422,11 +2435,11 @@ msgstr "อเมริกา/โนม"
 
 #: src/timezone_names.c:203
 msgid "America/North_Dakota/Beulah"
-msgstr ""
+msgstr "อเมริกา/นอร์ทดาโคตา/บิวลาห์"
 
 #: src/timezone_names.c:204
 msgid "America/North_Dakota/Center"
-msgstr ""
+msgstr "อเมริกา/นอร์ทดาโคตา/เซนเตอร์"
 
 #: src/timezone_names.c:205
 msgid "America/North_Dakota/New_Salem"
@@ -2434,7 +2447,7 @@ msgstr "อเมริกา/นอร์ทดาโคตา/นิวเซ�
 
 #: src/timezone_names.c:206
 msgid "America/Noronha"
-msgstr ""
+msgstr "อเมริกา/โนรอนญา"
 
 #: src/timezone_names.c:207
 msgid "America/Ojinaga"
@@ -2446,7 +2459,7 @@ msgstr "อเมริกา/ปานามา"
 
 #: src/timezone_names.c:209
 msgid "America/Pangnirtung"
-msgstr ""
+msgstr "อเมริกา/แพงนีร์ทุง"
 
 #: src/timezone_names.c:210
 msgid "America/Paramaribo"
@@ -2478,7 +2491,7 @@ msgstr "อเมริกา/เปอร์โตริโก"
 
 #: src/timezone_names.c:217
 msgid "America/Rainy_River"
-msgstr ""
+msgstr "อเมริกา/เรนนีริเวอร์"
 
 #: src/timezone_names.c:218
 msgid "America/Rankin_Inlet"
@@ -2506,7 +2519,7 @@ msgstr "อเมริกา/โรซารีโอ"
 
 #: src/timezone_names.c:224
 msgid "America/Santa_Isabel"
-msgstr ""
+msgstr "อเมริกา/ซานตาอิซาเบล"
 
 #: src/timezone_names.c:225
 msgid "America/Santarem"
@@ -2526,11 +2539,11 @@ msgstr "อเมริกา/เซาเปาลู"
 
 #: src/timezone_names.c:229
 msgid "America/Scoresbysund"
-msgstr ""
+msgstr "อเมริกา/สกอร์สบีซันด์"
 
 #: src/timezone_names.c:230
 msgid "America/Shiprock"
-msgstr ""
+msgstr "อเมริกา/ชิปร็อก"
 
 #: src/timezone_names.c:231
 msgid "America/Sitka"
@@ -2538,7 +2551,7 @@ msgstr "อเมริกา/ซิตกา"
 
 #: src/timezone_names.c:232
 msgid "America/St_Barthelemy"
-msgstr ""
+msgstr "อเมริกา/แซ็งบาร์เตเลมี"
 
 #: src/timezone_names.c:233
 msgid "America/St_Johns"
@@ -2554,7 +2567,7 @@ msgstr "อเมริกา/เซนต์ลูเซีย"
 
 #: src/timezone_names.c:236
 msgid "America/St_Thomas"
-msgstr ""
+msgstr "อเมริกา/เซนต์ทอมัส"
 
 #: src/timezone_names.c:237
 msgid "America/St_Vincent"
@@ -2570,7 +2583,7 @@ msgstr "อเมริกา/เตกูซิกัลปา"
 
 #: src/timezone_names.c:240
 msgid "America/Thule"
-msgstr ""
+msgstr "อเมริกา/ทูลี"
 
 #: src/timezone_names.c:241
 msgid "America/Thunder_Bay"
@@ -2586,7 +2599,7 @@ msgstr "อเมริกา/โทรอนโต"
 
 #: src/timezone_names.c:244
 msgid "America/Tortola"
-msgstr ""
+msgstr "อเมริกา/ทอร์โทลา"
 
 #: src/timezone_names.c:245
 msgid "America/Vancouver"
@@ -2626,15 +2639,15 @@ msgstr "แอนตาร์กติกา/เดวิส"
 
 #: src/timezone_names.c:254
 msgid "Antarctica/DumontDUrville"
-msgstr ""
+msgstr "แอนตาร์กติกา/ดูมองต์-ดูร์วิลล์"
 
 #: src/timezone_names.c:255
 msgid "Antarctica/Macquarie"
-msgstr ""
+msgstr "แอนตาร์กติกา/แมคควอรี"
 
 #: src/timezone_names.c:256
 msgid "Antarctica/Mawson"
-msgstr ""
+msgstr "แอนตาร์กติกา/มอว์สัน"
 
 #: src/timezone_names.c:257
 msgid "Antarctica/McMurdo"
@@ -2646,7 +2659,7 @@ msgstr "แอนตาร์กติกา/พาล์เมอร์"
 
 #: src/timezone_names.c:259
 msgid "Antarctica/Rothera"
-msgstr ""
+msgstr "แอนตาร์กติกา/โรเทรา"
 
 #: src/timezone_names.c:260
 msgid "Antarctica/South_Pole"
@@ -2654,7 +2667,7 @@ msgstr "แอนตาร์กติกา/ขั้วโลกใต้"
 
 #: src/timezone_names.c:261
 msgid "Antarctica/Syowa"
-msgstr ""
+msgstr "แอนตาร์กติกา/โชวะ"
 
 #: src/timezone_names.c:262
 msgid "Antarctica/Vostok"
@@ -2690,11 +2703,11 @@ msgstr "เอเชีย/อะนาดีร์"
 
 #: src/timezone_names.c:270
 msgid "Asia/Aqtau"
-msgstr ""
+msgstr "เอเชีย/อัคเตา"
 
 #: src/timezone_names.c:271
 msgid "Asia/Aqtobe"
-msgstr ""
+msgstr "เอเชีย/อัคโตเบ"
 
 #: src/timezone_names.c:272
 msgid "Asia/Ashgabat"
@@ -2702,7 +2715,7 @@ msgstr "เอเชีย/อาชกาบัต"
 
 #: src/timezone_names.c:273
 msgid "Asia/Ashkhabad"
-msgstr ""
+msgstr "เอเชีย/อาชคาบัด"
 
 #: src/timezone_names.c:274
 msgid "Asia/Baghdad"
@@ -2738,7 +2751,7 @@ msgstr "เอเชีย/กัลกัตตา"
 
 #: src/timezone_names.c:282
 msgid "Asia/Choibalsan"
-msgstr ""
+msgstr "เอเชีย/ชอยบัลซัน"
 
 #: src/timezone_names.c:283
 msgid "Asia/Chongqing"
@@ -2826,7 +2839,7 @@ msgstr "เอเชีย/คาบูล"
 
 #: src/timezone_names.c:304
 msgid "Asia/Kamchatka"
-msgstr ""
+msgstr "เอเชีย/คัมชัตกา"
 
 #: src/timezone_names.c:305
 msgid "Asia/Karachi"
@@ -2834,7 +2847,7 @@ msgstr "เอเชีย/การาจี"
 
 #: src/timezone_names.c:306
 msgid "Asia/Kashgar"
-msgstr ""
+msgstr "เอเชีย/คัชการ์"
 
 #: src/timezone_names.c:307
 msgid "Asia/Kathmandu"
@@ -2846,7 +2859,7 @@ msgstr "เอเชีย/กาฐมาณฑุ"
 
 #: src/timezone_names.c:309
 msgid "Asia/Khandyga"
-msgstr ""
+msgstr "เอเชีย/คานดีกา"
 
 #: src/timezone_names.c:310
 msgid "Asia/Kolkata"
@@ -2910,7 +2923,7 @@ msgstr "เอเชีย/ออมสค์"
 
 #: src/timezone_names.c:325
 msgid "Asia/Oral"
-msgstr ""
+msgstr "เอเชีย/ออราล"
 
 #: src/timezone_names.c:326
 msgid "Asia/Phnom_Penh"
@@ -2930,7 +2943,7 @@ msgstr "เอเชีย/กาตาร์"
 
 #: src/timezone_names.c:330
 msgid "Asia/Qyzylorda"
-msgstr ""
+msgstr "เอเชีย/คิซิลอร์ดา"
 
 #: src/timezone_names.c:331
 msgid "Asia/Rangoon"
@@ -3026,7 +3039,7 @@ msgstr "เอเชีย/อุรุมชี"
 
 #: src/timezone_names.c:354
 msgid "Asia/Ust-Nera"
-msgstr ""
+msgstr "เอเชีย/อุสต์-นีรา"
 
 #: src/timezone_names.c:355
 msgid "Asia/Vientiane"
@@ -3054,7 +3067,7 @@ msgstr "แอตแลนติก"
 
 #: src/timezone_names.c:361
 msgid "Atlantic/Azores"
-msgstr ""
+msgstr "แอตแลนติก/อะซอรีส"
 
 #: src/timezone_names.c:362
 msgid "Atlantic/Bermuda"
@@ -3122,7 +3135,7 @@ msgstr "ออสเตรเลีย/โบรเคนฮิลล์"
 
 #: src/timezone_names.c:378
 msgid "Australia/Currie"
-msgstr ""
+msgstr "ออสเตรเลีย/เคอร์รี"
 
 #: src/timezone_names.c:379
 msgid "Australia/Darwin"
@@ -3138,11 +3151,11 @@ msgstr "ออสเตรเลีย/โฮบาร์ต"
 
 #: src/timezone_names.c:382
 msgid "Australia/Lindeman"
-msgstr ""
+msgstr "ออสเตรเลีย/ลินเดแมน"
 
 #: src/timezone_names.c:383
 msgid "Australia/Lord_Howe"
-msgstr ""
+msgstr "ออสเตรเลีย/ลอร์ดฮาว"
 
 #: src/timezone_names.c:384
 msgid "Australia/Melbourne"
@@ -3166,7 +3179,7 @@ msgstr "บราซิล/อาเกร"
 
 #: src/timezone_names.c:389
 msgid "Brazil/DeNoronha"
-msgstr ""
+msgstr "บราซิล/ดีโนรอนญา"
 
 #: src/timezone_names.c:390
 msgid "Brazil/East"
@@ -3710,7 +3723,7 @@ msgstr "แปซิฟิก/แชตแธม"
 
 #: src/timezone_names.c:525
 msgid "Pacific/Chuuk"
-msgstr ""
+msgstr "แปซิฟิก/ชุก"
 
 #: src/timezone_names.c:526
 msgid "Pacific/Easter"
@@ -3718,15 +3731,15 @@ msgstr "แปซิฟิก/อีสเทอร์"
 
 #: src/timezone_names.c:527
 msgid "Pacific/Efate"
-msgstr ""
+msgstr "แปซิฟิก/เอฟาเต"
 
 #: src/timezone_names.c:528
 msgid "Pacific/Enderbury"
-msgstr ""
+msgstr "แปซิฟิก/เอนเดอร์เบอรี"
 
 #: src/timezone_names.c:529
 msgid "Pacific/Fakaofo"
-msgstr ""
+msgstr "แปซิฟิก/ฟาเคาโฟ"
 
 #: src/timezone_names.c:530
 msgid "Pacific/Fiji"
@@ -3742,11 +3755,11 @@ msgstr "แปซิฟิก/กาลาปาโกส"
 
 #: src/timezone_names.c:533
 msgid "Pacific/Gambier"
-msgstr ""
+msgstr "แปซิฟิก/แกมเบียร์"
 
 #: src/timezone_names.c:534
 msgid "Pacific/Guadalcanal"
-msgstr ""
+msgstr "แปซิฟิก/กัวดัลคะแนล"
 
 #: src/timezone_names.c:535
 msgid "Pacific/Guam"
@@ -3762,15 +3775,15 @@ msgstr "แปซิฟิก/จอห์นสตัน"
 
 #: src/timezone_names.c:538
 msgid "Pacific/Kiritimati"
-msgstr ""
+msgstr "แปซิฟิก/คิริสมาส"
 
 #: src/timezone_names.c:539
 msgid "Pacific/Kosrae"
-msgstr ""
+msgstr "แปซิฟิก/โคชาย"
 
 #: src/timezone_names.c:540
 msgid "Pacific/Kwajalein"
-msgstr ""
+msgstr "แปซิฟิก/ควาจาลีน"
 
 #: src/timezone_names.c:541
 msgid "Pacific/Majuro"
@@ -3778,7 +3791,7 @@ msgstr "แปซิฟิก/มาจูโร"
 
 #: src/timezone_names.c:542
 msgid "Pacific/Marquesas"
-msgstr ""
+msgstr "แปซิฟิก/มาร์เคซัส"
 
 #: src/timezone_names.c:543
 msgid "Pacific/Midway"
@@ -3814,11 +3827,11 @@ msgstr "แปซิฟิก/พิตแคร์น"
 
 #: src/timezone_names.c:551
 msgid "Pacific/Pohnpei"
-msgstr ""
+msgstr "แปซิฟิก/โปนเปย์"
 
 #: src/timezone_names.c:552
 msgid "Pacific/Ponape"
-msgstr ""
+msgstr "แปซิฟิก/โปนาเป"
 
 #: src/timezone_names.c:553
 msgid "Pacific/Port_Moresby"
@@ -3826,7 +3839,7 @@ msgstr "แปซิฟิก/พอร์ตมอร์สบี"
 
 #: src/timezone_names.c:554
 msgid "Pacific/Rarotonga"
-msgstr ""
+msgstr "แปซิฟิก/ราโรตองกา"
 
 #: src/timezone_names.c:555
 msgid "Pacific/Saipan"
@@ -3850,7 +3863,7 @@ msgstr "แปซิฟิก/ตองกาตาปู"
 
 #: src/timezone_names.c:560
 msgid "Pacific/Truk"
-msgstr ""
+msgstr "แปซิฟิก/ทรุก"
 
 #: src/timezone_names.c:561
 msgid "Pacific/Wake"
@@ -3862,7 +3875,7 @@ msgstr "แปซิฟิก/วาลลิส"
 
 #: src/timezone_names.c:563
 msgid "Pacific/Yap"
-msgstr ""
+msgstr "แปซิฟิก/แยป"
 
 #: src/timezone_names.c:564
 msgid "SystemV"
@@ -3930,7 +3943,7 @@ msgstr "สหรัฐ/อะแลสกา"
 
 #: src/timezone_names.c:580
 msgid "US/Aleutian"
-msgstr ""
+msgstr "สหรัฐ/อะลูเชียน"
 
 #: src/timezone_names.c:581
 msgid "US/Arizona"
@@ -3954,7 +3967,7 @@ msgstr "สหรัฐ/ฮาวาย"
 
 #: src/timezone_names.c:586
 msgid "US/Indiana-Starke"
-msgstr ""
+msgstr "สหรัฐ/อินดีแอนา-สตาร์ก"
 
 #: src/timezone_names.c:587
 msgid "US/Michigan"
@@ -4068,12 +4081,19 @@ msgstr "ตั้งค่าโปรแกรมปฏิทินของ Xf
 msgid "Orage Calendar Preferences"
 msgstr "ตั้งค่าปฏิทิน Orage"
 
+#: plugin/org.xfce.orage-settings.desktop.in:14 org.xfce.orage.desktop.in:15
+msgid "calendar;date;schedule;appointment;time;"
+msgstr "ปฏิทิน;วันที่;กำหนดการ;นัดหมาย;เวลา;"
+
 #: org.xfce.orage.appdata.xml.in:11
 msgid ""
 "Orage aims to be a fast and easy to use graphical calendar. It uses portable"
 " ical format and includes common calendar features like repeating "
 "appointments and multiple alarming possibilities."
 msgstr ""
+"Orage มุ่งเป็นปฏิทินแบบกราฟิกที่เร็วและใช้ง่าย โดยใช้รูปแบบ ical "
+"ที่ใช้ข้ามระบบได้ และมีความสามารถทั่วไปของปฏิทิน เช่น นัดหมายเวียนซ้ำ "
+"และการปลุกเตือนหลากหลายรูปแบบ"
 
 #: org.xfce.orage.appdata.xml.in:15
 msgid ""
@@ -4082,10 +4102,13 @@ msgid ""
 "Contents of those files are read and converted into Orage, but those files "
 "are left untouched."
 msgstr ""
+"Orage ไม่ได้รองรับการใช้ปฏิทินเป็นกลุ่ม แต่สามารถใช้กับผู้ใช้เดียวเท่านั้น "
+"สามารถนำเข้าแฟ้ม ical เป็นชุดได้ โดยจะอ่านและแปลงเนื้อหาเข้าสู่ Orage "
+"โดยไม่เปลี่ยนแปลงแฟ้มต้นทาง"
 
 #: org.xfce.orage.appdata.xml.in:35
 msgid "Orage Team"
-msgstr ""
+msgstr "ทีมงาน Orage"
 
 #: org.xfce.orage.desktop.in:4
 msgid "Orage Calendar"
@@ -4099,10 +4122,10 @@ msgstr "ปฏิทินบนพื้นโต๊ะ"
 msgid "Calendar"
 msgstr "ปฏิทิน"
 
-#: org.xfce.orage.desktop.in:17
+#: org.xfce.orage.desktop.in:18
 msgid "Show Today"
-msgstr ""
+msgstr "แสดงวันนี้"
 
-#: org.xfce.orage.desktop.in:21
+#: org.xfce.orage.desktop.in:22
 msgid "New Appointment"
-msgstr ""
+msgstr "สร้างนัดหมายใหม่"
