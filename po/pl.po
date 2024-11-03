@@ -575,7 +575,7 @@ msgstr "Wyświetl formularz preferencji"
 
 #: src/orage-application.c:592
 msgid "Make Orage visible/unvisible"
-msgstr "Uczyń Orage widocznym/niewidocznym"
+msgstr "Uczyń program Orage widocznym/niewidocznym"
 
 #: src/orage-application.c:601
 msgid "Add a foreign file"
@@ -587,15 +587,15 @@ msgstr "Usuń plik zewnętrzny"
 
 #: src/orage-application.c:619
 msgid "Import appointments from file to Orage"
-msgstr "Importuj spotkania z pliku do Orage"
+msgstr "Importuj spotkania z pliku do programu Orage"
 
 #: src/orage-application.c:628
 msgid "Export appointments from Orage to file"
-msgstr "Eksportuj spotkania z Orage do pliku"
+msgstr "Eksportuj spotkania z programu Orage do pliku"
 
 #: src/orage-application.c:637
 msgid "Show version of Orage"
-msgstr "Wyświetl wersję Orage"
+msgstr "Wyświetl wersję programu Orage"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -639,7 +639,7 @@ msgstr "Dodaj nowe spotkanie do tego pliku."
 
 #: src/orage-appointment-window.c:1478 src/orage-appointment-window.c:1532
 msgid "Orage default file"
-msgstr "Domyślny plik Orage"
+msgstr "Domyślny plik programu Orage"
 
 #: src/orage-appointment-window.c:1570
 msgid "Appointment addition failed."
@@ -1673,7 +1673,7 @@ msgstr "Domyślny alarm wizualny pliku zewnętrznego"
 
 #: src/parameters.c:1292
 msgid "Orage window"
-msgstr "Okno Orage"
+msgstr "Okno programu Orage"
 
 #: src/parameters.c:1309
 msgid "Notify notification"
@@ -1706,7 +1706,7 @@ msgstr "Źródła synchronizacji"
 
 #: src/parameters.c:1431 org.xfce.orage.desktop.in:26
 msgid "Orage Preferences"
-msgstr "Preferencje Orage"
+msgstr "Preferencje kalendarza"
 
 #: src/reminder.c:419
 msgid "Reminder"
@@ -4083,7 +4083,7 @@ msgstr "Zakończ"
 
 #: plugin/org.xfce.orage-settings.desktop.in:4
 msgid "Orage preferences"
-msgstr "Preferencje Orage"
+msgstr "Preferencje kalendarza"
 
 #: plugin/org.xfce.orage-settings.desktop.in:5
 msgid "Settings for the Xfce 4 Calendar Application (Orage)"
@@ -4121,7 +4121,7 @@ msgstr ""
 
 #: org.xfce.orage.appdata.xml.in:35
 msgid "Orage Team"
-msgstr "Zespół Orage"
+msgstr "Zespół kalendarza Orage"
 
 #: org.xfce.orage.desktop.in:4
 msgid "Orage Calendar"
