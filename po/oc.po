@@ -694,7 +694,7 @@ msgstr "Color de las categorias - Orage"
 
 #: src/orage-appointment-window.c:2509
 msgid "*** COPY ***"
-msgstr ""
+msgstr "*** COPIAR ***"
 
 #: src/orage-appointment-window.c:2562 src/orage-appointment-window.c:3871
 msgid "Before Start"
@@ -723,23 +723,23 @@ msgstr "Enr_egistrar e tampar"
 
 #: src/orage-appointment-window.c:3230
 msgid "first"
-msgstr ""
+msgstr "primièr"
 
 #: src/orage-appointment-window.c:3230
 msgid "second"
-msgstr ""
+msgstr "segond"
 
 #: src/orage-appointment-window.c:3230
 msgid "third"
-msgstr ""
+msgstr "tresen"
 
 #: src/orage-appointment-window.c:3230
 msgid "fourth"
-msgstr ""
+msgstr "quatren"
 
 #: src/orage-appointment-window.c:3230
 msgid "last"
-msgstr ""
+msgstr "darrièr"
 
 #: src/orage-appointment-window.c:3240
 msgid "Monday"
@@ -896,7 +896,7 @@ msgstr "còps"
 
 #: src/orage-appointment-window.c:3488
 msgid "Repeat until"
-msgstr ""
+msgstr "Repetir dusca"
 
 #. start time
 #: src/orage-appointment-window.c:3506 src/orage-appointment-window.c:3635
@@ -1122,7 +1122,7 @@ msgstr "Seleccionar aquesta opcion se volètz una alarma sonòra"
 
 #: src/orage-appointment-window.c:3945
 msgid "Sound command is not set"
-msgstr ""
+msgstr "La comanda de son es pas definida"
 
 #: src/orage-appointment-window.c:3974
 msgid "Repeat alarm sound"
@@ -4107,7 +4107,7 @@ msgstr ""
 
 #: org.xfce.orage.appdata.xml.in:35
 msgid "Orage Team"
-msgstr ""
+msgstr "La còla d’Orage"
 
 #: org.xfce.orage.desktop.in:4
 msgid "Orage Calendar"
