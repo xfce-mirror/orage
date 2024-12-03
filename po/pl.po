@@ -525,7 +525,7 @@ msgstr ""
 
 #: src/orage-application.c:116
 msgid "\tReleased under the terms of the GNU General Public License.\n"
-msgstr "\tWydany na zasadach licencji GNU General Public License.\n"
+msgstr "\tWydany na warunkach Powszechnej Licencji Publicznej GNU (GPL).\n"
 
 #: src/orage-application.c:117
 #, c-format
