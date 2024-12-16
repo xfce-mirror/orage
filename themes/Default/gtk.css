@@ -47,10 +47,6 @@ orage_tray_icon > row3{
    background: black;
    min-width: 3px;
 }
-#orage_day_view_task_separator{
-   background: black;
-   min-width: 1px;
-}
 #orage_todo_completed{
    color: red;
 }
