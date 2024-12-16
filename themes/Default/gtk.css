@@ -51,9 +51,9 @@ orage_tray_icon > row3{
    background: black;
    min-width: 1px;
 }
-#orage_mainbox_red{
+#orage_todo_completed{
    color: red;
 }
-#orage_mainbox_blue{
+#orage_todo_actual_now{
    color: blue;
 }
