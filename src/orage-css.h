@@ -23,7 +23,6 @@
 
 #define ORAGE_DAY_VIEW_SEPARATOR_BAR "orage_day_view_hour_line"
 #define ORAGE_DAY_VIEW_OCCUPIED_HOUR_LINE "orage_day_view_occupied_hour_line"
-#define ORAGE_DAY_VIEW_TASK_SEPARATOR "orage_day_view_task_separator"
 #define ORAGE_DAY_VIEW_ODD_HOURS "orage_day_view_odd_hours"
 #define ORAGE_DAY_VIEW_EVEN_HOURS "orage_day_view_even_hours"
 #define ORAGE_DAY_VIEW_ALL_DAY_EVENT "orage_day_view_all_day_event"
