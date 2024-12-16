@@ -778,7 +778,11 @@ static void xfical_appt_init0 (xfical_appt *appt)
     xfical_appt_init0_gdt (appt, g_date_time_new_now_local ());
 }
 
-xfical_appt *xfical_appt_alloc(void)
+/** Allocates memory and initializes it for new ical_type structure.
+ *  @return NULL if failed and pointer to xfical_appt if successfull. You must
+ *          free it after not being used anymore. (g_free())
+ */
+static xfical_appt *xfical_appt_alloc (void)
 {
     xfical_appt *appt;
 
