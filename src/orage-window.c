@@ -377,7 +377,7 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
     gchar *tip_title, *tip_location, *tip_note;
     char  *s_time, *s_timeonly, *e_time, *c_time, *na;
     GDateTime *today;
-    GDateTime *gdt_e_time;
+    GDateTime *gdt_end_time;
 
     /***** add data into the vbox *****/
     ev = gtk_event_box_new();
@@ -421,19 +421,19 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
     /***** set color *****/
     if (todo) {
         if (appt->use_due_time)
-            gdt_e_time = g_date_time_ref (appt->endtimecur);
+            gdt_end_time = g_date_time_ref (appt->endtimecur);
         else
-            gdt_e_time = g_date_time_new_local (9999, 12, 31, 23, 59, 59);
+            gdt_end_time = g_date_time_new_local (9999, 12, 31, 23, 59, 59);
 
-        if (g_date_time_compare (gdt_e_time, today) < 0) /* gone */
-            gtk_widget_set_name (label, ORAGE_MAINBOX_RED);
-        else if (g_date_time_compare (appt->starttimecur, today) <= 0
-             &&  g_date_time_compare (gdt_e_time, today) >= 0)
+        if (g_date_time_compare (gdt_end_time, today) < 0) /* gone */
+            gtk_widget_set_name (label, ORAGE_TODO_COMPLETED);
+        else if ((g_date_time_compare (appt->starttimecur, today) <= 0) &&
+                 (g_date_time_compare (gdt_end_time, today) >= 0))
         {
-            gtk_widget_set_name (label, ORAGE_MAINBOX_BLUE);
+            gtk_widget_set_name (label, ORAGE_TODO_ACTUAL_NOW);
         }
 
-        g_date_time_unref (gdt_e_time);
+        g_date_time_unref (gdt_end_time);
     }
 
     /***** set tooltip hint *****/
