@@ -29,8 +29,8 @@
 #define ORAGE_DAY_VIEW_ALL_DAY_EVENT "orage_day_view_all_day_event"
 #define ORAGE_DAY_VIEW_TODAY "orage_day_view_today"
 #define ORAGE_DAY_VIEW_SUNDAY "orage_day_view_sunday"
-#define ORAGE_MAINBOX_RED "orage_mainbox_red"
-#define ORAGE_MAINBOX_BLUE "orage_mainbox_blue"
+#define ORAGE_TODO_COMPLETED "orage_todo_completed"
+#define ORAGE_TODO_ACTUAL_NOW "orage_todo_actual_now"
 
 extern void orage_css_set_theme (void);
 
