@@ -63,7 +63,7 @@ typedef struct _Itf
     GtkWidget *set_ontop_checkbutton;
     GtkWidget *show_taskbar_checkbutton;
     GtkWidget *show_pager_checkbutton;
-#ifdef HAVE_X11_TRAY_ICON
+#if defined (HAVE_X11_TRAY_ICON) || defined (HAVE_AYATANA_APPINDICATOR)
     GtkWidget *show_systray_checkbutton;
 #endif
     /* info boxes */

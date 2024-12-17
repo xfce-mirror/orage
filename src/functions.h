@@ -167,11 +167,6 @@ gboolean orage_status_icon_is_embedded (GtkStatusIcon *status_icon);
 void orage_status_icon_set_visible (GtkStatusIcon *status_icon,
                                     gboolean visible);
 
-/* This is wrapper for deprecated 'gtk_status_icon_new_from_pixbuf', it is used
- * only for suppress deprecated warning message.
- */
-GtkStatusIcon *orage_status_icon_new_from_pixbuf (GdkPixbuf *pixbuf);
-
 /* This is wrapper for deprecated 'gtk_status_icon_set_tooltip_markup', it is
  * used only for suppress deprecated warning message.
  */
