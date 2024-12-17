@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Erkki Moorits
+ * Copyright (c) 2021-2024 Erkki Moorits
  * Copyright (c) 2007-2013 Juha Kautto  (juha at xfce.org)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -158,8 +158,8 @@ static GtkWidget *build_separator_bar (const gchar *type_name)
 static GtkWidget *build_line (const GtkWidget *hour_line)
 {
     const gboolean first = (hour_line == NULL);
-    const gchar *type_name = first ? ORAGE_DAY_VIEW_SEPARATOR_BAR
-                                   : ORAGE_DAY_VIEW_OCCUPIED_HOUR_LINE;
+    const gchar *type_name = first ? ORAGE_WEEK_WINDOW_SEPARATOR_BAR
+                                   : ORAGE_WEEK_WINDOW_OCCUPIED_HOUR_LINE;
 
     return build_separator_bar (type_name);
 }
@@ -598,9 +598,9 @@ static gchar *get_row_colour (const gint row)
     const gint row_mod = row % 2;
 
     if (row_mod == 0)
-        return ORAGE_DAY_VIEW_EVEN_HOURS;
+        return ORAGE_WEEK_WINDOW_EVEN_HOURS;
     else
-        return ORAGE_DAY_VIEW_ODD_HOURS;
+        return ORAGE_WEEK_WINDOW_ODD_HOURS;
 }
 
 static void add_row (OrageWeekWindow *dw, const xfical_appt *appt)
@@ -669,7 +669,7 @@ static void add_row (OrageWeekWindow *dw, const xfical_appt *appt)
     gtk_container_add(GTK_CONTAINER(ev), lab);
 
     if (appt->allDay) { /* whole day event */
-        gtk_widget_set_name (ev, ORAGE_DAY_VIEW_ALL_DAY_EVENT);
+        gtk_widget_set_name (ev, ORAGE_WEEK_WINDOW_ALL_DAY_EVENT);
         if (dw->header[col] == NULL) { /* first data */
             hb = gtk_grid_new ();
             dw->header[col] = hb;
@@ -692,9 +692,9 @@ static void add_row (OrageWeekWindow *dw, const xfical_appt *appt)
     else {
         row_mod = row % 2;
         if (row_mod == 0)
-            gtk_widget_set_name (ev, ORAGE_DAY_VIEW_EVEN_HOURS);
+            gtk_widget_set_name (ev, ORAGE_WEEK_WINDOW_EVEN_HOURS);
         else if (row_mod == 1)
-            gtk_widget_set_name (ev, ORAGE_DAY_VIEW_ODD_HOURS);
+            gtk_widget_set_name (ev, ORAGE_WEEK_WINDOW_ODD_HOURS);
 
         if (dw->element[row][col] == NULL) {
             hb = gtk_grid_new ();
@@ -843,7 +843,7 @@ static void fill_days (OrageWeekWindow *dw, const gint days)
 
         g_object_set (ev, "hexpand", TRUE,
                           "halign", GTK_ALIGN_FILL, NULL);
-        gtk_widget_set_name (ev, ORAGE_DAY_VIEW_ALL_DAY_EVENT);
+        gtk_widget_set_name (ev, ORAGE_WEEK_WINDOW_ALL_DAY_EVENT);
 
         gtk_grid_attach_next_to (GTK_GRID (hb), ev,
                                  marker, GTK_POS_RIGHT, 1, 1);
@@ -865,9 +865,9 @@ static void fill_days (OrageWeekWindow *dw, const gint days)
 
                 row_mod = row % 2;
                 if (row_mod == 0)
-                    gtk_widget_set_name (ev, ORAGE_DAY_VIEW_EVEN_HOURS);
+                    gtk_widget_set_name (ev, ORAGE_WEEK_WINDOW_EVEN_HOURS);
                 else if (row_mod == 1)
-                    gtk_widget_set_name (ev, ORAGE_DAY_VIEW_ODD_HOURS);
+                    gtk_widget_set_name (ev, ORAGE_WEEK_WINDOW_ODD_HOURS);
             }
 
             g_object_set (ev, "hexpand", TRUE,
@@ -1067,12 +1067,12 @@ static void build_day_view_table (OrageWeekWindow *dw)
         g_free (date);
 
         if (is_same_date (gdt_today, gdt0))
-            gtk_widget_set_name (button, ORAGE_DAY_VIEW_TODAY);
+            gtk_widget_set_name (button, ORAGE_WEEK_WINDOW_TODAY);
 
         if ((i - 1) % 7 == sunday)
         {
             label = gtk_bin_get_child (GTK_BIN(button));
-            gtk_widget_set_name (label, ORAGE_DAY_VIEW_SUNDAY);
+            gtk_widget_set_name (label, ORAGE_WEEK_WINDOW_SUNDAY);
         }
 
         g_signal_connect (button, "clicked",
