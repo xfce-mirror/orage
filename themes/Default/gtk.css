@@ -24,26 +24,26 @@ orage_tray_icon > row3{
    font-size: 44%;
    color: blue;
 }
-#orage_day_view_today{
+#orage_week_window_today{
    background: gold;
    font-weight: bold;
    border-width: 1px;
 }
-#orage_day_view_sunday{
+#orage_week_window_sunday{
    color: red;
-}#orage_day_view_all_day_event{
+}#orage_week_window_all_day_event{
    background: lightgray;
-}#orage_day_view_odd_hours{
+}#orage_week_window_odd_hours{
    background: lightgray;
    padding: 4px
-}#orage_day_view_even_hours{
+}#orage_week_window_even_hours{
    background: rgb(239, 235, 230);
    padding: 4px
-}#orage_day_view_hour_line{
+}#orage_week_window_hour_line{
    background: white;
    min-width: 3px;
 }
-#orage_day_view_occupied_hour_line{
+#orage_week_window_occupied_hour_line{
    background: black;
    min-width: 3px;
 }

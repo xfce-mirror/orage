@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Erkki Moorits
+ * Copyright (c) 2021-2024 Erkki Moorits
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,13 +21,13 @@
 #ifndef ORAGE_CSS_H
 #define ORAGE_CSS_H 1
 
-#define ORAGE_DAY_VIEW_SEPARATOR_BAR "orage_day_view_hour_line"
-#define ORAGE_DAY_VIEW_OCCUPIED_HOUR_LINE "orage_day_view_occupied_hour_line"
-#define ORAGE_DAY_VIEW_ODD_HOURS "orage_day_view_odd_hours"
-#define ORAGE_DAY_VIEW_EVEN_HOURS "orage_day_view_even_hours"
-#define ORAGE_DAY_VIEW_ALL_DAY_EVENT "orage_day_view_all_day_event"
-#define ORAGE_DAY_VIEW_TODAY "orage_day_view_today"
-#define ORAGE_DAY_VIEW_SUNDAY "orage_day_view_sunday"
+#define ORAGE_WEEK_WINDOW_SEPARATOR_BAR "orage_week_window_hour_line"
+#define ORAGE_WEEK_WINDOW_OCCUPIED_HOUR_LINE "orage_week_window_occupied_hour_line"
+#define ORAGE_WEEK_WINDOW_ODD_HOURS "orage_week_window_odd_hours"
+#define ORAGE_WEEK_WINDOW_EVEN_HOURS "orage_week_window_even_hours"
+#define ORAGE_WEEK_WINDOW_ALL_DAY_EVENT "orage_week_window_all_day_event"
+#define ORAGE_WEEK_WINDOW_TODAY "orage_week_window_today"
+#define ORAGE_WEEK_WINDOW_SUNDAY "orage_week_window_sunday"
 #define ORAGE_TODO_COMPLETED "orage_todo_completed"
 #define ORAGE_TODO_ACTUAL_NOW "orage_todo_actual_now"
 
