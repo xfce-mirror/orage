@@ -36,7 +36,6 @@
 #include <gdk/gdkevents.h>
 #include <gdk/gdkx.h>
 
-#include "orage-i18n.h"
 #include "orage-window.h"
 #include "functions.h"
 #include "ical-code.h"
@@ -44,12 +43,30 @@
 #include "orage-appointment-window.h"
 #include "parameters.h"
 #include "tray_icon.h"
+#include "orage-tray-icon-common.h"
 
 #ifdef HAVE_LIBXFCE4UI
 #include <libxfce4ui/libxfce4ui.h>
 #endif
 
 #define ORAGE_TRAYICON ((GtkStatusIcon *)g_par.trayIcon)
+
+static gchar *title_str = NULL;
+static gchar *desc_str = NULL;
+
+/* This is wrapper for deprecated 'gtk_status_icon_new_from_pixbuf', it is used
+ * only for suppress deprecated warning message.
+ */
+static inline GtkStatusIcon *orage_status_icon_new_from_pixbuf (GdkPixbuf *pixbuf)
+{
+    GtkStatusIcon *status_icon;
+
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+    status_icon = gtk_status_icon_new_from_pixbuf (pixbuf);
+    G_GNUC_END_IGNORE_DEPRECATIONS
+
+    return status_icon;
+}
 
 static GtkStyleContext *get_style (GtkStyleContext *parent,
                                    const char *selector)
@@ -77,52 +94,6 @@ static GtkStyleContext *get_style (GtkStyleContext *parent,
     gtk_widget_path_unref (path);
 
     return context;
-}
-
-static GtkWidget *orage_image_menu_item (const gchar *label,
-                                         const gchar *icon_name)
-{
-#ifdef HAVE_LIBXFCE4UI
-    return xfce_gtk_image_menu_item_new_from_icon_name (
-            label, NULL, NULL, NULL, NULL, icon_name, NULL);
-#else
-    (void)icon_name;
-
-    return gtk_menu_item_new_with_mnemonic (label);
-#endif
-}
-
-static void on_Today_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
-                               gpointer user_data)
-{
-    GDateTime *gdt;
-
-    gdt = g_date_time_new_now_local ();
-    orage_select_date (orage_window_get_calendar (ORAGE_WINDOW (user_data)),
-                       gdt);
-    g_date_time_unref (gdt);
-    (void)create_el_win (NULL);
-}
-
-static void on_preferences_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
-                                     G_GNUC_UNUSED gpointer user_data)
-{
-    show_parameters ();
-}
-
-static void on_orage_quit_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
-                                    gpointer orage_app)
-{
-    g_application_quit (G_APPLICATION (orage_app));
-}
-
-static void on_new_appointment_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
-                                         G_GNUC_UNUSED gpointer user_data)
-{
-    GtkWidget *appointment_window;
-
-    appointment_window = orage_appointment_window_new_now ();
-    gtk_window_present (GTK_WINDOW (appointment_window));
 }
 
 static void toggle_visible_cb (G_GNUC_UNUSED GtkStatusIcon *status_icon,
@@ -396,46 +367,19 @@ static GdkPixbuf *orage_create_icon (void)
     return(pixbuf);
 }
 
-static GtkWidget *create_TrayIcon_menu(void)
+static void update_tooltip (void *icon)
 {
-    GtkWidget *trayMenu;
-    GtkWidget *menuItem;
-    OrageApplication *app;
+    gchar *tooltip_str;
+    GtkStatusIcon *status_icon = GTK_STATUS_ICON (icon);
 
-    trayMenu = gtk_menu_new();
-
-    menuItem = orage_image_menu_item (_("Today"), "go-home");
-    app = ORAGE_APPLICATION (g_application_get_default ());
-    g_signal_connect (menuItem, "activate", G_CALLBACK(on_Today_activate),
-                      orage_application_get_window (app));
-    gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
-
-    menuItem = gtk_separator_menu_item_new();
-    gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
-    menuItem = orage_image_menu_item(_("New appointment"), "document-new");
-    g_signal_connect(menuItem, "activate"
-            , G_CALLBACK(on_new_appointment_activate), NULL);
-    gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
-
-    menuItem = gtk_separator_menu_item_new();
-    gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
-    menuItem = orage_image_menu_item (_("Preferences"), "preferences-system");
-    g_signal_connect(menuItem, "activate"
-            , G_CALLBACK(on_preferences_activate), NULL);
-    gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
-
-    menuItem = gtk_separator_menu_item_new();
-    gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
-    menuItem = orage_image_menu_item(_("Quit"), "application-exit");
-    g_signal_connect (menuItem, "activate",
-                      G_CALLBACK (on_orage_quit_activate), app);
-    gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
-
-    menuItem = gtk_separator_menu_item_new();
-    gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
-
-    gtk_widget_show_all(trayMenu);
-    return(trayMenu);
+    if (desc_str)
+    {
+        tooltip_str = g_strconcat (title_str, "\n", desc_str, NULL);
+        orage_status_icon_set_tooltip_markup (status_icon, tooltip_str);
+        g_free (tooltip_str);
+    }
+    else
+        orage_status_icon_set_tooltip_markup (status_icon, title_str);
 }
 
 GtkStatusIcon *orage_create_trayicon (void)
@@ -456,7 +400,7 @@ GtkStatusIcon *orage_create_trayicon (void)
     g_object_ref_sink(trayIcon);
 
     /* Create the tray icon popup menu. */
-    trayMenu = create_TrayIcon_menu();
+    trayMenu = orage_tray_icon_create_menu ();
 
     g_signal_connect (G_OBJECT (trayIcon), "activate",
                       G_CALLBACK (toggle_visible_cb), NULL);
@@ -481,4 +425,33 @@ void orage_refresh_trayicon(void)
         orage_status_icon_set_visible (trayIcon, TRUE);
         g_par.trayIcon = trayIcon;
     }
+}
+
+void orage_status_icon_set_title (void *icon, const gchar *title)
+{
+    if (title_str)
+        g_free (title_str);
+
+    title_str = g_strdup (title);
+
+    update_tooltip (icon);
+}
+
+void orage_status_icon_set_description (void *icon, const gchar *desc)
+{
+    if (desc_str)
+        g_free (desc_str);
+
+    desc_str = g_strdup (desc);
+
+    update_tooltip (icon);
+}
+
+void orage_status_icon_cleanup (void)
+{
+    if (title_str)
+        g_free (title_str);
+
+    if (desc_str)
+        g_free (desc_str);
 }
