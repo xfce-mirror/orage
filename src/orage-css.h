@@ -21,13 +21,13 @@
 #ifndef ORAGE_CSS_H
 #define ORAGE_CSS_H 1
 
-#define ORAGE_WEEK_WINDOW_SEPARATOR_BAR "orage_week_window_hour_line"
-#define ORAGE_WEEK_WINDOW_OCCUPIED_HOUR_LINE "orage_week_window_occupied_hour_line"
-#define ORAGE_WEEK_WINDOW_ODD_HOURS "orage_week_window_odd_hours"
-#define ORAGE_WEEK_WINDOW_EVEN_HOURS "orage_week_window_even_hours"
-#define ORAGE_WEEK_WINDOW_ALL_DAY_EVENT "orage_week_window_all_day_event"
-#define ORAGE_WEEK_WINDOW_TODAY "orage_week_window_today"
-#define ORAGE_WEEK_WINDOW_SUNDAY "orage_week_window_sunday"
+#define ORAGE_WEEK_WINDOW_SEPARATOR_BAR "hour-line"
+#define ORAGE_WEEK_WINDOW_OCCUPIED_HOUR_LINE "hour-line-occupied"
+#define ORAGE_WEEK_WINDOW_ODD_HOURS "odd-hours"
+#define ORAGE_WEEK_WINDOW_EVEN_HOURS "even-hours"
+#define ORAGE_WEEK_WINDOW_ALL_DAY_EVENT "all-day-event"
+#define ORAGE_WEEK_WINDOW_TODAY "today"
+#define ORAGE_WEEK_WINDOW_SUNDAY "sunday"
 #define ORAGE_TODO_COMPLETED "orage_todo_completed"
 #define ORAGE_TODO_ACTUAL_NOW "orage_todo_actual_now"
 
