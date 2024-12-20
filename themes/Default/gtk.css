@@ -59,9 +59,10 @@ orage_tray_icon > row3{
    min-width: 3px;
 }
 
-#orage_todo_completed{
+#OrageWindow #todo-completed{
    color: red;
 }
-#orage_todo_actual_now{
+
+#OrageWindow #todo-actual-now{
    color: blue;
 }
