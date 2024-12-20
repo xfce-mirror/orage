@@ -28,8 +28,8 @@
 #define ORAGE_WEEK_WINDOW_ALL_DAY_EVENT "all-day-event"
 #define ORAGE_WEEK_WINDOW_TODAY "today"
 #define ORAGE_WEEK_WINDOW_SUNDAY "sunday"
-#define ORAGE_TODO_COMPLETED "orage_todo_completed"
-#define ORAGE_TODO_ACTUAL_NOW "orage_todo_actual_now"
+#define ORAGE_TODO_COMPLETED "todo-completed"
+#define ORAGE_TODO_ACTUAL_NOW "todo-actual-now"
 
 extern void orage_css_set_theme (void);
 
