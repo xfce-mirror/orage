@@ -731,6 +731,8 @@ static void orage_window_class_init (OrageWindowClass *klass)
 
 static void orage_window_init (OrageWindow *self)
 {
+    gtk_widget_set_name (GTK_WIDGET (self), "OrageWindow");
+
     self->main_box = gtk_grid_new ();
     gtk_container_add (GTK_CONTAINER (self), self->main_box);
     gtk_widget_show (self->main_box);
