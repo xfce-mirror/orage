@@ -244,7 +244,7 @@ msgstr ""
 
 #: src/interface.c:673 src/orage-appointment-window.c:2359
 msgid "_Remove"
-msgstr ""
+msgstr "_Elimină"
 
 #: src/interface.c:693
 msgid "***** No foreign files *****"
@@ -443,7 +443,7 @@ msgstr "Fișier extern:"
 #: src/interface.c:1453 src/orage-appointment-window.c:2435
 #: src/parameters.c:1411
 msgid "_Add"
-msgstr ""
+msgstr "_Adaugă"
 
 #: src/interface.c:1468
 msgid "Visible name:"
