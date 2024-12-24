@@ -871,7 +871,7 @@ msgstr "Început"
 #. completed (only for TODO)
 #: src/orage-appointment-window.c:3511 src/orage-appointment-window.c:3705
 msgid "Completed"
-msgstr ""
+msgstr "Sarcină finalizată"
 
 #: src/orage-appointment-window.c:3514
 msgid ""
@@ -912,7 +912,7 @@ msgstr "Generale"
 #. type
 #: src/orage-appointment-window.c:3584
 msgid "Type"
-msgstr ""
+msgstr "Tip"
 
 #: src/orage-appointment-window.c:3591
 msgid ""
@@ -972,7 +972,7 @@ msgstr "Disponibilitate"
 
 #: src/orage-appointment-window.c:3708
 msgid "Done"
-msgstr ""
+msgstr "Finalizat"
 
 #. categories
 #: src/orage-appointment-window.c:3733
@@ -1626,7 +1626,7 @@ msgstr ""
 
 #: src/reminder.c:648
 msgid "_Stop"
-msgstr ""
+msgstr "_Stop"
 
 #: src/reminder.c:656
 msgid "Postpone"
