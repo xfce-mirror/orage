@@ -52,7 +52,7 @@ typedef struct _parameters
     gboolean show_todos;
     gint     show_event_days;
     gboolean show_pager;
-#ifdef HAVE_X11_TRAY_ICON
+#if defined (HAVE_X11_TRAY_ICON) || defined (HAVE_AYATANA_APPINDICATOR)
     gboolean show_systray;
 #endif
     gboolean show_taskbar;
