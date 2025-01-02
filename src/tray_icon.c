@@ -51,8 +51,8 @@
 
 #define ORAGE_TRAYICON ((GtkStatusIcon *)g_par.trayIcon)
 
-static GtkStyleContext *get_style (GtkStyleContext *parent,
-                                   const char *selector)
+static GtkStyleContext *get_style_context (GtkStyleContext *parent,
+                                           const char *selector)
 {
     GtkWidgetPath *path;
     GtkStyleContext *context;
@@ -192,7 +192,7 @@ static GtkStyleContext *get_row_style (GtkStyleContext *style_context,
 
     (void)g_snprintf (buf, sizeof (buf) - 1 , "row-%d", row_idx);
 
-    return get_style (style_context, buf);
+    return get_style_context (style_context, buf);
 }
 
 static const char *get_row_x_data (const gint line)
@@ -334,7 +334,8 @@ static GdkPixbuf *create_dynamic_icon (void)
     surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, width, height);
     g_assert (surface != NULL);
 
-    style_context = get_style (NULL, "OrageTrayIcon");
+    style_context = get_style_context (NULL, "OrageTrayIcon");
+
     cr = create_icon_background (surface, style_context, width, height);
 
     gtk_style_context_get_border (style_context,
