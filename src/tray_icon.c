@@ -190,7 +190,7 @@ static GtkStyleContext *get_row_style (GtkStyleContext *style_context,
 {
     char buf[8];
 
-    (void)g_snprintf (buf, sizeof (buf) - 1 , "row%d", row_idx);
+    (void)g_snprintf (buf, sizeof (buf) - 1 , "row-%d", row_idx);
 
     return get_style (style_context, buf);
 }
@@ -334,7 +334,7 @@ static GdkPixbuf *create_dynamic_icon (void)
     surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, width, height);
     g_assert (surface != NULL);
 
-    style_context = get_style (NULL, "orage_tray_icon");
+    style_context = get_style (NULL, "OrageTrayIcon");
     cr = create_icon_background (surface, style_context, width, height);
 
     gtk_style_context_get_border (style_context,
