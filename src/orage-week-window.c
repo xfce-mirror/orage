@@ -606,7 +606,6 @@ static gchar *get_row_css_name (const gint row)
 static void add_row (OrageWeekWindow *dw, const xfical_appt *appt)
 {
     gint row, start_row, end_row, days;
-    gint row_mod;
     gint col, start_col, end_col, first_col, last_col;
     gchar *tip, *start_date, *end_date, *tmp_title, *tip_title;
     gchar *tmp_note, *tip_note;
@@ -812,7 +811,6 @@ static void fill_days (OrageWeekWindow *dw, const gint days)
 {
     const gint days_n1 = days + 1;
     gint row, col;
-    gint row_mod;
     GtkWidget *ev, *hb;
     GtkWidget *marker;
 
@@ -1109,7 +1107,6 @@ void orage_week_window_refresh (OrageWeekWindow *dw)
 
 static void orage_week_window_constructed (GObject *object)
 {
-    GtkCssProvider *provider;
     OrageWeekWindow *self = (OrageWeekWindow *)object;
 
     if (g_par.dw_size_x || g_par.dw_size_y)
