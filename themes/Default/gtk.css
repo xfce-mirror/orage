@@ -1,5 +1,5 @@
 OrageTrayIcon{
-   background-color: @theme_borders_color;
+   background-color: rgb(239, 235, 230);
    border-color: black;
    border-radius: 16px;
    border-top-width: 2px;
