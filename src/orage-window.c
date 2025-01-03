@@ -427,8 +427,8 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
 
         if (g_date_time_compare (gdt_end_time, today) < 0) /* gone */
             gtk_widget_set_name (label, ORAGE_TODO_COMPLETED);
-        else if ((g_date_time_compare (appt->starttimecur, today) <= 0) &&
-                 (g_date_time_compare (gdt_end_time, today) >= 0))
+        else if ((g_date_time_compare (appt->starttimecur, today) <= 0)
+                 && (g_date_time_compare (gdt_end_time, today) >= 0))
         {
             gtk_widget_set_name (label, ORAGE_TODO_ACTUAL_NOW);
         }
