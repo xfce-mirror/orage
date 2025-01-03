@@ -49,8 +49,6 @@
 #define DATE_KEY "button-date"
 #define ORAGE_WEEK_WINDOW_START_DATE_PROPERTY "day-window-start-date"
 
-#define BASE_CSS ".orage-week-window { font-size: initial; color: #ff00ea; }"
-
 struct _OrageWeekWindow
 {
     GtkWindow parent;
@@ -1131,15 +1129,6 @@ static void orage_week_window_constructed (GObject *object)
     set_scroll_position (self);
 
     G_OBJECT_CLASS (orage_week_window_parent_class)->constructed (object);
-
-    gtk_style_context_add_class (
-        gtk_widget_get_style_context (GTK_WIDGET (self)), "orage-week-window");
-    provider = gtk_css_provider_new ();
-    gtk_css_provider_load_from_data (provider, BASE_CSS, -1, NULL);
-    gtk_style_context_add_provider (gtk_widget_get_style_context (GTK_WIDGET (self)),
-                                    GTK_STYLE_PROVIDER (provider),
-                                    GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
-    g_object_unref (provider);
 }
 
 static void orage_week_window_finalize (GObject *object)
