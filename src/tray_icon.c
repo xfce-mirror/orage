@@ -190,7 +190,7 @@ static GtkStyleContext *get_row_style (GtkStyleContext *style_context,
 {
     char buf[8];
 
-    (void)g_snprintf (buf, sizeof (buf) - 1 , "row-%d", row_idx);
+    (void)g_snprintf (buf, sizeof (buf) - 1, "row-%d", row_idx);
 
     return get_style_context (style_context, buf);
 }
