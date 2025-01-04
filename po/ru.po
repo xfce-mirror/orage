@@ -16,103 +16,22 @@
 # Victor Golovanenko <drygdryg2014@yandex.ru>, 2024
 # Xfce Bot <transifex@xfce.org>, 2024
 # Andrei Stepanov, 2024
+# vladiruzz, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-04-04 00:51+0200\n"
+"POT-Creation-Date: 2024-10-16 12:50+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Andrei Stepanov, 2024\n"
+"Last-Translator: vladiruzz, 2025\n"
 "Language-Team: Russian (https://app.transifex.com/xfce/teams/16840/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
-
-#. ********* File menu *********
-#. File menu
-#. File menu stuff
-#. File menu
-#: src/day-view.c:289 src/event-list.c:1135 src/interface.c:860
-#: src/orage-appointment-window.c:2907 src/orage-window.c:279
-msgid "_File"
-msgstr "_Файл"
-
-#. ********* View menu *********
-#. View menu
-#: src/day-view.c:299 src/event-list.c:1158 src/orage-window.c:310
-msgid "_View"
-msgstr "_Вид"
-
-#. ********* Go menu   *********
-#: src/day-view.c:313 src/event-list.c:1177
-msgid "_Go"
-msgstr "_Перейти"
-
-#: src/day-view.c:386 src/event-list.c:1223
-msgid "New"
-msgstr "Создать"
-
-#: src/day-view.c:391
-msgid "Back one week"
-msgstr "Назад на одну неделю"
-
-#: src/day-view.c:393
-msgid "Back one day"
-msgstr "Назад на один день"
-
-#: src/day-view.c:395 src/day-view.c:468 src/event-list.c:1080
-#: src/event-list.c:1234 src/functions.c:145
-#: src/orage-appointment-window.c:1734 src/orage-appointment-window.c:1749
-#: src/tray_icon.c:407
-msgid "Today"
-msgstr "Сегодня"
-
-#: src/day-view.c:397
-msgid "Forward one day"
-msgstr "Вперёд на один день"
-
-#: src/day-view.c:399
-msgid "Forward one week"
-msgstr "Вперёд на одну неделю"
-
-#: src/day-view.c:404 src/event-list.c:1241
-msgid "Refresh"
-msgstr "Обновить"
-
-#: src/day-view.c:409 src/event-list.c:1248 src/interface.c:879
-msgid "Close"
-msgstr "Закрыть"
-
-#: src/day-view.c:466 src/event-list.c:1078 src/functions.c:143
-#: src/orage-appointment-window.c:1732 src/orage-appointment-window.c:1747
-msgid "Pick the date"
-msgstr "Выбор даты"
-
-#: src/day-view.c:468
-msgid "_OK"
-msgstr "_ОК"
-
-#: src/day-view.c:596
-msgid "Unknown"
-msgstr "Неизвестно"
-
-#. start time
-#: src/day-view.c:833 src/orage-appointment-window.c:3506
-#: src/orage-appointment-window.c:3635
-msgid "Start"
-msgstr "Начало"
-
-#: src/day-view.c:841
-msgid "Number of days to show"
-msgstr "Число отображаемых дней"
-
-#: src/day-view.c:1072
-msgid "Orage - day view"
-msgstr "Просмотр дней — Orage"
 
 #. date only appointment
 #: src/event-list.c:186
@@ -153,9 +72,47 @@ msgstr "Нет, отменить удаление"
 msgid "Yes, remove them"
 msgstr "Да, удалить"
 
+#: src/event-list.c:1078 src/functions.c:143
+#: src/orage-appointment-window.c:1732 src/orage-appointment-window.c:1747
+#: src/orage-week-window.c:530
+msgid "Pick the date"
+msgstr "Выбор даты"
+
+#: src/event-list.c:1080 src/event-list.c:1234 src/functions.c:145
+#: src/orage-appointment-window.c:1734 src/orage-appointment-window.c:1749
+#: src/orage-week-window.c:459 src/orage-week-window.c:532 src/tray_icon.c:407
+msgid "Today"
+msgstr "Сегодня"
+
+#. ********* File menu *********
+#. File menu
+#. File menu stuff
+#. ********* File menu *********
+#. File menu
+#: src/event-list.c:1135 src/interface.c:860
+#: src/orage-appointment-window.c:2907 src/orage-week-window.c:353
+#: src/orage-window.c:279
+msgid "_File"
+msgstr "_Файл"
+
 #: src/event-list.c:1141 src/orage-appointment-window.c:2926
 msgid "D_uplicate"
 msgstr "_Дублировать"
+
+#. ********* View menu *********
+#. View menu
+#: src/event-list.c:1158 src/orage-week-window.c:363 src/orage-window.c:310
+msgid "_View"
+msgstr "_Вид"
+
+#. ********* Go menu   *********
+#: src/event-list.c:1177 src/orage-week-window.c:377
+msgid "_Go"
+msgstr "_Перейти"
+
+#: src/event-list.c:1223 src/orage-week-window.c:450
+msgid "New"
+msgstr "Создать"
 
 #: src/event-list.c:1225 src/orage-appointment-window.c:3551
 msgid "Duplicate"
@@ -173,9 +130,17 @@ msgstr "Назад"
 msgid "Forward"
 msgstr "Вперёд"
 
+#: src/event-list.c:1241 src/orage-week-window.c:468
+msgid "Refresh"
+msgstr "Обновить"
+
 #: src/event-list.c:1243
 msgid "Find"
 msgstr "Найти"
+
+#: src/event-list.c:1248 src/interface.c:879 src/orage-week-window.c:473
+msgid "Close"
+msgstr "Закрыть"
 
 #: src/event-list.c:1250
 msgid "Dayview"
@@ -543,7 +508,7 @@ msgstr "Используется это внутреннее имя для от�
 msgid "Exchange data - Orage"
 msgstr "Обмен данными — Orage"
 
-#: src/main.c:50 src/orage-appointment-window.c:711
+#: src/main.c:53 src/orage-appointment-window.c:711
 #: org.xfce.orage.appdata.xml.in:7
 msgid "Orage"
 msgstr "Календарь Orage"
@@ -606,39 +571,39 @@ msgstr "\tИспользуется libxfce4ui: да\n"
 msgid "\tUsing libxfce4ui: no\n"
 msgstr "\tИспользуется libxfce4ui: нет\n"
 
-#: src/orage-application.c:567
+#: src/orage-application.c:565
 msgid "Open today's tasks"
 msgstr "Открыть задачи на сегодня"
 
-#: src/orage-application.c:576
+#: src/orage-application.c:574
 msgid "Add new appointment"
 msgstr "Добавить новую встречу"
 
-#: src/orage-application.c:585
+#: src/orage-application.c:583
 msgid "Show preferences form"
 msgstr "Показать форму настроек"
 
-#: src/orage-application.c:594
+#: src/orage-application.c:592
 msgid "Make Orage visible/unvisible"
 msgstr "Показать/скрыть Orage"
 
-#: src/orage-application.c:603
+#: src/orage-application.c:601
 msgid "Add a foreign file"
 msgstr "Добавить внешний файл"
 
-#: src/orage-application.c:612
+#: src/orage-application.c:610
 msgid "Remove a foreign file"
 msgstr "Удалить посторонний файл"
 
-#: src/orage-application.c:621
+#: src/orage-application.c:619
 msgid "Import appointments from file to Orage"
 msgstr "Импорт назначений из файла в Orage"
 
-#: src/orage-application.c:630
+#: src/orage-application.c:628
 msgid "Export appointments from Orage to file"
 msgstr "Экспортировать встречи из Orange в файл"
 
-#: src/orage-application.c:639
+#: src/orage-application.c:637
 msgid "Show version of Orage"
 msgstr "Показать версию Orage"
 
@@ -944,6 +909,12 @@ msgstr "раз"
 #: src/orage-appointment-window.c:3488
 msgid "Repeat until"
 msgstr "Повторять до"
+
+#. start time
+#: src/orage-appointment-window.c:3506 src/orage-appointment-window.c:3635
+#: src/orage-week-window.c:897
+msgid "Start"
+msgstr "Начало"
 
 #. completed (only for TODO)
 #: src/orage-appointment-window.c:3511 src/orage-appointment-window.c:3705
@@ -1382,6 +1353,38 @@ msgstr "Период синхронизации в минутах"
 msgid "_Close"
 msgstr "_Закрыть"
 
+#: src/orage-week-window.c:455
+msgid "Back one week"
+msgstr "Назад на одну неделю"
+
+#: src/orage-week-window.c:457
+msgid "Back one day"
+msgstr "Назад на один день"
+
+#: src/orage-week-window.c:461
+msgid "Forward one day"
+msgstr "Вперёд на один день"
+
+#: src/orage-week-window.c:463
+msgid "Forward one week"
+msgstr "Вперёд на одну неделю"
+
+#: src/orage-week-window.c:532
+msgid "_OK"
+msgstr "_ОК"
+
+#: src/orage-week-window.c:660
+msgid "Unknown"
+msgstr "Неизвестно"
+
+#: src/orage-week-window.c:905
+msgid "Number of days to show"
+msgstr "Число отображаемых дней"
+
+#: src/orage-week-window.c:1220
+msgid "Orage - day view"
+msgstr "Просмотр дней — Orage"
+
 #: src/orage-window.c:294
 msgid "_Exchange data"
 msgstr "Об_мен данными"
@@ -1706,7 +1709,7 @@ msgstr "Настройки синхронизации"
 msgid "Synchronization sources"
 msgstr "Источники синхронизации"
 
-#: src/parameters.c:1431 org.xfce.orage.desktop.in:25
+#: src/parameters.c:1431 org.xfce.orage.desktop.in:26
 msgid "Orage Preferences"
 msgstr "Настройки Orage"
 
@@ -4095,6 +4098,10 @@ msgstr "Параметры календаря Xfce 4 (Orage)"
 msgid "Orage Calendar Preferences"
 msgstr "Параметры календаря Orage"
 
+#: plugin/org.xfce.orage-settings.desktop.in:14 org.xfce.orage.desktop.in:15
+msgid "calendar;date;schedule;appointment;time;"
+msgstr "календарь;дата;расписание;встреча;время;"
+
 #: org.xfce.orage.appdata.xml.in:11
 msgid ""
 "Orage aims to be a fast and easy to use graphical calendar. It uses portable"
@@ -4134,10 +4141,10 @@ msgstr "Простой календарь"
 msgid "Calendar"
 msgstr "Календарь"
 
-#: org.xfce.orage.desktop.in:17
+#: org.xfce.orage.desktop.in:18
 msgid "Show Today"
 msgstr "Показать этот день"
 
-#: org.xfce.orage.desktop.in:21
+#: org.xfce.orage.desktop.in:22
 msgid "New Appointment"
 msgstr "Новая встреча"
