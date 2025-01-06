@@ -1,4 +1,4 @@
-orage_tray_icon{
+OrageTrayIcon{
    background-color: rgb(239, 235, 230);
    border-color: black;
    border-radius: 16px;
@@ -8,52 +8,66 @@ orage_tray_icon{
    border-left-width: 2px;
    border-style: solid;
    font-size: 85px;
-}orage_tray_icon > row1{
+}
+
+OrageTrayIcon > row-1{
    font-family: Ariel;
    font-size: 41%;
    color: blue;
-}orage_tray_icon > row2{
+}
+
+OrageTrayIcon > row-2{
    font-family: Sans;
    font-weight: bold;
    font-size: 100%;
    color: red;
 }
-orage_tray_icon > row3{
+
+OrageTrayIcon > row-3{
    font-family: Ariel;
    font-weight: bold;
    font-size: 44%;
    color: blue;
 }
-#orage_day_view_today{
+
+#OrageWeekWindow #today{
    background: gold;
    font-weight: bold;
    border-width: 1px;
 }
-#orage_day_view_sunday{
+
+#OrageWeekWindow #sunday{
    color: red;
-}#orage_day_view_all_day_event{
+}
+
+#OrageWeekWindow #all-day-event{
    background: lightgray;
-}#orage_day_view_odd_hours{
+}
+
+#OrageWeekWindow label#odd-hours{
    background: lightgray;
    padding: 4px
-}#orage_day_view_even_hours{
+}
+
+#OrageWeekWindow #even-hours{
    background: rgb(239, 235, 230);
    padding: 4px
-}#orage_day_view_hour_line{
+}
+
+#OrageWeekWindow #hour-line{
    background: white;
    min-width: 3px;
 }
-#orage_day_view_occupied_hour_line{
+
+#OrageWeekWindow label#hour-line-occupied{
    background: black;
    min-width: 3px;
 }
-#orage_day_view_task_separator{
-   background: black;
-   min-width: 1px;
-}
-#orage_mainbox_red{
+
+#OrageWindow #todo-completed{
    color: red;
 }
-#orage_mainbox_blue{
+
+#OrageWindow #todo-actual-now{
    color: blue;
 }

@@ -565,7 +565,7 @@ static void orage_application_init (OrageApplication *application)
             .description = _("Open today's tasks"),
             .arg_description = NULL,
         },
-                {
+        {
             .long_name = "new-appointment",
             .short_name = 'n',
             .flags = G_OPTION_FLAG_NONE,
