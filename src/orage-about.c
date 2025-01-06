@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Erkki Moorits
+ * Copyright (c) 2021-2025 Erkki Moorits
  * Copyright (c) 2005-2011 Juha Kautto   (juha at xfce.org)
  * Copyright (c) 2004-2006 Mickael Graf  (korbinus at xfce.org)
  *
@@ -42,7 +42,7 @@ void orage_show_about (GtkWindow *parent)
     gtk_show_about_dialog (parent,
                            "authors", authors,
                            "comments", _("Orage is a time-managing application for the Xfce desktop environment"),
-                           "copyright", "Copyright \xc2\xa9 2003-2023 Orage Team",
+                           "copyright", "Copyright \xc2\xa9 2003-2025 Orage Team",
                            "destroy-with-parent", TRUE,
                            "license-type", GTK_LICENSE_GPL_2_0,
                            "logo-icon-name", ORAGE_APP_ID,
