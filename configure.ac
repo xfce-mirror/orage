@@ -141,9 +141,9 @@ dnl *** Support for Orage tray icon              ***
 dnl ************************************************
 have_x11_tray_icon="no"
 AC_ARG_ENABLE([x11_tray_icon],
-    AS_HELP_STRING([--enable-x11-tray-icon], [add X11 tray icon, not comptible with Wayland (defaut=yes)])
+    AS_HELP_STRING([--enable-x11-tray-icon], [add X11 tray icon, not comptible with Wayland (defaut=no)])
     AS_HELP_STRING([--disable-x11-tray-icon], [do not add tray icon, Wayland compatible]),
-    [], [enable_x11_tray_icon=yes])
+    [], [enable_x11_tray_icon=no])
 if test x"$enable_x11_tray_icon" = x"yes"; then
     AC_DEFINE([HAVE_X11_TRAY_ICON], [1], [Define to enable X11 tray icon])
     have_x11_tray_icon="yes"
