@@ -216,6 +216,7 @@ static void orage_application_activate (GApplication *app)
 
     if (list)
     {
+        /* Orage already running. */
         if (gtk_widget_get_visible (GTK_WIDGET (list->data)) &&
             self->toggle_option)
         {
@@ -244,14 +245,9 @@ static void orage_application_activate (GApplication *app)
         gtk_window_set_destroy_with_parent (GTK_WINDOW (window), TRUE);
 
         set_parameters ();
-        if (g_par.start_visible)
-            hide_main_window = FALSE;
-        else if (g_par.start_minimized)
-        {
+        if (g_par.start_minimized)
             gtk_window_iconify (GTK_WINDOW (window));
-            hide_main_window = FALSE;
-        }
-        else
+        else if (g_par.start_visible == FALSE)
         {
             /* hidden */
             gtk_widget_realize (window);
