@@ -1,8 +1,9 @@
-4.19.0 (2024-01-30)
+4.20.0 (2024-01-07)
+======
 - Redesigned appointment window recurrence tab. Related with Issue #23.
-- Internal changes, changed appontment window to subclass of GtkWindow
-- Internal changes, changed mainbox to subclass of GtkApplicationWindow
-- Moved internal CSS string to separte theme file
+- Internal changes, changed appointment window to subclass of GtkWindow
+- Internal changes, changed mainbox to subclass of GtkApplicationWindow (MR !48)
+- Moved internal CSS string to separte theme file (MR !47, MR !65)
 - Added command line parameter '-i' to import ICS files
 - Rudimentary synchronization support: added support for calling a
   user-specified synchronization command
@@ -12,7 +13,13 @@
 - Fixed memory leak and error handling when timezone info loading fails.
   (MR !56)
 - Added support for TZDIR environment variable (Issue #28).
-- Added desktop actions for 'today' and 'new appointment' (MR !58)
+- Updated desktop file: added actions for 'today' and 'new appointment'
+  (MR !58), added Keywords (MR! 64)
+- Recurrence tab improvements: fixed dependency from ICAL RRULE (MR !59, MR !52,
+  Issue #23, Issue #29)
+- Use gettext and XDT_VERSION_INIT (MR !60)
+- Internal changes, changed day window (MR !62)
+- Disabled tray icon by default, (MR !66, MR !64)
 
 4.18.0 (2023-02-08)
 ======
