@@ -1,4 +1,4 @@
-4.20.0 (2024-01-07)
+4.20.0 (2025-01-07)
 ======
 - Redesigned appointment window recurrence tab. Related with Issue #23.
 - Internal changes, changed appointment window to subclass of GtkWindow
@@ -20,6 +20,17 @@
 - Use gettext and XDT_VERSION_INIT (MR !60)
 - Internal changes, changed day window (MR !62)
 - Disabled tray icon by default, (MR !66, MR !64)
+- Translation Updates:
+  Albanian, Amharic, Arabic, Armenian (Armenia), Asturian, Basque,
+  Belarusian, Bulgarian, Catalan, Chinese (China), Chinese (Taiwan),
+  Croatian, Czech, Danish, Dutch, English (Australia), English (United
+  Kingdom), Esperanto, Estonian, Finnish, French, Galician, German,
+  Greek, Hebrew, Hungarian, Icelandic, Indonesian, Italian, Japanese,
+  Kazakh, Korean, Latvian, Lithuanian, Malay, Norwegian Bokmål,
+  Norwegian Nynorsk, Occitan (post 1500), Polish, Portuguese (Brazil),
+  Portuguese, Romanian, Russian, Serbian, Slovak, Slovenian, Spanish,
+  Swedish, Thai, Turkish, Ukrainian, Urdu (Pakistan), Urdu, Uyghur,
+  Vietnamese
 
 4.18.0 (2023-02-08)
 ======
