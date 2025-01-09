@@ -29,20 +29,20 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
-#include <time.h>
 #include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <time.h>
+#include <unistd.h>
 
+#include <gdk/gdk.h>
 #include <glib.h>
 #include <glib/gprintf.h>
 #include <glib/gstdio.h>
 #include <gtk/gtk.h>
-#include <gdk/gdk.h>
 
-#include "orage-i18n.h"
 #include "functions.h"
+#include "orage-i18n.h"
 #include "parameters.h"
 #include "tz_zoneinfo_read.h"
 

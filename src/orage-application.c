@@ -24,19 +24,19 @@
 
 #include "orage-application.h"
 
-#include "reminder.h"
-#include "parameters.h"
+#include "event-list.h"
+#include "functions.h"
+#include "ical-code.h"
+#include "interface.h"
 #include "orage-appointment-window.h"
-#include "orage-i18n.h"
 #include "orage-css.h"
+#include "orage-i18n.h"
 #include "orage-sleep-monitor.h"
 #include "orage-window.h"
-#include "interface.h"
-#include "ical-code.h"
-#include "functions.h"
-#include "event-list.h"
-#include <gtk/gtk.h>
+#include "parameters.h"
+#include "reminder.h"
 #include <glib-2.0/gio/gapplication.h>
+#include <gtk/gtk.h>
 
 #ifdef ENABLE_SYNC
 #include "orage-sync-ext-command.h"
