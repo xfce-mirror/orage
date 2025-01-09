@@ -35,7 +35,6 @@
 #include "ical-code.h"
 #include "functions.h"
 #include "event-list.h"
-#include <libxfce4util/libxfce4util.h>
 #include <gtk/gtk.h>
 #include <glib-2.0/gio/gapplication.h>
 
