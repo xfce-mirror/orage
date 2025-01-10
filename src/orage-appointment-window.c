@@ -3606,30 +3606,27 @@ static void build_general_page (OrageAppointmentWindow *apptw)
     gtk_widget_set_tooltip_text(apptw->Type_journal_rb
             , _("Make a note that something happened. For example:\nRemark that your mother called or first snow came."));
 
-    orage_table_add_row(apptw->TableGeneral
-            , apptw->Type_label, hbox
-            , row = 0, (GTK_EXPAND | GTK_FILL), (0));
+    orage_table_add_row (apptw->TableGeneral, apptw->Type_label, hbox, row = 0,
+                         OTBL_EXPAND | OTBL_FILL, 0);
 
     /* title */
     apptw->Title_label = gtk_label_new (_("Title"));
     apptw->Title_entry = gtk_entry_new();
-    orage_table_add_row(apptw->TableGeneral
-            , apptw->Title_label, apptw->Title_entry
-            , ++row, (GTK_EXPAND | GTK_FILL), (0));
+    orage_table_add_row (apptw->TableGeneral, apptw->Title_label,
+                         apptw->Title_entry, ++row, OTBL_EXPAND | OTBL_FILL, 0);
 
     /* location */
     apptw->Location_label = gtk_label_new(_("Location"));
     apptw->Location_entry = gtk_entry_new();
-    orage_table_add_row(apptw->TableGeneral
-            , apptw->Location_label, apptw->Location_entry
-            , ++row, (GTK_EXPAND | GTK_FILL), (0));
+    orage_table_add_row (apptw->TableGeneral, apptw->Location_label,
+                         apptw->Location_entry, ++row,
+                         OTBL_EXPAND | OTBL_FILL, 0);
 
     /* All day */
     apptw->AllDay_checkbutton =
             gtk_check_button_new_with_mnemonic(_("All day event"));
-    orage_table_add_row(apptw->TableGeneral
-            , NULL, apptw->AllDay_checkbutton
-            , ++row, (GTK_EXPAND | GTK_FILL), (0));
+    orage_table_add_row (apptw->TableGeneral, NULL, apptw->AllDay_checkbutton,
+                         ++row, OTBL_EXPAND | OTBL_FILL, 0);
 
     /* start time */
     apptw->Start_label = gtk_label_new(_("Start"));
@@ -3642,9 +3639,9 @@ static void build_general_page (OrageAppointmentWindow *apptw)
             apptw->StartTime_spin_hh,
             apptw->StartTime_spin_mm,
             apptw->StartTimezone_button);
-    orage_table_add_row(apptw->TableGeneral
-            , apptw->Start_label, apptw->StartTime_hbox
-            , ++row, (GTK_SHRINK | GTK_FILL), (GTK_SHRINK | GTK_FILL));
+    orage_table_add_row (apptw->TableGeneral, apptw->Start_label,
+                         apptw->StartTime_hbox, ++row,
+                         OTBL_SHRINK | OTBL_FILL, OTBL_SHRINK | OTBL_FILL);
 
     /* end time */
     apptw->End_label = gtk_label_new(_("End"));
@@ -3667,9 +3664,9 @@ static void build_general_page (OrageAppointmentWindow *apptw)
                                        "halign", GTK_ALIGN_FILL, NULL);
     gtk_grid_attach_next_to (GTK_GRID (apptw->End_hbox),
             apptw->EndTime_hbox, NULL, GTK_POS_RIGHT, 1, 1);
-    orage_table_add_row(apptw->TableGeneral
-            , apptw->End_label, apptw->End_hbox
-            , ++row, (GTK_SHRINK | GTK_FILL), (GTK_SHRINK | GTK_FILL));
+    orage_table_add_row (apptw->TableGeneral, apptw->End_label, apptw->End_hbox,
+                         ++row, OTBL_SHRINK | OTBL_FILL,
+                         OTBL_SHRINK | OTBL_FILL);
 
     /* duration */
     apptw->Dur_hbox = gtk_grid_new ();
@@ -3689,17 +3686,15 @@ static void build_general_page (OrageAppointmentWindow *apptw)
             , apptw->Dur_spin_mm, apptw->Dur_spin_mm_label);
     gtk_grid_attach_next_to (GTK_GRID (apptw->Dur_hbox),
             apptw->Dur_time_hbox, NULL, GTK_POS_RIGHT, 1, 1);
-    orage_table_add_row(apptw->TableGeneral
-            , NULL, apptw->Dur_hbox
-            , ++row, (GTK_FILL), (GTK_FILL));
+    orage_table_add_row (apptw->TableGeneral, NULL, apptw->Dur_hbox, ++row,
+                         OTBL_FILL, OTBL_FILL);
 
     /* Availability (only for EVENT) */
     apptw->Availability_label = gtk_label_new(_("Availability"));
     apptw->Availability_cb = orage_create_combo_box_with_content(
             availability_array, 2);
-    orage_table_add_row(apptw->TableGeneral
-            , apptw->Availability_label, apptw->Availability_cb
-            , ++row, (GTK_FILL), (GTK_FILL));
+    orage_table_add_row (apptw->TableGeneral, apptw->Availability_label,
+                         apptw->Availability_cb, ++row, OTBL_FILL, OTBL_FILL);
 
     /* completed (only for TODO) */
     apptw->Completed_label = gtk_label_new(_("Completed"));
@@ -3725,9 +3720,8 @@ static void build_general_page (OrageAppointmentWindow *apptw)
                                              "halign", GTK_ALIGN_FILL, NULL);
     gtk_grid_attach_next_to (GTK_GRID (apptw->Completed_hbox),
             apptw->CompletedTime_hbox, NULL, GTK_POS_RIGHT, 1, 1);
-    orage_table_add_row(apptw->TableGeneral
-            , apptw->Completed_label, apptw->Completed_hbox
-            , ++row, (GTK_FILL), (GTK_FILL));
+    orage_table_add_row (apptw->TableGeneral, apptw->Completed_label,
+                         apptw->Completed_hbox, ++row, OTBL_FILL, OTBL_FILL);
 
     /* categories */
     apptw->Categories_label = gtk_label_new(_("Categories"));
@@ -3755,9 +3749,9 @@ static void build_general_page (OrageAppointmentWindow *apptw)
                              GTK_POS_RIGHT, 1, 1);
     gtk_widget_set_tooltip_text(apptw->Categories_button
             , _("update colors for categories."));
-    orage_table_add_row(apptw->TableGeneral
-            , apptw->Categories_label, apptw->Categories_hbox
-            , ++row, (GTK_EXPAND | GTK_FILL), (0));
+    orage_table_add_row (apptw->TableGeneral, apptw->Categories_label,
+                         apptw->Categories_hbox, ++row,
+                         OTBL_EXPAND | OTBL_FILL, 0);
 
     /* priority */
     apptw->Priority_label = gtk_label_new(_("Priority"));
@@ -3768,9 +3762,8 @@ static void build_general_page (OrageAppointmentWindow *apptw)
     hbox = gtk_grid_new ();
     gtk_grid_attach_next_to (GTK_GRID (hbox), apptw->Priority_spin, NULL,
                              GTK_POS_RIGHT, 1, 1);
-    orage_table_add_row(apptw->TableGeneral
-            , apptw->Priority_label, hbox
-            , ++row, (GTK_FILL), (GTK_FILL));
+    orage_table_add_row (apptw->TableGeneral, apptw->Priority_label, hbox,
+                         ++row, OTBL_FILL, OTBL_FILL);
 
     /* note */
     apptw->Note = gtk_label_new(_("Note"));
@@ -3789,9 +3782,8 @@ static void build_general_page (OrageAppointmentWindow *apptw)
             , GTK_WRAP_WORD);
     gtk_container_add(GTK_CONTAINER(apptw->Note_Scrolledwindow)
             , apptw->Note_textview);
-    orage_table_add_row(apptw->TableGeneral
-            , apptw->Note, event
-            , ++row, (GTK_EXPAND | GTK_FILL), (GTK_EXPAND | GTK_FILL));
+    orage_table_add_row (apptw->TableGeneral, apptw->Note, event, ++row,
+                         OTBL_EXPAND | OTBL_FILL, OTBL_EXPAND | OTBL_FILL);
 
     gtk_widget_set_tooltip_text(event
             , _("These shorthand commands take effect immediately:\n    <D> inserts current date in local date format\n    <T> inserts time\n    <DT> inserts date and time.\n\nThese are converted only later when they are seen:\n    <&Ynnnn> is translated to current year minus nnnn.\n(This can be used for example in birthday reminders to tell how old the person will be.)"));
@@ -3904,9 +3896,8 @@ static void build_alarm_page (OrageAppointmentWindow *apptw)
     gtk_grid_attach_next_to (GTK_GRID (apptw->Alarm_hbox), event, NULL,
                              GTK_POS_RIGHT, 1, 1);
 
-    orage_table_add_row(apptw->TableAlarm
-            , apptw->Alarm_label, apptw->Alarm_hbox
-            , row = 0, (GTK_FILL), (GTK_FILL));
+    orage_table_add_row (apptw->TableAlarm, apptw->Alarm_label,
+                         apptw->Alarm_hbox, row = 0, OTBL_FILL, OTBL_FILL);
     gtk_widget_set_tooltip_text(event
             , _("Often you want to get alarm:\n 1) before Event start\n 2) before Todo end\n 3) after Todo start"));
 
@@ -3922,9 +3913,8 @@ static void build_alarm_page (OrageAppointmentWindow *apptw)
     gtk_grid_attach_next_to (GTK_GRID (apptw->Per_hbox), apptw->Per_checkbutton,
                              NULL, GTK_POS_RIGHT, 1, 1);
 
-    orage_table_add_row(apptw->TableAlarm
-            , NULL, apptw->Per_hbox
-            , ++row, (GTK_FILL), (GTK_FILL));
+    orage_table_add_row (apptw->TableAlarm, NULL, apptw->Per_hbox, ++row,
+                         OTBL_FILL, OTBL_FILL);
 
     /***** Audio Alarm *****/
     audio_enabled = ORAGE_STR_EXISTS (g_par.sound_application);
@@ -3965,9 +3955,8 @@ static void build_alarm_page (OrageAppointmentWindow *apptw)
                              apptw->Sound_button, NULL, GTK_POS_RIGHT,
                              1, 1);
 
-    orage_table_add_row(apptw->TableAlarm
-            , apptw->Sound_label, apptw->Sound_hbox
-            , ++row, (GTK_FILL), (GTK_FILL));
+    orage_table_add_row (apptw->TableAlarm, apptw->Sound_label,
+                         apptw->Sound_hbox, ++row, OTBL_FILL, OTBL_FILL);
 
     apptw->SoundRepeat_hbox = gtk_grid_new ();
     apptw->SoundRepeat_checkbutton =
@@ -4007,9 +3996,8 @@ static void build_alarm_page (OrageAppointmentWindow *apptw)
                              apptw->SoundRepeat_spin_len_label, NULL,
                              GTK_POS_RIGHT, 1, 1);
 
-    orage_table_add_row(apptw->TableAlarm
-            , NULL, apptw->SoundRepeat_hbox
-            , ++row, (GTK_EXPAND | GTK_FILL), (0));
+    orage_table_add_row (apptw->TableAlarm, NULL, apptw->SoundRepeat_hbox,
+                         ++row, OTBL_EXPAND | OTBL_FILL, 0);
 
     /***** Display Alarm *****/
     apptw->Display_label = gtk_label_new(_("Visual"));
@@ -4023,9 +4011,9 @@ static void build_alarm_page (OrageAppointmentWindow *apptw)
                              apptw->Display_checkbutton_orage, NULL,
                              GTK_POS_RIGHT, 1, 1);
 
-    orage_table_add_row(apptw->TableAlarm
-            , apptw->Display_label, apptw->Display_hbox_orage
-            , ++row, (GTK_EXPAND | GTK_FILL), (0));
+    orage_table_add_row (apptw->TableAlarm, apptw->Display_label,
+                         apptw->Display_hbox_orage, ++row,
+                         OTBL_EXPAND | OTBL_FILL, 0);
 
 #ifdef HAVE_NOTIFY
     apptw->Display_hbox_notify = gtk_grid_new ();
@@ -4066,9 +4054,8 @@ static void build_alarm_page (OrageAppointmentWindow *apptw)
                              apptw->Display_spin_expire_notify_label, NULL,
                              GTK_POS_RIGHT, 1, 1);
 
-    orage_table_add_row(apptw->TableAlarm
-            , NULL, apptw->Display_hbox_notify
-            , ++row, (GTK_EXPAND | GTK_FILL), (0));
+    orage_table_add_row (apptw->TableAlarm, NULL, apptw->Display_hbox_notify,
+                         ++row, OTBL_EXPAND | OTBL_FILL, 0);
 #endif
 
     /***** Procedure Alarm *****/
@@ -4093,9 +4080,8 @@ static void build_alarm_page (OrageAppointmentWindow *apptw)
                              apptw->Proc_entry, NULL,
                              GTK_POS_RIGHT, 1, 1);
 
-    orage_table_add_row(apptw->TableAlarm
-            , apptw->Proc_label, apptw->Proc_hbox
-            , ++row, (GTK_FILL), (GTK_FILL));
+    orage_table_add_row (apptw->TableAlarm, apptw->Proc_label, apptw->Proc_hbox,
+                         ++row, OTBL_FILL, OTBL_FILL);
 
     /***** Test Alarm *****/
     separator = gtk_separator_new (GTK_ORIENTATION_HORIZONTAL);
@@ -4238,7 +4224,7 @@ static void build_recurrence_page (OrageAppointmentWindow *apptw)
                              GTK_POS_RIGHT, 1, 1);
     orage_table_add_row (recur_table, frequency_label,
                          GTK_WIDGET (frequency_box), row++,
-                         GTK_EXPAND | GTK_FILL, GTK_FILL);
+                         OTBL_EXPAND | OTBL_FILL, OTBL_FILL);
 
     /****************************** Recurrence ********************************/
     apptw->recurrence_frequency_box = GTK_STACK (gtk_stack_new ());
@@ -4267,20 +4253,20 @@ static void build_recurrence_page (OrageAppointmentWindow *apptw)
 
     orage_table_add_row (recur_table, NULL,
                          GTK_WIDGET (apptw->recurrence_frequency_box), row++,
-                         GTK_EXPAND | GTK_FILL, 0);
+                         OTBL_EXPAND | OTBL_FILL, 0);
 
     /******************************* Limit ************************************/
     limit_label = gtk_label_new (_("Limit"));
     apptw->recurrence_limit_box = build_limits_box (apptw);
     orage_table_add_row (recur_table, limit_label, apptw->recurrence_limit_box,
-                         row++, GTK_EXPAND | GTK_FILL, 0);
+                         row++, OTBL_EXPAND | OTBL_FILL, 0);
 
     /******************************* TODO base (only for TODOs) ***************/
     apptw->Recur_todo_base_label = gtk_label_new (_("TODO base"));
     apptw->Recur_todo_base_hbox = build_todo_box_cell (apptw);
     orage_table_add_row (recur_table, apptw->Recur_todo_base_label,
                          apptw->Recur_todo_base_hbox, row++,
-                         GTK_EXPAND | GTK_FILL, 0);
+                         OTBL_EXPAND | OTBL_FILL, 0);
 
     /* exceptions */
     apptw->Recur_exception_label = gtk_label_new(_("Exceptions"));
@@ -4345,9 +4331,9 @@ static void build_recurrence_page (OrageAppointmentWindow *apptw)
                              apptw->Recur_exception_incl_time_hbox, NULL,
                              GTK_POS_BOTTOM, 1, 1);
 
-    orage_table_add_row (recur_table
-            , apptw->Recur_exception_label, apptw->Recur_exception_hbox
-            , ++row ,(GTK_EXPAND | GTK_FILL), (0));
+    orage_table_add_row (recur_table, apptw->Recur_exception_label,
+                         apptw->Recur_exception_hbox, ++row ,
+                         OTBL_EXPAND | OTBL_FILL, 0);
 
     /* calendars showing the action days */
     apptw->Recur_calendar_label = gtk_label_new(_("Action dates"));
@@ -4383,9 +4369,9 @@ static void build_recurrence_page (OrageAppointmentWindow *apptw)
                                    m, y);
     }
 
-    orage_table_add_row (recur_table
-            , apptw->Recur_calendar_label, apptw->Recur_calendar_hbox
-            , ++row ,(GTK_EXPAND | GTK_FILL), (0));
+    orage_table_add_row (recur_table, apptw->Recur_calendar_label,
+                         apptw->Recur_calendar_hbox, ++row,
+                         OTBL_EXPAND | OTBL_FILL, 0);
 }
 
 static void enable_recurrence_page_signals (OrageAppointmentWindow *apptw)

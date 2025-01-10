@@ -250,8 +250,8 @@ GtkWidget *orage_table_new (const guint border)
 
 void orage_table_add_row (GtkWidget *table, GtkWidget *label,
                           GtkWidget *input, const guint row,
-                          const GtkAttachOptions input_x_option,
-                          const GtkAttachOptions input_y_option)
+                          const OrageTableAttachOptions input_x_option,
+                          const OrageTableAttachOptions input_y_option)
 {
     if (label) {
         gtk_grid_attach (GTK_GRID (table), label, 0, row, 1, 1);
@@ -263,21 +263,21 @@ void orage_table_add_row (GtkWidget *table, GtkWidget *label,
     if (input) {
         gtk_grid_attach (GTK_GRID (table), input, 1, row, 1, 1);
 
-        if (input_x_option & GTK_FILL)
+        if (input_x_option & OTBL_FILL)
             g_object_set (input, "halign", GTK_ALIGN_FILL, NULL);
-        if (input_x_option & GTK_EXPAND)
+        if (input_x_option & OTBL_EXPAND)
             g_object_set (input, "hexpand", TRUE, NULL);
-        if (input_x_option & GTK_SHRINK)
+        if (input_x_option & OTBL_SHRINK)
         {
             g_object_set (input, "halign", GTK_ALIGN_CENTER,
                                  "hexpand", FALSE, NULL);
         }
 
-        if (input_y_option & GTK_FILL)
+        if (input_y_option & OTBL_FILL)
             g_object_set (input, "valign", GTK_ALIGN_FILL, NULL);
-        if (input_y_option & GTK_EXPAND)
+        if (input_y_option & OTBL_EXPAND)
             g_object_set (input, "vexpand", TRUE, NULL);
-        if (input_y_option & GTK_SHRINK)
+        if (input_y_option & OTBL_SHRINK)
         {
             g_object_set (input, "valign", GTK_ALIGN_CENTER,
                                  "vexpand", FALSE, NULL);

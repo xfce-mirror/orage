@@ -676,9 +676,8 @@ static void refresh_foreign_files(intf_win *intf_w, const gboolean first)
                                      GTK_POS_RIGHT, 1, 1);
             g_snprintf (num, sizeof (num), "%02d", i + 1);
             label = gtk_label_new(num);
-            orage_table_add_row(intf_w->for_cur_table
-                    , label, hbox
-                    , i, (GTK_EXPAND | GTK_FILL), (0));
+            orage_table_add_row (intf_w->for_cur_table, label, hbox, i,
+                                 OTBL_EXPAND | OTBL_FILL, 0);
 
             g_signal_connect((gpointer)button, "clicked"
                     , G_CALLBACK(for_remove_button_clicked),GINT_TO_POINTER(i));
