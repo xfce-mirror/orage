@@ -46,6 +46,23 @@
 
 #define DATE_KEY "button-date"
 
+/** Denotes the expansion properties that a widget will have when it (or its
+ *  parent) is resized.
+ */
+typedef enum
+{
+    /** The widget should expand to take up any extra space in its container
+     *  that has been allocated.
+     */
+    OTBL_EXPAND = 1 << 0,
+
+    /** The widget should shrink as and when possible. */
+    OTBL_SHRINK = 1 << 1,
+
+    /** The widget should fill the space allocated to it. */
+    OTBL_FILL   = 1 << 2
+} OrageTableAttachOptions;
+
 GtkWidget *orage_create_combo_box_with_content(const gchar *text[], int size);
 gboolean orage_date_button_clicked (GtkWidget *button, GtkWidget *win);
 gboolean orage_exec(const gchar *cmd, gboolean *cmd_active, GError **error);
@@ -58,8 +75,8 @@ GtkWidget *orage_toolbar_append_separator(GtkWidget *toolbar, gint pos);
 GtkWidget *orage_table_new (guint border);
 void orage_table_add_row (GtkWidget *table, GtkWidget *label,
                           GtkWidget *input, guint row,
-                          GtkAttachOptions input_x_option,
-                          GtkAttachOptions input_y_option);
+                          OrageTableAttachOptions input_x_option,
+                          OrageTableAttachOptions input_y_option);
 
 GtkWidget *orage_menu_new(const gchar *menu_header_title, GtkWidget *menu_bar);
 GtkWidget *orage_image_menu_item_new_from_stock(const gchar *stock_id

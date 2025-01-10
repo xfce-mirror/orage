@@ -1321,8 +1321,7 @@ static void build_event_tab(el_win *el)
     gtk_grid_attach_next_to (GTK_GRID (hbox), el->event_show_old_checkbutton,
                              NULL, GTK_POS_RIGHT, 1, 1);
 
-    orage_table_add_row(el->event_notebook_page
-            , label, hbox, 0, (GTK_FILL), (0));
+    orage_table_add_row (el->event_notebook_page, label, hbox, 0, OTBL_FILL, 0);
 
     gtk_notebook_append_page(GTK_NOTEBOOK(el->Notebook)
             , el->event_notebook_page, el->event_tab_label);
@@ -1365,8 +1364,8 @@ static void build_journal_tab(el_win *el)
                             DATE_KEY, gdt, (GDestroyNotify)g_date_time_unref);
 
     g_free (sdate);
-    orage_table_add_row(el->journal_notebook_page
-            , label, el->journal_start_button, 0, (GTK_FILL), (0));
+    orage_table_add_row (el->journal_notebook_page, label,
+                         el->journal_start_button, 0, OTBL_FILL, 0);
 
     gtk_notebook_append_page(GTK_NOTEBOOK(el->Notebook)
             , el->journal_notebook_page, el->journal_tab_label);
@@ -1383,8 +1382,8 @@ static void build_search_tab(el_win *el)
 
     label = gtk_label_new(_("Search text "));
     el->search_entry = gtk_entry_new();
-    orage_table_add_row(el->search_notebook_page
-            , label, el->search_entry, 0, (GTK_EXPAND | GTK_FILL), (0));
+    orage_table_add_row (el->search_notebook_page, label, el->search_entry, 0,
+                         OTBL_EXPAND | OTBL_FILL, 0);
 
     gtk_notebook_append_page(GTK_NOTEBOOK(el->Notebook)
             , el->search_notebook_page, el->search_tab_label);
