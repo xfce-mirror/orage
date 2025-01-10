@@ -1,4 +1,5 @@
 /*
+ * Copyright (C) 2025 Erkki Moorits
  * Copyright (C) 2022 Christian Henz <chrhenz@gmx.de>
  *
  * This library is free software; you can redistribute it and/or modify it
@@ -25,11 +26,7 @@
 
 #include <gio/gio.h>
 
-#include <libxfce4util/libxfce4util.h>
-
 #include "orage-sleep-monitor.h"
-
-
 
 /* Configuration:
  *
@@ -42,7 +39,6 @@
 
 #define SLEEP_MONITOR_USE_LOGIND 1
 #define SLEEP_MONITOR_USE_CONSOLEKIT 1
-
 
 #define LOGIND_RUNNING() (access ("/run/systemd/seats/", F_OK) >= 0)
 
@@ -83,8 +79,6 @@ static void orage_sleep_monitor_finalize (GObject *object)
 {
   G_OBJECT_CLASS (orage_sleep_monitor_parent_class)->finalize (object);
 }
-
-
 
 #if defined (SLEEP_MONITOR_USE_LOGIND) || defined (SLEEP_MONITOR_USE_CONSOLEKIT)
 
@@ -225,7 +219,6 @@ static OrageSleepMonitor* orage_sleep_monitor_consolekit_create (void)
       "org.freedesktop.ConsoleKit.Manager");
 }
 #endif /* defined SLEEP_MONITOR_USE_CONSOLEKIT */
-
 
 /* Factory registration
  *

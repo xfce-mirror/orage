@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Erkki Moorits
+ * Copyright (c) 2021-2025 Erkki Moorits
  * Copyright (c) 2005-2013 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2003-2005 Mickael Graf (korbinus at xfce.org)
  *
@@ -29,54 +29,22 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
-#include <time.h>
 #include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <time.h>
+#include <unistd.h>
 
+#include <gdk/gdk.h>
 #include <glib.h>
 #include <glib/gprintf.h>
 #include <glib/gstdio.h>
 #include <gtk/gtk.h>
-#include <gdk/gdk.h>
-/*
-#include <libxfce4util/libxfce4util.h>
-#include <libxfcegui4/libxfcegui4.h>
-*/
 
-#include "orage-i18n.h"
 #include "functions.h"
+#include "orage-i18n.h"
 #include "parameters.h"
 #include "tz_zoneinfo_read.h"
-
-/**************************************
- *  Debugging helping functions       *
- **************************************/
-/* this is for testing only. it can be used to see where time is spent.
- * Add call program_log("dbus started") in the code and run orage like:
- * strace -ttt -f -o /tmp/logfile.strace ./orage
- * And then you can check results:
- * grep MARK /tmp/logfile.strace
- * grep MARK /tmp/logfile.strace|sed s/", F_OK) = -1 ENOENT (No such file or directory)"/\)/
- * */
-#if 0
-void program_log (const char *format, ...)
-{
-        va_list args;
-        char *formatted, *str;
-
-        va_start (args, format);
-        formatted = g_strdup_vprintf (format, args);
-        va_end (args);
-
-        str = g_strdup_printf ("MARK: %s: %s", g_get_prgname(), formatted);
-        g_free (formatted);
-
-        access (str, F_OK);
-        g_free (str);
-}
-#endif
 
 /**************************************
  *  General purpose helper functions  *

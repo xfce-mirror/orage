@@ -46,10 +46,6 @@
 
 #define DATE_KEY "button-date"
 
-#if 0
-void program_log (const char *format, ...);
-#endif
-
 GtkWidget *orage_create_combo_box_with_content(const gchar *text[], int size);
 gboolean orage_date_button_clicked (GtkWidget *button, GtkWidget *win);
 gboolean orage_exec(const gchar *cmd, gboolean *cmd_active, GError **error);
