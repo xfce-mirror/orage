@@ -45,10 +45,6 @@
 #include "parameters.h"
 #include "tray_icon.h"
 
-#ifdef HAVE_LIBXFCE4UI
-#include <libxfce4ui/libxfce4ui.h>
-#endif
-
 #define ORAGE_TRAYICON ((GtkStatusIcon *)g_par.trayIcon)
 
 static GtkStyleContext *get_style_context (GtkStyleContext *parent,
@@ -77,19 +73,6 @@ static GtkStyleContext *get_style_context (GtkStyleContext *parent,
     gtk_widget_path_unref (path);
 
     return context;
-}
-
-static GtkWidget *orage_image_menu_item (const gchar *label,
-                                         const gchar *icon_name)
-{
-#ifdef HAVE_LIBXFCE4UI
-    return xfce_gtk_image_menu_item_new_from_icon_name (
-            label, NULL, NULL, NULL, NULL, icon_name, NULL);
-#else
-    (void)icon_name;
-
-    return gtk_menu_item_new_with_mnemonic (label);
-#endif
 }
 
 static void on_Today_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
@@ -405,7 +388,7 @@ static GtkWidget *create_TrayIcon_menu(void)
 
     trayMenu = gtk_menu_new();
 
-    menuItem = orage_image_menu_item (_("Today"), "go-home");
+    menuItem = orage_image_menu_item_new (_("Today"), "go-home");
     app = ORAGE_APPLICATION (g_application_get_default ());
     g_signal_connect (menuItem, "activate", G_CALLBACK(on_Today_activate),
                       orage_application_get_window (app));
@@ -413,21 +396,23 @@ static GtkWidget *create_TrayIcon_menu(void)
 
     menuItem = gtk_separator_menu_item_new();
     gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
-    menuItem = orage_image_menu_item(_("New appointment"), "document-new");
+    menuItem = orage_image_menu_item_new(_("New appointment"), "document-new");
     g_signal_connect(menuItem, "activate"
             , G_CALLBACK(on_new_appointment_activate), NULL);
     gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
 
     menuItem = gtk_separator_menu_item_new();
     gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
-    menuItem = orage_image_menu_item (_("Preferences"), "preferences-system");
+
+    menuItem = orage_image_menu_item_new_from_stock ("gtk-preferences", NULL);
+
     g_signal_connect(menuItem, "activate"
             , G_CALLBACK(on_preferences_activate), NULL);
     gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
 
     menuItem = gtk_separator_menu_item_new();
     gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
-    menuItem = orage_image_menu_item(_("Quit"), "application-exit");
+    menuItem = orage_image_menu_item_new(_("Quit"), "application-exit");
     g_signal_connect (menuItem, "activate",
                       G_CALLBACK (on_orage_quit_activate), app);
     gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
