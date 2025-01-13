@@ -79,8 +79,6 @@ void orage_table_add_row (GtkWidget *table, GtkWidget *label,
                           OrageTableAttachOptions input_y_option);
 
 GtkWidget *orage_menu_new(const gchar *menu_header_title, GtkWidget *menu_bar);
-GtkWidget *orage_image_menu_item_new_from_stock(const gchar *stock_id
-        , GtkWidget *menu, GtkAccelGroup *ag);
 GtkWidget *orage_separator_menu_item_new(GtkWidget *menu);
 GtkWidget *orage_menu_item_new_with_mnemonic(const gchar *label
         , GtkWidget *menu);
@@ -220,5 +218,15 @@ gboolean orage_is_debug_logging_enabled (void);
 
 /** Open documentation web page. */
 void orage_open_help_page (void);
+
+GtkWidget *orage_image_menu_item_for_parent_new_from_stock (
+    const gchar *stock_id, GtkWidget *menu, GtkAccelGroup *accel_group);
+
+GtkWidget *orage_image_menu_item_new_from_stock (const gchar *stock_id,
+                                                   GtkAccelGroup *accel_group);
+
+GtkWidget *orage_image_menu_item_new (const gchar *label,
+                                      const gchar *icon_name);
+
 
 #endif /* !__ORAGE_FUNCTIONS_H__ */
