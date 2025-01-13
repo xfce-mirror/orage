@@ -406,11 +406,13 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
 
     g_free(tmp);
     gtk_label_set_ellipsize(GTK_LABEL(label), PANGO_ELLIPSIZE_END);
+
     g_object_set (label, "xalign", 0.0, "yalign", 0.5,
-                         "xpad", 5, "ypad", 0,
+                         "margin-start", 5,
                          "hexpand", TRUE,
                          "halign", GTK_ALIGN_FILL,
                          NULL);
+
     gtk_container_add(GTK_CONTAINER(ev), label);
     gtk_grid_attach_next_to (parentBox, ev, NULL, GTK_POS_BOTTOM, 1, 1);
     g_object_set_data_full(G_OBJECT(ev), "UID", g_strdup(appt->uid), g_free);
