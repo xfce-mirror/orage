@@ -252,8 +252,8 @@ GtkWidget *orage_table_new (const guint border)
     return grid;
 }
 
-void orage_table_add_row (GtkWidget *table, GtkWidget *label,
-                          GtkWidget *input, const guint row,
+void orage_table_add_row (GtkWidget *table, GtkWidget *label, GtkWidget *input,
+                          const guint row,
                           const OrageTableAttachOptions input_x_option,
                           const OrageTableAttachOptions input_y_option)
 {
@@ -1144,10 +1144,10 @@ void orage_open_help_page (void)
     }
 }
 
-GtkWidget* orage_image_menu_item_new_from_stock (const gchar *stock_id,
-                                                GtkAccelGroup *accel_group)
+GtkWidget *orage_image_menu_item_new_from_stock (const gchar *stock_id,
+                                                 GtkAccelGroup *accel_group)
 {
-    GtkWidget* item;
+    GtkWidget *item;
 
     G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     item = gtk_image_menu_item_new_from_stock (stock_id, accel_group);
@@ -1159,7 +1159,7 @@ GtkWidget *orage_image_menu_item_for_parent_new_from_stock (
     const gchar *stock_id, GtkWidget *menu, GtkAccelGroup *accel_group)
 {
     GtkWidget *item = orage_image_menu_item_new_from_stock (stock_id,
-                                                              accel_group);
+                                                            accel_group);
 
     gtk_container_add (GTK_CONTAINER (menu), item);
 
@@ -1171,7 +1171,7 @@ GtkWidget *orage_image_menu_item_new (const gchar *label,
 {
 #ifdef HAVE_LIBXFCE4UI
     return xfce_gtk_image_menu_item_new_from_icon_name (
-            label, NULL, NULL, NULL, NULL, icon_name, NULL);
+        label, NULL, NULL, NULL, NULL, icon_name, NULL);
 #else
     (void)icon_name;
 

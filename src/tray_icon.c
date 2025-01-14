@@ -396,7 +396,7 @@ static GtkWidget *create_TrayIcon_menu(void)
 
     menuItem = gtk_separator_menu_item_new();
     gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
-    menuItem = orage_image_menu_item_new(_("New appointment"), "document-new");
+    menuItem = orage_image_menu_item_new (_("New appointment"), "document-new");
     g_signal_connect(menuItem, "activate"
             , G_CALLBACK(on_new_appointment_activate), NULL);
     gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
@@ -412,7 +412,7 @@ static GtkWidget *create_TrayIcon_menu(void)
 
     menuItem = gtk_separator_menu_item_new();
     gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);
-    menuItem = orage_image_menu_item_new(_("Quit"), "application-exit");
+    menuItem = orage_image_menu_item_new (_("Quit"), "application-exit");
     g_signal_connect (menuItem, "activate",
                       G_CALLBACK (on_orage_quit_activate), app);
     gtk_menu_shell_append(GTK_MENU_SHELL(trayMenu), menuItem);

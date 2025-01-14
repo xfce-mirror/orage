@@ -2907,7 +2907,7 @@ static void build_menu (OrageAppointmentWindow *apptw)
     apptw->File_menu = orage_menu_new(_("_File"), apptw->Menubar);
 
     apptw->File_menu_save = orage_image_menu_item_for_parent_new_from_stock (
-            "gtk-save", apptw->File_menu, apptw->accel_group);
+        "gtk-save", apptw->File_menu, apptw->accel_group);
 
     apptw->File_menu_saveclose =
             orage_menu_item_new_with_mnemonic(_("Sav_e and close")
@@ -2919,7 +2919,7 @@ static void build_menu (OrageAppointmentWindow *apptw)
     (void)orage_separator_menu_item_new(apptw->File_menu);
 
     apptw->File_menu_revert = orage_image_menu_item_for_parent_new_from_stock (
-            "gtk-revert-to-saved", apptw->File_menu, apptw->accel_group);
+        "gtk-revert-to-saved", apptw->File_menu, apptw->accel_group);
 
     apptw->File_menu_duplicate =
             orage_menu_item_new_with_mnemonic(_("D_uplicate")
@@ -2931,12 +2931,12 @@ static void build_menu (OrageAppointmentWindow *apptw)
     (void)orage_separator_menu_item_new(apptw->File_menu);
 
     apptw->File_menu_delete = orage_image_menu_item_for_parent_new_from_stock (
-            "gtk-delete", apptw->File_menu, apptw->accel_group);
+        "gtk-delete", apptw->File_menu, apptw->accel_group);
 
     (void)orage_separator_menu_item_new(apptw->File_menu);
 
     apptw->File_menu_close = orage_image_menu_item_for_parent_new_from_stock (
-            "gtk-close", apptw->File_menu, apptw->accel_group);
+        "gtk-close", apptw->File_menu, apptw->accel_group);
 
     g_signal_connect((gpointer)apptw->File_menu_save, "activate"
             , G_CALLBACK(on_appFileSave_menu_activate_cb), apptw);
@@ -4331,7 +4331,7 @@ static void build_recurrence_page (OrageAppointmentWindow *apptw)
                              GTK_POS_BOTTOM, 1, 1);
 
     orage_table_add_row (recur_table, apptw->Recur_exception_label,
-                         apptw->Recur_exception_hbox, ++row ,
+                         apptw->Recur_exception_hbox, ++row,
                          OTBL_EXPAND | OTBL_FILL, 0);
 
     /* calendars showing the action days */

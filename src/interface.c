@@ -859,7 +859,7 @@ static void create_menu(intf_win *intf_w)
     intf_w->filemenu = orage_menu_new(_("_File"), intf_w->menubar);
 
     intf_w->filemenu_close = orage_image_menu_item_for_parent_new_from_stock (
-            "gtk-close", intf_w->filemenu, intf_w->accelgroup);
+        "gtk-close", intf_w->filemenu, intf_w->accelgroup);
 
     g_signal_connect((gpointer)intf_w->filemenu_close, "activate"
             , G_CALLBACK(filemenu_close_activated), intf_w);
