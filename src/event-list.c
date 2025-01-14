@@ -1134,7 +1134,7 @@ static void build_menu(el_win *el)
     /********** File menu **********/
     el->File_menu = orage_menu_new(_("_File"), el->Menubar);
     el->File_menu_new = orage_image_menu_item_for_parent_new_from_stock (
-            "gtk-new", el->File_menu, el->accel_group);
+        "gtk-new", el->File_menu, el->accel_group);
 
     (void)orage_separator_menu_item_new(el->File_menu);
 
@@ -1147,17 +1147,17 @@ static void build_menu(el_win *el)
     (void)orage_separator_menu_item_new(el->File_menu);
 
     el->File_menu_delete = orage_image_menu_item_for_parent_new_from_stock (
-            "gtk-delete", el->File_menu, el->accel_group);
+        "gtk-delete", el->File_menu, el->accel_group);
 
     (void)orage_separator_menu_item_new(el->File_menu);
 
     el->File_menu_close = orage_image_menu_item_for_parent_new_from_stock (
-            "gtk-close", el->File_menu, el->accel_group);
+        "gtk-close", el->File_menu, el->accel_group);
 
     /********** View menu **********/
     el->View_menu = orage_menu_new(_("_View"), el->Menubar);
     el->View_menu_refresh = orage_image_menu_item_for_parent_new_from_stock (
-            "gtk-refresh", el->View_menu, el->accel_group);
+        "gtk-refresh", el->View_menu, el->accel_group);
     gtk_widget_add_accelerator(el->View_menu_refresh
             , "activate", el->accel_group
             , GDK_KEY_r, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
@@ -1171,22 +1171,22 @@ static void build_menu(el_win *el)
     (void)orage_separator_menu_item_new(el->View_menu);
 
     el->View_menu_search = orage_image_menu_item_for_parent_new_from_stock (
-            "gtk-find", el->View_menu, el->accel_group);
+        "gtk-find", el->View_menu, el->accel_group);
 
     /********** Go menu   **********/
     el->Go_menu = orage_menu_new(_("_Go"), el->Menubar);
     el->Go_menu_today = orage_image_menu_item_for_parent_new_from_stock (
-            "gtk-home", el->Go_menu, el->accel_group);
+        "gtk-home", el->Go_menu, el->accel_group);
     gtk_widget_add_accelerator(el->Go_menu_today
             , "activate", el->accel_group
             , GDK_KEY_Home, GDK_MOD1_MASK, GTK_ACCEL_VISIBLE);
     el->Go_menu_prev = orage_image_menu_item_for_parent_new_from_stock (
-            "gtk-go-back", el->Go_menu, el->accel_group);
+        "gtk-go-back", el->Go_menu, el->accel_group);
     gtk_widget_add_accelerator(el->Go_menu_prev
             , "activate", el->accel_group
             , GDK_KEY_Left, GDK_MOD1_MASK, GTK_ACCEL_VISIBLE);
     el->Go_menu_next = orage_image_menu_item_for_parent_new_from_stock (
-            "gtk-go-forward", el->Go_menu, el->accel_group);
+        "gtk-go-forward", el->Go_menu, el->accel_group);
     gtk_widget_add_accelerator(el->Go_menu_next
             , "activate", el->accel_group
             , GDK_KEY_Right, GDK_MOD1_MASK, GTK_ACCEL_VISIBLE);

@@ -352,17 +352,17 @@ static void build_menu (OrageWeekWindow *dw)
     /********** File menu **********/
     dw->File_menu = orage_menu_new(_("_File"), dw->Menubar);
     dw->File_menu_new = orage_image_menu_item_for_parent_new_from_stock (
-            "gtk-new", dw->File_menu, dw->accel_group);
+        "gtk-new", dw->File_menu, dw->accel_group);
 
     (void)orage_separator_menu_item_new(dw->File_menu);
 
     dw->File_menu_close = orage_image_menu_item_for_parent_new_from_stock (
-            "gtk-close", dw->File_menu, dw->accel_group);
+        "gtk-close", dw->File_menu, dw->accel_group);
 
     /********** View menu **********/
     dw->View_menu = orage_menu_new(_("_View"), dw->Menubar);
     dw->View_menu_refresh = orage_image_menu_item_for_parent_new_from_stock (
-            "gtk-refresh", dw->View_menu, dw->accel_group);
+        "gtk-refresh", dw->View_menu, dw->accel_group);
     gtk_widget_add_accelerator(dw->View_menu_refresh
             , "activate", dw->accel_group
             , GDK_KEY_r, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
@@ -377,7 +377,7 @@ static void build_menu (OrageWeekWindow *dw)
     dw->Go_menu = orage_menu_new(_("_Go"), dw->Menubar);
 
     dw->Go_menu_today = orage_image_menu_item_for_parent_new_from_stock (
-            "gtk-home", dw->Go_menu, dw->accel_group);
+        "gtk-home", dw->Go_menu, dw->accel_group);
     gtk_widget_add_accelerator(dw->Go_menu_today
             , "activate", dw->accel_group
             , GDK_KEY_Home, GDK_MOD1_MASK, GTK_ACCEL_VISIBLE);
@@ -386,7 +386,7 @@ static void build_menu (OrageWeekWindow *dw)
             , GDK_KEY_KP_Home, GDK_MOD1_MASK, GTK_ACCEL_VISIBLE);
 
     dw->Go_menu_prev_week = orage_image_menu_item_for_parent_new_from_stock (
-            "gtk-go-up", dw->Go_menu, dw->accel_group);
+        "gtk-go-up", dw->Go_menu, dw->accel_group);
     gtk_widget_add_accelerator(dw->Go_menu_prev_week
             , "activate", dw->accel_group
             , GDK_KEY_Page_Up, GDK_MOD1_MASK, GTK_ACCEL_VISIBLE);
@@ -395,7 +395,7 @@ static void build_menu (OrageWeekWindow *dw)
             , GDK_KEY_KP_Page_Up, GDK_MOD1_MASK, GTK_ACCEL_VISIBLE);
 
     dw->Go_menu_prev_day = orage_image_menu_item_for_parent_new_from_stock (
-            "gtk-go-back", dw->Go_menu, dw->accel_group);
+        "gtk-go-back", dw->Go_menu, dw->accel_group);
     gtk_widget_add_accelerator(dw->Go_menu_prev_day
             , "activate", dw->accel_group
             , GDK_KEY_Left, GDK_MOD1_MASK, GTK_ACCEL_VISIBLE);
@@ -404,7 +404,7 @@ static void build_menu (OrageWeekWindow *dw)
             , GDK_KEY_KP_Left, GDK_MOD1_MASK, GTK_ACCEL_VISIBLE);
 
     dw->Go_menu_next_day = orage_image_menu_item_for_parent_new_from_stock (
-            "gtk-go-forward", dw->Go_menu, dw->accel_group);
+        "gtk-go-forward", dw->Go_menu, dw->accel_group);
     gtk_widget_add_accelerator(dw->Go_menu_next_day
             , "activate", dw->accel_group
             , GDK_KEY_Right, GDK_MOD1_MASK, GTK_ACCEL_VISIBLE);
@@ -413,7 +413,7 @@ static void build_menu (OrageWeekWindow *dw)
             , GDK_KEY_KP_Right, GDK_MOD1_MASK, GTK_ACCEL_VISIBLE);
 
     dw->Go_menu_next_week = orage_image_menu_item_for_parent_new_from_stock (
-            "gtk-go-down", dw->Go_menu, dw->accel_group);
+        "gtk-go-down", dw->Go_menu, dw->accel_group);
     gtk_widget_add_accelerator(dw->Go_menu_next_week
             , "activate", dw->accel_group
             , GDK_KEY_Page_Down, GDK_MOD1_MASK, GTK_ACCEL_VISIBLE);

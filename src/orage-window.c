@@ -279,7 +279,7 @@ static void build_menu (OrageWindow *window)
     window->mFile_menu = orage_menu_new (_("_File"), window->mMenubar);
 
     window->mFile_newApp = orage_image_menu_item_for_parent_new_from_stock (
-            "gtk-new", window->mFile_menu, window->mAccel_group);
+        "gtk-new", window->mFile_menu, window->mAccel_group);
 
     (void)orage_separator_menu_item_new (window->mFile_menu);
 
@@ -294,14 +294,15 @@ static void build_menu (OrageWindow *window)
     (void)orage_separator_menu_item_new (window->mFile_menu);
 
     window->mFile_close = orage_image_menu_item_for_parent_new_from_stock (
-            "gtk-close", window->mFile_menu, window->mAccel_group);
+        "gtk-close", window->mFile_menu, window->mAccel_group);
     window->mFile_quit = orage_image_menu_item_for_parent_new_from_stock (
-            "gtk-quit", window->mFile_menu, window->mAccel_group);
+        "gtk-quit", window->mFile_menu, window->mAccel_group);
 
     /* Edit menu */
     window->mEdit_menu = orage_menu_new (_("_Edit"), window->mMenubar);
 
-    window->mEdit_preferences = orage_image_menu_item_for_parent_new_from_stock (
+    window->mEdit_preferences =
+        orage_image_menu_item_for_parent_new_from_stock (
             "gtk-preferences", window->mEdit_menu, window->mAccel_group);
 
     /* View menu */
@@ -321,9 +322,9 @@ static void build_menu (OrageWindow *window)
     /* Help menu */
     window->mHelp_menu = orage_menu_new (_("_Help"), window->mMenubar);
     window->mHelp_help = orage_image_menu_item_for_parent_new_from_stock (
-            "gtk-help", window->mHelp_menu, window->mAccel_group);
+        "gtk-help", window->mHelp_menu, window->mAccel_group);
     window->mHelp_about = orage_image_menu_item_for_parent_new_from_stock (
-            "gtk-about", window->mHelp_menu, window->mAccel_group);
+        "gtk-about", window->mHelp_menu, window->mAccel_group);
 
     gtk_widget_show_all (window->mMenubar);
 
