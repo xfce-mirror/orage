@@ -46,6 +46,10 @@
 #include "parameters.h"
 #include "tz_zoneinfo_read.h"
 
+#ifdef HAVE_LIBXFCE4UI
+#include <libxfce4ui/libxfce4ui.h>
+#endif
+
 /**************************************
  *  General purpose helper functions  *
  **************************************/
@@ -248,10 +252,10 @@ GtkWidget *orage_table_new (const guint border)
     return grid;
 }
 
-void orage_table_add_row (GtkWidget *table, GtkWidget *label,
-                          GtkWidget *input, const guint row,
-                          const GtkAttachOptions input_x_option,
-                          const GtkAttachOptions input_y_option)
+void orage_table_add_row (GtkWidget *table, GtkWidget *label, GtkWidget *input,
+                          const guint row,
+                          const OrageTableAttachOptions input_x_option,
+                          const OrageTableAttachOptions input_y_option)
 {
     if (label) {
         gtk_grid_attach (GTK_GRID (table), label, 0, row, 1, 1);
@@ -263,21 +267,21 @@ void orage_table_add_row (GtkWidget *table, GtkWidget *label,
     if (input) {
         gtk_grid_attach (GTK_GRID (table), input, 1, row, 1, 1);
 
-        if (input_x_option & GTK_FILL)
+        if (input_x_option & OTBL_FILL)
             g_object_set (input, "halign", GTK_ALIGN_FILL, NULL);
-        if (input_x_option & GTK_EXPAND)
+        if (input_x_option & OTBL_EXPAND)
             g_object_set (input, "hexpand", TRUE, NULL);
-        if (input_x_option & GTK_SHRINK)
+        if (input_x_option & OTBL_SHRINK)
         {
             g_object_set (input, "halign", GTK_ALIGN_CENTER,
                                  "hexpand", FALSE, NULL);
         }
 
-        if (input_y_option & GTK_FILL)
+        if (input_y_option & OTBL_FILL)
             g_object_set (input, "valign", GTK_ALIGN_FILL, NULL);
-        if (input_y_option & GTK_EXPAND)
+        if (input_y_option & OTBL_EXPAND)
             g_object_set (input, "vexpand", TRUE, NULL);
-        if (input_y_option & GTK_SHRINK)
+        if (input_y_option & OTBL_SHRINK)
         {
             g_object_set (input, "valign", GTK_ALIGN_CENTER,
                                  "vexpand", FALSE, NULL);
@@ -297,18 +301,6 @@ GtkWidget *orage_menu_new(const gchar *menu_header_title
     gtk_menu_item_set_submenu(GTK_MENU_ITEM(menu_header), menu);
 
     return menu;
-}
-
-GtkWidget *orage_image_menu_item_new_from_stock(const gchar *stock_id
-    , GtkWidget *menu, GtkAccelGroup *ag)
-{
-    GtkWidget *menu_item;
-
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-    menu_item = gtk_image_menu_item_new_from_stock (stock_id, ag);
-G_GNUC_END_IGNORE_DEPRECATIONS
-    gtk_container_add(GTK_CONTAINER(menu), menu_item);
-    return menu_item;
 }
 
 GtkWidget *orage_separator_menu_item_new(GtkWidget *menu)
@@ -1150,4 +1142,39 @@ void orage_open_help_page (void)
             g_clear_error (&error);
         }
     }
+}
+
+GtkWidget *orage_image_menu_item_new_from_stock (const gchar *stock_id,
+                                                 GtkAccelGroup *accel_group)
+{
+    GtkWidget *item;
+
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+    item = gtk_image_menu_item_new_from_stock (stock_id, accel_group);
+    G_GNUC_END_IGNORE_DEPRECATIONS
+    return item;
+}
+
+GtkWidget *orage_image_menu_item_for_parent_new_from_stock (
+    const gchar *stock_id, GtkWidget *menu, GtkAccelGroup *accel_group)
+{
+    GtkWidget *item = orage_image_menu_item_new_from_stock (stock_id,
+                                                            accel_group);
+
+    gtk_container_add (GTK_CONTAINER (menu), item);
+
+    return item;
+}
+
+GtkWidget *orage_image_menu_item_new (const gchar *label,
+                                      const gchar *icon_name)
+{
+#ifdef HAVE_LIBXFCE4UI
+    return xfce_gtk_image_menu_item_new_from_icon_name (
+        label, NULL, NULL, NULL, NULL, icon_name, NULL);
+#else
+    (void)icon_name;
+
+    return gtk_menu_item_new_with_mnemonic (label);
+#endif
 }

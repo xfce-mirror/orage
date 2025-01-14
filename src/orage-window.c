@@ -278,16 +278,14 @@ static void build_menu (OrageWindow *window)
     /* File menu */
     window->mFile_menu = orage_menu_new (_("_File"), window->mMenubar);
 
-    window->mFile_newApp = orage_image_menu_item_new_from_stock (
-            "gtk-new", window->mFile_menu, window->mAccel_group);
+    window->mFile_newApp = orage_image_menu_item_for_parent_new_from_stock (
+        "gtk-new", window->mFile_menu, window->mAccel_group);
 
     (void)orage_separator_menu_item_new (window->mFile_menu);
 
 #ifdef ENABLE_SYNC
-    window->mFile_refresh =
-            orage_image_menu_item_new_from_stock ("gtk-refresh",
-                                                  window->mFile_menu,
-                                                  window->mAccel_group);
+    window->mFile_refresh = orage_image_menu_item_for_parent_new_from_stock (
+            "gtk-refresh", window->mFile_menu, window->mAccel_group);
 #endif
 
     window->mFile_interface =  orage_menu_item_new_with_mnemonic (
@@ -295,15 +293,16 @@ static void build_menu (OrageWindow *window)
 
     (void)orage_separator_menu_item_new (window->mFile_menu);
 
-    window->mFile_close = orage_image_menu_item_new_from_stock (
-            "gtk-close", window->mFile_menu, window->mAccel_group);
-    window->mFile_quit = orage_image_menu_item_new_from_stock (
-            "gtk-quit", window->mFile_menu, window->mAccel_group);
+    window->mFile_close = orage_image_menu_item_for_parent_new_from_stock (
+        "gtk-close", window->mFile_menu, window->mAccel_group);
+    window->mFile_quit = orage_image_menu_item_for_parent_new_from_stock (
+        "gtk-quit", window->mFile_menu, window->mAccel_group);
 
     /* Edit menu */
     window->mEdit_menu = orage_menu_new (_("_Edit"), window->mMenubar);
 
-    window->mEdit_preferences = orage_image_menu_item_new_from_stock (
+    window->mEdit_preferences =
+        orage_image_menu_item_for_parent_new_from_stock (
             "gtk-preferences", window->mEdit_menu, window->mAccel_group);
 
     /* View menu */
@@ -322,10 +321,10 @@ static void build_menu (OrageWindow *window)
 
     /* Help menu */
     window->mHelp_menu = orage_menu_new (_("_Help"), window->mMenubar);
-    window->mHelp_help = orage_image_menu_item_new_from_stock (
-            "gtk-help", window->mHelp_menu, window->mAccel_group);
-    window->mHelp_about = orage_image_menu_item_new_from_stock (
-            "gtk-about", window->mHelp_menu, window->mAccel_group);
+    window->mHelp_help = orage_image_menu_item_for_parent_new_from_stock (
+        "gtk-help", window->mHelp_menu, window->mAccel_group);
+    window->mHelp_about = orage_image_menu_item_for_parent_new_from_stock (
+        "gtk-about", window->mHelp_menu, window->mAccel_group);
 
     gtk_widget_show_all (window->mMenubar);
 
@@ -408,11 +407,13 @@ static void add_info_row(xfical_appt *appt, GtkGrid *parentBox,
 
     g_free(tmp);
     gtk_label_set_ellipsize(GTK_LABEL(label), PANGO_ELLIPSIZE_END);
+
     g_object_set (label, "xalign", 0.0, "yalign", 0.5,
-                         "xpad", 5, "ypad", 0,
+                         "margin-start", 5,
                          "hexpand", TRUE,
                          "halign", GTK_ALIGN_FILL,
                          NULL);
+
     gtk_container_add(GTK_CONTAINER(ev), label);
     gtk_grid_attach_next_to (parentBox, ev, NULL, GTK_POS_BOTTOM, 1, 1);
     g_object_set_data_full(G_OBJECT(ev), "UID", g_strdup(appt->uid), g_free);
