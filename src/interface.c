@@ -676,9 +676,8 @@ static void refresh_foreign_files(intf_win *intf_w, const gboolean first)
                                      GTK_POS_RIGHT, 1, 1);
             g_snprintf (num, sizeof (num), "%02d", i + 1);
             label = gtk_label_new(num);
-            orage_table_add_row(intf_w->for_cur_table
-                    , label, hbox
-                    , i, (GTK_EXPAND | GTK_FILL), (0));
+            orage_table_add_row (intf_w->for_cur_table, label, hbox, i,
+                                 OTBL_EXPAND | OTBL_FILL, 0);
 
             g_signal_connect((gpointer)button, "clicked"
                     , G_CALLBACK(for_remove_button_clicked),GINT_TO_POINTER(i));
@@ -859,9 +858,8 @@ static void create_menu(intf_win *intf_w)
     /* File menu */
     intf_w->filemenu = orage_menu_new(_("_File"), intf_w->menubar);
 
-    intf_w->filemenu_close = 
-            orage_image_menu_item_new_from_stock("gtk-close" 
-                    , intf_w->filemenu, intf_w->accelgroup);
+    intf_w->filemenu_close = orage_image_menu_item_for_parent_new_from_stock (
+        "gtk-close", intf_w->filemenu, intf_w->accelgroup);
 
     g_signal_connect((gpointer)intf_w->filemenu_close, "activate"
             , G_CALLBACK(filemenu_close_activated), intf_w);
