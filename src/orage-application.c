@@ -30,6 +30,7 @@
 #include "interface.h"
 #include "orage-appointment-window.h"
 #include "orage-css.h"
+#include "orage-import.h"
 #include "orage-i18n.h"
 #include "orage-sleep-monitor.h"
 #include "orage-window.h"
@@ -429,7 +430,7 @@ static gint orage_application_command_line (GApplication *app,
     return EXIT_SUCCESS;
 }
 
-static void orage_application_open (G_GNUC_UNUSED GApplication *app,
+static void orage_application_open (GApplication *app,
                                     GFile **files,
                                     gint n_files,
                                     const gchar *hint)
@@ -439,14 +440,30 @@ static void orage_application_open (G_GNUC_UNUSED GApplication *app,
     gchar *file;
     gchar *file_name;
     gint export_type;
+    gboolean opened;
     gboolean foreign_file_read_only;
+    GtkWidget *dialog;
+    OrageImportWindow *import_dialog;
+    OrageApplication *application = ORAGE_APPLICATION (app);
 
     for (i = 0; i < n_files; i++)
     {
         switch (hint[0])
         {
             case HINT_OPEN:
-                g_message ("open not yet implemented");
+                file = g_file_get_path (files[i]);
+                g_debug ("open file=%s", file);
+                
+                import_dialog = orage_import_window_new (application);
+                opened = orage_import_open_file (import_dialog, files[i]);
+                dialog = GTK_WIDGET (import_dialog);
+
+                if (opened)
+                    gtk_widget_show (dialog);
+                else
+                    gtk_widget_destroy (dialog);
+
+                g_free (file);
                 break;
 
             case HINT_ADD:

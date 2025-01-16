@@ -26,6 +26,8 @@ orage_SOURCES =							\
 	orage-category.h					\
 	orage-css.c						\
 	orage-css.h						\
+	orage-import.h						\
+	orage-import.c						\
 	orage-i18n.h						\
 	orage-rc-file.c						\
 	orage-rc-file.h						\
