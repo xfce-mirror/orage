@@ -579,7 +579,7 @@ msgstr ""
 
 #: src/orage-application.c:605
 msgid "Remove a foreign file"
-msgstr ""
+msgstr "Suprimir un fichièr extèrn"
 
 #: src/orage-application.c:614
 msgid "Import appointments from file to Orage"
@@ -780,27 +780,27 @@ msgstr "jorn(s)"
 
 #: src/orage-appointment-window.c:3275
 msgid "Mon"
-msgstr "Lun"
+msgstr "Dil"
 
 #: src/orage-appointment-window.c:3275
 msgid "Tue"
-msgstr "Mar"
+msgstr "Dma"
 
 #: src/orage-appointment-window.c:3275
 msgid "Wed"
-msgstr "Mer"
+msgstr "Dme"
 
 #: src/orage-appointment-window.c:3275
 msgid "Thu"
-msgstr "Jòu"
+msgstr "Dij"
 
 #: src/orage-appointment-window.c:3275
 msgid "Fri"
-msgstr "Ven"
+msgstr "Div"
 
 #: src/orage-appointment-window.c:3275
 msgid "Sat"
-msgstr "Sab"
+msgstr "Dis"
 
 #: src/orage-appointment-window.c:3275
 msgid "Sun"
@@ -808,15 +808,15 @@ msgstr "Dim"
 
 #: src/orage-appointment-window.c:3293
 msgid "week(s) on:"
-msgstr ""
+msgstr "setmana(s) lo :"
 
 #: src/orage-appointment-window.c:3329
 msgid "From the beginning of the month:"
-msgstr ""
+msgstr "A comptar de la debuta del mes :"
 
 #: src/orage-appointment-window.c:3342
 msgid "From the end of the month:"
-msgstr ""
+msgstr "A comptar de la fin del mes :"
 
 #: src/orage-appointment-window.c:3355
 msgid "Every:"
