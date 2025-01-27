@@ -11,7 +11,7 @@ XDT_VERSION_INIT([4.20.0], [git])
 
 m4_define([glib_minimum_version], [2.58.0])
 m4_define([gtk_minimum_version], [3.24.0])
-m4_define([xfce_minimum_version], [4.16.0])
+m4_define([xfce_minimum_version], [4.20.0])
 m4_define([notify_minimum_version], [0.7.0])
 m4_define([libical_minimum_version], [3.0])
 
@@ -85,7 +85,8 @@ XDT_CHECK_PACKAGE([GLIB], [glib-2.0], [glib_minimum_version])
 XDT_CHECK_PACKAGE([GIO], [gio-2.0], [glib_minimum_version])
 XDT_CHECK_PACKAGE([LIBGTK], [gtk+-3.0], [gtk_minimum_version])
 XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [xfce_minimum_version])
-XDT_CHECK_PACKAGE([LIBICAL], [libical], [libical_minimum_version])
+XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-2], [xfce_minimum_version])
+XDT_CHECK_PACKAGE([LIBICALGLIB], [libical-glib], [libical_minimum_version])
 
 if test "$LIBICAL_VERSION" = "3.0.15"; then
     AC_MSG_ERROR(["unsupported libical version $LIBICAL_VERSION, see https://gitlab.xfce.org/apps/orage/-/issues/20"])
@@ -112,13 +113,6 @@ dnl **************************************
 XDT_CHECK_OPTIONAL_PACKAGE([NOTIFY], [libnotify],
                            [notify_minimum_version], [libnotify],
                            [LIBNOTIFY support])
-
-dnl ************************************************
-dnl *** Optional support for Xfce                ***
-dnl ************************************************
-XDT_CHECK_OPTIONAL_PACKAGE([LIBXFCE4UI], [libxfce4ui-2],
-                           [xfce_minimum_version], [libxfce4ui],
-                           [LIBXFCE4UI support])
 
 dnl Check for debugging support
 XDT_FEATURE_DEBUG([xdt_debug_default])
@@ -182,10 +176,5 @@ else
 echo "* LIBNOTIFY support:         no"
 fi
 echo "* Automatic archiving:       $have_archive"
-if test x"$LIBXFCE4UI_FOUND" = x"yes"; then
-echo "* LIBXFCE4UI support:        yes"
-else
-echo "* LIBXFCE4UI support:        no"
-fi
 echo "* X11 tray icon:             $have_x11_tray_icon"
 echo
