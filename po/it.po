@@ -9,16 +9,16 @@
 # Vincenzo Reale <vinx.reale@gmail.com>, 2024
 # Dmytro Tokayev, 2024
 # Xfce Bot <transifex@xfce.org>, 2024
-# Emanuele Petriglia <transifex@emanuelepetriglia.com>, 2024
+# Emanuele Petriglia <inbox@emanuelepetriglia.com>, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2025-01-15 00:49+0100\n"
+"POT-Creation-Date: 2025-02-10 12:49+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Emanuele Petriglia <transifex@emanuelepetriglia.com>, 2024\n"
+"Last-Translator: Emanuele Petriglia <inbox@emanuelepetriglia.com>, 2024\n"
 "Language-Team: Italian (https://app.transifex.com/xfce/teams/16840/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -65,13 +65,13 @@ msgstr "No, annulla la rimozione"
 msgid "Yes, remove them"
 msgstr "Sì, rimuovili"
 
-#: src/event-list.c:1078 src/functions.c:115
+#: src/event-list.c:1078 src/functions.c:112
 #: src/orage-appointment-window.c:1732 src/orage-appointment-window.c:1747
 #: src/orage-week-window.c:530
 msgid "Pick the date"
 msgstr "Selezionare la data"
 
-#: src/event-list.c:1080 src/event-list.c:1234 src/functions.c:117
+#: src/event-list.c:1080 src/event-list.c:1234 src/functions.c:114
 #: src/orage-appointment-window.c:1734 src/orage-appointment-window.c:1749
 #: src/orage-week-window.c:459 src/orage-week-window.c:532 src/tray_icon.c:391
 msgid "Today"
@@ -521,50 +521,47 @@ msgstr ""
 "Cristian Marchi <cri.penta@gmail.com>, 2009\n"
 "Gianluca Foddis <gianluca.foddis@gmail.com>, 2009"
 
-#: src/orage-application.c:113
+#: src/orage-application.c:114
 #, c-format
 msgid ""
 "\tThis is %s version %s\n"
 "\n"
 msgstr "\tQuesta è la versione %s di %s\n"
 
-#: src/orage-application.c:115
+#: src/orage-application.c:116
 msgid "\tReleased under the terms of the GNU General Public License.\n"
 msgstr "\tRilasciata sotto i termini della GNU General Public License.\n"
 
-#: src/orage-application.c:116
+#: src/orage-application.c:117
 #, c-format
 msgid "\tCompiled against GTK+-%d.%d.%d, "
 msgstr "\tCompilata con GTK+-%d.%d.%d, "
 
-#: src/orage-application.c:118
+#: src/orage-application.c:119
 #, c-format
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "usando GTK+-%d.%d.%d.\n"
 
-#: src/orage-application.c:121
+#: src/orage-application.c:122
+#, c-format
+msgid "\tCompiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d.\n"
+msgstr ""
+
+#: src/orage-application.c:127
 msgid "\tUsing libnotify.\n"
 msgstr "\tUtilizza libnotify.\n"
 
-#: src/orage-application.c:123
+#: src/orage-application.c:129
 msgid "\tNot using libnotify.\n"
 msgstr "\tNon utilizza libnotify.\n"
 
-#: src/orage-application.c:126
+#: src/orage-application.c:132
 msgid "\tUsing automatic archiving.\n"
 msgstr "\tUtilizza l'archiviazione automatica.\n"
 
-#: src/orage-application.c:128
+#: src/orage-application.c:134
 msgid "\tNot using archiving.\n"
 msgstr "\tNon utilizza l'archiviazione automatica.\n"
-
-#: src/orage-application.c:131
-msgid "\tUsing libxfce4ui: yes\n"
-msgstr "\tUsa libxfce4ui: sì\n"
-
-#: src/orage-application.c:133
-msgid "\tUsing libxfce4ui: no\n"
-msgstr "\tUsa libxfce4ui: no\n"
 
 #: src/orage-application.c:560
 msgid "Open today's tasks"
