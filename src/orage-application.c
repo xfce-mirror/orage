@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023-2024 Erkki Moorits
+ * Copyright (c) 2023-2025 Erkki Moorits
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -37,6 +37,7 @@
 #include "reminder.h"
 #include <glib-2.0/gio/gapplication.h>
 #include <gtk/gtk.h>
+#include <libxfce4ui/libxfce4ui.h>
 
 #ifdef ENABLE_SYNC
 #include "orage-sync-ext-command.h"
@@ -117,6 +118,11 @@ static void print_version (void)
             , GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION);
     g_print (_("using GTK+-%d.%d.%d.\n")
             , gtk_major_version, gtk_minor_version, gtk_micro_version);
+
+    g_print (_("\tCompiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d.\n"),
+             LIBXFCE4UI_MAJOR_VERSION, LIBXFCE4UI_MINOR_VERSION, LIBXFCE4UI_MICRO_VERSION,
+             libxfce4ui_major_version, libxfce4ui_minor_version, libxfce4ui_micro_version);
+
 #ifdef HAVE_NOTIFY
     g_print (_("\tUsing libnotify.\n"));
 #else
@@ -127,12 +133,6 @@ static void print_version (void)
 #else
     g_print (_("\tNot using archiving.\n"));
 #endif
-#ifdef HAVE_LIBXFCE4UI
-    g_print (_("\tUsing libxfce4ui: yes\n"));
-#else
-    g_print (_("\tUsing libxfce4ui: no\n"));
-#endif
-    g_print ("\n");
 }
 
 #ifdef ENABLE_SYNC

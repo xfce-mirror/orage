@@ -70,6 +70,7 @@ orage_CFLAGS =							\
 	$(LIBGTK_CFLAGS)					\
 	$(LIBX11_CFLAGS)					\
 	$(LIBXFCE4UTIL_CFLAGS)					\
+	$(LIBXFCE4UI_CFLAGS)					\
 	$(LIBICAL_CFLAGS)					\
 	$(GIO_CFLAGS)
 
@@ -77,6 +78,7 @@ orage_LDADD =							\
 	$(LIBGTK_LIBS)						\
 	$(LIBX11_LIBS)						\
 	$(LIBXFCE4UTIL_LIBS)					\
+	$(LIBXFCE4UI_LIBS)					\
 	$(LIBICAL_LIBS)						\
 	$(GIO_LIBS)						\
 	-lm							\
@@ -85,14 +87,6 @@ orage_LDADD =							\
 if HAVE_NOTIFY
 orage_LDADD +=							\
 	$(NOTIFY_LIBS)
-endif
-
-if HAVE_LIBXFCE4UI
-orage_CFLAGS +=							\
-	$(LIBXFCE4UI_CFLAGS)
-	
-orage_LDADD +=							\
-	$(LIBXFCE4UI_LIBS)
 endif
 
 # vi:set ts=8 sw=8 noet ai:

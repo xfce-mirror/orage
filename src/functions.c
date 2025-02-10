@@ -40,15 +40,12 @@
 #include <glib/gprintf.h>
 #include <glib/gstdio.h>
 #include <gtk/gtk.h>
+#include <libxfce4ui/libxfce4ui.h>
 
 #include "functions.h"
 #include "orage-i18n.h"
 #include "parameters.h"
 #include "tz_zoneinfo_read.h"
-
-#ifdef HAVE_LIBXFCE4UI
-#include <libxfce4ui/libxfce4ui.h>
-#endif
 
 /**************************************
  *  General purpose helper functions  *
@@ -1169,12 +1166,6 @@ GtkWidget *orage_image_menu_item_for_parent_new_from_stock (
 GtkWidget *orage_image_menu_item_new (const gchar *label,
                                       const gchar *icon_name)
 {
-#ifdef HAVE_LIBXFCE4UI
     return xfce_gtk_image_menu_item_new_from_icon_name (
         label, NULL, NULL, NULL, NULL, icon_name, NULL);
-#else
-    (void)icon_name;
-
-    return gtk_menu_item_new_with_mnemonic (label);
-#endif
 }
