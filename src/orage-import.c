@@ -20,22 +20,36 @@
 
 #include "orage-import.h"
 
-#include "orage-application.h"
-#include <gio/gio.h>
+#include "orage-i18n.h"
+#include "ical-code.h"
+#include "orage-appointment-window.h"
+#include <libxfce4ui/libxfce4ui.h>
 #include <gtk/gtk.h>
 #include <glib.h>
 
-#if 1
 struct _OrageImportWindow
 {
-    GtkWindow __parent__;
-};
-#endif
+    XfceTitledDialogClass __parent__;
 
-G_DEFINE_TYPE (OrageImportWindow, orage_import_window, GTK_TYPE_WINDOW)
+    GList *events;
+    GtkWidget *notebook;
+};
+
+G_DEFINE_TYPE (OrageImportWindow, orage_import_window, XFCE_TYPE_TITLED_DIALOG)
+
+static void orage_import_window_finalize (GObject *object)
+{
+    OrageImportWindow *window = ORAGE_IMPORT_WINDOW (object);
+
+    G_OBJECT_CLASS (orage_import_window_parent_class)->finalize (object);
+}
 
 static void orage_import_window_class_init (OrageImportWindowClass *klass)
 {
+    GObjectClass *object_class;
+
+    object_class = G_OBJECT_CLASS (klass);
+    object_class->finalize = orage_import_window_finalize;
 #if 0
     GObjectClass *object_class;
 
@@ -56,45 +70,71 @@ static void orage_import_window_class_init (OrageImportWindowClass *klass)
                                 G_PARAM_EXPLICIT_NOTIFY);
 
     g_object_class_install_properties (object_class, N_PROPS, properties);
-#else
-    (void)klass;
 #endif
 }
 
 static void orage_import_window_init (OrageImportWindow *self)
 {
-#if 0
-    self->scroll_pos = -1; /* not set */
-    self->accel_group = gtk_accel_group_new ();
-    self->a_day = g_date_time_new_now_local ();
-    self->Vbox = gtk_grid_new ();
+    GtkWidget *button;
+    GtkWidget *page;
+    GtkWidget *label;
+    GList *tmp_list;
+    OrageCalendarComponent *cal_comp;
 
-    gtk_widget_set_name (GTK_WIDGET (self), "OrageWeekWindow");
-    gtk_window_set_title (GTK_WINDOW (self), _("Orage - day view"));
-    gtk_window_add_accel_group (GTK_WINDOW (self), self->accel_group);
-    gtk_container_add (GTK_CONTAINER (self), self->Vbox);
-#else
-    (void)self;
+    gtk_window_set_resizable (GTK_WINDOW (self), FALSE);
+    gtk_widget_set_name (GTK_WIDGET (self), "OrageImportWindow");
+    gtk_window_set_title (GTK_WINDOW (self), _("Import calendar file"));
+
+    button = gtk_button_new_with_mnemonic (_("_Import"));
+    xfce_titled_dialog_add_action_widget (XFCE_TITLED_DIALOG (self),
+                                          button, GTK_RESPONSE_ACCEPT);
+    xfce_titled_dialog_set_default_response (XFCE_TITLED_DIALOG (self),
+                                             GTK_RESPONSE_ACCEPT);
+    gtk_widget_set_can_default (button, TRUE);
+    gtk_widget_grab_default (button);
+    gtk_widget_show (button);
+
+    button = gtk_button_new_with_mnemonic (_("_Cancel"));
+    xfce_titled_dialog_add_action_widget (XFCE_TITLED_DIALOG (self),
+                                          button, GTK_RESPONSE_CANCEL);
+    gtk_widget_show (button);
+
+    self->notebook = gtk_notebook_new ();
+    gtk_container_set_border_width (GTK_CONTAINER (self->notebook), 6);
+    gtk_box_pack_start (
+            GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (self))),
+            self->notebook, TRUE, TRUE, 0);
+
+    g_debug ("read list: %p", self->events);
+#if 0
+    for (tmp_list = g_list_first (self->events);
+         tmp_list != NULL;
+         tmp_list = g_list_next (tmp_list))
 #endif
+    {
+        g_debug ("append");
+        //cal_comp = ORAGE_CALENDAR_COMPONENT (tmp_list->data);
+        cal_comp = NULL;
+        page = orage_appointment_window_new_from_cal_comp (cal_comp);
+        label = gtk_label_new (o_cal_component_get_event_name (cal_comp));
+
+        gtk_notebook_append_page (GTK_NOTEBOOK (self->notebook), page, label);
+    }
+
+    gtk_widget_show (self->notebook);
 }
 
-OrageImportWindow *orage_import_window_new (OrageApplication *app)
+OrageImportWindow *orage_import_window_new (GList *events)
 {
     OrageImportWindow *window;
+
+    g_return_val_if_fail (events != NULL, NULL);
 
     window = g_object_new (ORAGE_IMPORT_WINDOW_TYPE,
                            "type", GTK_WINDOW_TOPLEVEL,
                            NULL);
 
-    (void)app;
+    window->events = events;
 
     return window;
-}
-
-gboolean orage_import_open_file (OrageImportWindow *window, GFile *file)
-{
-    (void)window;
-    (void)file;
-
-    return FALSE;
 }

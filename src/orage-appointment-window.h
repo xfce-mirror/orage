@@ -24,6 +24,7 @@
 #define ORAGE_APPOINTMENT_WINDOW_H 1
 
 #include "orage-week-window.h"
+#include "ical-code.h"
 #include "event-list.h"
 #include <glib-object.h>
 #include <glib.h>
@@ -38,12 +39,19 @@ G_DECLARE_FINAL_TYPE (OrageAppointmentWindow, orage_appointment_window, ORAGE,
 
 GtkWidget *orage_appointment_window_new (GDateTime *gdt);
 
-/** Create new appointment window to current time.
+/** Create new appointment window for current time.
  *  @return appointment window
  */
 GtkWidget *orage_appointment_window_new_now (void);
 GtkWidget *orage_appointment_window_new_copy (const gchar *uid);
 GtkWidget *orage_appointment_window_new_update (const gchar *uid);
+
+/** Create new appointment window from calendar component.
+ *  @param cal_comp Orage calendar component
+ *  @return appointment window
+ */
+GtkWidget *orage_appointment_window_new_from_cal_comp (
+    OrageCalendarComponent *cal_comp);
 
 void orage_appointment_window_set_event_list (OrageAppointmentWindow *apptw,
                                               el_win *el);

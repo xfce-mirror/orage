@@ -38,6 +38,7 @@
 #include "reminder.h"
 #include <glib-2.0/gio/gapplication.h>
 #include <gtk/gtk.h>
+#include <libxfce4ui/libxfce4ui.h>
 
 #ifdef ENABLE_SYNC
 #include "orage-sync-ext-command.h"
@@ -118,6 +119,11 @@ static void print_version (void)
             , GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION);
     g_print (_("using GTK+-%d.%d.%d.\n")
             , gtk_major_version, gtk_minor_version, gtk_micro_version);
+
+    g_print (_("\tCompiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d.\n"),
+             LIBXFCE4UI_MAJOR_VERSION, LIBXFCE4UI_MINOR_VERSION, LIBXFCE4UI_MICRO_VERSION,
+             libxfce4ui_major_version, libxfce4ui_minor_version, libxfce4ui_micro_version);
+
 #ifdef HAVE_NOTIFY
     g_print (_("\tUsing libnotify.\n"));
 #else
@@ -128,12 +134,6 @@ static void print_version (void)
 #else
     g_print (_("\tNot using archiving.\n"));
 #endif
-#ifdef HAVE_LIBXFCE4UI
-    g_print (_("\tUsing libxfce4ui: yes\n"));
-#else
-    g_print (_("\tUsing libxfce4ui: no\n"));
-#endif
-    g_print ("\n");
 }
 
 #ifdef ENABLE_SYNC
@@ -430,7 +430,7 @@ static gint orage_application_command_line (GApplication *app,
     return EXIT_SUCCESS;
 }
 
-static void orage_application_open (GApplication *app,
+static void orage_application_open (G_GNUC_UNUSED GApplication *app,
                                     GFile **files,
                                     gint n_files,
                                     const gchar *hint)
@@ -444,7 +444,7 @@ static void orage_application_open (GApplication *app,
     gboolean foreign_file_read_only;
     GtkWidget *dialog;
     OrageImportWindow *import_dialog;
-    OrageApplication *application = ORAGE_APPLICATION (app);
+    GList *appts;
 
     for (i = 0; i < n_files; i++)
     {
@@ -453,8 +453,8 @@ static void orage_application_open (GApplication *app,
             case HINT_OPEN:
                 file = g_file_get_path (files[i]);
                 g_debug ("open file=%s", file);
-                
-                import_dialog = orage_import_window_new (application);
+#if 0
+                import_dialog = orage_import_window_new ();
                 opened = orage_import_open_file (import_dialog, files[i]);
                 dialog = GTK_WIDGET (import_dialog);
 
@@ -462,7 +462,19 @@ static void orage_application_open (GApplication *app,
                     gtk_widget_show (dialog);
                 else
                     gtk_widget_destroy (dialog);
+#else
+                appts = xfical_appt_new_from_file (files[i]);
+                if (appts == NULL)
+                {
+                    g_warning ("ICS file '%s' read failed", file);
+                    break;
+                }
 
+                import_dialog = orage_import_window_new (appts);
+                dialog = GTK_WIDGET (import_dialog);
+                gtk_widget_show (dialog);
+                g_list_free_full (appts, g_object_unref);
+#endif
                 g_free (file);
                 break;
 

@@ -4659,6 +4659,14 @@ GtkWidget *orage_appointment_window_new_update (const gchar *uid)
     return orage_appointment_window_new_by_uid (uid, UPDATE_APPT_WIN);
 }
 
+GtkWidget *orage_appointment_window_new_from_cal_comp (
+    OrageCalendarComponent *cal_comp)
+{
+    (void)cal_comp;
+    g_debug ("TODO: orage_appointment_window_new_from_cal_comp()");
+    return orage_appointment_window_new_now ();
+}
+
 void orage_appointment_window_set_event_list (OrageAppointmentWindow *apptw,
                                               el_win *el)
 {
