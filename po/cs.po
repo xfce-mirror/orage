@@ -8,16 +8,16 @@
 # Pavel Borecki <pavel.borecki@gmail.com>, 2023
 # Nick Schermer <nick@xfce.org>, 2023
 # Xfce Bot <transifex@xfce.org>, 2024
-# Michal Várady <miko.vaji@gmail.com>, 2024
+# Michal Várady <miko.vaji@gmail.com>, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2025-01-15 00:49+0100\n"
+"POT-Creation-Date: 2025-02-10 12:49+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Michal Várady <miko.vaji@gmail.com>, 2024\n"
+"Last-Translator: Michal Várady <miko.vaji@gmail.com>, 2025\n"
 "Language-Team: Czech (https://app.transifex.com/xfce/teams/16840/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -64,13 +64,13 @@ msgstr "Ne, zrušit odstranění"
 msgid "Yes, remove them"
 msgstr "Ano, odstranit je"
 
-#: src/event-list.c:1078 src/functions.c:115
+#: src/event-list.c:1078 src/functions.c:112
 #: src/orage-appointment-window.c:1732 src/orage-appointment-window.c:1747
 #: src/orage-week-window.c:530
 msgid "Pick the date"
 msgstr "Zvolte datum"
 
-#: src/event-list.c:1080 src/event-list.c:1234 src/functions.c:117
+#: src/event-list.c:1080 src/event-list.c:1234 src/functions.c:114
 #: src/orage-appointment-window.c:1734 src/orage-appointment-window.c:1749
 #: src/orage-week-window.c:459 src/orage-week-window.c:532 src/tray_icon.c:391
 msgid "Today"
@@ -518,7 +518,7 @@ msgstr ""
 "Michal Várady (miko.vaji@gmail.com)\n"
 "Alois Nešpor (info@aloisnespor.info)"
 
-#: src/orage-application.c:113
+#: src/orage-application.c:114
 #, c-format
 msgid ""
 "\tThis is %s version %s\n"
@@ -527,43 +527,42 @@ msgstr ""
 "\tToto je %s verze %s\n"
 "\n"
 
-#: src/orage-application.c:115
+#: src/orage-application.c:116
 msgid "\tReleased under the terms of the GNU General Public License.\n"
 msgstr "\tVydáno pod podmínkami licence GNU General Public Licence.\n"
 
-#: src/orage-application.c:116
+#: src/orage-application.c:117
 #, c-format
 msgid "\tCompiled against GTK+-%d.%d.%d, "
 msgstr "\tZkompilováno proti knihovnám GTK+-%d.%d.%d, "
 
-#: src/orage-application.c:118
+#: src/orage-application.c:119
 #, c-format
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "používá knihovny GTK+-%d.%d.%d.\n"
 
-#: src/orage-application.c:121
+#: src/orage-application.c:122
+#, c-format
+msgid "\tCompiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d.\n"
+msgstr ""
+"\tZkompilováno proti knihovně libxfce4ui-%d.%d.%d s použitím "
+"libxfce4ui-%d.%d.%d.\n"
+
+#: src/orage-application.c:127
 msgid "\tUsing libnotify.\n"
 msgstr "\tPoužívá se knihovna libnotify.\n"
 
-#: src/orage-application.c:123
+#: src/orage-application.c:129
 msgid "\tNot using libnotify.\n"
 msgstr "\tNepoužívá se knihovna libnotify.\n"
 
-#: src/orage-application.c:126
+#: src/orage-application.c:132
 msgid "\tUsing automatic archiving.\n"
 msgstr "\tPoužívá se automatické archivování.\n"
 
-#: src/orage-application.c:128
+#: src/orage-application.c:134
 msgid "\tNot using archiving.\n"
 msgstr "\tBez archivace.\n"
-
-#: src/orage-application.c:131
-msgid "\tUsing libxfce4ui: yes\n"
-msgstr "\tPoužívá se knihovna libxfce4ui: ano\n"
-
-#: src/orage-application.c:133
-msgid "\tUsing libxfce4ui: no\n"
-msgstr "\tPoužívá se knihovna libxfce4ui: ne\n"
 
 #: src/orage-application.c:560
 msgid "Open today's tasks"
