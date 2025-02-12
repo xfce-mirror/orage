@@ -544,7 +544,7 @@ msgstr "mitjançant GTK+-%d.%d.%d.\n"
 #: src/orage-application.c:122
 #, c-format
 msgid "\tCompiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d.\n"
-msgstr ""
+msgstr "\tCompilat contra libxfce4ui-%d.%d.%d, usant libxfce4ui-%d.%d.%d.\n"
 
 #: src/orage-application.c:127
 msgid "\tUsing libnotify.\n"
