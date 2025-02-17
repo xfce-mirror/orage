@@ -46,13 +46,6 @@ GtkWidget *orage_appointment_window_new_now (void);
 GtkWidget *orage_appointment_window_new_copy (const gchar *uid);
 GtkWidget *orage_appointment_window_new_update (const gchar *uid);
 
-/** Create new appointment window from calendar component.
- *  @param cal_comp Orage calendar component
- *  @return appointment window
- */
-GtkWidget *orage_appointment_window_new_from_cal_comp (
-    OrageCalendarComponent *cal_comp);
-
 void orage_appointment_window_set_event_list (OrageAppointmentWindow *apptw,
                                               el_win *el);
 
