@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Erkki Moorits
+ * Copyright (c) 2021-2025 Erkki Moorits
  * Copyright (c) 2005-2011 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2004-2005 Mickael Graf (korbinus at xfce.org)
  *
@@ -24,6 +24,8 @@
 #define __ICAL_CODE_H__
 
 #include "ical-expimp.h"
+#include <gio/gio.h>
+#include <gtk/gtk.h>
 
 #define LIBICAL_GLIB_UNSTABLE_API
 #include <libical-glib/libical-glib.h>
