@@ -27,9 +27,11 @@
 #include <gtk/gtk.h>
 #include <glib.h>
 
+static void orage_import_window_response (GtkDialog *dialog, gint response_id);
+
 struct _OrageImportWindow
 {
-    XfceTitledDialogClass __parent__;
+    XfceTitledDialog __parent__;
 
     GList *events;
     GtkWidget *notebook;
@@ -47,12 +49,15 @@ static void orage_import_window_finalize (GObject *object)
 static void orage_import_window_class_init (OrageImportWindowClass *klass)
 {
     GObjectClass *object_class;
+    GtkDialogClass *gtkdialog_class;
 
     object_class = G_OBJECT_CLASS (klass);
     object_class->finalize = orage_import_window_finalize;
-#if 0
-    GObjectClass *object_class;
 
+    gtkdialog_class = GTK_DIALOG_CLASS (klass);
+    gtkdialog_class->response = orage_import_window_response;
+
+#if 0
     object_class = G_OBJECT_CLASS (klass);
     object_class->constructed = orage_week_window_constructed;
     object_class->finalize = orage_week_window_finalize;
@@ -106,22 +111,38 @@ static void orage_import_window_init (OrageImportWindow *self)
             self->notebook, TRUE, TRUE, 0);
 
     g_debug ("read list: %p", self->events);
-#if 0
+
     for (tmp_list = g_list_first (self->events);
          tmp_list != NULL;
          tmp_list = g_list_next (tmp_list))
-#endif
     {
         g_debug ("append");
-        //cal_comp = ORAGE_CALENDAR_COMPONENT (tmp_list->data);
-        cal_comp = NULL;
-        page = orage_appointment_window_new_from_cal_comp (cal_comp);
+        cal_comp = ORAGE_CALENDAR_COMPONENT (tmp_list->data);
+        page = orage_event_preview_new_from_cal_comp (cal_comp);
         label = gtk_label_new (o_cal_component_get_event_name (cal_comp));
 
         gtk_notebook_append_page (GTK_NOTEBOOK (self->notebook), page, label);
     }
 
     gtk_widget_show (self->notebook);
+}
+
+static void orage_import_window_response (GtkDialog *gtk_dialog,
+                                          const gint response_id)
+{
+    OrageImportWindow *dialog = ORAGE_IMPORT_WINDOW (gtk_dialog);
+
+    g_return_if_fail (ORAGE_IS_IMPORT_WINDOW (dialog));
+
+    if (response_id == GTK_RESPONSE_ACCEPT)
+    {
+        g_debug ("GTK_RESPONSE_ACCEPT");
+    }
+    else if (response_id == GTK_RESPONSE_CANCEL)
+    {
+        g_debug ("GTK_RESPONSE_CANCEL");
+        gtk_widget_destroy (GTK_WIDGET (gtk_dialog));
+    }
 }
 
 OrageImportWindow *orage_import_window_new (GList *events)
