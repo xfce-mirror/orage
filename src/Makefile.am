@@ -26,6 +26,8 @@ orage_SOURCES =							\
 	orage-category.h					\
 	orage-css.c						\
 	orage-css.h						\
+	orage-event-preview.c					\
+	orage-event-preview.h					\
 	orage-import.h						\
 	orage-import.c						\
 	orage-i18n.h						\
