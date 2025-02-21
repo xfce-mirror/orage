@@ -145,7 +145,7 @@ static void orage_import_window_response (GtkDialog *gtk_dialog,
     }
 }
 
-OrageImportWindow *orage_import_window_new (GList *events)
+GtkWidget *orage_import_window_new (GList *events)
 {
     OrageImportWindow *window;
 
@@ -157,5 +157,5 @@ OrageImportWindow *orage_import_window_new (GList *events)
 
     window->events = events;
 
-    return window;
+    return GTK_WIDGET (window);
 }

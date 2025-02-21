@@ -443,7 +443,7 @@ static void orage_application_open (G_GNUC_UNUSED GApplication *app,
     gboolean opened;
     gboolean foreign_file_read_only;
     GtkWidget *dialog;
-    OrageImportWindow *import_dialog;
+    GtkWidget *import_dialog;
     GList *appts;
 
     for (i = 0; i < n_files; i++)
@@ -453,28 +453,16 @@ static void orage_application_open (G_GNUC_UNUSED GApplication *app,
             case HINT_OPEN:
                 file = g_file_get_path (files[i]);
                 g_debug ("open file=%s", file);
-#if 0
-                import_dialog = orage_import_window_new ();
-                opened = orage_import_open_file (import_dialog, files[i]);
-                dialog = GTK_WIDGET (import_dialog);
-
-                if (opened)
-                    gtk_widget_show (dialog);
-                else
-                    gtk_widget_destroy (dialog);
-#else
                 appts = xfical_appt_new_from_file (files[i]);
-                if (appts == NULL)
+                if (appts)
                 {
-                    g_warning ("ICS file '%s' read failed", file);
-                    break;
+                    dialog = orage_import_window_new (appts);
+                    gtk_widget_show (dialog);
+                    g_list_free_full (appts, g_object_unref);
                 }
+                else
+                    g_warning ("ICS file '%s' read failed", file);
 
-                import_dialog = orage_import_window_new (appts);
-                dialog = GTK_WIDGET (import_dialog);
-                gtk_widget_show (dialog);
-                g_list_free_full (appts, g_object_unref);
-#endif
                 g_free (file);
                 break;
 

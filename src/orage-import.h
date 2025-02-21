@@ -34,7 +34,7 @@ G_DEFINE_AUTOPTR_CLEANUP_FUNC (XfceTitledDialog, g_object_unref)
 #endif
 G_DECLARE_FINAL_TYPE (OrageImportWindow, orage_import_window, ORAGE, IMPORT_WINDOW, XfceTitledDialog)
 
-OrageImportWindow *orage_import_window_new (GList *);
+GtkWidget *orage_import_window_new (GList *events);
 
 G_END_DECLS
 
