@@ -186,7 +186,7 @@ static void orage_sync_edit_dialog_init (OrageSyncEditDialog *self)
 
 GtkWidget *orage_sync_edit_dialog_new (void)
 {
-    return g_object_new (ORAGE_TYPE_SYNC_EDIT_DIALOG, NULL);
+    return g_object_new (ORAGE_SYNC_EDIT_DIALOG_TYPE, NULL);
 }
 
 GtkWidget *orage_sync_edit_dialog_new_with_defaults (const gchar *description,
@@ -195,7 +195,7 @@ GtkWidget *orage_sync_edit_dialog_new_with_defaults (const gchar *description,
 {
     OrageSyncEditDialog *dialog;
 
-    dialog = ORAGE_SYNC_EDIT_DIALOG (g_object_new (ORAGE_TYPE_SYNC_EDIT_DIALOG,
+    dialog = ORAGE_SYNC_EDIT_DIALOG (g_object_new (ORAGE_SYNC_EDIT_DIALOG_TYPE,
                                                    NULL));
 
     if (description)

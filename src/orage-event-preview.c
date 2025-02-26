@@ -142,7 +142,7 @@ static void orage_event_preview_class_init (OrageEventPreviewClass *klass)
     param_specs = g_param_spec_object (EVENT_PREVIEW_CALENDAR_COMPONENT,
                                        EVENT_PREVIEW_CALENDAR_COMPONENT,
                                        "Calendar compoenent",
-                                       ORAGE_TYPE_EVENT_PREVIEW,
+                                       ORAGE_EVENT_PREVIEW_TYPE,
                                        G_PARAM_READWRITE |
                                        G_PARAM_CONSTRUCT_ONLY);
 
@@ -180,9 +180,9 @@ static void orage_event_preview_init (OrageEventPreview *self)
 GtkWidget *orage_event_preview_new_from_cal_comp (
     OrageCalendarComponent *cal_comp)
 {
-    g_debug ("TODO: orage_event_preview_new_from_cal_comp()");
+    OrageEventPreview *self;
 
-    return g_object_new (ORAGE_TYPE_EVENT_PREVIEW,
+    return g_object_new (ORAGE_EVENT_PREVIEW_TYPE,
                          EVENT_PREVIEW_CALENDAR_COMPONENT, cal_comp,
                          NULL);
 }

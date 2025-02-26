@@ -27,7 +27,7 @@
 
 G_BEGIN_DECLS
 
-#define ORAGE_TYPE_EVENT_PREVIEW (orage_event_preview_get_type ())
+#define ORAGE_EVENT_PREVIEW_TYPE (orage_event_preview_get_type ())
 
 G_DECLARE_FINAL_TYPE (OrageEventPreview, orage_event_preview, ORAGE,
                       EVENT_PREVIEW, GtkWidget)
