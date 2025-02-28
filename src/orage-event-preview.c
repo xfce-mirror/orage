@@ -88,43 +88,7 @@ static void orage_event_preview_finalize (GObject *object)
 
 static void orage_event_preview_constructed (GObject *object)
 {
-    OrageEventPreview *self = (OrageEventPreview *)object;
-#if 0
-    /* from _init */
-    //    self->xf_uid = NULL;
-//    self->appointment_time = g_date_time_new_now_local ();
-//    self->xf_appt = NULL;
-//    self->el = NULL;
-//    self->dw = NULL;
-//    self->appointment_changed = FALSE;
-
-//    self->Vbox = gtk_grid_new ();
-
-    //gtk_container_add (GTK_CONTAINER (self), self->Vbox);
-
-    //build_menu (self);
-    //build_toolbar (self);
-
-    /* ********** Here begins tabs ********** */
-//    self->Notebook = gtk_notebook_new ();
-    //gtk_grid_attach (GTK_GRID (self->Vbox), self->Notebook, 1, 3, 1, 1);
-    //gtk_container_set_border_width (GTK_CONTAINER (self->Notebook), 5);
-
-    //build_general_page (self);
-    //build_alarm_page (self);
-    //build_recurrence_page (self);
-#endif
-#if 0
-    fill_appt_window (self, self->action, self->par, self->appointment_time_2);
-    enable_general_page_signals (self);
-    enable_alarm_page_signals (self);
-    enable_recurrence_page_signals (self);
-    gtk_widget_show_all (GTK_WIDGET (self));
-    reurrence_set_visible (self);
-    type_hide_show (self);
-    readonly_hide_show (self);
-    gtk_widget_grab_focus (self->Title_entry);
-#endif
+    /* TODO: create widget*/
     G_OBJECT_CLASS (orage_event_preview_parent_class)->constructed (object);
 }
 
@@ -153,35 +117,11 @@ static void orage_event_preview_class_init (OrageEventPreviewClass *klass)
 
 static void orage_event_preview_init (OrageEventPreview *self)
 {
-//    self->xf_uid = NULL;
-//    self->appointment_time = g_date_time_new_now_local ();
-//    self->xf_appt = NULL;
-//    self->el = NULL;
-//    self->dw = NULL;
-//    self->appointment_changed = FALSE;
-
-//    self->Vbox = gtk_grid_new ();
-
-    //gtk_container_add (GTK_CONTAINER (self), self->Vbox);
-
-    //build_menu (self);
-    //build_toolbar (self);
-
-    /* ********** Here begins tabs ********** */
-//    self->Notebook = gtk_notebook_new ();
-    //gtk_grid_attach (GTK_GRID (self->Vbox), self->Notebook, 1, 3, 1, 1);
-    //gtk_container_set_border_width (GTK_CONTAINER (self->Notebook), 5);
-
-    //build_general_page (self);
-    //build_alarm_page (self);
-    //build_recurrence_page (self);
 }
 
 GtkWidget *orage_event_preview_new_from_cal_comp (
     OrageCalendarComponent *cal_comp)
 {
-    OrageEventPreview *self;
-
     return g_object_new (ORAGE_EVENT_PREVIEW_TYPE,
                          EVENT_PREVIEW_CALENDAR_COMPONENT, cal_comp,
                          NULL);

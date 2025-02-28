@@ -22,12 +22,26 @@
 
 #include "orage-i18n.h"
 #include "ical-code.h"
+#include "orage-event-preview.h"
 #include "orage-appointment-window.h"
 #include <libxfce4ui/libxfce4ui.h>
 #include <gtk/gtk.h>
+#include <glib-object.h>
 #include <glib.h>
 
+#define IMPORT_WINDOW_EVENTS "import-window-events"
+
 static void orage_import_window_response (GtkDialog *dialog, gint response_id);
+static void orage_import_window_set_property (GObject *object,
+                                              guint prop_id,
+                                              const GValue *value,
+                                              GParamSpec *pspec);
+static void orage_import_window_get_property (GObject *object,
+                                              guint prop_id,
+                                              GValue *value,
+                                              GParamSpec *pspec);
+static void orage_import_window_constructed (GObject *object);
+static void orage_import_window_finalize (GObject *object);
 
 struct _OrageImportWindow
 {
@@ -37,49 +51,46 @@ struct _OrageImportWindow
     GtkWidget *notebook;
 };
 
-G_DEFINE_TYPE (OrageImportWindow, orage_import_window, XFCE_TYPE_TITLED_DIALOG)
-
-static void orage_import_window_finalize (GObject *object)
+enum
 {
-    OrageImportWindow *window = ORAGE_IMPORT_WINDOW (object);
+    PROP_EVENT_LIST = 1
+};
 
-    G_OBJECT_CLASS (orage_import_window_parent_class)->finalize (object);
-}
+G_DEFINE_TYPE (OrageImportWindow, orage_import_window, XFCE_TYPE_TITLED_DIALOG)
 
 static void orage_import_window_class_init (OrageImportWindowClass *klass)
 {
+    GParamSpec *param_specs;
     GObjectClass *object_class;
     GtkDialogClass *gtkdialog_class;
 
     object_class = G_OBJECT_CLASS (klass);
+    object_class->constructed = orage_import_window_constructed;
     object_class->finalize = orage_import_window_finalize;
+    object_class->get_property = orage_import_window_get_property;
+    object_class->set_property = orage_import_window_set_property;
 
     gtkdialog_class = GTK_DIALOG_CLASS (klass);
     gtkdialog_class->response = orage_import_window_response;
 
-#if 0
-    object_class = G_OBJECT_CLASS (klass);
-    object_class->constructed = orage_week_window_constructed;
-    object_class->finalize = orage_week_window_finalize;
-    object_class->get_property = orage_week_window_get_property;
-    object_class->set_property = orage_week_window_set_property;
+    param_specs = g_param_spec_pointer (IMPORT_WINDOW_EVENTS,
+                                        IMPORT_WINDOW_EVENTS,
+                                        "Calendar event list",
+                                        G_PARAM_READWRITE |
+                                        G_PARAM_CONSTRUCT_ONLY);
 
-    properties[PROP_START_DATE] =
-            g_param_spec_boxed (ORAGE_WEEK_WINDOW_START_DATE_PROPERTY,
-                                ORAGE_WEEK_WINDOW_START_DATE_PROPERTY,
-                                "An GDateTime for week window start date",
-                                G_TYPE_DATE_TIME,
-                                G_PARAM_STATIC_STRINGS |
-                                G_PARAM_READWRITE |
-                                G_PARAM_CONSTRUCT_ONLY |
-                                G_PARAM_EXPLICIT_NOTIFY);
-
-    g_object_class_install_properties (object_class, N_PROPS, properties);
-#endif
+    g_object_class_install_property (object_class,
+                                     PROP_EVENT_LIST,
+                                     param_specs);
 }
 
 static void orage_import_window_init (OrageImportWindow *self)
 {
+}
+
+static void orage_import_window_constructed (GObject *object)
+{
+    OrageImportWindow *self = (OrageImportWindow *)object;
     GtkWidget *button;
     GtkWidget *page;
     GtkWidget *label;
@@ -110,13 +121,10 @@ static void orage_import_window_init (OrageImportWindow *self)
             GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (self))),
             self->notebook, TRUE, TRUE, 0);
 
-    g_debug ("read list: %p", self->events);
-
     for (tmp_list = g_list_first (self->events);
          tmp_list != NULL;
          tmp_list = g_list_next (tmp_list))
     {
-        g_debug ("append");
         cal_comp = ORAGE_CALENDAR_COMPONENT (tmp_list->data);
         page = orage_event_preview_new_from_cal_comp (cal_comp);
         label = gtk_label_new (o_cal_component_get_event_name (cal_comp));
@@ -125,6 +133,11 @@ static void orage_import_window_init (OrageImportWindow *self)
     }
 
     gtk_widget_show (self->notebook);
+}
+
+static void orage_import_window_finalize (GObject *object)
+{
+    G_OBJECT_CLASS (orage_import_window_parent_class)->finalize (object);
 }
 
 static void orage_import_window_response (GtkDialog *gtk_dialog,
@@ -145,6 +158,44 @@ static void orage_import_window_response (GtkDialog *gtk_dialog,
     }
 }
 
+static void orage_import_window_get_property (GObject *object,
+                                              const guint prop_id,
+                                              GValue *value,
+                                              GParamSpec *pspec)
+{
+    const OrageImportWindow *self = ORAGE_IMPORT_WINDOW (object);
+
+    switch (prop_id)
+    {
+        case PROP_EVENT_LIST:
+            g_assert (self->events == NULL);
+            g_value_set_pointer (value, self->events);
+            break;
+
+        default:
+            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+            break;
+    }
+}
+
+static void orage_import_window_set_property (GObject *object,
+                                              const guint prop_id,
+                                              const GValue *value,
+                                              GParamSpec *pspec)
+{
+    OrageImportWindow *self = ORAGE_IMPORT_WINDOW (object);
+
+    switch (prop_id)
+    {
+        case PROP_EVENT_LIST:
+            self->events = g_value_get_pointer (value);
+            break;
+
+        default:
+            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+    }
+}
+
 GtkWidget *orage_import_window_new (GList *events)
 {
     OrageImportWindow *window;
@@ -153,9 +204,8 @@ GtkWidget *orage_import_window_new (GList *events)
 
     window = g_object_new (ORAGE_IMPORT_WINDOW_TYPE,
                            "type", GTK_WINDOW_TOPLEVEL,
+                           IMPORT_WINDOW_EVENTS, events,
                            NULL);
-
-    window->events = events;
 
     return GTK_WIDGET (window);
 }
