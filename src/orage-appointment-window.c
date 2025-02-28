@@ -48,7 +48,6 @@
 
 #include "orage-alarm-structure.h"
 #include "orage-category.h"
-#include "orage-event-preview.h"
 #include "orage-i18n.h"
 #include "orage-window.h"
 #include "functions.h"

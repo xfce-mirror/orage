@@ -22,7 +22,6 @@
 
 #include "orage-i18n.h"
 #include "ical-code.h"
-#include "orage-event-preview.h"
 #include "orage-appointment-window.h"
 #include <libxfce4ui/libxfce4ui.h>
 #include <gtk/gtk.h>
@@ -57,6 +56,12 @@ enum
 };
 
 G_DEFINE_TYPE (OrageImportWindow, orage_import_window, XFCE_TYPE_TITLED_DIALOG)
+
+static GtkWidget *orage_import_window_create_event_preview_from_cal_comp (OrageCalendarComponent *cal_comp)
+{
+    /* TODO */
+    return gtk_label_new (o_cal_component_get_event_name (cal_comp));
+}
 
 static void orage_import_window_class_init (OrageImportWindowClass *klass)
 {
@@ -97,8 +102,8 @@ static void orage_import_window_constructed (GObject *object)
     GList *tmp_list;
     OrageCalendarComponent *cal_comp;
 
-    gtk_window_set_resizable (GTK_WINDOW (self), FALSE);
     gtk_widget_set_name (GTK_WIDGET (self), "OrageImportWindow");
+    gtk_window_set_resizable (GTK_WINDOW (self), FALSE);
     gtk_window_set_title (GTK_WINDOW (self), _("Import calendar file"));
 
     button = gtk_button_new_with_mnemonic (_("_Import"));
@@ -126,7 +131,7 @@ static void orage_import_window_constructed (GObject *object)
          tmp_list = g_list_next (tmp_list))
     {
         cal_comp = ORAGE_CALENDAR_COMPONENT (tmp_list->data);
-        page = orage_event_preview_new_from_cal_comp (cal_comp);
+        page = orage_import_window_create_event_preview_from_cal_comp (cal_comp);
         label = gtk_label_new (o_cal_component_get_event_name (cal_comp));
 
         gtk_notebook_append_page (GTK_NOTEBOOK (self->notebook), page, label);
