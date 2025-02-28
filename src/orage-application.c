@@ -432,7 +432,7 @@ static gint orage_application_command_line (GApplication *app,
 
 static void orage_application_open (G_GNUC_UNUSED GApplication *app,
                                     GFile **files,
-                                    gint n_files,
+                                    const gint n_files,
                                     const gchar *hint)
 {
     gchar **hint_array;
@@ -440,10 +440,8 @@ static void orage_application_open (G_GNUC_UNUSED GApplication *app,
     gchar *file;
     gchar *file_name;
     gint export_type;
-    gboolean opened;
     gboolean foreign_file_read_only;
     GtkWidget *dialog;
-    GtkWidget *import_dialog;
     GList *appts;
 
     for (i = 0; i < n_files; i++)
