@@ -89,7 +89,7 @@ static void orage_import_window_class_init (OrageImportWindowClass *klass)
                                      param_specs);
 }
 
-static void orage_import_window_init (OrageImportWindow *self)
+static void orage_import_window_init (G_GNUC_UNUSED OrageImportWindow *self)
 {
 }
 
@@ -101,6 +101,8 @@ static void orage_import_window_constructed (GObject *object)
     GtkWidget *label;
     GList *tmp_list;
     OrageCalendarComponent *cal_comp;
+
+    G_OBJECT_CLASS (orage_import_window_parent_class)->constructed (object);
 
     gtk_widget_set_name (GTK_WIDGET (self), "OrageImportWindow");
     gtk_window_set_resizable (GTK_WINDOW (self), FALSE);
