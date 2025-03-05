@@ -101,6 +101,7 @@ static void orage_import_window_constructed (GObject *object)
     GtkWidget *label;
     GList *tmp_list;
     OrageCalendarComponent *cal_comp;
+    guint nr_items;
 
     G_OBJECT_CLASS (orage_import_window_parent_class)->constructed (object);
 
@@ -122,24 +123,42 @@ static void orage_import_window_constructed (GObject *object)
                                           button, GTK_RESPONSE_CANCEL);
     gtk_widget_show (button);
 
-    self->notebook = gtk_notebook_new ();
-    gtk_container_set_border_width (GTK_CONTAINER (self->notebook), 6);
-    gtk_box_pack_start (
-            GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (self))),
-            self->notebook, TRUE, TRUE, 0);
-
-    for (tmp_list = g_list_first (self->events);
-         tmp_list != NULL;
-         tmp_list = g_list_next (tmp_list))
+    nr_items = g_list_length (self->events);
+    if (nr_items == 1)
     {
+        tmp_list = g_list_first (self->events);
         cal_comp = ORAGE_CALENDAR_COMPONENT (tmp_list->data);
         page = orage_import_window_create_event_preview_from_cal_comp (cal_comp);
-        label = gtk_label_new (o_cal_component_get_event_name (cal_comp));
 
-        gtk_notebook_append_page (GTK_NOTEBOOK (self->notebook), page, label);
+        gtk_box_pack_start (
+            GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (self))), page,
+            TRUE, TRUE, 0);
+
+        gtk_widget_show (page);
     }
+    else if (nr_items > 1)
+    {
+        self->notebook = gtk_notebook_new ();
+        gtk_container_set_border_width (GTK_CONTAINER (self->notebook), 6);
+        gtk_box_pack_start (
+                GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (self))),
+                         self->notebook, TRUE, TRUE, 0);
 
-    gtk_widget_show (self->notebook);
+        for (tmp_list = g_list_first (self->events);
+             tmp_list != NULL;
+             tmp_list = g_list_next (tmp_list))
+        {
+            cal_comp = ORAGE_CALENDAR_COMPONENT (tmp_list->data);
+            page = orage_import_window_create_event_preview_from_cal_comp (cal_comp);
+            label = gtk_label_new (o_cal_component_get_event_name (cal_comp));
+
+            gtk_notebook_append_page (GTK_NOTEBOOK (self->notebook), page, label);
+        }
+
+        gtk_widget_show (self->notebook);
+    }
+    else
+        g_assert_not_reached ();
 }
 
 static void orage_import_window_finalize (GObject *object)

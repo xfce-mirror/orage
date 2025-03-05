@@ -61,6 +61,7 @@ struct _OrageApplication
     GtkWidget *window;
     OrageSleepMonitor *sleep_monitor;
     OrageTaskRunner *sync;
+    GList *appointments;
     guint prepare_for_sleep_id;
     gboolean toggle_option;
     gboolean preferences_option;
@@ -166,6 +167,28 @@ static void raise_window (OrageApplication *self)
     gtk_window_present (window);
 }
 
+static void show_appointment_preview (GList *appointments, GtkWindow *parent)
+{
+    GtkWidget *dialog = orage_import_window_new (appointments);
+
+#if 0
+    gtk_window_set_default_size (GTK_WINDOW (dialog), 320, -1);
+#endif
+
+    gtk_window_set_transient_for (GTK_WINDOW (dialog), parent);
+    gtk_window_set_modal (GTK_WINDOW (dialog), TRUE); //XXX
+    gtk_window_set_destroy_with_parent (GTK_WINDOW (dialog), TRUE); //XXX
+    gtk_widget_show_all (dialog);
+
+#if 0
+    /* TODO: maybe dialog run is better here. This block main window which make
+     * sense before importing data.
+     */
+    gtk_dialog_run (GTK_DIALOG (dialog));
+    gtk_widget_destroy (dialog);
+#endif
+}
+
 static void orage_application_startup (GApplication *app)
 {
 #ifdef ENABLE_SYNC
@@ -263,6 +286,14 @@ static void orage_application_activate (GApplication *app)
 
         /* day change after resuming */
         resuming_handler_register (self);
+    }
+
+    if (self->appointments)
+    {
+        gtk_widget_hide (window);
+        show_appointment_preview (self->appointments, GTK_WINDOW (window));
+        g_list_free_full (self->appointments, g_object_unref);
+        self->appointments = NULL;
     }
 
     if (self->preferences_option)
@@ -430,19 +461,18 @@ static gint orage_application_command_line (GApplication *app,
     return EXIT_SUCCESS;
 }
 
-static void orage_application_open (G_GNUC_UNUSED GApplication *app,
+static void orage_application_open (GApplication *app,
                                     GFile **files,
                                     const gint n_files,
                                     const gchar *hint)
 {
+    OrageApplication *self;
     gchar **hint_array;
     gint i;
     gchar *file;
     gchar *file_name;
     gint export_type;
     gboolean foreign_file_read_only;
-    GtkWidget *dialog;
-    GList *appts;
 
     for (i = 0; i < n_files; i++)
     {
@@ -451,14 +481,9 @@ static void orage_application_open (G_GNUC_UNUSED GApplication *app,
             case HINT_OPEN:
                 file = g_file_get_path (files[i]);
                 g_debug ("open file=%s", file);
-                appts = xfical_appt_new_from_file (files[i]);
-                if (appts)
-                {
-                    dialog = orage_import_window_new (appts);
-                    gtk_widget_show (dialog);
-                    g_list_free_full (appts, g_object_unref);
-                }
-                else
+                self = ORAGE_APPLICATION (app);
+                self->appointments = xfical_appt_new_from_file (files[i]);
+                if (self->appointments == NULL)
                     g_warning ("ICS file '%s' read failed", file);
 
                 g_free (file);
