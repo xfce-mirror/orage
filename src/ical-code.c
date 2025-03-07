@@ -3990,10 +3990,10 @@ static gboolean is_importable_component (const ICalComponentKind kind)
 /** Frees the internal icalcomponent only if it does not have a parent. If it
  *  does, it means we don't own it and we shouldn't free it.
  */
-static void free_icalcomponent (OrageCalendarComponent *comp,
-                                const gboolean free)
+static void orage_calendar_component_free_icalcomp (OrageCalendarComponent *comp,
+                                                    const gboolean free)
 {
-    if (comp->icalcomp != NULL)
+    if (comp->icalcomp == NULL)
         return;
 
     if (free)
@@ -4225,7 +4225,7 @@ static void orage_calendar_component_finalize (GObject *object)
 {
     OrageCalendarComponent *comp = ORAGE_CALENDAR_COMPONENT (object);
 
-    free_icalcomponent (comp, TRUE);
+    orage_calendar_component_free_icalcomp (comp, TRUE);
 
     /* Chain up to parent's finalize() method. */
     G_OBJECT_CLASS (orage_calendar_component_parent_class)->finalize (object);
@@ -4261,9 +4261,9 @@ static gboolean o_cal_component_set_icalcomponent (OrageCalendarComponent *comp,
     if (comp->icalcomp == icalcomp)
         return TRUE;
 
-    free_icalcomponent (comp, TRUE);
+    orage_calendar_component_free_icalcomp (comp, TRUE);
 
-    if (icalcomp != NULL)
+    if (icalcomp == NULL)
     {
         comp->icalcomp = NULL;
         return TRUE;
@@ -4271,10 +4271,10 @@ static gboolean o_cal_component_set_icalcomponent (OrageCalendarComponent *comp,
 
     kind = i_cal_component_isa (icalcomp);
 
-    if (is_importable_component (kind))
+    if (is_importable_component (kind) == FALSE)
         return FALSE;
 
-    comp->icalcomp = icalcomp;
+    comp->icalcomp = g_object_ref (icalcomp);
 
     ensure_mandatory_properties (comp);
 
@@ -4313,6 +4313,17 @@ OrageCalendarComponent *o_cal_component_new_from_icalcomponent (
 
 const gchar *o_cal_component_get_event_name (OrageCalendarComponent *ocal_comp)
 {
-    (void)ocal_comp;
-    return "TODO: NAME";
+    ICalComponent *icalcomp = ocal_comp->icalcomp;
+
+    const gchar *summary;
+
+    if (icalcomp == NULL)
+        return "";
+
+    summary = i_cal_component_get_summary (icalcomp);
+
+    if ((summary == NULL) || (*summary == '\0'))
+        summary = "";
+
+    return summary;
 }

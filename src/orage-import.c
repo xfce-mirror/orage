@@ -59,7 +59,7 @@ G_DEFINE_TYPE (OrageImportWindow, orage_import_window, XFCE_TYPE_TITLED_DIALOG)
 
 static GtkWidget *orage_import_window_create_event_preview_from_cal_comp (OrageCalendarComponent *cal_comp)
 {
-    /* TODO */
+    g_debug ("SUMMARY: '%s'", o_cal_component_get_event_name (cal_comp));
     return gtk_label_new (o_cal_component_get_event_name (cal_comp));
 }
 
