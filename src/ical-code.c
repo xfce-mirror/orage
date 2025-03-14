@@ -4311,18 +4311,31 @@ OrageCalendarComponent *o_cal_component_new_from_icalcomponent (
     return comp;
 }
 
-const gchar *o_cal_component_get_summary (OrageCalendarComponent *ocal_comp)
+static const gchar *o_cal_component_get_string_value (
+    OrageCalendarComponent *ocal_comp, const gchar* (*getter)(ICalComponent *))
 {
-    const gchar *summary;
+    const gchar *component_string;
     ICalComponent *icalcomp = ocal_comp->icalcomp;
 
     if (icalcomp == NULL)
         return "";
 
-    summary = i_cal_component_get_summary (icalcomp);
+    component_string = getter (icalcomp);
 
-    if ((summary == NULL) || (*summary == '\0'))
-        summary = "";
+    if ((component_string == NULL) || (*component_string == '\0'))
+        component_string = "";
 
-    return summary;
+    return component_string;
+}
+
+const gchar *o_cal_component_get_summary (OrageCalendarComponent *ocal_comp)
+{
+    return o_cal_component_get_string_value (ocal_comp,
+                                             i_cal_component_get_summary);
+}
+
+const gchar *o_cal_component_get_location (OrageCalendarComponent *ocal_comp)
+{
+    return o_cal_component_get_string_value (ocal_comp,
+                                             i_cal_component_get_location);
 }

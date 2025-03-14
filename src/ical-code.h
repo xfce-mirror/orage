@@ -199,6 +199,12 @@ OrageCalendarComponent *o_cal_component_new_from_icalcomponent (
  */
 const gchar *o_cal_component_get_summary (OrageCalendarComponent *ocal_comp);
 
+/** Return location of the event from calendar component.
+ *  @param ocal_comp calendar component
+ *  @return location
+ */
+const gchar *o_cal_component_get_location (OrageCalendarComponent *ocal_comp);
+
 gboolean xfical_set_local_timezone(gboolean testing);
 
 gboolean xfical_file_open(gboolean foreign);
