@@ -4311,11 +4311,10 @@ OrageCalendarComponent *o_cal_component_new_from_icalcomponent (
     return comp;
 }
 
-const gchar *o_cal_component_get_event_name (OrageCalendarComponent *ocal_comp)
+const gchar *o_cal_component_get_summary (OrageCalendarComponent *ocal_comp)
 {
-    ICalComponent *icalcomp = ocal_comp->icalcomp;
-
     const gchar *summary;
+    ICalComponent *icalcomp = ocal_comp->icalcomp;
 
     if (icalcomp == NULL)
         return "";

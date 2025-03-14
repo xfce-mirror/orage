@@ -197,7 +197,7 @@ OrageCalendarComponent *o_cal_component_new_from_icalcomponent (
  *  @param ocal_comp calendar component
  *  @return event name
  */
-const gchar *o_cal_component_get_event_name (OrageCalendarComponent *ocal_comp);
+const gchar *o_cal_component_get_summary (OrageCalendarComponent *ocal_comp);
 
 gboolean xfical_set_local_timezone(gboolean testing);
 

@@ -56,11 +56,27 @@ enum
 };
 
 G_DEFINE_TYPE (OrageImportWindow, orage_import_window, XFCE_TYPE_TITLED_DIALOG)
-
-static GtkWidget *orage_import_window_create_event_preview_from_cal_comp (OrageCalendarComponent *cal_comp)
+static GtkWidget *orage_import_window_create_event_preview_from_cal_comp (
+    OrageCalendarComponent *cal_comp)
 {
-    g_debug ("SUMMARY: '%s'", o_cal_component_get_event_name (cal_comp));
-    return gtk_label_new (o_cal_component_get_event_name (cal_comp));
+    gint row = 0;
+    GtkWidget *name_label;
+    GtkWidget *data_label;
+    GtkGrid *grid = GTK_GRID (gtk_grid_new ());
+
+    gtk_grid_set_row_spacing (GTK_GRID (grid), 5);
+    gtk_grid_set_column_spacing (GTK_GRID (grid), 10);
+
+    /* Task title. */
+    name_label = gtk_label_new (NULL);
+    gtk_label_set_markup (GTK_LABEL (name_label), _("<b>Title</b>"));
+    gtk_widget_set_halign (name_label, GTK_ALIGN_END);
+    data_label = gtk_label_new (o_cal_component_get_summary (cal_comp));
+    gtk_widget_set_halign (data_label, GTK_ALIGN_START);
+    gtk_grid_attach (grid, name_label, 0, row, 1, 1);
+    gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
+
+    return GTK_WIDGET (grid);
 }
 
 static void orage_import_window_class_init (OrageImportWindowClass *klass)
@@ -150,7 +166,7 @@ static void orage_import_window_constructed (GObject *object)
         {
             cal_comp = ORAGE_CALENDAR_COMPONENT (tmp_list->data);
             page = orage_import_window_create_event_preview_from_cal_comp (cal_comp);
-            label = gtk_label_new (o_cal_component_get_event_name (cal_comp));
+            label = gtk_label_new (o_cal_component_get_summary (cal_comp));
 
             gtk_notebook_append_page (GTK_NOTEBOOK (self->notebook), page, label);
         }
