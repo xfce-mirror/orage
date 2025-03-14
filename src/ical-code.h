@@ -205,6 +205,12 @@ const gchar *o_cal_component_get_summary (OrageCalendarComponent *ocal_comp);
  */
 const gchar *o_cal_component_get_location (OrageCalendarComponent *ocal_comp);
 
+/** Return event type.
+ *  @param ocal_comp calendar component
+ *  @return event type, or -1 casted to xfical_type
+ */
+xfical_type o_cal_component_get_type (OrageCalendarComponent *ocal_comp);
+
 gboolean xfical_set_local_timezone(gboolean testing);
 
 gboolean xfical_file_open(gboolean foreign);

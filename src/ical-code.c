@@ -4264,10 +4264,7 @@ static gboolean o_cal_component_set_icalcomponent (OrageCalendarComponent *comp,
     orage_calendar_component_free_icalcomp (comp, TRUE);
 
     if (icalcomp == NULL)
-    {
-        comp->icalcomp = NULL;
-        return TRUE;
-    }
+        return FALSE;
 
     kind = i_cal_component_isa (icalcomp);
 
@@ -4317,9 +4314,6 @@ static const gchar *o_cal_component_get_string_value (
     const gchar *component_string;
     ICalComponent *icalcomp = ocal_comp->icalcomp;
 
-    if (icalcomp == NULL)
-        return "";
-
     component_string = getter (icalcomp);
 
     if ((component_string == NULL) || (*component_string == '\0'))
@@ -4338,4 +4332,28 @@ const gchar *o_cal_component_get_location (OrageCalendarComponent *ocal_comp)
 {
     return o_cal_component_get_string_value (ocal_comp,
                                              i_cal_component_get_location);
+}
+
+xfical_type o_cal_component_get_type (OrageCalendarComponent *ocal_comp)
+{
+    ICalComponent *icalcomp = ocal_comp->icalcomp;
+    ICalComponentKind kind;
+
+    kind = i_cal_component_isa (icalcomp);
+
+    switch (kind)
+    {
+        case ICAL_VEVENT_COMPONENT:
+            return XFICAL_TYPE_EVENT;
+
+        case ICAL_VTODO_COMPONENT:
+            return XFICAL_TYPE_TODO;
+
+        case ICAL_VJOURNAL_COMPONENT:
+            return XFICAL_TYPE_JOURNAL;
+
+        default:
+            g_warning ("%s: Unknown ICalComponentKind", G_STRFUNC);
+            return (xfical_type)-1;
+    }
 }

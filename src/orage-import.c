@@ -55,6 +55,25 @@ enum
     PROP_EVENT_LIST = 1
 };
 
+static const gchar *event_type_to_string (const xfical_type type)
+{
+    switch (type)
+    {
+        case XFICAL_TYPE_EVENT:
+            return _("Event");
+
+        case XFICAL_TYPE_TODO:
+            return _("Todo");
+
+        case XFICAL_TYPE_JOURNAL:
+            return _("Journal");
+
+        default:
+            g_critical ("%s: Unsupported Type", G_STRFUNC);
+            return "Unsupported event type";
+    }
+}
+
 G_DEFINE_TYPE (OrageImportWindow, orage_import_window, XFCE_TYPE_TITLED_DIALOG)
 static GtkWidget *orage_import_window_create_event_preview_from_cal_comp (
     OrageCalendarComponent *cal_comp)
@@ -72,6 +91,16 @@ static GtkWidget *orage_import_window_create_event_preview_from_cal_comp (
     gtk_label_set_markup (GTK_LABEL (name_label), _("<b>Title</b>"));
     gtk_widget_set_halign (name_label, GTK_ALIGN_END);
     data_label = gtk_label_new (o_cal_component_get_summary (cal_comp));
+    gtk_widget_set_halign (data_label, GTK_ALIGN_START);
+    gtk_grid_attach (grid, name_label, 0, row, 1, 1);
+    gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
+
+    /* Type */
+    name_label = gtk_label_new (NULL);
+    gtk_label_set_markup (GTK_LABEL (name_label), _("<b>Type</b>"));
+    gtk_widget_set_halign (name_label, GTK_ALIGN_END);
+    data_label = gtk_label_new (
+            event_type_to_string (o_cal_component_get_type (cal_comp)));
     gtk_widget_set_halign (data_label, GTK_ALIGN_START);
     gtk_grid_attach (grid, name_label, 0, row, 1, 1);
     gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
