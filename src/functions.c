@@ -1126,7 +1126,11 @@ void orage_open_help_page (void)
     const gchar *helpdoc;
     GError *error = NULL;
 
+#if LIBXFCE4UI_CHECK_VERSION(4, 21, 0)
+    helpdoc = "xfce-open " ORAGE_DOC_ADDRESS;
+#else
     helpdoc = "exo-open " ORAGE_DOC_ADDRESS;
+#endif
     if (orage_exec (helpdoc, NULL, &error) == FALSE)
     {
         g_message ("%s failed: %s. Trying firefox", helpdoc, error->message);
