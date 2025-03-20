@@ -86,7 +86,7 @@ static GtkWidget *orage_import_window_create_event_preview_from_cal_comp (
     gtk_grid_set_row_spacing (GTK_GRID (grid), 5);
     gtk_grid_set_column_spacing (GTK_GRID (grid), 10);
 
-    /* Task title. */
+    /* Task title */
     name_label = gtk_label_new (NULL);
     gtk_label_set_markup (GTK_LABEL (name_label), _("<b>Title</b>"));
     gtk_widget_set_halign (name_label, GTK_ALIGN_END);
@@ -105,11 +105,118 @@ static GtkWidget *orage_import_window_create_event_preview_from_cal_comp (
     gtk_grid_attach (grid, name_label, 0, row, 1, 1);
     gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
 
-    /* Location. */
+    /* TODO: Location -- add if present. */
     name_label = gtk_label_new (NULL);
     gtk_label_set_markup (GTK_LABEL (name_label), _("<b>Location</b>"));
     gtk_widget_set_halign (name_label, GTK_ALIGN_END);
     data_label = gtk_label_new (o_cal_component_get_location (cal_comp));
+    gtk_widget_set_halign (data_label, GTK_ALIGN_START);
+    gtk_grid_attach (grid, name_label, 0, row, 1, 1);
+    gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
+
+    /* Duration */
+    if (o_cal_component_is_all_day_event (cal_comp))
+    {
+        /* TODO: All-Day https://github.com/GNOME/evolution/blob/master/src/calendar/gui/e-calendar-view.c*/
+        name_label = gtk_label_new (NULL);
+        gtk_label_set_markup (GTK_LABEL (name_label), _("<b>All-day</b>"));
+        gtk_widget_set_halign (name_label, GTK_ALIGN_END);
+        data_label = gtk_check_button_new ();
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (data_label), TRUE);
+        gtk_widget_set_sensitive (data_label, FALSE);
+        gtk_widget_set_halign (data_label, GTK_ALIGN_START);
+        gtk_grid_attach (grid, name_label, 0, row, 1, 1);
+        gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
+    }
+    else
+    {
+        /* TODO: From */
+        name_label = gtk_label_new (NULL);
+        gtk_label_set_markup (GTK_LABEL (name_label), _("<b>From</b>"));
+        gtk_widget_set_halign (name_label, GTK_ALIGN_END);
+        data_label = gtk_label_new ("30.03.2012 10:00");
+        gtk_widget_set_halign (data_label, GTK_ALIGN_START);
+        gtk_grid_attach (grid, name_label, 0, row, 1, 1);
+        gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
+
+        /* TODO: To */
+        name_label = gtk_label_new (NULL);
+        gtk_label_set_markup (GTK_LABEL (name_label), _("<b>To</b>"));
+        gtk_widget_set_halign (name_label, GTK_ALIGN_END);
+        data_label = gtk_label_new("30.03.2012 18:00");
+        gtk_widget_set_halign (data_label, GTK_ALIGN_START);
+        gtk_grid_attach (grid, name_label, 0, row, 1, 1);
+        gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
+    }
+
+    /* Time zone */
+    name_label = gtk_label_new (NULL);
+    gtk_label_set_markup (GTK_LABEL (name_label), _("<b>Time zone</b>"));
+    gtk_widget_set_halign (name_label, GTK_ALIGN_END);
+    data_label = gtk_label_new ("Norge (Oslo)");
+    gtk_widget_set_halign (data_label, GTK_ALIGN_START);
+    gtk_grid_attach (grid, name_label, 0, row, 1, 1);
+    gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
+
+    /* TODO: Repeat */
+    name_label = gtk_label_new (NULL);
+    gtk_label_set_markup (GTK_LABEL (name_label), _("<b>Repeat</b>"));
+    gtk_widget_set_halign (name_label, GTK_ALIGN_END);
+    data_label = gtk_label_new ("None");
+    gtk_widget_set_halign (data_label, GTK_ALIGN_START);
+    gtk_grid_attach (grid, name_label, 0, row, 1, 1);
+    gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
+
+    /* TODO: Show as */
+    name_label = gtk_label_new (NULL);
+    gtk_label_set_markup (GTK_LABEL (name_label), _("<b>Show as</b>"));
+    gtk_widget_set_halign (name_label, GTK_ALIGN_END);
+    data_label = gtk_label_new ("Busy");
+    gtk_widget_set_halign (data_label, GTK_ALIGN_START);
+    gtk_grid_attach (grid, name_label, 0, row, 1, 1);
+    gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
+
+    /* TODO: Calendar */
+    name_label = gtk_label_new (NULL);
+    gtk_label_set_markup (GTK_LABEL (name_label), _("<b>Calendar</b>"));
+    gtk_widget_set_halign (name_label, GTK_ALIGN_END);
+    data_label = gtk_label_new ("🏠 Home");
+    gtk_widget_set_halign (data_label, GTK_ALIGN_START);
+    gtk_grid_attach (grid, name_label, 0, row, 1, 1);
+    gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
+
+    /* TODO: Alert */
+    name_label = gtk_label_new (NULL);
+    gtk_label_set_markup (GTK_LABEL (name_label), _("<b>Alert</b>"));
+    gtk_widget_set_halign (name_label, GTK_ALIGN_END);
+    data_label = gtk_label_new ("Message with Sound");
+    gtk_widget_set_halign (data_label, GTK_ALIGN_START);
+    gtk_grid_attach (grid, name_label, 0, row, 1, 1);
+    gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
+
+    /* TODO: Invitees */
+    name_label = gtk_label_new (NULL);
+    gtk_label_set_markup (GTK_LABEL (name_label), _("<b>Invitees</b>"));
+    gtk_widget_set_halign (name_label, GTK_ALIGN_END);
+    data_label = gtk_label_new ("Add Invitees...");
+    gtk_widget_set_halign (data_label, GTK_ALIGN_START);
+    gtk_grid_attach (grid, name_label, 0, row, 1, 1);
+    gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
+
+    /* TODO: URL */
+    name_label = gtk_label_new (NULL);
+    gtk_label_set_markup (GTK_LABEL (name_label), _("<b>URL</b>"));
+    gtk_widget_set_halign (name_label, GTK_ALIGN_END);
+    data_label = gtk_label_new ("None");
+    gtk_widget_set_halign (data_label, GTK_ALIGN_START);
+    gtk_grid_attach (grid, name_label, 0, row, 1, 1);
+    gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
+
+    /* TODO: Note */
+    name_label = gtk_label_new (NULL);
+    gtk_label_set_markup (GTK_LABEL (name_label), _("<b>Note</b>"));
+    gtk_widget_set_halign (name_label, GTK_ALIGN_END);
+    data_label = gtk_label_new ("None");
     gtk_widget_set_halign (data_label, GTK_ALIGN_START);
     gtk_grid_attach (grid, name_label, 0, row, 1, 1);
     gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
