@@ -6,16 +6,16 @@
 # Translators:
 # Nick Schermer <nick@xfce.org>, 2023
 # Xfce Bot <transifex@xfce.org>, 2024
-# Саша Петровић <salepetronije@gmail.com>, 2024
+# Саша Петровић <salepetronije@gmail.com>, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2025-01-15 00:49+0100\n"
+"POT-Creation-Date: 2025-02-10 12:49+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Саша Петровић <salepetronije@gmail.com>, 2024\n"
+"Last-Translator: Саша Петровић <salepetronije@gmail.com>, 2025\n"
 "Language-Team: Serbian (https://app.transifex.com/xfce/teams/16840/sr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,7 +34,7 @@ msgstr "Време"
 
 #: src/event-list.c:803
 msgid "No rows have been selected."
-msgstr "Ниједан ред није изабран."
+msgstr "Ни један ред није изабран."
 
 #: src/event-list.c:804
 msgid "Click a row to select it and after that you can copy it."
@@ -62,13 +62,13 @@ msgstr "Не, откажи уклањање"
 msgid "Yes, remove them"
 msgstr "Да, уклони их"
 
-#: src/event-list.c:1078 src/functions.c:115
+#: src/event-list.c:1078 src/functions.c:112
 #: src/orage-appointment-window.c:1732 src/orage-appointment-window.c:1747
 #: src/orage-week-window.c:530
 msgid "Pick the date"
 msgstr "Изаберите датум"
 
-#: src/event-list.c:1080 src/event-list.c:1234 src/functions.c:117
+#: src/event-list.c:1080 src/event-list.c:1234 src/functions.c:114
 #: src/orage-appointment-window.c:1734 src/orage-appointment-window.c:1749
 #: src/orage-week-window.c:459 src/orage-week-window.c:532 src/tray_icon.c:391
 msgid "Today"
@@ -510,7 +510,7 @@ msgstr "Ораж је програм за управљање временом р
 msgid "translator-credits"
 msgstr "Саша Петровић <salepetronije@gmail.com>"
 
-#: src/orage-application.c:113
+#: src/orage-application.c:114
 #, c-format
 msgid ""
 "\tThis is %s version %s\n"
@@ -519,43 +519,41 @@ msgstr ""
 "        Ово је %s, издање %s\n"
 "\n"
 
-#: src/orage-application.c:115
+#: src/orage-application.c:116
 msgid "\tReleased under the terms of the GNU General Public License.\n"
 msgstr "        Издато под одредбама Гнуове опште јавне лиценце.\n"
 
-#: src/orage-application.c:116
+#: src/orage-application.c:117
 #, c-format
 msgid "\tCompiled against GTK+-%d.%d.%d, "
 msgstr "\tПреведено наспрам ГТК+-%d.%d.%d, "
 
-#: src/orage-application.c:118
+#: src/orage-application.c:119
 #, c-format
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "користећи ГТК+-%d.%d.%d.\n"
 
-#: src/orage-application.c:121
+#: src/orage-application.c:122
+#, c-format
+msgid "\tCompiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d.\n"
+msgstr ""
+"\tПретворено наспрам libxfce4ui-%d.%d.%d, користећи libxfce4ui-%d.%d.%d.\n"
+
+#: src/orage-application.c:127
 msgid "\tUsing libnotify.\n"
 msgstr "        Користи библиотеку обавештења.\n"
 
-#: src/orage-application.c:123
+#: src/orage-application.c:129
 msgid "\tNot using libnotify.\n"
 msgstr "        Не користи библиотеку обавештења.\n"
 
-#: src/orage-application.c:126
+#: src/orage-application.c:132
 msgid "\tUsing automatic archiving.\n"
 msgstr "        Користи самостално складиштење.\n"
 
-#: src/orage-application.c:128
+#: src/orage-application.c:134
 msgid "\tNot using archiving.\n"
 msgstr "        Не користи складиштење.\n"
-
-#: src/orage-application.c:131
-msgid "\tUsing libxfce4ui: yes\n"
-msgstr "\tКористи libxfce4ui: да\n"
-
-#: src/orage-application.c:133
-msgid "\tUsing libxfce4ui: no\n"
-msgstr "\tКористи libxfce4ui: не\n"
 
 #: src/orage-application.c:560
 msgid "Open today's tasks"

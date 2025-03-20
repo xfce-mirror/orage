@@ -7,16 +7,16 @@
 # 63f334ffc0709ba0fc2361b80bf3c0f0_00ffd1e <ab96c93ca0ac55ba7fa06385427e60dd_878890>, 2022
 # gk <genghiskhan@gmx.ca>, 2023
 # Xfce Bot <transifex@xfce.org>, 2024
-# Elishai Eliyahu <elishai@mailfence.com>, 2024
+# Elishai Eliyahu <elishai@mailfence.com>, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2025-01-15 00:49+0100\n"
+"POT-Creation-Date: 2025-02-10 12:49+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Elishai Eliyahu <elishai@mailfence.com>, 2024\n"
+"Last-Translator: Elishai Eliyahu <elishai@mailfence.com>, 2025\n"
 "Language-Team: Hebrew (https://app.transifex.com/xfce/teams/16840/he/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -63,13 +63,13 @@ msgstr "לא, בטל את ההסרה"
 msgid "Yes, remove them"
 msgstr "כן, הסר אותן"
 
-#: src/event-list.c:1078 src/functions.c:115
+#: src/event-list.c:1078 src/functions.c:112
 #: src/orage-appointment-window.c:1732 src/orage-appointment-window.c:1747
 #: src/orage-week-window.c:530
 msgid "Pick the date"
 msgstr "בחר תאריך"
 
-#: src/event-list.c:1080 src/event-list.c:1234 src/functions.c:117
+#: src/event-list.c:1080 src/event-list.c:1234 src/functions.c:114
 #: src/orage-appointment-window.c:1734 src/orage-appointment-window.c:1749
 #: src/orage-week-window.c:459 src/orage-week-window.c:532 src/tray_icon.c:391
 msgid "Today"
@@ -510,7 +510,7 @@ msgstr "Orage הוא ישום ניהול זמן לסביבת שולחן עבוד
 msgid "translator-credits"
 msgstr "צוות תרגום Xfce לעברית"
 
-#: src/orage-application.c:113
+#: src/orage-application.c:114
 #, c-format
 msgid ""
 "\tThis is %s version %s\n"
@@ -519,43 +519,40 @@ msgstr ""
 "זה %s גרסה %s \n"
 "\n"
 
-#: src/orage-application.c:115
+#: src/orage-application.c:116
 msgid "\tReleased under the terms of the GNU General Public License.\n"
 msgstr "פורסם לפי התנאים של רישיון GNU לציבור הכללי.\n"
 
-#: src/orage-application.c:116
+#: src/orage-application.c:117
 #, c-format
 msgid "\tCompiled against GTK+-%d.%d.%d, "
 msgstr "עבר הדרה כנגד GTK+-%d.%d.%d, "
 
-#: src/orage-application.c:118
+#: src/orage-application.c:119
 #, c-format
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "משתמש ב- GTK+-%d.%d.%d.\n"
 
-#: src/orage-application.c:121
+#: src/orage-application.c:122
+#, c-format
+msgid "\tCompiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d.\n"
+msgstr "\tקומפילציה נגד libxfce4ui-%d.%d.%d, בעזרת libxfce4ui-%d.%d.%d.\n"
+
+#: src/orage-application.c:127
 msgid "\tUsing libnotify.\n"
 msgstr "משתמש ב- libnotify. \n"
 
-#: src/orage-application.c:123
+#: src/orage-application.c:129
 msgid "\tNot using libnotify.\n"
 msgstr "לא משתמש ב- libnotify. \n"
 
-#: src/orage-application.c:126
+#: src/orage-application.c:132
 msgid "\tUsing automatic archiving.\n"
 msgstr "משתמש בארכיון אוטומטי.\n"
 
-#: src/orage-application.c:128
+#: src/orage-application.c:134
 msgid "\tNot using archiving.\n"
 msgstr "לא משתמש בארכיון.\n"
-
-#: src/orage-application.c:131
-msgid "\tUsing libxfce4ui: yes\n"
-msgstr "\tUsing libxfce4ui: yes\n"
-
-#: src/orage-application.c:133
-msgid "\tUsing libxfce4ui: no\n"
-msgstr "\tUsing libxfce4ui: no\n"
 
 #: src/orage-application.c:560
 msgid "Open today's tasks"
