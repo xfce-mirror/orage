@@ -4334,6 +4334,22 @@ const gchar *o_cal_component_get_location (OrageCalendarComponent *ocal_comp)
                                              i_cal_component_get_location);
 }
 
+gboolean o_cal_component_is_all_day_event (OrageCalendarComponent *ocal_comp)
+{
+    ICalComponent *icalcomp = ocal_comp->icalcomp;
+    ICalTime *time;
+
+    time = i_cal_component_get_dtstart (icalcomp);
+    if (i_cal_time_is_date (time))
+        return TRUE;
+
+    time = i_cal_component_get_dtend (icalcomp);
+    if (i_cal_time_is_date (time))
+        return TRUE;
+
+    return FALSE;
+}
+
 xfical_type o_cal_component_get_type (OrageCalendarComponent *ocal_comp)
 {
     ICalComponent *icalcomp = ocal_comp->icalcomp;

@@ -211,6 +211,12 @@ const gchar *o_cal_component_get_location (OrageCalendarComponent *ocal_comp);
  */
 xfical_type o_cal_component_get_type (OrageCalendarComponent *ocal_comp);
 
+/** Test if event is all day event.
+ *  @param ocal_comp calendar component
+ *  @return true for all day event
+ */
+gboolean o_cal_component_is_all_day_event (OrageCalendarComponent *ocal_comp);
+
 gboolean xfical_set_local_timezone(gboolean testing);
 
 gboolean xfical_file_open(gboolean foreign);
