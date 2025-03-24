@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Erkki Moorits
+ * Copyright (c) 2021-2025 Erkki Moorits
  * Copyright (c) 2005-2011 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2003-2005 Mickael Graf (korbinus at xfce.org)
  *
@@ -1916,6 +1916,8 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
     struct icaldatetimeperiodtype rdate;
     GDateTime *gdt;
 
+    appt_init (appt);
+
         /********** Component type ********/
     /* we want isolate all libical calls and features into this file,
      * so need to remap component type to our own defines */
@@ -1934,7 +1936,6 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
     sltime = icaltime_null_time();
     eltime = icaltime_null_time();
     duration = icaldurationtype_null_duration();
-    appt_init(appt);
 
 /*********** Properties ***********/
     for (p = icalcomponent_get_first_property(c, ICAL_ANY_PROPERTY);
