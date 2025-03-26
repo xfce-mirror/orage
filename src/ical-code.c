@@ -1918,7 +1918,7 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
 
     appt_init (appt);
 
-        /********** Component type ********/
+    /********** Component type ********/
     /* we want isolate all libical calls and features into this file,
      * so need to remap component type to our own defines */
     if (icalcomponent_isa(c) == ICAL_VEVENT_COMPONENT)
@@ -1935,9 +1935,9 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
     stime = icaltime_null_time();
     sltime = icaltime_null_time();
     eltime = icaltime_null_time();
-    duration = icaldurationtype_null_duration();
+    duration = icaldurationtype_null_duration ();
 
-/*********** Properties ***********/
+    /*********** Properties ***********/
     for (p = icalcomponent_get_first_property(c, ICAL_ANY_PROPERTY);
          p != 0;
          p = icalcomponent_get_next_property(c, ICAL_ANY_PROPERTY)) {
