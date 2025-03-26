@@ -1,3 +1,9 @@
+4.20.1 (2025-03-26)
+======
+- Fixed event structure initialization, TODOs was not correctly displayed.
+  Related with Issue #33, and MR !73.
+- Replaced deprecated exo with libxfce4ui (MR !71).
+
 4.20.0 (2025-01-07)
 ======
 - Redesigned appointment window recurrence tab. Related with Issue #23.
