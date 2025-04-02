@@ -4318,7 +4318,7 @@ static const gchar *o_cal_component_get_string_value (
     component_string = getter (icalcomp);
 
     if ((component_string == NULL) || (*component_string == '\0'))
-        component_string = "";
+        component_string = NULL;
 
     return component_string;
 }
@@ -4338,17 +4338,23 @@ const gchar *o_cal_component_get_location (OrageCalendarComponent *ocal_comp)
 gboolean o_cal_component_is_all_day_event (OrageCalendarComponent *ocal_comp)
 {
     ICalComponent *icalcomp = ocal_comp->icalcomp;
-    ICalTime *time;
+    ICalTime *dtstart;
+    ICalTime *dtend;
+    gboolean result;
 
-    time = i_cal_component_get_dtstart (icalcomp);
-    if (i_cal_time_is_date (time))
-        return TRUE;
+    dtstart = i_cal_component_get_dtstart (icalcomp);
+    dtend = i_cal_component_get_dtend (icalcomp);
+    if (i_cal_time_is_date (dtstart))
+        result = TRUE;
+    else if (i_cal_time_is_date (dtend))
+        result = TRUE;
+    else
+        result = FALSE;
 
-    time = i_cal_component_get_dtend (icalcomp);
-    if (i_cal_time_is_date (time))
-        return TRUE;
+    g_clear_object (&dtstart);
+    g_clear_object (&dtend);
 
-    return FALSE;
+    return result;
 }
 
 xfical_type o_cal_component_get_type (OrageCalendarComponent *ocal_comp)

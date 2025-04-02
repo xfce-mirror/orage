@@ -78,6 +78,7 @@ G_DEFINE_TYPE (OrageImportWindow, orage_import_window, XFCE_TYPE_TITLED_DIALOG)
 static GtkWidget *orage_import_window_create_event_preview_from_cal_comp (
     OrageCalendarComponent *cal_comp)
 {
+    const gchar *text;
     gint row = 0;
     GtkWidget *name_label;
     GtkWidget *data_label;
@@ -87,10 +88,11 @@ static GtkWidget *orage_import_window_create_event_preview_from_cal_comp (
     gtk_grid_set_column_spacing (GTK_GRID (grid), 10);
 
     /* Task title */
+    text = o_cal_component_get_summary (cal_comp);
     name_label = gtk_label_new (NULL);
     gtk_label_set_markup (GTK_LABEL (name_label), _("<b>Title</b>"));
     gtk_widget_set_halign (name_label, GTK_ALIGN_END);
-    data_label = gtk_label_new (o_cal_component_get_summary (cal_comp));
+    data_label = gtk_label_new (text ? text : NULL);
     gtk_widget_set_halign (data_label, GTK_ALIGN_START);
     gtk_grid_attach (grid, name_label, 0, row, 1, 1);
     gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
@@ -105,19 +107,22 @@ static GtkWidget *orage_import_window_create_event_preview_from_cal_comp (
     gtk_grid_attach (grid, name_label, 0, row, 1, 1);
     gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
 
-    /* TODO: Location -- add if present. */
-    name_label = gtk_label_new (NULL);
-    gtk_label_set_markup (GTK_LABEL (name_label), _("<b>Location</b>"));
-    gtk_widget_set_halign (name_label, GTK_ALIGN_END);
-    data_label = gtk_label_new (o_cal_component_get_location (cal_comp));
-    gtk_widget_set_halign (data_label, GTK_ALIGN_START);
-    gtk_grid_attach (grid, name_label, 0, row, 1, 1);
-    gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
+    /* Location */
+    text = o_cal_component_get_location (cal_comp);
+    if (text)
+    {
+        name_label = gtk_label_new (NULL);
+        gtk_label_set_markup (GTK_LABEL (name_label), _("<b>Location</b>"));
+        gtk_widget_set_halign (name_label, GTK_ALIGN_END);
+        data_label = gtk_label_new (text);
+        gtk_widget_set_halign (data_label, GTK_ALIGN_START);
+        gtk_grid_attach (grid, name_label, 0, row, 1, 1);
+        gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
+    }
 
     /* Duration */
     if (o_cal_component_is_all_day_event (cal_comp))
     {
-        /* TODO: All-Day https://github.com/GNOME/evolution/blob/master/src/calendar/gui/e-calendar-view.c*/
         name_label = gtk_label_new (NULL);
         gtk_label_set_markup (GTK_LABEL (name_label), _("<b>All-day</b>"));
         gtk_widget_set_halign (name_label, GTK_ALIGN_END);
@@ -149,7 +154,7 @@ static GtkWidget *orage_import_window_create_event_preview_from_cal_comp (
         gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
     }
 
-    /* Time zone */
+    /* TODO: Time zone */
     name_label = gtk_label_new (NULL);
     gtk_label_set_markup (GTK_LABEL (name_label), _("<b>Time zone</b>"));
     gtk_widget_set_halign (name_label, GTK_ALIGN_END);
