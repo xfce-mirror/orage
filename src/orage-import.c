@@ -22,6 +22,7 @@
 
 #include "orage-i18n.h"
 #include "ical-code.h"
+#include "functions.h"
 #include "orage-appointment-window.h"
 #include <libxfce4ui/libxfce4ui.h>
 #include <gtk/gtk.h>
@@ -139,7 +140,10 @@ static GtkWidget *orage_import_window_create_event_preview_from_cal_comp (
         name_label = gtk_label_new (NULL);
         gtk_label_set_markup (GTK_LABEL (name_label), _("<b>From</b>"));
         gtk_widget_set_halign (name_label, GTK_ALIGN_END);
-        data_label = gtk_label_new ("30.03.2012 10:00");
+        text = orage_gdatetime_to_i18_time (
+                o_cal_component_get_dtstart (cal_comp), FALSE);
+        data_label = gtk_label_new (text);
+        g_free (text);
         gtk_widget_set_halign (data_label, GTK_ALIGN_START);
         gtk_grid_attach (grid, name_label, 0, row, 1, 1);
         gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
@@ -148,7 +152,10 @@ static GtkWidget *orage_import_window_create_event_preview_from_cal_comp (
         name_label = gtk_label_new (NULL);
         gtk_label_set_markup (GTK_LABEL (name_label), _("<b>To</b>"));
         gtk_widget_set_halign (name_label, GTK_ALIGN_END);
-        data_label = gtk_label_new("30.03.2012 18:00");
+        text = orage_gdatetime_to_i18_time (
+                o_cal_component_get__dtend (cal_comp), FALSE);
+        data_label = gtk_label_new (text);
+        g_free (text);
         gtk_widget_set_halign (data_label, GTK_ALIGN_START);
         gtk_grid_attach (grid, name_label, 0, row, 1, 1);
         gtk_grid_attach (grid, data_label, 1, row++, 1, 1);

@@ -4323,6 +4323,47 @@ static const gchar *o_cal_component_get_string_value (
     return component_string;
 }
 
+static GDateTime *o_cal_component_icaltime__to_gdatetime (ICalTime *ical_time)
+{
+    gint year;
+    gint month;
+    gint day;
+    gint hour;
+    gint minute;
+    gint second;
+    const ICalTimezone *ical_tz;
+    const gchar *tzid;
+    GTimeZone *tz;
+    GDateTime *gdt;
+
+    g_return_val_if_fail (I_CAL_IS_TIME (ical_time), NULL);
+
+    i_cal_time_get_date (ical_time, &year, &month, &day);
+    i_cal_time_get_time (ical_time, &hour, &minute, &second);
+
+    if (i_cal_time_is_utc (ical_time))
+        return g_date_time_new_utc (year, month, day, hour, minute, second);
+
+    ical_tz = i_cal_time_get_timezone (ical_time);
+    if (ical_tz)
+    {
+        tzid = i_cal_timezone_get_tzid (ical_tz);
+
+        if (tzid && *tzid)
+        {
+            tz = g_time_zone_new (tzid);
+            if (tz)
+            {
+                gdt = g_date_time_new (tz, year, month, day, hour, minute, second);
+                g_time_zone_unref (tz);
+                return gdt;
+            }
+        }
+    }
+
+    return g_date_time_new_local (year, month, day, hour, minute, second);
+}
+
 const gchar *o_cal_component_get_summary (OrageCalendarComponent *ocal_comp)
 {
     return o_cal_component_get_string_value (ocal_comp,
@@ -4355,6 +4396,22 @@ gboolean o_cal_component_is_all_day_event (OrageCalendarComponent *ocal_comp)
     g_clear_object (&dtend);
 
     return result;
+}
+
+GDateTime *o_cal_component_get_dtstart (OrageCalendarComponent *ocal_comp)
+{
+    ICalComponent *icalcomp = ocal_comp->icalcomp;
+
+    return o_cal_component_icaltime__to_gdatetime (
+            i_cal_component_get_dtstart (icalcomp));
+}
+
+GDateTime *o_cal_component_get__dtend (OrageCalendarComponent *ocal_comp)
+{
+    ICalComponent *icalcomp = ocal_comp->icalcomp;
+
+    return o_cal_component_icaltime__to_gdatetime (
+            i_cal_component_get_dtend (icalcomp));
 }
 
 xfical_type o_cal_component_get_type (OrageCalendarComponent *ocal_comp)
