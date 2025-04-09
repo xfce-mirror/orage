@@ -227,7 +227,7 @@ GDateTime *o_cal_component_get_dtstart (OrageCalendarComponent *ocal_comp);
  *  @param ocal_comp calendar component
  *  @return event end time
  */
-GDateTime *o_cal_component_get__dtend (OrageCalendarComponent *ocal_comp);
+GDateTime *o_cal_component_get_dtend (OrageCalendarComponent *ocal_comp);
 
 gboolean xfical_set_local_timezone(gboolean testing);
 

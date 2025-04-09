@@ -4406,7 +4406,7 @@ GDateTime *o_cal_component_get_dtstart (OrageCalendarComponent *ocal_comp)
             i_cal_component_get_dtstart (icalcomp));
 }
 
-GDateTime *o_cal_component_get__dtend (OrageCalendarComponent *ocal_comp)
+GDateTime *o_cal_component_get_dtend (OrageCalendarComponent *ocal_comp)
 {
     ICalComponent *icalcomp = ocal_comp->icalcomp;
 
