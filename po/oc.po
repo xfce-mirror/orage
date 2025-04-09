@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2025-01-15 00:49+0100\n"
+"POT-Creation-Date: 2025-02-10 12:49+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Quentin PAGÈS, 2025\n"
 "Language-Team: Occitan (post 1500) (https://app.transifex.com/xfce/teams/16840/oc/)\n"
@@ -63,13 +63,13 @@ msgstr "Non, anullar la supression"
 msgid "Yes, remove them"
 msgstr "Òc, levatz-los"
 
-#: src/event-list.c:1078 src/functions.c:115
+#: src/event-list.c:1078 src/functions.c:112
 #: src/orage-appointment-window.c:1732 src/orage-appointment-window.c:1747
 #: src/orage-week-window.c:530
 msgid "Pick the date"
 msgstr "Causir la data"
 
-#: src/event-list.c:1080 src/event-list.c:1234 src/functions.c:117
+#: src/event-list.c:1080 src/event-list.c:1234 src/functions.c:114
 #: src/orage-appointment-window.c:1734 src/orage-appointment-window.c:1749
 #: src/orage-week-window.c:459 src/orage-week-window.c:532 src/tray_icon.c:391
 msgid "Today"
@@ -168,6 +168,8 @@ msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed."
 msgstr ""
+"Marcar aquò se volètz veire tanben los eveniments ancians. Aquò pòt èsser seleccionat solament aprèp qu'« solament la primièra repeticion » es activat per evitar las listas fòrça longas.\n"
+"Notatz que la seleccion de jorns suplementaris definís totjorn se los eveniments mai recents son listats."
 
 #: src/event-list.c:1338 src/orage-appointment-window.c:3593
 msgid "Todo"
@@ -187,7 +189,7 @@ msgstr "Recercar"
 
 #: src/event-list.c:1383
 msgid "Search text "
-msgstr "Recèrca de tèxte"
+msgstr "Recèrca de tèxte "
 
 #: src/event-list.c:1449
 msgid "Flags"
@@ -505,12 +507,15 @@ msgstr "Orage"
 #: src/orage-about.c:44 org.xfce.orage.appdata.xml.in:8
 msgid "Orage is a time-managing application for the Xfce desktop environment"
 msgstr ""
+"Orage es una aplicacion de gestion de temps per l’environament de burèu Xfce"
 
 #: src/orage-about.c:51
 msgid "translator-credits"
-msgstr "Cédric Valmary (totenoc.org) <cvalmary@yahoo.fr>"
+msgstr ""
+"Cédric Valmary (totenoc.org) <cvalmary@yahoo.fr>\n"
+"Quentin PAGÈS"
 
-#: src/orage-application.c:113
+#: src/orage-application.c:114
 #, c-format
 msgid ""
 "\tThis is %s version %s\n"
@@ -519,43 +524,40 @@ msgstr ""
 "\tAquò es %s version %s\n"
 "\n"
 
-#: src/orage-application.c:115
+#: src/orage-application.c:116
 msgid "\tReleased under the terms of the GNU General Public License.\n"
 msgstr "\tDistribuit jols tèrmes de la GNU General Public License.\n"
 
-#: src/orage-application.c:116
+#: src/orage-application.c:117
 #, c-format
 msgid "\tCompiled against GTK+-%d.%d.%d, "
 msgstr "\tCompilat amb GTK+-%d.%d.%d, "
 
-#: src/orage-application.c:118
+#: src/orage-application.c:119
 #, c-format
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "utilizant GTK+-%d.%d.%d.\n"
 
-#: src/orage-application.c:121
+#: src/orage-application.c:122
+#, c-format
+msgid "\tCompiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d.\n"
+msgstr "\tCompilat amb libxfce4ui-%d.%d.%d, en utilizant libxfce4ui-%d.%d.%d.\n"
+
+#: src/orage-application.c:127
 msgid "\tUsing libnotify.\n"
 msgstr "\tUtilizacion de libnotify.\n"
 
-#: src/orage-application.c:123
+#: src/orage-application.c:129
 msgid "\tNot using libnotify.\n"
 msgstr "\tlibnotify  pas utilizat.\n"
 
-#: src/orage-application.c:126
+#: src/orage-application.c:132
 msgid "\tUsing automatic archiving.\n"
 msgstr "\tUtilizacion de l'archivatge automatic.\n"
 
-#: src/orage-application.c:128
+#: src/orage-application.c:134
 msgid "\tNot using archiving.\n"
 msgstr "\tArchivatge pas utilizat.\n"
-
-#: src/orage-application.c:131
-msgid "\tUsing libxfce4ui: yes\n"
-msgstr ""
-
-#: src/orage-application.c:133
-msgid "\tUsing libxfce4ui: no\n"
-msgstr ""
 
 #: src/orage-application.c:560
 msgid "Open today's tasks"
@@ -567,15 +569,15 @@ msgstr "Apondre un rendètz-vos novèl"
 
 #: src/orage-application.c:578
 msgid "Show preferences form"
-msgstr ""
+msgstr "Afichar lo formulari de preferéncias"
 
 #: src/orage-application.c:587
 msgid "Make Orage visible/unvisible"
-msgstr ""
+msgstr "Far venir Orage visible/invisible"
 
 #: src/orage-application.c:596
 msgid "Add a foreign file"
-msgstr ""
+msgstr "Apondre un novèl fichièr extèrne"
 
 #: src/orage-application.c:605
 msgid "Remove a foreign file"
@@ -922,7 +924,7 @@ msgid ""
 "TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
 msgstr ""
-"TODO es basat sul temps complet e se repetís aprèp interval comptat dempuèi lo darrièr còp acabat.\n"
+"TODO es basat sul temps complèt e se repetís aprèp interval comptat dempuèi lo darrièr còp acabat.\n"
 "(Notatz que podètz pas dire quicòm sus l'istòria del TODO donat que los cambiaments de basa se reprodusisson qu'aprèp cada execucion.)"
 
 #: src/orage-appointment-window.c:3541
@@ -1074,6 +1076,14 @@ msgid ""
 "    <&Ynnnn> is translated to current year minus nnnn.\n"
 "(This can be used for example in birthday reminders to tell how old the person will be.)"
 msgstr ""
+"Aquestas comandas en abreujat prenon efièch immediatament :\n"
+"    <D> inserir la data actuala dins lo format de data local\n"
+"    <T> inserir l'ora\n"
+"    <DT> inserir la data e l'ora.\n"
+"\n"
+"Aquestas son convertidas solament après afichatge :\n"
+"    <&Ynnnn> es tradusit cap a l'annada actuala mens nnnn.\n"
+"(Aquò pòt èsser utilizat per exemple dins los rapèls d'anniversari per dire qual es l'atge que la persona farà.)"
 
 #: src/orage-appointment-window.c:3871
 msgid "Alarm"
@@ -1213,7 +1223,7 @@ msgstr "Enregistrar los paramètres actuals coma alarma per defaut"
 
 #: src/orage-appointment-window.c:4121
 msgid "_Revert"
-msgstr ""
+msgstr "_Restablir"
 
 #: src/orage-appointment-window.c:4129
 msgid "Set current settings from default alarm"
@@ -1284,7 +1294,7 @@ msgstr "Apondre un jorn exclut (-)"
 #: src/orage-appointment-window.c:4310
 msgid "Excluded days are full days where this appointment is not happening"
 msgstr ""
-"Los jorns excluts son de jornadas completas ont aqueste rendètz-vos es pas "
+"Los jorns excluts son de jornadas complètas ont aqueste rendètz-vos es pas "
 "arribat"
 
 #: src/orage-appointment-window.c:4317
@@ -1322,11 +1332,11 @@ msgstr "minutas"
 
 #: src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task"
-msgstr ""
+msgstr "Lo nom o la descripcion d’aqueste prètzfait de sincronizacion"
 
 #: src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization"
-msgstr ""
+msgstr "Comanda per la sincronizacion"
 
 #: src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes"
@@ -1459,7 +1469,7 @@ msgstr "<b>Eveniments per %s - %s :</b>"
 
 #: src/parameters.c:686
 msgid "Remove selected synchronization task."
-msgstr ""
+msgstr "Suprimir la lista de prètzfaits seleccionada."
 
 #: src/parameters.c:689
 msgid "Yes, remove"
@@ -1507,7 +1517,7 @@ msgstr "Fenèstra calendièr"
 
 #: src/parameters.c:848
 msgid "Calendar visual details"
-msgstr "Detalhs visuals del calendièr  "
+msgstr "Detalhs visuals del calendièr"
 
 #: src/parameters.c:855
 msgid "Show borders"
@@ -1547,7 +1557,7 @@ msgstr "0 = afichar pas la lista dels eveniments"
 
 #: src/parameters.c:937
 msgid "Calendar visibility"
-msgstr "Visibilitat calendièr "
+msgstr "Visibilitat calendièr"
 
 #: src/parameters.c:943
 msgid "Show on all desktops"
@@ -1587,7 +1597,7 @@ msgstr "Redusir"
 
 #: src/parameters.c:1062
 msgid "On calendar window open"
-msgstr "Sus la fenèstra dobèrta del calendièr "
+msgstr "Sus la fenèstra dobèrta del calendièr"
 
 #: src/parameters.c:1068
 msgid "Select today's date"
@@ -1661,11 +1671,11 @@ msgstr ""
 
 #: src/parameters.c:1285
 msgid "Foreign file default visual alarm"
-msgstr "Fichièr extèrne per defaut de l'alarma visuala "
+msgstr "Fichièr extèrne per defaut de l'alarma visuala"
 
 #: src/parameters.c:1292
 msgid "Orage window"
-msgstr "Fenèstra Orage "
+msgstr "Fenèstra Orage"
 
 #: src/parameters.c:1309
 msgid "Notify notification"
@@ -1673,7 +1683,7 @@ msgstr "Senhalar la notificacion"
 
 #: src/parameters.c:1332
 msgid "Always quit when asked to close"
-msgstr "Totjorn quitar quand se demanda de tampar."
+msgstr "Totjorn quitar quand se demanda de tampar"
 
 #: src/parameters.c:1339
 msgid "Always quit"
@@ -4092,6 +4102,10 @@ msgid ""
 " ical format and includes common calendar features like repeating "
 "appointments and multiple alarming possibilities."
 msgstr ""
+"Orage a per objectiu d'èsser un calendièr grafic rapid e facil d'utilizar. "
+"Utiliza lo format ical portable e compren de foncionalitats comunas de "
+"calendièr coma los eveniments repetitius e de possibilitats multiplas "
+"d'alarmas."
 
 #: org.xfce.orage.appdata.xml.in:15
 msgid ""
@@ -4100,6 +4114,10 @@ msgid ""
 "Contents of those files are read and converted into Orage, but those files "
 "are left untouched."
 msgstr ""
+"Orage a pas de foncionalitats d'agenda de grop, mas pòt èsser utilizat "
+"solament per un utilizaire unic. Requerís una lista de fichièrs per los "
+"fichièrs ical que deurián èsser importats. Lo contengut d'aqueles fichièrs "
+"es legit e convertit en Orage, mas aqueles fichièrs son daissats intactes."
 
 #: org.xfce.orage.appdata.xml.in:35
 msgid "Orage Team"
