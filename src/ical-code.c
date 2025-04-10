@@ -4323,7 +4323,7 @@ static const gchar *o_cal_component_get_string_value (
     return component_string;
 }
 
-static GDateTime *o_cal_component_icaltime__to_gdatetime (ICalTime *ical_time)
+static GDateTime *o_cal_component_icaltime_to_gdatetime (ICalTime *ical_time)
 {
     gint year;
     gint month;
@@ -4339,7 +4339,15 @@ static GDateTime *o_cal_component_icaltime__to_gdatetime (ICalTime *ical_time)
     g_return_val_if_fail (I_CAL_IS_TIME (ical_time), NULL);
 
     i_cal_time_get_date (ical_time, &year, &month, &day);
-    i_cal_time_get_time (ical_time, &hour, &minute, &second);
+
+    if (i_cal_time_is_date (ical_time))
+        i_cal_time_get_time (ical_time, &hour, &minute, &second);
+    else
+    {
+        hour = 0;
+        minute = 0;
+        second = 0;
+    }
 
     if (i_cal_time_is_utc (ical_time))
         return g_date_time_new_utc (year, month, day, hour, minute, second);
@@ -4351,10 +4359,11 @@ static GDateTime *o_cal_component_icaltime__to_gdatetime (ICalTime *ical_time)
 
         if (tzid && *tzid)
         {
-            tz = g_time_zone_new (tzid);
+            tz = g_time_zone_new_identifier (tzid);
             if (tz)
             {
-                gdt = g_date_time_new (tz, year, month, day, hour, minute, second);
+                gdt = g_date_time_new (tz, year, month, day,
+                                       hour, minute, second);
                 g_time_zone_unref (tz);
                 return gdt;
             }
@@ -4402,7 +4411,7 @@ GDateTime *o_cal_component_get_dtstart (OrageCalendarComponent *ocal_comp)
 {
     ICalComponent *icalcomp = ocal_comp->icalcomp;
 
-    return o_cal_component_icaltime__to_gdatetime (
+    return o_cal_component_icaltime_to_gdatetime (
             i_cal_component_get_dtstart (icalcomp));
 }
 
@@ -4410,7 +4419,7 @@ GDateTime *o_cal_component_get_dtend (OrageCalendarComponent *ocal_comp)
 {
     ICalComponent *icalcomp = ocal_comp->icalcomp;
 
-    return o_cal_component_icaltime__to_gdatetime (
+    return o_cal_component_icaltime_to_gdatetime (
             i_cal_component_get_dtend (icalcomp));
 }
 
