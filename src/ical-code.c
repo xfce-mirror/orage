@@ -2175,7 +2175,7 @@ static xfical_appt *xfical_appt_get_internal(const char *ical_uid
         }
     }
     if (key_found) {
-        return(g_memdup(&appt, sizeof(xfical_appt)));
+        return(g_memdup2 (&appt, sizeof (xfical_appt)));
     }
     else {
         return(NULL);
