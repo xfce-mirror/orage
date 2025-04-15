@@ -229,6 +229,14 @@ GDateTime *o_cal_component_get_dtstart (OrageCalendarComponent *ocal_comp);
  */
 GDateTime *o_cal_component_get_dtend (OrageCalendarComponent *ocal_comp);
 
+/** Return recurrence string.
+ *  Parses the RRULE of the @ocal_comp and return recurrence string.
+ *  @param ocal_comp calendar component
+ *  @return recurrence text, or NULL or compoenent does not have any
+ *          reccurrences
+ */
+const gchar *o_cal_component_get_recurrence (OrageCalendarComponent *ocal_comp);
+
 gboolean xfical_set_local_timezone(gboolean testing);
 
 gboolean xfical_file_open(gboolean foreign);

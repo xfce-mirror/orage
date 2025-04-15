@@ -4446,3 +4446,109 @@ xfical_type o_cal_component_get_type (OrageCalendarComponent *ocal_comp)
             return (xfical_type)-1;
     }
 }
+
+const gchar *o_cal_component_get_recurrence (OrageCalendarComponent *ocal_comp)
+{
+    ICalComponent *icalcomp = ocal_comp->icalcomp;
+    ICalProperty *prop;
+    ICalRecurrence *rrule;
+    const gchar *frequency;
+    gchar *text;
+    gint count;
+
+    prop = i_cal_component_get_first_property (icalcomp, I_CAL_RRULE_PROPERTY);
+    g_return_val_if_fail (prop != NULL, NULL);
+
+    rrule = i_cal_property_get_rrule (prop);
+    g_clear_object (&prop);
+
+    switch (i_cal_recurrence_get_freq (rrule))
+    {
+        case I_CAL_HOURLY_RECURRENCE:
+            frequency = _("Hourly");
+            break;
+
+        case I_CAL_DAILY_RECURRENCE:
+            frequency = _("Daily");
+            break;
+
+        case I_CAL_WEEKLY_RECURRENCE:
+        {
+            if (i_cal_recurrence_get_by_day (rrule, 0) == I_CAL_MONDAY_WEEKDAY &&
+                i_cal_recurrence_get_by_day (rrule, 1) == I_CAL_TUESDAY_WEEKDAY &&
+                i_cal_recurrence_get_by_day (rrule, 2) == I_CAL_WEDNESDAY_WEEKDAY &&
+                i_cal_recurrence_get_by_day (rrule, 3) == I_CAL_THURSDAY_WEEKDAY &&
+                i_cal_recurrence_get_by_day (rrule, 4) == I_CAL_FRIDAY_WEEKDAY &&
+                i_cal_recurrence_get_by_day (rrule, 5) != I_CAL_SATURDAY_WEEKDAY &&
+                i_cal_recurrence_get_by_day (rrule, 6) != I_CAL_SUNDAY_WEEKDAY)
+            {
+                frequency = _("Monday to Friday");
+            }
+            else
+                frequency = _("Weekly");
+            break;
+        }
+
+        case I_CAL_MONTHLY_RECURRENCE:
+            frequency = _("Monthly");
+            break;
+
+        case I_CAL_YEARLY_RECURRENCE:
+            frequency = _("Yearly");
+            break;
+
+        default:
+        case I_CAL_NO_RECURRENCE:
+            return g_strdup (_("None"));
+    }
+
+    count = i_cal_recurrence_get_count (rrule);
+    if (count > 0)
+    {
+        if (count == 1)
+        {
+            /* Displayed recurrence message is something like that:
+             * "Daily, once".
+             */
+            text = g_strdup_printf (_("%s, once"), frequency);
+        }
+        else
+        {
+            /* Displayed recurrence message is something like that:
+             * "Daily, 3 times".
+             */
+            text = g_strdup_printf (_("%s, %d times"), frequency, count);
+        }
+    }
+    else
+    {
+        ICalTime *until;
+
+        until = i_cal_recurrence_get_until (rrule);
+        if (i_cal_time_get_year (until))
+        {
+            GDateTime *gdt = o_cal_component_icaltime_to_gdatetime (until);
+            gchar *time_str = orage_gdatetime_to_i18_time_with_zone (gdt);
+            g_date_time_unref (gdt);
+
+            /* Displayed recurrence message is something like that:
+             * "Daily, until 2025-12-01".
+             */
+            text = g_strdup_printf (_("%s, until %s"), frequency, time_str);
+            g_free (time_str);
+        }
+        else
+        {
+            /* Displayed recurrence message is something like that:
+             * "Daily, forever".
+             */
+            text = g_strdup_printf (_("%s, forever"), frequency);
+        }
+
+        g_clear_object (&until);
+    }
+
+    g_clear_object (&rrule);
+
+    return text;
+}

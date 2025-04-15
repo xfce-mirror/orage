@@ -78,15 +78,9 @@ static const gchar *event_type_to_string (const xfical_type type)
 static GtkWidget *create_time_widget (GDateTime *gdt)
 {
     GtkWidget *data_label;
-
-    gchar *time_text;
     gchar *label_text;
-    const gchar *tzid_text;
 
-    time_text = g_date_time_format (gdt, "%x %R");
-    tzid_text = g_time_zone_get_identifier (g_date_time_get_timezone (gdt));
-    label_text = g_strdup_printf ("%s %s", time_text, tzid_text);
-    g_free (time_text);
+    label_text = orage_gdatetime_to_i18_time_with_zone (gdt);
     data_label = gtk_label_new (label_text);
     g_free (label_text);
 
@@ -177,13 +171,17 @@ static GtkWidget *orage_import_window_create_event_preview_from_cal_comp (
     }
 
     /* TODO: Repeat */
-    name_label = gtk_label_new (NULL);
-    gtk_label_set_markup (GTK_LABEL (name_label), _("<b>Repeat</b>"));
-    gtk_widget_set_halign (name_label, GTK_ALIGN_END);
-    data_label = gtk_label_new ("None");
-    gtk_widget_set_halign (data_label, GTK_ALIGN_START);
-    gtk_grid_attach (grid, name_label, 0, row, 1, 1);
-    gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
+    text = o_cal_component_get_recurrence (cal_comp);
+    if (text)
+    {
+        name_label = gtk_label_new (NULL);
+        gtk_label_set_markup (GTK_LABEL (name_label), _("<b>Repeat</b>"));
+        gtk_widget_set_halign (name_label, GTK_ALIGN_END);
+        data_label = gtk_label_new (text);
+        gtk_widget_set_halign (data_label, GTK_ALIGN_START);
+        gtk_grid_attach (grid, name_label, 0, row, 1, 1);
+        gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
+    }
 
     /* TODO: Show as */
     name_label = gtk_label_new (NULL);
