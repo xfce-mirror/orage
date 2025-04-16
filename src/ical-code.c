@@ -4410,17 +4410,21 @@ gboolean o_cal_component_is_all_day_event (OrageCalendarComponent *ocal_comp)
 GDateTime *o_cal_component_get_dtstart (OrageCalendarComponent *ocal_comp)
 {
     ICalComponent *icalcomp = ocal_comp->icalcomp;
+    ICalTime *dtstart = i_cal_component_get_dtstart (icalcomp);
 
-    return o_cal_component_icaltime_to_gdatetime (
-            i_cal_component_get_dtstart (icalcomp));
+    return o_cal_component_icaltime_to_gdatetime (dtstart);
 }
 
 GDateTime *o_cal_component_get_dtend (OrageCalendarComponent *ocal_comp)
 {
     ICalComponent *icalcomp = ocal_comp->icalcomp;
+    ICalTime *dtend = i_cal_component_get_dtend (icalcomp);
+    ICalTime *dtstart = i_cal_component_get_dtstart (icalcomp);
 
-    return o_cal_component_icaltime_to_gdatetime (
-            i_cal_component_get_dtend (icalcomp));
+    if (i_cal_time_compare (dtstart, dtend) == 0)
+        return NULL;
+
+    return o_cal_component_icaltime_to_gdatetime (dtend);
 }
 
 xfical_type o_cal_component_get_type (OrageCalendarComponent *ocal_comp)
