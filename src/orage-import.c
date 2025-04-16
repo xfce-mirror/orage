@@ -316,6 +316,7 @@ static void orage_import_window_constructed (GObject *object)
     else if (nr_items > 1)
     {
         self->notebook = gtk_notebook_new ();
+        gtk_notebook_set_scrollable (GTK_NOTEBOOK (self->notebook), TRUE);
         gtk_container_set_border_width (GTK_CONTAINER (self->notebook), 6);
         gtk_box_pack_start (
                 GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (self))),
