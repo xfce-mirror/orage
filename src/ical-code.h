@@ -235,6 +235,12 @@ GDateTime *o_cal_component_get_dtend (OrageCalendarComponent *ocal_comp);
  */
 gboolean o_cal_component_is_recurring (OrageCalendarComponent *ocal_comp);
 
+/** Return event URL.
+ *  @param ocal_comp calendar component
+ *  @return evnet url
+ */
+const gchar *o_cal_component_get_url (OrageCalendarComponent *ocal_comp);
+
 gboolean xfical_set_local_timezone(gboolean testing);
 
 gboolean xfical_file_open(gboolean foreign);

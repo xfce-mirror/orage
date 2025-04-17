@@ -4465,3 +4465,14 @@ gboolean o_cal_component_is_recurring (OrageCalendarComponent *ocal_comp)
 
     return (i_cal_recurrence_get_freq (rrule) != I_CAL_NO_RECURRENCE);
 }
+
+const gchar *o_cal_component_get_url (OrageCalendarComponent *ocal_comp)
+{
+    ICalComponent *icalcomp = ocal_comp->icalcomp;
+    ICalProperty *prop;
+
+    prop = i_cal_component_get_first_property (icalcomp, I_CAL_URL_PROPERTY);
+    g_return_val_if_fail (prop != NULL, NULL);
+
+    return i_cal_property_get_url (prop);
+}

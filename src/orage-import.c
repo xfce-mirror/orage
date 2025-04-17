@@ -133,6 +133,24 @@ static GtkWidget *orage_import_window_create_event_preview_from_cal_comp (
         gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
     }
 
+    /* URL */
+    text = o_cal_component_get_url (cal_comp);
+    if (text)
+    {
+        name_label = gtk_label_new (NULL);
+        gtk_label_set_markup (GTK_LABEL (name_label), _("<b>URL</b>"));
+        gtk_widget_set_halign (name_label, GTK_ALIGN_END);
+        data_label = gtk_entry_new ();
+        gtk_entry_set_text (GTK_ENTRY (data_label), text);
+        gtk_editable_set_editable (GTK_EDITABLE (data_label), FALSE);
+        gtk_entry_set_has_frame (GTK_ENTRY (data_label), FALSE);
+        gtk_widget_set_can_focus (data_label, FALSE);
+
+        gtk_widget_set_halign (data_label, GTK_ALIGN_START);
+        gtk_grid_attach (grid, name_label, 0, row, 1, 1);
+        gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
+    }
+
     /* Duration */
     if (o_cal_component_is_all_day_event (cal_comp))
     {
@@ -216,24 +234,6 @@ static GtkWidget *orage_import_window_create_event_preview_from_cal_comp (
     gtk_label_set_markup (GTK_LABEL (name_label), _("<b>Invitees</b>"));
     gtk_widget_set_halign (name_label, GTK_ALIGN_END);
     data_label = gtk_label_new ("Add Invitees...");
-    gtk_widget_set_halign (data_label, GTK_ALIGN_START);
-    gtk_grid_attach (grid, name_label, 0, row, 1, 1);
-    gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
-
-    /* TODO: URL */
-    name_label = gtk_label_new (NULL);
-    gtk_label_set_markup (GTK_LABEL (name_label), _("<b>URL</b>"));
-    gtk_widget_set_halign (name_label, GTK_ALIGN_END);
-    data_label = gtk_label_new ("None");
-    gtk_widget_set_halign (data_label, GTK_ALIGN_START);
-    gtk_grid_attach (grid, name_label, 0, row, 1, 1);
-    gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
-
-    /* TODO: Note */
-    name_label = gtk_label_new (NULL);
-    gtk_label_set_markup (GTK_LABEL (name_label), _("<b>Note</b>"));
-    gtk_widget_set_halign (name_label, GTK_ALIGN_END);
-    data_label = gtk_label_new ("None");
     gtk_widget_set_halign (data_label, GTK_ALIGN_START);
     gtk_grid_attach (grid, name_label, 0, row, 1, 1);
     gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
