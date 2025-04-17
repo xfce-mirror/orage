@@ -100,10 +100,10 @@ static GtkWidget *orage_import_window_create_event_preview_from_cal_comp (
     gtk_grid_set_row_spacing (GTK_GRID (grid), 5);
     gtk_grid_set_column_spacing (GTK_GRID (grid), 10);
 
-    /* Task title */
+    /* Task summary */
     text = o_cal_component_get_summary (cal_comp);
     name_label = gtk_label_new (NULL);
-    gtk_label_set_markup (GTK_LABEL (name_label), _("<b>Title</b>"));
+    gtk_label_set_markup (GTK_LABEL (name_label), _("<b>Summary</b>"));
     gtk_widget_set_halign (name_label, GTK_ALIGN_END);
     data_label = gtk_label_new (text ? text : NULL);
     gtk_widget_set_halign (data_label, GTK_ALIGN_START);
