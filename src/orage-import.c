@@ -175,17 +175,14 @@ static GtkWidget *orage_import_window_create_event_preview_from_cal_comp (
     }
 
     /* Repeat */
-    text = o_cal_component_get_recurrence (cal_comp);
-    if (text)
-    {
-        name_label = gtk_label_new (NULL);
-        gtk_label_set_markup (GTK_LABEL (name_label), _("<b>Repeat</b>"));
-        gtk_widget_set_halign (name_label, GTK_ALIGN_END);
-        data_label = gtk_label_new (text);
-        gtk_widget_set_halign (data_label, GTK_ALIGN_START);
-        gtk_grid_attach (grid, name_label, 0, row, 1, 1);
-        gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
-    }
+    name_label = gtk_label_new (NULL);
+    gtk_label_set_markup (GTK_LABEL (name_label), _("<b>Recurring</b>"));
+    gtk_widget_set_halign (name_label, GTK_ALIGN_END);
+    data_label = gtk_label_new (
+            o_cal_component_is_recurring (cal_comp) ? _("Yes") : _("No"));
+    gtk_widget_set_halign (data_label, GTK_ALIGN_START);
+    gtk_grid_attach (grid, name_label, 0, row, 1, 1);
+    gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
 
     /* TODO: Show as */
     name_label = gtk_label_new (NULL);
