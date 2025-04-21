@@ -23,6 +23,9 @@
 #ifdef HAVE_CONFIG_H
 #  include <config.h>
 #endif
+#ifdef HAVE_XFCE_REVISION_H
+#include "xfce-revision.h"
+#endif
 
 #include <gtk/gtk.h>
 #include <glib.h>
@@ -47,7 +50,7 @@ void orage_show_about (GtkWindow *parent)
                            "license-type", GTK_LICENSE_GPL_2_0,
                            "logo-icon-name", ORAGE_APP_ID,
                            "program-name", "Orage",
-                           "version", VERSION,
+                           "version", VERSION_FULL,
                            "translator-credits", _("translator-credits"),
                            "website", ORAGE_DOC_ADDRESS,
                            NULL);

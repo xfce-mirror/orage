@@ -29,6 +29,7 @@ AC_INIT([orage], [xdt_version], [https://gitlab.xfce.org/apps/orage])
 AC_CONFIG_MACRO_DIRS([m4])
 AC_PREREQ([2.69])
 AC_REVISION([xdt_version_build])
+AC_DEFINE([VERSION_FULL], [PACKAGE_VERSION], [Alias for VERSION and PACKAGE_VERSION for meson compatibility])
 
 dnl Initialize automake
 AM_INIT_AUTOMAKE(1.8 no-dist-gzip dist-bzip2 tar-ustar foreign)
