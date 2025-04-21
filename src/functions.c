@@ -717,7 +717,7 @@ gchar *orage_gdatetime_to_i18_time_with_zone (GDateTime *gdt)
     gchar *time_and_zone;
     const gchar *tzid_text;
 
-    time_text = g_date_time_format (gdt, "%x %R");
+    time_text = orage_gdatetime_to_i18_time (gdt, FALSE);
     tzid_text = g_time_zone_get_identifier (g_date_time_get_timezone (gdt));
     time_and_zone = g_strdup_printf ("%s %s", time_text, tzid_text);
     g_free (time_text);
