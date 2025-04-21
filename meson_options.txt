@@ -1,0 +1,20 @@
+option(
+  'libnotify',
+  type: 'feature',
+  value: 'auto',
+  description: 'libnotify support',
+)
+
+option(
+  'archive',
+  type: 'boolean',
+  value: true,
+  description: 'Use automatic archiving',
+)
+
+option(
+  'x11-tray-icon',
+  type: 'boolean',
+  value: false,
+  description: 'Add X11 tray icon, not comptible with Wayland',
+)
