@@ -202,42 +202,6 @@ static GtkWidget *orage_import_window_create_event_preview_from_cal_comp (
     gtk_grid_attach (grid, name_label, 0, row, 1, 1);
     gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
 
-    /* TODO: Show as */
-    name_label = gtk_label_new (NULL);
-    gtk_label_set_markup (GTK_LABEL (name_label), _("<b>Show as</b>"));
-    gtk_widget_set_halign (name_label, GTK_ALIGN_END);
-    data_label = gtk_label_new ("Busy");
-    gtk_widget_set_halign (data_label, GTK_ALIGN_START);
-    gtk_grid_attach (grid, name_label, 0, row, 1, 1);
-    gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
-
-    /* TODO: Calendar */
-    name_label = gtk_label_new (NULL);
-    gtk_label_set_markup (GTK_LABEL (name_label), _("<b>Calendar</b>"));
-    gtk_widget_set_halign (name_label, GTK_ALIGN_END);
-    data_label = gtk_label_new ("🏠 Home");
-    gtk_widget_set_halign (data_label, GTK_ALIGN_START);
-    gtk_grid_attach (grid, name_label, 0, row, 1, 1);
-    gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
-
-    /* TODO: Alert */
-    name_label = gtk_label_new (NULL);
-    gtk_label_set_markup (GTK_LABEL (name_label), _("<b>Alert</b>"));
-    gtk_widget_set_halign (name_label, GTK_ALIGN_END);
-    data_label = gtk_label_new ("Message with Sound");
-    gtk_widget_set_halign (data_label, GTK_ALIGN_START);
-    gtk_grid_attach (grid, name_label, 0, row, 1, 1);
-    gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
-
-    /* TODO: Invitees */
-    name_label = gtk_label_new (NULL);
-    gtk_label_set_markup (GTK_LABEL (name_label), _("<b>Invitees</b>"));
-    gtk_widget_set_halign (name_label, GTK_ALIGN_END);
-    data_label = gtk_label_new ("Add Invitees...");
-    gtk_widget_set_halign (data_label, GTK_ALIGN_START);
-    gtk_grid_attach (grid, name_label, 0, row, 1, 1);
-    gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
-
     return GTK_WIDGET (grid);
 }
 
