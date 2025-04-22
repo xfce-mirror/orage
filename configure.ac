@@ -7,6 +7,7 @@ dnl Written for Xfce by Juha Kautto <juha@xfce.org>
 dnl
 
 dnl Version information
+m4_define([copyright_year], [2025])
 XDT_VERSION_INIT([4.20.1], [git])
 
 m4_define([glib_minimum_version], [2.58.0])
@@ -21,7 +22,7 @@ dnl # YOU ARE DOING.
 
 
 dnl Initialize autoconf
-AC_COPYRIGHT([Copyright (c) 2003-2025
+AC_COPYRIGHT([Copyright (c) 2003-copyright_year()
         The Xfce development team. All rights reserved.
 
 Written for Xfce by Juha Kautto <juha@xfce.org>.])
@@ -29,6 +30,10 @@ AC_INIT([orage], [xdt_version], [https://gitlab.xfce.org/apps/orage])
 AC_CONFIG_MACRO_DIRS([m4])
 AC_PREREQ([2.69])
 AC_REVISION([xdt_version_build])
+AC_DEFINE([VERSION_FULL], [PACKAGE_VERSION], [Alias for VERSION and PACKAGE_VERSION for meson compatibility])
+COPYRIGHT_YEAR=copyright_year()
+AC_DEFINE_UNQUOTED([COPYRIGHT_YEAR], ["$COPYRIGHT_YEAR"], [Copyright year])
+AC_SUBST([COPYRIGHT_YEAR])
 
 dnl Initialize automake
 AM_INIT_AUTOMAKE(1.8 no-dist-gzip dist-bzip2 tar-ustar foreign)

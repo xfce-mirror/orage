@@ -32,7 +32,12 @@ service_DATA = $(service_in_files:.service.in=.service)
 EXTRA_DIST =								\
 	$(desktop_in_files)						\
 	$(appdata_in_files)						\
-	$(service_in_files)
+	$(service_in_files)						\
+	meson.build							\
+	meson_options.txt						\
+	po/meson.build							\
+	xfce-revision.h.in						\
+	$(NULL)
 
 DISTCLEANFILES =							\
 	$(desktop_DATA)							\

@@ -11,6 +11,10 @@ SUBDIRS =								\
 
 gtk_update_icon_cache = gtk-update-icon-cache -f -t $(datadir)/icons/hicolor
 
+EXTRA_DIST =								\
+	meson.build							\
+	$(NULL)
+
 install-data-hook:
 	@-if test -z "$(DESTDIR)"; then					\
                 echo "Updating Gtk icon cache.";			\
