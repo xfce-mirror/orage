@@ -4341,13 +4341,13 @@ static GDateTime *o_cal_component_icaltime_to_gdatetime (ICalTime *ical_time)
     i_cal_time_get_date (ical_time, &year, &month, &day);
 
     if (i_cal_time_is_date (ical_time))
-        i_cal_time_get_time (ical_time, &hour, &minute, &second);
-    else
     {
         hour = 0;
         minute = 0;
         second = 0;
     }
+    else
+        i_cal_time_get_time (ical_time, &hour, &minute, &second);
 
     if (i_cal_time_is_utc (ical_time))
         return g_date_time_new_utc (year, month, day, hour, minute, second);
@@ -4458,7 +4458,8 @@ gboolean o_cal_component_is_recurring (OrageCalendarComponent *ocal_comp)
     ICalRecurrence *rrule;
 
     prop = i_cal_component_get_first_property (icalcomp, I_CAL_RRULE_PROPERTY);
-    g_return_val_if_fail (prop != NULL, FALSE);
+    if (prop == NULL)
+        return FALSE;
 
     rrule = i_cal_property_get_rrule (prop);
     g_clear_object (&prop);
@@ -4472,7 +4473,8 @@ const gchar *o_cal_component_get_url (OrageCalendarComponent *ocal_comp)
     ICalProperty *prop;
 
     prop = i_cal_component_get_first_property (icalcomp, I_CAL_URL_PROPERTY);
-    g_return_val_if_fail (prop != NULL, NULL);
+    if (prop == NULL)
+        return NULL;
 
     return i_cal_property_get_url (prop);
 }
