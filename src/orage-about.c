@@ -45,7 +45,7 @@ void orage_show_about (GtkWindow *parent)
     gtk_show_about_dialog (parent,
                            "authors", authors,
                            "comments", _("Orage is a time-managing application for the Xfce desktop environment"),
-                           "copyright", "Copyright \xc2\xa9 2003-2025 Orage Team",
+                           "copyright", "Copyright \xc2\xa9 2003-" COPYRIGHT_YEAR " Orage Team",
                            "destroy-with-parent", TRUE,
                            "license-type", GTK_LICENSE_GPL_2_0,
                            "logo-icon-name", ORAGE_APP_ID,
