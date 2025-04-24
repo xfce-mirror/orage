@@ -171,17 +171,16 @@ static void show_appointment_preview (GList *appointments, GtkWindow *parent)
 {
     GtkWidget *dialog = orage_import_window_new (appointments);
 
-#if 0
-    gtk_window_set_default_size (GTK_WINDOW (dialog), 320, -1);
-#endif
-
     gtk_window_set_transient_for (GTK_WINDOW (dialog), parent);
-    gtk_window_set_modal (GTK_WINDOW (dialog), TRUE); //XXX
-    gtk_window_set_destroy_with_parent (GTK_WINDOW (dialog), TRUE); //XXX
+    gtk_window_set_modal (GTK_WINDOW (dialog), FALSE);
+#if 0
+    /* TODO: Inside preview window event description should be also reziable. */
+    gtk_window_set_resizable (GTK_WINDOW (dialog), TRUE);
+#endif
     gtk_widget_show_all (dialog);
 
 #if 0
-    /* TODO: maybe dialog run is better here. This block main window which make
+    /* TODO: maybe dialog run is better here. This blocks main window which make
      * sense before importing data.
      */
     gtk_dialog_run (GTK_DIALOG (dialog));
@@ -294,6 +293,7 @@ static void orage_application_activate (GApplication *app)
         show_appointment_preview (self->appointments, GTK_WINDOW (window));
         g_list_free_full (self->appointments, g_object_unref);
         self->appointments = NULL;
+        hide_main_window = TRUE;
     }
 
     if (self->preferences_option)
