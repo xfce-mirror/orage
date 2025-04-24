@@ -109,6 +109,8 @@ static GtkWidget *orage_import_window_create_event_preview_from_cal_comp (
     gtk_widget_set_halign (data_label, GTK_ALIGN_START);
     gtk_grid_attach (grid, name_label, 0, row, 1, 1);
     gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
+    gtk_widget_show (name_label);
+    gtk_widget_show (data_label);
 
     /* Type */
     name_label = gtk_label_new (NULL);
@@ -119,6 +121,8 @@ static GtkWidget *orage_import_window_create_event_preview_from_cal_comp (
     gtk_widget_set_halign (data_label, GTK_ALIGN_START);
     gtk_grid_attach (grid, name_label, 0, row, 1, 1);
     gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
+    gtk_widget_show (name_label);
+    gtk_widget_show (data_label);
 
     /* Location */
     text = o_cal_component_get_location (cal_comp);
@@ -131,6 +135,8 @@ static GtkWidget *orage_import_window_create_event_preview_from_cal_comp (
         gtk_widget_set_halign (data_label, GTK_ALIGN_START);
         gtk_grid_attach (grid, name_label, 0, row, 1, 1);
         gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
+        gtk_widget_show (name_label);
+        gtk_widget_show (data_label);
     }
 
     /* URL */
@@ -149,6 +155,8 @@ static GtkWidget *orage_import_window_create_event_preview_from_cal_comp (
         gtk_widget_set_halign (data_label, GTK_ALIGN_START);
         gtk_grid_attach (grid, name_label, 0, row, 1, 1);
         gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
+        gtk_widget_show (name_label);
+        gtk_widget_show (data_label);
     }
 
     /* Duration */
@@ -163,6 +171,8 @@ static GtkWidget *orage_import_window_create_event_preview_from_cal_comp (
         gtk_widget_set_halign (data_label, GTK_ALIGN_START);
         gtk_grid_attach (grid, name_label, 0, row, 1, 1);
         gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
+        gtk_widget_show (name_label);
+        gtk_widget_show (data_label);
     }
     else
     {
@@ -176,6 +186,8 @@ static GtkWidget *orage_import_window_create_event_preview_from_cal_comp (
         gtk_widget_set_halign (data_label, GTK_ALIGN_START);
         gtk_grid_attach (grid, name_label, 0, row, 1, 1);
         gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
+        gtk_widget_show (name_label);
+        gtk_widget_show (data_label);
 
         gdt = o_cal_component_get_dtend (cal_comp);
         if (gdt)
@@ -188,6 +200,8 @@ static GtkWidget *orage_import_window_create_event_preview_from_cal_comp (
             gtk_widget_set_halign (data_label, GTK_ALIGN_START);
             gtk_grid_attach (grid, name_label, 0, row, 1, 1);
             gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
+            gtk_widget_show (name_label);
+            gtk_widget_show (data_label);
         }
     }
 
@@ -200,6 +214,8 @@ static GtkWidget *orage_import_window_create_event_preview_from_cal_comp (
     gtk_widget_set_halign (data_label, GTK_ALIGN_START);
     gtk_grid_attach (grid, name_label, 0, row, 1, 1);
     gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
+    gtk_widget_show (name_label);
+    gtk_widget_show (data_label);
 
     return GTK_WIDGET (grid);
 }

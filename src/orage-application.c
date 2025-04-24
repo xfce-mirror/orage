@@ -177,7 +177,7 @@ static void show_appointment_preview (GList *appointments, GtkWindow *parent)
     /* TODO: Inside preview window event description should be also reziable. */
     gtk_window_set_resizable (GTK_WINDOW (dialog), TRUE);
 #endif
-    gtk_widget_show_all (dialog);
+    gtk_widget_show (dialog);
 
 #if 0
     /* TODO: maybe dialog run is better here. This blocks main window which make
