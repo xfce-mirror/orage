@@ -311,6 +311,7 @@ static void orage_import_window_constructed (GObject *object)
             label = gtk_label_new (o_cal_component_get_summary (cal_comp));
 
             gtk_notebook_append_page (GTK_NOTEBOOK (self->notebook), page, label);
+            gtk_widget_show (page);
         }
 
         gtk_widget_show (self->notebook);
