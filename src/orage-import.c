@@ -31,7 +31,6 @@
 
 #define IMPORT_WINDOW_EVENTS "import-window-events"
 
-static void orage_import_window_response (GtkDialog *dialog, gint response_id);
 static void orage_import_window_set_property (GObject *object,
                                               guint prop_id,
                                               const GValue *value,
@@ -233,7 +232,6 @@ static void orage_import_window_class_init (OrageImportWindowClass *klass)
     object_class->set_property = orage_import_window_set_property;
 
     gtkdialog_class = GTK_DIALOG_CLASS (klass);
-    gtkdialog_class->response = orage_import_window_response;
 
     param_specs = g_param_spec_pointer (IMPORT_WINDOW_EVENTS,
                                         IMPORT_WINDOW_EVENTS,
@@ -323,24 +321,6 @@ static void orage_import_window_constructed (GObject *object)
 static void orage_import_window_finalize (GObject *object)
 {
     G_OBJECT_CLASS (orage_import_window_parent_class)->finalize (object);
-}
-
-static void orage_import_window_response (GtkDialog *gtk_dialog,
-                                          const gint response_id)
-{
-    OrageImportWindow *dialog = ORAGE_IMPORT_WINDOW (gtk_dialog);
-
-    g_return_if_fail (ORAGE_IS_IMPORT_WINDOW (dialog));
-
-    if (response_id == GTK_RESPONSE_ACCEPT)
-    {
-        g_debug ("GTK_RESPONSE_ACCEPT");
-    }
-    else if (response_id == GTK_RESPONSE_CANCEL)
-    {
-        g_debug ("GTK_RESPONSE_CANCEL");
-        gtk_widget_destroy (GTK_WIDGET (gtk_dialog));
-    }
 }
 
 static void orage_import_window_get_property (GObject *object,

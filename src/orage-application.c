@@ -80,6 +80,31 @@ static gboolean window_delete_event_cb (G_GNUC_UNUSED GtkWidget *widget,
     return TRUE;
 }
 
+static void cb_preview_dialog_response (GtkDialog *gtk_dialog,
+                                        const gint response_id,
+                                        G_GNUC_UNUSED gpointer data)
+{
+    OrageImportWindow *dialog = ORAGE_IMPORT_WINDOW (gtk_dialog);
+
+    g_return_if_fail (ORAGE_IS_IMPORT_WINDOW (dialog));
+
+    switch (response_id)
+    {
+        case GTK_RESPONSE_ACCEPT:
+            g_debug ("GTK_RESPONSE_ACCEPT");
+            break;
+
+        case GTK_RESPONSE_CANCEL:
+            g_debug ("GTK_RESPONSE_CANCEL");
+            gtk_widget_destroy (GTK_WIDGET (gtk_dialog));
+            break;
+
+        default:
+            g_assert_not_reached ();
+            break;
+    }
+}
+
 static gboolean resuming_after_delay (G_GNUC_UNUSED gpointer user_data)
 {
     g_message ("resuming after sleep");
@@ -173,6 +198,11 @@ static void show_appointment_preview (GList *appointments, GtkWindow *parent)
 
     gtk_window_set_transient_for (GTK_WINDOW (dialog), parent);
     gtk_window_set_modal (GTK_WINDOW (dialog), FALSE);
+
+    g_signal_connect (dialog, "response",
+                      G_CALLBACK (cb_preview_dialog_response),
+                      appointments);
+
 #if 0
     /* TODO: Inside preview window event description should be also reziable. */
     gtk_window_set_resizable (GTK_WINDOW (dialog), TRUE);
