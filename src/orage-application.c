@@ -82,9 +82,10 @@ static gboolean window_delete_event_cb (G_GNUC_UNUSED GtkWidget *widget,
 
 static void cb_preview_dialog_response (GtkDialog *gtk_dialog,
                                         const gint response_id,
-                                        G_GNUC_UNUSED gpointer data)
+                                        gpointer data)
 {
     OrageImportWindow *dialog = ORAGE_IMPORT_WINDOW (gtk_dialog);
+    OrageApplication *app = ORAGE_APPLICATION (data);
 
     g_return_if_fail (ORAGE_IS_IMPORT_WINDOW (dialog));
 
@@ -103,6 +104,9 @@ static void cb_preview_dialog_response (GtkDialog *gtk_dialog,
             g_assert_not_reached ();
             break;
     }
+
+    g_list_free_full (app->appointments, g_object_unref);
+    app->appointments = NULL;
 }
 
 static gboolean resuming_after_delay (G_GNUC_UNUSED gpointer user_data)
@@ -192,16 +196,16 @@ static void raise_window (OrageApplication *self)
     gtk_window_present (window);
 }
 
-static void show_appointment_preview (GList *appointments, GtkWindow *parent)
+static void show_appointment_preview (OrageApplication *self, GtkWindow *parent)
 {
-    GtkWidget *dialog = orage_import_window_new (appointments);
+    GtkWidget *dialog = orage_import_window_new (self->appointments);
 
     gtk_window_set_transient_for (GTK_WINDOW (dialog), parent);
     gtk_window_set_modal (GTK_WINDOW (dialog), FALSE);
 
     g_signal_connect (dialog, "response",
                       G_CALLBACK (cb_preview_dialog_response),
-                      appointments);
+                      self);
 
 #if 0
     /* TODO: Inside preview window event description should be also reziable. */
@@ -320,9 +324,7 @@ static void orage_application_activate (GApplication *app)
     if (self->appointments)
     {
         gtk_widget_hide (window);
-        show_appointment_preview (self->appointments, GTK_WINDOW (window));
-        g_list_free_full (self->appointments, g_object_unref);
-        self->appointments = NULL;
+        show_appointment_preview (self, GTK_WINDOW (window));
         hide_main_window = TRUE;
     }
 
