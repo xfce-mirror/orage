@@ -237,7 +237,7 @@ gboolean o_cal_component_is_recurring (OrageCalendarComponent *ocal_comp);
 
 /** Return event URL.
  *  @param ocal_comp calendar component
- *  @return evnet url
+ *  @return evenet url
  */
 const gchar *o_cal_component_get_url (OrageCalendarComponent *ocal_comp);
 
