@@ -62,6 +62,7 @@ struct _OrageApplication
     OrageSleepMonitor *sleep_monitor;
     OrageTaskRunner *sync;
     GList *appointments;
+    GList *files;
     guint prepare_for_sleep_id;
     gboolean toggle_option;
     gboolean preferences_option;
@@ -84,6 +85,8 @@ static void cb_preview_dialog_response (GtkDialog *gtk_dialog,
                                         const gint response_id,
                                         gpointer data)
 {
+    const gchar *file;
+    GList *tmp_list;
     OrageImportWindow *dialog = ORAGE_IMPORT_WINDOW (gtk_dialog);
     OrageApplication *app = ORAGE_APPLICATION (data);
 
@@ -93,11 +96,21 @@ static void cb_preview_dialog_response (GtkDialog *gtk_dialog,
     {
         case GTK_RESPONSE_ACCEPT:
             g_debug ("GTK_RESPONSE_ACCEPT");
+            for (tmp_list = g_list_first (app->files);
+                 tmp_list != NULL;
+                 tmp_list = g_list_next (tmp_list))
+            {
+                file = tmp_list->data;
+                if (xfical_import_file (file))
+                    g_message ("import done, file=%s", file);
+                else
+                    g_warning ("import failed, file=%s", file);
+            }
+
             break;
 
         case GTK_RESPONSE_CANCEL:
             g_debug ("GTK_RESPONSE_CANCEL");
-            gtk_widget_destroy (GTK_WIDGET (gtk_dialog));
             break;
 
         default:
@@ -105,8 +118,11 @@ static void cb_preview_dialog_response (GtkDialog *gtk_dialog,
             break;
     }
 
+    gtk_widget_destroy (GTK_WIDGET (gtk_dialog));
     g_list_free_full (app->appointments, g_object_unref);
+    g_list_free_full (app->files, g_free);
     app->appointments = NULL;
+    app->files = NULL;
 }
 
 static gboolean resuming_after_delay (G_GNUC_UNUSED gpointer user_data)
@@ -212,14 +228,6 @@ static void show_appointment_preview (OrageApplication *self, GtkWindow *parent)
     gtk_window_set_resizable (GTK_WINDOW (dialog), TRUE);
 #endif
     gtk_widget_show (dialog);
-
-#if 0
-    /* TODO: maybe dialog run is better here. This blocks main window which make
-     * sense before importing data.
-     */
-    gtk_dialog_run (GTK_DIALOG (dialog));
-    gtk_widget_destroy (dialog);
-#endif
 }
 
 static void orage_application_startup (GApplication *app)
@@ -516,9 +524,16 @@ static void orage_application_open (GApplication *app,
                 self = ORAGE_APPLICATION (app);
                 self->appointments = xfical_appt_new_from_file (files[i]);
                 if (self->appointments == NULL)
+                {
                     g_warning ("ICS file '%s' read failed", file);
+                    g_free (file);
+                }
+                else
+                {
+                    /* 'file' is freed by callback. */
+                    self->files = g_list_append (self->files, file);
+                }
 
-                g_free (file);
                 break;
 
             case HINT_ADD:
