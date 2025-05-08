@@ -506,6 +506,7 @@ static void orage_application_open (GApplication *app,
                                     const gint n_files,
                                     const gchar *hint)
 {
+    GList *tmp_list;
     OrageApplication *self;
     gchar **hint_array;
     gint i;
@@ -522,16 +523,18 @@ static void orage_application_open (GApplication *app,
                 file = g_file_get_path (files[i]);
                 g_debug ("open file=%s", file);
                 self = ORAGE_APPLICATION (app);
-                self->appointments = xfical_appt_new_from_file (files[i]);
-                if (self->appointments == NULL)
-                {
-                    g_warning ("ICS file '%s' read failed", file);
-                    g_free (file);
-                }
-                else
+                tmp_list = xfical_appt_new_from_file (files[i]);
+                if (tmp_list)
                 {
                     /* 'file' is freed by callback. */
                     self->files = g_list_append (self->files, file);
+                    self->appointments = g_list_concat (self->appointments,
+                                                        tmp_list);
+                }
+                else
+                {
+                    g_warning ("ICS file '%s' read failed", file);
+                    g_free (file);
                 }
 
                 break;
