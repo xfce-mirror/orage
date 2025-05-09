@@ -4161,67 +4161,6 @@ static ICalComponent *e_cal_util_parse_ics_file (const gchar *filename)
     return icalcomp;
 }
 
-GList *xfical_appt_new_from_file (GFile *file)
-{
-    gchar *ical_file_name;
-    GList *list = NULL;
-
-    ICalComponent *icomp;
-    ICalComponent *subcomp;
-
-    ical_file_name = g_file_get_path (file);
-    icomp = e_cal_util_parse_ics_file (ical_file_name);
-    if (icomp == NULL)
-    {
-        g_error ("%s: Cannot parse ISC file (%s) %s", G_STRFUNC,
-                 ical_file_name, i_cal_error_strerror (i_cal_errno_return ()));
-        return NULL;
-    }
-
-    if (i_cal_component_isa (icomp) != I_CAL_VCALENDAR_COMPONENT)
-    {
-        g_object_unref (icomp);
-        g_error ("%s: File '%s' is not a VCALENDAR component", G_STRFUNC,
-                 ical_file_name);
-
-        return NULL;
-    }
-
-    for (subcomp = i_cal_component_get_first_component (icomp, I_CAL_ANY_COMPONENT);
-         subcomp;
-         g_object_unref (subcomp), subcomp = i_cal_component_get_next_component (icomp, I_CAL_ANY_COMPONENT))
-    {
-        ICalComponentKind kind;
-        OrageCalendarComponent *comp;
-
-        kind = i_cal_component_isa (subcomp);
-
-        if (is_importable_component (kind))
-        {
-            comp = o_cal_component_new_from_icalcomponent (subcomp);
-            if (comp)
-                list = g_list_append (list, comp);
-        }
-        else if (kind != I_CAL_VTIMEZONE_COMPONENT)
-        {
-            /* We ignore TIMEZONE component; Orage only uses internal timezones
-             * from libical.
-             */
-            g_warning ("%s: unknown component %s %s", G_STRFUNC,
-                       i_cal_component_kind_to_string (kind),
-                       ical_file_name);
-        }
-    }
-
-    if (list == NULL)
-    {
-        g_warning ("%s: No valid ical components found", G_STRFUNC);
-        return NULL;
-    }
-
-    return list;
-}
-
 static void orage_calendar_component_finalize (GObject *object)
 {
     OrageCalendarComponent *comp = ORAGE_CALENDAR_COMPONENT (object);
@@ -4307,6 +4246,65 @@ OrageCalendarComponent *o_cal_component_new_from_icalcomponent (
     }
 
     return comp;
+}
+
+GList *o_cal_component_list_from_file (GFile *file)
+{
+    gchar *ical_file_name;
+    GList *list = NULL;
+
+    ICalComponent *icomp;
+    ICalComponent *subcomp;
+
+    ical_file_name = g_file_get_path (file);
+    icomp = e_cal_util_parse_ics_file (ical_file_name);
+    if (icomp == NULL)
+    {
+        g_warning ("cannot parse ISC file (%s) %s", ical_file_name,
+                   i_cal_error_strerror (i_cal_errno_return ()));
+        return NULL;
+    }
+
+    if (i_cal_component_isa (icomp) != I_CAL_VCALENDAR_COMPONENT)
+    {
+        g_object_unref (icomp);
+        g_warning ("file '%s' is not a VCALENDAR component", ical_file_name);
+
+        return NULL;
+    }
+
+    for (subcomp = i_cal_component_get_first_component (icomp, I_CAL_ANY_COMPONENT);
+         subcomp;
+         g_object_unref (subcomp), subcomp = i_cal_component_get_next_component (icomp, I_CAL_ANY_COMPONENT))
+    {
+        ICalComponentKind kind;
+        OrageCalendarComponent *comp;
+
+        kind = i_cal_component_isa (subcomp);
+
+        if (is_importable_component (kind))
+        {
+            comp = o_cal_component_new_from_icalcomponent (subcomp);
+            if (comp)
+                list = g_list_append (list, comp);
+        }
+        else if (kind != I_CAL_VTIMEZONE_COMPONENT)
+        {
+            /* We ignore TIMEZONE component; Orage only uses internal timezones
+             * from libical.
+             */
+            g_warning ("unknown component %s %s",
+                       i_cal_component_kind_to_string (kind), ical_file_name);
+        }
+    }
+
+    if (list == NULL)
+    {
+        g_warning ("no valid ICAL components found");
+        return NULL;
+    }
+
+    return list;
 }
 
 static const gchar *o_cal_component_get_string_value (

@@ -95,7 +95,6 @@ static void cb_preview_dialog_response (GtkDialog *gtk_dialog,
     switch (response_id)
     {
         case GTK_RESPONSE_ACCEPT:
-            g_debug ("GTK_RESPONSE_ACCEPT");
             for (tmp_list = g_list_first (app->files);
                  tmp_list != NULL;
                  tmp_list = g_list_next (tmp_list))
@@ -110,7 +109,6 @@ static void cb_preview_dialog_response (GtkDialog *gtk_dialog,
             break;
 
         case GTK_RESPONSE_CANCEL:
-            g_debug ("GTK_RESPONSE_CANCEL");
             break;
 
         default:
@@ -210,6 +208,40 @@ static void raise_window (OrageApplication *self)
 
     gtk_window_set_keep_above (window, g_par.set_ontop);
     gtk_window_present (window);
+}
+
+static gboolean is_readable (GFile *file)
+{
+    gboolean result;
+    GError *error = NULL;
+    GFileInfo *info = g_file_query_info (file,
+        G_FILE_ATTRIBUTE_STANDARD_TYPE "," G_FILE_ATTRIBUTE_ACCESS_CAN_READ,
+        G_FILE_QUERY_INFO_NONE,
+        NULL, &error);
+
+    if (info)
+    {
+        if (g_file_info_get_attribute_boolean (info,
+                                               G_FILE_ATTRIBUTE_ACCESS_CAN_READ))
+        {
+            result = TRUE;
+        }
+        else
+        {
+            g_warning ("file is not readale");
+            result = FALSE;
+        }
+
+        g_object_unref(info);
+    }
+    else
+    {
+        g_warning ("could not open file: %s", error->message);
+        g_clear_error (&error);
+        result = FALSE;
+    }
+
+    return result;
 }
 
 static void show_appointment_preview (OrageApplication *self, GtkWindow *parent)
@@ -521,21 +553,29 @@ static void orage_application_open (GApplication *app,
         {
             case HINT_OPEN:
                 file = g_file_get_path (files[i]);
-                g_debug ("open file=%s", file);
-                self = ORAGE_APPLICATION (app);
-                tmp_list = xfical_appt_new_from_file (files[i]);
-                if (tmp_list)
+                if (is_readable (files[i]))
                 {
-                    /* 'file' is freed by callback. */
-                    self->files = g_list_append (self->files, file);
-                    self->appointments = g_list_concat (self->appointments,
-                                                        tmp_list);
+                    g_debug ("opening calendar file '%s'", file);
+                    self = ORAGE_APPLICATION (app);
+                    tmp_list = o_cal_component_list_from_file (files[i]);
+                    if (tmp_list)
+                    {
+                        g_debug ("loaded %d events from file '%s'",
+                                 g_list_length (tmp_list), file);
+                        /* 'file' is freed by callback. */
+                        self->files = g_list_append (self->files, file);
+                        self->appointments = g_list_concat (self->appointments,
+                                                            tmp_list);
+                    }
+                    else
+                    {
+                        g_warning ("ICS file '%s' read failed", file);
+                        g_free (file);
+                    }
                 }
                 else
-                {
-                    g_warning ("ICS file '%s' read failed", file);
-                    g_free (file);
-                }
+                    g_warning ("file '%s' does not exist or cannot be read",
+                               file);
 
                 break;
 

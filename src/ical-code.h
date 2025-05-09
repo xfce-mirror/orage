@@ -193,6 +193,13 @@ G_DECLARE_FINAL_TYPE (OrageCalendarComponent, orage_calendar_component, ORAGE, C
 OrageCalendarComponent *o_cal_component_new_from_icalcomponent (
         ICalComponent *icalcomp);
 
+/** Read calendar list components from ICS file.
+ *  @param file input file
+ *  @return NULL if failed or no data read, non NULL if data successfully read
+ *  from file
+ */
+GList *o_cal_component_list_from_file (GFile *file);
+
 /** Return name of the event from caledar component.
  *  @param ocal_comp calendar component
  *  @return event name
@@ -246,13 +253,6 @@ gboolean xfical_set_local_timezone(gboolean testing);
 gboolean xfical_file_open(gboolean foreign);
 void xfical_file_close(gboolean foreign);
 void xfical_file_close_force(void);
-
-/** Read appointments from ICS file.
- *  @param file input file
- *  @return NULL if failed or no data read, non NULL if data successfully read
- *  from file
- */
-GList *xfical_appt_new_from_file (GFile *file);
 
 /** Allocates memory and initializes for given data it for new ical_type
  *  structure.
