@@ -223,15 +223,12 @@ static void orage_import_window_class_init (OrageImportWindowClass *klass)
 {
     GParamSpec *param_specs;
     GObjectClass *object_class;
-    GtkDialogClass *gtkdialog_class;
 
     object_class = G_OBJECT_CLASS (klass);
     object_class->constructed = orage_import_window_constructed;
     object_class->finalize = orage_import_window_finalize;
     object_class->get_property = orage_import_window_get_property;
     object_class->set_property = orage_import_window_set_property;
-
-    gtkdialog_class = GTK_DIALOG_CLASS (klass);
 
     param_specs = g_param_spec_pointer (IMPORT_WINDOW_EVENTS,
                                         IMPORT_WINDOW_EVENTS,
