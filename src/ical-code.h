@@ -191,7 +191,7 @@ G_DECLARE_FINAL_TYPE (OrageCalendarComponent, orage_calendar_component, ORAGE, C
  *  @return OrageCalendarComponent or NULL for faliure
  */
 OrageCalendarComponent *o_cal_component_new_from_icalcomponent (
-        ICalComponent *icalcomp);
+    ICalComponent *icalcomp);
 
 /** Read calendar list components from ICS file.
  *  @param file input file

@@ -46,12 +46,12 @@
 #include <time.h>
 #include <math.h>
 
-#include <glib.h>
-#include <gio/gio.h>
 #include <gdk/gdk.h>
-#include <gtk/gtk.h>
+#include <gio/gio.h>
+#include <glib.h>
 #include <glib/gprintf.h>
 #include <glib/gstdio.h>
+#include <gtk/gtk.h>
 
 #include <libical/ical.h>
 #include <libical/icalss.h>
@@ -2175,7 +2175,7 @@ static xfical_appt *xfical_appt_get_internal(const char *ical_uid
         }
     }
     if (key_found) {
-        return(g_memdup2 (&appt, sizeof (xfical_appt)));
+        return (g_memdup2 (&appt, sizeof (xfical_appt)));
     }
     else {
         return(NULL);
@@ -3991,8 +3991,8 @@ static gboolean is_importable_component (const ICalComponentKind kind)
 /** Frees the internal icalcomponent only if it does not have a parent. If it
  *  does, it means we don't own it and we shouldn't free it.
  */
-static void orage_calendar_component_free_icalcomp (OrageCalendarComponent *comp,
-                                                    const gboolean free)
+static void orage_calendar_component_free_icalcomp (
+    OrageCalendarComponent *comp, const gboolean free)
 {
     if (comp->icalcomp == NULL)
         return;
@@ -4020,17 +4020,23 @@ static gchar *e_util_generate_uid (void)
 
     checksum = g_checksum_new (G_CHECKSUM_SHA1);
 
-    #define add_i64(_x) G_STMT_START { \
+#define add_i64(_x) \
+    G_STMT_START \
+    { \
         gint64 i64 = (_x); \
-        g_checksum_update (checksum, (const guchar *) &i64, sizeof (gint64)); \
-    } G_STMT_END
+        g_checksum_update (checksum, (const guchar *)&i64, sizeof (gint64)); \
+    } \
+    G_STMT_END
 
-    #define add_str(_x, _def) G_STMT_START { \
+#define add_str(_x, _def) \
+    G_STMT_START \
+    { \
         const gchar *str = (_x); \
         if (!str) \
             str = (_def); \
-        g_checksum_update (checksum, (const guchar *) str, strlen (str)); \
-    } G_STMT_END
+        g_checksum_update (checksum, (const guchar *)str, strlen (str)); \
+    } \
+    G_STMT_END
 
     add_i64 (g_get_monotonic_time ());
     add_i64 (g_get_real_time ());
@@ -4043,8 +4049,8 @@ static gchar *e_util_generate_uid (void)
     add_str (g_get_user_name (), "user");
     add_str (g_get_real_name (), "User");
 
-    #undef add_i64
-    #undef add_str
+#undef add_i64
+#undef add_str
 
     uid = g_strdup (g_checksum_get_string (checksum));
 
@@ -4176,7 +4182,8 @@ static void orage_calendar_component_init (OrageCalendarComponent *comp)
     comp->icalcomp = NULL;
 }
 
-static void orage_calendar_component_class_init (OrageCalendarComponentClass *klass)
+static void orage_calendar_component_class_init (
+    OrageCalendarComponentClass *klass)
 {
     GObjectClass *object_class;
 
@@ -4308,7 +4315,7 @@ GList *o_cal_component_list_from_file (GFile *file)
 }
 
 static const gchar *o_cal_component_get_string_value (
-    OrageCalendarComponent *ocal_comp, const gchar* (*getter)(ICalComponent *))
+    OrageCalendarComponent *ocal_comp, const gchar *(*getter) (ICalComponent *))
 {
     const gchar *component_string;
     ICalComponent *icalcomp = ocal_comp->icalcomp;

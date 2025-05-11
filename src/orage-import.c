@@ -20,14 +20,14 @@
 
 #include "orage-import.h"
 
-#include "orage-i18n.h"
-#include "ical-code.h"
 #include "functions.h"
+#include "ical-code.h"
 #include "orage-appointment-window.h"
-#include <libxfce4ui/libxfce4ui.h>
-#include <gtk/gtk.h>
+#include "orage-i18n.h"
 #include <glib-object.h>
 #include <glib.h>
+#include <gtk/gtk.h>
+#include <libxfce4ui/libxfce4ui.h>
 
 #define IMPORT_WINDOW_EVENTS "import-window-events"
 
@@ -116,7 +116,7 @@ static GtkWidget *orage_import_window_create_event_preview_from_cal_comp (
     gtk_label_set_markup (GTK_LABEL (name_label), _("<b>Type</b>"));
     gtk_widget_set_halign (name_label, GTK_ALIGN_END);
     data_label = gtk_label_new (
-            event_type_to_string (o_cal_component_get_type (cal_comp)));
+        event_type_to_string (o_cal_component_get_type (cal_comp)));
     gtk_widget_set_halign (data_label, GTK_ALIGN_START);
     gtk_grid_attach (grid, name_label, 0, row, 1, 1);
     gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
@@ -209,7 +209,7 @@ static GtkWidget *orage_import_window_create_event_preview_from_cal_comp (
     gtk_label_set_markup (GTK_LABEL (name_label), _("<b>Recurring</b>"));
     gtk_widget_set_halign (name_label, GTK_ALIGN_END);
     data_label = gtk_label_new (
-            o_cal_component_is_recurring (cal_comp) ? _("Yes") : _("No"));
+        o_cal_component_is_recurring (cal_comp) ? _("Yes") : _("No"));
     gtk_widget_set_halign (data_label, GTK_ALIGN_START);
     gtk_grid_attach (grid, name_label, 0, row, 1, 1);
     gtk_grid_attach (grid, data_label, 1, row++, 1, 1);
@@ -230,20 +230,16 @@ static void orage_import_window_class_init (OrageImportWindowClass *klass)
     object_class->get_property = orage_import_window_get_property;
     object_class->set_property = orage_import_window_set_property;
 
-    param_specs = g_param_spec_pointer (IMPORT_WINDOW_EVENTS,
-                                        IMPORT_WINDOW_EVENTS,
-                                        "Calendar event list",
-                                        G_PARAM_READWRITE |
-                                        G_PARAM_CONSTRUCT_ONLY);
+    param_specs = g_param_spec_pointer (
+        IMPORT_WINDOW_EVENTS, IMPORT_WINDOW_EVENTS, "Calendar event list",
+        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
 
     g_object_class_install_property (object_class,
                                      PROP_EVENT_LIST,
                                      param_specs);
 }
 
-static void orage_import_window_init (G_GNUC_UNUSED OrageImportWindow *self)
-{
-}
+static void orage_import_window_init (G_GNUC_UNUSED OrageImportWindow *self) {}
 
 static void orage_import_window_constructed (GObject *object)
 {
@@ -262,8 +258,8 @@ static void orage_import_window_constructed (GObject *object)
     gtk_window_set_title (GTK_WINDOW (self), _("Import calendar file"));
 
     button = gtk_button_new_with_mnemonic (_("_Import"));
-    xfce_titled_dialog_add_action_widget (XFCE_TITLED_DIALOG (self),
-                                          button, GTK_RESPONSE_ACCEPT);
+    xfce_titled_dialog_add_action_widget (XFCE_TITLED_DIALOG (self), button,
+                                          GTK_RESPONSE_ACCEPT);
     xfce_titled_dialog_set_default_response (XFCE_TITLED_DIALOG (self),
                                              GTK_RESPONSE_ACCEPT);
     gtk_widget_set_can_default (button, TRUE);
@@ -294,8 +290,8 @@ static void orage_import_window_constructed (GObject *object)
         gtk_notebook_set_scrollable (GTK_NOTEBOOK (self->notebook), TRUE);
         gtk_container_set_border_width (GTK_CONTAINER (self->notebook), 6);
         gtk_box_pack_start (
-                GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (self))),
-                         self->notebook, TRUE, TRUE, 0);
+            GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (self))),
+                     self->notebook, TRUE, TRUE, 0);
 
         for (tmp_list = g_list_first (self->events);
              tmp_list != NULL;

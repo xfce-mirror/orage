@@ -23,9 +23,9 @@
 #ifndef ORAGE_APPOINTMENT_WINDOW_H
 #define ORAGE_APPOINTMENT_WINDOW_H 1
 
-#include "orage-week-window.h"
-#include "ical-code.h"
 #include "event-list.h"
+#include "ical-code.h"
+#include "orage-week-window.h"
 #include <glib-object.h>
 #include <glib.h>
 #include <gtk/gtk.h>

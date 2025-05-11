@@ -30,8 +30,8 @@
 #include "interface.h"
 #include "orage-appointment-window.h"
 #include "orage-css.h"
-#include "orage-import.h"
 #include "orage-i18n.h"
+#include "orage-import.h"
 #include "orage-sleep-monitor.h"
 #include "orage-window.h"
 #include "parameters.h"
@@ -232,7 +232,7 @@ static gboolean is_readable (GFile *file)
             result = FALSE;
         }
 
-        g_object_unref(info);
+        g_object_unref (info);
     }
     else
     {

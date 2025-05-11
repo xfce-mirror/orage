@@ -90,12 +90,15 @@ struct _OrageSleepDBusMonitor
 
 #define ORAGE_SLEEP_DBUS_MONITOR_TYPE (orage_sleep_dbus_monitor_get_type ())
 
-G_DECLARE_FINAL_TYPE (OrageSleepDBusMonitor, orage_sleep_dbus_monitor, ORAGE, SLEEP_DBUS_MONITOR, OrageSleepMonitor)
+G_DECLARE_FINAL_TYPE (OrageSleepDBusMonitor, orage_sleep_dbus_monitor, ORAGE,
+                      SLEEP_DBUS_MONITOR, OrageSleepMonitor)
 
 #if GLIB_VERSION_MAX_ALLOWED >= GLIB_VERSION_2_70
-G_DEFINE_FINAL_TYPE (OrageSleepDBusMonitor, orage_sleep_dbus_monitor, ORAGE_SLEEP_MONITOR_TYPE)
+G_DEFINE_FINAL_TYPE (OrageSleepDBusMonitor, orage_sleep_dbus_monitor,
+                     ORAGE_SLEEP_MONITOR_TYPE)
 #else
-G_DEFINE_TYPE (OrageSleepDBusMonitor, orage_sleep_dbus_monitor, ORAGE_SLEEP_MONITOR_TYPE)
+G_DEFINE_TYPE (OrageSleepDBusMonitor, orage_sleep_dbus_monitor,
+               ORAGE_SLEEP_MONITOR_TYPE)
 #endif
 
 static void orage_sleep_dbus_monitor_finalize (GObject *object);

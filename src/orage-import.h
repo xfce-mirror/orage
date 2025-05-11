@@ -21,10 +21,10 @@
 #ifndef ORAGE_IMPORT_H
 #define ORAGE_IMPORT_H 1
 
-#include <libxfce4ui/libxfce4ui.h>
 #include <gio/gio.h>
-#include <gtk/gtk.h>
 #include <glib.h>
+#include <gtk/gtk.h>
+#include <libxfce4ui/libxfce4ui.h>
 
 G_BEGIN_DECLS
 
@@ -32,7 +32,8 @@ G_BEGIN_DECLS
 #ifndef glib_autoptr_clear_XfceTitledDialog
 G_DEFINE_AUTOPTR_CLEANUP_FUNC (XfceTitledDialog, g_object_unref)
 #endif
-G_DECLARE_FINAL_TYPE (OrageImportWindow, orage_import_window, ORAGE, IMPORT_WINDOW, XfceTitledDialog)
+G_DECLARE_FINAL_TYPE (OrageImportWindow, orage_import_window, ORAGE,
+                      IMPORT_WINDOW, XfceTitledDialog)
 
 GtkWidget *orage_import_window_new (GList *events);
 
