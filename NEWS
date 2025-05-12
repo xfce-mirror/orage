@@ -1,3 +1,6 @@
+4.21.0
+- Added ICAL file preview and import dialog
+
 4.20.1 (2025-03-28)
 ======
 - Fixed event structure initialization, TODOs was not correctly displayed.
