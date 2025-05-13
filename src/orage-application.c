@@ -21,6 +21,9 @@
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
+#ifdef HAVE_XFCE_REVISION_H
+#include "xfce-revision.h"
+#endif
 
 #include "orage-application.h"
 
@@ -156,8 +159,7 @@ static void resuming_handler_register (OrageApplication *self)
 
 static void print_version (void)
 {
-    g_print (_("\tThis is %s version %s\n\n")
-            , PACKAGE, VERSION);
+    g_print (_("\tThis is %s version %s\n\n"), PACKAGE, VERSION_FULL);
     g_print (_("\tReleased under the terms of the GNU General Public License.\n"));
     g_print (_("\tCompiled against GTK+-%d.%d.%d, ")
             , GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION);

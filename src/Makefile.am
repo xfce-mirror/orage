@@ -64,7 +64,7 @@ orage_SOURCES +=						\
 endif
 	
 orage_CPPFLAGS =						\
-	-DPACKAGE_DATA_DIR=\""$(datadir)"\"			\
+	-DPACKAGE_DATADIR=\""$(datadir)"\"			\
 	-DPACKAGE_LOCALE_DIR=\""$(localedir)"\"			\
 	-DG_LOG_DOMAIN=\"orage\"
 
@@ -90,5 +90,9 @@ if HAVE_NOTIFY
 orage_LDADD +=							\
 	$(NOTIFY_LIBS)
 endif
+
+EXTRA_DIST =							\
+	meson.build						\
+	$(NULL)
 
 # vi:set ts=8 sw=8 noet ai:
