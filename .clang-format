@@ -11,6 +11,7 @@ AlwaysBreakAfterReturnType: None
 AllowShortFunctionsOnASingleLine: Empty
 AlignOperands: AlignAfterOperator
 BreakBeforeBraces: Allman
+ColumnLimit: 0
 IndentCaseLabels: true
 IncludeBlocks: Preserve
 IncludeCategories:
