@@ -25,6 +25,8 @@ orage_sources = [
   'orage-css.c',
   'orage-css.h',
   'orage-i18n.h',
+  'orage-import.h',
+  'orage-import.c',
   'orage-rc-file.c',
   'orage-rc-file.h',
   'orage-sleep-monitor.c',
