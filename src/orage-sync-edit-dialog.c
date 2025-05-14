@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Erkki Moorits
+ * Copyright (c) 2023-2025 Erkki Moorits
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -186,7 +186,7 @@ static void orage_sync_edit_dialog_init (OrageSyncEditDialog *self)
 
 GtkWidget *orage_sync_edit_dialog_new (void)
 {
-    return g_object_new (ORAGE_TYPE_SYNC_EDIT_DIALOG, NULL);
+    return g_object_new (ORAGE_SYNC_EDIT_DIALOG_TYPE, NULL);
 }
 
 GtkWidget *orage_sync_edit_dialog_new_with_defaults (const gchar *description,
@@ -195,8 +195,8 @@ GtkWidget *orage_sync_edit_dialog_new_with_defaults (const gchar *description,
 {
     OrageSyncEditDialog *dialog;
 
-    dialog = ORAGE_SYNC_EDIT_DIALOG (g_object_new (ORAGE_TYPE_SYNC_EDIT_DIALOG,
-                                                   NULL));
+    dialog = ORAGE_SYNC_EDIT_DIALOG (
+        g_object_new (ORAGE_SYNC_EDIT_DIALOG_TYPE, NULL));
 
     if (description)
         gtk_entry_set_text (dialog->description_entry, description);

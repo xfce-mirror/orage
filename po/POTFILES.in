@@ -10,6 +10,7 @@ src/main.c
 src/orage-about.c
 src/orage-application.c
 src/orage-appointment-window.c
+src/orage-import.c
 src/orage-sync-edit-dialog.c
 src/orage-week-window.c
 src/orage-window.c

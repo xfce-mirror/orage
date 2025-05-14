@@ -26,6 +26,8 @@ orage_SOURCES =							\
 	orage-category.h					\
 	orage-css.c						\
 	orage-css.h						\
+	orage-import.h						\
+	orage-import.c						\
 	orage-i18n.h						\
 	orage-rc-file.c						\
 	orage-rc-file.h						\
@@ -71,7 +73,7 @@ orage_CFLAGS =							\
 	$(LIBX11_CFLAGS)					\
 	$(LIBXFCE4UTIL_CFLAGS)					\
 	$(LIBXFCE4UI_CFLAGS)					\
-	$(LIBICAL_CFLAGS)					\
+	$(LIBICALGLIB_CFLAGS)					\
 	$(GIO_CFLAGS)
 
 orage_LDADD =							\
@@ -79,7 +81,7 @@ orage_LDADD =							\
 	$(LIBX11_LIBS)						\
 	$(LIBXFCE4UTIL_LIBS)					\
 	$(LIBXFCE4UI_LIBS)					\
-	$(LIBICAL_LIBS)						\
+	$(LIBICALGLIB_LIBS)					\
 	$(GIO_LIBS)						\
 	-lm							\
 	$(INTLLIBS)

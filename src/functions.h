@@ -95,6 +95,12 @@ GtkWidget *orage_period_hbox_new(gboolean head_space, gboolean tail_space
 void orage_gdatetime_unref (GDateTime *gdt);
 gchar *orage_gdatetime_to_i18_time (GDateTime *gdt, gboolean date_only);
 
+/** Return time value with timezone information.
+ *  @param gdt time
+ *  @return time sting. User must free returned string.
+ */
+gchar *orage_gdatetime_to_i18_time_with_zone (GDateTime *gdt);
+
 /** Create ical time string. Unlike g_date_time_format this function add padding
  *  with '0' to year value. Padding is required by Ical format.
  *  @note This function should not used for Orage internal date/time, use
