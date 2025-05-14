@@ -24,7 +24,7 @@
 #include <gtk/gtk.h>
 #include <glib.h>
 
-#define ORAGE_TYPE_SYNC_EDIT_DIALOG (orage_sync_edit_dialog_get_type ())
+#define ORAGE_SYNC_EDIT_DIALOG_TYPE (orage_sync_edit_dialog_get_type ())
 G_DECLARE_FINAL_TYPE (OrageSyncEditDialog, orage_sync_edit_dialog, ORAGE, SYNC_EDIT_DIALOG, GtkDialog)
 
 GtkWidget *orage_sync_edit_dialog_new (void);

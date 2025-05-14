@@ -28,7 +28,7 @@
 
 G_BEGIN_DECLS
 
-#define ORAGE_TYPE_WINDOW (orage_window_get_type ())
+#define ORAGE_WINDOW_TYPE (orage_window_get_type ())
 
 G_DECLARE_FINAL_TYPE (OrageWindow, orage_window, ORAGE, WINDOW, GtkApplicationWindow)
 

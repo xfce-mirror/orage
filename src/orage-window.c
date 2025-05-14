@@ -771,7 +771,7 @@ static void orage_window_init (OrageWindow *self)
 
 GtkWidget *orage_window_new (OrageApplication *application)
 {
-    return g_object_new (ORAGE_TYPE_WINDOW,
+    return g_object_new (ORAGE_WINDOW_TYPE,
                          "application", GTK_APPLICATION (application),
                          NULL);
 }

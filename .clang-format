@@ -4,12 +4,12 @@ BasedOnStyle: GNU
 
 AlignAfterOpenBracket: Align
 AlignEscapedNewlines: DontAlign
+AlignOperands: AlignAfterOperator
 AlignTrailingComments: false
 AllowAllParametersOfDeclarationOnNextLine: false
+AllowShortFunctionsOnASingleLine: Empty
 AlwaysBreakAfterDefinitionReturnType: None
 AlwaysBreakAfterReturnType: None
-AllowShortFunctionsOnASingleLine: Empty
-AlignOperands: AlignAfterOperator
 BreakBeforeBraces: Allman
 ColumnLimit: 0
 IndentCaseLabels: true

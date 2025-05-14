@@ -24,7 +24,7 @@ See [NEWS](https://gitlab.xfce.org/apps/orage/-/blob/master/NEWS) for details on
 
 Orage depends on the following packages:
 
-* [GLib](https://wiki.gnome.org/Projects/GLib) >= 2.52.0
+* [GLib](https://wiki.gnome.org/Projects/GLib) >= 2.68.0
 * [GTK](https://www.gtk.org) >= 3.24.0
 * [Libical](https://github.com/libical/libical) >= 3.0.0
 

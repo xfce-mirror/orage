@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2025q Erkki Moorits
+ * Copyright (c) 2021-2025 Erkki Moorits
  * Copyright (c) 2005-2013 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2004-2006 Mickael Graf (korbinus at xfce.org)
  *
@@ -23,8 +23,9 @@
 #ifndef ORAGE_APPOINTMENT_WINDOW_H
 #define ORAGE_APPOINTMENT_WINDOW_H 1
 
-#include "orage-week-window.h"
 #include "event-list.h"
+#include "ical-code.h"
+#include "orage-week-window.h"
 #include <glib-object.h>
 #include <glib.h>
 #include <gtk/gtk.h>

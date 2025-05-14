@@ -1,7 +1,7 @@
 project(
   'orage',
   'c',
-  version: '4.20.1-dev',
+  version: '4.21.0-dev',
   license: 'GPL-2.0-or-later',
   meson_version: '>= 0.54.0',
   default_options: [
@@ -21,7 +21,7 @@ gnome = import('gnome')
 i18n = import('i18n')
 
 dependency_versions = {
-  'glib': '>= 2.58.0',
+  'glib': '>= 2.68.0',
   'gtk': '>= 3.24.0',
   'xfce4': '>= 4.20.0',
   'libical': '>= 3.0',
@@ -33,7 +33,7 @@ gio = dependency('gio-2.0', version: dependency_versions['glib'])
 gtk = dependency('gtk+-3.0', version: dependency_versions['gtk'])
 libxfce4ui = dependency('libxfce4ui-2', version: dependency_versions['xfce4'])
 libxfce4util = dependency('libxfce4util-1.0', version: dependency_versions['xfce4'])
-libical = dependency('libical', version: dependency_versions['libical'])
+libical = dependency('libical-glib', version: dependency_versions['libical'])
 libnotify = dependency('libnotify', version: dependency_versions['libnotify'], required: get_option('libnotify'))
 libm = cc.find_library('m')
 

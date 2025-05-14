@@ -8,9 +8,9 @@ dnl
 
 dnl Version information
 m4_define([copyright_year], [2025])
-XDT_VERSION_INIT([4.20.1], [git])
+XDT_VERSION_INIT([4.21.0], [git])
 
-m4_define([glib_minimum_version], [2.58.0])
+m4_define([glib_minimum_version], [2.68.0])
 m4_define([gtk_minimum_version], [3.24.0])
 m4_define([xfce_minimum_version], [4.20.0])
 m4_define([notify_minimum_version], [0.7.0])
@@ -90,8 +90,8 @@ XDT_CHECK_PACKAGE([GLIB], [glib-2.0], [glib_minimum_version])
 XDT_CHECK_PACKAGE([GIO], [gio-2.0], [glib_minimum_version])
 XDT_CHECK_PACKAGE([LIBGTK], [gtk+-3.0], [gtk_minimum_version])
 XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [xfce_minimum_version])
-XDT_CHECK_PACKAGE([LIBICAL], [libical], [libical_minimum_version])
 XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-2], [xfce_minimum_version])
+XDT_CHECK_PACKAGE([LIBICALGLIB], [libical-glib], [libical_minimum_version])
 
 if test "$LIBICAL_VERSION" = "3.0.15"; then
     AC_MSG_ERROR(["unsupported libical version $LIBICAL_VERSION, see https://gitlab.xfce.org/apps/orage/-/issues/20"])
