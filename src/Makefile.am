@@ -41,8 +41,8 @@ orage_SOURCES =							\
 	orage-task-runner.h    					\
 	orage-week-window.c					\
 	orage-week-window.h					\
-	orage-window.c						\
-	orage-window.h						\
+	orage-window-classic.c					\
+	orage-window-classic.h					\
 	parameters.c						\
 	parameters.h						\
 	parameters_internal.h					\

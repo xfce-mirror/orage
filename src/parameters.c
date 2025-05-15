@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Erkki Moorits
+ * Copyright (c) 2021-2025 Erkki Moorits
  * Copyright (c) 2006-2013 Juha Kautto  (juha at xfce.org)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -41,19 +41,19 @@
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 
-#include "orage-task-runner.h"
-#include "orage-sync-ext-command.h"
-#include "orage-sync-edit-dialog.h"
-#include "orage-rc-file.h"
-#include "orage-i18n.h"
-#include "orage-window.h"
-#include "orage-application.h"
 #include "functions.h"
 #include "ical-code.h"
-#include "timezone_selection.h"
+#include "orage-application.h"
+#include "orage-i18n.h"
+#include "orage-rc-file.h"
+#include "orage-sync-edit-dialog.h"
+#include "orage-sync-ext-command.h"
+#include "orage-task-runner.h"
+#include "orage-window-classic.h"
 #include "parameters.h"
 #include "parameters_internal.h"
 #include "reminder.h"
+#include "timezone_selection.h"
 
 #ifdef HAVE_X11_TRAY_ICON
 #include <gdk/gdkx.h>
@@ -200,9 +200,10 @@ static void borders_changed (G_GNUC_UNUSED GtkWidget *dialog,
 static void set_menu(void)
 {
     OrageApplication *app = ORAGE_APPLICATION (g_application_get_default ());
-    OrageWindow *window = ORAGE_WINDOW (orage_application_get_window (app));
+    OrageWindowClassic *window = ORAGE_WINDOW_CLASSIC (
+        orage_application_get_window (app));
 
-    orage_window_show_menubar (window, g_par.show_menu);
+    orage_window_classic_show_menubar (window, g_par.show_menu);
 }
 
 static void menu_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
@@ -217,11 +218,14 @@ static void menu_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
 static void set_calendar(void)
 {
     OrageApplication *app = ORAGE_APPLICATION (g_application_get_default ());
-    OrageWindow *window = ORAGE_WINDOW (orage_application_get_window (app));
-    gtk_calendar_set_display_options (orage_window_get_calendar (window),
-                      (g_par.show_heading ? GTK_CALENDAR_SHOW_HEADING : 0)
-                    | (g_par.show_day_names ? GTK_CALENDAR_SHOW_DAY_NAMES : 0)
-                    | (g_par.show_weeks ? GTK_CALENDAR_SHOW_WEEK_NUMBERS : 0));
+    OrageWindowClassic *window = ORAGE_WINDOW_CLASSIC (
+        orage_application_get_window (app));
+
+    gtk_calendar_set_display_options (
+        orage_window_classic_get_calendar (window),
+          (g_par.show_heading ? GTK_CALENDAR_SHOW_HEADING : 0)
+        | (g_par.show_day_names ? GTK_CALENDAR_SHOW_DAY_NAMES : 0)
+        | (g_par.show_weeks ? GTK_CALENDAR_SHOW_WEEK_NUMBERS : 0));
 }
 
 static void heading_changed (G_GNUC_UNUSED GtkWidget *dialog,
@@ -255,15 +259,16 @@ static void weeks_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
 static void todos_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
 {
     OrageApplication *app = ORAGE_APPLICATION (g_application_get_default ());
-    OrageWindow *window = ORAGE_WINDOW (orage_application_get_window (app));
+    OrageWindowClassic *window = ORAGE_WINDOW_CLASSIC (
+        orage_application_get_window (app));
     Itf *itf = (Itf *)user_data;
 
     g_par.show_todos = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->show_todos_checkbutton));
     if (g_par.show_todos)
-        orage_window_build_todo (window);
+        orage_window_classic_build_todo (window);
     else {
-        orage_window_hide_todo (window);
+        orage_window_classic_hide_todo (window);
         /* hide the whole area if also event box does not exist */
         if (!g_par.show_event_days)
             gtk_window_resize (GTK_WINDOW (window), g_par.size_x, 1);
@@ -274,13 +279,14 @@ static void show_events_spin_changed (GtkSpinButton *sb,
                                       G_GNUC_UNUSED gpointer user_data)
 {
     OrageApplication *app = ORAGE_APPLICATION (g_application_get_default ());
-    OrageWindow *window = ORAGE_WINDOW (orage_application_get_window (app));
+    OrageWindowClassic *window = ORAGE_WINDOW_CLASSIC (
+        orage_application_get_window (app));
 
     g_par.show_event_days = gtk_spin_button_get_value(sb);
     if (g_par.show_event_days)
-        orage_window_build_events (window);
+        orage_window_classic_build_events (window);
     else {
-        orage_window_hide_event (window);
+        orage_window_classic_hide_event (window);
         /* hide the whole area if also todo box does not exist */
         if (!g_par.show_todos)
             gtk_window_resize (GTK_WINDOW (window), g_par.size_x, 1);
@@ -310,7 +316,8 @@ static void stick_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
 static void set_ontop(void)
 {
     OrageApplication *app = ORAGE_APPLICATION (g_application_get_default ());
-    gtk_window_set_keep_above (GTK_WINDOW (orage_application_get_window (app)), g_par.set_ontop);
+    gtk_window_set_keep_above (GTK_WINDOW (orage_application_get_window (app)),
+                               g_par.set_ontop);
 }
 
 static void ontop_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Erkki Moorits
+ * Copyright (c) 2021-2025 Erkki Moorits
  * Copyright (c) 2006-2011 Juha Kautto  (juha at xfce.org)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -22,7 +22,7 @@
 #ifndef __INTERFACE_H__
 #define __INTERFACE_H__
 
-#include "orage-window.h"
+#include "orage-window-classic.h"
 #include <gtk/gtk.h>
 
 typedef struct _intf_win

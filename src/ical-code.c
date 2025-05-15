@@ -59,17 +59,17 @@
 #define LIBICAL_GLIB_UNSTABLE_API
 #include <libical-glib/libical-glib.h>
 
-#include "orage-alarm-structure.h"
-#include "orage-i18n.h"
-#include "orage-window.h"
+#include "event-list.h"
 #include "functions.h"
-#include "reminder.h"
 #include "ical-code.h"
 #include "ical-internal.h"
-#include "event-list.h"
-#include "orage-appointment-window.h"
-#include "parameters.h"
 #include "interface.h"
+#include "orage-alarm-structure.h"
+#include "orage-appointment-window.h"
+#include "orage-i18n.h"
+#include "orage-window-classic.h"
+#include "parameters.h"
+#include "reminder.h"
 #include "xfical_exception.h"
 
 #define XFICAL_UID_LEN 200
@@ -3018,7 +3018,8 @@ static void xfical_alarm_build_list_internal(gboolean first_list_today)
 
     /* Refresh main calendar window lists. */
     app = ORAGE_APPLICATION (g_application_get_default ());
-    orage_window_build_info (ORAGE_WINDOW (orage_application_get_window (app)));
+    orage_window_classic_build_info (ORAGE_WINDOW_CLASSIC (
+        orage_application_get_window (app)));
 }
 
 void xfical_alarm_build_list(gboolean first_list_today)

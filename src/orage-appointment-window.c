@@ -46,19 +46,19 @@
 #include <glib/gprintf.h>
 #include <glib/gstdio.h>
 
-#include "orage-alarm-structure.h"
-#include "orage-category.h"
-#include "orage-i18n.h"
-#include "orage-window.h"
+#include "event-list.h"
 #include "functions.h"
 #include "ical-code.h"
-#include "timezone_selection.h"
-#include "event-list.h"
-#include "orage-week-window.h"
+#include "orage-alarm-structure.h"
 #include "orage-appointment-window.h"
+#include "orage-category.h"
+#include "orage-i18n.h"
+#include "orage-rc-file.h"
+#include "orage-week-window.h"
+#include "orage-window-classic.h"
 #include "parameters.h"
 #include "reminder.h"
-#include "orage-rc-file.h"
+#include "timezone_selection.h"
 #include "xfical_exception.h"
 
 #define BORDER_SIZE 20
@@ -814,7 +814,8 @@ static void refresh_dependent_data (OrageAppointmentWindow *apptw)
         orage_week_window_refresh (apptw->dw);
 
     app = ORAGE_APPLICATION (g_application_get_default ());
-    orage_mark_appointments (ORAGE_WINDOW (orage_application_get_window (app)));
+    orage_window_classic_mark_appointments (ORAGE_WINDOW_CLASSIC (
+        orage_application_get_window (app)));
 }
 
 static void on_appNote_buffer_changed_cb (G_GNUC_UNUSED GtkTextBuffer *b,

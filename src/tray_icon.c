@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Erkki Moorits
+ * Copyright (c) 2021-2025 Erkki Moorits
  * Copyright (c) 2006-2013 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2004-2006 Mickael Graf (korbinus at xfce.org)
  *
@@ -36,12 +36,12 @@
 #include <gdk/gdkevents.h>
 #include <gdk/gdkx.h>
 
-#include "orage-i18n.h"
-#include "orage-window.h"
+#include "event-list.h"
 #include "functions.h"
 #include "ical-code.h"
-#include "event-list.h"
 #include "orage-appointment-window.h"
+#include "orage-i18n.h"
+#include "orage-window-classic.h"
 #include "parameters.h"
 #include "tray_icon.h"
 
@@ -81,8 +81,8 @@ static void on_Today_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
     GDateTime *gdt;
 
     gdt = g_date_time_new_now_local ();
-    orage_select_date (orage_window_get_calendar (ORAGE_WINDOW (user_data)),
-                       gdt);
+    orage_select_date (orage_window_classic_get_calendar (
+                       ORAGE_WINDOW_CLASSIC (user_data)), gdt);
     g_date_time_unref (gdt);
     (void)create_el_win (NULL);
 }
@@ -125,7 +125,10 @@ static void toggle_visible_cb (G_GNUC_UNUSED GtkStatusIcon *status_icon,
         gtk_widget_hide (GTK_WIDGET (list->data));
     }
     else
-        orage_window_raise (ORAGE_WINDOW (orage_application_get_window (app)));
+    {
+        orage_window_classic_raise (ORAGE_WINDOW_CLASSIC (
+            orage_application_get_window (app)));
+    }
 }
 
 static void show_menu (G_GNUC_UNUSED GtkStatusIcon *status_icon,
@@ -256,7 +259,8 @@ static void create_own_icon_pango_layout (gint line,
     g_assert ((line >= 1) && (line <= 3));
 
     app = ORAGE_APPLICATION (g_application_get_default ());
-    pl = gtk_widget_create_pango_layout (orage_application_get_window (app), "x");
+    pl = gtk_widget_create_pango_layout (orage_application_get_window (app),
+                                         "x");
     sub_style_context = get_row_style (style_context, line);
     style_context_state = gtk_style_context_get_state (sub_style_context);
 

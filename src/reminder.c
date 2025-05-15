@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Erkki Moorits
+ * Copyright (c) 2021-2025 Erkki Moorits
  * Copyright (c) 2005-2013 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2003-2006 Mickael Graf (korbinus at xfce.org)
  *
@@ -45,16 +45,16 @@
 #include <libnotify/notify.h>
 #endif
 
-#include "orage-alarm-structure.h"
-#include "orage-i18n.h"
-#include "orage-rc-file.h"
-#include "orage-window.h"
+#include "event-list.h"
 #include "functions.h"
 #include "ical-code.h"
-#include "event-list.h"
+#include "orage-alarm-structure.h"
 #include "orage-appointment-window.h"
-#include "reminder.h"
+#include "orage-i18n.h"
+#include "orage-rc-file.h"
+#include "orage-window-classic.h"
 #include "parameters.h"
+#include "reminder.h"
 
 #ifdef HAVE_X11_TRAY_ICON
 #include <gdk/gdkx.h>
@@ -806,8 +806,9 @@ gboolean orage_day_change(gpointer user_data)
         current_day   = day;
         /* Get the selected date from calendar */
         app = ORAGE_APPLICATION (g_application_get_default ());
-        calendar = orage_window_get_calendar (ORAGE_WINDOW (orage_application_get_window (app)));
-        
+        calendar = orage_window_classic_get_calendar (
+            ORAGE_WINDOW_CLASSIC (orage_application_get_window (app)));
+
         gtk_calendar_get_date (calendar, &selected_year, &selected_month,
                                &selected_day);
         selected_month++;
