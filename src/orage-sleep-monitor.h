@@ -24,7 +24,7 @@
 
 G_BEGIN_DECLS
 
-#define ORAGE_TYPE_SLEEP_MONITOR (orage_sleep_monitor_get_type ())
+#define ORAGE_SLEEP_MONITOR_TYPE (orage_sleep_monitor_get_type ())
 G_DECLARE_DERIVABLE_TYPE (OrageSleepMonitor, orage_sleep_monitor, ORAGE, SLEEP_MONITOR, GObject)
 
 struct _OrageSleepMonitorClass

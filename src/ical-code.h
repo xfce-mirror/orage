@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Erkki Moorits
+ * Copyright (c) 2021-2025 Erkki Moorits
  * Copyright (c) 2005-2011 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2004-2005 Mickael Graf (korbinus at xfce.org)
  *
@@ -24,6 +24,11 @@
 #define __ICAL_CODE_H__
 
 #include "ical-expimp.h"
+#include <gio/gio.h>
+#include <gtk/gtk.h>
+
+#define LIBICAL_GLIB_UNSTABLE_API
+#include <libical-glib/libical-glib.h>
 
 #define MAX_MONTH_RECURRENCE_DAY 28
 
@@ -177,6 +182,71 @@ typedef struct _xfical_appt
     gboolean recur_todo_base_start; /* TRUE=start time, FALSE=completed time */
     GList  *recur_exceptions; /* EXDATE and RDATE list xfical_exception */
 } xfical_appt;
+
+#define ORAGE_CALENDAR_COMPONENT_TYPE (orage_calendar_component_get_type ())
+G_DECLARE_FINAL_TYPE (OrageCalendarComponent, orage_calendar_component, ORAGE, CALENDAR_COMPONENT, GObject)
+
+/** Constructs new Orage calendar component from ICAL component.
+ *  @param icalcomp ICAL component
+ *  @return OrageCalendarComponent or NULL for faliure
+ */
+OrageCalendarComponent *o_cal_component_new_from_icalcomponent (
+    ICalComponent *icalcomp);
+
+/** Read calendar list components from ICS file.
+ *  @param file input file
+ *  @return NULL if failed or no data read, non NULL if data successfully read
+ *  from file
+ */
+GList *o_cal_component_list_from_file (GFile *file);
+
+/** Return name of the event from caledar component.
+ *  @param ocal_comp calendar component
+ *  @return event name
+ */
+const gchar *o_cal_component_get_summary (OrageCalendarComponent *ocal_comp);
+
+/** Return location of the event from calendar component.
+ *  @param ocal_comp calendar component
+ *  @return location
+ */
+const gchar *o_cal_component_get_location (OrageCalendarComponent *ocal_comp);
+
+/** Return event type.
+ *  @param ocal_comp calendar component
+ *  @return event type, or -1 casted to xfical_type
+ */
+xfical_type o_cal_component_get_type (OrageCalendarComponent *ocal_comp);
+
+/** Test if event is all day event.
+ *  @param ocal_comp calendar component
+ *  @return true for all day event
+ */
+gboolean o_cal_component_is_all_day_event (OrageCalendarComponent *ocal_comp);
+
+/** Return event start time.
+ *  @param ocal_comp calendar component
+ *  @return event start time
+ */
+GDateTime *o_cal_component_get_dtstart (OrageCalendarComponent *ocal_comp);
+
+/** Return event end time.
+ *  @param ocal_comp calendar component
+ *  @return event end time
+ */
+GDateTime *o_cal_component_get_dtend (OrageCalendarComponent *ocal_comp);
+
+/** Tests if event is recurring.
+ *  @param ocal_comp calendar component
+ *  @return TRUE if event is recurring
+ */
+gboolean o_cal_component_is_recurring (OrageCalendarComponent *ocal_comp);
+
+/** Return event URL.
+ *  @param ocal_comp calendar component
+ *  @return evenet url
+ */
+const gchar *o_cal_component_get_url (OrageCalendarComponent *ocal_comp);
 
 gboolean xfical_set_local_timezone(gboolean testing);
 
