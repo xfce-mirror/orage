@@ -1330,7 +1330,7 @@ msgstr "<b>URL</b>"
 
 #: src/orage-import.c:165
 msgid "<b>All-day</b>"
-msgstr ""
+msgstr "<b>Heldags</b>"
 
 #: src/orage-import.c:180
 msgid "<b>From</b>"
@@ -1342,7 +1342,7 @@ msgstr "<b>Til</b>"
 
 #: src/orage-import.c:209
 msgid "<b>Recurring</b>"
-msgstr ""
+msgstr "<b>Gentagende</b>"
 
 #: src/orage-import.c:212
 msgid "Yes"
