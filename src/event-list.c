@@ -58,7 +58,7 @@
 #include "orage-category.h"
 #include "orage-i18n.h"
 #include "orage-week-window.h"
-#include "orage-window-classic.h"
+#include "orage-window.h"
 #include "parameters.h"
 #include "reminder.h"
 

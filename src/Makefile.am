@@ -43,6 +43,8 @@ orage_SOURCES =							\
 	orage-week-window.h					\
 	orage-window-classic.c					\
 	orage-window-classic.h					\
+	orage-window.c						\
+	orage-window.h						\
 	parameters.c						\
 	parameters.h						\
 	parameters_internal.h					\

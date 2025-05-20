@@ -41,7 +41,7 @@
 #include "ical-code.h"
 #include "orage-appointment-window.h"
 #include "orage-i18n.h"
-#include "orage-window-classic.h"
+#include "orage-window.h"
 #include "parameters.h"
 #include "tray_icon.h"
 
@@ -125,10 +125,7 @@ static void toggle_visible_cb (G_GNUC_UNUSED GtkStatusIcon *status_icon,
         gtk_widget_hide (GTK_WIDGET (list->data));
     }
     else
-    {
-        orage_window_classic_raise (ORAGE_WINDOW_CLASSIC (
-            orage_application_get_window (app)));
-    }
+        orage_window_raise (ORAGE_WINDOW (orage_application_get_window (app)));
 }
 
 static void show_menu (G_GNUC_UNUSED GtkStatusIcon *status_icon,

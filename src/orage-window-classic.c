@@ -47,6 +47,7 @@
 #include "orage-css.h"
 #include "orage-i18n.h"
 #include "orage-week-window.h"
+#include "orage-window.h"
 #include "orage-window-classic.h"
 #include "parameters.h"
 
@@ -94,7 +95,10 @@ struct _OrageWindowClassic
     GtkWidget *mEvent_rows_vbox;
 };
 
-G_DEFINE_TYPE (OrageWindowClassic, orage_window_classic, GTK_TYPE_APPLICATION_WINDOW)
+static void orage_window_classic_interface_init (OrageWindowInterface *interface);
+
+G_DEFINE_TYPE_WITH_CODE (OrageWindowClassic, orage_window_classic, GTK_TYPE_APPLICATION_WINDOW,
+                         G_IMPLEMENT_INTERFACE (ORAGE_WINDOW_TYPE, orage_window_classic_interface_init))
 
 static void orage_window_classic_restore_geometry (OrageWindowClassic *window);
 
@@ -736,6 +740,11 @@ static void orage_window_classic_class_init (OrageWindowClassicClass *klass)
 {
 }
 
+static void orage_window_classic_interface_init (OrageWindowInterface *iface)
+{
+    iface->raise = orage_window_classic_raise;
+}
+
 static void orage_window_classic_init (OrageWindowClassic *self)
 {
     gtk_widget_set_name (GTK_WIDGET (self), "OrageWindowClassic");
@@ -819,7 +828,7 @@ void orage_window_classic_month_changed (OrageWindowClassic *window)
                                 window);
 }
 
-void orage_window_classic_raise (OrageWindowClassic *window)
+void orage_window_classic_raise (OrageWindow *window)
 {
     GtkWindow *gtk_window = GTK_WINDOW (window);
 
@@ -827,7 +836,10 @@ void orage_window_classic_raise (OrageWindowClassic *window)
         gtk_window_move (gtk_window, g_par.pos_x, g_par.pos_y);
 
     if (g_par.select_always_today)
-        orage_select_today (orage_window_classic_get_calendar (window));
+    {
+        orage_select_today (orage_window_classic_get_calendar (
+            ORAGE_WINDOW_CLASSIC (window)));
+    }
 
     if (g_par.set_stick)
         gtk_window_stick (gtk_window);

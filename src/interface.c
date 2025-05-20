@@ -41,7 +41,7 @@
 #include "ical-code.h"
 #include "interface.h"
 #include "orage-i18n.h"
-#include "orage-window-classic.h"
+#include "orage-window.h"
 #include "parameters.h"
 
 enum {

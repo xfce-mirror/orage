@@ -22,7 +22,7 @@
 #ifndef __INTERFACE_H__
 #define __INTERFACE_H__
 
-#include "orage-window-classic.h"
+#include "orage-window.h"
 #include <gtk/gtk.h>
 
 typedef struct _intf_win

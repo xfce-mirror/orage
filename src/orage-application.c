@@ -36,7 +36,7 @@
 #include "orage-i18n.h"
 #include "orage-import.h"
 #include "orage-sleep-monitor.h"
-#include "orage-window-classic.h"
+#include "orage-window.h"
 #include "parameters.h"
 #include "reminder.h"
 #include <glib-2.0/gio/gapplication.h>
@@ -333,7 +333,7 @@ static void orage_application_activate (GApplication *app)
     else
     {
         /* Create the main window */
-        window = orage_window_classic_new (self);
+        window = orage_window_create (self, FALSE);
 
         g_signal_connect (window, "delete_event",
                           G_CALLBACK (window_delete_event_cb), self);

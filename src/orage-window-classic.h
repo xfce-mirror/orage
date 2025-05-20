@@ -52,7 +52,7 @@ void orage_window_classic_show_menubar (OrageWindowClassic *window, gboolean sho
 void orage_window_classic_hide_todo (OrageWindowClassic *window);
 void orage_window_classic_hide_event (OrageWindowClassic *window);
 GtkCalendar *orage_window_classic_get_calendar (OrageWindowClassic *window);
-void orage_window_classic_raise (OrageWindowClassic *window);
+void orage_window_classic_raise (OrageWindow *window);
 
 G_END_DECLS
 

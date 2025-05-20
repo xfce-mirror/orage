@@ -1,0 +1,51 @@
+/*
+ * Copyright (c) 2025 Erkki Moorits
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2, or (at your option)
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the
+ *     Free Software Foundation
+ *     51 Franklin Street, 5th Floor
+ *     Boston, MA 02110-1301 USA
+ */
+
+#include "orage-window.h"
+
+#include "orage-window-classic.h"
+#include "orage-application.h"
+
+#include <gtk/gtk.h>
+#include <glib.h>
+
+G_DEFINE_INTERFACE (OrageWindow, orage_window, GTK_TYPE_APPLICATION_WINDOW)
+
+static void orage_window_default_init (OrageWindowInterface *iface)
+{
+}
+
+GtkWidget *orage_window_create (OrageApplication *app, gboolean use_new_ui)
+{
+    if (use_new_ui)
+    {
+        g_error ("not implemented yet");
+        return NULL;
+    }
+    else
+        return orage_window_classic_new (app);
+}
+
+void orage_window_raise (OrageWindow *window)
+{
+    g_return_if_fail (ORAGE_IS_WINDOW (window));
+
+    ORAGE_WINDOW_GET_IFACE (window)->raise (window);
+}
