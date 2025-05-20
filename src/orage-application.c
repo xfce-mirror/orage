@@ -203,10 +203,7 @@ static void raise_window (OrageApplication *self)
         gtk_window_move (window, g_par.pos_x, g_par.pos_y);
 
     if (g_par.select_always_today)
-    {
-        orage_select_today (orage_window_classic_get_calendar (
-            ORAGE_WINDOW_CLASSIC (window)));
-    }
+        orage_select_today (orage_window_get_calendar (ORAGE_WINDOW (window)));
 
     if (g_par.set_stick)
         gtk_window_stick (window);
@@ -291,12 +288,12 @@ static void open_new_appointment_window (void)
     gtk_window_present (GTK_WINDOW (appointment_window));
 }
 
-static void orage_open_today_window (OrageWindowClassic *window)
+static void orage_open_today_window (OrageWindow *window)
 {
     GDateTime *gdt;
 
     gdt = g_date_time_new_now_local ();
-    orage_select_date (orage_window_classic_get_calendar (window), gdt);
+    orage_select_date (orage_window_get_calendar (window), gdt);
     g_date_time_unref (gdt);
     (void)create_el_win (NULL);
 }
@@ -357,7 +354,7 @@ static void orage_application_activate (GApplication *app)
 
         alarm_read ();
         orage_day_change (NULL); /* first day change after we start */
-        orage_window_classic_month_changed (ORAGE_WINDOW_CLASSIC (window));
+        orage_window_classic_month_changed (ORAGE_WINDOW (window));
 
         /* start monitoring external file updates */
         g_timeout_add_seconds (30, orage_external_update_check, NULL);
@@ -380,7 +377,7 @@ static void orage_application_activate (GApplication *app)
         open_new_appointment_window ();
 
     if (self->today_option)
-        orage_open_today_window (ORAGE_WINDOW_CLASSIC (window));
+        orage_open_today_window (ORAGE_WINDOW (window));
 
     if (hide_main_window)
         gtk_widget_hide (window);

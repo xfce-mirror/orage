@@ -37,11 +37,13 @@ struct _OrageWindowInterface
 {
     GTypeInterface parent_iface;
 
+    GtkCalendar *(*get_calendar) (OrageWindow *window);
     void (*raise)(OrageWindow *window);
 };
 
 GtkWidget *orage_window_create (OrageApplication *app, gboolean use_new_ui);
 
+GtkCalendar *orage_window_get_calendar (OrageWindow *window);
 void orage_window_raise (OrageWindow *window);
 
 G_END_DECLS

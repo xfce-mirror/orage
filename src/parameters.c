@@ -218,11 +218,10 @@ static void menu_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
 static void set_calendar(void)
 {
     OrageApplication *app = ORAGE_APPLICATION (g_application_get_default ());
-    OrageWindowClassic *window = ORAGE_WINDOW_CLASSIC (
-        orage_application_get_window (app));
+    OrageWindow *window = ORAGE_WINDOW (orage_application_get_window (app));
 
     gtk_calendar_set_display_options (
-        orage_window_classic_get_calendar (window),
+        orage_window_get_calendar (window),
           (g_par.show_heading ? GTK_CALENDAR_SHOW_HEADING : 0)
         | (g_par.show_day_names ? GTK_CALENDAR_SHOW_DAY_NAMES : 0)
         | (g_par.show_weeks ? GTK_CALENDAR_SHOW_WEEK_NUMBERS : 0));

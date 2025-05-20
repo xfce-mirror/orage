@@ -806,8 +806,8 @@ gboolean orage_day_change(gpointer user_data)
         current_day   = day;
         /* Get the selected date from calendar */
         app = ORAGE_APPLICATION (g_application_get_default ());
-        calendar = orage_window_classic_get_calendar (
-            ORAGE_WINDOW_CLASSIC (orage_application_get_window (app)));
+        calendar = orage_window_get_calendar (
+            ORAGE_WINDOW (orage_application_get_window (app)));
 
         gtk_calendar_get_date (calendar, &selected_year, &selected_month,
                                &selected_day);

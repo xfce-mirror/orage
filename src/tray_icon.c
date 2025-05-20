@@ -81,8 +81,9 @@ static void on_Today_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
     GDateTime *gdt;
 
     gdt = g_date_time_new_now_local ();
-    orage_select_date (orage_window_classic_get_calendar (
-                       ORAGE_WINDOW_CLASSIC (user_data)), gdt);
+    g_debug ("%s", G_STRFUNC);
+    orage_select_date (orage_window_get_calendar (ORAGE_WINDOW (user_data)),
+                       gdt);
     g_date_time_unref (gdt);
     (void)create_el_win (NULL);
 }

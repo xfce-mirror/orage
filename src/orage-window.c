@@ -36,11 +36,18 @@ GtkWidget *orage_window_create (OrageApplication *app, gboolean use_new_ui)
 {
     if (use_new_ui)
     {
-        g_error ("not implemented yet");
-        return NULL;
+        /* Not yet implemented. */
+        g_return_val_if_reached (NULL);
     }
     else
         return orage_window_classic_new (app);
+}
+
+GtkCalendar *orage_window_get_calendar (OrageWindow *window)
+{
+    g_return_val_if_fail (ORAGE_IS_WINDOW (window), NULL);
+
+    return ORAGE_WINDOW_GET_IFACE (window)->get_calendar (window);
 }
 
 void orage_window_raise (OrageWindow *window)

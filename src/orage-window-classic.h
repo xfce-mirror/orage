@@ -32,7 +32,7 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (OrageWindowClassic, orage_window_classic, ORAGE, WINDOW_CLASSIC, GtkApplicationWindow)
 
-void orage_window_classic_mark_appointments (OrageWindowClassic *window);
+void orage_window_classic_mark_appointments (OrageWindow *window);
 
 /** This routine is called from ical-code xfical_alarm_build_list_internal and
  *  ical files are already open at that time. So make sure ical files are opened
@@ -41,7 +41,7 @@ void orage_window_classic_mark_appointments (OrageWindowClassic *window);
 void orage_window_classic_build_info (OrageWindowClassic *window);
 void orage_window_classic_build_events (OrageWindowClassic *window);
 void orage_window_classic_build_todo (OrageWindowClassic *window);
-void orage_window_classic_month_changed (OrageWindowClassic *window);
+void orage_window_classic_month_changed (OrageWindow *window);
 
 /** Creates a new OrageWindow
  *  @return a newly created OrageWindow
@@ -51,7 +51,7 @@ GtkWidget *orage_window_classic_new (OrageApplication *application);
 void orage_window_classic_show_menubar (OrageWindowClassic *window, gboolean show);
 void orage_window_classic_hide_todo (OrageWindowClassic *window);
 void orage_window_classic_hide_event (OrageWindowClassic *window);
-GtkCalendar *orage_window_classic_get_calendar (OrageWindowClassic *window);
+GtkCalendar *orage_window_classic_get_calendar (OrageWindow *window);
 void orage_window_classic_raise (OrageWindow *window);
 
 G_END_DECLS
