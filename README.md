@@ -50,17 +50,17 @@ Orage optionally depends on the following packages:
 From source code repository:
 
     % cd orage
-    % ./autogen.sh
-    % make
-    % make install
+    % meson setup build
+    % meson compile -C build
+    % meson install -C build
 
 From release tarball:
 
-    % tar xf orage-<version>.tar.bz2
+    % tar xf orage-<version>.tar.xz
     % cd orage-<version>
-    % ./configure
-    % make
-    % make install
+    % meson setup build
+    % meson compile -C build
+    % meson install -C build
 
 ### Reporting Bugs
 
