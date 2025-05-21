@@ -1051,7 +1051,7 @@ static void delete_appointment(el_win *el)
         xfical_file_close(TRUE);
         refresh_el_win(el);
         app = ORAGE_APPLICATION (g_application_get_default ());
-        orage_window_classic_mark_appointments (ORAGE_WINDOW (
+        orage_window_mark_appointments (ORAGE_WINDOW (
             orage_application_get_window (app)));
         g_list_foreach(list, (GFunc)(GCallback)gtk_tree_path_free, NULL);
         g_list_free(list);

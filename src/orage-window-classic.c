@@ -543,8 +543,8 @@ static void info_process(gpointer a, gpointer pbox)
     xfical_appt *appt = (xfical_appt *)a;
     GtkGrid *box= GTK_GRID (pbox);
     OrageApplication *app = ORAGE_APPLICATION (g_application_get_default ());
-    OrageWindowClassic *window = ORAGE_WINDOW_CLASSIC (ORAGE_WINDOW_CLASSIC (
-        orage_application_get_window (app)));
+    OrageWindowClassic *window = ORAGE_WINDOW_CLASSIC (
+        orage_application_get_window (app));
     gboolean todo;
 
     todo = (pbox == window->mTodo_rows_vbox) ? TRUE : FALSE;
@@ -632,15 +632,18 @@ static void create_mainbox_event_info_box (OrageWindowClassic *window)
     gtk_container_add (GTK_CONTAINER (sw), window->mEvent_rows_vbox);
 }
 
-static void build_mainbox_todo_info (OrageWindowClassic *window)
+static void build_mainbox_todo_info (OrageWindow *window)
 {
     GDateTime *gdt;
     xfical_type ical_type;
     gchar file_type[8];
     gint i;
     GList *todo_list=NULL;
+    OrageWindowClassic *clwindow;
 
     g_return_if_fail (window != NULL);
+
+    clwindow = ORAGE_WINDOW_CLASSIC (window);
 
     if (g_par.show_todos) {
         gdt = g_date_time_new_now_local ();
@@ -657,31 +660,34 @@ static void build_mainbox_todo_info (OrageWindowClassic *window)
         g_date_time_unref (gdt);
     }
     if (todo_list) {
-        gtk_widget_destroy (window->mTodo_vbox);
-        create_mainbox_todo_info (window);
+        gtk_widget_destroy (clwindow->mTodo_vbox);
+        create_mainbox_todo_info (clwindow);
         todo_list = g_list_sort(todo_list, todo_order);
-        g_list_foreach (todo_list, info_process, window->mTodo_rows_vbox);
+        g_list_foreach (todo_list, info_process, clwindow->mTodo_rows_vbox);
         g_list_free(todo_list);
         todo_list = NULL;
-        gtk_widget_show_all (window->mTodo_vbox);
+        gtk_widget_show_all (clwindow->mTodo_vbox);
     }
     else {
-        gtk_widget_hide (window->mTodo_vbox);
+        gtk_widget_hide (clwindow->mTodo_vbox);
     }
 }
 
-static void build_mainbox_event_info (OrageWindowClassic *window)
+static void build_mainbox_event_info (OrageWindow *window)
 {
     xfical_type ical_type;
     gchar file_type[8];
     gint i;
     GList *event_list=NULL;
     GDateTime *gdt;
+    OrageWindowClassic *clwindow;
 
     g_return_if_fail (window != NULL);
 
+    clwindow = ORAGE_WINDOW_CLASSIC (window);
+
     if (g_par.show_event_days) {
-        gdt = orage_cal_to_gdatetime (GTK_CALENDAR (window->mCalendar), 1, 1);
+        gdt = orage_cal_to_gdatetime (GTK_CALENDAR (clwindow->mCalendar), 1, 1);
         ical_type = XFICAL_TYPE_EVENT;
         g_strlcpy (file_type, "O00.", sizeof (file_type));
 #if 0
@@ -701,26 +707,26 @@ static void build_mainbox_event_info (OrageWindowClassic *window)
         g_date_time_unref (gdt);
     }
     if (event_list) {
-        gtk_widget_destroy (window->mEvent_vbox);
-        create_mainbox_event_info_box (window);
+        gtk_widget_destroy (clwindow->mEvent_vbox);
+        create_mainbox_event_info_box (clwindow);
         event_list = g_list_sort(event_list, event_order);
-        g_list_foreach (event_list, info_process, window->mEvent_rows_vbox);
+        g_list_foreach (event_list, info_process, clwindow->mEvent_rows_vbox);
         g_list_free(event_list);
         event_list = NULL;
-        gtk_widget_show_all(window->mEvent_vbox);
+        gtk_widget_show_all (clwindow->mEvent_vbox);
     }
     else
-        gtk_widget_hide(window->mEvent_vbox);
+        gtk_widget_hide (clwindow->mEvent_vbox);
 }
 
 static void mCalendar_day_selected_cb (G_GNUC_UNUSED GtkCalendar *calendar,
                                        gpointer user_data)
 {
     /* rebuild the info for the selected date */
-    orage_window_classic_build_events (ORAGE_WINDOW_CLASSIC (user_data));
+    orage_window_classic_build_events (ORAGE_WINDOW (user_data));
 }
 
-void orage_window_classic_build_events (OrageWindowClassic *window)
+void orage_window_classic_build_events (OrageWindow *window)
 {
     if (!xfical_file_open(TRUE))
         return;
@@ -728,7 +734,7 @@ void orage_window_classic_build_events (OrageWindowClassic *window)
     xfical_file_close(TRUE);
 }
 
-void orage_window_classic_build_todo (OrageWindowClassic *window)
+void orage_window_classic_build_todo (OrageWindow *window)
 {
     if (!xfical_file_open (TRUE))
         return;
@@ -742,6 +748,14 @@ static void orage_window_classic_class_init (OrageWindowClassicClass *klass)
 
 static void orage_window_classic_interface_init (OrageWindowInterface *iface)
 {
+    iface->mark_appointments = orage_window_classic_mark_appointments;
+    iface->build_info = orage_window_classic_build_info;
+    iface->build_events = orage_window_classic_build_events;
+    iface->build_todo = orage_window_classic_build_todo;
+    iface->month_changed = orage_window_classic_month_changed;
+    iface->show_menubar = orage_window_classic_show_menubar;
+    iface->hide_todo = orage_window_classic_hide_todo;
+    iface->hide_event = orage_window_classic_hide_event;
     iface->get_calendar = orage_window_classic_get_calendar;
     iface->raise = orage_window_classic_raise;
 }
@@ -793,23 +807,25 @@ GtkWidget *orage_window_classic_new (OrageApplication *application)
                          NULL);
 }
 
-void orage_window_classic_show_menubar (OrageWindowClassic *window,
+void orage_window_classic_show_menubar (OrageWindow *window,
                                         const gboolean show)
 {
+    OrageWindowClassic *clwindow = ORAGE_WINDOW_CLASSIC (window);
+
     if (show)
-        gtk_widget_show (window->mMenubar);
+        gtk_widget_show (clwindow->mMenubar);
     else
-        gtk_widget_hide (window->mMenubar);
+        gtk_widget_hide (clwindow->mMenubar);
 }
 
-void orage_window_classic_hide_todo (OrageWindowClassic *window)
+void orage_window_classic_hide_todo (OrageWindow *window)
 {
-    gtk_widget_hide (window->mTodo_vbox);
+    gtk_widget_hide (ORAGE_WINDOW_CLASSIC (window)->mTodo_vbox);
 }
 
-void orage_window_classic_hide_event (OrageWindowClassic *window)
+void orage_window_classic_hide_event (OrageWindow *window)
 {
-    gtk_widget_hide (window->mEvent_vbox);
+    gtk_widget_hide (ORAGE_WINDOW_CLASSIC (window)->mEvent_vbox);
 }
 
 GtkCalendar *orage_window_classic_get_calendar (OrageWindow *window)
@@ -817,7 +833,7 @@ GtkCalendar *orage_window_classic_get_calendar (OrageWindow *window)
     return GTK_CALENDAR (ORAGE_WINDOW_CLASSIC (window)->mCalendar);
 }
 
-void orage_window_classic_build_info (OrageWindowClassic *window)
+void orage_window_classic_build_info (OrageWindow *window)
 {
     build_mainbox_todo_info (window);
     build_mainbox_event_info (window);

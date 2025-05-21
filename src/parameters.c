@@ -200,10 +200,9 @@ static void borders_changed (G_GNUC_UNUSED GtkWidget *dialog,
 static void set_menu(void)
 {
     OrageApplication *app = ORAGE_APPLICATION (g_application_get_default ());
-    OrageWindowClassic *window = ORAGE_WINDOW_CLASSIC (
-        orage_application_get_window (app));
+    OrageWindow *window = ORAGE_WINDOW (orage_application_get_window (app));
 
-    orage_window_classic_show_menubar (window, g_par.show_menu);
+    orage_window_show_menubar (window, g_par.show_menu);
 }
 
 static void menu_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
@@ -258,16 +257,15 @@ static void weeks_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
 static void todos_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
 {
     OrageApplication *app = ORAGE_APPLICATION (g_application_get_default ());
-    OrageWindowClassic *window = ORAGE_WINDOW_CLASSIC (
-        orage_application_get_window (app));
+    OrageWindow *window = ORAGE_WINDOW (orage_application_get_window (app));
     Itf *itf = (Itf *)user_data;
 
     g_par.show_todos = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(
             itf->show_todos_checkbutton));
     if (g_par.show_todos)
-        orage_window_classic_build_todo (window);
+        orage_window_build_todo (window);
     else {
-        orage_window_classic_hide_todo (window);
+        orage_window_hide_todo (window);
         /* hide the whole area if also event box does not exist */
         if (!g_par.show_event_days)
             gtk_window_resize (GTK_WINDOW (window), g_par.size_x, 1);
@@ -278,14 +276,13 @@ static void show_events_spin_changed (GtkSpinButton *sb,
                                       G_GNUC_UNUSED gpointer user_data)
 {
     OrageApplication *app = ORAGE_APPLICATION (g_application_get_default ());
-    OrageWindowClassic *window = ORAGE_WINDOW_CLASSIC (
-        orage_application_get_window (app));
+    OrageWindow *window = ORAGE_WINDOW (orage_application_get_window (app));
 
     g_par.show_event_days = gtk_spin_button_get_value(sb);
     if (g_par.show_event_days)
-        orage_window_classic_build_events (window);
+        orage_window_build_events (window);
     else {
-        orage_window_classic_hide_event (window);
+        orage_window_hide_event (window);
         /* hide the whole area if also todo box does not exist */
         if (!g_par.show_todos)
             gtk_window_resize (GTK_WINDOW (window), g_par.size_x, 1);

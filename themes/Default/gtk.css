@@ -64,10 +64,10 @@ OrageTrayIcon > row-3{
    min-width: 3px;
 }
 
-#OrageWindow #todo-completed{
+#OrageWindowClassic #todo-completed{
    color: red;
 }
 
-#OrageWindow #todo-actual-now{
+#OrageWindowClassic #todo-actual-now{
    color: blue;
 }

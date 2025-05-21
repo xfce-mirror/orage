@@ -37,19 +37,38 @@ struct _OrageWindowInterface
 {
     GTypeInterface parent_iface;
 
+    void (*mark_appointments) (OrageWindow *window);
+    void (*build_info) (OrageWindow *window);
+    void (*build_events) (OrageWindow *window);
+    void (*build_todo) (OrageWindow *window);
+    void (*month_changed) (OrageWindow *window);
+    void (*show_menubar) (OrageWindow *window, gboolean show);
+    void (*hide_todo) (OrageWindow *window);
+    void (*hide_event) (OrageWindow *window);
     GtkCalendar *(*get_calendar) (OrageWindow *window);
     void (*raise)(OrageWindow *window);
 };
 
 GtkWidget *orage_window_create (OrageApplication *app, gboolean use_new_ui);
 
+void orage_window_mark_appointments (OrageWindow *window);
+
+/** This routine is called from ical-code xfical_alarm_build_list_internal and
+ *  ical files are already open at that time. So make sure ical files are opened
+ *  before and closed after this call.
+ */
+void orage_window_build_info (OrageWindow *window);
+void orage_window_build_events (OrageWindow *window);
+void orage_window_build_todo (OrageWindow *window);
+void orage_window_month_changed (OrageWindow *window);
+
+void orage_window_show_menubar (OrageWindow *window, gboolean show);
+void orage_window_hide_todo (OrageWindow *window);
+void orage_window_hide_event (OrageWindow *window);
 GtkCalendar *orage_window_get_calendar (OrageWindow *window);
 void orage_window_raise (OrageWindow *window);
 
 G_END_DECLS
-
-/* During switchover we need include some implementations also. */
-#include "orage-window-classic.h"
 
 #endif
 

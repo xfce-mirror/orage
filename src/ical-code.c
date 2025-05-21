@@ -3018,7 +3018,7 @@ static void xfical_alarm_build_list_internal(gboolean first_list_today)
 
     /* Refresh main calendar window lists. */
     app = ORAGE_APPLICATION (g_application_get_default ());
-    orage_window_classic_build_info (ORAGE_WINDOW_CLASSIC (
+    orage_window_build_info (ORAGE_WINDOW (
         orage_application_get_window (app)));
 }
 

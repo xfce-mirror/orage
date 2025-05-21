@@ -43,6 +43,62 @@ GtkWidget *orage_window_create (OrageApplication *app, gboolean use_new_ui)
         return orage_window_classic_new (app);
 }
 
+void orage_window_mark_appointments (OrageWindow *window)
+{
+    g_return_if_fail (ORAGE_IS_WINDOW (window));
+
+    ORAGE_WINDOW_GET_IFACE (window)->mark_appointments (window);
+}
+
+void orage_window_build_info (OrageWindow *window)
+{
+    g_return_if_fail (ORAGE_IS_WINDOW (window));
+
+    ORAGE_WINDOW_GET_IFACE (window)->build_info (window);
+}
+
+void orage_window_build_events (OrageWindow *window)
+{
+    g_return_if_fail (ORAGE_IS_WINDOW (window));
+
+    ORAGE_WINDOW_GET_IFACE (window)->build_events (window);
+}
+
+void orage_window_build_todo (OrageWindow *window)
+{
+    g_return_if_fail (ORAGE_IS_WINDOW (window));
+
+    ORAGE_WINDOW_GET_IFACE (window)->build_todo (window);
+}
+
+void orage_window_month_changed (OrageWindow *window)
+{
+    g_return_if_fail (ORAGE_IS_WINDOW (window));
+
+    ORAGE_WINDOW_GET_IFACE (window)->month_changed (window);
+}
+
+void orage_window_show_menubar (OrageWindow *window, gboolean show)
+{
+    g_return_if_fail (ORAGE_IS_WINDOW (window));
+
+    ORAGE_WINDOW_GET_IFACE (window)->show_menubar (window, show);
+}
+
+void orage_window_hide_todo (OrageWindow *window)
+{
+    g_return_if_fail (ORAGE_IS_WINDOW (window));
+
+    ORAGE_WINDOW_GET_IFACE (window)->hide_todo (window);
+}
+
+void orage_window_hide_event (OrageWindow *window)
+{
+    g_return_if_fail (ORAGE_IS_WINDOW (window));
+
+    ORAGE_WINDOW_GET_IFACE (window)->hide_event (window);
+}
+
 GtkCalendar *orage_window_get_calendar (OrageWindow *window)
 {
     g_return_val_if_fail (ORAGE_IS_WINDOW (window), NULL);
