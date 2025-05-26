@@ -330,7 +330,7 @@ static void orage_application_activate (GApplication *app)
     else
     {
         /* Create the main window */
-        window = orage_window_create (self, FALSE);
+        window = orage_window_create (self, TRUE);
 
         g_signal_connect (window, "delete_event",
                           G_CALLBACK (window_delete_event_cb), self);

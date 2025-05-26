@@ -20,6 +20,7 @@
 
 #include "orage-window.h"
 
+#include "orage-window-next.h"
 #include "orage-window-classic.h"
 #include "orage-application.h"
 
@@ -28,17 +29,15 @@
 
 G_DEFINE_INTERFACE (OrageWindow, orage_window, GTK_TYPE_APPLICATION_WINDOW)
 
-static void orage_window_default_init (OrageWindowInterface *iface)
+static void orage_window_default_init (
+    G_GNUC_UNUSED OrageWindowInterface *iface)
 {
 }
 
 GtkWidget *orage_window_create (OrageApplication *app, gboolean use_new_ui)
 {
     if (use_new_ui)
-    {
-        /* Not yet implemented. */
-        g_return_val_if_reached (NULL);
-    }
+        return orage_window_next_new (app);
     else
         return orage_window_classic_new (app);
 }

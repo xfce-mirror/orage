@@ -26,8 +26,12 @@ orage_SOURCES =							\
 	orage-category.h					\
 	orage-css.c						\
 	orage-css.h						\
-	orage-import.h						\
 	orage-import.c						\
+	orage-import.h						\
+	orage-month-cell.c					\
+	orage-month-cell.h					\
+	orage-month-view.c					\
+	orage-month-view.h					\
 	orage-i18n.h						\
 	orage-rc-file.c						\
 	orage-rc-file.h						\
@@ -39,10 +43,14 @@ orage_SOURCES =							\
 	orage-sync-ext-command.h				\
 	orage-task-runner.c					\
 	orage-task-runner.h    					\
+	orage-time-util.c					\
+	orage-time-util.h					\
 	orage-week-window.c					\
 	orage-week-window.h					\
 	orage-window-classic.c					\
 	orage-window-classic.h					\
+	orage-window-next.c					\
+	orage-window-next.h					\
 	orage-window.c						\
 	orage-window.h						\
 	parameters.c						\
