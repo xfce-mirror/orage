@@ -25,11 +25,18 @@
 
 typedef struct
 {
-    struct icaltimetype stime; /* start time */
-    struct icaltimetype etime; /* end time */
+    /** Start time. */
+    struct icaltimetype stime;
+
+    /** End time. */
+    struct icaltimetype etime;
     struct icaldurationtype duration;
-    struct icaltimetype ctime; /* completed time for VTODO appointmnets */
-    icalcomponent_kind ikind;  /* type of component, VEVENt, VTODO... */
+
+    /** Completed time for VTODO appointmnets. */
+    struct icaltimetype ctime;
+
+    /** Type of component, VEVENt, VTODO... */
+    icalcomponent_kind ikind;
 } xfical_period;
 
 typedef struct _foreign_ical_files

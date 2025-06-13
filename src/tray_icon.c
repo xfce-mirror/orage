@@ -81,7 +81,6 @@ static void on_Today_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
     GDateTime *gdt;
 
     gdt = g_date_time_new_now_local ();
-    g_debug ("%s", G_STRFUNC);
     orage_select_date (orage_window_get_calendar (ORAGE_WINDOW (user_data)),
                        gdt);
     g_date_time_unref (gdt);

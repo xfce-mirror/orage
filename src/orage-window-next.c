@@ -81,6 +81,7 @@ struct _OrageWindowNext
 };
 
 static void orage_window_next_interface_init (OrageWindowInterface *interface);
+static GDateTime *orage_window_next_get_selected_date (OrageWindowNext *window);
 
 static void on_new_activated (OrageWindowNext *window);
 
@@ -134,9 +135,8 @@ static void on_new_activated (OrageWindowNext *window)
 
     g_return_if_fail (ORAGE_IS_WINDOW (window));
 
-    /* cal has always a day selected here, so it is safe to read it */
-    gdt = orage_cal_to_gdatetime (
-        orage_window_next_get_calendar (ORAGE_WINDOW (window)), 1, 1);
+    /* Orage has always a day selected here, so it is safe to read it. */
+    gdt = orage_window_next_get_selected_date (window);
     appointment_window = orage_appointment_window_new (gdt);
     gtk_window_present (GTK_WINDOW (appointment_window));
     g_date_time_unref (gdt);
@@ -189,23 +189,23 @@ static void on_view_selected_date_activated (G_GNUC_UNUSED OrageWindowNext *wind
     (void)create_el_win (NULL);
 }
 
-static void on_view_selected_week_activated (G_GNUC_UNUSED OrageWindowNext *window)
+static void on_view_selected_week_activated (OrageWindowNext *window)
 {
     GDateTime *gdt;
 
     g_return_if_fail (ORAGE_IS_WINDOW (window));
 
     gdt = orage_cal_to_gdatetime (
-        orage_window_get_calendar (ORAGE_WINDOW (window)), 1, 1);
+        orage_window_next_get_calendar (ORAGE_WINDOW (window)), 1, 1);
     orage_week_window_build (gdt);
     g_date_time_unref (gdt);
 }
 
-static void on_select_today_activated (G_GNUC_UNUSED OrageWindowNext *window)
+static void on_select_today_activated (OrageWindowNext *window)
 {
     g_return_if_fail (ORAGE_IS_WINDOW (window));
 
-    orage_select_today (orage_window_get_calendar (ORAGE_WINDOW (window)));
+    orage_select_today (orage_window_next_get_calendar (ORAGE_WINDOW (window)));
 }
 
 static void on_help_activated (G_GNUC_UNUSED OrageWindowNext *window)
@@ -402,6 +402,12 @@ GtkWidget *orage_window_next_new (OrageApplication *application)
                          NULL);
 }
 
+GDateTime *orage_window_next_get_selected_date (OrageWindowNext *window)
+{
+    return orage_cal_to_gdatetime (
+        orage_window_next_get_calendar (ORAGE_WINDOW (window)), 1, 1);
+}
+
 void orage_window_next_build_events (OrageWindow *window)
 {
 #if 0
@@ -411,6 +417,7 @@ void orage_window_next_build_events (OrageWindow *window)
     build_mainbox_event_info (window);
     xfical_file_close(TRUE);
 #else
+    g_debug ("TODO: %s", G_STRFUNC);
     (void)window;
 #endif
 }
@@ -421,6 +428,7 @@ void orage_window_next_build_info (OrageWindow *window)
     build_mainbox_todo_info (window);
     build_mainbox_event_info (window);
 #else
+    g_debug ("TODO: %s", G_STRFUNC);
     (void)window;
 #endif
 }
@@ -433,6 +441,7 @@ void orage_window_next_build_todo (OrageWindow *window)
     build_mainbox_todo_info (window);
     xfical_file_close (TRUE);
 #else
+    g_debug ("TODO: %s", G_STRFUNC);
     (void)window;
 #endif
 }
@@ -442,6 +451,7 @@ GtkCalendar *orage_window_next_get_calendar (OrageWindow *window)
 #if 0
     return GTK_CALENDAR (ORAGE_WINDOW_CLASSIC (window)->mCalendar);
 #else
+    g_debug ("TODO: %s", G_STRFUNC);
     (void)window;
     return GTK_CALENDAR (gtk_calendar_new ());
 #endif
@@ -452,6 +462,7 @@ void orage_window_next_hide_event (OrageWindow *window)
 #if 0
     gtk_widget_hide (ORAGE_WINDOW_CLASSIC (window)->mEvent_vbox);
 #else
+    g_debug ("TODO: %s", G_STRFUNC);
     (void)window;
 #endif
 }
@@ -461,6 +472,7 @@ void orage_window_next_hide_todo (OrageWindow *window)
 #if 0
     gtk_widget_hide (ORAGE_WINDOW_CLASSIC (window)->mTodo_vbox);
 #else
+    g_debug ("TODO: %s", G_STRFUNC);
     (void)window;
 #endif
 }
@@ -477,6 +489,7 @@ void orage_window_next_mark_appointments (OrageWindow *window)
     xfical_mark_calendar (orage_window_classic_get_calendar (window));
     xfical_file_close (TRUE);
 #else
+    g_debug ("TODO: %s", G_STRFUNC);
     (void)window;
 #endif
 }
@@ -487,42 +500,34 @@ void orage_window_next_month_changed (OrageWindow *window)
     mCalendar_month_changed_cb (orage_window_classic_get_calendar (window),
                                 window);
 #else
+    g_debug ("TODO: %s", G_STRFUNC);
     (void)window;
 #endif
 }
 
 void orage_window_next_raise (OrageWindow *window)
 {
-#if 0
     GtkWindow *gtk_window = GTK_WINDOW (window);
 
     if (g_par.pos_x || g_par.pos_y)
         gtk_window_move (gtk_window, g_par.pos_x, g_par.pos_y);
 
     if (g_par.select_always_today)
-        orage_select_today (orage_window_classic_get_calendar (window));
+        orage_select_today (orage_window_next_get_calendar (window));
 
     if (g_par.set_stick)
         gtk_window_stick (gtk_window);
 
     gtk_window_set_keep_above (gtk_window, g_par.set_ontop);
     gtk_window_present (gtk_window);
-#else
-    (void)window;
-#endif
 }
 
 void orage_window_next_show_menubar (OrageWindow *window, const gboolean show)
 {
-#if 0
-    OrageWindowClassic *clwindow = ORAGE_WINDOW_CLASSIC (window);
+    OrageWindowNext *nxtwindow = ORAGE_WINDOW_NEXT (window);
 
     if (show)
-        gtk_widget_show (clwindow->mMenubar);
+        gtk_widget_show (nxtwindow->menubar);
     else
-        gtk_widget_hide (clwindow->mMenubar);
-#else
-    (void)window;
-    (void)show;
-#endif
+        gtk_widget_hide (nxtwindow->menubar);
 }
