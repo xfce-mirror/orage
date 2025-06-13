@@ -1,7 +1,27 @@
+/*
+ * Copyright (c) 2025 Erkki Moorits
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2, or (at your option)
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the
+ *     Free Software Foundation
+ *     51 Franklin Street, 5th Floor
+ *     Boston, MA 02110-1301 USA
+ */
+
 #include "orage-month-cell.h"
 #include "orage-time-util.h"
 
-struct _OcalMonthCell
+struct _OrageMonthCell
 {
     /* Add GtkOverlay as a main container for this widgets */
     GtkBox parent;
@@ -13,18 +33,17 @@ struct _OcalMonthCell
     GDateTime *date;
 };
 
-G_DEFINE_TYPE (OcalMonthCell, ocal_month_cell, GTK_TYPE_BOX)
+G_DEFINE_TYPE (OrageMonthCell, orage_month_cell, GTK_TYPE_BOX)
 
-void
-ocal_month_cell_set_date (OcalMonthCell *self, GDateTime *date)
+void orage_month_cell_set_date (OrageMonthCell *self, GDateTime *date)
 {
     g_autofree gchar *text = NULL;
 
     if (self->date && date
-        && ocal_date_time_compare_date (self->date, date) == 0)
+        && orage_date_time_compare_date (self->date, date) == 0)
         return;
 
-    ocal_clear_date_time (&self->date);
+    orage_clear_date_time (&self->date);
     self->date = g_date_time_ref (date);
 
     text = g_strdup_printf ("%d", g_date_time_get_day_of_month (date));
@@ -32,8 +51,7 @@ ocal_month_cell_set_date (OcalMonthCell *self, GDateTime *date)
     gtk_label_set_text (GTK_LABEL (self->day_label), text);
 }
 
-static void
-ocal_month_cell_init (OcalMonthCell *self)
+static void orage_month_cell_init (OrageMonthCell *self)
 {
     self->main_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 
@@ -46,13 +64,11 @@ ocal_month_cell_init (OcalMonthCell *self)
                         0);
 }
 
-static void
-ocal_month_cell_class_init (OcalMonthCellClass *klass)
+static void orage_month_cell_class_init (OrageMonthCellClass *klass)
 {
 }
 
-GtkWidget *
-ocal_month_cell_new ()
+GtkWidget *orage_month_cell_new (void)
 {
-    return g_object_new (OCAL_MONTH_CELL_TYPE, NULL);
+    return g_object_new (ORAGE_MONTH_CELL_TYPE, NULL);
 }

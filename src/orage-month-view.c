@@ -1,6 +1,28 @@
+/*
+ * Copyright (c) 2025 Erkki Moorits
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2, or (at your option)
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the
+ *     Free Software Foundation
+ *     51 Franklin Street, 5th Floor
+ *     Boston, MA 02110-1301 USA
+ */
+
 #include "orage-month-view.h"
 #include "orage-month-cell.h"
 #include "orage-time-util.h"
+
+#include <gtk/gtk.h>
 
 struct _OrageMonthView
 {
@@ -34,19 +56,23 @@ static void update_days_delay (OrageMonthView *self, gint month_different);
 
 G_DEFINE_TYPE (OrageMonthView, orage_month_view, GTK_TYPE_BOX)
 
-static void
-update_days_delay (OrageMonthView *self, gint month_different)
+static void update_days_delay (OrageMonthView *self, gint month_different)
 {
-    self->days_delay
-            = (time_day_of_week (
-                                 1, g_date_time_get_month (self->date) + month_different,
-                                 g_date_time_get_year (self->date))
-               - self->first_weekday + 7)
-            % 7;
+    gint year = g_date_time_get_year (self->date);
+    gint month = g_date_time_get_month (self->date);
+    GDate *gd = g_date_new_dmy (1, month, year);
+
+    if (month_different >= 0)
+        g_date_add_months (gd, month_different);
+    else
+        g_date_subtract_months (gd, -1 * month_different);
+
+    self->days_delay = (g_date_get_weekday (gd) - self->first_weekday + 7) % 7;
+
+    g_date_free (gd);
 }
 
-static void
-next_button_clicked (OrageMonthView *self, GtkWidget *widget)
+static void next_button_clicked (OrageMonthView *self, GtkWidget *widget)
 {
     update_days_delay (self, 1);
 
@@ -54,16 +80,14 @@ next_button_clicked (OrageMonthView *self, GtkWidget *widget)
     update_month_cells (self);
 }
 
-static void
-prev_button_clicked (OrageMonthView *self, GtkWidget *widget)
+static void prev_button_clicked (OrageMonthView *self, GtkWidget *widget)
 {
     update_days_delay (self, -1);
     self->date = g_date_time_add_months (self->date, -1);
     update_month_cells (self);
 }
 
-static void
-setup_month_grid (OrageMonthView *self)
+static void setup_month_grid (OrageMonthView *self)
 {
     guint row, col;
 
@@ -73,7 +97,7 @@ setup_month_grid (OrageMonthView *self)
         {
             GtkWidget *cell;
 
-            cell = ocal_month_cell_new ();
+            cell = orage_month_cell_new ();
 
             self->month_cell[row][col] = cell;
             gtk_grid_attach (GTK_GRID (self->month_grid), cell, col, (row + 1),
@@ -82,8 +106,7 @@ setup_month_grid (OrageMonthView *self)
     }
 }
 
-static void
-update_month_cells (OrageMonthView *self)
+static void update_month_cells (OrageMonthView *self)
 {
     guint row, col;
     g_autoptr (GDateTime) dt = NULL;
@@ -97,19 +120,18 @@ update_month_cells (OrageMonthView *self)
         for (col = 0; col < 7; col++)
         {
             g_autoptr (GDateTime) cell_date = NULL;
-            OcalMonthCell *cell;
+            OrageMonthCell *cell;
 
-            cell = OCAL_MONTH_CELL (self->month_cell[row][col]);
+            cell = ORAGE_MONTH_CELL (self->month_cell[row][col]);
 
             cell_date
                     = g_date_time_add_days (dt, row * 7 + col - self->days_delay);
-            ocal_month_cell_set_date (cell, cell_date);
+            orage_month_cell_set_date (cell, cell_date);
         }
     }
 }
 
-static void
-orage_month_view_init (OrageMonthView *self)
+static void orage_month_view_init (OrageMonthView *self)
 {
 
     self->date = g_date_time_new_now_utc ();
@@ -155,8 +177,7 @@ orage_month_view_init (OrageMonthView *self)
                         0);
 }
 
-static void
-orage_month_view_class_init (OrageMonthViewClass *klass)
+static void orage_month_view_class_init (OrageMonthViewClass *klass)
 {
     GObjectClass *object_class;
     GtkWidgetClass *widget_class;
