@@ -51,7 +51,7 @@ msgstr ""
 #: src/event-list.c:1017 src/orage-appointment-window.c:988
 #: src/orage-appointment-window.c:1634 src/parameters.c:687
 msgid "Do you want to continue?"
-msgstr "Да ли желите да наставите?"
+msgstr "Да ли желите наставити?"
 
 #: src/event-list.c:1018 src/orage-appointment-window.c:1635
 #: src/parameters.c:688
@@ -155,7 +155,7 @@ msgid ""
 "Note that this also shows all urgencies.\n"
 "Note that repeating events may appear earlier in the list as the first occurrence only is listed."
 msgstr ""
-"Означите ако желите да се приказује само први догађај који се понавља. Подразумевано се приказују сви.\n"
+"Означите ако ли желите да се приказује само први догађај који се понавља. Подразумевано се приказују сви.\n"
 "Такође приказује и све хитне догађаје.\n"
 "Понављајући догађаји се могу приказивати раније на списку јер је само први догађај приказан."
 
@@ -168,7 +168,7 @@ msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed."
 msgstr ""
-"Означите ако желите да се приказују и стари догађаји. Може бити означено само ако је омогућено „само први се понавља“ да би се избегли дуги спискови.\n"
+"Означите ако ли желите да се приказују и стари догађаји. Може бити означено само ако је омогућено „само први се понавља“ да би се избегли дуги спискови.\n"
 "Означавање додатних дана ће и даље одређивати да се нови састанци приказују."
 
 #: src/event-list.c:1338 src/orage-appointment-window.c:3591
@@ -183,15 +183,15 @@ msgstr "Дневник"
 
 #: src/event-list.c:1355
 msgid "Journal entries starting from:"
-msgstr "Прибележи уносе почевши од:"
+msgstr "Бележи уносе почевши од:"
 
 #: src/event-list.c:1380
 msgid "Search"
-msgstr "Потражи"
+msgstr "Тражи"
 
 #: src/event-list.c:1383
 msgid "Search text "
-msgstr "Потражи текст "
+msgstr "Претражи писмо "
 
 #: src/event-list.c:1449
 msgid "Flags"
@@ -326,8 +326,8 @@ msgid ""
 "Separate filenames with comma(,).\n"
 " NOTE: comma is not valid character in filenames for Orage."
 msgstr ""
-"Раздвојте називе датотека зарезом(,).\n"
-" НАПОМЕНА: зарез није исправан знак у називима датотека за Ораж."
+"Раздвојите називе датотека зарезом(,).\n"
+" НАПОМЕНА: запета није исправан знак у називима датотека за Ораж."
 
 #: src/interface.c:1073
 msgid "Export"
@@ -380,16 +380,16 @@ msgstr "Складиште"
 #: src/interface.c:1182 src/interface.c:1204
 #: src/orage-appointment-window.c:4088
 msgid "_Execute"
-msgstr "-Изврши"
+msgstr "_Изврши"
 
 #: src/interface.c:1188
 #, c-format
 msgid "Archive now (threshold: %d months)"
-msgstr "Складишти сада (праг: %d месеца)"
+msgstr "Складишти сада (задршка: %d месеца)"
 
 #: src/interface.c:1199
 msgid "You can change archive threshold in parameters"
-msgstr "Можете да измените праг складиштења у параметрима"
+msgstr "Можете да измените задршку складиштења у параметрима"
 
 #: src/interface.c:1211
 msgid "Revert archive now"
@@ -403,7 +403,7 @@ msgid ""
 msgstr ""
 "Вратите све складиштене догађаје у главну Оражову датотеку и уклоните датотеку складишта.\n"
 "Ово је корисно, на пример, када обављате извоз и премештате Оражове\n"
-"састанке на други систем."
+"састанке на други склоп."
 
 #: src/interface.c:1230
 msgid "Orage files"
@@ -423,7 +423,7 @@ msgstr "Нова датотека:"
 
 #: src/interface.c:1285 src/interface.c:1377
 msgid "Action options:"
-msgstr "Могућности радње:"
+msgstr "Могућности дејства:"
 
 #: src/interface.c:1289 src/interface.c:1381
 msgid "Rename"
@@ -478,7 +478,7 @@ msgstr "_Додај"
 
 #: src/interface.c:1466
 msgid "Visible name:"
-msgstr "Име које се приказује:"
+msgstr "Видљиво име:"
 
 #: src/interface.c:1476
 msgid "Read only"
@@ -489,8 +489,8 @@ msgid ""
 "Set this if you want to make sure that this file is never modified by Orage.\n"
 "Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
 msgstr ""
-"Поставите ово ако желите да осигурате да ова датотека неће никада бити измењена Оражом.\n"
-"Знајте да мењање страних датотека може да их учини несагласним са првобитним алатом, тамо одакле долазе!"
+"Поставите ово ако желите обезбедити да ова датотека неће никада бити измењена Оражом.\n"
+"Знајте да мењање страних датотека може да их учини нескладним са првобитним алатом, од којег потичу!"
 
 #: src/interface.c:1488
 msgid "This internal name is displayed to user instead of file name."
@@ -498,7 +498,7 @@ msgstr "Кориснику се приказује унутрашње име у�
 
 #: src/interface.c:1502
 msgid "Exchange data - Orage"
-msgstr "Размена података — Ораж"
+msgstr "Размена података - Ораж"
 
 #: src/main.c:53 src/orage-appointment-window.c:711
 #: org.xfce.orage.appdata.xml.in:7
@@ -519,12 +519,12 @@ msgid ""
 "\tThis is %s version %s\n"
 "\n"
 msgstr ""
-"        Ово је %s, издање %s\n"
+"\tОво је %s, издање %s\n"
 "\n"
 
 #: src/orage-application.c:163
 msgid "\tReleased under the terms of the GNU General Public License.\n"
-msgstr "        Издато под одредбама Гнуове опште јавне лиценце.\n"
+msgstr "\tИздато под одредбама Гнуове опште јавне лиценце.\n"
 
 #: src/orage-application.c:164
 #, c-format
@@ -544,15 +544,15 @@ msgstr ""
 
 #: src/orage-application.c:174
 msgid "\tUsing libnotify.\n"
-msgstr "        Користи библиотеку обавештења.\n"
+msgstr "\tКористи књижницу libnotify.\n"
 
 #: src/orage-application.c:176
 msgid "\tNot using libnotify.\n"
-msgstr "        Не користи библиотеку обавештења.\n"
+msgstr "\tНе користи libnotify.\n"
 
 #: src/orage-application.c:179
 msgid "\tUsing automatic archiving.\n"
-msgstr "        Користи самостално складиштење.\n"
+msgstr "\tКористи самостално складиштење.\n"
 
 #: src/orage-application.c:181
 msgid "\tNot using archiving.\n"
@@ -675,15 +675,15 @@ msgstr "Овај састанак не постоји."
 
 #: src/orage-appointment-window.c:2174
 msgid "It was probably removed, please refresh your screen."
-msgstr "Вероватно је уклоњен, молим освежите ваш екран."
+msgstr "Вероватно је уклоњен, молим освежите свој заслон."
 
 #: src/orage-appointment-window.c:2386
 msgid "Current categories"
-msgstr "Тренутне категорије"
+msgstr "Тренутне врсте"
 
 #: src/orage-appointment-window.c:2408
 msgid "Add new category with color"
-msgstr "Додајте нову категорију са бојом"
+msgstr "Додајте нову обојену врсту"
 
 #: src/orage-appointment-window.c:2419
 msgid "Category:"
@@ -716,7 +716,7 @@ msgstr "Након краја"
 #. window title
 #: src/orage-appointment-window.c:2879
 msgid "New appointment - Orage"
-msgstr "Нови састанак — Ораж"
+msgstr "Нови састанак - Ораж"
 
 #: src/orage-appointment-window.c:2912
 msgid "Sav_e and close"
@@ -809,7 +809,7 @@ msgstr "Нед"
 
 #: src/orage-appointment-window.c:3291
 msgid "week(s) on:"
-msgstr "седмица(е)"
+msgstr "седмица(е):"
 
 #: src/orage-appointment-window.c:3327
 msgid "From the beginning of the month:"
@@ -877,7 +877,7 @@ msgstr "Децембра"
 #. * the string "of", it can be replaced with an empty string.
 #: src/orage-appointment-window.c:3399
 msgid "of"
-msgstr "из"
+msgstr "од"
 
 #: src/orage-appointment-window.c:3430
 msgid "hour(s)"
@@ -916,15 +916,15 @@ msgid ""
 "interval no matter when it was last completed"
 msgstr ""
 "ОБАВЕЗА се поново дешава редовно почевши од времена почетка и понавља се "
-"након сваког периода без обзира када је последњи пут обављена"
+"након сваког временског распона без обзира када је последњи пут обављена"
 
 #: src/orage-appointment-window.c:3513
 msgid ""
 "TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
 msgstr ""
-"Поновно дешавање ОБАВЕЗЕ је засновано на времену обављања и понавља се након периода који се броји од последњег времена бављања.\n"
-"(Знајте да нећете моћи ништа да кажете о историјату ОБАВЕЗЕ све док се основа поновног дешавања не промени након сваког обављања.)"
+"Поновно дешавање ОБАВЕЗЕ је засновано на времену обављања и понавља се након временског размака који се броји од последњег времена извршења.\n"
+"(Знајте да нећете моћи ништа да кажете о повести ОБАВЕЗЕ све док се основа поновног дешавања не промени након сваког извршења.)"
 
 #: src/orage-appointment-window.c:3539
 msgid "Save"
@@ -961,7 +961,7 @@ msgid ""
 "Meeting or birthday or TV show."
 msgstr ""
 "Догађај који ће се десити некада. На пример:\n"
-"Састанак или рођендан или ТВ емисија."
+"Састанак или рођендан или ТВ-емисија."
 
 #: src/orage-appointment-window.c:3596
 msgid ""
@@ -969,7 +969,7 @@ msgid ""
 "Wash your car or test new version of Orage."
 msgstr ""
 "Нешто што бисте требали некад да урадите. На пример:\n"
-"Да оперете судове или да испробате нове бакине колаче."
+"Да оперете кола или да испробате ново издање Оража."
 
 #: src/orage-appointment-window.c:3604
 msgid ""
@@ -977,13 +977,13 @@ msgid ""
 "Remark that your mother called or first snow came."
 msgstr ""
 "Направите белешку неког дешавања. На пример:\n"
-"Забележите када сте добили на лутрији или када је маца омацила седам белих пуфница."
+"Забележите да вас је мајка позивала или да је пао први снег."
 
 #. location
 #: src/orage-appointment-window.c:3616 src/timezone_selection.c:234
 #: src/timezone_selection.c:239
 msgid "Location"
-msgstr "Место"
+msgstr "Положај"
 
 #: src/orage-appointment-window.c:3624
 msgid "All day event"
@@ -1024,7 +1024,7 @@ msgstr "Урађено"
 #. categories
 #: src/orage-appointment-window.c:3724
 msgid "Categories"
-msgstr "Категорије"
+msgstr "Врсте"
 
 #: src/orage-appointment-window.c:3742
 msgid ""
@@ -1032,7 +1032,7 @@ msgid ""
 "list views."
 msgstr ""
 "Ово је посебна врста, која може бити коришћена да обоји овај састанак у "
-"прегледу списком."
+"прегледу списка."
 
 #: src/orage-appointment-window.c:3743
 msgid "_Colour"
@@ -1040,7 +1040,7 @@ msgstr "_Боја"
 
 #: src/orage-appointment-window.c:3748
 msgid "update colors for categories."
-msgstr "освежите боје за врсте."
+msgstr "освежите боје врста."
 
 #. priority
 #: src/orage-appointment-window.c:3754
@@ -1057,7 +1057,7 @@ msgstr ""
 "Уколико се постави на 8 или више састанак се НЕЋЕ приказати у прозорима.\n"
 "Можете користити ову могућност за смањивање прозора списка, али је теже да се пронађе састанак.\n"
 "(Узбуне ће и даље радити.)\n"
-"(Постоји недокументована одредница тако да можете променити подразумевано ограничење од 8.)"
+"(Постоји незабележена одредница тако да можете променити подразумевано ограничење од 8.)"
 
 #. note
 #: src/orage-appointment-window.c:3766
@@ -1172,7 +1172,7 @@ msgstr "Изаберите ово ако желите да обавештење 
 
 #: src/orage-appointment-window.c:4041
 msgid "0 = system default expiration time"
-msgstr "0 = основно системско време истека"
+msgstr "0 = основно време истека склопа"
 
 #: src/orage-appointment-window.c:4049
 msgid "seconds"
@@ -1185,7 +1185,7 @@ msgstr "Поступак"
 
 #: src/orage-appointment-window.c:4065
 msgid "Select this if you want procedure or script alarm"
-msgstr "Изаберите ово ако желите поступак или аларм скрипте"
+msgstr "Изаберите ово ако желите поступак или аларм скрипата"
 
 #: src/orage-appointment-window.c:4075
 msgid ""
@@ -1199,7 +1199,7 @@ msgid ""
 "\t<&ET> appointment end time"
 msgstr ""
 "Морате сами да унесете све знаке избегавања.\n"
-"Ова ниска је заправо дата конзоли на обраду.\n"
+"Ова ниска је заправо дата шкољци на обраду.\n"
 "Следеће посебне наредбе бивају замењене за време покретања:\n"
 "\t<&T>  наслов састанка\n"
 "\t<&D>  опис састанка\n"
@@ -1213,11 +1213,11 @@ msgstr "Испробајте овај аларм његовим издизање
 
 #: src/orage-appointment-window.c:4103
 msgid "<b>Default alarm</b>"
-msgstr "<b>Основни аларм</b>"
+msgstr "<b>Подразумевани аларм</b>"
 
 #: src/orage-appointment-window.c:4117
 msgid "Store current settings as default alarm"
-msgstr "Сачувај текућа подешавања као основни аларм"
+msgstr "Сачувај текуће поставке као подразумевани аларм"
 
 #: src/orage-appointment-window.c:4119
 msgid "_Revert"
@@ -1225,7 +1225,7 @@ msgstr "_Поништи"
 
 #: src/orage-appointment-window.c:4127
 msgid "Set current settings from default alarm"
-msgstr "Постави текућа подешавања из основног аларма"
+msgstr "Постави текуће поставке из подразумеваног аларма"
 
 #: src/orage-appointment-window.c:4192
 msgid "None"
@@ -1263,7 +1263,7 @@ msgstr "Учесталост"
 #. ****************************** Limit ***********************************
 #: src/orage-appointment-window.c:4256
 msgid "Limit"
-msgstr "Ограничи"
+msgstr "Граница"
 
 #. ****************************** TODO base (only for TODOs) **************
 #: src/orage-appointment-window.c:4262
@@ -1287,76 +1287,76 @@ msgstr ""
 
 #: src/orage-appointment-window.c:4306
 msgid "Add excluded date (-)"
-msgstr "Додај искључени датум (+)"
+msgstr "Додај изузети датум (-)"
 
 #: src/orage-appointment-window.c:4308
 msgid "Excluded days are full days where this appointment is not happening"
-msgstr "Искључени дани су цели дани у којима се овај састанак не дешава"
+msgstr "Изузети дани су цели дани у којима се овај састанак не дешава"
 
 #: src/orage-appointment-window.c:4315
 msgid "Add included time (+)"
-msgstr "Додај укључено време (-)"
+msgstr "Додај обухваћено време (+)"
 
 #: src/orage-appointment-window.c:4317
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time"
 msgstr ""
-"Укључена времена имају исту временску област као почетно време, али могу "
+"Обухваћена времена имају исту временску област као почетно време, али могу "
 "имати различито време"
 
 #. calendars showing the action days
 #: src/orage-appointment-window.c:4336
 msgid "Action dates"
-msgstr "Датуми радње"
+msgstr "Датуми дејства"
 
 #: src/orage-import.c:105
 msgid "<b>Summary</b>"
-msgstr ""
+msgstr "<b>Сажетак</b>"
 
 #: src/orage-import.c:116
 msgid "<b>Type</b>"
-msgstr ""
+msgstr "<b>Врста</b>"
 
 #: src/orage-import.c:131
 msgid "<b>Location</b>"
-msgstr ""
+msgstr "<b>Положај</b>"
 
 #: src/orage-import.c:146
 msgid "<b>URL</b>"
-msgstr ""
+msgstr "<b>Адреса</b>"
 
 #: src/orage-import.c:165
 msgid "<b>All-day</b>"
-msgstr ""
+msgstr "<b>Целодневно</b>"
 
 #: src/orage-import.c:180
 msgid "<b>From</b>"
-msgstr ""
+msgstr "<b>Од</b>"
 
 #: src/orage-import.c:195
 msgid "<b>To</b>"
-msgstr ""
+msgstr "<b>До</b>"
 
 #: src/orage-import.c:209
 msgid "<b>Recurring</b>"
-msgstr ""
+msgstr "<b>Понављање</b>"
 
 #: src/orage-import.c:212
 msgid "Yes"
-msgstr ""
+msgstr "Да"
 
 #: src/orage-import.c:212
 msgid "No"
-msgstr ""
+msgstr "Не"
 
 #: src/orage-import.c:258
 msgid "Import calendar file"
-msgstr ""
+msgstr "Увези датотеку календара"
 
 #: src/orage-import.c:260
 msgid "_Import"
-msgstr ""
+msgstr "_Увези"
 
 #: src/orage-import.c:269
 msgid "_Cancel"
@@ -1424,7 +1424,7 @@ msgstr "Број дана за приказ"
 
 #: src/orage-week-window.c:1210
 msgid "Orage - day view"
-msgstr "Ораже — преглед дана"
+msgstr "Ораж - преглед дана"
 
 #: src/orage-window.c:292
 msgid "_Exchange data"
@@ -1437,11 +1437,11 @@ msgstr "_Измени"
 
 #: src/orage-window.c:312
 msgid "View selected _date"
-msgstr "Прикажи изабрани _датум"
+msgstr "Прегледај изабрани _датум"
 
 #: src/orage-window.c:315
 msgid "View selected _week"
-msgstr "Прикажи изабрану _седмицу"
+msgstr "Прегледај изабрану _седмицу"
 
 #: src/orage-window.c:320
 msgid "Select _Today"
@@ -1470,7 +1470,7 @@ msgid ""
 "%s"
 msgstr ""
 "\n"
-" Примедба:\n"
+" Белешка:\n"
 "%s"
 
 #: src/orage-window.c:462
@@ -1513,7 +1513,7 @@ msgstr "<b>Догађаји за %s:</b>"
 #: src/orage-window.c:603
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
-msgstr "<b>Догађаји за %s — %s:</b>"
+msgstr "<b>Догађаји за %s - %s:</b>"
 
 #: src/parameters.c:686
 msgid "Remove selected synchronization task."
@@ -1555,7 +1555,7 @@ msgstr "Наредба звука"
 
 #: src/parameters.c:810
 msgid "This command is given to shell to make sound in alarms."
-msgstr "Ова наредба се даје конзоли за стварање звука у алармима."
+msgstr "Ова наредба се даје шкољци за стварање звука у алармима."
 
 #: src/parameters.c:841
 msgid "Calendar window"
@@ -1571,7 +1571,7 @@ msgstr "Прикажи ивице"
 
 #: src/parameters.c:860
 msgid "Show menu"
-msgstr "Прикажи избор"
+msgstr "Прикажи изборник"
 
 #: src/parameters.c:868
 msgid "Show day names"
@@ -1611,19 +1611,19 @@ msgstr "Прикажи на свим радним површима"
 
 #: src/parameters.c:948
 msgid "Keep on top"
-msgstr "Задржи изнад"
+msgstr "Задржавај изнад"
 
 #: src/parameters.c:956
 msgid "Show in taskbar"
-msgstr "Прикажи на траци алата"
+msgstr "Приказуј на траци прибора"
 
 #: src/parameters.c:961
 msgid "Show in pager"
-msgstr "Прикажи у страничнику"
+msgstr "Приказуј у страничнику"
 
 #: src/parameters.c:969
 msgid "Show in systray"
-msgstr "Прикажи у системској фиоци"
+msgstr "Приказуј у ладици склопа"
 
 #: src/parameters.c:997
 msgid "Calendar start"
@@ -1631,7 +1631,7 @@ msgstr "Почетак календара"
 
 #: src/parameters.c:1003
 msgid "Show"
-msgstr "Прикажи"
+msgstr "Приказуј"
 
 #: src/parameters.c:1019
 msgid "Hide"
@@ -1667,7 +1667,7 @@ msgstr "Списак догађаја"
 
 #: src/parameters.c:1164
 msgid "Extra settings"
-msgstr "Додатна подешавања"
+msgstr "Додатне поставке"
 
 #: src/parameters.c:1171
 msgid "Event list window"
@@ -1682,8 +1682,8 @@ msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
 msgstr ""
-"Ово је само основна вредност, можете да је измените у садашњем прозору "
-"списка догађаја."
+"Ово је само подразумевана вредност, можете да је измените у садашњем прозору"
+" списка догађаја."
 
 #: src/parameters.c:1196
 msgid "Show only first repeating event"
@@ -1710,9 +1710,9 @@ msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
 msgstr ""
-"Користите овај одбројавач ако Ораж има проблема да се исправно пробуди након"
-" обуставе или замрзавања. (На пример иконица фиоке није освежена или аларми "
-"не раде.)"
+"Користите овај одбројавач ако ли Ораж има потешкоћа да се исправно пробуди "
+"након обуставе или замрзавања. (На пример сличица ладице није освежена или "
+"аларми не раде.)"
 
 #: src/parameters.c:1285
 msgid "Foreign file default visual alarm"
@@ -1770,7 +1770,7 @@ msgstr "Тишина"
 
 #: src/reminder.c:565
 msgid "Reminder - Orage"
-msgstr "Подсетник — Ораж"
+msgstr "Подсетник- Ораж"
 
 #: src/reminder.c:648
 msgid "_Stop"
@@ -1786,7 +1786,7 @@ msgstr "Подсети ме опет након наведеног времен�
 
 #: src/reminder.c:935
 msgid "Next active alarms:"
-msgstr "Следећи радни аларми:"
+msgstr "Следећи укључени аларми:"
 
 #: src/reminder.c:974
 #, c-format
@@ -1803,7 +1803,7 @@ msgid ""
 "No active alarms found"
 msgstr ""
 "\n"
-"Нису пронађени активни аларми"
+"Нису пронађени укључени аларми"
 
 #: src/timezone_names.c:31
 msgid "Africa"
