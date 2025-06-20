@@ -3673,7 +3673,7 @@ static void build_general_page (OrageAppointmentWindow *apptw)
             gtk_check_button_new_with_mnemonic(_("Duration"));
     gtk_grid_attach_next_to (GTK_GRID (apptw->Dur_hbox),
             apptw->Dur_checkbutton, NULL, GTK_POS_RIGHT, 1, 1);
-    apptw->Dur_spin_dd = gtk_spin_button_new_with_range(0, 9999, 1);
+    apptw->Dur_spin_dd = gtk_spin_button_new_with_range (0, 9999, 1);
     apptw->Dur_spin_dd_label = gtk_label_new(_("days"));
     apptw->Dur_spin_hh = gtk_spin_button_new_with_range(0, 23, 1);
     apptw->Dur_spin_hh_label = gtk_label_new(_("hours"));
