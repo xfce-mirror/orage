@@ -67,17 +67,13 @@ struct _OrageWindowNext
     GtkAccelGroup *accel_group;
     GtkWidget *menubar;
 
-    GtkWidget *main_box;
     GtkWidget *file_menu;
     GtkWidget *file_menu_label;
     GtkWidget *file_menu_new;
     GtkWidget *file_menu_close;
     GtkWidget *file_menu_quit;
     GtkWidget *main_view;
-    GtkWidget *stack_views;
     GtkWidget *month_view;
-    GtkWidget *year_view;
-    GDateTime *date;
 };
 
 static void orage_window_next_interface_init (OrageWindowInterface *interface);
@@ -350,11 +346,15 @@ static void orage_window_next_add_menubar (OrageWindowNext *self)
 
 static void orage_window_next_init (OrageWindowNext *self)
 {
+    GtkStack *stack;
+    GtkWidget *switcher;
+    GtkWidget *spacer_left;
+    GtkWidget *spacer_right;
+    GtkBox *switcher_box;
+    GtkBox *main_box;
     const size_t n_elements = G_N_ELEMENTS (action_entries);
 
     self->accel_group = gtk_accel_group_new ();
-    self->date = g_date_time_new_now_utc ();
-    self->main_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 2);
 
     xfce_gtk_accel_map_add_entries (action_entries, n_elements);
     xfce_gtk_accel_group_connect_action_entries (self->accel_group,
@@ -363,16 +363,42 @@ static void orage_window_next_init (OrageWindowNext *self)
 
     gtk_window_add_accel_group (GTK_WINDOW (self), self->accel_group);
 
-    gtk_container_add (GTK_CONTAINER (self), self->main_box);
+    main_box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_VERTICAL, 2));
+    gtk_container_add (GTK_CONTAINER (self), GTK_WIDGET (main_box));
 
     orage_window_next_add_menubar (self);
-    gtk_box_pack_start (GTK_BOX (self->main_box), self->menubar, FALSE, FALSE, 0);
+    gtk_box_pack_start (main_box, self->menubar, FALSE, FALSE, 0);
 
-    self->stack_views = gtk_stack_new ();
+    switcher_box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0));
+    spacer_left = gtk_label_new (NULL);
+    switcher = gtk_stack_switcher_new ();
+    spacer_right = gtk_label_new (NULL);
+    gtk_widget_set_hexpand (spacer_left, TRUE);
+    gtk_widget_set_hexpand (spacer_right, TRUE);
+    gtk_box_pack_start (switcher_box, spacer_left, TRUE, TRUE, 0);
+    gtk_box_pack_start (switcher_box, switcher, FALSE, FALSE, 0);
+    gtk_box_pack_start (switcher_box, spacer_right, TRUE, TRUE, 0);
+
+    gtk_box_pack_start (main_box, GTK_WIDGET (switcher_box), FALSE, FALSE, 0);
+    stack = GTK_STACK (gtk_stack_new ());
+    gtk_stack_set_transition_type (stack,
+                                   GTK_STACK_TRANSITION_TYPE_SLIDE_LEFT_RIGHT);
+    gtk_stack_switcher_set_stack (GTK_STACK_SWITCHER (switcher), stack);
+    gtk_box_pack_start (main_box, GTK_WIDGET (stack), TRUE, TRUE, 0);
+
     self->month_view = orage_month_view_new ();
-    gtk_box_pack_start (GTK_BOX (self->main_box), self->month_view, FALSE, FALSE, 0);
+    gtk_stack_add_titled (stack,
+                          gtk_label_new ("TODO: Day view"), "day", _("Day"));
+    gtk_stack_add_titled (stack,
+                          gtk_label_new ("TODO: Week view"), "week", _("Week"));
+    gtk_stack_add_titled (stack,
+                          self->month_view, "month", _("Month"));
+    gtk_stack_add_titled (stack,
+                          gtk_label_new ("TODO: Year view"), "year", _("Year"));
 
-    gtk_widget_show_all (self->main_box);
+    gtk_widget_show_all (GTK_WIDGET (main_box));
+
+    gtk_stack_set_visible_child_name (stack, "month");
 }
 
 static void orage_window_next_class_init (G_GNUC_UNUSED OrageWindowNextClass *klass)
