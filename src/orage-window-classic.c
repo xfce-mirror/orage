@@ -203,7 +203,7 @@ static void mHelp_about_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
     orage_show_about (user_data);
 }
 
-static void orage_window_classic_post_init_cb (OrageWindowClassic *window)
+static void on_post_init (OrageWindowClassic *window)
 {
     union
     {
@@ -213,7 +213,7 @@ static void orage_window_classic_post_init_cb (OrageWindowClassic *window)
     func_ptr;
     guint rc;
 
-    func_ptr.callback = (GCallback)orage_window_classic_post_init_cb;
+    func_ptr.callback = (GCallback)on_post_init;
     rc = g_signal_handlers_disconnect_by_func (window, func_ptr.ptr, NULL);
 
     g_debug ("%s: %d handlers disconnected", G_STRFUNC, rc);
@@ -790,7 +790,7 @@ static void orage_window_classic_init (OrageWindowClassic *self)
 
     /* Signals */
     g_signal_connect (self, "notify::application",
-                      G_CALLBACK (orage_window_classic_post_init_cb), NULL);
+                      G_CALLBACK (on_post_init), NULL);
     g_signal_connect (self->mCalendar, "day_selected_double_click",
                       G_CALLBACK (mCalendar_day_selected_double_click_cb),
                       NULL);

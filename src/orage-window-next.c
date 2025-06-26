@@ -79,6 +79,7 @@ struct _OrageWindowNext
 
 static void orage_window_next_interface_init (OrageWindowInterface *interface);
 static GDateTime *orage_window_next_get_selected_date (OrageWindowNext *window);
+static void orage_window_next_restore_geometry (OrageWindowNext *window);
 
 static void on_new_activated (OrageWindowNext *window);
 
@@ -245,6 +246,37 @@ static void on_back_clicked (G_GNUC_UNUSED GtkButton *button,
         g_debug ("%s: '%s' back is not yet implemented", 
                  G_STRFUNC, visible_name);
     }
+}
+
+static void on_post_init (OrageWindowNext *window)
+{
+    union
+    {
+        gpointer ptr;
+        GCallback callback;
+    }
+    func_ptr;
+    guint rc;
+
+    func_ptr.callback = (GCallback)on_post_init;
+    rc = g_signal_handlers_disconnect_by_func (window, func_ptr.ptr, NULL);
+
+    g_debug ("%s: %d handlers disconnected", G_STRFUNC, rc);
+
+    orage_window_next_restore_geometry (window);
+}
+
+static void orage_window_next_restore_geometry (OrageWindowNext *window)
+{
+    GtkWindow *gwin = GTK_WINDOW (window);
+
+    gtk_window_set_position (gwin, GTK_WIN_POS_NONE);
+
+    if (g_par.size_x || g_par.size_y)
+        gtk_window_set_default_size (gwin, g_par.size_x, g_par.size_y);
+
+    if (g_par.pos_x || g_par.pos_y)
+        gtk_window_move (gwin, g_par.pos_x, g_par.pos_y);
 }
 
 static void menu_clean (GtkMenu *menu)
@@ -456,8 +488,13 @@ static void orage_window_next_init (OrageWindowNext *self)
 
     gtk_stack_set_visible_child_name (self->stack_view, "month");
 
-    g_signal_connect (back_button, "clicked", G_CALLBACK (on_back_clicked), self);
-    g_signal_connect (next_button, "clicked", G_CALLBACK (on_next_clicked), self);
+    g_signal_connect (back_button, "clicked", G_CALLBACK (on_back_clicked),
+                      self);
+    g_signal_connect (next_button, "clicked", G_CALLBACK (on_next_clicked),
+                      self);
+
+    g_signal_connect (self, "notify::application",
+                      G_CALLBACK (on_post_init), NULL);
 }
 
 static void orage_window_next_class_init (G_GNUC_UNUSED OrageWindowNextClass *klass)
