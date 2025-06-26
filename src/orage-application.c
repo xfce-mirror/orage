@@ -195,23 +195,6 @@ static void load_sync_conf (OrageTaskRunner *sync)
 }
 #endif
 
-static void raise_window (OrageApplication *self)
-{
-    GtkWindow *window = GTK_WINDOW (self->window);
-
-    if (g_par.pos_x || g_par.pos_y)
-        gtk_window_move (window, g_par.pos_x, g_par.pos_y);
-
-    if (g_par.select_always_today)
-        orage_select_today (orage_window_get_calendar (ORAGE_WINDOW (window)));
-
-    if (g_par.set_stick)
-        gtk_window_stick (window);
-
-    gtk_window_set_keep_above (window, g_par.set_ontop);
-    gtk_window_present (window);
-}
-
 static gboolean is_readable (GFile *file)
 {
     gboolean result;
@@ -323,7 +306,7 @@ static void orage_application_activate (GApplication *app)
             hide_main_window = TRUE;
         }
         else if (hide_main_window == FALSE)
-            raise_window (self);
+            orage_window_raise (ORAGE_WINDOW (self->window));
 
         window = self->window;
     }
