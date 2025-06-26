@@ -29,17 +29,9 @@ struct _OrageMonthView
     GtkBox parent;
 
     GtkWidget *main_box;
-
-    GtkWidget *header_buttons;
-    GtkWidget *button_next;
-    GtkWidget *button_prev;
-
     GtkWidget *month_grid;
-
     GtkWidget *label_weekday[7];
-
     GtkWidget *month_cell[6][7];
-
     GtkWidget *header;
 
     GDateTime *date;
@@ -70,21 +62,6 @@ static void update_days_delay (OrageMonthView *self, gint month_different)
     self->days_delay = (g_date_get_weekday (gd) - self->first_weekday + 7) % 7;
 
     g_date_free (gd);
-}
-
-static void next_button_clicked (OrageMonthView *self, GtkWidget *widget)
-{
-    update_days_delay (self, 1);
-
-    self->date = g_date_time_add_months (self->date, 1);
-    update_month_cells (self);
-}
-
-static void prev_button_clicked (OrageMonthView *self, GtkWidget *widget)
-{
-    update_days_delay (self, -1);
-    self->date = g_date_time_add_months (self->date, -1);
-    update_month_cells (self);
 }
 
 static void setup_month_grid (OrageMonthView *self)
@@ -139,28 +116,9 @@ static void orage_month_view_init (OrageMonthView *self)
     update_days_delay (self, -1);
 
     self->main_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 2);
-
-    self->header_buttons = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
-
-    self->button_prev = gtk_button_new_with_label ("Prev");
-    g_signal_connect_swapped (self->button_prev, "clicked",
-                              G_CALLBACK (prev_button_clicked), self);
-
-    gtk_box_pack_start (GTK_BOX (self->header_buttons), self->button_prev, FALSE,
-                        FALSE, 0);
-
-    self->button_next = gtk_button_new_with_label ("Next");
-    g_signal_connect_swapped (self->button_next, "clicked",
-                              G_CALLBACK (next_button_clicked), self);
-
-    gtk_box_pack_start (GTK_BOX (self->header_buttons), self->button_next, FALSE,
-                        FALSE, 0);
-
-    gtk_box_pack_start (GTK_BOX (self->main_box), self->header_buttons, FALSE,
-                        FALSE, 0);
     self->month_grid = gtk_grid_new ();
 
-    for (int i = 0; i < 7; i++)
+    for (guint i = 0; i < 7; i++)
     {
         self->label_weekday[i] = gtk_label_new_with_mnemonic (day_name[i]);
         gtk_grid_attach (GTK_GRID (self->month_grid), self->label_weekday[i], i,
@@ -179,14 +137,25 @@ static void orage_month_view_init (OrageMonthView *self)
 
 static void orage_month_view_class_init (OrageMonthViewClass *klass)
 {
-    GObjectClass *object_class;
-    GtkWidgetClass *widget_class;
-
-    object_class = G_OBJECT_CLASS (klass);
-    widget_class = GTK_WIDGET_CLASS (klass);
 }
 
 GtkWidget *orage_month_view_new (void)
 {
     return g_object_new (ORAGE_MONTH_VIEW_TYPE, NULL);
+}
+
+void orage_month_view_next_month (OrageMonthView *month_view)
+{
+    update_days_delay (month_view, 1);
+
+    month_view->date = g_date_time_add_months (month_view->date, 1);
+    update_month_cells (month_view);
+}
+
+void orage_month_view_previous_month (OrageMonthView *month_view)
+{
+    update_days_delay (month_view, -1);
+
+    month_view->date = g_date_time_add_months (month_view->date, -1);
+    update_month_cells (month_view);
 }

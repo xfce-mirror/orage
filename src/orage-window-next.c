@@ -72,8 +72,9 @@ struct _OrageWindowNext
     GtkWidget *file_menu_new;
     GtkWidget *file_menu_close;
     GtkWidget *file_menu_quit;
+    GtkStack *stack_view;
     GtkWidget *main_view;
-    GtkWidget *month_view;
+    OrageMonthView *month_view;
 };
 
 static void orage_window_next_interface_init (OrageWindowInterface *interface);
@@ -216,6 +217,36 @@ static void on_about_activated (OrageWindowNext *window)
     orage_show_about (GTK_WINDOW (window));
 }
 
+static void on_next_clicked (G_GNUC_UNUSED GtkButton *button,
+                             gpointer user_data)
+{
+    OrageWindowNext *nw = ORAGE_WINDOW_NEXT (user_data);
+    const gchar *visible_name = gtk_stack_get_visible_child_name (nw->stack_view);
+
+    if (g_strcmp0 ("month", visible_name) == 0)
+        orage_month_view_next_month (nw->month_view);
+    else
+    {
+        g_debug ("%s: '%s' next is not yet implemented",
+                 G_STRFUNC, visible_name);
+    }
+}
+
+static void on_back_clicked (G_GNUC_UNUSED GtkButton *button,
+                             gpointer user_data)
+{
+    OrageWindowNext *nw = ORAGE_WINDOW_NEXT (user_data);
+    const gchar *visible_name = gtk_stack_get_visible_child_name (nw->stack_view);
+
+    if (g_strcmp0 ("month", visible_name) == 0)
+        orage_month_view_previous_month (nw->month_view);
+    else
+    {
+        g_debug ("%s: '%s' back is not yet implemented", 
+                 G_STRFUNC, visible_name);
+    }
+}
+
 static void menu_clean (GtkMenu *menu)
 {
     GList *children, *lp;
@@ -346,10 +377,11 @@ static void orage_window_next_add_menubar (OrageWindowNext *self)
 
 static void orage_window_next_init (OrageWindowNext *self)
 {
-    GtkStack *stack;
     GtkWidget *switcher;
     GtkWidget *spacer_left;
     GtkWidget *spacer_right;
+    GtkWidget *back_button;
+    GtkWidget *next_button;
     GtkBox *switcher_box;
     GtkBox *main_box;
     const size_t n_elements = G_N_ELEMENTS (action_entries);
@@ -370,35 +402,62 @@ static void orage_window_next_init (OrageWindowNext *self)
     gtk_box_pack_start (main_box, self->menubar, FALSE, FALSE, 0);
 
     switcher_box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0));
+
+    /* Previous button. */
+    back_button = gtk_button_new_from_icon_name ("go-previous",
+                                                 GTK_ICON_SIZE_BUTTON);
+    gtk_widget_set_tooltip_text (back_button, _("Previous"));
+    gtk_box_pack_start (switcher_box, back_button, FALSE, FALSE, 4);
+
+    /* Left spacer. */
     spacer_left = gtk_label_new (NULL);
-    switcher = gtk_stack_switcher_new ();
-    spacer_right = gtk_label_new (NULL);
     gtk_widget_set_hexpand (spacer_left, TRUE);
-    gtk_widget_set_hexpand (spacer_right, TRUE);
     gtk_box_pack_start (switcher_box, spacer_left, TRUE, TRUE, 0);
+
+    /* Switcher. */
+    switcher = gtk_stack_switcher_new ();
     gtk_box_pack_start (switcher_box, switcher, FALSE, FALSE, 0);
+
+    /* Right spacer. */
+    spacer_right = gtk_label_new (NULL);
+    gtk_widget_set_hexpand (spacer_right, TRUE);
     gtk_box_pack_start (switcher_box, spacer_right, TRUE, TRUE, 0);
 
-    gtk_box_pack_start (main_box, GTK_WIDGET (switcher_box), FALSE, FALSE, 0);
-    stack = GTK_STACK (gtk_stack_new ());
-    gtk_stack_set_transition_type (stack,
-                                   GTK_STACK_TRANSITION_TYPE_SLIDE_LEFT_RIGHT);
-    gtk_stack_switcher_set_stack (GTK_STACK_SWITCHER (switcher), stack);
-    gtk_box_pack_start (main_box, GTK_WIDGET (stack), TRUE, TRUE, 0);
+    /* Next button. */
+    next_button = gtk_button_new_from_icon_name ("go-next",
+                                                 GTK_ICON_SIZE_BUTTON);
+    gtk_widget_set_tooltip_text (next_button, _("Next"));
+    gtk_box_pack_start (switcher_box, next_button, FALSE, FALSE, 4);
 
-    self->month_view = orage_month_view_new ();
-    gtk_stack_add_titled (stack,
+    gtk_box_pack_start (main_box, GTK_WIDGET (switcher_box), FALSE, FALSE, 0);
+
+    self->stack_view = GTK_STACK (gtk_stack_new ());
+    gtk_stack_set_transition_type (self->stack_view,
+                                   GTK_STACK_TRANSITION_TYPE_SLIDE_LEFT_RIGHT);
+    gtk_stack_switcher_set_stack (GTK_STACK_SWITCHER (switcher),
+                                  self->stack_view);
+    gtk_box_pack_start (main_box, GTK_WIDGET (self->stack_view), TRUE, TRUE, 0);
+
+    self->month_view = ORAGE_MONTH_VIEW (orage_month_view_new ());
+#if 0
+    gtk_stack_add_titled (self->stack_view,
                           gtk_label_new ("TODO: Day view"), "day", _("Day"));
-    gtk_stack_add_titled (stack,
+    gtk_stack_add_titled (self->stack_view,
                           gtk_label_new ("TODO: Week view"), "week", _("Week"));
-    gtk_stack_add_titled (stack,
-                          self->month_view, "month", _("Month"));
-    gtk_stack_add_titled (stack,
+#endif
+    gtk_stack_add_titled (self->stack_view,
+                          GTK_WIDGET (self->month_view), "month", _("Month"));
+#if 0
+    gtk_stack_add_titled (self->stack_view,
                           gtk_label_new ("TODO: Year view"), "year", _("Year"));
+#endif
 
     gtk_widget_show_all (GTK_WIDGET (main_box));
 
-    gtk_stack_set_visible_child_name (stack, "month");
+    gtk_stack_set_visible_child_name (self->stack_view, "month");
+
+    g_signal_connect (back_button, "clicked", G_CALLBACK (on_back_clicked), self);
+    g_signal_connect (next_button, "clicked", G_CALLBACK (on_next_clicked), self);
 }
 
 static void orage_window_next_class_init (G_GNUC_UNUSED OrageWindowNextClass *klass)
