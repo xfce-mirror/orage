@@ -32,6 +32,7 @@ struct _OrageMonthView
     GtkWidget *main_box;
     GtkWidget *month_grid;
     GtkWidget *label_weekday[7];
+    GtkWidget *label_week_nr[6];
     GtkWidget *month_cell[6][7];
     GtkWidget *header;
 
@@ -117,6 +118,30 @@ static void update_month_cells (OrageMonthView *self)
     }
 }
 
+static void update_week_nr_cells (OrageMonthView *self)
+{
+    gchar *cell_text;
+    guint row;
+    GDateTime *gdt;
+    GDateTime *cell_date;
+    GtkLabel *cell;
+
+    gdt = g_date_time_new_local (g_date_time_get_year (self->date),
+                                 g_date_time_get_month (self->date), 1, 0, 0, 0);
+
+    for (row = 0; row < 6; row++)
+    {
+        cell = GTK_LABEL (self->label_week_nr[row]);
+        cell_date = g_date_time_add_weeks (gdt, row);
+        cell_text = g_date_time_format (cell_date, "%V");
+        gtk_label_set_text (cell, cell_text);
+        g_free (cell_text);
+        g_date_time_unref (cell_date);
+    }
+
+    g_date_time_unref (gdt);
+}
+
 static void orage_month_view_class_init (OrageMonthViewClass *klass)
 {
     load_css ();
@@ -137,27 +162,21 @@ static void orage_month_view_init (OrageMonthView *self)
 
     self->main_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 2);
     self->month_grid = gtk_grid_new ();
-    gtk_widget_set_hexpand (self->month_grid, TRUE);
-    gtk_widget_set_vexpand (self->month_grid, TRUE);
-    gtk_widget_set_halign (self->month_grid, GTK_ALIGN_FILL);
-    gtk_widget_set_valign (self->month_grid, GTK_ALIGN_FILL);
+    g_object_set (self->month_grid, "hexpand", TRUE,
+                                    "vexpand", TRUE,
+                                    "halign", GTK_ALIGN_FILL,
+                                    "valign", GTK_ALIGN_FILL,
+                                    NULL);
 
     /* Setup title row. */
-    cell = gtk_label_new (NULL);
-    gtk_widget_set_hexpand (cell, FALSE);
-    gtk_widget_set_vexpand (cell, FALSE);
-    gtk_widget_set_halign (cell, GTK_ALIGN_FILL);
-    gtk_widget_set_valign (cell, GTK_ALIGN_FILL);
+    cell = gtk_label_new ("Week");
     gtk_grid_attach (GTK_GRID (self->month_grid), cell, 0, 0, 1, 1);
     gtk_style_context_add_class (gtk_widget_get_style_context (cell), "cell");
 
     for (col = 0; col < 7; col++)
     {
         cell = gtk_label_new_with_mnemonic (day_name[col]);
-        gtk_widget_set_hexpand (cell, TRUE);
-        gtk_widget_set_vexpand (cell, FALSE);
-        gtk_widget_set_halign (cell, GTK_ALIGN_FILL);
-        gtk_widget_set_valign (cell, GTK_ALIGN_FILL);
+        g_object_set (cell, "hexpand", TRUE, "halign", GTK_ALIGN_FILL, NULL);
         gtk_grid_attach (GTK_GRID (self->month_grid), cell, col + 1, 0, 1, 1);
         gtk_style_context_add_class (gtk_widget_get_style_context (cell), "cell");
         gtk_size_group_add_widget (date_group, cell);
@@ -167,32 +186,31 @@ static void orage_month_view_init (OrageMonthView *self)
     /* Setup date rows. */
     for (row = 0; row < 6; row++)
     {
+        /* Setup week numbers. */
         cell = gtk_label_new (NULL);
-        gtk_widget_set_hexpand (cell, FALSE);
-        gtk_widget_set_vexpand (cell, TRUE);
-        gtk_widget_set_halign (cell, GTK_ALIGN_FILL);
-        gtk_widget_set_valign (cell, GTK_ALIGN_FILL);
+        g_object_set (cell, "vexpand", TRUE, "valign", GTK_ALIGN_FILL, NULL);
         gtk_style_context_add_class (gtk_widget_get_style_context (cell), "cell");
-        gtk_grid_attach (GTK_GRID (self->month_grid), cell, 0, (row + 1),
-                             1, 1);
+        gtk_grid_attach (GTK_GRID (self->month_grid), cell, 0, row + 1, 1, 1);
+        self->label_week_nr[row] = cell;
 
         for (col = 1; col < 8; col++)
         {
             cell = orage_month_cell_new ();
-            gtk_widget_set_hexpand (cell, TRUE);
-            gtk_widget_set_vexpand (cell, TRUE);
-            gtk_widget_set_halign (cell, GTK_ALIGN_FILL);
-            gtk_widget_set_valign (cell, GTK_ALIGN_FILL);
-
+            g_object_set (cell, "hexpand", TRUE,
+                                "vexpand", TRUE,
+                                "halign", GTK_ALIGN_FILL,
+                                "valign", GTK_ALIGN_FILL,
+                                NULL);
             gtk_style_context_add_class (gtk_widget_get_style_context (cell), "cell");
             gtk_size_group_add_widget (date_group, cell);
-            gtk_grid_attach (GTK_GRID (self->month_grid), cell, col, (row + 1),
+            gtk_grid_attach (GTK_GRID (self->month_grid), cell, col, row + 1,
                              1, 1);
             self->month_cell[row][col - 1] = cell;
         }
     }
 
     update_month_cells (self);
+    update_week_nr_cells (self);
 
     gtk_box_pack_start (GTK_BOX (self->main_box), self->month_grid, TRUE, TRUE, 0);
     gtk_box_pack_start (GTK_BOX (&self->parent), self->main_box, TRUE, TRUE, 0);
@@ -208,6 +226,7 @@ void orage_month_view_next_month (OrageMonthView *month_view)
     update_days_delay (month_view, 1);
 
     month_view->date = g_date_time_add_months (month_view->date, 1);
+    update_week_nr_cells (month_view);
     update_month_cells (month_view);
 }
 
@@ -216,5 +235,6 @@ void orage_month_view_previous_month (OrageMonthView *month_view)
     update_days_delay (month_view, -1);
 
     month_view->date = g_date_time_add_months (month_view->date, -1);
+    update_week_nr_cells (month_view);
     update_month_cells (month_view);
 }
