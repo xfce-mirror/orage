@@ -573,7 +573,7 @@ GtkCalendar *orage_window_next_get_calendar (OrageWindow *window)
 #if 0
     return GTK_CALENDAR (ORAGE_WINDOW_CLASSIC (window)->mCalendar);
 #else
-    g_debug ("TODO: %s", G_STRFUNC);
+    g_debug ("TODO: %s: this function create memory leak", G_STRFUNC);
     (void)window;
     return GTK_CALENDAR (gtk_calendar_new ());
 #endif
