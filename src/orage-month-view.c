@@ -42,6 +42,7 @@ struct _OrageMonthView
 
 static const gchar *day_name[] =
 {
+    NULL, /* Holde for week number */
     _("Sunday"), _("Monday"), _("Tuesday"), _("Wednesday"), _("Thursday"),
     _("Friday"), _("Saturday")
 };
@@ -74,7 +75,7 @@ static void setup_month_grid (OrageMonthView *self)
 
     for (row = 0; row < 6; row++)
     {
-        for (col = 0; col < 7; col++)
+        for (col = 1; col < 8; col++)
         {
             GtkWidget *cell;
 
@@ -86,7 +87,7 @@ static void setup_month_grid (OrageMonthView *self)
 
             gtk_grid_attach (GTK_GRID (self->month_grid), cell, col, (row + 1),
                              1, 1);
-            self->month_cell[row][col] = cell;
+            self->month_cell[row][col - 1] = cell;
         }
     }
 }
@@ -135,7 +136,7 @@ static void orage_month_view_init (OrageMonthView *self)
     gtk_widget_set_halign (self->month_grid, GTK_ALIGN_FILL);
     gtk_widget_set_valign (self->month_grid, GTK_ALIGN_FILL);
 
-    for (i = 0; i < 7; i++)
+    for (i = 0; i < 8; i++)
     {
         day_label = gtk_label_new_with_mnemonic (day_name[i]);
         gtk_widget_set_hexpand (day_label, TRUE);
