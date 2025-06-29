@@ -48,9 +48,9 @@ static const gchar *day_name[] =
     _("Friday"), _("Saturday")
 };
 
-static void update_month_cells (OrageMonthView *self);
+static void orage_month_view_update_month_cells (OrageMonthView *self);
 
-static void update_days_delay (OrageMonthView *self, gint month_different);
+static void orage_month_view_update_days_delay (OrageMonthView *self, gint month_different);
 
 G_DEFINE_TYPE (OrageMonthView, orage_month_view, GTK_TYPE_BOX)
 
@@ -82,7 +82,14 @@ static void load_css (void)
     g_object_unref (provider);
 }
 
-static void update_days_delay (OrageMonthView *self, gint month_different)
+static GDateTime *orage_month_view_get_first_day_of_month (OrageMonthView *self)
+{
+    return g_date_time_new_local (g_date_time_get_year (self->date),
+                                  g_date_time_get_month (self->date), 1, 0, 0, 0);
+}
+
+static void orage_month_view_update_days_delay (OrageMonthView *self,
+                                                const gint month_different)
 {
     gint year = g_date_time_get_year (self->date);
     gint month = g_date_time_get_month (self->date);
@@ -98,7 +105,7 @@ static void update_days_delay (OrageMonthView *self, gint month_different)
     g_date_free (gd);
 }
 
-static void update_month_label (OrageMonthView *self)
+static void orage_month_view_update_month_label (OrageMonthView *self)
 {
     const gchar *month_list[12] =
     {
@@ -108,6 +115,7 @@ static void update_month_label (OrageMonthView *self)
     };
 
     gint month;
+    gchar *text;
 
     /* We could use the following code:
      * "text = g_date_time_format(self->date, "%B")"
@@ -119,18 +127,25 @@ static void update_month_label (OrageMonthView *self)
 
     month = g_date_time_get_month (self->date);
 
-    gtk_label_set_text (GTK_LABEL (self->month_label), month_list[month - 1]);
+    /* TRANSLATORS: "%1$s %2$d" is used to display the month and year in the
+     * calendar month view page, in "month year" format (for example,
+     * "January 2025"). To use the "year month" format (e.g., "2025 January"),
+     * use "%2$d %1$s" instead.
+     */
+    text = g_strdup_printf (_("%1$s %2$d"), month_list[month - 1],
+                                            g_date_time_get_year (self->date));
+    gtk_label_set_text (GTK_LABEL (self->month_label), text);
+    g_free (text);
 }
 
-static void update_month_cells (OrageMonthView *self)
+static void orage_month_view_update_month_cells (OrageMonthView *self)
 {
     OrageMonthCell *cell;
     GDateTime *cell_date;
     guint row, col;
     GDateTime *gdt;
 
-    gdt = g_date_time_new_local (g_date_time_get_year (self->date),
-                                 g_date_time_get_month (self->date), 1, 0, 0, 0);
+    gdt = orage_month_view_get_first_day_of_month (self);
 
     for (row = 0; row < 6; row++)
     {
@@ -148,7 +163,7 @@ static void update_month_cells (OrageMonthView *self)
     g_date_time_unref (gdt);
 }
 
-static void update_week_nr_cells (OrageMonthView *self)
+static void orage_month_view_update_week_nr_cells (OrageMonthView *self)
 {
     gchar *cell_text;
     guint row;
@@ -156,8 +171,7 @@ static void update_week_nr_cells (OrageMonthView *self)
     GDateTime *cell_date;
     GtkLabel *cell;
 
-    gdt = g_date_time_new_local (g_date_time_get_year (self->date),
-                                 g_date_time_get_month (self->date), 1, 0, 0, 0);
+    gdt = orage_month_view_get_first_day_of_month (self);
 
     for (row = 0; row < 6; row++)
     {
@@ -186,7 +200,7 @@ static void orage_month_view_init (OrageMonthView *self)
 
     self->date = g_date_time_new_now_utc ();
     self->first_weekday = 0;
-    update_days_delay (self, -1);
+    orage_month_view_update_days_delay (self, -1);
 
     date_group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 
@@ -246,9 +260,9 @@ static void orage_month_view_init (OrageMonthView *self)
         }
     }
 
-    update_month_label (self);
-    update_month_cells (self);
-    update_week_nr_cells (self);
+    orage_month_view_update_month_label (self);
+    orage_month_view_update_month_cells (self);
+    orage_month_view_update_week_nr_cells (self);
 
     gtk_box_pack_start (GTK_BOX (self->main_box), self->month_grid, TRUE, TRUE, 0);
     gtk_box_pack_start (GTK_BOX (&self->parent), self->main_box, TRUE, TRUE, 0);
@@ -261,20 +275,20 @@ GtkWidget *orage_month_view_new (void)
 
 void orage_month_view_next_month (OrageMonthView *month_view)
 {
-    update_days_delay (month_view, 1);
+    orage_month_view_update_days_delay (month_view, 1);
 
     month_view->date = g_date_time_add_months (month_view->date, 1);
-    update_month_label (month_view);
-    update_week_nr_cells (month_view);
-    update_month_cells (month_view);
+    orage_month_view_update_month_label (month_view);
+    orage_month_view_update_week_nr_cells (month_view);
+    orage_month_view_update_month_cells (month_view);
 }
 
 void orage_month_view_previous_month (OrageMonthView *month_view)
 {
-    update_days_delay (month_view, -1);
+    orage_month_view_update_days_delay (month_view, -1);
 
     month_view->date = g_date_time_add_months (month_view->date, -1);
-    update_month_label (month_view);
-    update_week_nr_cells (month_view);
-    update_month_cells (month_view);
+    orage_month_view_update_month_label (month_view);
+    orage_month_view_update_week_nr_cells (month_view);
+    orage_month_view_update_month_cells (month_view);
 }
