@@ -31,6 +31,7 @@ struct _OrageMonthView
 
     GtkWidget *main_box;
     GtkWidget *month_grid;
+    GtkWidget *month_label;
     GtkWidget *label_weekday[7];
     GtkWidget *label_week_nr[6];
     GtkWidget *month_cell[6][7];
@@ -72,6 +73,9 @@ static void load_css (void)
                                     ".cell:hover {\n"
                                     "  background-color: #e0e0ff;\n"
                                     "  border-color: #333388;\n"
+                                    "}\n"
+                                    ".month-label {\n"
+                                    "  font-weight: bold;\n"
                                     "}\n",
                                     -1, NULL);
 
@@ -94,28 +98,54 @@ static void update_days_delay (OrageMonthView *self, gint month_different)
     g_date_free (gd);
 }
 
+static void update_month_label (OrageMonthView *self)
+{
+    const gchar *month_list[12] =
+    {
+        _("January"), _("February"), _("March"), _("April"), _("May"),
+        _("June"), _("July"), _("August"), _("September"), _("October"),
+        _("November"), _("December")
+    };
+
+    gint month;
+
+    /* We could use the following code:
+     * "text = g_date_time_format(self->date, "%B")"
+     * However, in some languages the month name starts with a lowercase letter,
+     * so we need to ensure that the first letter is uppercase. In this case,
+     * it's simpler to just use translated month names directly. Also, GLib's
+     * locale handling differs slightly from Orage's.
+     */
+
+    month = g_date_time_get_month (self->date);
+
+    gtk_label_set_text (GTK_LABEL (self->month_label), month_list[month - 1]);
+}
+
 static void update_month_cells (OrageMonthView *self)
 {
+    OrageMonthCell *cell;
+    GDateTime *cell_date;
     guint row, col;
-    g_autoptr (GDateTime) dt = NULL;
+    GDateTime *gdt;
 
-    dt = g_date_time_new_local (g_date_time_get_year (self->date),
-                                g_date_time_get_month (self->date), 1, 0, 0, 0);
+    gdt = g_date_time_new_local (g_date_time_get_year (self->date),
+                                 g_date_time_get_month (self->date), 1, 0, 0, 0);
 
     for (row = 0; row < 6; row++)
     {
         for (col = 0; col < 7; col++)
         {
-            g_autoptr (GDateTime) cell_date = NULL;
-            OrageMonthCell *cell;
-
             cell = ORAGE_MONTH_CELL (self->month_cell[row][col]);
 
-            cell_date = g_date_time_add_days (dt,
+            cell_date = g_date_time_add_days (gdt,
                                               row * 7 + col - self->days_delay);
             orage_month_cell_set_date (cell, cell_date);
+            g_date_time_unref (cell_date);
         }
     }
+
+    g_date_time_unref (gdt);
 }
 
 static void update_week_nr_cells (OrageMonthView *self)
@@ -161,6 +191,13 @@ static void orage_month_view_init (OrageMonthView *self)
     date_group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 
     self->main_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 2);
+
+    self->month_label = gtk_label_new (NULL);
+    gtk_style_context_add_class (
+        gtk_widget_get_style_context (self->month_label), "month-label");
+    gtk_box_pack_start (GTK_BOX (self->main_box), self->month_label, FALSE,
+                        TRUE, 0);
+
     self->month_grid = gtk_grid_new ();
     g_object_set (self->month_grid, "hexpand", TRUE,
                                     "vexpand", TRUE,
@@ -209,6 +246,7 @@ static void orage_month_view_init (OrageMonthView *self)
         }
     }
 
+    update_month_label (self);
     update_month_cells (self);
     update_week_nr_cells (self);
 
@@ -226,6 +264,7 @@ void orage_month_view_next_month (OrageMonthView *month_view)
     update_days_delay (month_view, 1);
 
     month_view->date = g_date_time_add_months (month_view->date, 1);
+    update_month_label (month_view);
     update_week_nr_cells (month_view);
     update_month_cells (month_view);
 }
@@ -235,6 +274,7 @@ void orage_month_view_previous_month (OrageMonthView *month_view)
     update_days_delay (month_view, -1);
 
     month_view->date = g_date_time_add_months (month_view->date, -1);
+    update_month_label (month_view);
     update_week_nr_cells (month_view);
     update_month_cells (month_view);
 }
