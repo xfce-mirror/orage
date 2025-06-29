@@ -27,9 +27,7 @@ struct _OrageMonthCell
     GtkBox parent;
 
     GtkWidget *main_box;
-
     GtkWidget *day_label;
-
     GDateTime *date;
 };
 
@@ -39,7 +37,7 @@ static void orage_month_cell_init (OrageMonthCell *self)
 {
     self->main_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 
-    self->day_label = gtk_label_new ("x");
+    self->day_label = gtk_label_new (NULL);
 
     gtk_box_pack_start (GTK_BOX (self->main_box), self->day_label, FALSE, FALSE,
                         0);
@@ -48,7 +46,8 @@ static void orage_month_cell_init (OrageMonthCell *self)
                         0);
 }
 
-static void orage_month_cell_class_init (OrageMonthCellClass *klass)
+static void orage_month_cell_class_init (
+    G_GNUC_UNUSED OrageMonthCellClass *klass)
 {
 }
 
@@ -59,11 +58,14 @@ GtkWidget *orage_month_cell_new (void)
 
 void orage_month_cell_set_date (OrageMonthCell *self, GDateTime *date)
 {
-    g_autofree gchar *text = NULL;
+    gchar *text;
 
-    if (self->date && date
-        && orage_date_time_compare_date (self->date, date) == 0)
+    if (self->date &&
+        date &&
+        orage_date_time_compare_date (self->date, date) == 0)
+    {
         return;
+    }
 
     orage_clear_date_time (&self->date);
     self->date = g_date_time_ref (date);
@@ -71,4 +73,6 @@ void orage_month_cell_set_date (OrageMonthCell *self, GDateTime *date)
     text = g_strdup_printf ("%d", g_date_time_get_day_of_month (date));
 
     gtk_label_set_text (GTK_LABEL (self->day_label), text);
+
+    g_free (text);
 }
