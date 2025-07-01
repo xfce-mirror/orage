@@ -64,6 +64,8 @@ struct _OrageWindowNext
 {
     GtkApplicationWindow __parent__;
 
+    GDateTime *selected_date;
+
     GtkAccelGroup *accel_group;
     GtkWidget *menubar;
 
@@ -76,6 +78,8 @@ struct _OrageWindowNext
     GtkWidget *main_view;
     OrageMonthView *month_view;
 };
+
+static void orage_window_next_finalize (GObject *object);
 
 static void orage_window_next_interface_init (OrageWindowInterface *interface);
 static GDateTime *orage_window_next_get_selected_date (OrageWindowNext *window);
@@ -222,10 +226,17 @@ static void on_next_clicked (G_GNUC_UNUSED GtkButton *button,
                              gpointer user_data)
 {
     OrageWindowNext *nw = ORAGE_WINDOW_NEXT (user_data);
+    GDateTime *gdt;
     const gchar *visible_name = gtk_stack_get_visible_child_name (nw->stack_view);
 
     if (g_strcmp0 ("month", visible_name) == 0)
-        orage_month_view_next_month (nw->month_view);
+    {
+        gdt = nw->selected_date;
+        nw->selected_date = g_date_time_add_months (nw->selected_date, 1);
+        g_date_time_unref (gdt);
+
+        orage_month_view_select_month (nw->month_view, nw->selected_date);
+    }
     else
     {
         g_debug ("%s: '%s' next is not yet implemented",
@@ -237,10 +248,17 @@ static void on_back_clicked (G_GNUC_UNUSED GtkButton *button,
                              gpointer user_data)
 {
     OrageWindowNext *nw = ORAGE_WINDOW_NEXT (user_data);
+    GDateTime *gdt;
     const gchar *visible_name = gtk_stack_get_visible_child_name (nw->stack_view);
 
     if (g_strcmp0 ("month", visible_name) == 0)
-        orage_month_view_previous_month (nw->month_view);
+    {
+        gdt = nw->selected_date;
+        nw->selected_date = g_date_time_add_months (nw->selected_date, -1);
+        g_date_time_unref (gdt);
+
+        orage_month_view_select_month (nw->month_view, nw->selected_date);
+    }
     else
     {
         g_debug ("%s: '%s' back is not yet implemented", 
@@ -407,6 +425,17 @@ static void orage_window_next_add_menubar (OrageWindowNext *self)
     gtk_widget_show_all (self->menubar);
 }
 
+static void orage_window_next_class_init (OrageWindowNextClass *klass)
+{
+    GObjectClass *object_class;
+
+    xfce_gtk_translate_action_entries (action_entries,
+                                       G_N_ELEMENTS (action_entries));
+
+    object_class = G_OBJECT_CLASS (klass);
+    object_class->finalize = orage_window_next_finalize;
+}
+
 static void orage_window_next_init (OrageWindowNext *self)
 {
     GtkWidget *switcher;
@@ -417,6 +446,8 @@ static void orage_window_next_init (OrageWindowNext *self)
     GtkBox *switcher_box;
     GtkBox *main_box;
     const size_t n_elements = G_N_ELEMENTS (action_entries);
+
+    self->selected_date = g_date_time_new_now_utc ();
 
     self->accel_group = gtk_accel_group_new ();
 
@@ -497,12 +528,6 @@ static void orage_window_next_init (OrageWindowNext *self)
                       G_CALLBACK (on_post_init), NULL);
 }
 
-static void orage_window_next_class_init (G_GNUC_UNUSED OrageWindowNextClass *klass)
-{
-    xfce_gtk_translate_action_entries (action_entries,
-                                       G_N_ELEMENTS (action_entries));
-}
-
 static void orage_window_next_interface_init (OrageWindowInterface *iface)
 {
     iface->mark_appointments = orage_window_next_mark_appointments;
@@ -517,6 +542,15 @@ static void orage_window_next_interface_init (OrageWindowInterface *iface)
     iface->raise = orage_window_next_raise;
 }
 
+static void orage_window_next_finalize (GObject *object)
+{
+    OrageWindowNext *self = (OrageWindowNext *)object;
+
+    g_date_time_unref (self->selected_date);
+
+    G_OBJECT_CLASS (orage_window_next_parent_class)->finalize (object);
+}
+
 GtkWidget *orage_window_next_new (OrageApplication *application)
 {
     return g_object_new (ORAGE_WINDOW_NEXT_TYPE,
@@ -526,8 +560,9 @@ GtkWidget *orage_window_next_new (OrageApplication *application)
 
 GDateTime *orage_window_next_get_selected_date (OrageWindowNext *window)
 {
-    return orage_cal_to_gdatetime (
-        orage_window_next_get_calendar (ORAGE_WINDOW (window)), 1, 1);
+    OrageWindowNext *nxtwindow = ORAGE_WINDOW_NEXT (window);
+
+    return g_date_time_ref (nxtwindow->selected_date);
 }
 
 void orage_window_next_build_events (OrageWindow *window)

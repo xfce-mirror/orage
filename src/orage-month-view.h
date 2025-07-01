@@ -31,8 +31,7 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (OrageMonthView, orage_month_view, ORAGE, MONTH_VIEW, GtkBox)
 
 GtkWidget *orage_month_view_new ();
-void orage_month_view_next_month (OrageMonthView *month_view);
-void orage_month_view_previous_month (OrageMonthView *month_view);
+void orage_month_view_select_month (OrageMonthView *month_view, GDateTime *gdt);
 
 G_END_DECLS
 

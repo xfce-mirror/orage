@@ -38,19 +38,8 @@ struct _OrageMonthView
     GtkWidget *header;
 
     GDateTime *date;
-    gint days_delay;
     gint first_weekday;
 };
-
-static const gchar *day_name[] =
-{
-    _("Sunday"), _("Monday"), _("Tuesday"), _("Wednesday"), _("Thursday"),
-    _("Friday"), _("Saturday")
-};
-
-static void orage_month_view_update_month_cells (OrageMonthView *self);
-
-static void orage_month_view_update_days_delay (OrageMonthView *self, gint month_different);
 
 G_DEFINE_TYPE (OrageMonthView, orage_month_view, GTK_TYPE_BOX)
 
@@ -86,23 +75,6 @@ static GDateTime *orage_month_view_get_first_day_of_month (OrageMonthView *self)
 {
     return g_date_time_new_local (g_date_time_get_year (self->date),
                                   g_date_time_get_month (self->date), 1, 0, 0, 0);
-}
-
-static void orage_month_view_update_days_delay (OrageMonthView *self,
-                                                const gint month_different)
-{
-    gint year = g_date_time_get_year (self->date);
-    gint month = g_date_time_get_month (self->date);
-    GDate *gd = g_date_new_dmy (1, month, year);
-
-    if (month_different >= 0)
-        g_date_add_months (gd, month_different);
-    else
-        g_date_subtract_months (gd, -1 * month_different);
-
-    self->days_delay = (g_date_get_weekday (gd) - self->first_weekday + 7) % 7;
-
-    g_date_free (gd);
 }
 
 static void orage_month_view_update_month_label (OrageMonthView *self)
@@ -142,10 +114,12 @@ static void orage_month_view_update_month_cells (OrageMonthView *self)
 {
     OrageMonthCell *cell;
     GDateTime *cell_date;
-    guint row, col;
     GDateTime *gdt;
+    guint row, col;
+    gint offset;
 
     gdt = orage_month_view_get_first_day_of_month (self);
+    offset = g_date_time_get_day_of_week (gdt) - 1;
 
     for (row = 0; row < 6; row++)
     {
@@ -154,7 +128,7 @@ static void orage_month_view_update_month_cells (OrageMonthView *self)
             cell = ORAGE_MONTH_CELL (self->month_cell[row][col]);
 
             cell_date = g_date_time_add_days (gdt,
-                                              row * 7 + col - self->days_delay);
+                                              row * 7 + col - offset);
             orage_month_cell_set_date (cell, cell_date);
             g_date_time_unref (cell_date);
         }
@@ -193,6 +167,12 @@ static void orage_month_view_class_init (OrageMonthViewClass *klass)
 
 static void orage_month_view_init (OrageMonthView *self)
 {
+    static const gchar *day_name[] =
+    {
+        _("Monday"), _("Tuesday"), _("Wednesday"), _("Thursday"), _("Friday"),
+        _("Saturday"), _("Sunday")
+    };
+
     GtkSizeGroup *date_group;
     GtkWidget *cell;
     guint row;
@@ -200,7 +180,6 @@ static void orage_month_view_init (OrageMonthView *self)
 
     self->date = g_date_time_new_now_utc ();
     self->first_weekday = 0;
-    orage_month_view_update_days_delay (self, -1);
 
     date_group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 
@@ -273,21 +252,14 @@ GtkWidget *orage_month_view_new (void)
     return g_object_new (ORAGE_MONTH_VIEW_TYPE, NULL);
 }
 
-void orage_month_view_next_month (OrageMonthView *month_view)
+void orage_month_view_select_month (OrageMonthView *month_view, GDateTime *gdt)
 {
-    orage_month_view_update_days_delay (month_view, 1);
+    GDateTime *date_old;
 
-    month_view->date = g_date_time_add_months (month_view->date, 1);
-    orage_month_view_update_month_label (month_view);
-    orage_month_view_update_week_nr_cells (month_view);
-    orage_month_view_update_month_cells (month_view);
-}
+    date_old = month_view->date;
+    month_view->date = g_date_time_ref (gdt);
+    g_date_time_unref (date_old);
 
-void orage_month_view_previous_month (OrageMonthView *month_view)
-{
-    orage_month_view_update_days_delay (month_view, -1);
-
-    month_view->date = g_date_time_add_months (month_view->date, -1);
     orage_month_view_update_month_label (month_view);
     orage_month_view_update_week_nr_cells (month_view);
     orage_month_view_update_month_cells (month_view);
