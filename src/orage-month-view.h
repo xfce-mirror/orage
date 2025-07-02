@@ -26,11 +26,18 @@
 
 G_BEGIN_DECLS
 
+typedef enum
+{
+    MONDAY,
+    SUNDAY,
+    BY_LOCALE
+} FirstDayOfWeek;
+
 #define ORAGE_MONTH_VIEW_TYPE (orage_month_view_get_type ())
 
 G_DECLARE_FINAL_TYPE (OrageMonthView, orage_month_view, ORAGE, MONTH_VIEW, GtkBox)
 
-GtkWidget *orage_month_view_new ();
+GtkWidget *orage_month_view_new (FirstDayOfWeek first_day);
 void orage_month_view_select_month (OrageMonthView *month_view, GDateTime *gdt);
 
 G_END_DECLS
