@@ -22,6 +22,7 @@
 #include "orage-month-cell.h"
 #include "orage-time-util.h"
 #include "orage-i18n.h"
+#include "functions.h"
 
 #include <gtk/gtk.h>
 
@@ -85,11 +86,14 @@ static void load_css (void)
 
 static FirstDayOfWeek to_first_weekday (const FirstDayOfWeek first_day)
 {
+    gint first_weekday;
+
     if (first_day != BY_LOCALE)
         return first_day;
 
-    /* TODO: read value from LOCALE. */
-    return first_day;
+    first_weekday = orage_get_first_weekday ();
+
+    return (first_weekday == 0) ? SUNDAY : MONDAY;
 }
 
 static GDateTime *orage_month_view_get_first_day_of_month (OrageMonthView *self)

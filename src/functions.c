@@ -47,6 +47,10 @@
 #include "parameters.h"
 #include "tz_zoneinfo_read.h"
 
+#ifdef HAVE__NL_TIME_FIRST_WEEKDAY
+#include <langinfo.h>
+#endif
+
 /**************************************
  *  General purpose helper functions  *
  **************************************/
@@ -821,6 +825,67 @@ void orage_select_today(GtkCalendar *cal)
     orage_select_date (cal, gdt);
     g_date_time_unref (gdt);
 }
+
+/* orage_get_first_weekday() is Copied from GtkCalendar. */
+gint orage_get_first_weekday (void)
+{
+    int week_start;
+
+#ifdef HAVE__NL_TIME_FIRST_WEEKDAY
+    union
+    {
+        unsigned int word;
+        char *string;
+    } langinfo;
+    gint week_1stday = 0;
+    gint first_weekday = 1;
+    guint week_origin;
+
+    langinfo.string = nl_langinfo (_NL_TIME_FIRST_WEEKDAY);
+    first_weekday = langinfo.string[0];
+    langinfo.string = nl_langinfo (_NL_TIME_WEEK_1STDAY);
+    week_origin = langinfo.word;
+    if (week_origin == 19971130) /* Sunday */
+        week_1stday = 0;
+    else if (week_origin == 19971201) /* Monday */
+        week_1stday = 1;
+    else
+        g_warning("Unknown value of _NL_TIME_WEEK_1STDAY.\n");
+
+    week_start = (week_1stday + first_weekday - 1) % 7;
+
+#else
+    gchar *week_start_str;
+
+#if 0  /* Week start from Orage */
+    /* Translate to calendar:week_start:0 if you want Sunday to be the first
+     * day of the week to calendar:week_start:1 if you want Monday to be the
+     * first day of the week, and so on.
+     */
+    week_start_str = _("calendar:week_start:0");
+#else /* Week start from GTK. */
+    /* Use a define to hide the string from xgettext */
+#define GTK_WEEK_START "calendar:week_start:0"
+    week_start_str = dgettext ("gtk30", GTK_WEEK_START);
+#endif
+
+    if (strncmp (week_start_str, "calendar:week_start:", 20) == 0)
+        week_start = *(week_start_str + 20) - '0';
+    else
+        week_start = -1;
+
+    if (week_start < 0 || week_start > 6)
+    {
+        g_warning ("Whoever translated calendar:week_start:0 did so wrongly.");
+        week_start = 0;
+    }
+#endif
+
+    return week_start;
+}
+
+
+
 
 /*******************************************************
  * data and config file locations

@@ -500,7 +500,7 @@ static void orage_window_next_init (OrageWindowNext *self)
     gtk_stack_switcher_set_stack (GTK_STACK_SWITCHER (switcher),
                                   self->stack_view);
     gtk_box_pack_start (main_box, GTK_WIDGET (self->stack_view), TRUE, TRUE, 0);
-    self->month_view = ORAGE_MONTH_VIEW (orage_month_view_new (MONDAY));
+    self->month_view = ORAGE_MONTH_VIEW (orage_month_view_new (BY_LOCALE));
 #if 0
     gtk_stack_add_titled (self->stack_view,
                           gtk_label_new ("TODO: Day view"), "day", _("Day"));

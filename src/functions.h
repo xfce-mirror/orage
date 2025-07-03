@@ -146,6 +146,12 @@ GDateTime *orage_cal_to_gdatetime (GtkCalendar *cal, gint hh, gint mm);
  */
 gint orage_gdatetime_days_between (GDateTime *gdt1, GDateTime *gdt2);
 
+/** Return the first weekday.
+ *  Copied from GtkCalendar
+ *  @return the first weekday, from 0 (Sunday) to 6 (Saturday)
+ */
+gint orage_get_first_weekday (void);
+
 /** Set (GTK) calendar to selected date.
  *  @param cal instance of GTK calendar
  *  @param gdt selected date.
