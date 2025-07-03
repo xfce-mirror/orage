@@ -66,6 +66,7 @@ static void load_css (void)
                                                GTK_STYLE_PROVIDER(provider),
                                                GTK_STYLE_PROVIDER_PRIORITY_USER);
 
+#if 0
     gtk_css_provider_load_from_data (provider,
                                     ".cell {\n"
                                     "  border: 1px solid #888;\n"
@@ -80,6 +81,23 @@ static void load_css (void)
                                     "  font-weight: bold;\n"
                                     "}\n",
                                     -1, NULL);
+#else
+                                    gtk_css_provider_load_from_data (provider,
+                                    ".cell {\n"
+                                    "  border: solid 1px alpha(@borders, 0.3);\n"
+                                    "  border-width: 1px 0 0 1px;\n"
+                                    "  background: transparent;\n"
+                                    "  transition: background-color 200ms;\n"
+                                    "}\n"
+                                    ".cell:hover {\n"
+                                    "  background-color: #e0e0ff;\n"
+                                    "  border-color: #333388;\n"
+                                    "}\n"
+                                    ".month-label {\n"
+                                    "  font-weight: bold;\n"
+                                    "}\n",
+                                    -1, NULL);
+#endif
 
     g_object_unref (provider);
 }
@@ -143,10 +161,14 @@ static void orage_month_view_update_month_cells (OrageMonthView *self)
     OrageMonthCell *cell;
     GDateTime *cell_date;
     GDateTime *gdt;
-    guint row, col;
+    guint row;
+    guint col;
+    gint month;
+    gint cell_month;
     gint offset;
 
     gdt = orage_month_view_get_first_day_of_month (self);
+    month = g_date_time_get_month (gdt);
     offset = g_date_time_get_day_of_week (gdt)
            - (self->first_weekday2 == MONDAY ? 1 : 0);
 
@@ -158,7 +180,9 @@ static void orage_month_view_update_month_cells (OrageMonthView *self)
 
             cell_date = g_date_time_add_days (gdt,
                                               row * 7 + col - offset);
+            cell_month = g_date_time_get_month (cell_date);
             orage_month_cell_set_date (cell, cell_date);
+            orage_month_cell_set_different_month (cell, month != cell_month);
             g_date_time_unref (cell_date);
         }
     }
@@ -204,12 +228,18 @@ static void orage_month_view_update_day_names (OrageMonthView *self)
         gtk_label_set_text (GTK_LABEL (self->label_weekday[0]), day_name[6]);
 
         for (col = 0; col < 6; col++)
-            gtk_label_set_text (GTK_LABEL (self->label_weekday[col + 1]), day_name[col]);
+        {
+            gtk_label_set_text (GTK_LABEL (self->label_weekday[col + 1]),
+                                day_name[col]);
+        }
     }
     else
     {
         for (col = 0; col < 7; col++)
-            gtk_label_set_text (GTK_LABEL (self->label_weekday[col]), day_name[col]);
+        {
+            gtk_label_set_text (GTK_LABEL (self->label_weekday[col]),
+                                day_name[col]);
+        }
     }
 }
 
