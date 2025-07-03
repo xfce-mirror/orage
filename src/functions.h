@@ -146,8 +146,8 @@ GDateTime *orage_cal_to_gdatetime (GtkCalendar *cal, gint hh, gint mm);
  */
 gint orage_gdatetime_days_between (GDateTime *gdt1, GDateTime *gdt2);
 
-/** Return the first weekday.
- *  Copied from GtkCalendar
+/** Return the first weekday. Borrowed from from GtkCalendar, but modified
+ *  to return 0..6 mon..sun (which is what libical uses).
  *  @return the first weekday, from 0 (Sunday) to 6 (Saturday)
  */
 gint orage_get_first_weekday (void);

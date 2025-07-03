@@ -93,7 +93,7 @@ static FirstDayOfWeek to_first_weekday (const FirstDayOfWeek first_day)
 
     first_weekday = orage_get_first_weekday ();
 
-    return (first_weekday == 0) ? SUNDAY : MONDAY;
+    return (first_weekday == 6) ? SUNDAY : MONDAY;
 }
 
 static GDateTime *orage_month_view_get_first_day_of_month (OrageMonthView *self)

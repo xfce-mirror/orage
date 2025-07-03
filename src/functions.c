@@ -850,7 +850,7 @@ gint orage_get_first_weekday (void)
     else if (week_origin == 19971201) /* Monday */
         week_1stday = 1;
     else
-        g_warning("Unknown value of _NL_TIME_WEEK_1STDAY.\n");
+        g_warning ("Unknown value of _NL_TIME_WEEK_1STDAY.\n");
 
     week_start = (week_1stday + first_weekday - 1) % 7;
 
@@ -881,11 +881,8 @@ gint orage_get_first_weekday (void)
     }
 #endif
 
-    return week_start;
+    return (week_start - 1 + 7) % 7;
 }
-
-
-
 
 /*******************************************************
  * data and config file locations

@@ -31,10 +31,6 @@
 #include <locale.h>
 #include <inttypes.h>
 
-#ifdef HAVE__NL_TIME_FIRST_WEEKDAY
-#include <langinfo.h>
-#endif
-
 #include <glib.h>
 #include <glib/gstdio.h>
 #include <glib/gprintf.h>
@@ -86,61 +82,17 @@ static Itf *global_itf = NULL;
 
 global_parameters g_par;
 
-/* Return the first day of the week, where 0=monday, 6=sunday.
- *     Borrowed from GTK+:s Calendar Widget, but modified
- *     to return 0..6 mon..sun, which is what libical uses */
-static int get_first_weekday_from_locale(void)
-{
-#ifdef HAVE__NL_TIME_FIRST_WEEKDAY
-    union { unsigned int word; char *string; } langinfo;
-    int week_1stday = 0;
-    int first_weekday = 1;
-    unsigned int week_origin;
-
-    setlocale(LC_TIME, "");
-    langinfo.string = nl_langinfo(_NL_TIME_FIRST_WEEKDAY);
-    first_weekday = langinfo.string[0];
-    langinfo.string = nl_langinfo(_NL_TIME_WEEK_1STDAY);
-    week_origin = langinfo.word;
-    if (week_origin == 19971130) /* Sunday */
-        week_1stday = 0;
-    else if (week_origin == 19971201) /* Monday */
-        week_1stday = 1;
-    else
-        g_warning ("unknown value of _NL_TIME_WEEK_1STDAY.");
-
-    return((week_1stday + first_weekday - 2 + 7) % 7);
-#else
-    g_warning ("Can not find first weekday. Using default: Monday=0. If this "
-               "is wrong guess. please set undocumented parameter: "
-               "Ical week start day (Sunday=6)");
-    return(0);
-#endif
-}
-
 /* 0 = monday, ..., 6 = sunday */
 static gint get_first_weekday (OrageRc *orc)
 {
-#ifdef HAVE__NL_TIME_FIRST_WEEKDAY
-#if 0
-    /* Original code. */
-    return orage_rc_get_int (orc, "Ical week start day",
-                             get_first_weekday_from_locale ());
-#else
-    /* TODO: This should be valid code for Linux, check how this part work on
-     * Linux.
-     */
-    const gint first_week_day = orage_rc_get_int(orc, "Ical week start day",-1);
+    gint first_week_day;
 
-    return (first_week_day != -1) ? first_week_day
-                                  : get_first_weekday_from_locale ();
-#endif
-#else
-    const gint first_week_day = orage_rc_get_int(orc, "Ical week start day",-1);
+    first_week_day = orage_rc_get_int (orc, "Ical week start day", -1);
 
-    return (first_week_day == -1) ? get_first_weekday_from_locale ()
-                                  : first_week_day;
-#endif
+    if (first_week_day == -1)
+        first_week_day = orage_get_first_weekday ();
+
+    return first_week_day;
 }
 
 static GSList *get_sync_entries_list (void)
