@@ -33,28 +33,9 @@ struct _OrageMonthCell
 
 G_DEFINE_TYPE (OrageMonthCell, orage_month_cell, GTK_TYPE_BOX)
 
-static void load_css (void)
+static void orage_month_cell_class_init (
+    G_GNUC_UNUSED OrageMonthCellClass *klass)
 {
-    GtkCssProvider *provider = gtk_css_provider_new ();
-    GdkDisplay *display = gdk_display_get_default ();
-    GdkScreen *screen = gdk_display_get_default_screen (display);
-
-    gtk_style_context_add_provider_for_screen (screen,
-                                               GTK_STYLE_PROVIDER(provider),
-                                               GTK_STYLE_PROVIDER_PRIORITY_USER);
-
-    gtk_css_provider_load_from_data (provider,
-                                    ".out-of-month {\n"
-                                    "  background-color: rgba(220, 220, 220, 0.4);\n"
-                                    "}\n",
-                                    -1, NULL);
-
-    g_object_unref (provider);
-}
-
-static void orage_month_cell_class_init (OrageMonthCellClass *klass)
-{
-    load_css ();
 }
 
 static void orage_month_cell_init (OrageMonthCell *self)
@@ -96,7 +77,6 @@ void orage_month_cell_set_date (OrageMonthCell *self, GDateTime *date)
     text = g_strdup_printf ("%d", g_date_time_get_day_of_month (date));
 
     gtk_label_set_text (GTK_LABEL (self->day_label), text);
-
     g_free (text);
 }
 

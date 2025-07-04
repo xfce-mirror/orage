@@ -72,8 +72,16 @@ OrageTrayIcon > row-3{
    color: blue;
 }
 
-#orage-month-cell{
-    border: solid 1px alpha(@borders, 0.3);
-    border-width: 1px 0 0 1px;
-    background-color: transparent;
+.month-label{
+   font-weight: bold;
+}
+
+#orage-month-cell, .month-cell, .month-header{
+   border: solid 1px alpha(@borders, 0.3);
+   border-width: 1px 0 0 1px;
+   background-color: transparent;
+}
+
+#orage-month-cell.out-of-month{
+   background-color: rgba(220, 220, 220, 0.4);
 }

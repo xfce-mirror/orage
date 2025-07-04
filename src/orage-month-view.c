@@ -56,34 +56,6 @@ enum
 
 static GParamSpec *properties[N_PROPS] = {NULL,};
 
-static void load_css (void)
-{
-    GtkCssProvider *provider = gtk_css_provider_new ();
-    GdkDisplay *display = gdk_display_get_default ();
-    GdkScreen *screen = gdk_display_get_default_screen (display);
-
-    gtk_style_context_add_provider_for_screen (screen,
-                                               GTK_STYLE_PROVIDER(provider),
-                                               GTK_STYLE_PROVIDER_PRIORITY_USER);
-
-    gtk_css_provider_load_from_data (provider,
-                                    ".cell {\n"
-                                    "  border: solid 1px alpha(@borders, 0.3);\n"
-                                    "  border-width: 1px 0 0 1px;\n"
-                                    "  background-color: transparent;\n"
-                                    "}\n"
-                                    ".cell:hover {\n"
-                                    "  background-color: #e0e0ff;\n"
-                                    "  border-color: #333388;\n"
-                                    "}\n"
-                                    ".month-label {\n"
-                                    "  font-weight: bold;\n"
-                                    "}\n",
-                                    -1, NULL);
-
-    g_object_unref (provider);
-}
-
 static FirstDayOfWeek to_first_weekday (const FirstDayOfWeek first_day)
 {
     gint first_weekday;
@@ -285,8 +257,6 @@ static void orage_month_view_class_init (OrageMonthViewClass *klass)
 {
     GObjectClass *object_class;
 
-    load_css ();
-
     object_class = G_OBJECT_CLASS (klass);
     object_class->constructed = orage_month_view_constructed;
     object_class->get_property = orage_month_view_get_property;
@@ -310,6 +280,8 @@ static void orage_month_view_init (OrageMonthView *self)
     GtkWidget *cell;
     guint row;
     guint col;
+
+    gtk_widget_set_name (GTK_WIDGET (self), "orage-month-view");
 
     self->date = g_date_time_new_now_utc ();
     self->first_weekday = MONDAY;
@@ -335,14 +307,14 @@ static void orage_month_view_init (OrageMonthView *self)
     /* Setup title row. */
     cell = gtk_label_new ("Week");
     gtk_grid_attach (GTK_GRID (self->month_grid), cell, 0, 0, 1, 1);
-    gtk_style_context_add_class (gtk_widget_get_style_context (cell), "cell");
+    gtk_style_context_add_class (gtk_widget_get_style_context (cell), "month-header");
 
     for (col = 0; col < 7; col++)
     {
         cell = gtk_label_new (NULL);
         g_object_set (cell, "hexpand", TRUE, "halign", GTK_ALIGN_FILL, NULL);
         gtk_grid_attach (GTK_GRID (self->month_grid), cell, col + 1, 0, 1, 1);
-        gtk_style_context_add_class (gtk_widget_get_style_context (cell), "cell");
+        gtk_style_context_add_class (gtk_widget_get_style_context (cell), "month-header");
         gtk_size_group_add_widget (date_group, cell);
         self->label_weekday[col] = cell;
     }
@@ -353,7 +325,7 @@ static void orage_month_view_init (OrageMonthView *self)
         /* Setup week numbers. */
         cell = gtk_label_new (NULL);
         g_object_set (cell, "vexpand", TRUE, "valign", GTK_ALIGN_FILL, NULL);
-        gtk_style_context_add_class (gtk_widget_get_style_context (cell), "cell");
+        gtk_style_context_add_class (gtk_widget_get_style_context (cell), "month-cell");
         gtk_grid_attach (GTK_GRID (self->month_grid), cell, 0, row + 1, 1, 1);
         self->label_week_nr[row] = cell;
 
