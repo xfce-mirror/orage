@@ -54,15 +54,13 @@ static void load_css (void)
 
 static void orage_month_cell_class_init (OrageMonthCellClass *klass)
 {
-    GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-
     load_css ();
-
-    gtk_widget_class_set_css_name (widget_class, "monthcell");
 }
 
 static void orage_month_cell_init (OrageMonthCell *self)
 {
+    gtk_widget_set_name (GTK_WIDGET (self), "orage-month-cell");
+
     self->main_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 
     self->day_label = gtk_label_new (NULL);

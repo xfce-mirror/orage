@@ -71,3 +71,9 @@ OrageTrayIcon > row-3{
 #OrageWindowClassic #todo-actual-now{
    color: blue;
 }
+
+#orage-month-cell{
+    border: solid 1px alpha(@borders, 0.3);
+    border-width: 1px 0 0 1px;
+    background-color: transparent;
+}

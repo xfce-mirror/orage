@@ -66,28 +66,11 @@ static void load_css (void)
                                                GTK_STYLE_PROVIDER(provider),
                                                GTK_STYLE_PROVIDER_PRIORITY_USER);
 
-#if 0
     gtk_css_provider_load_from_data (provider,
-                                    ".cell {\n"
-                                    "  border: 1px solid #888;\n"
-                                    "  background-color: #f0f0f0;\n"
-                                    "  padding: 6px;\n"
-                                    "}\n"
-                                    ".cell:hover {\n"
-                                    "  background-color: #e0e0ff;\n"
-                                    "  border-color: #333388;\n"
-                                    "}\n"
-                                    ".month-label {\n"
-                                    "  font-weight: bold;\n"
-                                    "}\n",
-                                    -1, NULL);
-#else
-                                    gtk_css_provider_load_from_data (provider,
                                     ".cell {\n"
                                     "  border: solid 1px alpha(@borders, 0.3);\n"
                                     "  border-width: 1px 0 0 1px;\n"
-                                    "  background: transparent;\n"
-                                    "  transition: background-color 200ms;\n"
+                                    "  background-color: transparent;\n"
                                     "}\n"
                                     ".cell:hover {\n"
                                     "  background-color: #e0e0ff;\n"
@@ -97,7 +80,6 @@ static void load_css (void)
                                     "  font-weight: bold;\n"
                                     "}\n",
                                     -1, NULL);
-#endif
 
     g_object_unref (provider);
 }
@@ -383,7 +365,6 @@ static void orage_month_view_init (OrageMonthView *self)
                                 "halign", GTK_ALIGN_FILL,
                                 "valign", GTK_ALIGN_FILL,
                                 NULL);
-            gtk_style_context_add_class (gtk_widget_get_style_context (cell), "cell");
             gtk_size_group_add_widget (date_group, cell);
             gtk_grid_attach (GTK_GRID (self->month_grid), cell, col, row + 1,
                              1, 1);
