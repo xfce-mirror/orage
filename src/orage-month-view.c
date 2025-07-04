@@ -242,7 +242,6 @@ static void orage_month_view_set_property (GObject *object,
     }
 }
 
-
 static void orage_month_view_constructed (GObject *object)
 {
     OrageMonthView *self = (OrageMonthView *)object;
@@ -253,12 +252,22 @@ static void orage_month_view_constructed (GObject *object)
     G_OBJECT_CLASS (orage_month_view_parent_class)->constructed (object);
 }
 
+static void orage_month_view_finalize (GObject *object)
+{
+    OrageMonthView *self = (OrageMonthView *)object;
+
+    g_date_time_unref (self->date);
+
+    G_OBJECT_CLASS (orage_month_view_parent_class)->finalize (object);
+}
+
 static void orage_month_view_class_init (OrageMonthViewClass *klass)
 {
     GObjectClass *object_class;
 
     object_class = G_OBJECT_CLASS (klass);
     object_class->constructed = orage_month_view_constructed;
+    object_class->finalize = orage_month_view_finalize;
     object_class->get_property = orage_month_view_get_property;
     object_class->set_property = orage_month_view_set_property;
 
