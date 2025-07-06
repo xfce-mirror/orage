@@ -772,29 +772,27 @@ void orage_gdatetime_unref (GDateTime *gdt)
     g_date_time_unref (gdt);
 }
 
-static GDate *orage_gdatetime_to_gdate (GDateTime *gdt)
-{
-    gint year;
-    gint month;
-    gint day;
-
-    g_date_time_get_ymd (gdt, &year, &month, &day);
-
-    return g_date_new_dmy (day, month, year);
-}
-
 gint orage_gdatetime_days_between (GDateTime *gdt1, GDateTime *gdt2)
 {
-    GDate *g_t1, *g_t2;
-    gint dd;
+    GDate gd1;
+    GDate gd2;
 
-    g_t1 = orage_gdatetime_to_gdate (gdt1);
-    g_t2 = orage_gdatetime_to_gdate (gdt2);
-    dd = g_date_days_between (g_t1, g_t2);
-    g_date_free (g_t1);
-    g_date_free (g_t2);
+    if ((gdt1 == NULL) && (gdt2 == NULL))
+        return 0;
+    else if (gdt1 == NULL)
+        return -1;
+    else if (gdt2 == NULL)
+        return 1;
 
-    return dd;
+    g_date_set_dmy (&gd1, g_date_time_get_day_of_month (gdt1),
+                          g_date_time_get_month (gdt1),
+                          g_date_time_get_year (gdt1));
+
+    g_date_set_dmy (&gd2, g_date_time_get_day_of_month (gdt2),
+                          g_date_time_get_month (gdt2),
+                          g_date_time_get_year (gdt2));
+
+    return g_date_days_between (&gd1, &gd2);
 }
 
 void orage_select_date (GtkCalendar *cal, GDateTime *gdt)

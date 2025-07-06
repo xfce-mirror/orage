@@ -3364,7 +3364,9 @@ static void xfical_mark_calendar_from_component (GtkCalendar *gtkcal,
                     , (void *)&cal_data);
             g_free(cal_data.appt.categories);
             orage_gdatetime_unref (cal_data.appt.starttime);
+            cal_data.appt.starttime = NULL;
             orage_gdatetime_unref (cal_data.appt.endtime);
+            cal_data.appt.endtime = NULL;
         }
         else {
             per = ic_get_period(c, TRUE);

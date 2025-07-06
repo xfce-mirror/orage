@@ -20,7 +20,6 @@
 
 #include "orage-month-view.h"
 #include "orage-month-cell.h"
-#include "orage-time-util.h"
 #include "orage-i18n.h"
 #include "functions.h"
 

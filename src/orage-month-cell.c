@@ -19,7 +19,7 @@
  */
 
 #include "orage-month-cell.h"
-#include "orage-time-util.h"
+#include "functions.h"
 
 struct _OrageMonthCell
 {
@@ -68,12 +68,12 @@ void orage_month_cell_set_date (OrageMonthCell *self, GDateTime *date)
 
     if (self->date &&
         date &&
-        orage_date_time_compare_date (self->date, date) == 0)
+        orage_gdatetime_days_between (self->date, date) == 0)
     {
         return;
     }
 
-    orage_clear_date_time (&self->date);
+    orage_gdatetime_unref (self->date);
     self->date = g_date_time_ref (date);
 
     text = g_strdup_printf ("%d", g_date_time_get_day_of_month (date));
@@ -83,7 +83,7 @@ void orage_month_cell_set_date (OrageMonthCell *self, GDateTime *date)
 
     context = gtk_widget_get_style_context (GTK_WIDGET (self));
     today = g_date_time_new_now_local ();
-    if (orage_date_time_compare_date (self->date, today) == 0)
+    if (orage_gdatetime_days_between (self->date, today) == 0)
         gtk_style_context_add_class (context, "today");
     else
         gtk_style_context_remove_class (context, "today");
