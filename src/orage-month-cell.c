@@ -60,6 +60,8 @@ GtkWidget *orage_month_cell_new (void)
 
 void orage_month_cell_set_date (OrageMonthCell *self, GDateTime *date)
 {
+    GtkStyleContext *context;
+    GDateTime *today;
     gchar *text;
 
     g_return_if_fail (ORAGE_IS_MONTH_CELL (self));
@@ -78,6 +80,15 @@ void orage_month_cell_set_date (OrageMonthCell *self, GDateTime *date)
 
     gtk_label_set_text (GTK_LABEL (self->day_label), text);
     g_free (text);
+
+    context = gtk_widget_get_style_context (GTK_WIDGET (self));
+    today = g_date_time_new_now_local ();
+    if (orage_date_time_compare_date (self->date, today) == 0)
+        gtk_style_context_add_class (context, "today");
+    else
+        gtk_style_context_remove_class (context, "today");
+
+    g_date_time_unref (today);
 }
 
 void orage_month_cell_set_different_month (OrageMonthCell *self,
