@@ -36,6 +36,8 @@
 #include <libxfce4ui/libxfce4ui.h>
 #include <stdio.h>
 
+#define MONTH_PAGE "month"
+
 typedef enum
 {
     ORAGE_WINDOW_ACTION_FILE_MENU,
@@ -79,6 +81,7 @@ struct _OrageWindowNext
     OrageMonthView *month_view;
 };
 
+static void orage_window_next_constructed (GObject *object);
 static void orage_window_next_finalize (GObject *object);
 
 static void orage_window_next_interface_init (OrageWindowInterface *interface);
@@ -169,9 +172,10 @@ static void on_quit_activated (OrageWindowNext *window)
 {
     g_return_if_fail (ORAGE_IS_WINDOW_NEXT (window));
 
-    /* TODO/FIXME: close program after gtk_widget_destroy(). Currently Orage
-     * configuration storeing after shutdown, which uses write_parameters()
-     * function fails to run normally after gtk_widget_destroy() called.
+    /* TODO/FIXME: Close the program after gtk_widget_destroy(). Currently,
+     * Orage stores its configuration after the shutdown command, but the
+     * write_parameters() function fails to run properly if called after
+     * gtk_widget_destroy().
      */
 #if 1
     GtkApplication *app = GTK_APPLICATION (g_application_get_default ());
@@ -229,7 +233,7 @@ static void on_next_clicked (G_GNUC_UNUSED GtkButton *button,
     GDateTime *gdt;
     const gchar *visible_name = gtk_stack_get_visible_child_name (nw->stack_view);
 
-    if (g_strcmp0 ("month", visible_name) == 0)
+    if (g_strcmp0 (MONTH_PAGE, visible_name) == 0)
     {
         gdt = nw->selected_date;
         nw->selected_date = g_date_time_add_months (nw->selected_date, 1);
@@ -251,7 +255,7 @@ static void on_back_clicked (G_GNUC_UNUSED GtkButton *button,
     GDateTime *gdt;
     const gchar *visible_name = gtk_stack_get_visible_child_name (nw->stack_view);
 
-    if (g_strcmp0 ("month", visible_name) == 0)
+    if (g_strcmp0 (MONTH_PAGE, visible_name) == 0)
     {
         gdt = nw->selected_date;
         nw->selected_date = g_date_time_add_months (nw->selected_date, -1);
@@ -264,24 +268,6 @@ static void on_back_clicked (G_GNUC_UNUSED GtkButton *button,
         g_debug ("%s: '%s' back is not yet implemented", 
                  G_STRFUNC, visible_name);
     }
-}
-
-static void on_post_init (OrageWindowNext *window)
-{
-    union
-    {
-        gpointer ptr;
-        GCallback callback;
-    }
-    func_ptr;
-    guint rc;
-
-    func_ptr.callback = (GCallback)on_post_init;
-    rc = g_signal_handlers_disconnect_by_func (window, func_ptr.ptr, NULL);
-
-    g_debug ("%s: %d handlers disconnected", G_STRFUNC, rc);
-
-    orage_window_next_restore_geometry (window);
 }
 
 static void orage_window_next_restore_geometry (OrageWindowNext *window)
@@ -433,6 +419,7 @@ static void orage_window_next_class_init (OrageWindowNextClass *klass)
                                        G_N_ELEMENTS (action_entries));
 
     object_class = G_OBJECT_CLASS (klass);
+    object_class->constructed = orage_window_next_constructed;
     object_class->finalize = orage_window_next_finalize;
 }
 
@@ -448,7 +435,6 @@ static void orage_window_next_init (OrageWindowNext *self)
     const size_t n_elements = G_N_ELEMENTS (action_entries);
 
     self->selected_date = g_date_time_new_now_utc ();
-
     self->accel_group = gtk_accel_group_new ();
 
     xfce_gtk_accel_map_add_entries (action_entries, n_elements);
@@ -507,8 +493,8 @@ static void orage_window_next_init (OrageWindowNext *self)
     gtk_stack_add_titled (self->stack_view,
                           gtk_label_new ("TODO: Week view"), "week", _("Week"));
 #endif
-    gtk_stack_add_titled (self->stack_view,
-                          GTK_WIDGET (self->month_view), "month", _("Month"));
+    gtk_stack_add_titled (self->stack_view, GTK_WIDGET (self->month_view),
+                          MONTH_PAGE, _("Month"));
 #if 0
     gtk_stack_add_titled (self->stack_view,
                           gtk_label_new ("TODO: Year view"), "year", _("Year"));
@@ -516,15 +502,12 @@ static void orage_window_next_init (OrageWindowNext *self)
 
     gtk_widget_show_all (GTK_WIDGET (main_box));
 
-    gtk_stack_set_visible_child_name (self->stack_view, "month");
+    gtk_stack_set_visible_child_name (self->stack_view, MONTH_PAGE);
 
     g_signal_connect (back_button, "clicked", G_CALLBACK (on_back_clicked),
                       self);
     g_signal_connect (next_button, "clicked", G_CALLBACK (on_next_clicked),
                       self);
-
-    g_signal_connect (self, "notify::application",
-                      G_CALLBACK (on_post_init), NULL);
 }
 
 static void orage_window_next_interface_init (OrageWindowInterface *iface)
@@ -539,6 +522,15 @@ static void orage_window_next_interface_init (OrageWindowInterface *iface)
     iface->hide_event = orage_window_next_hide_event;
     iface->get_calendar = orage_window_next_get_calendar;
     iface->raise = orage_window_next_raise;
+}
+
+static void orage_window_next_constructed (GObject *object)
+{
+    OrageWindowNext *self = (OrageWindowNext *)object;
+
+    orage_window_next_restore_geometry (self);
+
+    G_OBJECT_CLASS (orage_window_next_parent_class)->constructed (object);
 }
 
 static void orage_window_next_finalize (GObject *object)

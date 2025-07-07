@@ -1235,7 +1235,6 @@ GtkWidget *orage_image_menu_item_for_parent_new_from_stock (
 {
     GtkWidget *item = orage_image_menu_item_new_from_stock (stock_id,
                                                             accel_group);
-
     gtk_container_add (GTK_CONTAINER (menu), item);
 
     return item;
