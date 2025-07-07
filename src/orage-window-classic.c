@@ -64,7 +64,7 @@ struct _OrageWindowClassic
 
     GtkAccelGroup *mAccel_group;
 
-    GtkWidget *mCalendar;
+    GtkCalendar *mCalendar;
     
     GtkWidget *main_box;
     GtkWidget *mMenubar;
@@ -106,13 +106,12 @@ static guint month_change_timer=0;
 
 void orage_window_classic_mark_appointments (OrageWindow *window)
 {
-    if (window == NULL)
-        return;
+    g_return_if_fail (window != NULL);
 
     if (!xfical_file_open(TRUE))
         return;
 
-    xfical_mark_calendar (orage_window_classic_get_calendar (window));
+    xfical_mark_calendar (ORAGE_WINDOW_CLASSIC (window)->mCalendar);
     xfical_file_close(TRUE);
 }
 
@@ -121,11 +120,10 @@ static void mFile_newApp_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
 {
     GDateTime *gdt;
     GtkWidget *appointment_window;
-    OrageWindow *window = ORAGE_WINDOW (user_data);
+    OrageWindowClassic *window = ORAGE_WINDOW_CLASSIC (user_data);
 
     /* cal has always a day selected here, so it is safe to read it */
-    gdt = orage_cal_to_gdatetime (
-        orage_window_classic_get_calendar (window), 1, 1);
+    gdt = orage_cal_to_gdatetime (window->mCalendar, 1, 1);
     appointment_window = orage_appointment_window_new (gdt);
     gtk_window_present (GTK_WINDOW (appointment_window));
     g_date_time_unref (gdt);
@@ -175,10 +173,9 @@ static void mView_ViewSelectedWeek_activate_cb (
     G_GNUC_UNUSED GtkMenuItem *menuitem, gpointer user_data)
 {
     GDateTime *gdt;
-    OrageWindow *window = ORAGE_WINDOW (user_data);
+    OrageWindowClassic *window = ORAGE_WINDOW_CLASSIC (user_data);
 
-    gdt = orage_cal_to_gdatetime (
-        orage_window_classic_get_calendar (window), 1, 1);
+    gdt = orage_cal_to_gdatetime (window->mCalendar, 1, 1);
     orage_week_window_build (gdt);
     g_date_time_unref (gdt);
 }
@@ -186,9 +183,9 @@ static void mView_ViewSelectedWeek_activate_cb (
 static void mView_selectToday_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
                                            gpointer user_data)
 {
-    OrageWindow *window = ORAGE_WINDOW (user_data);
+    OrageWindowClassic *window = ORAGE_WINDOW_CLASSIC (user_data);
 
-    orage_select_today (orage_window_classic_get_calendar (window));
+    orage_select_today (window->mCalendar);
 }
 
 static void mHelp_help_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
@@ -587,7 +584,7 @@ static void create_mainbox_event_info_box (OrageWindowClassic *window)
     GDateTime *gdt;
     GDateTime *gdt_tmp;
 
-    gdt = orage_cal_to_gdatetime (GTK_CALENDAR (window->mCalendar), 1, 1);
+    gdt = orage_cal_to_gdatetime (window->mCalendar, 1, 1);
 
     window->mEvent_vbox = gtk_grid_new ();
     g_object_set (window->mEvent_vbox, "vexpand", TRUE,
@@ -687,7 +684,7 @@ static void build_mainbox_event_info (OrageWindow *window)
     clwindow = ORAGE_WINDOW_CLASSIC (window);
 
     if (g_par.show_event_days) {
-        gdt = orage_cal_to_gdatetime (GTK_CALENDAR (clwindow->mCalendar), 1, 1);
+        gdt = orage_cal_to_gdatetime (clwindow->mCalendar, 1, 1);
         ical_type = XFICAL_TYPE_EVENT;
         g_strlcpy (file_type, "O00.", sizeof (file_type));
 #if 0
@@ -774,13 +771,14 @@ static void orage_window_classic_init (OrageWindowClassic *self)
     build_menu (self);
 
     /* Build the calendar */
-    self->mCalendar = gtk_calendar_new ();
+    self->mCalendar = (GtkCalendar *)gtk_calendar_new ();
     g_object_set (self->mCalendar, "hexpand", TRUE,
                                    "halign", GTK_ALIGN_FILL,
                                    NULL);
-    gtk_grid_attach_next_to (GTK_GRID (self->main_box), self->mCalendar, NULL,
+    gtk_grid_attach_next_to (GTK_GRID (self->main_box),
+                             GTK_WIDGET (self->mCalendar), NULL,
                              GTK_POS_BOTTOM, 1, 1);
-    gtk_widget_show (self->mCalendar);
+    gtk_widget_show (GTK_WIDGET (self->mCalendar));
 
     /* Build the Info boxes */
     create_mainbox_todo_info (self);
@@ -830,7 +828,7 @@ void orage_window_classic_hide_event (OrageWindow *window)
 
 GtkCalendar *orage_window_classic_get_calendar (OrageWindow *window)
 {
-    return GTK_CALENDAR (ORAGE_WINDOW_CLASSIC (window)->mCalendar);
+    return ORAGE_WINDOW_CLASSIC (window)->mCalendar;
 }
 
 void orage_window_classic_build_info (OrageWindow *window)
@@ -841,8 +839,9 @@ void orage_window_classic_build_info (OrageWindow *window)
 
 void orage_window_classic_month_changed (OrageWindow *window)
 {
-    mCalendar_month_changed_cb (orage_window_classic_get_calendar (window),
-                                window);
+    OrageWindowClassic *clwindow = ORAGE_WINDOW_CLASSIC (window);
+
+    mCalendar_month_changed_cb (clwindow->mCalendar, window);
 }
 
 void orage_window_classic_raise (OrageWindow *window)
@@ -853,7 +852,7 @@ void orage_window_classic_raise (OrageWindow *window)
         gtk_window_move (gtk_window, g_par.pos_x, g_par.pos_y);
 
     if (g_par.select_always_today)
-        orage_select_today (orage_window_classic_get_calendar (window));
+        orage_select_today (ORAGE_WINDOW_CLASSIC (window)->mCalendar);
 
     if (g_par.set_stick)
         gtk_window_stick (gtk_window);

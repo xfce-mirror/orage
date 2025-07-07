@@ -634,7 +634,7 @@ void orage_window_next_mark_appointments (OrageWindow *window)
     if (!xfical_file_open (TRUE))
         return;
 
-    xfical_mark_calendar (orage_window_classic_get_calendar (window));
+    xfical_mark_calendar (orage_window_next_get_calendar (window));
     xfical_file_close (TRUE);
 #else
     g_debug ("TODO: %s", G_STRFUNC);
@@ -645,7 +645,7 @@ void orage_window_next_mark_appointments (OrageWindow *window)
 void orage_window_next_month_changed (OrageWindow *window)
 {
 #if 0
-    mCalendar_month_changed_cb (orage_window_classic_get_calendar (window),
+    mCalendar_month_changed_cb (orage_window_next_get_calendar (window),
                                 window);
 #else
     g_debug ("TODO: %s", G_STRFUNC);
