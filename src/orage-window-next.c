@@ -628,29 +628,35 @@ void orage_window_next_hide_todo (OrageWindow *window)
 void orage_window_next_mark_appointments (OrageWindow *window)
 {
 #if 0
-    if (window == NULL)
+    GDateTime *gdt_begin;
+    GDateTime *gdt_end;
+#endif
+    OrageWindowNext *nxtwindow;
+
+    g_return_if_fail (window != NULL);
+
+    if (xfical_file_open (TRUE) == FALSE)
         return;
 
-    if (!xfical_file_open (TRUE))
-        return;
+    nxtwindow = ORAGE_WINDOW_NEXT (window);
+#if 0
+    gdt_begin = orage_window_next_get_first_date (nxtwindow);
+    gdt_end = orage_window_next_get_last_date (nxtwindow);
+#endif
 
+#if 0
     xfical_mark_calendar (orage_window_next_get_calendar (window));
-    xfical_file_close (TRUE);
 #else
     g_debug ("TODO: %s", G_STRFUNC);
-    (void)window;
 #endif
+
+    xfical_file_close (TRUE);
 }
 
 void orage_window_next_initial_load (OrageWindow *window)
 {
-#if 0
-    mCalendar_month_changed_cb (orage_window_next_get_calendar (window),
-                                window);
-#else
-    g_debug ("TODO: %s", G_STRFUNC);
-    (void)window;
-#endif
+    (void)g_idle_add_once ((GSourceOnceFunc)orage_window_next_mark_appointments,
+                           window);
 }
 
 void orage_window_next_raise (OrageWindow *window)

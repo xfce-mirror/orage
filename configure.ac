@@ -10,7 +10,7 @@ dnl Version information
 m4_define([copyright_year], [2025])
 XDT_VERSION_INIT([4.21.0], [git])
 
-m4_define([glib_minimum_version], [2.68.0])
+m4_define([glib_minimum_version], [2.74.0])
 m4_define([gtk_minimum_version], [3.24.0])
 m4_define([xfce_minimum_version], [4.20.0])
 m4_define([notify_minimum_version], [0.7.0])
