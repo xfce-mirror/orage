@@ -45,7 +45,7 @@ void orage_window_next_mark_appointments (OrageWindow *window);
 void orage_window_next_build_info (OrageWindow *window);
 void orage_window_next_build_events (OrageWindow *window);
 void orage_window_next_build_todo (OrageWindow *window);
-void orage_window_next_month_changed (OrageWindow *window);
+void orage_window_next_initial_load (OrageWindow *window);
 void orage_window_next_show_menubar (OrageWindow *window, gboolean show);
 void orage_window_next_hide_todo (OrageWindow *window);
 void orage_window_next_hide_event (OrageWindow *window);

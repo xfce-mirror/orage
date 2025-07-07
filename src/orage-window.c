@@ -70,11 +70,11 @@ void orage_window_build_todo (OrageWindow *window)
     ORAGE_WINDOW_GET_IFACE (window)->build_todo (window);
 }
 
-void orage_window_month_changed (OrageWindow *window)
+void orage_window_initial_load (OrageWindow *window)
 {
     g_return_if_fail (ORAGE_IS_WINDOW (window));
 
-    ORAGE_WINDOW_GET_IFACE (window)->month_changed (window);
+    ORAGE_WINDOW_GET_IFACE (window)->initial_load (window);
 }
 
 void orage_window_show_menubar (OrageWindow *window, gboolean show)

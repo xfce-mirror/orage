@@ -516,7 +516,7 @@ static void orage_window_next_interface_init (OrageWindowInterface *iface)
     iface->build_info = orage_window_next_build_info;
     iface->build_events = orage_window_next_build_events;
     iface->build_todo = orage_window_next_build_todo;
-    iface->month_changed = orage_window_next_month_changed;
+    iface->initial_load = orage_window_next_initial_load;
     iface->show_menubar = orage_window_next_show_menubar;
     iface->hide_todo = orage_window_next_hide_todo;
     iface->hide_event = orage_window_next_hide_event;
@@ -642,7 +642,7 @@ void orage_window_next_mark_appointments (OrageWindow *window)
 #endif
 }
 
-void orage_window_next_month_changed (OrageWindow *window)
+void orage_window_next_initial_load (OrageWindow *window)
 {
 #if 0
     mCalendar_month_changed_cb (orage_window_next_get_calendar (window),

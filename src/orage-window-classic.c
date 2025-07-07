@@ -749,7 +749,7 @@ static void orage_window_classic_interface_init (OrageWindowInterface *iface)
     iface->build_info = orage_window_classic_build_info;
     iface->build_events = orage_window_classic_build_events;
     iface->build_todo = orage_window_classic_build_todo;
-    iface->month_changed = orage_window_classic_month_changed;
+    iface->initial_load = orage_window_classic_initial_load;
     iface->show_menubar = orage_window_classic_show_menubar;
     iface->hide_todo = orage_window_classic_hide_todo;
     iface->hide_event = orage_window_classic_hide_event;
@@ -837,7 +837,7 @@ void orage_window_classic_build_info (OrageWindow *window)
     build_mainbox_event_info (window);
 }
 
-void orage_window_classic_month_changed (OrageWindow *window)
+void orage_window_classic_initial_load (OrageWindow *window)
 {
     OrageWindowClassic *clwindow = ORAGE_WINDOW_CLASSIC (window);
 

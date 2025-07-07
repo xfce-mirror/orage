@@ -41,7 +41,7 @@ struct _OrageWindowInterface
     void (*build_info) (OrageWindow *window);
     void (*build_events) (OrageWindow *window);
     void (*build_todo) (OrageWindow *window);
-    void (*month_changed) (OrageWindow *window);
+    void (*initial_load) (OrageWindow *window);
     void (*show_menubar) (OrageWindow *window, gboolean show);
     void (*hide_todo) (OrageWindow *window);
     void (*hide_event) (OrageWindow *window);
@@ -60,7 +60,7 @@ void orage_window_mark_appointments (OrageWindow *window);
 void orage_window_build_info (OrageWindow *window);
 void orage_window_build_events (OrageWindow *window);
 void orage_window_build_todo (OrageWindow *window);
-void orage_window_month_changed (OrageWindow *window);
+void orage_window_initial_load (OrageWindow *window);
 
 void orage_window_show_menubar (OrageWindow *window, gboolean show);
 void orage_window_hide_todo (OrageWindow *window);
