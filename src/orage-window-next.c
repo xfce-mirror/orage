@@ -243,8 +243,8 @@ static void on_next_clicked (G_GNUC_UNUSED GtkButton *button,
     }
     else
     {
-        g_debug ("%s: '%s' next is not yet implemented",
-                 G_STRFUNC, visible_name);
+        /* Requested page handinling is not yet implemented. */
+        g_return_if_reached ();
     }
 }
 
@@ -265,22 +265,9 @@ static void on_back_clicked (G_GNUC_UNUSED GtkButton *button,
     }
     else
     {
-        g_debug ("%s: '%s' back is not yet implemented", 
-                 G_STRFUNC, visible_name);
+        /* Requested page handinling is not yet implemented. */
+        g_return_if_reached ();
     }
-}
-
-static void orage_window_next_restore_geometry (OrageWindowNext *window)
-{
-    GtkWindow *gwin = GTK_WINDOW (window);
-
-    gtk_window_set_position (gwin, GTK_WIN_POS_NONE);
-
-    if (g_par.size_x || g_par.size_y)
-        gtk_window_set_default_size (gwin, g_par.size_x, g_par.size_y);
-
-    if (g_par.pos_x || g_par.pos_y)
-        gtk_window_move (gwin, g_par.pos_x, g_par.pos_y);
 }
 
 static void menu_clean (GtkMenu *menu)
@@ -374,6 +361,47 @@ static void update_help_menu (OrageWindowNext *window, GtkWidget *menu)
         GTK_MENU_SHELL (menu));
 
     gtk_widget_show_all (GTK_WIDGET (menu));
+}
+
+static GDateTime *orage_window_next_get_first_date (OrageWindowNext *window)
+{
+    const gchar *visible_name =
+        gtk_stack_get_visible_child_name (window->stack_view);
+
+    if (g_strcmp0 (MONTH_PAGE, visible_name) == 0)
+        return orage_month_view_return_first_date (window->month_view);
+    else
+    {
+        /* Requested page handinling is not yet implemented. */
+        g_return_val_if_reached (g_date_time_new_now_local ());
+    }
+}
+
+static GDateTime *orage_window_next_get_last_date (OrageWindowNext *window)
+{
+    const gchar *visible_name =
+        gtk_stack_get_visible_child_name (window->stack_view);
+
+    if (g_strcmp0 (MONTH_PAGE, visible_name) == 0)
+        return orage_month_view_return_last_date (window->month_view);
+    else
+    {
+        /* Requested page handinling is not yet implemented. */
+        g_return_val_if_reached (g_date_time_new_now_local ());
+    }
+}
+
+static void orage_window_next_restore_geometry (OrageWindowNext *window)
+{
+    GtkWindow *gwin = GTK_WINDOW (window);
+
+    gtk_window_set_position (gwin, GTK_WIN_POS_NONE);
+
+    if (g_par.size_x || g_par.size_y)
+        gtk_window_set_default_size (gwin, g_par.size_x, g_par.size_y);
+
+    if (g_par.pos_x || g_par.pos_y)
+        gtk_window_move (gwin, g_par.pos_x, g_par.pos_y);
 }
 
 static void orage_window_next_add_menu (OrageWindowNext *window,
@@ -627,10 +655,8 @@ void orage_window_next_hide_todo (OrageWindow *window)
 
 void orage_window_next_mark_appointments (OrageWindow *window)
 {
-#if 0
     GDateTime *gdt_begin;
     GDateTime *gdt_end;
-#endif
     OrageWindowNext *nxtwindow;
 
     g_return_if_fail (window != NULL);
@@ -639,16 +665,23 @@ void orage_window_next_mark_appointments (OrageWindow *window)
         return;
 
     nxtwindow = ORAGE_WINDOW_NEXT (window);
-#if 0
     gdt_begin = orage_window_next_get_first_date (nxtwindow);
     gdt_end = orage_window_next_get_last_date (nxtwindow);
-#endif
 
 #if 0
     xfical_mark_calendar (orage_window_next_get_calendar (window));
 #else
-    g_debug ("TODO: %s", G_STRFUNC);
+    gchar *begin_text = g_date_time_format_iso8601 (gdt_begin);
+    gchar *end_text = g_date_time_format_iso8601 (gdt_end);
+
+    g_debug ("TODO: %s: begin='%s' / end='%s'", G_STRFUNC, begin_text, end_text);
+
+    g_free (begin_text);
+    g_free (end_text);
 #endif
+
+    g_date_time_unref (gdt_begin);
+    g_date_time_unref (gdt_end);
 
     xfical_file_close (TRUE);
 }

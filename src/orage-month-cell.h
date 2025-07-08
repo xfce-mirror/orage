@@ -32,6 +32,7 @@ G_DECLARE_FINAL_TYPE (OrageMonthCell, orage_month_cell, ORAGE, MONTH_CELL, GtkBo
 GtkWidget *orage_month_cell_new (void);
 
 void orage_month_cell_set_date (OrageMonthCell *self, GDateTime *date);
+GDateTime *orage_month_cell_get_date (OrageMonthCell *self);
 void orage_month_cell_set_different_month (OrageMonthCell *self,
                                            gboolean different);
 

@@ -36,7 +36,7 @@ struct _OrageMonthView
     GtkWidget *month_label;
     GtkWidget *label_weekday[7];
     GtkWidget *label_week_nr[6];
-    GtkWidget *month_cell[6][7];
+    OrageMonthCell *month_cell[6][7];
     GtkWidget *header;
 
     GDateTime *date;
@@ -129,7 +129,7 @@ static void orage_month_view_update_month_cells (OrageMonthView *self)
     {
         for (col = 0; col < 7; col++)
         {
-            cell = ORAGE_MONTH_CELL (self->month_cell[row][col]);
+            cell = self->month_cell[row][col];
 
             cell_date = g_date_time_add_days (gdt,
                                               row * 7 + col - offset);
@@ -348,7 +348,7 @@ static void orage_month_view_init (OrageMonthView *self)
             gtk_size_group_add_widget (date_group, cell);
             gtk_grid_attach (GTK_GRID (self->month_grid), cell, col, row + 1,
                              1, 1);
-            self->month_cell[row][col - 1] = cell;
+            self->month_cell[row][col - 1] = ORAGE_MONTH_CELL (cell);
         }
     }
 
@@ -363,15 +363,25 @@ GtkWidget *orage_month_view_new (const FirstDayOfWeek first_day)
                          NULL);
 }
 
-void orage_month_view_select_month (OrageMonthView *month_view, GDateTime *gdt)
+void orage_month_view_select_month (OrageMonthView *self, GDateTime *gdt)
 {
     GDateTime *date_old;
 
-    date_old = month_view->date;
-    month_view->date = g_date_time_ref (gdt);
+    date_old = self->date;
+    self->date = g_date_time_ref (gdt);
     g_date_time_unref (date_old);
 
-    orage_month_view_update_month_label (month_view);
-    orage_month_view_update_week_nr_cells (month_view);
-    orage_month_view_update_month_cells (month_view);
+    orage_month_view_update_month_label (self);
+    orage_month_view_update_week_nr_cells (self);
+    orage_month_view_update_month_cells (self);
+}
+
+GDateTime *orage_month_view_return_first_date (OrageMonthView *self)
+{
+    return orage_month_cell_get_date (self->month_cell[0][0]);
+}
+
+GDateTime *orage_month_view_return_last_date (OrageMonthView *self)
+{
+    return orage_month_cell_get_date (self->month_cell[5][6]);
 }

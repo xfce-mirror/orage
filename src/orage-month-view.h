@@ -38,7 +38,9 @@ typedef enum
 G_DECLARE_FINAL_TYPE (OrageMonthView, orage_month_view, ORAGE, MONTH_VIEW, GtkBox)
 
 GtkWidget *orage_month_view_new (FirstDayOfWeek first_day);
-void orage_month_view_select_month (OrageMonthView *month_view, GDateTime *gdt);
+void orage_month_view_select_month (OrageMonthView *self, GDateTime *gdt);
+GDateTime *orage_month_view_return_first_date (OrageMonthView *self);
+GDateTime *orage_month_view_return_last_date (OrageMonthView *self);
 
 G_END_DECLS
 
