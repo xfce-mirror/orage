@@ -95,7 +95,7 @@ GDateTime *orage_month_cell_get_date (OrageMonthCell *self)
 {
     g_return_val_if_fail (ORAGE_IS_MONTH_CELL (self), NULL);
 
-    return self->date;
+    return g_date_time_ref (self->date);
 }
 
 void orage_month_cell_set_different_month (OrageMonthCell *self,

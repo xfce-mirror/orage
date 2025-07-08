@@ -32,7 +32,15 @@ G_DECLARE_FINAL_TYPE (OrageMonthCell, orage_month_cell, ORAGE, MONTH_CELL, GtkBo
 GtkWidget *orage_month_cell_new (void);
 
 void orage_month_cell_set_date (OrageMonthCell *self, GDateTime *date);
+
+/** Returns a new reference to the date associated with this month cell. The
+ *  returned #GDateTime is owned by the caller and must be freed with
+ *  g_date_time_unref() when no longer needed.
+ *  @param self a valid #OrageMonthCell instance
+ *  @return a newly referenced #GDateTime (transfer full)
+ */
 GDateTime *orage_month_cell_get_date (OrageMonthCell *self);
+
 void orage_month_cell_set_different_month (OrageMonthCell *self,
                                            gboolean different);
 
