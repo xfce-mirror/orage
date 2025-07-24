@@ -275,9 +275,7 @@ static void orage_open_today_window (OrageWindow *window)
 {
     GDateTime *gdt;
 
-    gdt = g_date_time_new_now_local ();
-    orage_select_date (orage_window_get_calendar (window), gdt);
-    g_date_time_unref (gdt);
+    orage_select_today (orage_window_get_calendar (window));
     (void)create_el_win (NULL);
 }
 
