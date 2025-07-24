@@ -29,6 +29,7 @@ struct _OrageMonthCell
     GtkWidget *main_box;
     GtkWidget *day_label;
     GDateTime *date;
+    gboolean different_month;
 };
 
 G_DEFINE_TYPE (OrageMonthCell, orage_month_cell, GTK_TYPE_BOX)
@@ -45,6 +46,7 @@ static void orage_month_cell_init (OrageMonthCell *self)
     self->main_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 
     self->day_label = gtk_label_new (NULL);
+    self->different_month = TRUE;
 
     gtk_box_pack_start (GTK_BOX (self->main_box), self->day_label, FALSE, FALSE,
                         0);
@@ -56,6 +58,23 @@ static void orage_month_cell_init (OrageMonthCell *self)
 GtkWidget *orage_month_cell_new (void)
 {
     return g_object_new (ORAGE_MONTH_CELL_TYPE, NULL);
+}
+
+void orage_month_cell_clear (OrageMonthCell *self)
+{
+    GtkStyleContext *context;
+
+    g_return_if_fail (ORAGE_IS_MONTH_CELL (self));
+
+    orage_gdatetime_unref (self->date);
+    self->date = NULL;
+    self->different_month = TRUE;
+
+    context = gtk_widget_get_style_context (GTK_WIDGET (self));
+    gtk_style_context_remove_class (context, "today");
+    gtk_style_context_remove_class (context, "highlighted");
+
+    gtk_label_set_text (GTK_LABEL (self->day_label), NULL);
 }
 
 void orage_month_cell_set_date (OrageMonthCell *self, GDateTime *date)
@@ -111,4 +130,24 @@ void orage_month_cell_set_different_month (OrageMonthCell *self,
         gtk_style_context_add_class (context, "out-of-month");
     else
         gtk_style_context_remove_class (context, "out-of-month");
+
+    self->different_month = different;
+}
+
+void orage_month_cell_set_highlight (OrageMonthCell *self,
+                                     const gboolean highlighted)
+{
+    GtkStyleContext *context;
+
+    g_return_if_fail (ORAGE_IS_MONTH_CELL (self));
+
+    if (self->different_month)
+        return;
+
+    context = gtk_widget_get_style_context (GTK_WIDGET (self));
+
+    if (highlighted)
+        gtk_style_context_add_class (context, "highlighted");
+    else
+        gtk_style_context_remove_class (context, "highlighted");
 }

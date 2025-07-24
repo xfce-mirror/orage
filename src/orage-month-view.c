@@ -134,6 +134,7 @@ static void orage_month_view_update_month_cells (OrageMonthView *self)
             cell_date = g_date_time_add_days (gdt,
                                               row * 7 + col - offset);
             cell_month = g_date_time_get_month (cell_date);
+            orage_month_cell_clear (cell);
             orage_month_cell_set_date (cell, cell_date);
             orage_month_cell_set_different_month (cell, month != cell_month);
             g_date_time_unref (cell_date);
@@ -376,12 +377,52 @@ void orage_month_view_select_month (OrageMonthView *self, GDateTime *gdt)
     orage_month_view_update_month_cells (self);
 }
 
-GDateTime *orage_month_view_return_first_date (OrageMonthView *self)
+GDateTime *orage_month_view_get_first_date (OrageMonthView *self)
 {
     return orage_month_cell_get_date (self->month_cell[0][0]);
 }
 
-GDateTime *orage_month_view_return_last_date (OrageMonthView *self)
+GDateTime *orage_month_view_get_last_date (OrageMonthView *self)
 {
     return orage_month_cell_get_date (self->month_cell[5][6]);
+}
+
+void orage_month_view_mark_dates (OrageMonthView *self,
+                                  GDateTime *gdt_start, GDateTime *gdt_end)
+{
+    guint row;
+    guint col;
+    gboolean date_found;
+    OrageMonthCell *cell;
+    GDateTime *next;
+    GDateTime *current;
+
+    current = g_date_time_ref (gdt_start);
+    while (g_date_time_compare (current, gdt_end) <= 0)
+    {
+        for (row = 0; row < 6; row++)
+        {
+            date_found = FALSE;
+            for (col = 0; col < 7; col++)
+            {
+                cell = self->month_cell[row][col];
+
+                if (orage_gdatetime_compare_date (orage_month_cell_get_date (cell), current) == 0)
+                {
+                    date_found = TRUE;
+                    orage_month_cell_set_highlight (cell, TRUE);
+                }
+            }
+
+            if (date_found)
+                break;
+        }
+
+        next = g_date_time_add_days (current, 1);
+        g_date_time_unref (current);
+
+        current = next;
+    }
+
+    g_date_time_unref (current);
 }

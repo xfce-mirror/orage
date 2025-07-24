@@ -99,6 +99,10 @@ typedef enum
     XFICAL_RECUR_MONTH_DEC
 } xfical_recur_month_sel;
 
+typedef void (*xfical_event_callback) (GDateTime *start,
+                                       GDateTime *end,
+                                       void *params);
+
 typedef struct _xfical_appt
 {
     xfical_type type;
@@ -328,6 +332,9 @@ void xfical_get_each_app_within_time (GDateTime *a_day, gint days
 
 void xfical_mark_calendar(GtkCalendar *gtkcal);
 void xfical_mark_calendar_recur(GtkCalendar *gtkcal, const xfical_appt *appt);
+
+void xfical_list_events_in_range (GDateTime *gdt_start, GDateTime *gdt_end,
+                                  xfical_event_callback cb, void *param);
 
 void xfical_alarm_build_list(gboolean first_list_today);
 

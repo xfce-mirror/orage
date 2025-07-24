@@ -87,6 +87,8 @@ static void orage_window_next_finalize (GObject *object);
 static void orage_window_next_interface_init (OrageWindowInterface *interface);
 static GDateTime *orage_window_next_get_selected_date (OrageWindowNext *window);
 static void orage_window_next_restore_geometry (OrageWindowNext *window);
+static GDateTime *orage_window_next_get_first_date (OrageWindowNext *window);
+static GDateTime *orage_window_next_get_last_date (OrageWindowNext *window);
 
 static void on_new_activated (OrageWindowNext *window);
 
@@ -231,7 +233,8 @@ static void on_next_clicked (G_GNUC_UNUSED GtkButton *button,
 {
     OrageWindowNext *nw = ORAGE_WINDOW_NEXT (user_data);
     GDateTime *gdt;
-    const gchar *visible_name = gtk_stack_get_visible_child_name (nw->stack_view);
+    const gchar *visible_name =
+        gtk_stack_get_visible_child_name (nw->stack_view);
 
     if (g_strcmp0 (MONTH_PAGE, visible_name) == 0)
     {
@@ -240,6 +243,7 @@ static void on_next_clicked (G_GNUC_UNUSED GtkButton *button,
         g_date_time_unref (gdt);
 
         orage_month_view_select_month (nw->month_view, nw->selected_date);
+        orage_window_next_mark_appointments (ORAGE_WINDOW (user_data));
     }
     else
     {
@@ -253,7 +257,8 @@ static void on_back_clicked (G_GNUC_UNUSED GtkButton *button,
 {
     OrageWindowNext *nw = ORAGE_WINDOW_NEXT (user_data);
     GDateTime *gdt;
-    const gchar *visible_name = gtk_stack_get_visible_child_name (nw->stack_view);
+    const gchar *visible_name =
+        gtk_stack_get_visible_child_name (nw->stack_view);
 
     if (g_strcmp0 (MONTH_PAGE, visible_name) == 0)
     {
@@ -262,10 +267,27 @@ static void on_back_clicked (G_GNUC_UNUSED GtkButton *button,
         g_date_time_unref (gdt);
 
         orage_month_view_select_month (nw->month_view, nw->selected_date);
+        orage_window_next_mark_appointments (ORAGE_WINDOW (user_data));
     }
     else
     {
-        /* Requested page handinling is not yet implemented. */
+        /* Requested page handling is not yet implemented. */
+        g_return_if_reached ();
+    }
+}
+
+static void on_list_event_callback (GDateTime *gdt_start, GDateTime *gdt_end,
+                                    void *param)
+{
+    OrageWindowNext *window = ORAGE_WINDOW_NEXT (param);
+    const gchar *visible_name =
+        gtk_stack_get_visible_child_name (window->stack_view);
+
+    if (g_strcmp0 (MONTH_PAGE, visible_name) == 0)
+        orage_month_view_mark_dates (window->month_view, gdt_start, gdt_end);
+    else
+    {
+        /* Requested page handling is not yet implemented. */
         g_return_if_reached ();
     }
 }
@@ -375,7 +397,7 @@ static GDateTime *orage_window_next_get_first_date (OrageWindowNext *window)
         gtk_stack_get_visible_child_name (window->stack_view);
 
     if (g_strcmp0 (MONTH_PAGE, visible_name) == 0)
-        return orage_month_view_return_first_date (window->month_view);
+        return orage_month_view_get_first_date (window->month_view);
     else
     {
         /* Requested page handinling is not yet implemented. */
@@ -389,7 +411,7 @@ static GDateTime *orage_window_next_get_last_date (OrageWindowNext *window)
         gtk_stack_get_visible_child_name (window->stack_view);
 
     if (g_strcmp0 (MONTH_PAGE, visible_name) == 0)
-        return orage_month_view_return_last_date (window->month_view);
+        return orage_month_view_get_last_date (window->month_view);
     else
     {
         /* Requested page handinling is not yet implemented. */
@@ -661,7 +683,7 @@ void orage_window_next_hide_todo (OrageWindow *window)
 
 void orage_window_next_mark_appointments (OrageWindow *window)
 {
-    GDateTime *gdt_begin;
+    GDateTime *gdt_start;
     GDateTime *gdt_end;
     OrageWindowNext *nxtwindow;
 
@@ -671,27 +693,24 @@ void orage_window_next_mark_appointments (OrageWindow *window)
         return;
 
     nxtwindow = ORAGE_WINDOW_NEXT (window);
-    gdt_begin = orage_window_next_get_first_date (nxtwindow);
+    gdt_start = orage_window_next_get_first_date (nxtwindow);
     gdt_end = orage_window_next_get_last_date (nxtwindow);
 
-#if 0
-    xfical_mark_calendar (orage_window_next_get_calendar (window));
-#else
-    gchar *begin_text = g_date_time_format_iso8601 (gdt_begin);
+#if 1
+    gchar *begin_text = g_date_time_format_iso8601 (gdt_start);
     gchar *end_text = g_date_time_format_iso8601 (gdt_end);
 
-    g_debug ("TODO: %s: begin='%s' / end='%s'", G_STRFUNC, begin_text, end_text);
+    g_debug ("TODO: %s: start='%s' / end='%s'", G_STRFUNC, begin_text, end_text);
 
     g_free (begin_text);
     g_free (end_text);
 #endif
 
     orage_window_next_clear_events (nxtwindow);
-#if 0
-    xfical_fill_all_events_from_to (gdt_begin, gdt_end, nxtwindow);
-#endif
+    xfical_list_events_in_range (gdt_start, gdt_end,
+                                 on_list_event_callback, nxtwindow);
 
-    g_date_time_unref (gdt_begin);
+    g_date_time_unref (gdt_start);
     g_date_time_unref (gdt_end);
 
     xfical_file_close (TRUE);

@@ -39,8 +39,10 @@ G_DECLARE_FINAL_TYPE (OrageMonthView, orage_month_view, ORAGE, MONTH_VIEW, GtkBo
 
 GtkWidget *orage_month_view_new (FirstDayOfWeek first_day);
 void orage_month_view_select_month (OrageMonthView *self, GDateTime *gdt);
-GDateTime *orage_month_view_return_first_date (OrageMonthView *self);
-GDateTime *orage_month_view_return_last_date (OrageMonthView *self);
+GDateTime *orage_month_view_get_first_date (OrageMonthView *self);
+GDateTime *orage_month_view_get_last_date (OrageMonthView *self);
+void orage_month_view_mark_dates (OrageMonthView *self,
+                                  GDateTime *gdt_start, GDateTime *gdt_end);
 
 G_END_DECLS
 

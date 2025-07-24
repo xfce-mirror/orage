@@ -136,6 +136,18 @@ typedef struct _mark_calendar_data
     xfical_appt appt;
 } mark_calendar_data;
 
+typedef struct _mark_calendar_data2
+{
+    xfical_event_callback cb;
+    void *cb_param;
+    guint year;
+    guint month;
+    GDateTime *gdt_first;
+    GDateTime *gdt_last;
+    gint orig_start_hour, orig_end_hour;
+    xfical_appt appt;
+} mark_calendar_data2;
+
 /* timezone handling */
 static icaltimezone *utc_icaltimezone = NULL;
 static icaltimezone *local_icaltimezone = NULL;
@@ -3302,6 +3314,85 @@ static void mark_calendar (G_GNUC_UNUSED icalcomponent *c,
                                      edate.day);
 }
 
+/* Note that this not understand timezones, but gets always raw time, which we
+ * need to convert to correct timezone.
+ */
+static void mark_calendar2 (G_GNUC_UNUSED icalcomponent *c,
+                            icaltime_span *span,
+                            void *data)
+{
+    struct icaltimetype sdate, edate;
+    mark_calendar_data2 *cal_data;
+    gchar *str;
+    GDateTime *gdt_start;
+    GDateTime *gdt_end;
+    GDateTime *gdt_tmp;
+
+    cal_data = (mark_calendar_data2 *)data;
+
+    gdt_start = g_date_time_new_from_unix_utc (span->start);
+    gdt_end = g_date_time_new_from_unix_utc (span->end);
+
+    /* check bug 7886 explanation in function add_appt_to_list */
+    if (cal_data->appt.allDay && !cal_data->appt.use_duration)
+    {
+        gdt_tmp = gdt_end;
+        gdt_end = g_date_time_add_days (gdt_tmp, -1);
+        g_date_time_unref (gdt_tmp);
+    }
+
+    str = orage_gdatetime_to_icaltime (gdt_start, FALSE);
+    sdate = icaltime_from_string (str);
+    g_free (str);
+
+    str = orage_gdatetime_to_icaltime (gdt_end, FALSE);
+    edate = icaltime_from_string (str);
+    g_free (str);
+
+    if (cal_data->appt.freq != XFICAL_FREQ_HOURLY
+    &&  g_date_time_get_hour (gdt_start) != cal_data->orig_start_hour)
+    {
+        /* WHEN we arrive here, libical has done an extra UTC conversion, which
+         * we need to undo.
+         */
+        sdate = convert_to_zone (sdate, "UTC");
+        edate = convert_to_zone (edate, "UTC");
+    }
+    else
+    {
+        sdate = convert_to_zone (sdate, cal_data->appt.start_tz_loc);
+        edate = convert_to_zone (edate, cal_data->appt.end_tz_loc);
+    }
+    g_date_time_unref (gdt_start);
+    g_date_time_unref (gdt_end);
+    sdate = icaltime_convert_to_zone (sdate, local_icaltimezone);
+    edate = icaltime_convert_to_zone (edate, local_icaltimezone);
+
+    /* fix for bug 8508 prevent showing extra day in calendar. Only has effect
+     * when end date is midnight.
+     */
+    icaltime_adjust (&edate, 0, 0, 0, -1);
+
+    gdt_start = g_date_time_new_local (sdate.year, sdate.month, sdate.day, 0, 0, 0);
+    gdt_end = g_date_time_new_local (edate.year, edate.month, edate.day, 0, 0, 0);
+
+    if (g_date_time_compare (cal_data->gdt_first, gdt_start) > 0)
+    {
+        g_date_time_unref (gdt_start);
+        gdt_start = g_date_time_ref (cal_data->gdt_first);
+    }
+
+    if (g_date_time_compare (gdt_end, cal_data->gdt_last) > 0)
+    {
+        g_date_time_unref (gdt_end);
+        gdt_end = g_date_time_ref (cal_data->gdt_last);
+    }
+
+    cal_data->cb (gdt_start, gdt_end, cal_data->cb_param);
+    g_date_time_unref (gdt_start);
+    g_date_time_unref (gdt_end);
+}
+
  /* Mark days from appointment c into calendar
   * year: Year to be searched
   * month: Month to be searched
@@ -3439,6 +3530,163 @@ static void xfical_mark_calendar_from_component (GtkCalendar *gtkcal,
     } /* ICAL_VTODO_COMPONENT */
 }
 
+static void xfical_get_event_from_component (icalcomponent *c,
+                                             GDateTime *gdt_start,
+                                             GDateTime *gdt_end,
+                                             xfical_event_callback cb,
+                                             void *param)
+{
+#if 1
+    gchar *begin_text = g_date_time_format_iso8601 (gdt_start);
+    gchar *end_text = g_date_time_format_iso8601 (gdt_end);
+
+    g_debug ("TODO: %s: start='%s' / end='%s'", G_STRFUNC, begin_text, end_text);
+
+    g_free (begin_text);
+    g_free (end_text);
+#endif
+
+    xfical_period per;
+    struct icaltimetype nsdate, nedate;
+    struct icalrecurrencetype rrule;
+    icalrecur_iterator* ri;
+    icalproperty *p = NULL;
+    gboolean marked;
+    icalcomponent_kind kind;
+    gchar *tmp;
+    struct icaltimetype start;
+    mark_calendar_data2 cal_data;
+
+    /* Note that all VEVENTS are marked, but only the first VTODO
+     * end date is marked
+     */
+    kind = icalcomponent_isa (c);
+    if (kind == ICAL_VEVENT_COMPONENT)
+    {
+        tmp = orage_gdatetime_to_icaltime (gdt_start, FALSE);
+        nsdate = icaltime_from_string (tmp);
+        g_free (tmp);
+
+        tmp = orage_gdatetime_to_icaltime (gdt_end, FALSE);
+        nedate = icaltime_from_string (tmp);
+        g_free (tmp);
+
+        /* FIXME: we read the whole appointent just to get start and end
+         * timezones for mark_calendar. Too heavy?
+         * 1970 check due to bug 9507
+         */
+        p = icalcomponent_get_first_property (c, ICAL_DTSTART_PROPERTY);
+        start = icalproperty_get_dtstart (p);
+        if (start.year >= 1970)
+        {
+            cal_data.cb = cb;
+            cal_data.cb_param = param;
+            cal_data.gdt_first = g_date_time_ref (gdt_start);
+            cal_data.gdt_last = g_date_time_ref (gdt_end);
+            cal_data.year = g_date_time_get_year (gdt_start);
+            cal_data.month = g_date_time_get_month (gdt_start);
+            (void)get_appt_from_icalcomponent (c, &cal_data.appt);
+            /* BUG 7929. If calendar file contains same timezone definition than
+             * what the time is in, libical returns wrong time in span. But as
+             * the hour only changes with HOURLY repeating appointments, we can
+             * replace received hour with the hour from start time
+             */
+            p = icalcomponent_get_first_property (c, ICAL_DTSTART_PROPERTY);
+            start = icalproperty_get_dtstart (p);
+            cal_data.orig_start_hour = start.hour;
+            icalcomponent_foreach_recurrence (c, nsdate, nedate, mark_calendar2,
+                                              &cal_data);
+            g_free (cal_data.appt.categories);
+            orage_gdatetime_unref (cal_data.appt.starttime);
+            cal_data.appt.starttime = NULL;
+            orage_gdatetime_unref (cal_data.appt.endtime);
+            cal_data.appt.endtime = NULL;
+            orage_gdatetime_unref (cal_data.gdt_first);
+            cal_data.gdt_first = NULL;
+            orage_gdatetime_unref (cal_data.gdt_last);
+            cal_data.gdt_last = NULL;
+        }
+        else
+        {
+            g_debug ("%s@%d", G_STRFUNC, __LINE__);
+#if 0
+            per = ic_get_period (c, TRUE);
+            (void)xfical_mark_calendar_days (gtkcal, year, month,
+                                             per.stime.year, per.stime.month,
+                                             per.stime.day, per.etime.year,
+                                             per.etime.month, per.etime.day);
+            if ((p = icalcomponent_get_first_property(c,
+                                                      ICAL_RRULE_PROPERTY)) != NULL)
+            {
+                nsdate = icaltime_null_time ();
+                rrule = icalproperty_get_rrule (p);
+                ri = icalrecur_iterator_new (rrule, per.stime);
+                for (nsdate = icalrecur_iterator_next(ri), nedate = icaltime_add(nsdate, per.duration);
+                     !icaltime_is_null_time(nsdate) && (nsdate.year * 12 + nsdate.month) <= (int) (year * 12 + month);
+                     nsdate = icalrecur_iterator_next(ri), nedate = icaltime_add(nsdate, per.duration))
+                {
+                    if (!icalproperty_recurrence_is_excluded (c, &per.stime, &nsdate))
+                        (void)xfical_mark_calendar_days (gtkcal, year, month,
+                                                         nsdate.year,
+                                                         nsdate.month,
+                                                         nsdate.day,
+                                                         nedate.year,
+                                                         nedate.month,
+                                                         nedate.day);
+                }
+                icalrecur_iterator_free (ri);
+            }
+#endif
+        }
+    }
+    else if (kind == ICAL_VTODO_COMPONENT)
+    {
+#if 0
+        per = ic_get_period (c, TRUE);
+        marked = FALSE;
+        if (icaltime_is_null_time (per.ctime) || (local_compare(per.ctime, per.stime) < 0))
+        {
+            /* VTODO needs to be checked either if it never completed or it has
+             * completed before start.
+             */
+            marked = xfical_mark_calendar_days (gtkcal, year, month,
+                                                per.etime.year, per.etime.month,
+                                                per.etime.day, per.etime.year,
+                                                per.etime.month, per.etime.day);
+        }
+        if (!marked && (p = icalcomponent_get_first_property(c, ICAL_RRULE_PROPERTY)) != NULL)
+        {
+            /* Check recurring TODOs. */
+            nsdate = icaltime_null_time ();
+            rrule = icalproperty_get_rrule (p);
+            set_todo_times (c, &per); /* may change per.stime to per.ctime */
+            ri = icalrecur_iterator_new(rrule, per.stime);
+            for (nsdate = icalrecur_iterator_next (ri);
+                    !icaltime_is_null_time (nsdate)
+                    && (((nsdate.year * 12 + nsdate.month) <= (int)(year * 12 + month)
+                    && (local_compare(nsdate, per.ctime) <= 0))
+                    || icalproperty_recurrence_is_excluded (c, &per.stime, &nsdate));
+                    nsdate = icalrecur_iterator_next (ri))
+            {
+                /* Find the active one like in
+                 *  xfical_appt_get_next_on_day_internal
+                 */
+            }
+
+            icalrecur_iterator_free (ri);
+            if (!icaltime_is_null_time (nsdate))
+            {
+                nedate = icaltime_add (nsdate, per.duration);
+                (void) xfical_mark_calendar_days (gtkcal, year, month,
+                                                  nedate.year, nedate.month,
+                                                  nedate.day, nedate.year,
+                                                  nedate.month, nedate.day);
+            }
+        }
+#endif
+    }
+}
+
 void xfical_mark_calendar_recur(GtkCalendar *gtkcal, const xfical_appt *appt)
 {
     guint year, month;
@@ -3482,6 +3730,22 @@ static void xfical_mark_calendar_file (GtkCalendar *gtkcal, icalcomponent *base,
     } 
 }
 
+static void xfical_list_events_from_component (icalcomponent *base,
+                                               GDateTime *gdt_start,
+                                               GDateTime *gdt_end,
+                                               xfical_event_callback cb,
+                                               void *param)
+{
+    icalcomponent *c;
+
+    for (c = icalcomponent_get_first_component (base, ICAL_ANY_COMPONENT);
+         c != NULL;
+         c = icalcomponent_get_next_component (base, ICAL_ANY_COMPONENT))
+    {
+        xfical_get_event_from_component (c, gdt_start, gdt_end, cb, param);
+    }
+}
+
 void xfical_mark_calendar(GtkCalendar *gtkcal)
 {
     gint i;
@@ -3492,6 +3756,21 @@ void xfical_mark_calendar(GtkCalendar *gtkcal)
     xfical_mark_calendar_file(gtkcal, ic_ical, year, month+1);
     for (i = 0; i < g_par.foreign_count; i++) {
         xfical_mark_calendar_file(gtkcal, ic_f_ical[i].ical, year, month+1);
+    }
+}
+
+void xfical_list_events_in_range (GDateTime *gdt_start, GDateTime *gdt_end,
+                                  xfical_event_callback cb, void *param)
+{
+    gint i;
+
+    xfical_list_events_from_component (ic_ical, gdt_start, gdt_end, cb, param);
+
+    for (i = 0; i < g_par.foreign_count; i++)
+    {
+        xfical_list_events_from_component (ic_f_ical[i].ical,
+                                           gdt_start, gdt_end,
+                                           cb, param);
     }
 }
 

@@ -89,3 +89,7 @@ OrageTrayIcon > row-3{
 #orage-month-cell.today{
    background-color: alpha(@theme_selected_bg_color, 0.25);
 }
+
+#orage-month-cell.highlighted{
+   font-weight: bold;
+}
