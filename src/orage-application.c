@@ -273,8 +273,6 @@ static void open_new_appointment_window (void)
 
 static void orage_open_today_window (OrageWindow *window)
 {
-    GDateTime *gdt;
-
     orage_select_today (orage_window_get_calendar (window));
     (void)create_el_win (NULL);
 }
@@ -311,7 +309,7 @@ static void orage_application_activate (GApplication *app)
     else
     {
         /* Create the main window */
-        window = orage_window_create (self, TRUE);
+        window = orage_window_create (self, g_par.use_new_ui);
 
         g_signal_connect (window, "delete_event",
                           G_CALLBACK (window_delete_event_cb), self);

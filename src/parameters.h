@@ -60,6 +60,7 @@ typedef struct _parameters
     gboolean start_minimized;
     gboolean set_stick;
     gboolean set_ontop;
+    gboolean use_new_ui;
     
     /* ical week start day (0 = Monday, 1 = Tuesday,... 6 = Sunday) */
     gint ical_weekstartday;

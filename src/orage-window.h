@@ -49,6 +49,12 @@ struct _OrageWindowInterface
     void (*raise)(OrageWindow *window);
 };
 
+/** Create new Orage main window.
+ *  @param app pointer to applcation
+ *  @param use_new_ui select between old or new UI, TRUE fror new UI, false for
+ *         old
+ *  @return a newly created OrageWindow
+ */
 GtkWidget *orage_window_create (OrageApplication *app, gboolean use_new_ui);
 
 void orage_window_mark_appointments (OrageWindow *window);

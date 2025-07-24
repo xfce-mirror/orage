@@ -62,6 +62,7 @@
 
 #define ORAGE_WAKEUP_TIMER_PERIOD 60
 
+#define USE_NEW_UI "Use new UI"
 #define SYNC_SOURCE_COUNT "Sync source count"
 #define SYNC_DESCRIPTION "Sync %02d description"
 #define SYNC_COMMAND "Sync %02d command"
@@ -137,6 +138,14 @@ static void set_border (void)
     OrageApplication *app = ORAGE_APPLICATION (g_application_get_default ());
     gtk_window_set_decorated (GTK_WINDOW (orage_application_get_window (app)),
                               g_par.show_borders);
+}
+
+static void ui_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
+{
+    Itf *itf = (Itf *)user_data;
+
+    g_par.use_new_ui = gtk_toggle_button_get_active (
+            GTK_TOGGLE_BUTTON (itf->use_new_ui_checkbutton));
 }
 
 static void borders_changed (G_GNUC_UNUSED GtkWidget *dialog,
@@ -806,49 +815,62 @@ static void create_parameter_dialog_calendar_setup_tab(Itf *dialog)
                              dialog->mode_frame, NULL, GTK_POS_BOTTOM,
                              1, 1);
 
+    dialog->use_new_ui_checkbutton =
+        gtk_check_button_new_with_mnemonic (_("Use new user interface"));
+    gtk_widget_set_tooltip_text (dialog->use_new_ui_checkbutton,
+        _("Enable the new interface layout (requires restart)"));
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->use_new_ui_checkbutton),
+                                  g_par.use_new_ui);
+
     dialog->show_borders_checkbutton = gtk_check_button_new_with_mnemonic(
             _("Show borders"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(
             dialog->show_borders_checkbutton), g_par.show_borders);
+
+    table_add_row (table, dialog->use_new_ui_checkbutton,
+                          dialog->show_borders_checkbutton,
+                          row = 0);
 
     dialog->show_menu_checkbutton = gtk_check_button_new_with_mnemonic(
             _("Show menu"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(
             dialog->show_menu_checkbutton), g_par.show_menu);
 
-    table_add_row(table, dialog->show_borders_checkbutton
-            , dialog->show_menu_checkbutton, row = 0);
-
     dialog->show_day_names_checkbutton = gtk_check_button_new_with_mnemonic(
             _("Show day names"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(
             dialog->show_day_names_checkbutton), g_par.show_day_names);
+
+    table_add_row (table, dialog->show_menu_checkbutton,
+                          dialog->show_day_names_checkbutton,
+                          ++row);
 
     dialog->show_weeks_checkbutton = gtk_check_button_new_with_mnemonic(
             _("Show week numbers"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(
             dialog->show_weeks_checkbutton), g_par.show_weeks);
 
-    table_add_row(table, dialog->show_day_names_checkbutton
-            , dialog->show_weeks_checkbutton, ++row);
-
     dialog->show_heading_checkbutton = gtk_check_button_new_with_mnemonic(
             _("Show month and year"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(
             dialog->show_heading_checkbutton), g_par.show_heading);
 
-    table_add_row(table, dialog->show_heading_checkbutton, NULL, ++row);
+    table_add_row (table, dialog->show_weeks_checkbutton,
+                          dialog->show_heading_checkbutton,
+                          ++row);
 
-    g_signal_connect(G_OBJECT(dialog->show_borders_checkbutton), "toggled"
-            , G_CALLBACK(borders_changed), dialog);
-    g_signal_connect(G_OBJECT(dialog->show_menu_checkbutton), "toggled"
-            , G_CALLBACK(menu_changed), dialog);
-    g_signal_connect(G_OBJECT(dialog->show_heading_checkbutton), "toggled"
-            , G_CALLBACK(heading_changed), dialog);
-    g_signal_connect(G_OBJECT(dialog->show_day_names_checkbutton), "toggled"
-            , G_CALLBACK(days_changed), dialog);
-    g_signal_connect(G_OBJECT(dialog->show_weeks_checkbutton), "toggled"
-            , G_CALLBACK(weeks_changed), dialog);
+    g_signal_connect (G_OBJECT (dialog->use_new_ui_checkbutton), "toggled",
+                      G_CALLBACK (ui_changed), dialog);
+    g_signal_connect (G_OBJECT (dialog->show_borders_checkbutton), "toggled",
+                      G_CALLBACK (borders_changed), dialog);
+    g_signal_connect (G_OBJECT (dialog->show_menu_checkbutton), "toggled",
+                      G_CALLBACK (menu_changed), dialog);
+    g_signal_connect (G_OBJECT (dialog->show_heading_checkbutton), "toggled",
+                      G_CALLBACK (heading_changed), dialog);
+    g_signal_connect (G_OBJECT (dialog->show_day_names_checkbutton), "toggled",
+                      G_CALLBACK (days_changed), dialog);
+    g_signal_connect (G_OBJECT (dialog->show_weeks_checkbutton), "toggled",
+                      G_CALLBACK (weeks_changed), dialog);
 
     /***** calendar info boxes (under the calendar) *****/
     vbox = gtk_grid_new ();
@@ -1664,6 +1686,7 @@ void read_parameters (void)
     g_par.start_minimized = orage_rc_get_bool(orc, "Start minimized", FALSE);
     g_par.set_stick = orage_rc_get_bool(orc, "Set sticked", TRUE);
     g_par.set_ontop = orage_rc_get_bool(orc, "Set ontop", FALSE);
+    g_par.use_new_ui = orage_rc_get_bool (orc, USE_NEW_UI, FALSE);
     g_par.own_icon_row1_data = orage_rc_get_str(orc
             , "Own icon row1 data", "%a");
     g_par.own_icon_row2_data = orage_rc_get_str(orc
@@ -1765,6 +1788,7 @@ void write_parameters(void)
     orage_rc_put_bool(orc, "Start minimized", g_par.start_minimized);
     orage_rc_put_bool(orc, "Set sticked", g_par.set_stick);
     orage_rc_put_bool(orc, "Set ontop", g_par.set_ontop);
+    orage_rc_put_bool (orc, USE_NEW_UI, g_par.use_new_ui);
     orage_rc_put_str(orc, "Own icon row1 data", g_par.own_icon_row1_data);
     orage_rc_put_str(orc, "Own icon row2 data", g_par.own_icon_row2_data);
     orage_rc_put_str(orc, "Own icon row3 data", g_par.own_icon_row3_data);
