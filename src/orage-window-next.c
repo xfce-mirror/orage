@@ -79,6 +79,9 @@ struct _OrageWindowNext
     GtkStack *stack_view;
     GtkWidget *main_view;
     OrageMonthView *month_view;
+
+    GtkWidget *back_button;
+    GtkWidget *next_button;
 };
 
 static void orage_window_next_constructed (GObject *object);
@@ -87,8 +90,6 @@ static void orage_window_next_finalize (GObject *object);
 static void orage_window_next_interface_init (OrageWindowInterface *interface);
 static GDateTime *orage_window_next_get_selected_date (OrageWindowNext *window);
 static void orage_window_next_restore_geometry (OrageWindowNext *window);
-static GDateTime *orage_window_next_get_first_date (OrageWindowNext *window);
-static GDateTime *orage_window_next_get_last_date (OrageWindowNext *window);
 
 static void on_new_activated (OrageWindowNext *window);
 
@@ -247,7 +248,7 @@ static void on_next_clicked (G_GNUC_UNUSED GtkButton *button,
     }
     else
     {
-        /* Requested page handinling is not yet implemented. */
+        /* Requested page handling is not yet implemented. */
         g_return_if_reached ();
     }
 }
@@ -289,6 +290,26 @@ static void on_list_event_callback (GDateTime *gdt_start, GDateTime *gdt_end,
     {
         /* Requested page handling is not yet implemented. */
         g_return_if_reached ();
+    }
+}
+
+static gboolean on_key_press (GtkWidget *widget, GdkEventKey *event,
+                              gpointer user_data)
+{
+    OrageWindowNext *self = ORAGE_WINDOW_NEXT (widget);
+
+    switch (event->keyval)
+    {
+        case GDK_KEY_Left:
+            gtk_button_clicked (GTK_BUTTON (self->back_button));
+            return TRUE;
+
+        case GDK_KEY_Right:
+            gtk_button_clicked (GTK_BUTTON (self->next_button));
+            return TRUE;
+
+        default:
+            return FALSE;
     }
 }
 
@@ -484,8 +505,6 @@ static void orage_window_next_init (OrageWindowNext *self)
     GtkWidget *switcher;
     GtkWidget *spacer_left;
     GtkWidget *spacer_right;
-    GtkWidget *back_button;
-    GtkWidget *next_button;
     GtkBox *switcher_box;
     GtkBox *main_box;
     const size_t n_elements = G_N_ELEMENTS (action_entries);
@@ -509,10 +528,10 @@ static void orage_window_next_init (OrageWindowNext *self)
     switcher_box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0));
 
     /* Previous button. */
-    back_button = gtk_button_new_from_icon_name ("go-previous",
-                                                 GTK_ICON_SIZE_BUTTON);
-    gtk_widget_set_tooltip_text (back_button, _("Previous"));
-    gtk_box_pack_start (switcher_box, back_button, FALSE, FALSE, 4);
+    self->back_button = gtk_button_new_from_icon_name ("go-previous",
+                                                       GTK_ICON_SIZE_BUTTON);
+    gtk_widget_set_tooltip_text (self->back_button, _("Previous"));
+    gtk_box_pack_start (switcher_box, self->back_button, FALSE, FALSE, 4);
 
     /* Left spacer. */
     spacer_left = gtk_label_new (NULL);
@@ -529,10 +548,10 @@ static void orage_window_next_init (OrageWindowNext *self)
     gtk_box_pack_start (switcher_box, spacer_right, TRUE, TRUE, 0);
 
     /* Next button. */
-    next_button = gtk_button_new_from_icon_name ("go-next",
-                                                 GTK_ICON_SIZE_BUTTON);
-    gtk_widget_set_tooltip_text (next_button, _("Next"));
-    gtk_box_pack_start (switcher_box, next_button, FALSE, FALSE, 4);
+    self->next_button = gtk_button_new_from_icon_name ("go-next",
+                                                       GTK_ICON_SIZE_BUTTON);
+    gtk_widget_set_tooltip_text (self->next_button, _("Next"));
+    gtk_box_pack_start (switcher_box, self->next_button, FALSE, FALSE, 4);
 
     gtk_box_pack_start (main_box, GTK_WIDGET (switcher_box), FALSE, FALSE, 0);
 
@@ -560,10 +579,16 @@ static void orage_window_next_init (OrageWindowNext *self)
 
     gtk_stack_set_visible_child_name (self->stack_view, MONTH_PAGE);
 
-    g_signal_connect (back_button, "clicked", G_CALLBACK (on_back_clicked),
+    gtk_widget_add_events (GTK_WIDGET (self), GDK_KEY_PRESS_MASK);
+    gtk_widget_set_can_focus (GTK_WIDGET (self), TRUE);
+    gtk_widget_grab_focus (GTK_WIDGET (self));
+
+    g_signal_connect (self->back_button, "clicked", G_CALLBACK (on_back_clicked),
                       self);
-    g_signal_connect (next_button, "clicked", G_CALLBACK (on_next_clicked),
+    g_signal_connect (self->next_button, "clicked", G_CALLBACK (on_next_clicked),
                       self);
+
+    g_signal_connect (self, "key-press-event", G_CALLBACK (on_key_press), NULL);
 }
 
 static void orage_window_next_interface_init (OrageWindowInterface *iface)
