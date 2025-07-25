@@ -406,12 +406,6 @@ static void update_help_menu (OrageWindowNext *window, GtkWidget *menu)
     gtk_widget_show_all (GTK_WIDGET (menu));
 }
 
-static void orage_window_next_clear_events (OrageWindowNext *window)
-{
-    g_debug ("TODO: %s", G_STRFUNC);
-    (void)window;
-}
-
 static GDateTime *orage_window_next_get_first_date (OrageWindowNext *window)
 {
     const gchar *visible_name =
@@ -731,7 +725,6 @@ void orage_window_next_mark_appointments (OrageWindow *window)
     g_free (end_text);
 #endif
 
-    orage_window_next_clear_events (nxtwindow);
     xfical_list_events_in_range (gdt_start, gdt_end,
                                  on_list_event_callback, nxtwindow);
 
