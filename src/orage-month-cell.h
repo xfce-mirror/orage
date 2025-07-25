@@ -57,6 +57,19 @@ void orage_month_cell_set_different_month (OrageMonthCell *self,
 void orage_month_cell_set_highlight (OrageMonthCell *self,
                                      gboolean highlighted);
 
+/** Emits the "clicked" signal on the given "self" instance, passing the
+ *  specified "date" as signal data. This function can be used to manually
+ *  trigger a click event on an OrageMonthCell.
+ *
+
+ *  @param self a OrageMonthCell
+ *  @param date the #GDateTime associated with the clicked cell. The "date"
+ *         should represent the date assigned to the cell, and must be a valid,
+ *         non-NULL GDateTime instance. This function does not take ownership of
+ *         "date"; it will not be referenced or unreferenced internally.
+ */
+void orage_month_cell_emit_clicked (OrageMonthCell *self, GDateTime *date);
+
 G_END_DECLS
 
 #endif

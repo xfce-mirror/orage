@@ -67,6 +67,14 @@ static FirstDayOfWeek to_first_weekday (const FirstDayOfWeek first_day)
     return (first_weekday == 6) ? SUNDAY : MONDAY;
 }
 
+static void on_month_cell_clicked (OrageMonthCell *cell, GDateTime *date,
+                                   gpointer user_data)
+{
+    gchar *s = g_date_time_format (date, "%F");
+    g_print ("Clicked date: %s\n", s);
+    g_free (s);
+}
+
 static GDateTime *orage_month_view_get_first_day_of_month (OrageMonthView *self)
 {
     GDateTime *gdt = self->date;
@@ -350,6 +358,8 @@ static void orage_month_view_init (OrageMonthView *self)
             gtk_grid_attach (GTK_GRID (self->month_grid), cell, col, row + 1,
                              1, 1);
             self->month_cell[row][col - 1] = ORAGE_MONTH_CELL (cell);
+
+            g_signal_connect(cell, "clicked", G_CALLBACK(on_month_cell_clicked), NULL);
         }
     }
 

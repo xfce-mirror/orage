@@ -26,33 +26,67 @@ struct _OrageMonthCell
     /* Add GtkOverlay as a main container for this widgets */
     GtkBox parent;
 
+    GtkWidget *event_box;
     GtkWidget *main_box;
     GtkWidget *day_label;
     GDateTime *date;
     gboolean different_month;
 };
 
+enum
+{
+    SIGNAL_CLICKED,
+    N_SIGNALS
+};
+
+static guint signals[N_SIGNALS] = {0};
+
 G_DEFINE_TYPE (OrageMonthCell, orage_month_cell, GTK_TYPE_BOX)
 
-static void orage_month_cell_class_init (
-    G_GNUC_UNUSED OrageMonthCellClass *klass)
+static gboolean on_event_box_clicked (G_GNUC_UNUSED GtkWidget *widget,
+                                      G_GNUC_UNUSED GdkEventButton *event,
+                                      gpointer user_data)
 {
+    OrageMonthCell *self = ORAGE_MONTH_CELL (user_data);
+
+    GDateTime *date = self->date;
+
+    if (date)
+        orage_month_cell_emit_clicked (self, date);
+
+    return TRUE;
+}
+
+static void orage_month_cell_class_init (OrageMonthCellClass *klass)
+{
+    signals[SIGNAL_CLICKED] = g_signal_new ("clicked",
+                                            G_TYPE_FROM_CLASS (klass),
+                                            G_SIGNAL_RUN_FIRST,
+                                            0, NULL, NULL, NULL,
+                                            G_TYPE_NONE,
+                                            1,
+                                            G_TYPE_DATE_TIME);
 }
 
 static void orage_month_cell_init (OrageMonthCell *self)
 {
+    self->different_month = TRUE;
+
     gtk_widget_set_name (GTK_WIDGET (self), "orage-month-cell");
 
+    self->event_box = gtk_event_box_new ();
+    gtk_box_pack_start (GTK_BOX (self), self->event_box, TRUE, TRUE, 0);
+
     self->main_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+    gtk_container_add (GTK_CONTAINER(self->event_box), self->main_box);
 
     self->day_label = gtk_label_new (NULL);
-    self->different_month = TRUE;
 
     gtk_box_pack_start (GTK_BOX (self->main_box), self->day_label, FALSE, FALSE,
                         0);
 
-    gtk_box_pack_start (GTK_BOX (&self->parent), self->main_box, FALSE, FALSE,
-                        0);
+    g_signal_connect (self->event_box, "button-press-event",
+                      G_CALLBACK (on_event_box_clicked), self);
 }
 
 GtkWidget *orage_month_cell_new (void)
@@ -153,4 +187,11 @@ void orage_month_cell_set_highlight (OrageMonthCell *self,
         gtk_style_context_add_class (context, "highlighted");
     else
         gtk_style_context_remove_class (context, "highlighted");
+}
+
+void orage_month_cell_emit_clicked (OrageMonthCell *self, GDateTime *date)
+{
+    g_return_if_fail (ORAGE_IS_MONTH_CELL (self));
+
+    g_signal_emit (self, signals[SIGNAL_CLICKED], 0, date);
 }
