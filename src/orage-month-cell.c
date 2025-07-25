@@ -124,6 +124,9 @@ void orage_month_cell_set_different_month (OrageMonthCell *self,
 
     g_return_if_fail (ORAGE_IS_MONTH_CELL (self));
 
+    if (self->different_month == different)
+        return;
+
     context = gtk_widget_get_style_context (GTK_WIDGET (self));
 
     if (different)
