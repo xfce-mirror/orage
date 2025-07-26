@@ -21,6 +21,10 @@
 #include "orage-month-cell.h"
 #include "functions.h"
 
+#define TODAY "today"
+#define OUT_OF_MONTH "out-of-month"
+#define HIGHLIGHTED "highlighted"
+
 struct _OrageMonthCell
 {
     /* Add GtkOverlay as a main container for this widgets */
@@ -31,6 +35,7 @@ struct _OrageMonthCell
     GtkWidget *day_label;
     GDateTime *date;
     gboolean different_month;
+    gboolean selected;
 };
 
 enum
@@ -81,6 +86,7 @@ static void orage_month_cell_init (OrageMonthCell *self)
     gtk_container_add (GTK_CONTAINER(self->event_box), self->main_box);
 
     self->day_label = gtk_label_new (NULL);
+    gtk_style_context_add_class (gtk_widget_get_style_context (self->day_label), "day-label");
 
     gtk_box_pack_start (GTK_BOX (self->main_box), self->day_label, FALSE, FALSE,
                         0);
@@ -105,8 +111,8 @@ void orage_month_cell_clear (OrageMonthCell *self)
     self->different_month = TRUE;
 
     context = gtk_widget_get_style_context (GTK_WIDGET (self));
-    gtk_style_context_remove_class (context, "today");
-    gtk_style_context_remove_class (context, "highlighted");
+    gtk_style_context_remove_class (context, TODAY);
+    gtk_style_context_remove_class (context, HIGHLIGHTED);
 
     gtk_label_set_text (GTK_LABEL (self->day_label), NULL);
 }
@@ -137,9 +143,9 @@ void orage_month_cell_set_date (OrageMonthCell *self, GDateTime *date)
     context = gtk_widget_get_style_context (GTK_WIDGET (self));
     today = g_date_time_new_now_local ();
     if (orage_gdatetime_days_between (self->date, today) == 0)
-        gtk_style_context_add_class (context, "today");
+        gtk_style_context_add_class (context, TODAY);
     else
-        gtk_style_context_remove_class (context, "today");
+        gtk_style_context_remove_class (context, TODAY);
 
     g_date_time_unref (today);
 }
@@ -161,14 +167,13 @@ void orage_month_cell_set_different_month (OrageMonthCell *self,
     if (self->different_month == different)
         return;
 
+    self->different_month = different;
     context = gtk_widget_get_style_context (GTK_WIDGET (self));
 
     if (different)
-        gtk_style_context_add_class (context, "out-of-month");
+        gtk_style_context_add_class (context, OUT_OF_MONTH);
     else
-        gtk_style_context_remove_class (context, "out-of-month");
-
-    self->different_month = different;
+        gtk_style_context_remove_class (context, OUT_OF_MONTH);
 }
 
 void orage_month_cell_set_highlight (OrageMonthCell *self,
@@ -184,9 +189,32 @@ void orage_month_cell_set_highlight (OrageMonthCell *self,
     context = gtk_widget_get_style_context (GTK_WIDGET (self));
 
     if (highlighted)
-        gtk_style_context_add_class (context, "highlighted");
+        gtk_style_context_add_class (context, HIGHLIGHTED);
     else
-        gtk_style_context_remove_class (context, "highlighted");
+        gtk_style_context_remove_class (context, HIGHLIGHTED);
+}
+
+void orage_month_cell_set_selected (OrageMonthCell *self,
+                                    const gboolean selected)
+{
+    GtkStateFlags flags;
+
+    g_return_if_fail (ORAGE_IS_MONTH_CELL (self));
+
+    if (self->selected == selected)
+        return;
+
+    self->selected = selected;
+
+    flags = gtk_widget_get_state_flags (GTK_WIDGET (self));
+
+    if (selected)
+        flags |= GTK_STATE_FLAG_SELECTED;
+    else
+        flags &= ~GTK_STATE_FLAG_SELECTED;
+
+    gtk_widget_set_state_flags (GTK_WIDGET (self), flags, TRUE);
+    gtk_widget_queue_resize (GTK_WIDGET (self));
 }
 
 void orage_month_cell_emit_clicked (OrageMonthCell *self, GDateTime *date)

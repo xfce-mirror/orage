@@ -93,3 +93,12 @@ OrageTrayIcon > row-3{
 #orage-month-cell.highlighted{
    font-weight: bold;
 }
+
+#orage-month-cell:selected{
+   background-color: rgba(100, 149, 237, 0.5);
+}
+
+#orage-month-cell:selected label.day-label{
+   font-weight: bold;
+   color: blue;
+}
