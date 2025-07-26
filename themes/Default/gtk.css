@@ -100,5 +100,5 @@ OrageTrayIcon > row-3{
 
 #orage-month-cell:selected label.day-label{
    font-weight: bold;
-   color: blue;
+   color: rgba(26, 115, 232, 1.0);
 }
