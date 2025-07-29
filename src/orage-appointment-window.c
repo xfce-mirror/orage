@@ -3252,7 +3252,7 @@ static GtkWidget *build_recurrence_box_daily (OrageAppointmentWindow *apptw)
 
     repeat_days_label1 = gtk_label_new (_("Every"));
     apptw->recurrence_daily_interval_spin =
-            gtk_spin_button_new_with_range (1, 100, 1);
+            gtk_spin_button_new_with_range (1, 9999, 1);
     gtk_spin_button_set_wrap (
             GTK_SPIN_BUTTON (apptw->recurrence_daily_interval_spin), TRUE);
     repeat_days_label2 = gtk_label_new (_("day(s)"));
