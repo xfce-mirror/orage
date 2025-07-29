@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Erkki Moorits
+ * Copyright (c) 2023-2025 Erkki Moorits
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -56,7 +56,6 @@ alarm_struct *orage_alarm_ref (alarm_struct *alarm)
     g_return_val_if_fail (alarm->ref_count > 0, NULL);
 
     g_atomic_int_inc (&alarm->ref_count);
-    g_debug ("%s: %p, new refcount=%d", G_STRFUNC, (void *)alarm, alarm->ref_count);
 
     return alarm;
 }
@@ -65,9 +64,6 @@ void orage_alarm_unref (alarm_struct *alarm)
 {
     g_return_if_fail (alarm != NULL);
     g_return_if_fail (alarm->ref_count > 0);
-
-    g_debug ("%s: %p, current refcount=%d",
-             G_STRFUNC, (void *)alarm, alarm->ref_count);
 
     if (g_atomic_int_dec_and_test (&alarm->ref_count))
     {
