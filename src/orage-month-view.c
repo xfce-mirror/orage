@@ -106,13 +106,12 @@ static void orage_month_view_update_month_label (OrageMonthView *self)
 
     month = g_date_time_get_month (gdt);
 
-    /* TRANSLATORS: "%1$s %2$d" is used to display the month and year in the
+    /* TRANSLATORS: "%B %Y" is used to display the month and year in the
      * calendar month view page, in "month year" format (for example,
      * "January 2025"). To use the "year month" format (e.g., "2025 January"),
-     * use "%2$d %1$s" instead.
+     * use "%Y %B" instead.
      */
-    text = g_strdup_printf (_("%1$s %2$d"), month_list[month - 1],
-                                            g_date_time_get_year (gdt));
+    text = g_date_time_format (gdt, _("%B %Y"));
     gtk_label_set_text (GTK_LABEL (self->month_label), text);
     g_free (text);
 }
