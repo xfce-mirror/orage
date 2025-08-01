@@ -88,6 +88,7 @@ static void orage_window_next_constructed (GObject *object);
 static void orage_window_next_finalize (GObject *object);
 
 static void orage_window_next_interface_init (OrageWindowInterface *interface);
+static void orage_window_next_select_today (OrageWindowNext *window);
 static GDateTime *orage_window_next_get_selected_date (OrageWindowNext *window);
 static void orage_window_next_restore_geometry (OrageWindowNext *window);
 
@@ -212,9 +213,7 @@ static void on_view_selected_week_activated (OrageWindowNext *window)
 
 static void on_select_today_activated (OrageWindowNext *window)
 {
-    g_return_if_fail (ORAGE_IS_WINDOW (window));
-
-    orage_select_today (orage_window_next_get_calendar (ORAGE_WINDOW (window)));
+    orage_window_next_select_today (window);
 }
 
 static void on_help_activated (G_GNUC_UNUSED OrageWindowNext *window)
@@ -404,6 +403,23 @@ static void update_help_menu (OrageWindowNext *window, GtkWidget *menu)
         GTK_MENU_SHELL (menu));
 
     gtk_widget_show_all (GTK_WIDGET (menu));
+}
+
+static void orage_window_next_select_today (OrageWindowNext *window)
+{
+    const gchar *visible_name =
+        gtk_stack_get_visible_child_name (window->stack_view);
+
+    g_date_time_unref (window->selected_date);
+    window->selected_date = g_date_time_new_now_local ();
+
+    if (g_strcmp0 (MONTH_PAGE, visible_name) == 0)
+        orage_month_view_select_date (window->month_view, window->selected_date);
+    else
+    {
+        /* Requested page handinling is not yet implemented. */
+        g_return_if_reached ();
+    }
 }
 
 static GDateTime *orage_window_next_get_first_date (OrageWindowNext *window)
@@ -748,7 +764,7 @@ void orage_window_next_raise (OrageWindow *window)
         gtk_window_move (gtk_window, g_par.pos_x, g_par.pos_y);
 
     if (g_par.select_always_today)
-        orage_select_today (orage_window_next_get_calendar (window));
+        orage_window_next_select_today (ORAGE_WINDOW_NEXT (window));
 
     if (g_par.set_stick)
         gtk_window_stick (gtk_window);

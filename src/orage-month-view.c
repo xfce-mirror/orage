@@ -85,33 +85,31 @@ static GDateTime *orage_month_view_get_first_day_of_month (OrageMonthView *self)
 
 static void orage_month_view_update_month_label (OrageMonthView *self)
 {
-    const gchar *month_list[12] =
-    {
-        _("January"), _("February"), _("March"), _("April"), _("May"),
-        _("June"), _("July"), _("August"), _("September"), _("October"),
-        _("November"), _("December")
-    };
-
     gint month;
     gchar *text;
-    GDateTime *gdt = self->date;
+    gunichar first_char;
+    gunichar upper_char;
+    const gchar *rest;
+    gint first_char_len;
+    gchar first_char_str[6] = {0};
 
-    /* We could use the following code:
-     * "text = g_date_time_format(self->date, "%B")"
-     * However, in some languages the month name starts with a lowercase letter,
-     * so we need to ensure that the first letter is uppercase. In this case,
-     * it's simpler to just use translated month names directly. Also, GLib's
-     * locale handling differs slightly from Orage's.
-     */
-
-    month = g_date_time_get_month (gdt);
+    month = g_date_time_get_month (self->date);
 
     /* TRANSLATORS: "%B %Y" is used to display the month and year in the
      * calendar month view page, in "month year" format (for example,
      * "January 2025"). To use the "year month" format (e.g., "2025 January"),
      * use "%Y %B" instead.
      */
-    text = g_date_time_format (gdt, _("%B %Y"));
+    text = g_date_time_format (self->date, _("%B %Y"));
+
+    /* Ensure that first char is always upper-case. */
+    first_char = g_utf8_get_char (text);
+    upper_char = g_unichar_toupper (first_char);
+    first_char_len = g_unichar_to_utf8 (upper_char, first_char_str);
+    rest = g_utf8_next_char (text);
+    g_free (text);
+    text = g_strconcat (first_char_str, rest, NULL);
+
     gtk_label_set_text (GTK_LABEL (self->month_label), text);
     g_free (text);
 }
@@ -358,7 +356,8 @@ static void orage_month_view_init (OrageMonthView *self)
                              1, 1);
             self->month_cell[row][col - 1] = ORAGE_MONTH_CELL (cell);
 
-            g_signal_connect(cell, "clicked", G_CALLBACK(on_month_cell_clicked), NULL);
+            g_signal_connect (cell, "clicked",
+                              G_CALLBACK(on_month_cell_clicked), NULL);
         }
     }
 
@@ -384,6 +383,28 @@ void orage_month_view_select_month (OrageMonthView *self, GDateTime *gdt)
     orage_month_view_update_month_label (self);
     orage_month_view_update_week_nr_cells (self);
     orage_month_view_update_month_cells (self);
+}
+
+void orage_month_view_select_date (OrageMonthView *self, GDateTime *gdt)
+{
+    guint row;
+    guint col;
+    OrageMonthCell *cell;
+    GDateTime *gdt_month;
+    gboolean selected;
+
+    orage_month_view_select_month (self, gdt);
+
+    for (row = 0; row < 6; row++)
+    {
+        for (col = 0; col < 7; col++)
+        {
+            cell = self->month_cell[row][col];
+            gdt_month = orage_month_cell_get_date (cell);
+            selected = (orage_gdatetime_compare_date (gdt_month, gdt) == 0);
+            orage_month_cell_set_selected (cell, selected);
+        }
+    }
 }
 
 GDateTime *orage_month_view_get_first_date (OrageMonthView *self)
