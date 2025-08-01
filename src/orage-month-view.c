@@ -85,15 +85,11 @@ static GDateTime *orage_month_view_get_first_day_of_month (OrageMonthView *self)
 
 static void orage_month_view_update_month_label (OrageMonthView *self)
 {
-    gint month;
     gchar *text;
     gunichar first_char;
     gunichar upper_char;
     const gchar *rest;
-    gint first_char_len;
     gchar first_char_str[6] = {0};
-
-    month = g_date_time_get_month (self->date);
 
     /* TRANSLATORS: "%B %Y" is used to display the month and year in the
      * calendar month view page, in "month year" format (for example,
@@ -105,7 +101,7 @@ static void orage_month_view_update_month_label (OrageMonthView *self)
     /* Ensure that first char is always upper-case. */
     first_char = g_utf8_get_char (text);
     upper_char = g_unichar_toupper (first_char);
-    first_char_len = g_unichar_to_utf8 (upper_char, first_char_str);
+    g_unichar_to_utf8 (upper_char, first_char_str);
     rest = g_utf8_next_char (text);
     g_free (text);
     text = g_strconcat (first_char_str, rest, NULL);
