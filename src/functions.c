@@ -815,15 +815,6 @@ void orage_select_date (GtkCalendar *cal, GDateTime *gdt)
     }
 }
 
-void orage_select_today(GtkCalendar *cal)
-{
-    GDateTime *gdt;
-
-    gdt = g_date_time_new_now_local ();
-    orage_select_date (cal, gdt);
-    g_date_time_unref (gdt);
-}
-
 /* orage_get_first_weekday() is Copied from GtkCalendar. */
 gint orage_get_first_weekday (void)
 {

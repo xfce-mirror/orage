@@ -88,7 +88,6 @@ static void orage_window_next_constructed (GObject *object);
 static void orage_window_next_finalize (GObject *object);
 
 static void orage_window_next_interface_init (OrageWindowInterface *interface);
-static void orage_window_next_select_today (OrageWindowNext *window);
 static GDateTime *orage_window_next_get_selected_date (OrageWindowNext *window);
 static void orage_window_next_restore_geometry (OrageWindowNext *window);
 
@@ -213,7 +212,7 @@ static void on_view_selected_week_activated (OrageWindowNext *window)
 
 static void on_select_today_activated (OrageWindowNext *window)
 {
-    orage_window_next_select_today (window);
+    orage_window_next_select_today (ORAGE_WINDOW (window));
 }
 
 static void on_help_activated (G_GNUC_UNUSED OrageWindowNext *window)
@@ -405,23 +404,6 @@ static void update_help_menu (OrageWindowNext *window, GtkWidget *menu)
     gtk_widget_show_all (GTK_WIDGET (menu));
 }
 
-static void orage_window_next_select_today (OrageWindowNext *window)
-{
-    const gchar *visible_name =
-        gtk_stack_get_visible_child_name (window->stack_view);
-
-    g_date_time_unref (window->selected_date);
-    window->selected_date = g_date_time_new_now_local ();
-
-    if (g_strcmp0 (MONTH_PAGE, visible_name) == 0)
-        orage_month_view_select_date (window->month_view, window->selected_date);
-    else
-    {
-        /* Requested page handinling is not yet implemented. */
-        g_return_if_reached ();
-    }
-}
-
 static GDateTime *orage_window_next_get_first_date (OrageWindowNext *window)
 {
     const gchar *visible_name =
@@ -608,6 +590,7 @@ static void orage_window_next_interface_init (OrageWindowInterface *iface)
     iface->build_events = orage_window_next_build_events;
     iface->build_todo = orage_window_next_build_todo;
     iface->initial_load = orage_window_next_initial_load;
+    iface->select_today = orage_window_next_select_today;
     iface->show_menubar = orage_window_next_show_menubar;
     iface->hide_todo = orage_window_next_hide_todo;
     iface->hide_event = orage_window_next_hide_event;
@@ -756,6 +739,29 @@ void orage_window_next_initial_load (OrageWindow *window)
                            window);
 }
 
+void orage_window_next_select_today (OrageWindow *window)
+{
+    OrageWindowNext *nxtwindow;
+    const gchar *visible_name;
+
+    nxtwindow = ORAGE_WINDOW_NEXT (window);
+    visible_name = gtk_stack_get_visible_child_name (nxtwindow->stack_view);
+
+    g_date_time_unref (nxtwindow->selected_date);
+    nxtwindow->selected_date = g_date_time_new_now_local ();
+
+    if (g_strcmp0 (MONTH_PAGE, visible_name) == 0)
+    {
+        orage_month_view_select_date (nxtwindow->month_view,
+                                      nxtwindow->selected_date);
+    }
+    else
+    {
+        /* Requested page handinling is not yet implemented. */
+        g_return_if_reached ();
+    }
+}
+
 void orage_window_next_raise (OrageWindow *window)
 {
     GtkWindow *gtk_window = GTK_WINDOW (window);
@@ -764,7 +770,7 @@ void orage_window_next_raise (OrageWindow *window)
         gtk_window_move (gtk_window, g_par.pos_x, g_par.pos_y);
 
     if (g_par.select_always_today)
-        orage_window_next_select_today (ORAGE_WINDOW_NEXT (window));
+        orage_window_next_select_today (window);
 
     if (g_par.set_stick)
         gtk_window_stick (gtk_window);

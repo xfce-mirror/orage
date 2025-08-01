@@ -157,7 +157,6 @@ gint orage_get_first_weekday (void);
  *  @param gdt selected date.
  */
 void orage_select_date (GtkCalendar *cal, GDateTime *gdt);
-void orage_select_today(GtkCalendar *cal);
 
 gboolean orage_copy_file (const gchar *source, const gchar *target);
 gchar *orage_data_file_location(const gchar *dir_name);

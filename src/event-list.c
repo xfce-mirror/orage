@@ -925,7 +925,7 @@ static void go_to_today(el_win *el)
 {
     OrageApplication *app = ORAGE_APPLICATION (g_application_get_default ());
     OrageWindow *window = ORAGE_WINDOW (orage_application_get_window (app));
-    orage_select_today (orage_window_get_calendar (window));
+    orage_window_select_today (window);
     set_el_data_from_cal(el);
 }
 

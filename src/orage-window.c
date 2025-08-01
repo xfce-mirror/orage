@@ -77,6 +77,13 @@ void orage_window_initial_load (OrageWindow *window)
     ORAGE_WINDOW_GET_IFACE (window)->initial_load (window);
 }
 
+void orage_window_select_today (OrageWindow *window)
+{
+    g_return_if_fail (ORAGE_IS_WINDOW (window));
+
+    ORAGE_WINDOW_GET_IFACE (window)->select_today (window);
+}
+
 void orage_window_show_menubar (OrageWindow *window, gboolean show)
 {
     g_return_if_fail (ORAGE_IS_WINDOW (window));

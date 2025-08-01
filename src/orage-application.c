@@ -273,7 +273,7 @@ static void open_new_appointment_window (void)
 
 static void orage_open_today_window (OrageWindow *window)
 {
-    orage_select_today (orage_window_get_calendar (window));
+    orage_window_select_today (window);
     (void)create_el_win (NULL);
 }
 
