@@ -904,7 +904,7 @@ static void changeSelectedDate (el_win *el, const gint day)
     gdt2 = g_date_time_add_days (gdt1, day);
     app = ORAGE_APPLICATION (g_application_get_default ());
     window = ORAGE_WINDOW (orage_application_get_window (app));
-    orage_select_date (orage_window_get_calendar (window), gdt2);
+    orage_window_select_date (window, gdt2);
     g_date_time_unref (gdt2);
 
     set_el_data_from_cal(el);

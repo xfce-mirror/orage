@@ -49,6 +49,7 @@ void orage_window_classic_build_events (OrageWindow *window);
 void orage_window_classic_build_todo (OrageWindow *window);
 void orage_window_classic_initial_load (OrageWindow *window);
 void orage_window_classic_select_today (OrageWindow *window);
+void orage_window_classic_select_date (OrageWindow *window, GDateTime *gdt);
 void orage_window_classic_show_menubar (OrageWindow *window, gboolean show);
 void orage_window_classic_hide_todo (OrageWindow *window);
 void orage_window_classic_hide_event (OrageWindow *window);

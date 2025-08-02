@@ -43,6 +43,7 @@ struct _OrageWindowInterface
     void (*build_todo) (OrageWindow *window);
     void (*initial_load) (OrageWindow *window);
     void (*select_today) (OrageWindow *window);
+    void (*select_date) (OrageWindow *window, GDateTime *gdt);
     void (*show_menubar) (OrageWindow *window, gboolean show);
     void (*hide_todo) (OrageWindow *window);
     void (*hide_event) (OrageWindow *window);
@@ -69,6 +70,7 @@ void orage_window_build_events (OrageWindow *window);
 void orage_window_build_todo (OrageWindow *window);
 void orage_window_initial_load (OrageWindow *window);
 void orage_window_select_today (OrageWindow *window);
+void orage_window_select_date (OrageWindow *window, GDateTime *gdt);
 void orage_window_show_menubar (OrageWindow *window, gboolean show);
 void orage_window_hide_todo (OrageWindow *window);
 void orage_window_hide_event (OrageWindow *window);

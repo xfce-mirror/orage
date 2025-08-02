@@ -84,6 +84,13 @@ void orage_window_select_today (OrageWindow *window)
     ORAGE_WINDOW_GET_IFACE (window)->select_today (window);
 }
 
+void orage_window_select_date (OrageWindow *window, GDateTime *gdt)
+{
+    g_return_if_fail (ORAGE_IS_WINDOW (window));
+
+    ORAGE_WINDOW_GET_IFACE (window)->select_date (window, gdt);
+}
+
 void orage_window_show_menubar (OrageWindow *window, gboolean show)
 {
     g_return_if_fail (ORAGE_IS_WINDOW (window));

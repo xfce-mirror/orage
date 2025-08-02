@@ -591,6 +591,7 @@ static void orage_window_next_interface_init (OrageWindowInterface *iface)
     iface->build_todo = orage_window_next_build_todo;
     iface->initial_load = orage_window_next_initial_load;
     iface->select_today = orage_window_next_select_today;
+    iface->select_date = orage_window_next_select_date;
     iface->show_menubar = orage_window_next_show_menubar;
     iface->hide_todo = orage_window_next_hide_todo;
     iface->hide_event = orage_window_next_hide_event;
@@ -741,6 +742,15 @@ void orage_window_next_initial_load (OrageWindow *window)
 
 void orage_window_next_select_today (OrageWindow *window)
 {
+    GDateTime *gdt;
+
+    gdt = g_date_time_new_now_local ();
+    orage_window_next_select_date (window, gdt);
+    g_date_time_unref (gdt);
+}
+
+void orage_window_next_select_date (OrageWindow *window, GDateTime *gdt)
+{
     OrageWindowNext *nxtwindow;
     const gchar *visible_name;
 
@@ -748,7 +758,7 @@ void orage_window_next_select_today (OrageWindow *window)
     visible_name = gtk_stack_get_visible_child_name (nxtwindow->stack_view);
 
     g_date_time_unref (nxtwindow->selected_date);
-    nxtwindow->selected_date = g_date_time_new_now_local ();
+    nxtwindow->selected_date = g_date_time_ref (gdt);
 
     if (g_strcmp0 (MONTH_PAGE, visible_name) == 0)
     {
