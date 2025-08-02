@@ -78,12 +78,7 @@ static GtkStyleContext *get_style_context (GtkStyleContext *parent,
 static void on_Today_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
                                gpointer user_data)
 {
-    GDateTime *gdt;
-
-    gdt = g_date_time_new_now_local ();
-    orage_select_date (orage_window_get_calendar (ORAGE_WINDOW (user_data)),
-                       gdt);
-    g_date_time_unref (gdt);
+    orage_window_select_today (ORAGE_WINDOW (user_data));
     (void)create_el_win (NULL);
 }
 
