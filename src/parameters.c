@@ -179,12 +179,10 @@ static void set_calendar(void)
 {
     OrageApplication *app = ORAGE_APPLICATION (g_application_get_default ());
     OrageWindow *window = ORAGE_WINDOW (orage_application_get_window (app));
-
-    gtk_calendar_set_display_options (
-        orage_window_get_calendar (window),
-          (g_par.show_heading ? GTK_CALENDAR_SHOW_HEADING : 0)
-        | (g_par.show_day_names ? GTK_CALENDAR_SHOW_DAY_NAMES : 0)
-        | (g_par.show_weeks ? GTK_CALENDAR_SHOW_WEEK_NUMBERS : 0));
+    guint options = (g_par.show_heading ? ORAGE_WINDOW_SHOW_CALENDAR_HEADING : 0)
+                  | (g_par.show_day_names ? ORAGE_WINDOW_SHOW_DAY_NAMES : 0)
+                  | (g_par.show_weeks ? ORAGE_WINDOW_SHOW_WEEK_NUMBERS : 0);
+    orage_window_set_calendar_options (window, options);
 }
 
 static void heading_changed (G_GNUC_UNUSED GtkWidget *dialog,

@@ -125,3 +125,11 @@ void orage_window_raise (OrageWindow *window)
 
     ORAGE_WINDOW_GET_IFACE (window)->raise (window);
 }
+
+void orage_window_set_calendar_options (OrageWindow *window, guint options)
+{
+    g_return_if_fail (ORAGE_IS_WINDOW (window));
+
+    ORAGE_WINDOW_GET_IFACE (window)->set_calendar_options (window,
+                                                                        options);
+}

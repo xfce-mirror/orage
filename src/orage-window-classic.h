@@ -55,6 +55,7 @@ void orage_window_classic_hide_todo (OrageWindow *window);
 void orage_window_classic_hide_event (OrageWindow *window);
 GtkCalendar *orage_window_classic_get_calendar (OrageWindow *window);
 void orage_window_classic_raise (OrageWindow *window);
+void orage_window_classic_set_calendar_options (OrageWindow *window, guint options);
 
 G_END_DECLS
 

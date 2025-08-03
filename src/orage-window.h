@@ -48,8 +48,13 @@ struct _OrageWindowInterface
     void (*hide_todo) (OrageWindow *window);
     void (*hide_event) (OrageWindow *window);
     GtkCalendar *(*get_calendar) (OrageWindow *window);
-    void (*raise)(OrageWindow *window);
+    void (*raise) (OrageWindow *window);
+    void (*set_calendar_options) (OrageWindow *window, guint options);
 };
+
+#define ORAGE_WINDOW_SHOW_CALENDAR_HEADING GTK_CALENDAR_SHOW_HEADING
+#define ORAGE_WINDOW_SHOW_DAY_NAMES GTK_CALENDAR_SHOW_DAY_NAMES
+#define ORAGE_WINDOW_SHOW_WEEK_NUMBERS GTK_CALENDAR_SHOW_WEEK_NUMBERS
 
 /** Create new Orage main window.
  *  @param app pointer to applcation
@@ -76,8 +81,8 @@ void orage_window_hide_todo (OrageWindow *window);
 void orage_window_hide_event (OrageWindow *window);
 GtkCalendar *orage_window_get_calendar (OrageWindow *window);
 void orage_window_raise (OrageWindow *window);
+void orage_window_set_calendar_options (OrageWindow *window, guint options);
 
 G_END_DECLS
 
 #endif
-

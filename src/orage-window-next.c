@@ -292,7 +292,7 @@ static void on_list_event_callback (GDateTime *gdt_start, GDateTime *gdt_end,
 }
 
 static gboolean on_key_press (GtkWidget *widget, GdkEventKey *event,
-                              gpointer user_data)
+                              G_GNUC_UNUSED gpointer user_data)
 {
     OrageWindowNext *self = ORAGE_WINDOW_NEXT (widget);
 
@@ -597,6 +597,7 @@ static void orage_window_next_interface_init (OrageWindowInterface *iface)
     iface->hide_event = orage_window_next_hide_event;
     iface->get_calendar = orage_window_next_get_calendar;
     iface->raise = orage_window_next_raise;
+    iface->set_calendar_options = orage_window_next_set_calendar_options;
 }
 
 static void orage_window_next_constructed (GObject *object)
@@ -787,6 +788,12 @@ void orage_window_next_raise (OrageWindow *window)
 
     gtk_window_set_keep_above (gtk_window, g_par.set_ontop);
     gtk_window_present (gtk_window);
+}
+
+void orage_window_next_set_calendar_options (G_GNUC_UNUSED OrageWindow *window,
+                                             G_GNUC_UNUSED guint options)
+{
+    /* New calendar window does not have any options yet. */
 }
 
 void orage_window_next_show_menubar (OrageWindow *window, const gboolean show)
