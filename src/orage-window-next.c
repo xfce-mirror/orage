@@ -88,7 +88,6 @@ static void orage_window_next_constructed (GObject *object);
 static void orage_window_next_finalize (GObject *object);
 
 static void orage_window_next_interface_init (OrageWindowInterface *interface);
-static GDateTime *orage_window_next_get_selected_date (OrageWindowNext *window);
 static void orage_window_next_restore_geometry (OrageWindowNext *window);
 
 static void on_new_activated (OrageWindowNext *window);
@@ -144,7 +143,7 @@ static void on_new_activated (OrageWindowNext *window)
     g_return_if_fail (ORAGE_IS_WINDOW (window));
 
     /* Orage has always a day selected here, so it is safe to read it. */
-    gdt = orage_window_next_get_selected_date (window);
+    gdt = orage_window_next_get_selected_date (ORAGE_WINDOW (window));
     appointment_window = orage_appointment_window_new (gdt);
     gtk_window_present (GTK_WINDOW (appointment_window));
     g_date_time_unref (gdt);
@@ -592,6 +591,7 @@ static void orage_window_next_interface_init (OrageWindowInterface *iface)
     iface->initial_load = orage_window_next_initial_load;
     iface->select_today = orage_window_next_select_today;
     iface->select_date = orage_window_next_select_date;
+    iface->get_selected_date = orage_window_next_get_selected_date;
     iface->show_menubar = orage_window_next_show_menubar;
     iface->hide_todo = orage_window_next_hide_todo;
     iface->hide_event = orage_window_next_hide_event;
@@ -623,13 +623,6 @@ GtkWidget *orage_window_next_new (OrageApplication *application)
     return g_object_new (ORAGE_WINDOW_NEXT_TYPE,
                          "application", GTK_APPLICATION (application),
                          NULL);
-}
-
-GDateTime *orage_window_next_get_selected_date (OrageWindowNext *window)
-{
-    OrageWindowNext *nxtwindow = ORAGE_WINDOW_NEXT (window);
-
-    return g_date_time_ref (nxtwindow->selected_date);
 }
 
 void orage_window_next_build_events (OrageWindow *window)
@@ -771,6 +764,13 @@ void orage_window_next_select_date (OrageWindow *window, GDateTime *gdt)
         /* Requested page handinling is not yet implemented. */
         g_return_if_reached ();
     }
+}
+
+GDateTime *orage_window_next_get_selected_date (OrageWindow *window)
+{
+    OrageWindowNext *nxtwindow = ORAGE_WINDOW_NEXT (window);
+
+    return g_date_time_ref (nxtwindow->selected_date);
 }
 
 void orage_window_next_raise (OrageWindow *window)

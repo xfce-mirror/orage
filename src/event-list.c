@@ -775,7 +775,7 @@ static void set_el_data_from_cal(el_win *el)
 
     app = ORAGE_APPLICATION (g_application_get_default ());
     window = ORAGE_WINDOW (orage_application_get_window (app));
-    gdt = orage_cal_to_gdatetime (orage_window_get_calendar (window), 0, 0);
+    gdt = orage_window_get_selected_date (window);
     set_el_data (el, gdt);
     g_date_time_unref (gdt);
 }

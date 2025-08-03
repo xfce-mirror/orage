@@ -750,6 +750,7 @@ static void orage_window_classic_interface_init (OrageWindowInterface *iface)
     iface->initial_load = orage_window_classic_initial_load;
     iface->select_today = orage_window_classic_select_today;
     iface->select_date = orage_window_classic_select_date;
+    iface->get_selected_date = orage_window_classic_get_selected_date;
     iface->show_menubar = orage_window_classic_show_menubar;
     iface->hide_todo = orage_window_classic_hide_todo;
     iface->hide_event = orage_window_classic_hide_event;
@@ -859,6 +860,13 @@ void orage_window_classic_select_date (OrageWindow *window, GDateTime *gdt)
     OrageWindowClassic *clwindow = ORAGE_WINDOW_CLASSIC (window);
 
     orage_select_date (clwindow->mCalendar, gdt);
+}
+
+GDateTime *orage_window_classic_get_selected_date (OrageWindow *window)
+{
+    OrageWindowClassic *clwindow = ORAGE_WINDOW_CLASSIC (window);
+
+    return orage_cal_to_gdatetime (clwindow->mCalendar, 0, 0);
 }
 
 void orage_window_classic_raise (OrageWindow *window)

@@ -91,6 +91,13 @@ void orage_window_select_date (OrageWindow *window, GDateTime *gdt)
     ORAGE_WINDOW_GET_IFACE (window)->select_date (window, gdt);
 }
 
+GDateTime *orage_window_get_selected_date (OrageWindow *window)
+{
+    g_return_val_if_fail (ORAGE_IS_WINDOW (window), NULL);
+
+    return ORAGE_WINDOW_GET_IFACE (window)->get_selected_date (window);
+}
+
 void orage_window_show_menubar (OrageWindow *window, gboolean show)
 {
     g_return_if_fail (ORAGE_IS_WINDOW (window));
@@ -130,6 +137,5 @@ void orage_window_set_calendar_options (OrageWindow *window, guint options)
 {
     g_return_if_fail (ORAGE_IS_WINDOW (window));
 
-    ORAGE_WINDOW_GET_IFACE (window)->set_calendar_options (window,
-                                                                        options);
+    ORAGE_WINDOW_GET_IFACE (window)->set_calendar_options (window, options);
 }
