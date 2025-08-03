@@ -778,7 +778,6 @@ static void reset_orage_day_change(gboolean changed)
 gboolean orage_day_change(gpointer user_data)
 {
     OrageApplication *app;
-    GtkCalendar *calendar;
     GDateTime *gdt;
     GDateTime *selected_gdt;
     OrageWindow *window;
@@ -821,8 +820,7 @@ gboolean orage_day_change(gpointer user_data)
         {
             /* previous day was indeed selected,
                keep it current automatically */
-            calendar = orage_window_get_calendar (window);
-            orage_select_date (calendar, gdt);
+            orage_window_select_date (window, gdt);
         }
         previous_year  = current_year;
         previous_month = current_month;
