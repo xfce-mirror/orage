@@ -52,7 +52,6 @@ GDateTime *orage_window_next_get_selected_date (OrageWindow *window);
 void orage_window_next_show_menubar (OrageWindow *window, gboolean show);
 void orage_window_next_hide_todo (OrageWindow *window);
 void orage_window_next_hide_event (OrageWindow *window);
-GtkCalendar *orage_window_next_get_calendar (OrageWindow *window);
 void orage_window_next_raise (OrageWindow *window);
 void orage_window_next_set_calendar_options (OrageWindow *window, guint options);
 

@@ -199,14 +199,7 @@ static void on_view_selected_date_activated (G_GNUC_UNUSED OrageWindowNext *wind
 
 static void on_view_selected_week_activated (OrageWindowNext *window)
 {
-    GDateTime *gdt;
-
-    g_return_if_fail (ORAGE_IS_WINDOW (window));
-
-    gdt = orage_cal_to_gdatetime (
-        orage_window_next_get_calendar (ORAGE_WINDOW (window)), 1, 1);
-    orage_week_window_build (gdt);
-    g_date_time_unref (gdt);
+    orage_week_window_build (window->selected_date);
 }
 
 static void on_select_today_activated (OrageWindowNext *window)
@@ -595,7 +588,6 @@ static void orage_window_next_interface_init (OrageWindowInterface *iface)
     iface->show_menubar = orage_window_next_show_menubar;
     iface->hide_todo = orage_window_next_hide_todo;
     iface->hide_event = orage_window_next_hide_event;
-    iface->get_calendar = orage_window_next_get_calendar;
     iface->raise = orage_window_next_raise;
     iface->set_calendar_options = orage_window_next_set_calendar_options;
 }
@@ -660,17 +652,6 @@ void orage_window_next_build_todo (OrageWindow *window)
 #else
     g_debug ("TODO: %s", G_STRFUNC);
     (void)window;
-#endif
-}
-
-GtkCalendar *orage_window_next_get_calendar (OrageWindow *window)
-{
-#if 0
-    return GTK_CALENDAR (ORAGE_WINDOW_CLASSIC (window)->mCalendar);
-#else
-    g_debug ("TODO: %s: this function create memory leak", G_STRFUNC);
-    (void)window;
-    return GTK_CALENDAR (gtk_calendar_new ());
 #endif
 }
 

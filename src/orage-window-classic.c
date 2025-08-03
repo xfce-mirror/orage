@@ -754,7 +754,6 @@ static void orage_window_classic_interface_init (OrageWindowInterface *iface)
     iface->show_menubar = orage_window_classic_show_menubar;
     iface->hide_todo = orage_window_classic_hide_todo;
     iface->hide_event = orage_window_classic_hide_event;
-    iface->get_calendar = orage_window_classic_get_calendar;
     iface->raise = orage_window_classic_raise;
     iface->set_calendar_options = orage_window_classic_set_calendar_options;
 }
@@ -826,11 +825,6 @@ void orage_window_classic_hide_todo (OrageWindow *window)
 void orage_window_classic_hide_event (OrageWindow *window)
 {
     gtk_widget_hide (ORAGE_WINDOW_CLASSIC (window)->mEvent_vbox);
-}
-
-GtkCalendar *orage_window_classic_get_calendar (OrageWindow *window)
-{
-    return ORAGE_WINDOW_CLASSIC (window)->mCalendar;
 }
 
 void orage_window_classic_build_info (OrageWindow *window)

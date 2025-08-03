@@ -48,7 +48,6 @@ struct _OrageWindowInterface
     void (*show_menubar) (OrageWindow *window, gboolean show);
     void (*hide_todo) (OrageWindow *window);
     void (*hide_event) (OrageWindow *window);
-    GtkCalendar *(*get_calendar) (OrageWindow *window);
     void (*raise) (OrageWindow *window);
     void (*set_calendar_options) (OrageWindow *window, guint options);
 };
@@ -81,7 +80,6 @@ GDateTime *orage_window_get_selected_date (OrageWindow *window);
 void orage_window_show_menubar (OrageWindow *window, gboolean show);
 void orage_window_hide_todo (OrageWindow *window);
 void orage_window_hide_event (OrageWindow *window);
-GtkCalendar *orage_window_get_calendar (OrageWindow *window);
 void orage_window_raise (OrageWindow *window);
 void orage_window_set_calendar_options (OrageWindow *window, guint options);
 

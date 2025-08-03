@@ -119,13 +119,6 @@ void orage_window_hide_event (OrageWindow *window)
     ORAGE_WINDOW_GET_IFACE (window)->hide_event (window);
 }
 
-GtkCalendar *orage_window_get_calendar (OrageWindow *window)
-{
-    g_return_val_if_fail (ORAGE_IS_WINDOW (window), NULL);
-
-    return ORAGE_WINDOW_GET_IFACE (window)->get_calendar (window);
-}
-
 void orage_window_raise (OrageWindow *window)
 {
     g_return_if_fail (ORAGE_IS_WINDOW (window));
