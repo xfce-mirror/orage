@@ -86,6 +86,7 @@ static GDateTime *orage_month_view_get_first_day_of_month (OrageMonthView *self)
 static void orage_month_view_update_month_label (OrageMonthView *self)
 {
     gchar *text;
+    gchar *final_text;
     gunichar first_char;
     gunichar upper_char;
     const gchar *rest;
@@ -103,11 +104,11 @@ static void orage_month_view_update_month_label (OrageMonthView *self)
     upper_char = g_unichar_toupper (first_char);
     g_unichar_to_utf8 (upper_char, first_char_str);
     rest = g_utf8_next_char (text);
+    final_text = g_strconcat (first_char_str, rest, NULL);
     g_free (text);
-    text = g_strconcat (first_char_str, rest, NULL);
 
-    gtk_label_set_text (GTK_LABEL (self->month_label), text);
-    g_free (text);
+    gtk_label_set_text (GTK_LABEL (self->month_label), final_text);
+    g_free (final_text);
 }
 
 static void orage_month_view_update_month_cells (OrageMonthView *self)
