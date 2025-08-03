@@ -780,11 +780,13 @@ gboolean orage_day_change(gpointer user_data)
     OrageApplication *app;
     GtkCalendar *calendar;
     GDateTime *gdt;
+    GDateTime *selected_gdt;
+    OrageWindow *window;
     gint year;
     gint month;
     gint day;
     static gint previous_year=0, previous_month=0, previous_day=0;
-    guint selected_year=0, selected_month=0, selected_day=0;
+    gint selected_year, selected_month, selected_day;
     gint current_year=0, current_month=0, current_day=0;
 
     gdt = g_date_time_new_now_local ();
@@ -806,17 +808,20 @@ gboolean orage_day_change(gpointer user_data)
         current_day   = day;
         /* Get the selected date from calendar */
         app = ORAGE_APPLICATION (g_application_get_default ());
-        calendar = orage_window_get_calendar (
-            ORAGE_WINDOW (orage_application_get_window (app)));
+        window = ORAGE_WINDOW (orage_application_get_window (app));
 
-        gtk_calendar_get_date (calendar, &selected_year, &selected_month,
-                               &selected_day);
-        selected_month++;
-        if ((gint)selected_year == previous_year
-        && (gint)selected_month == previous_month
-        && (gint)selected_day == previous_day) {
+        selected_gdt = orage_window_get_selected_date (window);
+        g_date_time_get_ymd (selected_gdt,
+                             &selected_year, &selected_month, &selected_day);
+        g_date_time_unref (selected_gdt);
+
+        if (selected_year == previous_year &&
+            selected_month == previous_month &&
+            selected_day == previous_day)
+        {
             /* previous day was indeed selected,
                keep it current automatically */
+            calendar = orage_window_get_calendar (window);
             orage_select_date (calendar, gdt);
         }
         previous_year  = current_year;
