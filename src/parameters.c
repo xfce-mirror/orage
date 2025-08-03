@@ -1870,9 +1870,6 @@ void set_parameters(void)
     set_taskbar();
     set_pager();
     set_calendar();
-#if 0
-    set_systray();
-#endif
     set_stick();
     set_ontop();
     set_wakeup_timer();

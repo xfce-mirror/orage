@@ -463,10 +463,6 @@ static void add_el_row(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
     g_free (s_time);
     g_free (e_time);
 
-#if 0
-    s_sort = g_utf8_collate_key(s_sort1, -1);
-#endif
-
     list1 = el->ListStore;
     gtk_list_store_append(list1, &iter1);
     gtk_list_store_set(list1, &iter1
@@ -480,9 +476,6 @@ static void add_el_row(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
     g_free(title);
     g_free(s_sort1);
     g_free(stime);
-#if 0
-    g_free(s_sort);
-#endif
 }
 
 static void searh_rows(el_win *el, gchar *search_string, gchar *file_type)
@@ -630,10 +623,6 @@ static void event_data(el_win *el)
     if (el->days == 0)
         refresh_time_field(el);
     el->days = gtk_spin_button_get_value(GTK_SPIN_BUTTON(el->event_spin));
-#if 0
-    el->only_first = gtk_toggle_button_get_active(
-            GTK_TOGGLE_BUTTON(el->event_only_first_checkbutton));
-#endif
     el->show_old = gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(el->event_show_old_checkbutton));
     gdt_title = g_object_get_data (G_OBJECT (el->Window), DATE_KEY);

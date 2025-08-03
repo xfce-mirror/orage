@@ -311,12 +311,6 @@ gboolean ic_internal_file_open(icalcomponent **p_ical
                    , NULL);
 
             icalset_add_component(*p_fical, *p_ical);
-#if 0
-            icalset_add_component(*p_fical
-                   , icalcomponent_new_clone(*p_ical));
-
-            *p_ical = icalset_get_first_component(*p_fical);
-#endif
             icalset_commit(*p_fical);
         }
         else { /* VCALENDAR found */
@@ -1724,9 +1718,6 @@ static void process_end_date(xfical_appt *appt, icalproperty *p
     text = icalproperty_get_value_as_string(p);
     *itime = icaltime_from_string(text);
     *eltime = convert_to_local_timezone(*itime, p);
-#if 0
-    text  = icaltime_as_ical_string(*itime);
-#endif
     orage_gdatetime_unref (appt->endtime);
     appt->endtime = orage_icaltime_to_gdatetime (text);
     if (icaltime_is_date(*itime)) {
@@ -2969,18 +2960,7 @@ static void xfical_alarm_build_list_internal_real(gboolean first_list_today
                 cnt_act_alarm++;
                 process_alarm_data(ca, new_alarm);
             }
-#if 0
-            if (trg_processed) {
-                if (trg_active) {
-                    cnt_act_alarm++;
-                    process_alarm_data(ca, new_alarm);
-                }
-            }
-            else {
-                g_warning ("%s: Found alarm without trigger %s. Skipping it",
-                           G_STRFUNC, icalcomponent_get_uid(c));
-            }
-#endif
+
         }  /* ALARM */
         if (trg_active) {
             alarm_add(new_alarm);
@@ -3426,9 +3406,7 @@ static void xfical_mark_calendar_from_component (GtkCalendar *gtkcal,
             nedate.month = 1;
             nedate.year++;
         }
-#if 0
-        icaltime_adjust(&nedate, 0, 0, 0, 0);
-#endif
+
         /* FIXME: we read the whole appointent just to get start and end 
          * timezones for mark_calendar. too heavy? */
         /* 1970 check due to bug 9507 */
@@ -3443,11 +3421,7 @@ static void xfical_mark_calendar_from_component (GtkCalendar *gtkcal,
            what the time is in, libical returns wrong time in span.
            But as the hour only changes with HOURLY repeating appointments,
            we can replace received hour with the hour from start time */
-#if 0
-            p = icalcomponent_get_first_property(c, ICAL_DTEND_PROPERTY);
-            start = icalproperty_get_dtend(p);
-            cal_data.orig_end_hour = start.hour;
-#endif
+
             p = icalcomponent_get_first_property(c, ICAL_DTSTART_PROPERTY);
             start = icalproperty_get_dtstart(p);
             cal_data.orig_start_hour = start.hour;

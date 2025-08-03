@@ -312,13 +312,7 @@ gboolean xfical_archive(void)
          c != 0;
          c = c2) {
         c2 = icalcomponent_get_next_component(ic_ical, ICAL_ANY_COMPONENT);
-#if 0
-        sdate = icalcomponent_get_dtstart(c);
-        edate = icalcomponent_get_dtend(c);
-        if (icaltime_is_null_time(edate)) {
-            edate = sdate;
-        }
-#endif
+
         per =  ic_get_period(c, TRUE);
         /* Items with endate before threshold => archived.
          * Recurring events are marked in the main file by adding special

@@ -677,9 +677,7 @@ static void create_procedure_reminder(alarm_struct *l_alarm)
     gint status;
 
     orage_alarm_ref (l_alarm);
-#if 0
-    status = orage_exec(l_alarm->cmd, &active, &error);
-#endif
+
     cmd = g_strconcat(l_alarm->cmd, " &", NULL);
 
     cmd = orage_replace_text(cmd, "<&T>", l_alarm->title);
