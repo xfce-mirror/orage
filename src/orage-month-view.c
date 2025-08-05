@@ -67,12 +67,28 @@ static FirstDayOfWeek to_first_weekday (const FirstDayOfWeek first_day)
     return (first_weekday == 6) ? SUNDAY : MONDAY;
 }
 
+static void orage_month_view_select_all (OrageMonthView *self,
+                                         const gboolean selected)
+{
+    guint row;
+    guint col;
+
+    for (row = 0; row < 6; row++)
+    {
+        for (col = 0; col < 7; col++)
+            orage_month_cell_set_selected (self->month_cell[row][col], selected);
+    }
+}
+
 static void on_month_cell_clicked (OrageMonthCell *cell, GDateTime *date,
                                    gpointer user_data)
 {
     gchar *s = g_date_time_format (date, "%F");
     g_print ("Clicked date: %s\n", s);
     g_free (s);
+
+    orage_month_view_select_all ((OrageMonthView *)user_data, FALSE);
+    orage_month_cell_set_selected (cell, TRUE);
 }
 
 static GDateTime *orage_month_view_get_first_day_of_month (OrageMonthView *self)
@@ -354,7 +370,7 @@ static void orage_month_view_init (OrageMonthView *self)
             self->month_cell[row][col - 1] = ORAGE_MONTH_CELL (cell);
 
             g_signal_connect (cell, "clicked",
-                              G_CALLBACK(on_month_cell_clicked), NULL);
+                              G_CALLBACK (on_month_cell_clicked), self);
         }
     }
 
