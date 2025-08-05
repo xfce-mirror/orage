@@ -64,14 +64,9 @@ void orage_month_cell_set_selected (OrageMonthCell *self,
  *  specified "date" as signal data. This function can be used to manually
  *  trigger a click event on an OrageMonthCell.
  *
-
  *  @param self a OrageMonthCell
- *  @param date the #GDateTime associated with the clicked cell. The "date"
- *         should represent the date assigned to the cell, and must be a valid,
- *         non-NULL GDateTime instance. This function does not take ownership of
- *         "date"; it will not be referenced or unreferenced internally.
  */
-void orage_month_cell_emit_clicked (OrageMonthCell *self, GDateTime *date);
+void orage_month_cell_emit_clicked (OrageMonthCell *self);
 
 G_END_DECLS
 

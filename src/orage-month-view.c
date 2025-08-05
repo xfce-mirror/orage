@@ -53,7 +53,15 @@ enum
     N_PROPS
 };
 
-static GParamSpec *properties[N_PROPS] = {NULL,};
+enum
+{
+    SIGNAL_DATE_SELECTED,
+    N_SIGNALS
+};
+
+
+static GParamSpec *properties[N_PROPS] = {NULL};
+static guint signals[N_SIGNALS] = {0};
 
 static FirstDayOfWeek to_first_weekday (const FirstDayOfWeek first_day)
 {
@@ -80,15 +88,12 @@ static void orage_month_view_select_all (OrageMonthView *self,
     }
 }
 
-static void on_month_cell_clicked (OrageMonthCell *cell, GDateTime *date,
-                                   gpointer user_data)
+static void on_month_cell_clicked (OrageMonthCell *cell, gpointer user_data)
 {
-    gchar *s = g_date_time_format (date, "%F");
-    g_print ("Clicked date: %s\n", s);
-    g_free (s);
-
     orage_month_view_select_all ((OrageMonthView *)user_data, FALSE);
     orage_month_cell_set_selected (cell, TRUE);
+
+    g_signal_emit (user_data, signals[SIGNAL_DATE_SELECTED], 0, cell);
 }
 
 static GDateTime *orage_month_view_get_first_day_of_month (OrageMonthView *self)
@@ -288,6 +293,15 @@ static void orage_month_view_class_init (OrageMonthViewClass *klass)
     object_class->finalize = orage_month_view_finalize;
     object_class->get_property = orage_month_view_get_property;
     object_class->set_property = orage_month_view_set_property;
+
+    signals[SIGNAL_DATE_SELECTED] =
+            g_signal_new ("date-selected",
+                          G_TYPE_FROM_CLASS (klass),
+                          G_SIGNAL_RUN_FIRST,
+                          0, NULL, NULL,
+                          g_cclosure_marshal_VOID__OBJECT,
+                          G_TYPE_NONE, 1,
+                          ORAGE_MONTH_CELL_TYPE);
 
     properties[MONTH_VIEW_FIRST_DAY_OF_WEEK] =
             g_param_spec_int (MONTH_VIEW_FIRST_DAY_OF_WEEK_PROPERTY,

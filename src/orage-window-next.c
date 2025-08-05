@@ -28,6 +28,7 @@
 #include "orage-about.h"
 #include "orage-appointment-window.h"
 #include "orage-i18n.h"
+#include "orage-month-cell.h"
 #include "orage-month-view.h"
 #include "orage-week-window.h"
 #include "parameters.h"
@@ -303,6 +304,20 @@ static gboolean on_key_press (GtkWidget *widget, GdkEventKey *event,
     }
 }
 
+static void on_new_date_selected (OrageMonthView *view,
+                                  OrageMonthCell *cell,
+                                  gpointer user_data)
+{
+    GDateTime *gdt = orage_month_cell_get_date (cell);
+    gchar *text;
+
+    gdt = orage_month_cell_get_date (cell);
+    g_date_time_unref (gdt);
+    text = g_date_time_format (gdt, "%F");
+    g_debug ("%s: selected date '%s'", G_STRFUNC, text);
+    g_free (text);
+}
+
 static void menu_clean (GtkMenu *menu)
 {
     GList *children, *lp;
@@ -571,6 +586,9 @@ static void orage_window_next_init (OrageWindowNext *self)
                       self);
     g_signal_connect (self->next_button, "clicked", G_CALLBACK (on_next_clicked),
                       self);
+
+    g_signal_connect (self->month_view, "date-selected",
+                      G_CALLBACK (on_new_date_selected), NULL);
 
     g_signal_connect (self, "key-press-event", G_CALLBACK (on_key_press), NULL);
 }

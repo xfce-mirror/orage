@@ -57,7 +57,7 @@ static gboolean on_event_box_clicked (G_GNUC_UNUSED GtkWidget *widget,
     GDateTime *date = self->date;
 
     if (date)
-        orage_month_cell_emit_clicked (self, date);
+        orage_month_cell_emit_clicked (self);
 
     return TRUE;
 }
@@ -69,8 +69,7 @@ static void orage_month_cell_class_init (OrageMonthCellClass *klass)
                                             G_SIGNAL_RUN_FIRST,
                                             0, NULL, NULL, NULL,
                                             G_TYPE_NONE,
-                                            1,
-                                            G_TYPE_DATE_TIME);
+                                            0);
 }
 
 static void orage_month_cell_init (OrageMonthCell *self)
@@ -217,9 +216,9 @@ void orage_month_cell_set_selected (OrageMonthCell *self,
     gtk_widget_queue_resize (GTK_WIDGET (self));
 }
 
-void orage_month_cell_emit_clicked (OrageMonthCell *self, GDateTime *date)
+void orage_month_cell_emit_clicked (OrageMonthCell *self)
 {
     g_return_if_fail (ORAGE_IS_MONTH_CELL (self));
 
-    g_signal_emit (self, signals[SIGNAL_CLICKED], 0, date);
+    g_signal_emit (self, signals[SIGNAL_CLICKED], 0);
 }
