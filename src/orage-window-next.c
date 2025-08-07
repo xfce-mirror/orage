@@ -24,6 +24,7 @@
 
 #include "event-list.h"
 #include "functions.h"
+#include "ical-code.h"
 #include "interface.h"
 #include "orage-about.h"
 #include "orage-appointment-window.h"
@@ -318,6 +319,20 @@ static void on_new_date_selected (OrageMonthView *view,
     g_free (text);
 }
 
+static void on_new_date_selected_double_click (OrageMonthView *view,
+                                               OrageMonthCell *cell,
+                                               gpointer user_data)
+{
+    GDateTime *gdt = orage_month_cell_get_date (cell);
+    gchar *text;
+
+    gdt = orage_month_cell_get_date (cell);
+    g_date_time_unref (gdt);
+    text = g_date_time_format (gdt, "%F");
+    g_debug ("%s: selected date '%s'", G_STRFUNC, text);
+    g_free (text);
+}
+
 static void menu_clean (GtkMenu *menu)
 {
     GList *children, *lp;
@@ -589,6 +604,8 @@ static void orage_window_next_init (OrageWindowNext *self)
 
     g_signal_connect (self->month_view, "date-selected",
                       G_CALLBACK (on_new_date_selected), NULL);
+    g_signal_connect (self->month_view, "date-selected-double-click",
+                      G_CALLBACK (on_new_date_selected_double_click), NULL);
 
     g_signal_connect (self, "key-press-event", G_CALLBACK (on_key_press), NULL);
 }

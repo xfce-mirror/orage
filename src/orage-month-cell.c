@@ -30,6 +30,7 @@ struct _OrageMonthCell
     /* Add GtkOverlay as a main container for this widgets */
     GtkBox parent;
 
+    guint single_click_timeout_id;
     GtkWidget *event_box;
     GtkWidget *main_box;
     GtkWidget *day_label;
@@ -41,35 +42,89 @@ struct _OrageMonthCell
 enum
 {
     SIGNAL_CLICKED,
+    SIGNAL_DOUBLE_CLICKED,
     N_SIGNALS
 };
 
 static guint signals[N_SIGNALS] = {0};
+static guint double_click_time = 250;
 
 G_DEFINE_TYPE (OrageMonthCell, orage_month_cell, GTK_TYPE_BOX)
 
+static void block_single_click (gpointer user_data)
+{
+    OrageMonthCell *self = ORAGE_MONTH_CELL (user_data);
+
+    self->single_click_timeout_id = 0;
+}
+
 static gboolean on_event_box_clicked (G_GNUC_UNUSED GtkWidget *widget,
-                                      G_GNUC_UNUSED GdkEventButton *event,
+                                      GdkEventButton *event,
                                       gpointer user_data)
+{
+    OrageMonthCell *self = ORAGE_MONTH_CELL (user_data);
+
+    if (self->date == NULL)
+        return TRUE;
+
+    if (event->type == GDK_BUTTON_PRESS)
+    {
+        if (self->single_click_timeout_id == 0)
+        {
+            self->single_click_timeout_id =
+                g_timeout_add_once (double_click_time, block_single_click,
+                                    self);
+            orage_month_cell_emit_clicked (self);
+        }
+    }
+    else if (event->type == GDK_2BUTTON_PRESS)
+    {
+        if (self->single_click_timeout_id)
+        {
+            g_source_remove (self->single_click_timeout_id);
+            self->single_click_timeout_id = 0;
+        }
+
+        orage_month_cell_emit_double_clicked (self);
+    }
+
+    return TRUE;
+}
+
+static gboolean on_event_box_double_clicked (G_GNUC_UNUSED GtkWidget *widget,
+                                             G_GNUC_UNUSED GdkEventButton *event,
+                                             gpointer user_data)
 {
     OrageMonthCell *self = ORAGE_MONTH_CELL (user_data);
 
     GDateTime *date = self->date;
 
     if (date)
-        orage_month_cell_emit_clicked (self);
+        orage_month_cell_emit_double_clicked (self);
 
     return TRUE;
 }
 
 static void orage_month_cell_class_init (OrageMonthCellClass *klass)
 {
+    GtkSettings *settings = gtk_settings_get_default ();
+
+    if (settings)
+        g_object_get (settings, "gtk-double-click-time", &double_click_time,
+                      NULL);
+
     signals[SIGNAL_CLICKED] = g_signal_new ("clicked",
                                             G_TYPE_FROM_CLASS (klass),
                                             G_SIGNAL_RUN_FIRST,
                                             0, NULL, NULL, NULL,
                                             G_TYPE_NONE,
                                             0);
+    signals[SIGNAL_DOUBLE_CLICKED] = g_signal_new ("double-clicked",
+                                                   G_TYPE_FROM_CLASS (klass),
+                                                   G_SIGNAL_RUN_FIRST,
+                                                   0, NULL, NULL, NULL,
+                                                   G_TYPE_NONE,
+                                                   0);
 }
 
 static void orage_month_cell_init (OrageMonthCell *self)
@@ -221,4 +276,11 @@ void orage_month_cell_emit_clicked (OrageMonthCell *self)
     g_return_if_fail (ORAGE_IS_MONTH_CELL (self));
 
     g_signal_emit (self, signals[SIGNAL_CLICKED], 0);
+}
+
+void orage_month_cell_emit_double_clicked (OrageMonthCell *self)
+{
+    g_return_if_fail (ORAGE_IS_MONTH_CELL (self));
+
+    g_signal_emit (self, signals[SIGNAL_DOUBLE_CLICKED], 0);
 }

@@ -60,13 +60,17 @@ void orage_month_cell_set_highlight (OrageMonthCell *self,
 void orage_month_cell_set_selected (OrageMonthCell *self,
                                     const gboolean selected);
 
-/** Emits the "clicked" signal on the given "self" instance, passing the
- *  specified "date" as signal data. This function can be used to manually
- *  trigger a click event on an OrageMonthCell.
- *
+/** Emits the "clicked" signal on the given "self" instance. This function can
+ *  be used to manually trigger a click event on an OrageMonthCell.
  *  @param self a OrageMonthCell
  */
 void orage_month_cell_emit_clicked (OrageMonthCell *self);
+
+/** Emits the "double-clicked" signal on the given "self" instance. This
+ *  function can be used to manually trigger a click event on an OrageMonthCell.
+ *  @param self a OrageMonthCell
+ */
+void orage_month_cell_emit_double_clicked (OrageMonthCell *self);
 
 G_END_DECLS
 
