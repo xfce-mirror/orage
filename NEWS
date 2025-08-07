@@ -1,3 +1,8 @@
+4.20.2 (2025-08-07)
+======
+- Changed recurrence limits from 100 to 9999 (MR !78).
+- Minor cleanup of log messages.
+
 4.20.1 (2025-03-28)
 ======
 - Fixed event structure initialization, TODOs was not correctly displayed.
