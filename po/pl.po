@@ -507,8 +507,7 @@ msgstr "Orage"
 
 #: src/orage-about.c:47 org.xfce.orage.appdata.xml.in:8
 msgid "Orage is a time-managing application for the Xfce desktop environment"
-msgstr ""
-"Orage to program do zarządzania czasem dla środowiska graficznego Xfce"
+msgstr "Program do zarządzania czasem dla Xfce."
 
 #: src/orage-about.c:54
 msgid "translator-credits"
@@ -522,7 +521,7 @@ msgid ""
 "\tThis is %s version %s\n"
 "\n"
 msgstr ""
-"\tTo jest wersja %s dla środowiska Xfce %s\n"
+"\tTo jest wersja %s dla Xfce %s\n"
 "\n"
 
 #: src/orage-application.c:163
@@ -4134,7 +4133,7 @@ msgstr "Preferencje kalendarza"
 
 #: plugin/org.xfce.orage-settings.desktop.in:5
 msgid "Settings for the Xfce 4 Calendar Application (Orage)"
-msgstr "Konfiguruje ustawienia kalendarza Xfce 4 (Orange)"
+msgstr "Ustawienia aplikacji kalendarza Xfce (Orage)"
 
 #: plugin/org.xfce.orage-settings.desktop.in:12
 msgid "Orage Calendar Preferences"

@@ -18,10 +18,6 @@
  *     Boston, MA 02110-1301 USA
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #include "orage-css.h"
 #include <libxfce4util/libxfce4util.h>
 #include <gtk/gtk.h>
