@@ -100,9 +100,6 @@ static void on_month_cell_clicked (OrageMonthCell *cell, gpointer user_data)
 static void on_month_cell_double_click (OrageMonthCell *cell,
                                         gpointer user_data)
 {
-    orage_month_view_select_all ((OrageMonthView *)user_data, FALSE);
-    orage_month_cell_set_selected (cell, TRUE);
-
     g_signal_emit (user_data, signals[SIGNAL_DATE_SELECTED_DOUBLE_CLICK], 0,
                    cell);
 }

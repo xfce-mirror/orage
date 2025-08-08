@@ -194,7 +194,8 @@ static void on_preferences_activated (G_GNUC_UNUSED OrageWindowNext *window)
     show_parameters ();
 }
 
-static void on_view_selected_date_activated (G_GNUC_UNUSED OrageWindowNext *window)
+static void on_view_selected_date_activated (
+    G_GNUC_UNUSED OrageWindowNext *window)
 {
     (void)create_el_win (NULL);
 }
@@ -305,32 +306,31 @@ static gboolean on_key_press (GtkWidget *widget, GdkEventKey *event,
     }
 }
 
-static void on_new_date_selected (OrageMonthView *view,
-                                  OrageMonthCell *cell,
-                                  gpointer user_data)
+static void on_date_selected (G_GNUC_UNUSED OrageMonthView *view,
+                              OrageMonthCell *cell,
+                              gpointer user_data)
 {
     GDateTime *gdt = orage_month_cell_get_date (cell);
-    gchar *text;
 
     gdt = orage_month_cell_get_date (cell);
+    orage_window_next_select_date (ORAGE_WINDOW (user_data), gdt);
     g_date_time_unref (gdt);
-    text = g_date_time_format (gdt, "%F");
-    g_debug ("%s: selected date '%s'", G_STRFUNC, text);
-    g_free (text);
 }
 
-static void on_new_date_selected_double_click (OrageMonthView *view,
-                                               OrageMonthCell *cell,
-                                               gpointer user_data)
+static void on_date_selected_double_click (G_GNUC_UNUSED OrageMonthView *view,
+                                           OrageMonthCell *cell,
+                                           G_GNUC_UNUSED gpointer user_data)
 {
-    GDateTime *gdt = orage_month_cell_get_date (cell);
-    gchar *text;
+    GDateTime *gdt;
 
     gdt = orage_month_cell_get_date (cell);
+
+    if (g_par.show_days)
+        orage_week_window_build (gdt);
+    else
+        (void)create_el_win (gdt);
+
     g_date_time_unref (gdt);
-    text = g_date_time_format (gdt, "%F");
-    g_debug ("%s: selected date '%s'", G_STRFUNC, text);
-    g_free (text);
 }
 
 static void menu_clean (GtkMenu *menu)
@@ -603,9 +603,9 @@ static void orage_window_next_init (OrageWindowNext *self)
                       self);
 
     g_signal_connect (self->month_view, "date-selected",
-                      G_CALLBACK (on_new_date_selected), NULL);
+                      G_CALLBACK (on_date_selected), self);
     g_signal_connect (self->month_view, "date-selected-double-click",
-                      G_CALLBACK (on_new_date_selected_double_click), NULL);
+                      G_CALLBACK (on_date_selected_double_click), NULL);
 
     g_signal_connect (self, "key-press-event", G_CALLBACK (on_key_press), NULL);
 }

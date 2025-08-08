@@ -221,14 +221,14 @@ static void mCalendar_day_selected_double_click_cb (GtkCalendar *calendar,
 {
     GDateTime *gdt;
 
+    gdt = orage_cal_to_gdatetime (calendar, 1, 1);
+
     if (g_par.show_days)
-    {
-        gdt = orage_cal_to_gdatetime (calendar, 1, 1);
         orage_week_window_build (gdt);
-        g_date_time_unref (gdt);
-    }
     else
-        (void)create_el_win(NULL);
+        (void)create_el_win (gdt);
+
+    g_date_time_unref (gdt);
 }
 
 static gboolean upd_calendar (gpointer user_data)
