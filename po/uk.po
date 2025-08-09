@@ -32,7 +32,7 @@ msgstr ""
 #. date only appointment
 #: src/event-list.c:186
 msgid "All day"
-msgstr "Всі дні"
+msgstr "Усі дні"
 
 #: src/event-list.c:617 src/event-list.c:1441
 msgid "Time"
@@ -52,7 +52,7 @@ msgid ""
 "You will permanently remove all\n"
 "selected appointments."
 msgstr ""
-"Ви видалите повністю всі\n"
+"Ви вилучите повністю всі\n"
 "виділені події."
 
 #: src/event-list.c:1017 src/orage-appointment-window.c:988
@@ -547,6 +547,7 @@ msgstr "Використовує GTK+-%d.%d.%d.\n"
 #, c-format
 msgid "\tCompiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d.\n"
 msgstr ""
+"\tСкомпільовано з libxfce4ui-%d.%d.%d, використовує libxfce4ui-%d.%d.%d.\n"
 
 #: src/orage-application.c:174
 msgid "\tUsing libnotify.\n"
@@ -566,7 +567,7 @@ msgstr "\tНе використовувати архівування.\n"
 
 #: src/orage-application.c:692
 msgid "Open today's tasks"
-msgstr ""
+msgstr "Відкрити сьогоднішні завдання"
 
 #: src/orage-application.c:701
 msgid "Add new appointment"
@@ -730,7 +731,7 @@ msgstr "Зб_ерегти і закрити"
 
 #: src/orage-appointment-window.c:3227
 msgid "first"
-msgstr ""
+msgstr "перший"
 
 #: src/orage-appointment-window.c:3227
 msgid "second"
@@ -738,15 +739,15 @@ msgstr "секунду"
 
 #: src/orage-appointment-window.c:3227
 msgid "third"
-msgstr ""
+msgstr "третій"
 
 #: src/orage-appointment-window.c:3227
 msgid "fourth"
-msgstr ""
+msgstr "четвертий"
 
 #: src/orage-appointment-window.c:3227
 msgid "last"
-msgstr ""
+msgstr "останній"
 
 #: src/orage-appointment-window.c:3237
 msgid "Monday"
@@ -783,7 +784,7 @@ msgstr "Кожен"
 
 #: src/orage-appointment-window.c:3256
 msgid "day(s)"
-msgstr ""
+msgstr "день/дні"
 
 #: src/orage-appointment-window.c:3273
 msgid "Mon"
@@ -827,7 +828,7 @@ msgstr "До кінця місяця:"
 
 #: src/orage-appointment-window.c:3353
 msgid "Every:"
-msgstr ""
+msgstr "Постійно:"
 
 #: src/orage-appointment-window.c:3381
 msgid "January"
@@ -1320,51 +1321,51 @@ msgstr "Дати дії"
 
 #: src/orage-import.c:105
 msgid "<b>Summary</b>"
-msgstr ""
+msgstr "<b>Підсумок</b>"
 
 #: src/orage-import.c:116
 msgid "<b>Type</b>"
-msgstr ""
+msgstr "<b>Тип</b>"
 
 #: src/orage-import.c:131
 msgid "<b>Location</b>"
-msgstr ""
+msgstr "<b>Локація</b>"
 
 #: src/orage-import.c:146
 msgid "<b>URL</b>"
-msgstr ""
+msgstr "<b>Веб-адреса</b>"
 
 #: src/orage-import.c:165
 msgid "<b>All-day</b>"
-msgstr ""
+msgstr "<b>Весь день</b>"
 
 #: src/orage-import.c:180
 msgid "<b>From</b>"
-msgstr ""
+msgstr "<b>Від</b>"
 
 #: src/orage-import.c:195
 msgid "<b>To</b>"
-msgstr ""
+msgstr "<b>До</b>"
 
 #: src/orage-import.c:209
 msgid "<b>Recurring</b>"
-msgstr ""
+msgstr "<b>Повторюваний</b>"
 
 #: src/orage-import.c:212
 msgid "Yes"
-msgstr ""
+msgstr "Так"
 
 #: src/orage-import.c:212
 msgid "No"
-msgstr ""
+msgstr "Ні"
 
 #: src/orage-import.c:258
 msgid "Import calendar file"
-msgstr ""
+msgstr "Імпортувати файл календаря"
 
 #: src/orage-import.c:260
 msgid "_Import"
-msgstr ""
+msgstr "_Імпорт"
 
 #: src/orage-import.c:269
 msgid "_Cancel"
@@ -4147,7 +4148,7 @@ msgstr "Уподобання годинника Orage"
 
 #: plugin/org.xfce.orage-settings.desktop.in:14 org.xfce.orage.desktop.in:15
 msgid "calendar;date;schedule;appointment;time;"
-msgstr ""
+msgstr "календар;дата;розклад;зустріч;час;"
 
 #: org.xfce.orage.appdata.xml.in:11
 msgid ""
@@ -4174,7 +4175,7 @@ msgstr ""
 
 #: org.xfce.orage.appdata.xml.in:35
 msgid "Orage Team"
-msgstr ""
+msgstr "Розробники Orage"
 
 #: org.xfce.orage.desktop.in:4
 msgid "Orage Calendar"
@@ -4190,7 +4191,7 @@ msgstr "Календар"
 
 #: org.xfce.orage.desktop.in:18
 msgid "Show Today"
-msgstr ""
+msgstr "Показати сьогоднішнє"
 
 #: org.xfce.orage.desktop.in:22
 msgid "New Appointment"
