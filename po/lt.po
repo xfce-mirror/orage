@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2025-02-10 12:49+0100\n"
+"POT-Creation-Date: 2025-05-14 12:50+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Moo, 2025\n"
 "Language-Team: Lithuanian (https://app.transifex.com/xfce/teams/16840/lt/)\n"
@@ -81,12 +81,12 @@ msgstr "Šiandien"
 #. ********* File menu *********
 #. File menu
 #: src/event-list.c:1135 src/interface.c:859
-#: src/orage-appointment-window.c:2907 src/orage-week-window.c:353
+#: src/orage-appointment-window.c:2906 src/orage-week-window.c:353
 #: src/orage-window.c:279
 msgid "_File"
 msgstr "_Failas"
 
-#: src/event-list.c:1141 src/orage-appointment-window.c:2925
+#: src/event-list.c:1141 src/orage-appointment-window.c:2924
 msgid "D_uplicate"
 msgstr "D_ubliuoti"
 
@@ -105,11 +105,11 @@ msgstr "_Eiti"
 msgid "New"
 msgstr "Nauja"
 
-#: src/event-list.c:1225 src/orage-appointment-window.c:3550
+#: src/event-list.c:1225 src/orage-appointment-window.c:3548
 msgid "Duplicate"
 msgstr "Dubliuoti"
 
-#: src/event-list.c:1227 src/orage-appointment-window.c:3555
+#: src/event-list.c:1227 src/orage-appointment-window.c:3553
 msgid "Delete"
 msgstr "Pašalinti"
 
@@ -137,7 +137,8 @@ msgstr "Užverti"
 msgid "Dayview"
 msgstr "Dienų rodinys"
 
-#: src/event-list.c:1280 src/orage-appointment-window.c:3585
+#: src/event-list.c:1280 src/orage-appointment-window.c:3583
+#: src/orage-import.c:63
 msgid "Event"
 msgstr "Įvykis"
 
@@ -171,11 +172,13 @@ msgstr ""
 "Pažymėkite tai, jei norite matyti ir senus įvykius. Siekiant išvengti labai ilgų sąrašų, tai gali būti pasirinkta tik pažymėjus „tik pirmą pasikartojantį“.\n"
 "Atkreipkite dėmesį, kad papildomų dienų pasirinkimas ir toliau apibrėžia ar bus rodomi naujesni paskyrimai."
 
-#: src/event-list.c:1338 src/orage-appointment-window.c:3593
+#: src/event-list.c:1338 src/orage-appointment-window.c:3591
+#: src/orage-import.c:66
 msgid "Todo"
 msgstr "Darbas"
 
-#: src/event-list.c:1352 src/orage-appointment-window.c:3601
+#: src/event-list.c:1352 src/orage-appointment-window.c:3599
+#: src/orage-import.c:69
 msgid "Journal"
 msgstr "Žurnalas"
 
@@ -196,7 +199,7 @@ msgid "Flags"
 msgstr "Gairelės"
 
 #. title
-#: src/event-list.c:1457 src/orage-appointment-window.c:3612
+#: src/event-list.c:1457 src/orage-appointment-window.c:3610
 msgid "Title"
 msgstr "Antraštė"
 
@@ -228,7 +231,7 @@ msgstr ""
 "\t 5. Paskyrimo tipas:\n"
 "\t\tE=Įvykis T=Darbas J=Žurnalas"
 
-#: src/ical-code.c:862
+#: src/ical-code.c:881
 msgid "Orage default alarm"
 msgstr "Numatytasis Orage signalas"
 
@@ -308,13 +311,13 @@ msgstr "Skaityti iš failo:"
 
 #: src/interface.c:1048 src/interface.c:1094 src/interface.c:1269
 #: src/interface.c:1361 src/interface.c:1444
-#: src/orage-appointment-window.c:3949 src/parameters.c:435
+#: src/orage-appointment-window.c:3947 src/parameters.c:435
 #: src/parameters.c:800 src/reminder.c:633
 msgid "_Open"
 msgstr "_Atverti"
 
 #: src/interface.c:1055 src/interface.c:1101 src/interface.c:1275
-#: src/interface.c:1367 src/orage-appointment-window.c:4111
+#: src/interface.c:1367 src/orage-appointment-window.c:4109
 msgid "_Save"
 msgstr "Į_rašyti"
 
@@ -375,7 +378,7 @@ msgid "Archive"
 msgstr "Archyvuoti"
 
 #: src/interface.c:1182 src/interface.c:1204
-#: src/orage-appointment-window.c:4090
+#: src/orage-appointment-window.c:4088
 msgid "_Execute"
 msgstr "_Vykdyti"
 
@@ -505,17 +508,17 @@ msgstr "Duomenų keitimasis - Orage"
 msgid "Orage"
 msgstr "Orage"
 
-#: src/orage-about.c:44 org.xfce.orage.appdata.xml.in:8
+#: src/orage-about.c:47 org.xfce.orage.appdata.xml.in:8
 msgid "Orage is a time-managing application for the Xfce desktop environment"
 msgstr "Orage yra laiko valdymo programa, skirta Xfce darbalaukio aplinkai"
 
-#: src/orage-about.c:51
+#: src/orage-about.c:54
 msgid "translator-credits"
 msgstr ""
 "Algimantas Margevičius <margevicius.algimantas@gmail.com>\n"
 "Moo <>"
 
-#: src/orage-application.c:114
+#: src/orage-application.c:162
 #, c-format
 msgid ""
 "\tThis is %s version %s\n"
@@ -524,76 +527,76 @@ msgstr ""
 "\tTai yra %s versija %s\n"
 "\n"
 
-#: src/orage-application.c:116
+#: src/orage-application.c:163
 msgid "\tReleased under the terms of the GNU General Public License.\n"
 msgstr "\tPlatinamas GNU Bendrosios viešosios licencijos versijos sąlygomis.\n"
 
-#: src/orage-application.c:117
+#: src/orage-application.c:164
 #, c-format
 msgid "\tCompiled against GTK+-%d.%d.%d, "
 msgstr "\tSukompiliuota prieš GTK+-%d.%d.%d, "
 
-#: src/orage-application.c:119
+#: src/orage-application.c:166
 #, c-format
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "naudojama GTK+-%d.%d.%d.\n"
 
-#: src/orage-application.c:122
+#: src/orage-application.c:169
 #, c-format
 msgid "\tCompiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d.\n"
 msgstr ""
 "\tKompiliuota remiantis libxfce4ui-%d.%d.%d, naudojant "
 "libxfce4ui-%d.%d.%d.\n"
 
-#: src/orage-application.c:127
+#: src/orage-application.c:174
 msgid "\tUsing libnotify.\n"
 msgstr "\tNaudojama libnotify.\n"
 
-#: src/orage-application.c:129
+#: src/orage-application.c:176
 msgid "\tNot using libnotify.\n"
 msgstr "\tLibnotify nenaudojama.\n"
 
-#: src/orage-application.c:132
+#: src/orage-application.c:179
 msgid "\tUsing automatic archiving.\n"
 msgstr "\tNaudojamas automatinis archyvavimas.\n"
 
-#: src/orage-application.c:134
+#: src/orage-application.c:181
 msgid "\tNot using archiving.\n"
 msgstr "\tArchyvavimas nenaudojamas.\n"
 
-#: src/orage-application.c:560
+#: src/orage-application.c:692
 msgid "Open today's tasks"
 msgstr "Atverti šiandienos užduotis"
 
-#: src/orage-application.c:569
+#: src/orage-application.c:701
 msgid "Add new appointment"
 msgstr "Pridėti naują paskyrimą"
 
-#: src/orage-application.c:578
+#: src/orage-application.c:710
 msgid "Show preferences form"
 msgstr "Rodyti nuostatų formą"
 
-#: src/orage-application.c:587
+#: src/orage-application.c:719
 msgid "Make Orage visible/unvisible"
 msgstr "Padaryto Orage matoma/nematoma"
 
-#: src/orage-application.c:596
+#: src/orage-application.c:728
 msgid "Add a foreign file"
 msgstr "Pridėti svetimą failą"
 
-#: src/orage-application.c:605
+#: src/orage-application.c:737
 msgid "Remove a foreign file"
 msgstr "Šalinti svetimą failą"
 
-#: src/orage-application.c:614
+#: src/orage-application.c:746
 msgid "Import appointments from file to Orage"
 msgstr "Importuoti paskyrimus iš failo į Orage"
 
-#: src/orage-application.c:623
+#: src/orage-application.c:755
 msgid "Export appointments from Orage to file"
 msgstr "Eksportuoti paskyrimus iš Orage į failą"
 
-#: src/orage-application.c:632
+#: src/orage-application.c:764
 msgid "Show version of Orage"
 msgstr "Rodyti Orage versiją"
 
@@ -601,7 +604,7 @@ msgstr "Rodyti Orage versiją"
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
 #. end time
 #: src/orage-appointment-window.c:527 src/orage-appointment-window.c:567
-#: src/orage-appointment-window.c:3646
+#: src/orage-appointment-window.c:3644
 msgid "End"
 msgstr "Pabaiga"
 
@@ -700,177 +703,177 @@ msgstr "Spalvų kategorijos - Orage"
 msgid "*** COPY ***"
 msgstr "*** KOPIJA ***"
 
-#: src/orage-appointment-window.c:2562 src/orage-appointment-window.c:3862
+#: src/orage-appointment-window.c:2562 src/orage-appointment-window.c:3860
 msgid "Before Start"
 msgstr "Prieš pradžią"
 
-#: src/orage-appointment-window.c:2562 src/orage-appointment-window.c:3862
+#: src/orage-appointment-window.c:2562 src/orage-appointment-window.c:3860
 msgid "Before End"
 msgstr "Prieš pabaigą"
 
-#: src/orage-appointment-window.c:2562 src/orage-appointment-window.c:3863
+#: src/orage-appointment-window.c:2562 src/orage-appointment-window.c:3861
 msgid "After Start"
 msgstr "Po pradžios"
 
-#: src/orage-appointment-window.c:2562 src/orage-appointment-window.c:3863
+#: src/orage-appointment-window.c:2562 src/orage-appointment-window.c:3861
 msgid "After End"
 msgstr "Po pabaigos"
 
 #. window title
-#: src/orage-appointment-window.c:2880
+#: src/orage-appointment-window.c:2879
 msgid "New appointment - Orage"
 msgstr "Naujas paskyrimas - Orage"
 
-#: src/orage-appointment-window.c:2913
+#: src/orage-appointment-window.c:2912
 msgid "Sav_e and close"
 msgstr "Įrašyti _ir užverti"
 
-#: src/orage-appointment-window.c:3229
+#: src/orage-appointment-window.c:3227
 msgid "first"
 msgstr "pirmas"
 
-#: src/orage-appointment-window.c:3229
+#: src/orage-appointment-window.c:3227
 msgid "second"
 msgstr "antras"
 
-#: src/orage-appointment-window.c:3229
+#: src/orage-appointment-window.c:3227
 msgid "third"
 msgstr "trečias"
 
-#: src/orage-appointment-window.c:3229
+#: src/orage-appointment-window.c:3227
 msgid "fourth"
 msgstr "ketvirtas"
 
-#: src/orage-appointment-window.c:3229
+#: src/orage-appointment-window.c:3227
 msgid "last"
 msgstr "paskutinis"
 
-#: src/orage-appointment-window.c:3239
+#: src/orage-appointment-window.c:3237
 msgid "Monday"
 msgstr "Pirmadienis"
 
-#: src/orage-appointment-window.c:3239
+#: src/orage-appointment-window.c:3237
 msgid "Tuesday"
 msgstr "Antradienis"
 
-#: src/orage-appointment-window.c:3239
+#: src/orage-appointment-window.c:3237
 msgid "Wednesday"
 msgstr "Trečiadienis"
 
-#: src/orage-appointment-window.c:3239
+#: src/orage-appointment-window.c:3237
 msgid "Thursday"
 msgstr "Ketvirtadienis"
 
-#: src/orage-appointment-window.c:3239
+#: src/orage-appointment-window.c:3237
 msgid "Friday"
 msgstr "Penktadienis"
 
-#: src/orage-appointment-window.c:3240
+#: src/orage-appointment-window.c:3238
 msgid "Saturday"
 msgstr "Šeštadienis"
 
-#: src/orage-appointment-window.c:3240
+#: src/orage-appointment-window.c:3238
 msgid "Sunday"
 msgstr "Sekmadienis"
 
-#: src/orage-appointment-window.c:3253 src/orage-appointment-window.c:3286
-#: src/orage-appointment-window.c:3393 src/orage-appointment-window.c:3427
+#: src/orage-appointment-window.c:3251 src/orage-appointment-window.c:3284
+#: src/orage-appointment-window.c:3391 src/orage-appointment-window.c:3425
 msgid "Every"
 msgstr "Kas"
 
-#: src/orage-appointment-window.c:3258
+#: src/orage-appointment-window.c:3256
 msgid "day(s)"
 msgstr "dienas(-ų)"
 
-#: src/orage-appointment-window.c:3275
+#: src/orage-appointment-window.c:3273
 msgid "Mon"
 msgstr "Pir"
 
-#: src/orage-appointment-window.c:3275
+#: src/orage-appointment-window.c:3273
 msgid "Tue"
 msgstr "Ant"
 
-#: src/orage-appointment-window.c:3275
+#: src/orage-appointment-window.c:3273
 msgid "Wed"
 msgstr "Tre"
 
-#: src/orage-appointment-window.c:3275
+#: src/orage-appointment-window.c:3273
 msgid "Thu"
 msgstr "Ket"
 
-#: src/orage-appointment-window.c:3275
+#: src/orage-appointment-window.c:3273
 msgid "Fri"
 msgstr "Pen"
 
-#: src/orage-appointment-window.c:3275
+#: src/orage-appointment-window.c:3273
 msgid "Sat"
 msgstr "Šeš"
 
-#: src/orage-appointment-window.c:3275
+#: src/orage-appointment-window.c:3273
 msgid "Sun"
 msgstr "Sek"
 
-#: src/orage-appointment-window.c:3293
+#: src/orage-appointment-window.c:3291
 msgid "week(s) on:"
 msgstr "savaitę(-es) ties:"
 
-#: src/orage-appointment-window.c:3329
+#: src/orage-appointment-window.c:3327
 msgid "From the beginning of the month:"
 msgstr "Nuo mėnesio pradžios:"
 
-#: src/orage-appointment-window.c:3342
+#: src/orage-appointment-window.c:3340
 msgid "From the end of the month:"
 msgstr "Nuo mėnesio pabaigos:"
 
-#: src/orage-appointment-window.c:3355
+#: src/orage-appointment-window.c:3353
 msgid "Every:"
 msgstr "Kas:"
 
-#: src/orage-appointment-window.c:3383
+#: src/orage-appointment-window.c:3381
 msgid "January"
 msgstr "Sausis"
 
-#: src/orage-appointment-window.c:3383
+#: src/orage-appointment-window.c:3381
 msgid "February"
 msgstr "Vasaris"
 
-#: src/orage-appointment-window.c:3383
+#: src/orage-appointment-window.c:3381
 msgid "March"
 msgstr "Kovas"
 
-#: src/orage-appointment-window.c:3383
+#: src/orage-appointment-window.c:3381
 msgid "April"
 msgstr "Balandis"
 
-#: src/orage-appointment-window.c:3383
+#: src/orage-appointment-window.c:3381
 msgid "May"
 msgstr "Gegužė"
 
-#: src/orage-appointment-window.c:3384
+#: src/orage-appointment-window.c:3382
 msgid "June"
 msgstr "Birželis"
 
-#: src/orage-appointment-window.c:3384
+#: src/orage-appointment-window.c:3382
 msgid "July"
 msgstr "Liepa"
 
-#: src/orage-appointment-window.c:3384
+#: src/orage-appointment-window.c:3382
 msgid "August"
 msgstr "Rugpjūtis"
 
-#: src/orage-appointment-window.c:3384
+#: src/orage-appointment-window.c:3382
 msgid "September"
 msgstr "Rugsėjis"
 
-#: src/orage-appointment-window.c:3384
+#: src/orage-appointment-window.c:3382
 msgid "October"
 msgstr "Spalis"
 
-#: src/orage-appointment-window.c:3385
+#: src/orage-appointment-window.c:3383
 msgid "November"
 msgstr "Lapkritis"
 
-#: src/orage-appointment-window.c:3385
+#: src/orage-appointment-window.c:3383
 msgid "December"
 msgstr "Gruodis"
 
@@ -878,42 +881,42 @@ msgstr "Gruodis"
 #. * "second Thursday of August". In some languages ​​it is not necessary to
 #. use
 #. * the string "of", it can be replaced with an empty string.
-#: src/orage-appointment-window.c:3401
+#: src/orage-appointment-window.c:3399
 msgid "of"
 msgstr "iš"
 
-#: src/orage-appointment-window.c:3432
+#: src/orage-appointment-window.c:3430
 msgid "hour(s)"
 msgstr "valanda(-ų)"
 
-#: src/orage-appointment-window.c:3468
+#: src/orage-appointment-window.c:3466
 msgid "Repeat forever"
 msgstr "Kartoti amžinai"
 
-#: src/orage-appointment-window.c:3473
+#: src/orage-appointment-window.c:3471
 msgid "Repeat"
 msgstr "Kartoti"
 
-#: src/orage-appointment-window.c:3481 src/orage-appointment-window.c:3977
+#: src/orage-appointment-window.c:3479 src/orage-appointment-window.c:3975
 msgid "times"
 msgstr "kartą(-us)"
 
-#: src/orage-appointment-window.c:3487
+#: src/orage-appointment-window.c:3485
 msgid "Repeat until"
 msgstr "Kartoti iki"
 
 #. start time
-#: src/orage-appointment-window.c:3505 src/orage-appointment-window.c:3631
+#: src/orage-appointment-window.c:3503 src/orage-appointment-window.c:3629
 #: src/orage-week-window.c:886
 msgid "Start"
 msgstr "Pradžia"
 
 #. completed (only for TODO)
-#: src/orage-appointment-window.c:3510 src/orage-appointment-window.c:3699
+#: src/orage-appointment-window.c:3508 src/orage-appointment-window.c:3697
 msgid "Completed"
 msgstr "Baigta"
 
-#: src/orage-appointment-window.c:3513
+#: src/orage-appointment-window.c:3511
 msgid ""
 "TODO reoccurs regularly starting on start time and repeating after each "
 "interval no matter when it was last completed"
@@ -921,7 +924,7 @@ msgstr ""
 "Darbai reguliariai atsiranda atėjus pradžios laikui ir kartojami nurodytu "
 "intervalu, nepaisant to, kada jie buvo paskutinį kartą baigti"
 
-#: src/orage-appointment-window.c:3515
+#: src/orage-appointment-window.c:3513
 msgid ""
 "TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
@@ -931,36 +934,36 @@ msgstr ""
 "pasakyti apie istoriją, nes darbų kartojimasis keičiasi po kiekvieno "
 "atlikimo.)"
 
-#: src/orage-appointment-window.c:3541
+#: src/orage-appointment-window.c:3539
 msgid "Save"
 msgstr "Įrašyti"
 
-#: src/orage-appointment-window.c:3543
+#: src/orage-appointment-window.c:3541
 msgid "Save and close"
 msgstr "Įrašyti ir užverti"
 
-#: src/orage-appointment-window.c:3548
+#: src/orage-appointment-window.c:3546
 msgid "Revert"
 msgstr "Grąžinti"
 
-#: src/orage-appointment-window.c:3573
+#: src/orage-appointment-window.c:3571
 msgid "Free"
 msgstr "Laisvas"
 
-#: src/orage-appointment-window.c:3573
+#: src/orage-appointment-window.c:3571
 msgid "Busy"
 msgstr "Užimtas"
 
-#: src/orage-appointment-window.c:3577
+#: src/orage-appointment-window.c:3575
 msgid "General"
 msgstr "Bendra"
 
 #. type
-#: src/orage-appointment-window.c:3583
+#: src/orage-appointment-window.c:3581
 msgid "Type"
 msgstr "Tipas"
 
-#: src/orage-appointment-window.c:3590
+#: src/orage-appointment-window.c:3588
 msgid ""
 "Event that will happen sometime. For example:\n"
 "Meeting or birthday or TV show."
@@ -968,7 +971,7 @@ msgstr ""
 "Įvykis kuris kada nors įvyks. Pavyzdžiui:\n"
 "Susitikimas, gimtadienis ar TV laida."
 
-#: src/orage-appointment-window.c:3598
+#: src/orage-appointment-window.c:3596
 msgid ""
 "Something that you should do sometime. For example:\n"
 "Wash your car or test new version of Orage."
@@ -976,7 +979,7 @@ msgstr ""
 "Kažkas ką jūs kažkada turite padaryti. Pavyzdžiui:\n"
 "Nuplauti mašiną ar išbandyti naują Orage versiją."
 
-#: src/orage-appointment-window.c:3606
+#: src/orage-appointment-window.c:3604
 msgid ""
 "Make a note that something happened. For example:\n"
 "Remark that your mother called or first snow came."
@@ -985,53 +988,53 @@ msgstr ""
 "Pasižymėkite jog skambino mama ar kada pirmą kart snigo."
 
 #. location
-#: src/orage-appointment-window.c:3618 src/timezone_selection.c:234
+#: src/orage-appointment-window.c:3616 src/timezone_selection.c:234
 #: src/timezone_selection.c:239
 msgid "Location"
 msgstr "Vieta"
 
-#: src/orage-appointment-window.c:3626
+#: src/orage-appointment-window.c:3624
 msgid "All day event"
 msgstr "Visos dienos įvykis"
 
-#: src/orage-appointment-window.c:3649
+#: src/orage-appointment-window.c:3647
 msgid "Set"
 msgstr "Nustatyti"
 
-#: src/orage-appointment-window.c:3673
+#: src/orage-appointment-window.c:3671
 msgid "Duration"
 msgstr "Trukmė"
 
-#: src/orage-appointment-window.c:3677 src/orage-appointment-window.c:3880
+#: src/orage-appointment-window.c:3675 src/orage-appointment-window.c:3878
 #: src/reminder.c:604
 msgid "days"
 msgstr "diena(-os)"
 
-#: src/orage-appointment-window.c:3679 src/orage-appointment-window.c:3882
+#: src/orage-appointment-window.c:3677 src/orage-appointment-window.c:3880
 #: src/reminder.c:606
 msgid "hours"
 msgstr "valanda(-os)"
 
-#: src/orage-appointment-window.c:3681 src/orage-appointment-window.c:3884
+#: src/orage-appointment-window.c:3679 src/orage-appointment-window.c:3882
 #: src/reminder.c:608
 msgid "mins"
 msgstr "min."
 
 #. Availability (only for EVENT)
-#: src/orage-appointment-window.c:3692
+#: src/orage-appointment-window.c:3690
 msgid "Availability"
 msgstr "Prieinamumas"
 
-#: src/orage-appointment-window.c:3702
+#: src/orage-appointment-window.c:3700
 msgid "Done"
 msgstr "Atlikta"
 
 #. categories
-#: src/orage-appointment-window.c:3726
+#: src/orage-appointment-window.c:3724
 msgid "Categories"
 msgstr "Kategorijos"
 
-#: src/orage-appointment-window.c:3744
+#: src/orage-appointment-window.c:3742
 msgid ""
 "This is special category, which can be used to color this appointment in "
 "list views."
@@ -1039,20 +1042,20 @@ msgstr ""
 "Tai speciali kategorija, kuri gali būti naudojama nuspalvoti šį paskyrimą "
 "sąrašo rodinyje."
 
-#: src/orage-appointment-window.c:3745
+#: src/orage-appointment-window.c:3743
 msgid "_Colour"
 msgstr "_Spalva"
 
-#: src/orage-appointment-window.c:3750
+#: src/orage-appointment-window.c:3748
 msgid "update colors for categories."
 msgstr "atnaujinti kategorijų spalvas."
 
 #. priority
-#: src/orage-appointment-window.c:3756
+#: src/orage-appointment-window.c:3754
 msgid "Priority"
 msgstr "Pirmenybė"
 
-#: src/orage-appointment-window.c:3760
+#: src/orage-appointment-window.c:3758
 msgid ""
 "If you set this 8 or bigger, the appointment is NOT shown on list windows.\n"
 "You can use that feature to unclutter your list windows, but it makes it more difficult to find this appointment.\n"
@@ -1065,11 +1068,11 @@ msgstr ""
 "(Yra neaprašytas parametras, leidžiantis pakeisti numatytąją 8 ribą.)"
 
 #. note
-#: src/orage-appointment-window.c:3768
+#: src/orage-appointment-window.c:3766
 msgid "Note"
 msgstr "Pastaba"
 
-#: src/orage-appointment-window.c:3788
+#: src/orage-appointment-window.c:3786
 msgid ""
 "These shorthand commands take effect immediately:\n"
 "    <D> inserts current date in local date format\n"
@@ -1089,16 +1092,16 @@ msgstr ""
 "    <&Ynnnn> yra verčiama į dabartinius metus minus nnnn.\n"
 "(Tai gali būti naudojama priminimuose apie gimtadienius, kad būtų pranešama, kiek žmogui sukaks metų.)"
 
-#: src/orage-appointment-window.c:3871
+#: src/orage-appointment-window.c:3869
 msgid "Alarm"
 msgstr "Signalas"
 
 #. **** ALARM TIME ****
-#: src/orage-appointment-window.c:3877
+#: src/orage-appointment-window.c:3875
 msgid "Alarm time"
 msgstr "Signalo laikas"
 
-#: src/orage-appointment-window.c:3901
+#: src/orage-appointment-window.c:3899
 msgid ""
 "Often you want to get alarm:\n"
 " 1) before Event start\n"
@@ -1110,11 +1113,11 @@ msgstr ""
 " 2) prieš baigiantis darbui\n"
 " 3) po darbo pradžios"
 
-#: src/orage-appointment-window.c:3906
+#: src/orage-appointment-window.c:3904
 msgid "Persistent alarm"
 msgstr "Nuolatinis signalas"
 
-#: src/orage-appointment-window.c:3911
+#: src/orage-appointment-window.c:3909
 msgid ""
 "Select this if you want Orage to remind you even if it has not been active "
 "when the alarm happened."
@@ -1122,77 +1125,77 @@ msgstr ""
 "Pasirinkite jei norite jog Orage primintų net tada jei įvykus įvykiui jis "
 "nebuvo pažymėtas kaip aktyvus."
 
-#: src/orage-appointment-window.c:3920
+#: src/orage-appointment-window.c:3918
 msgid "Sound"
 msgstr "Garsas"
 
-#: src/orage-appointment-window.c:3924 src/orage-appointment-window.c:4065
+#: src/orage-appointment-window.c:3922 src/orage-appointment-window.c:4063
 msgid "Use"
 msgstr "Naudoti"
 
-#: src/orage-appointment-window.c:3929
+#: src/orage-appointment-window.c:3927
 msgid "Select this if you want audible alarm"
 msgstr "Pasirinkite jei norite girdimo signalo"
 
-#: src/orage-appointment-window.c:3934
+#: src/orage-appointment-window.c:3932
 msgid "Sound command is not set"
 msgstr "Nėra nustatyta garso komanda"
 
-#: src/orage-appointment-window.c:3962
+#: src/orage-appointment-window.c:3960
 msgid "Repeat alarm sound"
 msgstr "Kartoti signalą"
 
-#: src/orage-appointment-window.c:3993
+#: src/orage-appointment-window.c:3991
 msgid "sec interval"
 msgstr "sekundės(-žių) intervalu"
 
 #. **** Display Alarm ****
-#: src/orage-appointment-window.c:4002
+#: src/orage-appointment-window.c:4000
 msgid "Visual"
 msgstr "Vaizdinis"
 
-#: src/orage-appointment-window.c:4006
+#: src/orage-appointment-window.c:4004
 msgid "Use Orage window"
 msgstr "Naudoti Orage langą"
 
-#: src/orage-appointment-window.c:4008
+#: src/orage-appointment-window.c:4006
 msgid "Select this if you want Orage window alarm"
 msgstr "Pasirinkite jei norite Orage lango signalo"
 
-#: src/orage-appointment-window.c:4020
+#: src/orage-appointment-window.c:4018
 msgid "Use notification"
 msgstr "Naudoti pranešimus"
 
-#: src/orage-appointment-window.c:4022
+#: src/orage-appointment-window.c:4020
 msgid "Select this if you want notification alarm"
 msgstr "Pasirinkite jei norite pranešimo signalo"
 
-#: src/orage-appointment-window.c:4030
+#: src/orage-appointment-window.c:4028
 msgid "Set timeout"
 msgstr "Nustatyti galiojimo laiką"
 
-#: src/orage-appointment-window.c:4032
+#: src/orage-appointment-window.c:4030
 msgid "Select this if you want notification to expire automatically"
 msgstr "Pasirinkite jei norite jog pranešimas automatiškai išnyktų"
 
-#: src/orage-appointment-window.c:4043
+#: src/orage-appointment-window.c:4041
 msgid "0 = system default expiration time"
 msgstr "0 = numatytasis galiojimo laikas"
 
-#: src/orage-appointment-window.c:4051
+#: src/orage-appointment-window.c:4049
 msgid "seconds"
 msgstr "sekundės"
 
 #. **** Procedure Alarm ****
-#: src/orage-appointment-window.c:4061
+#: src/orage-appointment-window.c:4059
 msgid "Procedure"
 msgstr "Užduotis"
 
-#: src/orage-appointment-window.c:4067
+#: src/orage-appointment-window.c:4065
 msgid "Select this if you want procedure or script alarm"
 msgstr "Pasirinkite jei norite procedūros ar scenarijaus signalo"
 
-#: src/orage-appointment-window.c:4077
+#: src/orage-appointment-window.c:4075
 msgid ""
 "You must enter all escape etc characters yourself.\n"
 "This string is just given to shell to process.\n"
@@ -1212,75 +1215,75 @@ msgstr ""
 "\t<&ST> paskyrimo pradžios laikas\n"
 "\t<&ET> paskyrimo pabaigos laikas"
 
-#: src/orage-appointment-window.c:4092
+#: src/orage-appointment-window.c:4090
 msgid "Test this alarm by raising it now"
 msgstr "Išbandykite iškviesdami signalą dabar"
 
-#: src/orage-appointment-window.c:4105
+#: src/orage-appointment-window.c:4103
 msgid "<b>Default alarm</b>"
 msgstr "<b>Numatytasis signalas</b>"
 
-#: src/orage-appointment-window.c:4119
+#: src/orage-appointment-window.c:4117
 msgid "Store current settings as default alarm"
 msgstr "Saugoti dabartinius nustatymus kaip numatytąjį signalą"
 
-#: src/orage-appointment-window.c:4121
+#: src/orage-appointment-window.c:4119
 msgid "_Revert"
 msgstr "_Sugrąžinti"
 
-#: src/orage-appointment-window.c:4129
+#: src/orage-appointment-window.c:4127
 msgid "Set current settings from default alarm"
 msgstr "Nustatyti dabartinius nustatymus iš numatytojo signalo"
 
-#: src/orage-appointment-window.c:4194
+#: src/orage-appointment-window.c:4192
 msgid "None"
 msgstr "Niekada"
 
-#: src/orage-appointment-window.c:4194
+#: src/orage-appointment-window.c:4192
 msgid "Daily"
 msgstr "Kasdien"
 
-#: src/orage-appointment-window.c:4194
+#: src/orage-appointment-window.c:4192
 msgid "Weekly"
 msgstr "Kas savaitę"
 
-#: src/orage-appointment-window.c:4195
+#: src/orage-appointment-window.c:4193
 msgid "Monthly"
 msgstr "Kas mėnesį"
 
-#: src/orage-appointment-window.c:4195
+#: src/orage-appointment-window.c:4193
 msgid "Yearly"
 msgstr "Kas metus"
 
-#: src/orage-appointment-window.c:4195
+#: src/orage-appointment-window.c:4193
 msgid "Hourly"
 msgstr "Kas valandą"
 
-#: src/orage-appointment-window.c:4210
+#: src/orage-appointment-window.c:4208
 msgid "Recurrence"
 msgstr "Pasikartojimas"
 
 #. ****************************** Frequency *******************************
-#: src/orage-appointment-window.c:4217
+#: src/orage-appointment-window.c:4215
 msgid "Frequency"
 msgstr "Dažnumas"
 
 #. ****************************** Limit ***********************************
-#: src/orage-appointment-window.c:4258
+#: src/orage-appointment-window.c:4256
 msgid "Limit"
 msgstr "Riba"
 
 #. ****************************** TODO base (only for TODOs) **************
-#: src/orage-appointment-window.c:4264
+#: src/orage-appointment-window.c:4262
 msgid "TODO base"
 msgstr "Darbų bazė"
 
 #. exceptions
-#: src/orage-appointment-window.c:4271
+#: src/orage-appointment-window.c:4269
 msgid "Exceptions"
 msgstr "Išimtys"
 
-#: src/orage-appointment-window.c:4297
+#: src/orage-appointment-window.c:4295
 msgid ""
 "Add more exception dates by clicking the calendar days below.\n"
 "Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
@@ -1290,19 +1293,19 @@ msgstr ""
 "Išimtis yra išimtis(-) arba įterpimas(+) priklausomai nuo pasirinkimo.\n"
 "Pašalinkite paspausdami duomenis."
 
-#: src/orage-appointment-window.c:4308
+#: src/orage-appointment-window.c:4306
 msgid "Add excluded date (-)"
 msgstr "Pridėti išimties datą (-)"
 
-#: src/orage-appointment-window.c:4310
+#: src/orage-appointment-window.c:4308
 msgid "Excluded days are full days where this appointment is not happening"
 msgstr "Išimties dienos yra pilnos dienos kuriomis paskyrimai nevyksta"
 
-#: src/orage-appointment-window.c:4317
+#: src/orage-appointment-window.c:4315
 msgid "Add included time (+)"
 msgstr "Pridėti įterpimo laiką (+)"
 
-#: src/orage-appointment-window.c:4319
+#: src/orage-appointment-window.c:4317
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time"
@@ -1311,9 +1314,61 @@ msgstr ""
 "gali skirtis"
 
 #. calendars showing the action days
-#: src/orage-appointment-window.c:4338
+#: src/orage-appointment-window.c:4336
 msgid "Action dates"
 msgstr "Veiksmų datos"
+
+#: src/orage-import.c:105
+msgid "<b>Summary</b>"
+msgstr "<b>Santrauka</b>"
+
+#: src/orage-import.c:116
+msgid "<b>Type</b>"
+msgstr "<b>Tipas</b>"
+
+#: src/orage-import.c:131
+msgid "<b>Location</b>"
+msgstr "<b>Vieta</b>"
+
+#: src/orage-import.c:146
+msgid "<b>URL</b>"
+msgstr "<b>URL</b>"
+
+#: src/orage-import.c:165
+msgid "<b>All-day</b>"
+msgstr "<b>Visos dienos</b>"
+
+#: src/orage-import.c:180
+msgid "<b>From</b>"
+msgstr "<b>Nuo</b>"
+
+#: src/orage-import.c:195
+msgid "<b>To</b>"
+msgstr "<b>Iki</b>"
+
+#: src/orage-import.c:209
+msgid "<b>Recurring</b>"
+msgstr "<b>Pasikartojantis</b>"
+
+#: src/orage-import.c:212
+msgid "Yes"
+msgstr "Taip"
+
+#: src/orage-import.c:212
+msgid "No"
+msgstr "Ne"
+
+#: src/orage-import.c:258
+msgid "Import calendar file"
+msgstr "Importuoti kalendoriaus failą"
+
+#: src/orage-import.c:260
+msgid "_Import"
+msgstr "_Importuoti"
+
+#: src/orage-import.c:269
+msgid "_Cancel"
+msgstr "_Atsisakyti"
 
 #: src/orage-sync-edit-dialog.c:132
 msgid "Description:"

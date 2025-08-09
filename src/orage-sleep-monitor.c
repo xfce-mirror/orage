@@ -17,10 +17,6 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #include <string.h>
 #include <unistd.h>
 
@@ -88,14 +84,17 @@ struct _OrageSleepDBusMonitor
   GDBusProxy *monitor_proxy;
 };
 
-#define ORAGE_TYPE_SLEEP_DBUS_MONITOR (orage_sleep_dbus_monitor_get_type ())
+#define ORAGE_SLEEP_DBUS_MONITOR_TYPE (orage_sleep_dbus_monitor_get_type ())
 
-G_DECLARE_FINAL_TYPE (OrageSleepDBusMonitor, orage_sleep_dbus_monitor, ORAGE, SLEEP_DBUS_MONITOR, OrageSleepMonitor)
+G_DECLARE_FINAL_TYPE (OrageSleepDBusMonitor, orage_sleep_dbus_monitor, ORAGE,
+                      SLEEP_DBUS_MONITOR, OrageSleepMonitor)
 
 #if GLIB_VERSION_MAX_ALLOWED >= GLIB_VERSION_2_70
-G_DEFINE_FINAL_TYPE (OrageSleepDBusMonitor, orage_sleep_dbus_monitor, ORAGE_TYPE_SLEEP_MONITOR)
+G_DEFINE_FINAL_TYPE (OrageSleepDBusMonitor, orage_sleep_dbus_monitor,
+                     ORAGE_SLEEP_MONITOR_TYPE)
 #else
-G_DEFINE_TYPE (OrageSleepDBusMonitor, orage_sleep_dbus_monitor, ORAGE_TYPE_SLEEP_MONITOR)
+G_DEFINE_TYPE (OrageSleepDBusMonitor, orage_sleep_dbus_monitor,
+               ORAGE_SLEEP_MONITOR_TYPE)
 #endif
 
 static void orage_sleep_dbus_monitor_finalize (GObject *object);
@@ -160,7 +159,7 @@ static OrageSleepMonitor* orage_sleep_dbus_monitor_create (const gchar *name,
 
   g_debug ("trying to instantiate sleep monitor %s", name);
 
-  monitor = g_object_new (ORAGE_TYPE_SLEEP_DBUS_MONITOR, NULL);
+  monitor = g_object_new (ORAGE_SLEEP_DBUS_MONITOR_TYPE, NULL);
   monitor->monitor_proxy = g_dbus_proxy_new_for_bus_sync (
       G_BUS_TYPE_SYSTEM,
       G_DBUS_PROXY_FLAGS_NONE,

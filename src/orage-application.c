@@ -18,8 +18,8 @@
  *     Boston, MA 02110-1301 USA
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
+#ifdef HAVE_XFCE_REVISION_H
+#include "xfce-revision.h"
 #endif
 
 #include "orage-application.h"
@@ -31,6 +31,7 @@
 #include "orage-appointment-window.h"
 #include "orage-css.h"
 #include "orage-i18n.h"
+#include "orage-import.h"
 #include "orage-sleep-monitor.h"
 #include "orage-window.h"
 #include "parameters.h"
@@ -60,6 +61,8 @@ struct _OrageApplication
     GtkWidget *window;
     OrageSleepMonitor *sleep_monitor;
     OrageTaskRunner *sync;
+    GList *appointments;
+    GList *files;
     guint prepare_for_sleep_id;
     gboolean toggle_option;
     gboolean preferences_option;
@@ -76,6 +79,48 @@ static gboolean window_delete_event_cb (G_GNUC_UNUSED GtkWidget *widget,
     orage_application_close (app);
 
     return TRUE;
+}
+
+static void cb_preview_dialog_response (GtkDialog *gtk_dialog,
+                                        const gint response_id,
+                                        gpointer data)
+{
+    const gchar *file;
+    GList *tmp_list;
+    OrageImportWindow *dialog = ORAGE_IMPORT_WINDOW (gtk_dialog);
+    OrageApplication *app = ORAGE_APPLICATION (data);
+
+    g_return_if_fail (ORAGE_IS_IMPORT_WINDOW (dialog));
+
+    switch (response_id)
+    {
+        case GTK_RESPONSE_ACCEPT:
+            for (tmp_list = g_list_first (app->files);
+                 tmp_list != NULL;
+                 tmp_list = g_list_next (tmp_list))
+            {
+                file = tmp_list->data;
+                if (xfical_import_file (file))
+                    g_message ("import done, file=%s", file);
+                else
+                    g_warning ("import failed, file=%s", file);
+            }
+
+            break;
+
+        case GTK_RESPONSE_CANCEL:
+            break;
+
+        default:
+            g_assert_not_reached ();
+            break;
+    }
+
+    gtk_widget_destroy (GTK_WIDGET (gtk_dialog));
+    g_list_free_full (app->appointments, g_object_unref);
+    g_list_free_full (app->files, g_free);
+    app->appointments = NULL;
+    app->files = NULL;
 }
 
 static gboolean resuming_after_delay (G_GNUC_UNUSED gpointer user_data)
@@ -111,8 +156,7 @@ static void resuming_handler_register (OrageApplication *self)
 
 static void print_version (void)
 {
-    g_print (_("\tThis is %s version %s\n\n")
-            , PACKAGE, VERSION);
+    g_print (_("\tThis is %s version %s\n\n"), PACKAGE, VERSION_FULL);
     g_print (_("\tReleased under the terms of the GNU General Public License.\n"));
     g_print (_("\tCompiled against GTK+-%d.%d.%d, ")
             , GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION);
@@ -163,6 +207,58 @@ static void raise_window (OrageApplication *self)
 
     gtk_window_set_keep_above (window, g_par.set_ontop);
     gtk_window_present (window);
+}
+
+static gboolean is_readable (GFile *file)
+{
+    gboolean result;
+    GError *error = NULL;
+    GFileInfo *info = g_file_query_info (file,
+        G_FILE_ATTRIBUTE_STANDARD_TYPE "," G_FILE_ATTRIBUTE_ACCESS_CAN_READ,
+        G_FILE_QUERY_INFO_NONE,
+        NULL, &error);
+
+    if (info)
+    {
+        if (g_file_info_get_attribute_boolean (info,
+                                               G_FILE_ATTRIBUTE_ACCESS_CAN_READ))
+        {
+            result = TRUE;
+        }
+        else
+        {
+            g_warning ("file is not readale");
+            result = FALSE;
+        }
+
+        g_object_unref (info);
+    }
+    else
+    {
+        g_warning ("could not open file: %s", error->message);
+        g_clear_error (&error);
+        result = FALSE;
+    }
+
+    return result;
+}
+
+static void show_appointment_preview (OrageApplication *self, GtkWindow *parent)
+{
+    GtkWidget *dialog = orage_import_window_new (self->appointments);
+
+    gtk_window_set_transient_for (GTK_WINDOW (dialog), parent);
+    gtk_window_set_modal (GTK_WINDOW (dialog), FALSE);
+
+    g_signal_connect (dialog, "response",
+                      G_CALLBACK (cb_preview_dialog_response),
+                      self);
+
+#if 0
+    /* TODO: Inside preview window event description should be also reziable. */
+    gtk_window_set_resizable (GTK_WINDOW (dialog), TRUE);
+#endif
+    gtk_widget_show (dialog);
 }
 
 static void orage_application_startup (GApplication *app)
@@ -262,6 +358,13 @@ static void orage_application_activate (GApplication *app)
 
         /* day change after resuming */
         resuming_handler_register (self);
+    }
+
+    if (self->appointments)
+    {
+        gtk_widget_hide (window);
+        show_appointment_preview (self, GTK_WINDOW (window));
+        hide_main_window = TRUE;
     }
 
     if (self->preferences_option)
@@ -429,11 +532,13 @@ static gint orage_application_command_line (GApplication *app,
     return EXIT_SUCCESS;
 }
 
-static void orage_application_open (G_GNUC_UNUSED GApplication *app,
+static void orage_application_open (GApplication *app,
                                     GFile **files,
-                                    gint n_files,
+                                    const gint n_files,
                                     const gchar *hint)
 {
+    GList *tmp_list;
+    OrageApplication *self;
     gchar **hint_array;
     gint i;
     gchar *file;
@@ -446,7 +551,31 @@ static void orage_application_open (G_GNUC_UNUSED GApplication *app,
         switch (hint[0])
         {
             case HINT_OPEN:
-                g_message ("open not yet implemented");
+                file = g_file_get_path (files[i]);
+                if (is_readable (files[i]))
+                {
+                    g_debug ("opening calendar file '%s'", file);
+                    self = ORAGE_APPLICATION (app);
+                    tmp_list = o_cal_component_list_from_file (files[i]);
+                    if (tmp_list)
+                    {
+                        g_debug ("loaded %d events from file '%s'",
+                                 g_list_length (tmp_list), file);
+                        /* 'file' is freed by callback. */
+                        self->files = g_list_append (self->files, file);
+                        self->appointments = g_list_concat (self->appointments,
+                                                            tmp_list);
+                    }
+                    else
+                    {
+                        g_warning ("ICS file '%s' read failed", file);
+                        g_free (file);
+                    }
+                }
+                else
+                    g_warning ("file '%s' does not exist or cannot be read",
+                               file);
+
                 break;
 
             case HINT_ADD:

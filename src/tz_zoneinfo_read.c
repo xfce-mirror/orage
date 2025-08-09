@@ -19,10 +19,6 @@
  *     Boston, MA 02110-1301 USA
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #include <errno.h>
     /* errno */
 
@@ -69,7 +65,7 @@
 
 
 /** This is the toplevel directory where the timezone data is installed in. */
-#define ORAGE_ZONEINFO_DIRECTORY  PACKAGE_DATA_DIR "/orage/zoneinfo/"
+#define ORAGE_ZONEINFO_DIRECTORY PACKAGE_DATADIR "/orage/zoneinfo/"
 
 /** This is the filename of the file containing tz_convert parameters
  * This file contains the location of the os zoneinfo data.

@@ -4,24 +4,24 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Serdar Sağlam <teknomobil@msn.com>, 2022
 # Necdet Yücel <necdetyucel@gmail.com>, 2022
 # Nick Schermer <nick@xfce.org>, 2022
-# b83946de5835331df42b9ffcc43e6a33_05e65cd <73a30e0a984b2291d4915f37112ad292_814039>, 2023
 # Emin Tufan Çetin <etcetin@gmail.com>, 2024
 # Demiray Muhterem <mdemiray@msn.com>, 2024
 # Xfce Bot <transifex@xfce.org>, 2024
-# Ufuk Furkan Öztürk, 2024
-# x x, 2025
+# mudrockdev, 2024
+# 3909d6133b383976bde86621da215840_711025d, 2025
+# b83946de5835331df42b9ffcc43e6a33_05e65cd <73a30e0a984b2291d4915f37112ad292_814039>, 2025
+# Serdar Sağlam <teknomobil@msn.com>, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2025-02-10 12:49+0100\n"
+"POT-Creation-Date: 2025-05-14 12:50+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: x x, 2025\n"
+"Last-Translator: Serdar Sağlam <teknomobil@msn.com>, 2025\n"
 "Language-Team: Turkish (https://app.transifex.com/xfce/teams/16840/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -85,12 +85,12 @@ msgstr "Bugün"
 #. ********* File menu *********
 #. File menu
 #: src/event-list.c:1135 src/interface.c:859
-#: src/orage-appointment-window.c:2907 src/orage-week-window.c:353
+#: src/orage-appointment-window.c:2906 src/orage-week-window.c:353
 #: src/orage-window.c:279
 msgid "_File"
 msgstr "_Dosya"
 
-#: src/event-list.c:1141 src/orage-appointment-window.c:2925
+#: src/event-list.c:1141 src/orage-appointment-window.c:2924
 msgid "D_uplicate"
 msgstr "K_opyala"
 
@@ -109,11 +109,11 @@ msgstr "G_it"
 msgid "New"
 msgstr "Yeni"
 
-#: src/event-list.c:1225 src/orage-appointment-window.c:3550
+#: src/event-list.c:1225 src/orage-appointment-window.c:3548
 msgid "Duplicate"
 msgstr "Kopyala"
 
-#: src/event-list.c:1227 src/orage-appointment-window.c:3555
+#: src/event-list.c:1227 src/orage-appointment-window.c:3553
 msgid "Delete"
 msgstr "Sil"
 
@@ -141,7 +141,8 @@ msgstr "Kapat"
 msgid "Dayview"
 msgstr "Gün görünümü"
 
-#: src/event-list.c:1280 src/orage-appointment-window.c:3585
+#: src/event-list.c:1280 src/orage-appointment-window.c:3583
+#: src/orage-import.c:63
 msgid "Event"
 msgstr "Olay"
 
@@ -175,11 +176,13 @@ msgstr ""
 "Eski etkinlikleri de görmek istiyorsanız bunu işaretleyin. Bu, çok uzun listelerden kaçınmak için yalnızca 'yalnızca ilk tekrarlama' etkinleştirildikten sonra seçilebilir. \n"
 "Ek gün seçiminin, daha yeni randevuların listelenip listelenmediğini belirlemeye devam ettiğini unutmayın."
 
-#: src/event-list.c:1338 src/orage-appointment-window.c:3593
+#: src/event-list.c:1338 src/orage-appointment-window.c:3591
+#: src/orage-import.c:66
 msgid "Todo"
 msgstr "Yapılacak"
 
-#: src/event-list.c:1352 src/orage-appointment-window.c:3601
+#: src/event-list.c:1352 src/orage-appointment-window.c:3599
+#: src/orage-import.c:69
 msgid "Journal"
 msgstr "Günlük"
 
@@ -200,7 +203,7 @@ msgid "Flags"
 msgstr "Bayraklar"
 
 #. title
-#: src/event-list.c:1457 src/orage-appointment-window.c:3612
+#: src/event-list.c:1457 src/orage-appointment-window.c:3610
 msgid "Title"
 msgstr "Başlık"
 
@@ -232,7 +235,7 @@ msgstr ""
 "\t 5. Randevu türü:\n"
 "\t\tE=Etkinlik T=Yapılacak J=Günlük"
 
-#: src/ical-code.c:862
+#: src/ical-code.c:881
 msgid "Orage default alarm"
 msgstr "Orage öntanımlı alârm"
 
@@ -312,13 +315,13 @@ msgstr "Dosyadan oku:"
 
 #: src/interface.c:1048 src/interface.c:1094 src/interface.c:1269
 #: src/interface.c:1361 src/interface.c:1444
-#: src/orage-appointment-window.c:3949 src/parameters.c:435
+#: src/orage-appointment-window.c:3947 src/parameters.c:435
 #: src/parameters.c:800 src/reminder.c:633
 msgid "_Open"
 msgstr "_Aç"
 
 #: src/interface.c:1055 src/interface.c:1101 src/interface.c:1275
-#: src/interface.c:1367 src/orage-appointment-window.c:4111
+#: src/interface.c:1367 src/orage-appointment-window.c:4109
 msgid "_Save"
 msgstr "_Kaydet"
 
@@ -379,7 +382,7 @@ msgid "Archive"
 msgstr "Arşiv"
 
 #: src/interface.c:1182 src/interface.c:1204
-#: src/orage-appointment-window.c:4090
+#: src/orage-appointment-window.c:4088
 msgid "_Execute"
 msgstr "_Çalıştır"
 
@@ -506,12 +509,12 @@ msgstr "Veritabanını değiştir - Orage"
 msgid "Orage"
 msgstr "Orage"
 
-#: src/orage-about.c:44 org.xfce.orage.appdata.xml.in:8
+#: src/orage-about.c:47 org.xfce.orage.appdata.xml.in:8
 msgid "Orage is a time-managing application for the Xfce desktop environment"
 msgstr ""
 "Orage, Xfce masaüstü ortamı için zaman yönetimi sağlayan bir uygulamadır."
 
-#: src/orage-about.c:51
+#: src/orage-about.c:54
 msgid "translator-credits"
 msgstr ""
 "Onur Küçük \n"
@@ -520,7 +523,7 @@ msgstr ""
 "Serdar Sağlam\n"
 "Emin Tufan Çetin"
 
-#: src/orage-application.c:114
+#: src/orage-application.c:162
 #, c-format
 msgid ""
 "\tThis is %s version %s\n"
@@ -529,74 +532,74 @@ msgstr ""
 "\tBu %s sürüm %s\n"
 "\n"
 
-#: src/orage-application.c:116
+#: src/orage-application.c:163
 msgid "\tReleased under the terms of the GNU General Public License.\n"
 msgstr "\tGNU Genel Kamu Lisansı hükümleri altında dağıtılmaktadır.\n"
 
-#: src/orage-application.c:117
+#: src/orage-application.c:164
 #, c-format
 msgid "\tCompiled against GTK+-%d.%d.%d, "
 msgstr "\tGTK+-%d.%d.%d sürümü kullanılarak derlenmiştir,"
 
-#: src/orage-application.c:119
+#: src/orage-application.c:166
 #, c-format
 msgid "using GTK+-%d.%d.%d.\n"
 msgstr "GTK+-%d.%d.%d kullanılıyor.\n"
 
-#: src/orage-application.c:122
+#: src/orage-application.c:169
 #, c-format
 msgid "\tCompiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d.\n"
 msgstr "\tKarşı derlendi libxfce4ui-%d.%d.%d, kullanılıyor libxfce4ui-%d.%d.%d.\n"
 
-#: src/orage-application.c:127
+#: src/orage-application.c:174
 msgid "\tUsing libnotify.\n"
 msgstr "\tlibnotify kullanılıyor.\n"
 
-#: src/orage-application.c:129
+#: src/orage-application.c:176
 msgid "\tNot using libnotify.\n"
 msgstr "\tlibnotify kullanılmıyor.\n"
 
-#: src/orage-application.c:132
+#: src/orage-application.c:179
 msgid "\tUsing automatic archiving.\n"
 msgstr "\tKendiliğinden arşivleme kullanılıyor.\n"
 
-#: src/orage-application.c:134
+#: src/orage-application.c:181
 msgid "\tNot using archiving.\n"
 msgstr "\tArşivleme kullanılmıyor.\n"
 
-#: src/orage-application.c:560
+#: src/orage-application.c:692
 msgid "Open today's tasks"
 msgstr "Bugünün görevlerini açın."
 
-#: src/orage-application.c:569
+#: src/orage-application.c:701
 msgid "Add new appointment"
 msgstr "Yeni randevu ekle"
 
-#: src/orage-application.c:578
+#: src/orage-application.c:710
 msgid "Show preferences form"
 msgstr "Tercihler formunu göster"
 
-#: src/orage-application.c:587
+#: src/orage-application.c:719
 msgid "Make Orage visible/unvisible"
 msgstr "Orage'yi görünür/gizli kıl"
 
-#: src/orage-application.c:596
+#: src/orage-application.c:728
 msgid "Add a foreign file"
 msgstr "Yabancı dosya ekle"
 
-#: src/orage-application.c:605
+#: src/orage-application.c:737
 msgid "Remove a foreign file"
 msgstr "Yabancı bir dosyayı kaldırın"
 
-#: src/orage-application.c:614
+#: src/orage-application.c:746
 msgid "Import appointments from file to Orage"
 msgstr "Randevuları dosyadan Orage'a aktarın"
 
-#: src/orage-application.c:623
+#: src/orage-application.c:755
 msgid "Export appointments from Orage to file"
 msgstr "Orage'deki görevleri dosyaya aktar"
 
-#: src/orage-application.c:632
+#: src/orage-application.c:764
 msgid "Show version of Orage"
 msgstr "Orage sürümünü göster"
 
@@ -604,7 +607,7 @@ msgstr "Orage sürümünü göster"
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
 #. end time
 #: src/orage-appointment-window.c:527 src/orage-appointment-window.c:567
-#: src/orage-appointment-window.c:3646
+#: src/orage-appointment-window.c:3644
 msgid "End"
 msgstr "Son"
 
@@ -702,177 +705,177 @@ msgstr "Kategorilerin renkleri - Orage"
 msgid "*** COPY ***"
 msgstr "*** KOPYA ***"
 
-#: src/orage-appointment-window.c:2562 src/orage-appointment-window.c:3862
+#: src/orage-appointment-window.c:2562 src/orage-appointment-window.c:3860
 msgid "Before Start"
 msgstr "Başlamadan Önce"
 
-#: src/orage-appointment-window.c:2562 src/orage-appointment-window.c:3862
+#: src/orage-appointment-window.c:2562 src/orage-appointment-window.c:3860
 msgid "Before End"
 msgstr "Bitmeden Önce"
 
-#: src/orage-appointment-window.c:2562 src/orage-appointment-window.c:3863
+#: src/orage-appointment-window.c:2562 src/orage-appointment-window.c:3861
 msgid "After Start"
 msgstr "Başladıktan Sonra"
 
-#: src/orage-appointment-window.c:2562 src/orage-appointment-window.c:3863
+#: src/orage-appointment-window.c:2562 src/orage-appointment-window.c:3861
 msgid "After End"
 msgstr "Bittikten Sonra"
 
 #. window title
-#: src/orage-appointment-window.c:2880
+#: src/orage-appointment-window.c:2879
 msgid "New appointment - Orage"
 msgstr "Yeni görev - Orage"
 
-#: src/orage-appointment-window.c:2913
+#: src/orage-appointment-window.c:2912
 msgid "Sav_e and close"
 msgstr "Kayd_et ve kapat"
 
-#: src/orage-appointment-window.c:3229
+#: src/orage-appointment-window.c:3227
 msgid "first"
 msgstr "ilk"
 
-#: src/orage-appointment-window.c:3229
+#: src/orage-appointment-window.c:3227
 msgid "second"
 msgstr "ikinci"
 
-#: src/orage-appointment-window.c:3229
+#: src/orage-appointment-window.c:3227
 msgid "third"
 msgstr "üçüncü"
 
-#: src/orage-appointment-window.c:3229
+#: src/orage-appointment-window.c:3227
 msgid "fourth"
 msgstr "dördüncü"
 
-#: src/orage-appointment-window.c:3229
+#: src/orage-appointment-window.c:3227
 msgid "last"
 msgstr "son"
 
-#: src/orage-appointment-window.c:3239
+#: src/orage-appointment-window.c:3237
 msgid "Monday"
 msgstr "Pazartesi"
 
-#: src/orage-appointment-window.c:3239
+#: src/orage-appointment-window.c:3237
 msgid "Tuesday"
 msgstr "Salı"
 
-#: src/orage-appointment-window.c:3239
+#: src/orage-appointment-window.c:3237
 msgid "Wednesday"
 msgstr "Çarşamba"
 
-#: src/orage-appointment-window.c:3239
+#: src/orage-appointment-window.c:3237
 msgid "Thursday"
 msgstr "Perşembe"
 
-#: src/orage-appointment-window.c:3239
+#: src/orage-appointment-window.c:3237
 msgid "Friday"
 msgstr "Cuma"
 
-#: src/orage-appointment-window.c:3240
+#: src/orage-appointment-window.c:3238
 msgid "Saturday"
 msgstr "Cumartesi"
 
-#: src/orage-appointment-window.c:3240
+#: src/orage-appointment-window.c:3238
 msgid "Sunday"
 msgstr "Pazar"
 
-#: src/orage-appointment-window.c:3253 src/orage-appointment-window.c:3286
-#: src/orage-appointment-window.c:3393 src/orage-appointment-window.c:3427
+#: src/orage-appointment-window.c:3251 src/orage-appointment-window.c:3284
+#: src/orage-appointment-window.c:3391 src/orage-appointment-window.c:3425
 msgid "Every"
 msgstr "Her"
 
-#: src/orage-appointment-window.c:3258
+#: src/orage-appointment-window.c:3256
 msgid "day(s)"
 msgstr "Gün(ler)"
 
-#: src/orage-appointment-window.c:3275
+#: src/orage-appointment-window.c:3273
 msgid "Mon"
 msgstr "Pzt"
 
-#: src/orage-appointment-window.c:3275
+#: src/orage-appointment-window.c:3273
 msgid "Tue"
 msgstr "Sal"
 
-#: src/orage-appointment-window.c:3275
+#: src/orage-appointment-window.c:3273
 msgid "Wed"
 msgstr "Çrş"
 
-#: src/orage-appointment-window.c:3275
+#: src/orage-appointment-window.c:3273
 msgid "Thu"
 msgstr "Prş"
 
-#: src/orage-appointment-window.c:3275
+#: src/orage-appointment-window.c:3273
 msgid "Fri"
 msgstr "Cum"
 
-#: src/orage-appointment-window.c:3275
+#: src/orage-appointment-window.c:3273
 msgid "Sat"
 msgstr "Cmt"
 
-#: src/orage-appointment-window.c:3275
+#: src/orage-appointment-window.c:3273
 msgid "Sun"
 msgstr "Pzr"
 
-#: src/orage-appointment-window.c:3293
+#: src/orage-appointment-window.c:3291
 msgid "week(s) on:"
 msgstr "şu hafta(lar)da:"
 
-#: src/orage-appointment-window.c:3329
+#: src/orage-appointment-window.c:3327
 msgid "From the beginning of the month:"
 msgstr "Ayın başından: "
 
-#: src/orage-appointment-window.c:3342
+#: src/orage-appointment-window.c:3340
 msgid "From the end of the month:"
 msgstr "Ayın sonundan:"
 
-#: src/orage-appointment-window.c:3355
+#: src/orage-appointment-window.c:3353
 msgid "Every:"
 msgstr "Her:"
 
-#: src/orage-appointment-window.c:3383
+#: src/orage-appointment-window.c:3381
 msgid "January"
 msgstr "Ocak"
 
-#: src/orage-appointment-window.c:3383
+#: src/orage-appointment-window.c:3381
 msgid "February"
 msgstr "Şubat"
 
-#: src/orage-appointment-window.c:3383
+#: src/orage-appointment-window.c:3381
 msgid "March"
 msgstr "Mart"
 
-#: src/orage-appointment-window.c:3383
+#: src/orage-appointment-window.c:3381
 msgid "April"
 msgstr "Nisan"
 
-#: src/orage-appointment-window.c:3383
+#: src/orage-appointment-window.c:3381
 msgid "May"
 msgstr "Mayıs"
 
-#: src/orage-appointment-window.c:3384
+#: src/orage-appointment-window.c:3382
 msgid "June"
 msgstr "Haziran"
 
-#: src/orage-appointment-window.c:3384
+#: src/orage-appointment-window.c:3382
 msgid "July"
 msgstr "Temmuz"
 
-#: src/orage-appointment-window.c:3384
+#: src/orage-appointment-window.c:3382
 msgid "August"
 msgstr "Ağustos"
 
-#: src/orage-appointment-window.c:3384
+#: src/orage-appointment-window.c:3382
 msgid "September"
 msgstr "Eylül"
 
-#: src/orage-appointment-window.c:3384
+#: src/orage-appointment-window.c:3382
 msgid "October"
 msgstr "Ekim"
 
-#: src/orage-appointment-window.c:3385
+#: src/orage-appointment-window.c:3383
 msgid "November"
 msgstr "Kasım"
 
-#: src/orage-appointment-window.c:3385
+#: src/orage-appointment-window.c:3383
 msgid "December"
 msgstr "Aralık"
 
@@ -880,42 +883,42 @@ msgstr "Aralık"
 #. * "second Thursday of August". In some languages ​​it is not necessary to
 #. use
 #. * the string "of", it can be replaced with an empty string.
-#: src/orage-appointment-window.c:3401
+#: src/orage-appointment-window.c:3399
 msgid "of"
 msgstr " "
 
-#: src/orage-appointment-window.c:3432
+#: src/orage-appointment-window.c:3430
 msgid "hour(s)"
 msgstr "saat(ler)"
 
-#: src/orage-appointment-window.c:3468
+#: src/orage-appointment-window.c:3466
 msgid "Repeat forever"
 msgstr "Sürekli yinele"
 
-#: src/orage-appointment-window.c:3473
+#: src/orage-appointment-window.c:3471
 msgid "Repeat"
 msgstr "Yinele"
 
-#: src/orage-appointment-window.c:3481 src/orage-appointment-window.c:3977
+#: src/orage-appointment-window.c:3479 src/orage-appointment-window.c:3975
 msgid "times"
 msgstr "kez"
 
-#: src/orage-appointment-window.c:3487
+#: src/orage-appointment-window.c:3485
 msgid "Repeat until"
 msgstr "Şu zamana dek yinele "
 
 #. start time
-#: src/orage-appointment-window.c:3505 src/orage-appointment-window.c:3631
+#: src/orage-appointment-window.c:3503 src/orage-appointment-window.c:3629
 #: src/orage-week-window.c:886
 msgid "Start"
 msgstr "Başlangıç"
 
 #. completed (only for TODO)
-#: src/orage-appointment-window.c:3510 src/orage-appointment-window.c:3699
+#: src/orage-appointment-window.c:3508 src/orage-appointment-window.c:3697
 msgid "Completed"
 msgstr "Tamamlanmış"
 
-#: src/orage-appointment-window.c:3513
+#: src/orage-appointment-window.c:3511
 msgid ""
 "TODO reoccurs regularly starting on start time and repeating after each "
 "interval no matter when it was last completed"
@@ -923,7 +926,7 @@ msgstr ""
 "YAPILACAK başlama zamanında düzenli olarak yeniden başlayacak ve her "
 "aralıkta sorunsuz tamamlandıktan sonra tekrarlayacak."
 
-#: src/orage-appointment-window.c:3515
+#: src/orage-appointment-window.c:3513
 msgid ""
 "TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
@@ -931,36 +934,36 @@ msgstr ""
 "YAPILACAKlar tekrar olma olasılığı, son tamamlama zamanından itibaren sayılan aralıktan sonra tamamlama zamanı ve tekrar sayısına bağlıdır.\n"
 "(Tekrar olma olasılığı her tamamlanmadan sonra değiştiğinden YAPILACAKların geçmişi hakkında herhangi bir yorum yapamayacağınızı göz önünde bulundurun.)"
 
-#: src/orage-appointment-window.c:3541
+#: src/orage-appointment-window.c:3539
 msgid "Save"
 msgstr "Kaydet"
 
-#: src/orage-appointment-window.c:3543
+#: src/orage-appointment-window.c:3541
 msgid "Save and close"
 msgstr "Kaydet ve kapat"
 
-#: src/orage-appointment-window.c:3548
+#: src/orage-appointment-window.c:3546
 msgid "Revert"
 msgstr "Önceki duruma dön"
 
-#: src/orage-appointment-window.c:3573
+#: src/orage-appointment-window.c:3571
 msgid "Free"
 msgstr "Uygun"
 
-#: src/orage-appointment-window.c:3573
+#: src/orage-appointment-window.c:3571
 msgid "Busy"
 msgstr "Meşgul"
 
-#: src/orage-appointment-window.c:3577
+#: src/orage-appointment-window.c:3575
 msgid "General"
 msgstr "Genel"
 
 #. type
-#: src/orage-appointment-window.c:3583
+#: src/orage-appointment-window.c:3581
 msgid "Type"
 msgstr "Tür"
 
-#: src/orage-appointment-window.c:3590
+#: src/orage-appointment-window.c:3588
 msgid ""
 "Event that will happen sometime. For example:\n"
 "Meeting or birthday or TV show."
@@ -968,7 +971,7 @@ msgstr ""
 "Bazen gerçekleşebilecek görevler. Örneğin:\n"
 "Buluşma, doğum günü veya TV programı."
 
-#: src/orage-appointment-window.c:3598
+#: src/orage-appointment-window.c:3596
 msgid ""
 "Something that you should do sometime. For example:\n"
 "Wash your car or test new version of Orage."
@@ -976,7 +979,7 @@ msgstr ""
 "Bazen yapabileceğiniz bazı şeyler. Örneğin:\n"
 "Arabayı yıka, Orage'ın yeni sürümünü dene."
 
-#: src/orage-appointment-window.c:3606
+#: src/orage-appointment-window.c:3604
 msgid ""
 "Make a note that something happened. For example:\n"
 "Remark that your mother called or first snow came."
@@ -985,53 +988,53 @@ msgstr ""
 "Arkadaşımı arayacağım, yılın ilk karı bu tarihte yağdı vs."
 
 #. location
-#: src/orage-appointment-window.c:3618 src/timezone_selection.c:234
+#: src/orage-appointment-window.c:3616 src/timezone_selection.c:234
 #: src/timezone_selection.c:239
 msgid "Location"
 msgstr "Yer"
 
-#: src/orage-appointment-window.c:3626
+#: src/orage-appointment-window.c:3624
 msgid "All day event"
 msgstr "Tüm gün olay"
 
-#: src/orage-appointment-window.c:3649
+#: src/orage-appointment-window.c:3647
 msgid "Set"
 msgstr "Belirle"
 
-#: src/orage-appointment-window.c:3673
+#: src/orage-appointment-window.c:3671
 msgid "Duration"
 msgstr "Süre"
 
-#: src/orage-appointment-window.c:3677 src/orage-appointment-window.c:3880
+#: src/orage-appointment-window.c:3675 src/orage-appointment-window.c:3878
 #: src/reminder.c:604
 msgid "days"
 msgstr "gün"
 
-#: src/orage-appointment-window.c:3679 src/orage-appointment-window.c:3882
+#: src/orage-appointment-window.c:3677 src/orage-appointment-window.c:3880
 #: src/reminder.c:606
 msgid "hours"
 msgstr "saat"
 
-#: src/orage-appointment-window.c:3681 src/orage-appointment-window.c:3884
+#: src/orage-appointment-window.c:3679 src/orage-appointment-window.c:3882
 #: src/reminder.c:608
 msgid "mins"
 msgstr "dakika"
 
 #. Availability (only for EVENT)
-#: src/orage-appointment-window.c:3692
+#: src/orage-appointment-window.c:3690
 msgid "Availability"
 msgstr "Durum"
 
-#: src/orage-appointment-window.c:3702
+#: src/orage-appointment-window.c:3700
 msgid "Done"
 msgstr "Yapıldı"
 
 #. categories
-#: src/orage-appointment-window.c:3726
+#: src/orage-appointment-window.c:3724
 msgid "Categories"
 msgstr "Kategoriler"
 
-#: src/orage-appointment-window.c:3744
+#: src/orage-appointment-window.c:3742
 msgid ""
 "This is special category, which can be used to color this appointment in "
 "list views."
@@ -1039,20 +1042,20 @@ msgstr ""
 "Bu özel kategoridir, liste görünümünde bu görevi renklendirmede "
 "kullanılabilir."
 
-#: src/orage-appointment-window.c:3745
+#: src/orage-appointment-window.c:3743
 msgid "_Colour"
 msgstr "_Renk"
 
-#: src/orage-appointment-window.c:3750
+#: src/orage-appointment-window.c:3748
 msgid "update colors for categories."
 msgstr "kategoriler için renkleri güncelle."
 
 #. priority
-#: src/orage-appointment-window.c:3756
+#: src/orage-appointment-window.c:3754
 msgid "Priority"
 msgstr "Öncelik"
 
-#: src/orage-appointment-window.c:3760
+#: src/orage-appointment-window.c:3758
 msgid ""
 "If you set this 8 or bigger, the appointment is NOT shown on list windows.\n"
 "You can use that feature to unclutter your list windows, but it makes it more difficult to find this appointment.\n"
@@ -1065,11 +1068,11 @@ msgstr ""
 "(Belgelendirilmemiş bir parametre bulunmaktadır. Böylece öntanımlı 8 sınırını değiştirebilirsiniz.)"
 
 #. note
-#: src/orage-appointment-window.c:3768
+#: src/orage-appointment-window.c:3766
 msgid "Note"
 msgstr "Not"
 
-#: src/orage-appointment-window.c:3788
+#: src/orage-appointment-window.c:3786
 msgid ""
 "These shorthand commands take effect immediately:\n"
 "    <D> inserts current date in local date format\n"
@@ -1088,16 +1091,16 @@ msgstr ""
 "Bunlar ancak daha sonra görüldüklerinde dönüştürülür:\n"
 "    <&Ynnnn> cari yıl eksi nnnn olarak çevrilir. (Bu, örneğin kişinin kaç yaşında olacağını söylemek için doğum günü hatırlatmalarında kullanılabilir.)"
 
-#: src/orage-appointment-window.c:3871
+#: src/orage-appointment-window.c:3869
 msgid "Alarm"
 msgstr "Alarm"
 
 #. **** ALARM TIME ****
-#: src/orage-appointment-window.c:3877
+#: src/orage-appointment-window.c:3875
 msgid "Alarm time"
 msgstr "Alarm zamanı"
 
-#: src/orage-appointment-window.c:3901
+#: src/orage-appointment-window.c:3899
 msgid ""
 "Often you want to get alarm:\n"
 " 1) before Event start\n"
@@ -1109,11 +1112,11 @@ msgstr ""
 " 2) Yapılacak işler bitmeden önce\n"
 " 3) Yapılacak işler başladıktan sonra"
 
-#: src/orage-appointment-window.c:3906
+#: src/orage-appointment-window.c:3904
 msgid "Persistent alarm"
 msgstr "Kalıcı alarm"
 
-#: src/orage-appointment-window.c:3911
+#: src/orage-appointment-window.c:3909
 msgid ""
 "Select this if you want Orage to remind you even if it has not been active "
 "when the alarm happened."
@@ -1121,77 +1124,77 @@ msgstr ""
 "Bu seçeneği eğer alârm devrede olduğu sırada işlem etkin değilse bile "
 "Orage'ın sizi uyarması için kullanabilirsiniz."
 
-#: src/orage-appointment-window.c:3920
+#: src/orage-appointment-window.c:3918
 msgid "Sound"
 msgstr "Ses"
 
-#: src/orage-appointment-window.c:3924 src/orage-appointment-window.c:4065
+#: src/orage-appointment-window.c:3922 src/orage-appointment-window.c:4063
 msgid "Use"
 msgstr "Kullan"
 
-#: src/orage-appointment-window.c:3929
+#: src/orage-appointment-window.c:3927
 msgid "Select this if you want audible alarm"
 msgstr "Sesli alârm için bu özelliği seçiniz"
 
-#: src/orage-appointment-window.c:3934
+#: src/orage-appointment-window.c:3932
 msgid "Sound command is not set"
 msgstr "Ses komutu ayarlanmadı"
 
-#: src/orage-appointment-window.c:3962
+#: src/orage-appointment-window.c:3960
 msgid "Repeat alarm sound"
 msgstr "Alarm sesini yinele"
 
-#: src/orage-appointment-window.c:3993
+#: src/orage-appointment-window.c:3991
 msgid "sec interval"
 msgstr "saniye aralığı"
 
 #. **** Display Alarm ****
-#: src/orage-appointment-window.c:4002
+#: src/orage-appointment-window.c:4000
 msgid "Visual"
 msgstr "Görsel"
 
-#: src/orage-appointment-window.c:4006
+#: src/orage-appointment-window.c:4004
 msgid "Use Orage window"
 msgstr "Orage penceresini kullan"
 
-#: src/orage-appointment-window.c:4008
+#: src/orage-appointment-window.c:4006
 msgid "Select this if you want Orage window alarm"
 msgstr "Orage pencere alarmı istiyorsanız bunu seçin"
 
-#: src/orage-appointment-window.c:4020
+#: src/orage-appointment-window.c:4018
 msgid "Use notification"
 msgstr "Bildirim penceresi kullan"
 
-#: src/orage-appointment-window.c:4022
+#: src/orage-appointment-window.c:4020
 msgid "Select this if you want notification alarm"
 msgstr "Eğer bildirim penceresi çıksın istiyorsanız bunu seçin"
 
-#: src/orage-appointment-window.c:4030
+#: src/orage-appointment-window.c:4028
 msgid "Set timeout"
 msgstr "Dinlenme saatini belirle"
 
-#: src/orage-appointment-window.c:4032
+#: src/orage-appointment-window.c:4030
 msgid "Select this if you want notification to expire automatically"
 msgstr "Alârmın kendiliğinden sonlanmasını istiyorsanız bunu seçiniz"
 
-#: src/orage-appointment-window.c:4043
+#: src/orage-appointment-window.c:4041
 msgid "0 = system default expiration time"
 msgstr "0 = öntanımlı sistem sonlanma tarihi"
 
-#: src/orage-appointment-window.c:4051
+#: src/orage-appointment-window.c:4049
 msgid "seconds"
 msgstr "saniye"
 
 #. **** Procedure Alarm ****
-#: src/orage-appointment-window.c:4061
+#: src/orage-appointment-window.c:4059
 msgid "Procedure"
 msgstr "Yöntem"
 
-#: src/orage-appointment-window.c:4067
+#: src/orage-appointment-window.c:4065
 msgid "Select this if you want procedure or script alarm"
 msgstr "Herhangi bir işlem veya alârm betiği için bu özelliği seçiniz"
 
-#: src/orage-appointment-window.c:4077
+#: src/orage-appointment-window.c:4075
 msgid ""
 "You must enter all escape etc characters yourself.\n"
 "This string is just given to shell to process.\n"
@@ -1211,75 +1214,75 @@ msgstr ""
 "\t<&ST> randevu başlangıç zamanı\n"
 "\t<&ET> randevu bitiş zamanı"
 
-#: src/orage-appointment-window.c:4092
+#: src/orage-appointment-window.c:4090
 msgid "Test this alarm by raising it now"
 msgstr "Bu alarmı şimdi yükselterek sına"
 
-#: src/orage-appointment-window.c:4105
+#: src/orage-appointment-window.c:4103
 msgid "<b>Default alarm</b>"
 msgstr "<b>Öntanımlı alârm</b>"
 
-#: src/orage-appointment-window.c:4119
+#: src/orage-appointment-window.c:4117
 msgid "Store current settings as default alarm"
 msgstr "Geçerli ayarları öntanımlı alârm olarak sakla"
 
-#: src/orage-appointment-window.c:4121
+#: src/orage-appointment-window.c:4119
 msgid "_Revert"
 msgstr "_Geri Döndür"
 
-#: src/orage-appointment-window.c:4129
+#: src/orage-appointment-window.c:4127
 msgid "Set current settings from default alarm"
 msgstr "Geçerli ayarları öntanımlı alârmdan ayarla"
 
-#: src/orage-appointment-window.c:4194
+#: src/orage-appointment-window.c:4192
 msgid "None"
 msgstr "Hiçbiri"
 
-#: src/orage-appointment-window.c:4194
+#: src/orage-appointment-window.c:4192
 msgid "Daily"
 msgstr "Günlük"
 
-#: src/orage-appointment-window.c:4194
+#: src/orage-appointment-window.c:4192
 msgid "Weekly"
 msgstr "Haftalık"
 
-#: src/orage-appointment-window.c:4195
+#: src/orage-appointment-window.c:4193
 msgid "Monthly"
 msgstr "Aylık"
 
-#: src/orage-appointment-window.c:4195
+#: src/orage-appointment-window.c:4193
 msgid "Yearly"
 msgstr "Yıllık"
 
-#: src/orage-appointment-window.c:4195
+#: src/orage-appointment-window.c:4193
 msgid "Hourly"
 msgstr "Saatlik"
 
-#: src/orage-appointment-window.c:4210
+#: src/orage-appointment-window.c:4208
 msgid "Recurrence"
 msgstr "Yineleme"
 
 #. ****************************** Frequency *******************************
-#: src/orage-appointment-window.c:4217
+#: src/orage-appointment-window.c:4215
 msgid "Frequency"
 msgstr "Sıklık"
 
 #. ****************************** Limit ***********************************
-#: src/orage-appointment-window.c:4258
+#: src/orage-appointment-window.c:4256
 msgid "Limit"
 msgstr "Kısıtla"
 
 #. ****************************** TODO base (only for TODOs) **************
-#: src/orage-appointment-window.c:4264
+#: src/orage-appointment-window.c:4262
 msgid "TODO base"
 msgstr "YAPILACAK temeli"
 
 #. exceptions
-#: src/orage-appointment-window.c:4271
+#: src/orage-appointment-window.c:4269
 msgid "Exceptions"
 msgstr "İstisnalar"
 
-#: src/orage-appointment-window.c:4297
+#: src/orage-appointment-window.c:4295
 msgid ""
 "Add more exception dates by clicking the calendar days below.\n"
 "Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
@@ -1289,19 +1292,19 @@ msgstr ""
 "Dışlamalar seçime bağlı olarak hariç tutulmalar(-) veya dahil edilmeler(+) olabilir.\n"
 "Veriye tıklayarak kaldırın."
 
-#: src/orage-appointment-window.c:4308
+#: src/orage-appointment-window.c:4306
 msgid "Add excluded date (-)"
 msgstr "(-) hariç tarih ekle"
 
-#: src/orage-appointment-window.c:4310
+#: src/orage-appointment-window.c:4308
 msgid "Excluded days are full days where this appointment is not happening"
 msgstr "Hariç tutulan günler, bu randevunun olmadığı tüm günlerdir"
 
-#: src/orage-appointment-window.c:4317
+#: src/orage-appointment-window.c:4315
 msgid "Add included time (+)"
 msgstr "(+) içeren zaman ekle"
 
-#: src/orage-appointment-window.c:4319
+#: src/orage-appointment-window.c:4317
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time"
@@ -1310,9 +1313,61 @@ msgstr ""
 "farklı zamanlar olabilir"
 
 #. calendars showing the action days
-#: src/orage-appointment-window.c:4338
+#: src/orage-appointment-window.c:4336
 msgid "Action dates"
 msgstr "Eylem tarihleri"
+
+#: src/orage-import.c:105
+msgid "<b>Summary</b>"
+msgstr ""
+
+#: src/orage-import.c:116
+msgid "<b>Type</b>"
+msgstr "<b>Tür</b>"
+
+#: src/orage-import.c:131
+msgid "<b>Location</b>"
+msgstr "<b>Bölge</b>"
+
+#: src/orage-import.c:146
+msgid "<b>URL</b>"
+msgstr ""
+
+#: src/orage-import.c:165
+msgid "<b>All-day</b>"
+msgstr "<b>Tüm günler</b>"
+
+#: src/orage-import.c:180
+msgid "<b>From</b>"
+msgstr ""
+
+#: src/orage-import.c:195
+msgid "<b>To</b>"
+msgstr ""
+
+#: src/orage-import.c:209
+msgid "<b>Recurring</b>"
+msgstr "<b>Tekrarlanan</b>"
+
+#: src/orage-import.c:212
+msgid "Yes"
+msgstr "Evet"
+
+#: src/orage-import.c:212
+msgid "No"
+msgstr "Hayır"
+
+#: src/orage-import.c:258
+msgid "Import calendar file"
+msgstr "Takvim dosyasını içe aktar"
+
+#: src/orage-import.c:260
+msgid "_Import"
+msgstr "_İçe aktar"
+
+#: src/orage-import.c:269
+msgid "_Cancel"
+msgstr "İ_ptal"
 
 #: src/orage-sync-edit-dialog.c:132
 msgid "Description:"

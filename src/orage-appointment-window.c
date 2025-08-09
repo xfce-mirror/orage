@@ -20,10 +20,6 @@
  *     Boston, MA 02110-1301 USA
  */
 
-#ifdef HAVE_CONFIG_H
-#  include <config.h>
-#endif
-
 #define _XOPEN_SOURCE /* glibc2 needs this */
 
 #include <sys/types.h>
@@ -949,15 +945,15 @@ static void on_appSound_button_clicked_cb (G_GNUC_UNUSED GtkButton *button,
     gtk_file_filter_add_pattern(filter, "*");
     gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(file_chooser), filter);
 
-    gtk_file_chooser_add_shortcut_folder(GTK_FILE_CHOOSER(file_chooser)
-            , PACKAGE_DATA_DIR "/orage/sounds", NULL);
+    gtk_file_chooser_add_shortcut_folder (GTK_FILE_CHOOSER (file_chooser),
+                                          PACKAGE_DATADIR "/orage/sounds", NULL);
 
-    if (strlen(appSound_entry_filename) > 0)
-        gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(file_chooser)
-                , (const gchar *) appSound_entry_filename);
+    if (strlen (appSound_entry_filename) > 0)
+        gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (file_chooser),
+                                       (const gchar *)appSound_entry_filename);
     else
-        gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER(file_chooser)
-            , PACKAGE_DATA_DIR "/orage/sounds");
+        gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (file_chooser),
+                                             PACKAGE_DATADIR "/orage/sounds");
 
     if (gtk_dialog_run(GTK_DIALOG(file_chooser)) == GTK_RESPONSE_ACCEPT) {
         sound_file =
@@ -2579,9 +2575,8 @@ static void fill_appt_window_alarm (OrageAppointmentWindow *apptw,
     /* sound */
     gtk_toggle_button_set_active(
             GTK_TOGGLE_BUTTON(apptw->Sound_checkbutton), appt->sound_alarm);
-    gtk_entry_set_text(GTK_ENTRY(apptw->Sound_entry)
-            , (appt->sound ? appt->sound :
-                PACKAGE_DATA_DIR "/orage/sounds/Spo.wav"));
+    gtk_entry_set_text (GTK_ENTRY (apptw->Sound_entry),
+                        (appt->sound ? appt->sound : PACKAGE_DATADIR "/orage/sounds/Spo.wav"));
 
     /* sound repeat */
     gtk_toggle_button_set_active(
@@ -3010,8 +3005,7 @@ static void read_default_alarm(xfical_appt *appt)
     appt->sound_alarm = orage_rc_get_bool(orc, "SOUND_USE", TRUE);
     if (appt->sound)
         g_free(appt->sound);
-    appt->sound = orage_rc_get_str(orc, "SOUND"
-            , PACKAGE_DATA_DIR "/orage/sounds/Spo.wav");
+    appt->sound = orage_rc_get_str (orc, "SOUND", PACKAGE_DATADIR "/orage/sounds/Spo.wav");
     appt->soundrepeat = orage_rc_get_bool(orc, "SOUND_REPEAT_USE", FALSE);
     appt->soundrepeat_cnt = orage_rc_get_int(orc, "SOUND_REPEAT_CNT", 500);
     appt->soundrepeat_len = orage_rc_get_int(orc, "SOUND_REPEAT_LEN", 2);

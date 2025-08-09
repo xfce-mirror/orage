@@ -20,10 +20,6 @@
  *     Boston, MA 02110-1301 USA
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #define _XOPEN_SOURCE /* glibc2 needs this */
 #define _XOPEN_SOURCE_EXTENDED 1 /* strptime needs this in posix systems */
 
@@ -709,6 +705,20 @@ gchar *orage_gdatetime_to_i18_time (GDateTime *gdt, const gboolean date_only)
     const gchar *fmt = date_only ? "%x" : "%x %R";
 
     return g_date_time_format (gdt, fmt);
+}
+
+gchar *orage_gdatetime_to_i18_time_with_zone (GDateTime *gdt)
+{
+    gchar *time_text;
+    gchar *time_and_zone;
+    const gchar *tzid_text;
+
+    time_text = orage_gdatetime_to_i18_time (gdt, FALSE);
+    tzid_text = g_time_zone_get_identifier (g_date_time_get_timezone (gdt));
+    time_and_zone = g_strdup_printf ("%s %s", time_text, tzid_text);
+    g_free (time_text);
+
+    return time_and_zone;
 }
 
 gchar *orage_gdatetime_to_icaltime (GDateTime *gdt, const gboolean date_only)

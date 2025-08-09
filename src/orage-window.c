@@ -20,10 +20,6 @@
  *     Boston, MA 02110-1301 USA
  */
 
-#ifdef HAVE_CONFIG_H
-#  include <config.h>
-#endif
-
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
@@ -771,7 +767,7 @@ static void orage_window_init (OrageWindow *self)
 
 GtkWidget *orage_window_new (OrageApplication *application)
 {
-    return g_object_new (ORAGE_TYPE_WINDOW,
+    return g_object_new (ORAGE_WINDOW_TYPE,
                          "application", GTK_APPLICATION (application),
                          NULL);
 }

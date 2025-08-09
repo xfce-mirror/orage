@@ -24,7 +24,7 @@ See [NEWS](https://gitlab.xfce.org/apps/orage/-/blob/master/NEWS) for details on
 
 Orage depends on the following packages:
 
-* [GLib](https://wiki.gnome.org/Projects/GLib) >= 2.52.0
+* [GLib](https://wiki.gnome.org/Projects/GLib) >= 2.68.0
 * [GTK](https://www.gtk.org) >= 3.24.0
 * [Libical](https://github.com/libical/libical) >= 3.0.0
 
@@ -50,17 +50,17 @@ Orage optionally depends on the following packages:
 From source code repository:
 
     % cd orage
-    % ./autogen.sh
-    % make
-    % make install
+    % meson setup build
+    % meson compile -C build
+    % meson install -C build
 
 From release tarball:
 
-    % tar xf orage-<version>.tar.bz2
+    % tar xf orage-<version>.tar.xz
     % cd orage-<version>
-    % ./configure
-    % make
-    % make install
+    % meson setup build
+    % meson compile -C build
+    % meson install -C build
 
 ### Reporting Bugs
 

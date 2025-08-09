@@ -20,10 +20,6 @@
  *     Boston, MA 02110-1301 USA
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #ifdef HAVE_SYS_STAT_H
 #include <sys/stat.h>
 #endif
@@ -46,14 +42,18 @@
 #include <time.h>
 #include <math.h>
 
-#include <glib.h>
 #include <gdk/gdk.h>
-#include <gtk/gtk.h>
+#include <gio/gio.h>
+#include <glib.h>
 #include <glib/gprintf.h>
 #include <glib/gstdio.h>
+#include <gtk/gtk.h>
 
 #include <libical/ical.h>
 #include <libical/icalss.h>
+
+#define LIBICAL_GLIB_UNSTABLE_API
+#include <libical-glib/libical-glib.h>
 
 #include "orage-alarm-structure.h"
 #include "orage-i18n.h"
@@ -69,6 +69,21 @@
 #include "xfical_exception.h"
 
 #define XFICAL_UID_LEN 200
+
+struct _OrageCalendarComponent
+{
+    GObject __parent__;
+
+    /* The icalcomponent we wrap */
+    ICalComponent *icalcomp;
+
+    /* Whether we should increment the sequence number when piping the
+     * object over the wire.
+     */
+    guint need_sequence_inc : 1;
+};
+
+G_DEFINE_TYPE (OrageCalendarComponent, orage_calendar_component, G_TYPE_OBJECT)
 
 icalset *ic_fical = NULL;
 icalcomponent *ic_ical = NULL;
@@ -2156,7 +2171,7 @@ static xfical_appt *xfical_appt_get_internal(const char *ical_uid
         }
     }
     if (key_found) {
-        return(g_memdup(&appt, sizeof(xfical_appt)));
+        return (g_memdup2 (&appt, sizeof (xfical_appt)));
     }
     else {
         return(NULL);
@@ -3950,4 +3965,517 @@ xfical_appt *xfical_appt_get_next_with_string (const gchar *str,
         g_critical ("%s: unknown file type", G_STRFUNC);
         return(NULL);
     }
+}
+
+static gboolean is_importable_component (const ICalComponentKind kind)
+{
+    switch (kind)
+    {
+        case I_CAL_VEVENT_COMPONENT:
+        case I_CAL_VTODO_COMPONENT:
+        case I_CAL_VJOURNAL_COMPONENT:
+#if 0
+        case I_CAL_VFREEBUSY_COMPONENT
+#endif
+            return TRUE;
+
+        default:
+            return FALSE;
+    }
+}
+
+/** Frees the internal icalcomponent only if it does not have a parent. If it
+ *  does, it means we don't own it and we shouldn't free it.
+ */
+static void orage_calendar_component_free_icalcomp (
+    OrageCalendarComponent *comp, const gboolean free)
+{
+    if (comp->icalcomp == NULL)
+        return;
+
+    if (free)
+        g_clear_object (&comp->icalcomp);
+
+    /* Clean up */
+    comp->need_sequence_inc = FALSE;
+}
+
+/** Generates a unique identificator, which can be used as part of the
+ *  Message-ID header, or iCalendar component UID, or vCard UID. The resulting
+ *  string doesn't contain any host name, it's a hexa-decimal string with no
+ *  particular meaning. Free the returned string with g_free(), when no longer
+ *  needed.
+ *
+ *  @return generated unique identificator as a newly allocated string
+ */
+static gchar *e_util_generate_uid (void)
+{
+    static volatile gint counter = 0;
+    gchar *uid;
+    GChecksum *checksum;
+
+    checksum = g_checksum_new (G_CHECKSUM_SHA1);
+
+#define add_i64(_x) \
+    G_STMT_START \
+    { \
+        gint64 i64 = (_x); \
+        g_checksum_update (checksum, (const guchar *)&i64, sizeof (gint64)); \
+    } \
+    G_STMT_END
+
+#define add_str(_x, _def) \
+    G_STMT_START \
+    { \
+        const gchar *str = (_x); \
+        if (!str) \
+            str = (_def); \
+        g_checksum_update (checksum, (const guchar *)str, strlen (str)); \
+    } \
+    G_STMT_END
+
+    add_i64 (g_get_monotonic_time ());
+    add_i64 (g_get_real_time ());
+    add_i64 (getpid ());
+    add_i64 (getgid ());
+    add_i64 (getppid ());
+    add_i64 (g_atomic_int_add (&counter, 1));
+
+    add_str (g_get_host_name (), "localhost");
+    add_str (g_get_user_name (), "user");
+    add_str (g_get_real_name (), "User");
+
+#undef add_i64
+#undef add_str
+
+    uid = g_strdup (g_checksum_get_string (checksum));
+
+    g_checksum_free (checksum);
+
+    return uid;
+}
+
+/** Ensures that the mandatory calendar component properties (uid, dtstamp) do
+ *  exist. If they don't exist, it creates them automatically.
+ */
+static void ensure_mandatory_properties (OrageCalendarComponent *comp)
+{
+    ICalProperty *prop;
+
+    g_return_if_fail (comp->icalcomp != NULL);
+
+    prop = i_cal_component_get_first_property (comp->icalcomp,
+                                               I_CAL_UID_PROPERTY);
+
+    if (prop)
+        g_object_unref (prop);
+    else
+    {
+        gchar *uid;
+
+        uid = e_util_generate_uid ();
+        i_cal_component_set_uid (comp->icalcomp, uid);
+        g_free (uid);
+    }
+
+    prop = i_cal_component_get_first_property (comp->icalcomp,
+                                               I_CAL_DTSTAMP_PROPERTY);
+    if (prop)
+        g_object_unref (prop);
+    else
+    {
+        ICalTime *tt;
+
+        tt = i_cal_time_new_current_with_zone (i_cal_timezone_get_utc_timezone ());
+
+        prop = i_cal_property_new_dtstamp (tt);
+        i_cal_component_take_property (comp->icalcomp, prop);
+
+        g_object_unref (tt);
+    }
+}
+
+/* Following code is copied from E-D-S, and in future may be removed. */
+struct ics_file
+{
+    FILE *file;
+    gboolean bof;
+};
+
+static gchar *get_line_fn (gchar *buf,
+                           gsize size,
+                           gpointer user_data)
+{
+    struct ics_file *fl = user_data;
+
+    /* Skip the UTF-8 marker at the beginning of the file */
+    if (fl->bof)
+    {
+        gchar *orig_buf = buf;
+        gchar tmp[4];
+
+        fl->bof = FALSE;
+
+        if (fread (tmp, sizeof (gchar), 3, fl->file) != 3 || feof (fl->file))
+            return NULL;
+
+        if (((guchar) tmp[0]) != 0xEF ||
+            ((guchar) tmp[1]) != 0xBB ||
+            ((guchar) tmp[2]) != 0xBF)
+        {
+            if (size <= 3)
+                return NULL;
+
+            buf[0] = tmp[0];
+            buf[1] = tmp[1];
+            buf[2] = tmp[2];
+            buf += 3;
+            size -= 3;
+        }
+
+        if (!fgets (buf, size, fl->file))
+            return NULL;
+
+        return orig_buf;
+    }
+
+    return fgets (buf, size, fl->file);
+}
+
+static ICalComponent *e_cal_util_parse_ics_file (const gchar *filename)
+{
+    ICalParser *parser;
+    ICalComponent *icalcomp;
+    struct ics_file fl;
+
+    fl.file = g_fopen (filename, "rb");
+    if (!fl.file)
+        return NULL;
+
+    fl.bof = TRUE;
+
+    parser = i_cal_parser_new ();
+
+    icalcomp = i_cal_parser_parse (parser, get_line_fn, &fl);
+    g_object_unref (parser);
+    fclose (fl.file);
+
+    return icalcomp;
+}
+
+static void orage_calendar_component_finalize (GObject *object)
+{
+    OrageCalendarComponent *comp = ORAGE_CALENDAR_COMPONENT (object);
+
+    orage_calendar_component_free_icalcomp (comp, TRUE);
+
+    /* Chain up to parent's finalize() method. */
+    G_OBJECT_CLASS (orage_calendar_component_parent_class)->finalize (object);
+}
+
+static void orage_calendar_component_init (OrageCalendarComponent *comp)
+{
+    comp->icalcomp = NULL;
+}
+
+static void orage_calendar_component_class_init (
+    OrageCalendarComponentClass *klass)
+{
+    GObjectClass *object_class;
+
+    object_class = G_OBJECT_CLASS (klass);
+    object_class->finalize = orage_calendar_component_finalize;
+}
+
+/** Sets the contents of a calendar component object from an #ICalComponent. If
+ *  the @comp already had an #ICalComponent set into it, it will be freed
+ *  automatically.
+ *  @param comp A Orage calendar component object.
+ *  @param icalcomp An #ICalComponent.
+ *  @return TRUE on success, FALSE if @icalcomp is an unsupported component type
+ */
+static gboolean o_cal_component_set_icalcomponent (OrageCalendarComponent *comp,
+                                                   ICalComponent *icalcomp)
+{
+    ICalComponentKind kind;
+
+    g_return_val_if_fail (ORAGE_IS_CALENDAR_COMPONENT (comp), FALSE);
+
+    if (comp->icalcomp == icalcomp)
+        return TRUE;
+
+    orage_calendar_component_free_icalcomp (comp, TRUE);
+
+    if (icalcomp == NULL)
+        return FALSE;
+
+    kind = i_cal_component_isa (icalcomp);
+
+    if (is_importable_component (kind) == FALSE)
+        return FALSE;
+
+    comp->icalcomp = g_object_ref (icalcomp);
+
+    ensure_mandatory_properties (comp);
+
+    return TRUE;
+}
+
+/** Creates a new empty Orage calendar component object. Once created, you
+ *  should set it from an existing #icalcomponent structure by using
+ *  o_cal_component_set_icalcomponent() or with a new empty component type by
+ *  using o_cal_component_set_new_vtype().
+ *
+ *  @return A newly-created calendar component object.
+ */
+static OrageCalendarComponent *o_cal_component_new (void)
+{
+    return g_object_new (ORAGE_CALENDAR_COMPONENT_TYPE, NULL);
+}
+
+OrageCalendarComponent *o_cal_component_new_from_icalcomponent (
+    ICalComponent *icalcomp)
+{
+    OrageCalendarComponent *comp;
+
+    g_return_val_if_fail (icalcomp != NULL, NULL);
+
+    comp = o_cal_component_new ();
+
+    if (o_cal_component_set_icalcomponent (comp, icalcomp) == FALSE)
+    {
+        g_object_unref (comp);
+        return NULL;
+    }
+
+    return comp;
+}
+
+GList *o_cal_component_list_from_file (GFile *file)
+{
+    gchar *ical_file_name;
+    GList *list = NULL;
+
+    ICalComponent *icomp;
+    ICalComponent *subcomp;
+
+    ical_file_name = g_file_get_path (file);
+    icomp = e_cal_util_parse_ics_file (ical_file_name);
+    if (icomp == NULL)
+    {
+        g_warning ("cannot parse ISC file (%s) %s", ical_file_name,
+                   i_cal_error_strerror (i_cal_errno_return ()));
+        return NULL;
+    }
+
+    if (i_cal_component_isa (icomp) != I_CAL_VCALENDAR_COMPONENT)
+    {
+        g_object_unref (icomp);
+        g_warning ("file '%s' is not a VCALENDAR component", ical_file_name);
+
+        return NULL;
+    }
+
+    for (subcomp = i_cal_component_get_first_component (icomp, I_CAL_ANY_COMPONENT);
+         subcomp;
+         g_object_unref (subcomp), subcomp = i_cal_component_get_next_component (icomp, I_CAL_ANY_COMPONENT))
+    {
+        ICalComponentKind kind;
+        OrageCalendarComponent *comp;
+
+        kind = i_cal_component_isa (subcomp);
+
+        if (is_importable_component (kind))
+        {
+            comp = o_cal_component_new_from_icalcomponent (subcomp);
+            if (comp)
+                list = g_list_append (list, comp);
+        }
+        else if (kind != I_CAL_VTIMEZONE_COMPONENT)
+        {
+            /* We ignore TIMEZONE component; Orage only uses internal timezones
+             * from libical.
+             */
+            g_warning ("unknown component %s %s",
+                       i_cal_component_kind_to_string (kind), ical_file_name);
+        }
+    }
+
+    if (list == NULL)
+    {
+        g_warning ("no valid ICAL components found");
+        return NULL;
+    }
+
+    return list;
+}
+
+static const gchar *o_cal_component_get_string_value (
+    OrageCalendarComponent *ocal_comp, const gchar *(*getter) (ICalComponent *))
+{
+    const gchar *component_string;
+    ICalComponent *icalcomp = ocal_comp->icalcomp;
+
+    component_string = getter (icalcomp);
+
+    if ((component_string == NULL) || (*component_string == '\0'))
+        component_string = NULL;
+
+    return component_string;
+}
+
+static GDateTime *o_cal_component_icaltime_to_gdatetime (ICalTime *ical_time)
+{
+    gint year;
+    gint month;
+    gint day;
+    gint hour;
+    gint minute;
+    gint second;
+    const ICalTimezone *ical_tz;
+    const gchar *tzid;
+    GTimeZone *tz;
+    GDateTime *gdt;
+
+    g_return_val_if_fail (I_CAL_IS_TIME (ical_time), NULL);
+
+    i_cal_time_get_date (ical_time, &year, &month, &day);
+
+    if (i_cal_time_is_date (ical_time))
+    {
+        hour = 0;
+        minute = 0;
+        second = 0;
+    }
+    else
+        i_cal_time_get_time (ical_time, &hour, &minute, &second);
+
+    if (i_cal_time_is_utc (ical_time))
+        return g_date_time_new_utc (year, month, day, hour, minute, second);
+
+    ical_tz = i_cal_time_get_timezone (ical_time);
+    if (ical_tz)
+    {
+        tzid = i_cal_timezone_get_tzid (ical_tz);
+
+        if (tzid && *tzid)
+        {
+            tz = g_time_zone_new_identifier (tzid);
+            if (tz)
+            {
+                gdt = g_date_time_new (tz, year, month, day,
+                                       hour, minute, second);
+                g_time_zone_unref (tz);
+                return gdt;
+            }
+        }
+    }
+
+    return g_date_time_new_local (year, month, day, hour, minute, second);
+}
+
+const gchar *o_cal_component_get_summary (OrageCalendarComponent *ocal_comp)
+{
+    return o_cal_component_get_string_value (ocal_comp,
+                                             i_cal_component_get_summary);
+}
+
+const gchar *o_cal_component_get_location (OrageCalendarComponent *ocal_comp)
+{
+    return o_cal_component_get_string_value (ocal_comp,
+                                             i_cal_component_get_location);
+}
+
+gboolean o_cal_component_is_all_day_event (OrageCalendarComponent *ocal_comp)
+{
+    ICalComponent *icalcomp = ocal_comp->icalcomp;
+    ICalTime *dtstart;
+    ICalTime *dtend;
+    gboolean result;
+
+    dtstart = i_cal_component_get_dtstart (icalcomp);
+    dtend = i_cal_component_get_dtend (icalcomp);
+    if (i_cal_time_is_date (dtstart))
+        result = TRUE;
+    else if (i_cal_time_is_date (dtend))
+        result = TRUE;
+    else
+        result = FALSE;
+
+    g_clear_object (&dtstart);
+    g_clear_object (&dtend);
+
+    return result;
+}
+
+GDateTime *o_cal_component_get_dtstart (OrageCalendarComponent *ocal_comp)
+{
+    ICalComponent *icalcomp = ocal_comp->icalcomp;
+    ICalTime *dtstart = i_cal_component_get_dtstart (icalcomp);
+
+    return o_cal_component_icaltime_to_gdatetime (dtstart);
+}
+
+GDateTime *o_cal_component_get_dtend (OrageCalendarComponent *ocal_comp)
+{
+    ICalComponent *icalcomp = ocal_comp->icalcomp;
+    ICalTime *dtend = i_cal_component_get_dtend (icalcomp);
+    ICalTime *dtstart = i_cal_component_get_dtstart (icalcomp);
+
+    if (i_cal_time_compare (dtstart, dtend) == 0)
+        return NULL;
+
+    return o_cal_component_icaltime_to_gdatetime (dtend);
+}
+
+xfical_type o_cal_component_get_type (OrageCalendarComponent *ocal_comp)
+{
+    ICalComponent *icalcomp = ocal_comp->icalcomp;
+    ICalComponentKind kind;
+
+    kind = i_cal_component_isa (icalcomp);
+
+    switch (kind)
+    {
+        case ICAL_VEVENT_COMPONENT:
+            return XFICAL_TYPE_EVENT;
+
+        case ICAL_VTODO_COMPONENT:
+            return XFICAL_TYPE_TODO;
+
+        case ICAL_VJOURNAL_COMPONENT:
+            return XFICAL_TYPE_JOURNAL;
+
+        default:
+            g_warning ("%s: Unknown ICalComponentKind", G_STRFUNC);
+            return (xfical_type)-1;
+    }
+}
+
+gboolean o_cal_component_is_recurring (OrageCalendarComponent *ocal_comp)
+{
+    ICalComponent *icalcomp = ocal_comp->icalcomp;
+    ICalProperty *prop;
+    ICalRecurrence *rrule;
+
+    prop = i_cal_component_get_first_property (icalcomp, I_CAL_RRULE_PROPERTY);
+    if (prop == NULL)
+        return FALSE;
+
+    rrule = i_cal_property_get_rrule (prop);
+    g_clear_object (&prop);
+
+    return (i_cal_recurrence_get_freq (rrule) != I_CAL_NO_RECURRENCE);
+}
+
+const gchar *o_cal_component_get_url (OrageCalendarComponent *ocal_comp)
+{
+    ICalComponent *icalcomp = ocal_comp->icalcomp;
+    ICalProperty *prop;
+
+    prop = i_cal_component_get_first_property (icalcomp, I_CAL_URL_PROPERTY);
+    if (prop == NULL)
+        return NULL;
+
+    return i_cal_property_get_url (prop);
 }

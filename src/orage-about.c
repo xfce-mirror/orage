@@ -20,8 +20,8 @@
  *     Boston, MA 02110-1301 USA
  */
 
-#ifdef HAVE_CONFIG_H
-#  include <config.h>
+#ifdef HAVE_XFCE_REVISION_H
+#include "xfce-revision.h"
 #endif
 
 #include <gtk/gtk.h>
@@ -42,12 +42,12 @@ void orage_show_about (GtkWindow *parent)
     gtk_show_about_dialog (parent,
                            "authors", authors,
                            "comments", _("Orage is a time-managing application for the Xfce desktop environment"),
-                           "copyright", "Copyright \xc2\xa9 2003-2025 Orage Team",
+                           "copyright", "Copyright \xc2\xa9 2003-" COPYRIGHT_YEAR " Orage Team",
                            "destroy-with-parent", TRUE,
                            "license-type", GTK_LICENSE_GPL_2_0,
                            "logo-icon-name", ORAGE_APP_ID,
                            "program-name", "Orage",
-                           "version", VERSION,
+                           "version", VERSION_FULL,
                            "translator-credits", _("translator-credits"),
                            "website", ORAGE_DOC_ADDRESS,
                            NULL);
