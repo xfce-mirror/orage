@@ -76,7 +76,7 @@ OrageTrayIcon > row-3{
    font-weight: bold;
 }
 
-#orage-month-cell, .month-cell, .month-header{
+#orage-month-cell, .orage-month-header{
    border: solid 1px alpha(@borders, 0.3);
    border-width: 1px 0 0 1px;
    background-color: transparent;
@@ -101,4 +101,8 @@ OrageTrayIcon > row-3{
 #orage-month-cell:selected label.day-label{
    font-weight: bold;
    color: rgba(26, 115, 232, 1.0);
+}
+
+.orage-month-header{
+    font-weight: bold;
 }
