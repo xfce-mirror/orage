@@ -34,6 +34,7 @@ struct _OrageMonthCell
     GtkWidget *event_box;
     GtkWidget *main_box;
     GtkWidget *day_label;
+    GtkWidget *cell_contents;
     GDateTime *date;
     gboolean different_month;
     gboolean selected;
@@ -269,6 +270,23 @@ void orage_month_cell_set_selected (OrageMonthCell *self,
 
     gtk_widget_set_state_flags (GTK_WIDGET (self), flags, TRUE);
     gtk_widget_queue_resize (GTK_WIDGET (self));
+}
+
+void orage_month_cell_add_widget (OrageMonthCell *self, GtkWidget *widget)
+{
+    g_return_if_fail (ORAGE_IS_MONTH_CELL (self));
+
+    if (widget)
+    {
+        self->cell_contents = widget;
+        gtk_box_pack_start (GTK_BOX (self->main_box), widget, FALSE, FALSE, 0);
+        gtk_widget_show (widget);
+    }
+    else
+    {
+        gtk_container_remove (GTK_CONTAINER (self->main_box),
+                              self->cell_contents);
+    }
 }
 
 void orage_month_cell_emit_clicked (OrageMonthCell *self)

@@ -60,6 +60,15 @@ void orage_month_cell_set_highlight (OrageMonthCell *self,
 void orage_month_cell_set_selected (OrageMonthCell *self,
                                     const gboolean selected);
 
+/** Adds or removes an extra widget in the given month cell for displaying
+ *  additional information. Widget will be managed by the month cell and should
+ *  not be packed elsewhere. After adding, the widget will be shown
+ *  automatically.
+ *  @param self a OrageMonthCell
+ *  @param widget a GtkWidget to add or NULL to remove the existing widget
+ */
+void orage_month_cell_add_widget (OrageMonthCell *self, GtkWidget *widget);
+
 /** Emits the "clicked" signal on the given "self" instance. This function can
  *  be used to manually trigger a click event on an OrageMonthCell.
  *  @param self a OrageMonthCell
