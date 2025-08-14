@@ -101,7 +101,8 @@ typedef enum
 
 typedef void (*xfical_event_callback) (GDateTime *start,
                                        GDateTime *end,
-                                       void *params);
+                                       void *caller_param,
+                                       void *event_data);
 
 typedef struct _xfical_appt
 {

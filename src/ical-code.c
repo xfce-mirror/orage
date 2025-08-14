@@ -3297,7 +3297,7 @@ static void mark_calendar (G_GNUC_UNUSED icalcomponent *c,
 /* Note that this not understand timezones, but gets always raw time, which we
  * need to convert to correct timezone.
  */
-static void mark_calendar2 (G_GNUC_UNUSED icalcomponent *c,
+static void mark_calendar2 (icalcomponent *c,
                             icaltime_span *span,
                             void *data)
 {
@@ -3368,7 +3368,8 @@ static void mark_calendar2 (G_GNUC_UNUSED icalcomponent *c,
         gdt_end = g_date_time_ref (cal_data->gdt_last);
     }
 
-    cal_data->cb (gdt_start, gdt_end, cal_data->cb_param);
+    cal_data->cb (gdt_start, gdt_end, cal_data->cb_param,
+                  (void *)icalcomponent_get_summary (c));
     g_date_time_unref (gdt_start);
     g_date_time_unref (gdt_end);
 }

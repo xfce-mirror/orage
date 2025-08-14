@@ -270,20 +270,23 @@ static void on_back_clicked (G_GNUC_UNUSED GtkButton *button,
     }
 }
 
-static void on_list_event_callback (GDateTime *gdt_start, GDateTime *gdt_end,
-                                    void *param)
+static void update_month_events_cb (GDateTime *gdt_start, GDateTime *gdt_end,
+                                    void *caller_param, void *event_data)
 {
-    OrageWindowNext *window = ORAGE_WINDOW_NEXT (param);
-    const gchar *visible_name =
-        gtk_stack_get_visible_child_name (window->stack_view);
+    OrageMonthView *month_view = ORAGE_MONTH_VIEW (caller_param);
 
-    if (g_strcmp0 (MONTH_PAGE, visible_name) == 0)
-        orage_month_view_mark_dates (window->month_view, gdt_start, gdt_end);
-    else
-    {
-        /* Requested page handling is not yet implemented. */
-        g_return_if_reached ();
-    }
+#if 1
+    gchar *begin_text = g_date_time_format_iso8601 (gdt_start);
+    gchar *end_text = g_date_time_format_iso8601 (gdt_end);
+
+    g_debug ("TODO: %s()->start='%s', end='%s', event_data='%s'", G_STRFUNC,
+             begin_text, end_text, (const char *)event_data);
+    g_free (begin_text);
+    g_free (end_text);
+#endif
+
+    orage_month_view_mark_dates (month_view, gdt_start, gdt_end);
+    /* TODO: add something like add description. */
 }
 
 static gboolean on_key_press (GtkWidget *widget, GdkEventKey *event,
@@ -715,28 +718,41 @@ void orage_window_next_mark_appointments (OrageWindow *window)
     GDateTime *gdt_start;
     GDateTime *gdt_end;
     OrageWindowNext *nxtwindow;
+    const gchar *visible_name;
+    enum {E_MONTH_PAGE, E_UNDEFINED_PAGE} displayed_page;
 
     g_return_if_fail (window != NULL);
+
+    nxtwindow = ORAGE_WINDOW_NEXT (window);
+    visible_name = gtk_stack_get_visible_child_name (nxtwindow->stack_view);
+
+    if (g_strcmp0 (MONTH_PAGE, visible_name) == 0)
+        displayed_page = E_MONTH_PAGE;
+    else
+    {
+        displayed_page = E_UNDEFINED_PAGE;
+
+        /* Requested page handling is not yet implemented. */
+        g_return_if_reached ();
+    }
 
     if (xfical_file_open (TRUE) == FALSE)
         return;
 
-    nxtwindow = ORAGE_WINDOW_NEXT (window);
     gdt_start = orage_window_next_get_first_date (nxtwindow);
     gdt_end = orage_window_next_get_last_date (nxtwindow);
 
-#if 1
-    gchar *begin_text = g_date_time_format_iso8601 (gdt_start);
-    gchar *end_text = g_date_time_format_iso8601 (gdt_end);
+    switch (displayed_page)
+    {
+        case E_MONTH_PAGE:
+            xfical_list_events_in_range (gdt_start, gdt_end,
+                                         update_month_events_cb,
+                                         nxtwindow->month_view);
+            break;
 
-    g_debug ("TODO: %s: start='%s' / end='%s'", G_STRFUNC, begin_text, end_text);
-
-    g_free (begin_text);
-    g_free (end_text);
-#endif
-
-    xfical_list_events_in_range (gdt_start, gdt_end,
-                                 on_list_event_callback, nxtwindow);
+        default:
+            g_assert_not_reached ();
+    }
 
     g_date_time_unref (gdt_start);
     g_date_time_unref (gdt_end);
