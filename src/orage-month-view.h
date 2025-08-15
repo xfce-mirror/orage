@@ -21,6 +21,7 @@
 #ifndef ORAGE_MONTH_VIEW_H
 #define ORAGE_MONTH_VIEW_H 1
 
+#include "ical-code.h"
 #include <gtk/gtk.h>
 #include <glib.h>
 
@@ -42,8 +43,8 @@ void orage_month_view_select_month (OrageMonthView *self, GDateTime *gdt);
 void orage_month_view_select_date (OrageMonthView *self, GDateTime *gdt);
 GDateTime *orage_month_view_get_first_date (OrageMonthView *self);
 GDateTime *orage_month_view_get_last_date (OrageMonthView *self);
-void orage_month_view_mark_dates (OrageMonthView *self,
-                                  GDateTime *gdt_start, GDateTime *gdt_end);
+void orage_month_view_set_event (OrageMonthView *self,
+                                 xfical_event_data_t *event_data);
 
 G_END_DECLS
 

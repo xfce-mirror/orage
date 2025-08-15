@@ -21,6 +21,7 @@
 #include "orage-month-view.h"
 #include "orage-month-cell.h"
 #include "orage-i18n.h"
+#include "ical-code.h"
 #include "functions.h"
 
 #include <gtk/gtk.h>
@@ -467,8 +468,8 @@ GDateTime *orage_month_view_get_last_date (OrageMonthView *self)
     return orage_month_cell_get_date (self->month_cell[5][6]);
 }
 
-void orage_month_view_mark_dates (OrageMonthView *self,
-                                  GDateTime *gdt_start, GDateTime *gdt_end)
+void orage_month_view_set_event (OrageMonthView *self,
+                                 xfical_event_data_t *event_data)
 {
     guint row;
     guint col;
@@ -477,8 +478,8 @@ void orage_month_view_mark_dates (OrageMonthView *self,
     GDateTime *next;
     GDateTime *current;
 
-    current = g_date_time_ref (gdt_start);
-    while (g_date_time_compare (current, gdt_end) <= 0)
+    current = g_date_time_ref (event_data->start);
+    while (g_date_time_compare (current, event_data->end) <= 0)
     {
         for (row = 0; row < 6; row++)
         {
@@ -491,6 +492,7 @@ void orage_month_view_mark_dates (OrageMonthView *self,
                 {
                     date_found = TRUE;
                     orage_month_cell_set_highlight (cell, TRUE);
+                    orage_month_cell_add_widget (cell, gtk_label_new (event_data->description));
                 }
             }
 

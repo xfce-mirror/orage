@@ -3301,6 +3301,7 @@ static void mark_calendar2 (icalcomponent *c,
                             icaltime_span *span,
                             void *data)
 {
+    xfical_event_data_t event_data;
     struct icaltimetype sdate, edate;
     mark_calendar_data2 *cal_data;
     gchar *str;
@@ -3368,8 +3369,11 @@ static void mark_calendar2 (icalcomponent *c,
         gdt_end = g_date_time_ref (cal_data->gdt_last);
     }
 
-    cal_data->cb (gdt_start, gdt_end, cal_data->cb_param,
-                  (void *)icalcomponent_get_summary (c));
+    event_data.start = gdt_start;
+    event_data.end = gdt_end;
+    event_data.uid = icalcomponent_get_uid (c);
+    event_data.description = icalcomponent_get_summary (c);
+    cal_data->cb (cal_data->cb_param, &event_data);
     g_date_time_unref (gdt_start);
     g_date_time_unref (gdt_end);
 }

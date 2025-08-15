@@ -170,6 +170,8 @@ void orage_month_cell_clear (OrageMonthCell *self)
     gtk_style_context_remove_class (context, HIGHLIGHTED);
 
     gtk_label_set_text (GTK_LABEL (self->day_label), NULL);
+
+    orage_month_cell_add_widget (self, NULL);
 }
 
 void orage_month_cell_set_date (OrageMonthCell *self, GDateTime *date)
@@ -278,7 +280,6 @@ void orage_month_cell_add_widget (OrageMonthCell *self, GtkWidget *widget)
 
     if (widget)
     {
-        self->cell_contents = widget;
         gtk_box_pack_start (GTK_BOX (self->main_box), widget, FALSE, FALSE, 0);
         gtk_widget_show (widget);
     }
@@ -287,6 +288,8 @@ void orage_month_cell_add_widget (OrageMonthCell *self, GtkWidget *widget)
         gtk_container_remove (GTK_CONTAINER (self->main_box),
                               self->cell_contents);
     }
+
+    self->cell_contents = widget;
 }
 
 void orage_month_cell_emit_clicked (OrageMonthCell *self)

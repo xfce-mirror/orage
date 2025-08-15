@@ -270,23 +270,12 @@ static void on_back_clicked (G_GNUC_UNUSED GtkButton *button,
     }
 }
 
-static void update_month_events_cb (GDateTime *gdt_start, GDateTime *gdt_end,
-                                    void *caller_param, void *event_data)
+static void update_month_events_cb (void *caller_param,
+                                    xfical_event_data_t *event_data)
 {
     OrageMonthView *month_view = ORAGE_MONTH_VIEW (caller_param);
 
-#if 1
-    gchar *begin_text = g_date_time_format_iso8601 (gdt_start);
-    gchar *end_text = g_date_time_format_iso8601 (gdt_end);
-
-    g_debug ("TODO: %s()->start='%s', end='%s', event_data='%s'", G_STRFUNC,
-             begin_text, end_text, (const char *)event_data);
-    g_free (begin_text);
-    g_free (end_text);
-#endif
-
-    orage_month_view_mark_dates (month_view, gdt_start, gdt_end);
-    /* TODO: add something like add description. */
+    orage_month_view_set_event (month_view, event_data);
 }
 
 static gboolean on_key_press (GtkWidget *widget, GdkEventKey *event,

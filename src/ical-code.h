@@ -99,10 +99,16 @@ typedef enum
     XFICAL_RECUR_MONTH_DEC
 } xfical_recur_month_sel;
 
-typedef void (*xfical_event_callback) (GDateTime *start,
-                                       GDateTime *end,
-                                       void *caller_param,
-                                       void *event_data);
+typedef struct _xfical_event_data
+{
+    GDateTime *start;
+    GDateTime *end;
+    const gchar *uid;
+    const gchar *description;
+} xfical_event_data_t;
+
+typedef void (*xfical_event_callback) (void *caller_param,
+                                       xfical_event_data_t *event_data);
 
 typedef struct _xfical_appt
 {
