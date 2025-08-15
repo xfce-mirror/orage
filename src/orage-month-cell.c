@@ -92,27 +92,15 @@ static gboolean on_event_box_clicked (G_GNUC_UNUSED GtkWidget *widget,
     return TRUE;
 }
 
-static gboolean on_event_box_double_clicked (G_GNUC_UNUSED GtkWidget *widget,
-                                             G_GNUC_UNUSED GdkEventButton *event,
-                                             gpointer user_data)
-{
-    OrageMonthCell *self = ORAGE_MONTH_CELL (user_data);
-
-    GDateTime *date = self->date;
-
-    if (date)
-        orage_month_cell_emit_double_clicked (self);
-
-    return TRUE;
-}
-
 static void orage_month_cell_class_init (OrageMonthCellClass *klass)
 {
     GtkSettings *settings = gtk_settings_get_default ();
 
     if (settings)
+    {
         g_object_get (settings, "gtk-double-click-time", &double_click_time,
                       NULL);
+    }
 
     signals[SIGNAL_CLICKED] = g_signal_new ("clicked",
                                             G_TYPE_FROM_CLASS (klass),
