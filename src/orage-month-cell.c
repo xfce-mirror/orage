@@ -34,7 +34,6 @@ struct _OrageMonthCell
     GtkWidget *event_box;
     GtkWidget *main_box;
     GtkWidget *day_label;
-    GtkWidget *cell_contents;
     GDateTime *date;
     gboolean different_month;
     gboolean selected;
@@ -51,6 +50,30 @@ static guint signals[N_SIGNALS] = {0};
 static guint double_click_time = 250;
 
 G_DEFINE_TYPE (OrageMonthCell, orage_month_cell, GTK_TYPE_BOX)
+
+static void remove_children_except_first (GtkWidget *box)
+{
+    GList *children, *iter;
+    gboolean first = TRUE;
+
+    g_return_if_fail (GTK_IS_BOX (box));
+
+    children = gtk_container_get_children (GTK_CONTAINER (box));
+    for (iter = children; iter != NULL; iter = iter->next)
+    {
+        GtkWidget *child = GTK_WIDGET (iter->data);
+
+        if (first)
+        {
+            first = FALSE;
+            continue;
+        }
+
+        gtk_container_remove (GTK_CONTAINER (box), child);
+    }
+
+    g_list_free (children);
+}
 
 static void block_single_click (gpointer user_data)
 {
@@ -159,7 +182,7 @@ void orage_month_cell_clear (OrageMonthCell *self)
 
     gtk_label_set_text (GTK_LABEL (self->day_label), NULL);
 
-    orage_month_cell_add_widget (self, NULL);
+    remove_children_except_first (self->main_box);
 }
 
 void orage_month_cell_set_date (OrageMonthCell *self, GDateTime *date)
@@ -266,18 +289,8 @@ void orage_month_cell_add_widget (OrageMonthCell *self, GtkWidget *widget)
 {
     g_return_if_fail (ORAGE_IS_MONTH_CELL (self));
 
-    if (widget)
-    {
-        gtk_box_pack_start (GTK_BOX (self->main_box), widget, FALSE, FALSE, 0);
-        gtk_widget_show (widget);
-    }
-    else
-    {
-        gtk_container_remove (GTK_CONTAINER (self->main_box),
-                              self->cell_contents);
-    }
-
-    self->cell_contents = widget;
+    gtk_box_pack_start (GTK_BOX (self->main_box), widget, FALSE, FALSE, 0);
+    gtk_widget_show (widget);
 }
 
 void orage_month_cell_emit_clicked (OrageMonthCell *self)

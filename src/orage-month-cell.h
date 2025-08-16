@@ -60,12 +60,12 @@ void orage_month_cell_set_highlight (OrageMonthCell *self,
 void orage_month_cell_set_selected (OrageMonthCell *self,
                                     const gboolean selected);
 
-/** Adds or removes an extra widget in the given month cell for displaying
- *  additional information. Widget will be managed by the month cell and should
+/** Adds an extra widget in the given month cell for displaying additional
+ *  information. Widget will be managed by the month cell and should
  *  not be packed elsewhere. After adding, the widget will be shown
  *  automatically.
  *  @param self a OrageMonthCell
- *  @param widget a GtkWidget to add or NULL to remove the existing widget
+ *  @param widget a GtkWidget to add
  */
 void orage_month_cell_add_widget (OrageMonthCell *self, GtkWidget *widget);
 

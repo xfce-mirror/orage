@@ -492,7 +492,8 @@ void orage_month_view_set_event (OrageMonthView *self,
                 {
                     date_found = TRUE;
                     orage_month_cell_set_highlight (cell, TRUE);
-                    orage_month_cell_add_widget (cell, gtk_label_new (event_data->description));
+                    orage_month_cell_add_widget (
+                        cell, gtk_label_new (event_data->description));
                 }
             }
 
