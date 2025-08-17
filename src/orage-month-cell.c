@@ -42,7 +42,7 @@ struct _OrageMonthCell
 enum
 {
     SIGNAL_CLICKED,
-    SIGNAL_RIGHT_CLICK,
+    SIGNAL_RIGHT_CLICKED,
     SIGNAL_DOUBLE_CLICKED,
     N_SIGNALS
 };
@@ -105,7 +105,7 @@ static gboolean on_event_box_clicked (G_GNUC_UNUSED GtkWidget *widget,
             }
         }
         else if (event->button == 3)
-            orage_month_cell_emit_right_click (self);
+            orage_month_cell_emit_right_clicked (self);
     }
     else if (event->type == GDK_2BUTTON_PRESS)
     {
@@ -137,12 +137,12 @@ static void orage_month_cell_class_init (OrageMonthCellClass *klass)
                                             0, NULL, NULL, NULL,
                                             G_TYPE_NONE,
                                             0);
-    signals[SIGNAL_RIGHT_CLICK] = g_signal_new ("right-click",
-                                                G_TYPE_FROM_CLASS (klass),
-                                                G_SIGNAL_RUN_FIRST,
-                                                0, NULL, NULL, NULL,
-                                                G_TYPE_NONE,
-                                                0);
+    signals[SIGNAL_RIGHT_CLICKED] = g_signal_new ("right-clicked",
+                                                  G_TYPE_FROM_CLASS (klass),
+                                                  G_SIGNAL_RUN_FIRST,
+                                                  0, NULL, NULL, NULL,
+                                                  G_TYPE_NONE,
+                                                  0);
     signals[SIGNAL_DOUBLE_CLICKED] = g_signal_new ("double-clicked",
                                                    G_TYPE_FROM_CLASS (klass),
                                                    G_SIGNAL_RUN_FIRST,
@@ -164,7 +164,8 @@ static void orage_month_cell_init (OrageMonthCell *self)
     gtk_container_add (GTK_CONTAINER(self->event_box), self->main_box);
 
     self->day_label = gtk_label_new (NULL);
-    gtk_style_context_add_class (gtk_widget_get_style_context (self->day_label), "day-label");
+    gtk_style_context_add_class (gtk_widget_get_style_context (self->day_label),
+                                 "day-label");
 
     gtk_box_pack_start (GTK_BOX (self->main_box), self->day_label, FALSE, FALSE,
                         0);
@@ -312,11 +313,11 @@ void orage_month_cell_emit_clicked (OrageMonthCell *self)
     g_signal_emit (self, signals[SIGNAL_CLICKED], 0);
 }
 
-void orage_month_cell_emit_right_click (OrageMonthCell *self)
+void orage_month_cell_emit_right_clicked (OrageMonthCell *self)
 {
     g_return_if_fail (ORAGE_IS_MONTH_CELL (self));
 
-    g_signal_emit (self, signals[SIGNAL_RIGHT_CLICK], 0);
+    g_signal_emit (self, signals[SIGNAL_RIGHT_CLICKED], 0);
 }
 
 void orage_month_cell_emit_double_clicked (OrageMonthCell *self)

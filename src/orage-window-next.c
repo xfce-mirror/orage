@@ -309,7 +309,7 @@ static void on_date_selected (G_GNUC_UNUSED OrageMonthView *view,
     g_date_time_unref (gdt);
 }
 
-static void on_date_selected_right_click (G_GNUC_UNUSED OrageMonthView *view,
+static void on_date_selected_right_clicked (G_GNUC_UNUSED OrageMonthView *view,
                                           OrageMonthCell *cell,
                                           gpointer user_data)
 {
@@ -322,7 +322,7 @@ static void on_date_selected_right_click (G_GNUC_UNUSED OrageMonthView *view,
     g_debug ("%s", G_STRFUNC);
 }
 
-static void on_date_selected_double_click (G_GNUC_UNUSED OrageMonthView *view,
+static void on_date_selected_double_clicked (G_GNUC_UNUSED OrageMonthView *view,
                                            OrageMonthCell *cell,
                                            G_GNUC_UNUSED gpointer user_data)
 {
@@ -609,10 +609,10 @@ static void orage_window_next_init (OrageWindowNext *self)
 
     g_signal_connect (self->month_view, "date-selected",
                       G_CALLBACK (on_date_selected), self);
-    g_signal_connect (self->month_view, "date-selected-right-click",
-                      G_CALLBACK (on_date_selected_right_click), self);
-    g_signal_connect (self->month_view, "date-selected-double-click",
-                      G_CALLBACK (on_date_selected_double_click), NULL);
+    g_signal_connect (self->month_view, "date-selected-right-clicked",
+                      G_CALLBACK (on_date_selected_right_clicked), self);
+    g_signal_connect (self->month_view, "date-selected-double-clicked",
+                      G_CALLBACK (on_date_selected_double_clicked), NULL);
 
     g_signal_connect (self, "key-press-event", G_CALLBACK (on_key_press), NULL);
 }
