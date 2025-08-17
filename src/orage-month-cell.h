@@ -75,6 +75,12 @@ void orage_month_cell_add_widget (OrageMonthCell *self, GtkWidget *widget);
  */
 void orage_month_cell_emit_clicked (OrageMonthCell *self);
 
+/** Emits the "right-click" signal on the given "self" instance. This function
+ *  can be used to manually trigger a click event on an OrageMonthCell.
+ *  @param self a OrageMonthCell
+ */
+void orage_month_cell_emit_right_click (OrageMonthCell *self);
+
 /** Emits the "double-clicked" signal on the given "self" instance. This
  *  function can be used to manually trigger a click event on an OrageMonthCell.
  *  @param self a OrageMonthCell

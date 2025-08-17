@@ -58,6 +58,7 @@ enum
 enum
 {
     SIGNAL_DATE_SELECTED,
+    SIGNAL_DATE_SELECTED_RIGHT_CLICK,
     SIGNAL_DATE_SELECTED_DOUBLE_CLICK,
     N_SIGNALS
 };
@@ -97,6 +98,15 @@ static void on_month_cell_clicked (OrageMonthCell *cell, gpointer user_data)
     orage_month_cell_set_selected (cell, TRUE);
 
     g_signal_emit (user_data, signals[SIGNAL_DATE_SELECTED], 0, cell);
+}
+
+static void on_month_cell_right_click (OrageMonthCell *cell, gpointer user_data)
+{
+    orage_month_view_select_all ((OrageMonthView *)user_data, FALSE);
+    orage_month_cell_set_selected (cell, TRUE);
+
+    g_signal_emit (user_data, signals[SIGNAL_DATE_SELECTED_RIGHT_CLICK], 0,
+                   cell);
 }
 
 static void on_month_cell_double_click (OrageMonthCell *cell,
@@ -313,6 +323,15 @@ static void orage_month_view_class_init (OrageMonthViewClass *klass)
                           G_TYPE_NONE, 1,
                           ORAGE_MONTH_CELL_TYPE);
 
+    signals[SIGNAL_DATE_SELECTED_RIGHT_CLICK] =
+            g_signal_new ("date-selected-right-click",
+                          G_TYPE_FROM_CLASS (klass),
+                          G_SIGNAL_RUN_FIRST,
+                          0, NULL, NULL,
+                          g_cclosure_marshal_VOID__OBJECT,
+                          G_TYPE_NONE, 1,
+                          ORAGE_MONTH_CELL_TYPE);
+
     signals[SIGNAL_DATE_SELECTED_DOUBLE_CLICK] =
             g_signal_new ("date-selected-double-click",
                           G_TYPE_FROM_CLASS (klass),
@@ -407,6 +426,8 @@ static void orage_month_view_init (OrageMonthView *self)
 
             g_signal_connect (cell, "clicked",
                               G_CALLBACK (on_month_cell_clicked), self);
+            g_signal_connect (cell, "right-click",
+                              G_CALLBACK (on_month_cell_right_click), self);
             g_signal_connect (cell, "double-clicked",
                               G_CALLBACK (on_month_cell_double_click), self);
         }

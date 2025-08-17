@@ -42,6 +42,7 @@ struct _OrageMonthCell
 enum
 {
     SIGNAL_CLICKED,
+    SIGNAL_RIGHT_CLICK,
     SIGNAL_DOUBLE_CLICKED,
     N_SIGNALS
 };
@@ -93,13 +94,18 @@ static gboolean on_event_box_clicked (G_GNUC_UNUSED GtkWidget *widget,
 
     if (event->type == GDK_BUTTON_PRESS)
     {
-        if (self->single_click_timeout_id == 0)
+        if (event->button == 1)
         {
-            self->single_click_timeout_id =
-                g_timeout_add_once (double_click_time, block_single_click,
-                                    self);
-            orage_month_cell_emit_clicked (self);
+            if (self->single_click_timeout_id == 0)
+            {
+                self->single_click_timeout_id =
+                    g_timeout_add_once (double_click_time, block_single_click,
+                                        self);
+                orage_month_cell_emit_clicked (self);
+            }
         }
+        else if (event->button == 3)
+            orage_month_cell_emit_right_click (self);
     }
     else if (event->type == GDK_2BUTTON_PRESS)
     {
@@ -131,6 +137,12 @@ static void orage_month_cell_class_init (OrageMonthCellClass *klass)
                                             0, NULL, NULL, NULL,
                                             G_TYPE_NONE,
                                             0);
+    signals[SIGNAL_RIGHT_CLICK] = g_signal_new ("right-click",
+                                                G_TYPE_FROM_CLASS (klass),
+                                                G_SIGNAL_RUN_FIRST,
+                                                0, NULL, NULL, NULL,
+                                                G_TYPE_NONE,
+                                                0);
     signals[SIGNAL_DOUBLE_CLICKED] = g_signal_new ("double-clicked",
                                                    G_TYPE_FROM_CLASS (klass),
                                                    G_SIGNAL_RUN_FIRST,
@@ -298,6 +310,13 @@ void orage_month_cell_emit_clicked (OrageMonthCell *self)
     g_return_if_fail (ORAGE_IS_MONTH_CELL (self));
 
     g_signal_emit (self, signals[SIGNAL_CLICKED], 0);
+}
+
+void orage_month_cell_emit_right_click (OrageMonthCell *self)
+{
+    g_return_if_fail (ORAGE_IS_MONTH_CELL (self));
+
+    g_signal_emit (self, signals[SIGNAL_RIGHT_CLICK], 0);
 }
 
 void orage_month_cell_emit_double_clicked (OrageMonthCell *self)
