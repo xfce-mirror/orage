@@ -137,18 +137,24 @@ static XfceGtkActionEntry action_entries[] =
 G_DEFINE_TYPE_WITH_CODE (OrageWindowNext, orage_window_next, GTK_TYPE_APPLICATION_WINDOW,
                          G_IMPLEMENT_INTERFACE (ORAGE_WINDOW_TYPE, orage_window_next_interface_init))
 
-static void on_new_activated (OrageWindowNext *window)
+static void on_menu_item_new_activated (G_GNUC_UNUSED GtkMenuItem* item,
+                                        gpointer user_data)
 {
     GDateTime *gdt;
     GtkWidget *appointment_window;
 
-    g_return_if_fail (ORAGE_IS_WINDOW (window));
+    g_return_if_fail (ORAGE_IS_WINDOW (user_data));
 
     /* Orage has always a day selected here, so it is safe to read it. */
-    gdt = orage_window_next_get_selected_date (ORAGE_WINDOW (window));
+    gdt = orage_window_next_get_selected_date (ORAGE_WINDOW (user_data));
     appointment_window = orage_appointment_window_new (gdt);
     gtk_window_present (GTK_WINDOW (appointment_window));
     g_date_time_unref (gdt);
+}
+
+static void on_new_activated (OrageWindowNext *window)
+{
+    on_menu_item_new_activated (NULL, window);
 }
 
 #ifdef ENABLE_SYNC
@@ -310,21 +316,33 @@ static void on_date_selected (G_GNUC_UNUSED OrageMonthView *view,
 }
 
 static void on_date_selected_right_clicked (G_GNUC_UNUSED OrageMonthView *view,
-                                          OrageMonthCell *cell,
-                                          gpointer user_data)
+                                            OrageMonthCell *cell,
+                                            gpointer user_data)
 {
-    GDateTime *gdt = orage_month_cell_get_date (cell);
+    GtkWidget *menu;
+    GtkWidget *new_event;
+    GDateTime *gdt;
 
     gdt = orage_month_cell_get_date (cell);
     orage_window_next_select_date (ORAGE_WINDOW (user_data), gdt);
     g_date_time_unref (gdt);
 
-    g_debug ("%s", G_STRFUNC);
+    menu = gtk_menu_new ();
+
+    new_event = gtk_menu_item_new_with_label (_("New event"));
+
+    g_signal_connect (new_event, "activate",
+                      G_CALLBACK (on_menu_item_new_activated), user_data);
+
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu), new_event);
+
+    gtk_widget_show_all (menu);
+    gtk_menu_popup_at_pointer (GTK_MENU (menu), NULL);
 }
 
 static void on_date_selected_double_clicked (G_GNUC_UNUSED OrageMonthView *view,
-                                           OrageMonthCell *cell,
-                                           G_GNUC_UNUSED gpointer user_data)
+                                             OrageMonthCell *cell,
+                                             G_GNUC_UNUSED gpointer user_data)
 {
     GDateTime *gdt;
 
