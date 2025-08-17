@@ -425,15 +425,13 @@ GtkWidget *orage_month_view_new (const FirstDayOfWeek first_day)
 
 void orage_month_view_select_month (OrageMonthView *self, GDateTime *gdt)
 {
-    GDateTime *date_old;
+    if (orage_gdatetime_compare_year_month (self->date, gdt) == 0)
+        return;
 
-    date_old = self->date;
+    g_date_time_unref (self->date);
     self->date = g_date_time_ref (gdt);
-    g_date_time_unref (date_old);
 
-    orage_month_view_update_month_label (self);
-    orage_month_view_update_week_nr_cells (self);
-    orage_month_view_update_month_cells (self);
+    orage_month_view_update_variable_fields (self);
 }
 
 void orage_month_view_select_date (OrageMonthView *self, GDateTime *gdt)
@@ -441,19 +439,28 @@ void orage_month_view_select_date (OrageMonthView *self, GDateTime *gdt)
     guint row;
     guint col;
     OrageMonthCell *cell;
-    GDateTime *gdt_month;
+    GDateTime *gdt_tmp;
     gboolean selected;
 
-    orage_month_view_select_month (self, gdt);
+    if (orage_gdatetime_compare_date (self->date, gdt) == 0)
+        return;
 
-    for (row = 0; row < 6; row++)
+    if (orage_gdatetime_compare_year_month (self->date, gdt))
+        orage_month_view_select_month (self, gdt);
+    else
     {
-        for (col = 0; col < 7; col++)
+        g_date_time_unref (self->date);
+        self->date = g_date_time_ref (gdt);
+
+        for (row = 0; row < 6; row++)
         {
-            cell = self->month_cell[row][col];
-            gdt_month = orage_month_cell_get_date (cell);
-            selected = (orage_gdatetime_compare_date (gdt_month, gdt) == 0);
-            orage_month_cell_set_selected (cell, selected);
+            for (col = 0; col < 7; col++)
+            {
+                cell = self->month_cell[row][col];
+                gdt_tmp = orage_month_cell_get_date (cell);
+                selected = (orage_gdatetime_compare_date (gdt_tmp, gdt) == 0);
+                orage_month_cell_set_selected (cell, selected);
+            }
         }
     }
 }

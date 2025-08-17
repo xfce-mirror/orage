@@ -112,6 +112,14 @@ gchar *orage_gdatetime_to_i18_time_with_zone (GDateTime *gdt);
  */
 gchar *orage_gdatetime_to_icaltime (GDateTime *gdt, gboolean date_only);
 
+/** Comapare year and month only.
+ *  @param gdt1 GDateTime fist date and time
+ *  @param gdt2 GDateTime second date and time
+ *  @return 0 if dates are equal, -1 if gdt1 is less than gdt2, 1 if gdt1 is
+ *  larger than gdt2.
+ */
+gint orage_gdatetime_compare_year_month (GDateTime *gdt1, GDateTime *gdt2);
+
 /** Comapare dates only.
  *  @param gdt1 GDateTime fist date and time
  *  @param gdt2 GDateTime second date and time
