@@ -84,6 +84,12 @@ struct _OrageWindowNext
 
     GtkWidget *back_button;
     GtkWidget *next_button;
+
+    GtkWidget *todo_box;
+    GtkWidget *mTodo_rows_vbox;
+
+    GtkWidget *mEvent_vbox;
+    GtkWidget *mEvent_rows_vbox;
 };
 
 static void orage_window_next_constructed (GObject *object);
@@ -529,6 +535,8 @@ static void orage_window_next_class_init (OrageWindowNextClass *klass)
 {
     GObjectClass *object_class;
 
+    gtk_widget_class_set_css_name (GTK_WIDGET_CLASS (klass), "OrageWindowNext");
+
     xfce_gtk_translate_action_entries (action_entries,
                                        G_N_ELEMENTS (action_entries));
 
@@ -537,14 +545,108 @@ static void orage_window_next_class_init (OrageWindowNextClass *klass)
     object_class->finalize = orage_window_next_finalize;
 }
 
+static void create_mainbox_todo_info (OrageWindowNext *self)
+{
+    GtkScrolledWindow *sw;
+    GtkWidget *todo_label;
+
+    self->todo_box = gtk_grid_new ();
+    g_object_set (self->todo_box, "vexpand", TRUE,
+                                  "valign", GTK_ALIGN_FILL,
+                                  NULL);
+#if 0
+    gtk_grid_attach_next_to (GTK_GRID (self->month_view), self->todo_box,
+                             NULL, GTK_POS_BOTTOM, 1, 1);
+#endif
+    todo_label = gtk_label_new (_("To do:"));
+    gtk_style_context_add_class (gtk_widget_get_style_context (todo_label),
+                                 "todo-label");
+
+    gtk_grid_attach_next_to (GTK_GRID (self->todo_box), todo_label,
+                             NULL, GTK_POS_BOTTOM, 1, 1);
+    g_object_set (todo_label, "xalign", 0.0, "yalign", 0.5, NULL);
+    sw = GTK_SCROLLED_WINDOW (gtk_scrolled_window_new (NULL, NULL));
+    gtk_scrolled_window_set_policy (sw, GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
+    gtk_scrolled_window_set_shadow_type (sw, GTK_SHADOW_NONE);
+    g_object_set (sw, "vexpand", TRUE, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (self->todo_box),
+                             GTK_WIDGET (sw), NULL, GTK_POS_BOTTOM, 1, 1);
+    self->mTodo_rows_vbox = gtk_grid_new ();
+    gtk_container_add (GTK_CONTAINER (sw), self->mTodo_rows_vbox);
+}
+
+static void create_mainbox_event_info_box (OrageWindowNext *window)
+{
+    GtkScrolledWindow *sw;
+    GtkWidget *event_label;
+    gchar *tmp, *tmp2, *tmp3;
+    GDateTime *gdt;
+    GDateTime *gdt_tmp;
+
+#if 0
+    gdt = orage_cal_to_gdatetime (window->mCalendar, 1, 1);
+#else
+    gdt = g_date_time_new_now_local ();
+#endif
+
+    window->mEvent_vbox = gtk_grid_new ();
+    g_object_set (window->mEvent_vbox, "vexpand", TRUE,
+                                       "valign", GTK_ALIGN_FILL,
+                                       NULL);
+#if 0
+    gtk_grid_attach_next_to (GTK_GRID (window->main_box), window->mEvent_vbox,
+                             NULL, GTK_POS_BOTTOM, 1, 1);
+#endif
+    event_label = gtk_label_new (NULL);
+    if (g_par.show_event_days) {
+    /* bug 7836: we call this routine also with 0 = no event data at all */
+        if (g_par.show_event_days == 1) {
+            tmp2 = orage_gdatetime_to_i18_time (gdt, TRUE);
+            tmp = g_strdup_printf(_("<b>Events for %s:</b>"), tmp2);
+            g_free(tmp2);
+        }
+        else {
+            tmp2 = orage_gdatetime_to_i18_time (gdt, TRUE);
+
+            gdt_tmp = gdt;
+            gdt = g_date_time_add_days (gdt_tmp, g_par.show_event_days - 1);
+            g_date_time_unref (gdt_tmp);
+            tmp3 = orage_gdatetime_to_i18_time (gdt, TRUE);
+            tmp = g_strdup_printf(_("<b>Events for %s - %s:</b>"), tmp2, tmp3);
+            g_free(tmp2);
+            g_free(tmp3);
+        }
+        gtk_label_set_markup (GTK_LABEL (event_label), tmp);
+        g_free(tmp);
+    }
+
+    g_date_time_unref (gdt);
+    g_object_set (event_label, "xalign", 0.0, "yalign", 0.5, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (window->mEvent_vbox),
+                             event_label, NULL, GTK_POS_BOTTOM, 1, 1);
+    sw = GTK_SCROLLED_WINDOW (gtk_scrolled_window_new (NULL, NULL));
+    gtk_scrolled_window_set_policy (sw, GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
+    gtk_scrolled_window_set_shadow_type (sw, GTK_SHADOW_NONE);
+    g_object_set (sw, "expand", TRUE, NULL);
+    gtk_grid_attach_next_to (GTK_GRID (window->mEvent_vbox),
+                             GTK_WIDGET (sw), NULL, GTK_POS_BOTTOM, 1, 1);
+    window->mEvent_rows_vbox = gtk_grid_new ();
+    gtk_container_add (GTK_CONTAINER (sw), window->mEvent_rows_vbox);
+}
+
 static void orage_window_next_init (OrageWindowNext *self)
 {
     GtkWidget *switcher;
     GtkWidget *spacer_left;
     GtkWidget *spacer_right;
+    GtkWidget *revealer;
+    GtkWidget *content_box;
+    GtkWidget *label;
     GtkBox *switcher_box;
     GtkBox *main_box;
     const size_t n_elements = G_N_ELEMENTS (action_entries);
+
+    //gtk_widget_set_name (GTK_WIDGET (self), "orage-window-next");
 
     self->selected_date = g_date_time_new_now_utc ();
     self->accel_group = gtk_accel_group_new ();
@@ -612,6 +714,23 @@ static void orage_window_next_init (OrageWindowNext *self)
                           gtk_label_new ("TODO: Year view"), "year", _("Year"));
 #endif
 
+    create_mainbox_todo_info (self);
+    create_mainbox_event_info_box (self);
+
+#if 0
+    revealer = gtk_revealer_new ();
+    gtk_revealer_set_transition_type (GTK_REVEALER (revealer), GTK_REVEALER_TRANSITION_TYPE_SLIDE_DOWN);
+    gtk_revealer_set_transition_duration (GTK_REVEALER (revealer), 300);
+    gtk_box_pack_start (GTK_BOX (main_box), revealer, FALSE, FALSE, 0);
+    content_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 4);
+    gtk_container_add (GTK_CONTAINER (revealer), content_box);
+    label = gtk_label_new ("See on peidetav sisu.");
+    gtk_box_pack_start (GTK_BOX (content_box), label, FALSE, FALSE, 0);
+    gtk_revealer_set_reveal_child (GTK_REVEALER (revealer), TRUE);
+#endif
+
+    gtk_box_pack_start (main_box, GTK_WIDGET (self->todo_box), FALSE, FALSE, 0);
+    gtk_box_pack_start (main_box, GTK_WIDGET (self->mEvent_vbox), FALSE, FALSE, 0);
     gtk_widget_show_all (GTK_WIDGET (main_box));
 
     gtk_stack_set_visible_child_name (self->stack_view, MONTH_PAGE);
@@ -717,8 +836,8 @@ void orage_window_next_build_todo (OrageWindow *window)
 
 void orage_window_next_hide_event (OrageWindow *window)
 {
-#if 0
-    gtk_widget_hide (ORAGE_WINDOW_CLASSIC (window)->mEvent_vbox);
+#if 1
+    gtk_widget_hide (ORAGE_WINDOW_NEXT (window)->mEvent_vbox);
 #else
     g_debug ("TODO: %s", G_STRFUNC);
     (void)window;
@@ -727,8 +846,8 @@ void orage_window_next_hide_event (OrageWindow *window)
 
 void orage_window_next_hide_todo (OrageWindow *window)
 {
-#if 0
-    gtk_widget_hide (ORAGE_WINDOW_CLASSIC (window)->mTodo_vbox);
+#if 1
+    gtk_widget_hide (ORAGE_WINDOW_NEXT (window)->todo_box);
 #else
     g_debug ("TODO: %s", G_STRFUNC);
     (void)window;

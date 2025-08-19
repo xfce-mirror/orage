@@ -106,3 +106,7 @@ OrageTrayIcon > row-3{
 .orage-month-header{
     font-weight: bold;
 }
+
+OrageWindowNext .todo-label{
+    font-weight: bold;
+}
