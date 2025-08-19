@@ -306,6 +306,20 @@ void orage_month_cell_add_widget (OrageMonthCell *self, GtkWidget *widget)
     gtk_widget_show (widget);
 }
 
+void orage_month_cell_add_text (OrageMonthCell *self, const gchar *text)
+{
+    GtkWidget *label;
+
+    label = gtk_label_new (text);
+    gtk_label_set_ellipsize (GTK_LABEL (label), PANGO_ELLIPSIZE_END);
+    gtk_widget_set_hexpand (label, FALSE);
+    gtk_widget_set_halign (label, GTK_ALIGN_START);
+    gtk_label_set_line_wrap (GTK_LABEL (label), FALSE);
+    gtk_widget_set_tooltip_text (label, text);
+
+    orage_month_cell_add_widget (self, label);
+}
+
 void orage_month_cell_emit_clicked (OrageMonthCell *self)
 {
     g_return_if_fail (ORAGE_IS_MONTH_CELL (self));

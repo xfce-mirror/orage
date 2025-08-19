@@ -88,7 +88,10 @@ static void orage_month_view_select_all (OrageMonthView *self,
     for (row = 0; row < 6; row++)
     {
         for (col = 0; col < 7; col++)
-            orage_month_cell_set_selected (self->month_cell[row][col], selected);
+        {
+            orage_month_cell_set_selected (self->month_cell[row][col],
+                                           selected);
+        }
     }
 }
 
@@ -434,7 +437,8 @@ static void orage_month_view_init (OrageMonthView *self)
         }
     }
 
-    gtk_box_pack_start (GTK_BOX (self->main_box), self->month_grid, TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (self->main_box), self->month_grid, TRUE, TRUE,
+                        0);
     gtk_box_pack_start (GTK_BOX (&self->parent), self->main_box, TRUE, TRUE, 0);
 }
 
@@ -517,12 +521,12 @@ void orage_month_view_set_event (OrageMonthView *self,
             {
                 cell = self->month_cell[row][col];
 
-                if (orage_gdatetime_compare_date (orage_month_cell_get_date (cell), current) == 0)
+                if (orage_gdatetime_compare_date (
+                    orage_month_cell_get_date (cell), current) == 0)
                 {
                     date_found = TRUE;
                     orage_month_cell_set_highlight (cell, TRUE);
-                    orage_month_cell_add_widget (
-                        cell, gtk_label_new (event_data->description));
+                    orage_month_cell_add_text (cell, event_data->description);
                 }
             }
 

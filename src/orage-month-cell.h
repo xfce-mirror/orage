@@ -69,6 +69,17 @@ void orage_month_cell_set_selected (OrageMonthCell *self,
  */
 void orage_month_cell_add_widget (OrageMonthCell *self, GtkWidget *widget);
 
+/** Adds a text label in the given month cell for displaying an event. If the
+ *  text is longer than the available cell width, it will be automatically
+ *  ellipsized and shown with "...". The full text will be available as a
+ *  tooltip when hovering with the mouse. Label will be managed by the month
+ *  cell and should not be added elsewhere. After adding, the label will be
+ *  shown automatically.
+ *  @param self a OrageMonthCell
+ *  @param text a const gchar* string to display
+ */
+void orage_month_cell_add_text (OrageMonthCell *self, const gchar *text);
+
 /** Emits the "clicked" signal on the given "self" instance. This function can
  *  be used to manually trigger a click event on an OrageMonthCell.
  *  @param self a OrageMonthCell
