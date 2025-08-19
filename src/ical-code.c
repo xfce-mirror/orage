@@ -3515,16 +3515,6 @@ static void xfical_get_event_from_component (icalcomponent *c,
                                              xfical_event_callback cb,
                                              void *param)
 {
-#if 1
-    gchar *begin_text = g_date_time_format_iso8601 (gdt_start);
-    gchar *end_text = g_date_time_format_iso8601 (gdt_end);
-
-    g_debug ("TODO: %s: start='%s' / end='%s'", G_STRFUNC, begin_text, end_text);
-
-    g_free (begin_text);
-    g_free (end_text);
-#endif
-
     xfical_period per;
     struct icaltimetype nsdate, nedate;
     struct icalrecurrencetype rrule;
@@ -3587,24 +3577,38 @@ static void xfical_get_event_from_component (icalcomponent *c,
         }
         else
         {
-            g_debug ("%s@%d", G_STRFUNC, __LINE__);
-#if 0
+#if 1
+            {
+                gchar *begin_text = g_date_time_format_iso8601 (gdt_start);
+                gchar *end_text = g_date_time_format_iso8601 (gdt_end);
+
+                g_debug ("TODO: %s@%d: start='%s' / end='%s'",
+                         G_STRFUNC, __LINE__, begin_text, end_text);
+
+                g_free (begin_text);
+                g_free (end_text);
+            }
+#endif
             per = ic_get_period (c, TRUE);
+#if 0
             (void)xfical_mark_calendar_days (gtkcal, year, month,
                                              per.stime.year, per.stime.month,
                                              per.stime.day, per.etime.year,
                                              per.etime.month, per.etime.day);
-            if ((p = icalcomponent_get_first_property(c,
-                                                      ICAL_RRULE_PROPERTY)) != NULL)
+#endif
+            p = icalcomponent_get_first_property (c, ICAL_RRULE_PROPERTY);
+            if (p)
             {
                 nsdate = icaltime_null_time ();
                 rrule = icalproperty_get_rrule (p);
                 ri = icalrecur_iterator_new (rrule, per.stime);
+#if 0
                 for (nsdate = icalrecur_iterator_next(ri), nedate = icaltime_add(nsdate, per.duration);
                      !icaltime_is_null_time(nsdate) && (nsdate.year * 12 + nsdate.month) <= (int) (year * 12 + month);
                      nsdate = icalrecur_iterator_next(ri), nedate = icaltime_add(nsdate, per.duration))
                 {
                     if (!icalproperty_recurrence_is_excluded (c, &per.stime, &nsdate))
+                    {
                         (void)xfical_mark_calendar_days (gtkcal, year, month,
                                                          nsdate.year,
                                                          nsdate.month,
@@ -3612,14 +3616,28 @@ static void xfical_get_event_from_component (icalcomponent *c,
                                                          nedate.year,
                                                          nedate.month,
                                                          nedate.day);
+                    }
                 }
+#else
+                g_debug ("TODO: %s@%d", G_STRFUNC, __LINE__);
+#endif
                 icalrecur_iterator_free (ri);
             }
-#endif
         }
     }
     else if (kind == ICAL_VTODO_COMPONENT)
     {
+#if 1
+        {
+            gchar *begin_text = g_date_time_format_iso8601 (gdt_start);
+            gchar *end_text = g_date_time_format_iso8601 (gdt_end);
+
+            g_debug ("TODO: %s@%d: start='%s' / end='%s'", G_STRFUNC, __LINE__,
+                     begin_text, end_text);
+            g_free (begin_text);
+            g_free (end_text);
+        }
+#endif
 #if 0
         per = ic_get_period (c, TRUE);
         marked = FALSE;
