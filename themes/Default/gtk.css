@@ -107,6 +107,6 @@ OrageTrayIcon > row-3{
     font-weight: bold;
 }
 
-OrageWindowNext .todo-label{
+OrageWindowNext .todo-label, .event-label{
     font-weight: bold;
 }

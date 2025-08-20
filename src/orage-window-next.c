@@ -28,6 +28,7 @@
 #include "interface.h"
 #include "orage-about.h"
 #include "orage-appointment-window.h"
+#include "orage-css.h"
 #include "orage-i18n.h"
 #include "orage-month-cell.h"
 #include "orage-month-view.h"
@@ -39,6 +40,8 @@
 #include <stdio.h>
 
 #define MONTH_PAGE "month"
+
+#define FORMAT_BOLD "<b> %s </b>"
 
 typedef enum
 {
@@ -88,9 +91,14 @@ struct _OrageWindowNext
     GtkWidget *todo_box;
     GtkWidget *mTodo_rows_vbox;
 
-    GtkWidget *mEvent_vbox;
+    GtkWidget *event_box;
     GtkWidget *mEvent_rows_vbox;
 };
+
+#if 1
+#warning "FIXME: main box should not be global, only for developement"
+GtkBox *main_box_g;
+#endif
 
 static void orage_window_next_constructed (GObject *object);
 static void orage_window_next_finalize (GObject *object);
@@ -282,14 +290,6 @@ static void on_back_clicked (G_GNUC_UNUSED GtkButton *button,
     }
 }
 
-static void update_month_events_cb (void *caller_param,
-                                    xfical_event_data_t *event_data)
-{
-    OrageMonthView *month_view = ORAGE_MONTH_VIEW (caller_param);
-
-    orage_month_view_set_event (month_view, event_data);
-}
-
 static gboolean on_key_press (GtkWidget *widget, GdkEventKey *event,
                               G_GNUC_UNUSED gpointer user_data)
 {
@@ -362,6 +362,14 @@ static void on_date_selected_double_clicked (G_GNUC_UNUSED OrageMonthView *view,
     g_date_time_unref (gdt);
 }
 
+static void cb_update_month_events (void *caller_param,
+                                    xfical_event_data_t *event_data)
+{
+    OrageMonthView *month_view = ORAGE_MONTH_VIEW (caller_param);
+
+    orage_month_view_set_event (month_view, event_data);
+}
+
 static void menu_clean (GtkMenu *menu)
 {
     GList *children, *lp;
@@ -380,13 +388,15 @@ static void menu_clean (GtkMenu *menu)
     g_list_free (children);
 }
 
-static void update_file_menu (OrageWindowNext *window, GtkWidget *menu)
+static void orage_window_next_update_file_menu (OrageWindowNext *window,
+                                                GtkWidget *menu)
 {
     g_return_if_fail (ORAGE_IS_WINDOW_NEXT (window));
 
     menu_clean (GTK_MENU (menu));
     xfce_gtk_menu_item_new_from_action_entry (
-        get_action_entry (ORAGE_WINDOW_ACTION_NEW_APPOINTMENT), G_OBJECT (window),
+        get_action_entry (ORAGE_WINDOW_ACTION_NEW_APPOINTMENT),
+        G_OBJECT (window),
         GTK_MENU_SHELL (menu));
     xfce_gtk_menu_append_separator (GTK_MENU_SHELL (menu));
 #ifdef ENABLE_SYNC
@@ -408,7 +418,8 @@ static void update_file_menu (OrageWindowNext *window, GtkWidget *menu)
     gtk_widget_show_all (GTK_WIDGET (menu));
 }
 
-static void update_edit_menu (OrageWindowNext *window, GtkWidget *menu)
+static void orage_window_next_update_edit_menu (OrageWindowNext *window,
+                                                GtkWidget *menu)
 {
     g_return_if_fail (ORAGE_IS_WINDOW_NEXT (window));
 
@@ -420,7 +431,8 @@ static void update_edit_menu (OrageWindowNext *window, GtkWidget *menu)
     gtk_widget_show_all (GTK_WIDGET (menu));
 }
 
-static void update_view_menu (OrageWindowNext *window, GtkWidget *menu)
+static void orage_window_next_update_view_menu (OrageWindowNext *window,
+                                                GtkWidget *menu)
 {
     g_return_if_fail (ORAGE_IS_WINDOW_NEXT (window));
 
@@ -440,7 +452,8 @@ static void update_view_menu (OrageWindowNext *window, GtkWidget *menu)
     gtk_widget_show_all (GTK_WIDGET (menu));
 }
 
-static void update_help_menu (OrageWindowNext *window, GtkWidget *menu)
+static void orage_window_next_update_help_menu (OrageWindowNext *window,
+                                                GtkWidget *menu)
 {
     g_return_if_fail (ORAGE_IS_WINDOW_NEXT (window));
 
@@ -521,31 +534,18 @@ static void orage_window_next_add_menubar (OrageWindowNext *self)
 {
     self->menubar = gtk_menu_bar_new ();
     orage_window_next_add_menu (self, ORAGE_WINDOW_ACTION_FILE_MENU,
-                                G_CALLBACK (update_file_menu));
+                                G_CALLBACK (orage_window_next_update_file_menu));
     orage_window_next_add_menu (self, ORAGE_WINDOW_ACTION_EDIT_MENU,
-                                G_CALLBACK (update_edit_menu));
+                                G_CALLBACK (orage_window_next_update_edit_menu));
     orage_window_next_add_menu (self, ORAGE_WINDOW_ACTION_VIEW_MENU,
-                                G_CALLBACK (update_view_menu));
+                                G_CALLBACK (orage_window_next_update_view_menu));
     orage_window_next_add_menu (self, ORAGE_WINDOW_ACTION_HELP_MENU,
-                                G_CALLBACK (update_help_menu));
+                                G_CALLBACK (orage_window_next_update_help_menu));
     gtk_widget_show_all (self->menubar);
 }
 
-static void orage_window_next_class_init (OrageWindowNextClass *klass)
-{
-    GObjectClass *object_class;
-
-    gtk_widget_class_set_css_name (GTK_WIDGET_CLASS (klass), "OrageWindowNext");
-
-    xfce_gtk_translate_action_entries (action_entries,
-                                       G_N_ELEMENTS (action_entries));
-
-    object_class = G_OBJECT_CLASS (klass);
-    object_class->constructed = orage_window_next_constructed;
-    object_class->finalize = orage_window_next_finalize;
-}
-
-static void create_mainbox_todo_info (OrageWindowNext *self)
+static void orage_window_next_add_todo_box (OrageWindowNext *self,
+                                            GtkBox *main_box)
 {
     GtkScrolledWindow *sw;
     GtkWidget *todo_label;
@@ -554,10 +554,9 @@ static void create_mainbox_todo_info (OrageWindowNext *self)
     g_object_set (self->todo_box, "vexpand", TRUE,
                                   "valign", GTK_ALIGN_FILL,
                                   NULL);
-#if 0
-    gtk_grid_attach_next_to (GTK_GRID (self->month_view), self->todo_box,
-                             NULL, GTK_POS_BOTTOM, 1, 1);
-#endif
+
+    gtk_box_pack_start (main_box, GTK_WIDGET (self->todo_box), FALSE, FALSE, 0);
+
     todo_label = gtk_label_new (_("To do:"));
     gtk_style_context_add_class (gtk_widget_get_style_context (todo_label),
                                  "todo-label");
@@ -575,7 +574,8 @@ static void create_mainbox_todo_info (OrageWindowNext *self)
     gtk_container_add (GTK_CONTAINER (sw), self->mTodo_rows_vbox);
 }
 
-static void create_mainbox_event_info_box (OrageWindowNext *window)
+static void orage_window_next_add_info_box (OrageWindowNext *self,
+                                            GtkBox *main_box)
 {
     GtkScrolledWindow *sw;
     GtkWidget *event_label;
@@ -583,55 +583,348 @@ static void create_mainbox_event_info_box (OrageWindowNext *window)
     GDateTime *gdt;
     GDateTime *gdt_tmp;
 
-#if 0
-    gdt = orage_cal_to_gdatetime (window->mCalendar, 1, 1);
-#else
-    gdt = g_date_time_new_now_local ();
-#endif
+    gdt = g_date_time_ref (self->selected_date);
 
-    window->mEvent_vbox = gtk_grid_new ();
-    g_object_set (window->mEvent_vbox, "vexpand", TRUE,
-                                       "valign", GTK_ALIGN_FILL,
-                                       NULL);
-#if 0
-    gtk_grid_attach_next_to (GTK_GRID (window->main_box), window->mEvent_vbox,
-                             NULL, GTK_POS_BOTTOM, 1, 1);
-#endif
+    self->event_box = gtk_grid_new ();
+    g_object_set (self->event_box, "vexpand", TRUE,
+                                   "valign", GTK_ALIGN_FILL,
+                                   NULL);
+    gtk_box_pack_start (main_box, GTK_WIDGET (self->event_box), FALSE, FALSE, 0);
     event_label = gtk_label_new (NULL);
-    if (g_par.show_event_days) {
-    /* bug 7836: we call this routine also with 0 = no event data at all */
-        if (g_par.show_event_days == 1) {
+    if (g_par.show_event_days)
+    {
+        /* bug 7836: we call this routine also with 0 = no event data at all */
+        if (g_par.show_event_days == 1)
+        {
             tmp2 = orage_gdatetime_to_i18_time (gdt, TRUE);
-            tmp = g_strdup_printf(_("<b>Events for %s:</b>"), tmp2);
-            g_free(tmp2);
+            tmp = g_strdup_printf (_("Events for %s:"), tmp2);
+            g_free (tmp2);
         }
-        else {
+        else
+        {
             tmp2 = orage_gdatetime_to_i18_time (gdt, TRUE);
 
             gdt_tmp = gdt;
             gdt = g_date_time_add_days (gdt_tmp, g_par.show_event_days - 1);
             g_date_time_unref (gdt_tmp);
             tmp3 = orage_gdatetime_to_i18_time (gdt, TRUE);
-            tmp = g_strdup_printf(_("<b>Events for %s - %s:</b>"), tmp2, tmp3);
-            g_free(tmp2);
-            g_free(tmp3);
+            tmp = g_strdup_printf (_("Events for %s - %s:"), tmp2, tmp3);
+            g_free (tmp2);
+            g_free (tmp3);
         }
-        gtk_label_set_markup (GTK_LABEL (event_label), tmp);
-        g_free(tmp);
+        gtk_style_context_add_class (gtk_widget_get_style_context (event_label),
+                                     "event-label");
+        gtk_label_set_text (GTK_LABEL (event_label), tmp);
+        g_free (tmp);
     }
 
     g_date_time_unref (gdt);
     g_object_set (event_label, "xalign", 0.0, "yalign", 0.5, NULL);
-    gtk_grid_attach_next_to (GTK_GRID (window->mEvent_vbox),
+    gtk_grid_attach_next_to (GTK_GRID (self->event_box),
                              event_label, NULL, GTK_POS_BOTTOM, 1, 1);
     sw = GTK_SCROLLED_WINDOW (gtk_scrolled_window_new (NULL, NULL));
     gtk_scrolled_window_set_policy (sw, GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
     gtk_scrolled_window_set_shadow_type (sw, GTK_SHADOW_NONE);
     g_object_set (sw, "expand", TRUE, NULL);
-    gtk_grid_attach_next_to (GTK_GRID (window->mEvent_vbox),
+    gtk_grid_attach_next_to (GTK_GRID (self->event_box),
                              GTK_WIDGET (sw), NULL, GTK_POS_BOTTOM, 1, 1);
-    window->mEvent_rows_vbox = gtk_grid_new ();
-    gtk_container_add (GTK_CONTAINER (sw), window->mEvent_rows_vbox);
+    self->mEvent_rows_vbox = gtk_grid_new ();
+    gtk_container_add (GTK_CONTAINER (sw), self->mEvent_rows_vbox);
+}
+
+static void insert_rows (GList **list, GDateTime *gdt, xfical_type ical_type,
+                         gchar *file_type)
+{
+    xfical_appt *appt;
+
+    for (appt = xfical_appt_get_next_on_day (gdt, TRUE, 0, ical_type, file_type);
+         appt;
+         appt = xfical_appt_get_next_on_day (gdt, FALSE, 0, ical_type , file_type))
+    {
+        *list = g_list_prepend (*list, appt);
+    }
+}
+
+static gint event_order (gconstpointer a, gconstpointer b)
+{
+    xfical_appt *appt1, *appt2;
+
+    appt1 = (xfical_appt *)a;
+    appt2 = (xfical_appt *)b;
+
+    return g_date_time_compare (appt1->starttimecur, appt2->starttimecur);
+}
+
+static gint todo_order (gconstpointer a, gconstpointer b)
+{
+    xfical_appt *appt1, *appt2;
+
+    appt1 = (xfical_appt *)a;
+    appt2 = (xfical_appt *)b;
+
+    if (appt1->use_due_time && !appt2->use_due_time)
+        return (-1);
+    if (!appt1->use_due_time && appt2->use_due_time)
+        return (1);
+
+    return g_date_time_compare (appt1->endtimecur, appt2->endtimecur);
+}
+
+static void todo_clicked (GtkWidget *widget, GdkEventButton *event,
+                          G_GNUC_UNUSED gpointer *user_data)
+{
+    gchar *uid;
+    GtkWidget *appointment_window;
+
+    if (event->type == GDK_2BUTTON_PRESS)
+    {
+        uid = g_object_get_data (G_OBJECT(widget), "UID");
+        appointment_window = orage_appointment_window_new_update (uid);
+        gtk_window_present (GTK_WINDOW (appointment_window));
+    }
+}
+
+static void add_info_row (xfical_appt *appt, GtkGrid *parentBox,
+                          const gboolean todo)
+{
+    GtkWidget *ev, *label;
+    gchar *tip, *tmp, *tmp_title, *tmp_note;
+    gchar *tip_title, *tip_location, *tip_note;
+    char  *s_time, *s_timeonly, *e_time, *c_time, *na;
+    GDateTime *today;
+    GDateTime *gdt_end_time;
+
+    /* Add data into the vbox. */
+    ev = gtk_event_box_new ();
+    tmp_title = appt->title ? orage_process_text_commands(appt->title)
+                            : g_strdup (_("No title defined"));
+    s_time = orage_gdatetime_to_i18_time (appt->starttimecur, appt->allDay);
+    today = g_date_time_new_now_local ();
+    if (todo)
+    {
+        e_time = appt->use_due_time ? orage_gdatetime_to_i18_time (appt->endtimecur, appt->allDay)
+                                    : g_strdup (s_time);
+        tmp = g_strdup_printf (" %s  %s", e_time, tmp_title);
+        g_free (e_time);
+    }
+    else
+    {
+        s_timeonly = g_date_time_format (appt->starttimecur, "%R");
+        if (orage_gdatetime_compare_date (today, appt->starttimecur) == 0)
+            tmp = g_strdup_printf (" %s* %s", s_timeonly, tmp_title);
+        else
+        {
+            if (g_par.show_event_days > 1)
+                tmp = g_strdup_printf (" %s  %s", s_time, tmp_title);
+            else
+                tmp = g_strdup_printf (" %s  %s", s_timeonly, tmp_title);
+        }
+        g_free (s_timeonly);
+    }
+
+    label = gtk_label_new (tmp);
+
+    g_free (tmp);
+    gtk_label_set_ellipsize (GTK_LABEL (label), PANGO_ELLIPSIZE_END);
+
+    g_object_set (label, "xalign", 0.0, "yalign", 0.5,
+                         "margin-start", 5,
+                         "hexpand", TRUE,
+                         "halign", GTK_ALIGN_FILL,
+                         NULL);
+
+    gtk_container_add (GTK_CONTAINER (ev), label);
+    gtk_grid_attach_next_to (parentBox, ev, NULL, GTK_POS_BOTTOM, 1, 1);
+    g_object_set_data_full (G_OBJECT (ev), "UID", g_strdup (appt->uid), g_free);
+    g_signal_connect (ev, "button-press-event", G_CALLBACK (todo_clicked),
+                      NULL);
+
+    /* Set color. */
+    if (todo)
+    {
+        if (appt->use_due_time)
+            gdt_end_time = g_date_time_ref (appt->endtimecur);
+        else
+            gdt_end_time = g_date_time_new_local (9999, 12, 31, 23, 59, 59);
+
+        if (g_date_time_compare (gdt_end_time, today) < 0)
+        {
+            /* gone */
+            gtk_widget_set_name (label, ORAGE_TODO_COMPLETED);
+        }
+        else if ((g_date_time_compare (appt->starttimecur, today) <= 0) &&
+                 (g_date_time_compare (gdt_end_time, today) >= 0))
+        {
+            gtk_widget_set_name (label, ORAGE_TODO_ACTUAL_NOW);
+        }
+
+        g_date_time_unref (gdt_end_time);
+    }
+
+    /* Set tooltip hint. */
+    tip_title = g_markup_printf_escaped (FORMAT_BOLD, tmp_title);
+    if (appt->location)
+    {
+        tmp = g_markup_printf_escaped (FORMAT_BOLD, appt->location);
+        tip_location = g_strdup_printf (_(" Location: %s\n"), tmp);
+        g_free (tmp);
+    }
+    else
+        tip_location = g_strdup ("");
+
+    if (appt->note)
+    {
+        tmp_note = orage_process_text_commands (appt->note);
+        tmp_note = orage_limit_text (tmp_note, 50, 10);
+        tmp = g_markup_escape_text (tmp_note, strlen (tmp_note));
+        tip_note = g_strdup_printf (_("\n Note:\n%s"), tmp);
+        g_free (tmp);
+    }
+    else
+        tip_note = g_strdup ("");
+
+    if (todo)
+    {
+        na = _("Never");
+        e_time = appt->use_due_time ? orage_gdatetime_to_i18_time (appt->endtimecur, appt->allDay)
+                                    : g_strdup (na);
+        c_time = appt->completed && appt->completedtime ? orage_gdatetime_to_i18_time (appt->completedtime, appt->allDay)
+                                                        : g_strdup (na);
+
+        tip = g_strdup_printf (_("Title: %s\n%s Start:\t%s\n Due:\t%s\n Done:\t%s%s"),
+                               tip_title, tip_location, s_time, e_time, c_time, tip_note);
+
+        g_free (c_time);
+    }
+    else
+    {
+        /* It is event. */
+        e_time = orage_gdatetime_to_i18_time (appt->endtimecur, appt->allDay);
+        tip = g_strdup_printf (_("Title: %s\n%s Start:\t%s\n End:\t%s%s"),
+                               tip_title, tip_location, s_time, e_time, tip_note);
+    }
+
+    gtk_widget_set_tooltip_markup (ev, tip);
+
+    g_date_time_unref (today);
+    g_free (tip_title);
+    g_free (tip_location);
+    g_free (tip_note);
+    g_free (tmp_title);
+    g_free (s_time);
+    g_free (e_time);
+    g_free (tip);
+}
+
+static void info_process (gpointer a, gpointer pbox)
+{
+    xfical_appt *appt = (xfical_appt *)a;
+    GtkGrid *box= GTK_GRID (pbox);
+    OrageApplication *app = ORAGE_APPLICATION (g_application_get_default ());
+    OrageWindowNext *window = ORAGE_WINDOW_NEXT (orage_application_get_window (app));
+    gboolean todo;
+
+    todo = (pbox == window->mTodo_rows_vbox) ? TRUE : FALSE;
+
+    if (appt->priority < g_par.priority_list_limit)
+        add_info_row (appt, box, todo);
+    xfical_appt_free (appt);
+}
+
+static void build_mainbox_todo_info (OrageWindowNext *window)
+{
+    GDateTime *gdt;
+    xfical_type ical_type;
+    gchar file_type[8];
+    gint i;
+    GList *todo_list = NULL;
+
+    g_return_if_fail (window != NULL);
+
+    if (g_par.show_todos)
+    {
+        gdt = g_date_time_new_now_local ();
+        ical_type = XFICAL_TYPE_TODO;
+
+        /* First search base orage file. */
+        g_strlcpy (file_type, "O00.", sizeof (file_type));
+        insert_rows (&todo_list, gdt, ical_type, file_type);
+
+        /* Then process all foreign files. */
+        for (i = 0; i < g_par.foreign_count; i++)
+        {
+            g_snprintf (file_type, sizeof (file_type), "F%02d.", i);
+            insert_rows (&todo_list, gdt, ical_type, file_type);
+        }
+
+        g_date_time_unref (gdt);
+    }
+
+    if (todo_list)
+    {
+        gtk_widget_destroy (window->todo_box);
+        orage_window_next_add_todo_box (window, main_box_g);
+        todo_list = g_list_sort (todo_list, todo_order);
+        g_list_foreach (todo_list, info_process, window->mTodo_rows_vbox);
+        g_list_free (todo_list);
+        gtk_widget_show_all (window->todo_box);
+    }
+    else
+        gtk_widget_hide (window->todo_box);
+}
+
+static void build_mainbox_event_info (OrageWindowNext *window)
+{
+    xfical_type ical_type;
+    gchar file_type[8];
+    gint i;
+    GList *event_list = NULL;
+    GDateTime *gdt;
+
+    g_return_if_fail (window != NULL);
+
+    if (g_par.show_event_days)
+    {
+        gdt = g_date_time_ref (window->selected_date);
+        ical_type = XFICAL_TYPE_EVENT;
+        g_strlcpy (file_type, "O00.", sizeof (file_type));
+        xfical_get_each_app_within_time (gdt, g_par.show_event_days, ical_type,
+                                         file_type, &event_list);
+        for (i = 0; i < g_par.foreign_count; i++)
+        {
+            g_snprintf (file_type, sizeof (file_type), "F%02d.", i);
+            xfical_get_each_app_within_time (gdt, g_par.show_event_days,
+                                             ical_type, file_type, &event_list);
+        }
+
+        g_date_time_unref (gdt);
+    }
+
+    if (event_list)
+    {
+        gtk_widget_destroy (window->event_box);
+        orage_window_next_add_info_box (window, main_box_g);
+        event_list = g_list_sort (event_list, event_order);
+        g_list_foreach (event_list, info_process, window->mEvent_rows_vbox);
+        g_list_free (event_list);
+        gtk_widget_show_all (window->event_box);
+    }
+    else
+        gtk_widget_hide (window->event_box);
+}
+
+static void orage_window_next_class_init (OrageWindowNextClass *klass)
+{
+    GObjectClass *object_class;
+
+    gtk_widget_class_set_css_name (GTK_WIDGET_CLASS (klass), "OrageWindowNext");
+
+    xfce_gtk_translate_action_entries (action_entries,
+                                       G_N_ELEMENTS (action_entries));
+
+    object_class = G_OBJECT_CLASS (klass);
+    object_class->constructed = orage_window_next_constructed;
+    object_class->finalize = orage_window_next_finalize;
 }
 
 static void orage_window_next_init (OrageWindowNext *self)
@@ -643,10 +936,13 @@ static void orage_window_next_init (OrageWindowNext *self)
     GtkWidget *content_box;
     GtkWidget *label;
     GtkBox *switcher_box;
+#if 0
     GtkBox *main_box;
+#else
+#warning "FIXME: main box should not be global, only for developement"
+    GtkBox *main_box = main_box_g;
+#endif
     const size_t n_elements = G_N_ELEMENTS (action_entries);
-
-    //gtk_widget_set_name (GTK_WIDGET (self), "orage-window-next");
 
     self->selected_date = g_date_time_new_now_utc ();
     self->accel_group = gtk_accel_group_new ();
@@ -714,8 +1010,8 @@ static void orage_window_next_init (OrageWindowNext *self)
                           gtk_label_new ("TODO: Year view"), "year", _("Year"));
 #endif
 
-    create_mainbox_todo_info (self);
-    create_mainbox_event_info_box (self);
+    orage_window_next_add_todo_box (self, main_box);
+    orage_window_next_add_info_box (self, main_box);
 
 #if 0
     revealer = gtk_revealer_new ();
@@ -729,8 +1025,6 @@ static void orage_window_next_init (OrageWindowNext *self)
     gtk_revealer_set_reveal_child (GTK_REVEALER (revealer), TRUE);
 #endif
 
-    gtk_box_pack_start (main_box, GTK_WIDGET (self->todo_box), FALSE, FALSE, 0);
-    gtk_box_pack_start (main_box, GTK_WIDGET (self->mEvent_vbox), FALSE, FALSE, 0);
     gtk_widget_show_all (GTK_WIDGET (main_box));
 
     gtk_stack_set_visible_child_name (self->stack_view, MONTH_PAGE);
@@ -798,60 +1092,40 @@ GtkWidget *orage_window_next_new (OrageApplication *application)
 
 void orage_window_next_build_events (OrageWindow *window)
 {
-#if 0
-    if (!xfical_file_open(TRUE))
+    if (xfical_file_open (TRUE) == FALSE)
         return;
 
-    build_mainbox_event_info (window);
+    build_mainbox_event_info (ORAGE_WINDOW_NEXT (window));
+
     xfical_file_close(TRUE);
-#else
-    g_debug ("TODO: %s", G_STRFUNC);
-    (void)window;
-#endif
 }
 
 void orage_window_next_build_info (OrageWindow *window)
 {
-#if 0
-    build_mainbox_todo_info (window);
-    build_mainbox_event_info (window);
-#else
-    g_debug ("TODO: %s", G_STRFUNC);
-    (void)window;
-#endif
+    OrageWindowNext *nw = ORAGE_WINDOW_NEXT (window);
+
+    build_mainbox_todo_info (nw);
+    build_mainbox_event_info (nw);
 }
 
 void orage_window_next_build_todo (OrageWindow *window)
 {
-#if 0
-    if (!xfical_file_open (TRUE))
+    if (xfical_file_open (TRUE) == FALSE)
         return;
-    build_mainbox_todo_info (window);
+
+    build_mainbox_todo_info (ORAGE_WINDOW_NEXT (window));
+
     xfical_file_close (TRUE);
-#else
-    g_debug ("TODO: %s", G_STRFUNC);
-    (void)window;
-#endif
 }
 
 void orage_window_next_hide_event (OrageWindow *window)
 {
-#if 1
-    gtk_widget_hide (ORAGE_WINDOW_NEXT (window)->mEvent_vbox);
-#else
-    g_debug ("TODO: %s", G_STRFUNC);
-    (void)window;
-#endif
+    gtk_widget_hide (ORAGE_WINDOW_NEXT (window)->event_box);
 }
 
 void orage_window_next_hide_todo (OrageWindow *window)
 {
-#if 1
     gtk_widget_hide (ORAGE_WINDOW_NEXT (window)->todo_box);
-#else
-    g_debug ("TODO: %s", G_STRFUNC);
-    (void)window;
-#endif
 }
 
 void orage_window_next_mark_appointments (OrageWindow *window)
@@ -887,7 +1161,7 @@ void orage_window_next_mark_appointments (OrageWindow *window)
     {
         case E_MONTH_PAGE:
             xfical_list_events_in_range (gdt_start, gdt_end,
-                                         update_month_events_cb,
+                                         cb_update_month_events,
                                          nxtwindow->month_view);
             break;
 
