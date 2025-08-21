@@ -550,6 +550,8 @@ static void orage_window_next_add_todo_box (OrageWindowNext *self,
     GtkScrolledWindow *sw;
     GtkWidget *todo_label;
 
+    g_return_if_fail (main_box != NULL);
+
     self->todo_box = gtk_grid_new ();
     g_object_set (self->todo_box, "vexpand", TRUE,
                                   "valign", GTK_ALIGN_FILL,
@@ -582,6 +584,8 @@ static void orage_window_next_add_info_box (OrageWindowNext *self,
     gchar *tmp, *tmp2, *tmp3;
     GDateTime *gdt;
     GDateTime *gdt_tmp;
+
+    g_return_if_fail (main_box != NULL);
 
     gdt = g_date_time_ref (self->selected_date);
 
@@ -1120,6 +1124,8 @@ void orage_window_next_build_todo (OrageWindow *window)
 
 void orage_window_next_hide_event (OrageWindow *window)
 {
+    g_return_if_fail (window != NULL);
+
     gtk_widget_hide (ORAGE_WINDOW_NEXT (window)->event_box);
 }
 
@@ -1195,6 +1201,8 @@ void orage_window_next_select_date (OrageWindow *window, GDateTime *gdt)
     OrageWindowNext *nxtwindow;
     const gchar *visible_name;
 
+    g_return_if_fail (window != NULL);
+
     nxtwindow = ORAGE_WINDOW_NEXT (window);
     visible_name = gtk_stack_get_visible_child_name (nxtwindow->stack_view);
 
@@ -1215,7 +1223,10 @@ void orage_window_next_select_date (OrageWindow *window, GDateTime *gdt)
 
 GDateTime *orage_window_next_get_selected_date (OrageWindow *window)
 {
-    OrageWindowNext *nxtwindow = ORAGE_WINDOW_NEXT (window);
+    OrageWindowNext *nxtwindow;
+
+    g_return_val_if_fail (window != NULL, NULL);
+    nxtwindow = ORAGE_WINDOW_NEXT (window);
 
     return g_date_time_ref (nxtwindow->selected_date);
 }
@@ -1245,7 +1256,10 @@ void orage_window_next_set_calendar_options (G_GNUC_UNUSED OrageWindow *window,
 
 void orage_window_next_show_menubar (OrageWindow *window, const gboolean show)
 {
-    OrageWindowNext *nxtwindow = ORAGE_WINDOW_NEXT (window);
+    OrageWindowNext *nxtwindow;
+
+    g_return_if_fail (window != NULL);
+    nxtwindow = ORAGE_WINDOW_NEXT (window);
 
     if (show)
         gtk_widget_show (nxtwindow->menubar);

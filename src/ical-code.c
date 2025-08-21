@@ -240,10 +240,13 @@ gboolean xfical_set_local_timezone(gboolean testing)
         local_icaltimezone = 
                 icaltimezone_get_builtin_timezone(g_par.local_timezone);
 
-    if (!local_icaltimezone) {
-        if (!testing)
-            g_warning ("%s: builtin timezone %s not found", G_STRFUNC
-                    , g_par.local_timezone);
+    if (local_icaltimezone == NULL)
+    {
+        if (testing == FALSE)
+        {
+            g_warning ("%s: builtin timezone '%s' not found", G_STRFUNC,
+                       g_par.local_timezone);
+        }
         return (FALSE);
     }
     return (TRUE); 
@@ -508,9 +511,11 @@ struct icaltimetype ic_convert_to_timezone(struct icaltimetype t
     if ((tz_loc = ic_get_char_timezone(p))) {
         /* FIXME: could we now call convert_to_zone or is it a problem
          * if we always move to zone format ? */
-        if (!(l_icaltimezone = get_builtin_timezone(tz_loc))) {
-            g_critical ("%s: builtin timezone %s not found, conversion failed.",
-                        G_STRFUNC, tz_loc);
+        l_icaltimezone = get_builtin_timezone (tz_loc);
+        if (l_icaltimezone == NULL)
+        {
+            g_warning ("%s: builtin timezone '%s' not found, conversion failed",
+                       G_STRFUNC, tz_loc);
         }
         tz = icaltime_convert_to_zone(t, l_icaltimezone);
     }
@@ -715,10 +720,10 @@ static struct icaltimetype convert_to_zone(struct icaltimetype t, gchar *tz)
         }
         else {
             l_icaltimezone = get_builtin_timezone(tz);
-            if (!l_icaltimezone)
+            if (l_icaltimezone == NULL)
             {
-                g_critical ("%s: builtin timezone %s not found, "
-                            "conversion failed", G_STRFUNC, tz);
+                g_warning ("%s: builtin timezone '%s' not found, "
+                           "conversion failed", G_STRFUNC, tz);
             }
             else
                 wtime = icaltime_convert_to_zone(t, l_icaltimezone);
