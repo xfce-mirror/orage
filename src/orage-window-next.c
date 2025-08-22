@@ -315,6 +315,8 @@ static void on_date_selected (G_GNUC_UNUSED OrageMonthView *view,
     gdt = orage_month_cell_get_date (cell);
     orage_window_next_select_date (ORAGE_WINDOW (user_data), gdt);
     g_date_time_unref (gdt);
+
+    orage_window_next_build_events (ORAGE_WINDOW (user_data));
 }
 
 static void on_date_selected_right_clicked (G_GNUC_UNUSED OrageMonthView *view,
