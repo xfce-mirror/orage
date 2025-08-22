@@ -547,7 +547,7 @@ static void orage_window_next_add_todo_box (OrageWindowNext *self)
     GtkScrolledWindow *sw;
     GtkWidget *todo_label;
 
-    self->todo_box = gtk_grid_new ();
+    self->todo_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 5);
     g_object_set (self->todo_box, "vexpand", TRUE,
                                   "valign", GTK_ALIGN_FILL,
                                   NULL);
@@ -559,16 +559,15 @@ static void orage_window_next_add_todo_box (OrageWindowNext *self)
     gtk_style_context_add_class (gtk_widget_get_style_context (todo_label),
                                  "todo-label");
 
-    gtk_grid_attach_next_to (GTK_GRID (self->todo_box), todo_label,
-                             NULL, GTK_POS_BOTTOM, 1, 1);
+    gtk_box_pack_start (GTK_BOX (self->todo_box), todo_label, FALSE, FALSE, 0);
     g_object_set (todo_label, "xalign", 0.0, "yalign", 0.5, NULL);
     sw = GTK_SCROLLED_WINDOW (gtk_scrolled_window_new (NULL, NULL));
     gtk_scrolled_window_set_policy (sw, GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
     gtk_scrolled_window_set_shadow_type (sw, GTK_SHADOW_NONE);
     g_object_set (sw, "vexpand", TRUE, NULL);
-    gtk_grid_attach_next_to (GTK_GRID (self->todo_box),
-                             GTK_WIDGET (sw), NULL, GTK_POS_BOTTOM, 1, 1);
-    self->todo_rows_box = gtk_grid_new ();
+    gtk_box_pack_start (GTK_BOX (self->todo_box),  GTK_WIDGET (sw), FALSE,
+                        FALSE, 0);
+    self->todo_rows_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 5);
     gtk_container_add (GTK_CONTAINER (sw), self->todo_rows_box);
 }
 
@@ -581,8 +580,7 @@ static void orage_window_next_add_info_box (OrageWindowNext *self)
     GDateTime *gdt_tmp;
 
     gdt = g_date_time_ref (self->selected_date);
-
-    self->event_box = gtk_grid_new ();
+    self->event_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 5);
     g_object_set (self->event_box, "vexpand", TRUE,
                                    "valign", GTK_ALIGN_FILL,
                                    NULL);
@@ -618,15 +616,15 @@ static void orage_window_next_add_info_box (OrageWindowNext *self)
 
     g_date_time_unref (gdt);
     g_object_set (event_label, "xalign", 0.0, "yalign", 0.5, NULL);
-    gtk_grid_attach_next_to (GTK_GRID (self->event_box),
-                             event_label, NULL, GTK_POS_BOTTOM, 1, 1);
+    gtk_box_pack_start (GTK_BOX (self->event_box), event_label, FALSE, FALSE,
+                        0);
     sw = GTK_SCROLLED_WINDOW (gtk_scrolled_window_new (NULL, NULL));
     gtk_scrolled_window_set_policy (sw, GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
     gtk_scrolled_window_set_shadow_type (sw, GTK_SHADOW_NONE);
     g_object_set (sw, "expand", TRUE, NULL);
-    gtk_grid_attach_next_to (GTK_GRID (self->event_box),
-                             GTK_WIDGET (sw), NULL, GTK_POS_BOTTOM, 1, 1);
-    self->event_rows_box = gtk_grid_new ();
+    gtk_box_pack_start (GTK_BOX (self->event_box),  GTK_WIDGET (sw), FALSE,
+                        FALSE, 0);
+    self->event_rows_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 5);
     gtk_container_add (GTK_CONTAINER (sw), self->event_rows_box);
 }
 
@@ -682,13 +680,23 @@ static void todo_clicked (GtkWidget *widget, GdkEventButton *event,
     }
 }
 
-static void add_info_row (xfical_appt *appt, GtkGrid *parentBox,
+static void add_info_row (xfical_appt *appt, GtkBox *parent_box,
                           const gboolean todo)
 {
-    GtkWidget *ev, *label;
-    gchar *tip, *tmp, *tmp_title, *tmp_note;
-    gchar *tip_title, *tip_location, *tip_note;
-    char  *s_time, *s_timeonly, *e_time, *c_time, *na;
+    GtkWidget *ev;
+    GtkWidget *label;
+    gchar *tip;
+    gchar *tmp;
+    gchar *tmp_title;
+    gchar *tmp_note;
+    gchar *tip_title;
+    gchar *tip_location;
+    gchar *tip_note;
+    char  *s_time;
+    char  *s_timeonly;
+    char  *e_time;
+    char  *c_time;
+    char  *na;
     GDateTime *today;
     GDateTime *gdt_end_time;
 
@@ -733,7 +741,7 @@ static void add_info_row (xfical_appt *appt, GtkGrid *parentBox,
                          NULL);
 
     gtk_container_add (GTK_CONTAINER (ev), label);
-    gtk_grid_attach_next_to (parentBox, ev, NULL, GTK_POS_BOTTOM, 1, 1);
+    gtk_box_pack_start (parent_box, ev, FALSE, FALSE, 0);
     g_object_set_data_full (G_OBJECT (ev), "UID", g_strdup (appt->uid), g_free);
     g_signal_connect (ev, "button-press-event", G_CALLBACK (todo_clicked),
                       NULL);
@@ -822,7 +830,7 @@ static void add_info_row (xfical_appt *appt, GtkGrid *parentBox,
 static void info_process (gpointer a, gpointer pbox)
 {
     xfical_appt *appt = (xfical_appt *)a;
-    GtkGrid *box= GTK_GRID (pbox);
+    GtkBox *box= GTK_BOX (pbox);
     OrageApplication *app = ORAGE_APPLICATION (g_application_get_default ());
     OrageWindowNext *window = ORAGE_WINDOW_NEXT (orage_application_get_window (app));
     gboolean todo;
@@ -1014,7 +1022,8 @@ static void orage_window_next_init (OrageWindowNext *self)
 
 #if 0
     revealer = gtk_revealer_new ();
-    gtk_revealer_set_transition_type (GTK_REVEALER (revealer), GTK_REVEALER_TRANSITION_TYPE_SLIDE_DOWN);
+    gtk_revealer_set_transition_type (GTK_REVEALER (revealer),
+                                      GTK_REVEALER_TRANSITION_TYPE_SLIDE_DOWN);
     gtk_revealer_set_transition_duration (GTK_REVEALER (revealer), 300);
     gtk_box_pack_start (main_box, revealer, FALSE, FALSE, 0);
     content_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 4);
