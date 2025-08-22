@@ -90,10 +90,10 @@ struct _OrageWindowNext
     GtkWidget *next_button;
 
     GtkWidget *todo_box;
-    GtkWidget *mTodo_rows_vbox;
+    GtkWidget *todo_rows_box;
 
     GtkWidget *event_box;
-    GtkWidget *mEvent_rows_vbox;
+    GtkWidget *event_rows_box;
 };
 
 static void orage_window_next_constructed (GObject *object);
@@ -566,8 +566,8 @@ static void orage_window_next_add_todo_box (OrageWindowNext *self)
     g_object_set (sw, "vexpand", TRUE, NULL);
     gtk_grid_attach_next_to (GTK_GRID (self->todo_box),
                              GTK_WIDGET (sw), NULL, GTK_POS_BOTTOM, 1, 1);
-    self->mTodo_rows_vbox = gtk_grid_new ();
-    gtk_container_add (GTK_CONTAINER (sw), self->mTodo_rows_vbox);
+    self->todo_rows_box = gtk_grid_new ();
+    gtk_container_add (GTK_CONTAINER (sw), self->todo_rows_box);
 }
 
 static void orage_window_next_add_info_box (OrageWindowNext *self)
@@ -624,8 +624,8 @@ static void orage_window_next_add_info_box (OrageWindowNext *self)
     g_object_set (sw, "expand", TRUE, NULL);
     gtk_grid_attach_next_to (GTK_GRID (self->event_box),
                              GTK_WIDGET (sw), NULL, GTK_POS_BOTTOM, 1, 1);
-    self->mEvent_rows_vbox = gtk_grid_new ();
-    gtk_container_add (GTK_CONTAINER (sw), self->mEvent_rows_vbox);
+    self->event_rows_box = gtk_grid_new ();
+    gtk_container_add (GTK_CONTAINER (sw), self->event_rows_box);
 }
 
 static void insert_rows (GList **list, GDateTime *gdt, xfical_type ical_type,
@@ -698,8 +698,9 @@ static void add_info_row (xfical_appt *appt, GtkGrid *parentBox,
     today = g_date_time_new_now_local ();
     if (todo)
     {
-        e_time = appt->use_due_time ? orage_gdatetime_to_i18_time (appt->endtimecur, appt->allDay)
-                                    : g_strdup (s_time);
+        e_time = appt->use_due_time
+               ? orage_gdatetime_to_i18_time (appt->endtimecur, appt->allDay)
+               : g_strdup (s_time);
         tmp = g_strdup_printf (" %s  %s", e_time, tmp_title);
         g_free (e_time);
     }
@@ -782,13 +783,16 @@ static void add_info_row (xfical_appt *appt, GtkGrid *parentBox,
     if (todo)
     {
         na = _("Never");
-        e_time = appt->use_due_time ? orage_gdatetime_to_i18_time (appt->endtimecur, appt->allDay)
-                                    : g_strdup (na);
-        c_time = appt->completed && appt->completedtime ? orage_gdatetime_to_i18_time (appt->completedtime, appt->allDay)
-                                                        : g_strdup (na);
+        e_time = appt->use_due_time
+               ? orage_gdatetime_to_i18_time (appt->endtimecur, appt->allDay)
+               : g_strdup (na);
+        c_time = (appt->completed && appt->completedtime)
+               ? orage_gdatetime_to_i18_time (appt->completedtime, appt->allDay)
+               : g_strdup (na);
 
-        tip = g_strdup_printf (_("Title: %s\n%s Start:\t%s\n Due:\t%s\n Done:\t%s%s"),
-                               tip_title, tip_location, s_time, e_time, c_time, tip_note);
+        tip = g_strdup_printf (
+            _("Title: %s\n%s Start:\t%s\n Due:\t%s\n Done:\t%s%s"),
+            tip_title, tip_location, s_time, e_time, c_time, tip_note);
 
         g_free (c_time);
     }
@@ -797,7 +801,8 @@ static void add_info_row (xfical_appt *appt, GtkGrid *parentBox,
         /* It is event. */
         e_time = orage_gdatetime_to_i18_time (appt->endtimecur, appt->allDay);
         tip = g_strdup_printf (_("Title: %s\n%s Start:\t%s\n End:\t%s%s"),
-                               tip_title, tip_location, s_time, e_time, tip_note);
+                               tip_title, tip_location, s_time, e_time,
+                               tip_note);
     }
 
     gtk_widget_set_tooltip_markup (ev, tip);
@@ -820,7 +825,7 @@ static void info_process (gpointer a, gpointer pbox)
     OrageWindowNext *window = ORAGE_WINDOW_NEXT (orage_application_get_window (app));
     gboolean todo;
 
-    todo = (pbox == window->mTodo_rows_vbox) ? TRUE : FALSE;
+    todo = (pbox == window->todo_rows_box) ? TRUE : FALSE;
 
     if (appt->priority < g_par.priority_list_limit)
         add_info_row (appt, box, todo);
@@ -861,7 +866,7 @@ static void build_mainbox_todo_info (OrageWindowNext *window)
         gtk_widget_destroy (window->todo_box);
         orage_window_next_add_todo_box (window);
         todo_list = g_list_sort (todo_list, todo_order);
-        g_list_foreach (todo_list, info_process, window->mTodo_rows_vbox);
+        g_list_foreach (todo_list, info_process, window->todo_rows_box);
         g_list_free (todo_list);
         gtk_widget_show_all (window->todo_box);
     }
@@ -901,7 +906,7 @@ static void build_mainbox_event_info (OrageWindowNext *window)
         gtk_widget_destroy (window->event_box);
         orage_window_next_add_info_box (window);
         event_list = g_list_sort (event_list, event_order);
-        g_list_foreach (event_list, info_process, window->mEvent_rows_vbox);
+        g_list_foreach (event_list, info_process, window->event_rows_box);
         g_list_free (event_list);
         gtk_widget_show_all (window->event_box);
     }

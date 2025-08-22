@@ -1955,7 +1955,7 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
     else if (icalcomponent_isa(c) == ICAL_VJOURNAL_COMPONENT)
         appt->type = XFICAL_TYPE_JOURNAL;
     else {
-        g_warning ("%s: Unknown component", G_STRFUNC);
+        g_warning ("%s: unknown component", G_STRFUNC);
         return(FALSE);
     }
         /*********** Defaults ***********/
@@ -2058,7 +2058,7 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
                 text = icalproperty_get_value_as_string(p);
                 if (strlen(text) > 16)
                 {
-                    g_message ("%s: invalid EXDATE %s. Ignoring",
+                    g_warning ("%s: invalid EXDATE %s. Ignoring",
                                G_STRFUNC, text);
                 }
                 else {
@@ -2081,7 +2081,7 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
                     text = icalproperty_get_value_as_string(p);
                     if (strlen(text) > 16)
                     {
-                        g_message ("%s: invalid RDATE %s. Ignoring", G_STRFUNC,
+                        g_warning ("%s: invalid RDATE %s. Ignoring", G_STRFUNC,
                                    text);
                     }
                     else {
@@ -2104,7 +2104,7 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
             case ICAL_RECURRENCEID_PROPERTY:
                 break;
             default:
-                g_message ("%s: unknown property %s", G_STRFUNC,
+                g_warning ("%s: unknown property %s", G_STRFUNC,
                            icalproperty_get_property_name(p));
                 break;
         }
