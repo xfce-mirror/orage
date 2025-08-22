@@ -102,6 +102,8 @@ static void orage_window_next_finalize (GObject *object);
 static void orage_window_next_interface_init (OrageWindowInterface *interface);
 static void orage_window_next_restore_geometry (OrageWindowNext *window);
 
+static void orage_window_next_add_days (OrageWindowNext *window, gint days);
+
 static void on_new_activated (OrageWindowNext *window);
 
 #ifdef ENABLE_SYNC
@@ -290,20 +292,52 @@ static gboolean on_key_press (GtkWidget *widget, GdkEventKey *event,
                               G_GNUC_UNUSED gpointer user_data)
 {
     OrageWindowNext *self = ORAGE_WINDOW_NEXT (widget);
+    gboolean alt_down = (event->state & GDK_MOD1_MASK) != 0;
+    gboolean result = FALSE;
 
     switch (event->keyval)
     {
         case GDK_KEY_Left:
-            gtk_button_clicked (GTK_BUTTON (self->back_button));
-            return TRUE;
+            if (alt_down)
+            {
+                gtk_button_clicked (GTK_BUTTON (self->back_button));
+                result = TRUE;
+            }
+            else
+            {
+                orage_window_next_add_days (self, -1);
+                result = TRUE;
+            }
+            break;
 
         case GDK_KEY_Right:
-            gtk_button_clicked (GTK_BUTTON (self->next_button));
-            return TRUE;
+            if (alt_down)
+            {
+                gtk_button_clicked (GTK_BUTTON (self->next_button));
+                result = TRUE;
+            }
+            else
+            {
+                orage_window_next_add_days (self, 1);
+                result = TRUE;
+            }
+            break;
+
+        case GDK_KEY_Up:
+            orage_window_next_add_days (self, -7);
+            result = TRUE;
+            break;
+
+        case GDK_KEY_Down:
+            orage_window_next_add_days (self, 7);
+            result = TRUE;
+            break;
 
         default:
-            return FALSE;
+            break;
     }
+
+    return FALSE;
 }
 
 static void on_date_selected (G_GNUC_UNUSED OrageMonthView *view,
@@ -491,6 +525,32 @@ static GDateTime *orage_window_next_get_last_date (OrageWindowNext *window)
     {
         /* Requested page handinling is not yet implemented. */
         g_return_val_if_reached (g_date_time_new_now_local ());
+    }
+}
+
+static void orage_window_next_add_days (OrageWindowNext *window,
+                                        const gint days)
+{
+    OrageWindow *gen_window;
+    GDateTime *gdt;
+    const gchar *visible_name =
+        gtk_stack_get_visible_child_name (window->stack_view);
+
+    if (g_strcmp0 (MONTH_PAGE, visible_name) == 0)
+    {
+        gdt = window->selected_date;
+        window->selected_date = g_date_time_add_days (gdt, days);
+        g_assert (window->selected_date != NULL);
+        g_date_time_unref (gdt);
+        gen_window = ORAGE_WINDOW (window);
+        orage_month_view_select_date (window->month_view,
+                                      window->selected_date);
+        orage_window_next_build_events (gen_window);
+    }
+    else
+    {
+        /* Requested page handinling is not yet implemented. */
+        g_return_if_reached ();
     }
 }
 
