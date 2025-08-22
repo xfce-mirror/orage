@@ -370,7 +370,7 @@ static void orage_month_view_init (OrageMonthView *self)
     self->first_weekday = MONDAY;
     self->first_weekday2 = self->first_weekday;
 
-    date_group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
+    date_group = gtk_size_group_new (GTK_SIZE_GROUP_BOTH);
 
     self->main_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 2);
 
