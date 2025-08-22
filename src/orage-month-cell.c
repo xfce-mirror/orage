@@ -298,6 +298,24 @@ void orage_month_cell_set_selected (OrageMonthCell *self,
     gtk_widget_queue_resize (GTK_WIDGET (self));
 }
 
+void orage_month_cell_set_css_last (OrageMonthCell *self,
+                                    const gboolean last_row,
+                                    const gboolean last_column)
+{
+    GtkStyleContext *context;
+
+    if (last_row || last_column)
+    {
+        context = gtk_widget_get_style_context (GTK_WIDGET (self));
+
+        if (last_row)
+            gtk_style_context_add_class (context, "last-row");
+
+        if (last_column)
+            gtk_style_context_add_class (context, "last-column");
+    }
+}
+
 void orage_month_cell_add_widget (OrageMonthCell *self, GtkWidget *widget)
 {
     g_return_if_fail (ORAGE_IS_MONTH_CELL (self));

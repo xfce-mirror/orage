@@ -177,9 +177,7 @@ static void orage_month_view_update_month_cells (OrageMonthView *self)
         for (col = 0; col < 7; col++)
         {
             cell = self->month_cell[row][col];
-
-            cell_date = g_date_time_add_days (gdt,
-                                              row * 7 + col - offset);
+            cell_date = g_date_time_add_days (gdt, row * 7 + col - offset);
             cell_month = g_date_time_get_month (cell_date);
             orage_month_cell_clear (cell);
             orage_month_cell_set_date (cell, cell_date);
@@ -418,6 +416,8 @@ static void orage_month_view_init (OrageMonthView *self)
         for (col = 1; col < 8; col++)
         {
             cell = orage_month_cell_new ();
+            orage_month_cell_set_css_last (ORAGE_MONTH_CELL (cell),
+                                           (row == 5), (col == 7));
             g_object_set (cell, "hexpand", TRUE,
                                 "vexpand", TRUE,
                                 "halign", GTK_ALIGN_FILL,

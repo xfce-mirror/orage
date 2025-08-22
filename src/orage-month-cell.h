@@ -57,8 +57,11 @@ void orage_month_cell_set_different_month (OrageMonthCell *self,
 void orage_month_cell_set_highlight (OrageMonthCell *self,
                                      gboolean highlighted);
 
-void orage_month_cell_set_selected (OrageMonthCell *self,
-                                    const gboolean selected);
+void orage_month_cell_set_css_last (OrageMonthCell *self,
+                                    gboolean last_row,
+                                    gboolean last_column);
+
+void orage_month_cell_set_selected (OrageMonthCell *self, gboolean selected);
 
 /** Adds an extra widget in the given month cell for displaying additional
  *  information. Widget will be managed by the month cell and should
