@@ -60,6 +60,7 @@ enum
     SIGNAL_DATE_SELECTED,
     SIGNAL_DATE_SELECTED_RIGHT_CLICKED,
     SIGNAL_DATE_SELECTED_DOUBLE_CLICKED,
+    SIGNAL_RELOAD_REQUESTED,
     N_SIGNALS
 };
 
@@ -187,6 +188,8 @@ static void orage_month_view_update_month_cells (OrageMonthView *self)
     }
 
     g_date_time_unref (gdt);
+
+    g_signal_emit (self, signals[SIGNAL_RELOAD_REQUESTED], 0);
 }
 
 static void orage_month_view_update_week_nr_cells (OrageMonthView *self)
@@ -342,6 +345,14 @@ static void orage_month_view_class_init (OrageMonthViewClass *klass)
                           g_cclosure_marshal_VOID__OBJECT,
                           G_TYPE_NONE, 1,
                           ORAGE_MONTH_CELL_TYPE);
+
+    signals[SIGNAL_RELOAD_REQUESTED] =
+            g_signal_new ("reload-requested",
+                          G_TYPE_FROM_CLASS (klass),
+                          G_SIGNAL_RUN_FIRST,
+                          0, NULL, NULL,
+                          g_cclosure_marshal_VOID__VOID,
+                          G_TYPE_NONE, 0);
 
     properties[MONTH_VIEW_FIRST_DAY_OF_WEEK] =
             g_param_spec_int (MONTH_VIEW_FIRST_DAY_OF_WEEK_PROPERTY,

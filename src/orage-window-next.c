@@ -299,28 +299,20 @@ static gboolean on_key_press (GtkWidget *widget, GdkEventKey *event,
     {
         case GDK_KEY_Left:
             if (alt_down)
-            {
                 gtk_button_clicked (GTK_BUTTON (self->back_button));
-                result = TRUE;
-            }
             else
-            {
                 orage_window_next_add_days (self, -1);
-                result = TRUE;
-            }
+
+            result = TRUE;
             break;
 
         case GDK_KEY_Right:
             if (alt_down)
-            {
                 gtk_button_clicked (GTK_BUTTON (self->next_button));
-                result = TRUE;
-            }
             else
-            {
                 orage_window_next_add_days (self, 1);
-                result = TRUE;
-            }
+
+            result = TRUE;
             break;
 
         case GDK_KEY_Up:
@@ -392,6 +384,13 @@ static void on_date_selected_double_clicked (G_GNUC_UNUSED OrageMonthView *view,
         (void)create_el_win (gdt);
 
     g_date_time_unref (gdt);
+}
+
+static void on_month_reload_requested (G_GNUC_UNUSED OrageMonthView *view,
+                                       gpointer user_data)
+{
+    g_debug ("view was reloaded");
+    orage_window_next_mark_appointments (ORAGE_WINDOW (user_data));
 }
 
 static void cb_update_month_events (void *caller_param,
@@ -540,7 +539,6 @@ static void orage_window_next_add_days (OrageWindowNext *window,
     {
         gdt = window->selected_date;
         window->selected_date = g_date_time_add_days (gdt, days);
-        g_assert (window->selected_date != NULL);
         g_date_time_unref (gdt);
         gen_window = ORAGE_WINDOW (window);
         orage_month_view_select_date (window->month_view,
@@ -1112,6 +1110,8 @@ static void orage_window_next_init (OrageWindowNext *self)
                       G_CALLBACK (on_date_selected_right_clicked), self);
     g_signal_connect (self->month_view, "date-selected-double-clicked",
                       G_CALLBACK (on_date_selected_double_clicked), NULL);
+    g_signal_connect (self->month_view, "reload-requested",
+                      G_CALLBACK (on_month_reload_requested), self);
 
     g_signal_connect (self, "key-press-event", G_CALLBACK (on_key_press), NULL);
 }
