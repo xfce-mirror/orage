@@ -387,7 +387,6 @@ static void on_date_selected_double_clicked (G_GNUC_UNUSED OrageMonthView *view,
 static void on_month_reload_requested (G_GNUC_UNUSED OrageMonthView *view,
                                        gpointer user_data)
 {
-    g_debug ("view was reloaded");
     orage_window_next_mark_appointments (ORAGE_WINDOW (user_data));
 }
 

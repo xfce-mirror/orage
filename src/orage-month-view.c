@@ -480,28 +480,38 @@ void orage_month_view_mark_date (OrageMonthView *self, GDateTime *gdt)
     OrageMonthCell *cell;
     GDateTime *gdt_tmp;
     gboolean selected;
+    gboolean is_differnt_month;
+    gboolean emit_reloaded_signal;
 
     if (orage_gdatetime_compare_date (self->date, gdt) == 0)
         return;
 
-    if (orage_gdatetime_compare_year_month (self->date, gdt))
-        orage_month_view_set_month (self, gdt);
-    else
-    {
-        g_date_time_unref (self->date);
-        self->date = g_date_time_ref (gdt);
+    is_differnt_month = (orage_gdatetime_compare_year_month (self->date, gdt) != 0);
 
-        for (row = 0; row < 6; row++)
+    g_date_time_unref (self->date);
+    self->date = g_date_time_ref (gdt);
+
+    if (is_differnt_month)
+    {
+        orage_month_view_update_variable_fields (self);
+        emit_reloaded_signal = TRUE;
+    }
+    else
+        emit_reloaded_signal = FALSE;
+
+    for (row = 0; row < 6; row++)
+    {
+        for (col = 0; col < 7; col++)
         {
-            for (col = 0; col < 7; col++)
-            {
-                cell = self->month_cell[row][col];
-                gdt_tmp = orage_month_cell_get_date (cell);
-                selected = (orage_gdatetime_compare_date (gdt_tmp, gdt) == 0);
-                orage_month_cell_set_selected (cell, selected);
-            }
+            cell = self->month_cell[row][col];
+            gdt_tmp = orage_month_cell_get_date (cell);
+            selected = (orage_gdatetime_compare_date (gdt_tmp, gdt) == 0);
+            orage_month_cell_set_selected (cell, selected);
         }
     }
+    
+    if (emit_reloaded_signal)
+        g_signal_emit (self, signals[SIGNAL_RELOAD_REQUESTED], 0);
 }
 
 GDateTime *orage_month_view_get_first_date (OrageMonthView *self)
