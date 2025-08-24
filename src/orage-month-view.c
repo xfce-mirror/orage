@@ -460,7 +460,7 @@ GtkWidget *orage_month_view_new (const FirstDayOfWeek first_day)
                          NULL);
 }
 
-void orage_month_view_select_month (OrageMonthView *self, GDateTime *gdt)
+void orage_month_view_set_month (OrageMonthView *self, GDateTime *gdt)
 {
     if (orage_gdatetime_compare_year_month (self->date, gdt) == 0)
         return;
@@ -473,7 +473,7 @@ void orage_month_view_select_month (OrageMonthView *self, GDateTime *gdt)
     g_signal_emit (self, signals[SIGNAL_RELOAD_REQUESTED], 0);
 }
 
-void orage_month_view_select_date (OrageMonthView *self, GDateTime *gdt)
+void orage_month_view_mark_date (OrageMonthView *self, GDateTime *gdt)
 {
     guint row;
     guint col;
@@ -485,7 +485,7 @@ void orage_month_view_select_date (OrageMonthView *self, GDateTime *gdt)
         return;
 
     if (orage_gdatetime_compare_year_month (self->date, gdt))
-        orage_month_view_select_month (self, gdt);
+        orage_month_view_set_month (self, gdt);
     else
     {
         g_date_time_unref (self->date);

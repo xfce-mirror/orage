@@ -254,7 +254,7 @@ static void on_next_clicked (G_GNUC_UNUSED GtkButton *button,
         nw->selected_date = g_date_time_add_months (nw->selected_date, 1);
         g_date_time_unref (gdt);
 
-        orage_month_view_select_month (nw->month_view, nw->selected_date);
+        orage_month_view_set_month (nw->month_view, nw->selected_date);
     }
     else
     {
@@ -277,7 +277,7 @@ static void on_back_clicked (G_GNUC_UNUSED GtkButton *button,
         nw->selected_date = g_date_time_add_months (nw->selected_date, -1);
         g_date_time_unref (gdt);
 
-        orage_month_view_select_month (nw->month_view, nw->selected_date);
+        orage_month_view_set_month (nw->month_view, nw->selected_date);
     }
     else
     {
@@ -539,8 +539,7 @@ static void orage_window_next_add_days (OrageWindowNext *window,
         window->selected_date = g_date_time_add_days (gdt, days);
         g_date_time_unref (gdt);
         gen_window = ORAGE_WINDOW (window);
-        orage_month_view_select_date (window->month_view,
-                                      window->selected_date);
+        orage_month_view_mark_date (window->month_view, window->selected_date);
         orage_window_next_build_events (gen_window);
     }
     else
@@ -1260,22 +1259,19 @@ void orage_window_next_select_today (OrageWindow *window)
 
 void orage_window_next_select_date (OrageWindow *window, GDateTime *gdt)
 {
-    OrageWindowNext *nxtwindow;
+    OrageWindowNext *nw;
     const gchar *visible_name;
 
     g_return_if_fail (window != NULL);
 
-    nxtwindow = ORAGE_WINDOW_NEXT (window);
-    visible_name = gtk_stack_get_visible_child_name (nxtwindow->stack_view);
+    nw = ORAGE_WINDOW_NEXT (window);
+    visible_name = gtk_stack_get_visible_child_name (nw->stack_view);
 
-    g_date_time_unref (nxtwindow->selected_date);
-    nxtwindow->selected_date = g_date_time_ref (gdt);
+    g_date_time_unref (nw->selected_date);
+    nw->selected_date = g_date_time_ref (gdt);
 
     if (g_strcmp0 (MONTH_PAGE, visible_name) == 0)
-    {
-        orage_month_view_select_date (nxtwindow->month_view,
-                                      nxtwindow->selected_date);
-    }
+        orage_month_view_mark_date (nw->month_view, nw->selected_date);
     else
     {
         /* Requested page handinling is not yet implemented. */
