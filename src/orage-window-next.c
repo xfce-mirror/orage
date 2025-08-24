@@ -255,7 +255,6 @@ static void on_next_clicked (G_GNUC_UNUSED GtkButton *button,
         g_date_time_unref (gdt);
 
         orage_month_view_select_month (nw->month_view, nw->selected_date);
-        orage_window_next_mark_appointments (ORAGE_WINDOW (user_data));
     }
     else
     {
@@ -279,7 +278,6 @@ static void on_back_clicked (G_GNUC_UNUSED GtkButton *button,
         g_date_time_unref (gdt);
 
         orage_month_view_select_month (nw->month_view, nw->selected_date);
-        orage_window_next_mark_appointments (ORAGE_WINDOW (user_data));
     }
     else
     {

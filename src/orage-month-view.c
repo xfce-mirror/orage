@@ -469,6 +469,8 @@ void orage_month_view_select_month (OrageMonthView *self, GDateTime *gdt)
     self->date = g_date_time_ref (gdt);
 
     orage_month_view_update_variable_fields (self);
+
+    g_signal_emit (self, signals[SIGNAL_RELOAD_REQUESTED], 0);
 }
 
 void orage_month_view_select_date (OrageMonthView *self, GDateTime *gdt)
