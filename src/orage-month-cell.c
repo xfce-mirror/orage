@@ -54,7 +54,9 @@ G_DEFINE_TYPE (OrageMonthCell, orage_month_cell, GTK_TYPE_BOX)
 
 static void remove_children_except_first (GtkWidget *box)
 {
-    GList *children, *iter;
+    GtkWidget *child;
+    GList *children;
+    GList *iter;
     gboolean first = TRUE;
 
     g_return_if_fail (GTK_IS_BOX (box));
@@ -62,15 +64,12 @@ static void remove_children_except_first (GtkWidget *box)
     children = gtk_container_get_children (GTK_CONTAINER (box));
     for (iter = children; iter != NULL; iter = iter->next)
     {
-        GtkWidget *child = GTK_WIDGET (iter->data);
+        child = GTK_WIDGET (iter->data);
 
         if (first)
-        {
             first = FALSE;
-            continue;
-        }
-
-        gtk_container_remove (GTK_CONTAINER (box), child);
+        else
+            gtk_container_remove (GTK_CONTAINER (box), child);
     }
 
     g_list_free (children);

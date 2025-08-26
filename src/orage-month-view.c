@@ -157,6 +157,18 @@ static void orage_month_view_update_month_label (OrageMonthView *self)
     g_free (final_text);
 }
 
+/** Updates all month cells in the month view grid to reflect the correct
+ *  calendar dates for the currently selected month.
+ *
+ *  This function recalculates the dates for each visible calendar cell in a 6×7
+ *  grid (6 rows, 7 columns). The grid starts from the first day of the month
+ *  (as returned by orage_month_view_get_first_day_of_month()) and fills in all
+ *  cells including those belonging to the previous or next month, so that the
+ *  grid always covers full weeks.
+ *
+ *  This function is normally called internally whenever the month view needs to
+ *  be redrawn, for example after the user changes the displayed month.
+ */
 static void orage_month_view_update_month_cells (OrageMonthView *self)
 {
     OrageMonthCell *cell;
@@ -188,10 +200,34 @@ static void orage_month_view_update_month_cells (OrageMonthView *self)
     }
 
     g_date_time_unref (gdt);
-
-    g_signal_emit (self, signals[SIGNAL_RELOAD_REQUESTED], 0);
 }
 
+/**
+ * orage_month_view_constructed:
+ * @object: a newly created #OrageMonthView instance
+ *
+ * Instance initialization hook for #OrageMonthView.
+ *
+ * This function is called automatically by the GObject construction
+ * process after all construction properties have been set. It is
+ * responsible for finalizing the widget’s initialization so that the
+ * object is in a consistent and usable state.
+ *
+ * The following steps are performed:
+ * - Update the localized day names shown in the month view header.
+ * - Update internal variable fields that depend on construction-time
+ *   properties.
+ * - Chain up to the parent class implementation to complete GObject
+ *   construction.
+ *
+ * After chaining up to the parent’s #GObjectClass.constructed() method,
+ * it is safe to emit signals (such as #OrageMonthView::reload-requested)
+ * because the object and all of its base classes are guaranteed to be
+ * fully constructed.
+ *
+ * This method should not be called directly; it is invoked as part of
+ * the standard GObject lifecycle.
+ */
 static void orage_month_view_update_week_nr_cells (OrageMonthView *self)
 {
     gchar *cell_text;
@@ -290,6 +326,23 @@ static void orage_month_view_set_property (GObject *object,
     }
 }
 
+/** orage_month_view_constructed:
+ *  @object: a newly created #OrageMonthView instance
+ *
+ *  Instance initialization hook for #OrageMonthView.
+ *
+ *  This function is called automatically by the GObject construction process
+ *  after all construction properties have been set. It is responsible for
+ *  finalizing the widget’s initialization so that the object is in a consistent
+ *  and usable state.
+ *
+ *  After chaining up to the parent’s #GObjectClass.constructed() method, it is
+ *  safe to emit signals (such as #OrageMonthView::reload-requested) because the
+ *  object and all of its base classes are guaranteed to be fully constructed.
+ *
+ *  This method should not be called directly; it is invoked as part of the
+ *  standard GObject lifecycle.
+ */
 static void orage_month_view_constructed (GObject *object)
 {
     OrageMonthView *self = (OrageMonthView *)object;
@@ -298,6 +351,8 @@ static void orage_month_view_constructed (GObject *object)
     orage_month_view_update_variable_fields (self);
 
     G_OBJECT_CLASS (orage_month_view_parent_class)->constructed (object);
+
+    g_signal_emit (self, signals[SIGNAL_RELOAD_REQUESTED], 0);
 }
 
 static void orage_month_view_finalize (GObject *object)
@@ -480,24 +535,18 @@ void orage_month_view_mark_date (OrageMonthView *self, GDateTime *gdt)
     OrageMonthCell *cell;
     GDateTime *gdt_tmp;
     gboolean selected;
-    gboolean is_differnt_month;
-    gboolean emit_reloaded_signal;
+    gboolean month_changed;
 
     if (orage_gdatetime_compare_date (self->date, gdt) == 0)
         return;
 
-    is_differnt_month = (orage_gdatetime_compare_year_month (self->date, gdt) != 0);
+    month_changed = (orage_gdatetime_compare_year_month (self->date, gdt) != 0);
 
     g_date_time_unref (self->date);
     self->date = g_date_time_ref (gdt);
 
-    if (is_differnt_month)
-    {
+    if (month_changed)
         orage_month_view_update_variable_fields (self);
-        emit_reloaded_signal = TRUE;
-    }
-    else
-        emit_reloaded_signal = FALSE;
 
     for (row = 0; row < 6; row++)
     {
@@ -510,7 +559,7 @@ void orage_month_view_mark_date (OrageMonthView *self, GDateTime *gdt)
         }
     }
     
-    if (emit_reloaded_signal)
+    if (month_changed)
         g_signal_emit (self, signals[SIGNAL_RELOAD_REQUESTED], 0);
 }
 
