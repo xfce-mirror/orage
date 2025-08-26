@@ -82,11 +82,11 @@ OrageTrayIcon > row-3{
    background-color: transparent;
 }
 
-#orage-month-cell.last-row {
+#orage-month-cell.last-row, .orage-month-header-last-row {
    border-width: 1px 0 1px 1px;
 }
 
-#orage-month-cell.last-column {
+#orage-month-cell.last-column, .orage-month-header-last-column {
    border-width: 1px 1px 0 1px;
 }
 

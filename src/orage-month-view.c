@@ -28,6 +28,8 @@
 
 #define MONTH_VIEW_FIRST_DAY_OF_WEEK_PROPERTY "fist-day-of-week"
 #define CSS_MONTH_HEADER "orage-month-header"
+#define CSS_MONTH_HEADER_LAST_ROW "orage-month-header-last-row"
+#define CSS_MONTH_HEADER_LAST_COLUMN "orage-month-header-last-column"
 
 struct _OrageMonthView
 {
@@ -423,6 +425,7 @@ static void orage_month_view_class_init (OrageMonthViewClass *klass)
 
 static void orage_month_view_init (OrageMonthView *self)
 {
+    GtkStyleContext *style_context;
     GtkSizeGroup *date_group;
     GtkWidget *cell;
     guint row;
@@ -462,8 +465,13 @@ static void orage_month_view_init (OrageMonthView *self)
         cell = gtk_label_new (NULL);
         g_object_set (cell, "hexpand", TRUE, "halign", GTK_ALIGN_FILL, NULL);
         gtk_grid_attach (GTK_GRID (self->month_grid), cell, col + 1, 0, 1, 1);
-        gtk_style_context_add_class (gtk_widget_get_style_context (cell),
-                                     CSS_MONTH_HEADER);
+        style_context = gtk_widget_get_style_context (cell);
+        gtk_style_context_add_class (style_context, CSS_MONTH_HEADER);
+        if (col == 6)
+        {
+            gtk_style_context_add_class (style_context,
+                                         CSS_MONTH_HEADER_LAST_COLUMN);
+        }
         gtk_size_group_add_widget (date_group, cell);
         self->label_weekday[col] = cell;
     }
@@ -474,8 +482,14 @@ static void orage_month_view_init (OrageMonthView *self)
         /* Setup week numbers. */
         cell = gtk_label_new (NULL);
         g_object_set (cell, "vexpand", TRUE, "valign", GTK_ALIGN_FILL, NULL);
-        gtk_style_context_add_class (gtk_widget_get_style_context (cell),
-                                     CSS_MONTH_HEADER);
+        style_context = gtk_widget_get_style_context (cell);
+        gtk_style_context_add_class (style_context, CSS_MONTH_HEADER);
+        if (row == 5)
+        {
+            gtk_style_context_add_class (style_context,
+                                         CSS_MONTH_HEADER_LAST_ROW);
+        }
+
         gtk_grid_attach (GTK_GRID (self->month_grid), cell, 0, row + 1, 1, 1);
         self->label_week_nr[row] = cell;
 
