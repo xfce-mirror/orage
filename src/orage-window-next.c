@@ -621,7 +621,7 @@ static void orage_window_next_update_revealer (OrageWindowNext *self)
     gtk_window_resize (window, 1, 1);
 }
 
-static void orage_window_next_add_todo_box2 (OrageWindowNext *self)
+static void orage_window_next_add_todo_box (OrageWindowNext *self)
 {
     GtkScrolledWindow *sw;
     GtkWidget *todo_label;
@@ -1048,13 +1048,17 @@ static void build_mainbox_event_info (OrageWindowNext *window)
 
     if (event_list)
     {
+#if 1
         gtk_widget_destroy (window->event_box);
         orage_window_next_add_info_box (window);
-        orage_window_next_update_revealer (window);
+#else
+        clear_gtk_box (window->event_rows_box);
+#endif
         event_list = g_list_sort (event_list, event_order);
         g_list_foreach (event_list, info_process, window->event_rows_box);
         g_list_free (event_list);
         gtk_widget_show_all (window->event_box);
+        orage_window_next_update_revealer (window);
     }
     else
         gtk_widget_hide (window->event_box);
@@ -1160,7 +1164,7 @@ static void orage_window_next_init (OrageWindowNext *self)
                         FALSE, FALSE, 0);
     gtk_revealer_set_reveal_child (GTK_REVEALER (revealer), FALSE);
 
-    orage_window_next_add_todo_box2 (self);
+    orage_window_next_add_todo_box (self);
     orage_window_next_add_info_box2 (self);
 
     gtk_widget_show_all (self->main_box);
