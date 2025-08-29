@@ -417,6 +417,19 @@ static void menu_clean (GtkMenu *menu)
     g_list_free (children);
 }
 
+/** Remove all children from GtkBox. */
+static void clear_gtk_box (GtkWidget *box)
+{
+    GList *iter;
+    GList *children;
+
+    children = gtk_container_get_children (GTK_CONTAINER (box));
+    for (iter = children; iter != NULL; iter = g_list_next (iter))
+        gtk_widget_destroy (GTK_WIDGET (iter->data));
+
+    g_list_free (children);
+}
+
 static void orage_window_next_update_file_menu (OrageWindowNext *window,
                                                 GtkWidget *menu)
 {
@@ -595,36 +608,6 @@ static void orage_window_next_add_menubar (OrageWindowNext *self)
     orage_window_next_add_menu (self, ORAGE_WINDOW_ACTION_HELP_MENU,
                                 G_CALLBACK (orage_window_next_update_help_menu));
     gtk_widget_show_all (self->menubar);
-}
-
-__attribute__ ((deprecated))
-static void orage_window_next_add_todo_box (OrageWindowNext *self)
-{
-    GtkScrolledWindow *sw;
-    GtkWidget *todo_label;
-
-    self->todo_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 5);
-    g_object_set (self->todo_box, "vexpand", TRUE,
-                                  "valign", GTK_ALIGN_FILL,
-                                  NULL);
-
-    gtk_box_pack_start (GTK_BOX (self->main_box), GTK_WIDGET (self->todo_box),
-                        FALSE, FALSE, 0);
-
-    todo_label = gtk_label_new (_("To do:"));
-    gtk_style_context_add_class (gtk_widget_get_style_context (todo_label),
-                                 "todo-label");
-
-    gtk_box_pack_start (GTK_BOX (self->todo_box), todo_label, FALSE, FALSE, 0);
-    g_object_set (todo_label, "xalign", 0.0, "yalign", 0.5, NULL);
-    sw = GTK_SCROLLED_WINDOW (gtk_scrolled_window_new (NULL, NULL));
-    gtk_scrolled_window_set_policy (sw, GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
-    gtk_scrolled_window_set_shadow_type (sw, GTK_SHADOW_NONE);
-    g_object_set (sw, "vexpand", TRUE, NULL);
-    gtk_box_pack_start (GTK_BOX (self->todo_box),  GTK_WIDGET (sw), FALSE,
-                        FALSE, 0);
-    self->todo_rows_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 5);
-    gtk_container_add (GTK_CONTAINER (sw), self->todo_rows_box);
 }
 
 static void orage_window_next_update_revealer (OrageWindowNext *self)
@@ -1025,13 +1008,12 @@ static void build_mainbox_todo_info (OrageWindowNext *window)
 
     if (todo_list)
     {
-        gtk_widget_destroy (window->todo_box);
-        orage_window_next_add_todo_box (window);
-        orage_window_next_update_revealer (window);
+        clear_gtk_box (window->todo_rows_box);
         todo_list = g_list_sort (todo_list, todo_order);
         g_list_foreach (todo_list, info_process, window->todo_rows_box);
         g_list_free (todo_list);
         gtk_widget_show_all (window->todo_box);
+        orage_window_next_update_revealer (window);
     }
     else
         gtk_widget_hide (window->todo_box);
