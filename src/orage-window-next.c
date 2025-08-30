@@ -292,7 +292,7 @@ static gboolean on_key_press (GtkWidget *widget, GdkEventKey *event,
 {
     OrageWindowNext *self = ORAGE_WINDOW_NEXT (widget);
     gboolean alt_down = (event->state & GDK_MOD1_MASK) != 0;
-    gboolean result = FALSE;
+    gboolean result;
 
     switch (event->keyval)
     {
@@ -325,10 +325,11 @@ static gboolean on_key_press (GtkWidget *widget, GdkEventKey *event,
             break;
 
         default:
+            result = FALSE;
             break;
     }
 
-    return FALSE;
+    return result;
 }
 
 static void on_date_selected (G_GNUC_UNUSED OrageMonthView *view,
