@@ -85,7 +85,9 @@ struct _OrageWindowNext
     GtkWidget *main_view;
     GtkWidget *main_box;
     OrageMonthView *month_view;
+
     GtkWidget *revealer;
+    GtkWidget *revealer_box;
 
     GtkWidget *back_button;
     GtkWidget *next_button;
@@ -652,7 +654,8 @@ static void orage_window_next_add_todo_box (OrageWindowNext *self)
     GtkWidget *todo_label;
 
     self->todo_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 5);
-    gtk_container_add (GTK_CONTAINER (self->revealer), self->todo_box);
+    gtk_box_pack_start (GTK_BOX (self->revealer_box),  self->todo_box, TRUE,
+                        TRUE, 0);
 
     g_object_set (self->todo_box, "vexpand", TRUE,
                                   "valign", GTK_ALIGN_FILL,
@@ -674,7 +677,6 @@ static void orage_window_next_add_todo_box (OrageWindowNext *self)
     gtk_container_add (GTK_CONTAINER (sw), self->todo_rows_box);
 }
 
-__attribute__ ((deprecated))
 static void orage_window_next_add_info_box (OrageWindowNext *self)
 {
     GtkScrolledWindow *sw;
@@ -685,42 +687,8 @@ static void orage_window_next_add_info_box (OrageWindowNext *self)
     g_object_set (self->event_box, "vexpand", TRUE,
                                    "valign", GTK_ALIGN_FILL,
                                    NULL);
-    gtk_box_pack_start (GTK_BOX (self->main_box), GTK_WIDGET (self->event_box),
-                        FALSE, FALSE, 0);
-    event_label = gtk_label_new (NULL);
-    if (g_par.show_event_days)
-    {
-        event_label_text = create_event_label_text (self->selected_date);
-        gtk_style_context_add_class (gtk_widget_get_style_context (event_label),
-                                     "event-label");
-        gtk_label_set_text (GTK_LABEL (event_label), event_label_text);
-        g_free (event_label_text);
-    }
-
-    g_object_set (event_label, "xalign", 0.0, "yalign", 0.5, NULL);
-    gtk_box_pack_start (GTK_BOX (self->event_box), event_label, FALSE, FALSE,
-                        0);
-    sw = GTK_SCROLLED_WINDOW (gtk_scrolled_window_new (NULL, NULL));
-    gtk_scrolled_window_set_policy (sw, GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
-    gtk_scrolled_window_set_shadow_type (sw, GTK_SHADOW_NONE);
-    g_object_set (sw, "expand", TRUE, NULL);
-    gtk_box_pack_start (GTK_BOX (self->event_box),  GTK_WIDGET (sw), FALSE,
-                        FALSE, 0);
-    self->event_rows_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 5);
-    gtk_container_add (GTK_CONTAINER (sw), self->event_rows_box);
-}
-
-static void orage_window_next_add_info_box2 (OrageWindowNext *self)
-{
-    GtkScrolledWindow *sw;
-    GtkWidget *event_label;
-    gchar *event_label_text;
-
-    self->event_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 5);
-    g_object_set (self->event_box, "vexpand", TRUE,
-                                   "valign", GTK_ALIGN_FILL,
-                                   NULL);
-    gtk_container_add (GTK_CONTAINER (self->revealer), self->event_box);
+    gtk_box_pack_start (GTK_BOX (self->revealer_box),  self->event_box, TRUE,
+                        TRUE, 0);
     event_label = gtk_label_new (NULL);
     self->event_label = event_label;
     if (g_par.show_event_days)
@@ -1010,6 +978,7 @@ static void build_mainbox_event_info (OrageWindowNext *window)
 {
     xfical_type ical_type;
     gchar file_type[8];
+    gchar *text;
     gint i;
     GList *event_list = NULL;
     GDateTime *gdt;
@@ -1035,15 +1004,11 @@ static void build_mainbox_event_info (OrageWindowNext *window)
 
     if (event_list)
     {
-#if 1
-        gtk_widget_destroy (window->event_box);
-        orage_window_next_add_info_box (window);
-#else
-        gchar *text = create_event_label_text (window->selected_date);
+        text = create_event_label_text (window->selected_date);
         gtk_label_set_text (GTK_LABEL (window->event_label), text);
         g_free (text);
         clear_gtk_box (window->event_rows_box);
-#endif
+
         event_list = g_list_sort (event_list, event_order);
         g_list_foreach (event_list, info_process_event, window->event_rows_box);
         g_list_free (event_list);
@@ -1154,8 +1119,11 @@ static void orage_window_next_init (OrageWindowNext *self)
                         FALSE, FALSE, 0);
     gtk_revealer_set_reveal_child (GTK_REVEALER (revealer), FALSE);
 
+    self->revealer_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+    gtk_container_add (GTK_CONTAINER (self->revealer), self->revealer_box);
+
     orage_window_next_add_todo_box (self);
-    orage_window_next_add_info_box2 (self);
+    orage_window_next_add_info_box (self);
 
     gtk_widget_show_all (self->main_box);
 
