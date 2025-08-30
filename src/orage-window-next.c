@@ -336,7 +336,7 @@ static void on_date_selected (G_GNUC_UNUSED OrageMonthView *view,
                               OrageMonthCell *cell,
                               gpointer user_data)
 {
-    GDateTime *gdt = orage_month_cell_get_date (cell);
+    GDateTime *gdt;
 
     gdt = orage_month_cell_get_date (cell);
     orage_window_next_select_date (ORAGE_WINDOW (user_data), gdt);
