@@ -94,6 +94,7 @@ struct _OrageWindowNext
     GtkWidget *todo_rows_box;
 
     GtkWidget *event_box;
+    GtkWidget *event_label;
     GtkWidget *event_rows_box;
 };
 
@@ -721,6 +722,7 @@ static void orage_window_next_add_info_box2 (OrageWindowNext *self)
                                    NULL);
     gtk_container_add (GTK_CONTAINER (self->revealer), self->event_box);
     event_label = gtk_label_new (NULL);
+    self->event_label = event_label;
     if (g_par.show_event_days)
     {
         event_label_text = create_event_label_text (self->selected_date);
@@ -942,19 +944,24 @@ static void add_info_row (xfical_appt *appt, GtkBox *parent_box,
     g_free (tip);
 }
 
-static void info_process (gpointer a, gpointer pbox)
+static void info_process (gpointer a, gpointer pbox, gboolean todo)
 {
     xfical_appt *appt = (xfical_appt *)a;
-    GtkBox *box= GTK_BOX (pbox);
-    OrageApplication *app = ORAGE_APPLICATION (g_application_get_default ());
-    OrageWindowNext *window = ORAGE_WINDOW_NEXT (orage_application_get_window (app));
-    gboolean todo;
-
-    todo = (pbox == window->todo_rows_box) ? TRUE : FALSE;
 
     if (appt->priority < g_par.priority_list_limit)
-        add_info_row (appt, box, todo);
+        add_info_row (appt, GTK_BOX (pbox), todo);
+
     xfical_appt_free (appt);
+}
+
+static void info_process_event (gpointer a, gpointer pbox)
+{
+    info_process (a, pbox, FALSE);
+}
+
+static void info_process_todo (gpointer a, gpointer pbox)
+{
+    info_process (a, pbox, TRUE);
 }
 
 static void build_mainbox_todo_info (OrageWindowNext *window)
@@ -990,7 +997,7 @@ static void build_mainbox_todo_info (OrageWindowNext *window)
     {
         clear_gtk_box (window->todo_rows_box);
         todo_list = g_list_sort (todo_list, todo_order);
-        g_list_foreach (todo_list, info_process, window->todo_rows_box);
+        g_list_foreach (todo_list, info_process_todo, window->todo_rows_box);
         g_list_free (todo_list);
         gtk_widget_show_all (window->todo_box);
         orage_window_next_update_revealer (window);
@@ -1032,10 +1039,13 @@ static void build_mainbox_event_info (OrageWindowNext *window)
         gtk_widget_destroy (window->event_box);
         orage_window_next_add_info_box (window);
 #else
+        gchar *text = create_event_label_text (window->selected_date);
+        gtk_label_set_text (GTK_LABEL (window->event_label), text);
+        g_free (text);
         clear_gtk_box (window->event_rows_box);
 #endif
         event_list = g_list_sort (event_list, event_order);
-        g_list_foreach (event_list, info_process, window->event_rows_box);
+        g_list_foreach (event_list, info_process_event, window->event_rows_box);
         g_list_free (event_list);
         gtk_widget_show_all (window->event_box);
         orage_window_next_update_revealer (window);
