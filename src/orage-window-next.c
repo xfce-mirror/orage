@@ -431,6 +431,29 @@ static void clear_gtk_box (GtkWidget *box)
     g_list_free (children);
 }
 
+static gchar *create_event_label_text (GDateTime *gdt)
+{
+    GDateTime *gdt_end;
+    gchar *event_label_str, *start_date_str, *end_str;
+
+    start_date_str = orage_gdatetime_to_i18_time (gdt, TRUE);
+    if (g_par.show_event_days == 1)
+        event_label_str = g_strdup_printf (_("Events for %s:"), start_date_str);
+    else
+    {
+        gdt_end = g_date_time_add_days (gdt, g_par.show_event_days - 1);
+        end_str = orage_gdatetime_to_i18_time (gdt_end, TRUE);
+        g_date_time_unref (gdt_end);
+        event_label_str = g_strdup_printf (_("Events for %s - %s:"),
+                                           start_date_str, end_str);
+        g_free (end_str);
+    }
+
+    g_free (start_date_str);
+
+    return event_label_str;
+}
+
 static void orage_window_next_update_file_menu (OrageWindowNext *window,
                                                 GtkWidget *menu)
 {
@@ -655,11 +678,8 @@ static void orage_window_next_add_info_box (OrageWindowNext *self)
 {
     GtkScrolledWindow *sw;
     GtkWidget *event_label;
-    gchar *tmp, *tmp2, *tmp3;
-    GDateTime *gdt;
-    GDateTime *gdt_tmp;
+    gchar *event_label_text;
 
-    gdt = g_date_time_ref (self->selected_date);
     self->event_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 5);
     g_object_set (self->event_box, "vexpand", TRUE,
                                    "valign", GTK_ALIGN_FILL,
@@ -669,32 +689,13 @@ static void orage_window_next_add_info_box (OrageWindowNext *self)
     event_label = gtk_label_new (NULL);
     if (g_par.show_event_days)
     {
-        /* bug 7836: we call this routine also with 0 = no event data at all */
-        if (g_par.show_event_days == 1)
-        {
-            tmp2 = orage_gdatetime_to_i18_time (gdt, TRUE);
-            tmp = g_strdup_printf (_("Events for %s:"), tmp2);
-            g_free (tmp2);
-        }
-        else
-        {
-            tmp2 = orage_gdatetime_to_i18_time (gdt, TRUE);
-
-            gdt_tmp = gdt;
-            gdt = g_date_time_add_days (gdt_tmp, g_par.show_event_days - 1);
-            g_date_time_unref (gdt_tmp);
-            tmp3 = orage_gdatetime_to_i18_time (gdt, TRUE);
-            tmp = g_strdup_printf (_("Events for %s - %s:"), tmp2, tmp3);
-            g_free (tmp2);
-            g_free (tmp3);
-        }
+        event_label_text = create_event_label_text (self->selected_date);
         gtk_style_context_add_class (gtk_widget_get_style_context (event_label),
                                      "event-label");
-        gtk_label_set_text (GTK_LABEL (event_label), tmp);
-        g_free (tmp);
+        gtk_label_set_text (GTK_LABEL (event_label), event_label_text);
+        g_free (event_label_text);
     }
 
-    g_date_time_unref (gdt);
     g_object_set (event_label, "xalign", 0.0, "yalign", 0.5, NULL);
     gtk_box_pack_start (GTK_BOX (self->event_box), event_label, FALSE, FALSE,
                         0);
@@ -712,11 +713,8 @@ static void orage_window_next_add_info_box2 (OrageWindowNext *self)
 {
     GtkScrolledWindow *sw;
     GtkWidget *event_label;
-    gchar *tmp, *tmp2, *tmp3;
-    GDateTime *gdt;
-    GDateTime *gdt_tmp;
+    gchar *event_label_text;
 
-    gdt = g_date_time_ref (self->selected_date);
     self->event_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 5);
     g_object_set (self->event_box, "vexpand", TRUE,
                                    "valign", GTK_ALIGN_FILL,
@@ -725,32 +723,13 @@ static void orage_window_next_add_info_box2 (OrageWindowNext *self)
     event_label = gtk_label_new (NULL);
     if (g_par.show_event_days)
     {
-        /* bug 7836: we call this routine also with 0 = no event data at all */
-        if (g_par.show_event_days == 1)
-        {
-            tmp2 = orage_gdatetime_to_i18_time (gdt, TRUE);
-            tmp = g_strdup_printf (_("Events for %s:"), tmp2);
-            g_free (tmp2);
-        }
-        else
-        {
-            tmp2 = orage_gdatetime_to_i18_time (gdt, TRUE);
-
-            gdt_tmp = gdt;
-            gdt = g_date_time_add_days (gdt_tmp, g_par.show_event_days - 1);
-            g_date_time_unref (gdt_tmp);
-            tmp3 = orage_gdatetime_to_i18_time (gdt, TRUE);
-            tmp = g_strdup_printf (_("Events for %s - %s:"), tmp2, tmp3);
-            g_free (tmp2);
-            g_free (tmp3);
-        }
+        event_label_text = create_event_label_text (self->selected_date);
         gtk_style_context_add_class (gtk_widget_get_style_context (event_label),
                                      "event-label");
-        gtk_label_set_text (GTK_LABEL (event_label), tmp);
-        g_free (tmp);
+        gtk_label_set_text (GTK_LABEL (event_label), event_label_text);
+        g_free (event_label_text);
     }
 
-    g_date_time_unref (gdt);
     g_object_set (event_label, "xalign", 0.0, "yalign", 0.5, NULL);
     gtk_box_pack_start (GTK_BOX (self->event_box), event_label, FALSE, FALSE,
                         0);
