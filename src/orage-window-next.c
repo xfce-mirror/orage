@@ -106,7 +106,7 @@ static void orage_window_next_finalize (GObject *object);
 static void orage_window_next_interface_init (OrageWindowInterface *interface);
 static void orage_window_next_restore_geometry (OrageWindowNext *window);
 
-static void orage_window_next_add_days (OrageWindowNext *window, gint days);
+static void orage_window_next_add_days (OrageWindowNext *self, gint days);
 
 static void on_new_activated (OrageWindowNext *window);
 
@@ -457,93 +457,93 @@ static gchar *create_event_label_text (GDateTime *gdt)
     return event_label_str;
 }
 
-static void orage_window_next_update_file_menu (OrageWindowNext *window,
+static void orage_window_next_update_file_menu (OrageWindowNext *self,
                                                 GtkWidget *menu)
 {
-    g_return_if_fail (ORAGE_IS_WINDOW_NEXT (window));
+    g_return_if_fail (ORAGE_IS_WINDOW_NEXT (self));
 
     menu_clean (GTK_MENU (menu));
     xfce_gtk_menu_item_new_from_action_entry (
         get_action_entry (ORAGE_WINDOW_ACTION_NEW_APPOINTMENT),
-        G_OBJECT (window),
+        G_OBJECT (self),
         GTK_MENU_SHELL (menu));
     xfce_gtk_menu_append_separator (GTK_MENU_SHELL (menu));
 #ifdef ENABLE_SYNC
     xfce_gtk_menu_item_new_from_action_entry (
-        get_action_entry (ORAGE_WINDOW_ACTION_REFRESH), G_OBJECT (window),
+        get_action_entry (ORAGE_WINDOW_ACTION_REFRESH), G_OBJECT (self),
         GTK_MENU_SHELL (menu));
 #endif
     xfce_gtk_menu_item_new_from_action_entry (
-        get_action_entry (ORAGE_WINDOW_ACTION_EXCHANGE), G_OBJECT (window),
+        get_action_entry (ORAGE_WINDOW_ACTION_EXCHANGE), G_OBJECT (self),
         GTK_MENU_SHELL (menu));
     xfce_gtk_menu_append_separator (GTK_MENU_SHELL (menu));
     xfce_gtk_menu_item_new_from_action_entry (
-        get_action_entry (ORAGE_WINDOW_ACTION_CLOSE), G_OBJECT (window),
+        get_action_entry (ORAGE_WINDOW_ACTION_CLOSE), G_OBJECT (self),
         GTK_MENU_SHELL (menu));
     xfce_gtk_menu_item_new_from_action_entry (
-        get_action_entry (ORAGE_WINDOW_ACTION_QUIT), G_OBJECT (window),
-        GTK_MENU_SHELL (menu));
-
-    gtk_widget_show_all (GTK_WIDGET (menu));
-}
-
-static void orage_window_next_update_edit_menu (OrageWindowNext *window,
-                                                GtkWidget *menu)
-{
-    g_return_if_fail (ORAGE_IS_WINDOW_NEXT (window));
-
-    menu_clean (GTK_MENU (menu));
-    xfce_gtk_menu_item_new_from_action_entry (
-        get_action_entry (ORAGE_WINDOW_ACTION_PREFERENCES), G_OBJECT (window),
+        get_action_entry (ORAGE_WINDOW_ACTION_QUIT), G_OBJECT (self),
         GTK_MENU_SHELL (menu));
 
     gtk_widget_show_all (GTK_WIDGET (menu));
 }
 
-static void orage_window_next_update_view_menu (OrageWindowNext *window,
+static void orage_window_next_update_edit_menu (OrageWindowNext *self,
                                                 GtkWidget *menu)
 {
-    g_return_if_fail (ORAGE_IS_WINDOW_NEXT (window));
+    g_return_if_fail (ORAGE_IS_WINDOW_NEXT (self));
 
     menu_clean (GTK_MENU (menu));
     xfce_gtk_menu_item_new_from_action_entry (
-        get_action_entry (ORAGE_WINDOW_ACTION_VIEW_DATE), G_OBJECT (window),
+        get_action_entry (ORAGE_WINDOW_ACTION_PREFERENCES), G_OBJECT (self),
+        GTK_MENU_SHELL (menu));
+
+    gtk_widget_show_all (GTK_WIDGET (menu));
+}
+
+static void orage_window_next_update_view_menu (OrageWindowNext *self,
+                                                GtkWidget *menu)
+{
+    g_return_if_fail (ORAGE_IS_WINDOW_NEXT (self));
+
+    menu_clean (GTK_MENU (menu));
+    xfce_gtk_menu_item_new_from_action_entry (
+        get_action_entry (ORAGE_WINDOW_ACTION_VIEW_DATE), G_OBJECT (self),
         GTK_MENU_SHELL (menu));
     xfce_gtk_menu_item_new_from_action_entry (
-        get_action_entry (ORAGE_WINDOW_ACTION_VIEW_WEEK), G_OBJECT (window),
+        get_action_entry (ORAGE_WINDOW_ACTION_VIEW_WEEK), G_OBJECT (self),
         GTK_MENU_SHELL (menu));
 
     xfce_gtk_menu_append_separator (GTK_MENU_SHELL (menu));
     xfce_gtk_menu_item_new_from_action_entry (
-        get_action_entry (ORAGE_WINDOW_ACTION_SELECT_TODAY), G_OBJECT (window),
+        get_action_entry (ORAGE_WINDOW_ACTION_SELECT_TODAY), G_OBJECT (self),
         GTK_MENU_SHELL (menu));
 
     gtk_widget_show_all (GTK_WIDGET (menu));
 }
 
-static void orage_window_next_update_help_menu (OrageWindowNext *window,
+static void orage_window_next_update_help_menu (OrageWindowNext *self,
                                                 GtkWidget *menu)
 {
-    g_return_if_fail (ORAGE_IS_WINDOW_NEXT (window));
+    g_return_if_fail (ORAGE_IS_WINDOW_NEXT (self));
 
     menu_clean (GTK_MENU (menu));
     xfce_gtk_menu_item_new_from_action_entry (
-        get_action_entry (ORAGE_WINDOW_ACTION_HELP), G_OBJECT (window),
+        get_action_entry (ORAGE_WINDOW_ACTION_HELP), G_OBJECT (self),
         GTK_MENU_SHELL (menu));
     xfce_gtk_menu_item_new_from_action_entry (
-        get_action_entry (ORAGE_WINDOW_ACTION_ABOUT), G_OBJECT (window),
+        get_action_entry (ORAGE_WINDOW_ACTION_ABOUT), G_OBJECT (self),
         GTK_MENU_SHELL (menu));
 
     gtk_widget_show_all (GTK_WIDGET (menu));
 }
 
-static GDateTime *orage_window_next_get_first_date (OrageWindowNext *window)
+static GDateTime *orage_window_next_get_first_date (OrageWindowNext *self)
 {
     const gchar *visible_name =
-        gtk_stack_get_visible_child_name (window->stack_view);
+        gtk_stack_get_visible_child_name (self->stack_view);
 
     if (g_strcmp0 (MONTH_PAGE, visible_name) == 0)
-        return orage_month_view_get_first_date (window->month_view);
+        return orage_month_view_get_first_date (self->month_view);
     else
     {
         /* Requested page handinling is not yet implemented. */
@@ -551,13 +551,13 @@ static GDateTime *orage_window_next_get_first_date (OrageWindowNext *window)
     }
 }
 
-static GDateTime *orage_window_next_get_last_date (OrageWindowNext *window)
+static GDateTime *orage_window_next_get_last_date (OrageWindowNext *self)
 {
     const gchar *visible_name =
-        gtk_stack_get_visible_child_name (window->stack_view);
+        gtk_stack_get_visible_child_name (self->stack_view);
 
     if (g_strcmp0 (MONTH_PAGE, visible_name) == 0)
-        return orage_month_view_get_last_date (window->month_view);
+        return orage_month_view_get_last_date (self->month_view);
     else
     {
         /* Requested page handinling is not yet implemented. */
@@ -565,21 +565,21 @@ static GDateTime *orage_window_next_get_last_date (OrageWindowNext *window)
     }
 }
 
-static void orage_window_next_add_days (OrageWindowNext *window,
+static void orage_window_next_add_days (OrageWindowNext *self,
                                         const gint days)
 {
     OrageWindow *gen_window;
     GDateTime *gdt;
     const gchar *visible_name =
-        gtk_stack_get_visible_child_name (window->stack_view);
+        gtk_stack_get_visible_child_name (self->stack_view);
 
     if (g_strcmp0 (MONTH_PAGE, visible_name) == 0)
     {
-        gdt = window->selected_date;
-        window->selected_date = g_date_time_add_days (gdt, days);
+        gdt = self->selected_date;
+        self->selected_date = g_date_time_add_days (gdt, days);
         g_date_time_unref (gdt);
-        gen_window = ORAGE_WINDOW (window);
-        orage_month_view_mark_date (window->month_view, window->selected_date);
+        gen_window = ORAGE_WINDOW (self);
+        orage_month_view_mark_date (self->month_view, self->selected_date);
         orage_window_next_build_events (gen_window);
     }
     else
@@ -591,36 +591,36 @@ static void orage_window_next_add_days (OrageWindowNext *window,
 
 static void orage_window_next_restore_geometry (OrageWindowNext *window)
 {
-    GtkWindow *gwin = GTK_WINDOW (window);
+    GtkWindow *gtk_window = GTK_WINDOW (window);
 
-    gtk_window_set_position (gwin, GTK_WIN_POS_NONE);
+    gtk_window_set_position (gtk_window, GTK_WIN_POS_NONE);
 
     if (g_par.size_x || g_par.size_y)
-        gtk_window_set_default_size (gwin, g_par.size_x, g_par.size_y);
+        gtk_window_set_default_size (gtk_window, g_par.size_x, g_par.size_y);
 
     if (g_par.pos_x || g_par.pos_y)
-        gtk_window_move (gwin, g_par.pos_x, g_par.pos_y);
+        gtk_window_move (gtk_window, g_par.pos_x, g_par.pos_y);
 }
 
-static void orage_window_next_add_menu (OrageWindowNext *window,
+static void orage_window_next_add_menu (OrageWindowNext *self,
                                         OrageWindowAction action,
                                         GCallback cb_update_menu)
 {
     GtkWidget *item;
     GtkWidget *submenu;
-    GtkWidget *menu = window->menubar;
+    GtkWidget *menu = self->menubar;
 
-    g_return_if_fail (ORAGE_IS_WINDOW_NEXT (window));
+    g_return_if_fail (ORAGE_IS_WINDOW_NEXT (self));
 
     item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (action),
-                                                     G_OBJECT (window),
+                                                     G_OBJECT (self),
                                                      GTK_MENU_SHELL (menu));
 
     submenu = g_object_new (GTK_TYPE_MENU, NULL);
-    gtk_menu_set_accel_group (GTK_MENU (submenu), window->accel_group);
+    gtk_menu_set_accel_group (GTK_MENU (submenu), self->accel_group);
     gtk_menu_item_set_submenu (GTK_MENU_ITEM (item), GTK_WIDGET (submenu));
     g_signal_connect_swapped (G_OBJECT (submenu), "show",
-                              G_CALLBACK (cb_update_menu), window);
+                              G_CALLBACK (cb_update_menu), self);
 }
 
 static void orage_window_next_add_menubar (OrageWindowNext *self)
@@ -640,12 +640,12 @@ static void orage_window_next_add_menubar (OrageWindowNext *self)
 static void orage_window_next_update_revealer (OrageWindowNext *self)
 {
     GtkRevealer *revealer = GTK_REVEALER (self->revealer);
-    GtkWindow *window = GTK_WINDOW (self);
+    GtkWindow *gtk_window = GTK_WINDOW (self);
     gboolean visible = gtk_revealer_get_reveal_child (revealer);
 
     gtk_revealer_set_reveal_child (revealer, !visible);
-    gtk_widget_queue_resize (GTK_WIDGET (window));
-    gtk_window_resize (window, 1, 1);
+    gtk_widget_queue_resize (GTK_WIDGET (gtk_window));
+    gtk_window_resize (gtk_window, 1, 1);
 }
 
 static void orage_window_next_add_todo_box (OrageWindowNext *self)
@@ -932,7 +932,7 @@ static void info_process_todo (gpointer a, gpointer pbox)
     info_process (a, pbox, TRUE);
 }
 
-static void orage_window_next_build_mainbox_todo_info (OrageWindowNext *window)
+static void orage_window_next_build_mainbox_todo_info (OrageWindowNext *self)
 {
     GDateTime *gdt;
     xfical_type ical_type;
@@ -940,7 +940,7 @@ static void orage_window_next_build_mainbox_todo_info (OrageWindowNext *window)
     gint i;
     GList *todo_list = NULL;
 
-    g_return_if_fail (window != NULL);
+    g_return_if_fail (self != NULL);
 
     if (g_par.show_todos)
     {
@@ -963,18 +963,18 @@ static void orage_window_next_build_mainbox_todo_info (OrageWindowNext *window)
 
     if (todo_list)
     {
-        clear_gtk_box (window->todo_rows_box);
+        clear_gtk_box (self->todo_rows_box);
         todo_list = g_list_sort (todo_list, todo_order);
-        g_list_foreach (todo_list, info_process_todo, window->todo_rows_box);
+        g_list_foreach (todo_list, info_process_todo, self->todo_rows_box);
         g_list_free (todo_list);
-        gtk_widget_show_all (window->todo_box);
-        orage_window_next_update_revealer (window);
+        gtk_widget_show_all (self->todo_box);
+        orage_window_next_update_revealer (self);
     }
     else
-        gtk_widget_hide (window->todo_box);
+        gtk_widget_hide (self->todo_box);
 }
 
-static void orage_window_next_build_mainbox_event_info (OrageWindowNext *window)
+static void orage_window_next_build_mainbox_event_info (OrageWindowNext *self)
 {
     xfical_type ical_type;
     gchar file_type[8];
@@ -983,11 +983,11 @@ static void orage_window_next_build_mainbox_event_info (OrageWindowNext *window)
     GList *event_list = NULL;
     GDateTime *gdt;
 
-    g_return_if_fail (window != NULL);
+    g_return_if_fail (self != NULL);
 
     if (g_par.show_event_days)
     {
-        gdt = g_date_time_ref (window->selected_date);
+        gdt = g_date_time_ref (self->selected_date);
         ical_type = XFICAL_TYPE_EVENT;
         g_strlcpy (file_type, "O00.", sizeof (file_type));
         xfical_get_each_app_within_time (gdt, g_par.show_event_days, ical_type,
@@ -1004,19 +1004,19 @@ static void orage_window_next_build_mainbox_event_info (OrageWindowNext *window)
 
     if (event_list)
     {
-        text = create_event_label_text (window->selected_date);
-        gtk_label_set_text (GTK_LABEL (window->event_label), text);
+        text = create_event_label_text (self->selected_date);
+        gtk_label_set_text (GTK_LABEL (self->event_label), text);
         g_free (text);
-        clear_gtk_box (window->event_rows_box);
+        clear_gtk_box (self->event_rows_box);
 
         event_list = g_list_sort (event_list, event_order);
-        g_list_foreach (event_list, info_process_event, window->event_rows_box);
+        g_list_foreach (event_list, info_process_event, self->event_rows_box);
         g_list_free (event_list);
-        gtk_widget_show_all (window->event_box);
-        orage_window_next_update_revealer (window);
+        gtk_widget_show_all (self->event_box);
+        orage_window_next_update_revealer (self);
     }
     else
-        gtk_widget_hide (window->event_box);
+        gtk_widget_hide (self->event_box);
 }
 
 static void orage_window_next_class_init (OrageWindowNextClass *klass)
@@ -1205,10 +1205,10 @@ void orage_window_next_build_events (OrageWindow *window)
 
 void orage_window_next_build_info (OrageWindow *window)
 {
-    OrageWindowNext *nw = ORAGE_WINDOW_NEXT (window);
+    OrageWindowNext *self = ORAGE_WINDOW_NEXT (window);
 
-    orage_window_next_build_mainbox_todo_info (nw);
-    orage_window_next_build_mainbox_event_info (nw);
+    orage_window_next_build_mainbox_todo_info (self);
+    orage_window_next_build_mainbox_event_info (self);
 }
 
 void orage_window_next_build_todo (OrageWindow *window)
@@ -1367,10 +1367,17 @@ void orage_window_next_get_size_and_position (OrageWindow *window,
                                               gint *size_x, gint *size_y,
                                               gint *pos_x, gint *pos_y)
 {
-    GtkWindow *gtk_window;
+    GtkWindow *gtk_window = GTK_WINDOW (window);
+    GtkWidget *widget = GTK_WIDGET (ORAGE_WINDOW_NEXT (window)->stack_view);
 
-    gtk_window = GTK_WINDOW (window);
-
+#if 0
     gtk_window_get_size (gtk_window, size_x, size_y);
+#else
+    *size_x = gtk_widget_get_allocated_width (widget);
+    *size_y = gtk_widget_get_allocated_height (widget);
+#endif
     gtk_window_get_position (gtk_window, pos_x, pos_y);
+
+    g_debug ("%s: s_x|y=%d|%d; p_x|y=%d|%d",
+             G_STRFUNC, *size_x, *size_y, *pos_x, *pos_y);
 }
