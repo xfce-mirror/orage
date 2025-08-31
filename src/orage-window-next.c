@@ -677,7 +677,7 @@ static void orage_window_next_add_todo_box (OrageWindowNext *self)
     gtk_container_add (GTK_CONTAINER (sw), self->todo_rows_box);
 }
 
-static void orage_window_next_add_info_box (OrageWindowNext *self)
+static void orage_window_next_add_event_box (OrageWindowNext *self)
 {
     GtkScrolledWindow *sw;
     GtkWidget *event_label;
@@ -932,7 +932,7 @@ static void info_process_todo (gpointer a, gpointer pbox)
     info_process (a, pbox, TRUE);
 }
 
-static void build_mainbox_todo_info (OrageWindowNext *window)
+static void orage_window_next_build_mainbox_todo_info (OrageWindowNext *window)
 {
     GDateTime *gdt;
     xfical_type ical_type;
@@ -974,7 +974,7 @@ static void build_mainbox_todo_info (OrageWindowNext *window)
         gtk_widget_hide (window->todo_box);
 }
 
-static void build_mainbox_event_info (OrageWindowNext *window)
+static void orage_window_next_build_mainbox_event_info (OrageWindowNext *window)
 {
     xfical_type ical_type;
     gchar file_type[8];
@@ -1123,7 +1123,7 @@ static void orage_window_next_init (OrageWindowNext *self)
     gtk_container_add (GTK_CONTAINER (self->revealer), self->revealer_box);
 
     orage_window_next_add_todo_box (self);
-    orage_window_next_add_info_box (self);
+    orage_window_next_add_event_box (self);
 
     gtk_widget_show_all (self->main_box);
 
@@ -1197,17 +1197,17 @@ void orage_window_next_build_events (OrageWindow *window)
     if (xfical_file_open (TRUE) == FALSE)
         return;
 
-    build_mainbox_event_info (ORAGE_WINDOW_NEXT (window));
+    orage_window_next_build_mainbox_event_info (ORAGE_WINDOW_NEXT (window));
 
-    xfical_file_close(TRUE);
+    xfical_file_close (TRUE);
 }
 
 void orage_window_next_build_info (OrageWindow *window)
 {
     OrageWindowNext *nw = ORAGE_WINDOW_NEXT (window);
 
-    build_mainbox_todo_info (nw);
-    build_mainbox_event_info (nw);
+    orage_window_next_build_mainbox_todo_info (nw);
+    orage_window_next_build_mainbox_event_info (nw);
 }
 
 void orage_window_next_build_todo (OrageWindow *window)
@@ -1215,7 +1215,7 @@ void orage_window_next_build_todo (OrageWindow *window)
     if (xfical_file_open (TRUE) == FALSE)
         return;
 
-    build_mainbox_todo_info (ORAGE_WINDOW_NEXT (window));
+    orage_window_next_build_mainbox_todo_info (ORAGE_WINDOW_NEXT (window));
 
     xfical_file_close (TRUE);
 }
