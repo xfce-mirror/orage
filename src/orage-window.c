@@ -132,3 +132,14 @@ void orage_window_set_calendar_options (OrageWindow *window, guint options)
 
     ORAGE_WINDOW_GET_IFACE (window)->set_calendar_options (window, options);
 }
+
+void orage_window_get_size_and_position (OrageWindow *window,
+                                         gint *size_x, gint *size_y,
+                                         gint *pos_x, gint *pos_y)
+{
+    g_return_if_fail (ORAGE_IS_WINDOW (window));
+
+    ORAGE_WINDOW_GET_IFACE (window)->get_size_and_position (window,
+                                                            size_x, size_y,
+                                                            pos_x, pos_y);
+}

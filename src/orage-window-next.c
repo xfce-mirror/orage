@@ -1165,6 +1165,7 @@ static void orage_window_next_interface_init (OrageWindowInterface *iface)
     iface->hide_event = orage_window_next_hide_event;
     iface->raise = orage_window_next_raise;
     iface->set_calendar_options = orage_window_next_set_calendar_options;
+    iface->get_size_and_position = orage_window_next_get_size_and_position;
 }
 
 static void orage_window_next_constructed (GObject *object)
@@ -1326,6 +1327,19 @@ GDateTime *orage_window_next_get_selected_date (OrageWindow *window)
     return g_date_time_ref (nxtwindow->selected_date);
 }
 
+void orage_window_next_show_menubar (OrageWindow *window, const gboolean show)
+{
+    OrageWindowNext *nxtwindow;
+
+    g_return_if_fail (window != NULL);
+    nxtwindow = ORAGE_WINDOW_NEXT (window);
+
+    if (show)
+        gtk_widget_show (nxtwindow->menubar);
+    else
+        gtk_widget_hide (nxtwindow->menubar);
+}
+
 void orage_window_next_raise (OrageWindow *window)
 {
     GtkWindow *gtk_window = GTK_WINDOW (window);
@@ -1349,15 +1363,14 @@ void orage_window_next_set_calendar_options (G_GNUC_UNUSED OrageWindow *window,
     /* New calendar window does not have any options yet. */
 }
 
-void orage_window_next_show_menubar (OrageWindow *window, const gboolean show)
+void orage_window_next_get_size_and_position (OrageWindow *window,
+                                              gint *size_x, gint *size_y,
+                                              gint *pos_x, gint *pos_y)
 {
-    OrageWindowNext *nxtwindow;
+    GtkWindow *gtk_window;
 
-    g_return_if_fail (window != NULL);
-    nxtwindow = ORAGE_WINDOW_NEXT (window);
+    gtk_window = GTK_WINDOW (window);
 
-    if (show)
-        gtk_widget_show (nxtwindow->menubar);
-    else
-        gtk_widget_hide (nxtwindow->menubar);
+    gtk_window_get_size (gtk_window, size_x, size_y);
+    gtk_window_get_position (gtk_window, pos_x, pos_y);
 }

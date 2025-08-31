@@ -56,6 +56,9 @@ void orage_window_classic_hide_todo (OrageWindow *window);
 void orage_window_classic_hide_event (OrageWindow *window);
 void orage_window_classic_raise (OrageWindow *window);
 void orage_window_classic_set_calendar_options (OrageWindow *window, guint options);
+void orage_window_classic_get_size_and_position (OrageWindow *window,
+                                                 gint *size_x, gint *size_y,
+                                                 gint *pos_x, gint *pos_y);
 
 G_END_DECLS
 

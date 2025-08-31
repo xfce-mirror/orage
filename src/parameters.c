@@ -1730,7 +1730,7 @@ void write_parameters(void)
     OrageRc *orc;
     gint i;
     gchar f_par[50];
-    GtkWindow *window;
+    OrageWindow *window;
     OrageApplication *app;
 
     orc = orage_parameters_file_open(FALSE);
@@ -1745,11 +1745,12 @@ void write_parameters(void)
     orage_rc_put_str(orc, "Sound application", g_par.sound_application);
 
     app = ORAGE_APPLICATION (g_application_get_default ());
-    window = GTK_WINDOW (orage_application_get_window (app));
+    window = ORAGE_WINDOW (orage_application_get_window (app));
     if (window)
     {
-        gtk_window_get_size (window, &g_par.size_x, &g_par.size_y);
-        gtk_window_get_position (window, &g_par.pos_x, &g_par.pos_y);
+        orage_window_get_size_and_position (window,
+                                            &g_par.size_x, &g_par.size_y,
+                                            &g_par.pos_x, &g_par.pos_y);
     }
     else
         g_debug ("%s: window == NULL", G_STRFUNC);

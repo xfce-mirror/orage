@@ -744,6 +744,7 @@ static void orage_window_classic_interface_init (OrageWindowInterface *iface)
     iface->hide_event = orage_window_classic_hide_event;
     iface->raise = orage_window_classic_raise;
     iface->set_calendar_options = orage_window_classic_set_calendar_options;
+    iface->get_size_and_position = orage_window_classic_get_size_and_position;
 }
 
 static void orage_window_classic_init (OrageWindowClassic *self)
@@ -871,7 +872,7 @@ void orage_window_classic_raise (OrageWindow *window)
 }
 
 void orage_window_classic_set_calendar_options (OrageWindow *window,
-                                                guint options)
+                                                const guint options)
 {
     OrageWindowClassic *clwindow = ORAGE_WINDOW_CLASSIC (window);
     GtkCalendarDisplayOptions cal_options = 0;
@@ -884,4 +885,16 @@ void orage_window_classic_set_calendar_options (OrageWindow *window,
         cal_options |= GTK_CALENDAR_SHOW_WEEK_NUMBERS;
 
     gtk_calendar_set_display_options (clwindow->mCalendar, cal_options);
+}
+
+void orage_window_classic_get_size_and_position (OrageWindow *window,
+                                                 gint *size_x, gint *size_y,
+                                                 gint *pos_x, gint *pos_y)
+{
+    GtkWindow *gtk_window;
+
+    gtk_window = GTK_WINDOW (window);
+
+    gtk_window_get_size (gtk_window, size_x, size_y);
+    gtk_window_get_position (gtk_window, pos_x, pos_y);
 }
