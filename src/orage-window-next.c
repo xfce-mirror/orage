@@ -645,7 +645,11 @@ static void orage_window_next_update_revealer (OrageWindowNext *self)
 
     gtk_revealer_set_reveal_child (revealer, !visible);
     gtk_widget_queue_resize (GTK_WIDGET (gtk_window));
+#if 0
     gtk_window_resize (gtk_window, 1, 1);
+#else
+    gtk_window_set_default_size (gtk_window, g_par.size_x, g_par.size_y);
+#endif
 }
 
 static void orage_window_next_add_todo_box (OrageWindowNext *self)
