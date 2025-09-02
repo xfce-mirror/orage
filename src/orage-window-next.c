@@ -86,12 +86,12 @@ struct _OrageWindowNext
     GtkWidget *main_box;
     OrageMonthView *month_view;
 
-    GtkWidget *revealer;
-    GtkWidget *revealer_box;
-
     GtkWidget *back_button;
     GtkWidget *next_button;
 
+    GtkWidget *info_box;
+
+    /* Info box contents. */
     GtkWidget *todo_box;
     GtkWidget *todo_rows_box;
 
@@ -637,28 +637,13 @@ static void orage_window_next_add_menubar (OrageWindowNext *self)
     gtk_widget_show_all (self->menubar);
 }
 
-static void orage_window_next_update_revealer (OrageWindowNext *self)
-{
-    GtkRevealer *revealer = GTK_REVEALER (self->revealer);
-    GtkWindow *gtk_window = GTK_WINDOW (self);
-    gboolean visible = gtk_revealer_get_reveal_child (revealer);
-
-    gtk_revealer_set_reveal_child (revealer, !visible);
-    gtk_widget_queue_resize (GTK_WIDGET (gtk_window));
-#if 0
-    gtk_window_resize (gtk_window, 1, 1);
-#else
-    gtk_window_set_default_size (gtk_window, g_par.size_x, g_par.size_y);
-#endif
-}
-
 static void orage_window_next_add_todo_box (OrageWindowNext *self)
 {
     GtkScrolledWindow *sw;
     GtkWidget *todo_label;
 
     self->todo_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 5);
-    gtk_box_pack_start (GTK_BOX (self->revealer_box),  self->todo_box, TRUE,
+    gtk_box_pack_start (GTK_BOX (self->info_box),  self->todo_box, TRUE,
                         TRUE, 0);
 
     g_object_set (self->todo_box, "vexpand", TRUE,
@@ -691,7 +676,7 @@ static void orage_window_next_add_event_box (OrageWindowNext *self)
     g_object_set (self->event_box, "vexpand", TRUE,
                                    "valign", GTK_ALIGN_FILL,
                                    NULL);
-    gtk_box_pack_start (GTK_BOX (self->revealer_box),  self->event_box, TRUE,
+    gtk_box_pack_start (GTK_BOX (self->info_box),  self->event_box, TRUE,
                         TRUE, 0);
     event_label = gtk_label_new (NULL);
     self->event_label = event_label;
@@ -972,7 +957,6 @@ static void orage_window_next_build_mainbox_todo_info (OrageWindowNext *self)
         g_list_foreach (todo_list, info_process_todo, self->todo_rows_box);
         g_list_free (todo_list);
         gtk_widget_show_all (self->todo_box);
-        orage_window_next_update_revealer (self);
     }
     else
         gtk_widget_hide (self->todo_box);
@@ -1017,7 +1001,6 @@ static void orage_window_next_build_mainbox_event_info (OrageWindowNext *self)
         g_list_foreach (event_list, info_process_event, self->event_rows_box);
         g_list_free (event_list);
         gtk_widget_show_all (self->event_box);
-        orage_window_next_update_revealer (self);
     }
     else
         gtk_widget_hide (self->event_box);
@@ -1042,9 +1025,9 @@ static void orage_window_next_init (OrageWindowNext *self)
     GtkWidget *switcher;
     GtkWidget *spacer_left;
     GtkWidget *spacer_right;
-    GtkRevealer *revealer;
     GtkBox *switcher_box;
     GtkBox *main_box;
+    GtkWidget *paned;
     const size_t n_elements = G_N_ELEMENTS (action_entries);
 
     self->selected_date = g_date_time_new_now_utc ();
@@ -1099,7 +1082,7 @@ static void orage_window_next_init (OrageWindowNext *self)
                                    GTK_STACK_TRANSITION_TYPE_SLIDE_LEFT_RIGHT);
     gtk_stack_switcher_set_stack (GTK_STACK_SWITCHER (switcher),
                                   self->stack_view);
-    gtk_box_pack_start (main_box, GTK_WIDGET (self->stack_view), TRUE, TRUE, 0);
+
     self->month_view = ORAGE_MONTH_VIEW (orage_month_view_new (BY_LOCALE));
 #if 0
     gtk_stack_add_titled (self->stack_view,
@@ -1114,17 +1097,15 @@ static void orage_window_next_init (OrageWindowNext *self)
                           gtk_label_new ("TODO: Year view"), "year", _("Year"));
 #endif
 
-    self->revealer = gtk_revealer_new ();
-    revealer = GTK_REVEALER (self->revealer);
-    gtk_revealer_set_transition_type (revealer,
-                                      GTK_REVEALER_TRANSITION_TYPE_SLIDE_DOWN);
-    gtk_revealer_set_transition_duration (revealer, 300);
-    gtk_box_pack_start (GTK_BOX (self->main_box), self->revealer,
-                        FALSE, FALSE, 0);
-    gtk_revealer_set_reveal_child (GTK_REVEALER (revealer), FALSE);
+    self->info_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 
-    self->revealer_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-    gtk_container_add (GTK_CONTAINER (self->revealer), self->revealer_box);
+    paned = gtk_paned_new (GTK_ORIENTATION_VERTICAL);
+    gtk_paned_set_wide_handle (GTK_PANED (paned), TRUE);
+    gtk_paned_pack1 (GTK_PANED (paned), GTK_WIDGET (self->stack_view), TRUE,
+                     FALSE);
+    gtk_paned_pack2 (GTK_PANED (paned), self->info_box, TRUE, TRUE);
+
+    gtk_box_pack_start (main_box, GTK_WIDGET (paned), TRUE, TRUE, 0);
 
     orage_window_next_add_todo_box (self);
     orage_window_next_add_event_box (self);
