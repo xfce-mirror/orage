@@ -1747,11 +1747,7 @@ void write_parameters(void)
     app = ORAGE_APPLICATION (g_application_get_default ());
     window = ORAGE_WINDOW (orage_application_get_window (app));
     if (window)
-    {
-        orage_window_get_size_and_position (window,
-                                            &g_par.size_x, &g_par.size_y,
-                                            &g_par.pos_x, &g_par.pos_y);
-    }
+        orage_window_save_window_state (window);
     else
         g_debug ("%s: window == NULL", G_STRFUNC);
 

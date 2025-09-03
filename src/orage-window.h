@@ -50,9 +50,7 @@ struct _OrageWindowInterface
     void (*hide_event) (OrageWindow *window);
     void (*raise) (OrageWindow *window);
     void (*set_calendar_options) (OrageWindow *window, guint options);
-    void (*get_size_and_position) (OrageWindow *window,
-                                   gint *size_x, gint *size_y,
-                                   gint *pos_x, gint *pos_y);
+    void (*save_window_state) (OrageWindow *window);
 };
 
 #define ORAGE_WINDOW_SHOW_CALENDAR_HEADING GTK_CALENDAR_SHOW_HEADING
@@ -85,9 +83,7 @@ void orage_window_hide_todo (OrageWindow *window);
 void orage_window_hide_event (OrageWindow *window);
 void orage_window_raise (OrageWindow *window);
 void orage_window_set_calendar_options (OrageWindow *window, guint options);
-void orage_window_get_size_and_position (OrageWindow *window,
-                                         gint *size_x, gint *size_y,
-                                         gint *pos_x, gint *posy);
+void orage_window_save_window_state (OrageWindow *window);
 
 G_END_DECLS
 

@@ -54,9 +54,7 @@ void orage_window_next_hide_todo (OrageWindow *window);
 void orage_window_next_hide_event (OrageWindow *window);
 void orage_window_next_raise (OrageWindow *window);
 void orage_window_next_set_calendar_options (OrageWindow *window, guint options);
-void orage_window_next_get_size_and_position (OrageWindow *window,
-                                              gint *size_x, gint *size_y,
-                                              gint *pos_x, gint *pos_y);
+void orage_window_next_save_window_state (OrageWindow *window);
 
 G_END_DECLS
 

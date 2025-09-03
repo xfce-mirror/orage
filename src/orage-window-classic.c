@@ -100,7 +100,7 @@ static void orage_window_classic_interface_init (OrageWindowInterface *interface
 G_DEFINE_TYPE_WITH_CODE (OrageWindowClassic, orage_window_classic, GTK_TYPE_APPLICATION_WINDOW,
                          G_IMPLEMENT_INTERFACE (ORAGE_WINDOW_TYPE, orage_window_classic_interface_init))
 
-static void orage_window_classic_restore_geometry (OrageWindowClassic *window);
+static void orage_window_classic_restore_state (OrageWindowClassic *window);
 
 static guint month_change_timer=0;
 
@@ -213,7 +213,7 @@ static void on_post_init (OrageWindowClassic *window)
 
     g_debug ("%s: %d handlers disconnected", G_STRFUNC, rc);
 
-    orage_window_classic_restore_geometry (window);
+    orage_window_classic_restore_state (window);
 }
 
 static void mCalendar_day_selected_double_click_cb (GtkCalendar *calendar,
@@ -257,7 +257,7 @@ static void mCalendar_month_changed_cb (GtkCalendar *calendar,
     month_change_timer = g_timeout_add (400, upd_calendar, user_data);
 }
 
-static void orage_window_classic_restore_geometry (OrageWindowClassic *window)
+static void orage_window_classic_restore_state (OrageWindowClassic *window)
 {
     GtkWindow *gwin = GTK_WINDOW (window);
 
@@ -744,7 +744,7 @@ static void orage_window_classic_interface_init (OrageWindowInterface *iface)
     iface->hide_event = orage_window_classic_hide_event;
     iface->raise = orage_window_classic_raise;
     iface->set_calendar_options = orage_window_classic_set_calendar_options;
-    iface->get_size_and_position = orage_window_classic_get_size_and_position;
+    iface->save_window_state = orage_window_classic_save_window_state;
 }
 
 static void orage_window_classic_init (OrageWindowClassic *self)
@@ -887,14 +887,10 @@ void orage_window_classic_set_calendar_options (OrageWindow *window,
     gtk_calendar_set_display_options (clwindow->mCalendar, cal_options);
 }
 
-void orage_window_classic_get_size_and_position (OrageWindow *window,
-                                                 gint *size_x, gint *size_y,
-                                                 gint *pos_x, gint *pos_y)
+void orage_window_classic_save_window_state (OrageWindow *window)
 {
-    GtkWindow *gtk_window;
+    GtkWindow *gtk_window = GTK_WINDOW (window);
 
-    gtk_window = GTK_WINDOW (window);
-
-    gtk_window_get_size (gtk_window, size_x, size_y);
-    gtk_window_get_position (gtk_window, pos_x, pos_y);
+    gtk_window_get_size (gtk_window, &g_par.size_x, &g_par.size_x);
+    gtk_window_get_position (gtk_window, &g_par.pos_x, &g_par.pos_y);
 }

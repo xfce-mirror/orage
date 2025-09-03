@@ -104,7 +104,7 @@ static void orage_window_next_constructed (GObject *object);
 static void orage_window_next_finalize (GObject *object);
 
 static void orage_window_next_interface_init (OrageWindowInterface *interface);
-static void orage_window_next_restore_geometry (OrageWindowNext *window);
+static void orage_window_next_restore_state (OrageWindowNext *window);
 
 static void orage_window_next_add_days (OrageWindowNext *self, gint days);
 
@@ -589,7 +589,7 @@ static void orage_window_next_add_days (OrageWindowNext *self,
     }
 }
 
-static void orage_window_next_restore_geometry (OrageWindowNext *window)
+static void orage_window_next_restore_state (OrageWindowNext *window)
 {
     GtkWindow *gtk_window = GTK_WINDOW (window);
 
@@ -1150,14 +1150,14 @@ static void orage_window_next_interface_init (OrageWindowInterface *iface)
     iface->hide_event = orage_window_next_hide_event;
     iface->raise = orage_window_next_raise;
     iface->set_calendar_options = orage_window_next_set_calendar_options;
-    iface->get_size_and_position = orage_window_next_get_size_and_position;
+    iface->save_window_state = orage_window_next_save_window_state;
 }
 
 static void orage_window_next_constructed (GObject *object)
 {
     OrageWindowNext *self = (OrageWindowNext *)object;
 
-    orage_window_next_restore_geometry (self);
+    orage_window_next_restore_state (self);
 
     G_OBJECT_CLASS (orage_window_next_parent_class)->constructed (object);
 }
@@ -1348,21 +1348,10 @@ void orage_window_next_set_calendar_options (G_GNUC_UNUSED OrageWindow *window,
     /* New calendar window does not have any options yet. */
 }
 
-void orage_window_next_get_size_and_position (OrageWindow *window,
-                                              gint *size_x, gint *size_y,
-                                              gint *pos_x, gint *pos_y)
+void orage_window_next_save_window_state (OrageWindow *window)
 {
     GtkWindow *gtk_window = GTK_WINDOW (window);
-    GtkWidget *widget = GTK_WIDGET (ORAGE_WINDOW_NEXT (window)->stack_view);
 
-#if 0
-    gtk_window_get_size (gtk_window, size_x, size_y);
-#else
-    *size_x = gtk_widget_get_allocated_width (widget);
-    *size_y = gtk_widget_get_allocated_height (widget);
-#endif
-    gtk_window_get_position (gtk_window, pos_x, pos_y);
-
-    g_debug ("%s: s_x|y=%d|%d; p_x|y=%d|%d",
-             G_STRFUNC, *size_x, *size_y, *pos_x, *pos_y);
+    gtk_window_get_size (gtk_window, &g_par.size_x, &g_par.size_x);
+    gtk_window_get_position (gtk_window, &g_par.pos_x, &g_par.pos_y);
 }
