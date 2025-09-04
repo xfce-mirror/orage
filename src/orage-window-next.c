@@ -1352,6 +1352,6 @@ void orage_window_next_save_window_state (OrageWindow *window)
 {
     GtkWindow *gtk_window = GTK_WINDOW (window);
 
-    gtk_window_get_size (gtk_window, &g_par.size_x, &g_par.size_x);
+    gtk_window_get_size (gtk_window, &g_par.size_x, &g_par.size_y);
     gtk_window_get_position (gtk_window, &g_par.pos_x, &g_par.pos_y);
 }
