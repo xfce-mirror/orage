@@ -62,6 +62,7 @@
 
 #define ORAGE_WAKEUP_TIMER_PERIOD 60
 
+#define MAIN_WINDOW_PANED_POSITION "Main window paned position"
 #define USE_NEW_UI "Use new UI"
 #define SYNC_SOURCE_COUNT "Sync source count"
 #define SYNC_DESCRIPTION "Sync %02d description"
@@ -1651,6 +1652,7 @@ void read_parameters (void)
     g_free(fpath);
     g_par.sound_application = orage_rc_get_str (orc, "Sound application",
                                                 DEFAULT_SOUND_COMMAND);
+    g_par.paned_pos = orage_rc_get_int (orc, MAIN_WINDOW_PANED_POSITION, -1);
     g_par.pos_x = orage_rc_get_int(orc, "Main window X", 0);
     g_par.pos_y = orage_rc_get_int(orc, "Main window Y", 0);
     g_par.size_x = orage_rc_get_int(orc, "Main window size X", 0);
@@ -1751,6 +1753,7 @@ void write_parameters(void)
     else
         g_debug ("%s: window == NULL", G_STRFUNC);
 
+    orage_rc_put_int (orc, MAIN_WINDOW_PANED_POSITION, g_par.paned_pos);
     orage_rc_put_int(orc, "Main window X", g_par.pos_x);
     orage_rc_put_int(orc, "Main window Y", g_par.pos_y);
     orage_rc_put_int(orc, "Main window size X", g_par.size_x);

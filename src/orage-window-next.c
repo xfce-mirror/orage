@@ -81,6 +81,7 @@ struct _OrageWindowNext
     GtkWidget *file_menu_new;
     GtkWidget *file_menu_close;
     GtkWidget *file_menu_quit;
+    GtkWidget *paned;
     GtkStack *stack_view;
     GtkWidget *main_view;
     GtkWidget *main_box;
@@ -600,6 +601,8 @@ static void orage_window_next_restore_state (OrageWindowNext *window)
 
     if (g_par.pos_x || g_par.pos_y)
         gtk_window_move (gtk_window, g_par.pos_x, g_par.pos_y);
+
+    gtk_paned_set_position (GTK_PANED (window->paned), g_par.paned_pos);
 }
 
 static void orage_window_next_add_menu (OrageWindowNext *self,
@@ -1027,7 +1030,7 @@ static void orage_window_next_init (OrageWindowNext *self)
     GtkWidget *spacer_right;
     GtkBox *switcher_box;
     GtkBox *main_box;
-    GtkWidget *paned;
+    GtkPaned *paned;
     const size_t n_elements = G_N_ELEMENTS (action_entries);
 
     self->selected_date = g_date_time_new_now_utc ();
@@ -1099,11 +1102,11 @@ static void orage_window_next_init (OrageWindowNext *self)
 
     self->info_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 
-    paned = gtk_paned_new (GTK_ORIENTATION_VERTICAL);
-    gtk_paned_set_wide_handle (GTK_PANED (paned), TRUE);
-    gtk_paned_pack1 (GTK_PANED (paned), GTK_WIDGET (self->stack_view), TRUE,
-                     FALSE);
-    gtk_paned_pack2 (GTK_PANED (paned), self->info_box, TRUE, TRUE);
+    self->paned = gtk_paned_new (GTK_ORIENTATION_VERTICAL);
+    paned =GTK_PANED (self->paned);
+    gtk_paned_set_wide_handle (paned, TRUE);
+    gtk_paned_pack1 (paned, GTK_WIDGET (self->stack_view), TRUE, FALSE);
+    gtk_paned_pack2 (paned, self->info_box, TRUE, TRUE);
 
     gtk_box_pack_start (main_box, GTK_WIDGET (paned), TRUE, TRUE, 0);
 
@@ -1354,4 +1357,6 @@ void orage_window_next_save_window_state (OrageWindow *window)
 
     gtk_window_get_size (gtk_window, &g_par.size_x, &g_par.size_y);
     gtk_window_get_position (gtk_window, &g_par.pos_x, &g_par.pos_y);
+    g_par.paned_pos = gtk_paned_get_position (
+            GTK_PANED (ORAGE_WINDOW_NEXT(window)->paned));
 }
