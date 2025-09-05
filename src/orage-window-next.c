@@ -1103,7 +1103,7 @@ static void orage_window_next_init (OrageWindowNext *self)
     self->info_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 
     self->paned = gtk_paned_new (GTK_ORIENTATION_VERTICAL);
-    paned =GTK_PANED (self->paned);
+    paned = GTK_PANED (self->paned);
     gtk_paned_set_wide_handle (paned, TRUE);
     gtk_paned_pack1 (paned, GTK_WIDGET (self->stack_view), TRUE, FALSE);
     gtk_paned_pack2 (paned, self->info_box, TRUE, TRUE);
@@ -1121,10 +1121,10 @@ static void orage_window_next_init (OrageWindowNext *self)
     gtk_widget_set_can_focus (GTK_WIDGET (self), TRUE);
     gtk_widget_grab_focus (GTK_WIDGET (self));
 
-    g_signal_connect (self->back_button, "clicked", G_CALLBACK (on_back_clicked),
-                      self);
-    g_signal_connect (self->next_button, "clicked", G_CALLBACK (on_next_clicked),
-                      self);
+    g_signal_connect (self->back_button, "clicked",
+                      G_CALLBACK (on_back_clicked), self);
+    g_signal_connect (self->next_button, "clicked",
+                      G_CALLBACK (on_next_clicked), self);
 
     g_signal_connect (self->month_view, "date-selected",
                       G_CALLBACK (on_date_selected), self);

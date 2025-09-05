@@ -160,7 +160,7 @@ static void orage_month_cell_init (OrageMonthCell *self)
     gtk_box_pack_start (GTK_BOX (self), self->event_box, TRUE, TRUE, 0);
 
     self->main_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-    gtk_container_add (GTK_CONTAINER(self->event_box), self->main_box);
+    gtk_container_add (GTK_CONTAINER (self->event_box), self->main_box);
 
     self->day_label = gtk_label_new (NULL);
     gtk_style_context_add_class (gtk_widget_get_style_context (self->day_label),
