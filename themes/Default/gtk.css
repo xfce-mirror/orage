@@ -122,3 +122,11 @@ OrageTrayIcon > row-3{
 OrageWindowNext .todo-label, .event-label{
     font-weight: bold;
 }
+
+paned separator{
+    /* min-height: 12px */
+    background-color: #aaa;
+    background-image: -gtk-icontheme("content-loading-symbolic");
+    background-repeat: no-repeat;
+    background-position: center;
+}

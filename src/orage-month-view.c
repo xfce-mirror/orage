@@ -498,8 +498,8 @@ static void orage_month_view_init (OrageMonthView *self)
             cell = orage_month_cell_new ();
             orage_month_cell_set_css_last (ORAGE_MONTH_CELL (cell),
                                            (row == 5), (col == 7));
-            g_object_set (cell, "hexpand", TRUE,
-                                "vexpand", TRUE,
+            g_object_set (cell, "hexpand", FALSE,
+                                "vexpand", FALSE,
                                 "halign", GTK_ALIGN_FILL,
                                 "valign", GTK_ALIGN_FILL,
                                 NULL);
