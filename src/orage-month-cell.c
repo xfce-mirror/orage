@@ -32,8 +32,8 @@ struct _OrageMonthCell
 
     guint single_click_timeout_id;
     GtkWidget *event_box;
-    GtkWidget *main_box;
     GtkWidget *day_label;
+    GtkWidget *data_box;
     GDateTime *date;
     gboolean different_month;
     gboolean selected;
@@ -52,12 +52,11 @@ static guint double_click_time = 250;
 
 G_DEFINE_TYPE (OrageMonthCell, orage_month_cell, GTK_TYPE_BOX)
 
-static void remove_children_except_first (GtkWidget *box)
+static void remove_children (GtkWidget *box)
 {
     GtkWidget *child;
     GList *children;
     GList *iter;
-    gboolean first = TRUE;
 
     g_return_if_fail (GTK_IS_BOX (box));
 
@@ -65,11 +64,7 @@ static void remove_children_except_first (GtkWidget *box)
     for (iter = children; iter != NULL; iter = iter->next)
     {
         child = GTK_WIDGET (iter->data);
-
-        if (first)
-            first = FALSE;
-        else
-            gtk_container_remove (GTK_CONTAINER (box), child);
+        gtk_widget_destroy (child);
     }
 
     g_list_free (children);
@@ -152,6 +147,9 @@ static void orage_month_cell_class_init (OrageMonthCellClass *klass)
 
 static void orage_month_cell_init (OrageMonthCell *self)
 {
+    GtkScrolledWindow *sw;
+    GtkWidget *main_box;
+
     self->different_month = TRUE;
 
     gtk_widget_set_name (GTK_WIDGET (self), "orage-month-cell");
@@ -159,15 +157,21 @@ static void orage_month_cell_init (OrageMonthCell *self)
     self->event_box = gtk_event_box_new ();
     gtk_box_pack_start (GTK_BOX (self), self->event_box, TRUE, TRUE, 0);
 
-    self->main_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-    gtk_container_add (GTK_CONTAINER (self->event_box), self->main_box);
+    main_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+    gtk_container_add (GTK_CONTAINER (self->event_box), main_box);
 
     self->day_label = gtk_label_new (NULL);
     gtk_style_context_add_class (gtk_widget_get_style_context (self->day_label),
                                  "day-label");
+    gtk_box_pack_start (GTK_BOX (main_box), self->day_label, FALSE, FALSE, 0);
 
-    gtk_box_pack_start (GTK_BOX (self->main_box), self->day_label, FALSE, FALSE,
-                        0);
+    sw = GTK_SCROLLED_WINDOW (gtk_scrolled_window_new (NULL, NULL));
+    gtk_scrolled_window_set_policy (sw, GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
+    gtk_scrolled_window_set_shadow_type (sw, GTK_SHADOW_NONE);
+    g_object_set (sw, "vexpand", TRUE, NULL);
+    gtk_box_pack_start (GTK_BOX (main_box), GTK_WIDGET (sw), TRUE, TRUE, 0);
+    self->data_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+    gtk_container_add (GTK_CONTAINER (sw), self->data_box);
 
     g_signal_connect (self->event_box, "button-press-event",
                       G_CALLBACK (on_event_box_clicked), self);
@@ -194,7 +198,7 @@ void orage_month_cell_clear (OrageMonthCell *self)
 
     gtk_label_set_text (GTK_LABEL (self->day_label), NULL);
 
-    remove_children_except_first (self->main_box);
+    remove_children (self->data_box);
 }
 
 void orage_month_cell_set_date (OrageMonthCell *self, GDateTime *date)
@@ -319,7 +323,7 @@ void orage_month_cell_add_widget (OrageMonthCell *self, GtkWidget *widget)
 {
     g_return_if_fail (ORAGE_IS_MONTH_CELL (self));
 
-    gtk_box_pack_start (GTK_BOX (self->main_box), widget, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (self->data_box), widget, FALSE, FALSE, 0);
     gtk_widget_show (widget);
 }
 
