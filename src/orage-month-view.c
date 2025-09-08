@@ -472,7 +472,7 @@ static void orage_month_view_init (OrageMonthView *self)
             gtk_style_context_add_class (style_context,
                                          CSS_MONTH_HEADER_LAST_COLUMN);
         }
-        gtk_size_group_add_widget (date_group, cell);
+
         self->label_weekday[col] = cell;
     }
 
