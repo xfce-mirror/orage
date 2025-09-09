@@ -327,7 +327,9 @@ void orage_month_cell_add_widget (OrageMonthCell *self, GtkWidget *widget)
     gtk_widget_show (widget);
 }
 
-void orage_month_cell_add_text (OrageMonthCell *self, const gchar *text)
+void orage_month_cell_insert_unique_text (OrageMonthCell *self,
+                                          const gchar *text,
+                                          const gchar *uid)
 {
     GtkWidget *label;
 

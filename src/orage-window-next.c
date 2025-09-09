@@ -1225,14 +1225,14 @@ void orage_window_next_mark_appointments (OrageWindow *window)
 {
     GDateTime *gdt_start;
     GDateTime *gdt_end;
-    OrageWindowNext *nxtwindow;
+    OrageWindowNext *self;
     const gchar *visible_name;
     enum {E_MONTH_PAGE, E_UNDEFINED_PAGE} displayed_page;
 
     g_return_if_fail (window != NULL);
 
-    nxtwindow = ORAGE_WINDOW_NEXT (window);
-    visible_name = gtk_stack_get_visible_child_name (nxtwindow->stack_view);
+    self = ORAGE_WINDOW_NEXT (window);
+    visible_name = gtk_stack_get_visible_child_name (self->stack_view);
 
     if (g_strcmp0 (MONTH_PAGE, visible_name) == 0)
         displayed_page = E_MONTH_PAGE;
@@ -1247,15 +1247,15 @@ void orage_window_next_mark_appointments (OrageWindow *window)
     if (xfical_file_open (TRUE) == FALSE)
         return;
 
-    gdt_start = orage_window_next_get_first_date (nxtwindow);
-    gdt_end = orage_window_next_get_last_date (nxtwindow);
+    gdt_start = orage_window_next_get_first_date (self);
+    gdt_end = orage_window_next_get_last_date (self);
 
     switch (displayed_page)
     {
         case E_MONTH_PAGE:
             xfical_list_events_in_range (gdt_start, gdt_end,
                                          cb_update_month_events,
-                                         nxtwindow->month_view);
+                                         self->month_view);
             break;
 
         default:

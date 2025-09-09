@@ -4476,9 +4476,9 @@ static void orage_appointment_window_finalize (GObject *object)
 }
 
 static void orage_appointment_window_get_property (GObject *object,
-                                                    const guint prop_id,
-                                                    GValue *value,
-                                                    GParamSpec *pspec)
+                                                   const guint prop_id,
+                                                   GValue *value,
+                                                   GParamSpec *pspec)
 {
     const OrageAppointmentWindow *self = ORAGE_APPOINTMENT_WINDOW (object);
 

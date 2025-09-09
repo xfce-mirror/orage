@@ -612,7 +612,9 @@ void orage_month_view_set_event (OrageMonthView *self,
                 {
                     date_found = TRUE;
                     orage_month_cell_set_highlight (cell, TRUE);
-                    orage_month_cell_add_text (cell, event_data->description);
+                    orage_month_cell_insert_unique_text (cell,
+                                                         event_data->description,
+                                                         event_data->uid);
                 }
             }
 
