@@ -448,7 +448,7 @@ msgstr "سىرتتىن كەلگەن ھۆججەت:"
 #: src/interface.c:1451 src/orage-appointment-window.c:2435
 #: src/parameters.c:1411
 msgid "_Add"
-msgstr ""
+msgstr "قوش(_A)"
 
 #: src/interface.c:1466
 msgid "Visible name:"
@@ -1365,7 +1365,7 @@ msgstr ""
 
 #: src/orage-week-window.c:532
 msgid "_OK"
-msgstr ""
+msgstr "جەزملە(_O)"
 
 #: src/orage-week-window.c:659
 msgid "Unknown"
