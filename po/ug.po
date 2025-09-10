@@ -1710,7 +1710,7 @@ msgstr "ئەسلەتكۈ - Orage"
 
 #: src/reminder.c:648
 msgid "_Stop"
-msgstr ""
+msgstr "توختا(_S)"
 
 #: src/reminder.c:656
 msgid "Postpone"
