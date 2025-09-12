@@ -246,7 +246,7 @@ msgstr "ئوقۇپ يېزىش"
 
 #: src/interface.c:673 src/orage-appointment-window.c:2359
 msgid "_Remove"
-msgstr ""
+msgstr "چىقىرىۋەت(_R)"
 
 #: src/interface.c:692
 msgid "***** No foreign files *****"
@@ -302,7 +302,7 @@ msgstr "ئاچ(_O)"
 #: src/interface.c:1055 src/interface.c:1101 src/interface.c:1275
 #: src/interface.c:1367 src/orage-appointment-window.c:4109
 msgid "_Save"
-msgstr ""
+msgstr "ساقلا(_S)"
 
 #: src/interface.c:1068
 msgid ""
@@ -697,7 +697,7 @@ msgstr ""
 
 #: src/orage-appointment-window.c:3227
 msgid "second"
-msgstr ""
+msgstr "سېكۇنت"
 
 #: src/orage-appointment-window.c:3227
 msgid "third"
@@ -1329,7 +1329,7 @@ msgstr ""
 
 #: src/orage-sync-edit-dialog.c:138
 msgid "minutes"
-msgstr ""
+msgstr "مىنۇت"
 
 #: src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task"
