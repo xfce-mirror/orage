@@ -26,6 +26,8 @@ orage_SOURCES =							\
 	orage-category.h					\
 	orage-css.c						\
 	orage-css.h						\
+	orage-event.c						\
+	orage-event.h						\
 	orage-import.c						\
 	orage-import.h						\
 	orage-month-cell.c					\
