@@ -42,6 +42,44 @@ G_DECLARE_FINAL_TYPE (OrageEvent, orage_event, ORAGE, EVENT, GObject)
 OrageEvent *orage_event_new (void);
 
 /**
+ * orage_event_set_date_start:
+ * @self: a #OrageEvent
+ * @gdt: a #GDateTime
+ *
+ * Sets the start date of @self to @gdt.
+ */
+void orage_event_set_date_start (OrageEvent *self, GDateTime *gdt);
+
+/**
+ * orage_event_get_date_start:
+ * @self: a #OrageEvent
+ *
+ * Retrieves the start date of @self.
+ *
+ * Returns: (transfer none): a #GDateTime.
+ */
+GDateTime *orage_event_get_date_start (OrageEvent *self);
+
+/**
+ * orage_event_set_date_end:
+ * @self: a #OrageEvent
+ * @gdt: a #GDateTime
+ *
+ * Sets the end date of @self to @gdt.
+ */
+void orage_event_set_date_end (OrageEvent *self, GDateTime *gdt);
+
+/**
+ * orage_event_get_date_end:
+ * @self: a #OrageEvent
+ *
+ * Retrieves the end date of @self.
+ *
+ * Returns: (transfer none): a #GDateTime.
+ */
+GDateTime *orage_event_get_date_end (OrageEvent *self);
+
+/**
  * orage_event_get_description:
  * @self: a #OrageEvent
  *

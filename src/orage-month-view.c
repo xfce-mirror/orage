@@ -21,7 +21,7 @@
 #include "orage-month-view.h"
 #include "orage-month-cell.h"
 #include "orage-i18n.h"
-#include "ical-code.h"
+#include "orage-event.h"
 #include "functions.h"
 
 #include <gtk/gtk.h>
@@ -587,18 +587,19 @@ GDateTime *orage_month_view_get_last_date (OrageMonthView *self)
     return orage_month_cell_get_date (self->month_cell[5][6]);
 }
 
-void orage_month_view_set_event (OrageMonthView *self,
-                                 xfical_event_data_t *event_data)
+void orage_month_view_set_event (OrageMonthView *self, OrageEvent *event)
 {
     guint row;
     guint col;
     gboolean date_found;
     OrageMonthCell *cell;
     GDateTime *next;
-    GDateTime *current;
+    GDateTime *gdt_start;
+    GDateTime *gdt_end;
 
-    current = g_date_time_ref (event_data->start);
-    while (g_date_time_compare (current, event_data->end) <= 0)
+    gdt_start = g_date_time_ref (orage_event_get_date_start (event));
+    gdt_end = g_date_time_ref (orage_event_get_date_end (event));
+    while (g_date_time_compare (gdt_start, gdt_end) <= 0)
     {
         for (row = 0; row < 6; row++)
         {
@@ -608,14 +609,11 @@ void orage_month_view_set_event (OrageMonthView *self,
                 cell = self->month_cell[row][col];
 
                 if (orage_gdatetime_compare_date (
-                    orage_month_cell_get_date (cell), current) == 0)
+                    orage_month_cell_get_date (cell), gdt_start) == 0)
                 {
                     date_found = TRUE;
                     orage_month_cell_set_highlight (cell, TRUE);
-                    orage_month_cell_insert_event (cell,event_data->uid,
-                                                        event_data->description,
-                                                        event_data->start,
-                                                        0);
+                    orage_month_cell_insert_event (cell, event);
                 }
             }
 
@@ -623,11 +621,12 @@ void orage_month_view_set_event (OrageMonthView *self,
                 break;
         }
 
-        next = g_date_time_add_days (current, 1);
-        g_date_time_unref (current);
+        next = g_date_time_add_days (gdt_start, 1);
+        g_date_time_unref (gdt_start);
 
-        current = next;
+        gdt_start = next;
     }
 
-    g_date_time_unref (current);
+    g_date_time_unref (gdt_start);
+    g_date_time_unref (gdt_end);
 }

@@ -24,6 +24,7 @@
 #define __ICAL_CODE_H__
 
 #include "ical-expimp.h"
+#include "orage-event.h"
 #include <gio/gio.h>
 #include <gtk/gtk.h>
 
@@ -99,16 +100,7 @@ typedef enum
     XFICAL_RECUR_MONTH_DEC
 } xfical_recur_month_sel;
 
-typedef struct _xfical_event_data
-{
-    GDateTime *start;
-    GDateTime *end;
-    const gchar *uid;
-    const gchar *description;
-} xfical_event_data_t;
-
-typedef void (*xfical_event_callback) (void *caller_param,
-                                       xfical_event_data_t *event_data);
+typedef void (*xfical_event_callback) (void *caller_param, OrageEvent *event);
 
 typedef struct _xfical_appt
 {

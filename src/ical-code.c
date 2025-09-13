@@ -66,6 +66,7 @@
 #include "interface.h"
 #include "orage-alarm-structure.h"
 #include "orage-appointment-window.h"
+#include "orage-event.h"
 #include "orage-i18n.h"
 #include "orage-window.h"
 #include "parameters.h"
@@ -3306,7 +3307,7 @@ static void mark_calendar2 (icalcomponent *c,
                             icaltime_span *span,
                             void *data)
 {
-    xfical_event_data_t event_data;
+    OrageEvent *event;
     struct icaltimetype sdate, edate;
     mark_calendar_data2 *cal_data;
     gchar *str;
@@ -3374,13 +3375,16 @@ static void mark_calendar2 (icalcomponent *c,
         gdt_end = g_date_time_ref (cal_data->gdt_last);
     }
 
-    event_data.start = gdt_start;
-    event_data.end = gdt_end;
-    event_data.uid = icalcomponent_get_uid (c);
-    event_data.description = icalcomponent_get_summary (c);
-    cal_data->cb (cal_data->cb_param, &event_data);
+    event = orage_event_new ();
+    orage_event_set_date_start (event, gdt_start);
+    orage_event_set_date_end (event, gdt_end);
+    orage_event_set_uid (event, icalcomponent_get_uid (c));
+    orage_event_set_description (event, icalcomponent_get_summary (c));
+
+    cal_data->cb (cal_data->cb_param, event);
     g_date_time_unref (gdt_start);
     g_date_time_unref (gdt_end);
+    g_object_unref (event);
 }
 
  /* Mark days from appointment c into calendar

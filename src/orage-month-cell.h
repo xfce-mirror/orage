@@ -76,33 +76,25 @@ void orage_month_cell_add_widget (OrageMonthCell *self, GtkWidget *widget);
 /**
  * orage_month_cell_insert_event:
  * @self: an #OrageMonthCell
- * @uid: (not nullable): a const gchar* unique identifier for the event
- * @text: (not nullable): a const gchar* string to display as the event label
- * @time: (not nullable): a #GDateTime indicating when the event occurs
- * @priority: an unsigned integer indicating the event priority
+ * @event: a #OrageEvent to insert
  *
- * Inserts a new event into the given month cell. Each event is uniquely
- * identified by its @uid; if an event with the same @uid already exists in the
- * cell, the function does nothing.
+ * Inserts the given event into the month cell. Each event is uniquely
+ * identified by its internal UID; if an event with the same UID already exists
+ * in the cell, the function does nothing.
  *
- * The event contains display text, a timestamp, and a priority value. A new
- * #GtkLabel is created for the event, configured to ellipsize text that does
- * not fit within the available space. The full text is also set as a tooltip
- * for accessibility. The label is automatically added to the month cell widget
- * hierarchy and will become visible immediately.
+ * A new #GtkLabel is created for the event, configured to ellipsize text that
+ * does not fit within the available space. The full text is also set as a
+ * tooltip for accessibility. The label is automatically added to the month
+ * cell widget hierarchy and will become visible immediately.
  *
  * Events are stored internally in a list sorted by their priority and/or time.
  *
- * This function takes its own reference to @time, and duplicates @uid and
- * @text. The caller retains ownership of the input parameters.
+ * This function takes its own reference to the @event object, so the month
+ * cell holds a reference and will unref it when the cell is destroyed.
+ * The caller retains ownership of the @event parameter and does not need
+ * to call g_object_ref.
  */
-void orage_month_cell_insert_event (OrageMonthCell *self,
-                                    const gchar *uid,
-                                    const gchar *text,
-                                    GDateTime *time,
-                                    guint priority);
-
-void orage_month_cell_insert_event2 (OrageMonthCell *self, OrageEvent *event);
+void orage_month_cell_insert_event (OrageMonthCell *self, OrageEvent *event);
 
 /** Emits the "clicked" signal on the given "self" instance. This function can
  *  be used to manually trigger a click event on an OrageMonthCell.

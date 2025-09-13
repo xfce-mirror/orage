@@ -29,6 +29,7 @@
 #include "orage-about.h"
 #include "orage-appointment-window.h"
 #include "orage-css.h"
+#include "orage-event.h"
 #include "orage-i18n.h"
 #include "orage-month-cell.h"
 #include "orage-month-view.h"
@@ -396,12 +397,11 @@ static void on_month_reload_requested (G_GNUC_UNUSED OrageMonthView *view,
     orage_window_next_mark_appointments (ORAGE_WINDOW (user_data));
 }
 
-static void cb_update_month_events (void *caller_param,
-                                    xfical_event_data_t *event_data)
+static void cb_update_month_events (void *caller_param, OrageEvent *event)
 {
     OrageMonthView *month_view = ORAGE_MONTH_VIEW (caller_param);
 
-    orage_month_view_set_event (month_view, event_data);
+    orage_month_view_set_event (month_view, event);
 }
 
 static void menu_clean (GtkMenu *menu)

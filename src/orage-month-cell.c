@@ -346,22 +346,7 @@ void orage_month_cell_add_widget (OrageMonthCell *self, GtkWidget *widget)
     gtk_widget_show (widget);
 }
 
-void orage_month_cell_insert_event (OrageMonthCell *self,
-                                    const gchar *uid,
-                                    const gchar *text,
-                                    GDateTime *time,
-                                    guint priority)
-{
-    OrageEvent *event;
-
-    event = orage_event_new ();
-    orage_event_set_description (event, text);
-    orage_event_set_uid (event, uid);
-
-    orage_month_cell_insert_event2 (self, event);
-}
-
-void orage_month_cell_insert_event2 (OrageMonthCell *self, OrageEvent *event)
+void orage_month_cell_insert_event (OrageMonthCell *self, OrageEvent *event)
 {
     GtkWidget *widget;
     GtkLabel *label;
@@ -386,7 +371,8 @@ void orage_month_cell_insert_event2 (OrageMonthCell *self, OrageEvent *event)
     gtk_label_set_line_wrap (label, FALSE);
     gtk_widget_set_tooltip_text (widget, description);
     orage_month_cell_add_widget (self, widget);
-    self->events = g_list_insert_sorted (self->events, event, orage_event_compare);
+    self->events = g_list_insert_sorted (self->events, g_object_ref(event),
+                                         orage_event_compare);
 }
 
 void orage_month_cell_emit_clicked (OrageMonthCell *self)

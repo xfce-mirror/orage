@@ -27,7 +27,8 @@ struct _OrageEvent
     gchar *uid;
     gchar *description;
 
-    GDateTime *dt_start;
+    GDateTime *gdt_start;
+    GDateTime *gdt_end;
 };
 
 G_DEFINE_TYPE (OrageEvent, orage_event, G_TYPE_OBJECT)
@@ -38,6 +39,8 @@ static void orage_event_finalize (GObject *object)
 
     g_clear_pointer (&self->description, g_free);
     g_clear_pointer (&self->uid, g_free);
+    g_clear_pointer (&self->gdt_start, g_date_time_unref);
+    g_clear_pointer (&self->gdt_end, g_date_time_unref);
 
     G_OBJECT_CLASS (orage_event_parent_class)->finalize (object);
 }
@@ -57,6 +60,36 @@ static void orage_event_class_init (OrageEventClass *klass)
 OrageEvent *orage_event_new (void)
 {
     return g_object_new (ORAGE_EVENT_TYPE, NULL);
+}
+
+GDateTime* orage_event_get_date_start (OrageEvent *self)
+{
+    g_return_val_if_fail (ORAGE_IS_EVENT (self), NULL);
+
+    return self->gdt_start;
+}
+
+void orage_event_set_date_start (OrageEvent *self, GDateTime *gdt)
+{
+    g_return_if_fail (ORAGE_IS_EVENT (self));
+
+    g_clear_pointer (&self->gdt_start, g_date_time_unref);
+    self->gdt_start = g_date_time_ref (gdt);
+}
+
+GDateTime* orage_event_get_date_end (OrageEvent *self)
+{
+    g_return_val_if_fail (ORAGE_IS_EVENT (self), NULL);
+
+    return self->gdt_end;
+}
+
+void orage_event_set_date_end (OrageEvent *self, GDateTime *gdt)
+{
+    g_return_if_fail (ORAGE_IS_EVENT (self));
+
+    g_clear_pointer (&self->gdt_end, g_date_time_unref);
+    self->gdt_end = g_date_time_ref (gdt);
 }
 
 const gchar *orage_event_get_description (OrageEvent *self)
@@ -108,5 +141,5 @@ gint orage_event_compare (gconstpointer event1, gconstpointer event2)
     g_return_val_if_fail (ORAGE_IS_EVENT (e1), 0);
     g_return_val_if_fail (ORAGE_IS_EVENT (e2), 0);
 
-    return g_date_time_compare (e1->dt_start, e2->dt_start);
+    return g_date_time_compare (e1->gdt_start, e2->gdt_start);
 }
