@@ -194,6 +194,34 @@ static void orage_month_cell_init (OrageMonthCell *self)
                       G_CALLBACK (on_event_box_clicked), self);
 }
 
+static void orage_month_cell_refresh_events (OrageMonthCell *self)
+{
+    GList *el;
+    OrageEvent *event;
+    const gchar *description;
+    GtkWidget *widget;
+    GtkLabel *label;
+
+    remove_children (self->data_box);
+
+    for (el = self->events; el != NULL; el = el->next)
+    {
+        event = ORAGE_EVENT (el->data);
+        description = orage_event_get_description (event); 
+        widget = gtk_label_new (description);
+        label = GTK_LABEL (widget);
+        gtk_label_set_ellipsize (label, PANGO_ELLIPSIZE_END);
+        g_object_set (widget,
+                      "hexpand", FALSE,
+                      "halign", GTK_ALIGN_START,
+                      NULL);
+        gtk_label_set_line_wrap (label, FALSE);
+        gtk_widget_set_tooltip_text (widget, description);
+
+        orage_month_cell_add_widget (self, widget);
+    }
+}
+
 GtkWidget *orage_month_cell_new (void)
 {
     return g_object_new (ORAGE_MONTH_CELL_TYPE, NULL);
@@ -348,10 +376,6 @@ void orage_month_cell_add_widget (OrageMonthCell *self, GtkWidget *widget)
 
 void orage_month_cell_insert_event (OrageMonthCell *self, OrageEvent *event)
 {
-    GtkWidget *widget;
-    GtkLabel *label;
-    const gchar *description;
-
     g_return_if_fail (self != NULL);
     g_return_if_fail (event != NULL);
 
@@ -361,18 +385,9 @@ void orage_month_cell_insert_event (OrageMonthCell *self, OrageEvent *event)
         return;
     }
 
-    description = orage_event_get_description (event);
-    widget = gtk_label_new (description);
-    label = GTK_LABEL (widget);
-    gtk_label_set_ellipsize (label, PANGO_ELLIPSIZE_END);
-    g_object_set (widget, "hexpand", FALSE,
-                          "halign", GTK_ALIGN_START,
-                          NULL);
-    gtk_label_set_line_wrap (label, FALSE);
-    gtk_widget_set_tooltip_text (widget, description);
-    orage_month_cell_add_widget (self, widget);
-    self->events = g_list_insert_sorted (self->events, g_object_ref(event),
+    self->events = g_list_insert_sorted (self->events, g_object_ref (event),
                                          orage_event_compare);
+    orage_month_cell_refresh_events (self);
 }
 
 void orage_month_cell_emit_clicked (OrageMonthCell *self)
