@@ -3300,6 +3300,27 @@ static void mark_calendar (G_GNUC_UNUSED icalcomponent *c,
                                      edate.day);
 }
 
+static GDateTime *span_to_gdt (const time_t t, const gchar *tz_identifier)
+{
+    GTimeZone *tz;
+    GDateTime *gdt;
+    GDateTime *gdt_tmp;;
+
+    tz = g_time_zone_new_identifier (tz_identifier);
+    if (tz == NULL)
+    {
+        g_debug ("%s @ %d: failed to convert timezone '%s'",
+                 G_STRFUNC, __LINE__, tz_identifier);
+    }
+
+    gdt_tmp = g_date_time_new_from_unix_utc (t);
+    gdt = g_date_time_to_timezone (gdt_tmp, tz);
+    g_date_time_unref (gdt_tmp);
+    g_time_zone_unref (tz);
+
+    return gdt;
+}
+
 /* Note that this not understand timezones, but gets always raw time, which we
  * need to convert to correct timezone.
  */
@@ -3374,6 +3395,11 @@ static void mark_calendar2 (icalcomponent *c,
         g_date_time_unref (gdt_end);
         gdt_end = g_date_time_ref (cal_data->gdt_last);
     }
+
+    g_date_time_unref (gdt_start);
+    g_date_time_unref (gdt_end);
+    gdt_start = span_to_gdt (span->start, cal_data->appt.start_tz_loc);
+    gdt_end = span_to_gdt (span->end, cal_data->appt.end_tz_loc);
 
     event = orage_event_new ();
     orage_event_set_date_start (event, gdt_start);
