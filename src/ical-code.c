@@ -3309,8 +3309,10 @@ static GDateTime *span_to_gdt (const time_t t, const gchar *tz_identifier)
     tz = g_time_zone_new_identifier (tz_identifier);
     if (tz == NULL)
     {
-        g_debug ("%s @ %d: failed to convert timezone '%s'",
+        g_debug ("%s @ %d: failed to convert timezone '%s', "
+                 "using local timezone",
                  G_STRFUNC, __LINE__, tz_identifier);
+        tz = g_time_zone_new_local ();
     }
 
     gdt_tmp = g_date_time_new_from_unix_utc (t);
