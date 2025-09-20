@@ -376,13 +376,22 @@ void orage_month_cell_add_widget (OrageMonthCell *self, GtkWidget *widget)
 
 void orage_month_cell_insert_event (OrageMonthCell *self, OrageEvent *event)
 {
+    GList *found;
+    OrageEvent *event_to_remove;
+
     g_return_if_fail (self != NULL);
     g_return_if_fail (event != NULL);
 
-    if (g_list_find_custom (self->events, event, orage_event_equal_by_id))
+    found = g_list_find_custom (self->events, event, orage_event_equal_by_id);
+
+    if (found)
     {
-        g_debug ("%s: event is alredy listed", G_STRFUNC);
-        return;
+        g_debug ("%s: event UUID '%s' is alredy listed, updating", G_STRFUNC,
+                 orage_event_get_uid (event));
+
+        event_to_remove = found->data;
+        self->events = g_list_remove (self->events, event_to_remove);
+        g_object_unref (event_to_remove);
     }
 
     self->events = g_list_insert_sorted (self->events, g_object_ref (event),
