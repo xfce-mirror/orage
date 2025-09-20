@@ -646,13 +646,11 @@ static void orage_window_next_add_todo_box (OrageWindowNext *self)
     GtkWidget *todo_label;
 
     self->todo_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 5);
-    gtk_box_pack_start (GTK_BOX (self->info_box),  self->todo_box, TRUE,
-                        TRUE, 0);
-
     g_object_set (self->todo_box, "vexpand", TRUE,
                                   "valign", GTK_ALIGN_FILL,
                                   NULL);
-
+    gtk_box_pack_start (GTK_BOX (self->info_box), self->todo_box, TRUE,
+                        TRUE, 0);
     todo_label = gtk_label_new (_("To do:"));
     gtk_style_context_add_class (gtk_widget_get_style_context (todo_label),
                                  "todo-label");
@@ -663,8 +661,8 @@ static void orage_window_next_add_todo_box (OrageWindowNext *self)
     gtk_scrolled_window_set_policy (sw, GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
     gtk_scrolled_window_set_shadow_type (sw, GTK_SHADOW_NONE);
     g_object_set (sw, "vexpand", TRUE, NULL);
-    gtk_box_pack_start (GTK_BOX (self->todo_box),  GTK_WIDGET (sw), TRUE,
-                        TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (self->todo_box), GTK_WIDGET (sw), FALSE,
+                        FALSE, 0);
     self->todo_rows_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 5);
     gtk_container_add (GTK_CONTAINER (sw), self->todo_rows_box);
 }
@@ -679,7 +677,7 @@ static void orage_window_next_add_event_box (OrageWindowNext *self)
     g_object_set (self->event_box, "vexpand", TRUE,
                                    "valign", GTK_ALIGN_FILL,
                                    NULL);
-    gtk_box_pack_start (GTK_BOX (self->info_box),  self->event_box, TRUE,
+    gtk_box_pack_start (GTK_BOX (self->info_box), self->event_box, TRUE,
                         TRUE, 0);
     event_label = gtk_label_new (NULL);
     self->event_label = event_label;
