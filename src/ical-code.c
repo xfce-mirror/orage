@@ -3619,8 +3619,8 @@ static void xfical_get_event_from_component (icalcomponent *c,
                 gchar *begin_text = g_date_time_format_iso8601 (gdt_start);
                 gchar *end_text = g_date_time_format_iso8601 (gdt_end);
 
-                g_debug ("TODO: %s@%d: start='%s' / end='%s'",
-                         G_STRFUNC, __LINE__, begin_text, end_text);
+                g_debug ("TODO: %s@%d: start='%s' / end='%s', start year=%d",
+                         G_STRFUNC, __LINE__, begin_text, end_text, start.year);
 
                 g_free (begin_text);
                 g_free (end_text);
@@ -3669,28 +3669,32 @@ static void xfical_get_event_from_component (icalcomponent *c,
             gchar *begin_text = g_date_time_format_iso8601 (gdt_start);
             gchar *end_text = g_date_time_format_iso8601 (gdt_end);
 
-            g_debug ("TODO: %s@%d: start='%s' / end='%s'", G_STRFUNC, __LINE__,
-                     begin_text, end_text);
+            g_debug ("TODO: VTODO element %s@%d: start='%s' / end='%s'",
+                     G_STRFUNC, __LINE__, begin_text, end_text);
             g_free (begin_text);
             g_free (end_text);
         }
 #endif
-#if 0
         per = ic_get_period (c, TRUE);
         marked = FALSE;
+
         if (icaltime_is_null_time (per.ctime) || (local_compare(per.ctime, per.stime) < 0))
         {
             /* VTODO needs to be checked either if it never completed or it has
              * completed before start.
              */
+#if 0
             marked = xfical_mark_calendar_days (gtkcal, year, month,
                                                 per.etime.year, per.etime.month,
                                                 per.etime.day, per.etime.year,
                                                 per.etime.month, per.etime.day);
+#endif
         }
+
         if (!marked && (p = icalcomponent_get_first_property(c, ICAL_RRULE_PROPERTY)) != NULL)
         {
             /* Check recurring TODOs. */
+#if 0
             nsdate = icaltime_null_time ();
             rrule = icalproperty_get_rrule (p);
             set_todo_times (c, &per); /* may change per.stime to per.ctime */
@@ -3716,8 +3720,8 @@ static void xfical_get_event_from_component (icalcomponent *c,
                                                   nedate.day, nedate.year,
                                                   nedate.month, nedate.day);
             }
-        }
 #endif
+        }
     }
 }
 
