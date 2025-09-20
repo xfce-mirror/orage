@@ -102,6 +102,18 @@ const gchar *orage_event_get_description (OrageEvent *self);
 void orage_event_set_description (OrageEvent *self, const gchar *description);
 
 /**
+ * orage_event_get_uid:
+ * @self: a #OrageEvent
+ *
+ * Gets the unique identifier (UID) of @self.
+ *
+ * Returns: (transfer none): the UID string of @self, or an empty string if no
+ *          UID has been set. The returned string is owned by @self and  must
+ *          not be freed or modified.
+ */
+const gchar *orage_event_get_uid (OrageEvent *self);
+
+/**
  * orage_event_set_uid:
  * @self: a #OrageEvent
  * @uid: (nullable): a unique identifier string

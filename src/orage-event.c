@@ -107,6 +107,13 @@ void orage_event_set_description (OrageEvent *self, const gchar *description)
     self->description = g_strdup (description);
 }
 
+const gchar *orage_event_get_uid (OrageEvent *self)
+{
+    g_return_val_if_fail (ORAGE_IS_EVENT (self), NULL);
+
+    return self->uid ? self->uid : "";
+}
+
 void orage_event_set_uid (OrageEvent *self, const gchar *uid)
 {
     g_return_if_fail (ORAGE_IS_EVENT (self));
