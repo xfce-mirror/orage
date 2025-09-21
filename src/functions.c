@@ -41,6 +41,7 @@
 #include <glib/gstdio.h>
 #include <gtk/gtk.h>
 #include <libxfce4ui/libxfce4ui.h>
+#include <libical/ical.h>
 
 #include "functions.h"
 #include "orage-i18n.h"
@@ -713,6 +714,13 @@ GDateTime *orage_icaltime_to_gdatetime (const gchar *icaltime)
 
     return g_date_time_new_local (t.tm_year, t.tm_mon, t.tm_mday, t.tm_hour,
                                   t.tm_min, t.tm_sec);
+}
+
+GDateTime *orage_icaltimetype_to_gdatetime (struct icaltimetype *icaltime)
+{
+    return g_date_time_new_local (icaltime->year, icaltime->month,
+                                  icaltime->day, icaltime->hour,
+                                  icaltime->minute, icaltime->second);
 }
 
 gchar *orage_gdatetime_to_i18_time (GDateTime *gdt, const gboolean date_only)

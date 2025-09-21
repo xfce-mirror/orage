@@ -3567,7 +3567,7 @@ static void xfical_get_event_from_component (icalcomponent *c,
     struct icaltimetype start;
     mark_calendar_data2 cal_data;
 
-#if 0
+#if 1
     g_debug ("TODO: %s@%d some parts still unimplemented", G_STRFUNC, __LINE__);
 #endif
 
@@ -3622,26 +3622,9 @@ static void xfical_get_event_from_component (icalcomponent *c,
         }
         else
         {
-#if 1
-            {
-                gchar *begin_text = g_date_time_format_iso8601 (gdt_start);
-                gchar *end_text = g_date_time_format_iso8601 (gdt_end);
-
-                g_debug ("TODO: before 1970 %s@%d: start='%s' / end='%s', start year=%d",
-                         G_STRFUNC, __LINE__, begin_text, end_text, start.year);
-
-                g_free (begin_text);
-                g_free (end_text);
-            }
-#endif
             per = ic_get_period (c, TRUE);
-            gdt_event_start = g_date_time_new_local (per.stime.year,
-                per.stime.month, per.stime.day, per.stime.hour,
-                per.stime.minute, per.stime.second);
-            gdt_event_end = g_date_time_new_local (per.etime.year,
-                per.etime.month, per.etime.day, per.etime.hour,
-                per.etime.minute, per.etime.second);
-
+            gdt_event_start = orage_icaltimetype_to_gdatetime (&per.stime);
+            gdt_event_end = orage_icaltimetype_to_gdatetime (&per.etime);
             event = orage_event_new ();
             orage_event_set_date_start (event, gdt_event_start);
             orage_event_set_date_end (event, gdt_event_end);
@@ -3654,7 +3637,18 @@ static void xfical_get_event_from_component (icalcomponent *c,
             p = icalcomponent_get_first_property (c, ICAL_RRULE_PROPERTY);
             if (p)
             {
-                g_debug ("TODO: before 1970 RRULE %s@%d", G_STRFUNC, __LINE__);
+#if 1
+                {
+                    gchar *begin_text = g_date_time_format_iso8601 (gdt_start);
+                    gchar *end_text = g_date_time_format_iso8601 (gdt_end);
+
+                    g_debug ("TODO: before 1970 RRULE %s@%d: start='%s' / end='%s', start year=%d",
+                             G_STRFUNC, __LINE__, begin_text, end_text, start.year);
+
+                    g_free (begin_text);
+                    g_free (end_text);
+                }
+#endif
                 nsdate = icaltime_null_time ();
                 rrule = icalproperty_get_rrule (p);
                 ri = icalrecur_iterator_new (rrule, per.stime);
@@ -3689,10 +3683,7 @@ static void xfical_get_event_from_component (icalcomponent *c,
             /* VTODO needs to be checked either if it never completed or it has
              * completed before start.
              */
-            gdt_todo = g_date_time_new_local (per.etime.year, per.etime.month,
-                                              per.etime.day, per.etime.hour,
-                                              per.etime.minute,
-                                              per.etime.second);
+            gdt_todo = orage_icaltimetype_to_gdatetime (&per.etime);
             event = orage_event_new ();
             orage_event_set_date_start (event, gdt_todo);
             orage_event_set_date_end (event, gdt_todo);

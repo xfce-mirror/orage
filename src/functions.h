@@ -25,6 +25,7 @@
 
 #include <glib.h>
 #include <gtk/gtk.h>
+#include <libical/ical.h>
 
 #define ORAGE_APP_ID "org.xfce.orage"
 #define ORAGE_DIR "orage" G_DIR_SEPARATOR_S
@@ -136,6 +137,25 @@ gint orage_gdatetime_compare_date (GDateTime *gdt1, GDateTime *gdt2);
  *          information
  */
 GDateTime *orage_icaltime_to_gdatetime (const gchar *i18_date);
+
+/**
+ * orage_icaltimetype_to_gdatetime:
+ * @icaltime: (not nullable): an #icaltimetype structure to convert
+ *
+ * Converts an iCalendar @icaltime into a GLib #GDateTime.
+ * The returned #GDateTime is created in the local time zone.
+ *
+ * Returns: (transfer full) (nullable): a new #GDateTime, or %NULL if
+ * the given values are invalid. The caller must free the returned value
+ * with g_date_time_unref().
+ *
+ * Notes:
+ * - The time zone information in @icaltime is not used; the conversion
+ *   always assumes the system local time zone.
+ * - If @icaltime only contains a date (without time), the resulting
+ *   #GDateTime will be created with the time set to 00:00:00.
+ */
+GDateTime *orage_icaltimetype_to_gdatetime (struct icaltimetype *icaltime);
 
 /** Return GDateTime from GTK calendar. This function set hour and minute values
  *  as well.
