@@ -3553,6 +3553,8 @@ static void xfical_get_event_from_component (icalcomponent *c,
                                              void *param)
 {
     GDateTime *gdt_todo;
+    GDateTime *gdt_event_start;
+    GDateTime *gdt_event_end;
     OrageEvent *event;
     xfical_period per;
     struct icaltimetype nsdate, nedate;
@@ -3565,7 +3567,9 @@ static void xfical_get_event_from_component (icalcomponent *c,
     struct icaltimetype start;
     mark_calendar_data2 cal_data;
 
+#if 0
     g_debug ("TODO: %s@%d some parts still unimplemented", G_STRFUNC, __LINE__);
+#endif
 
     /* Note that all VEVENTS are marked, but only the first VTODO end date is
      * marked.
@@ -3623,7 +3627,7 @@ static void xfical_get_event_from_component (icalcomponent *c,
                 gchar *begin_text = g_date_time_format_iso8601 (gdt_start);
                 gchar *end_text = g_date_time_format_iso8601 (gdt_end);
 
-                g_debug ("TODO: %s@%d: start='%s' / end='%s', start year=%d",
+                g_debug ("TODO: before 1970 %s@%d: start='%s' / end='%s', start year=%d",
                          G_STRFUNC, __LINE__, begin_text, end_text, start.year);
 
                 g_free (begin_text);
@@ -3631,16 +3635,26 @@ static void xfical_get_event_from_component (icalcomponent *c,
             }
 #endif
             per = ic_get_period (c, TRUE);
-#if 0
-            (void)xfical_mark_calendar_days (gtkcal, year, month,
-                                             per.stime.year, per.stime.month,
-                                             per.stime.day, per.etime.year,
-                                             per.etime.month, per.etime.day);
-#endif
+            gdt_event_start = g_date_time_new_local (per.stime.year,
+                per.stime.month, per.stime.day, per.stime.hour,
+                per.stime.minute, per.stime.second);
+            gdt_event_end = g_date_time_new_local (per.etime.year,
+                per.etime.month, per.etime.day, per.etime.hour,
+                per.etime.minute, per.etime.second);
+
+            event = orage_event_new ();
+            orage_event_set_date_start (event, gdt_event_start);
+            orage_event_set_date_end (event, gdt_event_end);
+            orage_event_set_uid (event, icalcomponent_get_uid (c));
+            orage_event_set_description (event, icalcomponent_get_summary (c));
+            cb (param, event);
+            g_date_time_unref (gdt_event_start);
+            g_date_time_unref (gdt_event_end);
+            g_object_unref (event);
             p = icalcomponent_get_first_property (c, ICAL_RRULE_PROPERTY);
             if (p)
             {
-                g_debug ("TODO: %s@%d", G_STRFUNC, __LINE__);
+                g_debug ("TODO: before 1970 RRULE %s@%d", G_STRFUNC, __LINE__);
                 nsdate = icaltime_null_time ();
                 rrule = icalproperty_get_rrule (p);
                 ri = icalrecur_iterator_new (rrule, per.stime);
@@ -3660,8 +3674,6 @@ static void xfical_get_event_from_component (icalcomponent *c,
                                                          nedate.day);
                     }
                 }
-#else
-                g_debug ("TODO: %s@%d", G_STRFUNC, __LINE__);
 #endif
                 icalrecur_iterator_free (ri);
             }
@@ -3691,7 +3703,7 @@ static void xfical_get_event_from_component (icalcomponent *c,
             g_object_unref (event);
         }
 
-        if (!marked && (p = icalcomponent_get_first_property(c, ICAL_RRULE_PROPERTY)) != NULL)
+        if ((marked == FALSE) && (p = icalcomponent_get_first_property (c, ICAL_RRULE_PROPERTY)) != NULL)
         {
             /* Check recurring TODOs. */
 #if 1
@@ -3703,7 +3715,7 @@ static void xfical_get_event_from_component (icalcomponent *c,
                          G_STRFUNC, __LINE__, begin_text, end_text);
                 g_free (begin_text);
                 g_free (end_text);
-        }
+            }
 #endif
 #if 0
             nsdate = icaltime_null_time ();
