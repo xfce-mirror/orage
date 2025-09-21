@@ -3552,6 +3552,8 @@ static void xfical_get_event_from_component (icalcomponent *c,
                                              xfical_event_callback cb,
                                              void *param)
 {
+    GDateTime *gdt_todo;
+    OrageEvent *event;
     xfical_period per;
     struct icaltimetype nsdate, nedate;
     struct icalrecurrencetype rrule;
@@ -3563,8 +3565,10 @@ static void xfical_get_event_from_component (icalcomponent *c,
     struct icaltimetype start;
     mark_calendar_data2 cal_data;
 
-    /* Note that all VEVENTS are marked, but only the first VTODO
-     * end date is marked
+    g_debug ("TODO: %s@%d some parts still unimplemented", G_STRFUNC, __LINE__);
+
+    /* Note that all VEVENTS are marked, but only the first VTODO end date is
+     * marked.
      */
     kind = icalcomponent_isa (c);
     if (kind == ICAL_VEVENT_COMPONENT)
@@ -3595,7 +3599,7 @@ static void xfical_get_event_from_component (icalcomponent *c,
             /* BUG 7929. If calendar file contains same timezone definition than
              * what the time is in, libical returns wrong time in span. But as
              * the hour only changes with HOURLY repeating appointments, we can
-             * replace received hour with the hour from start time
+             * replace received hour with the hour from start time.
              */
             p = icalcomponent_get_first_property (c, ICAL_DTSTART_PROPERTY);
             start = icalproperty_get_dtstart (p);
@@ -3636,6 +3640,7 @@ static void xfical_get_event_from_component (icalcomponent *c,
             p = icalcomponent_get_first_property (c, ICAL_RRULE_PROPERTY);
             if (p)
             {
+                g_debug ("TODO: %s@%d", G_STRFUNC, __LINE__);
                 nsdate = icaltime_null_time ();
                 rrule = icalproperty_get_rrule (p);
                 ri = icalrecur_iterator_new (rrule, per.stime);
@@ -3664,36 +3669,42 @@ static void xfical_get_event_from_component (icalcomponent *c,
     }
     else if (kind == ICAL_VTODO_COMPONENT)
     {
-#if 1
-        {
-            gchar *begin_text = g_date_time_format_iso8601 (gdt_start);
-            gchar *end_text = g_date_time_format_iso8601 (gdt_end);
-
-            g_debug ("TODO: VTODO element %s@%d: start='%s' / end='%s'",
-                     G_STRFUNC, __LINE__, begin_text, end_text);
-            g_free (begin_text);
-            g_free (end_text);
-        }
-#endif
         per = ic_get_period (c, TRUE);
         marked = FALSE;
 
-        if (icaltime_is_null_time (per.ctime) || (local_compare(per.ctime, per.stime) < 0))
+        if (icaltime_is_null_time (per.ctime) || (local_compare (per.ctime, per.stime) < 0))
         {
             /* VTODO needs to be checked either if it never completed or it has
              * completed before start.
              */
-#if 0
-            marked = xfical_mark_calendar_days (gtkcal, year, month,
-                                                per.etime.year, per.etime.month,
-                                                per.etime.day, per.etime.year,
-                                                per.etime.month, per.etime.day);
-#endif
+            gdt_todo = g_date_time_new_local (per.etime.year, per.etime.month,
+                                              per.etime.day, per.etime.hour,
+                                              per.etime.minute,
+                                              per.etime.second);
+            event = orage_event_new ();
+            orage_event_set_date_start (event, gdt_todo);
+            orage_event_set_date_end (event, gdt_todo);
+            orage_event_set_uid (event, icalcomponent_get_uid (c));
+            orage_event_set_description (event, icalcomponent_get_summary (c));
+            cb (param, event);
+            g_date_time_unref (gdt_todo);
+            g_object_unref (event);
         }
 
         if (!marked && (p = icalcomponent_get_first_property(c, ICAL_RRULE_PROPERTY)) != NULL)
         {
             /* Check recurring TODOs. */
+#if 1
+            {
+                gchar *begin_text = g_date_time_format_iso8601 (gdt_start);
+                gchar *end_text = g_date_time_format_iso8601 (gdt_end);
+
+                g_debug ("TODO: recurring VTODO element %s@%d: start='%s' / end='%s'",
+                         G_STRFUNC, __LINE__, begin_text, end_text);
+                g_free (begin_text);
+                g_free (end_text);
+        }
+#endif
 #if 0
             nsdate = icaltime_null_time ();
             rrule = icalproperty_get_rrule (p);
