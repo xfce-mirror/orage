@@ -123,6 +123,74 @@ static void on_month_cell_double_clicked (OrageMonthCell *cell,
                    cell);
 }
 
+static void on_date_dialog_response (GtkDialog *dialog,
+                                     gint response_id,
+                                     gpointer user_data)
+{
+    GDateTime *gdt;
+    GtkWidget *calendar = NULL;
+    GtkWidget *content_area;
+    GList *children;
+
+    if (response_id == GTK_RESPONSE_OK)
+    {
+        content_area = gtk_dialog_get_content_area (dialog);
+        children = gtk_container_get_children (GTK_CONTAINER (content_area));
+
+        if (children)
+        {
+            /* Currently we have only one children, we don't need to search
+             * calendar.
+             */
+            calendar = GTK_WIDGET (children->data);
+        }
+
+        if (calendar)
+        {
+            gdt = orage_cal_to_gdatetime (GTK_CALENDAR (calendar), 0, 0);
+            orage_month_view_set_month ((OrageMonthView *)user_data, gdt);
+        }
+        else
+            g_error ("%s: no calendar component", G_STRFUNC);
+    }
+
+    gtk_widget_destroy (GTK_WIDGET (dialog));
+}
+
+static gboolean on_date_label_clicked (G_GNUC_UNUSED GtkWidget *widget,
+                                       GdkEventButton *event,
+                                       gpointer user_data)
+{
+    GtkWidget *toplevel;
+    GtkWidget *calendar;
+    GtkWidget *dialog;
+    GtkWindow *parent;
+
+    if ((event->type == GDK_BUTTON_PRESS) && (event->button == 1))
+    {
+        toplevel = gtk_widget_get_toplevel ((GtkWidget *)user_data);
+        parent = GTK_IS_WINDOW (toplevel) ? GTK_WINDOW (toplevel) : NULL;
+
+        dialog = gtk_dialog_new_with_buttons (_("Pick the date"),
+                                              parent,
+                                              GTK_DIALOG_MODAL,
+                                              "_OK", GTK_RESPONSE_OK,
+                                              "_Cancel", GTK_RESPONSE_CANCEL,
+                                              NULL);
+        calendar = gtk_calendar_new ();
+        gtk_container_add (
+            GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (dialog))),
+            calendar);
+
+        g_signal_connect (dialog, "response",
+                          G_CALLBACK (on_date_dialog_response), user_data);
+
+        gtk_widget_show_all (dialog);
+    }
+
+    return TRUE;
+}
+
 static GDateTime *orage_month_view_get_first_day_of_month (OrageMonthView *self)
 {
     GDateTime *gdt = self->date;
@@ -428,6 +496,7 @@ static void orage_month_view_init (OrageMonthView *self)
     GtkStyleContext *style_context;
     GtkSizeGroup *date_group;
     GtkWidget *cell;
+    GtkWidget *event_box;
     guint row;
     guint col;
 
@@ -441,11 +510,13 @@ static void orage_month_view_init (OrageMonthView *self)
 
     self->main_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 2);
 
+    event_box = gtk_event_box_new ();
     self->month_label = gtk_label_new (NULL);
+    gtk_container_add (GTK_CONTAINER (event_box), self->month_label);
+
     gtk_style_context_add_class (
         gtk_widget_get_style_context (self->month_label), "month-label");
-    gtk_box_pack_start (GTK_BOX (self->main_box), self->month_label, FALSE,
-                        TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (self->main_box), event_box, FALSE, TRUE, 0);
 
     self->month_grid = gtk_grid_new ();
     g_object_set (self->month_grid, "hexpand", TRUE,
@@ -520,6 +591,9 @@ static void orage_month_view_init (OrageMonthView *self)
     gtk_box_pack_start (GTK_BOX (self->main_box), self->month_grid, TRUE, TRUE,
                         0);
     gtk_box_pack_start (GTK_BOX (&self->parent), self->main_box, TRUE, TRUE, 0);
+
+    g_signal_connect (event_box, "button-press-event",
+                      G_CALLBACK (on_date_label_clicked), self);
 }
 
 GtkWidget *orage_month_view_new (const FirstDayOfWeek first_day)
