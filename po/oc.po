@@ -564,7 +564,7 @@ msgstr "\tArchivatge pas utilizat.\n"
 
 #: src/orage-application.c:692
 msgid "Open today's tasks"
-msgstr "Dobrir los prètzfaches d’uèi"
+msgstr "Dobrir los prètzfaits d’uèi"
 
 #: src/orage-application.c:701
 msgid "Add new appointment"
@@ -1023,7 +1023,7 @@ msgstr "Disponibilitat"
 
 #: src/orage-appointment-window.c:3700
 msgid "Done"
-msgstr "Fach"
+msgstr "Fait"
 
 #. categories
 #: src/orage-appointment-window.c:3724
@@ -1495,7 +1495,7 @@ msgstr ""
 "Títol : %s\n"
 "%s Començament :\t%s\n"
 " Escasença :\t%s\n"
-" Fach :\t%s%s"
+" Fait :\t%s%s"
 
 #: src/orage-window.c:477
 #, c-format
@@ -1624,11 +1624,11 @@ msgstr "Totjorn en dessús"
 
 #: src/parameters.c:956
 msgid "Show in taskbar"
-msgstr "Afichar dins la barra dels prètzfaches"
+msgstr "Afichar dins la barra dels prètzfaits"
 
 #: src/parameters.c:961
 msgid "Show in pager"
-msgstr "Afichar dins lo pager"
+msgstr "Afichar dins l‘afichatge de paginacion"
 
 #: src/parameters.c:969
 msgid "Show in systray"
