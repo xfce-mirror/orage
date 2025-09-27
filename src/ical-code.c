@@ -3326,9 +3326,7 @@ static GDateTime *span_to_gdt (const time_t t, const gchar *tz_identifier)
 /* Note that this not understand timezones, but gets always raw time, which we
  * need to convert to correct timezone.
  */
-static void mark_calendar2 (icalcomponent *c,
-                            icaltime_span *span,
-                            void *data)
+static void mark_calendar2 (icalcomponent *c, icaltime_span *span, void *data)
 {
     OrageEvent *event;
     struct icaltimetype sdate, edate;
@@ -3585,93 +3583,34 @@ static void xfical_get_event_from_component (icalcomponent *c,
         nedate = icaltime_from_string (tmp);
         g_free (tmp);
 
-        /* FIXME: we read the whole appointent just to get start and end
-         * timezones for mark_calendar. Too heavy?
-         * 1970 check due to bug 9507
+        p = icalcomponent_get_first_property (c, ICAL_DTSTART_PROPERTY);
+        start = icalproperty_get_dtstart (p);
+        cal_data.cb = cb;
+        cal_data.cb_param = param;
+        cal_data.gdt_first = g_date_time_ref (gdt_start);
+        cal_data.gdt_last = g_date_time_ref (gdt_end);
+        cal_data.year = g_date_time_get_year (gdt_start);
+        cal_data.month = g_date_time_get_month (gdt_start);
+        (void)get_appt_from_icalcomponent (c, &cal_data.appt);
+        /* BUG 7929. If calendar file contains same timezone definition than
+         * what the time is in, libical returns wrong time in span. But as
+         * the hour only changes with HOURLY repeating appointments, we can
+         * replace received hour with the hour from start time.
          */
         p = icalcomponent_get_first_property (c, ICAL_DTSTART_PROPERTY);
         start = icalproperty_get_dtstart (p);
-        if (start.year >= 1970)
-        {
-            cal_data.cb = cb;
-            cal_data.cb_param = param;
-            cal_data.gdt_first = g_date_time_ref (gdt_start);
-            cal_data.gdt_last = g_date_time_ref (gdt_end);
-            cal_data.year = g_date_time_get_year (gdt_start);
-            cal_data.month = g_date_time_get_month (gdt_start);
-            (void)get_appt_from_icalcomponent (c, &cal_data.appt);
-            /* BUG 7929. If calendar file contains same timezone definition than
-             * what the time is in, libical returns wrong time in span. But as
-             * the hour only changes with HOURLY repeating appointments, we can
-             * replace received hour with the hour from start time.
-             */
-            p = icalcomponent_get_first_property (c, ICAL_DTSTART_PROPERTY);
-            start = icalproperty_get_dtstart (p);
-            cal_data.orig_start_hour = start.hour;
-            icalcomponent_foreach_recurrence (c, nsdate, nedate, mark_calendar2,
-                                              &cal_data);
-            g_free (cal_data.appt.categories);
-            orage_gdatetime_unref (cal_data.appt.starttime);
-            cal_data.appt.starttime = NULL;
-            orage_gdatetime_unref (cal_data.appt.endtime);
-            cal_data.appt.endtime = NULL;
-            orage_gdatetime_unref (cal_data.gdt_first);
-            cal_data.gdt_first = NULL;
-            orage_gdatetime_unref (cal_data.gdt_last);
-            cal_data.gdt_last = NULL;
-        }
-        else
-        {
-            per = ic_get_period (c, TRUE);
-            gdt_event_start = orage_icaltimetype_to_gdatetime (&per.stime);
-            gdt_event_end = orage_icaltimetype_to_gdatetime (&per.etime);
-            event = orage_event_new ();
-            orage_event_set_date_start (event, gdt_event_start);
-            orage_event_set_date_end (event, gdt_event_end);
-            orage_event_set_uid (event, icalcomponent_get_uid (c));
-            orage_event_set_description (event, icalcomponent_get_summary (c));
-            cb (param, event);
-            g_date_time_unref (gdt_event_start);
-            g_date_time_unref (gdt_event_end);
-            g_object_unref (event);
-            p = icalcomponent_get_first_property (c, ICAL_RRULE_PROPERTY);
-            if (p)
-            {
-#if 1
-                {
-                    gchar *begin_text = g_date_time_format_iso8601 (gdt_start);
-                    gchar *end_text = g_date_time_format_iso8601 (gdt_end);
-
-                    g_debug ("TODO: before 1970 RRULE %s@%d: start='%s' / end='%s', start year=%d",
-                             G_STRFUNC, __LINE__, begin_text, end_text, start.year);
-
-                    g_free (begin_text);
-                    g_free (end_text);
-                }
-#endif
-                nsdate = icaltime_null_time ();
-                rrule = icalproperty_get_rrule (p);
-                ri = icalrecur_iterator_new (rrule, per.stime);
-#if 0
-                for (nsdate = icalrecur_iterator_next(ri), nedate = icaltime_add(nsdate, per.duration);
-                     !icaltime_is_null_time(nsdate) && (nsdate.year * 12 + nsdate.month) <= (int) (year * 12 + month);
-                     nsdate = icalrecur_iterator_next(ri), nedate = icaltime_add(nsdate, per.duration))
-                {
-                    if (!icalproperty_recurrence_is_excluded (c, &per.stime, &nsdate))
-                    {
-                        (void)xfical_mark_calendar_days (gtkcal, year, month,
-                                                         nsdate.year,
-                                                         nsdate.month,
-                                                         nsdate.day,
-                                                         nedate.year,
-                                                         nedate.month,
-                                                         nedate.day);
-                    }
-                }
-#endif
-                icalrecur_iterator_free (ri);
-            }
-        }
+        cal_data.orig_start_hour = start.hour;
+        icalcomponent_foreach_recurrence (c, nsdate, nedate, mark_calendar2,
+                                          &cal_data);
+        g_free (cal_data.appt.categories);
+        orage_gdatetime_unref (cal_data.appt.starttime);
+        cal_data.appt.starttime = NULL;
+        orage_gdatetime_unref (cal_data.appt.endtime);
+        cal_data.appt.endtime = NULL;
+        orage_gdatetime_unref (cal_data.gdt_first);
+        cal_data.gdt_first = NULL;
+        orage_gdatetime_unref (cal_data.gdt_last);
+        cal_data.gdt_last = NULL;
     }
     else if (kind == ICAL_VTODO_COMPONENT)
     {
