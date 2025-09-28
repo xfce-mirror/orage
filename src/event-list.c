@@ -686,7 +686,7 @@ void refresh_el_win(el_win *el)
                 search_data(el);
                 break;
             default:
-                g_warning ("%s: unknown tab", G_STRFUNC);
+                g_assert_not_reached ();
                 break;
         }
     }
@@ -1485,8 +1485,8 @@ el_win *create_el_win (GDateTime *gdt)
     el->today = FALSE;
     el->days = g_par.el_days;
     el->only_first = g_par.el_only_first;
-    el->show_old = el->only_first;
-    el->time_now[0] = 0;
+    el->show_old = g_par.el_only_first;
+    el->time_now[0] = '\0';
     el->date_now = g_date_time_new_now_local ();
     el->apptw_list = NULL;
     el->accel_group = gtk_accel_group_new();

@@ -92,7 +92,7 @@ typedef struct _el_win
     gboolean show_old;    /* flag: show also very old events */
     int      days;        /* how many extra days to show; usually 0 */
     el_page  page;        /* appointment page to show */
-    char     time_now[6]; /* hh:mm */
+    gchar     time_now[6];/* hh:mm */
 
     GDateTime *date_now;
     GList    *apptw_list; /* keep track of appointments being updated */
