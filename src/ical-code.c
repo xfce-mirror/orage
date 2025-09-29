@@ -178,8 +178,8 @@ static guint orage_recurrence_type_to_day_of_week (short by_day)
     }
 }
 
-static struct icaltimetype icaltimetype_from_gdatetime (GDateTime *gdt,
-                                                        const gboolean date_only)
+static struct icaltimetype gdatetime_to_icaltimetype (GDateTime *gdt,
+                                                      const gboolean date_only)
 {
     gchar *str;
     struct icaltimetype icalt;
@@ -747,7 +747,7 @@ gint xfical_compare_times (xfical_appt *appt)
         g_error ("%s: null start time", G_STRFUNC);
 
     if (appt->use_duration) {
-        stime = icaltimetype_from_gdatetime (appt->starttime, appt->allDay);
+        stime = gdatetime_to_icaltimetype (appt->starttime, appt->allDay);
         duration = icaldurationtype_from_int(appt->duration);
         etime = icaltime_add(stime, duration);
         text  = icaltime_as_ical_string(etime);
@@ -762,8 +762,8 @@ gint xfical_compare_times (xfical_appt *appt)
         if (appt->endtime == NULL)
             g_error ("%s: null end time", G_STRFUNC);
 
-        stime = icaltimetype_from_gdatetime (appt->starttime, appt->allDay);
-        etime = icaltimetype_from_gdatetime (appt->endtime, appt->allDay);
+        stime = gdatetime_to_icaltimetype (appt->starttime, appt->allDay);
+        etime = gdatetime_to_icaltimetype (appt->endtime, appt->allDay);
 
         stime = convert_to_zone (stime, appt->start_tz_loc);
         stime = icaltime_convert_to_zone (stime, local_icaltimezone);
@@ -1084,7 +1084,7 @@ static void appt_add_exception_internal(const xfical_appt *appt
          gl_tmp != NULL;
          gl_tmp = g_list_next(gl_tmp)) {
         excp = (xfical_exception *)gl_tmp->data;
-        wtime = icaltimetype_from_gdatetime (xfical_exception_get_time (excp),
+        wtime = gdatetime_to_icaltimetype (xfical_exception_get_time (excp),
                                              FALSE);
         type = xfical_exception_get_type (excp);
         if (type == EXDATE)
@@ -1156,7 +1156,7 @@ static void appt_add_recur_internal (const xfical_appt *appt,
     }
     else if (appt->recur_limit == XFICAL_RECUR_UNTIL) { /* needs to be in UTC */
 /* BUG 2937: convert recur_until to utc from start time timezone */
-        wtime = icaltimetype_from_gdatetime (appt->recur_until, FALSE);
+        wtime = gdatetime_to_icaltimetype (appt->recur_until, FALSE);
         if ORAGE_STR_EXISTS(appt->start_tz_loc) {
         /* Null == floating => no special action needed */
             if (strcmp(appt->start_tz_loc, "floating") == 0) {
@@ -1271,7 +1271,7 @@ static void appt_add_starttime_internal (const xfical_appt *appt,
     struct icaltimetype wtime;
 
     if (appt->starttime) {
-        wtime = icaltimetype_from_gdatetime (appt->starttime, appt->allDay);
+        wtime = gdatetime_to_icaltimetype (appt->starttime, appt->allDay);
         if (appt->allDay) { /* date */
             icalcomponent_add_property(icmp
                     , icalproperty_new_dtstart(wtime));
@@ -1319,7 +1319,7 @@ static void appt_add_endtime_internal (const xfical_appt *appt,
     }
     else if (appt->endtime) {
         end_time_done = FALSE;
-        wtime = icaltimetype_from_gdatetime (appt->endtime, FALSE);
+        wtime = gdatetime_to_icaltimetype (appt->endtime, FALSE);
         if (appt->allDay) { 
             /* need to add 1 day. For example:
              * DTSTART=20070221 & DTEND=20070223
@@ -1367,7 +1367,7 @@ static void appt_add_completedtime_internal (const xfical_appt *appt,
         return; /* only VTODO can have completed time */
     }
     if ((appt->completed) && (appt->completedtime)) {
-        wtime = icaltimetype_from_gdatetime (appt->completedtime, FALSE);
+        wtime = gdatetime_to_icaltimetype (appt->completedtime, FALSE);
         if ORAGE_STR_EXISTS(appt->completed_tz_loc) {
         /* Null == floating => no special action needed */
             if (strcmp(appt->completed_tz_loc, "floating") == 0) {
@@ -2136,7 +2136,7 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
         }
     }
     if (appt->recur_limit == XFICAL_RECUR_UNTIL) { /* BUG 2937: convert back from UTC */
-        wtime = icaltimetype_from_gdatetime (appt->recur_until, FALSE);
+        wtime = gdatetime_to_icaltimetype (appt->recur_until, FALSE);
         if (! ORAGE_STR_EXISTS(appt->start_tz_loc) )
             wtime = icaltime_convert_to_zone(wtime, local_icaltimezone);
         else if (strcmp(appt->start_tz_loc, "floating") == 0)
@@ -3266,13 +3266,8 @@ static void mark_calendar (G_GNUC_UNUSED icalcomponent *c,
         g_date_time_unref (gdt_tmp);
     }
 
-    str = orage_gdatetime_to_icaltime (gdt_start, FALSE);
-    sdate = icaltime_from_string (str);
-    g_free (str);
-
-    str = orage_gdatetime_to_icaltime (gdt_end, FALSE);
-    edate = icaltime_from_string (str);
-    g_free (str);
+    sdate = gdatetime_to_icaltimetype (gdt_start, FALSE);
+    edate = gdatetime_to_icaltimetype (gdt_end, FALSE);
 
     if (cal_data->appt.freq != XFICAL_FREQ_HOURLY
     &&  g_date_time_get_hour (gdt_start) != cal_data->orig_start_hour) {
@@ -3349,13 +3344,8 @@ static void mark_calendar2 (icalcomponent *c, icaltime_span *span, void *data)
         g_date_time_unref (gdt_tmp);
     }
 
-    str = orage_gdatetime_to_icaltime (gdt_start, FALSE);
-    sdate = icaltime_from_string (str);
-    g_free (str);
-
-    str = orage_gdatetime_to_icaltime (gdt_end, FALSE);
-    edate = icaltime_from_string (str);
-    g_free (str);
+    sdate = gdatetime_to_icaltimetype (gdt_start, FALSE);
+    edate = gdatetime_to_icaltimetype (gdt_end, FALSE);
 
     if (cal_data->appt.freq != XFICAL_FREQ_HOURLY
     &&  g_date_time_get_hour (gdt_start) != cal_data->orig_start_hour)
@@ -3575,13 +3565,8 @@ static void xfical_get_event_from_component (icalcomponent *c,
     kind = icalcomponent_isa (c);
     if (kind == ICAL_VEVENT_COMPONENT)
     {
-        tmp = orage_gdatetime_to_icaltime (gdt_start, FALSE);
-        nsdate = icaltime_from_string (tmp);
-        g_free (tmp);
-
-        tmp = orage_gdatetime_to_icaltime (gdt_end, FALSE);
-        nedate = icaltime_from_string (tmp);
-        g_free (tmp);
+        nsdate = gdatetime_to_icaltimetype (gdt_start, FALSE);
+        nedate = gdatetime_to_icaltimetype (gdt_end, FALSE);
 
         p = icalcomponent_get_first_property (c, ICAL_DTSTART_PROPERTY);
         start = icalproperty_get_dtstart (p);
@@ -3806,13 +3791,8 @@ static void add_appt_to_list(icalcomponent *c, icaltime_span *span , void *data)
 
     /* end of bug workaround */
     /* FIXME: should we use interval instead ? */
-    str = orage_gdatetime_to_icaltime (gdt_start, FALSE);
-    sdate = icaltime_from_string (str);
-    g_free (str);
-
-    str = orage_gdatetime_to_icaltime (gdt_end, FALSE);
-    edate = icaltime_from_string (str);
-    g_free (str);
+    sdate = gdatetime_to_icaltimetype (gdt_start, FALSE);
+    edate = gdatetime_to_icaltimetype (gdt_end, FALSE);
 
     /* BUG 7929. If calendar file contains same timezone definition than what
        the time is in, libical returns wrong time in span. But as the hour
@@ -4171,7 +4151,7 @@ static xfical_appt *xfical_appt_get_next_with_string_internal (
                             appt->endtimecur = g_date_time_ref (appt->endtime);
                         }
                         else {
-                            it = icaltimetype_from_gdatetime (appt->starttime,
+                            it = gdatetime_to_icaltimetype (appt->starttime,
                                                           appt->allDay);
                             it = convert_to_zone(it, appt->start_tz_loc);
                             it = icaltime_convert_to_zone(it
@@ -4179,7 +4159,7 @@ static xfical_appt *xfical_appt_get_next_with_string_internal (
                             stime = icaltime_as_ical_string(it);
                             orage_gdatetime_unref (appt->starttimecur);
                             appt->starttimecur = orage_icaltime_to_gdatetime (stime);
-                            it = icaltimetype_from_gdatetime (appt->endtime,
+                            it = gdatetime_to_icaltimetype (appt->endtime,
                                                           appt->allDay);
                             it = convert_to_zone(it, appt->end_tz_loc);
                             it = icaltime_convert_to_zone(it
