@@ -446,18 +446,18 @@ gchar *orage_process_text_commands (const gchar *text)
                 }
                 else
                 {
-                    g_warning ("%s: start year is too big (%d).",
+                    g_warning ("%s: start year is too big (%d)",
                                G_STRFUNC, start_year);
                 }
             }
             else
             {
-                g_warning ("%s: failed to understand parameter (%s).",
+                g_warning ("%s: failed to understand parameter (%s)",
                            G_STRFUNC, cmd);
             }
         }
         else
-            g_warning ("%s: parameter (%s) misses ending >.", G_STRFUNC, cmd);
+            g_warning ("%s: parameter (%s) misses ending '>'", G_STRFUNC, cmd);
     }
 
     if (beq) {

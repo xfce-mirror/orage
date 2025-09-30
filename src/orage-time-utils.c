@@ -251,7 +251,7 @@ gint orage_get_first_weekday (void)
     else if (week_origin == 19971201) /* Monday */
         week_1stday = 1;
     else
-        g_warning ("Unknown value of _NL_TIME_WEEK_1STDAY.\n");
+        g_warning ("Unknown value of _NL_TIME_WEEK_1STDAY");
 
     week_start = (week_1stday + first_weekday - 1) % 7;
 
@@ -277,7 +277,7 @@ gint orage_get_first_weekday (void)
 
     if (week_start < 0 || week_start > 6)
     {
-        g_warning ("Whoever translated calendar:week_start:0 did so wrongly.");
+        g_warning ("Whoever translated calendar:week_start:0 did so wrongly");
         week_start = 0;
     }
 #endif

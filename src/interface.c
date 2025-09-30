@@ -711,17 +711,17 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
 
     if (g_par.foreign_count > 9) {
         g_warning ("%s: Orage can only handle 10 foreign files. Limit reached. "
-                   "New file not added.", G_STRFUNC);
+                   "New file not added", G_STRFUNC);
         if (main_window)
         {
             orage_error_dialog (GTK_WINDOW (main_window)
                     , add_failed
-                    , _("Orage can only handle 10 foreign files. Limit reached."));
+                    , _("Orage can only handle 10 foreign files. Limit reached"));
         }
         return(FALSE);
     }
     if (!ORAGE_STR_EXISTS(filename)) {
-        g_warning ("%s: File is empty. New file not added.", G_STRFUNC);
+        g_warning ("%s: File is empty. New file not added", G_STRFUNC);
         if (main_window)
         {
             orage_error_dialog (GTK_WINDOW (main_window)
@@ -731,7 +731,7 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
         return(FALSE);
     }
     if (!ORAGE_STR_EXISTS(name)) {
-        g_warning ("%s: Name is empty. New file not added.", G_STRFUNC);
+        g_warning ("%s: Name is empty. New file not added", G_STRFUNC);
         if (main_window)
         {
             orage_error_dialog (GTK_WINDOW (main_window)
@@ -741,7 +741,7 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
         return(FALSE);
     }
     if (!g_file_test(filename, G_FILE_TEST_EXISTS)) {
-        g_warning ("%s: New file %s does not exist. New file not added.",
+        g_warning ("%s: New file %s does not exist. New file not added",
                    G_STRFUNC, filename);
         if (main_window)
         {

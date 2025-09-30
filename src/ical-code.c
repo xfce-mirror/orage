@@ -196,7 +196,7 @@ gboolean xfical_set_local_timezone(gboolean testing)
         local_icaltimezone = utc_icaltimezone;
     }
     else if (strcmp(g_par.local_timezone,"floating") == 0) {
-        g_warning ("Default timezone set to floating. Do not use timezones when setting appointments, it does not make sense without proper local timezone.");
+        g_warning ("Default timezone set to floating. Do not use timezones when setting appointments, it does not make sense without proper local timezone");
         return(TRUE); /* g_par.local_timezone = NULL */
     }
     else
@@ -2344,7 +2344,7 @@ gboolean xfical_appt_del (gchar *ical_uid)
             return(FALSE);
         }
         if (g_par.foreign_data[i].read_only) {
-            g_warning ("%s: foreign file %s is READ only. Not modified.",
+            g_warning ("%s: foreign file %s is READ only. Not modified",
                        G_STRFUNC, g_par.foreign_data[i].file);
             return(FALSE);
         }
@@ -2811,7 +2811,7 @@ static void process_alarm_data(icalcomponent *ca, alarm_struct *new_alarm)
 #if 0
     p = icalcomponent_get_first_property(ca, ICAL_ACTION_PROPERTY);
     if (!p) {
-        g_warning ("%s: No ACTION in alarm. Ignoring this ALARM.", G_STRFUNC);
+        g_warning ("%s: No ACTION in alarm. Ignoring this ALARM", G_STRFUNC);
         return;
     }
     act = icalproperty_get_action(p);
@@ -2879,7 +2879,7 @@ static void process_alarm_data(icalcomponent *ca, alarm_struct *new_alarm)
         }
     }
     else {
-        g_warning ("%s: Unknown ACTION (%d) in alarm. Ignoring ALARM.",
+        g_warning ("%s: Unknown ACTION (%d) in alarm. Ignoring ALARM",
                    G_STRFUNC, act);
         return;
     }

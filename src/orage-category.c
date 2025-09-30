@@ -59,7 +59,7 @@ OrageRc *orage_category_file_open (const gboolean read_only)
     fpath = orage_data_file_location (ORAGE_CATEGORIES_DIR_FILE);
     orc = orage_rc_file_open (fpath, read_only);
     if (orc == NULL)
-        g_warning ("%s: category file open failed.", G_STRFUNC);
+        g_warning ("%s: category file open failed", G_STRFUNC);
 
     g_free (fpath);
 

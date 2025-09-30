@@ -141,7 +141,7 @@ static OrageRc *orage_persistent_file_open (void)
     fpath = orage_data_file_location(ORAGE_PERSISTENT_ALARMS_DIR_FILE);
 
     if ((orc = orage_rc_file_open (fpath, TRUE)) == NULL) {
-        g_warning ("%s: persistent alarms file open failed.", G_STRFUNC);
+        g_warning ("%s: persistent alarms file open failed", G_STRFUNC);
     }
     g_free(fpath);
 
@@ -156,7 +156,7 @@ static OrageRc *orage_persistent_file_new (void)
     fpath = orage_data_file_location (ORAGE_PERSISTENT_ALARMS_DIR_FILE);
 
     if ((orc = orage_rc_file_new (fpath)) == NULL)
-        g_warning ("%s: persistent alarms file open failed.", G_STRFUNC);
+        g_warning ("%s: persistent alarms file open failed", G_STRFUNC);
 
     g_free (fpath);
 
@@ -461,7 +461,7 @@ static void create_notify_reminder(alarm_struct *l_alarm)
     }
 
 #else
-    g_warning ("libnotify not linked in. Can't use notifications.");
+    g_warning ("libnotify not linked in. Can't use notifications");
     (void)l_alarm;
 #endif
 }
