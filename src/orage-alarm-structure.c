@@ -19,6 +19,7 @@
  */
 
 #include "orage-alarm-structure.h"
+#include "orage-time-utils.h"
 #include "functions.h"
 #include <glib.h>
 

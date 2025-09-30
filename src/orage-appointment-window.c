@@ -54,6 +54,7 @@
 #include "orage-category.h"
 #include "orage-i18n.h"
 #include "orage-rc-file.h"
+#include "orage-time-utils.h"
 #include "orage-week-window.h"
 #include "orage-window.h"
 #include "parameters.h"
@@ -1935,7 +1936,7 @@ static void recur_day_selected_double_click_cb (GtkCalendar *calendar
         if (gtk_toggle_button_get_active(
                 GTK_TOGGLE_BUTTON(apptw->AllDay_checkbutton)))
         {
-            gdt = orage_cal_to_gdatetime (calendar, 1, 1);
+            gdt = orage_calendar_get_date (calendar, 1, 1);
             all_day = TRUE;
         }
         else {
@@ -1943,7 +1944,7 @@ static void recur_day_selected_double_click_cb (GtkCalendar *calendar
                     GTK_SPIN_BUTTON(apptw->StartTime_spin_hh));
             mm =  gtk_spin_button_get_value_as_int(
                     GTK_SPIN_BUTTON(apptw->StartTime_spin_mm));
-            gdt = orage_cal_to_gdatetime (calendar, hh, mm);
+            gdt = orage_calendar_get_date (calendar, hh, mm);
             all_day = FALSE;
         }
     }
@@ -1953,7 +1954,7 @@ static void recur_day_selected_double_click_cb (GtkCalendar *calendar
                 GTK_SPIN_BUTTON(apptw->Recur_exception_incl_spin_hh));
         mm =  gtk_spin_button_get_value_as_int(
                 GTK_SPIN_BUTTON(apptw->Recur_exception_incl_spin_mm));
-        gdt = orage_cal_to_gdatetime (calendar, hh, mm);
+        gdt = orage_calendar_get_date (calendar, hh, mm);
         all_day = FALSE;
     }
 

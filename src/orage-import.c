@@ -24,6 +24,7 @@
 #include "ical-code.h"
 #include "orage-appointment-window.h"
 #include "orage-i18n.h"
+#include "orage-time-utils.h"
 #include <glib-object.h>
 #include <glib.h>
 #include <gtk/gtk.h>

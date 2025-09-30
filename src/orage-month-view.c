@@ -22,6 +22,7 @@
 #include "orage-month-cell.h"
 #include "orage-i18n.h"
 #include "orage-event.h"
+#include "orage-time-utils.h"
 #include "functions.h"
 
 #include <gtk/gtk.h>
@@ -147,7 +148,7 @@ static void on_date_dialog_response (GtkDialog *dialog,
 
         if (calendar)
         {
-            gdt = orage_cal_to_gdatetime (GTK_CALENDAR (calendar), 0, 0);
+            gdt = orage_calendar_get_date (GTK_CALENDAR (calendar), 0, 0);
             orage_month_view_set_month ((OrageMonthView *)user_data, gdt);
         }
         else

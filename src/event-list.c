@@ -57,6 +57,7 @@
 #include "orage-appointment-window.h"
 #include "orage-category.h"
 #include "orage-i18n.h"
+#include "orage-time-utils.h"
 #include "orage-week-window.h"
 #include "orage-window.h"
 #include "parameters.h"

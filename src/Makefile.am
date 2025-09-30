@@ -45,6 +45,8 @@ orage_SOURCES =							\
 	orage-sync-ext-command.h				\
 	orage-task-runner.c					\
 	orage-task-runner.h    					\
+	orage-time-utils.c					\
+	orage-time-utils.h					\
 	orage-week-window.c					\
 	orage-week-window.h					\
 	orage-window-classic.c					\

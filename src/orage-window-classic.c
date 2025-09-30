@@ -46,6 +46,7 @@
 #include "orage-appointment-window.h"
 #include "orage-css.h"
 #include "orage-i18n.h"
+#include "orage-time-utils.h"
 #include "orage-week-window.h"
 #include "orage-window.h"
 #include "orage-window-classic.h"
@@ -123,7 +124,7 @@ static void mFile_newApp_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
     OrageWindowClassic *window = ORAGE_WINDOW_CLASSIC (user_data);
 
     /* cal has always a day selected here, so it is safe to read it */
-    gdt = orage_cal_to_gdatetime (window->mCalendar, 1, 1);
+    gdt = orage_calendar_get_date (window->mCalendar, 1, 1);
     appointment_window = orage_appointment_window_new (gdt);
     gtk_window_present (GTK_WINDOW (appointment_window));
     g_date_time_unref (gdt);
@@ -175,7 +176,7 @@ static void mView_ViewSelectedWeek_activate_cb (
     GDateTime *gdt;
     OrageWindowClassic *window = ORAGE_WINDOW_CLASSIC (user_data);
 
-    gdt = orage_cal_to_gdatetime (window->mCalendar, 1, 1);
+    gdt = orage_calendar_get_date (window->mCalendar, 1, 1);
     orage_week_window_build (gdt);
     g_date_time_unref (gdt);
 }
@@ -221,7 +222,7 @@ static void mCalendar_day_selected_double_click_cb (GtkCalendar *calendar,
 {
     GDateTime *gdt;
 
-    gdt = orage_cal_to_gdatetime (calendar, 1, 1);
+    gdt = orage_calendar_get_date (calendar, 1, 1);
 
     if (g_par.show_days)
         orage_week_window_build (gdt);
@@ -582,7 +583,7 @@ static void create_mainbox_event_info_box (OrageWindowClassic *window)
     GDateTime *gdt;
     GDateTime *gdt_tmp;
 
-    gdt = orage_cal_to_gdatetime (window->mCalendar, 1, 1);
+    gdt = orage_calendar_get_date (window->mCalendar, 1, 1);
 
     window->mEvent_vbox = gtk_grid_new ();
     g_object_set (window->mEvent_vbox, "vexpand", TRUE,
@@ -676,7 +677,7 @@ static void build_mainbox_event_info (OrageWindowClassic *window)
     g_return_if_fail (window != NULL);
 
     if (g_par.show_event_days) {
-        gdt = orage_cal_to_gdatetime (window->mCalendar, 1, 1);
+        gdt = orage_calendar_get_date (window->mCalendar, 1, 1);
         ical_type = XFICAL_TYPE_EVENT;
         g_strlcpy (file_type, "O00.", sizeof (file_type));
         xfical_get_each_app_within_time (gdt, g_par.show_event_days
@@ -844,14 +845,14 @@ void orage_window_classic_select_date (OrageWindow *window, GDateTime *gdt)
 {
     OrageWindowClassic *clwindow = ORAGE_WINDOW_CLASSIC (window);
 
-    orage_select_date (clwindow->mCalendar, gdt);
+    orage_calendar_set_date (clwindow->mCalendar, gdt);
 }
 
 GDateTime *orage_window_classic_get_selected_date (OrageWindow *window)
 {
     OrageWindowClassic *clwindow = ORAGE_WINDOW_CLASSIC (window);
 
-    return orage_cal_to_gdatetime (clwindow->mCalendar, 0, 0);
+    return orage_calendar_get_date (clwindow->mCalendar, 0, 0);
 }
 
 void orage_window_classic_raise (OrageWindow *window)

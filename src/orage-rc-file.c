@@ -25,6 +25,7 @@
 
 #include "orage-rc-file.h"
 #include "functions.h"
+#include "orage-time-utils.h"
 #include <gdk/gdk.h>
 #include <glib.h>
 

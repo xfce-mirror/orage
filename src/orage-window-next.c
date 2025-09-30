@@ -33,6 +33,7 @@
 #include "orage-i18n.h"
 #include "orage-month-cell.h"
 #include "orage-month-view.h"
+#include "orage-time-utils.h"
 #include "orage-week-window.h"
 #include "parameters.h"
 #include <glib.h>

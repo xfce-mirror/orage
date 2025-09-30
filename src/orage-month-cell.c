@@ -20,6 +20,7 @@
 
 #include "orage-month-cell.h"
 #include "orage-event.h"
+#include "orage-time-utils.h"
 #include "functions.h"
 
 #define TODAY "today"
