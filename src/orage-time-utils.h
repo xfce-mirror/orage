@@ -295,4 +295,19 @@ GDateTime *orage_icaltimetype_to_gdatetime (struct icaltimetype *icaltime);
  */
 GDateTime *orage_icaltimetype_to_gdatetime2 (struct icaltimetype t);
 
+/**
+ * orage_time_t_to_gdatetime:
+ * @t: UNIX timestamp (seconds since the Epoch)
+ * @tz_id: timezone identifier string (e.g. "Europe/Tallinn")
+ *
+ * Converts a UNIX timestamp to a #GDateTime instance in the specified timezone.
+ * If the given timezone identifier cannot be resolved, the local timezone is
+ * used instead.
+ *
+ * Returns: (transfer full): a newly allocated #GDateTime instance representing
+ *          the given time. The caller must call g_date_time_unref() when the
+ *          returned #GDateTime is no longer needed.
+ */
+GDateTime *orage_time_t_to_gdatetime (const time_t t, const gchar *tz_id);
+
 #endif

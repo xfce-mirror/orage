@@ -3257,29 +3257,6 @@ static void mark_calendar (G_GNUC_UNUSED icalcomponent *c,
                                      edate.day);
 }
 
-static GDateTime *span_to_gdt (const time_t t, const gchar *tz_identifier)
-{
-    GTimeZone *tz;
-    GDateTime *gdt;
-    GDateTime *gdt_tmp;;
-
-    tz = g_time_zone_new_identifier (tz_identifier);
-    if (tz == NULL)
-    {
-        g_debug ("%s @ %d: failed to convert timezone '%s', "
-                 "using local timezone",
-                 G_STRFUNC, __LINE__, tz_identifier);
-        tz = g_time_zone_new_local ();
-    }
-
-    gdt_tmp = g_date_time_new_from_unix_utc (t);
-    gdt = g_date_time_to_timezone (gdt_tmp, tz);
-    g_date_time_unref (gdt_tmp);
-    g_time_zone_unref (tz);
-
-    return gdt;
-}
-
 /* Note that this not understand timezones, but gets always raw time, which we
  * need to convert to correct timezone.
  */
@@ -3288,7 +3265,6 @@ static void mark_calendar2 (icalcomponent *c, icaltime_span *span, void *data)
     OrageEvent *event;
     struct icaltimetype sdate, edate;
     mark_calendar_data2 *cal_data;
-    gchar *str;
     GDateTime *gdt_start;
     GDateTime *gdt_end;
     GDateTime *gdt_tmp;
@@ -3299,7 +3275,7 @@ static void mark_calendar2 (icalcomponent *c, icaltime_span *span, void *data)
     gdt_end = g_date_time_new_from_unix_utc (span->end);
 
     /* check bug 7886 explanation in function add_appt_to_list */
-    if (cal_data->appt.allDay && !cal_data->appt.use_duration)
+    if (cal_data->appt.allDay && cal_data->appt.use_duration == FALSE)
     {
         gdt_tmp = gdt_end;
         gdt_end = g_date_time_add_days (gdt_tmp, -1);
@@ -3323,6 +3299,7 @@ static void mark_calendar2 (icalcomponent *c, icaltime_span *span, void *data)
         sdate = convert_to_zone (sdate, cal_data->appt.start_tz_loc);
         edate = convert_to_zone (edate, cal_data->appt.end_tz_loc);
     }
+
     g_date_time_unref (gdt_start);
     g_date_time_unref (gdt_end);
     sdate = icaltime_convert_to_zone (sdate, local_icaltimezone);
@@ -3350,8 +3327,8 @@ static void mark_calendar2 (icalcomponent *c, icaltime_span *span, void *data)
 
     g_date_time_unref (gdt_start);
     g_date_time_unref (gdt_end);
-    gdt_start = span_to_gdt (span->start, cal_data->appt.start_tz_loc);
-    gdt_end = span_to_gdt (span->end, cal_data->appt.end_tz_loc);
+    gdt_start = orage_time_t_to_gdatetime (span->start, cal_data->appt.start_tz_loc);
+    gdt_end = orage_time_t_to_gdatetime (span->end, cal_data->appt.end_tz_loc);
 
     event = orage_event_new ();
     orage_event_set_date_start (event, gdt_start);

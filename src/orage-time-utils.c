@@ -364,3 +364,25 @@ GDateTime *orage_icaltimetype_to_gdatetime2 (struct icaltimetype t)
 
     return orage_icaltime_to_gdatetime (i18_date);
 }
+
+GDateTime *orage_time_t_to_gdatetime (const time_t t, const gchar *tz_id)
+{
+    GTimeZone *tz;
+    GDateTime *gdt;
+    GDateTime *gdt_tmp;;
+
+    tz = g_time_zone_new_identifier (tz_id);
+    if (tz == NULL)
+    {
+        g_debug ("%s @ %d: failed to convert timezone '%s', "
+                 "using local timezone", G_STRFUNC, __LINE__, tz_id);
+        tz = g_time_zone_new_local ();
+    }
+
+    gdt_tmp = g_date_time_new_from_unix_utc (t);
+    gdt = g_date_time_to_timezone (gdt_tmp, tz);
+    g_date_time_unref (gdt_tmp);
+    g_time_zone_unref (tz);
+
+    return gdt;
+}
