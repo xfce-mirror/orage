@@ -3473,6 +3473,9 @@ static void xfical_mark_calendar_from_component (GtkCalendar *gtkcal,
     } /* ICAL_VTODO_COMPONENT */
 }
 
+/* TODO: Rename gdt_start -> gdt_span_start, gdt_end -> gdt_span_end (or
+ * something similar).
+ */
 static void xfical_get_event_from_component (icalcomponent *c,
                                              GDateTime *gdt_start,
                                              GDateTime *gdt_end,
@@ -3541,7 +3544,8 @@ static void xfical_get_event_from_component (icalcomponent *c,
         per = ic_get_period (c, TRUE);
         marked = FALSE;
 
-        if (icaltime_is_null_time (per.ctime) || (local_compare (per.ctime, per.stime) < 0))
+        if (icaltime_is_null_time (per.ctime) ||
+            (local_compare (per.ctime, per.stime) < 0))
         {
             /* VTODO needs to be checked either if it never completed or it has
              * completed before start.
@@ -3557,7 +3561,8 @@ static void xfical_get_event_from_component (icalcomponent *c,
             g_object_unref (event);
         }
 
-        if ((marked == FALSE) && (p = icalcomponent_get_first_property (c, ICAL_RRULE_PROPERTY)) != NULL)
+        if ((marked == FALSE) &&
+            (p = icalcomponent_get_first_property (c, ICAL_RRULE_PROPERTY)) != NULL)
         {
             /* Check recurring TODOs. */
 #if 1
@@ -3571,33 +3576,34 @@ static void xfical_get_event_from_component (icalcomponent *c,
                 g_free (end_text);
             }
 #endif
-#if 0
             nsdate = icaltime_null_time ();
             rrule = icalproperty_get_rrule (p);
             set_todo_times (c, &per); /* may change per.stime to per.ctime */
-            ri = icalrecur_iterator_new(rrule, per.stime);
+            ri = icalrecur_iterator_new (rrule, per.stime);
+#if 0
             for (nsdate = icalrecur_iterator_next (ri);
-                    !icaltime_is_null_time (nsdate)
-                    && (((nsdate.year * 12 + nsdate.month) <= (int)(year * 12 + month)
-                    && (local_compare(nsdate, per.ctime) <= 0))
-                    || icalproperty_recurrence_is_excluded (c, &per.stime, &nsdate));
-                    nsdate = icalrecur_iterator_next (ri))
+                 (icaltime_is_null_time (nsdate) == 0) &&
+                 (((nsdate.year * 12 + nsdate.month) <= (int)(year * 12 + month) &&
+                   (local_compare(nsdate, per.ctime) <= 0)) ||
+                  icalproperty_recurrence_is_excluded (c, &per.stime, &nsdate));
+                 nsdate = icalrecur_iterator_next (ri))
             {
                 /* Find the active one like in
                  *  xfical_appt_get_next_on_day_internal
                  */
             }
-
+#endif
             icalrecur_iterator_free (ri);
-            if (!icaltime_is_null_time (nsdate))
+            if (icaltime_is_null_time (nsdate) == 0)
             {
                 nedate = icaltime_add (nsdate, per.duration);
+#if 0
                 (void) xfical_mark_calendar_days (gtkcal, year, month,
                                                   nedate.year, nedate.month,
                                                   nedate.day, nedate.year,
                                                   nedate.month, nedate.day);
-            }
 #endif
+            }
         }
     }
 }
