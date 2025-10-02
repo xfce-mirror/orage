@@ -3597,12 +3597,15 @@ static void xfical_get_event_from_component (icalcomponent *c,
             if (icaltime_is_null_time (nsdate) == 0)
             {
                 nedate = icaltime_add (nsdate, per.duration);
-#if 0
-                (void) xfical_mark_calendar_days (gtkcal, year, month,
-                                                  nedate.year, nedate.month,
-                                                  nedate.day, nedate.year,
-                                                  nedate.month, nedate.day);
-#endif
+                gdt_todo = orage_icaltimetype_to_gdatetime (&nedate);
+                event = orage_event_new ();
+                orage_event_set_date_start (event, gdt_todo);
+                orage_event_set_date_end (event, gdt_todo);
+                orage_event_set_uid (event, icalcomponent_get_uid (c));
+                orage_event_set_description (event, icalcomponent_get_summary (c));
+                cb (param, event);
+                g_date_time_unref (gdt_todo);
+                g_object_unref (event);
             }
         }
     }
