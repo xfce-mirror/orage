@@ -3473,6 +3473,27 @@ static void xfical_mark_calendar_from_component (GtkCalendar *gtkcal,
     } /* ICAL_VTODO_COMPONENT */
 }
 
+static gboolean is_valid_recurrence (struct icaltimetype nsdate,
+                                     GDateTime *gdt_start,
+                                     xfical_period *per,
+                                     icalcomponent *c)
+{
+    gint event_month;
+    gint display_month;
+    gboolean in_range;
+
+    if (icalproperty_recurrence_is_excluded (c, &per->stime, &nsdate))
+        return TRUE;
+
+    event_month = nsdate.year * 12 + nsdate.month;
+    display_month = g_date_time_get_year (gdt_start) * 12
+                  + g_date_time_get_month (gdt_start);
+    in_range = (event_month <= display_month) &&
+               (local_compare (nsdate, per->ctime) <= 0);
+
+    return in_range;
+}
+
 /* TODO: Rename gdt_start -> gdt_span_start, gdt_end -> gdt_span_end (or
  * something similar).
  */
@@ -3580,19 +3601,15 @@ static void xfical_get_event_from_component (icalcomponent *c,
             rrule = icalproperty_get_rrule (p);
             set_todo_times (c, &per); /* may change per.stime to per.ctime */
             ri = icalrecur_iterator_new (rrule, per.stime);
-#if 0
+
             for (nsdate = icalrecur_iterator_next (ri);
-                 (icaltime_is_null_time (nsdate) == 0) &&
-                 (((nsdate.year * 12 + nsdate.month) <= (int)(year * 12 + month) &&
-                   (local_compare(nsdate, per.ctime) <= 0)) ||
-                  icalproperty_recurrence_is_excluded (c, &per.stime, &nsdate));
+                 icaltime_is_null_time (nsdate) == 0;
                  nsdate = icalrecur_iterator_next (ri))
             {
-                /* Find the active one like in
-                 *  xfical_appt_get_next_on_day_internal
-                 */
+                if (is_valid_recurrence (nsdate, gdt_start, &per, c) == FALSE)
+                    break;
             }
-#endif
+
             icalrecur_iterator_free (ri);
             if (icaltime_is_null_time (nsdate) == 0)
             {
