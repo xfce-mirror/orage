@@ -3210,7 +3210,6 @@ static void mark_calendar (G_GNUC_UNUSED icalcomponent *c,
 {
     struct icaltimetype sdate, edate;
     mark_calendar_data *cal_data;
-    gchar *str;
     GDateTime *gdt_start;
     GDateTime *gdt_end;
     GDateTime *gdt_tmp;
@@ -3504,23 +3503,15 @@ static void xfical_get_event_from_component (icalcomponent *c,
                                              void *param)
 {
     GDateTime *gdt_todo;
-    GDateTime *gdt_event_start;
-    GDateTime *gdt_event_end;
     OrageEvent *event;
     xfical_period per;
     struct icaltimetype nsdate, nedate;
     struct icalrecurrencetype rrule;
     icalrecur_iterator* ri;
-    icalproperty *p = NULL;
-    gboolean marked;
+    icalproperty *p;
     icalcomponent_kind kind;
-    gchar *tmp;
     struct icaltimetype start;
     mark_calendar_data2 cal_data;
-
-#if 1
-    g_debug ("TODO: %s@%d some parts still unimplemented", G_STRFUNC, __LINE__);
-#endif
 
     /* Note that all VEVENTS are marked, but only the first VTODO end date is
      * marked.
@@ -3563,7 +3554,6 @@ static void xfical_get_event_from_component (icalcomponent *c,
     else if (kind == ICAL_VTODO_COMPONENT)
     {
         per = ic_get_period (c, TRUE);
-        marked = FALSE;
 
         if (icaltime_is_null_time (per.ctime) ||
             (local_compare (per.ctime, per.stime) < 0))
@@ -3581,22 +3571,9 @@ static void xfical_get_event_from_component (icalcomponent *c,
             g_date_time_unref (gdt_todo);
             g_object_unref (event);
         }
-
-        if ((marked == FALSE) &&
-            (p = icalcomponent_get_first_property (c, ICAL_RRULE_PROPERTY)) != NULL)
+        else if ((p = icalcomponent_get_first_property (c, ICAL_RRULE_PROPERTY)) != NULL)
         {
             /* Check recurring TODOs. */
-#if 1
-            {
-                gchar *begin_text = g_date_time_format_iso8601 (gdt_start);
-                gchar *end_text = g_date_time_format_iso8601 (gdt_end);
-
-                g_debug ("TODO: recurring VTODO element %s@%d: start='%s' / end='%s'",
-                         G_STRFUNC, __LINE__, begin_text, end_text);
-                g_free (begin_text);
-                g_free (end_text);
-            }
-#endif
             nsdate = icaltime_null_time ();
             rrule = icalproperty_get_rrule (p);
             set_todo_times (c, &per); /* may change per.stime to per.ctime */
@@ -3725,7 +3702,6 @@ static void add_appt_to_list(icalcomponent *c, icaltime_span *span , void *data)
     GDateTime *gdt_start;
     GDateTime *gdt_end;
     GDateTime *gdt_tmp;
-    gchar *str;
     const gchar *i18_time;
     app_data *data1;
         /* Need to check that returned value is withing limits.
