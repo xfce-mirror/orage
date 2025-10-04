@@ -142,8 +142,6 @@ typedef struct _mark_calendar_data2
 {
     xfical_event_callback cb;
     void *cb_param;
-    guint year;
-    guint month;
     GDateTime *gdt_first;
     GDateTime *gdt_last;
     gint orig_start_hour, orig_end_hour;
@@ -3493,12 +3491,9 @@ static gboolean is_valid_recurrence (struct icaltimetype nsdate,
     return in_range;
 }
 
-/* TODO: Rename gdt_start -> gdt_span_start, gdt_end -> gdt_span_end (or
- * something similar).
- */
 static void xfical_get_event_from_component (icalcomponent *c,
-                                             GDateTime *gdt_start,
-                                             GDateTime *gdt_end,
+                                             GDateTime *gdt_span_start,
+                                             GDateTime *gdt_span_end,
                                              xfical_event_callback cb,
                                              void *param)
 {
@@ -3519,17 +3514,12 @@ static void xfical_get_event_from_component (icalcomponent *c,
     kind = icalcomponent_isa (c);
     if (kind == ICAL_VEVENT_COMPONENT)
     {
-        nsdate = orage_gdatetime_to_icaltimetype (gdt_start, FALSE);
-        nedate = orage_gdatetime_to_icaltimetype (gdt_end, FALSE);
-
         p = icalcomponent_get_first_property (c, ICAL_DTSTART_PROPERTY);
         start = icalproperty_get_dtstart (p);
         cal_data.cb = cb;
         cal_data.cb_param = param;
-        cal_data.gdt_first = g_date_time_ref (gdt_start);
-        cal_data.gdt_last = g_date_time_ref (gdt_end);
-        cal_data.year = g_date_time_get_year (gdt_start);
-        cal_data.month = g_date_time_get_month (gdt_start);
+        cal_data.gdt_first = g_date_time_ref (gdt_span_start);
+        cal_data.gdt_last = g_date_time_ref (gdt_span_end);
         (void)get_appt_from_icalcomponent (c, &cal_data.appt);
         /* BUG 7929. If calendar file contains same timezone definition than
          * what the time is in, libical returns wrong time in span. But as
@@ -3539,6 +3529,8 @@ static void xfical_get_event_from_component (icalcomponent *c,
         p = icalcomponent_get_first_property (c, ICAL_DTSTART_PROPERTY);
         start = icalproperty_get_dtstart (p);
         cal_data.orig_start_hour = start.hour;
+        nsdate = orage_gdatetime_to_icaltimetype (gdt_span_start, FALSE);
+        nedate = orage_gdatetime_to_icaltimetype (gdt_span_end, FALSE);
         icalcomponent_foreach_recurrence (c, nsdate, nedate, mark_calendar2,
                                           &cal_data);
         g_free (cal_data.appt.categories);
@@ -3558,7 +3550,6 @@ static void xfical_get_event_from_component (icalcomponent *c,
         if (is_todo_completed (&per))
             return;
 
-        g_debug ("--> %s: %s is %s", G_STRFUNC, icalcomponent_get_summary (c), is_todo_completed (&per) ? "completed" : "pending");
         if (local_compare (per.ctime, per.stime) < 0)
         {
             /* VTODO needs to be checked either if it never completed or it has
@@ -3586,7 +3577,7 @@ static void xfical_get_event_from_component (icalcomponent *c,
                  icaltime_is_null_time (nsdate) == 0;
                  nsdate = icalrecur_iterator_next (ri))
             {
-                if (is_valid_recurrence (nsdate, gdt_start, &per, c) == FALSE)
+                if (is_valid_recurrence (nsdate, gdt_span_start, &per, c) == FALSE)
                     break;
             }
 
