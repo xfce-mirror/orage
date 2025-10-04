@@ -129,26 +129,26 @@ static void on_about_activated (OrageWindowNext *window);
 
 static XfceGtkActionEntry action_entries[] =
 {
-    {ORAGE_WINDOW_ACTION_FILE_MENU, "<Actions>/OrageWindow/file-menu", "", XFCE_GTK_MENU_ITEM, N_ ("_File"), NULL, NULL, NULL},
-    {ORAGE_WINDOW_ACTION_NEW_APPOINTMENT, "<Actions>/OrageWindow/new-appointment", "<control>n", XFCE_GTK_IMAGE_MENU_ITEM, N_("New"), N_ ("Create a new appointment"), "document-new", G_CALLBACK (on_new_activated)},
+    {ORAGE_WINDOW_ACTION_FILE_MENU, "<Actions>/OrageWindow/file-menu", "", XFCE_GTK_MENU_ITEM, N_("_File"), NULL, NULL, NULL},
+    {ORAGE_WINDOW_ACTION_NEW_APPOINTMENT, "<Actions>/OrageWindow/new-appointment", "<control>n", XFCE_GTK_IMAGE_MENU_ITEM, N_("New"), N_("Create a new appointment"), "document-new", G_CALLBACK (on_new_activated)},
 #ifdef ENABLE_SYNC
-    {ORAGE_WINDOW_ACTION_REFRESH, "<Actions>/OrageWindow/refresh", "", XFCE_GTK_IMAGE_MENU_ITEM, N_("Refresh"), N_ ("Reload external files"), "view-refresh", G_CALLBACK (on_refresh_activated)},
+    {ORAGE_WINDOW_ACTION_REFRESH, "<Actions>/OrageWindow/refresh", "", XFCE_GTK_IMAGE_MENU_ITEM, N_("Refresh"), N_("Reload external files"), "view-refresh", G_CALLBACK (on_refresh_activated)},
 #endif
-    {ORAGE_WINDOW_ACTION_EXCHANGE, "<Actions>/OrageWindow/exchange", "", XFCE_GTK_MENU_ITEM, N_("_Exchange data"), N_ ("Import/export data"), "", G_CALLBACK (on_exchange_activated)},
-    {ORAGE_WINDOW_ACTION_CLOSE, "<Actions>/OrageWindow/close", "<control>w", XFCE_GTK_IMAGE_MENU_ITEM, N_("Close"), N_ ("Close window"), "window-close", G_CALLBACK (on_close_activated)},
-    {ORAGE_WINDOW_ACTION_QUIT, "<Actions>/OrageWindow/quit", "<control>q", XFCE_GTK_IMAGE_MENU_ITEM, N_("_Quit"), N_ ("Quit program"), "application-exit", G_CALLBACK (on_quit_activated)},
+    {ORAGE_WINDOW_ACTION_EXCHANGE, "<Actions>/OrageWindow/exchange", "", XFCE_GTK_MENU_ITEM, N_("_Exchange data"), N_("Import/export data"), "", G_CALLBACK (on_exchange_activated)},
+    {ORAGE_WINDOW_ACTION_CLOSE, "<Actions>/OrageWindow/close", "<control>w", XFCE_GTK_IMAGE_MENU_ITEM, N_("Close"), N_("Close window"), "window-close", G_CALLBACK (on_close_activated)},
+    {ORAGE_WINDOW_ACTION_QUIT, "<Actions>/OrageWindow/quit", "<control>q", XFCE_GTK_IMAGE_MENU_ITEM, N_("_Quit"), N_("Quit program"), "application-exit", G_CALLBACK (on_quit_activated)},
 
     {ORAGE_WINDOW_ACTION_EDIT_MENU, "<Actions>/OrageWindow/edit-menu", "", XFCE_GTK_MENU_ITEM, N_ ("_Edit"), NULL, NULL, NULL},
-    {ORAGE_WINDOW_ACTION_PREFERENCES, "<Actions>/OrageWindow/preferences", "", XFCE_GTK_IMAGE_MENU_ITEM, N_("_Preferences"), N_ ("Orage preferences"), "preferences-system", G_CALLBACK (on_preferences_activated)},
+    {ORAGE_WINDOW_ACTION_PREFERENCES, "<Actions>/OrageWindow/preferences", "", XFCE_GTK_IMAGE_MENU_ITEM, N_("_Preferences"), N_("Orage preferences"), "preferences-system", G_CALLBACK (on_preferences_activated)},
 
     {ORAGE_WINDOW_ACTION_VIEW_MENU, "<Actions>/OrageWindow/view-menu", "", XFCE_GTK_MENU_ITEM, N_ ("_View"), NULL, NULL, NULL},
-    {ORAGE_WINDOW_ACTION_VIEW_DATE, "<Actions>/OrageWindow/view-date", "", XFCE_GTK_MENU_ITEM, N_("View selected _date"), N_ ("View selected date"), "", G_CALLBACK (on_view_selected_date_activated)},
-    {ORAGE_WINDOW_ACTION_VIEW_WEEK, "<Actions>/OrageWindow/view-week", "", XFCE_GTK_MENU_ITEM, N_("View selected _week"), N_ ("View selected _week"), "", G_CALLBACK (on_view_selected_week_activated)},
-    {ORAGE_WINDOW_ACTION_SELECT_TODAY, "<Actions>/OrageWindow/select-today", "", XFCE_GTK_MENU_ITEM, N_("Select _Today"), N_ ("Go to today"), "", G_CALLBACK (on_select_today_activated)},
+    {ORAGE_WINDOW_ACTION_VIEW_DATE, "<Actions>/OrageWindow/view-date", "", XFCE_GTK_MENU_ITEM, N_("View selected _date"), N_("View selected date"), "", G_CALLBACK (on_view_selected_date_activated)},
+    {ORAGE_WINDOW_ACTION_VIEW_WEEK, "<Actions>/OrageWindow/view-week", "", XFCE_GTK_MENU_ITEM, N_("View selected _week"), N_("View selected _week"), "", G_CALLBACK (on_view_selected_week_activated)},
+    {ORAGE_WINDOW_ACTION_SELECT_TODAY, "<Actions>/OrageWindow/select-today", "", XFCE_GTK_MENU_ITEM, N_("Select _Today"), N_("Go to today"), "", G_CALLBACK (on_select_today_activated)},
 
-    {ORAGE_WINDOW_ACTION_HELP_MENU, "<Actions>/OrageWindow/help-menu", "", XFCE_GTK_MENU_ITEM, N_ ("_Help"), NULL, NULL, NULL},
-    {ORAGE_WINDOW_ACTION_HELP, "<Actions>/OrageWindow/help", "F1", XFCE_GTK_IMAGE_MENU_ITEM, N_("_Help"), N_ ("Display Orage user manual"), "help-browser", G_CALLBACK (on_help_activated)},
-    {ORAGE_WINDOW_ACTION_ABOUT, "<Actions>/OrageWindow/about", "", XFCE_GTK_IMAGE_MENU_ITEM, N_("_About"), N_ ("Display information about Orage"), "help-about", G_CALLBACK (on_about_activated)},
+    {ORAGE_WINDOW_ACTION_HELP_MENU, "<Actions>/OrageWindow/help-menu", "", XFCE_GTK_MENU_ITEM, N_("_Help"), NULL, NULL, NULL},
+    {ORAGE_WINDOW_ACTION_HELP, "<Actions>/OrageWindow/help", "F1", XFCE_GTK_IMAGE_MENU_ITEM, N_("_Help"), N_("Display Orage user manual"), "help-browser", G_CALLBACK (on_help_activated)},
+    {ORAGE_WINDOW_ACTION_ABOUT, "<Actions>/OrageWindow/about", "", XFCE_GTK_IMAGE_MENU_ITEM, N_("_About"), N_("Display information about Orage"), "help-about", G_CALLBACK (on_about_activated)},
 };
 
 #define get_action_entry(id) xfce_gtk_get_action_entry_by_id (action_entries, G_N_ELEMENTS (action_entries), id)
