@@ -63,4 +63,21 @@ char *ic_generate_uid(void);
 struct icaltimetype ic_convert_to_timezone(struct icaltimetype t
         , icalproperty *p);
 
+/**
+ * is_todo_completed:
+ * @per: pointer to an #xfical_period structure
+ *
+ * Checks whether the given todo item is marked as completed.
+ *
+ * The completion status is determined by the @ctime field of @per.
+ * If @ctime is not set (i.e. icaltime_is_null_time() returns TRUE),
+ * the todo is considered incomplete. Otherwise, the todo is completed.
+ *
+ * Returns: %TRUE if the todo is completed, otherwise %FALSE.
+ */
+static inline gboolean is_todo_completed (xfical_period *per)
+{
+    return icaltime_is_null_time (per->ctime) ? FALSE : TRUE;
+}
+
 #endif /* !__ICAL_INTERNAL_H__ */

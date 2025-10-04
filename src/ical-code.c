@@ -3555,8 +3555,11 @@ static void xfical_get_event_from_component (icalcomponent *c,
     {
         per = ic_get_period (c, TRUE);
 
-        if (icaltime_is_null_time (per.ctime) ||
-            (local_compare (per.ctime, per.stime) < 0))
+        if (is_todo_completed (&per))
+            return;
+
+        g_debug ("--> %s: %s is %s", G_STRFUNC, icalcomponent_get_summary (c), is_todo_completed (&per) ? "completed" : "pending");
+        if (local_compare (per.ctime, per.stime) < 0)
         {
             /* VTODO needs to be checked either if it never completed or it has
              * completed before start.
