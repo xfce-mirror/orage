@@ -650,7 +650,7 @@ msgstr "Apondon del rendètz-vos mancat."
 msgid ""
 "Error happened when adding appointment. Look more details from the log file."
 msgstr ""
-"L'error s'es producha al moment de l'apondon d'un rendètz-vos. Veire mai de "
+"L'error s'es produita al moment de l'apondon d'un rendètz-vos. Veire mai de "
 "detalhs dins lo fichièr del jornal."
 
 #: src/orage-appointment-window.c:1582
@@ -1079,7 +1079,7 @@ msgid ""
 "    <&Ynnnn> is translated to current year minus nnnn.\n"
 "(This can be used for example in birthday reminders to tell how old the person will be.)"
 msgstr ""
-"Aquestas comandas en abreujat prenon efièch immediatament :\n"
+"Aquestas comandas en abreujat prenon efièit immediatament :\n"
 "    <D> inserir la data actuala dins lo format de data local\n"
 "    <T> inserir l'ora\n"
 "    <DT> inserir la data e l'ora.\n"
@@ -1648,7 +1648,7 @@ msgstr "Amagar"
 
 #: src/parameters.c:1036
 msgid "Minimized"
-msgstr "Redusir"
+msgstr "Minimizat"
 
 #: src/parameters.c:1062
 msgid "On calendar window open"
