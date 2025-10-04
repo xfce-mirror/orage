@@ -45,6 +45,7 @@
 #include "orage-sync-edit-dialog.h"
 #include "orage-sync-ext-command.h"
 #include "orage-task-runner.h"
+#include "orage-time-utils.h"
 #include "orage-window.h"
 #include "parameters.h"
 #include "parameters_internal.h"
