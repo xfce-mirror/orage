@@ -768,11 +768,11 @@ static void add_info_row (xfical_appt *appt, GtkBox *parent_box,
     gchar *tip_title;
     gchar *tip_location;
     gchar *tip_note;
-    char  *s_time;
-    char  *s_timeonly;
-    char  *e_time;
-    char  *c_time;
-    char  *na;
+    gchar *s_time;
+    gchar *s_timeonly;
+    gchar *e_time;
+    gchar *c_time;
+    gchar *na;
     GDateTime *today;
     GDateTime *gdt_end_time;
 
