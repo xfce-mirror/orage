@@ -1739,7 +1739,7 @@ msgstr ""
 
 #: src/parameters.c:1399
 msgid "Synchronization settings"
-msgstr "การตั้งค่าการปรับให้ครงกัน"
+msgstr "การตั้งค่าการปรับให้ตรงกัน"
 
 #: src/parameters.c:1405
 msgid "Synchronization sources"
