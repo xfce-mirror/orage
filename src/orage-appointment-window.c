@@ -975,11 +975,6 @@ static void on_appSound_button_clicked_cb (G_GNUC_UNUSED GtkButton *button,
     g_free(appSound_entry_filename);
 }
 
-static void app_free_memory (OrageAppointmentWindow *apptw)
-{
-    gtk_widget_destroy (GTK_WIDGET (apptw));
-}
-
 static gboolean appWindow_check_and_close (OrageAppointmentWindow *apptw)
 {
     gint result;
@@ -992,11 +987,11 @@ static gboolean appWindow_check_and_close (OrageAppointmentWindow *apptw)
                 , _("Yes, ignore modifications and leave"));
 
         if (result == GTK_RESPONSE_YES) {
-            app_free_memory (apptw);
+            gtk_widget_destroy (GTK_WIDGET (apptw));
         }
     }
     else {
-        app_free_memory (apptw);
+        gtk_widget_destroy (GTK_WIDGET (apptw));
     }
     return(TRUE);
 }
@@ -1610,7 +1605,7 @@ static void on_appSave_clicked_cb (G_GNUC_UNUSED GtkButton *b,
 static void save_xfical_from_appt_win_and_close (OrageAppointmentWindow *apptw)
 {
     if (save_xfical_from_appt_win (apptw)) {
-        app_free_memory (apptw);
+        gtk_widget_destroy (GTK_WIDGET (apptw));
     }
 }
 
@@ -1653,7 +1648,7 @@ static void delete_xfical_from_appt_win (OrageAppointmentWindow *apptw)
         }
 
         refresh_dependent_data (apptw);
-        app_free_memory (apptw);
+        gtk_widget_destroy (GTK_WIDGET (apptw));
     }
 }
 
