@@ -228,7 +228,7 @@ GtkWidget *orage_month_cell_new (void)
     return g_object_new (ORAGE_MONTH_CELL_TYPE, NULL);
 }
 
-void orage_month_cell_clear (OrageMonthCell *self)
+void orage_month_cell_reset (OrageMonthCell *self)
 {
     GtkStyleContext *context;
 

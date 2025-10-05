@@ -32,10 +32,22 @@ G_DECLARE_FINAL_TYPE (OrageMonthCell, orage_month_cell, ORAGE, MONTH_CELL, GtkBo
 
 GtkWidget *orage_month_cell_new (void);
 
-/** Clear all cell data.
- *  @param self a valid OrageMonthCell instance
+/**
+ * orage_month_cell_reset:
+ * @self: (nullable): an #OrageMonthCell
+ *
+ * Resets the month cell to its initial (empty) state.
+ *
+ * This function clears all data and visual state from the cell:
+ * it releases the date reference, removes all visual style classes
+ * (such as %TODAY and %HIGHLIGHTED), resets the day label text,
+ * removes all child widgets from the data box, and frees the list
+ * of associated events.
+ *
+ * After calling this function, the cell is considered uninitialized
+ * and ready to be populated with new data.
  */
-void orage_month_cell_clear (OrageMonthCell *self);
+void orage_month_cell_reset (OrageMonthCell *self);
 
 /** Sets the date associated with this month cell.
  *  @param self a valid OrageMonthCell instance

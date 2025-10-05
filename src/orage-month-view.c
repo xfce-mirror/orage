@@ -263,7 +263,7 @@ static void orage_month_view_update_month_cells (OrageMonthView *self)
             cell = self->month_cell[row][col];
             cell_date = g_date_time_add_days (gdt, row * 7 + col - offset);
             cell_month = g_date_time_get_month (cell_date);
-            orage_month_cell_clear (cell);
+            orage_month_cell_reset (cell);
             orage_month_cell_set_date (cell, cell_date);
             orage_month_cell_set_different_month (cell, month != cell_month);
             g_date_time_unref (cell_date);
@@ -388,8 +388,8 @@ static void orage_month_view_set_property (GObject *object,
     switch (prop_id)
     {
         case MONTH_VIEW_FIRST_DAY_OF_WEEK:
-            self->first_weekday= (FirstDayOfWeek)g_value_get_int (value);
-            self->first_weekday2= to_first_weekday (self->first_weekday);
+            self->first_weekday = (FirstDayOfWeek)g_value_get_int (value);
+            self->first_weekday2 = to_first_weekday (self->first_weekday);
             break;
 
         default:
