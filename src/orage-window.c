@@ -42,11 +42,11 @@ GtkWidget *orage_window_create (OrageApplication *app, gboolean use_new_ui)
         return orage_window_classic_new (app);
 }
 
-void orage_window_mark_appointments (OrageWindow *window)
+void orage_window_update_appointments (OrageWindow *window)
 {
     g_return_if_fail (ORAGE_IS_WINDOW (window));
 
-    ORAGE_WINDOW_GET_IFACE (window)->mark_appointments (window);
+    ORAGE_WINDOW_GET_IFACE (window)->update_appointments (window);
 }
 
 void orage_window_build_info (OrageWindow *window)

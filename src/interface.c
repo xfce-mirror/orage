@@ -108,7 +108,7 @@ gboolean orage_external_update_check (G_GNUC_UNUSED gpointer user_data)
         xfical_file_close_force();
         xfical_alarm_build_list(FALSE);
         app = ORAGE_APPLICATION (g_application_get_default ());
-        orage_window_mark_appointments (
+        orage_window_update_appointments (
             ORAGE_WINDOW (orage_application_get_window (app)));
     }
 
@@ -440,7 +440,7 @@ gboolean orage_import_file (const gchar *entry_filename)
     OrageApplication *app;
     if (xfical_import_file(entry_filename)) {
         app = ORAGE_APPLICATION (g_application_get_default ());
-        orage_window_mark_appointments (ORAGE_WINDOW (
+        orage_window_update_appointments (ORAGE_WINDOW (
             orage_application_get_window (app)));
         xfical_alarm_build_list(FALSE);
         return(TRUE);
@@ -574,7 +574,7 @@ static void orage_foreign_file_remove_line(gint del_line)
 
     write_parameters();
     app = ORAGE_APPLICATION (g_application_get_default ());
-    orage_window_mark_appointments (ORAGE_WINDOW (
+    orage_window_update_appointments (ORAGE_WINDOW (
         orage_application_get_window (app)));
     xfical_alarm_build_list(FALSE);
 }
@@ -784,7 +784,7 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
 
     write_parameters();
     app = ORAGE_APPLICATION (g_application_get_default ());
-    orage_window_mark_appointments (ORAGE_WINDOW (
+    orage_window_update_appointments (ORAGE_WINDOW (
         orage_application_get_window (app)));
     xfical_alarm_build_list(FALSE);
     return(TRUE);

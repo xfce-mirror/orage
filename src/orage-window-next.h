@@ -36,7 +36,24 @@ G_DECLARE_FINAL_TYPE (OrageWindowNext, orage_window_next, ORAGE, WINDOW_NEXT, Gt
  */
 GtkWidget *orage_window_next_new (OrageApplication *application);
 
-void orage_window_next_mark_appointments (OrageWindow *window);
+/**
+ * orage_window_next_update_appointments:
+ * @window: (nullable): an #OrageWindow instance
+ *
+ * Updates the list of visible appointments in the active view.
+ *
+ * This function refreshes the appointment data for the currently
+ * displayed page of the main window. The function opens the iCalendar
+ * data file, retrieves all events within the visible date range,
+ * and updates the view.
+ *
+ * The date range is determined by the visible boundaries as returned by
+ * orage_window_next_get_first_date() and orage_window_next_get_last_date().
+ *
+ * If the displayed page type is not supported, the function will issue a
+ * warning via g_return_if_reached().
+ */
+void orage_window_next_update_appointments (OrageWindow *window);
 
 /** This routine is called from ical-code xfical_alarm_build_list_internal and
  *  ical files are already open at that time. So make sure ical files are opened

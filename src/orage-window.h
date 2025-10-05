@@ -37,7 +37,7 @@ struct _OrageWindowInterface
 {
     GTypeInterface parent_iface;
 
-    void (*mark_appointments) (OrageWindow *window);
+    void (*update_appointments) (OrageWindow *window);
     void (*build_info) (OrageWindow *window);
     void (*build_events) (OrageWindow *window);
     void (*build_todo) (OrageWindow *window);
@@ -65,7 +65,7 @@ struct _OrageWindowInterface
  */
 GtkWidget *orage_window_create (OrageApplication *app, gboolean use_new_ui);
 
-void orage_window_mark_appointments (OrageWindow *window);
+void orage_window_update_appointments (OrageWindow *window);
 
 /** This routine is called from ical-code xfical_alarm_build_list_internal and
  *  ical files are already open at that time. So make sure ical files are opened

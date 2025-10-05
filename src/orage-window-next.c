@@ -395,7 +395,7 @@ static void on_date_selected_double_clicked (G_GNUC_UNUSED OrageMonthView *view,
 static void on_month_reload_requested (G_GNUC_UNUSED OrageMonthView *view,
                                        gpointer user_data)
 {
-    orage_window_next_mark_appointments (ORAGE_WINDOW (user_data));
+    orage_window_next_update_appointments (ORAGE_WINDOW (user_data));
 }
 
 static void cb_update_month_events (void *caller_param, OrageEvent *event)
@@ -1139,7 +1139,7 @@ static void orage_window_next_init (OrageWindowNext *self)
 
 static void orage_window_next_interface_init (OrageWindowInterface *iface)
 {
-    iface->mark_appointments = orage_window_next_mark_appointments;
+    iface->update_appointments = orage_window_next_update_appointments;
     iface->build_info = orage_window_next_build_info;
     iface->build_events = orage_window_next_build_events;
     iface->build_todo = orage_window_next_build_todo;
@@ -1220,7 +1220,7 @@ void orage_window_next_hide_todo (OrageWindow *window)
     gtk_widget_hide (ORAGE_WINDOW_NEXT (window)->todo_box);
 }
 
-void orage_window_next_mark_appointments (OrageWindow *window)
+void orage_window_next_update_appointments (OrageWindow *window)
 {
     GDateTime *gdt_start;
     GDateTime *gdt_end;
@@ -1269,7 +1269,7 @@ void orage_window_next_mark_appointments (OrageWindow *window)
 
 void orage_window_next_initial_load (OrageWindow *window)
 {
-    (void)g_idle_add_once ((GSourceOnceFunc)orage_window_next_mark_appointments,
+    (void)g_idle_add_once ((GSourceOnceFunc)orage_window_next_update_appointments,
                            window);
 }
 

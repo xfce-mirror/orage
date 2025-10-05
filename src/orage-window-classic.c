@@ -105,15 +105,15 @@ static void orage_window_classic_restore_state (OrageWindowClassic *window);
 
 static guint month_change_timer=0;
 
-void orage_window_classic_mark_appointments (OrageWindow *window)
+void orage_window_classic_update_appointments (OrageWindow *window)
 {
     g_return_if_fail (window != NULL);
 
-    if (!xfical_file_open(TRUE))
+    if (!xfical_file_open (TRUE))
         return;
 
     xfical_mark_calendar (ORAGE_WINDOW_CLASSIC (window)->mCalendar);
-    xfical_file_close(TRUE);
+    xfical_file_close (TRUE);
 }
 
 static void mFile_newApp_activate_cb (G_GNUC_UNUSED GtkMenuItem *menuitem,
@@ -234,7 +234,7 @@ static void mCalendar_day_selected_double_click_cb (GtkCalendar *calendar,
 
 static gboolean upd_calendar (gpointer user_data)
 {
-    orage_window_classic_mark_appointments (ORAGE_WINDOW (user_data));
+    orage_window_classic_update_appointments (ORAGE_WINDOW (user_data));
     month_change_timer = 0;
 
     return(FALSE); /* we do this only once */
@@ -732,7 +732,7 @@ static void orage_window_classic_class_init (OrageWindowClassicClass *klass)
 
 static void orage_window_classic_interface_init (OrageWindowInterface *iface)
 {
-    iface->mark_appointments = orage_window_classic_mark_appointments;
+    iface->update_appointments = orage_window_classic_update_appointments;
     iface->build_info = orage_window_classic_build_info;
     iface->build_events = orage_window_classic_build_events;
     iface->build_todo = orage_window_classic_build_todo;

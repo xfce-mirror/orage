@@ -38,7 +38,7 @@ G_DECLARE_FINAL_TYPE (OrageWindowClassic, orage_window_classic, ORAGE, WINDOW_CL
  */
 GtkWidget *orage_window_classic_new (OrageApplication *application);
 
-void orage_window_classic_mark_appointments (OrageWindow *window);
+void orage_window_classic_update_appointments (OrageWindow *window);
 
 /** This routine is called from ical-code xfical_alarm_build_list_internal and
  *  ical files are already open at that time. So make sure ical files are opened

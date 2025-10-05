@@ -815,7 +815,7 @@ static void refresh_dependent_data (OrageAppointmentWindow *apptw)
         orage_week_window_refresh (apptw->dw);
 
     app = ORAGE_APPLICATION (g_application_get_default ());
-    orage_window_mark_appointments (ORAGE_WINDOW (
+    orage_window_update_appointments (ORAGE_WINDOW (
         orage_application_get_window (app)));
 }
 
