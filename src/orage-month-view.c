@@ -228,51 +228,6 @@ static void orage_month_view_update_month_label (OrageMonthView *self)
     g_free (final_text);
 }
 
-/** Updates all month cells in the month view grid to reflect the correct
- *  calendar dates for the currently selected month.
- *
- *  This function recalculates the dates for each visible calendar cell in a 6×7
- *  grid (6 rows, 7 columns). The grid starts from the first day of the month
- *  (as returned by orage_month_view_get_first_day_of_month()) and fills in all
- *  cells including those belonging to the previous or next month, so that the
- *  grid always covers full weeks.
- *
- *  This function is normally called internally whenever the month view needs to
- *  be redrawn, for example after the user changes the displayed month.
- */
-static void orage_month_view_update_month_cells (OrageMonthView *self)
-{
-    OrageMonthCell *cell;
-    GDateTime *cell_date;
-    GDateTime *gdt;
-    guint row;
-    guint col;
-    gint month;
-    gint cell_month;
-    gint offset;
-
-    gdt = orage_month_view_get_first_day_of_month (self);
-    month = g_date_time_get_month (gdt);
-    offset = g_date_time_get_day_of_week (gdt)
-           - (self->first_weekday2 == MONDAY ? 1 : 0);
-
-    for (row = 0; row < 6; row++)
-    {
-        for (col = 0; col < 7; col++)
-        {
-            cell = self->month_cell[row][col];
-            cell_date = g_date_time_add_days (gdt, row * 7 + col - offset);
-            cell_month = g_date_time_get_month (cell_date);
-            orage_month_cell_reset (cell);
-            orage_month_cell_set_date (cell, cell_date);
-            orage_month_cell_set_different_month (cell, month != cell_month);
-            g_date_time_unref (cell_date);
-        }
-    }
-
-    g_date_time_unref (gdt);
-}
-
 /**
  * orage_month_view_constructed:
  * @object: a newly created #OrageMonthView instance
@@ -355,7 +310,7 @@ static void orage_month_view_update_day_names (OrageMonthView *self)
 static void orage_month_view_update_variable_fields (OrageMonthView *self)
 {
     orage_month_view_update_month_label (self);
-    orage_month_view_update_month_cells (self);
+    orage_month_view_reset_month_cells (self);
     orage_month_view_update_week_nr_cells (self);
 }
 
@@ -602,6 +557,39 @@ GtkWidget *orage_month_view_new (const FirstDayOfWeek first_day)
     return g_object_new (ORAGE_MONTH_VIEW_TYPE,
                          MONTH_VIEW_FIRST_DAY_OF_WEEK_PROPERTY, first_day,
                          NULL);
+}
+
+void orage_month_view_reset_month_cells (OrageMonthView *self)
+{
+    OrageMonthCell *cell;
+    GDateTime *cell_date;
+    GDateTime *gdt;
+    guint row;
+    guint col;
+    gint month;
+    gint cell_month;
+    gint offset;
+
+    gdt = orage_month_view_get_first_day_of_month (self);
+    month = g_date_time_get_month (gdt);
+    offset = g_date_time_get_day_of_week (gdt)
+           - (self->first_weekday2 == MONDAY ? 1 : 0);
+
+    for (row = 0; row < 6; row++)
+    {
+        for (col = 0; col < 7; col++)
+        {
+            cell = self->month_cell[row][col];
+            cell_date = g_date_time_add_days (gdt, row * 7 + col - offset);
+            cell_month = g_date_time_get_month (cell_date);
+            orage_month_cell_reset (cell);
+            orage_month_cell_set_date (cell, cell_date);
+            orage_month_cell_set_different_month (cell, month != cell_month);
+            g_date_time_unref (cell_date);
+        }
+    }
+
+    g_date_time_unref (gdt);
 }
 
 void orage_month_view_set_month (OrageMonthView *self, GDateTime *gdt)

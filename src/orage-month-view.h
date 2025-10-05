@@ -39,6 +39,31 @@ typedef enum
 G_DECLARE_FINAL_TYPE (OrageMonthView, orage_month_view, ORAGE, MONTH_VIEW, GtkBox)
 
 GtkWidget *orage_month_view_new (FirstDayOfWeek first_day);
+
+/**
+ * orage_month_view_reset_month_cells:
+ * @self: (nullable): an #OrageMonthView instance
+ *
+ * Resets all month cells within the month view to match the current month.
+ *
+ * This function iterates over all cells in the month grid (6 rows × 7 columns),
+ * clears each cell, assigns a new date based on the current month and the
+ * first visible weekday, and marks whether the cell belongs to a different
+ * month.
+ *
+ * It does not create or destroy cell widgets; existing cells are reused.
+ * The function only resets their state and date information.
+ *
+ * This function does not emit the "reload-requested" signal. It is typically
+ * used together with orage_month_view_set_event(), which populates the month
+ * view with event data after all cells have been reset and initialized.
+ *
+ * The resulting grid represents the complete month view layout that
+ * corresponds to the date returned by
+ * orage_month_view_get_first_day_of_month().
+ */
+void orage_month_view_reset_month_cells (OrageMonthView *self);
+
 void orage_month_view_set_month (OrageMonthView *self, GDateTime *gdt);
 void orage_month_view_mark_date (OrageMonthView *self, GDateTime *gdt);
 GDateTime *orage_month_view_get_first_date (OrageMonthView *self);

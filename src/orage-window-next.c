@@ -1252,6 +1252,7 @@ void orage_window_next_update_appointments (OrageWindow *window)
     switch (displayed_page)
     {
         case E_MONTH_PAGE:
+            orage_month_view_reset_month_cells (self->month_view);
             xfical_list_events_in_range (gdt_start, gdt_end,
                                          cb_update_month_events,
                                          self->month_view);
