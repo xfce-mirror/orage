@@ -102,14 +102,6 @@ ic_foreign_ical_files ic_f_ical[10];
 
 static void xfical_alarm_build_list_internal(gboolean first_list_today);
 
-typedef struct _xfical_timezone_array
-{
-    int    count;     /* how many timezones we have */
-    char **city;      /* pointer to timezone location name strings */
-    int  *utc_offset; /* pointer to int array holding utc offsets */
-    int  *dst;        /* pointer to int array holding dst settings */
-} xfical_timezone_array;
-
 typedef struct _app_data
 {
     GList **list;
