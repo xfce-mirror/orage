@@ -1032,6 +1032,8 @@ static void orage_window_next_init (OrageWindowNext *self)
     GtkPaned *paned;
     const size_t n_elements = G_N_ELEMENTS (action_entries);
 
+    gtk_widget_set_name (GTK_WIDGET (self), "orage-window-next");
+
     self->selected_date = g_date_time_new_now_utc ();
     self->accel_group = gtk_accel_group_new ();
 

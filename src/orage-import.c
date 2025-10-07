@@ -254,7 +254,7 @@ static void orage_import_window_constructed (GObject *object)
 
     G_OBJECT_CLASS (orage_import_window_parent_class)->constructed (object);
 
-    gtk_widget_set_name (GTK_WIDGET (self), "OrageImportWindow");
+    gtk_widget_set_name (GTK_WIDGET (self), "orage-import-window");
     gtk_window_set_resizable (GTK_WINDOW (self), FALSE);
     gtk_window_set_title (GTK_WINDOW (self), _("Import calendar file"));
 

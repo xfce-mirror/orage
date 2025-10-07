@@ -750,7 +750,7 @@ static void orage_window_classic_interface_init (OrageWindowInterface *iface)
 
 static void orage_window_classic_init (OrageWindowClassic *self)
 {
-    gtk_widget_set_name (GTK_WIDGET (self), "OrageWindowClassic");
+    gtk_widget_set_name (GTK_WIDGET (self), "orage-window-classic");
 
     self->main_box = gtk_grid_new ();
     gtk_container_add (GTK_CONTAINER (self), self->main_box);

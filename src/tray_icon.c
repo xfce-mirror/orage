@@ -313,7 +313,7 @@ static GdkPixbuf *create_dynamic_icon (void)
     surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, width, height);
     g_assert (surface != NULL);
 
-    style_context = get_style_context (NULL, "OrageTrayIcon");
+    style_context = get_style_context (NULL, "orage-tray-icon");
 
     cr = create_icon_background (surface, style_context, width, height);
 

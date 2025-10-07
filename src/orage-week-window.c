@@ -1207,7 +1207,7 @@ static void orage_week_window_init (OrageWeekWindow *self)
     self->a_day = g_date_time_new_now_local ();
     self->Vbox = gtk_grid_new ();
 
-    gtk_widget_set_name (GTK_WIDGET (self), "OrageWeekWindow");
+    gtk_widget_set_name (GTK_WIDGET (self), "orage-week-window");
     gtk_window_set_title (GTK_WINDOW (self), _("Orage - day view"));
     gtk_window_add_accel_group (GTK_WINDOW (self), self->accel_group);
     gtk_container_add (GTK_CONTAINER (self), self->Vbox);
