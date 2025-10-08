@@ -1,6 +1,7 @@
 4.21.0
 - Added Meson support (MR !74).
 - Added ICAL file preview and import dialog (MR !75).
+- CSS changes
 
 4.20.1 (2025-03-28)
 ======

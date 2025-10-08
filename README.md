@@ -1,6 +1,6 @@
 [![License](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://gitlab.xfce.org/apps/orage/-/blob/master/COPYING)
 
-# orage
+# Orage
 
 Orage is a time-managing application for the [Xfce](https://www.xfce.org) desktop environment.
 
