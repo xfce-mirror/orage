@@ -4,7 +4,6 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Serdar Sağlam <teknomobil@msn.com>, 2022
 # Necdet Yücel <necdetyucel@gmail.com>, 2022
 # Nick Schermer <nick@xfce.org>, 2022
 # Emin Tufan Çetin <etcetin@gmail.com>, 2024
@@ -13,6 +12,7 @@
 # mudrockdev, 2024
 # 3909d6133b383976bde86621da215840_711025d, 2025
 # b83946de5835331df42b9ffcc43e6a33_05e65cd <73a30e0a984b2291d4915f37112ad292_814039>, 2025
+# Serdar Sağlam <teknomobil@msn.com>, 2025
 # 
 #, fuzzy
 msgid ""
@@ -21,7 +21,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2025-05-14 12:50+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: b83946de5835331df42b9ffcc43e6a33_05e65cd <73a30e0a984b2291d4915f37112ad292_814039>, 2025\n"
+"Last-Translator: Serdar Sağlam <teknomobil@msn.com>, 2025\n"
 "Language-Team: Turkish (https://app.transifex.com/xfce/teams/16840/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1323,11 +1323,11 @@ msgstr ""
 
 #: src/orage-import.c:116
 msgid "<b>Type</b>"
-msgstr ""
+msgstr "<b>Tür</b>"
 
 #: src/orage-import.c:131
 msgid "<b>Location</b>"
-msgstr ""
+msgstr "<b>Bölge</b>"
 
 #: src/orage-import.c:146
 msgid "<b>URL</b>"
@@ -1335,7 +1335,7 @@ msgstr ""
 
 #: src/orage-import.c:165
 msgid "<b>All-day</b>"
-msgstr ""
+msgstr "<b>Tüm günler</b>"
 
 #: src/orage-import.c:180
 msgid "<b>From</b>"
@@ -1347,23 +1347,23 @@ msgstr ""
 
 #: src/orage-import.c:209
 msgid "<b>Recurring</b>"
-msgstr ""
+msgstr "<b>Tekrarlanan</b>"
 
 #: src/orage-import.c:212
 msgid "Yes"
-msgstr ""
+msgstr "Evet"
 
 #: src/orage-import.c:212
 msgid "No"
-msgstr ""
+msgstr "Hayır"
 
 #: src/orage-import.c:258
 msgid "Import calendar file"
-msgstr ""
+msgstr "Takvim dosyasını içe aktar"
 
 #: src/orage-import.c:260
 msgid "_Import"
-msgstr ""
+msgstr "_İçe aktar"
 
 #: src/orage-import.c:269
 msgid "_Cancel"

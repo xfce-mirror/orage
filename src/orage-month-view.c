@@ -279,7 +279,7 @@ static void orage_month_view_update_week_nr_cells (OrageMonthView *self)
 
 static void orage_month_view_update_day_names (OrageMonthView *self)
 {
-    static const gchar *day_name[] =
+    const gchar *day_name[] =
     {
         _("Monday"), _("Tuesday"), _("Wednesday"), _("Thursday"), _("Friday"),
         _("Saturday"), _("Sunday")

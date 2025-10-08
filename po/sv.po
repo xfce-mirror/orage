@@ -8,8 +8,8 @@
 # Nick Schermer <nick@xfce.org>, 2023
 # Ingemar Karlsson <ingemar@ingk.se>, 2024
 # Xfce Bot <transifex@xfce.org>, 2024
-# Luna Jernberg <droidbittin@gmail.com>, 2025
 # Påvel Nicklasson <pavel2@frimix.se>, 2025
+# Luna Jernberg <droidbittin@gmail.com>, 2025
 # 
 #, fuzzy
 msgid ""
@@ -18,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2025-05-14 12:50+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Påvel Nicklasson <pavel2@frimix.se>, 2025\n"
+"Last-Translator: Luna Jernberg <droidbittin@gmail.com>, 2025\n"
 "Language-Team: Swedish (https://app.transifex.com/xfce/teams/16840/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1312,51 +1312,51 @@ msgstr "Händelsedatum"
 
 #: src/orage-import.c:105
 msgid "<b>Summary</b>"
-msgstr ""
+msgstr "<b>Sammanfattning</b>"
 
 #: src/orage-import.c:116
 msgid "<b>Type</b>"
-msgstr ""
+msgstr "<b>Typ</b>"
 
 #: src/orage-import.c:131
 msgid "<b>Location</b>"
-msgstr ""
+msgstr "<b>Plats</b>"
 
 #: src/orage-import.c:146
 msgid "<b>URL</b>"
-msgstr ""
+msgstr "<b>URL</b>"
 
 #: src/orage-import.c:165
 msgid "<b>All-day</b>"
-msgstr ""
+msgstr "<b>Hela dagen</b>"
 
 #: src/orage-import.c:180
 msgid "<b>From</b>"
-msgstr ""
+msgstr "<b>Från</b>"
 
 #: src/orage-import.c:195
 msgid "<b>To</b>"
-msgstr ""
+msgstr "<b>Till</b>"
 
 #: src/orage-import.c:209
 msgid "<b>Recurring</b>"
-msgstr ""
+msgstr "<b>Återkommande</b>"
 
 #: src/orage-import.c:212
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 #: src/orage-import.c:212
 msgid "No"
-msgstr ""
+msgstr "Nej"
 
 #: src/orage-import.c:258
 msgid "Import calendar file"
-msgstr ""
+msgstr "Importera kalenderfil"
 
 #: src/orage-import.c:260
 msgid "_Import"
-msgstr ""
+msgstr "_Importera"
 
 #: src/orage-import.c:269
 msgid "_Cancel"

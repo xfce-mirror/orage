@@ -20,10 +20,6 @@
  *     Boston, MA 02110-1301 USA
  */
 
-#ifdef HAVE_CONFIG_H
-#  include <config.h>
-#endif
-
 #define _XOPEN_SOURCE /* glibc2 needs this */
 
 #include <sys/types.h>
@@ -3265,7 +3261,7 @@ static GtkWidget *build_recurrence_box_daily (OrageAppointmentWindow *apptw)
 
     repeat_days_label1 = gtk_label_new (_("Every"));
     apptw->recurrence_daily_interval_spin =
-            gtk_spin_button_new_with_range (1, 100, 1);
+            gtk_spin_button_new_with_range (1, 9999, 1);
     gtk_spin_button_set_wrap (
             GTK_SPIN_BUTTON (apptw->recurrence_daily_interval_spin), TRUE);
     repeat_days_label2 = gtk_label_new (_("day(s)"));
@@ -3486,7 +3482,7 @@ static GtkWidget *build_limits_box (OrageAppointmentWindow *apptw)
             GTK_RADIO_BUTTON (apptw->Recur_limit_rb), _("Repeat"));
     gtk_box_pack_start (limit_repeat_box, apptw->Recur_count_rb,
                         FALSE, FALSE, 0);
-    apptw->Recur_count_spin = gtk_spin_button_new_with_range (1, 100, 1);
+    apptw->Recur_count_spin = gtk_spin_button_new_with_range (1, 9999, 1);
     gtk_widget_set_sensitive (apptw->Recur_count_spin, FALSE);
     gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (apptw->Recur_count_spin), TRUE);
     gtk_box_pack_start (limit_repeat_box, apptw->Recur_count_spin,
@@ -3686,7 +3682,7 @@ static void build_general_page (OrageAppointmentWindow *apptw)
             gtk_check_button_new_with_mnemonic(_("Duration"));
     gtk_grid_attach_next_to (GTK_GRID (apptw->Dur_hbox),
             apptw->Dur_checkbutton, NULL, GTK_POS_RIGHT, 1, 1);
-    apptw->Dur_spin_dd = gtk_spin_button_new_with_range(0, 1000, 1);
+    apptw->Dur_spin_dd = gtk_spin_button_new_with_range (0, 9999, 1);
     apptw->Dur_spin_dd_label = gtk_label_new(_("days"));
     apptw->Dur_spin_hh = gtk_spin_button_new_with_range(0, 23, 1);
     apptw->Dur_spin_hh_label = gtk_label_new(_("hours"));

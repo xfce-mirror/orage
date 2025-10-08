@@ -26,10 +26,6 @@
 #include <glib.h>
 #include <time.h>
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #define NUMBER_OF_SYNC_SOURCES 10
 
 typedef struct _foreign_file

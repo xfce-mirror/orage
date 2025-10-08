@@ -564,7 +564,7 @@ msgstr "\tArchivatge pas utilizat.\n"
 
 #: src/orage-application.c:692
 msgid "Open today's tasks"
-msgstr "Dobrir los prètzfaches d’uèi"
+msgstr "Dobrir los prètzfaits d’uèi"
 
 #: src/orage-application.c:701
 msgid "Add new appointment"
@@ -650,7 +650,7 @@ msgstr "Apondon del rendètz-vos mancat."
 msgid ""
 "Error happened when adding appointment. Look more details from the log file."
 msgstr ""
-"L'error s'es producha al moment de l'apondon d'un rendètz-vos. Veire mai de "
+"L'error s'es produita al moment de l'apondon d'un rendètz-vos. Veire mai de "
 "detalhs dins lo fichièr del jornal."
 
 #: src/orage-appointment-window.c:1582
@@ -1023,7 +1023,7 @@ msgstr "Disponibilitat"
 
 #: src/orage-appointment-window.c:3700
 msgid "Done"
-msgstr "Fach"
+msgstr "Fait"
 
 #. categories
 #: src/orage-appointment-window.c:3724
@@ -1079,7 +1079,7 @@ msgid ""
 "    <&Ynnnn> is translated to current year minus nnnn.\n"
 "(This can be used for example in birthday reminders to tell how old the person will be.)"
 msgstr ""
-"Aquestas comandas en abreujat prenon efièch immediatament :\n"
+"Aquestas comandas en abreujat prenon efièit immediatament :\n"
 "    <D> inserir la data actuala dins lo format de data local\n"
 "    <T> inserir l'ora\n"
 "    <DT> inserir la data e l'ora.\n"
@@ -1319,51 +1319,51 @@ msgstr "Datas de las accions"
 
 #: src/orage-import.c:105
 msgid "<b>Summary</b>"
-msgstr ""
+msgstr "<b>Resumit</b>"
 
 #: src/orage-import.c:116
 msgid "<b>Type</b>"
-msgstr ""
+msgstr "<b>Tipe</b>"
 
 #: src/orage-import.c:131
 msgid "<b>Location</b>"
-msgstr ""
+msgstr "<b>Localizacion</b>"
 
 #: src/orage-import.c:146
 msgid "<b>URL</b>"
-msgstr ""
+msgstr "<b>URL</b>"
 
 #: src/orage-import.c:165
 msgid "<b>All-day</b>"
-msgstr ""
+msgstr "<b>Tota la jornada</b>"
 
 #: src/orage-import.c:180
 msgid "<b>From</b>"
-msgstr ""
+msgstr "<b>De</b>"
 
 #: src/orage-import.c:195
 msgid "<b>To</b>"
-msgstr ""
+msgstr "<b>Dusca</b>"
 
 #: src/orage-import.c:209
 msgid "<b>Recurring</b>"
-msgstr ""
+msgstr "<b>Recurréncia</b>"
 
 #: src/orage-import.c:212
 msgid "Yes"
-msgstr ""
+msgstr "Òc"
 
 #: src/orage-import.c:212
 msgid "No"
-msgstr ""
+msgstr "Non"
 
 #: src/orage-import.c:258
 msgid "Import calendar file"
-msgstr ""
+msgstr "Importar un fichièr d’agenda"
 
 #: src/orage-import.c:260
 msgid "_Import"
-msgstr ""
+msgstr "_Importar"
 
 #: src/orage-import.c:269
 msgid "_Cancel"
@@ -1495,7 +1495,7 @@ msgstr ""
 "Títol : %s\n"
 "%s Començament :\t%s\n"
 " Escasença :\t%s\n"
-" Fach :\t%s%s"
+" Fait :\t%s%s"
 
 #: src/orage-window.c:477
 #, c-format
@@ -1624,11 +1624,11 @@ msgstr "Totjorn en dessús"
 
 #: src/parameters.c:956
 msgid "Show in taskbar"
-msgstr "Afichar dins la barra dels prètzfaches"
+msgstr "Afichar dins la barra dels prètzfaits"
 
 #: src/parameters.c:961
 msgid "Show in pager"
-msgstr "Afichar dins lo pager"
+msgstr "Afichar dins l‘afichatge de paginacion"
 
 #: src/parameters.c:969
 msgid "Show in systray"
@@ -1648,7 +1648,7 @@ msgstr "Amagar"
 
 #: src/parameters.c:1036
 msgid "Minimized"
-msgstr "Redusir"
+msgstr "Minimizat"
 
 #: src/parameters.c:1062
 msgid "On calendar window open"

@@ -10,10 +10,9 @@
 # Nick Schermer <nick@xfce.org>, 2023
 # The Cat, 2024
 # Rafael Fontenelle <rffontenelle@gmail.com>, 2024
-# Wellington Almeida <wsalmeida6@gmail.com>, 2024
 # Xfce Bot <transifex@xfce.org>, 2024
-# Michael Martins, 2025
 # Andre Miranda <andre@andreldm.com>, 2025
+# Michael Martins, 2025
 # 
 #, fuzzy
 msgid ""
@@ -22,7 +21,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2025-05-14 12:50+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Andre Miranda <andre@andreldm.com>, 2025\n"
+"Last-Translator: Michael Martins, 2025\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/xfce/teams/16840/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,7 +32,7 @@ msgstr ""
 #. date only appointment
 #: src/event-list.c:186
 msgid "All day"
-msgstr "Todo o dia"
+msgstr "Dia todo"
 
 #: src/event-list.c:617 src/event-list.c:1441
 msgid "Time"
@@ -45,20 +44,20 @@ msgstr "Nenhuma fila foi selecionada."
 
 #: src/event-list.c:804
 msgid "Click a row to select it and after that you can copy it."
-msgstr "Clique em uma fila para selecioná-la para que você possa copiá-la."
+msgstr "Clique em uma linha para selecioná-la e depois você poderá copiá-la."
 
 #: src/event-list.c:1016
 msgid ""
 "You will permanently remove all\n"
 "selected appointments."
 msgstr ""
-"Você vai permanentemente excluir todos\n"
-"compromissos selecionados."
+"Você removerá permanentemente todos\n"
+"os compromissos selecionados."
 
 #: src/event-list.c:1017 src/orage-appointment-window.c:988
 #: src/orage-appointment-window.c:1634 src/parameters.c:687
 msgid "Do you want to continue?"
-msgstr "Você deseja continuar?"
+msgstr "Deseja continuar?"
 
 #: src/event-list.c:1018 src/orage-appointment-window.c:1635
 #: src/parameters.c:688
@@ -162,9 +161,9 @@ msgid ""
 "Note that this also shows all urgencies.\n"
 "Note that repeating events may appear earlier in the list as the first occurrence only is listed."
 msgstr ""
-"Marque isso apenas se você deseja ver o primeiro evento repetido. Por padrão, todos são mostrados.\n"
-"Note que isso também mostra todas as urgências.\n"
-"Note que eventos repetidos podem aparecer antes na lista como a primeira ocorrência é apenas listada."
+"Marque esta opção se desejar ver apenas o primeiro evento recorrente. Por padrão, todos são exibidos.\n"
+"Observe que isso também mostra todas as urgências.\n"
+"Observe que eventos recorrentes podem aparecer antes na lista, pois apenas a primeira ocorrência é listada."
 
 #: src/event-list.c:1312
 msgid "also old"
@@ -198,7 +197,7 @@ msgstr "Pesquisar"
 
 #: src/event-list.c:1383
 msgid "Search text "
-msgstr "Pesquisar pelo texto"
+msgstr "Pesquisar o texto "
 
 #: src/event-list.c:1449
 msgid "Flags"
@@ -373,7 +372,7 @@ msgstr ""
 
 #: src/interface.c:1165
 msgid "You can easily drag these from event-list window."
-msgstr "Você pode facilmente arrastá-los da janela de lista de eventos."
+msgstr "Você pode arrastá-los facilmente da janela da lista de eventos."
 
 #: src/interface.c:1167
 msgid "Orage appointment UIDs separated by commas."
@@ -395,7 +394,7 @@ msgstr "Arquivar agora (limite: %d meses)"
 
 #: src/interface.c:1199
 msgid "You can change archive threshold in parameters"
-msgstr "Você pode modificar o limite de arquivamento nos parâmetros"
+msgstr "Você pode alterar o limite de arquivamento nos parâmetros"
 
 #: src/interface.c:1211
 msgid "Revert archive now"
@@ -496,8 +495,8 @@ msgid ""
 "Set this if you want to make sure that this file is never modified by Orage.\n"
 "Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
 msgstr ""
-"Marque isto se você deseja  certificar-se que este arquivo nunca será modificado pelo Orage.\n"
-"Observe que modificando arquivos desconhecidos pode torná-los incompatíveis com a ferramenta original, de onde eles vieram!"
+"Defina esta opção se quiser garantir que este arquivo nunca seja modificado pelo Orage.\n"
+"Observe que modificar arquivos externos pode torná-los incompatíveis com a ferramenta original de onde vieram!"
 
 #: src/interface.c:1488
 msgid "This internal name is displayed to user instead of file name."
@@ -516,11 +515,13 @@ msgstr "Orage"
 msgid "Orage is a time-managing application for the Xfce desktop environment"
 msgstr ""
 "Orage é um aplicativo de gerenciamento de tempo para o ambiente de desktop "
-"Xfce "
+"Xfce"
 
 #: src/orage-about.c:54
 msgid "translator-credits"
-msgstr "André Miranda <andreldm@xfce.org>"
+msgstr ""
+"André Miranda <andreldm@xfce.org>\n"
+"Michael Martins <michaelfm21@gmail.com>"
 
 #: src/orage-application.c:162
 #, c-format
@@ -1062,7 +1063,7 @@ msgid ""
 "(Alarms will still fire normally.)\n"
 "(There is undocumented parameter so that you can change the default limit of 8.)"
 msgstr ""
-"Se você definir isso como 8 ou maior, o compromisso NÃO será mostrado nas janelas de lista.\n"
+"Se definir isso como 8 ou maior, o compromisso NÃO será mostrado nas janelas de lista.\n"
 "Você pode usar o recurso para desconfundir as janelas de lista, mas ele deixa mais difícil localizar este compromisso.\n"
 "(Alarmes vão tocar normalmente.)\n"
 "(Existe um parâmetro não documentado para que você possa alterar o limite padrão de 8.)"
@@ -1108,10 +1109,10 @@ msgid ""
 " 2) before Todo end\n"
 " 3) after Todo start"
 msgstr ""
-"Geralmente você deseja receber uma notificação:\n"
-" 1) antes do Evento começar\n"
-" 2) antes da Tarefa terminar\n"
-" 3) depois da Tarefa terminar"
+"Muitas vezes você deseja receber um alarme:\n"
+"1) antes do início do evento\n"
+"2) antes do fim da tarefa\n"
+"3) após o início da tarefa"
 
 #: src/orage-appointment-window.c:3904
 msgid "Persistent alarm"
@@ -1122,8 +1123,8 @@ msgid ""
 "Select this if you want Orage to remind you even if it has not been active "
 "when the alarm happened."
 msgstr ""
-"Selecione isto se você deseja que o Orage te notifique mesmo que ele não "
-"esteja ativado quando a notificação aconteceu."
+"Selecione esta opção se quiser que o Orage o lembre mesmo que ele não "
+"estivesse ativo quando o alarme ocorreu."
 
 #: src/orage-appointment-window.c:3918
 msgid "Sound"
@@ -1135,7 +1136,7 @@ msgstr "Usar"
 
 #: src/orage-appointment-window.c:3927
 msgid "Select this if you want audible alarm"
-msgstr "Selecione isto se você deseja um alarme sonoro"
+msgstr "Selecione isto se deseja um alarme sonoro"
 
 #: src/orage-appointment-window.c:3932
 msgid "Sound command is not set"
@@ -1160,7 +1161,7 @@ msgstr "Usar a janela do Orage"
 
 #: src/orage-appointment-window.c:4006
 msgid "Select this if you want Orage window alarm"
-msgstr "Selecione isto se você deseja uma notificação na janela do Orage"
+msgstr "Selecione isto se deseja uma notificação na janela do Orage"
 
 #: src/orage-appointment-window.c:4018
 msgid "Use notification"
@@ -1168,7 +1169,7 @@ msgstr "Usar notificação"
 
 #: src/orage-appointment-window.c:4020
 msgid "Select this if you want notification alarm"
-msgstr "Selecione isto se você deseja uma notificação de alarme"
+msgstr "Selecione isto se deseja uma notificação de alarme"
 
 #: src/orage-appointment-window.c:4028
 msgid "Set timeout"
@@ -1176,8 +1177,7 @@ msgstr "Definir tempo de espera"
 
 #: src/orage-appointment-window.c:4030
 msgid "Select this if you want notification to expire automatically"
-msgstr ""
-"Selecione isto se você deseja que a notificação expire automaticamente"
+msgstr "Selecione isto se deseja que a notificação expire automaticamente"
 
 #: src/orage-appointment-window.c:4041
 msgid "0 = system default expiration time"
@@ -1194,7 +1194,7 @@ msgstr "Procedimento"
 
 #: src/orage-appointment-window.c:4065
 msgid "Select this if you want procedure or script alarm"
-msgstr "Selecione isto se você deseja um alarme por procedimento ou script"
+msgstr "Selecione isto se deseja um alarme por procedimento ou script"
 
 #: src/orage-appointment-window.c:4075
 msgid ""
@@ -1321,51 +1321,51 @@ msgstr "Datas de ação"
 
 #: src/orage-import.c:105
 msgid "<b>Summary</b>"
-msgstr ""
+msgstr "<b>Resumo</b>"
 
 #: src/orage-import.c:116
 msgid "<b>Type</b>"
-msgstr ""
+msgstr "<b>Tipo</b>"
 
 #: src/orage-import.c:131
 msgid "<b>Location</b>"
-msgstr ""
+msgstr "<b>Localização</b>"
 
 #: src/orage-import.c:146
 msgid "<b>URL</b>"
-msgstr ""
+msgstr "<b>URL</b>"
 
 #: src/orage-import.c:165
 msgid "<b>All-day</b>"
-msgstr ""
+msgstr "<b>Dia todo</b>"
 
 #: src/orage-import.c:180
 msgid "<b>From</b>"
-msgstr ""
+msgstr "<b>De</b>"
 
 #: src/orage-import.c:195
 msgid "<b>To</b>"
-msgstr ""
+msgstr "<b>Para</b>"
 
 #: src/orage-import.c:209
 msgid "<b>Recurring</b>"
-msgstr ""
+msgstr "<b>Recorrente</b>"
 
 #: src/orage-import.c:212
 msgid "Yes"
-msgstr ""
+msgstr "Sim"
 
 #: src/orage-import.c:212
 msgid "No"
-msgstr ""
+msgstr "Não"
 
 #: src/orage-import.c:258
 msgid "Import calendar file"
-msgstr ""
+msgstr "Importar arquivo de calendário"
 
 #: src/orage-import.c:260
 msgid "_Import"
-msgstr ""
+msgstr "_Importar"
 
 #: src/orage-import.c:269
 msgid "_Cancel"
@@ -1542,7 +1542,7 @@ msgstr "Fuso horário"
 
 #: src/parameters.c:749
 msgid "You should always define your local timezone."
-msgstr "Você deveria sempre definir seu fuso horário local."
+msgstr "Você deve sempre definir seu fuso horário local."
 
 #: src/parameters.c:757
 msgid "Archive threshold (months)"
@@ -1690,8 +1690,8 @@ msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
 msgstr ""
-"Este é apenas o valor padrão, você pode alterá-lo na atual janela da lista "
-"de eventos."
+"Este é apenas o valor padrão, você pode alterá-lo na janela da lista de "
+"eventos."
 
 #: src/parameters.c:1196
 msgid "Show only first repeating event"
@@ -4074,11 +4074,11 @@ msgstr "%d minutos"
 
 #: src/timezone_selection.c:158
 msgid "backward"
-msgstr "Voltar"
+msgstr "para trás"
 
 #: src/timezone_selection.c:161
 msgid "forward"
-msgstr "Avançar"
+msgstr "para frente"
 
 #: src/timezone_selection.c:185
 msgid "not changed"
@@ -4155,9 +4155,9 @@ msgid ""
 " ical format and includes common calendar features like repeating "
 "appointments and multiple alarming possibilities."
 msgstr ""
-"Orage pretende ser um calendário gráfico rápido e fácil de usar. Ele usa o "
-"formato ical portátil e inclui recursos comuns de calendário, como "
-"compromissos repetidos e várias possibilidades de alarme. "
+"O Orage pretende ser um calendário gráfico rápido e fácil de usar. Ele usa "
+"um formato ical portátil e inclui recursos comuns de calendário, como "
+"compromissos recorrentes e múltiplas possibilidades de alarmes."
 
 #: org.xfce.orage.appdata.xml.in:15
 msgid ""
@@ -4167,9 +4167,9 @@ msgid ""
 "are left untouched."
 msgstr ""
 "O Orage não possui recursos de calendário de grupo, mas só pode ser usado "
-"para um único usuário. Leva uma lista de arquivos para arquivos ical que "
-"devem ser importados. O conteúdo desses arquivos é lido e convertido em "
-"Orage, mas esses arquivos permanecem intocados. "
+"por um único usuário. Ele recebe uma lista de arquivos para os arquivos ical"
+" que devem ser importados. O conteúdo desses arquivos é lido e convertido "
+"para o Orage, mas esses arquivos permanecem inalterados."
 
 #: org.xfce.orage.appdata.xml.in:35
 msgid "Orage Team"
@@ -4181,7 +4181,7 @@ msgstr "Calendário Orage"
 
 #: org.xfce.orage.desktop.in:5
 msgid "Desktop calendar"
-msgstr "Calendário do Ambiente de Trabalho"
+msgstr "Calendário de desktop"
 
 #: org.xfce.orage.desktop.in:13
 msgid "Calendar"
