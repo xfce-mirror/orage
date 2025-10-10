@@ -928,7 +928,7 @@ msgid ""
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
 msgstr ""
 "TODO es basat sul temps complèt e se repetís aprèp interval comptat dempuèi lo darrièr còp acabat.\n"
-"(Notatz que podètz pas dire quicòm sus l'istòria del TODO donat que los cambiaments de basa se reprodusisson qu'aprèp cada execucion.)"
+"(Notatz que podètz pas dire quicòm sus l'istòria del TODO donat que los cambiaments de basa se reproduson qu'aprèp cada execucion.)"
 
 #: src/orage-appointment-window.c:3539
 msgid "Save"
