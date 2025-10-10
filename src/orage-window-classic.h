@@ -23,8 +23,8 @@
 #ifndef ORAGE_WINDOW_CLASSIC_H
 #define ORAGE_WINDOW_CLASSIC_H 1
 
-#include "orage-window.h"
 #include "orage-application.h"
+#include "orage-window.h"
 #include <glib.h>
 
 G_BEGIN_DECLS

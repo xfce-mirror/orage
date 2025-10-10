@@ -154,7 +154,7 @@ static XfceGtkActionEntry action_entries[] =
 G_DEFINE_TYPE_WITH_CODE (OrageWindowNext, orage_window_next, GTK_TYPE_APPLICATION_WINDOW,
                          G_IMPLEMENT_INTERFACE (ORAGE_WINDOW_TYPE, orage_window_next_interface_init))
 
-static void on_menu_item_new_activated (G_GNUC_UNUSED GtkMenuItem* item,
+static void on_menu_item_new_activated (G_GNUC_UNUSED GtkMenuItem *item,
                                         gpointer user_data)
 {
     GDateTime *gdt;
@@ -539,8 +539,7 @@ static void orage_window_next_update_help_menu (OrageWindowNext *self,
 
 static GDateTime *orage_window_next_get_first_date (OrageWindowNext *self)
 {
-    const gchar *visible_name =
-        gtk_stack_get_visible_child_name (self->stack_view);
+    const gchar *visible_name = gtk_stack_get_visible_child_name (self->stack_view);
 
     if (g_strcmp0 (MONTH_PAGE, visible_name) == 0)
         return orage_month_view_get_first_date (self->month_view);
@@ -553,8 +552,7 @@ static GDateTime *orage_window_next_get_first_date (OrageWindowNext *self)
 
 static GDateTime *orage_window_next_get_last_date (OrageWindowNext *self)
 {
-    const gchar *visible_name =
-        gtk_stack_get_visible_child_name (self->stack_view);
+    const gchar *visible_name = gtk_stack_get_visible_child_name (self->stack_view);
 
     if (g_strcmp0 (MONTH_PAGE, visible_name) == 0)
         return orage_month_view_get_last_date (self->month_view);
@@ -570,8 +568,7 @@ static void orage_window_next_add_days (OrageWindowNext *self,
 {
     OrageWindow *gen_window;
     GDateTime *gdt;
-    const gchar *visible_name =
-        gtk_stack_get_visible_child_name (self->stack_view);
+    const gchar *visible_name = gtk_stack_get_visible_child_name (self->stack_view);
 
     if (g_strcmp0 (MONTH_PAGE, visible_name) == 0)
     {
@@ -709,7 +706,7 @@ static void insert_rows (GList **list, GDateTime *gdt, xfical_type ical_type,
 
     for (appt = xfical_appt_get_next_on_day (gdt, TRUE, 0, ical_type, file_type);
          appt;
-         appt = xfical_appt_get_next_on_day (gdt, FALSE, 0, ical_type , file_type))
+         appt = xfical_appt_get_next_on_day (gdt, FALSE, 0, ical_type, file_type))
     {
         *list = g_list_prepend (*list, appt);
     }
@@ -748,7 +745,7 @@ static void todo_clicked (GtkWidget *widget, GdkEventButton *event,
 
     if (event->type == GDK_2BUTTON_PRESS)
     {
-        uid = g_object_get_data (G_OBJECT(widget), "UID");
+        uid = g_object_get_data (G_OBJECT (widget), "UID");
         appointment_window = orage_appointment_window_new_update (uid);
         gtk_window_present (GTK_WINDOW (appointment_window));
     }
@@ -776,7 +773,7 @@ static void add_info_row (xfical_appt *appt, GtkBox *parent_box,
 
     /* Add data into the vbox. */
     ev = gtk_event_box_new ();
-    tmp_title = appt->title ? orage_process_text_commands(appt->title)
+    tmp_title = appt->title ? orage_process_text_commands (appt->title)
                             : g_strdup (_("No title defined"));
     s_time = orage_gdatetime_to_i18_time (appt->starttimecur, appt->allDay);
     today = g_date_time_new_now_local ();
@@ -1358,5 +1355,5 @@ void orage_window_next_save_window_state (OrageWindow *window)
     gtk_window_get_size (gtk_window, &g_par.size_x, &g_par.size_y);
     gtk_window_get_position (gtk_window, &g_par.pos_x, &g_par.pos_y);
     g_par.paned_pos = gtk_paned_get_position (
-            GTK_PANED (ORAGE_WINDOW_NEXT(window)->paned));
+        GTK_PANED (ORAGE_WINDOW_NEXT (window)->paned));
 }

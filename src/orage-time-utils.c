@@ -35,7 +35,7 @@
 #endif
 
 GDateTime *orage_calendar_get_date (GtkCalendar *cal,
-                                        const gint hh, const gint mm)
+                                    const gint hh, const gint mm)
 {
     guint year;
     guint month;
@@ -256,7 +256,7 @@ gint orage_get_first_weekday (void)
 #else
     gchar *week_start_str;
 
-#if 0  /* Week start from Orage */
+#if 0 /* Week start from Orage */
     /* Translate to calendar:week_start:0 if you want Sunday to be the first
      * day of the week to calendar:week_start:1 if you want Monday to be the
      * first day of the week, and so on.
@@ -306,7 +306,7 @@ GDateTime *orage_icaltime_to_gdatetime (const gchar *icaltime)
         /* Need to fill missing tm_wday and tm_yday, which are in use in some
          * locale's default date. For example in en_IN. mktime does it.
          */
-        if (mktime (&t) == (time_t) - 1)
+        if (mktime (&t) == (time_t)-1)
         {
             g_warning ("%s failed %d %d %d",
                        G_STRFUNC, t.tm_year, t.tm_mon, t.tm_mday);
@@ -367,13 +367,13 @@ GDateTime *orage_time_t_to_gdatetime (const time_t t, const gchar *tz_id)
 {
     GTimeZone *tz;
     GDateTime *gdt;
-    GDateTime *gdt_tmp;;
+    GDateTime *gdt_tmp;
 
     tz = g_time_zone_new_identifier (tz_id);
     if (tz == NULL)
     {
-        g_debug ("%s @ %d: failed to convert timezone '%s', "
-                 "using local timezone", G_STRFUNC, __LINE__, tz_id);
+        g_debug ("%s: failed to convert timezone '%s', using local timezone",
+                 G_STRFUNC, tz_id);
         tz = g_time_zone_new_local ();
     }
 

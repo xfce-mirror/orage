@@ -143,7 +143,7 @@ static void ui_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
     Itf *itf = (Itf *)user_data;
 
     g_par.use_new_ui = gtk_toggle_button_get_active (
-            GTK_TOGGLE_BUTTON (itf->use_new_ui_checkbutton));
+        GTK_TOGGLE_BUTTON (itf->use_new_ui_checkbutton));
 }
 
 static void borders_changed (G_GNUC_UNUSED GtkWidget *dialog,

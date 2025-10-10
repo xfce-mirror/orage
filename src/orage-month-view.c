@@ -19,11 +19,12 @@
  */
 
 #include "orage-month-view.h"
-#include "orage-month-cell.h"
-#include "orage-i18n.h"
-#include "orage-event.h"
-#include "orage-time-utils.h"
+
 #include "functions.h"
+#include "orage-event.h"
+#include "orage-i18n.h"
+#include "orage-month-cell.h"
+#include "orage-time-utils.h"
 
 #include <gtk/gtk.h>
 
@@ -66,7 +67,6 @@ enum
     SIGNAL_RELOAD_REQUESTED,
     N_SIGNALS
 };
-
 
 static GParamSpec *properties[N_PROPS] = {NULL};
 static guint signals[N_SIGNALS] = {0};
@@ -635,7 +635,7 @@ void orage_month_view_mark_date (OrageMonthView *self, GDateTime *gdt)
             orage_month_cell_set_selected (cell, selected);
         }
     }
-    
+
     if (month_changed)
         g_signal_emit (self, signals[SIGNAL_RELOAD_REQUESTED], 0);
 }

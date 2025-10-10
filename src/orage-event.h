@@ -18,12 +18,11 @@
  *     Boston, MA 02110-1301 USA
  */
 
-
 #ifndef ORAGE_EVENT_H
 #define ORAGE_EVENT_H 1
 
-#include <gtk/gtk.h>
 #include <glib.h>
+#include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 

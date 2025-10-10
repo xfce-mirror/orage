@@ -707,13 +707,12 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
     const gchar *add_failed = _("Foreign file add failed");
 
     if (g_par.foreign_count > 9) {
-        g_warning ("%s: Orage can only handle 10 foreign files. Limit reached. "
-                   "New file not added", G_STRFUNC);
+        g_warning ("%s: Foreign file limit (10) reached; new file not added",
+                   G_STRFUNC);
         if (main_window)
         {
-            orage_error_dialog (GTK_WINDOW (main_window)
-                    , add_failed
-                    , _("Orage can only handle 10 foreign files. Limit reached"));
+            orage_error_dialog (GTK_WINDOW (main_window), add_failed,
+                _("Orage can only handle 10 foreign files. Limit reached"));
         }
         return(FALSE);
     }

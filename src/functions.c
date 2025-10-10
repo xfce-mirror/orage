@@ -36,8 +36,8 @@
 #include <glib/gprintf.h>
 #include <glib/gstdio.h>
 #include <gtk/gtk.h>
-#include <libxfce4ui/libxfce4ui.h>
 #include <libical/ical.h>
+#include <libxfce4ui/libxfce4ui.h>
 
 #include "functions.h"
 #include "orage-i18n.h"

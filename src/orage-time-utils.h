@@ -97,7 +97,6 @@ gint orage_gdatetime_compare_date (GDateTime *gdt1, GDateTime *gdt2);
  */
 gint orage_gdatetime_compare_year_month (GDateTime *gdt1, GDateTime *gdt2);
 
-
 /**
  * orage_gdatetime_days_between:
  * @gdt1: first #GDateTime value

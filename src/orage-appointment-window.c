@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Erkki Moorits
+ * Copyright (c) 2021-2025 Erkki Moorits
  * Copyright (c) 2005-2013 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2004-2005 Mickael Graf (korbinus at xfce.org)
  *
@@ -1543,7 +1543,7 @@ static gboolean save_xfical_from_appt_win (OrageAppointmentWindow *apptw)
                 }
 
                 if (found)
-                    xf_file_id = g_strdup_printf ("F%02d.", i-1);
+                    xf_file_id = g_strdup_printf ("F%02d.", i - 1);
                 else
                 {
                     g_warning ("%s: Matching foreign file not found: %s",

@@ -20,12 +20,12 @@
 
 #include "orage-window.h"
 
-#include "orage-window-next.h"
-#include "orage-window-classic.h"
 #include "orage-application.h"
+#include "orage-window-classic.h"
+#include "orage-window-next.h"
 
-#include <gtk/gtk.h>
 #include <glib.h>
+#include <gtk/gtk.h>
 
 G_DEFINE_INTERFACE (OrageWindow, orage_window, GTK_TYPE_APPLICATION_WINDOW)
 

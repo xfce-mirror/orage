@@ -62,7 +62,7 @@ OrageEvent *orage_event_new (void)
     return g_object_new (ORAGE_EVENT_TYPE, NULL);
 }
 
-GDateTime* orage_event_get_date_start (OrageEvent *self)
+GDateTime *orage_event_get_date_start (OrageEvent *self)
 {
     g_return_val_if_fail (ORAGE_IS_EVENT (self), NULL);
 
@@ -77,7 +77,7 @@ void orage_event_set_date_start (OrageEvent *self, GDateTime *gdt)
     self->gdt_start = g_date_time_ref (gdt);
 }
 
-GDateTime* orage_event_get_date_end (OrageEvent *self)
+GDateTime *orage_event_get_date_end (OrageEvent *self)
 {
     g_return_val_if_fail (ORAGE_IS_EVENT (self), NULL);
 

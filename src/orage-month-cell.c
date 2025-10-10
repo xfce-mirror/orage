@@ -19,9 +19,10 @@
  */
 
 #include "orage-month-cell.h"
+
+#include "functions.h"
 #include "orage-event.h"
 #include "orage-time-utils.h"
-#include "functions.h"
 
 #define TODAY "today"
 #define OUT_OF_MONTH "out-of-month"
@@ -208,7 +209,7 @@ static void orage_month_cell_refresh_events (OrageMonthCell *self)
     for (el = self->events; el != NULL; el = el->next)
     {
         event = ORAGE_EVENT (el->data);
-        description = orage_event_get_description (event); 
+        description = orage_event_get_description (event);
         widget = gtk_label_new (description);
         label = GTK_LABEL (widget);
         gtk_label_set_ellipsize (label, PANGO_ELLIPSIZE_END);
@@ -257,8 +258,7 @@ void orage_month_cell_set_date (OrageMonthCell *self, GDateTime *date)
 
     g_return_if_fail (ORAGE_IS_MONTH_CELL (self));
 
-    if (self->date &&
-        date &&
+    if (self->date && date &&
         orage_gdatetime_days_between (self->date, date) == 0)
     {
         return;

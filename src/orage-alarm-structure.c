@@ -19,8 +19,9 @@
  */
 
 #include "orage-alarm-structure.h"
-#include "orage-time-utils.h"
+
 #include "functions.h"
+#include "orage-time-utils.h"
 #include <glib.h>
 
 static void orage_alarm_free (alarm_struct *alarm)

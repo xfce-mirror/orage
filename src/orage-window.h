@@ -30,7 +30,7 @@
 
 G_BEGIN_DECLS
 
-#define ORAGE_WINDOW_TYPE (orage_window_get_type())
+#define ORAGE_WINDOW_TYPE (orage_window_get_type ())
 G_DECLARE_INTERFACE (OrageWindow, orage_window, ORAGE, WINDOW, GtkApplicationWindow)
 
 struct _OrageWindowInterface
