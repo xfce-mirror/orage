@@ -1,6 +1,6 @@
 4.21.0
 =======
-- Added Meson support (MR !74).
+- Replaced autotools with Meson (MR !74 and MR !77).
 - Added ICAL file preview and import dialog (MR !75).
 - CSS changes
 
