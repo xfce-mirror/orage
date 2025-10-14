@@ -50,7 +50,10 @@ Orage optionally depends on the following packages:
 From source code repository:
 
     % cd orage
+    # to install into the default directory
     % meson setup build
+    # or to install into a custom directory
+    % meson setup build --prefix=<installation-directory>
     % meson compile -C build
     % meson install -C build
 
