@@ -56,7 +56,8 @@ typedef struct _parameters
     gboolean start_minimized;
     gboolean set_stick;
     gboolean set_ontop;
-    
+    gboolean use_new_ui;
+
     /* ical week start day (0 = Monday, 1 = Tuesday,... 6 = Sunday) */
     gint ical_weekstartday;
 
@@ -88,6 +89,7 @@ typedef struct _parameters
     guint wakeup_timer;  /* controls wakeup after suspend/hibernate */
 
     /* main window */
+    gint paned_pos;
     gint pos_x, pos_y;
     gint size_x, size_y;
 

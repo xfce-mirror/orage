@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2024 Erkki Moorits
+ * Copyright (c) 2021-2025 Erkki Moorits
  * Copyright (c) 2007-2013 Juha Kautto  (juha at xfce.org)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -28,15 +28,16 @@
 #include <gdk/gdk.h>
 #include <gtk/gtk.h>
 
-#include "orage-i18n.h"
-#include "orage-css.h"
-#include "functions.h"
-#include "orage-week-window.h"
-#include "ical-code.h"
-#include "parameters.h"
 #include "event-list.h"
+#include "functions.h"
+#include "ical-code.h"
 #include "orage-appointment-window.h"
 #include "orage-category.h"
+#include "orage-css.h"
+#include "orage-i18n.h"
+#include "orage-time-utils.h"
+#include "orage-week-window.h"
+#include "parameters.h"
 
 #define MAX_DAYS 40
 
@@ -1203,7 +1204,7 @@ static void orage_week_window_init (OrageWeekWindow *self)
     self->a_day = g_date_time_new_now_local ();
     self->Vbox = gtk_grid_new ();
 
-    gtk_widget_set_name (GTK_WIDGET (self), "OrageWeekWindow");
+    gtk_widget_set_name (GTK_WIDGET (self), "orage-week-window");
     gtk_window_set_title (GTK_WINDOW (self), _("Orage - day view"));
     gtk_window_add_accel_group (GTK_WINDOW (self), self->accel_group);
     gtk_container_add (GTK_CONTAINER (self), self->Vbox);

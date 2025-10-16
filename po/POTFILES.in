@@ -11,9 +11,13 @@ src/orage-about.c
 src/orage-application.c
 src/orage-appointment-window.c
 src/orage-import.c
+src/orage-month-view.c
+src/orage-month-view.c
 src/orage-sync-edit-dialog.c
+src/orage-time-utils.c
 src/orage-week-window.c
-src/orage-window.c
+src/orage-window-classic.c
+src/orage-window-next.c
 src/parameters.c
 src/reminder.c
 src/timezone_names.c

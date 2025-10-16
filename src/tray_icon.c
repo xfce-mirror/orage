@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Erkki Moorits
+ * Copyright (c) 2021-2025 Erkki Moorits
  * Copyright (c) 2006-2013 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2004-2006 Mickael Graf (korbinus at xfce.org)
  *
@@ -32,12 +32,12 @@
 #include <gdk/gdkevents.h>
 #include <gdk/gdkx.h>
 
-#include "orage-i18n.h"
-#include "orage-window.h"
+#include "event-list.h"
 #include "functions.h"
 #include "ical-code.h"
-#include "event-list.h"
 #include "orage-appointment-window.h"
+#include "orage-i18n.h"
+#include "orage-window.h"
 #include "parameters.h"
 #include "tray_icon.h"
 
@@ -74,12 +74,7 @@ static GtkStyleContext *get_style_context (GtkStyleContext *parent,
 static void on_Today_activate (G_GNUC_UNUSED GtkMenuItem *menuitem,
                                gpointer user_data)
 {
-    GDateTime *gdt;
-
-    gdt = g_date_time_new_now_local ();
-    orage_select_date (orage_window_get_calendar (ORAGE_WINDOW (user_data)),
-                       gdt);
-    g_date_time_unref (gdt);
+    orage_window_select_today (ORAGE_WINDOW (user_data));
     (void)create_el_win (NULL);
 }
 
@@ -252,7 +247,8 @@ static void create_own_icon_pango_layout (gint line,
     g_assert ((line >= 1) && (line <= 3));
 
     app = ORAGE_APPLICATION (g_application_get_default ());
-    pl = gtk_widget_create_pango_layout (orage_application_get_window (app), "x");
+    pl = gtk_widget_create_pango_layout (orage_application_get_window (app),
+                                         "x");
     sub_style_context = get_row_style (style_context, line);
     style_context_state = gtk_style_context_get_state (sub_style_context);
 
@@ -313,7 +309,7 @@ static GdkPixbuf *create_dynamic_icon (void)
     surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, width, height);
     g_assert (surface != NULL);
 
-    style_context = get_style_context (NULL, "OrageTrayIcon");
+    style_context = get_style_context (NULL, "orage-tray-icon");
 
     cr = create_icon_background (surface, style_context, width, height);
 

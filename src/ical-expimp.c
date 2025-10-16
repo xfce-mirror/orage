@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Erkki Moorits
+ * Copyright (c) 2021-2025 Erkki Moorits
  * Copyright (c) 2005-2011 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2003-2005 Mickael Graf (korbinus at xfce.org)
  *
@@ -50,17 +50,15 @@
 #include <libical/ical.h>
 #include <libical/icalss.h>
 
-#include "orage-i18n.h"
-#include "orage-window.h"
+#include "event-list.h"
 #include "functions.h"
-#include "reminder.h"
 #include "ical-code.h"
 #include "ical-expimp.h"
 #include "ical-internal.h"
-#include "event-list.h"
-#include "orage-appointment-window.h"
-#include "parameters.h"
 #include "interface.h"
+#include "orage-i18n.h"
+#include "parameters.h"
+#include "reminder.h"
 
 static void add_event (icalcomponent *c, gboolean *ical_opened)
 {

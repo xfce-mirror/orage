@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Erkki Moorits
+ * Copyright (c) 2021-2025 Erkki Moorits
  * Copyright (c) 2005-2013 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2003-2006 Mickael Graf (korbinus at xfce.org)
  *
@@ -42,16 +42,17 @@
 #include <libnotify/notify.h>
 #endif
 
-#include "orage-alarm-structure.h"
-#include "orage-i18n.h"
-#include "orage-rc-file.h"
-#include "orage-window.h"
+#include "event-list.h"
 #include "functions.h"
 #include "ical-code.h"
-#include "event-list.h"
+#include "orage-alarm-structure.h"
 #include "orage-appointment-window.h"
-#include "reminder.h"
+#include "orage-i18n.h"
+#include "orage-rc-file.h"
+#include "orage-time-utils.h"
+#include "orage-window.h"
 #include "parameters.h"
+#include "reminder.h"
 
 #ifdef HAVE_X11_TRAY_ICON
 #include <gdk/gdkx.h>
@@ -137,7 +138,7 @@ static OrageRc *orage_persistent_file_open (void)
     fpath = orage_data_file_location(ORAGE_PERSISTENT_ALARMS_DIR_FILE);
 
     if ((orc = orage_rc_file_open (fpath, TRUE)) == NULL) {
-        g_warning ("%s: persistent alarms file open failed.", G_STRFUNC);
+        g_warning ("%s: persistent alarms file open failed", G_STRFUNC);
     }
     g_free(fpath);
 
@@ -152,7 +153,7 @@ static OrageRc *orage_persistent_file_new (void)
     fpath = orage_data_file_location (ORAGE_PERSISTENT_ALARMS_DIR_FILE);
 
     if ((orc = orage_rc_file_new (fpath)) == NULL)
-        g_warning ("%s: persistent alarms file open failed.", G_STRFUNC);
+        g_warning ("%s: persistent alarms file open failed", G_STRFUNC);
 
     g_free (fpath);
 
@@ -457,7 +458,7 @@ static void create_notify_reminder(alarm_struct *l_alarm)
     }
 
 #else
-    g_warning ("libnotify not linked in. Can't use notifications.");
+    g_warning ("libnotify not linked in. Can't use notifications");
     (void)l_alarm;
 #endif
 }
@@ -674,9 +675,7 @@ static void create_procedure_reminder(alarm_struct *l_alarm)
     gint status;
 
     orage_alarm_ref (l_alarm);
-#if 0
-    status = orage_exec(l_alarm->cmd, &active, &error);
-#endif
+
     cmd = g_strconcat(l_alarm->cmd, " &", NULL);
 
     cmd = orage_replace_text(cmd, "<&T>", l_alarm->title);
@@ -775,13 +774,14 @@ static void reset_orage_day_change(gboolean changed)
 gboolean orage_day_change(gpointer user_data)
 {
     OrageApplication *app;
-    GtkCalendar *calendar;
     GDateTime *gdt;
+    GDateTime *selected_gdt;
+    OrageWindow *window;
     gint year;
     gint month;
     gint day;
     static gint previous_year=0, previous_month=0, previous_day=0;
-    guint selected_year=0, selected_month=0, selected_day=0;
+    gint selected_year, selected_month, selected_day;
     gint current_year=0, current_month=0, current_day=0;
 
     gdt = g_date_time_new_now_local ();
@@ -803,17 +803,20 @@ gboolean orage_day_change(gpointer user_data)
         current_day   = day;
         /* Get the selected date from calendar */
         app = ORAGE_APPLICATION (g_application_get_default ());
-        calendar = orage_window_get_calendar (ORAGE_WINDOW (orage_application_get_window (app)));
-        
-        gtk_calendar_get_date (calendar, &selected_year, &selected_month,
-                               &selected_day);
-        selected_month++;
-        if ((gint)selected_year == previous_year
-        && (gint)selected_month == previous_month
-        && (gint)selected_day == previous_day) {
+        window = ORAGE_WINDOW (orage_application_get_window (app));
+
+        selected_gdt = orage_window_get_selected_date (window);
+        g_date_time_get_ymd (selected_gdt,
+                             &selected_year, &selected_month, &selected_day);
+        g_date_time_unref (selected_gdt);
+
+        if (selected_year == previous_year &&
+            selected_month == previous_month &&
+            selected_day == previous_day)
+        {
             /* previous day was indeed selected,
                keep it current automatically */
-            orage_select_date (calendar, gdt);
+            orage_window_select_date (window, gdt);
         }
         previous_year  = current_year;
         previous_month = current_month;

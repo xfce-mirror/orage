@@ -19,7 +19,9 @@
  */
 
 #include "orage-alarm-structure.h"
+
 #include "functions.h"
+#include "orage-time-utils.h"
 #include <glib.h>
 
 static void orage_alarm_free (alarm_struct *alarm)
@@ -45,8 +47,6 @@ alarm_struct *orage_alarm_new (void)
     alarm->orage_display_data = g_new0 (orage_ddmmhh_hbox_struct, 1);
     alarm->ref_count = 1;
 
-    g_debug ("%s: %p", G_STRFUNC, (void *)alarm);
-
     return alarm;
 }
 
@@ -66,10 +66,7 @@ void orage_alarm_unref (alarm_struct *alarm)
     g_return_if_fail (alarm->ref_count > 0);
 
     if (g_atomic_int_dec_and_test (&alarm->ref_count))
-    {
-        g_debug ("%s: %p, freed", G_STRFUNC, (void *)alarm);
         orage_alarm_free (alarm);
-    }
 }
 
 gint orage_alarm_order (gconstpointer a, gconstpointer b)
