@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Erkki Moorits
+ * Copyright (c) 2021-2025 Erkki Moorits
  * Copyright (c) 2005-2013 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2004-2005 Mickael Graf (korbinus at xfce.org)
  *
@@ -25,12 +25,11 @@
 
 typedef enum
 {
-    EVENT_PAGE = 0
-   ,TODO_PAGE
-   ,JOURNAL_PAGE
-   ,SEARCH_PAGE
+    EVENT_PAGE = 0,
+    TODO_PAGE,
+    JOURNAL_PAGE,
+    SEARCH_PAGE
 } el_page;
-
 
 typedef struct _el_win
 {
@@ -80,25 +79,31 @@ typedef struct _el_win
     GtkWidget *search_notebook_page;
     GtkWidget *search_entry;
 
-    GtkWidget   *ScrolledWindow;
-    GtkWidget   *TreeView;
+    GtkWidget *ScrolledWindow;
+    GtkWidget *TreeView;
     GtkTreeSelection *TreeSelection;
-    GtkListStore     *ListStore;
-    GtkTreeSortable  *TreeSortable;
+    GtkListStore *ListStore;
+    GtkTreeSortable *TreeSortable;
 
     /* these are used to build the data into event list */
-    gboolean today;       /* flag: today or not */
-    gboolean only_first;  /* flag: show only the first repeating event */
-    gboolean show_old;    /* flag: show also very old events */
-    int      days;        /* how many extra days to show; usually 0 */
-    el_page  page;        /* appointment page to show */
-    char     time_now[6]; /* hh:mm */
+    gboolean today;      /* flag: today or not */
+    gboolean only_first; /* flag: show only the first repeating event */
+    gboolean show_old;   /* flag: show also very old events */
+    int days;            /* how many extra days to show; usually 0 */
+    el_page page;        /* appointment page to show */
+    gchar time_now[6];   /* hh:mm */
 
     GDateTime *date_now;
-    GList    *apptw_list; /* keep track of appointments being updated */
-} el_win; /* event list window */
+    GList *apptw_list;   /* keep track of appointments being updated */
+} el_win;
 
-el_win* create_el_win (GDateTime *gdt);
-void refresh_el_win(el_win *el);
+/** Create new event list window.
+ *  @param gdt event list time, can be NULL. In case of NULL value, event date
+ *         is taken directly from calendar.
+ *  @return newly created event list window.
+ */
+el_win *create_el_win (GDateTime *gdt);
 
-#endif /* !__EVENT_LIST_H__ */
+void refresh_el_win (el_win *el);
+
+#endif

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Erkki Moorits
+ * Copyright (c) 2021-2025 Erkki Moorits
  * Copyright (c) 2005-2011 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2003-2005 Mickael Graf (korbinus at xfce.org)
  *
@@ -51,16 +51,16 @@
 #include <libical/ical.h>
 #include <libical/icalss.h>
 
-#include "orage-i18n.h"
-#include "orage-window.h"
+#include "event-list.h"
 #include "functions.h"
-#include "reminder.h"
 #include "ical-code.h"
 #include "ical-internal.h"
-#include "event-list.h"
-#include "orage-appointment-window.h"
-#include "parameters.h"
 #include "interface.h"
+#include "orage-appointment-window.h"
+#include "orage-i18n.h"
+#include "orage-window.h"
+#include "parameters.h"
+#include "reminder.h"
 
 #ifdef HAVE_ARCHIVE
 gboolean xfical_archive_open(void)
@@ -308,13 +308,7 @@ gboolean xfical_archive(void)
          c != 0;
          c = c2) {
         c2 = icalcomponent_get_next_component(ic_ical, ICAL_ANY_COMPONENT);
-#if 0
-        sdate = icalcomponent_get_dtstart(c);
-        edate = icalcomponent_get_dtend(c);
-        if (icaltime_is_null_time(edate)) {
-            edate = sdate;
-        }
-#endif
+
         per =  ic_get_period(c, TRUE);
         /* Items with endate before threshold => archived.
          * Recurring events are marked in the main file by adding special

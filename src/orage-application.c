@@ -192,23 +192,6 @@ static void load_sync_conf (OrageTaskRunner *sync)
 }
 #endif
 
-static void raise_window (OrageApplication *self)
-{
-    GtkWindow *window = GTK_WINDOW (self->window);
-
-    if (g_par.pos_x || g_par.pos_y)
-        gtk_window_move (window, g_par.pos_x, g_par.pos_y);
-
-    if (g_par.select_always_today)
-        orage_select_today (orage_window_get_calendar (ORAGE_WINDOW (window)));
-
-    if (g_par.set_stick)
-        gtk_window_stick (window);
-
-    gtk_window_set_keep_above (window, g_par.set_ontop);
-    gtk_window_present (window);
-}
-
 static gboolean is_readable (GFile *file)
 {
     gboolean result;
@@ -287,11 +270,7 @@ static void open_new_appointment_window (void)
 
 static void orage_open_today_window (OrageWindow *window)
 {
-    GDateTime *gdt;
-
-    gdt = g_date_time_new_now_local ();
-    orage_select_date (orage_window_get_calendar (window), gdt);
-    g_date_time_unref (gdt);
+    orage_window_select_today (window);
     (void)create_el_win (NULL);
 }
 
@@ -320,14 +299,14 @@ static void orage_application_activate (GApplication *app)
             hide_main_window = TRUE;
         }
         else if (hide_main_window == FALSE)
-            raise_window (self);
+            orage_window_raise (ORAGE_WINDOW (self->window));
 
         window = self->window;
     }
     else
     {
         /* Create the main window */
-        window = orage_window_new (self);
+        window = orage_window_create (self, g_par.use_new_ui);
 
         g_signal_connect (window, "delete_event",
                           G_CALLBACK (window_delete_event_cb), self);
@@ -351,7 +330,7 @@ static void orage_application_activate (GApplication *app)
 
         alarm_read ();
         orage_day_change (NULL); /* first day change after we start */
-        orage_window_month_changed (ORAGE_WINDOW (window));
+        orage_window_initial_load (ORAGE_WINDOW (window));
 
         /* start monitoring external file updates */
         g_timeout_add_seconds (30, orage_external_update_check, NULL);

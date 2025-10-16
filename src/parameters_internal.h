@@ -52,6 +52,7 @@ typedef struct _Itf
     GtkWidget *calendar_vbox;
     /* Show  border, menu and set stick, ontop */
     GtkWidget *mode_frame;
+    GtkWidget *use_new_ui_checkbutton;
     GtkWidget *show_borders_checkbutton;
     GtkWidget *show_menu_checkbutton;
     GtkWidget *show_heading_checkbutton;

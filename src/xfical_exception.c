@@ -20,6 +20,7 @@
 
 #include "xfical_exception.h"
 #include "functions.h"
+#include "orage-time-utils.h"
 #include <glib.h>
 
 struct _xfical_exception

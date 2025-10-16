@@ -47,16 +47,17 @@
 #include <glib.h>
 #include <glib/gprintf.h>
 
+#include "event-list.h"
+#include "functions.h"
+#include "ical-code.h"
 #include "orage-appointment-window.h"
 #include "orage-category.h"
 #include "orage-i18n.h"
-#include "orage-window.h"
-#include "functions.h"
-#include "reminder.h"
-#include "ical-code.h"
-#include "event-list.h"
-#include "parameters.h"
+#include "orage-time-utils.h"
 #include "orage-week-window.h"
+#include "orage-window.h"
+#include "parameters.h"
+#include "reminder.h"
 
 #ifdef HAVE_X11_TRAY_ICON
 #include "tray_icon.h"
@@ -459,10 +460,6 @@ static void add_el_row(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
     g_free (s_time);
     g_free (e_time);
 
-#if 0
-    s_sort = g_utf8_collate_key(s_sort1, -1);
-#endif
-
     list1 = el->ListStore;
     gtk_list_store_append(list1, &iter1);
     gtk_list_store_set(list1, &iter1
@@ -476,9 +473,6 @@ static void add_el_row(el_win *el, xfical_appt *appt, GDateTime *gdt_par)
     g_free(title);
     g_free(s_sort1);
     g_free(stime);
-#if 0
-    g_free(s_sort);
-#endif
 }
 
 static void searh_rows(el_win *el, gchar *search_string, gchar *file_type)
@@ -626,10 +620,6 @@ static void event_data(el_win *el)
     if (el->days == 0)
         refresh_time_field(el);
     el->days = gtk_spin_button_get_value(GTK_SPIN_BUTTON(el->event_spin));
-#if 0
-    el->only_first = gtk_toggle_button_get_active(
-            GTK_TOGGLE_BUTTON(el->event_only_first_checkbutton));
-#endif
     el->show_old = gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(el->event_show_old_checkbutton));
     gdt_title = g_object_get_data (G_OBJECT (el->Window), DATE_KEY);
@@ -693,7 +683,7 @@ void refresh_el_win(el_win *el)
                 search_data(el);
                 break;
             default:
-                g_warning ("%s: unknown tab", G_STRFUNC);
+                g_assert_not_reached ();
                 break;
         }
     }
@@ -771,7 +761,7 @@ static void set_el_data_from_cal(el_win *el)
 
     app = ORAGE_APPLICATION (g_application_get_default ());
     window = ORAGE_WINDOW (orage_application_get_window (app));
-    gdt = orage_cal_to_gdatetime (orage_window_get_calendar (window), 0, 0);
+    gdt = orage_window_get_selected_date (window);
     set_el_data (el, gdt);
     g_date_time_unref (gdt);
 }
@@ -900,7 +890,7 @@ static void changeSelectedDate (el_win *el, const gint day)
     gdt2 = g_date_time_add_days (gdt1, day);
     app = ORAGE_APPLICATION (g_application_get_default ());
     window = ORAGE_WINDOW (orage_application_get_window (app));
-    orage_select_date (orage_window_get_calendar (window), gdt2);
+    orage_window_select_date (window, gdt2);
     g_date_time_unref (gdt2);
 
     set_el_data_from_cal(el);
@@ -921,7 +911,7 @@ static void go_to_today(el_win *el)
 {
     OrageApplication *app = ORAGE_APPLICATION (g_application_get_default ());
     OrageWindow *window = ORAGE_WINDOW (orage_application_get_window (app));
-    orage_select_today (orage_window_get_calendar (window));
+    orage_window_select_today (window);
     set_el_data_from_cal(el);
 }
 
@@ -1047,7 +1037,8 @@ static void delete_appointment(el_win *el)
         xfical_file_close(TRUE);
         refresh_el_win(el);
         app = ORAGE_APPLICATION (g_application_get_default ());
-        orage_mark_appointments (ORAGE_WINDOW (orage_application_get_window (app)));
+        orage_window_update_appointments (ORAGE_WINDOW (
+            orage_application_get_window (app)));
         g_list_foreach(list, (GFunc)(GCallback)gtk_tree_path_free, NULL);
         g_list_free(list);
     }
@@ -1491,8 +1482,8 @@ el_win *create_el_win (GDateTime *gdt)
     el->today = FALSE;
     el->days = g_par.el_days;
     el->only_first = g_par.el_only_first;
-    el->show_old = el->only_first;
-    el->time_now[0] = 0;
+    el->show_old = g_par.el_only_first;
+    el->time_now[0] = '\0';
     el->date_now = g_date_time_new_now_local ();
     el->apptw_list = NULL;
     el->accel_group = gtk_accel_group_new();

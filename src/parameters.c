@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Erkki Moorits
+ * Copyright (c) 2021-2025 Erkki Moorits
  * Copyright (c) 2006-2013 Juha Kautto  (juha at xfce.org)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -27,29 +27,26 @@
 #include <locale.h>
 #include <inttypes.h>
 
-#ifdef HAVE__NL_TIME_FIRST_WEEKDAY
-#include <langinfo.h>
-#endif
-
 #include <glib.h>
 #include <glib/gstdio.h>
 #include <glib/gprintf.h>
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 
-#include "orage-task-runner.h"
-#include "orage-sync-ext-command.h"
-#include "orage-sync-edit-dialog.h"
-#include "orage-rc-file.h"
-#include "orage-i18n.h"
-#include "orage-window.h"
-#include "orage-application.h"
 #include "functions.h"
 #include "ical-code.h"
-#include "timezone_selection.h"
+#include "orage-application.h"
+#include "orage-i18n.h"
+#include "orage-rc-file.h"
+#include "orage-sync-edit-dialog.h"
+#include "orage-sync-ext-command.h"
+#include "orage-task-runner.h"
+#include "orage-time-utils.h"
+#include "orage-window.h"
 #include "parameters.h"
 #include "parameters_internal.h"
 #include "reminder.h"
+#include "timezone_selection.h"
 
 #ifdef HAVE_X11_TRAY_ICON
 #include <gdk/gdkx.h>
@@ -62,6 +59,8 @@
 
 #define ORAGE_WAKEUP_TIMER_PERIOD 60
 
+#define MAIN_WINDOW_PANED_POSITION "Main window paned position"
+#define USE_NEW_UI "Use new UI"
 #define SYNC_SOURCE_COUNT "Sync source count"
 #define SYNC_DESCRIPTION "Sync %02d description"
 #define SYNC_COMMAND "Sync %02d command"
@@ -82,61 +81,17 @@ static Itf *global_itf = NULL;
 
 global_parameters g_par;
 
-/* Return the first day of the week, where 0=monday, 6=sunday.
- *     Borrowed from GTK+:s Calendar Widget, but modified
- *     to return 0..6 mon..sun, which is what libical uses */
-static int get_first_weekday_from_locale(void)
-{
-#ifdef HAVE__NL_TIME_FIRST_WEEKDAY
-    union { unsigned int word; char *string; } langinfo;
-    int week_1stday = 0;
-    int first_weekday = 1;
-    unsigned int week_origin;
-
-    setlocale(LC_TIME, "");
-    langinfo.string = nl_langinfo(_NL_TIME_FIRST_WEEKDAY);
-    first_weekday = langinfo.string[0];
-    langinfo.string = nl_langinfo(_NL_TIME_WEEK_1STDAY);
-    week_origin = langinfo.word;
-    if (week_origin == 19971130) /* Sunday */
-        week_1stday = 0;
-    else if (week_origin == 19971201) /* Monday */
-        week_1stday = 1;
-    else
-        g_warning ("unknown value of _NL_TIME_WEEK_1STDAY.");
-
-    return((week_1stday + first_weekday - 2 + 7) % 7);
-#else
-    g_warning ("Can not find first weekday. Using default: Monday=0. If this "
-               "is wrong guess. please set undocumented parameter: "
-               "Ical week start day (Sunday=6)");
-    return(0);
-#endif
-}
-
 /* 0 = monday, ..., 6 = sunday */
 static gint get_first_weekday (OrageRc *orc)
 {
-#ifdef HAVE__NL_TIME_FIRST_WEEKDAY
-#if 0
-    /* Original code. */
-    return orage_rc_get_int (orc, "Ical week start day",
-                             get_first_weekday_from_locale ());
-#else
-    /* TODO: This should be valid code for Linux, check how this part work on
-     * Linux.
-     */
-    const gint first_week_day = orage_rc_get_int(orc, "Ical week start day",-1);
+    gint first_week_day;
 
-    return (first_week_day != -1) ? first_week_day
-                                  : get_first_weekday_from_locale ();
-#endif
-#else
-    const gint first_week_day = orage_rc_get_int(orc, "Ical week start day",-1);
+    first_week_day = orage_rc_get_int (orc, "Ical week start day", -1);
 
-    return (first_week_day == -1) ? get_first_weekday_from_locale ()
-                                  : first_week_day;
-#endif
+    if (first_week_day == -1)
+        first_week_day = orage_get_first_weekday ();
+
+    return first_week_day;
 }
 
 static GSList *get_sync_entries_list (void)
@@ -183,6 +138,14 @@ static void set_border (void)
                               g_par.show_borders);
 }
 
+static void ui_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
+{
+    Itf *itf = (Itf *)user_data;
+
+    g_par.use_new_ui = gtk_toggle_button_get_active (
+        GTK_TOGGLE_BUTTON (itf->use_new_ui_checkbutton));
+}
+
 static void borders_changed (G_GNUC_UNUSED GtkWidget *dialog,
                              gpointer user_data)
 {
@@ -214,10 +177,10 @@ static void set_calendar(void)
 {
     OrageApplication *app = ORAGE_APPLICATION (g_application_get_default ());
     OrageWindow *window = ORAGE_WINDOW (orage_application_get_window (app));
-    gtk_calendar_set_display_options (orage_window_get_calendar (window),
-                      (g_par.show_heading ? GTK_CALENDAR_SHOW_HEADING : 0)
-                    | (g_par.show_day_names ? GTK_CALENDAR_SHOW_DAY_NAMES : 0)
-                    | (g_par.show_weeks ? GTK_CALENDAR_SHOW_WEEK_NUMBERS : 0));
+    guint options = (g_par.show_heading ? ORAGE_WINDOW_SHOW_CALENDAR_HEADING : 0)
+                  | (g_par.show_day_names ? ORAGE_WINDOW_SHOW_DAY_NAMES : 0)
+                  | (g_par.show_weeks ? ORAGE_WINDOW_SHOW_WEEK_NUMBERS : 0);
+    orage_window_set_calendar_options (window, options);
 }
 
 static void heading_changed (G_GNUC_UNUSED GtkWidget *dialog,
@@ -306,7 +269,8 @@ static void stick_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
 static void set_ontop(void)
 {
     OrageApplication *app = ORAGE_APPLICATION (g_application_get_default ());
-    gtk_window_set_keep_above (GTK_WINDOW (orage_application_get_window (app)), g_par.set_ontop);
+    gtk_window_set_keep_above (GTK_WINDOW (orage_application_get_window (app)),
+                               g_par.set_ontop);
 }
 
 static void ontop_changed (G_GNUC_UNUSED GtkWidget *dialog, gpointer user_data)
@@ -847,49 +811,62 @@ static void create_parameter_dialog_calendar_setup_tab(Itf *dialog)
                              dialog->mode_frame, NULL, GTK_POS_BOTTOM,
                              1, 1);
 
+    dialog->use_new_ui_checkbutton =
+        gtk_check_button_new_with_mnemonic (_("Use new user interface"));
+    gtk_widget_set_tooltip_text (dialog->use_new_ui_checkbutton,
+        _("Enable the new interface layout (requires restart)"));
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->use_new_ui_checkbutton),
+                                  g_par.use_new_ui);
+
     dialog->show_borders_checkbutton = gtk_check_button_new_with_mnemonic(
             _("Show borders"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(
             dialog->show_borders_checkbutton), g_par.show_borders);
+
+    table_add_row (table, dialog->use_new_ui_checkbutton,
+                          dialog->show_borders_checkbutton,
+                          row = 0);
 
     dialog->show_menu_checkbutton = gtk_check_button_new_with_mnemonic(
             _("Show menu"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(
             dialog->show_menu_checkbutton), g_par.show_menu);
 
-    table_add_row(table, dialog->show_borders_checkbutton
-            , dialog->show_menu_checkbutton, row = 0);
-
     dialog->show_day_names_checkbutton = gtk_check_button_new_with_mnemonic(
             _("Show day names"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(
             dialog->show_day_names_checkbutton), g_par.show_day_names);
+
+    table_add_row (table, dialog->show_menu_checkbutton,
+                          dialog->show_day_names_checkbutton,
+                          ++row);
 
     dialog->show_weeks_checkbutton = gtk_check_button_new_with_mnemonic(
             _("Show week numbers"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(
             dialog->show_weeks_checkbutton), g_par.show_weeks);
 
-    table_add_row(table, dialog->show_day_names_checkbutton
-            , dialog->show_weeks_checkbutton, ++row);
-
     dialog->show_heading_checkbutton = gtk_check_button_new_with_mnemonic(
             _("Show month and year"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(
             dialog->show_heading_checkbutton), g_par.show_heading);
 
-    table_add_row(table, dialog->show_heading_checkbutton, NULL, ++row);
+    table_add_row (table, dialog->show_weeks_checkbutton,
+                          dialog->show_heading_checkbutton,
+                          ++row);
 
-    g_signal_connect(G_OBJECT(dialog->show_borders_checkbutton), "toggled"
-            , G_CALLBACK(borders_changed), dialog);
-    g_signal_connect(G_OBJECT(dialog->show_menu_checkbutton), "toggled"
-            , G_CALLBACK(menu_changed), dialog);
-    g_signal_connect(G_OBJECT(dialog->show_heading_checkbutton), "toggled"
-            , G_CALLBACK(heading_changed), dialog);
-    g_signal_connect(G_OBJECT(dialog->show_day_names_checkbutton), "toggled"
-            , G_CALLBACK(days_changed), dialog);
-    g_signal_connect(G_OBJECT(dialog->show_weeks_checkbutton), "toggled"
-            , G_CALLBACK(weeks_changed), dialog);
+    g_signal_connect (G_OBJECT (dialog->use_new_ui_checkbutton), "toggled",
+                      G_CALLBACK (ui_changed), dialog);
+    g_signal_connect (G_OBJECT (dialog->show_borders_checkbutton), "toggled",
+                      G_CALLBACK (borders_changed), dialog);
+    g_signal_connect (G_OBJECT (dialog->show_menu_checkbutton), "toggled",
+                      G_CALLBACK (menu_changed), dialog);
+    g_signal_connect (G_OBJECT (dialog->show_heading_checkbutton), "toggled",
+                      G_CALLBACK (heading_changed), dialog);
+    g_signal_connect (G_OBJECT (dialog->show_day_names_checkbutton), "toggled",
+                      G_CALLBACK (days_changed), dialog);
+    g_signal_connect (G_OBJECT (dialog->show_weeks_checkbutton), "toggled",
+                      G_CALLBACK (weeks_changed), dialog);
 
     /***** calendar info boxes (under the calendar) *****/
     vbox = gtk_grid_new ();
@@ -1672,6 +1649,7 @@ void read_parameters (void)
     g_free(fpath);
     g_par.sound_application = orage_rc_get_str (orc, "Sound application",
                                                 DEFAULT_SOUND_COMMAND);
+    g_par.paned_pos = orage_rc_get_int (orc, MAIN_WINDOW_PANED_POSITION, -1);
     g_par.pos_x = orage_rc_get_int(orc, "Main window X", 0);
     g_par.pos_y = orage_rc_get_int(orc, "Main window Y", 0);
     g_par.size_x = orage_rc_get_int(orc, "Main window size X", 0);
@@ -1705,6 +1683,7 @@ void read_parameters (void)
     g_par.start_minimized = orage_rc_get_bool(orc, "Start minimized", FALSE);
     g_par.set_stick = orage_rc_get_bool(orc, "Set sticked", TRUE);
     g_par.set_ontop = orage_rc_get_bool(orc, "Set ontop", FALSE);
+    g_par.use_new_ui = orage_rc_get_bool (orc, USE_NEW_UI, FALSE);
     g_par.own_icon_row1_data = orage_rc_get_str(orc
             , "Own icon row1 data", "%a");
     g_par.own_icon_row2_data = orage_rc_get_str(orc
@@ -1750,7 +1729,7 @@ void write_parameters(void)
     OrageRc *orc;
     gint i;
     gchar f_par[50];
-    GtkWindow *window;
+    OrageWindow *window;
     OrageApplication *app;
 
     orc = orage_parameters_file_open(FALSE);
@@ -1765,15 +1744,13 @@ void write_parameters(void)
     orage_rc_put_str(orc, "Sound application", g_par.sound_application);
 
     app = ORAGE_APPLICATION (g_application_get_default ());
-    window = GTK_WINDOW (orage_application_get_window (app));
+    window = ORAGE_WINDOW (orage_application_get_window (app));
     if (window)
-    {
-        gtk_window_get_size (window, &g_par.size_x, &g_par.size_y);
-        gtk_window_get_position (window, &g_par.pos_x, &g_par.pos_y);
-    }
+        orage_window_save_window_state (window);
     else
         g_debug ("%s: window == NULL", G_STRFUNC);
 
+    orage_rc_put_int (orc, MAIN_WINDOW_PANED_POSITION, g_par.paned_pos);
     orage_rc_put_int(orc, "Main window X", g_par.pos_x);
     orage_rc_put_int(orc, "Main window Y", g_par.pos_y);
     orage_rc_put_int(orc, "Main window size X", g_par.size_x);
@@ -1806,6 +1783,7 @@ void write_parameters(void)
     orage_rc_put_bool(orc, "Start minimized", g_par.start_minimized);
     orage_rc_put_bool(orc, "Set sticked", g_par.set_stick);
     orage_rc_put_bool(orc, "Set ontop", g_par.set_ontop);
+    orage_rc_put_bool (orc, USE_NEW_UI, g_par.use_new_ui);
     orage_rc_put_str(orc, "Own icon row1 data", g_par.own_icon_row1_data);
     orage_rc_put_str(orc, "Own icon row2 data", g_par.own_icon_row2_data);
     orage_rc_put_str(orc, "Own icon row3 data", g_par.own_icon_row3_data);
@@ -1889,9 +1867,6 @@ void set_parameters(void)
     set_taskbar();
     set_pager();
     set_calendar();
-#if 0
-    set_systray();
-#endif
     set_stick();
     set_ontop();
     set_wakeup_timer();
