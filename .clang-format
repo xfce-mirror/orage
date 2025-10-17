@@ -21,12 +21,14 @@ IncludeCategories:
   - Regex: '.*'
     Priority: 1
     SortPriority: 0
+
 IndentGotoLabels: false
 IndentWidth: 4
 InsertNewlineAtEOF: True
 KeepEmptyLinesAtTheStartOfBlocks: false
 MaxEmptyLinesToKeep: 1
 PenaltyReturnTypeOnItsOwnLine: 100
+SpaceBeforeParens: Always
 SortIncludes: CaseSensitive
 SortUsingDeclarations: LexicographicNumeric
 UseTab: Never

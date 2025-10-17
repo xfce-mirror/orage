@@ -42,10 +42,10 @@ static void append_error_value (GString *string,
     g_type_class_unref (enum_class);
 }
 
-static void parsing_error_cb (GtkCssProvider *provider,
-                              GtkCssSection  *section,
-                              const GError   *error,
-                              GString        *errors)
+static void parsing_error_cb (G_GNUC_UNUSED GtkCssProvider *provider,
+                              GtkCssSection *section,
+                              const GError *error,
+                              GString *errors)
 {
     char *path;
 
@@ -84,6 +84,8 @@ void orage_css_set_theme (void)
 
     file = g_build_filename (xfce_get_homedir (), ".themes",
                              ORAGE_CSS_VERSION, ORAGE_CSS_NAME, NULL);
+
+    g_debug ("%s: trying default file='%s'", G_STRFUNC, file);
 
     if (g_file_test (file, G_FILE_TEST_EXISTS) == FALSE)
     {

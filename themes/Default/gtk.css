@@ -1,73 +1,129 @@
-OrageTrayIcon{
-   background-color: rgb(239, 235, 230);
-   border-color: black;
-   border-radius: 16px;
-   border-top-width: 2px;
-   border-right-width: 5px;
-   border-bottom-width: 5px;
-   border-left-width: 2px;
-   border-style: solid;
-   font-size: 85px;
+orage-tray-icon{
+    background-color: rgb(239, 235, 230);
+    border-color: black;
+    border-radius: 16px;
+    border-top-width: 2px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 2px;
+    border-style: solid;
+    font-size: 85px;
 }
 
-OrageTrayIcon > row-1{
-   font-family: Ariel;
-   font-size: 41%;
-   color: blue;
+orage-tray-icon > row-1{
+    font-family: Ariel;
+    font-size: 41%;
+    color: blue;
 }
 
-OrageTrayIcon > row-2{
-   font-family: Sans;
-   font-weight: bold;
-   font-size: 100%;
-   color: red;
+orage-tray-icon > row-2{
+    font-family: Sans;
+    font-weight: bold;
+    font-size: 100%;
+    color: red;
 }
 
-OrageTrayIcon > row-3{
-   font-family: Ariel;
-   font-weight: bold;
-   font-size: 44%;
-   color: blue;
+orage-tray-icon > row-3{
+    font-family: Ariel;
+    font-weight: bold;
+    font-size: 44%;
+    color: blue;
 }
 
-#OrageWeekWindow #today{
-   background: gold;
-   font-weight: bold;
-   border-width: 1px;
+#orage-week-window #today{
+    background: gold;
+    font-weight: bold;
+    border-width: 1px;
 }
 
-#OrageWeekWindow #sunday{
-   color: red;
+#orage-week-window #sunday{
+    color: red;
 }
 
-#OrageWeekWindow #all-day-event{
-   background: lightgray;
+#orage-week-window #all-day-event{
+    background: lightgray;
 }
 
-#OrageWeekWindow label#odd-hours{
-   background: lightgray;
-   padding: 4px
+#orage-week-window label#odd-hours{
+    background: lightgray;
+    padding: 4px
 }
 
-#OrageWeekWindow #even-hours{
-   background: rgb(239, 235, 230);
-   padding: 4px
+#orage-week-window #even-hours{
+    background: rgb(239, 235, 230);
+    padding: 4px
 }
 
-#OrageWeekWindow #hour-line{
-   background: white;
-   min-width: 3px;
+#orage-week-window #hour-line{
+    background: white;
+    min-width: 3px;
 }
 
-#OrageWeekWindow label#hour-line-occupied{
-   background: black;
-   min-width: 3px;
+#orage-week-window label#hour-line-occupied{
+    background: black;
+    min-width: 3px;
 }
 
-#OrageWindow #todo-completed{
-   color: red;
+#orage-window-classic #todo-completed{
+    color: red;
 }
 
-#OrageWindow #todo-actual-now{
-   color: blue;
+#orage-window-classic #todo-actual-now{
+    color: blue;
+}
+
+.month-label{
+    font-weight: bold;
+}
+
+#orage-month-cell, .orage-month-header{
+    border: solid 1px alpha(@borders, 0.3);
+    border-width: 1px 0 0 1px;
+    background-color: transparent;
+}
+
+#orage-month-cell.last-row, .orage-month-header-last-row {
+    border-width: 1px 0 1px 1px;
+}
+
+#orage-month-cell.last-column, .orage-month-header-last-column {
+    border-width: 1px 1px 0 1px;
+}
+
+#orage-month-cell.last-row.last-column {
+    border-width: 1px;
+}
+
+#orage-month-cell.out-of-month{
+    background-color: rgba(220, 220, 220, 0.4);
+}
+
+#orage-month-cell.today{
+    background-color: alpha(@theme_selected_bg_color, 0.25);
+}
+
+#orage-month-cell.highlighted{
+    font-weight: bold;
+}
+
+#orage-month-cell:selected{
+    background-color: rgba(100, 149, 237, 0.5);
+}
+
+#orage-month-cell:selected label.day-label{
+    font-weight: bold;
+    color: rgba(26, 115, 232, 1.0);
+}
+
+#orage-window-next .todo-label,
+#orage-window-next .event-label{
+    font-weight: bold;
+}
+
+paned separator{
+    /* min-height: 12px */
+    background-color: #aaa;
+    background-image: -gtk-icontheme("content-loading-symbolic");
+    background-repeat: no-repeat;
+    background-position: center;
 }

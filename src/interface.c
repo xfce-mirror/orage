@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Erkki Moorits
+ * Copyright (c) 2021-2025 Erkki Moorits
  * Copyright (c) 2005-2013 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2003-2005 Mickael Graf (korbinus at xfce.org)
  *
@@ -34,11 +34,11 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkkeysyms.h>
 
+#include "functions.h"
+#include "ical-code.h"
+#include "interface.h"
 #include "orage-i18n.h"
 #include "orage-window.h"
-#include "functions.h"
-#include "interface.h"
-#include "ical-code.h"
 #include "parameters.h"
 
 enum {
@@ -105,7 +105,8 @@ gboolean orage_external_update_check (G_GNUC_UNUSED gpointer user_data)
         xfical_file_close_force();
         xfical_alarm_build_list(FALSE);
         app = ORAGE_APPLICATION (g_application_get_default ());
-        orage_mark_appointments (ORAGE_WINDOW (orage_application_get_window (app)));
+        orage_window_update_appointments (
+            ORAGE_WINDOW (orage_application_get_window (app)));
     }
 
     return(TRUE); /* keep running */
@@ -436,7 +437,8 @@ gboolean orage_import_file (const gchar *entry_filename)
     OrageApplication *app;
     if (xfical_import_file(entry_filename)) {
         app = ORAGE_APPLICATION (g_application_get_default ());
-        orage_mark_appointments (ORAGE_WINDOW (orage_application_get_window (app)));
+        orage_window_update_appointments (ORAGE_WINDOW (
+            orage_application_get_window (app)));
         xfical_alarm_build_list(FALSE);
         return(TRUE);
     }
@@ -569,7 +571,8 @@ static void orage_foreign_file_remove_line(gint del_line)
 
     write_parameters();
     app = ORAGE_APPLICATION (g_application_get_default ());
-    orage_mark_appointments (ORAGE_WINDOW (orage_application_get_window (app)));
+    orage_window_update_appointments (ORAGE_WINDOW (
+        orage_application_get_window (app)));
     xfical_alarm_build_list(FALSE);
 }
 
@@ -704,18 +707,17 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
     const gchar *add_failed = _("Foreign file add failed");
 
     if (g_par.foreign_count > 9) {
-        g_warning ("%s: Orage can only handle 10 foreign files. Limit reached. "
-                   "New file not added.", G_STRFUNC);
+        g_warning ("%s: Foreign file limit (10) reached; new file not added",
+                   G_STRFUNC);
         if (main_window)
         {
-            orage_error_dialog (GTK_WINDOW (main_window)
-                    , add_failed
-                    , _("Orage can only handle 10 foreign files. Limit reached."));
+            orage_error_dialog (GTK_WINDOW (main_window), add_failed,
+                _("Orage can only handle 10 foreign files. Limit reached"));
         }
         return(FALSE);
     }
     if (!ORAGE_STR_EXISTS(filename)) {
-        g_warning ("%s: File is empty. New file not added.", G_STRFUNC);
+        g_warning ("%s: File is empty. New file not added", G_STRFUNC);
         if (main_window)
         {
             orage_error_dialog (GTK_WINDOW (main_window)
@@ -725,7 +727,7 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
         return(FALSE);
     }
     if (!ORAGE_STR_EXISTS(name)) {
-        g_warning ("%s: Name is empty. New file not added.", G_STRFUNC);
+        g_warning ("%s: Name is empty. New file not added", G_STRFUNC);
         if (main_window)
         {
             orage_error_dialog (GTK_WINDOW (main_window)
@@ -735,7 +737,7 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
         return(FALSE);
     }
     if (!g_file_test(filename, G_FILE_TEST_EXISTS)) {
-        g_warning ("%s: New file %s does not exist. New file not added.",
+        g_warning ("%s: New file %s does not exist. New file not added",
                    G_STRFUNC, filename);
         if (main_window)
         {
@@ -778,7 +780,8 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
 
     write_parameters();
     app = ORAGE_APPLICATION (g_application_get_default ());
-    orage_mark_appointments (ORAGE_WINDOW (orage_application_get_window (app)));
+    orage_window_update_appointments (ORAGE_WINDOW (
+        orage_application_get_window (app)));
     xfical_alarm_build_list(FALSE);
     return(TRUE);
 }

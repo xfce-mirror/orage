@@ -25,6 +25,7 @@
 
 #include <glib.h>
 #include <gtk/gtk.h>
+#include <libical/ical.h>
 
 #define ORAGE_APP_ID "org.xfce.orage"
 #define ORAGE_DIR "orage" G_DIR_SEPARATOR_S
@@ -91,67 +92,6 @@ GtkWidget *orage_period_hbox_new(gboolean head_space, gboolean tail_space
         , GtkWidget *spin_dd, GtkWidget *dd_label
         , GtkWidget *spin_hh, GtkWidget *hh_label
         , GtkWidget *spin_mm, GtkWidget *mm_label);
-
-void orage_gdatetime_unref (GDateTime *gdt);
-gchar *orage_gdatetime_to_i18_time (GDateTime *gdt, gboolean date_only);
-
-/** Return time value with timezone information.
- *  @param gdt time
- *  @return time sting. User must free returned string.
- */
-gchar *orage_gdatetime_to_i18_time_with_zone (GDateTime *gdt);
-
-/** Create ical time string. Unlike g_date_time_format this function add padding
- *  with '0' to year value. Padding is required by Ical format.
- *  @note This function should not used for Orage internal date/time, use
- *        GDateTime instead. It is intended only for exporting GDateTime.
- *  @param gdt GDateTime
- *  @param date_only, when true returns date string in format yyyymmdd, if false
- *         return date and time in format yyyymmddThhmmss.
- *  @return date or time sting. User must free returned string.
- */
-gchar *orage_gdatetime_to_icaltime (GDateTime *gdt, gboolean date_only);
-
-/** Comapare dates only.
- *  @param gdt1 GDateTime fist date and time
- *  @param gdt2 GDateTime second date and time
- *  @return 0 if dates are equal, -1 if gdt1 is less than gdt2, 1 if gdt1 is
- *  larger than gdt2.
- */
-gint orage_gdatetime_compare_date (GDateTime *gdt1, GDateTime *gdt2);
-
-/** Convert icaltime to GDateTime.
- *  @note This function should not used for Orage internal date/time, use
- *        GDateTime instead. It is intended only for importing Ical date/time.
- *  @param i18_date date and time in icaltime format.
- *  @return GDateTime or NULL if input string does not contain date/time
- *          information
- */
-GDateTime *orage_icaltime_to_gdatetime (const gchar *i18_date);
-
-/** Return GDateTime from GTK calendar. This function set hour and minute values
- *  as well.
- *  @param cal instance of GTK calendar
- *  @param hh hour value
- *  @param mm minute value
- *  @return GDateTime, user should release return by g_date_time_unref.
- */
-GDateTime *orage_cal_to_gdatetime (GtkCalendar *cal, gint hh, gint mm);
-
-/** Find number of days between two time values.
- *  @param gdt1 first time value
- *  @param gdt2 second time value
- *  @return Number of days between two time value. This value can be negative if
- *          gdt2 < gdt1
- */
-gint orage_gdatetime_days_between (GDateTime *gdt1, GDateTime *gdt2);
-
-/** Set (GTK) calendar to selected date.
- *  @param cal instance of GTK calendar
- *  @param gdt selected date.
- */
-void orage_select_date (GtkCalendar *cal, GDateTime *gdt);
-void orage_select_today(GtkCalendar *cal);
 
 gboolean orage_copy_file (const gchar *source, const gchar *target);
 gchar *orage_data_file_location(const gchar *dir_name);

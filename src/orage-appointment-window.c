@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Erkki Moorits
+ * Copyright (c) 2021-2025 Erkki Moorits
  * Copyright (c) 2005-2013 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2004-2005 Mickael Graf (korbinus at xfce.org)
  *
@@ -42,19 +42,20 @@
 #include <glib/gprintf.h>
 #include <glib/gstdio.h>
 
-#include "orage-alarm-structure.h"
-#include "orage-category.h"
-#include "orage-i18n.h"
-#include "orage-window.h"
+#include "event-list.h"
 #include "functions.h"
 #include "ical-code.h"
-#include "timezone_selection.h"
-#include "event-list.h"
-#include "orage-week-window.h"
+#include "orage-alarm-structure.h"
 #include "orage-appointment-window.h"
+#include "orage-category.h"
+#include "orage-i18n.h"
+#include "orage-rc-file.h"
+#include "orage-time-utils.h"
+#include "orage-week-window.h"
+#include "orage-window.h"
 #include "parameters.h"
 #include "reminder.h"
-#include "orage-rc-file.h"
+#include "timezone_selection.h"
 #include "xfical_exception.h"
 
 #define BORDER_SIZE 20
@@ -810,7 +811,8 @@ static void refresh_dependent_data (OrageAppointmentWindow *apptw)
         orage_week_window_refresh (apptw->dw);
 
     app = ORAGE_APPLICATION (g_application_get_default ());
-    orage_mark_appointments (ORAGE_WINDOW (orage_application_get_window (app)));
+    orage_window_update_appointments (ORAGE_WINDOW (
+        orage_application_get_window (app)));
 }
 
 static void on_appNote_buffer_changed_cb (G_GNUC_UNUSED GtkTextBuffer *b,
@@ -969,11 +971,6 @@ static void on_appSound_button_clicked_cb (G_GNUC_UNUSED GtkButton *button,
     g_free(appSound_entry_filename);
 }
 
-static void app_free_memory (OrageAppointmentWindow *apptw)
-{
-    gtk_widget_destroy (GTK_WIDGET (apptw));
-}
-
 static gboolean appWindow_check_and_close (OrageAppointmentWindow *apptw)
 {
     gint result;
@@ -986,11 +983,11 @@ static gboolean appWindow_check_and_close (OrageAppointmentWindow *apptw)
                 , _("Yes, ignore modifications and leave"));
 
         if (result == GTK_RESPONSE_YES) {
-            app_free_memory (apptw);
+            gtk_widget_destroy (GTK_WIDGET (apptw));
         }
     }
     else {
-        app_free_memory (apptw);
+        gtk_widget_destroy (GTK_WIDGET (apptw));
     }
     return(TRUE);
 }
@@ -1508,85 +1505,103 @@ static void remove_file_select_cb (OrageAppointmentWindow *apptw)
 static gboolean save_xfical_from_appt_win (OrageAppointmentWindow *apptw)
 {
     gint i;
-    gboolean ok = FALSE, found = FALSE;
+    gboolean ok;
+    gboolean found = FALSE;
     xfical_appt *appt = (xfical_appt *)apptw->xf_appt;
     char *xf_file_id, *tmp;
 
-    if (fill_appt_from_apptw (appt, apptw)) {
-        ok = TRUE;
-        /* Here we try to save the event... */
-        if (!xfical_file_open(TRUE)) {
-            g_warning ("%s: file open and update failed: %s",
-                       G_STRFUNC, apptw->xf_uid);
-            return(FALSE);
-        }
-        if (apptw->appointment_add) {
-            /* first check which file we are adding to */
-            if (apptw->File_insert_cb) {
-                tmp = gtk_combo_box_text_get_active_text(
-                        GTK_COMBO_BOX_TEXT(apptw->File_insert_cb));
-                if (strcmp(tmp, _("Orage default file")) == 0) {
-                    xf_file_id = g_strdup("O00.");
+    if (fill_appt_from_apptw (appt, apptw) == FALSE)
+        return FALSE;
+
+    /* Here we try to save the event... */
+    if (xfical_file_open (TRUE) == FALSE)
+    {
+        g_warning ("%s: file open and update failed: %s", G_STRFUNC,
+                   apptw->xf_uid);
+        return FALSE;
+    }
+
+    ok = TRUE;
+    if (apptw->appointment_add)
+    {
+        /* first check which file we are adding to */
+        if (apptw->File_insert_cb)
+        {
+            tmp = gtk_combo_box_text_get_active_text (
+                    GTK_COMBO_BOX_TEXT (apptw->File_insert_cb));
+            if (strcmp (tmp, _("Orage default file")) == 0)
+                xf_file_id = g_strdup ("O00.");
+            else
+            {
+                for (i = 0; i < g_par.foreign_count && !found; i++)
+                {
+                    if (strcmp(g_par.foreign_data[i].file, tmp) == 0 ||
+                        strcmp(g_par.foreign_data[i].name, tmp) == 0)
+                    {
+                        found = TRUE;
+                    }
                 }
-                else {
-                    for (i = 0; i < g_par.foreign_count && !found; i++) {
-                        if (strcmp(g_par.foreign_data[i].file, tmp) == 0 ||
-                            strcmp(g_par.foreign_data[i].name, tmp) == 0) {
-                            found = TRUE;
-                        }
-                    }
-                    if (found) { /* it should always been found */
-                        xf_file_id = g_strdup_printf("F%02d.", i-1);
-                    }
-                    else { /* error! */
-                        g_warning ("%s: Matching foreign file not found: %s",
-                                   G_STRFUNC, tmp);
-                        ok = FALSE;
-                    }
+
+                if (found)
+                    xf_file_id = g_strdup_printf ("F%02d.", i - 1);
+                else
+                {
+                    g_warning ("%s: Matching foreign file not found: %s",
+                               G_STRFUNC, tmp);
+                    ok = FALSE;
                 }
             }
-            else {
-                xf_file_id = g_strdup("O00.");
-            }
-            if (ok) {
-                apptw->xf_uid = g_strdup(xfical_appt_add(xf_file_id, appt));
-                g_free(xf_file_id);
-                ok = (apptw->xf_uid ? TRUE : FALSE);
-            }
-            if (ok) {
-                apptw->appointment_add = FALSE;
-                gtk_widget_set_sensitive(apptw->Duplicate, TRUE);
-                gtk_widget_set_sensitive(apptw->File_menu_duplicate, TRUE);
-                g_message ("Added: %s", apptw->xf_uid);
-                remove_file_select_cb (apptw);
-            }
-            else {
-                g_warning ("%s: Addition failed: %s", G_STRFUNC, apptw->xf_uid);
-                orage_error_dialog (GTK_WINDOW (apptw)
-                        , _("Appointment addition failed.")
-                        , _("Error happened when adding appointment. Look more details from the log file."));
-            }
         }
-        else {
-            ok = xfical_appt_mod(apptw->xf_uid, appt);
-            if (ok)
-                g_message ("Modified: %s", apptw->xf_uid);
-            else {
-                g_warning ("%s: Modification failed: %s",
-                           G_STRFUNC, apptw->xf_uid);
-                orage_error_dialog (GTK_WINDOW (apptw)
-                        , _("Appointment update failed.")
-                        , _("Look more details from the log file. (Perhaps file was updated external from Orage?)"));
-            }
+        else
+            xf_file_id = g_strdup ("O00.");
+
+        if (ok)
+        {
+            apptw->xf_uid = g_strdup (xfical_appt_add (xf_file_id, appt));
+            g_free (xf_file_id);
+            ok = apptw->xf_uid ? TRUE : FALSE;
         }
-        xfical_file_close(TRUE);
-        if (ok) {
-            apptw->appointment_new = FALSE;
-            mark_appointment_unchanged (apptw);
-            refresh_dependent_data (apptw);
+
+        if (ok)
+        {
+            apptw->appointment_add = FALSE;
+            gtk_widget_set_sensitive (apptw->Duplicate, TRUE);
+            gtk_widget_set_sensitive (apptw->File_menu_duplicate, TRUE);
+            g_message ("Added: %s", apptw->xf_uid);
+            remove_file_select_cb (apptw);
+        }
+        else
+        {
+            g_warning ("%s: Addition failed: %s", G_STRFUNC, apptw->xf_uid);
+            orage_error_dialog (GTK_WINDOW (apptw),
+                                _("Appointment addition failed."),
+                                _("Error happened when adding appointment. Look more details from the log file."));
         }
     }
-    return(ok);
+    else
+    {
+        ok = xfical_appt_mod (apptw->xf_uid, appt);
+        if (ok)
+            g_message ("Modified: %s", apptw->xf_uid);
+        else
+        {
+            g_warning ("%s: Modification failed: %s", G_STRFUNC,
+                       apptw->xf_uid);
+            orage_error_dialog (GTK_WINDOW (apptw),
+                                _("Appointment update failed."),
+                                _("Look more details from the log file. (Perhaps file was updated external from Orage?)"));
+        }
+    }
+
+    xfical_file_close (TRUE);
+    if (ok)
+    {
+        apptw->appointment_new = FALSE;
+        mark_appointment_unchanged (apptw);
+        refresh_dependent_data (apptw);
+    }
+
+    return ok;
 }
 
 static void on_appFileSave_menu_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
@@ -1604,7 +1619,7 @@ static void on_appSave_clicked_cb (G_GNUC_UNUSED GtkButton *b,
 static void save_xfical_from_appt_win_and_close (OrageAppointmentWindow *apptw)
 {
     if (save_xfical_from_appt_win (apptw)) {
-        app_free_memory (apptw);
+        gtk_widget_destroy (GTK_WIDGET (apptw));
     }
 }
 
@@ -1647,7 +1662,7 @@ static void delete_xfical_from_appt_win (OrageAppointmentWindow *apptw)
         }
 
         refresh_dependent_data (apptw);
-        app_free_memory (apptw);
+        gtk_widget_destroy (GTK_WIDGET (apptw));
     }
 }
 
@@ -1930,7 +1945,7 @@ static void recur_day_selected_double_click_cb (GtkCalendar *calendar
         if (gtk_toggle_button_get_active(
                 GTK_TOGGLE_BUTTON(apptw->AllDay_checkbutton)))
         {
-            gdt = orage_cal_to_gdatetime (calendar, 1, 1);
+            gdt = orage_calendar_get_date (calendar, 1, 1);
             all_day = TRUE;
         }
         else {
@@ -1938,7 +1953,7 @@ static void recur_day_selected_double_click_cb (GtkCalendar *calendar
                     GTK_SPIN_BUTTON(apptw->StartTime_spin_hh));
             mm =  gtk_spin_button_get_value_as_int(
                     GTK_SPIN_BUTTON(apptw->StartTime_spin_mm));
-            gdt = orage_cal_to_gdatetime (calendar, hh, mm);
+            gdt = orage_calendar_get_date (calendar, hh, mm);
             all_day = FALSE;
         }
     }
@@ -1948,7 +1963,7 @@ static void recur_day_selected_double_click_cb (GtkCalendar *calendar
                 GTK_SPIN_BUTTON(apptw->Recur_exception_incl_spin_hh));
         mm =  gtk_spin_button_get_value_as_int(
                 GTK_SPIN_BUTTON(apptw->Recur_exception_incl_spin_mm));
-        gdt = orage_cal_to_gdatetime (calendar, hh, mm);
+        gdt = orage_calendar_get_date (calendar, hh, mm);
         all_day = FALSE;
     }
 
@@ -2955,10 +2970,10 @@ static OrageRc *orage_alarm_file_open(gboolean read_only)
     fpath = orage_config_file_location(ORAGE_DEFAULT_ALARM_DIR_FILE);
     if (!read_only)  /* we need to empty it before each write */
         if (g_remove(fpath)) {
-            g_warning ("%s: g_remove failed.", G_STRFUNC);
+            g_warning ("%s: g_remove failed", G_STRFUNC);
         }
     if ((orc = orage_rc_file_open(fpath, read_only)) == NULL) {
-        g_warning ("%s: default alarm file open failed.", G_STRFUNC);
+        g_warning ("%s: default alarm file open failed", G_STRFUNC);
     }
     g_free(fpath);
 
@@ -4471,9 +4486,9 @@ static void orage_appointment_window_finalize (GObject *object)
 }
 
 static void orage_appointment_window_get_property (GObject *object,
-                                                    const guint prop_id,
-                                                    GValue *value,
-                                                    GParamSpec *pspec)
+                                                   const guint prop_id,
+                                                   GValue *value,
+                                                   GParamSpec *pspec)
 {
     const OrageAppointmentWindow *self = ORAGE_APPOINTMENT_WINDOW (object);
 
