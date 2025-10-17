@@ -1,6 +1,6 @@
 4.21.0 (2025-10-16)
 =======
-- New Orage main window layout (MR !80).
+- New Orage main window layout (MR !80, Issue #18).
 - Revised CSS element naming for consistency.
 - Replaced Autotools with Meson (MR !74 and MR !77).
 - Added ICAL file preview and import dialog (MR !75).
