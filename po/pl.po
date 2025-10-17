@@ -1373,7 +1373,7 @@ msgstr "A_nuluj"
 #. * use "%Y %B" instead.
 #: src/orage-month-view.c:217
 msgid "%B %Y"
-msgstr "%B %Y"
+msgstr "%b %Y"
 
 #. Setup title row.
 #: src/orage-month-view.c:485 src/orage-window-next.c:1090
