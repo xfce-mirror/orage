@@ -278,7 +278,7 @@ msgstr "Toevoegen niet-eigen bestand mislukt"
 
 #: src/interface.c:715
 msgid "Orage can only handle 10 foreign files. Limit reached"
-msgstr ""
+msgstr "Orage kan slechts met 10 vreemde bestanden omgaan. Grens is bereikt"
 
 #: src/interface.c:725
 msgid "Filename is empty."
@@ -1379,12 +1379,12 @@ msgstr "_Afbreken"
 #. * use "%Y %B" instead.
 #: src/orage-month-view.c:217
 msgid "%B %Y"
-msgstr ""
+msgstr "%B %Y"
 
 #. Setup title row.
 #: src/orage-month-view.c:485 src/orage-window-next.c:1090
 msgid "Week"
-msgstr ""
+msgstr "Week"
 
 #: src/orage-sync-edit-dialog.c:132
 msgid "Description:"
@@ -1423,7 +1423,7 @@ msgstr "_Sluiten"
 #. * first day of the week, and so on.
 #: src/orage-time-utils.c:264
 msgid "calendar:week_start:0"
-msgstr ""
+msgstr "calendar:week_start:0"
 
 #: src/orage-week-window.c:453
 msgid "Back one week"
@@ -1550,19 +1550,19 @@ msgstr "<b>Gebeurtenissen voor %s - %s:</b>"
 
 #: src/orage-window-next.c:131
 msgid "Create a new appointment"
-msgstr ""
+msgstr "Een nieuwe afspraak maken"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"
-msgstr ""
+msgstr "Externe bestanden opnieuw laden"
 
 #: src/orage-window-next.c:135
 msgid "Import/export data"
-msgstr ""
+msgstr "Gegevens importeren/exporteren"
 
 #: src/orage-window-next.c:136
 msgid "Close window"
-msgstr ""
+msgstr "Venster sluiten"
 
 #: src/orage-window-next.c:137
 msgid "_Quit"
@@ -1570,7 +1570,7 @@ msgstr "_Afsluiten"
 
 #: src/orage-window-next.c:137
 msgid "Quit program"
-msgstr ""
+msgstr "Programma sluiten"
 
 #: src/orage-window-next.c:140
 msgid "_Preferences"
@@ -1582,15 +1582,15 @@ msgstr "Voorkeuren van Orage"
 
 #: src/orage-window-next.c:143
 msgid "View selected date"
-msgstr ""
+msgstr "Gekozen datum bekijken"
 
 #: src/orage-window-next.c:145
 msgid "Go to today"
-msgstr ""
+msgstr "Ga naar vandaag"
 
 #: src/orage-window-next.c:148
 msgid "Display Orage user manual"
-msgstr ""
+msgstr "Gebruiksaanwijzing van Orage tonen"
 
 #: src/orage-window-next.c:149
 msgid "_About"
@@ -1598,25 +1598,25 @@ msgstr "_Over"
 
 #: src/orage-window-next.c:149
 msgid "Display information about Orage"
-msgstr ""
+msgstr "Informatie over Orage tonen"
 
 #: src/orage-window-next.c:366
 msgid "New event"
-msgstr ""
+msgstr "Nieuwe gebeurtenis"
 
 #: src/orage-window-next.c:444
 #, c-format
 msgid "Events for %s:"
-msgstr ""
+msgstr "Gebeurtenissen voor %s:"
 
 #: src/orage-window-next.c:450
 #, c-format
 msgid "Events for %s - %s:"
-msgstr ""
+msgstr "Gebeurtenissen voor %s - %s:"
 
 #: src/orage-window-next.c:650
 msgid "To do:"
-msgstr ""
+msgstr "Te doen:"
 
 #: src/orage-window-next.c:1054
 msgid "Previous"
@@ -1628,15 +1628,15 @@ msgstr "Volgende"
 
 #: src/orage-window-next.c:1088
 msgid "Day"
-msgstr ""
+msgstr "Dag"
 
 #: src/orage-window-next.c:1093
 msgid "Month"
-msgstr ""
+msgstr "Maand"
 
 #: src/orage-window-next.c:1096
 msgid "Year"
-msgstr ""
+msgstr "Jaar"
 
 #: src/parameters.c:646
 msgid "Remove selected synchronization task."
@@ -1690,11 +1690,12 @@ msgstr "Visuele bijzonderheden van kalender"
 
 #: src/parameters.c:815
 msgid "Use new user interface"
-msgstr ""
+msgstr "Nieuwe gebruikersomgeving gebruiken"
 
 #: src/parameters.c:817
 msgid "Enable the new interface layout (requires restart)"
 msgstr ""
+"Schakel de nieuwe vormgeving van de gebruikersomgeving in (vereist herstart)"
 
 #: src/parameters.c:822
 msgid "Show borders"
