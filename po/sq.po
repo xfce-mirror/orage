@@ -278,7 +278,7 @@ msgstr "Shtimi i kartelës së jashtme dështoi"
 
 #: src/interface.c:715
 msgid "Orage can only handle 10 foreign files. Limit reached"
-msgstr ""
+msgstr "Orage mund të trajtojë vetëm 10 kartela të jashtme. U mbërrit në kufi"
 
 #: src/interface.c:725
 msgid "Filename is empty."
@@ -1379,12 +1379,12 @@ msgstr "_Anuloje"
 #. * use "%Y %B" instead.
 #: src/orage-month-view.c:217
 msgid "%B %Y"
-msgstr ""
+msgstr "%B %Y"
 
 #. Setup title row.
 #: src/orage-month-view.c:485 src/orage-window-next.c:1090
 msgid "Week"
-msgstr ""
+msgstr "Javë"
 
 #: src/orage-sync-edit-dialog.c:132
 msgid "Description:"
@@ -1550,19 +1550,19 @@ msgstr "<b>Veprimtari për %s - %s:</b>"
 
 #: src/orage-window-next.c:131
 msgid "Create a new appointment"
-msgstr ""
+msgstr "Krijo takim të ri"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"
-msgstr ""
+msgstr "Ringarko kartela të jashtme"
 
 #: src/orage-window-next.c:135
 msgid "Import/export data"
-msgstr ""
+msgstr "Importoni/eksportoni të dhëna"
 
 #: src/orage-window-next.c:136
 msgid "Close window"
-msgstr ""
+msgstr "Mbylle dritaren"
 
 #: src/orage-window-next.c:137
 msgid "_Quit"
@@ -1570,7 +1570,7 @@ msgstr "_Dil"
 
 #: src/orage-window-next.c:137
 msgid "Quit program"
-msgstr ""
+msgstr "Dil nga programi"
 
 #: src/orage-window-next.c:140
 msgid "_Preferences"
@@ -1582,15 +1582,15 @@ msgstr "Parapëlqime për Orage-in"
 
 #: src/orage-window-next.c:143
 msgid "View selected date"
-msgstr ""
+msgstr "Shihni të dhënat e përzgjedhura"
 
 #: src/orage-window-next.c:145
 msgid "Go to today"
-msgstr ""
+msgstr "Shko te sot"
 
 #: src/orage-window-next.c:148
 msgid "Display Orage user manual"
-msgstr ""
+msgstr "Shfaq doracak përdoruesi Orage-i"
 
 #: src/orage-window-next.c:149
 msgid "_About"
@@ -1598,45 +1598,45 @@ msgstr "_Rreth"
 
 #: src/orage-window-next.c:149
 msgid "Display information about Orage"
-msgstr ""
+msgstr "Shfaq hollësi rreth Orage-it"
 
 #: src/orage-window-next.c:366
 msgid "New event"
-msgstr ""
+msgstr "Akt i ri"
 
 #: src/orage-window-next.c:444
 #, c-format
 msgid "Events for %s:"
-msgstr ""
+msgstr "Akte për %s:"
 
 #: src/orage-window-next.c:450
 #, c-format
 msgid "Events for %s - %s:"
-msgstr ""
+msgstr "Akte për %s - %s:"
 
 #: src/orage-window-next.c:650
 msgid "To do:"
-msgstr ""
+msgstr "Për t’u bërë:"
 
 #: src/orage-window-next.c:1054
 msgid "Previous"
-msgstr ""
+msgstr "I mëparshmi"
 
 #: src/orage-window-next.c:1074
 msgid "Next"
-msgstr ""
+msgstr "Pasuesi"
 
 #: src/orage-window-next.c:1088
 msgid "Day"
-msgstr ""
+msgstr "Ditë"
 
 #: src/orage-window-next.c:1093
 msgid "Month"
-msgstr ""
+msgstr "Muaj"
 
 #: src/orage-window-next.c:1096
 msgid "Year"
-msgstr ""
+msgstr "Vit"
 
 #: src/parameters.c:646
 msgid "Remove selected synchronization task."
@@ -1690,11 +1690,11 @@ msgstr "Hollësi pamore kalendari"
 
 #: src/parameters.c:815
 msgid "Use new user interface"
-msgstr ""
+msgstr "Përdor ndërfaqe të re përdoruesi"
 
 #: src/parameters.c:817
 msgid "Enable the new interface layout (requires restart)"
-msgstr ""
+msgstr "Aktivizoni skemën e re të ndërfaqes (lyp rinisje)"
 
 #: src/parameters.c:822
 msgid "Show borders"
