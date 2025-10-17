@@ -280,6 +280,7 @@ msgstr "Välise faili lisamine ei õnnestunud"
 #: src/interface.c:715
 msgid "Orage can only handle 10 foreign files. Limit reached"
 msgstr ""
+"Orage saab hallata vaid kuni 10't välist faili ja see piir on nüüd käes"
 
 #: src/interface.c:725
 msgid "Filename is empty."
@@ -1372,12 +1373,12 @@ msgstr "_Tühista"
 #. * use "%Y %B" instead.
 #: src/orage-month-view.c:217
 msgid "%B %Y"
-msgstr ""
+msgstr "%B %Y"
 
 #. Setup title row.
 #: src/orage-month-view.c:485 src/orage-window-next.c:1090
 msgid "Week"
-msgstr ""
+msgstr "Nädal"
 
 #: src/orage-sync-edit-dialog.c:132
 msgid "Description:"
@@ -1416,7 +1417,7 @@ msgstr "_Sulge"
 #. * first day of the week, and so on.
 #: src/orage-time-utils.c:264
 msgid "calendar:week_start:0"
-msgstr ""
+msgstr "calendar:week_start:1"
 
 #: src/orage-week-window.c:453
 msgid "Back one week"
@@ -1543,19 +1544,19 @@ msgstr "<b>%s - %s sündmused:</b>"
 
 #: src/orage-window-next.c:131
 msgid "Create a new appointment"
-msgstr ""
+msgstr "Lisa uus kohtumine"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"
-msgstr ""
+msgstr "Laadi välised failid uuesti"
 
 #: src/orage-window-next.c:135
 msgid "Import/export data"
-msgstr ""
+msgstr "Impordi/ekspordi andmeid"
 
 #: src/orage-window-next.c:136
 msgid "Close window"
-msgstr ""
+msgstr "Sulge aken"
 
 #: src/orage-window-next.c:137
 msgid "_Quit"
@@ -1563,7 +1564,7 @@ msgstr "_Välju"
 
 #: src/orage-window-next.c:137
 msgid "Quit program"
-msgstr ""
+msgstr "Välju programmist"
 
 #: src/orage-window-next.c:140
 msgid "_Preferences"
@@ -1575,15 +1576,15 @@ msgstr "Orage'i eelistused"
 
 #: src/orage-window-next.c:143
 msgid "View selected date"
-msgstr ""
+msgstr "Vaata valitud kuupäeva"
 
 #: src/orage-window-next.c:145
 msgid "Go to today"
-msgstr ""
+msgstr "Vaata tänast päeva"
 
 #: src/orage-window-next.c:148
 msgid "Display Orage user manual"
-msgstr ""
+msgstr "Näita Orage'i ingliskeelset kasutusjuhendit"
 
 #: src/orage-window-next.c:149
 msgid "_About"
@@ -1591,45 +1592,45 @@ msgstr "Te_ave"
 
 #: src/orage-window-next.c:149
 msgid "Display information about Orage"
-msgstr ""
+msgstr "Näita Orage'i teavet"
 
 #: src/orage-window-next.c:366
 msgid "New event"
-msgstr ""
+msgstr "Uus sündmus"
 
 #: src/orage-window-next.c:444
 #, c-format
 msgid "Events for %s:"
-msgstr ""
+msgstr "%s sündmused:"
 
 #: src/orage-window-next.c:450
 #, c-format
 msgid "Events for %s - %s:"
-msgstr ""
+msgstr "%s - %s sündmused:"
 
 #: src/orage-window-next.c:650
 msgid "To do:"
-msgstr ""
+msgstr "Tegemiseks:"
 
 #: src/orage-window-next.c:1054
 msgid "Previous"
-msgstr ""
+msgstr "Eelmine"
 
 #: src/orage-window-next.c:1074
 msgid "Next"
-msgstr ""
+msgstr "Järgmine"
 
 #: src/orage-window-next.c:1088
 msgid "Day"
-msgstr ""
+msgstr "Päev"
 
 #: src/orage-window-next.c:1093
 msgid "Month"
-msgstr ""
+msgstr "Kuu"
 
 #: src/orage-window-next.c:1096
 msgid "Year"
-msgstr ""
+msgstr "Aasta"
 
 #: src/parameters.c:646
 msgid "Remove selected synchronization task."
@@ -1682,11 +1683,13 @@ msgstr "Kalendri välimus"
 
 #: src/parameters.c:815
 msgid "Use new user interface"
-msgstr ""
+msgstr "Kasuta uut kasutajaliidest"
 
 #: src/parameters.c:817
 msgid "Enable the new interface layout (requires restart)"
 msgstr ""
+"Lülita kasutajaliidese uus paigust sisse (eeldab rakenduse uuesti "
+"käivitamist)"
 
 #: src/parameters.c:822
 msgid "Show borders"
