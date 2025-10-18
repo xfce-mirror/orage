@@ -10,10 +10,10 @@
 # Ettore Atalan <atalanttore@googlemail.com>, 2022
 # Nick Schermer <nick@xfce.org>, 2023
 # Johannes Lips <johannes.lips@gmail.com>, 2024
-# Andreas Eitel <github-aneitel@online.de>, 2025
 # Georg Eckert <eckert.georg@gmx.de>, 2025
 # Xfce Bot <transifex@xfce.org>, 2025
 # Tobias Bannert <tobannert@gmail.com>, 2025
+# Andreas Eitel <github-aneitel@online.de>, 2025
 # 
 #, fuzzy
 msgid ""
@@ -22,7 +22,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2025-10-17 00:53+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Tobias Bannert <tobannert@gmail.com>, 2025\n"
+"Last-Translator: Andreas Eitel <github-aneitel@online.de>, 2025\n"
 "Language-Team: German (https://app.transifex.com/xfce/teams/16840/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -285,7 +285,7 @@ msgstr "Hinzufügen der Fremddatei fehlgeschlagen"
 
 #: src/interface.c:715
 msgid "Orage can only handle 10 foreign files. Limit reached"
-msgstr ""
+msgstr "Orage kann nur 10 fremde Dateien verarbeiten. Limit erreicht"
 
 #: src/interface.c:725
 msgid "Filename is empty."
@@ -1392,12 +1392,12 @@ msgstr "_Abbruch"
 #. * use "%Y %B" instead.
 #: src/orage-month-view.c:217
 msgid "%B %Y"
-msgstr ""
+msgstr "%B %Y"
 
 #. Setup title row.
 #: src/orage-month-view.c:485 src/orage-window-next.c:1090
 msgid "Week"
-msgstr ""
+msgstr "Woche"
 
 #: src/orage-sync-edit-dialog.c:132
 msgid "Description:"
@@ -1436,7 +1436,7 @@ msgstr "S_chließen"
 #. * first day of the week, and so on.
 #: src/orage-time-utils.c:264
 msgid "calendar:week_start:0"
-msgstr ""
+msgstr "Kalender:Wochenbeginn:0"
 
 #: src/orage-week-window.c:453
 msgid "Back one week"
@@ -1563,19 +1563,19 @@ msgstr "<b>Ereignisse von %s bis %s:</b>"
 
 #: src/orage-window-next.c:131
 msgid "Create a new appointment"
-msgstr ""
+msgstr "Einen neuen Termin erstellen"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"
-msgstr ""
+msgstr "Externe Dateien neu laden"
 
 #: src/orage-window-next.c:135
 msgid "Import/export data"
-msgstr ""
+msgstr "Daten importieren/exportieren"
 
 #: src/orage-window-next.c:136
 msgid "Close window"
-msgstr ""
+msgstr "Fenster schließen"
 
 #: src/orage-window-next.c:137
 msgid "_Quit"
@@ -1583,7 +1583,7 @@ msgstr "_Beenden"
 
 #: src/orage-window-next.c:137
 msgid "Quit program"
-msgstr ""
+msgstr "Programm beenden"
 
 #: src/orage-window-next.c:140
 msgid "_Preferences"
@@ -1595,15 +1595,15 @@ msgstr "Einstellungen für Orage"
 
 #: src/orage-window-next.c:143
 msgid "View selected date"
-msgstr ""
+msgstr "Ausgewähltes Datum anzeigen"
 
 #: src/orage-window-next.c:145
 msgid "Go to today"
-msgstr ""
+msgstr "Zu heute gehen"
 
 #: src/orage-window-next.c:148
 msgid "Display Orage user manual"
-msgstr ""
+msgstr "Orage Benutzerhandbuch anzeigen"
 
 #: src/orage-window-next.c:149
 msgid "_About"
@@ -1611,25 +1611,25 @@ msgstr "_Info"
 
 #: src/orage-window-next.c:149
 msgid "Display information about Orage"
-msgstr ""
+msgstr "Informationen über Orage anzeigen"
 
 #: src/orage-window-next.c:366
 msgid "New event"
-msgstr ""
+msgstr "Neues Ereignis"
 
 #: src/orage-window-next.c:444
 #, c-format
 msgid "Events for %s:"
-msgstr ""
+msgstr "Ereignisse für %s:"
 
 #: src/orage-window-next.c:450
 #, c-format
 msgid "Events for %s - %s:"
-msgstr ""
+msgstr "Ereignisse für %s - %s:"
 
 #: src/orage-window-next.c:650
 msgid "To do:"
-msgstr ""
+msgstr "Zu erledigen:"
 
 #: src/orage-window-next.c:1054
 msgid "Previous"
@@ -1641,15 +1641,15 @@ msgstr "Nächster Titel"
 
 #: src/orage-window-next.c:1088
 msgid "Day"
-msgstr ""
+msgstr "Tag"
 
 #: src/orage-window-next.c:1093
 msgid "Month"
-msgstr ""
+msgstr "Monat"
 
 #: src/orage-window-next.c:1096
 msgid "Year"
-msgstr ""
+msgstr "Jahr"
 
 #: src/parameters.c:646
 msgid "Remove selected synchronization task."
@@ -1704,11 +1704,13 @@ msgstr "Aussehen des Kalenders"
 
 #: src/parameters.c:815
 msgid "Use new user interface"
-msgstr ""
+msgstr "Neue Benutzeroberfläche verwenden"
 
 #: src/parameters.c:817
 msgid "Enable the new interface layout (requires restart)"
 msgstr ""
+"Aktivieren Sie das neue Layout der Benutzeroberfläche (erfordert einen "
+"Neustart)."
 
 #: src/parameters.c:822
 msgid "Show borders"
