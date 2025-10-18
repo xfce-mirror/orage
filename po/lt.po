@@ -1385,7 +1385,7 @@ msgstr ""
 #. Setup title row.
 #: src/orage-month-view.c:485 src/orage-window-next.c:1090
 msgid "Week"
-msgstr ""
+msgstr "Savaitė"
 
 #: src/orage-sync-edit-dialog.c:132
 msgid "Description:"
@@ -1555,15 +1555,15 @@ msgstr ""
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"
-msgstr ""
+msgstr "Iš naujo įkelti išorinius failus"
 
 #: src/orage-window-next.c:135
 msgid "Import/export data"
-msgstr ""
+msgstr "Importuoti/eksportuoti duomenis"
 
 #: src/orage-window-next.c:136
 msgid "Close window"
-msgstr ""
+msgstr "Užverti langą"
 
 #: src/orage-window-next.c:137
 msgid "_Quit"
@@ -1599,11 +1599,11 @@ msgstr "_Apie"
 
 #: src/orage-window-next.c:149
 msgid "Display information about Orage"
-msgstr ""
+msgstr "Rodyti informaciją apie Orage"
 
 #: src/orage-window-next.c:366
 msgid "New event"
-msgstr ""
+msgstr "Naujas įvykis"
 
 #: src/orage-window-next.c:444
 #, c-format
@@ -1690,11 +1690,11 @@ msgstr "Išsamesnė vaizdinė kalendoriaus informacija"
 
 #: src/parameters.c:815
 msgid "Use new user interface"
-msgstr ""
+msgstr "Naudoti naują naudotojo sąsają"
 
 #: src/parameters.c:817
 msgid "Enable the new interface layout (requires restart)"
-msgstr ""
+msgstr "Įjungti naujos sąsajos išdėstymą (reikalauja paleidimo iš naujo)"
 
 #: src/parameters.c:822
 msgid "Show borders"
