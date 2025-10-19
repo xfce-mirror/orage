@@ -279,7 +279,7 @@ msgstr "Tilføjelse af fremmede fil mislykkedes"
 
 #: src/interface.c:715
 msgid "Orage can only handle 10 foreign files. Limit reached"
-msgstr ""
+msgstr "Orage kan kun håndtere 10 fremmede filer. Grænsen er nået"
 
 #: src/interface.c:725
 msgid "Filename is empty."
@@ -1374,12 +1374,12 @@ msgstr "_Annuller"
 #. * use "%Y %B" instead.
 #: src/orage-month-view.c:217
 msgid "%B %Y"
-msgstr ""
+msgstr "%B %Y"
 
 #. Setup title row.
 #: src/orage-month-view.c:485 src/orage-window-next.c:1090
 msgid "Week"
-msgstr ""
+msgstr "Uge"
 
 #: src/orage-sync-edit-dialog.c:132
 msgid "Description:"
@@ -1418,7 +1418,7 @@ msgstr "_Luk"
 #. * first day of the week, and so on.
 #: src/orage-time-utils.c:264
 msgid "calendar:week_start:0"
-msgstr ""
+msgstr "calendar:week_start:1"
 
 #: src/orage-week-window.c:453
 msgid "Back one week"
@@ -1545,19 +1545,19 @@ msgstr "<b>Begivenheder for %s - %s:</b>"
 
 #: src/orage-window-next.c:131
 msgid "Create a new appointment"
-msgstr ""
+msgstr "Opret en ny aftale"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"
-msgstr ""
+msgstr "Genindlæs eksterne filer"
 
 #: src/orage-window-next.c:135
 msgid "Import/export data"
-msgstr ""
+msgstr "Import/eksport data"
 
 #: src/orage-window-next.c:136
 msgid "Close window"
-msgstr ""
+msgstr "Luk vindue"
 
 #: src/orage-window-next.c:137
 msgid "_Quit"
@@ -1565,7 +1565,7 @@ msgstr "_Afslut"
 
 #: src/orage-window-next.c:137
 msgid "Quit program"
-msgstr ""
+msgstr "Afslut program"
 
 #: src/orage-window-next.c:140
 msgid "_Preferences"
@@ -1577,15 +1577,15 @@ msgstr "Orage-præferencer"
 
 #: src/orage-window-next.c:143
 msgid "View selected date"
-msgstr ""
+msgstr "Vis valgte dato"
 
 #: src/orage-window-next.c:145
 msgid "Go to today"
-msgstr ""
+msgstr "Gå til dagen i dag"
 
 #: src/orage-window-next.c:148
 msgid "Display Orage user manual"
-msgstr ""
+msgstr "Vis brugermanualen til Orage"
 
 #: src/orage-window-next.c:149
 msgid "_About"
@@ -1593,45 +1593,45 @@ msgstr "_Om"
 
 #: src/orage-window-next.c:149
 msgid "Display information about Orage"
-msgstr ""
+msgstr "Vis informationer om Orage"
 
 #: src/orage-window-next.c:366
 msgid "New event"
-msgstr ""
+msgstr "Ny begivenhed"
 
 #: src/orage-window-next.c:444
 #, c-format
 msgid "Events for %s:"
-msgstr ""
+msgstr "Begivenheder for %s:"
 
 #: src/orage-window-next.c:450
 #, c-format
 msgid "Events for %s - %s:"
-msgstr ""
+msgstr "Begivenheder for %s - %s:"
 
 #: src/orage-window-next.c:650
 msgid "To do:"
-msgstr ""
+msgstr "To do:"
 
 #: src/orage-window-next.c:1054
 msgid "Previous"
-msgstr ""
+msgstr "Forrige"
 
 #: src/orage-window-next.c:1074
 msgid "Next"
-msgstr ""
+msgstr "Næste"
 
 #: src/orage-window-next.c:1088
 msgid "Day"
-msgstr ""
+msgstr "Dag"
 
 #: src/orage-window-next.c:1093
 msgid "Month"
-msgstr ""
+msgstr "Måned"
 
 #: src/orage-window-next.c:1096
 msgid "Year"
-msgstr ""
+msgstr "År"
 
 #: src/parameters.c:646
 msgid "Remove selected synchronization task."
@@ -1684,11 +1684,11 @@ msgstr "Kalender visuelle detaljer"
 
 #: src/parameters.c:815
 msgid "Use new user interface"
-msgstr ""
+msgstr "Brug ny brugerflade"
 
 #: src/parameters.c:817
 msgid "Enable the new interface layout (requires restart)"
-msgstr ""
+msgstr "Aktivér det nye brugerfladelayout (kræver genstart)"
 
 #: src/parameters.c:822
 msgid "Show borders"
