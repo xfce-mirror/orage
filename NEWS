@@ -1,9 +1,19 @@
-4.21.0 (2025-10-16)
+4.21.0 (2025-10-20)
 =======
 - New Orage main window layout (MR !80, Issue #18).
 - Revised CSS element naming for consistency.
 - Replaced Autotools with Meson (MR !74 and MR !77).
 - Added ICAL file preview and import dialog (MR !75).
+- Translation Updates:
+  Albanian, Amharic, Arabic, Armenian (Armenia), Asturian, Basque,
+  Belarusian, Bulgarian, Catalan, Chinese (China), Chinese (Taiwan),
+  Croatian, Czech, Danish, Dutch, English (Australia), English (United
+  Kingdom), Esperanto, Estonian, Finnish, French, Galician, German,
+  Greek, Hebrew, Hungarian, Icelandic, Indonesian, Italian, Japanese,
+  Kazakh, Korean, Latvian, Lithuanian, Malay, Norwegian Bokmål,
+  Norwegian Nynorsk, Occitan (post 1500), Polish, Portuguese (Brazil),
+  Portuguese, Romanian, Russian, Serbian, Slovak, Slovenian, Spanish,
+  Swedish, Thai, Turkish, Ukrainian, Urdu (Pakistan), Urdu, Uyghur
 
 4.20.2 (2025-08-07)
 ======
