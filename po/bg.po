@@ -279,7 +279,7 @@ msgstr "Неуспех при добавянето на външен файл"
 
 #: src/interface.c:715
 msgid "Orage can only handle 10 foreign files. Limit reached"
-msgstr ""
+msgstr "Orage може да обработва само 10 чужди файла. Достигнат е лимитът."
 
 #: src/interface.c:725
 msgid "Filename is empty."
@@ -1376,12 +1376,12 @@ msgstr "Отказ"
 #. * use "%Y %B" instead.
 #: src/orage-month-view.c:217
 msgid "%B %Y"
-msgstr ""
+msgstr "%B %Г"
 
 #. Setup title row.
 #: src/orage-month-view.c:485 src/orage-window-next.c:1090
 msgid "Week"
-msgstr ""
+msgstr "Седмица"
 
 #: src/orage-sync-edit-dialog.c:132
 msgid "Description:"
@@ -1420,7 +1420,7 @@ msgstr "_Затваряне"
 #. * first day of the week, and so on.
 #: src/orage-time-utils.c:264
 msgid "calendar:week_start:0"
-msgstr ""
+msgstr "календар:начало_на_седмица:0"
 
 #: src/orage-week-window.c:453
 msgid "Back one week"
@@ -1547,19 +1547,19 @@ msgstr "<b>Събития за %s - %s:</b>"
 
 #: src/orage-window-next.c:131
 msgid "Create a new appointment"
-msgstr ""
+msgstr "Създаване на нова среща"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"
-msgstr ""
+msgstr "Зареждане на външни файлове"
 
 #: src/orage-window-next.c:135
 msgid "Import/export data"
-msgstr ""
+msgstr "Импортиране/експортиране на данни"
 
 #: src/orage-window-next.c:136
 msgid "Close window"
-msgstr ""
+msgstr "Затваряне на прозореца"
 
 #: src/orage-window-next.c:137
 msgid "_Quit"
@@ -1567,7 +1567,7 @@ msgstr "_Изход"
 
 #: src/orage-window-next.c:137
 msgid "Quit program"
-msgstr ""
+msgstr "Изход от програмата"
 
 #: src/orage-window-next.c:140
 msgid "_Preferences"
@@ -1579,15 +1579,15 @@ msgstr "Настройки на Orage"
 
 #: src/orage-window-next.c:143
 msgid "View selected date"
-msgstr ""
+msgstr "Показване на избраната дата"
 
 #: src/orage-window-next.c:145
 msgid "Go to today"
-msgstr ""
+msgstr "Отиди на днешния ден"
 
 #: src/orage-window-next.c:148
 msgid "Display Orage user manual"
-msgstr ""
+msgstr "Показване на потребителското ръководство на Orage"
 
 #: src/orage-window-next.c:149
 msgid "_About"
@@ -1595,25 +1595,25 @@ msgstr "_Относно"
 
 #: src/orage-window-next.c:149
 msgid "Display information about Orage"
-msgstr ""
+msgstr "Показване на информацията за Orage"
 
 #: src/orage-window-next.c:366
 msgid "New event"
-msgstr ""
+msgstr "Ново събитие"
 
 #: src/orage-window-next.c:444
 #, c-format
 msgid "Events for %s:"
-msgstr ""
+msgstr "Събития за %s:"
 
 #: src/orage-window-next.c:450
 #, c-format
 msgid "Events for %s - %s:"
-msgstr ""
+msgstr "Събития за %s - %s:"
 
 #: src/orage-window-next.c:650
 msgid "To do:"
-msgstr ""
+msgstr "Да се ​​направи:"
 
 #: src/orage-window-next.c:1054
 msgid "Previous"
@@ -1625,15 +1625,15 @@ msgstr "Следващ"
 
 #: src/orage-window-next.c:1088
 msgid "Day"
-msgstr ""
+msgstr "Ден"
 
 #: src/orage-window-next.c:1093
 msgid "Month"
-msgstr ""
+msgstr "Месец"
 
 #: src/orage-window-next.c:1096
 msgid "Year"
-msgstr ""
+msgstr "Година"
 
 #: src/parameters.c:646
 msgid "Remove selected synchronization task."
@@ -1688,11 +1688,11 @@ msgstr "Визуални детайли на календара"
 
 #: src/parameters.c:815
 msgid "Use new user interface"
-msgstr ""
+msgstr "Използване на нов потребителски интерфейс"
 
 #: src/parameters.c:817
 msgid "Enable the new interface layout (requires restart)"
-msgstr ""
+msgstr "Активиране на новото оформление на интерфейса (изисква рестартиране)"
 
 #: src/parameters.c:822
 msgid "Show borders"
