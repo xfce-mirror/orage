@@ -527,7 +527,7 @@ static void on_Date_button_clicked_cb(GtkWidget *button, gpointer *user_data)
     selDate_dialog = gtk_dialog_new_with_buttons (
         _("Pick the date"), GTK_WINDOW (window),
         GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-        _("Today"), 1, _("_OK"), GTK_RESPONSE_ACCEPT, NULL);
+        _("Today"), 1, "_OK", GTK_RESPONSE_ACCEPT, NULL);
 
     if (orage_date_button_clicked (button, selDate_dialog))
         orage_week_window_refresh (window);
