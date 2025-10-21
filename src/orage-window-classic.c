@@ -796,10 +796,10 @@ static void orage_window_classic_init (OrageWindowClassic *self)
     /* Signals */
     g_signal_connect (self, "notify::application",
                       G_CALLBACK (on_post_init), NULL);
-    g_signal_connect (self->mCalendar, "day_selected_double_click",
+    g_signal_connect (self->mCalendar, "day-selected-double-click",
                       G_CALLBACK (mCalendar_day_selected_double_click_cb),
                       NULL);
-    g_signal_connect (self->mCalendar, "day_selected",
+    g_signal_connect (self->mCalendar, "day-selected",
                       G_CALLBACK (mCalendar_day_selected_cb), self);
     g_signal_connect (self->mCalendar, "month-changed",
                       G_CALLBACK (mCalendar_month_changed_cb), self);

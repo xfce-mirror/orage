@@ -973,26 +973,26 @@ static void drag_and_drop_init(intf_win *intf_w)
     gtk_drag_dest_set(intf_w->iea_imp_entry
             , GTK_DEST_DEFAULT_MOTION | GTK_DEST_DEFAULT_HIGHLIGHT
             , file_drag_targets, file_drag_target_count, GDK_ACTION_COPY);
-    g_signal_connect(intf_w->iea_imp_entry, "drag_drop"
-            , G_CALLBACK(drag_drop), NULL);
-    g_signal_connect(intf_w->iea_imp_entry, "drag_data_received"
-            , G_CALLBACK(imp_file_drag_data_received), NULL);
+    g_signal_connect (intf_w->iea_imp_entry, "drag-drop",
+                      G_CALLBACK (drag_drop), NULL);
+    g_signal_connect (intf_w->iea_imp_entry, "drag-data-received",
+                      G_CALLBACK (imp_file_drag_data_received), NULL);
 
     gtk_drag_dest_set(intf_w->iea_exp_entry
             , GTK_DEST_DEFAULT_MOTION | GTK_DEST_DEFAULT_HIGHLIGHT
             , file_drag_targets, file_drag_target_count, GDK_ACTION_COPY);
-    g_signal_connect(intf_w->iea_exp_entry, "drag_drop"
-            , G_CALLBACK(drag_drop), NULL);
-    g_signal_connect(intf_w->iea_exp_entry, "drag_data_received"
-            , G_CALLBACK(exp_file_drag_data_received), NULL);
+    g_signal_connect (intf_w->iea_exp_entry, "drag-drop",
+                      G_CALLBACK (drag_drop), NULL);
+    g_signal_connect (intf_w->iea_exp_entry, "drag-data-received",
+                      G_CALLBACK (exp_file_drag_data_received), NULL);
 
     gtk_drag_dest_set(intf_w->iea_exp_id_entry
             , GTK_DEST_DEFAULT_MOTION | GTK_DEST_DEFAULT_HIGHLIGHT
             , uid_drag_targets, uid_drag_target_count, GDK_ACTION_COPY);
-    g_signal_connect(intf_w->iea_exp_id_entry, "drag_drop"
-            , G_CALLBACK(drag_drop), NULL);
-    g_signal_connect(intf_w->iea_exp_id_entry, "drag_data_received"
-            , G_CALLBACK(uid_drag_data_received), NULL);
+    g_signal_connect (intf_w->iea_exp_id_entry, "drag-drop",
+                      G_CALLBACK (drag_drop), NULL);
+    g_signal_connect (intf_w->iea_exp_id_entry, "drag-data-received",
+                      G_CALLBACK (uid_drag_data_received), NULL);
 }
 
 static void exp_add_all_rb_clicked (G_GNUC_UNUSED GtkWidget *button,
@@ -1522,8 +1522,8 @@ void orage_external_interface (void)
     create_orage_file_tab(intf_w);
     create_foreign_file_tab(intf_w);
 
-    g_signal_connect((gpointer)intf_w->main_window, "delete_event",
-            G_CALLBACK(on_Window_delete_event), intf_w);
+    g_signal_connect (intf_w->main_window, "delete-event",
+                      G_CALLBACK (on_Window_delete_event), intf_w);
 
     gtk_widget_show_all(intf_w->main_window);
     drag_and_drop_init(intf_w);

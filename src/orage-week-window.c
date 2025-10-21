@@ -1228,7 +1228,7 @@ void orage_week_window_build (GDateTime *date)
 
     window = orage_week_window_new (date);
 
-    g_signal_connect (window, "delete_event",
+    g_signal_connect (window, "delete-event",
                       G_CALLBACK (on_Window_delete_event), window);
 }
 

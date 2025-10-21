@@ -2482,8 +2482,8 @@ static void on_categories_button_clicked_cb (G_GNUC_UNUSED GtkWidget *button
 
     create_cat_win(catw);
 
-    g_signal_connect((gpointer)catw->window, "delete_event",
-        G_CALLBACK(on_cat_window_delete_event), catw);
+    g_signal_connect (catw->window, "delete-event",
+                      G_CALLBACK (on_cat_window_delete_event), catw);
     gtk_widget_show_all(catw->window);
 }
 
@@ -4394,8 +4394,8 @@ static void enable_recurrence_page_signals (OrageAppointmentWindow *apptw)
         g_signal_connect (apptw->Recur_calendar[i], "month-changed",
                           G_CALLBACK (recur_month_changed_cb), apptw);
 
-        g_signal_connect (apptw->Recur_calendar[i], "day_selected_double_click",
-                      G_CALLBACK (recur_day_selected_double_click_cb), apptw);
+        g_signal_connect (apptw->Recur_calendar[i], "day-selected-double-click",
+                          G_CALLBACK (recur_day_selected_double_click_cb), apptw);
     }
 
     g_signal_connect (apptw->Recur_limit_rb, "toggled",

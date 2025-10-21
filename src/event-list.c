@@ -1504,8 +1504,8 @@ el_win *create_el_win (GDateTime *gdt)
     build_notebook(el);
     build_event_list(el);
 
-    g_signal_connect((gpointer)el->Window, "delete_event"
-            , G_CALLBACK(on_Window_delete_event), el);
+    g_signal_connect (el->Window, "delete-event",
+                      G_CALLBACK (on_Window_delete_event), el);
 
     gtk_widget_show_all(el->Window);
     if (gdt == NULL)
@@ -1516,8 +1516,8 @@ el_win *create_el_win (GDateTime *gdt)
     gtk_drag_source_set(el->TreeView, GDK_BUTTON1_MASK
             , drag_targets, DRAG_TARGET_COUNT, GDK_ACTION_COPY);
     gtk_drag_source_set_icon_name (el->TreeView, ORAGE_APP_ID);
-    g_signal_connect(el->TreeView, "drag_data_get"
-            , G_CALLBACK(drag_data_get), NULL);
+    g_signal_connect (el->TreeView, "drag-data-get",
+                      G_CALLBACK (drag_data_get), NULL);
 
     return(el);
 }

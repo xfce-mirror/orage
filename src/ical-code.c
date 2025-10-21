@@ -2057,7 +2057,7 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
                 break;
             default:
                 g_info ("%s: unknown property %s", G_STRFUNC,
-                           icalproperty_get_property_name (p));
+                        icalproperty_get_property_name (p));
                 break;
         }
     } /* Property for loop */
