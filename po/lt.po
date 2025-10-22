@@ -279,7 +279,7 @@ msgstr "Išorinio failo pridėjimas nepavyko"
 
 #: src/interface.c:715
 msgid "Orage can only handle 10 foreign files. Limit reached"
-msgstr ""
+msgstr "Orage gali apdoroti tik 10 išorinių failų. Pasiekta riba"
 
 #: src/interface.c:725
 msgid "Filename is empty."
@@ -1380,7 +1380,7 @@ msgstr "_Atsisakyti"
 #. * use "%Y %B" instead.
 #: src/orage-month-view.c:217
 msgid "%B %Y"
-msgstr ""
+msgstr "%Y %B"
 
 #. Setup title row.
 #: src/orage-month-view.c:485 src/orage-window-next.c:1090
@@ -1424,7 +1424,7 @@ msgstr "_Užverti"
 #. * first day of the week, and so on.
 #: src/orage-time-utils.c:264
 msgid "calendar:week_start:0"
-msgstr ""
+msgstr "calendar:week_start:1"
 
 #: src/orage-week-window.c:453
 msgid "Back one week"
@@ -1551,7 +1551,7 @@ msgstr "<b>Įvykiai %s - %s:</b>"
 
 #: src/orage-window-next.c:131
 msgid "Create a new appointment"
-msgstr ""
+msgstr "Sukurti naują paskyrimą"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"
@@ -1571,7 +1571,7 @@ msgstr "_Išeiti"
 
 #: src/orage-window-next.c:137
 msgid "Quit program"
-msgstr ""
+msgstr "Išjungti programą"
 
 #: src/orage-window-next.c:140
 msgid "_Preferences"
@@ -1583,15 +1583,15 @@ msgstr "Orage nuostatos"
 
 #: src/orage-window-next.c:143
 msgid "View selected date"
-msgstr ""
+msgstr "Peržiūrėti pasirinktą datą"
 
 #: src/orage-window-next.c:145
 msgid "Go to today"
-msgstr ""
+msgstr "Pereiti į šiandieną"
 
 #: src/orage-window-next.c:148
 msgid "Display Orage user manual"
-msgstr ""
+msgstr "Rodyti Orage naudotojo žinyną"
 
 #: src/orage-window-next.c:149
 msgid "_About"
@@ -1608,36 +1608,36 @@ msgstr "Naujas įvykis"
 #: src/orage-window-next.c:444
 #, c-format
 msgid "Events for %s:"
-msgstr ""
+msgstr "%s numatyti įvykiai:"
 
 #: src/orage-window-next.c:450
 #, c-format
 msgid "Events for %s - %s:"
-msgstr ""
+msgstr "%s – %s numatyti įvykiai:"
 
 #: src/orage-window-next.c:650
 msgid "To do:"
-msgstr ""
+msgstr "Darbai:"
 
 #: src/orage-window-next.c:1054
 msgid "Previous"
-msgstr ""
+msgstr "Ankstesnis"
 
 #: src/orage-window-next.c:1074
 msgid "Next"
-msgstr ""
+msgstr "Kitas"
 
 #: src/orage-window-next.c:1088
 msgid "Day"
-msgstr ""
+msgstr "Diena"
 
 #: src/orage-window-next.c:1093
 msgid "Month"
-msgstr ""
+msgstr "Mėnuo"
 
 #: src/orage-window-next.c:1096
 msgid "Year"
-msgstr ""
+msgstr "Metai"
 
 #: src/parameters.c:646
 msgid "Remove selected synchronization task."
