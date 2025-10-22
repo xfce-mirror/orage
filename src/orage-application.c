@@ -51,10 +51,6 @@
 #define HINT_REMOVE 'r'
 #define HINT_OPEN 'o'
 
-#define LOGIND_BUS_NAME "org.freedesktop.login1"
-#define LOGIND_IFACE_NAME "org.freedesktop.login1.Manager"
-#define LOGIND_OBJ_PATH "/org/freedesktop/login1"
-
 struct _OrageApplication
 {
     GtkApplication parent;
