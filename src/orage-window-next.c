@@ -805,7 +805,8 @@ static void add_info_row (xfical_appt *appt, GtkBox *parent_box,
     g_free (tmp);
     gtk_label_set_ellipsize (GTK_LABEL (label), PANGO_ELLIPSIZE_END);
 
-    g_object_set (label, "xalign", 0.0, "yalign", 0.5,
+    g_object_set (label, "xalign", 0.0,
+                         "yalign", 0.5,
                          "margin-start", 5,
                          "hexpand", TRUE,
                          "halign", GTK_ALIGN_FILL,

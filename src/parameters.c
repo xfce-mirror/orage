@@ -698,10 +698,11 @@ static void create_parameter_dialog_main_setup_tab(Itf *dialog)
     }
     gtk_button_set_label(GTK_BUTTON(dialog->timezone_button)
             , _(g_par.local_timezone));
-    g_object_set (dialog->timezone_button,
-                  "margin-top", 5, "margin-bottom", 5, "margin-left", 5,
-                  "hexpand", TRUE,
-                  NULL);
+    g_object_set (dialog->timezone_button, "margin-top", 5,
+                                           "margin-bottom", 5,
+                                           "margin-start", 5,
+                                           "hexpand", TRUE,
+                                           NULL);
     gtk_grid_attach_next_to (GTK_GRID (vbox),
                              dialog->timezone_button, NULL,
                              GTK_POS_RIGHT, 1, 1);
@@ -723,12 +724,12 @@ static void create_parameter_dialog_main_setup_tab(Itf *dialog)
     dialog->archive_threshold_spin = gtk_spin_button_new_with_range(0, 12, 1);
     gtk_spin_button_set_value(GTK_SPIN_BUTTON(dialog->archive_threshold_spin)
             , g_par.archive_limit);
-    g_object_set (dialog->archive_threshold_spin, "margin-left", 5, NULL);
+    g_object_set (dialog->archive_threshold_spin, "margin-start", 5, NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox),
                              dialog->archive_threshold_spin,
                              NULL, GTK_POS_RIGHT, 1, 1);
     label = gtk_label_new(_("(0 = no archiving)"));
-    g_object_set (label, "margin-left", 10, NULL);
+    g_object_set (label, "margin-start", 10, NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
     gtk_widget_set_tooltip_text(dialog->archive_threshold_spin
             , _("Archiving is used to save time and space when handling events."));
@@ -747,7 +748,7 @@ static void create_parameter_dialog_main_setup_tab(Itf *dialog)
 
     dialog->sound_application_entry = gtk_entry_new();
     g_object_set (dialog->sound_application_entry,
-                  "margin-left", 5,
+                  "margin-start", 5,
                   "hexpand", TRUE,
                   "halign", GTK_ALIGN_FILL,
                   NULL);
@@ -760,7 +761,7 @@ static void create_parameter_dialog_main_setup_tab(Itf *dialog)
             orage_util_image_button ("document-open", _("_Open"));
 
     g_object_set (dialog->sound_application_open_button,
-                  "margin-left", 10,
+                  "margin-start", 10,
                   NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox),
                              dialog->sound_application_open_button,
@@ -886,10 +887,10 @@ static void create_parameter_dialog_calendar_setup_tab(Itf *dialog)
 
     hbox = gtk_grid_new ();
     label = gtk_label_new(_("Number of days to show in event window"));
-    g_object_set (label, "margin-left", 5, NULL);
+    g_object_set (label, "margin-start", 5, NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
     dialog->show_events_spin = gtk_spin_button_new_with_range(0, 31, 1);
-    g_object_set (dialog->show_events_spin, "margin-left", 10, NULL);
+    g_object_set (dialog->show_events_spin, "margin-start", 10, NULL);
     gtk_spin_button_set_value(GTK_SPIN_BUTTON(dialog->show_events_spin)
             , g_par.show_event_days);
     gtk_widget_set_tooltip_text(dialog->show_events_spin
@@ -1151,7 +1152,7 @@ static void create_parameter_dialog_extra_setup_tab(Itf *dialog)
     label = gtk_label_new(_("Number of extra days to show in event list"));
     gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
     dialog->el_extra_days_spin = gtk_spin_button_new_with_range(0, 99999, 1);
-    g_object_set (dialog->el_extra_days_spin, "margin-left", 10, NULL);
+    g_object_set (dialog->el_extra_days_spin, "margin-start", 10, NULL);
     gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(dialog->el_extra_days_spin), TRUE);
     gtk_grid_attach_next_to (GTK_GRID (hbox), dialog->el_extra_days_spin, NULL,
                              GTK_POS_RIGHT, 1, 1);

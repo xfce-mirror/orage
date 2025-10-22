@@ -1272,8 +1272,8 @@ static void build_event_tab(el_win *el)
     label = gtk_label_new(_("Extra days to show:"));
 
     el->event_spin = gtk_spin_button_new_with_range(0, 99999, 1);
-    g_object_set (el->event_spin, "margin-right", 2,
-                                  "margin-left", 2,
+    g_object_set (el->event_spin, "margin-start", 2,
+                                  "margin-end", 2,
                                    NULL);
 
     gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(el->event_spin), TRUE);
@@ -1284,8 +1284,8 @@ static void build_event_tab(el_win *el)
 
     el->event_only_first_checkbutton =
             gtk_check_button_new_with_label(_("only first repeating"));
-    g_object_set (el->event_only_first_checkbutton, "margin-right", 15,
-                                                    "margin-left", 15,
+    g_object_set (el->event_only_first_checkbutton, "margin-start", 15,
+                                                    "margin-end", 15,
                                                     NULL);
     gtk_toggle_button_set_active(
             GTK_TOGGLE_BUTTON(el->event_only_first_checkbutton)
@@ -1297,8 +1297,8 @@ static void build_event_tab(el_win *el)
 
     el->event_show_old_checkbutton =
             gtk_check_button_new_with_label(_("also old"));
-    g_object_set (el->event_show_old_checkbutton, "margin-right", 15,
-                                                  "margin-left", 15,
+    g_object_set (el->event_show_old_checkbutton, "margin-start", 15,
+                                                  "margin-end", 15,
                                                   NULL);
     gtk_widget_set_tooltip_text(el->event_show_old_checkbutton
             , _("Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\nNote that extra days selection still defines if newer appointments are listed."));

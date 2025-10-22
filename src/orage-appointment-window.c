@@ -2424,23 +2424,20 @@ static void create_cat_win(category_win_struct *catw)
                              GTK_POS_BOTTOM, 1, 1);
 
     hbox = gtk_grid_new ();
-    g_object_set (hbox, "margin-top", 10,
-                        "margin-bottom", 10,
-                        NULL);
+    g_object_set (hbox, "margin-top", 10, "margin-bottom", 10, NULL);
     label = gtk_label_new(_("Category:"));
     gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL,
                              GTK_POS_RIGHT, 1, 1);
     catw->new_entry = gtk_entry_new ();
-    g_object_set (catw->new_entry, "margin-right", 5,
-                                   "margin-left", 5,
+    g_object_set (catw->new_entry, "margin-start", 5,
+                                   "margin-end", 5,
                                    "hexpand", TRUE,
                                    "halign", GTK_ALIGN_FILL,
                                    NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), catw->new_entry, NULL,
                              GTK_POS_RIGHT, 1, 1);
     catw->new_color_button = gtk_color_button_new();
-    g_object_set (catw->new_color_button, "margin-right", 10,
-                                          NULL);
+    g_object_set (catw->new_color_button, "margin-end", 10, NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), catw->new_color_button, NULL,
                              GTK_POS_RIGHT, 1, 1);
     catw->new_add_button = orage_util_image_button ("list-add", _("_Add"));
@@ -3656,7 +3653,7 @@ static void build_general_page (OrageAppointmentWindow *apptw)
     apptw->End_hbox = gtk_grid_new ();
     apptw->End_checkbutton =
             gtk_check_button_new_with_mnemonic(_("Set"));
-    g_object_set (apptw->End_checkbutton, "margin-right", 20, NULL);
+    g_object_set (apptw->End_checkbutton, "margin-end", 20, NULL);
     gtk_grid_attach_next_to (GTK_GRID (apptw->End_hbox),
             apptw->End_checkbutton, NULL, GTK_POS_RIGHT, 1, 1);
     apptw->EndDate_button = gtk_button_new();
@@ -3741,8 +3738,9 @@ static void build_general_page (OrageAppointmentWindow *apptw)
                              apptw->Categories_entry, NULL,
                              GTK_POS_RIGHT, 1, 1);
     apptw->Categories_cb = gtk_combo_box_text_new();
-    g_object_set (apptw->Categories_cb, "margin-left", 4,
-                                        "margin-right", 4, NULL);
+    g_object_set (apptw->Categories_cb, "margin-start", 4,
+                                        "margin-end", 4,
+                                        NULL);
     apptw->Categories_cb_event =  gtk_event_box_new(); /* needed for tooltips */
     gtk_container_add (GTK_CONTAINER(apptw->Categories_cb_event),
                        apptw->Categories_cb);
@@ -3948,10 +3946,11 @@ static void build_alarm_page (OrageAppointmentWindow *apptw)
                              1, 1);
 
     apptw->Sound_entry = gtk_entry_new();
-    g_object_set (apptw->Sound_entry, "margin-left", 10,
-                                      "margin-right", 6,
+    g_object_set (apptw->Sound_entry, "margin-start", 10,
+                                      "margin-end", 6,
                                       "halign", GTK_ALIGN_FILL,
-                                      "hexpand", TRUE, NULL);
+                                      "hexpand", TRUE,
+                                      NULL);
     gtk_grid_attach_next_to (GTK_GRID (apptw->Sound_hbox),
                              apptw->Sound_entry, NULL, GTK_POS_RIGHT,
                              1, 1);
@@ -3974,8 +3973,8 @@ static void build_alarm_page (OrageAppointmentWindow *apptw)
                              GTK_POS_RIGHT, 1, 1);
 
     apptw->SoundRepeat_spin_cnt = gtk_spin_button_new_with_range(1, 999, 10);
-    g_object_set (apptw->SoundRepeat_spin_cnt, "margin-left", 30,
-                                               "margin-right", 3,
+    g_object_set (apptw->SoundRepeat_spin_cnt, "margin-start", 30,
+                                               "margin-end", 3,
                                                NULL);
     gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(apptw->SoundRepeat_spin_cnt)
             , TRUE);
@@ -3989,8 +3988,8 @@ static void build_alarm_page (OrageAppointmentWindow *apptw)
                              GTK_POS_RIGHT, 1, 1);
 
     apptw->SoundRepeat_spin_len = gtk_spin_button_new_with_range(1, 250, 1);
-    g_object_set (apptw->SoundRepeat_spin_len, "margin-left", 30,
-                                               "margin-right", 3,
+    g_object_set (apptw->SoundRepeat_spin_len, "margin-start", 30,
+                                               "margin-end", 3,
                                                NULL);
     gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(apptw->SoundRepeat_spin_len)
             , TRUE);
@@ -4029,7 +4028,7 @@ static void build_alarm_page (OrageAppointmentWindow *apptw)
             gtk_check_button_new_with_mnemonic(_("Use notification"));
     gtk_widget_set_tooltip_text(apptw->Display_checkbutton_notify
             , _("Select this if you want notification alarm"));
-    g_object_set (apptw->Display_checkbutton_notify, "margin-right", 10,
+    g_object_set (apptw->Display_checkbutton_notify, "margin-end", 10,
                                                      NULL);
     gtk_grid_attach_next_to (GTK_GRID (apptw->Display_hbox_notify),
                              apptw->Display_checkbutton_notify, NULL,
@@ -4050,8 +4049,8 @@ static void build_alarm_page (OrageAppointmentWindow *apptw)
             , TRUE);
     gtk_widget_set_tooltip_text(apptw->Display_spin_expire_notify
             , _("0 = system default expiration time"));
-    g_object_set (apptw->Display_spin_expire_notify, "margin-left", 20,
-                                                     "margin-right", 10,
+    g_object_set (apptw->Display_spin_expire_notify, "margin-start", 20,
+                                                     "margin-end", 10,
                                                      NULL);
     gtk_grid_attach_next_to (GTK_GRID (apptw->Display_hbox_notify),
                              apptw->Display_spin_expire_notify, NULL,
@@ -4079,9 +4078,10 @@ static void build_alarm_page (OrageAppointmentWindow *apptw)
                              GTK_POS_RIGHT, 1, 1);
 
     apptw->Proc_entry = gtk_entry_new();
-    g_object_set (apptw->Proc_entry, "margin-left", 10,
+    g_object_set (apptw->Proc_entry, "margin-start", 10,
                                      "halign", GTK_ALIGN_FILL,
-                                     "hexpand", TRUE, NULL);
+                                     "hexpand", TRUE,
+                                     NULL);
     gtk_widget_set_tooltip_text(apptw->Proc_entry
             , _("You must enter all escape etc characters yourself.\nThis string is just given to shell to process.\nThe following special commands are replaced at run time:\n\t<&T>  appointment title\n\t<&D>  appointment description\n\t<&AT> alarm time\n\t<&ST> appointment start time\n\t<&ET> appointment end time"));
     gtk_grid_attach_next_to (GTK_GRID (apptw->Proc_hbox),
@@ -4118,9 +4118,10 @@ static void build_alarm_page (OrageAppointmentWindow *apptw)
 
     apptw->Default_savebutton = orage_util_image_button ("document-save",
                                                          _("_Save"));
-    g_object_set (apptw->Default_savebutton, "margin-left", 6,
+    g_object_set (apptw->Default_savebutton, "margin-start", 6,
                                              "halign", GTK_ALIGN_FILL,
-                                             "hexpand", TRUE, NULL);
+                                             "hexpand", TRUE,
+                                             NULL);
     gtk_grid_attach_next_to (GTK_GRID (apptw->Default_hbox),
                              apptw->Default_savebutton, NULL,
                              GTK_POS_RIGHT, 1, 1);
@@ -4128,9 +4129,10 @@ static void build_alarm_page (OrageAppointmentWindow *apptw)
             , _("Store current settings as default alarm"));
     apptw->Default_readbutton = orage_util_image_button ("document-revert",
                                                          _("_Revert"));
-    g_object_set (apptw->Default_readbutton, "margin-left", 6,
+    g_object_set (apptw->Default_readbutton, "margin-start", 6,
                                              "halign", GTK_ALIGN_FILL,
-                                             "hexpand", TRUE, NULL);
+                                             "hexpand", TRUE,
+                                             NULL);
     gtk_grid_attach_next_to (GTK_GRID (apptw->Default_hbox),
                              apptw->Default_readbutton, NULL,
                              GTK_POS_RIGHT, 1, 1);
@@ -4307,8 +4309,8 @@ static void build_recurrence_page (OrageAppointmentWindow *apptw)
     apptw->Recur_exception_type_vbox = gtk_grid_new ();
     g_object_set (apptw->Recur_exception_type_vbox, "hexpand", TRUE,
                                                     "halign", GTK_ALIGN_FILL,
-                                                    "margin-left", 5,
-                                                    "margin-right", 15,
+                                                    "margin-start", 5,
+                                                    "margin-end", 15,
                                                     NULL);
     gtk_grid_attach_next_to (GTK_GRID (apptw->Recur_exception_hbox),
                              apptw->Recur_exception_type_vbox, NULL,

@@ -481,7 +481,7 @@ static GtkWidget *orage_hfiller_new (const gint width)
 {
     GtkWidget *label = gtk_label_new ("");
 
-    g_object_set (label, "margin-right", width, NULL);
+    g_object_set (label, "margin-end", width, NULL);
 
     return label;
 }
@@ -571,8 +571,9 @@ GtkWidget *orage_create_framebox_with_content (const gchar *title,
         tmp = g_strdup_printf("<b>%s</b>", title);
         label = gtk_label_new(tmp);
         gtk_label_set_use_markup(GTK_LABEL(label), TRUE);
-        g_object_set (label, "xalign", 0.0, "yalign", 0.5,
-                             "margin-left", 5,
+        g_object_set (label, "xalign", 0.0,
+                             "yalign", 0.5,
+                             "margin-start", 5,
                              NULL);
         gtk_widget_show(label);
         gtk_frame_set_label_widget(GTK_FRAME(framebox), label);
@@ -581,8 +582,8 @@ GtkWidget *orage_create_framebox_with_content (const gchar *title,
 
     g_object_set (content, "margin-top", 5,
                            "margin-bottom", 5,
-                           "margin-left", 21,
-                           "margin-right", 5,
+                           "margin-start", 21,
+                           "margin-end", 5,
                            NULL);
     gtk_container_add (GTK_CONTAINER (framebox), content);
 
