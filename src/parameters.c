@@ -483,7 +483,7 @@ static gboolean check_wakeup(gpointer user_data)
             orage_day_change(&tt_prev);
         }
         else {
-            g_message ("wakeup timer init %" PRIiMAX, (intmax_t)tt_prev);
+            g_debug ("wakeup timer init %" PRIiMAX, (intmax_t)tt_prev);
         }
     }
     tt_prev = tt_new;
