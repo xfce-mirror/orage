@@ -668,7 +668,10 @@ static void on_clicked_refresh_cb (G_GNUC_UNUSED GtkButton *b,
 
 static void create_parameter_dialog_main_setup_tab(Itf *dialog)
 {
-    GtkWidget *hbox, *vbox, *label;
+    GtkWidget *hbox, *vbox;
+#ifdef HAVE_ARCHIVE
+    GtkWidget *label;
+#endif
 
     dialog->setup_vbox = gtk_grid_new ();
     dialog->setup_tab = orage_create_framebox_with_content (
