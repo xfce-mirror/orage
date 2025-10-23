@@ -1923,16 +1923,16 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
         /* these are in icalderivedproperty.h */
         switch (icalproperty_isa(p)) {
             case ICAL_SUMMARY_PROPERTY:
-                appt->title = (char *)icalproperty_get_summary(p);
+                appt->title = (gchar *)icalproperty_get_summary (p);
                 break;
             case ICAL_LOCATION_PROPERTY:
-                appt->location = (char *)icalproperty_get_location(p);
+                appt->location = (gchar *)icalproperty_get_location (p);
                 break;
             case ICAL_DESCRIPTION_PROPERTY:
-                appt->note = (char *)icalproperty_get_description(p);
+                appt->note = (gchar *)icalproperty_get_description (p);
                 break;
             case ICAL_UID_PROPERTY:
-                appt->uid = (char *)icalproperty_get_uid(p);
+                appt->uid = (gchar *)icalproperty_get_uid (p);
                 break;
             case ICAL_TRANSP_PROPERTY:
                 xf_transp = icalproperty_get_transp(p);
