@@ -996,7 +996,10 @@ static void delete_appointment(el_win *el)
     GtkTreeIter       iter;
     GList *list;
     gint  list_len, i;
-    gchar *uid = NULL, *flags = NULL;
+    gchar *uid = NULL;
+#ifdef HAVE_ARCHIVE
+    gchar *flags = NULL;
+#endif
 
     result = orage_warning_dialog(GTK_WINDOW(el->Window)
             , _("You will permanently remove all\nselected appointments.")
