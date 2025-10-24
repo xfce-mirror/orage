@@ -2922,10 +2922,6 @@ static void xfical_alarm_build_list_internal_real(gboolean first_list_today
         }  /* ALARM */
         if (trg_active) {
             alarm_add(new_alarm);
-            /*
-            g_message ("new alarm: alarm:%s action:%s title:%s\n"
-            , new_alarm->alarm_time, new_alarm->action_time, new_alarm->title);
-            */
             cnt_alarm_add++;
         }
     }  /* COMPONENT */
