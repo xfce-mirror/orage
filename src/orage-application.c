@@ -40,6 +40,10 @@
 #include <gtk/gtk.h>
 #include <libxfce4ui/libxfce4ui.h>
 
+#ifdef HAVE_NOTIFY
+#include <libnotify/notify.h>
+#endif
+
 #ifdef ENABLE_SYNC
 #include "orage-sync-ext-command.h"
 #include "orage-task-runner.h"
@@ -152,27 +156,36 @@ static void resuming_handler_register (OrageApplication *self)
 
 static void print_version (void)
 {
-    g_print (_("\tThis is %s version %s\n\n"), PACKAGE, VERSION_FULL);
-    g_print (_("\tReleased under the terms of the GNU General Public License.\n"));
-    g_print (_("\tCompiled against GTK+-%d.%d.%d, ")
-            , GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION);
-    g_print (_("using GTK+-%d.%d.%d.\n")
-            , gtk_major_version, gtk_minor_version, gtk_micro_version);
+    g_print ("%s %s\n\n", PACKAGE, VERSION_FULL);
+    g_print (_("Released under the terms of the GNU General Public License."));
+    g_print ("\n\n");
+    g_print (_("Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."),
+             GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION,
+             gtk_major_version, gtk_minor_version, gtk_micro_version);
+    g_print ("\n");
 
-    g_print (_("\tCompiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d.\n"),
+    g_print (_("Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."),
              LIBXFCE4UI_MAJOR_VERSION, LIBXFCE4UI_MINOR_VERSION, LIBXFCE4UI_MICRO_VERSION,
              libxfce4ui_major_version, libxfce4ui_minor_version, libxfce4ui_micro_version);
+    g_print ("\n");
 
 #ifdef HAVE_NOTIFY
-    g_print (_("\tUsing libnotify.\n"));
+    g_print (_("Compiled against libnotify-%d.%d.%d."),
+             NOTIFY_VERSION_MAJOR, NOTIFY_VERSION_MINOR, NOTIFY_VERSION_MICRO);
 #else
-    g_print (_("\tNot using libnotify.\n"));
+    g_print (_("Not using libnotify."));
 #endif
+    g_print ("\n");
+
 #ifdef HAVE_ARCHIVE
-    g_print (_("\tUsing automatic archiving.\n"));
+    g_print (_("Using automatic archiving."));
 #else
-    g_print (_("\tNot using archiving.\n"));
+    g_print (_("Not using archiving."));
 #endif
+
+    g_print ("\n\n");
+    g_print (_("Please report bugs to <%s>."), PACKAGE_BUGREPORT);
+    g_print ("\n");
 }
 
 #ifdef ENABLE_SYNC
