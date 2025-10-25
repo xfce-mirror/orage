@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2025-10-17 00:53+0200\n"
+"POT-Creation-Date: 2025-10-25 12:59+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>, 2025\n"
 "Language-Team: Albanian (https://app.transifex.com/xfce/teams/16840/sq/)\n"
@@ -27,7 +27,7 @@ msgstr ""
 msgid "All day"
 msgstr "Tërë ditën"
 
-#: src/event-list.c:607 src/event-list.c:1428
+#: src/event-list.c:607 src/event-list.c:1431
 msgid "Time"
 msgstr "Kohë"
 
@@ -40,7 +40,7 @@ msgid "Click a row to select it and after that you can copy it."
 msgstr ""
 "Klikoni mbi një rresht për ta përzgjedhur dhe pas kësaj mund ta kopjoni."
 
-#: src/event-list.c:1002
+#: src/event-list.c:1005
 msgid ""
 "You will permanently remove all\n"
 "selected appointments."
@@ -48,29 +48,29 @@ msgstr ""
 "Do të hiqni përgjithmonë tërë\n"
 "takimet e përzgjedhura."
 
-#: src/event-list.c:1003 src/orage-appointment-window.c:981
+#: src/event-list.c:1006 src/orage-appointment-window.c:981
 #: src/orage-appointment-window.c:1645 src/parameters.c:647
 msgid "Do you want to continue?"
 msgstr "Doni të vazhdohet?"
 
-#: src/event-list.c:1004 src/orage-appointment-window.c:1646
+#: src/event-list.c:1007 src/orage-appointment-window.c:1646
 #: src/parameters.c:648
 msgid "No, cancel the removal"
 msgstr "Jo, anuloje heqjen"
 
-#: src/event-list.c:1005
+#: src/event-list.c:1008
 msgid "Yes, remove them"
 msgstr "Po, hiqi"
 
-#: src/event-list.c:1065 src/orage-appointment-window.c:1743
+#: src/event-list.c:1068 src/orage-appointment-window.c:1743
 #: src/orage-appointment-window.c:1758 src/orage-month-view.c:175
-#: src/orage-week-window.c:528
+#: src/orage-week-window.c:529
 msgid "Pick the date"
 msgstr "Zgjidhni një datë"
 
-#: src/event-list.c:1067 src/event-list.c:1221
+#: src/event-list.c:1070 src/event-list.c:1224
 #: src/orage-appointment-window.c:1745 src/orage-appointment-window.c:1760
-#: src/orage-week-window.c:457 src/orage-week-window.c:530 src/tray_icon.c:383
+#: src/orage-week-window.c:458 src/orage-week-window.c:531 src/tray_icon.c:383
 msgid "Today"
 msgstr "Sot"
 
@@ -79,81 +79,81 @@ msgstr "Sot"
 #. File menu stuff
 #. ********* File menu *********
 #. File menu
-#: src/event-list.c:1122 src/interface.c:859
-#: src/orage-appointment-window.c:2917 src/orage-week-window.c:351
+#: src/event-list.c:1125 src/interface.c:859
+#: src/orage-appointment-window.c:2914 src/orage-week-window.c:352
 #: src/orage-window-classic.c:281 src/orage-window-next.c:130
 msgid "_File"
 msgstr "_Kartelë"
 
-#: src/event-list.c:1128 src/orage-appointment-window.c:2935
+#: src/event-list.c:1131 src/orage-appointment-window.c:2932
 msgid "D_uplicate"
 msgstr "_Përsëdyte"
 
 #. ********* View menu *********
 #. View menu
-#: src/event-list.c:1145 src/orage-week-window.c:361
+#: src/event-list.c:1148 src/orage-week-window.c:362
 #: src/orage-window-classic.c:310 src/orage-window-next.c:142
 msgid "_View"
 msgstr "_Parje"
 
 #. ********* Go menu   *********
-#: src/event-list.c:1164 src/orage-week-window.c:375
+#: src/event-list.c:1167 src/orage-week-window.c:376
 msgid "_Go"
 msgstr "_Shko"
 
-#: src/event-list.c:1210 src/orage-week-window.c:448
+#: src/event-list.c:1213 src/orage-week-window.c:449
 #: src/orage-window-next.c:131
 msgid "New"
 msgstr "E re"
 
-#: src/event-list.c:1212 src/orage-appointment-window.c:3559
+#: src/event-list.c:1215 src/orage-appointment-window.c:3556
 msgid "Duplicate"
 msgstr "Përsëdyte"
 
-#: src/event-list.c:1214 src/orage-appointment-window.c:3564
+#: src/event-list.c:1217 src/orage-appointment-window.c:3561
 msgid "Delete"
 msgstr "Fshije"
 
-#: src/event-list.c:1219
+#: src/event-list.c:1222
 msgid "Back"
 msgstr "Prapa"
 
-#: src/event-list.c:1223
+#: src/event-list.c:1226
 msgid "Forward"
 msgstr "Përpara"
 
-#: src/event-list.c:1228 src/orage-week-window.c:466
+#: src/event-list.c:1231 src/orage-week-window.c:467
 #: src/orage-window-next.c:133
 msgid "Refresh"
 msgstr "Rifreskoje"
 
-#: src/event-list.c:1230
+#: src/event-list.c:1233
 msgid "Find"
 msgstr "Gjej"
 
-#: src/event-list.c:1235 src/interface.c:877 src/orage-week-window.c:471
+#: src/event-list.c:1238 src/interface.c:877 src/orage-week-window.c:472
 #: src/orage-window-next.c:136
 msgid "Close"
 msgstr "Mbylle"
 
-#: src/event-list.c:1237
+#: src/event-list.c:1240
 msgid "Dayview"
 msgstr "Parje dite"
 
-#: src/event-list.c:1267 src/orage-appointment-window.c:3594
+#: src/event-list.c:1270 src/orage-appointment-window.c:3591
 #: src/orage-import.c:64
 msgid "Event"
 msgstr "Veprimtari"
 
-#: src/event-list.c:1272
+#: src/event-list.c:1275
 msgid "Extra days to show:"
 msgstr "Ditë ekstra për shfaqje:"
 
-#: src/event-list.c:1286
+#: src/event-list.c:1289
 msgid "only first repeating"
 msgstr "vetëm përsëritjen e parë"
 
-#: src/event-list.c:1294
+#: src/event-list.c:1297
 msgid ""
 "Check this if you only want to see the first repeating event. By default all are shown.\n"
 "Note that this also shows all urgencies.\n"
@@ -163,11 +163,11 @@ msgstr ""
 "Mbani parasysh që kjo shfaq vetëm urgjencat.\n"
 "Mbani parasysh që veprimtaritë me përsëritje mund të shfaqen më herët te lista, ngaqë shfaqet vetëm përsëritja e parë."
 
-#: src/event-list.c:1299
+#: src/event-list.c:1302
 msgid "also old"
 msgstr "edhe të vjetrat"
 
-#: src/event-list.c:1304
+#: src/event-list.c:1307
 msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed."
@@ -175,38 +175,39 @@ msgstr ""
 "I vini shenjë kësaj, nëse doni të shihni edhe veprimtari të vjetra. Kjo mund të përzgjidhet vetëm pasi të jetë aktivizuar 'vetëm përsëritjen e parë', për të shmangur lista shumë të gjata.\n"
 "Mbani parasysh se përzgjedhja e ditëve ekstra ende përcakton nëse shfaqen takime më të reja."
 
-#: src/event-list.c:1325 src/orage-appointment-window.c:3602
+#: src/event-list.c:1328 src/orage-appointment-window.c:3599
 #: src/orage-import.c:67
 msgid "Todo"
 msgstr "Për T’u Bërë"
 
-#: src/event-list.c:1339 src/orage-appointment-window.c:3610
+#: src/event-list.c:1342 src/orage-appointment-window.c:3607
 #: src/orage-import.c:70
 msgid "Journal"
 msgstr "Ditar"
 
-#: src/event-list.c:1342
+#: src/event-list.c:1345
 msgid "Journal entries starting from:"
 msgstr "Zëra ditari që fillojnë prej:"
 
-#: src/event-list.c:1367
+#: src/event-list.c:1370
 msgid "Search"
 msgstr "Kërko"
 
-#: src/event-list.c:1370
+#: src/event-list.c:1373
 msgid "Search text "
 msgstr "Kërko tekst "
 
-#: src/event-list.c:1436
+#: src/event-list.c:1439
 msgid "Flags"
 msgstr "Flamurka"
 
 #. title
-#: src/event-list.c:1444 src/orage-appointment-window.c:3621
+#: src/event-list.c:1447 src/orage-appointment-window.c:3618
+#: src/orage-window-next.c:880 src/orage-window-next.c:898
 msgid "Title"
 msgstr "Titull"
 
-#: src/event-list.c:1470
+#: src/event-list.c:1473
 msgid ""
 "Double click line to edit it.\n"
 "\n"
@@ -312,15 +313,15 @@ msgstr "Importo"
 msgid "Read from file:"
 msgstr "Lexoji prej kartelës:"
 
-#: src/interface.c:1048 src/interface.c:1094 src/interface.c:1269
-#: src/interface.c:1361 src/interface.c:1444
-#: src/orage-appointment-window.c:3958 src/parameters.c:395
-#: src/parameters.c:760 src/reminder.c:631
+#: src/interface.c:1048 src/interface.c:1094 src/interface.c:1271
+#: src/interface.c:1369 src/interface.c:1458
+#: src/orage-appointment-window.c:3957 src/parameters.c:395
+#: src/parameters.c:764 src/reminder.c:631
 msgid "_Open"
 msgstr "_Hape"
 
-#: src/interface.c:1055 src/interface.c:1101 src/interface.c:1275
-#: src/interface.c:1367 src/orage-appointment-window.c:4120
+#: src/interface.c:1055 src/interface.c:1101 src/interface.c:1278
+#: src/interface.c:1376 src/orage-appointment-window.c:4120
 msgid "_Save"
 msgstr "_Ruaje"
 
@@ -416,23 +417,23 @@ msgstr "Kartela Orage-i"
 msgid "Orage main calendar file"
 msgstr "Kartela kryesore e kalendarit Orage"
 
-#: src/interface.c:1246 src/interface.c:1338
+#: src/interface.c:1246 src/interface.c:1345
 msgid "Current file:"
 msgstr "Kartela e tanishme:"
 
-#: src/interface.c:1258 src/interface.c:1350
+#: src/interface.c:1259 src/interface.c:1358
 msgid "New file:"
 msgstr "Kartela e re:"
 
-#: src/interface.c:1285 src/interface.c:1377
+#: src/interface.c:1289 src/interface.c:1387
 msgid "Action options:"
 msgstr "Mundësi veprimi:"
 
-#: src/interface.c:1289 src/interface.c:1381
+#: src/interface.c:1293 src/interface.c:1391
 msgid "Rename"
 msgstr "Riemërtoje"
 
-#: src/interface.c:1295
+#: src/interface.c:1300
 msgid ""
 "Orage internal file rename only.\n"
 "Does not touch external filesystem at all.\n"
@@ -442,53 +443,53 @@ msgstr ""
 "Nuk prek fare sisteme të jashtëm kartelash.\n"
 "Kartela e re duhet të ekzistojë."
 
-#: src/interface.c:1299 src/interface.c:1388
+#: src/interface.c:1304 src/interface.c:1399
 msgid "Copy"
 msgstr "Kopjoje"
 
-#: src/interface.c:1305
+#: src/interface.c:1311
 msgid "Current file is copied and stays unmodified in the old place."
 msgstr ""
 "Kartela e tanishme kopjohet dhe qëndron e pandryshuar te vendi i vjetër."
 
-#: src/interface.c:1309 src/interface.c:1395
+#: src/interface.c:1315 src/interface.c:1407
 msgid "Move"
 msgstr "Lëvize"
 
-#: src/interface.c:1315
+#: src/interface.c:1322
 msgid "Current file is moved and vanishes from the old place."
 msgstr "Kartela e tanishme lëvizet dhe avullon prej vendit të vjetër."
 
-#: src/interface.c:1329
+#: src/interface.c:1336
 msgid "Archive file"
 msgstr "Kartelë arkivash"
 
-#: src/interface.c:1420
+#: src/interface.c:1433
 msgid "Foreign files"
 msgstr "Kartela të jashtme"
 
-#: src/interface.c:1427
+#: src/interface.c:1440
 msgid "Add new foreign file"
 msgstr "Shto kartelë të jashtme të re"
 
-#: src/interface.c:1435
+#: src/interface.c:1448
 msgid "Foreign file:"
 msgstr "Kartelë e jashtme:"
 
-#: src/interface.c:1451 src/orage-appointment-window.c:2446
-#: src/parameters.c:1384
+#: src/interface.c:1465 src/orage-appointment-window.c:2443
+#: src/parameters.c:1388
 msgid "_Add"
 msgstr "_Shtoje"
 
-#: src/interface.c:1466
+#: src/interface.c:1480
 msgid "Visible name:"
 msgstr "Emër i dukshëm:"
 
-#: src/interface.c:1476
+#: src/interface.c:1490
 msgid "Read only"
 msgstr "Vetëm lexim"
 
-#: src/interface.c:1486
+#: src/interface.c:1500
 msgid ""
 "Set this if you want to make sure that this file is never modified by Orage.\n"
 "Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
@@ -496,12 +497,12 @@ msgstr ""
 "Caktojeni nëse doni të siguroheni që kjo kartelë s’do të ndryshohet kurrë nga Orage-i.\n"
 "Kini parasysh që ndryshimi i kartelave të jashtme mund t'i bëjë ato të papërputhshme me mjetin origjinal, prej andej nga erdhën!"
 
-#: src/interface.c:1488
+#: src/interface.c:1502
 msgid "This internal name is displayed to user instead of file name."
 msgstr ""
 "Përdoruesit i shfaqet ky emër i brendshëm, në vend se emri i kartelës."
 
-#: src/interface.c:1502
+#: src/interface.c:1516
 msgid "Exchange data - Orage"
 msgstr "Shkëmbeni të dhëna - Orage"
 
@@ -519,87 +520,77 @@ msgstr ""
 msgid "translator-credits"
 msgstr "Besnik Bleta"
 
-#: src/orage-application.c:159
-#, c-format
-msgid ""
-"\tThis is %s version %s\n"
-"\n"
-msgstr ""
-"\tKy është %s version %s\n"
-"\n"
-
 #: src/orage-application.c:160
-msgid "\tReleased under the terms of the GNU General Public License.\n"
+msgid "Released under the terms of the GNU General Public License."
 msgstr ""
-"\tHedhur në qarkullim sipas kushteve të licencës GNU General Public "
-"License.\n"
+"Hedhur në qarkullim sipas kushteve të licencës GNU General Public License."
 
-#: src/orage-application.c:161
+#: src/orage-application.c:162
 #, c-format
-msgid "\tCompiled against GTK+-%d.%d.%d, "
-msgstr "\tPërpiluar kundrejt GTK+-%d.%d.%d, "
+msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
+msgstr "Përpiluar kundrejt GTK+-%d.%d.%d, duke përdorur GTK+-%d.%d.%d."
 
-#: src/orage-application.c:163
+#: src/orage-application.c:167
 #, c-format
-msgid "using GTK+-%d.%d.%d.\n"
-msgstr "përdor GTK+-%d.%d.%d.\n"
-
-#: src/orage-application.c:166
-#, c-format
-msgid "\tCompiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d.\n"
+msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
 msgstr ""
-"\tPërpiluar kundrejt libxfce4ui-%d.%d.%d, duke përdorur "
-"libxfce4ui-%d.%d.%d.\n"
-
-#: src/orage-application.c:171
-msgid "\tUsing libnotify.\n"
-msgstr "\tMe përdorim të libnotify-t.\n"
+"Përpiluar kundrejt libxfce4ui-%d.%d.%d, duke përdorur libxfce4ui-%d.%d.%d."
 
 #: src/orage-application.c:173
-msgid "\tNot using libnotify.\n"
-msgstr "\tPa përdorim të libnotify-it.\n"
+#, c-format
+msgid "Compiled against libnotify-%d.%d.%d."
+msgstr "Përpiluar kundrejt libnotify-%d.%d.%d."
 
 #: src/orage-application.c:176
-msgid "\tUsing automatic archiving.\n"
-msgstr "\tMe përdorim arkivimi të automatizuar.\n"
+msgid "Not using libnotify."
+msgstr "Pa përdorur libnotify."
 
-#: src/orage-application.c:178
-msgid "\tNot using archiving.\n"
-msgstr "\tPa përdorur arkivim.\n"
+#: src/orage-application.c:181
+msgid "Using automatic archiving."
+msgstr "Duke përdorur arkivim të automatizuar."
 
-#: src/orage-application.c:668
+#: src/orage-application.c:183
+msgid "Not using archiving."
+msgstr "Pa përdorur arkivim."
+
+#: src/orage-application.c:187
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr "Ju lutemi, të metat njoftojini te <%s>."
+
+#: src/orage-application.c:677
 msgid "Open today's tasks"
 msgstr "Hap punët për sot"
 
-#: src/orage-application.c:677
+#: src/orage-application.c:686
 msgid "Add new appointment"
 msgstr "Shtoni takim të ri"
 
-#: src/orage-application.c:686
+#: src/orage-application.c:695
 msgid "Show preferences form"
 msgstr "Shfaq formular parapëlqimesh"
 
-#: src/orage-application.c:695
+#: src/orage-application.c:704
 msgid "Make Orage visible/unvisible"
 msgstr "Bëje Orage-in të dukshëm/të padukshëm"
 
-#: src/orage-application.c:704
+#: src/orage-application.c:713
 msgid "Add a foreign file"
 msgstr "Shtoni një kartelë të huaj"
 
-#: src/orage-application.c:713
+#: src/orage-application.c:722
 msgid "Remove a foreign file"
 msgstr "Hiqni një kartelë të huaj"
 
-#: src/orage-application.c:722
+#: src/orage-application.c:731
 msgid "Import appointments from file to Orage"
 msgstr "Importoni takime nga kartelë në Orage"
 
-#: src/orage-application.c:731
+#: src/orage-application.c:740
 msgid "Export appointments from Orage to file"
 msgstr "Eksportoni takime nga Orage-i në kartelë"
 
-#: src/orage-application.c:740
+#: src/orage-application.c:749
 msgid "Show version of Orage"
 msgstr "Shfaq version Orage-i"
 
@@ -607,11 +598,11 @@ msgstr "Shfaq version Orage-i"
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
 #. end time
 #: src/orage-appointment-window.c:524 src/orage-appointment-window.c:564
-#: src/orage-appointment-window.c:3655
+#: src/orage-appointment-window.c:3652 src/orage-window-next.c:901
 msgid "End"
 msgstr "Fund"
 
-#: src/orage-appointment-window.c:544
+#: src/orage-appointment-window.c:544 src/orage-window-next.c:883
 msgid "Due"
 msgstr "Afat"
 
@@ -694,189 +685,189 @@ msgstr "Kategori të tanishme"
 msgid "Add new category with color"
 msgstr "Shto kategori të re me ngjyrë"
 
-#: src/orage-appointment-window.c:2430
+#: src/orage-appointment-window.c:2428
 msgid "Category:"
 msgstr "Kategori:"
 
-#: src/orage-appointment-window.c:2474
+#: src/orage-appointment-window.c:2471
 msgid "Colors of categories - Orage"
 msgstr "Ngjyra kategorish - Orage"
 
-#: src/orage-appointment-window.c:2520
+#: src/orage-appointment-window.c:2517
 msgid "*** COPY ***"
 msgstr " *** KOPJOJE ***"
 
-#: src/orage-appointment-window.c:2573 src/orage-appointment-window.c:3871
+#: src/orage-appointment-window.c:2570 src/orage-appointment-window.c:3869
 msgid "Before Start"
 msgstr "Para Fillimit"
 
-#: src/orage-appointment-window.c:2573 src/orage-appointment-window.c:3871
+#: src/orage-appointment-window.c:2570 src/orage-appointment-window.c:3869
 msgid "Before End"
 msgstr "Para Përfundimit"
 
-#: src/orage-appointment-window.c:2573 src/orage-appointment-window.c:3872
+#: src/orage-appointment-window.c:2570 src/orage-appointment-window.c:3870
 msgid "After Start"
 msgstr "Pas Fillimit"
 
-#: src/orage-appointment-window.c:2573 src/orage-appointment-window.c:3872
+#: src/orage-appointment-window.c:2570 src/orage-appointment-window.c:3870
 msgid "After End"
 msgstr "Pas Përfundimit"
 
 #. window title
-#: src/orage-appointment-window.c:2890
+#: src/orage-appointment-window.c:2887
 msgid "New appointment - Orage"
 msgstr "Takim i ri - Orage"
 
-#: src/orage-appointment-window.c:2923
+#: src/orage-appointment-window.c:2920
 msgid "Sav_e and close"
 msgstr "R_uaje dhe mbylle"
 
-#: src/orage-appointment-window.c:3238
+#: src/orage-appointment-window.c:3235
 msgid "first"
 msgstr "i pari"
 
-#: src/orage-appointment-window.c:3238
+#: src/orage-appointment-window.c:3235
 msgid "second"
 msgstr "i dyti"
 
-#: src/orage-appointment-window.c:3238
+#: src/orage-appointment-window.c:3235
 msgid "third"
 msgstr "i treti"
 
-#: src/orage-appointment-window.c:3238
+#: src/orage-appointment-window.c:3235
 msgid "fourth"
 msgstr "i katërti"
 
-#: src/orage-appointment-window.c:3238
+#: src/orage-appointment-window.c:3235
 msgid "last"
 msgstr "i fundit"
 
-#: src/orage-appointment-window.c:3248 src/orage-month-view.c:284
+#: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
 msgid "Monday"
 msgstr "E hënë"
 
-#: src/orage-appointment-window.c:3248 src/orage-month-view.c:284
+#: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
 msgid "Tuesday"
 msgstr "E martë"
 
-#: src/orage-appointment-window.c:3248 src/orage-month-view.c:284
+#: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
 msgid "Wednesday"
 msgstr "E mërkurë"
 
-#: src/orage-appointment-window.c:3248 src/orage-month-view.c:284
+#: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
 msgid "Thursday"
 msgstr "E enjte"
 
-#: src/orage-appointment-window.c:3248 src/orage-month-view.c:284
+#: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
 msgid "Friday"
 msgstr "E premte"
 
-#: src/orage-appointment-window.c:3249 src/orage-month-view.c:285
+#: src/orage-appointment-window.c:3246 src/orage-month-view.c:285
 msgid "Saturday"
 msgstr "E shtunë"
 
-#: src/orage-appointment-window.c:3249 src/orage-month-view.c:285
+#: src/orage-appointment-window.c:3246 src/orage-month-view.c:285
 msgid "Sunday"
 msgstr "E diel"
 
-#: src/orage-appointment-window.c:3262 src/orage-appointment-window.c:3295
-#: src/orage-appointment-window.c:3402 src/orage-appointment-window.c:3436
+#: src/orage-appointment-window.c:3259 src/orage-appointment-window.c:3292
+#: src/orage-appointment-window.c:3399 src/orage-appointment-window.c:3433
 msgid "Every"
 msgstr "Çdo"
 
-#: src/orage-appointment-window.c:3267
+#: src/orage-appointment-window.c:3264
 msgid "day(s)"
 msgstr "ditë()"
 
-#: src/orage-appointment-window.c:3284
+#: src/orage-appointment-window.c:3281
 msgid "Mon"
 msgstr "Hën"
 
-#: src/orage-appointment-window.c:3284
+#: src/orage-appointment-window.c:3281
 msgid "Tue"
 msgstr "Mar"
 
-#: src/orage-appointment-window.c:3284
+#: src/orage-appointment-window.c:3281
 msgid "Wed"
 msgstr "Mër"
 
-#: src/orage-appointment-window.c:3284
+#: src/orage-appointment-window.c:3281
 msgid "Thu"
 msgstr "Enj"
 
-#: src/orage-appointment-window.c:3284
+#: src/orage-appointment-window.c:3281
 msgid "Fri"
 msgstr "Pre"
 
-#: src/orage-appointment-window.c:3284
+#: src/orage-appointment-window.c:3281
 msgid "Sat"
 msgstr "Sht"
 
-#: src/orage-appointment-window.c:3284
+#: src/orage-appointment-window.c:3281
 msgid "Sun"
 msgstr "Die"
 
-#: src/orage-appointment-window.c:3302
+#: src/orage-appointment-window.c:3299
 msgid "week(s) on:"
 msgstr "javë() më:"
 
-#: src/orage-appointment-window.c:3338
+#: src/orage-appointment-window.c:3335
 msgid "From the beginning of the month:"
 msgstr "Nga fillimi i muajit:"
 
-#: src/orage-appointment-window.c:3351
+#: src/orage-appointment-window.c:3348
 msgid "From the end of the month:"
 msgstr "Nga fundi i muajit:"
 
-#: src/orage-appointment-window.c:3364
+#: src/orage-appointment-window.c:3361
 msgid "Every:"
 msgstr "Çdo:"
 
-#: src/orage-appointment-window.c:3392
+#: src/orage-appointment-window.c:3389
 msgid "January"
 msgstr "Janar"
 
-#: src/orage-appointment-window.c:3392
+#: src/orage-appointment-window.c:3389
 msgid "February"
 msgstr "Shkurt"
 
-#: src/orage-appointment-window.c:3392
+#: src/orage-appointment-window.c:3389
 msgid "March"
 msgstr "Mars"
 
-#: src/orage-appointment-window.c:3392
+#: src/orage-appointment-window.c:3389
 msgid "April"
 msgstr "Prill"
 
-#: src/orage-appointment-window.c:3392
+#: src/orage-appointment-window.c:3389
 msgid "May"
 msgstr "Maj"
 
-#: src/orage-appointment-window.c:3393
+#: src/orage-appointment-window.c:3390
 msgid "June"
 msgstr "Qershor"
 
-#: src/orage-appointment-window.c:3393
+#: src/orage-appointment-window.c:3390
 msgid "July"
 msgstr "Korrik"
 
-#: src/orage-appointment-window.c:3393
+#: src/orage-appointment-window.c:3390
 msgid "August"
 msgstr "Gusht"
 
-#: src/orage-appointment-window.c:3393
+#: src/orage-appointment-window.c:3390
 msgid "September"
 msgstr "Shtator"
 
-#: src/orage-appointment-window.c:3393
+#: src/orage-appointment-window.c:3390
 msgid "October"
 msgstr "Tetor"
 
-#: src/orage-appointment-window.c:3394
+#: src/orage-appointment-window.c:3391
 msgid "November"
 msgstr "Nëntor"
 
-#: src/orage-appointment-window.c:3394
+#: src/orage-appointment-window.c:3391
 msgid "December"
 msgstr "Dhjetor"
 
@@ -884,42 +875,43 @@ msgstr "Dhjetor"
 #. * "second Thursday of August". In some languages ​​it is not necessary to
 #. use
 #. * the string "of", it can be replaced with an empty string.
-#: src/orage-appointment-window.c:3410
+#: src/orage-appointment-window.c:3407
 msgid "of"
 msgstr "në"
 
-#: src/orage-appointment-window.c:3441
+#: src/orage-appointment-window.c:3438
 msgid "hour(s)"
 msgstr "orë()"
 
-#: src/orage-appointment-window.c:3477
+#: src/orage-appointment-window.c:3474
 msgid "Repeat forever"
 msgstr "Përsërite përgjithmonë"
 
-#: src/orage-appointment-window.c:3482
+#: src/orage-appointment-window.c:3479
 msgid "Repeat"
 msgstr "Përsëritje"
 
-#: src/orage-appointment-window.c:3490 src/orage-appointment-window.c:3986
+#: src/orage-appointment-window.c:3487 src/orage-appointment-window.c:3985
 msgid "times"
 msgstr "herë"
 
-#: src/orage-appointment-window.c:3496
+#: src/orage-appointment-window.c:3493
 msgid "Repeat until"
 msgstr "Përsërite deri "
 
 #. start time
-#: src/orage-appointment-window.c:3514 src/orage-appointment-window.c:3640
-#: src/orage-week-window.c:884
+#: src/orage-appointment-window.c:3511 src/orage-appointment-window.c:3637
+#: src/orage-week-window.c:888 src/orage-window-next.c:882
+#: src/orage-window-next.c:900
 msgid "Start"
 msgstr "Fillim"
 
 #. completed (only for TODO)
-#: src/orage-appointment-window.c:3519 src/orage-appointment-window.c:3708
+#: src/orage-appointment-window.c:3516 src/orage-appointment-window.c:3705
 msgid "Completed"
 msgstr "E plotësuar"
 
-#: src/orage-appointment-window.c:3522
+#: src/orage-appointment-window.c:3519
 msgid ""
 "TODO reoccurs regularly starting on start time and repeating after each "
 "interval no matter when it was last completed"
@@ -928,7 +920,7 @@ msgstr ""
 "duke u përsëritur pas çdo intervali, pavarësisht se kur qe plotësuar për "
 "herë të fundit"
 
-#: src/orage-appointment-window.c:3524
+#: src/orage-appointment-window.c:3521
 msgid ""
 "TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
@@ -936,36 +928,36 @@ msgstr ""
 "Ripërsëritja e akteve PËR_T’U_BËRË bazohet në kohë plotësimi dhe përsëritet pas intervalit të llogaritur që nga koha e plotësimit të fundit.\n"
 "(Kini parasysh që s’mund të thoni gjë mbi historikun e akteve PËR_T’U_BËRË, ngaqë baza e ripërsëritjes ndryshon pas çdo plotësimi.)"
 
-#: src/orage-appointment-window.c:3550
+#: src/orage-appointment-window.c:3547
 msgid "Save"
 msgstr "Ruaje"
 
-#: src/orage-appointment-window.c:3552
+#: src/orage-appointment-window.c:3549
 msgid "Save and close"
 msgstr "Ruaje dhe mbylle"
 
-#: src/orage-appointment-window.c:3557
+#: src/orage-appointment-window.c:3554
 msgid "Revert"
 msgstr "Riktheje"
 
-#: src/orage-appointment-window.c:3582
+#: src/orage-appointment-window.c:3579
 msgid "Free"
 msgstr "I lirë"
 
-#: src/orage-appointment-window.c:3582
+#: src/orage-appointment-window.c:3579
 msgid "Busy"
 msgstr "I zënë"
 
-#: src/orage-appointment-window.c:3586
+#: src/orage-appointment-window.c:3583
 msgid "General"
 msgstr "Të përgjithshme"
 
 #. type
-#: src/orage-appointment-window.c:3592
+#: src/orage-appointment-window.c:3589
 msgid "Type"
 msgstr "Lloj"
 
-#: src/orage-appointment-window.c:3599
+#: src/orage-appointment-window.c:3596
 msgid ""
 "Event that will happen sometime. For example:\n"
 "Meeting or birthday or TV show."
@@ -973,7 +965,7 @@ msgstr ""
 "Veprimtari që do të ndodhë një ditë. Për shembull:\n"
 "Mbledhje, ose ditëlindje, ose shfaqje në TV."
 
-#: src/orage-appointment-window.c:3607
+#: src/orage-appointment-window.c:3604
 msgid ""
 "Something that you should do sometime. For example:\n"
 "Wash your car or test new version of Orage."
@@ -981,7 +973,7 @@ msgstr ""
 "Diçka që do të duhej ta bënit dikur. Për shembull:\n"
 "Lani makinën ose provoni versionin e ri të Orage-it."
 
-#: src/orage-appointment-window.c:3615
+#: src/orage-appointment-window.c:3612
 msgid ""
 "Make a note that something happened. For example:\n"
 "Remark that your mother called or first snow came."
@@ -990,53 +982,53 @@ msgstr ""
 "Shënoni që ju telefonoi prindi ose ra bora e parë."
 
 #. location
-#: src/orage-appointment-window.c:3627 src/timezone_selection.c:230
-#: src/timezone_selection.c:235
+#: src/orage-appointment-window.c:3624 src/orage-window-next.c:848
+#: src/timezone_selection.c:230 src/timezone_selection.c:235
 msgid "Location"
 msgstr "Vendndodhje"
 
-#: src/orage-appointment-window.c:3635
+#: src/orage-appointment-window.c:3632
 msgid "All day event"
 msgstr "Veprimtari për tërë ditën"
 
-#: src/orage-appointment-window.c:3658
+#: src/orage-appointment-window.c:3655
 msgid "Set"
 msgstr ""
 
-#: src/orage-appointment-window.c:3682
+#: src/orage-appointment-window.c:3679
 msgid "Duration"
 msgstr "Kohëzgjatje"
 
-#: src/orage-appointment-window.c:3686 src/orage-appointment-window.c:3889
+#: src/orage-appointment-window.c:3683 src/orage-appointment-window.c:3887
 #: src/reminder.c:602
 msgid "days"
 msgstr "ditë"
 
-#: src/orage-appointment-window.c:3688 src/orage-appointment-window.c:3891
+#: src/orage-appointment-window.c:3685 src/orage-appointment-window.c:3889
 #: src/reminder.c:604
 msgid "hours"
 msgstr "orë"
 
-#: src/orage-appointment-window.c:3690 src/orage-appointment-window.c:3893
+#: src/orage-appointment-window.c:3687 src/orage-appointment-window.c:3891
 #: src/reminder.c:606
 msgid "mins"
 msgstr "min"
 
 #. Availability (only for EVENT)
-#: src/orage-appointment-window.c:3701
+#: src/orage-appointment-window.c:3698
 msgid "Availability"
 msgstr "Pasje"
 
-#: src/orage-appointment-window.c:3711
+#: src/orage-appointment-window.c:3708 src/orage-window-next.c:884
 msgid "Done"
 msgstr "E kryer"
 
 #. categories
-#: src/orage-appointment-window.c:3735
+#: src/orage-appointment-window.c:3732
 msgid "Categories"
 msgstr "Kategori"
 
-#: src/orage-appointment-window.c:3753
+#: src/orage-appointment-window.c:3751
 msgid ""
 "This is special category, which can be used to color this appointment in "
 "list views."
@@ -1044,20 +1036,20 @@ msgstr ""
 "Kjo është një kategori speciale, e cila mund të përdoret për të ngjyrosur "
 "këtë takim te paraqitjet në formë listash."
 
-#: src/orage-appointment-window.c:3754
+#: src/orage-appointment-window.c:3752
 msgid "_Colour"
 msgstr "_Ngjyrë"
 
-#: src/orage-appointment-window.c:3759
+#: src/orage-appointment-window.c:3757
 msgid "update colors for categories."
 msgstr "përditëso ngjyra për kategoritë."
 
 #. priority
-#: src/orage-appointment-window.c:3765
+#: src/orage-appointment-window.c:3763
 msgid "Priority"
 msgstr "Përparësi"
 
-#: src/orage-appointment-window.c:3769
+#: src/orage-appointment-window.c:3767
 msgid ""
 "If you set this 8 or bigger, the appointment is NOT shown on list windows.\n"
 "You can use that feature to unclutter your list windows, but it makes it more difficult to find this appointment.\n"
@@ -1070,11 +1062,11 @@ msgstr ""
 "(Ky është një parametër i padokumentuar, për t’ju dhënë mundësinë të ndryshoni kufirin parazgjedhje prej 8.)"
 
 #. note
-#: src/orage-appointment-window.c:3777
+#: src/orage-appointment-window.c:3775 src/orage-window-next.c:858
 msgid "Note"
 msgstr "Shënim"
 
-#: src/orage-appointment-window.c:3797
+#: src/orage-appointment-window.c:3795
 msgid ""
 "These shorthand commands take effect immediately:\n"
 "    <D> inserts current date in local date format\n"
@@ -1094,16 +1086,16 @@ msgstr ""
 "    <&Ynnnn> përkthehet në vitin e tanishëm minus nnnn.\n"
 "(Kjo mund të përdoret, për shembull, në kujtues datëlindjesh, për të treguar se sa vjeç do të jetë personi.)"
 
-#: src/orage-appointment-window.c:3880
+#: src/orage-appointment-window.c:3878
 msgid "Alarm"
 msgstr "Alarm"
 
 #. **** ALARM TIME ****
-#: src/orage-appointment-window.c:3886
+#: src/orage-appointment-window.c:3884
 msgid "Alarm time"
 msgstr "Kohë alarmi"
 
-#: src/orage-appointment-window.c:3910
+#: src/orage-appointment-window.c:3908
 msgid ""
 "Often you want to get alarm:\n"
 " 1) before Event start\n"
@@ -1115,11 +1107,11 @@ msgstr ""
 " 2) para përfundimit të një Për-T’u-Bërë\n"
 " 3) pas fillimit të një Për-T’u-Bërë"
 
-#: src/orage-appointment-window.c:3915
+#: src/orage-appointment-window.c:3913
 msgid "Persistent alarm"
 msgstr "Alarm i përhershëm"
 
-#: src/orage-appointment-window.c:3920
+#: src/orage-appointment-window.c:3918
 msgid ""
 "Select this if you want Orage to remind you even if it has not been active "
 "when the alarm happened."
@@ -1127,73 +1119,73 @@ msgstr ""
 "Përzgjidheni nëse doni që Orage t’ju kujtojë edhe nëse s’është aktiv kur "
 "ndodh alarmi."
 
-#: src/orage-appointment-window.c:3929
+#: src/orage-appointment-window.c:3927
 msgid "Sound"
 msgstr "Tingull"
 
-#: src/orage-appointment-window.c:3933 src/orage-appointment-window.c:4074
+#: src/orage-appointment-window.c:3931 src/orage-appointment-window.c:4073
 msgid "Use"
 msgstr "Përdore"
 
-#: src/orage-appointment-window.c:3938
+#: src/orage-appointment-window.c:3936
 msgid "Select this if you want audible alarm"
 msgstr "Përzgjidheni nëse doni alarm të dëgjueshëm"
 
-#: src/orage-appointment-window.c:3943
+#: src/orage-appointment-window.c:3941
 msgid "Sound command is not set"
 msgstr "S’është ujdisur urdhër për zërin"
 
-#: src/orage-appointment-window.c:3971
+#: src/orage-appointment-window.c:3970
 msgid "Repeat alarm sound"
 msgstr "Përsërit tingullin e alarmit"
 
-#: src/orage-appointment-window.c:4002
+#: src/orage-appointment-window.c:4001
 msgid "sec interval"
 msgstr "interval në sekonda"
 
 #. **** Display Alarm ****
-#: src/orage-appointment-window.c:4011
+#: src/orage-appointment-window.c:4010
 msgid "Visual"
 msgstr "Pamore"
 
-#: src/orage-appointment-window.c:4015
+#: src/orage-appointment-window.c:4014
 msgid "Use Orage window"
 msgstr "Përdor dritare Orage-i"
 
-#: src/orage-appointment-window.c:4017
+#: src/orage-appointment-window.c:4016
 msgid "Select this if you want Orage window alarm"
 msgstr "Përzgjidheni nëse doni dritare alarmi Orage"
 
-#: src/orage-appointment-window.c:4029
+#: src/orage-appointment-window.c:4028
 msgid "Use notification"
 msgstr "Përdor njoftim"
 
-#: src/orage-appointment-window.c:4031
+#: src/orage-appointment-window.c:4030
 msgid "Select this if you want notification alarm"
 msgstr "Përzgjidheni nëse doni alarm njoftimi"
 
-#: src/orage-appointment-window.c:4039
+#: src/orage-appointment-window.c:4038
 msgid "Set timeout"
 msgstr "Caktoni skadimin"
 
-#: src/orage-appointment-window.c:4041
+#: src/orage-appointment-window.c:4040
 msgid "Select this if you want notification to expire automatically"
 msgstr "Përzgjidheni nëse doni që njoftimi të skadojë vetvetiu"
 
-#: src/orage-appointment-window.c:4052
+#: src/orage-appointment-window.c:4051
 msgid "0 = system default expiration time"
 msgstr "0 = kohës skadimi parazgjedhje e sistemit"
 
-#: src/orage-appointment-window.c:4060
+#: src/orage-appointment-window.c:4059
 msgid "seconds"
 msgstr "sekonda"
 
 #. **** Procedure Alarm ****
-#: src/orage-appointment-window.c:4070
+#: src/orage-appointment-window.c:4069
 msgid "Procedure"
 msgstr "Procedurë"
 
-#: src/orage-appointment-window.c:4076
+#: src/orage-appointment-window.c:4075
 msgid "Select this if you want procedure or script alarm"
 msgstr "Përzgjidheni nëse doni alarm procedure ose programthi"
 
@@ -1225,67 +1217,67 @@ msgstr "Provojeni këtë alarm duke e vënë në punë tani"
 msgid "<b>Default alarm</b>"
 msgstr "<b>Alarm parazgjedhje</b>"
 
-#: src/orage-appointment-window.c:4128
+#: src/orage-appointment-window.c:4129
 msgid "Store current settings as default alarm"
 msgstr "Depozitoji rregullimet e tanishme si alarm parazgjedhje"
 
-#: src/orage-appointment-window.c:4130
+#: src/orage-appointment-window.c:4131
 msgid "_Revert"
 msgstr "_Prapaktheje"
 
-#: src/orage-appointment-window.c:4138
+#: src/orage-appointment-window.c:4140
 msgid "Set current settings from default alarm"
 msgstr "Caktoji rregullimet e tanishme nga alarm parazgjedhje"
 
-#: src/orage-appointment-window.c:4203
+#: src/orage-appointment-window.c:4205
 msgid "None"
 msgstr "Asnjë"
 
-#: src/orage-appointment-window.c:4203
+#: src/orage-appointment-window.c:4205
 msgid "Daily"
 msgstr "Ditore"
 
-#: src/orage-appointment-window.c:4203
+#: src/orage-appointment-window.c:4205
 msgid "Weekly"
 msgstr "Javore"
 
-#: src/orage-appointment-window.c:4204
+#: src/orage-appointment-window.c:4206
 msgid "Monthly"
 msgstr "Mujore"
 
-#: src/orage-appointment-window.c:4204
+#: src/orage-appointment-window.c:4206
 msgid "Yearly"
 msgstr "Vjetore"
 
-#: src/orage-appointment-window.c:4204
+#: src/orage-appointment-window.c:4206
 msgid "Hourly"
 msgstr "Një herë në orë"
 
-#: src/orage-appointment-window.c:4219
+#: src/orage-appointment-window.c:4221
 msgid "Recurrence"
 msgstr "Përsëritje"
 
 #. ****************************** Frequency *******************************
-#: src/orage-appointment-window.c:4226
+#: src/orage-appointment-window.c:4228
 msgid "Frequency"
 msgstr "Shpeshti"
 
 #. ****************************** Limit ***********************************
-#: src/orage-appointment-window.c:4267
+#: src/orage-appointment-window.c:4269
 msgid "Limit"
 msgstr "Kufi"
 
 #. ****************************** TODO base (only for TODOs) **************
-#: src/orage-appointment-window.c:4273
+#: src/orage-appointment-window.c:4275
 msgid "TODO base"
 msgstr "Bazë PËR_TU_BËRË-ash"
 
 #. exceptions
-#: src/orage-appointment-window.c:4280
+#: src/orage-appointment-window.c:4282
 msgid "Exceptions"
 msgstr "Përjashtime"
 
-#: src/orage-appointment-window.c:4306
+#: src/orage-appointment-window.c:4308
 msgid ""
 "Add more exception dates by clicking the calendar days below.\n"
 "Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
@@ -1295,20 +1287,20 @@ msgstr ""
 "Përjashtim ose është përjashtim(-), ose përfshirje(+), varet nga përzgjedhja.\n"
 "Hiqeni duke klikuar mbi datën."
 
-#: src/orage-appointment-window.c:4317
+#: src/orage-appointment-window.c:4319
 msgid "Add excluded date (-)"
 msgstr "Shtoni datë të përjashtuar date (-)"
 
-#: src/orage-appointment-window.c:4319
+#: src/orage-appointment-window.c:4321
 msgid "Excluded days are full days where this appointment is not happening"
 msgstr ""
 "Ditët e përjashtuara janë ditë të plota gjatë të cilave nuk ndodhin takime"
 
-#: src/orage-appointment-window.c:4326
+#: src/orage-appointment-window.c:4328
 msgid "Add included time (+)"
 msgstr "Shtoni kohë të përfshirë (+)"
 
-#: src/orage-appointment-window.c:4328
+#: src/orage-appointment-window.c:4330
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time"
@@ -1317,7 +1309,7 @@ msgstr ""
 "të kenë kohë tjetër"
 
 #. calendars showing the action days
-#: src/orage-appointment-window.c:4347
+#: src/orage-appointment-window.c:4349
 msgid "Action dates"
 msgstr "Data veprimi"
 
@@ -1382,7 +1374,7 @@ msgid "%B %Y"
 msgstr "%B %Y"
 
 #. Setup title row.
-#: src/orage-month-view.c:485 src/orage-window-next.c:1090
+#: src/orage-month-view.c:485 src/orage-window-next.c:1106
 msgid "Week"
 msgstr "Javë"
 
@@ -1414,7 +1406,7 @@ msgstr "Urdhër për njëkohësim"
 msgid "Synchronization period in minutes"
 msgstr "Periudhë njëkohësimi, në minuta"
 
-#: src/orage-sync-edit-dialog.c:166 src/parameters.c:1427 src/reminder.c:638
+#: src/orage-sync-edit-dialog.c:166 src/parameters.c:1431 src/reminder.c:638
 msgid "_Close"
 msgstr "_Mbylle"
 
@@ -1423,37 +1415,33 @@ msgstr "_Mbylle"
 #. * first day of the week, and so on.
 #: src/orage-time-utils.c:264
 msgid "calendar:week_start:0"
-msgstr ""
+msgstr "calendar:week_start:1"
 
-#: src/orage-week-window.c:453
+#: src/orage-week-window.c:454
 msgid "Back one week"
 msgstr "Mbrapsht një javë"
 
-#: src/orage-week-window.c:455
+#: src/orage-week-window.c:456
 msgid "Back one day"
 msgstr "Mbrapsht një ditë"
 
-#: src/orage-week-window.c:459
+#: src/orage-week-window.c:460
 msgid "Forward one day"
 msgstr "Përpara një ditë"
 
-#: src/orage-week-window.c:461
+#: src/orage-week-window.c:462
 msgid "Forward one week"
 msgstr "Përpara një javë"
 
-#: src/orage-week-window.c:530
-msgid "_OK"
-msgstr "_OK"
-
-#: src/orage-week-window.c:657
+#: src/orage-week-window.c:658
 msgid "Unknown"
 msgstr "E panjohur"
 
-#: src/orage-week-window.c:892
+#: src/orage-week-window.c:896
 msgid "Number of days to show"
 msgstr "Numër ditësh për shfaqje"
 
-#: src/orage-week-window.c:1208
+#: src/orage-week-window.c:1212
 msgid "Orage - day view"
 msgstr "Orage - pamje ditësh"
 
@@ -1481,7 +1469,7 @@ msgstr "Përzgjidhni _Sot"
 #. Help menu
 #. the rest
 #: src/orage-window-classic.c:324 src/orage-window-next.c:147
-#: src/orage-window-next.c:148 src/parameters.c:1424
+#: src/orage-window-next.c:148 src/parameters.c:1428
 msgid "_Help"
 msgstr "_Ndihmë"
 
@@ -1490,12 +1478,12 @@ msgstr "_Ndihmë"
 msgid "No title defined"
 msgstr "S’është përcaktuar titull"
 
-#: src/orage-window-classic.c:452 src/orage-window-next.c:847
+#: src/orage-window-classic.c:453
 #, c-format
 msgid " Location: %s\n"
 msgstr " Vendndodhje: %s\n"
 
-#: src/orage-window-classic.c:465 src/orage-window-next.c:858
+#: src/orage-window-classic.c:466
 #, c-format
 msgid ""
 "\n"
@@ -1506,11 +1494,11 @@ msgstr ""
 " Shënim:\n"
 "%s"
 
-#: src/orage-window-classic.c:475 src/orage-window-next.c:866
+#: src/orage-window-classic.c:476 src/orage-window-next.c:866
 msgid "Never"
 msgstr "Kurrë"
 
-#: src/orage-window-classic.c:482 src/orage-window-next.c:875
+#: src/orage-window-classic.c:483
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1523,7 +1511,7 @@ msgstr ""
 " Afat:\t%s\n"
 " Përfundon më:\t%s%s"
 
-#: src/orage-window-classic.c:490 src/orage-window-next.c:884
+#: src/orage-window-classic.c:491
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1534,16 +1522,16 @@ msgstr ""
 "%s Fillon më:\t%s\n"
 " Përfundon më:\t%s%s"
 
-#: src/orage-window-classic.c:569
+#: src/orage-window-classic.c:570
 msgid "<b>To do:</b>"
 msgstr "<b>Për t’u bërë:</b>"
 
-#: src/orage-window-classic.c:606
+#: src/orage-window-classic.c:607
 #, c-format
 msgid "<b>Events for %s:</b>"
 msgstr "<b>Veprimtari për %s:</b>"
 
-#: src/orage-window-classic.c:617
+#: src/orage-window-classic.c:618
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>Veprimtari për %s - %s:</b>"
@@ -1618,23 +1606,23 @@ msgstr "Akte për %s - %s:"
 msgid "To do:"
 msgstr "Për t’u bërë:"
 
-#: src/orage-window-next.c:1054
+#: src/orage-window-next.c:1070
 msgid "Previous"
 msgstr "I mëparshmi"
 
-#: src/orage-window-next.c:1074
+#: src/orage-window-next.c:1090
 msgid "Next"
 msgstr "Pasuesi"
 
-#: src/orage-window-next.c:1088
+#: src/orage-window-next.c:1104
 msgid "Day"
 msgstr "Ditë"
 
-#: src/orage-window-next.c:1093
+#: src/orage-window-next.c:1109
 msgid "Month"
 msgstr "Muaj"
 
-#: src/orage-window-next.c:1096
+#: src/orage-window-next.c:1112
 msgid "Year"
 msgstr "Vit"
 
@@ -1646,169 +1634,169 @@ msgstr "Hiqe aktin e përzgjedhur të njëkohësimit."
 msgid "Yes, remove"
 msgstr "Po, hiqe"
 
-#: src/parameters.c:682
+#: src/parameters.c:685
 msgid "Main settings"
 msgstr "Rregullimet kryesore"
 
-#: src/parameters.c:688
+#: src/parameters.c:691
 msgid "Timezone"
 msgstr "Zonë kohore"
 
-#: src/parameters.c:709
+#: src/parameters.c:713
 msgid "You should always define your local timezone."
 msgstr "Duhet të përcaktoni gjithmonë zonën tuaj kohore."
 
-#: src/parameters.c:717
+#: src/parameters.c:721
 msgid "Archive threshold (months)"
 msgstr "Prag arkivi (muaj)"
 
-#: src/parameters.c:730
+#: src/parameters.c:734
 msgid "(0 = no archiving)"
 msgstr "(0 = pa arkivim)"
 
-#: src/parameters.c:734
+#: src/parameters.c:738
 msgid "Archiving is used to save time and space when handling events."
 msgstr ""
 "Arkivimi përdoret për të kursyer kohë dhe hapësirë gjatë trajtimit të "
 "veprimtarive."
 
-#: src/parameters.c:742
+#: src/parameters.c:746
 msgid "Sound command"
 msgstr "Urdhër tingulli"
 
-#: src/parameters.c:770
+#: src/parameters.c:774
 msgid "This command is given to shell to make sound in alarms."
 msgstr "Ky urdhër i kalohet shellit për të prodhuar tingull gjatë alarmesh."
 
-#: src/parameters.c:801
+#: src/parameters.c:805
 msgid "Calendar window"
 msgstr "Dritare kalendari"
 
-#: src/parameters.c:808
+#: src/parameters.c:812
 msgid "Calendar visual details"
 msgstr "Hollësi pamore kalendari"
 
-#: src/parameters.c:815
+#: src/parameters.c:819
 msgid "Use new user interface"
 msgstr "Përdor ndërfaqe të re përdoruesi"
 
-#: src/parameters.c:817
+#: src/parameters.c:821
 msgid "Enable the new interface layout (requires restart)"
 msgstr "Aktivizoni skemën e re të ndërfaqes (lyp rinisje)"
 
-#: src/parameters.c:822
+#: src/parameters.c:826
 msgid "Show borders"
 msgstr "Shfaq anë"
 
-#: src/parameters.c:831
+#: src/parameters.c:835
 msgid "Show menu"
 msgstr "Shfaq menu"
 
-#: src/parameters.c:836
+#: src/parameters.c:840
 msgid "Show day names"
 msgstr "Shfaq emra ditësh"
 
-#: src/parameters.c:845
+#: src/parameters.c:849
 msgid "Show week numbers"
 msgstr "Shfaq numra javësh"
 
-#: src/parameters.c:850
+#: src/parameters.c:854
 msgid "Show month and year"
 msgstr "Shfaq vit dhe muaj"
 
-#: src/parameters.c:874
+#: src/parameters.c:878
 msgid "Calendar info boxes"
 msgstr "Kuti të dhënash kalendari"
 
-#: src/parameters.c:881
+#: src/parameters.c:885
 msgid "Show todo list"
 msgstr "Shfaq listë zërash për t’u bërë"
 
-#: src/parameters.c:888
+#: src/parameters.c:892
 msgid "Number of days to show in event window"
 msgstr "Numër ditësh për shfaqje në dritare veprimtarie"
 
-#: src/parameters.c:896
+#: src/parameters.c:900
 msgid "0 = do not show event list at all"
 msgstr "0 = mos shfaq fare listë veprimtarish"
 
-#: src/parameters.c:910
+#: src/parameters.c:914
 msgid "Calendar visibility"
 msgstr "Dukshmëri kalendari"
 
-#: src/parameters.c:916
+#: src/parameters.c:920
 msgid "Show on all desktops"
 msgstr "Shfaqe në krejt desktopët"
 
-#: src/parameters.c:921
+#: src/parameters.c:925
 msgid "Keep on top"
 msgstr "Mbaje përsipër"
 
-#: src/parameters.c:929
+#: src/parameters.c:933
 msgid "Show in taskbar"
 msgstr "Shfaqe në shtyllë veprimesh"
 
-#: src/parameters.c:934
+#: src/parameters.c:938
 msgid "Show in pager"
 msgstr "Shfaqe në faques"
 
-#: src/parameters.c:942
+#: src/parameters.c:946
 msgid "Show in systray"
 msgstr "Shfaqe në shtyllë sistemi"
 
-#: src/parameters.c:970
+#: src/parameters.c:974
 msgid "Calendar start"
 msgstr "Fillim kalendari"
 
-#: src/parameters.c:976
+#: src/parameters.c:980
 msgid "Show"
 msgstr "Shfaqe"
 
-#: src/parameters.c:992
+#: src/parameters.c:996
 msgid "Hide"
 msgstr "Fshihe"
 
-#: src/parameters.c:1009
+#: src/parameters.c:1013
 msgid "Minimized"
 msgstr "Minimizuar"
 
-#: src/parameters.c:1035
+#: src/parameters.c:1039
 msgid "On calendar window open"
 msgstr "Gjatë hapjesh dritareje kalendari"
 
-#: src/parameters.c:1041
+#: src/parameters.c:1045
 msgid "Select today's date"
 msgstr "Përzgjidhni datën e sotme"
 
-#: src/parameters.c:1058
+#: src/parameters.c:1062
 msgid "Select previously selected date"
 msgstr "Përzgjidhni datë të përzgjedhur më parë"
 
-#: src/parameters.c:1082
+#: src/parameters.c:1086
 msgid "Calendar day double click shows"
 msgstr "Dyklikimi mbi ditë kalendari shfaq"
 
-#: src/parameters.c:1088
+#: src/parameters.c:1092
 msgid "Days view"
 msgstr "Parje ditësh"
 
-#: src/parameters.c:1104
+#: src/parameters.c:1108
 msgid "Event list"
 msgstr "Listë veprimtarish"
 
-#: src/parameters.c:1137
+#: src/parameters.c:1141
 msgid "Extra settings"
 msgstr "Rregullime ekstra"
 
-#: src/parameters.c:1144
+#: src/parameters.c:1148
 msgid "Event list window"
 msgstr "Dritare liste veprimtarish"
 
-#: src/parameters.c:1151
+#: src/parameters.c:1155
 msgid "Number of extra days to show in event list"
 msgstr "Numër ditësh ekstra për shfaqje në listë veprimtarish"
 
-#: src/parameters.c:1161
+#: src/parameters.c:1165
 msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
@@ -1816,27 +1804,27 @@ msgstr ""
 "Kjo është thjesht vlera parazgjedhje, mund ta ndryshoni te dritarja faktike "
 "e listës së veprimtarive."
 
-#: src/parameters.c:1169
+#: src/parameters.c:1173
 msgid "Show only first repeating event"
 msgstr "Shfaq vetëm veprimtarinë e përsëritjes së parë"
 
-#: src/parameters.c:1186
+#: src/parameters.c:1190
 msgid "Day view window default first day"
 msgstr "Parazgjedhja për dritare të pamjes së ditëve është dita e parë"
 
-#: src/parameters.c:1193
+#: src/parameters.c:1197
 msgid "First day of week"
 msgstr "Dita e parë e javës"
 
-#: src/parameters.c:1210
+#: src/parameters.c:1214
 msgid "Selected day"
 msgstr "Dita e përzgjedhur"
 
-#: src/parameters.c:1233 src/parameters.c:1240
+#: src/parameters.c:1237 src/parameters.c:1244
 msgid "Use wakeup timer"
 msgstr "Përdor afatmatës zgjimesh"
 
-#: src/parameters.c:1248
+#: src/parameters.c:1252
 msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
@@ -1845,27 +1833,27 @@ msgstr ""
 "pezullimesh apo plogështimesh. (Për shembull, ikona në panelin e sistemit "
 "nuk rifreskohet, ose alarmet nuk bien.)"
 
-#: src/parameters.c:1258
+#: src/parameters.c:1262
 msgid "Foreign file default visual alarm"
 msgstr "Alarm pamor parazgjedhje për kartela të jashtme"
 
-#: src/parameters.c:1265
+#: src/parameters.c:1269
 msgid "Orage window"
 msgstr "Dritare Orage-i"
 
-#: src/parameters.c:1282
+#: src/parameters.c:1286
 msgid "Notify notification"
 msgstr "Shënim njoftimi"
 
-#: src/parameters.c:1305
+#: src/parameters.c:1309
 msgid "Always quit when asked to close"
 msgstr "Dil përherë, kur kërkohet të mbyllet"
 
-#: src/parameters.c:1312
+#: src/parameters.c:1316
 msgid "Always quit"
 msgstr "Dil përherë"
 
-#: src/parameters.c:1319
+#: src/parameters.c:1323
 msgid ""
 "By default Orage stays open in the background when asked to close. This "
 "option changes Orage to quit and never stay in background when it is asked "
@@ -1875,15 +1863,15 @@ msgstr ""
 " e tij. Kjo mundësi e ndryshon këtë sjellje që Orage të mbyllet dhe të mos "
 "qëndrojë kurrë në prapaskenë, kur kërkohet mbyllja e tij."
 
-#: src/parameters.c:1372
+#: src/parameters.c:1376
 msgid "Synchronization settings"
 msgstr "Rregullime njëkohësimi"
 
-#: src/parameters.c:1378
+#: src/parameters.c:1382
 msgid "Synchronization sources"
 msgstr "Burime njëkohësimi"
 
-#: src/parameters.c:1404 org.xfce.orage.desktop.in:26
+#: src/parameters.c:1408 org.xfce.orage.desktop.in:26
 msgid "Orage Preferences"
 msgstr "Parapëlqime për Orage-in"
 
