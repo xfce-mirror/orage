@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2025-10-17 00:53+0200\n"
+"POT-Creation-Date: 2025-10-25 12:59+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Ioannis LM, 2025\n"
 "Language-Team: Greek (https://app.transifex.com/xfce/teams/16840/el/)\n"
@@ -31,7 +31,7 @@ msgstr ""
 msgid "All day"
 msgstr "Ολόκληρη ημέρα"
 
-#: src/event-list.c:607 src/event-list.c:1428
+#: src/event-list.c:607 src/event-list.c:1431
 msgid "Time"
 msgstr "Ώρα"
 
@@ -45,7 +45,7 @@ msgstr ""
 "Κάντε κλικ σε μια γραμμή για να την επιλέξετε και μετά μπορείτε να την "
 "αντιγράψετε."
 
-#: src/event-list.c:1002
+#: src/event-list.c:1005
 msgid ""
 "You will permanently remove all\n"
 "selected appointments."
@@ -53,29 +53,29 @@ msgstr ""
 "Θα αφαιρεθούν όλες οι επιλεγμένες\n"
 "καταχωρήσεις."
 
-#: src/event-list.c:1003 src/orage-appointment-window.c:981
+#: src/event-list.c:1006 src/orage-appointment-window.c:981
 #: src/orage-appointment-window.c:1645 src/parameters.c:647
 msgid "Do you want to continue?"
 msgstr "Θέλετε να συνεχίσετε;"
 
-#: src/event-list.c:1004 src/orage-appointment-window.c:1646
+#: src/event-list.c:1007 src/orage-appointment-window.c:1646
 #: src/parameters.c:648
 msgid "No, cancel the removal"
 msgstr "Όχι, να ακυρωθεί η αφαίρεση"
 
-#: src/event-list.c:1005
+#: src/event-list.c:1008
 msgid "Yes, remove them"
 msgstr "Ναί, να αφαιρεθούν"
 
-#: src/event-list.c:1065 src/orage-appointment-window.c:1743
+#: src/event-list.c:1068 src/orage-appointment-window.c:1743
 #: src/orage-appointment-window.c:1758 src/orage-month-view.c:175
-#: src/orage-week-window.c:528
+#: src/orage-week-window.c:529
 msgid "Pick the date"
 msgstr "Επιλογή ημερομηνίας"
 
-#: src/event-list.c:1067 src/event-list.c:1221
+#: src/event-list.c:1070 src/event-list.c:1224
 #: src/orage-appointment-window.c:1745 src/orage-appointment-window.c:1760
-#: src/orage-week-window.c:457 src/orage-week-window.c:530 src/tray_icon.c:383
+#: src/orage-week-window.c:458 src/orage-week-window.c:531 src/tray_icon.c:383
 msgid "Today"
 msgstr "Σήμερα"
 
@@ -84,81 +84,81 @@ msgstr "Σήμερα"
 #. File menu stuff
 #. ********* File menu *********
 #. File menu
-#: src/event-list.c:1122 src/interface.c:859
-#: src/orage-appointment-window.c:2917 src/orage-week-window.c:351
+#: src/event-list.c:1125 src/interface.c:859
+#: src/orage-appointment-window.c:2914 src/orage-week-window.c:352
 #: src/orage-window-classic.c:281 src/orage-window-next.c:130
 msgid "_File"
 msgstr "_Αρχείο"
 
-#: src/event-list.c:1128 src/orage-appointment-window.c:2935
+#: src/event-list.c:1131 src/orage-appointment-window.c:2932
 msgid "D_uplicate"
 msgstr "Δημιουργία αντι_γράφου"
 
 #. ********* View menu *********
 #. View menu
-#: src/event-list.c:1145 src/orage-week-window.c:361
+#: src/event-list.c:1148 src/orage-week-window.c:362
 #: src/orage-window-classic.c:310 src/orage-window-next.c:142
 msgid "_View"
 msgstr "_Προβολή"
 
 #. ********* Go menu   *********
-#: src/event-list.c:1164 src/orage-week-window.c:375
+#: src/event-list.c:1167 src/orage-week-window.c:376
 msgid "_Go"
 msgstr "_Μετάβαση"
 
-#: src/event-list.c:1210 src/orage-week-window.c:448
+#: src/event-list.c:1213 src/orage-week-window.c:449
 #: src/orage-window-next.c:131
 msgid "New"
 msgstr "Νέο"
 
-#: src/event-list.c:1212 src/orage-appointment-window.c:3559
+#: src/event-list.c:1215 src/orage-appointment-window.c:3556
 msgid "Duplicate"
 msgstr "Αντίγραφο"
 
-#: src/event-list.c:1214 src/orage-appointment-window.c:3564
+#: src/event-list.c:1217 src/orage-appointment-window.c:3561
 msgid "Delete"
 msgstr "Αφαίρεση"
 
-#: src/event-list.c:1219
+#: src/event-list.c:1222
 msgid "Back"
 msgstr "Πίσω"
 
-#: src/event-list.c:1223
+#: src/event-list.c:1226
 msgid "Forward"
 msgstr "Μπροστά"
 
-#: src/event-list.c:1228 src/orage-week-window.c:466
+#: src/event-list.c:1231 src/orage-week-window.c:467
 #: src/orage-window-next.c:133
 msgid "Refresh"
 msgstr "Ανανέωση"
 
-#: src/event-list.c:1230
+#: src/event-list.c:1233
 msgid "Find"
 msgstr "Εύρεση"
 
-#: src/event-list.c:1235 src/interface.c:877 src/orage-week-window.c:471
+#: src/event-list.c:1238 src/interface.c:877 src/orage-week-window.c:472
 #: src/orage-window-next.c:136
 msgid "Close"
 msgstr "Κλείσιμο"
 
-#: src/event-list.c:1237
+#: src/event-list.c:1240
 msgid "Dayview"
 msgstr "Προβολή ημέρας"
 
-#: src/event-list.c:1267 src/orage-appointment-window.c:3594
+#: src/event-list.c:1270 src/orage-appointment-window.c:3591
 #: src/orage-import.c:64
 msgid "Event"
 msgstr "Γεγονός"
 
-#: src/event-list.c:1272
+#: src/event-list.c:1275
 msgid "Extra days to show:"
 msgstr "Πρόσθετες εμφανιζόμενες ημέρες"
 
-#: src/event-list.c:1286
+#: src/event-list.c:1289
 msgid "only first repeating"
 msgstr "μόνο το πρώτο επαναλαμβανόμενο"
 
-#: src/event-list.c:1294
+#: src/event-list.c:1297
 msgid ""
 "Check this if you only want to see the first repeating event. By default all are shown.\n"
 "Note that this also shows all urgencies.\n"
@@ -168,11 +168,11 @@ msgstr ""
 "Σημειώστε ότι αυτό, εμφανίζει επίσης και όλα τα επείγοντα.\n"
 "Και ενδεχομένως, τα επαναλαμβανόμενα γεγονότα να εμφανίζονται νωρίτερα καθώς παρατίθεται μόνο η πρώτη εμφάνιση."
 
-#: src/event-list.c:1299
+#: src/event-list.c:1302
 msgid "also old"
 msgstr "και τα παλιά"
 
-#: src/event-list.c:1304
+#: src/event-list.c:1307
 msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed."
@@ -180,38 +180,39 @@ msgstr ""
 "Επιλέξτε το εάν θέλετε να βλέπετε επίσης και τα παλιά. Αυτό μπορείτε να το επιλέξετε μόνο μετά την ενεργοποίηση του 'μόνο το πρώτο επαναλαμβανόμενο' για την αποφυγή πολύ μεγάλης λίστας.\n"
 "Σημειώστε ότι, η επιλογή επιπλέον ημερών εξακολουθεί να καθορίζει εάν εμφανίζονται στη λίστα οι νεώτερς καταχωρήσεις."
 
-#: src/event-list.c:1325 src/orage-appointment-window.c:3602
+#: src/event-list.c:1328 src/orage-appointment-window.c:3599
 #: src/orage-import.c:67
 msgid "Todo"
 msgstr "Ενέργεια"
 
-#: src/event-list.c:1339 src/orage-appointment-window.c:3610
+#: src/event-list.c:1342 src/orage-appointment-window.c:3607
 #: src/orage-import.c:70
 msgid "Journal"
 msgstr "Σημείωμα"
 
-#: src/event-list.c:1342
+#: src/event-list.c:1345
 msgid "Journal entries starting from:"
 msgstr "Οι καταχωρήσεις σημειωμάτων ξεκινάνε από:"
 
-#: src/event-list.c:1367
+#: src/event-list.c:1370
 msgid "Search"
 msgstr "Αναζήτηση"
 
-#: src/event-list.c:1370
+#: src/event-list.c:1373
 msgid "Search text "
 msgstr "Αναζήτηση κειμένου"
 
-#: src/event-list.c:1436
+#: src/event-list.c:1439
 msgid "Flags"
 msgstr "Διακόπτες"
 
 #. title
-#: src/event-list.c:1444 src/orage-appointment-window.c:3621
+#: src/event-list.c:1447 src/orage-appointment-window.c:3618
+#: src/orage-window-next.c:880 src/orage-window-next.c:898
 msgid "Title"
 msgstr "Τίτλος"
 
-#: src/event-list.c:1470
+#: src/event-list.c:1473
 msgid ""
 "Double click line to edit it.\n"
 "\n"
@@ -317,15 +318,15 @@ msgstr "Εισαγωγή"
 msgid "Read from file:"
 msgstr "Ανάγνωση από αρχείο:"
 
-#: src/interface.c:1048 src/interface.c:1094 src/interface.c:1269
-#: src/interface.c:1361 src/interface.c:1444
-#: src/orage-appointment-window.c:3958 src/parameters.c:395
-#: src/parameters.c:760 src/reminder.c:631
+#: src/interface.c:1048 src/interface.c:1094 src/interface.c:1271
+#: src/interface.c:1369 src/interface.c:1458
+#: src/orage-appointment-window.c:3957 src/parameters.c:395
+#: src/parameters.c:764 src/reminder.c:631
 msgid "_Open"
 msgstr "Άνοι_γμα"
 
-#: src/interface.c:1055 src/interface.c:1101 src/interface.c:1275
-#: src/interface.c:1367 src/orage-appointment-window.c:4120
+#: src/interface.c:1055 src/interface.c:1101 src/interface.c:1278
+#: src/interface.c:1376 src/orage-appointment-window.c:4120
 msgid "_Save"
 msgstr "Απο_θήκευση"
 
@@ -421,23 +422,23 @@ msgstr "Αρχεία Orage"
 msgid "Orage main calendar file"
 msgstr "Βασικό αρχείο ημερολογίου Orage"
 
-#: src/interface.c:1246 src/interface.c:1338
+#: src/interface.c:1246 src/interface.c:1345
 msgid "Current file:"
 msgstr "Τρέχον αρχείο:"
 
-#: src/interface.c:1258 src/interface.c:1350
+#: src/interface.c:1259 src/interface.c:1358
 msgid "New file:"
 msgstr "Νέο αρχείο:"
 
-#: src/interface.c:1285 src/interface.c:1377
+#: src/interface.c:1289 src/interface.c:1387
 msgid "Action options:"
 msgstr "Επιλογές ενέργειας:"
 
-#: src/interface.c:1289 src/interface.c:1381
+#: src/interface.c:1293 src/interface.c:1391
 msgid "Rename"
 msgstr "Μετονομασία"
 
-#: src/interface.c:1295
+#: src/interface.c:1300
 msgid ""
 "Orage internal file rename only.\n"
 "Does not touch external filesystem at all.\n"
@@ -447,53 +448,53 @@ msgstr ""
 "Δεν αφορά το εξωτερικό σύστημα αρχείων.\n"
 "Πρέπει να υπάρχει το νέο αρχείο."
 
-#: src/interface.c:1299 src/interface.c:1388
+#: src/interface.c:1304 src/interface.c:1399
 msgid "Copy"
 msgstr "Αντιγραφή"
 
-#: src/interface.c:1305
+#: src/interface.c:1311
 msgid "Current file is copied and stays unmodified in the old place."
 msgstr ""
 "Το τρέχον αρχείο αντιγράφεται και παραμένει αμετάβλητο στην παλιά του θέση."
 
-#: src/interface.c:1309 src/interface.c:1395
+#: src/interface.c:1315 src/interface.c:1407
 msgid "Move"
 msgstr "Μετακίνηση"
 
-#: src/interface.c:1315
+#: src/interface.c:1322
 msgid "Current file is moved and vanishes from the old place."
 msgstr "Το τρέχον αρχείο μετακινείται και διαγράφεται από την παλιά του θέση."
 
-#: src/interface.c:1329
+#: src/interface.c:1336
 msgid "Archive file"
 msgstr "Όνομα αρχείου"
 
-#: src/interface.c:1420
+#: src/interface.c:1433
 msgid "Foreign files"
 msgstr "Εξωτερικά αρχεία"
 
-#: src/interface.c:1427
+#: src/interface.c:1440
 msgid "Add new foreign file"
 msgstr "Προσθήκη νέου εξωτερικού αρχείου"
 
-#: src/interface.c:1435
+#: src/interface.c:1448
 msgid "Foreign file:"
 msgstr "Εξωτερικό αρχείο"
 
-#: src/interface.c:1451 src/orage-appointment-window.c:2446
-#: src/parameters.c:1384
+#: src/interface.c:1465 src/orage-appointment-window.c:2443
+#: src/parameters.c:1388
 msgid "_Add"
 msgstr "_Προσθήκη"
 
-#: src/interface.c:1466
+#: src/interface.c:1480
 msgid "Visible name:"
 msgstr "Εμφανιζόμενο όνομα:"
 
-#: src/interface.c:1476
+#: src/interface.c:1490
 msgid "Read only"
 msgstr "Μόνο για ανάγνωση"
 
-#: src/interface.c:1486
+#: src/interface.c:1500
 msgid ""
 "Set this if you want to make sure that this file is never modified by Orage.\n"
 "Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
@@ -501,13 +502,13 @@ msgstr ""
 "Επιλέξτε το εάν θέλετε αυτό το αρχείο να μην αλλάξει ποτέ από το Orage.\n"
 "Σημειώστε ότι, η αλλαγή εξωτερικών αρχείων μπορεί να τα καταστήσει ασύμβατα με το αρχικό εργαλείο από το οποίο προήλθαν!"
 
-#: src/interface.c:1488
+#: src/interface.c:1502
 msgid "This internal name is displayed to user instead of file name."
 msgstr ""
 "Αυτό το εσωτερικό όνομα εμφανίζεται στο χρήστη αντί για το όνομα του "
 "αρχείου."
 
-#: src/interface.c:1502
+#: src/interface.c:1516
 msgid "Exchange data - Orage"
 msgstr "Ανταλλαγή δεδομένων - Orage"
 
@@ -529,83 +530,75 @@ msgstr ""
 "Γιώργος Στεφανάκης <nonviotale@gmail.com>, 2013\n"
 "Ιωάννης, 2024"
 
-#: src/orage-application.c:159
-#, c-format
-msgid ""
-"\tThis is %s version %s\n"
-"\n"
-msgstr ""
-"\tΕίναι το %s στην έκδοση %s\n"
-"\n"
-
 #: src/orage-application.c:160
-msgid "\tReleased under the terms of the GNU General Public License.\n"
-msgstr "\tΔιατίθεται σύμφωνα με τους όρους της Γενικής δημόσιας άδειας GNU.\n"
-
-#: src/orage-application.c:161
-#, c-format
-msgid "\tCompiled against GTK+-%d.%d.%d, "
-msgstr "\tΜεταγλώττιση από GTK+-%d.%d.%d, "
-
-#: src/orage-application.c:163
-#, c-format
-msgid "using GTK+-%d.%d.%d.\n"
-msgstr "χρησιμοποιώντας το GTK+-%d.%d.%d.\n"
-
-#: src/orage-application.c:166
-#, c-format
-msgid "\tCompiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d.\n"
+msgid "Released under the terms of the GNU General Public License."
 msgstr ""
 
-#: src/orage-application.c:171
-msgid "\tUsing libnotify.\n"
-msgstr "\tΧρήση του libnotify.\n"
+#: src/orage-application.c:162
+#, c-format
+msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
+msgstr ""
+
+#: src/orage-application.c:167
+#, c-format
+msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
+msgstr ""
 
 #: src/orage-application.c:173
-msgid "\tNot using libnotify.\n"
-msgstr "\tΧωρίς χρήση του libnotify.\n"
+#, c-format
+msgid "Compiled against libnotify-%d.%d.%d."
+msgstr ""
 
 #: src/orage-application.c:176
-msgid "\tUsing automatic archiving.\n"
-msgstr "\tΧρήση αυτόματης αρχειοθέτησης .\n"
+msgid "Not using libnotify."
+msgstr ""
 
-#: src/orage-application.c:178
-msgid "\tNot using archiving.\n"
-msgstr "\tΧωρίς αρχειοθέτηση.\n"
+#: src/orage-application.c:181
+msgid "Using automatic archiving."
+msgstr ""
 
-#: src/orage-application.c:668
+#: src/orage-application.c:183
+msgid "Not using archiving."
+msgstr ""
+
+#: src/orage-application.c:187
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr "Παρακαλούμε αναφέρετε τα σφάλματα στο <%s>."
+
+#: src/orage-application.c:677
 msgid "Open today's tasks"
 msgstr "Άνοιγμα των σημερινών εργασιών"
 
-#: src/orage-application.c:677
+#: src/orage-application.c:686
 msgid "Add new appointment"
 msgstr "Προσθήκη νέας καταχώρισης"
 
-#: src/orage-application.c:686
+#: src/orage-application.c:695
 msgid "Show preferences form"
 msgstr "Εμφάνιση προτιμήσεων"
 
-#: src/orage-application.c:695
+#: src/orage-application.c:704
 msgid "Make Orage visible/unvisible"
 msgstr "Το Orage να είναι ορατό/μή ορατό"
 
-#: src/orage-application.c:704
+#: src/orage-application.c:713
 msgid "Add a foreign file"
 msgstr "Προσθήκη εξωτερικού αρχείου"
 
-#: src/orage-application.c:713
+#: src/orage-application.c:722
 msgid "Remove a foreign file"
 msgstr "Αφαίρεση εξωτερικού αρχείου"
 
-#: src/orage-application.c:722
+#: src/orage-application.c:731
 msgid "Import appointments from file to Orage"
 msgstr "Εισαγωγή καταχωρίσεων από αρχείο στο Orage"
 
-#: src/orage-application.c:731
+#: src/orage-application.c:740
 msgid "Export appointments from Orage to file"
 msgstr "Εξαγωγή καταχωρίσεων από το Orage σε αρχείο"
 
-#: src/orage-application.c:740
+#: src/orage-application.c:749
 msgid "Show version of Orage"
 msgstr "Εμφάνιση έκδοσης του Orage"
 
@@ -613,11 +606,11 @@ msgstr "Εμφάνιση έκδοσης του Orage"
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
 #. end time
 #: src/orage-appointment-window.c:524 src/orage-appointment-window.c:564
-#: src/orage-appointment-window.c:3655
+#: src/orage-appointment-window.c:3652 src/orage-window-next.c:901
 msgid "End"
 msgstr "Τέλος"
 
-#: src/orage-appointment-window.c:544
+#: src/orage-appointment-window.c:544 src/orage-window-next.c:883
 msgid "Due"
 msgstr "Λήξη"
 
@@ -700,189 +693,189 @@ msgstr "Υπάρχουσες κατηγορίες"
 msgid "Add new category with color"
 msgstr "Προσθήκη νέας κατηγορίας με χρώμα"
 
-#: src/orage-appointment-window.c:2430
+#: src/orage-appointment-window.c:2428
 msgid "Category:"
 msgstr "Κατηγορία:"
 
-#: src/orage-appointment-window.c:2474
+#: src/orage-appointment-window.c:2471
 msgid "Colors of categories - Orage"
 msgstr "Χρώματα κατηγοριών - Orage"
 
-#: src/orage-appointment-window.c:2520
+#: src/orage-appointment-window.c:2517
 msgid "*** COPY ***"
 msgstr "*** ΑΝΤΙΓΡΑΦΗ ***"
 
-#: src/orage-appointment-window.c:2573 src/orage-appointment-window.c:3871
+#: src/orage-appointment-window.c:2570 src/orage-appointment-window.c:3869
 msgid "Before Start"
 msgstr "Πριν την εκκίνηση"
 
-#: src/orage-appointment-window.c:2573 src/orage-appointment-window.c:3871
+#: src/orage-appointment-window.c:2570 src/orage-appointment-window.c:3869
 msgid "Before End"
 msgstr "Πριν το τέλος"
 
-#: src/orage-appointment-window.c:2573 src/orage-appointment-window.c:3872
+#: src/orage-appointment-window.c:2570 src/orage-appointment-window.c:3870
 msgid "After Start"
 msgstr "Μετά την εκκίνηση"
 
-#: src/orage-appointment-window.c:2573 src/orage-appointment-window.c:3872
+#: src/orage-appointment-window.c:2570 src/orage-appointment-window.c:3870
 msgid "After End"
 msgstr "Μετά το τέλος"
 
 #. window title
-#: src/orage-appointment-window.c:2890
+#: src/orage-appointment-window.c:2887
 msgid "New appointment - Orage"
 msgstr "Νέα καταχώριση - Orage"
 
-#: src/orage-appointment-window.c:2923
+#: src/orage-appointment-window.c:2920
 msgid "Sav_e and close"
 msgstr "Αποθ_ήκευση και κλείσιμο"
 
-#: src/orage-appointment-window.c:3238
+#: src/orage-appointment-window.c:3235
 msgid "first"
 msgstr "πρώτη"
 
-#: src/orage-appointment-window.c:3238
+#: src/orage-appointment-window.c:3235
 msgid "second"
 msgstr "δεύτερη"
 
-#: src/orage-appointment-window.c:3238
+#: src/orage-appointment-window.c:3235
 msgid "third"
 msgstr "τρίτη"
 
-#: src/orage-appointment-window.c:3238
+#: src/orage-appointment-window.c:3235
 msgid "fourth"
 msgstr "τέταρτη"
 
-#: src/orage-appointment-window.c:3238
+#: src/orage-appointment-window.c:3235
 msgid "last"
 msgstr "τελευταία"
 
-#: src/orage-appointment-window.c:3248 src/orage-month-view.c:284
+#: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
 msgid "Monday"
 msgstr "Δευτέρα"
 
-#: src/orage-appointment-window.c:3248 src/orage-month-view.c:284
+#: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
 msgid "Tuesday"
 msgstr "Τρίτη"
 
-#: src/orage-appointment-window.c:3248 src/orage-month-view.c:284
+#: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
 msgid "Wednesday"
 msgstr "Τετάρτη"
 
-#: src/orage-appointment-window.c:3248 src/orage-month-view.c:284
+#: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
 msgid "Thursday"
 msgstr "Πέμπτη"
 
-#: src/orage-appointment-window.c:3248 src/orage-month-view.c:284
+#: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
 msgid "Friday"
 msgstr "Παρασκευή"
 
-#: src/orage-appointment-window.c:3249 src/orage-month-view.c:285
+#: src/orage-appointment-window.c:3246 src/orage-month-view.c:285
 msgid "Saturday"
 msgstr "Σάββατο"
 
-#: src/orage-appointment-window.c:3249 src/orage-month-view.c:285
+#: src/orage-appointment-window.c:3246 src/orage-month-view.c:285
 msgid "Sunday"
 msgstr "Κυριακή"
 
-#: src/orage-appointment-window.c:3262 src/orage-appointment-window.c:3295
-#: src/orage-appointment-window.c:3402 src/orage-appointment-window.c:3436
+#: src/orage-appointment-window.c:3259 src/orage-appointment-window.c:3292
+#: src/orage-appointment-window.c:3399 src/orage-appointment-window.c:3433
 msgid "Every"
 msgstr "Κάθε"
 
-#: src/orage-appointment-window.c:3267
+#: src/orage-appointment-window.c:3264
 msgid "day(s)"
 msgstr "ημέρα(ες)"
 
-#: src/orage-appointment-window.c:3284
+#: src/orage-appointment-window.c:3281
 msgid "Mon"
 msgstr "Δευ"
 
-#: src/orage-appointment-window.c:3284
+#: src/orage-appointment-window.c:3281
 msgid "Tue"
 msgstr "Τρι"
 
-#: src/orage-appointment-window.c:3284
+#: src/orage-appointment-window.c:3281
 msgid "Wed"
 msgstr "Τετ"
 
-#: src/orage-appointment-window.c:3284
+#: src/orage-appointment-window.c:3281
 msgid "Thu"
 msgstr "Πεμ"
 
-#: src/orage-appointment-window.c:3284
+#: src/orage-appointment-window.c:3281
 msgid "Fri"
 msgstr "Παρ"
 
-#: src/orage-appointment-window.c:3284
+#: src/orage-appointment-window.c:3281
 msgid "Sat"
 msgstr "Σάβ"
 
-#: src/orage-appointment-window.c:3284
+#: src/orage-appointment-window.c:3281
 msgid "Sun"
 msgstr "Κυρ"
 
-#: src/orage-appointment-window.c:3302
+#: src/orage-appointment-window.c:3299
 msgid "week(s) on:"
 msgstr "εβδομάδα(ες):"
 
-#: src/orage-appointment-window.c:3338
+#: src/orage-appointment-window.c:3335
 msgid "From the beginning of the month:"
 msgstr "Από την αρχή του μήνα:"
 
-#: src/orage-appointment-window.c:3351
+#: src/orage-appointment-window.c:3348
 msgid "From the end of the month:"
 msgstr "Από το τέλος του μήνα:"
 
-#: src/orage-appointment-window.c:3364
+#: src/orage-appointment-window.c:3361
 msgid "Every:"
 msgstr "Κάθε:"
 
-#: src/orage-appointment-window.c:3392
+#: src/orage-appointment-window.c:3389
 msgid "January"
 msgstr "Ιανουάριο"
 
-#: src/orage-appointment-window.c:3392
+#: src/orage-appointment-window.c:3389
 msgid "February"
 msgstr "Φεβρουάριο"
 
-#: src/orage-appointment-window.c:3392
+#: src/orage-appointment-window.c:3389
 msgid "March"
 msgstr "Μάρτιο"
 
-#: src/orage-appointment-window.c:3392
+#: src/orage-appointment-window.c:3389
 msgid "April"
 msgstr "Απρίλιο"
 
-#: src/orage-appointment-window.c:3392
+#: src/orage-appointment-window.c:3389
 msgid "May"
 msgstr "Μάιο"
 
-#: src/orage-appointment-window.c:3393
+#: src/orage-appointment-window.c:3390
 msgid "June"
 msgstr "Ιούνιο"
 
-#: src/orage-appointment-window.c:3393
+#: src/orage-appointment-window.c:3390
 msgid "July"
 msgstr "Ιούλιο"
 
-#: src/orage-appointment-window.c:3393
+#: src/orage-appointment-window.c:3390
 msgid "August"
 msgstr "Αύγουστο"
 
-#: src/orage-appointment-window.c:3393
+#: src/orage-appointment-window.c:3390
 msgid "September"
 msgstr "Σεπτέμβριο"
 
-#: src/orage-appointment-window.c:3393
+#: src/orage-appointment-window.c:3390
 msgid "October"
 msgstr "Οκτώβριο"
 
-#: src/orage-appointment-window.c:3394
+#: src/orage-appointment-window.c:3391
 msgid "November"
 msgstr "Μοέμβριο"
 
-#: src/orage-appointment-window.c:3394
+#: src/orage-appointment-window.c:3391
 msgid "December"
 msgstr "Δεκέμβριο"
 
@@ -890,42 +883,43 @@ msgstr "Δεκέμβριο"
 #. * "second Thursday of August". In some languages ​​it is not necessary to
 #. use
 #. * the string "of", it can be replaced with an empty string.
-#: src/orage-appointment-window.c:3410
+#: src/orage-appointment-window.c:3407
 msgid "of"
 msgstr "του"
 
-#: src/orage-appointment-window.c:3441
+#: src/orage-appointment-window.c:3438
 msgid "hour(s)"
 msgstr "ώρα(ες)"
 
-#: src/orage-appointment-window.c:3477
+#: src/orage-appointment-window.c:3474
 msgid "Repeat forever"
 msgstr "Συνέχεια"
 
-#: src/orage-appointment-window.c:3482
+#: src/orage-appointment-window.c:3479
 msgid "Repeat"
 msgstr "Επανάληψη"
 
-#: src/orage-appointment-window.c:3490 src/orage-appointment-window.c:3986
+#: src/orage-appointment-window.c:3487 src/orage-appointment-window.c:3985
 msgid "times"
 msgstr "φορές"
 
-#: src/orage-appointment-window.c:3496
+#: src/orage-appointment-window.c:3493
 msgid "Repeat until"
 msgstr "Επανάληψη μέχρι"
 
 #. start time
-#: src/orage-appointment-window.c:3514 src/orage-appointment-window.c:3640
-#: src/orage-week-window.c:884
+#: src/orage-appointment-window.c:3511 src/orage-appointment-window.c:3637
+#: src/orage-week-window.c:888 src/orage-window-next.c:882
+#: src/orage-window-next.c:900
 msgid "Start"
 msgstr "Έναρξη"
 
 #. completed (only for TODO)
-#: src/orage-appointment-window.c:3519 src/orage-appointment-window.c:3708
+#: src/orage-appointment-window.c:3516 src/orage-appointment-window.c:3705
 msgid "Completed"
 msgstr "Ολοκληρωμένη"
 
-#: src/orage-appointment-window.c:3522
+#: src/orage-appointment-window.c:3519
 msgid ""
 "TODO reoccurs regularly starting on start time and repeating after each "
 "interval no matter when it was last completed"
@@ -934,7 +928,7 @@ msgstr ""
 "επαναλαμβάνεται μετά από κάθε διακοπή, ανεξάρτητα από το πότε ολοκληρώθηκε "
 "τη τελευταία φορά"
 
-#: src/orage-appointment-window.c:3524
+#: src/orage-appointment-window.c:3521
 msgid ""
 "TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
@@ -942,36 +936,36 @@ msgstr ""
 "Η επανάληψη της ενέργειας βασίζεται στον πλήρη χρόνο και επαναλαμβάνεται μετά το χρονικό διάστημα που μετράται από την ολοκλήρωση της τελευταίας φοράς.\n"
 "(Σημειώστε ότι, δεν μπορείτε να γνωρίζετε το ιστορικό της αφού η βάση επανάληψης αλλάζει μετά από κάθε ολοκλήρωση.)"
 
-#: src/orage-appointment-window.c:3550
+#: src/orage-appointment-window.c:3547
 msgid "Save"
 msgstr "Αποθήκευση"
 
-#: src/orage-appointment-window.c:3552
+#: src/orage-appointment-window.c:3549
 msgid "Save and close"
 msgstr "Αποθήκευση και κλείσιμο"
 
-#: src/orage-appointment-window.c:3557
+#: src/orage-appointment-window.c:3554
 msgid "Revert"
 msgstr "Επαναφορά"
 
-#: src/orage-appointment-window.c:3582
+#: src/orage-appointment-window.c:3579
 msgid "Free"
 msgstr "Διαθέσιμος/η"
 
-#: src/orage-appointment-window.c:3582
+#: src/orage-appointment-window.c:3579
 msgid "Busy"
 msgstr "Απασχολημένος/η"
 
-#: src/orage-appointment-window.c:3586
+#: src/orage-appointment-window.c:3583
 msgid "General"
 msgstr "Γενικές"
 
 #. type
-#: src/orage-appointment-window.c:3592
+#: src/orage-appointment-window.c:3589
 msgid "Type"
 msgstr "Τύπος"
 
-#: src/orage-appointment-window.c:3599
+#: src/orage-appointment-window.c:3596
 msgid ""
 "Event that will happen sometime. For example:\n"
 "Meeting or birthday or TV show."
@@ -979,7 +973,7 @@ msgstr ""
 "Ένα γεγονός που θα συμβεί κάποια στιγμή. Για παράδειγμα:\n"
 "Μια συνάντηση ή γενέθλια ή κάποια εκπομπή της τηλεόρασης."
 
-#: src/orage-appointment-window.c:3607
+#: src/orage-appointment-window.c:3604
 msgid ""
 "Something that you should do sometime. For example:\n"
 "Wash your car or test new version of Orage."
@@ -987,7 +981,7 @@ msgstr ""
 "Κάτι που θα πρέπει να κάνετε κάποια στιγμή. Για παράδειγμα:\n"
 "Να πλύνετε το αυτοκίνητό σας ή να δοκιμάστε τη νέα έκδοση του Orage."
 
-#: src/orage-appointment-window.c:3615
+#: src/orage-appointment-window.c:3612
 msgid ""
 "Make a note that something happened. For example:\n"
 "Remark that your mother called or first snow came."
@@ -996,53 +990,53 @@ msgstr ""
 "Σας κάλεσε η μητέρα σας ή χιόνισε για πρώτη φορά."
 
 #. location
-#: src/orage-appointment-window.c:3627 src/timezone_selection.c:230
-#: src/timezone_selection.c:235
+#: src/orage-appointment-window.c:3624 src/orage-window-next.c:848
+#: src/timezone_selection.c:230 src/timezone_selection.c:235
 msgid "Location"
 msgstr "Τοποθεσία"
 
-#: src/orage-appointment-window.c:3635
+#: src/orage-appointment-window.c:3632
 msgid "All day event"
 msgstr "Ολόκληρη ημέρα"
 
-#: src/orage-appointment-window.c:3658
+#: src/orage-appointment-window.c:3655
 msgid "Set"
 msgstr "Ορισμός"
 
-#: src/orage-appointment-window.c:3682
+#: src/orage-appointment-window.c:3679
 msgid "Duration"
 msgstr "Διάρκεια"
 
-#: src/orage-appointment-window.c:3686 src/orage-appointment-window.c:3889
+#: src/orage-appointment-window.c:3683 src/orage-appointment-window.c:3887
 #: src/reminder.c:602
 msgid "days"
 msgstr "ημέρες"
 
-#: src/orage-appointment-window.c:3688 src/orage-appointment-window.c:3891
+#: src/orage-appointment-window.c:3685 src/orage-appointment-window.c:3889
 #: src/reminder.c:604
 msgid "hours"
 msgstr "ώρες"
 
-#: src/orage-appointment-window.c:3690 src/orage-appointment-window.c:3893
+#: src/orage-appointment-window.c:3687 src/orage-appointment-window.c:3891
 #: src/reminder.c:606
 msgid "mins"
 msgstr "λεπτά"
 
 #. Availability (only for EVENT)
-#: src/orage-appointment-window.c:3701
+#: src/orage-appointment-window.c:3698
 msgid "Availability"
 msgstr "Διαθεσιμότητα"
 
-#: src/orage-appointment-window.c:3711
+#: src/orage-appointment-window.c:3708 src/orage-window-next.c:884
 msgid "Done"
 msgstr "Ολοκληρώνεται"
 
 #. categories
-#: src/orage-appointment-window.c:3735
+#: src/orage-appointment-window.c:3732
 msgid "Categories"
 msgstr "Κατηγορίες"
 
-#: src/orage-appointment-window.c:3753
+#: src/orage-appointment-window.c:3751
 msgid ""
 "This is special category, which can be used to color this appointment in "
 "list views."
@@ -1050,20 +1044,20 @@ msgstr ""
 "Πρόκειται για ειδική κατηγορία, η οποία μπορεί να χρησιμοποιηθεί για το "
 "χρωματισμό της καταχώρισης σε προβολές λίστας."
 
-#: src/orage-appointment-window.c:3754
+#: src/orage-appointment-window.c:3752
 msgid "_Colour"
 msgstr "_Χρώμα"
 
-#: src/orage-appointment-window.c:3759
+#: src/orage-appointment-window.c:3757
 msgid "update colors for categories."
 msgstr "χρώματα κατηγοριών."
 
 #. priority
-#: src/orage-appointment-window.c:3765
+#: src/orage-appointment-window.c:3763
 msgid "Priority"
 msgstr "Προτεραιότητα"
 
-#: src/orage-appointment-window.c:3769
+#: src/orage-appointment-window.c:3767
 msgid ""
 "If you set this 8 or bigger, the appointment is NOT shown on list windows.\n"
 "You can use that feature to unclutter your list windows, but it makes it more difficult to find this appointment.\n"
@@ -1076,11 +1070,11 @@ msgstr ""
 "(Δεν υπάρχει κατοχυρωμένη παράμετρος και έτσι μπορείτε να αλλάξετε τη προεπιλογή 8.)"
 
 #. note
-#: src/orage-appointment-window.c:3777
+#: src/orage-appointment-window.c:3775 src/orage-window-next.c:858
 msgid "Note"
 msgstr "Σημείωση"
 
-#: src/orage-appointment-window.c:3797
+#: src/orage-appointment-window.c:3795
 msgid ""
 "These shorthand commands take effect immediately:\n"
 "    <D> inserts current date in local date format\n"
@@ -1100,16 +1094,16 @@ msgstr ""
 "    <&Ynnnn> μετατρέπει το τρέχον έτος μείον το nnnn.\n"
 "(Αυτό μπορεί να χρησιμοποιηθεί π.χ σε γενέθλια για να υπολογίσετε την ηλικία του ατόμου.)"
 
-#: src/orage-appointment-window.c:3880
+#: src/orage-appointment-window.c:3878
 msgid "Alarm"
 msgstr "Ειδοποίηση"
 
 #. **** ALARM TIME ****
-#: src/orage-appointment-window.c:3886
+#: src/orage-appointment-window.c:3884
 msgid "Alarm time"
 msgstr "Χρόνος ειδοποίησης"
 
-#: src/orage-appointment-window.c:3910
+#: src/orage-appointment-window.c:3908
 msgid ""
 "Often you want to get alarm:\n"
 " 1) before Event start\n"
@@ -1121,11 +1115,11 @@ msgstr ""
 " 2) πριν το τέλος της ενέργειας\n"
 " 3) μετά την εκκίνηση της ενέργιας"
 
-#: src/orage-appointment-window.c:3915
+#: src/orage-appointment-window.c:3913
 msgid "Persistent alarm"
 msgstr "Παραμένουσα ειδοποίηση"
 
-#: src/orage-appointment-window.c:3920
+#: src/orage-appointment-window.c:3918
 msgid ""
 "Select this if you want Orage to remind you even if it has not been active "
 "when the alarm happened."
@@ -1133,74 +1127,74 @@ msgstr ""
 "Επιλέξτε το αν επιθυμείτε να λάβετε υπενθύμιση από το Orage ακόμα κι αν δεν "
 "ήταν ενεργό τη στιγμή της ειδοποίησης."
 
-#: src/orage-appointment-window.c:3929
+#: src/orage-appointment-window.c:3927
 msgid "Sound"
 msgstr "Ήχος"
 
-#: src/orage-appointment-window.c:3933 src/orage-appointment-window.c:4074
+#: src/orage-appointment-window.c:3931 src/orage-appointment-window.c:4073
 msgid "Use"
 msgstr "Χρήση"
 
-#: src/orage-appointment-window.c:3938
+#: src/orage-appointment-window.c:3936
 msgid "Select this if you want audible alarm"
 msgstr "Επιλέξτε το αν επιθυμείτε μια ηχητική ειδοποίηση"
 
-#: src/orage-appointment-window.c:3943
+#: src/orage-appointment-window.c:3941
 msgid "Sound command is not set"
 msgstr "Δεν καθορίστηκε εντολή για ήχο"
 
-#: src/orage-appointment-window.c:3971
+#: src/orage-appointment-window.c:3970
 msgid "Repeat alarm sound"
 msgstr "Επανάληψη ήχου ειδοποίησης"
 
-#: src/orage-appointment-window.c:4002
+#: src/orage-appointment-window.c:4001
 msgid "sec interval"
 msgstr "δευτ. διακοπή"
 
 #. **** Display Alarm ****
-#: src/orage-appointment-window.c:4011
+#: src/orage-appointment-window.c:4010
 msgid "Visual"
 msgstr "Οπτικοποίηση"
 
-#: src/orage-appointment-window.c:4015
+#: src/orage-appointment-window.c:4014
 msgid "Use Orage window"
 msgstr "Χρήση του παραθύρου Orage"
 
-#: src/orage-appointment-window.c:4017
+#: src/orage-appointment-window.c:4016
 msgid "Select this if you want Orage window alarm"
 msgstr "Επιλέξτε το αν επιθυμείτε ειδοποίηση από το παράθυρο του Orage"
 
-#: src/orage-appointment-window.c:4029
+#: src/orage-appointment-window.c:4028
 msgid "Use notification"
 msgstr "Χρήση ειδοποίησης συστήματος"
 
-#: src/orage-appointment-window.c:4031
+#: src/orage-appointment-window.c:4030
 msgid "Select this if you want notification alarm"
 msgstr "Επιλέξτε το αν επιθυμείτε ειδοποίηση από το σύστημα"
 
-#: src/orage-appointment-window.c:4039
+#: src/orage-appointment-window.c:4038
 msgid "Set timeout"
 msgstr "Διακοπή"
 
-#: src/orage-appointment-window.c:4041
+#: src/orage-appointment-window.c:4040
 msgid "Select this if you want notification to expire automatically"
 msgstr ""
 "Επιλέξτε το αν επιθυμείτε η ειδοποίηση του συστήματος να λήγει αυτόματα"
 
-#: src/orage-appointment-window.c:4052
+#: src/orage-appointment-window.c:4051
 msgid "0 = system default expiration time"
 msgstr "0 = προεπιλεγμένος χρόνος λήξης"
 
-#: src/orage-appointment-window.c:4060
+#: src/orage-appointment-window.c:4059
 msgid "seconds"
 msgstr "δευτερόλεπτα"
 
 #. **** Procedure Alarm ****
-#: src/orage-appointment-window.c:4070
+#: src/orage-appointment-window.c:4069
 msgid "Procedure"
 msgstr "Διαδικασία"
 
-#: src/orage-appointment-window.c:4076
+#: src/orage-appointment-window.c:4075
 msgid "Select this if you want procedure or script alarm"
 msgstr "Επιλέξτε το αν επιθυμείτε ειδοποίηση με διαδικασία ή σενάριο"
 
@@ -1232,67 +1226,67 @@ msgstr "Έλεγχος ειδοποίησης τώρα"
 msgid "<b>Default alarm</b>"
 msgstr "<b>Προεπιλογή ειδοποίησης</b>"
 
-#: src/orage-appointment-window.c:4128
+#: src/orage-appointment-window.c:4129
 msgid "Store current settings as default alarm"
 msgstr "Αποθήκευση των τρεχουσών ρυθμίσεων ως προεπιλογή"
 
-#: src/orage-appointment-window.c:4130
+#: src/orage-appointment-window.c:4131
 msgid "_Revert"
 msgstr "Επα_ναφορά"
 
-#: src/orage-appointment-window.c:4138
+#: src/orage-appointment-window.c:4140
 msgid "Set current settings from default alarm"
 msgstr "Επαναφορά των ρυθμίσεων ειδοποίησης από την προεπιλογή"
 
-#: src/orage-appointment-window.c:4203
+#: src/orage-appointment-window.c:4205
 msgid "None"
 msgstr "Ποτέ"
 
-#: src/orage-appointment-window.c:4203
+#: src/orage-appointment-window.c:4205
 msgid "Daily"
 msgstr "Κάθε ημέρα"
 
-#: src/orage-appointment-window.c:4203
+#: src/orage-appointment-window.c:4205
 msgid "Weekly"
 msgstr "Κάθε εβδομάδα"
 
-#: src/orage-appointment-window.c:4204
+#: src/orage-appointment-window.c:4206
 msgid "Monthly"
 msgstr "Κάθε μήνα"
 
-#: src/orage-appointment-window.c:4204
+#: src/orage-appointment-window.c:4206
 msgid "Yearly"
 msgstr "Κάθε έτος"
 
-#: src/orage-appointment-window.c:4204
+#: src/orage-appointment-window.c:4206
 msgid "Hourly"
 msgstr "Κάθε ώρα"
 
-#: src/orage-appointment-window.c:4219
+#: src/orage-appointment-window.c:4221
 msgid "Recurrence"
 msgstr "Επανάληψη"
 
 #. ****************************** Frequency *******************************
-#: src/orage-appointment-window.c:4226
+#: src/orage-appointment-window.c:4228
 msgid "Frequency"
 msgstr "Συχνότητα"
 
 #. ****************************** Limit ***********************************
-#: src/orage-appointment-window.c:4267
+#: src/orage-appointment-window.c:4269
 msgid "Limit"
 msgstr "Όριο"
 
 #. ****************************** TODO base (only for TODOs) **************
-#: src/orage-appointment-window.c:4273
+#: src/orage-appointment-window.c:4275
 msgid "TODO base"
 msgstr "Βάση ενέργειας"
 
 #. exceptions
-#: src/orage-appointment-window.c:4280
+#: src/orage-appointment-window.c:4282
 msgid "Exceptions"
 msgstr "Εξαιρέσεις"
 
-#: src/orage-appointment-window.c:4306
+#: src/orage-appointment-window.c:4308
 msgid ""
 "Add more exception dates by clicking the calendar days below.\n"
 "Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
@@ -1302,21 +1296,21 @@ msgstr ""
 "Η εξαίρεση είναι είτε αποκλεισμός(-) είτε προσθήκη(+) ανάλογα με την επιλογή.\n"
 "Αφαιρείτε κάνοντας κλικ στα δεδομένα."
 
-#: src/orage-appointment-window.c:4317
+#: src/orage-appointment-window.c:4319
 msgid "Add excluded date (-)"
 msgstr "Προσθήκη ημερομηνίας εξαίρεσης (-)"
 
-#: src/orage-appointment-window.c:4319
+#: src/orage-appointment-window.c:4321
 msgid "Excluded days are full days where this appointment is not happening"
 msgstr ""
 "Οι εξαιρούμενες ημέρες είναι ολόκληρες ημέρες στις οποίες αυτή η καταχώριση "
 "δε κάνει κάτι"
 
-#: src/orage-appointment-window.c:4326
+#: src/orage-appointment-window.c:4328
 msgid "Add included time (+)"
 msgstr "Προσθήκη συμπεριλαμβανόμενης ώρας (+)"
 
-#: src/orage-appointment-window.c:4328
+#: src/orage-appointment-window.c:4330
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time"
@@ -1325,7 +1319,7 @@ msgstr ""
 " μπορεί να έχουν διαφορετική ώρα"
 
 #. calendars showing the action days
-#: src/orage-appointment-window.c:4347
+#: src/orage-appointment-window.c:4349
 msgid "Action dates"
 msgstr "Ημερομηνίες δράσης"
 
@@ -1390,7 +1384,7 @@ msgid "%B %Y"
 msgstr ""
 
 #. Setup title row.
-#: src/orage-month-view.c:485 src/orage-window-next.c:1090
+#: src/orage-month-view.c:485 src/orage-window-next.c:1106
 msgid "Week"
 msgstr ""
 
@@ -1422,7 +1416,7 @@ msgstr "Εντολή για συγχρονισμό"
 msgid "Synchronization period in minutes"
 msgstr "Περίοδος συγχρονισμού σε λεπτά"
 
-#: src/orage-sync-edit-dialog.c:166 src/parameters.c:1427 src/reminder.c:638
+#: src/orage-sync-edit-dialog.c:166 src/parameters.c:1431 src/reminder.c:638
 msgid "_Close"
 msgstr "_Κλείσιμο"
 
@@ -1433,35 +1427,31 @@ msgstr "_Κλείσιμο"
 msgid "calendar:week_start:0"
 msgstr ""
 
-#: src/orage-week-window.c:453
+#: src/orage-week-window.c:454
 msgid "Back one week"
 msgstr "Πίσω μια εβδομάδα"
 
-#: src/orage-week-window.c:455
+#: src/orage-week-window.c:456
 msgid "Back one day"
 msgstr "Πίσω μια ημέρα"
 
-#: src/orage-week-window.c:459
+#: src/orage-week-window.c:460
 msgid "Forward one day"
 msgstr "Μπροστά μια ημέρα"
 
-#: src/orage-week-window.c:461
+#: src/orage-week-window.c:462
 msgid "Forward one week"
 msgstr "Μπροστά μια εβδομάδα"
 
-#: src/orage-week-window.c:530
-msgid "_OK"
-msgstr "_Εντάξει"
-
-#: src/orage-week-window.c:657
+#: src/orage-week-window.c:658
 msgid "Unknown"
 msgstr "Άγνωστο"
 
-#: src/orage-week-window.c:892
+#: src/orage-week-window.c:896
 msgid "Number of days to show"
 msgstr "Αριθμός εμφανιζόμενων ημερών"
 
-#: src/orage-week-window.c:1208
+#: src/orage-week-window.c:1212
 msgid "Orage - day view"
 msgstr "Orage - Προβολή ημέρας"
 
@@ -1489,7 +1479,7 @@ msgstr "Επιλογή _σημερινής ημέρας"
 #. Help menu
 #. the rest
 #: src/orage-window-classic.c:324 src/orage-window-next.c:147
-#: src/orage-window-next.c:148 src/parameters.c:1424
+#: src/orage-window-next.c:148 src/parameters.c:1428
 msgid "_Help"
 msgstr "_Βοήθεια"
 
@@ -1498,12 +1488,12 @@ msgstr "_Βοήθεια"
 msgid "No title defined"
 msgstr "Δεν καταχωρήθηκε τίτλος"
 
-#: src/orage-window-classic.c:452 src/orage-window-next.c:847
+#: src/orage-window-classic.c:453
 #, c-format
 msgid " Location: %s\n"
 msgstr "Τοποθεσία: %s\n"
 
-#: src/orage-window-classic.c:465 src/orage-window-next.c:858
+#: src/orage-window-classic.c:466
 #, c-format
 msgid ""
 "\n"
@@ -1514,11 +1504,11 @@ msgstr ""
 " Σημείωση:\n"
 "%s"
 
-#: src/orage-window-classic.c:475 src/orage-window-next.c:866
+#: src/orage-window-classic.c:476 src/orage-window-next.c:866
 msgid "Never"
 msgstr "Ποτέ"
 
-#: src/orage-window-classic.c:482 src/orage-window-next.c:875
+#: src/orage-window-classic.c:483
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1531,7 +1521,7 @@ msgstr ""
 " Λήξη:\t%s\n"
 " Ολοκλήρωση:\t%s%s"
 
-#: src/orage-window-classic.c:490 src/orage-window-next.c:884
+#: src/orage-window-classic.c:491
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1542,16 +1532,16 @@ msgstr ""
 "%s Έναρξη:\t%s\n"
 " Λήξη:\t%s%s"
 
-#: src/orage-window-classic.c:569
+#: src/orage-window-classic.c:570
 msgid "<b>To do:</b>"
 msgstr "<b>Ενέργεια:</b>"
 
-#: src/orage-window-classic.c:606
+#: src/orage-window-classic.c:607
 #, c-format
 msgid "<b>Events for %s:</b>"
 msgstr "<b>Γεγονότα για %s:</b>"
 
-#: src/orage-window-classic.c:617
+#: src/orage-window-classic.c:618
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>Γεγονότα για %s - %s:</b>"
@@ -1626,23 +1616,23 @@ msgstr ""
 msgid "To do:"
 msgstr ""
 
-#: src/orage-window-next.c:1054
+#: src/orage-window-next.c:1070
 msgid "Previous"
 msgstr ""
 
-#: src/orage-window-next.c:1074
+#: src/orage-window-next.c:1090
 msgid "Next"
 msgstr ""
 
-#: src/orage-window-next.c:1088
+#: src/orage-window-next.c:1104
 msgid "Day"
 msgstr ""
 
-#: src/orage-window-next.c:1093
+#: src/orage-window-next.c:1109
 msgid "Month"
 msgstr ""
 
-#: src/orage-window-next.c:1096
+#: src/orage-window-next.c:1112
 msgid "Year"
 msgstr ""
 
@@ -1654,168 +1644,168 @@ msgstr "Κατάργηση επιλεγμένης εργασίας συγχρο�
 msgid "Yes, remove"
 msgstr "Ναί, αφαίρεση"
 
-#: src/parameters.c:682
+#: src/parameters.c:685
 msgid "Main settings"
 msgstr "Κύριες ρυθμίσεις"
 
-#: src/parameters.c:688
+#: src/parameters.c:691
 msgid "Timezone"
 msgstr "Ζώνη ώρας"
 
-#: src/parameters.c:709
+#: src/parameters.c:713
 msgid "You should always define your local timezone."
 msgstr "Πρέπει πάντα να καθορίζετε τη τοπική ζώνη ώρας."
 
-#: src/parameters.c:717
+#: src/parameters.c:721
 msgid "Archive threshold (months)"
 msgstr "Όριο αρχειοθέτησης (σε μήνες)"
 
-#: src/parameters.c:730
+#: src/parameters.c:734
 msgid "(0 = no archiving)"
 msgstr "(0 = χωρίς αρχειοθέτηση)"
 
-#: src/parameters.c:734
+#: src/parameters.c:738
 msgid "Archiving is used to save time and space when handling events."
 msgstr "Η αρχειοθέτηση χρησιμοποιείται για την εξοικονόμηση χρόνου και χώρου."
 
-#: src/parameters.c:742
+#: src/parameters.c:746
 msgid "Sound command"
 msgstr "Εντολή ήχου"
 
-#: src/parameters.c:770
+#: src/parameters.c:774
 msgid "This command is given to shell to make sound in alarms."
 msgstr ""
 "Αυτή η εντολή δίδεται στο κέλυφος για να ακούγεται ήχος στις ειδοποιήσεις."
 
-#: src/parameters.c:801
+#: src/parameters.c:805
 msgid "Calendar window"
 msgstr "Παράθυρο ημερολογίου"
 
-#: src/parameters.c:808
+#: src/parameters.c:812
 msgid "Calendar visual details"
 msgstr "Εμφανή στοιχεία ημερολογίου"
 
-#: src/parameters.c:815
+#: src/parameters.c:819
 msgid "Use new user interface"
 msgstr ""
 
-#: src/parameters.c:817
+#: src/parameters.c:821
 msgid "Enable the new interface layout (requires restart)"
 msgstr ""
 
-#: src/parameters.c:822
+#: src/parameters.c:826
 msgid "Show borders"
 msgstr "Εμφάνιση περιθωρίων"
 
-#: src/parameters.c:831
+#: src/parameters.c:835
 msgid "Show menu"
 msgstr "Εμφάνιση μενού"
 
-#: src/parameters.c:836
+#: src/parameters.c:840
 msgid "Show day names"
 msgstr "Εμφάνιση ονομάτων ημερών"
 
-#: src/parameters.c:845
+#: src/parameters.c:849
 msgid "Show week numbers"
 msgstr "Εμφάνιση αρίθμησης εβδομάδων"
 
-#: src/parameters.c:850
+#: src/parameters.c:854
 msgid "Show month and year"
 msgstr "Εμφάνιση μήνα και έτους"
 
-#: src/parameters.c:874
+#: src/parameters.c:878
 msgid "Calendar info boxes"
 msgstr "Πλαίσια πληροφοριών"
 
-#: src/parameters.c:881
+#: src/parameters.c:885
 msgid "Show todo list"
 msgstr "Εμφάνιση λίστας ενεργειών"
 
-#: src/parameters.c:888
+#: src/parameters.c:892
 msgid "Number of days to show in event window"
 msgstr "Αριθμός ημερών που θα εμφανίζονται στο παράθυρο γεγονότων"
 
-#: src/parameters.c:896
+#: src/parameters.c:900
 msgid "0 = do not show event list at all"
 msgstr "0 = να μην εμφανίζεται η λίστα γεγονότων"
 
-#: src/parameters.c:910
+#: src/parameters.c:914
 msgid "Calendar visibility"
 msgstr "Παρουσίαση ημερολογίου"
 
-#: src/parameters.c:916
+#: src/parameters.c:920
 msgid "Show on all desktops"
 msgstr "Εμφάνιση σε όλες τις επιφάνειες εργασίας"
 
-#: src/parameters.c:921
+#: src/parameters.c:925
 msgid "Keep on top"
 msgstr "Παραμονή στην επιφάνεια"
 
-#: src/parameters.c:929
+#: src/parameters.c:933
 msgid "Show in taskbar"
 msgstr "Εμφάνιση στη γραμμή εργασιών"
 
-#: src/parameters.c:934
+#: src/parameters.c:938
 msgid "Show in pager"
 msgstr "Εμφάνιση στον ειδοποιητή"
 
-#: src/parameters.c:942
+#: src/parameters.c:946
 msgid "Show in systray"
 msgstr "Εμφάνιση στο ταμπλό του συστήματος"
 
-#: src/parameters.c:970
+#: src/parameters.c:974
 msgid "Calendar start"
 msgstr "Εκκίνηση ημερολογίου"
 
-#: src/parameters.c:976
+#: src/parameters.c:980
 msgid "Show"
 msgstr "Εμφάνιση"
 
-#: src/parameters.c:992
+#: src/parameters.c:996
 msgid "Hide"
 msgstr "Απόκρυψη"
 
-#: src/parameters.c:1009
+#: src/parameters.c:1013
 msgid "Minimized"
 msgstr "Ελαχιστοποιημένο"
 
-#: src/parameters.c:1035
+#: src/parameters.c:1039
 msgid "On calendar window open"
 msgstr "Στο άνοιγμα παραθύρου του ημερολογίου"
 
-#: src/parameters.c:1041
+#: src/parameters.c:1045
 msgid "Select today's date"
 msgstr "Επιλογή σημερινής ημερομηνίας"
 
-#: src/parameters.c:1058
+#: src/parameters.c:1062
 msgid "Select previously selected date"
 msgstr "Επιλογή προηγούμενης επιλεγμένης ημερομηνίας"
 
-#: src/parameters.c:1082
+#: src/parameters.c:1086
 msgid "Calendar day double click shows"
 msgstr "Το διπλό κλικ στην ημέρα του ημερολογίου εμφανίζει"
 
-#: src/parameters.c:1088
+#: src/parameters.c:1092
 msgid "Days view"
 msgstr "Προβολή της ημέρας"
 
-#: src/parameters.c:1104
+#: src/parameters.c:1108
 msgid "Event list"
 msgstr "Λίστα γεγονότων"
 
-#: src/parameters.c:1137
+#: src/parameters.c:1141
 msgid "Extra settings"
 msgstr "Περισσότερες ρυθμίσεις"
 
-#: src/parameters.c:1144
+#: src/parameters.c:1148
 msgid "Event list window"
 msgstr "Παράθυρο λίστας γεγονότων"
 
-#: src/parameters.c:1151
+#: src/parameters.c:1155
 msgid "Number of extra days to show in event list"
 msgstr "Αριθμός πρόσθετων εμφανιζόμενων ημερών στη λίστα γεγονότων"
 
-#: src/parameters.c:1161
+#: src/parameters.c:1165
 msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
@@ -1823,27 +1813,27 @@ msgstr ""
 "Αυτή είναι απλώς η προεπιλεγμένη τιμή, μπορείτε να την αλλάξετε στο παράθυρο"
 " της λίστας γεγονότων."
 
-#: src/parameters.c:1169
+#: src/parameters.c:1173
 msgid "Show only first repeating event"
 msgstr "Εμφάνιση μόνο του πρώτου επαναλαμβανόμενου γεγονότος"
 
-#: src/parameters.c:1186
+#: src/parameters.c:1190
 msgid "Day view window default first day"
 msgstr "Προεπιλεγμένη πρώτη ημέρα στο παράθυρο προβολής ημέρας"
 
-#: src/parameters.c:1193
+#: src/parameters.c:1197
 msgid "First day of week"
 msgstr "Πρώτη ημέρα της εβδομάδας"
 
-#: src/parameters.c:1210
+#: src/parameters.c:1214
 msgid "Selected day"
 msgstr "Επιλεγμένη ημέρα"
 
-#: src/parameters.c:1233 src/parameters.c:1240
+#: src/parameters.c:1237 src/parameters.c:1244
 msgid "Use wakeup timer"
 msgstr "Χρήση χρονομέτρου ενεργοποίησης"
 
-#: src/parameters.c:1248
+#: src/parameters.c:1252
 msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
@@ -1852,27 +1842,27 @@ msgstr ""
 "μετά από αναστολή ή αδρανοποίηση. (Για παράδειγμα δεν ενημερώνεται το "
 "εικονίδιο ή δεν λειτουργούν οι ειδοποιήσεις)"
 
-#: src/parameters.c:1258
+#: src/parameters.c:1262
 msgid "Foreign file default visual alarm"
 msgstr "Προεπιλογή οπτικής ειδοποίησης εξωτερικού αρχείου"
 
-#: src/parameters.c:1265
+#: src/parameters.c:1269
 msgid "Orage window"
 msgstr "Παράθυρο Orage"
 
-#: src/parameters.c:1282
+#: src/parameters.c:1286
 msgid "Notify notification"
 msgstr "Ειδοποίηση συστήματος"
 
-#: src/parameters.c:1305
+#: src/parameters.c:1309
 msgid "Always quit when asked to close"
 msgstr "Πάντα έξοδος όταν ζητείται κλείσιμο"
 
-#: src/parameters.c:1312
+#: src/parameters.c:1316
 msgid "Always quit"
 msgstr "Πάντα έξοδος"
 
-#: src/parameters.c:1319
+#: src/parameters.c:1323
 msgid ""
 "By default Orage stays open in the background when asked to close. This "
 "option changes Orage to quit and never stay in background when it is asked "
@@ -1882,15 +1872,15 @@ msgstr ""
 "Αυτή η επιλογή θα κάνει το Orage να κλείνει και να μην εκτελείται ποτέ στο "
 "παρασκήνιο όταν ζητείται κλείσιμο."
 
-#: src/parameters.c:1372
+#: src/parameters.c:1376
 msgid "Synchronization settings"
 msgstr "Ρυθμίσεις συγχρονισμού"
 
-#: src/parameters.c:1378
+#: src/parameters.c:1382
 msgid "Synchronization sources"
 msgstr "Πηγές συγχρονισμού"
 
-#: src/parameters.c:1404 org.xfce.orage.desktop.in:26
+#: src/parameters.c:1408 org.xfce.orage.desktop.in:26
 msgid "Orage Preferences"
 msgstr "Προτιμήσεις Orage"
 
