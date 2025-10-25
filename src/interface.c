@@ -667,11 +667,11 @@ static void refresh_foreign_files(intf_win *intf_w, const gboolean first)
             else
                 label = gtk_label_new(_("READ WRITE"));
 
-            g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
+            g_object_set (label, "margin-start", 5, "margin-end", 5, NULL);
             gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL,
                                      GTK_POS_RIGHT, 1, 1);
             button = orage_util_image_button ("list-remove", _("_Remove"));
-            g_object_set (button, "margin-left", 5, "margin-right", 5, NULL);
+            g_object_set (button, "margin-start", 5, "margin-end", 5, NULL);
             gtk_grid_attach_next_to (GTK_GRID (hbox), button, NULL,
                                      GTK_POS_RIGHT, 1, 1);
             g_snprintf (num, sizeof (num), "%02d", i + 1);
@@ -973,26 +973,26 @@ static void drag_and_drop_init(intf_win *intf_w)
     gtk_drag_dest_set(intf_w->iea_imp_entry
             , GTK_DEST_DEFAULT_MOTION | GTK_DEST_DEFAULT_HIGHLIGHT
             , file_drag_targets, file_drag_target_count, GDK_ACTION_COPY);
-    g_signal_connect(intf_w->iea_imp_entry, "drag_drop"
-            , G_CALLBACK(drag_drop), NULL);
-    g_signal_connect(intf_w->iea_imp_entry, "drag_data_received"
-            , G_CALLBACK(imp_file_drag_data_received), NULL);
+    g_signal_connect (intf_w->iea_imp_entry, "drag-drop",
+                      G_CALLBACK (drag_drop), NULL);
+    g_signal_connect (intf_w->iea_imp_entry, "drag-data-received",
+                      G_CALLBACK (imp_file_drag_data_received), NULL);
 
     gtk_drag_dest_set(intf_w->iea_exp_entry
             , GTK_DEST_DEFAULT_MOTION | GTK_DEST_DEFAULT_HIGHLIGHT
             , file_drag_targets, file_drag_target_count, GDK_ACTION_COPY);
-    g_signal_connect(intf_w->iea_exp_entry, "drag_drop"
-            , G_CALLBACK(drag_drop), NULL);
-    g_signal_connect(intf_w->iea_exp_entry, "drag_data_received"
-            , G_CALLBACK(exp_file_drag_data_received), NULL);
+    g_signal_connect (intf_w->iea_exp_entry, "drag-drop",
+                      G_CALLBACK (drag_drop), NULL);
+    g_signal_connect (intf_w->iea_exp_entry, "drag-data-received",
+                      G_CALLBACK (exp_file_drag_data_received), NULL);
 
     gtk_drag_dest_set(intf_w->iea_exp_id_entry
             , GTK_DEST_DEFAULT_MOTION | GTK_DEST_DEFAULT_HIGHLIGHT
             , uid_drag_targets, uid_drag_target_count, GDK_ACTION_COPY);
-    g_signal_connect(intf_w->iea_exp_id_entry, "drag_drop"
-            , G_CALLBACK(drag_drop), NULL);
-    g_signal_connect(intf_w->iea_exp_id_entry, "drag_data_received"
-            , G_CALLBACK(uid_drag_data_received), NULL);
+    g_signal_connect (intf_w->iea_exp_id_entry, "drag-drop",
+                      G_CALLBACK (drag_drop), NULL);
+    g_signal_connect (intf_w->iea_exp_id_entry, "drag-data-received",
+                      G_CALLBACK (uid_drag_data_received), NULL);
 }
 
 static void exp_add_all_rb_clicked (G_GNUC_UNUSED GtkWidget *button,
@@ -1036,7 +1036,7 @@ static void create_import_export_tab(intf_win *intf_w)
     hbox = gtk_grid_new ();
     g_object_set (hbox, "margin-top", 5, "margin-bottom", 5, NULL);
     label = gtk_label_new(_("Read from file:"));
-    g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
+    g_object_set (label, "margin-start", 5, "margin-end", 5, NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
     intf_w->iea_imp_entry = gtk_entry_new();
     g_object_set (intf_w->iea_imp_entry, "hexpand", TRUE,
@@ -1046,15 +1046,15 @@ static void create_import_export_tab(intf_win *intf_w)
                              GTK_POS_RIGHT, 1, 1);
     intf_w->iea_imp_open_button = orage_util_image_button ("document-open",
                                                            _("_Open"));
-    g_object_set (intf_w->iea_imp_open_button, "margin-left", 5,
-                                               "margin-right", 5,
+    g_object_set (intf_w->iea_imp_open_button, "margin-start", 5,
+                                               "margin-end", 5,
                                                NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->iea_imp_open_button, NULL,
                              GTK_POS_RIGHT, 1, 1);
     intf_w->iea_imp_save_button = orage_util_image_button ("document-save",
                                                          _("_Save"));
-    g_object_set (intf_w->iea_imp_save_button, "margin-left", 5,
-                                               "margin-right", 5,
+    g_object_set (intf_w->iea_imp_save_button, "margin-start", 5,
+                                               "margin-end", 5,
                                                NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->iea_imp_save_button, NULL,
                              GTK_POS_RIGHT, 1, 1);
@@ -1079,7 +1079,7 @@ static void create_import_export_tab(intf_win *intf_w)
     hbox = gtk_grid_new ();
     g_object_set (hbox, "margin-top", 5, "margin-bottom", 5, NULL);
     label = gtk_label_new(_("Write to file:"));
-    g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
+    g_object_set (label, "margin-start", 5, "margin-end", 5, NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
     intf_w->iea_exp_entry = gtk_entry_new();
     g_object_set (intf_w->iea_exp_entry, "hexpand", TRUE,
@@ -1092,15 +1092,15 @@ static void create_import_export_tab(intf_win *intf_w)
     g_free(file);
     intf_w->iea_exp_open_button = orage_util_image_button ("document-open",
                                                            _("_Open"));
-    g_object_set (intf_w->iea_exp_open_button, "margin-left", 5,
-                                               "margin-right", 5,
+    g_object_set (intf_w->iea_exp_open_button, "margin-start", 5,
+                                               "margin-end", 5,
                                                NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->iea_exp_open_button, NULL,
                              GTK_POS_RIGHT, 1, 1);
     intf_w->iea_exp_save_button = orage_util_image_button ("document-save",
                                                            _("_Save"));
-    g_object_set (intf_w->iea_exp_save_button, "margin-left", 5,
-                                               "margin-right", 5,
+    g_object_set (intf_w->iea_exp_save_button, "margin-start", 5,
+                                               "margin-end", 5,
                                                NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->iea_exp_save_button, NULL,
                              GTK_POS_RIGHT, 1, 1);
@@ -1114,13 +1114,13 @@ static void create_import_export_tab(intf_win *intf_w)
     hbox = gtk_grid_new ();
     g_object_set (hbox, "margin-top", 5, "margin-bottom", 5, NULL);
     label = gtk_label_new(_("Select"));
-    g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
+    g_object_set (label, "margin-start", 5, "margin-end", 5, NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL,
                              GTK_POS_BOTTOM, 1, 1);
     intf_w->iea_exp_add_all_rb = gtk_radio_button_new_with_label(NULL
             , _("All appointments"));
-    g_object_set (intf_w->iea_exp_add_all_rb, "margin-left", 5,
-                                              "margin-right", 5,
+    g_object_set (intf_w->iea_exp_add_all_rb, "margin-start", 5,
+                                              "margin-end", 5,
                                               NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->iea_exp_add_all_rb, NULL,
                              GTK_POS_RIGHT, 1, 1);
@@ -1132,14 +1132,14 @@ static void create_import_export_tab(intf_win *intf_w)
     hbox = gtk_grid_new ();
     g_object_set (hbox, "margin-top", 5, "margin-bottom", 5, NULL);
     label = gtk_label_new(_("Select"));
-    g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
+    g_object_set (label, "margin-start", 5, "margin-end", 5, NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL,
                              GTK_POS_BOTTOM, 1, 1);
     intf_w->iea_exp_add_id_rb = gtk_radio_button_new_with_mnemonic_from_widget(
             GTK_RADIO_BUTTON(intf_w->iea_exp_add_all_rb)
             , _("Named appointments:"));
-    g_object_set (intf_w->iea_exp_add_id_rb, "margin-left", 5,
-                                             "margin-right", 5,
+    g_object_set (intf_w->iea_exp_add_id_rb, "margin-start", 5,
+                                             "margin-end", 5,
                                               NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->iea_exp_add_id_rb, NULL,
                              GTK_POS_RIGHT, 1, 1);
@@ -1180,8 +1180,8 @@ static void create_import_export_tab(intf_win *intf_w)
     g_object_set (hbox, "margin-top", 5, "margin-bottom", 5, NULL);
     intf_w->iea_arc_button1 = orage_util_image_button ("system-run",
                                                        _("_Execute"));
-    g_object_set (intf_w->iea_arc_button1, "margin-left", 5,
-                                           "margin-right", 5,
+    g_object_set (intf_w->iea_arc_button1, "margin-start", 5,
+                                           "margin-end", 5,
                                            NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->iea_arc_button1, NULL,
                              GTK_POS_RIGHT, 1, 1);
@@ -1189,7 +1189,7 @@ static void create_import_export_tab(intf_win *intf_w)
             , g_par.archive_limit);
     label = gtk_label_new(str);
     g_free(str);
-    g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
+    g_object_set (label, "margin-start", 5, "margin-end", 5, NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
     gtk_grid_attach_next_to (GTK_GRID (vbox), hbox, NULL, GTK_POS_BOTTOM, 1, 1);
 
@@ -1202,14 +1202,14 @@ static void create_import_export_tab(intf_win *intf_w)
     g_object_set (hbox, "margin-top", 5, "margin-bottom", 5, NULL);
     intf_w->iea_arc_button2 = orage_util_image_button ("system-run",
                                                        _("_Execute"));
-    g_object_set (intf_w->iea_arc_button2, "margin-left", 5,
-                                           "margin-right", 5,
+    g_object_set (intf_w->iea_arc_button2, "margin-start", 5,
+                                           "margin-end", 5,
                                            NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->iea_arc_button2, NULL,
                              GTK_POS_RIGHT, 1, 1);
     gtk_grid_attach_next_to (GTK_GRID (vbox), hbox, NULL, GTK_POS_BOTTOM, 1, 1);
     label = gtk_label_new(_("Revert archive now"));
-    g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
+    g_object_set (label, "margin-start", 5, "margin-end", 5, NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
 
     g_signal_connect((gpointer)intf_w->iea_arc_button2, "clicked"
@@ -1244,11 +1244,12 @@ static void create_orage_file_tab(intf_win *intf_w)
     hbox = gtk_grid_new ();
     g_object_set (hbox, "margin-top", 5, "margin-bottom", 5, NULL);
     label = gtk_label_new(_("Current file:"));
-    g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
+    g_object_set (label, "margin-start", 5, "margin-end", 5, NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
     label = gtk_label_new (g_par.orage_file);
-    g_object_set (label, "margin-right", 5,
-                         "hexpand", TRUE, "halign", GTK_ALIGN_START,
+    g_object_set (label, "margin-end", 5,
+                         "hexpand", TRUE,
+                         "halign", GTK_ALIGN_START,
                          NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
     gtk_grid_attach_next_to (GTK_GRID (vbox), hbox, NULL, GTK_POS_BOTTOM, 1, 1);
@@ -1256,26 +1257,29 @@ static void create_orage_file_tab(intf_win *intf_w)
     hbox = gtk_grid_new ();
     g_object_set (hbox, "margin-top", 5, "margin-bottom", 5, NULL);
     label = gtk_label_new(_("New file:"));
-    g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
+    g_object_set (label, "margin-start", 5, "margin-end", 5, NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
     intf_w->orage_file_entry = gtk_entry_new();
     gtk_entry_set_text (GTK_ENTRY(intf_w->orage_file_entry), g_par.orage_file);
-    g_object_set (intf_w->orage_file_entry,
-                  "hexpand", TRUE, "halign", GTK_ALIGN_FILL, NULL);
+    g_object_set (intf_w->orage_file_entry, "hexpand", TRUE,
+                                            "halign", GTK_ALIGN_FILL,
+                                            NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->orage_file_entry, NULL,
                              GTK_POS_RIGHT, 1, 1);
 
     intf_w->orage_file_open_button = orage_util_image_button ("document-open",
                                                               _("_Open"));
-    g_object_set (intf_w->orage_file_open_button,
-                  "margin-left", 5, "margin-right", 5, NULL);
+    g_object_set (intf_w->orage_file_open_button, "margin-start", 5,
+                                                  "margin-end", 5,
+                                                  NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->orage_file_open_button,
                              NULL, GTK_POS_RIGHT, 1, 1);
     intf_w->orage_file_save_button = orage_util_image_button ("document-save",
                                                               _("_Save"));
     gtk_widget_set_sensitive(intf_w->orage_file_save_button, FALSE);
-    g_object_set (intf_w->orage_file_save_button,
-                  "margin-left", 5, "margin-right", 5, NULL);
+    g_object_set (intf_w->orage_file_save_button, "margin-start", 5,
+                                                  "margin-end", 5,
+                                                  NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->orage_file_save_button,
                              NULL, GTK_POS_RIGHT, 1, 1);
     gtk_grid_attach_next_to (GTK_GRID (vbox), hbox, NULL, GTK_POS_BOTTOM, 1, 1);
@@ -1283,12 +1287,13 @@ static void create_orage_file_tab(intf_win *intf_w)
     hbox = gtk_grid_new ();
     g_object_set (hbox, "margin-top", 5, "margin-bottom", 5, NULL);
     label = gtk_label_new(_("Action options:"));
-    g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
+    g_object_set (label, "margin-start", 5, "margin-end", 5, NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
     intf_w->orage_file_rename_rb = 
             gtk_radio_button_new_with_label(NULL, _("Rename"));
-    g_object_set (intf_w->orage_file_rename_rb,
-                  "margin-left", 5, "margin-right", 5, NULL);
+    g_object_set (intf_w->orage_file_rename_rb, "margin-start", 5,
+                                                "margin-end", 5,
+                                                NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->orage_file_rename_rb,
                              NULL, GTK_POS_RIGHT, 1, 1);
     gtk_widget_set_tooltip_text(intf_w->orage_file_rename_rb
@@ -1297,8 +1302,9 @@ static void create_orage_file_tab(intf_win *intf_w)
     intf_w->orage_file_copy_rb = 
             gtk_radio_button_new_with_mnemonic_from_widget(
                     GTK_RADIO_BUTTON(intf_w->orage_file_rename_rb), _("Copy"));
-    g_object_set (intf_w->orage_file_copy_rb,
-                  "margin-left", 5, "margin-right", 5, NULL);
+    g_object_set (intf_w->orage_file_copy_rb, "margin-start", 5,
+                                              "margin-end", 5,
+                                              NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->orage_file_copy_rb,
                              NULL, GTK_POS_RIGHT, 1, 1);
     gtk_widget_set_tooltip_text(intf_w->orage_file_copy_rb
@@ -1307,8 +1313,9 @@ static void create_orage_file_tab(intf_win *intf_w)
     intf_w->orage_file_move_rb = 
             gtk_radio_button_new_with_mnemonic_from_widget(
                     GTK_RADIO_BUTTON(intf_w->orage_file_rename_rb), _("Move"));
-    g_object_set (intf_w->orage_file_move_rb,
-                  "margin-left", 5, "margin-right", 5, NULL);
+    g_object_set (intf_w->orage_file_move_rb, "margin-start", 5,
+                                              "margin-end", 5,
+                                              NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->orage_file_move_rb,
                              NULL, GTK_POS_RIGHT, 1, 1);
     gtk_widget_set_tooltip_text(intf_w->orage_file_move_rb
@@ -1336,11 +1343,12 @@ static void create_orage_file_tab(intf_win *intf_w)
     hbox = gtk_grid_new ();
     g_object_set (hbox, "margin-top", 5, "margin-bottom", 5, NULL);
     label = gtk_label_new(_("Current file:"));
-    g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
+    g_object_set (label, "margin-start", 5, "margin-end", 5, NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
     label = gtk_label_new((const gchar *)g_par.archive_file);
-    g_object_set (label, "margin-right", 5,
-                         "hexpand", TRUE, "halign", GTK_ALIGN_START,
+    g_object_set (label, "margin-end", 5,
+                         "hexpand", TRUE,
+                         "halign", GTK_ALIGN_START,
                          NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
     gtk_grid_attach_next_to (GTK_GRID (vbox), hbox, NULL, GTK_POS_BOTTOM, 1, 1);
@@ -1348,7 +1356,7 @@ static void create_orage_file_tab(intf_win *intf_w)
     hbox = gtk_grid_new ();
     g_object_set (hbox, "margin-top", 5, "margin-bottom", 5, NULL);
     label = gtk_label_new(_("New file:"));
-    g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
+    g_object_set (label, "margin-start", 5, "margin-end", 5, NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
     intf_w->archive_file_entry = gtk_entry_new();
     gtk_entry_set_text(GTK_ENTRY(intf_w->archive_file_entry)
@@ -1359,15 +1367,17 @@ static void create_orage_file_tab(intf_win *intf_w)
                              GTK_POS_RIGHT, 1, 1);
     intf_w->archive_file_open_button = orage_util_image_button ("document-open",
                                                                 _("_Open"));
-    g_object_set (intf_w->archive_file_open_button,
-                  "margin-left", 5, "margin-right", 5, NULL);
+    g_object_set (intf_w->archive_file_open_button, "margin-start", 5,
+                                                    "margin-end", 5,
+                                                    NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->archive_file_open_button,
                              NULL, GTK_POS_RIGHT, 1, 1);
     intf_w->archive_file_save_button = orage_util_image_button ("document-save",
                                                                 _("_Save"));
     gtk_widget_set_sensitive(intf_w->archive_file_save_button, FALSE);
-    g_object_set (intf_w->archive_file_save_button,
-                  "margin-left", 5, "margin-right", 5, NULL);
+    g_object_set (intf_w->archive_file_save_button, "margin-start", 5,
+                                                    "margin-end", 5,
+                                                    NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->archive_file_save_button,
                              NULL, GTK_POS_RIGHT, 1, 1);
     gtk_grid_attach_next_to (GTK_GRID (vbox), hbox, NULL, GTK_POS_BOTTOM, 1, 1);
@@ -1375,26 +1385,29 @@ static void create_orage_file_tab(intf_win *intf_w)
     hbox = gtk_grid_new ();
     g_object_set (hbox, "margin-top", 5, "margin-bottom", 5, NULL);
     label = gtk_label_new(_("Action options:"));
-    g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
+    g_object_set (label, "margin-start", 5, "margin-end", 5, NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
     intf_w->archive_file_rename_rb = 
             gtk_radio_button_new_with_label(NULL, _("Rename"));
-    g_object_set (intf_w->archive_file_rename_rb,
-                  "margin-left", 5, "margin-right", 5, NULL);
+    g_object_set (intf_w->archive_file_rename_rb, "margin-start", 5,
+                                                  "margin-end", 5,
+                                                  NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->archive_file_rename_rb,
                              NULL, GTK_POS_RIGHT, 1, 1);
     intf_w->archive_file_copy_rb = 
             gtk_radio_button_new_with_mnemonic_from_widget(
                 GTK_RADIO_BUTTON(intf_w->archive_file_rename_rb), _("Copy"));
-    g_object_set (intf_w->archive_file_copy_rb,
-                  "margin-left", 5, "margin-right", 5, NULL);
+    g_object_set (intf_w->archive_file_copy_rb, "margin-start", 5,
+                                                "margin-end", 5,
+                                                NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->archive_file_copy_rb,
                              NULL, GTK_POS_RIGHT, 1, 1);
     intf_w->archive_file_move_rb = 
             gtk_radio_button_new_with_mnemonic_from_widget(
                 GTK_RADIO_BUTTON(intf_w->archive_file_rename_rb), _("Move"));
-    g_object_set (intf_w->archive_file_move_rb,
-                  "margin-left", 5, "margin-right", 5, NULL);
+    g_object_set (intf_w->archive_file_move_rb, "margin-start", 5,
+                                                "margin-end", 5,
+                                                NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->archive_file_move_rb,
                              NULL, GTK_POS_RIGHT, 1, 1);
     gtk_grid_attach_next_to (GTK_GRID (vbox), hbox, NULL, GTK_POS_BOTTOM, 1, 1);
@@ -1433,24 +1446,25 @@ static void create_foreign_file_tab(intf_win *intf_w)
     hbox = gtk_grid_new ();
     g_object_set (hbox, "margin-top", 5, "margin-bottom", 5, NULL);
     label = gtk_label_new(_("Foreign file:"));
-    g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
+    g_object_set (label, "margin-start", 5, "margin-end", 5, NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
     intf_w->for_new_entry = gtk_entry_new();
-    g_object_set (intf_w->for_new_entry,
-                  "hexpand", TRUE, "halign", GTK_ALIGN_FILL, NULL);
+    g_object_set (intf_w->for_new_entry, "hexpand", TRUE,
+                                         "halign", GTK_ALIGN_FILL,
+                                         NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->for_new_entry, NULL,
                              GTK_POS_RIGHT, 1, 1);
     intf_w->for_new_open_button = orage_util_image_button ("document-open",
                                                            _("_Open"));
-    g_object_set (intf_w->for_new_open_button, "margin-left", 5,
-                                               "margin-right", 5,
+    g_object_set (intf_w->for_new_open_button, "margin-start", 5,
+                                               "margin-end", 5,
                                                NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->for_new_open_button, NULL,
                              GTK_POS_RIGHT, 1, 1);
     intf_w->for_new_save_button = orage_util_image_button ("list-add",
                                                            _("_Add"));
-    g_object_set (intf_w->for_new_save_button, "margin-left", 5,
-                                               "margin-right", 5,
+    g_object_set (intf_w->for_new_save_button, "margin-start", 5,
+                                               "margin-end", 5,
                                                NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->for_new_save_button, NULL,
                              GTK_POS_RIGHT, 1, 1);
@@ -1464,7 +1478,7 @@ static void create_foreign_file_tab(intf_win *intf_w)
     hbox = gtk_grid_new ();
     g_object_set (hbox, "margin-top", 5, "margin-bottom", 5, NULL);
     label = gtk_label_new(_("Visible name:"));
-    g_object_set (label, "margin-left", 5, "margin-right", 5, NULL);
+    g_object_set (label, "margin-start", 5, "margin-end", 5, NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), label, NULL, GTK_POS_RIGHT, 1, 1);
     intf_w->for_new_name_entry = gtk_entry_new();
     g_object_set (intf_w->for_new_name_entry, "hexpand", TRUE,
@@ -1476,8 +1490,8 @@ static void create_foreign_file_tab(intf_win *intf_w)
     intf_w->for_new_read_only = gtk_check_button_new_with_label(_("Read only"));
     gtk_toggle_button_set_active(
             GTK_TOGGLE_BUTTON(intf_w->for_new_read_only), TRUE);
-    g_object_set (intf_w->for_new_read_only, "margin-left", 5,
-                                             "margin-right", 5,
+    g_object_set (intf_w->for_new_read_only, "margin-start", 5,
+                                             "margin-end", 5,
                                              NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->for_new_read_only, NULL,
                              GTK_POS_RIGHT, 1, 1);
@@ -1522,8 +1536,8 @@ void orage_external_interface (void)
     create_orage_file_tab(intf_w);
     create_foreign_file_tab(intf_w);
 
-    g_signal_connect((gpointer)intf_w->main_window, "delete_event",
-            G_CALLBACK(on_Window_delete_event), intf_w);
+    g_signal_connect (intf_w->main_window, "delete-event",
+                      G_CALLBACK (on_Window_delete_event), intf_w);
 
     gtk_widget_show_all(intf_w->main_window);
     drag_and_drop_init(intf_w);

@@ -1,3 +1,8 @@
+4.21.1 (2025-10-25)
+=======
+- Maintenance: unused code cleanup, fixed some GTK deprecated messages
+  and removed some line breaks from translated messages (MR !81).
+
 4.21.0 (2025-10-20)
 =======
 - New Orage main window layout (MR !80, Issue #18).

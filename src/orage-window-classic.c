@@ -413,7 +413,8 @@ static void add_info_row (xfical_appt *appt, GtkGrid *parentBox,
     g_free (tmp);
     gtk_label_set_ellipsize (GTK_LABEL (label), PANGO_ELLIPSIZE_END);
 
-    g_object_set (label, "xalign", 0.0, "yalign", 0.5,
+    g_object_set (label, "xalign", 0.0,
+                         "yalign", 0.5,
                          "margin-start", 5,
                          "hexpand", TRUE,
                          "halign", GTK_ALIGN_FILL,
@@ -796,10 +797,10 @@ static void orage_window_classic_init (OrageWindowClassic *self)
     /* Signals */
     g_signal_connect (self, "notify::application",
                       G_CALLBACK (on_post_init), NULL);
-    g_signal_connect (self->mCalendar, "day_selected_double_click",
+    g_signal_connect (self->mCalendar, "day-selected-double-click",
                       G_CALLBACK (mCalendar_day_selected_double_click_cb),
                       NULL);
-    g_signal_connect (self->mCalendar, "day_selected",
+    g_signal_connect (self->mCalendar, "day-selected",
                       G_CALLBACK (mCalendar_day_selected_cb), self);
     g_signal_connect (self->mCalendar, "month-changed",
                       G_CALLBACK (mCalendar_month_changed_cb), self);

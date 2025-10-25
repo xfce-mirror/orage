@@ -463,8 +463,8 @@ struct icaltimetype ic_convert_to_timezone(struct icaltimetype t
         l_icaltimezone = get_builtin_timezone (tz_loc);
         if (l_icaltimezone == NULL)
         {
-            g_warning ("%s: builtin timezone '%s' not found, conversion failed",
-                       G_STRFUNC, tz_loc);
+            g_info ("%s: builtin timezone '%s' not found, conversion failed",
+                    G_STRFUNC, tz_loc);
         }
         tz = icaltime_convert_to_zone(t, l_icaltimezone);
     }
@@ -1531,7 +1531,7 @@ static void get_alarm_data_x(icalcomponent *ca,  xfical_appt *appt)
             appt->display_notify_timeout = i;
         }
         else {
-            g_warning ("%s: unknown X property %s", G_STRFUNC, text);
+            g_info ("%s: unknown X property %s", G_STRFUNC, text);
         }
     }
 }
@@ -1907,7 +1907,7 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
     else if (icalcomponent_isa(c) == ICAL_VJOURNAL_COMPONENT)
         appt->type = XFICAL_TYPE_JOURNAL;
     else {
-        g_warning ("%s: unknown component", G_STRFUNC);
+        g_info ("%s: unknown component", G_STRFUNC);
         return(FALSE);
     }
         /*********** Defaults ***********/
@@ -1923,16 +1923,16 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
         /* these are in icalderivedproperty.h */
         switch (icalproperty_isa(p)) {
             case ICAL_SUMMARY_PROPERTY:
-                appt->title = (char *)icalproperty_get_summary(p);
+                appt->title = (gchar *)icalproperty_get_summary (p);
                 break;
             case ICAL_LOCATION_PROPERTY:
-                appt->location = (char *)icalproperty_get_location(p);
+                appt->location = (gchar *)icalproperty_get_location (p);
                 break;
             case ICAL_DESCRIPTION_PROPERTY:
-                appt->note = (char *)icalproperty_get_description(p);
+                appt->note = (gchar *)icalproperty_get_description (p);
                 break;
             case ICAL_UID_PROPERTY:
-                appt->uid = (char *)icalproperty_get_uid(p);
+                appt->uid = (gchar *)icalproperty_get_uid (p);
                 break;
             case ICAL_TRANSP_PROPERTY:
                 xf_transp = icalproperty_get_transp(p);
@@ -1990,7 +1990,7 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
                     /* Ignore, Orage does not support this now. */
                     break;
                 }
-                g_warning ("%s: unknown X property %s", G_STRFUNC, text);
+                g_info ("%s: unknown X property %s", G_STRFUNC, text);
                 break; /* ICAL_X_PROPERTY: */
             case ICAL_PRIORITY_PROPERTY:
                 appt->priority = icalproperty_get_priority(p);
@@ -2056,8 +2056,8 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
             case ICAL_RECURRENCEID_PROPERTY:
                 break;
             default:
-                g_warning ("%s: unknown property %s", G_STRFUNC,
-                           icalproperty_get_property_name (p));
+                g_info ("%s: unknown property %s", G_STRFUNC,
+                        icalproperty_get_property_name (p));
                 break;
         }
     } /* Property for loop */
@@ -2830,7 +2830,7 @@ static void process_alarm_data(icalcomponent *ca, alarm_struct *new_alarm)
                 new_alarm->notify_timeout = i;
             }
             else {
-                g_warning ("%s: unknown X property %s", G_STRFUNC, text);
+                g_info ("%s: unknown X property %s", G_STRFUNC, text);
             }
         }
     }
@@ -2922,10 +2922,6 @@ static void xfical_alarm_build_list_internal_real(gboolean first_list_today
         }  /* ALARM */
         if (trg_active) {
             alarm_add(new_alarm);
-            /*
-            g_message ("new alarm: alarm:%s action:%s title:%s\n"
-            , new_alarm->alarm_time, new_alarm->action_time, new_alarm->title);
-            */
             cnt_alarm_add++;
         }
     }  /* COMPONENT */
