@@ -145,8 +145,9 @@ static GtkWidget *build_separator_bar (const gchar *widget_name)
 
     g_object_set (bar, "hexpand", FALSE,
                        "vexpand", TRUE,
-                       "margin-left", 1,
-                       "margin-right", 1, NULL);
+                       "margin-start", 1,
+                       "margin-end", 1,
+                       NULL);
 
     gtk_widget_set_name (bar, widget_name);
 
@@ -527,7 +528,7 @@ static void on_Date_button_clicked_cb(GtkWidget *button, gpointer *user_data)
     selDate_dialog = gtk_dialog_new_with_buttons (
         _("Pick the date"), GTK_WINDOW (window),
         GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-        _("Today"), 1, _("_OK"), GTK_RESPONSE_ACCEPT, NULL);
+        _("Today"), 1, "_OK", GTK_RESPONSE_ACCEPT, NULL);
 
     if (orage_date_button_clicked (button, selDate_dialog))
         orage_week_window_refresh (window);
@@ -722,7 +723,9 @@ static void add_row (OrageWeekWindow *dw, const xfical_appt *appt)
     }
     gtk_widget_set_tooltip_markup(ev, tip);
     g_object_set (ev, "expand", TRUE,
-                      "margin-left", 1, "margin-right", 1, NULL);
+                      "margin-start", 1,
+                      "margin-end", 1,
+                      NULL);
     gtk_grid_attach_next_to (GTK_GRID (hb), ev, NULL, GTK_POS_BOTTOM, 1, 1);
     g_object_set_data_full (G_OBJECT(ev), "UID", g_strdup (appt->uid), g_free);
     g_signal_connect (ev, "button-press-event",
@@ -834,7 +837,8 @@ static void fill_days (OrageWeekWindow *dw, const gint days)
             ev = gtk_event_box_new ();
 
         g_object_set (ev, "hexpand", TRUE,
-                          "halign", GTK_ALIGN_FILL, NULL);
+                          "halign", GTK_ALIGN_FILL,
+                          NULL);
         gtk_widget_set_name (ev, ORAGE_WEEK_WINDOW_ALL_DAY_EVENT);
 
         gtk_grid_attach_next_to (GTK_GRID (hb), ev,
@@ -882,7 +886,7 @@ static void build_day_view_header (OrageWeekWindow *dw)
     gtk_grid_attach (GTK_GRID (dw->Vbox), grid, 0, 2, 1, 1);
 
     start_label = gtk_label_new (_("Start"));
-    g_object_set (start_label, "margin-left", 10, "margin-right", 10, NULL);
+    g_object_set (start_label, "margin-start", 10, "margin-end", 10, NULL);
     gtk_grid_attach (GTK_GRID (grid), start_label, 0, 0, 1, 1);
 
     /* start date button */
@@ -890,7 +894,7 @@ static void build_day_view_header (OrageWeekWindow *dw)
     gtk_grid_attach_next_to (GTK_GRID (grid), dw->StartDate_button, start_label,
                              GTK_POS_RIGHT, 1, 1);
     no_days_label = gtk_label_new (_("Number of days to show"));
-    g_object_set (no_days_label, "margin-left", 40, "margin-right", 10, NULL);
+    g_object_set (no_days_label, "margin-start", 40, "margin-end", 10, NULL);
     gtk_grid_attach_next_to (GTK_GRID (grid), no_days_label,
                              dw->StartDate_button, GTK_POS_RIGHT, 1, 1);
 
@@ -1064,7 +1068,7 @@ static void build_day_view_table (OrageWeekWindow *dw)
 
         g_signal_connect (button, "clicked",
                           G_CALLBACK (header_button_clicked_cb), dw);
-        g_object_set (button, "margin-left", 3, NULL);
+        g_object_set (button, "margin-start", 3, NULL);
         gtk_grid_attach (GTK_GRID (dw->dtable), button, i, BUTTON_ROW, 1, 1);
 
         /* gdt0 can be safely reassigned, current value is unrefrenced by
@@ -1228,7 +1232,7 @@ void orage_week_window_build (GDateTime *date)
 
     window = orage_week_window_new (date);
 
-    g_signal_connect (window, "delete_event",
+    g_signal_connect (window, "delete-event",
                       G_CALLBACK (on_Window_delete_event), window);
 }
 

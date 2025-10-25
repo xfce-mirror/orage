@@ -805,7 +805,8 @@ static void add_info_row (xfical_appt *appt, GtkBox *parent_box,
     g_free (tmp);
     gtk_label_set_ellipsize (GTK_LABEL (label), PANGO_ELLIPSIZE_END);
 
-    g_object_set (label, "xalign", 0.0, "yalign", 0.5,
+    g_object_set (label, "xalign", 0.0,
+                         "yalign", 0.5,
                          "margin-start", 5,
                          "hexpand", TRUE,
                          "halign", GTK_ALIGN_FILL,
@@ -843,9 +844,8 @@ static void add_info_row (xfical_appt *appt, GtkBox *parent_box,
     tip_title = g_markup_printf_escaped (FORMAT_BOLD, tmp_title);
     if (appt->location)
     {
-        tmp = g_markup_printf_escaped (FORMAT_BOLD, appt->location);
-        tip_location = g_strdup_printf (_(" Location: %s\n"), tmp);
-        g_free (tmp);
+        tip_location = g_markup_printf_escaped (" %s:\t<b>%s</b>\n",
+                                                _("Location"), appt->location);
     }
     else
         tip_location = g_strdup ("");
@@ -855,7 +855,7 @@ static void add_info_row (xfical_appt *appt, GtkBox *parent_box,
         tmp_note = orage_process_text_commands (appt->note);
         tmp_note = orage_limit_text (tmp_note, 50, 10);
         tmp = g_markup_escape_text (tmp_note, strlen (tmp_note));
-        tip_note = g_strdup_printf (_("\n Note:\n%s"), tmp);
+        tip_note = g_strdup_printf ("\n %s:\n%s", _("Note"), tmp);
         g_free (tmp);
     }
     else
@@ -871,9 +871,18 @@ static void add_info_row (xfical_appt *appt, GtkBox *parent_box,
                ? orage_gdatetime_to_i18_time (appt->completedtime, appt->allDay)
                : g_strdup (na);
 
-        tip = g_strdup_printf (
-            _("Title: %s\n%s Start:\t%s\n Due:\t%s\n Done:\t%s%s"),
-            tip_title, tip_location, s_time, e_time, c_time, tip_note);
+        tip = g_strdup_printf ("%s: %s\n"
+                               "%s"
+                               " %s:\t%s\n"
+                               " %s:\t%s\n"
+                               " %s:\t%s"
+                               "%s",
+                               _("Title"), tip_title,
+                               tip_location,
+                               _("Start"), s_time,
+                               _("Due"), e_time,
+                               _("Done"), c_time,
+                               tip_note);
 
         g_free (c_time);
     }
@@ -881,8 +890,15 @@ static void add_info_row (xfical_appt *appt, GtkBox *parent_box,
     {
         /* It is event. */
         e_time = orage_gdatetime_to_i18_time (appt->endtimecur, appt->allDay);
-        tip = g_strdup_printf (_("Title: %s\n%s Start:\t%s\n End:\t%s%s"),
-                               tip_title, tip_location, s_time, e_time,
+        tip = g_strdup_printf ("%s: %s\n"
+                               "%s"
+                               " %s:\t%s\n"
+                               " %s:\t%s"
+                               "%s",
+                               _("Title"), tip_title,
+                               tip_location,
+                               _("Start"), s_time,
+                               _("End"), e_time,
                                tip_note);
     }
 

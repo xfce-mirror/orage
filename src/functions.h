@@ -26,6 +26,7 @@
 #include <glib.h>
 #include <gtk/gtk.h>
 #include <libical/ical.h>
+#include <libxfce4util/libxfce4util.h>
 
 #define ORAGE_APP_ID "org.xfce.orage"
 #define ORAGE_DIR "orage" G_DIR_SEPARATOR_S
@@ -43,7 +44,7 @@
 #define ORAGE_DEFAULT_ALARM_DIR_FILE ORAGE_DIR ORAGE_DEFAULT_ALARM_FILE
 #define ORAGE_DOC_ADDRESS "https://docs.xfce.org/apps/orage/start"
 
-#define ORAGE_STR_EXISTS(str) ((str != NULL) && (str[0] != 0))
+#define ORAGE_STR_EXISTS(str) (!xfce_str_is_empty (str))
 
 #define DATE_KEY "button-date"
 
