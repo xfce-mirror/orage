@@ -6,8 +6,8 @@
 # Translators:
 # Andre Miranda <andre@andreldm.com>, 2022
 # Xfce Bot <transifex@xfce.org>, 2024
-# Quentin PAGÈS, 2025
 # Cédric Valmary <cvalmary@yahoo.fr>, 2025
+# Quentin PAGÈS, 2025
 # 
 #, fuzzy
 msgid ""
@@ -16,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2025-10-25 12:59+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Cédric Valmary <cvalmary@yahoo.fr>, 2025\n"
+"Last-Translator: Quentin PAGÈS, 2025\n"
 "Language-Team: Occitan (post 1500) (https://app.transifex.com/xfce/teams/16840/oc/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -280,7 +280,7 @@ msgstr "Apondon dels fichièrs extèrnes fracassat"
 
 #: src/interface.c:715
 msgid "Orage can only handle 10 foreign files. Limit reached"
-msgstr ""
+msgstr "Orange pas que gerir 10 fichièrs estrangièrs. Limit atench"
 
 #: src/interface.c:725
 msgid "Filename is empty."
@@ -525,34 +525,34 @@ msgstr ""
 
 #: src/orage-application.c:160
 msgid "Released under the terms of the GNU General Public License."
-msgstr ""
+msgstr "Distribuit jols tèrmes de la GNU General Public License."
 
 #: src/orage-application.c:162
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
-msgstr ""
+msgstr "Compilat amb GTK+-%d.%d.%d, en utilizant GTK+-%d.%d.%d."
 
 #: src/orage-application.c:167
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
-msgstr ""
+msgstr "Compilat amb libxfce4ui-%d.%d.%d, en utilizant libxfce4ui-%d.%d.%d."
 
 #: src/orage-application.c:173
 #, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
-msgstr ""
+msgstr "\tCompilat amb libnotify-%d.%d.%d, "
 
 #: src/orage-application.c:176
 msgid "Not using libnotify."
-msgstr ""
+msgstr "Pas a utilizar libnotify."
 
 #: src/orage-application.c:181
 msgid "Using automatic archiving."
-msgstr ""
+msgstr "A utilizar l’archivatge automatic."
 
 #: src/orage-application.c:183
 msgid "Not using archiving."
-msgstr ""
+msgstr "Pas a utilizar l’archivatge automatic."
 
 #: src/orage-application.c:187
 #, c-format
@@ -1373,12 +1373,12 @@ msgstr "_Anullar"
 #. * use "%Y %B" instead.
 #: src/orage-month-view.c:217
 msgid "%B %Y"
-msgstr ""
+msgstr "%B %Y"
 
 #. Setup title row.
 #: src/orage-month-view.c:485 src/orage-window-next.c:1106
 msgid "Week"
-msgstr ""
+msgstr "Setmana"
 
 #: src/orage-sync-edit-dialog.c:132
 msgid "Description:"
@@ -1417,7 +1417,7 @@ msgstr "_Tampar"
 #. * first day of the week, and so on.
 #: src/orage-time-utils.c:264
 msgid "calendar:week_start:0"
-msgstr ""
+msgstr "calendar:week_start:1"
 
 #: src/orage-week-window.c:454
 msgid "Back one week"
@@ -1540,19 +1540,19 @@ msgstr "<b>Eveniments per %s - %s :</b>"
 
 #: src/orage-window-next.c:131
 msgid "Create a new appointment"
-msgstr ""
+msgstr "Crear un rendètz-vos novèl"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"
-msgstr ""
+msgstr "Recargar los fichièrs extèrns"
 
 #: src/orage-window-next.c:135
 msgid "Import/export data"
-msgstr ""
+msgstr "Importar/exportar las donadas"
 
 #: src/orage-window-next.c:136
 msgid "Close window"
-msgstr ""
+msgstr "Tampar la fenèstra"
 
 #: src/orage-window-next.c:137
 msgid "_Quit"
@@ -1560,7 +1560,7 @@ msgstr "_Quitar"
 
 #: src/orage-window-next.c:137
 msgid "Quit program"
-msgstr ""
+msgstr "Quitar lo programa"
 
 #: src/orage-window-next.c:140
 msgid "_Preferences"
@@ -1572,15 +1572,15 @@ msgstr "Preferéncias d'Orage"
 
 #: src/orage-window-next.c:143
 msgid "View selected date"
-msgstr ""
+msgstr "Afichar las datas seleccionadas"
 
 #: src/orage-window-next.c:145
 msgid "Go to today"
-msgstr ""
+msgstr "Anar a uèi"
 
 #: src/orage-window-next.c:148
 msgid "Display Orage user manual"
-msgstr ""
+msgstr "Afichar lo manual d’utilizaire d’Orange"
 
 #: src/orage-window-next.c:149
 msgid "_About"
@@ -1588,45 +1588,45 @@ msgstr "A _prepaus"
 
 #: src/orage-window-next.c:149
 msgid "Display information about Orage"
-msgstr ""
+msgstr "Afichar d’informacions a prepaus d’Orange"
 
 #: src/orage-window-next.c:366
 msgid "New event"
-msgstr ""
+msgstr "Eveniment novèl"
 
 #: src/orage-window-next.c:444
 #, c-format
 msgid "Events for %s:"
-msgstr ""
+msgstr "Eveniment per %s :"
 
 #: src/orage-window-next.c:450
 #, c-format
 msgid "Events for %s - %s:"
-msgstr ""
+msgstr "Eveniment per %s – %s"
 
 #: src/orage-window-next.c:650
 msgid "To do:"
-msgstr ""
+msgstr "A far :"
 
 #: src/orage-window-next.c:1070
 msgid "Previous"
-msgstr ""
+msgstr "Precedent"
 
 #: src/orage-window-next.c:1090
 msgid "Next"
-msgstr ""
+msgstr "Seguent"
 
 #: src/orage-window-next.c:1104
 msgid "Day"
-msgstr ""
+msgstr "Jorn"
 
 #: src/orage-window-next.c:1109
 msgid "Month"
-msgstr ""
+msgstr "Mes"
 
 #: src/orage-window-next.c:1112
 msgid "Year"
-msgstr ""
+msgstr "An"
 
 #: src/parameters.c:646
 msgid "Remove selected synchronization task."
@@ -1682,11 +1682,11 @@ msgstr "Detalhs visuals del calendièr"
 
 #: src/parameters.c:819
 msgid "Use new user interface"
-msgstr ""
+msgstr "Interfàcia utilizaire novèla"
 
 #: src/parameters.c:821
 msgid "Enable the new interface layout (requires restart)"
-msgstr ""
+msgstr "Activar la disposicion de l’interfàcia novèla (reaviada requerida)"
 
 #: src/parameters.c:826
 msgid "Show borders"
