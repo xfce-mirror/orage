@@ -6,10 +6,10 @@
 # Translators:
 # Ingemar Karlsson <ingemar@ingk.se>, 2024
 # Xfce Bot <transifex@xfce.org>, 2024
-# Luna Jernberg <droidbittin@gmail.com>, 2025
 # Arve Eriksson <031299870@telia.com>, 2025
 # Påvel Nicklasson <pavel2@frimix.se>, 2025
 # Nick Schermer <nick@xfce.org>, 2025
+# Luna Jernberg <droidbittin@gmail.com>, 2025
 # 
 #, fuzzy
 msgid ""
@@ -18,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2025-10-25 12:59+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Nick Schermer <nick@xfce.org>, 2025\n"
+"Last-Translator: Luna Jernberg <droidbittin@gmail.com>, 2025\n"
 "Language-Team: Swedish (https://app.transifex.com/xfce/teams/16840/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -283,7 +283,7 @@ msgstr "Tillägg av främmande fil misslyckades"
 
 #: src/interface.c:715
 msgid "Orage can only handle 10 foreign files. Limit reached"
-msgstr ""
+msgstr "Orage kan bara hantera 10 främmande filer. Gränsen är nådd."
 
 #: src/interface.c:725
 msgid "Filename is empty."
@@ -523,34 +523,34 @@ msgstr "Åke Svensson <webaake@gmail.com>Påvel Nicklasson <pavel@frimix.se>"
 
 #: src/orage-application.c:160
 msgid "Released under the terms of the GNU General Public License."
-msgstr ""
+msgstr "Utgivet under villkoren för GNU General Public License."
 
 #: src/orage-application.c:162
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
-msgstr ""
+msgstr "Kompilerad mot GTK+-%d.%d.%d, använder GTK+-%d.%d.%d."
 
 #: src/orage-application.c:167
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
-msgstr ""
+msgstr "Kompilerad mot libxfce4ui-%d.%d.%d, använder libxfce4ui-%d.%d.%d."
 
 #: src/orage-application.c:173
 #, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
-msgstr ""
+msgstr "Kompilerat mot libnotify-%d.%d.%d."
 
 #: src/orage-application.c:176
 msgid "Not using libnotify."
-msgstr ""
+msgstr "Använder inte libnotify."
 
 #: src/orage-application.c:181
 msgid "Using automatic archiving."
-msgstr ""
+msgstr "Använder automatisk arkivering."
 
 #: src/orage-application.c:183
 msgid "Not using archiving."
-msgstr ""
+msgstr "Använder inte arkivering."
 
 #: src/orage-application.c:187
 #, c-format
@@ -1368,12 +1368,12 @@ msgstr "_Avbryt"
 #. * use "%Y %B" instead.
 #: src/orage-month-view.c:217
 msgid "%B %Y"
-msgstr ""
+msgstr "%B %Y"
 
 #. Setup title row.
 #: src/orage-month-view.c:485 src/orage-window-next.c:1106
 msgid "Week"
-msgstr ""
+msgstr "Vecka"
 
 #: src/orage-sync-edit-dialog.c:132
 msgid "Description:"
@@ -1412,7 +1412,7 @@ msgstr "_Stäng"
 #. * first day of the week, and so on.
 #: src/orage-time-utils.c:264
 msgid "calendar:week_start:0"
-msgstr ""
+msgstr "calendar:week_start:1"
 
 #: src/orage-week-window.c:454
 msgid "Back one week"
@@ -1535,19 +1535,19 @@ msgstr "<b>Händelser för %s - %s:</b>"
 
 #: src/orage-window-next.c:131
 msgid "Create a new appointment"
-msgstr ""
+msgstr "Skapa ett nytt möte"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"
-msgstr ""
+msgstr "Ladda om externa filer"
 
 #: src/orage-window-next.c:135
 msgid "Import/export data"
-msgstr ""
+msgstr "Importera/exportera data"
 
 #: src/orage-window-next.c:136
 msgid "Close window"
-msgstr ""
+msgstr "Stäng fönster"
 
 #: src/orage-window-next.c:137
 msgid "_Quit"
@@ -1555,7 +1555,7 @@ msgstr "_Avsluta"
 
 #: src/orage-window-next.c:137
 msgid "Quit program"
-msgstr ""
+msgstr "Avsluta program"
 
 #: src/orage-window-next.c:140
 msgid "_Preferences"
@@ -1567,15 +1567,15 @@ msgstr "Inställningar för Orage"
 
 #: src/orage-window-next.c:143
 msgid "View selected date"
-msgstr ""
+msgstr "Visa valt datum"
 
 #: src/orage-window-next.c:145
 msgid "Go to today"
-msgstr ""
+msgstr "Gå till idag"
 
 #: src/orage-window-next.c:148
 msgid "Display Orage user manual"
-msgstr ""
+msgstr "Visa Orages användarhandbok"
 
 #: src/orage-window-next.c:149
 msgid "_About"
@@ -1583,45 +1583,45 @@ msgstr "_Om"
 
 #: src/orage-window-next.c:149
 msgid "Display information about Orage"
-msgstr ""
+msgstr "Visa information om Orage"
 
 #: src/orage-window-next.c:366
 msgid "New event"
-msgstr ""
+msgstr "Nytt evenemang"
 
 #: src/orage-window-next.c:444
 #, c-format
 msgid "Events for %s:"
-msgstr ""
+msgstr "Evenemang för %s:"
 
 #: src/orage-window-next.c:450
 #, c-format
 msgid "Events for %s - %s:"
-msgstr ""
+msgstr "Evenemang för %s - %s:"
 
 #: src/orage-window-next.c:650
 msgid "To do:"
-msgstr ""
+msgstr "Att göra:"
 
 #: src/orage-window-next.c:1070
 msgid "Previous"
-msgstr ""
+msgstr "Föregående"
 
 #: src/orage-window-next.c:1090
 msgid "Next"
-msgstr ""
+msgstr "Nästa"
 
 #: src/orage-window-next.c:1104
 msgid "Day"
-msgstr ""
+msgstr "Dag"
 
 #: src/orage-window-next.c:1109
 msgid "Month"
-msgstr ""
+msgstr "Månad"
 
 #: src/orage-window-next.c:1112
 msgid "Year"
-msgstr ""
+msgstr "År"
 
 #: src/parameters.c:646
 msgid "Remove selected synchronization task."
@@ -1676,11 +1676,11 @@ msgstr "Kalender visuella detaljer"
 
 #: src/parameters.c:819
 msgid "Use new user interface"
-msgstr ""
+msgstr "Använd nytt användargränssnitt"
 
 #: src/parameters.c:821
 msgid "Enable the new interface layout (requires restart)"
-msgstr ""
+msgstr "Aktivera det nya användargränssnittet (kräver omstart)"
 
 #: src/parameters.c:826
 msgid "Show borders"
