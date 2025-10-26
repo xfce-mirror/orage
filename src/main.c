@@ -21,6 +21,7 @@
  */
 
 #include "orage-i18n.h"
+#include "orage-dbus.h"
 #include "orage-application.h"
 
 #include <glib.h>
@@ -42,6 +43,8 @@ static gboolean quit_handler (gpointer orage_app)
 
 int main (int argc, char **argv)
 {
+    GError *error = NULL;
+
     g_autoptr (OrageApplication) orage_app = NULL;
 
     xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
@@ -53,6 +56,12 @@ int main (int argc, char **argv)
 #ifdef G_OS_UNIX
     (void)g_unix_signal_add (SIGINT, quit_handler, orage_app);
 #endif
+
+    if (orage_dbus_register_service (orage_app, &error) == FALSE)
+    {
+        g_warning ("unable to register terminal service: %s", error->message);
+        g_clear_error (&error);
+    }
 
     return g_application_run (G_APPLICATION (orage_app), argc, argv);;
 }
