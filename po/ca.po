@@ -7,8 +7,8 @@
 # Nick Schermer <nick@xfce.org>, 2022
 # Oscar Perez <oscarpc@gmail.com>, 2024
 # Xfce Bot <transifex@xfce.org>, 2024
-# Davidmp <medipas@gmail.com>, 2025
 # Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2025
+# Davidmp <medipas@gmail.com>, 2025
 # 
 #, fuzzy
 msgid ""
@@ -17,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2025-10-25 12:59+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2025\n"
+"Last-Translator: Davidmp <medipas@gmail.com>, 2025\n"
 "Language-Team: Catalan (https://app.transifex.com/xfce/teams/16840/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -528,34 +528,34 @@ msgstr ""
 
 #: src/orage-application.c:160
 msgid "Released under the terms of the GNU General Public License."
-msgstr ""
+msgstr "Publicat segons els termes de la Llicència Pública General de GNU."
 
 #: src/orage-application.c:162
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
-msgstr ""
+msgstr "Compilat contra GTK+-%d.%d.%d, usant GTK+-%d.%d.%d."
 
 #: src/orage-application.c:167
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
-msgstr ""
+msgstr "Compilat contra libxfce4ui-%d.%d.%d, usant libxfce4ui-%d.%d.%d."
 
 #: src/orage-application.c:173
 #, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
-msgstr ""
+msgstr "Compilat contra libnotify-%d.%d.%d."
 
 #: src/orage-application.c:176
 msgid "Not using libnotify."
-msgstr ""
+msgstr "No s'usa libnotify."
 
 #: src/orage-application.c:181
 msgid "Using automatic archiving."
-msgstr ""
+msgstr "S'usa l'arxivament automàtic."
 
 #: src/orage-application.c:183
 msgid "Not using archiving."
-msgstr ""
+msgstr "No s'usa l'arxivament."
 
 #: src/orage-application.c:187
 #, c-format
