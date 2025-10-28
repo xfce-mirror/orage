@@ -5,8 +5,8 @@
 # 
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2024
-# Moo, 2025
 # Nick Schermer <nick@xfce.org>, 2025
+# Moo, 2025
 # 
 #, fuzzy
 msgid ""
@@ -15,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2025-10-25 12:59+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Nick Schermer <nick@xfce.org>, 2025\n"
+"Last-Translator: Moo, 2025\n"
 "Language-Team: Lithuanian (https://app.transifex.com/xfce/teams/16840/lt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -548,11 +548,11 @@ msgstr ""
 
 #: src/orage-application.c:181
 msgid "Using automatic archiving."
-msgstr ""
+msgstr "Naudojamas automatinis archyvavimas."
 
 #: src/orage-application.c:183
 msgid "Not using archiving."
-msgstr ""
+msgstr "Archyvavimas nenaudojamas."
 
 #: src/orage-application.c:187
 #, c-format
