@@ -525,26 +525,27 @@ msgstr ""
 
 #: src/orage-application.c:160
 msgid "Released under the terms of the GNU General Public License."
-msgstr ""
+msgstr "Platinama GNU bendrosios viešosios licencijos sąlygomis."
 
 #: src/orage-application.c:162
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
-msgstr ""
+msgstr "Kompiliuota remiantis GTK+-%d.%d.%d, naudojant GTK+-%d.%d.%d."
 
 #: src/orage-application.c:167
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
 msgstr ""
+"Kompiliuota remiantis libxfce4ui-%d.%d.%d, naudojant libxfce4ui-%d.%d.%d."
 
 #: src/orage-application.c:173
 #, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
-msgstr ""
+msgstr "Kompiliuota remiantis libnotify-%d.%d.%d."
 
 #: src/orage-application.c:176
 msgid "Not using libnotify."
-msgstr ""
+msgstr "Libnotify nenaudojama."
 
 #: src/orage-application.c:181
 msgid "Using automatic archiving."
