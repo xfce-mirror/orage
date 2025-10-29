@@ -800,3 +800,38 @@ void orage_application_close (OrageApplication *application)
     else
         gtk_widget_hide (orage_application_get_window (application));
 }
+
+gboolean orage_application_open_file (OrageApplication *application,
+                                      const gchar *filename)
+{
+    g_debug ("%s: filename='%s'", G_STRFUNC, filename);
+    return FALSE;
+}
+
+gboolean orage_application_import_file (OrageApplication *application,
+                                        const gchar *filename)
+{
+    g_debug ("%s: filename='%s'", G_STRFUNC, filename);
+    return FALSE;
+}
+
+gboolean orage_application_export_file (OrageApplication *application,
+                                        const gchar *filename)
+{
+    g_debug ("%s: filename='%s'", G_STRFUNC, filename);
+    return FALSE;
+}
+
+gboolean orage_application_add_foreign_file (OrageApplication *application,
+                                             const gchar *filename)
+{
+    g_debug ("%s: filename='%s'", G_STRFUNC, filename);
+    return FALSE;
+}
+
+gboolean orage_application_remove_foreign_file (OrageApplication *application,
+                                                const gchar *filename)
+{
+    g_debug ("%s: filename='%s'", G_STRFUNC, filename);
+    return FALSE;
+}
