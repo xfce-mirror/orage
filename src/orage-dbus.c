@@ -28,12 +28,33 @@
 
 #define ORAGE_DBUS_SERVICE ORAGE_APP_ID
 #define ORAGE_DBUS_PATH "/org/xfce/orage"
+#define ORAGE_DBUS_METHOD_OPEN_FILE "OpenFile"
+#define ORAGE_DBUS_METHOD_IMPORT_FILE "ImportFile"
+#define ORAGE_DBUS_METHOD_EXPORT_FILE "ExportFile"
+#define ORAGE_DBUS_METHOD_ADD_FOREIGN_FILE "AddForeign"
+#define ORAGE_DBUS_METHOD_REMOVE_FOREIGN_FILE "RemoveForeign"
 
 static const gchar introspection_xml[] =
     "<node>"
-    "  <interface name='" ORAGE_APP_ID "'>"
-    "    <method name='LoadFile'>"
-    "    <arg type='s' name='filename' direction='in'/>"
+    "  <interface name='" ORAGE_DBUS_SERVICE "'>"
+    "    <method name='" ORAGE_DBUS_METHOD_OPEN_FILE "'>"
+    "      <arg type='s' name='filename' direction='in'/>"
+    "      <arg type='b' name='success' direction='out'/>"
+    "    </method>"
+    "    <method name='" ORAGE_DBUS_METHOD_IMPORT_FILE "'>"
+    "      <arg type='s' name='filename' direction='in'/>"
+    "      <arg type='b' name='success' direction='out'/>"
+    "    </method>"
+    "    <method name='" ORAGE_DBUS_METHOD_EXPORT_FILE "'>"
+    "      <arg type='s' name='filename' direction='in'/>"
+    "      <arg type='b' name='success' direction='out'/>"
+    "    </method>"
+    "    <method name='" ORAGE_DBUS_METHOD_ADD_FOREIGN_FILE "'>"
+    "      <arg type='s' name='filename' direction='in'/>"
+    "      <arg type='b' name='success' direction='out'/>"
+    "    </method>"
+    "    <method name='" ORAGE_DBUS_METHOD_REMOVE_FOREIGN_FILE "'>"
+    "      <arg type='s' name='filename' direction='in'/>"
     "      <arg type='b' name='success' direction='out'/>"
     "    </method>"
     "  </interface>"
@@ -55,28 +76,62 @@ static const GDBusInterfaceVTable interface_vtable =
     NULL,
 };
 
-static void on_method_call (GDBusConnection *connection,
-                            const gchar *sender,
-                            const gchar *object_path,
-                            const gchar *interface_name,
+static void on_method_call (G_GNUC_UNUSED GDBusConnection *connection,
+                            G_GNUC_UNUSED const gchar *sender,
+                            G_GNUC_UNUSED const gchar *object_path,
+                            G_GNUC_UNUSED const gchar *interface_name,
                             const gchar *method_name,
                             GVariant *parameters,
                             GDBusMethodInvocation *invocation,
                             gpointer user_data)
 {
-    if (g_strcmp0 (method_name, "LoadFile") == 0)
+    OrageApplication *app;
+    gboolean success;
+    const gchar *filename;
+
+    app = ORAGE_APPLICATION (user_data);
+
+    g_debug ("%s: method name '%s' called", G_STRFUNC, method_name);
+
+    if (g_strcmp0 (method_name, ORAGE_DBUS_METHOD_OPEN_FILE) == 0)
     {
-        const gchar *filename;
-        gboolean success = FALSE;
-
         g_variant_get (parameters, "(&s)", &filename);
-        g_debug ("LoadFile called with filename: %s", filename);
-
-        success = TRUE;
+        success = orage_application_open_file (app, filename);
 
         g_dbus_method_invocation_return_value (invocation, g_variant_new ("(b)",
                                                success));
     }
+    else if (g_strcmp0 (method_name, ORAGE_DBUS_METHOD_IMPORT_FILE) == 0)
+    {
+        g_variant_get (parameters, "(&s)", &filename);
+        success = orage_application_import_file (app, filename);
+
+        g_dbus_method_invocation_return_value (invocation, g_variant_new ("(b)",
+                                               success));
+    }
+    else if (g_strcmp0 (method_name, ORAGE_DBUS_METHOD_EXPORT_FILE) == 0)
+    {
+        g_variant_get (parameters, "(&s)", &filename);
+        success = orage_application_export_file (app, filename);
+        g_dbus_method_invocation_return_value (invocation, g_variant_new ("(b)",
+                                               success));
+    }
+    else if (g_strcmp0 (method_name, ORAGE_DBUS_METHOD_ADD_FOREIGN_FILE) == 0)
+    {
+        g_variant_get (parameters, "(&s)", &filename);
+        success = orage_application_add_foreign_file (app, filename);
+        g_dbus_method_invocation_return_value (invocation, g_variant_new ("(b)",
+                                               success));
+    }
+    else if (g_strcmp0 (method_name, ORAGE_DBUS_METHOD_REMOVE_FOREIGN_FILE) == 0)
+    {
+        g_variant_get (parameters, "(&s)", &filename);
+        success = orage_application_remove_foreign_file (app, filename);
+        g_dbus_method_invocation_return_value (invocation, g_variant_new ("(b)",
+                                               success));
+    }
+    else
+        g_warning ("unknown DBUS method name '%s'", method_name);
 }
 
 static void orage_dbus_bus_acquired (GDBusConnection *connection,
@@ -111,11 +166,9 @@ static void orage_dbus_bus_acquired (GDBusConnection *connection,
 }
 
 gboolean orage_dbus_register_service (OrageApplication *app,
-                                      GError **error)
+                                      G_GNUC_UNUSED GError **error)
 {
     guint owner_id;
-
-    g_return_val_if_fail (ORAGE_IS_APPLICATION (app), FALSE);
 
     owner_id = g_bus_own_name (G_BUS_TYPE_SESSION,
                                ORAGE_DBUS_SERVICE,
