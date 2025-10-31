@@ -34,7 +34,7 @@ OrageTaskRunner *orage_application_get_sync (OrageApplication *application);
 GtkWidget *orage_application_get_window (OrageApplication *application);
 void orage_application_close (OrageApplication *application);
 
-gboolean orage_application_open_file (OrageApplication *application,
+gboolean orage_application_open_path (OrageApplication *application,
                                       const gchar *filename);
 gboolean orage_application_import_file (OrageApplication *application,
                                         const gchar *filename);

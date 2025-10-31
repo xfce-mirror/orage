@@ -91,12 +91,12 @@ static void on_method_call (G_GNUC_UNUSED GDBusConnection *connection,
 
     app = ORAGE_APPLICATION (user_data);
 
-    g_debug ("%s: method name '%s' called", G_STRFUNC, method_name);
+    g_debug ("%s: '%s' called", G_STRFUNC, method_name);
 
     if (g_strcmp0 (method_name, ORAGE_DBUS_METHOD_OPEN_FILE) == 0)
     {
         g_variant_get (parameters, "(&s)", &filename);
-        success = orage_application_open_file (app, filename);
+        success = orage_application_open_path (app, filename);
 
         g_dbus_method_invocation_return_value (invocation, g_variant_new ("(b)",
                                                success));
