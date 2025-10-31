@@ -283,6 +283,49 @@ static void orage_open_today_window (OrageWindow *window)
     (void)create_el_win (NULL);
 }
 
+static gboolean orage_application_open_file (OrageApplication *application,
+                                             GFile *file)
+{
+    GList *tmp_list;
+    gboolean result;
+    gchar *filename;
+
+    g_object_ref (file);
+    filename = g_file_get_path (file);
+
+    if (is_readable (file))
+    {
+        g_debug ("opening calendar file '%s'", filename);
+        tmp_list = o_cal_component_list_from_file (file);
+        if (tmp_list)
+        {
+            g_debug ("loaded %d events from file '%s'",
+                     g_list_length (tmp_list), filename);
+            /* 'file' is freed by callback. */
+            application->files = g_list_append (application->files, file);
+            application->appointments = g_list_concat (application->appointments,
+                                                       tmp_list);
+            result = TRUE;
+        }
+        else
+        {
+            g_warning ("ICS file '%s' read failed", filename);
+            result = FALSE;
+        }
+    }
+    else
+    {
+        g_warning ("file '%s' does not exist or cannot be read",
+                   filename);
+        result = FALSE;
+    }
+
+    g_free (filename);
+    g_object_unref (file);
+
+    return result;
+}
+
 static void orage_application_activate (GApplication *app)
 {
     GList *list;
@@ -525,8 +568,6 @@ static void orage_application_open (GApplication *app,
                                     const gint n_files,
                                     const gchar *hint)
 {
-    GList *tmp_list;
-    OrageApplication *self;
     gchar **hint_array;
     gint i;
     gchar *file;
@@ -539,31 +580,8 @@ static void orage_application_open (GApplication *app,
         switch (hint[0])
         {
             case HINT_OPEN:
-                file = g_file_get_path (files[i]);
-                if (is_readable (files[i]))
-                {
-                    g_debug ("opening calendar file '%s'", file);
-                    self = ORAGE_APPLICATION (app);
-                    tmp_list = o_cal_component_list_from_file (files[i]);
-                    if (tmp_list)
-                    {
-                        g_debug ("loaded %d events from file '%s'",
-                                 g_list_length (tmp_list), file);
-                        /* 'file' is freed by callback. */
-                        self->files = g_list_append (self->files, file);
-                        self->appointments = g_list_concat (self->appointments,
-                                                            tmp_list);
-                    }
-                    else
-                    {
-                        g_warning ("ICS file '%s' read failed", file);
-                        g_free (file);
-                    }
-                }
-                else
-                    g_warning ("file '%s' does not exist or cannot be read",
-                               file);
-
+                (void)orage_application_open_file (ORAGE_APPLICATION (app),
+                                                   files[i]);
                 break;
 
             case HINT_ADD:
@@ -801,11 +819,18 @@ void orage_application_close (OrageApplication *application)
         gtk_widget_hide (orage_application_get_window (application));
 }
 
-gboolean orage_application_open_file (OrageApplication *application,
+gboolean orage_application_open_path (OrageApplication *application,
                                       const gchar *filename)
 {
-    g_debug ("%s: filename='%s'", G_STRFUNC, filename);
-    return FALSE;
+    gboolean result;
+    GFile *file = g_file_new_for_path (filename);
+    result = orage_application_open_file (application, file);
+
+    g_object_unref (file);
+
+    show_appointment_preview (application, NULL);
+
+    return result;
 }
 
 gboolean orage_application_import_file (OrageApplication *application,
