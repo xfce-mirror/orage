@@ -100,9 +100,9 @@ static gboolean pre_format(const gchar *file_name_in,
     gsize text_len;
     GError *error = NULL;
 
-    g_message ("Starting import file preprocessing");
+    g_debug ("starting import file preprocessing");
     if (!g_file_get_contents(file_name_in, &text, &text_len, &error)) {
-        g_critical ("%s: Could not open ical file (%s) error:%s", G_STRFUNC
+        g_critical ("%s: could not open ical file (%s) error: %s", G_STRFUNC
                 , file_name_in, error->message);
         g_error_free(error);
         return(FALSE);
@@ -113,12 +113,6 @@ static gboolean pre_format(const gchar *file_name_in,
                     "(Use iconv and convert it into UTF-8 and import it "
                     "again.)", G_STRFUNC);
         return(FALSE);
-        /* we don't know the real characterset, so we can't convert
-        tmp = g_locale_to_utf8(text, -1, NULL, &cnt, NULL);
-        if (tmp) {
-            g_strlcpy(text, tmp, text_len);
-            g_free(tmp);
-        }*/
     }
 
     /***** 1: change DCREATED to CREATED *****/
