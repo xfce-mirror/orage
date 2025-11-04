@@ -8,11 +8,11 @@
 # Jaime Marquínez Ferrándiz, 2023
 # Adolfo Jayme Barrientos, 2023
 # Xfce Bot <transifex@xfce.org>, 2024
-# Casper, 2024
 # Ignacio Poggi <ignaciop.3@gmail.com>, 2025
 # Nick Schermer <nick@xfce.org>, 2025
 # 629cf3e396111bb8c5fb6664e2dbc91d, 2025
 # Toni Estévez <toni.estevez@gmail.com>, 2025
+# Casper, 2025
 # 
 #, fuzzy
 msgid ""
@@ -21,7 +21,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2025-10-25 12:59+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Toni Estévez <toni.estevez@gmail.com>, 2025\n"
+"Last-Translator: Casper, 2025\n"
 "Language-Team: Spanish (https://app.transifex.com/xfce/teams/16840/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -288,6 +288,7 @@ msgstr "Fallo al agregar archivo externo"
 #: src/interface.c:715
 msgid "Orage can only handle 10 foreign files. Limit reached"
 msgstr ""
+"Orage solo puede procesar 10 archivos externos. Se ha alcanzado el límite."
 
 #: src/interface.c:725
 msgid "Filename is empty."
@@ -533,22 +534,22 @@ msgstr ""
 
 #: src/orage-application.c:160
 msgid "Released under the terms of the GNU General Public License."
-msgstr ""
+msgstr "Publicado bajo los términos de la Licencia Pública General GNU."
 
 #: src/orage-application.c:162
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
-msgstr ""
+msgstr "Compilado con GTK+-%d.%d.%d, usando GTK+-%d.%d.%d."
 
 #: src/orage-application.c:167
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
-msgstr ""
+msgstr "Compilado con libxfce4ui-%d.%d.%d, usando libxfce4ui-%d.%d.%d."
 
 #: src/orage-application.c:173
 #, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
-msgstr ""
+msgstr "Compilado con libnotify-%d.%d.%d."
 
 #: src/orage-application.c:176
 msgid "Not using libnotify."
