@@ -434,7 +434,7 @@ msgstr "Opcions de l'acció:"
 
 #: src/interface.c:1293 src/interface.c:1391
 msgid "Rename"
-msgstr "Canvia el nom"
+msgstr "Canvia'n el nom"
 
 #: src/interface.c:1300
 msgid ""
@@ -4249,7 +4249,7 @@ msgstr "Surt"
 
 #: plugin/org.xfce.orage-settings.desktop.in:5
 msgid "Settings for the Xfce 4 Calendar Application (Orage)"
-msgstr "Ajusts per a l'aplicació de calendari de Xfce 4 (Orage)"
+msgstr "Ajusts per a l'aplicació de calendari de l'Xfce 4 (Orage)"
 
 #: plugin/org.xfce.orage-settings.desktop.in:12
 msgid "Orage Calendar Preferences"
