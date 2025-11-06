@@ -101,12 +101,14 @@ static gboolean pre_format(const gchar *file_name_in,
     GError *error = NULL;
 
     g_debug ("starting import file preprocessing");
-    if (!g_file_get_contents(file_name_in, &text, &text_len, &error)) {
-        g_critical ("%s: could not open ical file (%s) error: %s", G_STRFUNC
-                , file_name_in, error->message);
-        g_error_free(error);
-        return(FALSE);
+    if (g_file_get_contents (file_name_in, &text, &text_len, &error) == FALSE)
+    {
+        g_critical ("%s: could not open ical file (%s) error: %s", G_STRFUNC,
+                    file_name_in, error->message);
+        g_error_free (error);
+        return FALSE;
     }
+
     /***** Check utf8 conformability *****/
     if (!g_utf8_validate(text, -1, NULL)) {
         g_critical ("%s: is not in utf8 format. Conversion needed. "
@@ -187,7 +189,7 @@ static gboolean pre_format(const gchar *file_name_in,
     return(TRUE);
 }
 
-gboolean xfical_import_file(const gchar *file_name)
+gboolean xfical_import_by_path (const gchar *file_name)
 {
     icalset *file_ical;
     gchar *ical_file_name;
@@ -252,6 +254,18 @@ gboolean xfical_import_file(const gchar *file_name)
 
     g_free(ical_file_name);
     return(TRUE);
+}
+
+gboolean xfical_import_file (GFile *file)
+{
+    gboolean result;
+    gchar *name;
+
+    name = g_file_get_path (file);
+    result = xfical_import_by_path (name);
+    g_free (name);
+
+    return result;
 }
 
 static gboolean export_prepare_write_file(const gchar *file_name)
@@ -391,9 +405,9 @@ static gboolean export_selected (const gchar *file_name, const gchar *uids)
     return(TRUE);
 }
 
-gboolean xfical_export_file (const gchar *file_name,
-                             const gint type,
-                             const gchar *uids)
+gboolean xfical_export_by_path (const gchar *file_name,
+                                const gint type,
+                                const gchar *uids)
 {
     if (type == 0) { /* copy the whole file */
         return(export_all(file_name));

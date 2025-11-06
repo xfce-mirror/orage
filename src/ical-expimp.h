@@ -25,9 +25,10 @@
 
 #include <glib.h>
 
-gboolean xfical_import_file (const gchar *file_name);
-gboolean xfical_export_file (const gchar *file_name,
-                             gint type,
-                             const gchar *uids);
+gboolean xfical_import_file (GFile *file);
+gboolean xfical_import_by_path (const gchar *file_name);
+gboolean xfical_export_by_path (const gchar *file_name,
+                                gint type,
+                                const gchar *uids);
 
 #endif
