@@ -435,7 +435,9 @@ static void on_unarchive_button_clicked_cb (G_GNUC_UNUSED GtkButton *button,
 gboolean orage_import_file (const gchar *entry_filename)
 {
     OrageApplication *app;
-    if (xfical_import_file(entry_filename)) {
+
+    if (xfical_import_by_path (entry_filename))
+    {
         app = ORAGE_APPLICATION (g_application_get_default ());
         orage_window_update_appointments (ORAGE_WINDOW (
             orage_application_get_window (app)));
@@ -506,7 +508,7 @@ static void exp_save_button_clicked (G_GNUC_UNUSED GtkButton *button,
             g_warning ("UNKNOWN select appointment");
         }
 
-        if (xfical_export_file (entry_filename, app_count, entry_uids))
+        if (xfical_export_by_path (entry_filename, app_count, entry_uids))
             g_message ("Export done %s", entry_filename);
         else
             g_warning ("export failed file=%s", entry_filename);
