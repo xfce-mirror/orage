@@ -85,7 +85,8 @@ static void cb_preview_dialog_response (GtkDialog *gtk_dialog,
                                         const gint response_id,
                                         gpointer data)
 {
-    const gchar *file;
+    GFile *file;
+    gchar *filename;
     GList *tmp_list;
     OrageImportWindow *dialog = ORAGE_IMPORT_WINDOW (gtk_dialog);
     OrageApplication *app = ORAGE_APPLICATION (data);
@@ -99,11 +100,14 @@ static void cb_preview_dialog_response (GtkDialog *gtk_dialog,
                  tmp_list != NULL;
                  tmp_list = g_list_next (tmp_list))
             {
-                file = tmp_list->data;
+                file = G_FILE (tmp_list->data);
+                filename = g_file_get_path (file);
                 if (xfical_import_file (file))
-                    g_message ("import done, file=%s", file);
+                    g_message ("import done, file=%s", filename);
                 else
-                    g_warning ("import failed, file=%s", file);
+                    g_warning ("import failed, file=%s", filename);
+
+                g_free (filename);
             }
 
             break;
@@ -118,7 +122,7 @@ static void cb_preview_dialog_response (GtkDialog *gtk_dialog,
 
     gtk_widget_destroy (GTK_WIDGET (gtk_dialog));
     g_list_free_full (app->appointments, g_object_unref);
-    g_list_free_full (app->files, g_free);
+    g_list_free_full (app->files, g_object_unref);
     app->appointments = NULL;
     app->files = NULL;
 }
@@ -219,7 +223,7 @@ static gboolean is_readable (GFile *file)
         }
         else
         {
-            g_warning ("file is not readale");
+            g_debug ("file is not readale");
             result = FALSE;
         }
 
@@ -227,7 +231,7 @@ static gboolean is_readable (GFile *file)
     }
     else
     {
-        g_warning ("could not open file: %s", error->message);
+        g_debug ("could not open file: %s", error->message);
         g_clear_error (&error);
         result = FALSE;
     }
@@ -318,10 +322,10 @@ static gboolean orage_application_open_file (OrageApplication *application,
         g_warning ("file '%s' does not exist or cannot be read",
                    filename);
         result = FALSE;
+        g_object_unref (file);
     }
 
     g_free (filename);
-    g_object_unref (file);
 
     return result;
 }
@@ -623,7 +627,7 @@ static void orage_application_open (GApplication *app,
                 export_type = hint_array[1] ? 1 : 0;
                 g_debug ("exporting to='%s', uids='%s'", file, hint_array[1]);
 
-                if (xfical_export_file (file, export_type, hint_array[1]))
+                if (xfical_export_by_path (file, export_type, hint_array[1]))
                     g_message ("export done to file=%s", file);
                 else
                     g_warning ("export failed file=%s", file);
@@ -636,7 +640,7 @@ static void orage_application_open (GApplication *app,
                 file = g_file_get_path (files[i]);
                 g_debug ("import, file=%s", file);
 
-                if (xfical_import_file (file))
+                if (xfical_import_file (files[i]))
                     g_message ("import done, file=%s", file);
                 else
                     g_warning ("import failed, file=%s", file);
@@ -825,11 +829,12 @@ gboolean orage_application_open_path (OrageApplication *application,
 {
     gboolean result;
     GFile *file = g_file_new_for_path (filename);
-    result = orage_application_open_file (application, file);
 
+    result = orage_application_open_file (application, file);
     g_object_unref (file);
 
-    show_appointment_preview (application, NULL);
+    if (result)
+        show_appointment_preview (application, NULL);
 
     return result;
 }

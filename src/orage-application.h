@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022-2023 Erkki Moorits
+ * Copyright (c) 2022-2025 Erkki Moorits
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,6 +34,16 @@ OrageTaskRunner *orage_application_get_sync (OrageApplication *application);
 GtkWidget *orage_application_get_window (OrageApplication *application);
 void orage_application_close (OrageApplication *application);
 
+/**
+ * orage_application_open_path:
+ * @application: (type OrageApplication): an Orage application instance.
+ * @filename: (type filename): path to the file to open.
+ *
+ * Opens a file specified by a local filesystem path and shows the appointment
+ * preview.
+ *
+ * Returns: %TRUE if the file was successfully opened, or %FALSE otherwise.
+ */
 gboolean orage_application_open_path (OrageApplication *application,
                                       const gchar *filename);
 gboolean orage_application_import_file (OrageApplication *application,
