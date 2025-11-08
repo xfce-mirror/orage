@@ -1390,7 +1390,7 @@ msgstr "%B %Y"
 #. Setup title row.
 #: src/orage-month-view.c:485 src/orage-window-next.c:1106
 msgid "Week"
-msgstr ""
+msgstr "Semana"
 
 #: src/orage-sync-edit-dialog.c:132
 msgid "Description:"
@@ -1429,7 +1429,7 @@ msgstr "_Cerrar"
 #. * first day of the week, and so on.
 #: src/orage-time-utils.c:264
 msgid "calendar:week_start:0"
-msgstr ""
+msgstr "calendar:week_start:0"
 
 #: src/orage-week-window.c:454
 msgid "Back one week"
