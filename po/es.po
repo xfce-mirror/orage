@@ -1556,15 +1556,15 @@ msgstr ""
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"
-msgstr ""
+msgstr "Recargar archivos externos"
 
 #: src/orage-window-next.c:135
 msgid "Import/export data"
-msgstr ""
+msgstr "Importar/Exportar datos"
 
 #: src/orage-window-next.c:136
 msgid "Close window"
-msgstr ""
+msgstr "Cerrar ventana"
 
 #: src/orage-window-next.c:137
 msgid "_Quit"
@@ -1572,7 +1572,7 @@ msgstr "_Salir"
 
 #: src/orage-window-next.c:137
 msgid "Quit program"
-msgstr ""
+msgstr "Salir del programa"
 
 #: src/orage-window-next.c:140
 msgid "_Preferences"
@@ -1584,15 +1584,15 @@ msgstr "Preferencias de Orage"
 
 #: src/orage-window-next.c:143
 msgid "View selected date"
-msgstr ""
+msgstr "Ver fecha seleccionada"
 
 #: src/orage-window-next.c:145
 msgid "Go to today"
-msgstr ""
+msgstr "Ir a hoy"
 
 #: src/orage-window-next.c:148
 msgid "Display Orage user manual"
-msgstr ""
+msgstr "Mostrar manual de usuario de Orage"
 
 #: src/orage-window-next.c:149
 msgid "_About"
@@ -1600,7 +1600,7 @@ msgstr "Acerca _de"
 
 #: src/orage-window-next.c:149
 msgid "Display information about Orage"
-msgstr ""
+msgstr "Mostrar información sobre Orage"
 
 #: src/orage-window-next.c:366
 msgid "New event"
