@@ -771,6 +771,7 @@ static void orage_application_init (OrageApplication *application)
 
     g_application_add_main_option_entries (G_APPLICATION (application),
                                            option_entries);
+    g_set_prgname (ORAGE_APP_ID);
     gtk_window_set_default_icon_name (ORAGE_APP_ID);
 }
 
