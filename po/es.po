@@ -1552,7 +1552,7 @@ msgstr "<b>Eventos para %s - %sº.</b>"
 
 #: src/orage-window-next.c:131
 msgid "Create a new appointment"
-msgstr ""
+msgstr "Crear una nueva cita"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"
@@ -1604,21 +1604,21 @@ msgstr "Mostrar información sobre Orage"
 
 #: src/orage-window-next.c:366
 msgid "New event"
-msgstr ""
+msgstr "Nuevo evento"
 
 #: src/orage-window-next.c:444
 #, c-format
 msgid "Events for %s:"
-msgstr ""
+msgstr "Eventos para %s:"
 
 #: src/orage-window-next.c:450
 #, c-format
 msgid "Events for %s - %s:"
-msgstr ""
+msgstr "Eventos para %s - %s:"
 
 #: src/orage-window-next.c:650
 msgid "To do:"
-msgstr ""
+msgstr "Hacer:"
 
 #: src/orage-window-next.c:1070
 msgid "Previous"
@@ -1630,15 +1630,15 @@ msgstr "Siguiente"
 
 #: src/orage-window-next.c:1104
 msgid "Day"
-msgstr ""
+msgstr "Dia"
 
 #: src/orage-window-next.c:1109
 msgid "Month"
-msgstr ""
+msgstr "Mes"
 
 #: src/orage-window-next.c:1112
 msgid "Year"
-msgstr ""
+msgstr "Año"
 
 #: src/parameters.c:646
 msgid "Remove selected synchronization task."
@@ -1693,11 +1693,11 @@ msgstr "Detalles del calendario"
 
 #: src/parameters.c:819
 msgid "Use new user interface"
-msgstr ""
+msgstr "Usar la nueva interfaz de usuario"
 
 #: src/parameters.c:821
 msgid "Enable the new interface layout (requires restart)"
-msgstr ""
+msgstr "Activar el nuevo diseño de interfaz (requiere reiniciar)"
 
 #: src/parameters.c:826
 msgid "Show borders"
