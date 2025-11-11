@@ -216,22 +216,17 @@ static gboolean is_readable (GFile *file)
 
     if (info)
     {
-        if (g_file_info_get_attribute_boolean (info,
-                                               G_FILE_ATTRIBUTE_ACCESS_CAN_READ))
-        {
-            result = TRUE;
-        }
-        else
-        {
+        result = g_file_info_get_attribute_boolean (info,
+                                                    G_FILE_ATTRIBUTE_ACCESS_CAN_READ);
+
+        if (result == FALSE)
             g_debug ("file is not readale");
-            result = FALSE;
-        }
 
         g_object_unref (info);
     }
     else
     {
-        g_debug ("could not open file: %s", error->message);
+        g_debug ("could not open file: '%s'", error->message);
         g_clear_error (&error);
         result = FALSE;
     }
@@ -287,7 +282,7 @@ static void orage_open_today_window (OrageWindow *window)
     (void)create_el_win (NULL);
 }
 
-static gboolean orage_application_open_file (OrageApplication *application,
+static gboolean orage_application_open_file (OrageApplication *self,
                                              GFile *file)
 {
     GList *tmp_list;
@@ -306,9 +301,8 @@ static gboolean orage_application_open_file (OrageApplication *application,
             g_debug ("loaded %d events from file '%s'",
                      g_list_length (tmp_list), filename);
             /* 'file' is freed by callback. */
-            application->files = g_list_append (application->files, file);
-            application->appointments = g_list_concat (application->appointments,
-                                                       tmp_list);
+            self->files = g_list_append (self->files, file);
+            self->appointments = g_list_concat (self->appointments, tmp_list);
             result = TRUE;
         }
         else
@@ -326,6 +320,39 @@ static gboolean orage_application_open_file (OrageApplication *application,
     }
 
     g_free (filename);
+
+    return result;
+}
+
+static gboolean orage_application_import_file (OrageApplication *self,
+                                               GFile *file)
+{
+    gboolean result;
+    gchar *filename;
+
+    g_object_ref (file);
+    filename = g_file_get_path (file);
+
+    if (is_readable (file))
+    {
+        result = xfical_import_file (file);
+        if (result)
+        {
+            orage_window_update_appointments (ORAGE_WINDOW (self->window));
+            g_message ("import done, file=%s", filename);
+        }
+        else
+            g_warning ("import failed, file=%s", filename);
+    }
+    else
+    {
+        g_warning ("file '%s' does not exist or cannot be read",
+                   filename);
+        result = FALSE;
+    }
+
+    g_free (filename);
+    g_object_unref (file);
 
     return result;
 }
@@ -637,15 +664,8 @@ static void orage_application_open (GApplication *app,
                 break;
 
             case HINT_IMPORT:
-                file = g_file_get_path (files[i]);
-                g_debug ("import, file=%s", file);
-
-                if (xfical_import_file (files[i]))
-                    g_message ("import done, file=%s", file);
-                else
-                    g_warning ("import failed, file=%s", file);
-
-                g_free (file);
+                orage_application_import_file (ORAGE_APPLICATION (app),
+                                               files[i]);
                 break;
 
             case HINT_REMOVE:
@@ -686,7 +706,7 @@ static void orage_application_class_init (OrageApplicationClass *klass)
     application_class->handle_local_options = orage_application_handle_local_options;
 }
 
-static void orage_application_init (OrageApplication *application)
+static void orage_application_init (OrageApplication *self)
 {
     const GOptionEntry option_entries[] =
     {
@@ -791,7 +811,7 @@ static void orage_application_init (OrageApplication *application)
         }
     };
 
-    g_application_add_main_option_entries (G_APPLICATION (application),
+    g_application_add_main_option_entries (G_APPLICATION (self),
                                            option_entries);
     g_set_prgname (ORAGE_APP_ID);
     gtk_window_set_default_icon_name (ORAGE_APP_ID);
@@ -811,56 +831,60 @@ OrageTaskRunner *orage_application_get_sync (OrageApplication *application)
     return application->sync;
 }
 
-GtkWidget *orage_application_get_window (OrageApplication *application)
+GtkWidget *orage_application_get_window (OrageApplication *self)
 {
-    return application->window;
+    return self->window;
 }
 
-void orage_application_close (OrageApplication *application)
+void orage_application_close (OrageApplication *self)
 {
     if (g_par.close_means_quit)
-        g_application_quit (G_APPLICATION (application));
+        g_application_quit (G_APPLICATION (self));
     else
-        gtk_widget_hide (orage_application_get_window (application));
+        gtk_widget_hide (orage_application_get_window (self));
 }
 
-gboolean orage_application_open_path (OrageApplication *application,
+gboolean orage_application_open_path (OrageApplication *self,
                                       const gchar *filename)
 {
     gboolean result;
     GFile *file = g_file_new_for_path (filename);
 
-    result = orage_application_open_file (application, file);
+    result = orage_application_open_file (self, file);
     g_object_unref (file);
 
     if (result)
-        show_appointment_preview (application, NULL);
+        show_appointment_preview (self, NULL);
 
     return result;
 }
 
-gboolean orage_application_import_file (OrageApplication *application,
+gboolean orage_application_import_path (OrageApplication *self,
+                                        const gchar *filename)
+{
+    GFile *file = g_file_new_for_path (filename);
+    gboolean result = orage_application_import_file (self, file);
+
+    g_object_unref (file);
+
+    return result;
+}
+
+gboolean orage_application_export_file (OrageApplication *self,
                                         const gchar *filename)
 {
     g_debug ("%s: filename='%s'", G_STRFUNC, filename);
     return FALSE;
 }
 
-gboolean orage_application_export_file (OrageApplication *application,
-                                        const gchar *filename)
-{
-    g_debug ("%s: filename='%s'", G_STRFUNC, filename);
-    return FALSE;
-}
-
-gboolean orage_application_add_foreign_file (OrageApplication *application,
+gboolean orage_application_add_foreign_file (OrageApplication *self,
                                              const gchar *filename)
 {
     g_debug ("%s: filename='%s'", G_STRFUNC, filename);
     return FALSE;
 }
 
-gboolean orage_application_remove_foreign_file (OrageApplication *application,
+gboolean orage_application_remove_foreign_file (OrageApplication *self,
                                                 const gchar *filename)
 {
     g_debug ("%s: filename='%s'", G_STRFUNC, filename);
