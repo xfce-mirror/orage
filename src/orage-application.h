@@ -30,13 +30,13 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (OrageApplication, orage_application, ORAGE, APPLICATION, GtkApplication)
 
 OrageApplication *orage_application_new (void);
-OrageTaskRunner *orage_application_get_sync (OrageApplication *application);
-GtkWidget *orage_application_get_window (OrageApplication *application);
-void orage_application_close (OrageApplication *application);
+OrageTaskRunner *orage_application_get_sync (OrageApplication *self);
+GtkWidget *orage_application_get_window (OrageApplication *self);
+void orage_application_close (OrageApplication *self);
 
 /**
  * orage_application_open_path:
- * @application: (type OrageApplication): an Orage application instance.
+ * @self: (type OrageApplication): an Orage application instance.
  * @filename: (type filename): path to the file to open.
  *
  * Opens a file specified by a local filesystem path and shows the appointment
@@ -44,15 +44,25 @@ void orage_application_close (OrageApplication *application);
  *
  * Returns: %TRUE if the file was successfully opened, or %FALSE otherwise.
  */
-gboolean orage_application_open_path (OrageApplication *application,
+gboolean orage_application_open_path (OrageApplication *self,
                                       const gchar *filename);
-gboolean orage_application_import_file (OrageApplication *application,
+
+/**
+ * orage_application_import_file:
+ * @self: an #OrageApplication instance.
+ * @file: a #GFile representing the file to import.
+ *
+ * Imports the given calendar or appointment file into Orage.
+ *
+ * Returns: %TRUE if the import succeeded, otherwise %FALSE.
+ */
+gboolean orage_application_import_path (OrageApplication *self,
                                         const gchar *filename);
-gboolean orage_application_export_file (OrageApplication *application,
+gboolean orage_application_export_file (OrageApplication *self,
                                         const gchar *filename);
-gboolean orage_application_add_foreign_file (OrageApplication *application,
+gboolean orage_application_add_foreign_file (OrageApplication *self,
                                              const gchar *filename);
-gboolean orage_application_remove_foreign_file (OrageApplication *application,
+gboolean orage_application_remove_foreign_file (OrageApplication *self,
                                                 const gchar *filename);
 
 G_END_DECLS
