@@ -5,9 +5,9 @@
 # 
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2024
-# Warut Bunprasert <warut.b@disroot.org>, 2025
 # Theppitak Karoonboonyanan <theppitak@gmail.com>, 2025
 # Arthit Suriyawongkul, 2025
+# Warut Bunprasert <warut.b@disroot.org>, 2025
 # 
 #, fuzzy
 msgid ""
@@ -16,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2025-10-25 12:59+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Arthit Suriyawongkul, 2025\n"
+"Last-Translator: Warut Bunprasert <warut.b@disroot.org>, 2025\n"
 "Language-Team: Thai (https://app.transifex.com/xfce/teams/16840/th/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -281,6 +281,8 @@ msgstr "เพิ่มแฟ้มต่างระบบไม่สำเร
 #: src/interface.c:715
 msgid "Orage can only handle 10 foreign files. Limit reached"
 msgstr ""
+"Orage สามารถจัดการแฟ้มต่างระบบได้เพียง 10 แฟ้มเท่านั้น "
+"ซึ่งได้ถึงขีดจำกัดแล้ว"
 
 #: src/interface.c:725
 msgid "Filename is empty."
@@ -520,34 +522,34 @@ msgstr "Theppitak Karoonboonyanan <theppitak@gmail.com>"
 
 #: src/orage-application.c:160
 msgid "Released under the terms of the GNU General Public License."
-msgstr ""
+msgstr "เผยแพร่ภายใต้เงื่อนไขของ GNU General Public License"
 
 #: src/orage-application.c:162
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
-msgstr ""
+msgstr "คอมไพล์กับ GTK+-%d.%d.%d, และใช้ GTK+-%d.%d.%d."
 
 #: src/orage-application.c:167
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
-msgstr ""
+msgstr "คอมไพล์กับ libxfce4ui-%d.%d.%d, และใช้ libxfce4ui-%d.%d.%d."
 
 #: src/orage-application.c:173
 #, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
-msgstr ""
+msgstr "คอมไพล์กับ libnotify-%d.%d.%d."
 
 #: src/orage-application.c:176
 msgid "Not using libnotify."
-msgstr ""
+msgstr "ไม่ได้ใช้ libnotify"
 
 #: src/orage-application.c:181
 msgid "Using automatic archiving."
-msgstr ""
+msgstr "ใช้การทำกรุอัตโนมัติ"
 
 #: src/orage-application.c:183
 msgid "Not using archiving."
-msgstr ""
+msgstr "ไม่ได้ใช้การทำกรุ"
 
 #: src/orage-application.c:187
 #, c-format
@@ -1362,12 +1364,12 @@ msgstr "_ยกเลิก"
 #. * use "%Y %B" instead.
 #: src/orage-month-view.c:217
 msgid "%B %Y"
-msgstr ""
+msgstr "%B %Y"
 
 #. Setup title row.
 #: src/orage-month-view.c:485 src/orage-window-next.c:1106
 msgid "Week"
-msgstr ""
+msgstr "สัปดาห์"
 
 #: src/orage-sync-edit-dialog.c:132
 msgid "Description:"
@@ -1406,7 +1408,7 @@ msgstr "ปิ_ด"
 #. * first day of the week, and so on.
 #: src/orage-time-utils.c:264
 msgid "calendar:week_start:0"
-msgstr ""
+msgstr "calendar:week_start:0"
 
 #: src/orage-week-window.c:454
 msgid "Back one week"
@@ -1529,19 +1531,19 @@ msgstr "<b>เหตุการณ์สำหรับ %s - %s:</b>"
 
 #: src/orage-window-next.c:131
 msgid "Create a new appointment"
-msgstr ""
+msgstr "สร้างการนัดหมายใหม่"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"
-msgstr ""
+msgstr "โหลดแฟ้มภายนอกอีกครั้ง"
 
 #: src/orage-window-next.c:135
 msgid "Import/export data"
-msgstr ""
+msgstr "นำเข้า/ส่งออกข้อมูล"
 
 #: src/orage-window-next.c:136
 msgid "Close window"
-msgstr ""
+msgstr "ปิดหน้าต่าง"
 
 #: src/orage-window-next.c:137
 msgid "_Quit"
@@ -1549,7 +1551,7 @@ msgstr "_ออก"
 
 #: src/orage-window-next.c:137
 msgid "Quit program"
-msgstr ""
+msgstr "ออกจากโปรแกรม"
 
 #: src/orage-window-next.c:140
 msgid "_Preferences"
@@ -1561,15 +1563,15 @@ msgstr "ปรับแต่ง Orage"
 
 #: src/orage-window-next.c:143
 msgid "View selected date"
-msgstr ""
+msgstr "ดูวันที่ที่เลือก"
 
 #: src/orage-window-next.c:145
 msgid "Go to today"
-msgstr ""
+msgstr "ไปวันนี้"
 
 #: src/orage-window-next.c:148
 msgid "Display Orage user manual"
-msgstr ""
+msgstr "แสดงคู่มือผู้ใช้ Orage"
 
 #: src/orage-window-next.c:149
 msgid "_About"
@@ -1577,45 +1579,45 @@ msgstr "เ_กี่ยวกับ"
 
 #: src/orage-window-next.c:149
 msgid "Display information about Orage"
-msgstr ""
+msgstr "แสดงข้อมูลเกี่ยวกับ Orage"
 
 #: src/orage-window-next.c:366
 msgid "New event"
-msgstr ""
+msgstr "เหตุการณ์ใหม่"
 
 #: src/orage-window-next.c:444
 #, c-format
 msgid "Events for %s:"
-msgstr ""
+msgstr "เหตุการณ์สำหรับ %s:"
 
 #: src/orage-window-next.c:450
 #, c-format
 msgid "Events for %s - %s:"
-msgstr ""
+msgstr "เหตุการณ์สำหรับ %s - %s:"
 
 #: src/orage-window-next.c:650
 msgid "To do:"
-msgstr ""
+msgstr "สิ่งที่ต้องทำ:"
 
 #: src/orage-window-next.c:1070
 msgid "Previous"
-msgstr ""
+msgstr "ก่อนหน้า"
 
 #: src/orage-window-next.c:1090
 msgid "Next"
-msgstr ""
+msgstr "ต่อไป"
 
 #: src/orage-window-next.c:1104
 msgid "Day"
-msgstr ""
+msgstr "วัน"
 
 #: src/orage-window-next.c:1109
 msgid "Month"
-msgstr ""
+msgstr "เดือน"
 
 #: src/orage-window-next.c:1112
 msgid "Year"
-msgstr ""
+msgstr "ปี"
 
 #: src/parameters.c:646
 msgid "Remove selected synchronization task."
@@ -1667,11 +1669,11 @@ msgstr "รายละเอียดการแสดงปฏิทิน"
 
 #: src/parameters.c:819
 msgid "Use new user interface"
-msgstr ""
+msgstr "ใช้ส่วนติดต่อผู้ใช้ใหม่"
 
 #: src/parameters.c:821
 msgid "Enable the new interface layout (requires restart)"
-msgstr ""
+msgstr "เปิดใช้งานโครงส่วนติดต่อใหม่ (ต้องเริ่มโปรแกรมใหม่)"
 
 #: src/parameters.c:826
 msgid "Show borders"
