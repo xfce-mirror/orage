@@ -58,8 +58,30 @@ gboolean orage_application_open_path (OrageApplication *self,
  */
 gboolean orage_application_import_path (OrageApplication *self,
                                         const gchar *filename);
+
+/**
+ * orage_application_export_path:
+ * @self: an #OrageApplication instance.
+ * @filename: a path to the file where calendar or appointment data will be
+ *            exported.
+ * @uids: (nullable): a comma-separated list of appointment UIDs to export, or
+ *        %NULL to export all.
+ *
+ * Exports calendar or appointment data from Orage into the specified file.
+ *
+ * If @uids is %NULL, all appointments are exported. Otherwise, only the
+ * appointments whose unique identifiers (UIDs) are listed in @uids are
+ * exported.
+ *
+ * Returns: %TRUE if the export succeeded, otherwise %FALSE.
+ */
+gboolean orage_application_export_path (OrageApplication *self,
+                                        const gchar *filename,
+                                        const gchar *uids);
+#if 0
 gboolean orage_application_export_file (OrageApplication *self,
                                         const gchar *filename);
+#endif
 gboolean orage_application_add_foreign_file (OrageApplication *self,
                                              const gchar *filename);
 gboolean orage_application_remove_foreign_file (OrageApplication *self,

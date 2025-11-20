@@ -20,9 +20,9 @@
  *     Boston, MA 02110-1301 USA
  */
 
-#include "orage-i18n.h"
-#include "orage-dbus.h"
 #include "orage-application.h"
+#include "orage-dbus.h"
+#include "orage-i18n.h"
 
 #include <glib.h>
 #include <gio/gio.h>
