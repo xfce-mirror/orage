@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Erkki Moorits
+ * Copyright (c) 2021-2025 Erkki Moorits
  * Copyright (c) 2005-2011 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2004-2005 Mickael Graf (korbinus at xfce.org)
  *
@@ -26,9 +26,10 @@
 #include <glib.h>
 
 gboolean xfical_import_file (GFile *file);
+gboolean xfical_export_file (GFile *file, const gchar *uids);
+
 gboolean xfical_import_by_path (const gchar *file_name);
 gboolean xfical_export_by_path (const gchar *file_name,
                                 gint type,
                                 const gchar *uids);
-
 #endif

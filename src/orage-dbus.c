@@ -20,11 +20,12 @@
 
 #include "orage-dbus.h"
 
-#include "orage-application.h"
 #include "functions.h"
+#include "orage-application.h"
 
 #include <gio/gio.h>
 #include <glib.h>
+#include <libxfce4util/libxfce4util.h>
 
 #define ORAGE_DBUS_SERVICE ORAGE_APP_ID
 #define ORAGE_DBUS_PATH "/org/xfce/orage"
@@ -47,6 +48,7 @@ static const gchar introspection_xml[] =
     "    </method>"
     "    <method name='" ORAGE_DBUS_METHOD_EXPORT_FILE "'>"
     "      <arg type='s' name='filename' direction='in'/>"
+    "      <arg type='s' name='uids' direction='in'/>"
     "      <arg type='b' name='success' direction='out'/>"
     "    </method>"
     "    <method name='" ORAGE_DBUS_METHOD_ADD_FOREIGN_FILE "'>"
@@ -88,6 +90,7 @@ static void on_method_call (G_GNUC_UNUSED GDBusConnection *connection,
     OrageApplication *app;
     gboolean success;
     const gchar *filename;
+    const gchar *uids;
 
     app = ORAGE_APPLICATION (user_data);
 
@@ -111,8 +114,12 @@ static void on_method_call (G_GNUC_UNUSED GDBusConnection *connection,
     }
     else if (g_strcmp0 (method_name, ORAGE_DBUS_METHOD_EXPORT_FILE) == 0)
     {
-        g_variant_get (parameters, "(&s)", &filename);
-        success = orage_application_export_file (app, filename);
+        g_variant_get (parameters, "(&s&s)", &filename, &uids);
+
+        if (xfce_str_is_empty (uids))
+            uids = NULL;
+
+        success = orage_application_export_path (app, filename, uids);
         g_dbus_method_invocation_return_value (invocation, g_variant_new ("(b)",
                                                success));
     }
