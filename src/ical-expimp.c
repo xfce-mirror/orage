@@ -43,9 +43,10 @@
 #include <math.h>
 
 #include <gdk/gdk.h>
-#include <gtk/gtk.h>
 #include <glib/gprintf.h>
 #include <glib/gstdio.h>
+#include <gtk/gtk.h>
+#include <libxfce4util/libxfce4util.h>
 
 #include <libical/ical.h>
 #include <libical/icalss.h>
@@ -59,6 +60,9 @@
 #include "orage-i18n.h"
 #include "parameters.h"
 #include "reminder.h"
+
+static gboolean export_selected (const gchar *file_name, const gchar *uids);
+static gboolean export_all (const gchar *file_name);
 
 static void add_event (icalcomponent *c, gboolean *ical_opened)
 {
@@ -114,7 +118,7 @@ static gboolean pre_format(const gchar *file_name_in,
         g_critical ("%s: is not in utf8 format. Conversion needed. "
                     "(Use iconv and convert it into UTF-8 and import it "
                     "again.)", G_STRFUNC);
-        return(FALSE);
+        return FALSE;
     }
 
     /***** 1: change DCREATED to CREATED *****/
@@ -268,6 +272,29 @@ gboolean xfical_import_file (GFile *file)
     return result;
 }
 
+gboolean xfical_export_file (GFile *file, const gchar *uids)
+{
+    gboolean result;
+    gchar *name;
+
+    name = g_file_get_path (file);
+
+    if (uids)
+    {
+        /* Copy only selected appointments. */
+        result = export_selected (name, uids);
+    }
+    else
+    {
+        /* Copy the whole file */
+        result = export_all (name);
+    }
+
+    g_free (name);
+
+    return result;
+}
+
 static gboolean export_prepare_write_file(const gchar *file_name)
 {
     gchar *tmp;
@@ -316,26 +343,32 @@ static gboolean export_all (const gchar *file_name)
     return(TRUE);
 }
 
-static void export_selected_uid(icalcomponent *base, const gchar *uid_int
-        , icalcomponent *x_ical)
+static gboolean export_selected_uid (icalcomponent *base, const gchar *uid,
+                                     icalcomponent *x_ical)
 {
     icalcomponent *c, *d;
     gboolean key_found = FALSE;
-    gchar *uid_ical;
+    const gchar *uid_ical;
 
-    key_found = FALSE;
-    for (c = icalcomponent_get_first_component(base, ICAL_ANY_COMPONENT);
+    for (c = icalcomponent_get_first_component (base, ICAL_ANY_COMPONENT);
          c != 0 && !key_found;
-         c = icalcomponent_get_next_component(base, ICAL_ANY_COMPONENT)) {
-        uid_ical = (char *)icalcomponent_get_uid(c);
-        if (strcmp(uid_int, uid_ical) == 0) { /* we found our uid */
-            d = icalcomponent_new_clone(c);
-            icalcomponent_add_component(x_ical, d);
+         c = icalcomponent_get_next_component (base, ICAL_ANY_COMPONENT))
+    {
+        uid_ical = icalcomponent_get_uid (c);
+        if (uid_ical == NULL)
+            g_warning ("%s: component missing UID, skipping", G_STRFUNC);
+        else if (strcmp (uid, uid_ical) == 0)
+        {
+            d = icalcomponent_new_clone (c);
+            icalcomponent_add_component (x_ical, d);
             key_found = TRUE;
         }
     }
-    if (!key_found)
-        g_warning ("%s: not found %s from Orage", G_STRFUNC, uid_int);
+
+    if (key_found == FALSE)
+        g_warning ("%s: not found '%s' from Orage", G_STRFUNC, uid);
+
+    return key_found;
 }
 
 static gboolean export_selected (const gchar *file_name, const gchar *uids)
@@ -344,65 +377,71 @@ static gboolean export_selected (const gchar *file_name, const gchar *uids)
     icalset *x_fical = NULL;
     gchar *uid_end;
     const gchar *uid;
-    const gchar *uid_int;
     gboolean more_uids;
-    int i;
+    gboolean result;
+    gint i;
 
-    if (!export_prepare_write_file(file_name))
-        return(FALSE);
-    if (!ORAGE_STR_EXISTS(uids)) {
+    if (export_prepare_write_file (file_name) == FALSE)
+        return FALSE;
+
+    if (xfce_str_is_empty (uids))
+    {
         g_warning ("%s: UID list is empty", G_STRFUNC);
-        return(FALSE);
+        return FALSE;
     }
-    if (!ic_internal_file_open(&x_ical, &x_fical, file_name, FALSE, FALSE)) {
-        g_warning ("%s: Failed to create export file %s", G_STRFUNC, file_name);
-        return(FALSE);
+
+    if (ic_internal_file_open (&x_ical, &x_fical, file_name, FALSE, FALSE) == FALSE)
+    {
+        g_warning ("%s: failed to create export file %s", G_STRFUNC, file_name);
+        return FALSE;
     }
-    if (!xfical_file_open(TRUE)) {
-        return(FALSE);
-    }
+
+    if (xfical_file_open (TRUE) == FALSE)
+        return FALSE;
 
     /* checks done, let's start the real work */
     more_uids = TRUE;
-    for (uid = uids; more_uids; ) {
-        if (strlen(uid) < 5) {
+    result = TRUE;
+    for (uid = uids; more_uids;)
+    {
+        if (strlen (uid) < 5)
+        {
             g_warning ("%s: unknown appointment name %s", G_STRFUNC, uid);
-            return(FALSE);
+            return FALSE;
         }
-        uid_int = uid+4;
-        uid_end = g_strstr_len (uid, strlen(uid), ",");
+
+        uid_end = g_strstr_len (uid, strlen (uid), ",");
         if (uid_end != NULL)
             *uid_end = 0; /* uid ends here */
         /* FIXME: proper messages to screen */
-        if (uid[0] == 'O') {
-            export_selected_uid(ic_ical, uid_int, x_ical);
+        if (uid[0] == 'O')
+            result &= export_selected_uid (ic_ical, uid, x_ical);
+        else if (uid[0] == 'F')
+        {
+            sscanf (uid, "F%02d", &i);
+            if (i < g_par.foreign_count && ic_f_ical[i].ical != NULL)
+                result &= export_selected_uid (ic_f_ical[i].ical, uid, x_ical);
+            else
+            {
+                g_warning ("%s: unknown foreign file number %d, %s", G_STRFUNC,
+                           i, uid);
+                return FALSE;
+            }
         }
-        else if (uid[0] == 'F') {
-            sscanf(uid, "F%02d", &i);
-            if (i < g_par.foreign_count && ic_f_ical[i].ical != NULL) {
-                export_selected_uid(ic_f_ical[i].ical, uid_int, x_ical);
-            }
-            else {
-                g_warning ("%s: unknown foreign file number %d, %s", G_STRFUNC, i, uid);
-                return(FALSE);
-            }
+        else
+            g_warning ("%s: unknown uid type (%s)", G_STRFUNC, uid);
 
-        }
-        else {
-            g_warning ("%s: Unknown uid type (%s)", G_STRFUNC, uid);
-        }
-        
-        if (uid_end != NULL)  /* we have more uids */
-            uid = uid_end+1;  /* next uid starts here */
+        if (uid_end != NULL) /* we have more uids */
+            uid = uid_end + 1; /* next uid starts here */
         else
             more_uids = FALSE;
     }
 
-    xfical_file_close(TRUE);
-    icalset_mark(x_fical);
-    icalset_commit(x_fical);
-    icalset_free(x_fical);
-    return(TRUE);
+    xfical_file_close (TRUE);
+    icalset_mark (x_fical);
+    icalset_commit (x_fical);
+    icalset_free (x_fical);
+    return result;
 }
 
 gboolean xfical_export_by_path (const gchar *file_name,
@@ -416,7 +455,7 @@ gboolean xfical_export_by_path (const gchar *file_name,
         return(export_selected(file_name, uids));
     }
     else {
-        g_critical ("%s: Unknown app count", G_STRFUNC);
+        g_critical ("%s: unknown app count %d", G_STRFUNC, type);
         return(FALSE);
     }
 }

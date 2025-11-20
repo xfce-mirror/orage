@@ -39,6 +39,7 @@
 #include <glib-2.0/gio/gapplication.h>
 #include <gtk/gtk.h>
 #include <libxfce4ui/libxfce4ui.h>
+#include <libxfce4util/libxfce4util.h>
 
 #ifdef HAVE_NOTIFY
 #include <libnotify/notify.h>
@@ -357,6 +358,30 @@ static gboolean orage_application_import_file (OrageApplication *self,
     return result;
 }
 
+static gboolean orage_application_export_file (G_GNUC_UNUSED OrageApplication *self,
+                                               GFile *file,
+                                               const gchar *uids)
+{
+    gboolean result;
+    gchar *filename;
+
+    g_object_ref (file);
+    filename = g_file_get_path (file);
+
+    g_debug ("exporting to='%s', uids='%s'", filename, uids);
+
+    result = xfical_export_file (file, uids);
+    if (result)
+        g_message ("export done to file=%s", filename);
+    else
+        g_warning ("export failed file=%s", filename);
+
+    g_free (filename);
+    g_object_unref (file);
+
+    return result;
+}
+
 static void orage_application_activate (GApplication *app)
 {
     GList *list;
@@ -603,7 +628,7 @@ static void orage_application_open (GApplication *app,
     gint i;
     gchar *file;
     gchar *file_name;
-    gint export_type;
+    gchar *uids;
     gboolean foreign_file_read_only;
 
     for (i = 0; i < n_files; i++)
@@ -649,17 +674,12 @@ static void orage_application_open (GApplication *app,
                 break;
 
             case HINT_EXPORT:
-                file = g_file_get_path (files[i]);
                 hint_array = g_strsplit (hint, ":", 2);
-                export_type = hint_array[1] ? 1 : 0;
-                g_debug ("exporting to='%s', uids='%s'", file, hint_array[1]);
+                uids = xfce_str_is_empty (hint_array[1]) ? NULL : hint_array[1];
 
-                if (xfical_export_by_path (file, export_type, hint_array[1]))
-                    g_message ("export done to file=%s", file);
-                else
-                    g_warning ("export failed file=%s", file);
-
-                g_free (file);
+                orage_application_export_file (ORAGE_APPLICATION (app),
+                                               files[i],
+                                               uids);
                 g_strfreev (hint_array);
                 break;
 
@@ -863,18 +883,23 @@ gboolean orage_application_import_path (OrageApplication *self,
                                         const gchar *filename)
 {
     GFile *file = g_file_new_for_path (filename);
-    gboolean result = orage_application_import_file (self, file);
+    const gboolean result = orage_application_import_file (self, file);
 
     g_object_unref (file);
 
     return result;
 }
 
-gboolean orage_application_export_file (OrageApplication *self,
-                                        const gchar *filename)
+gboolean orage_application_export_path (OrageApplication *self,
+                                        const gchar *filename,
+                                        const gchar *uids)
 {
-    g_debug ("%s: filename='%s'", G_STRFUNC, filename);
-    return FALSE;
+    GFile *file = g_file_new_for_path (filename);
+    const gboolean result = orage_application_export_file (self, file, uids);
+
+    g_object_unref (file);
+
+    return result;
 }
 
 gboolean orage_application_add_foreign_file (OrageApplication *self,
