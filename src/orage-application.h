@@ -78,12 +78,27 @@ gboolean orage_application_import_path (OrageApplication *self,
 gboolean orage_application_export_path (OrageApplication *self,
                                         const gchar *filename,
                                         const gchar *uids);
-#if 0
-gboolean orage_application_export_file (OrageApplication *self,
-                                        const gchar *filename);
-#endif
-gboolean orage_application_add_foreign_file (OrageApplication *self,
-                                             const gchar *filename);
+
+/**
+ * orage_application_add_foreign_path:
+ * @self: (unused): an #OrageApplication
+ * @filename: path to the foreign calendar file
+ * @display_name: optional display name, or %NULL/empty to use the basename of
+ *                @filename
+ * @read_only: whether the file should be treated as read-only
+ *
+ * Adds a foreign calendar file to the application. A usable display name is
+ * taken from @display_name or if @display_name is %NULL, derived from
+ * @filename. The resulting file entry is registered through
+ * orage_foreign_file_add().
+ *
+ * Returns: %TRUE on success, or %FALSE on failure.
+ */
+gboolean orage_application_add_foreign_path (OrageApplication *self,
+                                             const gchar *filename,
+                                             const gchar *display_name,
+                                             gboolean read_only);
+
 gboolean orage_application_remove_foreign_file (OrageApplication *self,
                                                 const gchar *filename);
 
