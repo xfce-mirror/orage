@@ -53,6 +53,8 @@ static const gchar introspection_xml[] =
     "    </method>"
     "    <method name='" ORAGE_DBUS_METHOD_ADD_FOREIGN_FILE "'>"
     "      <arg type='s' name='filename' direction='in'/>"
+    "      <arg type='s' name='display_name' direction='in'/>"
+    "      <arg type='b' name='read_only' direction='in'/>"
     "      <arg type='b' name='success' direction='out'/>"
     "    </method>"
     "    <method name='" ORAGE_DBUS_METHOD_REMOVE_FOREIGN_FILE "'>"
@@ -89,7 +91,9 @@ static void on_method_call (G_GNUC_UNUSED GDBusConnection *connection,
 {
     OrageApplication *app;
     gboolean success;
+    gboolean ro;
     const gchar *filename;
+    const gchar *display_name;
     const gchar *uids;
 
     app = ORAGE_APPLICATION (user_data);
@@ -125,8 +129,9 @@ static void on_method_call (G_GNUC_UNUSED GDBusConnection *connection,
     }
     else if (g_strcmp0 (method_name, ORAGE_DBUS_METHOD_ADD_FOREIGN_FILE) == 0)
     {
-        g_variant_get (parameters, "(&s)", &filename);
-        success = orage_application_add_foreign_file (app, filename);
+        g_variant_get (parameters, "(&s&sb)", &filename, &display_name, &ro);
+        success = orage_application_add_foreign_path (app, filename,
+                                                      display_name, ro);
         g_dbus_method_invocation_return_value (invocation, g_variant_new ("(b)",
                                                success));
     }
