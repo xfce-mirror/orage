@@ -73,7 +73,7 @@ gboolean orage_external_update_check (G_GNUC_UNUSED gpointer user_data)
 
     /* check main Orage file */
     if (g_stat(g_par.orage_file, &s) < 0) {
-        g_warning ("stat of %s failed: %s", g_par.orage_file,
+        g_warning ("%s: stat of %s failed: %s", G_STRFUNC, g_par.orage_file,
                    g_strerror (errno));
     }
     else {
@@ -87,8 +87,8 @@ gboolean orage_external_update_check (G_GNUC_UNUSED gpointer user_data)
     /* check also foreign files */
     for (i = 0; i < g_par.foreign_count; i++) {
         if (g_stat(g_par.foreign_data[i].file, &s) < 0) {
-            g_warning ("stat of %s failed: %s", g_par.foreign_data[i].file,
-                       g_strerror (errno));
+            g_warning ("%s: stat of %s failed: %s", G_STRFUNC,
+                       g_par.foreign_data[i].file, g_strerror (errno));
         }
         else {
             if (s.st_mtime > g_par.foreign_data[i].latest_file_change) {

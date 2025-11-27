@@ -37,6 +37,7 @@
 #include "parameters.h"
 #include "reminder.h"
 #include <glib-2.0/gio/gapplication.h>
+#include <glib.h>
 #include <gtk/gtk.h>
 #include <libxfce4ui/libxfce4ui.h>
 #include <libxfce4util/libxfce4util.h>
@@ -382,6 +383,21 @@ static gboolean orage_application_export_file (G_GNUC_UNUSED OrageApplication *s
     return result;
 }
 
+static gboolean orage_application_add_foreign_file (OrageApplication *self,
+                                                    GFile *file,
+                                                    const gchar *display_name,
+                                                    const gboolean read_only)
+{
+    gboolean result;
+    gchar *file_name = g_file_get_path (file);
+
+    result = orage_application_add_foreign_path (self, file_name, display_name,
+                                                 read_only);
+    g_free (file_name);
+
+    return result;
+}
+
 static void orage_application_activate (GApplication *app)
 {
     GList *list;
@@ -641,7 +657,6 @@ static void orage_application_open (GApplication *app,
                 break;
 
             case HINT_ADD:
-                file = g_file_get_path (files[i]);
                 hint_array = g_strsplit (hint, ":", 3);
                 file_name = NULL;
 
@@ -652,40 +667,30 @@ static void orage_application_open (GApplication *app,
                             (g_ascii_strcasecmp (hint_array[1], "READWRITE") != 0);
 
                     if (hint_array[2])
-                        file_name = g_strdup (hint_array[2]);
+                        file_name = hint_array[2];
                 }
                 else
                     foreign_file_read_only = TRUE;
 
-                if (file_name == NULL)
-                    file_name = g_file_get_basename (files[i]);
-
-                g_debug ("add foreign file='%s', file_name='%s', ro=%d",
-                         file, file_name, foreign_file_read_only);
-
-                if (orage_foreign_file_add (file, foreign_file_read_only, file_name))
-                    g_message ("add done, foreign file=%s", file);
-                else
-                    g_warning ("add failed, foreign file=%s", file);
-
-                g_free (file_name);
-                g_free (file);
                 g_strfreev (hint_array);
+
+                (void)orage_application_add_foreign_file (
+                    ORAGE_APPLICATION (app), files[i], file_name,
+                    foreign_file_read_only);
                 break;
 
             case HINT_EXPORT:
                 hint_array = g_strsplit (hint, ":", 2);
                 uids = xfce_str_is_empty (hint_array[1]) ? NULL : hint_array[1];
 
-                orage_application_export_file (ORAGE_APPLICATION (app),
-                                               files[i],
-                                               uids);
+                (void)orage_application_export_file (ORAGE_APPLICATION (app),
+                                                     files[i], uids);
                 g_strfreev (hint_array);
                 break;
 
             case HINT_IMPORT:
-                orage_application_import_file (ORAGE_APPLICATION (app),
-                                               files[i]);
+                (void)orage_application_import_file (ORAGE_APPLICATION (app),
+                                                     files[i]);
                 break;
 
             case HINT_REMOVE:
@@ -902,11 +907,29 @@ gboolean orage_application_export_path (OrageApplication *self,
     return result;
 }
 
-gboolean orage_application_add_foreign_file (OrageApplication *self,
-                                             const gchar *filename)
+gboolean orage_application_add_foreign_path (G_GNUC_UNUSED OrageApplication *self,
+                                             const gchar *filename,
+                                             const gchar *display_name,
+                                             const gboolean read_only)
 {
-    g_debug ("%s: filename='%s'", G_STRFUNC, filename);
-    return FALSE;
+    gboolean result;
+    gchar *name;
+
+    name = xfce_str_is_empty (display_name) ? g_path_get_basename (filename)
+                                            : g_strdup (display_name);
+
+    g_debug ("add foreign file='%s', display_name='%s', ro=%s",
+             filename, name, read_only ? "TRUE" : "FALSE");
+
+    result = orage_foreign_file_add (filename, read_only, name);
+    g_free (name);
+
+    if (result)
+        g_message ("add done, foreign file='%s'", filename);
+    else
+        g_warning ("add failed, foreign file='%s'", filename);
+
+    return result;
 }
 
 gboolean orage_application_remove_foreign_file (OrageApplication *self,
