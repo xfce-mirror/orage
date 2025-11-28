@@ -581,31 +581,32 @@ static void orage_foreign_file_remove_line(gint del_line)
 gboolean orage_foreign_file_remove (const gchar *filename)
 {
     gint i;
-    gboolean found = FALSE;
 
-    if (interface_lock) {
-        g_warning ("Exchange window active, can't remove files from cmd line");
-        return(FALSE);
+    if (interface_lock)
+    {
+        g_warning ("foreign file removal blocked: exchange window is active");
+        return FALSE;
     }
-    if (!ORAGE_STR_EXISTS(filename)) {
-        g_warning("File '%s' is empty. Not removed.", filename);
-        return(FALSE);
+
+    if (xfce_str_is_empty (filename))
+    {
+        g_warning ("empty file name - cannot remove foreign file");
+        return FALSE;
     }
-    for (i = 0; i < g_par.foreign_count && !found; i++) {
-        g_warning("file '%s'", g_par.foreign_data[i].file);
-        g_warning("name '%s'", g_par.foreign_data[i].name);
-        if (strcmp(g_par.foreign_data[i].file, filename) == 0 ||
-            strcmp(g_par.foreign_data[i].name, filename) == 0) {
-            found = TRUE;
+
+    for (i = 0; i < g_par.foreign_count; i++)
+    {
+        if (strcmp (g_par.foreign_data[i].file, filename) == 0 ||
+            strcmp (g_par.foreign_data[i].name, filename) == 0)
+        {
+            orage_foreign_file_remove_line (i);
+            return TRUE;
         }
     }
-    if (!found) {
-        g_warning("File '%s' not found. Not removed.", filename);
-        return(FALSE);
-    }
 
-    orage_foreign_file_remove_line(i);
-    return(TRUE);
+    g_warning ("foreign file '%s' not found - nothing to remove", filename);
+
+    return FALSE;
 }
 
 static void for_remove_button_clicked (G_GNUC_UNUSED GtkButton *button,

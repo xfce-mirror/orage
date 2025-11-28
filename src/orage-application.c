@@ -398,6 +398,19 @@ static gboolean orage_application_add_foreign_file (OrageApplication *self,
     return result;
 }
 
+static gboolean orage_application_remove_foreign_file (OrageApplication *self,
+                                                       GFile *file)
+{
+    gboolean result;
+    gchar *file_name = g_file_get_path (file);
+
+    result = orage_application_remove_foreign_path (self, file_name);
+
+    g_free (file_name);
+
+    return result;
+}
+
 static void orage_application_activate (GApplication *app)
 {
     GList *list;
@@ -642,8 +655,7 @@ static void orage_application_open (GApplication *app,
 {
     gchar **hint_array;
     gint i;
-    gchar *file;
-    gchar *file_name;
+    gchar *filename;
     gchar *uids;
     gboolean foreign_file_read_only;
 
@@ -658,7 +670,7 @@ static void orage_application_open (GApplication *app,
 
             case HINT_ADD:
                 hint_array = g_strsplit (hint, ":", 3);
-                file_name = NULL;
+                filename = NULL;
 
                 if (hint_array[1])
                 {
@@ -667,7 +679,7 @@ static void orage_application_open (GApplication *app,
                             (g_ascii_strcasecmp (hint_array[1], "READWRITE") != 0);
 
                     if (hint_array[2])
-                        file_name = hint_array[2];
+                        filename = hint_array[2];
                 }
                 else
                     foreign_file_read_only = TRUE;
@@ -675,8 +687,14 @@ static void orage_application_open (GApplication *app,
                 g_strfreev (hint_array);
 
                 (void)orage_application_add_foreign_file (
-                    ORAGE_APPLICATION (app), files[i], file_name,
+                    ORAGE_APPLICATION (app), files[i], filename,
                     foreign_file_read_only);
+                break;
+
+            case HINT_REMOVE:
+                (void)orage_application_remove_foreign_file (
+                    ORAGE_APPLICATION (app), files[i]);
+
                 break;
 
             case HINT_EXPORT:
@@ -691,19 +709,6 @@ static void orage_application_open (GApplication *app,
             case HINT_IMPORT:
                 (void)orage_application_import_file (ORAGE_APPLICATION (app),
                                                      files[i]);
-                break;
-
-            case HINT_REMOVE:
-                file = g_file_get_path (files[i]);
-
-                g_debug ("remove foreign, file=%s", file);
-                if (orage_foreign_file_remove (file))
-                    g_message ("remove done, foreign file=%s", file);
-                else
-                    g_warning ("remove failed, foreign file=%s", file);
-
-                g_free (file);
-
                 break;
 
             default:
@@ -907,10 +912,9 @@ gboolean orage_application_export_path (OrageApplication *self,
     return result;
 }
 
-gboolean orage_application_add_foreign_path (G_GNUC_UNUSED OrageApplication *self,
-                                             const gchar *filename,
-                                             const gchar *display_name,
-                                             const gboolean read_only)
+gboolean orage_application_add_foreign_path (
+    G_GNUC_UNUSED OrageApplication *self, const gchar *filename,
+    const gchar *display_name, const gboolean read_only)
 {
     gboolean result;
     gchar *name;
@@ -932,9 +936,10 @@ gboolean orage_application_add_foreign_path (G_GNUC_UNUSED OrageApplication *sel
     return result;
 }
 
-gboolean orage_application_remove_foreign_file (OrageApplication *self,
-                                                const gchar *filename)
+gboolean orage_application_remove_foreign_path (
+    G_GNUC_UNUSED OrageApplication *self, const gchar *filename)
 {
-    g_debug ("%s: filename='%s'", G_STRFUNC, filename);
-    return FALSE;
+    g_debug ("remove foreign file '%s'", filename);
+
+    return orage_foreign_file_remove (filename);
 }
