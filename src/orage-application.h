@@ -81,7 +81,7 @@ gboolean orage_application_export_path (OrageApplication *self,
 
 /**
  * orage_application_add_foreign_path:
- * @self: (unused): an #OrageApplication
+ * @self: an #OrageApplication
  * @filename: path to the foreign calendar file
  * @display_name: optional display name, or %NULL/empty to use the basename of
  *                @filename
@@ -99,7 +99,20 @@ gboolean orage_application_add_foreign_path (OrageApplication *self,
                                              const gchar *display_name,
                                              gboolean read_only);
 
-gboolean orage_application_remove_foreign_file (OrageApplication *self,
+/**
+ * orage_application_remove_foreign_path:
+ * @self: an #OrageApplication
+ * @filename: path to the foreign calendar file to remove
+ *
+ * Removes a previously added foreign calendar file from the application.
+ * The file entry referenced by @filename is looked up and unregistered
+ * through orage_foreign_file_remove(). If the file is not found among
+ * the registered foreign calendar files, no change is made.
+ *
+ * Returns: %TRUE on success (file was found and removed), or %FALSE if the
+ *          file was not registered or removal failed.
+ */
+gboolean orage_application_remove_foreign_path (OrageApplication *self,
                                                 const gchar *filename);
 
 G_END_DECLS

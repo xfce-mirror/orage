@@ -138,7 +138,7 @@ static void on_method_call (G_GNUC_UNUSED GDBusConnection *connection,
     else if (g_strcmp0 (method_name, ORAGE_DBUS_METHOD_REMOVE_FOREIGN_FILE) == 0)
     {
         g_variant_get (parameters, "(&s)", &filename);
-        success = orage_application_remove_foreign_file (app, filename);
+        success = orage_application_remove_foreign_path (app, filename);
         g_dbus_method_invocation_return_value (invocation, g_variant_new ("(b)",
                                                success));
     }
