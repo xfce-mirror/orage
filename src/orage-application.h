@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022-2023 Erkki Moorits
+ * Copyright (c) 2022-2025 Erkki Moorits
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,9 +30,90 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (OrageApplication, orage_application, ORAGE, APPLICATION, GtkApplication)
 
 OrageApplication *orage_application_new (void);
-OrageTaskRunner *orage_application_get_sync (OrageApplication *application);
-GtkWidget *orage_application_get_window (OrageApplication *application);
-void orage_application_close (OrageApplication *application);
+OrageTaskRunner *orage_application_get_sync (OrageApplication *self);
+GtkWidget *orage_application_get_window (OrageApplication *self);
+void orage_application_close (OrageApplication *self);
+
+/**
+ * orage_application_open_path:
+ * @self: (type OrageApplication): an Orage application instance.
+ * @filename: (type filename): path to the file to open.
+ *
+ * Opens a file specified by a local filesystem path and shows the appointment
+ * preview.
+ *
+ * Returns: %TRUE if the file was successfully opened, or %FALSE otherwise.
+ */
+gboolean orage_application_open_path (OrageApplication *self,
+                                      const gchar *filename);
+
+/**
+ * orage_application_import_file:
+ * @self: an #OrageApplication instance.
+ * @file: a #GFile representing the file to import.
+ *
+ * Imports the given calendar or appointment file into Orage.
+ *
+ * Returns: %TRUE if the import succeeded, otherwise %FALSE.
+ */
+gboolean orage_application_import_path (OrageApplication *self,
+                                        const gchar *filename);
+
+/**
+ * orage_application_export_path:
+ * @self: an #OrageApplication instance.
+ * @filename: a path to the file where calendar or appointment data will be
+ *            exported.
+ * @uids: (nullable): a comma-separated list of appointment UIDs to export, or
+ *        %NULL to export all.
+ *
+ * Exports calendar or appointment data from Orage into the specified file.
+ *
+ * If @uids is %NULL, all appointments are exported. Otherwise, only the
+ * appointments whose unique identifiers (UIDs) are listed in @uids are
+ * exported.
+ *
+ * Returns: %TRUE if the export succeeded, otherwise %FALSE.
+ */
+gboolean orage_application_export_path (OrageApplication *self,
+                                        const gchar *filename,
+                                        const gchar *uids);
+
+/**
+ * orage_application_add_foreign_path:
+ * @self: an #OrageApplication
+ * @filename: path to the foreign calendar file
+ * @display_name: optional display name, or %NULL/empty to use the basename of
+ *                @filename
+ * @read_only: whether the file should be treated as read-only
+ *
+ * Adds a foreign calendar file to the application. A usable display name is
+ * taken from @display_name or if @display_name is %NULL, derived from
+ * @filename. The resulting file entry is registered through
+ * orage_foreign_file_add().
+ *
+ * Returns: %TRUE on success, or %FALSE on failure.
+ */
+gboolean orage_application_add_foreign_path (OrageApplication *self,
+                                             const gchar *filename,
+                                             const gchar *display_name,
+                                             gboolean read_only);
+
+/**
+ * orage_application_remove_foreign_path:
+ * @self: an #OrageApplication
+ * @filename: path to the foreign calendar file to remove
+ *
+ * Removes a previously added foreign calendar file from the application.
+ * The file entry referenced by @filename is looked up and unregistered
+ * through orage_foreign_file_remove(). If the file is not found among
+ * the registered foreign calendar files, no change is made.
+ *
+ * Returns: %TRUE on success (file was found and removed), or %FALSE if the
+ *          file was not registered or removal failed.
+ */
+gboolean orage_application_remove_foreign_path (OrageApplication *self,
+                                                const gchar *filename);
 
 G_END_DECLS
 
