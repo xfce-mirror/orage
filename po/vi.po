@@ -4,18 +4,18 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Nick Schermer <nick@xfce.org>, 2022
-# Duy Truong Nguyen <truongap.ars@gmail.com>, 2022
 # Xfce Bot <transifex@xfce.org>, 2024
+# Nick Schermer <nick@xfce.org>, 2025
+# Loc Huynh, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-10-16 12:50+0200\n"
+"POT-Creation-Date: 2025-10-25 12:59+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>, 2024\n"
+"Last-Translator: Loc Huynh, 2025\n"
 "Language-Team: Vietnamese (https://app.transifex.com/xfce/teams/16840/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,53 +24,53 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. date only appointment
-#: src/event-list.c:186
+#: src/event-list.c:183
 msgid "All day"
-msgstr "Mọi ngày"
+msgstr "Cả ngày"
 
-#: src/event-list.c:617 src/event-list.c:1442
+#: src/event-list.c:607 src/event-list.c:1431
 msgid "Time"
 msgstr "Thời gian"
 
-#: src/event-list.c:803
+#: src/event-list.c:789
 msgid "No rows have been selected."
-msgstr "Không có hàng nào được chọn."
+msgstr "Chưa chọn hàng nào."
 
-#: src/event-list.c:804
+#: src/event-list.c:790
 msgid "Click a row to select it and after that you can copy it."
-msgstr "Nhấn vào một hàng để chọn sau đó bạn có thể sao chép nó."
+msgstr "Nhấn vào một hàng để chọn, sau đó bạn có thể sao chép."
 
-#: src/event-list.c:1016
+#: src/event-list.c:1005
 msgid ""
 "You will permanently remove all\n"
 "selected appointments."
 msgstr ""
-"Bạn sẽ xóa bỏ tất cả vĩnh viễn\n"
-"các cuộc hẹn được chọn."
+"Bạn sẽ xóa vĩnh viễn tất cả\n"
+"các cuộc hẹn đã chọn."
 
-#: src/event-list.c:1017 src/orage-appointment-window.c:988
-#: src/orage-appointment-window.c:1634 src/parameters.c:687
+#: src/event-list.c:1006 src/orage-appointment-window.c:981
+#: src/orage-appointment-window.c:1645 src/parameters.c:647
 msgid "Do you want to continue?"
-msgstr "Tiếp tục?"
+msgstr "Bạn có muốn tiếp tục không?"
 
-#: src/event-list.c:1018 src/orage-appointment-window.c:1635
-#: src/parameters.c:688
+#: src/event-list.c:1007 src/orage-appointment-window.c:1646
+#: src/parameters.c:648
 msgid "No, cancel the removal"
-msgstr ""
+msgstr "Không, hủy việc xóa"
 
-#: src/event-list.c:1019
+#: src/event-list.c:1008
 msgid "Yes, remove them"
-msgstr ""
+msgstr "Có, xóa chúng"
 
-#: src/event-list.c:1078 src/functions.c:143
-#: src/orage-appointment-window.c:1732 src/orage-appointment-window.c:1747
-#: src/orage-week-window.c:530
+#: src/event-list.c:1068 src/orage-appointment-window.c:1743
+#: src/orage-appointment-window.c:1758 src/orage-month-view.c:175
+#: src/orage-week-window.c:529
 msgid "Pick the date"
 msgstr "Chọn ngày"
 
-#: src/event-list.c:1080 src/event-list.c:1234 src/functions.c:145
-#: src/orage-appointment-window.c:1734 src/orage-appointment-window.c:1749
-#: src/orage-week-window.c:459 src/orage-week-window.c:532 src/tray_icon.c:407
+#: src/event-list.c:1070 src/event-list.c:1224
+#: src/orage-appointment-window.c:1745 src/orage-appointment-window.c:1760
+#: src/orage-week-window.c:458 src/orage-week-window.c:531 src/tray_icon.c:383
 msgid "Today"
 msgstr "Hôm nay"
 
@@ -79,122 +79,135 @@ msgstr "Hôm nay"
 #. File menu stuff
 #. ********* File menu *********
 #. File menu
-#: src/event-list.c:1135 src/interface.c:860
-#: src/orage-appointment-window.c:2907 src/orage-week-window.c:353
-#: src/orage-window.c:279
+#: src/event-list.c:1125 src/interface.c:859
+#: src/orage-appointment-window.c:2914 src/orage-week-window.c:352
+#: src/orage-window-classic.c:281 src/orage-window-next.c:130
 msgid "_File"
 msgstr "_Tập tin"
 
-#: src/event-list.c:1141 src/orage-appointment-window.c:2926
+#: src/event-list.c:1131 src/orage-appointment-window.c:2932
 msgid "D_uplicate"
 msgstr "_Sao chép"
 
 #. ********* View menu *********
 #. View menu
-#: src/event-list.c:1158 src/orage-week-window.c:363 src/orage-window.c:310
+#: src/event-list.c:1148 src/orage-week-window.c:362
+#: src/orage-window-classic.c:310 src/orage-window-next.c:142
 msgid "_View"
 msgstr "_Xem"
 
 #. ********* Go menu   *********
-#: src/event-list.c:1177 src/orage-week-window.c:377
+#: src/event-list.c:1167 src/orage-week-window.c:376
 msgid "_Go"
 msgstr "_Chuyển tới"
 
-#: src/event-list.c:1223 src/orage-week-window.c:450
+#: src/event-list.c:1213 src/orage-week-window.c:449
+#: src/orage-window-next.c:131
 msgid "New"
 msgstr "Mới"
 
-#: src/event-list.c:1225 src/orage-appointment-window.c:3551
+#: src/event-list.c:1215 src/orage-appointment-window.c:3556
 msgid "Duplicate"
-msgstr "Sao"
+msgstr "Sao chép"
 
-#: src/event-list.c:1227 src/orage-appointment-window.c:3556
+#: src/event-list.c:1217 src/orage-appointment-window.c:3561
 msgid "Delete"
 msgstr "Xóa"
 
-#: src/event-list.c:1232
+#: src/event-list.c:1222
 msgid "Back"
-msgstr "Quay lại"
+msgstr "Lùi lại"
 
-#: src/event-list.c:1236
+#: src/event-list.c:1226
 msgid "Forward"
-msgstr "Đi tới"
+msgstr "Tiến tới"
 
-#: src/event-list.c:1241 src/orage-week-window.c:468
+#: src/event-list.c:1231 src/orage-week-window.c:467
+#: src/orage-window-next.c:133
 msgid "Refresh"
-msgstr "Cập nhật"
+msgstr "Làm mới"
 
-#: src/event-list.c:1243
+#: src/event-list.c:1233
 msgid "Find"
 msgstr "Tìm"
 
-#: src/event-list.c:1248 src/interface.c:879 src/orage-week-window.c:473
+#: src/event-list.c:1238 src/interface.c:877 src/orage-week-window.c:472
+#: src/orage-window-next.c:136
 msgid "Close"
 msgstr "Đóng"
 
-#: src/event-list.c:1250
+#: src/event-list.c:1240
 msgid "Dayview"
-msgstr "Hiển thị ngày"
+msgstr "Xem ngày"
 
-#: src/event-list.c:1280 src/orage-appointment-window.c:3586
+#: src/event-list.c:1270 src/orage-appointment-window.c:3591
+#: src/orage-import.c:64
 msgid "Event"
 msgstr "Sự kiện"
 
-#: src/event-list.c:1285
+#: src/event-list.c:1275
 msgid "Extra days to show:"
-msgstr ""
+msgstr "Số ngày bổ sung hiển thị:"
 
-#: src/event-list.c:1299
+#: src/event-list.c:1289
 msgid "only first repeating"
-msgstr ""
+msgstr "chỉ sự kiện lặp đầu tiên"
 
-#: src/event-list.c:1307
+#: src/event-list.c:1297
 msgid ""
 "Check this if you only want to see the first repeating event. By default all are shown.\n"
 "Note that this also shows all urgencies.\n"
 "Note that repeating events may appear earlier in the list as the first occurrence only is listed."
 msgstr ""
+"Đánh dấu nếu bạn chỉ muốn xem sự kiện lặp đầu tiên. Mặc định hiển thị tất cả.\n"
+"Lưu ý rằng tùy chọn này cũng hiển thị mọi mức độ ưu tiên.\n"
+"Lưu ý rằng các sự kiện lặp có thể xuất hiện sớm hơn trong danh sách vì chỉ liệt kê lần xuất hiện đầu tiên."
 
-#: src/event-list.c:1312
+#: src/event-list.c:1302
 msgid "also old"
-msgstr ""
+msgstr "cả sự kiện cũ"
 
-#: src/event-list.c:1317
+#: src/event-list.c:1307
 msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed."
 msgstr ""
+"Đánh dấu nếu bạn muốn xem cả sự kiện cũ. Chỉ chọn được sau khi bật “chỉ sự kiện lặp đầu tiên” để tránh danh sách quá dài.\n"
+"Lưu ý rằng tùy chọn số ngày bổ sung vẫn quyết định việc liệt kê các cuộc hẹn mới hơn."
 
-#: src/event-list.c:1339 src/orage-appointment-window.c:3594
+#: src/event-list.c:1328 src/orage-appointment-window.c:3599
+#: src/orage-import.c:67
 msgid "Todo"
-msgstr "Làm"
+msgstr "Việc cần làm"
 
-#: src/event-list.c:1353 src/orage-appointment-window.c:3602
+#: src/event-list.c:1342 src/orage-appointment-window.c:3607
+#: src/orage-import.c:70
 msgid "Journal"
 msgstr "Nhật ký"
 
-#: src/event-list.c:1356
+#: src/event-list.c:1345
 msgid "Journal entries starting from:"
-msgstr ""
+msgstr "Các mục nhật ký bắt đầu từ:"
 
-#: src/event-list.c:1381
+#: src/event-list.c:1370
 msgid "Search"
 msgstr "Tìm kiếm"
 
-#: src/event-list.c:1384
+#: src/event-list.c:1373
 msgid "Search text "
-msgstr "Tìm kiếm văn bản"
+msgstr "Văn bản tìm kiếm "
 
-#: src/event-list.c:1450
+#: src/event-list.c:1439
 msgid "Flags"
-msgstr "Đánh dấu"
+msgstr "Cờ"
 
 #. title
-#: src/event-list.c:1458 src/orage-appointment-window.c:3614
+#: src/event-list.c:1447 src/orage-appointment-window.c:3618
+#: src/orage-window-next.c:880 src/orage-window-next.c:898
 msgid "Title"
 msgstr "Tiêu đề"
 
-#: src/event-list.c:1484
+#: src/event-list.c:1473
 msgid ""
 "Double click line to edit it.\n"
 "\n"
@@ -209,28 +222,40 @@ msgid ""
 "\t 5. Appointment type:\n"
 "\t\tE=Event T=Todo J=Journal"
 msgstr ""
+"Nhấp đúp vào dòng để chỉnh sửa.\n"
+"\n"
+"Các cờ theo thứ tự:\n"
+"\t 1. Báo thức: n=không có báo thức\n"
+"\t\t A=Đã đặt báo thức P=Báo thức liên tục\n"
+"\t 2. Lặp lại: n=không lặp\n"
+"\t\t H=Hàng giờ D=Hàng ngày W=Hàng tuần M=Hàng tháng Y=Hàng năm\n"
+"\t 3. Loại: f=Rảnh B=Bận\n"
+"\t 4. Vị trí tệp:\n"
+"\t\tO=Orage A=Lưu trữ F=Ngoại lai\n"
+"\t 5. Loại cuộc hẹn:\n"
+"\t\tE=Sự kiện T=Việc cần làm J=Nhật ký"
 
-#: src/ical-code.c:858
+#: src/ical-code.c:841
 msgid "Orage default alarm"
 msgstr "Báo thức mặc định của Orage"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
-#: src/interface.c:262 src/orage-appointment-window.c:933 src/parameters.c:430
+#: src/interface.c:260 src/orage-appointment-window.c:931 src/parameters.c:390
 msgid "Select a file..."
-msgstr "Chọn một tập tin..."
+msgstr "Chọn tập tin..."
 
-#: src/interface.c:269
+#: src/interface.c:267
 msgid "Calendar files"
 msgstr "Tập tin lịch"
 
-#: src/interface.c:275 src/orage-appointment-window.c:948
+#: src/interface.c:273 src/orage-appointment-window.c:946
 msgid "All Files"
-msgstr "Tất cả"
+msgstr "Mọi tập tin"
 
 #: src/interface.c:643
 msgid "Current foreign files"
-msgstr "Các tệp tin ngoại lai hiện tại"
+msgstr "Các tệp ngoại lai hiện tại"
 
 #: src/interface.c:666
 msgid "READ ONLY"
@@ -238,764 +263,772 @@ msgstr "CHỈ ĐỌC"
 
 #: src/interface.c:668
 msgid "READ WRITE"
-msgstr "CHỈ GHI"
+msgstr "ĐỌC GHI"
 
-#: src/interface.c:673 src/orage-appointment-window.c:2359
+#: src/interface.c:673 src/orage-appointment-window.c:2370
 msgid "_Remove"
-msgstr ""
+msgstr "_Xóa"
 
-#: src/interface.c:693
+#: src/interface.c:692
 msgid "***** No foreign files *****"
-msgstr "***** Không có tệp tin ngoại lai *****"
+msgstr "***** Không có tệp ngoại lai *****"
 
-#: src/interface.c:708
+#: src/interface.c:707
 msgid "Foreign file add failed"
-msgstr ""
+msgstr "Thêm tệp ngoại lai thất bại"
 
-#: src/interface.c:717
-msgid "Orage can only handle 10 foreign files. Limit reached."
-msgstr ""
+#: src/interface.c:715
+msgid "Orage can only handle 10 foreign files. Limit reached"
+msgstr "Orage chỉ hỗ trợ tối đa 10 tệp ngoại lai. Đã đạt giới hạn"
 
-#: src/interface.c:727
+#: src/interface.c:725
 msgid "Filename is empty."
-msgstr ""
+msgstr "Tên tệp trống."
 
-#: src/interface.c:737
+#: src/interface.c:735
 msgid "Name is empty."
-msgstr ""
+msgstr "Tên hiển thị trống."
 
-#: src/interface.c:748
+#: src/interface.c:746
 msgid "File does not exist."
-msgstr ""
+msgstr "Tệp không tồn tại."
 
-#: src/interface.c:760
+#: src/interface.c:758
 msgid "Same filename already exists in Orage."
-msgstr ""
+msgstr "Tên tệp đã tồn tại trong Orage."
 
-#: src/interface.c:771
+#: src/interface.c:769
 msgid "Same name already exists in Orage."
-msgstr ""
+msgstr "Tên hiển thị đã tồn tại trong Orage."
 
-#: src/interface.c:1025
+#: src/interface.c:1023
 msgid "Import/export"
-msgstr "Nhập/xuất"
+msgstr "Nhập/Xuất"
 
-#: src/interface.c:1032
+#: src/interface.c:1030
 msgid "Import"
 msgstr "Nhập"
 
-#: src/interface.c:1040
+#: src/interface.c:1038
 msgid "Read from file:"
-msgstr "Đọc tệp tin:"
+msgstr "Đọc từ tệp:"
 
-#: src/interface.c:1050 src/interface.c:1096 src/interface.c:1271
-#: src/interface.c:1363 src/interface.c:1446
-#: src/orage-appointment-window.c:3960 src/parameters.c:435
-#: src/parameters.c:800 src/reminder.c:633
+#: src/interface.c:1048 src/interface.c:1094 src/interface.c:1271
+#: src/interface.c:1369 src/interface.c:1458
+#: src/orage-appointment-window.c:3957 src/parameters.c:395
+#: src/parameters.c:764 src/reminder.c:631
 msgid "_Open"
-msgstr ""
+msgstr "_Mở"
 
-#: src/interface.c:1057 src/interface.c:1103 src/interface.c:1277
-#: src/interface.c:1369 src/orage-appointment-window.c:4126
+#: src/interface.c:1055 src/interface.c:1101 src/interface.c:1278
+#: src/interface.c:1376 src/orage-appointment-window.c:4120
 msgid "_Save"
-msgstr ""
+msgstr "_Lưu"
 
-#: src/interface.c:1070
+#: src/interface.c:1068
 msgid ""
 "Separate filenames with comma(,).\n"
 " NOTE: comma is not valid character in filenames for Orage."
 msgstr ""
-"Tách tên tệp tin với dấu phẩy(,).\n"
-"Chú ý: dấu phẩy không phải là kí tự phù hợp cho tên tệp tin trong Orage."
+"Tách tên tệp bằng dấu phẩy (,).\n"
+"Lưu ý: dấu phẩy không được phép trong tên tệp của Orage."
 
-#: src/interface.c:1075
+#: src/interface.c:1073
 msgid "Export"
 msgstr "Xuất"
 
-#: src/interface.c:1083
+#: src/interface.c:1081
 msgid "Write to file:"
 msgstr "Ghi vào tệp:"
 
-#: src/interface.c:1118 src/interface.c:1136
+#: src/interface.c:1116 src/interface.c:1134
 msgid "Select"
 msgstr "Chọn"
 
-#: src/interface.c:1123
+#: src/interface.c:1121
 msgid "All appointments"
-msgstr "Mọi cuộc hẹn"
+msgstr "Tất cả cuộc hẹn"
 
-#: src/interface.c:1142
+#: src/interface.c:1140
 msgid "Named appointments:"
-msgstr ""
+msgstr "Cuộc hẹn có tên:"
 
-#: src/interface.c:1161
+#: src/interface.c:1159
 msgid ""
 "Note that only main file appointments are read.\n"
 "Archived and Foreign events are not exported."
 msgstr ""
+"Lưu ý chỉ đọc các cuộc hẹn trong tệp chính.\n"
+"Các sự kiện đã lưu trữ và ngoại lai sẽ không được xuất."
 
-#: src/interface.c:1164
+#: src/interface.c:1162
 msgid ""
 "Note that only main file appointments are read.\n"
 "Foreign events are not exported."
 msgstr ""
+"Lưu ý chỉ đọc các cuộc hẹn trong tệp chính.\n"
+"Các sự kiện ngoại lai sẽ không được xuất."
+
+#: src/interface.c:1165
+msgid "You can easily drag these from event-list window."
+msgstr "Bạn có thể kéo thả dễ dàng từ cửa sổ danh sách sự kiện."
 
 #: src/interface.c:1167
-msgid "You can easily drag these from event-list window."
-msgstr ""
-
-#: src/interface.c:1169
 msgid "Orage appointment UIDs separated by commas."
-msgstr ""
+msgstr "UID các cuộc hẹn Orage, phân tách bằng dấu phẩy."
 
-#: src/interface.c:1175
+#: src/interface.c:1173
 msgid "Archive"
-msgstr ""
+msgstr "Lưu trữ"
 
-#: src/interface.c:1184 src/interface.c:1206
-#: src/orage-appointment-window.c:4105
+#: src/interface.c:1182 src/interface.c:1204
+#: src/orage-appointment-window.c:4099
 msgid "_Execute"
-msgstr ""
+msgstr "_Thực hiện"
 
-#: src/interface.c:1190
+#: src/interface.c:1188
 #, c-format
 msgid "Archive now (threshold: %d months)"
-msgstr ""
+msgstr "Lưu trữ ngay (ngưỡng: %d tháng)"
 
-#: src/interface.c:1201
+#: src/interface.c:1199
 msgid "You can change archive threshold in parameters"
-msgstr ""
+msgstr "Bạn có thể thay đổi ngưỡng lưu trữ trong phần thiết lập"
 
-#: src/interface.c:1213
+#: src/interface.c:1211
 msgid "Revert archive now"
-msgstr ""
+msgstr "Khôi phục lưu trữ ngay"
 
-#: src/interface.c:1220
+#: src/interface.c:1218
 msgid ""
 "Return all archived events into main orage file and remove arch file.\n"
 "This is useful for example when doing export and moving orage\n"
 "appointments to another system."
 msgstr ""
+"Đưa tất cả sự kiện đã lưu trữ về tệp chính và xóa tệp lưu trữ.\n"
+"Hữu ích khi xuất dữ liệu và chuyển cuộc hẹn Orage sang hệ thống khác."
 
-#: src/interface.c:1232
+#: src/interface.c:1230
 msgid "Orage files"
-msgstr "Tệp tin Orage"
+msgstr "Tệp Orage"
 
-#: src/interface.c:1239
+#: src/interface.c:1237
 msgid "Orage main calendar file"
-msgstr "Tệp tin lịch chính Orage"
+msgstr "Tệp lịch chính Orage"
 
-#: src/interface.c:1248 src/interface.c:1340
+#: src/interface.c:1246 src/interface.c:1345
 msgid "Current file:"
-msgstr ""
+msgstr "Tệp hiện tại:"
 
-#: src/interface.c:1260 src/interface.c:1352
+#: src/interface.c:1259 src/interface.c:1358
 msgid "New file:"
-msgstr ""
+msgstr "Tệp mới:"
 
-#: src/interface.c:1287 src/interface.c:1379
+#: src/interface.c:1289 src/interface.c:1387
 msgid "Action options:"
-msgstr ""
+msgstr "Tùy chọn hành động:"
 
-#: src/interface.c:1291 src/interface.c:1383
+#: src/interface.c:1293 src/interface.c:1391
 msgid "Rename"
-msgstr "Sửa tên"
+msgstr "Đổi tên"
 
-#: src/interface.c:1297
+#: src/interface.c:1300
 msgid ""
 "Orage internal file rename only.\n"
 "Does not touch external filesystem at all.\n"
 "New file must exist."
 msgstr ""
+"Chỉ đổi tên tệp nội bộ Orage.\n"
+"Không tác động tới hệ thống tệp bên ngoài.\n"
+"Tệp mới phải đã tồn tại."
 
-#: src/interface.c:1301 src/interface.c:1390
+#: src/interface.c:1304 src/interface.c:1399
 msgid "Copy"
 msgstr "Sao chép"
 
-#: src/interface.c:1307
+#: src/interface.c:1311
 msgid "Current file is copied and stays unmodified in the old place."
-msgstr ""
+msgstr "Tệp hiện tại được sao chép, tệp gốc giữ nguyên vị trí cũ."
 
-#: src/interface.c:1311 src/interface.c:1397
+#: src/interface.c:1315 src/interface.c:1407
 msgid "Move"
 msgstr "Di chuyển"
 
-#: src/interface.c:1317
+#: src/interface.c:1322
 msgid "Current file is moved and vanishes from the old place."
-msgstr ""
+msgstr "Tệp hiện tại được di chuyển và biến mất khỏi vị trí cũ."
 
-#: src/interface.c:1331
+#: src/interface.c:1336
 msgid "Archive file"
-msgstr "Tập tin lưu"
+msgstr "Tệp lưu trữ"
 
-#: src/interface.c:1422
+#: src/interface.c:1433
 msgid "Foreign files"
-msgstr "Tệp tin ngoại lai"
+msgstr "Tệp ngoại lai"
 
-#: src/interface.c:1429
+#: src/interface.c:1440
 msgid "Add new foreign file"
-msgstr "Thêm tệp tin ngoại lai"
+msgstr "Thêm tệp ngoại lai mới"
 
-#: src/interface.c:1437
+#: src/interface.c:1448
 msgid "Foreign file:"
-msgstr "Tệp tin ngoại lai:"
+msgstr "Tệp ngoại lai:"
 
-#: src/interface.c:1453 src/orage-appointment-window.c:2435
-#: src/parameters.c:1411
+#: src/interface.c:1465 src/orage-appointment-window.c:2443
+#: src/parameters.c:1388
 msgid "_Add"
-msgstr ""
+msgstr "_Thêm"
 
-#: src/interface.c:1468
+#: src/interface.c:1480
 msgid "Visible name:"
-msgstr ""
+msgstr "Tên hiển thị:"
 
-#: src/interface.c:1478
+#: src/interface.c:1490
 msgid "Read only"
 msgstr "Chỉ đọc"
 
-#: src/interface.c:1488
+#: src/interface.c:1500
 msgid ""
 "Set this if you want to make sure that this file is never modified by Orage.\n"
 "Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
 msgstr ""
+"Đánh dấu nếu bạn muốn chắc chắn tệp này không bao giờ bị Orage sửa đổi.\n"
+"Lưu ý rằng việc sửa đổi tệp ngoại lai có thể khiến chúng không còn tương thích với công cụ gốc!"
 
-#: src/interface.c:1490
+#: src/interface.c:1502
 msgid "This internal name is displayed to user instead of file name."
-msgstr ""
+msgstr "Tên nội bộ này sẽ hiển thị cho người dùng thay vì tên tệp."
 
-#: src/interface.c:1504
+#: src/interface.c:1516
 msgid "Exchange data - Orage"
-msgstr ""
+msgstr "Trao đổi dữ liệu - Orage"
 
-#: src/main.c:53 src/orage-appointment-window.c:711
+#: src/main.c:49 src/orage-appointment-window.c:708
 #: org.xfce.orage.appdata.xml.in:7
 msgid "Orage"
 msgstr "Orage"
 
 #: src/orage-about.c:44 org.xfce.orage.appdata.xml.in:8
 msgid "Orage is a time-managing application for the Xfce desktop environment"
-msgstr ""
+msgstr "Orage là ứng dụng quản lý thời gian dành cho môi trường desktop Xfce"
 
 #: src/orage-about.c:51
 msgid "translator-credits"
-msgstr "giới thiêu người dịch"
+msgstr "Nhóm Việt hóa Xfce Việt Nam"
 
-#: src/orage-application.c:114
+#: src/orage-application.c:160
+msgid "Released under the terms of the GNU General Public License."
+msgstr "Phát hành theo các điều khoản của Giấy phép Công cộng GNU."
+
+#: src/orage-application.c:162
 #, c-format
-msgid ""
-"\tThis is %s version %s\n"
-"\n"
-msgstr ""
+msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
+msgstr "Biên dịch với GTK+-%d.%d.%d, đang dùng GTK+-%d.%d.%d."
 
-#: src/orage-application.c:116
-msgid "\tReleased under the terms of the GNU General Public License.\n"
-msgstr "Phát hành dưới những điều khoản của Giấy phép công cộng phổ biến GNU.\n"
-
-#: src/orage-application.c:117
+#: src/orage-application.c:167
 #, c-format
-msgid "\tCompiled against GTK+-%d.%d.%d, "
-msgstr "Biên dịch bằng GTK+-%d.%d.%d,"
+msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
+msgstr "Biên dịch với libxfce4ui-%d.%d.%d, đang dùng libxfce4ui-%d.%d.%d."
 
-#: src/orage-application.c:119
+#: src/orage-application.c:173
 #, c-format
-msgid "using GTK+-%d.%d.%d.\n"
-msgstr "sử dụng GTK+-%d.%d.%d.\n"
+msgid "Compiled against libnotify-%d.%d.%d."
+msgstr "Biên dịch với libnotify-%d.%d.%d."
 
-#: src/orage-application.c:122
-msgid "\tUsing libnotify.\n"
-msgstr "Sử dụng libnotify.\n"
+#: src/orage-application.c:176
+msgid "Not using libnotify."
+msgstr "Không dùng libnotify."
 
-#: src/orage-application.c:124
-msgid "\tNot using libnotify.\n"
-msgstr "Không sử dụng libnotify.\n"
+#: src/orage-application.c:181
+msgid "Using automatic archiving."
+msgstr "Đang dùng lưu trữ tự động."
 
-#: src/orage-application.c:127
-msgid "\tUsing automatic archiving.\n"
-msgstr ""
+#: src/orage-application.c:183
+msgid "Not using archiving."
+msgstr "Không dùng lưu trữ."
 
-#: src/orage-application.c:129
-msgid "\tNot using archiving.\n"
-msgstr ""
+#: src/orage-application.c:187
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr "Vui lòng báo lỗi tại <%s>."
 
-#: src/orage-application.c:132
-msgid "\tUsing libxfce4ui: yes\n"
-msgstr ""
-
-#: src/orage-application.c:134
-msgid "\tUsing libxfce4ui: no\n"
-msgstr ""
-
-#: src/orage-application.c:565
+#: src/orage-application.c:677
 msgid "Open today's tasks"
-msgstr ""
+msgstr "Mở các việc cần làm hôm nay"
 
-#: src/orage-application.c:574
+#: src/orage-application.c:686
 msgid "Add new appointment"
-msgstr ""
+msgstr "Thêm cuộc hẹn mới"
 
-#: src/orage-application.c:583
+#: src/orage-application.c:695
 msgid "Show preferences form"
-msgstr ""
+msgstr "Hiển thị cửa sổ thiết lập"
 
-#: src/orage-application.c:592
+#: src/orage-application.c:704
 msgid "Make Orage visible/unvisible"
-msgstr ""
+msgstr "Hiện/ẩn Orage"
 
-#: src/orage-application.c:601
+#: src/orage-application.c:713
 msgid "Add a foreign file"
-msgstr ""
+msgstr "Thêm tệp ngoại lai"
 
-#: src/orage-application.c:610
+#: src/orage-application.c:722
 msgid "Remove a foreign file"
-msgstr ""
+msgstr "Xóa tệp ngoại lai"
 
-#: src/orage-application.c:619
+#: src/orage-application.c:731
 msgid "Import appointments from file to Orage"
-msgstr ""
+msgstr "Nhập cuộc hẹn từ tệp vào Orage"
 
-#: src/orage-application.c:628
+#: src/orage-application.c:740
 msgid "Export appointments from Orage to file"
-msgstr ""
+msgstr "Xuất cuộc hẹn từ Orage ra tệp"
 
-#: src/orage-application.c:637
+#: src/orage-application.c:749
 msgid "Show version of Orage"
-msgstr ""
+msgstr "Hiển thị phiên bản Orage"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
 #. end time
-#: src/orage-appointment-window.c:527 src/orage-appointment-window.c:567
-#: src/orage-appointment-window.c:3650
+#: src/orage-appointment-window.c:524 src/orage-appointment-window.c:564
+#: src/orage-appointment-window.c:3652 src/orage-window-next.c:901
 msgid "End"
 msgstr "Kết thúc"
 
-#: src/orage-appointment-window.c:547
+#: src/orage-appointment-window.c:544 src/orage-window-next.c:883
 msgid "Due"
-msgstr ""
+msgstr "Hạn chót"
 
-#: src/orage-appointment-window.c:941
+#: src/orage-appointment-window.c:939
 msgid "Sound Files"
-msgstr "Tập tin Âm thanh"
+msgstr "Tập tin âm thanh"
 
-#: src/orage-appointment-window.c:987
+#: src/orage-appointment-window.c:980
 msgid "The appointment information has been modified."
-msgstr "Đã thay đổi thông tin về cuộc hẹn."
+msgstr "Thông tin cuộc hẹn đã bị thay đổi."
 
-#: src/orage-appointment-window.c:989
+#: src/orage-appointment-window.c:982
 msgid "No, do not leave"
-msgstr ""
+msgstr "Không, không rời khỏi"
 
-#: src/orage-appointment-window.c:990
+#: src/orage-appointment-window.c:983
 msgid "Yes, ignore modifications and leave"
-msgstr ""
+msgstr "Có, bỏ qua thay đổi và rời khỏi"
 
-#: src/orage-appointment-window.c:1019
+#: src/orage-appointment-window.c:1012
 msgid "The end of this appointment is earlier than the beginning."
-msgstr "Thời gian kết thúc cuộc hẹn sớm hơn thời gian bắt đầu."
+msgstr "Thời gian kết thúc của cuộc hẹn sớm hơn thời gian bắt đầu."
 
-#: src/orage-appointment-window.c:1432 src/orage-appointment-window.c:2221
+#: src/orage-appointment-window.c:1425 src/orage-appointment-window.c:2232
 msgid "Not set"
-msgstr "Không đặt"
+msgstr "Chưa đặt"
 
-#: src/orage-appointment-window.c:1477
+#: src/orage-appointment-window.c:1470
 msgid "Add new appointment to this file."
-msgstr ""
+msgstr "Thêm cuộc hẹn mới vào tệp này."
 
-#: src/orage-appointment-window.c:1478 src/orage-appointment-window.c:1532
+#: src/orage-appointment-window.c:1471 src/orage-appointment-window.c:1532
 msgid "Orage default file"
-msgstr ""
+msgstr "Tệp mặc định của Orage"
 
-#: src/orage-appointment-window.c:1570
+#: src/orage-appointment-window.c:1577
 msgid "Appointment addition failed."
-msgstr ""
+msgstr "Thêm cuộc hẹn thất bại."
 
-#: src/orage-appointment-window.c:1571
+#: src/orage-appointment-window.c:1578
 msgid ""
 "Error happened when adding appointment. Look more details from the log file."
-msgstr ""
+msgstr "Có lỗi khi thêm cuộc hẹn. Xem chi tiết trong tệp nhật ký."
 
-#: src/orage-appointment-window.c:1582
+#: src/orage-appointment-window.c:1591
 msgid "Appointment update failed."
-msgstr ""
+msgstr "Cập nhật cuộc hẹn thất bại."
 
-#: src/orage-appointment-window.c:1583
+#: src/orage-appointment-window.c:1592
 msgid ""
 "Look more details from the log file. (Perhaps file was updated external from"
 " Orage?)"
 msgstr ""
+"Xem chi tiết trong tệp nhật ký. (Có thể tệp đã bị thay đổi bên ngoài Orage?)"
 
-#: src/orage-appointment-window.c:1633
+#: src/orage-appointment-window.c:1644
 msgid "This appointment will be permanently removed."
-msgstr "Sẽ xóa cuộc hẹn này."
+msgstr "Cuộc hẹn này sẽ bị xóa vĩnh viễn."
 
-#: src/orage-appointment-window.c:1636
+#: src/orage-appointment-window.c:1647
 msgid "Yes, remove it"
-msgstr ""
+msgstr "Có, xóa nó"
 
-#: src/orage-appointment-window.c:2173
+#: src/orage-appointment-window.c:2184
 msgid "This appointment does not exist."
 msgstr "Cuộc hẹn này không tồn tại."
 
-#: src/orage-appointment-window.c:2174
+#: src/orage-appointment-window.c:2185
 msgid "It was probably removed, please refresh your screen."
-msgstr ""
+msgstr "Có thể nó đã bị xóa, vui lòng làm mới màn hình."
 
-#: src/orage-appointment-window.c:2386
+#: src/orage-appointment-window.c:2397
 msgid "Current categories"
-msgstr ""
-
-#: src/orage-appointment-window.c:2408
-msgid "Add new category with color"
-msgstr ""
+msgstr "Các mục hiện tại"
 
 #: src/orage-appointment-window.c:2419
+msgid "Add new category with color"
+msgstr "Thêm mục mới kèm màu"
+
+#: src/orage-appointment-window.c:2428
 msgid "Category:"
 msgstr "Mục:"
 
-#: src/orage-appointment-window.c:2463
+#: src/orage-appointment-window.c:2471
 msgid "Colors of categories - Orage"
 msgstr "Màu của các mục - Orage"
 
-#: src/orage-appointment-window.c:2509
+#: src/orage-appointment-window.c:2517
 msgid "*** COPY ***"
-msgstr ""
+msgstr "*** BẢN SAO ***"
 
-#: src/orage-appointment-window.c:2562 src/orage-appointment-window.c:3871
+#: src/orage-appointment-window.c:2570 src/orage-appointment-window.c:3869
 msgid "Before Start"
-msgstr "Sau khi bắt đầu"
-
-#: src/orage-appointment-window.c:2562 src/orage-appointment-window.c:3871
-msgid "Before End"
-msgstr "Sau khi kết thúc"
-
-#: src/orage-appointment-window.c:2562 src/orage-appointment-window.c:3872
-msgid "After Start"
 msgstr "Trước khi bắt đầu"
 
-#: src/orage-appointment-window.c:2562 src/orage-appointment-window.c:3872
-msgid "After End"
+#: src/orage-appointment-window.c:2570 src/orage-appointment-window.c:3869
+msgid "Before End"
 msgstr "Trước khi kết thúc"
 
+#: src/orage-appointment-window.c:2570 src/orage-appointment-window.c:3870
+msgid "After Start"
+msgstr "Sau khi bắt đầu"
+
+#: src/orage-appointment-window.c:2570 src/orage-appointment-window.c:3870
+msgid "After End"
+msgstr "Sau khi kết thúc"
+
 #. window title
-#: src/orage-appointment-window.c:2880
+#: src/orage-appointment-window.c:2887
 msgid "New appointment - Orage"
 msgstr "Cuộc hẹn mới - Orage"
 
-#: src/orage-appointment-window.c:2913
+#: src/orage-appointment-window.c:2920
 msgid "Sav_e and close"
-msgstr "Ghi _và đóng"
+msgstr "_Lưu và đóng"
 
-#: src/orage-appointment-window.c:3230
+#: src/orage-appointment-window.c:3235
 msgid "first"
-msgstr ""
+msgstr "thứ nhất"
 
-#: src/orage-appointment-window.c:3230
+#: src/orage-appointment-window.c:3235
 msgid "second"
-msgstr ""
+msgstr "thứ hai"
 
-#: src/orage-appointment-window.c:3230
+#: src/orage-appointment-window.c:3235
 msgid "third"
-msgstr ""
+msgstr "thứ ba"
 
-#: src/orage-appointment-window.c:3230
+#: src/orage-appointment-window.c:3235
 msgid "fourth"
-msgstr ""
+msgstr "thứ tư"
 
-#: src/orage-appointment-window.c:3230
+#: src/orage-appointment-window.c:3235
 msgid "last"
-msgstr ""
+msgstr "cuối cùng"
 
-#: src/orage-appointment-window.c:3240
+#: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
 msgid "Monday"
-msgstr ""
+msgstr "Thứ Hai"
 
-#: src/orage-appointment-window.c:3240
+#: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
 msgid "Tuesday"
-msgstr ""
+msgstr "Thứ Ba"
 
-#: src/orage-appointment-window.c:3240
+#: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
 msgid "Wednesday"
-msgstr ""
+msgstr "Thứ Tư"
 
-#: src/orage-appointment-window.c:3240
+#: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
 msgid "Thursday"
-msgstr ""
+msgstr "Thứ Năm"
 
-#: src/orage-appointment-window.c:3240
+#: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
 msgid "Friday"
-msgstr ""
+msgstr "Thứ Sáu"
 
-#: src/orage-appointment-window.c:3241
+#: src/orage-appointment-window.c:3246 src/orage-month-view.c:285
 msgid "Saturday"
-msgstr ""
+msgstr "Thứ Bảy"
 
-#: src/orage-appointment-window.c:3241
+#: src/orage-appointment-window.c:3246 src/orage-month-view.c:285
 msgid "Sunday"
-msgstr ""
+msgstr "Chủ Nhật"
 
-#: src/orage-appointment-window.c:3254 src/orage-appointment-window.c:3287
-#: src/orage-appointment-window.c:3394 src/orage-appointment-window.c:3428
+#: src/orage-appointment-window.c:3259 src/orage-appointment-window.c:3292
+#: src/orage-appointment-window.c:3399 src/orage-appointment-window.c:3433
 msgid "Every"
-msgstr ""
+msgstr "Mỗi"
 
-#: src/orage-appointment-window.c:3259
+#: src/orage-appointment-window.c:3264
 msgid "day(s)"
-msgstr ""
+msgstr "ngày"
 
-#: src/orage-appointment-window.c:3276
+#: src/orage-appointment-window.c:3281
 msgid "Mon"
-msgstr "Thứ 2"
+msgstr "T2"
 
-#: src/orage-appointment-window.c:3276
+#: src/orage-appointment-window.c:3281
 msgid "Tue"
-msgstr "Thứ 3"
+msgstr "T3"
 
-#: src/orage-appointment-window.c:3276
+#: src/orage-appointment-window.c:3281
 msgid "Wed"
-msgstr "Thứ 4"
+msgstr "T4"
 
-#: src/orage-appointment-window.c:3276
+#: src/orage-appointment-window.c:3281
 msgid "Thu"
-msgstr "Thứ 5"
+msgstr "T5"
 
-#: src/orage-appointment-window.c:3276
+#: src/orage-appointment-window.c:3281
 msgid "Fri"
-msgstr "Thứ 6"
+msgstr "T6"
 
-#: src/orage-appointment-window.c:3276
+#: src/orage-appointment-window.c:3281
 msgid "Sat"
-msgstr "Thứ 7"
+msgstr "T7"
 
-#: src/orage-appointment-window.c:3276
+#: src/orage-appointment-window.c:3281
 msgid "Sun"
 msgstr "CN"
 
-#: src/orage-appointment-window.c:3294
+#: src/orage-appointment-window.c:3299
 msgid "week(s) on:"
-msgstr ""
+msgstr "tuần vào:"
 
-#: src/orage-appointment-window.c:3330
+#: src/orage-appointment-window.c:3335
 msgid "From the beginning of the month:"
-msgstr ""
+msgstr "Từ đầu tháng:"
 
-#: src/orage-appointment-window.c:3343
+#: src/orage-appointment-window.c:3348
 msgid "From the end of the month:"
-msgstr ""
+msgstr "Từ cuối tháng:"
 
-#: src/orage-appointment-window.c:3356
+#: src/orage-appointment-window.c:3361
 msgid "Every:"
-msgstr ""
+msgstr "Mỗi:"
 
-#: src/orage-appointment-window.c:3384
+#: src/orage-appointment-window.c:3389
 msgid "January"
-msgstr ""
+msgstr "Tháng Một"
 
-#: src/orage-appointment-window.c:3384
+#: src/orage-appointment-window.c:3389
 msgid "February"
-msgstr ""
+msgstr "Tháng Hai"
 
-#: src/orage-appointment-window.c:3384
+#: src/orage-appointment-window.c:3389
 msgid "March"
-msgstr ""
+msgstr "Tháng Ba"
 
-#: src/orage-appointment-window.c:3384
+#: src/orage-appointment-window.c:3389
 msgid "April"
-msgstr ""
+msgstr "Tháng Tư"
 
-#: src/orage-appointment-window.c:3384
+#: src/orage-appointment-window.c:3389
 msgid "May"
-msgstr ""
+msgstr "Tháng Năm"
 
-#: src/orage-appointment-window.c:3385
+#: src/orage-appointment-window.c:3390
 msgid "June"
-msgstr ""
+msgstr "Tháng Sáu"
 
-#: src/orage-appointment-window.c:3385
+#: src/orage-appointment-window.c:3390
 msgid "July"
-msgstr ""
+msgstr "Tháng Bảy"
 
-#: src/orage-appointment-window.c:3385
+#: src/orage-appointment-window.c:3390
 msgid "August"
-msgstr ""
+msgstr "Tháng Tám"
 
-#: src/orage-appointment-window.c:3385
+#: src/orage-appointment-window.c:3390
 msgid "September"
-msgstr ""
+msgstr "Tháng Chín"
 
-#: src/orage-appointment-window.c:3385
+#: src/orage-appointment-window.c:3390
 msgid "October"
-msgstr ""
+msgstr "Tháng Mười"
 
-#: src/orage-appointment-window.c:3386
+#: src/orage-appointment-window.c:3391
 msgid "November"
-msgstr ""
+msgstr "Tháng Mười Một"
 
-#: src/orage-appointment-window.c:3386
+#: src/orage-appointment-window.c:3391
 msgid "December"
-msgstr ""
+msgstr "Tháng Mười Hai"
 
 #. TRANSLATORS: this string is part of date line, for example
 #. * "second Thursday of August". In some languages ​​it is not necessary to
 #. use
 #. * the string "of", it can be replaced with an empty string.
-#: src/orage-appointment-window.c:3402
+#: src/orage-appointment-window.c:3407
 msgid "of"
-msgstr ""
+msgstr "của"
 
-#: src/orage-appointment-window.c:3433
+#: src/orage-appointment-window.c:3438
 msgid "hour(s)"
-msgstr ""
-
-#: src/orage-appointment-window.c:3469
-msgid "Repeat forever"
-msgstr "Lặp lại mãi"
+msgstr "giờ"
 
 #: src/orage-appointment-window.c:3474
+msgid "Repeat forever"
+msgstr "Lặp lại mãi mãi"
+
+#: src/orage-appointment-window.c:3479
 msgid "Repeat"
-msgstr ""
+msgstr "Lặp lại"
 
-#: src/orage-appointment-window.c:3482 src/orage-appointment-window.c:3989
+#: src/orage-appointment-window.c:3487 src/orage-appointment-window.c:3985
 msgid "times"
-msgstr "thời gian"
+msgstr "lần"
 
-#: src/orage-appointment-window.c:3488
+#: src/orage-appointment-window.c:3493
 msgid "Repeat until"
-msgstr ""
+msgstr "Lặp lại đến"
 
 #. start time
-#: src/orage-appointment-window.c:3506 src/orage-appointment-window.c:3635
-#: src/orage-week-window.c:897
+#: src/orage-appointment-window.c:3511 src/orage-appointment-window.c:3637
+#: src/orage-week-window.c:888 src/orage-window-next.c:882
+#: src/orage-window-next.c:900
 msgid "Start"
 msgstr "Bắt đầu"
 
 #. completed (only for TODO)
-#: src/orage-appointment-window.c:3511 src/orage-appointment-window.c:3705
+#: src/orage-appointment-window.c:3516 src/orage-appointment-window.c:3705
 msgid "Completed"
 msgstr "Đã hoàn thành"
 
-#: src/orage-appointment-window.c:3514
+#: src/orage-appointment-window.c:3519
 msgid ""
 "TODO reoccurs regularly starting on start time and repeating after each "
 "interval no matter when it was last completed"
 msgstr ""
+"Việc cần làm sẽ lặp lại đều đặn từ thời gian bắt đầu và sau mỗi khoảng cách "
+"bất kể lần hoàn thành trước đó là khi nào"
 
-#: src/orage-appointment-window.c:3516
+#: src/orage-appointment-window.c:3521
 msgid ""
 "TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
 msgstr ""
+"Việc cần làm lặp lại dựa trên thời gian hoàn thành, tính từ lần hoàn thành cuối cùng.\n"
+"(Lưu ý bạn không thể biết lịch sử của việc cần làm vì thời điểm lặp lại thay đổi sau mỗi lần hoàn thành.)"
 
-#: src/orage-appointment-window.c:3542
+#: src/orage-appointment-window.c:3547
 msgid "Save"
-msgstr "Ghi"
-
-#: src/orage-appointment-window.c:3544
-msgid "Save and close"
-msgstr "Ghi và đóng"
+msgstr "Lưu"
 
 #: src/orage-appointment-window.c:3549
-msgid "Revert"
-msgstr "Quay lại"
+msgid "Save and close"
+msgstr "Lưu và đóng"
 
-#: src/orage-appointment-window.c:3574
+#: src/orage-appointment-window.c:3554
+msgid "Revert"
+msgstr "Hoàn tác"
+
+#: src/orage-appointment-window.c:3579
 msgid "Free"
 msgstr "Rảnh"
 
-#: src/orage-appointment-window.c:3574
+#: src/orage-appointment-window.c:3579
 msgid "Busy"
 msgstr "Bận"
 
-#: src/orage-appointment-window.c:3578
+#: src/orage-appointment-window.c:3583
 msgid "General"
 msgstr "Chung"
 
 #. type
-#: src/orage-appointment-window.c:3584
+#: src/orage-appointment-window.c:3589
 msgid "Type"
-msgstr ""
+msgstr "Kiểu"
 
-#: src/orage-appointment-window.c:3591
+#: src/orage-appointment-window.c:3596
 msgid ""
 "Event that will happen sometime. For example:\n"
 "Meeting or birthday or TV show."
 msgstr ""
-"Sự kiện xảy ra vào lúc nào đó. Ví dụ:\n"
-"Cuộc họp hay ngày sinh nhật hay chương trình TV."
+"Sự kiện sẽ diễn ra vào một thời điểm nào đó. Ví dụ:\n"
+"Cuộc họp, sinh nhật hoặc chương trình truyền hình."
 
-#: src/orage-appointment-window.c:3599
+#: src/orage-appointment-window.c:3604
 msgid ""
 "Something that you should do sometime. For example:\n"
 "Wash your car or test new version of Orage."
 msgstr ""
-"Một vài việc mà bạn làm vào lúc nào đó. Ví dụ:\n"
-"Rửa xe hay thử phiên bản mới của Orage."
+"Việc bạn cần làm vào một lúc nào đó. Ví dụ:\n"
+"Rửa xe hoặc thử phiên bản mới của Orage."
 
-#: src/orage-appointment-window.c:3607
+#: src/orage-appointment-window.c:3612
 msgid ""
 "Make a note that something happened. For example:\n"
 "Remark that your mother called or first snow came."
 msgstr ""
-"Tạo ghi chú những thứ đã xảy ra. Ví dụ:\n"
-"Đánh dấu lại cuộc gọi của mẹ hay ngày đầu tiên tuyết rơi."
+"Ghi chú lại điều gì đó đã xảy ra. Ví dụ:\n"
+"Ghi lại việc mẹ gọi hoặc tuyết rơi lần đầu tiên."
 
 #. location
-#: src/orage-appointment-window.c:3621 src/timezone_selection.c:234
-#: src/timezone_selection.c:239
+#: src/orage-appointment-window.c:3624 src/orage-window-next.c:848
+#: src/timezone_selection.c:230 src/timezone_selection.c:235
 msgid "Location"
-msgstr "Vị trí"
+msgstr "Địa điểm"
 
-#: src/orage-appointment-window.c:3629
+#: src/orage-appointment-window.c:3632
 msgid "All day event"
-msgstr "Tất cả sự kiện"
+msgstr "Sự kiện cả ngày"
 
-#: src/orage-appointment-window.c:3653
+#: src/orage-appointment-window.c:3655
 msgid "Set"
-msgstr ""
+msgstr "Đặt"
 
-#: src/orage-appointment-window.c:3677
+#: src/orage-appointment-window.c:3679
 msgid "Duration"
-msgstr "Khoảng thời gian"
+msgstr "Thời lượng"
 
-#: src/orage-appointment-window.c:3681 src/orage-appointment-window.c:3889
-#: src/reminder.c:604
+#: src/orage-appointment-window.c:3683 src/orage-appointment-window.c:3887
+#: src/reminder.c:602
 msgid "days"
 msgstr "ngày"
 
-#: src/orage-appointment-window.c:3683 src/orage-appointment-window.c:3891
-#: src/reminder.c:606
+#: src/orage-appointment-window.c:3685 src/orage-appointment-window.c:3889
+#: src/reminder.c:604
 msgid "hours"
 msgstr "giờ"
 
-#: src/orage-appointment-window.c:3685 src/orage-appointment-window.c:3893
-#: src/reminder.c:608
+#: src/orage-appointment-window.c:3687 src/orage-appointment-window.c:3891
+#: src/reminder.c:606
 msgid "mins"
 msgstr "phút"
 
 #. Availability (only for EVENT)
-#: src/orage-appointment-window.c:3697
+#: src/orage-appointment-window.c:3698
 msgid "Availability"
-msgstr "Khả năng"
+msgstr "Tình trạng"
 
-#: src/orage-appointment-window.c:3708
+#: src/orage-appointment-window.c:3708 src/orage-window-next.c:884
 msgid "Done"
-msgstr "Xong"
+msgstr "Hoàn thành"
 
 #. categories
-#: src/orage-appointment-window.c:3733
+#: src/orage-appointment-window.c:3732
 msgid "Categories"
-msgstr "Các mục"
+msgstr "Mục"
 
 #: src/orage-appointment-window.c:3751
 msgid ""
 "This is special category, which can be used to color this appointment in "
 "list views."
 msgstr ""
-"Đây là mục đặc biệt, bạn có thể sử dụng để tô màu cuộc hẹn ở chế độ xem danh"
-" sách."
+"Đây là mục đặc biệt, dùng để tô màu cuộc hẹn trong các chế độ xem dạng danh "
+"sách."
 
 #: src/orage-appointment-window.c:3752
 msgid "_Colour"
-msgstr ""
+msgstr "_Màu"
 
 #: src/orage-appointment-window.c:3757
 msgid "update colors for categories."
@@ -1004,7 +1037,7 @@ msgstr "cập nhật màu cho các mục."
 #. priority
 #: src/orage-appointment-window.c:3763
 msgid "Priority"
-msgstr "Ưu tiên"
+msgstr "Độ ưu tiên"
 
 #: src/orage-appointment-window.c:3767
 msgid ""
@@ -1013,13 +1046,17 @@ msgid ""
 "(Alarms will still fire normally.)\n"
 "(There is undocumented parameter so that you can change the default limit of 8.)"
 msgstr ""
+"Nếu đặt giá trị này từ 8 trở lên, cuộc hẹn sẽ KHÔNG hiển thị trong cửa sổ danh sách.\n"
+"Bạn có thể dùng tính năng này để làm gọn danh sách, nhưng sẽ khó tìm lại cuộc hẹn.\n"
+"(Báo thức vẫn hoạt động bình thường.)\n"
+"(Có tham số chưa được ghi lại để thay đổi giới hạn mặc định là 8.)"
 
 #. note
-#: src/orage-appointment-window.c:3776
+#: src/orage-appointment-window.c:3775 src/orage-window-next.c:858
 msgid "Note"
 msgstr "Ghi chú"
 
-#: src/orage-appointment-window.c:3797
+#: src/orage-appointment-window.c:3795
 msgid ""
 "These shorthand commands take effect immediately:\n"
 "    <D> inserts current date in local date format\n"
@@ -1030,105 +1067,117 @@ msgid ""
 "    <&Ynnnn> is translated to current year minus nnnn.\n"
 "(This can be used for example in birthday reminders to tell how old the person will be.)"
 msgstr ""
+"Các lệnh tốc ký này có hiệu lực ngay lập tức:\n"
+"    <D> chèn ngày hiện tại ở định dạng ngày địa phương\n"
+"    <T> chèn thời gian\n"
+"    <DT> chèn ngày và giờ.\n"
+"\n"
+"Chúng chỉ được chuyển đổi sau này khi chúng được nhìn thấy:\n"
+"    <&Ynnnn> được dịch sang năm hiện tại trừ nnnn.\n"
+"(Ví dụ: điều này có thể được sử dụng trong lời nhắc sinh nhật để cho biết người đó sẽ bao nhiêu tuổi.)"
 
-#: src/orage-appointment-window.c:3880
+#: src/orage-appointment-window.c:3878
 msgid "Alarm"
 msgstr "Báo thức"
 
 #. **** ALARM TIME ****
-#: src/orage-appointment-window.c:3886
+#: src/orage-appointment-window.c:3884
 msgid "Alarm time"
 msgstr "Thời gian báo thức"
 
-#: src/orage-appointment-window.c:3911
+#: src/orage-appointment-window.c:3908
 msgid ""
 "Often you want to get alarm:\n"
 " 1) before Event start\n"
 " 2) before Todo end\n"
 " 3) after Todo start"
 msgstr ""
+"Thường bạn muốn báo thức:\n"
+" 1) trước khi sự kiện bắt đầu\n"
+" 2) trước khi việc cần làm kết thúc\n"
+" 3) sau khi việc cần làm bắt đầu"
 
-#: src/orage-appointment-window.c:3916
+#: src/orage-appointment-window.c:3913
 msgid "Persistent alarm"
-msgstr ""
+msgstr "Báo thức liên tục"
 
-#: src/orage-appointment-window.c:3921
+#: src/orage-appointment-window.c:3918
 msgid ""
 "Select this if you want Orage to remind you even if it has not been active "
 "when the alarm happened."
-msgstr ""
+msgstr "Chọn nếu bạn muốn Orage vẫn nhắc dù không chạy khi đến giờ báo thức."
 
-#: src/orage-appointment-window.c:3931
+#: src/orage-appointment-window.c:3927
 msgid "Sound"
 msgstr "Âm thanh"
 
-#: src/orage-appointment-window.c:3935 src/orage-appointment-window.c:4079
+#: src/orage-appointment-window.c:3931 src/orage-appointment-window.c:4073
 msgid "Use"
 msgstr "Dùng"
 
-#: src/orage-appointment-window.c:3940
+#: src/orage-appointment-window.c:3936
 msgid "Select this if you want audible alarm"
-msgstr "Chọn nếu bạn muốn có báo thức bằng âm thanh"
+msgstr "Chọn nếu muốn báo thức bằng âm thanh"
 
-#: src/orage-appointment-window.c:3945
+#: src/orage-appointment-window.c:3941
 msgid "Sound command is not set"
-msgstr ""
+msgstr "Chưa đặt lệnh phát âm thanh"
 
-#: src/orage-appointment-window.c:3974
+#: src/orage-appointment-window.c:3970
 msgid "Repeat alarm sound"
 msgstr "Lặp lại âm thanh báo thức"
 
-#: src/orage-appointment-window.c:4005
+#: src/orage-appointment-window.c:4001
 msgid "sec interval"
-msgstr ""
+msgstr "khoảng cách (giây)"
 
 #. **** Display Alarm ****
-#: src/orage-appointment-window.c:4015
+#: src/orage-appointment-window.c:4010
 msgid "Visual"
-msgstr ""
+msgstr "Hiển thị"
 
-#: src/orage-appointment-window.c:4019
+#: src/orage-appointment-window.c:4014
 msgid "Use Orage window"
-msgstr "Sử dụng cửa sổ Orage"
+msgstr "Dùng cửa sổ Orage"
 
-#: src/orage-appointment-window.c:4021
+#: src/orage-appointment-window.c:4016
 msgid "Select this if you want Orage window alarm"
-msgstr "Chọn nếu bạn muốn báo thức bằng cửa sổ Orage"
+msgstr "Chọn nếu muốn báo thức bằng cửa sổ Orage"
 
-#: src/orage-appointment-window.c:4033
+#: src/orage-appointment-window.c:4028
 msgid "Use notification"
-msgstr "Sử dụng thông báo"
+msgstr "Dùng thông báo"
 
-#: src/orage-appointment-window.c:4035
+#: src/orage-appointment-window.c:4030
 msgid "Select this if you want notification alarm"
-msgstr "Chọn nếu bạn muốn báo thức bằng thông báo"
+msgstr "Chọn nếu muốn báo thức bằng thông báo"
 
-#: src/orage-appointment-window.c:4043
+#: src/orage-appointment-window.c:4038
 msgid "Set timeout"
-msgstr ""
+msgstr "Đặt thời hạn"
 
-#: src/orage-appointment-window.c:4045
+#: src/orage-appointment-window.c:4040
 msgid "Select this if you want notification to expire automatically"
-msgstr ""
+msgstr "Chọn nếu muốn thông báo tự động biến mất"
 
-#: src/orage-appointment-window.c:4056
+#: src/orage-appointment-window.c:4051
 msgid "0 = system default expiration time"
-msgstr ""
+msgstr "0 = thời gian hết hạn mặc định của hệ thống"
 
-#: src/orage-appointment-window.c:4064
+#: src/orage-appointment-window.c:4059
 msgid "seconds"
 msgstr "giây"
 
 #. **** Procedure Alarm ****
-#: src/orage-appointment-window.c:4075
+#: src/orage-appointment-window.c:4069
 msgid "Procedure"
-msgstr ""
+msgstr "Thủ tục"
 
-#: src/orage-appointment-window.c:4081
+#: src/orage-appointment-window.c:4075
 msgid "Select this if you want procedure or script alarm"
-msgstr ""
+msgstr "Chọn nếu muốn báo thức bằng lệnh hoặc kịch bản"
 
-#: src/orage-appointment-window.c:4091
+#: src/orage-appointment-window.c:4086
 msgid ""
 "You must enter all escape etc characters yourself.\n"
 "This string is just given to shell to process.\n"
@@ -1139,218 +1188,304 @@ msgid ""
 "\t<&ST> appointment start time\n"
 "\t<&ET> appointment end time"
 msgstr ""
+"Bạn phải tự mình nhập tất cả các ký tự thoát, v.v.\n"
+"Chuỗi này chỉ được đưa cho shell để xử lý.\n"
+"Các lệnh đặc biệt sau đây được thay thế trong thời gian chạy:\n"
+"\t<&T>  tiêu đề cuộc hẹn\n"
+"\t<&D>  mô tả cuộc hẹn\n"
+"\t<&AT> thời gian báo thức\n"
+"\t<&ST> thời gian bắt đầu cuộc hẹn\n"
+"\t<&ET> thời gian kết thúc cuộc hẹn"
 
-#: src/orage-appointment-window.c:4107
+#: src/orage-appointment-window.c:4101
 msgid "Test this alarm by raising it now"
-msgstr ""
+msgstr "Thử báo thức ngay bây giờ"
 
-#: src/orage-appointment-window.c:4120
+#: src/orage-appointment-window.c:4114
 msgid "<b>Default alarm</b>"
 msgstr "<b>Báo thức mặc định</b>"
 
-#: src/orage-appointment-window.c:4134
+#: src/orage-appointment-window.c:4129
 msgid "Store current settings as default alarm"
-msgstr "Lưu cài đặt hiện tại thành báo thức mặc định"
+msgstr "Lưu cài đặt hiện tại làm báo thức mặc định"
 
-#: src/orage-appointment-window.c:4136
+#: src/orage-appointment-window.c:4131
 msgid "_Revert"
-msgstr ""
+msgstr "_Hoàn tác"
 
-#: src/orage-appointment-window.c:4144
+#: src/orage-appointment-window.c:4140
 msgid "Set current settings from default alarm"
-msgstr "Đặt cài đặt hiện tại từ bao thức mặc định"
+msgstr "Lấy cài đặt từ báo thức mặc định"
 
-#: src/orage-appointment-window.c:4209
+#: src/orage-appointment-window.c:4205
 msgid "None"
 msgstr "Không"
 
-#: src/orage-appointment-window.c:4209
+#: src/orage-appointment-window.c:4205
 msgid "Daily"
 msgstr "Hàng ngày"
 
-#: src/orage-appointment-window.c:4209
+#: src/orage-appointment-window.c:4205
 msgid "Weekly"
 msgstr "Hàng tuần"
 
-#: src/orage-appointment-window.c:4210
+#: src/orage-appointment-window.c:4206
 msgid "Monthly"
 msgstr "Hàng tháng"
 
-#: src/orage-appointment-window.c:4210
+#: src/orage-appointment-window.c:4206
 msgid "Yearly"
 msgstr "Hàng năm"
 
-#: src/orage-appointment-window.c:4210
+#: src/orage-appointment-window.c:4206
 msgid "Hourly"
-msgstr ""
+msgstr "Hàng giờ"
 
-#: src/orage-appointment-window.c:4225
+#: src/orage-appointment-window.c:4221
 msgid "Recurrence"
 msgstr "Lặp lại"
 
 #. ****************************** Frequency *******************************
-#: src/orage-appointment-window.c:4232
+#: src/orage-appointment-window.c:4228
 msgid "Frequency"
-msgstr "Độ thường xuyên"
+msgstr "Tần suất"
 
 #. ****************************** Limit ***********************************
-#: src/orage-appointment-window.c:4273
+#: src/orage-appointment-window.c:4269
 msgid "Limit"
 msgstr "Giới hạn"
 
 #. ****************************** TODO base (only for TODOs) **************
-#: src/orage-appointment-window.c:4279
+#: src/orage-appointment-window.c:4275
 msgid "TODO base"
-msgstr ""
+msgstr "Cơ sở việc cần làm"
 
 #. exceptions
-#: src/orage-appointment-window.c:4286
+#: src/orage-appointment-window.c:4282
 msgid "Exceptions"
 msgstr "Ngoại lệ"
 
-#: src/orage-appointment-window.c:4312
+#: src/orage-appointment-window.c:4308
 msgid ""
 "Add more exception dates by clicking the calendar days below.\n"
 "Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
 "Remove by clicking the data."
 msgstr ""
+"Thêm ngày ngoại lệ bằng cách nhấp vào ngày trên lịch bên dưới.\n"
+"Ngoại lệ có thể là loại trừ(-) hoặc bao gồm(+) tùy chọn.\n"
+"Xóa bằng cách nhấp lại vào ngày đó."
 
-#: src/orage-appointment-window.c:4323
+#: src/orage-appointment-window.c:4319
 msgid "Add excluded date (-)"
-msgstr "Thêm vào ngày ngoại lệ (-)"
+msgstr "Thêm ngày loại trừ (-)"
 
-#: src/orage-appointment-window.c:4325
+#: src/orage-appointment-window.c:4321
 msgid "Excluded days are full days where this appointment is not happening"
-msgstr ""
+msgstr "Ngày loại trừ là các ngày toàn phần mà cuộc hẹn không diễn ra"
 
-#: src/orage-appointment-window.c:4332
+#: src/orage-appointment-window.c:4328
 msgid "Add included time (+)"
-msgstr ""
+msgstr "Thêm thời gian bao gồm (+)"
 
-#: src/orage-appointment-window.c:4334
+#: src/orage-appointment-window.c:4330
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time"
 msgstr ""
+"Thời gian bao gồm có cùng múi giờ với thời gian bắt đầu, nhưng có thể khác "
+"giờ"
 
 #. calendars showing the action days
-#: src/orage-appointment-window.c:4353
+#: src/orage-appointment-window.c:4349
 msgid "Action dates"
-msgstr "Ngày làm việc"
+msgstr "Ngày áp dụng"
+
+#: src/orage-import.c:106
+msgid "<b>Summary</b>"
+msgstr "<b>Tóm tắt</b>"
+
+#: src/orage-import.c:117
+msgid "<b>Type</b>"
+msgstr "<b>Kiểu</b>"
+
+#: src/orage-import.c:132
+msgid "<b>Location</b>"
+msgstr "<b>Địa điểm</b>"
+
+#: src/orage-import.c:147
+msgid "<b>URL</b>"
+msgstr "<b>URL</b>"
+
+#: src/orage-import.c:166
+msgid "<b>All-day</b>"
+msgstr "<b>Cả ngày</b>"
+
+#: src/orage-import.c:181
+msgid "<b>From</b>"
+msgstr "<b>Từ</b>"
+
+#: src/orage-import.c:196
+msgid "<b>To</b>"
+msgstr "<b>Đến</b>"
+
+#: src/orage-import.c:210
+msgid "<b>Recurring</b>"
+msgstr "<b>Lặp lại</b>"
+
+#: src/orage-import.c:213
+msgid "Yes"
+msgstr "Có"
+
+#: src/orage-import.c:213
+msgid "No"
+msgstr "Không"
+
+#: src/orage-import.c:259
+msgid "Import calendar file"
+msgstr "Nhập tệp lịch"
+
+#: src/orage-import.c:261
+msgid "_Import"
+msgstr "_Nhập"
+
+#: src/orage-import.c:270
+msgid "_Cancel"
+msgstr "_Hủy"
+
+#. TRANSLATORS: "%B %Y" is used to display the month and year in the
+#. * calendar month view page, in "month year" format (for example,
+#. * "January 2025"). To use the "year month" format (e.g., "2025 January"),
+#. * use "%Y %B" instead.
+#: src/orage-month-view.c:217
+msgid "%B %Y"
+msgstr "%B %Y"
+
+#. Setup title row.
+#: src/orage-month-view.c:485 src/orage-window-next.c:1106
+msgid "Week"
+msgstr "Tuần"
 
 #: src/orage-sync-edit-dialog.c:132
 msgid "Description:"
-msgstr ""
+msgstr "Mô tả:"
 
 #: src/orage-sync-edit-dialog.c:134
 msgid "Command:"
-msgstr ""
+msgstr "Lệnh:"
 
 #: src/orage-sync-edit-dialog.c:136
 msgid "Period:"
-msgstr ""
+msgstr "Chu kỳ:"
 
 #: src/orage-sync-edit-dialog.c:138
 msgid "minutes"
-msgstr ""
+msgstr "phút"
 
 #: src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task"
-msgstr ""
+msgstr "Tên hoặc mô tả của tác vụ đồng bộ này"
 
 #: src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization"
-msgstr ""
+msgstr "Lệnh thực hiện đồng bộ"
 
 #: src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes"
-msgstr ""
+msgstr "Chu kỳ đồng bộ (phút)"
 
-#: src/orage-sync-edit-dialog.c:166 src/parameters.c:1454 src/reminder.c:640
+#: src/orage-sync-edit-dialog.c:166 src/parameters.c:1431 src/reminder.c:638
 msgid "_Close"
-msgstr "Đóng lại"
+msgstr "Đón_g"
 
-#: src/orage-week-window.c:455
+#. Translate to calendar:week_start:0 if you want Sunday to be the first
+#. * day of the week to calendar:week_start:1 if you want Monday to be the
+#. * first day of the week, and so on.
+#: src/orage-time-utils.c:264
+msgid "calendar:week_start:0"
+msgstr "calendar:week_start:1"
+
+#: src/orage-week-window.c:454
 msgid "Back one week"
-msgstr ""
+msgstr "Lùi một tuần"
 
-#: src/orage-week-window.c:457
+#: src/orage-week-window.c:456
 msgid "Back one day"
-msgstr ""
+msgstr "Lùi một ngày"
 
-#: src/orage-week-window.c:461
+#: src/orage-week-window.c:460
 msgid "Forward one day"
-msgstr ""
+msgstr "Tiến một ngày"
 
-#: src/orage-week-window.c:463
+#: src/orage-week-window.c:462
 msgid "Forward one week"
-msgstr ""
+msgstr "Tiến một tuần"
 
-#: src/orage-week-window.c:532
-msgid "_OK"
-msgstr ""
-
-#: src/orage-week-window.c:660
+#: src/orage-week-window.c:658
 msgid "Unknown"
 msgstr "Không rõ"
 
-#: src/orage-week-window.c:905
+#: src/orage-week-window.c:896
 msgid "Number of days to show"
-msgstr ""
+msgstr "Số ngày hiển thị"
 
-#: src/orage-week-window.c:1220
+#: src/orage-week-window.c:1212
 msgid "Orage - day view"
-msgstr "Orage - hiển thị theo ngày"
+msgstr "Orage - chế độ xem ngày"
 
-#: src/orage-window.c:294
+#: src/orage-window-classic.c:294 src/orage-window-next.c:135
 msgid "_Exchange data"
-msgstr ""
+msgstr "_Trao đổi dữ liệu"
 
 #. Edit menu
-#: src/orage-window.c:304
+#: src/orage-window-classic.c:304 src/orage-window-next.c:139
 msgid "_Edit"
-msgstr "Th_ay đổi"
+msgstr "_Chỉnh sửa"
 
-#: src/orage-window.c:313
+#: src/orage-window-classic.c:313 src/orage-window-next.c:143
 msgid "View selected _date"
 msgstr "Xem _ngày đã chọn"
 
-#: src/orage-window.c:316
+#: src/orage-window-classic.c:316 src/orage-window-next.c:144
 msgid "View selected _week"
-msgstr "Hiển thị t_uần được chọn"
+msgstr "Xem _tuần đã chọn"
 
-#: src/orage-window.c:321
+#: src/orage-window-classic.c:321 src/orage-window-next.c:145
 msgid "Select _Today"
-msgstr "Chọn hôm na_y"
+msgstr "Chọn _hôm nay"
 
 #. Help menu
 #. the rest
-#: src/orage-window.c:324 src/parameters.c:1451
+#: src/orage-window-classic.c:324 src/orage-window-next.c:147
+#: src/orage-window-next.c:148 src/parameters.c:1428
 msgid "_Help"
-msgstr "_Giúp đỡ"
+msgstr "_Trợ giúp"
 
-#: src/orage-window.c:386 src/reminder.c:967
+#: src/orage-window-classic.c:386 src/orage-window-next.c:777
+#: src/reminder.c:967
 msgid "No title defined"
-msgstr ""
+msgstr "Chưa có tiêu đề"
 
-#: src/orage-window.c:443
+#: src/orage-window-classic.c:453
 #, c-format
 msgid " Location: %s\n"
-msgstr ""
+msgstr " Địa điểm: %s\n"
 
-#: src/orage-window.c:453
+#: src/orage-window-classic.c:466
 #, c-format
 msgid ""
 "\n"
 " Note:\n"
 "%s"
 msgstr ""
+"\n"
+" Ghi chú:\n"
+"%s"
 
-#: src/orage-window.c:461
+#: src/orage-window-classic.c:476 src/orage-window-next.c:866
 msgid "Never"
 msgstr "Không bao giờ"
 
-#: src/orage-window.c:469
+#: src/orage-window-classic.c:483
 #, c-format
 msgid ""
 "Title: %s\n"
@@ -1358,291 +1493,403 @@ msgid ""
 " Due:\t%s\n"
 " Done:\t%s%s"
 msgstr ""
+"Tiêu đề: %s\n"
+"%s Bắt đầu:\t%s\n"
+" Hạn:\t%s\n"
+" Hoàn thành:\t%s%s"
 
-#: src/orage-window.c:476
+#: src/orage-window-classic.c:491
 #, c-format
 msgid ""
 "Title: %s\n"
 "%s Start:\t%s\n"
 " End:\t%s%s"
 msgstr ""
+"Tiêu đề: %s\n"
+"%s Bắt đầu:\t%s\n"
+" Kết thúc:\t%s%s"
 
-#: src/orage-window.c:557
+#: src/orage-window-classic.c:570
 msgid "<b>To do:</b>"
-msgstr ""
+msgstr "<b>Việc cần làm:</b>"
 
-#: src/orage-window.c:592
+#: src/orage-window-classic.c:607
 #, c-format
 msgid "<b>Events for %s:</b>"
-msgstr ""
+msgstr "<b>Sự kiện ngày %s:</b>"
 
-#: src/orage-window.c:602
+#: src/orage-window-classic.c:618
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
-msgstr ""
+msgstr "<b>Sự kiện từ %s - %s:</b>"
 
-#: src/parameters.c:686
+#: src/orage-window-next.c:131
+msgid "Create a new appointment"
+msgstr "Tạo cuộc hẹn mới"
+
+#: src/orage-window-next.c:133
+msgid "Reload external files"
+msgstr "Tải lại tệp ngoại lai"
+
+#: src/orage-window-next.c:135
+msgid "Import/export data"
+msgstr "Nhập/xuất dữ liệu"
+
+#: src/orage-window-next.c:136
+msgid "Close window"
+msgstr "Đóng cửa sổ"
+
+#: src/orage-window-next.c:137
+msgid "_Quit"
+msgstr "_Thoát"
+
+#: src/orage-window-next.c:137
+msgid "Quit program"
+msgstr "Thoát chương trình"
+
+#: src/orage-window-next.c:140
+msgid "_Preferences"
+msgstr "_Tùy chọn"
+
+#: src/orage-window-next.c:140 plugin/org.xfce.orage-settings.desktop.in:4
+msgid "Orage preferences"
+msgstr "Tùy chọn Orage"
+
+#: src/orage-window-next.c:143
+msgid "View selected date"
+msgstr "Xem ngày đã chọn"
+
+#: src/orage-window-next.c:145
+msgid "Go to today"
+msgstr "Đi tới hôm nay"
+
+#: src/orage-window-next.c:148
+msgid "Display Orage user manual"
+msgstr "Hiển thị hướng dẫn sử dụng Orage"
+
+#: src/orage-window-next.c:149
+msgid "_About"
+msgstr "_Giới thiệu"
+
+#: src/orage-window-next.c:149
+msgid "Display information about Orage"
+msgstr "Hiển thị thông tin về Orage"
+
+#: src/orage-window-next.c:366
+msgid "New event"
+msgstr "Sự kiện mới"
+
+#: src/orage-window-next.c:444
+#, c-format
+msgid "Events for %s:"
+msgstr "Sự kiện ngày %s:"
+
+#: src/orage-window-next.c:450
+#, c-format
+msgid "Events for %s - %s:"
+msgstr "Sự kiện từ %s - %s:"
+
+#: src/orage-window-next.c:650
+msgid "To do:"
+msgstr "Việc cần làm:"
+
+#: src/orage-window-next.c:1070
+msgid "Previous"
+msgstr "Trước"
+
+#: src/orage-window-next.c:1090
+msgid "Next"
+msgstr "Sau"
+
+#: src/orage-window-next.c:1104
+msgid "Day"
+msgstr "Ngày"
+
+#: src/orage-window-next.c:1109
+msgid "Month"
+msgstr "Tháng"
+
+#: src/orage-window-next.c:1112
+msgid "Year"
+msgstr "Năm"
+
+#: src/parameters.c:646
 msgid "Remove selected synchronization task."
-msgstr ""
+msgstr "Xóa tác vụ đồng bộ đã chọn."
 
-#: src/parameters.c:689
+#: src/parameters.c:649
 msgid "Yes, remove"
-msgstr ""
+msgstr "Có, xóa"
 
-#: src/parameters.c:722
+#: src/parameters.c:685
 msgid "Main settings"
 msgstr "Cài đặt chính"
 
-#: src/parameters.c:728
+#: src/parameters.c:691
 msgid "Timezone"
 msgstr "Múi giờ"
 
-#: src/parameters.c:749
+#: src/parameters.c:713
 msgid "You should always define your local timezone."
-msgstr "Bạn nên thường xuyên xác định múi giờ địa phương."
+msgstr "Bạn nên luôn xác định múi giờ địa phương của mình."
 
-#: src/parameters.c:757
+#: src/parameters.c:721
 msgid "Archive threshold (months)"
-msgstr ""
+msgstr "Ngưỡng lưu trữ (tháng)"
 
-#: src/parameters.c:770
+#: src/parameters.c:734
 msgid "(0 = no archiving)"
-msgstr ""
+msgstr "(0 = không lưu trữ)"
+
+#: src/parameters.c:738
+msgid "Archiving is used to save time and space when handling events."
+msgstr "Lưu trữ giúp tiết kiệm thời gian và dung lượng khi xử lý sự kiện."
+
+#: src/parameters.c:746
+msgid "Sound command"
+msgstr "Lệnh phát âm thanh"
 
 #: src/parameters.c:774
-msgid "Archiving is used to save time and space when handling events."
-msgstr ""
-
-#: src/parameters.c:782
-msgid "Sound command"
-msgstr "Lệnh âm thanh"
-
-#: src/parameters.c:810
 msgid "This command is given to shell to make sound in alarms."
-msgstr ""
+msgstr "Lệnh này được đưa cho shell để phát âm thanh khi báo thức."
 
-#: src/parameters.c:841
+#: src/parameters.c:805
 msgid "Calendar window"
-msgstr ""
+msgstr "Cửa sổ lịch"
 
-#: src/parameters.c:848
+#: src/parameters.c:812
 msgid "Calendar visual details"
-msgstr ""
+msgstr "Chi tiết hiển thị lịch"
 
-#: src/parameters.c:855
+#: src/parameters.c:819
+msgid "Use new user interface"
+msgstr "Sử dụng giao diện người dùng mới"
+
+#: src/parameters.c:821
+msgid "Enable the new interface layout (requires restart)"
+msgstr "Bật bố cục giao diện mới (cần khởi động lại)"
+
+#: src/parameters.c:826
 msgid "Show borders"
-msgstr ""
+msgstr "Hiển thị viền"
 
-#: src/parameters.c:860
+#: src/parameters.c:835
 msgid "Show menu"
-msgstr "Hiện thực đơn"
+msgstr "Hiển thị trình đơn"
 
-#: src/parameters.c:868
+#: src/parameters.c:840
 msgid "Show day names"
-msgstr "Hiện tên ngày"
+msgstr "Hiển thị tên ngày"
 
-#: src/parameters.c:873
+#: src/parameters.c:849
 msgid "Show week numbers"
-msgstr "Đáng số tuần"
+msgstr "Hiển thị số tuần"
 
-#: src/parameters.c:881
+#: src/parameters.c:854
 msgid "Show month and year"
-msgstr "Hiện tháng và năm"
+msgstr "Hiển thị tháng và năm"
 
-#: src/parameters.c:901
+#: src/parameters.c:878
 msgid "Calendar info boxes"
-msgstr ""
+msgstr "Khung thông tin lịch"
 
-#: src/parameters.c:908
+#: src/parameters.c:885
 msgid "Show todo list"
-msgstr "Hiện danh sách việc để làm"
+msgstr "Hiển thị danh sách việc cần làm"
 
-#: src/parameters.c:915
+#: src/parameters.c:892
 msgid "Number of days to show in event window"
-msgstr "Số ngày để hiện trên cửa sổ  sự kiện"
+msgstr "Số ngày hiển thị trong cửa sổ sự kiện"
 
-#: src/parameters.c:923
+#: src/parameters.c:900
 msgid "0 = do not show event list at all"
-msgstr ""
+msgstr "0 = không hiển thị danh sách sự kiện"
 
-#: src/parameters.c:937
+#: src/parameters.c:914
 msgid "Calendar visibility"
-msgstr ""
+msgstr "Hiển thị lịch"
 
-#: src/parameters.c:943
+#: src/parameters.c:920
 msgid "Show on all desktops"
-msgstr "Hiện trên tất cả bàn làm việc"
+msgstr "Hiển thị trên mọi màn hình"
 
-#: src/parameters.c:948
+#: src/parameters.c:925
 msgid "Keep on top"
-msgstr "Giữ ở trên"
+msgstr "Giữ ở trên cùng"
 
-#: src/parameters.c:956
+#: src/parameters.c:933
 msgid "Show in taskbar"
-msgstr "Hiện thị trên thanh công cụ"
+msgstr "Hiển thị trên thanh tác vụ"
 
-#: src/parameters.c:961
+#: src/parameters.c:938
 msgid "Show in pager"
-msgstr "Hiện trong chuyển trang"
+msgstr "Hiển thị trong bộ chuyển màn hình"
 
-#: src/parameters.c:969
+#: src/parameters.c:946
 msgid "Show in systray"
-msgstr "Hiện thị trong khay"
+msgstr "Hiển thị trong khay hệ thống"
 
-#: src/parameters.c:997
+#: src/parameters.c:974
 msgid "Calendar start"
 msgstr "Khởi động lịch"
 
-#: src/parameters.c:1003
+#: src/parameters.c:980
 msgid "Show"
-msgstr "Hiện"
+msgstr "Hiển thị"
 
-#: src/parameters.c:1019
+#: src/parameters.c:996
 msgid "Hide"
 msgstr "Ẩn"
 
-#: src/parameters.c:1036
+#: src/parameters.c:1013
 msgid "Minimized"
 msgstr "Thu nhỏ"
 
-#: src/parameters.c:1062
+#: src/parameters.c:1039
 msgid "On calendar window open"
-msgstr ""
+msgstr "Khi mở cửa sổ lịch"
 
-#: src/parameters.c:1068
+#: src/parameters.c:1045
 msgid "Select today's date"
-msgstr ""
+msgstr "Chọn ngày hôm nay"
 
-#: src/parameters.c:1085
+#: src/parameters.c:1062
 msgid "Select previously selected date"
-msgstr ""
+msgstr "Chọn ngày đã chọn trước đó"
 
-#: src/parameters.c:1109
+#: src/parameters.c:1086
 msgid "Calendar day double click shows"
-msgstr ""
+msgstr "Nhấp đúp vào ngày lịch hiển thị"
 
-#: src/parameters.c:1115
+#: src/parameters.c:1092
 msgid "Days view"
-msgstr "Hiện theo ngày"
+msgstr "Chế độ xem ngày"
 
-#: src/parameters.c:1131
+#: src/parameters.c:1108
 msgid "Event list"
 msgstr "Danh sách sự kiện"
 
-#: src/parameters.c:1164
+#: src/parameters.c:1141
 msgid "Extra settings"
-msgstr "Cài đặt thêm"
+msgstr "Cài đặt bổ sung"
 
-#: src/parameters.c:1171
+#: src/parameters.c:1148
 msgid "Event list window"
-msgstr ""
+msgstr "Cửa sổ danh sách sự kiện"
 
-#: src/parameters.c:1178
+#: src/parameters.c:1155
 msgid "Number of extra days to show in event list"
-msgstr ""
+msgstr "Số ngày bổ sung hiển thị trong danh sách sự kiện"
 
-#: src/parameters.c:1188
+#: src/parameters.c:1165
 msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
 msgstr ""
+"Đây chỉ là giá trị mặc định, bạn có thể thay đổi trong cửa sổ danh sách sự "
+"kiện thực tế."
 
-#: src/parameters.c:1196
+#: src/parameters.c:1173
 msgid "Show only first repeating event"
-msgstr ""
+msgstr "Chỉ hiển thị sự kiện lặp đầu tiên"
 
-#: src/parameters.c:1213
+#: src/parameters.c:1190
 msgid "Day view window default first day"
-msgstr ""
+msgstr "Ngày đầu tiên mặc định trong chế độ xem ngày"
 
-#: src/parameters.c:1220
+#: src/parameters.c:1197
 msgid "First day of week"
-msgstr ""
+msgstr "Ngày đầu tuần"
 
-#: src/parameters.c:1237
+#: src/parameters.c:1214
 msgid "Selected day"
-msgstr ""
+msgstr "Ngày đã chọn"
 
-#: src/parameters.c:1260 src/parameters.c:1267
+#: src/parameters.c:1237 src/parameters.c:1244
 msgid "Use wakeup timer"
-msgstr ""
+msgstr "Dùng bộ đếm giờ đánh thức"
 
-#: src/parameters.c:1275
+#: src/parameters.c:1252
 msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
 msgstr ""
+"Sử dụng bộ đếm này nếu Orage gặp vấn đề khi thức dậy sau chế độ ngủ đông "
+"hoặc tạm dừng. (Ví dụ: biểu tượng khay không làm mới hoặc báo thức không "
+"kêu.)"
 
-#: src/parameters.c:1285
+#: src/parameters.c:1262
 msgid "Foreign file default visual alarm"
-msgstr ""
+msgstr "Báo thức hiển thị mặc định cho tệp ngoại lai"
 
-#: src/parameters.c:1292
+#: src/parameters.c:1269
 msgid "Orage window"
-msgstr ""
+msgstr "Cửa sổ Orage"
+
+#: src/parameters.c:1286
+msgid "Notify notification"
+msgstr "Thông báo Notify"
 
 #: src/parameters.c:1309
-msgid "Notify notification"
-msgstr ""
-
-#: src/parameters.c:1332
 msgid "Always quit when asked to close"
-msgstr ""
+msgstr "Luôn thoát khi được yêu cầu đóng"
 
-#: src/parameters.c:1339
+#: src/parameters.c:1316
 msgid "Always quit"
-msgstr ""
+msgstr "Luôn thoát"
 
-#: src/parameters.c:1346
+#: src/parameters.c:1323
 msgid ""
 "By default Orage stays open in the background when asked to close. This "
 "option changes Orage to quit and never stay in background when it is asked "
 "to close."
 msgstr ""
+"Mặc định Orage vẫn chạy nền khi được yêu cầu đóng. Tùy chọn này khiến Orage "
+"thoát hoàn toàn và không bao giờ chạy nền khi được yêu cầu đóng."
 
-#: src/parameters.c:1399
+#: src/parameters.c:1376
 msgid "Synchronization settings"
-msgstr ""
+msgstr "Cài đặt đồng bộ"
 
-#: src/parameters.c:1405
+#: src/parameters.c:1382
 msgid "Synchronization sources"
-msgstr ""
+msgstr "Nguồn đồng bộ"
 
-#: src/parameters.c:1431 org.xfce.orage.desktop.in:26
+#: src/parameters.c:1408 org.xfce.orage.desktop.in:26
 msgid "Orage Preferences"
-msgstr "Tuỳ thích"
+msgstr "Tùy chọn Orage"
 
-#: src/reminder.c:419
+#: src/reminder.c:417
 msgid "Reminder"
-msgstr ""
+msgstr "Nhắc nhở"
 
-#: src/reminder.c:442
+#: src/reminder.c:440
 msgid "Open"
 msgstr "Mở"
 
-#: src/reminder.c:447
+#: src/reminder.c:445
 msgid "Silence"
-msgstr ""
+msgstr "Im lặng"
 
-#: src/reminder.c:565
+#: src/reminder.c:563
 msgid "Reminder - Orage"
 msgstr "Nhắc nhở - Orage"
 
-#: src/reminder.c:648
+#: src/reminder.c:646
 msgid "_Stop"
-msgstr ""
+msgstr "_Dừng"
+
+#: src/reminder.c:654
+msgid "Postpone"
+msgstr "Hoãn"
 
 #: src/reminder.c:656
-msgid "Postpone"
-msgstr ""
-
-#: src/reminder.c:658
 msgid "Remind me again after the specified time"
-msgstr ""
+msgstr "Nhắc lại tôi sau khoảng thời gian đã chỉ định"
 
 #: src/reminder.c:935
 msgid "Next active alarms:"
-msgstr "Báo thức đang hoạt động tiếp theo:"
+msgstr "Báo thức tiếp theo:"
 
 #: src/reminder.c:974
 #, c-format
@@ -1650,12 +1897,16 @@ msgid ""
 "\n"
 "%02d d %02d h %02d min to: %s"
 msgstr ""
+"\n"
+"%02d ngày %02d giờ %02d phút tới: %s"
 
 #: src/reminder.c:988
 msgid ""
 "\n"
 "No active alarms found"
 msgstr ""
+"\n"
+"Không tìm thấy báo thức đang hoạt động"
 
 #: src/timezone_names.c:31
 msgid "Africa"
@@ -1675,11 +1926,11 @@ msgstr "Châu Phi/Addis_Ababa"
 
 #: src/timezone_names.c:35
 msgid "Africa/Algiers"
-msgstr "Châu Phi/Angêri"
+msgstr "Châu Phi/Algiers"
 
 #: src/timezone_names.c:36
 msgid "Africa/Asmara"
-msgstr ""
+msgstr "Châu Phi/Asmara"
 
 #: src/timezone_names.c:37
 msgid "Africa/Asmera"
@@ -1763,7 +2014,7 @@ msgstr "Châu Phi/Harare"
 
 #: src/timezone_names.c:57
 msgid "Africa/Juba"
-msgstr ""
+msgstr "Châu Phi/Juba"
 
 #: src/timezone_names.c:58
 msgid "Africa/Johannesburg"
@@ -1795,7 +2046,7 @@ msgstr "Châu Phi/Libreville"
 
 #: src/timezone_names.c:65
 msgid "Africa/Lome"
-msgstr "Châu Phi/Lome"
+msgstr "Châu Phi/Lomé"
 
 #: src/timezone_names.c:66
 msgid "Africa/Luanda"
@@ -1839,7 +2090,7 @@ msgstr "Châu Phi/Nairobi"
 
 #: src/timezone_names.c:76
 msgid "Africa/Ndjamena"
-msgstr "Châu Phi/Ndjamena"
+msgstr "Châu Phi/N’Djamena"
 
 #: src/timezone_names.c:77
 msgid "Africa/Niamey"
@@ -1859,7 +2110,7 @@ msgstr "Châu Phi/Porto-Novo"
 
 #: src/timezone_names.c:81
 msgid "Africa/Sao_Tome"
-msgstr "Châu Phi/Sao Tôm"
+msgstr "Châu Phi/São Tomé"
 
 #: src/timezone_names.c:82
 msgid "Africa/Timbuktu"
@@ -1883,15 +2134,15 @@ msgstr "Châu Mỹ"
 
 #: src/timezone_names.c:87
 msgid "America/Adak"
-msgstr "Châu Mỹ/A đắc"
+msgstr "Châu Mỹ/Adak"
 
 #: src/timezone_names.c:88
 msgid "America/Anchorage"
-msgstr "Châu Mỹ/Anchôrết"
+msgstr "Châu Mỹ/Anchorage"
 
 #: src/timezone_names.c:89
 msgid "America/Anguilla"
-msgstr "Châu Mỹ/Ăngôla"
+msgstr "Châu Mỹ/Anguilla"
 
 #: src/timezone_names.c:90
 msgid "America/Antigua"
@@ -1899,471 +2150,471 @@ msgstr "Châu Mỹ/Antigua"
 
 #: src/timezone_names.c:91
 msgid "America/Araguaina"
-msgstr "Châu Mĩ / Araguaina"
+msgstr "Châu Mỹ/Araguaina"
 
 #: src/timezone_names.c:92
 msgid "America/Argentina/Buenos_Aires"
-msgstr "Châu Mĩ / Argentina / Buenos_Aires"
+msgstr "Châu Mỹ/Argentina/Buenos Aires"
 
 #: src/timezone_names.c:93
 msgid "America/Argentina/Catamarca"
-msgstr "Châu Mĩ / Argentina / Catamarca"
+msgstr "Châu Mỹ/Argentina/Catamarca"
 
 #: src/timezone_names.c:94
 msgid "America/Argentina/ComodRivadavia"
-msgstr ""
+msgstr "Châu Mỹ/Argentina/ComodRivadavia"
 
 #: src/timezone_names.c:95
 msgid "America/Argentina/Cordoba"
-msgstr "Châu Mĩ / Argentina / Cordoba"
+msgstr "Châu Mỹ/Argentina/Córdoba"
 
 #: src/timezone_names.c:96
 msgid "America/Argentina/Jujuy"
-msgstr "Châu Mĩ / Argentina / Jujuy"
+msgstr "Châu Mỹ/Argentina/Jujuy"
 
 #: src/timezone_names.c:97
 msgid "America/Argentina/La_Rioja"
-msgstr ""
+msgstr "Châu Mỹ/Argentina/La Rioja"
 
 #: src/timezone_names.c:98
 msgid "America/Argentina/Mendoza"
-msgstr "Châu Mĩ / Argentina / Mendoza"
+msgstr "Châu Mỹ/Argentina/Mendoza"
 
 #: src/timezone_names.c:99
 msgid "America/Argentina/Rio_Gallegos"
-msgstr ""
+msgstr "Châu Mỹ/Argentina/Río Gallegos"
 
 #: src/timezone_names.c:100
 msgid "America/Argentina/Salta"
-msgstr ""
+msgstr "Châu Mỹ/Argentina/Salta"
 
 #: src/timezone_names.c:101
 msgid "America/Argentina/San_Juan"
-msgstr ""
+msgstr "Châu Mỹ/Argentina/San Juan"
 
 #: src/timezone_names.c:102
 msgid "America/Argentina/San_Luis"
-msgstr ""
+msgstr "Châu Mỹ/Argentina/San Luis"
 
 #: src/timezone_names.c:103
 msgid "America/Argentina/Tucuman"
-msgstr ""
+msgstr "Châu Mỹ/Argentina/Tucumán"
 
 #: src/timezone_names.c:104
 msgid "America/Argentina/Ushuaia"
-msgstr ""
+msgstr "Châu Mỹ/Argentina/Ushuaia"
 
 #: src/timezone_names.c:105
 msgid "America/Aruba"
-msgstr "Châu Mĩ / Aruba"
+msgstr "Châu Mỹ/Aruba"
 
 #: src/timezone_names.c:106
 msgid "America/Asuncion"
-msgstr "Châu Mĩ / Asuncion"
+msgstr "Châu Mỹ/Asunción"
 
 #: src/timezone_names.c:107
 msgid "America/Atikokan"
-msgstr ""
+msgstr "Châu Mỹ/Atikokan"
 
 #: src/timezone_names.c:108
 msgid "America/Atka"
-msgstr ""
+msgstr "Châu Mỹ/Atka"
 
 #: src/timezone_names.c:109
 msgid "America/Bahia"
-msgstr ""
+msgstr "Châu Mỹ/Bahia"
 
 #: src/timezone_names.c:110
 msgid "America/Bahia_Banderas"
-msgstr ""
+msgstr "Châu Mỹ/Bahía de Banderas"
 
 #: src/timezone_names.c:111
 msgid "America/Barbados"
-msgstr "Châu Mĩ / Barbados"
+msgstr "Châu Mỹ/Barbados"
 
 #: src/timezone_names.c:112
 msgid "America/Belem"
-msgstr "Châu Mĩ / Belem"
+msgstr "Châu Mỹ/Belém"
 
 #: src/timezone_names.c:113
 msgid "America/Belize"
-msgstr "Châu Mĩ / Belize"
+msgstr "Châu Mỹ/Belize"
 
 #: src/timezone_names.c:114
 msgid "America/Blanc-Sablon"
-msgstr ""
+msgstr "Châu Mỹ/Blanc-Sablon"
 
 #: src/timezone_names.c:115
 msgid "America/Boa_Vista"
-msgstr "Châu Mĩ / Boa_Vista"
+msgstr "Châu Mỹ/Boa Vista"
 
 #: src/timezone_names.c:116
 msgid "America/Bogota"
-msgstr "Châu Mĩ / Bogota"
+msgstr "Châu Mỹ/Bogotá"
 
 #: src/timezone_names.c:117
 msgid "America/Boise"
-msgstr "Châu Mĩ / Boise"
+msgstr "Châu Mỹ/Boise"
 
 #: src/timezone_names.c:118
 msgid "America/Buenos_Aires"
-msgstr "Châu Mĩ / Buenos_Aires"
+msgstr "Châu Mỹ/Buenos Aires"
 
 #: src/timezone_names.c:119
 msgid "America/Cambridge_Bay"
-msgstr "Châu Mĩ / Cambridge_Bay"
+msgstr "Châu Mỹ/Cambridge Bay"
 
 #: src/timezone_names.c:120
 msgid "America/Campo_Grande"
-msgstr ""
+msgstr "Châu Mỹ/Campo Grande"
 
 #: src/timezone_names.c:121
 msgid "America/Cancun"
-msgstr "Châu Mĩ / Cancun"
+msgstr "Châu Mỹ/Cancún"
 
 #: src/timezone_names.c:122
 msgid "America/Caracas"
-msgstr "Châu Mĩ / Caracas"
+msgstr "Châu Mỹ/Caracas"
 
 #: src/timezone_names.c:123
 msgid "America/Catamarca"
-msgstr "Châu Mĩ / Catamarca"
+msgstr "Châu Mỹ/Catamarca"
 
 #: src/timezone_names.c:124
 msgid "America/Cayenne"
-msgstr "Châu Mĩ / Cayenne"
+msgstr "Châu Mỹ/Cayenne"
 
 #: src/timezone_names.c:125
 msgid "America/Cayman"
-msgstr "Châu Mĩ / Cayman"
+msgstr "Châu Mỹ/Cayman"
 
 #: src/timezone_names.c:126
 msgid "America/Chicago"
-msgstr "Châu Mĩ / Chicago"
+msgstr "Châu Mỹ/Chicago"
 
 #: src/timezone_names.c:127
 msgid "America/Chihuahua"
-msgstr "Châu Mĩ / Chihuahua"
+msgstr "Châu Mỹ/Chihuahua"
 
 #: src/timezone_names.c:128
 msgid "America/Coral_Harbour"
-msgstr ""
+msgstr "Châu Mỹ/Coral Harbour"
 
 #: src/timezone_names.c:129
 msgid "America/Cordoba"
-msgstr "Châu Mĩ / Cordoba"
+msgstr "Châu Mỹ/Córdoba"
 
 #: src/timezone_names.c:130
 msgid "America/Costa_Rica"
-msgstr "Châu Mĩ / Costa_Rica"
+msgstr "Châu Mỹ/Costa Rica"
 
 #: src/timezone_names.c:131
 msgid "America/Creston"
-msgstr ""
+msgstr "Châu Mỹ/Creston"
 
 #: src/timezone_names.c:132
 msgid "America/Cuiaba"
-msgstr "Châu Mĩ / Cuiaba"
+msgstr "Châu Mỹ/Cuiabá"
 
 #: src/timezone_names.c:133
 msgid "America/Curacao"
-msgstr "Châu Mĩ / Curacao"
+msgstr "Châu Mỹ/Curaçao"
 
 #: src/timezone_names.c:134
 msgid "America/Danmarkshavn"
-msgstr ""
+msgstr "Châu Mỹ/Danmarkshavn"
 
 #: src/timezone_names.c:135
 msgid "America/Dawson"
-msgstr "Châu Mĩ / Dawson"
+msgstr "Châu Mỹ/Dawson"
 
 #: src/timezone_names.c:136
 msgid "America/Dawson_Creek"
-msgstr "Châu Mĩ / Dawson_Creek"
+msgstr "Châu Mỹ/Dawson Creek"
 
 #: src/timezone_names.c:137
 msgid "America/Denver"
-msgstr "Châu Mĩ / Denver"
+msgstr "Châu Mỹ/Denver"
 
 #: src/timezone_names.c:138
 msgid "America/Detroit"
-msgstr "Châu Mĩ / Detroit"
+msgstr "Châu Mỹ/Detroit"
 
 #: src/timezone_names.c:139
 msgid "America/Dominica"
-msgstr "Châu Mĩ / Dominica"
+msgstr "Châu Mỹ/Dominica"
 
 #: src/timezone_names.c:140
 msgid "America/Edmonton"
-msgstr "Châu Mĩ / Edmonton"
+msgstr "Châu Mỹ/Edmonton"
 
 #: src/timezone_names.c:141
 msgid "America/Ensenada"
-msgstr ""
+msgstr "Châu Mỹ/Ensenada"
 
 #: src/timezone_names.c:142
 msgid "America/Eirunepe"
-msgstr "Châu Mĩ / Eirunepe"
+msgstr "Châu Mỹ/Eirunepé"
 
 #: src/timezone_names.c:143
 msgid "America/El_Salvador"
-msgstr "Châu Mĩ / El_Salvador"
+msgstr "Châu Mỹ/El Salvador"
 
 #: src/timezone_names.c:144
 msgid "America/Fortaleza"
-msgstr "Châu Mĩ / Fortaleza"
+msgstr "Châu Mỹ/Fortaleza"
 
 #: src/timezone_names.c:145
 msgid "America/Fort_Wayne"
-msgstr ""
+msgstr "Châu Mỹ/Fort Wayne"
 
 #: src/timezone_names.c:146
 msgid "America/Glace_Bay"
-msgstr "Châu Mĩ / Glace_Bay"
+msgstr "Châu Mỹ/Glace Bay"
 
 #: src/timezone_names.c:147
 msgid "America/Godthab"
-msgstr "Châu Mĩ / Godthab"
+msgstr "Châu Mỹ/Nuuk"
 
 #: src/timezone_names.c:148
 msgid "America/Goose_Bay"
-msgstr "Châu Mĩ / Goose_Bay"
+msgstr "Châu Mỹ/Goose Bay"
 
 #: src/timezone_names.c:149
 msgid "America/Grand_Turk"
-msgstr "Châu Mĩ / Grand_Turk"
+msgstr "Châu Mỹ/Grand Turk"
 
 #: src/timezone_names.c:150
 msgid "America/Grenada"
-msgstr "Châu Mĩ / Grenada"
+msgstr "Châu Mỹ/Grenada"
 
 #: src/timezone_names.c:151
 msgid "America/Guadeloupe"
-msgstr "Châu Mĩ / Guedeloupe"
+msgstr "Châu Mỹ/Guadeloupe"
 
 #: src/timezone_names.c:152
 msgid "America/Guatemala"
-msgstr "Châu Mĩ / Guatemala"
+msgstr "Châu Mỹ/Guatemala"
 
 #: src/timezone_names.c:153
 msgid "America/Guayaquil"
-msgstr "Châu Mĩ / Guayaquil"
+msgstr "Châu Mỹ/Guayaquil"
 
 #: src/timezone_names.c:154
 msgid "America/Guyana"
-msgstr "Châu Mĩ / Guyana"
+msgstr "Châu Mỹ/Guyana"
 
 #: src/timezone_names.c:155
 msgid "America/Halifax"
-msgstr "Châu Mĩ / Halifax"
+msgstr "Châu Mỹ/Halifax"
 
 #: src/timezone_names.c:156
 msgid "America/Havana"
-msgstr "Châu Mĩ / Havana"
+msgstr "Châu Mỹ/Havana"
 
 #: src/timezone_names.c:157
 msgid "America/Hermosillo"
-msgstr "Châu Mĩ / Hermosillo"
+msgstr "Châu Mỹ/Hermosillo"
 
 #: src/timezone_names.c:158
 msgid "America/Indiana/Indianapolis"
-msgstr "Châu Mĩ / Indiana / Indianapolis"
+msgstr "Châu Mỹ/Indiana/Indianapolis"
 
 #: src/timezone_names.c:159
 msgid "America/Indiana/Knox"
-msgstr "Châu Mĩ / Indiana / Knox"
+msgstr "Châu Mỹ/Indiana/Knox"
 
 #: src/timezone_names.c:160
 msgid "America/Indiana/Marengo"
-msgstr "Châu Mĩ / Indiana / Marengo"
+msgstr "Châu Mỹ/Indiana/Marengo"
 
 #: src/timezone_names.c:161
 msgid "America/Indiana/Petersburg"
-msgstr ""
+msgstr "Châu Mỹ/Indiana/Petersburg"
 
 #: src/timezone_names.c:162
 msgid "America/Indiana/Tell_City"
-msgstr ""
+msgstr "Châu Mỹ/Indiana/Tell City"
 
 #: src/timezone_names.c:163
 msgid "America/Indiana/Vevay"
-msgstr "Châu Mĩ / Indiana / Vevay"
+msgstr "Châu Mỹ/Indiana/Vevay"
 
 #: src/timezone_names.c:164
 msgid "America/Indiana/Vincennes"
-msgstr ""
+msgstr "Châu Mỹ/Indiana/Vincennes"
 
 #: src/timezone_names.c:165
 msgid "America/Indiana/Winamac"
-msgstr ""
+msgstr "Châu Mỹ/Indiana/Winamac"
 
 #: src/timezone_names.c:166
 msgid "America/Indianapolis"
-msgstr "Châu Mĩ / Indianapolis"
+msgstr "Châu Mỹ/Indianapolis"
 
 #: src/timezone_names.c:167
 msgid "America/Inuvik"
-msgstr "Châu Mĩ / Inuvik"
+msgstr "Châu Mỹ/Inuvik"
 
 #: src/timezone_names.c:168
 msgid "America/Iqaluit"
-msgstr "Châu Mĩ / Iqaluit"
+msgstr "Châu Mỹ/Iqaluit"
 
 #: src/timezone_names.c:169
 msgid "America/Jamaica"
-msgstr "Châu Mĩ / Jamaica"
+msgstr "Châu Mỹ/Jamaica"
 
 #: src/timezone_names.c:170
 msgid "America/Jujuy"
-msgstr "Châu Mĩ / Jujuy"
+msgstr "Châu Mỹ/Jujuy"
 
 #: src/timezone_names.c:171
 msgid "America/Juneau"
-msgstr "Châu Mĩ / Juneau"
+msgstr "Châu Mỹ/Juneau"
 
 #: src/timezone_names.c:172
 msgid "America/Kentucky/Louisville"
-msgstr "Châu Mĩ / Kentucky / Louisville"
+msgstr "Châu Mỹ/Kentucky/Louisville"
 
 #: src/timezone_names.c:173
 msgid "America/Kentucky/Monticello"
-msgstr "Châu Mĩ / Kentucky / Monticello"
+msgstr "Châu Mỹ/Kentucky/Monticello"
 
 #: src/timezone_names.c:174
 msgid "America/Knox_IN"
-msgstr ""
+msgstr "Châu Mỹ/Knox, Indiana"
 
 #: src/timezone_names.c:175
 msgid "America/Kralendijk"
-msgstr ""
+msgstr "Châu Mỹ/Kralendijk"
 
 #: src/timezone_names.c:176
 msgid "America/La_Paz"
-msgstr "Châu Mĩ / La_Paz"
+msgstr "Châu Mỹ/La Paz"
 
 #: src/timezone_names.c:177
 msgid "America/Lima"
-msgstr "Châu Mỹ/Li-ma"
+msgstr "Châu Mỹ/Lima"
 
 #: src/timezone_names.c:178
 msgid "America/Los_Angeles"
-msgstr "Châu Mỹ/Lốxt Andơlét"
+msgstr "Châu Mỹ/Los Angeles"
 
 #: src/timezone_names.c:179
 msgid "America/Louisville"
-msgstr "Châu Mĩ / Louisville"
+msgstr "Châu Mỹ/Louisville"
 
 #: src/timezone_names.c:180
 msgid "America/Lower_Princes"
-msgstr ""
+msgstr "Châu Mỹ/Lower Princes"
 
 #: src/timezone_names.c:181
 msgid "America/Maceio"
-msgstr "Châu Mỹ/Ma-sêyô"
+msgstr "Châu Mỹ/Maceió"
 
 #: src/timezone_names.c:182
 msgid "America/Managua"
-msgstr "Châu Mĩ / Managua"
+msgstr "Châu Mỹ/Managua"
 
 #: src/timezone_names.c:183
 msgid "America/Manaus"
-msgstr "Châu Mĩ / Maunaus"
+msgstr "Châu Mỹ/Manaus"
 
 #: src/timezone_names.c:184
 msgid "America/Marigot"
-msgstr ""
+msgstr "Châu Mỹ/Marigot"
 
 #: src/timezone_names.c:185
 msgid "America/Martinique"
-msgstr "Châu Mĩ / Martinique"
+msgstr "Châu Mỹ/Martinique"
 
 #: src/timezone_names.c:186
 msgid "America/Matamoros"
-msgstr ""
+msgstr "Châu Mỹ/Matamoros"
 
 #: src/timezone_names.c:187
 msgid "America/Mazatlan"
-msgstr "Châu Mĩ / Mazatlan"
+msgstr "Châu Mỹ/Mazatlán"
 
 #: src/timezone_names.c:188
 msgid "America/Mendoza"
-msgstr "Châu Mĩ / Mendoza"
+msgstr "Châu Mỹ/Mendoza"
 
 #: src/timezone_names.c:189
 msgid "America/Menominee"
-msgstr "Châu Mĩ / Menominee"
+msgstr "Châu Mỹ/Menominee"
 
 #: src/timezone_names.c:190
 msgid "America/Merida"
-msgstr "Châu Mĩ / Merida"
+msgstr "Châu Mỹ/Mérida"
 
 #: src/timezone_names.c:191
 msgid "America/Metlakatla"
-msgstr ""
+msgstr "Châu Mỹ/Metlakatla"
 
 #: src/timezone_names.c:192
 msgid "America/Mexico_City"
-msgstr "Châu Mỹ/Mehicô Siti"
+msgstr "Châu Mỹ/Mexico City"
 
 #: src/timezone_names.c:193
 msgid "America/Miquelon"
-msgstr "Châu Mĩ / Miquelon"
+msgstr "Châu Mỹ/Miquelon"
 
 #: src/timezone_names.c:194
 msgid "America/Moncton"
-msgstr ""
+msgstr "Châu Mỹ/Moncton"
 
 #: src/timezone_names.c:195
 msgid "America/Monterrey"
-msgstr "Châu Mĩ / Monterrey"
+msgstr "Châu Mỹ/Monterrey"
 
 #: src/timezone_names.c:196
 msgid "America/Montevideo"
-msgstr "Châu Mỹ/Môntêviđêô"
+msgstr "Châu Mỹ/Montevideo"
 
 #: src/timezone_names.c:197
 msgid "America/Montreal"
-msgstr "Châu Mỹ/Môntrêan"
+msgstr "Châu Mỹ/Montreal"
 
 #: src/timezone_names.c:198
 msgid "America/Montserrat"
-msgstr "Châu Mĩ / Montserrat"
+msgstr "Châu Mỹ/Montserrat"
 
 #: src/timezone_names.c:199
 msgid "America/Nassau"
-msgstr "Châu Mĩ / Nassau"
+msgstr "Châu Mỹ/Nassau"
 
 #: src/timezone_names.c:200
 msgid "America/New_York"
-msgstr "Châu Mỹ/Nữu Ước"
+msgstr "Châu Mỹ/New York"
 
 #: src/timezone_names.c:201
 msgid "America/Nipigon"
-msgstr "Châu Mĩ / Nipigon"
+msgstr "Châu Mỹ/Nipigon"
 
 #: src/timezone_names.c:202
 msgid "America/Nome"
-msgstr "Châu Mỹ/Nômê"
+msgstr "Châu Mỹ/Nome"
 
 #: src/timezone_names.c:203
 msgid "America/North_Dakota/Beulah"
-msgstr ""
+msgstr "Châu Mỹ/North Dakota/Beulah"
 
 #: src/timezone_names.c:204
 msgid "America/North_Dakota/Center"
-msgstr ""
+msgstr "Châu Mỹ/North Dakota/Center"
 
 #: src/timezone_names.c:205
 msgid "America/North_Dakota/New_Salem"
-msgstr ""
+msgstr "Châu Mỹ/North Dakota/New Salem"
 
 #: src/timezone_names.c:206
 msgid "America/Noronha"
-msgstr "Châu Mĩ / Noronha"
+msgstr "Châu Mỹ/Noronha"
 
 #: src/timezone_names.c:207
 msgid "America/Ojinaga"
-msgstr ""
+msgstr "Châu Mỹ/Ojinaga"
 
 #: src/timezone_names.c:208
 msgid "America/Panama"
@@ -2371,171 +2622,171 @@ msgstr "Châu Mỹ/Panama"
 
 #: src/timezone_names.c:209
 msgid "America/Pangnirtung"
-msgstr "Châu Mĩ / Pangnirtung"
+msgstr "Châu Mỹ/Pangnirtung"
 
 #: src/timezone_names.c:210
 msgid "America/Paramaribo"
-msgstr "Châu Mĩ / Paramaribo"
+msgstr "Châu Mỹ/Paramaribo"
 
 #: src/timezone_names.c:211
 msgid "America/Phoenix"
-msgstr "Châu Mĩ / Phoenix"
+msgstr "Châu Mỹ/Phoenix"
 
 #: src/timezone_names.c:212
 msgid "America/Port-au-Prince"
-msgstr "Châu Mĩ / Port-au-Prince"
+msgstr "Châu Mỹ/Port-au-Prince"
 
 #: src/timezone_names.c:213
 msgid "America/Port_of_Spain"
-msgstr "Châu Mĩ / Port_of_Spain"
+msgstr "Châu Mỹ/Port of Spain"
 
 #: src/timezone_names.c:214
 msgid "America/Porto_Acre"
-msgstr ""
+msgstr "Châu Mỹ/Porto Acre"
 
 #: src/timezone_names.c:215
 msgid "America/Porto_Velho"
-msgstr "Châu Mĩ / Porto_Velho"
+msgstr "Châu Mỹ/Porto Velho"
 
 #: src/timezone_names.c:216
 msgid "America/Puerto_Rico"
-msgstr "Châu Mĩ / Puerto_Rico"
+msgstr "Châu Mỹ/Puerto Rico"
 
 #: src/timezone_names.c:217
 msgid "America/Rainy_River"
-msgstr "Châu Mĩ / Rainy_River"
+msgstr "Châu Mỹ/Rainy River"
 
 #: src/timezone_names.c:218
 msgid "America/Rankin_Inlet"
-msgstr "Châu Mĩ / Rankin_Inlet"
+msgstr "Châu Mỹ/Rankin Inlet"
 
 #: src/timezone_names.c:219
 msgid "America/Recife"
-msgstr "Châu Mĩ / Recife"
+msgstr "Châu Mỹ/Recife"
 
 #: src/timezone_names.c:220
 msgid "America/Regina"
-msgstr "Châu Mĩ / Regina"
+msgstr "Châu Mỹ/Regina"
 
 #: src/timezone_names.c:221
 msgid "America/Resolute"
-msgstr ""
+msgstr "Châu Mỹ/Resolute"
 
 #: src/timezone_names.c:222
 msgid "America/Rio_Branco"
-msgstr "Châu Mĩ / Rio_Branco"
+msgstr "Châu Mỹ/Rio Branco"
 
 #: src/timezone_names.c:223
 msgid "America/Rosario"
-msgstr "Châu Mĩ / Rosario"
+msgstr "Châu Mỹ/Rosario"
 
 #: src/timezone_names.c:224
 msgid "America/Santa_Isabel"
-msgstr ""
+msgstr "Châu Mỹ/Santa Isabel"
 
 #: src/timezone_names.c:225
 msgid "America/Santarem"
-msgstr ""
+msgstr "Châu Mỹ/Santarém"
 
 #: src/timezone_names.c:226
 msgid "America/Santiago"
-msgstr "Châu Mĩ / Santiago"
+msgstr "Châu Mỹ/Santiago"
 
 #: src/timezone_names.c:227
 msgid "America/Santo_Domingo"
-msgstr "Châu Mĩ / Santo_Domingo"
+msgstr "Châu Mỹ/Santo Domingo"
 
 #: src/timezone_names.c:228
 msgid "America/Sao_Paulo"
-msgstr "Châu Mỹ/San Paolô"
+msgstr "Châu Mỹ/São Paulo"
 
 #: src/timezone_names.c:229
 msgid "America/Scoresbysund"
-msgstr "Châu Mĩ / Scoresbysund"
+msgstr "Châu Mỹ/Scoresbysund"
 
 #: src/timezone_names.c:230
 msgid "America/Shiprock"
-msgstr "Châu Mĩ / Shiprock"
+msgstr "Châu Mỹ/Shiprock"
 
 #: src/timezone_names.c:231
 msgid "America/Sitka"
-msgstr ""
+msgstr "Châu Mỹ/Sitka"
 
 #: src/timezone_names.c:232
 msgid "America/St_Barthelemy"
-msgstr ""
+msgstr "Châu Mỹ/Saint Barthélemy"
 
 #: src/timezone_names.c:233
 msgid "America/St_Johns"
-msgstr "Châu Mĩ / St_Johns"
+msgstr "Châu Mỹ/St. John’s"
 
 #: src/timezone_names.c:234
 msgid "America/St_Kitts"
-msgstr "Châu Mĩ / S_Kitts"
+msgstr "Châu Mỹ/St. Kitts"
 
 #: src/timezone_names.c:235
 msgid "America/St_Lucia"
-msgstr "Châu Mĩ / St_Lucia"
+msgstr "Châu Mỹ/St. Lucia"
 
 #: src/timezone_names.c:236
 msgid "America/St_Thomas"
-msgstr "Châu Mĩ / St_Thomas"
+msgstr "Châu Mỹ/St. Thomas"
 
 #: src/timezone_names.c:237
 msgid "America/St_Vincent"
-msgstr "Châu Mĩ / St_Vincent"
+msgstr "Châu Mỹ/St. Vincent"
 
 #: src/timezone_names.c:238
 msgid "America/Swift_Current"
-msgstr "Châu Mĩ / Swift_Current"
+msgstr "Châu Mỹ/Swift Current"
 
 #: src/timezone_names.c:239
 msgid "America/Tegucigalpa"
-msgstr ""
+msgstr "Châu Mỹ/Tegucigalpa"
 
 #: src/timezone_names.c:240
 msgid "America/Thule"
-msgstr ""
+msgstr "Châu Mỹ/Thule"
 
 #: src/timezone_names.c:241
 msgid "America/Thunder_Bay"
-msgstr ""
+msgstr "Châu Mỹ/Thunder Bay"
 
 #: src/timezone_names.c:242
 msgid "America/Tijuana"
-msgstr ""
+msgstr "Châu Mỹ/Tijuana"
 
 #: src/timezone_names.c:243
 msgid "America/Toronto"
-msgstr ""
+msgstr "Châu Mỹ/Toronto"
 
 #: src/timezone_names.c:244
 msgid "America/Tortola"
-msgstr ""
+msgstr "Châu Mỹ/Tortola"
 
 #: src/timezone_names.c:245
 msgid "America/Vancouver"
-msgstr ""
+msgstr "Châu Mỹ/Vancouver"
 
 #: src/timezone_names.c:246
 msgid "America/Virgin"
-msgstr ""
+msgstr "Châu Mỹ/Virgin"
 
 #: src/timezone_names.c:247
 msgid "America/Whitehorse"
-msgstr ""
+msgstr "Châu Mỹ/Whitehorse"
 
 #: src/timezone_names.c:248
 msgid "America/Winnipeg"
-msgstr ""
+msgstr "Châu Mỹ/Winnipeg"
 
 #: src/timezone_names.c:249
 msgid "America/Yakutat"
-msgstr ""
+msgstr "Châu Mỹ/Yakutat"
 
 #: src/timezone_names.c:250
 msgid "America/Yellowknife"
-msgstr ""
+msgstr "Châu Mỹ/Yellowknife"
 
 #: src/timezone_names.c:251
 msgid "Antarctica"
@@ -2543,47 +2794,47 @@ msgstr "Nam Cực"
 
 #: src/timezone_names.c:252
 msgid "Antarctica/Casey"
-msgstr "Châu Mỹ/Câysi"
+msgstr "Nam Cực/Casey"
 
 #: src/timezone_names.c:253
 msgid "Antarctica/Davis"
-msgstr "Châu Mỹ/Davíxt"
+msgstr "Nam Cực/Davis"
 
 #: src/timezone_names.c:254
 msgid "Antarctica/DumontDUrville"
-msgstr ""
+msgstr "Nam Cực/Dumont d’Urville"
 
 #: src/timezone_names.c:255
 msgid "Antarctica/Macquarie"
-msgstr ""
+msgstr "Nam Cực/Macquarie"
 
 #: src/timezone_names.c:256
 msgid "Antarctica/Mawson"
-msgstr ""
+msgstr "Nam Cực/Mawson"
 
 #: src/timezone_names.c:257
 msgid "Antarctica/McMurdo"
-msgstr ""
+msgstr "Nam Cực/McMurdo"
 
 #: src/timezone_names.c:258
 msgid "Antarctica/Palmer"
-msgstr ""
+msgstr "Nam Cực/Palmer"
 
 #: src/timezone_names.c:259
 msgid "Antarctica/Rothera"
-msgstr ""
+msgstr "Nam Cực/Rothera"
 
 #: src/timezone_names.c:260
 msgid "Antarctica/South_Pole"
-msgstr ""
+msgstr "Nam Cực/Nam Cực"
 
 #: src/timezone_names.c:261
 msgid "Antarctica/Syowa"
-msgstr ""
+msgstr "Nam Cực/Syowa"
 
 #: src/timezone_names.c:262
 msgid "Antarctica/Vostok"
-msgstr "Châu Mỹ/Vátxtốc"
+msgstr "Nam Cực/Vostok"
 
 #: src/timezone_names.c:263
 msgid "Arctic"
@@ -2591,7 +2842,7 @@ msgstr "Bắc Cực"
 
 #: src/timezone_names.c:264
 msgid "Arctic/Longyearbyen"
-msgstr ""
+msgstr "Bắc Cực/Longyearbyen"
 
 #: src/timezone_names.c:265
 msgid "Asia"
@@ -2599,11 +2850,11 @@ msgstr "Châu Á"
 
 #: src/timezone_names.c:266
 msgid "Asia/Aden"
-msgstr "Châu Á/Ađen"
+msgstr "Châu Á/Aden"
 
 #: src/timezone_names.c:267
 msgid "Asia/Almaty"
-msgstr "Châu Á/An-ma-ti"
+msgstr "Châu Á/Almaty"
 
 #: src/timezone_names.c:268
 msgid "Asia/Amman"
@@ -2611,15 +2862,15 @@ msgstr "Châu Á/Amman"
 
 #: src/timezone_names.c:269
 msgid "Asia/Anadyr"
-msgstr "Châu Á/Anađir"
+msgstr "Châu Á/Anadyr"
 
 #: src/timezone_names.c:270
 msgid "Asia/Aqtau"
-msgstr "Châu Á/Áctâu"
+msgstr "Châu Á/Aqtau"
 
 #: src/timezone_names.c:271
 msgid "Asia/Aqtobe"
-msgstr "Châu Á/Ác-tốp"
+msgstr "Châu Á/Aqtobe"
 
 #: src/timezone_names.c:272
 msgid "Asia/Ashgabat"
@@ -2627,11 +2878,11 @@ msgstr "Châu Á/Ashgabat"
 
 #: src/timezone_names.c:273
 msgid "Asia/Ashkhabad"
-msgstr ""
+msgstr "Châu Á/Ashkhabad"
 
 #: src/timezone_names.c:274
 msgid "Asia/Baghdad"
-msgstr "Châu Á/Bát Đa"
+msgstr "Châu Á/Baghdad"
 
 #: src/timezone_names.c:275
 msgid "Asia/Bahrain"
@@ -2639,11 +2890,11 @@ msgstr "Châu Á/Bahrain"
 
 #: src/timezone_names.c:276
 msgid "Asia/Baku"
-msgstr "Châu Á/Ba cu"
+msgstr "Châu Á/Baku"
 
 #: src/timezone_names.c:277
 msgid "Asia/Bangkok"
-msgstr "Châu Á/Băng Cốc"
+msgstr "Châu Á/Bangkok"
 
 #: src/timezone_names.c:278
 msgid "Asia/Beirut"
@@ -2655,35 +2906,35 @@ msgstr "Châu Á/Bishkek"
 
 #: src/timezone_names.c:280
 msgid "Asia/Brunei"
-msgstr "Châu Á/Brunêi"
+msgstr "Châu Á/Brunei"
 
 #: src/timezone_names.c:281
 msgid "Asia/Calcutta"
-msgstr "Châu Á/Can-cút-ta"
+msgstr "Châu Á/Calcutta"
 
 #: src/timezone_names.c:282
 msgid "Asia/Choibalsan"
-msgstr ""
+msgstr "Châu Á/Choibalsan"
 
 #: src/timezone_names.c:283
 msgid "Asia/Chongqing"
-msgstr ""
+msgstr "Châu Á/Chongqing"
 
 #: src/timezone_names.c:284
 msgid "Asia/Chungking"
-msgstr "Châu Á/Chung Kinh"
+msgstr "Châu Á/Chungking"
 
 #: src/timezone_names.c:285
 msgid "Asia/Colombo"
-msgstr "Châu Á/Cô lôm bô"
+msgstr "Châu Á/Colombo"
 
 #: src/timezone_names.c:286
 msgid "Asia/Dacca"
-msgstr ""
+msgstr "Châu Á/Dhaka"
 
 #: src/timezone_names.c:287
 msgid "Asia/Damascus"
-msgstr "Châu Á/Đa-mác"
+msgstr "Châu Á/Damascus"
 
 #: src/timezone_names.c:288
 msgid "Asia/Dhaka"
@@ -2691,27 +2942,27 @@ msgstr "Châu Á/Dhaka"
 
 #: src/timezone_names.c:289
 msgid "Asia/Dili"
-msgstr "Châu Á/Đi-li"
+msgstr "Châu Á/Dili"
 
 #: src/timezone_names.c:290
 msgid "Asia/Dubai"
-msgstr "Châu Á/Đu-bai"
+msgstr "Châu Á/Dubai"
 
 #: src/timezone_names.c:291
 msgid "Asia/Dushanbe"
-msgstr "Châu Á/Đu-xan-bê"
+msgstr "Châu Á/Dushanbe"
 
 #: src/timezone_names.c:292
 msgid "Asia/Gaza"
-msgstr "Châu Á/Ga-z"
+msgstr "Châu Á/Gaza"
 
 #: src/timezone_names.c:293
 msgid "Asia/Harbin"
-msgstr ""
+msgstr "Châu Á/Harbin"
 
 #: src/timezone_names.c:294
 msgid "Asia/Hebron"
-msgstr ""
+msgstr "Châu Á/Hebron"
 
 #: src/timezone_names.c:295
 msgid "Asia/Hong_Kong"
@@ -2719,163 +2970,163 @@ msgstr "Châu Á/Hồng Kông"
 
 #: src/timezone_names.c:296
 msgid "Asia/Ho_Chi_Minh"
-msgstr ""
+msgstr "Châu Á/Hồ Chí Minh"
 
 #: src/timezone_names.c:297
 msgid "Asia/Hovd"
-msgstr ""
+msgstr "Châu Á/Hovd"
 
 #: src/timezone_names.c:298
 msgid "Asia/Irkutsk"
-msgstr "Châu Á/Ir-kútx"
+msgstr "Châu Á/Irkutsk"
 
 #: src/timezone_names.c:299
 msgid "Asia/Istanbul"
-msgstr "Châu Á/Ix-tan-bun"
+msgstr "Châu Á/Istanbul"
 
 #: src/timezone_names.c:300
 msgid "Asia/Jakarta"
-msgstr "Châu Á/Ja-cát-ta"
+msgstr "Châu Á/Jakarta"
 
 #: src/timezone_names.c:301
 msgid "Asia/Jayapura"
-msgstr ""
+msgstr "Châu Á/Jayapura"
 
 #: src/timezone_names.c:302
 msgid "Asia/Jerusalem"
-msgstr "Châu Á/Je-ru-sa-len"
+msgstr "Châu Á/Jerusalem"
 
 #: src/timezone_names.c:303
 msgid "Asia/Kabul"
-msgstr ""
+msgstr "Châu Á/Kabul"
 
 #: src/timezone_names.c:304
 msgid "Asia/Kamchatka"
-msgstr "Châu Á/Camtrátca"
+msgstr "Châu Á/Kamchatka"
 
 #: src/timezone_names.c:305
 msgid "Asia/Karachi"
-msgstr ""
+msgstr "Châu Á/Karachi"
 
 #: src/timezone_names.c:306
 msgid "Asia/Kashgar"
-msgstr ""
+msgstr "Châu Á/Kashgar"
 
 #: src/timezone_names.c:307
 msgid "Asia/Kathmandu"
-msgstr ""
+msgstr "Châu Á/Kathmandu"
 
 #: src/timezone_names.c:308
 msgid "Asia/Katmandu"
-msgstr ""
+msgstr "Châu Á/Katmandu"
 
 #: src/timezone_names.c:309
 msgid "Asia/Khandyga"
-msgstr ""
+msgstr "Châu Á/Khandyga"
 
 #: src/timezone_names.c:310
 msgid "Asia/Kolkata"
-msgstr ""
+msgstr "Châu Á/Kolkata"
 
 #: src/timezone_names.c:311
 msgid "Asia/Krasnoyarsk"
-msgstr ""
+msgstr "Châu Á/Krasnoyarsk"
 
 #: src/timezone_names.c:312
 msgid "Asia/Kuala_Lumpur"
-msgstr "Châu Á/Kuala Lămpơ"
+msgstr "Châu Á/Kuala Lumpur"
 
 #: src/timezone_names.c:313
 msgid "Asia/Kuching"
-msgstr ""
+msgstr "Châu Á/Kuching"
 
 #: src/timezone_names.c:314
 msgid "Asia/Kuwait"
-msgstr ""
+msgstr "Châu Á/Kuwait"
 
 #: src/timezone_names.c:315
 msgid "Asia/Macao"
-msgstr "Châu Á/Ma-cao"
+msgstr "Châu Á/Macao"
 
 #: src/timezone_names.c:316
 msgid "Asia/Macau"
-msgstr ""
+msgstr "Châu Á/Macau"
 
 #: src/timezone_names.c:317
 msgid "Asia/Magadan"
-msgstr ""
+msgstr "Châu Á/Magadan"
 
 #: src/timezone_names.c:318
 msgid "Asia/Makassar"
-msgstr ""
+msgstr "Châu Á/Makassar"
 
 #: src/timezone_names.c:319
 msgid "Asia/Manila"
-msgstr "Châu Á/Ma-ni-la"
+msgstr "Châu Á/Manila"
 
 #: src/timezone_names.c:320
 msgid "Asia/Muscat"
-msgstr ""
+msgstr "Châu Á/Muscat"
 
 #: src/timezone_names.c:321
 msgid "Asia/Nicosia"
-msgstr ""
+msgstr "Châu Á/Nicosia"
 
 #: src/timezone_names.c:322
 msgid "Asia/Novokuznetsk"
-msgstr ""
+msgstr "Châu Á/Novokuznetsk"
 
 #: src/timezone_names.c:323
 msgid "Asia/Novosibirsk"
-msgstr ""
+msgstr "Châu Á/Novosibirsk"
 
 #: src/timezone_names.c:324
 msgid "Asia/Omsk"
-msgstr "Châu Á/Ôm-xkờ"
+msgstr "Châu Á/Omsk"
 
 #: src/timezone_names.c:325
 msgid "Asia/Oral"
-msgstr ""
+msgstr "Châu Á/Oral"
 
 #: src/timezone_names.c:326
 msgid "Asia/Phnom_Penh"
-msgstr "Châu Á/Phnôm Pênh"
+msgstr "Châu Á/Phnom Penh"
 
 #: src/timezone_names.c:327
 msgid "Asia/Pontianak"
-msgstr ""
+msgstr "Châu Á/Pontianak"
 
 #: src/timezone_names.c:328
 msgid "Asia/Pyongyang"
-msgstr ""
+msgstr "Châu Á/Pyongyang"
 
 #: src/timezone_names.c:329
 msgid "Asia/Qatar"
-msgstr ""
+msgstr "Châu Á/Qatar"
 
 #: src/timezone_names.c:330
 msgid "Asia/Qyzylorda"
-msgstr ""
+msgstr "Châu Á/Qyzylorda"
 
 #: src/timezone_names.c:331
 msgid "Asia/Rangoon"
-msgstr ""
+msgstr "Châu Á/Yangon"
 
 #: src/timezone_names.c:332
 msgid "Asia/Riyadh"
-msgstr ""
+msgstr "Châu Á/Riyadh"
 
 #: src/timezone_names.c:333
 msgid "Asia/Riyadh87"
-msgstr ""
+msgstr "Châu Á/Riyadh87"
 
 #: src/timezone_names.c:334
 msgid "Asia/Riyadh88"
-msgstr ""
+msgstr "Châu Á/Riyadh88"
 
 #: src/timezone_names.c:335
 msgid "Asia/Riyadh89"
-msgstr ""
+msgstr "Châu Á/Riyadh89"
 
 #: src/timezone_names.c:336
 msgid "Asia/Saigon"
@@ -2883,15 +3134,15 @@ msgstr "Châu Á/Sài Gòn"
 
 #: src/timezone_names.c:337
 msgid "Asia/Sakhalin"
-msgstr ""
+msgstr "Châu Á/Sakhalin"
 
 #: src/timezone_names.c:338
 msgid "Asia/Samarkand"
-msgstr ""
+msgstr "Châu Á/Samarkand"
 
 #: src/timezone_names.c:339
 msgid "Asia/Seoul"
-msgstr "Châu Á/Sê-ul"
+msgstr "Châu Á/Seoul"
 
 #: src/timezone_names.c:340
 msgid "Asia/Shanghai"
@@ -2903,75 +3154,75 @@ msgstr "Châu Á/Singapore"
 
 #: src/timezone_names.c:342
 msgid "Asia/Taipei"
-msgstr ""
+msgstr "Châu Á/Đài Bắc"
 
 #: src/timezone_names.c:343
 msgid "Asia/Tashkent"
-msgstr ""
+msgstr "Châu Á/Tashkent"
 
 #: src/timezone_names.c:344
 msgid "Asia/Tbilisi"
-msgstr ""
+msgstr "Châu Á/Tbilisi"
 
 #: src/timezone_names.c:345
 msgid "Asia/Tehran"
-msgstr ""
+msgstr "Châu Á/Tehran"
 
 #: src/timezone_names.c:346
 msgid "Asia/Tel_Aviv"
-msgstr ""
+msgstr "Châu Á/Tel Aviv"
 
 #: src/timezone_names.c:347
 msgid "Asia/Thimbu"
-msgstr ""
+msgstr "Châu Á/Thimphu"
 
 #: src/timezone_names.c:348
 msgid "Asia/Thimphu"
-msgstr ""
+msgstr "Châu Á/Thimphu"
 
 #: src/timezone_names.c:349
 msgid "Asia/Tokyo"
-msgstr "Châu Á/Tô-ki-o"
+msgstr "Châu Á/Tokyo"
 
 #: src/timezone_names.c:350
 msgid "Asia/Ujung_Pandang"
-msgstr ""
+msgstr "Châu Á/Ujung Pandang"
 
 #: src/timezone_names.c:351
 msgid "Asia/Ulaanbaatar"
-msgstr ""
+msgstr "Châu Á/Ulaanbaatar"
 
 #: src/timezone_names.c:352
 msgid "Asia/Ulan_Bator"
-msgstr ""
+msgstr "Châu Á/Ulan Bator"
 
 #: src/timezone_names.c:353
 msgid "Asia/Urumqi"
-msgstr ""
+msgstr "Châu Á/Ürümqi"
 
 #: src/timezone_names.c:354
 msgid "Asia/Ust-Nera"
-msgstr ""
+msgstr "Châu Á/Ust-Nera"
 
 #: src/timezone_names.c:355
 msgid "Asia/Vientiane"
-msgstr "Châu Á/Viên Chăn"
+msgstr "Châu Á/Viêng Chăn"
 
 #: src/timezone_names.c:356
 msgid "Asia/Vladivostok"
-msgstr "Châu Á/Vla-đi-vátx-tốc"
+msgstr "Châu Á/Vladivostok"
 
 #: src/timezone_names.c:357
 msgid "Asia/Yakutsk"
-msgstr "Châu Á/Ia-kútx-kơ"
+msgstr "Châu Á/Yakutsk"
 
 #: src/timezone_names.c:358
 msgid "Asia/Yekaterinburg"
-msgstr "Châu Á/E-ka-che-rin-buốc"
+msgstr "Châu Á/Yekaterinburg"
 
 #: src/timezone_names.c:359
 msgid "Asia/Yerevan"
-msgstr ""
+msgstr "Châu Á/Yerevan"
 
 #: src/timezone_names.c:360
 msgid "Atlantic"
@@ -2979,51 +3230,51 @@ msgstr "Đại Tây Dương"
 
 #: src/timezone_names.c:361
 msgid "Atlantic/Azores"
-msgstr ""
+msgstr "Đại Tây Dương/Azores"
 
 #: src/timezone_names.c:362
 msgid "Atlantic/Bermuda"
-msgstr ""
+msgstr "Đại Tây Dương/Bermuda"
 
 #: src/timezone_names.c:363
 msgid "Atlantic/Canary"
-msgstr ""
+msgstr "Đại Tây Dương/Canary"
 
 #: src/timezone_names.c:364
 msgid "Atlantic/Cape_Verde"
-msgstr ""
+msgstr "Đại Tây Dương/Cape Verde"
 
 #: src/timezone_names.c:365
 msgid "Atlantic/Faeroe"
-msgstr ""
+msgstr "Đại Tây Dương/Faroe"
 
 #: src/timezone_names.c:366
 msgid "Atlantic/Faroe"
-msgstr ""
+msgstr "Đại Tây Dương/Faroe"
 
 #: src/timezone_names.c:367
 msgid "Atlantic/Jan_Mayen"
-msgstr ""
+msgstr "Đại Tây Dương/Jan Mayen"
 
 #: src/timezone_names.c:368
 msgid "Atlantic/Madeira"
-msgstr ""
+msgstr "Đại Tây Dương/Madeira"
 
 #: src/timezone_names.c:369
 msgid "Atlantic/Reykjavik"
-msgstr ""
+msgstr "Đại Tây Dương/Reykjavík"
 
 #: src/timezone_names.c:370
 msgid "Atlantic/South_Georgia"
-msgstr ""
+msgstr "Đại Tây Dương/Nam Georgia"
 
 #: src/timezone_names.c:371
 msgid "Atlantic/St_Helena"
-msgstr ""
+msgstr "Đại Tây Dương/St. Helena"
 
 #: src/timezone_names.c:372
 msgid "Atlantic/Stanley"
-msgstr ""
+msgstr "Đại Tây Dương/Stanley"
 
 #: src/timezone_names.c:373
 msgid "Australia"
@@ -3031,47 +3282,47 @@ msgstr "Châu Úc"
 
 #: src/timezone_names.c:374
 msgid "Australia/ACT"
-msgstr ""
+msgstr "Châu Úc/ACT"
 
 #: src/timezone_names.c:375
 msgid "Australia/Adelaide"
-msgstr ""
+msgstr "Châu Úc/Adelaide"
 
 #: src/timezone_names.c:376
 msgid "Australia/Brisbane"
-msgstr ""
+msgstr "Châu Úc/Brisbane"
 
 #: src/timezone_names.c:377
 msgid "Australia/Broken_Hill"
-msgstr ""
+msgstr "Châu Úc/Broken Hill"
 
 #: src/timezone_names.c:378
 msgid "Australia/Currie"
-msgstr ""
+msgstr "Châu Úc/Currie"
 
 #: src/timezone_names.c:379
 msgid "Australia/Darwin"
-msgstr ""
+msgstr "Châu Úc/Darwin"
 
 #: src/timezone_names.c:380
 msgid "Australia/Eucla"
-msgstr ""
+msgstr "Châu Úc/Eucla"
 
 #: src/timezone_names.c:381
 msgid "Australia/Hobart"
-msgstr ""
+msgstr "Châu Úc/Hobart"
 
 #: src/timezone_names.c:382
 msgid "Australia/Lindeman"
-msgstr ""
+msgstr "Châu Úc/Lindeman"
 
 #: src/timezone_names.c:383
 msgid "Australia/Lord_Howe"
-msgstr ""
+msgstr "Châu Úc/Lord Howe"
 
 #: src/timezone_names.c:384
 msgid "Australia/Melbourne"
-msgstr "Châu Úc/Men-bơn"
+msgstr "Châu Úc/Melbourne"
 
 #: src/timezone_names.c:385
 msgid "Australia/Perth"
@@ -3079,223 +3330,223 @@ msgstr "Châu Úc/Perth"
 
 #: src/timezone_names.c:386
 msgid "Australia/Sydney"
-msgstr "Châu Úc/Sít-Nêi"
+msgstr "Châu Úc/Sydney"
 
 #: src/timezone_names.c:387
 msgid "Brazil"
-msgstr ""
+msgstr "Brazil"
 
 #: src/timezone_names.c:388
 msgid "Brazil/Acre"
-msgstr ""
+msgstr "Brazil/Acre"
 
 #: src/timezone_names.c:389
 msgid "Brazil/DeNoronha"
-msgstr ""
+msgstr "Brazil/DeNoronha"
 
 #: src/timezone_names.c:390
 msgid "Brazil/East"
-msgstr ""
+msgstr "Brazil/Đông"
 
 #: src/timezone_names.c:391
 msgid "Brazil/West"
-msgstr ""
+msgstr "Brazil/Tây"
 
 #: src/timezone_names.c:392
 msgid "Canada"
-msgstr ""
+msgstr "Canada"
 
 #: src/timezone_names.c:393
 msgid "Canada/Atlantic"
-msgstr ""
+msgstr "Canada/Đại Tây Dương"
 
 #: src/timezone_names.c:394
 msgid "Canada/Central"
-msgstr ""
+msgstr "Canada/Trung tâm"
 
 #: src/timezone_names.c:395
 msgid "Canada/East-Saskatchewan"
-msgstr ""
+msgstr "Canada/Đông Saskatchewan"
 
 #: src/timezone_names.c:396
 msgid "Canada/Eastern"
-msgstr ""
+msgstr "Canada/Đông"
 
 #: src/timezone_names.c:397
 msgid "Canada/Mountain"
-msgstr ""
+msgstr "Canada/Núi"
 
 #: src/timezone_names.c:398
 msgid "Canada/Newfoundland"
-msgstr ""
+msgstr "Canada/Newfoundland"
 
 #: src/timezone_names.c:399
 msgid "Canada/Pacific"
-msgstr ""
+msgstr "Canada/Thái Bình Dương"
 
 #: src/timezone_names.c:400
 msgid "Canada/Saskatchewan"
-msgstr ""
+msgstr "Canada/Saskatchewan"
 
 #: src/timezone_names.c:401
 msgid "Canada/Yukon"
-msgstr ""
+msgstr "Canada/Yukon"
 
 #: src/timezone_names.c:402
 msgid "Chile"
-msgstr ""
+msgstr "Chile"
 
 #: src/timezone_names.c:403
 msgid "Chile/Continental"
-msgstr ""
+msgstr "Chile/Lục địa"
 
 #: src/timezone_names.c:404
 msgid "Chile/EasterIsland"
-msgstr ""
+msgstr "Chile/Đảo Phục Sinh"
 
 #: src/timezone_names.c:405
 msgid "Etc"
-msgstr ""
+msgstr "Khác"
 
 #: src/timezone_names.c:406
 msgid "Etc/GMT"
-msgstr ""
+msgstr "Etc/GMT"
 
 #: src/timezone_names.c:407
 msgid "Etc/GMT+0"
-msgstr ""
+msgstr "Etc/GMT+0"
 
 #: src/timezone_names.c:408
 msgid "Etc/GMT+1"
-msgstr ""
+msgstr "Etc/GMT+1"
 
 #: src/timezone_names.c:409
 msgid "Etc/GMT+10"
-msgstr ""
+msgstr "Etc/GMT+10"
 
 #: src/timezone_names.c:410
 msgid "Etc/GMT+11"
-msgstr ""
+msgstr "Etc/GMT+11"
 
 #: src/timezone_names.c:411
 msgid "Etc/GMT+12"
-msgstr ""
+msgstr "Etc/GMT+12"
 
 #: src/timezone_names.c:412
 msgid "Etc/GMT+2"
-msgstr ""
+msgstr "Etc/GMT+2"
 
 #: src/timezone_names.c:413
 msgid "Etc/GMT+3"
-msgstr ""
+msgstr "Etc/GMT+3"
 
 #: src/timezone_names.c:414
 msgid "Etc/GMT+4"
-msgstr ""
+msgstr "Etc/GMT+4"
 
 #: src/timezone_names.c:415
 msgid "Etc/GMT+5"
-msgstr ""
+msgstr "Etc/GMT+5"
 
 #: src/timezone_names.c:416
 msgid "Etc/GMT+6"
-msgstr ""
+msgstr "Etc/GMT+6"
 
 #: src/timezone_names.c:417
 msgid "Etc/GMT+7"
-msgstr ""
+msgstr "Etc/GMT+7"
 
 #: src/timezone_names.c:418
 msgid "Etc/GMT+8"
-msgstr ""
+msgstr "Etc/GMT+8"
 
 #: src/timezone_names.c:419
 msgid "Etc/GMT+9"
-msgstr ""
+msgstr "Etc/GMT+9"
 
 #: src/timezone_names.c:420
 msgid "Etc/GMT-0"
-msgstr ""
+msgstr "Etc/GMT-0"
 
 #: src/timezone_names.c:421
 msgid "Etc/GMT-1"
-msgstr ""
+msgstr "Etc/GMT-1"
 
 #: src/timezone_names.c:422
 msgid "Etc/GMT-10"
-msgstr ""
+msgstr "Etc/GMT-10"
 
 #: src/timezone_names.c:423
 msgid "Etc/GMT-11"
-msgstr ""
+msgstr "Etc/GMT-11"
 
 #: src/timezone_names.c:424
 msgid "Etc/GMT-12"
-msgstr ""
+msgstr "Etc/GMT-12"
 
 #: src/timezone_names.c:425
 msgid "Etc/GMT-13"
-msgstr ""
+msgstr "Etc/GMT-13"
 
 #: src/timezone_names.c:426
 msgid "Etc/GMT-14"
-msgstr ""
+msgstr "Etc/GMT-14"
 
 #: src/timezone_names.c:427
 msgid "Etc/GMT-2"
-msgstr ""
+msgstr "Etc/GMT-2"
 
 #: src/timezone_names.c:428
 msgid "Etc/GMT-3"
-msgstr ""
+msgstr "Etc/GMT-3"
 
 #: src/timezone_names.c:429
 msgid "Etc/GMT-4"
-msgstr ""
+msgstr "Etc/GMT-4"
 
 #: src/timezone_names.c:430
 msgid "Etc/GMT-5"
-msgstr ""
+msgstr "Etc/GMT-5"
 
 #: src/timezone_names.c:431
 msgid "Etc/GMT-6"
-msgstr ""
+msgstr "Etc/GMT-6"
 
 #: src/timezone_names.c:432
 msgid "Etc/GMT-7"
-msgstr ""
+msgstr "Etc/GMT-7"
 
 #: src/timezone_names.c:433
 msgid "Etc/GMT-8"
-msgstr ""
+msgstr "Etc/GMT-8"
 
 #: src/timezone_names.c:434
 msgid "Etc/GMT-9"
-msgstr ""
+msgstr "Etc/GMT-9"
 
 #: src/timezone_names.c:435
 msgid "Etc/GMT0"
-msgstr ""
+msgstr "Etc/GMT0"
 
 #: src/timezone_names.c:436
 msgid "Etc/Greenwich"
-msgstr ""
+msgstr "Etc/Greenwich"
 
 #: src/timezone_names.c:437
 msgid "Etc/UCT"
-msgstr ""
+msgstr "Etc/UCT"
 
 #: src/timezone_names.c:438
 msgid "Etc/UTC"
-msgstr ""
+msgstr "Etc/UTC"
 
 #: src/timezone_names.c:439
 msgid "Etc/Universal"
-msgstr ""
+msgstr "Etc/Universal"
 
 #: src/timezone_names.c:440
 msgid "Etc/Zulu"
-msgstr ""
+msgstr "Etc/Zulu"
 
 #: src/timezone_names.c:441
 msgid "Europe"
@@ -3303,239 +3554,239 @@ msgstr "Châu Âu"
 
 #: src/timezone_names.c:442
 msgid "Europe/Amsterdam"
-msgstr "Châu Âu/Amx-téc-đam"
+msgstr "Châu Âu/Amsterdam"
 
 #: src/timezone_names.c:443
 msgid "Europe/Andorra"
-msgstr "Châu Âu/An-đô-ra"
+msgstr "Châu Âu/Andorra"
 
 #: src/timezone_names.c:444
 msgid "Europe/Athens"
-msgstr "Châu Âu/A-ten"
+msgstr "Châu Âu/Athens"
 
 #: src/timezone_names.c:445
 msgid "Europe/Belfast"
-msgstr ""
+msgstr "Châu Âu/Belfast"
 
 #: src/timezone_names.c:446
 msgid "Europe/Belgrade"
-msgstr ""
+msgstr "Châu Âu/Belgrade"
 
 #: src/timezone_names.c:447
 msgid "Europe/Berlin"
-msgstr "Châu Âu/Béc-lin"
+msgstr "Châu Âu/Berlin"
 
 #: src/timezone_names.c:448
 msgid "Europe/Bratislava"
-msgstr ""
+msgstr "Châu Âu/Bratislava"
 
 #: src/timezone_names.c:449
 msgid "Europe/Brussels"
-msgstr "Châu Âu/Brút-xen"
+msgstr "Châu Âu/Brussels"
 
 #: src/timezone_names.c:450
 msgid "Europe/Bucharest"
-msgstr ""
+msgstr "Châu Âu/Bucharest"
 
 #: src/timezone_names.c:451
 msgid "Europe/Budapest"
-msgstr "Châu Âu/Bu-đa-péxt"
+msgstr "Châu Âu/Budapest"
 
 #: src/timezone_names.c:452
 msgid "Europe/Busingen"
-msgstr ""
+msgstr "Châu Âu/Busingen"
 
 #: src/timezone_names.c:453
 msgid "Europe/Chisinau"
-msgstr ""
+msgstr "Châu Âu/Chisinau"
 
 #: src/timezone_names.c:454
 msgid "Europe/Copenhagen"
-msgstr "Châu Âu/Cô-pen-ga-gen"
+msgstr "Châu Âu/Copenhagen"
 
 #: src/timezone_names.c:455
 msgid "Europe/Dublin"
-msgstr ""
+msgstr "Châu Âu/Dublin"
 
 #: src/timezone_names.c:456
 msgid "Europe/Gibraltar"
-msgstr ""
+msgstr "Châu Âu/Gibraltar"
 
 #: src/timezone_names.c:457
 msgid "Europe/Guernsey"
-msgstr ""
+msgstr "Châu Âu/Guernsey"
 
 #: src/timezone_names.c:458
 msgid "Europe/Helsinki"
-msgstr ""
+msgstr "Châu Âu/Helsinki"
 
 #: src/timezone_names.c:459
 msgid "Europe/Isle_of_Man"
-msgstr ""
+msgstr "Châu Âu/Isle_of_Man"
 
 #: src/timezone_names.c:460
 msgid "Europe/Istanbul"
-msgstr ""
+msgstr "Châu Âu/Istanbul"
 
 #: src/timezone_names.c:461
 msgid "Europe/Jersey"
-msgstr ""
+msgstr "Châu Âu/Jersey"
 
 #: src/timezone_names.c:462
 msgid "Europe/Kaliningrad"
-msgstr "Châu Âu/Ka-li-nhin-grát"
+msgstr "Châu Âu/Kaliningrad"
 
 #: src/timezone_names.c:463
 msgid "Europe/Kiev"
-msgstr "Châu Âu/Ki-ev"
+msgstr "Châu Âu/Kiev"
 
 #: src/timezone_names.c:464
 msgid "Europe/Lisbon"
-msgstr "Châu Âu/Líx-bon"
+msgstr "Châu Âu/Lisbon"
 
 #: src/timezone_names.c:465
 msgid "Europe/Ljubljana"
-msgstr ""
+msgstr "Châu Âu/Ljubljana"
 
 #: src/timezone_names.c:466
 msgid "Europe/London"
-msgstr "Châu Âu/Luân Đôn"
+msgstr "Châu Âu/London"
 
 #: src/timezone_names.c:467
 msgid "Europe/Luxembourg"
-msgstr "Châu Âu/Lúc-xem-bua"
+msgstr "Châu Âu/Luxembourg"
 
 #: src/timezone_names.c:468
 msgid "Europe/Madrid"
-msgstr "Châu Âu/Man-drít"
+msgstr "Châu Âu/Madrid"
 
 #: src/timezone_names.c:469
 msgid "Europe/Malta"
-msgstr ""
+msgstr "Châu Âu/Malta"
 
 #: src/timezone_names.c:470
 msgid "Europe/Mariehamn"
-msgstr ""
+msgstr "Châu Âu/Mariehamn"
 
 #: src/timezone_names.c:471
 msgid "Europe/Minsk"
-msgstr "Châu Âu/Minx-kơ"
+msgstr "Châu Âu/Minsk"
 
 #: src/timezone_names.c:472
 msgid "Europe/Monaco"
-msgstr "Châu Âu/Mô-na-cô"
+msgstr "Châu Âu/Monaco"
 
 #: src/timezone_names.c:473
 msgid "Europe/Moscow"
-msgstr "Châu Âu/Matx-cơ-va"
+msgstr "Châu Âu/Moscow"
 
 #: src/timezone_names.c:474
 msgid "Europe/Nicosia"
-msgstr ""
+msgstr "Châu Âu/Nicosia"
 
 #: src/timezone_names.c:475
 msgid "Europe/Oslo"
-msgstr ""
+msgstr "Châu Âu/Oslo"
 
 #: src/timezone_names.c:476
 msgid "Europe/Paris"
-msgstr "Châu Âu/Pa-ri"
+msgstr "Châu Âu/Paris"
 
 #: src/timezone_names.c:477
 msgid "Europe/Podgorica"
-msgstr ""
+msgstr "Châu Âu/Podgorica"
 
 #: src/timezone_names.c:478
 msgid "Europe/Prague"
-msgstr ""
+msgstr "Châu Âu/Prague"
 
 #: src/timezone_names.c:479
 msgid "Europe/Riga"
-msgstr "Châu Âu/Ri-ga"
+msgstr "Châu Âu/Riga"
 
 #: src/timezone_names.c:480
 msgid "Europe/Rome"
-msgstr "Châu Âu/Rôm"
+msgstr "Châu Âu/Rome"
 
 #: src/timezone_names.c:481
 msgid "Europe/Samara"
-msgstr "Châu Âu/Sa-ma-ra"
+msgstr "Châu Âu/Samara"
 
 #: src/timezone_names.c:482
 msgid "Europe/San_Marino"
-msgstr ""
+msgstr "Châu Âu/San_Marino"
 
 #: src/timezone_names.c:483
 msgid "Europe/Sarajevo"
-msgstr ""
+msgstr "Châu Âu/Sarajevo"
 
 #: src/timezone_names.c:484
 msgid "Europe/Simferopol"
-msgstr ""
+msgstr "Châu Âu/Simferopol"
 
 #: src/timezone_names.c:485
 msgid "Europe/Skopje"
-msgstr ""
+msgstr "Châu Âu/Skopje"
 
 #: src/timezone_names.c:486
 msgid "Europe/Sofia"
-msgstr ""
+msgstr "Châu Âu/Sofia"
 
 #: src/timezone_names.c:487
 msgid "Europe/Stockholm"
-msgstr "Châu Âu/Stốc-khôm"
+msgstr "Châu Âu/Stockholm"
 
 #: src/timezone_names.c:488
 msgid "Europe/Tallinn"
-msgstr ""
+msgstr "Châu Âu/Tallinn"
 
 #: src/timezone_names.c:489
 msgid "Europe/Tirane"
-msgstr ""
+msgstr "Châu Âu/Tirane"
 
 #: src/timezone_names.c:490
 msgid "Europe/Tiraspol"
-msgstr ""
+msgstr "Châu Âu/Tiraspol"
 
 #: src/timezone_names.c:491
 msgid "Europe/Uzhgorod"
-msgstr ""
+msgstr "Châu Âu/Uzhgorod"
 
 #: src/timezone_names.c:492
 msgid "Europe/Vaduz"
-msgstr ""
+msgstr "Châu Âu/Vaduz"
 
 #: src/timezone_names.c:493
 msgid "Europe/Vatican"
-msgstr "Châu Âu/Va-ti-căng"
+msgstr "Châu Âu/Vatican"
 
 #: src/timezone_names.c:494
 msgid "Europe/Vienna"
-msgstr "Châu Âu/Viên"
+msgstr "Châu Âu/Vienna"
 
 #: src/timezone_names.c:495
 msgid "Europe/Vilnius"
-msgstr ""
+msgstr "Châu Âu/Vilnius"
 
 #: src/timezone_names.c:496
 msgid "Europe/Volgograd"
-msgstr ""
+msgstr "Châu Âu/Volgograd"
 
 #: src/timezone_names.c:497
 msgid "Europe/Warsaw"
-msgstr ""
+msgstr "Châu Âu/Warsaw"
 
 #: src/timezone_names.c:498
 msgid "Europe/Zagreb"
-msgstr ""
+msgstr "Châu Âu/Zagreb"
 
 #: src/timezone_names.c:499
 msgid "Europe/Zaporozhye"
-msgstr ""
+msgstr "Châu Âu/Zaporozhye"
 
 #: src/timezone_names.c:500
 msgid "Europe/Zurich"
-msgstr ""
+msgstr "Châu Âu/Zurich"
 
 #: src/timezone_names.c:501
 msgid "Indian"
@@ -3543,79 +3794,79 @@ msgstr "Ấn Độ Dương"
 
 #: src/timezone_names.c:502
 msgid "Indian/Antananarivo"
-msgstr ""
+msgstr "Ấn Độ Dương/Antananarivo"
 
 #: src/timezone_names.c:503
 msgid "Indian/Chagos"
-msgstr ""
+msgstr "Ấn Độ Dương/Chagos"
 
 #: src/timezone_names.c:504
 msgid "Indian/Christmas"
-msgstr ""
+msgstr "Ấn Độ Dương/Christmas"
 
 #: src/timezone_names.c:505
 msgid "Indian/Cocos"
-msgstr ""
+msgstr "Ấn Độ Dương/Cocos"
 
 #: src/timezone_names.c:506
 msgid "Indian/Comoro"
-msgstr ""
+msgstr "Ấn Độ Dương/Comoro"
 
 #: src/timezone_names.c:507
 msgid "Indian/Kerguelen"
-msgstr ""
+msgstr "Ấn Độ Dương/Kerguelen"
 
 #: src/timezone_names.c:508
 msgid "Indian/Mahe"
-msgstr ""
+msgstr "Ấn Độ Dương/Mahe"
 
 #: src/timezone_names.c:509
 msgid "Indian/Maldives"
-msgstr ""
+msgstr "Ấn Độ Dương/Maldives"
 
 #: src/timezone_names.c:510
 msgid "Indian/Mauritius"
-msgstr ""
+msgstr "Ấn Độ Dương/Mauritius"
 
 #: src/timezone_names.c:511
 msgid "Indian/Mayotte"
-msgstr ""
+msgstr "Ấn Độ Dương/Mayotte"
 
 #: src/timezone_names.c:512
 msgid "Indian/Reunion"
-msgstr ""
+msgstr "Ấn Độ Dương/Reunion"
 
 #: src/timezone_names.c:513
 msgid "Mexico"
-msgstr ""
+msgstr "Mexico"
 
 #: src/timezone_names.c:514
 msgid "Mexico/BajaNorte"
-msgstr ""
+msgstr "Mexico/BajaNorte"
 
 #: src/timezone_names.c:515
 msgid "Mexico/BajaSur"
-msgstr ""
+msgstr "Mexico/BajaSur"
 
 #: src/timezone_names.c:516
 msgid "Mexico/General"
-msgstr ""
+msgstr "Mexico/General"
 
 #: src/timezone_names.c:517
 msgid "Mideast"
-msgstr ""
+msgstr "Trung Đông"
 
 #: src/timezone_names.c:518
 msgid "Mideast/Riyadh87"
-msgstr ""
+msgstr "Trung Đông/Riyadh87"
 
 #: src/timezone_names.c:519
 msgid "Mideast/Riyadh88"
-msgstr ""
+msgstr "Trung Đông/Riyadh88"
 
 #: src/timezone_names.c:520
 msgid "Mideast/Riyadh89"
-msgstr ""
+msgstr "Trung Đông/Riyadh89"
 
 #: src/timezone_names.c:521
 msgid "Pacific"
@@ -3623,324 +3874,324 @@ msgstr "Thái Bình Dương"
 
 #: src/timezone_names.c:522
 msgid "Pacific/Apia"
-msgstr ""
+msgstr "Thái Bình Dương/Apia"
 
 #: src/timezone_names.c:523
 msgid "Pacific/Auckland"
-msgstr ""
+msgstr "Thái Bình Dương/Auckland"
 
 #: src/timezone_names.c:524
 msgid "Pacific/Chatham"
-msgstr ""
+msgstr "Thái Bình Dương/Chatham"
 
 #: src/timezone_names.c:525
 msgid "Pacific/Chuuk"
-msgstr ""
+msgstr "Thái Bình Dương/Chuuk"
 
 #: src/timezone_names.c:526
 msgid "Pacific/Easter"
-msgstr ""
+msgstr "Thái Bình Dương/Easter"
 
 #: src/timezone_names.c:527
 msgid "Pacific/Efate"
-msgstr ""
+msgstr "Thái Bình Dương/Efate"
 
 #: src/timezone_names.c:528
 msgid "Pacific/Enderbury"
-msgstr ""
+msgstr "Thái Bình Dương/Enderbury"
 
 #: src/timezone_names.c:529
 msgid "Pacific/Fakaofo"
-msgstr ""
+msgstr "Thái Bình Dương/Fakaofo"
 
 #: src/timezone_names.c:530
 msgid "Pacific/Fiji"
-msgstr ""
+msgstr "Thái Bình Dương/Fiji"
 
 #: src/timezone_names.c:531
 msgid "Pacific/Funafuti"
-msgstr ""
+msgstr "Thái Bình Dương/Funafuti"
 
 #: src/timezone_names.c:532
 msgid "Pacific/Galapagos"
-msgstr ""
+msgstr "Thái Bình Dương/Galapagos"
 
 #: src/timezone_names.c:533
 msgid "Pacific/Gambier"
-msgstr ""
+msgstr "Thái Bình Dương/Gambier"
 
 #: src/timezone_names.c:534
 msgid "Pacific/Guadalcanal"
-msgstr ""
+msgstr "Thái Bình Dương/Guadalcanal"
 
 #: src/timezone_names.c:535
 msgid "Pacific/Guam"
-msgstr "Thái bình dương/Gu-am"
+msgstr "Thái Bình Dương/Guam"
 
 #: src/timezone_names.c:536
 msgid "Pacific/Honolulu"
-msgstr ""
+msgstr "Thái Bình Dương/Honolulu"
 
 #: src/timezone_names.c:537
 msgid "Pacific/Johnston"
-msgstr ""
+msgstr "Thái Bình Dương/Johnston"
 
 #: src/timezone_names.c:538
 msgid "Pacific/Kiritimati"
-msgstr ""
+msgstr "Thái Bình Dương/Kiritimati"
 
 #: src/timezone_names.c:539
 msgid "Pacific/Kosrae"
-msgstr ""
+msgstr "Thái Bình Dương/Kosrae"
 
 #: src/timezone_names.c:540
 msgid "Pacific/Kwajalein"
-msgstr ""
+msgstr "Thái Bình Dương/Kwajalein"
 
 #: src/timezone_names.c:541
 msgid "Pacific/Majuro"
-msgstr ""
+msgstr "Thái Bình Dương/Majuro"
 
 #: src/timezone_names.c:542
 msgid "Pacific/Marquesas"
-msgstr ""
+msgstr "Thái Bình Dương/Marquesas"
 
 #: src/timezone_names.c:543
 msgid "Pacific/Midway"
-msgstr ""
+msgstr "Thái Bình Dương/Midway"
 
 #: src/timezone_names.c:544
 msgid "Pacific/Nauru"
-msgstr ""
+msgstr "Thái Bình Dương/Nauru"
 
 #: src/timezone_names.c:545
 msgid "Pacific/Niue"
-msgstr ""
+msgstr "Thái Bình Dương/Niue"
 
 #: src/timezone_names.c:546
 msgid "Pacific/Norfolk"
-msgstr ""
+msgstr "Thái Bình Dương/Norfolk"
 
 #: src/timezone_names.c:547
 msgid "Pacific/Noumea"
-msgstr ""
+msgstr "Thái Bình Dương/Noumea"
 
 #: src/timezone_names.c:548
 msgid "Pacific/Pago_Pago"
-msgstr ""
+msgstr "Thái Bình Dương/Pago_Pago"
 
 #: src/timezone_names.c:549
 msgid "Pacific/Palau"
-msgstr ""
+msgstr "Thái Bình Dương/Palau"
 
 #: src/timezone_names.c:550
 msgid "Pacific/Pitcairn"
-msgstr ""
+msgstr "Thái Bình Dương/Pitcairn"
 
 #: src/timezone_names.c:551
 msgid "Pacific/Pohnpei"
-msgstr ""
+msgstr "Thái Bình Dương/Pohnpei"
 
 #: src/timezone_names.c:552
 msgid "Pacific/Ponape"
-msgstr ""
+msgstr "Thái Bình Dương/Ponape"
 
 #: src/timezone_names.c:553
 msgid "Pacific/Port_Moresby"
-msgstr ""
+msgstr "Thái Bình Dương/Port_Moresby"
 
 #: src/timezone_names.c:554
 msgid "Pacific/Rarotonga"
-msgstr ""
+msgstr "Thái Bình Dương/Rarotonga"
 
 #: src/timezone_names.c:555
 msgid "Pacific/Saipan"
-msgstr ""
+msgstr "Thái Bình Dương/Saipan"
 
 #: src/timezone_names.c:556
 msgid "Pacific/Samoa"
-msgstr ""
+msgstr "Thái Bình Dương/Samoa"
 
 #: src/timezone_names.c:557
 msgid "Pacific/Tahiti"
-msgstr ""
+msgstr "Thái Bình Dương/Tahiti"
 
 #: src/timezone_names.c:558
 msgid "Pacific/Tarawa"
-msgstr ""
+msgstr "Thái Bình Dương/Tarawa"
 
 #: src/timezone_names.c:559
 msgid "Pacific/Tongatapu"
-msgstr ""
+msgstr "Thái Bình Dương/Tongatapu"
 
 #: src/timezone_names.c:560
 msgid "Pacific/Truk"
-msgstr ""
+msgstr "Thái Bình Dương/Truk"
 
 #: src/timezone_names.c:561
 msgid "Pacific/Wake"
-msgstr ""
+msgstr "Thái Bình Dương/Wake"
 
 #: src/timezone_names.c:562
 msgid "Pacific/Wallis"
-msgstr ""
+msgstr "Thái Bình Dương/Wallis"
 
 #: src/timezone_names.c:563
 msgid "Pacific/Yap"
-msgstr ""
+msgstr "Thái Bình Dương/Yap"
 
 #: src/timezone_names.c:564
 msgid "SystemV"
-msgstr ""
+msgstr "SystemV"
 
 #: src/timezone_names.c:565
 msgid "SystemV/AST4"
-msgstr ""
+msgstr "SystemV/AST4"
 
 #: src/timezone_names.c:566
 msgid "SystemV/AST4ADT"
-msgstr ""
+msgstr "SystemV/AST4ADT"
 
 #: src/timezone_names.c:567
 msgid "SystemV/CST6"
-msgstr ""
+msgstr "SystemV/CST6"
 
 #: src/timezone_names.c:568
 msgid "SystemV/CST6CDT"
-msgstr ""
+msgstr "SystemV/CST6CDT"
 
 #: src/timezone_names.c:569
 msgid "SystemV/EST5"
-msgstr ""
+msgstr "SystemV/EST5"
 
 #: src/timezone_names.c:570
 msgid "SystemV/EST5/EDT"
-msgstr ""
+msgstr "SystemV/EST5/EDT"
 
 #: src/timezone_names.c:571
 msgid "SystemV/HST10"
-msgstr ""
+msgstr "SystemV/HST10"
 
 #: src/timezone_names.c:572
 msgid "SystemV/MST7"
-msgstr ""
+msgstr "SystemV/MST7"
 
 #: src/timezone_names.c:573
 msgid "SystemV/MST7/MNT"
-msgstr ""
+msgstr "SystemV/MST7/MNT"
 
 #: src/timezone_names.c:574
 msgid "SystemV/PST8"
-msgstr ""
+msgstr "SystemV/PST8"
 
 #: src/timezone_names.c:575
 msgid "SystemV/PST8/PDT"
-msgstr ""
+msgstr "SystemV/PST8/PDT"
 
 #: src/timezone_names.c:576
 msgid "SystemV/YST9"
-msgstr ""
+msgstr "SystemV/YST9"
 
 #: src/timezone_names.c:577
 msgid "SystemV/YST9/YDT"
-msgstr ""
+msgstr "SystemV/YST9/YDT"
 
 #: src/timezone_names.c:578
 msgid "US"
-msgstr ""
+msgstr "Mỹ"
 
 #: src/timezone_names.c:579
 msgid "US/Alaska"
-msgstr ""
+msgstr "Mỹ/Alaska"
 
 #: src/timezone_names.c:580
 msgid "US/Aleutian"
-msgstr ""
+msgstr "Mỹ/Aleutian"
 
 #: src/timezone_names.c:581
 msgid "US/Arizona"
-msgstr ""
+msgstr "Mỹ/Arizona"
 
 #: src/timezone_names.c:582
 msgid "US/Central"
-msgstr ""
+msgstr "Mỹ/Miền Trung"
 
 #: src/timezone_names.c:583
 msgid "US/Eastern"
-msgstr ""
+msgstr "Mỹ/Miền Đông"
 
 #: src/timezone_names.c:584
 msgid "US/East-Indiana"
-msgstr ""
+msgstr "Mỹ/Đông-Indiana"
 
 #: src/timezone_names.c:585
 msgid "US/Hawaii"
-msgstr ""
+msgstr "Mỹ/Hawaii"
 
 #: src/timezone_names.c:586
 msgid "US/Indiana-Starke"
-msgstr ""
+msgstr "Mỹ/Indiana-Starke"
 
 #: src/timezone_names.c:587
 msgid "US/Michigan"
-msgstr ""
+msgstr "Mỹ/Michigan"
 
 #: src/timezone_names.c:588
 msgid "US/Mountain"
-msgstr ""
+msgstr "Mỹ/Miền Núi"
 
 #: src/timezone_names.c:589
 msgid "US/Pacific"
-msgstr ""
+msgstr "Mỹ/Thái Bình Dương"
 
 #: src/timezone_names.c:590
 msgid "US/Pacific-New"
-msgstr ""
+msgstr "Mỹ/Thái Bình Dương-Mới"
 
 #: src/timezone_names.c:591
 msgid "US/Samoa"
-msgstr ""
+msgstr "Mỹ/Samoa"
 
-#: src/timezone_selection.c:147
+#: src/timezone_selection.c:143
 #, c-format
 msgid "%d hour %d mins"
 msgstr "%d giờ %d phút"
 
-#: src/timezone_selection.c:150
+#: src/timezone_selection.c:146
 #, c-format
 msgid "%d hour"
 msgstr "%d giờ"
 
-#: src/timezone_selection.c:152
+#: src/timezone_selection.c:148
 #, c-format
 msgid "%d mins"
 msgstr "%d phút"
 
-#: src/timezone_selection.c:158
+#: src/timezone_selection.c:154
 msgid "backward"
 msgstr "lui lại"
 
-#: src/timezone_selection.c:161
+#: src/timezone_selection.c:157
 msgid "forward"
 msgstr "tiến lên"
 
-#: src/timezone_selection.c:185
+#: src/timezone_selection.c:181
 msgid "not changed"
-msgstr "đã không thay đổi"
+msgstr "chưa thay đổi"
 
-#: src/timezone_selection.c:186
+#: src/timezone_selection.c:182
 msgid "not changing"
 msgstr "không thay đổi"
 
-#: src/timezone_selection.c:245
+#: src/timezone_selection.c:241
 msgid "GMT Offset"
-msgstr ""
+msgstr "Chênh lệch GMT"
 
-#: src/timezone_selection.c:251
+#: src/timezone_selection.c:247
 msgid "Previous/Next Change"
 msgstr "Thay đổi trước/kế tiếp"
 
-#: src/timezone_selection.c:256
+#: src/timezone_selection.c:252
 msgid "Country"
 msgstr "Quốc gia"
 
@@ -3949,53 +4200,47 @@ msgstr "Quốc gia"
 #. done very seldom and we do not want to allow "floating" here.
 #. This test is ugly, but it is not worth an extra parameter.
 #. this is normal appointment
-#: src/timezone_selection.c:288 src/timezone_selection.c:297
-#: src/timezone_selection.c:308
+#: src/timezone_selection.c:284 src/timezone_selection.c:293
+#: src/timezone_selection.c:304
 msgid "Pick timezone"
 msgstr "Chọn múi giờ"
 
-#: src/timezone_selection.c:291 src/timezone_selection.c:300
-#: src/timezone_selection.c:311
+#: src/timezone_selection.c:287 src/timezone_selection.c:296
+#: src/timezone_selection.c:307
 msgid "Change mode"
 msgstr "Thay đổi chế độ"
 
-#: src/timezone_selection.c:292 src/timezone_selection.c:301
-#: src/timezone_selection.c:312 src/timezone_selection.c:351
+#: src/timezone_selection.c:288 src/timezone_selection.c:297
+#: src/timezone_selection.c:308 src/timezone_selection.c:347
 msgid "UTC"
 msgstr "UTC"
 
 #. NOTE: this exists only if ical timezones are being used
-#: src/timezone_selection.c:302 src/timezone_selection.c:356
+#: src/timezone_selection.c:298 src/timezone_selection.c:352
 msgid "floating"
 msgstr "không cố định"
 
-#: src/tray_icon.c:415
+#: src/tray_icon.c:391
 msgid "New appointment"
 msgstr "Cuộc hẹn mới"
 
-#: src/tray_icon.c:422
-msgid "Preferences"
-msgstr "Tuỳ chỉnh"
-
-#: src/tray_icon.c:429
+#: src/tray_icon.c:407
 msgid "Quit"
-msgstr ""
-
-#: plugin/org.xfce.orage-settings.desktop.in:4
-msgid "Orage preferences"
-msgstr ""
+msgstr "Thoát"
 
 #: plugin/org.xfce.orage-settings.desktop.in:5
 msgid "Settings for the Xfce 4 Calendar Application (Orage)"
-msgstr ""
+msgstr "Thiết lập cho Ứng dụng Lịch Xfce 4 (Orage)"
 
 #: plugin/org.xfce.orage-settings.desktop.in:12
 msgid "Orage Calendar Preferences"
-msgstr ""
+msgstr "Tùy chọn Lịch Orage"
 
 #: plugin/org.xfce.orage-settings.desktop.in:14 org.xfce.orage.desktop.in:15
 msgid "calendar;date;schedule;appointment;time;"
 msgstr ""
+"calendar;date;schedule;appointment;time;lịch;ngày;lịch trình;cuộc hẹn;thời "
+"gian;"
 
 #: org.xfce.orage.appdata.xml.in:11
 msgid ""
@@ -4003,6 +4248,9 @@ msgid ""
 " ical format and includes common calendar features like repeating "
 "appointments and multiple alarming possibilities."
 msgstr ""
+"Orage được tạo ra nhằm trở thành một ứng dụng lịch đồ họa nhanh và dễ sử "
+"dụng. Nó dùng định dạng ical di động và bao gồm các tính năng lịch phổ biến "
+"như cuộc hẹn lặp lại và nhiều tùy chọn báo thức khác nhau."
 
 #: org.xfce.orage.appdata.xml.in:15
 msgid ""
@@ -4011,14 +4259,17 @@ msgid ""
 "Contents of those files are read and converted into Orage, but those files "
 "are left untouched."
 msgstr ""
+"Orage không có tính năng lịch nhóm, mà chỉ có thể dùng cho người dùng đơn "
+"lẻ. Nó nhận một danh sách tập tin ical cần nhập. Nội dung của các tập tin đó"
+" được đọc và chuyển đổi sang Orage, nhưng các tập tin đó được giữ nguyên."
 
 #: org.xfce.orage.appdata.xml.in:35
 msgid "Orage Team"
-msgstr ""
+msgstr "Nhóm Orage"
 
 #: org.xfce.orage.desktop.in:4
 msgid "Orage Calendar"
-msgstr ""
+msgstr "Lịch Orage"
 
 #: org.xfce.orage.desktop.in:5
 msgid "Desktop calendar"
@@ -4030,8 +4281,8 @@ msgstr "Lịch"
 
 #: org.xfce.orage.desktop.in:18
 msgid "Show Today"
-msgstr ""
+msgstr "Hiện hôm nay"
 
 #: org.xfce.orage.desktop.in:22
 msgid "New Appointment"
-msgstr ""
+msgstr "Cuộc hẹn mới"
