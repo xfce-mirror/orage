@@ -4296,7 +4296,7 @@ msgstr "Calendar Orage"
 
 #: org.xfce.orage.desktop.in:5
 msgid "Desktop calendar"
-msgstr "Calendar desktop"
+msgstr "Calculator de birou"
 
 #: org.xfce.orage.desktop.in:13
 msgid "Calendar"
