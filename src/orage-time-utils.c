@@ -285,8 +285,13 @@ gint orage_get_first_weekday (void)
 
 GDateTime *orage_icaltime_to_gdatetime (const gchar *icaltime)
 {
-    struct tm t = {0};
     char *ret;
+    struct tm t = {0};
+
+    /* NOTE: tm_isdst is left as 0 to preserve historical behavior. Setting it
+     * to -1 would let libc auto-detect DST but may cause regressions without
+     * proper tests.
+     */
 
     ret = strptime (icaltime, "%Y%m%dT%H%M%S", &t);
     if (ret == NULL)
@@ -308,7 +313,7 @@ GDateTime *orage_icaltime_to_gdatetime (const gchar *icaltime)
          */
         if (mktime (&t) == (time_t)-1)
         {
-            g_warning ("%s failed %d %d %d",
+            g_warning ("%s: failed %d %d %d",
                        G_STRFUNC, t.tm_year, t.tm_mon, t.tm_mday);
 
             return NULL;
@@ -323,8 +328,14 @@ GDateTime *orage_icaltime_to_gdatetime (const gchar *icaltime)
         /* icaltime was not processed completely. UTC times end to Z, which is
          * ok.
          */
-        if (ret[0] != 'Z' || ret[1] != '\0') /* real error */
-            g_error ("%s icaltime='%s' ret='%s'", G_STRFUNC, icaltime, ret);
+        if (ret[0] != 'Z' || ret[1] != '\0')
+        {
+            /* Report diagnostic information: date/time information is
+             * corrupted.
+             */
+            g_warning ("%s: trailing characters in icaltime '%s' ('%s')",
+                       G_STRFUNC, icaltime, ret);
+        }
     }
 
     t.tm_year += 1900;
