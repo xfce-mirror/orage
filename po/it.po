@@ -283,6 +283,7 @@ msgstr "Impossibile aggiungere il file esterno"
 #: src/interface.c:715
 msgid "Orage can only handle 10 foreign files. Limit reached"
 msgstr ""
+"Orage può gestire al massimo 10 file esterni. È stato raggiunto il limite."
 
 #: src/interface.c:725
 msgid "Filename is empty."
@@ -530,34 +531,34 @@ msgstr ""
 
 #: src/orage-application.c:160
 msgid "Released under the terms of the GNU General Public License."
-msgstr ""
+msgstr "Rilasciato sotto i termini della GNU General Public License."
 
 #: src/orage-application.c:162
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
-msgstr ""
+msgstr "Compilato con GTK+-%d.%d.%d, GTK+-%d.%d.%d in uso."
 
 #: src/orage-application.c:167
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
-msgstr ""
+msgstr "Compilato con libxfce4ui-%d.%d.%d, libxfce4ui-%d.%d.%d in uso."
 
 #: src/orage-application.c:173
 #, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
-msgstr ""
+msgstr "Compilato con libnotify-%d.%d.%d."
 
 #: src/orage-application.c:176
 msgid "Not using libnotify."
-msgstr ""
+msgstr "Non utilizza libnotify."
 
 #: src/orage-application.c:181
 msgid "Using automatic archiving."
-msgstr ""
+msgstr "Utilizza l'archiviazione automatica."
 
 #: src/orage-application.c:183
 msgid "Not using archiving."
-msgstr ""
+msgstr "Non utilizza l'archiviazione automatica."
 
 #: src/orage-application.c:187
 #, c-format
@@ -1383,12 +1384,12 @@ msgstr "A_nnulla"
 #. * use "%Y %B" instead.
 #: src/orage-month-view.c:217
 msgid "%B %Y"
-msgstr ""
+msgstr "%B %Y"
 
 #. Setup title row.
 #: src/orage-month-view.c:485 src/orage-window-next.c:1106
 msgid "Week"
-msgstr ""
+msgstr "Settimana"
 
 #: src/orage-sync-edit-dialog.c:132
 msgid "Description:"
@@ -1427,7 +1428,7 @@ msgstr "_Chiudi"
 #. * first day of the week, and so on.
 #: src/orage-time-utils.c:264
 msgid "calendar:week_start:0"
-msgstr ""
+msgstr "calendar:week_start:1"
 
 #: src/orage-week-window.c:454
 msgid "Back one week"
@@ -1550,19 +1551,19 @@ msgstr "<b>Eventi per il %s - %s:</b>"
 
 #: src/orage-window-next.c:131
 msgid "Create a new appointment"
-msgstr ""
+msgstr "Crea un nuovo evento"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"
-msgstr ""
+msgstr "Ricarica file esterni"
 
 #: src/orage-window-next.c:135
 msgid "Import/export data"
-msgstr ""
+msgstr "Importa/esporta dati"
 
 #: src/orage-window-next.c:136
 msgid "Close window"
-msgstr ""
+msgstr "Chiudi finestra"
 
 #: src/orage-window-next.c:137
 msgid "_Quit"
@@ -1570,7 +1571,7 @@ msgstr "_Esci"
 
 #: src/orage-window-next.c:137
 msgid "Quit program"
-msgstr ""
+msgstr "Esci dal programma"
 
 #: src/orage-window-next.c:140
 msgid "_Preferences"
@@ -1582,15 +1583,15 @@ msgstr "Preferenze di Orage"
 
 #: src/orage-window-next.c:143
 msgid "View selected date"
-msgstr ""
+msgstr "Visualizza date selezionate"
 
 #: src/orage-window-next.c:145
 msgid "Go to today"
-msgstr ""
+msgstr "Vai a oggi"
 
 #: src/orage-window-next.c:148
 msgid "Display Orage user manual"
-msgstr ""
+msgstr "Visualizza il manuale utente di Orage"
 
 #: src/orage-window-next.c:149
 msgid "_About"
@@ -1598,25 +1599,25 @@ msgstr "_Informazioni"
 
 #: src/orage-window-next.c:149
 msgid "Display information about Orage"
-msgstr ""
+msgstr "Visualizza informazioni su Orage"
 
 #: src/orage-window-next.c:366
 msgid "New event"
-msgstr ""
+msgstr "Nuovo evento"
 
 #: src/orage-window-next.c:444
 #, c-format
 msgid "Events for %s:"
-msgstr ""
+msgstr "Evento per %s:"
 
 #: src/orage-window-next.c:450
 #, c-format
 msgid "Events for %s - %s:"
-msgstr ""
+msgstr "Evento per %s - %s:"
 
 #: src/orage-window-next.c:650
 msgid "To do:"
-msgstr ""
+msgstr "Da fare:"
 
 #: src/orage-window-next.c:1070
 msgid "Previous"
@@ -1628,15 +1629,15 @@ msgstr "Successivo"
 
 #: src/orage-window-next.c:1104
 msgid "Day"
-msgstr ""
+msgstr "Giorno"
 
 #: src/orage-window-next.c:1109
 msgid "Month"
-msgstr ""
+msgstr "Mese"
 
 #: src/orage-window-next.c:1112
 msgid "Year"
-msgstr ""
+msgstr "Anno"
 
 #: src/parameters.c:646
 msgid "Remove selected synchronization task."
@@ -1691,11 +1692,11 @@ msgstr "Dettagli di visualizzazione del calendario"
 
 #: src/parameters.c:819
 msgid "Use new user interface"
-msgstr ""
+msgstr "Usa la nuova interfaccia utente"
 
 #: src/parameters.c:821
 msgid "Enable the new interface layout (requires restart)"
-msgstr ""
+msgstr "Abilita la nuova interfaccia (richiede riavvio)"
 
 #: src/parameters.c:826
 msgid "Show borders"
