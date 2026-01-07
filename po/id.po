@@ -11,6 +11,7 @@
 # Triyan W. Nugroho <triyan.wn@gmail.com>, 2025
 # Kukuh Syafaat <syafaatkukuh@gmail.com>, 2025
 # Ardjuna <Asyura.x@gmail.com>, 2025
+# Arif Budiman <arifpedia@gmail.com>, 2026
 # 
 #, fuzzy
 msgid ""
@@ -19,7 +20,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2025-10-25 12:59+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Ardjuna <Asyura.x@gmail.com>, 2025\n"
+"Last-Translator: Arif Budiman <arifpedia@gmail.com>, 2026\n"
 "Language-Team: Indonesian (https://app.transifex.com/xfce/teams/16840/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -176,6 +177,8 @@ msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed."
 msgstr ""
+"Centang ini jika Anda juga ingin melihat acara lama. Ini hanya dapat dipilih setelah 'hanya pengulangan pertama' diaktifkan untuk menghindari daftar yang sangat panjang.\n"
+"Perhatikan bahwa pemilihan hari tambahan tetap menentukan apakah janji yang lebih baru dicantumkan."
 
 #: src/event-list.c:1328 src/orage-appointment-window.c:3599
 #: src/orage-import.c:67
@@ -281,7 +284,7 @@ msgstr "Penambahan berkas asing gagal"
 
 #: src/interface.c:715
 msgid "Orage can only handle 10 foreign files. Limit reached"
-msgstr ""
+msgstr "Orage hanya dapat menangani 10 file asing. Batas tercapai"
 
 #: src/interface.c:725
 msgid "Filename is empty."
@@ -526,34 +529,35 @@ msgstr ""
 
 #: src/orage-application.c:160
 msgid "Released under the terms of the GNU General Public License."
-msgstr ""
+msgstr "Dirilis berdasarkan ketentuan Lisensi Publik Umum GNU."
 
 #: src/orage-application.c:162
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
-msgstr ""
+msgstr "Dikompilasi terhadap GTK+-%d.%d.%d, menggunakan GTK+-%d.%d.%d."
 
 #: src/orage-application.c:167
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
 msgstr ""
+"Dikompilasi terhadap libxfce4ui-%d.%d.%d, menggunakan libxfce4ui-%d.%d.%d."
 
 #: src/orage-application.c:173
 #, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
-msgstr ""
+msgstr "Dikompilasi terhadap libnotify-%d.%d.%d."
 
 #: src/orage-application.c:176
 msgid "Not using libnotify."
-msgstr ""
+msgstr "Tidak menggunakan libnotify."
 
 #: src/orage-application.c:181
 msgid "Using automatic archiving."
-msgstr ""
+msgstr "Menggunakan pengarsipan otomatis."
 
 #: src/orage-application.c:183
 msgid "Not using archiving."
-msgstr ""
+msgstr "Tidak menggunakan pengarsipan."
 
 #: src/orage-application.c:187
 #, c-format
@@ -562,39 +566,39 @@ msgstr "Silakan laporkan masalah ke <%s>."
 
 #: src/orage-application.c:677
 msgid "Open today's tasks"
-msgstr ""
+msgstr "Buka tugas hari ini"
 
 #: src/orage-application.c:686
 msgid "Add new appointment"
-msgstr ""
+msgstr "Tambahkan janji baru"
 
 #: src/orage-application.c:695
 msgid "Show preferences form"
-msgstr ""
+msgstr "Tampilkan formulir preferensi"
 
 #: src/orage-application.c:704
 msgid "Make Orage visible/unvisible"
-msgstr ""
+msgstr "Jadikan Orage terlihat/tidak terlihat"
 
 #: src/orage-application.c:713
 msgid "Add a foreign file"
-msgstr ""
+msgstr "Tambahkan file asing"
 
 #: src/orage-application.c:722
 msgid "Remove a foreign file"
-msgstr ""
+msgstr "Hapus file asing"
 
 #: src/orage-application.c:731
 msgid "Import appointments from file to Orage"
-msgstr ""
+msgstr "Impor janji dari file ke Orage"
 
 #: src/orage-application.c:740
 msgid "Export appointments from Orage to file"
-msgstr ""
+msgstr "Ekspor janji dari Orage ke file"
 
 #: src/orage-application.c:749
 msgid "Show version of Orage"
-msgstr ""
+msgstr "Tampilkan versi Orage"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -697,7 +701,7 @@ msgstr "Warna kategori - Orage"
 
 #: src/orage-appointment-window.c:2517
 msgid "*** COPY ***"
-msgstr ""
+msgstr "*** SALIN ***"
 
 #: src/orage-appointment-window.c:2570 src/orage-appointment-window.c:3869
 msgid "Before Start"
@@ -726,60 +730,60 @@ msgstr "S_impan dan tutup"
 
 #: src/orage-appointment-window.c:3235
 msgid "first"
-msgstr ""
+msgstr "pertama"
 
 #: src/orage-appointment-window.c:3235
 msgid "second"
-msgstr ""
+msgstr "kedua"
 
 #: src/orage-appointment-window.c:3235
 msgid "third"
-msgstr ""
+msgstr "ketiga"
 
 #: src/orage-appointment-window.c:3235
 msgid "fourth"
-msgstr ""
+msgstr "keempat"
 
 #: src/orage-appointment-window.c:3235
 msgid "last"
-msgstr ""
+msgstr "terakhir"
 
 #: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
 msgid "Monday"
-msgstr ""
+msgstr "Senin"
 
 #: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
 msgid "Tuesday"
-msgstr ""
+msgstr "Selasa"
 
 #: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
 msgid "Wednesday"
-msgstr ""
+msgstr "Rabu"
 
 #: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
 msgid "Thursday"
-msgstr ""
+msgstr "Kamis"
 
 #: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
 msgid "Friday"
-msgstr ""
+msgstr "Jumat"
 
 #: src/orage-appointment-window.c:3246 src/orage-month-view.c:285
 msgid "Saturday"
-msgstr ""
+msgstr "Sabtu"
 
 #: src/orage-appointment-window.c:3246 src/orage-month-view.c:285
 msgid "Sunday"
-msgstr ""
+msgstr "Minggu"
 
 #: src/orage-appointment-window.c:3259 src/orage-appointment-window.c:3292
 #: src/orage-appointment-window.c:3399 src/orage-appointment-window.c:3433
 msgid "Every"
-msgstr ""
+msgstr "Setiap"
 
 #: src/orage-appointment-window.c:3264
 msgid "day(s)"
-msgstr ""
+msgstr "hari"
 
 #: src/orage-appointment-window.c:3281
 msgid "Mon"
@@ -811,67 +815,67 @@ msgstr "Ahd"
 
 #: src/orage-appointment-window.c:3299
 msgid "week(s) on:"
-msgstr ""
+msgstr "minggu pada:"
 
 #: src/orage-appointment-window.c:3335
 msgid "From the beginning of the month:"
-msgstr ""
+msgstr "Dari awal bulan:"
 
 #: src/orage-appointment-window.c:3348
 msgid "From the end of the month:"
-msgstr ""
+msgstr "Dari akhir bulan:"
 
 #: src/orage-appointment-window.c:3361
 msgid "Every:"
-msgstr ""
+msgstr "Setiap:"
 
 #: src/orage-appointment-window.c:3389
 msgid "January"
-msgstr ""
+msgstr "Januari"
 
 #: src/orage-appointment-window.c:3389
 msgid "February"
-msgstr ""
+msgstr "Februari"
 
 #: src/orage-appointment-window.c:3389
 msgid "March"
-msgstr ""
+msgstr "Maret"
 
 #: src/orage-appointment-window.c:3389
 msgid "April"
-msgstr ""
+msgstr "April"
 
 #: src/orage-appointment-window.c:3389
 msgid "May"
-msgstr ""
+msgstr "Mei"
 
 #: src/orage-appointment-window.c:3390
 msgid "June"
-msgstr ""
+msgstr "Juni"
 
 #: src/orage-appointment-window.c:3390
 msgid "July"
-msgstr ""
+msgstr "Juli"
 
 #: src/orage-appointment-window.c:3390
 msgid "August"
-msgstr ""
+msgstr "Agustus"
 
 #: src/orage-appointment-window.c:3390
 msgid "September"
-msgstr ""
+msgstr "September"
 
 #: src/orage-appointment-window.c:3390
 msgid "October"
-msgstr ""
+msgstr "Oktober"
 
 #: src/orage-appointment-window.c:3391
 msgid "November"
-msgstr ""
+msgstr "November"
 
 #: src/orage-appointment-window.c:3391
 msgid "December"
-msgstr ""
+msgstr "Desember"
 
 #. TRANSLATORS: this string is part of date line, for example
 #. * "second Thursday of August". In some languages ​​it is not necessary to
@@ -879,11 +883,11 @@ msgstr ""
 #. * the string "of", it can be replaced with an empty string.
 #: src/orage-appointment-window.c:3407
 msgid "of"
-msgstr ""
+msgstr "dari"
 
 #: src/orage-appointment-window.c:3438
 msgid "hour(s)"
-msgstr ""
+msgstr "jam"
 
 #: src/orage-appointment-window.c:3474
 msgid "Repeat forever"
@@ -899,7 +903,7 @@ msgstr "waktu"
 
 #: src/orage-appointment-window.c:3493
 msgid "Repeat until"
-msgstr ""
+msgstr "Ulangi sampai"
 
 #. start time
 #: src/orage-appointment-window.c:3511 src/orage-appointment-window.c:3637
@@ -994,7 +998,7 @@ msgstr "Even sepanjang hari"
 
 #: src/orage-appointment-window.c:3655
 msgid "Set"
-msgstr ""
+msgstr "Atur"
 
 #: src/orage-appointment-window.c:3679
 msgid "Duration"
@@ -1078,6 +1082,14 @@ msgid ""
 "    <&Ynnnn> is translated to current year minus nnnn.\n"
 "(This can be used for example in birthday reminders to tell how old the person will be.)"
 msgstr ""
+"Perintah singkat ini langsung berlaku:\n"
+"    <D> menyisipkan tanggal saat ini dalam format tanggal lokal\n"
+"    <T> menyisipkan waktu\n"
+"    <DT> menyisipkan tanggal dan waktu.\n"
+"\n"
+"Ini baru dikonversi kemudian saat terlihat:\n"
+"    <&Ynnnn> diterjemahkan menjadi tahun saat ini dikurangi nnnn.\n"
+"(Ini dapat digunakan misalnya pada pengingat ulang tahun untuk memberi tahu berapa usia orang tersebut.)"
 
 #: src/orage-appointment-window.c:3878
 msgid "Alarm"
@@ -1126,7 +1138,7 @@ msgstr "Pilih ini jika anda ingin alarm yang dapat didengar"
 
 #: src/orage-appointment-window.c:3941
 msgid "Sound command is not set"
-msgstr ""
+msgstr "Perintah suara belum diatur"
 
 #: src/orage-appointment-window.c:3970
 msgid "Repeat alarm sound"
@@ -1307,51 +1319,51 @@ msgstr "Tanggal aksi"
 
 #: src/orage-import.c:106
 msgid "<b>Summary</b>"
-msgstr ""
+msgstr "<b>Ringkasan</b>"
 
 #: src/orage-import.c:117
 msgid "<b>Type</b>"
-msgstr ""
+msgstr "<b>Tipe</b>"
 
 #: src/orage-import.c:132
 msgid "<b>Location</b>"
-msgstr ""
+msgstr "<b>Lokasi</b>"
 
 #: src/orage-import.c:147
 msgid "<b>URL</b>"
-msgstr ""
+msgstr "<b>URL</b>"
 
 #: src/orage-import.c:166
 msgid "<b>All-day</b>"
-msgstr ""
+msgstr "<b>Sepanjang hari</b>"
 
 #: src/orage-import.c:181
 msgid "<b>From</b>"
-msgstr ""
+msgstr "<b>Dari</b>"
 
 #: src/orage-import.c:196
 msgid "<b>To</b>"
-msgstr ""
+msgstr "<b>Ke</b>"
 
 #: src/orage-import.c:210
 msgid "<b>Recurring</b>"
-msgstr ""
+msgstr "<b>Berulang</b>"
 
 #: src/orage-import.c:213
 msgid "Yes"
-msgstr ""
+msgstr "Ya"
 
 #: src/orage-import.c:213
 msgid "No"
-msgstr ""
+msgstr "Tidak"
 
 #: src/orage-import.c:259
 msgid "Import calendar file"
-msgstr ""
+msgstr "Impor file kalender"
 
 #: src/orage-import.c:261
 msgid "_Import"
-msgstr ""
+msgstr "_Impor"
 
 #: src/orage-import.c:270
 msgid "_Cancel"
@@ -1363,24 +1375,24 @@ msgstr "_Batal"
 #. * use "%Y %B" instead.
 #: src/orage-month-view.c:217
 msgid "%B %Y"
-msgstr ""
+msgstr "%B %Y"
 
 #. Setup title row.
 #: src/orage-month-view.c:485 src/orage-window-next.c:1106
 msgid "Week"
-msgstr ""
+msgstr "Minggu"
 
 #: src/orage-sync-edit-dialog.c:132
 msgid "Description:"
-msgstr ""
+msgstr "Deskripsi:"
 
 #: src/orage-sync-edit-dialog.c:134
 msgid "Command:"
-msgstr ""
+msgstr "Perintah:"
 
 #: src/orage-sync-edit-dialog.c:136
 msgid "Period:"
-msgstr ""
+msgstr "Periode:"
 
 #: src/orage-sync-edit-dialog.c:138
 msgid "minutes"
@@ -1388,15 +1400,15 @@ msgstr "menit"
 
 #: src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task"
-msgstr ""
+msgstr "Nama atau deskripsi tugas sinkronisasi ini"
 
 #: src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization"
-msgstr ""
+msgstr "Perintah untuk sinkronisasi"
 
 #: src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes"
-msgstr ""
+msgstr "Periode sinkronisasi dalam menit"
 
 #: src/orage-sync-edit-dialog.c:166 src/parameters.c:1431 src/reminder.c:638
 msgid "_Close"
@@ -1407,7 +1419,7 @@ msgstr "_Tutup"
 #. * first day of the week, and so on.
 #: src/orage-time-utils.c:264
 msgid "calendar:week_start:0"
-msgstr ""
+msgstr "calendar:week_start:0"
 
 #: src/orage-week-window.c:454
 msgid "Back one week"
@@ -1431,7 +1443,7 @@ msgstr "Tak diketahui"
 
 #: src/orage-week-window.c:896
 msgid "Number of days to show"
-msgstr ""
+msgstr "Jumlah hari yang ditampilkan"
 
 #: src/orage-week-window.c:1212
 msgid "Orage - day view"
@@ -1530,19 +1542,19 @@ msgstr "<b>Even untuk %s - %s:</b>"
 
 #: src/orage-window-next.c:131
 msgid "Create a new appointment"
-msgstr ""
+msgstr "Buat janji baru"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"
-msgstr ""
+msgstr "Muat ulang file eksternal"
 
 #: src/orage-window-next.c:135
 msgid "Import/export data"
-msgstr ""
+msgstr "Impor/ekspor data"
 
 #: src/orage-window-next.c:136
 msgid "Close window"
-msgstr ""
+msgstr "Tutup jendela"
 
 #: src/orage-window-next.c:137
 msgid "_Quit"
@@ -1550,7 +1562,7 @@ msgstr "_Keluar"
 
 #: src/orage-window-next.c:137
 msgid "Quit program"
-msgstr ""
+msgstr "Keluar dari program"
 
 #: src/orage-window-next.c:140
 msgid "_Preferences"
@@ -1562,15 +1574,15 @@ msgstr "Pengaturan Orage"
 
 #: src/orage-window-next.c:143
 msgid "View selected date"
-msgstr ""
+msgstr "Lihat tanggal yang dipilih"
 
 #: src/orage-window-next.c:145
 msgid "Go to today"
-msgstr ""
+msgstr "Pergi ke hari ini"
 
 #: src/orage-window-next.c:148
 msgid "Display Orage user manual"
-msgstr ""
+msgstr "Tampilkan manual pengguna Orage"
 
 #: src/orage-window-next.c:149
 msgid "_About"
@@ -1578,25 +1590,25 @@ msgstr "Perih_al"
 
 #: src/orage-window-next.c:149
 msgid "Display information about Orage"
-msgstr ""
+msgstr "Tampilkan informasi tentang Orage"
 
 #: src/orage-window-next.c:366
 msgid "New event"
-msgstr ""
+msgstr "Acara baru"
 
 #: src/orage-window-next.c:444
 #, c-format
 msgid "Events for %s:"
-msgstr ""
+msgstr "Acara untuk %s:"
 
 #: src/orage-window-next.c:450
 #, c-format
 msgid "Events for %s - %s:"
-msgstr ""
+msgstr "Acara untuk %s - %s:"
 
 #: src/orage-window-next.c:650
 msgid "To do:"
-msgstr ""
+msgstr "Tugas:"
 
 #: src/orage-window-next.c:1070
 msgid "Previous"
@@ -1608,23 +1620,23 @@ msgstr "Selanjutnya"
 
 #: src/orage-window-next.c:1104
 msgid "Day"
-msgstr ""
+msgstr "Hari"
 
 #: src/orage-window-next.c:1109
 msgid "Month"
-msgstr ""
+msgstr "Bulan"
 
 #: src/orage-window-next.c:1112
 msgid "Year"
-msgstr ""
+msgstr "Tahun"
 
 #: src/parameters.c:646
 msgid "Remove selected synchronization task."
-msgstr ""
+msgstr "Hapus tugas sinkronisasi yang dipilih."
 
 #: src/parameters.c:649
 msgid "Yes, remove"
-msgstr ""
+msgstr "Ya, hapus"
 
 #: src/parameters.c:685
 msgid "Main settings"
@@ -1669,11 +1681,11 @@ msgstr "Detil visual kalender"
 
 #: src/parameters.c:819
 msgid "Use new user interface"
-msgstr ""
+msgstr "Gunakan antarmuka pengguna baru"
 
 #: src/parameters.c:821
 msgid "Enable the new interface layout (requires restart)"
-msgstr ""
+msgstr "Aktifkan tata letak antarmuka baru (memerlukan mulai ulang)"
 
 #: src/parameters.c:826
 msgid "Show borders"
@@ -1856,11 +1868,11 @@ msgstr ""
 
 #: src/parameters.c:1376
 msgid "Synchronization settings"
-msgstr ""
+msgstr "Pengaturan sinkronisasi"
 
 #: src/parameters.c:1382
 msgid "Synchronization sources"
-msgstr ""
+msgstr "Sumber sinkronisasi"
 
 #: src/parameters.c:1408 org.xfce.orage.desktop.in:26
 msgid "Orage Preferences"
@@ -1868,7 +1880,7 @@ msgstr "Pengaturan Orage"
 
 #: src/reminder.c:417
 msgid "Reminder"
-msgstr ""
+msgstr "Pengingat"
 
 #: src/reminder.c:440
 msgid "Open"
@@ -1876,7 +1888,7 @@ msgstr "Buka"
 
 #: src/reminder.c:445
 msgid "Silence"
-msgstr ""
+msgstr "Senyapkan"
 
 #: src/reminder.c:563
 msgid "Reminder - Orage"
@@ -4245,7 +4257,7 @@ msgstr "Pengaturan Kalender Orage"
 
 #: plugin/org.xfce.orage-settings.desktop.in:14 org.xfce.orage.desktop.in:15
 msgid "calendar;date;schedule;appointment;time;"
-msgstr ""
+msgstr "kalender;tanggal;jadwal;janji;waktu;"
 
 #: org.xfce.orage.appdata.xml.in:11
 msgid ""
@@ -4271,7 +4283,7 @@ msgstr ""
 
 #: org.xfce.orage.appdata.xml.in:35
 msgid "Orage Team"
-msgstr ""
+msgstr "Tim Orage"
 
 #: org.xfce.orage.desktop.in:4
 msgid "Orage Calendar"
@@ -4287,8 +4299,8 @@ msgstr "Kalender"
 
 #: org.xfce.orage.desktop.in:18
 msgid "Show Today"
-msgstr ""
+msgstr "Tampilkan Hari Ini"
 
 #: org.xfce.orage.desktop.in:22
 msgid "New Appointment"
-msgstr ""
+msgstr "Janji Baru"
