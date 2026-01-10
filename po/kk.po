@@ -5,8 +5,8 @@
 # 
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2024
-# Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2025
 # Nick Schermer <nick@xfce.org>, 2025
+# Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2026
 # 
 #, fuzzy
 msgid ""
@@ -15,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2025-10-25 12:59+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Nick Schermer <nick@xfce.org>, 2025\n"
+"Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2026\n"
 "Language-Team: Kazakh (https://app.transifex.com/xfce/teams/16840/kk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,17 +34,17 @@ msgstr "Уақыты"
 
 #: src/event-list.c:789
 msgid "No rows have been selected."
-msgstr ""
+msgstr "Жолдар таңдалмаған."
 
 #: src/event-list.c:790
 msgid "Click a row to select it and after that you can copy it."
-msgstr ""
+msgstr "Жолды таңдау үшін оны шертіңіз, содан кейін оны көшіре аласыз."
 
 #: src/event-list.c:1005
 msgid ""
 "You will permanently remove all\n"
 "selected appointments."
-msgstr ""
+msgstr "Сіз барлық таңдалған кездесулерді біржолата өшіресіз."
 
 #: src/event-list.c:1006 src/orage-appointment-window.c:981
 #: src/orage-appointment-window.c:1645 src/parameters.c:647
@@ -54,17 +54,17 @@ msgstr "Жалғастыруды қалайсыз ба?"
 #: src/event-list.c:1007 src/orage-appointment-window.c:1646
 #: src/parameters.c:648
 msgid "No, cancel the removal"
-msgstr ""
+msgstr "Жоқ, өшіруден бас тарту"
 
 #: src/event-list.c:1008
 msgid "Yes, remove them"
-msgstr ""
+msgstr "Иә, оларды өшіру"
 
 #: src/event-list.c:1068 src/orage-appointment-window.c:1743
 #: src/orage-appointment-window.c:1758 src/orage-month-view.c:175
 #: src/orage-week-window.c:529
 msgid "Pick the date"
-msgstr ""
+msgstr "Күнді таңдау"
 
 #: src/event-list.c:1070 src/event-list.c:1224
 #: src/orage-appointment-window.c:1745 src/orage-appointment-window.c:1760
@@ -85,7 +85,7 @@ msgstr "_Файл"
 
 #: src/event-list.c:1131 src/orage-appointment-window.c:2932
 msgid "D_uplicate"
-msgstr ""
+msgstr "_Көшірмесін жасау"
 
 #. ********* View menu *********
 #. View menu
@@ -136,7 +136,7 @@ msgstr "Жабу"
 
 #: src/event-list.c:1240
 msgid "Dayview"
-msgstr ""
+msgstr "Күндік көрініс"
 
 #: src/event-list.c:1270 src/orage-appointment-window.c:3591
 #: src/orage-import.c:64
@@ -145,11 +145,11 @@ msgstr "Оқиға"
 
 #: src/event-list.c:1275
 msgid "Extra days to show:"
-msgstr ""
+msgstr "Көрсетілетін қосымша күндер:"
 
 #: src/event-list.c:1289
 msgid "only first repeating"
-msgstr ""
+msgstr "тек бірінші қайталану"
 
 #: src/event-list.c:1297
 msgid ""
@@ -157,21 +157,26 @@ msgid ""
 "Note that this also shows all urgencies.\n"
 "Note that repeating events may appear earlier in the list as the first occurrence only is listed."
 msgstr ""
+"Тек бірінші қайталанатын оқиғаны көргіңіз келсе, осыны белгілеңіз. Әдетте бәрі көрсетіледі.\n"
+"Сонымен қатар бұл барлық маңыздылық деңгейлерін көрсететінін ескеріңіз.\n"
+"Тек бірінші қайталануы тізімделетіндіктен, қайталанатын оқиғалар тізімде ертерек пайда болуы мүмкін екенін ескеріңіз."
 
 #: src/event-list.c:1302
 msgid "also old"
-msgstr ""
+msgstr "сондай-ақ ескілері"
 
 #: src/event-list.c:1307
 msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed."
 msgstr ""
+"Ескі оқиғаларды да көргіңіз келсе, осыны белгілеңіз. Бұл өте ұзын тізімдерді болдырмау үшін 'тек бірінші қайталану' іске қосылғаннан кейін ғана таңдалуы мүмкін.\n"
+"Қосымша күндерді таңдау жаңа кездесулердің тізімделу-тізімделмеуін әлі де анықтайтынын ескеріңіз."
 
 #: src/event-list.c:1328 src/orage-appointment-window.c:3599
 #: src/orage-import.c:67
 msgid "Todo"
-msgstr ""
+msgstr "Тапсырма"
 
 #: src/event-list.c:1342 src/orage-appointment-window.c:3607
 #: src/orage-import.c:70
@@ -180,7 +185,7 @@ msgstr "Журнал"
 
 #: src/event-list.c:1345
 msgid "Journal entries starting from:"
-msgstr ""
+msgstr "Журнал жазбалары келесі уақыттан бастап:"
 
 #: src/event-list.c:1370
 msgid "Search"
@@ -188,7 +193,7 @@ msgstr "Іздеу"
 
 #: src/event-list.c:1373
 msgid "Search text "
-msgstr "Мәтінді іздеу"
+msgstr "Мәтінді іздеу "
 
 #: src/event-list.c:1439
 msgid "Flags"
@@ -215,10 +220,22 @@ msgid ""
 "\t 5. Appointment type:\n"
 "\t\tE=Event T=Todo J=Journal"
 msgstr ""
+"Түзету үшін жолға екі рет шертіңіз.\n"
+"\n"
+"Жалаушалар ретімен:\n"
+"\t 1. Дабыл: n=дабыл жоқ\n"
+"\t\t A=Дабыл орнатылған P=Тұрақты дабыл орнатылған\n"
+"\t 2. Қайталану: n=қайталану жоқ\n"
+"\t\t H=Сағат сайын D=Күн сайын W=Апта сайын M=Ай сайын Y=Жыл сайын\n"
+"\t 3. Түрі: f=бос B=Бос емес\n"
+"\t 4. Файлда орналасуы:\n"
+"\t\tO=Orage A=Архив F=Сыртқы\n"
+"\t 5. Кездесу түрі:\n"
+"\t\tE=Оқиға T=Тапсырма J=Журнал"
 
 #: src/ical-code.c:841
 msgid "Orage default alarm"
-msgstr ""
+msgstr "Orage әдепкі дабылы"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
@@ -236,7 +253,7 @@ msgstr "Барлық файлдар"
 
 #: src/interface.c:643
 msgid "Current foreign files"
-msgstr ""
+msgstr "Ағымдағы сыртқы файлдар"
 
 #: src/interface.c:666
 msgid "READ ONLY"
@@ -252,39 +269,39 @@ msgstr "Ө_шіру"
 
 #: src/interface.c:692
 msgid "***** No foreign files *****"
-msgstr ""
+msgstr "***** Сыртқы файлдар жоқ *****"
 
 #: src/interface.c:707
 msgid "Foreign file add failed"
-msgstr ""
+msgstr "Сыртқы файлды қосу сәтсіз аяқталды"
 
 #: src/interface.c:715
 msgid "Orage can only handle 10 foreign files. Limit reached"
-msgstr ""
+msgstr "Orage тек 10 сыртқы файлды өңдей алады. Шектеуге жетті"
 
 #: src/interface.c:725
 msgid "Filename is empty."
-msgstr ""
+msgstr "Файл аты бос."
 
 #: src/interface.c:735
 msgid "Name is empty."
-msgstr ""
+msgstr "Аты бос."
 
 #: src/interface.c:746
 msgid "File does not exist."
-msgstr ""
+msgstr "Файл жоқ."
 
 #: src/interface.c:758
 msgid "Same filename already exists in Orage."
-msgstr ""
+msgstr "Orage ішінде дәл осындай файл аты бар."
 
 #: src/interface.c:769
 msgid "Same name already exists in Orage."
-msgstr ""
+msgstr "Orage ішінде осындай ат бар."
 
 #: src/interface.c:1023
 msgid "Import/export"
-msgstr ""
+msgstr "Импорт/экспорт"
 
 #: src/interface.c:1030
 msgid "Import"
@@ -292,7 +309,7 @@ msgstr "Импорт"
 
 #: src/interface.c:1038
 msgid "Read from file:"
-msgstr ""
+msgstr "Файлдан оқу:"
 
 #: src/interface.c:1048 src/interface.c:1094 src/interface.c:1271
 #: src/interface.c:1369 src/interface.c:1458
@@ -311,6 +328,8 @@ msgid ""
 "Separate filenames with comma(,).\n"
 " NOTE: comma is not valid character in filenames for Orage."
 msgstr ""
+"Файл аттарын үтірмен (,) ажыратыңыз.\n"
+" ЕСКЕРТУ: үтір Orage файл аттарында жарамды таңба емес."
 
 #: src/interface.c:1073
 msgid "Export"
@@ -318,7 +337,7 @@ msgstr "Экспорт"
 
 #: src/interface.c:1081
 msgid "Write to file:"
-msgstr ""
+msgstr "Файлға жазу:"
 
 #: src/interface.c:1116 src/interface.c:1134
 msgid "Select"
@@ -326,31 +345,35 @@ msgstr "Таңдау"
 
 #: src/interface.c:1121
 msgid "All appointments"
-msgstr ""
+msgstr "Барлық кездесулер"
 
 #: src/interface.c:1140
 msgid "Named appointments:"
-msgstr ""
+msgstr "Аталған кездесулер:"
 
 #: src/interface.c:1159
 msgid ""
 "Note that only main file appointments are read.\n"
 "Archived and Foreign events are not exported."
 msgstr ""
+"Тек негізгі файлдағы кездесулер оқылатынын ескеріңіз.\n"
+"Архивтелген және сыртқы оқиғалар экспортталмайды."
 
 #: src/interface.c:1162
 msgid ""
 "Note that only main file appointments are read.\n"
 "Foreign events are not exported."
 msgstr ""
+"Тек негізгі файлдағы кездесулер оқылатынын ескеріңіз.\n"
+"Сыртқы оқиғалар экспортталмайды."
 
 #: src/interface.c:1165
 msgid "You can easily drag these from event-list window."
-msgstr ""
+msgstr "Оларды оқиғалар тізімі терезесінен оңай сүйреп апаруға болады."
 
 #: src/interface.c:1167
 msgid "Orage appointment UIDs separated by commas."
-msgstr ""
+msgstr "Үтірмен ажыратылған Orage кездесулерінің UID-тері."
 
 #: src/interface.c:1173
 msgid "Archive"
@@ -359,20 +382,20 @@ msgstr "Архив"
 #: src/interface.c:1182 src/interface.c:1204
 #: src/orage-appointment-window.c:4099
 msgid "_Execute"
-msgstr ""
+msgstr "_Орындау"
 
 #: src/interface.c:1188
 #, c-format
 msgid "Archive now (threshold: %d months)"
-msgstr ""
+msgstr "Қазір архивтеу (шегі: %d ай)"
 
 #: src/interface.c:1199
 msgid "You can change archive threshold in parameters"
-msgstr ""
+msgstr "Архивтеу шегін параметрлерде өзгертуге болады"
 
 #: src/interface.c:1211
 msgid "Revert archive now"
-msgstr ""
+msgstr "Архивті қазір қайтару"
 
 #: src/interface.c:1218
 msgid ""
@@ -380,26 +403,29 @@ msgid ""
 "This is useful for example when doing export and moving orage\n"
 "appointments to another system."
 msgstr ""
+"Барлық архивтелген оқиғаларды негізгі orage файлына қайтару және архив файлын өшіру.\n"
+"Бұл, мысалы, экспорттау және orage кездесулерін\n"
+"басқа жүйеге жылжыту кезінде пайдалы."
 
 #: src/interface.c:1230
 msgid "Orage files"
-msgstr ""
+msgstr "Orage файлдары"
 
 #: src/interface.c:1237
 msgid "Orage main calendar file"
-msgstr ""
+msgstr "Orage негізгі күнтізбе файлы"
 
 #: src/interface.c:1246 src/interface.c:1345
 msgid "Current file:"
-msgstr ""
+msgstr "Ағымдағы файл:"
 
 #: src/interface.c:1259 src/interface.c:1358
 msgid "New file:"
-msgstr ""
+msgstr "Жаңа файл:"
 
 #: src/interface.c:1289 src/interface.c:1387
 msgid "Action options:"
-msgstr ""
+msgstr "Әрекет опциялары:"
 
 #: src/interface.c:1293 src/interface.c:1391
 msgid "Rename"
@@ -411,6 +437,9 @@ msgid ""
 "Does not touch external filesystem at all.\n"
 "New file must exist."
 msgstr ""
+"Тек Orage ішкі файлының атын өзгерту.\n"
+"Сыртқы файлдық жүйеге мүлдем әсер етпейді.\n"
+"Жаңа файл болуы керек."
 
 #: src/interface.c:1304 src/interface.c:1399
 msgid "Copy"
@@ -418,7 +447,7 @@ msgstr "Көшіру"
 
 #: src/interface.c:1311
 msgid "Current file is copied and stays unmodified in the old place."
-msgstr ""
+msgstr "Ағымдағы файл көшіріледі және ескі орнында өзгеріссіз қалады."
 
 #: src/interface.c:1315 src/interface.c:1407
 msgid "Move"
@@ -426,7 +455,7 @@ msgstr "Жылжыту"
 
 #: src/interface.c:1322
 msgid "Current file is moved and vanishes from the old place."
-msgstr ""
+msgstr "Ағымдағы файл жылжытылады және ескі орнынан жойылады."
 
 #: src/interface.c:1336
 msgid "Archive file"
@@ -434,15 +463,15 @@ msgstr "Архив файлы"
 
 #: src/interface.c:1433
 msgid "Foreign files"
-msgstr ""
+msgstr "Сыртқы файлдар"
 
 #: src/interface.c:1440
 msgid "Add new foreign file"
-msgstr ""
+msgstr "Жаңа сыртқы файлды қосу"
 
 #: src/interface.c:1448
 msgid "Foreign file:"
-msgstr ""
+msgstr "Сыртқы файл:"
 
 #: src/interface.c:1465 src/orage-appointment-window.c:2443
 #: src/parameters.c:1388
@@ -451,7 +480,7 @@ msgstr "Қ_осу"
 
 #: src/interface.c:1480
 msgid "Visible name:"
-msgstr ""
+msgstr "Көрінетін аты:"
 
 #: src/interface.c:1490
 msgid "Read only"
@@ -462,14 +491,16 @@ msgid ""
 "Set this if you want to make sure that this file is never modified by Orage.\n"
 "Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
 msgstr ""
+"Егер бұл файлдың Orage тарапынан ешқашан өзгертілмейтініне сенімді болғыңыз келсе, осыны орнатыңыз.\n"
+"Ескерту: сыртқы файлдарды өзгерту олардың бастапқы сайманмен үйлесімді болмауына әкелуі мүмкін!"
 
 #: src/interface.c:1502
 msgid "This internal name is displayed to user instead of file name."
-msgstr ""
+msgstr "Бұл ішкі атау файл атының орнына пайдаланушыға көрсетіледі."
 
 #: src/interface.c:1516
 msgid "Exchange data - Orage"
-msgstr ""
+msgstr "Деректер алмасу - Orage"
 
 #: src/main.c:49 src/orage-appointment-window.c:708
 #: org.xfce.orage.appdata.xml.in:7
@@ -479,6 +510,7 @@ msgstr "Orage"
 #: src/orage-about.c:44 org.xfce.orage.appdata.xml.in:8
 msgid "Orage is a time-managing application for the Xfce desktop environment"
 msgstr ""
+"Orage — Xfce жұмыс үстелі ортасына арналған уақытты басқару қолданбасы"
 
 #: src/orage-about.c:51
 msgid "translator-credits"
@@ -486,34 +518,35 @@ msgstr "Baurzhan Muftakhidinov <baurthefirst@gmail.com>"
 
 #: src/orage-application.c:160
 msgid "Released under the terms of the GNU General Public License."
-msgstr ""
+msgstr "GNU General Public License шарттарымен шығарылған."
 
 #: src/orage-application.c:162
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
-msgstr ""
+msgstr "GTK+-%d.%d.%d нұсқасымен жиналған, GTK+-%d.%d.%d қолданылуда."
 
 #: src/orage-application.c:167
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
 msgstr ""
+"libxfce4ui-%d.%d.%d нұсқасымен жиналған, libxfce4ui-%d.%d.%d қолданылуда."
 
 #: src/orage-application.c:173
 #, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
-msgstr ""
+msgstr "libnotify-%d.%d.%d нұсқасымен жиналған."
 
 #: src/orage-application.c:176
 msgid "Not using libnotify."
-msgstr ""
+msgstr "libnotify қолданылмайды."
 
 #: src/orage-application.c:181
 msgid "Using automatic archiving."
-msgstr ""
+msgstr "Автоматты архивтеу қолданылуда."
 
 #: src/orage-application.c:183
 msgid "Not using archiving."
-msgstr ""
+msgstr "Архивтеу қолданылмайды."
 
 #: src/orage-application.c:187
 #, c-format
@@ -522,39 +555,39 @@ msgstr "Ақаулықтар жөнінде хабарлаңыз: <%s>."
 
 #: src/orage-application.c:677
 msgid "Open today's tasks"
-msgstr ""
+msgstr "Бүгінгі тапсырмаларды ашу"
 
 #: src/orage-application.c:686
 msgid "Add new appointment"
-msgstr ""
+msgstr "Жаңа кездесуді қосу"
 
 #: src/orage-application.c:695
 msgid "Show preferences form"
-msgstr ""
+msgstr "Баптаулар формасын көрсету"
 
 #: src/orage-application.c:704
 msgid "Make Orage visible/unvisible"
-msgstr ""
+msgstr "Orage-ді көрінетін/көрінбейтін қылу"
 
 #: src/orage-application.c:713
 msgid "Add a foreign file"
-msgstr ""
+msgstr "Сыртқы файлды қосу"
 
 #: src/orage-application.c:722
 msgid "Remove a foreign file"
-msgstr ""
+msgstr "Сыртқы файлды өшіру"
 
 #: src/orage-application.c:731
 msgid "Import appointments from file to Orage"
-msgstr ""
+msgstr "Кездесулерді файлдан Orage-ге импорттау"
 
 #: src/orage-application.c:740
 msgid "Export appointments from Orage to file"
-msgstr ""
+msgstr "Кездесулерді Orage-ден файлға экспорттау"
 
 #: src/orage-application.c:749
 msgid "Show version of Orage"
-msgstr ""
+msgstr "Orage нұсқасын көрсету"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -566,7 +599,7 @@ msgstr "Соңы"
 
 #: src/orage-appointment-window.c:544 src/orage-window-next.c:883
 msgid "Due"
-msgstr ""
+msgstr "Мерзімі"
 
 #: src/orage-appointment-window.c:939
 msgid "Sound Files"
@@ -574,7 +607,7 @@ msgstr "Дыбыс файлдары"
 
 #: src/orage-appointment-window.c:980
 msgid "The appointment information has been modified."
-msgstr ""
+msgstr "Кездесу туралы ақпарат өзгертілді."
 
 #: src/orage-appointment-window.c:982
 msgid "No, do not leave"
@@ -582,11 +615,11 @@ msgstr "Жоқ, кетпеу"
 
 #: src/orage-appointment-window.c:983
 msgid "Yes, ignore modifications and leave"
-msgstr ""
+msgstr "Иә, өзгерістерді елемеу және шығу"
 
 #: src/orage-appointment-window.c:1012
 msgid "The end of this appointment is earlier than the beginning."
-msgstr ""
+msgstr "Бұл кездесудің аяқталуы басталуынан ертерек."
 
 #: src/orage-appointment-window.c:1425 src/orage-appointment-window.c:2232
 msgid "Not set"
@@ -594,148 +627,152 @@ msgstr "Орнатылмаған"
 
 #: src/orage-appointment-window.c:1470
 msgid "Add new appointment to this file."
-msgstr ""
+msgstr "Бұл файлға жаңа кездесуді қосу."
 
 #: src/orage-appointment-window.c:1471 src/orage-appointment-window.c:1532
 msgid "Orage default file"
-msgstr ""
+msgstr "Orage әдепкі файлы"
 
 #: src/orage-appointment-window.c:1577
 msgid "Appointment addition failed."
-msgstr ""
+msgstr "Кездесу қосу сәтсіз аяқталды."
 
 #: src/orage-appointment-window.c:1578
 msgid ""
 "Error happened when adding appointment. Look more details from the log file."
 msgstr ""
+"Кездесу қосу кезінде қате орын алды. Толығырақ ақпаратты журнал файлынан "
+"қараңыз."
 
 #: src/orage-appointment-window.c:1591
 msgid "Appointment update failed."
-msgstr ""
+msgstr "Кездесуді жаңарту сәтсіз аяқталды."
 
 #: src/orage-appointment-window.c:1592
 msgid ""
 "Look more details from the log file. (Perhaps file was updated external from"
 " Orage?)"
 msgstr ""
+"Толығырақ ақпаратты журнал файлынан қараңыз. (Файл Orage-ден тыс жерде "
+"жаңартылған болуы мүмкін бе?)"
 
 #: src/orage-appointment-window.c:1644
 msgid "This appointment will be permanently removed."
-msgstr ""
+msgstr "Бұл кездесу біржола өшіріледі."
 
 #: src/orage-appointment-window.c:1647
 msgid "Yes, remove it"
-msgstr ""
+msgstr "Иә, оны өшіру"
 
 #: src/orage-appointment-window.c:2184
 msgid "This appointment does not exist."
-msgstr ""
+msgstr "Бұл кездесу жоқ."
 
 #: src/orage-appointment-window.c:2185
 msgid "It was probably removed, please refresh your screen."
-msgstr ""
+msgstr "Ол өшірілген болуы мүмкін, экранды жаңартыңыз."
 
 #: src/orage-appointment-window.c:2397
 msgid "Current categories"
-msgstr ""
+msgstr "Ағымдағы санаттар"
 
 #: src/orage-appointment-window.c:2419
 msgid "Add new category with color"
-msgstr ""
+msgstr "Түсі бар жаңа санатты қосу"
 
 #: src/orage-appointment-window.c:2428
 msgid "Category:"
-msgstr "Санат: "
+msgstr "Санат:"
 
 #: src/orage-appointment-window.c:2471
 msgid "Colors of categories - Orage"
-msgstr ""
+msgstr "Санаттар түстері - Orage"
 
 #: src/orage-appointment-window.c:2517
 msgid "*** COPY ***"
-msgstr ""
+msgstr "*** КӨШІРМЕ ***"
 
 #: src/orage-appointment-window.c:2570 src/orage-appointment-window.c:3869
 msgid "Before Start"
-msgstr ""
+msgstr "Басталғанға дейін"
 
 #: src/orage-appointment-window.c:2570 src/orage-appointment-window.c:3869
 msgid "Before End"
-msgstr ""
+msgstr "Аяқталғанға дейін"
 
 #: src/orage-appointment-window.c:2570 src/orage-appointment-window.c:3870
 msgid "After Start"
-msgstr ""
+msgstr "Басталғаннан кейін"
 
 #: src/orage-appointment-window.c:2570 src/orage-appointment-window.c:3870
 msgid "After End"
-msgstr ""
+msgstr "Аяқталғаннан кейін"
 
 #. window title
 #: src/orage-appointment-window.c:2887
 msgid "New appointment - Orage"
-msgstr ""
+msgstr "Жаңа кездесу - Orage"
 
 #: src/orage-appointment-window.c:2920
 msgid "Sav_e and close"
-msgstr ""
+msgstr "Сақ_тау және жабу"
 
 #: src/orage-appointment-window.c:3235
 msgid "first"
-msgstr ""
+msgstr "бірінші"
 
 #: src/orage-appointment-window.c:3235
 msgid "second"
-msgstr ""
+msgstr "секунд"
 
 #: src/orage-appointment-window.c:3235
 msgid "third"
-msgstr ""
+msgstr "үшінші"
 
 #: src/orage-appointment-window.c:3235
 msgid "fourth"
-msgstr ""
+msgstr "төртінші"
 
 #: src/orage-appointment-window.c:3235
 msgid "last"
-msgstr ""
+msgstr "соңғы"
 
 #: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
 msgid "Monday"
-msgstr ""
+msgstr "Дүйсенбі"
 
 #: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
 msgid "Tuesday"
-msgstr ""
+msgstr "Сейсенбі"
 
 #: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
 msgid "Wednesday"
-msgstr ""
+msgstr "Сәрсенбі"
 
 #: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
 msgid "Thursday"
-msgstr ""
+msgstr "Бейсенбі"
 
 #: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
 msgid "Friday"
-msgstr ""
+msgstr "Жұма"
 
 #: src/orage-appointment-window.c:3246 src/orage-month-view.c:285
 msgid "Saturday"
-msgstr ""
+msgstr "Сенбі"
 
 #: src/orage-appointment-window.c:3246 src/orage-month-view.c:285
 msgid "Sunday"
-msgstr ""
+msgstr "Жексенбі"
 
 #: src/orage-appointment-window.c:3259 src/orage-appointment-window.c:3292
 #: src/orage-appointment-window.c:3399 src/orage-appointment-window.c:3433
 msgid "Every"
-msgstr ""
+msgstr "Әр"
 
 #: src/orage-appointment-window.c:3264
 msgid "day(s)"
-msgstr ""
+msgstr "күн(дер)"
 
 #: src/orage-appointment-window.c:3281
 msgid "Mon"
@@ -767,67 +804,67 @@ msgstr "Күн"
 
 #: src/orage-appointment-window.c:3299
 msgid "week(s) on:"
-msgstr ""
+msgstr "апта(лар):"
 
 #: src/orage-appointment-window.c:3335
 msgid "From the beginning of the month:"
-msgstr ""
+msgstr "Айдың басынан бастап:"
 
 #: src/orage-appointment-window.c:3348
 msgid "From the end of the month:"
-msgstr ""
+msgstr "Айдың соңынан бастап:"
 
 #: src/orage-appointment-window.c:3361
 msgid "Every:"
-msgstr ""
+msgstr "Әр:"
 
 #: src/orage-appointment-window.c:3389
 msgid "January"
-msgstr ""
+msgstr "Қаңтар"
 
 #: src/orage-appointment-window.c:3389
 msgid "February"
-msgstr ""
+msgstr "Ақпан"
 
 #: src/orage-appointment-window.c:3389
 msgid "March"
-msgstr ""
+msgstr "Наурыз"
 
 #: src/orage-appointment-window.c:3389
 msgid "April"
-msgstr ""
+msgstr "Сәуір"
 
 #: src/orage-appointment-window.c:3389
 msgid "May"
-msgstr ""
+msgstr "Мамыр"
 
 #: src/orage-appointment-window.c:3390
 msgid "June"
-msgstr ""
+msgstr "Маусым"
 
 #: src/orage-appointment-window.c:3390
 msgid "July"
-msgstr ""
+msgstr "Шілде"
 
 #: src/orage-appointment-window.c:3390
 msgid "August"
-msgstr ""
+msgstr "Тамыз"
 
 #: src/orage-appointment-window.c:3390
 msgid "September"
-msgstr ""
+msgstr "Қыркүйек"
 
 #: src/orage-appointment-window.c:3390
 msgid "October"
-msgstr ""
+msgstr "Қазан"
 
 #: src/orage-appointment-window.c:3391
 msgid "November"
-msgstr ""
+msgstr "Қараша"
 
 #: src/orage-appointment-window.c:3391
 msgid "December"
-msgstr ""
+msgstr "Желтоқсан"
 
 #. TRANSLATORS: this string is part of date line, for example
 #. * "second Thursday of August". In some languages ​​it is not necessary to
@@ -835,15 +872,15 @@ msgstr ""
 #. * the string "of", it can be replaced with an empty string.
 #: src/orage-appointment-window.c:3407
 msgid "of"
-msgstr ""
+msgstr "ішінен"
 
 #: src/orage-appointment-window.c:3438
 msgid "hour(s)"
-msgstr ""
+msgstr "сағат(тар)"
 
 #: src/orage-appointment-window.c:3474
 msgid "Repeat forever"
-msgstr ""
+msgstr "Әрқашан қайталау"
 
 #: src/orage-appointment-window.c:3479
 msgid "Repeat"
@@ -851,11 +888,11 @@ msgstr "Қайталау"
 
 #: src/orage-appointment-window.c:3487 src/orage-appointment-window.c:3985
 msgid "times"
-msgstr ""
+msgstr "рет"
 
 #: src/orage-appointment-window.c:3493
 msgid "Repeat until"
-msgstr ""
+msgstr "Мынаған дейін қайталау"
 
 #. start time
 #: src/orage-appointment-window.c:3511 src/orage-appointment-window.c:3637
@@ -874,12 +911,16 @@ msgid ""
 "TODO reoccurs regularly starting on start time and repeating after each "
 "interval no matter when it was last completed"
 msgstr ""
+"TODO басталу уақытынан бастап жүйелі түрде қайталанады және соңғы рет қашан "
+"аяқталғанына қарамастан әр интервал сайын қайталанады"
 
 #: src/orage-appointment-window.c:3521
 msgid ""
 "TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
 msgstr ""
+"TODO қайталануы аяқталу уақытына негізделген және соңғы аяқталған уақыттан бастап есептелетін интервалдан кейін қайталанады.\n"
+"(Назар аударыңыз, әрбір аяқталудан кейін қайталану негізі өзгеретіндіктен, TODO тарихы туралы ештеңе айта алмайсыз.)"
 
 #: src/orage-appointment-window.c:3547
 msgid "Save"
@@ -887,7 +928,7 @@ msgstr "Сақтау"
 
 #: src/orage-appointment-window.c:3549
 msgid "Save and close"
-msgstr ""
+msgstr "Сақтау және жабу"
 
 #: src/orage-appointment-window.c:3554
 msgid "Revert"
@@ -915,18 +956,24 @@ msgid ""
 "Event that will happen sometime. For example:\n"
 "Meeting or birthday or TV show."
 msgstr ""
+"Бір уақытта болатын оқиға. Мысалы:\n"
+"Кездесу немесе туған күн немесе телешоу."
 
 #: src/orage-appointment-window.c:3604
 msgid ""
 "Something that you should do sometime. For example:\n"
 "Wash your car or test new version of Orage."
 msgstr ""
+"Бір уақытта істеуіңіз керек нәрсе. Мысалы:\n"
+"Көлігіңізді жуу немесе Orage бағдарламасының жаңа нұсқасын сынау."
 
 #: src/orage-appointment-window.c:3612
 msgid ""
 "Make a note that something happened. For example:\n"
 "Remark that your mother called or first snow came."
 msgstr ""
+"Бірдеңе болғаны туралы жазба жасау. Мысалы:\n"
+"Анаңыздың қоңырау шалғаны немесе бірінші қар жауғаны туралы ескертпе."
 
 #. location
 #: src/orage-appointment-window.c:3624 src/orage-window-next.c:848
@@ -936,11 +983,11 @@ msgstr "Орналасуы"
 
 #: src/orage-appointment-window.c:3632
 msgid "All day event"
-msgstr ""
+msgstr "Күні бойғы оқиға"
 
 #: src/orage-appointment-window.c:3655
 msgid "Set"
-msgstr ""
+msgstr "Орнату"
 
 #: src/orage-appointment-window.c:3679
 msgid "Duration"
@@ -959,7 +1006,7 @@ msgstr "сағат"
 #: src/orage-appointment-window.c:3687 src/orage-appointment-window.c:3891
 #: src/reminder.c:606
 msgid "mins"
-msgstr ""
+msgstr "мин"
 
 #. Availability (only for EVENT)
 #: src/orage-appointment-window.c:3698
@@ -980,14 +1027,16 @@ msgid ""
 "This is special category, which can be used to color this appointment in "
 "list views."
 msgstr ""
+"Бұл тізім көріністерінде осы кездесуді бояу үшін пайдалануға болатын арнайы "
+"категория."
 
 #: src/orage-appointment-window.c:3752
 msgid "_Colour"
-msgstr ""
+msgstr "_Түс"
 
 #: src/orage-appointment-window.c:3757
 msgid "update colors for categories."
-msgstr ""
+msgstr "категориялар үшін түстерді жаңарту."
 
 #. priority
 #: src/orage-appointment-window.c:3763
@@ -1001,6 +1050,10 @@ msgid ""
 "(Alarms will still fire normally.)\n"
 "(There is undocumented parameter so that you can change the default limit of 8.)"
 msgstr ""
+"Егер сіз оны 8 немесе одан да үлкен етіп орнатсаңыз, кездесу тізім терезелерінде КӨРСЕТІЛМЕЙДІ.\n"
+"Тізім терезелерін ретке келтіру үшін бұл мүмкіндікті пайдалануға болады, бірақ бұл кездесуді табуды қиындатады.\n"
+"(Дабылдар әдеттегідей жұмыс істей береді.)\n"
+"(8-ге тең әдепкі шекті өзгертуге мүмкіндік беретін құжатталмаған параметр бар.)"
 
 #. note
 #: src/orage-appointment-window.c:3775 src/orage-window-next.c:858
@@ -1018,6 +1071,14 @@ msgid ""
 "    <&Ynnnn> is translated to current year minus nnnn.\n"
 "(This can be used for example in birthday reminders to tell how old the person will be.)"
 msgstr ""
+"Бұл қысқа пәрмендер дереу күшіне енеді:\n"
+"    <D> ағымдағы күнді жергілікті күн пішімінде кірістіреді\n"
+"    <T> уақытты кірістіреді\n"
+"    <DT> күн мен уақытты кірістіреді.\n"
+"\n"
+"Бұлар кейінірек көрінген кезде ғана түрлендіріледі:\n"
+"    <&Ynnnn> ағымдағы жылдан nnnn азайтылған мәнге аударылады.\n"
+"(Бұл, мысалы, туған күн туралы ескертулерде адамның неше жаста болатынын айту үшін пайдаланылуы мүмкін.)"
 
 #: src/orage-appointment-window.c:3878
 msgid "Alarm"
@@ -1026,7 +1087,7 @@ msgstr "Оятқыш"
 #. **** ALARM TIME ****
 #: src/orage-appointment-window.c:3884
 msgid "Alarm time"
-msgstr ""
+msgstr "Дабыл уақыты"
 
 #: src/orage-appointment-window.c:3908
 msgid ""
@@ -1035,16 +1096,22 @@ msgid ""
 " 2) before Todo end\n"
 " 3) after Todo start"
 msgstr ""
+"Жиі дабыл алғыңыз келеді:\n"
+" 1) Оқиға басталғанға дейін\n"
+" 2) Todo аяқталғанға дейін\n"
+" 3) Todo басталғаннан кейін"
 
 #: src/orage-appointment-window.c:3913
 msgid "Persistent alarm"
-msgstr ""
+msgstr "Тұрақты дабыл"
 
 #: src/orage-appointment-window.c:3918
 msgid ""
 "Select this if you want Orage to remind you even if it has not been active "
 "when the alarm happened."
 msgstr ""
+"Егер Orage дабыл болған кезде белсенді болмаса да, оның сізге ескерткенін "
+"қаласаңыз, осыны таңдаңыз."
 
 #: src/orage-appointment-window.c:3927
 msgid "Sound"
@@ -1056,40 +1123,40 @@ msgstr "Қолдану"
 
 #: src/orage-appointment-window.c:3936
 msgid "Select this if you want audible alarm"
-msgstr ""
+msgstr "Дыбыстық дабылды қаласаңыз, осыны таңдаңыз"
 
 #: src/orage-appointment-window.c:3941
 msgid "Sound command is not set"
-msgstr ""
+msgstr "Дыбыстық команда орнатылмаған"
 
 #: src/orage-appointment-window.c:3970
 msgid "Repeat alarm sound"
-msgstr ""
+msgstr "Дабыл дыбысын қайталау"
 
 #: src/orage-appointment-window.c:4001
 msgid "sec interval"
-msgstr ""
+msgstr "сек аралығы"
 
 #. **** Display Alarm ****
 #: src/orage-appointment-window.c:4010
 msgid "Visual"
-msgstr ""
+msgstr "Визуалды"
 
 #: src/orage-appointment-window.c:4014
 msgid "Use Orage window"
-msgstr ""
+msgstr "Orage терезесін қолдану"
 
 #: src/orage-appointment-window.c:4016
 msgid "Select this if you want Orage window alarm"
-msgstr ""
+msgstr "Orage терезелік дабылын қаласаңыз, осыны таңдаңыз"
 
 #: src/orage-appointment-window.c:4028
 msgid "Use notification"
-msgstr ""
+msgstr "Хабарландыруды қолдану"
 
 #: src/orage-appointment-window.c:4030
 msgid "Select this if you want notification alarm"
-msgstr ""
+msgstr "Хабарландыру дабылын қаласаңыз, осыны таңдаңыз"
 
 #: src/orage-appointment-window.c:4038
 msgid "Set timeout"
@@ -1098,10 +1165,12 @@ msgstr "Таймаут орнату"
 #: src/orage-appointment-window.c:4040
 msgid "Select this if you want notification to expire automatically"
 msgstr ""
+"Хабарландырудың мерзімі автоматты түрде аяқталғанын қаласаңыз, осыны "
+"таңдаңыз"
 
 #: src/orage-appointment-window.c:4051
 msgid "0 = system default expiration time"
-msgstr ""
+msgstr "0 = жүйенің әдепкі мерзімі аяқталу уақыты"
 
 #: src/orage-appointment-window.c:4059
 msgid "seconds"
@@ -1110,11 +1179,11 @@ msgstr "секунд"
 #. **** Procedure Alarm ****
 #: src/orage-appointment-window.c:4069
 msgid "Procedure"
-msgstr ""
+msgstr "Процедура"
 
 #: src/orage-appointment-window.c:4075
 msgid "Select this if you want procedure or script alarm"
-msgstr ""
+msgstr "Процедура немесе скрипт дабылын қаласаңыз, осыны таңдаңыз"
 
 #: src/orage-appointment-window.c:4086
 msgid ""
@@ -1127,18 +1196,26 @@ msgid ""
 "\t<&ST> appointment start time\n"
 "\t<&ET> appointment end time"
 msgstr ""
+"Барлық экрандау т.б. таңбаларын өзіңіз енгізуіңіз керек.\n"
+"Бұл жол өңдеу үшін қоршамға беріледі.\n"
+"Келесі арнайы командалар орындалу уақытында ауыстырылады:\n"
+"\t<&T>  кездесу атауы\n"
+"\t<&D>  кездесу сипаттамасы\n"
+"\t<&AT> дабыл уақыты\n"
+"\t<&ST> кездесудің басталу уақыты\n"
+"\t<&ET> кездесудің аяқталу уақыты"
 
 #: src/orage-appointment-window.c:4101
 msgid "Test this alarm by raising it now"
-msgstr ""
+msgstr "Бұл дабылды қазір іске қосу арқылы тексеру"
 
 #: src/orage-appointment-window.c:4114
 msgid "<b>Default alarm</b>"
-msgstr ""
+msgstr "<b>Әдепкі дабыл</b>"
 
 #: src/orage-appointment-window.c:4129
 msgid "Store current settings as default alarm"
-msgstr ""
+msgstr "Ағымдағы баптауларды әдепкі дабыл ретінде сақтау"
 
 #: src/orage-appointment-window.c:4131
 msgid "_Revert"
@@ -1146,7 +1223,7 @@ msgstr "Қайта_ру"
 
 #: src/orage-appointment-window.c:4140
 msgid "Set current settings from default alarm"
-msgstr ""
+msgstr "Ағымдағы баптауларды әдепкі дабылдан орнату"
 
 #: src/orage-appointment-window.c:4205
 msgid "None"
@@ -1158,23 +1235,23 @@ msgstr "Күнде"
 
 #: src/orage-appointment-window.c:4205
 msgid "Weekly"
-msgstr ""
+msgstr "Апта сайын"
 
 #: src/orage-appointment-window.c:4206
 msgid "Monthly"
-msgstr ""
+msgstr "Ай сайын"
 
 #: src/orage-appointment-window.c:4206
 msgid "Yearly"
-msgstr ""
+msgstr "Жыл сайын"
 
 #: src/orage-appointment-window.c:4206
 msgid "Hourly"
-msgstr ""
+msgstr "Сағат сайын"
 
 #: src/orage-appointment-window.c:4221
 msgid "Recurrence"
-msgstr ""
+msgstr "Қайталануы"
 
 #. ****************************** Frequency *******************************
 #: src/orage-appointment-window.c:4228
@@ -1189,7 +1266,7 @@ msgstr "Шегі"
 #. ****************************** TODO base (only for TODOs) **************
 #: src/orage-appointment-window.c:4275
 msgid "TODO base"
-msgstr ""
+msgstr "Істер тізімінің негізі"
 
 #. exceptions
 #: src/orage-appointment-window.c:4282
@@ -1202,77 +1279,82 @@ msgid ""
 "Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
 "Remove by clicking the data."
 msgstr ""
+"Төмендегі күнтізбе күндерін шерту арқылы көбірек ерекше күндерді қосыңыз.\n"
+"Ерекшелік таңдауға байланысты не алып тастау(-) немесе қосу(+) болып табылады.\n"
+"Мәліметті шерту арқылы өшіріңіз."
 
 #: src/orage-appointment-window.c:4319
 msgid "Add excluded date (-)"
-msgstr ""
+msgstr "Алып тасталған күнді қосу (-)"
 
 #: src/orage-appointment-window.c:4321
 msgid "Excluded days are full days where this appointment is not happening"
-msgstr ""
+msgstr "Алып тасталған күндер - бұл кездесу өтпейтін толық күндер"
 
 #: src/orage-appointment-window.c:4328
 msgid "Add included time (+)"
-msgstr ""
+msgstr "Қосылған уақытты қосу (+)"
 
 #: src/orage-appointment-window.c:4330
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time"
 msgstr ""
+"Қосылған уақыттардың уақыт белдеуі басталу уақытымен бірдей, бірақ олардың "
+"уақыты әртүрлі болуы мүмкін"
 
 #. calendars showing the action days
 #: src/orage-appointment-window.c:4349
 msgid "Action dates"
-msgstr ""
+msgstr "Әрекет күндері"
 
 #: src/orage-import.c:106
 msgid "<b>Summary</b>"
-msgstr ""
+msgstr "<b>Қорытынды</b>"
 
 #: src/orage-import.c:117
 msgid "<b>Type</b>"
-msgstr ""
+msgstr "<b>Түрі</b>"
 
 #: src/orage-import.c:132
 msgid "<b>Location</b>"
-msgstr ""
+msgstr "<b>Орналасуы</b>"
 
 #: src/orage-import.c:147
 msgid "<b>URL</b>"
-msgstr ""
+msgstr "<b>URL</b>"
 
 #: src/orage-import.c:166
 msgid "<b>All-day</b>"
-msgstr ""
+msgstr "<b>Күні бойы</b>"
 
 #: src/orage-import.c:181
 msgid "<b>From</b>"
-msgstr ""
+msgstr "<b>Бастап</b>"
 
 #: src/orage-import.c:196
 msgid "<b>To</b>"
-msgstr ""
+msgstr "<b>Дейін</b>"
 
 #: src/orage-import.c:210
 msgid "<b>Recurring</b>"
-msgstr ""
+msgstr "<b>Қайталанатын</b>"
 
 #: src/orage-import.c:213
 msgid "Yes"
-msgstr ""
+msgstr "Иә"
 
 #: src/orage-import.c:213
 msgid "No"
-msgstr ""
+msgstr "Жоқ"
 
 #: src/orage-import.c:259
 msgid "Import calendar file"
-msgstr ""
+msgstr "Күнтізбе файлын импорттау"
 
 #: src/orage-import.c:261
 msgid "_Import"
-msgstr ""
+msgstr "_Импорттау"
 
 #: src/orage-import.c:270
 msgid "_Cancel"
@@ -1284,40 +1366,40 @@ msgstr "_Бас тарту"
 #. * use "%Y %B" instead.
 #: src/orage-month-view.c:217
 msgid "%B %Y"
-msgstr ""
+msgstr "%B %Y"
 
 #. Setup title row.
 #: src/orage-month-view.c:485 src/orage-window-next.c:1106
 msgid "Week"
-msgstr ""
+msgstr "Апта"
 
 #: src/orage-sync-edit-dialog.c:132
 msgid "Description:"
-msgstr ""
+msgstr "Сипаттамасы:"
 
 #: src/orage-sync-edit-dialog.c:134
 msgid "Command:"
-msgstr ""
+msgstr "Команда:"
 
 #: src/orage-sync-edit-dialog.c:136
 msgid "Period:"
-msgstr ""
+msgstr "Кезең:"
 
 #: src/orage-sync-edit-dialog.c:138
 msgid "minutes"
-msgstr ""
+msgstr "минут"
 
 #: src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task"
-msgstr ""
+msgstr "Бұл синхрондау тапсырмасының аты немесе сипаттамасы"
 
 #: src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization"
-msgstr ""
+msgstr "Синхрондау командасы"
 
 #: src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes"
-msgstr ""
+msgstr "Минутпен берілген синхрондау кезеңі"
 
 #: src/orage-sync-edit-dialog.c:166 src/parameters.c:1431 src/reminder.c:638
 msgid "_Close"
@@ -1328,7 +1410,7 @@ msgstr "_Жабу"
 #. * first day of the week, and so on.
 #: src/orage-time-utils.c:264
 msgid "calendar:week_start:0"
-msgstr ""
+msgstr "calendar:week_start:1"
 
 #: src/orage-week-window.c:454
 msgid "Back one week"
@@ -1352,15 +1434,15 @@ msgstr "Белгісіз"
 
 #: src/orage-week-window.c:896
 msgid "Number of days to show"
-msgstr ""
+msgstr "Көрсетілетін күндер саны"
 
 #: src/orage-week-window.c:1212
 msgid "Orage - day view"
-msgstr ""
+msgstr "Orage - күндік көрініс"
 
 #: src/orage-window-classic.c:294 src/orage-window-next.c:135
 msgid "_Exchange data"
-msgstr ""
+msgstr "_Мәліметтермен алмасу"
 
 #. Edit menu
 #: src/orage-window-classic.c:304 src/orage-window-next.c:139
@@ -1369,15 +1451,15 @@ msgstr "Түз_ету"
 
 #: src/orage-window-classic.c:313 src/orage-window-next.c:143
 msgid "View selected _date"
-msgstr ""
+msgstr "Таңдалған _күнді қарау"
 
 #: src/orage-window-classic.c:316 src/orage-window-next.c:144
 msgid "View selected _week"
-msgstr ""
+msgstr "Таңдалған _аптаны қарау"
 
 #: src/orage-window-classic.c:321 src/orage-window-next.c:145
 msgid "Select _Today"
-msgstr ""
+msgstr "_Бүгінді таңдау"
 
 #. Help menu
 #. the rest
@@ -1389,12 +1471,12 @@ msgstr "Кө_мек"
 #: src/orage-window-classic.c:386 src/orage-window-next.c:777
 #: src/reminder.c:967
 msgid "No title defined"
-msgstr ""
+msgstr "Тақырыбы анықталмаған"
 
 #: src/orage-window-classic.c:453
 #, c-format
 msgid " Location: %s\n"
-msgstr ""
+msgstr " Орналасуы: %s\n"
 
 #: src/orage-window-classic.c:466
 #, c-format
@@ -1403,6 +1485,9 @@ msgid ""
 " Note:\n"
 "%s"
 msgstr ""
+"\n"
+" Ескерту:\n"
+"%s"
 
 #: src/orage-window-classic.c:476 src/orage-window-next.c:866
 msgid "Never"
@@ -1416,6 +1501,10 @@ msgid ""
 " Due:\t%s\n"
 " Done:\t%s%s"
 msgstr ""
+"Тақырыбы: %s\n"
+"%s Басталуы:\t%s\n"
+" Мерзімі:\t%s\n"
+" Орындалды:\t%s%s"
 
 #: src/orage-window-classic.c:491
 #, c-format
@@ -1424,36 +1513,39 @@ msgid ""
 "%s Start:\t%s\n"
 " End:\t%s%s"
 msgstr ""
+"Тақырыбы: %s\n"
+"%s Басталуы:\t%s\n"
+" Аяқталуы:\t%s%s"
 
 #: src/orage-window-classic.c:570
 msgid "<b>To do:</b>"
-msgstr ""
+msgstr "<b>Жоспарлар:</b>"
 
 #: src/orage-window-classic.c:607
 #, c-format
 msgid "<b>Events for %s:</b>"
-msgstr ""
+msgstr "<b>%s үшін оқиғалар:</b>"
 
 #: src/orage-window-classic.c:618
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
-msgstr ""
+msgstr "<b>%s - %s үшін оқиғалар:</b>"
 
 #: src/orage-window-next.c:131
 msgid "Create a new appointment"
-msgstr ""
+msgstr "Жаңа кездесуді жасау"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"
-msgstr ""
+msgstr "Сыртқы файлдарды қайта жүктеу"
 
 #: src/orage-window-next.c:135
 msgid "Import/export data"
-msgstr ""
+msgstr "Мәліметтерді импорттау/экспорттау"
 
 #: src/orage-window-next.c:136
 msgid "Close window"
-msgstr ""
+msgstr "Терезені жабу"
 
 #: src/orage-window-next.c:137
 msgid "_Quit"
@@ -1461,7 +1553,7 @@ msgstr "_Шығу"
 
 #: src/orage-window-next.c:137
 msgid "Quit program"
-msgstr ""
+msgstr "Бағдарламадан шығу"
 
 #: src/orage-window-next.c:140
 msgid "_Preferences"
@@ -1473,15 +1565,15 @@ msgstr "Orage баптаулары"
 
 #: src/orage-window-next.c:143
 msgid "View selected date"
-msgstr ""
+msgstr "Таңдалған күнді қарау"
 
 #: src/orage-window-next.c:145
 msgid "Go to today"
-msgstr ""
+msgstr "Бүгінге өту"
 
 #: src/orage-window-next.c:148
 msgid "Display Orage user manual"
-msgstr ""
+msgstr "Orage пайдаланушы нұсқаулығын көрсету"
 
 #: src/orage-window-next.c:149
 msgid "_About"
@@ -1489,25 +1581,25 @@ msgstr "Осы т_уралы"
 
 #: src/orage-window-next.c:149
 msgid "Display information about Orage"
-msgstr ""
+msgstr "Orage туралы ақпаратты көрсету"
 
 #: src/orage-window-next.c:366
 msgid "New event"
-msgstr ""
+msgstr "Жаңа оқиға"
 
 #: src/orage-window-next.c:444
 #, c-format
 msgid "Events for %s:"
-msgstr ""
+msgstr "%s үшін оқиғалар:"
 
 #: src/orage-window-next.c:450
 #, c-format
 msgid "Events for %s - %s:"
-msgstr ""
+msgstr "%s - %s үшін оқиғалар:"
 
 #: src/orage-window-next.c:650
 msgid "To do:"
-msgstr ""
+msgstr "Жасау керек:"
 
 #: src/orage-window-next.c:1070
 msgid "Previous"
@@ -1519,27 +1611,27 @@ msgstr "Келесі"
 
 #: src/orage-window-next.c:1104
 msgid "Day"
-msgstr ""
+msgstr "Күн"
 
 #: src/orage-window-next.c:1109
 msgid "Month"
-msgstr ""
+msgstr "Ай"
 
 #: src/orage-window-next.c:1112
 msgid "Year"
-msgstr ""
+msgstr "Жыл"
 
 #: src/parameters.c:646
 msgid "Remove selected synchronization task."
-msgstr ""
+msgstr "Таңдалған синхрондау тапсырмасын өшіру."
 
 #: src/parameters.c:649
 msgid "Yes, remove"
-msgstr ""
+msgstr "Иә, өшіру"
 
 #: src/parameters.c:685
 msgid "Main settings"
-msgstr ""
+msgstr "Негізгі баптаулар"
 
 #: src/parameters.c:691
 msgid "Timezone"
@@ -1547,43 +1639,44 @@ msgstr "Уақыт белдеуі"
 
 #: src/parameters.c:713
 msgid "You should always define your local timezone."
-msgstr ""
+msgstr "Жергілікті уақыт белдеуін әрқашан анықтауыңыз керек."
 
 #: src/parameters.c:721
 msgid "Archive threshold (months)"
-msgstr ""
+msgstr "Архивтеу шегі (айлар)"
 
 #: src/parameters.c:734
 msgid "(0 = no archiving)"
-msgstr ""
+msgstr "(0 = архивтеу жоқ)"
 
 #: src/parameters.c:738
 msgid "Archiving is used to save time and space when handling events."
 msgstr ""
+"Архивтеу оқиғаларды өңдеу кезінде уақыт пен орынды үнемдеу үшін қолданылады."
 
 #: src/parameters.c:746
 msgid "Sound command"
-msgstr ""
+msgstr "Дыбыс командасы"
 
 #: src/parameters.c:774
 msgid "This command is given to shell to make sound in alarms."
-msgstr ""
+msgstr "Бұл команда дабылдарда дыбыс шығару үшін қоршамға беріледі."
 
 #: src/parameters.c:805
 msgid "Calendar window"
-msgstr ""
+msgstr "Күнтізбе терезесі"
 
 #: src/parameters.c:812
 msgid "Calendar visual details"
-msgstr ""
+msgstr "Күнтізбенің визуалды мәліметтері"
 
 #: src/parameters.c:819
 msgid "Use new user interface"
-msgstr ""
+msgstr "Жаңа пайдаланушы интерфейсін қолдану"
 
 #: src/parameters.c:821
 msgid "Enable the new interface layout (requires restart)"
-msgstr ""
+msgstr "Жаңа интерфейс жаймасын іске қосу (қайта іске қосуды талап етеді)"
 
 #: src/parameters.c:826
 msgid "Show borders"
@@ -1595,59 +1688,59 @@ msgstr "Мәзірді көрсету"
 
 #: src/parameters.c:840
 msgid "Show day names"
-msgstr ""
+msgstr "Күн аттарын көрсету"
 
 #: src/parameters.c:849
 msgid "Show week numbers"
-msgstr ""
+msgstr "Апта нөмірлерін көрсету"
 
 #: src/parameters.c:854
 msgid "Show month and year"
-msgstr ""
+msgstr "Ай мен жылды көрсету"
 
 #: src/parameters.c:878
 msgid "Calendar info boxes"
-msgstr ""
+msgstr "Күнтізбе ақпараттық блоктары"
 
 #: src/parameters.c:885
 msgid "Show todo list"
-msgstr ""
+msgstr "Жасалатын істер тізімін көрсету"
 
 #: src/parameters.c:892
 msgid "Number of days to show in event window"
-msgstr ""
+msgstr "Оқиғалар терезесінде көрсетілетін күндер саны"
 
 #: src/parameters.c:900
 msgid "0 = do not show event list at all"
-msgstr ""
+msgstr "0 = оқиғалар тізімін мүлдем көрсетпеу"
 
 #: src/parameters.c:914
 msgid "Calendar visibility"
-msgstr ""
+msgstr "Күнтізбенің көрінуі"
 
 #: src/parameters.c:920
 msgid "Show on all desktops"
-msgstr ""
+msgstr "Барлық жұмыс үстелдерінде көрсету"
 
 #: src/parameters.c:925
 msgid "Keep on top"
-msgstr ""
+msgstr "Үстінде ұстау"
 
 #: src/parameters.c:933
 msgid "Show in taskbar"
-msgstr ""
+msgstr "Тапсырмалар панелінде көрсету"
 
 #: src/parameters.c:938
 msgid "Show in pager"
-msgstr ""
+msgstr "Пейджерде көрсету"
 
 #: src/parameters.c:946
 msgid "Show in systray"
-msgstr ""
+msgstr "Жүйелік трейде көрсету"
 
 #: src/parameters.c:974
 msgid "Calendar start"
-msgstr ""
+msgstr "Күнтізбенің іске қосылуы"
 
 #: src/parameters.c:980
 msgid "Show"
@@ -1663,91 +1756,94 @@ msgstr "Қайырылған"
 
 #: src/parameters.c:1039
 msgid "On calendar window open"
-msgstr ""
+msgstr "Күнтізбе терезесі ашылғанда"
 
 #: src/parameters.c:1045
 msgid "Select today's date"
-msgstr ""
+msgstr "Бүгінгі күнді таңдау"
 
 #: src/parameters.c:1062
 msgid "Select previously selected date"
-msgstr ""
+msgstr "Алдыңғы таңдалған күнді таңдау"
 
 #: src/parameters.c:1086
 msgid "Calendar day double click shows"
-msgstr ""
+msgstr "Күнтізбе күніне екі рет шерту көрсетеді"
 
 #: src/parameters.c:1092
 msgid "Days view"
-msgstr ""
+msgstr "Күндер көрінісі"
 
 #: src/parameters.c:1108
 msgid "Event list"
-msgstr ""
+msgstr "Оқиғалар тізімі"
 
 #: src/parameters.c:1141
 msgid "Extra settings"
-msgstr ""
+msgstr "Қосымша баптаулар"
 
 #: src/parameters.c:1148
 msgid "Event list window"
-msgstr ""
+msgstr "Оқиғалар тізімі терезесі"
 
 #: src/parameters.c:1155
 msgid "Number of extra days to show in event list"
-msgstr ""
+msgstr "Оқиғалар тізімінде көрсетілетін қосымша күндер саны"
 
 #: src/parameters.c:1165
 msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
-msgstr ""
+msgstr "Бұл тек әдепкі мән, оны оқиғалар тізімі терезесінде өзгертуге болады."
 
 #: src/parameters.c:1173
 msgid "Show only first repeating event"
-msgstr ""
+msgstr "Тек бірінші қайталанатын оқиғаны көрсету"
 
 #: src/parameters.c:1190
 msgid "Day view window default first day"
-msgstr ""
+msgstr "Күндік көрініс терезесінің әдепкі бірінші күні"
 
 #: src/parameters.c:1197
 msgid "First day of week"
-msgstr ""
+msgstr "Аптаның бірінші күні"
 
 #: src/parameters.c:1214
 msgid "Selected day"
-msgstr ""
+msgstr "Таңдалған күн"
 
 #: src/parameters.c:1237 src/parameters.c:1244
 msgid "Use wakeup timer"
-msgstr ""
+msgstr "Ояну таймерін қолдану"
 
 #: src/parameters.c:1252
 msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
 msgstr ""
+"Егер Orage ұйықтату немесе гибернация режимінен кейін дұрыс оянбаса, осы "
+"таймерді қолданыңыз. (Мысалы, трей таңбашасы жаңартылмаса немесе дабылдар "
+"іске қосылмаса.)"
 
 #: src/parameters.c:1262
 msgid "Foreign file default visual alarm"
-msgstr ""
+msgstr "Сыртқы файлдың әдепкі визуалды дабылы"
 
 #: src/parameters.c:1269
 msgid "Orage window"
-msgstr ""
+msgstr "Orage терезесі"
 
 #: src/parameters.c:1286
 msgid "Notify notification"
-msgstr ""
+msgstr "Хабарлау хабарламасы"
 
 #: src/parameters.c:1309
 msgid "Always quit when asked to close"
-msgstr ""
+msgstr "Жабу сұралғанда әрқашан шығу"
 
 #: src/parameters.c:1316
 msgid "Always quit"
-msgstr ""
+msgstr "Әрқашан шығу"
 
 #: src/parameters.c:1323
 msgid ""
@@ -1755,14 +1851,16 @@ msgid ""
 "option changes Orage to quit and never stay in background when it is asked "
 "to close."
 msgstr ""
+"Әдепкі бойынша жабу сұралғанда Orage фонда ашық қалады. Бұл опция жабу "
+"сұралғанда Orage-ді шығатын және фонда ешқашан қалмайтын етіп өзгертеді."
 
 #: src/parameters.c:1376
 msgid "Synchronization settings"
-msgstr ""
+msgstr "Синхрондау баптаулары"
 
 #: src/parameters.c:1382
 msgid "Synchronization sources"
-msgstr ""
+msgstr "Синхрондау көздері"
 
 #: src/parameters.c:1408 org.xfce.orage.desktop.in:26
 msgid "Orage Preferences"
@@ -1770,7 +1868,7 @@ msgstr "Orage баптаулары"
 
 #: src/reminder.c:417
 msgid "Reminder"
-msgstr ""
+msgstr "Еске салғыш"
 
 #: src/reminder.c:440
 msgid "Open"
@@ -1778,27 +1876,27 @@ msgstr "Ашу"
 
 #: src/reminder.c:445
 msgid "Silence"
-msgstr ""
+msgstr "Үнсіздік"
 
 #: src/reminder.c:563
 msgid "Reminder - Orage"
-msgstr ""
+msgstr "Еске салғыш - Orage"
 
 #: src/reminder.c:646
 msgid "_Stop"
-msgstr ""
+msgstr "_Тоқтату"
 
 #: src/reminder.c:654
 msgid "Postpone"
-msgstr ""
+msgstr "Кейінге қалдыру"
 
 #: src/reminder.c:656
 msgid "Remind me again after the specified time"
-msgstr ""
+msgstr "Көрсетілген уақыттан кейін қайта еске салу"
 
 #: src/reminder.c:935
 msgid "Next active alarms:"
-msgstr ""
+msgstr "Келесі белсенді дабылдар:"
 
 #: src/reminder.c:974
 #, c-format
@@ -1806,12 +1904,16 @@ msgid ""
 "\n"
 "%02d d %02d h %02d min to: %s"
 msgstr ""
+"\n"
+"%02d к %02d с %02d мин мынаған: %s"
 
 #: src/reminder.c:988
 msgid ""
 "\n"
 "No active alarms found"
 msgstr ""
+"\n"
+"Белсенді дабылдар табылмады"
 
 #: src/timezone_names.c:31
 msgid "Africa"
@@ -1835,7 +1937,7 @@ msgstr "Африка/Алжир"
 
 #: src/timezone_names.c:36
 msgid "Africa/Asmara"
-msgstr ""
+msgstr "Африка/Асмара"
 
 #: src/timezone_names.c:37
 msgid "Africa/Asmera"
@@ -1919,7 +2021,7 @@ msgstr "Африка/Хараре"
 
 #: src/timezone_names.c:57
 msgid "Africa/Juba"
-msgstr ""
+msgstr "Африка/Джуба"
 
 #: src/timezone_names.c:58
 msgid "Africa/Johannesburg"
@@ -2035,7 +2137,7 @@ msgstr "Африка/Виндхук"
 
 #: src/timezone_names.c:86
 msgid "America"
-msgstr ""
+msgstr "Америка"
 
 #: src/timezone_names.c:87
 msgid "America/Adak"
@@ -2067,7 +2169,7 @@ msgstr "Америка/Аргентина/Катамарка"
 
 #: src/timezone_names.c:94
 msgid "America/Argentina/ComodRivadavia"
-msgstr ""
+msgstr "Америка/Аргентина/Комодоро-Ривадавия"
 
 #: src/timezone_names.c:95
 msgid "America/Argentina/Cordoba"
@@ -2079,7 +2181,7 @@ msgstr "Америка/Аргентина/Жужуй"
 
 #: src/timezone_names.c:97
 msgid "America/Argentina/La_Rioja"
-msgstr ""
+msgstr "Америка/Аргентина/Ла-Риоха"
 
 #: src/timezone_names.c:98
 msgid "America/Argentina/Mendoza"
@@ -2087,27 +2189,27 @@ msgstr "Америка/Аргентина/Мендоза"
 
 #: src/timezone_names.c:99
 msgid "America/Argentina/Rio_Gallegos"
-msgstr ""
+msgstr "Америка/Аргентина/Рио-Гальегос"
 
 #: src/timezone_names.c:100
 msgid "America/Argentina/Salta"
-msgstr ""
+msgstr "Америка/Аргентина/Сальта"
 
 #: src/timezone_names.c:101
 msgid "America/Argentina/San_Juan"
-msgstr ""
+msgstr "Америка/Аргентина/Сан-Хуан"
 
 #: src/timezone_names.c:102
 msgid "America/Argentina/San_Luis"
-msgstr ""
+msgstr "Америка/Аргентина/Сан-Луис"
 
 #: src/timezone_names.c:103
 msgid "America/Argentina/Tucuman"
-msgstr ""
+msgstr "Америка/Аргентина/Тукуман"
 
 #: src/timezone_names.c:104
 msgid "America/Argentina/Ushuaia"
-msgstr ""
+msgstr "Америка/Аргентина/Ушуая"
 
 #: src/timezone_names.c:105
 msgid "America/Aruba"
@@ -2119,19 +2221,19 @@ msgstr "Америка/Асунсьон"
 
 #: src/timezone_names.c:107
 msgid "America/Atikokan"
-msgstr ""
+msgstr "Америка/Атикокан"
 
 #: src/timezone_names.c:108
 msgid "America/Atka"
-msgstr ""
+msgstr "Америка/Атка"
 
 #: src/timezone_names.c:109
 msgid "America/Bahia"
-msgstr ""
+msgstr "Америка/Баия"
 
 #: src/timezone_names.c:110
 msgid "America/Bahia_Banderas"
-msgstr ""
+msgstr "Америка/Баия_Бандерас"
 
 #: src/timezone_names.c:111
 msgid "America/Barbados"
@@ -2147,7 +2249,7 @@ msgstr "Америка/Белиз"
 
 #: src/timezone_names.c:114
 msgid "America/Blanc-Sablon"
-msgstr ""
+msgstr "Америка/Бланк-Саблон"
 
 #: src/timezone_names.c:115
 msgid "America/Boa_Vista"
@@ -2171,7 +2273,7 @@ msgstr "Америка/Кембридж-Бей"
 
 #: src/timezone_names.c:120
 msgid "America/Campo_Grande"
-msgstr ""
+msgstr "Америка/Кампу_Гранди"
 
 #: src/timezone_names.c:121
 msgid "America/Cancun"
@@ -2203,7 +2305,7 @@ msgstr "Америка/Чихуахуа"
 
 #: src/timezone_names.c:128
 msgid "America/Coral_Harbour"
-msgstr ""
+msgstr "Америка/Корал_Харбор"
 
 #: src/timezone_names.c:129
 msgid "America/Cordoba"
@@ -2215,7 +2317,7 @@ msgstr "Америка/Коста-Рика"
 
 #: src/timezone_names.c:131
 msgid "America/Creston"
-msgstr ""
+msgstr "Америка/Крестон"
 
 #: src/timezone_names.c:132
 msgid "America/Cuiaba"
@@ -2227,7 +2329,7 @@ msgstr "Америка/Кюрасао"
 
 #: src/timezone_names.c:134
 msgid "America/Danmarkshavn"
-msgstr ""
+msgstr "Америка/Денмарксхавн"
 
 #: src/timezone_names.c:135
 msgid "America/Dawson"
@@ -2255,7 +2357,7 @@ msgstr "Америка/Эдмонтон"
 
 #: src/timezone_names.c:141
 msgid "America/Ensenada"
-msgstr ""
+msgstr "Америка/Энсенада"
 
 #: src/timezone_names.c:142
 msgid "America/Eirunepe"
@@ -2271,7 +2373,7 @@ msgstr "Америка/Форталеза"
 
 #: src/timezone_names.c:145
 msgid "America/Fort_Wayne"
-msgstr ""
+msgstr "Америка/Форт_Уэйн"
 
 #: src/timezone_names.c:146
 msgid "America/Glace_Bay"
@@ -2335,11 +2437,11 @@ msgstr "Америка/Индиана/Маренго"
 
 #: src/timezone_names.c:161
 msgid "America/Indiana/Petersburg"
-msgstr ""
+msgstr "Америка/Индиана/Питерсберг"
 
 #: src/timezone_names.c:162
 msgid "America/Indiana/Tell_City"
-msgstr ""
+msgstr "Америка/Индиана/Телл_Сити"
 
 #: src/timezone_names.c:163
 msgid "America/Indiana/Vevay"
@@ -2347,11 +2449,11 @@ msgstr "Америка/Индиана/Вивей"
 
 #: src/timezone_names.c:164
 msgid "America/Indiana/Vincennes"
-msgstr ""
+msgstr "Америка/Индиана/Венсен"
 
 #: src/timezone_names.c:165
 msgid "America/Indiana/Winamac"
-msgstr ""
+msgstr "Америка/Индиана/Уинамак"
 
 #: src/timezone_names.c:166
 msgid "America/Indianapolis"
@@ -2387,11 +2489,11 @@ msgstr "Америка/Кентуки/Монтицелло"
 
 #: src/timezone_names.c:174
 msgid "America/Knox_IN"
-msgstr ""
+msgstr "Америка/Нокс_IN"
 
 #: src/timezone_names.c:175
 msgid "America/Kralendijk"
-msgstr ""
+msgstr "Америка/Кралендейк"
 
 #: src/timezone_names.c:176
 msgid "America/La_Paz"
@@ -2411,7 +2513,7 @@ msgstr "Америка/Луисвилл"
 
 #: src/timezone_names.c:180
 msgid "America/Lower_Princes"
-msgstr ""
+msgstr "Америка/Лоуэр_Принсес"
 
 #: src/timezone_names.c:181
 msgid "America/Maceio"
@@ -2427,7 +2529,7 @@ msgstr "Америка/Манаус"
 
 #: src/timezone_names.c:184
 msgid "America/Marigot"
-msgstr ""
+msgstr "Америка/Мариго"
 
 #: src/timezone_names.c:185
 msgid "America/Martinique"
@@ -2435,7 +2537,7 @@ msgstr "Америка/Мартиника"
 
 #: src/timezone_names.c:186
 msgid "America/Matamoros"
-msgstr ""
+msgstr "Америка/Матаморос"
 
 #: src/timezone_names.c:187
 msgid "America/Mazatlan"
@@ -2455,7 +2557,7 @@ msgstr "Америка/Мерида"
 
 #: src/timezone_names.c:191
 msgid "America/Metlakatla"
-msgstr ""
+msgstr "Америка/Метлакатла"
 
 #: src/timezone_names.c:192
 msgid "America/Mexico_City"
@@ -2467,7 +2569,7 @@ msgstr "Америка/Микелон"
 
 #: src/timezone_names.c:194
 msgid "America/Moncton"
-msgstr ""
+msgstr "Америка/Монктон"
 
 #: src/timezone_names.c:195
 msgid "America/Monterrey"
@@ -2503,15 +2605,15 @@ msgstr "Америка/Ном"
 
 #: src/timezone_names.c:203
 msgid "America/North_Dakota/Beulah"
-msgstr ""
+msgstr "Америка/Солтүстік_Дакота/Бьюла"
 
 #: src/timezone_names.c:204
 msgid "America/North_Dakota/Center"
-msgstr ""
+msgstr "Америка/Солтүстік_Дакота/Сентер"
 
 #: src/timezone_names.c:205
 msgid "America/North_Dakota/New_Salem"
-msgstr ""
+msgstr "Америка/Солтүстік_Дакота/Нью_Сейлем"
 
 #: src/timezone_names.c:206
 msgid "America/Noronha"
@@ -2519,7 +2621,7 @@ msgstr "Америка/Норонха"
 
 #: src/timezone_names.c:207
 msgid "America/Ojinaga"
-msgstr ""
+msgstr "Америка/Охинага"
 
 #: src/timezone_names.c:208
 msgid "America/Panama"
@@ -2547,7 +2649,7 @@ msgstr "Америка/Порт-оф-Спейн"
 
 #: src/timezone_names.c:214
 msgid "America/Porto_Acre"
-msgstr ""
+msgstr "Америка/Порту_Акри"
 
 #: src/timezone_names.c:215
 msgid "America/Porto_Velho"
@@ -2575,7 +2677,7 @@ msgstr "Америка/Регина"
 
 #: src/timezone_names.c:221
 msgid "America/Resolute"
-msgstr ""
+msgstr "Америка/Резольют"
 
 #: src/timezone_names.c:222
 msgid "America/Rio_Branco"
@@ -2587,11 +2689,11 @@ msgstr "Америка/Розарио"
 
 #: src/timezone_names.c:224
 msgid "America/Santa_Isabel"
-msgstr ""
+msgstr "Америка/Санта_Исабель"
 
 #: src/timezone_names.c:225
 msgid "America/Santarem"
-msgstr ""
+msgstr "Америка/Сантарен"
 
 #: src/timezone_names.c:226
 msgid "America/Santiago"
@@ -2615,11 +2717,11 @@ msgstr "Америка/Шипрок"
 
 #: src/timezone_names.c:231
 msgid "America/Sitka"
-msgstr ""
+msgstr "Америка/Ситка"
 
 #: src/timezone_names.c:232
 msgid "America/St_Barthelemy"
-msgstr ""
+msgstr "Америка/Сен_Бартелеми"
 
 #: src/timezone_names.c:233
 msgid "America/St_Johns"
@@ -2663,7 +2765,7 @@ msgstr "Америка/Тиюана"
 
 #: src/timezone_names.c:243
 msgid "America/Toronto"
-msgstr ""
+msgstr "Америка/Торонто"
 
 #: src/timezone_names.c:244
 msgid "America/Tortola"
@@ -2675,7 +2777,7 @@ msgstr "Америка/Ванкувер"
 
 #: src/timezone_names.c:246
 msgid "America/Virgin"
-msgstr ""
+msgstr "Америка/Виргин"
 
 #: src/timezone_names.c:247
 msgid "America/Whitehorse"
@@ -2711,7 +2813,7 @@ msgstr "Антарктика/Дюмон-д'Юрвил"
 
 #: src/timezone_names.c:255
 msgid "Antarctica/Macquarie"
-msgstr ""
+msgstr "Антарктика/Маккуори"
 
 #: src/timezone_names.c:256
 msgid "Antarctica/Mawson"
@@ -2727,7 +2829,7 @@ msgstr "Антарктика/Палмер"
 
 #: src/timezone_names.c:259
 msgid "Antarctica/Rothera"
-msgstr ""
+msgstr "Антарктика/Ротера"
 
 #: src/timezone_names.c:260
 msgid "Antarctica/South_Pole"
@@ -2743,7 +2845,7 @@ msgstr "Антарктика/Восток"
 
 #: src/timezone_names.c:263
 msgid "Arctic"
-msgstr ""
+msgstr "Арктика"
 
 #: src/timezone_names.c:264
 msgid "Arctic/Longyearbyen"
@@ -2783,7 +2885,7 @@ msgstr "Азия/Ашхабад"
 
 #: src/timezone_names.c:273
 msgid "Asia/Ashkhabad"
-msgstr ""
+msgstr "Азия/Ашхабад"
 
 #: src/timezone_names.c:274
 msgid "Asia/Baghdad"
@@ -2819,11 +2921,11 @@ msgstr "Азия/Калькутта"
 
 #: src/timezone_names.c:282
 msgid "Asia/Choibalsan"
-msgstr ""
+msgstr "Азия/Чойбалсан"
 
 #: src/timezone_names.c:283
 msgid "Asia/Chongqing"
-msgstr ""
+msgstr "Азия/Чунцин"
 
 #: src/timezone_names.c:284
 msgid "Asia/Chungking"
@@ -2835,7 +2937,7 @@ msgstr "Азия/Коломбо"
 
 #: src/timezone_names.c:286
 msgid "Asia/Dacca"
-msgstr ""
+msgstr "Азия/Дакка"
 
 #: src/timezone_names.c:287
 msgid "Asia/Damascus"
@@ -2867,7 +2969,7 @@ msgstr "Азия/Харбин"
 
 #: src/timezone_names.c:294
 msgid "Asia/Hebron"
-msgstr ""
+msgstr "Азия/Хеврон"
 
 #: src/timezone_names.c:295
 msgid "Asia/Hong_Kong"
@@ -2875,7 +2977,7 @@ msgstr "Азия/Сянган (Гонконг)"
 
 #: src/timezone_names.c:296
 msgid "Asia/Ho_Chi_Minh"
-msgstr ""
+msgstr "Азия/Хо_Ши_Мин"
 
 #: src/timezone_names.c:297
 msgid "Asia/Hovd"
@@ -2887,7 +2989,7 @@ msgstr "Азия/Иркутск"
 
 #: src/timezone_names.c:299
 msgid "Asia/Istanbul"
-msgstr ""
+msgstr "Азия/Стамбул"
 
 #: src/timezone_names.c:300
 msgid "Asia/Jakarta"
@@ -2919,7 +3021,7 @@ msgstr "Азия/Кашгар"
 
 #: src/timezone_names.c:307
 msgid "Asia/Kathmandu"
-msgstr ""
+msgstr "Азия/Катманду"
 
 #: src/timezone_names.c:308
 msgid "Asia/Katmandu"
@@ -2927,11 +3029,11 @@ msgstr "Азия/Катманду"
 
 #: src/timezone_names.c:309
 msgid "Asia/Khandyga"
-msgstr ""
+msgstr "Азия/Хандыга"
 
 #: src/timezone_names.c:310
 msgid "Asia/Kolkata"
-msgstr ""
+msgstr "Азия/Калькутта"
 
 #: src/timezone_names.c:311
 msgid "Asia/Krasnoyarsk"
@@ -2955,7 +3057,7 @@ msgstr "Азия/Аомын (Макао)"
 
 #: src/timezone_names.c:316
 msgid "Asia/Macau"
-msgstr ""
+msgstr "Азия/Макао"
 
 #: src/timezone_names.c:317
 msgid "Asia/Magadan"
@@ -2963,7 +3065,7 @@ msgstr "Азия/Магадан"
 
 #: src/timezone_names.c:318
 msgid "Asia/Makassar"
-msgstr ""
+msgstr "Азия/Макасар"
 
 #: src/timezone_names.c:319
 msgid "Asia/Manila"
@@ -2979,7 +3081,7 @@ msgstr "Азия/Никозия"
 
 #: src/timezone_names.c:322
 msgid "Asia/Novokuznetsk"
-msgstr ""
+msgstr "Азия/Новокузнецк"
 
 #: src/timezone_names.c:323
 msgid "Asia/Novosibirsk"
@@ -2991,7 +3093,7 @@ msgstr "Азия/Омбы"
 
 #: src/timezone_names.c:325
 msgid "Asia/Oral"
-msgstr ""
+msgstr "Азия/Орал"
 
 #: src/timezone_names.c:326
 msgid "Asia/Phnom_Penh"
@@ -3011,7 +3113,7 @@ msgstr "Азия/Катар"
 
 #: src/timezone_names.c:330
 msgid "Asia/Qyzylorda"
-msgstr ""
+msgstr "Азия/Қызылорда"
 
 #: src/timezone_names.c:331
 msgid "Asia/Rangoon"
@@ -3023,15 +3125,15 @@ msgstr "Азия/Эр-Рияд"
 
 #: src/timezone_names.c:333
 msgid "Asia/Riyadh87"
-msgstr ""
+msgstr "Азия/Эр-Рияд87"
 
 #: src/timezone_names.c:334
 msgid "Asia/Riyadh88"
-msgstr ""
+msgstr "Азия/Эр-Рияд88"
 
 #: src/timezone_names.c:335
 msgid "Asia/Riyadh89"
-msgstr ""
+msgstr "Азия/Эр-Рияд89"
 
 #: src/timezone_names.c:336
 msgid "Asia/Saigon"
@@ -3039,7 +3141,7 @@ msgstr "Азия/Хошимин"
 
 #: src/timezone_names.c:337
 msgid "Asia/Sakhalin"
-msgstr ""
+msgstr "Азия/Сахалин"
 
 #: src/timezone_names.c:338
 msgid "Asia/Samarkand"
@@ -3075,11 +3177,11 @@ msgstr "Азия/Теһран"
 
 #: src/timezone_names.c:346
 msgid "Asia/Tel_Aviv"
-msgstr ""
+msgstr "Азия/Тель-Авив"
 
 #: src/timezone_names.c:347
 msgid "Asia/Thimbu"
-msgstr ""
+msgstr "Азия/Тхимпху"
 
 #: src/timezone_names.c:348
 msgid "Asia/Thimphu"
@@ -3099,7 +3201,7 @@ msgstr "Азия/Улан-Батор"
 
 #: src/timezone_names.c:352
 msgid "Asia/Ulan_Bator"
-msgstr ""
+msgstr "Азия/Улан-Батор"
 
 #: src/timezone_names.c:353
 msgid "Asia/Urumqi"
@@ -3107,7 +3209,7 @@ msgstr "Азия/Ұрымжы"
 
 #: src/timezone_names.c:354
 msgid "Asia/Ust-Nera"
-msgstr ""
+msgstr "Азия/Усть-Нера"
 
 #: src/timezone_names.c:355
 msgid "Asia/Vientiane"
@@ -3155,7 +3257,7 @@ msgstr "Атлант мұхиты/Фаэро"
 
 #: src/timezone_names.c:366
 msgid "Atlantic/Faroe"
-msgstr ""
+msgstr "Атлантика/Фарер"
 
 #: src/timezone_names.c:367
 msgid "Atlantic/Jan_Mayen"
@@ -3187,7 +3289,7 @@ msgstr "Австралия"
 
 #: src/timezone_names.c:374
 msgid "Australia/ACT"
-msgstr ""
+msgstr "Австралия/ACT"
 
 #: src/timezone_names.c:375
 msgid "Australia/Adelaide"
@@ -3203,7 +3305,7 @@ msgstr "Аустралия/Брокен-Хилл"
 
 #: src/timezone_names.c:378
 msgid "Australia/Currie"
-msgstr ""
+msgstr "Австралия/Карри"
 
 #: src/timezone_names.c:379
 msgid "Australia/Darwin"
@@ -3211,7 +3313,7 @@ msgstr "Аустралия/Дарвин"
 
 #: src/timezone_names.c:380
 msgid "Australia/Eucla"
-msgstr ""
+msgstr "Австралия/Юкла"
 
 #: src/timezone_names.c:381
 msgid "Australia/Hobart"
@@ -3239,219 +3341,219 @@ msgstr "Аустралия/Сидней"
 
 #: src/timezone_names.c:387
 msgid "Brazil"
-msgstr ""
+msgstr "Бразилия"
 
 #: src/timezone_names.c:388
 msgid "Brazil/Acre"
-msgstr ""
+msgstr "Бразилия/Акри"
 
 #: src/timezone_names.c:389
 msgid "Brazil/DeNoronha"
-msgstr ""
+msgstr "Бразилия/Де-Норонья"
 
 #: src/timezone_names.c:390
 msgid "Brazil/East"
-msgstr ""
+msgstr "Бразилия/Шығыс"
 
 #: src/timezone_names.c:391
 msgid "Brazil/West"
-msgstr ""
+msgstr "Бразилия/Батыс"
 
 #: src/timezone_names.c:392
 msgid "Canada"
-msgstr ""
+msgstr "Канада"
 
 #: src/timezone_names.c:393
 msgid "Canada/Atlantic"
-msgstr ""
+msgstr "Канада/Атлантика"
 
 #: src/timezone_names.c:394
 msgid "Canada/Central"
-msgstr ""
+msgstr "Канада/Орталық"
 
 #: src/timezone_names.c:395
 msgid "Canada/East-Saskatchewan"
-msgstr ""
+msgstr "Канада/Шығыс-Саскачеван"
 
 #: src/timezone_names.c:396
 msgid "Canada/Eastern"
-msgstr ""
+msgstr "Канада/Шығыс"
 
 #: src/timezone_names.c:397
 msgid "Canada/Mountain"
-msgstr ""
+msgstr "Канада/Таулы"
 
 #: src/timezone_names.c:398
 msgid "Canada/Newfoundland"
-msgstr ""
+msgstr "Канада/Ньюфаундленд"
 
 #: src/timezone_names.c:399
 msgid "Canada/Pacific"
-msgstr ""
+msgstr "Канада/Тынық мұхиты"
 
 #: src/timezone_names.c:400
 msgid "Canada/Saskatchewan"
-msgstr ""
+msgstr "Канада/Саскачеван"
 
 #: src/timezone_names.c:401
 msgid "Canada/Yukon"
-msgstr ""
+msgstr "Канада/Юкон"
 
 #: src/timezone_names.c:402
 msgid "Chile"
-msgstr ""
+msgstr "Чили"
 
 #: src/timezone_names.c:403
 msgid "Chile/Continental"
-msgstr ""
+msgstr "Чили/Континенталды"
 
 #: src/timezone_names.c:404
 msgid "Chile/EasterIsland"
-msgstr ""
+msgstr "Чили/Пасха аралы"
 
 #: src/timezone_names.c:405
 msgid "Etc"
-msgstr ""
+msgstr "Etc"
 
 #: src/timezone_names.c:406
 msgid "Etc/GMT"
-msgstr ""
+msgstr "Etc/GMT"
 
 #: src/timezone_names.c:407
 msgid "Etc/GMT+0"
-msgstr ""
+msgstr "Etc/GMT+0"
 
 #: src/timezone_names.c:408
 msgid "Etc/GMT+1"
-msgstr ""
+msgstr "Etc/GMT+1"
 
 #: src/timezone_names.c:409
 msgid "Etc/GMT+10"
-msgstr ""
+msgstr "Etc/GMT+10"
 
 #: src/timezone_names.c:410
 msgid "Etc/GMT+11"
-msgstr ""
+msgstr "Etc/GMT+11"
 
 #: src/timezone_names.c:411
 msgid "Etc/GMT+12"
-msgstr ""
+msgstr "Etc/GMT+12"
 
 #: src/timezone_names.c:412
 msgid "Etc/GMT+2"
-msgstr ""
+msgstr "Etc/GMT+2"
 
 #: src/timezone_names.c:413
 msgid "Etc/GMT+3"
-msgstr ""
+msgstr "Etc/GMT+3"
 
 #: src/timezone_names.c:414
 msgid "Etc/GMT+4"
-msgstr ""
+msgstr "Etc/GMT+4"
 
 #: src/timezone_names.c:415
 msgid "Etc/GMT+5"
-msgstr ""
+msgstr "Etc/GMT+5"
 
 #: src/timezone_names.c:416
 msgid "Etc/GMT+6"
-msgstr ""
+msgstr "Etc/GMT+6"
 
 #: src/timezone_names.c:417
 msgid "Etc/GMT+7"
-msgstr ""
+msgstr "Etc/GMT+7"
 
 #: src/timezone_names.c:418
 msgid "Etc/GMT+8"
-msgstr ""
+msgstr "Etc/GMT+8"
 
 #: src/timezone_names.c:419
 msgid "Etc/GMT+9"
-msgstr ""
+msgstr "Etc/GMT+9"
 
 #: src/timezone_names.c:420
 msgid "Etc/GMT-0"
-msgstr ""
+msgstr "Etc/GMT-0"
 
 #: src/timezone_names.c:421
 msgid "Etc/GMT-1"
-msgstr ""
+msgstr "Etc/GMT-1"
 
 #: src/timezone_names.c:422
 msgid "Etc/GMT-10"
-msgstr ""
+msgstr "Etc/GMT-10"
 
 #: src/timezone_names.c:423
 msgid "Etc/GMT-11"
-msgstr ""
+msgstr "Etc/GMT-11"
 
 #: src/timezone_names.c:424
 msgid "Etc/GMT-12"
-msgstr ""
+msgstr "Etc/GMT-12"
 
 #: src/timezone_names.c:425
 msgid "Etc/GMT-13"
-msgstr ""
+msgstr "Etc/GMT-13"
 
 #: src/timezone_names.c:426
 msgid "Etc/GMT-14"
-msgstr ""
+msgstr "Etc/GMT-14"
 
 #: src/timezone_names.c:427
 msgid "Etc/GMT-2"
-msgstr ""
+msgstr "Etc/GMT-2"
 
 #: src/timezone_names.c:428
 msgid "Etc/GMT-3"
-msgstr ""
+msgstr "Etc/GMT-3"
 
 #: src/timezone_names.c:429
 msgid "Etc/GMT-4"
-msgstr ""
+msgstr "Etc/GMT-4"
 
 #: src/timezone_names.c:430
 msgid "Etc/GMT-5"
-msgstr ""
+msgstr "Etc/GMT-5"
 
 #: src/timezone_names.c:431
 msgid "Etc/GMT-6"
-msgstr ""
+msgstr "Etc/GMT-6"
 
 #: src/timezone_names.c:432
 msgid "Etc/GMT-7"
-msgstr ""
+msgstr "Etc/GMT-7"
 
 #: src/timezone_names.c:433
 msgid "Etc/GMT-8"
-msgstr ""
+msgstr "Etc/GMT-8"
 
 #: src/timezone_names.c:434
 msgid "Etc/GMT-9"
-msgstr ""
+msgstr "Etc/GMT-9"
 
 #: src/timezone_names.c:435
 msgid "Etc/GMT0"
-msgstr ""
+msgstr "Etc/GMT0"
 
 #: src/timezone_names.c:436
 msgid "Etc/Greenwich"
-msgstr ""
+msgstr "Etc/Гринвич"
 
 #: src/timezone_names.c:437
 msgid "Etc/UCT"
-msgstr ""
+msgstr "Etc/UCT"
 
 #: src/timezone_names.c:438
 msgid "Etc/UTC"
-msgstr ""
+msgstr "Etc/UTC"
 
 #: src/timezone_names.c:439
 msgid "Etc/Universal"
-msgstr ""
+msgstr "Etc/Әмбебап"
 
 #: src/timezone_names.c:440
 msgid "Etc/Zulu"
-msgstr ""
+msgstr "Etc/Зулу"
 
 #: src/timezone_names.c:441
 msgid "Europe"
@@ -3499,7 +3601,7 @@ msgstr "Еуропа/Будапешт"
 
 #: src/timezone_names.c:452
 msgid "Europe/Busingen"
-msgstr ""
+msgstr "Еуропа/Бузинген"
 
 #: src/timezone_names.c:453
 msgid "Europe/Chisinau"
@@ -3519,7 +3621,7 @@ msgstr "Еуропа/Гибралтар"
 
 #: src/timezone_names.c:457
 msgid "Europe/Guernsey"
-msgstr ""
+msgstr "Еуропа/Гернси"
 
 #: src/timezone_names.c:458
 msgid "Europe/Helsinki"
@@ -3527,7 +3629,7 @@ msgstr "Еуропа/Хельсинки"
 
 #: src/timezone_names.c:459
 msgid "Europe/Isle_of_Man"
-msgstr ""
+msgstr "Еуропа/Ман_Аралы"
 
 #: src/timezone_names.c:460
 msgid "Europe/Istanbul"
@@ -3535,7 +3637,7 @@ msgstr "Еуропа/Ыстанбол"
 
 #: src/timezone_names.c:461
 msgid "Europe/Jersey"
-msgstr ""
+msgstr "Еуропа/Джерси"
 
 #: src/timezone_names.c:462
 msgid "Europe/Kaliningrad"
@@ -3571,7 +3673,7 @@ msgstr "Еуропа/Мальта"
 
 #: src/timezone_names.c:470
 msgid "Europe/Mariehamn"
-msgstr ""
+msgstr "Еуропа/Мариехамн"
 
 #: src/timezone_names.c:471
 msgid "Europe/Minsk"
@@ -3587,7 +3689,7 @@ msgstr "Еуропа/Мәскеу"
 
 #: src/timezone_names.c:474
 msgid "Europe/Nicosia"
-msgstr ""
+msgstr "Еуропа/Никосия"
 
 #: src/timezone_names.c:475
 msgid "Europe/Oslo"
@@ -3599,7 +3701,7 @@ msgstr "Еуропа/Париж"
 
 #: src/timezone_names.c:477
 msgid "Europe/Podgorica"
-msgstr ""
+msgstr "Еуропа/Подгорица"
 
 #: src/timezone_names.c:478
 msgid "Europe/Prague"
@@ -3651,7 +3753,7 @@ msgstr "Еуропа/Тирана"
 
 #: src/timezone_names.c:490
 msgid "Europe/Tiraspol"
-msgstr ""
+msgstr "Еуропа/Тирасполь"
 
 #: src/timezone_names.c:491
 msgid "Europe/Uzhgorod"
@@ -3675,7 +3777,7 @@ msgstr "Еуропа/Вильнюс"
 
 #: src/timezone_names.c:496
 msgid "Europe/Volgograd"
-msgstr ""
+msgstr "Еуропа/Волгоград"
 
 #: src/timezone_names.c:497
 msgid "Europe/Warsaw"
@@ -3695,7 +3797,7 @@ msgstr "Еуропа/Цюрих"
 
 #: src/timezone_names.c:501
 msgid "Indian"
-msgstr ""
+msgstr "Үнді"
 
 #: src/timezone_names.c:502
 msgid "Indian/Antananarivo"
@@ -3707,7 +3809,7 @@ msgstr "Үнді мұхиты/Чагос"
 
 #: src/timezone_names.c:504
 msgid "Indian/Christmas"
-msgstr "Үнді мұхиты/Милад ар."
+msgstr "Үнді мұхиты/Рождество аралы"
 
 #: src/timezone_names.c:505
 msgid "Indian/Cocos"
@@ -3743,35 +3845,35 @@ msgstr "Үнді мұхит/Реюньон"
 
 #: src/timezone_names.c:513
 msgid "Mexico"
-msgstr ""
+msgstr "Мексика"
 
 #: src/timezone_names.c:514
 msgid "Mexico/BajaNorte"
-msgstr ""
+msgstr "Мексика/Солтүстік Баха"
 
 #: src/timezone_names.c:515
 msgid "Mexico/BajaSur"
-msgstr ""
+msgstr "Мексика/Оңтүстік Баха"
 
 #: src/timezone_names.c:516
 msgid "Mexico/General"
-msgstr ""
+msgstr "Мексика/Жалпы"
 
 #: src/timezone_names.c:517
 msgid "Mideast"
-msgstr ""
+msgstr "Таяу Шығыс"
 
 #: src/timezone_names.c:518
 msgid "Mideast/Riyadh87"
-msgstr ""
+msgstr "Таяу Шығыс/Эр-Рияд87"
 
 #: src/timezone_names.c:519
 msgid "Mideast/Riyadh88"
-msgstr ""
+msgstr "Таяу Шығыс/Эр-Рияд88"
 
 #: src/timezone_names.c:520
 msgid "Mideast/Riyadh89"
-msgstr ""
+msgstr "Таяу Шығыс/Эр-Рияд89"
 
 #: src/timezone_names.c:521
 msgid "Pacific"
@@ -3791,11 +3893,11 @@ msgstr "Тынық мұхит/Чатем"
 
 #: src/timezone_names.c:525
 msgid "Pacific/Chuuk"
-msgstr ""
+msgstr "Тынық мұхиты/Чуук"
 
 #: src/timezone_names.c:526
 msgid "Pacific/Easter"
-msgstr "Тынық мұхит/Пасха ар."
+msgstr "Тынық мұхит/Пасха аралы"
 
 #: src/timezone_names.c:527
 msgid "Pacific/Efate"
@@ -3895,7 +3997,7 @@ msgstr "Тынық мұхит/Питкарн"
 
 #: src/timezone_names.c:551
 msgid "Pacific/Pohnpei"
-msgstr ""
+msgstr "Тынық мұхиты/Понпеи"
 
 #: src/timezone_names.c:552
 msgid "Pacific/Ponape"
@@ -3915,7 +4017,7 @@ msgstr "Тынық мұхит/Сайпан"
 
 #: src/timezone_names.c:556
 msgid "Pacific/Samoa"
-msgstr ""
+msgstr "Тынық мұхиты/Самоа"
 
 #: src/timezone_names.c:557
 msgid "Pacific/Tahiti"
@@ -3947,134 +4049,134 @@ msgstr "Тынық мұхит/Яп"
 
 #: src/timezone_names.c:564
 msgid "SystemV"
-msgstr ""
+msgstr "SystemV"
 
 #: src/timezone_names.c:565
 msgid "SystemV/AST4"
-msgstr ""
+msgstr "SystemV/AST4"
 
 #: src/timezone_names.c:566
 msgid "SystemV/AST4ADT"
-msgstr ""
+msgstr "SystemV/AST4ADT"
 
 #: src/timezone_names.c:567
 msgid "SystemV/CST6"
-msgstr ""
+msgstr "SystemV/CST6"
 
 #: src/timezone_names.c:568
 msgid "SystemV/CST6CDT"
-msgstr ""
+msgstr "SystemV/CST6CDT"
 
 #: src/timezone_names.c:569
 msgid "SystemV/EST5"
-msgstr ""
+msgstr "SystemV/EST5"
 
 #: src/timezone_names.c:570
 msgid "SystemV/EST5/EDT"
-msgstr ""
+msgstr "SystemV/EST5/EDT"
 
 #: src/timezone_names.c:571
 msgid "SystemV/HST10"
-msgstr ""
+msgstr "SystemV/HST10"
 
 #: src/timezone_names.c:572
 msgid "SystemV/MST7"
-msgstr ""
+msgstr "SystemV/MST7"
 
 #: src/timezone_names.c:573
 msgid "SystemV/MST7/MNT"
-msgstr ""
+msgstr "SystemV/MST7/MNT"
 
 #: src/timezone_names.c:574
 msgid "SystemV/PST8"
-msgstr ""
+msgstr "SystemV/PST8"
 
 #: src/timezone_names.c:575
 msgid "SystemV/PST8/PDT"
-msgstr ""
+msgstr "SystemV/PST8/PDT"
 
 #: src/timezone_names.c:576
 msgid "SystemV/YST9"
-msgstr ""
+msgstr "SystemV/YST9"
 
 #: src/timezone_names.c:577
 msgid "SystemV/YST9/YDT"
-msgstr ""
+msgstr "SystemV/YST9/YDT"
 
 #: src/timezone_names.c:578
 msgid "US"
-msgstr ""
+msgstr "АҚШ"
 
 #: src/timezone_names.c:579
 msgid "US/Alaska"
-msgstr ""
+msgstr "АҚШ/Аляска"
 
 #: src/timezone_names.c:580
 msgid "US/Aleutian"
-msgstr ""
+msgstr "АҚШ/Алеут"
 
 #: src/timezone_names.c:581
 msgid "US/Arizona"
-msgstr ""
+msgstr "АҚШ/Аризона"
 
 #: src/timezone_names.c:582
 msgid "US/Central"
-msgstr ""
+msgstr "АҚШ/Орталық"
 
 #: src/timezone_names.c:583
 msgid "US/Eastern"
-msgstr ""
+msgstr "АҚШ/Шығыс"
 
 #: src/timezone_names.c:584
 msgid "US/East-Indiana"
-msgstr ""
+msgstr "АҚШ/Шығыс Индиана"
 
 #: src/timezone_names.c:585
 msgid "US/Hawaii"
-msgstr ""
+msgstr "АҚШ/Гавайи"
 
 #: src/timezone_names.c:586
 msgid "US/Indiana-Starke"
-msgstr ""
+msgstr "АҚШ/Индиана-Старке"
 
 #: src/timezone_names.c:587
 msgid "US/Michigan"
-msgstr ""
+msgstr "АҚШ/Мичиган"
 
 #: src/timezone_names.c:588
 msgid "US/Mountain"
-msgstr ""
+msgstr "АҚШ/Таулы"
 
 #: src/timezone_names.c:589
 msgid "US/Pacific"
-msgstr ""
+msgstr "АҚШ/Тынық мұхит"
 
 #: src/timezone_names.c:590
 msgid "US/Pacific-New"
-msgstr ""
+msgstr "АҚШ/Тынық мұхит-Жаңа"
 
 #: src/timezone_names.c:591
 msgid "US/Samoa"
-msgstr ""
+msgstr "АҚШ/Самоа"
 
 #: src/timezone_selection.c:143
 #, c-format
 msgid "%d hour %d mins"
-msgstr ""
+msgstr "%d сағат %d мин"
 
 #: src/timezone_selection.c:146
 #, c-format
 msgid "%d hour"
-msgstr "%'d сағат"
+msgstr "%d сағат"
 
 #: src/timezone_selection.c:148
 #, c-format
 msgid "%d mins"
-msgstr ""
+msgstr "%d мин"
 
 #: src/timezone_selection.c:154
 msgid "backward"
-msgstr ""
+msgstr "артқа"
 
 #: src/timezone_selection.c:157
 msgid "forward"
@@ -4082,19 +4184,19 @@ msgstr "алға"
 
 #: src/timezone_selection.c:181
 msgid "not changed"
-msgstr ""
+msgstr "өзгертілмеген"
 
 #: src/timezone_selection.c:182
 msgid "not changing"
-msgstr ""
+msgstr "өзгермейді"
 
 #: src/timezone_selection.c:241
 msgid "GMT Offset"
-msgstr ""
+msgstr "GMT ығысуы"
 
 #: src/timezone_selection.c:247
 msgid "Previous/Next Change"
-msgstr ""
+msgstr "Алдыңғы/Келесі өзгеріс"
 
 #: src/timezone_selection.c:252
 msgid "Country"
@@ -4108,22 +4210,22 @@ msgstr "Ел"
 #: src/timezone_selection.c:284 src/timezone_selection.c:293
 #: src/timezone_selection.c:304
 msgid "Pick timezone"
-msgstr ""
+msgstr "Уақыт белдеуін таңдау"
 
 #: src/timezone_selection.c:287 src/timezone_selection.c:296
 #: src/timezone_selection.c:307
 msgid "Change mode"
-msgstr ""
+msgstr "Режимді өзгерту"
 
 #: src/timezone_selection.c:288 src/timezone_selection.c:297
 #: src/timezone_selection.c:308 src/timezone_selection.c:347
 msgid "UTC"
-msgstr ""
+msgstr "UTC"
 
 #. NOTE: this exists only if ical timezones are being used
 #: src/timezone_selection.c:298 src/timezone_selection.c:352
 msgid "floating"
-msgstr ""
+msgstr "өзгермелі"
 
 #: src/tray_icon.c:391
 msgid "New appointment"
@@ -4135,7 +4237,7 @@ msgstr "Шығу"
 
 #: plugin/org.xfce.orage-settings.desktop.in:5
 msgid "Settings for the Xfce 4 Calendar Application (Orage)"
-msgstr "Xfce 4 күнтізбе қолданбасының (Orage) баптаулары "
+msgstr "Xfce 4 күнтізбе қолданбасының (Orage) баптаулары"
 
 #: plugin/org.xfce.orage-settings.desktop.in:12
 msgid "Orage Calendar Preferences"
@@ -4144,6 +4246,7 @@ msgstr "Orage күнтізбе баптаулары"
 #: plugin/org.xfce.orage-settings.desktop.in:14 org.xfce.orage.desktop.in:15
 msgid "calendar;date;schedule;appointment;time;"
 msgstr ""
+"calendar;date;schedule;appointment;time;күнтізбе;күн;кесте;кездесу;уақыт;"
 
 #: org.xfce.orage.appdata.xml.in:11
 msgid ""
@@ -4151,6 +4254,9 @@ msgid ""
 " ical format and includes common calendar features like repeating "
 "appointments and multiple alarming possibilities."
 msgstr ""
+"Orage - жылдам және пайдалануға оңай графикалық күнтізбе болуды мақсат "
+"етеді. Ол тасымалы ical пішімін қолданады және қайталанатын кездесулер мен "
+"бірнеше дабыл мүмкіндіктері сияқты жалпы күнтізбе мүмкіндіктерін қамтиды."
 
 #: org.xfce.orage.appdata.xml.in:15
 msgid ""
@@ -4159,10 +4265,14 @@ msgid ""
 "Contents of those files are read and converted into Orage, but those files "
 "are left untouched."
 msgstr ""
+"Orage-де топтық күнтізбе мүмкіндіктері жоқ, ол тек бір пайдаланушыға "
+"арналған. Ол импортталатын ical файлдарының тізімін алады. Осы файлдардың "
+"мазмұны оқылып, Orage-ге түрлендіріледі, бірақ бұл файлдар өзгеріссіз "
+"қалады."
 
 #: org.xfce.orage.appdata.xml.in:35
 msgid "Orage Team"
-msgstr ""
+msgstr "Orage командасы"
 
 #: org.xfce.orage.desktop.in:4
 msgid "Orage Calendar"
@@ -4178,8 +4288,8 @@ msgstr "Күнтізбе"
 
 #: org.xfce.orage.desktop.in:18
 msgid "Show Today"
-msgstr ""
+msgstr "Бүгінді көрсету"
 
 #: org.xfce.orage.desktop.in:22
 msgid "New Appointment"
-msgstr ""
+msgstr "Жаңа кездесу"
