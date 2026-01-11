@@ -18,3 +18,11 @@ option(
   value: false,
   description: 'Add X11 tray icon, not comptible with Wayland',
 )
+
+option(
+  'default_logger',
+  type: 'combo',
+  choices: ['glib', 'orage'],
+  value: 'glib',
+  description: 'Default logging backend',
+)
