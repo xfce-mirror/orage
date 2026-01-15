@@ -104,7 +104,7 @@ static void cb_preview_dialog_response (GtkDialog *gtk_dialog,
             {
                 file = G_FILE (tmp_list->data);
                 filename = g_file_get_path (file);
-                if (xfical_import_file (file))
+                if (orage_calendar_import_file (file, NULL))
                     g_message ("import done, file=%s", filename);
                 else
                     g_warning ("import failed, file=%s", filename);
@@ -278,12 +278,6 @@ static void open_new_appointment_window (void)
     gtk_window_present (GTK_WINDOW (appointment_window));
 }
 
-static void orage_open_today_window (OrageWindow *window)
-{
-    orage_window_select_today (window);
-    (void)create_el_win (NULL);
-}
-
 static gboolean orage_application_open_file (OrageApplication *self,
                                              GFile *file)
 {
@@ -337,7 +331,7 @@ static gboolean orage_application_import_file (OrageApplication *self,
 
     if (is_readable (file))
     {
-        result = xfical_import_file (file);
+        result = orage_calendar_import_file (file, NULL);
         if (result)
         {
             orage_window_update_appointments (ORAGE_WINDOW (self->window));
@@ -490,7 +484,7 @@ static void orage_application_activate (GApplication *app)
         open_new_appointment_window ();
 
     if (self->today_option)
-        orage_open_today_window (ORAGE_WINDOW (window));
+        orage_application_open_date (self, NULL);
 
     if (hide_main_window)
         gtk_widget_hide (window);
@@ -843,7 +837,6 @@ static void orage_application_init (OrageApplication *self)
 
     g_application_add_main_option_entries (G_APPLICATION (self),
                                            option_entries);
-    g_set_prgname (ORAGE_APP_ID);
     gtk_window_set_default_icon_name (ORAGE_APP_ID);
 }
 
@@ -872,6 +865,36 @@ void orage_application_close (OrageApplication *self)
         g_application_quit (G_APPLICATION (self));
     else
         gtk_widget_hide (orage_application_get_window (self));
+}
+
+gboolean orage_application_load_path (OrageApplication *self,
+                                      const gchar *filename,
+                                      const gchar *destination)
+{
+    gboolean result;
+    GFile *file = g_file_new_for_path (filename);
+
+    if (is_readable (file))
+    {
+        result = orage_calendar_import_file (file, destination);
+        if (result)
+        {
+            orage_window_update_appointments (ORAGE_WINDOW (self->window));
+            g_message ("import done, file=%s", filename);
+        }
+        else
+            g_warning ("import failed, file=%s", filename);
+    }
+    else
+    {
+        g_warning ("file '%s' does not exist or cannot be read",
+                   filename);
+        result = FALSE;
+    }
+
+    g_object_unref (file);
+
+    return result;
 }
 
 gboolean orage_application_open_path (OrageApplication *self,
@@ -942,4 +965,16 @@ gboolean orage_application_remove_foreign_path (
     g_debug ("remove foreign file '%s'", filename);
 
     return orage_foreign_file_remove (filename);
+}
+
+gboolean orage_application_open_date (OrageApplication *self, GDateTime *gdt)
+{
+    if (gdt == NULL)
+        orage_window_select_today (ORAGE_WINDOW (self->window));
+    else
+        orage_window_select_date (ORAGE_WINDOW (self->window), gdt);
+
+    (void)create_el_win (NULL);
+
+    return TRUE;
 }

@@ -22,6 +22,7 @@
 #define ORAGE_APPLICATION_H 1
 
 #include "orage-task-runner.h"
+#include <glib.h>
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
@@ -34,9 +35,13 @@ OrageTaskRunner *orage_application_get_sync (OrageApplication *self);
 GtkWidget *orage_application_get_window (OrageApplication *self);
 void orage_application_close (OrageApplication *self);
 
+gboolean orage_application_load_path (OrageApplication *self,
+                                      const gchar *filename,
+                                      const gchar *destination);
+
 /**
  * orage_application_open_path:
- * @self: (type OrageApplication): an Orage application instance.
+ * @self: an #OrageApplication instance.
  * @filename: (type filename): path to the file to open.
  *
  * Opens a file specified by a local filesystem path and shows the appointment
@@ -81,7 +86,7 @@ gboolean orage_application_export_path (OrageApplication *self,
 
 /**
  * orage_application_add_foreign_path:
- * @self: an #OrageApplication
+ * @self: an #OrageApplication instance.
  * @filename: path to the foreign calendar file
  * @display_name: optional display name, or %NULL/empty to use the basename of
  *                @filename
@@ -101,7 +106,7 @@ gboolean orage_application_add_foreign_path (OrageApplication *self,
 
 /**
  * orage_application_remove_foreign_path:
- * @self: an #OrageApplication
+ * @self: an #OrageApplication instance.
  * @filename: path to the foreign calendar file to remove
  *
  * Removes a previously added foreign calendar file from the application.
@@ -114,6 +119,21 @@ gboolean orage_application_add_foreign_path (OrageApplication *self,
  */
 gboolean orage_application_remove_foreign_path (OrageApplication *self,
                                                 const gchar *filename);
+
+/**
+ * orage_application_open_date:
+ * @self: an #OrageApplication instance.
+ * @gdt: (nullable): the date to open, or %NULL to open today's date.
+ *
+ * Opens the application window showing the specified date.
+ * If @gdt is %NULL, the function defaults to the current day.
+ *
+ * The operation is expected to succeed under normal application runtime
+ * conditions, and the function always returns %TRUE.
+ *
+ * Returns: %TRUE on completion.
+ */
+gboolean orage_application_open_date (OrageApplication *self, GDateTime *gdt);
 
 G_END_DECLS
 
