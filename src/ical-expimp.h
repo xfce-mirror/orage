@@ -25,7 +25,7 @@
 
 #include <glib.h>
 
-gboolean xfical_import_file (GFile *file);
+gboolean orage_calendar_import_file (GFile *file, const gchar *id);
 gboolean xfical_export_file (GFile *file, const gchar *uids);
 
 gboolean xfical_import_by_path (const gchar *file_name);

@@ -22,6 +22,7 @@
 
 #include "functions.h"
 #include "orage-application.h"
+#include "orage-time-utils.h"
 
 #include <gio/gio.h>
 #include <glib.h>
@@ -29,17 +30,25 @@
 
 #define ORAGE_DBUS_SERVICE ORAGE_APP_ID
 #define ORAGE_DBUS_PATH "/org/xfce/orage"
+#define ORAGE_DBUS_METHOD_LOAD_FILE "LoadFile"
 #define ORAGE_DBUS_METHOD_OPEN_FILE "OpenFile"
 #define ORAGE_DBUS_METHOD_IMPORT_FILE "ImportFile"
 #define ORAGE_DBUS_METHOD_EXPORT_FILE "ExportFile"
 #define ORAGE_DBUS_METHOD_ADD_FOREIGN_FILE "AddForeign"
 #define ORAGE_DBUS_METHOD_REMOVE_FOREIGN_FILE "RemoveForeign"
+#define ORAGE_DBUS_METHOD_OPEN_DAY "OpenDay"
 
 static const gchar introspection_xml[] =
     "<node>"
     "  <interface name='" ORAGE_DBUS_SERVICE "'>"
+    "    <method name='" ORAGE_DBUS_METHOD_LOAD_FILE "'>"
+    "      <arg type='s' name='filename' direction='in'/>"
+    "      <arg type='s' name='calendar_name' direction='in'/>" /* Optional. Destination calendar, main,or non present=orage.ics, any other name external calendar */
+    "      <arg type='b' name='success' direction='out'/>"
+    "    </method>"
     "    <method name='" ORAGE_DBUS_METHOD_OPEN_FILE "'>"
     "      <arg type='s' name='filename' direction='in'/>"
+    "      <arg type='s' name='calendar_name' direction='in'/>" /* Optional. Destination calendar, main,or non present=orage.ics, any other name external calendar */
     "      <arg type='b' name='success' direction='out'/>"
     "    </method>"
     "    <method name='" ORAGE_DBUS_METHOD_IMPORT_FILE "'>"
@@ -48,17 +57,26 @@ static const gchar introspection_xml[] =
     "    </method>"
     "    <method name='" ORAGE_DBUS_METHOD_EXPORT_FILE "'>"
     "      <arg type='s' name='filename' direction='in'/>"
+    "      <arg type='s' name='file' direction='in'/>" /* Deprecated, only for backward compatibility, use filename */
+    "      <arg type='b' name='mode' direction='in'/>" /* Deprecated, only for backward compatibility, no replacement */
     "      <arg type='s' name='uids' direction='in'/>"
     "      <arg type='b' name='success' direction='out'/>"
     "    </method>"
     "    <method name='" ORAGE_DBUS_METHOD_ADD_FOREIGN_FILE "'>"
     "      <arg type='s' name='filename' direction='in'/>"
+    "      <arg type='s' name='file' direction='in'/>" /* Deprecated, only for backward compatibility, use filename */
+    "      <arg type='b' name='mode' direction='in'/>" /* Deprecated, only for backward compatibility, no replacement */
     "      <arg type='s' name='display_name' direction='in'/>"
     "      <arg type='b' name='read_only' direction='in'/>"
     "      <arg type='b' name='success' direction='out'/>"
     "    </method>"
     "    <method name='" ORAGE_DBUS_METHOD_REMOVE_FOREIGN_FILE "'>"
     "      <arg type='s' name='filename' direction='in'/>"
+    "      <arg type='s' name='file' direction='in'/>" /* Deprecated, only for backward compatibility, use filename */
+    "      <arg type='b' name='success' direction='out'/>"
+    "    </method>"
+    "    <method name='" ORAGE_DBUS_METHOD_OPEN_DAY "'>"
+    "      <arg type='s' name='date' direction='in'/>"
     "      <arg type='b' name='success' direction='out'/>"
     "    </method>"
     "  </interface>"
@@ -80,6 +98,37 @@ static const GDBusInterfaceVTable interface_vtable =
     NULL,
 };
 
+static GDateTime *date_time_from_string (const gchar *text)
+{
+    GDateTime *gdt;
+
+    if (xfce_str_is_empty (text))
+        return NULL;
+
+    gdt = g_date_time_new_from_iso8601 (text, NULL);
+    if (gdt)
+        return gdt;
+
+    /* "YYYY-MM-DD" */
+    if (g_regex_match_simple ("^[0-9]{4}-[0-9]{2}-[0-9]{2}$", text, 0, 0))
+    {
+        gint y, m, d;
+        sscanf (text, "%4d-%2d-%2d", &y, &m, &d);
+        return g_date_time_new_local (y, m, d, 0, 0, 0);
+    }
+
+    /* "YYYY-MM-DD HH:MM:SS" (local time) */
+    if (g_regex_match_simple (
+        "^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$", text, 0, 0))
+    {
+        gint y, m, d, H, M, S;
+        sscanf (text, "%4d-%2d-%2d %2d:%2d:%2d", &y, &m, &d, &H, &M, &S);
+        return g_date_time_new_local (y, m, d, H, M, S);
+    }
+
+    return NULL;
+}
+
 static void on_method_call (G_GNUC_UNUSED GDBusConnection *connection,
                             G_GNUC_UNUSED const gchar *sender,
                             G_GNUC_UNUSED const gchar *object_path,
@@ -90,17 +139,28 @@ static void on_method_call (G_GNUC_UNUSED GDBusConnection *connection,
                             gpointer user_data)
 {
     OrageApplication *app;
+    GDateTime *gdt;
     gboolean success;
     gboolean ro;
     const gchar *filename;
+    const gchar *date;
     const gchar *display_name;
     const gchar *uids;
+    const gchar *destination;
 
     app = ORAGE_APPLICATION (user_data);
 
     g_debug ("%s: '%s' called", G_STRFUNC, method_name);
 
-    if (g_strcmp0 (method_name, ORAGE_DBUS_METHOD_OPEN_FILE) == 0)
+    if (g_strcmp0 (method_name, ORAGE_DBUS_METHOD_LOAD_FILE) == 0)
+    {
+        g_variant_get (parameters, "(&s&s)", &filename, &destination);
+        success = orage_application_load_path (app, filename, destination);
+
+        g_dbus_method_invocation_return_value (invocation, g_variant_new ("(b)",
+                                               success));
+    }
+    else if (g_strcmp0 (method_name, ORAGE_DBUS_METHOD_OPEN_FILE) == 0)
     {
         g_variant_get (parameters, "(&s)", &filename);
         success = orage_application_open_path (app, filename);
@@ -139,6 +199,22 @@ static void on_method_call (G_GNUC_UNUSED GDBusConnection *connection,
     {
         g_variant_get (parameters, "(&s)", &filename);
         success = orage_application_remove_foreign_path (app, filename);
+        g_dbus_method_invocation_return_value (invocation, g_variant_new ("(b)",
+                                               success));
+    }
+    else if (g_strcmp0 (method_name, ORAGE_DBUS_METHOD_OPEN_DAY) == 0)
+    {
+        g_variant_get (parameters, "(&s)", &date);
+        gdt = date_time_from_string (date);
+        if (gdt)
+            success = orage_application_open_date (app, gdt);
+        else
+        {
+            g_warning ("invalid date string '%s'", date);
+            success = FALSE;
+        }
+
+        orage_gdatetime_unref (gdt);
         g_dbus_method_invocation_return_value (invocation, g_variant_new ("(b)",
                                                success));
     }
