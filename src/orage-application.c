@@ -749,7 +749,7 @@ static void orage_application_init (OrageApplication *self)
             .flags = G_OPTION_FLAG_NONE,
             .arg = G_OPTION_ARG_NONE,
             .arg_data = NULL,
-            .description = _("Add new appointment"),
+            .description = _("Create a new appointment"),
             .arg_description = NULL,
         },
         {
@@ -758,7 +758,7 @@ static void orage_application_init (OrageApplication *self)
             .flags = G_OPTION_FLAG_NONE,
             .arg = G_OPTION_ARG_NONE,
             .arg_data = NULL,
-            .description = _("Show preferences form"),
+            .description = _("Open the preferences dialog"),
             .arg_description = NULL,
         },
         {
@@ -767,7 +767,7 @@ static void orage_application_init (OrageApplication *self)
             .flags = G_OPTION_FLAG_NONE,
             .arg = G_OPTION_ARG_NONE,
             .arg_data = NULL,
-            .description = _("Make Orage visible/unvisible"),
+            .description = _("Toggle Orage visibility"),
             .arg_description = NULL,
         },
         {
@@ -776,7 +776,7 @@ static void orage_application_init (OrageApplication *self)
             .flags = G_OPTION_FLAG_NONE,
             .arg = G_OPTION_ARG_FILENAME,
             .arg_data = NULL,
-            .description = _("Add a foreign file"),
+            .description = _("Add a foreign calendar file"),
             .arg_description = "<file>:[RW]:[name]",
         },
         {
@@ -785,7 +785,7 @@ static void orage_application_init (OrageApplication *self)
             .flags = G_OPTION_FLAG_NONE,
             .arg = G_OPTION_ARG_FILENAME,
             .arg_data = NULL,
-            .description = _("Remove a foreign file"),
+            .description = _("Remove a foreign calendar file"),
             .arg_description = "<file>",
         },
         {
@@ -794,7 +794,7 @@ static void orage_application_init (OrageApplication *self)
             .flags = G_OPTION_FLAG_NONE,
             .arg = G_OPTION_ARG_FILENAME,
             .arg_data = NULL,
-            .description = _("Import appointments from file to Orage"),
+            .description = _("Import appointments into the default calendar"),
             .arg_description = "<file>:[appointment...]",
         },
         {
@@ -803,7 +803,7 @@ static void orage_application_init (OrageApplication *self)
             .flags = G_OPTION_FLAG_NONE,
             .arg = G_OPTION_ARG_FILENAME,
             .arg_data = NULL,
-            .description = _("Export appointments from Orage to file"),
+            .description = _("Export appointments to a file"),
             .arg_description = "<file>:[appointment...]",
         },
         {
@@ -812,7 +812,7 @@ static void orage_application_init (OrageApplication *self)
             .flags = G_OPTION_FLAG_NONE,
             .arg = G_OPTION_ARG_NONE,
             .arg_data = NULL,
-            .description = _("Show version of Orage"),
+            .description = _("Show Orage version"),
             .arg_description = NULL,
         },
         {
@@ -967,7 +967,7 @@ gboolean orage_application_remove_foreign_path (
     return orage_foreign_file_remove (filename);
 }
 
-gboolean orage_application_open_date (OrageApplication *self, GDateTime *gdt)
+void orage_application_open_date (OrageApplication *self, GDateTime *gdt)
 {
     if (gdt == NULL)
         orage_window_select_today (ORAGE_WINDOW (self->window));
@@ -975,6 +975,4 @@ gboolean orage_application_open_date (OrageApplication *self, GDateTime *gdt)
         orage_window_select_date (ORAGE_WINDOW (self->window), gdt);
 
     (void)create_el_win (NULL);
-
-    return TRUE;
 }
