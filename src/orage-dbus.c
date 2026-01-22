@@ -43,41 +43,28 @@ static const gchar introspection_xml[] =
     "  <interface name='" ORAGE_DBUS_SERVICE "'>"
     "    <method name='" ORAGE_DBUS_METHOD_LOAD_FILE "'>"
     "      <arg type='s' name='filename' direction='in'/>"
-    "      <arg type='s' name='calendar_name' direction='in'/>" /* Optional. Destination calendar, main,or non present=orage.ics, any other name external calendar */
-    "      <arg type='b' name='success' direction='out'/>"
+    "      <arg type='s' name='calendar_name' direction='in'/>"
     "    </method>"
     "    <method name='" ORAGE_DBUS_METHOD_OPEN_FILE "'>"
     "      <arg type='s' name='filename' direction='in'/>"
-    "      <arg type='s' name='calendar_name' direction='in'/>" /* Optional. Destination calendar, main,or non present=orage.ics, any other name external calendar */
-    "      <arg type='b' name='success' direction='out'/>"
     "    </method>"
     "    <method name='" ORAGE_DBUS_METHOD_IMPORT_FILE "'>"
     "      <arg type='s' name='filename' direction='in'/>"
-    "      <arg type='b' name='success' direction='out'/>"
     "    </method>"
     "    <method name='" ORAGE_DBUS_METHOD_EXPORT_FILE "'>"
     "      <arg type='s' name='filename' direction='in'/>"
-    "      <arg type='s' name='file' direction='in'/>" /* Deprecated, only for backward compatibility, use filename */
-    "      <arg type='b' name='mode' direction='in'/>" /* Deprecated, only for backward compatibility, no replacement */
     "      <arg type='s' name='uids' direction='in'/>"
-    "      <arg type='b' name='success' direction='out'/>"
     "    </method>"
     "    <method name='" ORAGE_DBUS_METHOD_ADD_FOREIGN_FILE "'>"
     "      <arg type='s' name='filename' direction='in'/>"
-    "      <arg type='s' name='file' direction='in'/>" /* Deprecated, only for backward compatibility, use filename */
-    "      <arg type='b' name='mode' direction='in'/>" /* Deprecated, only for backward compatibility, no replacement */
     "      <arg type='s' name='display_name' direction='in'/>"
     "      <arg type='b' name='read_only' direction='in'/>"
-    "      <arg type='b' name='success' direction='out'/>"
     "    </method>"
     "    <method name='" ORAGE_DBUS_METHOD_REMOVE_FOREIGN_FILE "'>"
     "      <arg type='s' name='filename' direction='in'/>"
-    "      <arg type='s' name='file' direction='in'/>" /* Deprecated, only for backward compatibility, use filename */
-    "      <arg type='b' name='success' direction='out'/>"
     "    </method>"
     "    <method name='" ORAGE_DBUS_METHOD_OPEN_DAY "'>"
     "      <arg type='s' name='date' direction='in'/>"
-    "      <arg type='b' name='success' direction='out'/>"
     "    </method>"
     "  </interface>"
     "</node>";
@@ -140,7 +127,6 @@ static void on_method_call (G_GNUC_UNUSED GDBusConnection *connection,
 {
     OrageApplication *app;
     GDateTime *gdt;
-    gboolean success;
     gboolean ro;
     const gchar *filename;
     const gchar *date;
@@ -155,26 +141,47 @@ static void on_method_call (G_GNUC_UNUSED GDBusConnection *connection,
     if (g_strcmp0 (method_name, ORAGE_DBUS_METHOD_LOAD_FILE) == 0)
     {
         g_variant_get (parameters, "(&s&s)", &filename, &destination);
-        success = orage_application_load_path (app, filename, destination);
 
-        g_dbus_method_invocation_return_value (invocation, g_variant_new ("(b)",
-                                               success));
+        if (orage_application_load_path (app, filename, destination))
+            g_dbus_method_invocation_return_value (invocation, NULL);
+        else
+        {
+            g_dbus_method_invocation_return_error (invocation,
+                                                   G_DBUS_ERROR,
+                                                   G_DBUS_ERROR_FILE_NOT_FOUND,
+                                                   "Could not load '%s'",
+                                                   filename);
+        }
     }
     else if (g_strcmp0 (method_name, ORAGE_DBUS_METHOD_OPEN_FILE) == 0)
     {
         g_variant_get (parameters, "(&s)", &filename);
-        success = orage_application_open_path (app, filename);
 
-        g_dbus_method_invocation_return_value (invocation, g_variant_new ("(b)",
-                                               success));
+        if (orage_application_open_path (app, filename))
+            g_dbus_method_invocation_return_value (invocation, NULL);
+        else
+        {
+            g_dbus_method_invocation_return_error (invocation,
+                                                   G_DBUS_ERROR,
+                                                   G_DBUS_ERROR_FILE_NOT_FOUND,
+                                                   "Could not open '%s'",
+                                                   filename);
+        }
     }
     else if (g_strcmp0 (method_name, ORAGE_DBUS_METHOD_IMPORT_FILE) == 0)
     {
         g_variant_get (parameters, "(&s)", &filename);
-        success = orage_application_import_path (app, filename);
 
-        g_dbus_method_invocation_return_value (invocation, g_variant_new ("(b)",
-                                               success));
+        if (orage_application_import_path (app, filename))
+            g_dbus_method_invocation_return_value (invocation, NULL);
+        else
+        {
+            g_dbus_method_invocation_return_error (invocation,
+                                                   G_DBUS_ERROR,
+                                                   G_DBUS_ERROR_FILE_NOT_FOUND,
+                                                   "Could not import '%s'",
+                                                   filename);
+        }
     }
     else if (g_strcmp0 (method_name, ORAGE_DBUS_METHOD_EXPORT_FILE) == 0)
     {
@@ -183,40 +190,66 @@ static void on_method_call (G_GNUC_UNUSED GDBusConnection *connection,
         if (xfce_str_is_empty (uids))
             uids = NULL;
 
-        success = orage_application_export_path (app, filename, uids);
-        g_dbus_method_invocation_return_value (invocation, g_variant_new ("(b)",
-                                               success));
+        if (orage_application_export_path (app, filename, uids))
+            g_dbus_method_invocation_return_value (invocation, NULL);
+        else
+        {
+            g_dbus_method_invocation_return_error (invocation,
+                                                   G_DBUS_ERROR,
+                                                   G_DBUS_ERROR_FILE_NOT_FOUND,
+                                                   "Could not export to '%s'",
+                                                   filename);
+        }
     }
     else if (g_strcmp0 (method_name, ORAGE_DBUS_METHOD_ADD_FOREIGN_FILE) == 0)
     {
         g_variant_get (parameters, "(&s&sb)", &filename, &display_name, &ro);
-        success = orage_application_add_foreign_path (app, filename,
-                                                      display_name, ro);
-        g_dbus_method_invocation_return_value (invocation, g_variant_new ("(b)",
-                                               success));
+
+        if (orage_application_add_foreign_path (app, filename, display_name, ro))
+            g_dbus_method_invocation_return_value (invocation, NULL);
+        else
+        {
+            g_dbus_method_invocation_return_error (invocation,
+                                                   G_DBUS_ERROR,
+                                                   G_DBUS_ERROR_FILE_NOT_FOUND,
+                                                   "Could not add foreign file '%s'",
+                                                   filename);
+        }
     }
     else if (g_strcmp0 (method_name, ORAGE_DBUS_METHOD_REMOVE_FOREIGN_FILE) == 0)
     {
         g_variant_get (parameters, "(&s)", &filename);
-        success = orage_application_remove_foreign_path (app, filename);
-        g_dbus_method_invocation_return_value (invocation, g_variant_new ("(b)",
-                                               success));
+
+        if (orage_application_remove_foreign_path (app, filename))
+            g_dbus_method_invocation_return_value (invocation, NULL);
+        else
+        {
+            g_dbus_method_invocation_return_error (invocation,
+                                                   G_DBUS_ERROR,
+                                                   G_DBUS_ERROR_FILE_NOT_FOUND,
+                                                   "Could not remove '%s'",
+                                                   filename);
+        }
     }
     else if (g_strcmp0 (method_name, ORAGE_DBUS_METHOD_OPEN_DAY) == 0)
     {
         g_variant_get (parameters, "(&s)", &date);
         gdt = date_time_from_string (date);
-        if (gdt)
-            success = orage_application_open_date (app, gdt);
-        else
+        if (gdt == NULL)
         {
             g_warning ("invalid date string '%s'", date);
-            success = FALSE;
+            g_dbus_method_invocation_return_error (invocation,
+                                                   G_DBUS_ERROR,
+                                                   G_DBUS_ERROR_INVALID_ARGS,
+                                                   "Invalid date string '%s'",
+                                                   date);
         }
-
-        orage_gdatetime_unref (gdt);
-        g_dbus_method_invocation_return_value (invocation, g_variant_new ("(b)",
-                                               success));
+        else
+        {
+            orage_application_open_date (app, gdt);
+            orage_gdatetime_unref (gdt);
+            g_dbus_method_invocation_return_value (invocation, NULL);
+        }
     }
     else
         g_warning ("unknown DBUS method name '%s'", method_name);

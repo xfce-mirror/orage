@@ -127,13 +127,8 @@ gboolean orage_application_remove_foreign_path (OrageApplication *self,
  *
  * Opens the application window showing the specified date.
  * If @gdt is %NULL, the function defaults to the current day.
- *
- * The operation is expected to succeed under normal application runtime
- * conditions, and the function always returns %TRUE.
- *
- * Returns: %TRUE on completion.
  */
-gboolean orage_application_open_date (OrageApplication *self, GDateTime *gdt);
+void orage_application_open_date (OrageApplication *self, GDateTime *gdt);
 
 G_END_DECLS
 
