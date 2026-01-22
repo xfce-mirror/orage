@@ -148,7 +148,7 @@ static void add_event_with_id (icalcomponent *c, gboolean *ical_opened,
         tmp = ic_generate_uid ();
         uid = g_strconcat (id, tmp, NULL);
         g_free (tmp);
-        icalcomponent_add_property (ca,  icalproperty_new_uid (uid));
+        icalcomponent_add_property (ca, icalproperty_new_uid (uid));
         g_message ("generated UID '%s'", uid);
         g_free (uid);
     }
@@ -299,7 +299,7 @@ static gboolean pre_format(const gchar *file_name_in,
  */
 static gboolean pre_format_gfile_to_string (GFile *file_in,
                                             GString **out,
-                                            GError  **error)
+                                            GError **error)
 {
     gchar *text, *tmp, *tmp2, *tmp3;
     gsize text_len;
