@@ -45,11 +45,21 @@ specific destination calendar.
 **Parameters**
 - `filename` (`s`): Path to the calendar file to load.
 - `calendar_name` (`s`): Optional destination calendar name.
-  - `"main"` or empty → default calendar (`orage.ics`)
+  - empty → default calendar (`orage.ics`)
   - Any other value → external calendar
 
 **Errors**
 - `org.freedesktop.DBus.Error.FileNotFound`
+
+**Example: Load a calendar file into Orage**
+```sh
+gdbus call --session \
+  --dest org.xfce.orage \
+  --object-path /org/xfce/orage \
+  --method org.xfce.orage.LoadFile \
+  "/path/to/calendar.ics" \
+  ""
+```
 
 ---
 
@@ -57,15 +67,24 @@ specific destination calendar.
 
 **Name**: `OpenFile`
 
-Open a calendar file in Orage.
+Open a calendar file in Orage import dialog.
 
-This method opens the specified file and makes it visible in the UI.
+This method opens the specified file and makes it visible in the import dialog.
 
 **Parameters**
 - `filename` (`s`): Path to the calendar file.
 
 **Errors**
 - `org.freedesktop.DBus.Error.FileNotFound`
+
+**Example: Open calendar file with import dialog**
+```sh
+gdbus call --session \
+  --dest org.xfce.orage \
+  --object-path /org/xfce/orage \
+  --method org.xfce.orage.OpenFile \
+  "/path/to/calendar.ics"
+```
 
 ---
 
@@ -82,6 +101,15 @@ The contents of the file are imported into the default calendar.
 
 **Errors**
 - `org.freedesktop.DBus.Error.FileNotFound`
+
+**Example: Import from file**
+```sh
+gdbus call --session \
+  --dest org.xfce.orage \
+  --object-path /org/xfce/orage \
+  --method org.xfce.orage.ImportFile \
+  "/path/to/input.ics"
+```
 
 ---
 
@@ -101,6 +129,15 @@ If no UIDs are specified, all appointments are exported.
 **Errors**
 - `org.freedesktop.DBus.Error.FileNotFound`
 
+**Example: Export to file**
+```sh
+gdbus call --session \
+  --dest org.xfce.orage \
+  --object-path /org/xfce/orage \
+  --method org.xfce.orage.ExportFile \
+  "/path/to/output.ics" \
+  ""
+
 ---
 
 ### AddForeign
@@ -119,6 +156,18 @@ The calendar can be added as read-only or read-write.
 **Errors**
 - `org.freedesktop.DBus.Error.FileNotFound`
 
+**Example: Add a foreign calendar (read-only)**
+
+```sh
+gdbus call --session \
+  --dest org.xfce.orage \
+  --object-path /org/xfce/orage \
+  --method org.xfce.orage.AddForeign \
+  "/path/to/external.ics" \
+  "External Calendar" \
+  true
+```
+
 ---
 
 ### RemoveForeign
@@ -132,6 +181,16 @@ Remove a previously added foreign calendar file.
 
 **Errors**
 - `org.freedesktop.DBus.Error.FileNotFound`
+
+**Example: Remove a foreign calendar**
+
+```sh
+gdbus call --session \
+  --dest org.xfce.orage \
+  --object-path /org/xfce/orage \
+  --method org.xfce.orage.RemoveForeign \
+  "/path/to/external.ics"
+```
 
 ---
 
@@ -154,6 +213,17 @@ The date string supports multiple formats.
 **Errors**
 - `org.freedesktop.DBus.Error.InvalidArgs`
 
+**Example: Open specific day**
+Using `gdbus` to open Orage on a specific day:
+
+```sh
+gdbus call --session \
+  --dest org.xfce.orage \
+  --object-path /org/xfce/orage \
+  --method org.xfce.orage.OpenDay \
+  "2026-01-22"
+```
+
 ---
 
 ## Error Handling
@@ -174,15 +244,3 @@ added in future releases, but existing methods and parameters should remain
 backward compatible.
 
 ---
-
-## Example Usage
-
-Using `gdbus` to open Orage on a specific day:
-
-```sh
-gdbus call --session \
-  --dest org.xfce.orage \
-  --object-path /org/xfce/orage \
-  --method org.xfce.orage.OpenDay \
-  "2026-01-22"
-```
