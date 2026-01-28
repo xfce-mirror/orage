@@ -24,6 +24,8 @@ orage_sources = [
   'orage-category.h',
   'orage-css.c',
   'orage-css.h',
+  'orage-dbus.c',
+  'orage-dbus.h',
   'orage-event.c',
   'orage-event.h',
   'orage-i18n.h',

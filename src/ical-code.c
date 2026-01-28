@@ -231,12 +231,8 @@ gboolean ic_internal_file_open(icalcomponent **p_ical
     else 
         *p_fical = icalset_new_file(file_icalpath);
     if (*p_fical == NULL) {
-        if (test)
-            g_warning ("%s: Could not open ical file (%s) %s", G_STRFUNC
-                    , file_icalpath, icalerror_strerror(icalerrno));
-        else
-            g_critical ("%s: Could not open ical file (%s) %s", G_STRFUNC
-                    , file_icalpath, icalerror_strerror(icalerrno));
+        g_warning ("%s: could not open ICAL file '%s': %s)", G_STRFUNC,
+                   file_icalpath, g_strerror (errno));
         return(FALSE);
     }
     else { /* file open, let's find last VCALENDAR entry */

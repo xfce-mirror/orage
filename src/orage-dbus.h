@@ -1,7 +1,5 @@
 /*
- * Copyright (c) 2021-2025 Erkki Moorits
- * Copyright (c) 2005-2011 Juha Kautto  (juha at xfce.org)
- * Copyright (c) 2004-2005 Mickael Graf (korbinus at xfce.org)
+ * Copyright (c) 2025 Erkki Moorits
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,16 +18,18 @@
  *     Boston, MA 02110-1301 USA
  */
 
-#ifndef ICAL_EXPIMP_H
-#define ICAL_EXPIMP_H 1
+#ifndef ORAGE_DBUS_H
+#define ORAGE_DBUS_H 1
+
+#include "orage-application.h"
 
 #include <glib.h>
 
-gboolean orage_calendar_import_file (GFile *file, const gchar *id);
-gboolean xfical_export_file (GFile *file, const gchar *uids);
+G_BEGIN_DECLS
 
-gboolean xfical_import_by_path (const gchar *file_name);
-gboolean xfical_export_by_path (const gchar *file_name,
-                                gint type,
-                                const gchar *uids);
+gboolean orage_dbus_register_service (OrageApplication *app,
+                                      GError **error);
+
+G_END_DECLS
+
 #endif
