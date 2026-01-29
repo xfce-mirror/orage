@@ -12,8 +12,8 @@
 # Xfce Bot <transifex@xfce.org>, 2025
 # Tobias Bannert <tobannert@gmail.com>, 2025
 # Ingo Brückl <ib@oddnet.de>, 2025
-# Andreas Eitel <github-aneitel@online.de>, 2025
 # Georg Eckert <eckert.georg@gmx.de>, 2026
+# Andreas Eitel <github-aneitel@online.de>, 2026
 # 
 #, fuzzy
 msgid ""
@@ -22,7 +22,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2026-01-29 00:55+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Georg Eckert <eckert.georg@gmx.de>, 2026\n"
+"Last-Translator: Andreas Eitel <github-aneitel@online.de>, 2026\n"
 "Language-Team: German (https://app.transifex.com/xfce/teams/16840/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -580,27 +580,27 @@ msgstr "Einstellungsdialog öffnen"
 
 #: src/orage-application.c:770
 msgid "Toggle Orage visibility"
-msgstr ""
+msgstr "Sichtbarkeit von Orage umschalten"
 
 #: src/orage-application.c:779
 msgid "Add a foreign calendar file"
-msgstr ""
+msgstr "Fremde Kalenderdatei hinzufügen"
 
 #: src/orage-application.c:788
 msgid "Remove a foreign calendar file"
-msgstr ""
+msgstr "Entfernen einer fremden Kalenderdatei"
 
 #: src/orage-application.c:797
 msgid "Import appointments into the default calendar"
-msgstr ""
+msgstr "Termine in den Standardkalender importieren"
 
 #: src/orage-application.c:806
 msgid "Export appointments to a file"
-msgstr ""
+msgstr "Termine in eine Datei exportieren"
 
 #: src/orage-application.c:815
 msgid "Show Orage version"
-msgstr ""
+msgstr "Version von Orage anzeigen"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
