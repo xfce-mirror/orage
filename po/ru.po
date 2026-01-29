@@ -9,7 +9,6 @@
 # Olesya Gerasimenko <gammaray@basealt.ru>, 2022
 # Igor Vornovskii, 2023
 # Владимир <vladi105@yandex.ru>, 2023
-# Nick Schermer <nick@xfce.org>, 2023
 # Victor Golovanenko <drygdryg2014@yandex.ru>, 2024
 # Xfce Bot <transifex@xfce.org>, 2024
 # Andrei Stepanov, 2024
@@ -18,15 +17,16 @@
 # Aleksey Kabanov <ak099@mail.ru>, 2025
 # Темак, 2025
 # Igor <f2404@yandex.ru>, 2025
+# Nick Schermer <nick@xfce.org>, 2026
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2025-10-25 12:59+0200\n"
+"POT-Creation-Date: 2026-01-29 00:55+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Igor <f2404@yandex.ru>, 2025\n"
+"Last-Translator: Nick Schermer <nick@xfce.org>, 2026\n"
 "Language-Team: Russian (https://app.transifex.com/xfce/teams/16840/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -90,7 +90,7 @@ msgstr "Сегодня"
 #. File menu stuff
 #. ********* File menu *********
 #. File menu
-#: src/event-list.c:1125 src/interface.c:859
+#: src/event-list.c:1125 src/interface.c:862
 #: src/orage-appointment-window.c:2914 src/orage-week-window.c:352
 #: src/orage-window-classic.c:281 src/orage-window-next.c:130
 msgid "_File"
@@ -142,7 +142,7 @@ msgstr "Обновить"
 msgid "Find"
 msgstr "Найти"
 
-#: src/event-list.c:1238 src/interface.c:877 src/orage-week-window.c:472
+#: src/event-list.c:1238 src/interface.c:880 src/orage-week-window.c:472
 #: src/orage-window-next.c:136
 msgid "Close"
 msgstr "Закрыть"
@@ -248,7 +248,7 @@ msgstr ""
 "\t5. Тип события:\n"
 "\t\tE — «событие», T — «задача», J — «дневник»"
 
-#: src/ical-code.c:841
+#: src/ical-code.c:837
 msgid "Orage default alarm"
 msgstr "Будильник по умолчанию"
 
@@ -266,79 +266,79 @@ msgstr "Файлы календаря"
 msgid "All Files"
 msgstr "Все файлы"
 
-#: src/interface.c:643
+#: src/interface.c:646
 msgid "Current foreign files"
 msgstr "Текущие внешние файлы"
 
-#: src/interface.c:666
+#: src/interface.c:669
 msgid "READ ONLY"
 msgstr "ТОЛЬКО ДЛЯ ЧТЕНИЯ"
 
-#: src/interface.c:668
+#: src/interface.c:671
 msgid "READ WRITE"
 msgstr "ЧТЕНИЕ И ЗАПИСЬ"
 
-#: src/interface.c:673 src/orage-appointment-window.c:2370
+#: src/interface.c:676 src/orage-appointment-window.c:2370
 msgid "_Remove"
 msgstr "_Удалить"
 
-#: src/interface.c:692
+#: src/interface.c:695
 msgid "***** No foreign files *****"
 msgstr "***** Нет внешних файлов *****"
 
-#: src/interface.c:707
+#: src/interface.c:710
 msgid "Foreign file add failed"
 msgstr "Ошибка при добавлении внешнего файла"
 
-#: src/interface.c:715
+#: src/interface.c:718
 msgid "Orage can only handle 10 foreign files. Limit reached"
 msgstr ""
 
-#: src/interface.c:725
+#: src/interface.c:728
 msgid "Filename is empty."
 msgstr "Пустое имя файла."
 
-#: src/interface.c:735
+#: src/interface.c:738
 msgid "Name is empty."
 msgstr "Пустое имя."
 
-#: src/interface.c:746
+#: src/interface.c:749
 msgid "File does not exist."
 msgstr "Файл не существует."
 
-#: src/interface.c:758
+#: src/interface.c:761
 msgid "Same filename already exists in Orage."
 msgstr "Файл с таким именем уже существует в Orage."
 
-#: src/interface.c:769
+#: src/interface.c:772
 msgid "Same name already exists in Orage."
 msgstr "Такое имя уже существует в Orage."
 
-#: src/interface.c:1023
+#: src/interface.c:1026
 msgid "Import/export"
 msgstr "Импорт/экспорт"
 
-#: src/interface.c:1030
+#: src/interface.c:1033
 msgid "Import"
 msgstr "Импорт"
 
-#: src/interface.c:1038
+#: src/interface.c:1041
 msgid "Read from file:"
 msgstr "Прочитать из файла:"
 
-#: src/interface.c:1048 src/interface.c:1094 src/interface.c:1271
-#: src/interface.c:1369 src/interface.c:1458
+#: src/interface.c:1051 src/interface.c:1097 src/interface.c:1274
+#: src/interface.c:1372 src/interface.c:1461
 #: src/orage-appointment-window.c:3957 src/parameters.c:395
 #: src/parameters.c:764 src/reminder.c:631
 msgid "_Open"
 msgstr "_Открыть"
 
-#: src/interface.c:1055 src/interface.c:1101 src/interface.c:1278
-#: src/interface.c:1376 src/orage-appointment-window.c:4120
+#: src/interface.c:1058 src/interface.c:1104 src/interface.c:1281
+#: src/interface.c:1379 src/orage-appointment-window.c:4120
 msgid "_Save"
 msgstr "_Сохранить"
 
-#: src/interface.c:1068
+#: src/interface.c:1071
 msgid ""
 "Separate filenames with comma(,).\n"
 " NOTE: comma is not valid character in filenames for Orage."
@@ -346,27 +346,27 @@ msgstr ""
 "Разделите имена файлов запятыми.\n"
 "Внимание! Запятые недопустимы в именах файлов Orage."
 
-#: src/interface.c:1073
+#: src/interface.c:1076
 msgid "Export"
 msgstr "Экспорт"
 
-#: src/interface.c:1081
+#: src/interface.c:1084
 msgid "Write to file:"
 msgstr "Записать в файл:"
 
-#: src/interface.c:1116 src/interface.c:1134
+#: src/interface.c:1119 src/interface.c:1137
 msgid "Select"
 msgstr "Выбрать"
 
-#: src/interface.c:1121
+#: src/interface.c:1124
 msgid "All appointments"
 msgstr "Все встречи"
 
-#: src/interface.c:1140
+#: src/interface.c:1143
 msgid "Named appointments:"
 msgstr "Поименованные встречи:"
 
-#: src/interface.c:1159
+#: src/interface.c:1162
 msgid ""
 "Note that only main file appointments are read.\n"
 "Archived and Foreign events are not exported."
@@ -374,7 +374,7 @@ msgstr ""
 "Внимание! Прочитан только основной файл встреч.\n"
 "Архивные и внешние события не экспортированы."
 
-#: src/interface.c:1162
+#: src/interface.c:1165
 msgid ""
 "Note that only main file appointments are read.\n"
 "Foreign events are not exported."
@@ -382,37 +382,37 @@ msgstr ""
 "Внимание! Прочитан только основной файл встреч.\n"
 "Внешние события не экспортированы."
 
-#: src/interface.c:1165
+#: src/interface.c:1168
 msgid "You can easily drag these from event-list window."
 msgstr "Можно легко перетащить эти события из окна со списком событий."
 
-#: src/interface.c:1167
+#: src/interface.c:1170
 msgid "Orage appointment UIDs separated by commas."
 msgstr "UID встреч Orage, разделённых запятыми."
 
-#: src/interface.c:1173
+#: src/interface.c:1176
 msgid "Archive"
 msgstr "Архивировать"
 
-#: src/interface.c:1182 src/interface.c:1204
+#: src/interface.c:1185 src/interface.c:1207
 #: src/orage-appointment-window.c:4099
 msgid "_Execute"
 msgstr "_Исполнить"
 
-#: src/interface.c:1188
+#: src/interface.c:1191
 #, c-format
 msgid "Archive now (threshold: %d months)"
 msgstr "Архивировать сейчас (время хранения: %d месяцев)"
 
-#: src/interface.c:1199
+#: src/interface.c:1202
 msgid "You can change archive threshold in parameters"
 msgstr "Время хранения в архиве можно изменить в параметрах"
 
-#: src/interface.c:1211
+#: src/interface.c:1214
 msgid "Revert archive now"
 msgstr "Обратить архив сейчас"
 
-#: src/interface.c:1218
+#: src/interface.c:1221
 msgid ""
 "Return all archived events into main orage file and remove arch file.\n"
 "This is useful for example when doing export and moving orage\n"
@@ -422,31 +422,31 @@ msgstr ""
 "Это полезно, например, при экспорте и перемещении событий Orage \n"
 "на другие системы."
 
-#: src/interface.c:1230
+#: src/interface.c:1233
 msgid "Orage files"
 msgstr "Файлы Orage"
 
-#: src/interface.c:1237
+#: src/interface.c:1240
 msgid "Orage main calendar file"
 msgstr "Главный файл календаря Orage"
 
-#: src/interface.c:1246 src/interface.c:1345
+#: src/interface.c:1249 src/interface.c:1348
 msgid "Current file:"
 msgstr "Текущий файл:"
 
-#: src/interface.c:1259 src/interface.c:1358
+#: src/interface.c:1262 src/interface.c:1361
 msgid "New file:"
 msgstr "Новый файл:"
 
-#: src/interface.c:1289 src/interface.c:1387
+#: src/interface.c:1292 src/interface.c:1390
 msgid "Action options:"
 msgstr "Параметры события:"
 
-#: src/interface.c:1293 src/interface.c:1391
+#: src/interface.c:1296 src/interface.c:1394
 msgid "Rename"
 msgstr "Переименовать"
 
-#: src/interface.c:1300
+#: src/interface.c:1303
 msgid ""
 "Orage internal file rename only.\n"
 "Does not touch external filesystem at all.\n"
@@ -456,52 +456,52 @@ msgstr ""
 "Не затрагивает внешнюю файловую систему.\n"
 "Новый файл должен существовать."
 
-#: src/interface.c:1304 src/interface.c:1399
+#: src/interface.c:1307 src/interface.c:1402
 msgid "Copy"
 msgstr "Копировать"
 
-#: src/interface.c:1311
+#: src/interface.c:1314
 msgid "Current file is copied and stays unmodified in the old place."
 msgstr "Текущий файл был скопирован и остался не изменённым на старом месте."
 
-#: src/interface.c:1315 src/interface.c:1407
+#: src/interface.c:1318 src/interface.c:1410
 msgid "Move"
 msgstr "Переместить"
 
-#: src/interface.c:1322
+#: src/interface.c:1325
 msgid "Current file is moved and vanishes from the old place."
 msgstr "Текущий файл был перемещён и удалён со старого места."
 
-#: src/interface.c:1336
+#: src/interface.c:1339
 msgid "Archive file"
 msgstr "Файл архива"
 
-#: src/interface.c:1433
+#: src/interface.c:1436
 msgid "Foreign files"
 msgstr "Внешние файлы"
 
-#: src/interface.c:1440
+#: src/interface.c:1443
 msgid "Add new foreign file"
 msgstr "Добавить новый внешний файл"
 
-#: src/interface.c:1448
+#: src/interface.c:1451
 msgid "Foreign file:"
 msgstr "Внешний файл:"
 
-#: src/interface.c:1465 src/orage-appointment-window.c:2443
+#: src/interface.c:1468 src/orage-appointment-window.c:2443
 #: src/parameters.c:1388
 msgid "_Add"
 msgstr "До_бавить"
 
-#: src/interface.c:1480
+#: src/interface.c:1483
 msgid "Visible name:"
 msgstr "Отображаемое имя:"
 
-#: src/interface.c:1490
+#: src/interface.c:1493
 msgid "Read only"
 msgstr "Только для чтения"
 
-#: src/interface.c:1500
+#: src/interface.c:1503
 msgid ""
 "Set this if you want to make sure that this file is never modified by Orage.\n"
 "Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
@@ -509,15 +509,15 @@ msgstr ""
 "Установите, если необходимо убедиться, что это файл никогда не будет изменён Orage.\n"
 "Внимание! Изменение внешних файлов может сделать их недоступными для исходной утилиты, с помощью которой они были созданы."
 
-#: src/interface.c:1502
+#: src/interface.c:1505
 msgid "This internal name is displayed to user instead of file name."
 msgstr "Используется это внутреннее имя для отображения вместо имени файла."
 
-#: src/interface.c:1516
+#: src/interface.c:1519
 msgid "Exchange data - Orage"
 msgstr "Обмен данными — Orage"
 
-#: src/main.c:49 src/orage-appointment-window.c:708
+#: src/main.c:52 src/orage-appointment-window.c:708
 #: org.xfce.orage.appdata.xml.in:7
 msgid "Orage"
 msgstr "Календарь Orage"
@@ -535,77 +535,77 @@ msgstr ""
 "Sergey Alyoshin <alyoshin.s@gmail.com>, 2014\n"
 "Sergey Fedoseev <fedoseev.sergey@gmail.com>, 2006"
 
-#: src/orage-application.c:160
+#: src/orage-application.c:166
 msgid "Released under the terms of the GNU General Public License."
 msgstr ""
 
-#: src/orage-application.c:162
+#: src/orage-application.c:168
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
 msgstr ""
 
-#: src/orage-application.c:167
+#: src/orage-application.c:173
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
 msgstr ""
 
-#: src/orage-application.c:173
+#: src/orage-application.c:179
 #, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
 msgstr ""
 
-#: src/orage-application.c:176
+#: src/orage-application.c:182
 msgid "Not using libnotify."
 msgstr ""
 
-#: src/orage-application.c:181
+#: src/orage-application.c:187
 msgid "Using automatic archiving."
 msgstr ""
 
-#: src/orage-application.c:183
+#: src/orage-application.c:189
 msgid "Not using archiving."
 msgstr ""
 
-#: src/orage-application.c:187
+#: src/orage-application.c:193
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Сообщайте об ошибках на <%s>."
 
-#: src/orage-application.c:677
+#: src/orage-application.c:743
 msgid "Open today's tasks"
 msgstr "Открыть задачи на сегодня"
 
-#: src/orage-application.c:686
-msgid "Add new appointment"
-msgstr "Добавить новую встречу"
+#: src/orage-application.c:752 src/orage-window-next.c:131
+msgid "Create a new appointment"
+msgstr ""
 
-#: src/orage-application.c:695
-msgid "Show preferences form"
-msgstr "Показать форму настроек"
+#: src/orage-application.c:761
+msgid "Open the preferences dialog"
+msgstr "Открыть окно настроек"
 
-#: src/orage-application.c:704
-msgid "Make Orage visible/unvisible"
-msgstr "Показать/скрыть Orage"
+#: src/orage-application.c:770
+msgid "Toggle Orage visibility"
+msgstr ""
 
-#: src/orage-application.c:713
-msgid "Add a foreign file"
-msgstr "Добавить внешний файл"
+#: src/orage-application.c:779
+msgid "Add a foreign calendar file"
+msgstr ""
 
-#: src/orage-application.c:722
-msgid "Remove a foreign file"
-msgstr "Удалить посторонний файл"
+#: src/orage-application.c:788
+msgid "Remove a foreign calendar file"
+msgstr ""
 
-#: src/orage-application.c:731
-msgid "Import appointments from file to Orage"
-msgstr "Импорт назначений из файла в Orage"
+#: src/orage-application.c:797
+msgid "Import appointments into the default calendar"
+msgstr ""
 
-#: src/orage-application.c:740
-msgid "Export appointments from Orage to file"
-msgstr "Экспортировать встречи из Orange в файл"
+#: src/orage-application.c:806
+msgid "Export appointments to a file"
+msgstr ""
 
-#: src/orage-application.c:749
-msgid "Show version of Orage"
-msgstr "Показать версию Orage"
+#: src/orage-application.c:815
+msgid "Show Orage version"
+msgstr ""
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -1544,10 +1544,6 @@ msgstr "<b>События для %s:</b>"
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>События с %s по %s:</b>"
-
-#: src/orage-window-next.c:131
-msgid "Create a new appointment"
-msgstr ""
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"
