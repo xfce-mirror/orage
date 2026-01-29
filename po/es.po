@@ -12,6 +12,7 @@
 # Toni Estévez <toni.estevez@gmail.com>, 2025
 # Casper, 2025
 # Nick Schermer <nick@xfce.org>, 2026
+# Ulices, 2026
 # 
 #, fuzzy
 msgid ""
@@ -20,7 +21,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2026-01-29 00:55+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Nick Schermer <nick@xfce.org>, 2026\n"
+"Last-Translator: Ulices, 2026\n"
 "Language-Team: Spanish (https://app.transifex.com/xfce/teams/16840/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -581,27 +582,27 @@ msgstr "Abrir el diálogo de preferencias"
 
 #: src/orage-application.c:770
 msgid "Toggle Orage visibility"
-msgstr ""
+msgstr "Alternar visibilidad de Orage"
 
 #: src/orage-application.c:779
 msgid "Add a foreign calendar file"
-msgstr ""
+msgstr "Agregar un archivo de calendario externo"
 
 #: src/orage-application.c:788
 msgid "Remove a foreign calendar file"
-msgstr ""
+msgstr "Eliminar un archivo de calendario externo"
 
 #: src/orage-application.c:797
 msgid "Import appointments into the default calendar"
-msgstr ""
+msgstr "Importar citas al calendario predeterminado"
 
 #: src/orage-application.c:806
 msgid "Export appointments to a file"
-msgstr ""
+msgstr "Exportar citas a un archivo"
 
 #: src/orage-application.c:815
 msgid "Show Orage version"
-msgstr ""
+msgstr "Mostrar versión de Orage"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
