@@ -1546,7 +1546,7 @@ static gboolean save_xfical_from_appt_win (OrageAppointmentWindow *apptw)
                     xf_file_id = g_strdup_printf ("F%02d.", i - 1);
                 else
                 {
-                    g_warning ("%s: Matching foreign file not found: %s",
+                    g_warning ("%s: Matching foreign file not found: '%s'",
                                G_STRFUNC, tmp);
                     ok = FALSE;
                 }

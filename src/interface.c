@@ -73,7 +73,7 @@ gboolean orage_external_update_check (G_GNUC_UNUSED gpointer user_data)
 
     /* check main Orage file */
     if (g_stat(g_par.orage_file, &s) < 0) {
-        g_warning ("stat of %s failed: %s", g_par.orage_file,
+        g_warning ("%s: stat of %s failed: %s", G_STRFUNC, g_par.orage_file,
                    g_strerror (errno));
     }
     else {
@@ -87,8 +87,8 @@ gboolean orage_external_update_check (G_GNUC_UNUSED gpointer user_data)
     /* check also foreign files */
     for (i = 0; i < g_par.foreign_count; i++) {
         if (g_stat(g_par.foreign_data[i].file, &s) < 0) {
-            g_warning ("stat of %s failed: %s", g_par.foreign_data[i].file,
-                       g_strerror (errno));
+            g_warning ("%s: stat of %s failed: %s", G_STRFUNC,
+                       g_par.foreign_data[i].file, g_strerror (errno));
         }
         else {
             if (s.st_mtime > g_par.foreign_data[i].latest_file_change) {
@@ -435,7 +435,9 @@ static void on_unarchive_button_clicked_cb (G_GNUC_UNUSED GtkButton *button,
 gboolean orage_import_file (const gchar *entry_filename)
 {
     OrageApplication *app;
-    if (xfical_import_file(entry_filename)) {
+
+    if (xfical_import_by_path (entry_filename))
+    {
         app = ORAGE_APPLICATION (g_application_get_default ());
         orage_window_update_appointments (ORAGE_WINDOW (
             orage_application_get_window (app)));
@@ -506,7 +508,7 @@ static void exp_save_button_clicked (G_GNUC_UNUSED GtkButton *button,
             g_warning ("UNKNOWN select appointment");
         }
 
-        if (xfical_export_file (entry_filename, app_count, entry_uids))
+        if (xfical_export_by_path (entry_filename, app_count, entry_uids))
             g_message ("Export done %s", entry_filename);
         else
             g_warning ("export failed file=%s", entry_filename);
@@ -579,31 +581,32 @@ static void orage_foreign_file_remove_line(gint del_line)
 gboolean orage_foreign_file_remove (const gchar *filename)
 {
     gint i;
-    gboolean found = FALSE;
 
-    if (interface_lock) {
-        g_warning ("Exchange window active, can't remove files from cmd line");
-        return(FALSE);
+    if (interface_lock)
+    {
+        g_warning ("foreign file removal blocked: exchange window is active");
+        return FALSE;
     }
-    if (!ORAGE_STR_EXISTS(filename)) {
-        g_warning("File '%s' is empty. Not removed.", filename);
-        return(FALSE);
+
+    if (xfce_str_is_empty (filename))
+    {
+        g_warning ("empty file name - cannot remove foreign file");
+        return FALSE;
     }
-    for (i = 0; i < g_par.foreign_count && !found; i++) {
-        g_warning("file '%s'", g_par.foreign_data[i].file);
-        g_warning("name '%s'", g_par.foreign_data[i].name);
-        if (strcmp(g_par.foreign_data[i].file, filename) == 0 ||
-            strcmp(g_par.foreign_data[i].name, filename) == 0) {
-            found = TRUE;
+
+    for (i = 0; i < g_par.foreign_count; i++)
+    {
+        if (strcmp (g_par.foreign_data[i].file, filename) == 0 ||
+            strcmp (g_par.foreign_data[i].name, filename) == 0)
+        {
+            orage_foreign_file_remove_line (i);
+            return TRUE;
         }
     }
-    if (!found) {
-        g_warning("File '%s' not found. Not removed.", filename);
-        return(FALSE);
-    }
 
-    orage_foreign_file_remove_line(i);
-    return(TRUE);
+    g_warning ("foreign file '%s' not found - nothing to remove", filename);
+
+    return FALSE;
 }
 
 static void for_remove_button_clicked (G_GNUC_UNUSED GtkButton *button,

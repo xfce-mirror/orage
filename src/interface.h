@@ -102,7 +102,28 @@ void orage_external_interface (void);
 gboolean orage_external_update_check(gpointer user_data);
 gboolean orage_foreign_file_add (const gchar *filename, gboolean read_only,
                                  const gchar *name);
+
+/**
+ * orage_foreign_file_remove:
+ * @filename: path or display name of the foreign calendar file to remove
+ *
+ * Removes a previously registered foreign calendar file. The file is matched
+ * either by its stored file path or by its display name. If multiple foreign
+ * file entries happen to match @filename, only the first matching entry is
+ * removed. (The current implementation does not remove duplicates.)
+ *
+ * Removal is not permitted while the exchange window is active; if this
+ * condition is detected, the function aborts and returns %FALSE with a warning.
+ *
+ * The function also returns %FALSE if @filename is empty or if no matching
+ * entry exists. On successful removal the foreign file list is updated and
+ * the function returns %TRUE.
+ *
+ * Returns: %TRUE if a matching foreign file was found and removed, or %FALSE
+ *          otherwise.
+ */
 gboolean orage_foreign_file_remove (const gchar *filename);
+
 gboolean orage_import_file (const gchar *entry_filename);
 gboolean orage_export_file (const gchar *entry_filename,
                             gint type,
