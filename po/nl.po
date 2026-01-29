@@ -576,27 +576,27 @@ msgstr "Open het voorkeurendialoogvenster"
 
 #: src/orage-application.c:770
 msgid "Toggle Orage visibility"
-msgstr ""
+msgstr "Zichtbaarheid van Orage omschakelen"
 
 #: src/orage-application.c:779
 msgid "Add a foreign calendar file"
-msgstr ""
+msgstr "Een kalenderbestand van buitenaf toevoegen"
 
 #: src/orage-application.c:788
 msgid "Remove a foreign calendar file"
-msgstr ""
+msgstr "Een kalenderbestand van buitenaf verwijderen"
 
 #: src/orage-application.c:797
 msgid "Import appointments into the default calendar"
-msgstr ""
+msgstr "Afspraken importeren in de standaardkalender"
 
 #: src/orage-application.c:806
 msgid "Export appointments to a file"
-msgstr ""
+msgstr "Afspraken exporteren naar een bestand"
 
 #: src/orage-application.c:815
 msgid "Show Orage version"
-msgstr ""
+msgstr "Versie van Orage tonen"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
