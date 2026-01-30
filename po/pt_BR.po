@@ -8,20 +8,20 @@
 # Lucas Wilm <lucaswilm@gmail.com>, 2022
 # C. E., 2022
 # The Cat, 2024
-# Rafael Fontenelle <rffontenelle@gmail.com>, 2024
 # Xfce Bot <transifex@xfce.org>, 2024
+# Nick Schermer <nick@xfce.org>, 2025
 # Andre Miranda <andre@andreldm.com>, 2025
 # Michael Martins, 2025
-# Nick Schermer <nick@xfce.org>, 2026
+# Rafael Fontenelle <rffontenelle@gmail.com>, 2026
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-01-29 00:55+0100\n"
+"POT-Creation-Date: 2026-01-30 12:56+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Nick Schermer <nick@xfce.org>, 2026\n"
+"Last-Translator: Rafael Fontenelle <rffontenelle@gmail.com>, 2026\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/xfce/teams/16840/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -528,77 +528,81 @@ msgstr ""
 "André Miranda <andreldm@xfce.org>\n"
 "Michael Martins <michaelfm21@gmail.com>"
 
-#: src/orage-application.c:166
+#: src/orage-application.c:167
 msgid "Released under the terms of the GNU General Public License."
 msgstr "Lançado sob os termos da Licença Pública Geral GNU."
 
-#: src/orage-application.c:168
+#: src/orage-application.c:169
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
 msgstr "Compilado com GTK+-%d.%d.%d, usando GTK+-%d.%d.%d."
 
-#: src/orage-application.c:173
+#: src/orage-application.c:174
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
 msgstr "Compilado com libxfce4ui-%d.%d.%d, usando libxfce4ui-%d.%d.%d."
 
-#: src/orage-application.c:179
+#: src/orage-application.c:180
 #, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
 msgstr "Compilado com libnotify-%d.%d.%d."
 
-#: src/orage-application.c:182
+#: src/orage-application.c:183
 msgid "Not using libnotify."
 msgstr "Sem usar libnotify."
 
-#: src/orage-application.c:187
+#: src/orage-application.c:188
 msgid "Using automatic archiving."
 msgstr "Usando arquivamento automático."
 
-#: src/orage-application.c:189
+#: src/orage-application.c:190
 msgid "Not using archiving."
 msgstr "Não usar arquivamento."
 
-#: src/orage-application.c:193
+#: src/orage-application.c:194
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Relate bugs para <%s>."
 
-#: src/orage-application.c:743
+#: src/orage-application.c:775
 msgid "Open today's tasks"
 msgstr "Abre as tarefas de hoje"
 
-#: src/orage-application.c:752 src/orage-window-next.c:131
-msgid "Create a new appointment"
-msgstr "Criar um novo compromisso"
+#: src/orage-application.c:784
+msgid "Add new appointment"
+msgstr "Adiciona novo compromisso"
 
-#: src/orage-application.c:761
-msgid "Open the preferences dialog"
-msgstr "Abre o diálogo de preferências"
+#: src/orage-application.c:793
+msgid "Show preferences form"
+msgstr "Mostra o formulário de preferências"
 
-#: src/orage-application.c:770
-msgid "Toggle Orage visibility"
+#: src/orage-application.c:802
+msgid "Make Orage visible/unvisible"
+msgstr "Torna o Orage visível/invisível"
+
+#: src/orage-application.c:811
+msgid "Add a foreign file"
+msgstr "Adiciona um arquivo externo"
+
+#: src/orage-application.c:820
+msgid "Remove a foreign file"
+msgstr "Remove um arquivo externo"
+
+#: src/orage-application.c:829
+msgid "Import appointments from file to Orage"
+msgstr "Importa compromissos do arquivo para o Orage"
+
+#: src/orage-application.c:838
+msgid "Export appointments from Orage to file"
+msgstr "Exporta compromissos do Orage para um arquivo"
+
+#: src/orage-application.c:847
+msgid "Select logging backend (glib|orage)"
 msgstr ""
 
-#: src/orage-application.c:779
-msgid "Add a foreign calendar file"
-msgstr ""
-
-#: src/orage-application.c:788
-msgid "Remove a foreign calendar file"
-msgstr ""
-
-#: src/orage-application.c:797
-msgid "Import appointments into the default calendar"
-msgstr ""
-
-#: src/orage-application.c:806
-msgid "Export appointments to a file"
-msgstr ""
-
-#: src/orage-application.c:815
-msgid "Show Orage version"
-msgstr ""
+#: src/orage-application.c:856
+msgid "Show version of Orage"
+msgstr "Mostra a versão do Orage"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -1539,6 +1543,10 @@ msgstr "<b>Eventos para %s:</b>"
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>Eventos para %s - %s:</b>"
+
+#: src/orage-window-next.c:131
+msgid "Create a new appointment"
+msgstr "Criar um novo compromisso"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"
