@@ -32,6 +32,7 @@
 #include "orage-css.h"
 #include "orage-i18n.h"
 #include "orage-import.h"
+#include "orage-log.h"
 #include "orage-sleep-monitor.h"
 #include "orage-window.h"
 #include "parameters.h"
@@ -234,6 +235,31 @@ static gboolean is_readable (GFile *file)
     }
 
     return result;
+}
+
+static gboolean orage_default_use_orage_logger (void)
+{
+#if defined(ORAGE_DEFAULT_LOGGER_ORAGE)
+    return TRUE;
+#else
+    return FALSE;
+#endif
+}
+
+static gboolean orage_should_use_orage_logger (const gchar *logger_name)
+{
+    if (logger_name == NULL)
+        return orage_default_use_orage_logger ();
+
+    if (g_strcmp0 (logger_name, "orage") == 0)
+        return TRUE;
+
+    if (g_strcmp0 (logger_name, "glib") == 0)
+        return FALSE;
+
+    g_warning ("Unknown logger backend '%s', using default", logger_name);
+
+    return orage_default_use_orage_logger ();
 }
 
 static void show_appointment_preview (OrageApplication *self, GtkWindow *parent)
@@ -527,6 +553,13 @@ static gint orage_application_handle_local_options (
     G_GNUC_UNUSED GApplication *app,
     GVariantDict *options)
 {
+    const gchar *logger_name = NULL;
+
+    g_variant_dict_lookup (options, "logger", "&s", &logger_name);
+
+    if (orage_should_use_orage_logger (logger_name))
+        orage_log_init ();
+
     if (g_variant_dict_contains (options, "version"))
     {
         print_version ();
@@ -732,15 +765,14 @@ static void orage_application_class_init (OrageApplicationClass *klass)
 
 static void orage_application_init (OrageApplication *self)
 {
-    const GOptionEntry option_entries[] =
-    {
+    const GOptionEntry option_entries[] = {
         {
             .long_name = "today",
             .short_name = 'T',
             .flags = G_OPTION_FLAG_NONE,
             .arg = G_OPTION_ARG_NONE,
             .arg_data = NULL,
-            .description = _("Open today's tasks"),
+            .description = N_("Open today's tasks"),
             .arg_description = NULL,
         },
         {
@@ -749,7 +781,7 @@ static void orage_application_init (OrageApplication *self)
             .flags = G_OPTION_FLAG_NONE,
             .arg = G_OPTION_ARG_NONE,
             .arg_data = NULL,
-            .description = _("Create a new appointment"),
+            .description = N_("Add new appointment"),
             .arg_description = NULL,
         },
         {
@@ -758,7 +790,7 @@ static void orage_application_init (OrageApplication *self)
             .flags = G_OPTION_FLAG_NONE,
             .arg = G_OPTION_ARG_NONE,
             .arg_data = NULL,
-            .description = _("Open the preferences dialog"),
+            .description = N_("Show preferences form"),
             .arg_description = NULL,
         },
         {
@@ -767,7 +799,7 @@ static void orage_application_init (OrageApplication *self)
             .flags = G_OPTION_FLAG_NONE,
             .arg = G_OPTION_ARG_NONE,
             .arg_data = NULL,
-            .description = _("Toggle Orage visibility"),
+            .description = N_("Make Orage visible/unvisible"),
             .arg_description = NULL,
         },
         {
@@ -776,7 +808,7 @@ static void orage_application_init (OrageApplication *self)
             .flags = G_OPTION_FLAG_NONE,
             .arg = G_OPTION_ARG_FILENAME,
             .arg_data = NULL,
-            .description = _("Add a foreign calendar file"),
+            .description = N_("Add a foreign file"),
             .arg_description = "<file>:[RW]:[name]",
         },
         {
@@ -785,7 +817,7 @@ static void orage_application_init (OrageApplication *self)
             .flags = G_OPTION_FLAG_NONE,
             .arg = G_OPTION_ARG_FILENAME,
             .arg_data = NULL,
-            .description = _("Remove a foreign calendar file"),
+            .description = N_("Remove a foreign file"),
             .arg_description = "<file>",
         },
         {
@@ -794,7 +826,7 @@ static void orage_application_init (OrageApplication *self)
             .flags = G_OPTION_FLAG_NONE,
             .arg = G_OPTION_ARG_FILENAME,
             .arg_data = NULL,
-            .description = _("Import appointments into the default calendar"),
+            .description = N_("Import appointments from file to Orage"),
             .arg_description = "<file>:[appointment...]",
         },
         {
@@ -803,8 +835,17 @@ static void orage_application_init (OrageApplication *self)
             .flags = G_OPTION_FLAG_NONE,
             .arg = G_OPTION_ARG_FILENAME,
             .arg_data = NULL,
-            .description = _("Export appointments to a file"),
+            .description = N_("Export appointments from Orage to file"),
             .arg_description = "<file>:[appointment...]",
+        },
+        {
+            .long_name = "logger",
+            .short_name = 0,
+            .flags = G_OPTION_FLAG_NONE,
+            .arg = G_OPTION_ARG_STRING,
+            .arg_data = NULL,
+            .description = N_("Select logging backend (glib|orage)"),
+            .arg_description = "backend",
         },
         {
             .long_name = "version",
@@ -812,7 +853,7 @@ static void orage_application_init (OrageApplication *self)
             .flags = G_OPTION_FLAG_NONE,
             .arg = G_OPTION_ARG_NONE,
             .arg_data = NULL,
-            .description = _("Show Orage version"),
+            .description = N_ ("Show version of Orage"),
             .arg_description = NULL,
         },
         {
