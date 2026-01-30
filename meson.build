@@ -71,7 +71,7 @@ if get_option('x11-tray-icon')
   feature_cflags += '-DHAVE_X11_TRAY_ICON=1'
 endif
 
-default_logger = get_option('default_logger')
+default_logger = get_option('default-logger')
 if default_logger == 'orage'
   feature_cflags += '-DORAGE_DEFAULT_LOGGER_ORAGE=1'
 else

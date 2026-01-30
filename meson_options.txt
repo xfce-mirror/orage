@@ -20,7 +20,7 @@ option(
 )
 
 option(
-  'default_logger',
+  'default-logger',
   type: 'combo',
   choices: ['glib', 'orage'],
   value: 'glib',
