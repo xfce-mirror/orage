@@ -38,8 +38,10 @@
 #include "parameters.h"
 #include "reminder.h"
 #include <glib-2.0/gio/gapplication.h>
+#include <glib.h>
 #include <gtk/gtk.h>
 #include <libxfce4ui/libxfce4ui.h>
+#include <libxfce4util/libxfce4util.h>
 
 #ifdef HAVE_NOTIFY
 #include <libnotify/notify.h>
@@ -86,7 +88,8 @@ static void cb_preview_dialog_response (GtkDialog *gtk_dialog,
                                         const gint response_id,
                                         gpointer data)
 {
-    const gchar *file;
+    GFile *file;
+    gchar *filename;
     GList *tmp_list;
     OrageImportWindow *dialog = ORAGE_IMPORT_WINDOW (gtk_dialog);
     OrageApplication *app = ORAGE_APPLICATION (data);
@@ -100,11 +103,14 @@ static void cb_preview_dialog_response (GtkDialog *gtk_dialog,
                  tmp_list != NULL;
                  tmp_list = g_list_next (tmp_list))
             {
-                file = tmp_list->data;
-                if (xfical_import_file (file))
-                    g_message ("import done, file=%s", file);
+                file = G_FILE (tmp_list->data);
+                filename = g_file_get_path (file);
+                if (orage_calendar_import_file (file, NULL))
+                    g_message ("import done, file=%s", filename);
                 else
-                    g_warning ("import failed, file=%s", file);
+                    g_warning ("import failed, file=%s", filename);
+
+                g_free (filename);
             }
 
             break;
@@ -119,7 +125,7 @@ static void cb_preview_dialog_response (GtkDialog *gtk_dialog,
 
     gtk_widget_destroy (GTK_WIDGET (gtk_dialog));
     g_list_free_full (app->appointments, g_object_unref);
-    g_list_free_full (app->files, g_free);
+    g_list_free_full (app->files, g_object_unref);
     app->appointments = NULL;
     app->files = NULL;
 }
@@ -213,22 +219,17 @@ static gboolean is_readable (GFile *file)
 
     if (info)
     {
-        if (g_file_info_get_attribute_boolean (info,
-                                               G_FILE_ATTRIBUTE_ACCESS_CAN_READ))
-        {
-            result = TRUE;
-        }
-        else
-        {
-            g_warning ("file is not readale");
-            result = FALSE;
-        }
+        result = g_file_info_get_attribute_boolean (info,
+                                                    G_FILE_ATTRIBUTE_ACCESS_CAN_READ);
+
+        if (result == FALSE)
+            g_debug ("file is not readale");
 
         g_object_unref (info);
     }
     else
     {
-        g_warning ("could not open file: %s", error->message);
+        g_debug ("could not open file: '%s'", error->message);
         g_clear_error (&error);
         result = FALSE;
     }
@@ -303,10 +304,131 @@ static void open_new_appointment_window (void)
     gtk_window_present (GTK_WINDOW (appointment_window));
 }
 
-static void orage_open_today_window (OrageWindow *window)
+static gboolean orage_application_open_file (OrageApplication *self,
+                                             GFile *file)
 {
-    orage_window_select_today (window);
-    (void)create_el_win (NULL);
+    GList *tmp_list;
+    gboolean result;
+    gchar *filename;
+
+    g_object_ref (file);
+    filename = g_file_get_path (file);
+
+    if (is_readable (file))
+    {
+        g_debug ("opening calendar file '%s'", filename);
+        tmp_list = o_cal_component_list_from_file (file);
+        if (tmp_list)
+        {
+            g_debug ("loaded %d events from file '%s'",
+                     g_list_length (tmp_list), filename);
+            /* 'file' is freed by callback. */
+            self->files = g_list_append (self->files, file);
+            self->appointments = g_list_concat (self->appointments, tmp_list);
+            result = TRUE;
+        }
+        else
+        {
+            g_warning ("ICS file '%s' read failed", filename);
+            result = FALSE;
+        }
+    }
+    else
+    {
+        g_warning ("file '%s' does not exist or cannot be read",
+                   filename);
+        result = FALSE;
+        g_object_unref (file);
+    }
+
+    g_free (filename);
+
+    return result;
+}
+
+static gboolean orage_application_import_file (OrageApplication *self,
+                                               GFile *file)
+{
+    gboolean result;
+    gchar *filename;
+
+    g_object_ref (file);
+    filename = g_file_get_path (file);
+
+    if (is_readable (file))
+    {
+        result = orage_calendar_import_file (file, NULL);
+        if (result)
+        {
+            orage_window_update_appointments (ORAGE_WINDOW (self->window));
+            g_message ("import done, file=%s", filename);
+        }
+        else
+            g_warning ("import failed, file=%s", filename);
+    }
+    else
+    {
+        g_warning ("file '%s' does not exist or cannot be read",
+                   filename);
+        result = FALSE;
+    }
+
+    g_free (filename);
+    g_object_unref (file);
+
+    return result;
+}
+
+static gboolean orage_application_export_file (G_GNUC_UNUSED OrageApplication *self,
+                                               GFile *file,
+                                               const gchar *uids)
+{
+    gboolean result;
+    gchar *filename;
+
+    g_object_ref (file);
+    filename = g_file_get_path (file);
+
+    g_debug ("exporting to='%s', uids='%s'", filename, uids);
+
+    result = xfical_export_file (file, uids);
+    if (result)
+        g_message ("export done to file=%s", filename);
+    else
+        g_warning ("export failed file=%s", filename);
+
+    g_free (filename);
+    g_object_unref (file);
+
+    return result;
+}
+
+static gboolean orage_application_add_foreign_file (OrageApplication *self,
+                                                    GFile *file,
+                                                    const gchar *display_name,
+                                                    const gboolean read_only)
+{
+    gboolean result;
+    gchar *file_name = g_file_get_path (file);
+
+    result = orage_application_add_foreign_path (self, file_name, display_name,
+                                                 read_only);
+    g_free (file_name);
+
+    return result;
+}
+
+static gboolean orage_application_remove_foreign_file (OrageApplication *self,
+                                                       GFile *file)
+{
+    gboolean result;
+    gchar *file_name = g_file_get_path (file);
+
+    result = orage_application_remove_foreign_path (self, file_name);
+
+    g_free (file_name);
+
+    return result;
 }
 
 static void orage_application_activate (GApplication *app)
@@ -388,7 +510,7 @@ static void orage_application_activate (GApplication *app)
         open_new_appointment_window ();
 
     if (self->today_option)
-        orage_open_today_window (ORAGE_WINDOW (window));
+        orage_application_open_date (self, NULL);
 
     if (hide_main_window)
         gtk_widget_hide (window);
@@ -558,13 +680,10 @@ static void orage_application_open (GApplication *app,
                                     const gint n_files,
                                     const gchar *hint)
 {
-    GList *tmp_list;
-    OrageApplication *self;
     gchar **hint_array;
     gint i;
-    gchar *file;
-    gchar *file_name;
-    gint export_type;
+    gchar *filename;
+    gchar *uids;
     gboolean foreign_file_read_only;
 
     for (i = 0; i < n_files; i++)
@@ -572,37 +691,13 @@ static void orage_application_open (GApplication *app,
         switch (hint[0])
         {
             case HINT_OPEN:
-                file = g_file_get_path (files[i]);
-                if (is_readable (files[i]))
-                {
-                    g_debug ("opening calendar file '%s'", file);
-                    self = ORAGE_APPLICATION (app);
-                    tmp_list = o_cal_component_list_from_file (files[i]);
-                    if (tmp_list)
-                    {
-                        g_debug ("loaded %d events from file '%s'",
-                                 g_list_length (tmp_list), file);
-                        /* 'file' is freed by callback. */
-                        self->files = g_list_append (self->files, file);
-                        self->appointments = g_list_concat (self->appointments,
-                                                            tmp_list);
-                    }
-                    else
-                    {
-                        g_warning ("ICS file '%s' read failed", file);
-                        g_free (file);
-                    }
-                }
-                else
-                    g_warning ("file '%s' does not exist or cannot be read",
-                               file);
-
+                (void)orage_application_open_file (ORAGE_APPLICATION (app),
+                                                   files[i]);
                 break;
 
             case HINT_ADD:
-                file = g_file_get_path (files[i]);
                 hint_array = g_strsplit (hint, ":", 3);
-                file_name = NULL;
+                filename = NULL;
 
                 if (hint_array[1])
                 {
@@ -611,65 +706,36 @@ static void orage_application_open (GApplication *app,
                             (g_ascii_strcasecmp (hint_array[1], "READWRITE") != 0);
 
                     if (hint_array[2])
-                        file_name = g_strdup (hint_array[2]);
+                        filename = hint_array[2];
                 }
                 else
                     foreign_file_read_only = TRUE;
 
-                if (file_name == NULL)
-                    file_name = g_file_get_basename (files[i]);
-
-                g_debug ("add foreign file='%s', file_name='%s', ro=%d",
-                         file, file_name, foreign_file_read_only);
-
-                if (orage_foreign_file_add (file, foreign_file_read_only, file_name))
-                    g_message ("add done, foreign file=%s", file);
-                else
-                    g_warning ("add failed, foreign file=%s", file);
-
-                g_free (file_name);
-                g_free (file);
                 g_strfreev (hint_array);
+
+                (void)orage_application_add_foreign_file (
+                    ORAGE_APPLICATION (app), files[i], filename,
+                    foreign_file_read_only);
+                break;
+
+            case HINT_REMOVE:
+                (void)orage_application_remove_foreign_file (
+                    ORAGE_APPLICATION (app), files[i]);
+
                 break;
 
             case HINT_EXPORT:
-                file = g_file_get_path (files[i]);
                 hint_array = g_strsplit (hint, ":", 2);
-                export_type = hint_array[1] ? 1 : 0;
-                g_debug ("exporting to='%s', uids='%s'", file, hint_array[1]);
+                uids = xfce_str_is_empty (hint_array[1]) ? NULL : hint_array[1];
 
-                if (xfical_export_file (file, export_type, hint_array[1]))
-                    g_message ("export done to file=%s", file);
-                else
-                    g_warning ("export failed file=%s", file);
-
-                g_free (file);
+                (void)orage_application_export_file (ORAGE_APPLICATION (app),
+                                                     files[i], uids);
                 g_strfreev (hint_array);
                 break;
 
             case HINT_IMPORT:
-                file = g_file_get_path (files[i]);
-                g_debug ("import, file=%s", file);
-
-                if (xfical_import_file (file))
-                    g_message ("import done, file=%s", file);
-                else
-                    g_warning ("import failed, file=%s", file);
-
-                g_free (file);
-                break;
-
-            case HINT_REMOVE:
-                file = g_file_get_path (files[i]);
-
-                g_debug ("remove foreign, file=%s", file);
-                if (orage_foreign_file_remove (file))
-                    g_message ("remove done, foreign file=%s", file);
-                else
-                    g_warning ("remove failed, foreign file=%s", file);
-
-                g_free (file);
-
+                (void)orage_application_import_file (ORAGE_APPLICATION (app),
+                                                     files[i]);
                 break;
 
             default:
@@ -697,7 +763,7 @@ static void orage_application_class_init (OrageApplicationClass *klass)
     application_class->handle_local_options = orage_application_handle_local_options;
 }
 
-static void orage_application_init (OrageApplication *application)
+static void orage_application_init (OrageApplication *self)
 {
     const GOptionEntry option_entries[] = {
         {
@@ -810,9 +876,8 @@ static void orage_application_init (OrageApplication *application)
         }
     };
 
-    g_application_add_main_option_entries (G_APPLICATION (application),
+    g_application_add_main_option_entries (G_APPLICATION (self),
                                            option_entries);
-    g_set_prgname (ORAGE_APP_ID);
     gtk_window_set_default_icon_name (ORAGE_APP_ID);
 }
 
@@ -830,15 +895,125 @@ OrageTaskRunner *orage_application_get_sync (OrageApplication *application)
     return application->sync;
 }
 
-GtkWidget *orage_application_get_window (OrageApplication *application)
+GtkWidget *orage_application_get_window (OrageApplication *self)
 {
-    return application->window;
+    return self->window;
 }
 
-void orage_application_close (OrageApplication *application)
+void orage_application_close (OrageApplication *self)
 {
     if (g_par.close_means_quit)
-        g_application_quit (G_APPLICATION (application));
+        g_application_quit (G_APPLICATION (self));
     else
-        gtk_widget_hide (orage_application_get_window (application));
+        gtk_widget_hide (orage_application_get_window (self));
+}
+
+gboolean orage_application_load_path (OrageApplication *self,
+                                      const gchar *filename,
+                                      const gchar *destination)
+{
+    gboolean result;
+    GFile *file = g_file_new_for_path (filename);
+
+    if (is_readable (file))
+    {
+        result = orage_calendar_import_file (file, destination);
+        if (result)
+        {
+            orage_window_update_appointments (ORAGE_WINDOW (self->window));
+            g_message ("import done, file=%s", filename);
+        }
+        else
+            g_warning ("import failed, file=%s", filename);
+    }
+    else
+    {
+        g_warning ("file '%s' does not exist or cannot be read",
+                   filename);
+        result = FALSE;
+    }
+
+    g_object_unref (file);
+
+    return result;
+}
+
+gboolean orage_application_open_path (OrageApplication *self,
+                                      const gchar *filename)
+{
+    gboolean result;
+    GFile *file = g_file_new_for_path (filename);
+
+    result = orage_application_open_file (self, file);
+    g_object_unref (file);
+
+    if (result)
+        show_appointment_preview (self, NULL);
+
+    return result;
+}
+
+gboolean orage_application_import_path (OrageApplication *self,
+                                        const gchar *filename)
+{
+    GFile *file = g_file_new_for_path (filename);
+    const gboolean result = orage_application_import_file (self, file);
+
+    g_object_unref (file);
+
+    return result;
+}
+
+gboolean orage_application_export_path (OrageApplication *self,
+                                        const gchar *filename,
+                                        const gchar *uids)
+{
+    GFile *file = g_file_new_for_path (filename);
+    const gboolean result = orage_application_export_file (self, file, uids);
+
+    g_object_unref (file);
+
+    return result;
+}
+
+gboolean orage_application_add_foreign_path (
+    G_GNUC_UNUSED OrageApplication *self, const gchar *filename,
+    const gchar *display_name, const gboolean read_only)
+{
+    gboolean result;
+    gchar *name;
+
+    name = xfce_str_is_empty (display_name) ? g_path_get_basename (filename)
+                                            : g_strdup (display_name);
+
+    g_debug ("add foreign file='%s', display_name='%s', ro=%s",
+             filename, name, read_only ? "TRUE" : "FALSE");
+
+    result = orage_foreign_file_add (filename, read_only, name);
+    g_free (name);
+
+    if (result)
+        g_message ("add done, foreign file='%s'", filename);
+    else
+        g_warning ("add failed, foreign file='%s'", filename);
+
+    return result;
+}
+
+gboolean orage_application_remove_foreign_path (
+    G_GNUC_UNUSED OrageApplication *self, const gchar *filename)
+{
+    g_debug ("remove foreign file '%s'", filename);
+
+    return orage_foreign_file_remove (filename);
+}
+
+void orage_application_open_date (OrageApplication *self, GDateTime *gdt)
+{
+    if (gdt == NULL)
+        orage_window_select_today (ORAGE_WINDOW (self->window));
+    else
+        orage_window_select_date (ORAGE_WINDOW (self->window), gdt);
+
+    (void)create_el_win (NULL);
 }

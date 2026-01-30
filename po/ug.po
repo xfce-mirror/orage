@@ -6,17 +6,17 @@
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2024
 # Gheyret Kenji <gheyret@yahoo.com>, 2025
-# Abduqadir Abliz <sahranbay@gmail.com>, 2025
 # Nick Schermer <nick@xfce.org>, 2025
+# Abduqadir Abliz <sahranbay@gmail.com>, 2026
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2025-10-25 12:59+0200\n"
+"POT-Creation-Date: 2026-01-29 00:55+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Nick Schermer <nick@xfce.org>, 2025\n"
+"Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>, 2026\n"
 "Language-Team: Uyghur (https://app.transifex.com/xfce/teams/16840/ug/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -80,7 +80,7 @@ msgstr "بۈگۈن"
 #. File menu stuff
 #. ********* File menu *********
 #. File menu
-#: src/event-list.c:1125 src/interface.c:859
+#: src/event-list.c:1125 src/interface.c:862
 #: src/orage-appointment-window.c:2914 src/orage-week-window.c:352
 #: src/orage-window-classic.c:281 src/orage-window-next.c:130
 msgid "_File"
@@ -132,7 +132,7 @@ msgstr "يېڭىلا"
 msgid "Find"
 msgstr "ئىزدە"
 
-#: src/event-list.c:1238 src/interface.c:877 src/orage-week-window.c:472
+#: src/event-list.c:1238 src/interface.c:880 src/orage-week-window.c:472
 #: src/orage-window-next.c:136
 msgid "Close"
 msgstr "ياپ"
@@ -234,7 +234,7 @@ msgstr ""
 "5-ئۇچرىشىش تۈرى:\n"
 "E=پائالىيەت T=بىجىرىدىغان J=كۈندىلىك خاتىرە"
 
-#: src/ical-code.c:841
+#: src/ical-code.c:837
 msgid "Orage default alarm"
 msgstr "Orage كۆڭۈلدىكى قوڭغۇراق"
 
@@ -252,79 +252,79 @@ msgstr "يىلنامە ھۆججىتى"
 msgid "All Files"
 msgstr "ھەممە ھۆججەت"
 
-#: src/interface.c:643
+#: src/interface.c:646
 msgid "Current foreign files"
 msgstr "نۆۋەتتىكى سىرتقى ھۆججەت"
 
-#: src/interface.c:666
+#: src/interface.c:669
 msgid "READ ONLY"
 msgstr "پەقەتلا ئوقۇش"
 
-#: src/interface.c:668
+#: src/interface.c:671
 msgid "READ WRITE"
 msgstr "ئوقۇپ يېزىش"
 
-#: src/interface.c:673 src/orage-appointment-window.c:2370
+#: src/interface.c:676 src/orage-appointment-window.c:2370
 msgid "_Remove"
 msgstr "چىقىرىۋەت(_R)"
 
-#: src/interface.c:692
+#: src/interface.c:695
 msgid "***** No foreign files *****"
 msgstr "***** سىرتقى ھۆججەت يوق *****"
 
-#: src/interface.c:707
+#: src/interface.c:710
 msgid "Foreign file add failed"
 msgstr "سىرتقى ھۆججەتنى قوشالمىدى"
 
-#: src/interface.c:715
+#: src/interface.c:718
 msgid "Orage can only handle 10 foreign files. Limit reached"
 msgstr ""
 
-#: src/interface.c:725
+#: src/interface.c:728
 msgid "Filename is empty."
 msgstr "ھۆججەت ئاتى بوش."
 
-#: src/interface.c:735
+#: src/interface.c:738
 msgid "Name is empty."
 msgstr "ئات بوش."
 
-#: src/interface.c:746
+#: src/interface.c:749
 msgid "File does not exist."
 msgstr "ھۆججەت مەۋجۇت ئەمەس.."
 
-#: src/interface.c:758
+#: src/interface.c:761
 msgid "Same filename already exists in Orage."
 msgstr "Orage دا ئوخشاش ھۆججەت ئاتى مەۋجۇت."
 
-#: src/interface.c:769
+#: src/interface.c:772
 msgid "Same name already exists in Orage."
 msgstr "Orage دا ئوخشاش ئات مەۋجۇت."
 
-#: src/interface.c:1023
+#: src/interface.c:1026
 msgid "Import/export"
 msgstr "ئەكىر/چىقار"
 
-#: src/interface.c:1030
+#: src/interface.c:1033
 msgid "Import"
 msgstr "ئەكىر"
 
-#: src/interface.c:1038
+#: src/interface.c:1041
 msgid "Read from file:"
 msgstr "ھۆججەتتىن ئوقۇ:"
 
-#: src/interface.c:1048 src/interface.c:1094 src/interface.c:1271
-#: src/interface.c:1369 src/interface.c:1458
+#: src/interface.c:1051 src/interface.c:1097 src/interface.c:1274
+#: src/interface.c:1372 src/interface.c:1461
 #: src/orage-appointment-window.c:3957 src/parameters.c:395
 #: src/parameters.c:764 src/reminder.c:631
 msgid "_Open"
 msgstr "ئاچ(_O)"
 
-#: src/interface.c:1055 src/interface.c:1101 src/interface.c:1278
-#: src/interface.c:1376 src/orage-appointment-window.c:4120
+#: src/interface.c:1058 src/interface.c:1104 src/interface.c:1281
+#: src/interface.c:1379 src/orage-appointment-window.c:4120
 msgid "_Save"
 msgstr "ساقلا(_S)"
 
-#: src/interface.c:1068
+#: src/interface.c:1071
 msgid ""
 "Separate filenames with comma(,).\n"
 " NOTE: comma is not valid character in filenames for Orage."
@@ -332,27 +332,27 @@ msgstr ""
 "ھۆججەت نامى پەش ئارقىلىق ئايرىلسۇن(,).\n"
 " دىققەت: Orage دا پەشنى ھۆججەت نامىدا ئىشلەتكىلى بولمايدۇ."
 
-#: src/interface.c:1073
+#: src/interface.c:1076
 msgid "Export"
 msgstr "چىقار"
 
-#: src/interface.c:1081
+#: src/interface.c:1084
 msgid "Write to file:"
 msgstr "ھۆججەتكە ياز:"
 
-#: src/interface.c:1116 src/interface.c:1134
+#: src/interface.c:1119 src/interface.c:1137
 msgid "Select"
 msgstr "تاللا"
 
-#: src/interface.c:1121
+#: src/interface.c:1124
 msgid "All appointments"
 msgstr "بارلىق ئۇچرىشىش"
 
-#: src/interface.c:1140
+#: src/interface.c:1143
 msgid "Named appointments:"
 msgstr "ئاتالغان ئۇچرىشىش:"
 
-#: src/interface.c:1159
+#: src/interface.c:1162
 msgid ""
 "Note that only main file appointments are read.\n"
 "Archived and Foreign events are not exported."
@@ -360,7 +360,7 @@ msgstr ""
 "ئەسكەرتىش پەقەت ئاساسىي ھۆججەت ئۇچرىشىشى ئوقۇلدى.\n"
 "ئارخىپلانغان ۋە سىرتقى پائالىيەت چىقىرىلمىدى."
 
-#: src/interface.c:1162
+#: src/interface.c:1165
 msgid ""
 "Note that only main file appointments are read.\n"
 "Foreign events are not exported."
@@ -368,37 +368,37 @@ msgstr ""
 "ئەسكەرتىش پەقەت ئاساسىي ھۆججەت ئۇچرىشىشى ئوقۇلدى.\n"
 "سىرتقى پائالىيەت چىقىرىلمىدى."
 
-#: src/interface.c:1165
+#: src/interface.c:1168
 msgid "You can easily drag these from event-list window."
 msgstr "پائالىيەت تىزىمى كۆزنىكىدىن ئوڭايلا سۆرەپ ئەكىرگىلى بولىدۇ."
 
-#: src/interface.c:1167
+#: src/interface.c:1170
 msgid "Orage appointment UIDs separated by commas."
 msgstr "Orage ئۇچرىشىشنىڭ UID سى پەش بىلەن ئايرىلىدۇ."
 
-#: src/interface.c:1173
+#: src/interface.c:1176
 msgid "Archive"
 msgstr "ئارخىپ"
 
-#: src/interface.c:1182 src/interface.c:1204
+#: src/interface.c:1185 src/interface.c:1207
 #: src/orage-appointment-window.c:4099
 msgid "_Execute"
 msgstr "ئىجرا قىل(_E)"
 
-#: src/interface.c:1188
+#: src/interface.c:1191
 #, c-format
 msgid "Archive now (threshold: %d months)"
 msgstr "ھازىر ئارخىپلا(بوسۇغا: %d ئاي)"
 
-#: src/interface.c:1199
+#: src/interface.c:1202
 msgid "You can change archive threshold in parameters"
 msgstr "ئارخىپ بوسۇغا قىممىتىنى پارامېتىر ئارقىلىق ئۆزگەرتكىلى بولىدۇ"
 
-#: src/interface.c:1211
+#: src/interface.c:1214
 msgid "Revert archive now"
 msgstr "ھازىر ئارخىپنى ئەسلىگە كەلتۈرىدۇ"
 
-#: src/interface.c:1218
+#: src/interface.c:1221
 msgid ""
 "Return all archived events into main orage file and remove arch file.\n"
 "This is useful for example when doing export and moving orage\n"
@@ -407,31 +407,31 @@ msgstr ""
 "ئارخىپلاشتۇرغان بارلىق پائالىيەتنى ئاساسىي orage ھۆججىتىگە ئەكىرىپ ۋە ئارخىپلاشتۇرغان ھۆججەتنى چىقىرىۋېتىدۇ.\n"
 "بۇ Orage ئۇچرىشىشنى باشقا بىر سىستېمىغا يۆتكەپ ۋە چىقارغاندا پايدىلىق."
 
-#: src/interface.c:1230
+#: src/interface.c:1233
 msgid "Orage files"
 msgstr "Orage ھۆججەت"
 
-#: src/interface.c:1237
+#: src/interface.c:1240
 msgid "Orage main calendar file"
 msgstr "Orage ئاساسى يىلنامە ھۆججىتى"
 
-#: src/interface.c:1246 src/interface.c:1345
+#: src/interface.c:1249 src/interface.c:1348
 msgid "Current file:"
 msgstr "نۆۋەتتىكى ھۆججەت:"
 
-#: src/interface.c:1259 src/interface.c:1358
+#: src/interface.c:1262 src/interface.c:1361
 msgid "New file:"
 msgstr "يېڭى ھۆججەت:"
 
-#: src/interface.c:1289 src/interface.c:1387
+#: src/interface.c:1292 src/interface.c:1390
 msgid "Action options:"
 msgstr "مەشغۇلات تاللانمىسى:"
 
-#: src/interface.c:1293 src/interface.c:1391
+#: src/interface.c:1296 src/interface.c:1394
 msgid "Rename"
 msgstr "ئات ئۆزگەرت"
 
-#: src/interface.c:1300
+#: src/interface.c:1303
 msgid ""
 "Orage internal file rename only.\n"
 "Does not touch external filesystem at all.\n"
@@ -441,53 +441,53 @@ msgstr ""
 "سىرتقى ھۆججەت سىستېمىسىغا چېتىلمەيدۇ.\n"
 "يېڭى ھۆججەت چوقۇم مەۋجۇت بولۇشى كېرەك."
 
-#: src/interface.c:1304 src/interface.c:1399
+#: src/interface.c:1307 src/interface.c:1402
 msgid "Copy"
 msgstr "كۆچۈر"
 
-#: src/interface.c:1311
+#: src/interface.c:1314
 msgid "Current file is copied and stays unmodified in the old place."
 msgstr ""
 "ھازىرقى ھۆججەت كۆچۈرۈلىدۇ، بۇرۇنقى ئورۇندىكىسى شۇ پېتى قالىدۇ، ئۆزگەرمەيدۇ."
 
-#: src/interface.c:1315 src/interface.c:1407
+#: src/interface.c:1318 src/interface.c:1410
 msgid "Move"
 msgstr "يۆتكە"
 
-#: src/interface.c:1322
+#: src/interface.c:1325
 msgid "Current file is moved and vanishes from the old place."
 msgstr "ھازىرقى ھۆججەت يۆتكىۋېتىلىدۇ ھەم بۇرۇنقى ئورۇندىن غايىب بولۇپ كېتىدۇ."
 
-#: src/interface.c:1336
+#: src/interface.c:1339
 msgid "Archive file"
 msgstr "ئارخىپ ھۆججىتى"
 
-#: src/interface.c:1433
+#: src/interface.c:1436
 msgid "Foreign files"
 msgstr "سىرتتىن كەلگەن ھۆججەتلەر"
 
-#: src/interface.c:1440
+#: src/interface.c:1443
 msgid "Add new foreign file"
 msgstr "يېڭىدىن سىرتقى ھۆججەت قوش"
 
-#: src/interface.c:1448
+#: src/interface.c:1451
 msgid "Foreign file:"
 msgstr "سىرتتىن كەلگەن ھۆججەت:"
 
-#: src/interface.c:1465 src/orage-appointment-window.c:2443
+#: src/interface.c:1468 src/orage-appointment-window.c:2443
 #: src/parameters.c:1388
 msgid "_Add"
 msgstr "قوش(_A)"
 
-#: src/interface.c:1480
+#: src/interface.c:1483
 msgid "Visible name:"
 msgstr "كۆرۈنۈشچان ئات:"
 
-#: src/interface.c:1490
+#: src/interface.c:1493
 msgid "Read only"
 msgstr "ئوقۇشقىلا"
 
-#: src/interface.c:1500
+#: src/interface.c:1503
 msgid ""
 "Set this if you want to make sure that this file is never modified by Orage.\n"
 "Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
@@ -495,15 +495,15 @@ msgstr ""
 "ئەگەر بۇ ھۆججەتنى Orage نىڭ ھەرگىز ئۆزگەرتمەيدىغانلىقىنى جەزملىگەندە ئاندىن بۇ تاللانما تەڭشىلىدۇ.\n"
 "ئەسكەرتىش سىرتقى ھۆججەتنى ئۆزگەرتكەندە ئەسلى مەنبەسىدىكى مەنبە قورال بىلەن ماسلاشماسلىقى مۇمكىن!"
 
-#: src/interface.c:1502
+#: src/interface.c:1505
 msgid "This internal name is displayed to user instead of file name."
 msgstr "ئىشلەتكۈچىگە ھۆججەت ئاتى ئەمەس بەلكى بۇ ئىچكى ئات كۆرۈنىدۇ."
 
-#: src/interface.c:1516
+#: src/interface.c:1519
 msgid "Exchange data - Orage"
 msgstr "ئالماشتۇرۇش سانلىق مەلۇماتى - Orage"
 
-#: src/main.c:49 src/orage-appointment-window.c:708
+#: src/main.c:52 src/orage-appointment-window.c:708
 #: org.xfce.orage.appdata.xml.in:7
 msgid "Orage"
 msgstr "Orage يىلنامە"
@@ -518,77 +518,77 @@ msgstr ""
 "غەيرەت ت.كەنجى <gheyret@gmail.com>\n"
 "ئابدۇقادىر ئابلىز <sahranbay@gmail.com>"
 
-#: src/orage-application.c:160
+#: src/orage-application.c:166
 msgid "Released under the terms of the GNU General Public License."
 msgstr ""
 
-#: src/orage-application.c:162
+#: src/orage-application.c:168
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
 msgstr ""
 
-#: src/orage-application.c:167
+#: src/orage-application.c:173
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
 msgstr ""
 
-#: src/orage-application.c:173
+#: src/orage-application.c:179
 #, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
 msgstr ""
 
-#: src/orage-application.c:176
+#: src/orage-application.c:182
 msgid "Not using libnotify."
 msgstr ""
 
-#: src/orage-application.c:181
+#: src/orage-application.c:187
 msgid "Using automatic archiving."
 msgstr ""
 
-#: src/orage-application.c:183
+#: src/orage-application.c:189
 msgid "Not using archiving."
 msgstr ""
 
-#: src/orage-application.c:187
+#: src/orage-application.c:193
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "كەمتۈكنى <%s> غا دوكلات قىلىڭ."
 
-#: src/orage-application.c:677
+#: src/orage-application.c:743
 msgid "Open today's tasks"
 msgstr "بۈگۈنكى ۋەزىپىنى ئاچ"
 
-#: src/orage-application.c:686
-msgid "Add new appointment"
-msgstr "يېڭى ئۇچرىشىش قوش"
+#: src/orage-application.c:752 src/orage-window-next.c:131
+msgid "Create a new appointment"
+msgstr ""
 
-#: src/orage-application.c:695
-msgid "Show preferences form"
-msgstr "مايىللىق كۆزنەكنى كۆرسەت"
+#: src/orage-application.c:761
+msgid "Open the preferences dialog"
+msgstr "مايىللىق سۆزلەشكۈنى ئاچ"
 
-#: src/orage-application.c:704
-msgid "Make Orage visible/unvisible"
-msgstr "Orage نى كۆرسەت/كۆرسەتمە"
+#: src/orage-application.c:770
+msgid "Toggle Orage visibility"
+msgstr ""
 
-#: src/orage-application.c:713
-msgid "Add a foreign file"
-msgstr "سىرتقى ھۆججەت قوش"
+#: src/orage-application.c:779
+msgid "Add a foreign calendar file"
+msgstr ""
 
-#: src/orage-application.c:722
-msgid "Remove a foreign file"
-msgstr "سىرتقى ھۆججەتنى چىقىرىۋەت"
+#: src/orage-application.c:788
+msgid "Remove a foreign calendar file"
+msgstr ""
 
-#: src/orage-application.c:731
-msgid "Import appointments from file to Orage"
-msgstr "ئۇچرىشىشنى ھۆججەتتىن Orage گە ئەكىرىدۇ"
+#: src/orage-application.c:797
+msgid "Import appointments into the default calendar"
+msgstr ""
 
-#: src/orage-application.c:740
-msgid "Export appointments from Orage to file"
-msgstr "ئۇچرىشىشنى Orage دىن ھۆججەتكە چىقىرىدۇ"
+#: src/orage-application.c:806
+msgid "Export appointments to a file"
+msgstr ""
 
-#: src/orage-application.c:749
-msgid "Show version of Orage"
-msgstr "Orage نىڭ نەشرىنى كۆرسەت"
+#: src/orage-application.c:815
+msgid "Show Orage version"
+msgstr ""
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -1533,10 +1533,6 @@ msgstr "<b>%s نىڭ پائالىيىتى:</b>"
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>%s- %s نىڭ پائالىيىتى:</b>"
-
-#: src/orage-window-next.c:131
-msgid "Create a new appointment"
-msgstr ""
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"

@@ -1,7 +1,9 @@
-4.21.1 (2025-10-25)
+4.21.1 (2026-01-28)
 =======
-- Maintenance: unused code cleanup, fixed some GTK deprecated messages
-  and removed some line breaks from translated messages (MR !81).
+- Reintroduced and improved the D-Bus interface for calendar file operations,
+  including import and export support (MR !83).
+- Maintenance: cleaned up unused code, fixed some GTK deprecation warnings,
+  and removed unnecessary line breaks from translated messages (MR !81).
 
 4.21.0 (2025-10-20)
 =======

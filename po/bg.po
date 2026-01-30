@@ -7,16 +7,17 @@
 # Красимир Беров, 2022
 # Xfce Bot <transifex@xfce.org>, 2024
 # Nick Schermer <nick@xfce.org>, 2025
-# Kiril Kirilov <cybercop_montana@abv.bg>, 2025
+# Любомир Василев, 2026
+# Kiril Kirilov <cybercop_montana@abv.bg>, 2026
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2025-10-25 12:59+0200\n"
+"POT-Creation-Date: 2026-01-29 00:55+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Kiril Kirilov <cybercop_montana@abv.bg>, 2025\n"
+"Last-Translator: Kiril Kirilov <cybercop_montana@abv.bg>, 2026\n"
 "Language-Team: Bulgarian (https://app.transifex.com/xfce/teams/16840/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -80,7 +81,7 @@ msgstr "Днес"
 #. File menu stuff
 #. ********* File menu *********
 #. File menu
-#: src/event-list.c:1125 src/interface.c:859
+#: src/event-list.c:1125 src/interface.c:862
 #: src/orage-appointment-window.c:2914 src/orage-week-window.c:352
 #: src/orage-window-classic.c:281 src/orage-window-next.c:130
 msgid "_File"
@@ -132,7 +133,7 @@ msgstr "Обновяване"
 msgid "Find"
 msgstr "Намери"
 
-#: src/event-list.c:1238 src/interface.c:877 src/orage-week-window.c:472
+#: src/event-list.c:1238 src/interface.c:880 src/orage-week-window.c:472
 #: src/orage-window-next.c:136
 msgid "Close"
 msgstr "Затваряне"
@@ -236,7 +237,7 @@ msgstr ""
 "\t 5. Тип на назначение:\n"
 "\t\tE=Събитие T=Задача J=Дневник"
 
-#: src/ical-code.c:841
+#: src/ical-code.c:837
 msgid "Orage default alarm"
 msgstr "Orage аларма по подразбиране"
 
@@ -254,79 +255,79 @@ msgstr "Файлове с календари"
 msgid "All Files"
 msgstr "Всички файлове"
 
-#: src/interface.c:643
+#: src/interface.c:646
 msgid "Current foreign files"
 msgstr "Текущи външни файлове"
 
-#: src/interface.c:666
+#: src/interface.c:669
 msgid "READ ONLY"
 msgstr "САМО ЧЕТЕНЕ"
 
-#: src/interface.c:668
+#: src/interface.c:671
 msgid "READ WRITE"
 msgstr "САМО ЗАПИС"
 
-#: src/interface.c:673 src/orage-appointment-window.c:2370
+#: src/interface.c:676 src/orage-appointment-window.c:2370
 msgid "_Remove"
 msgstr "_Премахване"
 
-#: src/interface.c:692
+#: src/interface.c:695
 msgid "***** No foreign files *****"
 msgstr "***** Няма външни файлове *****"
 
-#: src/interface.c:707
+#: src/interface.c:710
 msgid "Foreign file add failed"
 msgstr "Неуспех при добавянето на външен файл"
 
-#: src/interface.c:715
+#: src/interface.c:718
 msgid "Orage can only handle 10 foreign files. Limit reached"
 msgstr "Orage може да обработва само 10 чужди файла. Достигнат е лимитът."
 
-#: src/interface.c:725
+#: src/interface.c:728
 msgid "Filename is empty."
 msgstr "Името на файла е празно."
 
-#: src/interface.c:735
+#: src/interface.c:738
 msgid "Name is empty."
 msgstr "Името е празно."
 
-#: src/interface.c:746
+#: src/interface.c:749
 msgid "File does not exist."
 msgstr "Файлът не съществува."
 
-#: src/interface.c:758
+#: src/interface.c:761
 msgid "Same filename already exists in Orage."
 msgstr "Същото име на файл вече съществува в Orage."
 
-#: src/interface.c:769
+#: src/interface.c:772
 msgid "Same name already exists in Orage."
 msgstr "Същото име вече съществува в Orage."
 
-#: src/interface.c:1023
+#: src/interface.c:1026
 msgid "Import/export"
 msgstr "Внасяне/изнасяне"
 
-#: src/interface.c:1030
+#: src/interface.c:1033
 msgid "Import"
 msgstr "Внасяне"
 
-#: src/interface.c:1038
+#: src/interface.c:1041
 msgid "Read from file:"
 msgstr "Четене от файл:"
 
-#: src/interface.c:1048 src/interface.c:1094 src/interface.c:1271
-#: src/interface.c:1369 src/interface.c:1458
+#: src/interface.c:1051 src/interface.c:1097 src/interface.c:1274
+#: src/interface.c:1372 src/interface.c:1461
 #: src/orage-appointment-window.c:3957 src/parameters.c:395
 #: src/parameters.c:764 src/reminder.c:631
 msgid "_Open"
 msgstr "_Отвори"
 
-#: src/interface.c:1055 src/interface.c:1101 src/interface.c:1278
-#: src/interface.c:1376 src/orage-appointment-window.c:4120
+#: src/interface.c:1058 src/interface.c:1104 src/interface.c:1281
+#: src/interface.c:1379 src/orage-appointment-window.c:4120
 msgid "_Save"
 msgstr "_Запазване"
 
-#: src/interface.c:1068
+#: src/interface.c:1071
 msgid ""
 "Separate filenames with comma(,).\n"
 " NOTE: comma is not valid character in filenames for Orage."
@@ -334,27 +335,27 @@ msgstr ""
 "Разделяне на имената на файловете със запетайка(,).\n"
 " ПОЯСНЕНИЕ: запетайка не се допуска в имената на файловете за Orage."
 
-#: src/interface.c:1073
+#: src/interface.c:1076
 msgid "Export"
 msgstr "Изнасяне"
 
-#: src/interface.c:1081
+#: src/interface.c:1084
 msgid "Write to file:"
 msgstr "Запис във файл:"
 
-#: src/interface.c:1116 src/interface.c:1134
+#: src/interface.c:1119 src/interface.c:1137
 msgid "Select"
 msgstr "Избор"
 
-#: src/interface.c:1121
+#: src/interface.c:1124
 msgid "All appointments"
 msgstr "Всички срещи"
 
-#: src/interface.c:1140
+#: src/interface.c:1143
 msgid "Named appointments:"
 msgstr "Поименни срещи:"
 
-#: src/interface.c:1159
+#: src/interface.c:1162
 msgid ""
 "Note that only main file appointments are read.\n"
 "Archived and Foreign events are not exported."
@@ -362,7 +363,7 @@ msgstr ""
 "Имайте предвид, че се четат само основните файлове със срещи.\n"
 "Архивните и вътрешните събития не могат да се изнасят."
 
-#: src/interface.c:1162
+#: src/interface.c:1165
 msgid ""
 "Note that only main file appointments are read.\n"
 "Foreign events are not exported."
@@ -370,37 +371,37 @@ msgstr ""
 "Имайте предвид, че се четат само основните файлове със срещи.\n"
 "Външните събития не могат да се изнасят."
 
-#: src/interface.c:1165
+#: src/interface.c:1168
 msgid "You can easily drag these from event-list window."
 msgstr "Можете лесно да влачите тези събития от списъка."
 
-#: src/interface.c:1167
+#: src/interface.c:1170
 msgid "Orage appointment UIDs separated by commas."
 msgstr "Orage събития UID, разделени със запетайки."
 
-#: src/interface.c:1173
+#: src/interface.c:1176
 msgid "Archive"
 msgstr "Архивиране"
 
-#: src/interface.c:1182 src/interface.c:1204
+#: src/interface.c:1185 src/interface.c:1207
 #: src/orage-appointment-window.c:4099
 msgid "_Execute"
 msgstr "_Изпълнение"
 
-#: src/interface.c:1188
+#: src/interface.c:1191
 #, c-format
 msgid "Archive now (threshold: %d months)"
 msgstr "Архивиране сега (време за съхранение: %d месеца)"
 
-#: src/interface.c:1199
+#: src/interface.c:1202
 msgid "You can change archive threshold in parameters"
 msgstr "Времето за съхранение на архива може да бъде променено от настройките"
 
-#: src/interface.c:1211
+#: src/interface.c:1214
 msgid "Revert archive now"
 msgstr "Възстановяване на архива сега"
 
-#: src/interface.c:1218
+#: src/interface.c:1221
 msgid ""
 "Return all archived events into main orage file and remove arch file.\n"
 "This is useful for example when doing export and moving orage\n"
@@ -410,31 +411,31 @@ msgstr ""
 "Това се използва, например, при изнасяне и преместване на Orage събития\n"
 "на други системи."
 
-#: src/interface.c:1230
+#: src/interface.c:1233
 msgid "Orage files"
 msgstr "Orage файлове"
 
-#: src/interface.c:1237
+#: src/interface.c:1240
 msgid "Orage main calendar file"
 msgstr "Основен файл на Orage календара"
 
-#: src/interface.c:1246 src/interface.c:1345
+#: src/interface.c:1249 src/interface.c:1348
 msgid "Current file:"
 msgstr "Текущ файл:"
 
-#: src/interface.c:1259 src/interface.c:1358
+#: src/interface.c:1262 src/interface.c:1361
 msgid "New file:"
 msgstr "Нов файл:"
 
-#: src/interface.c:1289 src/interface.c:1387
+#: src/interface.c:1292 src/interface.c:1390
 msgid "Action options:"
 msgstr "Настройки на действие:"
 
-#: src/interface.c:1293 src/interface.c:1391
+#: src/interface.c:1296 src/interface.c:1394
 msgid "Rename"
 msgstr "Преименуване"
 
-#: src/interface.c:1300
+#: src/interface.c:1303
 msgid ""
 "Orage internal file rename only.\n"
 "Does not touch external filesystem at all.\n"
@@ -444,52 +445,52 @@ msgstr ""
 "Това не засяга цялата вътрешна файлова система.\n"
 "Нов файл трябва да съществува."
 
-#: src/interface.c:1304 src/interface.c:1399
+#: src/interface.c:1307 src/interface.c:1402
 msgid "Copy"
 msgstr "Копиране"
 
-#: src/interface.c:1311
+#: src/interface.c:1314
 msgid "Current file is copied and stays unmodified in the old place."
 msgstr "Текущият файл е копиран и е останал непроменен на старото си място."
 
-#: src/interface.c:1315 src/interface.c:1407
+#: src/interface.c:1318 src/interface.c:1410
 msgid "Move"
 msgstr "Преместване"
 
-#: src/interface.c:1322
+#: src/interface.c:1325
 msgid "Current file is moved and vanishes from the old place."
 msgstr "Текущият файл е копиран и е премахнат от старото си място."
 
-#: src/interface.c:1336
+#: src/interface.c:1339
 msgid "Archive file"
 msgstr "Архивен файл"
 
-#: src/interface.c:1433
+#: src/interface.c:1436
 msgid "Foreign files"
 msgstr "Външни файлове"
 
-#: src/interface.c:1440
+#: src/interface.c:1443
 msgid "Add new foreign file"
 msgstr "Добавяне на нов външен файл"
 
-#: src/interface.c:1448
+#: src/interface.c:1451
 msgid "Foreign file:"
 msgstr "Външен файл:"
 
-#: src/interface.c:1465 src/orage-appointment-window.c:2443
+#: src/interface.c:1468 src/orage-appointment-window.c:2443
 #: src/parameters.c:1388
 msgid "_Add"
 msgstr "_Добавяне"
 
-#: src/interface.c:1480
+#: src/interface.c:1483
 msgid "Visible name:"
 msgstr "Видимо име:"
 
-#: src/interface.c:1490
+#: src/interface.c:1493
 msgid "Read only"
 msgstr "Само четене"
 
-#: src/interface.c:1500
+#: src/interface.c:1503
 msgid ""
 "Set this if you want to make sure that this file is never modified by Orage.\n"
 "Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
@@ -497,15 +498,15 @@ msgstr ""
 "Задайте това, ако искате да сте сигурни, че тези файлове няма никога да бъдат променени от Orage.\n"
 "Имайте предвид, че промяната на външните файлове може да ги направи несъвместими с оригиналният инструмент, oткъдето са взети!"
 
-#: src/interface.c:1502
+#: src/interface.c:1505
 msgid "This internal name is displayed to user instead of file name."
 msgstr "Това вътрешно име се показва на потребителя, вместо името на файла."
 
-#: src/interface.c:1516
+#: src/interface.c:1519
 msgid "Exchange data - Orage"
 msgstr "Обмен на данни - Orage"
 
-#: src/main.c:49 src/orage-appointment-window.c:708
+#: src/main.c:52 src/orage-appointment-window.c:708
 #: org.xfce.orage.appdata.xml.in:7
 msgid "Orage"
 msgstr "Orage"
@@ -522,76 +523,76 @@ msgstr ""
 "Кирил Кирилов <cybercop_montana@abv.bg>\n"
 "Красимир Беров <berov@cpan.org>"
 
-#: src/orage-application.c:160
+#: src/orage-application.c:166
 msgid "Released under the terms of the GNU General Public License."
 msgstr "Издадено съгласно условията на GNU General Public License."
 
-#: src/orage-application.c:162
+#: src/orage-application.c:168
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
 msgstr "Компилирано за GTK+-%d.%d.%d, използвайки GTK+-%d.%d.%d."
 
-#: src/orage-application.c:167
+#: src/orage-application.c:173
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
 msgstr "Компилирано за libxfce4ui-%d.%d.%d, използвайки libxfce4ui-%d.%d.%d."
 
-#: src/orage-application.c:173
+#: src/orage-application.c:179
 #, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
 msgstr "Компилирано за libnotify-%d.%d.%d."
 
-#: src/orage-application.c:176
+#: src/orage-application.c:182
 msgid "Not using libnotify."
 msgstr "Да не се използва libnotify."
 
-#: src/orage-application.c:181
+#: src/orage-application.c:187
 msgid "Using automatic archiving."
 msgstr "Използване на автоматично архивиране."
 
-#: src/orage-application.c:183
+#: src/orage-application.c:189
 msgid "Not using archiving."
 msgstr "Да не се използва автоматично архивиране."
 
-#: src/orage-application.c:187
+#: src/orage-application.c:193
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Докладвайте за грешки на <%s>."
 
-#: src/orage-application.c:677
+#: src/orage-application.c:743
 msgid "Open today's tasks"
 msgstr "Отваряне на днешните задачи"
 
-#: src/orage-application.c:686
-msgid "Add new appointment"
-msgstr "Добавяне на нова среща"
+#: src/orage-application.c:752 src/orage-window-next.c:131
+msgid "Create a new appointment"
+msgstr "Създаване на нова среща"
 
-#: src/orage-application.c:695
-msgid "Show preferences form"
-msgstr "Показване на формата за предпочитания"
+#: src/orage-application.c:761
+msgid "Open the preferences dialog"
+msgstr "Отваряне на прозореца с настройки"
 
-#: src/orage-application.c:704
-msgid "Make Orage visible/unvisible"
-msgstr "Направи Orage видим/невидим"
+#: src/orage-application.c:770
+msgid "Toggle Orage visibility"
+msgstr "Превключване на видимостта на Orage"
 
-#: src/orage-application.c:713
-msgid "Add a foreign file"
-msgstr "Добавяне на външен файл"
+#: src/orage-application.c:779
+msgid "Add a foreign calendar file"
+msgstr "Добавяне на чужд календарен файл"
 
-#: src/orage-application.c:722
-msgid "Remove a foreign file"
-msgstr "Премахване на чуждия файл"
+#: src/orage-application.c:788
+msgid "Remove a foreign calendar file"
+msgstr "Премахване на чужд календарен файл"
 
-#: src/orage-application.c:731
-msgid "Import appointments from file to Orage"
-msgstr "Импортиране на събития от файл в Orage"
+#: src/orage-application.c:797
+msgid "Import appointments into the default calendar"
+msgstr "Импортиране на събития в стандартния календар"
 
-#: src/orage-application.c:740
-msgid "Export appointments from Orage to file"
-msgstr "Експортиране на срещите от Orage във файл"
+#: src/orage-application.c:806
+msgid "Export appointments to a file"
+msgstr "Експортиране на събития във файл"
 
-#: src/orage-application.c:749
-msgid "Show version of Orage"
+#: src/orage-application.c:815
+msgid "Show Orage version"
 msgstr "Показване на версията на Orage"
 
 #. if (gtk_toggle_button_get_active(
@@ -1533,10 +1534,6 @@ msgstr "<b>Събития за %s:</b>"
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>Събития за %s - %s:</b>"
-
-#: src/orage-window-next.c:131
-msgid "Create a new appointment"
-msgstr "Създаване на нова среща"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"
