@@ -1,5 +1,6 @@
-4.21.1 (2026-01-28)
+4.21.1 (2026-01-29)
 =======
+- Added alternative logger backend (MR !85).
 - Reintroduced and improved the D-Bus interface for calendar file operations,
   including import and export support (MR !83).
 - Maintenance: cleaned up unused code, fixed some GTK deprecation warnings,
