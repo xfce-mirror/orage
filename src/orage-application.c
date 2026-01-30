@@ -772,7 +772,7 @@ static void orage_application_init (OrageApplication *self)
             .flags = G_OPTION_FLAG_NONE,
             .arg = G_OPTION_ARG_NONE,
             .arg_data = NULL,
-            .description = N_ ("Open today's tasks"),
+            .description = N_("Open today's tasks"),
             .arg_description = NULL,
         },
         {
@@ -781,7 +781,7 @@ static void orage_application_init (OrageApplication *self)
             .flags = G_OPTION_FLAG_NONE,
             .arg = G_OPTION_ARG_NONE,
             .arg_data = NULL,
-            .description = N_ ("Add new appointment"),
+            .description = N_("Add new appointment"),
             .arg_description = NULL,
         },
         {
@@ -790,7 +790,7 @@ static void orage_application_init (OrageApplication *self)
             .flags = G_OPTION_FLAG_NONE,
             .arg = G_OPTION_ARG_NONE,
             .arg_data = NULL,
-            .description = N_ ("Show preferences form"),
+            .description = N_("Show preferences form"),
             .arg_description = NULL,
         },
         {
@@ -799,7 +799,7 @@ static void orage_application_init (OrageApplication *self)
             .flags = G_OPTION_FLAG_NONE,
             .arg = G_OPTION_ARG_NONE,
             .arg_data = NULL,
-            .description = N_ ("Make Orage visible/unvisible"),
+            .description = N_("Make Orage visible/unvisible"),
             .arg_description = NULL,
         },
         {
@@ -808,7 +808,7 @@ static void orage_application_init (OrageApplication *self)
             .flags = G_OPTION_FLAG_NONE,
             .arg = G_OPTION_ARG_FILENAME,
             .arg_data = NULL,
-            .description = N_ ("Add a foreign file"),
+            .description = N_("Add a foreign file"),
             .arg_description = "<file>:[RW]:[name]",
         },
         {
@@ -817,7 +817,7 @@ static void orage_application_init (OrageApplication *self)
             .flags = G_OPTION_FLAG_NONE,
             .arg = G_OPTION_ARG_FILENAME,
             .arg_data = NULL,
-            .description = N_ ("Remove a foreign file"),
+            .description = N_("Remove a foreign file"),
             .arg_description = "<file>",
         },
         {
@@ -826,7 +826,7 @@ static void orage_application_init (OrageApplication *self)
             .flags = G_OPTION_FLAG_NONE,
             .arg = G_OPTION_ARG_FILENAME,
             .arg_data = NULL,
-            .description = N_ ("Import appointments from file to Orage"),
+            .description = N_("Import appointments from file to Orage"),
             .arg_description = "<file>:[appointment...]",
         },
         {
@@ -835,7 +835,7 @@ static void orage_application_init (OrageApplication *self)
             .flags = G_OPTION_FLAG_NONE,
             .arg = G_OPTION_ARG_FILENAME,
             .arg_data = NULL,
-            .description = N_ ("Export appointments from Orage to file"),
+            .description = N_("Export appointments from Orage to file"),
             .arg_description = "<file>:[appointment...]",
         },
         {
@@ -844,7 +844,7 @@ static void orage_application_init (OrageApplication *self)
             .flags = G_OPTION_FLAG_NONE,
             .arg = G_OPTION_ARG_STRING,
             .arg_data = NULL,
-            .description = N_ ("Select logging backend (glib|orage)"),
+            .description = N_("Select logging backend (glib|orage)"),
             .arg_description = "backend",
         },
         {
