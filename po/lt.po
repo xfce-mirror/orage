@@ -574,27 +574,27 @@ msgstr "Atverti nuostatų dialogą"
 
 #: src/orage-application.c:770
 msgid "Toggle Orage visibility"
-msgstr ""
+msgstr "Perjungti Orage matomumą"
 
 #: src/orage-application.c:779
 msgid "Add a foreign calendar file"
-msgstr ""
+msgstr "Pridėti svetimą kalendoriaus failą"
 
 #: src/orage-application.c:788
 msgid "Remove a foreign calendar file"
-msgstr ""
+msgstr "Šalinti svetimą kalendoriaus failą"
 
 #: src/orage-application.c:797
 msgid "Import appointments into the default calendar"
-msgstr ""
+msgstr "Importuoti paskyrimus į numatytąjį kalendorių"
 
 #: src/orage-application.c:806
 msgid "Export appointments to a file"
-msgstr ""
+msgstr "Eksportuoti paskyrimus į failą"
 
 #: src/orage-application.c:815
 msgid "Show Orage version"
-msgstr ""
+msgstr "Rodyti Orage versiją"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
