@@ -31,6 +31,8 @@ orage_sources = [
   'orage-i18n.h',
   'orage-import.h',
   'orage-import.c',
+  'orage-log.h',
+  'orage-log.c',
   'orage-month-cell.c',
   'orage-month-cell.h',
   'orage-month-view.c',
