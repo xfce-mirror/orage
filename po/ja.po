@@ -7,8 +7,8 @@
 # Masato HASHIMOTO <cabezon.hashimoto@gmail.com>, 2022
 # Xfce Bot <transifex@xfce.org>, 2025
 # Nobuhiro Iwamatsu <iwamatsu@nigauri.org>, 2025
-# UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2025
 # Nick Schermer <nick@xfce.org>, 2026
+# UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2026
 # 
 #, fuzzy
 msgid ""
@@ -17,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2026-01-29 00:55+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Nick Schermer <nick@xfce.org>, 2026\n"
+"Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2026\n"
 "Language-Team: Japanese (https://app.transifex.com/xfce/teams/16840/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -570,27 +570,27 @@ msgstr "設定ダイアログを開きます"
 
 #: src/orage-application.c:770
 msgid "Toggle Orage visibility"
-msgstr ""
+msgstr "Orage の表示を切り替える"
 
 #: src/orage-application.c:779
 msgid "Add a foreign calendar file"
-msgstr ""
+msgstr "外部のカレンダーファイルを追加"
 
 #: src/orage-application.c:788
 msgid "Remove a foreign calendar file"
-msgstr ""
+msgstr "外部のカレンダーファイルを削除"
 
 #: src/orage-application.c:797
 msgid "Import appointments into the default calendar"
-msgstr ""
+msgstr "予定をデフォルトのカレンダーにインポート"
 
 #: src/orage-application.c:806
 msgid "Export appointments to a file"
-msgstr ""
+msgstr "予定をファイルにエクスポート"
 
 #: src/orage-application.c:815
 msgid "Show Orage version"
-msgstr ""
+msgstr "Orage のバージョンを表示"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
