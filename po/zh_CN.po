@@ -7,7 +7,7 @@
 # Zhou Yuheng <wojiushixxx@126.com>, 2022
 # Xfce Bot <transifex@xfce.org>, 2024
 # Mingcong Bai <jeffbai@aosc.xyz>, 2025
-# Nick Schermer <nick@xfce.org>, 2026
+# Nick Schermer <nick@xfce.org>, 2025
 # 玉堂白鹤 <yjwork@qq.com>, 2026
 # 
 #, fuzzy
@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-01-29 00:55+0100\n"
+"POT-Creation-Date: 2026-01-30 12:56+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: 玉堂白鹤 <yjwork@qq.com>, 2026\n"
 "Language-Team: Chinese (China) (https://app.transifex.com/xfce/teams/16840/zh_CN/)\n"
@@ -526,76 +526,80 @@ msgstr ""
 "玉堂白鹤 <yjwork@qq.com>, 2016,2024.\n"
 "Xiaobo Zhou <zhouxiaobo.500@gmail.com>, 2013, 2014, 2017, 2018, 2021."
 
-#: src/orage-application.c:166
+#: src/orage-application.c:167
 msgid "Released under the terms of the GNU General Public License."
 msgstr "以 GNU 通用公共许可协议方式发布。"
 
-#: src/orage-application.c:168
+#: src/orage-application.c:169
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
 msgstr "针对 GTK+-%d.%d.%d编译，使用 GTK+-%d.%d.%d。"
 
-#: src/orage-application.c:173
+#: src/orage-application.c:174
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
 msgstr "针对 libxfce4ui-%d.%d.%d编译, 使用 libxfce4ui-%d.%d.%d。"
 
-#: src/orage-application.c:179
+#: src/orage-application.c:180
 #, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
 msgstr "使用 libnotify-%d.%d.%d编译。"
 
-#: src/orage-application.c:182
+#: src/orage-application.c:183
 msgid "Not using libnotify."
 msgstr "不使用 libnotify。"
 
-#: src/orage-application.c:187
+#: src/orage-application.c:188
 msgid "Using automatic archiving."
 msgstr "使用自动归档。"
 
-#: src/orage-application.c:189
+#: src/orage-application.c:190
 msgid "Not using archiving."
 msgstr "不使用归档。"
 
-#: src/orage-application.c:193
+#: src/orage-application.c:194
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "请向 <%s> 报告缺陷。"
 
-#: src/orage-application.c:743
+#: src/orage-application.c:775
 msgid "Open today's tasks"
 msgstr "打开今日任务"
 
-#: src/orage-application.c:752 src/orage-window-next.c:131
-msgid "Create a new appointment"
-msgstr "添加一个新约会"
+#: src/orage-application.c:784
+msgid "Add new appointment"
+msgstr "添加新约会"
 
-#: src/orage-application.c:761
-msgid "Open the preferences dialog"
-msgstr "打开终端首选项对话框"
+#: src/orage-application.c:793
+msgid "Show preferences form"
+msgstr "显示首选项窗体"
 
-#: src/orage-application.c:770
-msgid "Toggle Orage visibility"
-msgstr "切换 Orage 视觉效果"
+#: src/orage-application.c:802
+msgid "Make Orage visible/unvisible"
+msgstr "使 Orage 可见/不可见"
 
-#: src/orage-application.c:779
-msgid "Add a foreign calendar file"
-msgstr "添加外部日历文件"
+#: src/orage-application.c:811
+msgid "Add a foreign file"
+msgstr "添加外部文件"
 
-#: src/orage-application.c:788
-msgid "Remove a foreign calendar file"
-msgstr "移除外部日历文件"
+#: src/orage-application.c:820
+msgid "Remove a foreign file"
+msgstr "移除外部文件"
 
-#: src/orage-application.c:797
-msgid "Import appointments into the default calendar"
-msgstr "将约会导入默认日历"
+#: src/orage-application.c:829
+msgid "Import appointments from file to Orage"
+msgstr "从文件导出约会到 Orage"
 
-#: src/orage-application.c:806
-msgid "Export appointments to a file"
-msgstr "导出约会到文件"
+#: src/orage-application.c:838
+msgid "Export appointments from Orage to file"
+msgstr "从 Orage 导出约会到文件"
 
-#: src/orage-application.c:815
-msgid "Show Orage version"
+#: src/orage-application.c:847
+msgid "Select logging backend (glib|orage)"
+msgstr ""
+
+#: src/orage-application.c:856
+msgid "Show version of Orage"
 msgstr "显示 Orage 版本"
 
 #. if (gtk_toggle_button_get_active(
@@ -1525,6 +1529,10 @@ msgstr "<b>%s 的事件：</b>"
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>%s-%s 的事件：</b>"
+
+#: src/orage-window-next.c:131
+msgid "Create a new appointment"
+msgstr "添加一个新约会"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"
