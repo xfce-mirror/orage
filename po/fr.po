@@ -598,7 +598,7 @@ msgstr "Exporter les rendez-vous d’Orage vers un fichier"
 
 #: src/orage-application.c:847
 msgid "Select logging backend (glib|orage)"
-msgstr ""
+msgstr "Sélectionner le moteur de journalisation (glib|orage)"
 
 #: src/orage-application.c:856
 msgid "Show version of Orage"
