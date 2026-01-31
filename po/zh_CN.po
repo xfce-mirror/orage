@@ -596,7 +596,7 @@ msgstr "从 Orage 导出约会到文件"
 
 #: src/orage-application.c:847
 msgid "Select logging backend (glib|orage)"
-msgstr ""
+msgstr "选择日志后端 (glib|orage)"
 
 #: src/orage-application.c:856
 msgid "Show version of Orage"
