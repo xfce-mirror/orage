@@ -590,7 +590,7 @@ msgstr "Orage からファイルに予定をエクスポートする"
 
 #: src/orage-application.c:847
 msgid "Select logging backend (glib|orage)"
-msgstr ""
+msgstr "ログバックエンドを選択（glib|orage）"
 
 #: src/orage-application.c:856
 msgid "Show version of Orage"
