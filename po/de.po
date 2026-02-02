@@ -600,7 +600,7 @@ msgstr "Termine aus Orage in eine Datei exportieren"
 
 #: src/orage-application.c:847
 msgid "Select logging backend (glib|orage)"
-msgstr ""
+msgstr "Wählen Sie das Protokollierungs-Backend (glib|orage)"
 
 #: src/orage-application.c:856
 msgid "Show version of Orage"
