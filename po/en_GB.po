@@ -589,7 +589,7 @@ msgstr "Export appointments from Orage to file"
 
 #: src/orage-application.c:847
 msgid "Select logging backend (glib|orage)"
-msgstr ""
+msgstr "Select logging backend (glib|orage)"
 
 #: src/orage-application.c:856
 msgid "Show version of Orage"
