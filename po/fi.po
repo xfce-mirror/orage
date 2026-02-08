@@ -559,7 +559,7 @@ msgstr "Ilmoita ohjelmavirheistä osoitteeseen <%s>."
 
 #: src/orage-application.c:775
 msgid "Open today's tasks"
-msgstr ""
+msgstr "Avaa tämän päivän tehtävät"
 
 #: src/orage-application.c:784
 msgid "Add new appointment"
@@ -729,7 +729,7 @@ msgstr ""
 
 #: src/orage-appointment-window.c:3235
 msgid "second"
-msgstr ""
+msgstr "sekunti"
 
 #: src/orage-appointment-window.c:3235
 msgid "third"
@@ -1338,19 +1338,19 @@ msgstr ""
 
 #: src/orage-import.c:213
 msgid "Yes"
-msgstr ""
+msgstr "Kyllä"
 
 #: src/orage-import.c:213
 msgid "No"
-msgstr ""
+msgstr "Ei"
 
 #: src/orage-import.c:259
 msgid "Import calendar file"
-msgstr ""
+msgstr "Tuo kalenteritiedosto"
 
 #: src/orage-import.c:261
 msgid "_Import"
-msgstr ""
+msgstr "_Tuo"
 
 #: src/orage-import.c:270
 msgid "_Cancel"
@@ -1430,7 +1430,7 @@ msgstr "Tuntematon"
 
 #: src/orage-week-window.c:896
 msgid "Number of days to show"
-msgstr ""
+msgstr "Näytettävien päivien määrä"
 
 #: src/orage-week-window.c:1212
 msgid "Orage - day view"
@@ -1529,7 +1529,7 @@ msgstr "<b>Tapahtumat ajalle %s - %s:</b>"
 
 #: src/orage-window-next.c:131
 msgid "Create a new appointment"
-msgstr ""
+msgstr "Luo uusi tapaaminen"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"
@@ -1541,7 +1541,7 @@ msgstr ""
 
 #: src/orage-window-next.c:136
 msgid "Close window"
-msgstr ""
+msgstr "Sulje ikkuna"
 
 #: src/orage-window-next.c:137
 msgid "_Quit"
@@ -1549,7 +1549,7 @@ msgstr "_Lopeta"
 
 #: src/orage-window-next.c:137
 msgid "Quit program"
-msgstr ""
+msgstr "Lopeta ohjelma"
 
 #: src/orage-window-next.c:140
 msgid "_Preferences"
@@ -1561,7 +1561,7 @@ msgstr "Oragen asetukset"
 
 #: src/orage-window-next.c:143
 msgid "View selected date"
-msgstr ""
+msgstr "Näytä valittu päivä"
 
 #: src/orage-window-next.c:145
 msgid "Go to today"
@@ -1581,7 +1581,7 @@ msgstr ""
 
 #: src/orage-window-next.c:366
 msgid "New event"
-msgstr ""
+msgstr "Uusi tapahtuma"
 
 #: src/orage-window-next.c:444
 #, c-format
@@ -1599,23 +1599,23 @@ msgstr ""
 
 #: src/orage-window-next.c:1070
 msgid "Previous"
-msgstr ""
+msgstr "Edellinen"
 
 #: src/orage-window-next.c:1090
 msgid "Next"
-msgstr ""
+msgstr "Seuraava"
 
 #: src/orage-window-next.c:1104
 msgid "Day"
-msgstr ""
+msgstr "Päivä"
 
 #: src/orage-window-next.c:1109
 msgid "Month"
-msgstr ""
+msgstr "Kuukausi"
 
 #: src/orage-window-next.c:1112
 msgid "Year"
-msgstr ""
+msgstr "Vuosi"
 
 #: src/parameters.c:646
 msgid "Remove selected synchronization task."
@@ -1668,11 +1668,11 @@ msgstr "Kalenterin visuaaliset yksityiskohdat"
 
 #: src/parameters.c:819
 msgid "Use new user interface"
-msgstr ""
+msgstr "Käytä uutta käyttöliittymää"
 
 #: src/parameters.c:821
 msgid "Enable the new interface layout (requires restart)"
-msgstr ""
+msgstr "Käytä uutta käyttöliittymän asettelua (vaatii uudelleenkäynnistyksen)"
 
 #: src/parameters.c:826
 msgid "Show borders"
