@@ -588,7 +588,7 @@ msgstr "Извези састанке из Оража у датотеку"
 
 #: src/orage-application.c:847
 msgid "Select logging backend (glib|orage)"
-msgstr ""
+msgstr "Означите позадину дневника (glib|orage)"
 
 #: src/orage-application.c:856
 msgid "Show version of Orage"
