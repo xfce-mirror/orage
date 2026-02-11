@@ -593,7 +593,7 @@ msgstr "Exportera möten från Orage till fil"
 
 #: src/orage-application.c:847
 msgid "Select logging backend (glib|orage)"
-msgstr ""
+msgstr "Välj loggningsbackend (glib|orage)"
 
 #: src/orage-application.c:856
 msgid "Show version of Orage"
