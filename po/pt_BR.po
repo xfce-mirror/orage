@@ -11,8 +11,8 @@
 # Xfce Bot <transifex@xfce.org>, 2024
 # Nick Schermer <nick@xfce.org>, 2025
 # Andre Miranda <andre@andreldm.com>, 2025
-# Michael Martins, 2025
 # Rafael Fontenelle <rffontenelle@gmail.com>, 2026
+# Michael Martins, 2026
 # 
 #, fuzzy
 msgid ""
@@ -21,7 +21,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2026-01-30 12:56+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Rafael Fontenelle <rffontenelle@gmail.com>, 2026\n"
+"Last-Translator: Michael Martins, 2026\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/xfce/teams/16840/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -570,35 +570,35 @@ msgstr "Abre as tarefas de hoje"
 
 #: src/orage-application.c:784
 msgid "Add new appointment"
-msgstr "Adiciona novo compromisso"
+msgstr "Adicionar novo compromisso"
 
 #: src/orage-application.c:793
 msgid "Show preferences form"
-msgstr "Mostra o formulário de preferências"
+msgstr "Mostrar formulário de preferências"
 
 #: src/orage-application.c:802
 msgid "Make Orage visible/unvisible"
-msgstr "Torna o Orage visível/invisível"
+msgstr "Mostrar/ocultar o Orage"
 
 #: src/orage-application.c:811
 msgid "Add a foreign file"
-msgstr "Adiciona um arquivo externo"
+msgstr "Adicionar um arquivo externo"
 
 #: src/orage-application.c:820
 msgid "Remove a foreign file"
-msgstr "Remove um arquivo externo"
+msgstr "Remover um arquivo externo"
 
 #: src/orage-application.c:829
 msgid "Import appointments from file to Orage"
-msgstr "Importa compromissos do arquivo para o Orage"
+msgstr "Importar compromissos do arquivo para o Orage."
 
 #: src/orage-application.c:838
 msgid "Export appointments from Orage to file"
-msgstr "Exporta compromissos do Orage para um arquivo"
+msgstr "Exportar compromissos do Orage para arquivo"
 
 #: src/orage-application.c:847
 msgid "Select logging backend (glib|orage)"
-msgstr ""
+msgstr "Selecione o backend de registro (glib|orage)"
 
 #: src/orage-application.c:856
 msgid "Show version of Orage"
