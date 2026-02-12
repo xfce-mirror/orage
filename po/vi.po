@@ -586,7 +586,7 @@ msgstr "Xuất cuộc hẹn từ Orage ra tệp"
 
 #: src/orage-application.c:847
 msgid "Select logging backend (glib|orage)"
-msgstr ""
+msgstr "Chọn backend ghi nhật ký (glib|orage)"
 
 #: src/orage-application.c:856
 msgid "Show version of Orage"
