@@ -70,8 +70,8 @@ static const gchar *event_type_to_string (const xfical_type type)
             return _("Journal");
 
         default:
-            g_critical ("%s: Unsupported Type", G_STRFUNC);
-            return "Unsupported event type";
+            g_critical ("unsupported event type %d", type);
+            return _("Unsupported event type");
     }
 }
 

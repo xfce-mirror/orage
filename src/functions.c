@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2025 Erkki Moorits
+ * Copyright (c) 2021-2026 Erkki Moorits
  * Copyright (c) 2005-2013 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2003-2005 Mickael Graf (korbinus at xfce.org)
  *
@@ -444,19 +444,13 @@ gchar *orage_process_text_commands (const gchar *text)
                     g_free(new);
                 }
                 else
-                {
-                    g_warning ("%s: start year is too big (%d)",
-                               G_STRFUNC, start_year);
-                }
+                    g_warning ("invalid start year '%d'", start_year);
             }
             else
-            {
-                g_warning ("%s: failed to understand parameter (%s)",
-                           G_STRFUNC, cmd);
-            }
+                g_warning ("failed to parse parameter '%s'", cmd);
         }
         else
-            g_warning ("%s: parameter (%s) misses ending '>'", G_STRFUNC, cmd);
+            g_warning ("parameter '%s' is missing closing '>'", cmd);
     }
 
     if (beq) {
@@ -603,15 +597,13 @@ gboolean orage_copy_file (const gchar *source, const gchar *target)
 
     /* read file */
     if (!g_file_get_contents(source, &text, &text_len, &error)) {
-        g_warning ("%s: Could not open file (%s) error:%s", G_STRFUNC, source,
-                   error->message);
+        g_warning ("could not open file '%s': %s", source, error->message);
         g_error_free(error);
         ok = FALSE;
     }
     /* write file */
     if (ok && !g_file_set_contents(target, text, -1, &error)) {
-        g_warning ("%s: Could not write file (%s) error:%s", G_STRFUNC, target,
-                   error->message);
+        g_warning ("could not write file '%s': %s", target, error->message);
         g_error_free(error);
         ok = FALSE;
     }
@@ -653,8 +645,8 @@ gchar *orage_data_file_location (const gchar *name)
         /* it does not exist, let's try to create it */
         dir_name = g_path_get_dirname (file_name);
         if (g_mkdir_with_parents(dir_name, mode)) {
-            g_warning ("%s: (%s) (%s) directory creation failed", G_STRFUNC,
-                       base_dir, file_name);
+            g_warning ("failed to create directory '%s' under base dir '%s'",
+                       dir_name, base_dir);
         }
         g_free(dir_name);
         /* now we have the directories ready, let's check for system default */
@@ -702,7 +694,7 @@ gchar *orage_config_file_location (const gchar *name)
         /* it does not exist, let's try to create it */
         dir_name = g_path_get_dirname (file_name);
         if (g_mkdir_with_parents(dir_name, mode)) {
-            g_warning ("%s: (%s) (%s) directory creation failed", G_STRFUNC,
+            g_warning ("failed to create directory '%s' under base dir '%s'",
                        base_dir, file_name);
         }
         g_free(dir_name);
@@ -915,13 +907,14 @@ void orage_open_help_page (void)
 #endif
     if (orage_exec (helpdoc, NULL, &error) == FALSE)
     {
-        g_message ("%s failed: %s. Trying firefox", helpdoc, error->message);
+        g_warning ("'%s' failed: %s", helpdoc, error->message);
         g_clear_error (&error);
 
         helpdoc = "firefox " ORAGE_DOC_ADDRESS;
+        g_message ("trying '%s' as fallback application", helpdoc);
         if (orage_exec (helpdoc, NULL, &error) == FALSE)
         {
-            g_warning ("start of %s failed: %s", helpdoc, error->message);
+            g_warning ("start of '%s' failed: %s", helpdoc, error->message);
             g_clear_error (&error);
         }
     }

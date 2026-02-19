@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2025 Erkki Moorits
+ * Copyright (c) 2021-2026 Erkki Moorits
  * Copyright (c) 2005-2013 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2004-2005 Mickael Graf (korbinus at xfce.org)
  *
@@ -211,7 +211,7 @@ static void on_post_init (OrageWindowClassic *window)
     func_ptr.callback = (GCallback)on_post_init;
     rc = g_signal_handlers_disconnect_by_func (window, func_ptr.ptr, NULL);
 
-    g_debug ("%s: %d handlers disconnected", G_STRFUNC, rc);
+    g_debug ("%d handlers disconnected", rc);
 
     orage_window_classic_restore_state (window);
 }

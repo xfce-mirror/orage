@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2025 Erkki Moorits
+ * Copyright (c) 2021-2026 Erkki Moorits
  * Copyright (c) 2005-2013 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2004-2005 Mickael Graf (korbinus at xfce.org)
  *
@@ -1516,7 +1516,7 @@ static gboolean save_xfical_from_appt_win (OrageAppointmentWindow *apptw)
     /* Here we try to save the event... */
     if (xfical_file_open (TRUE) == FALSE)
     {
-        g_warning ("%s: file open and update failed: %s", G_STRFUNC,
+        g_warning ("failed to open ical file for appointment '%s'",
                    apptw->xf_uid);
         return FALSE;
     }
@@ -1546,8 +1546,7 @@ static gboolean save_xfical_from_appt_win (OrageAppointmentWindow *apptw)
                     xf_file_id = g_strdup_printf ("F%02d.", i - 1);
                 else
                 {
-                    g_warning ("%s: Matching foreign file not found: '%s'",
-                               G_STRFUNC, tmp);
+                    g_warning ("foreign file '%s' not found", tmp);
                     ok = FALSE;
                 }
             }
@@ -1567,12 +1566,13 @@ static gboolean save_xfical_from_appt_win (OrageAppointmentWindow *apptw)
             apptw->appointment_add = FALSE;
             gtk_widget_set_sensitive (apptw->Duplicate, TRUE);
             gtk_widget_set_sensitive (apptw->File_menu_duplicate, TRUE);
-            g_message ("Added: %s", apptw->xf_uid);
+            g_debug ("added appointment '%s'", apptw->xf_uid);
             remove_file_select_cb (apptw);
         }
         else
         {
-            g_warning ("%s: Addition failed: %s", G_STRFUNC, apptw->xf_uid);
+            g_warning ("failed to add appointment '%s'",
+                       apptw->xf_uid ? apptw->xf_uid : "unknown");
             orage_error_dialog (GTK_WINDOW (apptw),
                                 _("Appointment addition failed."),
                                 _("Error happened when adding appointment. Look more details from the log file."));
@@ -1582,11 +1582,10 @@ static gboolean save_xfical_from_appt_win (OrageAppointmentWindow *apptw)
     {
         ok = xfical_appt_mod (apptw->xf_uid, appt);
         if (ok)
-            g_message ("Modified: %s", apptw->xf_uid);
+            g_debug ("modified appointment '%s'", apptw->xf_uid);
         else
         {
-            g_warning ("%s: Modification failed: %s", G_STRFUNC,
-                       apptw->xf_uid);
+            g_warning ("failed to modify appointment '%s'", apptw->xf_uid);
             orage_error_dialog (GTK_WINDOW (apptw),
                                 _("Appointment update failed."),
                                 _("Look more details from the log file. (Perhaps file was updated external from Orage?)"));
@@ -1649,15 +1648,16 @@ static void delete_xfical_from_appt_win (OrageAppointmentWindow *apptw)
     if (result == GTK_RESPONSE_YES) {
         if (!apptw->appointment_add) {
             if (!xfical_file_open(TRUE)) {
-                g_warning ("%s: file open and removal failed: %s",
-                           G_STRFUNC, apptw->xf_uid);
+                g_warning ("failed to open ical file for appointment '%s' "
+                           "removal",
+                           apptw->xf_uid ? apptw->xf_uid : "unknown");
                 return;
             }
             ok = xfical_appt_del(apptw->xf_uid);
             if (ok)
-                g_message ("Removed: %s", apptw->xf_uid);
+                g_debug ("removed appointment '%s'", apptw->xf_uid);
             else
-                g_warning ("%s: Removal failed: %s", G_STRFUNC, apptw->xf_uid);
+                g_warning ("failed to remove appointment '%s'", apptw->xf_uid);
             xfical_file_close(TRUE);
         }
 
@@ -1851,7 +1851,7 @@ static void recur_row_clicked (GtkWidget *widget
         else {
             time_str = g_date_time_format (xfical_exception_get_time (
                     recur_exception), "%F %T");
-            g_warning ("%s: non existent row (%s)", G_STRFUNC, time_str);
+            g_warning ("recurrence exception not found for '%s'", time_str);
             g_free (time_str);
         }
         xfical_exception_unref (recur_exception);
@@ -2013,8 +2013,8 @@ static void fill_appt_window_times (OrageAppointmentWindow *apptw,
         gtk_button_set_label(GTK_BUTTON(apptw->StartTimezone_button)
                 , _(appt->start_tz_loc));
     }
-    else /* we should never get here */
-        g_warning ("%s: start_tz_loc is null", G_STRFUNC);
+    else
+        g_warning ("appointment '%s': start timezone is missing",  appt->uid);
 
     /* end time */
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(
@@ -2038,11 +2038,11 @@ static void fill_appt_window_times (OrageAppointmentWindow *apptw,
             gtk_button_set_label(GTK_BUTTON(apptw->EndTimezone_button)
                     , _(appt->end_tz_loc));
         }
-        else /* we should never get here */
-            g_warning ("%s: end_tz_loc is null", G_STRFUNC);
+        else
+            g_warning ("appointment '%s': end timezone is missing", appt->uid);
     }
     else
-        g_warning ("%s: endtime wrong %s", G_STRFUNC, appt->uid);
+        g_warning ("appointment '%s': end time is missing", appt->uid);
 
     /* duration */
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(apptw->Dur_checkbutton)
@@ -2079,11 +2079,13 @@ static void fill_appt_window_times (OrageAppointmentWindow *apptw,
             gtk_button_set_label(GTK_BUTTON(apptw->CompletedTimezone_button)
                     , _(appt->completed_tz_loc));
         }
-        else /* we should never get here */
-            g_warning ("%s: completed_tz_loc is null", G_STRFUNC);
+        else
+            g_warning ("appointment '%s': completed timezone is missing",
+                       appt->uid);
     }
     else
-        g_warning ("%s: completedtime wrong %s", G_STRFUNC, appt->uid);
+        g_warning ("appointment '%s': completed time is missing",
+                   appt->uid);
 }
 
 static xfical_appt *fill_appt_window_get_new_appt (GDateTime *par_gdt)
@@ -2506,7 +2508,8 @@ static void fill_appt_window_general (OrageAppointmentWindow *apptw,
         gtk_toggle_button_set_active(
                 GTK_TOGGLE_BUTTON(apptw->Type_journal_rb), TRUE);
     else
-        g_warning ("%s: Illegal value for type", G_STRFUNC);
+        g_warning ("appointment '%s': illegal xfical_type value %d",
+                   appt->uid ? appt->uid : "(no UID)", appt->type);
 
     /* appointment name */
     gtk_entry_set_text(GTK_ENTRY(apptw->Title_entry)
@@ -2861,7 +2864,7 @@ static void fill_appt_window (OrageAppointmentWindow *apptw,
             break;
     }
 
-    g_message ("%s appointment: '%s'", action_str, appointment_id);
+    g_message ("'%s' appointment: '%s'", action_str, appointment_id);
     g_free (appointment_id);
     apptw->xf_uid = g_strdup(appt->uid);
     g_date_time_unref (apptw->appointment_time);
@@ -2967,10 +2970,11 @@ static OrageRc *orage_alarm_file_open(gboolean read_only)
     fpath = orage_config_file_location(ORAGE_DEFAULT_ALARM_DIR_FILE);
     if (!read_only)  /* we need to empty it before each write */
         if (g_remove(fpath)) {
-            g_warning ("%s: g_remove failed", G_STRFUNC);
+            g_warning ("failed to remove file '%s': %s", fpath,
+                       g_strerror(errno));
         }
     if ((orc = orage_rc_file_open(fpath, read_only)) == NULL) {
-        g_warning ("%s: default alarm file open failed", G_STRFUNC);
+        g_warning ("failed to open default alarm file '%s'", fpath);
     }
     g_free(fpath);
 

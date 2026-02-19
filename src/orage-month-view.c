@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025 Erkki Moorits
+ * Copyright (c) 2025-2026 Erkki Moorits
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -152,7 +152,7 @@ static void on_date_dialog_response (GtkDialog *dialog,
             orage_month_view_set_month ((OrageMonthView *)user_data, gdt);
         }
         else
-            g_error ("%s: no calendar component", G_STRFUNC);
+            g_error ("no calendar component found in dialog");
     }
 
     gtk_widget_destroy (GTK_WIDGET (dialog));

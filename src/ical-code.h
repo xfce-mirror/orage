@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2025 Erkki Moorits
+ * Copyright (c) 2021-2026 Erkki Moorits
  * Copyright (c) 2005-2011 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2004-2005 Mickael Graf (korbinus at xfce.org)
  *
@@ -45,9 +45,10 @@ typedef enum
 
 typedef enum
 {
-    XFICAL_TYPE_EVENT = 0
-   ,XFICAL_TYPE_TODO
-   ,XFICAL_TYPE_JOURNAL
+    XFICAL_TYPE_UNKNOWN = -1,
+    XFICAL_TYPE_EVENT = 0,
+    XFICAL_TYPE_TODO,
+    XFICAL_TYPE_JOURNAL
 } xfical_type;
 
 typedef enum

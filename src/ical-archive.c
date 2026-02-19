@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2025 Erkki Moorits
+ * Copyright (c) 2021-2026 Erkki Moorits
  * Copyright (c) 2005-2011 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2003-2005 Mickael Graf (korbinus at xfce.org)
  *
@@ -80,7 +80,11 @@ void xfical_archive_close(void)
         return;
 
     if (ic_afical == NULL)
-        g_warning ("%s: afical is NULL", G_STRFUNC);
+    {
+        g_warning ("ic_afical is NULL");
+        return;
+    }
+
     icalset_free(ic_afical);
     ic_afical = NULL;
 }
@@ -173,8 +177,8 @@ static void xfical_icalcomponent_archive_recurrent (icalcomponent *e,
                  * It was possible that multiple entries were generated.
                  * They are in order: oldest first.
                  * And we only need the oldest, so delete the rest */
-                g_warning ("%s: Corrupted X-ORAGE-ORIG-DTSTART setting. Fixing",
-                           G_STRFUNC);
+                g_warning ("corrupted X-ORAGE-ORIG-DTSTART property detected; "
+                           "fixing");
                 icalcomponent_remove_property(e, p_orig);
                 /* we need to start from scratch since counting may go wrong
                  * bcause delete moves the pointer. */
@@ -190,8 +194,8 @@ static void xfical_icalcomponent_archive_recurrent (icalcomponent *e,
         }
         else if (g_str_has_prefix(text, "X-ORAGE-ORIG-DTEND")) {
             if (has_orig_dtend) {
-                g_warning ("%s: Corrupted X-ORAGE-ORIG-DTEND setting. Fixing",
-                           G_STRFUNC);
+                g_warning ("corrupted X-ORAGE-ORIG-DTEND property detected; "
+                           "fixing");
                 icalcomponent_remove_property(e, p_orig);
                 has_orig_dtstart = FALSE;
                 has_orig_dtend = FALSE;
@@ -222,7 +226,7 @@ static void xfical_icalcomponent_archive_recurrent (icalcomponent *e,
     icalrecur_iterator_free(ri);
 
     if (icaltime_is_null_time(nsdate)) { /* remove since it has ended */
-        g_message ("Recur ended, moving to archive file");
+        g_message ("recurrence ended; moving event to archive");
         if (has_orig_dtstart)
             replace_repeating(e, p_origdtstart, ICAL_DTSTART_PROPERTY);
         if (has_orig_dtend)
@@ -282,11 +286,11 @@ gboolean xfical_archive(void)
     gint ical_months;
 
     if (g_par.archive_limit == 0) {
-        g_message ("Archiving not enabled. Exiting");
+        g_message ("archiving disabled; exiting");
         return(TRUE);
     }
     if (!xfical_file_open(FALSE) || !xfical_archive_open()) {
-        g_critical ("%s: file open error", G_STRFUNC);
+        g_critical ("calendar or archive file open failed");
         return(FALSE);
     }
 
@@ -295,10 +299,9 @@ gboolean xfical_archive(void)
     g_date_time_unref (gdt);
     g_date_time_get_ymd (threshold, &year, &month, &day);
 
-    g_message ("Archiving threshold: %d month(s)", g_par.archive_limit);
+    g_message ("archiving threshold: %d month(s)", g_par.archive_limit);
     /* yy mon day */
-    g_message ("Archiving events, which are older than: %04d-%02d-%02d",
-               year, month, 1);
+    g_message ("archiving events older than: %04d-%02d-%02d", year, month, 1);
 
     /* Check appointment file for items older than the threshold */
     /* Note: remove moves the "c" pointer to next item, so we need to store it
@@ -320,20 +323,19 @@ gboolean xfical_archive(void)
         if (ical_months < threshold_months)
         {
             uid = icalcomponent_get_uid(c);
-            g_message ("Archiving uid: %s", uid);
+            g_message ("archiving uid '%s'", uid);
             /* FIXME: check VTODO completed before archiving it */
             if (per.ikind == ICAL_VTODO_COMPONENT
                 && ((per.ctime.year*12 + per.ctime.month)
                     < (per.stime.year*12 + per.stime.month))) {
                 /* VTODO not completed, do not archive */
-                g_message ("VTODO not complete; not archived");
+                g_message ("VTODO not completed; skipping archive");
             }
             else {
                 p = icalcomponent_get_first_property(c, ICAL_RRULE_PROPERTY);
                 if (p) {  /*  it is recurrent event */
-                    g_message ("Recurring. End year: %04d, "
-                               "month: %02d, day: %02d", per.etime.year,
-                               per.etime.month, per.etime.day);
+                    g_message ("recurring event end date: %04d-%02d-%02d",
+                               per.etime.year, per.etime.month, per.etime.day);
                     xfical_icalcomponent_archive_recurrent (c, threshold_months);
                 }
                 else
@@ -350,7 +352,7 @@ gboolean xfical_archive(void)
     icalset_mark(ic_fical);
     icalset_commit(ic_fical);
     xfical_file_close(FALSE);
-    g_message ("Archiving done");
+    g_message ("archiving completed");
     return(TRUE);
 }
 
@@ -361,10 +363,10 @@ gboolean xfical_unarchive(void)
     const char *text;
 
     /* PHASE 1: go through base orage file and remove "repeat" shortcuts */
-    g_message ("Starting archive removal.");
-    g_message ("PHASE 1: reset recurring appointments");
+    g_message ("archive removal started");
+    g_message ("phase 1: reset recurring appointments");
     if (!xfical_file_open(FALSE)) {
-        g_critical ("%s: file open error", G_STRFUNC);
+        g_critical ("calendar file open failed");
         return(FALSE);
     }
 
@@ -384,14 +386,14 @@ gboolean xfical_unarchive(void)
     }
     /* PHASE 2: go through archive file and add everything back to base orage.
      * After that delete the whole arch file */
-    g_message ("PHASE 2: return archived appointments");
+    g_message ("phase 2: return archived appointments");
     if (!xfical_archive_open()) {
         /* we have risk to delete the data permanently, let's stop here */
-        g_error ("%s: archive file open error", G_STRFUNC);
-        /*
+        g_error ("failed to open archive file");
+#if 0
         icalset_mark(ic_fical);
         icalset_commit(ic_fical);
-        */
+#endif
         xfical_file_close(FALSE);
         return(FALSE);
     }
@@ -404,14 +406,13 @@ gboolean xfical_unarchive(void)
     }
     xfical_archive_close();
     if (g_remove(g_par.archive_file) == -1) {
-        g_warning ("%s: Failed to remove archive file %s",
-                   G_STRFUNC, g_par.archive_file);
+        g_warning ("failed to remove archive file '%s'", g_par.archive_file);
     }
     ic_file_modified = TRUE;
     icalset_mark(ic_fical);
     icalset_commit(ic_fical);
     xfical_file_close(FALSE);
-    g_message ("Archive removal done");
+    g_message ("archive removal done");
     return(TRUE);
 }
 
@@ -424,7 +425,7 @@ gboolean xfical_unarchive_uid (const gchar *uid)
 
     ical_uid = uid+4; /* skip file id (which is A00. now)*/
     if (!xfical_file_open(FALSE) || !xfical_archive_open()) {
-        g_critical ("%s: file open error", G_STRFUNC);
+        g_critical ("calendar or archive file open failed");
         return(FALSE);
     } 
     for (c = icalcomponent_get_first_component(ic_aical, ICAL_ANY_COMPONENT);

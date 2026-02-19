@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025 Erkki Moorits
+ * Copyright (c) 2025-2026 Erkki Moorits
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -387,7 +387,7 @@ void orage_month_cell_insert_event (OrageMonthCell *self, OrageEvent *event)
 
     if (found)
     {
-        g_debug ("%s: event UUID '%s' is alredy listed, updating", G_STRFUNC,
+        g_debug ("event '%s' already exists, updating",
                  orage_event_get_uid (event));
 
         event_to_remove = found->data;
