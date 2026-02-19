@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Erkki Moorits
+ * Copyright (C) 2025-2026 Erkki Moorits
  * Copyright (C) 2022 Christian Henz <chrhenz@gmx.de>
  *
  * This library is free software; you can redistribute it and/or modify it
@@ -171,7 +171,7 @@ static OrageSleepMonitor* orage_sleep_dbus_monitor_create (const gchar *name,
       NULL);
   if (monitor->monitor_proxy == NULL)
     {
-      g_warning ("could not get proxy for %s", name);
+      g_warning ("could not get proxy for '%s'", name);
       g_object_unref (G_OBJECT (monitor));
       return NULL;
     }
@@ -179,7 +179,7 @@ static OrageSleepMonitor* orage_sleep_dbus_monitor_create (const gchar *name,
   owner_name = g_dbus_proxy_get_name_owner (monitor->monitor_proxy);
   if (owner_name == NULL)
     {
-      g_debug ("d-bus service %s not active", name);
+      g_debug ("d-bus service '%s' not active", name);
       g_object_unref (G_OBJECT (monitor));
       return NULL;
     }

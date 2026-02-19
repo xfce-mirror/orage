@@ -7,7 +7,6 @@
 # Красимир Беров, 2022
 # Xfce Bot <transifex@xfce.org>, 2024
 # Nick Schermer <nick@xfce.org>, 2025
-# Любомир Василев, 2026
 # Kiril Kirilov <cybercop_montana@abv.bg>, 2026
 # 
 #, fuzzy
@@ -15,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-01-29 00:55+0100\n"
+"POT-Creation-Date: 2026-01-30 12:56+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Kiril Kirilov <cybercop_montana@abv.bg>, 2026\n"
 "Language-Team: Bulgarian (https://app.transifex.com/xfce/teams/16840/bg/)\n"
@@ -523,76 +522,80 @@ msgstr ""
 "Кирил Кирилов <cybercop_montana@abv.bg>\n"
 "Красимир Беров <berov@cpan.org>"
 
-#: src/orage-application.c:166
+#: src/orage-application.c:167
 msgid "Released under the terms of the GNU General Public License."
 msgstr "Издадено съгласно условията на GNU General Public License."
 
-#: src/orage-application.c:168
+#: src/orage-application.c:169
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
 msgstr "Компилирано за GTK+-%d.%d.%d, използвайки GTK+-%d.%d.%d."
 
-#: src/orage-application.c:173
+#: src/orage-application.c:174
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
 msgstr "Компилирано за libxfce4ui-%d.%d.%d, използвайки libxfce4ui-%d.%d.%d."
 
-#: src/orage-application.c:179
+#: src/orage-application.c:180
 #, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
 msgstr "Компилирано за libnotify-%d.%d.%d."
 
-#: src/orage-application.c:182
+#: src/orage-application.c:183
 msgid "Not using libnotify."
 msgstr "Да не се използва libnotify."
 
-#: src/orage-application.c:187
+#: src/orage-application.c:188
 msgid "Using automatic archiving."
 msgstr "Използване на автоматично архивиране."
 
-#: src/orage-application.c:189
+#: src/orage-application.c:190
 msgid "Not using archiving."
 msgstr "Да не се използва автоматично архивиране."
 
-#: src/orage-application.c:193
+#: src/orage-application.c:194
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Докладвайте за грешки на <%s>."
 
-#: src/orage-application.c:743
+#: src/orage-application.c:775
 msgid "Open today's tasks"
 msgstr "Отваряне на днешните задачи"
 
-#: src/orage-application.c:752 src/orage-window-next.c:131
-msgid "Create a new appointment"
-msgstr "Създаване на нова среща"
+#: src/orage-application.c:784
+msgid "Add new appointment"
+msgstr "Добавяне на нова среща"
 
-#: src/orage-application.c:761
-msgid "Open the preferences dialog"
-msgstr "Отваряне на прозореца с настройки"
+#: src/orage-application.c:793
+msgid "Show preferences form"
+msgstr "Показване на формата за предпочитания"
 
-#: src/orage-application.c:770
-msgid "Toggle Orage visibility"
-msgstr "Превключване на видимостта на Orage"
+#: src/orage-application.c:802
+msgid "Make Orage visible/unvisible"
+msgstr "Направи Orage видим/невидим"
 
-#: src/orage-application.c:779
-msgid "Add a foreign calendar file"
-msgstr "Добавяне на чужд календарен файл"
+#: src/orage-application.c:811
+msgid "Add a foreign file"
+msgstr "Добавяне на външен файл"
 
-#: src/orage-application.c:788
-msgid "Remove a foreign calendar file"
-msgstr "Премахване на чужд календарен файл"
+#: src/orage-application.c:820
+msgid "Remove a foreign file"
+msgstr "Премахване на чуждия файл"
 
-#: src/orage-application.c:797
-msgid "Import appointments into the default calendar"
-msgstr "Импортиране на събития в стандартния календар"
+#: src/orage-application.c:829
+msgid "Import appointments from file to Orage"
+msgstr "Импортиране на събития от файл в Orage"
 
-#: src/orage-application.c:806
-msgid "Export appointments to a file"
-msgstr "Експортиране на събития във файл"
+#: src/orage-application.c:838
+msgid "Export appointments from Orage to file"
+msgstr "Експортиране на срещите от Orage във файл"
 
-#: src/orage-application.c:815
-msgid "Show Orage version"
+#: src/orage-application.c:847
+msgid "Select logging backend (glib|orage)"
+msgstr "Изберете бекенд за вписване (glib|orage)"
+
+#: src/orage-application.c:856
+msgid "Show version of Orage"
 msgstr "Показване на версията на Orage"
 
 #. if (gtk_toggle_button_get_active(
@@ -1534,6 +1537,10 @@ msgstr "<b>Събития за %s:</b>"
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>Събития за %s - %s:</b>"
+
+#: src/orage-window-next.c:131
+msgid "Create a new appointment"
+msgstr "Създаване на нова среща"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"

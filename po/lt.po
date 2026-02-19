@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-01-29 00:55+0100\n"
+"POT-Creation-Date: 2026-01-30 12:56+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Moo, 2026\n"
 "Language-Team: Lithuanian (https://app.transifex.com/xfce/teams/16840/lt/)\n"
@@ -523,78 +523,82 @@ msgstr ""
 "Algimantas Margevičius <margevicius.algimantas@gmail.com>\n"
 "Moo <>"
 
-#: src/orage-application.c:166
+#: src/orage-application.c:167
 msgid "Released under the terms of the GNU General Public License."
 msgstr "Platinama GNU bendrosios viešosios licencijos sąlygomis."
 
-#: src/orage-application.c:168
+#: src/orage-application.c:169
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
 msgstr "Kompiliuota remiantis GTK+-%d.%d.%d, naudojant GTK+-%d.%d.%d."
 
-#: src/orage-application.c:173
+#: src/orage-application.c:174
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
 msgstr ""
 "Kompiliuota remiantis libxfce4ui-%d.%d.%d, naudojant libxfce4ui-%d.%d.%d."
 
-#: src/orage-application.c:179
+#: src/orage-application.c:180
 #, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
 msgstr "Kompiliuota remiantis libnotify-%d.%d.%d."
 
-#: src/orage-application.c:182
+#: src/orage-application.c:183
 msgid "Not using libnotify."
 msgstr "Libnotify nenaudojama."
 
-#: src/orage-application.c:187
+#: src/orage-application.c:188
 msgid "Using automatic archiving."
 msgstr "Naudojamas automatinis archyvavimas."
 
-#: src/orage-application.c:189
+#: src/orage-application.c:190
 msgid "Not using archiving."
 msgstr "Archyvavimas nenaudojamas."
 
-#: src/orage-application.c:193
+#: src/orage-application.c:194
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Apie klaidas pranešti <%s>."
 
-#: src/orage-application.c:743
+#: src/orage-application.c:775
 msgid "Open today's tasks"
 msgstr "Atverti šiandienos užduotis"
 
-#: src/orage-application.c:752 src/orage-window-next.c:131
-msgid "Create a new appointment"
-msgstr "Sukurti naują paskyrimą"
+#: src/orage-application.c:784
+msgid "Add new appointment"
+msgstr "Pridėti naują paskyrimą"
 
-#: src/orage-application.c:761
-msgid "Open the preferences dialog"
-msgstr "Atverti nuostatų dialogą"
+#: src/orage-application.c:793
+msgid "Show preferences form"
+msgstr "Rodyti nuostatų formą"
 
-#: src/orage-application.c:770
-msgid "Toggle Orage visibility"
-msgstr ""
+#: src/orage-application.c:802
+msgid "Make Orage visible/unvisible"
+msgstr "Padaryto Orage matoma/nematoma"
 
-#: src/orage-application.c:779
-msgid "Add a foreign calendar file"
-msgstr ""
+#: src/orage-application.c:811
+msgid "Add a foreign file"
+msgstr "Pridėti svetimą failą"
 
-#: src/orage-application.c:788
-msgid "Remove a foreign calendar file"
-msgstr ""
+#: src/orage-application.c:820
+msgid "Remove a foreign file"
+msgstr "Šalinti svetimą failą"
 
-#: src/orage-application.c:797
-msgid "Import appointments into the default calendar"
-msgstr ""
+#: src/orage-application.c:829
+msgid "Import appointments from file to Orage"
+msgstr "Importuoti paskyrimus iš failo į Orage"
 
-#: src/orage-application.c:806
-msgid "Export appointments to a file"
-msgstr ""
+#: src/orage-application.c:838
+msgid "Export appointments from Orage to file"
+msgstr "Eksportuoti paskyrimus iš Orage į failą"
 
-#: src/orage-application.c:815
-msgid "Show Orage version"
-msgstr ""
+#: src/orage-application.c:847
+msgid "Select logging backend (glib|orage)"
+msgstr "Pasirinkti registravimo vidinę sąsają (glib|orage)"
+
+#: src/orage-application.c:856
+msgid "Show version of Orage"
+msgstr "Rodyti Orage versiją"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -1537,6 +1541,10 @@ msgstr "<b>Įvykiai %s:</b>"
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>Įvykiai %s - %s:</b>"
+
+#: src/orage-window-next.c:131
+msgid "Create a new appointment"
+msgstr "Sukurti naują paskyrimą"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"

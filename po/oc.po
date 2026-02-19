@@ -6,7 +6,7 @@
 # Translators:
 # Andre Miranda <andre@andreldm.com>, 2022
 # Xfce Bot <transifex@xfce.org>, 2024
-# Cédric Valmary <cvalmary@yahoo.fr>, 2026
+# Cédric Valmary <cvalmary@yahoo.fr>, 2025
 # Quentin PAGÈS, 2026
 # 
 #, fuzzy
@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-01-29 00:55+0100\n"
+"POT-Creation-Date: 2026-01-30 12:56+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Quentin PAGÈS, 2026\n"
 "Language-Team: Occitan (post 1500) (https://app.transifex.com/xfce/teams/16840/oc/)\n"
@@ -523,76 +523,80 @@ msgstr ""
 "Cédric Valmary (totenoc.org) <cvalmary@yahoo.fr>\n"
 "Quentin PAGÈS"
 
-#: src/orage-application.c:166
+#: src/orage-application.c:167
 msgid "Released under the terms of the GNU General Public License."
 msgstr "Distribuit jols tèrmes de la GNU General Public License."
 
-#: src/orage-application.c:168
+#: src/orage-application.c:169
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
 msgstr "Compilat amb GTK+-%d.%d.%d, en utilizant GTK+-%d.%d.%d."
 
-#: src/orage-application.c:173
+#: src/orage-application.c:174
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
 msgstr "Compilat amb libxfce4ui-%d.%d.%d, en utilizant libxfce4ui-%d.%d.%d."
 
-#: src/orage-application.c:179
+#: src/orage-application.c:180
 #, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
 msgstr "\tCompilat amb libnotify-%d.%d.%d, "
 
-#: src/orage-application.c:182
+#: src/orage-application.c:183
 msgid "Not using libnotify."
 msgstr "Pas a utilizar libnotify."
 
-#: src/orage-application.c:187
+#: src/orage-application.c:188
 msgid "Using automatic archiving."
 msgstr "A utilizar l’archivatge automatic."
 
-#: src/orage-application.c:189
+#: src/orage-application.c:190
 msgid "Not using archiving."
 msgstr "Pas a utilizar l’archivatge automatic."
 
-#: src/orage-application.c:193
+#: src/orage-application.c:194
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Se vos plai, senhalatz los bugs a <%s>."
 
-#: src/orage-application.c:743
+#: src/orage-application.c:775
 msgid "Open today's tasks"
 msgstr "Dobrir los prètzfaits d’uèi"
 
-#: src/orage-application.c:752 src/orage-window-next.c:131
-msgid "Create a new appointment"
-msgstr "Crear un rendètz-vos novèl"
+#: src/orage-application.c:784
+msgid "Add new appointment"
+msgstr "Apondre un rendètz-vos novèl"
 
-#: src/orage-application.c:761
-msgid "Open the preferences dialog"
-msgstr "Dobrís la fenèstra de las preferéncias"
+#: src/orage-application.c:793
+msgid "Show preferences form"
+msgstr "Afichar lo formulari de preferéncias"
 
-#: src/orage-application.c:770
-msgid "Toggle Orage visibility"
-msgstr "Alternar la visibilitat d’Orage"
+#: src/orage-application.c:802
+msgid "Make Orage visible/unvisible"
+msgstr "Far venir Orage visible/invisible"
 
-#: src/orage-application.c:779
-msgid "Add a foreign calendar file"
-msgstr "Apondre un fichièr d’agenda extèrn"
+#: src/orage-application.c:811
+msgid "Add a foreign file"
+msgstr "Apondre un novèl fichièr extèrne"
 
-#: src/orage-application.c:788
-msgid "Remove a foreign calendar file"
-msgstr "Levar un fichièr d’agenda extèrn"
+#: src/orage-application.c:820
+msgid "Remove a foreign file"
+msgstr "Suprimir un fichièr extèrn"
 
-#: src/orage-application.c:797
-msgid "Import appointments into the default calendar"
-msgstr "Importar los rendètz-vos dins l’agenda per defaut"
+#: src/orage-application.c:829
+msgid "Import appointments from file to Orage"
+msgstr "Importar de rendètz-vos d’un fichièr dins Orage"
 
-#: src/orage-application.c:806
-msgid "Export appointments to a file"
-msgstr "Exportar los rendètz-vos dins un fichièr"
+#: src/orage-application.c:838
+msgid "Export appointments from Orage to file"
+msgstr "Exportar de rendètz-vos d’Orage cap a un fichièr"
 
-#: src/orage-application.c:815
-msgid "Show Orage version"
+#: src/orage-application.c:847
+msgid "Select logging backend (glib|orage)"
+msgstr "Seleccionar backend d’autentificacion (glib|orage)"
+
+#: src/orage-application.c:856
+msgid "Show version of Orage"
 msgstr "Afichar la version d’Orage"
 
 #. if (gtk_toggle_button_get_active(
@@ -1537,6 +1541,10 @@ msgstr "<b>Eveniments per %s :</b>"
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>Eveniments per %s - %s :</b>"
+
+#: src/orage-window-next.c:131
+msgid "Create a new appointment"
+msgstr "Crear un rendètz-vos novèl"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"

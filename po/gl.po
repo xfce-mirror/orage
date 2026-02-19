@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-01-29 00:55+0100\n"
+"POT-Creation-Date: 2026-01-30 12:56+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Daniel Muñiz Fontoira <dani@damufo.eu>, 2026\n"
 "Language-Team: Galician (https://app.transifex.com/xfce/teams/16840/gl/)\n"
@@ -524,77 +524,81 @@ msgstr ""
 "Leandro Regueiro <leandro.regueiro@gmail.com>, 2009, Xosé "
 "<xosecalvo@gmail.com>, 2015"
 
-#: src/orage-application.c:166
+#: src/orage-application.c:167
 msgid "Released under the terms of the GNU General Public License."
 msgstr ""
 
-#: src/orage-application.c:168
+#: src/orage-application.c:169
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
 msgstr ""
 
-#: src/orage-application.c:173
+#: src/orage-application.c:174
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
 msgstr ""
 
-#: src/orage-application.c:179
+#: src/orage-application.c:180
 #, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
 msgstr ""
 
-#: src/orage-application.c:182
+#: src/orage-application.c:183
 msgid "Not using libnotify."
 msgstr ""
 
-#: src/orage-application.c:187
+#: src/orage-application.c:188
 msgid "Using automatic archiving."
 msgstr ""
 
-#: src/orage-application.c:189
+#: src/orage-application.c:190
 msgid "Not using archiving."
 msgstr ""
 
-#: src/orage-application.c:193
+#: src/orage-application.c:194
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Informe dos fallos a <%s>."
 
-#: src/orage-application.c:743
+#: src/orage-application.c:775
 msgid "Open today's tasks"
 msgstr "Abrir as tarefas de hoxe"
 
-#: src/orage-application.c:752 src/orage-window-next.c:131
-msgid "Create a new appointment"
+#: src/orage-application.c:784
+msgid "Add new appointment"
+msgstr "Engadir unha nova cita"
+
+#: src/orage-application.c:793
+msgid "Show preferences form"
+msgstr "Amosar o formulario de preferencias"
+
+#: src/orage-application.c:802
+msgid "Make Orage visible/unvisible"
+msgstr "Facer que o Orage sexa visíbel/invisíbel"
+
+#: src/orage-application.c:811
+msgid "Add a foreign file"
+msgstr "Engadir un ficheiro externo"
+
+#: src/orage-application.c:820
+msgid "Remove a foreign file"
+msgstr "Retirar un ficheiro externo"
+
+#: src/orage-application.c:829
+msgid "Import appointments from file to Orage"
+msgstr "Importar as citas dun ficheiro para o Orage"
+
+#: src/orage-application.c:838
+msgid "Export appointments from Orage to file"
+msgstr "Exportar as citas dun ficheiro para o Orage"
+
+#: src/orage-application.c:847
+msgid "Select logging backend (glib|orage)"
 msgstr ""
 
-#: src/orage-application.c:761
-msgid "Open the preferences dialog"
-msgstr "Abrir o diálogo de preferencias"
-
-#: src/orage-application.c:770
-msgid "Toggle Orage visibility"
-msgstr ""
-
-#: src/orage-application.c:779
-msgid "Add a foreign calendar file"
-msgstr ""
-
-#: src/orage-application.c:788
-msgid "Remove a foreign calendar file"
-msgstr ""
-
-#: src/orage-application.c:797
-msgid "Import appointments into the default calendar"
-msgstr ""
-
-#: src/orage-application.c:806
-msgid "Export appointments to a file"
-msgstr ""
-
-#: src/orage-application.c:815
-msgid "Show Orage version"
-msgstr ""
+#: src/orage-application.c:856
+msgid "Show version of Orage"
+msgstr "Amosar a versión do Orage"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -1535,6 +1539,10 @@ msgstr "<b>Actividades de %s:</b>"
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>Actividades de %s - %s:</b>"
+
+#: src/orage-window-next.c:131
+msgid "Create a new appointment"
+msgstr ""
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"

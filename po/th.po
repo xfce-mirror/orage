@@ -6,17 +6,17 @@
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2024
 # Arthit Suriyawongkul, 2025
-# Warut Bunprasert <warut.b@disroot.org>, 2025
 # Theppitak Karoonboonyanan <theppitak@gmail.com>, 2026
+# Warut Bunprasert <warut.b@disroot.org>, 2026
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-01-29 00:55+0100\n"
+"POT-Creation-Date: 2026-01-30 12:56+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Theppitak Karoonboonyanan <theppitak@gmail.com>, 2026\n"
+"Last-Translator: Warut Bunprasert <warut.b@disroot.org>, 2026\n"
 "Language-Team: Thai (https://app.transifex.com/xfce/teams/16840/th/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -520,77 +520,81 @@ msgstr "Orage คือแอปพลิเคชันจัดการตา
 msgid "translator-credits"
 msgstr "Theppitak Karoonboonyanan <theppitak@gmail.com>"
 
-#: src/orage-application.c:166
+#: src/orage-application.c:167
 msgid "Released under the terms of the GNU General Public License."
 msgstr "เผยแพร่ภายใต้เงื่อนไขของ GNU General Public License"
 
-#: src/orage-application.c:168
+#: src/orage-application.c:169
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
 msgstr "คอมไพล์กับ GTK+-%d.%d.%d, และใช้ GTK+-%d.%d.%d."
 
-#: src/orage-application.c:173
+#: src/orage-application.c:174
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
 msgstr "คอมไพล์กับ libxfce4ui-%d.%d.%d, และใช้ libxfce4ui-%d.%d.%d."
 
-#: src/orage-application.c:179
+#: src/orage-application.c:180
 #, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
 msgstr "คอมไพล์กับ libnotify-%d.%d.%d."
 
-#: src/orage-application.c:182
+#: src/orage-application.c:183
 msgid "Not using libnotify."
 msgstr "ไม่ได้ใช้ libnotify"
 
-#: src/orage-application.c:187
+#: src/orage-application.c:188
 msgid "Using automatic archiving."
 msgstr "ใช้การทำกรุอัตโนมัติ"
 
-#: src/orage-application.c:189
+#: src/orage-application.c:190
 msgid "Not using archiving."
 msgstr "ไม่ได้ใช้การทำกรุ"
 
-#: src/orage-application.c:193
+#: src/orage-application.c:194
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "หากพบปัญหา กรุณารายงานที่ <%s>"
 
-#: src/orage-application.c:743
+#: src/orage-application.c:775
 msgid "Open today's tasks"
 msgstr "เปิดภารกิจวันนี้"
 
-#: src/orage-application.c:752 src/orage-window-next.c:131
-msgid "Create a new appointment"
-msgstr "สร้างการนัดหมายใหม่"
+#: src/orage-application.c:784
+msgid "Add new appointment"
+msgstr "เพิ่มนัดหมายใหม่"
 
-#: src/orage-application.c:761
-msgid "Open the preferences dialog"
-msgstr "เปิดกล่องโต้ตอบปรับแต่ง"
+#: src/orage-application.c:793
+msgid "Show preferences form"
+msgstr "แสดงแบบฟอร์มสำหรับปรับแต่ง"
 
-#: src/orage-application.c:770
-msgid "Toggle Orage visibility"
-msgstr ""
+#: src/orage-application.c:802
+msgid "Make Orage visible/unvisible"
+msgstr "ทำให้ Orage ปรากฏ/ไม่ปรากฏ"
 
-#: src/orage-application.c:779
-msgid "Add a foreign calendar file"
-msgstr ""
+#: src/orage-application.c:811
+msgid "Add a foreign file"
+msgstr "เพิ่มแฟ้มต่างระบบ"
 
-#: src/orage-application.c:788
-msgid "Remove a foreign calendar file"
-msgstr ""
+#: src/orage-application.c:820
+msgid "Remove a foreign file"
+msgstr "ลบแฟ้มต่างระบบ"
 
-#: src/orage-application.c:797
-msgid "Import appointments into the default calendar"
-msgstr ""
+#: src/orage-application.c:829
+msgid "Import appointments from file to Orage"
+msgstr "นำเข้านัดหมายจากแฟ้มเข้าสู่ Orage"
 
-#: src/orage-application.c:806
-msgid "Export appointments to a file"
-msgstr ""
+#: src/orage-application.c:838
+msgid "Export appointments from Orage to file"
+msgstr "ส่งออกนัดหมายจาก Orage ออกสู่แฟ้ม"
 
-#: src/orage-application.c:815
-msgid "Show Orage version"
-msgstr ""
+#: src/orage-application.c:847
+msgid "Select logging backend (glib|orage)"
+msgstr "เลือกแบกเอนด์ปูมบันทึก (glib|orage)"
+
+#: src/orage-application.c:856
+msgid "Show version of Orage"
+msgstr "แสดงข้อมูลรุ่นของ Orage"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -1528,6 +1532,10 @@ msgstr "<b>เหตุการณ์สำหรับ %s:</b>"
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>เหตุการณ์สำหรับ %s - %s:</b>"
+
+#: src/orage-window-next.c:131
+msgid "Create a new appointment"
+msgstr "สร้างการนัดหมายใหม่"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"

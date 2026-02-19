@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2024 Erkki Moorits
+ * Copyright (c) 2021-2026 Erkki Moorits
  * Copyright (c) 2005-2013 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2003-2006 Mickael Graf (korbinus at xfce.org)
  *

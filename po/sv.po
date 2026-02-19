@@ -7,18 +7,18 @@
 # Ingemar Karlsson <ingemar@ingk.se>, 2024
 # Xfce Bot <transifex@xfce.org>, 2024
 # Arve Eriksson <031299870@telia.com>, 2025
+# Påvel Nicklasson <pavel2@frimix.se>, 2025
 # Nick Schermer <nick@xfce.org>, 2025
-# Luna Jernberg <droidbittin@gmail.com>, 2025
-# Påvel Nicklasson <pavel2@frimix.se>, 2026
+# Luna Jernberg <droidbittin@gmail.com>, 2026
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-01-29 00:55+0100\n"
+"POT-Creation-Date: 2026-01-30 12:56+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Påvel Nicklasson <pavel2@frimix.se>, 2026\n"
+"Last-Translator: Luna Jernberg <droidbittin@gmail.com>, 2026\n"
 "Language-Team: Swedish (https://app.transifex.com/xfce/teams/16840/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -521,79 +521,83 @@ msgstr "Orage är ett tidsplanerings program för Xfce-skrivbordsmiljön"
 msgid "translator-credits"
 msgstr "Åke Svensson <webaake@gmail.com>Påvel Nicklasson <pavel@frimix.se>"
 
-#: src/orage-application.c:166
+#: src/orage-application.c:167
 msgid "Released under the terms of the GNU General Public License."
 msgstr "Utgivet under villkoren för GNU General Public License."
 
-#: src/orage-application.c:168
+#: src/orage-application.c:169
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
 msgstr "Kompilerad mot GTK+-%d.%d.%d, använder GTK+-%d.%d.%d."
 
-#: src/orage-application.c:173
+#: src/orage-application.c:174
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
 msgstr "Kompilerad mot libxfce4ui-%d.%d.%d, använder libxfce4ui-%d.%d.%d."
 
-#: src/orage-application.c:179
+#: src/orage-application.c:180
 #, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
 msgstr "Kompilerat mot libnotify-%d.%d.%d."
 
-#: src/orage-application.c:182
+#: src/orage-application.c:183
 msgid "Not using libnotify."
 msgstr "Använder inte libnotify."
 
-#: src/orage-application.c:187
+#: src/orage-application.c:188
 msgid "Using automatic archiving."
 msgstr "Använder automatisk arkivering."
 
-#: src/orage-application.c:189
+#: src/orage-application.c:190
 msgid "Not using archiving."
 msgstr "Använder inte arkivering."
 
-#: src/orage-application.c:193
+#: src/orage-application.c:194
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr ""
 "Rapportera fel till <%s>.\r\n"
 "Skicka synpunkter på översättningen till <tp-sv@listor.tp-sv.se>."
 
-#: src/orage-application.c:743
+#: src/orage-application.c:775
 msgid "Open today's tasks"
 msgstr "Öppna dagens uppgifter"
 
-#: src/orage-application.c:752 src/orage-window-next.c:131
-msgid "Create a new appointment"
-msgstr "Skapa ett nytt möte"
+#: src/orage-application.c:784
+msgid "Add new appointment"
+msgstr "Lägg till nytt möte"
 
-#: src/orage-application.c:761
-msgid "Open the preferences dialog"
-msgstr "Öppna dialogrutan inställningar"
+#: src/orage-application.c:793
+msgid "Show preferences form"
+msgstr "Visa inställningsformulär"
 
-#: src/orage-application.c:770
-msgid "Toggle Orage visibility"
-msgstr ""
+#: src/orage-application.c:802
+msgid "Make Orage visible/unvisible"
+msgstr "Gör Orage synlig/osynlig"
 
-#: src/orage-application.c:779
-msgid "Add a foreign calendar file"
-msgstr ""
+#: src/orage-application.c:811
+msgid "Add a foreign file"
+msgstr "Lägg till en extern fil"
 
-#: src/orage-application.c:788
-msgid "Remove a foreign calendar file"
-msgstr ""
+#: src/orage-application.c:820
+msgid "Remove a foreign file"
+msgstr "Ta bort en extern fil"
 
-#: src/orage-application.c:797
-msgid "Import appointments into the default calendar"
-msgstr ""
+#: src/orage-application.c:829
+msgid "Import appointments from file to Orage"
+msgstr "Importera möten från fil till Orage"
 
-#: src/orage-application.c:806
-msgid "Export appointments to a file"
-msgstr ""
+#: src/orage-application.c:838
+msgid "Export appointments from Orage to file"
+msgstr "Exportera möten från Orage till fil"
 
-#: src/orage-application.c:815
-msgid "Show Orage version"
-msgstr ""
+#: src/orage-application.c:847
+msgid "Select logging backend (glib|orage)"
+msgstr "Välj loggningsbackend (glib|orage)"
+
+#: src/orage-application.c:856
+msgid "Show version of Orage"
+msgstr "Visa version av Orage"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -1532,6 +1536,10 @@ msgstr "<b>Händelser för %s:</b>"
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>Händelser för %s - %s:</b>"
+
+#: src/orage-window-next.c:131
+msgid "Create a new appointment"
+msgstr "Skapa ett nytt möte"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"

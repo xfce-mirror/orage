@@ -6,18 +6,18 @@
 # Translators:
 # Hsiu-Ming Chang <cges30901@gmail.com>, 2022
 # Xfce Bot <transifex@xfce.org>, 2024
+# Nick Schermer <nick@xfce.org>, 2025
 # Walter Cheuk <wwycheuk@gmail.com>, 2025
-# 黃柏諺 <s8321414@gmail.com>, 2025
-# Nick Schermer <nick@xfce.org>, 2026
+# 黃柏諺 <s8321414@gmail.com>, 2026
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-01-29 00:55+0100\n"
+"POT-Creation-Date: 2026-01-30 12:56+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Nick Schermer <nick@xfce.org>, 2026\n"
+"Last-Translator: 黃柏諺 <s8321414@gmail.com>, 2026\n"
 "Language-Team: Chinese (Taiwan) (https://app.transifex.com/xfce/teams/16840/zh_TW/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -521,77 +521,81 @@ msgstr ""
 "Cheng-Chia Tseng <pswo10680@gmail.com>, 2011.\n"
 "Walter Cheuk <wwycheuk@gmail.com>, 2019."
 
-#: src/orage-application.c:166
+#: src/orage-application.c:167
 msgid "Released under the terms of the GNU General Public License."
 msgstr "以 GNU 通用公眾授權條款釋出。"
 
-#: src/orage-application.c:168
+#: src/orage-application.c:169
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
 msgstr "針對 GTK+-%d.%d.%d 編譯，使用 GTK+-%d.%d.%d。"
 
-#: src/orage-application.c:173
+#: src/orage-application.c:174
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
 msgstr "針對 libxfce4ui-%d.%d.%d 編譯，使用 libxfce4ui-%d.%d.%d。"
 
-#: src/orage-application.c:179
+#: src/orage-application.c:180
 #, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
 msgstr "使用 libnotify-%d.%d.%d 編譯。"
 
-#: src/orage-application.c:182
+#: src/orage-application.c:183
 msgid "Not using libnotify."
 msgstr "不要使用 libnotify。"
 
-#: src/orage-application.c:187
+#: src/orage-application.c:188
 msgid "Using automatic archiving."
 msgstr "使用自動封存。"
 
-#: src/orage-application.c:189
+#: src/orage-application.c:190
 msgid "Not using archiving."
 msgstr "不要使用封存。"
 
-#: src/orage-application.c:193
+#: src/orage-application.c:194
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "請將問題報告 <%s>。"
 
-#: src/orage-application.c:743
+#: src/orage-application.c:775
 msgid "Open today's tasks"
 msgstr "開啟今日工作項目"
 
-#: src/orage-application.c:752 src/orage-window-next.c:131
-msgid "Create a new appointment"
-msgstr "建立新約會"
+#: src/orage-application.c:784
+msgid "Add new appointment"
+msgstr "新增約會"
 
-#: src/orage-application.c:761
-msgid "Open the preferences dialog"
-msgstr "開啟偏好設定對話窗"
+#: src/orage-application.c:793
+msgid "Show preferences form"
+msgstr "顯示偏好設定表單"
 
-#: src/orage-application.c:770
-msgid "Toggle Orage visibility"
-msgstr ""
+#: src/orage-application.c:802
+msgid "Make Orage visible/unvisible"
+msgstr "讓 Orage 可見/不可見"
 
-#: src/orage-application.c:779
-msgid "Add a foreign calendar file"
-msgstr ""
+#: src/orage-application.c:811
+msgid "Add a foreign file"
+msgstr "新增外部檔案"
 
-#: src/orage-application.c:788
-msgid "Remove a foreign calendar file"
-msgstr ""
+#: src/orage-application.c:820
+msgid "Remove a foreign file"
+msgstr "移除外部檔案"
 
-#: src/orage-application.c:797
-msgid "Import appointments into the default calendar"
-msgstr ""
+#: src/orage-application.c:829
+msgid "Import appointments from file to Orage"
+msgstr "從檔案匯入約會到 Orage"
 
-#: src/orage-application.c:806
-msgid "Export appointments to a file"
-msgstr ""
+#: src/orage-application.c:838
+msgid "Export appointments from Orage to file"
+msgstr "從 Orage 匯出約會到檔案"
 
-#: src/orage-application.c:815
-msgid "Show Orage version"
-msgstr ""
+#: src/orage-application.c:847
+msgid "Select logging backend (glib|orage)"
+msgstr "選取紀錄後端 (glib|orage)"
+
+#: src/orage-application.c:856
+msgid "Show version of Orage"
+msgstr "顯示 Orage 版本"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -1520,6 +1524,10 @@ msgstr "<b>%s 的事件：</b>"
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>%s - %s 的事件：</b>"
+
+#: src/orage-window-next.c:131
+msgid "Create a new appointment"
+msgstr "建立新約會"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"

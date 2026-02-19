@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-01-29 00:55+0100\n"
+"POT-Creation-Date: 2026-01-30 12:56+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>, 2026\n"
 "Language-Team: Czech (https://app.transifex.com/xfce/teams/16840/cs/)\n"
@@ -527,79 +527,83 @@ msgstr ""
 "Michal Várady (miko.vaji@gmail.com)\n"
 "Alois Nešpor (info@aloisnespor.info)"
 
-#: src/orage-application.c:166
+#: src/orage-application.c:167
 msgid "Released under the terms of the GNU General Public License."
 msgstr "Vydáno pod podmínkami licence GNU General Public Licence."
 
-#: src/orage-application.c:168
+#: src/orage-application.c:169
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
 msgstr "Zkompilováno proti knihovně GTK+-%d.%d.%d s použitím GTK+-%d.%d.%d."
 
-#: src/orage-application.c:173
+#: src/orage-application.c:174
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
 msgstr ""
 "Zkompilováno proti knihovně libxfce4ui-%d.%d.%d s použitím "
 "libxfce4ui-%d.%d.%d."
 
-#: src/orage-application.c:179
+#: src/orage-application.c:180
 #, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
 msgstr "Zkompilováno proti knihovně libnotify-%d.%d.%d."
 
-#: src/orage-application.c:182
+#: src/orage-application.c:183
 msgid "Not using libnotify."
 msgstr "Nepoužívá se knihovna libnotify."
 
-#: src/orage-application.c:187
+#: src/orage-application.c:188
 msgid "Using automatic archiving."
 msgstr "Používá se automatické archivování."
 
-#: src/orage-application.c:189
+#: src/orage-application.c:190
 msgid "Not using archiving."
 msgstr "Bez archivace."
 
-#: src/orage-application.c:193
+#: src/orage-application.c:194
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Hlášení o chybách posílejte na adresu <%s>."
 
-#: src/orage-application.c:743
+#: src/orage-application.c:775
 msgid "Open today's tasks"
 msgstr "Otevřít dnešní úlohy"
 
-#: src/orage-application.c:752 src/orage-window-next.c:131
-msgid "Create a new appointment"
-msgstr "Vytvořit novou schůzku"
+#: src/orage-application.c:784
+msgid "Add new appointment"
+msgstr "Přidat novou schůzku"
 
-#: src/orage-application.c:761
-msgid "Open the preferences dialog"
-msgstr "Otevřít dialogové okno předvolby"
+#: src/orage-application.c:793
+msgid "Show preferences form"
+msgstr "Zobrazit formulář s předvolbami"
 
-#: src/orage-application.c:770
-msgid "Toggle Orage visibility"
-msgstr ""
+#: src/orage-application.c:802
+msgid "Make Orage visible/unvisible"
+msgstr "Z(ne)viditelní Orage"
 
-#: src/orage-application.c:779
-msgid "Add a foreign calendar file"
-msgstr ""
+#: src/orage-application.c:811
+msgid "Add a foreign file"
+msgstr "Přidat externí soubor"
 
-#: src/orage-application.c:788
-msgid "Remove a foreign calendar file"
-msgstr ""
+#: src/orage-application.c:820
+msgid "Remove a foreign file"
+msgstr "Odebrat externí soubor"
 
-#: src/orage-application.c:797
-msgid "Import appointments into the default calendar"
-msgstr ""
+#: src/orage-application.c:829
+msgid "Import appointments from file to Orage"
+msgstr "Importovat schůzky ze souboru do Orage"
 
-#: src/orage-application.c:806
-msgid "Export appointments to a file"
-msgstr ""
+#: src/orage-application.c:838
+msgid "Export appointments from Orage to file"
+msgstr "Exportovat schůzky z Orage do souboru"
 
-#: src/orage-application.c:815
-msgid "Show Orage version"
-msgstr ""
+#: src/orage-application.c:847
+msgid "Select logging backend (glib|orage)"
+msgstr "Vybrat protokolovací službu (glib|orage)"
+
+#: src/orage-application.c:856
+msgid "Show version of Orage"
+msgstr "Zobrazit verzi Orage"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -653,8 +657,7 @@ msgstr "Přidání schůzky se nezdařilo"
 msgid ""
 "Error happened when adding appointment. Look more details from the log file."
 msgstr ""
-"Při přidávání schůzky došlo k chybě. Více podrobností naleznete v souboru "
-"záznamu."
+"Při přidávání schůzky došlo k chybě. Více podrobností naleznete v protokolu."
 
 #: src/orage-appointment-window.c:1591
 msgid "Appointment update failed."
@@ -665,8 +668,8 @@ msgid ""
 "Look more details from the log file. (Perhaps file was updated external from"
 " Orage?)"
 msgstr ""
-"Více podrobností naleznete v souboru záznamu. (Možná byl soubor aktualizován"
-" externě z aplikace Orage3)"
+"Více podrobností naleznete v protokolu. (Možná byl soubor aktualizován "
+"externě z aplikace Orage3)"
 
 #: src/orage-appointment-window.c:1644
 msgid "This appointment will be permanently removed."
@@ -1541,6 +1544,10 @@ msgstr "<b>Události pro %s:</b>"
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
 msgstr "<b>Události pro %s - %s:</b>"
+
+#: src/orage-window-next.c:131
+msgid "Create a new appointment"
+msgstr "Vytvořit novou schůzku"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"

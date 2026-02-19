@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Erkki Moorits
+ * Copyright (c) 2021-2026 Erkki Moorits
  * Copyright (c) 2005-2013 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2004-2005 Mickael Graf (korbinus at xfce.org)
  *
@@ -55,7 +55,7 @@ OrageRc *orage_category_file_open (const gboolean read_only)
     fpath = orage_data_file_location (ORAGE_CATEGORIES_DIR_FILE);
     orc = orage_rc_file_open (fpath, read_only);
     if (orc == NULL)
-        g_warning ("%s: category file open failed", G_STRFUNC);
+        g_warning ("failed to open category configuration file");
 
     g_free (fpath);
 
@@ -120,16 +120,25 @@ void orage_category_write_entry (const gchar *category, const GdkRGBA *color)
 
     if (!ORAGE_STR_EXISTS(category))
     {
-        g_message ("%s: empty category. Not written", G_STRFUNC);
+        g_debug ("category name is empty; skipping category write");
         return;
     }
 
     color_str = gdk_rgba_to_string (color);
     orc = orage_category_file_open (FALSE);
-    orage_rc_set_group (orc, category);
-    orage_rc_put_str (orc, ORAGE_RC_COLOUR, color_str);
+    if (orc)
+    {
+        orage_rc_set_group (orc, category);
+        orage_rc_put_str (orc, ORAGE_RC_COLOUR, color_str);
+        orage_rc_file_close (orc);
+    }
+    else
+    {
+        g_warning ("cannot write category '%s' because the category file could "
+                   "not be opened", category);
+    }
+
     g_free (color_str);
-    orage_rc_file_close (orc);
 }
 
 void orage_category_remove_entry (const gchar *category)
@@ -138,10 +147,19 @@ void orage_category_remove_entry (const gchar *category)
 
     if (!ORAGE_STR_EXISTS(category))
     {
-        g_message ("%s: empty category. Not removed", G_STRFUNC);
+        g_debug ("category name is empty; skipping category removal");
         return;
     }
+
     orc = orage_category_file_open (FALSE);
-    orage_rc_del_group (orc, category);
-    orage_rc_file_close (orc);
+    if (orc)
+    {
+        orage_rc_del_group (orc, category);
+        orage_rc_file_close (orc);
+    }
+    else
+    {
+        g_warning ("cannot remove category '%s' because the category file "
+                   "could not be opened", category);
+    }
 }
