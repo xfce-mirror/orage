@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2025 Erkki Moorits
+ * Copyright (c) 2021-2026 Erkki Moorits
  * Copyright (c) 2006-2013 Juha Kautto  (juha at xfce.org)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -423,7 +423,7 @@ static void timezone_button_clicked(GtkButton *button, gpointer user_data)
     Itf *itf = (Itf *)user_data;
 
     if (!ORAGE_STR_EXISTS(g_par.local_timezone)) {
-        g_warning ("%s: local timezone missing", G_STRFUNC);
+        g_warning ("local timezone not set, defaulting to 'UTC'");
         g_par.local_timezone = g_strdup("UTC");
     }
     if (orage_timezone_button_clicked(button, GTK_WINDOW(itf->orage_dialog)
@@ -605,7 +605,7 @@ static void on_sync_edit_clicked_cb (G_GNUC_UNUSED GtkButton *b,
     OrageApplication *app;
     OrageTaskRunner *runner;
 
-    g_message ("%s: edit sync task '%s'", G_STRFUNC, conf->description);
+    g_debug ("editing sync task '%s'", conf->description);
 
     dialog = ORAGE_SYNC_EDIT_DIALOG (
             orage_sync_edit_dialog_new_with_defaults (conf->description,
@@ -619,9 +619,8 @@ static void on_sync_edit_clicked_cb (G_GNUC_UNUSED GtkButton *b,
         command = orage_sync_edit_dialog_get_command (dialog);
         period = orage_sync_edit_dialog_get_period (dialog) * 60;
 
-        g_message ("%s:  conf->description='%s'", G_STRFUNC, description);
-        g_message ("%s:  conf->command='%s'", G_STRFUNC, command);
-        g_message ("%s:  conf->period=%d", G_STRFUNC, period);
+        g_debug ("updated sync task '%s' (period: %u seconds)",
+                description, period);
 
         app = ORAGE_APPLICATION (g_application_get_default ());
         runner = orage_application_get_sync (app);
@@ -640,8 +639,6 @@ static void on_sync_remove_clicked_remove_cb (G_GNUC_UNUSED GtkButton *b,
     OrageApplication *app;
     gint result;
 
-    g_message ("%s: removing sync task %s", G_STRFUNC, conf->description);
-
     result = orage_warning_dialog (NULL,
                                    _("Remove selected synchronization task."),
                                    _("Do you want to continue?"),
@@ -650,6 +647,8 @@ static void on_sync_remove_clicked_remove_cb (G_GNUC_UNUSED GtkButton *b,
 
     if (result == GTK_RESPONSE_YES)
     {
+        g_debug ("removing sync task '%s'", conf->description);
+
         /* As orage_sync_task_remove reorder configuration in global
          * parameters list, then orage_task_runner_remove should be always
          * before orage_sync_task_remove.
@@ -696,7 +695,7 @@ static void create_parameter_dialog_main_setup_tab(Itf *dialog)
 
     dialog->timezone_button = gtk_button_new();
     if (!ORAGE_STR_EXISTS(g_par.local_timezone)) {
-        g_warning("parameters: local timezone missing");
+        g_warning ("parameters: local timezone missing");
         g_par.local_timezone = g_strdup("UTC");
     }
     gtk_button_set_label(GTK_BUTTON(dialog->timezone_button)
@@ -1484,13 +1483,10 @@ static gint orage_sync_task_add (const gchar *description,
                                  const guint period)
 {
     guint idx;
-    g_debug ("%s: description='%s'", G_STRFUNC, description);
-    g_debug ("%s: command='%s'", G_STRFUNC, command);
-    g_debug ("%s: period=%u", G_STRFUNC, period);
 
     if (g_par.sync_source_count >= NUMBER_OF_SYNC_SOURCES)
     {
-        g_info ("sync sources limit reached");
+        g_info ("sync source limit (%u) reached", NUMBER_OF_SYNC_SOURCES);
         return -1;
     }
 
@@ -1501,6 +1497,8 @@ static gint orage_sync_task_add (const gchar *description,
     g_par.sync_source_count++;
 
     write_parameters ();
+
+    g_debug ("added sync task '%s' (period: %u seconds)", description, period);
 
     return idx;
 }
@@ -1539,7 +1537,7 @@ static OrageRc *orage_parameters_file_open(gboolean read_only)
 
     fpath = orage_config_file_location(ORAGE_PAR_DIR_FILE);
     if ((orc = orage_rc_file_open(fpath, read_only)) == NULL) {
-        g_warning ("%s: Parameter file open failed.(%s)", G_STRFUNC, fpath);
+        g_warning ("could not open parameter file '%s'", fpath);
     }
     g_free(fpath);
 
@@ -1578,8 +1576,9 @@ static void init_dtz_check_dir(gchar *tz_dirname, gchar *tz_local, gint len)
                 g_free(tz_data);
             }
             else { /* we should never come here */
-                g_warning ("%s: can not read (%s) %s", G_STRFUNC, tz_fullfile,
-                           error->message);
+                g_warning ("could not read timezone file '%s': %s",
+                           tz_fullfile,
+                           error ? error->message : "unknown error");
                 g_error_free(error);
                 error = NULL;
             }
@@ -1602,7 +1601,7 @@ static void init_default_timezone(void)
 
     g_free(g_par.local_timezone);
     g_par.local_timezone = NULL;
-    g_message ("First Orage start. Searching default timezone");
+    g_message ("first Orage start. Searching default timezone");
     /* debian, ubuntu stores the timezone name into /etc/timezone */
     if (g_file_get_contents("/etc/timezone", &g_par.local_timezone
                 , &len, NULL)) {
@@ -1621,10 +1620,10 @@ static void init_default_timezone(void)
         g_free(tz_local);
     }
     if (ORAGE_STR_EXISTS(g_par.local_timezone))
-        g_message ("Default timezone set to %s", g_par.local_timezone);
+        g_message ("default timezone set to '%s'", g_par.local_timezone);
     else {
         g_par.local_timezone = g_strdup("UTC");
-        g_message ("Default timezone not found, please, set it manually");
+        g_message ("default timezone not found, please, set it manually");
     }
 }
 
@@ -1636,6 +1635,11 @@ void read_parameters (void)
     gchar f_par[100];
 
     orc = orage_parameters_file_open(TRUE);
+    if (orc == NULL)
+    {
+        g_warning ("cannot read parameters: configuration file not available");
+        return;
+    }
 
     orage_rc_set_group(orc, "PARAMETERS");
     g_par.local_timezone = orage_rc_get_str(orc, "Timezone", "not found");
@@ -1737,6 +1741,11 @@ void write_parameters(void)
     OrageApplication *app;
 
     orc = orage_parameters_file_open(FALSE);
+    if (orc == NULL)
+    {
+        g_warning ("cannot write parameters: configuration file not available");
+        return;
+    }
 
     orage_rc_set_group(orc, "PARAMETERS");
     orage_rc_put_str(orc, "Timezone", g_par.local_timezone);
@@ -1752,7 +1761,7 @@ void write_parameters(void)
     if (window)
         orage_window_save_window_state (window);
     else
-        g_debug ("%s: window == NULL", G_STRFUNC);
+        g_debug ("no main window available, skipping window state save");
 
     orage_rc_put_int (orc, MAIN_WINDOW_PANED_POSITION, g_par.paned_pos);
     orage_rc_put_int(orc, "Main window X", g_par.pos_x);

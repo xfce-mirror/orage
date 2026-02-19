@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2025 Erkki Moorits
+ * Copyright (c) 2021-2026 Erkki Moorits
  * Copyright (c) 2005-2013 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2003-2005 Mickael Graf (korbinus at xfce.org)
  *
@@ -73,13 +73,14 @@ gboolean orage_external_update_check (G_GNUC_UNUSED gpointer user_data)
 
     /* check main Orage file */
     if (g_stat(g_par.orage_file, &s) < 0) {
-        g_warning ("%s: stat of %s failed: %s", G_STRFUNC, g_par.orage_file,
+        g_warning ("could not stat file '%s': %s", g_par.orage_file,
                    g_strerror (errno));
     }
     else {
         if (s.st_mtime > g_par.latest_file_change) {
             g_par.latest_file_change = s.st_mtime;
-            g_message ("Found external update on file %s", g_par.orage_file);
+            g_message ("external update detected in file '%s'",
+                       g_par.orage_file);
             external_changes_present = TRUE;
         }
     }
@@ -87,13 +88,13 @@ gboolean orage_external_update_check (G_GNUC_UNUSED gpointer user_data)
     /* check also foreign files */
     for (i = 0; i < g_par.foreign_count; i++) {
         if (g_stat(g_par.foreign_data[i].file, &s) < 0) {
-            g_warning ("%s: stat of %s failed: %s", G_STRFUNC,
+            g_warning ("could not stat file '%s': %s",
                        g_par.foreign_data[i].file, g_strerror (errno));
         }
         else {
             if (s.st_mtime > g_par.foreign_data[i].latest_file_change) {
                 g_par.foreign_data[i].latest_file_change = s.st_mtime;
-                g_message ("Found external update on file %s",
+                g_message ("external update detected in file '%s'",
                            g_par.foreign_data[i].file);
                 external_changes_present = TRUE;
             }
@@ -101,7 +102,7 @@ gboolean orage_external_update_check (G_GNUC_UNUSED gpointer user_data)
     }
 
     if (external_changes_present) {
-        g_message ("Refreshing alarms and calendar due to external file update");
+        g_message ("refreshing alarms and calendar due to external update");
         xfical_file_close_force();
         xfical_alarm_build_list(FALSE);
         app = ORAGE_APPLICATION (g_application_get_default ());
@@ -138,11 +139,12 @@ static void orage_file_save_button_clicked (G_GNUC_UNUSED GtkButton *button
     if (gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(intf_w->orage_file_rename_rb))) {
         if (!g_file_test(s, G_FILE_TEST_EXISTS)) {
-            g_warning("New file %s does not exist. Rename not done", s);
+            g_warning ("file '%s' does not exist; rename not performed", s);
             ok = FALSE;
         }
         if (!xfical_file_check(s)) {
-            g_warning("New file %s is not valid ical calendar file. Rename not done", s);
+            g_warning ("file '%s' is not a valid iCal calendar file; rename "
+                       "not performed", s);
             ok = FALSE;
         }
     }
@@ -153,16 +155,19 @@ static void orage_file_save_button_clicked (G_GNUC_UNUSED GtkButton *button
     else if (gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(intf_w->orage_file_move_rb))) {
         if (g_rename(g_par.orage_file, s)) { /* failed */
-            g_warning("rename failed. trying manual copy");
+            g_warning ("rename failed; attempting manual copy");
             ok = orage_copy_file(g_par.orage_file, s);
             if (ok) { /* this is move. so let's remove the orig */
                if (g_remove(g_par.orage_file))
-                   g_warning("file remove failed %s", g_par.orage_file);
+               {
+                   g_warning ("failed to remove original file '%s'",
+                              g_par.orage_file);
+               }
             }
         }
     }
     else {
-        g_warning("illegal file save toggle button status");
+        g_warning ("illegal file save toggle button status");
         ok = FALSE;
     }
 
@@ -207,11 +212,12 @@ static void archive_file_save_button_clicked (G_GNUC_UNUSED GtkButton *button
     if (gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(intf_w->archive_file_rename_rb))) {
         if (!g_file_test(s, G_FILE_TEST_EXISTS)) {
-            g_warning("New file %s does not exist. Rename not done", s);
+            g_warning ("file '%s' does not exist; rename not performed", s);
             ok = FALSE;
         }
         if (!xfical_file_check(s)) {
-            g_warning("New file %s is not valid ical calendar file. Rename not done", s);
+            g_warning ("file '%s' is not a valid iCal calendar file; rename "
+                       "not performed", s);
             ok = FALSE;
         }
     }
@@ -222,16 +228,19 @@ static void archive_file_save_button_clicked (G_GNUC_UNUSED GtkButton *button
     else if (gtk_toggle_button_get_active(
             GTK_TOGGLE_BUTTON(intf_w->archive_file_move_rb))) {
         if (g_rename(g_par.archive_file, s)) { /* failed */
-            g_warning("rename failed. trying manual copy");
+            g_warning ("rename failed; attempting manual copy");
             ok = orage_copy_file(g_par.archive_file, s);
             if (ok) { /* this is move. so let's remove the orig */
-               if (g_remove(g_par.archive_file))
-                   g_warning("file remove failed %s", g_par.archive_file);
+                if (g_remove(g_par.archive_file))
+                {
+                    g_warning ("failed to remove original file '%s'",
+                               g_par.archive_file);
+                }
             }
         }
     }
     else {
-        g_warning("illegal file save toggle button status");
+        g_warning ("illegal file save toggle button status");
         ok = FALSE;
     }
 
@@ -466,9 +475,9 @@ static void imp_save_button_clicked (G_GNUC_UNUSED GtkButton *button,
                 *filename_end = 0; /* filename ends here */
             /* FIXME: proper messages to screen */
             if (orage_import_file(filename))
-                g_message ("Import done %s", filename);
+                g_message ("file '%s' imported successfully", filename);
             else
-                g_warning ("import failed file=%s", filename);
+                g_warning ("could not import file '%s'", filename);
             if (filename_end != NULL) { /* we have more files */
                 filename = filename_end+1; /* next file starts here */
                 more_files = TRUE;
@@ -479,7 +488,7 @@ static void imp_save_button_clicked (G_GNUC_UNUSED GtkButton *button,
         }
     }
     else
-        g_warning ("%s: filename MISSING", G_STRFUNC);
+        g_warning ("no filename specified for import");
     g_free(entry_filename);
 }
 
@@ -509,12 +518,12 @@ static void exp_save_button_clicked (G_GNUC_UNUSED GtkButton *button,
         }
 
         if (xfical_export_by_path (entry_filename, app_count, entry_uids))
-            g_message ("Export done %s", entry_filename);
+            g_message ("export done '%s'", entry_filename);
         else
-            g_warning ("export failed file=%s", entry_filename);
+            g_warning ("export failed for file '%s'", entry_filename);
     }
     else
-        g_warning("save_button_clicked: filename MISSING");
+        g_warning ("save_button_clicked: filename MISSING");
     g_free(entry_filename);
     g_free(entry_uids);
 }
@@ -590,7 +599,7 @@ gboolean orage_foreign_file_remove (const gchar *filename)
 
     if (xfce_str_is_empty (filename))
     {
-        g_warning ("empty file name - cannot remove foreign file");
+        g_warning ("empty file name: cannot remove foreign file");
         return FALSE;
     }
 
@@ -604,7 +613,7 @@ gboolean orage_foreign_file_remove (const gchar *filename)
         }
     }
 
-    g_warning ("foreign file '%s' not found - nothing to remove", filename);
+    g_warning ("foreign file '%s' not found: nothing to remove", filename);
 
     return FALSE;
 }
@@ -614,14 +623,13 @@ static void for_remove_button_clicked (G_GNUC_UNUSED GtkButton *button,
 {
     gint del_line = GPOINTER_TO_INT(user_data);
 
-    g_message ("%s: Removing foreign file %s (%s).", G_STRFUNC,
-               g_par.foreign_data[del_line].name,
-               g_par.foreign_data[del_line].file);
+    g_debug ("removing foreign file '%s', display name '%s'",
+             g_par.foreign_data[del_line].file,
+             g_par.foreign_data[del_line].name);
 
     orage_foreign_file_remove_line(del_line);
 
-    g_message ("%s: Foreign file removed and Orage alarms refreshed.",
-               G_STRFUNC);
+    g_debug ("foreign file removed, alarms refreshed");
 }
 
 static void for_remove_button_clicked2 (G_GNUC_UNUSED GtkButton *button,
@@ -710,8 +718,7 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
     const gchar *add_failed = _("Foreign file add failed");
 
     if (g_par.foreign_count > 9) {
-        g_warning ("%s: Foreign file limit (10) reached; new file not added",
-                   G_STRFUNC);
+        g_warning ("foreign file limit (10) reached");
         if (main_window)
         {
             orage_error_dialog (GTK_WINDOW (main_window), add_failed,
@@ -720,7 +727,7 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
         return(FALSE);
     }
     if (!ORAGE_STR_EXISTS(filename)) {
-        g_warning ("%s: File is empty. New file not added", G_STRFUNC);
+        g_warning ("filename is empty");
         if (main_window)
         {
             orage_error_dialog (GTK_WINDOW (main_window)
@@ -730,7 +737,7 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
         return(FALSE);
     }
     if (!ORAGE_STR_EXISTS(name)) {
-        g_warning ("%s: Name is empty. New file not added", G_STRFUNC);
+        g_warning ("name is empty");
         if (main_window)
         {
             orage_error_dialog (GTK_WINDOW (main_window)
@@ -740,8 +747,7 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
         return(FALSE);
     }
     if (!g_file_test(filename, G_FILE_TEST_EXISTS)) {
-        g_warning ("%s: New file %s does not exist. New file not added",
-                   G_STRFUNC, filename);
+        g_warning ("file '%s' does not exist", filename);
         if (main_window)
         {
             orage_error_dialog (GTK_WINDOW (main_window)
@@ -752,8 +758,7 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
     }
     for (i = 0; i < g_par.foreign_count; i++) {
         if (strcmp(g_par.foreign_data[i].file, filename) == 0) {
-            g_warning ("%s: Foreign file already exists. New file not added",
-                       G_STRFUNC);
+            g_warning ("foreign file '%s' already exists", filename);
             if (main_window)
             {
                 orage_error_dialog (GTK_WINDOW (main_window)
@@ -763,8 +768,7 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
             return(FALSE);
         }
         if (strcmp(g_par.foreign_data[i].name, name) == 0) {
-            g_warning ("%s: Foreign file name already exists. "
-                       "New file not added", G_STRFUNC);
+            g_warning ("foreign file name '%s' already exists", name);
             if (main_window)
             {
                 orage_error_dialog (GTK_WINDOW (main_window)
@@ -778,7 +782,7 @@ static gboolean orage_foreign_file_add_internal (const gchar *filename,
     g_par.foreign_data[g_par.foreign_count].file = g_strdup(filename);
     g_par.foreign_data[g_par.foreign_count].name = g_strdup(name);
     g_par.foreign_data[g_par.foreign_count].read_only = read_only;
-    g_par.foreign_data[g_par.foreign_count].latest_file_change = (time_t)0;
+    g_par.foreign_data[g_par.foreign_count].latest_file_change = 0;
     g_par.foreign_count++;
 
     write_parameters();
@@ -794,7 +798,7 @@ gboolean orage_foreign_file_add(const gchar *filename, const gboolean read_only
         , const gchar *name)
 {
     if (interface_lock) {
-        g_warning ("Exchange window active, can't add files from cmd line");
+        g_warning ("exchange window active, can't add files from cmd line");
         return(FALSE);
     }
     return(orage_foreign_file_add_internal(filename, name, read_only, NULL));
@@ -816,8 +820,7 @@ static void for_add_button_clicked (G_GNUC_UNUSED GtkButton *button,
                                          intf_w->main_window))
     {
         refresh_foreign_files(intf_w, FALSE);
-        g_message ("%s: New foreign file %s (%s) added.", G_STRFUNC, entry_name
-                , entry_filename);
+        g_message ("foreign file '%s' (%s) added", entry_name, entry_filename);
     }
 }
 
@@ -892,7 +895,7 @@ static void handle_file_drag_data(GtkWidget *widget, GdkDragContext *context
     GError *error = NULL;
 
     if (gtk_selection_data_get_length (data) < 0) {
-        g_warning("File drag failed");
+        g_warning ("file drag failed");
         gtk_drag_finish(context, FALSE, FALSE, d_time);
         return;
     }
@@ -900,8 +903,8 @@ static void handle_file_drag_data(GtkWidget *widget, GdkDragContext *context
             (const gchar *)gtk_selection_data_get_data (data));
     for (i = 0; file_list[i] != NULL; i++) {
         if ((file = g_filename_from_uri(file_list[i], NULL, &error)) == NULL) {
-            g_warning("Dragging g_filename_from_uri %s failed %s"
-                    , file_list[i], error->message);
+            g_warning ("dragging g_filename_from_uri '%s' failed: %s",
+                       file_list[i], error->message);
             g_error_free(error);
             return;
         }
@@ -917,7 +920,7 @@ static void handle_file_drag_data(GtkWidget *widget, GdkDragContext *context
                         , strlen(file), &pos);
             }
             else { /* export to only 1 file, ignoring the rest */
-                g_warning ("Exporting only to one file, "
+                g_warning ("exporting only to one file, "
                            "ignoring drag file %d (%s)", i+1, file_list[i]);
             }
         }
@@ -954,7 +957,7 @@ static void uid_drag_data_received (G_GNUC_UNUSED GtkWidget *widget,
                                     G_GNUC_UNUSED guint info, guint d_time)
 {
     if (gtk_selection_data_get_length (data) < 0) {
-        g_warning("UID drag failed");
+        g_warning ("UID drag failed");
         gtk_drag_finish(context, FALSE, FALSE, d_time);
         return;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2025 Erkki Moorits
+ * Copyright (c) 2021-2026 Erkki Moorits
  * Copyright (c) 2005-2013 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2003-2006 Mickael Graf (korbinus at xfce.org)
  *
@@ -138,7 +138,7 @@ static OrageRc *orage_persistent_file_open (void)
     fpath = orage_data_file_location(ORAGE_PERSISTENT_ALARMS_DIR_FILE);
 
     if ((orc = orage_rc_file_open (fpath, TRUE)) == NULL) {
-        g_warning ("%s: persistent alarms file open failed", G_STRFUNC);
+        g_warning ("could not open persistent alarms file '%s'", fpath);
     }
     g_free(fpath);
 
@@ -153,7 +153,7 @@ static OrageRc *orage_persistent_file_new (void)
     fpath = orage_data_file_location (ORAGE_PERSISTENT_ALARMS_DIR_FILE);
 
     if ((orc = orage_rc_file_new (fpath)) == NULL)
-        g_warning ("%s: persistent alarms file open failed", G_STRFUNC);
+        g_warning ("could not create persistent alarms file '%s'", fpath);
 
     g_free (fpath);
 
@@ -294,7 +294,7 @@ static gboolean sound_alarm(gpointer data)
     gboolean notify_cleanup = FALSE;
 #endif
 
-    g_debug ("%s: repeat_cnt=%d", G_STRFUNC, l_alarm->repeat_cnt);
+    g_debug ("alarm sound repeat count: %d", l_alarm->repeat_cnt);
 
     /* note: -1 loops forever */
     if (l_alarm->repeat_cnt)
@@ -306,8 +306,8 @@ static gboolean sound_alarm(gpointer data)
                              &l_alarm->active_alarm->sound_active, &error);
         if (status == FALSE)
         {
-            g_warning ("%s: sound command failed (%s) %s", G_STRFUNC,
-                       l_alarm->sound, error->message);
+            g_warning ("could not execute sound command '%s': %s",
+                       l_alarm->sound_cmd, error->message);
 #ifdef HAVE_NOTIFY
             notify_cleanup = TRUE;
 #endif
@@ -333,11 +333,11 @@ static gboolean sound_alarm(gpointer data)
 #ifdef HAVE_NOTIFY
     if (notify_cleanup)
     {
-        g_debug ("%s: notify_cleanup", G_STRFUNC);
+        g_debug ("cleaning up alarm notification");
         if (l_alarm->display_notify &&
             l_alarm->active_alarm->notify_stop_noise_action)
         {
-            g_debug ("%s: create_notify_reminder", G_STRFUNC);
+            g_debug ("recreating sound alarm notification");
             l_alarm->repeat_cnt = 0;
             /* We need to remove the silence button from notify window. This is
              * not nice method, but it is not possible to access the timeout so
@@ -363,7 +363,7 @@ static void create_sound_reminder(alarm_struct *l_alarm)
         l_alarm->repeat_cnt++; /* need to do it once */
     }
 
-    g_debug ("%s: sound_cmd='%s'", G_STRFUNC, l_alarm->sound_cmd);
+    g_debug ("sound command '%s'", l_alarm->sound_cmd);
     g_timeout_add_seconds_full (G_PRIORITY_DEFAULT, l_alarm->repeat_delay,
                                 sound_alarm, l_alarm,
                                 (GDestroyNotify)orage_alarm_unref);
@@ -704,8 +704,8 @@ static void create_procedure_reminder(alarm_struct *l_alarm)
                We could try to find the middle one using strlen, but as
                there probably is not this kind of issues, it is not worth
                the trouble */
-            g_message ("%s: <&ST>/<&ET> string conversion failed (%s)",
-                       G_STRFUNC, l_alarm->action_time);
+            g_message ("could not parse start/end (<&ST>/<&ET>) time from '%s'",
+                       l_alarm->action_time);
         }
         else {
             sep[0] = '\0'; /* temporarily to end start-time string */
@@ -717,15 +717,17 @@ static void create_procedure_reminder(alarm_struct *l_alarm)
         }
     }
     else 
-        g_message ("%s: <&ST>/<&ET> string conversion failed 2 (%s)", G_STRFUNC,
-                   l_alarm->action_time);
+    {
+        g_message ("could not parse start/end (<&ST>/<&ET>) time; "
+                   "invalid format: '%s'", l_alarm->action_time);
+    }
 
-    g_debug ("%s: cmd='%s'", G_STRFUNC, cmd);
+    g_debug ("command to run: '%s'", cmd);
     status = system(cmd);
     if (status)
     {
-        g_warning ("%s: cmd failed(%s)->(%s) status:%d",
-                   G_STRFUNC, l_alarm->cmd, cmd, status);
+        g_warning ("command '%s' (expanded: '%s') failed with status %d",
+                   l_alarm->cmd, cmd, status);
     }
 
     orage_alarm_unref (l_alarm);

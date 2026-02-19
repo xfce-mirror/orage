@@ -223,13 +223,13 @@ static gboolean is_readable (GFile *file)
                                                     G_FILE_ATTRIBUTE_ACCESS_CAN_READ);
 
         if (result == FALSE)
-            g_debug ("file is not readale");
+            g_debug ("file is not readable");
 
         g_object_unref (info);
     }
     else
     {
-        g_debug ("could not open file: '%s'", error->message);
+        g_debug ("could not query info for file: %s", error->message);
         g_clear_error (&error);
         result = FALSE;
     }
@@ -257,7 +257,7 @@ static gboolean orage_should_use_orage_logger (const gchar *logger_name)
     if (g_strcmp0 (logger_name, "glib") == 0)
         return FALSE;
 
-    g_warning ("Unknown logger backend '%s', using default", logger_name);
+    g_warning ("unknown logger backend '%s', using default", logger_name);
 
     return orage_default_use_orage_logger ();
 }
@@ -361,10 +361,10 @@ static gboolean orage_application_import_file (OrageApplication *self,
         if (result)
         {
             orage_window_update_appointments (ORAGE_WINDOW (self->window));
-            g_message ("import done, file=%s", filename);
+            g_message ("import done for file '%s'", filename);
         }
         else
-            g_warning ("import failed, file=%s", filename);
+            g_warning ("import failed for file '%s'", filename);
     }
     else
     {
@@ -389,13 +389,13 @@ static gboolean orage_application_export_file (G_GNUC_UNUSED OrageApplication *s
     g_object_ref (file);
     filename = g_file_get_path (file);
 
-    g_debug ("exporting to='%s', uids='%s'", filename, uids);
+    g_debug ("exporting to '%s', uids '%s'", filename, uids);
 
     result = xfical_export_file (file, uids);
     if (result)
-        g_message ("export done to file=%s", filename);
+        g_message ("export done to file '%s'", filename);
     else
-        g_warning ("export failed file=%s", filename);
+        g_warning ("export failed for file '%s'", filename);
 
     g_free (filename);
     g_object_unref (file);
@@ -921,10 +921,10 @@ gboolean orage_application_load_path (OrageApplication *self,
         if (result)
         {
             orage_window_update_appointments (ORAGE_WINDOW (self->window));
-            g_message ("import done, file=%s", filename);
+            g_message ("import done for file=%s", filename);
         }
         else
-            g_warning ("import failed, file=%s", filename);
+            g_warning ("import failed for file=%s", filename);
     }
     else
     {
@@ -993,9 +993,9 @@ gboolean orage_application_add_foreign_path (
     g_free (name);
 
     if (result)
-        g_message ("add done, foreign file='%s'", filename);
+        g_message ("add done, foreign file '%s'", filename);
     else
-        g_warning ("add failed, foreign file='%s'", filename);
+        g_warning ("add failed, foreign file '%s'", filename);
 
     return result;
 }

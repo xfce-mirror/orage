@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2024 Erkki Moorits
+ * Copyright (c) 2021-2026 Erkki Moorits
  * Copyright (c) 2008-2011 Juha Kautto  (juha at xfce.org)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -154,12 +154,12 @@ static void read_file(const char *file_name, const struct stat *file_stat)
     in_tail = in_buf + file_stat->st_size - 1;
     file = g_fopen (file_name, "r");
     if (!file) {
-        g_warning ("file open error (%s): %s", file_name, g_strerror (errno));
+        g_warning ("file open error '%s': %s", file_name, g_strerror (errno));
         return;
     }
     if ((off_t)fread(in_buf, 1, file_stat->st_size, file) < file_stat->st_size)
         if (ferror(file)) {
-            g_warning ("file read failed (%s): %s", file_name,
+            g_warning ("file read failed '%s': %s", file_name,
                        g_strerror (errno));
             fclose(file);
             return;
@@ -260,7 +260,7 @@ static void process_gmt_table(void)
 static int process_file(const char *file_name)
 {
     if (process_header()) {
-        g_message ("File (%s) does not look like tz file. Skipping it.",
+        g_message ("file '%s' does not look like tz file. Skipping it.",
                    file_name);
         return(1);
     }
@@ -472,7 +472,7 @@ static int file_call_process_file(const char *file_name
     which nftw gives us!
     (lstat = information from the real file istead of the link) */ 
         if (g_stat (file_name, &file_stat)) {
-            g_warning ("file open error (%s): %s", file_name,
+            g_warning ("file open error '%s': %s", file_name,
                        g_strerror (errno));
             g_free(in_timezone_name);
             g_free(timezone_name);
@@ -553,7 +553,7 @@ static gboolean check_parameters (void)
     if (par_file != NULL) { /* does exist and no error */
         if (g_stat(TZ_CONVERT_PAR_FILE_LOC, &par_file_stat) == -1) {
             /* error reading the parameter file */
-            g_warning ("in_file name not found from (%s)",
+            g_warning ("in_file name not found from '%s'",
                        TZ_CONVERT_PAR_FILE_LOC);
         }
         else { /* no errors */
@@ -561,7 +561,7 @@ static gboolean check_parameters (void)
             if (((off_t)fread(in_file, 1, par_file_stat.st_size, par_file)
                         < par_file_stat.st_size)
             && (ferror(par_file))) {
-                g_warning ("error reading (%s)", TZ_CONVERT_PAR_FILE_LOC);
+                g_warning ("error reading '%s'", TZ_CONVERT_PAR_FILE_LOC);
                 g_free(in_file);
                 in_file = NULL;
             }
@@ -573,7 +573,7 @@ static gboolean check_parameters (void)
                     in_file[par_file_stat.st_size] = '\0';
                 /* test that it is fine */
                 if (g_stat (in_file, &par_file_stat) == -1) { /* error */
-                    g_warning ("error reading (%s) (from %s)", in_file,
+                    g_warning ("error reading '%s' (from '%s')", in_file,
                                TZ_CONVERT_PAR_FILE_LOC);
                     g_free(in_file);
                     in_file = NULL;
@@ -586,7 +586,7 @@ static gboolean check_parameters (void)
         in_file = get_zoneinfo_directory ();
 
     if (in_file[0] != '/') {
-        g_warning ("in_file name (%s) is not absolute file name. Ending",
+        g_warning ("in_file name '%s' is not absolute file name. Ending",
                    in_file);
         return FALSE;
     }
@@ -599,14 +599,14 @@ static gboolean check_parameters (void)
     if (S_ISDIR(in_stat.st_mode)) {
         in_file_is_dir = TRUE;
         if (timezone_name) {
-            g_warning ("when infile (%s) is directory, you can not specify "
-                       "timezone name (%s), but it is copied from each in "
+            g_warning ("when infile '%s' is directory, you can not specify "
+                       "timezone name '%s', but it is copied from each in "
                        "file. Ending", in_file, timezone_name);
             return FALSE;
         }
         if (out_file) {
-            g_warning ("when infile (%s) is directory, you can not specify "
-                       "outfile name (%s), but it is copied from each in file. "
+            g_warning ("when infile '%s' is directory, you can not specify "
+                       "outfile name '%s', but it is copied from each in file. "
                        "Ending", in_file, out_file);
             return FALSE;
         }
@@ -614,7 +614,7 @@ static gboolean check_parameters (void)
     else {
         in_file_is_dir = FALSE;
         if (!S_ISREG(in_stat.st_mode)) {
-            g_warning ("in_file (%s) is not directory nor normal file. Ending",
+            g_warning ("in_file '%s' is not directory nor normal file. Ending",
                        in_file);
             return FALSE;
         }
@@ -631,7 +631,7 @@ static gboolean check_parameters (void)
         s_tz++;
     }
     if (last_tz == NULL) {
-        g_warning ("in_file name (%s) does not contain (%s). Ending", in_file,
+        g_warning ("in_file name '%s' does not contain '%s'. Ending", in_file,
                    tz);
         return FALSE;
     }
@@ -692,13 +692,13 @@ static gboolean read_os_timezones (void)
     g_free(tz_dir);
 
     if (!(zone_tab_file = g_fopen (zone_tab_file_name, "r"))) {
-        g_warning ("zone.tab file open failed (%s): %s", zone_tab_file_name,
+        g_warning ("zone.tab file open failed '%s': %s", zone_tab_file_name,
                    g_strerror (errno));
         g_free(zone_tab_file_name);
         return FALSE;
     }
     if (g_stat (zone_tab_file_name, &zone_tab_file_stat) == -1) {
-        g_warning ("zone.tab file stat failed (%s): %s", zone_tab_file_name,
+        g_warning ("zone.tab file stat failed '%s': %s", zone_tab_file_name,
                    g_strerror (errno));
         g_free(zone_tab_file_name);
         fclose(zone_tab_file);
@@ -707,7 +707,7 @@ static gboolean read_os_timezones (void)
     zone_tab_buf = g_new(char, zone_tab_file_stat.st_size+1);
     if (((off_t)fread(zone_tab_buf, 1, zone_tab_file_stat.st_size, zone_tab_file) < zone_tab_file_stat.st_size)
     && (ferror(zone_tab_file))) {
-        g_warning ("zone.tab file read failed (%s): %s", zone_tab_file_name,
+        g_warning ("zone.tab file read failed '%s': %s", zone_tab_file_name,
                    g_strerror (errno));
         g_free(zone_tab_file_name);
         fclose(zone_tab_file);
@@ -750,13 +750,13 @@ static gboolean read_countries (void)
     g_free(tz_dir);
 
     if (!(country_file = g_fopen (country_file_name, "r"))) {
-        g_warning ("iso3166.tab file open failed (%s): %s", country_file_name,
+        g_warning ("iso3166.tab file open failed '%s': %s", country_file_name,
                    g_strerror (errno));
         g_free(country_file_name);
         return FALSE;
     }
     if (g_stat (country_file_name, &country_file_stat) == -1) {
-        g_warning ("iso3166.tab file stat failed (%s): %s", country_file_name,
+        g_warning ("iso3166.tab file stat failed '%s': %s", country_file_name,
                    g_strerror (errno));
         g_free(country_file_name);
         fclose(country_file);
@@ -765,7 +765,7 @@ static gboolean read_countries (void)
     country_buf = g_new(char, country_file_stat.st_size+1);
     if (((off_t)fread(country_buf, 1, country_file_stat.st_size, country_file) < country_file_stat.st_size)
     && (ferror(country_file))) {
-        g_warning ("iso3166.tab file read failed (%s): %s", country_file_name,
+        g_warning ("iso3166.tab file read failed '%s': %s", country_file_name,
                    g_strerror (errno));
         g_free(country_file_name);
         fclose(country_file);

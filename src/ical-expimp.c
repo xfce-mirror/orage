@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2025 Erkki Moorits
+ * Copyright (c) 2021-2026 Erkki Moorits
  * Copyright (c) 2005-2011 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2003-2005 Mickael Graf (korbinus at xfce.org)
  *
@@ -92,13 +92,10 @@ static gchar *find_calendar_id (const gchar *calendar_name,
             if (found)
                 calendar_id = g_strdup_printf ("F%02d.", i - 1);
             else
-            {
-                g_warning ("%s: matching foreign file not found: '%s'",
-                           G_STRFUNC, calendar_name);
-            }
+                g_warning ("foreign calendar '%s' not found", calendar_name);
         }
         else
-            g_warning ("%s: calendar file open failed", G_STRFUNC);
+            g_warning ("failed to open calendar file");
     }
 
     return calendar_id;
@@ -113,7 +110,7 @@ static void add_event (icalcomponent *c, gboolean *ical_opened)
     if (icalcomponent_get_uid(ca) == NULL) {
         uid = ic_generate_uid();
         icalcomponent_add_property(ca,  icalproperty_new_uid(uid));
-        g_message ("Generated UID %s", uid);
+        g_debug ("generated uid '%s'", uid);
         g_free(uid);
     }
 
@@ -121,7 +118,7 @@ static void add_event (icalcomponent *c, gboolean *ical_opened)
     {
         if (xfical_file_open (FALSE) == FALSE)
         {
-            g_critical ("%s: ical file open failed", G_STRFUNC);
+            g_critical ("iCal file open failed");
             return;
         }
 
@@ -149,7 +146,7 @@ static void add_event_with_id (icalcomponent *c, gboolean *ical_opened,
         uid = g_strconcat (id, tmp, NULL);
         g_free (tmp);
         icalcomponent_add_property (ca, icalproperty_new_uid (uid));
-        g_message ("generated UID '%s'", uid);
+        g_debug ("generated uid '%s'", uid);
         g_free (uid);
     }
 
@@ -157,7 +154,7 @@ static void add_event_with_id (icalcomponent *c, gboolean *ical_opened,
     {
         if (xfical_file_open (FALSE) == FALSE)
         {
-            g_critical ("%s: ical file open failed", G_STRFUNC);
+            g_critical ("iCal file open failed");
             return;
         }
 
@@ -179,14 +176,14 @@ static void add_event_with_id (icalcomponent *c, gboolean *ical_opened,
         }
         else
         {
-            g_critical ("%s: unknown foreign file number %s", G_STRFUNC, id);
+            g_critical ("unknown foreign file number '%s'", id);
             return;
         }
     }
     else
     {
         /* Note: we never update/add Archive file */
-        g_critical ("%s: unknown file type '%s'", G_STRFUNC, id);
+        g_critical ("unknown file type '%s'", id);
         return;
     }
 
@@ -208,17 +205,16 @@ static gboolean pre_format(const gchar *file_name_in,
 
     if (g_file_get_contents (file_name_in, &text, &text_len, &error) == FALSE)
     {
-        g_critical ("%s: could not open ical file (%s) error: %s", G_STRFUNC,
-                    file_name_in, error->message);
+        g_critical ("could not open ical file '%s': %s", file_name_in,
+                    error->message);
         g_error_free (error);
         return FALSE;
     }
 
     /***** Check utf8 conformability *****/
     if (!g_utf8_validate(text, -1, NULL)) {
-        g_critical ("%s: is not in utf8 format. Conversion needed. "
-                    "(Use iconv and convert it into UTF-8 and import it "
-                    "again.)", G_STRFUNC);
+        g_critical ("file '%s' is not in UTF-8 format; convert it to UTF-8 "
+                    "and import again", file_name_in);
         return FALSE;
     }
 
@@ -238,7 +234,7 @@ static gboolean pre_format(const gchar *file_name_in,
             }
             *(tmp3-1) = 'Z'; /* this is 'bad'...but who cares...it is fast */
         }
-        g_message ("Patched DCREATED to be CREATED");
+        g_message ("patched DCREATED property to CREATED");
     }
 
     /***** 2: change absolute timezones into libical format *****/
@@ -253,21 +249,21 @@ static gboolean pre_format(const gchar *file_name_in,
          * tmp3 = current search and eventually the real tzid */
         tmp = tmp+6; /* 6 = skip ";TZID=" */
         if (!(tmp2 = g_strstr_len(tmp, 100, "\n"))) { /* no end of line */
-            g_warning ("%s: timezone patch failed 1. no end-of-line found: %s",
-                       G_STRFUNC, tmp);
+            g_warning ("timezone patch failed: no end-of-line found in TZID "
+                       "field");
             continue;
         }
         tmp3 = tmp;
 
         tmp3++; /* skip '/' */
         if (!(tmp3 = g_strstr_len(tmp3, tmp2-tmp3, "/"))) { /* no more '/' */
-            g_warning ("%s: timezone patch failed 2. no / found: %s", G_STRFUNC,
+            g_warning ("timezone patch failed: unexpected TZID format '%s'",
                        tmp);
             continue;
         }
         tmp3++; /* skip '/' */
         if (!(tmp3 = g_strstr_len(tmp3, tmp2-tmp3, "/"))) { /* no more '/' */
-            g_warning ("%s: timezone patch failed 3. no / found: %s", G_STRFUNC,
+            g_warning ("timezone patch failed: unexpected TZID format '%s'",
                        tmp);
             continue;
         }
@@ -280,17 +276,16 @@ static gboolean pre_format(const gchar *file_name_in,
         /* fill the end of the line with spaces */
         for (; tmp < tmp2; tmp++)
             *tmp = ' ';
-        g_message ("Patched timezone to Orage format");
+        g_message ("patched timezone to Orage format");
     }
 
     /***** All done: write file *****/
     if (!g_file_set_contents(file_name_out, text, -1, NULL)) {
-        g_critical ("%s: Could not write ical file (%s)",
-                    G_STRFUNC, file_name_out);
+        g_critical ("could not write iCal file '%s'", file_name_out);
         return(FALSE);
     }
     g_free(text);
-    g_message ("Import file preprocessing done");
+    g_message ("import file preprocessing done");
     return(TRUE);
 }
 
@@ -312,7 +307,7 @@ static gboolean pre_format_gfile_to_string (GFile *file_in,
     if (g_utf8_validate (text, -1, NULL) == FALSE)
     {
         g_set_error (error, G_CONVERT_ERROR, G_CONVERT_ERROR_ILLEGAL_SEQUENCE,
-                     "%s: input file is not valid UTF-8", G_STRFUNC);
+                     "input file is not valid UTF-8");
         g_free (text);
         return FALSE;
     }
@@ -337,7 +332,7 @@ static gboolean pre_format_gfile_to_string (GFile *file_in,
             *(tmp3 - 1) = 'Z'; /* this is 'bad'...but who cares...it is fast */
         }
 
-        g_message ("patched DCREATED to be CREATED");
+        g_message ("patched DCREATED property to CREATED");
     }
 
     /***** 2: change absolute timezones into libical format *****/
@@ -354,8 +349,8 @@ static gboolean pre_format_gfile_to_string (GFile *file_in,
         tmp = tmp + 6; /* 6 = skip ";TZID=" */
         if (!(tmp2 = g_strstr_len (tmp, 100, "\n")))
         { /* no end of line */
-            g_warning ("%s: timezone patch failed 1. no end-of-line found: %s",
-                       G_STRFUNC, tmp);
+            g_warning ("timezone patch failed: no end-of-line found in TZID "
+                       "field");
             continue;
         }
         tmp3 = tmp;
@@ -363,14 +358,14 @@ static gboolean pre_format_gfile_to_string (GFile *file_in,
         tmp3++; /* skip '/' */
         if (!(tmp3 = g_strstr_len (tmp3, tmp2 - tmp3, "/")))
         {
-            g_warning ("%s: timezone patch failed 2. no / found: %s", G_STRFUNC,
+            g_warning ("timezone patch failed: unexpected TZID format '%s'",
                        tmp);
             continue;
         }
         tmp3++; /* skip '/' */
         if (!(tmp3 = g_strstr_len (tmp3, tmp2 - tmp3, "/")))
         {
-            g_warning ("%s: timezone patch failed 3. no / found: %s", G_STRFUNC,
+            g_warning ("timezone patch failed: unexpected TZID format '%s'",
                        tmp);
             continue;
         }
@@ -408,6 +403,8 @@ static gboolean xfical_import_component (icalcomponent *root,
             case ICAL_VEVENT_COMPONENT:
             case ICAL_VTODO_COMPONENT:
             case ICAL_VJOURNAL_COMPONENT:
+                g_debug ("importing component '%s'",
+                         icalcomponent_kind_to_string(icalcomponent_isa(comp)));
                 add_event_with_id (comp, ical_opened, id);
                 return TRUE;
 
@@ -418,7 +415,7 @@ static gboolean xfical_import_component (icalcomponent *root,
                 return FALSE;
 
             default:
-                g_warning ("%s: unknown component %s", G_STRFUNC,
+                g_warning ("unknown component '%s'",
                            icalcomponent_kind_to_string (icalcomponent_isa (comp)));
                 return FALSE;
         }
@@ -441,7 +438,7 @@ gboolean xfical_import_by_path (const gchar *file_name)
         return(FALSE);
     }
     if ((file_ical = icalset_new_file(ical_file_name)) == NULL) {
-        g_critical ("%s: Could not open ical file (%s) %s", G_STRFUNC,
+        g_critical ("could not open iCal file '%s': %s",
                     ical_file_name, icalerror_strerror(icalerrno));
         g_free(ical_file_name);
         return(FALSE);
@@ -463,29 +460,31 @@ gboolean xfical_import_by_path (const gchar *file_name)
                 /* we ignore TIMEZONE component; Orage only uses internal
                  * timezones from libical */
                 else if (icalcomponent_isa(c2) != ICAL_VTIMEZONE_COMPONENT)
-                    g_warning ("%s: unknown component %s %s", G_STRFUNC
-                            , icalcomponent_kind_to_string(
-                                    icalcomponent_isa(c2))
-                            , ical_file_name);
+                {
+                    g_warning ("unknown component '%s' in '%s'",
+                               icalcomponent_kind_to_string (
+                                    icalcomponent_isa(c2)), ical_file_name);
+                }
             }
-
         }
         else
-            g_warning ("%s: unknown icalset component %s in %s", G_STRFUNC
-                    , icalcomponent_kind_to_string(icalcomponent_isa(c1))
-                    , ical_file_name);
+        {
+            g_warning ("unknown icalset component '%s' in '%s'",
+                       icalcomponent_kind_to_string(icalcomponent_isa(c1)),
+                       ical_file_name);
+        }
     }
 
     if (ical_opened)
         xfical_file_close (FALSE);
 
     if (cnt1 == 0) {
-        g_warning ("%s: No valid icalset components found", G_STRFUNC);
+        g_warning ("no valid icalset components found in '%s'", ical_file_name);
         g_free(ical_file_name);
         return(FALSE);
     }
     if (cnt2 == 0) {
-        g_warning ("%s: No valid ical components found", G_STRFUNC);
+        g_warning ("no valid icalset components found in '%s'", ical_file_name);
         g_free(ical_file_name);
         return(FALSE);
     }
@@ -510,8 +509,8 @@ gboolean orage_calendar_import_file (GFile *file, const gchar *dest)
     if (pre_format_gfile_to_string (file, &ical_text, &error) == FALSE)
     {
         file_name = g_file_get_path (file);
-        g_critical ("%s: could not open ical file (%s): %s", G_STRFUNC,
-                    file_name, error ? error->message : "unknown error");
+        g_warning ("could not open iCal file '%s': %s",
+                   file_name, error ? error->message : "unknown error");
         g_free (file_name);
         g_error_free (error);
         result = FALSE;
@@ -523,8 +522,8 @@ gboolean orage_calendar_import_file (GFile *file, const gchar *dest)
         g_string_free (ical_text, TRUE);
         if (root == NULL)
         {
-            g_critical ("%s: failed to parse iCal data: %s", G_STRFUNC,
-                        icalerror_strerror (icalerrno));
+            g_warning ("failed to parse iCal data: %s",
+                       icalerror_strerror (icalerrno));
             result = FALSE;
         }
     }
@@ -534,8 +533,7 @@ gboolean orage_calendar_import_file (GFile *file, const gchar *dest)
         calendar_id = find_calendar_id (dest, &ical_opened);
         if (calendar_id == NULL)
         {
-            g_warning ("%s: matching calendar file not found: '%s'",
-                       G_STRFUNC, dest);
+            g_warning ("calendar '%s' not found", dest);
             result = FALSE;
         }
     }
@@ -552,8 +550,7 @@ gboolean orage_calendar_import_file (GFile *file, const gchar *dest)
         }
         else
         {
-            g_warning ("%s: multiple VCALENDAR components found, importing all",
-                       G_STRFUNC);
+            g_message ("multiple VCALENDAR components found, importing all");
 
             for (vcal = icalcomponent_get_first_component (root, ICAL_VCALENDAR_COMPONENT);
                  vcal != NULL;
@@ -568,8 +565,7 @@ gboolean orage_calendar_import_file (GFile *file, const gchar *dest)
 
         if (vcalendar_found == FALSE)
         {
-            g_warning ("%s: no valid ICAL_VCALENDAR_COMPONENT components found",
-                       G_STRFUNC);
+            g_warning ("no VCALENDAR components found");
             result = FALSE;
         }
 
@@ -577,7 +573,7 @@ gboolean orage_calendar_import_file (GFile *file, const gchar *dest)
         {
             if (imported == FALSE)
             {
-                g_warning ("%s: no valid ical components found", G_STRFUNC);
+                g_warning ("no importable iCal components found");
                 result = FALSE;
             }
         }
@@ -620,21 +616,19 @@ static gboolean export_prepare_write_file(const gchar *file_name)
     gchar *tmp;
 
     if (strcmp(file_name, g_par.orage_file) == 0) {
-        g_warning ("%s: You do not want to overwrite Orage ical file! (%s)"
-                , G_STRFUNC, file_name);
+        g_warning ("refusing to overwrite main iCal file '%s'", file_name);
         return(FALSE);
     }
     tmp = g_path_get_dirname(file_name);
     if (g_mkdir_with_parents(tmp, 0755)) { /* octal */
-        g_critical ("%s: Could not create directories (%s)",
-                    G_STRFUNC, file_name);
+        g_warning ("failed to create directory '%s'", tmp);
+        g_free(tmp);
         return(FALSE);
     }
     g_free(tmp);
     if (g_file_test(file_name, G_FILE_TEST_EXISTS)) {
 	if (g_remove(file_name) == -1) {
-            g_warning ("%s: Failed to remove export file %s",
-                       G_STRFUNC, file_name);
+            g_warning ("failed to remove existing export file '%s'", file_name);
         }
     }
     return(TRUE);
@@ -649,13 +643,11 @@ static gboolean export_all (const gchar *file_name)
         return(FALSE);
     /* read Orage's ical file */
     if (!g_file_get_contents(g_par.orage_file, &text, &text_len, NULL)) {
-        g_critical ("%s: Could not open Orage ical file (%s)", G_STRFUNC
-                , g_par.orage_file);
+        g_critical ("could not read orage iCal file '%s'", g_par.orage_file);
         return(FALSE);
     }
     if (!g_file_set_contents(file_name, text, -1, NULL)) {
-        g_warning ("%s: Could not write file (%s)", G_STRFUNC
-                , file_name);
+        g_warning ("could not write export file '%s'", file_name);
         g_free(text);
         return(FALSE);
     }
@@ -676,7 +668,7 @@ static gboolean export_selected_uid (icalcomponent *base, const gchar *uid,
     {
         uid_ical = icalcomponent_get_uid (c);
         if (uid_ical == NULL)
-            g_warning ("%s: component missing UID, skipping", G_STRFUNC);
+            g_warning ("component missing uid, skipping");
         else if (strcmp (uid, uid_ical) == 0)
         {
             d = icalcomponent_new_clone (c);
@@ -686,7 +678,7 @@ static gboolean export_selected_uid (icalcomponent *base, const gchar *uid,
     }
 
     if (key_found == FALSE)
-        g_warning ("%s: not found '%s' from Orage", G_STRFUNC, uid);
+        g_warning ("uid '%s' not found in Orage data", uid);
 
     return key_found;
 }
@@ -706,13 +698,13 @@ static gboolean export_selected (const gchar *file_name, const gchar *uids)
 
     if (xfce_str_is_empty (uids))
     {
-        g_warning ("%s: UID list is empty", G_STRFUNC);
+        g_warning ("uid list is empty");
         return FALSE;
     }
 
     if (ic_internal_file_open (&x_ical, &x_fical, file_name, FALSE, FALSE) == FALSE)
     {
-        g_warning ("%s: failed to create export file %s", G_STRFUNC, file_name);
+        g_warning ("failed to create export file '%s'", file_name);
         return FALSE;
     }
 
@@ -726,7 +718,7 @@ static gboolean export_selected (const gchar *file_name, const gchar *uids)
     {
         if (strlen (uid) < 5)
         {
-            g_warning ("%s: unknown appointment name %s", G_STRFUNC, uid);
+            g_warning ("invalid uid '%s'", uid);
             return FALSE;
         }
 
@@ -743,13 +735,12 @@ static gboolean export_selected (const gchar *file_name, const gchar *uids)
                 result &= export_selected_uid (ic_f_ical[i].ical, uid, x_ical);
             else
             {
-                g_warning ("%s: unknown foreign file number %d, %s", G_STRFUNC,
-                           i, uid);
+                g_warning ("unknown foreign file number %d for uid '%s'", i, uid);
                 return FALSE;
             }
         }
         else
-            g_warning ("%s: unknown uid type (%s)", G_STRFUNC, uid);
+            g_warning ("unknown uid type '%s'", uid);
 
         if (uid_end != NULL) /* we have more uids */
             uid = uid_end + 1; /* next uid starts here */
@@ -775,7 +766,7 @@ gboolean xfical_export_by_path (const gchar *file_name,
         return(export_selected(file_name, uids));
     }
     else {
-        g_critical ("%s: unknown app count %d", G_STRFUNC, type);
+        g_critical ("unknown export type %d", type);
         return(FALSE);
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Erkki Moorits
+ * Copyright (c) 2023-2026 Erkki Moorits
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,11 +35,12 @@ void orage_sync_ext_command (G_GNUC_UNUSED GTask *task,
 
     g_return_if_fail (sync_conf->command != NULL);
 
-    g_message ("sync '%s': '%s'", sync_conf->description, sync_conf->command);
+    g_message ("starting sync '%s' with command '%s'",
+               sync_conf->description, sync_conf->command);
 
     if (sync_conf->sync_active)
     {
-        g_debug ("%s sync already active", G_STRFUNC);
+        g_debug ("sync '%s' already active", sync_conf->description);
         return;
     }
 
@@ -49,7 +50,7 @@ void orage_sync_ext_command (G_GNUC_UNUSED GTask *task,
     {
         if (error != NULL)
         {
-            g_warning ("sync command '%s' failed with message '%s'",
+            g_warning ("sync command '%s' failed: %s",
                        sync_conf->command, error->message);
             g_clear_error (&error);
         }

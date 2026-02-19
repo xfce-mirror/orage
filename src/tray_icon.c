@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2025 Erkki Moorits
+ * Copyright (c) 2021-2026 Erkki Moorits
  * Copyright (c) 2006-2013 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2004-2006 Mickael Graf (korbinus at xfce.org)
  *
@@ -137,7 +137,7 @@ static gboolean format_line (PangoLayout *pl, GDateTime *gdt, const gchar *fmt,
         date_str = g_date_time_format (gdt, fmt);
         if (date_str == NULL)
         {
-            g_warning ("%s: g_date_time_format %s failed", G_STRFUNC, fmt);
+            g_warning ("g_date_time_format '%s' failed", fmt);
             return(FALSE);
         }
         else
@@ -350,14 +350,13 @@ static GdkPixbuf *orage_create_icon (void)
 
     if (pixbuf == NULL)
     {
-        g_warning ("%s: dynamic icon creation failed", G_STRFUNC);
+        g_warning ("dynamic icon creation failed");
         pixbuf = gtk_icon_theme_load_icon (icon_theme, ORAGE_APP_ID, 0,
                                            GTK_ICON_LOOKUP_USE_BUILTIN, &error);
     }
 
     if (pixbuf == NULL) {
-        g_warning ("%s: static icon creation failed, using default About icon",
-                   G_STRFUNC);
+        g_warning ("static icon creation failed, using default 'About' icon");
         /* dynamic icon also tries static before giving up */
         pixbuf = gtk_icon_theme_load_icon (icon_theme, "help-about", 0,
                                            GTK_ICON_LOOKUP_USE_BUILTIN, &error);
@@ -365,7 +364,11 @@ static GdkPixbuf *orage_create_icon (void)
 
     if (pixbuf == NULL)
     {
-        g_warning ("%s: couldn’t load icon '%s'", G_STRFUNC, error->message);
+        if (error)
+            g_warning ("failed to load icon: %s", error->message);
+        else
+            g_warning ("failed to load icon: unknown error");
+
         g_error_free (error);
     }
 

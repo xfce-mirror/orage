@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Erkki Moorits
+ * Copyright (c) 2021-2026 Erkki Moorits
  * Copyright (c) 2005-2013 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2004-2005 Mickael Graf (korbinus at xfce.org)
  *
@@ -780,7 +780,7 @@ static void duplicate_appointment(el_win *el)
     list_len = g_list_length(list);
     if (list_len > 0) {
         if (list_len > 1)
-            g_warning ("Copy: too many rows selected");
+            g_warning ("copy: too many rows selected (%d rows)", list_len);
         path = (GtkTreePath *)g_list_nth_data(list, 0);
         start_appt_win (TRUE, el, model, &iter, path);
     }
@@ -824,13 +824,17 @@ static void close_window(el_win *el)
          apptw_list != NULL;
          apptw_list = g_list_next(apptw_list)) {
         apptw = ORAGE_APPOINTMENT_WINDOW (apptw_list->data);
-        if (apptw) /* appointment window is still alive */
+        /* TODO1: check if apptw_list->data = NULL is valid, if not then is
+         * better solution to use g_return_if_fail (apptw != NULL);
+         * TODO2: duplicated code with orage-week-window::close_window()
+         */
+        if (apptw)
         {
-            /* not interested anymore */
+            /* Appointment window is still exists. Not interested anymore. */
             orage_appointment_window_set_event_list  (apptw, NULL);
         }
         else
-            g_warning ("%s: not null appt window", G_STRFUNC);
+            g_warning ("appointment window list contains NULL entry");
     }
     g_list_free(el->apptw_list);
 
@@ -1031,9 +1035,9 @@ static void delete_appointment(el_win *el)
 #endif
                 result = xfical_appt_del(uid);
                 if (result)
-                    g_message ("Removed: %s", uid);
+                    g_message ("removed '%s'", uid);
                 else
-                    g_warning ("Removal failed: %s", uid);
+                    g_warning ("removal failed '%s'", uid);
                 g_free(uid);
             }
         }
@@ -1110,7 +1114,7 @@ static void drag_data_get (GtkWidget *widget,
     g_list_free(list);
     if (result) {
         if (!gtk_selection_data_set_text(selection_data, result->str, -1))
-            g_warning ("%s: failed", G_STRFUNC);
+            g_warning ("failed to set selection text");
         g_string_free(result, TRUE);
     }
 }

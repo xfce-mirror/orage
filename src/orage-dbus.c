@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025 Erkki Moorits
+ * Copyright (c) 2025-2026 Erkki Moorits
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -136,7 +136,7 @@ static void on_method_call (G_GNUC_UNUSED GDBusConnection *connection,
 
     app = ORAGE_APPLICATION (user_data);
 
-    g_debug ("%s: '%s' called", G_STRFUNC, method_name);
+    g_debug ("handling D-Bus method '%s'", method_name);
 
     if (g_strcmp0 (method_name, ORAGE_DBUS_METHOD_LOAD_FILE) == 0)
     {
