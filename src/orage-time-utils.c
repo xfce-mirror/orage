@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025 Erkki Moorits
+ * Copyright (c) 2025-2026 Erkki Moorits
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -47,7 +47,7 @@ GDateTime *orage_calendar_get_date (GtkCalendar *cal,
     gdt = g_date_time_new_local (year, month, day, hh, mm, 0);
     if (gdt == NULL)
     {
-        g_error ("%s failed %04d-%02d-%02d %02d:%02d", G_STRFUNC,
+        g_error ("failed to create GDateTime for %04d-%02d-%02d %02d:%02d",
                  year, month, day, hh, mm);
     }
 
@@ -249,7 +249,7 @@ gint orage_get_first_weekday (void)
     else if (week_origin == 19971201) /* Monday */
         week_1stday = 1;
     else
-        g_warning ("Unknown value of _NL_TIME_WEEK_1STDAY");
+        g_warning ("unknown value of _NL_TIME_WEEK_1STDAY");
 
     week_start = (week_1stday + first_weekday - 1) % 7;
 
@@ -275,7 +275,7 @@ gint orage_get_first_weekday (void)
 
     if (week_start < 0 || week_start > 6)
     {
-        g_warning ("Whoever translated calendar:week_start:0 did so wrongly");
+        g_warning ("whoever translated calendar:week_start:0 did so wrongly");
         week_start = 0;
     }
 #endif
@@ -302,9 +302,7 @@ GDateTime *orage_icaltime_to_gdatetime (const gchar *icaltime)
          */
         if (strptime (icaltime, "%Y%m%d", &t) == NULL)
         {
-            g_warning ("%s: icaltime string '%s' conversion failed",
-                       G_STRFUNC, icaltime);
-
+            g_warning ("could not parse icaltime '%s'", icaltime);
             return NULL;
         }
 
@@ -313,9 +311,8 @@ GDateTime *orage_icaltime_to_gdatetime (const gchar *icaltime)
          */
         if (mktime (&t) == (time_t)-1)
         {
-            g_warning ("%s: failed %d %d %d",
-                       G_STRFUNC, t.tm_year, t.tm_mon, t.tm_mday);
-
+            g_warning ("mktime failed for date %04d-%02d-%02d",
+                       t.tm_year, t.tm_mon, t.tm_mday);
             return NULL;
         }
 
@@ -333,8 +330,8 @@ GDateTime *orage_icaltime_to_gdatetime (const gchar *icaltime)
             /* Report diagnostic information: date/time information is
              * corrupted.
              */
-            g_warning ("%s: trailing characters in icaltime '%s' ('%s')",
-                       G_STRFUNC, icaltime, ret);
+            g_warning ("unexpected trailing characters in icaltime '%s': '%s'",
+                       icaltime, ret);
         }
     }
 
@@ -383,8 +380,8 @@ GDateTime *orage_time_t_to_gdatetime (const time_t t, const gchar *tz_id)
     tz = g_time_zone_new_identifier (tz_id);
     if (tz == NULL)
     {
-        g_debug ("%s: failed to convert timezone '%s', using local timezone",
-                 G_STRFUNC, tz_id);
+        g_debug ("failed to convert timezone '%s', using local timezone",
+                 tz_id);
         tz = g_time_zone_new_local ();
     }
 

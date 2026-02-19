@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2025 Erkki Moorits
+ * Copyright (c) 2021-2026 Erkki Moorits
  * Copyright (c) 2005-2011 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2003-2005 Mickael Graf (korbinus at xfce.org)
  *
@@ -160,7 +160,7 @@ static guint orage_recurrence_type_to_day_of_week (short by_day)
 
         case ICAL_NO_WEEKDAY:
         default:
-            g_warning ("%s: invalid by_day value from RRULE", G_STRFUNC);
+            g_warning ("invalid by_day value from RRULE");
             return 0;
     }
 }
@@ -173,7 +173,8 @@ gboolean xfical_set_local_timezone(gboolean testing)
             utc_icaltimezone = icaltimezone_get_utc_timezone();
 
     if (!ORAGE_STR_EXISTS(g_par.local_timezone)) {
-        g_warning ("%s: empty timezone", G_STRFUNC);
+        g_warning ("local timezone is empty; falling back to 'floating' "
+                   "timezone");
         g_par.local_timezone = g_strdup("floating");
     }
 
@@ -182,8 +183,9 @@ gboolean xfical_set_local_timezone(gboolean testing)
         local_icaltimezone = utc_icaltimezone;
     }
     else if (strcmp(g_par.local_timezone,"floating") == 0) {
-        g_warning ("Default timezone set to floating. Do not use timezones when setting appointments, it does not make sense without proper local timezone");
-        return(TRUE); /* g_par.local_timezone = NULL */
+        g_warning ("using 'floating' timezone because no valid local timezone "
+                   "is configured");
+        return TRUE;
     }
     else
         local_icaltimezone = 
@@ -192,10 +194,8 @@ gboolean xfical_set_local_timezone(gboolean testing)
     if (local_icaltimezone == NULL)
     {
         if (testing == FALSE)
-        {
-            g_warning ("%s: builtin timezone '%s' not found", G_STRFUNC,
-                       g_par.local_timezone);
-        }
+            g_warning ("builtin timezone '%s' not found", g_par.local_timezone);
+
         return (FALSE);
     }
     return (TRUE); 
@@ -213,16 +213,17 @@ gboolean ic_internal_file_open(icalcomponent **p_ical
          * Closing must be cancelled since we are now opening the file. */
         g_source_remove(file_close_timer);
         file_close_timer = 0;
-        g_debug ("%s: canceling delayed close", G_STRFUNC);
+        g_debug ("cancelling delayed calendar file close because the file is "
+                 "being reopened");
     }
     if (*p_fical != NULL) {
         return(TRUE);
     }
     if (!ORAGE_STR_EXISTS(file_icalpath)) {
         if (test)
-            g_warning ("%s: file empty", G_STRFUNC);
+            g_warning ("calendar file path is empty");
         else
-            g_error ("%s: file empty", G_STRFUNC);
+            g_error ("calendar file path is empty");
 
         return(FALSE);
     }
@@ -231,7 +232,7 @@ gboolean ic_internal_file_open(icalcomponent **p_ical
     else 
         *p_fical = icalset_new_file(file_icalpath);
     if (*p_fical == NULL) {
-        g_warning ("%s: could not open ICAL file '%s': %s)", G_STRFUNC,
+        g_warning ("failed to open calendar file '%s': %s",
                    file_icalpath, g_strerror (errno));
         return(FALSE);
     }
@@ -244,15 +245,17 @@ gboolean ic_internal_file_open(icalcomponent **p_ical
         }
         if (cnt == 0) {
             if (test) { /* failed */
-                g_warning ("%s: no top level (VCALENDAR) component in "
-                           "calendar file %s", G_STRFUNC, file_icalpath);
+                g_warning ("no VCALENDAR component found in calendar file '%s'",
+                           file_icalpath);
                 return(FALSE);
             }
-        /* calendar missing, need to add one.  
-         * Note: According to standard rfc2445 calendar always needs to
-         *       contain at least one other component. So strictly speaking
-         *       this is not valid entry before adding an event or timezone
-         */
+            /* Calendar missing, need to add one.
+             * Note: According to standard rfc2445 calendar always needs to
+             *       contain at least one other component. So strictly speaking
+             *       this is not valid entry before adding an event or timezone
+             */
+            g_debug ("creating new VCALENDAR component in calendar file '%s'",
+                     file_icalpath);
             *p_ical = icalcomponent_vanew(ICAL_VCALENDAR_COMPONENT
                    , icalproperty_new_version("2.0")
                    , icalproperty_new_prodid("-//Xfce//Orage//EN")
@@ -263,16 +266,16 @@ gboolean ic_internal_file_open(icalcomponent **p_ical
         }
         else { /* VCALENDAR found */
             if (cnt > 1) {
-                g_warning ("%s: too many top level components in calendar "
-                           "file %s", G_STRFUNC , file_icalpath);
+                g_warning ("multiple top-level components (%d) found in "
+                           "calendar file '%s'", cnt, file_icalpath);
                 if (test) { /* failed */
                     return(FALSE);
                 }
             }
             if (test 
             && icalcomponent_isa(*p_ical) != ICAL_VCALENDAR_COMPONENT) {
-                g_critical ("%s: top level component is not VCALENDAR %s",
-                            G_STRFUNC, file_icalpath);
+                g_critical ("top-level component is not VCALENDAR in calendar "
+                            "file '%s'", file_icalpath);
                 return(FALSE);
             }
         }
@@ -297,7 +300,7 @@ gboolean xfical_file_open(gboolean foreign)
     if (ok)
     {
         if (g_stat(g_par.orage_file, &s) < 0) {
-            g_warning ("%s: stat of %s failed: %s", G_STRFUNC,
+            g_warning ("failed to stat file '%s': %s",
                        g_par.orage_file, g_strerror (errno));
             g_par.latest_file_change = (time_t)0;
         }
@@ -319,7 +322,7 @@ gboolean xfical_file_open(gboolean foreign)
             else {
                 /* store last access time */
                 if (g_stat(g_par.foreign_data[i].file, &s) < 0) {
-                    g_warning ("%s, stat of %s failed: %s", G_STRFUNC,
+                    g_warning ("failed to stat foreign file '%s': %s",
                                g_par.foreign_data[i].file, g_strerror (errno));
                     g_par.foreign_data[i].latest_file_change = (time_t)0;
                 }
@@ -346,7 +349,7 @@ static gboolean delayed_file_close (G_GNUC_UNUSED gpointer user_data)
         return(FALSE); /* closed already, nothing to do */
     icalset_free(ic_fical);
     ic_fical = NULL;
-    g_debug ("%s: closing ical file", G_STRFUNC);
+    g_debug ("closing iCal file");
     /* we only close file once, so end here */
     file_close_timer = 0;
 
@@ -359,22 +362,22 @@ void xfical_file_close(gboolean foreign)
     struct stat s;
 
     if (ic_fical == NULL)
-        g_critical ("%s: ic_fical is NULL", G_STRFUNC);
+        g_critical ("main iCal file handle is NULL");
     else {
         if (file_close_timer) { 
             /* We are closing main ical file and delayed close is in progress. 
              * Closing must be cancelled since we are now closing the file. */
             g_source_remove(file_close_timer);
             file_close_timer = 0;
-            g_debug ("%s: canceling delayed close", G_STRFUNC);
+            g_debug ("canceling delayed file close");
         }
         if (ic_file_modified || g_par.file_close_delay == 0) { /* close it now */
-            g_debug ("%s: closing file now", G_STRFUNC);
+            g_debug ("closing iCal file immediately");
             delayed_file_close(NULL);
             /* store last access time */
             if (g_stat(g_par.orage_file, &s) < 0) {
-                g_warning ("%s: stat of %s failed: %s", G_STRFUNC,
-                        g_par.orage_file, g_strerror (errno));
+                g_warning ("could not stat file '%s': %s", g_par.orage_file,
+                           g_strerror (errno));
                 g_par.latest_file_change = (time_t)0;
             }
             else {
@@ -382,7 +385,7 @@ void xfical_file_close(gboolean foreign)
             }
         }
         else { /* close it later (to save time) */
-            g_debug ("%s: closing file after %d seconds", G_STRFUNC,
+            g_debug ("scheduling iCal file close in %d seconds",
                      g_par.file_close_delay);
             file_close_timer = g_timeout_add_seconds(g_par.file_close_delay
                     , (GSourceFunc)delayed_file_close, NULL);
@@ -392,14 +395,14 @@ void xfical_file_close(gboolean foreign)
     if (foreign) 
         for (i = 0; i < g_par.foreign_count; i++) {
             if (ic_f_ical[i].fical == NULL)
-                g_warning ("%s: foreign fical is NULL", G_STRFUNC);
+                g_warning ("foreign iCal file handle is NULL");
             else {
                 icalset_free(ic_f_ical[i].fical);
                 ic_f_ical[i].fical = NULL;
                 /* store last access time */
                 if (g_stat(g_par.foreign_data[i].file, &s) < 0) {
-                    g_warning ("%s: stat of %s failed: %s", G_STRFUNC,
-                            g_par.foreign_data[i].file, g_strerror (errno));
+                    g_warning ("could not stat file '%s': %s",
+                               g_par.foreign_data[i].file, g_strerror (errno));
                     g_par.foreign_data[i].latest_file_change = (time_t)0;
                 }
                 else {
@@ -434,7 +437,7 @@ static icaltimezone *get_builtin_timezone(gchar *tz_loc)
     icaltimezone *l_icaltimezone = NULL;
 
     if (tz_loc[0] == '/') {
-        g_debug ("%s: evolution timezone fix %s", G_STRFUNC, tz_loc);
+        g_debug ("adjusting evolution-style timezone '%s'", tz_loc);
         new_str = g_strsplit(tz_loc, "/", 4);
         if (new_str[0] != NULL && new_str[1] != NULL && new_str[2] != NULL
         &&  new_str[3] != NULL)
@@ -459,8 +462,8 @@ struct icaltimetype ic_convert_to_timezone(struct icaltimetype t
         l_icaltimezone = get_builtin_timezone (tz_loc);
         if (l_icaltimezone == NULL)
         {
-            g_info ("%s: builtin timezone '%s' not found, conversion failed",
-                    G_STRFUNC, tz_loc);
+            g_debug ("skipping timezone conversion: builtin timezone '%s' not "
+                     "found", tz_loc);
         }
         tz = icaltime_convert_to_zone(t, l_icaltimezone);
     }
@@ -516,8 +519,8 @@ xfical_period ic_get_period(icalcomponent *c, gboolean local)
          ||  per.ikind == ICAL_VTIMEZONE_COMPONENT)
         p = NULL; /* does not exist for journal and timezone */
     else {
-        g_warning ("%s: unknown component type (%s)", G_STRFUNC,
-                   icalcomponent_get_uid(c));
+        g_warning ("unknown component type '%s'",
+                   icalcomponent_kind_to_string (per.ikind));
         p = NULL;
     }
     if (p != NULL) {
@@ -559,7 +562,15 @@ xfical_period ic_get_period(icalcomponent *c, gboolean local)
         if (local)
             per.ctime = convert_to_local_timezone(per.ctime, p2);
         else
-            per.ctime = ic_convert_to_timezone(per.ctime, p);
+        {
+            /* TODO/FIXME: Currently, ic_convert_to_timezone() is called with
+             * the (probably) wrong property (p) instead of p2 (COMPLETED
+             * property). This may lead to incorrect timezone conversion for
+             * per.ctime when local=FALSE. This is left unchanged until a proper
+             * test validates the behavior.
+             */
+            per.ctime = ic_convert_to_timezone (per.ctime, p);
+        }
     }
     else
         per.ctime = icaltime_null_time();
@@ -667,8 +678,8 @@ static struct icaltimetype convert_to_zone(struct icaltimetype t, gchar *tz)
             l_icaltimezone = get_builtin_timezone(tz);
             if (l_icaltimezone == NULL)
             {
-                g_warning ("%s: Built-in timezone '%s' not found - "
-                           "conversion failed", G_STRFUNC, tz);
+                g_debug ("builtin timezone '%s' not found; skipping conversion",
+                         tz);
             }
             else
                 wtime = icaltime_convert_to_zone(t, l_icaltimezone);
@@ -688,7 +699,11 @@ gint xfical_compare_times (xfical_appt *appt)
     struct icaldurationtype duration;
 
     if (appt->starttime == NULL)
-        g_error ("%s: null start time", G_STRFUNC);
+    {
+        g_warning ("start time is NULL for appointment '%s'",
+                   appt->title ? appt->title : "(no title)");
+        return -1;
+    }
 
     if (appt->use_duration) {
         stime = orage_gdatetime_to_icaltimetype (appt->starttime, appt->allDay);
@@ -704,7 +719,11 @@ gint xfical_compare_times (xfical_appt *appt)
     }
     else {
         if (appt->endtime == NULL)
-            g_error ("%s: null end time", G_STRFUNC);
+        {
+            g_warning ("end time is NULL for appointment '%s'",
+                       appt->title ? appt->title : "(no title)");
+            return 1;
+        }
 
         stime = orage_gdatetime_to_icaltimetype (appt->starttime, appt->allDay);
         etime = orage_gdatetime_to_icaltimetype (appt->endtime, appt->allDay);
@@ -1035,15 +1054,17 @@ static void appt_add_exception_internal(const xfical_appt *appt
             icalcomponent_add_property(icmp, icalproperty_new_exdate(wtime));
         else if (type == RDATE)
         {
-            /* Orage does not support rdate periods */
+            /* FIXME: Orage does not support RDATE periods */
             rdate.period = icalperiodtype_null_period();
             rdate.time = wtime;
             icalcomponent_add_property(icmp
                     , icalproperty_new_rdate(rdate));
         }
         else
-            g_warning ("%s: unknown exception type %d, ignoring", G_STRFUNC,
+        {
+            g_warning ("ignoring unknown exception type %d in appointment",
                        type);
+        }
     }
 }
 
@@ -1089,7 +1110,8 @@ static void appt_add_recur_internal (const xfical_appt *appt,
             add_interval = (appt->interval > 1);
             break;
         default:
-            g_warning ("%s: Unsupported freq", G_STRFUNC);
+            g_warning ("unsupported recurrence frequency value %d; recurrence "
+                       "rule will not be added", appt->freq);
             icalrecurrencetype_clear(&rrule);
     }
     if (add_interval) { /* not default, need to insert it */
@@ -1369,7 +1391,8 @@ static gchar *appt_add_internal (xfical_appt *appt, gboolean add, gchar *uid,
     else if (appt->type == XFICAL_TYPE_JOURNAL)
         ikind = ICAL_VJOURNAL_COMPONENT;
     else
-        g_critical ("%s: Unsupported Type", G_STRFUNC);
+        g_critical ("unsupported appointment type %d; component will not be "
+                    "created", appt->type);
 
     icmp = icalcomponent_vanew(ikind
            , icalproperty_new_uid(int_uid)
@@ -1439,12 +1462,15 @@ static gchar *appt_add_internal (xfical_appt *appt, gboolean add, gchar *uid,
             icalset_mark(ic_f_ical[i].fical);
         }
         else {
-            g_critical ("%s: unknown foreign file number %s", G_STRFUNC, uid);
+            g_critical ("invalid foreign file reference '%s'; component was "
+                        "not added", ext_uid);
+
             return(NULL);
         }
     }
-    else { /* note: we never update/add Archive file */ 
-        g_critical ("%s: unknown file type %s", G_STRFUNC, ext_uid);
+    else { /* note: we never update/add Archive file */
+        g_critical ("invalid UID prefix '%c' in '%s'; component was not added",
+                    ext_uid[0], ext_uid);
         return(NULL);
     }
     xfical_alarm_build_list_internal(FALSE);
@@ -1488,10 +1514,12 @@ static gboolean get_alarm_trigger(icalcomponent *ca,  xfical_appt *appt)
                 appt->alarm_related_start = TRUE;
         }
         else
-            g_warning ("%s: Can not process time triggers", G_STRFUNC);
+            g_warning ("absolute time triggers are not supported; alarm will "
+                       "be ignored");
     }
     else {
-        g_warning ("%s: Trigger missing. Ignoring alarm", G_STRFUNC);
+        g_warning ("alarm component is missing a TRIGGER property; alarm will "
+                   "be ignored");
         return(FALSE);
     }
     return(TRUE);
@@ -1527,7 +1555,7 @@ static void get_alarm_data_x(icalcomponent *ca,  xfical_appt *appt)
             appt->display_notify_timeout = i;
         }
         else {
-            g_info ("%s: unknown X property %s", G_STRFUNC, text);
+            g_info ("ignoring unsupported X-property '%s'", text);
         }
     }
 }
@@ -1542,7 +1570,7 @@ static void get_alarm_data(icalcomponent *ca,  xfical_appt *appt)
 
     p = icalcomponent_get_first_property(ca, ICAL_ACTION_PROPERTY);
     if (!p) {
-        g_warning ("%s: No ACTION in alarm. Ignoring this ALARM.", G_STRFUNC);
+        g_debug ("no ACTION property in alarm; ignoring this ALARM");
         return;
     }
     act = icalproperty_get_action(p);
@@ -1598,11 +1626,8 @@ static void get_alarm_data(icalcomponent *ca,  xfical_appt *appt)
             }
         }
     }
-    else { /* unknown alarm action */
-        g_warning ("%s: Unknown ACTION (%d) in alarm. Ignoring ALARM.",
-                   G_STRFUNC, act);
-        return;
-    }
+    else
+        g_warning ("unknown ACTION (%d) in alarm; ignoring this ALARM", act);
 }
 
 static void get_appt_alarm_from_icalcomponent(icalcomponent *c
@@ -1622,7 +1647,7 @@ static void get_appt_alarm_from_icalcomponent(icalcomponent *c
         if (!trg_processed) {
             trg_processed = TRUE;
             if (!get_alarm_trigger(ca, appt)) {
-                g_warning ("%s: Trigger missing. Ignoring alarm", G_STRFUNC);
+                /* Trigger missing. Ignoring alarm */
                 return;
             }
         }
@@ -1749,7 +1774,11 @@ static void ical_appt_get_rrule_internal (G_GNUC_UNUSED icalcomponent *c,
                         orage_recurrence_type_to_day_of_week (rrule.by_day[0]);
             }
             else
-                g_critical ("%s: unknown weekday for %s", G_STRFUNC, appt->uid);
+            {
+                g_warning ("monthly recurrence rule incomplete for "
+                           "appointment '%s'",
+                           appt->uid ? appt->uid : "(no uid)");
+            }
 
             break;
         case ICAL_YEARLY_RECURRENCE:
@@ -1768,6 +1797,8 @@ static void ical_appt_get_rrule_internal (G_GNUC_UNUSED icalcomponent *c,
             appt->freq = XFICAL_FREQ_HOURLY;
             break;
         default:
+            g_warning ("unsupported frequency %d for '%s'", rrule.freq,
+                       appt->uid ? appt->uid : "(no uid)");
             appt->freq = XFICAL_FREQ_NONE;
             break;
     }
@@ -1818,8 +1849,9 @@ static void ical_appt_get_rrule_internal (G_GNUC_UNUSED icalcomponent *c,
                 case ICAL_NO_WEEKDAY:
                     break;
                 default:
-                    g_critical ("%s: unknown weekday %s: %d/%d (%x)", G_STRFUNC,
-                                appt->uid, rrule.by_day[i], i, rrule.by_day[i]);
+                    g_warning ("unknown weekday %d in recurrence for '%s'",
+                               rrule.by_day[i],
+                               appt->uid ? appt->uid : "(no uid)");
                     break;
             }
         }
@@ -1903,7 +1935,7 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
     else if (icalcomponent_isa(c) == ICAL_VJOURNAL_COMPONENT)
         appt->type = XFICAL_TYPE_JOURNAL;
     else {
-        g_info ("%s: unknown component", G_STRFUNC);
+        g_debug ("unknown iCal component, skipping");
         return(FALSE);
     }
         /*********** Defaults ***********/
@@ -1986,7 +2018,7 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
                     /* Ignore, Orage does not support this now. */
                     break;
                 }
-                g_info ("%s: unknown X property %s", G_STRFUNC, text);
+                g_debug ("unknown X property '%s', ignoring", text);
                 break; /* ICAL_X_PROPERTY: */
             case ICAL_PRIORITY_PROPERTY:
                 appt->priority = icalproperty_get_priority(p);
@@ -2005,10 +2037,7 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
             case ICAL_EXDATE_PROPERTY:
                 text = icalproperty_get_value_as_string(p);
                 if (strlen(text) > 16)
-                {
-                    g_warning ("%s: invalid EXDATE %s. Ignoring",
-                               G_STRFUNC, text);
-                }
+                    g_warning ("invalid EXDATE '%s', ignoring", text);
                 else {
                     gdt = orage_icaltime_to_gdatetime (text);
                     excp = xfical_exception_new (gdt, FALSE, EXDATE);
@@ -2021,17 +2050,13 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
                 rdate = icalproperty_get_rdate(p);
                 /* Orage does not support rdate periods */
                 if (!icalperiodtype_is_null_period(rdate.period)) {
-                    g_message ("%s: Orage does not support rdate periods, but "
-                               "only simple rdate. Ignoring %s", G_STRFUNC,
-                               (char *)icalproperty_get_value_as_string(p));
+                    g_debug ("unsupported rdate period '%s', ignoring",
+                             icalproperty_get_value_as_string (p));
                 }
                 else {
                     text = icalproperty_get_value_as_string(p);
                     if (strlen(text) > 16)
-                    {
-                        g_warning ("%s: invalid RDATE %s. Ignoring", G_STRFUNC,
-                                   text);
-                    }
+                        g_warning ("invalid RDATE '%s', ignoring", text);
                     else {
                         gdt = orage_icaltime_to_gdatetime (text);
                         excp = xfical_exception_new (gdt, FALSE, RDATE);
@@ -2052,8 +2077,8 @@ static gboolean get_appt_from_icalcomponent(icalcomponent *c, xfical_appt *appt)
             case ICAL_RECURRENCEID_PROPERTY:
                 break;
             default:
-                g_info ("%s: unknown property %s", G_STRFUNC,
-                        icalproperty_get_property_name (p));
+                g_debug ("unknown property '%s', ignoring",
+                         icalproperty_get_property_name (p));
                 break;
         }
     } /* Property for loop */
@@ -2201,12 +2226,12 @@ xfical_appt *xfical_appt_get(const gchar *uid)
                 appt->readonly = g_par.foreign_data[i].read_only;
         }
         else {
-            g_critical ("%s: unknown foreign file number %s", G_STRFUNC, uid);
+            g_critical ("unknown foreign file number '%s'", uid);
             return(NULL);
         }
     }
     else {
-        g_critical ("%s: unknown file type %s", G_STRFUNC, uid);
+        g_critical ("unknown file type '%s'", uid);
         return(NULL);
     }
     return(appt);
@@ -2255,7 +2280,7 @@ gboolean xfical_appt_mod (gchar *ical_uid, xfical_appt *appt)
     int i;
 
     if (ical_uid == NULL) {
-        g_message ("%s: Got NULL uid. doing nothing", G_STRFUNC);
+        g_message ("got NULL uid; nothing done");
         return(FALSE);
     }
     int_uid = ical_uid+4;
@@ -2266,18 +2291,17 @@ gboolean xfical_appt_mod (gchar *ical_uid, xfical_appt *appt)
         if (i < g_par.foreign_count && ic_f_ical[i].ical != NULL)
             base = ic_f_ical[i].ical;
         else {
-            g_critical ("%s: unknown foreign file number %s", G_STRFUNC,
-                        ical_uid);
+            g_critical ("unknown foreign file number '%s'", ical_uid);
             return(FALSE);
         }
         if (g_par.foreign_data[i].read_only) {
-            g_message ("%s: foreign file %s is READ only. Not modified.",
-                       G_STRFUNC, g_par.foreign_data[i].file);
+            g_debug ("foreign file '%s' is READ only; not modified",
+                     g_par.foreign_data[i].file);
             return(FALSE);
         }
     }
-    else { /* note: we never update/add Archive file */ 
-        g_critical ("%s: unknown file type %s", G_STRFUNC, ical_uid);
+    else { /* note: we never update/add Archive file */
+        g_critical ("unknown file type '%s'; cannot modify", ical_uid);
         return(FALSE);
     }
     for (c = icalcomponent_get_first_component(base, ICAL_ANY_COMPONENT); 
@@ -2293,7 +2317,7 @@ gboolean xfical_appt_mod (gchar *ical_uid, xfical_appt *appt)
         }
     } 
     if (!key_found) {
-        g_warning ("%s: uid %s not found. Doing nothing", G_STRFUNC, ical_uid);
+        g_warning ("UID '%s' not found; nothing done", ical_uid);
         return(FALSE);
     }
 
@@ -2309,9 +2333,16 @@ gboolean xfical_appt_del (gchar *ical_uid)
     int i;
 
     if (ical_uid == NULL) {
-        g_warning ("%s: Got NULL uid. doing nothing", G_STRFUNC);
+        g_warning ("cannot delete appointment: UID is NULL");
         return(FALSE);
     }
+
+    if (strlen (ical_uid) < 4)
+    {
+        g_warning ("invalid UID format '%s'", ical_uid);
+        return FALSE;
+    }
+
     int_uid = ical_uid+4;
     if (ical_uid[0] == 'O') {
         base = ic_ical;
@@ -2319,23 +2350,22 @@ gboolean xfical_appt_del (gchar *ical_uid)
     }
     else if (ical_uid[0] == 'F') {
         sscanf(ical_uid, "F%02d", &i);
-        if (i < g_par.foreign_count && ic_f_ical[i].ical != NULL) {
+        if ((i < g_par.foreign_count) && (ic_f_ical[i].ical != NULL)) {
             base = ic_f_ical[i].ical;
             fbase = ic_f_ical[i].fical;
         }
         else {
-            g_critical ("%s, unknown foreign file number %s",
-                        G_STRFUNC, ical_uid);
+            g_critical ("invalid foreign calendar ID '%s'", ical_uid);
             return(FALSE);
         }
         if (g_par.foreign_data[i].read_only) {
-            g_warning ("%s: foreign file %s is READ only. Not modified",
-                       G_STRFUNC, g_par.foreign_data[i].file);
+            g_warning ("cannot delete appointment: foreign calendar file '%s' "
+                       "is read-only", g_par.foreign_data[i].file);
             return(FALSE);
         }
     }
     else { /* note: we never update/add Archive file */ 
-        g_critical ("%s: unknown file type %s", G_STRFUNC, ical_uid);
+        g_critical ("unknown calendar type in UID '%s'", ical_uid);
         return(FALSE);
     }
 
@@ -2350,8 +2380,9 @@ gboolean xfical_appt_del (gchar *ical_uid)
             ic_file_modified = TRUE;
             return(TRUE);
         }
-    } 
-    g_warning ("%s: uid %s not found. Doing nothing", G_STRFUNC, ical_uid);
+    }
+
+    g_warning ("appointment with UID '%s' not found", ical_uid);
     return(FALSE);
 }
 
@@ -2548,7 +2579,7 @@ static alarm_struct *process_alarm_trigger(icalcomponent *c
 
     p = icalcomponent_get_first_property(ca, ICAL_TRIGGER_PROPERTY);
     if (!p) {
-        g_warning ("%s: Trigger not found", G_STRFUNC);
+        g_warning ("alarm component has no TRIGGER property");
         return(NULL);
     }
     trg = icalproperty_get_trigger(p);
@@ -2592,10 +2623,10 @@ static alarm_struct *process_alarm_trigger(icalcomponent *c
 
     if (!trg_active 
     && (p = icalcomponent_get_first_property(c, ICAL_RRULE_PROPERTY)) != 0) { 
-        /*
+#if 0
 icalproperty *exdate;
 struct icaltimetype exdatetime;
-         */
+#endif
         /* check recurring EVENTs */
         dtstart_zone = build_excluded_list_dtstart(c);
         build_excluded_list(&excluded_list, c, dtstart_zone);
@@ -2656,14 +2687,13 @@ struct icaltimetype exdatetime;
         rdate_period = icalproperty_get_rdate(rdate);
         /* we only support normal times (not periods etc) */
         if (!icalperiodtype_is_null_period(rdate_period.period)) {
-            g_message ("%s: Orage does not support rdate periods, but only "
-                       "simple rdate. Ignoring %s", G_STRFUNC,
-                       (char *)icalproperty_get_value_as_string(rdate));
+            g_message ("RDATE periods are not supported, ignoring '%s'",
+                       (char *)icalproperty_get_value_as_string (rdate));
             continue;
         }
 
-        g_debug ("%s: found RDATE exception in alarm handling (%s)",
-                 G_STRFUNC, icalproperty_get_value_as_string(rdate));
+        g_debug ("found RDATE exception in alarm handling '%s'",
+                 icalproperty_get_value_as_string (rdate));
 
         if (icaltime_is_null_time(rdate_period.time))
             continue;
@@ -2697,10 +2727,10 @@ struct icaltimetype exdatetime;
                 /* it is earlier than our previous alarm, so we use this */
                     next_alarm_time = rdate_alarm_time;
                 }
-            /*
+#if 0
             }
             c->property_iterator = property_iterator;
-            */
+#endif
         }
     }
 
@@ -2750,14 +2780,14 @@ struct icaltimetype exdatetime;
 static void process_alarm_data(icalcomponent *ca, alarm_struct *new_alarm)
 {
     xfical_appt *appt;
-    /*
+#if 0
     icalproperty *p;:
     enum icalproperty_action act;
     icalattach *attach = NULL;
     struct icaldurationtype duration;
     char *text;
     int i;
-    */
+#endif
 
     appt = xfical_appt_alloc();
     get_alarm_data(ca, appt);
@@ -2767,11 +2797,11 @@ static void process_alarm_data(icalcomponent *ca, alarm_struct *new_alarm)
         new_alarm->display_orage = appt->display_alarm_orage;
         new_alarm->display_notify = appt->display_alarm_notify;
         new_alarm->notify_timeout = appt->display_notify_timeout;
-        /* FIXME: use real alarm data */
-        /* 
+#if 0
+        /* FIXME: use real alarm data */  
         if (ORAGE_STR_EXISTS(appt->note))
             new_alarm->description = orage_process_text_commands(appt->note);
-            */
+#endif
     }
     else if (appt->sound_alarm) {
         new_alarm->audio = appt->sound_alarm;
@@ -2797,7 +2827,7 @@ static void process_alarm_data(icalcomponent *ca, alarm_struct *new_alarm)
 #if 0
     p = icalcomponent_get_first_property(ca, ICAL_ACTION_PROPERTY);
     if (!p) {
-        g_warning ("%s: No ACTION in alarm. Ignoring this ALARM", G_STRFUNC);
+        g_warning ("alarm component has no ACTION property, ignoring alarm");
         return;
     }
     act = icalproperty_get_action(p);
@@ -2826,7 +2856,7 @@ static void process_alarm_data(icalcomponent *ca, alarm_struct *new_alarm)
                 new_alarm->notify_timeout = i;
             }
             else {
-                g_info ("%s: unknown X property %s", G_STRFUNC, text);
+                g_debug ("ignoring unknown X property '%s'", text);
             }
         }
     }
@@ -2865,8 +2895,7 @@ static void process_alarm_data(icalcomponent *ca, alarm_struct *new_alarm)
         }
     }
     else {
-        g_warning ("%s: Unknown ACTION (%d) in alarm. Ignoring ALARM",
-                   G_STRFUNC, act);
+        g_warning ("Unsupported alarm ACTION type %d", act);
         return;
     }
 #endif
@@ -2923,15 +2952,15 @@ static void xfical_alarm_build_list_internal_real(gboolean first_list_today
     }  /* COMPONENT */
     if (first_list_today) {
         if (strcmp(file_type, "O00.") == 0)
-            g_message ("Created alarm list for main Orage file");
+            g_message ("created alarm list for main Orage file");
         else 
-            g_message ("Created alarm list for foreign file: %s (%s)",
+            g_message ("created alarm list for foreign file: %s (%s)",
                        file_name, file_type);
 
-        g_message ("Added %d alarms. Processed %d events.", cnt_alarm_add,
+        g_message ("added %d alarms. Processed %d events.", cnt_alarm_add,
                    cnt_event);
 
-        g_message ("Found %d alarms of which %d are active. "
+        g_message ("found %d alarms of which %d are active. "
                    "(Searched %d recurring alarms.)", cnt_alarm, cnt_act_alarm,
                    cnt_repeat);
     }
@@ -3017,7 +3046,7 @@ static xfical_appt *xfical_appt_get_next_on_day_internal (const gchar *a_day
         else if (type == XFICAL_TYPE_JOURNAL)
             ikind = ICAL_VJOURNAL_COMPONENT;
         else
-            g_critical ("%s: Unsupported Type", G_STRFUNC);
+            g_warning ("unsupported event type %d", type);
 
         ci = icalcomponent_begin_component(base, ikind);
     }
@@ -3078,9 +3107,11 @@ static xfical_appt *xfical_appt_get_next_on_day_internal (const gchar *a_day
     }
     if (date_found) {
         if ((uid = (char *)icalcomponent_get_uid(c)) == NULL) {
-            g_critical ("%s: File %s has component without UID. File is "
-                        "either corrupted or not compatible with Orage, "
-                        "skipping this file", G_STRFUNC, file_type);
+            /* File is either corrupted or not compatible with Orage, skipping
+             * this file.
+             */
+            g_critical ("component without UID in calendar file '%s'",
+                        file_type);
             return(0);
         }
         appt = appt_get_any(uid, base, file_type);
@@ -3134,13 +3165,12 @@ xfical_appt *xfical_appt_get_next_on_day (GDateTime *gdt, gboolean first,
         }
         else
         {
-            g_critical ("%s: unknown foreign file number %s", G_STRFUNC,
-                        file_type);
+            g_critical ("unknown foreign file number '%s'", file_type);
             appt = NULL;
         }
     }
     else {
-        g_critical ("%s: unknown file type", G_STRFUNC);
+        g_critical ("unknown file type '%s'", file_type);
         appt = NULL;
     }
 
@@ -3598,7 +3628,7 @@ void xfical_mark_calendar_recur(GtkCalendar *gtkcal, const xfical_appt *appt)
     else if (appt->type == XFICAL_TYPE_JOURNAL)
         ikind = ICAL_VJOURNAL_COMPONENT;
     else
-        g_critical ("%s: Unsupported Type", G_STRFUNC);
+        g_critical ("unsupported appointment type %d", appt->type);
 
     icmp = icalcomponent_vanew(ikind
                , icalproperty_new_uid("RECUR_TEST")
@@ -3786,7 +3816,7 @@ static void xfical_get_each_app_within_time_internal (const gchar *a_day,
     else if (type == XFICAL_TYPE_JOURNAL)
         ikind = ICAL_VJOURNAL_COMPONENT;
     else
-        g_critical ("%s: Unsupported Type", G_STRFUNC);
+        g_critical ("unsupported appointment type %d", type);
 
     data1.list = data;
     data1.file_type = file_type;
@@ -3814,8 +3844,9 @@ static void xfical_get_each_app_within_time_internal (const gchar *a_day,
             c2 = icalcomponent_new_clone(c);
             p = icalcomponent_get_first_property(c2, ICAL_DTSTART_PROPERTY);
             start = icalproperty_get_dtstart(p);
-            g_debug ("%s: Adjusting temporarily old DTSTART time %d", G_STRFUNC,
-                     start.year);
+            const char *uid = icalcomponent_get_uid(c);
+            g_debug ("temporarily adjusting old DTSTART year %d for "
+                     "appointment UID '%s'", start.year, uid ? uid : "unknown");
             start.year = 1970;
             icalproperty_set_dtstart(p, start);
             icalcomponent_foreach_recurrence(c2, asdate, aedate
@@ -3840,6 +3871,12 @@ void xfical_get_each_app_within_time (GDateTime *a_day, const gint days,
     gint i;
     gchar *str;
 
+    if (file_type == NULL)
+    {
+        g_warning ("NULL file_type passed");
+        return;
+    }
+
     str = orage_gdatetime_to_icaltime (a_day, TRUE);
 
     if (file_type[0] == 'O') {
@@ -3855,16 +3892,16 @@ void xfical_get_each_app_within_time (GDateTime *a_day, const gint days,
     else if (file_type[0] == 'F') {
         sscanf(file_type, "F%02d", &i);
         if (i < g_par.foreign_count && ic_f_ical[i].ical != NULL)
-            xfical_get_each_app_within_time_internal(str
-                    , days, type, ic_f_ical[i].ical, file_type, data);
-         else {
-             g_critical ("%s: unknown foreign file number %s",
-                         G_STRFUNC, file_type);
-         }
+        {
+            xfical_get_each_app_within_time_internal (str, days, type,
+                                                      ic_f_ical[i].ical,
+                                                      file_type, data);
+        }
+        else
+            g_warning ("unknown foreign calendar index '%s'", file_type);
     }
-    else {
-        g_critical ("%s: unknown file type", G_STRFUNC);
-    }
+    else
+        g_warning ("unknown calendar file type '%s'", file_type);
 
     g_free (str);
 }
@@ -3955,8 +3992,7 @@ static xfical_appt *xfical_appt_get_next_with_string_internal (
         return(NULL);
     if (first) {
         if (!g_file_get_contents(search_file, &text, &text_len, NULL)) {
-            g_critical ("%s: Could not open Orage ical file (%s)",
-                        G_STRFUNC, search_file);
+            g_critical ("could not open Orage iCal file '%s'", search_file);
             return(NULL);
         }
         text_upper = g_utf8_strup(text, -1);
@@ -3975,18 +4011,18 @@ static xfical_appt *xfical_appt_get_next_with_string_internal (
             end = text+text_len;
             beg = find_next(text, end, "\nBEGIN:");
             upper_text = FALSE;
-            g_message ("%s: Can not do case independent comparison "
-                       "(%" G_GSIZE_FORMAT "/%zu)", G_STRFUNC, text_len,
-                       strlen(text_upper));
+            g_message ("cannot do case-insensitive comparison "
+                       "(%" G_GSIZE_FORMAT "/%zu)", text_len,
+                       strlen (text_upper));
         }
         if (!beg) {
         /* the file can actually be empty and not have any events, so this
            may be quite ok */
             if (text_len > 100)
             {
-                g_message ("%s: Could not find initial BEGIN:V-type from "
-                           "Orage ical file (%s). Maybe file is empty.",
-                           G_STRFUNC, search_file);
+                g_critical ("could not find initial BEGIN:V-type in Orage "
+                            "iCal file '%s'. The file may be empty.",
+                            search_file);
             }
             return(NULL);
         }
@@ -4033,13 +4069,14 @@ static xfical_appt *xfical_appt_get_next_with_string_internal (
              */
             beg = find_prev(beg, cur, "\nBEGIN:");
             if (!beg) {
-                g_critical ("%s: BEGIN:V-type not found %s", G_STRFUNC, str);
+                g_critical ("BEGIN:V-type not found while searching for '%s'",
+                            str);
                 search_done = TRUE;
             }
             else {
                 uid = g_strstr_len(beg, end-beg, "UID:");
                 if (!uid) {
-                    g_warning ("%s: UID not found %s", G_STRFUNC, str);
+                    g_warning ("UID not found while searching for '%s'", str);
                     search_done = TRUE;
                 }
                 else {
@@ -4053,13 +4090,12 @@ static xfical_appt *xfical_appt_get_next_with_string_internal (
                     else
                         sscanf(uid, "UID:%sXFICAL_UID_LEN", ical_uid);
                     if (strlen(ical_uid) > XFICAL_UID_LEN-2) {
-                        g_critical ("%s: too long UID %s", G_STRFUNC, ical_uid);
+                        g_critical ("too long UID '%s'", ical_uid);
                         return(NULL);
                     }
                     appt = appt_get_any(ical_uid, base, file_type);
                     if (!appt) {
-                        g_warning ("%s: UID not found in ical file %s",
-                                   G_STRFUNC, ical_uid);
+                        g_warning ("UID not found in iCal file '%s'", ical_uid);
                         search_done = TRUE;
                     }
                     else {
@@ -4089,8 +4125,8 @@ static xfical_appt *xfical_appt_get_next_with_string_internal (
                         }
                         beg = find_next(uid, end, "\nEND:");
                         if (!beg) {
-                            g_critical ("%s: END:V-type not found %s",
-                                        G_STRFUNC, str);
+                            g_critical ("END:V-type not found while searching "
+                                        "for '%s'", str);
                             search_done = TRUE;
                         }
                         else {
@@ -4105,7 +4141,7 @@ static xfical_appt *xfical_appt_get_next_with_string_internal (
     g_free(text);
     g_free(text_upper);
     if (!search_done) {
-        g_critical ("%s: illegal ending %s", G_STRFUNC, str);
+        g_critical ("unexpected end of search for '%s'", str);
     }
     return(NULL);
 }
@@ -4132,13 +4168,12 @@ xfical_appt *xfical_appt_get_next_with_string (const gchar *str,
             return(xfical_appt_get_next_with_string_internal(str, first
                     , g_par.foreign_data[i].file, ic_f_ical[i].ical, file_type));
         else {
-            g_critical ("%s: unknown foreign file number %s",
-                        G_STRFUNC, file_type);
+            g_critical ("unknown foreign file number '%s'", file_type);
             return(NULL);
         }
     }
     else {
-        g_critical ("%s: unknown file type", G_STRFUNC);
+        g_critical ("unknown file type for xfical search");
         return(NULL);
     }
 }
@@ -4472,14 +4507,14 @@ GList *o_cal_component_list_from_file (GFile *file)
             /* We ignore TIMEZONE component; Orage only uses internal timezones
              * from libical.
              */
-            g_warning ("unknown component %s %s",
+            g_warning ("unknown component '%s' '%s'",
                        i_cal_component_kind_to_string (kind), ical_file_name);
         }
     }
 
     if (list == NULL)
     {
-        g_warning ("no valid ICAL components found");
+        g_warning ("no valid iCal components found");
         return NULL;
     }
 
@@ -4623,8 +4658,8 @@ xfical_type o_cal_component_get_type (OrageCalendarComponent *ocal_comp)
             return XFICAL_TYPE_JOURNAL;
 
         default:
-            g_warning ("%s: Unknown ICalComponentKind", G_STRFUNC);
-            return (xfical_type)-1;
+            g_warning ("unsupported iCal component type %d", kind);
+            return XFICAL_TYPE_UNKNOWN;
     }
 }
 

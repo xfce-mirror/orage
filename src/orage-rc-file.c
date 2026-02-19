@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022-2023 Erkki Moorits
+ * Copyright (c) 2022-2026 Erkki Moorits
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -66,15 +66,15 @@ OrageRc *orage_rc_file_open (const gchar *fpath, const gboolean read_only)
     GKeyFile *grc;
     GError *error = NULL;
 
-    g_debug ("%s: fpath='%s', %s", G_STRFUNC, fpath, read_only ? "RO" : "RW");
+    g_debug ("opening RC file '%s' (%s)", fpath, read_only ? "RO" : "RW");
 
     grc = g_key_file_new ();
     if (g_key_file_load_from_file (grc, fpath, G_KEY_FILE_KEEP_COMMENTS, &error))
         orc = orage_rc_new (grc, fpath, read_only);
     else
     {
-        g_warning ("Unable to open RC file (%s). Creating it. (%s)", fpath,
-                   error->message);
+        g_warning ("could not open RC file '%s', creating new one (%s)", fpath,
+                    error->message);
         g_clear_error (&error);
         g_key_file_free (grc);
         orc = orage_rc_file_new (fpath);
@@ -89,15 +89,14 @@ OrageRc *orage_rc_file_new (const gchar *fpath)
     GKeyFile *grc;
     GError *error = NULL;
 
-    g_debug ("%s: fpath='%s'", G_STRFUNC, fpath);
+    g_debug ("creating new RC file '%s'", fpath);
 
     grc = g_key_file_new ();
     if (g_file_set_contents (fpath, "#Created by Orage", -1, &error))
         orc = orage_rc_new (grc, fpath, FALSE);
     else
     {
-        g_warning ("Unable to create RC file (%s). (%s)", fpath,
-                   error->message);
+        g_warning ("could not create RC file '%s' (%s)", fpath, error->message);
         g_key_file_free (grc);
         g_error_free (error);
     }
@@ -113,19 +112,19 @@ void orage_rc_file_close (OrageRc *orc)
 
     if (orc == NULL)
     {
-        g_debug ("%s: closing empty file.", G_STRFUNC);
+        g_debug ("rc file close called with NULL");
         return;
     }
 
-    g_debug ("%s: close='%s'", G_STRFUNC, orc->file_name);
+    g_debug ("closing rc file '%s'", orc->file_name);
 
     if (orc->read_only == FALSE)
     {
-        g_debug ("%s: saving content='%s'", G_STRFUNC, orc->file_name);
+        g_debug ("saving rc file '%s'", orc->file_name);
         if (g_key_file_save_to_file (orc->rc, orc->file_name, &error) == FALSE)
         {
-            g_warning ("%s: File save failed. RC file (%s). (%s)",
-                       G_STRFUNC, orc->file_name, error->message);
+            g_warning ("failed to save rc file '%s': %s", orc->file_name,
+                       error ? error->message : "unknown error");
             g_error_free (error);
         }
     }
@@ -150,8 +149,9 @@ void orage_rc_del_group (OrageRc *orc, const gchar *grp)
 
     if (!g_key_file_remove_group (orc->rc, grp, &error))
     {
-        g_debug ("%s: Group remove failed. RC file (%s). group (%s) (%s)",
-                 G_STRFUNC, orc->file_name, grp, error->message);
+        g_warning ("failed to remove group '%s' from rc file '%s': %s",
+                   grp, orc->file_name,
+                   error ? error->message : "unknown error");
         g_error_free (error);
     }
 }
@@ -180,9 +180,8 @@ gchar *orage_rc_get_str (OrageRc *orc, const gchar *key, const gchar *def)
     if (!ret && error)
     {
         ret = g_strdup (def);
-        g_debug ("%s: str (%s) group (%s) in RC file (%s) not found, "
-                 "using default (%s)", G_STRFUNC, key, orc->cur_group,
-                 orc->file_name, ret);
+        g_debug ("str '%s' in group '%s' of rc file '%s' not found, using "
+                 "default '%s'", key, orc->cur_group, orc->file_name, ret);
         
         g_error_free (error);
     }
@@ -204,9 +203,9 @@ gint orage_rc_get_int (OrageRc *orc, const gchar *key, const gint def)
     if (!ret && error)
     {
         ret = def;
-        g_debug ("%s: str (%s) group (%s) in RC file (%s) not found, "
-                 "using default (%d)", G_STRFUNC, key, orc->cur_group,
-                 orc->file_name, ret);
+        g_debug ("key '%s' in group '%s' of RC file '%s' not found, using "
+                 "default %d",
+                 key, orc->cur_group, orc->file_name, ret);
         g_error_free (error);
     }
 
@@ -227,9 +226,9 @@ gboolean orage_rc_get_bool (OrageRc *orc, const gchar *key, const gboolean def)
     if (!ret && error)
     {
         ret = def;
-        g_debug ("%s: str (%s) group (%s) in RC file (%s) not found, "
-                 "using default (%s)", G_STRFUNC, key, orc->cur_group,
-                 orc->file_name, ret ? "TRUE" : "FALSE");
+        g_debug ("key '%s' in group '%s' of RC file '%s' not found, using "
+                 "default %s", key, orc->cur_group, orc->file_name,
+                 ret ? "TRUE" : "FALSE");
         g_error_free (error);
     }
 
@@ -252,9 +251,8 @@ GDateTime *orage_rc_get_gdatetime (OrageRc *orc, const gchar *key,
     if ((ret == NULL) && error)
     {
         gdt = def ? g_date_time_ref (def) : NULL;
-        g_debug ("%s: str (%s) group (%s) in RC file (%s) not found, "
-                 "using default", G_STRFUNC, key, orc->cur_group,
-                 orc->file_name);
+        g_debug ("key '%s' in group '%s' of RC file '%s' not found, using "
+                 "default", key, orc->cur_group, orc->file_name);
         g_error_free (error);
     }
     else

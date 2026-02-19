@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Erkki Moorits
+ * Copyright (c) 2021-2026 Erkki Moorits
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -85,7 +85,7 @@ void orage_css_set_theme (void)
     file = g_build_filename (xfce_get_homedir (), ".themes",
                              ORAGE_CSS_VERSION, ORAGE_CSS_NAME, NULL);
 
-    g_debug ("%s: trying default file='%s'", G_STRFUNC, file);
+    g_debug ("loading CSS theme from '%s'", file);
 
     if (g_file_test (file, G_FILE_TEST_EXISTS) == FALSE)
     {
@@ -95,8 +95,8 @@ void orage_css_set_theme (void)
 
         if ((files == NULL) || (files[0] == NULL))
         {
-            g_warning ("Theme '" ORAGE_CSS_VERSION "/" ORAGE_CSS_NAME
-                       "' is not found anywhere in themes directories");
+            g_warning ("CSS theme '" ORAGE_CSS_VERSION "/" ORAGE_CSS_NAME
+                       "' not found in themes directories");
             return;
         }
 
@@ -111,7 +111,7 @@ void orage_css_set_theme (void)
     gtk_css_provider_load_from_path (provider, file, NULL);
 
     if (errors->str[0])
-        g_warning ("Failed to parse CSS file '%s'", errors->str);
+        g_warning ("failed to parse CSS file '%s': %s", file, errors->str);
 
     g_string_free (errors, TRUE);
     g_free (file);

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022-2023 Erkki Moorits
+ * Copyright (c) 2022-2026 Erkki Moorits
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -48,7 +48,7 @@ xfical_exception *xfical_exception_new (GDateTime *gdt,
     if (orage_is_debug_logging_enabled ())
     {
         time = orage_gdatetime_to_i18_time (gdt, FALSE);
-        g_debug ("  NEW exception: %p, refcount=%d, gdt=%p, time='%s'",
+        g_debug ("NEW exception: %p, refcount=%d, gdt=%p, time='%s'",
                  (void *)except, except->ref_count, (void *)gdt, time);
         g_free (time);
     }
@@ -70,7 +70,7 @@ xfical_exception *xfical_exception_ref (xfical_exception *except)
     {
         gdt = except->time;
         time = orage_gdatetime_to_i18_time (gdt, FALSE);
-        g_debug ("  REF exception: %p, refcount=%d, gdt=%p, time='%s'",
+        g_debug ("REF exception: %p, refcount=%d, gdt=%p, time='%s'",
                  (void *)except, except->ref_count, (void *)gdt, time);
         g_free (time);
     }
@@ -130,7 +130,7 @@ gchar *xfical_exception_to_i18 (const xfical_exception *recur_exception)
             break;
 
         default:
-            g_error ("%s: unknown exception type '%d'", G_STRFUNC, type);
+            g_error ("unknown exception type '%d'", type);
             type_chr = '\0';
             break;
     }

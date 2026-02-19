@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2025 Erkki Moorits
+ * Copyright (c) 2021-2026 Erkki Moorits
  * Copyright (c) 2007-2013 Juha Kautto  (juha at xfce.org)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -185,13 +185,17 @@ static void close_window (gpointer user_data)
          apptw_list != NULL;
          apptw_list = g_list_next(apptw_list)) {
         apptw = ORAGE_APPOINTMENT_WINDOW (apptw_list->data);
-        if (apptw) /* appointment window is still alive */
+        /* TODO1: check if apptw_list->data = NULL is valid, if not then is
+         * better solution to use g_return_if_fail (apptw != NULL);
+         * TODO2: duplicated code with event-list::close_window()
+         */
+        if (apptw)
         {
-            /* not interested anymore */
+            /* Appointment window is still exists. Not interested anymore. */
             orage_appointment_window_set_day_window (apptw, NULL);
         }
         else
-            g_warning ("%s: not null appt window", G_STRFUNC);
+            g_warning ("appointment window list contains NULL entry");
     }
 
     gtk_widget_destroy (GTK_WIDGET (window));
