@@ -95,7 +95,7 @@ orage-tray-icon > row-3{
 }
 
 #orage-month-cell.out-of-month{
-    background-color: rgba(220, 220, 220, 0.4);
+    background-color: rgba(220, 220, 220, 0.9);
 }
 
 #orage-month-cell.today{
