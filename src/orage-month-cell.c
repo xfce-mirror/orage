@@ -38,7 +38,6 @@ struct _OrageMonthCell
     GtkWidget *day_label;
     GtkWidget *data_box;
     GDateTime *date;
-    gboolean different_month;
     gboolean selected;
 
     GList *events;
@@ -169,8 +168,6 @@ static void orage_month_cell_init (OrageMonthCell *self)
     GtkScrolledWindow *sw;
     GtkWidget *main_box;
 
-    self->different_month = TRUE;
-
     gtk_widget_set_name (GTK_WIDGET (self), "orage-month-cell");
 
     self->event_box = gtk_event_box_new ();
@@ -237,7 +234,6 @@ void orage_month_cell_reset (OrageMonthCell *self)
 
     orage_gdatetime_unref (self->date);
     self->date = NULL;
-    self->different_month = TRUE;
 
     context = gtk_widget_get_style_context (GTK_WIDGET (self));
     gtk_style_context_remove_class (context, TODAY);
@@ -296,10 +292,6 @@ void orage_month_cell_set_different_month (OrageMonthCell *self,
 
     g_return_if_fail (ORAGE_IS_MONTH_CELL (self));
 
-    if (self->different_month == different)
-        return;
-
-    self->different_month = different;
     context = gtk_widget_get_style_context (GTK_WIDGET (self));
 
     if (different)
@@ -314,9 +306,6 @@ void orage_month_cell_set_highlight (OrageMonthCell *self,
     GtkStyleContext *context;
 
     g_return_if_fail (ORAGE_IS_MONTH_CELL (self));
-
-    if (self->different_month)
-        return;
 
     context = gtk_widget_get_style_context (GTK_WIDGET (self));
 
