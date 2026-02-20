@@ -4,7 +4,6 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Andre Miranda <andre@andreldm.com>, 2022
 # Yannick Le Guen <leguen.yannick@gmail.com>, 2023
 # Xfce Bot <transifex@xfce.org>, 2024
 # Charles Monzat <c.monzat@laposte.net>, 2025
@@ -146,7 +145,7 @@ msgstr "Fermer"
 
 #: src/event-list.c:1244
 msgid "Dayview"
-msgstr "Aperçu journalier"
+msgstr "Vue journalière"
 
 #: src/event-list.c:1274 src/orage-appointment-window.c:3595
 #: src/orage-import.c:64
@@ -1544,7 +1543,7 @@ msgid ""
 "%s Start:\t%s\n"
 " End:\t%s%s"
 msgstr ""
-"Titre : %s \n"
+"Titre : %s\n"
 "%s Début : \t%s\n"
 " Fin : \t%s%s"
 
@@ -1555,12 +1554,12 @@ msgstr "<b>À faire :</b>"
 #: src/orage-window-classic.c:607
 #, c-format
 msgid "<b>Events for %s:</b>"
-msgstr "<b>événements pour %s :</b>"
+msgstr "<b>Événements pour %s :</b>"
 
 #: src/orage-window-classic.c:618
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
-msgstr "<b>événements pour %s - %s :</b>"
+msgstr "<b>Événements pour %s - %s :</b>"
 
 #: src/orage-window-next.c:131
 msgid "Create a new appointment"
@@ -1568,7 +1567,7 @@ msgstr "Créer un nouveau rendez-vous"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"
-msgstr "Recharger fichiers externes"
+msgstr "Recharger les fichiers externes"
 
 #: src/orage-window-next.c:135
 msgid "Import/export data"
@@ -1576,7 +1575,7 @@ msgstr "Importer/exporter donnée"
 
 #: src/orage-window-next.c:136
 msgid "Close window"
-msgstr "Fermer fenêtre"
+msgstr "Fermer la fenêtre"
 
 #: src/orage-window-next.c:137
 msgid "_Quit"
@@ -1584,7 +1583,7 @@ msgstr "_Quitter"
 
 #: src/orage-window-next.c:137
 msgid "Quit program"
-msgstr "Quitter programme"
+msgstr "Quitter le programme"
 
 #: src/orage-window-next.c:140
 msgid "_Preferences"
@@ -1604,7 +1603,7 @@ msgstr "Aller à aujourd’hui"
 
 #: src/orage-window-next.c:148
 msgid "Display Orage user manual"
-msgstr "Afficher guide d’utilisation d’Orage"
+msgstr "Afficher le guide d’utilisation d’Orage"
 
 #: src/orage-window-next.c:149
 msgid "_About"
@@ -1612,11 +1611,11 @@ msgstr "À _propos"
 
 #: src/orage-window-next.c:149
 msgid "Display information about Orage"
-msgstr "Afficher information sur Orage"
+msgstr "Afficher les informations sur Orage"
 
 #: src/orage-window-next.c:366
 msgid "New event"
-msgstr "Nouvel évènement"
+msgstr "Nouvel événement"
 
 #: src/orage-window-next.c:444
 #, c-format
@@ -1626,7 +1625,7 @@ msgstr "Événements pour %s :"
 #: src/orage-window-next.c:450
 #, c-format
 msgid "Events for %s - %s:"
-msgstr "Événements pour %s - %s  :"
+msgstr "Événements pour %s - %s :"
 
 #: src/orage-window-next.c:650
 msgid "To do:"
@@ -1683,8 +1682,8 @@ msgstr "(0 = pas d’archivage)"
 #: src/parameters.c:737
 msgid "Archiving is used to save time and space when handling events."
 msgstr ""
-"L’archivage est utilisé pour gagner du temps et de l’espace lors de la "
-"manipulation des événements."
+"L’archivage permet de gagner du temps et de l’espace lors de la gestion des "
+"événements."
 
 #: src/parameters.c:745
 msgid "Sound command"
@@ -1693,8 +1692,7 @@ msgstr "Commande pour jouer un son"
 #: src/parameters.c:773
 msgid "This command is given to shell to make sound in alarms."
 msgstr ""
-"Cette commande est exécutée par l’interpréteur de commande pour faire sonner"
-" les alarmes."
+"Cette commande est donnée au shell pour émettre un son dans les alarmes."
 
 #: src/parameters.c:804
 msgid "Calendar window"
@@ -1702,20 +1700,20 @@ msgstr "Fenêtre calendrier"
 
 #: src/parameters.c:811
 msgid "Calendar visual details"
-msgstr "Détails visuels du calendrier  "
+msgstr "Détails visuels du calendrier"
 
 #: src/parameters.c:818
 msgid "Use new user interface"
-msgstr "Utiliser nouvelle interface utilisateur"
+msgstr "Utiliser la nouvelle interface utilisateur"
 
 #: src/parameters.c:820
 msgid "Enable the new interface layout (requires restart)"
 msgstr ""
-"Activer la nouvelle disposition de l’interface (nécessite redémarrage)"
+"Activer la nouvelle disposition de l’interface (nécessite un redémarrage)"
 
 #: src/parameters.c:825
 msgid "Show borders"
-msgstr "Afficher la bordure de fenêtre"
+msgstr "Afficher les bordures de fenêtre"
 
 #: src/parameters.c:834
 msgid "Show menu"
@@ -1723,7 +1721,7 @@ msgstr "Afficher la barre de menu"
 
 #: src/parameters.c:839
 msgid "Show day names"
-msgstr "Afficher le nom du jour"
+msgstr "Afficher les noms des jours"
 
 #: src/parameters.c:848
 msgid "Show week numbers"
@@ -1735,23 +1733,23 @@ msgstr "Afficher le mois et l’année"
 
 #: src/parameters.c:877
 msgid "Calendar info boxes"
-msgstr "Calendrier des boîtes info"
+msgstr "Boîtes d’informations du calendrier"
 
 #: src/parameters.c:884
 msgid "Show todo list"
-msgstr "Afficher la liste des choses à faire"
+msgstr "Afficher la liste des tâches"
 
 #: src/parameters.c:891
 msgid "Number of days to show in event window"
-msgstr "Nombre de jours à afficher dans la fenêtre d’événements"
+msgstr "Nombre de jours à afficher dans la fenêtre des événements"
 
 #: src/parameters.c:899
 msgid "0 = do not show event list at all"
-msgstr "0 = ne pas afficher la liste des événements"
+msgstr "0 = ne pas afficher du tout la liste des événements"
 
 #: src/parameters.c:913
 msgid "Calendar visibility"
-msgstr "Visibilité du calendrier "
+msgstr "Visibilité du calendrier"
 
 #: src/parameters.c:919
 msgid "Show on all desktops"
@@ -1836,7 +1834,7 @@ msgstr ""
 
 #: src/parameters.c:1172
 msgid "Show only first repeating event"
-msgstr "Afficher seulement la première répétition de l’événement"
+msgstr "Afficher uniquement le premier événement récurrent"
 
 #: src/parameters.c:1189
 msgid "Day view window default first day"
@@ -1859,14 +1857,14 @@ msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
 msgstr ""
-"Utiliser cette minuterie si Orage rencontre des problèmes pour s’activer "
-"correctement après une mise en veille ou une mise en veille prolongée (par "
+"Utilisez cette minuterie si Orage rencontre des problèmes pour s’activer "
+"correctement après une mise en veille ou une mise en veille prolongée (Par "
 "exemple, si l’icône n’est pas mise à jour ou si les alarmes ne s’activent "
 "pas)."
 
 #: src/parameters.c:1261
 msgid "Foreign file default visual alarm"
-msgstr "Fichier externe par défaut de l’alarme visuelle "
+msgstr "Fichier externe par défaut de l’alarme visuelle"
 
 #: src/parameters.c:1268
 msgid "Orage window"
@@ -1890,9 +1888,9 @@ msgid ""
 "option changes Orage to quit and never stay in background when it is asked "
 "to close."
 msgstr ""
-"Par défaut, Orage reste ouvert en arrière-plan lorsqu’on demande à le "
-"fermer. Cette option permet de quitter Orage sans le laisser ouvert en "
-"arrière-plan."
+"Par défaut, Orage reste ouvert en arrière-plan lorsqu’on lui demande de se "
+"fermer. Cette option modifie Orage pour qu’il se ferme complètement et ne "
+"reste jamais en arrière-plan lorsqu’on lui demande de se fermer."
 
 #: src/parameters.c:1375
 msgid "Synchronization settings"
@@ -3585,7 +3583,7 @@ msgstr "Etc/UCT"
 
 #: src/timezone_names.c:438
 msgid "Etc/UTC"
-msgstr "Etc/GMT"
+msgstr "Etc/UTC"
 
 #: src/timezone_names.c:439
 msgid "Etc/Universal"
@@ -3761,7 +3759,7 @@ msgstr "Europe/Samara"
 
 #: src/timezone_names.c:482
 msgid "Europe/San_Marino"
-msgstr "Europe/San_Marin"
+msgstr "Europe/Saint_Marin"
 
 #: src/timezone_names.c:483
 msgid "Europe/Sarajevo"
@@ -3829,7 +3827,7 @@ msgstr "Europe/Zagreb"
 
 #: src/timezone_names.c:499
 msgid "Europe/Zaporozhye"
-msgstr "Europe/Zaporijjya"
+msgstr "Europe/Zaporijjia"
 
 #: src/timezone_names.c:500
 msgid "Europe/Zurich"
