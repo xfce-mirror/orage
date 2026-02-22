@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-01-30 12:56+0100\n"
+"POT-Creation-Date: 2026-02-19 12:56+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: 玉堂白鹤 <yjwork@qq.com>, 2026\n"
 "Language-Team: Chinese (China) (https://app.transifex.com/xfce/teams/16840/zh_CN/)\n"
@@ -30,7 +30,7 @@ msgstr ""
 msgid "All day"
 msgstr "所有天"
 
-#: src/event-list.c:607 src/event-list.c:1431
+#: src/event-list.c:607 src/event-list.c:1435
 msgid "Time"
 msgstr "时间"
 
@@ -42,7 +42,7 @@ msgstr "没有选择任何行。"
 msgid "Click a row to select it and after that you can copy it."
 msgstr "点击一行选择，之后您可以复制它。"
 
-#: src/event-list.c:1005
+#: src/event-list.c:1009
 msgid ""
 "You will permanently remove all\n"
 "selected appointments."
@@ -50,29 +50,29 @@ msgstr ""
 "将永久移除所有\n"
 "选中的约会。"
 
-#: src/event-list.c:1006 src/orage-appointment-window.c:981
-#: src/orage-appointment-window.c:1645 src/parameters.c:647
+#: src/event-list.c:1010 src/orage-appointment-window.c:981
+#: src/orage-appointment-window.c:1644 src/parameters.c:644
 msgid "Do you want to continue?"
 msgstr "请问您要继续吗？"
 
-#: src/event-list.c:1007 src/orage-appointment-window.c:1646
-#: src/parameters.c:648
+#: src/event-list.c:1011 src/orage-appointment-window.c:1645
+#: src/parameters.c:645
 msgid "No, cancel the removal"
 msgstr "不，取消移除"
 
-#: src/event-list.c:1008
+#: src/event-list.c:1012
 msgid "Yes, remove them"
 msgstr "是，移除"
 
-#: src/event-list.c:1068 src/orage-appointment-window.c:1743
+#: src/event-list.c:1072 src/orage-appointment-window.c:1743
 #: src/orage-appointment-window.c:1758 src/orage-month-view.c:175
-#: src/orage-week-window.c:529
+#: src/orage-week-window.c:533
 msgid "Pick the date"
 msgstr "选取日期"
 
-#: src/event-list.c:1070 src/event-list.c:1224
+#: src/event-list.c:1074 src/event-list.c:1228
 #: src/orage-appointment-window.c:1745 src/orage-appointment-window.c:1760
-#: src/orage-week-window.c:458 src/orage-week-window.c:531 src/tray_icon.c:383
+#: src/orage-week-window.c:462 src/orage-week-window.c:535 src/tray_icon.c:386
 msgid "Today"
 msgstr "今天"
 
@@ -81,81 +81,81 @@ msgstr "今天"
 #. File menu stuff
 #. ********* File menu *********
 #. File menu
-#: src/event-list.c:1125 src/interface.c:862
-#: src/orage-appointment-window.c:2914 src/orage-week-window.c:352
+#: src/event-list.c:1129 src/interface.c:865
+#: src/orage-appointment-window.c:2917 src/orage-week-window.c:356
 #: src/orage-window-classic.c:281 src/orage-window-next.c:130
 msgid "_File"
 msgstr "文件(_F)"
 
-#: src/event-list.c:1131 src/orage-appointment-window.c:2932
+#: src/event-list.c:1135 src/orage-appointment-window.c:2935
 msgid "D_uplicate"
 msgstr "重复(_U)"
 
 #. ********* View menu *********
 #. View menu
-#: src/event-list.c:1148 src/orage-week-window.c:362
+#: src/event-list.c:1152 src/orage-week-window.c:366
 #: src/orage-window-classic.c:310 src/orage-window-next.c:142
 msgid "_View"
 msgstr "视图(_V)"
 
 #. ********* Go menu   *********
-#: src/event-list.c:1167 src/orage-week-window.c:376
+#: src/event-list.c:1171 src/orage-week-window.c:380
 msgid "_Go"
 msgstr "转到(_G)"
 
-#: src/event-list.c:1213 src/orage-week-window.c:449
+#: src/event-list.c:1217 src/orage-week-window.c:453
 #: src/orage-window-next.c:131
 msgid "New"
 msgstr "新建"
 
-#: src/event-list.c:1215 src/orage-appointment-window.c:3556
+#: src/event-list.c:1219 src/orage-appointment-window.c:3560
 msgid "Duplicate"
 msgstr "重复"
 
-#: src/event-list.c:1217 src/orage-appointment-window.c:3561
+#: src/event-list.c:1221 src/orage-appointment-window.c:3565
 msgid "Delete"
 msgstr "删除"
 
-#: src/event-list.c:1222
+#: src/event-list.c:1226
 msgid "Back"
 msgstr "后退"
 
-#: src/event-list.c:1226
+#: src/event-list.c:1230
 msgid "Forward"
 msgstr "前进"
 
-#: src/event-list.c:1231 src/orage-week-window.c:467
+#: src/event-list.c:1235 src/orage-week-window.c:471
 #: src/orage-window-next.c:133
 msgid "Refresh"
 msgstr "刷新"
 
-#: src/event-list.c:1233
+#: src/event-list.c:1237
 msgid "Find"
 msgstr "查找"
 
-#: src/event-list.c:1238 src/interface.c:880 src/orage-week-window.c:472
+#: src/event-list.c:1242 src/interface.c:883 src/orage-week-window.c:476
 #: src/orage-window-next.c:136
 msgid "Close"
 msgstr "关闭"
 
-#: src/event-list.c:1240
+#: src/event-list.c:1244
 msgid "Dayview"
 msgstr "日视图"
 
-#: src/event-list.c:1270 src/orage-appointment-window.c:3591
+#: src/event-list.c:1274 src/orage-appointment-window.c:3595
 #: src/orage-import.c:64
 msgid "Event"
 msgstr "事件"
 
-#: src/event-list.c:1275
+#: src/event-list.c:1279
 msgid "Extra days to show:"
 msgstr "要显示的额外天数："
 
-#: src/event-list.c:1289
+#: src/event-list.c:1293
 msgid "only first repeating"
 msgstr "只有第一个重复"
 
-#: src/event-list.c:1297
+#: src/event-list.c:1301
 msgid ""
 "Check this if you only want to see the first repeating event. By default all are shown.\n"
 "Note that this also shows all urgencies.\n"
@@ -165,11 +165,11 @@ msgstr ""
 "注意，这将显示所有紧急事件。\n"
 "注意，重复的事件将只会在列表中第一次出现的地方出现。"
 
-#: src/event-list.c:1302
+#: src/event-list.c:1306
 msgid "also old"
 msgstr "也是旧的"
 
-#: src/event-list.c:1307
+#: src/event-list.c:1311
 msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed."
@@ -177,39 +177,39 @@ msgstr ""
 "如果您也想查看旧的时间，请勾选此项。该功能只能在勾选“只有第一个重复”时启用，以避免列表过长。\n"
 "请注意，额外的天数选择仍有限制，如果有较新的约会将被列出。"
 
-#: src/event-list.c:1328 src/orage-appointment-window.c:3599
+#: src/event-list.c:1332 src/orage-appointment-window.c:3603
 #: src/orage-import.c:67
 msgid "Todo"
 msgstr "待办"
 
-#: src/event-list.c:1342 src/orage-appointment-window.c:3607
+#: src/event-list.c:1346 src/orage-appointment-window.c:3611
 #: src/orage-import.c:70
 msgid "Journal"
 msgstr "日志"
 
-#: src/event-list.c:1345
+#: src/event-list.c:1349
 msgid "Journal entries starting from:"
 msgstr "日志条目开始于："
 
-#: src/event-list.c:1370
+#: src/event-list.c:1374
 msgid "Search"
 msgstr "搜索"
 
-#: src/event-list.c:1373
+#: src/event-list.c:1377
 msgid "Search text "
 msgstr "搜索文字 "
 
-#: src/event-list.c:1439
+#: src/event-list.c:1443
 msgid "Flags"
 msgstr "标签"
 
 #. title
-#: src/event-list.c:1447 src/orage-appointment-window.c:3618
+#: src/event-list.c:1451 src/orage-appointment-window.c:3622
 #: src/orage-window-next.c:880 src/orage-window-next.c:898
 msgid "Title"
 msgstr "标题"
 
-#: src/event-list.c:1473
+#: src/event-list.c:1477
 msgid ""
 "Double click line to edit it.\n"
 "\n"
@@ -237,97 +237,97 @@ msgstr ""
 "\t 5. 约会类型：\n"
 "\t\tE=事件 T=待办 J=日志"
 
-#: src/ical-code.c:837
+#: src/ical-code.c:856
 msgid "Orage default alarm"
 msgstr "Orage 默认闹铃"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
-#: src/interface.c:260 src/orage-appointment-window.c:931 src/parameters.c:390
+#: src/interface.c:269 src/orage-appointment-window.c:931 src/parameters.c:390
 msgid "Select a file..."
 msgstr "选择文件..."
 
-#: src/interface.c:267
+#: src/interface.c:276
 msgid "Calendar files"
 msgstr "日历文件"
 
-#: src/interface.c:273 src/orage-appointment-window.c:946
+#: src/interface.c:282 src/orage-appointment-window.c:946
 msgid "All Files"
 msgstr "所有文件"
 
-#: src/interface.c:646
+#: src/interface.c:654
 msgid "Current foreign files"
 msgstr "当前外部文件"
 
-#: src/interface.c:669
+#: src/interface.c:677
 msgid "READ ONLY"
 msgstr "只读"
 
-#: src/interface.c:671
+#: src/interface.c:679
 msgid "READ WRITE"
 msgstr "读写"
 
-#: src/interface.c:676 src/orage-appointment-window.c:2370
+#: src/interface.c:684 src/orage-appointment-window.c:2372
 msgid "_Remove"
 msgstr "移除(_R)"
 
-#: src/interface.c:695
+#: src/interface.c:703
 msgid "***** No foreign files *****"
 msgstr "***** 无外部文件 *****"
 
-#: src/interface.c:710
+#: src/interface.c:718
 msgid "Foreign file add failed"
 msgstr "外部文件添加失败"
 
-#: src/interface.c:718
+#: src/interface.c:725
 msgid "Orage can only handle 10 foreign files. Limit reached"
 msgstr "Orage 仅能处理10个外部文件。已达上限"
 
-#: src/interface.c:728
+#: src/interface.c:735
 msgid "Filename is empty."
 msgstr "文件名为空。"
 
-#: src/interface.c:738
+#: src/interface.c:745
 msgid "Name is empty."
 msgstr "名称为空。"
 
-#: src/interface.c:749
+#: src/interface.c:755
 msgid "File does not exist."
 msgstr "文件不存在。"
 
-#: src/interface.c:761
+#: src/interface.c:766
 msgid "Same filename already exists in Orage."
 msgstr "相同文件名已存在于 Orage。"
 
-#: src/interface.c:772
+#: src/interface.c:776
 msgid "Same name already exists in Orage."
 msgstr "相同名称已存在于 Orage。"
 
-#: src/interface.c:1026
+#: src/interface.c:1029
 msgid "Import/export"
 msgstr "导入/导出"
 
-#: src/interface.c:1033
+#: src/interface.c:1036
 msgid "Import"
 msgstr "导入"
 
-#: src/interface.c:1041
+#: src/interface.c:1044
 msgid "Read from file:"
 msgstr "从文件读取："
 
-#: src/interface.c:1051 src/interface.c:1097 src/interface.c:1274
-#: src/interface.c:1372 src/interface.c:1461
-#: src/orage-appointment-window.c:3957 src/parameters.c:395
-#: src/parameters.c:764 src/reminder.c:631
+#: src/interface.c:1054 src/interface.c:1100 src/interface.c:1277
+#: src/interface.c:1375 src/interface.c:1464
+#: src/orage-appointment-window.c:3961 src/parameters.c:395
+#: src/parameters.c:763 src/reminder.c:631
 msgid "_Open"
 msgstr "打开(&O)"
 
-#: src/interface.c:1058 src/interface.c:1104 src/interface.c:1281
-#: src/interface.c:1379 src/orage-appointment-window.c:4120
+#: src/interface.c:1061 src/interface.c:1107 src/interface.c:1284
+#: src/interface.c:1382 src/orage-appointment-window.c:4124
 msgid "_Save"
 msgstr "保存(_S)"
 
-#: src/interface.c:1071
+#: src/interface.c:1074
 msgid ""
 "Separate filenames with comma(,).\n"
 " NOTE: comma is not valid character in filenames for Orage."
@@ -336,27 +336,27 @@ msgstr ""
 " 注意：对 Orage 来说在文件名中逗号不是\n"
 " 有效的字符。"
 
-#: src/interface.c:1076
+#: src/interface.c:1079
 msgid "Export"
 msgstr "导出"
 
-#: src/interface.c:1084
+#: src/interface.c:1087
 msgid "Write to file:"
 msgstr "写入文件："
 
-#: src/interface.c:1119 src/interface.c:1137
+#: src/interface.c:1122 src/interface.c:1140
 msgid "Select"
 msgstr "选择"
 
-#: src/interface.c:1124
+#: src/interface.c:1127
 msgid "All appointments"
 msgstr "所有约会"
 
-#: src/interface.c:1143
+#: src/interface.c:1146
 msgid "Named appointments:"
 msgstr "已命名的约会:"
 
-#: src/interface.c:1162
+#: src/interface.c:1165
 msgid ""
 "Note that only main file appointments are read.\n"
 "Archived and Foreign events are not exported."
@@ -364,7 +364,7 @@ msgstr ""
 "注意只读取了主文件约会。\n"
 "没有导入已归档和外部事件。"
 
-#: src/interface.c:1165
+#: src/interface.c:1168
 msgid ""
 "Note that only main file appointments are read.\n"
 "Foreign events are not exported."
@@ -372,37 +372,37 @@ msgstr ""
 "注意只读取了主文件约会。\n"
 "没有导入外部事件。"
 
-#: src/interface.c:1168
+#: src/interface.c:1171
 msgid "You can easily drag these from event-list window."
 msgstr "您可以很容易地从事件列表窗口中拖动这些。"
 
-#: src/interface.c:1170
+#: src/interface.c:1173
 msgid "Orage appointment UIDs separated by commas."
 msgstr "Orage UID 用逗号隔开。"
 
-#: src/interface.c:1176
+#: src/interface.c:1179
 msgid "Archive"
 msgstr "归档"
 
-#: src/interface.c:1185 src/interface.c:1207
-#: src/orage-appointment-window.c:4099
+#: src/interface.c:1188 src/interface.c:1210
+#: src/orage-appointment-window.c:4103
 msgid "_Execute"
 msgstr "执行(_E)"
 
-#: src/interface.c:1191
+#: src/interface.c:1194
 #, c-format
 msgid "Archive now (threshold: %d months)"
 msgstr "现在归档(阈值：%d 月)"
 
-#: src/interface.c:1202
+#: src/interface.c:1205
 msgid "You can change archive threshold in parameters"
 msgstr "您可以在参数中改变归档阈值"
 
-#: src/interface.c:1214
+#: src/interface.c:1217
 msgid "Revert archive now"
 msgstr "现在重置归档"
 
-#: src/interface.c:1221
+#: src/interface.c:1224
 msgid ""
 "Return all archived events into main orage file and remove arch file.\n"
 "This is useful for example when doing export and moving orage\n"
@@ -412,31 +412,31 @@ msgstr ""
 "文件。这在如导出并移动 Orage 约会至另一\n"
 "系统时有用。"
 
-#: src/interface.c:1233
+#: src/interface.c:1236
 msgid "Orage files"
 msgstr "Orage 文件"
 
-#: src/interface.c:1240
+#: src/interface.c:1243
 msgid "Orage main calendar file"
 msgstr "Orage 主日历文件"
 
-#: src/interface.c:1249 src/interface.c:1348
+#: src/interface.c:1252 src/interface.c:1351
 msgid "Current file:"
 msgstr "当前文件："
 
-#: src/interface.c:1262 src/interface.c:1361
+#: src/interface.c:1265 src/interface.c:1364
 msgid "New file:"
 msgstr "新建文件："
 
-#: src/interface.c:1292 src/interface.c:1390
+#: src/interface.c:1295 src/interface.c:1393
 msgid "Action options:"
 msgstr "动作选项："
 
-#: src/interface.c:1296 src/interface.c:1394
+#: src/interface.c:1299 src/interface.c:1397
 msgid "Rename"
 msgstr "重命名"
 
-#: src/interface.c:1303
+#: src/interface.c:1306
 msgid ""
 "Orage internal file rename only.\n"
 "Does not touch external filesystem at all.\n"
@@ -446,52 +446,52 @@ msgstr ""
 "一点也不涉及外部文件系统。\n"
 "新文件必须存在。"
 
-#: src/interface.c:1307 src/interface.c:1402
+#: src/interface.c:1310 src/interface.c:1405
 msgid "Copy"
 msgstr "复制"
 
-#: src/interface.c:1314
+#: src/interface.c:1317
 msgid "Current file is copied and stays unmodified in the old place."
 msgstr "复制当前文件并在原位置保持原样。"
 
-#: src/interface.c:1318 src/interface.c:1410
+#: src/interface.c:1321 src/interface.c:1413
 msgid "Move"
 msgstr "移动"
 
-#: src/interface.c:1325
+#: src/interface.c:1328
 msgid "Current file is moved and vanishes from the old place."
 msgstr "当前文件被移走并从原位置消失。"
 
-#: src/interface.c:1339
+#: src/interface.c:1342
 msgid "Archive file"
 msgstr "归档文件"
 
-#: src/interface.c:1436
+#: src/interface.c:1439
 msgid "Foreign files"
 msgstr "外部文件"
 
-#: src/interface.c:1443
+#: src/interface.c:1446
 msgid "Add new foreign file"
 msgstr "添加新的外部文件"
 
-#: src/interface.c:1451
+#: src/interface.c:1454
 msgid "Foreign file:"
 msgstr "外部文件："
 
-#: src/interface.c:1468 src/orage-appointment-window.c:2443
-#: src/parameters.c:1388
+#: src/interface.c:1471 src/orage-appointment-window.c:2445
+#: src/parameters.c:1387
 msgid "_Add"
 msgstr "增加(_A)"
 
-#: src/interface.c:1483
+#: src/interface.c:1486
 msgid "Visible name:"
 msgstr "可见名称："
 
-#: src/interface.c:1493
+#: src/interface.c:1496
 msgid "Read only"
 msgstr "只读"
 
-#: src/interface.c:1503
+#: src/interface.c:1506
 msgid ""
 "Set this if you want to make sure that this file is never modified by Orage.\n"
 "Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
@@ -500,11 +500,11 @@ msgstr ""
 "此项。请注意，修改外部文件将使与其来源的源工具\n"
 "不兼容！"
 
-#: src/interface.c:1505
+#: src/interface.c:1508
 msgid "This internal name is displayed to user instead of file name."
 msgstr "向用户显示内在名称而非文件名。"
 
-#: src/interface.c:1519
+#: src/interface.c:1522
 msgid "Exchange data - Orage"
 msgstr "交换数据-Orage"
 
@@ -606,7 +606,7 @@ msgstr "显示 Orage 版本"
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
 #. end time
 #: src/orage-appointment-window.c:524 src/orage-appointment-window.c:564
-#: src/orage-appointment-window.c:3652 src/orage-window-next.c:901
+#: src/orage-appointment-window.c:3656 src/orage-window-next.c:901
 msgid "End"
 msgstr "结束"
 
@@ -634,7 +634,7 @@ msgstr "是的，忽略修改并离开"
 msgid "The end of this appointment is earlier than the beginning."
 msgstr "约会结束时间早于开始时间。"
 
-#: src/orage-appointment-window.c:1425 src/orage-appointment-window.c:2232
+#: src/orage-appointment-window.c:1425 src/orage-appointment-window.c:2234
 msgid "Not set"
 msgstr "没有设置"
 
@@ -655,223 +655,223 @@ msgid ""
 "Error happened when adding appointment. Look more details from the log file."
 msgstr "添加约会时发生错误。更多详情请参考日志文件。"
 
-#: src/orage-appointment-window.c:1591
+#: src/orage-appointment-window.c:1590
 msgid "Appointment update failed."
 msgstr "约会更新失败。"
 
-#: src/orage-appointment-window.c:1592
+#: src/orage-appointment-window.c:1591
 msgid ""
 "Look more details from the log file. (Perhaps file was updated external from"
 " Orage?)"
 msgstr "从日志文件中查看更多详情。（也许文件被 Orage 从外部更新了?)"
 
-#: src/orage-appointment-window.c:1644
+#: src/orage-appointment-window.c:1643
 msgid "This appointment will be permanently removed."
 msgstr "会永久移除此约会。"
 
-#: src/orage-appointment-window.c:1647
+#: src/orage-appointment-window.c:1646
 msgid "Yes, remove it"
 msgstr "是，移除"
 
-#: src/orage-appointment-window.c:2184
+#: src/orage-appointment-window.c:2186
 msgid "This appointment does not exist."
 msgstr "此约会不存在。"
 
-#: src/orage-appointment-window.c:2185
+#: src/orage-appointment-window.c:2187
 msgid "It was probably removed, please refresh your screen."
 msgstr "它可能已被移除，请刷新屏幕。"
 
-#: src/orage-appointment-window.c:2397
+#: src/orage-appointment-window.c:2399
 msgid "Current categories"
 msgstr "当前类别"
 
-#: src/orage-appointment-window.c:2419
+#: src/orage-appointment-window.c:2421
 msgid "Add new category with color"
 msgstr "添加新的颜色类别"
 
-#: src/orage-appointment-window.c:2428
+#: src/orage-appointment-window.c:2430
 msgid "Category:"
 msgstr "类别："
 
-#: src/orage-appointment-window.c:2471
+#: src/orage-appointment-window.c:2473
 msgid "Colors of categories - Orage"
 msgstr "类别的颜色-Orage"
 
-#: src/orage-appointment-window.c:2517
+#: src/orage-appointment-window.c:2520
 msgid "*** COPY ***"
 msgstr "*** 复制 ***"
 
-#: src/orage-appointment-window.c:2570 src/orage-appointment-window.c:3869
+#: src/orage-appointment-window.c:2573 src/orage-appointment-window.c:3873
 msgid "Before Start"
 msgstr "开始前"
 
-#: src/orage-appointment-window.c:2570 src/orage-appointment-window.c:3869
+#: src/orage-appointment-window.c:2573 src/orage-appointment-window.c:3873
 msgid "Before End"
 msgstr "结束前"
 
-#: src/orage-appointment-window.c:2570 src/orage-appointment-window.c:3870
+#: src/orage-appointment-window.c:2573 src/orage-appointment-window.c:3874
 msgid "After Start"
 msgstr "开始后"
 
-#: src/orage-appointment-window.c:2570 src/orage-appointment-window.c:3870
+#: src/orage-appointment-window.c:2573 src/orage-appointment-window.c:3874
 msgid "After End"
 msgstr "结束后"
 
 #. window title
-#: src/orage-appointment-window.c:2887
+#: src/orage-appointment-window.c:2890
 msgid "New appointment - Orage"
 msgstr "新建约会-Orage"
 
-#: src/orage-appointment-window.c:2920
+#: src/orage-appointment-window.c:2923
 msgid "Sav_e and close"
 msgstr "保存并关闭(_E)"
 
-#: src/orage-appointment-window.c:3235
+#: src/orage-appointment-window.c:3239
 msgid "first"
 msgstr "第一个"
 
-#: src/orage-appointment-window.c:3235
+#: src/orage-appointment-window.c:3239
 msgid "second"
 msgstr "第二个"
 
-#: src/orage-appointment-window.c:3235
+#: src/orage-appointment-window.c:3239
 msgid "third"
 msgstr "第三个"
 
-#: src/orage-appointment-window.c:3235
+#: src/orage-appointment-window.c:3239
 msgid "fourth"
 msgstr "第四个"
 
-#: src/orage-appointment-window.c:3235
+#: src/orage-appointment-window.c:3239
 msgid "last"
 msgstr "最后一个"
 
-#: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
+#: src/orage-appointment-window.c:3249 src/orage-month-view.c:284
 msgid "Monday"
 msgstr "星期一"
 
-#: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
+#: src/orage-appointment-window.c:3249 src/orage-month-view.c:284
 msgid "Tuesday"
 msgstr "星期二"
 
-#: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
+#: src/orage-appointment-window.c:3249 src/orage-month-view.c:284
 msgid "Wednesday"
 msgstr "星期三"
 
-#: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
+#: src/orage-appointment-window.c:3249 src/orage-month-view.c:284
 msgid "Thursday"
 msgstr "星期四"
 
-#: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
+#: src/orage-appointment-window.c:3249 src/orage-month-view.c:284
 msgid "Friday"
 msgstr "星期五"
 
-#: src/orage-appointment-window.c:3246 src/orage-month-view.c:285
+#: src/orage-appointment-window.c:3250 src/orage-month-view.c:285
 msgid "Saturday"
 msgstr "星期六"
 
-#: src/orage-appointment-window.c:3246 src/orage-month-view.c:285
+#: src/orage-appointment-window.c:3250 src/orage-month-view.c:285
 msgid "Sunday"
 msgstr "星期日"
 
-#: src/orage-appointment-window.c:3259 src/orage-appointment-window.c:3292
-#: src/orage-appointment-window.c:3399 src/orage-appointment-window.c:3433
+#: src/orage-appointment-window.c:3263 src/orage-appointment-window.c:3296
+#: src/orage-appointment-window.c:3403 src/orage-appointment-window.c:3437
 msgid "Every"
 msgstr "每"
 
-#: src/orage-appointment-window.c:3264
+#: src/orage-appointment-window.c:3268
 msgid "day(s)"
 msgstr "天"
 
-#: src/orage-appointment-window.c:3281
+#: src/orage-appointment-window.c:3285
 msgid "Mon"
 msgstr "星期一"
 
-#: src/orage-appointment-window.c:3281
+#: src/orage-appointment-window.c:3285
 msgid "Tue"
 msgstr "星期二"
 
-#: src/orage-appointment-window.c:3281
+#: src/orage-appointment-window.c:3285
 msgid "Wed"
 msgstr "星期三"
 
-#: src/orage-appointment-window.c:3281
+#: src/orage-appointment-window.c:3285
 msgid "Thu"
 msgstr "星期四"
 
-#: src/orage-appointment-window.c:3281
+#: src/orage-appointment-window.c:3285
 msgid "Fri"
 msgstr "星期五"
 
-#: src/orage-appointment-window.c:3281
+#: src/orage-appointment-window.c:3285
 msgid "Sat"
 msgstr "星期六"
 
-#: src/orage-appointment-window.c:3281
+#: src/orage-appointment-window.c:3285
 msgid "Sun"
 msgstr "星期日"
 
-#: src/orage-appointment-window.c:3299
+#: src/orage-appointment-window.c:3303
 msgid "week(s) on:"
 msgstr "周的："
 
-#: src/orage-appointment-window.c:3335
+#: src/orage-appointment-window.c:3339
 msgid "From the beginning of the month:"
 msgstr "从月初开始："
 
-#: src/orage-appointment-window.c:3348
+#: src/orage-appointment-window.c:3352
 msgid "From the end of the month:"
 msgstr "从月底倒数："
 
-#: src/orage-appointment-window.c:3361
+#: src/orage-appointment-window.c:3365
 msgid "Every:"
 msgstr "每月："
 
-#: src/orage-appointment-window.c:3389
+#: src/orage-appointment-window.c:3393
 msgid "January"
 msgstr "一月"
 
-#: src/orage-appointment-window.c:3389
+#: src/orage-appointment-window.c:3393
 msgid "February"
 msgstr "二月"
 
-#: src/orage-appointment-window.c:3389
+#: src/orage-appointment-window.c:3393
 msgid "March"
 msgstr "三月"
 
-#: src/orage-appointment-window.c:3389
+#: src/orage-appointment-window.c:3393
 msgid "April"
 msgstr "四月"
 
-#: src/orage-appointment-window.c:3389
+#: src/orage-appointment-window.c:3393
 msgid "May"
 msgstr "五月"
 
-#: src/orage-appointment-window.c:3390
+#: src/orage-appointment-window.c:3394
 msgid "June"
 msgstr "六月"
 
-#: src/orage-appointment-window.c:3390
+#: src/orage-appointment-window.c:3394
 msgid "July"
 msgstr "七月"
 
-#: src/orage-appointment-window.c:3390
+#: src/orage-appointment-window.c:3394
 msgid "August"
 msgstr "八月"
 
-#: src/orage-appointment-window.c:3390
+#: src/orage-appointment-window.c:3394
 msgid "September"
 msgstr "九月"
 
-#: src/orage-appointment-window.c:3390
+#: src/orage-appointment-window.c:3394
 msgid "October"
 msgstr "十月"
 
-#: src/orage-appointment-window.c:3391
+#: src/orage-appointment-window.c:3395
 msgid "November"
 msgstr "十一月"
 
-#: src/orage-appointment-window.c:3391
+#: src/orage-appointment-window.c:3395
 msgid "December"
 msgstr "十二月"
 
@@ -879,49 +879,49 @@ msgstr "十二月"
 #. * "second Thursday of August". In some languages ​​it is not necessary to
 #. use
 #. * the string "of", it can be replaced with an empty string.
-#: src/orage-appointment-window.c:3407
+#: src/orage-appointment-window.c:3411
 msgid "of"
 msgstr "在"
 
-#: src/orage-appointment-window.c:3438
+#: src/orage-appointment-window.c:3442
 msgid "hour(s)"
 msgstr "小时"
 
-#: src/orage-appointment-window.c:3474
+#: src/orage-appointment-window.c:3478
 msgid "Repeat forever"
 msgstr "一直重复"
 
-#: src/orage-appointment-window.c:3479
+#: src/orage-appointment-window.c:3483
 msgid "Repeat"
 msgstr "重复"
 
-#: src/orage-appointment-window.c:3487 src/orage-appointment-window.c:3985
+#: src/orage-appointment-window.c:3491 src/orage-appointment-window.c:3989
 msgid "times"
 msgstr "时间"
 
-#: src/orage-appointment-window.c:3493
+#: src/orage-appointment-window.c:3497
 msgid "Repeat until"
 msgstr "重复直到 "
 
 #. start time
-#: src/orage-appointment-window.c:3511 src/orage-appointment-window.c:3637
-#: src/orage-week-window.c:888 src/orage-window-next.c:882
+#: src/orage-appointment-window.c:3515 src/orage-appointment-window.c:3641
+#: src/orage-week-window.c:892 src/orage-window-next.c:882
 #: src/orage-window-next.c:900
 msgid "Start"
 msgstr "开始"
 
 #. completed (only for TODO)
-#: src/orage-appointment-window.c:3516 src/orage-appointment-window.c:3705
+#: src/orage-appointment-window.c:3520 src/orage-appointment-window.c:3709
 msgid "Completed"
 msgstr "完成"
 
-#: src/orage-appointment-window.c:3519
+#: src/orage-appointment-window.c:3523
 msgid ""
 "TODO reoccurs regularly starting on start time and repeating after each "
 "interval no matter when it was last completed"
 msgstr "待办有规律地在开始时间启动并在每个间隔后重复，它会重复发生而不管上次是何时完成的"
 
-#: src/orage-appointment-window.c:3521
+#: src/orage-appointment-window.c:3525
 msgid ""
 "TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
@@ -929,36 +929,36 @@ msgstr ""
 "待办基于完成时间在从上次完成时间计时的间隔后重复发生。\n"
 "(注意重复发生基本在每次完成后改变，所以您不能知道待办的任何相关历史。)"
 
-#: src/orage-appointment-window.c:3547
+#: src/orage-appointment-window.c:3551
 msgid "Save"
 msgstr "保存"
 
-#: src/orage-appointment-window.c:3549
+#: src/orage-appointment-window.c:3553
 msgid "Save and close"
 msgstr "保存并关闭"
 
-#: src/orage-appointment-window.c:3554
+#: src/orage-appointment-window.c:3558
 msgid "Revert"
 msgstr "重置"
 
-#: src/orage-appointment-window.c:3579
+#: src/orage-appointment-window.c:3583
 msgid "Free"
 msgstr "空闲"
 
-#: src/orage-appointment-window.c:3579
+#: src/orage-appointment-window.c:3583
 msgid "Busy"
 msgstr "繁忙"
 
-#: src/orage-appointment-window.c:3583
+#: src/orage-appointment-window.c:3587
 msgid "General"
 msgstr "通用"
 
 #. type
-#: src/orage-appointment-window.c:3589
+#: src/orage-appointment-window.c:3593
 msgid "Type"
 msgstr "类型"
 
-#: src/orage-appointment-window.c:3596
+#: src/orage-appointment-window.c:3600
 msgid ""
 "Event that will happen sometime. For example:\n"
 "Meeting or birthday or TV show."
@@ -966,7 +966,7 @@ msgstr ""
 "某时要发生的事件，比如：\n"
 "会议、生日或电视节目。"
 
-#: src/orage-appointment-window.c:3604
+#: src/orage-appointment-window.c:3608
 msgid ""
 "Something that you should do sometime. For example:\n"
 "Wash your car or test new version of Orage."
@@ -974,7 +974,7 @@ msgstr ""
 "某时您应该做的事情，比如：\n"
 "洗车或测试新版 Orage。"
 
-#: src/orage-appointment-window.c:3612
+#: src/orage-appointment-window.c:3616
 msgid ""
 "Make a note that something happened. For example:\n"
 "Remark that your mother called or first snow came."
@@ -983,72 +983,72 @@ msgstr ""
 "记录妈妈的电话或初雪到来。"
 
 #. location
-#: src/orage-appointment-window.c:3624 src/orage-window-next.c:848
+#: src/orage-appointment-window.c:3628 src/orage-window-next.c:848
 #: src/timezone_selection.c:230 src/timezone_selection.c:235
 msgid "Location"
 msgstr "位置"
 
-#: src/orage-appointment-window.c:3632
+#: src/orage-appointment-window.c:3636
 msgid "All day event"
 msgstr "全天事件"
 
-#: src/orage-appointment-window.c:3655
+#: src/orage-appointment-window.c:3659
 msgid "Set"
 msgstr "设置"
 
-#: src/orage-appointment-window.c:3679
+#: src/orage-appointment-window.c:3683
 msgid "Duration"
 msgstr "持续时间"
 
-#: src/orage-appointment-window.c:3683 src/orage-appointment-window.c:3887
+#: src/orage-appointment-window.c:3687 src/orage-appointment-window.c:3891
 #: src/reminder.c:602
 msgid "days"
 msgstr "天"
 
-#: src/orage-appointment-window.c:3685 src/orage-appointment-window.c:3889
+#: src/orage-appointment-window.c:3689 src/orage-appointment-window.c:3893
 #: src/reminder.c:604
 msgid "hours"
 msgstr "小时"
 
-#: src/orage-appointment-window.c:3687 src/orage-appointment-window.c:3891
+#: src/orage-appointment-window.c:3691 src/orage-appointment-window.c:3895
 #: src/reminder.c:606
 msgid "mins"
 msgstr "分钟"
 
 #. Availability (only for EVENT)
-#: src/orage-appointment-window.c:3698
+#: src/orage-appointment-window.c:3702
 msgid "Availability"
 msgstr "有效性"
 
-#: src/orage-appointment-window.c:3708 src/orage-window-next.c:884
+#: src/orage-appointment-window.c:3712 src/orage-window-next.c:884
 msgid "Done"
 msgstr "做完"
 
 #. categories
-#: src/orage-appointment-window.c:3732
+#: src/orage-appointment-window.c:3736
 msgid "Categories"
 msgstr "类别"
 
-#: src/orage-appointment-window.c:3751
+#: src/orage-appointment-window.c:3755
 msgid ""
 "This is special category, which can be used to color this appointment in "
 "list views."
 msgstr "这个特殊类别可用来在列表视图中将本约会彩色显示。"
 
-#: src/orage-appointment-window.c:3752
+#: src/orage-appointment-window.c:3756
 msgid "_Colour"
 msgstr "颜色(_C)"
 
-#: src/orage-appointment-window.c:3757
+#: src/orage-appointment-window.c:3761
 msgid "update colors for categories."
 msgstr "更新类别的颜色。"
 
 #. priority
-#: src/orage-appointment-window.c:3763
+#: src/orage-appointment-window.c:3767
 msgid "Priority"
 msgstr "优先级"
 
-#: src/orage-appointment-window.c:3767
+#: src/orage-appointment-window.c:3771
 msgid ""
 "If you set this 8 or bigger, the appointment is NOT shown on list windows.\n"
 "You can use that feature to unclutter your list windows, but it makes it more difficult to find this appointment.\n"
@@ -1061,11 +1061,11 @@ msgstr ""
 "(该功能未正式记录，所以您可以更改此默认为 8 的限制。)"
 
 #. note
-#: src/orage-appointment-window.c:3775 src/orage-window-next.c:858
+#: src/orage-appointment-window.c:3779 src/orage-window-next.c:858
 msgid "Note"
 msgstr "备注"
 
-#: src/orage-appointment-window.c:3795
+#: src/orage-appointment-window.c:3799
 msgid ""
 "These shorthand commands take effect immediately:\n"
 "    <D> inserts current date in local date format\n"
@@ -1085,16 +1085,16 @@ msgstr ""
 "    <&Ynnnn> 转换为当前的年减去 nnnn。\n"
 "(例如用来在生日提醒中显示这个人的年龄。)"
 
-#: src/orage-appointment-window.c:3878
+#: src/orage-appointment-window.c:3882
 msgid "Alarm"
 msgstr "闹铃"
 
 #. **** ALARM TIME ****
-#: src/orage-appointment-window.c:3884
+#: src/orage-appointment-window.c:3888
 msgid "Alarm time"
 msgstr "闹铃时间"
 
-#: src/orage-appointment-window.c:3908
+#: src/orage-appointment-window.c:3912
 msgid ""
 "Often you want to get alarm:\n"
 " 1) before Event start\n"
@@ -1106,87 +1106,87 @@ msgstr ""
 " 2) 待办结束前\n"
 " 3) 待办开始后"
 
-#: src/orage-appointment-window.c:3913
+#: src/orage-appointment-window.c:3917
 msgid "Persistent alarm"
 msgstr "持续闹铃"
 
-#: src/orage-appointment-window.c:3918
+#: src/orage-appointment-window.c:3922
 msgid ""
 "Select this if you want Orage to remind you even if it has not been active "
 "when the alarm happened."
 msgstr "闹铃响时，如果您要即使还没激活 Orage 时也提醒您，选择此项。"
 
-#: src/orage-appointment-window.c:3927
+#: src/orage-appointment-window.c:3931
 msgid "Sound"
 msgstr "声音"
 
-#: src/orage-appointment-window.c:3931 src/orage-appointment-window.c:4073
+#: src/orage-appointment-window.c:3935 src/orage-appointment-window.c:4077
 msgid "Use"
 msgstr "使用"
 
-#: src/orage-appointment-window.c:3936
+#: src/orage-appointment-window.c:3940
 msgid "Select this if you want audible alarm"
 msgstr "如果您要可听的闹铃则选择此项"
 
-#: src/orage-appointment-window.c:3941
+#: src/orage-appointment-window.c:3945
 msgid "Sound command is not set"
 msgstr "未设置声音命令"
 
-#: src/orage-appointment-window.c:3970
+#: src/orage-appointment-window.c:3974
 msgid "Repeat alarm sound"
 msgstr "重复闹铃声音"
 
-#: src/orage-appointment-window.c:4001
+#: src/orage-appointment-window.c:4005
 msgid "sec interval"
 msgstr "秒间隔"
 
 #. **** Display Alarm ****
-#: src/orage-appointment-window.c:4010
+#: src/orage-appointment-window.c:4014
 msgid "Visual"
 msgstr "可见"
 
-#: src/orage-appointment-window.c:4014
+#: src/orage-appointment-window.c:4018
 msgid "Use Orage window"
 msgstr "使用 Orage 窗口"
 
-#: src/orage-appointment-window.c:4016
+#: src/orage-appointment-window.c:4020
 msgid "Select this if you want Orage window alarm"
 msgstr "如果您要 Orage 窗口闹铃则选择此项"
 
-#: src/orage-appointment-window.c:4028
+#: src/orage-appointment-window.c:4032
 msgid "Use notification"
 msgstr "使用通知"
 
-#: src/orage-appointment-window.c:4030
+#: src/orage-appointment-window.c:4034
 msgid "Select this if you want notification alarm"
 msgstr "如果您要通知闹铃则选择此项"
 
-#: src/orage-appointment-window.c:4038
+#: src/orage-appointment-window.c:4042
 msgid "Set timeout"
 msgstr "设置超时"
 
-#: src/orage-appointment-window.c:4040
+#: src/orage-appointment-window.c:4044
 msgid "Select this if you want notification to expire automatically"
 msgstr "如果您要通知自动终止则选择此项"
 
-#: src/orage-appointment-window.c:4051
+#: src/orage-appointment-window.c:4055
 msgid "0 = system default expiration time"
 msgstr "0 为系统默认终止时间"
 
-#: src/orage-appointment-window.c:4059
+#: src/orage-appointment-window.c:4063
 msgid "seconds"
 msgstr "秒"
 
 #. **** Procedure Alarm ****
-#: src/orage-appointment-window.c:4069
+#: src/orage-appointment-window.c:4073
 msgid "Procedure"
 msgstr "步骤"
 
-#: src/orage-appointment-window.c:4075
+#: src/orage-appointment-window.c:4079
 msgid "Select this if you want procedure or script alarm"
 msgstr "如果您要步骤或脚本闹铃则选择此项"
 
-#: src/orage-appointment-window.c:4086
+#: src/orage-appointment-window.c:4090
 msgid ""
 "You must enter all escape etc characters yourself.\n"
 "This string is just given to shell to process.\n"
@@ -1206,75 +1206,75 @@ msgstr ""
 "\t<&ST> 约会开始时间\n"
 "\t<&ET> 约会结束时间"
 
-#: src/orage-appointment-window.c:4101
+#: src/orage-appointment-window.c:4105
 msgid "Test this alarm by raising it now"
 msgstr "现在触发闹铃来测试"
 
-#: src/orage-appointment-window.c:4114
+#: src/orage-appointment-window.c:4118
 msgid "<b>Default alarm</b>"
 msgstr "<b>默认闹铃</b>"
 
-#: src/orage-appointment-window.c:4129
+#: src/orage-appointment-window.c:4133
 msgid "Store current settings as default alarm"
 msgstr "把当前设置存为默认闹铃"
 
-#: src/orage-appointment-window.c:4131
+#: src/orage-appointment-window.c:4135
 msgid "_Revert"
 msgstr "还原(_R)"
 
-#: src/orage-appointment-window.c:4140
+#: src/orage-appointment-window.c:4144
 msgid "Set current settings from default alarm"
 msgstr "从默认闹铃设置当前设置"
 
-#: src/orage-appointment-window.c:4205
+#: src/orage-appointment-window.c:4209
 msgid "None"
 msgstr "无"
 
-#: src/orage-appointment-window.c:4205
+#: src/orage-appointment-window.c:4209
 msgid "Daily"
 msgstr "天"
 
-#: src/orage-appointment-window.c:4205
+#: src/orage-appointment-window.c:4209
 msgid "Weekly"
 msgstr "周"
 
-#: src/orage-appointment-window.c:4206
+#: src/orage-appointment-window.c:4210
 msgid "Monthly"
 msgstr "月"
 
-#: src/orage-appointment-window.c:4206
+#: src/orage-appointment-window.c:4210
 msgid "Yearly"
 msgstr "年"
 
-#: src/orage-appointment-window.c:4206
+#: src/orage-appointment-window.c:4210
 msgid "Hourly"
 msgstr "小时"
 
-#: src/orage-appointment-window.c:4221
+#: src/orage-appointment-window.c:4225
 msgid "Recurrence"
 msgstr "重复发生"
 
 #. ****************************** Frequency *******************************
-#: src/orage-appointment-window.c:4228
+#: src/orage-appointment-window.c:4232
 msgid "Frequency"
 msgstr "频率"
 
 #. ****************************** Limit ***********************************
-#: src/orage-appointment-window.c:4269
+#: src/orage-appointment-window.c:4273
 msgid "Limit"
 msgstr "限定"
 
 #. ****************************** TODO base (only for TODOs) **************
-#: src/orage-appointment-window.c:4275
+#: src/orage-appointment-window.c:4279
 msgid "TODO base"
 msgstr "待办基本"
 
 #. exceptions
-#: src/orage-appointment-window.c:4282
+#: src/orage-appointment-window.c:4286
 msgid "Exceptions"
 msgstr "例外"
 
-#: src/orage-appointment-window.c:4308
+#: src/orage-appointment-window.c:4312
 msgid ""
 "Add more exception dates by clicking the calendar days below.\n"
 "Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
@@ -1284,28 +1284,32 @@ msgstr ""
 "例外取决于选择要么排除(-)要么包括(+)。\n"
 "点击数据移除。"
 
-#: src/orage-appointment-window.c:4319
+#: src/orage-appointment-window.c:4323
 msgid "Add excluded date (-)"
 msgstr "添加排除日期(-)"
 
-#: src/orage-appointment-window.c:4321
+#: src/orage-appointment-window.c:4325
 msgid "Excluded days are full days where this appointment is not happening"
 msgstr "排除天数是约会不会发生的全天"
 
-#: src/orage-appointment-window.c:4328
+#: src/orage-appointment-window.c:4332
 msgid "Add included time (+)"
 msgstr "添加包括时间(+)"
 
-#: src/orage-appointment-window.c:4330
+#: src/orage-appointment-window.c:4334
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time"
 msgstr "包括时间与开始时间的时区相同，但可能时间不同"
 
 #. calendars showing the action days
-#: src/orage-appointment-window.c:4349
+#: src/orage-appointment-window.c:4353
 msgid "Action dates"
 msgstr "动作日期"
+
+#: src/orage-import.c:74
+msgid "Unsupported event type"
+msgstr "不支持的事件类型"
 
 #: src/orage-import.c:106
 msgid "<b>Summary</b>"
@@ -1400,7 +1404,7 @@ msgstr "同步命令"
 msgid "Synchronization period in minutes"
 msgstr "同步周期（分钟）"
 
-#: src/orage-sync-edit-dialog.c:166 src/parameters.c:1431 src/reminder.c:638
+#: src/orage-sync-edit-dialog.c:166 src/parameters.c:1430 src/reminder.c:638
 msgid "_Close"
 msgstr "关闭(_C)"
 
@@ -1411,31 +1415,31 @@ msgstr "关闭(_C)"
 msgid "calendar:week_start:0"
 msgstr "calendar:week_start:1"
 
-#: src/orage-week-window.c:454
+#: src/orage-week-window.c:458
 msgid "Back one week"
 msgstr "后退一星期"
 
-#: src/orage-week-window.c:456
+#: src/orage-week-window.c:460
 msgid "Back one day"
 msgstr "后退一天"
 
-#: src/orage-week-window.c:460
+#: src/orage-week-window.c:464
 msgid "Forward one day"
 msgstr "前进一天"
 
-#: src/orage-week-window.c:462
+#: src/orage-week-window.c:466
 msgid "Forward one week"
 msgstr "前进一星期"
 
-#: src/orage-week-window.c:658
+#: src/orage-week-window.c:662
 msgid "Unknown"
 msgstr "未知"
 
-#: src/orage-week-window.c:896
+#: src/orage-week-window.c:900
 msgid "Number of days to show"
 msgstr "要显示的天数"
 
-#: src/orage-week-window.c:1212
+#: src/orage-week-window.c:1216
 msgid "Orage - day view"
 msgstr "Orage-日视图"
 
@@ -1463,12 +1467,12 @@ msgstr "选择今天(_T)"
 #. Help menu
 #. the rest
 #: src/orage-window-classic.c:324 src/orage-window-next.c:147
-#: src/orage-window-next.c:148 src/parameters.c:1428
+#: src/orage-window-next.c:148 src/parameters.c:1427
 msgid "_Help"
 msgstr "帮助(_H)"
 
 #: src/orage-window-classic.c:386 src/orage-window-next.c:777
-#: src/reminder.c:967
+#: src/reminder.c:969
 msgid "No title defined"
 msgstr "未定义标题"
 
@@ -1620,242 +1624,242 @@ msgstr "月"
 msgid "Year"
 msgstr "年"
 
-#: src/parameters.c:646
+#: src/parameters.c:643
 msgid "Remove selected synchronization task."
 msgstr "移除所选同步任务。"
 
-#: src/parameters.c:649
+#: src/parameters.c:646
 msgid "Yes, remove"
 msgstr "是的，移除"
 
-#: src/parameters.c:685
+#: src/parameters.c:684
 msgid "Main settings"
 msgstr "主设置"
 
-#: src/parameters.c:691
+#: src/parameters.c:690
 msgid "Timezone"
 msgstr "时区"
 
-#: src/parameters.c:713
+#: src/parameters.c:712
 msgid "You should always define your local timezone."
 msgstr "您应该总是定义您的本地时区。"
 
-#: src/parameters.c:721
+#: src/parameters.c:720
 msgid "Archive threshold (months)"
 msgstr "归档阈值(月)"
 
-#: src/parameters.c:734
+#: src/parameters.c:733
 msgid "(0 = no archiving)"
 msgstr "(0 为不归档)"
 
-#: src/parameters.c:738
+#: src/parameters.c:737
 msgid "Archiving is used to save time and space when handling events."
 msgstr "处理事件时归档用于节省时间和空间。"
 
-#: src/parameters.c:746
+#: src/parameters.c:745
 msgid "Sound command"
 msgstr "声音命令"
 
-#: src/parameters.c:774
+#: src/parameters.c:773
 msgid "This command is given to shell to make sound in alarms."
 msgstr "此命令传递给 shell 用来放闹铃声音。"
 
-#: src/parameters.c:805
+#: src/parameters.c:804
 msgid "Calendar window"
 msgstr "日历窗口"
 
-#: src/parameters.c:812
+#: src/parameters.c:811
 msgid "Calendar visual details"
 msgstr "日历视觉详情"
 
-#: src/parameters.c:819
+#: src/parameters.c:818
 msgid "Use new user interface"
 msgstr "使用新的用户界面"
 
-#: src/parameters.c:821
+#: src/parameters.c:820
 msgid "Enable the new interface layout (requires restart)"
 msgstr "启用新的界面布局（需要重启）"
 
-#: src/parameters.c:826
+#: src/parameters.c:825
 msgid "Show borders"
 msgstr "显示边框"
 
-#: src/parameters.c:835
+#: src/parameters.c:834
 msgid "Show menu"
 msgstr "显示菜单"
 
-#: src/parameters.c:840
+#: src/parameters.c:839
 msgid "Show day names"
 msgstr "显示天名称"
 
-#: src/parameters.c:849
+#: src/parameters.c:848
 msgid "Show week numbers"
 msgstr "显示周数"
 
-#: src/parameters.c:854
+#: src/parameters.c:853
 msgid "Show month and year"
 msgstr "显示月和年"
 
-#: src/parameters.c:878
+#: src/parameters.c:877
 msgid "Calendar info boxes"
 msgstr "日历信息窗口"
 
-#: src/parameters.c:885
+#: src/parameters.c:884
 msgid "Show todo list"
 msgstr "显示待办列表"
 
-#: src/parameters.c:892
+#: src/parameters.c:891
 msgid "Number of days to show in event window"
 msgstr "在事件窗口中要显示的天数"
 
-#: src/parameters.c:900
+#: src/parameters.c:899
 msgid "0 = do not show event list at all"
 msgstr "0 为绝不显示事件列表"
 
-#: src/parameters.c:914
+#: src/parameters.c:913
 msgid "Calendar visibility"
 msgstr "日历视觉效果"
 
-#: src/parameters.c:920
+#: src/parameters.c:919
 msgid "Show on all desktops"
 msgstr "在所有桌面显示"
 
-#: src/parameters.c:925
+#: src/parameters.c:924
 msgid "Keep on top"
 msgstr "置顶"
 
-#: src/parameters.c:933
+#: src/parameters.c:932
 msgid "Show in taskbar"
 msgstr "在任务栏中显示"
 
-#: src/parameters.c:938
+#: src/parameters.c:937
 msgid "Show in pager"
 msgstr "在页面中显示"
 
-#: src/parameters.c:946
+#: src/parameters.c:945
 msgid "Show in systray"
 msgstr "在系统托盘中显示"
 
-#: src/parameters.c:974
+#: src/parameters.c:973
 msgid "Calendar start"
 msgstr "日历开始"
 
-#: src/parameters.c:980
+#: src/parameters.c:979
 msgid "Show"
 msgstr "显示"
 
-#: src/parameters.c:996
+#: src/parameters.c:995
 msgid "Hide"
 msgstr "隐藏"
 
-#: src/parameters.c:1013
+#: src/parameters.c:1012
 msgid "Minimized"
 msgstr "最小化"
 
-#: src/parameters.c:1039
+#: src/parameters.c:1038
 msgid "On calendar window open"
 msgstr "在日历窗口中打开"
 
-#: src/parameters.c:1045
+#: src/parameters.c:1044
 msgid "Select today's date"
 msgstr "选择今天的日期"
 
-#: src/parameters.c:1062
+#: src/parameters.c:1061
 msgid "Select previously selected date"
 msgstr "选择以前选中的日期"
 
-#: src/parameters.c:1086
+#: src/parameters.c:1085
 msgid "Calendar day double click shows"
 msgstr "在日历的天上双击时显示"
 
-#: src/parameters.c:1092
+#: src/parameters.c:1091
 msgid "Days view"
 msgstr "日视图"
 
-#: src/parameters.c:1108
+#: src/parameters.c:1107
 msgid "Event list"
 msgstr "事件列表"
 
-#: src/parameters.c:1141
+#: src/parameters.c:1140
 msgid "Extra settings"
 msgstr "额外设置"
 
-#: src/parameters.c:1148
+#: src/parameters.c:1147
 msgid "Event list window"
 msgstr "事件列表窗口"
 
-#: src/parameters.c:1155
+#: src/parameters.c:1154
 msgid "Number of extra days to show in event list"
 msgstr "在事件列表中显示的额外天数"
 
-#: src/parameters.c:1165
+#: src/parameters.c:1164
 msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
 msgstr "这只是默认值，您可以在实际的事件列表窗口中更改它。"
 
-#: src/parameters.c:1173
+#: src/parameters.c:1172
 msgid "Show only first repeating event"
 msgstr "仅显示第一个重复事件"
 
-#: src/parameters.c:1190
+#: src/parameters.c:1189
 msgid "Day view window default first day"
 msgstr "日视图窗口默认第一天"
 
-#: src/parameters.c:1197
+#: src/parameters.c:1196
 msgid "First day of week"
 msgstr "每周第一天"
 
-#: src/parameters.c:1214
+#: src/parameters.c:1213
 msgid "Selected day"
 msgstr "选中的天"
 
-#: src/parameters.c:1237 src/parameters.c:1244
+#: src/parameters.c:1236 src/parameters.c:1243
 msgid "Use wakeup timer"
 msgstr "使用唤醒定时器"
 
-#: src/parameters.c:1252
+#: src/parameters.c:1251
 msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
 msgstr "如果 Orage 在挂起或休眠后正常唤醒时有问题则使用此定时器(比如托盘图标没有刷新或闹铃没有启动。)。"
 
-#: src/parameters.c:1262
+#: src/parameters.c:1261
 msgid "Foreign file default visual alarm"
 msgstr "外部文件默认可见闹钟"
 
-#: src/parameters.c:1269
+#: src/parameters.c:1268
 msgid "Orage window"
 msgstr "Orage 窗口"
 
-#: src/parameters.c:1286
+#: src/parameters.c:1285
 msgid "Notify notification"
 msgstr "注意通知"
 
-#: src/parameters.c:1309
+#: src/parameters.c:1308
 msgid "Always quit when asked to close"
 msgstr "要求关闭时总是退出"
 
-#: src/parameters.c:1316
+#: src/parameters.c:1315
 msgid "Always quit"
 msgstr "总是退出"
 
-#: src/parameters.c:1323
+#: src/parameters.c:1322
 msgid ""
 "By default Orage stays open in the background when asked to close. This "
 "option changes Orage to quit and never stay in background when it is asked "
 "to close."
 msgstr "Orage在默认条件下保持在后台打开时要求关闭。该选项使得Orage在要求关闭时退出且不在后台运行。"
 
-#: src/parameters.c:1376
+#: src/parameters.c:1375
 msgid "Synchronization settings"
 msgstr "同步设置"
 
-#: src/parameters.c:1382
+#: src/parameters.c:1381
 msgid "Synchronization sources"
 msgstr "同步来源"
 
-#: src/parameters.c:1408 org.xfce.orage.desktop.in:26
+#: src/parameters.c:1407 org.xfce.orage.desktop.in:26
 msgid "Orage Preferences"
 msgstr "Orage 首选项"
 
@@ -1887,11 +1891,11 @@ msgstr "延期"
 msgid "Remind me again after the specified time"
 msgstr "在指定时间后再次提醒我"
 
-#: src/reminder.c:935
+#: src/reminder.c:937
 msgid "Next active alarms:"
 msgstr "下一个活动闹铃："
 
-#: src/reminder.c:974
+#: src/reminder.c:976
 #, c-format
 msgid ""
 "\n"
@@ -1900,7 +1904,7 @@ msgstr ""
 "\n"
 "%02d 天 %02d 小时 %02d 分钟到：%s"
 
-#: src/reminder.c:988
+#: src/reminder.c:990
 msgid ""
 "\n"
 "No active alarms found"
@@ -4220,11 +4224,11 @@ msgstr "UTC"
 msgid "floating"
 msgstr "浮动"
 
-#: src/tray_icon.c:391
+#: src/tray_icon.c:394
 msgid "New appointment"
 msgstr "新建约会"
 
-#: src/tray_icon.c:407
+#: src/tray_icon.c:410
 msgid "Quit"
 msgstr "退出"
 
