@@ -112,9 +112,10 @@ void orage_css_set_theme (void)
 
     if (errors->str[0])
         g_warning ("failed to parse CSS file '%s': %s", file, errors->str);
+    else
+        g_debug ("CSS theme loaded sucsessfully from '%s'", file);
 
     g_string_free (errors, TRUE);
     g_free (file);
-
     g_object_unref (provider);
 }

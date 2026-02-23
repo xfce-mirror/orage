@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025 Erkki Moorits
+ * Copyright (c) 2025-2026 Erkki Moorits
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -539,7 +539,8 @@ static void orage_window_next_update_help_menu (OrageWindowNext *self,
 
 static GDateTime *orage_window_next_get_first_date (OrageWindowNext *self)
 {
-    const gchar *visible_name = gtk_stack_get_visible_child_name (self->stack_view);
+    const gchar *visible_name =
+        gtk_stack_get_visible_child_name (self->stack_view);
 
     if (g_strcmp0 (MONTH_PAGE, visible_name) == 0)
         return orage_month_view_get_first_date (self->month_view);
@@ -552,7 +553,8 @@ static GDateTime *orage_window_next_get_first_date (OrageWindowNext *self)
 
 static GDateTime *orage_window_next_get_last_date (OrageWindowNext *self)
 {
-    const gchar *visible_name = gtk_stack_get_visible_child_name (self->stack_view);
+    const gchar *visible_name =
+        gtk_stack_get_visible_child_name (self->stack_view);
 
     if (g_strcmp0 (MONTH_PAGE, visible_name) == 0)
         return orage_month_view_get_last_date (self->month_view);
@@ -568,7 +570,8 @@ static void orage_window_next_add_days (OrageWindowNext *self,
 {
     OrageWindow *gen_window;
     GDateTime *gdt;
-    const gchar *visible_name = gtk_stack_get_visible_child_name (self->stack_view);
+    const gchar *visible_name =
+        gtk_stack_get_visible_child_name (self->stack_view);
 
     if (g_strcmp0 (MONTH_PAGE, visible_name) == 0)
     {

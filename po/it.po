@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-01-30 12:56+0100\n"
+"POT-Creation-Date: 2026-02-19 12:56+0100\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: Emanuele Petriglia <inbox@emanuelepetriglia.com>, 2026\n"
 "Language-Team: Italian (https://app.transifex.com/xfce/teams/16840/it/)\n"
@@ -31,7 +31,7 @@ msgstr ""
 msgid "All day"
 msgstr "Tutto il giorno"
 
-#: src/event-list.c:607 src/event-list.c:1431
+#: src/event-list.c:607 src/event-list.c:1435
 msgid "Time"
 msgstr "Ora"
 
@@ -43,7 +43,7 @@ msgstr "Non è stata selezionata alcuna riga."
 msgid "Click a row to select it and after that you can copy it."
 msgstr "Fare clic su una riga per selezionarla e poi copiarla."
 
-#: src/event-list.c:1005
+#: src/event-list.c:1009
 msgid ""
 "You will permanently remove all\n"
 "selected appointments."
@@ -51,29 +51,29 @@ msgstr ""
 "Verranno rimossi in modo permanente\n"
 "tutti gli appuntamenti selezionati."
 
-#: src/event-list.c:1006 src/orage-appointment-window.c:981
-#: src/orage-appointment-window.c:1645 src/parameters.c:647
+#: src/event-list.c:1010 src/orage-appointment-window.c:981
+#: src/orage-appointment-window.c:1644 src/parameters.c:644
 msgid "Do you want to continue?"
 msgstr "Continuare?"
 
-#: src/event-list.c:1007 src/orage-appointment-window.c:1646
-#: src/parameters.c:648
+#: src/event-list.c:1011 src/orage-appointment-window.c:1645
+#: src/parameters.c:645
 msgid "No, cancel the removal"
 msgstr "No, annulla la rimozione"
 
-#: src/event-list.c:1008
+#: src/event-list.c:1012
 msgid "Yes, remove them"
 msgstr "Sì, rimuovili"
 
-#: src/event-list.c:1068 src/orage-appointment-window.c:1743
+#: src/event-list.c:1072 src/orage-appointment-window.c:1743
 #: src/orage-appointment-window.c:1758 src/orage-month-view.c:175
-#: src/orage-week-window.c:529
+#: src/orage-week-window.c:533
 msgid "Pick the date"
 msgstr "Selezionare la data"
 
-#: src/event-list.c:1070 src/event-list.c:1224
+#: src/event-list.c:1074 src/event-list.c:1228
 #: src/orage-appointment-window.c:1745 src/orage-appointment-window.c:1760
-#: src/orage-week-window.c:458 src/orage-week-window.c:531 src/tray_icon.c:383
+#: src/orage-week-window.c:462 src/orage-week-window.c:535 src/tray_icon.c:386
 msgid "Today"
 msgstr "Oggi"
 
@@ -82,81 +82,81 @@ msgstr "Oggi"
 #. File menu stuff
 #. ********* File menu *********
 #. File menu
-#: src/event-list.c:1125 src/interface.c:862
-#: src/orage-appointment-window.c:2914 src/orage-week-window.c:352
+#: src/event-list.c:1129 src/interface.c:865
+#: src/orage-appointment-window.c:2917 src/orage-week-window.c:356
 #: src/orage-window-classic.c:281 src/orage-window-next.c:130
 msgid "_File"
 msgstr "_File"
 
-#: src/event-list.c:1131 src/orage-appointment-window.c:2932
+#: src/event-list.c:1135 src/orage-appointment-window.c:2935
 msgid "D_uplicate"
 msgstr "D_uplica"
 
 #. ********* View menu *********
 #. View menu
-#: src/event-list.c:1148 src/orage-week-window.c:362
+#: src/event-list.c:1152 src/orage-week-window.c:366
 #: src/orage-window-classic.c:310 src/orage-window-next.c:142
 msgid "_View"
 msgstr "_Visualizza"
 
 #. ********* Go menu   *********
-#: src/event-list.c:1167 src/orage-week-window.c:376
+#: src/event-list.c:1171 src/orage-week-window.c:380
 msgid "_Go"
 msgstr "V_ai"
 
-#: src/event-list.c:1213 src/orage-week-window.c:449
+#: src/event-list.c:1217 src/orage-week-window.c:453
 #: src/orage-window-next.c:131
 msgid "New"
 msgstr "Nuovo"
 
-#: src/event-list.c:1215 src/orage-appointment-window.c:3556
+#: src/event-list.c:1219 src/orage-appointment-window.c:3560
 msgid "Duplicate"
 msgstr "Duplica"
 
-#: src/event-list.c:1217 src/orage-appointment-window.c:3561
+#: src/event-list.c:1221 src/orage-appointment-window.c:3565
 msgid "Delete"
 msgstr "Elimina"
 
-#: src/event-list.c:1222
+#: src/event-list.c:1226
 msgid "Back"
 msgstr "Indietro"
 
-#: src/event-list.c:1226
+#: src/event-list.c:1230
 msgid "Forward"
 msgstr "Avanti"
 
-#: src/event-list.c:1231 src/orage-week-window.c:467
+#: src/event-list.c:1235 src/orage-week-window.c:471
 #: src/orage-window-next.c:133
 msgid "Refresh"
 msgstr "Ricarica"
 
-#: src/event-list.c:1233
+#: src/event-list.c:1237
 msgid "Find"
 msgstr "Trova"
 
-#: src/event-list.c:1238 src/interface.c:880 src/orage-week-window.c:472
+#: src/event-list.c:1242 src/interface.c:883 src/orage-week-window.c:476
 #: src/orage-window-next.c:136
 msgid "Close"
 msgstr "Chiudi"
 
-#: src/event-list.c:1240
+#: src/event-list.c:1244
 msgid "Dayview"
 msgstr "Vista per giorno"
 
-#: src/event-list.c:1270 src/orage-appointment-window.c:3591
+#: src/event-list.c:1274 src/orage-appointment-window.c:3595
 #: src/orage-import.c:64
 msgid "Event"
 msgstr "Evento"
 
-#: src/event-list.c:1275
+#: src/event-list.c:1279
 msgid "Extra days to show:"
 msgstr "Giorni aggiuntivi da mostrare:"
 
-#: src/event-list.c:1289
+#: src/event-list.c:1293
 msgid "only first repeating"
 msgstr "solo la prima occorrenza"
 
-#: src/event-list.c:1297
+#: src/event-list.c:1301
 msgid ""
 "Check this if you only want to see the first repeating event. By default all are shown.\n"
 "Note that this also shows all urgencies.\n"
@@ -166,11 +166,11 @@ msgstr ""
 "In questo modo verranno visualizzate le urgenze.\n"
 "Gli eventi ricorrenti potrebbero essere visualizzati in anticipo nell'elenco in quanto viene elencata solo la prima occorrenza."
 
-#: src/event-list.c:1302
+#: src/event-list.c:1306
 msgid "also old"
 msgstr "anche vecchi"
 
-#: src/event-list.c:1307
+#: src/event-list.c:1311
 msgid ""
 "Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
 "Note that extra days selection still defines if newer appointments are listed."
@@ -178,39 +178,39 @@ msgstr ""
 "Selezionare questa opzione per vedere solo i vecchi eventi. L'opzione può essere selezionata solo dopo aver abilitato \"solo la prima ricorrenza\" per evitare la visualizzazione di un elenco molto lungo.\n"
 "La selezione per i giorni aggiuntivi definisce se devono essere elencati i nuovi appuntamenti."
 
-#: src/event-list.c:1328 src/orage-appointment-window.c:3599
+#: src/event-list.c:1332 src/orage-appointment-window.c:3603
 #: src/orage-import.c:67
 msgid "Todo"
 msgstr "Compito"
 
-#: src/event-list.c:1342 src/orage-appointment-window.c:3607
+#: src/event-list.c:1346 src/orage-appointment-window.c:3611
 #: src/orage-import.c:70
 msgid "Journal"
 msgstr "Note del giorno"
 
-#: src/event-list.c:1345
+#: src/event-list.c:1349
 msgid "Journal entries starting from:"
 msgstr "Appuntamenti della giornata a partire da:"
 
-#: src/event-list.c:1370
+#: src/event-list.c:1374
 msgid "Search"
 msgstr "Cerca"
 
-#: src/event-list.c:1373
+#: src/event-list.c:1377
 msgid "Search text "
 msgstr "Cerca testo"
 
-#: src/event-list.c:1439
+#: src/event-list.c:1443
 msgid "Flags"
 msgstr "Attributi"
 
 #. title
-#: src/event-list.c:1447 src/orage-appointment-window.c:3618
+#: src/event-list.c:1451 src/orage-appointment-window.c:3622
 #: src/orage-window-next.c:880 src/orage-window-next.c:898
 msgid "Title"
 msgstr "Nome"
 
-#: src/event-list.c:1473
+#: src/event-list.c:1477
 msgid ""
 "Double click line to edit it.\n"
 "\n"
@@ -238,98 +238,98 @@ msgstr ""
 "\t 5. Tipo di appuntamento:\n"
 "\t\tE=Evento T=Compito J=Note del giorno"
 
-#: src/ical-code.c:837
+#: src/ical-code.c:856
 msgid "Orage default alarm"
 msgstr "Allarme predefinito di Orage"
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
-#: src/interface.c:260 src/orage-appointment-window.c:931 src/parameters.c:390
+#: src/interface.c:269 src/orage-appointment-window.c:931 src/parameters.c:390
 msgid "Select a file..."
 msgstr "Selezionare un file…"
 
-#: src/interface.c:267
+#: src/interface.c:276
 msgid "Calendar files"
 msgstr "File del calendario"
 
-#: src/interface.c:273 src/orage-appointment-window.c:946
+#: src/interface.c:282 src/orage-appointment-window.c:946
 msgid "All Files"
 msgstr "Tutti i file"
 
-#: src/interface.c:646
+#: src/interface.c:654
 msgid "Current foreign files"
 msgstr "File esterni correnti"
 
-#: src/interface.c:669
+#: src/interface.c:677
 msgid "READ ONLY"
 msgstr "SOLO LETTURA"
 
-#: src/interface.c:671
+#: src/interface.c:679
 msgid "READ WRITE"
 msgstr "LETTURA E SCRITTURA"
 
-#: src/interface.c:676 src/orage-appointment-window.c:2370
+#: src/interface.c:684 src/orage-appointment-window.c:2372
 msgid "_Remove"
 msgstr "_Rimuovi"
 
-#: src/interface.c:695
+#: src/interface.c:703
 msgid "***** No foreign files *****"
 msgstr "***** Nessun file esterno *****"
 
-#: src/interface.c:710
+#: src/interface.c:718
 msgid "Foreign file add failed"
 msgstr "Impossibile aggiungere il file esterno"
 
-#: src/interface.c:718
+#: src/interface.c:725
 msgid "Orage can only handle 10 foreign files. Limit reached"
 msgstr ""
 "Orage può gestire al massimo 10 file esterni. È stato raggiunto il limite."
 
-#: src/interface.c:728
+#: src/interface.c:735
 msgid "Filename is empty."
 msgstr "Il nome del file è vuoto."
 
-#: src/interface.c:738
+#: src/interface.c:745
 msgid "Name is empty."
 msgstr "Il nome è vuoto."
 
-#: src/interface.c:749
+#: src/interface.c:755
 msgid "File does not exist."
 msgstr "Il file non esiste."
 
-#: src/interface.c:761
+#: src/interface.c:766
 msgid "Same filename already exists in Orage."
 msgstr "Un file con lo stesso nome esiste già in Orage."
 
-#: src/interface.c:772
+#: src/interface.c:776
 msgid "Same name already exists in Orage."
 msgstr "Lo stesso nome esiste già in Orage."
 
-#: src/interface.c:1026
+#: src/interface.c:1029
 msgid "Import/export"
 msgstr "Importa/esporta"
 
-#: src/interface.c:1033
+#: src/interface.c:1036
 msgid "Import"
 msgstr "Importa"
 
-#: src/interface.c:1041
+#: src/interface.c:1044
 msgid "Read from file:"
 msgstr "Leggi dal file:"
 
-#: src/interface.c:1051 src/interface.c:1097 src/interface.c:1274
-#: src/interface.c:1372 src/interface.c:1461
-#: src/orage-appointment-window.c:3957 src/parameters.c:395
-#: src/parameters.c:764 src/reminder.c:631
+#: src/interface.c:1054 src/interface.c:1100 src/interface.c:1277
+#: src/interface.c:1375 src/interface.c:1464
+#: src/orage-appointment-window.c:3961 src/parameters.c:395
+#: src/parameters.c:763 src/reminder.c:631
 msgid "_Open"
 msgstr "_Apri"
 
-#: src/interface.c:1058 src/interface.c:1104 src/interface.c:1281
-#: src/interface.c:1379 src/orage-appointment-window.c:4120
+#: src/interface.c:1061 src/interface.c:1107 src/interface.c:1284
+#: src/interface.c:1382 src/orage-appointment-window.c:4124
 msgid "_Save"
 msgstr "_Salva"
 
-#: src/interface.c:1071
+#: src/interface.c:1074
 msgid ""
 "Separate filenames with comma(,).\n"
 " NOTE: comma is not valid character in filenames for Orage."
@@ -337,27 +337,27 @@ msgstr ""
 "Separare i nomi dei file con virgole(,).\n"
 "NOTA: la virgola non è un carattere valido nei nomi di file per Orage."
 
-#: src/interface.c:1076
+#: src/interface.c:1079
 msgid "Export"
 msgstr "Esporta"
 
-#: src/interface.c:1084
+#: src/interface.c:1087
 msgid "Write to file:"
 msgstr "Scrivi sul file:"
 
-#: src/interface.c:1119 src/interface.c:1137
+#: src/interface.c:1122 src/interface.c:1140
 msgid "Select"
 msgstr "Seleziona"
 
-#: src/interface.c:1124
+#: src/interface.c:1127
 msgid "All appointments"
 msgstr "Tutti gli appuntamenti"
 
-#: src/interface.c:1143
+#: src/interface.c:1146
 msgid "Named appointments:"
 msgstr "Solo determinati appuntamenti:"
 
-#: src/interface.c:1162
+#: src/interface.c:1165
 msgid ""
 "Note that only main file appointments are read.\n"
 "Archived and Foreign events are not exported."
@@ -365,7 +365,7 @@ msgstr ""
 "Si noti che soltanto gli appuntamenti del file principale sono letti;\n"
 "gli eventi archiviati ed esterni non vengono esportati."
 
-#: src/interface.c:1165
+#: src/interface.c:1168
 msgid ""
 "Note that only main file appointments are read.\n"
 "Foreign events are not exported."
@@ -373,37 +373,37 @@ msgstr ""
 "Si noti che vengono letti soltanto gli appuntamenti del file principale;\n"
 "gli eventi archiviati ed esterni non vengono esportati."
 
-#: src/interface.c:1168
+#: src/interface.c:1171
 msgid "You can easily drag these from event-list window."
 msgstr "È possibile trascinarli facilmente dalla finestra della lista eventi."
 
-#: src/interface.c:1170
+#: src/interface.c:1173
 msgid "Orage appointment UIDs separated by commas."
 msgstr "Gli UID degli appuntamenti di Orage separati da virgole."
 
-#: src/interface.c:1176
+#: src/interface.c:1179
 msgid "Archive"
 msgstr "Archivia"
 
-#: src/interface.c:1185 src/interface.c:1207
-#: src/orage-appointment-window.c:4099
+#: src/interface.c:1188 src/interface.c:1210
+#: src/orage-appointment-window.c:4103
 msgid "_Execute"
 msgstr "_Esegui"
 
-#: src/interface.c:1191
+#: src/interface.c:1194
 #, c-format
 msgid "Archive now (threshold: %d months)"
 msgstr "Archivia subito (limite: %d mesi)"
 
-#: src/interface.c:1202
+#: src/interface.c:1205
 msgid "You can change archive threshold in parameters"
 msgstr "È possibile modificare il limite dell'archivio nei parametri"
 
-#: src/interface.c:1214
+#: src/interface.c:1217
 msgid "Revert archive now"
 msgstr "Ripristina subito l'archivio"
 
-#: src/interface.c:1221
+#: src/interface.c:1224
 msgid ""
 "Return all archived events into main orage file and remove arch file.\n"
 "This is useful for example when doing export and moving orage\n"
@@ -413,31 +413,31 @@ msgstr ""
 "ciò è utile ad esempio quando si esporta e si trasferiscono gli\n"
 "appuntamenti di Orage verso un altro sistema."
 
-#: src/interface.c:1233
+#: src/interface.c:1236
 msgid "Orage files"
 msgstr "File di Orage"
 
-#: src/interface.c:1240
+#: src/interface.c:1243
 msgid "Orage main calendar file"
 msgstr "File del calendario principale di Orage"
 
-#: src/interface.c:1249 src/interface.c:1348
+#: src/interface.c:1252 src/interface.c:1351
 msgid "Current file:"
 msgstr "File corrente:"
 
-#: src/interface.c:1262 src/interface.c:1361
+#: src/interface.c:1265 src/interface.c:1364
 msgid "New file:"
 msgstr "Nuovo file:"
 
-#: src/interface.c:1292 src/interface.c:1390
+#: src/interface.c:1295 src/interface.c:1393
 msgid "Action options:"
 msgstr "Opzioni dell'azione:"
 
-#: src/interface.c:1296 src/interface.c:1394
+#: src/interface.c:1299 src/interface.c:1397
 msgid "Rename"
 msgstr "Rinomina"
 
-#: src/interface.c:1303
+#: src/interface.c:1306
 msgid ""
 "Orage internal file rename only.\n"
 "Does not touch external filesystem at all.\n"
@@ -447,54 +447,54 @@ msgstr ""
 "tale opzione non ha alcun effetto sul file system esterno.\n"
 "Il nuovo file deve esistere."
 
-#: src/interface.c:1307 src/interface.c:1402
+#: src/interface.c:1310 src/interface.c:1405
 msgid "Copy"
 msgstr "Copia"
 
-#: src/interface.c:1314
+#: src/interface.c:1317
 msgid "Current file is copied and stays unmodified in the old place."
 msgstr ""
 "Il file corrente viene copiato e rimane immutato nella posizione precedente."
 
-#: src/interface.c:1318 src/interface.c:1410
+#: src/interface.c:1321 src/interface.c:1413
 msgid "Move"
 msgstr "Sposta"
 
-#: src/interface.c:1325
+#: src/interface.c:1328
 msgid "Current file is moved and vanishes from the old place."
 msgstr ""
 "Il file corrente viene spostato e cancellato dalla posizione precedente."
 
-#: src/interface.c:1339
+#: src/interface.c:1342
 msgid "Archive file"
 msgstr "File di archivio"
 
-#: src/interface.c:1436
+#: src/interface.c:1439
 msgid "Foreign files"
 msgstr "File esterni"
 
-#: src/interface.c:1443
+#: src/interface.c:1446
 msgid "Add new foreign file"
 msgstr "Aggiungi un nuovo file esterno"
 
-#: src/interface.c:1451
+#: src/interface.c:1454
 msgid "Foreign file:"
 msgstr "File esterno:"
 
-#: src/interface.c:1468 src/orage-appointment-window.c:2443
-#: src/parameters.c:1388
+#: src/interface.c:1471 src/orage-appointment-window.c:2445
+#: src/parameters.c:1387
 msgid "_Add"
 msgstr "_Aggiungi"
 
-#: src/interface.c:1483
+#: src/interface.c:1486
 msgid "Visible name:"
 msgstr "Nome visibile:"
 
-#: src/interface.c:1493
+#: src/interface.c:1496
 msgid "Read only"
 msgstr "Sola lettura"
 
-#: src/interface.c:1503
+#: src/interface.c:1506
 msgid ""
 "Set this if you want to make sure that this file is never modified by Orage.\n"
 "Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
@@ -502,12 +502,12 @@ msgstr ""
 "Impostare questa opzione se si vuole essere sicuri che questo file non verrà mai modificato da Orage.\n"
 "Notare che modificare i file esterni può renderli incompatibili con l'applicazione originale dalla quale essi provengono!"
 
-#: src/interface.c:1505
+#: src/interface.c:1508
 msgid "This internal name is displayed to user instead of file name."
 msgstr ""
 "Questo nome interno è visualizzato all'utente invece del nome del file."
 
-#: src/interface.c:1519
+#: src/interface.c:1522
 msgid "Exchange data - Orage"
 msgstr "Scambio dati - Orage"
 
@@ -609,7 +609,7 @@ msgstr "Mostra versione di Orage"
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
 #. end time
 #: src/orage-appointment-window.c:524 src/orage-appointment-window.c:564
-#: src/orage-appointment-window.c:3652 src/orage-window-next.c:901
+#: src/orage-appointment-window.c:3656 src/orage-window-next.c:901
 msgid "End"
 msgstr "Fine"
 
@@ -637,7 +637,7 @@ msgstr "Sì, ignora le modifiche e chiudi"
 msgid "The end of this appointment is earlier than the beginning."
 msgstr "La fine di questo appuntamento è precedente al suo inizio."
 
-#: src/orage-appointment-window.c:1425 src/orage-appointment-window.c:2232
+#: src/orage-appointment-window.c:1425 src/orage-appointment-window.c:2234
 msgid "Not set"
 msgstr "Non impostato"
 
@@ -660,11 +660,11 @@ msgstr ""
 "Errore aggiungendo l'appuntamento. Per maggiori dettagli consultare il file "
 "di registro."
 
-#: src/orage-appointment-window.c:1591
+#: src/orage-appointment-window.c:1590
 msgid "Appointment update failed."
 msgstr "Impossibile aggiornare l'appuntamento."
 
-#: src/orage-appointment-window.c:1592
+#: src/orage-appointment-window.c:1591
 msgid ""
 "Look more details from the log file. (Perhaps file was updated external from"
 " Orage?)"
@@ -672,213 +672,213 @@ msgstr ""
 "Per maggiori dettagli controllare il file di registro (il file è forse stato"
 " aggiornato al di fuori di Orage?)."
 
-#: src/orage-appointment-window.c:1644
+#: src/orage-appointment-window.c:1643
 msgid "This appointment will be permanently removed."
 msgstr "Questo appuntamento verrà rimosso in modo permanente."
 
-#: src/orage-appointment-window.c:1647
+#: src/orage-appointment-window.c:1646
 msgid "Yes, remove it"
 msgstr "Sì, rimuovi"
 
-#: src/orage-appointment-window.c:2184
+#: src/orage-appointment-window.c:2186
 msgid "This appointment does not exist."
 msgstr "Questo appuntamento non esiste."
 
-#: src/orage-appointment-window.c:2185
+#: src/orage-appointment-window.c:2187
 msgid "It was probably removed, please refresh your screen."
 msgstr "Probabilmente è stato rimosso, aggiornare la schermata."
 
-#: src/orage-appointment-window.c:2397
+#: src/orage-appointment-window.c:2399
 msgid "Current categories"
 msgstr "Categorie correnti"
 
-#: src/orage-appointment-window.c:2419
+#: src/orage-appointment-window.c:2421
 msgid "Add new category with color"
 msgstr "Aggiunge una nuova categoria con un colore"
 
-#: src/orage-appointment-window.c:2428
+#: src/orage-appointment-window.c:2430
 msgid "Category:"
 msgstr "Categoria:"
 
-#: src/orage-appointment-window.c:2471
+#: src/orage-appointment-window.c:2473
 msgid "Colors of categories - Orage"
 msgstr "Colori delle categorie - Orage"
 
-#: src/orage-appointment-window.c:2517
+#: src/orage-appointment-window.c:2520
 msgid "*** COPY ***"
 msgstr " *** COPIA ***"
 
-#: src/orage-appointment-window.c:2570 src/orage-appointment-window.c:3869
+#: src/orage-appointment-window.c:2573 src/orage-appointment-window.c:3873
 msgid "Before Start"
 msgstr "Prima dell'inizio"
 
-#: src/orage-appointment-window.c:2570 src/orage-appointment-window.c:3869
+#: src/orage-appointment-window.c:2573 src/orage-appointment-window.c:3873
 msgid "Before End"
 msgstr "Prima della fine"
 
-#: src/orage-appointment-window.c:2570 src/orage-appointment-window.c:3870
+#: src/orage-appointment-window.c:2573 src/orage-appointment-window.c:3874
 msgid "After Start"
 msgstr "Dopo l'inizio"
 
-#: src/orage-appointment-window.c:2570 src/orage-appointment-window.c:3870
+#: src/orage-appointment-window.c:2573 src/orage-appointment-window.c:3874
 msgid "After End"
 msgstr "Dopo la fine"
 
 #. window title
-#: src/orage-appointment-window.c:2887
+#: src/orage-appointment-window.c:2890
 msgid "New appointment - Orage"
 msgstr "Nuovo appuntamento - Orage"
 
-#: src/orage-appointment-window.c:2920
+#: src/orage-appointment-window.c:2923
 msgid "Sav_e and close"
 msgstr "Salva _e chiudi"
 
-#: src/orage-appointment-window.c:3235
+#: src/orage-appointment-window.c:3239
 msgid "first"
 msgstr "primo"
 
-#: src/orage-appointment-window.c:3235
+#: src/orage-appointment-window.c:3239
 msgid "second"
 msgstr "secondo"
 
-#: src/orage-appointment-window.c:3235
+#: src/orage-appointment-window.c:3239
 msgid "third"
 msgstr "terzo"
 
-#: src/orage-appointment-window.c:3235
+#: src/orage-appointment-window.c:3239
 msgid "fourth"
 msgstr "quarto"
 
-#: src/orage-appointment-window.c:3235
+#: src/orage-appointment-window.c:3239
 msgid "last"
 msgstr "ultimo"
 
-#: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
+#: src/orage-appointment-window.c:3249 src/orage-month-view.c:284
 msgid "Monday"
 msgstr "Lunedì"
 
-#: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
+#: src/orage-appointment-window.c:3249 src/orage-month-view.c:284
 msgid "Tuesday"
 msgstr "Martedì"
 
-#: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
+#: src/orage-appointment-window.c:3249 src/orage-month-view.c:284
 msgid "Wednesday"
 msgstr "Mercoledì"
 
-#: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
+#: src/orage-appointment-window.c:3249 src/orage-month-view.c:284
 msgid "Thursday"
 msgstr "Giovedì"
 
-#: src/orage-appointment-window.c:3245 src/orage-month-view.c:284
+#: src/orage-appointment-window.c:3249 src/orage-month-view.c:284
 msgid "Friday"
 msgstr "Venerdì"
 
-#: src/orage-appointment-window.c:3246 src/orage-month-view.c:285
+#: src/orage-appointment-window.c:3250 src/orage-month-view.c:285
 msgid "Saturday"
 msgstr "Sabato"
 
-#: src/orage-appointment-window.c:3246 src/orage-month-view.c:285
+#: src/orage-appointment-window.c:3250 src/orage-month-view.c:285
 msgid "Sunday"
 msgstr "Domenica"
 
-#: src/orage-appointment-window.c:3259 src/orage-appointment-window.c:3292
-#: src/orage-appointment-window.c:3399 src/orage-appointment-window.c:3433
+#: src/orage-appointment-window.c:3263 src/orage-appointment-window.c:3296
+#: src/orage-appointment-window.c:3403 src/orage-appointment-window.c:3437
 msgid "Every"
 msgstr "Ogni"
 
-#: src/orage-appointment-window.c:3264
+#: src/orage-appointment-window.c:3268
 msgid "day(s)"
 msgstr "giorno (giorni)"
 
-#: src/orage-appointment-window.c:3281
+#: src/orage-appointment-window.c:3285
 msgid "Mon"
 msgstr "Lun"
 
-#: src/orage-appointment-window.c:3281
+#: src/orage-appointment-window.c:3285
 msgid "Tue"
 msgstr "Mar"
 
-#: src/orage-appointment-window.c:3281
+#: src/orage-appointment-window.c:3285
 msgid "Wed"
 msgstr "Mer"
 
-#: src/orage-appointment-window.c:3281
+#: src/orage-appointment-window.c:3285
 msgid "Thu"
 msgstr "Gio"
 
-#: src/orage-appointment-window.c:3281
+#: src/orage-appointment-window.c:3285
 msgid "Fri"
 msgstr "Ven"
 
-#: src/orage-appointment-window.c:3281
+#: src/orage-appointment-window.c:3285
 msgid "Sat"
 msgstr "Sab"
 
-#: src/orage-appointment-window.c:3281
+#: src/orage-appointment-window.c:3285
 msgid "Sun"
 msgstr "Dom"
 
-#: src/orage-appointment-window.c:3299
+#: src/orage-appointment-window.c:3303
 msgid "week(s) on:"
 msgstr "settimana (settimane) il:"
 
-#: src/orage-appointment-window.c:3335
+#: src/orage-appointment-window.c:3339
 msgid "From the beginning of the month:"
 msgstr "Dall'inizio del mese:"
 
-#: src/orage-appointment-window.c:3348
+#: src/orage-appointment-window.c:3352
 msgid "From the end of the month:"
 msgstr "Dalla fine del mese:"
 
-#: src/orage-appointment-window.c:3361
+#: src/orage-appointment-window.c:3365
 msgid "Every:"
 msgstr "Ogni:"
 
-#: src/orage-appointment-window.c:3389
+#: src/orage-appointment-window.c:3393
 msgid "January"
 msgstr "Gennaio"
 
-#: src/orage-appointment-window.c:3389
+#: src/orage-appointment-window.c:3393
 msgid "February"
 msgstr "Febbraio"
 
-#: src/orage-appointment-window.c:3389
+#: src/orage-appointment-window.c:3393
 msgid "March"
 msgstr "Marzo"
 
-#: src/orage-appointment-window.c:3389
+#: src/orage-appointment-window.c:3393
 msgid "April"
 msgstr "Aprile"
 
-#: src/orage-appointment-window.c:3389
+#: src/orage-appointment-window.c:3393
 msgid "May"
 msgstr "Maggio"
 
-#: src/orage-appointment-window.c:3390
+#: src/orage-appointment-window.c:3394
 msgid "June"
 msgstr "Giugno"
 
-#: src/orage-appointment-window.c:3390
+#: src/orage-appointment-window.c:3394
 msgid "July"
 msgstr "Luglio"
 
-#: src/orage-appointment-window.c:3390
+#: src/orage-appointment-window.c:3394
 msgid "August"
 msgstr "Agosto"
 
-#: src/orage-appointment-window.c:3390
+#: src/orage-appointment-window.c:3394
 msgid "September"
 msgstr "Settembre"
 
-#: src/orage-appointment-window.c:3390
+#: src/orage-appointment-window.c:3394
 msgid "October"
 msgstr "Ottobre"
 
-#: src/orage-appointment-window.c:3391
+#: src/orage-appointment-window.c:3395
 msgid "November"
 msgstr "Novembre"
 
-#: src/orage-appointment-window.c:3391
+#: src/orage-appointment-window.c:3395
 msgid "December"
 msgstr "Dicembre"
 
@@ -886,43 +886,43 @@ msgstr "Dicembre"
 #. * "second Thursday of August". In some languages ​​it is not necessary to
 #. use
 #. * the string "of", it can be replaced with an empty string.
-#: src/orage-appointment-window.c:3407
+#: src/orage-appointment-window.c:3411
 msgid "of"
 msgstr "di"
 
-#: src/orage-appointment-window.c:3438
+#: src/orage-appointment-window.c:3442
 msgid "hour(s)"
 msgstr "ora (ore)"
 
-#: src/orage-appointment-window.c:3474
+#: src/orage-appointment-window.c:3478
 msgid "Repeat forever"
 msgstr "Ripeti per sempre"
 
-#: src/orage-appointment-window.c:3479
+#: src/orage-appointment-window.c:3483
 msgid "Repeat"
 msgstr "Ripeti"
 
-#: src/orage-appointment-window.c:3487 src/orage-appointment-window.c:3985
+#: src/orage-appointment-window.c:3491 src/orage-appointment-window.c:3989
 msgid "times"
 msgstr "volte"
 
-#: src/orage-appointment-window.c:3493
+#: src/orage-appointment-window.c:3497
 msgid "Repeat until"
 msgstr "Ripeti fino al"
 
 #. start time
-#: src/orage-appointment-window.c:3511 src/orage-appointment-window.c:3637
-#: src/orage-week-window.c:888 src/orage-window-next.c:882
+#: src/orage-appointment-window.c:3515 src/orage-appointment-window.c:3641
+#: src/orage-week-window.c:892 src/orage-window-next.c:882
 #: src/orage-window-next.c:900
 msgid "Start"
 msgstr "Inizio"
 
 #. completed (only for TODO)
-#: src/orage-appointment-window.c:3516 src/orage-appointment-window.c:3705
+#: src/orage-appointment-window.c:3520 src/orage-appointment-window.c:3709
 msgid "Completed"
 msgstr "Completato"
 
-#: src/orage-appointment-window.c:3519
+#: src/orage-appointment-window.c:3523
 msgid ""
 "TODO reoccurs regularly starting on start time and repeating after each "
 "interval no matter when it was last completed"
@@ -931,7 +931,7 @@ msgstr ""
 "dopo ogni intervallo indipendentemente da quando è stato completato l'ultima"
 " volta"
 
-#: src/orage-appointment-window.c:3521
+#: src/orage-appointment-window.c:3525
 msgid ""
 "TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
 "(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
@@ -939,36 +939,36 @@ msgstr ""
 "La ricorrenza del compito è basata sul tempo di completamento e si ripete dopo un intervallo calcolato a partire dall'ultimo completamento.\n"
 "(Si noti che si può non dire niente in merito allo storico dei compiti dato che la base della ricorrenza viene modificata a ogni completamento)"
 
-#: src/orage-appointment-window.c:3547
+#: src/orage-appointment-window.c:3551
 msgid "Save"
 msgstr "Salva"
 
-#: src/orage-appointment-window.c:3549
+#: src/orage-appointment-window.c:3553
 msgid "Save and close"
 msgstr "Salva e chiudi"
 
-#: src/orage-appointment-window.c:3554
+#: src/orage-appointment-window.c:3558
 msgid "Revert"
 msgstr "Ripristina"
 
-#: src/orage-appointment-window.c:3579
+#: src/orage-appointment-window.c:3583
 msgid "Free"
 msgstr "Libero"
 
-#: src/orage-appointment-window.c:3579
+#: src/orage-appointment-window.c:3583
 msgid "Busy"
 msgstr "Occupato"
 
-#: src/orage-appointment-window.c:3583
+#: src/orage-appointment-window.c:3587
 msgid "General"
 msgstr "Generale"
 
 #. type
-#: src/orage-appointment-window.c:3589
+#: src/orage-appointment-window.c:3593
 msgid "Type"
 msgstr "Tipo"
 
-#: src/orage-appointment-window.c:3596
+#: src/orage-appointment-window.c:3600
 msgid ""
 "Event that will happen sometime. For example:\n"
 "Meeting or birthday or TV show."
@@ -976,7 +976,7 @@ msgstr ""
 "Evento che accadrà un giorno, per esempio:\n"
 "un incontro, un compleanno od uno spettacolo televisivo."
 
-#: src/orage-appointment-window.c:3604
+#: src/orage-appointment-window.c:3608
 msgid ""
 "Something that you should do sometime. For example:\n"
 "Wash your car or test new version of Orage."
@@ -984,7 +984,7 @@ msgstr ""
 "Qualcosa che dovrebbe essere fatto prima o poi, per esempio:\n"
 "lavare la propria auto o provare la nuova versione di Orage."
 
-#: src/orage-appointment-window.c:3612
+#: src/orage-appointment-window.c:3616
 msgid ""
 "Make a note that something happened. For example:\n"
 "Remark that your mother called or first snow came."
@@ -993,53 +993,53 @@ msgstr ""
 "ricordarsi che la mamma ha chiamato o che è scesa la prima neve."
 
 #. location
-#: src/orage-appointment-window.c:3624 src/orage-window-next.c:848
+#: src/orage-appointment-window.c:3628 src/orage-window-next.c:848
 #: src/timezone_selection.c:230 src/timezone_selection.c:235
 msgid "Location"
 msgstr "Località"
 
-#: src/orage-appointment-window.c:3632
+#: src/orage-appointment-window.c:3636
 msgid "All day event"
 msgstr "Evento che occupa tutto il giorno"
 
-#: src/orage-appointment-window.c:3655
+#: src/orage-appointment-window.c:3659
 msgid "Set"
 msgstr "Imposta"
 
-#: src/orage-appointment-window.c:3679
+#: src/orage-appointment-window.c:3683
 msgid "Duration"
 msgstr "Durata"
 
-#: src/orage-appointment-window.c:3683 src/orage-appointment-window.c:3887
+#: src/orage-appointment-window.c:3687 src/orage-appointment-window.c:3891
 #: src/reminder.c:602
 msgid "days"
 msgstr "giorni"
 
-#: src/orage-appointment-window.c:3685 src/orage-appointment-window.c:3889
+#: src/orage-appointment-window.c:3689 src/orage-appointment-window.c:3893
 #: src/reminder.c:604
 msgid "hours"
 msgstr "ore"
 
-#: src/orage-appointment-window.c:3687 src/orage-appointment-window.c:3891
+#: src/orage-appointment-window.c:3691 src/orage-appointment-window.c:3895
 #: src/reminder.c:606
 msgid "mins"
 msgstr "minuti"
 
 #. Availability (only for EVENT)
-#: src/orage-appointment-window.c:3698
+#: src/orage-appointment-window.c:3702
 msgid "Availability"
 msgstr "Disponibilità"
 
-#: src/orage-appointment-window.c:3708 src/orage-window-next.c:884
+#: src/orage-appointment-window.c:3712 src/orage-window-next.c:884
 msgid "Done"
 msgstr "Fatto"
 
 #. categories
-#: src/orage-appointment-window.c:3732
+#: src/orage-appointment-window.c:3736
 msgid "Categories"
 msgstr "Categorie"
 
-#: src/orage-appointment-window.c:3751
+#: src/orage-appointment-window.c:3755
 msgid ""
 "This is special category, which can be used to color this appointment in "
 "list views."
@@ -1047,20 +1047,20 @@ msgstr ""
 "Questa è una categoria speciale, che può essere usata per colorare questo "
 "appuntamento nella visualizzazione a elenco."
 
-#: src/orage-appointment-window.c:3752
+#: src/orage-appointment-window.c:3756
 msgid "_Colour"
 msgstr "_Colore"
 
-#: src/orage-appointment-window.c:3757
+#: src/orage-appointment-window.c:3761
 msgid "update colors for categories."
 msgstr "Aggiorna i colori per categorie."
 
 #. priority
-#: src/orage-appointment-window.c:3763
+#: src/orage-appointment-window.c:3767
 msgid "Priority"
 msgstr "Priorità"
 
-#: src/orage-appointment-window.c:3767
+#: src/orage-appointment-window.c:3771
 msgid ""
 "If you set this 8 or bigger, the appointment is NOT shown on list windows.\n"
 "You can use that feature to unclutter your list windows, but it makes it more difficult to find this appointment.\n"
@@ -1073,11 +1073,11 @@ msgstr ""
 "(C'è un parametro non documentato che permette di modificare il limite predefinito pari a 8)."
 
 #. note
-#: src/orage-appointment-window.c:3775 src/orage-window-next.c:858
+#: src/orage-appointment-window.c:3779 src/orage-window-next.c:858
 msgid "Note"
 msgstr "Commento"
 
-#: src/orage-appointment-window.c:3795
+#: src/orage-appointment-window.c:3799
 msgid ""
 "These shorthand commands take effect immediately:\n"
 "    <D> inserts current date in local date format\n"
@@ -1097,16 +1097,16 @@ msgstr ""
 "    <&Ynnnn> è tradotto in anno corrente meno nnnn.\n"
 "(Può essere utilizzato per esempio in promemoria di compleanni per sapere quanti anni ha la persona)"
 
-#: src/orage-appointment-window.c:3878
+#: src/orage-appointment-window.c:3882
 msgid "Alarm"
 msgstr "Allarme"
 
 #. **** ALARM TIME ****
-#: src/orage-appointment-window.c:3884
+#: src/orage-appointment-window.c:3888
 msgid "Alarm time"
 msgstr "Ora dell'allarme"
 
-#: src/orage-appointment-window.c:3908
+#: src/orage-appointment-window.c:3912
 msgid ""
 "Often you want to get alarm:\n"
 " 1) before Event start\n"
@@ -1118,11 +1118,11 @@ msgstr ""
 " 2) prima che un compito sia terminato\n"
 " 3) dopo che un compito sia iniziato"
 
-#: src/orage-appointment-window.c:3913
+#: src/orage-appointment-window.c:3917
 msgid "Persistent alarm"
 msgstr "Allarme persistente"
 
-#: src/orage-appointment-window.c:3918
+#: src/orage-appointment-window.c:3922
 msgid ""
 "Select this if you want Orage to remind you even if it has not been active "
 "when the alarm happened."
@@ -1130,83 +1130,83 @@ msgstr ""
 "Selezionare questa opzione per fare in modo che Orage avvisi comunque, anche"
 " se non è attivo al momento dell'allarme."
 
-#: src/orage-appointment-window.c:3927
+#: src/orage-appointment-window.c:3931
 msgid "Sound"
 msgstr "Suono"
 
-#: src/orage-appointment-window.c:3931 src/orage-appointment-window.c:4073
+#: src/orage-appointment-window.c:3935 src/orage-appointment-window.c:4077
 msgid "Use"
 msgstr "Utilizza"
 
-#: src/orage-appointment-window.c:3936
+#: src/orage-appointment-window.c:3940
 msgid "Select this if you want audible alarm"
 msgstr "Selezionare questa opzione se si desidera un allarme acustico"
 
-#: src/orage-appointment-window.c:3941
+#: src/orage-appointment-window.c:3945
 msgid "Sound command is not set"
 msgstr "Comando audio non impostato"
 
-#: src/orage-appointment-window.c:3970
+#: src/orage-appointment-window.c:3974
 msgid "Repeat alarm sound"
 msgstr "Ripeti il suono dell'allarme"
 
-#: src/orage-appointment-window.c:4001
+#: src/orage-appointment-window.c:4005
 msgid "sec interval"
 msgstr "intervallo in secondi"
 
 #. **** Display Alarm ****
-#: src/orage-appointment-window.c:4010
+#: src/orage-appointment-window.c:4014
 msgid "Visual"
 msgstr "Visuale"
 
-#: src/orage-appointment-window.c:4014
+#: src/orage-appointment-window.c:4018
 msgid "Use Orage window"
 msgstr "Utilizza la finestra di Orage"
 
-#: src/orage-appointment-window.c:4016
+#: src/orage-appointment-window.c:4020
 msgid "Select this if you want Orage window alarm"
 msgstr ""
 "Selezionare questa opzione se si desidera ricevere l'allarme della finestra "
 "di Orage"
 
-#: src/orage-appointment-window.c:4028
+#: src/orage-appointment-window.c:4032
 msgid "Use notification"
 msgstr "Usa notifica"
 
-#: src/orage-appointment-window.c:4030
+#: src/orage-appointment-window.c:4034
 msgid "Select this if you want notification alarm"
 msgstr "Selezionare questa opzione per ricevere un allarme di notifica"
 
-#: src/orage-appointment-window.c:4038
+#: src/orage-appointment-window.c:4042
 msgid "Set timeout"
 msgstr "Imposta timeout"
 
-#: src/orage-appointment-window.c:4040
+#: src/orage-appointment-window.c:4044
 msgid "Select this if you want notification to expire automatically"
 msgstr ""
 "Selezionare questa opzione se si desidera che la notifica scada "
 "automaticamente"
 
-#: src/orage-appointment-window.c:4051
+#: src/orage-appointment-window.c:4055
 msgid "0 = system default expiration time"
 msgstr "0 = intervallo di scadenza predefinito di sistema"
 
-#: src/orage-appointment-window.c:4059
+#: src/orage-appointment-window.c:4063
 msgid "seconds"
 msgstr "secondi"
 
 #. **** Procedure Alarm ****
-#: src/orage-appointment-window.c:4069
+#: src/orage-appointment-window.c:4073
 msgid "Procedure"
 msgstr "Procedura"
 
-#: src/orage-appointment-window.c:4075
+#: src/orage-appointment-window.c:4079
 msgid "Select this if you want procedure or script alarm"
 msgstr ""
 "Selezionare questa opzione se si intende utilizzare una procedura o uno "
 "script di allarme"
 
-#: src/orage-appointment-window.c:4086
+#: src/orage-appointment-window.c:4090
 msgid ""
 "You must enter all escape etc characters yourself.\n"
 "This string is just given to shell to process.\n"
@@ -1226,75 +1226,75 @@ msgstr ""
 "\t<&ST> ora di inizio dell'appuntamento\n"
 "\t<&ET> ora di fine dell'appuntamento"
 
-#: src/orage-appointment-window.c:4101
+#: src/orage-appointment-window.c:4105
 msgid "Test this alarm by raising it now"
 msgstr "Prova questo allarme facendolo suonare adesso"
 
-#: src/orage-appointment-window.c:4114
+#: src/orage-appointment-window.c:4118
 msgid "<b>Default alarm</b>"
 msgstr "<b>Allarme predefinito</b>"
 
-#: src/orage-appointment-window.c:4129
+#: src/orage-appointment-window.c:4133
 msgid "Store current settings as default alarm"
 msgstr "Salva le impostazioni correnti come allarme predefinito"
 
-#: src/orage-appointment-window.c:4131
+#: src/orage-appointment-window.c:4135
 msgid "_Revert"
 msgstr "_Ripristina"
 
-#: src/orage-appointment-window.c:4140
+#: src/orage-appointment-window.c:4144
 msgid "Set current settings from default alarm"
 msgstr "Carica le impostazioni dell'allarme predefinito"
 
-#: src/orage-appointment-window.c:4205
+#: src/orage-appointment-window.c:4209
 msgid "None"
 msgstr "Nessuna"
 
-#: src/orage-appointment-window.c:4205
+#: src/orage-appointment-window.c:4209
 msgid "Daily"
 msgstr "Giornaliera"
 
-#: src/orage-appointment-window.c:4205
+#: src/orage-appointment-window.c:4209
 msgid "Weekly"
 msgstr "Settimanale"
 
-#: src/orage-appointment-window.c:4206
+#: src/orage-appointment-window.c:4210
 msgid "Monthly"
 msgstr "Mensile"
 
-#: src/orage-appointment-window.c:4206
+#: src/orage-appointment-window.c:4210
 msgid "Yearly"
 msgstr "Annuale"
 
-#: src/orage-appointment-window.c:4206
+#: src/orage-appointment-window.c:4210
 msgid "Hourly"
 msgstr "Oraria"
 
-#: src/orage-appointment-window.c:4221
+#: src/orage-appointment-window.c:4225
 msgid "Recurrence"
 msgstr "Ricorrenza"
 
 #. ****************************** Frequency *******************************
-#: src/orage-appointment-window.c:4228
+#: src/orage-appointment-window.c:4232
 msgid "Frequency"
 msgstr "Frequenza"
 
 #. ****************************** Limit ***********************************
-#: src/orage-appointment-window.c:4269
+#: src/orage-appointment-window.c:4273
 msgid "Limit"
 msgstr "Limite"
 
 #. ****************************** TODO base (only for TODOs) **************
-#: src/orage-appointment-window.c:4275
+#: src/orage-appointment-window.c:4279
 msgid "TODO base"
 msgstr "Compito base"
 
 #. exceptions
-#: src/orage-appointment-window.c:4282
+#: src/orage-appointment-window.c:4286
 msgid "Exceptions"
 msgstr "Eccezioni"
 
-#: src/orage-appointment-window.c:4308
+#: src/orage-appointment-window.c:4312
 msgid ""
 "Add more exception dates by clicking the calendar days below.\n"
 "Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
@@ -1304,20 +1304,20 @@ msgstr ""
 "Le eccezioni possono essere sia di esclusione(-) sia di inclusione(+) in funzione della selezione.\n"
 "Si possono rimuovere facendo clic sugli elementi."
 
-#: src/orage-appointment-window.c:4319
+#: src/orage-appointment-window.c:4323
 msgid "Add excluded date (-)"
 msgstr "Aggiungi giorno escluso (-)"
 
-#: src/orage-appointment-window.c:4321
+#: src/orage-appointment-window.c:4325
 msgid "Excluded days are full days where this appointment is not happening"
 msgstr ""
 "I giorni esclusi sono giorni interi in cui l'appuntamento non è previsto"
 
-#: src/orage-appointment-window.c:4328
+#: src/orage-appointment-window.c:4332
 msgid "Add included time (+)"
 msgstr "Aggiungi orario incluso (+)"
 
-#: src/orage-appointment-window.c:4330
+#: src/orage-appointment-window.c:4334
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time"
@@ -1326,9 +1326,13 @@ msgstr ""
 "possono avere diversi orari"
 
 #. calendars showing the action days
-#: src/orage-appointment-window.c:4349
+#: src/orage-appointment-window.c:4353
 msgid "Action dates"
 msgstr "Giorni di azione"
+
+#: src/orage-import.c:74
+msgid "Unsupported event type"
+msgstr "Tipologia di evento non supportata"
 
 #: src/orage-import.c:106
 msgid "<b>Summary</b>"
@@ -1423,7 +1427,7 @@ msgstr "Comando per la sincronizzazione"
 msgid "Synchronization period in minutes"
 msgstr "Periodo di sincronizzazione in minuti"
 
-#: src/orage-sync-edit-dialog.c:166 src/parameters.c:1431 src/reminder.c:638
+#: src/orage-sync-edit-dialog.c:166 src/parameters.c:1430 src/reminder.c:638
 msgid "_Close"
 msgstr "_Chiudi"
 
@@ -1434,31 +1438,31 @@ msgstr "_Chiudi"
 msgid "calendar:week_start:0"
 msgstr "calendar:week_start:1"
 
-#: src/orage-week-window.c:454
+#: src/orage-week-window.c:458
 msgid "Back one week"
 msgstr "Indietro di una settimana"
 
-#: src/orage-week-window.c:456
+#: src/orage-week-window.c:460
 msgid "Back one day"
 msgstr "Indietro di un giorno"
 
-#: src/orage-week-window.c:460
+#: src/orage-week-window.c:464
 msgid "Forward one day"
 msgstr "Avanti di un giorno"
 
-#: src/orage-week-window.c:462
+#: src/orage-week-window.c:466
 msgid "Forward one week"
 msgstr "Avanti di una settimana"
 
-#: src/orage-week-window.c:658
+#: src/orage-week-window.c:662
 msgid "Unknown"
 msgstr "Sconosciuto"
 
-#: src/orage-week-window.c:896
+#: src/orage-week-window.c:900
 msgid "Number of days to show"
 msgstr "Numero di giorni da visualizzare"
 
-#: src/orage-week-window.c:1212
+#: src/orage-week-window.c:1216
 msgid "Orage - day view"
 msgstr "Orage - Vista per giorno"
 
@@ -1486,12 +1490,12 @@ msgstr "Seleziona _oggi"
 #. Help menu
 #. the rest
 #: src/orage-window-classic.c:324 src/orage-window-next.c:147
-#: src/orage-window-next.c:148 src/parameters.c:1428
+#: src/orage-window-next.c:148 src/parameters.c:1427
 msgid "_Help"
 msgstr "_Aiuto"
 
 #: src/orage-window-classic.c:386 src/orage-window-next.c:777
-#: src/reminder.c:967
+#: src/reminder.c:969
 msgid "No title defined"
 msgstr "Nessun titolo"
 
@@ -1643,178 +1647,178 @@ msgstr "Mese"
 msgid "Year"
 msgstr "Anno"
 
-#: src/parameters.c:646
+#: src/parameters.c:643
 msgid "Remove selected synchronization task."
 msgstr "Rimuove le attività di sincronizzazione selezionate."
 
-#: src/parameters.c:649
+#: src/parameters.c:646
 msgid "Yes, remove"
 msgstr "Sì, rimuovi"
 
-#: src/parameters.c:685
+#: src/parameters.c:684
 msgid "Main settings"
 msgstr "Impostazioni principali"
 
-#: src/parameters.c:691
+#: src/parameters.c:690
 msgid "Timezone"
 msgstr "Fuso orario"
 
-#: src/parameters.c:713
+#: src/parameters.c:712
 msgid "You should always define your local timezone."
 msgstr "Si dovrebbe sempre definire il proprio fuso orario locale."
 
-#: src/parameters.c:721
+#: src/parameters.c:720
 msgid "Archive threshold (months)"
 msgstr "Limite archivio (mesi)"
 
-#: src/parameters.c:734
+#: src/parameters.c:733
 msgid "(0 = no archiving)"
 msgstr "(0 = non archiviare)"
 
-#: src/parameters.c:738
+#: src/parameters.c:737
 msgid "Archiving is used to save time and space when handling events."
 msgstr ""
 "L'archiviazione viene utilizzata per risparmiare tempo e spazio quando "
 "vengono gestiti gli eventi."
 
-#: src/parameters.c:746
+#: src/parameters.c:745
 msgid "Sound command"
 msgstr "Comando audio"
 
-#: src/parameters.c:774
+#: src/parameters.c:773
 msgid "This command is given to shell to make sound in alarms."
 msgstr ""
 "Questo comando viene passato alla shell per trasformare l'audio in allarmi."
 
-#: src/parameters.c:805
+#: src/parameters.c:804
 msgid "Calendar window"
 msgstr "Finestra del calendario"
 
-#: src/parameters.c:812
+#: src/parameters.c:811
 msgid "Calendar visual details"
 msgstr "Dettagli di visualizzazione del calendario"
 
-#: src/parameters.c:819
+#: src/parameters.c:818
 msgid "Use new user interface"
 msgstr "Usa la nuova interfaccia utente"
 
-#: src/parameters.c:821
+#: src/parameters.c:820
 msgid "Enable the new interface layout (requires restart)"
 msgstr "Abilita la nuova interfaccia (richiede riavvio)"
 
-#: src/parameters.c:826
+#: src/parameters.c:825
 msgid "Show borders"
 msgstr "Mostra bordi"
 
-#: src/parameters.c:835
+#: src/parameters.c:834
 msgid "Show menu"
 msgstr "Mostra menu"
 
-#: src/parameters.c:840
+#: src/parameters.c:839
 msgid "Show day names"
 msgstr "Mostra nomi dei giorni"
 
-#: src/parameters.c:849
+#: src/parameters.c:848
 msgid "Show week numbers"
 msgstr "Mostra numeri delle settimane"
 
-#: src/parameters.c:854
+#: src/parameters.c:853
 msgid "Show month and year"
 msgstr "Mostra mese e anno"
 
-#: src/parameters.c:878
+#: src/parameters.c:877
 msgid "Calendar info boxes"
 msgstr "Riquadri delle informazioni del calendario"
 
-#: src/parameters.c:885
+#: src/parameters.c:884
 msgid "Show todo list"
 msgstr "Mostra l'elenco dei compiti"
 
-#: src/parameters.c:892
+#: src/parameters.c:891
 msgid "Number of days to show in event window"
 msgstr "Numero di giorni nella finestra degli eventi"
 
-#: src/parameters.c:900
+#: src/parameters.c:899
 msgid "0 = do not show event list at all"
 msgstr "0 = non visualizza nessun evento"
 
-#: src/parameters.c:914
+#: src/parameters.c:913
 msgid "Calendar visibility"
 msgstr "Visibilità calendario"
 
-#: src/parameters.c:920
+#: src/parameters.c:919
 msgid "Show on all desktops"
 msgstr "Mostra su tutte le scrivanie"
 
-#: src/parameters.c:925
+#: src/parameters.c:924
 msgid "Keep on top"
 msgstr "Mantieni in primo piano"
 
-#: src/parameters.c:933
+#: src/parameters.c:932
 msgid "Show in taskbar"
 msgstr "Mostra nella barra delle applicazioni"
 
-#: src/parameters.c:938
+#: src/parameters.c:937
 msgid "Show in pager"
 msgstr "Mostra nel paginatore"
 
-#: src/parameters.c:946
+#: src/parameters.c:945
 msgid "Show in systray"
 msgstr "Mostra nell'area di notifica"
 
-#: src/parameters.c:974
+#: src/parameters.c:973
 msgid "Calendar start"
 msgstr "Avvio calendario"
 
-#: src/parameters.c:980
+#: src/parameters.c:979
 msgid "Show"
 msgstr "Mostra"
 
-#: src/parameters.c:996
+#: src/parameters.c:995
 msgid "Hide"
 msgstr "Nascondi"
 
-#: src/parameters.c:1013
+#: src/parameters.c:1012
 msgid "Minimized"
 msgstr "Minimizza"
 
-#: src/parameters.c:1039
+#: src/parameters.c:1038
 msgid "On calendar window open"
 msgstr "All'apertura della finestra del calendario"
 
-#: src/parameters.c:1045
+#: src/parameters.c:1044
 msgid "Select today's date"
 msgstr "Seleziona la data di oggi"
 
-#: src/parameters.c:1062
+#: src/parameters.c:1061
 msgid "Select previously selected date"
 msgstr "Seleziona la data precedentemente selezionata"
 
-#: src/parameters.c:1086
+#: src/parameters.c:1085
 msgid "Calendar day double click shows"
 msgstr "Doppio clic sul calendario principale per mostrare"
 
-#: src/parameters.c:1092
+#: src/parameters.c:1091
 msgid "Days view"
 msgstr "Vista per giorni"
 
-#: src/parameters.c:1108
+#: src/parameters.c:1107
 msgid "Event list"
 msgstr "Lista eventi"
 
-#: src/parameters.c:1141
+#: src/parameters.c:1140
 msgid "Extra settings"
 msgstr "Impostazioni supplementari"
 
-#: src/parameters.c:1148
+#: src/parameters.c:1147
 msgid "Event list window"
 msgstr "Finestra lista eventi"
 
-#: src/parameters.c:1155
+#: src/parameters.c:1154
 msgid "Number of extra days to show in event list"
 msgstr "Numero di giorni aggiuntivi da visualizzare nella lista eventi"
 
-#: src/parameters.c:1165
+#: src/parameters.c:1164
 msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
@@ -1822,27 +1826,27 @@ msgstr ""
 "Questo è il valore predefinito; può essere modificato nella finestra della "
 "lista degli eventi."
 
-#: src/parameters.c:1173
+#: src/parameters.c:1172
 msgid "Show only first repeating event"
 msgstr "Mostra solo l'evento che si ripete per la prima volta"
 
-#: src/parameters.c:1190
+#: src/parameters.c:1189
 msgid "Day view window default first day"
 msgstr "Primo giorno predefinito della finestra a vista per giorno"
 
-#: src/parameters.c:1197
+#: src/parameters.c:1196
 msgid "First day of week"
 msgstr "Primo giorno della settimana"
 
-#: src/parameters.c:1214
+#: src/parameters.c:1213
 msgid "Selected day"
 msgstr "Seleziona giorno"
 
-#: src/parameters.c:1237 src/parameters.c:1244
+#: src/parameters.c:1236 src/parameters.c:1243
 msgid "Use wakeup timer"
 msgstr "Utilizza timer"
 
-#: src/parameters.c:1252
+#: src/parameters.c:1251
 msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
@@ -1851,27 +1855,27 @@ msgstr ""
 "un'ibernazione (per esempio l'icona di vassoio non viene aggiornata o gli "
 "allarmi non vengono eseguiti)."
 
-#: src/parameters.c:1262
+#: src/parameters.c:1261
 msgid "Foreign file default visual alarm"
 msgstr "Allarme visivo predefinito per file esterni"
 
-#: src/parameters.c:1269
+#: src/parameters.c:1268
 msgid "Orage window"
 msgstr "Finestra di Orage"
 
-#: src/parameters.c:1286
+#: src/parameters.c:1285
 msgid "Notify notification"
 msgstr "Notifica le notifiche"
 
-#: src/parameters.c:1309
+#: src/parameters.c:1308
 msgid "Always quit when asked to close"
 msgstr "Esci sempre quando viene richiesta la chiusura"
 
-#: src/parameters.c:1316
+#: src/parameters.c:1315
 msgid "Always quit"
 msgstr "Esci sempre"
 
-#: src/parameters.c:1323
+#: src/parameters.c:1322
 msgid ""
 "By default Orage stays open in the background when asked to close. This "
 "option changes Orage to quit and never stay in background when it is asked "
@@ -1881,15 +1885,15 @@ msgstr ""
 "la chiusura. Questa opzione impedisce questo comportamento, uscendo "
 "definitivamente."
 
-#: src/parameters.c:1376
+#: src/parameters.c:1375
 msgid "Synchronization settings"
 msgstr "Impostazioni di sincronizzazione"
 
-#: src/parameters.c:1382
+#: src/parameters.c:1381
 msgid "Synchronization sources"
 msgstr "Fonti di sincronizzazione"
 
-#: src/parameters.c:1408 org.xfce.orage.desktop.in:26
+#: src/parameters.c:1407 org.xfce.orage.desktop.in:26
 msgid "Orage Preferences"
 msgstr "Preferenze di Orage"
 
@@ -1921,11 +1925,11 @@ msgstr "Posticipa"
 msgid "Remind me again after the specified time"
 msgstr "Ricorda nuovamente dopo il tempo indicato"
 
-#: src/reminder.c:935
+#: src/reminder.c:937
 msgid "Next active alarms:"
 msgstr "Prossimo allarme attivo:"
 
-#: src/reminder.c:974
+#: src/reminder.c:976
 #, c-format
 msgid ""
 "\n"
@@ -1934,7 +1938,7 @@ msgstr ""
 "\n"
 "%02d g %02d h %02d min a: %s"
 
-#: src/reminder.c:988
+#: src/reminder.c:990
 msgid ""
 "\n"
 "No active alarms found"
@@ -4254,11 +4258,11 @@ msgstr "UTC"
 msgid "floating"
 msgstr "fluttuante"
 
-#: src/tray_icon.c:391
+#: src/tray_icon.c:394
 msgid "New appointment"
 msgstr "Nuovo appuntamento"
 
-#: src/tray_icon.c:407
+#: src/tray_icon.c:410
 msgid "Quit"
 msgstr "Esci"
 
