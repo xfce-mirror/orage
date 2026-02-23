@@ -991,19 +991,6 @@ static void fill_hour_arrow (OrageWeekWindow *dw, const gint col)
     gtk_grid_attach (GTK_GRID (dw->dtable), ev, col, FULL_DAY_ROW, 1, 1);
 }
 
-static gboolean is_same_date (GDateTime *gdt0, GDateTime *gdt1)
-{
-    if (g_date_time_get_year (gdt0) != g_date_time_get_year (gdt1))
-        return FALSE;
-    else if ((g_date_time_get_day_of_year (gdt0) !=
-              g_date_time_get_day_of_year (gdt1)))
-    {
-        return FALSE;
-    }
-    else
-        return TRUE;
-}
-
 static GtkWidget *build_scroll_window (void)
 {
     GtkWidget *scroll_win;
@@ -1061,7 +1048,7 @@ static void build_day_view_table (OrageWeekWindow *dw)
                                 (GDestroyNotify)g_date_time_unref);
         g_free (date);
 
-        if (is_same_date (gdt_today, gdt0))
+        if (orage_gdatetime_compare_date (gdt_today, gdt0) == 0)
             gtk_widget_set_name (button, ORAGE_WEEK_WINDOW_TODAY);
 
         if ((i - 1) % 7 == sunday)
