@@ -39,6 +39,8 @@ G_DECLARE_FINAL_TYPE (OrageAppointmentWindow, orage_appointment_window, ORAGE,
 
 GtkWidget *orage_appointment_window_new (GDateTime *gdt);
 
+GtkWidget *orage_appointment_window_new_all_day (GDateTime *gdt);
+
 /** Create new appointment window for current time.
  *  @return appointment window
  */

@@ -81,6 +81,7 @@
 typedef enum
 {
     NEW_APPT_WIN,
+    NEW_APPT_WIN_ALL_DAY,
     UPDATE_APPT_WIN,
     COPY_APPT_WIN
 } appt_win_action;
@@ -2205,6 +2206,11 @@ static xfical_appt *fill_appt_window_get_appt (OrageAppointmentWindow *apptw,
             appt = fill_appt_window_get_new_appt (par_gdt);
             break;
 
+        case NEW_APPT_WIN_ALL_DAY:
+            appt = fill_appt_window_get_new_appt (par_gdt);
+            appt->allDay = TRUE;
+            break;
+
         case UPDATE_APPT_WIN:
         case COPY_APPT_WIN:
             appt = fill_appt_window_update_appt (apptw, uid);
@@ -2829,6 +2835,7 @@ static void fill_appt_window (OrageAppointmentWindow *apptw,
 
     switch (action)
     {
+        case NEW_APPT_WIN_ALL_DAY:
         case NEW_APPT_WIN:
             action_str = "NEW";
             apptw->appointment_add = TRUE;
@@ -4661,6 +4668,14 @@ GtkWidget *orage_appointment_window_new (GDateTime *gdt)
     return g_object_new (ORAGE_TYPE_APPOINTMENT_WINDOW,
                          APPOINTMENT_TIME_PROPERTY, gdt,
                          APPOINTMENT_ACTION_PROPERTY, NEW_APPT_WIN,
+                         NULL);
+}
+
+GtkWidget *orage_appointment_window_new_all_day (GDateTime *gdt)
+{
+    return g_object_new (ORAGE_TYPE_APPOINTMENT_WINDOW,
+                         APPOINTMENT_TIME_PROPERTY, gdt,
+                         APPOINTMENT_ACTION_PROPERTY, NEW_APPT_WIN_ALL_DAY,
                          NULL);
 }
 
