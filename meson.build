@@ -203,6 +203,7 @@ configure_file(
 )
 
 subdir('src')
+subdir('tests')
 subdir('icons')
 subdir('plugin')
 subdir('sounds')
