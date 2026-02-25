@@ -141,7 +141,7 @@ static void get_scroll_position (OrageWeekWindow *dw)
 
 static GtkWidget *build_separator_bar (const gchar *widget_name)
 {
-    GtkWidget *bar = gtk_label_new ("");
+    GtkWidget *bar = gtk_label_new (NULL);
 
     g_object_set (bar, "hexpand", FALSE,
                        "vexpand", TRUE,
