@@ -108,6 +108,18 @@ enum
 
 static GParamSpec *properties[N_PROPS] = {NULL,};
 
+typedef GtkWidget *(*AppointmentCreateFunc) (GtkWidget *widget);
+typedef struct
+{
+    OrageWeekWindow *week_window;
+    AppointmentCreateFunc create_func;
+} AppointmentClickCtx;
+
+static void free_data (gpointer data, G_GNUC_UNUSED GClosure *closure)
+{
+    g_free (data);
+}
+
 static void set_scroll_position (const OrageWeekWindow *dw)
 {
     GtkAdjustment *v_adj;
@@ -546,78 +558,47 @@ static void header_button_clicked_cb (GtkWidget *button,
     (void)create_el_win (gdt);
 }
 
-static void on_button_press_event_cb(GtkWidget *widget
-        , GdkEventButton *event, gpointer *user_data)
+static void on_day_cell_double_click (GtkWidget *widget,
+                                      GdkEventButton *event,
+                                      gpointer user_data)
 {
+    AppointmentClickCtx *ctx;
     GtkWidget *appointment_window;
-    gchar *uid;
-    OrageWeekWindow *dw = ORAGE_WEEK_WINDOW (user_data);
-
-    if (event->type == GDK_2BUTTON_PRESS) {
-        uid = g_object_get_data(G_OBJECT(widget), "UID");
-        appointment_window = orage_appointment_window_new_update (uid);
-
-        /* inform the appointment that we are interested in it */
-        orage_appointment_window_set_day_window (
-            ORAGE_APPOINTMENT_WINDOW (appointment_window), dw);
-
-        gtk_window_present (GTK_WINDOW (appointment_window));
-
-        /* we started this, so keep track of it */
-        dw->apptw_list = g_list_prepend(dw->apptw_list, appointment_window);
-    }
-}
-
-static void on_empty_day_cell_press (GtkWidget *widget,
-                                     GdkEventButton *event,
-                                      gpointer *user_data)
-{
-    GDateTime *gdt;
-    GtkWidget *appointment_window;
-    OrageWeekWindow *week_window;
 
     if (event->type != GDK_2BUTTON_PRESS)
         return;
 
-    week_window = ORAGE_WEEK_WINDOW (user_data);
-    gdt = g_object_get_data (G_OBJECT (widget), DATE_KEY);
-    appointment_window = orage_appointment_window_new_all_day (gdt);
+    ctx = user_data;
+    appointment_window = ctx->create_func (widget);
 
-    /* Inform the appointment that we are interested in it. */
     orage_appointment_window_set_day_window (
-        ORAGE_APPOINTMENT_WINDOW (appointment_window), week_window);
+            ORAGE_APPOINTMENT_WINDOW (appointment_window), ctx->week_window);
 
     gtk_window_present (GTK_WINDOW (appointment_window));
 
-    /* We started this, so keep track of it. */
-    week_window->apptw_list =
-        g_list_prepend (week_window->apptw_list, appointment_window);
+    ctx->week_window->apptw_list = g_list_prepend (ctx->week_window->apptw_list,
+                                                   appointment_window);
 }
 
-static void on_empty_hour_cell_pressed (GtkWidget *widget,
-                                        GdkEventButton *event,
-                                        gpointer *user_data)
+static GtkWidget *create_update_appt (GtkWidget *widget)
 {
-    GDateTime *gdt;
-    GtkWidget *appointment_window;
-    OrageWeekWindow *week_window;
+    gchar *uid = g_object_get_data (G_OBJECT (widget), "UID");
 
-    if (event->type != GDK_2BUTTON_PRESS)
-        return;
+    return orage_appointment_window_new_update (uid);
+}
 
-    week_window = ORAGE_WEEK_WINDOW (user_data);
-    gdt = g_object_get_data (G_OBJECT (widget), DATE_KEY);
-    appointment_window = orage_appointment_window_new (gdt);
+static GtkWidget * create_all_day_appt (GtkWidget *widget)
+{
+    GDateTime *gdt = g_object_get_data (G_OBJECT (widget), DATE_KEY);
 
-    /* Inform the appointment that we are interested in it. */
-    orage_appointment_window_set_day_window (
-        ORAGE_APPOINTMENT_WINDOW (appointment_window), week_window);
+    return orage_appointment_window_new_all_day (gdt);
+}
 
-    gtk_window_present (GTK_WINDOW (appointment_window));
-    
-    /* We started this, so keep track of it. */
-    week_window->apptw_list =
-        g_list_prepend (week_window->apptw_list, appointment_window);
+static GtkWidget *create_new_appt (GtkWidget *widget)
+{
+    GDateTime *gdt = g_object_get_data (G_OBJECT (widget), DATE_KEY);
+
+    return orage_appointment_window_new (gdt);
 }
 
 static void on_arrow_up_press_event_cb (G_GNUC_UNUSED GtkWidget *widget,
@@ -670,6 +651,7 @@ static void add_row (OrageWeekWindow *dw, const xfical_appt *appt)
     GDateTime *gdt_first;
     gint start_hour;
     gint end_hour;
+    AppointmentClickCtx *click_ctx;
 
     /* First clarify timings */
     gdt_start = g_date_time_ref (appt->starttimecur);
@@ -784,8 +766,13 @@ static void add_row (OrageWeekWindow *dw, const xfical_appt *appt)
                       NULL);
     gtk_grid_attach_next_to (GTK_GRID (hb), ev, NULL, GTK_POS_BOTTOM, 1, 1);
     g_object_set_data_full (G_OBJECT(ev), "UID", g_strdup (appt->uid), g_free);
-    g_signal_connect (ev, "button-press-event",
-                      G_CALLBACK (on_button_press_event_cb), dw);
+
+    click_ctx = g_new0 (AppointmentClickCtx, 1);
+    click_ctx->week_window = dw;
+    click_ctx->create_func = create_update_appt;
+    g_signal_connect_data (ev, "button-press-event",
+                           G_CALLBACK (on_day_cell_double_click),
+                           click_ctx, free_data, 0);
     g_free(tmp_title);
     g_free(tip);
     g_free(tip_title);
@@ -874,6 +861,7 @@ static void fill_days (OrageWeekWindow *dw, const gint days)
     GDateTime *gdt_d;
     GDateTime *gdt;
     gint d, m, y;
+    AppointmentClickCtx *click_ctx;
 
     /* first clear the structure */
     for (col = 1; col < days_n1; col++) {
@@ -902,8 +890,13 @@ static void fill_days (OrageWeekWindow *dw, const gint days)
             ev = gtk_event_box_new ();
             g_object_set_data_full (G_OBJECT (ev), DATE_KEY, gdt_d,
                                     (GDestroyNotify)g_date_time_unref);
-            g_signal_connect (ev, "button-press-event",
-                              G_CALLBACK (on_empty_day_cell_press), dw);
+
+            click_ctx = g_new0 (AppointmentClickCtx, 1);
+            click_ctx->week_window = dw;
+            click_ctx->create_func = create_all_day_appt;
+            g_signal_connect_data (ev, "button-press-event",
+                                   G_CALLBACK (on_day_cell_double_click),
+                                   click_ctx, free_data, 0);
         }
 
         g_object_set (ev, "hexpand", TRUE,
@@ -933,8 +926,12 @@ static void fill_days (OrageWeekWindow *dw, const gint days)
                                         (GDestroyNotify)g_date_time_unref);
                 gtk_widget_set_name (ev, get_row_css_name (row));
 
-                g_signal_connect (ev, "button-press-event",
-                                  G_CALLBACK (on_empty_hour_cell_pressed), dw);
+                click_ctx = g_new0 (AppointmentClickCtx, 1);
+                click_ctx->week_window = dw;
+                click_ctx->create_func = create_new_appt;
+                g_signal_connect_data (ev, "button-press-event",
+                                       G_CALLBACK (on_day_cell_double_click),
+                                       click_ctx, free_data, 0);
             }
 
             g_object_set (ev, "hexpand", TRUE,
