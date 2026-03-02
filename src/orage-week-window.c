@@ -887,7 +887,8 @@ static void fill_days (OrageWeekWindow *dw, const gint days)
         else
         {
             ev = gtk_event_box_new ();
-            g_object_set_data_full (G_OBJECT (ev), DATE_KEY, gdt_d,
+            g_object_set_data_full (G_OBJECT (ev), DATE_KEY,
+                                    g_date_time_ref (gdt_d),
                                     (GDestroyNotify)g_date_time_unref);
 
             click_ctx = g_new0 (AppointmentClickCtx, 1);
