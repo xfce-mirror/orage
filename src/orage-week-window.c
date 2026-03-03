@@ -1278,7 +1278,10 @@ static void orage_week_window_init (OrageWeekWindow *self)
     gtk_container_add (GTK_CONTAINER (self), self->Vbox);
 }
 
-OrageWeekWindow *orage_week_window_new (GDateTime *date)
+/** Create new week window for specified start date.
+ *  @param date window start date
+ */
+static OrageWeekWindow *orage_week_window_new (GDateTime *date)
 {
     OrageWeekWindow *window;
 
