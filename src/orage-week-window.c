@@ -955,6 +955,8 @@ static void build_day_view_header (OrageWeekWindow *dw)
     GtkWidget *no_days_label;
     GtkWidget *grid;
     gchar *first_date;
+    gint current_day;
+    gint weekstart;
     int diff_to_weeks_first_day;
     GDateTime *gdt;
 
@@ -981,21 +983,19 @@ static void build_day_view_header (OrageWeekWindow *dw)
     gtk_grid_attach_next_to (GTK_GRID (grid), dw->day_spin, no_days_label,
                              GTK_POS_RIGHT, 1, 1);
 
-    /* initial values */
-    if (g_par.dw_week_mode) { /* we want to start form week start day */
-        diff_to_weeks_first_day = g_date_time_get_day_of_week (dw->start_date)
-                                - (g_par.ical_weekstartday + 1);
-        if (diff_to_weeks_first_day == 0) {
-            /* we are on week start day */
-            gdt = g_date_time_ref (dw->start_date);
-        }
-        else {
-            gdt = g_date_time_add_days (dw->start_date,
-                                        -1 * diff_to_weeks_first_day);
-        }
+    if (g_par.dw_week_mode)
+    {
+        /* Calendar window starts at the beginning of the week. */
+        current_day = g_date_time_get_day_of_week (dw->start_date);
+        weekstart = g_par.ical_weekstartday + 1;
+        diff_to_weeks_first_day = (current_day - weekstart + 7) % 7;
+        gdt = g_date_time_add_days (dw->start_date, -diff_to_weeks_first_day);
     }
     else
+    {
+        /* Calendar window starts at the selected day. */
         gdt = g_date_time_ref (dw->start_date);
+    }
 
     first_date = orage_gdatetime_to_i18_time (gdt, TRUE);
     gtk_button_set_label (GTK_BUTTON(dw->StartDate_button), first_date);
