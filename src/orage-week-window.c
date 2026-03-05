@@ -850,7 +850,7 @@ static void app_data (OrageWeekWindow *dw)
     xfical_file_close(TRUE);
 }
 
-static void fill_days (OrageWeekWindow *dw, const gint days)
+static void fill_days (OrageWeekWindow *dw, const gint days, GDateTime *gdt0)
 {
     const gint days_n1 = days + 1;
     gint row, col;
@@ -862,6 +862,9 @@ static void fill_days (OrageWeekWindow *dw, const gint days)
     gint d, m, y;
     AppointmentClickCtx *click_ctx;
 
+    g_date_time_get_ymd (gdt0, &y, &m, &d);
+    start_date = g_date_time_new_local (y, m, d, 0, 0, 0);
+
     /* first clear the structure */
     for (col = 1; col < days_n1; col++) {
         dw->header[col] = NULL;
@@ -870,9 +873,6 @@ static void fill_days (OrageWeekWindow *dw, const gint days)
             dw->line[row][col] = build_line (NULL);
         }
     }
-
-    g_date_time_get_ymd (dw->a_day, &y, &m, &d);
-    start_date = g_date_time_new_local (y, m, d, 0, 0, 0);
 
     app_data(dw);
 
@@ -1092,6 +1092,7 @@ static void build_day_view_table (OrageWeekWindow *dw)
     char text[5+1];
     gchar *date;
     GDateTime *gdt0;
+    GDateTime *gdt_start_date;
     GDateTime *gdt_today;
 
     (void)orage_category_get_list (); /* Uses side effects. */
@@ -1099,6 +1100,7 @@ static void build_day_view_table (OrageWeekWindow *dw)
     days_n1 = days + 1;
     gdt0 = g_date_time_ref (
             g_object_get_data (G_OBJECT (dw->StartDate_button), DATE_KEY));
+    gdt_start_date = g_date_time_ref (gdt0);
 
     /****** header of day table = days columns ******/
     dw->scroll_win = build_scroll_window ();
@@ -1154,10 +1156,12 @@ static void build_day_view_table (OrageWeekWindow *dw)
     for (i = 0; i < 24; i++) {
         (void)g_snprintf (text, sizeof (text), "%02d", i);
         /* ev is needed for background colour */
-        fill_hour(dw, 0, i, text);
+        fill_hour (dw, 0, i, text);
         fill_hour (dw, days_n1, i, text);
     }
-    fill_days(dw, days);
+
+    fill_days (dw, days, gdt_start_date);
+    g_date_time_unref (gdt_start_date);
 }
 
 void orage_week_window_refresh (OrageWeekWindow *dw)
