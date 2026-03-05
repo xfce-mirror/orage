@@ -1,6 +1,5 @@
 4.21.1 (2026-03-05)
 =======
-- Fixed first weekday calculations on day view window (MR !88).
 - Added opening the new event dialog by double-clicking on the hour line in the
   day view window (MR !88, Issue #41).
 - Fixed first weekday calculation in the day view window (MR !88).
