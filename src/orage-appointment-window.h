@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2025 Erkki Moorits
+ * Copyright (c) 2021-2026 Erkki Moorits
  * Copyright (c) 2005-2013 Juha Kautto  (juha at xfce.org)
  * Copyright (c) 2004-2006 Mickael Graf (korbinus at xfce.org)
  *
@@ -38,6 +38,8 @@ G_DECLARE_FINAL_TYPE (OrageAppointmentWindow, orage_appointment_window, ORAGE,
                       APPOINTMENT_WINDOW, GtkWindow)
 
 GtkWidget *orage_appointment_window_new (GDateTime *gdt);
+
+GtkWidget *orage_appointment_window_new_all_day (GDateTime *gdt);
 
 /** Create new appointment window for current time.
  *  @return appointment window
