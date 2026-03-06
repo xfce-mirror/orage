@@ -67,6 +67,7 @@ endforeach
 if get_option('archive')
   feature_cflags += '-DHAVE_ARCHIVE=1'
 endif
+
 if get_option('x11-tray-icon')
   feature_cflags += '-DHAVE_X11_TRAY_ICON=1'
 endif
@@ -203,9 +204,22 @@ configure_file(
 )
 
 subdir('src')
-subdir('tests')
 subdir('icons')
 subdir('plugin')
 subdir('sounds')
 subdir('themes')
 subdir('po')
+
+if get_option('debug') and get_option('tests')
+  subdir('tests')
+  build_tests=true
+else
+    build_tests=false
+endif
+
+summary(
+  {
+    'build tests': build_tests,
+  },
+  section: 'Optional features',
+)
