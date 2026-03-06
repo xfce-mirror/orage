@@ -26,3 +26,10 @@ option(
   value: 'glib',
   description: 'Default logging backend',
 )
+
+option(
+  'tests',
+  type: 'boolean',
+  value: false,
+  description: 'Build tests',
+)

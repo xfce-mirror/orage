@@ -87,17 +87,17 @@ gint orage_gdatetime_compare_date (GDateTime *gdt1, GDateTime *gdt2)
     g_date_time_get_ymd (gdt1, &y1, &m1, &d1);
     g_date_time_get_ymd (gdt2, &y2, &m2, &d2);
 
-    if (d1 < d2)
+    if (y1 < y2)
         return -1;
-    else if (d1 > d2)
+    else if (y1 > y2)
         return 1;
     else if (m1 < m2)
         return -1;
     else if (m1 > m2)
         return 1;
-    else if (y1 < y2)
+    else if (d1 < d2)
         return -1;
-    else if (y1 > y2)
+    else if (d1 > d2)
         return 1;
     else
         return 0;

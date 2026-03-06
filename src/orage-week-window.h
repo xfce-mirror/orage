@@ -33,11 +33,6 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (OrageWeekWindow, orage_week_window, ORAGE, WEEK_WINDOW,
                       GtkWindow)
 
-/** Create new week window for specified start date.
- *  @param date window start date
- */
-OrageWeekWindow *orage_week_window_new (GDateTime *date);
-
 /** Build new week window. This function create new week window and connect all
  *  necceary signals to close window.
  *  @param date window start date

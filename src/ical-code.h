@@ -128,7 +128,9 @@ typedef struct _xfical_appt
     GDateTime *endtime;
     gchar *end_tz_loc;
     gboolean use_duration;
-    gint   duration;
+
+    /* Event duration in seconds. */
+    gint duration;
     gboolean completed;
 
     GDateTime *completedtime;
