@@ -943,17 +943,22 @@ static void on_Go_next_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,
 
 static void create_new_appointment(el_win *el)
 {
+    gint y, m, d;
     GDateTime *gdt;
+    GDateTime *gdt_appt;
     GtkWidget *appointment_window;
 
     gdt = g_object_get_data (G_OBJECT (el->Window), DATE_KEY);
-    appointment_window = orage_appointment_window_new (gdt);
+    g_date_time_get_ymd (gdt, &y, &m, &d);
+    gdt_appt = g_date_time_new_local (y, m, d, 9, 0, 0);
+    appointment_window = orage_appointment_window_new (gdt_appt);
     /* inform the appointment that we are interested in it */
     orage_appointment_window_set_event_list (
             ORAGE_APPOINTMENT_WINDOW (appointment_window), el);
     gtk_window_present (GTK_WINDOW (appointment_window));
     /* we started this, so keep track of it */
     el->apptw_list = g_list_prepend (el->apptw_list, appointment_window);
+    g_date_time_unref (gdt_appt);
 }
 
 static void on_File_newApp_activate_cb (G_GNUC_UNUSED GtkMenuItem *mi,

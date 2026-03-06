@@ -81,6 +81,7 @@
 typedef enum
 {
     NEW_APPT_WIN,
+    NEW_APPT_WIN_ALL_DAY,
     UPDATE_APPT_WIN,
     COPY_APPT_WIN
 } appt_win_action;
@@ -2088,64 +2089,17 @@ static void fill_appt_window_times (OrageAppointmentWindow *apptw,
                    appt->uid);
 }
 
-static xfical_appt *fill_appt_window_get_new_appt (GDateTime *par_gdt)
+static xfical_appt *fill_appt_window_get_new_appt (GDateTime *gdt)
 {
     xfical_appt *appt;
-    GDateTime *gdt_now;
-    gint hour;
-    gint minute;
-    gint par_year;
-    gint par_month;
-    gint par_day_of_month;
-    gint start_hour;
-    gint end_hour;
-    gint start_minute;
-    gint end_minute;
 
-    appt = xfical_appt_new_day (par_gdt);
-    gdt_now = g_date_time_new_now_local ();
-    hour = g_date_time_get_hour (gdt_now);
-
-    g_date_time_get_ymd (par_gdt, &par_year, &par_month, &par_day_of_month);
-    if (orage_gdatetime_compare_date (par_gdt, gdt_now) == 0 && (hour < 23))
-    {
-        /* If we're today, we propose an appointment the next half-hour hour
-         * 24 is wrong, we use 00.
-         */
-        minute = g_date_time_get_minute (gdt_now);
-        if (minute <= 30)
-        {
-            start_hour = hour;
-            start_minute = 30;
-            end_hour = hour + 1;
-            end_minute = 0;
-        }
-        else
-        {
-            start_hour = hour + 1;
-            start_minute = 0;
-            end_hour = hour + 1;
-            end_minute = 30;
-        }
-    }
-    else
-    {
-        /* Otherwise we suggest it at 09:00 in the morning. */
-        start_hour = 9;
-        start_minute = 0;
-        end_hour = 9;
-        end_minute = 30;
-    }
+    appt = xfical_appt_new_day (gdt);
 
     orage_gdatetime_unref (appt->starttime);
-    appt->starttime = g_date_time_new_local (par_year, par_month,
-                                              par_day_of_month, start_hour,
-                                              start_minute, 0);
+    appt->starttime = g_date_time_ref (gdt);
 
     orage_gdatetime_unref (appt->endtime);
-    appt->endtime = g_date_time_new_local (par_year, par_month,
-                                            par_day_of_month, end_hour,
-                                            end_minute, 0);
+    appt->endtime = g_date_time_add_minutes (gdt, 30);
 
     if (g_par.local_timezone_utc)
         appt->start_tz_loc = g_strdup ("UTC");
@@ -2155,13 +2109,13 @@ static xfical_appt *fill_appt_window_get_new_appt (GDateTime *par_gdt)
         appt->start_tz_loc = g_strdup ("floating");
 
     appt->end_tz_loc = g_strdup (appt->start_tz_loc);
-    appt->duration = 30*60;
+    appt->duration = 30 * 60;
     /* use NOT completed by default for new TODO */
     appt->completed = FALSE;
     /* use duration by default for new appointments */
     appt->use_duration = TRUE;
     orage_gdatetime_unref (appt->completedtime);
-    appt->completedtime = gdt_now;
+    appt->completedtime = g_date_time_new_now_local ();
     appt->completed_tz_loc = g_strdup (appt->start_tz_loc);
 
     read_default_alarm (appt);
@@ -2195,14 +2149,19 @@ static xfical_appt *fill_appt_window_update_appt (OrageAppointmentWindow *apptw,
 static xfical_appt *fill_appt_window_get_appt (OrageAppointmentWindow *apptw,
                                                const appt_win_action action,
                                                const gchar *uid,
-                                               GDateTime *par_gdt)
+                                               GDateTime *gdt)
 {
     xfical_appt *appt;
 
     switch (action)
     {
         case NEW_APPT_WIN:
-            appt = fill_appt_window_get_new_appt (par_gdt);
+            appt = fill_appt_window_get_new_appt (gdt);
+            break;
+
+        case NEW_APPT_WIN_ALL_DAY:
+            appt = fill_appt_window_get_new_appt (gdt);
+            appt->allDay = TRUE;
             break;
 
         case UPDATE_APPT_WIN:
@@ -2829,6 +2788,7 @@ static void fill_appt_window (OrageAppointmentWindow *apptw,
 
     switch (action)
     {
+        case NEW_APPT_WIN_ALL_DAY:
         case NEW_APPT_WIN:
             action_str = "NEW";
             apptw->appointment_add = TRUE;
@@ -4530,7 +4490,7 @@ static void orage_appointment_window_set_property (GObject *object,
     {
         case PROP_APPOINTMENT_TIME:
             g_assert (self->appointment_time_2 == NULL);
-            self->appointment_time_2 = (GDateTime *)g_value_dup_boxed (value);
+            self->appointment_time_2 = g_value_dup_boxed (value);
             break;
 
         case PROP_APPOINTMENT_ACTION:
@@ -4661,6 +4621,14 @@ GtkWidget *orage_appointment_window_new (GDateTime *gdt)
     return g_object_new (ORAGE_TYPE_APPOINTMENT_WINDOW,
                          APPOINTMENT_TIME_PROPERTY, gdt,
                          APPOINTMENT_ACTION_PROPERTY, NEW_APPT_WIN,
+                         NULL);
+}
+
+GtkWidget *orage_appointment_window_new_all_day (GDateTime *gdt)
+{
+    return g_object_new (ORAGE_TYPE_APPOINTMENT_WINDOW,
+                         APPOINTMENT_TIME_PROPERTY, gdt,
+                         APPOINTMENT_ACTION_PROPERTY, NEW_APPT_WIN_ALL_DAY,
                          NULL);
 }
 

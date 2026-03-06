@@ -1,4 +1,15 @@
-orage_sources = [
+orage_deps = [
+  gio,
+  glib,
+  gtk,
+  libical,
+  libm,
+  libnotify,
+  libxfce4ui,
+  libxfce4util
+]
+
+orage_lib_sources = [
   'event-list.c',
   'event-list.h',
   'functions.c',
@@ -11,7 +22,6 @@ orage_sources = [
   'ical-internal.h',
   'interface.c',
   'interface.h',
-  'main.c',
   'orage-about.c',
   'orage-about.h',
   'orage-alarm-structure.c',
@@ -72,27 +82,31 @@ orage_sources = [
   'xfical_exception.h',
 ]
 
+orage_sources = [
+  'main.c',
+]
+
 if get_option('x11-tray-icon')
-  orage_sources += [
+  orage_lib_sources += [
     'tray_icon.c',
     'tray_icon.h',
   ]
 endif
 
+orage_lib = static_library(
+  'orage-lib',
+  orage_lib_sources,
+  sources: xfce_revision_h,
+  dependencies: orage_deps,
+  include_directories: include_directories('.')
+)
+
 executable(
   'orage',
   orage_sources,
   sources: xfce_revision_h,
-  dependencies: [
-    gio,
-    glib,
-    gtk,
-    libical,
-    libm,
-    libnotify,
-    libxfce4ui,
-    libxfce4util,
-  ],
+  dependencies: orage_deps,
+  link_with: [orage_lib],
   install: true,
   install_dir: get_option('prefix') / get_option('bindir'),
 )

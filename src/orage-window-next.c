@@ -340,11 +340,16 @@ static void on_date_selected (G_GNUC_UNUSED OrageMonthView *view,
                               OrageMonthCell *cell,
                               gpointer user_data)
 {
+    gint y, m, d;
     GDateTime *gdt;
+    GDateTime *gdt_new;
 
     gdt = orage_month_cell_get_date (cell);
-    orage_window_next_select_date (ORAGE_WINDOW (user_data), gdt);
+    g_date_time_get_ymd (gdt, &y, &m, &d);
     g_date_time_unref (gdt);
+    gdt_new = g_date_time_new_local (y, m, d, 9, 0, 0);
+    orage_window_next_select_date (ORAGE_WINDOW (user_data), gdt_new);
+    g_date_time_unref (gdt_new);
 
     orage_window_next_build_events (ORAGE_WINDOW (user_data));
 }
@@ -353,13 +358,18 @@ static void on_date_selected_right_clicked (G_GNUC_UNUSED OrageMonthView *view,
                                             OrageMonthCell *cell,
                                             gpointer user_data)
 {
+    gint y, m, d;
     GtkWidget *menu;
     GtkWidget *new_event;
     GDateTime *gdt;
+    GDateTime *gdt_new;
 
     gdt = orage_month_cell_get_date (cell);
-    orage_window_next_select_date (ORAGE_WINDOW (user_data), gdt);
+    g_date_time_get_ymd (gdt, &y, &m, &d);
     g_date_time_unref (gdt);
+    gdt_new = g_date_time_new_local (y, m, d, 9, 0, 0);
+    orage_window_next_select_date (ORAGE_WINDOW (user_data), gdt_new);
+    g_date_time_unref (gdt_new);
 
     menu = gtk_menu_new ();
 
@@ -1048,7 +1058,7 @@ static void orage_window_next_init (OrageWindowNext *self)
 
     gtk_widget_set_name (GTK_WIDGET (self), "orage-window-next");
 
-    self->selected_date = g_date_time_new_now_utc ();
+    self->selected_date = g_date_time_new_now_local ();
     self->accel_group = gtk_accel_group_new ();
 
     xfce_gtk_accel_map_add_entries (action_entries, n_elements);
