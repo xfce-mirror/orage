@@ -1,13 +1,13 @@
 dnl Orage - Calendar application for Xfce
 dnl
-dnl Copyright (c) 2003-2025
+dnl Copyright (c) 2003-2026
 dnl         The Xfce development team. All rights reserved.
 dnl
 dnl Written for Xfce by Juha Kautto <juha@xfce.org>
 dnl
 
 dnl Version information
-XDT_VERSION_INIT([4.20.2])
+XDT_VERSION_INIT([4.20.3])
 
 m4_define([glib_minimum_version], [2.58.0])
 m4_define([gtk_minimum_version], [3.24.0])
