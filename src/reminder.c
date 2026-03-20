@@ -286,6 +286,52 @@ static void notify_action_open (G_GNUC_UNUSED NotifyNotification *n,
 }
 #endif
 
+static void child_setup_async (G_GNUC_UNUSED gpointer user_data)
+{
+#if defined(HAVE_SETSID) && !defined(G_OS_WIN32)
+    setsid ();
+#endif
+}
+
+static void child_watch_cb (GPid pid, G_GNUC_UNUSED gint status, gpointer data)
+{
+    alarm_struct *l_alarm = (alarm_struct *)data;
+
+    waitpid (pid, NULL, 0);
+    g_spawn_close_pid (pid);
+    l_alarm->active_alarm->sound_active = FALSE;
+    orage_alarm_unref (l_alarm);
+}
+
+static gboolean orage_reminder_exec_alarm (alarm_struct *l_alarm,
+                                           GError **error)
+{
+    gchar **argv;
+    gboolean success;
+    GSpawnFlags spawn_flags;
+    GPid pid;
+    const gchar *cmd;
+
+    cmd = l_alarm->sound_cmd;
+    if (G_UNLIKELY (g_shell_parse_argv (cmd, NULL, &argv, error)) == FALSE)
+        return FALSE;
+
+    spawn_flags = G_SPAWN_DO_NOT_REAP_CHILD | G_SPAWN_SEARCH_PATH;
+    success = g_spawn_async (NULL, argv, NULL, spawn_flags, child_setup_async,
+                             NULL, &pid, error);
+
+    l_alarm->active_alarm->sound_active = success;
+    if (success)
+    {
+        orage_alarm_ref (l_alarm);
+        g_child_watch_add (pid, child_watch_cb, l_alarm);
+    }
+
+    g_strfreev (argv);
+
+    return success;
+}
+
 static gboolean sound_alarm(gpointer data)
 {
     alarm_struct *l_alarm = (alarm_struct *)data;
@@ -304,8 +350,7 @@ static gboolean sound_alarm(gpointer data)
         if (l_alarm->active_alarm->sound_active)
             return TRUE;
 
-        status = orage_exec (l_alarm->sound_cmd,
-                             &l_alarm->active_alarm->sound_active, &error);
+        status = orage_reminder_exec_alarm (l_alarm, &error);
         if (status == FALSE)
         {
             g_warning ("%s: sound command failed (%s) %s", G_STRFUNC,
