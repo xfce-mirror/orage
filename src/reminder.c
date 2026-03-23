@@ -23,10 +23,8 @@
 #ifdef HAVE_CONFIG_H
 #  include <config.h>
 #endif
-#ifdef HAVE_SYS_WAIT_H
-#include <sys/wait.h>
-#endif
 
+#include <sys/wait.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
