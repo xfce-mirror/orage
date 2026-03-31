@@ -301,6 +301,14 @@ static void child_watch_cb (GPid pid, G_GNUC_UNUSED gint status, gpointer data)
     orage_alarm_unref (l_alarm);
 }
 
+/* FIXME: duplicated logic with orage_exec().
+ *
+ * This should be refactored into a shared helper (spawn + child watch setup),
+ * but it's non-trivial because of alarm-specific state handling
+ * (l_alarm->active_alarm, refcounting, callback context).
+ *
+ * Keep in sync with orage_exec() until refactored.
+ */
 static gboolean orage_reminder_exec_alarm (alarm_struct *l_alarm,
                                            GError **error)
 {
