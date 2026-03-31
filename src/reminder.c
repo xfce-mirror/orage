@@ -284,11 +284,66 @@ static void notify_action_open (G_GNUC_UNUSED NotifyNotification *n,
 }
 #endif
 
+static void child_setup_async (G_GNUC_UNUSED gpointer user_data)
+{
+#if defined(HAVE_SETSID) && !defined(G_OS_WIN32)
+    setsid ();
+#endif
+}
+
+static void child_watch_cb (GPid pid, G_GNUC_UNUSED gint status, gpointer data)
+{
+    alarm_struct *l_alarm = (alarm_struct *)data;
+
+    waitpid (pid, NULL, 0);
+    g_spawn_close_pid (pid);
+    l_alarm->active_alarm->sound_active = FALSE;
+    orage_alarm_unref (l_alarm);
+}
+
+/* FIXME: duplicated logic with orage_exec().
+ *
+ * This should be refactored into a shared helper (spawn + child watch setup),
+ * but it's non-trivial because of alarm-specific state handling
+ * (l_alarm->active_alarm, refcounting, callback context).
+ *
+ * Keep in sync with orage_exec() until refactored.
+ */
+static gboolean orage_reminder_exec_alarm (alarm_struct *l_alarm,
+                                           GError **error)
+{
+    gchar **argv;
+    gboolean success;
+    GSpawnFlags spawn_flags;
+    GPid pid;
+    const gchar *cmd;
+
+    cmd = l_alarm->sound_cmd;
+    if (G_UNLIKELY (g_shell_parse_argv (cmd, NULL, &argv, error)) == FALSE)
+        return FALSE;
+
+    spawn_flags = G_SPAWN_DO_NOT_REAP_CHILD | G_SPAWN_SEARCH_PATH;
+    success = g_spawn_async (NULL, argv, NULL, spawn_flags, child_setup_async,
+                             NULL, &pid, error);
+
+    l_alarm->active_alarm->sound_active = success;
+    if (success)
+    {
+        orage_alarm_ref (l_alarm);
+        g_child_watch_add (pid, child_watch_cb, l_alarm);
+    }
+
+    g_strfreev (argv);
+
+    return success;
+}
+
 static gboolean sound_alarm(gpointer data)
 {
     alarm_struct *l_alarm = (alarm_struct *)data;
     GError *error = NULL;
     gboolean status;
+    gboolean exec_status;
     GtkWidget *stop;
 #ifdef HAVE_NOTIFY
     gboolean notify_cleanup = FALSE;
@@ -300,11 +355,11 @@ static gboolean sound_alarm(gpointer data)
     if (l_alarm->repeat_cnt)
     {
         if (l_alarm->active_alarm->sound_active)
-            return TRUE;
+            return G_SOURCE_CONTINUE;
 
-        status = orage_exec (l_alarm->sound_cmd,
-                             &l_alarm->active_alarm->sound_active, &error);
-        if (status == FALSE)
+        exec_status = orage_reminder_exec_alarm (l_alarm, &error);
+
+        if (exec_status == FALSE)
         {
             g_warning ("could not execute sound command '%s': %s",
                        l_alarm->sound_cmd, error->message);
@@ -314,6 +369,8 @@ static gboolean sound_alarm(gpointer data)
         }
         else if (l_alarm->repeat_cnt > 0)
             l_alarm->repeat_cnt--;
+
+        status = exec_status ? G_SOURCE_CONTINUE : G_SOURCE_REMOVE;
     }
     else
     {
@@ -327,7 +384,7 @@ static gboolean sound_alarm(gpointer data)
         notify_cleanup = TRUE;
 #endif
         l_alarm->audio = FALSE;
-        status = FALSE; /* no more alarms, end timeouts */
+        status = G_SOURCE_REMOVE;
     }
 
 #ifdef HAVE_NOTIFY
@@ -363,7 +420,8 @@ static void create_sound_reminder(alarm_struct *l_alarm)
         l_alarm->repeat_cnt++; /* need to do it once */
     }
 
-    g_debug ("sound command '%s'", l_alarm->sound_cmd);
+    g_debug ("sound command '%s', repeat delay %d",
+             l_alarm->sound_cmd, l_alarm->repeat_delay);
     g_timeout_add_seconds_full (G_PRIORITY_DEFAULT, l_alarm->repeat_delay,
                                 sound_alarm, l_alarm,
                                 (GDestroyNotify)orage_alarm_unref);
