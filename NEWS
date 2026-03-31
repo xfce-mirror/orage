@@ -10,6 +10,10 @@
 - Maintenance: cleaned up unused code, fixed some GTK deprecation warnings,
   and removed unnecessary line breaks from translated messages (MR !81).
 
+4.20.3 (2025-03-26)
+======
+- Fixed use-after-free in sound command execution (Issues #47 and #48).
+
 4.21.0 (2025-10-20)
 =======
 - New Orage main window layout (MR !80, Issue #18).
