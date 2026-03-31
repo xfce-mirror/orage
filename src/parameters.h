@@ -79,7 +79,7 @@ typedef struct _parameters
     time_t latest_file_change;
     char *sound_application;
 
-    /* List of active alarms */
+    /* List of active alarms. This field is used only in reminder.c */
     GList *alarm_list;
 
     /* alarm timer id and timeout in millisecs */

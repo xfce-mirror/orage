@@ -138,6 +138,15 @@ static void child_watch_cb (GPid pid, G_GNUC_UNUSED gint status, gpointer data)
     *cmd_active = FALSE;
 }
 
+/* FIXME: duplicated logic with orage_reminder_exec_alarm().
+ *
+ * This shares process spawning and child watch setup logic.
+ * Consider introducing a common helper or refcounted execution context.
+ *
+ * Keep in sync with orage_reminder_exec_alarm() until refactored.
+ *
+ * See also: orage_reminder_exec_alarm()
+ */
 gboolean orage_exec(const gchar *cmd, gboolean *cmd_active, GError **error)
 {
     gchar **argv;
