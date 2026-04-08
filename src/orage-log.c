@@ -86,31 +86,31 @@ static void get_message (const GLogField *field,
     *msg_len = (field->length < 0) ? strlen (*msg) : (gsize)field->length;
 }
 
-static gboolean should_drop_message (const GLogLevelFlags level,
-                                     const GLogField *fields,
-                                     const gsize n_fields)
+static gboolean is_log_message_enabled (const GLogLevelFlags level,
+                                        const GLogField *fields,
+                                        const gsize n_fields)
 {
     gsize i;
     gsize domain_length;
     const gchar *domain;
 
     if (level & disabled_log_levels)
-        return TRUE;
+        return FALSE;
 
     if (level & DEFAULT_LEVELS)
-        return FALSE;
+        return TRUE;
 
     if (g_log_get_debug_enabled ())
-        return FALSE;
+        return TRUE;
 
     if ((level & INFO_LEVELS) == 0)
-        return TRUE;
+        return FALSE;
 
     if (orage_log_domains == NULL)
-        return TRUE;
+        return FALSE;
 
     if (g_strcmp0 (orage_log_domains, "all") == 0)
-        return FALSE;
+        return TRUE;
 
     domain = NULL;
     domain_length = 0;
@@ -124,9 +124,9 @@ static gboolean should_drop_message (const GLogLevelFlags level,
     }
 
     if (domain == NULL)
-        return TRUE;
+        return FALSE;
 
-    return (log_domain_is_enabled (domain, domain_length) == FALSE);
+    return log_domain_is_enabled (domain, domain_length);
 }
 
 static void update_disabled_log_levels (void)
@@ -467,7 +467,7 @@ static GLogWriterOutput orage_log_writer (GLogLevelFlags level,
     g_return_val_if_fail (fields != NULL, G_LOG_WRITER_UNHANDLED);
     g_return_val_if_fail (n_fields > 0, G_LOG_WRITER_UNHANDLED);
 
-    if (should_drop_message (level, fields, n_fields))
+    if (is_log_message_enabled (level, fields, n_fields) == FALSE)
         return G_LOG_WRITER_HANDLED;
 
     fno = fileno (LOG_STREAM);
