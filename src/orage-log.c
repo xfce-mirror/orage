@@ -120,9 +120,6 @@ static gboolean is_log_message_enabled (const GLogLevelFlags level,
     if ((level & INFO_LEVELS) == 0)
         return FALSE;
 
-    if (orage_log_domains == NULL)
-        return FALSE;
-
     if (g_strcmp0 (orage_log_domains, "all") == 0)
         return TRUE;
 
