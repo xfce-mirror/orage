@@ -86,13 +86,27 @@ static void get_message (const GLogField *field,
     *msg_len = (field->length < 0) ? strlen (*msg) : (gsize)field->length;
 }
 
+static gboolean extract_domain (const GLogField *fields, const gsize n_fields,
+                                const gchar **domain, gsize *length)
+{
+    for (gsize i = 0; i < n_fields; i++)
+    {
+        if (g_strcmp0 (fields[i].key, "GLIB_DOMAIN") == 0)
+        {
+            get_message (&fields[i], domain, length);
+            return TRUE;
+        }
+    }
+
+    return FALSE;
+}
+
 static gboolean is_log_message_enabled (const GLogLevelFlags level,
                                         const GLogField *fields,
                                         const gsize n_fields)
 {
-    gsize i;
-    gsize domain_length;
-    const gchar *domain;
+    gsize domain_length = 0;
+    const gchar *domain = NULL;
 
     if (level & disabled_log_levels)
         return FALSE;
@@ -112,16 +126,8 @@ static gboolean is_log_message_enabled (const GLogLevelFlags level,
     if (g_strcmp0 (orage_log_domains, "all") == 0)
         return TRUE;
 
-    domain = NULL;
-    domain_length = 0;
-    for (i = 0; i < n_fields; i++)
-    {
-        if (g_strcmp0 (fields[i].key, "GLIB_DOMAIN") == 0)
-        {
-            get_message (&fields[i], &domain, &domain_length);
-            break;
-        }
-    }
+    if (extract_domain (fields, n_fields, &domain, &domain_length) == FALSE)
+        return FALSE;
 
     if (domain == NULL)
         return FALSE;
