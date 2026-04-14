@@ -18,10 +18,6 @@
  *     Boston, MA 02110-1301 USA
  */
 
-/* Handles Orage debug logging. Greatly influenced by GNOME Calendar logging
- * and GLib logging.
- */
-
 #include "orage-log.h"
 
 #include <glib.h>
@@ -99,80 +95,6 @@ static gboolean extract_domain (const GLogField *fields, const gsize n_fields,
     }
 
     return FALSE;
-}
-
-static gboolean is_log_message_enabled (const GLogLevelFlags level,
-                                        const GLogField *fields,
-                                        const gsize n_fields)
-{
-    gsize domain_length = 0;
-    const gchar *domain = NULL;
-
-    if (level & disabled_log_levels)
-        return FALSE;
-
-    if (level & DEFAULT_LEVELS)
-        return TRUE;
-
-    if (g_log_get_debug_enabled ())
-        return TRUE;
-
-    if ((level & INFO_LEVELS) == 0)
-        return FALSE;
-
-    if (g_strcmp0 (orage_log_domains, "all") == 0)
-        return TRUE;
-
-    if (extract_domain (fields, n_fields, &domain, &domain_length) == FALSE)
-        return FALSE;
-
-    if (domain == NULL)
-        return FALSE;
-
-    return log_domain_is_enabled (domain, domain_length);
-}
-
-static void update_disabled_log_levels (void)
-{
-    GLogLevelFlags filter;
-    const gchar *env;
-
-    disabled_log_levels = 0;
-    env = g_getenv ("ORAGE_LOG_LEVEL");
-    if (env == NULL)
-        return;
-
-    if (strcmp (env, "debug") == 0)
-        filter = G_LOG_LEVEL_DEBUG;
-    else if (strcmp (env, "info") == 0)
-        filter = G_LOG_LEVEL_INFO;
-    else if (strcmp (env, "message") == 0)
-        filter = G_LOG_LEVEL_MESSAGE;
-    else if (strcmp (env, "warning") == 0)
-        filter = G_LOG_LEVEL_WARNING;
-    else if (strcmp (env, "critical") == 0)
-        filter = G_LOG_LEVEL_CRITICAL;
-    else if (strcmp (env, "error") == 0)
-        filter = G_LOG_LEVEL_ERROR;
-    else
-        filter = 0;
-
-    switch (filter)
-    {
-        case G_LOG_LEVEL_ERROR:
-            disabled_log_levels |= G_LOG_LEVEL_CRITICAL;
-        case G_LOG_LEVEL_CRITICAL:
-            disabled_log_levels |= G_LOG_LEVEL_WARNING;
-        case G_LOG_LEVEL_WARNING:
-            disabled_log_levels |= G_LOG_LEVEL_MESSAGE;
-        case G_LOG_LEVEL_MESSAGE:
-            disabled_log_levels |= G_LOG_LEVEL_INFO;
-        case G_LOG_LEVEL_INFO:
-            disabled_log_levels |= G_LOG_LEVEL_DEBUG;
-        case G_LOG_LEVEL_DEBUG:
-        default:
-            break;
-    }
 }
 
 static const gchar *log_level_to_color (const GLogLevelFlags log_level,
@@ -470,7 +392,7 @@ static GLogWriterOutput orage_log_writer (GLogLevelFlags level,
     g_return_val_if_fail (fields != NULL, G_LOG_WRITER_UNHANDLED);
     g_return_val_if_fail (n_fields > 0, G_LOG_WRITER_UNHANDLED);
 
-    if (is_log_message_enabled (level, fields, n_fields) == FALSE)
+    if (orage_log_is_message_enabled (level, fields, n_fields) == FALSE)
         return G_LOG_WRITER_HANDLED;
 
     fno = fileno (LOG_STREAM);
@@ -493,7 +415,7 @@ void orage_log_init (void)
 
     if (g_once_init_enter (&initialized))
     {
-        update_disabled_log_levels ();
+        orage_log_update_levels_from_env ();
 
         env = g_getenv ("G_MESSAGES_DEBUG");
         if (env)
@@ -506,5 +428,79 @@ void orage_log_init (void)
         g_log_set_writer_func (orage_log_writer, NULL, NULL);
 
         g_once_init_leave (&initialized, TRUE);
+    }
+}
+
+gboolean orage_log_is_message_enabled (const GLogLevelFlags level,
+                                       const GLogField *fields,
+                                       const gsize n_fields)
+{
+    gsize domain_length = 0;
+    const gchar *domain = NULL;
+
+    if (level & disabled_log_levels)
+        return FALSE;
+
+    if (level & DEFAULT_LEVELS)
+        return TRUE;
+
+    if (g_log_get_debug_enabled ())
+        return TRUE;
+
+    if ((level & INFO_LEVELS) == 0)
+        return FALSE;
+
+    if (g_strcmp0 (orage_log_domains, "all") == 0)
+        return TRUE;
+
+    if (extract_domain (fields, n_fields, &domain, &domain_length) == FALSE)
+        return FALSE;
+
+    if (domain == NULL)
+        return FALSE;
+
+    return log_domain_is_enabled (domain, domain_length);
+}
+
+void orage_log_update_levels_from_env (void)
+{
+    GLogLevelFlags filter;
+    const gchar *env;
+
+    disabled_log_levels = 0;
+    env = g_getenv ("ORAGE_LOG_LEVEL");
+    if (env == NULL)
+        return;
+
+    if (strcmp (env, "debug") == 0)
+        filter = G_LOG_LEVEL_DEBUG;
+    else if (strcmp (env, "info") == 0)
+        filter = G_LOG_LEVEL_INFO;
+    else if (strcmp (env, "message") == 0)
+        filter = G_LOG_LEVEL_MESSAGE;
+    else if (strcmp (env, "warning") == 0)
+        filter = G_LOG_LEVEL_WARNING;
+    else if (strcmp (env, "critical") == 0)
+        filter = G_LOG_LEVEL_CRITICAL;
+    else if (strcmp (env, "error") == 0)
+        filter = G_LOG_LEVEL_ERROR;
+    else
+        filter = 0;
+
+    switch (filter)
+    {
+        case G_LOG_LEVEL_ERROR:
+            disabled_log_levels |= G_LOG_LEVEL_CRITICAL;
+        case G_LOG_LEVEL_CRITICAL:
+            disabled_log_levels |= G_LOG_LEVEL_WARNING;
+        case G_LOG_LEVEL_WARNING:
+            disabled_log_levels |= G_LOG_LEVEL_MESSAGE;
+        case G_LOG_LEVEL_MESSAGE:
+            disabled_log_levels |= G_LOG_LEVEL_INFO;
+        case G_LOG_LEVEL_INFO:
+            disabled_log_levels |= G_LOG_LEVEL_DEBUG;
+        case G_LOG_LEVEL_DEBUG:
+        default:
+            break;
     }
 }
