@@ -33,6 +33,7 @@
 /* orage_log_domains is guaranteed to be non-NULL after init */
 static gchar *orage_log_domains;
 static GLogLevelFlags disabled_log_levels;
+static GLogLevelFlags enabled_log_levels;
 
 static gboolean log_domain_is_enabled (const gchar *domain,
                                        const gsize domain_length)
@@ -438,6 +439,9 @@ gboolean orage_log_is_message_enabled (const GLogLevelFlags level,
     gsize domain_length = 0;
     const gchar *domain = NULL;
 
+    if (level & enabled_log_levels)
+        return TRUE;
+
     if (level & disabled_log_levels)
         return FALSE;
 
@@ -468,6 +472,7 @@ void orage_log_update_levels_from_env (void)
     const gchar *env;
 
     disabled_log_levels = 0;
+    enabled_log_levels = 0;
     env = g_getenv ("ORAGE_LOG_LEVEL");
     if (env == NULL)
         return;
@@ -500,6 +505,26 @@ void orage_log_update_levels_from_env (void)
         case G_LOG_LEVEL_INFO:
             disabled_log_levels |= G_LOG_LEVEL_DEBUG;
         case G_LOG_LEVEL_DEBUG:
+        default:
+            break;
+    }
+
+    switch (filter)
+    {
+        case G_LOG_LEVEL_DEBUG:
+            enabled_log_levels |= G_LOG_LEVEL_DEBUG;
+        case G_LOG_LEVEL_INFO:
+            enabled_log_levels |= G_LOG_LEVEL_INFO;
+        case G_LOG_LEVEL_MESSAGE:
+            enabled_log_levels |= G_LOG_LEVEL_MESSAGE;
+        case G_LOG_LEVEL_WARNING:
+            enabled_log_levels |= G_LOG_LEVEL_WARNING;
+        case G_LOG_LEVEL_CRITICAL:
+            enabled_log_levels |= G_LOG_LEVEL_CRITICAL;
+        case G_LOG_LEVEL_ERROR:
+            enabled_log_levels |= G_LOG_LEVEL_ERROR;
+            break;
+
         default:
             break;
     }

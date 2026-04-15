@@ -22,7 +22,7 @@
 
 #include <glib.h>
 
-/* Helper to simulate environment */
+/** Helper to simulate environment */
 static gboolean test_log (const GLogLevelFlags level,
                           const gchar *debug_env,
                           const gchar *domain,
@@ -114,11 +114,15 @@ int main (int argc, char **argv)
 
     g_test_add_func ("/log/default", test_default_levels);
     g_test_add_func ("/log/threshold", test_log_level_threshold);
+
 #if 0
-    
-    //g_test_add_func ("/log/debug_all", test_debug_all);
-    //g_test_add_func ("/log/domain", test_domain_filter);
-    //g_test_add_func ("/log/combined", test_combined);
+    g_test_add_func ("/log/debug_all", test_debug_all);
+#endif
+#if 0
+    g_test_add_func ("/log/domain", test_domain_filter);
+#endif
+#if 0
+    g_test_add_func ("/log/combined", test_combined);
 #endif
 
     return g_test_run ();
