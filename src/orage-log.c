@@ -411,20 +411,11 @@ static GLogWriterOutput orage_log_writer (GLogLevelFlags level,
 
 void orage_log_init (void)
 {
-    const gchar *env;
     static gsize initialized = FALSE;
 
     if (g_once_init_enter (&initialized))
     {
         orage_log_update_levels_from_env ();
-
-        env = g_getenv ("G_MESSAGES_DEBUG");
-        if (env)
-            orage_log_domains = g_strdup (env);
-        else if (g_strcmp0 (g_getenv ("DEBUG_INVOCATION"), "1") == 0)
-            orage_log_domains = g_strdup ("all");
-        else
-            orage_log_domains = g_strdup ("");
 
         g_log_set_writer_func (orage_log_writer, NULL, NULL);
 
@@ -454,9 +445,6 @@ gboolean orage_log_is_message_enabled (const GLogLevelFlags level,
     if ((level & INFO_LEVELS) == 0)
         return FALSE;
 
-    if (g_strcmp0 (orage_log_domains, "all") == 0)
-        return TRUE;
-
     if (extract_domain (fields, n_fields, &domain, &domain_length) == FALSE)
         return FALSE;
 
@@ -469,25 +457,24 @@ gboolean orage_log_is_message_enabled (const GLogLevelFlags level,
 void orage_log_update_levels_from_env (void)
 {
     GLogLevelFlags filter;
-    const gchar *env;
+    const gchar *env_orage_log_level;
+    const gchar *env_g_messages_debug;
 
     disabled_log_levels = 0;
     enabled_log_levels = 0;
-    env = g_getenv ("ORAGE_LOG_LEVEL");
-    if (env == NULL)
-        return;
+    env_orage_log_level = g_getenv ("ORAGE_LOG_LEVEL");
 
-    if (strcmp (env, "debug") == 0)
+    if (g_strcmp0 (env_orage_log_level, "debug") == 0)
         filter = G_LOG_LEVEL_DEBUG;
-    else if (strcmp (env, "info") == 0)
+    else if (g_strcmp0 (env_orage_log_level, "info") == 0)
         filter = G_LOG_LEVEL_INFO;
-    else if (strcmp (env, "message") == 0)
+    else if (g_strcmp0 (env_orage_log_level, "message") == 0)
         filter = G_LOG_LEVEL_MESSAGE;
-    else if (strcmp (env, "warning") == 0)
+    else if (g_strcmp0 (env_orage_log_level, "warning") == 0)
         filter = G_LOG_LEVEL_WARNING;
-    else if (strcmp (env, "critical") == 0)
+    else if (g_strcmp0 (env_orage_log_level, "critical") == 0)
         filter = G_LOG_LEVEL_CRITICAL;
-    else if (strcmp (env, "error") == 0)
+    else if (g_strcmp0 (env_orage_log_level, "error") == 0)
         filter = G_LOG_LEVEL_ERROR;
     else
         filter = 0;
@@ -527,5 +514,20 @@ void orage_log_update_levels_from_env (void)
 
         default:
             break;
+    }
+
+    env_g_messages_debug = g_getenv ("G_MESSAGES_DEBUG");
+    if (env_g_messages_debug)
+        orage_log_domains = g_strdup (env_g_messages_debug);
+    else if (g_strcmp0 (g_getenv ("DEBUG_INVOCATION"), "1") == 0)
+        orage_log_domains = g_strdup ("all");
+    else
+        orage_log_domains = g_strdup ("");
+
+    if ((g_strcmp0 (orage_log_domains, "all") == 0) && (filter == 0))
+    {
+        enabled_log_levels = G_LOG_LEVEL_DEBUG | G_LOG_LEVEL_INFO |
+                             G_LOG_LEVEL_MESSAGE | G_LOG_LEVEL_WARNING |
+                             G_LOG_LEVEL_CRITICAL | G_LOG_LEVEL_ERROR;
     }
 }
