@@ -31,16 +31,15 @@ static gboolean test_log (const GLogLevelFlags level,
     GLogField fields[1];
     gsize n_fields = 0;
 
-    if (debug_env != NULL)
+    if (debug_env)
         g_setenv ("G_MESSAGES_DEBUG", debug_env, TRUE);
     else
         g_unsetenv ("G_MESSAGES_DEBUG");
 
-    if (orage_level != NULL)
+    if (orage_level)
         g_setenv ("ORAGE_LOG_LEVEL", orage_level, TRUE);
     else
         g_unsetenv ("ORAGE_LOG_LEVEL");
-
 
     orage_log_update_levels_from_env ();
 
@@ -93,15 +92,13 @@ static void test_debug_all (void)
     g_assert_true (test_log (G_LOG_LEVEL_DEBUG, "all", NULL, NULL));
 }
 
-static void
-test_domain_filter (void)
+static void test_domain_filter (void)
 {
     g_assert_true (test_log (G_LOG_LEVEL_INFO, "orage", "orage", NULL));
     g_assert_false (test_log (G_LOG_LEVEL_INFO, "orage", "gtk", NULL));
 }
 
-static void
-test_combined (void)
+static void test_combined (void)
 {
     g_assert_true (test_log (G_LOG_LEVEL_INFO, "orage", "orage", "info"));
     g_assert_false (test_log (G_LOG_LEVEL_INFO, "orage", "gtk", "info"));
@@ -114,13 +111,9 @@ int main (int argc, char **argv)
 
     g_test_add_func ("/log/default", test_default_levels);
     g_test_add_func ("/log/threshold", test_log_level_threshold);
-
-#if 0
     g_test_add_func ("/log/debug_all", test_debug_all);
-#endif
-#if 0
     g_test_add_func ("/log/domain", test_domain_filter);
-#endif
+
 #if 0
     g_test_add_func ("/log/combined", test_combined);
 #endif
