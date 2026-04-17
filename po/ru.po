@@ -171,7 +171,7 @@ msgid ""
 "Note that repeating events may appear earlier in the list as the first occurrence only is listed."
 msgstr ""
 "Выберите если хотите видеть только первое из повторяющихся событий. По умолчанию отображаются все события.\n"
-"Заметьте, что это также отобрази все срочные события.\n"
+"Заметьте, что это также отобразит все срочные события.\n"
 "Учтите, что при отображении только первого из повторяющихся событий, повторяющиеся события могут быть в списке ранее."
 
 #: src/event-list.c:1306
@@ -184,7 +184,6 @@ msgid ""
 "Note that extra days selection still defines if newer appointments are listed."
 msgstr ""
 "Отметьте это, если вы хотите видеть также и старые события. Это можно выбрать только после включения \"Только первое повторяющееся\", чтобы избежать очень длинных списков.\n"
-"\n"
 "Обратите внимание, что выбор дополнительных дней по-прежнему определяет, отображаются ли в списке более новые встречи."
 
 #: src/event-list.c:1332 src/orage-appointment-window.c:3603
@@ -292,7 +291,7 @@ msgstr "Ошибка при добавлении внешнего файла"
 
 #: src/interface.c:725
 msgid "Orage can only handle 10 foreign files. Limit reached"
-msgstr ""
+msgstr "Orage может обрабатывать только 10 внешних файлов. Достигнут лимит"
 
 #: src/interface.c:735
 msgid "Filename is empty."
@@ -418,7 +417,7 @@ msgid ""
 "This is useful for example when doing export and moving orage\n"
 "appointments to another system."
 msgstr ""
-"Вернуть всех архивированные события в главный файл Orage и удалить файл архива.\n"
+"Вернуть все архивированные события в главный файл Orage и удалить файл архива.\n"
 "Это полезно, например, при экспорте и перемещении событий Orage \n"
 "на другие системы."
 
@@ -506,7 +505,7 @@ msgid ""
 "Set this if you want to make sure that this file is never modified by Orage.\n"
 "Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
 msgstr ""
-"Установите, если необходимо убедиться, что это файл никогда не будет изменён Orage.\n"
+"Установите, если необходимо убедиться, что этот файл никогда не будет изменён Orage.\n"
 "Внимание! Изменение внешних файлов может сделать их недоступными для исходной утилиты, с помощью которой они были созданы."
 
 #: src/interface.c:1508
@@ -537,34 +536,35 @@ msgstr ""
 
 #: src/orage-application.c:167
 msgid "Released under the terms of the GNU General Public License."
-msgstr ""
+msgstr "Распространяется на условиях Стандартной общественной лицензии GNU."
 
 #: src/orage-application.c:169
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
-msgstr ""
+msgstr "Скомпилировано с GTK+-%d.%d.%d, используется GTK+-%d.%d.%d."
 
 #: src/orage-application.c:174
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
 msgstr ""
+"Скомпилировано с libxfce4ui-%d.%d.%d, используется libxfce4ui-%d.%d.%d."
 
 #: src/orage-application.c:180
 #, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
-msgstr ""
+msgstr "Скомпилировано с libnotify-%d.%d.%d."
 
 #: src/orage-application.c:183
 msgid "Not using libnotify."
-msgstr ""
+msgstr "Без использования libnotify."
 
 #: src/orage-application.c:188
 msgid "Using automatic archiving."
-msgstr ""
+msgstr "Используется автоматическое архивирование."
 
 #: src/orage-application.c:190
 msgid "Not using archiving."
-msgstr ""
+msgstr "Архивирование не используется."
 
 #: src/orage-application.c:194
 #, c-format
@@ -601,11 +601,11 @@ msgstr "Импорт назначений из файла в Orage"
 
 #: src/orage-application.c:838
 msgid "Export appointments from Orage to file"
-msgstr "Экспортировать встречи из Orange в файл"
+msgstr "Экспортировать встречи из Orage в файл"
 
 #: src/orage-application.c:847
 msgid "Select logging backend (glib|orage)"
-msgstr ""
+msgstr "Выбор бэкенда журналирования (glib|orage)"
 
 #: src/orage-application.c:856
 msgid "Show version of Orage"
@@ -1328,55 +1328,55 @@ msgstr "Даты событий"
 
 #: src/orage-import.c:74
 msgid "Unsupported event type"
-msgstr ""
+msgstr "Неподдерживаемый тип события"
 
 #: src/orage-import.c:106
 msgid "<b>Summary</b>"
-msgstr ""
+msgstr "<b>Сводка</b>"
 
 #: src/orage-import.c:117
 msgid "<b>Type</b>"
-msgstr ""
+msgstr "<b>Тип</b>"
 
 #: src/orage-import.c:132
 msgid "<b>Location</b>"
-msgstr ""
+msgstr "<b>Расположение</b>"
 
 #: src/orage-import.c:147
 msgid "<b>URL</b>"
-msgstr ""
+msgstr "<b>URL</b>"
 
 #: src/orage-import.c:166
 msgid "<b>All-day</b>"
-msgstr ""
+msgstr "<b>Весь день</b>"
 
 #: src/orage-import.c:181
 msgid "<b>From</b>"
-msgstr ""
+msgstr "<b>От</b>"
 
 #: src/orage-import.c:196
 msgid "<b>To</b>"
-msgstr ""
+msgstr "<b>До</b>"
 
 #: src/orage-import.c:210
 msgid "<b>Recurring</b>"
-msgstr ""
+msgstr "<b>Повторяющееся</b>"
 
 #: src/orage-import.c:213
 msgid "Yes"
-msgstr ""
+msgstr "Да"
 
 #: src/orage-import.c:213
 msgid "No"
-msgstr ""
+msgstr "Нет"
 
 #: src/orage-import.c:259
 msgid "Import calendar file"
-msgstr ""
+msgstr "Импорт файла календаря"
 
 #: src/orage-import.c:261
 msgid "_Import"
-msgstr ""
+msgstr "_Импорт"
 
 #: src/orage-import.c:270
 msgid "_Cancel"
@@ -1388,12 +1388,12 @@ msgstr "О_тмена"
 #. * use "%Y %B" instead.
 #: src/orage-month-view.c:217
 msgid "%B %Y"
-msgstr ""
+msgstr "%B %Y"
 
 #. Setup title row.
 #: src/orage-month-view.c:485 src/orage-window-next.c:1106
 msgid "Week"
-msgstr ""
+msgstr "Неделя"
 
 #: src/orage-sync-edit-dialog.c:132
 msgid "Description:"
@@ -1432,7 +1432,7 @@ msgstr "_Закрыть"
 #. * first day of the week, and so on.
 #: src/orage-time-utils.c:264
 msgid "calendar:week_start:0"
-msgstr ""
+msgstr "calendar:week_start:1"
 
 #: src/orage-week-window.c:458
 msgid "Back one week"
@@ -1555,19 +1555,19 @@ msgstr "<b>События с %s по %s:</b>"
 
 #: src/orage-window-next.c:131
 msgid "Create a new appointment"
-msgstr ""
+msgstr "Создать новую встречу"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"
-msgstr ""
+msgstr "Перезагрузить внешние файлы"
 
 #: src/orage-window-next.c:135
 msgid "Import/export data"
-msgstr ""
+msgstr "Импорт/экспорт данных"
 
 #: src/orage-window-next.c:136
 msgid "Close window"
-msgstr ""
+msgstr "Закрыть окно"
 
 #: src/orage-window-next.c:137
 msgid "_Quit"
@@ -1575,7 +1575,7 @@ msgstr "_Выйти"
 
 #: src/orage-window-next.c:137
 msgid "Quit program"
-msgstr ""
+msgstr "Выйти из программы"
 
 #: src/orage-window-next.c:140
 msgid "_Preferences"
@@ -1587,15 +1587,15 @@ msgstr "Настройки Orage"
 
 #: src/orage-window-next.c:143
 msgid "View selected date"
-msgstr ""
+msgstr "Просмотр выбранной даты"
 
 #: src/orage-window-next.c:145
 msgid "Go to today"
-msgstr ""
+msgstr "Перейти к сегодня"
 
 #: src/orage-window-next.c:148
 msgid "Display Orage user manual"
-msgstr ""
+msgstr "Показать руководство пользователя Orage"
 
 #: src/orage-window-next.c:149
 msgid "_About"
@@ -1603,25 +1603,25 @@ msgstr "_О программе"
 
 #: src/orage-window-next.c:149
 msgid "Display information about Orage"
-msgstr ""
+msgstr "Показать информацию о Orage"
 
 #: src/orage-window-next.c:366
 msgid "New event"
-msgstr ""
+msgstr "Новое событие"
 
 #: src/orage-window-next.c:444
 #, c-format
 msgid "Events for %s:"
-msgstr ""
+msgstr "События для %s:"
 
 #: src/orage-window-next.c:450
 #, c-format
 msgid "Events for %s - %s:"
-msgstr ""
+msgstr "События для %s - %s:"
 
 #: src/orage-window-next.c:650
 msgid "To do:"
-msgstr ""
+msgstr "Сделать:"
 
 #: src/orage-window-next.c:1070
 msgid "Previous"
@@ -1633,15 +1633,15 @@ msgstr "Следующий"
 
 #: src/orage-window-next.c:1104
 msgid "Day"
-msgstr ""
+msgstr "День"
 
 #: src/orage-window-next.c:1109
 msgid "Month"
-msgstr ""
+msgstr "Месяц"
 
 #: src/orage-window-next.c:1112
 msgid "Year"
-msgstr ""
+msgstr "Год"
 
 #: src/parameters.c:643
 msgid "Remove selected synchronization task."
@@ -1695,11 +1695,11 @@ msgstr "Визуальные элементы календаря"
 
 #: src/parameters.c:818
 msgid "Use new user interface"
-msgstr ""
+msgstr "Использовать новый интерфейс"
 
 #: src/parameters.c:820
 msgid "Enable the new interface layout (requires restart)"
-msgstr ""
+msgstr "Включить новый интерфейс (требуется перезапуск)"
 
 #: src/parameters.c:825
 msgid "Show borders"
@@ -2109,7 +2109,7 @@ msgstr "Африка/Мбабане"
 
 #: src/timezone_names.c:73
 msgid "Africa/Mogadishu"
-msgstr "Африка/Магадишо"
+msgstr "Африка/Могадишо"
 
 #: src/timezone_names.c:74
 msgid "Africa/Monrovia"
@@ -2465,7 +2465,7 @@ msgstr "Америка/Индиана/Петербург"
 
 #: src/timezone_names.c:162
 msgid "America/Indiana/Tell_City"
-msgstr "Америка/Индиана/Петербург"
+msgstr "Америка/Индиана/Телл-Сити"
 
 #: src/timezone_names.c:163
 msgid "America/Indiana/Vevay"
@@ -2673,7 +2673,7 @@ msgstr "Америка/Порт-оф-Спейн"
 
 #: src/timezone_names.c:214
 msgid "America/Porto_Acre"
-msgstr "Америка/Порт Акра"
+msgstr "Америка/Порт-Акри"
 
 #: src/timezone_names.c:215
 msgid "America/Porto_Velho"
@@ -2713,7 +2713,7 @@ msgstr "Америка/Росарио"
 
 #: src/timezone_names.c:224
 msgid "America/Santa_Isabel"
-msgstr "Америка/Санта-Изабел"
+msgstr "Америка/Санта-Исабель"
 
 #: src/timezone_names.c:225
 msgid "America/Santarem"
@@ -2801,7 +2801,7 @@ msgstr "Америка/Ванкувер"
 
 #: src/timezone_names.c:246
 msgid "America/Virgin"
-msgstr "Америка/Вирджин"
+msgstr "Америка/Виргинские о-ва"
 
 #: src/timezone_names.c:247
 msgid "America/Whitehorse"
@@ -2905,7 +2905,7 @@ msgstr "Азия/Актюбинск"
 
 #: src/timezone_names.c:272
 msgid "Asia/Ashgabat"
-msgstr "Азия/Ашгабад"
+msgstr "Азия/Ашгабат"
 
 #: src/timezone_names.c:273
 msgid "Asia/Ashkhabad"
@@ -2953,7 +2953,7 @@ msgstr "Азия/Чунцин"
 
 #: src/timezone_names.c:284
 msgid "Asia/Chungking"
-msgstr "Азия/Чункинг"
+msgstr "Азия/Чунцин"
 
 #: src/timezone_names.c:285
 msgid "Asia/Colombo"
@@ -3001,7 +3001,7 @@ msgstr "Азия/Гонконг"
 
 #: src/timezone_names.c:296
 msgid "Asia/Ho_Chi_Minh"
-msgstr "Азия/Хо-Чи-Мин"
+msgstr "Азия/Хошимин"
 
 #: src/timezone_names.c:297
 msgid "Asia/Hovd"
@@ -3101,7 +3101,7 @@ msgstr "Азия/Маскат"
 
 #: src/timezone_names.c:321
 msgid "Asia/Nicosia"
-msgstr "Азия/Никозия"
+msgstr "Азия/Никосия"
 
 #: src/timezone_names.c:322
 msgid "Asia/Novokuznetsk"
@@ -3137,7 +3137,7 @@ msgstr "Азия/Катар"
 
 #: src/timezone_names.c:330
 msgid "Asia/Qyzylorda"
-msgstr "Азия/Кзыл-Орда"
+msgstr "Азия/Кызылорда"
 
 #: src/timezone_names.c:331
 msgid "Asia/Rangoon"
@@ -3185,7 +3185,7 @@ msgstr "Азия/Сингапур"
 
 #: src/timezone_names.c:342
 msgid "Asia/Taipei"
-msgstr "Азия/Тайпей"
+msgstr "Азия/Тайбэй"
 
 #: src/timezone_names.c:343
 msgid "Asia/Tashkent"
@@ -3225,7 +3225,7 @@ msgstr "Азия/Улан-Батор"
 
 #: src/timezone_names.c:352
 msgid "Asia/Ulan_Bator"
-msgstr "Азия/Улан Батор"
+msgstr "Азия/Улан-Батор"
 
 #: src/timezone_names.c:353
 msgid "Asia/Urumqi"
@@ -3273,23 +3273,23 @@ msgstr "Атлантика/Канарские о-ва"
 
 #: src/timezone_names.c:364
 msgid "Atlantic/Cape_Verde"
-msgstr "Атлантика/Острова Зелёного Мыса"
+msgstr "Атлантика/Кабо-Верде"
 
 #: src/timezone_names.c:365
 msgid "Atlantic/Faeroe"
-msgstr "Атлантика/Фарерские острова"
+msgstr "Атлантика/Фарерские о-ва"
 
 #: src/timezone_names.c:366
 msgid "Atlantic/Faroe"
-msgstr "Атлантический океан/Фарерские острова"
+msgstr "Атлантика/Фарерские о-ва"
 
 #: src/timezone_names.c:367
 msgid "Atlantic/Jan_Mayen"
-msgstr "Атлантика/Ян-Майен, о-в"
+msgstr "Атлантика/Ян-Майен"
 
 #: src/timezone_names.c:368
 msgid "Atlantic/Madeira"
-msgstr "Атлантика/Мадейра, о-в"
+msgstr "Атлантика/Мадейра"
 
 #: src/timezone_names.c:369
 msgid "Atlantic/Reykjavik"
@@ -3297,15 +3297,15 @@ msgstr "Атлантика/Рейкьявик"
 
 #: src/timezone_names.c:370
 msgid "Atlantic/South_Georgia"
-msgstr "Атлантика/Ю.Джорджия и Ю.Сэндвинчевы о-ва"
+msgstr "Атлантика/Южная Георгия"
 
 #: src/timezone_names.c:371
 msgid "Atlantic/St_Helena"
-msgstr "Атлантика/Св. Елены, о-в"
+msgstr "Атлантика/Остров Святой Елены"
 
 #: src/timezone_names.c:372
 msgid "Atlantic/Stanley"
-msgstr "Атлантический океан/Фолклендские о-ва"
+msgstr "Атлантика/Стэнли"
 
 #: src/timezone_names.c:373
 msgid "Australia"
@@ -3329,7 +3329,7 @@ msgstr "Австралия/Брокен-Хилл"
 
 #: src/timezone_names.c:378
 msgid "Australia/Currie"
-msgstr "Австралия/Кернс"
+msgstr "Австралия/Карри"
 
 #: src/timezone_names.c:379
 msgid "Australia/Darwin"
@@ -3349,7 +3349,7 @@ msgstr "Австралия/Линдеман"
 
 #: src/timezone_names.c:383
 msgid "Australia/Lord_Howe"
-msgstr "Австралия/Лорд-Хау, о-в"
+msgstr "Австралия/Лорд-Хау"
 
 #: src/timezone_names.c:384
 msgid "Australia/Melbourne"
@@ -3373,7 +3373,7 @@ msgstr "Бразилия/Акри"
 
 #: src/timezone_names.c:389
 msgid "Brazil/DeNoronha"
-msgstr "Бразилия/ДеНоронья"
+msgstr "Бразилия/Де-Норонья"
 
 #: src/timezone_names.c:390
 msgid "Brazil/East"
@@ -3389,11 +3389,11 @@ msgstr "Канада"
 
 #: src/timezone_names.c:393
 msgid "Canada/Atlantic"
-msgstr "Канада/Атлантика"
+msgstr "Канада/Атлантический"
 
 #: src/timezone_names.c:394
 msgid "Canada/Central"
-msgstr "Канада/Центр"
+msgstr "Канада/Центральный"
 
 #: src/timezone_names.c:395
 msgid "Canada/East-Saskatchewan"
@@ -3401,11 +3401,11 @@ msgstr "Канада/Восточный Саскачеван"
 
 #: src/timezone_names.c:396
 msgid "Canada/Eastern"
-msgstr "Канада/Восток"
+msgstr "Канада/Восточный"
 
 #: src/timezone_names.c:397
 msgid "Canada/Mountain"
-msgstr "Канада/Горы"
+msgstr "Канада/Горный"
 
 #: src/timezone_names.c:398
 msgid "Canada/Newfoundland"
@@ -3413,7 +3413,7 @@ msgstr "Канада/Ньюфаундленд"
 
 #: src/timezone_names.c:399
 msgid "Canada/Pacific"
-msgstr "Канада/Тихий океан"
+msgstr "Канада/Тихоокеанский"
 
 #: src/timezone_names.c:400
 msgid "Canada/Saskatchewan"
@@ -3577,7 +3577,7 @@ msgstr "Прочее/Universal"
 
 #: src/timezone_names.c:440
 msgid "Etc/Zulu"
-msgstr "Прочее/Зулу"
+msgstr "Прочее/Zulu"
 
 #: src/timezone_names.c:441
 msgid "Europe"
@@ -3713,7 +3713,7 @@ msgstr "Европа/Москва"
 
 #: src/timezone_names.c:474
 msgid "Europe/Nicosia"
-msgstr "Европа/Никозия"
+msgstr "Европа/Никосия"
 
 #: src/timezone_names.c:475
 msgid "Europe/Oslo"
@@ -3821,51 +3821,51 @@ msgstr "Европа/Цюрих"
 
 #: src/timezone_names.c:501
 msgid "Indian"
-msgstr "Индия"
+msgstr "Индийский океан"
 
 #: src/timezone_names.c:502
 msgid "Indian/Antananarivo"
-msgstr "Индия/Антананариву"
+msgstr "Индийский океан/Антананариву"
 
 #: src/timezone_names.c:503
 msgid "Indian/Chagos"
-msgstr "Индия/Чагос"
+msgstr "Индийский океан/Чагос"
 
 #: src/timezone_names.c:504
 msgid "Indian/Christmas"
-msgstr "Индия/Остров Рождества"
+msgstr "Индийский океан/Остров Рождества"
 
 #: src/timezone_names.c:505
 msgid "Indian/Cocos"
-msgstr "Индия/Кокосовые о-ва"
+msgstr "Индийский океан/Кокосовые о-ва"
 
 #: src/timezone_names.c:506
 msgid "Indian/Comoro"
-msgstr "Индия/Коморские о-ва"
+msgstr "Индийский океан/Коморские о-ва"
 
 #: src/timezone_names.c:507
 msgid "Indian/Kerguelen"
-msgstr "Индия/Кергелен"
+msgstr "Индийский океан/Кергелен"
 
 #: src/timezone_names.c:508
 msgid "Indian/Mahe"
-msgstr "Индия/Маэ"
+msgstr "Индийский океан/Маэ"
 
 #: src/timezone_names.c:509
 msgid "Indian/Maldives"
-msgstr "Индия/Мальдивы"
+msgstr "Индийский океан/Мальдивы"
 
 #: src/timezone_names.c:510
 msgid "Indian/Mauritius"
-msgstr "Индия/Маврикий"
+msgstr "Индийский океан/Маврикий"
 
 #: src/timezone_names.c:511
 msgid "Indian/Mayotte"
-msgstr "Индия/Майотта"
+msgstr "Индийский океан/Майотта"
 
 #: src/timezone_names.c:512
 msgid "Indian/Reunion"
-msgstr "Индия/Реюньон"
+msgstr "Индийский океан/Реюньон"
 
 #: src/timezone_names.c:513
 msgid "Mexico"
@@ -3885,19 +3885,19 @@ msgstr "Мексика/Основная"
 
 #: src/timezone_names.c:517
 msgid "Mideast"
-msgstr "Средняя Азия"
+msgstr "Средний Восток"
 
 #: src/timezone_names.c:518
 msgid "Mideast/Riyadh87"
-msgstr "Средняя Азия/Рияд87"
+msgstr "Средний Восток/Рияд87"
 
 #: src/timezone_names.c:519
 msgid "Mideast/Riyadh88"
-msgstr "Средняя Азия/Рияд88"
+msgstr "Средний Восток/Рияд88"
 
 #: src/timezone_names.c:520
 msgid "Mideast/Riyadh89"
-msgstr "Средняя Азия/Рияд89"
+msgstr "Средний Восток/Рияд89"
 
 #: src/timezone_names.c:521
 msgid "Pacific"
@@ -3913,7 +3913,7 @@ msgstr "Тихий океан/Окленд"
 
 #: src/timezone_names.c:524
 msgid "Pacific/Chatham"
-msgstr "Тихий океан/Чатем, о-в"
+msgstr "Тихий океан/Чатем"
 
 #: src/timezone_names.c:525
 msgid "Pacific/Chuuk"
@@ -3929,7 +3929,7 @@ msgstr "Тихий океан/Эфате"
 
 #: src/timezone_names.c:528
 msgid "Pacific/Enderbury"
-msgstr "Тихий океан/Эндербери, о-в"
+msgstr "Тихий океан/Эндербери"
 
 #: src/timezone_names.c:529
 msgid "Pacific/Fakaofo"
@@ -3945,11 +3945,11 @@ msgstr "Тихий океан/Фунафути"
 
 #: src/timezone_names.c:532
 msgid "Pacific/Galapagos"
-msgstr "Тихий океан/Галапагос, о-ва"
+msgstr "Тихий океан/Галапагос"
 
 #: src/timezone_names.c:533
 msgid "Pacific/Gambier"
-msgstr "Тихий океан/Гамбье, о-ва"
+msgstr "Тихий океан/Гамбье"
 
 #: src/timezone_names.c:534
 msgid "Pacific/Guadalcanal"
@@ -3965,15 +3965,15 @@ msgstr "Тихий океан/Гонолулу"
 
 #: src/timezone_names.c:537
 msgid "Pacific/Johnston"
-msgstr "Тихий океан/Джонстон, ат."
+msgstr "Тихий океан/Джонстон"
 
 #: src/timezone_names.c:538
 msgid "Pacific/Kiritimati"
-msgstr "Тихий океан/Остров Рождества"
+msgstr "Тихий океан/Киритимати"
 
 #: src/timezone_names.c:539
 msgid "Pacific/Kosrae"
-msgstr "Тихий океан/Кусаие, о-в"
+msgstr "Тихий океан/Косраэ"
 
 #: src/timezone_names.c:540
 msgid "Pacific/Kwajalein"
@@ -3989,7 +3989,7 @@ msgstr "Тихий океан/Маркизские о-ва"
 
 #: src/timezone_names.c:543
 msgid "Pacific/Midway"
-msgstr "Тихий океан/Мидуэй, о-ва"
+msgstr "Тихий океан/Мидуэй"
 
 #: src/timezone_names.c:544
 msgid "Pacific/Nauru"
@@ -4017,7 +4017,7 @@ msgstr "Тихий океан/Палау"
 
 #: src/timezone_names.c:550
 msgid "Pacific/Pitcairn"
-msgstr "Тихий океан/Питкерн, о-ва"
+msgstr "Тихий океан/Питкэрн"
 
 #: src/timezone_names.c:551
 msgid "Pacific/Pohnpei"
@@ -4025,7 +4025,7 @@ msgstr "Тихий океан/Понпеи"
 
 #: src/timezone_names.c:552
 msgid "Pacific/Ponape"
-msgstr "Тихий океан/Понапе, о-в"
+msgstr "Тихий океан/Понапе"
 
 #: src/timezone_names.c:553
 msgid "Pacific/Port_Moresby"
@@ -4045,7 +4045,7 @@ msgstr "Тихий океан/Самоа"
 
 #: src/timezone_names.c:557
 msgid "Pacific/Tahiti"
-msgstr "Тихий океан/Таити, о-в"
+msgstr "Тихий океан/Таити"
 
 #: src/timezone_names.c:558
 msgid "Pacific/Tarawa"
@@ -4057,11 +4057,11 @@ msgstr "Тихий океан/Тонгатапу"
 
 #: src/timezone_names.c:560
 msgid "Pacific/Truk"
-msgstr "Тихий океан/Трук, о-ва"
+msgstr "Тихий океан/Трук"
 
 #: src/timezone_names.c:561
 msgid "Pacific/Wake"
-msgstr "Тихий океан/Уэйк, о-в"
+msgstr "Тихий океан/Уэйк"
 
 #: src/timezone_names.c:562
 msgid "Pacific/Wallis"
@@ -4069,7 +4069,7 @@ msgstr "Тихий океан/Уоллис"
 
 #: src/timezone_names.c:563
 msgid "Pacific/Yap"
-msgstr "Тихий океан/Яп, о-ва"
+msgstr "Тихий океан/Яп"
 
 #: src/timezone_names.c:564
 msgid "SystemV"
@@ -4145,11 +4145,11 @@ msgstr "США/Аризона"
 
 #: src/timezone_names.c:582
 msgid "US/Central"
-msgstr "США/Центр"
+msgstr "США/Центральный"
 
 #: src/timezone_names.c:583
 msgid "US/Eastern"
-msgstr "США/Восток"
+msgstr "США/Восточный"
 
 #: src/timezone_names.c:584
 msgid "US/East-Indiana"
@@ -4169,15 +4169,15 @@ msgstr "США/Мичиган"
 
 #: src/timezone_names.c:588
 msgid "US/Mountain"
-msgstr "США/Горы"
+msgstr "США/Горный"
 
 #: src/timezone_names.c:589
 msgid "US/Pacific"
-msgstr "США/Тихий океан"
+msgstr "США/Тихоокеанский"
 
 #: src/timezone_names.c:590
 msgid "US/Pacific-New"
-msgstr "США/Тихий океан (новый)"
+msgstr "США/Тихоокеанский-Новый"
 
 #: src/timezone_names.c:591
 msgid "US/Samoa"
@@ -4186,17 +4186,17 @@ msgstr "США/Самоа"
 #: src/timezone_selection.c:143
 #, c-format
 msgid "%d hour %d mins"
-msgstr "%d час. %d мин."
+msgstr "%d ч %d мин"
 
 #: src/timezone_selection.c:146
 #, c-format
 msgid "%d hour"
-msgstr "%d час."
+msgstr "%d ч"
 
 #: src/timezone_selection.c:148
 #, c-format
 msgid "%d mins"
-msgstr "%d мин."
+msgstr "%d мин"
 
 #: src/timezone_selection.c:154
 msgid "backward"
@@ -4216,7 +4216,7 @@ msgstr "не изменяется"
 
 #: src/timezone_selection.c:241
 msgid "GMT Offset"
-msgstr "Разница с GMT"
+msgstr "Смещение GMT"
 
 #: src/timezone_selection.c:247
 msgid "Previous/Next Change"
@@ -4304,7 +4304,7 @@ msgstr "Календарь Orage"
 
 #: org.xfce.orage.desktop.in:5
 msgid "Desktop calendar"
-msgstr "Простой календарь"
+msgstr "Календарь рабочего тосла"
 
 #: org.xfce.orage.desktop.in:13
 msgid "Calendar"
@@ -4312,7 +4312,7 @@ msgstr "Календарь"
 
 #: org.xfce.orage.desktop.in:18
 msgid "Show Today"
-msgstr "Показать этот день"
+msgstr "Показать сегодня"
 
 #: org.xfce.orage.desktop.in:22
 msgid "New Appointment"
