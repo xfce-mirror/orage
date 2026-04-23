@@ -1,0 +1,4298 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Xfce
+# This file is distributed under the same license as the xfce-apps.orage package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# BoneNI, 2026
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: xfce-apps.orage\n"
+"Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
+"POT-Creation-Date: 2026-02-19 12:56+0100\n"
+"PO-Revision-Date: 2022-02-01 14:01+0000\n"
+"Last-Translator: BoneNI, 2026\n"
+"Language-Team: Lao (https://app.transifex.com/xfce/teams/16840/lo/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: lo\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. date only appointment
+#: src/event-list.c:183
+msgid "All day"
+msgstr "ຕະຫຼອດມື້"
+
+#: src/event-list.c:607 src/event-list.c:1435
+msgid "Time"
+msgstr "ເວລາ"
+
+#: src/event-list.c:789
+msgid "No rows have been selected."
+msgstr "ບໍ່ມີແຖວທີ່ຖືກເລືອກ."
+
+#: src/event-list.c:790
+msgid "Click a row to select it and after that you can copy it."
+msgstr "ຄລິກໃສ່ແຖວເພື່ອເລືອກ ແລ້ວຫຼັງຈາກນັ້ນທ່ານສາມາດສຳເນົາມັນໄດ້."
+
+#: src/event-list.c:1009
+msgid ""
+"You will permanently remove all\n"
+"selected appointments."
+msgstr ""
+"ທ່ານຈະລຶບການນັດໝາຍທີ່ເລືອກທັງໝົດ\n"
+"ອອກຢ່າງຖາວອນ."
+
+#: src/event-list.c:1010 src/orage-appointment-window.c:981
+#: src/orage-appointment-window.c:1644 src/parameters.c:644
+msgid "Do you want to continue?"
+msgstr "ທ່ານຕ້ອງການດຳເນີນການຕໍ່ບໍ່?"
+
+#: src/event-list.c:1011 src/orage-appointment-window.c:1645
+#: src/parameters.c:645
+msgid "No, cancel the removal"
+msgstr "ບໍ່, ຍົກເລີກການລຶບ"
+
+#: src/event-list.c:1012
+msgid "Yes, remove them"
+msgstr "ແມ່ນແລ້ວ, ລຶບພວກມັນອອກ"
+
+#: src/event-list.c:1072 src/orage-appointment-window.c:1743
+#: src/orage-appointment-window.c:1758 src/orage-month-view.c:175
+#: src/orage-week-window.c:533
+msgid "Pick the date"
+msgstr "ເລືອກວັນທີ"
+
+#: src/event-list.c:1074 src/event-list.c:1228
+#: src/orage-appointment-window.c:1745 src/orage-appointment-window.c:1760
+#: src/orage-week-window.c:462 src/orage-week-window.c:535 src/tray_icon.c:386
+msgid "Today"
+msgstr "ມື້ນີ້"
+
+#. ********* File menu *********
+#. File menu
+#. File menu stuff
+#. ********* File menu *********
+#. File menu
+#: src/event-list.c:1129 src/interface.c:865
+#: src/orage-appointment-window.c:2917 src/orage-week-window.c:356
+#: src/orage-window-classic.c:281 src/orage-window-next.c:130
+msgid "_File"
+msgstr "_ໄຟລ໌"
+
+#: src/event-list.c:1135 src/orage-appointment-window.c:2935
+msgid "D_uplicate"
+msgstr "ເຮັດ_ຊ້ຳ"
+
+#. ********* View menu *********
+#. View menu
+#: src/event-list.c:1152 src/orage-week-window.c:366
+#: src/orage-window-classic.c:310 src/orage-window-next.c:142
+msgid "_View"
+msgstr "_ມຸມມອງ"
+
+#. ********* Go menu   *********
+#: src/event-list.c:1171 src/orage-week-window.c:380
+msgid "_Go"
+msgstr "_ໄປ"
+
+#: src/event-list.c:1217 src/orage-week-window.c:453
+#: src/orage-window-next.c:131
+msgid "New"
+msgstr "ໃໝ່"
+
+#: src/event-list.c:1219 src/orage-appointment-window.c:3560
+msgid "Duplicate"
+msgstr "ເຮັດຊ້ຳ"
+
+#: src/event-list.c:1221 src/orage-appointment-window.c:3565
+msgid "Delete"
+msgstr "ລຶບ"
+
+#: src/event-list.c:1226
+msgid "Back"
+msgstr "ກັບຄືນ"
+
+#: src/event-list.c:1230
+msgid "Forward"
+msgstr "ໄປໜ້າ"
+
+#: src/event-list.c:1235 src/orage-week-window.c:471
+#: src/orage-window-next.c:133
+msgid "Refresh"
+msgstr "ໂຫຼດໃໝ່"
+
+#: src/event-list.c:1237
+msgid "Find"
+msgstr "ຄົ້ນຫາ"
+
+#: src/event-list.c:1242 src/interface.c:883 src/orage-week-window.c:476
+#: src/orage-window-next.c:136
+msgid "Close"
+msgstr "ປິດ"
+
+#: src/event-list.c:1244
+msgid "Dayview"
+msgstr "ມຸມມອງລາຍວັນ"
+
+#: src/event-list.c:1274 src/orage-appointment-window.c:3595
+#: src/orage-import.c:64
+msgid "Event"
+msgstr "ເຫດການ"
+
+#: src/event-list.c:1279
+msgid "Extra days to show:"
+msgstr "ຈຳນວນມື້ເພີ່ມເຕີມທີ່ຈະສະແດງ:"
+
+#: src/event-list.c:1293
+msgid "only first repeating"
+msgstr "ສະເພາະການເຮັດຊ້ຳຄັ້ງທຳອິດ"
+
+#: src/event-list.c:1301
+msgid ""
+"Check this if you only want to see the first repeating event. By default all are shown.\n"
+"Note that this also shows all urgencies.\n"
+"Note that repeating events may appear earlier in the list as the first occurrence only is listed."
+msgstr ""
+"ໝາຍເອົາບ່ອນນີ້ ຖ້າທ່ານຕ້ອງການເຫັນສະເພາະເຫດການທີ່ເຮັດຊ້ຳຄັ້ງທຳອິດເທົ່ານັ້ນ. ໂດຍປົກກະຕິແລ້ວຈະສະແດງທັງໝົດ.\n"
+"ໝາຍເຫດ: ບ່ອນນີ້ຍັງສະແດງລະດັບຄວາມດ່ວນທັງໝົດນຳ.\n"
+"ໝາຍເຫດ: ເຫດການທີ່ເຮັດຊ້ຳອາດຈະປະກົດຂຶ້ນກ່ອນໃນລາຍການ ເນື່ອງຈາກຈະສະແດງສະເພາະຄັ້ງທຳອິດທີ່ເກີດຂຶ້ນ."
+
+#: src/event-list.c:1306
+msgid "also old"
+msgstr "ລວມທັງອັນເກົ່າ"
+
+#: src/event-list.c:1311
+msgid ""
+"Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\n"
+"Note that extra days selection still defines if newer appointments are listed."
+msgstr ""
+"ໝາຍເອົາບ່ອນນີ້ ຖ້າທ່ານຕ້ອງການເຫັນເຫດການເກົ່ານຳ. ສາມາດເລືອກໄດ້ຫຼັງຈາກເປີດໃຊ້ 'ສະເພາະການເຮັດຊ້ຳຄັ້ງທຳອິດ' ແລ້ວເທົ່ານັ້ນ ເພື່ອຫຼີກເວັ້ນລາຍການທີ່ຍາວເກີນໄປ.\n"
+"ໝາຍເຫດ: ການເລືອກມື້ເພີ່ມເຕີມຍັງເປັນໂຕກຳນົດວ່າຈະສະແດງການນັດໝາຍໃໝ່ຫຼືບໍ່."
+
+#: src/event-list.c:1332 src/orage-appointment-window.c:3603
+#: src/orage-import.c:67
+msgid "Todo"
+msgstr "ສິ່ງທີ່ຈະເຮັດ"
+
+#: src/event-list.c:1346 src/orage-appointment-window.c:3611
+#: src/orage-import.c:70
+msgid "Journal"
+msgstr "ບັນທຶກປະຈຳວັນ"
+
+#: src/event-list.c:1349
+msgid "Journal entries starting from:"
+msgstr "ລາຍການບັນທຶກເລີ່ມຕົ້ນຈາກ:"
+
+#: src/event-list.c:1374
+msgid "Search"
+msgstr "ຄົ້ນຫາ"
+
+#: src/event-list.c:1377
+msgid "Search text "
+msgstr "ຄົ້ນຫາຂໍ້ຄວາມ "
+
+#: src/event-list.c:1443
+msgid "Flags"
+msgstr "ສະຖານະ"
+
+#. title
+#: src/event-list.c:1451 src/orage-appointment-window.c:3622
+#: src/orage-window-next.c:880 src/orage-window-next.c:898
+msgid "Title"
+msgstr "ຫົວຂໍ້"
+
+#: src/event-list.c:1477
+msgid ""
+"Double click line to edit it.\n"
+"\n"
+"Flags in order:\n"
+"\t 1. Alarm: n=no alarm\n"
+"\t\t A=Alarm is set P=Persistent alarm is set\n"
+"\t 2. Recurrence: n=no recurrence\n"
+"\t\t H=Hourly D=Daily W=Weekly M=Monthly Y=Yearly\n"
+"\t 3. Type: f=free B=Busy\n"
+"\t 4. Located in file:\n"
+"\t\tO=Orage A=Archive F=Foreign\n"
+"\t 5. Appointment type:\n"
+"\t\tE=Event T=Todo J=Journal"
+msgstr ""
+"ດັບເບິນຄລິກທີ່ແຖວເພື່ອແກ້ໄຂ.\n"
+"\n"
+"ລຳດັບສະຖານະ:\n"
+"\t 1. ການເຕືອນ: n=ບໍ່ມີການເຕືອນ\n"
+"\t\t A=ຕັ້ງການເຕືອນແລ້ວ P=ຕັ້ງການເຕືອນແບບຕໍ່ເນື່ອງແລ້ວ\n"
+"\t 2. ການເກີດຊ້ຳ: n=ບໍ່ມີການເກີດຊ້ຳ\n"
+"\t\t H=ລາຍຊົ່ວໂມງ D=ລາຍວັນ W=ລາຍອາທິດ M=ລາຍເດືອນ Y=ລາຍປີ\n"
+"\t 3. ປະເພດ: f=ວ່າງ B=ບໍ່ວ່າງ\n"
+"\t 4. ບ່ອນຈັດເກັບໄຟລ໌:\n"
+"\t\tO=Orage A=ໄຟລ໌ຈັດເກັບ F=ໄຟລ໌ພາຍນອກ\n"
+"\t 5. ປະເພດການນັດໝາຍ:\n"
+"\t\tE=ເຫດການ T=ສິ່ງທີ່ຈະເຮັດ J=ບັນທຶກປະຈຳວັນ"
+
+#: src/ical-code.c:856
+msgid "Orage default alarm"
+msgstr "ການເຕືອນມາດຕະຖານຂອງ Orage"
+
+#. to avoid timing problems when updating entry
+#. Create file chooser
+#: src/interface.c:269 src/orage-appointment-window.c:931 src/parameters.c:390
+msgid "Select a file..."
+msgstr "ເລືອກໄຟລ໌..."
+
+#: src/interface.c:276
+msgid "Calendar files"
+msgstr "ໄຟລ໌ປະຕິທິນ"
+
+#: src/interface.c:282 src/orage-appointment-window.c:946
+msgid "All Files"
+msgstr "ໄຟລ໌ທັງໝົດ"
+
+#: src/interface.c:654
+msgid "Current foreign files"
+msgstr "ໄຟລ໌ພາຍນອກໃນປັດຈຸບັນ"
+
+#: src/interface.c:677
+msgid "READ ONLY"
+msgstr "ອ່ານຢ່າງດຽວ"
+
+#: src/interface.c:679
+msgid "READ WRITE"
+msgstr "ອ່ານ ແລະ ຂຽນ"
+
+#: src/interface.c:684 src/orage-appointment-window.c:2372
+msgid "_Remove"
+msgstr "_ລຶບອອກ"
+
+#: src/interface.c:703
+msgid "***** No foreign files *****"
+msgstr "***** ບໍ່ມີໄຟລ໌ພາຍນອກ *****"
+
+#: src/interface.c:718
+msgid "Foreign file add failed"
+msgstr "ເພີ່ມໄຟລ໌ພາຍນອກບໍ່ສຳເລັດ"
+
+#: src/interface.c:725
+msgid "Orage can only handle 10 foreign files. Limit reached"
+msgstr "Orage ສາມາດຈັດການໄຟລ໌ພາຍນອກໄດ້ສູງສຸດ 10 ໄຟລ໌. ເກີນກຳນົດແລ້ວ"
+
+#: src/interface.c:735
+msgid "Filename is empty."
+msgstr "ຊື່ໄຟລ໌ຫວ່າງເປົ່າ."
+
+#: src/interface.c:745
+msgid "Name is empty."
+msgstr "ຊື່ຫວ່າງເປົ່າ."
+
+#: src/interface.c:755
+msgid "File does not exist."
+msgstr "ບໍ່ມີໄຟລ໌ນີ້ຢູ່."
+
+#: src/interface.c:766
+msgid "Same filename already exists in Orage."
+msgstr "ມີຊື່ໄຟລ໌ນີ້ຢູ່ແລ້ວໃນ Orage."
+
+#: src/interface.c:776
+msgid "Same name already exists in Orage."
+msgstr "ມີຊື່ນີ້ຢູ່ແລ້ວໃນ Orage."
+
+#: src/interface.c:1029
+msgid "Import/export"
+msgstr "ນຳເຂົ້າ/ສົ່ງອອກ"
+
+#: src/interface.c:1036
+msgid "Import"
+msgstr "ນຳເຂົ້າ"
+
+#: src/interface.c:1044
+msgid "Read from file:"
+msgstr "ອ່ານຈາກໄຟລ໌:"
+
+#: src/interface.c:1054 src/interface.c:1100 src/interface.c:1277
+#: src/interface.c:1375 src/interface.c:1464
+#: src/orage-appointment-window.c:3961 src/parameters.c:395
+#: src/parameters.c:763 src/reminder.c:631
+msgid "_Open"
+msgstr "_ເປີດ"
+
+#: src/interface.c:1061 src/interface.c:1107 src/interface.c:1284
+#: src/interface.c:1382 src/orage-appointment-window.c:4124
+msgid "_Save"
+msgstr "_ບັນທຶກ"
+
+#: src/interface.c:1074
+msgid ""
+"Separate filenames with comma(,).\n"
+" NOTE: comma is not valid character in filenames for Orage."
+msgstr ""
+"ແຍກຊື່ໄຟລ໌ດ້ວຍຈຸດ (,).\n"
+" ໝາຍເຫດ: Orage ບໍ່ອະນຸຍາດໃຫ້ໃຊ້ຈຸດໃນຊື່ໄຟລ໌."
+
+#: src/interface.c:1079
+msgid "Export"
+msgstr "ສົ່ງອອກ"
+
+#: src/interface.c:1087
+msgid "Write to file:"
+msgstr "ຂຽນລົງໄຟລ໌:"
+
+#: src/interface.c:1122 src/interface.c:1140
+msgid "Select"
+msgstr "ເລືອກ"
+
+#: src/interface.c:1127
+msgid "All appointments"
+msgstr "ການນັດໝາຍທັງໝົດ"
+
+#: src/interface.c:1146
+msgid "Named appointments:"
+msgstr "ການນັດໝາຍທີ່ລະບຸຊື່:"
+
+#: src/interface.c:1165
+msgid ""
+"Note that only main file appointments are read.\n"
+"Archived and Foreign events are not exported."
+msgstr ""
+"ໝາຍເຫດ: ຈະອ່ານສະເພາະການນັດໝາຍຈາກໄຟລ໌ຫຼັກເທົ່ານັ້ນ.\n"
+"ເຫດການທີ່ຈັດເກັບແລ້ວ ແລະ ເຫດການພາຍນອກຈະບໍ່ຖືກສົ່ງອອກ."
+
+#: src/interface.c:1168
+msgid ""
+"Note that only main file appointments are read.\n"
+"Foreign events are not exported."
+msgstr ""
+"ໝາຍເຫດ: ຈະອ່ານສະເພາະການນັດໝາຍຈາກໄຟລ໌ຫຼັກເທົ່ານັ້ນ.\n"
+"ເຫດການພາຍນອກຈະບໍ່ຖືກສົ່ງອອກ."
+
+#: src/interface.c:1171
+msgid "You can easily drag these from event-list window."
+msgstr "ທ່ານສາມາດລາກລາຍການເຫຼົ່ານີ້ຈາກໜ້າຕ່າງລາຍການເຫດການໄດ້ຢ່າງງ່າຍດາຍ."
+
+#: src/interface.c:1173
+msgid "Orage appointment UIDs separated by commas."
+msgstr "UID ຂອງການນັດໝາຍ Orage ແຍກດ້ວຍຈຸດ."
+
+#: src/interface.c:1179
+msgid "Archive"
+msgstr "ຈັດເກັບ"
+
+#: src/interface.c:1188 src/interface.c:1210
+#: src/orage-appointment-window.c:4103
+msgid "_Execute"
+msgstr "_ປະຕິບັດການ"
+
+#: src/interface.c:1194
+#, c-format
+msgid "Archive now (threshold: %d months)"
+msgstr "ຈັດເກັບດຽວນີ້ (ເກນ: %d ເດືອນ)"
+
+#: src/interface.c:1205
+msgid "You can change archive threshold in parameters"
+msgstr "ທ່ານສາມາດປ່ຽນເກນການຈັດເກັບໄດ້ໃນສ່ວນການຕັ້ງຄ່າ"
+
+#: src/interface.c:1217
+msgid "Revert archive now"
+msgstr "ຍົກເລີກການຈັດເກັບດຽວນີ້"
+
+#: src/interface.c:1224
+msgid ""
+"Return all archived events into main orage file and remove arch file.\n"
+"This is useful for example when doing export and moving orage\n"
+"appointments to another system."
+msgstr ""
+"ເອົາເຫດການທີ່ຈັດເກັບທັງໝົດກັບຄືນສູ່ໄຟລ໌ Orage ຫຼັກ ແລະ ລຶບໄຟລ໌ຈັດເກັບອອກ.\n"
+"ສິ່ງນີ້ມີປະໂຫຍດໃນກໍລະນີທີ່ຕ້ອງການສົ່ງອອກ ແລະ ຍ້າຍການນັດໝາຍ\n"
+"ຂອງ Orage ໄປຍັງລະບົບອື່ນ."
+
+#: src/interface.c:1236
+msgid "Orage files"
+msgstr "ໄຟລ໌ Orage"
+
+#: src/interface.c:1243
+msgid "Orage main calendar file"
+msgstr "ໄຟລ໌ປະຕິທິນຫຼັກຂອງ Orage"
+
+#: src/interface.c:1252 src/interface.c:1351
+msgid "Current file:"
+msgstr "ໄຟລ໌ປັດຈຸບັນ:"
+
+#: src/interface.c:1265 src/interface.c:1364
+msgid "New file:"
+msgstr "ໄຟລ໌ໃໝ່:"
+
+#: src/interface.c:1295 src/interface.c:1393
+msgid "Action options:"
+msgstr "ຕົວເລືອກການດຳເນີນການ:"
+
+#: src/interface.c:1299 src/interface.c:1397
+msgid "Rename"
+msgstr "ປ່ຽນຊື່"
+
+#: src/interface.c:1306
+msgid ""
+"Orage internal file rename only.\n"
+"Does not touch external filesystem at all.\n"
+"New file must exist."
+msgstr ""
+"ປ່ຽນຊື່ໄຟລ໌ພາຍໃນ Orage ເທົ່ານັ້ນ.\n"
+"ບໍ່ມີການປ່ຽນແປງໃນລະບົບໄຟລ໌ພາຍນອກ.\n"
+"ໄຟລ໌ໃໝ່ຕ້ອງມີຢູ່ແລ້ວ."
+
+#: src/interface.c:1310 src/interface.c:1405
+msgid "Copy"
+msgstr "ສຳເນົາ"
+
+#: src/interface.c:1317
+msgid "Current file is copied and stays unmodified in the old place."
+msgstr ""
+"ໄຟລ໌ປັດຈຸບັນຈະຖືກສຳເນົາ ແລະ ໄຟລ໌ເກົ່າຍັງຄົງຢູ່ບ່ອນເດີມໂດຍບໍ່ມີການປ່ຽນແປງ."
+
+#: src/interface.c:1321 src/interface.c:1413
+msgid "Move"
+msgstr "ຍ້າຍ"
+
+#: src/interface.c:1328
+msgid "Current file is moved and vanishes from the old place."
+msgstr "ໄຟລ໌ປັດຈຸບັນຈະຖືກຍ້າຍ ແລະ ຫາຍໄປຈາກບ່ອນເດີມ."
+
+#: src/interface.c:1342
+msgid "Archive file"
+msgstr "ໄຟລ໌ຈັດເກັບ"
+
+#: src/interface.c:1439
+msgid "Foreign files"
+msgstr "ໄຟລ໌ພາຍນອກ"
+
+#: src/interface.c:1446
+msgid "Add new foreign file"
+msgstr "ເພີ່ມໄຟລ໌ພາຍນອກໃໝ່"
+
+#: src/interface.c:1454
+msgid "Foreign file:"
+msgstr "ໄຟລ໌ພາຍນອກ:"
+
+#: src/interface.c:1471 src/orage-appointment-window.c:2445
+#: src/parameters.c:1387
+msgid "_Add"
+msgstr "_ເພີ່ມ"
+
+#: src/interface.c:1486
+msgid "Visible name:"
+msgstr "ຊື່ທີ່ຈະສະແດງ:"
+
+#: src/interface.c:1496
+msgid "Read only"
+msgstr "ອ່ານຢ່າງດຽວ"
+
+#: src/interface.c:1506
+msgid ""
+"Set this if you want to make sure that this file is never modified by Orage.\n"
+"Note that modifying foreign files may make them incompatible with the original tool, where they came from!"
+msgstr ""
+"ເລືອກສິ່ງນີ້ຖ້າທ່ານຕ້ອງການໃຫ້ແນ່ໃຈວ່າ Orage ຈະບໍ່ມີການປ່ຽນແປງໄຟລ໌ນີ້.\n"
+"ໝາຍເຫດ: ການແກ້ໄຂໄຟລ໌ພາຍນອກອາດເຮັດໃຫ້ມັນບໍ່ສາມາດໃຊ້ກັບໂປຣແກຣມເດີມທີ່ມັນຖືກສ້າງມາໄດ້!"
+
+#: src/interface.c:1508
+msgid "This internal name is displayed to user instead of file name."
+msgstr "ຊື່ພາຍໃນນີ້ຈະຖືກສະແດງໃຫ້ຜູ້ໃຊ້ເຫັນແທນຊື່ໄຟລ໌."
+
+#: src/interface.c:1522
+msgid "Exchange data - Orage"
+msgstr "ແລກປ່ຽນຂໍ້ມູນ - Orage"
+
+#: src/main.c:52 src/orage-appointment-window.c:708
+#: org.xfce.orage.appdata.xml.in:7
+msgid "Orage"
+msgstr "Orage"
+
+#: src/orage-about.c:44 org.xfce.orage.appdata.xml.in:8
+msgid "Orage is a time-managing application for the Xfce desktop environment"
+msgstr "Orage ແມ່ນແອັບພລິເຄຊັນຈັດການເວລາສຳລັບສະພາບແວດລ້ອມເດັສທັອບ Xfce"
+
+#: src/orage-about.c:51
+msgid "translator-credits"
+msgstr "ລາຍຊື່ຜູ້ແປ"
+
+#: src/orage-application.c:167
+msgid "Released under the terms of the GNU General Public License."
+msgstr "ເຜີຍແຜ່ພາຍໃຕ້ເງື່ອນໄຂຂອງ GNU General Public License."
+
+#: src/orage-application.c:169
+#, c-format
+msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
+msgstr "ຄອມໄພລ໌ກັບ GTK+-%d.%d.%d, ໃຊ້ GTK+-%d.%d.%d."
+
+#: src/orage-application.c:174
+#, c-format
+msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
+msgstr "ຄອມໄພລ໌ກັບ libxfce4ui-%d.%d.%d, ໃຊ້ libxfce4ui-%d.%d.%d."
+
+#: src/orage-application.c:180
+#, c-format
+msgid "Compiled against libnotify-%d.%d.%d."
+msgstr "ຄອມໄພລ໌ກັບ libnotify-%d.%d.%d."
+
+#: src/orage-application.c:183
+msgid "Not using libnotify."
+msgstr "ບໍ່ໄດ້ໃຊ້ libnotify."
+
+#: src/orage-application.c:188
+msgid "Using automatic archiving."
+msgstr "ໃຊ້ການຈັດເກັບແບບອັດຕະໂນມັດ."
+
+#: src/orage-application.c:190
+msgid "Not using archiving."
+msgstr "ບໍ່ໄດ້ໃຊ້ການຈັດເກັບ."
+
+#: src/orage-application.c:194
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr "ກະລຸນາລາຍງານຂໍ້ຜິດພາດໄປທີ່ <%s>."
+
+#: src/orage-application.c:775
+msgid "Open today's tasks"
+msgstr "ເປີດວຽກຂອງມື້ນີ້"
+
+#: src/orage-application.c:784
+msgid "Add new appointment"
+msgstr "ເພີ່ມການນັດໝາຍໃໝ່"
+
+#: src/orage-application.c:793
+msgid "Show preferences form"
+msgstr "ສະແດງແບບຟອມການຕັ້ງຄ່າ"
+
+#: src/orage-application.c:802
+msgid "Make Orage visible/unvisible"
+msgstr "ສະແດງ/ຊ່ອນ Orage"
+
+#: src/orage-application.c:811
+msgid "Add a foreign file"
+msgstr "ເພີ່ມໄຟລ໌ພາຍນອກ"
+
+#: src/orage-application.c:820
+msgid "Remove a foreign file"
+msgstr "ລຶບໄຟລ໌ພາຍນອກ"
+
+#: src/orage-application.c:829
+msgid "Import appointments from file to Orage"
+msgstr "ນຳເຂົ້າການນັດໝາຍຈາກໄຟລ໌ໄປຫາ Orage"
+
+#: src/orage-application.c:838
+msgid "Export appointments from Orage to file"
+msgstr "ສົ່ງອອກການນັດໝາຍຈາກ Orage ໄປຫາໄຟລ໌"
+
+#: src/orage-application.c:847
+msgid "Select logging backend (glib|orage)"
+msgstr "ເລືອກລະບົບການບັນທຶກ (glib|orage)"
+
+#: src/orage-application.c:856
+msgid "Show version of Orage"
+msgstr "ສະແດງເວີຊັນຂອງ Orage"
+
+#. if (gtk_toggle_button_get_active(
+#. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
+#. end time
+#: src/orage-appointment-window.c:524 src/orage-appointment-window.c:564
+#: src/orage-appointment-window.c:3656 src/orage-window-next.c:901
+msgid "End"
+msgstr "ສິ້ນສຸດ"
+
+#: src/orage-appointment-window.c:544 src/orage-window-next.c:883
+msgid "Due"
+msgstr "ຄົບກຳນົດ"
+
+#: src/orage-appointment-window.c:939
+msgid "Sound Files"
+msgstr "ໄຟລ໌ສຽງ"
+
+#: src/orage-appointment-window.c:980
+msgid "The appointment information has been modified."
+msgstr "ຂໍ້ມູນການນັດໝາຍໄດ້ຖືກແກ້ໄຂ."
+
+#: src/orage-appointment-window.c:982
+msgid "No, do not leave"
+msgstr "ບໍ່, ບໍ່ອອກ"
+
+#: src/orage-appointment-window.c:983
+msgid "Yes, ignore modifications and leave"
+msgstr "ແມ່ນແລ້ວ, ບໍ່ສົນໃຈການແກ້ໄຂ ແລະ ອອກໄປ"
+
+#: src/orage-appointment-window.c:1012
+msgid "The end of this appointment is earlier than the beginning."
+msgstr "ເວລາສິ້ນສຸດຂອງການນັດໝາຍນີ້ແມ່ນກ່ອນເວລາເລີ່ມຕົ້ນ."
+
+#: src/orage-appointment-window.c:1425 src/orage-appointment-window.c:2234
+msgid "Not set"
+msgstr "ບໍ່ໄດ້ຕັ້ງຄ່າ"
+
+#: src/orage-appointment-window.c:1470
+msgid "Add new appointment to this file."
+msgstr "ເພີ່ມການນັດໝາຍໃໝ່ລົງໃນໄຟລ໌ນີ້."
+
+#: src/orage-appointment-window.c:1471 src/orage-appointment-window.c:1532
+msgid "Orage default file"
+msgstr "ໄຟລ໌ມາດຕະຖານຂອງ Orage"
+
+#: src/orage-appointment-window.c:1577
+msgid "Appointment addition failed."
+msgstr "ການເພີ່ມການນັດໝາຍບໍ່ສຳເລັດ."
+
+#: src/orage-appointment-window.c:1578
+msgid ""
+"Error happened when adding appointment. Look more details from the log file."
+msgstr ""
+"ເກີດຂໍ້ຜິດພາດໃນຂະນະທີ່ເພີ່ມການນັດໝາຍ. ເບິ່ງລາຍລະອຽດເພີ່ມເຕີມຈາກໄຟລ໌ບັນທຶກ "
+"(log)."
+
+#: src/orage-appointment-window.c:1590
+msgid "Appointment update failed."
+msgstr "ການອັບເດດການນັດໝາຍບໍ່ສຳເລັດ."
+
+#: src/orage-appointment-window.c:1591
+msgid ""
+"Look more details from the log file. (Perhaps file was updated external from"
+" Orage?)"
+msgstr ""
+"ເບິ່ງລາຍລະອຽດເພີ່ມເຕີມຈາກໄຟລ໌ບັນທຶກ. (ໄຟລ໌ອາດຈະຖືກອັບເດດຈາກພາຍນອກ Orage "
+"ບໍ່?)"
+
+#: src/orage-appointment-window.c:1643
+msgid "This appointment will be permanently removed."
+msgstr "ການນັດໝາຍນີ້ຈະຖືກລຶບອອກຢ່າງຖາວອນ."
+
+#: src/orage-appointment-window.c:1646
+msgid "Yes, remove it"
+msgstr "ແມ່ນແລ້ວ, ລຶບມັນອອກ"
+
+#: src/orage-appointment-window.c:2186
+msgid "This appointment does not exist."
+msgstr "ບໍ່ມີການນັດໝາຍນີ້ຢູ່."
+
+#: src/orage-appointment-window.c:2187
+msgid "It was probably removed, please refresh your screen."
+msgstr "ມັນອາດຈະຖືກລຶບອອກແລ້ວ, ກະລຸນາໂຫຼດໜ້າຈໍໃໝ່."
+
+#: src/orage-appointment-window.c:2399
+msgid "Current categories"
+msgstr "ໝວດໝູ່ປັດຈຸບັນ"
+
+#: src/orage-appointment-window.c:2421
+msgid "Add new category with color"
+msgstr "ເພີ່ມໝວດໝູ່ໃໝ່ພ້ອມສີ"
+
+#: src/orage-appointment-window.c:2430
+msgid "Category:"
+msgstr "ໝວດໝູ່:"
+
+#: src/orage-appointment-window.c:2473
+msgid "Colors of categories - Orage"
+msgstr "ສີຂອງໝວດໝູ່ - Orage"
+
+#: src/orage-appointment-window.c:2520
+msgid "*** COPY ***"
+msgstr "*** ສຳເນົາ ***"
+
+#: src/orage-appointment-window.c:2573 src/orage-appointment-window.c:3873
+msgid "Before Start"
+msgstr "ກ່ອນເລີ່ມ"
+
+#: src/orage-appointment-window.c:2573 src/orage-appointment-window.c:3873
+msgid "Before End"
+msgstr "ກ່ອນສິ້ນສຸດ"
+
+#: src/orage-appointment-window.c:2573 src/orage-appointment-window.c:3874
+msgid "After Start"
+msgstr "ຫຼັງຈາກເລີ່ມ"
+
+#: src/orage-appointment-window.c:2573 src/orage-appointment-window.c:3874
+msgid "After End"
+msgstr "ຫຼັງຈາກສິ້ນສຸດ"
+
+#. window title
+#: src/orage-appointment-window.c:2890
+msgid "New appointment - Orage"
+msgstr "ການນັດໝາຍໃໝ່ - Orage"
+
+#: src/orage-appointment-window.c:2923
+msgid "Sav_e and close"
+msgstr "ບັນ_ທຶກ ແລະ ປິດ"
+
+#: src/orage-appointment-window.c:3239
+msgid "first"
+msgstr "ທີໜຶ່ງ"
+
+#: src/orage-appointment-window.c:3239
+msgid "second"
+msgstr "ທີສອງ"
+
+#: src/orage-appointment-window.c:3239
+msgid "third"
+msgstr "ທີສາມ"
+
+#: src/orage-appointment-window.c:3239
+msgid "fourth"
+msgstr "ທີສີ່"
+
+#: src/orage-appointment-window.c:3239
+msgid "last"
+msgstr "ສຸດທ້າຍ"
+
+#: src/orage-appointment-window.c:3249 src/orage-month-view.c:284
+msgid "Monday"
+msgstr "ວັນຈັນ"
+
+#: src/orage-appointment-window.c:3249 src/orage-month-view.c:284
+msgid "Tuesday"
+msgstr "ວັນອັງຄານ"
+
+#: src/orage-appointment-window.c:3249 src/orage-month-view.c:284
+msgid "Wednesday"
+msgstr "ວັນພຸດ"
+
+#: src/orage-appointment-window.c:3249 src/orage-month-view.c:284
+msgid "Thursday"
+msgstr "ວັນພະຫັດ"
+
+#: src/orage-appointment-window.c:3249 src/orage-month-view.c:284
+msgid "Friday"
+msgstr "ວັນສຸກ"
+
+#: src/orage-appointment-window.c:3250 src/orage-month-view.c:285
+msgid "Saturday"
+msgstr "ວັນເສົາ"
+
+#: src/orage-appointment-window.c:3250 src/orage-month-view.c:285
+msgid "Sunday"
+msgstr "ວັນອາທິດ"
+
+#: src/orage-appointment-window.c:3263 src/orage-appointment-window.c:3296
+#: src/orage-appointment-window.c:3403 src/orage-appointment-window.c:3437
+msgid "Every"
+msgstr "ທຸກໆ"
+
+#: src/orage-appointment-window.c:3268
+msgid "day(s)"
+msgstr "ມື້"
+
+#: src/orage-appointment-window.c:3285
+msgid "Mon"
+msgstr "ຈັນ"
+
+#: src/orage-appointment-window.c:3285
+msgid "Tue"
+msgstr "ອັງຄານ"
+
+#: src/orage-appointment-window.c:3285
+msgid "Wed"
+msgstr "ພຸດ"
+
+#: src/orage-appointment-window.c:3285
+msgid "Thu"
+msgstr "ພະຫັດ"
+
+#: src/orage-appointment-window.c:3285
+msgid "Fri"
+msgstr "ສຸກ"
+
+#: src/orage-appointment-window.c:3285
+msgid "Sat"
+msgstr "ເສົາ"
+
+#: src/orage-appointment-window.c:3285
+msgid "Sun"
+msgstr "ອາທິດ"
+
+#: src/orage-appointment-window.c:3303
+msgid "week(s) on:"
+msgstr "ອາທິດ ໃນວັນ:"
+
+#: src/orage-appointment-window.c:3339
+msgid "From the beginning of the month:"
+msgstr "ຈາກເລີ່ມຕົ້ນຂອງເດືອນ:"
+
+#: src/orage-appointment-window.c:3352
+msgid "From the end of the month:"
+msgstr "ຈາກທ້າຍຂອງເດືອນ:"
+
+#: src/orage-appointment-window.c:3365
+msgid "Every:"
+msgstr "ທຸກໆ:"
+
+#: src/orage-appointment-window.c:3393
+msgid "January"
+msgstr "ມັງກອນ"
+
+#: src/orage-appointment-window.c:3393
+msgid "February"
+msgstr "ກຸມພາ"
+
+#: src/orage-appointment-window.c:3393
+msgid "March"
+msgstr "ມີນາ"
+
+#: src/orage-appointment-window.c:3393
+msgid "April"
+msgstr "ເມສາ"
+
+#: src/orage-appointment-window.c:3393
+msgid "May"
+msgstr "ພຶດສະພາ"
+
+#: src/orage-appointment-window.c:3394
+msgid "June"
+msgstr "ມິຖຸນາ"
+
+#: src/orage-appointment-window.c:3394
+msgid "July"
+msgstr "ກໍລະກົດ"
+
+#: src/orage-appointment-window.c:3394
+msgid "August"
+msgstr "ສິງຫາ"
+
+#: src/orage-appointment-window.c:3394
+msgid "September"
+msgstr "ກັນຍາ"
+
+#: src/orage-appointment-window.c:3394
+msgid "October"
+msgstr "ຕຸລາ"
+
+#: src/orage-appointment-window.c:3395
+msgid "November"
+msgstr "ພະຈິກ"
+
+#: src/orage-appointment-window.c:3395
+msgid "December"
+msgstr "ທັນວາ"
+
+#. TRANSLATORS: this string is part of date line, for example
+#. * "second Thursday of August". In some languages ​​it is not necessary to
+#. use
+#. * the string "of", it can be replaced with an empty string.
+#: src/orage-appointment-window.c:3411
+msgid "of"
+msgstr "ຂອງ"
+
+#: src/orage-appointment-window.c:3442
+msgid "hour(s)"
+msgstr "ຊົ່ວໂມງ"
+
+#: src/orage-appointment-window.c:3478
+msgid "Repeat forever"
+msgstr "ເຮັດຊ້ຳຕະຫຼອດໄປ"
+
+#: src/orage-appointment-window.c:3483
+msgid "Repeat"
+msgstr "ເຮັດຊ້ຳ"
+
+#: src/orage-appointment-window.c:3491 src/orage-appointment-window.c:3989
+msgid "times"
+msgstr "ຄັ້ງ"
+
+#: src/orage-appointment-window.c:3497
+msgid "Repeat until"
+msgstr "ເຮັດຊ້ຳຈົນກ່ວາ"
+
+#. start time
+#: src/orage-appointment-window.c:3515 src/orage-appointment-window.c:3641
+#: src/orage-week-window.c:892 src/orage-window-next.c:882
+#: src/orage-window-next.c:900
+msgid "Start"
+msgstr "ເລີ່ມຕົ້ນ"
+
+#. completed (only for TODO)
+#: src/orage-appointment-window.c:3520 src/orage-appointment-window.c:3709
+msgid "Completed"
+msgstr "ສຳເລັດແລ້ວ"
+
+#: src/orage-appointment-window.c:3523
+msgid ""
+"TODO reoccurs regularly starting on start time and repeating after each "
+"interval no matter when it was last completed"
+msgstr ""
+"ສິ່ງທີ່ຈະເຮັດນີ້ຈະເກີດຂຶ້ນຊ້ຳເປັນປະຈຳ ໂດຍເລີ່ມຈາກເວລາເລີ່ມຕົ້ນ ແລະ "
+"ເຮັດຊ້ຳຫຼັງຈາກແຕ່ລະຊ່ວງເວລາ ບໍ່ວ່າຄັ້ງຫຼ້າສຸດຈະສຳເລັດເມື່ອໃດກໍຕາມ"
+
+#: src/orage-appointment-window.c:3525
+msgid ""
+"TODO reoccurrency is based on complete time and repeats after the interval counted from the last completed time.\n"
+"(Note that you can not tell anything about the history of the TODO since reoccurrence base changes after each completion.)"
+msgstr ""
+"ການເຮັດຊ້ຳຂອງສິ່ງທີ່ຈະເຮັດນີ້ແມ່ນອີງຕາມເວລາທີ່ສຳເລັດ ແລະ ຈະເຮັດຊ້ຳຫຼັງຈາກຊ່ວງເວລາທີ່ນັບຈາກເວລາທີ່ສຳເລັດຫຼ້າສຸດ.\n"
+"(ໝາຍເຫດ: ທ່ານຈະບໍ່ສາມາດເບິ່ງປະຫວັດຂອງວຽກນີ້ໄດ້ ເນື່ອງຈາກພື້ນຖານການເກີດຊ້ຳຈະປ່ຽນແປງຫຼັງຈາກການສຳເລັດແຕ່ລະຄັ້ງ.)"
+
+#: src/orage-appointment-window.c:3551
+msgid "Save"
+msgstr "ບັນທຶກ"
+
+#: src/orage-appointment-window.c:3553
+msgid "Save and close"
+msgstr "ບັນທຶກ ແລະ ປິດ"
+
+#: src/orage-appointment-window.c:3558
+msgid "Revert"
+msgstr "ຄືນຄ່າ"
+
+#: src/orage-appointment-window.c:3583
+msgid "Free"
+msgstr "ວ່າງ"
+
+#: src/orage-appointment-window.c:3583
+msgid "Busy"
+msgstr "ບໍ່ວ່າງ"
+
+#: src/orage-appointment-window.c:3587
+msgid "General"
+msgstr "ທົ່ວໄປ"
+
+#. type
+#: src/orage-appointment-window.c:3593
+msgid "Type"
+msgstr "ປະເພດ"
+
+#: src/orage-appointment-window.c:3600
+msgid ""
+"Event that will happen sometime. For example:\n"
+"Meeting or birthday or TV show."
+msgstr ""
+"ເຫດການທີ່ຈະເກີດຂຶ້ນໃນບາງເວລາ. ຕົວຢ່າງ:\n"
+"ການປະຊຸມ, ວັນເກີດ ຫຼື ລາຍການໂທລະພາບ."
+
+#: src/orage-appointment-window.c:3608
+msgid ""
+"Something that you should do sometime. For example:\n"
+"Wash your car or test new version of Orage."
+msgstr ""
+"ບາງສິ່ງທີ່ທ່ານຄວນເຮັດໃນບາງເວລາ. ຕົວຢ່າງ:\n"
+"ລ້າງລົດ ຫຼື ທົດລອງ Orage ເວີຊັນໃໝ່."
+
+#: src/orage-appointment-window.c:3616
+msgid ""
+"Make a note that something happened. For example:\n"
+"Remark that your mother called or first snow came."
+msgstr ""
+"ບັນທຶກວ່າບາງສິ່ງໄດ້ເກີດຂຶ້ນແລ້ວ. ຕົວຢ່າງ:\n"
+"ໝາຍເຫດວ່າແມ່ໂທຫາ ຫຼື ຫິມະທຳອິດມາຮອດແລ້ວ."
+
+#. location
+#: src/orage-appointment-window.c:3628 src/orage-window-next.c:848
+#: src/timezone_selection.c:230 src/timezone_selection.c:235
+msgid "Location"
+msgstr "ສະຖານທີ່"
+
+#: src/orage-appointment-window.c:3636
+msgid "All day event"
+msgstr "ເຫດການຕະຫຼອດມື້"
+
+#: src/orage-appointment-window.c:3659
+msgid "Set"
+msgstr "ຕັ້ງຄ່າ"
+
+#: src/orage-appointment-window.c:3683
+msgid "Duration"
+msgstr "ໄລຍະເວລາ"
+
+#: src/orage-appointment-window.c:3687 src/orage-appointment-window.c:3891
+#: src/reminder.c:602
+msgid "days"
+msgstr "ມື້"
+
+#: src/orage-appointment-window.c:3689 src/orage-appointment-window.c:3893
+#: src/reminder.c:604
+msgid "hours"
+msgstr "ຊົ່ວໂມງ"
+
+#: src/orage-appointment-window.c:3691 src/orage-appointment-window.c:3895
+#: src/reminder.c:606
+msgid "mins"
+msgstr "ນາທີ"
+
+#. Availability (only for EVENT)
+#: src/orage-appointment-window.c:3702
+msgid "Availability"
+msgstr "ສະຖານະການວ່າງ"
+
+#: src/orage-appointment-window.c:3712 src/orage-window-next.c:884
+msgid "Done"
+msgstr "ສຳເລັດແລ້ວ"
+
+#. categories
+#: src/orage-appointment-window.c:3736
+msgid "Categories"
+msgstr "ໝວດໝູ່"
+
+#: src/orage-appointment-window.c:3755
+msgid ""
+"This is special category, which can be used to color this appointment in "
+"list views."
+msgstr ""
+"ນີ້ແມ່ນໝວດໝູ່ພິເສດ ເຊິ່ງສາມາດໃຊ້ເພື່ອໃສ່ສີໃຫ້ກັບການນັດໝາຍນີ້ໃນມຸມມອງລາຍການ."
+
+#: src/orage-appointment-window.c:3756
+msgid "_Colour"
+msgstr "_ສີ"
+
+#: src/orage-appointment-window.c:3761
+msgid "update colors for categories."
+msgstr "ອັບເດດສີສຳລັບໝວດໝູ່."
+
+#. priority
+#: src/orage-appointment-window.c:3767
+msgid "Priority"
+msgstr "ລຳດັບຄວາມສຳຄັນ"
+
+#: src/orage-appointment-window.c:3771
+msgid ""
+"If you set this 8 or bigger, the appointment is NOT shown on list windows.\n"
+"You can use that feature to unclutter your list windows, but it makes it more difficult to find this appointment.\n"
+"(Alarms will still fire normally.)\n"
+"(There is undocumented parameter so that you can change the default limit of 8.)"
+msgstr ""
+"ຖ້າທ່ານຕັ້ງຄ່ານີ້ເປັນ 8 ຫຼື ຫຼາຍກວ່າ, ການນັດໝາຍຈະບໍ່ຖືກສະແດງໃນໜ້າຕ່າງລາຍການ.\n"
+"ທ່ານສາມາດໃຊ້ຄຸນສົມບັດນີ້ເພື່ອເຮັດໃຫ້ໜ້າຕ່າງລາຍການບໍ່ຮົກ, ແຕ່ມັນຈະເຮັດໃຫ້ຊອກຫາການນັດໝາຍນີ້ຍາກຂຶ້ນ.\n"
+"(ການເຕືອນຈະຍັງຄົງເຮັດວຽກຕາມປົກກະຕິ.)\n"
+"(ມີຄ່າກຳນົດພິເສດທີ່ທ່ານສາມາດປ່ຽນຄ່າເລີ່ມຕົ້ນຈາກ 8 ໄດ້.)"
+
+#. note
+#: src/orage-appointment-window.c:3779 src/orage-window-next.c:858
+msgid "Note"
+msgstr "ບັນທຶກ"
+
+#: src/orage-appointment-window.c:3799
+msgid ""
+"These shorthand commands take effect immediately:\n"
+"    <D> inserts current date in local date format\n"
+"    <T> inserts time\n"
+"    <DT> inserts date and time.\n"
+"\n"
+"These are converted only later when they are seen:\n"
+"    <&Ynnnn> is translated to current year minus nnnn.\n"
+"(This can be used for example in birthday reminders to tell how old the person will be.)"
+msgstr ""
+"ຄຳສັ່ງຫຍໍ້ເຫຼົ່ານີ້ຈະມີຜົນທັນທີ:\n"
+"    <D> ແຊກວັນທີປັດຈຸບັນໃນຮູບແບບທ້ອງຖິ່ນ\n"
+"    <T> ແຊກເວລາ\n"
+"    <DT> ແຊກວັນທີ ແລະ ເວລາ\n"
+"\n"
+"ສ່ວນຄຳສັ່ງເຫຼົ່ານີ້ຈະຖືກແປງໃນພາຍຫຼັງເມື່ອມີການສະແດງ:\n"
+"    <&Ynnnn> ຈະຖືກແປງເປັນ ປີປັດຈຸບັນ ລົບດ້ວຍ nnnn.\n"
+"(ຕົວຢ່າງ: ສາມາດໃຊ້ໃນການເຕືອນວັນເກີດເພື່ອບອກວ່າຄົນນັ້ນຈະມີອາຍຸຈັກປີ.)"
+
+#: src/orage-appointment-window.c:3882
+msgid "Alarm"
+msgstr "ການເຕືອນ"
+
+#. **** ALARM TIME ****
+#: src/orage-appointment-window.c:3888
+msgid "Alarm time"
+msgstr "ເວລາເຕືອນ"
+
+#: src/orage-appointment-window.c:3912
+msgid ""
+"Often you want to get alarm:\n"
+" 1) before Event start\n"
+" 2) before Todo end\n"
+" 3) after Todo start"
+msgstr ""
+"ໂດຍສ່ວນໃຫຍ່ທ່ານອາດຈະຕ້ອງການການເຕືອນ:\n"
+" 1) ກ່ອນເລີ່ມເຫດການ\n"
+" 2) ກ່ອນສິ້ນສຸດສິ່ງທີ່ຈະເຮັດ\n"
+" 3) ຫຼັງຈາກເລີ່ມສິ່ງທີ່ຈະເຮັດ"
+
+#: src/orage-appointment-window.c:3917
+msgid "Persistent alarm"
+msgstr "ການເຕືອນແບບຕໍ່ເນື່ອງ"
+
+#: src/orage-appointment-window.c:3922
+msgid ""
+"Select this if you want Orage to remind you even if it has not been active "
+"when the alarm happened."
+msgstr ""
+"ເລືອກສິ່ງນີ້ຖ້າທ່ານຕ້ອງການໃຫ້ Orage ເຕືອນທ່ານ "
+"ເຖິງແມ່ນວ່າມັນຈະບໍ່ໄດ້ຖືກເປີດໃຊ້ງານໃນຕອນທີ່ຮອດເວລາເຕືອນກໍຕາມ."
+
+#: src/orage-appointment-window.c:3931
+msgid "Sound"
+msgstr "ສຽງ"
+
+#: src/orage-appointment-window.c:3935 src/orage-appointment-window.c:4077
+msgid "Use"
+msgstr "ໃຊ້"
+
+#: src/orage-appointment-window.c:3940
+msgid "Select this if you want audible alarm"
+msgstr "ເລືອກສິ່ງນີ້ຖ້າທ່ານຕ້ອງການໃຫ້ມີສຽງເຕືອນ"
+
+#: src/orage-appointment-window.c:3945
+msgid "Sound command is not set"
+msgstr "ບໍ່ໄດ້ຕັ້ງຄ່າຄຳສັ່ງສຽງ"
+
+#: src/orage-appointment-window.c:3974
+msgid "Repeat alarm sound"
+msgstr "ເຮັດຊ້ຳສຽງເຕືອນ"
+
+#: src/orage-appointment-window.c:4005
+msgid "sec interval"
+msgstr "ວິນາທີ ຕໍ່ຄັ້ງ"
+
+#. **** Display Alarm ****
+#: src/orage-appointment-window.c:4014
+msgid "Visual"
+msgstr "ການສະແດງຜົນ"
+
+#: src/orage-appointment-window.c:4018
+msgid "Use Orage window"
+msgstr "ໃຊ້ໜ້າຕ່າງ Orage"
+
+#: src/orage-appointment-window.c:4020
+msgid "Select this if you want Orage window alarm"
+msgstr "ເລືອກສິ່ງນີ້ຖ້າທ່ານຕ້ອງການໃຫ້ເຕືອນຜ່ານໜ້າຕ່າງ Orage"
+
+#: src/orage-appointment-window.c:4032
+msgid "Use notification"
+msgstr "ໃຊ້ການແຈ້ງເຕືອນ"
+
+#: src/orage-appointment-window.c:4034
+msgid "Select this if you want notification alarm"
+msgstr "ເລືອກສິ່ງນີ້ຖ້າທ່ານຕ້ອງການໃຫ້ມີປັອບອັບແຈ້ງເຕືອນ"
+
+#: src/orage-appointment-window.c:4042
+msgid "Set timeout"
+msgstr "ຕັ້ງເວລາໝົດອາຍຸ"
+
+#: src/orage-appointment-window.c:4044
+msgid "Select this if you want notification to expire automatically"
+msgstr "ເລືອກສິ່ງນີ້ຖ້າທ່ານຕ້ອງການໃຫ້ການແຈ້ງເຕືອນຫາຍໄປເອງໂດຍອັດຕະໂນມັດ"
+
+#: src/orage-appointment-window.c:4055
+msgid "0 = system default expiration time"
+msgstr "0 = ໃຊ້ເວລາໝົດອາຍຸມາດຕະຖານຂອງລະບົບ"
+
+#: src/orage-appointment-window.c:4063
+msgid "seconds"
+msgstr "ວິນາທີ"
+
+#. **** Procedure Alarm ****
+#: src/orage-appointment-window.c:4073
+msgid "Procedure"
+msgstr "ຂະບວນການ"
+
+#: src/orage-appointment-window.c:4079
+msgid "Select this if you want procedure or script alarm"
+msgstr "ເລືອກສິ່ງນີ້ຖ້າທ່ານຕ້ອງການໃຫ້ເຕືອນດ້ວຍຄຳສັ່ງ (script)"
+
+#: src/orage-appointment-window.c:4090
+msgid ""
+"You must enter all escape etc characters yourself.\n"
+"This string is just given to shell to process.\n"
+"The following special commands are replaced at run time:\n"
+"\t<&T>  appointment title\n"
+"\t<&D>  appointment description\n"
+"\t<&AT> alarm time\n"
+"\t<&ST> appointment start time\n"
+"\t<&ET> appointment end time"
+msgstr ""
+"ທ່ານຕ້ອງປ້ອນຕົວອັກສອນພິເສດ (escape characters) ດ້ວຍຕົວເອງ.\n"
+"ຂໍ້ຄວາມນີ້ຈະຖືກສົ່ງໄປໃຫ້ shell ເພື່ອປະມວນຜົນ.\n"
+"ຄຳສັ່ງພິເສດຕໍ່ໄປນີ້ຈະຖືກແທນທີ່ໃນຂະນະທີ່ເຮັດວຽກ:\n"
+"\t<&T>  ຫົວຂໍ້ການນັດໝາຍ\n"
+"\t<&D>  ລາຍລະອຽດການນັດໝາຍ\n"
+"\t<&AT> ເວລາເຕືອນ\n"
+"\t<&ST> ເວລາເລີ່ມຕົ້ນການນັດໝາຍ\n"
+"\t<&ET> ເວລາສິ້ນສຸດການນັດໝາຍ"
+
+#: src/orage-appointment-window.c:4105
+msgid "Test this alarm by raising it now"
+msgstr "ທົດສອບການເຕືອນໂດຍໃຫ້ມັນເຮັດວຽກດຽວນີ້"
+
+#: src/orage-appointment-window.c:4118
+msgid "<b>Default alarm</b>"
+msgstr "<b>ການເຕືອນມາດຕະຖານ</b>"
+
+#: src/orage-appointment-window.c:4133
+msgid "Store current settings as default alarm"
+msgstr "ບັນທຶກການຕັ້ງຄ່າປັດຈຸບັນເປັນການເຕືອນມາດຕະຖານ"
+
+#: src/orage-appointment-window.c:4135
+msgid "_Revert"
+msgstr "_ຄືນຄ່າ"
+
+#: src/orage-appointment-window.c:4144
+msgid "Set current settings from default alarm"
+msgstr "ໃຊ້ການຕັ້ງຄ່າມາດຕະຖານສຳລັບການຕັ້ງຄ່າປັດຈຸບັນ"
+
+#: src/orage-appointment-window.c:4209
+msgid "None"
+msgstr "ບໍ່ມີ"
+
+#: src/orage-appointment-window.c:4209
+msgid "Daily"
+msgstr "ລາຍວັນ"
+
+#: src/orage-appointment-window.c:4209
+msgid "Weekly"
+msgstr "ລາຍອາທິດ"
+
+#: src/orage-appointment-window.c:4210
+msgid "Monthly"
+msgstr "ລາຍເດືອນ"
+
+#: src/orage-appointment-window.c:4210
+msgid "Yearly"
+msgstr "ລາຍປີ"
+
+#: src/orage-appointment-window.c:4210
+msgid "Hourly"
+msgstr "ລາຍຊົ່ວໂມງ"
+
+#: src/orage-appointment-window.c:4225
+msgid "Recurrence"
+msgstr "ການເກີດຊ້ຳ"
+
+#. ****************************** Frequency *******************************
+#: src/orage-appointment-window.c:4232
+msgid "Frequency"
+msgstr "ຄວາມຖີ່"
+
+#. ****************************** Limit ***********************************
+#: src/orage-appointment-window.c:4273
+msgid "Limit"
+msgstr "ຂີດຈຳກັດ"
+
+#. ****************************** TODO base (only for TODOs) **************
+#: src/orage-appointment-window.c:4279
+msgid "TODO base"
+msgstr "ພື້ນຖານສິ່ງທີ່ຈະເຮັດ"
+
+#. exceptions
+#: src/orage-appointment-window.c:4286
+msgid "Exceptions"
+msgstr "ຂໍ້ຍົກເວັ້ນ"
+
+#: src/orage-appointment-window.c:4312
+msgid ""
+"Add more exception dates by clicking the calendar days below.\n"
+"Exception is either exclusion(-) or inclusion(+) depending on the selection.\n"
+"Remove by clicking the data."
+msgstr ""
+"ເພີ່ມວັນທີຍົກເວັ້ນໂດຍການຄລິກໃສ່ວັນທີໃນປະຕິທິນຂ້າງລຸ່ມນີ້.\n"
+"ຂໍ້ຍົກເວັ້ນອາດຈະເປັນການແຍກອອກ (-) ຫຼື ການລວມເຂົ້າ (+) ຂຶ້ນຢູ່ກັບການເລືອກ.\n"
+"ລຶບອອກໄດ້ໂດຍການຄລິກໃສ່ຂໍ້ມູນນັ້ນ."
+
+#: src/orage-appointment-window.c:4323
+msgid "Add excluded date (-)"
+msgstr "ເພີ່ມວັນທີທີ່ບໍ່ລວມ (-)"
+
+#: src/orage-appointment-window.c:4325
+msgid "Excluded days are full days where this appointment is not happening"
+msgstr "ວັນທີທີ່ບໍ່ລວມຄືມື້ທັງມື້ທີ່ການນັດໝາຍນີ້ຈະບໍ່ເກີດຂຶ້ນ"
+
+#: src/orage-appointment-window.c:4332
+msgid "Add included time (+)"
+msgstr "ເພີ່ມເວລາທີ່ລວມເຂົ້າ (+)"
+
+#: src/orage-appointment-window.c:4334
+msgid ""
+"Included times have same timezone than start time, but they may have "
+"different time"
+msgstr ""
+"ເວລາທີ່ລວມເຂົ້າຈະມີເຂດເວລາ (timezone) ດຽວກັນກັບເວລາເລີ່ມຕົ້ນ "
+"ແຕ່ອາດຈະເປັນເວລາທີ່ຕ່າງກັນ"
+
+#. calendars showing the action days
+#: src/orage-appointment-window.c:4353
+msgid "Action dates"
+msgstr "ວັນທີດຳເນີນການ"
+
+#: src/orage-import.c:74
+msgid "Unsupported event type"
+msgstr "ບໍ່ຮອງຮັບປະເພດເຫດການນີ້"
+
+#: src/orage-import.c:106
+msgid "<b>Summary</b>"
+msgstr "<b>ສະຫຼຸບ</b>"
+
+#: src/orage-import.c:117
+msgid "<b>Type</b>"
+msgstr "<b>ປະເພດ</b>"
+
+#: src/orage-import.c:132
+msgid "<b>Location</b>"
+msgstr "<b>ສະຖານທີ່</b>"
+
+#: src/orage-import.c:147
+msgid "<b>URL</b>"
+msgstr "<b>URL</b>"
+
+#: src/orage-import.c:166
+msgid "<b>All-day</b>"
+msgstr "<b>ຕະຫຼອດມື້</b>"
+
+#: src/orage-import.c:181
+msgid "<b>From</b>"
+msgstr "<b>ຈາກ</b>"
+
+#: src/orage-import.c:196
+msgid "<b>To</b>"
+msgstr "<b>ຫາ</b>"
+
+#: src/orage-import.c:210
+msgid "<b>Recurring</b>"
+msgstr "<b>ເກີດຊ້ຳ</b>"
+
+#: src/orage-import.c:213
+msgid "Yes"
+msgstr "ແມ່ນ"
+
+#: src/orage-import.c:213
+msgid "No"
+msgstr "ບໍ່"
+
+#: src/orage-import.c:259
+msgid "Import calendar file"
+msgstr "ນຳເຂົ້າໄຟລ໌ປະຕິທິນ"
+
+#: src/orage-import.c:261
+msgid "_Import"
+msgstr "_ນຳເຂົ້າ"
+
+#: src/orage-import.c:270
+msgid "_Cancel"
+msgstr "_ຍົກເລີກ"
+
+#. TRANSLATORS: "%B %Y" is used to display the month and year in the
+#. * calendar month view page, in "month year" format (for example,
+#. * "January 2025"). To use the "year month" format (e.g., "2025 January"),
+#. * use "%Y %B" instead.
+#: src/orage-month-view.c:217
+msgid "%B %Y"
+msgstr "%B %Y"
+
+#. Setup title row.
+#: src/orage-month-view.c:485 src/orage-window-next.c:1106
+msgid "Week"
+msgstr "ອາທິດ"
+
+#: src/orage-sync-edit-dialog.c:132
+msgid "Description:"
+msgstr "ລາຍລະອຽດ:"
+
+#: src/orage-sync-edit-dialog.c:134
+msgid "Command:"
+msgstr "ຄຳສັ່ງ:"
+
+#: src/orage-sync-edit-dialog.c:136
+msgid "Period:"
+msgstr "ໄລຍະເວລາ:"
+
+#: src/orage-sync-edit-dialog.c:138
+msgid "minutes"
+msgstr "ນາທີ"
+
+#: src/orage-sync-edit-dialog.c:141
+msgid "The name or description of this synchronization task"
+msgstr "ຊື່ ຫຼື ລາຍລະອຽດຂອງວຽກງານການຊິງໂຄຣໄນນີ້"
+
+#: src/orage-sync-edit-dialog.c:144
+msgid "Command for synchronization"
+msgstr "ຄຳສັ່ງສຳລັບການຊິງໂຄຣໄນ"
+
+#: src/orage-sync-edit-dialog.c:147
+msgid "Synchronization period in minutes"
+msgstr "ໄລຍະເວລາການຊິງໂຄຣໄນເປັນນາທີ"
+
+#: src/orage-sync-edit-dialog.c:166 src/parameters.c:1430 src/reminder.c:638
+msgid "_Close"
+msgstr "_ປິດ"
+
+#. Translate to calendar:week_start:0 if you want Sunday to be the first
+#. * day of the week to calendar:week_start:1 if you want Monday to be the
+#. * first day of the week, and so on.
+#: src/orage-time-utils.c:264
+msgid "calendar:week_start:0"
+msgstr "calendar:week_start:0"
+
+#: src/orage-week-window.c:458
+msgid "Back one week"
+msgstr "ຖອຍຫຼັງໜຶ່ງອາທິດ"
+
+#: src/orage-week-window.c:460
+msgid "Back one day"
+msgstr "ຖອຍຫຼັງໜຶ່ງມື້"
+
+#: src/orage-week-window.c:464
+msgid "Forward one day"
+msgstr "ໄປໜ້າໜຶ່ງມື້"
+
+#: src/orage-week-window.c:466
+msgid "Forward one week"
+msgstr "ໄປໜ້າໜຶ່ງອາທິດ"
+
+#: src/orage-week-window.c:662
+msgid "Unknown"
+msgstr "ບໍ່ຮູ້ຈັກ"
+
+#: src/orage-week-window.c:900
+msgid "Number of days to show"
+msgstr "ຈຳນວນມື້ທີ່ຈະສະແດງ"
+
+#: src/orage-week-window.c:1216
+msgid "Orage - day view"
+msgstr "Orage - ມຸມມອງລາຍວັນ"
+
+#: src/orage-window-classic.c:294 src/orage-window-next.c:135
+msgid "_Exchange data"
+msgstr "_ແລກປ່ຽນຂໍ້ມູນ"
+
+#. Edit menu
+#: src/orage-window-classic.c:304 src/orage-window-next.c:139
+msgid "_Edit"
+msgstr "_ແກ້ໄຂ"
+
+#: src/orage-window-classic.c:313 src/orage-window-next.c:143
+msgid "View selected _date"
+msgstr "ເບິ່ງ_ວັນທີທີ່ເລືອກ"
+
+#: src/orage-window-classic.c:316 src/orage-window-next.c:144
+msgid "View selected _week"
+msgstr "ເບິ່ງ_ອາທິດທີ່ເລືອກ"
+
+#: src/orage-window-classic.c:321 src/orage-window-next.c:145
+msgid "Select _Today"
+msgstr "ເລືອກ_ມື້ນີ້"
+
+#. Help menu
+#. the rest
+#: src/orage-window-classic.c:324 src/orage-window-next.c:147
+#: src/orage-window-next.c:148 src/parameters.c:1427
+msgid "_Help"
+msgstr "_ຊ່ວຍເຫຼືອ"
+
+#: src/orage-window-classic.c:386 src/orage-window-next.c:777
+#: src/reminder.c:969
+msgid "No title defined"
+msgstr "ບໍ່ໄດ້ກຳນົດຫົວຂໍ້"
+
+#: src/orage-window-classic.c:453
+#, c-format
+msgid " Location: %s\n"
+msgstr " ສະຖານທີ່: %s\n"
+
+#: src/orage-window-classic.c:466
+#, c-format
+msgid ""
+"\n"
+" Note:\n"
+"%s"
+msgstr ""
+"\n"
+" ໝາຍເຫດ:\n"
+"%s"
+
+#: src/orage-window-classic.c:476 src/orage-window-next.c:866
+msgid "Never"
+msgstr "ບໍ່ເຄີຍ"
+
+#: src/orage-window-classic.c:483
+#, c-format
+msgid ""
+"Title: %s\n"
+"%s Start:\t%s\n"
+" Due:\t%s\n"
+" Done:\t%s%s"
+msgstr ""
+"ຫົວຂໍ້: %s\n"
+"%s ເລີ່ມຕົ້ນ:\t%s\n"
+" ກຳນົດສົ່ງ:\t%s\n"
+" ສຳເລັດ:\t%s%s"
+
+#: src/orage-window-classic.c:491
+#, c-format
+msgid ""
+"Title: %s\n"
+"%s Start:\t%s\n"
+" End:\t%s%s"
+msgstr ""
+"ຫົວຂໍ້: %s\n"
+"%s ເລີ່ມຕົ້ນ:\t%s\n"
+" ສິ້ນສຸດ:\t%s%s"
+
+#: src/orage-window-classic.c:570
+msgid "<b>To do:</b>"
+msgstr "<b>ສິ່ງທີ່ຈະເຮັດ:</b>"
+
+#: src/orage-window-classic.c:607
+#, c-format
+msgid "<b>Events for %s:</b>"
+msgstr "<b>ເຫດການສຳລັບ %s:</b>"
+
+#: src/orage-window-classic.c:618
+#, c-format
+msgid "<b>Events for %s - %s:</b>"
+msgstr "<b>ເຫດການສຳລັບ %s - %s:</b>"
+
+#: src/orage-window-next.c:131
+msgid "Create a new appointment"
+msgstr "ສ້າງການນັດໝາຍໃໝ່"
+
+#: src/orage-window-next.c:133
+msgid "Reload external files"
+msgstr "ໂຫຼດໄຟລ໌ພາຍນອກໃໝ່"
+
+#: src/orage-window-next.c:135
+msgid "Import/export data"
+msgstr "ນຳເຂົ້າ/ສົ່ງອອກຂໍ້ມູນ"
+
+#: src/orage-window-next.c:136
+msgid "Close window"
+msgstr "ປິດໜ້າຕ່າງ"
+
+#: src/orage-window-next.c:137
+msgid "_Quit"
+msgstr "_ອອກ"
+
+#: src/orage-window-next.c:137
+msgid "Quit program"
+msgstr "ອອກຈາກໂປຣແກຣມ"
+
+#: src/orage-window-next.c:140
+msgid "_Preferences"
+msgstr "_ການຕັ້ງຄ່າ"
+
+#: src/orage-window-next.c:140 plugin/org.xfce.orage-settings.desktop.in:4
+msgid "Orage preferences"
+msgstr "ການຕັ້ງຄ່າ Orage"
+
+#: src/orage-window-next.c:143
+msgid "View selected date"
+msgstr "ເບິ່ງວັນທີທີ່ເລືອກ"
+
+#: src/orage-window-next.c:145
+msgid "Go to today"
+msgstr "ໄປທີ່ມື້ນີ້"
+
+#: src/orage-window-next.c:148
+msgid "Display Orage user manual"
+msgstr "ສະແດງຄູ່ມືຜູ້ໃຊ້ Orage"
+
+#: src/orage-window-next.c:149
+msgid "_About"
+msgstr "_ກ່ຽວກັບ"
+
+#: src/orage-window-next.c:149
+msgid "Display information about Orage"
+msgstr "ສະແດງຂໍ້ມູນກ່ຽວກັບ Orage"
+
+#: src/orage-window-next.c:366
+msgid "New event"
+msgstr "ເຫດການໃໝ່"
+
+#: src/orage-window-next.c:444
+#, c-format
+msgid "Events for %s:"
+msgstr "ເຫດການສຳລັບ %s:"
+
+#: src/orage-window-next.c:450
+#, c-format
+msgid "Events for %s - %s:"
+msgstr "ເຫດການສຳລັບ %s - %s:"
+
+#: src/orage-window-next.c:650
+msgid "To do:"
+msgstr "ສິ່ງທີ່ຈະເຮັດ:"
+
+#: src/orage-window-next.c:1070
+msgid "Previous"
+msgstr "ກ່ອນໜ້າ"
+
+#: src/orage-window-next.c:1090
+msgid "Next"
+msgstr "ຖັດໄປ"
+
+#: src/orage-window-next.c:1104
+msgid "Day"
+msgstr "ມື້"
+
+#: src/orage-window-next.c:1109
+msgid "Month"
+msgstr "ເດືອນ"
+
+#: src/orage-window-next.c:1112
+msgid "Year"
+msgstr "ປີ"
+
+#: src/parameters.c:643
+msgid "Remove selected synchronization task."
+msgstr "ລຶບວຽກງານການຊິງໂຄຣໄນທີ່ເລືອກ."
+
+#: src/parameters.c:646
+msgid "Yes, remove"
+msgstr "ແມ່ນແລ້ວ, ລຶບອອກ"
+
+#: src/parameters.c:684
+msgid "Main settings"
+msgstr "ການຕັ້ງຄ່າຫຼັກ"
+
+#: src/parameters.c:690
+msgid "Timezone"
+msgstr "ເຂດເວລາ"
+
+#: src/parameters.c:712
+msgid "You should always define your local timezone."
+msgstr "ທ່ານຄວນກຳນົດເຂດເວລາທ້ອງຖິ່ນຂອງທ່ານສະເໝີ."
+
+#: src/parameters.c:720
+msgid "Archive threshold (months)"
+msgstr "ເກນການຈັດເກັບ (ເດືອນ)"
+
+#: src/parameters.c:733
+msgid "(0 = no archiving)"
+msgstr "(0 = ບໍ່ມີການຈັດເກັບ)"
+
+#: src/parameters.c:737
+msgid "Archiving is used to save time and space when handling events."
+msgstr "ການຈັດເກັບຖືກໃຊ້ເພື່ອປະຢັດເວລາ ແລະ ພື້ນທີ່ໃນການຈັດການເຫດການ."
+
+#: src/parameters.c:745
+msgid "Sound command"
+msgstr "ຄຳສັ່ງສຽງ"
+
+#: src/parameters.c:773
+msgid "This command is given to shell to make sound in alarms."
+msgstr "ຄຳສັ່ງນີ້ຈະຖືກສົ່ງໄປຫາ shell ເພື່ອສ້າງສຽງເຕືອນ."
+
+#: src/parameters.c:804
+msgid "Calendar window"
+msgstr "ໜ້າຕ່າງປະຕິທິນ"
+
+#: src/parameters.c:811
+msgid "Calendar visual details"
+msgstr "ລາຍລະອຽດການສະແດງຜົນປະຕິທິນ"
+
+#: src/parameters.c:818
+msgid "Use new user interface"
+msgstr "ໃຊ້ສ່ວນຕິດຕໍ່ຜູ້ໃຊ້ແບບໃໝ່"
+
+#: src/parameters.c:820
+msgid "Enable the new interface layout (requires restart)"
+msgstr "ເປີດໃຊ້ຮູບແບບສ່ວນຕິດຕໍ່ແບບໃໝ່ (ຕ້ອງເລີ່ມໂປຣແກຣມໃໝ່)"
+
+#: src/parameters.c:825
+msgid "Show borders"
+msgstr "ສະແດງຂອບ"
+
+#: src/parameters.c:834
+msgid "Show menu"
+msgstr "ສະແດງເມນູ"
+
+#: src/parameters.c:839
+msgid "Show day names"
+msgstr "ສະແດງຊື່ວັນ"
+
+#: src/parameters.c:848
+msgid "Show week numbers"
+msgstr "ສະແດງເລກລຳດັບອາທິດ"
+
+#: src/parameters.c:853
+msgid "Show month and year"
+msgstr "ສະແດງເດືອນ ແລະ ປີ"
+
+#: src/parameters.c:877
+msgid "Calendar info boxes"
+msgstr "ກ່ອງຂໍ້ມູນປະຕິທິນ"
+
+#: src/parameters.c:884
+msgid "Show todo list"
+msgstr "ສະແດງລາຍການສິ່ງທີ່ຈະເຮັດ"
+
+#: src/parameters.c:891
+msgid "Number of days to show in event window"
+msgstr "ຈຳນວນມື້ທີ່ຈະສະແດງໃນໜ້າຕ່າງເຫດການ"
+
+#: src/parameters.c:899
+msgid "0 = do not show event list at all"
+msgstr "0 = ບໍ່ສະແດງລາຍການເຫດການເລີຍ"
+
+#: src/parameters.c:913
+msgid "Calendar visibility"
+msgstr "ການສະແດງຜົນປະຕິທິນ"
+
+#: src/parameters.c:919
+msgid "Show on all desktops"
+msgstr "ສະແດງໃນທຸກໆ ເດັສທັອບ"
+
+#: src/parameters.c:924
+msgid "Keep on top"
+msgstr "ສະແດງໄວ້ທາງເທິງສະເໝີ"
+
+#: src/parameters.c:932
+msgid "Show in taskbar"
+msgstr "ສະແດງໃນແຖບວຽກ (taskbar)"
+
+#: src/parameters.c:937
+msgid "Show in pager"
+msgstr "ສະແດງໃນໂຕສະຫຼັບໜ້າຈໍ (pager)"
+
+#: src/parameters.c:945
+msgid "Show in systray"
+msgstr "ສະແດງໃນຖາດລະບົບ (systray)"
+
+#: src/parameters.c:973
+msgid "Calendar start"
+msgstr "ການເລີ່ມຕົ້ນປະຕິທິນ"
+
+#: src/parameters.c:979
+msgid "Show"
+msgstr "ສະແດງ"
+
+#: src/parameters.c:995
+msgid "Hide"
+msgstr "ຊ່ອນ"
+
+#: src/parameters.c:1012
+msgid "Minimized"
+msgstr "ຫຍໍ້ລົງ"
+
+#: src/parameters.c:1038
+msgid "On calendar window open"
+msgstr "ເມື່ອເປີດໜ້າຕ່າງປະຕິທິນ"
+
+#: src/parameters.c:1044
+msgid "Select today's date"
+msgstr "ເລືອກວັນທີຂອງມື້ນີ້"
+
+#: src/parameters.c:1061
+msgid "Select previously selected date"
+msgstr "ເລືອກວັນທີທີ່ເຄີຍເລືອກກ່ອນໜ້ານີ້"
+
+#: src/parameters.c:1085
+msgid "Calendar day double click shows"
+msgstr "ເມື່ອດັບເບິນຄລິກທີ່ວັນທີໃນປະຕິທິນຈະສະແດງ"
+
+#: src/parameters.c:1091
+msgid "Days view"
+msgstr "ມຸມມອງລາຍວັນ"
+
+#: src/parameters.c:1107
+msgid "Event list"
+msgstr "ລາຍການເຫດການ"
+
+#: src/parameters.c:1140
+msgid "Extra settings"
+msgstr "ການຕັ້ງຄ່າເພີ່ມເຕີມ"
+
+#: src/parameters.c:1147
+msgid "Event list window"
+msgstr "ໜ້າຕ່າງລາຍການເຫດການ"
+
+#: src/parameters.c:1154
+msgid "Number of extra days to show in event list"
+msgstr "ຈຳນວນມື້ເພີ່ມເຕີມທີ່ຈະສະແດງໃນລາຍການເຫດການ"
+
+#: src/parameters.c:1164
+msgid ""
+"This is just the default value, you can change it in the actual eventlist "
+"window."
+msgstr ""
+"ນີ້ເປັນພຽງຄ່າມາດຕະຖານ, ທ່ານສາມາດປ່ຽນແປງມັນໄດ້ໃນໜ້າຕ່າງລາຍການເຫດການຕົວຈິງ."
+
+#: src/parameters.c:1172
+msgid "Show only first repeating event"
+msgstr "ສະແດງສະເພາະເຫດການທີ່ເຮັດຊ້ຳຄັ້ງທຳອິດ"
+
+#: src/parameters.c:1189
+msgid "Day view window default first day"
+msgstr "ວັນທຳອິດມາດຕະຖານໃນໜ້າຕ່າງມຸມມອງລາຍວັນ"
+
+#: src/parameters.c:1196
+msgid "First day of week"
+msgstr "ວັນທຳອິດຂອງອາທິດ"
+
+#: src/parameters.c:1213
+msgid "Selected day"
+msgstr "ວັນທີທີ່ເລືອກ"
+
+#: src/parameters.c:1236 src/parameters.c:1243
+msgid "Use wakeup timer"
+msgstr "ໃຊ້ຕົວຕັ້ງເວລາປຸກ (wakeup timer)"
+
+#: src/parameters.c:1251
+msgid ""
+"Use this timer if Orage has problems waking up properly after suspend or "
+"hibernate. (For example tray icon not refreshed or alarms not firing.)"
+msgstr ""
+"ໃຊ້ຕົວຕັ້ງເວລານີ້ຖ້າ Orage ມີບັນຫາໃນການກັບມາເຮັດວຽກຫຼັງຈາກພັກເຄື່ອງ "
+"(suspend) ຫຼື ຈຳສິນ (hibernate). (ຕົວຢ່າງ: ໄອຄອນໃນຖາດລະບົບບໍ່ອັບເດດ ຫຼື "
+"ການເຕືອນບໍ່ເຮັດວຽກ.)"
+
+#: src/parameters.c:1261
+msgid "Foreign file default visual alarm"
+msgstr "ການເຕືອນທາງສາຍຕາມາດຕະຖານສຳລັບໄຟລ໌ພາຍນອກ"
+
+#: src/parameters.c:1268
+msgid "Orage window"
+msgstr "ໜ້າຕ່າງ Orage"
+
+#: src/parameters.c:1285
+msgid "Notify notification"
+msgstr "ການແຈ້ງເຕືອນລະບົບ"
+
+#: src/parameters.c:1308
+msgid "Always quit when asked to close"
+msgstr "ອອກຈາກໂປຣແກຣມສະເໝີເມື່ອມີການສັ່ງໃຫ້ປິດ"
+
+#: src/parameters.c:1315
+msgid "Always quit"
+msgstr "ອອກສະເໝີ"
+
+#: src/parameters.c:1322
+msgid ""
+"By default Orage stays open in the background when asked to close. This "
+"option changes Orage to quit and never stay in background when it is asked "
+"to close."
+msgstr ""
+"ໂດຍປົກກະຕິ Orage ຈະຍັງຄົງເປີດຢູ່ເບື້ອງຫຼັງເມື່ອມີການສັ່ງໃຫ້ປິດ. "
+"ຕົວເລືອກນີ້ຈະປ່ຽນໃຫ້ Orage ອອກຈາກໂປຣແກຣມທັນທີ ແລະ ບໍ່ເຮັດວຽກຢູ່ເບື້ອງຫຼັງ."
+
+#: src/parameters.c:1375
+msgid "Synchronization settings"
+msgstr "ການຕັ້ງຄ່າການຊິງໂຄຣໄນ"
+
+#: src/parameters.c:1381
+msgid "Synchronization sources"
+msgstr "ແຫຼ່ງຂໍ້ມູນການຊິງໂຄຣໄນ"
+
+#: src/parameters.c:1407 org.xfce.orage.desktop.in:26
+msgid "Orage Preferences"
+msgstr "ການຕັ້ງຄ່າ Orage"
+
+#: src/reminder.c:417
+msgid "Reminder"
+msgstr "ການເຕືອນຄວາມຈຳ"
+
+#: src/reminder.c:440
+msgid "Open"
+msgstr "ເປີດ"
+
+#: src/reminder.c:445
+msgid "Silence"
+msgstr "ປິດສຽງ"
+
+#: src/reminder.c:563
+msgid "Reminder - Orage"
+msgstr "ການເຕືອນຄວາມຈຳ - Orage"
+
+#: src/reminder.c:646
+msgid "_Stop"
+msgstr "_ຢຸດ"
+
+#: src/reminder.c:654
+msgid "Postpone"
+msgstr "ເລື່ອນອອກໄປ"
+
+#: src/reminder.c:656
+msgid "Remind me again after the specified time"
+msgstr "ເຕືອນຂ້ອຍອີກຄັ້ງຫຼັງຈາກເວລາທີ່ກຳນົດ"
+
+#: src/reminder.c:937
+msgid "Next active alarms:"
+msgstr "ການເຕືອນທີ່ຈະມາຮອດຖັດໄປ:"
+
+#: src/reminder.c:976
+#, c-format
+msgid ""
+"\n"
+"%02d d %02d h %02d min to: %s"
+msgstr ""
+"\n"
+"ອີກ %02d ມື້ %02d ຊົ່ວໂມງ %02d ນາທີ ເຖິງ: %s"
+
+#: src/reminder.c:990
+msgid ""
+"\n"
+"No active alarms found"
+msgstr ""
+"\n"
+"ບໍ່ພົບການເຕືອນທີ່ກຳລັງເຮັດວຽກ"
+
+#: src/timezone_names.c:31
+msgid "Africa"
+msgstr "ອາຟຣິກາ"
+
+#: src/timezone_names.c:32
+msgid "Africa/Abidjan"
+msgstr "ອາຟຣິກາ/ອາບິດຈານ"
+
+#: src/timezone_names.c:33
+msgid "Africa/Accra"
+msgstr "ອາຟຣິກາ/ອັກຄຣາ"
+
+#: src/timezone_names.c:34
+msgid "Africa/Addis_Ababa"
+msgstr "ອາຟຣິກາ/ອາດດິສ_ອາບາບາ"
+
+#: src/timezone_names.c:35
+msgid "Africa/Algiers"
+msgstr "ອາຟຣິກາ/ແອນຈຽສ"
+
+#: src/timezone_names.c:36
+msgid "Africa/Asmara"
+msgstr "ອາຟຣິກາ/ອັສມາຣາ"
+
+#: src/timezone_names.c:37
+msgid "Africa/Asmera"
+msgstr "ອາຟຣິກາ/ອັສເມຣາ"
+
+#: src/timezone_names.c:38
+msgid "Africa/Bamako"
+msgstr "ອາຟຣິກາ/ບາມາໂກ"
+
+#: src/timezone_names.c:39
+msgid "Africa/Bangui"
+msgstr "ອາຟຣິກາ/ບັງກີ"
+
+#: src/timezone_names.c:40
+msgid "Africa/Banjul"
+msgstr "ອາຟຣິກາ/ບັນຈຸນ"
+
+#: src/timezone_names.c:41
+msgid "Africa/Bissau"
+msgstr "ອາຟຣິກາ/ບິສເຊົາ"
+
+#: src/timezone_names.c:42
+msgid "Africa/Blantyre"
+msgstr "ອາຟຣິກາ/ບລັນໄທຣ"
+
+#: src/timezone_names.c:43
+msgid "Africa/Brazzaville"
+msgstr "ອາຟຣິກາ/ບຣັດຊາວິລ"
+
+#: src/timezone_names.c:44
+msgid "Africa/Bujumbura"
+msgstr "ອາຟຣິກາ/ບູຊຸມບູຣາ"
+
+#: src/timezone_names.c:45
+msgid "Africa/Cairo"
+msgstr "ອາຟຣິກາ/ໄຄໂຣ"
+
+#: src/timezone_names.c:46
+msgid "Africa/Casablanca"
+msgstr "ອາຟຣິກາ/ຄາຊາບລັງກາ"
+
+#: src/timezone_names.c:47
+msgid "Africa/Ceuta"
+msgstr "ອາຟຣິກາ/ເຊວຕາ"
+
+#: src/timezone_names.c:48
+msgid "Africa/Conakry"
+msgstr "ອາຟຣິກາ/ໂຄນາຄຣີ"
+
+#: src/timezone_names.c:49
+msgid "Africa/Dakar"
+msgstr "ອາຟຣິກາ/ດາກາ"
+
+#: src/timezone_names.c:50
+msgid "Africa/Dar_es_Salaam"
+msgstr "ອາຟຣິກາ/ດາ_ເອສ_ຊາລາມ"
+
+#: src/timezone_names.c:51
+msgid "Africa/Djibouti"
+msgstr "ອາຟຣິກາ/ຈິບູຕີ"
+
+#: src/timezone_names.c:52
+msgid "Africa/Douala"
+msgstr "ອາຟຣິກາ/ດູອາລາ"
+
+#: src/timezone_names.c:53
+msgid "Africa/El_Aaiun"
+msgstr "ອາຟຣິກາ/ເອລ_ອາຢູນ"
+
+#: src/timezone_names.c:54
+msgid "Africa/Freetown"
+msgstr "ອາຟຣິກາ/ຟຣີທາວ"
+
+#: src/timezone_names.c:55
+msgid "Africa/Gaborone"
+msgstr "ອາຟຣິກາ/ກາໂບໂຣນ"
+
+#: src/timezone_names.c:56
+msgid "Africa/Harare"
+msgstr "ອາຟຣິກາ/ຮາຣາເຣ"
+
+#: src/timezone_names.c:57
+msgid "Africa/Juba"
+msgstr "ອາຟຣິກາ/ຈູບາ"
+
+#: src/timezone_names.c:58
+msgid "Africa/Johannesburg"
+msgstr "ອາຟຣິກາ/ໂຈຮັນເນສເບີກ"
+
+#: src/timezone_names.c:59
+msgid "Africa/Kampala"
+msgstr "ອາຟຣິກາ/ກັມປາລາ"
+
+#: src/timezone_names.c:60
+msgid "Africa/Khartoum"
+msgstr "ອາຟຣິກາ/ຄາຕູມ"
+
+#: src/timezone_names.c:61
+msgid "Africa/Kigali"
+msgstr "ອາຟຣິກາ/ຄີກາລີ"
+
+#: src/timezone_names.c:62
+msgid "Africa/Kinshasa"
+msgstr "ອາຟຣິກາ/ຄິນຊາຊາ"
+
+#: src/timezone_names.c:63
+msgid "Africa/Lagos"
+msgstr "ອາຟຣິກາ/ລາກົສ"
+
+#: src/timezone_names.c:64
+msgid "Africa/Libreville"
+msgstr "ອາຟຣິກາ/ລີບຣີວິລ"
+
+#: src/timezone_names.c:65
+msgid "Africa/Lome"
+msgstr "ອາຟຣິກາ/ໂລເມ"
+
+#: src/timezone_names.c:66
+msgid "Africa/Luanda"
+msgstr "ອາຟຣິກາ/ລູອັນດາ"
+
+#: src/timezone_names.c:67
+msgid "Africa/Lubumbashi"
+msgstr "ອາຟຣິກາ/ລູບູມບາຊີ"
+
+#: src/timezone_names.c:68
+msgid "Africa/Lusaka"
+msgstr "ອາຟຣິກາ/ລູຊາກາ"
+
+#: src/timezone_names.c:69
+msgid "Africa/Malabo"
+msgstr "ອາຟຣິກາ/ມາລາໂບ"
+
+#: src/timezone_names.c:70
+msgid "Africa/Maputo"
+msgstr "ອາຟຣິກາ/ມາປູໂຕ"
+
+#: src/timezone_names.c:71
+msgid "Africa/Maseru"
+msgstr "ອາຟຣິກາ/ມາເຊຣູ"
+
+#: src/timezone_names.c:72
+msgid "Africa/Mbabane"
+msgstr "ອາຟຣິກາ/ອັມບາບາເນ"
+
+#: src/timezone_names.c:73
+msgid "Africa/Mogadishu"
+msgstr "ອາຟຣິກາ/ໂມກາດິຊູ"
+
+#: src/timezone_names.c:74
+msgid "Africa/Monrovia"
+msgstr "ອາຟຣິກາ/ມອນໂຣເວຍ"
+
+#: src/timezone_names.c:75
+msgid "Africa/Nairobi"
+msgstr "ອາຟຣິກາ/ໄນໂຣບີ"
+
+#: src/timezone_names.c:76
+msgid "Africa/Ndjamena"
+msgstr "ອາຟຣິກາ/ເອັນຈາເມນາ"
+
+#: src/timezone_names.c:77
+msgid "Africa/Niamey"
+msgstr "ອາຟຣິກາ/ນີອາເມ"
+
+#: src/timezone_names.c:78
+msgid "Africa/Nouakchott"
+msgstr "ອາຟຣິກາ/ນູອັກຊອດ"
+
+#: src/timezone_names.c:79
+msgid "Africa/Ouagadougou"
+msgstr "ອາຟຣິກາ/ວາກາດູກູ"
+
+#: src/timezone_names.c:80
+msgid "Africa/Porto-Novo"
+msgstr "ອາຟຣິກາ/ປໍໂຕ-ໂນໂວ"
+
+#: src/timezone_names.c:81
+msgid "Africa/Sao_Tome"
+msgstr "ອາຟຣິກາ/ເຊົາ_ໂຕເມ"
+
+#: src/timezone_names.c:82
+msgid "Africa/Timbuktu"
+msgstr "ອາຟຣິກາ/ທິມບັກຕູ"
+
+#: src/timezone_names.c:83
+msgid "Africa/Tripoli"
+msgstr "ອາຟຣິກາ/ຕຣີໂປລີ"
+
+#: src/timezone_names.c:84
+msgid "Africa/Tunis"
+msgstr "ອາຟຣິກາ/ຕູນິສ"
+
+#: src/timezone_names.c:85
+msgid "Africa/Windhoek"
+msgstr "ອາຟຣິກາ/ວິນຮຸກ"
+
+#: src/timezone_names.c:86
+msgid "America"
+msgstr "ອາເມລິກາ"
+
+#: src/timezone_names.c:87
+msgid "America/Adak"
+msgstr "ອາເມລິກາ/ອາແດັກ"
+
+#: src/timezone_names.c:88
+msgid "America/Anchorage"
+msgstr "ອາເມລິກາ/ແອງເຄີເຣຈ"
+
+#: src/timezone_names.c:89
+msgid "America/Anguilla"
+msgstr "ອາເມລິກາ/ແອງກິລາ"
+
+#: src/timezone_names.c:90
+msgid "America/Antigua"
+msgstr "ອາເມລິກາ/ແອນຕີກົວ"
+
+#: src/timezone_names.c:91
+msgid "America/Araguaina"
+msgstr "ອາເມລິກາ/ອາຣາກວານາ"
+
+#: src/timezone_names.c:92
+msgid "America/Argentina/Buenos_Aires"
+msgstr "ອາເມລິກາ/ອາເຈນຕິນາ/ບູເອໂນສ_ໄອເຣສ"
+
+#: src/timezone_names.c:93
+msgid "America/Argentina/Catamarca"
+msgstr "ອາເມລິກາ/ອາເຈນຕິນາ/ຄາຕາມາຄາ"
+
+#: src/timezone_names.c:94
+msgid "America/Argentina/ComodRivadavia"
+msgstr "ອາເມລິກາ/ອາເຈນຕິນາ/ໂຄໂມໂດໂຣ_ຣີວາດາເວຍ"
+
+#: src/timezone_names.c:95
+msgid "America/Argentina/Cordoba"
+msgstr "ອາເມລິກາ/ອາເຈນຕິນາ/ຄໍໂດບາ"
+
+#: src/timezone_names.c:96
+msgid "America/Argentina/Jujuy"
+msgstr "ອາເມລິກາ/ອາເຈນຕິນາ/ຮູຮຸຍ"
+
+#: src/timezone_names.c:97
+msgid "America/Argentina/La_Rioja"
+msgstr "ອາເມລິກາ/ອາເຈນຕິນາ/ລາ_ຣີໂອຮາ"
+
+#: src/timezone_names.c:98
+msgid "America/Argentina/Mendoza"
+msgstr "ອາເມລິກາ/ອາເຈນຕິນາ/ເມນໂດຊາ"
+
+#: src/timezone_names.c:99
+msgid "America/Argentina/Rio_Gallegos"
+msgstr "ອາເມລິກາ/ອາເຈນຕິນາ/ຣີໂອ_ກາເຢໂກສ"
+
+#: src/timezone_names.c:100
+msgid "America/Argentina/Salta"
+msgstr "ອາເມລິກາ/ອາເຈນຕິນາ/ຊານຕາ"
+
+#: src/timezone_names.c:101
+msgid "America/Argentina/San_Juan"
+msgstr "ອາເມລິກາ/ອາເຈນຕິນາ/ຊານ_ຮວນ"
+
+#: src/timezone_names.c:102
+msgid "America/Argentina/San_Luis"
+msgstr "ອາເມລິກາ/ອາເຈນຕິນາ/ຊານ_ລຸຍ"
+
+#: src/timezone_names.c:103
+msgid "America/Argentina/Tucuman"
+msgstr "ອາເມລິກາ/ອາເຈນຕິນາ/ຕູຄູມານ"
+
+#: src/timezone_names.c:104
+msgid "America/Argentina/Ushuaia"
+msgstr "ອາເມລິກາ/ອາເຈນຕິນາ/ອູຊົວຢາ"
+
+#: src/timezone_names.c:105
+msgid "America/Aruba"
+msgstr "ອາເມລິກາ/ອາຣູບາ"
+
+#: src/timezone_names.c:106
+msgid "America/Asuncion"
+msgstr "ອາເມລິກາ/ອາຊຸນຊິອອນ"
+
+#: src/timezone_names.c:107
+msgid "America/Atikokan"
+msgstr "ອາເມລິກາ/ອາຕິໂຄແຄນ"
+
+#: src/timezone_names.c:108
+msgid "America/Atka"
+msgstr "ອາເມລິກາ/ອັດກາ"
+
+#: src/timezone_names.c:109
+msgid "America/Bahia"
+msgstr "ອາເມລິກາ/ບາເຍຍ"
+
+#: src/timezone_names.c:110
+msgid "America/Bahia_Banderas"
+msgstr "ອາເມລິກາ/ບາເຍຍ_ບັນເດຣາສ"
+
+#: src/timezone_names.c:111
+msgid "America/Barbados"
+msgstr "ອາເມລິກາ/ບາບາໂດສ"
+
+#: src/timezone_names.c:112
+msgid "America/Belem"
+msgstr "ອາເມລິກາ/ເບເລັມ"
+
+#: src/timezone_names.c:113
+msgid "America/Belize"
+msgstr "ອາເມລິກາ/ເບລີຊ"
+
+#: src/timezone_names.c:114
+msgid "America/Blanc-Sablon"
+msgstr "ອາເມລິກາ/ບລັງ-ຊາບລອນ"
+
+#: src/timezone_names.c:115
+msgid "America/Boa_Vista"
+msgstr "ອາເມລິກາ/ໂບອາ_ວິດສະຕາ"
+
+#: src/timezone_names.c:116
+msgid "America/Bogota"
+msgstr "ອາເມລິກາ/ໂບໂກຕາ"
+
+#: src/timezone_names.c:117
+msgid "America/Boise"
+msgstr "ອາເມລິກາ/ບອຍຊີ"
+
+#: src/timezone_names.c:118
+msgid "America/Buenos_Aires"
+msgstr "ອາເມລິກາ/ບົວໂນສ_ໄອເຣສ"
+
+#: src/timezone_names.c:119
+msgid "America/Cambridge_Bay"
+msgstr "ອາເມລິກາ/ແຄມບຣິດ_ເບ"
+
+#: src/timezone_names.c:120
+msgid "America/Campo_Grande"
+msgstr "ອາເມລິກາ/ກາມໂປ_ກຣານເດ"
+
+#: src/timezone_names.c:121
+msgid "America/Cancun"
+msgstr "ອາເມລິກາ/ແຄນຄູນ"
+
+#: src/timezone_names.c:122
+msgid "America/Caracas"
+msgstr "ອາເມລິກາ/ຄາຣາຄັສ"
+
+#: src/timezone_names.c:123
+msgid "America/Catamarca"
+msgstr "ອາເມລິກາ/ກາຕາມາກາ"
+
+#: src/timezone_names.c:124
+msgid "America/Cayenne"
+msgstr "ອາເມລິກາ/ກາແຢນ"
+
+#: src/timezone_names.c:125
+msgid "America/Cayman"
+msgstr "ອາເມລິກາ/ເຄແມນ"
+
+#: src/timezone_names.c:126
+msgid "America/Chicago"
+msgstr "ອາເມລິກາ/ຊີຄາໂກ"
+
+#: src/timezone_names.c:127
+msgid "America/Chihuahua"
+msgstr "ອາເມລິກາ/ຊີວາວາ"
+
+#: src/timezone_names.c:128
+msgid "America/Coral_Harbour"
+msgstr "ອາເມລິກາ/ຄໍຣັລ_ຮາເບີຣ໌"
+
+#: src/timezone_names.c:129
+msgid "America/Cordoba"
+msgstr "ອາເມລິກາ/ຄໍໂດບາ"
+
+#: src/timezone_names.c:130
+msgid "America/Costa_Rica"
+msgstr "ອາເມລິກາ/ຄອດສະຕາ_ຣິກາ"
+
+#: src/timezone_names.c:131
+msgid "America/Creston"
+msgstr "ອາເມລິກາ/ເຄຣສຕັນ"
+
+#: src/timezone_names.c:132
+msgid "America/Cuiaba"
+msgstr "ອາເມລິກາ/ຄູຢາບາ"
+
+#: src/timezone_names.c:133
+msgid "America/Curacao"
+msgstr "ອາເມລິກາ/ຄູຣາຊາວ"
+
+#: src/timezone_names.c:134
+msgid "America/Danmarkshavn"
+msgstr "ອາເມລິກາ/ແດນມາກຊາວນ໌"
+
+#: src/timezone_names.c:135
+msgid "America/Dawson"
+msgstr "ອາເມລິກາ/ດໍສັນ"
+
+#: src/timezone_names.c:136
+msgid "America/Dawson_Creek"
+msgstr "ອາເມລິກາ/ດໍສັນ_ຄຣີກ"
+
+#: src/timezone_names.c:137
+msgid "America/Denver"
+msgstr "ອາເມລິກາ/ເດນເວີຣ໌"
+
+#: src/timezone_names.c:138
+msgid "America/Detroit"
+msgstr "ອາເມລິກາ/ດີທຣອຍ"
+
+#: src/timezone_names.c:139
+msgid "America/Dominica"
+msgstr "ອາເມລິກາ/ໂດມິນິກາ"
+
+#: src/timezone_names.c:140
+msgid "America/Edmonton"
+msgstr "ອາເມລິກາ/ເອັດມອນຕັນ"
+
+#: src/timezone_names.c:141
+msgid "America/Ensenada"
+msgstr "ອາເມລິກາ/ເອນເຊນາດາ"
+
+#: src/timezone_names.c:142
+msgid "America/Eirunepe"
+msgstr "ອາເມລິກາ/ເອຣູເນເປ"
+
+#: src/timezone_names.c:143
+msgid "America/El_Salvador"
+msgstr "ອາເມລິກາ/ເອວ_ຊັລວາດໍ"
+
+#: src/timezone_names.c:144
+msgid "America/Fortaleza"
+msgstr "ອາເມລິກາ/ຟໍຕາເລຊາ"
+
+#: src/timezone_names.c:145
+msgid "America/Fort_Wayne"
+msgstr "ອາເມລິກາ/ຟອດ_ເວນ"
+
+#: src/timezone_names.c:146
+msgid "America/Glace_Bay"
+msgstr "ອາເມລິກາ/ເກຣຊ_ເບ"
+
+#: src/timezone_names.c:147
+msgid "America/Godthab"
+msgstr "ອາເມລິກາ/ກອດແທັບ"
+
+#: src/timezone_names.c:148
+msgid "America/Goose_Bay"
+msgstr "ອາເມລິກາ/ກູສ_ເບ"
+
+#: src/timezone_names.c:149
+msgid "America/Grand_Turk"
+msgstr "ອາເມລິກາ/ແກຣນ_ເຕີຣ໌ກ"
+
+#: src/timezone_names.c:150
+msgid "America/Grenada"
+msgstr "ອາເມລິກາ/ເກຣເນດາ"
+
+#: src/timezone_names.c:151
+msgid "America/Guadeloupe"
+msgstr "ອາເມລິກາ/ກົວເດລູບ"
+
+#: src/timezone_names.c:152
+msgid "America/Guatemala"
+msgstr "ອາເມລິກາ/ກົວເຕມາລາ"
+
+#: src/timezone_names.c:153
+msgid "America/Guayaquil"
+msgstr "ອາເມລິກາ/ກົວຍາກິລ"
+
+#: src/timezone_names.c:154
+msgid "America/Guyana"
+msgstr "ອາເມລິກາ/ກາຍອານາ"
+
+#: src/timezone_names.c:155
+msgid "America/Halifax"
+msgstr "ອາເມລິກາ/ຮາລິແຟັກຊ໌"
+
+#: src/timezone_names.c:156
+msgid "America/Havana"
+msgstr "ອາເມລິກາ/ຮາວານາ"
+
+#: src/timezone_names.c:157
+msgid "America/Hermosillo"
+msgstr "ອາເມລິກາ/ເຮີໂມຊິໂຢ"
+
+#: src/timezone_names.c:158
+msgid "America/Indiana/Indianapolis"
+msgstr "ອາເມລິກາ/ອິນເດຍນາ/ອິນເດຍນາໂພລິສ"
+
+#: src/timezone_names.c:159
+msgid "America/Indiana/Knox"
+msgstr "ອາເມລິກາ/ອິນເດຍນາ/ນັອກຊ໌"
+
+#: src/timezone_names.c:160
+msgid "America/Indiana/Marengo"
+msgstr "ອາເມລິກາ/ອິນເດຍນາ/ມາເຣນໂກ"
+
+#: src/timezone_names.c:161
+msgid "America/Indiana/Petersburg"
+msgstr "ອາເມລິກາ/ອິນເດຍນາ/ປີເຕີຣ໌ສະເບີຣ໌ກ"
+
+#: src/timezone_names.c:162
+msgid "America/Indiana/Tell_City"
+msgstr "ອາເມລິກາ/ອິນເດຍນາ/ເທວ_ຊິຕີ"
+
+#: src/timezone_names.c:163
+msgid "America/Indiana/Vevay"
+msgstr "ອາເມລິກາ/ອິນເດຍນາ/ວີເວ"
+
+#: src/timezone_names.c:164
+msgid "America/Indiana/Vincennes"
+msgstr "ອາເມລິກາ/ອິນເດຍນາ/ວິນເຊນເນສ"
+
+#: src/timezone_names.c:165
+msgid "America/Indiana/Winamac"
+msgstr "ອາເມລິກາ/ອິນເດຍນາ/ວິນາມັກ"
+
+#: src/timezone_names.c:166
+msgid "America/Indianapolis"
+msgstr "ອາເມລິກາ/ອິນເດຍນາໂພລິສ"
+
+#: src/timezone_names.c:167
+msgid "America/Inuvik"
+msgstr "ອາເມລິກາ/ອິນູວິກ"
+
+#: src/timezone_names.c:168
+msgid "America/Iqaluit"
+msgstr "ອາເມລິກາ/ອີຄາລູອິດ"
+
+#: src/timezone_names.c:169
+msgid "America/Jamaica"
+msgstr "ອາເມລິກາ/ຈາໄມກາ"
+
+#: src/timezone_names.c:170
+msgid "America/Jujuy"
+msgstr "ອາເມລິກາ/ຮູຮຸຍ"
+
+#: src/timezone_names.c:171
+msgid "America/Juneau"
+msgstr "ອາເມລິກາ/ຈູນໂນ"
+
+#: src/timezone_names.c:172
+msgid "America/Kentucky/Louisville"
+msgstr "ອາເມລິກາ/ເຄນທັກກີ/ລຸຍວິລ"
+
+#: src/timezone_names.c:173
+msgid "America/Kentucky/Monticello"
+msgstr "ອາເມລິກາ/ເຄນທັກກີ/ມອນຕິເຊລໂລ"
+
+#: src/timezone_names.c:174
+msgid "America/Knox_IN"
+msgstr "ອາເມລິກາ/ນັອກຊ໌_ອິນເດຍນາ"
+
+#: src/timezone_names.c:175
+msgid "America/Kralendijk"
+msgstr "ອາເມລິກາ/ຄຣາເລນເດັກ"
+
+#: src/timezone_names.c:176
+msgid "America/La_Paz"
+msgstr "ອາເມລິກາ/ລາ_ປາສ"
+
+#: src/timezone_names.c:177
+msgid "America/Lima"
+msgstr "ອາເມລິກາ/ລິມາ"
+
+#: src/timezone_names.c:178
+msgid "America/Los_Angeles"
+msgstr "ອາເມລິກາ/ລອສ_ແອນເຈລີສ"
+
+#: src/timezone_names.c:179
+msgid "America/Louisville"
+msgstr "ອາເມລິກາ/ລຸຍວິລ"
+
+#: src/timezone_names.c:180
+msgid "America/Lower_Princes"
+msgstr "ອາເມລິກາ/ໂລເວີຣ໌_ພຣິນເຊສ"
+
+#: src/timezone_names.c:181
+msgid "America/Maceio"
+msgstr "ອາເມລິກາ/ມາເຊໂອ"
+
+#: src/timezone_names.c:182
+msgid "America/Managua"
+msgstr "ອາເມລິກາ/ມານາກົວ"
+
+#: src/timezone_names.c:183
+msgid "America/Manaus"
+msgstr "ອາເມລິກາ/ມານາອຸສ"
+
+#: src/timezone_names.c:184
+msgid "America/Marigot"
+msgstr "ອາເມລິກາ/ມາຣີກອດ"
+
+#: src/timezone_names.c:185
+msgid "America/Martinique"
+msgstr "ອາເມລິກາ/ມາກຕິນິກ"
+
+#: src/timezone_names.c:186
+msgid "America/Matamoros"
+msgstr "ອາເມລິກາ/ມາຕາມໍໂຣສ"
+
+#: src/timezone_names.c:187
+msgid "America/Mazatlan"
+msgstr "ອາເມລິກາ/ມາຊັດລານ"
+
+#: src/timezone_names.c:188
+msgid "America/Mendoza"
+msgstr "ອາເມລິກາ/ເມນໂດຊາ"
+
+#: src/timezone_names.c:189
+msgid "America/Menominee"
+msgstr "ອາເມລິກາ/ເມໂນມິນີ"
+
+#: src/timezone_names.c:190
+msgid "America/Merida"
+msgstr "ອາເມລິກາ/ເມຣິດາ"
+
+#: src/timezone_names.c:191
+msgid "America/Metlakatla"
+msgstr "ອາເມລິກາ/ເມັດລາກາຕລາ"
+
+#: src/timezone_names.c:192
+msgid "America/Mexico_City"
+msgstr "ອາເມລິກາ/ເມັກຊິໂກ_ຊິຕີ"
+
+#: src/timezone_names.c:193
+msgid "America/Miquelon"
+msgstr "ອາເມລິກາ/ມີເກີລອນ"
+
+#: src/timezone_names.c:194
+msgid "America/Moncton"
+msgstr "ອາເມລິກາ/ມັອງຕັນ"
+
+#: src/timezone_names.c:195
+msgid "America/Monterrey"
+msgstr "ອາເມລິກາ/ມອນເຕີເຣ"
+
+#: src/timezone_names.c:196
+msgid "America/Montevideo"
+msgstr "ອາເມລິກາ/ມອນເຕວິເດໂອ"
+
+#: src/timezone_names.c:197
+msgid "America/Montreal"
+msgstr "ອາເມລິກາ/ມອນທຣີອໍ"
+
+#: src/timezone_names.c:198
+msgid "America/Montserrat"
+msgstr "ອາເມລິກາ/ມອນເຊີຣັດ"
+
+#: src/timezone_names.c:199
+msgid "America/Nassau"
+msgstr "ອາເມລິກາ/ນັດຊໍ"
+
+#: src/timezone_names.c:200
+msgid "America/New_York"
+msgstr "ອາເມລິກາ/ນິວຢອກ"
+
+#: src/timezone_names.c:201
+msgid "America/Nipigon"
+msgstr "ອາເມລິກາ/ນິພິກອນ"
+
+#: src/timezone_names.c:202
+msgid "America/Nome"
+msgstr "ອາເມລິກາ/ໂນມ"
+
+#: src/timezone_names.c:203
+msgid "America/North_Dakota/Beulah"
+msgstr "ອາເມລິກາ/ນອດ_ດາໂຄຕາ/ບີວລາ"
+
+#: src/timezone_names.c:204
+msgid "America/North_Dakota/Center"
+msgstr "ອາເມລິກາ/ນອດ_ດາໂຄຕາ/ເຊັນເຕີຣ໌"
+
+#: src/timezone_names.c:205
+msgid "America/North_Dakota/New_Salem"
+msgstr "ອາເມລິກາ/ນອດ_ດາໂຄຕາ/ນິວ_ເຊເລັມ"
+
+#: src/timezone_names.c:206
+msgid "America/Noronha"
+msgstr "ອາເມລິກາ/ໂນໂຣນຢາ"
+
+#: src/timezone_names.c:207
+msgid "America/Ojinaga"
+msgstr "ອາເມລິກາ/ໂອຮິນາກາ"
+
+#: src/timezone_names.c:208
+msgid "America/Panama"
+msgstr "ອາເມລິກາ/ປານາມາ"
+
+#: src/timezone_names.c:209
+msgid "America/Pangnirtung"
+msgstr "ອາເມລິກາ/ແພງເນີຕັງ"
+
+#: src/timezone_names.c:210
+msgid "America/Paramaribo"
+msgstr "ອາເມລິກາ/ປາຣາມາຣິໂບ"
+
+#: src/timezone_names.c:211
+msgid "America/Phoenix"
+msgstr "ອາເມລິກາ/ຟີນິກຊ໌"
+
+#: src/timezone_names.c:212
+msgid "America/Port-au-Prince"
+msgstr "ອາເມລິກາ/ປໍໂຕແພຣງຊ໌"
+
+#: src/timezone_names.c:213
+msgid "America/Port_of_Spain"
+msgstr "ອາເມລິກາ/ພອດ_ອັອຟ_ສະເປນ"
+
+#: src/timezone_names.c:214
+msgid "America/Porto_Acre"
+msgstr "ອາເມລິກາ/ປໍໂຕ_ອາເຄຣ"
+
+#: src/timezone_names.c:215
+msgid "America/Porto_Velho"
+msgstr "ອາເມລິກາ/ປໍໂຕ_ເວວໂຢ"
+
+#: src/timezone_names.c:216
+msgid "America/Puerto_Rico"
+msgstr "ອາເມລິກາ/ເປີໂຕຣິກໂກ"
+
+#: src/timezone_names.c:217
+msgid "America/Rainy_River"
+msgstr "ອາເມລິກາ/ເຣນນີ_ຣິເວີຣ໌"
+
+#: src/timezone_names.c:218
+msgid "America/Rankin_Inlet"
+msgstr "ອາເມລິກາ/ແຣງກິນ_ອິນເລັດ"
+
+#: src/timezone_names.c:219
+msgid "America/Recife"
+msgstr "ອາເມລິກາ/ເຣຊີເຟ"
+
+#: src/timezone_names.c:220
+msgid "America/Regina"
+msgstr "ອາເມລິກາ/ເຣຈາຍນາ"
+
+#: src/timezone_names.c:221
+msgid "America/Resolute"
+msgstr "ອາເມລິກາ/ເຣໂຊລຸດ"
+
+#: src/timezone_names.c:222
+msgid "America/Rio_Branco"
+msgstr "ອາເມລິກາ/ຣີໂອ_ບຣັງໂກ"
+
+#: src/timezone_names.c:223
+msgid "America/Rosario"
+msgstr "ອາເມລິກາ/ໂຣຊາຣິໂອ"
+
+#: src/timezone_names.c:224
+msgid "America/Santa_Isabel"
+msgstr "ອາເມລິກາ/ຊານຕາ_ອິຊາເບລ"
+
+#: src/timezone_names.c:225
+msgid "America/Santarem"
+msgstr "ອາເມລິກາ/ຊານຕາເຣັມ"
+
+#: src/timezone_names.c:226
+msgid "America/Santiago"
+msgstr "ອາເມລິກາ/ຊານຕິອາໂກ"
+
+#: src/timezone_names.c:227
+msgid "America/Santo_Domingo"
+msgstr "ອາເມລິກາ/ຊານໂຕ_ໂດມິງໂກ"
+
+#: src/timezone_names.c:228
+msgid "America/Sao_Paulo"
+msgstr "ອາເມລິກາ/ເຊົາ_ເປົາໂລ"
+
+#: src/timezone_names.c:229
+msgid "America/Scoresbysund"
+msgstr "ອາເມລິກາ/ສະຄໍຣ໌ສບີຊັນດ໌"
+
+#: src/timezone_names.c:230
+msgid "America/Shiprock"
+msgstr "ອາເມລິກາ/ຊິບຣັອກ"
+
+#: src/timezone_names.c:231
+msgid "America/Sitka"
+msgstr "ອາເມລິກາ/ຊິດກາ"
+
+#: src/timezone_names.c:232
+msgid "America/St_Barthelemy"
+msgstr "ອາເມລິກາ/ເຊັນ_ບາເທເລມີ"
+
+#: src/timezone_names.c:233
+msgid "America/St_Johns"
+msgstr "ອາເມລິກາ/ເຊັນ_ຈອນຊ໌"
+
+#: src/timezone_names.c:234
+msgid "America/St_Kitts"
+msgstr "ອາເມລິກາ/ເຊັນ_ຄິດສ໌"
+
+#: src/timezone_names.c:235
+msgid "America/St_Lucia"
+msgstr "ອາເມລິກາ/ເຊັນ_ລູເຊຍ"
+
+#: src/timezone_names.c:236
+msgid "America/St_Thomas"
+msgstr "ອາເມລິກາ/ເຊັນ_ໂທມັສ"
+
+#: src/timezone_names.c:237
+msgid "America/St_Vincent"
+msgstr "ອາເມລິກາ/ເຊັນ_ວິນເຊນ"
+
+#: src/timezone_names.c:238
+msgid "America/Swift_Current"
+msgstr "ອາເມລິກາ/ສະວິຟ_ເຄີເຣັນ"
+
+#: src/timezone_names.c:239
+msgid "America/Tegucigalpa"
+msgstr "ອາເມລິກາ/ເຕກູຊິກັລປາ"
+
+#: src/timezone_names.c:240
+msgid "America/Thule"
+msgstr "ອາເມລິກາ/ທູເລ"
+
+#: src/timezone_names.c:241
+msgid "America/Thunder_Bay"
+msgstr "ອາເມລິກາ/ທັນເດີຣ໌_ເບ"
+
+#: src/timezone_names.c:242
+msgid "America/Tijuana"
+msgstr "ອາເມລິກາ/ຕິຮົວນາ"
+
+#: src/timezone_names.c:243
+msgid "America/Toronto"
+msgstr "ອາເມລິກາ/ໂຕຣອນໂຕ"
+
+#: src/timezone_names.c:244
+msgid "America/Tortola"
+msgstr "ອາເມລິກາ/ທໍໂຕລາ"
+
+#: src/timezone_names.c:245
+msgid "America/Vancouver"
+msgstr "ອາເມລິກາ/ແວນຄູເວີຣ໌"
+
+#: src/timezone_names.c:246
+msgid "America/Virgin"
+msgstr "ອາເມລິກາ/ເວີຈິນ"
+
+#: src/timezone_names.c:247
+msgid "America/Whitehorse"
+msgstr "ອາເມລິກາ/ໄວທ໌ຮອດ"
+
+#: src/timezone_names.c:248
+msgid "America/Winnipeg"
+msgstr "ອາເມລິກາ/ວິນນິເພັກ"
+
+#: src/timezone_names.c:249
+msgid "America/Yakutat"
+msgstr "ອາເມລິກາ/ຢາຄູຕັດ"
+
+#: src/timezone_names.c:250
+msgid "America/Yellowknife"
+msgstr "ອາເມລິກາ/ເຢລໂລໄນຟ໌"
+
+#: src/timezone_names.c:251
+msgid "Antarctica"
+msgstr "ແອນຕາກຕິກາ"
+
+#: src/timezone_names.c:252
+msgid "Antarctica/Casey"
+msgstr "ແອນຕາກຕິກາ/ເຄຊີ"
+
+#: src/timezone_names.c:253
+msgid "Antarctica/Davis"
+msgstr "ແອນຕາກຕິກາ/ເດວິສ"
+
+#: src/timezone_names.c:254
+msgid "Antarctica/DumontDUrville"
+msgstr "ແອນຕາກຕິກາ/ດູມົງ_ດູວິລ"
+
+#: src/timezone_names.c:255
+msgid "Antarctica/Macquarie"
+msgstr "ແອນຕາກຕິກາ/ແມັກຄວໍຣີ"
+
+#: src/timezone_names.c:256
+msgid "Antarctica/Mawson"
+msgstr "ແອນຕາກຕິກາ/ມໍສັນ"
+
+#: src/timezone_names.c:257
+msgid "Antarctica/McMurdo"
+msgstr "ແອນຕາກຕິກາ/ແມັກເມີໂດ"
+
+#: src/timezone_names.c:258
+msgid "Antarctica/Palmer"
+msgstr "ແອນຕາກຕິກາ/ພາມເມີຣ໌"
+
+#: src/timezone_names.c:259
+msgid "Antarctica/Rothera"
+msgstr "ແອນຕາກຕິກາ/ໂຣເທຣາ"
+
+#: src/timezone_names.c:260
+msgid "Antarctica/South_Pole"
+msgstr "ແອນຕາກຕິກາ/ຂົ້ວໂລກໃຕ້"
+
+#: src/timezone_names.c:261
+msgid "Antarctica/Syowa"
+msgstr "ແອນຕາກຕິກາ/ໂຊວາ"
+
+#: src/timezone_names.c:262
+msgid "Antarctica/Vostok"
+msgstr "ແອນຕາກຕິກາ/ວອສຕັອກ"
+
+#: src/timezone_names.c:263
+msgid "Arctic"
+msgstr "ອາກຕິກ"
+
+#: src/timezone_names.c:264
+msgid "Arctic/Longyearbyen"
+msgstr "ອາກຕິກ/ລອງຢຽຣ໌ບຽນ"
+
+#: src/timezone_names.c:265
+msgid "Asia"
+msgstr "ອາຊີ"
+
+#: src/timezone_names.c:266
+msgid "Asia/Aden"
+msgstr "ອາຊີ/ເອເດັນ"
+
+#: src/timezone_names.c:267
+msgid "Asia/Almaty"
+msgstr "ອາຊີ/ອັນມາຕີ"
+
+#: src/timezone_names.c:268
+msgid "Asia/Amman"
+msgstr "ອາຊີ/ອຳມານ"
+
+#: src/timezone_names.c:269
+msgid "Asia/Anadyr"
+msgstr "ອາຊີ/ອານາດີຣ໌"
+
+#: src/timezone_names.c:270
+msgid "Asia/Aqtau"
+msgstr "ອາຊີ/ອັກເຕົາ"
+
+#: src/timezone_names.c:271
+msgid "Asia/Aqtobe"
+msgstr "ອາຊີ/ອັກໂຕບີ"
+
+#: src/timezone_names.c:272
+msgid "Asia/Ashgabat"
+msgstr "ອາຊີ/ອາສະກາບັດ"
+
+#: src/timezone_names.c:273
+msgid "Asia/Ashkhabad"
+msgstr "ອາຊີ/ອັດສະຄາບັດ"
+
+#: src/timezone_names.c:274
+msgid "Asia/Baghdad"
+msgstr "ອາຊີ/ແບກແດດ"
+
+#: src/timezone_names.c:275
+msgid "Asia/Bahrain"
+msgstr "ອາຊີ/ບາເຣນ"
+
+#: src/timezone_names.c:276
+msgid "Asia/Baku"
+msgstr "ອາຊີ/ບາກູ"
+
+#: src/timezone_names.c:277
+msgid "Asia/Bangkok"
+msgstr "ອາຊີ/ບາງກອກ"
+
+#: src/timezone_names.c:278
+msgid "Asia/Beirut"
+msgstr "ອາຊີ/ເບຣຸດ"
+
+#: src/timezone_names.c:279
+msgid "Asia/Bishkek"
+msgstr "ອາຊີ/ບິດສະເຄັກ"
+
+#: src/timezone_names.c:280
+msgid "Asia/Brunei"
+msgstr "ອາຊີ/ບຣູໄນ"
+
+#: src/timezone_names.c:281
+msgid "Asia/Calcutta"
+msgstr "ອາຊີ/ກັລກັດຕາ"
+
+#: src/timezone_names.c:282
+msgid "Asia/Choibalsan"
+msgstr "ອາຊີ/ຊອຍບັລຊັນ"
+
+#: src/timezone_names.c:283
+msgid "Asia/Chongqing"
+msgstr "ອາຊີ/ສຸງກິງ"
+
+#: src/timezone_names.c:284
+msgid "Asia/Chungking"
+msgstr "ອາຊີ/ຈຸງກິງ"
+
+#: src/timezone_names.c:285
+msgid "Asia/Colombo"
+msgstr "ອາຊີ/ໂຄລຳໂບ"
+
+#: src/timezone_names.c:286
+msgid "Asia/Dacca"
+msgstr "ອາຊີ/ດັກກາ"
+
+#: src/timezone_names.c:287
+msgid "Asia/Damascus"
+msgstr "ອາຊີ/ດາມັສກັສ"
+
+#: src/timezone_names.c:288
+msgid "Asia/Dhaka"
+msgstr "ອາຊີ/ດາກາ"
+
+#: src/timezone_names.c:289
+msgid "Asia/Dili"
+msgstr "ອາຊີ/ດີລີ"
+
+#: src/timezone_names.c:290
+msgid "Asia/Dubai"
+msgstr "ອາຊີ/ດູໄບ"
+
+#: src/timezone_names.c:291
+msgid "Asia/Dushanbe"
+msgstr "ອາຊີ/ດູຊານເບ"
+
+#: src/timezone_names.c:292
+msgid "Asia/Gaza"
+msgstr "ອາຊີ/ກາຊາ"
+
+#: src/timezone_names.c:293
+msgid "Asia/Harbin"
+msgstr "ອາຊີ/ຮາບິນ"
+
+#: src/timezone_names.c:294
+msgid "Asia/Hebron"
+msgstr "ອາຊີ/ເຮບຣອນ"
+
+#: src/timezone_names.c:295
+msgid "Asia/Hong_Kong"
+msgstr "ອາຊີ/ຮົງກົງ"
+
+#: src/timezone_names.c:296
+msgid "Asia/Ho_Chi_Minh"
+msgstr "ອາຊີ/ໂຮ່ຈີມິນ"
+
+#: src/timezone_names.c:297
+msgid "Asia/Hovd"
+msgstr "ອາຊີ/ຮອບດ໌"
+
+#: src/timezone_names.c:298
+msgid "Asia/Irkutsk"
+msgstr "ອາຊີ/ອີຄຸດສະກ໌"
+
+#: src/timezone_names.c:299
+msgid "Asia/Istanbul"
+msgstr "ອາຊີ/ອິດສະຕັນບູລ"
+
+#: src/timezone_names.c:300
+msgid "Asia/Jakarta"
+msgstr "ອາຊີ/ຈາກາຕາ"
+
+#: src/timezone_names.c:301
+msgid "Asia/Jayapura"
+msgstr "ອາຊີ/ໄຈຢາປູຣາ"
+
+#: src/timezone_names.c:302
+msgid "Asia/Jerusalem"
+msgstr "ອາຊີ/ເຢຣູຊາເລັມ"
+
+#: src/timezone_names.c:303
+msgid "Asia/Kabul"
+msgstr "ອາຊີ/ຄາບູລ"
+
+#: src/timezone_names.c:304
+msgid "Asia/Kamchatka"
+msgstr "ອາຊີ/ຄຳຊັດກາ"
+
+#: src/timezone_names.c:305
+msgid "Asia/Karachi"
+msgstr "ອາຊີ/ກາຣາຈີ"
+
+#: src/timezone_names.c:306
+msgid "Asia/Kashgar"
+msgstr "ອາຊີ/ຄັດສະກາ"
+
+#: src/timezone_names.c:307
+msgid "Asia/Kathmandu"
+msgstr "ອາຊີ/ກາດມານດູ"
+
+#: src/timezone_names.c:308
+msgid "Asia/Katmandu"
+msgstr "ອາຊີ/ກັດມານດູ"
+
+#: src/timezone_names.c:309
+msgid "Asia/Khandyga"
+msgstr "ອາຊີ/ຄານດິກາ"
+
+#: src/timezone_names.c:310
+msgid "Asia/Kolkata"
+msgstr "ອາຊີ/ໂກລກາຕາ"
+
+#: src/timezone_names.c:311
+msgid "Asia/Krasnoyarsk"
+msgstr "ອາຊີ/ຄຣາສໂນຢາສກ໌"
+
+#: src/timezone_names.c:312
+msgid "Asia/Kuala_Lumpur"
+msgstr "ອາຊີ/ກົວລາລຳເປີ"
+
+#: src/timezone_names.c:313
+msgid "Asia/Kuching"
+msgstr "ອາຊີ/ກູຈິງ"
+
+#: src/timezone_names.c:314
+msgid "Asia/Kuwait"
+msgstr "ອາຊີ/ກູເວດ"
+
+#: src/timezone_names.c:315
+msgid "Asia/Macao"
+msgstr "ອາຊີ/ມາເກົ້າ"
+
+#: src/timezone_names.c:316
+msgid "Asia/Macau"
+msgstr "ອາຊີ/ມາເກົ້າ"
+
+#: src/timezone_names.c:317
+msgid "Asia/Magadan"
+msgstr "ອາຊີ/ມາກາດານ"
+
+#: src/timezone_names.c:318
+msgid "Asia/Makassar"
+msgstr "ອາຊີ/ມາກັດຊາ"
+
+#: src/timezone_names.c:319
+msgid "Asia/Manila"
+msgstr "ອາຊີ/ມານີລາ"
+
+#: src/timezone_names.c:320
+msgid "Asia/Muscat"
+msgstr "ອາຊີ/ມັດສະກັດ"
+
+#: src/timezone_names.c:321
+msgid "Asia/Nicosia"
+msgstr "ອາຊີ/ນີໂກເຊຍ"
+
+#: src/timezone_names.c:322
+msgid "Asia/Novokuznetsk"
+msgstr "ອາຊີ/ໂນໂວກູສເນັດສະກ໌"
+
+#: src/timezone_names.c:323
+msgid "Asia/Novosibirsk"
+msgstr "ອາຊີ/ໂນໂວຊີບີສກ໌"
+
+#: src/timezone_names.c:324
+msgid "Asia/Omsk"
+msgstr "ອາຊີ/ອອມສ໌"
+
+#: src/timezone_names.c:325
+msgid "Asia/Oral"
+msgstr "ອາຊີ/ໂອຣາລ"
+
+#: src/timezone_names.c:326
+msgid "Asia/Phnom_Penh"
+msgstr "ອາຊີ/ພະນົມເປັນ"
+
+#: src/timezone_names.c:327
+msgid "Asia/Pontianak"
+msgstr "ອາຊີ/ປົນຕີອານັກ"
+
+#: src/timezone_names.c:328
+msgid "Asia/Pyongyang"
+msgstr "ອາຊີ/ພຽງຢາງ"
+
+#: src/timezone_names.c:329
+msgid "Asia/Qatar"
+msgstr "ອາຊີ/ກາຕາ"
+
+#: src/timezone_names.c:330
+msgid "Asia/Qyzylorda"
+msgstr "ອາຊີ/ກີຊີລໍດາ"
+
+#: src/timezone_names.c:331
+msgid "Asia/Rangoon"
+msgstr "ອາຊີ/ຢາງກຸ້ງ"
+
+#: src/timezone_names.c:332
+msgid "Asia/Riyadh"
+msgstr "ອາຊີ/ຣິຢາດ"
+
+#: src/timezone_names.c:333
+msgid "Asia/Riyadh87"
+msgstr "ອາຊີ/ຣິຢາດ87"
+
+#: src/timezone_names.c:334
+msgid "Asia/Riyadh88"
+msgstr "ອາຊີ/ຣິຢາດ88"
+
+#: src/timezone_names.c:335
+msgid "Asia/Riyadh89"
+msgstr "ອາຊີ/ຣິຢາດ89"
+
+#: src/timezone_names.c:336
+msgid "Asia/Saigon"
+msgstr "ອາຊີ/ໄຊງ່ອນ"
+
+#: src/timezone_names.c:337
+msgid "Asia/Sakhalin"
+msgstr "ອາຊີ/ຊາຄາລິນ"
+
+#: src/timezone_names.c:338
+msgid "Asia/Samarkand"
+msgstr "ອາຊີ/ຊາມາກັນ"
+
+#: src/timezone_names.c:339
+msgid "Asia/Seoul"
+msgstr "ອາຊີ/ໂຊລ"
+
+#: src/timezone_names.c:340
+msgid "Asia/Shanghai"
+msgstr "ອາຊີ/ຊຽງໄຮ້"
+
+#: src/timezone_names.c:341
+msgid "Asia/Singapore"
+msgstr "ອາຊີ/ສິງກະໂປ"
+
+#: src/timezone_names.c:342
+msgid "Asia/Taipei"
+msgstr "ອາຊີ/ໄທເປ"
+
+#: src/timezone_names.c:343
+msgid "Asia/Tashkent"
+msgstr "ອາຊີ/ທາສເຄນທ໌"
+
+#: src/timezone_names.c:344
+msgid "Asia/Tbilisi"
+msgstr "ອາຊີ/ທບີລີຊີ"
+
+#: src/timezone_names.c:345
+msgid "Asia/Tehran"
+msgstr "ອາຊີ/ເຕເຮຣານ"
+
+#: src/timezone_names.c:346
+msgid "Asia/Tel_Aviv"
+msgstr "ອາຊີ/ເທວ_ອາວີບ"
+
+#: src/timezone_names.c:347
+msgid "Asia/Thimbu"
+msgstr "ອາຊີ/ທິມພູ"
+
+#: src/timezone_names.c:348
+msgid "Asia/Thimphu"
+msgstr "ອາຊີ/ທິມພູ"
+
+#: src/timezone_names.c:349
+msgid "Asia/Tokyo"
+msgstr "ອາຊີ/ໂຕກຽວ"
+
+#: src/timezone_names.c:350
+msgid "Asia/Ujung_Pandang"
+msgstr "ອາຊີ/ອູຈຸງ_ປັນດັງ"
+
+#: src/timezone_names.c:351
+msgid "Asia/Ulaanbaatar"
+msgstr "ອາຊີ/ອູລານບາຕໍ"
+
+#: src/timezone_names.c:352
+msgid "Asia/Ulan_Bator"
+msgstr "ອາຊີ/ອູລານບາຕໍ"
+
+#: src/timezone_names.c:353
+msgid "Asia/Urumqi"
+msgstr "ອາຊີ/ອູຣູມຊີ"
+
+#: src/timezone_names.c:354
+msgid "Asia/Ust-Nera"
+msgstr "ອາຊີ/ອຸດ-ເນຣາ"
+
+#: src/timezone_names.c:355
+msgid "Asia/Vientiane"
+msgstr "ອາຊີ/ວຽງຈັນ"
+
+#: src/timezone_names.c:356
+msgid "Asia/Vladivostok"
+msgstr "ອາຊີ/ວລາຊິໂວສະຕັອກ"
+
+#: src/timezone_names.c:357
+msgid "Asia/Yakutsk"
+msgstr "ອາຊີ/ຢາຄຸດສະກ໌"
+
+#: src/timezone_names.c:358
+msgid "Asia/Yekaterinburg"
+msgstr "ອາຊີ/ເຢກາເຕຣິນເບີຣ໌ກ"
+
+#: src/timezone_names.c:359
+msgid "Asia/Yerevan"
+msgstr "ອາຊີ/ເຢເຣວານ"
+
+#: src/timezone_names.c:360
+msgid "Atlantic"
+msgstr "ອັດລັງຕິກ"
+
+#: src/timezone_names.c:361
+msgid "Atlantic/Azores"
+msgstr "ອັດລັງຕິກ/ອາໂຊເຣສ"
+
+#: src/timezone_names.c:362
+msgid "Atlantic/Bermuda"
+msgstr "ອັດລັງຕິກ/ເບີມິວດາ"
+
+#: src/timezone_names.c:363
+msgid "Atlantic/Canary"
+msgstr "ອັດລັງຕິກ/ຄານາຣີ"
+
+#: src/timezone_names.c:364
+msgid "Atlantic/Cape_Verde"
+msgstr "ອັດລັງຕິກ/ເຄບ_ເວີດ"
+
+#: src/timezone_names.c:365
+msgid "Atlantic/Faeroe"
+msgstr "ອັດລັງຕິກ/ຟາໂຣ"
+
+#: src/timezone_names.c:366
+msgid "Atlantic/Faroe"
+msgstr "ອັດລັງຕິກ/ຟາໂຣ"
+
+#: src/timezone_names.c:367
+msgid "Atlantic/Jan_Mayen"
+msgstr "ອັດລັງຕິກ/ຢານ_ມາເຢນ"
+
+#: src/timezone_names.c:368
+msgid "Atlantic/Madeira"
+msgstr "ອັດລັງຕິກ/ມາເດຣາ"
+
+#: src/timezone_names.c:369
+msgid "Atlantic/Reykjavik"
+msgstr "ອັດລັງຕິກ/ເຣກຢາວິກ"
+
+#: src/timezone_names.c:370
+msgid "Atlantic/South_Georgia"
+msgstr "ອັດລັງຕິກ/ເຊົາ_ຈໍເຈຍ"
+
+#: src/timezone_names.c:371
+msgid "Atlantic/St_Helena"
+msgstr "ອັດລັງຕິກ/ເຊັນ_ເຮເລນາ"
+
+#: src/timezone_names.c:372
+msgid "Atlantic/Stanley"
+msgstr "ອັດລັງຕິກ/ສະແຕນລີ"
+
+#: src/timezone_names.c:373
+msgid "Australia"
+msgstr "ອົດສະຕຣາລີ"
+
+#: src/timezone_names.c:374
+msgid "Australia/ACT"
+msgstr "ອົດສະຕຣາລີ/ACT"
+
+#: src/timezone_names.c:375
+msgid "Australia/Adelaide"
+msgstr "ອົດສະຕຣາລີ/ອະດີເລດ"
+
+#: src/timezone_names.c:376
+msgid "Australia/Brisbane"
+msgstr "ອົດສະຕຣາລີ/ບຣິສເບນ"
+
+#: src/timezone_names.c:377
+msgid "Australia/Broken_Hill"
+msgstr "ອົດສະຕຣາລີ/ໂບຣກເກນ_ຮິລ"
+
+#: src/timezone_names.c:378
+msgid "Australia/Currie"
+msgstr "ອົດສະຕຣາລີ/ເຄີຣີ"
+
+#: src/timezone_names.c:379
+msgid "Australia/Darwin"
+msgstr "ອົດສະຕຣາລີ/ດາວິນ"
+
+#: src/timezone_names.c:380
+msgid "Australia/Eucla"
+msgstr "ອົດສະຕຣາລີ/ຢູຄລາ"
+
+#: src/timezone_names.c:381
+msgid "Australia/Hobart"
+msgstr "ອົດສະຕຣາລີ/ໂຮບາດ"
+
+#: src/timezone_names.c:382
+msgid "Australia/Lindeman"
+msgstr "ອົດສະຕຣາລີ/ລິນເດມານ"
+
+#: src/timezone_names.c:383
+msgid "Australia/Lord_Howe"
+msgstr "ອົດສະຕຣາລີ/ລອດ_ໂຮວ໌"
+
+#: src/timezone_names.c:384
+msgid "Australia/Melbourne"
+msgstr "ອົດສະຕຣາລີ/ເມລເບີນ"
+
+#: src/timezone_names.c:385
+msgid "Australia/Perth"
+msgstr "ອົດສະຕຣາລີ/ເພີດ"
+
+#: src/timezone_names.c:386
+msgid "Australia/Sydney"
+msgstr "ອົດສະຕຣາລີ/ຊິດນີ"
+
+#: src/timezone_names.c:387
+msgid "Brazil"
+msgstr "ບຣາຊິລ"
+
+#: src/timezone_names.c:388
+msgid "Brazil/Acre"
+msgstr "ບຣາຊິລ/ອາເຄຣ"
+
+#: src/timezone_names.c:389
+msgid "Brazil/DeNoronha"
+msgstr "ບຣາຊິລ/ດີໂນໂຣນຢາ"
+
+#: src/timezone_names.c:390
+msgid "Brazil/East"
+msgstr "ບຣາຊິລ/ຕາເວັນອອກ"
+
+#: src/timezone_names.c:391
+msgid "Brazil/West"
+msgstr "ບຣາຊິລ/ຕາເວັນຕົກ"
+
+#: src/timezone_names.c:392
+msgid "Canada"
+msgstr "ແຄນນາດາ"
+
+#: src/timezone_names.c:393
+msgid "Canada/Atlantic"
+msgstr "ແຄນນາດາ/ອັດລັງຕິກ"
+
+#: src/timezone_names.c:394
+msgid "Canada/Central"
+msgstr "ແຄນນາດາ/ກາງ"
+
+#: src/timezone_names.c:395
+msgid "Canada/East-Saskatchewan"
+msgstr "ແຄນນາດາ/ຕາເວັນອອກ-ຊັດສະແຄດເຊວັນ"
+
+#: src/timezone_names.c:396
+msgid "Canada/Eastern"
+msgstr "ແຄນນາດາ/ຕາເວັນອອກ"
+
+#: src/timezone_names.c:397
+msgid "Canada/Mountain"
+msgstr "ແຄນນາດາ/ເຂດພູເຂົາ"
+
+#: src/timezone_names.c:398
+msgid "Canada/Newfoundland"
+msgstr "ແຄນນາດາ/ນິວຟາວແລນ"
+
+#: src/timezone_names.c:399
+msgid "Canada/Pacific"
+msgstr "ແຄນນາດາ/ປາຊີຟິກ"
+
+#: src/timezone_names.c:400
+msgid "Canada/Saskatchewan"
+msgstr "ແຄນນາດາ/ຊັດສະແຄດເຊວັນ"
+
+#: src/timezone_names.c:401
+msgid "Canada/Yukon"
+msgstr "ແຄນນາດາ/ຢູຄອນ"
+
+#: src/timezone_names.c:402
+msgid "Chile"
+msgstr "ຊີລີ"
+
+#: src/timezone_names.c:403
+msgid "Chile/Continental"
+msgstr "ຊີລີ/ແຜ່ນດິນໃຫຍ່"
+
+#: src/timezone_names.c:404
+msgid "Chile/EasterIsland"
+msgstr "ຊີລີ/ເກາະອິດສະເຕີຣ໌"
+
+#: src/timezone_names.c:405
+msgid "Etc"
+msgstr "ອື່ນໆ"
+
+#: src/timezone_names.c:406
+msgid "Etc/GMT"
+msgstr "Etc/GMT"
+
+#: src/timezone_names.c:407
+msgid "Etc/GMT+0"
+msgstr "Etc/GMT+0"
+
+#: src/timezone_names.c:408
+msgid "Etc/GMT+1"
+msgstr "Etc/GMT+1"
+
+#: src/timezone_names.c:409
+msgid "Etc/GMT+10"
+msgstr "Etc/GMT+10"
+
+#: src/timezone_names.c:410
+msgid "Etc/GMT+11"
+msgstr "Etc/GMT+11"
+
+#: src/timezone_names.c:411
+msgid "Etc/GMT+12"
+msgstr "Etc/GMT+12"
+
+#: src/timezone_names.c:412
+msgid "Etc/GMT+2"
+msgstr "Etc/GMT+2"
+
+#: src/timezone_names.c:413
+msgid "Etc/GMT+3"
+msgstr "Etc/GMT+3"
+
+#: src/timezone_names.c:414
+msgid "Etc/GMT+4"
+msgstr "Etc/GMT+4"
+
+#: src/timezone_names.c:415
+msgid "Etc/GMT+5"
+msgstr "Etc/GMT+5"
+
+#: src/timezone_names.c:416
+msgid "Etc/GMT+6"
+msgstr "Etc/GMT+6"
+
+#: src/timezone_names.c:417
+msgid "Etc/GMT+7"
+msgstr "Etc/GMT+7"
+
+#: src/timezone_names.c:418
+msgid "Etc/GMT+8"
+msgstr "Etc/GMT+8"
+
+#: src/timezone_names.c:419
+msgid "Etc/GMT+9"
+msgstr "Etc/GMT+9"
+
+#: src/timezone_names.c:420
+msgid "Etc/GMT-0"
+msgstr "Etc/GMT-0"
+
+#: src/timezone_names.c:421
+msgid "Etc/GMT-1"
+msgstr "Etc/GMT-1"
+
+#: src/timezone_names.c:422
+msgid "Etc/GMT-10"
+msgstr "Etc/GMT-10"
+
+#: src/timezone_names.c:423
+msgid "Etc/GMT-11"
+msgstr "Etc/GMT-11"
+
+#: src/timezone_names.c:424
+msgid "Etc/GMT-12"
+msgstr "Etc/GMT-12"
+
+#: src/timezone_names.c:425
+msgid "Etc/GMT-13"
+msgstr "Etc/GMT-13"
+
+#: src/timezone_names.c:426
+msgid "Etc/GMT-14"
+msgstr "Etc/GMT-14"
+
+#: src/timezone_names.c:427
+msgid "Etc/GMT-2"
+msgstr "Etc/GMT-2"
+
+#: src/timezone_names.c:428
+msgid "Etc/GMT-3"
+msgstr "Etc/GMT-3"
+
+#: src/timezone_names.c:429
+msgid "Etc/GMT-4"
+msgstr "Etc/GMT-4"
+
+#: src/timezone_names.c:430
+msgid "Etc/GMT-5"
+msgstr "Etc/GMT-5"
+
+#: src/timezone_names.c:431
+msgid "Etc/GMT-6"
+msgstr "Etc/GMT-6"
+
+#: src/timezone_names.c:432
+msgid "Etc/GMT-7"
+msgstr "Etc/GMT-7"
+
+#: src/timezone_names.c:433
+msgid "Etc/GMT-8"
+msgstr "Etc/GMT-8"
+
+#: src/timezone_names.c:434
+msgid "Etc/GMT-9"
+msgstr "Etc/GMT-9"
+
+#: src/timezone_names.c:435
+msgid "Etc/GMT0"
+msgstr "Etc/GMT0"
+
+#: src/timezone_names.c:436
+msgid "Etc/Greenwich"
+msgstr "Etc/ກຣີນິດ"
+
+#: src/timezone_names.c:437
+msgid "Etc/UCT"
+msgstr "Etc/UCT"
+
+#: src/timezone_names.c:438
+msgid "Etc/UTC"
+msgstr "Etc/UTC"
+
+#: src/timezone_names.c:439
+msgid "Etc/Universal"
+msgstr "Etc/ສາກົນ"
+
+#: src/timezone_names.c:440
+msgid "Etc/Zulu"
+msgstr "Etc/ຊູລູ"
+
+#: src/timezone_names.c:441
+msgid "Europe"
+msgstr "ເອີຣົບ"
+
+#: src/timezone_names.c:442
+msgid "Europe/Amsterdam"
+msgstr "ເອີຣົບ/ອຳສະເຕີຣ໌ດຳ"
+
+#: src/timezone_names.c:443
+msgid "Europe/Andorra"
+msgstr "ເອີຣົບ/ອັນດໍຣາ"
+
+#: src/timezone_names.c:444
+msgid "Europe/Athens"
+msgstr "ເອີຣົບ/ອາແຕນ"
+
+#: src/timezone_names.c:445
+msgid "Europe/Belfast"
+msgstr "ເອີຣົບ/ເບວຟາສຕ໌"
+
+#: src/timezone_names.c:446
+msgid "Europe/Belgrade"
+msgstr "ເອີຣົບ/ເບວເກຣດ"
+
+#: src/timezone_names.c:447
+msgid "Europe/Berlin"
+msgstr "ເອີຣົບ/ເບີລິນ"
+
+#: src/timezone_names.c:448
+msgid "Europe/Bratislava"
+msgstr "ເອີຣົບ/ບຣາຕິສລາວາ"
+
+#: src/timezone_names.c:449
+msgid "Europe/Brussels"
+msgstr "ເອີຣົບ/ບຣັດເຊວ"
+
+#: src/timezone_names.c:450
+msgid "Europe/Bucharest"
+msgstr "ເອີຣົບ/ບູຄາເຣສຕ໌"
+
+#: src/timezone_names.c:451
+msgid "Europe/Budapest"
+msgstr "ເອີຣົບ/ບູດາເປສຕ໌"
+
+#: src/timezone_names.c:452
+msgid "Europe/Busingen"
+msgstr "ເອີຣົບ/ບູຊິງເງັນ"
+
+#: src/timezone_names.c:453
+msgid "Europe/Chisinau"
+msgstr "ເອີຣົບ/ຊີຊີເນົາ"
+
+#: src/timezone_names.c:454
+msgid "Europe/Copenhagen"
+msgstr "ເອີຣົບ/ໂຄເປນຮາເກນ"
+
+#: src/timezone_names.c:455
+msgid "Europe/Dublin"
+msgstr "ເອີຣົບ/ດັບລິນ"
+
+#: src/timezone_names.c:456
+msgid "Europe/Gibraltar"
+msgstr "ເອີຣົບ/ຍິບຣໍຕາ"
+
+#: src/timezone_names.c:457
+msgid "Europe/Guernsey"
+msgstr "ເອີຣົບ/ເກີນຊີ"
+
+#: src/timezone_names.c:458
+msgid "Europe/Helsinki"
+msgstr "ເອີຣົບ/ເຮວຊິງກີ"
+
+#: src/timezone_names.c:459
+msgid "Europe/Isle_of_Man"
+msgstr "ເອີຣົບ/ໄອລ໌_ອັອຟ_ແມນ"
+
+#: src/timezone_names.c:460
+msgid "Europe/Istanbul"
+msgstr "ເອີຣົບ/ອິດສະຕັນບູລ"
+
+#: src/timezone_names.c:461
+msgid "Europe/Jersey"
+msgstr "ເອີຣົບ/ເຈີຊີ"
+
+#: src/timezone_names.c:462
+msgid "Europe/Kaliningrad"
+msgstr "ເອີຣົບ/ຄາລິນິນກຣາດ"
+
+#: src/timezone_names.c:463
+msgid "Europe/Kiev"
+msgstr "ເອີຣົບ/ກຽບ"
+
+#: src/timezone_names.c:464
+msgid "Europe/Lisbon"
+msgstr "ເອີຣົບ/ລິສບອນ"
+
+#: src/timezone_names.c:465
+msgid "Europe/Ljubljana"
+msgstr "ເອີຣົບ/ລູບລີອານາ"
+
+#: src/timezone_names.c:466
+msgid "Europe/London"
+msgstr "ເອີຣົບ/ລອນດອນ"
+
+#: src/timezone_names.c:467
+msgid "Europe/Luxembourg"
+msgstr "ເອີຣົບ/ລຸກຊຳບວກ"
+
+#: src/timezone_names.c:468
+msgid "Europe/Madrid"
+msgstr "ເອີຣົບ/ມາດຣິດ"
+
+#: src/timezone_names.c:469
+msgid "Europe/Malta"
+msgstr "ເອີຣົບ/ມອນຕາ"
+
+#: src/timezone_names.c:470
+msgid "Europe/Mariehamn"
+msgstr "ເອີຣົບ/ມາຣີຮາມ"
+
+#: src/timezone_names.c:471
+msgid "Europe/Minsk"
+msgstr "ເອີຣົບ/ມິນສ໌"
+
+#: src/timezone_names.c:472
+msgid "Europe/Monaco"
+msgstr "ເອີຣົບ/ໂມນາໂກ"
+
+#: src/timezone_names.c:473
+msgid "Europe/Moscow"
+msgstr "ເອີຣົບ/ມົສກູ"
+
+#: src/timezone_names.c:474
+msgid "Europe/Nicosia"
+msgstr "ເອີຣົບ/ນີໂກເຊຍ"
+
+#: src/timezone_names.c:475
+msgid "Europe/Oslo"
+msgstr "ເອີຣົບ/ອອສໂລ"
+
+#: src/timezone_names.c:476
+msgid "Europe/Paris"
+msgstr "ເອີຣົບ/ປາຣີ"
+
+#: src/timezone_names.c:477
+msgid "Europe/Podgorica"
+msgstr "ເອີຣົບ/ພອດກໍຣີກາ"
+
+#: src/timezone_names.c:478
+msgid "Europe/Prague"
+msgstr "ເອີຣົບ/ປຣາກ"
+
+#: src/timezone_names.c:479
+msgid "Europe/Riga"
+msgstr "ເອີຣົບ/ຣີກາ"
+
+#: src/timezone_names.c:480
+msgid "Europe/Rome"
+msgstr "ເອີຣົບ/ໂຣມ"
+
+#: src/timezone_names.c:481
+msgid "Europe/Samara"
+msgstr "ເອີຣົບ/ຊາມາຣາ"
+
+#: src/timezone_names.c:482
+msgid "Europe/San_Marino"
+msgstr "ເອີຣົບ/ຊານ_ມາຣີໂນ"
+
+#: src/timezone_names.c:483
+msgid "Europe/Sarajevo"
+msgstr "ເອີຣົບ/ຊາຣາເຢໂວ"
+
+#: src/timezone_names.c:484
+msgid "Europe/Simferopol"
+msgstr "ເອີຣົບ/ຊິມເຟໂຣໂພລ"
+
+#: src/timezone_names.c:485
+msgid "Europe/Skopje"
+msgstr "ເອີຣົບ/ສະກົບເຢ"
+
+#: src/timezone_names.c:486
+msgid "Europe/Sofia"
+msgstr "ເອີຣົບ/ໂຊເຟຍ"
+
+#: src/timezone_names.c:487
+msgid "Europe/Stockholm"
+msgstr "ເອີຣົບ/ສະຕັອກໂຮມ"
+
+#: src/timezone_names.c:488
+msgid "Europe/Tallinn"
+msgstr "ເອີຣົບ/ທັລລິນ"
+
+#: src/timezone_names.c:489
+msgid "Europe/Tirane"
+msgstr "ເອີຣົບ/ຕີຣານາ"
+
+#: src/timezone_names.c:490
+msgid "Europe/Tiraspol"
+msgstr "ເອີຣົບ/ຕີຣາສະໂພລ"
+
+#: src/timezone_names.c:491
+msgid "Europe/Uzhgorod"
+msgstr "ເອີຣົບ/ອຸດໂຮຣອດ"
+
+#: src/timezone_names.c:492
+msgid "Europe/Vaduz"
+msgstr "ເອີຣົບ/ວາດຸດຊ໌"
+
+#: src/timezone_names.c:493
+msgid "Europe/Vatican"
+msgstr "ເອີຣົບ/ວາຕິກັນ"
+
+#: src/timezone_names.c:494
+msgid "Europe/Vienna"
+msgstr "ເອີຣົບ/ວຽນນາ"
+
+#: src/timezone_names.c:495
+msgid "Europe/Vilnius"
+msgstr "ເອີຣົບ/ວິນນີອຸສ"
+
+#: src/timezone_names.c:496
+msgid "Europe/Volgograd"
+msgstr "ເອີຣົບ/ໂວນໂກກຣາດ"
+
+#: src/timezone_names.c:497
+msgid "Europe/Warsaw"
+msgstr "ເອີຣົບ/ວໍຊໍ"
+
+#: src/timezone_names.c:498
+msgid "Europe/Zagreb"
+msgstr "ເອີຣົບ/ຊາເກຣບ"
+
+#: src/timezone_names.c:499
+msgid "Europe/Zaporozhye"
+msgstr "ເອີຣົບ/ຊາໂປໂຣຊີ"
+
+#: src/timezone_names.c:500
+msgid "Europe/Zurich"
+msgstr "ເອີຣົບ/ຊູຣິກ"
+
+#: src/timezone_names.c:501
+msgid "Indian"
+msgstr "ມະຫາສະໝຸດອິນເດຍ"
+
+#: src/timezone_names.c:502
+msgid "Indian/Antananarivo"
+msgstr "ມະຫາສະໝຸດອິນເດຍ/ອັນຕານານາຣີໂວ"
+
+#: src/timezone_names.c:503
+msgid "Indian/Chagos"
+msgstr "ມະຫາສະໝຸດອິນເດຍ/ຊາກອສ"
+
+#: src/timezone_names.c:504
+msgid "Indian/Christmas"
+msgstr "ມະຫາສະໝຸດອິນເດຍ/ຄຣິດສະມາດ"
+
+#: src/timezone_names.c:505
+msgid "Indian/Cocos"
+msgstr "ມະຫາສະໝຸດອິນເດຍ/ໂຄໂຄສ"
+
+#: src/timezone_names.c:506
+msgid "Indian/Comoro"
+msgstr "ມະຫາສະໝຸດອິນເດຍ/ໂຄໂມໂຣ"
+
+#: src/timezone_names.c:507
+msgid "Indian/Kerguelen"
+msgstr "ມະຫາສະໝຸດອິນເດຍ/ເກີຣ໌ເກເລນ"
+
+#: src/timezone_names.c:508
+msgid "Indian/Mahe"
+msgstr "ມະຫາສະໝຸດອິນເດຍ/ມາເອ"
+
+#: src/timezone_names.c:509
+msgid "Indian/Maldives"
+msgstr "ມະຫາສະໝຸດອິນເດຍ/ມັລດີຟ"
+
+#: src/timezone_names.c:510
+msgid "Indian/Mauritius"
+msgstr "ມະຫາສະໝຸດອິນເດຍ/ມໍຣິຊຽສ"
+
+#: src/timezone_names.c:511
+msgid "Indian/Mayotte"
+msgstr "ມະຫາສະໝຸດອິນເດຍ/ມາຢອດ"
+
+#: src/timezone_names.c:512
+msgid "Indian/Reunion"
+msgstr "ມະຫາສະໝຸດອິນເດຍ/ເຣອູນີອົງ"
+
+#: src/timezone_names.c:513
+msgid "Mexico"
+msgstr "ເມັກຊິໂກ"
+
+#: src/timezone_names.c:514
+msgid "Mexico/BajaNorte"
+msgstr "ເມັກຊິໂກ/ບາຮານອດເຕ"
+
+#: src/timezone_names.c:515
+msgid "Mexico/BajaSur"
+msgstr "ເມັກຊິໂກ/ບາຮາຊູຣ໌"
+
+#: src/timezone_names.c:516
+msgid "Mexico/General"
+msgstr "ເມັກຊິໂກ/ທົ່ວໄປ"
+
+#: src/timezone_names.c:517
+msgid "Mideast"
+msgstr "ຕາເວັນອອກກາງ"
+
+#: src/timezone_names.c:518
+msgid "Mideast/Riyadh87"
+msgstr "ຕາເວັນອອກກາງ/ຣິຢາດ87"
+
+#: src/timezone_names.c:519
+msgid "Mideast/Riyadh88"
+msgstr "ຕາເວັນອອກກາງ/ຣິຢາດ88"
+
+#: src/timezone_names.c:520
+msgid "Mideast/Riyadh89"
+msgstr "ຕາເວັນອອກກາງ/ຣິຢາດ89"
+
+#: src/timezone_names.c:521
+msgid "Pacific"
+msgstr "ປາຊີຟິກ"
+
+#: src/timezone_names.c:522
+msgid "Pacific/Apia"
+msgstr "ປາຊີຟິກ/ອາປີອາ"
+
+#: src/timezone_names.c:523
+msgid "Pacific/Auckland"
+msgstr "ປາຊີຟິກ/ໂອກແລນ"
+
+#: src/timezone_names.c:524
+msgid "Pacific/Chatham"
+msgstr "ປາຊີຟິກ/ແຊທັມ"
+
+#: src/timezone_names.c:525
+msgid "Pacific/Chuuk"
+msgstr "ປາຊີຟິກ/ຊູກ"
+
+#: src/timezone_names.c:526
+msgid "Pacific/Easter"
+msgstr "ປາຊີຟິກ/ອິດສະເຕີຣ໌"
+
+#: src/timezone_names.c:527
+msgid "Pacific/Efate"
+msgstr "ປາຊີຟິກ/ເອຟາເຕ"
+
+#: src/timezone_names.c:528
+msgid "Pacific/Enderbury"
+msgstr "ປາຊີຟິກ/ເອັນເດີຣ໌ເບີຣີ"
+
+#: src/timezone_names.c:529
+msgid "Pacific/Fakaofo"
+msgstr "ປາຊີຟິກ/ຟາກາໂອໂຟ"
+
+#: src/timezone_names.c:530
+msgid "Pacific/Fiji"
+msgstr "ປາຊີຟິກ/ຟີຈິ"
+
+#: src/timezone_names.c:531
+msgid "Pacific/Funafuti"
+msgstr "ປາຊີຟິກ/ຟູນາຟູຕີ"
+
+#: src/timezone_names.c:532
+msgid "Pacific/Galapagos"
+msgstr "ປາຊີຟິກ/ກາລາປາໂກສ"
+
+#: src/timezone_names.c:533
+msgid "Pacific/Gambier"
+msgstr "ປາຊີຟິກ/ແກມບຽຣ໌"
+
+#: src/timezone_names.c:534
+msgid "Pacific/Guadalcanal"
+msgstr "ປາຊີຟິກ/ກົວດັລຄານັລ"
+
+#: src/timezone_names.c:535
+msgid "Pacific/Guam"
+msgstr "ປາຊີຟິກ/ກວາມ"
+
+#: src/timezone_names.c:536
+msgid "Pacific/Honolulu"
+msgstr "ປາຊີຟິກ/ໂຮໂນລູລູ"
+
+#: src/timezone_names.c:537
+msgid "Pacific/Johnston"
+msgstr "ປາຊີຟິກ/ຈອນສະຕັນ"
+
+#: src/timezone_names.c:538
+msgid "Pacific/Kiritimati"
+msgstr "ປາຊີຟິກ/ຄິຣິຕິມາຕິ"
+
+#: src/timezone_names.c:539
+msgid "Pacific/Kosrae"
+msgstr "ປາຊີຟິກ/ຄອດເຣ"
+
+#: src/timezone_names.c:540
+msgid "Pacific/Kwajalein"
+msgstr "ປາຊີຟິກ/ຄວາຈາເລນ"
+
+#: src/timezone_names.c:541
+msgid "Pacific/Majuro"
+msgstr "ປາຊີຟິກ/ມາຈູໂຣ"
+
+#: src/timezone_names.c:542
+msgid "Pacific/Marquesas"
+msgstr "ປາຊີຟິກ/ມາກິຊັສ"
+
+#: src/timezone_names.c:543
+msgid "Pacific/Midway"
+msgstr "ປາຊີຟິກ/ມິດເວ"
+
+#: src/timezone_names.c:544
+msgid "Pacific/Nauru"
+msgstr "ປາຊີຟິກ/ນາອູຣູ"
+
+#: src/timezone_names.c:545
+msgid "Pacific/Niue"
+msgstr "ປາຊີຟິກ/ນີອູເອ"
+
+#: src/timezone_names.c:546
+msgid "Pacific/Norfolk"
+msgstr "ປາຊີຟິກ/ນໍໂຟກ"
+
+#: src/timezone_names.c:547
+msgid "Pacific/Noumea"
+msgstr "ປາຊີຟິກ/ນູເມອາ"
+
+#: src/timezone_names.c:548
+msgid "Pacific/Pago_Pago"
+msgstr "ປາຊີຟິກ/ປາໂກ_ປາໂກ"
+
+#: src/timezone_names.c:549
+msgid "Pacific/Palau"
+msgstr "ປາຊີຟິກ/ປາເລົາ"
+
+#: src/timezone_names.c:550
+msgid "Pacific/Pitcairn"
+msgstr "ປາຊີຟິກ/ພິດແຄນ"
+
+#: src/timezone_names.c:551
+msgid "Pacific/Pohnpei"
+msgstr "ປາຊີຟິກ/ໂພນເພ"
+
+#: src/timezone_names.c:552
+msgid "Pacific/Ponape"
+msgstr "ປາຊີຟິກ/ໂພນາເພ"
+
+#: src/timezone_names.c:553
+msgid "Pacific/Port_Moresby"
+msgstr "ປາຊີຟິກ/ພອດ_ມໍສະບີ"
+
+#: src/timezone_names.c:554
+msgid "Pacific/Rarotonga"
+msgstr "ປາຊີຟິກ/ຣາໂຣໂຕງກາ"
+
+#: src/timezone_names.c:555
+msgid "Pacific/Saipan"
+msgstr "ປາຊີຟິກ/ໄຊປັນ"
+
+#: src/timezone_names.c:556
+msgid "Pacific/Samoa"
+msgstr "ປາຊີຟິກ/ຊາມົວ"
+
+#: src/timezone_names.c:557
+msgid "Pacific/Tahiti"
+msgstr "ປາຊີຟິກ/ຕາຮີຕີ"
+
+#: src/timezone_names.c:558
+msgid "Pacific/Tarawa"
+msgstr "ປາຊີຟິກ/ຕາຣາວາ"
+
+#: src/timezone_names.c:559
+msgid "Pacific/Tongatapu"
+msgstr "ປາຊີຟິກ/ຕົງກາຕາປູ"
+
+#: src/timezone_names.c:560
+msgid "Pacific/Truk"
+msgstr "ປາຊີຟິກ/ທຣຸກ"
+
+#: src/timezone_names.c:561
+msgid "Pacific/Wake"
+msgstr "ປາຊີຟິກ/ເວັກ"
+
+#: src/timezone_names.c:562
+msgid "Pacific/Wallis"
+msgstr "ປາຊີຟິກ/ວໍລິສ"
+
+#: src/timezone_names.c:563
+msgid "Pacific/Yap"
+msgstr "ປາຊີຟິກ/ຢັບ"
+
+#: src/timezone_names.c:564
+msgid "SystemV"
+msgstr "SystemV"
+
+#: src/timezone_names.c:565
+msgid "SystemV/AST4"
+msgstr "SystemV/AST4"
+
+#: src/timezone_names.c:566
+msgid "SystemV/AST4ADT"
+msgstr "SystemV/AST4ADT"
+
+#: src/timezone_names.c:567
+msgid "SystemV/CST6"
+msgstr "SystemV/CST6"
+
+#: src/timezone_names.c:568
+msgid "SystemV/CST6CDT"
+msgstr "SystemV/CST6CDT"
+
+#: src/timezone_names.c:569
+msgid "SystemV/EST5"
+msgstr "SystemV/EST5"
+
+#: src/timezone_names.c:570
+msgid "SystemV/EST5/EDT"
+msgstr "SystemV/EST5/EDT"
+
+#: src/timezone_names.c:571
+msgid "SystemV/HST10"
+msgstr "SystemV/HST10"
+
+#: src/timezone_names.c:572
+msgid "SystemV/MST7"
+msgstr "SystemV/MST7"
+
+#: src/timezone_names.c:573
+msgid "SystemV/MST7/MNT"
+msgstr "SystemV/MST7/MNT"
+
+#: src/timezone_names.c:574
+msgid "SystemV/PST8"
+msgstr "SystemV/PST8"
+
+#: src/timezone_names.c:575
+msgid "SystemV/PST8/PDT"
+msgstr "SystemV/PST8/PDT"
+
+#: src/timezone_names.c:576
+msgid "SystemV/YST9"
+msgstr "SystemV/YST9"
+
+#: src/timezone_names.c:577
+msgid "SystemV/YST9/YDT"
+msgstr "SystemV/YST9/YDT"
+
+#: src/timezone_names.c:578
+msgid "US"
+msgstr "ສະຫະລັດ"
+
+#: src/timezone_names.c:579
+msgid "US/Alaska"
+msgstr "ສະຫະລັດ/ອາລາສະກາ"
+
+#: src/timezone_names.c:580
+msgid "US/Aleutian"
+msgstr "ສະຫະລັດ/ອາລູຊຽນ"
+
+#: src/timezone_names.c:581
+msgid "US/Arizona"
+msgstr "ສະຫະລັດ/ອາຣິໂຊນາ"
+
+#: src/timezone_names.c:582
+msgid "US/Central"
+msgstr "ສະຫະລັດ/ກາງ"
+
+#: src/timezone_names.c:583
+msgid "US/Eastern"
+msgstr "ສະຫະລັດ/ຕາເວັນອອກ"
+
+#: src/timezone_names.c:584
+msgid "US/East-Indiana"
+msgstr "ສະຫະລັດ/ຕາເວັນອອກ-ອິນເດຍນາ"
+
+#: src/timezone_names.c:585
+msgid "US/Hawaii"
+msgstr "ສະຫະລັດ/ຮາວາຍ"
+
+#: src/timezone_names.c:586
+msgid "US/Indiana-Starke"
+msgstr "ສະຫະລັດ/ອິນເດຍນາ-ສະຕາກ"
+
+#: src/timezone_names.c:587
+msgid "US/Michigan"
+msgstr "ສະຫະລັດ/ມິຊິແກນ"
+
+#: src/timezone_names.c:588
+msgid "US/Mountain"
+msgstr "ສະຫະລັດ/ເຂດພູເຂົາ"
+
+#: src/timezone_names.c:589
+msgid "US/Pacific"
+msgstr "ສະຫະລັດ/ປາຊີຟິກ"
+
+#: src/timezone_names.c:590
+msgid "US/Pacific-New"
+msgstr "ສະຫະລັດ/ປາຊີຟິກ-ໃໝ່"
+
+#: src/timezone_names.c:591
+msgid "US/Samoa"
+msgstr "ສະຫະລັດ/ຊາມົວ"
+
+#: src/timezone_selection.c:143
+#, c-format
+msgid "%d hour %d mins"
+msgstr "%d ຊົ່ວໂມງ %d ນາທີ"
+
+#: src/timezone_selection.c:146
+#, c-format
+msgid "%d hour"
+msgstr "%d ຊົ່ວໂມງ"
+
+#: src/timezone_selection.c:148
+#, c-format
+msgid "%d mins"
+msgstr "%d ນາທີ"
+
+#: src/timezone_selection.c:154
+msgid "backward"
+msgstr "ຖອຍຫຼັງ"
+
+#: src/timezone_selection.c:157
+msgid "forward"
+msgstr "ໄປໜ້າ"
+
+#: src/timezone_selection.c:181
+msgid "not changed"
+msgstr "ບໍ່ມີການປ່ຽນແປງ"
+
+#: src/timezone_selection.c:182
+msgid "not changing"
+msgstr "ກຳລັງບໍ່ປ່ຽນແປງ"
+
+#: src/timezone_selection.c:241
+msgid "GMT Offset"
+msgstr "ສ່ວນຕ່າງເວລາ GMT"
+
+#: src/timezone_selection.c:247
+msgid "Previous/Next Change"
+msgstr "ການປ່ຽນແປງ ກ່ອນໜ້າ/ຖັດໄປ"
+
+#: src/timezone_selection.c:252
+msgid "Country"
+msgstr "ປະເທດ"
+
+#. We are actually setting the g_par parameter. In other words
+#. we are setting the global default timezone for Orage. This is
+#. done very seldom and we do not want to allow "floating" here.
+#. This test is ugly, but it is not worth an extra parameter.
+#. this is normal appointment
+#: src/timezone_selection.c:284 src/timezone_selection.c:293
+#: src/timezone_selection.c:304
+msgid "Pick timezone"
+msgstr "ເລືອກເຂດເວລາ"
+
+#: src/timezone_selection.c:287 src/timezone_selection.c:296
+#: src/timezone_selection.c:307
+msgid "Change mode"
+msgstr "ປ່ຽນໂໝດ"
+
+#: src/timezone_selection.c:288 src/timezone_selection.c:297
+#: src/timezone_selection.c:308 src/timezone_selection.c:347
+msgid "UTC"
+msgstr "UTC"
+
+#. NOTE: this exists only if ical timezones are being used
+#: src/timezone_selection.c:298 src/timezone_selection.c:352
+msgid "floating"
+msgstr "ບໍ່ຄົງທີ່ (floating)"
+
+#: src/tray_icon.c:394
+msgid "New appointment"
+msgstr "ນັດໝາຍໃໝ່"
+
+#: src/tray_icon.c:410
+msgid "Quit"
+msgstr "ອອກ"
+
+#: plugin/org.xfce.orage-settings.desktop.in:5
+msgid "Settings for the Xfce 4 Calendar Application (Orage)"
+msgstr "ການຕັ້ງຄ່າສຳລັບແອັບພລິເຄຊັນປະຕິທິນ Xfce 4 (Orage)"
+
+#: plugin/org.xfce.orage-settings.desktop.in:12
+msgid "Orage Calendar Preferences"
+msgstr "ການປັບແຕ່ງປະຕິທິນ Orage"
+
+#: plugin/org.xfce.orage-settings.desktop.in:14 org.xfce.orage.desktop.in:15
+msgid "calendar;date;schedule;appointment;time;"
+msgstr "ປະຕິທິນ;ວັນທີ;ຕາຕະລາງ;ນັດໝາຍ;ເວລາ;"
+
+#: org.xfce.orage.appdata.xml.in:11
+msgid ""
+"Orage aims to be a fast and easy to use graphical calendar. It uses portable"
+" ical format and includes common calendar features like repeating "
+"appointments and multiple alarming possibilities."
+msgstr ""
+"Orage ມີເປົ້າໝາຍເພື່ອເປັນປະຕິທິນແບບກຣາຟິກທີ່ໄວ ແລະ ໃຊ້ງານງ່າຍ. ມັນໃຊ້ຮູບແບບ "
+"ical ທີ່ສາມາດພົກພາໄດ້ ແລະ ລວມເອົາຄຸນສົມບັດປະຕິທິນທົ່ວໄປ ເຊັ່ນ "
+"ການນັດໝາຍແບບຊ້ຳຄືນ ແລະ ການແຈ້ງເຕືອນຫຼາຍຮູບແບບ."
+
+#: org.xfce.orage.appdata.xml.in:15
+msgid ""
+"Orage does not have group calendar features, but can only be used for single"
+" user. It takes a list of files for ical files that should be imported. "
+"Contents of those files are read and converted into Orage, but those files "
+"are left untouched."
+msgstr ""
+"Orage ບໍ່ມີຄຸນສົມບັດປະຕິທິນແບບກຸ່ມ, ແຕ່ສາມາດໃຊ້ໄດ້ສຳລັບຜູ້ໃຊ້ດຽວເທົ່ານັ້ນ. "
+"ມັນຮັບເອົາລາຍຊື່ໄຟລ໌ ical ທີ່ຄວນຈະຖືກນຳເຂົ້າ. "
+"ເນື້ອໃນຂອງໄຟລ໌ເຫຼົ່ານັ້ນຈະຖືກອ່ານ ແລະ ປ່ຽນເປັນຮູບແບບຂອງ Orage, "
+"ແຕ່ໄຟລ໌ຕົ້ນສະບັບ ຈະບໍ່ຖືກແກ້ໄຂແຕ່ຢ່າງໃດ."
+
+#: org.xfce.orage.appdata.xml.in:35
+msgid "Orage Team"
+msgstr "ທີມງານ Orage"
+
+#: org.xfce.orage.desktop.in:4
+msgid "Orage Calendar"
+msgstr "ປະຕິທິນ Orage"
+
+#: org.xfce.orage.desktop.in:5
+msgid "Desktop calendar"
+msgstr "ປະຕິທິນໜ້າຈໍ"
+
+#: org.xfce.orage.desktop.in:13
+msgid "Calendar"
+msgstr "ປະຕິທິນ"
+
+#: org.xfce.orage.desktop.in:18
+msgid "Show Today"
+msgstr "ສະແດງມື້ນີ້"
+
+#: org.xfce.orage.desktop.in:22
+msgid "New Appointment"
+msgstr "ການນັດໝາຍໃໝ່"
