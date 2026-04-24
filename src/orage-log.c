@@ -18,10 +18,6 @@
  *     Boston, MA 02110-1301 USA
  */
 
-/* Handles Orage debug logging. Greatly influenced by GNOME Calendar logging
- * and GLib logging.
- */
-
 #include "orage-log.h"
 
 #include <glib.h>
@@ -30,9 +26,9 @@
 
 #define LOG_STREAM stdout
 
-#define DEFAULT_LEVELS (G_LOG_LEVEL_ERROR | G_LOG_LEVEL_CRITICAL | G_LOG_LEVEL_WARNING | G_LOG_LEVEL_MESSAGE)
-#define INFO_LEVELS (G_LOG_LEVEL_INFO | G_LOG_LEVEL_DEBUG)
 #define ALERT_LEVELS (G_LOG_LEVEL_ERROR | G_LOG_LEVEL_CRITICAL | G_LOG_LEVEL_WARNING)
+#define DEFAULT_LEVELS (ALERT_LEVELS | G_LOG_LEVEL_MESSAGE)
+#define INFO_LEVELS (G_LOG_LEVEL_INFO | G_LOG_LEVEL_DEBUG)
 
 /* orage_log_domains is guaranteed to be non-NULL after init */
 static gchar *orage_log_domains;
@@ -412,7 +408,7 @@ static char *log_writer_format_fields_utf8 (GLogLevelFlags level,
 static GLogWriterOutput orage_log_writer (GLogLevelFlags level,
                                           const GLogField *fields,
                                           const gsize n_fields,
-                                          gpointer user_data)
+                                          G_GNUC_UNUSED gpointer user_data)
 {
     int fno;
     char *out;
@@ -438,21 +434,27 @@ static GLogWriterOutput orage_log_writer (GLogLevelFlags level,
 
 void orage_log_init (void)
 {
-    const gchar *env;
     static gsize initialized = FALSE;
 
     if (g_once_init_enter (&initialized))
     {
-        env = g_getenv ("G_MESSAGES_DEBUG");
-        if (env)
-            orage_log_domains = g_strdup (env);
-        else if (g_strcmp0 (g_getenv ("DEBUG_INVOCATION"), "1") == 0)
-            orage_log_domains = g_strdup ("all");
-        else
-            orage_log_domains = g_strdup ("");
+        orage_log_update_levels_from_env ();
 
         g_log_set_writer_func (orage_log_writer, NULL, NULL);
 
         g_once_init_leave (&initialized, TRUE);
     }
+}
+
+void orage_log_update_levels_from_env (void)
+{
+    const gchar *env;
+
+    env = g_getenv ("G_MESSAGES_DEBUG");
+    if (env)
+        orage_log_domains = g_strdup (env);
+    else if (g_strcmp0 (g_getenv ("DEBUG_INVOCATION"), "1") == 0)
+        orage_log_domains = g_strdup ("all");
+    else
+        orage_log_domains = g_strdup ("");
 }
