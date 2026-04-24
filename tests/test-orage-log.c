@@ -27,7 +27,6 @@ static gboolean test_log (const GLogLevelFlags level,
                           const gchar *debug_env,
                           const gchar *domain)
 {
-#if 0
     GLogField fields[1];
     gsize n_fields = 0;
 
@@ -46,7 +45,7 @@ static gboolean test_log (const GLogLevelFlags level,
         fields[0].length = -1;
         n_fields = 1;
     }
-
+#if 0
     return orage_log_is_message_enabled (level, fields, n_fields);
 #else
     return TRUE;
