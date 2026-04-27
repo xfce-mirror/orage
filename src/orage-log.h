@@ -70,6 +70,21 @@ void orage_log_init (void);
  */
 void orage_log_update_levels_from_env (void);
 
+/**
+ * orage_log_is_message_enabled:
+ * @level: log message severity level (GLogLevelFlags)
+ * @fields: structured log fields array
+ * @n_fields: number of elements in @fields
+ *
+ * Determines whether a log message should be emitted based on the current
+ * logging configuration.
+ *
+ * Returns: %TRUE if the message should be logged, %FALSE otherwise.
+ */
+gboolean orage_log_is_message_enabled (GLogLevelFlags level,
+                                       const GLogField *fields,
+                                       gsize n_fields);
+
 G_END_DECLS
 
 #endif

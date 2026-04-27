@@ -45,11 +45,8 @@ static gboolean test_log (const GLogLevelFlags level,
         fields[0].length = -1;
         n_fields = 1;
     }
-#if 0
+
     return orage_log_is_message_enabled (level, fields, n_fields);
-#else
-    return TRUE;
-#endif
 }
 
 static void test_default_levels (void)
@@ -73,7 +70,7 @@ static void test_domain_filter (void)
 {
     g_assert_true (test_log (G_LOG_LEVEL_INFO, "orage", "orage"));
     g_assert_false (test_log (G_LOG_LEVEL_INFO, "orage", "gtk"));
-    g_assert_false (test_log (G_LOG_LEVEL_DEBUG, "all", "orage"));
+    g_assert_true (test_log (G_LOG_LEVEL_DEBUG, "all", "orage"));
 }
 
 int main (int argc, char **argv)
