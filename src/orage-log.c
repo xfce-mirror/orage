@@ -458,3 +458,10 @@ void orage_log_update_levels_from_env (void)
     else
         orage_log_domains = g_strdup ("");
 }
+
+gboolean orage_log_is_message_enabled (const GLogLevelFlags level,
+                                       const GLogField *fields,
+                                       const gsize n_fields)
+{
+    return !should_drop_message (level, fields, n_fields);
+}
