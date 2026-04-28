@@ -81,46 +81,6 @@ static void get_message (const GLogField *field,
     *msg_len = (field->length < 0) ? strlen (*msg) : (gsize)field->length;
 }
 
-static gboolean should_drop_message (const GLogLevelFlags level,
-                                     const GLogField *fields,
-                                     const gsize n_fields)
-{
-    gsize i;
-    gsize domain_length;
-    const gchar *domain;
-
-    if (level & DEFAULT_LEVELS)
-        return FALSE;
-
-    if (g_log_get_debug_enabled ())
-        return FALSE;
-
-    if ((level & INFO_LEVELS) == 0)
-        return TRUE;
-
-    if (orage_log_domains == NULL)
-        return TRUE;
-
-    if (g_strcmp0 (orage_log_domains, "all") == 0)
-        return FALSE;
-
-    domain = NULL;
-    domain_length = 0;
-    for (i = 0; i < n_fields; i++)
-    {
-        if (g_strcmp0 (fields[i].key, "GLIB_DOMAIN") == 0)
-        {
-            get_message (&fields[i], &domain, &domain_length);
-            break;
-        }
-    }
-
-    if (domain == NULL)
-        return TRUE;
-
-    return (log_domain_is_enabled (domain, domain_length) == FALSE);
-}
-
 static const gchar *log_level_to_color (const GLogLevelFlags log_level,
                                         const gboolean use_color)
 {
@@ -416,7 +376,7 @@ static GLogWriterOutput orage_log_writer (GLogLevelFlags level,
     g_return_val_if_fail (fields != NULL, G_LOG_WRITER_UNHANDLED);
     g_return_val_if_fail (n_fields > 0, G_LOG_WRITER_UNHANDLED);
 
-    if (should_drop_message (level, fields, n_fields))
+    if (orage_log_is_message_enabled (level, fields, n_fields) == FALSE)
         return G_LOG_WRITER_HANDLED;
 
     fno = fileno (LOG_STREAM);
@@ -463,5 +423,38 @@ gboolean orage_log_is_message_enabled (const GLogLevelFlags level,
                                        const GLogField *fields,
                                        const gsize n_fields)
 {
-    return !should_drop_message (level, fields, n_fields);
+    gsize i;
+    gsize domain_length;
+    const gchar *domain;
+
+    if (level & DEFAULT_LEVELS)
+        return TRUE;
+
+    if (g_log_get_debug_enabled ())
+        return TRUE;
+
+    if ((level & INFO_LEVELS) == 0)
+        return FALSE;
+
+    if (orage_log_domains == NULL)
+        return FALSE;
+
+    if (g_strcmp0 (orage_log_domains, "all") == 0)
+        return TRUE;
+
+    domain = NULL;
+    domain_length = 0;
+    for (i = 0; i < n_fields; i++)
+    {
+        if (g_strcmp0 (fields[i].key, "GLIB_DOMAIN") == 0)
+        {
+            get_message (&fields[i], &domain, &domain_length);
+            break;
+        }
+    }
+
+    if (domain == NULL)
+        return FALSE;
+
+    return log_domain_is_enabled (domain, domain_length);
 }
