@@ -1,10 +1,10 @@
-4.21.1 (2026-03-05)
+4.21.1 (2026-04-29)
 =======
 - Added opening the new event dialog by double-clicking on the hour line in the
   day view window (MR !88, Issue #41).
 - Fixed first weekday calculation in the day view window (MR !88).
 - Clean up logging messages and correct logging levels (MR !86).
-- Added alternative logger backend (MR !85).
+- Added alternative logger backend (MR !85 and !90).
 - Reintroduced and improved the D-Bus interface for calendar file operations,
   including import and export support (MR !83).
 - Maintenance: cleaned up unused code, fixed some GTK deprecation warnings,
