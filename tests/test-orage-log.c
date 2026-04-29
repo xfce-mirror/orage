@@ -51,10 +51,10 @@ static gboolean test_log (const GLogLevelFlags level,
 
 static void test_default_levels (void)
 {
-    g_assert_true  (test_log (G_LOG_LEVEL_ERROR, NULL, NULL));
-    g_assert_true  (test_log (G_LOG_LEVEL_CRITICAL, NULL, NULL));
-    g_assert_true  (test_log (G_LOG_LEVEL_WARNING, NULL, NULL));
-    g_assert_true  (test_log (G_LOG_LEVEL_MESSAGE, NULL, NULL));
+    g_assert_true (test_log (G_LOG_LEVEL_ERROR, NULL, NULL));
+    g_assert_true (test_log (G_LOG_LEVEL_CRITICAL, NULL, NULL));
+    g_assert_true (test_log (G_LOG_LEVEL_WARNING, NULL, NULL));
+    g_assert_true (test_log (G_LOG_LEVEL_MESSAGE, NULL, NULL));
 
     g_assert_false (test_log (G_LOG_LEVEL_INFO, NULL, NULL));
     g_assert_false (test_log (G_LOG_LEVEL_DEBUG, NULL, NULL));
