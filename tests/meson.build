@@ -1,3 +1,12 @@
+test_orage_log = executable (
+    'test-orage-log',
+    'test-orage-log.c',
+    include_directories: include_directories('../src'),
+    dependencies: [glib, gtk],
+    link_with: [orage_lib],
+    install: false
+)
+
 test_orage_time_utils = executable (
     'test-orage-time-utils',
     'test-orage-time-utils.c',
@@ -7,4 +16,5 @@ test_orage_time_utils = executable (
     install: false
 )
 
+test('Orage log tests', test_orage_log)
 test('Orage time utils tests', test_orage_time_utils)

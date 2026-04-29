@@ -214,7 +214,7 @@ if get_option('debug') and get_option('tests')
   subdir('tests')
   build_tests=true
 else
-    build_tests=false
+  build_tests=false
 endif
 
 summary(
