@@ -4,7 +4,7 @@
   day view window (MR !88, Issue #41).
 - Fixed first weekday calculation in the day view window (MR !88).
 - Clean up logging messages and correct logging levels (MR !86).
-- Added alternative logger backend (MR !85 and !90).
+- Added alternative logger backend (MR !85 and !91).
 - Reintroduced and improved the D-Bus interface for calendar file operations,
   including import and export support (MR !83).
 - Maintenance: cleaned up unused code, fixed some GTK deprecation warnings,
