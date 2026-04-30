@@ -281,7 +281,7 @@ msgstr "외부 파일 추가에 실패했습니다"
 
 #: src/interface.c:725
 msgid "Orage can only handle 10 foreign files. Limit reached"
-msgstr ""
+msgstr "Orage는 외부 파일을 10개까지만 처리할 수 있습니다. 제한에 도달했습니다"
 
 #: src/interface.c:735
 msgid "Filename is empty."
@@ -524,22 +524,22 @@ msgstr ""
 
 #: src/orage-application.c:167
 msgid "Released under the terms of the GNU General Public License."
-msgstr ""
+msgstr "GNU 일반 공중 사용 허가서(GNU General Public License) 조건에 따라 배포됩니다."
 
 #: src/orage-application.c:169
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
-msgstr ""
+msgstr "GTK+-%d.%d.%d를 사용하여, GTK+-%d.%d.%d에 대해 컴파일됨."
 
 #: src/orage-application.c:174
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
-msgstr ""
+msgstr "libxfce4ui-%d.%d.%d를 사용하여, libxfce4ui-%d.%d.%d에 대해 컴파일됨."
 
 #: src/orage-application.c:180
 #, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
-msgstr ""
+msgstr "libnotify-%d.%d.%d에 대해 컴파일됨."
 
 #: src/orage-application.c:183
 msgid "Not using libnotify."
@@ -547,11 +547,11 @@ msgstr "libnotify를 사용하지 않습니다."
 
 #: src/orage-application.c:188
 msgid "Using automatic archiving."
-msgstr ""
+msgstr "자동 아카이빙을 사용합니다."
 
 #: src/orage-application.c:190
 msgid "Not using archiving."
-msgstr ""
+msgstr "아카이빙 기능을 사용하지 않습니다."
 
 #: src/orage-application.c:194
 #, c-format
@@ -592,7 +592,7 @@ msgstr "오라주 약속을 파일로 내보내기"
 
 #: src/orage-application.c:847
 msgid "Select logging backend (glib|orage)"
-msgstr ""
+msgstr "로깅 백엔드(glib|orage) 선택"
 
 #: src/orage-application.c:856
 msgid "Show version of Orage"
@@ -683,7 +683,7 @@ msgstr "현재 분류"
 
 #: src/orage-appointment-window.c:2421
 msgid "Add new category with color"
-msgstr "색을 지정해서 새로운 분류 더하기"
+msgstr "색을 지정해서 새로운 분류 추가하기"
 
 #: src/orage-appointment-window.c:2430
 msgid "Category:"
@@ -1283,7 +1283,7 @@ msgstr ""
 
 #: src/orage-appointment-window.c:4323
 msgid "Add excluded date (-)"
-msgstr "제외할 날짜 더하기 (-)"
+msgstr "제외할 날짜 추가하기 (-)"
 
 #: src/orage-appointment-window.c:4325
 msgid "Excluded days are full days where this appointment is not happening"
@@ -1291,7 +1291,7 @@ msgstr "아무 일정이 없는 날은 제외된 날입니다"
 
 #: src/orage-appointment-window.c:4332
 msgid "Add included time (+)"
-msgstr "포함할 시간 더하기 (+)"
+msgstr "포함할 시간 추가하기 (+)"
 
 #: src/orage-appointment-window.c:4334
 msgid ""
@@ -1306,7 +1306,7 @@ msgstr "실행 일자"
 
 #: src/orage-import.c:74
 msgid "Unsupported event type"
-msgstr ""
+msgstr "지원되지 않는 이벤트 유형"
 
 #: src/orage-import.c:106
 msgid "<b>Summary</b>"
@@ -4243,7 +4243,7 @@ msgstr "오라주 달력 기본 설정"
 
 #: plugin/org.xfce.orage-settings.desktop.in:14 org.xfce.orage.desktop.in:15
 msgid "calendar;date;schedule;appointment;time;"
-msgstr ""
+msgstr "calendar;date;schedule;appointment;time;캘린더;날자;스케쥴;시간;"
 
 #: org.xfce.orage.appdata.xml.in:11
 msgid ""
