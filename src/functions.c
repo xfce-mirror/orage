@@ -54,9 +54,9 @@
  **************************************/
 
 GtkWidget *orage_create_combo_box_with_content (const gchar *text[],
-                                                const int size)
+                                                const guint size)
 {
-    int i;
+    guint i;
     GtkWidget *combo_box;
 
     combo_box = gtk_combo_box_text_new ();
