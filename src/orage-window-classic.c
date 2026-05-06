@@ -450,7 +450,7 @@ static void add_info_row (xfical_appt *appt, GtkGrid *parentBox,
     if (appt->location)
     {
         tmp = g_markup_printf_escaped (FORMAT_BOLD, appt->location);
-        tip_location = g_strdup_printf (_(" Location: %s\n"), tmp);
+        tip_location = g_strdup_printf (" %s: %s\n", _("Location"), tmp);
         g_free (tmp);
     }
     else
@@ -463,7 +463,7 @@ static void add_info_row (xfical_appt *appt, GtkGrid *parentBox,
         tmp_note = orage_process_text_commands (appt->note);
         tmp_note = orage_limit_text (tmp_note, 50, 10);
         tmp = g_markup_escape_text (tmp_note, strlen (tmp_note));
-        tip_note = g_strdup_printf (_("\n Note:\n%s"), tmp);
+        tip_note = g_strdup_printf ("\n %s:\n%s", _("Note"), tmp);
         g_free (tmp);
     }
     else
@@ -478,17 +478,34 @@ static void add_info_row (xfical_appt *appt, GtkGrid *parentBox,
                                     : g_strdup (na);
         c_time = appt->completed && appt->completedtime ? orage_gdatetime_to_i18_time (appt->completedtime, appt->allDay)
                                                         : g_strdup (na);
-
-        tip = g_strdup_printf (
-            _("Title: %s\n%s Start:\t%s\n Due:\t%s\n Done:\t%s%s"),
-                               tip_title, tip_location, s_time, e_time, c_time, tip_note);
-
+        tip = g_strdup_printf ("%s: %s\n"
+                               "%s"
+                               " %s:\t%s\n"
+                               " %s:\t%s\n"
+                               " %s:\t%s"
+                               "%s",
+                               _("Title"), tip_title,
+                               tip_location,
+                               _("Start"), s_time,
+                               _("Due"), e_time,
+                               _("Done"), c_time,
+                               tip_note);
         g_free (c_time);
     }
     else
-    { /* it is event */
+    {
+        /* it is event */
         e_time = orage_gdatetime_to_i18_time (appt->endtimecur, appt->allDay);
-        tip = g_strdup_printf (_("Title: %s\n%s Start:\t%s\n End:\t%s%s"), tip_title, tip_location, s_time, e_time, tip_note);
+        tip = g_strdup_printf ("%s: %s\n"
+                               "%s"
+                               " %s:\t%s\n"
+                               " %s:\t%s"
+                               "%s",
+                               _("Title"), tip_title,
+                               tip_location,
+                               _("Start"), s_time,
+                               _("End"), e_time,
+                               tip_note);
     }
 
     gtk_widget_set_tooltip_markup (ev, tip);

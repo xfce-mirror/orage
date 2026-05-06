@@ -1011,7 +1011,7 @@ static void delete_appointment(el_win *el)
 #endif
 
     result = orage_warning_dialog(GTK_WINDOW(el->Window)
-            , _("You will permanently remove all\nselected appointments.")
+            , _("You will permanently remove all selected appointments.")
             , _("Do you want to continue?")
             , _("No, cancel the removal")
             , _("Yes, remove them"));
