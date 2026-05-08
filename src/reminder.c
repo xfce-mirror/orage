@@ -971,7 +971,7 @@ static void reset_orage_alarm_clock(void)
     }
 }
 
-/* refresh trayicon tooltip once per minute */
+/* Refresh trayicon tooltip once per minute. */
 static gboolean orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
 {
 #ifdef HAVE_X11_TRAY_ICON
@@ -979,12 +979,13 @@ static gboolean orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
     GList *alarm_l;
     alarm_struct *cur_alarm;
     gboolean more_alarms=TRUE;
-    GString *tooltip=NULL, *tooltip_highlight_helper=NULL;
+    GString *tooltip;
+    GString *formatted_title;
     gint alarm_cnt=0;
     gint tooltip_alarm_limit=5;
     gint hour, minute;
     gint dd, hh, min;
-    gchar *tmp;
+    gchar *title;
 
     if (!(g_par.trayIcon 
     && orage_status_icon_is_embedded ((GtkStatusIcon *)g_par.trayIcon))) {
@@ -992,9 +993,10 @@ static gboolean orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
         return(FALSE);
     }
     gdt = g_date_time_new_now_local ();
-    tooltip = g_string_new(_("Next active alarms:"));
-    g_string_prepend(tooltip, "<span foreground=\"blue\" weight=\"bold\" underline=\"single\">");
-    g_string_append(tooltip, " </span>");
+    tooltip = g_string_new ("");
+    g_string_append (tooltip, "<span foreground=\"blue\" weight=\"bold\" underline=\"single\">");
+    g_string_append (tooltip, _("Next active alarms:"));
+    g_string_append (tooltip, " </span>");
     /* Check if there are any alarms to show */
     for (alarm_l = g_list_first(g_par.alarm_list);
          alarm_l != NULL && more_alarms;
@@ -1016,24 +1018,29 @@ static gboolean orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
                 dd -= 1;
             }
 
-            g_string_append(tooltip, "<span weight=\"bold\">");
-            tooltip_highlight_helper = g_string_new(" </span>");
-            if (cur_alarm->temporary) { /* let's add a small mark */
-                g_string_append_c(tooltip_highlight_helper, '[');
-            }
-            tmp = cur_alarm->title 
-                ? g_markup_escape_text(cur_alarm->title
-                        , strlen(cur_alarm->title))
-                : g_strdup(_("No title defined"));
-            g_string_append_printf(tooltip_highlight_helper, "%s", tmp);
-            g_free(tmp);
-            if (cur_alarm->temporary) { /* let's add a small mark */
-                g_string_append_c(tooltip_highlight_helper, ']');
-            }
-            g_string_append_printf(tooltip, 
-                    _("\n%02d d %02d h %02d min to: %s"),
-                    dd, hh, min, tooltip_highlight_helper->str);
-            g_string_free(tooltip_highlight_helper, TRUE);
+            formatted_title = g_string_new ("");
+
+            if (cur_alarm->temporary)
+                g_string_append_c(formatted_title, '[');
+
+            title = cur_alarm->title ? g_markup_escape_text (cur_alarm->title,
+                                                             strlen (cur_alarm->title))
+                                     : g_strdup (_("No title defined"));
+            g_string_append (formatted_title, title);
+            g_free(title);
+            if (cur_alarm->temporary)
+                g_string_append_c(formatted_title, ']');
+
+            g_string_append (tooltip, "\n ");
+            /* TRANSLATORS: Tooltip showing remaining time until next alarm.
+             * %1$d = days, %2$d = hours, %3$d = minutes, %4$s = alarm title.
+             * Example: "01 d 05 h 30 min to: Meeting
+             */
+            g_string_append_printf (tooltip,
+                _("<span weight=\"bold\">%1$02d d %2$02d h %3$02d min to:</span> %4$s"),
+                dd, hh, min, formatted_title->str);
+
+            g_string_free(formatted_title, TRUE);
             alarm_cnt++;
         }
         else /* sorted so scan can be stopped */
@@ -1045,7 +1052,10 @@ static gboolean orage_tooltip_update (G_GNUC_UNUSED gpointer user_data)
     g_date_time_unref (gdt);
 
     if (alarm_cnt == 0)
-        g_string_append_printf(tooltip, _("\nNo active alarms found"));
+    {
+        g_string_append_c (tooltip, '\n');
+        g_string_append (tooltip, _("No active alarms found"));
+    }
 
     orage_status_icon_set_tooltip_markup ((GtkStatusIcon *)g_par.trayIcon, tooltip->str);
 
