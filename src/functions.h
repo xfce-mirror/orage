@@ -65,7 +65,7 @@ typedef enum
     OTBL_FILL = 1 << 2
 } OrageTableAttachOptions;
 
-GtkWidget *orage_create_combo_box_with_content(const gchar *text[], int size);
+GtkWidget *orage_create_combo_box_with_content(const gchar *text[], guint size);
 gboolean orage_date_button_clicked (GtkWidget *button, GtkWidget *win);
 gboolean orage_exec(const gchar *cmd, gboolean *cmd_active, GError **error);
 

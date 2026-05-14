@@ -138,13 +138,13 @@ static void orage_sync_edit_dialog_constructed (GObject *object)
     minute_label = create_label (_("minutes"));
 
     gtk_widget_set_tooltip_text (GTK_WIDGET (dialog->description_entry),
-        _("The name or description of this synchronization task"));
+        _("The name or description of this synchronization task."));
 
     gtk_widget_set_tooltip_text (GTK_WIDGET (dialog->command_entry),
-        _("Command for synchronization"));
+        _("Command for synchronization."));
 
     gtk_widget_set_tooltip_text (GTK_WIDGET (dialog->period_entry),
-        _("Synchronization period in minutes"));
+        _("Synchronization period in minutes."));
 
     gtk_box_pack_start (minute_box, GTK_WIDGET (dialog->period_entry),
                         FALSE, FALSE, 0);

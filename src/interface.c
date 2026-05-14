@@ -1070,8 +1070,11 @@ static void create_import_export_tab(intf_win *intf_w)
             , G_CALLBACK(imp_open_button_clicked), intf_w);
     g_signal_connect((gpointer)intf_w->iea_imp_save_button, "clicked"
             , G_CALLBACK(imp_save_button_clicked), intf_w);
-    gtk_widget_set_tooltip_text(intf_w->iea_imp_entry 
-            , _("Separate filenames with comma(,).\n NOTE: comma is not valid character in filenames for Orage."));
+
+    gtk_widget_set_tooltip_markup (intf_w->iea_imp_entry,
+    _("Separate filenames with commas.\n"
+      "\n"
+      "<b>Note:</b> Commas are not allowed in Orage filenames."));
 
     /***** export *****/
     vbox = gtk_grid_new ();
@@ -1161,11 +1164,15 @@ static void create_import_export_tab(intf_win *intf_w)
     g_signal_connect((gpointer)intf_w->iea_exp_add_id_rb, "clicked"
             , G_CALLBACK(exp_add_id_rb_clicked), intf_w);
 #ifdef HAVE_ARCHIVE
-    gtk_widget_set_tooltip_text(intf_w->iea_exp_add_all_rb
-            , _("Note that only main file appointments are read.\nArchived and Foreign events are not exported."));
+    gtk_widget_set_tooltip_markup (intf_w->iea_exp_add_all_rb,
+    _("Only events from the main calendar file are exported.\n"
+      "\n"
+      "<b>Note:</b> Archived and foreign events are not included."));
 #else
-    gtk_widget_set_tooltip_text(intf_w->iea_exp_add_all_rb
-            , _("Note that only main file appointments are read.\nForeign events are not exported."));
+    gtk_widget_set_tooltip_markup (intf_w->iea_exp_add_all_rb,
+    _("Only events from the main calendar file are exported.\n"
+      "\n"
+      "<b>Note:</b> Foreign events are not included."));
 #endif
     gtk_widget_set_tooltip_text(intf_w->iea_exp_add_id_rb
             , _("You can easily drag these from event-list window."));
@@ -1202,7 +1209,7 @@ static void create_import_export_tab(intf_win *intf_w)
     g_signal_connect((gpointer)intf_w->iea_arc_button1, "clicked"
             , G_CALLBACK(on_archive_button_clicked_cb), intf_w);
     gtk_widget_set_tooltip_text(intf_w->iea_arc_button1
-            , _("You can change archive threshold in parameters"));
+            , _("You can change archive threshold in parameters."));
 
     hbox = gtk_grid_new ();
     g_object_set (hbox, "margin-top", 5, "margin-bottom", 5, NULL);
@@ -1220,8 +1227,11 @@ static void create_import_export_tab(intf_win *intf_w)
 
     g_signal_connect((gpointer)intf_w->iea_arc_button2, "clicked"
             , G_CALLBACK(on_unarchive_button_clicked_cb), intf_w);
-    gtk_widget_set_tooltip_text(intf_w->iea_arc_button2
-            , _("Return all archived events into main orage file and remove arch file.\nThis is useful for example when doing export and moving orage\nappointments to another system."));
+
+    gtk_widget_set_tooltip_markup (intf_w->iea_arc_button2,
+    _("<b>Restore all archived events</b> into the main Orage file and remove the archive file.\n"
+      "\n"
+      "This is useful, for example, when exporting or moving Orage appointments to another system."));
 #endif
 }
 
@@ -1302,8 +1312,11 @@ static void create_orage_file_tab(intf_win *intf_w)
                                                 NULL);
     gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->orage_file_rename_rb,
                              NULL, GTK_POS_RIGHT, 1, 1);
-    gtk_widget_set_tooltip_text(intf_w->orage_file_rename_rb
-            , _("Orage internal file rename only.\nDoes not touch external filesystem at all.\nNew file must exist."));
+
+    gtk_widget_set_tooltip_markup (intf_w->orage_file_rename_rb,
+    _("<b>Internal Orage file rename only.</b>\n"
+      "\n"
+      "External filesystem is not modified. The new file must already exist."));
 
     intf_w->orage_file_copy_rb = 
             gtk_radio_button_new_with_mnemonic_from_widget(
@@ -1502,8 +1515,11 @@ static void create_foreign_file_tab(intf_win *intf_w)
     gtk_grid_attach_next_to (GTK_GRID (hbox), intf_w->for_new_read_only, NULL,
                              GTK_POS_RIGHT, 1, 1);
 
-    gtk_widget_set_tooltip_text(intf_w->for_new_read_only
-            , _("Set this if you want to make sure that this file is never modified by Orage.\nNote that modifying foreign files may make them incompatible with the original tool, where they came from!"));
+    gtk_widget_set_tooltip_markup (intf_w->for_new_read_only,
+    _("<b>Enable read-only mode</b> if you want to ensure that Orage never modifies this file.\n"
+      "\n"
+      "<b>Warning:</b> modifying foreign files may make them incompatible with the original application."));
+
     gtk_widget_set_tooltip_text(intf_w->for_new_name_entry
             , _("This internal name is displayed to user instead of file name."));
 

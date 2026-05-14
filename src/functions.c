@@ -54,9 +54,9 @@
  **************************************/
 
 GtkWidget *orage_create_combo_box_with_content (const gchar *text[],
-                                                const int size)
+                                                const guint size)
 {
-    int i;
+    guint i;
     GtkWidget *combo_box;
 
     combo_box = gtk_combo_box_text_new ();
@@ -757,21 +757,48 @@ gint orage_warning_dialog (GtkWindow *parent, const gchar *primary_text,
                                               const gchar *yes_text)
 {
     GtkWidget *dialog;
+    GtkWidget *message_area;
+    GList *children;
     gint result;
 
-    dialog = gtk_message_dialog_new(parent
-            , GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT
-            , GTK_MESSAGE_WARNING
-            , GTK_BUTTONS_NONE
-            , "%s", primary_text);
-    if (secondary_text) 
-        gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog)
-                , "%s", secondary_text);
-    gtk_dialog_add_buttons(GTK_DIALOG(dialog)
-            , no_text, GTK_RESPONSE_NO, yes_text, GTK_RESPONSE_YES, NULL);
-    result = gtk_dialog_run(GTK_DIALOG(dialog));
-    gtk_widget_destroy(dialog);
-    return(result);
+    dialog = gtk_message_dialog_new (parent,
+                                     GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+                                     GTK_MESSAGE_WARNING,
+                                     GTK_BUTTONS_NONE,
+                                     "%s", primary_text);
+
+    if (secondary_text)
+    {
+        gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
+                                                  "%s", secondary_text);
+    }
+
+#if 0
+    gtk_window_set_default_size (GTK_WINDOW (dialog), 100, -1);
+#endif
+
+    gtk_dialog_add_buttons (GTK_DIALOG (dialog),
+                            no_text, GTK_RESPONSE_NO,
+                            yes_text, GTK_RESPONSE_YES, NULL);
+
+    message_area = gtk_message_dialog_get_message_area (
+            GTK_MESSAGE_DIALOG (dialog));
+
+    children = gtk_container_get_children (GTK_CONTAINER (message_area));
+    for (GList *l = children; l != NULL; l = l->next)
+    {
+        if (GTK_IS_LABEL (l->data))
+        {
+            gtk_label_set_line_wrap (GTK_LABEL (l->data), TRUE);
+            gtk_label_set_max_width_chars (GTK_LABEL (l->data), 90);
+        }
+    }
+    g_list_free (children);
+
+    result = gtk_dialog_run (GTK_DIALOG (dialog));
+    gtk_widget_destroy (dialog);
+
+    return result;
 }
 
 void orage_error_dialog (GtkWindow *parent, const gchar *primary_text,

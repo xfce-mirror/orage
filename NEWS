@@ -1,5 +1,6 @@
-4.21.1 (2026-04-29)
+4.21.1 (2026-05-14)
 =======
+- Improved UI text consistency, tooltip formatting, and readability (MR !92).
 - Added opening the new event dialog by double-clicking on the hour line in the
   day view window (MR !88, Issue #41).
 - Fixed first weekday calculation in the day view window (MR !88).
@@ -11,7 +12,7 @@
   and removed unnecessary line breaks from translated messages (MR !81).
 
 4.20.3 (2025-03-26)
-======
+=======
 - Fixed use-after-free in sound command execution (Issues #47 and #48).
 
 4.21.0 (2025-10-20)

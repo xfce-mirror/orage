@@ -817,7 +817,7 @@ static void create_parameter_dialog_calendar_setup_tab(Itf *dialog)
     dialog->use_new_ui_checkbutton =
         gtk_check_button_new_with_mnemonic (_("Use new user interface"));
     gtk_widget_set_tooltip_text (dialog->use_new_ui_checkbutton,
-        _("Enable the new interface layout (requires restart)"));
+        _("Enable the new interface layout (requires restart)."));
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->use_new_ui_checkbutton),
                                   g_par.use_new_ui);
 
