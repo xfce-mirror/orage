@@ -711,7 +711,7 @@ static void create_orage_reminder(alarm_struct *l_alarm)
 
     btRecreateReminder = orage_util_image_button ("gtk-ok", _("Postpone"));
     gtk_widget_set_tooltip_text(btRecreateReminder
-            , _("Remind me again after the specified time"));
+            , _("Remind me again after the specified time."));
     gtk_dialog_add_action_widget(GTK_DIALOG(wReminder)
             , btRecreateReminder, GTK_RESPONSE_OK);
     g_signal_connect((gpointer) btRecreateReminder, "clicked"
