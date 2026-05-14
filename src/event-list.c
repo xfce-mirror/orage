@@ -1011,7 +1011,7 @@ static void delete_appointment(el_win *el)
 #endif
 
     result = orage_warning_dialog(GTK_WINDOW(el->Window)
-            , _("You will permanently remove all\nselected appointments.")
+            , _("You will permanently remove all selected appointments.")
             , _("Do you want to continue?")
             , _("No, cancel the removal")
             , _("Yes, remove them"));
@@ -1302,8 +1302,16 @@ static void build_event_tab(el_win *el)
     gtk_toggle_button_set_active(
             GTK_TOGGLE_BUTTON(el->event_only_first_checkbutton)
                     , el->only_first);
-    gtk_widget_set_tooltip_text(el->event_only_first_checkbutton
-            , _("Check this if you only want to see the first repeating event. By default all are shown.\nNote that this also shows all urgencies.\nNote that repeating events may appear earlier in the list as the first occurrence only is listed."));
+
+    gtk_widget_set_tooltip_markup (el->event_only_first_checkbutton,
+    _("Show only the <b>first occurrence</b> of repeating events.\n"
+      "By default, all occurrences are shown.\n"
+      "\n"
+      "<b>Note:</b>\n"
+      "- Urgencies are still shown for all events.\n"
+      "- Repeating events may appear earlier in the list because only the "
+      "first occurrence is displayed."));
+
     gtk_grid_attach_next_to (GTK_GRID (hbox), el->event_only_first_checkbutton,
                              NULL, GTK_POS_RIGHT, 1, 1);
 
@@ -1312,8 +1320,16 @@ static void build_event_tab(el_win *el)
     g_object_set (el->event_show_old_checkbutton, "margin-start", 15,
                                                   "margin-end", 15,
                                                   NULL);
-    gtk_widget_set_tooltip_text(el->event_show_old_checkbutton
-            , _("Check this if you want to see old events also. This can only be selected after 'only first repeating' is enabled to avoid very long lists.\nNote that extra days selection still defines if newer appointments are listed."));
+
+    gtk_widget_set_tooltip_markup (el->event_show_old_checkbutton,
+    _("Show old events in the list.\n"
+      "\n"
+      "This option is only available when <b>Only first repeating</b> "
+      "is enabled to avoid very long lists.\n"
+      "\n"
+      "<b>Note:</b> The extra days setting still controls how many future "
+      "appointments are shown."));
+
     gtk_toggle_button_set_active(
             GTK_TOGGLE_BUTTON(el->event_show_old_checkbutton), el->only_first);
     gtk_widget_set_sensitive(el->event_show_old_checkbutton, el->only_first);
@@ -1479,7 +1495,20 @@ static void build_event_list(el_win *el)
     gtk_tree_view_append_column(GTK_TREE_VIEW(el->TreeView), col);
     gtk_tree_view_column_set_visible(col, FALSE);
 
-    gtk_widget_set_tooltip_text(el->TreeView, _("Double click line to edit it.\n\nFlags in order:\n\t 1. Alarm: n=no alarm\n\t\t A=Alarm is set P=Persistent alarm is set\n\t 2. Recurrence: n=no recurrence\n\t\t H=Hourly D=Daily W=Weekly M=Monthly Y=Yearly\n\t 3. Type: f=free B=Busy\n\t 4. Located in file:\n\t\tO=Orage A=Archive F=Foreign\n\t 5. Appointment type:\n\t\tE=Event T=Todo J=Journal"));
+    gtk_widget_set_tooltip_markup (el->TreeView,
+    _("Double click line to edit it.\n"
+      "\n"
+      "<b>Flags in order:</b>\n"
+      "1. Alarm:\n"
+      "   n = no alarm, A = alarm is set, P = persistent alarm is set\n"
+      "2. Recurrence:\n"
+      "   n = no recurrence, H = hourly, D = daily, W = weekly, M = monthly, Y = yearly\n"
+      "3. Type:\n"
+      "   f = free, B = busy\n"
+      "4. Located in file:\n"
+      "   O = Orage, A = archive, F = foreign\n"
+      "5. Appointment type:\n"
+      "   E = event, T = todo, J = journal"));
 
     g_signal_connect(el->TreeView, "row-activated",
             G_CALLBACK(editEvent), el);
