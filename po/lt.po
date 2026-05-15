@@ -43,7 +43,7 @@ msgstr ""
 
 #: src/event-list.c:1014
 msgid "You will permanently remove all selected appointments."
-msgstr ""
+msgstr "Jūs visam laikui pašalinsite visus pasirinktus paskyrimus."
 
 #: src/event-list.c:1015 src/orage-appointment-window.c:982
 #: src/orage-appointment-window.c:1645 src/parameters.c:644
