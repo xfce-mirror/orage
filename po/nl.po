@@ -158,6 +158,12 @@ msgid ""
 "- Urgencies are still shown for all events.\n"
 "- Repeating events may appear earlier in the list because only the first occurrence is displayed."
 msgstr ""
+"Toon uitsluitend de <b>eerste gebeurtenis</b> van herhalende gebeurtenissen.\n"
+"Standaard worden alle gebeurtenissen getoond.\n"
+"\n"
+"<b>Let op:</b>\n"
+"- Urgenties worden nog steeds voor alle gebeurtenissen getoond.\n"
+"- Herhalende gebeurtenissen kunnen eerder in de lijst verschijnen wanneer alleen de eerste gebeurtenis wordt getoond."
 
 #: src/event-list.c:1319
 msgid "also old"
