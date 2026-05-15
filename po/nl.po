@@ -324,6 +324,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Commas are not allowed in Orage filenames."
 msgstr ""
+"Scheid bestandsnamen met komma's.\n"
+"\n"
+"<b>Let op:</b> Komma's zijn niet toegestaan in Orage-bestandsnamen."
 
 #: src/interface.c:1082
 msgid "Export"
@@ -351,6 +354,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Archived and foreign events are not included."
 msgstr ""
+"Alleen gebeurtenissen van de hoofdkalender worden geëxporteerd.\n"
+"\n"
+"<b>Let op:</b> Gearchiveerde en niet-eigen gebeurtenissen zijn niet opgenomen."
 
 #: src/interface.c:1173
 msgid ""
@@ -358,6 +364,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Foreign events are not included."
 msgstr ""
+"Alleen gebeurtenissen van de hoofdkalender worden geëxporteerd.\n"
+"\n"
+"<b>Let op:</b> Niet-eigen gebeurtenissen zijn niet opgenomen."
 
 #: src/interface.c:1178
 msgid "You can easily drag these from event-list window."
@@ -397,6 +406,9 @@ msgid ""
 "\n"
 "This is useful, for example, when exporting or moving Orage appointments to another system."
 msgstr ""
+"<b>Alle gearchiveerde gebeurtenissen terugzetten</b> in het hoofdbestand van Orage en het archiefbestand verwijderen. \n"
+"\n"
+"Dit is bijvoorbeeld nuttig bij het exporteren of verplaatsen van Orage-afspraken naar een ander systeem."
 
 #: src/interface.c:1246
 msgid "Orage files"
@@ -428,6 +440,9 @@ msgid ""
 "\n"
 "External filesystem is not modified. The new file must already exist."
 msgstr ""
+"<b>Alleen interne Orage-hernoeming van bestand.</b>\n"
+"\n"
+"Extern bestandssysteem wordt niet aangepast. Het nieuwe bestand moet reeds bestaan."
 
 #: src/interface.c:1323 src/interface.c:1418
 msgid "Copy"
@@ -910,6 +925,8 @@ msgid ""
 "<b>Recurrence is based on the start time.</b>\n"
 "The TODO repeats at regular intervals regardless of when it was last completed."
 msgstr ""
+"<b>Herhaling is gebaseerd op de begintijd.</b>Het agendapunt herhaalt zich "
+"op reguliere tussenpozen ongeacht wanneer dit voor het laatst werd voltooid."
 
 #: src/orage-appointment-window.c:3488
 msgid ""
@@ -918,6 +935,10 @@ msgid ""
 "\n"
 "<b>Note:</b> the TODO history cannot be determined because the recurrence base changes after each completion."
 msgstr ""
+"<b>Herhaling is gebaseerd op het tijdstip van voltooiing.</b>\n"
+"Het agendapunt herhaalt zich na de tussenpoze die begint na het laatste tijdstip van voltooiing.\n"
+"\n"
+"<b>Let op:</b> De agendapuntgeschiedenis kan niet worden vastgesteld aangezien de herhalingsbasis na elke voltooiing verandert."
 
 #: src/orage-appointment-window.c:3517
 msgid "Save"
@@ -953,6 +974,8 @@ msgid ""
 "<b>Event</b> that happens at a specific time.\n"
 "For example: meeting, birthday, or TV show."
 msgstr ""
+"<b>Gebeurtenis</b> die plaatsvindt op een vastgesteld tijdstip.\n"
+"Bijvoorbeeld: vergadering, verjaardag of TV-programma."
 
 #: src/orage-appointment-window.c:3576
 msgid ""
