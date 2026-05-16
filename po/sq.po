@@ -42,7 +42,7 @@ msgstr ""
 
 #: src/event-list.c:1014
 msgid "You will permanently remove all selected appointments."
-msgstr ""
+msgstr "Do të hiqni përgjithnjë krejt takimet e përzgjedhura."
 
 #: src/event-list.c:1015 src/orage-appointment-window.c:982
 #: src/orage-appointment-window.c:1645 src/parameters.c:644
@@ -158,6 +158,12 @@ msgid ""
 "- Urgencies are still shown for all events.\n"
 "- Repeating events may appear earlier in the list because only the first occurrence is displayed."
 msgstr ""
+"Shfaq vetëm <b>hasjen e parë</b> të veprimtarive që përsëriten.\n"
+"Si parazgjedhje, shfaqen krejt hasjet.\n"
+"\n"
+"<b>Shënim:</b>\n"
+"- Urgjencat prapë shfaqen për krejt veprimtaritë.\n"
+"- Veprimtaritë që përsëriten mund të shfaqen më herët në listë, ngaqë shfaqet vetëm hasja e parë."
 
 #: src/event-list.c:1319
 msgid "also old"
@@ -171,6 +177,11 @@ msgid ""
 "\n"
 "<b>Note:</b> The extra days setting still controls how many future appointments are shown."
 msgstr ""
+"Shfaq te lista veprimtari të vjetra.\n"
+"\n"
+"Kjo mundësi është e përdorshme vetëm kur është e aktivizuar <b>Vetëm përsëritjen e parë</b>, për të shmangur lista shumë të gjata.\n"
+"\n"
+"<b>Shënim:</b> Rregullimi për dita ekstra ende kontrollon sa takime të ardhshme shfaqen."
 
 #: src/event-list.c:1353 src/orage-appointment-window.c:3571
 #: src/orage-import.c:67
@@ -221,6 +232,19 @@ msgid ""
 "5. Appointment type:\n"
 "   E = event, T = todo, J = journal"
 msgstr ""
+"Që ta përpunoni, dyklikojeni rreshtin.\n"
+"\n"
+"<b>Flamurka, sipas radhës:</b>\n"
+"1. Alarm:\n"
+"   n = pa alarm, A = është ujdisur alarm, P = është ujdisur alarm që mbetet\n"
+"2. Përsëritje:\n"
+"   n = pa përsëritje, H = çdo orë, D = përditë, W = çdo javë, M = çdo muaj, Y = çdo vit\n"
+"3. Lloj:\n"
+"   f = I lirë, B = I zënë\n"
+"4. I gjendur në kartelë:\n"
+"   O = Orage, A = arkiv, F = të jashtme\n"
+"5. Lloj takimi:\n"
+"   E = veprimtari, T = për-t’u-bërë, J = ditar"
 
 #: src/ical-code.c:856
 msgid "Orage default alarm"
@@ -318,6 +342,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Commas are not allowed in Orage filenames."
 msgstr ""
+"Veçojini emrat e kartelave me presje.\n"
+"\n"
+"<b>Shënim:</b> Në emra kartelash Orage s’lejohen presje."
 
 #: src/interface.c:1082
 msgid "Export"
@@ -345,6 +372,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Archived and foreign events are not included."
 msgstr ""
+"Eksportohen vetëm veprimtari nga kartela kryesore e kalendarit.\n"
+"\n"
+"<b>Shënim:</b> S\"përfshihen veprimtari të arkivuara dhe të jashtme."
 
 #: src/interface.c:1173
 msgid ""
@@ -352,6 +382,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Foreign events are not included."
 msgstr ""
+"Eksportohen vetëm veprimtari nga kartela e kalendarit kryesor.\n"
+"\n"
+"<b>Shënim:</b> Veprimtaritë e jashtme nuk përfshihen."
 
 #: src/interface.c:1178
 msgid "You can easily drag these from event-list window."
@@ -377,7 +410,7 @@ msgstr "Arkivoji tani (prag: %d muaj)"
 
 #: src/interface.c:1212
 msgid "You can change archive threshold in parameters."
-msgstr ""
+msgstr "Pragun e arkivimit mund ta ndryshoni te parametrat."
 
 #: src/interface.c:1224
 msgid "Revert archive now"
@@ -389,6 +422,9 @@ msgid ""
 "\n"
 "This is useful, for example, when exporting or moving Orage appointments to another system."
 msgstr ""
+"<b>Rikthe krejt veprimtaritë e arkivuara</b> te kartela kryesore Orage dhe hiqe kartelën arkiv.\n"
+"\n"
+"Kjo është e dobishme, për shembull, kur eksportohen ose shpihen takime Orage në sistem tjetër."
 
 #: src/interface.c:1246
 msgid "Orage files"
@@ -420,6 +456,9 @@ msgid ""
 "\n"
 "External filesystem is not modified. The new file must already exist."
 msgstr ""
+"<b>Riemërtim vetëm kartelash të brendshme Orage.</b>\n"
+"\n"
+"Nuk ndryshohet sistem i jashtëm kartelash. Kartela e re duhet të ekzistojë tashmë."
 
 #: src/interface.c:1323 src/interface.c:1418
 msgid "Copy"
@@ -473,6 +512,9 @@ msgid ""
 "\n"
 "<b>Warning:</b> modifying foreign files may make them incompatible with the original application."
 msgstr ""
+"<b>Aktivizoni mënyrën vetëm-lexim</b>, nëse doni të garantohet se Orage s’e ndryshon kurrë këtë kartelë.\n"
+"\n"
+"<b>Kujdes:</b> ndryshimi i kartelave të jashtme mund t’i bëjë të papërputhshme me aplikacionin origjinal."
 
 #: src/interface.c:1524
 msgid "This internal name is displayed to user instead of file name."
@@ -900,6 +942,8 @@ msgid ""
 "<b>Recurrence is based on the start time.</b>\n"
 "The TODO repeats at regular intervals regardless of when it was last completed."
 msgstr ""
+"<b>Përsëritja bazohet në kohën e fillimit.</b>\n"
+"PËR-T’U-BËRË përsëritet në intervale të rregullt, pavarësisht se kur qe plotësuar herën e fundit."
 
 #: src/orage-appointment-window.c:3488
 msgid ""
@@ -908,6 +952,10 @@ msgid ""
 "\n"
 "<b>Note:</b> the TODO history cannot be determined because the recurrence base changes after each completion."
 msgstr ""
+"<b>Ripërsëritja bazohet në kohën e plotësimit.</b>\n"
+"PËR-T’U-BËRË përsëritet pas intervalit të matur nga koha e plotësimit të fundit.\n"
+"\n"
+"<b>Shënim:</b> historiku i PËR-T’U-BËRË s’mund të përcaktohet, ngaqë baza e ripërsëritjes ndryshon pas çdo plotësimi."
 
 #: src/orage-appointment-window.c:3517
 msgid "Save"
@@ -943,18 +991,24 @@ msgid ""
 "<b>Event</b> that happens at a specific time.\n"
 "For example: meeting, birthday, or TV show."
 msgstr ""
+"<b>Veprimtari</b> që ndodh në një kohë të caktuar\n"
+"Për shembull: takim, datëlindje, ose program televiziv."
 
 #: src/orage-appointment-window.c:3576
 msgid ""
 "<b>Task or reminder</b> that should be completed sometime.\n"
 "For example: wash your car or test a new version of Orage."
 msgstr ""
+"<b>Punë, ose kujtues</b> që duhet plotësuar në një farë kohe.\n"
+"Për shembull: lani makinën, ose provoni një version të ri të Orage-it."
 
 #: src/orage-appointment-window.c:3586
 msgid ""
 "<b>Journal entry</b> used to record something that happened.\n"
 "For example: your mother called or the first snow arrived."
 msgstr ""
+"<b>Zëra ditari</b> të përdorur për të regjistruar diçka që ndodhi.\n"
+"Për shembull: vjehrra mori në telefon, ose ra bora e parë."
 
 #. location
 #: src/orage-appointment-window.c:3599 src/orage-window-classic.c:453
@@ -969,7 +1023,7 @@ msgstr "Veprimtari për tërë ditën"
 
 #: src/orage-appointment-window.c:3630
 msgid "Set"
-msgstr ""
+msgstr "Ujdiseni"
 
 #: src/orage-appointment-window.c:3654
 msgid "Duration"
@@ -1019,7 +1073,7 @@ msgstr "_Ngjyrë"
 
 #: src/orage-appointment-window.c:3732
 msgid "Update colors for categories."
-msgstr ""
+msgstr "Përditëso ngjyra për kategori."
 
 #. priority
 #: src/orage-appointment-window.c:3738
@@ -1034,6 +1088,11 @@ msgid ""
 "<b>Alarms still trigger normally.</b>\n"
 "The default limit of 8 can be changed using an undocumented parameter."
 msgstr ""
+"<b>Përparësi 8 ose më sipër</b> e fsheh takimin te dritare listash.\n"
+"\n"
+"Kjo zvogëlon rrëmujën, por mund ta bëjë më të zorshme gjetjen e takimit.\n"
+"<b>Alarmet ende funksionojnë normalisht.</b>\n"
+"Kufiri parazgjedhje prej 8 mund të ndryshohet duke përdorur një parametër të padokumentuar."
 
 #. note
 #: src/orage-appointment-window.c:3754 src/orage-window-classic.c:466
@@ -1070,6 +1129,11 @@ msgid ""
 "- before a TODO ends\n"
 "- after a TODO starts"
 msgstr ""
+"<b>Mundësi kohe alarmi</b>\n"
+"Mund të vini alarme në veprim:\n"
+"- para se të nisë një veprimtari\n"
+"- para se të përfundojë një PËR-T’U-BËRË\n"
+"- pasi fillon një PËR-T’U-BËRË"
 
 #: src/orage-appointment-window.c:3904
 msgid "Persistent alarm"
@@ -1093,11 +1157,11 @@ msgstr "Përdore"
 
 #: src/orage-appointment-window.c:3927
 msgid "Select this if you want audible alarm."
-msgstr ""
+msgstr "Përzgjidheni këtë, nëse doni alarm të dëgjueshëm."
 
 #: src/orage-appointment-window.c:3932
 msgid "Sound command is not set."
-msgstr ""
+msgstr "S’është ujdisur urdhër tingulli."
 
 #: src/orage-appointment-window.c:3961
 msgid "Repeat alarm sound"
@@ -1118,7 +1182,7 @@ msgstr "Përdor dritare Orage-i"
 
 #: src/orage-appointment-window.c:4007
 msgid "Select this if you want Orage window alarm."
-msgstr ""
+msgstr "Përzgjidheni këtë, nëse doni alarm dritareje Orage."
 
 #: src/orage-appointment-window.c:4019
 msgid "Use notification"
@@ -1126,7 +1190,7 @@ msgstr "Përdor njoftim"
 
 #: src/orage-appointment-window.c:4021
 msgid "Select this if you want notification alarm."
-msgstr ""
+msgstr "Përzgjidheni këtë, nëse doni alarm njoftimesh."
 
 #: src/orage-appointment-window.c:4029
 msgid "Set timeout"
@@ -1134,7 +1198,7 @@ msgstr "Caktoni skadimin"
 
 #: src/orage-appointment-window.c:4031
 msgid "Select this if you want notification to expire automatically."
-msgstr ""
+msgstr "Përzgjidheni këtë, nëse doni që njoftimi të skadojë vetvetiu."
 
 #: src/orage-appointment-window.c:4042
 msgid "0 = system default expiration time"
@@ -1151,7 +1215,7 @@ msgstr "Procedurë"
 
 #: src/orage-appointment-window.c:4066
 msgid "Select this if you want procedure or script alarm."
-msgstr ""
+msgstr "Përzgjidheni këtë nëse doni alarm procedure apo programthi."
 
 #: src/orage-appointment-window.c:4078
 msgid ""
@@ -1165,10 +1229,19 @@ msgid ""
 "- &lt;&amp;ST&gt; appointment start time\n"
 "- &lt;&amp;ET&gt; appointment end time"
 msgstr ""
+"<b>Përpunim urdhrash shelli</b>\n"
+"Ky varg i jepet shellit drejtpërsëdrejti, ndaj duhet të bëni vetë, dorazi, krejt paraprirjet.\n"
+"\n"
+"Vendmbajtëset vijuese zëvendësohet gjatë ekzekutimit:\n"
+"- &lt;&amp;T&gt;  titull takimi\n"
+"- &lt;&amp;D&gt;  përshkrim takimi\n"
+"- &lt;&amp;AT&gt; kohë alarm\n"
+"- &lt;&amp;ST&gt; kohë fillim takimi\n"
+"- &lt;&amp;ET&gt; kohë përfundimi takimi"
 
 #: src/orage-appointment-window.c:4102
 msgid "Test this alarm by raising it now."
-msgstr ""
+msgstr "Testojeni këtë alarm duke e vënë në punë tani"
 
 #: src/orage-appointment-window.c:4115
 msgid "<b>Default alarm</b>"
@@ -1176,7 +1249,7 @@ msgstr "<b>Alarm parazgjedhje</b>"
 
 #: src/orage-appointment-window.c:4130
 msgid "Store current settings as default alarm."
-msgstr ""
+msgstr "Depozitoji rregullimet si alarm parazgjedhje."
 
 #: src/orage-appointment-window.c:4132
 msgid "_Revert"
@@ -1184,7 +1257,7 @@ msgstr "_Prapaktheje"
 
 #: src/orage-appointment-window.c:4141
 msgid "Set current settings from default alarm."
-msgstr ""
+msgstr "Ujdisi rregullimet e tanishme që nga alarmi parazgjedhje."
 
 #: src/orage-appointment-window.c:4206
 msgid "None"
@@ -1241,6 +1314,10 @@ msgid ""
 "An exception can be either exclusion (-) or inclusion (+), depending on selection.\n"
 "Remove by clicking the date."
 msgstr ""
+"<b>Data përjashtimesh</b>\n"
+"Shtoni data përjashtimesh duke klikuar ditë në kalendarin më poshtë.\n"
+"Një përjashtim mund të jetë një lënie jashtë (-), ose përfshirje (+), varet nga përzgjedhja.\n"
+"Hiqeni duke klikuar datën."
 
 #: src/orage-appointment-window.c:4324
 msgid "Add excluded date (-)"
@@ -1249,6 +1326,7 @@ msgstr "Shtoni datë të përjashtuar date (-)"
 #: src/orage-appointment-window.c:4326
 msgid "Excluded days are full days where this appointment is not happening."
 msgstr ""
+"Ditë të përjashtuara janë ditë të plota në të cilat ky takim nuk ndodh."
 
 #: src/orage-appointment-window.c:4333
 msgid "Add included time (+)"
@@ -1259,6 +1337,8 @@ msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time."
 msgstr ""
+"Kohët e përfshira kanë të njëjtën zonë kohore me kohën e fillimit, por mund "
+"të kenë kohë të ndryshme."
 
 #. calendars showing the action days
 #: src/orage-appointment-window.c:4354
@@ -1352,15 +1432,15 @@ msgstr "minutash"
 
 #: src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task."
-msgstr ""
+msgstr "Emri ose përshkrimi i këtij akti njëkohësimi."
 
 #: src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization."
-msgstr ""
+msgstr "Urdhër për njëkohësimet"
 
 #: src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes."
-msgstr ""
+msgstr "Periudhë njëkohësimi në minuta."
 
 #: src/orage-sync-edit-dialog.c:166 src/parameters.c:1430 src/reminder.c:696
 msgid "_Close"
@@ -1598,7 +1678,7 @@ msgstr "Përdor ndërfaqe të re përdoruesi"
 
 #: src/parameters.c:820
 msgid "Enable the new interface layout (requires restart)."
-msgstr ""
+msgstr "Aktivizo skemë ndërfaqeje të re (lyp rinisje)."
 
 #: src/parameters.c:825
 msgid "Show borders"
@@ -1817,7 +1897,7 @@ msgstr "Shtyjeni"
 
 #: src/reminder.c:714
 msgid "Remind me again after the specified time."
-msgstr ""
+msgstr "Kujtoma sërish pas kohës së treguar."
 
 #: src/reminder.c:998
 msgid "Next active alarms:"
@@ -1826,11 +1906,11 @@ msgstr "Alarmet pasues aktive:"
 #: src/reminder.c:1040
 #, c-format
 msgid "<span weight=\"bold\">%1$02d d %2$02d h %3$02d min to:</span> %4$s"
-msgstr ""
+msgstr "<span weight=\"bold\">%1$02d d %2$02d h %3$02d m për:</span> %4$s"
 
 #: src/reminder.c:1057
 msgid "No active alarms found"
-msgstr ""
+msgstr "S’u gjetën alarme aktive"
 
 #: src/timezone_names.c:31
 msgid "Africa"
