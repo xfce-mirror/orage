@@ -43,7 +43,7 @@ msgstr "Clicar sus una linha per la seleccionar, puèi poiretz la copiar."
 
 #: src/event-list.c:1014
 msgid "You will permanently remove all selected appointments."
-msgstr ""
+msgstr "Suprimiretz definitivament totes los rendètz-vos seleccionats."
 
 #: src/event-list.c:1015 src/orage-appointment-window.c:982
 #: src/orage-appointment-window.c:1645 src/parameters.c:644
@@ -378,7 +378,7 @@ msgstr "Archivar ara (sulhet d'archivatge : %d meses)"
 
 #: src/interface.c:1212
 msgid "You can change archive threshold in parameters."
-msgstr ""
+msgstr "Podètz modificar lo sulhet d’archivatge dins los paramètres."
 
 #: src/interface.c:1224
 msgid "Revert archive now"
@@ -1020,7 +1020,7 @@ msgstr "_Color"
 
 #: src/orage-appointment-window.c:3732
 msgid "Update colors for categories."
-msgstr ""
+msgstr "Actualizar las colors per las categorias."
 
 #. priority
 #: src/orage-appointment-window.c:3738
@@ -1357,11 +1357,11 @@ msgstr ""
 
 #: src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization."
-msgstr ""
+msgstr "Comanda per la sincronizacion."
 
 #: src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes."
-msgstr ""
+msgstr "Interval de sincronizacion en minutas."
 
 #: src/orage-sync-edit-dialog.c:166 src/parameters.c:1430 src/reminder.c:696
 msgid "_Close"
