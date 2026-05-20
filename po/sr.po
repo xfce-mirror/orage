@@ -42,7 +42,7 @@ msgstr "Кликните на ред да га изаберете и након 
 
 #: src/event-list.c:1014
 msgid "You will permanently remove all selected appointments."
-msgstr ""
+msgstr "Трајно ћете уклонити све означене састанке."
 
 #: src/event-list.c:1015 src/orage-appointment-window.c:982
 #: src/orage-appointment-window.c:1645 src/parameters.c:644
@@ -158,6 +158,12 @@ msgid ""
 "- Urgencies are still shown for all events.\n"
 "- Repeating events may appear earlier in the list because only the first occurrence is displayed."
 msgstr ""
+"Приказуј само <b>прву појаву </b>понављајућих догађаја.\n"
+"Подразумевано, све појаве се приказују.\n"
+"\n"
+"<b>Примедба: </b> \n"
+" - Хитни догађаји се и даље приказују за све догађаје.\n"
+" - Понављајући догађаји се могу приказати раније у списку јер се само прва појава приказује."
 
 #: src/event-list.c:1319
 msgid "also old"
@@ -171,6 +177,11 @@ msgid ""
 "\n"
 "<b>Note:</b> The extra days setting still controls how many future appointments are shown."
 msgstr ""
+"Приказуј старе догађаје на списку.\n"
+"\n"
+"Ова могућност је само доступна када је <b> само прво понављање </b>омогућено ради избегавања врло дугих спискова.\n"
+"\n"
+"<b>Примедба: </b>Поставке додатних дана ипак управљају колико будућих састанака се приказује."
 
 #: src/event-list.c:1353 src/orage-appointment-window.c:3571
 #: src/orage-import.c:67
