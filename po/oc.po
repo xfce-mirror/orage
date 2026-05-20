@@ -159,6 +159,12 @@ msgid ""
 "- Urgencies are still shown for all events.\n"
 "- Repeating events may appear earlier in the list because only the first occurrence is displayed."
 msgstr ""
+"Mostrar solament <b>la primièra ocuréncia</b> dels eveniments repetitius.\n"
+"Par defaut son afichadas totas las ocuréncias.\n"
+"\n"
+"<b>Nòta :</b>\n"
+"- Las urgéncias son totjorn afichadas per totes los eveniments.\n"
+"- Los eveniments repetitius se pòdon mostrar mai d'ora dins la lista perque s'aficha solament la primièra ocuréncia."
 
 #: src/event-list.c:1319
 msgid "also old"
@@ -172,6 +178,11 @@ msgid ""
 "\n"
 "<b>Note:</b> The extra days setting still controls how many future appointments are shown."
 msgstr ""
+"Mostrar los eveniments passats dins la lista.\n"
+"\n"
+"Aquesta opcion es solament disponibla quand <b>Solament la primièra repeticion</b> es activada per evitar de longassas listas.\n"
+"\n"
+"<b>Nòta :</b> lo paramètre de jorns suplementaris contraròtla encara la manièra d'afichar los rendètz-vos futurs."
 
 #: src/event-list.c:1353 src/orage-appointment-window.c:3571
 #: src/orage-import.c:67
@@ -222,6 +233,18 @@ msgid ""
 "5. Appointment type:\n"
 "   E = event, T = todo, J = journal"
 msgstr ""
+"Doble-clicar sus la linha per l'editar.\n"
+"\n"
+"<b>Drapèls dins l'òrdre :</b>\n"
+"\t 1. Alarma : n = pas d'alarma\n"
+"\t\t A = Alarma es definida P = Alarma persistenta es definida\n"
+"\t 2. Repeticion : n = pas de repeticion\n"
+"\t\t H = Orari D =  Quotidian W = Setmanièr M = Mesadièr Y  = Annadièr\n"
+"\t 3. Tipe : f = Liure B = Ocupat\n"
+"\t 4. Localizat dins lo fichièr :\n"
+"\t \tO = Orage A = Archiu F = Estrangièr\n"
+"\t 5. Tipe de rendètz-vos:\n"
+"\t\tE = Eveniment T = Todo J = Jornal"
 
 #: src/ical-code.c:856
 msgid "Orage default alarm"
@@ -319,6 +342,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Commas are not allowed in Orage filenames."
 msgstr ""
+"Noms de fichièr separats per de virgulas.\n"
+"\n"
+"<b>Nòta :</b>las virgulas son pas permesas dins los noms de fichièrs Orage."
 
 #: src/interface.c:1082
 msgid "Export"
@@ -346,6 +372,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Archived and foreign events are not included."
 msgstr ""
+"S'expòrtan solament los eveniments de l'agenda principal.\n"
+"\n"
+"<b>Nòta :</b> los archius e eveniments estrangièrs son pas incluses."
 
 #: src/interface.c:1173
 msgid ""
@@ -1094,11 +1123,11 @@ msgstr "Utilizar"
 
 #: src/orage-appointment-window.c:3927
 msgid "Select this if you want audible alarm."
-msgstr ""
+msgstr "Seleccionatz aquò se volètz una alarma audibla."
 
 #: src/orage-appointment-window.c:3932
 msgid "Sound command is not set."
-msgstr ""
+msgstr "La comanda de son es pas definida."
 
 #: src/orage-appointment-window.c:3961
 msgid "Repeat alarm sound"
@@ -1119,7 +1148,7 @@ msgstr "Utilizar la fenèstra d'Orage"
 
 #: src/orage-appointment-window.c:4007
 msgid "Select this if you want Orage window alarm."
-msgstr ""
+msgstr "Seleccionatz aquò se volètz una alarma de fenèstra Orage."
 
 #: src/orage-appointment-window.c:4019
 msgid "Use notification"
@@ -1127,7 +1156,7 @@ msgstr "Utilizar la notificacion"
 
 #: src/orage-appointment-window.c:4021
 msgid "Select this if you want notification alarm."
-msgstr ""
+msgstr "Seleccionatz aquò se volètz una alarma en notificacion."
 
 #: src/orage-appointment-window.c:4029
 msgid "Set timeout"
@@ -1136,6 +1165,7 @@ msgstr "Definir lo relambi"
 #: src/orage-appointment-window.c:4031
 msgid "Select this if you want notification to expire automatically."
 msgstr ""
+"Seleccionatz aquò se volètz que la notificacion expire automaticament."
 
 #: src/orage-appointment-window.c:4042
 msgid "0 = system default expiration time"
@@ -1152,7 +1182,7 @@ msgstr "Procedura"
 
 #: src/orage-appointment-window.c:4066
 msgid "Select this if you want procedure or script alarm."
-msgstr ""
+msgstr "Seleccionatz aquò se volètz una alarma en procedura o escript."
 
 #: src/orage-appointment-window.c:4078
 msgid ""
@@ -1169,7 +1199,7 @@ msgstr ""
 
 #: src/orage-appointment-window.c:4102
 msgid "Test this alarm by raising it now."
-msgstr ""
+msgstr "Provar aquesta alarma en l'amodant ara."
 
 #: src/orage-appointment-window.c:4115
 msgid "<b>Default alarm</b>"
@@ -1177,7 +1207,7 @@ msgstr "<b>Alarma per defaut</b>"
 
 #: src/orage-appointment-window.c:4130
 msgid "Store current settings as default alarm."
-msgstr ""
+msgstr "Gardar los paramètres actuals coma alarma per defaut."
 
 #: src/orage-appointment-window.c:4132
 msgid "_Revert"
@@ -1185,7 +1215,7 @@ msgstr "_Restablir"
 
 #: src/orage-appointment-window.c:4141
 msgid "Set current settings from default alarm."
-msgstr ""
+msgstr "Definir los paramètres actuals coma alarma per defaut."
 
 #: src/orage-appointment-window.c:4206
 msgid "None"
@@ -1353,7 +1383,7 @@ msgstr "minutas"
 
 #: src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task."
-msgstr ""
+msgstr "Lo nom o la descripcion d'aqueste prètzfait de sincronizacion."
 
 #: src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization."
@@ -1601,7 +1631,7 @@ msgstr "Interfàcia utilizaire novèla"
 
 #: src/parameters.c:820
 msgid "Enable the new interface layout (requires restart)."
-msgstr ""
+msgstr "Activar l'agençament d'interfàcia novèl (reaviada requerida)."
 
 #: src/parameters.c:825
 msgid "Show borders"
@@ -1821,7 +1851,7 @@ msgstr "Raportar"
 
 #: src/reminder.c:714
 msgid "Remind me again after the specified time."
-msgstr ""
+msgstr "Rapelatz-lo-me aprèp lo relambi especificat."
 
 #: src/reminder.c:998
 msgid "Next active alarms:"
@@ -1830,11 +1860,11 @@ msgstr "Alarmas activas que venon :"
 #: src/reminder.c:1040
 #, c-format
 msgid "<span weight=\"bold\">%1$02d d %2$02d h %3$02d min to:</span> %4$s"
-msgstr ""
+msgstr "<span weight=\"bold\">%1$02d d %2$02d h %3$02d min. a :</span> %4$s"
 
 #: src/reminder.c:1057
 msgid "No active alarms found"
-msgstr ""
+msgstr "Cap d'alarma activa pas trobada"
 
 #: src/timezone_names.c:31
 msgid "Africa"
