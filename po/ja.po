@@ -44,7 +44,7 @@ msgstr "行をクリックして選択した後にコピーできます。"
 
 #: src/event-list.c:1014
 msgid "You will permanently remove all selected appointments."
-msgstr ""
+msgstr "選択したすべての予定を完全に削除します。"
 
 #: src/event-list.c:1015 src/orage-appointment-window.c:982
 #: src/orage-appointment-window.c:1645 src/parameters.c:644
@@ -160,6 +160,12 @@ msgid ""
 "- Urgencies are still shown for all events.\n"
 "- Repeating events may appear earlier in the list because only the first occurrence is displayed."
 msgstr ""
+"繰り返し発生するイベントのうち、<b>最初の発生分</b>のみを表示します。\n"
+"デフォルトでは、すべての発生分が表示されます。\n"
+"\n"
+"<b>注意:</b>\n"
+"- すべてのイベントの緊急度は引き続き表示されます。\n"
+"- 最初の発生分のみが表示されるため、繰り返し発生するイベントがリストの上位に表示される場合があります。"
 
 #: src/event-list.c:1319
 msgid "also old"
@@ -1086,11 +1092,11 @@ msgstr "使用する"
 
 #: src/orage-appointment-window.c:3927
 msgid "Select this if you want audible alarm."
-msgstr ""
+msgstr "音声アラームが必要な場合はこちらを選択してください。"
 
 #: src/orage-appointment-window.c:3932
 msgid "Sound command is not set."
-msgstr ""
+msgstr "サウンドコマンドが設定されていません。"
 
 #: src/orage-appointment-window.c:3961
 msgid "Repeat alarm sound"
@@ -1111,7 +1117,7 @@ msgstr "Orage ウィンドウを使用する"
 
 #: src/orage-appointment-window.c:4007
 msgid "Select this if you want Orage window alarm."
-msgstr ""
+msgstr "Orage のウィンドウアラームが必要な場合はこちらを選択してください。"
 
 #: src/orage-appointment-window.c:4019
 msgid "Use notification"
@@ -1119,7 +1125,7 @@ msgstr "デスクトップ通知を使用する"
 
 #: src/orage-appointment-window.c:4021
 msgid "Select this if you want notification alarm."
-msgstr ""
+msgstr "通知アラームが必要な場合はこちらを選択してください。"
 
 #: src/orage-appointment-window.c:4029
 msgid "Set timeout"
@@ -1127,7 +1133,7 @@ msgstr "タイムアウト設定"
 
 #: src/orage-appointment-window.c:4031
 msgid "Select this if you want notification to expire automatically."
-msgstr ""
+msgstr "通知を自動的に期限切れにしたい場合はこちらを選択してください。"
 
 #: src/orage-appointment-window.c:4042
 msgid "0 = system default expiration time"
@@ -1144,7 +1150,7 @@ msgstr "プロシージャ"
 
 #: src/orage-appointment-window.c:4066
 msgid "Select this if you want procedure or script alarm."
-msgstr ""
+msgstr "手続き型またはスクリプトのアラームを設定したい場合はこちらを選択してください。"
 
 #: src/orage-appointment-window.c:4078
 msgid ""
@@ -1158,10 +1164,19 @@ msgid ""
 "- &lt;&amp;ST&gt; appointment start time\n"
 "- &lt;&amp;ET&gt; appointment end time"
 msgstr ""
+"<b>シェルコマンド処理</b>\n"
+"この文字列はシェルに直接渡されるため、エスケープは自分で行う必要があります。\n"
+"\n"
+"以下のプレースホルダーは実行時に置き換えられます:\n"
+"- &lt;&amp;T&gt; 予定のタイトル\n"
+"- &lt;&amp;D&gt; 予定の説明\n"
+"- &lt;&amp;AT&gt; アラーム時刻\n"
+"- &lt;&amp;ST&gt; 予定の開始時刻\n"
+"- &lt;&amp;ET&gt; 予定の終了時刻"
 
 #: src/orage-appointment-window.c:4102
 msgid "Test this alarm by raising it now."
-msgstr ""
+msgstr "今すぐアラームを鳴らしてテストを行います。"
 
 #: src/orage-appointment-window.c:4115
 msgid "<b>Default alarm</b>"
@@ -1169,7 +1184,7 @@ msgstr "<b>デフォルトアラーム</b>"
 
 #: src/orage-appointment-window.c:4130
 msgid "Store current settings as default alarm."
-msgstr ""
+msgstr "現在の設定をデフォルトのアラームとして保存します。"
 
 #: src/orage-appointment-window.c:4132
 msgid "_Revert"
@@ -1177,7 +1192,7 @@ msgstr "元に戻す(_R)"
 
 #: src/orage-appointment-window.c:4141
 msgid "Set current settings from default alarm."
-msgstr ""
+msgstr "現在の設定をデフォルトのアラームから行います。"
 
 #: src/orage-appointment-window.c:4206
 msgid "None"
@@ -1241,7 +1256,7 @@ msgstr "除外日 (-)"
 
 #: src/orage-appointment-window.c:4326
 msgid "Excluded days are full days where this appointment is not happening."
-msgstr ""
+msgstr "除外日はこの予約が行われない日を指します。"
 
 #: src/orage-appointment-window.c:4333
 msgid "Add included time (+)"
@@ -1345,15 +1360,15 @@ msgstr "分"
 
 #: src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task."
-msgstr ""
+msgstr "この同期タスクの名前または説明。"
 
 #: src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization."
-msgstr ""
+msgstr "同期のためのコマンド。"
 
 #: src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes."
-msgstr ""
+msgstr "同期期間（分）。"
 
 #: src/orage-sync-edit-dialog.c:166 src/parameters.c:1430 src/reminder.c:696
 msgid "_Close"
@@ -1589,7 +1604,7 @@ msgstr "新しいユーザーインターフェースを使用"
 
 #: src/parameters.c:820
 msgid "Enable the new interface layout (requires restart)."
-msgstr ""
+msgstr " 新しいインタフェースレイアウトを有効にします（再起動が必要）。"
 
 #: src/parameters.c:825
 msgid "Show borders"
@@ -1804,7 +1819,7 @@ msgstr "後で"
 
 #: src/reminder.c:714
 msgid "Remind me again after the specified time."
-msgstr ""
+msgstr "指定された時間が過ぎたらもう一度リマインダーを送る。"
 
 #: src/reminder.c:998
 msgid "Next active alarms:"
@@ -1813,11 +1828,11 @@ msgstr "次回の有効なアラーム:"
 #: src/reminder.c:1040
 #, c-format
 msgid "<span weight=\"bold\">%1$02d d %2$02d h %3$02d min to:</span> %4$s"
-msgstr ""
+msgstr "<span weight=\"bold\">%1$02d 日 %2$02d 時間 %3$02d 分 to:</span> %4$s"
 
 #: src/reminder.c:1057
 msgid "No active alarms found"
-msgstr ""
+msgstr "アクティブなアラームがありません"
 
 #: src/timezone_names.c:31
 msgid "Africa"
