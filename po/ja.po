@@ -188,11 +188,11 @@ msgstr "ToDo"
 #: src/event-list.c:1367 src/orage-appointment-window.c:3580
 #: src/orage-import.c:70
 msgid "Journal"
-msgstr "記録"
+msgstr "日記"
 
 #: src/event-list.c:1370
 msgid "Journal entries starting from:"
-msgstr "エントリの表示開始日"
+msgstr "日記エントリーの開始位置:"
 
 #: src/event-list.c:1395
 msgid "Search"
@@ -229,6 +229,19 @@ msgid ""
 "5. Appointment type:\n"
 "   E = event, T = todo, J = journal"
 msgstr ""
+"行をダブルクリックして編集します。\n"
+"\n"
+"<b>フラグの順序:</b>\n"
+"1. アラーム:\n"
+"   n = アラームなし、A = アラーム設定済み、P = 常時アラーム設定済み\n"
+"2. 繰り返し:\n"
+"   n = 繰り返しなし、H = 毎時、D = 毎日、W = 毎週、M = 毎月、Y = 毎年\n"
+"3. タイプ:\n"
+"   f = 空き、B = 予定あり\n"
+"4. ファイル内の場所:\n"
+"   O = Orage、A = アーカイブ、F = 外部\n"
+"5. 予定の種類:\n"
+"   E = イベント、T = ToDo、J = 日記"
 
 #: src/ical-code.c:856
 msgid "Orage default alarm"
@@ -958,6 +971,8 @@ msgid ""
 "<b>Journal entry</b> used to record something that happened.\n"
 "For example: your mother called or the first snow arrived."
 msgstr ""
+"<b>日記エントリー</b> は起きた出来事を記録するために使用します。\n"
+"例: 母から電話があった、初雪が降った、など。"
 
 #. location
 #: src/orage-appointment-window.c:3599 src/orage-window-classic.c:453
@@ -1020,7 +1035,7 @@ msgstr "色(_C)"
 
 #: src/orage-appointment-window.c:3732
 msgid "Update colors for categories."
-msgstr ""
+msgstr "カテゴリーの色を更新します。"
 
 #. priority
 #: src/orage-appointment-window.c:3738
@@ -1035,6 +1050,11 @@ msgid ""
 "<b>Alarms still trigger normally.</b>\n"
 "The default limit of 8 can be changed using an undocumented parameter."
 msgstr ""
+"<b>優先度を 8 以上に</b>設定すると、予定がリストウィンドウに表示されなくなります。\n"
+"\n"
+"これによりリストの表示がすっきりしますが、予定を見つけにくくなる場合があります。\n"
+"<b>アラームは通常どおり作動します。</b>\n"
+"デフォルトの制限 8 は、隠しパラメーターを使用して変更できます。"
 
 #. note
 #: src/orage-appointment-window.c:3754 src/orage-window-classic.c:466
@@ -1053,6 +1073,14 @@ msgid ""
 "<b>&lt;&amp;Ynnnn&gt;</b> is replaced with current year minus nnnn\n"
 "Useful for example in birthday reminders (e.g. age calculation)."
 msgstr ""
+"<b>省略形コマンド（即時有効）</b>\n"
+"<b>&lt;D&gt;</b> 現在の日付をローカル形式で挿入\n"
+"<b>&lt;T&gt;</b> 現在の時刻を挿入\n"
+"<b>&lt;DT&gt;</b> 日付と時刻を挿入\n"
+"\n"
+"<b>遅延コマンド（後で処理）\n"
+"<b>&lt;&amp;Ynnnn&gt;</b> 現在の年から nnnn を引いた値に置換\n"
+"誕生日リマインダー（年齢計算など）に便利です。"
 
 #: src/orage-appointment-window.c:3864
 msgid "Alarm"
@@ -1071,6 +1099,11 @@ msgid ""
 "- before a TODO ends\n"
 "- after a TODO starts"
 msgstr ""
+"<b>アラームのタイミングオプション</b>\n"
+"アラームは以下のタイミングでトリガーできます:\n"
+"- イベントの開始前\n"
+"- TODO の終了前\n"
+"- TODO の開始後"
 
 #: src/orage-appointment-window.c:3904
 msgid "Persistent alarm"
@@ -1249,6 +1282,10 @@ msgid ""
 "An exception can be either exclusion (-) or inclusion (+), depending on selection.\n"
 "Remove by clicking the date."
 msgstr ""
+"<b>例外日</b>\n"
+"下のカレンダーの日付をクリックして例外日を追加します。\n"
+"例外日は選択に応じて除外（-）または含める（+）ことができます。\n"
+"日付をクリックすると削除します。"
 
 #: src/orage-appointment-window.c:4324
 msgid "Add excluded date (-)"
@@ -1266,7 +1303,7 @@ msgstr "追加日時 (+)"
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time."
-msgstr ""
+msgstr "含まれる時間は開始時間と同じタイムゾーンですが、時間が異なる場合があります。"
 
 #. calendars showing the action days
 #: src/orage-appointment-window.c:4354
