@@ -339,6 +339,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Commas are not allowed in Orage filenames."
 msgstr ""
+"ファイル名はカンマで区切ってください。\n"
+"\n"
+"<b>注意:</b> Orange のファイル名にはカンマを使用できません。"
 
 #: src/interface.c:1082
 msgid "Export"
@@ -366,6 +369,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Archived and foreign events are not included."
 msgstr ""
+"メインカレンダーファイルに登録されているイベントのみがエクスポートされます。\n"
+"\n"
+"<b>注意:</b> アーカイブされたイベントおよび外部のイベントは含まれません。"
 
 #: src/interface.c:1173
 msgid ""
@@ -373,6 +379,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Foreign events are not included."
 msgstr ""
+"メインカレンダーファイルに登録されているイベントのみがエクスポートされます。\n"
+"\n"
+"<b>注意:</b> 外部のイベントは含まれません。"
 
 #: src/interface.c:1178
 msgid "You can easily drag these from event-list window."
@@ -398,7 +407,7 @@ msgstr "直ちにアーカイブする (しきい値: %d ヵ月)"
 
 #: src/interface.c:1212
 msgid "You can change archive threshold in parameters."
-msgstr ""
+msgstr "アーカイブのしきい値はパラメーターで変更できます。"
 
 #: src/interface.c:1224
 msgid "Revert archive now"
@@ -441,6 +450,9 @@ msgid ""
 "\n"
 "External filesystem is not modified. The new file must already exist."
 msgstr ""
+"<b>内部の Orage ファイルの名前変更のみを行います。</b>\n"
+"\n"
+"外部のファイルシステムは変更されません。新しいファイルは既に存在している必要があります。"
 
 #: src/interface.c:1323 src/interface.c:1418
 msgid "Copy"
