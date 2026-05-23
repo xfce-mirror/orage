@@ -232,6 +232,19 @@ msgid ""
 "5. Appointment type:\n"
 "   E = event, T = todo, J = journal"
 msgstr ""
+"Двоструки клик на линију за уређивање.\n"
+"\n"
+"<b>Распоред ознака:</b>\n"
+"1. Аларм\\:\n"
+"   n = без аларма, A = аларм је постављен, P = стални аларм је постављен\n"
+"2. Понављање:\n"
+"    n = без понављања, H = сваког сата, D = дневно, W = седмично, M = месечно, Y = годишње\n"
+"3. Врста:\n"
+"   f = слободан, B = заузет\n"
+"4. Налази се у датотеци:\n"
+"   O = Ораж, A = складиште, F = вањско\n"
+"5. Врста састанка:\n"
+"   E = догађај, T = обавеза, J = дневник"
 
 #: src/ical-code.c:856
 msgid "Orage default alarm"
@@ -329,6 +342,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Commas are not allowed in Orage filenames."
 msgstr ""
+"Раздвајање имена датотека запетама.\n"
+"\n"
+"<b>Примедба:</b> Запете нису дозвољене у именима датотека Оража."
 
 #: src/interface.c:1082
 msgid "Export"
@@ -356,6 +372,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Archived and foreign events are not included."
 msgstr ""
+"Само догађаји из датотеке главног календара су извезени.\n"
+"\n"
+"<b>Примедба:</b> Складиштени и спољњи догађаји нису обухваћени."
 
 #: src/interface.c:1173
 msgid ""
@@ -363,6 +382,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Foreign events are not included."
 msgstr ""
+"Само догађаји из датотеке главног календара су извезени.\n"
+"\n"
+"<b>Примедба:</b> Вањски догађаји нису укључени."
 
 #: src/interface.c:1178
 msgid "You can easily drag these from event-list window."
@@ -388,7 +410,7 @@ msgstr "Складишти сада (задршка: %d месеца)"
 
 #: src/interface.c:1212
 msgid "You can change archive threshold in parameters."
-msgstr ""
+msgstr "Можете променити задршку складиштења у одредницама."
 
 #: src/interface.c:1224
 msgid "Revert archive now"
@@ -400,6 +422,9 @@ msgid ""
 "\n"
 "This is useful, for example, when exporting or moving Orage appointments to another system."
 msgstr ""
+"<b>Поврати све складиштене догађаје<b> у гладну датотеку Оража и уклони складиштену датотеку.\n"
+"\n"
+"Ово је корисно, на пример, приликом извоза или премештања састанака Оража на други склоп."
 
 #: src/interface.c:1246
 msgid "Orage files"
@@ -431,6 +456,9 @@ msgid ""
 "\n"
 "External filesystem is not modified. The new file must already exist."
 msgstr ""
+"<b>Само преименовање унутрашње датотеке Оража.</b>\n"
+"\n"
+"Спољњи склоп датотека није преправљен. Нова датотека мора већ постојати."
 
 #: src/interface.c:1323 src/interface.c:1418
 msgid "Copy"
@@ -483,6 +511,9 @@ msgid ""
 "\n"
 "<b>Warning:</b> modifying foreign files may make them incompatible with the original application."
 msgstr ""
+"<b>Омогући само читање</b> уколико желите обезбедити да Ораж никада не преправља ову датотеку.\n"
+"\n"
+"<b>Упозорење</b> преправљање спољњих датотека их може учинити нескладним изворном програму."
 
 #: src/interface.c:1524
 msgid "This internal name is displayed to user instead of file name."
@@ -907,6 +938,8 @@ msgid ""
 "<b>Recurrence is based on the start time.</b>\n"
 "The TODO repeats at regular intervals regardless of when it was last completed."
 msgstr ""
+"<b>Понављање је засновано на почетном времену.</b>\n"
+"Задатак се понавља уједначено без обзира када је последњи пут испуњен."
 
 #: src/orage-appointment-window.c:3488
 msgid ""
@@ -915,6 +948,10 @@ msgid ""
 "\n"
 "<b>Note:</b> the TODO history cannot be determined because the recurrence base changes after each completion."
 msgstr ""
+"<b>Понављање је засновано на времену испуњења.</b>\n"
+"Задатак се понавља након одређених временских раздобља од последњег времена испуњења.\n"
+"\n"
+"<b>Примедба:</b> повест задатака се не може одредити јер се основа понављања мења након сваког испуњења."
 
 #: src/orage-appointment-window.c:3517
 msgid "Save"
@@ -950,18 +987,24 @@ msgid ""
 "<b>Event</b> that happens at a specific time.\n"
 "For example: meeting, birthday, or TV show."
 msgstr ""
+"<b>Догађај</b> који се дешава у одређено време.\n"
+"На пример: састанак, рођендан, ТВ-представа."
 
 #: src/orage-appointment-window.c:3576
 msgid ""
 "<b>Task or reminder</b> that should be completed sometime.\n"
 "For example: wash your car or test a new version of Orage."
 msgstr ""
+"<b>Задатак или подсетник</b> који би требао бити испуњен некада.\n"
+"На пример: мијење кола или проба новог издања Оража."
 
 #: src/orage-appointment-window.c:3586
 msgid ""
 "<b>Journal entry</b> used to record something that happened.\n"
 "For example: your mother called or the first snow arrived."
 msgstr ""
+"<b>Унос дневника</b> коришћен за бележење нечег што се десило.\n"
+"На пример: мајка позва или први снег паде."
 
 #. location
 #: src/orage-appointment-window.c:3599 src/orage-window-classic.c:453
@@ -1026,7 +1069,7 @@ msgstr "_Боја"
 
 #: src/orage-appointment-window.c:3732
 msgid "Update colors for categories."
-msgstr ""
+msgstr "Освежи боје врста."
 
 #. priority
 #: src/orage-appointment-window.c:3738
