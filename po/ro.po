@@ -44,7 +44,7 @@ msgstr "Clic pe un rând pentru a-l selecta, apoi puteți să-l copiați."
 
 #: src/event-list.c:1014
 msgid "You will permanently remove all selected appointments."
-msgstr ""
+msgstr "Veți șterge definitiv toate programările selectate."
 
 #: src/event-list.c:1015 src/orage-appointment-window.c:982
 #: src/orage-appointment-window.c:1645 src/parameters.c:644
@@ -160,6 +160,12 @@ msgid ""
 "- Urgencies are still shown for all events.\n"
 "- Repeating events may appear earlier in the list because only the first occurrence is displayed."
 msgstr ""
+"Afișează doar <b>prima apariție</b> a evenimentelor recurente.\n"
+"În mod implicit, sunt afișate toate aparițiile.\n"
+"\n"
+"<b>Notă:</b>\n"
+"- Urgențele sunt afișate în continuare pentru toate evenimentele.\n"
+"- Evenimentele recurente pot apărea mai sus în listă, deoarece se afișează doar prima apariție."
 
 #: src/event-list.c:1319
 msgid "also old"
@@ -173,6 +179,11 @@ msgid ""
 "\n"
 "<b>Note:</b> The extra days setting still controls how many future appointments are shown."
 msgstr ""
+"Afișează evenimentele vechi în listă.\n"
+"\n"
+"Această opțiune este disponibilă numai atunci când este activată opțiunea <b>Numai prima repetare</b>, pentru a evita listele foarte lungi.\n"
+"\n"
+"<b>Notă:</b> Opțiunea „Zile suplimentare” continuă să controleze numărul de programări viitoare afișate."
 
 #: src/event-list.c:1353 src/orage-appointment-window.c:3571
 #: src/orage-import.c:67
@@ -223,6 +234,19 @@ msgid ""
 "5. Appointment type:\n"
 "   E = event, T = todo, J = journal"
 msgstr ""
+"Faceți dublu clic pe linie pentru a o edita.\n"
+"\n"
+"<b>Indicatorii în ordine:</b>\n"
+"1. Alarmă: \n"
+"   n = fără alarmă, A = alarma este stabilită, P = alarma persistentă este stabilită\n"
+"2. Recurență:\n"
+"   n = nu există recurență, H = la fiecare oră, D=zilnic, W = săptămânal, M = lunar, Y = anual\n"
+"3. Tip: \n"
+"   f = liber, B = ocupat\n"
+"4. Localizat în fișier:\n"
+"   O = Orage, A = arhivă, F = extern\n"
+"5. Tipul de programare:\n"
+"   E = eveniment, T = lucruri de făcut, J = jurnal"
 
 #: src/ical-code.c:856
 msgid "Orage default alarm"
@@ -320,6 +344,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Commas are not allowed in Orage filenames."
 msgstr ""
+"Separați numele fișierelor cu virgule.\n"
+"\n"
+"<b>Notă:</b> Virgulele nu sunt permise în numele fișierelor Orage."
 
 #: src/interface.c:1082
 msgid "Export"
@@ -335,11 +362,11 @@ msgstr "Selectare"
 
 #: src/interface.c:1130
 msgid "All appointments"
-msgstr "Toate evenimentele"
+msgstr "Toate programările"
 
 #: src/interface.c:1149
 msgid "Named appointments:"
-msgstr "Evenimente numite:"
+msgstr "Programări numite:"
 
 #: src/interface.c:1168
 msgid ""
@@ -347,6 +374,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Archived and foreign events are not included."
 msgstr ""
+"Se exportă numai evenimentele din fișierul principal al calendarului.\n"
+"\n"
+"<b>Notă:</b> Evenimentele arhivate și cele externe nu sunt incluse."
 
 #: src/interface.c:1173
 msgid ""
@@ -354,6 +384,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Foreign events are not included."
 msgstr ""
+"Se exportă numai evenimentele din fișierul principal al calendarului.\n"
+"\n"
+"<b>Notă:</b> Evenimentele externe nu sunt incluse."
 
 #: src/interface.c:1178
 msgid "You can easily drag these from event-list window."
@@ -361,7 +394,7 @@ msgstr "Le puteți trage cu ușurință din fereastra listei de evenimente."
 
 #: src/interface.c:1180
 msgid "Orage appointment UIDs separated by commas."
-msgstr "UID-urile de evenimente Orage separate prin virgule."
+msgstr "UID-urile de programări Orage separate prin virgule."
 
 #: src/interface.c:1186
 msgid "Archive"
@@ -379,7 +412,7 @@ msgstr "Arhivează acum (limită: %d luni)"
 
 #: src/interface.c:1212
 msgid "You can change archive threshold in parameters."
-msgstr ""
+msgstr "Puteți modifica pragul de arhivare din parametri."
 
 #: src/interface.c:1224
 msgid "Revert archive now"
@@ -391,6 +424,9 @@ msgid ""
 "\n"
 "This is useful, for example, when exporting or moving Orage appointments to another system."
 msgstr ""
+"<b>Restaurează toate evenimentele arhivate</b> în fișierul principal Orage și elimină fișierul de arhivă.\n"
+"\n"
+"Această operație este utilă, de exemplu, atunci când se exportă sau se mută programările Orage într-un alt sistem."
 
 #: src/interface.c:1246
 msgid "Orage files"
@@ -422,6 +458,9 @@ msgid ""
 "\n"
 "External filesystem is not modified. The new file must already exist."
 msgstr ""
+"<b>Se redenumește numai fișierul Orage intern.</b>\n"
+"\n"
+"Sistemul de fișiere extern nu este modificat. Noul fișier trebuie să existe deja."
 
 #: src/interface.c:1323 src/interface.c:1418
 msgid "Copy"
@@ -474,6 +513,9 @@ msgid ""
 "\n"
 "<b>Warning:</b> modifying foreign files may make them incompatible with the original application."
 msgstr ""
+"<b>Activați modul numai-citire</b> dacă doriți să vă asigurați că Orage nu va modifica niciodată acest fișier.\n"
+"\n"
+"<b>Atenție:</b> modificarea fișierelor externe poate duce la incompatibilitatea acestora cu aplicația originală."
 
 #: src/interface.c:1524
 msgid "This internal name is displayed to user instead of file name."
@@ -544,7 +586,7 @@ msgstr "Deschide sarcinile de azi"
 
 #: src/orage-application.c:784
 msgid "Add new appointment"
-msgstr "Adaugă un eveniment nou"
+msgstr "Adaugă o programare nouă"
 
 #: src/orage-application.c:793
 msgid "Show preferences form"
@@ -564,11 +606,11 @@ msgstr "Elimină un fișier extern"
 
 #: src/orage-application.c:829
 msgid "Import appointments from file to Orage"
-msgstr "Importă evenimentele din fișier în Orage"
+msgstr "Importă programările din fișier în Orage"
 
 #: src/orage-application.c:838
 msgid "Export appointments from Orage to file"
-msgstr "Exportă evenimentele din Orage în fișier"
+msgstr "Exportă programările din Orage în fișier"
 
 #: src/orage-application.c:847
 msgid "Select logging backend (glib|orage)"
@@ -598,7 +640,7 @@ msgstr "Fișiere de sunet"
 
 #: src/orage-appointment-window.c:981
 msgid "The appointment information has been modified."
-msgstr "Detaliile evenimentului au fost modificate."
+msgstr "Detaliile programării au fost modificate."
 
 #: src/orage-appointment-window.c:983
 msgid "No, do not leave"
@@ -610,7 +652,7 @@ msgstr "Da, ignoră modificările și ieși"
 
 #: src/orage-appointment-window.c:1013
 msgid "The end of this appointment is earlier than the beginning."
-msgstr "Evenimentul pare să se termine înainte de a începe."
+msgstr "Programarea pare să se termine înainte de a începe."
 
 #: src/orage-appointment-window.c:1426 src/orage-appointment-window.c:2193
 msgid "Not set"
@@ -618,7 +660,7 @@ msgstr "Nu este definit"
 
 #: src/orage-appointment-window.c:1471
 msgid "Add new appointment to this file."
-msgstr "Adaugă un nou eveniment la acest fișier."
+msgstr "Adaugă o nouă programare la acest fișier."
 
 #: src/orage-appointment-window.c:1472 src/orage-appointment-window.c:1533
 msgid "Orage default file"
@@ -626,18 +668,18 @@ msgstr "Fișier implicit Orage"
 
 #: src/orage-appointment-window.c:1578
 msgid "Appointment addition failed."
-msgstr "Adăugarea evenimentului a eșuat."
+msgstr "Adăugarea programării a eșuat."
 
 #: src/orage-appointment-window.c:1579
 msgid ""
 "Error happened when adding appointment. Look more details from the log file."
 msgstr ""
-"S-a produs o eroare la adăugarea unui eveniment. Puteți vedea mai multe "
-"detalii din fișierul jurnal."
+"S-a produs o eroare la adăugarea unei programări. Puteți vedea mai multe "
+"detalii în fișierul jurnal."
 
 #: src/orage-appointment-window.c:1591
 msgid "Appointment update failed."
-msgstr "Actualizarea evenimentului a eșuat."
+msgstr "Actualizarea programării a eșuat."
 
 #: src/orage-appointment-window.c:1592
 msgid ""
@@ -649,7 +691,7 @@ msgstr ""
 
 #: src/orage-appointment-window.c:1644
 msgid "This appointment will be permanently removed."
-msgstr "Acest eveniment va fi eliminat definitiv."
+msgstr "Această programare va fi eliminată definitiv."
 
 #: src/orage-appointment-window.c:1647
 msgid "Yes, remove it"
@@ -657,7 +699,7 @@ msgstr "Da, elimină-l"
 
 #: src/orage-appointment-window.c:2140
 msgid "This appointment does not exist."
-msgstr "Acest eveniment nu există."
+msgstr "Această programare nu există."
 
 #: src/orage-appointment-window.c:2141
 msgid "It was probably removed, please refresh your screen."
@@ -702,7 +744,7 @@ msgstr "După terminare"
 #. window title
 #: src/orage-appointment-window.c:2850
 msgid "New appointment - Orage"
-msgstr "Eveniment nou - Orage"
+msgstr "Programare nouă - Orage"
 
 #: src/orage-appointment-window.c:2883
 msgid "Sav_e and close"
@@ -903,6 +945,8 @@ msgid ""
 "<b>Recurrence is based on the start time.</b>\n"
 "The TODO repeats at regular intervals regardless of when it was last completed."
 msgstr ""
+"<b>Recurența se bazează pe ora de începere.</b>\n"
+"Sarcina(lucruri de făcut) se repetă la intervale regulate, indiferent de momentul în care a fost finalizată ultima dată."
 
 #: src/orage-appointment-window.c:3488
 msgid ""
@@ -911,6 +955,10 @@ msgid ""
 "\n"
 "<b>Note:</b> the TODO history cannot be determined because the recurrence base changes after each completion."
 msgstr ""
+"<b>Recurența se bazează pe momentul finalizării.</b>\n"
+"Sarcina(lucruri de făcut) se repetă după un interval calculat de la momentul ultimei finalizări.\n"
+"\n"
+"<b>Notă:</b> istoricul sarcinii(lucrurilor de făcut) nu poate fi stabilit, deoarece momentul de referință al recurenței se modifică după fiecare finalizare."
 
 #: src/orage-appointment-window.c:3517
 msgid "Save"
@@ -946,18 +994,24 @@ msgid ""
 "<b>Event</b> that happens at a specific time.\n"
 "For example: meeting, birthday, or TV show."
 msgstr ""
+"<b>Eveniment</b> care are loc la o anumită oră.\n"
+"De exemplu: întâlnire, zi de naștere sau emisiune TV."
 
 #: src/orage-appointment-window.c:3576
 msgid ""
 "<b>Task or reminder</b> that should be completed sometime.\n"
 "For example: wash your car or test a new version of Orage."
 msgstr ""
+"<b>Sarcină sau memento</b> care trebuie îndeplinită la un moment dat.\n"
+"De exemplu: „spală-ți mașina” sau „testează o nouă versiune a Orage.”"
 
 #: src/orage-appointment-window.c:3586
 msgid ""
 "<b>Journal entry</b> used to record something that happened.\n"
 "For example: your mother called or the first snow arrived."
 msgstr ""
+"<b>Intrare în jurnal</b> folosită pentru a consemna un eveniment.\n"
+"De exemplu: „te-a sunat mama” sau „a căzut prima zăpadă”."
 
 #. location
 #: src/orage-appointment-window.c:3599 src/orage-window-classic.c:453
@@ -1014,7 +1068,7 @@ msgid ""
 "list views."
 msgstr ""
 "Aceasta este o categorie specială, care poate fi utilizată pentru a colora "
-"acest eveniment în vizualizările de tip listă."
+"această programare în vizualizările de tip listă."
 
 #: src/orage-appointment-window.c:3727
 msgid "_Colour"
@@ -1022,7 +1076,7 @@ msgstr "_Culoare"
 
 #: src/orage-appointment-window.c:3732
 msgid "Update colors for categories."
-msgstr ""
+msgstr "Actualizează culorile pentru categorii."
 
 #. priority
 #: src/orage-appointment-window.c:3738
@@ -1037,6 +1091,11 @@ msgid ""
 "<b>Alarms still trigger normally.</b>\n"
 "The default limit of 8 can be changed using an undocumented parameter."
 msgstr ""
+"<b>Prioritatea 8 sau mai mare</b> ascunde programarea din ferestrele cu liste.\n"
+"\n"
+"Acest lucru reduce aglomerația, dar poate face ca programarea să fie mai greu de găsit.\n"
+"<b>Alarmele se declanșează în continuare în mod normal.</b>\n"
+"Limita implicită de 8 poate fi modificată folosind un parametru nedocumentat."
 
 #. note
 #: src/orage-appointment-window.c:3754 src/orage-window-classic.c:466
@@ -1055,6 +1114,14 @@ msgid ""
 "<b>&lt;&amp;Ynnnn&gt;</b> is replaced with current year minus nnnn\n"
 "Useful for example in birthday reminders (e.g. age calculation)."
 msgstr ""
+"<b>Comenzi rapide (cu efect imediat)</b>\n"
+"<b>&lt;D&gt;</b> inserează data curentă în formatul configurației regionale\n"
+"<b>&lt;T&gt;</b> inserează ora curentă\n"
+"<b>&lt;DT&gt;</b> inserează data și ora\n"
+"\n"
+"<b>Comenzi cu întârziere (procesate ulterior)</b>\n"
+"<b>&lt;&amp;Ynnnn&gt;</b> este înlocuit cu anul curent minus nnnn\n"
+"Util, de exemplu, în memento-urile de ziua de naștere (de exemplu, calcularea vârstei)."
 
 #: src/orage-appointment-window.c:3864
 msgid "Alarm"
@@ -1073,6 +1140,11 @@ msgid ""
 "- before a TODO ends\n"
 "- after a TODO starts"
 msgstr ""
+"<b>Opțiuni de programare a alarmelor</b>\n"
+"Puteți activa alarme:\n"
+"- înainte de începerea unui eveniment\n"
+"- înainte de expirarea unei sarcini(lucruri de făcut)\n"
+"- după începerea unei sarcini(lucruri de făcut)"
 
 #: src/orage-appointment-window.c:3904
 msgid "Persistent alarm"
@@ -1096,11 +1168,11 @@ msgstr "Utilizează"
 
 #: src/orage-appointment-window.c:3927
 msgid "Select this if you want audible alarm."
-msgstr ""
+msgstr "Selectați această opțiune dacă doriți o alarmă sonoră."
 
 #: src/orage-appointment-window.c:3932
 msgid "Sound command is not set."
-msgstr ""
+msgstr "Comanda sonoră nu este definită."
 
 #: src/orage-appointment-window.c:3961
 msgid "Repeat alarm sound"
@@ -1121,7 +1193,7 @@ msgstr "Utilizează fereastra Orage"
 
 #: src/orage-appointment-window.c:4007
 msgid "Select this if you want Orage window alarm."
-msgstr ""
+msgstr "Selectați această opțiune dacă doriți fereastra de alarmă Orage."
 
 #: src/orage-appointment-window.c:4019
 msgid "Use notification"
@@ -1129,7 +1201,7 @@ msgstr "Afișează notificare"
 
 #: src/orage-appointment-window.c:4021
 msgid "Select this if you want notification alarm."
-msgstr ""
+msgstr "Selectați această opțiune dacă doriți o alarmă de notificare."
 
 #: src/orage-appointment-window.c:4029
 msgid "Set timeout"
@@ -1138,6 +1210,7 @@ msgstr "Stabilește timpul de expirare"
 #: src/orage-appointment-window.c:4031
 msgid "Select this if you want notification to expire automatically."
 msgstr ""
+"Selectați această opțiune dacă doriți ca notificarea să expire automat."
 
 #: src/orage-appointment-window.c:4042
 msgid "0 = system default expiration time"
@@ -1155,6 +1228,7 @@ msgstr "Procedură"
 #: src/orage-appointment-window.c:4066
 msgid "Select this if you want procedure or script alarm."
 msgstr ""
+"Selectați această opțiune dacă doriți alarmă de procedură sau de script."
 
 #: src/orage-appointment-window.c:4078
 msgid ""
@@ -1168,10 +1242,19 @@ msgid ""
 "- &lt;&amp;ST&gt; appointment start time\n"
 "- &lt;&amp;ET&gt; appointment end time"
 msgstr ""
+"<b>Procesarea comenzilor shell</b>\n"
+"Acest șir este transmis direct către shell, așa că trebuie să gestionați singur toate caracterele de eludare.\n"
+"\n"
+"Următorii substituenți sunt înlocuiți în timpul rulării:\n"
+"- &lt;&amp;T&gt;  titlul programării\n"
+"- &lt;&amp;D&gt;  descrierea programării\n"
+"- &lt;&amp;AT&gt; ora alarmei\n"
+"- &lt;&amp;ST&gt; ora de începere a programării\n"
+"- &lt;&amp;ET&gt; ora de încheiere a programării"
 
 #: src/orage-appointment-window.c:4102
 msgid "Test this alarm by raising it now."
-msgstr ""
+msgstr "Testați această alarmă prin generarea ei acum."
 
 #: src/orage-appointment-window.c:4115
 msgid "<b>Default alarm</b>"
@@ -1179,7 +1262,7 @@ msgstr "<b>Alarma implicită</b>"
 
 #: src/orage-appointment-window.c:4130
 msgid "Store current settings as default alarm."
-msgstr ""
+msgstr "Stochează configurările curente ca alarmă implicită."
 
 #: src/orage-appointment-window.c:4132
 msgid "_Revert"
@@ -1187,7 +1270,7 @@ msgstr "_Restabilește"
 
 #: src/orage-appointment-window.c:4141
 msgid "Set current settings from default alarm."
-msgstr ""
+msgstr "Stabilește valorile curente de la alarma implicită."
 
 #: src/orage-appointment-window.c:4206
 msgid "None"
@@ -1244,6 +1327,10 @@ msgid ""
 "An exception can be either exclusion (-) or inclusion (+), depending on selection.\n"
 "Remove by clicking the date."
 msgstr ""
+"<b>Exceptare date</b>\n"
+"Adăugați date exceptate făcând clic pe zilele din calendarul de mai jos.\n"
+"O exceptare poate fi fie excludere (-) fie includere (+), în funcție de selecție.\n"
+"Eliminați exceptarea făcând clic pe dată."
 
 #: src/orage-appointment-window.c:4324
 msgid "Add excluded date (-)"
@@ -1252,6 +1339,7 @@ msgstr "Adaugă data exclusă (-)"
 #: src/orage-appointment-window.c:4326
 msgid "Excluded days are full days where this appointment is not happening."
 msgstr ""
+"Zilele excluse sunt zile întregi în care această programare nu are loc."
 
 #: src/orage-appointment-window.c:4333
 msgid "Add included time (+)"
@@ -1262,6 +1350,8 @@ msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time."
 msgstr ""
+"Orele incluse au același fus orar ca ora de începere, dar pot avea ore "
+"diferite."
 
 #. calendars showing the action days
 #: src/orage-appointment-window.c:4354
@@ -1355,15 +1445,15 @@ msgstr "minute"
 
 #: src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task."
-msgstr ""
+msgstr "Numele sau descrierea acestei sarcini de sincronizare."
 
 #: src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization."
-msgstr ""
+msgstr "Comanda pentru sincronizare."
 
 #: src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes."
-msgstr ""
+msgstr "Perioada de sincronizare în minute."
 
 #: src/orage-sync-edit-dialog.c:166 src/parameters.c:1430 src/reminder.c:696
 msgid "_Close"
@@ -1457,7 +1547,7 @@ msgstr "<b>Evenimentepentrur %s - %s:</b>"
 
 #: src/orage-window-next.c:131
 msgid "Create a new appointment"
-msgstr "Creează un eveniment nou"
+msgstr "Creează o programare nouă"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"
@@ -1603,7 +1693,7 @@ msgstr "Utilizează noua interfață de utilizator"
 
 #: src/parameters.c:820
 msgid "Enable the new interface layout (requires restart)."
-msgstr ""
+msgstr "Activează noul aspect al interfeței (este necesară repornirea)."
 
 #: src/parameters.c:825
 msgid "Show borders"
@@ -1631,7 +1721,7 @@ msgstr "Rubrici cu informații despre calendar"
 
 #: src/parameters.c:884
 msgid "Show todo list"
-msgstr "Afișează lista sarcinilor"
+msgstr "Afișează lista sarcinilor(lucruri de făcut)"
 
 #: src/parameters.c:891
 msgid "Number of days to show in event window"
@@ -1822,7 +1912,7 @@ msgstr "Amână"
 
 #: src/reminder.c:714
 msgid "Remind me again after the specified time."
-msgstr ""
+msgstr "Reamintește-mi din nou după ora specificată."
 
 #: src/reminder.c:998
 msgid "Next active alarms:"
@@ -1831,11 +1921,11 @@ msgstr "Următoarele alarme active:"
 #: src/reminder.c:1040
 #, c-format
 msgid "<span weight=\"bold\">%1$02d d %2$02d h %3$02d min to:</span> %4$s"
-msgstr ""
+msgstr "<span weight=\"bold\">%1$02d z %2$02d h %3$02d min la:</span> %4$s"
 
 #: src/reminder.c:1057
 msgid "No active alarms found"
-msgstr ""
+msgstr "Nu s-au găsit alarme active"
 
 #: src/timezone_names.c:31
 msgid "Africa"
@@ -4151,7 +4241,7 @@ msgstr "flotant"
 
 #: src/tray_icon.c:394
 msgid "New appointment"
-msgstr "Eveniment nou"
+msgstr "Programare nouă"
 
 #: src/tray_icon.c:410
 msgid "Quit"
@@ -4177,7 +4267,7 @@ msgid ""
 msgstr ""
 "Orage se dorește a fi un calendar grafic rapid și ușor de utilizat. Acesta "
 "utilizează formatul ical portabil și include caracteristici comune ale "
-"calendarului, cum ar fi repetarea întâlnirilor și posibilități multiple de "
+"calendarului, cum ar fi repetarea programărilor și posibilități multiple de "
 "alarmare."
 
 #: org.xfce.orage.appdata.xml.in:15
@@ -4214,4 +4304,4 @@ msgstr "Afișează ziua de azi"
 
 #: org.xfce.orage.desktop.in:22
 msgid "New Appointment"
-msgstr "Eveniment nou"
+msgstr "Programare nouă"
