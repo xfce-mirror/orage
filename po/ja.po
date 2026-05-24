@@ -179,6 +179,11 @@ msgid ""
 "\n"
 "<b>Note:</b> The extra days setting still controls how many future appointments are shown."
 msgstr ""
+"リストに過去のイベントを表示します。\n"
+"\n"
+"このオプションはリストが長くなりすぎるのを避けるため、<b>最初の繰り返しのみ</b>が有効になっている場合のみ利用可能です。\n"
+"\n"
+"<b>注意:</b> 追加日数の設定は、将来の予約がいくつ表示されるかを引き続き制御します。"
 
 #: src/event-list.c:1353 src/orage-appointment-window.c:3571
 #: src/orage-import.c:67
@@ -419,6 +424,9 @@ msgid ""
 "\n"
 "This is useful, for example, when exporting or moving Orage appointments to another system."
 msgstr ""
+"アーカイブされたすべてのイベントをメイン Orage ファイルに<b>復元</b>し、アーカイブファイルを削除します。\n"
+"\n"
+"これは Orage の予定を別のシステムにエクスポートまたは移動する場合などに役立ちます。"
 
 #: src/interface.c:1246
 msgid "Orage files"
@@ -505,6 +513,9 @@ msgid ""
 "\n"
 "<b>Warning:</b> modifying foreign files may make them incompatible with the original application."
 msgstr ""
+"Orage がこのファイルを一切変更しないようにするには、<b>読み取り専用モードを有効に</b>してください。\n"
+"\n"
+"<b>警告:</b> 外部ファイルを変更すると元のアプリケーションとの互換性が損なわれる可能性があります。"
 
 #: src/interface.c:1524
 msgid "This internal name is displayed to user instead of file name."
@@ -928,6 +939,8 @@ msgid ""
 "<b>Recurrence is based on the start time.</b>\n"
 "The TODO repeats at regular intervals regardless of when it was last completed."
 msgstr ""
+"<b>繰り返しが開始時刻に基づいて行われます。</b>\n"
+"TODO は最後に完了したのがいつかに関係なく、一定間隔で繰り返されます。"
 
 #: src/orage-appointment-window.c:3488
 msgid ""
@@ -936,6 +949,10 @@ msgid ""
 "\n"
 "<b>Note:</b> the TODO history cannot be determined because the recurrence base changes after each completion."
 msgstr ""
+"<b>繰り返しが完了時刻に基づいて行われます。</b>\n"
+"TODO は前回の完了時刻からの間隔後に繰り返されます。\n"
+"\n"
+"<b>注意:</b> それぞれの完了ごとに繰り返しの基準が変わるため、TODO の履歴は確認できません。"
 
 #: src/orage-appointment-window.c:3517
 msgid "Save"
@@ -971,12 +988,16 @@ msgid ""
 "<b>Event</b> that happens at a specific time.\n"
 "For example: meeting, birthday, or TV show."
 msgstr ""
+"特定の時間に起こる<b>イベント</b>。\n"
+"例: 会議、誕生日、テレビ番組。"
 
 #: src/orage-appointment-window.c:3576
 msgid ""
 "<b>Task or reminder</b> that should be completed sometime.\n"
 "For example: wash your car or test a new version of Orage."
 msgstr ""
+"いつか完了しなければならない<b>タスクまたはリマインダー</b>。\n"
+"例: 車を洗う、Orage の新バージョンをテストする。"
 
 #: src/orage-appointment-window.c:3586
 msgid ""
