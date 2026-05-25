@@ -940,6 +940,8 @@ msgid ""
 "<b>Recurrence is based on the start time.</b>\n"
 "The TODO repeats at regular intervals regardless of when it was last completed."
 msgstr ""
+"<b>La recuréncia s’apièja sus data de debuta.</b>\n"
+"Lo TODO se repetís a d’intervals regulars indiferentament de la darrièra execucion acabada."
 
 #: src/orage-appointment-window.c:3488
 msgid ""
@@ -1290,6 +1292,7 @@ msgstr "Apondre un jorn exclut (-)"
 #: src/orage-appointment-window.c:4326
 msgid "Excluded days are full days where this appointment is not happening."
 msgstr ""
+"Los jorns excluses son de jorns entièrs quand lo rendètz-vos se produtz pas."
 
 #: src/orage-appointment-window.c:4333
 msgid "Add included time (+)"
@@ -1300,6 +1303,8 @@ msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time."
 msgstr ""
+"Los oraris excluses an lo meteis fus orari que la data de debuta, mas pòdon "
+"aver un orari diferent."
 
 #. calendars showing the action days
 #: src/orage-appointment-window.c:4354
