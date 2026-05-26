@@ -950,6 +950,10 @@ msgid ""
 "\n"
 "<b>Note:</b> the TODO history cannot be determined because the recurrence base changes after each completion."
 msgstr ""
+"<b>La recuréncia s’apièja sus la data de fin.</b>\n"
+"Lo TODO se repetís aprèp un l’interval a comptar de la darrièra execucion acabada.\n"
+"\n"
+"<b>Nòta : </b> l’istoric del TODO se pòt pas determinar perque la basa de la recuréncia càmbia a cada fin d’execucion."
 
 #: src/orage-appointment-window.c:3517
 msgid "Save"
@@ -985,18 +989,24 @@ msgid ""
 "<b>Event</b> that happens at a specific time.\n"
 "For example: meeting, birthday, or TV show."
 msgstr ""
+"<b>Eveniment</b> que se produtz a un orari donat.\n"
+"Per exemple : reünion, anniversari, programa TV."
 
 #: src/orage-appointment-window.c:3576
 msgid ""
 "<b>Task or reminder</b> that should be completed sometime.\n"
 "For example: wash your car or test a new version of Orage."
 msgstr ""
+"<b>Prètzfait o rapèl</b> que devon se complir a un moment.\n"
+"Per exemple : lavar la veitura o provar una version novèla d’Orage."
 
 #: src/orage-appointment-window.c:3586
 msgid ""
 "<b>Journal entry</b> used to record something that happened.\n"
 "For example: your mother called or the first snow arrived."
 msgstr ""
+"<b>Entrada de jornal</b> s’utiliza per enregistrar quicòm que se passèt.\n"
+"Per exemple : vòstra maire sonèt a la primièra nèu."
 
 #. location
 #: src/orage-appointment-window.c:3599 src/orage-window-classic.c:453
@@ -1076,6 +1086,11 @@ msgid ""
 "<b>Alarms still trigger normally.</b>\n"
 "The default limit of 8 can be changed using an undocumented parameter."
 msgstr ""
+"<b>Prioritat 8 o mai naut</b> amaga lo rendètz-vos de la fenèstra de las listas.\n"
+"\n"
+"Aquò redusís l'encombrament mas pòt far lo rendètz-vos mai malaisit de trobar.\n"
+"<b>Las alarmats s’avian totjorn normalament.</b>\n"
+"Lo limit per defaut de 8 se pòt modificar en utilizant un argument non documentat."
 
 #. note
 #: src/orage-appointment-window.c:3754 src/orage-window-classic.c:466
@@ -1094,6 +1109,14 @@ msgid ""
 "<b>&lt;&amp;Ynnnn&gt;</b> is replaced with current year minus nnnn\n"
 "Useful for example in birthday reminders (e.g. age calculation)."
 msgstr ""
+"<b>Comandas d'acorchi (s'aplican sul pic)</b>\n"
+"<b>&lt;D&gt;</b> inserís la data actuala al format local\n"
+"<b>&lt;T&gt;</b> inserís l'ora actuala\n"
+"<b>&lt;DT&gt;</b> inserís la data e l'ora\n"
+"\n"
+"<b>Comandas diferidas (tractadas pus tard)</b>\n"
+"<b>&lt;&amp;Ynnnn&gt;</b>es remplaçat per l'annada actuala mens nnnn\n"
+"Utile per exemple dins los rapèls d'anniversari (ex. calcul de l'edat)."
 
 #: src/orage-appointment-window.c:3864
 msgid "Alarm"
@@ -1112,6 +1135,11 @@ msgid ""
 "- before a TODO ends\n"
 "- after a TODO starts"
 msgstr ""
+"<b>Opcions de temporizacion de las alarmas</b>\n"
+"Podètz activar las alarmas :\n"
+"- abans qu'un eveniment comence\n"
+"- abans qu'un TODO s'acabe\n"
+"- aprèp qu'un TODO comence"
 
 #: src/orage-appointment-window.c:3904
 msgid "Persistent alarm"
@@ -1208,6 +1236,15 @@ msgid ""
 "- &lt;&amp;ST&gt; appointment start time\n"
 "- &lt;&amp;ET&gt; appointment end time"
 msgstr ""
+"<b>Tractament de la comanda shell</b>\n"
+"Aquesta cadena es passada dirèctament al shell, doncas devètz gerir tot l'escapament vos-meteis.\n"
+"\n"
+"Los marcadors seguents son remplaçats a l'execucion :\n"
+"- &lt;&amp;T&gt;  títol del rendètz-vos\n"
+"- &lt;&amp;D&gt; descripcion del rendètz-vos\n"
+"- &lt;&amp;AT&gt; ora de l'alarma\n"
+"- &lt;&amp;ST&gt;  ora de començament del rendètz-vos\n"
+"- &lt;&amp;ET&gt;  ora de fin del rendètz-vos"
 
 #: src/orage-appointment-window.c:4102
 msgid "Test this alarm by raising it now."
@@ -1284,6 +1321,10 @@ msgid ""
 "An exception can be either exclusion (-) or inclusion (+), depending on selection.\n"
 "Remove by clicking the date."
 msgstr ""
+"<b>Datas d'excepcion</b>\n"
+"Apondètz de datas d'excepcion en clicant suls jorns dins lo calendièr çai-jos.\n"
+"Una excepcion pòt èsser siá una exclusion (-), siá una inclusion (+), segon la seleccion.\n"
+"Suprimissètz en clicant sus la data."
 
 #: src/orage-appointment-window.c:4324
 msgid "Add excluded date (-)"
