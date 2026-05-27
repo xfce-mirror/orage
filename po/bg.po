@@ -233,6 +233,19 @@ msgid ""
 "5. Appointment type:\n"
 "   E = event, T = todo, J = journal"
 msgstr ""
+"Кликнете два пъти върху реда, за да го редактирате.\n"
+"\n"
+"<b>Флагове по ред:</b>\n"
+"1. Аларма:\n"
+"n = няма аларма, A = алармата е зададена, P = постоянна аларма\n"
+"2. Повторение:\n"
+"n = няма повторение, H = почасово, D = ежедневно, W = седмично, M = месечно, Y = годишно\n"
+"3. Тип:\n"
+"f = свободен, B = зает\n"
+"4. Намира се във файл:\n"
+"O = Orage, A = архив, F = чужд\n"
+"5. Тип среща:\n"
+"E = събитие, T = задача, J = дневник"
 
 #: src/ical-code.c:856
 msgid "Orage default alarm"
@@ -330,6 +343,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Commas are not allowed in Orage filenames."
 msgstr ""
+"Разделете имената на файловете със запетаи.\n"
+"\n"
+"<b>Забележка:</b> Запетаите не са разрешени в имената на файловете за Orange."
 
 #: src/interface.c:1082
 msgid "Export"
@@ -357,6 +373,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Archived and foreign events are not included."
 msgstr ""
+"Експортират се само събития от основния файл на календара.\n"
+"\n"
+"<b>Забележка:</b> Архивирани и чуждестранни събития не са включени."
 
 #: src/interface.c:1173
 msgid ""
@@ -364,6 +383,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Foreign events are not included."
 msgstr ""
+"Експортират се само събития от основния файл на календара.\n"
+"\n"
+"<b>Забележка:</b> Чуждестранните събития не са включени."
 
 #: src/interface.c:1178
 msgid "You can easily drag these from event-list window."
@@ -389,7 +411,7 @@ msgstr "Архивиране сега (време за съхранение: %d 
 
 #: src/interface.c:1212
 msgid "You can change archive threshold in parameters."
-msgstr ""
+msgstr "Можете да промените прага на архивиране в параметрите."
 
 #: src/interface.c:1224
 msgid "Revert archive now"
@@ -401,6 +423,9 @@ msgid ""
 "\n"
 "This is useful, for example, when exporting or moving Orage appointments to another system."
 msgstr ""
+"<b>Възстановете всички архивирани събития</b> в основния файл на Orage и премахнете архивния файл.\n"
+"\n"
+"Това е полезно, например при експортиране или преместване на срещи от Orage в друга система."
 
 #: src/interface.c:1246
 msgid "Orage files"
@@ -432,6 +457,9 @@ msgid ""
 "\n"
 "External filesystem is not modified. The new file must already exist."
 msgstr ""
+"<b>Само вътрешно преименуване на Orage файл.</b>\n"
+"\n"
+"Външната файлова система не е променена. Новият файл трябва вече да съществува."
 
 #: src/interface.c:1323 src/interface.c:1418
 msgid "Copy"
@@ -484,6 +512,9 @@ msgid ""
 "\n"
 "<b>Warning:</b> modifying foreign files may make them incompatible with the original application."
 msgstr ""
+"<b>Активирайте режим само за четене</b>, ако искате да сте сигурни, че Orage никога няма да променя този файл.\n"
+"\n"
+"<b>Предупреждение:</b> модифицирането на чужди файлове може да ги направи несъвместими с оригиналното приложение."
 
 #: src/interface.c:1524
 msgid "This internal name is displayed to user instead of file name."
@@ -911,6 +942,8 @@ msgid ""
 "<b>Recurrence is based on the start time.</b>\n"
 "The TODO repeats at regular intervals regardless of when it was last completed."
 msgstr ""
+"<b>Повторението се базира на началния час.</b>\n"
+"TODO се повтаря на равни интервали, независимо кога е било завършено за последно."
 
 #: src/orage-appointment-window.c:3488
 msgid ""
@@ -919,6 +952,10 @@ msgid ""
 "\n"
 "<b>Note:</b> the TODO history cannot be determined because the recurrence base changes after each completion."
 msgstr ""
+"<b>Повторяемостта се базира на времето за завършване.</b>\n"
+"TODO се повтаря след интервала, отброен от последното време за завършване.\n"
+"\n"
+"<b>Забележка:</b> Историята на TODO не може да бъде определена, защото базата за повторяемост се променя след всяко завършване."
 
 #: src/orage-appointment-window.c:3517
 msgid "Save"
