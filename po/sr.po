@@ -1084,6 +1084,11 @@ msgid ""
 "<b>Alarms still trigger normally.</b>\n"
 "The default limit of 8 can be changed using an undocumented parameter."
 msgstr ""
+"<b>Важност 8 или више</b> скрива састанке из списка прозора.\n"
+"\n"
+"Ово смањује натрпаност, али може отежати налажење састанка.\n"
+"<b>Аларм се и даље окида уобичајено.</b>\n"
+"Подразумевано ограничење од 8 може бити измењено употребом неописане одреднице."
 
 #. note
 #: src/orage-appointment-window.c:3754 src/orage-window-classic.c:466
@@ -1102,6 +1107,14 @@ msgid ""
 "<b>&lt;&amp;Ynnnn&gt;</b> is replaced with current year minus nnnn\n"
 "Useful for example in birthday reminders (e.g. age calculation)."
 msgstr ""
+"<b>Приручна наредба (одмах ступа на снагу)</b>\n"
+"<b>&lt;D&gt;</b> умеће тренутни датум у обласном облику\n"
+"<b>&lt;T&gt;</b> умеће тренутно време\n"
+"<b>&lt;DT&gt;</b> умеће датум и време\n"
+"\n"
+"<b>Одложена наредба (обрађена касније)</b>\n"
+"<b>&lt;&amp;Ynnnn&gt;</b> се замењује тренутном годином мање nnnn\n"
+"Корисно за, пример, подсетнике рођендана (тј. рачун старости)."
 
 #: src/orage-appointment-window.c:3864
 msgid "Alarm"
@@ -1120,6 +1133,11 @@ msgid ""
 "- before a TODO ends\n"
 "- after a TODO starts"
 msgstr ""
+"<b>Могућности времена аларма</b>\n"
+"Можете окинути аларме:\n"
+"- пре него ли догађај почне\n"
+"- пре него ли се обавеза сврши\n"
+"- након што обавеза почне"
 
 #: src/orage-appointment-window.c:3904
 msgid "Persistent alarm"
@@ -1143,11 +1161,11 @@ msgstr "Користи"
 
 #: src/orage-appointment-window.c:3927
 msgid "Select this if you want audible alarm."
-msgstr ""
+msgstr "Означите ово уколико желите чујни аларм."
 
 #: src/orage-appointment-window.c:3932
 msgid "Sound command is not set."
-msgstr ""
+msgstr "Звучна наредба није постављена."
 
 #: src/orage-appointment-window.c:3961
 msgid "Repeat alarm sound"
@@ -1168,7 +1186,7 @@ msgstr "Користи прозор Оража"
 
 #: src/orage-appointment-window.c:4007
 msgid "Select this if you want Orage window alarm."
-msgstr ""
+msgstr "Означите ово уколико желите аларм прозора Оража."
 
 #: src/orage-appointment-window.c:4019
 msgid "Use notification"
@@ -1176,7 +1194,7 @@ msgstr "Користи обавештења"
 
 #: src/orage-appointment-window.c:4021
 msgid "Select this if you want notification alarm."
-msgstr ""
+msgstr "Означите ово уколико желите аларм обавештења."
 
 #: src/orage-appointment-window.c:4029
 msgid "Set timeout"
@@ -1184,7 +1202,7 @@ msgstr "Подеси време истека"
 
 #: src/orage-appointment-window.c:4031
 msgid "Select this if you want notification to expire automatically."
-msgstr ""
+msgstr "Означите ово уколико желите да обавештење истекне само."
 
 #: src/orage-appointment-window.c:4042
 msgid "0 = system default expiration time"
@@ -1201,7 +1219,7 @@ msgstr "Поступак"
 
 #: src/orage-appointment-window.c:4066
 msgid "Select this if you want procedure or script alarm."
-msgstr ""
+msgstr "Означите ово уколико желите поступак или аларм скрипата."
 
 #: src/orage-appointment-window.c:4078
 msgid ""
@@ -1215,10 +1233,19 @@ msgid ""
 "- &lt;&amp;ST&gt; appointment start time\n"
 "- &lt;&amp;ET&gt; appointment end time"
 msgstr ""
+"<b>Обрада наредбе шкољке</b>\n"
+"Ниска се пушта непосредно шкољци, тако да било какав излаз морате сами решити.\n"
+"\n"
+"Следећи држачи места су замењени у извршавању:\n"
+"- &lt;&amp;T&gt;  наслов састанка\n"
+"- &lt;&amp;D&gt;  опис састанка\n"
+"- &lt;&amp;AT&gt; време аларма\n"
+"- &lt;&amp;ST&gt; почетно време састанка\n"
+"- &lt;&amp;ET&gt; време завршетка састанка"
 
 #: src/orage-appointment-window.c:4102
 msgid "Test this alarm by raising it now."
-msgstr ""
+msgstr "Испробајте аларм његовим издизањем сада."
 
 #: src/orage-appointment-window.c:4115
 msgid "<b>Default alarm</b>"
@@ -1226,7 +1253,7 @@ msgstr "<b>Подразумевани аларм</b>"
 
 #: src/orage-appointment-window.c:4130
 msgid "Store current settings as default alarm."
-msgstr ""
+msgstr "Сачувај тренутне поставке као подразумевани аларм."
 
 #: src/orage-appointment-window.c:4132
 msgid "_Revert"
@@ -1234,7 +1261,7 @@ msgstr "_Поништи"
 
 #: src/orage-appointment-window.c:4141
 msgid "Set current settings from default alarm."
-msgstr ""
+msgstr "Постави тренутне поставке из подразумеваног аларма."
 
 #: src/orage-appointment-window.c:4206
 msgid "None"
@@ -1291,6 +1318,10 @@ msgid ""
 "An exception can be either exclusion (-) or inclusion (+), depending on selection.\n"
 "Remove by clicking the date."
 msgstr ""
+"<b>Датуми изузетка</b>\n"
+"Додај датуме изузетка кликом на дане у календару испод.\n"
+"Изузеци могу бити или искључивање (-) или укључивање (+), у зависности од означавања.\n"
+"Уклони кликом на дан."
 
 #: src/orage-appointment-window.c:4324
 msgid "Add excluded date (-)"
@@ -1298,7 +1329,7 @@ msgstr "Додај изузети датум (-)"
 
 #: src/orage-appointment-window.c:4326
 msgid "Excluded days are full days where this appointment is not happening."
-msgstr ""
+msgstr "Изузету дани су цели дане у којима се овај састанак не дешава."
 
 #: src/orage-appointment-window.c:4333
 msgid "Add included time (+)"
@@ -1309,6 +1340,8 @@ msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time."
 msgstr ""
+"Обухваћена времена имају исту временску област као почетно време, али могу "
+"имати различито време."
 
 #. calendars showing the action days
 #: src/orage-appointment-window.c:4354
@@ -1402,15 +1435,15 @@ msgstr "минута"
 
 #: src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task."
-msgstr ""
+msgstr "Име или опис овог задатка усклађивања."
 
 #: src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization."
-msgstr ""
+msgstr "Наредба за усклађивање."
 
 #: src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes."
-msgstr ""
+msgstr "Међувреме усклађивања у минутима."
 
 #: src/orage-sync-edit-dialog.c:166 src/parameters.c:1430 src/reminder.c:696
 msgid "_Close"
@@ -1648,7 +1681,7 @@ msgstr "Користи ново корисничко сучеље"
 
 #: src/parameters.c:820
 msgid "Enable the new interface layout (requires restart)."
-msgstr ""
+msgstr "Омогући нови распоред сучеља (неопходно је препокретање)."
 
 #: src/parameters.c:825
 msgid "Show borders"
@@ -1867,7 +1900,7 @@ msgstr "Одлагање"
 
 #: src/reminder.c:714
 msgid "Remind me again after the specified time."
-msgstr ""
+msgstr "Подсети ме опет након наведеног времена."
 
 #: src/reminder.c:998
 msgid "Next active alarms:"
@@ -1876,11 +1909,11 @@ msgstr "Следећи укључени аларми:"
 #: src/reminder.c:1040
 #, c-format
 msgid "<span weight=\"bold\">%1$02d d %2$02d h %3$02d min to:</span> %4$s"
-msgstr ""
+msgstr "<span weight=\"bold\">%1$02d d %2$02d h %3$02d min до:</span> %4$s"
 
 #: src/reminder.c:1057
 msgid "No active alarms found"
-msgstr ""
+msgstr "Нису пронађени укључени аларми"
 
 #: src/timezone_names.c:31
 msgid "Africa"
