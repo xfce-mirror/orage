@@ -159,6 +159,12 @@ msgid ""
 "- Urgencies are still shown for all events.\n"
 "- Repeating events may appear earlier in the list because only the first occurrence is displayed."
 msgstr ""
+"แสดงเฉพาะเหตุการณ์ที่<b>เกิดซ้ำครั้งแรก</b>เท่านั้น\n"
+"ตามค่าเริ่มต้น เหตุการณ์ทั้งหมดจะแสดงขึ้น\n"
+"\n"
+"<b>หมายเหตุ:</b>\n"
+"- ความเร่งด่วนยังคงแสดงสำหรับทุกกิจกรรม\n"
+"- เหตุการณ์ที่เกิดซ้ำอาจปรากฏก่อนหน้าในรายการเนื่องจากแสดงเฉพาะเหตุการณ์แรกเท่านั้น"
 
 #: src/event-list.c:1319
 msgid "also old"
@@ -172,6 +178,11 @@ msgid ""
 "\n"
 "<b>Note:</b> The extra days setting still controls how many future appointments are shown."
 msgstr ""
+"แสดงกิจกรรมเก่าในรายการ\n"
+"\n"
+"ตัวเลือกนี้จะใช้ได้เฉพาะเมื่อเปิดใช้งานเฉพาะ<b>การทำซ้ำครั้งแรกเท่านั้น</b>เพื่อหลีกเลี่ยงรายการที่ยาวมาก\n"
+"\n"
+"<b>หมายเหตุ:</b> การตั้งค่าวันพิเศษยังคงควบคุมจำนวนการนัดหมายในอนาคตที่จะแสดง"
 
 #: src/event-list.c:1353 src/orage-appointment-window.c:3571
 #: src/orage-import.c:67
@@ -364,6 +375,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Archived and foreign events are not included."
 msgstr ""
+"เฉพาะกิจกรรมจากแฟ้มปฏิทินหลักเท่านั้นที่จะถูกส่งออก\n"
+"\n"
+"<b>หมายเหตุ:</b> ไม่รวมเหตุการณ์ที่เก็บเข้ากรุถาวรและเหตุการณ์ต่างจากพวก"
 
 #: src/interface.c:1173
 msgid ""
@@ -371,6 +385,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Foreign events are not included."
 msgstr ""
+"เฉพาะกิจกรรมจากแฟ้มปฏิทินหลักเท่านั้นที่จะถูกส่งออก\n"
+"\n"
+"<b>หมายเหตุ:</b> ไม่รวมเหตุการณ์ต่างจากพวก"
 
 #: src/interface.c:1178
 msgid "You can easily drag these from event-list window."
@@ -408,6 +425,8 @@ msgid ""
 "\n"
 "This is useful, for example, when exporting or moving Orage appointments to another system."
 msgstr ""
+"<b>กู้คืนเหตุการณ์ที่เก็บถาวร</b>ทั้งหมดลงในแฟ้ม Orage หลักและลบแฟ้มเก็บถาวรออก\n"
+"สิ่งนี้มีประโยชน์ เช่น เมื่อส่งออกหรือย้ายการนัดหมาย Orage ไปยังระบบอื่น"
 
 #: src/interface.c:1246
 msgid "Orage files"
@@ -439,6 +458,9 @@ msgid ""
 "\n"
 "External filesystem is not modified. The new file must already exist."
 msgstr ""
+"<b>เปลี่ยนชื่อแฟ้ม Orage ภายในเท่านั้น</b>\n"
+"\n"
+"ระบบแฟ้มภายนอกไม่มีการแก้ไข และแฟ้มใหม่ต้องมีอยู่"
 
 #: src/interface.c:1323 src/interface.c:1418
 msgid "Copy"
@@ -491,6 +513,9 @@ msgid ""
 "\n"
 "<b>Warning:</b> modifying foreign files may make them incompatible with the original application."
 msgstr ""
+"<b>เปิดใช้งานโหมดอ่านอย่างเดียว</b> หากคุณต้องการให้แน่ใจว่า Orage จะไม่แก้ไขแฟ้มนี้\n"
+"\n"
+"คำเตือน<b>: การแก้ไขแฟ้มต่างจากพวกอาจทำให้แฟ้มนั้นเข้ากันไม่ได้กับแอปพลิเคชันดั้งเดิม"
 
 #: src/interface.c:1524
 msgid "This internal name is displayed to user instead of file name."
@@ -912,6 +937,8 @@ msgid ""
 "<b>Recurrence is based on the start time.</b>\n"
 "The TODO repeats at regular intervals regardless of when it was last completed."
 msgstr ""
+"<b>การเกิดซ้ำจะขึ้นอยู่กับเวลาเริ่มต้น</b>\n"
+"สิ่งที่จะทำจะทำซ้ำเป็นระยะ ๆ โดยไม่คำนึงว่าจะเสร็จสิ้นครั้งล่าสุดเมื่อใด"
 
 #: src/orage-appointment-window.c:3488
 msgid ""
@@ -920,6 +947,10 @@ msgid ""
 "\n"
 "<b>Note:</b> the TODO history cannot be determined because the recurrence base changes after each completion."
 msgstr ""
+"<b>การเกิดซ้ำจะขึ้นอยู่กับเวลาที่เสร็จสมบูรณ์</b>\n"
+"สิ่งที่จะทำจะทำซ้ำหลังจากช่วงเวลานับจากเวลาที่เสร็จสิ้นครั้งล่าสุด\n"
+"\n"
+"<b>หมายเหตุ:</b> ไม่สามารถระบุประวัติสิ่งที่จะทำทำได้เนื่องจากฐานการเกิดซ้ำจะเปลี่ยนไปหลังจากเสร็จสิ้นแต่ละครั้ง"
 
 #: src/orage-appointment-window.c:3517
 msgid "Save"
@@ -955,18 +986,24 @@ msgid ""
 "<b>Event</b> that happens at a specific time.\n"
 "For example: meeting, birthday, or TV show."
 msgstr ""
+"<b>เหตุการณ์</b>ที่เกิดขึ้นในเวลาที่กำหนด\n"
+"เช่น การประชุม วันเกิด หรือรายการทีวี"
 
 #: src/orage-appointment-window.c:3576
 msgid ""
 "<b>Task or reminder</b> that should be completed sometime.\n"
 "For example: wash your car or test a new version of Orage."
 msgstr ""
+"<b>งานหรือการเตือนความจำ</b>ที่ควรทำให้เสร็จในบางครั้ง\n"
+"ตัวอย่างเช่น: ล้างรถของคุณหรือทดสอบ Orage เวอร์ชันใหม่"
 
 #: src/orage-appointment-window.c:3586
 msgid ""
 "<b>Journal entry</b> used to record something that happened.\n"
 "For example: your mother called or the first snow arrived."
 msgstr ""
+"<b>รายการบันทึกประจำวัน</b>ใช้เพื่อบันทึกสิ่งที่เกิดขึ้น\n"
+"ตัวอย่างเช่น: แม่ของคุณโทรมาหรือลมว่าวมาถึง"
 
 #. location
 #: src/orage-appointment-window.c:3599 src/orage-window-classic.c:453
@@ -1045,6 +1082,11 @@ msgid ""
 "<b>Alarms still trigger normally.</b>\n"
 "The default limit of 8 can be changed using an undocumented parameter."
 msgstr ""
+"<b>ความสำคัญระดับ 8 หรือสูงกว่า</b>จะซ่อนการนัดหมายจากหน้าต่างรายการ\n"
+"\n"
+"ซึ่งจะช่วยลดความยุ่งเหยิงแต่อาจทำให้การนัดหมายยากขึ้น\n"
+"<b>สัญญาณเตือนยังคงดังตามปกติ</b>\n"
+"ขีดจำกัดเริ่มต้นที่ 8 สามารถเปลี่ยนแปลงได้โดยใช้พารามิเตอร์ที่ไม่มีการระบุไว้"
 
 #. note
 #: src/orage-appointment-window.c:3754 src/orage-window-classic.c:466
@@ -1063,6 +1105,14 @@ msgid ""
 "<b>&lt;&amp;Ynnnn&gt;</b> is replaced with current year minus nnnn\n"
 "Useful for example in birthday reminders (e.g. age calculation)."
 msgstr ""
+"<b>คำสั่งชวเลข (มีผลทันที)</b>\n"
+"<b>&lt;D&gt;</b>แทรกวันที่ปัจจุบันในรูปแบบท้องถิ่น\n"
+" <b>&lt;T&gt;</b> แทรกเวลาปัจจุบัน\n"
+" <b>&lt;DT&gt;</b> แทรกวันที่และเวลา\n"
+"\n"
+"<b>คำสั่งล่าช้า (ประมวลผลในภายหลัง)</b>\n"
+"<b>&lt;&amp;ynnnn&gt;</b> จะถูกแทนที่ด้วยปีปัจจุบันลบ nnnn\n"
+"มีประโยชน์เช่นในการเตือนวันเกิด (เช่น การคำนวณอายุ)"
 
 #: src/orage-appointment-window.c:3864
 msgid "Alarm"
@@ -1081,6 +1131,11 @@ msgid ""
 "- before a TODO ends\n"
 "- after a TODO starts"
 msgstr ""
+"<b>ตัวเลือกตั้งเวลาปลุก</b>\n"
+"คุณสามารถกระตุ้นการเตือนได้:\n"
+"- ก่อนที่กิจกรรมจะเริ่มต้น\n"
+"- ก่อนที่สิ่งที่จะทำจะสิ้นสุดลง\n"
+"- หลังจากที่สิ่งที่จะทำเริ่มต้น"
 
 #: src/orage-appointment-window.c:3904
 msgid "Persistent alarm"
@@ -1177,6 +1232,15 @@ msgid ""
 "- &lt;&amp;ST&gt; appointment start time\n"
 "- &lt;&amp;ET&gt; appointment end time"
 msgstr ""
+"<b>การประมวลผลคำสั่งเชลล์</b>\n"
+"สตริงนี้ถูกส่งโดยตรงไปยังเชลล์ ดังนั้นคุณต้องจัดการการหลีกลบของอักขระทั้งหมดด้วยตัวเอง\n"
+"\n"
+"อักขระแทนต่อไปนี้จะถูกแทนที่ด้วยเมื่อรันไทม์:\n"
+"- &lt;&amp;t&gt; ชื่อการนัดหมาย\n"
+"- &lt;&amp;d&gt; คำอธิบายการนัดหมาย\n"
+"- &lt;&amp;at&gt; เวลาปลุก\n"
+"- &lt;&amp;st&gt; เวลาเริ่มต้นการนัดหมาย\n"
+"- &lt;&amp;et&gt; เวลาสิ้นสุดการนัดหมาย"
 
 #: src/orage-appointment-window.c:4102
 msgid "Test this alarm by raising it now."
@@ -1838,7 +1902,7 @@ msgstr "การปลุกเตือนถัดไป:"
 #: src/reminder.c:1040
 #, c-format
 msgid "<span weight=\"bold\">%1$02d d %2$02d h %3$02d min to:</span> %4$s"
-msgstr ""
+msgstr "<span weight=\"bold\">%1$02d วัน %2$02d ชม. %3$02d น.  ไปยัง:</span> %4$s"
 
 #: src/reminder.c:1057
 msgid "No active alarms found"
