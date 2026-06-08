@@ -29,7 +29,7 @@
 G_BEGIN_DECLS
 
 #define ORAGE_IMPORT_WINDOW_TYPE (orage_import_window_get_type ())
-#ifndef glib_autoptr_clear_XfceTitledDialog
+#if !LIBXFCE4UI_CHECK_VERSION(4, 21, 8)
 G_DEFINE_AUTOPTR_CLEANUP_FUNC (XfceTitledDialog, g_object_unref)
 #endif
 G_DECLARE_FINAL_TYPE (OrageImportWindow, orage_import_window, ORAGE,
