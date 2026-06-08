@@ -172,6 +172,11 @@ msgid ""
 "\n"
 "<b>Note:</b> The extra days setting still controls how many future appointments are shown."
 msgstr ""
+"Rodyti sąraše senus įvykius.\n"
+"\n"
+"Siekiant išvengti labai ilgų sąrašų, šis parametras yra prieinamas tik tada, kai įjungtas <b>Tik pirmą pasikartojantį</b>.\n"
+"\n"
+"<b>Pastaba:</b> Papildomų dienų nustatymas vis tiek valdo, kiek yra rodoma būsimų paskyrimų."
 
 #: src/event-list.c:1353 src/orage-appointment-window.c:3571
 #: src/orage-import.c:67
@@ -319,6 +324,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Commas are not allowed in Orage filenames."
 msgstr ""
+"Failų pavadinimus atskirkite kableliais.\n"
+"\n"
+"<b>Pastaba:</b> Kableliai neleidžiami Orage failo pavadinimuose."
 
 #: src/interface.c:1082
 msgid "Export"
@@ -1020,7 +1028,7 @@ msgstr "_Spalva"
 
 #: src/orage-appointment-window.c:3732
 msgid "Update colors for categories."
-msgstr ""
+msgstr "Atnaujinti kategorijų spalvas."
 
 #. priority
 #: src/orage-appointment-window.c:3738
@@ -1098,7 +1106,7 @@ msgstr ""
 
 #: src/orage-appointment-window.c:3932
 msgid "Sound command is not set."
-msgstr ""
+msgstr "Nėra nustatyta garso komanda."
 
 #: src/orage-appointment-window.c:3961
 msgid "Repeat alarm sound"
@@ -1250,6 +1258,7 @@ msgstr "Pridėti išimties datą (-)"
 #: src/orage-appointment-window.c:4326
 msgid "Excluded days are full days where this appointment is not happening."
 msgstr ""
+"Išimties dienos yra visos trukmės dienos, kuriomis šis paskyrimas nevyksta."
 
 #: src/orage-appointment-window.c:4333
 msgid "Add included time (+)"
@@ -1260,6 +1269,8 @@ msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time."
 msgstr ""
+"Įterpti laikai naudoja tą pačią laiko juostą kaip ir pradžios laikas, bet "
+"jie gali skirtis."
 
 #. calendars showing the action days
 #: src/orage-appointment-window.c:4354
@@ -1815,7 +1826,7 @@ msgstr "Atidėti"
 
 #: src/reminder.c:714
 msgid "Remind me again after the specified time."
-msgstr ""
+msgstr "Priminti vėl po nurodyto laiko."
 
 #: src/reminder.c:998
 msgid "Next active alarms:"
