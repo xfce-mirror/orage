@@ -159,6 +159,12 @@ msgid ""
 "- Urgencies are still shown for all events.\n"
 "- Repeating events may appear earlier in the list because only the first occurrence is displayed."
 msgstr ""
+"Näita ainult korduvate sündmuste <b>esimest kordumist</b>.\n"
+"Vaikimisi näidatakse kõike.\n"
+"\n"
+"<b>Märkus:</b>\n"
+"- edasilükkamatuks märgitud sündmusi näidatakse alati\n"
+"- korduvad sündmused võivad ilmuda nimekirjas eespool, kuna näidatakse ainult esimest sündmust."
 
 #: src/event-list.c:1319
 msgid "also old"
@@ -172,6 +178,11 @@ msgid ""
 "\n"
 "<b>Note:</b> The extra days setting still controls how many future appointments are shown."
 msgstr ""
+"Näita loendis vanu sündmusi.\n"
+"\n"
+"See valik on saadaval vaid siis, kui <b>esimene korduvus</b> on pikkade loendite vältimiseks lülitatud sisse.\n"
+"\n"
+"<b>Märkus:</b> Lisapäevade seadistus jätkuvalt määrab tulevikus näidatavate kohtumiste arvu."
 
 #: src/event-list.c:1353 src/orage-appointment-window.c:3571
 #: src/orage-import.c:67
@@ -222,6 +233,19 @@ msgid ""
 "5. Appointment type:\n"
 "   E = event, T = todo, J = journal"
 msgstr ""
+"Rea muutmiseks topeltklõpsa reale.\n"
+"\n"
+"Tunnused näitamise järjekorras:\n"
+" 1. Alarm:\n"
+"\t  n=ei ole alarmi, A=alarm on määratud, P=püsiv alarm on määratud\n"
+" 2. Kordused:\n"
+"\t n=ei kordu, H=iga tund, D=iga päev, W=iga nädal, M=iga kuu, Y=iga aasta\n"
+" 3. Tüüp:\n"
+"\t f=vaba B=hõivatud\n"
+" 4. Asub failis:\n"
+"\tO=Orage, A=arhiiv, F=väline\n"
+" 5. Kohtumise tüüp:\n"
+"\tE=sündmus, T=agenda, J=päevik"
 
 #: src/ical-code.c:856
 msgid "Orage default alarm"
@@ -320,6 +344,8 @@ msgid ""
 "\n"
 "<b>Note:</b> Commas are not allowed in Orage filenames."
 msgstr ""
+"Eralda failinimed komaga.\n"
+"<b>Märkus:</b> koma ei ole kehtiv tähemärk Orage'i failinimedes."
 
 #: src/interface.c:1082
 msgid "Export"
@@ -347,6 +373,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Archived and foreign events are not included."
 msgstr ""
+"Eksporditakse vaid põhilise kalendrifaili sündmused.\n"
+"\n"
+"<b>Märkus:</b> Arhiveeritud ja välised sündmused pole kaasatud."
 
 #: src/interface.c:1173
 msgid ""
@@ -354,6 +383,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Foreign events are not included."
 msgstr ""
+"Eksporditakse vaid põhilise kalendrifaili sündmused.\n"
+"\n"
+"<b>Märkus:</b> Välised sündmused pole kaasatud."
 
 #: src/interface.c:1178
 msgid "You can easily drag these from event-list window."
@@ -379,7 +411,7 @@ msgstr "Arhiveeri nüüd (lävi: %d kuud)"
 
 #: src/interface.c:1212
 msgid "You can change archive threshold in parameters."
-msgstr ""
+msgstr "Arhiiveerimise lävendit saad muuta parameetrite alt."
 
 #: src/interface.c:1224
 msgid "Revert archive now"
@@ -391,6 +423,9 @@ msgid ""
 "\n"
 "This is useful, for example, when exporting or moving Orage appointments to another system."
 msgstr ""
+"<b>Taasta kõik arhiveeritud sündmused</b> Orage'i põhifaili ja kustuta arhiivifail.\n"
+"\n"
+"See võimalus sobib kasutamiseks näiteks siis, kui plaanid andmeid eksportida mõnes muus arvutis asuvasse rakendusse."
 
 #: src/interface.c:1246
 msgid "Orage files"
@@ -422,6 +457,9 @@ msgid ""
 "\n"
 "External filesystem is not modified. The new file must already exist."
 msgstr ""
+"<b>Vaid Orage'i sisemine failinimi.</b>\n"
+"\n"
+"Väline failisüsteem jääb muutmata. Uus fail peab juba olema olemas."
 
 #: src/interface.c:1323 src/interface.c:1418
 msgid "Copy"
@@ -474,6 +512,9 @@ msgid ""
 "\n"
 "<b>Warning:</b> modifying foreign files may make them incompatible with the original application."
 msgstr ""
+"<b>Vali ainult lugemisõigustes režiim</b>, kui soovid tagada, et Orage ei muudaks kunagi seda faili.\n"
+"\n"
+"<b>Hoiatus:</b>  välisfailide muutmine võib need muuta kasutuskõlbmatuks algsetes vahendites, kust need pärinevad!"
 
 #: src/interface.c:1524
 msgid "This internal name is displayed to user instead of file name."
@@ -898,6 +939,8 @@ msgid ""
 "<b>Recurrence is based on the start time.</b>\n"
 "The TODO repeats at regular intervals regardless of when it was last completed."
 msgstr ""
+"<b>Korduvus põhineb algusajal.</b>\n"
+"Ülesannet korratakse sõltumata viimatisesst valmissaamisest."
 
 #: src/orage-appointment-window.c:3488
 msgid ""
@@ -906,6 +949,10 @@ msgid ""
 "\n"
 "<b>Note:</b> the TODO history cannot be determined because the recurrence base changes after each completion."
 msgstr ""
+"<b>Korduvus põhineb lõpetamise ajal.</b>\n"
+"Ülesannet  korratakse, kui etteantud aeg on möödunud valmissaamisest.\n"
+"\n"
+"<b>Märkus:</b> Kuna korduvuse lähtepunkt muutub iga täitmise järel, siis ülesande ajalugu ei saa täpselt kindlaks teha."
 
 #: src/orage-appointment-window.c:3517
 msgid "Save"
@@ -949,12 +996,16 @@ msgid ""
 "<b>Task or reminder</b> that should be completed sometime.\n"
 "For example: wash your car or test a new version of Orage."
 msgstr ""
+"<b>Ülesanne või meeldetuletus</b> mida sa peaksid kunagi tegema.\n"
+"Näiteks: pese autot või katseta Orage'i uut versiooni."
 
 #: src/orage-appointment-window.c:3586
 msgid ""
 "<b>Journal entry</b> used to record something that happened.\n"
 "For example: your mother called or the first snow arrived."
 msgstr ""
+"<b>Päevikukirje</b> juba toimunud sündmuste ülesmärkimiseks.\n"
+"Näiteks: sinu ema helistas või esimest korda sadas lund."
 
 #. location
 #: src/orage-appointment-window.c:3599 src/orage-window-classic.c:453
@@ -1018,7 +1069,7 @@ msgstr "_Värv"
 
 #: src/orage-appointment-window.c:3732
 msgid "Update colors for categories."
-msgstr ""
+msgstr "Uuenda kategooriate värve."
 
 #. priority
 #: src/orage-appointment-window.c:3738
@@ -1033,6 +1084,11 @@ msgid ""
 "<b>Alarms still trigger normally.</b>\n"
 "The default limit of 8 can be changed using an undocumented parameter."
 msgstr ""
+"<b>Kaheksas või kõrgem prioriteet</b> peidab kohtumise loendiaknast.\n"
+"\n"
+"See vähendab taustamüra, kuid muudab kohtumise raskemini leitavaks.\n"
+"<b>Alarmid käivituvad jätkuvalt tavalisel moel.</b>\n"
+"Vaikimisi piiri (8) saad muuta kasutades dokumenteerimata parameetrit."
 
 #. note
 #: src/orage-appointment-window.c:3754 src/orage-window-classic.c:466
@@ -1051,6 +1107,14 @@ msgid ""
 "<b>&lt;&amp;Ynnnn&gt;</b> is replaced with current year minus nnnn\n"
 "Useful for example in birthday reminders (e.g. age calculation)."
 msgstr ""
+"<b>Kiirkäsud (toimivad kohe)</b>\n"
+"<b>&lt;D&gt;</b> sisestab praeguse kuupäeva kohalikus vormingus\n"
+"<b>&lt;T&gt;</b> sisestab praeguse aja\n"
+"<b>&lt;DT&gt;</b> sisestab praeguse kuupäeva ja aja\n"
+"\n"
+"<b>Viivitatud käsud (töödeldakse hiljem)</b>\n"
+"<b>&lt;&amp;Ynnnn&gt;</b> asendatakse praeguse aastaga miinus nnnn\n"
+"Sobib kasutamiseks näiteks sünnipäevade meeldetuletuste jaoks (nt. vanuse arvutamisel)."
 
 #: src/orage-appointment-window.c:3864
 msgid "Alarm"
@@ -1069,6 +1133,11 @@ msgid ""
 "- before a TODO ends\n"
 "- after a TODO starts"
 msgstr ""
+"<b>Alarmi ajastamise valikud</b>\n"
+"Tavaliselt läheb sul alarmi vaja:\n"
+" 1) enne sündmuse algust\n"
+" 2) enne ülesande lõppu\n"
+" 3) pärast ülesande algust"
 
 #: src/orage-appointment-window.c:3904
 msgid "Persistent alarm"
@@ -1092,11 +1161,11 @@ msgstr "Kasuta"
 
 #: src/orage-appointment-window.c:3927
 msgid "Select this if you want audible alarm."
-msgstr ""
+msgstr "Vali juhul, kui soovid kuuldavat alarmi."
 
 #: src/orage-appointment-window.c:3932
 msgid "Sound command is not set."
-msgstr ""
+msgstr "Heli käsk on määramata."
 
 #: src/orage-appointment-window.c:3961
 msgid "Repeat alarm sound"
@@ -1117,7 +1186,7 @@ msgstr "Kasuta Orage'i akent"
 
 #: src/orage-appointment-window.c:4007
 msgid "Select this if you want Orage window alarm."
-msgstr ""
+msgstr "Vali juhul, kui soovid alarmi Orage'i aknas."
 
 #: src/orage-appointment-window.c:4019
 msgid "Use notification"
@@ -1125,7 +1194,7 @@ msgstr "Kasuta märguannet"
 
 #: src/orage-appointment-window.c:4021
 msgid "Select this if you want notification alarm."
-msgstr ""
+msgstr "Vali juhul, kui soovid alarmi märguandena."
 
 #: src/orage-appointment-window.c:4029
 msgid "Set timeout"
@@ -1133,7 +1202,7 @@ msgstr "Määra aegumine"
 
 #: src/orage-appointment-window.c:4031
 msgid "Select this if you want notification to expire automatically."
-msgstr ""
+msgstr "Vali juhul, kui soovid automaatselt aeguvat märguannet."
 
 #: src/orage-appointment-window.c:4042
 msgid "0 = system default expiration time"
@@ -1150,7 +1219,7 @@ msgstr "Toiming"
 
 #: src/orage-appointment-window.c:4066
 msgid "Select this if you want procedure or script alarm."
-msgstr ""
+msgstr "Vali juhul, kui soovid protseduuri- või skriptialarmi."
 
 #: src/orage-appointment-window.c:4078
 msgid ""
@@ -1164,10 +1233,19 @@ msgid ""
 "- &lt;&amp;ST&gt; appointment start time\n"
 "- &lt;&amp;ET&gt; appointment end time"
 msgstr ""
+"<b>Kestakäsu töötlus</b>\n"
+"See sisu antakse täitmiseks kestale otse edasi, seega pead sisestama kõik pao- muud kontrollmärgid ise.\n"
+"\n"
+"Järgnevad erikäsud asendatakse töö käigus:\n"
+"\t<&T>  kohtumise pealkiri\n"
+"\t<&D>  kohtumise kirjeldus\n"
+"\t<&AT> alarmi aeg\n"
+"\t<&ST> kohtumise algusaeg\n"
+"\t<&ET> kohtumise lõpuaeg"
 
 #: src/orage-appointment-window.c:4102
 msgid "Test this alarm by raising it now."
-msgstr ""
+msgstr "Katseta alarmi nüüd"
 
 #: src/orage-appointment-window.c:4115
 msgid "<b>Default alarm</b>"
@@ -1175,7 +1253,7 @@ msgstr "<b>Vaikimsi alarm</b>"
 
 #: src/orage-appointment-window.c:4130
 msgid "Store current settings as default alarm."
-msgstr ""
+msgstr "Säilita käesolevad seadistused vaikimisi alarmina"
 
 #: src/orage-appointment-window.c:4132
 msgid "_Revert"
@@ -1183,7 +1261,7 @@ msgstr "_Taasta"
 
 #: src/orage-appointment-window.c:4141
 msgid "Set current settings from default alarm."
-msgstr ""
+msgstr "Määra käesolevad seadistused vaikimisi alarmi põhjal"
 
 #: src/orage-appointment-window.c:4206
 msgid "None"
@@ -1240,6 +1318,11 @@ msgid ""
 "An exception can be either exclusion (-) or inclusion (+), depending on selection.\n"
 "Remove by clicking the date."
 msgstr ""
+"<b>Kuupäevade erandid</b>\n"
+"\n"
+"Klikkides all olevat kalendrit, saad lisada erandite kuupäevi.\n"
+"Sõltuvalt valikust on erandid kas välitamine(-) või kaasamine(+).\n"
+"Erandeid saab eemaldada neil klõpsides."
 
 #: src/orage-appointment-window.c:4324
 msgid "Add excluded date (-)"
@@ -1247,7 +1330,7 @@ msgstr "Lisa välja jäetud kuupäev (-)"
 
 #: src/orage-appointment-window.c:4326
 msgid "Excluded days are full days where this appointment is not happening."
-msgstr ""
+msgstr "Välja jäetud päevad on täispäevad, mil seda kohtumist ei toimu"
 
 #: src/orage-appointment-window.c:4333
 msgid "Add included time (+)"
@@ -1258,6 +1341,8 @@ msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time."
 msgstr ""
+"Kaasatud kellaaegadel on sama ajavöönd kui algusajal, kuid neil võib olla "
+"erinev aeg"
 
 #. calendars showing the action days
 #: src/orage-appointment-window.c:4354
@@ -1351,15 +1436,15 @@ msgstr "minutit"
 
 #: src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task."
-msgstr ""
+msgstr "Selle sünkroonimisülesande nimi või kirjeldus"
 
 #: src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization."
-msgstr ""
+msgstr "Sünkroonimise käsk"
 
 #: src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes."
-msgstr ""
+msgstr "Sünkroonimise periood minutites"
 
 #: src/orage-sync-edit-dialog.c:166 src/parameters.c:1430 src/reminder.c:696
 msgid "_Close"
@@ -1597,6 +1682,8 @@ msgstr "Kasuta uut kasutajaliidest"
 #: src/parameters.c:820
 msgid "Enable the new interface layout (requires restart)."
 msgstr ""
+"Lülita kasutajaliidese uus paigutus sisse (eeldab rakenduse uuesti "
+"käivitamist)"
 
 #: src/parameters.c:825
 msgid "Show borders"
@@ -1814,7 +1901,7 @@ msgstr "Lükka edasi"
 
 #: src/reminder.c:714
 msgid "Remind me again after the specified time."
-msgstr ""
+msgstr "Märgitud aja möödumisel tuleta mulle uuesti meelde"
 
 #: src/reminder.c:998
 msgid "Next active alarms:"
@@ -1823,11 +1910,11 @@ msgstr "Järgmised aktiivsed alarmid:"
 #: src/reminder.c:1040
 #, c-format
 msgid "<span weight=\"bold\">%1$02d d %2$02d h %3$02d min to:</span> %4$s"
-msgstr ""
+msgstr "<span weight=\"bold\">%1$02d pv %2$02d t %3$02d min kuni:</span> %4$s"
 
 #: src/reminder.c:1057
 msgid "No active alarms found"
-msgstr ""
+msgstr "Ühtegi aktiivset alarmi ei leidunud"
 
 #: src/timezone_names.c:31
 msgid "Africa"
