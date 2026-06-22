@@ -4,10 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Xfce Bot <transifex@xfce.org>, 2024
-# Nick Schermer <nick@xfce.org>, 2025
-# Erkki Moorits, 2026
-# Priit Jõerüüt <transifex@joeruut.com>, 2026
+# ზურაბი დავითაშვილი <zurabi@tuta.io>, 2025
+# Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2026
 # 
 #, fuzzy
 msgid ""
@@ -16,60 +14,60 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2026-05-14 12:55+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Priit Jõerüüt <transifex@joeruut.com>, 2026\n"
-"Language-Team: Estonian (https://app.transifex.com/xfce/teams/16840/et/)\n"
+"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2026\n"
+"Language-Team: Georgian (https://app.transifex.com/xfce/teams/16840/ka/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: et\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: ka\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
 #. date only appointment
 #: src/event-list.c:183
 msgid "All day"
-msgstr "Terve päev"
+msgstr "მთელი დღე"
 
 #: src/event-list.c:607 src/event-list.c:1456
 msgid "Time"
-msgstr "Aeg"
+msgstr "დრო"
 
 #: src/event-list.c:789
 msgid "No rows have been selected."
-msgstr "Ühtegi veergu pole valitud."
+msgstr ""
 
 #: src/event-list.c:790
 msgid "Click a row to select it and after that you can copy it."
-msgstr "Kopeerimiseks klõpsa esmalt veerul"
+msgstr ""
 
 #: src/event-list.c:1014
 msgid "You will permanently remove all selected appointments."
-msgstr "Sa eemaldad valitud kohtumised jäädavalt."
+msgstr ""
 
 #: src/event-list.c:1015 src/orage-appointment-window.c:982
 #: src/orage-appointment-window.c:1645 src/parameters.c:644
 msgid "Do you want to continue?"
-msgstr "Kas jätkame?"
+msgstr "გნებავთ, გააგრძელოთ?"
 
 #: src/event-list.c:1016 src/orage-appointment-window.c:1646
 #: src/parameters.c:645
 msgid "No, cancel the removal"
-msgstr "Ei, katkesta eemaldamine"
+msgstr "არა, გააუქმე წაშლა"
 
 #: src/event-list.c:1017
 msgid "Yes, remove them"
-msgstr "Jah, kustuta"
+msgstr "დიახ, წაშალე ისინი"
 
 #: src/event-list.c:1077 src/orage-appointment-window.c:1744
 #: src/orage-appointment-window.c:1759 src/orage-month-view.c:175
 #: src/orage-week-window.c:565
 msgid "Pick the date"
-msgstr "Vali kuupäev"
+msgstr "აირჩიეთ თარიღი"
 
 #: src/event-list.c:1079 src/event-list.c:1233
 #: src/orage-appointment-window.c:1746 src/orage-appointment-window.c:1761
 #: src/orage-week-window.c:494 src/orage-week-window.c:567 src/tray_icon.c:386
 msgid "Today"
-msgstr "Täna"
+msgstr "დღეს"
 
 #. ********* File menu *********
 #. File menu
@@ -80,75 +78,75 @@ msgstr "Täna"
 #: src/orage-appointment-window.c:2877 src/orage-week-window.c:388
 #: src/orage-window-classic.c:281 src/orage-window-next.c:130
 msgid "_File"
-msgstr "_Fail"
+msgstr "_ფაილი"
 
 #: src/event-list.c:1140 src/orage-appointment-window.c:2895
 msgid "D_uplicate"
-msgstr "_Klooni"
+msgstr "_დუბლირება"
 
 #. ********* View menu *********
 #. View menu
 #: src/event-list.c:1157 src/orage-week-window.c:398
 #: src/orage-window-classic.c:310 src/orage-window-next.c:142
 msgid "_View"
-msgstr "_Vaade"
+msgstr "_ხედი"
 
 #. ********* Go menu   *********
 #: src/event-list.c:1176 src/orage-week-window.c:412
 msgid "_Go"
-msgstr "_Liigu"
+msgstr "_წინ"
 
 #: src/event-list.c:1222 src/orage-week-window.c:485
 #: src/orage-window-next.c:131
 msgid "New"
-msgstr "Uus"
+msgstr "ახალი"
 
 #: src/event-list.c:1224 src/orage-appointment-window.c:3526
 msgid "Duplicate"
-msgstr "Klooni"
+msgstr "დუბლირება"
 
 #: src/event-list.c:1226 src/orage-appointment-window.c:3531
 msgid "Delete"
-msgstr "Kustuta"
+msgstr "წაშლა"
 
 #: src/event-list.c:1231
 msgid "Back"
-msgstr "Tagasi"
+msgstr "უკან"
 
 #: src/event-list.c:1235
 msgid "Forward"
-msgstr "Edasi"
+msgstr "წინ"
 
 #: src/event-list.c:1240 src/orage-week-window.c:503
 #: src/orage-window-next.c:133
 msgid "Refresh"
-msgstr "Värskenda"
+msgstr "განახლება"
 
 #: src/event-list.c:1242
 msgid "Find"
-msgstr "Leia"
+msgstr "ძებნა"
 
 #: src/event-list.c:1247 src/interface.c:883 src/orage-week-window.c:508
 #: src/orage-window-next.c:136
 msgid "Close"
-msgstr "Sulge"
+msgstr "დახურვა"
 
 #: src/event-list.c:1249
 msgid "Dayview"
-msgstr "Päevavaade"
+msgstr "დღის ხედი"
 
 #: src/event-list.c:1279 src/orage-appointment-window.c:3561
 #: src/orage-import.c:64
 msgid "Event"
-msgstr "Sündmus"
+msgstr "მოვლენა"
 
 #: src/event-list.c:1284
 msgid "Extra days to show:"
-msgstr "Näita lisapäevi:"
+msgstr ""
 
 #: src/event-list.c:1298
 msgid "only first repeating"
-msgstr "ainult esimene kordus"
+msgstr ""
 
 #: src/event-list.c:1307
 msgid ""
@@ -159,16 +157,10 @@ msgid ""
 "- Urgencies are still shown for all events.\n"
 "- Repeating events may appear earlier in the list because only the first occurrence is displayed."
 msgstr ""
-"Näita ainult korduvate sündmuste <b>esimest kordumist</b>.\n"
-"Vaikimisi näidatakse kõike.\n"
-"\n"
-"<b>Märkus:</b>\n"
-"- edasilükkamatuks märgitud sündmusi näidatakse alati\n"
-"- korduvad sündmused võivad ilmuda nimekirjas eespool, kuna näidatakse ainult esimest sündmust."
 
 #: src/event-list.c:1319
 msgid "also old"
-msgstr "lisaks vana"
+msgstr ""
 
 #: src/event-list.c:1325
 msgid ""
@@ -178,44 +170,39 @@ msgid ""
 "\n"
 "<b>Note:</b> The extra days setting still controls how many future appointments are shown."
 msgstr ""
-"Näita loendis vanu sündmusi.\n"
-"\n"
-"See valik on saadaval vaid siis, kui <b>esimene korduvus</b> on pikkade loendite vältimiseks lülitatud sisse.\n"
-"\n"
-"<b>Märkus:</b> Lisapäevade seadistus jätkuvalt määrab tulevikus näidatavate kohtumiste arvu."
 
 #: src/event-list.c:1353 src/orage-appointment-window.c:3571
 #: src/orage-import.c:67
 msgid "Todo"
-msgstr "Agenda"
+msgstr "გეგმა"
 
 #: src/event-list.c:1367 src/orage-appointment-window.c:3580
 #: src/orage-import.c:70
 msgid "Journal"
-msgstr "Päevik"
+msgstr "ჟურნალი"
 
 #: src/event-list.c:1370
 msgid "Journal entries starting from:"
-msgstr "Päeviku sissekanded algavad alates:"
+msgstr ""
 
 #: src/event-list.c:1395
 msgid "Search"
-msgstr "Otsi"
+msgstr "ძებნა"
 
 #: src/event-list.c:1398
 msgid "Search text "
-msgstr "Otsi teksti "
+msgstr ""
 
 #: src/event-list.c:1464
 msgid "Flags"
-msgstr "Lipud"
+msgstr "ალმები"
 
 #. title
 #: src/event-list.c:1472 src/orage-appointment-window.c:3593
 #: src/orage-window-classic.c:487 src/orage-window-classic.c:504
 #: src/orage-window-next.c:893 src/orage-window-next.c:911
 msgid "Title"
-msgstr "Pealkiri"
+msgstr "სათაური"
 
 #: src/event-list.c:1499
 msgid ""
@@ -233,110 +220,96 @@ msgid ""
 "5. Appointment type:\n"
 "   E = event, T = todo, J = journal"
 msgstr ""
-"Rea muutmiseks topeltklõpsa reale.\n"
-"\n"
-"Tunnused näitamise järjekorras:\n"
-" 1. Alarm:\n"
-"\t  n=ei ole alarmi, A=alarm on määratud, P=püsiv alarm on määratud\n"
-" 2. Kordused:\n"
-"\t n=ei kordu, H=iga tund, D=iga päev, W=iga nädal, M=iga kuu, Y=iga aasta\n"
-" 3. Tüüp:\n"
-"\t f=vaba B=hõivatud\n"
-" 4. Asub failis:\n"
-"\tO=Orage, A=arhiiv, F=väline\n"
-" 5. Kohtumise tüüp:\n"
-"\tE=sündmus, T=agenda, J=päevik"
 
 #: src/ical-code.c:856
 msgid "Orage default alarm"
-msgstr "Orage'i vaikimisi alarm"
+msgstr ""
 
 #. to avoid timing problems when updating entry
 #. Create file chooser
 #: src/interface.c:269 src/orage-appointment-window.c:932 src/parameters.c:390
 msgid "Select a file..."
-msgstr "Vali fail..."
+msgstr ""
 
 #: src/interface.c:276
 msgid "Calendar files"
-msgstr "Kalendrifailid"
+msgstr "კალენდრის ფაილები"
 
 #: src/interface.c:282 src/orage-appointment-window.c:947
 msgid "All Files"
-msgstr "Kõik failid"
+msgstr "ყველა ფაილი"
 
 #: src/interface.c:654
 msgid "Current foreign files"
-msgstr "Hetkel kasutusel olevad välised failid"
+msgstr ""
 
 #: src/interface.c:677
 msgid "READ ONLY"
-msgstr "AINULT LUGEMISEKS"
+msgstr "მხოლოდ წაკითხვადი"
 
 #: src/interface.c:679
 msgid "READ WRITE"
-msgstr "LUGEMINE KIRJUTAMINE"
+msgstr "წაკითხვა-ჩაწერა"
 
 #: src/interface.c:684 src/orage-appointment-window.c:2331
 msgid "_Remove"
-msgstr "_Eemalda"
+msgstr "_წაშლა"
 
 #: src/interface.c:703
 msgid "***** No foreign files *****"
-msgstr "***** Pole väliseid faile *****"
+msgstr ""
 
 #: src/interface.c:718
 msgid "Foreign file add failed"
-msgstr "Välise faili lisamine ei õnnestunud"
+msgstr ""
 
 #: src/interface.c:725
 msgid "Orage can only handle 10 foreign files. Limit reached"
 msgstr ""
-"Orage saab hallata vaid kuni 10't välist faili ja see piir on nüüd käes"
 
 #: src/interface.c:735
 msgid "Filename is empty."
-msgstr "Faili nimi on puudu."
+msgstr "ფაილის სახელი ცარიელია."
 
 #: src/interface.c:745
 msgid "Name is empty."
-msgstr "Nimi on puudu."
+msgstr "სახელი ცარიელია."
 
 #: src/interface.c:755
 msgid "File does not exist."
-msgstr "Faili pole olemas."
+msgstr "ფაილი არ არსებობს."
 
 #: src/interface.c:766
 msgid "Same filename already exists in Orage."
-msgstr "Orage juba kasutab sellise nimega faili."
+msgstr ""
 
 #: src/interface.c:776
 msgid "Same name already exists in Orage."
-msgstr "Orage juba kasutab sellist nime."
+msgstr ""
 
 #: src/interface.c:1029
 msgid "Import/export"
-msgstr "Impordi/ekspordi"
+msgstr "შეტანა/გატანა"
 
 #: src/interface.c:1036
 msgid "Import"
-msgstr "Impordi"
+msgstr "შემოტანა"
 
 #: src/interface.c:1044
 msgid "Read from file:"
-msgstr "Loe failist:"
+msgstr "წაკითხვა ფაილიდან:"
 
 #: src/interface.c:1054 src/interface.c:1103 src/interface.c:1287
 #: src/interface.c:1388 src/interface.c:1477
 #: src/orage-appointment-window.c:3948 src/parameters.c:395
 #: src/parameters.c:763 src/reminder.c:689
 msgid "_Open"
-msgstr "_Ava"
+msgstr "_გახსნა"
 
 #: src/interface.c:1061 src/interface.c:1110 src/interface.c:1294
 #: src/interface.c:1395 src/orage-appointment-window.c:4121
 msgid "_Save"
-msgstr "_Salvesta"
+msgstr "_შენახვა"
 
 #: src/interface.c:1075
 msgid ""
@@ -344,28 +317,26 @@ msgid ""
 "\n"
 "<b>Note:</b> Commas are not allowed in Orage filenames."
 msgstr ""
-"Eralda failinimed komaga.\n"
-"<b>Märkus:</b> koma ei ole kehtiv tähemärk Orage'i failinimedes."
 
 #: src/interface.c:1082
 msgid "Export"
-msgstr "Ekspordi"
+msgstr "გატანა"
 
 #: src/interface.c:1090
 msgid "Write to file:"
-msgstr "Kirjuta faili:"
+msgstr "ჩაწერა ფაილში:"
 
 #: src/interface.c:1125 src/interface.c:1143
 msgid "Select"
-msgstr "Vali"
+msgstr "არჩევა"
 
 #: src/interface.c:1130
 msgid "All appointments"
-msgstr "Kõik kohtumised"
+msgstr ""
 
 #: src/interface.c:1149
 msgid "Named appointments:"
-msgstr "Nimetatud kohtumised: "
+msgstr ""
 
 #: src/interface.c:1168
 msgid ""
@@ -373,9 +344,6 @@ msgid ""
 "\n"
 "<b>Note:</b> Archived and foreign events are not included."
 msgstr ""
-"Eksporditakse vaid põhilise kalendrifaili sündmused.\n"
-"\n"
-"<b>Märkus:</b> Arhiveeritud ja välised sündmused pole kaasatud."
 
 #: src/interface.c:1173
 msgid ""
@@ -383,39 +351,36 @@ msgid ""
 "\n"
 "<b>Note:</b> Foreign events are not included."
 msgstr ""
-"Eksporditakse vaid põhilise kalendrifaili sündmused.\n"
-"\n"
-"<b>Märkus:</b> Välised sündmused pole kaasatud."
 
 #: src/interface.c:1178
 msgid "You can easily drag these from event-list window."
-msgstr "Saad neid vaevata lohistada sündmusteloendi aknast."
+msgstr ""
 
 #: src/interface.c:1180
 msgid "Orage appointment UIDs separated by commas."
-msgstr "Orage'i kohtumiste UID-d, eraldatud komadega."
+msgstr ""
 
 #: src/interface.c:1186
 msgid "Archive"
-msgstr "Arhiiv"
+msgstr "არქივი"
 
 #: src/interface.c:1195 src/interface.c:1217
 #: src/orage-appointment-window.c:4100
 msgid "_Execute"
-msgstr "_Käivita"
+msgstr "შ_ესრულება"
 
 #: src/interface.c:1201
 #, c-format
 msgid "Archive now (threshold: %d months)"
-msgstr "Arhiveeri nüüd (lävi: %d kuud)"
+msgstr ""
 
 #: src/interface.c:1212
 msgid "You can change archive threshold in parameters."
-msgstr "Arhiiveerimise lävendit saad muuta parameetrite alt."
+msgstr ""
 
 #: src/interface.c:1224
 msgid "Revert archive now"
-msgstr "Tühista arhiivi kasutamine kohe"
+msgstr ""
 
 #: src/interface.c:1232
 msgid ""
@@ -423,33 +388,30 @@ msgid ""
 "\n"
 "This is useful, for example, when exporting or moving Orage appointments to another system."
 msgstr ""
-"<b>Taasta kõik arhiveeritud sündmused</b> Orage'i põhifaili ja kustuta arhiivifail.\n"
-"\n"
-"See võimalus sobib kasutamiseks näiteks siis, kui plaanid andmeid eksportida mõnes muus arvutis asuvasse rakendusse."
 
 #: src/interface.c:1246
 msgid "Orage files"
-msgstr "Orage'i failid"
+msgstr "Orage-ის ფაილები"
 
 #: src/interface.c:1253
 msgid "Orage main calendar file"
-msgstr "Orage'i põhikalendri fail"
+msgstr ""
 
 #: src/interface.c:1262 src/interface.c:1364
 msgid "Current file:"
-msgstr "Praegune fail:"
+msgstr "მიმდინარე ფაილი:"
 
 #: src/interface.c:1275 src/interface.c:1377
 msgid "New file:"
-msgstr "Uus fail:"
+msgstr "ახალი ფაილი:"
 
 #: src/interface.c:1305 src/interface.c:1406
 msgid "Action options:"
-msgstr "Tegevuste valikud:"
+msgstr "ქმედების პარამეტრები:"
 
 #: src/interface.c:1309 src/interface.c:1410
 msgid "Rename"
-msgstr "Muuda nime"
+msgstr "სახელის გადარქმევა"
 
 #: src/interface.c:1317
 msgid ""
@@ -457,54 +419,51 @@ msgid ""
 "\n"
 "External filesystem is not modified. The new file must already exist."
 msgstr ""
-"<b>Vaid Orage'i sisemine failinimi.</b>\n"
-"\n"
-"Väline failisüsteem jääb muutmata. Uus fail peab juba olema olemas."
 
 #: src/interface.c:1323 src/interface.c:1418
 msgid "Copy"
-msgstr "Kopeeri"
+msgstr "ასლი"
 
 #: src/interface.c:1330
 msgid "Current file is copied and stays unmodified in the old place."
-msgstr "Käesolevat faili kopeeritakse ja see jääb muutumatuna vanasse kohta."
+msgstr ""
 
 #: src/interface.c:1334 src/interface.c:1426
 msgid "Move"
-msgstr "Liiguta"
+msgstr "გადატანა"
 
 #: src/interface.c:1341
 msgid "Current file is moved and vanishes from the old place."
-msgstr "Käesolevat faili liigutatakse ja see kaob vanast kohast."
+msgstr ""
 
 #: src/interface.c:1355
 msgid "Archive file"
-msgstr "Arhiveeri fail"
+msgstr "არქივის ფაილი"
 
 #: src/interface.c:1452
 msgid "Foreign files"
-msgstr "Välised failid"
+msgstr "უცხო ფაილები"
 
 #: src/interface.c:1459
 msgid "Add new foreign file"
-msgstr "Lisa uus väline fail"
+msgstr "ახალი უცხო ფაილის დამატება"
 
 #: src/interface.c:1467
 msgid "Foreign file:"
-msgstr "Väline fail:"
+msgstr "უცხო ფაილი:"
 
 #: src/interface.c:1484 src/orage-appointment-window.c:2404
 #: src/parameters.c:1387
 msgid "_Add"
-msgstr "_Lisa"
+msgstr "_დამატება"
 
 #: src/interface.c:1499
 msgid "Visible name:"
-msgstr "Kuvatav nimi:"
+msgstr "ხილული სახელი:"
 
 #: src/interface.c:1509
 msgid "Read only"
-msgstr "Ainult lugemiseks"
+msgstr "მხოლოდ წაკითხვა"
 
 #: src/interface.c:1519
 msgid ""
@@ -512,17 +471,14 @@ msgid ""
 "\n"
 "<b>Warning:</b> modifying foreign files may make them incompatible with the original application."
 msgstr ""
-"<b>Vali ainult lugemisõigustes režiim</b>, kui soovid tagada, et Orage ei muudaks kunagi seda faili.\n"
-"\n"
-"<b>Hoiatus:</b>  välisfailide muutmine võib need muuta kasutuskõlbmatuks algsetes vahendites, kust need pärinevad!"
 
 #: src/interface.c:1524
 msgid "This internal name is displayed to user instead of file name."
-msgstr "Seda nime kuvatakse kasutajale failinime asemel."
+msgstr ""
 
 #: src/interface.c:1538
 msgid "Exchange data - Orage"
-msgstr "Andmevahetus - Orage"
+msgstr ""
 
 #: src/main.c:52 src/orage-appointment-window.c:709
 #: org.xfce.orage.appdata.xml.in:7
@@ -531,90 +487,87 @@ msgstr "Orage"
 
 #: src/orage-about.c:44 org.xfce.orage.appdata.xml.in:8
 msgid "Orage is a time-managing application for the Xfce desktop environment"
-msgstr "Orage on ajahalduse rakendus Xfce töölauakeskkonna jaoks"
+msgstr ""
 
 #: src/orage-about.c:51
 msgid "translator-credits"
-msgstr ""
-"Kristjan Siimson <epost@ksiimson.se> &amp; tolge.pingviin.org\n"
-"Priit Jõerüüt 2020-2025"
+msgstr "ეკატერინე პაპავა"
 
 #: src/orage-application.c:167
 msgid "Released under the terms of the GNU General Public License."
-msgstr "Avaldatud GNU Üldise Avaliku Litsentsi alusel."
+msgstr ""
 
 #: src/orage-application.c:169
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
-msgstr "Kompileerimisel oli kasutusel GTK+-%d.%d.%d, ja GTK+-%d.%d.%d."
+msgstr ""
 
 #: src/orage-application.c:174
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
 msgstr ""
-"Kompileerimisel oli kasutusel libxfce4ui-%d.%d.%d, ja libxfce4ui-%d.%d.%d."
 
 #: src/orage-application.c:180
 #, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
-msgstr "Kompileerimisel oli kasutusel libnotify-%d.%d.%d."
+msgstr ""
 
 #: src/orage-application.c:183
 msgid "Not using libnotify."
-msgstr "Libnotify pole kasutusel."
+msgstr ""
 
 #: src/orage-application.c:188
 msgid "Using automatic archiving."
-msgstr "Kasutusel on automaatne arhiveerimine."
+msgstr ""
 
 #: src/orage-application.c:190
 msgid "Not using archiving."
-msgstr "Arhiveerimine pole kasutusel."
+msgstr ""
 
 #: src/orage-application.c:194
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr "Palun teata vigadest <%s>."
+msgstr "გთხოვთ, შეცდომების შესახებ გვაცნობეთ აქ <%s>."
 
 #: src/orage-application.c:775
 msgid "Open today's tasks"
-msgstr "Ava tänased ülesanded"
+msgstr ""
 
 #: src/orage-application.c:784
 msgid "Add new appointment"
-msgstr "Lisa uus kohtumine"
+msgstr ""
 
 #: src/orage-application.c:793
 msgid "Show preferences form"
-msgstr "Näidatakse eelistuste vaadet"
+msgstr ""
 
 #: src/orage-application.c:802
 msgid "Make Orage visible/unvisible"
-msgstr "Muuda Orage nähtavaks või peidetuks"
+msgstr ""
 
 #: src/orage-application.c:811
 msgid "Add a foreign file"
-msgstr "Lisa väline fail"
+msgstr ""
 
 #: src/orage-application.c:820
 msgid "Remove a foreign file"
-msgstr "Eemalda väline fail"
+msgstr ""
 
 #: src/orage-application.c:829
 msgid "Import appointments from file to Orage"
-msgstr "Impordi kohtumised failist Orage'i"
+msgstr ""
 
 #: src/orage-application.c:838
 msgid "Export appointments from Orage to file"
-msgstr "Ekspordi kohtumised Orage'ist faili"
+msgstr ""
 
 #: src/orage-application.c:847
 msgid "Select logging backend (glib|orage)"
-msgstr "Vali logimise taustateenus (glib või orage)"
+msgstr ""
 
 #: src/orage-application.c:856
 msgid "Show version of Orage"
-msgstr "Näita Orage'i versiooni"
+msgstr ""
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -623,275 +576,273 @@ msgstr "Näita Orage'i versiooni"
 #: src/orage-appointment-window.c:3627 src/orage-window-classic.c:507
 #: src/orage-window-next.c:914
 msgid "End"
-msgstr "Lõpp"
+msgstr "დასასრული"
 
 #: src/orage-appointment-window.c:545 src/orage-window-classic.c:490
 #: src/orage-window-next.c:896
 msgid "Due"
-msgstr "Tähtaeg"
+msgstr "ვადა"
 
 #: src/orage-appointment-window.c:940
 msgid "Sound Files"
-msgstr "Helifailid"
+msgstr ""
 
 #: src/orage-appointment-window.c:981
 msgid "The appointment information has been modified."
-msgstr "Kohtumise andmed on muudetud."
+msgstr ""
 
 #: src/orage-appointment-window.c:983
 msgid "No, do not leave"
-msgstr "Ei, ära välju"
+msgstr ""
 
 #: src/orage-appointment-window.c:984
 msgid "Yes, ignore modifications and leave"
-msgstr "Jah, välju ning ära salvesta muudatusi"
+msgstr ""
 
 #: src/orage-appointment-window.c:1013
 msgid "The end of this appointment is earlier than the beginning."
-msgstr "Kohtumine lõpeb enne selle algust."
+msgstr ""
 
 #: src/orage-appointment-window.c:1426 src/orage-appointment-window.c:2193
 msgid "Not set"
-msgstr "Sättimata"
+msgstr "დაყენებული არაა"
 
 #: src/orage-appointment-window.c:1471
 msgid "Add new appointment to this file."
-msgstr "Lisa siia faili uus kohtumine."
+msgstr ""
 
 #: src/orage-appointment-window.c:1472 src/orage-appointment-window.c:1533
 msgid "Orage default file"
-msgstr "Orage'i vaikimisi fail"
+msgstr ""
 
 #: src/orage-appointment-window.c:1578
 msgid "Appointment addition failed."
-msgstr "Kohtumise lisamine ei õnnestunud."
+msgstr ""
 
 #: src/orage-appointment-window.c:1579
 msgid ""
 "Error happened when adding appointment. Look more details from the log file."
-msgstr "Kohtumise lisamisel tekkis viga. Täiendavat teavet leiad logist."
+msgstr ""
 
 #: src/orage-appointment-window.c:1591
 msgid "Appointment update failed."
-msgstr "Kohtumise uuendamine ei õnnestunud."
+msgstr ""
 
 #: src/orage-appointment-window.c:1592
 msgid ""
 "Look more details from the log file. (Perhaps file was updated external from"
 " Orage?)"
 msgstr ""
-"Lisateavet leiad logifailist. (Võib-olla tegi muutatusi mõnel muul viisil "
-"ilma Orage'i kaasamata?)"
 
 #: src/orage-appointment-window.c:1644
 msgid "This appointment will be permanently removed."
-msgstr "See kohtumine eemaldatakse jäädavalt."
+msgstr ""
 
 #: src/orage-appointment-window.c:1647
 msgid "Yes, remove it"
-msgstr "Jah, eemalda"
+msgstr ""
 
 #: src/orage-appointment-window.c:2140
 msgid "This appointment does not exist."
-msgstr "Seda kohtumist pole olemas."
+msgstr ""
 
 #: src/orage-appointment-window.c:2141
 msgid "It was probably removed, please refresh your screen."
-msgstr "See on tõenäoliselt eemaldatud, palun värskenda oma ekraani."
+msgstr ""
 
 #: src/orage-appointment-window.c:2358
 msgid "Current categories"
-msgstr "Praegused jaotised"
+msgstr ""
 
 #: src/orage-appointment-window.c:2380
 msgid "Add new category with color"
-msgstr "Lisa uus värviga jaotis"
+msgstr ""
 
 #: src/orage-appointment-window.c:2389
 msgid "Category:"
-msgstr "Jaotis:"
+msgstr "კატეგორია:"
 
 #: src/orage-appointment-window.c:2432
 msgid "Colors of categories - Orage"
-msgstr "Jaotiste värvid - Orage"
+msgstr ""
 
 #: src/orage-appointment-window.c:2479
 msgid "*** COPY ***"
-msgstr " *** KOPEERI ***"
+msgstr ""
 
 #: src/orage-appointment-window.c:2532 src/orage-appointment-window.c:3855
 msgid "Before Start"
-msgstr "Enne algust"
+msgstr ""
 
 #: src/orage-appointment-window.c:2532 src/orage-appointment-window.c:3855
 msgid "Before End"
-msgstr "Enne lõppu"
+msgstr ""
 
 #: src/orage-appointment-window.c:2532 src/orage-appointment-window.c:3856
 msgid "After Start"
-msgstr "Pärast algust"
+msgstr ""
 
 #: src/orage-appointment-window.c:2532 src/orage-appointment-window.c:3856
 msgid "After End"
-msgstr "Pärast lõppu"
+msgstr ""
 
 #. window title
 #: src/orage-appointment-window.c:2850
 msgid "New appointment - Orage"
-msgstr "Uus kohtumine - Orage"
+msgstr ""
 
 #: src/orage-appointment-window.c:2883
 msgid "Sav_e and close"
-msgstr "Salv_esta ja sulge"
+msgstr ""
 
 #: src/orage-appointment-window.c:3199
 msgid "first"
-msgstr "esimene"
+msgstr "პირველი"
 
 #: src/orage-appointment-window.c:3199
 msgid "second"
-msgstr "teine"
+msgstr "წამი"
 
 #: src/orage-appointment-window.c:3199
 msgid "third"
-msgstr "kolmas"
+msgstr "მესამე"
 
 #: src/orage-appointment-window.c:3199
 msgid "fourth"
-msgstr "neljas"
+msgstr "მეოთხე"
 
 #: src/orage-appointment-window.c:3199
 msgid "last"
-msgstr "viimane"
+msgstr "ბოლო"
 
 #: src/orage-appointment-window.c:3209 src/orage-month-view.c:284
 msgid "Monday"
-msgstr "esmaspäev"
+msgstr "ორშაბათი"
 
 #: src/orage-appointment-window.c:3209 src/orage-month-view.c:284
 msgid "Tuesday"
-msgstr "teisipäev"
+msgstr "სამშაბათი"
 
 #: src/orage-appointment-window.c:3209 src/orage-month-view.c:284
 msgid "Wednesday"
-msgstr "kolmapäev"
+msgstr "ოთხშაბათი"
 
 #: src/orage-appointment-window.c:3209 src/orage-month-view.c:284
 msgid "Thursday"
-msgstr "neljapäev"
+msgstr "ხუთშაბათი"
 
 #: src/orage-appointment-window.c:3209 src/orage-month-view.c:284
 msgid "Friday"
-msgstr "reede"
+msgstr "პარასკევი"
 
 #: src/orage-appointment-window.c:3210 src/orage-month-view.c:285
 msgid "Saturday"
-msgstr "laupäev"
+msgstr "შაბათი"
 
 #: src/orage-appointment-window.c:3210 src/orage-month-view.c:285
 msgid "Sunday"
-msgstr "pühapäev"
+msgstr "კვირა"
 
 #: src/orage-appointment-window.c:3223 src/orage-appointment-window.c:3256
 #: src/orage-appointment-window.c:3363 src/orage-appointment-window.c:3397
 msgid "Every"
-msgstr "iga"
+msgstr "ყოველი"
 
 #: src/orage-appointment-window.c:3228
 msgid "day(s)"
-msgstr "päev(a)"
+msgstr "დღე"
 
 #: src/orage-appointment-window.c:3245
 msgid "Mon"
-msgstr "Esmasp"
+msgstr "ორშ"
 
 #: src/orage-appointment-window.c:3245
 msgid "Tue"
-msgstr "Teisip"
+msgstr "სამ"
 
 #: src/orage-appointment-window.c:3245
 msgid "Wed"
-msgstr "Kolmap"
+msgstr "ოთხ"
 
 #: src/orage-appointment-window.c:3245
 msgid "Thu"
-msgstr "Neljap"
+msgstr "ხუთ"
 
 #: src/orage-appointment-window.c:3245
 msgid "Fri"
-msgstr "Reede"
+msgstr "პარ"
 
 #: src/orage-appointment-window.c:3245
 msgid "Sat"
-msgstr "Laup"
+msgstr "შაბ"
 
 #: src/orage-appointment-window.c:3245
 msgid "Sun"
-msgstr "Pühap"
+msgstr "მზე"
 
 #: src/orage-appointment-window.c:3263
 msgid "week(s) on:"
-msgstr "nädala kestel:"
+msgstr ""
 
 #: src/orage-appointment-window.c:3299
 msgid "From the beginning of the month:"
-msgstr "Kuu algusest:"
+msgstr ""
 
 #: src/orage-appointment-window.c:3312
 msgid "From the end of the month:"
-msgstr "Kuu lõpust:"
+msgstr ""
 
 #: src/orage-appointment-window.c:3325
 msgid "Every:"
-msgstr "Iga:"
+msgstr "ყოველ:"
 
 #: src/orage-appointment-window.c:3353
 msgid "January"
-msgstr "Jaanuar"
+msgstr "იანვარი"
 
 #: src/orage-appointment-window.c:3353
 msgid "February"
-msgstr "Veebruar"
+msgstr "თებერვალი"
 
 #: src/orage-appointment-window.c:3353
 msgid "March"
-msgstr "Märts"
+msgstr "მარტი"
 
 #: src/orage-appointment-window.c:3353
 msgid "April"
-msgstr "Aprill"
+msgstr "აპრილი"
 
 #: src/orage-appointment-window.c:3353
 msgid "May"
-msgstr "Mai"
+msgstr "მაისი"
 
 #: src/orage-appointment-window.c:3354
 msgid "June"
-msgstr "Juuni"
+msgstr "ივნისი"
 
 #: src/orage-appointment-window.c:3354
 msgid "July"
-msgstr "Juuli"
+msgstr "ივლისი"
 
 #: src/orage-appointment-window.c:3354
 msgid "August"
-msgstr "August"
+msgstr "აგვისტო"
 
 #: src/orage-appointment-window.c:3354
 msgid "September"
-msgstr "September"
+msgstr "სექტემბერი"
 
 #: src/orage-appointment-window.c:3354
 msgid "October"
-msgstr "Oktoober"
+msgstr "ოქტომბერი"
 
 #: src/orage-appointment-window.c:3355
 msgid "November"
-msgstr "November"
+msgstr "ნოემბერი"
 
 #: src/orage-appointment-window.c:3355
 msgid "December"
-msgstr "Detsember"
+msgstr "დეკემბერი"
 
 #. TRANSLATORS: this string is part of date line, for example
 #. * "second Thursday of August". In some languages ​​it is not necessary to
@@ -899,27 +850,27 @@ msgstr "Detsember"
 #. * the string "of", it can be replaced with an empty string.
 #: src/orage-appointment-window.c:3371
 msgid "of"
-msgstr "/"
+msgstr ""
 
 #: src/orage-appointment-window.c:3402
 msgid "hour(s)"
-msgstr "tund(i)"
+msgstr "საათი"
 
 #: src/orage-appointment-window.c:3438
 msgid "Repeat forever"
-msgstr "Korda lõputult"
+msgstr ""
 
 #: src/orage-appointment-window.c:3443
 msgid "Repeat"
-msgstr "Korda"
+msgstr "გამეორება"
 
 #: src/orage-appointment-window.c:3451 src/orage-appointment-window.c:3976
 msgid "times"
-msgstr "korda"
+msgstr "რამდენჯერ"
 
 #: src/orage-appointment-window.c:3457
 msgid "Repeat until"
-msgstr "Korda kuni "
+msgstr "გამეორება, სანამ"
 
 #. start time
 #: src/orage-appointment-window.c:3475 src/orage-appointment-window.c:3612
@@ -927,20 +878,18 @@ msgstr "Korda kuni "
 #: src/orage-window-classic.c:506 src/orage-window-next.c:895
 #: src/orage-window-next.c:913
 msgid "Start"
-msgstr "Algus"
+msgstr "დაწყება"
 
 #. completed (only for TODO)
 #: src/orage-appointment-window.c:3480 src/orage-appointment-window.c:3680
 msgid "Completed"
-msgstr "Valmis"
+msgstr "დასრულებულია"
 
 #: src/orage-appointment-window.c:3484
 msgid ""
 "<b>Recurrence is based on the start time.</b>\n"
 "The TODO repeats at regular intervals regardless of when it was last completed."
 msgstr ""
-"<b>Korduvus põhineb algusajal.</b>\n"
-"Ülesannet korratakse sõltumata viimatisesst valmissaamisest."
 
 #: src/orage-appointment-window.c:3488
 msgid ""
@@ -949,132 +898,121 @@ msgid ""
 "\n"
 "<b>Note:</b> the TODO history cannot be determined because the recurrence base changes after each completion."
 msgstr ""
-"<b>Korduvus põhineb lõpetamise ajal.</b>\n"
-"Ülesannet  korratakse, kui etteantud aeg on möödunud valmissaamisest.\n"
-"\n"
-"<b>Märkus:</b> Kuna korduvuse lähtepunkt muutub iga täitmise järel, siis ülesande ajalugu ei saa täpselt kindlaks teha."
 
 #: src/orage-appointment-window.c:3517
 msgid "Save"
-msgstr "Salvesta"
+msgstr "შენახვა"
 
 #: src/orage-appointment-window.c:3519
 msgid "Save and close"
-msgstr "Salvesta ja sulge"
+msgstr "შენახვა და დახურვა"
 
 #: src/orage-appointment-window.c:3524
 msgid "Revert"
-msgstr "Taasta"
+msgstr "დაბრუნება"
 
 #: src/orage-appointment-window.c:3549
 msgid "Free"
-msgstr "Vaba"
+msgstr "უფასო"
 
 #: src/orage-appointment-window.c:3549
 msgid "Busy"
-msgstr "Hõivatud"
+msgstr "დაკავებული"
 
 #: src/orage-appointment-window.c:3553
 msgid "General"
-msgstr "Üldine"
+msgstr "ზოგადი"
 
 #. type
 #: src/orage-appointment-window.c:3559
 msgid "Type"
-msgstr "Tüüp"
+msgstr "ტიპი"
 
 #: src/orage-appointment-window.c:3567
 msgid ""
 "<b>Event</b> that happens at a specific time.\n"
 "For example: meeting, birthday, or TV show."
 msgstr ""
-"<b>Sündmus</b>, mis toimub määratud ajal.\n"
-"Näiteks: kohtumine, sünnipäev või telesaade."
 
 #: src/orage-appointment-window.c:3576
 msgid ""
 "<b>Task or reminder</b> that should be completed sometime.\n"
 "For example: wash your car or test a new version of Orage."
 msgstr ""
-"<b>Ülesanne või meeldetuletus</b> mida sa peaksid kunagi tegema.\n"
-"Näiteks: pese autot või katseta Orage'i uut versiooni."
 
 #: src/orage-appointment-window.c:3586
 msgid ""
 "<b>Journal entry</b> used to record something that happened.\n"
 "For example: your mother called or the first snow arrived."
 msgstr ""
-"<b>Päevikukirje</b> juba toimunud sündmuste ülesmärkimiseks.\n"
-"Näiteks: sinu ema helistas või esimest korda sadas lund."
 
 #. location
 #: src/orage-appointment-window.c:3599 src/orage-window-classic.c:453
 #: src/orage-window-next.c:861 src/timezone_selection.c:230
 #: src/timezone_selection.c:235
 msgid "Location"
-msgstr "Asukoht"
+msgstr "მდებარეობა"
 
 #: src/orage-appointment-window.c:3607
 msgid "All day event"
-msgstr "Terve päeva sündmus"
+msgstr "მთელი დღის მოვლენა"
 
 #: src/orage-appointment-window.c:3630
 msgid "Set"
-msgstr "Määratud"
+msgstr "დაყენებულია"
 
 #: src/orage-appointment-window.c:3654
 msgid "Duration"
-msgstr "Kestus"
+msgstr "ხანგრძლივობა"
 
 #: src/orage-appointment-window.c:3658 src/orage-appointment-window.c:3873
 #: src/reminder.c:660
 msgid "days"
-msgstr "päeva"
+msgstr "დღე"
 
 #: src/orage-appointment-window.c:3660 src/orage-appointment-window.c:3875
 #: src/reminder.c:662
 msgid "hours"
-msgstr "tundi"
+msgstr "საათი"
 
 #: src/orage-appointment-window.c:3662 src/orage-appointment-window.c:3877
 #: src/reminder.c:664
 msgid "mins"
-msgstr "minutit"
+msgstr "წთ"
 
 #. Availability (only for EVENT)
 #: src/orage-appointment-window.c:3673
 msgid "Availability"
-msgstr "Kättesaadavus"
+msgstr "წვდომადობა"
 
 #: src/orage-appointment-window.c:3683 src/orage-window-classic.c:491
 #: src/orage-window-next.c:897
 msgid "Done"
-msgstr "Tehtud"
+msgstr "მზადაა"
 
 #. categories
 #: src/orage-appointment-window.c:3707
 msgid "Categories"
-msgstr "Jaotised"
+msgstr "კატეგორიები"
 
 #: src/orage-appointment-window.c:3726
 msgid ""
 "This is special category, which can be used to color this appointment in "
 "list views."
 msgstr ""
-"See on erijaotis, mida kasutatakse selle kohtumise värvimiseks loendivaates."
 
 #: src/orage-appointment-window.c:3727
 msgid "_Colour"
-msgstr "_Värv"
+msgstr ""
 
 #: src/orage-appointment-window.c:3732
 msgid "Update colors for categories."
-msgstr "Uuenda kategooriate värve."
+msgstr ""
 
 #. priority
 #: src/orage-appointment-window.c:3738
 msgid "Priority"
-msgstr "Prioriteet"
+msgstr "პრიორიტეტი"
 
 #: src/orage-appointment-window.c:3742
 msgid ""
@@ -1084,17 +1022,12 @@ msgid ""
 "<b>Alarms still trigger normally.</b>\n"
 "The default limit of 8 can be changed using an undocumented parameter."
 msgstr ""
-"<b>Kaheksas või kõrgem prioriteet</b> peidab kohtumise loendiaknast.\n"
-"\n"
-"See vähendab taustamüra, kuid muudab kohtumise raskemini leitavaks.\n"
-"<b>Alarmid käivituvad jätkuvalt tavalisel moel.</b>\n"
-"Vaikimisi piiri (8) saad muuta kasutades dokumenteerimata parameetrit."
 
 #. note
 #: src/orage-appointment-window.c:3754 src/orage-window-classic.c:466
 #: src/orage-window-next.c:871
 msgid "Note"
-msgstr "Märge"
+msgstr "შენიშვნა"
 
 #: src/orage-appointment-window.c:3774
 msgid ""
@@ -1107,23 +1040,15 @@ msgid ""
 "<b>&lt;&amp;Ynnnn&gt;</b> is replaced with current year minus nnnn\n"
 "Useful for example in birthday reminders (e.g. age calculation)."
 msgstr ""
-"<b>Kiirkäsud (toimivad kohe)</b>\n"
-"<b>&lt;D&gt;</b> sisestab praeguse kuupäeva kohalikus vormingus\n"
-"<b>&lt;T&gt;</b> sisestab praeguse aja\n"
-"<b>&lt;DT&gt;</b> sisestab praeguse kuupäeva ja aja\n"
-"\n"
-"<b>Viivitatud käsud (töödeldakse hiljem)</b>\n"
-"<b>&lt;&amp;Ynnnn&gt;</b> asendatakse praeguse aastaga miinus nnnn\n"
-"Sobib kasutamiseks näiteks sünnipäevade meeldetuletuste jaoks (nt. vanuse arvutamisel)."
 
 #: src/orage-appointment-window.c:3864
 msgid "Alarm"
-msgstr "Alarm"
+msgstr "განგაში"
 
 #. **** ALARM TIME ****
 #: src/orage-appointment-window.c:3870
 msgid "Alarm time"
-msgstr "Alarmi aeg"
+msgstr "განგაშის დრო"
 
 #: src/orage-appointment-window.c:3895
 msgid ""
@@ -1133,93 +1058,86 @@ msgid ""
 "- before a TODO ends\n"
 "- after a TODO starts"
 msgstr ""
-"<b>Alarmi ajastamise valikud</b>\n"
-"Tavaliselt läheb sul alarmi vaja:\n"
-" 1) enne sündmuse algust\n"
-" 2) enne ülesande lõppu\n"
-" 3) pärast ülesande algust"
 
 #: src/orage-appointment-window.c:3904
 msgid "Persistent alarm"
-msgstr "Järjekindel alarm"
+msgstr ""
 
 #: src/orage-appointment-window.c:3909
 msgid ""
 "Select this if you want Orage to remind you even if it has not been active "
 "when the alarm happened."
 msgstr ""
-"Vali juhul, kui soovid meeletuletust, isegi kui Orage ei olnud alarmi ajal "
-"aktiivne."
 
 #: src/orage-appointment-window.c:3918
 msgid "Sound"
-msgstr "Helin"
+msgstr "ხმა"
 
 #: src/orage-appointment-window.c:3922 src/orage-appointment-window.c:4064
 msgid "Use"
-msgstr "Kasuta"
+msgstr "გამოყენება"
 
 #: src/orage-appointment-window.c:3927
 msgid "Select this if you want audible alarm."
-msgstr "Vali juhul, kui soovid kuuldavat alarmi."
+msgstr ""
 
 #: src/orage-appointment-window.c:3932
 msgid "Sound command is not set."
-msgstr "Heli käsk on määramata."
+msgstr ""
 
 #: src/orage-appointment-window.c:3961
 msgid "Repeat alarm sound"
-msgstr "Korda alarmi helinat"
+msgstr ""
 
 #: src/orage-appointment-window.c:3992
 msgid "sec interval"
-msgstr "ajavahemik sekundites"
+msgstr ""
 
 #. **** Display Alarm ****
 #: src/orage-appointment-window.c:4001
 msgid "Visual"
-msgstr "Visuaalne"
+msgstr "ვიზუალი"
 
 #: src/orage-appointment-window.c:4005
 msgid "Use Orage window"
-msgstr "Kasuta Orage'i akent"
+msgstr ""
 
 #: src/orage-appointment-window.c:4007
 msgid "Select this if you want Orage window alarm."
-msgstr "Vali juhul, kui soovid alarmi Orage'i aknas."
+msgstr ""
 
 #: src/orage-appointment-window.c:4019
 msgid "Use notification"
-msgstr "Kasuta märguannet"
+msgstr ""
 
 #: src/orage-appointment-window.c:4021
 msgid "Select this if you want notification alarm."
-msgstr "Vali juhul, kui soovid alarmi märguandena."
+msgstr ""
 
 #: src/orage-appointment-window.c:4029
 msgid "Set timeout"
-msgstr "Määra aegumine"
+msgstr ""
 
 #: src/orage-appointment-window.c:4031
 msgid "Select this if you want notification to expire automatically."
-msgstr "Vali juhul, kui soovid automaatselt aeguvat märguannet."
+msgstr ""
 
 #: src/orage-appointment-window.c:4042
 msgid "0 = system default expiration time"
-msgstr "0 = süsteemi vaikimisi aegumisperiood"
+msgstr ""
 
 #: src/orage-appointment-window.c:4050
 msgid "seconds"
-msgstr "sekundit"
+msgstr "წამი"
 
 #. **** Procedure Alarm ****
 #: src/orage-appointment-window.c:4060
 msgid "Procedure"
-msgstr "Toiming"
+msgstr "პროცედურა"
 
 #: src/orage-appointment-window.c:4066
 msgid "Select this if you want procedure or script alarm."
-msgstr "Vali juhul, kui soovid protseduuri- või skriptialarmi."
+msgstr ""
 
 #: src/orage-appointment-window.c:4078
 msgid ""
@@ -1233,83 +1151,74 @@ msgid ""
 "- &lt;&amp;ST&gt; appointment start time\n"
 "- &lt;&amp;ET&gt; appointment end time"
 msgstr ""
-"<b>Kestakäsu töötlus</b>\n"
-"See sisu antakse täitmiseks kestale otse edasi, seega pead sisestama kõik pao- muud kontrollmärgid ise.\n"
-"\n"
-"Järgnevad erikäsud asendatakse töö käigus:\n"
-"\t<&T>  kohtumise pealkiri\n"
-"\t<&D>  kohtumise kirjeldus\n"
-"\t<&AT> alarmi aeg\n"
-"\t<&ST> kohtumise algusaeg\n"
-"\t<&ET> kohtumise lõpuaeg"
 
 #: src/orage-appointment-window.c:4102
 msgid "Test this alarm by raising it now."
-msgstr "Katseta alarmi nüüd"
+msgstr ""
 
 #: src/orage-appointment-window.c:4115
 msgid "<b>Default alarm</b>"
-msgstr "<b>Vaikimsi alarm</b>"
+msgstr ""
 
 #: src/orage-appointment-window.c:4130
 msgid "Store current settings as default alarm."
-msgstr "Säilita käesolevad seadistused vaikimisi alarmina"
+msgstr ""
 
 #: src/orage-appointment-window.c:4132
 msgid "_Revert"
-msgstr "_Taasta"
+msgstr "და_ბრუნება"
 
 #: src/orage-appointment-window.c:4141
 msgid "Set current settings from default alarm."
-msgstr "Määra käesolevad seadistused vaikimisi alarmi põhjal"
+msgstr ""
 
 #: src/orage-appointment-window.c:4206
 msgid "None"
-msgstr "Puudub"
+msgstr "არცერთი"
 
 #: src/orage-appointment-window.c:4206
 msgid "Daily"
-msgstr "Päeviti"
+msgstr "დღიურად"
 
 #: src/orage-appointment-window.c:4206
 msgid "Weekly"
-msgstr "Nädalati"
+msgstr "კვირაში ერთხელ"
 
 #: src/orage-appointment-window.c:4207
 msgid "Monthly"
-msgstr "Kuiselt"
+msgstr "თვეში ერთხელ"
 
 #: src/orage-appointment-window.c:4207
 msgid "Yearly"
-msgstr "Aastati"
+msgstr "წლიურად"
 
 #: src/orage-appointment-window.c:4207
 msgid "Hourly"
-msgstr "Tunniti"
+msgstr "საათობრივი"
 
 #: src/orage-appointment-window.c:4222
 msgid "Recurrence"
-msgstr "Korduvus"
+msgstr "გამეორებადობა"
 
 #. ****************************** Frequency *******************************
 #: src/orage-appointment-window.c:4229
 msgid "Frequency"
-msgstr "Sagedus"
+msgstr "სიხშირე"
 
 #. ****************************** Limit ***********************************
 #: src/orage-appointment-window.c:4270
 msgid "Limit"
-msgstr "Piir"
+msgstr "ლიმიტი"
 
 #. ****************************** TODO base (only for TODOs) **************
 #: src/orage-appointment-window.c:4276
 msgid "TODO base"
-msgstr "Agenda alus"
+msgstr ""
 
 #. exceptions
 #: src/orage-appointment-window.c:4283
 msgid "Exceptions"
-msgstr "Erandid"
+msgstr "გამონაკლისები"
 
 #: src/orage-appointment-window.c:4309
 msgid ""
@@ -1318,92 +1227,85 @@ msgid ""
 "An exception can be either exclusion (-) or inclusion (+), depending on selection.\n"
 "Remove by clicking the date."
 msgstr ""
-"<b>Kuupäevade erandid</b>\n"
-"\n"
-"Klikkides all olevat kalendrit, saad lisada erandite kuupäevi.\n"
-"Sõltuvalt valikust on erandid kas välitamine(-) või kaasamine(+).\n"
-"Erandeid saab eemaldada neil klõpsides."
 
 #: src/orage-appointment-window.c:4324
 msgid "Add excluded date (-)"
-msgstr "Lisa välja jäetud kuupäev (-)"
+msgstr ""
 
 #: src/orage-appointment-window.c:4326
 msgid "Excluded days are full days where this appointment is not happening."
-msgstr "Välja jäetud päevad on täispäevad, mil seda kohtumist ei toimu"
+msgstr ""
 
 #: src/orage-appointment-window.c:4333
 msgid "Add included time (+)"
-msgstr "Lisa kaasatud aeg (+)"
+msgstr ""
 
 #: src/orage-appointment-window.c:4335
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time."
 msgstr ""
-"Kaasatud kellaaegadel on sama ajavöönd kui algusajal, kuid neil võib olla "
-"erinev aeg"
 
 #. calendars showing the action days
 #: src/orage-appointment-window.c:4354
 msgid "Action dates"
-msgstr "Tegevuse kuupäevad"
+msgstr ""
 
 #: src/orage-import.c:74
 msgid "Unsupported event type"
-msgstr "Sündmuse tüüp pole toetatud"
+msgstr ""
 
 #: src/orage-import.c:106
 msgid "<b>Summary</b>"
-msgstr "<b>Kokkuvõte</b>"
+msgstr "<b>შეჯამება</b>"
 
 #: src/orage-import.c:117
 msgid "<b>Type</b>"
-msgstr "<b>Tüüp</b>"
+msgstr "<b>ტიპი</b>"
 
 #: src/orage-import.c:132
 msgid "<b>Location</b>"
-msgstr "<b>Asukoht</b>"
+msgstr "<b>მდებარეობა</b>"
 
 #: src/orage-import.c:147
 msgid "<b>URL</b>"
-msgstr "<b>Võrguaadress</b>"
+msgstr ""
 
 #: src/orage-import.c:166
 msgid "<b>All-day</b>"
-msgstr "<b>Terve päev</b>"
+msgstr ""
 
 #: src/orage-import.c:181
 msgid "<b>From</b>"
-msgstr "<b>Saatja</b>"
+msgstr ""
 
 #: src/orage-import.c:196
 msgid "<b>To</b>"
-msgstr "<b>Saaja</b>"
+msgstr ""
 
 #: src/orage-import.c:210
 msgid "<b>Recurring</b>"
-msgstr "<b>Korduv</b>"
+msgstr ""
 
 #: src/orage-import.c:213
 msgid "Yes"
-msgstr "Jah"
+msgstr "დიახ"
 
 #: src/orage-import.c:213
 msgid "No"
-msgstr "Ei"
+msgstr "არა"
 
 #: src/orage-import.c:259
 msgid "Import calendar file"
-msgstr "Impordi kalendrifail"
+msgstr "კალენდარის ფაილის შემოტანა"
 
 #: src/orage-import.c:261
 msgid "_Import"
-msgstr "_Impordi"
+msgstr "შ_ემოტანა"
 
 #: src/orage-import.c:270
 msgid "_Cancel"
-msgstr "_Tühista"
+msgstr "გაუქმება"
 
 #. TRANSLATORS: "%B %Y" is used to display the month and year in the
 #. * calendar month view page, in "month year" format (for example,
@@ -1416,39 +1318,39 @@ msgstr "%B %Y"
 #. Setup title row.
 #: src/orage-month-view.c:485 src/orage-window-next.c:1119
 msgid "Week"
-msgstr "Nädal"
+msgstr "კვირა"
 
 #: src/orage-sync-edit-dialog.c:132
 msgid "Description:"
-msgstr "Kirjeldus:"
+msgstr "აღწერა:"
 
 #: src/orage-sync-edit-dialog.c:134
 msgid "Command:"
-msgstr "Käsk:"
+msgstr "ბრძანება:"
 
 #: src/orage-sync-edit-dialog.c:136
 msgid "Period:"
-msgstr "Periood:"
+msgstr "პერიოდი:"
 
 #: src/orage-sync-edit-dialog.c:138
 msgid "minutes"
-msgstr "minutit"
+msgstr "წუთი"
 
 #: src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task."
-msgstr "Selle sünkroonimisülesande nimi või kirjeldus"
+msgstr ""
 
 #: src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization."
-msgstr "Sünkroonimise käsk"
+msgstr ""
 
 #: src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes."
-msgstr "Sünkroonimise periood minutites"
+msgstr ""
 
 #: src/orage-sync-edit-dialog.c:166 src/parameters.c:1430 src/reminder.c:696
 msgid "_Close"
-msgstr "_Sulge"
+msgstr "დახურვა"
 
 #. Translate to calendar:week_start:0 if you want Sunday to be the first
 #. * day of the week to calendar:week_start:1 if you want Monday to be the
@@ -1459,399 +1361,392 @@ msgstr "calendar:week_start:1"
 
 #: src/orage-week-window.c:490
 msgid "Back one week"
-msgstr "Nädal varem"
+msgstr ""
 
 #: src/orage-week-window.c:492
 msgid "Back one day"
-msgstr "Päev varem"
+msgstr "ერთი დღით უკან"
 
 #: src/orage-week-window.c:496
 msgid "Forward one day"
-msgstr "Päev hiljem"
+msgstr "ერთი დღით წინ"
 
 #: src/orage-week-window.c:498
 msgid "Forward one week"
-msgstr "Nädal hiljem"
+msgstr ""
 
 #: src/orage-week-window.c:695
 msgid "Unknown"
-msgstr "Tundmatu"
+msgstr "უცნობი"
 
 #: src/orage-week-window.c:975
 msgid "Number of days to show"
-msgstr "Päevade arv"
+msgstr ""
 
 #: src/orage-week-window.c:1280
 msgid "Orage - day view"
-msgstr "Orage - päevavaade"
+msgstr ""
 
 #: src/orage-window-classic.c:294 src/orage-window-next.c:135
 msgid "_Exchange data"
-msgstr "Andm_evahetus"
+msgstr ""
 
 #. Edit menu
 #: src/orage-window-classic.c:304 src/orage-window-next.c:139
 msgid "_Edit"
-msgstr "Muud_a"
+msgstr "_ჩასწორება"
 
 #: src/orage-window-classic.c:313 src/orage-window-next.c:143
 msgid "View selected _date"
-msgstr "Vaata valitu_d kuupäeva"
+msgstr ""
 
 #: src/orage-window-classic.c:316 src/orage-window-next.c:144
 msgid "View selected _week"
-msgstr "_Vaata valitud nädalat"
+msgstr ""
 
 #: src/orage-window-classic.c:321 src/orage-window-next.c:145
 msgid "Select _Today"
-msgstr "Vali _tänane päev"
+msgstr ""
 
 #. Help menu
 #. the rest
 #: src/orage-window-classic.c:324 src/orage-window-next.c:147
 #: src/orage-window-next.c:148 src/parameters.c:1427
 msgid "_Help"
-msgstr "_Abi"
+msgstr "დახმარება"
 
 #: src/orage-window-classic.c:386 src/orage-window-next.c:790
 #: src/reminder.c:1028
 msgid "No title defined"
-msgstr "Pealkiri on määratlemata"
+msgstr ""
 
 #: src/orage-window-classic.c:476 src/orage-window-next.c:879
 msgid "Never"
-msgstr "Mitte kunagi"
+msgstr "არასდროს"
 
 #: src/orage-window-classic.c:587
 msgid "<b>To do:</b>"
-msgstr "<b>Agenda:</b>"
+msgstr ""
 
 #: src/orage-window-classic.c:624
 #, c-format
 msgid "<b>Events for %s:</b>"
-msgstr "<b>%s sündmused:</b>"
+msgstr ""
 
 #: src/orage-window-classic.c:635
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
-msgstr "<b>%s - %s sündmused:</b>"
+msgstr ""
 
 #: src/orage-window-next.c:131
 msgid "Create a new appointment"
-msgstr "Lisa uus kohtumine"
+msgstr "ახალი შეხვედრის შექმნა"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"
-msgstr "Laadi välised failid uuesti"
+msgstr ""
 
 #: src/orage-window-next.c:135
 msgid "Import/export data"
-msgstr "Impordi/ekspordi andmeid"
+msgstr ""
 
 #: src/orage-window-next.c:136
 msgid "Close window"
-msgstr "Sulge aken"
+msgstr "ფანჯრის დახურვა"
 
 #: src/orage-window-next.c:137
 msgid "_Quit"
-msgstr "_Välju"
+msgstr "გასვ_ლა"
 
 #: src/orage-window-next.c:137
 msgid "Quit program"
-msgstr "Välju programmist"
+msgstr ""
 
 #: src/orage-window-next.c:140
 msgid "_Preferences"
-msgstr "_Eelistused"
+msgstr "_მორგება"
 
 #: src/orage-window-next.c:140 plugin/org.xfce.orage-settings.desktop.in:4
 msgid "Orage preferences"
-msgstr "Orage'i eelistused"
+msgstr ""
 
 #: src/orage-window-next.c:143
 msgid "View selected date"
-msgstr "Vaata valitud kuupäeva"
+msgstr ""
 
 #: src/orage-window-next.c:145
 msgid "Go to today"
-msgstr "Vaata tänast päeva"
+msgstr ""
 
 #: src/orage-window-next.c:148
 msgid "Display Orage user manual"
-msgstr "Näita Orage'i ingliskeelset kasutusjuhendit"
+msgstr ""
 
 #: src/orage-window-next.c:149
 msgid "_About"
-msgstr "Te_ave"
+msgstr "_შესახებ"
 
 #: src/orage-window-next.c:149
 msgid "Display information about Orage"
-msgstr "Näita Orage'i teavet"
+msgstr ""
 
 #: src/orage-window-next.c:376
 msgid "New event"
-msgstr "Uus sündmus"
+msgstr "ახალი მოვლენა"
 
 #: src/orage-window-next.c:454
 #, c-format
 msgid "Events for %s:"
-msgstr "%s sündmused:"
+msgstr ""
 
 #: src/orage-window-next.c:460
 #, c-format
 msgid "Events for %s - %s:"
-msgstr "%s - %s sündmused:"
+msgstr ""
 
 #: src/orage-window-next.c:663
 msgid "To do:"
-msgstr "Tegemiseks:"
+msgstr "გასაკეთებელი:"
 
 #: src/orage-window-next.c:1083
 msgid "Previous"
-msgstr "Eelmine"
+msgstr "წინა"
 
 #: src/orage-window-next.c:1103
 msgid "Next"
-msgstr "Järgmine"
+msgstr "შემდეგი"
 
 #: src/orage-window-next.c:1117
 msgid "Day"
-msgstr "Päev"
+msgstr "დღე"
 
 #: src/orage-window-next.c:1122
 msgid "Month"
-msgstr "Kuu"
+msgstr "თვე"
 
 #: src/orage-window-next.c:1125
 msgid "Year"
-msgstr "Aasta"
+msgstr "წელი"
 
 #: src/parameters.c:643
 msgid "Remove selected synchronization task."
-msgstr "Eemalda valitud sünkroniseerimise ülesanne."
+msgstr ""
 
 #: src/parameters.c:646
 msgid "Yes, remove"
-msgstr "Jah, eemalda"
+msgstr ""
 
 #: src/parameters.c:684
 msgid "Main settings"
-msgstr "Põhiseadistused"
+msgstr ""
 
 #: src/parameters.c:690
 msgid "Timezone"
-msgstr "Ajavöönd"
+msgstr "დროის სარტყელი"
 
 #: src/parameters.c:712
 msgid "You should always define your local timezone."
-msgstr "Peaksid alati oma kohaliku ajavööndi määratlema."
+msgstr ""
 
 #: src/parameters.c:720
 msgid "Archive threshold (months)"
-msgstr "Arhiveerimise lävend (kuudes)"
+msgstr ""
 
 #: src/parameters.c:733
 msgid "(0 = no archiving)"
-msgstr "(0 = ei arhiveerita)"
+msgstr ""
 
 #: src/parameters.c:737
 msgid "Archiving is used to save time and space when handling events."
 msgstr ""
-"Arhiveerimist kasutatakse aja ja ruumi säästmiseks sündmuste käsitlemisel."
 
 #: src/parameters.c:745
 msgid "Sound command"
-msgstr "Helikäsk"
+msgstr ""
 
 #: src/parameters.c:773
 msgid "This command is given to shell to make sound in alarms."
-msgstr "See käsk edastatakse süsteemi kestale, et alarmides heli tekitada."
+msgstr ""
 
 #: src/parameters.c:804
 msgid "Calendar window"
-msgstr "Kalendriaken"
+msgstr ""
 
 #: src/parameters.c:811
 msgid "Calendar visual details"
-msgstr "Kalendri välimus"
+msgstr ""
 
 #: src/parameters.c:818
 msgid "Use new user interface"
-msgstr "Kasuta uut kasutajaliidest"
+msgstr ""
 
 #: src/parameters.c:820
 msgid "Enable the new interface layout (requires restart)."
 msgstr ""
-"Lülita kasutajaliidese uus paigutus sisse (eeldab rakenduse uuesti "
-"käivitamist)"
 
 #: src/parameters.c:825
 msgid "Show borders"
-msgstr "Näita raame"
+msgstr "საზღვრების ჩვენება"
 
 #: src/parameters.c:834
 msgid "Show menu"
-msgstr "Näita menüüd"
+msgstr "მენიუს ჩვენება"
 
 #: src/parameters.c:839
 msgid "Show day names"
-msgstr "Näita päevade nimesid"
+msgstr "დღის სახელების ჩვენება"
 
 #: src/parameters.c:848
 msgid "Show week numbers"
-msgstr "Näita nädalate numbreid"
+msgstr "კვირის რიცხვის ჩვენება"
 
 #: src/parameters.c:853
 msgid "Show month and year"
-msgstr "Näita kuud ja aastat"
+msgstr ""
 
 #: src/parameters.c:877
 msgid "Calendar info boxes"
-msgstr "Kalendri teabeväljad"
+msgstr ""
 
 #: src/parameters.c:884
 msgid "Show todo list"
-msgstr "Näita agendat"
+msgstr ""
 
 #: src/parameters.c:891
 msgid "Number of days to show in event window"
-msgstr "Sündmuste aknas näita päevade arvu"
+msgstr ""
 
 #: src/parameters.c:899
 msgid "0 = do not show event list at all"
-msgstr "0 = ära näita üldse sündmuste loendit"
+msgstr ""
 
 #: src/parameters.c:913
 msgid "Calendar visibility"
-msgstr "Kalendri nähtavus"
+msgstr ""
 
 #: src/parameters.c:919
 msgid "Show on all desktops"
-msgstr "Näita kõikidel töölaudadel"
+msgstr "ყველა სამუშაო მაგიდაზე ჩვენება"
 
 #: src/parameters.c:924
 msgid "Keep on top"
-msgstr "Hoia peal"
+msgstr ""
 
 #: src/parameters.c:932
 msgid "Show in taskbar"
-msgstr "Näita tegumiribal"
+msgstr "ჩვენება ამოცანების პანელზე"
 
 #: src/parameters.c:937
 msgid "Show in pager"
-msgstr "Näita piiparis"
+msgstr ""
 
 #: src/parameters.c:945
 msgid "Show in systray"
-msgstr "Näita teatealas"
+msgstr ""
 
 #: src/parameters.c:973
 msgid "Calendar start"
-msgstr "Kalendri algus"
+msgstr ""
 
 #: src/parameters.c:979
 msgid "Show"
-msgstr "Näita"
+msgstr "ჩვენება"
 
 #: src/parameters.c:995
 msgid "Hide"
-msgstr "Peida"
+msgstr "დამალვა"
 
 #: src/parameters.c:1012
 msgid "Minimized"
-msgstr "Minimeeritud"
+msgstr "ჩაკეცვა"
 
 #: src/parameters.c:1038
 msgid "On calendar window open"
-msgstr "Kalendri akna avamisel"
+msgstr ""
 
 #: src/parameters.c:1044
 msgid "Select today's date"
-msgstr "Valige tänane kuupäev"
+msgstr ""
 
 #: src/parameters.c:1061
 msgid "Select previously selected date"
-msgstr "Valige eelnevalt valitud kuupäev"
+msgstr ""
 
 #: src/parameters.c:1085
 msgid "Calendar day double click shows"
-msgstr "Topeltklikk kalendripäevale kuvab"
+msgstr ""
 
 #: src/parameters.c:1091
 msgid "Days view"
-msgstr "Päevavaade"
+msgstr ""
 
 #: src/parameters.c:1107
 msgid "Event list"
-msgstr "Sündmuste loend"
+msgstr ""
 
 #: src/parameters.c:1140
 msgid "Extra settings"
-msgstr "Täiendavad seadistused"
+msgstr ""
 
 #: src/parameters.c:1147
 msgid "Event list window"
-msgstr "Sündmuste loendi aken"
+msgstr ""
 
 #: src/parameters.c:1154
 msgid "Number of extra days to show in event list"
-msgstr "Lisapäevade arv sündmuste loendis kuvamiseks"
+msgstr ""
 
 #: src/parameters.c:1164
 msgid ""
 "This is just the default value, you can change it in the actual eventlist "
 "window."
 msgstr ""
-"See on vaid vaikeväärtus, seda saate muuta tegelikus sündmuste loendi aknas."
 
 #: src/parameters.c:1172
 msgid "Show only first repeating event"
-msgstr "Näita vaid esimest korduvat sündmust"
+msgstr ""
 
 #: src/parameters.c:1189
 msgid "Day view window default first day"
-msgstr "Esimene päev päevade vaates"
+msgstr ""
 
 #: src/parameters.c:1196
 msgid "First day of week"
-msgstr "Nädala esimene päev"
+msgstr ""
 
 #: src/parameters.c:1213
 msgid "Selected day"
-msgstr "Valitud päev"
+msgstr "არჩეული დღე"
 
 #: src/parameters.c:1236 src/parameters.c:1243
 msgid "Use wakeup timer"
-msgstr "Kasuta äratuse taimerit"
+msgstr ""
 
 #: src/parameters.c:1251
 msgid ""
 "Use this timer if Orage has problems waking up properly after suspend or "
 "hibernate. (For example tray icon not refreshed or alarms not firing.)"
 msgstr ""
-"Kasuta seda taimerit siis, kui Orage'i tegevus ei jätku korrektselt peale "
-"arvuti uinumisoleku lõppu. (Näiteks, kui ikoon olekuribal jääb uuendamata "
-"või alarmid ei toimi.)"
 
 #: src/parameters.c:1261
 msgid "Foreign file default visual alarm"
-msgstr "Vaikimisi kasutatav näidatav alarm välise faili puhul"
+msgstr ""
 
 #: src/parameters.c:1268
 msgid "Orage window"
-msgstr "Orage'i aken"
+msgstr ""
 
 #: src/parameters.c:1285
 msgid "Notify notification"
-msgstr "Notify märguanne"
+msgstr ""
 
 #: src/parameters.c:1308
 msgid "Always quit when asked to close"
-msgstr "Sulgemisel alati lõpeta töö"
+msgstr ""
 
 #: src/parameters.c:1315
 msgid "Always quit"
-msgstr "Alati lõpeta töö"
+msgstr ""
 
 #: src/parameters.c:1322
 msgid ""
@@ -1859,2194 +1754,2191 @@ msgid ""
 "option changes Orage to quit and never stay in background when it is asked "
 "to close."
 msgstr ""
-"Akna sulgemisel Orage vaikimisi jääb taustal tööle. Selle valikuga saad "
-"määrata, et sulgemisel ka lõpetatakse rakenduse tegevus ja ta ei jää "
-"taustaprogrammina tööle."
 
 #: src/parameters.c:1375
 msgid "Synchronization settings"
-msgstr "Sünkroniseerimise seadistused"
+msgstr ""
 
 #: src/parameters.c:1381
 msgid "Synchronization sources"
-msgstr "Sünkroniseerimiseallikad"
+msgstr ""
 
 #: src/parameters.c:1407 org.xfce.orage.desktop.in:26
 msgid "Orage Preferences"
-msgstr "Orage'i eelistused"
+msgstr ""
 
 #: src/reminder.c:475
 msgid "Reminder"
-msgstr "Meeldetuletus"
+msgstr "შემხსენებელი"
 
 #: src/reminder.c:498
 msgid "Open"
-msgstr "Ava"
+msgstr "გახსნა"
 
 #: src/reminder.c:503
 msgid "Silence"
-msgstr "Vaigista"
+msgstr "სიჩუმე"
 
 #: src/reminder.c:621
 msgid "Reminder - Orage"
-msgstr "Meeldetuletus - Orage"
+msgstr ""
 
 #: src/reminder.c:704
 msgid "_Stop"
-msgstr "_Peata"
+msgstr "_გაჩერება"
 
 #: src/reminder.c:712
 msgid "Postpone"
-msgstr "Lükka edasi"
+msgstr "გადადება"
 
 #: src/reminder.c:714
 msgid "Remind me again after the specified time."
-msgstr "Märgitud aja möödumisel tuleta mulle uuesti meelde"
+msgstr ""
 
 #: src/reminder.c:998
 msgid "Next active alarms:"
-msgstr "Järgmised aktiivsed alarmid:"
+msgstr ""
 
 #: src/reminder.c:1040
 #, c-format
 msgid "<span weight=\"bold\">%1$02d d %2$02d h %3$02d min to:</span> %4$s"
-msgstr "<span weight=\"bold\">%1$02d pv %2$02d t %3$02d min kuni:</span> %4$s"
+msgstr ""
 
 #: src/reminder.c:1057
 msgid "No active alarms found"
-msgstr "Ühtegi aktiivset alarmi ei leidunud"
+msgstr "აქტიური განგაშების გარეშე"
 
 #: src/timezone_names.c:31
 msgid "Africa"
-msgstr "Aafrika"
+msgstr "აფრიკა"
 
 #: src/timezone_names.c:32
 msgid "Africa/Abidjan"
-msgstr "Aafrika/Abidjan"
+msgstr "აფრიკა/აბიჯანი"
 
 #: src/timezone_names.c:33
 msgid "Africa/Accra"
-msgstr "Aafrika/Accra"
+msgstr "აფრიკა/აკრა"
 
 #: src/timezone_names.c:34
 msgid "Africa/Addis_Ababa"
-msgstr "Aafrika/Addis_Abeba"
+msgstr "აფრიკა/ადის აბება"
 
 #: src/timezone_names.c:35
 msgid "Africa/Algiers"
-msgstr "Aafrika/Alžiir"
+msgstr "აფრიკა/ალჟირი"
 
 #: src/timezone_names.c:36
 msgid "Africa/Asmara"
-msgstr "Aafrika/Asmara"
+msgstr "აფრიკა/ასმარა"
 
 #: src/timezone_names.c:37
 msgid "Africa/Asmera"
-msgstr "Aafrika/Asmara"
+msgstr "აფრიკა/ასმერა"
 
 #: src/timezone_names.c:38
 msgid "Africa/Bamako"
-msgstr "Aafrika/Bamako"
+msgstr "აფრიკა/ბამაკო"
 
 #: src/timezone_names.c:39
 msgid "Africa/Bangui"
-msgstr "Aafrika/Bangui"
+msgstr "აფრიკა/აფრიკა"
 
 #: src/timezone_names.c:40
 msgid "Africa/Banjul"
-msgstr "Aafrika/Banjul"
+msgstr "აფრიკა/ბანჯული"
 
 #: src/timezone_names.c:41
 msgid "Africa/Bissau"
-msgstr "Aafrika/Bissau"
+msgstr "აფრიკა/ბისაუ"
 
 #: src/timezone_names.c:42
 msgid "Africa/Blantyre"
-msgstr "Aafrika/Blantyre"
+msgstr "აფრიკა/ბლანტირე"
 
 #: src/timezone_names.c:43
 msgid "Africa/Brazzaville"
-msgstr "Aafrika/Brazzaville"
+msgstr "აფრიკა/ბრაზავილი"
 
 #: src/timezone_names.c:44
 msgid "Africa/Bujumbura"
-msgstr "Aafrika/Bujumbura"
+msgstr "აფრიკა/ბუჟუმბურა"
 
 #: src/timezone_names.c:45
 msgid "Africa/Cairo"
-msgstr "Aafrika/Kairo"
+msgstr "აფრიკა/ქაირო"
 
 #: src/timezone_names.c:46
 msgid "Africa/Casablanca"
-msgstr "Aafrika/Casablanca"
+msgstr "აფრიკა/კასაბლანკა"
 
 #: src/timezone_names.c:47
 msgid "Africa/Ceuta"
-msgstr "Aafrika/Ceuta"
+msgstr "აფრიკა/სეუტა"
 
 #: src/timezone_names.c:48
 msgid "Africa/Conakry"
-msgstr "Aafrika/Conakry"
+msgstr "აფრიკა/კონაკრი"
 
 #: src/timezone_names.c:49
 msgid "Africa/Dakar"
-msgstr "Aafrika/Dakar"
+msgstr "აფრიკა/დაკარი"
 
 #: src/timezone_names.c:50
 msgid "Africa/Dar_es_Salaam"
-msgstr "Aafrika/Dar_es_Salaam"
+msgstr "აფრიკა/დარ ეს სალაამი"
 
 #: src/timezone_names.c:51
 msgid "Africa/Djibouti"
-msgstr "Aafrika/Djibouti"
+msgstr "აფრიკა/ჯიბუტი"
 
 #: src/timezone_names.c:52
 msgid "Africa/Douala"
-msgstr "Aafrika/Douala"
+msgstr "აფრიკა/დუალა"
 
 #: src/timezone_names.c:53
 msgid "Africa/El_Aaiun"
-msgstr "Aafrika/El_Aaiún"
+msgstr "აფრიკა/ელ ააიუნი"
 
 #: src/timezone_names.c:54
 msgid "Africa/Freetown"
-msgstr "Aafrika/Freetown"
+msgstr "აფრიკა/ფრითაუნი"
 
 #: src/timezone_names.c:55
 msgid "Africa/Gaborone"
-msgstr "Aafrika/Gaborone"
+msgstr "აფრიკა/გაბონი"
 
 #: src/timezone_names.c:56
 msgid "Africa/Harare"
-msgstr "Aafrika/Harare"
+msgstr "აფრიკა/ჰარარე"
 
 #: src/timezone_names.c:57
 msgid "Africa/Juba"
-msgstr "Aafrika/Juba"
+msgstr "აფრიკა/ჯუბა"
 
 #: src/timezone_names.c:58
 msgid "Africa/Johannesburg"
-msgstr "Aafrika/Johannesburg"
+msgstr "აფრიკა/იოჰანესბურგი"
 
 #: src/timezone_names.c:59
 msgid "Africa/Kampala"
-msgstr "Aafrika/Kampala"
+msgstr "აფრიკა/კამპალა"
 
 #: src/timezone_names.c:60
 msgid "Africa/Khartoum"
-msgstr "Aafrika/Hartum"
+msgstr "აფრიკა/ხართუმი"
 
 #: src/timezone_names.c:61
 msgid "Africa/Kigali"
-msgstr "Aafrika/Kigali"
+msgstr "აფრიკა/კიგალი"
 
 #: src/timezone_names.c:62
 msgid "Africa/Kinshasa"
-msgstr "Aafrika/Kinshasa"
+msgstr "აფრიკა/კინშასა"
 
 #: src/timezone_names.c:63
 msgid "Africa/Lagos"
-msgstr "Aafrika/Lagos"
+msgstr "აფრიკა/ლაგოსი"
 
 #: src/timezone_names.c:64
 msgid "Africa/Libreville"
-msgstr "Aafrika/Libreville"
+msgstr "აფრიკა/ლიბერვილი"
 
 #: src/timezone_names.c:65
 msgid "Africa/Lome"
-msgstr "Aafrika/Lomé"
+msgstr "აფრიკა/ლომი"
 
 #: src/timezone_names.c:66
 msgid "Africa/Luanda"
-msgstr "Aafrika/Luanda"
+msgstr "აფრიკა/ლუანდა"
 
 #: src/timezone_names.c:67
 msgid "Africa/Lubumbashi"
-msgstr "Aafrika/Lubumbashi"
+msgstr "აფრიკა/ლუბუმბაში"
 
 #: src/timezone_names.c:68
 msgid "Africa/Lusaka"
-msgstr "Aafrika/Lusaka"
+msgstr "აფრიკა/ლუსაკა"
 
 #: src/timezone_names.c:69
 msgid "Africa/Malabo"
-msgstr "Aafrika/Malabo"
+msgstr "აფრიკა/მალაბო"
 
 #: src/timezone_names.c:70
 msgid "Africa/Maputo"
-msgstr "Aafrika/Maputo"
+msgstr "აფრიკა/მაპუტუ"
 
 #: src/timezone_names.c:71
 msgid "Africa/Maseru"
-msgstr "Aafrika/Maseru"
+msgstr "აფრიკა/მასერუ"
 
 #: src/timezone_names.c:72
 msgid "Africa/Mbabane"
-msgstr "Aafrika/Mbabane"
+msgstr "აფრიკა/მბაბანე"
 
 #: src/timezone_names.c:73
 msgid "Africa/Mogadishu"
-msgstr "Aafrika/Muqdisho"
+msgstr "აფრიკა/მოგადიშუ"
 
 #: src/timezone_names.c:74
 msgid "Africa/Monrovia"
-msgstr "Aafrika/Monrovia"
+msgstr "აფრიკა/მონროვია"
 
 #: src/timezone_names.c:75
 msgid "Africa/Nairobi"
-msgstr "Aafrika/Nairobi"
+msgstr "აფრიკა/ნაირობი"
 
 #: src/timezone_names.c:76
 msgid "Africa/Ndjamena"
-msgstr "Aafrika/Ndjamena"
+msgstr "აფრიკა/ნჯამენა"
 
 #: src/timezone_names.c:77
 msgid "Africa/Niamey"
-msgstr "Aafrika/Niamey"
+msgstr "აფრიკა/ნიამეი"
 
 #: src/timezone_names.c:78
 msgid "Africa/Nouakchott"
-msgstr "Aafrika/Nouakchott"
+msgstr "აფრიკა/ნოიაკჩოტი"
 
 #: src/timezone_names.c:79
 msgid "Africa/Ouagadougou"
-msgstr "Aafrika/Ouagadougou"
+msgstr "აფრიკა/უაგადუგუ"
 
 #: src/timezone_names.c:80
 msgid "Africa/Porto-Novo"
-msgstr "Aafrika/Porto-Novo"
+msgstr "აფრიკა/პორტო ნოვო"
 
 #: src/timezone_names.c:81
 msgid "Africa/Sao_Tome"
-msgstr "Aafrika/São_Tomé"
+msgstr "აფრიკა/საო ტომე"
 
 #: src/timezone_names.c:82
 msgid "Africa/Timbuktu"
-msgstr "Aafrika/Tombouctou"
+msgstr "აფრიკა/არა აფრიკა"
 
 #: src/timezone_names.c:83
 msgid "Africa/Tripoli"
-msgstr "Aafrika/Tripoli"
+msgstr "აფრიკა/ტრიპოლი"
 
 #: src/timezone_names.c:84
 msgid "Africa/Tunis"
-msgstr "Aafrika/Tunis"
+msgstr "აფრიკა/ტუნისი"
 
 #: src/timezone_names.c:85
 msgid "Africa/Windhoek"
-msgstr "Aafrika/Windhoek"
+msgstr "აფრიკა/ვინდჰოეკი"
 
 #: src/timezone_names.c:86
 msgid "America"
-msgstr "Ameerika"
+msgstr "ამერიკა"
 
 #: src/timezone_names.c:87
 msgid "America/Adak"
-msgstr "Ameerika/Adak"
+msgstr "ამერიკა/ადაკი"
 
 #: src/timezone_names.c:88
 msgid "America/Anchorage"
-msgstr "Ameerika/Anchorage"
+msgstr "ამერიკა/ანკორჯი"
 
 #: src/timezone_names.c:89
 msgid "America/Anguilla"
-msgstr "Ameerika/Anguilla"
+msgstr "ამერიკა/ამერიკა"
 
 #: src/timezone_names.c:90
 msgid "America/Antigua"
-msgstr "Ameerika/Antigua"
+msgstr "ამერიკა/ამერიკა"
 
 #: src/timezone_names.c:91
 msgid "America/Araguaina"
-msgstr "Ameerika/Araguaína"
+msgstr "ამერიკა/არაგვიანა"
 
 #: src/timezone_names.c:92
 msgid "America/Argentina/Buenos_Aires"
-msgstr "Ameerika/Argentina/Buenos_Aires"
+msgstr "ამერიკა/არგენტინა/ბუენოს_აირესი"
 
 #: src/timezone_names.c:93
 msgid "America/Argentina/Catamarca"
-msgstr "Ameerika/Argentina/Catamarca"
+msgstr "ამერიკა/არგენტინა/კატამარკა"
 
 #: src/timezone_names.c:94
 msgid "America/Argentina/ComodRivadavia"
-msgstr "Ameerika/Argentina/ComodRivadavia"
+msgstr "ამერიკა/არგენტინა/კომოდრივადავია"
 
 #: src/timezone_names.c:95
 msgid "America/Argentina/Cordoba"
-msgstr "Ameerika/Argentina/Córdoba"
+msgstr "ამერიკა/არგენტინა/კორდობა"
 
 #: src/timezone_names.c:96
 msgid "America/Argentina/Jujuy"
-msgstr "Ameerika/Argentina/Jujuy"
+msgstr "ამერიკა/არგენტინა/ჯუჯუი"
 
 #: src/timezone_names.c:97
 msgid "America/Argentina/La_Rioja"
-msgstr "Ameerika/Argentina/La_Rioja"
+msgstr "ამერიკა/არგენტინა/ლა-რიოჰა"
 
 #: src/timezone_names.c:98
 msgid "America/Argentina/Mendoza"
-msgstr "Ameerika/Argentina/Mendoza"
+msgstr "ამერიკა/არგენტინა/მენდოზა"
 
 #: src/timezone_names.c:99
 msgid "America/Argentina/Rio_Gallegos"
-msgstr "Ameerika/Argentina/Rio_Gallegos"
+msgstr "ამერინა/არგენტინა/რიო_გალეგოსი"
 
 #: src/timezone_names.c:100
 msgid "America/Argentina/Salta"
-msgstr "Ameerika/Argentina/Salta"
+msgstr "ამერიკა/არგენტინა/სალტა"
 
 #: src/timezone_names.c:101
 msgid "America/Argentina/San_Juan"
-msgstr "Ameerika/Argentina/San_Juan"
+msgstr "ამერინა/არგენტინა/სან_ხუანი"
 
 #: src/timezone_names.c:102
 msgid "America/Argentina/San_Luis"
-msgstr "Ameerika/Argentina/San_Luis"
+msgstr "ამერინა/არგენტინა/სან_ლუისი"
 
 #: src/timezone_names.c:103
 msgid "America/Argentina/Tucuman"
-msgstr "Ameerika/Argentina/Tucuman"
+msgstr "ამერიკა/არგენტინა/ტუკუმენი"
 
 #: src/timezone_names.c:104
 msgid "America/Argentina/Ushuaia"
-msgstr "Ameerika/Argentina/Ushuaia"
+msgstr "ამერიკა/არგენტინა/უშუაია"
 
 #: src/timezone_names.c:105
 msgid "America/Aruba"
-msgstr "Ameerika/Aruba"
+msgstr "ამერიკა/არუბა"
 
 #: src/timezone_names.c:106
 msgid "America/Asuncion"
-msgstr "Ameerika/Asunción"
+msgstr "ამერიკა/ასუნსიონი"
 
 #: src/timezone_names.c:107
 msgid "America/Atikokan"
-msgstr "Ameerika/Atikokan"
+msgstr "ამერიკა/ატიკოკანი"
 
 #: src/timezone_names.c:108
 msgid "America/Atka"
-msgstr "Ameerika/Atka"
+msgstr "ამერიკა/ატკა"
 
 #: src/timezone_names.c:109
 msgid "America/Bahia"
-msgstr "Ameerika/Bahia"
+msgstr "ამერიკა/ბაია"
 
 #: src/timezone_names.c:110
 msgid "America/Bahia_Banderas"
-msgstr "Ameerika/Bahia_Banderas"
+msgstr "ამერიკა/ბაია ბანდერასი"
 
 #: src/timezone_names.c:111
 msgid "America/Barbados"
-msgstr "Ameerika/Barbados"
+msgstr "ამერიკა/ბარბადოსი"
 
 #: src/timezone_names.c:112
 msgid "America/Belem"
-msgstr "Ameerika/Belém"
+msgstr "ამერიკა/ბელემი"
 
 #: src/timezone_names.c:113
 msgid "America/Belize"
-msgstr "Ameerika/Belize"
+msgstr "ამერიკა/ბელიზი"
 
 #: src/timezone_names.c:114
 msgid "America/Blanc-Sablon"
-msgstr "Ameerika/Blanc-Sablon"
+msgstr "ამერიკა/ბლანკ-საბლონი"
 
 #: src/timezone_names.c:115
 msgid "America/Boa_Vista"
-msgstr "Ameerika/Boa_Vista"
+msgstr "ამერიკა/ბოა ვისტა"
 
 #: src/timezone_names.c:116
 msgid "America/Bogota"
-msgstr "Ameerika/Bogotá"
+msgstr "ამერიკა/ბოგოტა"
 
 #: src/timezone_names.c:117
 msgid "America/Boise"
-msgstr "Ameerika/Boise"
+msgstr "ამერიკა/ბოისე"
 
 #: src/timezone_names.c:118
 msgid "America/Buenos_Aires"
-msgstr "Ameerika/Buenos_Aires"
+msgstr "ამერიკა/ბუენოს აირესი(სითი)"
 
 #: src/timezone_names.c:119
 msgid "America/Cambridge_Bay"
-msgstr "Ameerika/Cambridge_Bay"
+msgstr "ამერიკა/კემბრიჯის სრუტე"
 
 #: src/timezone_names.c:120
 msgid "America/Campo_Grande"
-msgstr "Ameerika/Campo_Grande"
+msgstr "ამერიკა/კამპო_გრანდე"
 
 #: src/timezone_names.c:121
 msgid "America/Cancun"
-msgstr "Ameerika/Cancún"
+msgstr "ამერიკა/კანკუნი"
 
 #: src/timezone_names.c:122
 msgid "America/Caracas"
-msgstr "Ameerika/Caracas"
+msgstr "ამერიკა/კარაკასი"
 
 #: src/timezone_names.c:123
 msgid "America/Catamarca"
-msgstr "Ameerika/Catamarca"
+msgstr "ამერიკა/კატამარკა"
 
 #: src/timezone_names.c:124
 msgid "America/Cayenne"
-msgstr "Ameerika/Cayenne"
+msgstr "ამერიკა/კაიენი"
 
 #: src/timezone_names.c:125
 msgid "America/Cayman"
-msgstr "Ameerika/Kaimanisaared"
+msgstr "ამერიკა/კეიმენი"
 
 #: src/timezone_names.c:126
 msgid "America/Chicago"
-msgstr "Ameerika/Chicago"
+msgstr "ამერიკა/ჩიკაგო"
 
 #: src/timezone_names.c:127
 msgid "America/Chihuahua"
-msgstr "Ameerika/Chihuahua"
+msgstr "ამერიკა/ჩიხუახუა"
 
 #: src/timezone_names.c:128
 msgid "America/Coral_Harbour"
-msgstr "Ameerika/Coral_Harbour"
+msgstr "ამერიკა/კორალ-ჰარბორი"
 
 #: src/timezone_names.c:129
 msgid "America/Cordoba"
-msgstr "Ameerika/Córdoba"
+msgstr "ამერიკა/კორდობა"
 
 #: src/timezone_names.c:130
 msgid "America/Costa_Rica"
-msgstr "Ameerika/Costa_Rica"
+msgstr "ამერიკა/არა-კოსტა რიკა"
 
 #: src/timezone_names.c:131
 msgid "America/Creston"
-msgstr "Ameerika/Creston"
+msgstr "ამერიკა/კრესტონი"
 
 #: src/timezone_names.c:132
 msgid "America/Cuiaba"
-msgstr "Ameerika/Cuiabá"
+msgstr "ამერიკა/კუიაბა"
 
 #: src/timezone_names.c:133
 msgid "America/Curacao"
-msgstr "Ameerika/Curaçao"
+msgstr "ამერიკა/კურაკაო"
 
 #: src/timezone_names.c:134
 msgid "America/Danmarkshavn"
-msgstr "Ameerika/Danmarkshavn"
+msgstr "ამერიკა/დანმარკსჰავნი"
 
 #: src/timezone_names.c:135
 msgid "America/Dawson"
-msgstr "Ameerika/Bikar"
+msgstr "ამერიკა/დოსონი"
 
 #: src/timezone_names.c:136
 msgid "America/Dawson_Creek"
-msgstr "Ameerika/Dawson_Creek"
+msgstr "ამერიკა/დოსონ კრიკი"
 
 #: src/timezone_names.c:137
 msgid "America/Denver"
-msgstr "Ameerika/Denver"
+msgstr "ამერიკა/დენვერი"
 
 #: src/timezone_names.c:138
 msgid "America/Detroit"
-msgstr "Ameerika/Detroit"
+msgstr "ამერიკა/დეტროიტი"
 
 #: src/timezone_names.c:139
 msgid "America/Dominica"
-msgstr "Ameerika/Dominica"
+msgstr "ამერიკა/დომინიკა"
 
 #: src/timezone_names.c:140
 msgid "America/Edmonton"
-msgstr "Ameerika/Edmonton"
+msgstr "ამერიკა/ედმონტონი"
 
 #: src/timezone_names.c:141
 msgid "America/Ensenada"
-msgstr "Ameerika/Ensenada"
+msgstr "ამერიკა/ენსენადა"
 
 #: src/timezone_names.c:142
 msgid "America/Eirunepe"
-msgstr "Ameerika/Eirunepé"
+msgstr "ამერიკა/ეირუნეპე"
 
 #: src/timezone_names.c:143
 msgid "America/El_Salvador"
-msgstr "Ameerika/El_Salvador"
+msgstr "ამერიკა/არა-ელ სალვადორი"
 
 #: src/timezone_names.c:144
 msgid "America/Fortaleza"
-msgstr "Ameerika/Fortaleza"
+msgstr "ამერიკა/ფორტალესა"
 
 #: src/timezone_names.c:145
 msgid "America/Fort_Wayne"
-msgstr "Ameerika/Fort_Wayne"
+msgstr "ამერიკა/ფორტ_უეინი"
 
 #: src/timezone_names.c:146
 msgid "America/Glace_Bay"
-msgstr "Ameerika/Glace_Bay"
+msgstr "ამერიკა/გლეისის სრუტე"
 
 #: src/timezone_names.c:147
 msgid "America/Godthab"
-msgstr "Ameerika/Nuuk"
+msgstr "ამერიკა/ნუუკი"
 
 #: src/timezone_names.c:148
 msgid "America/Goose_Bay"
-msgstr "Ameerika/Goose_Bay"
+msgstr "ამერიკა/ბატების სრუტე"
 
 #: src/timezone_names.c:149
 msgid "America/Grand_Turk"
-msgstr "Ameerika/Grand_Turk"
+msgstr "ამერიკა/გრანდ ტურკი"
 
 #: src/timezone_names.c:150
 msgid "America/Grenada"
-msgstr "Ameerika/Grenada"
+msgstr "ამერიკა/გრენადა"
 
 #: src/timezone_names.c:151
 msgid "America/Guadeloupe"
-msgstr "Ameerika/Guadeloupe"
+msgstr "ამერიკა/გვადალუპე"
 
 #: src/timezone_names.c:152
 msgid "America/Guatemala"
-msgstr "Ameerika/Guatemala"
+msgstr "ამერიკა/არა-გვატემალა"
 
 #: src/timezone_names.c:153
 msgid "America/Guayaquil"
-msgstr "Ameerika/Guayaquil"
+msgstr "ამერიკა/გუაიაკილი"
 
 #: src/timezone_names.c:154
 msgid "America/Guyana"
-msgstr "Ameerika/Guyana"
+msgstr "ამერიკა/არა-გვიანა"
 
 #: src/timezone_names.c:155
 msgid "America/Halifax"
-msgstr "Ameerika/Halifax"
+msgstr "ამერიკა/ჰალიფაქსი"
 
 #: src/timezone_names.c:156
 msgid "America/Havana"
-msgstr "Ameerika/Havanna"
+msgstr "ამერიკა/ჰავანა"
 
 #: src/timezone_names.c:157
 msgid "America/Hermosillo"
-msgstr "Ameerika/Hermosillo"
+msgstr "ამერიკა/ერმოსილო"
 
 #: src/timezone_names.c:158
 msgid "America/Indiana/Indianapolis"
-msgstr "Ameerika/Indiana/Indianapolis"
+msgstr "ამერიკა/ინდიანა/ინდიანაპოლისი"
 
 #: src/timezone_names.c:159
 msgid "America/Indiana/Knox"
-msgstr "Ameerika/Indiana/Knox"
+msgstr "ამერიკა/ინდიანა/კნოქსი"
 
 #: src/timezone_names.c:160
 msgid "America/Indiana/Marengo"
-msgstr "Ameerika/Indiana/Marengo"
+msgstr "ამერიკა/ინდიანა/მარენგო"
 
 #: src/timezone_names.c:161
 msgid "America/Indiana/Petersburg"
-msgstr "Ameerika/Indiana/Petersburg"
+msgstr "ამერიკა/ინდიანა/პეტერბურგი"
 
 #: src/timezone_names.c:162
 msgid "America/Indiana/Tell_City"
-msgstr "Ameerika/Indiana/Tell_City"
+msgstr "ამერიკა/ინდიანა/ტელ_სიტი"
 
 #: src/timezone_names.c:163
 msgid "America/Indiana/Vevay"
-msgstr "Ameerika/Indiana/Vevay"
+msgstr "ამერიკა/ინდიანა/ვევაი"
 
 #: src/timezone_names.c:164
 msgid "America/Indiana/Vincennes"
-msgstr "Ameerika/Indiana/Vincennes"
+msgstr "ამერიკა/ინდიანა/ვინსენსი"
 
 #: src/timezone_names.c:165
 msgid "America/Indiana/Winamac"
-msgstr "Ameerika/Indiana/Winamac"
+msgstr "ამერიკა/ინდიანა/უინამაკი"
 
 #: src/timezone_names.c:166
 msgid "America/Indianapolis"
-msgstr "Ameerika/Indianapolis"
+msgstr "ამერიკა/ინდიანაპოლისი"
 
 #: src/timezone_names.c:167
 msgid "America/Inuvik"
-msgstr "Ameerika/Inuvik"
+msgstr "ამერიკა/ინუვიკი"
 
 #: src/timezone_names.c:168
 msgid "America/Iqaluit"
-msgstr "Ameerika/Iqaluit"
+msgstr "ამერიკა/იკალუიტი"
 
 #: src/timezone_names.c:169
 msgid "America/Jamaica"
-msgstr "Ameerika/Jamaica"
+msgstr "ამერიკა/იამაიკა"
 
 #: src/timezone_names.c:170
 msgid "America/Jujuy"
-msgstr "Ameerika/Jujuy"
+msgstr "ამერიკა/ხუხუი"
 
 #: src/timezone_names.c:171
 msgid "America/Juneau"
-msgstr "Ameerika/Juneau"
+msgstr "ამერიკა/ჯუნო"
 
 #: src/timezone_names.c:172
 msgid "America/Kentucky/Louisville"
-msgstr "Ameerika/Kentucky/Louisville"
+msgstr "ამერიკა/კენტუკი/ლუსვილი"
 
 #: src/timezone_names.c:173
 msgid "America/Kentucky/Monticello"
-msgstr "Ameerika/Kentucky/Monticello"
+msgstr "ამერიკა/კენტუკი/მონტიჩელო"
 
 #: src/timezone_names.c:174
 msgid "America/Knox_IN"
-msgstr "Ameerika/Indiana/Knox"
+msgstr "ამერიკა/კნოქსი"
 
 #: src/timezone_names.c:175
 msgid "America/Kralendijk"
-msgstr "Ameerika/Kralendijk"
+msgstr "ამერიკა/კრალენდეიკი"
 
 #: src/timezone_names.c:176
 msgid "America/La_Paz"
-msgstr "Ameerika/La_Paz"
+msgstr "ამერიკა/ლა პასი"
 
 #: src/timezone_names.c:177
 msgid "America/Lima"
-msgstr "Ameerika/Lima"
+msgstr "ამერიკა/ლიმა"
 
 #: src/timezone_names.c:178
 msgid "America/Los_Angeles"
-msgstr "Ameerika/Los_Angeles"
+msgstr "ამერიკა/ლოს ანჯელესი"
 
 #: src/timezone_names.c:179
 msgid "America/Louisville"
-msgstr "Ameerika/Louisville"
+msgstr "ამერიკა/ლუისვილი"
 
 #: src/timezone_names.c:180
 msgid "America/Lower_Princes"
-msgstr "Ameerika/Lower_Princes"
+msgstr "ამერიკა/ლოუერ_პრინცესი"
 
 #: src/timezone_names.c:181
 msgid "America/Maceio"
-msgstr "Ameerika/Maceió"
+msgstr "ამერიკა/მასეიო"
 
 #: src/timezone_names.c:182
 msgid "America/Managua"
-msgstr "Ameerika/Managua"
+msgstr "ამერიკა/მანაგუა"
 
 #: src/timezone_names.c:183
 msgid "America/Manaus"
-msgstr "Ameerika/Manaus"
+msgstr "ამერიკა/მანაუსი"
 
 #: src/timezone_names.c:184
 msgid "America/Marigot"
-msgstr "Ameerika/Marigot"
+msgstr "ამერიკა/მარიგო"
 
 #: src/timezone_names.c:185
 msgid "America/Martinique"
-msgstr "Ameerika/Martinique"
+msgstr "ამერიკა/მარტინიკა"
 
 #: src/timezone_names.c:186
 msgid "America/Matamoros"
-msgstr "Ameerika/Matamoros"
+msgstr "ამერიკა/მატამოროსი"
 
 #: src/timezone_names.c:187
 msgid "America/Mazatlan"
-msgstr "Ameerika/Mazatlán"
+msgstr "ამერიკა/მაზალტანი"
 
 #: src/timezone_names.c:188
 msgid "America/Mendoza"
-msgstr "Ameerika/Mendoza"
+msgstr "ამერიკა/მენდოზა"
 
 #: src/timezone_names.c:189
 msgid "America/Menominee"
-msgstr "Ameerika/Menomini"
+msgstr "ამერიკა/მენომინი"
 
 #: src/timezone_names.c:190
 msgid "America/Merida"
-msgstr "Ameerika/Mérida"
+msgstr "ამერიკა/მერიდა"
 
 #: src/timezone_names.c:191
 msgid "America/Metlakatla"
-msgstr "Ameerika/Metlakatla"
+msgstr "ამერიკა/მეტლაკატლა"
 
 #: src/timezone_names.c:192
 msgid "America/Mexico_City"
-msgstr "Ameerika/México"
+msgstr "ამერიკა/მეხიკო სითი"
 
 #: src/timezone_names.c:193
 msgid "America/Miquelon"
-msgstr "Ameerika/Miquelon"
+msgstr "ამერიკა/მიქველონი"
 
 #: src/timezone_names.c:194
 msgid "America/Moncton"
-msgstr "Ameerika/Moncton"
+msgstr "ამერიკა/მონკტონი"
 
 #: src/timezone_names.c:195
 msgid "America/Monterrey"
-msgstr "Ameerika/Monterrey"
+msgstr "ამერიკა/მონტერეი"
 
 #: src/timezone_names.c:196
 msgid "America/Montevideo"
-msgstr "Ameerika/Montevideo"
+msgstr "ამერიკა/მონტევიდეო"
 
 #: src/timezone_names.c:197
 msgid "America/Montreal"
-msgstr "Ameerika/Montreal"
+msgstr "ამერიკა/მონტრეალი"
 
 #: src/timezone_names.c:198
 msgid "America/Montserrat"
-msgstr "Ameerika/Montserrat"
+msgstr "ამერიკა/მონტსერატი"
 
 #: src/timezone_names.c:199
 msgid "America/Nassau"
-msgstr "Ameerika/Nassau"
+msgstr "ამერიკა/ნასაუ"
 
 #: src/timezone_names.c:200
 msgid "America/New_York"
-msgstr "Ameerika/New_York"
+msgstr "ამერიკა/ნიუ იორკი"
 
 #: src/timezone_names.c:201
 msgid "America/Nipigon"
-msgstr "Ameerika/Nipigon"
+msgstr "ამერიკა/ნიპიგონი"
 
 #: src/timezone_names.c:202
 msgid "America/Nome"
-msgstr "Ameerika/Nome"
+msgstr "ამერიკა/ნომე"
 
 #: src/timezone_names.c:203
 msgid "America/North_Dakota/Beulah"
-msgstr "Ameerika/Põhja-Dakota/Beulah"
+msgstr "ამერკა/ჩრდილო_დაკოტა/ბეულა"
 
 #: src/timezone_names.c:204
 msgid "America/North_Dakota/Center"
-msgstr "Ameerika/Põhja-Dakota/Keskosa"
+msgstr "ამერიკა/ჩრდილოეთი_დაკოტა/ცენტრი"
 
 #: src/timezone_names.c:205
 msgid "America/North_Dakota/New_Salem"
-msgstr "Ameerika/Põhja-Dakota/New_Salem"
+msgstr "ამერიკა/ჩრდილო_დაკოტა/ნიუ_სალემი"
 
 #: src/timezone_names.c:206
 msgid "America/Noronha"
-msgstr "Ameerika/Noronha"
+msgstr "ამერიკა/ნორონია"
 
 #: src/timezone_names.c:207
 msgid "America/Ojinaga"
-msgstr "Ameerika/Ojinaga"
+msgstr "ამერიკა/ოხინაგა"
 
 #: src/timezone_names.c:208
 msgid "America/Panama"
-msgstr "Ameerika/Panama"
+msgstr "ამერიკა/პანამა"
 
 #: src/timezone_names.c:209
 msgid "America/Pangnirtung"
-msgstr "Ameerika/Pangnirtung"
+msgstr "ამერიკა/პანგნირტანგი"
 
 #: src/timezone_names.c:210
 msgid "America/Paramaribo"
-msgstr "Ameerika/Paramaribo"
+msgstr "ამერიკა/პარამარიბო"
 
 #: src/timezone_names.c:211
 msgid "America/Phoenix"
-msgstr "Ameerika/Phoenix"
+msgstr "ამერიკა/ფენიქსი"
 
 #: src/timezone_names.c:212
 msgid "America/Port-au-Prince"
-msgstr "Ameerika/Port-au-Prince"
+msgstr "ამერიკა/პორტ-აუ-პრინსი"
 
 #: src/timezone_names.c:213
 msgid "America/Port_of_Spain"
-msgstr "Ameerika/Port_of_Spain"
+msgstr "ამერიკა/ესპანეთის პორტი"
 
 #: src/timezone_names.c:214
 msgid "America/Porto_Acre"
-msgstr "Ameerika/Porto_Acre"
+msgstr "ამერიკა/პორტო_აკრე"
 
 #: src/timezone_names.c:215
 msgid "America/Porto_Velho"
-msgstr "Ameerika/Pôrto_Velho"
+msgstr "ამერიკა/პორტო ველო"
 
 #: src/timezone_names.c:216
 msgid "America/Puerto_Rico"
-msgstr "Ameerika/Puerto_Rico"
+msgstr "ამერიკა/პუერტო რიკო"
 
 #: src/timezone_names.c:217
 msgid "America/Rainy_River"
-msgstr "Ameerika/_RainyRiver"
+msgstr "ამერიკა/რეინი რივერი"
 
 #: src/timezone_names.c:218
 msgid "America/Rankin_Inlet"
-msgstr "Ameerika/Rankin_Inlet"
+msgstr "ამერიკა/რანკინ ინლეტი"
 
 #: src/timezone_names.c:219
 msgid "America/Recife"
-msgstr "Ameerika/Recife"
+msgstr "ამერიკა/რესიფე"
 
 #: src/timezone_names.c:220
 msgid "America/Regina"
-msgstr "Ameerika/Regina"
+msgstr "ამერიკა/რეგინა"
 
 #: src/timezone_names.c:221
 msgid "America/Resolute"
-msgstr "Ameerika/Resolute"
+msgstr "ამერიკა/რესოლუტი"
 
 #: src/timezone_names.c:222
 msgid "America/Rio_Branco"
-msgstr "Ameerika/Rio_Branco"
+msgstr "ამერიკა/რიო ბრანკო"
 
 #: src/timezone_names.c:223
 msgid "America/Rosario"
-msgstr "Ameerika/Rosario"
+msgstr "ამერიკა/პუერტო დელ როზარიო"
 
 #: src/timezone_names.c:224
 msgid "America/Santa_Isabel"
-msgstr "Ameerika/Santa_Isabel"
+msgstr "ამერიკა/სანტა_იზაბელი"
 
 #: src/timezone_names.c:225
 msgid "America/Santarem"
-msgstr "Ameerika/Santarem"
+msgstr "ამერიკა/სანტარემი"
 
 #: src/timezone_names.c:226
 msgid "America/Santiago"
-msgstr "Ameerika/Santiago"
+msgstr "ამერიკა/სანტიაგო"
 
 #: src/timezone_names.c:227
 msgid "America/Santo_Domingo"
-msgstr "Ameerika/Santo_Domingo"
+msgstr "ამერიკა/სანტო დომინიგო"
 
 #: src/timezone_names.c:228
 msgid "America/Sao_Paulo"
-msgstr "Ameerika/São_Paulo"
+msgstr "ამერიკა/საო პაულო"
 
 #: src/timezone_names.c:229
 msgid "America/Scoresbysund"
-msgstr "Ameerika/Ittoqqortoormiit"
+msgstr "იტოკორტოორმიიტიამერიკა/"
 
 #: src/timezone_names.c:230
 msgid "America/Shiprock"
-msgstr "Ameerika/Shiprock"
+msgstr "ამერიკა/შიპროკი"
 
 #: src/timezone_names.c:231
 msgid "America/Sitka"
-msgstr "Ameerika/Sitka"
+msgstr "ამერიკა/სიტკა"
 
 #: src/timezone_names.c:232
 msgid "America/St_Barthelemy"
-msgstr "America/St_Barthelemy"
+msgstr "ამერიკა/წმ. ბართლომე"
 
 #: src/timezone_names.c:233
 msgid "America/St_Johns"
-msgstr "Ameerika/St_Johns"
+msgstr "ამერიკა/სენტ. ჯონსი"
 
 #: src/timezone_names.c:234
 msgid "America/St_Kitts"
-msgstr "Ameerika/St_Kitts"
+msgstr "ამერიკა/სენტ კიტსი"
 
 #: src/timezone_names.c:235
 msgid "America/St_Lucia"
-msgstr "Ameerika/St_Lucia"
+msgstr "ამერიკა/სტ. ლუცია"
 
 #: src/timezone_names.c:236
 msgid "America/St_Thomas"
-msgstr "Ameerika/St_Thomas"
+msgstr "ამერიკა/სტ. თომასი"
 
 #: src/timezone_names.c:237
 msgid "America/St_Vincent"
-msgstr "Ameerika/St_Vincent"
+msgstr "ამერიკა/წმ. ვინსენტი"
 
 #: src/timezone_names.c:238
 msgid "America/Swift_Current"
-msgstr "Ameerika/Swift_Current"
+msgstr "ამერიკა/სუიფტ კარენტი"
 
 #: src/timezone_names.c:239
 msgid "America/Tegucigalpa"
-msgstr "Ameerika/Tegucigalpa"
+msgstr "ამერიკა/ტეგუსიგალპა"
 
 #: src/timezone_names.c:240
 msgid "America/Thule"
-msgstr "Ameerika/Qaanaaq"
+msgstr "ამერიკა/თულე"
 
 #: src/timezone_names.c:241
 msgid "America/Thunder_Bay"
-msgstr "Ameerika/Thunder_Bay"
+msgstr "ამერიკა/თანდერ ბეი"
 
 #: src/timezone_names.c:242
 msgid "America/Tijuana"
-msgstr "Ameerika/Tijuana"
+msgstr "ამერიკა/ტიხუანა"
 
 #: src/timezone_names.c:243
 msgid "America/Toronto"
-msgstr "Ameerika/Toronto"
+msgstr "ამერიკა/ტორონტო"
 
 #: src/timezone_names.c:244
 msgid "America/Tortola"
-msgstr "Ameerika/Tortola"
+msgstr "ამერიკა/ტორტოლა"
 
 #: src/timezone_names.c:245
 msgid "America/Vancouver"
-msgstr "Ameerika/Vancouver"
+msgstr "ამერიკა/ვანკუვერი"
 
 #: src/timezone_names.c:246
 msgid "America/Virgin"
-msgstr "Ameerika/Neitsisaared"
+msgstr "ამერიკა/ვირჯიმი"
 
 #: src/timezone_names.c:247
 msgid "America/Whitehorse"
-msgstr "Ameerika/Whitehorse"
+msgstr "ამერიკა/ვაითჰორსი"
 
 #: src/timezone_names.c:248
 msgid "America/Winnipeg"
-msgstr "Ameerika/Winnipeg"
+msgstr "ამერიკა/ვინიპეგი"
 
 #: src/timezone_names.c:249
 msgid "America/Yakutat"
-msgstr "Ameerika/Yakutat"
+msgstr "ამერიკა/იაკუტატი"
 
 #: src/timezone_names.c:250
 msgid "America/Yellowknife"
-msgstr "Ameerika/Yellowknife"
+msgstr "ამერიკა/იელოუნაიფი"
 
 #: src/timezone_names.c:251
 msgid "Antarctica"
-msgstr "Antarktika"
+msgstr "ანტარქტიკა"
 
 #: src/timezone_names.c:252
 msgid "Antarctica/Casey"
-msgstr "Antarktika/Casey"
+msgstr "ანტარქტიკა/კეისი"
 
 #: src/timezone_names.c:253
 msgid "Antarctica/Davis"
-msgstr "Antarktika/Davis"
+msgstr "ანტარქტიკა/დევისი"
 
 #: src/timezone_names.c:254
 msgid "Antarctica/DumontDUrville"
-msgstr "Antarktika/DumontDUrville"
+msgstr "ანტარქტიკა/დუმონდურვილი"
 
 #: src/timezone_names.c:255
 msgid "Antarctica/Macquarie"
-msgstr "Antarktika/Macquarie"
+msgstr "ანტარქტიკა/მაკუორი"
 
 #: src/timezone_names.c:256
 msgid "Antarctica/Mawson"
-msgstr "Antarktika/Mawson"
+msgstr "ანტარქტიკა/მოუსონი"
 
 #: src/timezone_names.c:257
 msgid "Antarctica/McMurdo"
-msgstr "Antarktika/McMurdo"
+msgstr "ანტარქტიკა/მაკმურდო"
 
 #: src/timezone_names.c:258
 msgid "Antarctica/Palmer"
-msgstr "Antarktika/Palmer"
+msgstr "ანტარქტიკა/პალმერი"
 
 #: src/timezone_names.c:259
 msgid "Antarctica/Rothera"
-msgstr "Antarktika/Rothera"
+msgstr "ანტარქტიკა/როთერა"
 
 #: src/timezone_names.c:260
 msgid "Antarctica/South_Pole"
-msgstr "Antarktika/Lõunapoolus"
+msgstr "ანტარქტიკა/სამხრეთი პოლუსი"
 
 #: src/timezone_names.c:261
 msgid "Antarctica/Syowa"
-msgstr "Antarktika/Syowa"
+msgstr "ანტარქტიკა/საიოვა"
 
 #: src/timezone_names.c:262
 msgid "Antarctica/Vostok"
-msgstr "Antarktika/Vostok"
+msgstr "ანტარქტიკა/ვოსტოკი"
 
 #: src/timezone_names.c:263
 msgid "Arctic"
-msgstr "Arktika"
+msgstr "არქტიკული"
 
 #: src/timezone_names.c:264
 msgid "Arctic/Longyearbyen"
-msgstr "Arktika/Longyearbyen"
+msgstr "არქტიკა/ლონგიეარბაინი"
 
 #: src/timezone_names.c:265
 msgid "Asia"
-msgstr "Aasia"
+msgstr "აზია"
 
 #: src/timezone_names.c:266
 msgid "Asia/Aden"
-msgstr "Aasia/Aden"
+msgstr "აზია/ადენი"
 
 #: src/timezone_names.c:267
 msgid "Asia/Almaty"
-msgstr "Aasia/Almatõ"
+msgstr "აზია/ალმათი"
 
 #: src/timezone_names.c:268
 msgid "Asia/Amman"
-msgstr "Aasia/Ammān"
+msgstr "აზია/ამანი"
 
 #: src/timezone_names.c:269
 msgid "Asia/Anadyr"
-msgstr "Aasia/Anadõr"
+msgstr "აზია/ანადირი"
 
 #: src/timezone_names.c:270
 msgid "Asia/Aqtau"
-msgstr "Aasia/Aktau"
+msgstr "აზია/აქტაუ"
 
 #: src/timezone_names.c:271
 msgid "Asia/Aqtobe"
-msgstr "Aasia/Aktöbe"
+msgstr "აზია/აქტობი"
 
 #: src/timezone_names.c:272
 msgid "Asia/Ashgabat"
-msgstr "Aasia/Aşgabat"
+msgstr "აზია/აშხაბადი"
 
 #: src/timezone_names.c:273
 msgid "Asia/Ashkhabad"
-msgstr "Aasia/Ašhabad"
+msgstr "აზია/აშხაბადი"
 
 #: src/timezone_names.c:274
 msgid "Asia/Baghdad"
-msgstr "Aasia/Bagdad"
+msgstr "აზია/ბაღდადი"
 
 #: src/timezone_names.c:275
 msgid "Asia/Bahrain"
-msgstr "Aasia/Bahrein"
+msgstr "აზია/ბაჰრეინი"
 
 #: src/timezone_names.c:276
 msgid "Asia/Baku"
-msgstr "Aasia/Bakuu"
+msgstr "აზია/ბაქო"
 
 #: src/timezone_names.c:277
 msgid "Asia/Bangkok"
-msgstr "Aasia/Bangkok"
+msgstr "აზია/ბანკოკი"
 
 #: src/timezone_names.c:278
 msgid "Asia/Beirut"
-msgstr "Aasia/Beirut"
+msgstr "აზია/ბეირუტი"
 
 #: src/timezone_names.c:279
 msgid "Asia/Bishkek"
-msgstr "Aasia/Biškek"
+msgstr "აზია/ბიშკეკი"
 
 #: src/timezone_names.c:280
 msgid "Asia/Brunei"
-msgstr "Aasia/Brunei"
+msgstr "აზია/ბრუნეი"
 
 #: src/timezone_names.c:281
 msgid "Asia/Calcutta"
-msgstr "Aasia/Calcutta"
+msgstr "აზია/კალკუტა"
 
 #: src/timezone_names.c:282
 msgid "Asia/Choibalsan"
-msgstr "Aasia/Tšojbalsan"
+msgstr "აზია/ჩოიბალსანი"
 
 #: src/timezone_names.c:283
 msgid "Asia/Chongqing"
-msgstr "Aasia/Chongqing"
+msgstr "აზია/ჩონგკინგი"
 
 #: src/timezone_names.c:284
 msgid "Asia/Chungking"
-msgstr "Aasia/Tšungking"
+msgstr "აზია/ჩუნცინი"
 
 #: src/timezone_names.c:285
 msgid "Asia/Colombo"
-msgstr "Aasia/Colombo"
+msgstr "აზია/კოლომბო"
 
 #: src/timezone_names.c:286
 msgid "Asia/Dacca"
-msgstr "Aasia/Dacca"
+msgstr "აზია/დაკა"
 
 #: src/timezone_names.c:287
 msgid "Asia/Damascus"
-msgstr "Aasia/Damaskus"
+msgstr "აზია/დამასკო"
 
 #: src/timezone_names.c:288
 msgid "Asia/Dhaka"
-msgstr "Aasia/Dhaka"
+msgstr "აზია/დაკა"
 
 #: src/timezone_names.c:289
 msgid "Asia/Dili"
-msgstr "Aasia/Dili"
+msgstr "აზია/დილი"
 
 #: src/timezone_names.c:290
 msgid "Asia/Dubai"
-msgstr "Aasia/Dubai"
+msgstr "აზია/დუბაი"
 
 #: src/timezone_names.c:291
 msgid "Asia/Dushanbe"
-msgstr "Aasia/Dušanbe"
+msgstr "აზია/დუშანბე"
 
 #: src/timezone_names.c:292
 msgid "Asia/Gaza"
-msgstr "Aasia/Gaza"
+msgstr "აზია/ღაზა"
 
 #: src/timezone_names.c:293
 msgid "Asia/Harbin"
-msgstr "Aasia/Harbin"
+msgstr "აზია/ჰარბინი"
 
 #: src/timezone_names.c:294
 msgid "Asia/Hebron"
-msgstr "Aasia/Hebron"
+msgstr "აზია/ჰებრონი"
 
 #: src/timezone_names.c:295
 msgid "Asia/Hong_Kong"
-msgstr "Aasia/Hong_Kong"
+msgstr "აზია/ჰონგკონგი"
 
 #: src/timezone_names.c:296
 msgid "Asia/Ho_Chi_Minh"
-msgstr "Aasia/Ho_Chi_Minh"
+msgstr "აზია/ხოშიმინი"
 
 #: src/timezone_names.c:297
 msgid "Asia/Hovd"
-msgstr "Aasia/Hovd"
+msgstr "აზია/ჰოვდი"
 
 #: src/timezone_names.c:298
 msgid "Asia/Irkutsk"
-msgstr "Aasia/Irkutsk"
+msgstr "აზია/ირკუტსკი"
 
 #: src/timezone_names.c:299
 msgid "Asia/Istanbul"
-msgstr "Aasia/İstanbul"
+msgstr "აზია/ისტანბული"
 
 #: src/timezone_names.c:300
 msgid "Asia/Jakarta"
-msgstr "Aasia/Jakarta"
+msgstr "აზია/ჯაკარტა"
 
 #: src/timezone_names.c:301
 msgid "Asia/Jayapura"
-msgstr "Aasia/Jayapura"
+msgstr "აზია/ჯაიაპურა"
 
 #: src/timezone_names.c:302
 msgid "Asia/Jerusalem"
-msgstr "Aasia/Jeruusalemm"
+msgstr "აზია/იერუსალიმი"
 
 #: src/timezone_names.c:303
 msgid "Asia/Kabul"
-msgstr "Aasia/Kabul"
+msgstr "აზია/ქაბული"
 
 #: src/timezone_names.c:304
 msgid "Asia/Kamchatka"
-msgstr "Aasia/Kamtšatka"
+msgstr "აზია/კამჩატკა"
 
 #: src/timezone_names.c:305
 msgid "Asia/Karachi"
-msgstr "Aasia/Karāchi"
+msgstr "აზია/კარაჩი"
 
 #: src/timezone_names.c:306
 msgid "Asia/Kashgar"
-msgstr "Aasia/Kaxgar"
+msgstr "აზია/კაშგარი"
 
 #: src/timezone_names.c:307
 msgid "Asia/Kathmandu"
-msgstr "Aasia/Kathmandu"
+msgstr "აზია/კატმანდუ"
 
 #: src/timezone_names.c:308
 msgid "Asia/Katmandu"
-msgstr "Aasia/Katmandu"
+msgstr "აზია/კატმანდუ"
 
 #: src/timezone_names.c:309
 msgid "Asia/Khandyga"
-msgstr "Aasia/Handõga"
+msgstr "აზია/ხანდიგა"
 
 #: src/timezone_names.c:310
 msgid "Asia/Kolkata"
-msgstr "Aasia/Kolkata"
+msgstr "აზია/კოლკატა"
 
 #: src/timezone_names.c:311
 msgid "Asia/Krasnoyarsk"
-msgstr "Aasia/Krasnojarsk"
+msgstr "აზია/კრასნოიარსკი"
 
 #: src/timezone_names.c:312
 msgid "Asia/Kuala_Lumpur"
-msgstr "Aasia/Kuala_Lumpur"
+msgstr "აზია/კუალა ლუმპური"
 
 #: src/timezone_names.c:313
 msgid "Asia/Kuching"
-msgstr "Aasia/Kuching"
+msgstr "აზია/კუჩინგი"
 
 #: src/timezone_names.c:314
 msgid "Asia/Kuwait"
-msgstr "Aasia/Kuveit"
+msgstr "აზია/ქუვეიტი"
 
 #: src/timezone_names.c:315
 msgid "Asia/Macao"
-msgstr "Aasia/Aomen"
+msgstr "აზია/მაკაო"
 
 #: src/timezone_names.c:316
 msgid "Asia/Macau"
-msgstr "Aasia/Macau"
+msgstr "აზია/მაკაუ"
 
 #: src/timezone_names.c:317
 msgid "Asia/Magadan"
-msgstr "Aasia/Magadan"
+msgstr "აზია/მაგადანი"
 
 #: src/timezone_names.c:318
 msgid "Asia/Makassar"
-msgstr "Aasia/Makassar"
+msgstr "აზია/მაკასარი"
 
 #: src/timezone_names.c:319
 msgid "Asia/Manila"
-msgstr "Aasia/Manila"
+msgstr "აზია/მანილა"
 
 #: src/timezone_names.c:320
 msgid "Asia/Muscat"
-msgstr "Aasia/Masqaţ"
+msgstr "აზია/მუსკატი"
 
 #: src/timezone_names.c:321
 msgid "Asia/Nicosia"
-msgstr "Aasia/Nikosia"
+msgstr "აზია/ნიკოსია"
 
 #: src/timezone_names.c:322
 msgid "Asia/Novokuznetsk"
-msgstr "Aasia/Novokuznetsk"
+msgstr "აზია/ნოვოკუზნეცკი"
 
 #: src/timezone_names.c:323
 msgid "Asia/Novosibirsk"
-msgstr "Aasia/Novosibirsk"
+msgstr "აზია/ნოვოსიბირსკი"
 
 #: src/timezone_names.c:324
 msgid "Asia/Omsk"
-msgstr "Aasia/Omsk"
+msgstr "აზია/ომსკი"
 
 #: src/timezone_names.c:325
 msgid "Asia/Oral"
-msgstr "Aasia/Oral"
+msgstr "აზია/ორალი"
 
 #: src/timezone_names.c:326
 msgid "Asia/Phnom_Penh"
-msgstr "Aasia/Phnom_Penh"
+msgstr "აზია/ფნომ ფენჰი"
 
 #: src/timezone_names.c:327
 msgid "Asia/Pontianak"
-msgstr "Aasia/Pontianak"
+msgstr "აზია/პონტიანაკი"
 
 #: src/timezone_names.c:328
 msgid "Asia/Pyongyang"
-msgstr "Aasia/Pyŏngyang"
+msgstr "აზია/ფხენიანი"
 
 #: src/timezone_names.c:329
 msgid "Asia/Qatar"
-msgstr "Aasia/Katar"
+msgstr "აზია/ყატარი"
 
 #: src/timezone_names.c:330
 msgid "Asia/Qyzylorda"
-msgstr "Aasia/Kõzõlorda"
+msgstr "აზია/ყიზილორდა"
 
 #: src/timezone_names.c:331
 msgid "Asia/Rangoon"
-msgstr "Aasia/Yangon"
+msgstr "აზია/რენგუნი"
 
 #: src/timezone_names.c:332
 msgid "Asia/Riyadh"
-msgstr "Aasia/Ar-Riyāḑ"
+msgstr "აზია/რიადი"
 
 #: src/timezone_names.c:333
 msgid "Asia/Riyadh87"
-msgstr "Aasia/Riyadh87"
+msgstr "აზია/ერ-რიადი87"
 
 #: src/timezone_names.c:334
 msgid "Asia/Riyadh88"
-msgstr "Aasia/Riyadh88"
+msgstr "აზია/ერ-რიადი88"
 
 #: src/timezone_names.c:335
 msgid "Asia/Riyadh89"
-msgstr "Aasia/Riyadh89"
+msgstr "აზია/ერ-რიადი89"
 
 #: src/timezone_names.c:336
 msgid "Asia/Saigon"
-msgstr "Aasia/Hồ Chí Minh"
+msgstr "აზია/საიგონი"
 
 #: src/timezone_names.c:337
 msgid "Asia/Sakhalin"
-msgstr "Asia/Sahhalini_saar"
+msgstr "აზია/სახალინი"
 
 #: src/timezone_names.c:338
 msgid "Asia/Samarkand"
-msgstr "Aasia/Samarqand"
+msgstr "აზია/სამარყანდი"
 
 #: src/timezone_names.c:339
 msgid "Asia/Seoul"
-msgstr "Aasia/Sŏul"
+msgstr "აზია/სეული"
 
 #: src/timezone_names.c:340
 msgid "Asia/Shanghai"
-msgstr "Aasia/Shanghai"
+msgstr "აზია/შანხაი"
 
 #: src/timezone_names.c:341
 msgid "Asia/Singapore"
-msgstr "Aasia/Singapur"
+msgstr "აზია/სინგაპური"
 
 #: src/timezone_names.c:342
 msgid "Asia/Taipei"
-msgstr "Aasia/Taipei"
+msgstr "აზია/ტაიპეი"
 
 #: src/timezone_names.c:343
 msgid "Asia/Tashkent"
-msgstr "Aasia/Toshkent"
+msgstr "აზია/ტაშკენტი"
 
 #: src/timezone_names.c:344
 msgid "Asia/Tbilisi"
-msgstr "Aasia/Thbilisi"
+msgstr "აზია/თბილისი"
 
 #: src/timezone_names.c:345
 msgid "Asia/Tehran"
-msgstr "Aasia/Teheran"
+msgstr "აზია/თეირანი"
 
 #: src/timezone_names.c:346
 msgid "Asia/Tel_Aviv"
-msgstr "Aasia/Tel_Aviv"
+msgstr "აზია/თელ_ავივი"
 
 #: src/timezone_names.c:347
 msgid "Asia/Thimbu"
-msgstr "Aasia/Thimbu"
+msgstr "აზია/თიმფუ"
 
 #: src/timezone_names.c:348
 msgid "Asia/Thimphu"
-msgstr "Aasia/Thimphu"
+msgstr "აზია/თხიმფხუ"
 
 #: src/timezone_names.c:349
 msgid "Asia/Tokyo"
-msgstr "Aasia/Tōkyō"
+msgstr "აზია/ტოკიო"
 
 #: src/timezone_names.c:350
 msgid "Asia/Ujung_Pandang"
-msgstr "Aasia/_Makassar"
+msgstr "აზია/მაკასარი"
 
 #: src/timezone_names.c:351
 msgid "Asia/Ulaanbaatar"
-msgstr "Aasia/Ulaanbaatar"
+msgstr "აზია/ულაანბატორი"
 
 #: src/timezone_names.c:352
 msgid "Asia/Ulan_Bator"
-msgstr "Aasia/Ulan_Bator"
+msgstr "აზია/ულანბატორი"
 
 #: src/timezone_names.c:353
 msgid "Asia/Urumqi"
-msgstr "Aasia/Ürümqi"
+msgstr "აზია/ურუმქი"
 
 #: src/timezone_names.c:354
 msgid "Asia/Ust-Nera"
-msgstr "Aasia/Ust-Nera"
+msgstr "აზია/უსტ-ნერა"
 
 #: src/timezone_names.c:355
 msgid "Asia/Vientiane"
-msgstr "Aasia/Viangchan"
+msgstr "აზია/ვიენტიანი"
 
 #: src/timezone_names.c:356
 msgid "Asia/Vladivostok"
-msgstr "Aasia/Vladivostok"
+msgstr "აზია/ვლადივოსტოკი"
 
 #: src/timezone_names.c:357
 msgid "Asia/Yakutsk"
-msgstr "Aasia/Jakutsk"
+msgstr "აზია/იაკუტსკი"
 
 #: src/timezone_names.c:358
 msgid "Asia/Yekaterinburg"
-msgstr "Aasia/Jekaterinburg"
+msgstr "აზია/ეკატერინბურგი"
 
 #: src/timezone_names.c:359
 msgid "Asia/Yerevan"
-msgstr "Aasia/Jerevan"
+msgstr "აზია/ერევანი"
 
 #: src/timezone_names.c:360
 msgid "Atlantic"
-msgstr "Atlandi ookean"
+msgstr "ატლანტიკა"
 
 #: src/timezone_names.c:361
 msgid "Atlantic/Azores"
-msgstr "Atlandi ookean/Assoorid"
+msgstr "ატლანტიკა/აზორები"
 
 #: src/timezone_names.c:362
 msgid "Atlantic/Bermuda"
-msgstr "Atlandi ookean/Bermuda"
+msgstr "ატლანტიკა/ბერმუდა"
 
 #: src/timezone_names.c:363
 msgid "Atlantic/Canary"
-msgstr "Atlandi ookean/Kanaari"
+msgstr "ატლანტიკა/კანარის კუნძულები"
 
 #: src/timezone_names.c:364
 msgid "Atlantic/Cape_Verde"
-msgstr "Atlandi ookean/Roheneemesaared"
+msgstr "კაბო ატლანტიკა/ვერდე"
 
 #: src/timezone_names.c:365
 msgid "Atlantic/Faeroe"
-msgstr "Atlandi ookean/Fääri"
+msgstr "ატლანტიკა/ფარერი"
 
 #: src/timezone_names.c:366
 msgid "Atlantic/Faroe"
-msgstr "Atlandi ookean/Fääri_saared"
+msgstr "ატლანტიკა/ფარო"
 
 #: src/timezone_names.c:367
 msgid "Atlantic/Jan_Mayen"
-msgstr "Atlandi ookean/Jan_Mayen"
+msgstr "ატლანტიკა/იან მაიენი"
 
 #: src/timezone_names.c:368
 msgid "Atlantic/Madeira"
-msgstr "Atlandi ookean/Madeira"
+msgstr "ატლანტიკა/მადეირა"
 
 #: src/timezone_names.c:369
 msgid "Atlantic/Reykjavik"
-msgstr "Atlandi ookean/Reykjavík"
+msgstr "ატლანტიკა/რეიკიავიკი"
 
 #: src/timezone_names.c:370
 msgid "Atlantic/South_Georgia"
-msgstr "Atlandi ookean/Lõuna_Georgia"
+msgstr "ატლანტიკა/სამხრეთ ჯორჯია"
 
 #: src/timezone_names.c:371
 msgid "Atlantic/St_Helena"
-msgstr "Atlandi ookean/St_Helena"
+msgstr "ატლანტიკა/სენტ. ჰელენა"
 
 #: src/timezone_names.c:372
 msgid "Atlantic/Stanley"
-msgstr "Atlandi ookean/PortStanley"
+msgstr "ატლანტიკა/სტენლი"
 
 #: src/timezone_names.c:373
 msgid "Australia"
-msgstr "Austraalia"
+msgstr "ავსტრალია"
 
 #: src/timezone_names.c:374
 msgid "Australia/ACT"
-msgstr "Austraalia/ACT"
+msgstr "ავსტრალია/ACT"
 
 #: src/timezone_names.c:375
 msgid "Australia/Adelaide"
-msgstr "Austraalia/Adelaide"
+msgstr "ავსტრალია/ადელაიდე"
 
 #: src/timezone_names.c:376
 msgid "Australia/Brisbane"
-msgstr "Austraalia/Brisbane"
+msgstr "ავსტრალია/ბრიზბონი"
 
 #: src/timezone_names.c:377
 msgid "Australia/Broken_Hill"
-msgstr "Austraalia/Broken_Hill"
+msgstr "ავსტრალია/ბროუქენ ჰილი"
 
 #: src/timezone_names.c:378
 msgid "Australia/Currie"
-msgstr "Austraalia/Currie"
+msgstr "ავსტრალია/კური"
 
 #: src/timezone_names.c:379
 msgid "Australia/Darwin"
-msgstr "Austraalia/Darwin"
+msgstr "ავსტრალია/დარვინი"
 
 #: src/timezone_names.c:380
 msgid "Australia/Eucla"
-msgstr "Austraalia/Eucla"
+msgstr "ავსტრალია ეუკლა"
 
 #: src/timezone_names.c:381
 msgid "Australia/Hobart"
-msgstr "Austraalia/Hobart"
+msgstr "ავსტრალია/ჰობარტი"
 
 #: src/timezone_names.c:382
 msgid "Australia/Lindeman"
-msgstr "Austraalia/Lindeman"
+msgstr "ავსტრალია/ლინდერმანი"
 
 #: src/timezone_names.c:383
 msgid "Australia/Lord_Howe"
-msgstr "Austraalia/Lord_Howe"
+msgstr "ავსტრალია/ლორდ ლოუვი"
 
 #: src/timezone_names.c:384
 msgid "Australia/Melbourne"
-msgstr "Austraalia/Melbourne"
+msgstr "ავსტრალია/მელბურნი"
 
 #: src/timezone_names.c:385
 msgid "Australia/Perth"
-msgstr "Austraalia/Perth"
+msgstr "ავსტრალია/პერტი"
 
 #: src/timezone_names.c:386
 msgid "Australia/Sydney"
-msgstr "Austraalia/Sydney"
+msgstr "სიდნეიავსტრალია/"
 
 #: src/timezone_names.c:387
 msgid "Brazil"
-msgstr "Brasiilia"
+msgstr "ბრაზილია"
 
 #: src/timezone_names.c:388
 msgid "Brazil/Acre"
-msgstr "Brasiilia/Acre"
+msgstr "ბრაზილია/აკრე"
 
 #: src/timezone_names.c:389
 msgid "Brazil/DeNoronha"
-msgstr "Brasiilia/DeNoronha"
+msgstr "ბრაზილია/დენორონია"
 
 #: src/timezone_names.c:390
 msgid "Brazil/East"
-msgstr "Brasiilia/Idaosa"
+msgstr "ბრაზილია/აღმოსავლეთი"
 
 #: src/timezone_names.c:391
 msgid "Brazil/West"
-msgstr "Brasiilia/Lääneosa"
+msgstr "ბრაზილია/დასავლეთი"
 
 #: src/timezone_names.c:392
 msgid "Canada"
-msgstr "Kanada"
+msgstr "კანადა"
 
 #: src/timezone_names.c:393
 msgid "Canada/Atlantic"
-msgstr "Kanada/Atlandi_rannik"
+msgstr "კანადა/ატლანტიკა"
 
 #: src/timezone_names.c:394
 msgid "Canada/Central"
-msgstr "Kanada/Keskosa"
+msgstr "კანადა/ცენტრალური"
 
 #: src/timezone_names.c:395
 msgid "Canada/East-Saskatchewan"
-msgstr "Kanada/Ida-Saskatchewan"
+msgstr "კანადა/აღმოსავლეთ-სასკაჩევანი"
 
 #: src/timezone_names.c:396
 msgid "Canada/Eastern"
-msgstr "Kanada/Idaosa"
+msgstr "კანადა/აღმოსავლეთი"
 
 #: src/timezone_names.c:397
 msgid "Canada/Mountain"
-msgstr "Kanada/Mäestik"
+msgstr "კანადა/მთები"
 
 #: src/timezone_names.c:398
 msgid "Canada/Newfoundland"
-msgstr "Kanada/Newfoundland"
+msgstr "კანადა/ნიუფაუნდლენდი"
 
 #: src/timezone_names.c:399
 msgid "Canada/Pacific"
-msgstr "Kanada/Vaikse_ookeani_rannik"
+msgstr "კანადა/წყნარი ოკეანე"
 
 #: src/timezone_names.c:400
 msgid "Canada/Saskatchewan"
-msgstr "Kanada/Saskatchewan"
+msgstr "კანადა/სასკაჩევანი"
 
 #: src/timezone_names.c:401
 msgid "Canada/Yukon"
-msgstr "Kanada/Yukon"
+msgstr "კანადა/იუკონი"
 
 #: src/timezone_names.c:402
 msgid "Chile"
-msgstr "Tšiili"
+msgstr "ჩილე"
 
 #: src/timezone_names.c:403
 msgid "Chile/Continental"
-msgstr "Tšiili/Mandriosa"
+msgstr "ჩილე/კონტინენტური"
 
 #: src/timezone_names.c:404
 msgid "Chile/EasterIsland"
-msgstr "Tšiili/Lihavõttesaar"
+msgstr "ჩილე/ისტერლენდი"
 
 #: src/timezone_names.c:405
 msgid "Etc"
-msgstr "Üldnimed"
+msgstr "Etc"
 
 #: src/timezone_names.c:406
 msgid "Etc/GMT"
-msgstr "Üldnimed/GMT"
+msgstr "Etc/GMT"
 
 #: src/timezone_names.c:407
 msgid "Etc/GMT+0"
-msgstr "Üldnimed/GMT+0"
+msgstr "Etc/GMT+0"
 
 #: src/timezone_names.c:408
 msgid "Etc/GMT+1"
-msgstr "Üldnimed/GMT+1"
+msgstr "Etc/GMT+1"
 
 #: src/timezone_names.c:409
 msgid "Etc/GMT+10"
-msgstr "Üldnimed/GMT+10"
+msgstr "Etc/GMT+10"
 
 #: src/timezone_names.c:410
 msgid "Etc/GMT+11"
-msgstr "Üldnimed/GMT+11"
+msgstr "Etc/GMT+11"
 
 #: src/timezone_names.c:411
 msgid "Etc/GMT+12"
-msgstr "Üldnimed/GMT+12"
+msgstr "Etc/GMT+12"
 
 #: src/timezone_names.c:412
 msgid "Etc/GMT+2"
-msgstr "Üldnimed/GMT+2"
+msgstr "Etc/GMT+2"
 
 #: src/timezone_names.c:413
 msgid "Etc/GMT+3"
-msgstr "Üldnimed/GMT+3"
+msgstr "Etc/GMT+3"
 
 #: src/timezone_names.c:414
 msgid "Etc/GMT+4"
-msgstr "Üldnimed/GMT+4"
+msgstr "Etc/GMT+4"
 
 #: src/timezone_names.c:415
 msgid "Etc/GMT+5"
-msgstr "Üldnimed/GMT+5"
+msgstr "Etc/GMT+5"
 
 #: src/timezone_names.c:416
 msgid "Etc/GMT+6"
-msgstr "Üldnimed/GMT+6"
+msgstr "Etc/GMT+6"
 
 #: src/timezone_names.c:417
 msgid "Etc/GMT+7"
-msgstr "Üldnimed/GMT+7"
+msgstr "Etc/GMT+7"
 
 #: src/timezone_names.c:418
 msgid "Etc/GMT+8"
-msgstr "Üldnimed/GMT+8"
+msgstr "Etc/GMT+8"
 
 #: src/timezone_names.c:419
 msgid "Etc/GMT+9"
-msgstr "Üldnimed/GMT+9"
+msgstr "Etc/GMT+9"
 
 #: src/timezone_names.c:420
 msgid "Etc/GMT-0"
-msgstr "Üldnimed/GMT-0"
+msgstr "Etc/GMT-0"
 
 #: src/timezone_names.c:421
 msgid "Etc/GMT-1"
-msgstr "Üldnimed/GMT-1"
+msgstr "Etc/GMT-1"
 
 #: src/timezone_names.c:422
 msgid "Etc/GMT-10"
-msgstr "Üldnimed/GMT-10"
+msgstr "Etc/GMT-10"
 
 #: src/timezone_names.c:423
 msgid "Etc/GMT-11"
-msgstr "Üldnimed/GMT-11"
+msgstr "Etc/GMT-11"
 
 #: src/timezone_names.c:424
 msgid "Etc/GMT-12"
-msgstr "Üldnimed/GMT-12"
+msgstr "Etc/GMT-12"
 
 #: src/timezone_names.c:425
 msgid "Etc/GMT-13"
-msgstr "Üldnimed/GMT-13"
+msgstr "Etc/GMT-13"
 
 #: src/timezone_names.c:426
 msgid "Etc/GMT-14"
-msgstr "Üldnimed/GMT-14"
+msgstr "Etc/GMT-14"
 
 #: src/timezone_names.c:427
 msgid "Etc/GMT-2"
-msgstr "Üldnimed/GMT-2"
+msgstr "Etc/GMT-2"
 
 #: src/timezone_names.c:428
 msgid "Etc/GMT-3"
-msgstr "Üldnimed/GMT-3"
+msgstr "Etc/GMT-3"
 
 #: src/timezone_names.c:429
 msgid "Etc/GMT-4"
-msgstr "Üldnimed/GMT-4"
+msgstr "Etc/GMT-4"
 
 #: src/timezone_names.c:430
 msgid "Etc/GMT-5"
-msgstr "Üldnimed/GMT-5"
+msgstr "Etc/GMT-5"
 
 #: src/timezone_names.c:431
 msgid "Etc/GMT-6"
-msgstr "Üldnimed/GMT-6"
+msgstr "Etc/GMT-6"
 
 #: src/timezone_names.c:432
 msgid "Etc/GMT-7"
-msgstr "Üldnimed/GMT-7"
+msgstr "Etc/GMT-7"
 
 #: src/timezone_names.c:433
 msgid "Etc/GMT-8"
-msgstr "Üldnimed/GMT-8"
+msgstr "Etc/GMT-8"
 
 #: src/timezone_names.c:434
 msgid "Etc/GMT-9"
-msgstr "Üldnimed/GMT-9"
+msgstr "Etc/GMT-9"
 
 #: src/timezone_names.c:435
 msgid "Etc/GMT0"
-msgstr "Üldnimed/GMT0"
+msgstr "Etc/GMT0"
 
 #: src/timezone_names.c:436
 msgid "Etc/Greenwich"
-msgstr "Üldnimed/Greenwich"
+msgstr "Etc/გრინვიჩი"
 
 #: src/timezone_names.c:437
 msgid "Etc/UCT"
-msgstr "Üldnimed/UCT"
+msgstr "Etc/UCT"
 
 #: src/timezone_names.c:438
 msgid "Etc/UTC"
-msgstr "Üldnimed/UTC"
+msgstr "Etc/UTC"
 
 #: src/timezone_names.c:439
 msgid "Etc/Universal"
-msgstr "Üldnimed/Universal"
+msgstr "Etc/უნივერსალური"
 
 #: src/timezone_names.c:440
 msgid "Etc/Zulu"
-msgstr "Üldnimed/Zulu"
+msgstr "Etc/ზულუ"
 
 #: src/timezone_names.c:441
 msgid "Europe"
-msgstr "Euroopa"
+msgstr "ევროპა"
 
 #: src/timezone_names.c:442
 msgid "Europe/Amsterdam"
-msgstr "Euroopa/Amsterdam"
+msgstr "ევროპა/ამსტერდამი"
 
 #: src/timezone_names.c:443
 msgid "Europe/Andorra"
-msgstr "Euroopa/Andorra"
+msgstr "ევროპა/ანდორა"
 
 #: src/timezone_names.c:444
 msgid "Europe/Athens"
-msgstr "Euroopa/Ateena"
+msgstr "ევროპა/ათენი"
 
 #: src/timezone_names.c:445
 msgid "Europe/Belfast"
-msgstr "Euroopa/Belfast"
+msgstr "ევროპა/ბელფასტი"
 
 #: src/timezone_names.c:446
 msgid "Europe/Belgrade"
-msgstr "Euroopa/Belgrad"
+msgstr "ევროპა/ბელგრადი"
 
 #: src/timezone_names.c:447
 msgid "Europe/Berlin"
-msgstr "Euroopa/Berliin"
+msgstr "ევროპა/ბერლინი"
 
 #: src/timezone_names.c:448
 msgid "Europe/Bratislava"
-msgstr "Euroopa/Bratislava"
+msgstr "ევროპა/ბრატისლავა"
 
 #: src/timezone_names.c:449
 msgid "Europe/Brussels"
-msgstr "Euroopa/Brüssel"
+msgstr "ევროპა/ბრუსელი"
 
 #: src/timezone_names.c:450
 msgid "Europe/Bucharest"
-msgstr "Euroopa/Bukarest"
+msgstr "ევროპა/ბუქარესტი"
 
 #: src/timezone_names.c:451
 msgid "Europe/Budapest"
-msgstr "Euroopa/Budapest"
+msgstr "ევროპა/ბუდაპეშტი"
 
 #: src/timezone_names.c:452
 msgid "Europe/Busingen"
-msgstr "Euroopa/Busingen"
+msgstr "ევროპა/ბუზინგენი"
 
 #: src/timezone_names.c:453
 msgid "Europe/Chisinau"
-msgstr "Euroopa/Chişinău"
+msgstr "ევროპა/ჩინსაუ"
 
 #: src/timezone_names.c:454
 msgid "Europe/Copenhagen"
-msgstr "Euroopa/Kopenhaagen"
+msgstr "ევროპა/კოპენჰაგენი"
 
 #: src/timezone_names.c:455
 msgid "Europe/Dublin"
-msgstr "Euroopa/Dublin"
+msgstr "ევროპა/დუბლინი"
 
 #: src/timezone_names.c:456
 msgid "Europe/Gibraltar"
-msgstr "Euroopa/Gibraltar"
+msgstr "ევროპა/გიბრალტარი"
 
 #: src/timezone_names.c:457
 msgid "Europe/Guernsey"
-msgstr "Euroopa/Guernsey"
+msgstr "ევროპა/გერნსი"
 
 #: src/timezone_names.c:458
 msgid "Europe/Helsinki"
-msgstr "Euroopa/Helsingi"
+msgstr "ევროპა/ჰელსინკი"
 
 #: src/timezone_names.c:459
 msgid "Europe/Isle_of_Man"
-msgstr "Euroopa/Man"
+msgstr "ევროპა/მენის_კუნძული"
 
 #: src/timezone_names.c:460
 msgid "Europe/Istanbul"
-msgstr "Euroopa/Istanbul"
+msgstr "ევროპა/ისტანბული"
 
 #: src/timezone_names.c:461
 msgid "Europe/Jersey"
-msgstr "Euroopa/Jersey"
+msgstr "ევროპა/ჯერსი"
 
 #: src/timezone_names.c:462
 msgid "Europe/Kaliningrad"
-msgstr "Euroopa/Kaliningrad"
+msgstr "ევროპა/კალინინგრადი"
 
 #: src/timezone_names.c:463
 msgid "Europe/Kiev"
-msgstr "Euroopa/Kiiev"
+msgstr "ევროპა/კიევი"
 
 #: src/timezone_names.c:464
 msgid "Europe/Lisbon"
-msgstr "Euroopa/Lissabon"
+msgstr "ევროპა/ლისაბონი"
 
 #: src/timezone_names.c:465
 msgid "Europe/Ljubljana"
-msgstr "Euroopa/Ljubljana"
+msgstr "ევროპა/ლუბლიანა"
 
 #: src/timezone_names.c:466
 msgid "Europe/London"
-msgstr "Euroopa/London"
+msgstr "ევროპა/ლონდონი"
 
 #: src/timezone_names.c:467
 msgid "Europe/Luxembourg"
-msgstr "Euroopa/Luksemburg"
+msgstr "ევროპა/ლუქსემბურგი"
 
 #: src/timezone_names.c:468
 msgid "Europe/Madrid"
-msgstr "Euroopa/Madrid"
+msgstr "ევროპა/მადრიდი"
 
 #: src/timezone_names.c:469
 msgid "Europe/Malta"
-msgstr "Euroopa/Malta"
+msgstr "ევროპა/მალტა"
 
 #: src/timezone_names.c:470
 msgid "Europe/Mariehamn"
-msgstr "Euroopa/Maarianhamina"
+msgstr "ევროპა/მარიეჰამნი"
 
 #: src/timezone_names.c:471
 msgid "Europe/Minsk"
-msgstr "Euroopa/Minsk"
+msgstr "ევროპა/მინსკი"
 
 #: src/timezone_names.c:472
 msgid "Europe/Monaco"
-msgstr "Euroopa/Monaco"
+msgstr "ევროპა/მონაკო"
 
 #: src/timezone_names.c:473
 msgid "Europe/Moscow"
-msgstr "Euroopa/Moskva"
+msgstr "ევროპა/მოსკოვი"
 
 #: src/timezone_names.c:474
 msgid "Europe/Nicosia"
-msgstr "Euroopa/Nikosia"
+msgstr "ევროპა/ნიკოსია"
 
 #: src/timezone_names.c:475
 msgid "Europe/Oslo"
-msgstr "Euroopa/Oslo"
+msgstr "ევროპა/ოსლო"
 
 #: src/timezone_names.c:476
 msgid "Europe/Paris"
-msgstr "Euroopa/Pariis"
+msgstr "ევროპა/პარიზი"
 
 #: src/timezone_names.c:477
 msgid "Europe/Podgorica"
-msgstr "Euroopa/Podgorica"
+msgstr "ევროპა/პოდგორიცა"
 
 #: src/timezone_names.c:478
 msgid "Europe/Prague"
-msgstr "Euroopa/Praha"
+msgstr "ევროპა/პრაღა"
 
 #: src/timezone_names.c:479
 msgid "Europe/Riga"
-msgstr "Euroopa/Riia"
+msgstr "ევროპა/რიგა"
 
 #: src/timezone_names.c:480
 msgid "Europe/Rome"
-msgstr "Euroopa/Rooma"
+msgstr "ევროპა/რომი"
 
 #: src/timezone_names.c:481
 msgid "Europe/Samara"
-msgstr "Euroopa/Samara"
+msgstr "ევროპა/სამარა"
 
 #: src/timezone_names.c:482
 msgid "Europe/San_Marino"
-msgstr "Euroopa/San_Marino"
+msgstr "ევროპა/სან მარინო"
 
 #: src/timezone_names.c:483
 msgid "Europe/Sarajevo"
-msgstr "Euroopa/Sarajevo"
+msgstr "ევროპა/სარაევო"
 
 #: src/timezone_names.c:484
 msgid "Europe/Simferopol"
-msgstr "Euroopa/Simferopol"
+msgstr "ევროპა/სიმფეროპოლი"
 
 #: src/timezone_names.c:485
 msgid "Europe/Skopje"
-msgstr "Euroopa/Skopje"
+msgstr "ევროპა/სკოპიე"
 
 #: src/timezone_names.c:486
 msgid "Europe/Sofia"
-msgstr "Euroopa/Sofia"
+msgstr "ევროპა/სოფია"
 
 #: src/timezone_names.c:487
 msgid "Europe/Stockholm"
-msgstr "Euroopa/Stockholm"
+msgstr "ევროპა/სტოქჰოლმი"
 
 #: src/timezone_names.c:488
 msgid "Europe/Tallinn"
-msgstr "Euroopa/Tallinn"
+msgstr "ევროპა/ტალინი"
 
 #: src/timezone_names.c:489
 msgid "Europe/Tirane"
-msgstr "Euroopa/Tiranë"
+msgstr "ევროპა/ტირანა"
 
 #: src/timezone_names.c:490
 msgid "Europe/Tiraspol"
-msgstr "Euroopa/Tiraspol"
+msgstr "ევროპა/ტირასპოლი"
 
 #: src/timezone_names.c:491
 msgid "Europe/Uzhgorod"
-msgstr "Euroopa/Užgorod"
+msgstr "ევროპა/უჟგოროდი"
 
 #: src/timezone_names.c:492
 msgid "Europe/Vaduz"
-msgstr "Euroopa/Vaduz"
+msgstr "ევროპა/ვადუზი"
 
 #: src/timezone_names.c:493
 msgid "Europe/Vatican"
-msgstr "Euroopa/Vatikan"
+msgstr "ევროპა/ვატიკანი"
 
 #: src/timezone_names.c:494
 msgid "Europe/Vienna"
-msgstr "Euroopa/Viin"
+msgstr "ევროპა/ვენა"
 
 #: src/timezone_names.c:495
 msgid "Europe/Vilnius"
-msgstr "Euroopa/Vilnius"
+msgstr "ევროპა/ვილნუსი"
 
 #: src/timezone_names.c:496
 msgid "Europe/Volgograd"
-msgstr "Euroopa/Volgograd"
+msgstr "ევროპა/ვოლგოგრადი"
 
 #: src/timezone_names.c:497
 msgid "Europe/Warsaw"
-msgstr "Euroopa/Varssav"
+msgstr "ევროპა/ვარშავა"
 
 #: src/timezone_names.c:498
 msgid "Europe/Zagreb"
-msgstr "Euroopa/Zagreb"
+msgstr "ევროპა/ზაგრები"
 
 #: src/timezone_names.c:499
 msgid "Europe/Zaporozhye"
-msgstr "Euroopa/Zaporižžja"
+msgstr "ევროპა/ზაპოროჟიე"
 
 #: src/timezone_names.c:500
 msgid "Europe/Zurich"
-msgstr "Euroopa/Zürich"
+msgstr "ევროპა/ციურიხი"
 
 #: src/timezone_names.c:501
 msgid "Indian"
-msgstr "India ookean"
+msgstr "ინდოეთის ოკეანე"
 
 #: src/timezone_names.c:502
 msgid "Indian/Antananarivo"
-msgstr "India ookean/Antananarivo"
+msgstr "ინდოეთი/ანტანანარივო"
 
 #: src/timezone_names.c:503
 msgid "Indian/Chagos"
-msgstr "India ookean/Chagos"
+msgstr "ინდოეთი/ჩაგოსი"
 
 #: src/timezone_names.c:504
 msgid "Indian/Christmas"
-msgstr "India ookean/Jõulusaar"
+msgstr "ინდოეთი/აღდგომა"
 
 #: src/timezone_names.c:505
 msgid "Indian/Cocos"
-msgstr "India ookean/Cocos"
+msgstr "ინდოეთი/კოკოსი"
 
 #: src/timezone_names.c:506
 msgid "Indian/Comoro"
-msgstr "India ookean/Komoorid"
+msgstr "ინდოეთი/კომორო"
 
 #: src/timezone_names.c:507
 msgid "Indian/Kerguelen"
-msgstr "India ookean/Kerguelen"
+msgstr "ინდოეთი/კერგელენი"
 
 #: src/timezone_names.c:508
 msgid "Indian/Mahe"
-msgstr "India ookean/Mahe"
+msgstr "ინდოეთი/მაჰე"
 
 #: src/timezone_names.c:509
 msgid "Indian/Maldives"
-msgstr "India ookean/Maldiivid"
+msgstr "ინდოეთი/მალდივები"
 
 #: src/timezone_names.c:510
 msgid "Indian/Mauritius"
-msgstr "India ookean/Mauritius"
+msgstr "ინდოეთი/მავრიკი"
 
 #: src/timezone_names.c:511
 msgid "Indian/Mayotte"
-msgstr "India ookean/Mayotte"
+msgstr "ინდოეთი/მეიოტი"
 
 #: src/timezone_names.c:512
 msgid "Indian/Reunion"
-msgstr "India ookean/Réunion"
+msgstr "ინდოეთი/რეიუნიონი"
 
 #: src/timezone_names.c:513
 msgid "Mexico"
-msgstr "Mehhiko"
+msgstr "მექსიკა"
 
 #: src/timezone_names.c:514
 msgid "Mexico/BajaNorte"
-msgstr "Mehhiko/BajaNorte"
+msgstr "მექსიკა/ბახანორტე"
 
 #: src/timezone_names.c:515
 msgid "Mexico/BajaSur"
-msgstr "Mehhiko/BajaSur"
+msgstr "მექსიკა/ბახაშური"
 
 #: src/timezone_names.c:516
 msgid "Mexico/General"
-msgstr "Mehhiko/Üldine"
+msgstr "მექსიკა/ზოგადი"
 
 #: src/timezone_names.c:517
 msgid "Mideast"
-msgstr "Lähis-Ida"
+msgstr "ახლო აღმოსავლეთი"
 
 #: src/timezone_names.c:518
 msgid "Mideast/Riyadh87"
-msgstr "Lähis-Ida/Riyadh87"
+msgstr "ახლაღმ/ერ-რიადი87"
 
 #: src/timezone_names.c:519
 msgid "Mideast/Riyadh88"
-msgstr "Lähis-Ida/Riyadh88"
+msgstr "ახლაღმ/ერ-რიადი88"
 
 #: src/timezone_names.c:520
 msgid "Mideast/Riyadh89"
-msgstr "Lähis-Ida/Riyadh89"
+msgstr "ახლაღმ/ერ-რიადი89"
 
 #: src/timezone_names.c:521
 msgid "Pacific"
-msgstr "Vaikne ookean"
+msgstr "წყნარი ოკეანე"
 
 #: src/timezone_names.c:522
 msgid "Pacific/Apia"
-msgstr "Vaikne ookean/Apia"
+msgstr "წყნარი ოკეანე/აპია"
 
 #: src/timezone_names.c:523
 msgid "Pacific/Auckland"
-msgstr "Vaikne ookean/Auckland"
+msgstr "წყნარი ოკეანე/ოკლენდი"
 
 #: src/timezone_names.c:524
 msgid "Pacific/Chatham"
-msgstr "Vaikne ookean/Chatham"
+msgstr "წყნარი ოკეანე/ჩატამი"
 
 #: src/timezone_names.c:525
 msgid "Pacific/Chuuk"
-msgstr "Vaikne ookean/Chuuk"
+msgstr "წყნარი_ოკეანე/ჩუუკი"
 
 #: src/timezone_names.c:526
 msgid "Pacific/Easter"
-msgstr "Vaikne ookean/Lihavõttesaar"
+msgstr "წყნარი ოკეანე/აღდგომის კუნძული"
 
 #: src/timezone_names.c:527
 msgid "Pacific/Efate"
-msgstr "Vaikne ookean/Efate"
+msgstr "წყნარი ოკეანე/ეფატე"
 
 #: src/timezone_names.c:528
 msgid "Pacific/Enderbury"
-msgstr "Vaikne ookean/Enderbury"
+msgstr "წყნარი ოკეანე/ენდერბური"
 
 #: src/timezone_names.c:529
 msgid "Pacific/Fakaofo"
-msgstr "Vaikne ookean/Fakaofo"
+msgstr "წყნარი ოკეანე/ფაკაოფო"
 
 #: src/timezone_names.c:530
 msgid "Pacific/Fiji"
-msgstr "Vaikne ookean/Fidži"
+msgstr "წყნარი ოკეანე/ფიჯი"
 
 #: src/timezone_names.c:531
 msgid "Pacific/Funafuti"
-msgstr "Vaikne ookean/Funafuti"
+msgstr "წყნარი ოკეანე/ფუნაფუტი"
 
 #: src/timezone_names.c:532
 msgid "Pacific/Galapagos"
-msgstr "Vaikne ookean/Galápagose_saared"
+msgstr "წყნარი ოკეანე/გალაპაგოსი"
 
 #: src/timezone_names.c:533
 msgid "Pacific/Gambier"
-msgstr "Vaikne ookean/Gambier"
+msgstr "წყნარი ოკეანე/გამბიე"
 
 #: src/timezone_names.c:534
 msgid "Pacific/Guadalcanal"
-msgstr "Vaikne ookean/Guadalcanal"
+msgstr "წყნარი ოკეანე/გვადალკანალი"
 
 #: src/timezone_names.c:535
 msgid "Pacific/Guam"
-msgstr "Vaikne ookean/Guam"
+msgstr "წყნარი ოკეანე/გუამი"
 
 #: src/timezone_names.c:536
 msgid "Pacific/Honolulu"
-msgstr "Vaikne ookean/Honolulu"
+msgstr "წყნარი ოკეანე/ჰონოლულუ"
 
 #: src/timezone_names.c:537
 msgid "Pacific/Johnston"
-msgstr "Vaikne ookean/Johnston"
+msgstr "წყნარი ოკეანე/ჯონსტონი"
 
 #: src/timezone_names.c:538
 msgid "Pacific/Kiritimati"
-msgstr "Vaikne ookean/Kiritimati"
+msgstr "წყნარი ოკეანე/კირიტიმატი"
 
 #: src/timezone_names.c:539
 msgid "Pacific/Kosrae"
-msgstr "Vaikne ookean/Kosrae"
+msgstr "წყნარი ოკეანე/კოსრაე"
 
 #: src/timezone_names.c:540
 msgid "Pacific/Kwajalein"
-msgstr "Vaikne ookean/Kuwajleen"
+msgstr "წყნარი ოკეანე/კვაჯალეინი"
 
 #: src/timezone_names.c:541
 msgid "Pacific/Majuro"
-msgstr "Vaikne ookean/Mājro"
+msgstr "წყნარი ოკეანე/მაჯურო"
 
 #: src/timezone_names.c:542
 msgid "Pacific/Marquesas"
-msgstr "Vaikne ookean/Markiisaared"
+msgstr "წყნარი ოკეანე/მარკიზის კუნძულები"
 
 #: src/timezone_names.c:543
 msgid "Pacific/Midway"
-msgstr "Vaikne ookean/Midway"
+msgstr "წყნარი ოკეანე/მიდვეი"
 
 #: src/timezone_names.c:544
 msgid "Pacific/Nauru"
-msgstr "Vaikne ookean/Nauru"
+msgstr "წყნარი ოკეანე/ნაურუ"
 
 #: src/timezone_names.c:545
 msgid "Pacific/Niue"
-msgstr "Vaikne ookean/Niue"
+msgstr "წყნარი ოკეანე/ნიუე"
 
 #: src/timezone_names.c:546
 msgid "Pacific/Norfolk"
-msgstr "Vaikne ookean/Norfolk"
+msgstr "წყნარი ოკეანე/ნორფოლკი"
 
 #: src/timezone_names.c:547
 msgid "Pacific/Noumea"
-msgstr "Vaikne ookean/Nouméa"
+msgstr "წყნარი ოკეანე/ნუმეა"
 
 #: src/timezone_names.c:548
 msgid "Pacific/Pago_Pago"
-msgstr "Vaikne ookean/Pago_Pago"
+msgstr "წყნარი ოკეანე/პაგო პაგო"
 
 #: src/timezone_names.c:549
 msgid "Pacific/Palau"
-msgstr "Vaikne ookean/Belau"
+msgstr "წყნარი ოკეანე/პალაუ"
 
 #: src/timezone_names.c:550
 msgid "Pacific/Pitcairn"
-msgstr "Vaikne ookean/Pitcairn"
+msgstr "წყნარი ოკეანე/პიტკერნი"
 
 #: src/timezone_names.c:551
 msgid "Pacific/Pohnpei"
-msgstr "Vaikne ookean/Pohnpei"
+msgstr "წყნარი_ოკეანე/პონპეი"
 
 #: src/timezone_names.c:552
 msgid "Pacific/Ponape"
-msgstr "Vaikne ookean/Pohnpei"
+msgstr "წყნარი ოკეანე/წყნარი ოკეანე"
 
 #: src/timezone_names.c:553
 msgid "Pacific/Port_Moresby"
-msgstr "Vaikne ookean/Port_Moresby"
+msgstr "წყნარი ოკეანე/პორტ მორესბი"
 
 #: src/timezone_names.c:554
 msgid "Pacific/Rarotonga"
-msgstr "Vaikne ookean/Rarotonga"
+msgstr "წყნარი ოკეანე/რაროტონგა"
 
 #: src/timezone_names.c:555
 msgid "Pacific/Saipan"
-msgstr "Vaikne ookean/Saipan"
+msgstr "წყნარი ოკეანე/სეიპანი"
 
 #: src/timezone_names.c:556
 msgid "Pacific/Samoa"
-msgstr "Vaikne ookean/Samoa"
+msgstr "წყნარი_ოკეანე/სამოა"
 
 #: src/timezone_names.c:557
 msgid "Pacific/Tahiti"
-msgstr "Vaikne ookean/Tahiti"
+msgstr "წყნარი ოკეანე/ტაიტი"
 
 #: src/timezone_names.c:558
 msgid "Pacific/Tarawa"
-msgstr "Vaikne ookean/Tarawa"
+msgstr "წყნარი ოკეანე/ტარავა"
 
 #: src/timezone_names.c:559
 msgid "Pacific/Tongatapu"
-msgstr "Vaikne ookean/Tongatapu"
+msgstr "წყნარი ოკეანე/ტონგატაპუ"
 
 #: src/timezone_names.c:560
 msgid "Pacific/Truk"
-msgstr "Vaikne ookean/Chuuk"
+msgstr "წყნარი ოკეანე/ტრაკ ატოლი"
 
 #: src/timezone_names.c:561
 msgid "Pacific/Wake"
-msgstr "Vaikne ookean/Wake"
+msgstr "წყნარი ოკეანე/ვაკე"
 
 #: src/timezone_names.c:562
 msgid "Pacific/Wallis"
-msgstr "Vaikne ookean/Wallis"
+msgstr "წყნარი ოკეანე/ამბლესტონი"
 
 #: src/timezone_names.c:563
 msgid "Pacific/Yap"
-msgstr "Vaikne ookean/Yap"
+msgstr "წყნარი ოკეანე/იაპი"
 
 #: src/timezone_names.c:564
 msgid "SystemV"
@@ -4106,102 +3998,102 @@ msgstr "SystemV/YST9/YDT"
 
 #: src/timezone_names.c:578
 msgid "US"
-msgstr "USA"
+msgstr "აშშ"
 
 #: src/timezone_names.c:579
 msgid "US/Alaska"
-msgstr "USA/Alaska"
+msgstr "აშშ/ალიასკა"
 
 #: src/timezone_names.c:580
 msgid "US/Aleutian"
-msgstr "USA/Aleuudid"
+msgstr "აშშ/ალეუტი"
 
 #: src/timezone_names.c:581
 msgid "US/Arizona"
-msgstr "USA/Arizona"
+msgstr "აშშ/არიზონა"
 
 #: src/timezone_names.c:582
 msgid "US/Central"
-msgstr "USA/Keskosa"
+msgstr "აშშ/ცენტრალური"
 
 #: src/timezone_names.c:583
 msgid "US/Eastern"
-msgstr "USA/Idaosa"
+msgstr "აშშ/აღმოსავლეთი"
 
 #: src/timezone_names.c:584
 msgid "US/East-Indiana"
-msgstr "USA/Ida-Indiana"
+msgstr "აშშ/აღმოსავლეთ-ინდიანა"
 
 #: src/timezone_names.c:585
 msgid "US/Hawaii"
-msgstr "USA/Hawaii"
+msgstr "აშშ/ჰავაი"
 
 #: src/timezone_names.c:586
 msgid "US/Indiana-Starke"
-msgstr "USA/Indiana-Starke"
+msgstr "აშშ/ინდიანა-სტარკე"
 
 #: src/timezone_names.c:587
 msgid "US/Michigan"
-msgstr "USA/Michigan"
+msgstr "აშშ/მიჩიგანი"
 
 #: src/timezone_names.c:588
 msgid "US/Mountain"
-msgstr "USA/Mäestik"
+msgstr "აშშ/მოუნტენი"
 
 #: src/timezone_names.c:589
 msgid "US/Pacific"
-msgstr "USA/Vaikse ookeani rannik"
+msgstr "აშშ/წყნარი_ოკეანე"
 
 #: src/timezone_names.c:590
 msgid "US/Pacific-New"
-msgstr "USA/Vaikse ookeani rannik-uus"
+msgstr "აშშ/წყნარიოკეანე-ახალი"
 
 #: src/timezone_names.c:591
 msgid "US/Samoa"
-msgstr "USA/Samoa"
+msgstr "აშშ/სამოა"
 
 #: src/timezone_selection.c:143
 #, c-format
 msgid "%d hour %d mins"
-msgstr "%d tund %d minutit"
+msgstr "%d სთ %d წთ"
 
 #: src/timezone_selection.c:146
 #, c-format
 msgid "%d hour"
-msgstr "%d tund"
+msgstr "%d საათი"
 
 #: src/timezone_selection.c:148
 #, c-format
 msgid "%d mins"
-msgstr "%d minutit"
+msgstr "%d წთ"
 
 #: src/timezone_selection.c:154
 msgid "backward"
-msgstr "tagasi"
+msgstr "backward"
 
 #: src/timezone_selection.c:157
 msgid "forward"
-msgstr "edasi"
+msgstr "წინ"
 
 #: src/timezone_selection.c:181
 msgid "not changed"
-msgstr "pole muudetud"
+msgstr ""
 
 #: src/timezone_selection.c:182
 msgid "not changing"
-msgstr "ei muudeta"
+msgstr ""
 
 #: src/timezone_selection.c:241
 msgid "GMT Offset"
-msgstr "GMT ajanihe"
+msgstr ""
 
 #: src/timezone_selection.c:247
 msgid "Previous/Next Change"
-msgstr "Eelmine/Järgmine muudatus"
+msgstr ""
 
 #: src/timezone_selection.c:252
 msgid "Country"
-msgstr "Riik"
+msgstr "ქვეყანა"
 
 #. We are actually setting the g_par parameter. In other words
 #. we are setting the global default timezone for Orage. This is
@@ -4211,12 +4103,12 @@ msgstr "Riik"
 #: src/timezone_selection.c:284 src/timezone_selection.c:293
 #: src/timezone_selection.c:304
 msgid "Pick timezone"
-msgstr "Vali ajavöönd"
+msgstr ""
 
 #: src/timezone_selection.c:287 src/timezone_selection.c:296
 #: src/timezone_selection.c:307
 msgid "Change mode"
-msgstr "Muuda režiimi"
+msgstr "რეჟიმის შეცვლა"
 
 #: src/timezone_selection.c:288 src/timezone_selection.c:297
 #: src/timezone_selection.c:308 src/timezone_selection.c:347
@@ -4226,28 +4118,27 @@ msgstr "UTC"
 #. NOTE: this exists only if ical timezones are being used
 #: src/timezone_selection.c:298 src/timezone_selection.c:352
 msgid "floating"
-msgstr "nihkuv"
+msgstr "მცურავი"
 
 #: src/tray_icon.c:394
 msgid "New appointment"
-msgstr "Uus kohtumine"
+msgstr ""
 
 #: src/tray_icon.c:410
 msgid "Quit"
-msgstr "Välju"
+msgstr "გასვლა"
 
 #: plugin/org.xfce.orage-settings.desktop.in:5
 msgid "Settings for the Xfce 4 Calendar Application (Orage)"
-msgstr "Xfce 4 kalendrirakenduse (Orage) seadistused"
+msgstr ""
 
 #: plugin/org.xfce.orage-settings.desktop.in:12
 msgid "Orage Calendar Preferences"
-msgstr "Orage'i kalendri eelistused"
+msgstr ""
 
 #: plugin/org.xfce.orage-settings.desktop.in:14 org.xfce.orage.desktop.in:15
 msgid "calendar;date;schedule;appointment;time;"
 msgstr ""
-"kalender;kuupäev;graafik;koosolek;sündmus;üritus;kohtumine;aeg;kellaaeg;"
 
 #: org.xfce.orage.appdata.xml.in:11
 msgid ""
@@ -4255,9 +4146,6 @@ msgid ""
 " ical format and includes common calendar features like repeating "
 "appointments and multiple alarming possibilities."
 msgstr ""
-"Orage on kiire ja hõlpsasti kasutatav graafiline kalender, mis kasutab "
-"portatiivset ical vormingut ja sisaldab enamlevinud kalendrifunktsioone, "
-"nagu kohtumiste kordamine ja mitmeid alarmide võimalusi."
 
 #: org.xfce.orage.appdata.xml.in:15
 msgid ""
@@ -4266,31 +4154,27 @@ msgid ""
 "Contents of those files are read and converted into Orage, but those files "
 "are left untouched."
 msgstr ""
-"Orage'il puuduvad grupikalendri funktsioonid, seda saab kasutada ainult ühe "
-"kasutaja kalendrina. Orage kasutab ical failide loendit mida saab importida."
-" Imporditud failide sisu salvestatakse Orage kalendris ja imporditavad faile"
-" ei muudeta."
 
 #: org.xfce.orage.appdata.xml.in:35
 msgid "Orage Team"
-msgstr "Orage'i arendustiim"
+msgstr "Orage-ის გუნდი"
 
 #: org.xfce.orage.desktop.in:4
 msgid "Orage Calendar"
-msgstr "Orage'i kalender"
+msgstr "Orage-ის კალენდარი"
 
 #: org.xfce.orage.desktop.in:5
 msgid "Desktop calendar"
-msgstr "Töölaua kalender"
+msgstr ""
 
 #: org.xfce.orage.desktop.in:13
 msgid "Calendar"
-msgstr "Kalender"
+msgstr "კალენდარი"
 
 #: org.xfce.orage.desktop.in:18
 msgid "Show Today"
-msgstr "Näita tänast päeva"
+msgstr "დღევანდელი დღის ჩვენება"
 
 #: org.xfce.orage.desktop.in:22
 msgid "New Appointment"
-msgstr "Uus kohtumine"
+msgstr ""

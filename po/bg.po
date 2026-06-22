@@ -1216,7 +1216,7 @@ msgstr ""
 
 #: src/orage-appointment-window.c:4102
 msgid "Test this alarm by raising it now."
-msgstr ""
+msgstr "Тествайте тази аларма, като я активирате сега."
 
 #: src/orage-appointment-window.c:4115
 msgid "<b>Default alarm</b>"
@@ -1224,7 +1224,7 @@ msgstr "<b>Аларма по подразбиране</b>"
 
 #: src/orage-appointment-window.c:4130
 msgid "Store current settings as default alarm."
-msgstr ""
+msgstr "Запазете текущите настройки като аларма по подразбиране."
 
 #: src/orage-appointment-window.c:4132
 msgid "_Revert"
@@ -1232,7 +1232,7 @@ msgstr "_Връщане"
 
 #: src/orage-appointment-window.c:4141
 msgid "Set current settings from default alarm."
-msgstr ""
+msgstr "Задайте текущите настройки от алармата по подразбиране."
 
 #: src/orage-appointment-window.c:4206
 msgid "None"
@@ -1307,6 +1307,8 @@ msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time."
 msgstr ""
+"Включените часове са в същата часова зона като началния час, но може да имат"
+" различно време."
 
 #. calendars showing the action days
 #: src/orage-appointment-window.c:4354
