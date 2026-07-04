@@ -32,7 +32,7 @@ typedef struct _OrageTaskRunner      OrageTaskRunner;
 #define ORAGE_TASK_RUNNER_TYPE (orage_task_runner_get_type ())
 #define ORAGE_TASK_RUNNER(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), ORAGE_TASK_RUNNER_TYPE, OrageTaskRunner))
 
-GType orage_task_runner_get_type (void) G_GNUC_CONST;
+GType orage_task_runner_get_type (void);
 
 struct _orage_task_runner_conf
 {
