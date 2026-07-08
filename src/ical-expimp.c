@@ -101,6 +101,10 @@ static gchar *find_calendar_id (const gchar *calendar_name,
     return calendar_id;
 }
 
+#if ICAL_CHECK_VERSION(4, 0, 0)
+#define icalcomponent_new_clone(_c) icalcomponent_clone(_c)
+#endif
+
 static void add_event (icalcomponent *c, gboolean *ical_opened)
 {
     icalcomponent *ca;
