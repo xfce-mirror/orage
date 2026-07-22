@@ -62,6 +62,12 @@
 #include "parameters.h"
 #include "reminder.h"
 
+#if ICAL_CHECK_VERSION(4, 0, 0)
+#define icalcomponent_new_clone icalcomponent_clone
+#define icaltime_add icalduration_extend
+#define icaltime_subtract icalduration_from_times
+#endif
+
 #ifdef HAVE_ARCHIVE
 gboolean xfical_archive_open(void)
 {
@@ -129,7 +135,11 @@ static void xfical_icalcomponent_archive_recurrent (icalcomponent *e,
                                                     const gint threshold_months)
 {
     struct icaltimetype sdate, edate, nsdate, nedate;
+#if ICAL_CHECK_VERSION(4, 0, 0)
+    struct icalrecurrencetype *rrule;
+#else
     struct icalrecurrencetype rrule;
+#endif
     struct icaldurationtype duration;
     icalrecur_iterator* ri;
     gchar *stz_loc = NULL, *etz_loc = NULL;
@@ -246,10 +256,7 @@ static void xfical_icalcomponent_archive_recurrent (icalcomponent *e,
         if (stz_loc == NULL)
             icalcomponent_add_property(e, icalproperty_new_dtstart(nsdate));
         else
-            icalcomponent_add_property(e
-                    , icalproperty_vanew_dtstart(nsdate
-                            , icalparameter_new_tzid(stz_loc)
-                            , 0));
+            icalcomponent_add_property (e, icalproperty_vanew_dtstart (nsdate, icalparameter_new_tzid (stz_loc), NULL));
         if (upd_edate) {
             if (!has_orig_dtend) {
                 text = g_strdup(icalproperty_as_ical_string(pdtend));
@@ -263,10 +270,7 @@ static void xfical_icalcomponent_archive_recurrent (icalcomponent *e,
             if (etz_loc == NULL)
                 icalcomponent_add_property(e, icalproperty_new_dtend(nedate));
             else
-                icalcomponent_add_property(e
-                        , icalproperty_vanew_dtend(nedate
-                                , icalparameter_new_tzid(etz_loc)
-                                , 0));
+                icalcomponent_add_property (e, icalproperty_vanew_dtend (nedate, icalparameter_new_tzid (etz_loc), NULL));
         }
     }
 }
