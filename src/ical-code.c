@@ -985,7 +985,7 @@ static icalcomponent *appt_add_alarm_internal_base(xfical_appt *appt
         icalcomponent_add_property(ialarm
                 , icalproperty_vanew_trigger(trg
                         , icalparameter_new_related(ICAL_RELATED_END)
-                        , 0));
+                        , NULL));
     if (appt->alarm_persistent)
         icalcomponent_add_property(ialarm
                 , icalproperty_new_from_string("X-ORAGE-PERSISTENT-ALARM:YES"));
@@ -1276,7 +1276,7 @@ static void appt_add_starttime_internal (const xfical_appt *appt,
                 icalcomponent_add_property(icmp
                         , icalproperty_vanew_dtstart(wtime
                                 , icalparameter_new_tzid(appt->start_tz_loc)
-                                , 0));
+                                , NULL));
             }
         }
         else { /* floating time */
@@ -1322,12 +1322,12 @@ static void appt_add_endtime_internal (const xfical_appt *appt,
                     icalcomponent_add_property(icmp
                         , icalproperty_vanew_dtend(wtime
                                 , icalparameter_new_tzid(appt->end_tz_loc)
-                                , 0));
+                                , NULL));
                 else if (appt->type == XFICAL_TYPE_TODO)
                     icalcomponent_add_property(icmp
                         , icalproperty_vanew_due(wtime
                                 , icalparameter_new_tzid(appt->end_tz_loc)
-                                , 0));
+                                , NULL));
                 end_time_done = TRUE;
             }
         }

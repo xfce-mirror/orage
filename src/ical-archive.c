@@ -259,7 +259,7 @@ static void xfical_icalcomponent_archive_recurrent (icalcomponent *e,
             icalcomponent_add_property(e
                     , icalproperty_vanew_dtstart(nsdate
                             , icalparameter_new_tzid(stz_loc)
-                            , 0));
+                            , NULL));
         if (upd_edate) {
             if (!has_orig_dtend) {
                 text = g_strdup(icalproperty_as_ical_string(pdtend));
@@ -276,7 +276,7 @@ static void xfical_icalcomponent_archive_recurrent (icalcomponent *e,
                 icalcomponent_add_property(e
                         , icalproperty_vanew_dtend(nedate
                                 , icalparameter_new_tzid(etz_loc)
-                                , 0));
+                                , NULL));
         }
     }
 }
