@@ -42,6 +42,7 @@
 #include <gtk/gtk.h>
 #include <libxfce4ui/libxfce4ui.h>
 #include <libxfce4util/libxfce4util.h>
+#include <libical/ical.h>
 
 #ifdef HAVE_NOTIFY
 #include <libnotify/notify.h>
@@ -174,6 +175,10 @@ static void print_version (void)
     g_print (_("Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."),
              LIBXFCE4UI_MAJOR_VERSION, LIBXFCE4UI_MINOR_VERSION, LIBXFCE4UI_MICRO_VERSION,
              libxfce4ui_major_version, libxfce4ui_minor_version, libxfce4ui_micro_version);
+    g_print ("\n");
+
+    g_print (_("Compiled against libical-%d.%d.%d."),
+             ICAL_MAJOR_VERSION, ICAL_MINOR_VERSION, ICAL_MICRO_VERSION);
     g_print ("\n");
 
 #ifdef HAVE_NOTIFY
