@@ -991,18 +991,24 @@ msgid ""
 "<b>Event</b> that happens at a specific time.\n"
 "For example: meeting, birthday, or TV show."
 msgstr ""
+"<b>Събитие</b>, което се случва в определено време.\n"
+"Например: среща, рожден ден или телевизионно предаване."
 
 #: src/orage-appointment-window.c:3576
 msgid ""
 "<b>Task or reminder</b> that should be completed sometime.\n"
 "For example: wash your car or test a new version of Orage."
 msgstr ""
+"<b>Задача или напомняне</b>, което трябва да бъде изпълнено някога.\n"
+"Например: измийте колата си или тествайте нова версия на Orage."
 
 #: src/orage-appointment-window.c:3586
 msgid ""
 "<b>Journal entry</b> used to record something that happened.\n"
 "For example: your mother called or the first snow arrived."
 msgstr ""
+"<b>Запис в дневник</b>, използван за записване на нещо, което се е случило.\n"
+"Например: майка ви се е обадила или е паднал първият сняг."
 
 #. location
 #: src/orage-appointment-window.c:3599 src/orage-window-classic.c:453
@@ -1067,7 +1073,7 @@ msgstr "_Цвят"
 
 #: src/orage-appointment-window.c:3732
 msgid "Update colors for categories."
-msgstr ""
+msgstr "Актуализиране на цветовете за категориите."
 
 #. priority
 #: src/orage-appointment-window.c:3738
@@ -1082,6 +1088,11 @@ msgid ""
 "<b>Alarms still trigger normally.</b>\n"
 "The default limit of 8 can be changed using an undocumented parameter."
 msgstr ""
+"<b>Приоритет 8 или по-висок</b> скрива срещата от списъчните прозорци.\n"
+"\n"
+"Това намалява претрупването, но може да затрудни намирането на срещата.\n"
+"<b>Алармите все още се задействат нормално.</b>\n"
+"Ограничението по подразбиране от 8 може да бъде променено с помощта на недокументиран параметър."
 
 #. note
 #: src/orage-appointment-window.c:3754 src/orage-window-classic.c:466
@@ -1100,6 +1111,14 @@ msgid ""
 "<b>&lt;&amp;Ynnnn&gt;</b> is replaced with current year minus nnnn\n"
 "Useful for example in birthday reminders (e.g. age calculation)."
 msgstr ""
+"<b>Съкратени команди (влизат в сила незабавно)</b> \n"
+"<b>&lt;D&gt;</b>вмъква текущата дата в локален формат\n"
+"<b>&lt;T&gt;</b> вмъква текущото време\n"
+" <b>&lt;DT&gt;</b> вмъква датата и часа\n"
+"\n"
+"<b>Забавени команди (обработват се по-късно)</b>\n"
+"<b>&lt;&amp;Ynnnn&gt;</b> се заменя с текущата година минус nnnn\n"
+"Полезно е например при напомняния за рождени дни (напр. изчисляване на възраст)."
 
 #: src/orage-appointment-window.c:3864
 msgid "Alarm"
@@ -1118,6 +1137,11 @@ msgid ""
 "- before a TODO ends\n"
 "- after a TODO starts"
 msgstr ""
+"<b>Опции за време на алармата</b>\n"
+"Можете да задействате аларми:\n"
+"- преди началото на събитието\n"
+"- преди края на задачата\n"
+"- след началото на задачата"
 
 #: src/orage-appointment-window.c:3904
 msgid "Persistent alarm"
@@ -1199,7 +1223,7 @@ msgstr "Процедура"
 
 #: src/orage-appointment-window.c:4066
 msgid "Select this if you want procedure or script alarm."
-msgstr ""
+msgstr "Изберете това, ако искате процедура или скриптова аларма."
 
 #: src/orage-appointment-window.c:4078
 msgid ""
@@ -1213,6 +1237,15 @@ msgid ""
 "- &lt;&amp;ST&gt; appointment start time\n"
 "- &lt;&amp;ET&gt; appointment end time"
 msgstr ""
+"<b>Обработка на команди в обвивката</b>\n"
+"Този низ се предава директно на обвивката, така че трябва сами да обработите всички екранирания.\n"
+"\n"
+"Следните заместители се заместват по време на изпълнението:\n"
+"- <&amp;T&gt; заглавие на срещата\n"
+"- <&amp;D&gt; описание на срещата\n"
+"- <&amp;AT&gt; час на аларма\n"
+"- <&amp;ST&gt; начален час на срещата\n"
+"- <&amp;ET&gt; краен час на срещата"
 
 #: src/orage-appointment-window.c:4102
 msgid "Test this alarm by raising it now."
@@ -1289,6 +1322,10 @@ msgid ""
 "An exception can be either exclusion (-) or inclusion (+), depending on selection.\n"
 "Remove by clicking the date."
 msgstr ""
+"<b>Дати на изключения</b> \n"
+"Добавете дати на изключения, като щракнете върху дни в календара по-долу.\n"
+"Изключението може да бъде или изключване (-), или включване (+), в зависимост от избора.\n"
+"Премахнете, като щракнете върху датата."
 
 #: src/orage-appointment-window.c:4324
 msgid "Add excluded date (-)"
@@ -1296,7 +1333,7 @@ msgstr "Добавяне на изключена дата (-)"
 
 #: src/orage-appointment-window.c:4326
 msgid "Excluded days are full days where this appointment is not happening."
-msgstr ""
+msgstr "Изключените дни са пълните дни, в които тази среща не се провежда."
 
 #: src/orage-appointment-window.c:4333
 msgid "Add included time (+)"
@@ -1402,15 +1439,15 @@ msgstr "минути"
 
 #: src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task."
-msgstr ""
+msgstr "Името или описанието на тази задача за синхронизация."
 
 #: src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization."
-msgstr ""
+msgstr "Команда за синхронизация."
 
 #: src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes."
-msgstr ""
+msgstr "Период на синхронизация в минути."
 
 #: src/orage-sync-edit-dialog.c:166 src/parameters.c:1430 src/reminder.c:696
 msgid "_Close"
@@ -1649,7 +1686,7 @@ msgstr "Използване на нов потребителски интерф
 
 #: src/parameters.c:820
 msgid "Enable the new interface layout (requires restart)."
-msgstr ""
+msgstr "Активиране на новото оформление на интерфейса (изисква рестартиране)."
 
 #: src/parameters.c:825
 msgid "Show borders"
@@ -1868,7 +1905,7 @@ msgstr "Отлагане"
 
 #: src/reminder.c:714
 msgid "Remind me again after the specified time."
-msgstr ""
+msgstr "Напомни ми отново след посоченото време."
 
 #: src/reminder.c:998
 msgid "Next active alarms:"
@@ -1877,11 +1914,11 @@ msgstr "Следваща активна аларма:"
 #: src/reminder.c:1040
 #, c-format
 msgid "<span weight=\"bold\">%1$02d d %2$02d h %3$02d min to:</span> %4$s"
-msgstr ""
+msgstr "<span weight=\"bold\">%1$02d д %2$02d ч %3$02d мин. до:</span> %4$s"
 
 #: src/reminder.c:1057
 msgid "No active alarms found"
-msgstr ""
+msgstr "Не са открити активни аларми"
 
 #: src/timezone_names.c:31
 msgid "Africa"
