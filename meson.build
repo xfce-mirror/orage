@@ -36,6 +36,9 @@ libm = cc.find_library('m')
 if libical.version().version_compare('= 3.0.15')
   error('Unsupported libical version 3.0.15, see https://gitlab.xfce.org/apps/orage/-/issues/20')
 endif
+if libical.version().version_compare('>= 4.0')
+  libical = [libical, dependency('libicalss')]
+endif
 
 feature_cflags = []
 
