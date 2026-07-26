@@ -44,7 +44,7 @@ msgstr "Kliknutím vyberte riadok a potom ho môžete skopírovať."
 
 #: src/event-list.c:1014
 msgid "You will permanently remove all selected appointments."
-msgstr ""
+msgstr "Týmto natrvalo odstránite všetky vybrané udalosti."
 
 #: src/event-list.c:1015 src/orage-appointment-window.c:982
 #: src/orage-appointment-window.c:1645 src/parameters.c:644
@@ -160,6 +160,12 @@ msgid ""
 "- Urgencies are still shown for all events.\n"
 "- Repeating events may appear earlier in the list because only the first occurrence is displayed."
 msgstr ""
+"Zobraziť len <b>prvý výskyt</b> opakovaných udalostí.\n"
+"Predvolene sú zobrazené všetky výskyty.\n"
+"\n"
+"<b>Poznámka:</b>\n"
+"- Urgencie sú naďalej zobrazované pre všetky udalosti.\n"
+"- Opakované udalosti sa môžu vyskytnúť v zozname skôr, pretože je zobrazený len prvý výskyt."
 
 #: src/event-list.c:1319
 msgid "also old"
@@ -173,6 +179,11 @@ msgid ""
 "\n"
 "<b>Note:</b> The extra days setting still controls how many future appointments are shown."
 msgstr ""
+"Zobraziť v zozname staré udalosti.\n"
+"\n"
+"Táto voľba je dostupná len keď je zapnutý <b>Len prvý výskyt</b> na predídenie veľmi dlhého zoznamu.\n"
+"\n"
+"<b>Poznámka:</b> Nastavenie ďalších dní stále ovláda koľko budúcich udalostí je zobrazených."
 
 #: src/event-list.c:1353 src/orage-appointment-window.c:3571
 #: src/orage-import.c:67
@@ -223,6 +234,19 @@ msgid ""
 "5. Appointment type:\n"
 "   E = event, T = todo, J = journal"
 msgstr ""
+"Dvojklikom na riadku ho upravíte.\n"
+"\n"
+"<b>Príznaky v poradí:</b>\n"
+"1. Pripomienka:\n"
+"   n=bez alarmu, A=pripomienka nastavená, P=trvalý alarm\n"
+"2. Opakovanie:\n"
+"  n=bez opakovania, H=hodinovo, D=denne, W=týždenne, M=mesačne, Y=ročne\n"
+"3. Typ:\n"
+"  f=dostupný, B=obsadený\n"
+"4. Umiestnené v súbore:\n"
+"  O=Orage, A=archív, F=cudzí\n"
+"5. Typ udalosti:\n"
+"  E=udalosť, T=úloha, J=žurnála"
 
 #: src/ical-code.c:856
 msgid "Orage default alarm"
@@ -268,7 +292,7 @@ msgstr "Pridanie externého súboru zlyhalo"
 
 #: src/interface.c:725
 msgid "Orage can only handle 10 foreign files. Limit reached"
-msgstr ""
+msgstr "Orage môže spravovať len 10 cudzích súborov. Limit dosiahnutý"
 
 #: src/interface.c:735
 msgid "Filename is empty."
@@ -320,6 +344,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Commas are not allowed in Orage filenames."
 msgstr ""
+"Názvy súborov oddeľte čiarkami.\n"
+"\n"
+" Poznámka: čiarka nie je platným znakom v názvoch súborov Orage."
 
 #: src/interface.c:1082
 msgid "Export"
@@ -347,6 +374,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Archived and foreign events are not included."
 msgstr ""
+"Exportované sú iba udalosti zo súboru hlavného kalendára.\n"
+"\n"
+"<b>Poznámka:</b> Archivované a cudzie udalosti zahrnuté nie sú."
 
 #: src/interface.c:1173
 msgid ""
@@ -354,6 +384,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Foreign events are not included."
 msgstr ""
+"Len udalosti zo súboru hlavného kalendára sú exportované.\n"
+"\n"
+"<b>Poznámka:</b> Cudzie udalosti zahrnuté nie sú."
 
 #: src/interface.c:1178
 msgid "You can easily drag these from event-list window."
@@ -379,7 +412,7 @@ msgstr "Archivovať teraz (prah: %d mesiacov)"
 
 #: src/interface.c:1212
 msgid "You can change archive threshold in parameters."
-msgstr ""
+msgstr "Hranicu archivácie možno zmeniť v parametroch."
 
 #: src/interface.c:1224
 msgid "Revert archive now"
@@ -391,6 +424,9 @@ msgid ""
 "\n"
 "This is useful, for example, when exporting or moving Orage appointments to another system."
 msgstr ""
+"<b>Obnoví všetky archivované udalosti</b> do hlavného súboru Orage a odstráni súbor archívu\n"
+"\n"
+"Táto funkcia je užitočná napríklad pri exporte a presune udalostí na iný systém."
 
 #: src/interface.c:1246
 msgid "Orage files"
@@ -422,6 +458,9 @@ msgid ""
 "\n"
 "External filesystem is not modified. The new file must already exist."
 msgstr ""
+"<b>Premenuje len interný súbor Orage.</b>\n"
+"\n"
+"Externé súborové systémy nie sú menené. Nový súbor musí existovať."
 
 #: src/interface.c:1323 src/interface.c:1418
 msgid "Copy"
@@ -474,6 +513,9 @@ msgid ""
 "\n"
 "<b>Warning:</b> modifying foreign files may make them incompatible with the original application."
 msgstr ""
+"<b>Zapnite režim len na čítanie</b>, keď si chcete byť istí, že Orage tento súbor nikdy nezmení.\n"
+"\n"
+"<b>Upozornenie:</b> zmena cudzích súborov ich môže urobiť nekompatibilným s pôvodnou aplikáciou."
 
 #: src/interface.c:1524
 msgid "This internal name is displayed to user instead of file name."
@@ -500,34 +542,34 @@ msgstr ""
 
 #: src/orage-application.c:167
 msgid "Released under the terms of the GNU General Public License."
-msgstr ""
+msgstr "Vydané pod GNU General Public License."
 
 #: src/orage-application.c:169
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
-msgstr ""
+msgstr "\tSkompilované proti GTK+-%d.%d.%d, používa GTK+-%d.%d.%d."
 
 #: src/orage-application.c:174
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
-msgstr ""
+msgstr "\tSkompilované proti libxfce4ui-%d.%d.%d, používa libxfce4ui- %d.%d.%d."
 
 #: src/orage-application.c:180
 #, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
-msgstr ""
+msgstr "\tSkompilované proti libnotify-%d.%d.%d, "
 
 #: src/orage-application.c:183
 msgid "Not using libnotify."
-msgstr ""
+msgstr "Nepoužíva sa libnotify."
 
 #: src/orage-application.c:188
 msgid "Using automatic archiving."
-msgstr ""
+msgstr "Používa sa automatické archivovanie."
 
 #: src/orage-application.c:190
 msgid "Not using archiving."
-msgstr ""
+msgstr "Nepoužíva sa archivácia."
 
 #: src/orage-application.c:194
 #, c-format
@@ -568,7 +610,7 @@ msgstr "Exportovať udalosti z Orage do súboru"
 
 #: src/orage-application.c:847
 msgid "Select logging backend (glib|orage)"
-msgstr ""
+msgstr "Vyberte zálohovací nástroj (glib|orage)"
 
 #: src/orage-application.c:856
 msgid "Show version of Orage"
@@ -899,6 +941,8 @@ msgid ""
 "<b>Recurrence is based on the start time.</b>\n"
 "The TODO repeats at regular intervals regardless of when it was last completed."
 msgstr ""
+"<b>Opakovanie je založené na čase začiatku.</b>\n"
+"Úlohy sa opakujú v pravidelných intervaloch, bez ohľadu na čas posledného dokončenia."
 
 #: src/orage-appointment-window.c:3488
 msgid ""
@@ -907,6 +951,10 @@ msgid ""
 "\n"
 "<b>Note:</b> the TODO history cannot be determined because the recurrence base changes after each completion."
 msgstr ""
+"<b>Opakovanie je založené na čase dokončenia.</b>\n"
+"Úlohy sa opakujú po zadanom intervale od posledného času dokončenia.\n"
+"\n"
+"<b>Poznámka:</b> históriu úloh nie je možné určiť, pretože opakovanie úloh sa mení po každom dokončení."
 
 #: src/orage-appointment-window.c:3517
 msgid "Save"
@@ -942,18 +990,25 @@ msgid ""
 "<b>Event</b> that happens at a specific time.\n"
 "For example: meeting, birthday, or TV show."
 msgstr ""
+"<b>Udalosť</b>, ktorá nastane v zadanom čase.\n"
+"\n"
+"Napríklad: schôdzka, narodeniny alebo televízna relácia."
 
 #: src/orage-appointment-window.c:3576
 msgid ""
 "<b>Task or reminder</b> that should be completed sometime.\n"
 "For example: wash your car or test a new version of Orage."
 msgstr ""
+"<b>Úloha alebo pripomienka</b>, ktorá má byť niekedy dokončená.\n"
+"Napríklad: umyť auto alebo vyskúšať novú verziu Orage."
 
 #: src/orage-appointment-window.c:3586
 msgid ""
 "<b>Journal entry</b> used to record something that happened.\n"
 "For example: your mother called or the first snow arrived."
 msgstr ""
+"<b>Položka žurnálu entry</b> slúži na zaznamenanie niečoho, čo sa stalo.\n"
+"Napríklad: zavolala mama alebo napadol prvý sneh."
 
 #. location
 #: src/orage-appointment-window.c:3599 src/orage-window-classic.c:453
@@ -1018,7 +1073,7 @@ msgstr "_Farba"
 
 #: src/orage-appointment-window.c:3732
 msgid "Update colors for categories."
-msgstr ""
+msgstr "Aktualizovať farby kategórií."
 
 #. priority
 #: src/orage-appointment-window.c:3738
@@ -1033,6 +1088,11 @@ msgid ""
 "<b>Alarms still trigger normally.</b>\n"
 "The default limit of 8 can be changed using an undocumented parameter."
 msgstr ""
+"<b>Priorita 8 a vyššia</b> skrýva udalosti z okien zoznamov.\n"
+"\n"
+"Môže odstrániť šum, ale môže sťažiť nájdenie udalosti.\n"
+"<b>Pripomienky sú spúšťané normálne.</b>\n"
+"Predvolený limit 8 možno zmeniť pomocou nedokumentovaného parametra."
 
 #. note
 #: src/orage-appointment-window.c:3754 src/orage-window-classic.c:466
@@ -1051,6 +1111,14 @@ msgid ""
 "<b>&lt;&amp;Ynnnn&gt;</b> is replaced with current year minus nnnn\n"
 "Useful for example in birthday reminders (e.g. age calculation)."
 msgstr ""
+"<b>Skratkové príkazy (vykonané okamžite)</b>\n"
+"<b>&lt;D&gt;</b> vkladá aktuálny dátum v lokálnom formáte\n"
+"<b>&lt;T&gt;</b> vkladá aktuálny čas\n"
+"<b>&lt;DT&gt;</b> vkladá dátum a čas\n"
+"\n"
+"<b>Oneskoren príkazy (vykonané neskôr)</b>\n"
+"<b>&lt;&amp;Ynnnn&gt;</b> je nahradené aktuálnym rokom mínus nnnn\n"
+"Užitočné napríklad pri pripomienkach narodenín (napr. výpočet rokov)."
 
 #: src/orage-appointment-window.c:3864
 msgid "Alarm"
@@ -1069,6 +1137,11 @@ msgid ""
 "- before a TODO ends\n"
 "- after a TODO starts"
 msgstr ""
+"<b>Možnosti časovania pripomienok</b>\n"
+"Pripomienky môžu byť spustené:\n"
+"- pred začiatkom udalosti\n"
+"- pred skončením úlohy\n"
+"- po začatí úlohy"
 
 #: src/orage-appointment-window.c:3904
 msgid "Persistent alarm"
@@ -1092,11 +1165,11 @@ msgstr "Použiť"
 
 #: src/orage-appointment-window.c:3927
 msgid "Select this if you want audible alarm."
-msgstr ""
+msgstr "Vyberte túto možnosť, ak si želáte zvukovú pripomienku"
 
 #: src/orage-appointment-window.c:3932
 msgid "Sound command is not set."
-msgstr ""
+msgstr "Príkaz zvuku nie je nastavený"
 
 #: src/orage-appointment-window.c:3961
 msgid "Repeat alarm sound"
@@ -1117,7 +1190,7 @@ msgstr "Použiť okno Orage"
 
 #: src/orage-appointment-window.c:4007
 msgid "Select this if you want Orage window alarm."
-msgstr ""
+msgstr "Vyberte túto možnosť, ak si želáte pripomienku oknom aplikácie Orage."
 
 #: src/orage-appointment-window.c:4019
 msgid "Use notification"
@@ -1125,7 +1198,7 @@ msgstr "Použiť oznámenie"
 
 #: src/orage-appointment-window.c:4021
 msgid "Select this if you want notification alarm."
-msgstr ""
+msgstr "Vyberte túto možnosť, ak si želáte pripomienku oznámením."
 
 #: src/orage-appointment-window.c:4029
 msgid "Set timeout"
@@ -1134,6 +1207,7 @@ msgstr "Nastaviť dobu vypršania"
 #: src/orage-appointment-window.c:4031
 msgid "Select this if you want notification to expire automatically."
 msgstr ""
+"Vyberte túto možnosť, ak si želáte, aby oznámenie automaticky vypršalo."
 
 #: src/orage-appointment-window.c:4042
 msgid "0 = system default expiration time"
@@ -1151,6 +1225,8 @@ msgstr "Procedúra"
 #: src/orage-appointment-window.c:4066
 msgid "Select this if you want procedure or script alarm."
 msgstr ""
+"Vyberte túto možnosť, ak si želáte spustiť procedúru, alebo skript "
+"pripomienky."
 
 #: src/orage-appointment-window.c:4078
 msgid ""
@@ -1164,10 +1240,19 @@ msgid ""
 "- &lt;&amp;ST&gt; appointment start time\n"
 "- &lt;&amp;ET&gt; appointment end time"
 msgstr ""
+"<b>Spracovanie príkazu shellu</b>\n"
+"Tento reťazec je poslaný priamo do shellu, takže všetky eskapovania musíte ošetriť sami.\n"
+"\n"
+"Následujúce zástupné skupiny sú nahradené za behu:\n"
+"- &lt;&amp;T&gt;  názov udalosti\n"
+"- &lt;&amp;D&gt;  popis udalosti\n"
+"- &lt;&amp;AT&gt; čas pripomienky\n"
+"- &lt;&amp;ST&gt; čas začiatku udalosti\n"
+"- &lt;&amp;ET&gt; čas ukončenia udalosti"
 
 #: src/orage-appointment-window.c:4102
 msgid "Test this alarm by raising it now."
-msgstr ""
+msgstr "Vyskúšať túto pripomienku teraz."
 
 #: src/orage-appointment-window.c:4115
 msgid "<b>Default alarm</b>"
@@ -1175,7 +1260,7 @@ msgstr "Predvolená pripomienka"
 
 #: src/orage-appointment-window.c:4130
 msgid "Store current settings as default alarm."
-msgstr ""
+msgstr "Uložiť aktuálne nastavenia ako predvolenú pripomienku."
 
 #: src/orage-appointment-window.c:4132
 msgid "_Revert"
@@ -1183,7 +1268,7 @@ msgstr "V_rátiť"
 
 #: src/orage-appointment-window.c:4141
 msgid "Set current settings from default alarm."
-msgstr ""
+msgstr "Nastaviť pripomienku z predvolenej pripomienky."
 
 #: src/orage-appointment-window.c:4206
 msgid "None"
@@ -1240,6 +1325,10 @@ msgid ""
 "An exception can be either exclusion (-) or inclusion (+), depending on selection.\n"
 "Remove by clicking the date."
 msgstr ""
+"<b>Dátumy výnimiek</b>\n"
+"Dátumy výnimiek možno pridať kliknutím na dni v kalendári nižšie.\n"
+"Výnimka môže byť vylúčenie (-) alebo pridanie (+) v závislosti na výbere.\n"
+"Odoberiete ich kliknutím na dátum."
 
 #: src/orage-appointment-window.c:4324
 msgid "Add excluded date (-)"
@@ -1247,7 +1336,7 @@ msgstr "Pridať odobratý dátum (-)"
 
 #: src/orage-appointment-window.c:4326
 msgid "Excluded days are full days where this appointment is not happening."
-msgstr ""
+msgstr "Vylúčené dni sú celé dni, v ktorých sa táto udalosť nedeje."
 
 #: src/orage-appointment-window.c:4333
 msgid "Add included time (+)"
@@ -1258,6 +1347,8 @@ msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time."
 msgstr ""
+"Zahrnuté časy majú rovnaké časové pásmo ako čas začiatku, ale môžu mať iný "
+"čas."
 
 #. calendars showing the action days
 #: src/orage-appointment-window.c:4354
@@ -1266,55 +1357,55 @@ msgstr "Dátumy akcií"
 
 #: src/orage-import.c:74
 msgid "Unsupported event type"
-msgstr ""
+msgstr "Nepodporovaný typ udalosti"
 
 #: src/orage-import.c:106
 msgid "<b>Summary</b>"
-msgstr ""
+msgstr "<b>Zhrnutie</b>"
 
 #: src/orage-import.c:117
 msgid "<b>Type</b>"
-msgstr ""
+msgstr "<b>Typ</b>"
 
 #: src/orage-import.c:132
 msgid "<b>Location</b>"
-msgstr ""
+msgstr "<b>Umiestnenie</b>"
 
 #: src/orage-import.c:147
 msgid "<b>URL</b>"
-msgstr ""
+msgstr "<b>URL</b>"
 
 #: src/orage-import.c:166
 msgid "<b>All-day</b>"
-msgstr ""
+msgstr "<b>Celý deň</b>"
 
 #: src/orage-import.c:181
 msgid "<b>From</b>"
-msgstr ""
+msgstr "<b>Od</b>"
 
 #: src/orage-import.c:196
 msgid "<b>To</b>"
-msgstr ""
+msgstr "<b>Do</b>"
 
 #: src/orage-import.c:210
 msgid "<b>Recurring</b>"
-msgstr ""
+msgstr "<b>Opakovanie</b>"
 
 #: src/orage-import.c:213
 msgid "Yes"
-msgstr ""
+msgstr "Áno"
 
 #: src/orage-import.c:213
 msgid "No"
-msgstr ""
+msgstr "Nie"
 
 #: src/orage-import.c:259
 msgid "Import calendar file"
-msgstr ""
+msgstr "Importovať súbor kalendára"
 
 #: src/orage-import.c:261
 msgid "_Import"
-msgstr ""
+msgstr "_Importovať"
 
 #: src/orage-import.c:270
 msgid "_Cancel"
@@ -1326,12 +1417,12 @@ msgstr "_Zrušiť"
 #. * use "%Y %B" instead.
 #: src/orage-month-view.c:217
 msgid "%B %Y"
-msgstr ""
+msgstr "%B %Y"
 
 #. Setup title row.
 #: src/orage-month-view.c:485 src/orage-window-next.c:1119
 msgid "Week"
-msgstr ""
+msgstr "Týždeň"
 
 #: src/orage-sync-edit-dialog.c:132
 msgid "Description:"
@@ -1351,15 +1442,15 @@ msgstr "minúty"
 
 #: src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task."
-msgstr ""
+msgstr "Meno alebo popis tejto synchronizačnej úlohy."
 
 #: src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization."
-msgstr ""
+msgstr "Príkaz synchronizácie."
 
 #: src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes."
-msgstr ""
+msgstr "Interval synchronizácie v minútach."
 
 #: src/orage-sync-edit-dialog.c:166 src/parameters.c:1430 src/reminder.c:696
 msgid "_Close"
@@ -1370,7 +1461,7 @@ msgstr "_Zavrieť"
 #. * first day of the week, and so on.
 #: src/orage-time-utils.c:264
 msgid "calendar:week_start:0"
-msgstr ""
+msgstr "calendar:week_start:1"
 
 #: src/orage-week-window.c:490
 msgid "Back one week"
@@ -1453,19 +1544,19 @@ msgstr "<b>Udalosti pre %s: - %s</b>"
 
 #: src/orage-window-next.c:131
 msgid "Create a new appointment"
-msgstr ""
+msgstr "Pridať novú udalosť"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"
-msgstr ""
+msgstr "Znova načítať externé súbory"
 
 #: src/orage-window-next.c:135
 msgid "Import/export data"
-msgstr ""
+msgstr "Import/export dát"
 
 #: src/orage-window-next.c:136
 msgid "Close window"
-msgstr ""
+msgstr "Zavrieť okno"
 
 #: src/orage-window-next.c:137
 msgid "_Quit"
@@ -1473,7 +1564,7 @@ msgstr "_Ukončiť"
 
 #: src/orage-window-next.c:137
 msgid "Quit program"
-msgstr ""
+msgstr "Ukončí program"
 
 #: src/orage-window-next.c:140
 msgid "_Preferences"
@@ -1485,15 +1576,15 @@ msgstr "Predvoľby Orage"
 
 #: src/orage-window-next.c:143
 msgid "View selected date"
-msgstr ""
+msgstr "Zobraziť zvolený dátum"
 
 #: src/orage-window-next.c:145
 msgid "Go to today"
-msgstr ""
+msgstr "Prejsť na deň"
 
 #: src/orage-window-next.c:148
 msgid "Display Orage user manual"
-msgstr ""
+msgstr "Zobrazí používateľskú príručku Orage"
 
 #: src/orage-window-next.c:149
 msgid "_About"
@@ -1501,45 +1592,45 @@ msgstr "_O aplikácii"
 
 #: src/orage-window-next.c:149
 msgid "Display information about Orage"
-msgstr ""
+msgstr "Zobrazí informácie o Orage"
 
 #: src/orage-window-next.c:376
 msgid "New event"
-msgstr ""
+msgstr "Nová udalosť"
 
 #: src/orage-window-next.c:454
 #, c-format
 msgid "Events for %s:"
-msgstr ""
+msgstr "Udalosti na %s:"
 
 #: src/orage-window-next.c:460
 #, c-format
 msgid "Events for %s - %s:"
-msgstr ""
+msgstr "Udalosti %s: – %s"
 
 #: src/orage-window-next.c:663
 msgid "To do:"
-msgstr ""
+msgstr "Úloha:"
 
 #: src/orage-window-next.c:1083
 msgid "Previous"
-msgstr ""
+msgstr "Predošlé"
 
 #: src/orage-window-next.c:1103
 msgid "Next"
-msgstr ""
+msgstr "Ďalšie"
 
 #: src/orage-window-next.c:1117
 msgid "Day"
-msgstr ""
+msgstr "Deň"
 
 #: src/orage-window-next.c:1122
 msgid "Month"
-msgstr ""
+msgstr "Mesiac"
 
 #: src/orage-window-next.c:1125
 msgid "Year"
-msgstr ""
+msgstr "Rok"
 
 #: src/parameters.c:643
 msgid "Remove selected synchronization task."
@@ -1593,11 +1684,11 @@ msgstr "Podrobnosti zobrazenia kalendára"
 
 #: src/parameters.c:818
 msgid "Use new user interface"
-msgstr ""
+msgstr "Použiť nové používateľské rozhranie"
 
 #: src/parameters.c:820
 msgid "Enable the new interface layout (requires restart)."
-msgstr ""
+msgstr "Zapnúť nové rozhranie (vyžaduje reštart)"
 
 #: src/parameters.c:825
 msgid "Show borders"
@@ -1815,7 +1906,7 @@ msgstr "Odložiť"
 
 #: src/reminder.c:714
 msgid "Remind me again after the specified time."
-msgstr ""
+msgstr "Pripomenúť znova po zadanom čase."
 
 #: src/reminder.c:998
 msgid "Next active alarms:"
@@ -1824,11 +1915,11 @@ msgstr "Nasledujúce aktívne pripomienky:"
 #: src/reminder.c:1040
 #, c-format
 msgid "<span weight=\"bold\">%1$02d d %2$02d h %3$02d min to:</span> %4$s"
-msgstr ""
+msgstr "<span weight=\"bold\">%1$02d d %2$02d h %3$02d min do:</span> %4$s"
 
 #: src/reminder.c:1057
 msgid "No active alarms found"
-msgstr ""
+msgstr "Nenájdené žiadne aktívne pripomienky"
 
 #: src/timezone_names.c:31
 msgid "Africa"

@@ -11,8 +11,9 @@
 # Nick Schermer <nick@xfce.org>, 2025
 # 629cf3e396111bb8c5fb6664e2dbc91d, 2025
 # Toni Estévez <toni.estevez@gmail.com>, 2026
-# Casper, 2026
 # Joel Barrios <darkshram@gmail.com>, 2026
+# Casper, 2026
+# em, 2026
 # 
 #, fuzzy
 msgid ""
@@ -21,7 +22,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2026-05-14 12:55+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Joel Barrios <darkshram@gmail.com>, 2026\n"
+"Last-Translator: em, 2026\n"
 "Language-Team: Spanish (https://app.transifex.com/xfce/teams/16840/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -49,7 +50,7 @@ msgstr ""
 
 #: src/event-list.c:1014
 msgid "You will permanently remove all selected appointments."
-msgstr ""
+msgstr "Eliminará permanentemente todas las citas seleccionadas."
 
 #: src/event-list.c:1015 src/orage-appointment-window.c:982
 #: src/orage-appointment-window.c:1645 src/parameters.c:644
@@ -165,6 +166,12 @@ msgid ""
 "- Urgencies are still shown for all events.\n"
 "- Repeating events may appear earlier in the list because only the first occurrence is displayed."
 msgstr ""
+"Mostrar solo la <b>primera ocurrencia</b> de los eventos repetitivos.\n"
+"Por defecto, se muestran todas las ocurrencias.\n"
+"\n"
+"<b>Nota:</b>\n"
+"- Las urgencias se siguen mostrando para todos los eventos.\n"
+"- Los eventos repetitivos pueden aparecer antes en la lista porque solo se muestra la primera ocurrencia."
 
 #: src/event-list.c:1319
 msgid "also old"
@@ -178,6 +185,11 @@ msgid ""
 "\n"
 "<b>Note:</b> The extra days setting still controls how many future appointments are shown."
 msgstr ""
+"Mostrar eventos antiguos en la lista.\n"
+"\n"
+"Para evitar listas muy largas, esta opción solo está disponible cuando <b>Mostrar solo la primera repetición </b> está activa.\n"
+"\n"
+"<b>Nota:</b> El ajuste de días extra sigue controlando cuántos eventos futuros se muestran."
 
 #: src/event-list.c:1353 src/orage-appointment-window.c:3571
 #: src/orage-import.c:67
@@ -228,6 +240,19 @@ msgid ""
 "5. Appointment type:\n"
 "   E = event, T = todo, J = journal"
 msgstr ""
+"registroHaga doble clic en la línea para editarla.\n"
+"\n"
+"<b>Indicadores en orden:</b>\n"
+"1. Alarma:\n"
+"   n = sin alarma, A = alarma activada, P = alarma persistente activada\n"
+"2. Repetición:\n"
+"   n = sin repetición, H = cada hora, D = cada día, W = cada semana, M = cada mes, Y = cada año\n"
+"3. Tipo:\n"
+"   f = libre, B = ocupado\n"
+"4. Ubicación:\n"
+"   O = Orage, A = archivo, F = externo\n"
+"5. Tipo de cita:\n"
+"   E = evento, T = tarea, J = registro"
 
 #: src/ical-code.c:856
 msgid "Orage default alarm"
@@ -326,6 +351,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Commas are not allowed in Orage filenames."
 msgstr ""
+"Separar nombres de archivo con comas.\n"
+"\n"
+"<b>Nota:</b> No se permiten comas en los nombres de archivo de Orage."
 
 #: src/interface.c:1082
 msgid "Export"
@@ -353,6 +381,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Archived and foreign events are not included."
 msgstr ""
+"Solo se exportan los eventos del archivo de calendario principal.\n"
+"\n"
+"<b>Nota:</b> No se incluyen los eventos archivados y externos."
 
 #: src/interface.c:1173
 msgid ""
@@ -360,6 +391,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Foreign events are not included."
 msgstr ""
+"Solo se exportan los eventos del archivo de calendario principal.\n"
+"\n"
+"<b>Nota:</b> No se incluyen los eventos externos."
 
 #: src/interface.c:1178
 msgid "You can easily drag these from event-list window."
@@ -386,7 +420,7 @@ msgstr "Archivar ahora (umbral: %d meses)"
 
 #: src/interface.c:1212
 msgid "You can change archive threshold in parameters."
-msgstr ""
+msgstr "Puede cambiar el umbral del archivo en los parámetros."
 
 #: src/interface.c:1224
 msgid "Revert archive now"
@@ -398,6 +432,9 @@ msgid ""
 "\n"
 "This is useful, for example, when exporting or moving Orage appointments to another system."
 msgstr ""
+"<b>Restaurar todos los eventos archivados</b> en el archivo de Orage principal y eliminar el archivo de eventos archivados.\n"
+"\n"
+"Esto es útil, por ejemplo, al exportar o mover citas de Orage a otro sistema."
 
 #: src/interface.c:1246
 msgid "Orage files"
@@ -429,6 +466,9 @@ msgid ""
 "\n"
 "External filesystem is not modified. The new file must already exist."
 msgstr ""
+"<b>Solo renombrado del archivo interno de Orage.</b>\n"
+"\n"
+"El sistema de archivos externo no se modifica. El nuevo archivo debe existir previamente."
 
 #: src/interface.c:1323 src/interface.c:1418
 msgid "Copy"
@@ -1028,7 +1068,7 @@ msgstr "_Color"
 
 #: src/orage-appointment-window.c:3732
 msgid "Update colors for categories."
-msgstr ""
+msgstr "Actualizar colores para categorías."
 
 #. priority
 #: src/orage-appointment-window.c:3738
@@ -1185,7 +1225,7 @@ msgstr "<b>Alarma predeterminada</b>"
 
 #: src/orage-appointment-window.c:4130
 msgid "Store current settings as default alarm."
-msgstr ""
+msgstr "Guardar la configuración actual como alarma predeterminada."
 
 #: src/orage-appointment-window.c:4132
 msgid "_Revert"
