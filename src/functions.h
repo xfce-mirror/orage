@@ -87,6 +87,28 @@ GtkWidget *orage_menu_item_new_with_mnemonic(const gchar *label
 
 char *orage_replace_text(char *text, char *old, char *new);
 char *orage_limit_text(char *text, int max_line_len, int max_lines);
+
+/**
+ * orage_process_text_commands:
+ * @text: text containing commands to process
+ *
+ * Processes commands embedded in @text and returns a newly allocated string
+ * with the commands replaced by their calculated values.
+ *
+ * Currently, the only supported command is `<&Ynnnn>`, which is replaced by the
+ * number of years between @nnnn and the current year. For example,
+ * `I will be <&Y1980>` becomes `I will be 46` in 2026. Multiple commands in the
+ * same string are supported. Invalid, unsupported, or future-year commands are
+ * left unchanged.
+ *
+ * @text must point to writable memory. The function temporarily modifies the
+ * input string while processing commands and restores its original contents
+ * before returning. String literals and other read-only memory must not be
+ * passed as @text.
+ *
+ * Returns: (transfer full): a newly allocated string with commands processed,
+ * or %NULL if @text is %NULL.
+ */
 gchar *orage_process_text_commands (const gchar *text);
 
 GtkWidget *orage_period_hbox_new(gboolean head_space, gboolean tail_space
