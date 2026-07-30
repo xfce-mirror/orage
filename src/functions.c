@@ -404,9 +404,6 @@ char *orage_limit_text(char *text, int max_line_len, int max_lines)
         return(text);
 }
 
-/* this will change <&Xnnn> type commands to numbers or text as defined.
- * Currently the only command is 
- * <&Ynnnn> which calculates years between current year and nnnn */
 gchar *orage_process_text_commands (const gchar *text)
 {
     /* these point to the original string and travel it until no more commands 
