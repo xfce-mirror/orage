@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2026 Erkki Moorits
+ * Copyright (c) 2026 Erkki Moorits
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -134,7 +134,18 @@ static void test_orage_process_text_commands_invalid_year (void)
 
     result = orage_process_text_commands ("Test <&Yabc>");
     g_assert_cmpstr (result, ==, "Test <&Yabc>");
+    g_free (result);
 
+    result = orage_process_text_commands ("Test <&Y>");
+    g_assert_cmpstr (result, ==, "Test <&Y>");
+    g_free (result);
+
+    result = orage_process_text_commands ("Test <&Y0>");
+    g_assert_cmpstr (result, ==, "Test <&Y0>");
+    g_free (result);
+
+    result = orage_process_text_commands ("Test <&Y2050>");
+    g_assert_cmpstr (result, ==, "Test <&Y2050>");
     g_free (result);
 #endif
 }
@@ -151,7 +162,11 @@ static void test_orage_process_text_commands_unsupported_command (void)
 
     g_free (text1);
 #else
-#error "TODO: implement unsupported command tests"
+    gchar *result;
+
+    result = orage_process_text_commands ("Test <&X123>");
+    g_assert_cmpstr (result, ==, "Test <&X123>");
+    g_free (result);
 #endif
 }
 
