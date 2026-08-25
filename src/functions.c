@@ -404,74 +404,93 @@ char *orage_limit_text(char *text, int max_line_len, int max_lines)
         return(text);
 }
 
-gchar *orage_process_text_commands (const gchar *text)
+static gchar *orage_process_text_command_year (const gchar *value,
+                                               const gsize length)
 {
-    /* these point to the original string and travel it until no more commands 
-     * are found:
-     * cur points to the current head
-     * cmd points to the start of new command
-     * end points to the end of new command */
-    const gchar *cur;
-    char *end, *cmd;
-    /* these point to the new string, which has commands in processed form:
-     * new is the new fragment to be added
-     * beq is the total new string. */
-    char *new=NULL, *beq=NULL;
-    char *tmp; /* temporary pointer to handle freeing */
-    int start_year = -1, year_diff, res;
+    gchar *end;
+    gint64 start_year;
+    gint year_diff;
     GDateTime *gdt;
 
-    /**** RULE <&Ynnnn> difference of the nnnn year and current year *****/
-    /* This is usefull in birthdays for example: I will be <&Y1980>
-     * translates to "I will be 29" if the alarm is raised on 2009 */
-    for (cur = text; cur && (cmd = strstr(cur, "<&Y")); cur = end) {
-        if ((end = strstr(cmd, ">"))) {
-            end[0] = '\0'; /* temporarily. */
-            res = sscanf(cmd, "<&Y%d", &start_year);
-            end[0] = '>'; /* put it back. */
-            if (res == 1 && start_year > 0) { /* we assume success */
-                gdt = g_date_time_new_now_local ();
-                year_diff = g_date_time_get_year (gdt) - start_year;
-                g_date_time_unref (gdt);
+    if (length == 0)
+        return NULL;
 
-                if (year_diff > 0) { /* sane value */
-                    end++; /* next char after > */
-                    cmd[0] = '\0'; /* temporarily. (this ends cur) */
-                    new = g_strdup_printf("%s%d", cur, year_diff);
-                    cmd[0] = '<'; /* put it back */
-                    if (beq) { /* this is normal round after first */
-                        tmp = beq;
-                        beq = g_strdup_printf("%s%s", tmp, new);
-                        g_free(tmp);
-                    }
-                    else { /* first round, we do not have beq yet */
-                        beq = g_strdup(new);
-                    }
-                    g_free(new);
-                }
-                else
-                    g_warning ("invalid start year '%d'", start_year);
-            }
-            else
-                g_warning ("failed to parse parameter '%s'", cmd);
+    start_year = g_ascii_strtoll (value, &end, 10);
+
+    if ((end != (value + length)) || (start_year <= 0) || (start_year > G_MAXINT))
+        return NULL;
+
+    gdt = g_date_time_new_now_local ();
+    year_diff = g_date_time_get_year (gdt) - (gint)start_year;
+    g_date_time_unref (gdt);
+
+    if (year_diff <= 0)
+        return NULL;
+
+    return g_strdup_printf ("%d", year_diff);
+}
+
+static gchar *orage_process_text_command (const gchar *command,
+                                          const gsize length)
+{
+    gchar format;
+
+    if (length < 4)
+        return NULL;
+
+    format = command[2];
+
+    switch (format)
+    {
+        case 'Y':
+            return orage_process_text_command_year (command + 3, length - 4);
+
+        default:
+            g_warning ("unsupported text command '%c'", format);
+            return NULL;
+    }
+}
+
+gchar *orage_process_text_commands (const gchar *text)
+{
+    const gchar *text_pos;
+    const gchar *cmd;
+    const gchar *end;
+    gchar *replacement;
+    GString *result;
+
+    if (text == NULL)
+        return NULL;
+
+    result = g_string_new (NULL);
+    text_pos = text;
+
+    while ((cmd = strstr (text_pos, "<&")) != NULL)
+    {
+        end = strchr (cmd + 2, '>');
+        if (end == NULL)
+        {
+            g_warning ("parameter '%s' is missing closing '>'", cmd);
+            break;
+        }
+
+        g_string_append_len (result, text_pos, cmd - text_pos);
+        replacement = orage_process_text_command (cmd, end - cmd + 1);
+
+        if (replacement != NULL)
+        {
+            g_string_append (result, replacement);
+            g_free (replacement);
         }
         else
-            g_warning ("parameter '%s' is missing closing '>'", cmd);
+            g_string_append_len (result, cmd, end - cmd + 1);
+
+        text_pos = end + 1;
     }
 
-    if (beq) {
-        /* we found and processed at least one command, 
-         * add the remaining fragment and return it */
-        tmp = beq;
-        beq = g_strdup_printf("%s%s", tmp, cur);
-        g_free(tmp);
-    }
-    else {
-        /* we did not find any commands,
-         * so just return duplicate of the original string */
-        beq = g_strdup(text);
-    }
-    return(beq);
+    g_string_append (result, text_pos);
+
+    return g_string_free (result, FALSE);
 }
 
 /** Create new horizontal filler with given width.
