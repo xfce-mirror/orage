@@ -397,7 +397,7 @@ msgstr "现在归档(阈值：%d 月)"
 
 #: src/interface.c:1212
 msgid "You can change archive threshold in parameters."
-msgstr ""
+msgstr "您可以在参数中改变归档阈值。"
 
 #: src/interface.c:1224
 msgid "Revert archive now"
@@ -1110,11 +1110,11 @@ msgstr "使用"
 
 #: src/orage-appointment-window.c:3927
 msgid "Select this if you want audible alarm."
-msgstr ""
+msgstr "如果您要可听的闹铃则选择此项。"
 
 #: src/orage-appointment-window.c:3932
 msgid "Sound command is not set."
-msgstr ""
+msgstr "未设置声音命令。"
 
 #: src/orage-appointment-window.c:3961
 msgid "Repeat alarm sound"
@@ -1135,7 +1135,7 @@ msgstr "使用 Orage 窗口"
 
 #: src/orage-appointment-window.c:4007
 msgid "Select this if you want Orage window alarm."
-msgstr ""
+msgstr "如果您要 Orage 窗口闹铃则选择此项。"
 
 #: src/orage-appointment-window.c:4019
 msgid "Use notification"
@@ -1143,7 +1143,7 @@ msgstr "使用通知"
 
 #: src/orage-appointment-window.c:4021
 msgid "Select this if you want notification alarm."
-msgstr ""
+msgstr "如果您要通知闹铃则选择此项。"
 
 #: src/orage-appointment-window.c:4029
 msgid "Set timeout"
@@ -1151,7 +1151,7 @@ msgstr "设置超时"
 
 #: src/orage-appointment-window.c:4031
 msgid "Select this if you want notification to expire automatically."
-msgstr ""
+msgstr "如果您要通知自动终止则选择此项。"
 
 #: src/orage-appointment-window.c:4042
 msgid "0 = system default expiration time"
@@ -1168,7 +1168,7 @@ msgstr "步骤"
 
 #: src/orage-appointment-window.c:4066
 msgid "Select this if you want procedure or script alarm."
-msgstr ""
+msgstr "如果您要步骤或脚本闹铃则选择此项。"
 
 #: src/orage-appointment-window.c:4078
 msgid ""
@@ -1185,7 +1185,7 @@ msgstr ""
 
 #: src/orage-appointment-window.c:4102
 msgid "Test this alarm by raising it now."
-msgstr ""
+msgstr "现在触发闹铃来测试。"
 
 #: src/orage-appointment-window.c:4115
 msgid "<b>Default alarm</b>"
@@ -1193,7 +1193,7 @@ msgstr "<b>默认闹铃</b>"
 
 #: src/orage-appointment-window.c:4130
 msgid "Store current settings as default alarm."
-msgstr ""
+msgstr "把当前设置存为默认闹铃。"
 
 #: src/orage-appointment-window.c:4132
 msgid "_Revert"
@@ -1201,7 +1201,7 @@ msgstr "还原(_R)"
 
 #: src/orage-appointment-window.c:4141
 msgid "Set current settings from default alarm."
-msgstr ""
+msgstr "从默认闹铃设置当前设置。"
 
 #: src/orage-appointment-window.c:4206
 msgid "None"
@@ -1265,7 +1265,7 @@ msgstr "添加排除日期(-)"
 
 #: src/orage-appointment-window.c:4326
 msgid "Excluded days are full days where this appointment is not happening."
-msgstr ""
+msgstr "排除天数是约会不会发生的全天。"
 
 #: src/orage-appointment-window.c:4333
 msgid "Add included time (+)"
@@ -1275,7 +1275,7 @@ msgstr "添加包括时间(+)"
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time."
-msgstr ""
+msgstr "包括时间与开始时间的时区相同，但可能时间不同。"
 
 #. calendars showing the action days
 #: src/orage-appointment-window.c:4354
@@ -1369,15 +1369,15 @@ msgstr "分钟"
 
 #: src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task."
-msgstr ""
+msgstr "此同步任务的名称或说明。"
 
 #: src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization."
-msgstr ""
+msgstr "同步命令。"
 
 #: src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes."
-msgstr ""
+msgstr "同步周期（分钟）。"
 
 #: src/orage-sync-edit-dialog.c:166 src/parameters.c:1430 src/reminder.c:696
 msgid "_Close"
@@ -1613,7 +1613,7 @@ msgstr "使用新的用户界面"
 
 #: src/parameters.c:820
 msgid "Enable the new interface layout (requires restart)."
-msgstr ""
+msgstr "启用新的界面布局（需要重启）。"
 
 #: src/parameters.c:825
 msgid "Show borders"
@@ -1824,7 +1824,7 @@ msgstr "延期"
 
 #: src/reminder.c:714
 msgid "Remind me again after the specified time."
-msgstr ""
+msgstr "在指定时间后再次提醒我。"
 
 #: src/reminder.c:998
 msgid "Next active alarms:"
@@ -1837,7 +1837,7 @@ msgstr ""
 
 #: src/reminder.c:1057
 msgid "No active alarms found"
-msgstr ""
+msgstr "未找到活动闹铃"
 
 #: src/timezone_names.c:31
 msgid "Africa"
