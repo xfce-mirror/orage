@@ -2995,10 +2995,10 @@ static void xfical_alarm_build_list_internal_real(gboolean first_list_today
                     trg_active = TRUE;
                     suid = (char *)icalcomponent_get_uid(c);
                     new_alarm->uid = g_strconcat(file_type, suid, NULL);
-                    new_alarm->title = orage_process_text_commands(
-                            icalcomponent_get_summary (c));
-                    new_alarm->description = orage_process_text_commands(
-                            icalcomponent_get_description (c));
+                    new_alarm->title = orage_process_text_commands (
+                        icalcomponent_get_summary (c));
+                    new_alarm->description = orage_process_text_commands (
+                        icalcomponent_get_description (c));
                 }
             }
             if (trg_active) {
