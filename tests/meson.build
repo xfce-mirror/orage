@@ -16,5 +16,15 @@ test_orage_time_utils = executable (
     install: false
 )
 
+test_functions = executable (
+    'test-functions',
+    'test-functions.c',
+    include_directories: include_directories('../src'),
+    dependencies: [glib, gtk, libxfce4util],
+    link_with: [orage_lib],
+    install: false
+)
+
 test('Orage log tests', test_orage_log)
 test('Orage time utils tests', test_orage_time_utils)
+test('Orage functions tests', test_functions)

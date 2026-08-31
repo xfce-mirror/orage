@@ -1,0 +1,138 @@
+/*
+ * Copyright (c) 2026 Erkki Moorits
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2, or (at your option)
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the
+ *     Free Software Foundation
+ *     51 Franklin Street, 5th Floor
+ *     Boston, MA 02110-1301 USA
+ */
+
+#include "functions.h"
+
+#include <glib.h>
+
+static void test_orage_process_text_commands_input_is_not_modified (void)
+{
+    const gchar *text = "I am <&Y1980>";
+    gchar *result;
+    GDateTime *gdt;
+    gint expected_year;
+    gchar *expected;
+
+    gdt = g_date_time_new_now_local ();
+    expected_year = g_date_time_get_year (gdt) - 1980;
+    g_date_time_unref (gdt);
+    expected = g_strdup_printf ("I am %d", expected_year);
+
+    result = orage_process_text_commands (text);
+    g_assert_cmpstr (text, ==, "I am <&Y1980>");
+    g_assert_cmpstr (result, ==, expected);
+
+    g_free (result);
+    g_free (expected);
+}
+
+static void test_orage_process_text_commands_null (void)
+{
+    gchar *result;
+
+    result = orage_process_text_commands (NULL);
+    g_assert_null (result);
+}
+
+static void test_orage_process_text_commands_no_commands (void)
+{
+    gchar *result;
+
+    result = orage_process_text_commands ("Hello world");
+    g_assert_cmpstr (result, ==, "Hello world");
+
+    g_free (result);
+}
+
+static void test_orage_process_text_commands_empty (void)
+{
+    gchar *result;
+
+    result = orage_process_text_commands ("");
+    g_assert_cmpstr (result, ==, "");
+
+    g_free (result);
+}
+
+static void test_orage_process_text_commands_multiple_years (void)
+{
+    gchar *result;
+
+    result = orage_process_text_commands ("Born <&Y1980>, graduated <&Y2000>");
+    g_assert_true (g_regex_match_simple ("^Born [0-9]+, graduated [0-9]+$",
+                                         result, 0, 0));
+
+    g_free (result);
+}
+
+static void test_orage_process_text_commands_invalid_year (void)
+{
+    gchar *result;
+
+    result = orage_process_text_commands ("Test <&Yabc>");
+    g_assert_cmpstr (result, ==, "Test <&Yabc>");
+    g_free (result);
+
+    result = orage_process_text_commands ("Test <&Y>");
+    g_assert_cmpstr (result, ==, "Test <&Y>");
+    g_free (result);
+
+    result = orage_process_text_commands ("Test <&Y0>");
+    g_assert_cmpstr (result, ==, "Test <&Y0>");
+    g_free (result);
+
+    result = orage_process_text_commands ("Test <&Y2050>");
+    g_assert_cmpstr (result, ==, "Test <&Y2050>");
+    g_free (result);
+}
+
+static void test_orage_process_text_commands_unsupported_command (void)
+{
+    gchar *result;
+
+    result = orage_process_text_commands ("Test <&X123>");
+    g_assert_cmpstr (result, ==, "Test <&X123>");
+    g_free (result);
+}
+
+int main (int argc, char **argv)
+{
+    g_test_init (&argc, &argv, NULL);
+
+    g_test_add_func ("/functions/orage_process_text_commands_input_is_not_modified",
+                     test_orage_process_text_commands_input_is_not_modified);
+    g_test_add_func ("/functions/orage_process_text_commands_null",
+                     test_orage_process_text_commands_null);
+    g_test_add_func ("/functions/orage_process_text_commands_no_commands",
+                     test_orage_process_text_commands_no_commands);
+    g_test_add_func ("/functions/orage_process_text_commands_empty",
+                     test_orage_process_text_commands_empty);
+    g_test_add_func ("/functions/orage_process_text_commands_multiple_years",
+                     test_orage_process_text_commands_multiple_years);
+    g_test_add_func ("/functions/orage_process_text_commands_invalid_year",
+                     test_orage_process_text_commands_invalid_year);
+    g_test_add_func ("/functions/orage_process_text_commands_unsupported_command",
+                     test_orage_process_text_commands_unsupported_command);
+
+    /* Do not abort tests on warnings or other non-fatal log messages. */
+    g_log_set_always_fatal (0);
+
+    return g_test_run ();
+}

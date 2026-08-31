@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-05-14 12:55+0200\n"
+"POT-Creation-Date: 2026-07-27 01:00+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: 玉堂白鹤 <yjwork@qq.com>, 2026\n"
 "Language-Team: Chinese (China) (https://app.transifex.com/xfce/teams/16840/zh_CN/)\n"
@@ -44,7 +44,7 @@ msgstr "点击一行选择，之后您可以复制它。"
 
 #: src/event-list.c:1014
 msgid "You will permanently remove all selected appointments."
-msgstr ""
+msgstr "您将永久删除所有选定的约会。"
 
 #: src/event-list.c:1015 src/orage-appointment-window.c:982
 #: src/orage-appointment-window.c:1645 src/parameters.c:644
@@ -160,6 +160,11 @@ msgid ""
 "- Urgencies are still shown for all events.\n"
 "- Repeating events may appear earlier in the list because only the first occurrence is displayed."
 msgstr ""
+"仅显示重复事件的<b>第一次</b>出现。 \n"
+"默认情况下，将显示所有事件。 \n"
+"<b>注意</b>： \n"
+"-所有事件仍显示出紧迫性。 \n"
+"-重复事件可能会出现在列表中的较早位置，因为只显示第一个事件。"
 
 #: src/event-list.c:1319
 msgid "also old"
@@ -223,8 +228,21 @@ msgid ""
 "5. Appointment type:\n"
 "   E = event, T = todo, J = journal"
 msgstr ""
+" 双击行编辑。\n"
+"\n"
+"<b>标签顺序:</b>\n"
+"1. 闹钟:\n"
+"   n = 无闹钟, A = 已设置闹钟, P = 已设置持续闹钟\n"
+"2. 重复发生:\n"
+"   n = 不重复, H = 每小时, D = 每天, W =每星期, M = 每月, Y = 每年\n"
+"3. 类型:\n"
+"   f = 空闲, B = 繁忙\n"
+"4. 文件中位置:\n"
+"   O = 日历文件, A = 归档文件, F = 外部文件\n"
+"5. 约会类型:\n"
+"   E = 事件, T = 待办, J =日志"
 
-#: src/ical-code.c:856
+#: src/ical-code.c:863
 msgid "Orage default alarm"
 msgstr "Orage 默认闹铃"
 
@@ -379,7 +397,7 @@ msgstr "现在归档(阈值：%d 月)"
 
 #: src/interface.c:1212
 msgid "You can change archive threshold in parameters."
-msgstr ""
+msgstr "您可以在参数中改变归档阈值。"
 
 #: src/interface.c:1224
 msgid "Revert archive now"
@@ -501,79 +519,84 @@ msgstr ""
 "玉堂白鹤 <yjwork@qq.com>, 2016,2024.\n"
 "Xiaobo Zhou <zhouxiaobo.500@gmail.com>, 2013, 2014, 2017, 2018, 2021."
 
-#: src/orage-application.c:167
+#: src/orage-application.c:168
 msgid "Released under the terms of the GNU General Public License."
 msgstr "以 GNU 通用公共许可协议方式发布。"
 
-#: src/orage-application.c:169
+#: src/orage-application.c:170
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
 msgstr "针对 GTK+-%d.%d.%d编译，使用 GTK+-%d.%d.%d。"
 
-#: src/orage-application.c:174
+#: src/orage-application.c:175
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
 msgstr "针对 libxfce4ui-%d.%d.%d编译, 使用 libxfce4ui-%d.%d.%d。"
 
 #: src/orage-application.c:180
 #, c-format
+msgid "Compiled against libical-%d.%d.%d."
+msgstr ""
+
+#: src/orage-application.c:185
+#, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
 msgstr "使用 libnotify-%d.%d.%d编译。"
 
-#: src/orage-application.c:183
+#: src/orage-application.c:188
 msgid "Not using libnotify."
 msgstr "不使用 libnotify。"
 
-#: src/orage-application.c:188
+#: src/orage-application.c:193
 msgid "Using automatic archiving."
 msgstr "使用自动归档。"
 
-#: src/orage-application.c:190
+#: src/orage-application.c:195
 msgid "Not using archiving."
 msgstr "不使用归档。"
 
-#: src/orage-application.c:194
+#: src/orage-application.c:199
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "请向 <%s> 报告缺陷。"
 
-#: src/orage-application.c:775
+#: src/orage-application.c:780
 msgid "Open today's tasks"
 msgstr "打开今日任务"
 
-#: src/orage-application.c:784
+#: src/orage-application.c:789
 msgid "Add new appointment"
 msgstr "添加新约会"
 
-#: src/orage-application.c:793
+#: src/orage-application.c:798
 msgid "Show preferences form"
 msgstr "显示首选项窗体"
 
-#: src/orage-application.c:802
+#: src/orage-application.c:807
 msgid "Make Orage visible/unvisible"
 msgstr "使 Orage 可见/不可见"
 
-#: src/orage-application.c:811
+#: src/orage-application.c:816
 msgid "Add a foreign file"
 msgstr "添加外部文件"
 
-#: src/orage-application.c:820
+#: src/orage-application.c:825
 msgid "Remove a foreign file"
 msgstr "移除外部文件"
 
-#: src/orage-application.c:829
+#: src/orage-application.c:834
 msgid "Import appointments from file to Orage"
 msgstr "从文件导出约会到 Orage"
 
-#: src/orage-application.c:838
+#: src/orage-application.c:843
 msgid "Export appointments from Orage to file"
 msgstr "从 Orage 导出约会到文件"
 
-#: src/orage-application.c:847
+#: src/orage-application.c:852
 msgid "Select logging backend (glib|orage)"
 msgstr "选择日志后端 (glib|orage)"
 
-#: src/orage-application.c:856
+#: src/orage-application.c:861
 msgid "Show version of Orage"
 msgstr "显示 Orage 版本"
 
@@ -1015,7 +1038,7 @@ msgstr "颜色(_C)"
 
 #: src/orage-appointment-window.c:3732
 msgid "Update colors for categories."
-msgstr ""
+msgstr "更新类别的颜色。"
 
 #. priority
 #: src/orage-appointment-window.c:3738
@@ -1087,11 +1110,11 @@ msgstr "使用"
 
 #: src/orage-appointment-window.c:3927
 msgid "Select this if you want audible alarm."
-msgstr ""
+msgstr "如果您要可听的闹铃则选择此项。"
 
 #: src/orage-appointment-window.c:3932
 msgid "Sound command is not set."
-msgstr ""
+msgstr "未设置声音命令。"
 
 #: src/orage-appointment-window.c:3961
 msgid "Repeat alarm sound"
@@ -1112,7 +1135,7 @@ msgstr "使用 Orage 窗口"
 
 #: src/orage-appointment-window.c:4007
 msgid "Select this if you want Orage window alarm."
-msgstr ""
+msgstr "如果您要 Orage 窗口闹铃则选择此项。"
 
 #: src/orage-appointment-window.c:4019
 msgid "Use notification"
@@ -1120,7 +1143,7 @@ msgstr "使用通知"
 
 #: src/orage-appointment-window.c:4021
 msgid "Select this if you want notification alarm."
-msgstr ""
+msgstr "如果您要通知闹铃则选择此项。"
 
 #: src/orage-appointment-window.c:4029
 msgid "Set timeout"
@@ -1128,7 +1151,7 @@ msgstr "设置超时"
 
 #: src/orage-appointment-window.c:4031
 msgid "Select this if you want notification to expire automatically."
-msgstr ""
+msgstr "如果您要通知自动终止则选择此项。"
 
 #: src/orage-appointment-window.c:4042
 msgid "0 = system default expiration time"
@@ -1145,7 +1168,7 @@ msgstr "步骤"
 
 #: src/orage-appointment-window.c:4066
 msgid "Select this if you want procedure or script alarm."
-msgstr ""
+msgstr "如果您要步骤或脚本闹铃则选择此项。"
 
 #: src/orage-appointment-window.c:4078
 msgid ""
@@ -1162,7 +1185,7 @@ msgstr ""
 
 #: src/orage-appointment-window.c:4102
 msgid "Test this alarm by raising it now."
-msgstr ""
+msgstr "现在触发闹铃来测试。"
 
 #: src/orage-appointment-window.c:4115
 msgid "<b>Default alarm</b>"
@@ -1170,7 +1193,7 @@ msgstr "<b>默认闹铃</b>"
 
 #: src/orage-appointment-window.c:4130
 msgid "Store current settings as default alarm."
-msgstr ""
+msgstr "把当前设置存为默认闹铃。"
 
 #: src/orage-appointment-window.c:4132
 msgid "_Revert"
@@ -1178,7 +1201,7 @@ msgstr "还原(_R)"
 
 #: src/orage-appointment-window.c:4141
 msgid "Set current settings from default alarm."
-msgstr ""
+msgstr "从默认闹铃设置当前设置。"
 
 #: src/orage-appointment-window.c:4206
 msgid "None"
@@ -1242,7 +1265,7 @@ msgstr "添加排除日期(-)"
 
 #: src/orage-appointment-window.c:4326
 msgid "Excluded days are full days where this appointment is not happening."
-msgstr ""
+msgstr "排除天数是约会不会发生的全天。"
 
 #: src/orage-appointment-window.c:4333
 msgid "Add included time (+)"
@@ -1252,7 +1275,7 @@ msgstr "添加包括时间(+)"
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time."
-msgstr ""
+msgstr "包括时间与开始时间的时区相同，但可能时间不同。"
 
 #. calendars showing the action days
 #: src/orage-appointment-window.c:4354
@@ -1346,15 +1369,15 @@ msgstr "分钟"
 
 #: src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task."
-msgstr ""
+msgstr "此同步任务的名称或说明。"
 
 #: src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization."
-msgstr ""
+msgstr "同步命令。"
 
 #: src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes."
-msgstr ""
+msgstr "同步周期（分钟）。"
 
 #: src/orage-sync-edit-dialog.c:166 src/parameters.c:1430 src/reminder.c:696
 msgid "_Close"
@@ -1590,7 +1613,7 @@ msgstr "使用新的用户界面"
 
 #: src/parameters.c:820
 msgid "Enable the new interface layout (requires restart)."
-msgstr ""
+msgstr "启用新的界面布局（需要重启）。"
 
 #: src/parameters.c:825
 msgid "Show borders"
@@ -1801,7 +1824,7 @@ msgstr "延期"
 
 #: src/reminder.c:714
 msgid "Remind me again after the specified time."
-msgstr ""
+msgstr "在指定时间后再次提醒我。"
 
 #: src/reminder.c:998
 msgid "Next active alarms:"
@@ -1814,7 +1837,7 @@ msgstr ""
 
 #: src/reminder.c:1057
 msgid "No active alarms found"
-msgstr ""
+msgstr "未找到活动闹铃"
 
 #: src/timezone_names.c:31
 msgid "Africa"
