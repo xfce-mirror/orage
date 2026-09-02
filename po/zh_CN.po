@@ -338,6 +338,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Commas are not allowed in Orage filenames."
 msgstr ""
+"用逗号隔开文件名。\n"
+"\n"
+"<b>注意:</b> 逗号不允许在 Orage 文件名中使用。"
 
 #: src/interface.c:1082
 msgid "Export"
@@ -365,6 +368,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Archived and foreign events are not included."
 msgstr ""
+"仅导出来自主日历文件的事件。\n"
+"\n"
+"<b>注意:</b> 不包括已归档和外部事件。"
 
 #: src/interface.c:1173
 msgid ""
@@ -372,6 +378,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Foreign events are not included."
 msgstr ""
+"仅导出来自主日历文件的事件。\n"
+"\n"
+"<b>注意:</b> 不包括外部事件。"
 
 #: src/interface.c:1178
 msgid "You can easily drag these from event-list window."
@@ -409,6 +418,9 @@ msgid ""
 "\n"
 "This is useful, for example, when exporting or moving Orage appointments to another system."
 msgstr ""
+"将<b>所有已归档的事件恢复</b>到主Orage文件中，并删除归档文件。\n"
+"\n"
+"这很有用,例如在将 Orage 预约导出或迁移到另一个系统时。"
 
 #: src/interface.c:1246
 msgid "Orage files"
@@ -440,6 +452,9 @@ msgid ""
 "\n"
 "External filesystem is not modified. The new file must already exist."
 msgstr ""
+"<b>仅重命名内部 Orage 文件。</b>\n"
+"\n"
+"外部文件系统不会被修改。新文件必须已存在。"
 
 #: src/interface.c:1323 src/interface.c:1418
 msgid "Copy"
@@ -492,6 +507,9 @@ msgid ""
 "\n"
 "<b>Warning:</b> modifying foreign files may make them incompatible with the original application."
 msgstr ""
+"如果希望确保 Orage 永远不会修改此文件，请<b>启用只读模式</b>。\n"
+"\n"
+"<b>警告</b>：修改外部文件可能导致其与原始应用程序不兼容。"
 
 #: src/interface.c:1524
 msgid "This internal name is displayed to user instead of file name."
@@ -536,7 +554,7 @@ msgstr "针对 libxfce4ui-%d.%d.%d编译, 使用 libxfce4ui-%d.%d.%d。"
 #: src/orage-application.c:180
 #, c-format
 msgid "Compiled against libical-%d.%d.%d."
-msgstr ""
+msgstr "使用 libical-%d.%d.%d 编译。"
 
 #: src/orage-application.c:185
 #, c-format
@@ -921,6 +939,8 @@ msgid ""
 "<b>Recurrence is based on the start time.</b>\n"
 "The TODO repeats at regular intervals regardless of when it was last completed."
 msgstr ""
+"<b>重复任务基于开始时间。</b> \n"
+"无论上次完成时间是什么时候，待办事项都会在固定的时间间隔内重复执行。"
 
 #: src/orage-appointment-window.c:3488
 msgid ""
@@ -929,6 +949,10 @@ msgid ""
 "\n"
 "<b>Note:</b> the TODO history cannot be determined because the recurrence base changes after each completion."
 msgstr ""
+"<b>重复基于完成时间。</b> \n"
+"待办事项将在上次完成时间起计算的间隔后重复。\n"
+"\n"
+"<b>注意：</b>由于每次完成后重复基准会发生变化，因此无法确定待办事项的历史记录。"
 
 #: src/orage-appointment-window.c:3517
 msgid "Save"
@@ -964,18 +988,24 @@ msgid ""
 "<b>Event</b> that happens at a specific time.\n"
 "For example: meeting, birthday, or TV show."
 msgstr ""
+"在特定时间发生的<b>事件</b>。 \n"
+"例如：会议、生日或电视节目。"
 
 #: src/orage-appointment-window.c:3576
 msgid ""
 "<b>Task or reminder</b> that should be completed sometime.\n"
 "For example: wash your car or test a new version of Orage."
 msgstr ""
+"需要在某个时间完成的<b>任务或提醒事项</b>。 \n"
+"例如：洗车或测试 Orage 的新版本。"
 
 #: src/orage-appointment-window.c:3586
 msgid ""
 "<b>Journal entry</b> used to record something that happened.\n"
 "For example: your mother called or the first snow arrived."
 msgstr ""
+"用于记录某事发生的<b>日记条目</b>。 \n"
+"例如：妈妈的电话或初雪到来。"
 
 #. location
 #: src/orage-appointment-window.c:3599 src/orage-window-classic.c:453
