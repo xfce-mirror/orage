@@ -178,6 +178,11 @@ msgid ""
 "\n"
 "<b>Note:</b> The extra days setting still controls how many future appointments are shown."
 msgstr ""
+"在列表中显示旧事件。\n"
+"\n"
+"仅当启用<b>仅第一次重复</b>时，此选项才可用，以避免列表过长。\n"
+"\n"
+"<b>注意：</b>额外天数设置仍然控制多少未来的约会被显示。"
 
 #: src/event-list.c:1353 src/orage-appointment-window.c:3571
 #: src/orage-import.c:67
@@ -1083,6 +1088,11 @@ msgid ""
 "<b>Alarms still trigger normally.</b>\n"
 "The default limit of 8 can be changed using an undocumented parameter."
 msgstr ""
+"<b>优先级8或更高时</b>，约会将不会显示在列表窗口中。\n"
+"\n"
+"这虽然减少了杂乱，但可能会让约会更难找到。\n"
+"<b>闹钟仍然正常触发。</b>\n"
+"默认的 8 个限制可以通过一个未记录的参数进行更改。"
 
 #. note
 #: src/orage-appointment-window.c:3754 src/orage-window-classic.c:466
@@ -1101,6 +1111,14 @@ msgid ""
 "<b>&lt;&amp;Ynnnn&gt;</b> is replaced with current year minus nnnn\n"
 "Useful for example in birthday reminders (e.g. age calculation)."
 msgstr ""
+"<b>速记命令（立即生效）</b>\n"
+"<b>&lt;D&gt;</b> 以本地格式插入当前日期\n"
+"<b>&lt;T&gt;</b> 插入当前时间\n"
+"<b>&lt;DT&gt;</b> 插入日期和时间\n"
+"\n"
+"<b>延迟命令（稍后处理）</b>\n"
+"<b>&lt;&amp;Ynnnn&gt;</b> 被替换为当前年份减去 nnnn\n"
+"例如在生日提醒中就很有用（比如计算年龄）。"
 
 #: src/orage-appointment-window.c:3864
 msgid "Alarm"
@@ -1119,6 +1137,11 @@ msgid ""
 "- before a TODO ends\n"
 "- after a TODO starts"
 msgstr ""
+"<b>闹钟定时选项</b>\n"
+"您可以触发警报:\n"
+"- 在活动开始之前\n"
+"- 在待办事项结束之前\n"
+"- 在待办事项开始之后"
 
 #: src/orage-appointment-window.c:3904
 msgid "Persistent alarm"
@@ -1212,6 +1235,15 @@ msgid ""
 "- &lt;&amp;ST&gt; appointment start time\n"
 "- &lt;&amp;ET&gt; appointment end time"
 msgstr ""
+"<b>Shell 命令处理</b>\n"
+"这个字符串会直接传给 shell，所以您必须自己处理所有转义。\n"
+"\n"
+"以下占位符会在运行时被替换：\n"
+"- &lt;&amp;T&gt;  约会标题\n"
+"- &lt;&amp;D&gt; 约会说明\n"
+"- &lt;&amp;AT&gt; 闹钟时间\n"
+"- &lt;&amp;ST&gt; 约会开始时间\n"
+"- &lt;&amp;ET&gt; 约会结束时间"
 
 #: src/orage-appointment-window.c:4102
 msgid "Test this alarm by raising it now."
@@ -1288,6 +1320,10 @@ msgid ""
 "An exception can be either exclusion (-) or inclusion (+), depending on selection.\n"
 "Remove by clicking the date."
 msgstr ""
+"<b>例外日期</b>\n"
+"通过点击下面日历中的日期来添加例外日期。\n"
+"例外可以是排除 (-) 或包含 (+)的，取决于您的选择。\n"
+"点击日期可以移除。"
 
 #: src/orage-appointment-window.c:4324
 msgid "Add excluded date (-)"
@@ -1863,7 +1899,7 @@ msgstr "下一个活动闹铃："
 #: src/reminder.c:1040
 #, c-format
 msgid "<span weight=\"bold\">%1$02d d %2$02d h %3$02d min to:</span> %4$s"
-msgstr ""
+msgstr "<span weight=\"bold\">%1$02d 天 %2$02d 小时 %3$02d 分 至:</span> %4$s"
 
 #: src/reminder.c:1057
 msgid "No active alarms found"
