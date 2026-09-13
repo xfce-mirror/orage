@@ -605,6 +605,11 @@ void orage_month_view_set_month (OrageMonthView *self, GDateTime *gdt)
     g_signal_emit (self, signals[SIGNAL_RELOAD_REQUESTED], 0);
 }
 
+GDateTime *orage_month_view_get_date (OrageMonthView *self)
+{
+    return self->date;
+}
+
 void orage_month_view_mark_date (OrageMonthView *self, GDateTime *gdt)
 {
     guint row;

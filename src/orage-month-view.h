@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025 Erkki Moorits
+ * Copyright (c) 2025-2026 Erkki Moorits
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -64,7 +64,33 @@ GtkWidget *orage_month_view_new (FirstDayOfWeek first_day);
  */
 void orage_month_view_reset_month_cells (OrageMonthView *self);
 
+/**
+ * orage_month_view_set_month:
+ * @self: an #OrageMonthView
+ * @gdt: a #GDateTime within the month to display
+ *
+ * Sets the month displayed by the month view.
+ *
+ * If @gdt belongs to the same year and month as the currently displayed
+ * date, nothing is changed. Otherwise, the displayed date is updated,
+ * variable fields are refreshed, and a reload is requested.
+ */
 void orage_month_view_set_month (OrageMonthView *self, GDateTime *gdt);
+
+/**
+ * orage_month_view_get_date:
+ * @self: an #OrageMonthView
+ *
+ * Gets the currently active date of the month view.
+ *
+ * The returned #GDateTime is owned by @self. The caller must take its own
+ * reference if the returned date is to be kept after @self is modified or
+ * destroyed.
+ *
+ * Returns: (transfer none): the currently active date
+ */
+GDateTime *orage_month_view_get_date (OrageMonthView *self);
+
 void orage_month_view_mark_date (OrageMonthView *self, GDateTime *gdt);
 GDateTime *orage_month_view_get_first_date (OrageMonthView *self);
 GDateTime *orage_month_view_get_last_date (OrageMonthView *self);
