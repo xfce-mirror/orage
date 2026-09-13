@@ -400,9 +400,12 @@ static void on_date_selected_double_clicked (G_GNUC_UNUSED OrageMonthView *view,
     g_date_time_unref (gdt);
 }
 
-static void on_month_reload_requested (G_GNUC_UNUSED OrageMonthView *view,
-                                       gpointer user_data)
+static void on_month_reload_requested (OrageMonthView *view, gpointer user_data)
 {
+    OrageWindowNext *nw = ORAGE_WINDOW_NEXT (user_data);
+
+    g_date_time_unref (nw->selected_date);
+    nw->selected_date = g_date_time_ref (orage_month_view_get_date (view));
     orage_window_next_update_appointments (ORAGE_WINDOW (user_data));
 }
 
@@ -594,7 +597,7 @@ static void orage_window_next_add_days (OrageWindowNext *self,
     }
     else
     {
-        /* Requested page handinling is not yet implemented. */
+        /* Requested page handling is not yet implemented. */
         g_return_if_reached ();
     }
 }
