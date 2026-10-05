@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-05-14 12:55+0200\n"
+"POT-Creation-Date: 2026-07-27 01:00+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
 "Last-Translator: BoneNI, 2026\n"
 "Language-Team: Lao (https://app.transifex.com/xfce/teams/16840/lo/)\n"
@@ -219,8 +219,21 @@ msgid ""
 "5. Appointment type:\n"
 "   E = event, T = todo, J = journal"
 msgstr ""
+"Double click line to edit it.\n"
+"\n"
+"<b>ລຳດັບທຸງ::</b>\n"
+"1. ການເຕືອນ:\n"
+"n = ບໍ່ມີການເຕືອນ, A = ຕັ້ງເຕືອນແລ້ວ, P = ຕັ້ງເຕືອນຕໍ່ເນື່ອງແລ້ວ\n"
+"2. ການເຮັດຊ້ຳ:\n"
+"n = ບໍ່ມີການເຮັດຊ້ຳ, H = ທຸກຊົ່ວໂມງ, D = ທຸກມື້, W = ທຸກອາທິດ, M = ທຸກເດືອນ, Y = ທຸກປີ\n"
+"3. ປະເພດ:\n"
+"f = ຫວ່າງ, B = ບໍ່ຫວ່າງ\n"
+"4. ຢູ່ໃນໄຟລ໌:\n"
+"O = Orage, A = ຄັງເກັບ, F = ພາຍນອກ\n"
+"5. ປະເພດການນັດໝາຍ:\n"
+"E = ເຫດການ, T = ສິ່ງທີ່ຕ້ອງເຮັດ, J = ບັນທຶກປະຈຳວັນ"
 
-#: src/ical-code.c:856
+#: src/ical-code.c:863
 msgid "Orage default alarm"
 msgstr "ການເຕືອນມາດຕະຖານຂອງ Orage"
 
@@ -493,79 +506,84 @@ msgstr "Orage ແມ່ນແອັບພລິເຄຊັນຈັດການ
 msgid "translator-credits"
 msgstr "ລາຍຊື່ຜູ້ແປ"
 
-#: src/orage-application.c:167
+#: src/orage-application.c:168
 msgid "Released under the terms of the GNU General Public License."
 msgstr "ເຜີຍແຜ່ພາຍໃຕ້ເງື່ອນໄຂຂອງ GNU General Public License."
 
-#: src/orage-application.c:169
+#: src/orage-application.c:170
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
 msgstr "ຄອມໄພລ໌ກັບ GTK+-%d.%d.%d, ໃຊ້ GTK+-%d.%d.%d."
 
-#: src/orage-application.c:174
+#: src/orage-application.c:175
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
 msgstr "ຄອມໄພລ໌ກັບ libxfce4ui-%d.%d.%d, ໃຊ້ libxfce4ui-%d.%d.%d."
 
 #: src/orage-application.c:180
 #, c-format
+msgid "Compiled against libical-%d.%d.%d."
+msgstr ""
+
+#: src/orage-application.c:185
+#, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
 msgstr "ຄອມໄພລ໌ກັບ libnotify-%d.%d.%d."
 
-#: src/orage-application.c:183
+#: src/orage-application.c:188
 msgid "Not using libnotify."
 msgstr "ບໍ່ໄດ້ໃຊ້ libnotify."
 
-#: src/orage-application.c:188
+#: src/orage-application.c:193
 msgid "Using automatic archiving."
 msgstr "ໃຊ້ການຈັດເກັບແບບອັດຕະໂນມັດ."
 
-#: src/orage-application.c:190
+#: src/orage-application.c:195
 msgid "Not using archiving."
 msgstr "ບໍ່ໄດ້ໃຊ້ການຈັດເກັບ."
 
-#: src/orage-application.c:194
+#: src/orage-application.c:199
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "ກະລຸນາລາຍງານຂໍ້ຜິດພາດໄປທີ່ <%s>."
 
-#: src/orage-application.c:775
+#: src/orage-application.c:780
 msgid "Open today's tasks"
 msgstr "ເປີດວຽກຂອງມື້ນີ້"
 
-#: src/orage-application.c:784
+#: src/orage-application.c:789
 msgid "Add new appointment"
 msgstr "ເພີ່ມການນັດໝາຍໃໝ່"
 
-#: src/orage-application.c:793
+#: src/orage-application.c:798
 msgid "Show preferences form"
 msgstr "ສະແດງແບບຟອມການຕັ້ງຄ່າ"
 
-#: src/orage-application.c:802
+#: src/orage-application.c:807
 msgid "Make Orage visible/unvisible"
 msgstr "ສະແດງ/ຊ່ອນ Orage"
 
-#: src/orage-application.c:811
+#: src/orage-application.c:816
 msgid "Add a foreign file"
 msgstr "ເພີ່ມໄຟລ໌ພາຍນອກ"
 
-#: src/orage-application.c:820
+#: src/orage-application.c:825
 msgid "Remove a foreign file"
 msgstr "ລຶບໄຟລ໌ພາຍນອກ"
 
-#: src/orage-application.c:829
+#: src/orage-application.c:834
 msgid "Import appointments from file to Orage"
 msgstr "ນຳເຂົ້າການນັດໝາຍຈາກໄຟລ໌ໄປຫາ Orage"
 
-#: src/orage-application.c:838
+#: src/orage-application.c:843
 msgid "Export appointments from Orage to file"
 msgstr "ສົ່ງອອກການນັດໝາຍຈາກ Orage ໄປຫາໄຟລ໌"
 
-#: src/orage-application.c:847
+#: src/orage-application.c:852
 msgid "Select logging backend (glib|orage)"
 msgstr "ເລືອກລະບົບການບັນທຶກ (glib|orage)"
 
-#: src/orage-application.c:856
+#: src/orage-application.c:861
 msgid "Show version of Orage"
 msgstr "ສະແດງເວີຊັນຂອງ Orage"
 
