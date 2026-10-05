@@ -40,7 +40,7 @@ msgstr "ຄລິກໃສ່ແຖວເພື່ອເລືອກ ແລ້�
 
 #: src/event-list.c:1014
 msgid "You will permanently remove all selected appointments."
-msgstr ""
+msgstr "ທ່ານຈະລຶບການນັດໝາຍທີ່ເລືອກທັງໝົດອອກຢ່າງຖາວອນ."
 
 #: src/event-list.c:1015 src/orage-appointment-window.c:982
 #: src/orage-appointment-window.c:1645 src/parameters.c:644
@@ -388,7 +388,7 @@ msgstr "ຈັດເກັບດຽວນີ້ (ເກນ: %d ເດືອນ)"
 
 #: src/interface.c:1212
 msgid "You can change archive threshold in parameters."
-msgstr ""
+msgstr "ທ່ານສາມາດປ່ຽນເກນການເກັບມ້ຽນໃນພາຣາມິເຕີໄດ້."
 
 #: src/interface.c:1224
 msgid "Revert archive now"
@@ -1030,7 +1030,7 @@ msgstr "_ສີ"
 
 #: src/orage-appointment-window.c:3732
 msgid "Update colors for categories."
-msgstr ""
+msgstr "ອັບເດດສີສຳລັບໝວດໝູ່ຕ່າງໆ."
 
 #. priority
 #: src/orage-appointment-window.c:3738
@@ -1104,11 +1104,11 @@ msgstr "ໃຊ້"
 
 #: src/orage-appointment-window.c:3927
 msgid "Select this if you want audible alarm."
-msgstr ""
+msgstr "ເລືອກບ່ອນນີ້ ຖ້າທ່ານຕ້ອງການໃຫ້ມີສຽງເຕືອນ."
 
 #: src/orage-appointment-window.c:3932
 msgid "Sound command is not set."
-msgstr ""
+msgstr "ຍັງບໍ່ໄດ້ກຳນົດຄຳສັ່ງສຽງ."
 
 #: src/orage-appointment-window.c:3961
 msgid "Repeat alarm sound"
@@ -1129,7 +1129,7 @@ msgstr "ໃຊ້ໜ້າຕ່າງ Orage"
 
 #: src/orage-appointment-window.c:4007
 msgid "Select this if you want Orage window alarm."
-msgstr ""
+msgstr "ເລືອກບ່ອນນີ້ ຖ້າທ່ານຕ້ອງການໃຫ້ແຈ້ງເຕືອນຜ່ານໜ້າຕ່າງ Orage."
 
 #: src/orage-appointment-window.c:4019
 msgid "Use notification"
@@ -1137,7 +1137,7 @@ msgstr "ໃຊ້ການແຈ້ງເຕືອນ"
 
 #: src/orage-appointment-window.c:4021
 msgid "Select this if you want notification alarm."
-msgstr ""
+msgstr "ເລືອກບ່ອນນີ້ ຖ້າທ່ານຕ້ອງການການແຈ້ງເຕືອນ."
 
 #: src/orage-appointment-window.c:4029
 msgid "Set timeout"
@@ -1145,7 +1145,7 @@ msgstr "ຕັ້ງເວລາໝົດອາຍຸ"
 
 #: src/orage-appointment-window.c:4031
 msgid "Select this if you want notification to expire automatically."
-msgstr ""
+msgstr "ເລືອກບ່ອນນີ້ ຖ້າທ່ານຕ້ອງການໃຫ້ການແຈ້ງເຕືອນໝົດອາຍຸໂດຍອັດຕະໂນມັດ."
 
 #: src/orage-appointment-window.c:4042
 msgid "0 = system default expiration time"
@@ -1162,7 +1162,7 @@ msgstr "ຂະບວນການ"
 
 #: src/orage-appointment-window.c:4066
 msgid "Select this if you want procedure or script alarm."
-msgstr ""
+msgstr "ເລືອກບ່ອນນີ້ ຖ້າທ່ານຕ້ອງການການເຕືອນແບບຂັ້ນຕອນ ຫຼື ສະຄຣິບ."
 
 #: src/orage-appointment-window.c:4078
 msgid ""
@@ -1179,7 +1179,7 @@ msgstr ""
 
 #: src/orage-appointment-window.c:4102
 msgid "Test this alarm by raising it now."
-msgstr ""
+msgstr "ທົດສອບການເຕືອນນີ້ໂດຍການສັ່ງໃຫ້ເຕືອນດຽວນີ້."
 
 #: src/orage-appointment-window.c:4115
 msgid "<b>Default alarm</b>"
@@ -1187,7 +1187,7 @@ msgstr "<b>ການເຕືອນມາດຕະຖານ</b>"
 
 #: src/orage-appointment-window.c:4130
 msgid "Store current settings as default alarm."
-msgstr ""
+msgstr "ບັນທຶກການຕັ້ງຄ່າປັດຈຸບັນເປັນຄ່າເຕືອນມາດຕະຖານ."
 
 #: src/orage-appointment-window.c:4132
 msgid "_Revert"
@@ -1195,7 +1195,7 @@ msgstr "_ຄືນຄ່າ"
 
 #: src/orage-appointment-window.c:4141
 msgid "Set current settings from default alarm."
-msgstr ""
+msgstr "ຕັ້ງຄ່າປັດຈຸບັນຕາມຄ່າເຕືອນມາດຕະຖານ."
 
 #: src/orage-appointment-window.c:4206
 msgid "None"
@@ -1259,7 +1259,7 @@ msgstr "ເພີ່ມວັນທີທີ່ບໍ່ລວມ (-)"
 
 #: src/orage-appointment-window.c:4326
 msgid "Excluded days are full days where this appointment is not happening."
-msgstr ""
+msgstr "ມື້ທີ່ຖືກຍົກເວັ້ນ ແມ່ນໝົດມື້ທີ່ບໍ່ມີການນັດໝາຍນີ້ເກີດຂຶ້ນ."
 
 #: src/orage-appointment-window.c:4333
 msgid "Add included time (+)"
@@ -1270,6 +1270,7 @@ msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time."
 msgstr ""
+"ເວລາທີ່ຮວມຢູ່ນຳ ແມ່ນມີເຂດເວລາດຽວກັນກັບເວລາເລີ່ມຕົ້ນ, ແຕ່ອາດມີເວລາທີ່ຕ່າງກັນ."
 
 #. calendars showing the action days
 #: src/orage-appointment-window.c:4354
@@ -1363,15 +1364,15 @@ msgstr "ນາທີ"
 
 #: src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task."
-msgstr ""
+msgstr "ຊື່ ຫຼື ຄຳອະທິບາຍຂອງໜ້າວຽກການຊິ້ງຂໍ້ມູນນີ້."
 
 #: src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization."
-msgstr ""
+msgstr "ຄຳສັ່ງສຳລັບການຊິ້ງຂໍ້ມູນ."
 
 #: src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes."
-msgstr ""
+msgstr "ໄລຍະເວລາການຊິ້ງຂໍ້ມູນເປັນນາທີ."
 
 #: src/orage-sync-edit-dialog.c:166 src/parameters.c:1430 src/reminder.c:696
 msgid "_Close"
@@ -1607,7 +1608,7 @@ msgstr "ໃຊ້ສ່ວນຕິດຕໍ່ຜູ້ໃຊ້ແບບໃໝ
 
 #: src/parameters.c:820
 msgid "Enable the new interface layout (requires restart)."
-msgstr ""
+msgstr "ເປີດໃຊ້ງານໂຄງຮ່າງໜ້າຕາໃໝ່ (ຕ້ອງເລີ່ມລະບົບໃໝ່)."
 
 #: src/parameters.c:825
 msgid "Show borders"
@@ -1824,7 +1825,7 @@ msgstr "ເລື່ອນອອກໄປ"
 
 #: src/reminder.c:714
 msgid "Remind me again after the specified time."
-msgstr ""
+msgstr "ເຕືອນຂ້ອຍອີກຄັ້ງຫຼັງຈາກຮອດເວລາທີ່ກຳນົດໄວ້."
 
 #: src/reminder.c:998
 msgid "Next active alarms:"
@@ -1837,7 +1838,7 @@ msgstr ""
 
 #: src/reminder.c:1057
 msgid "No active alarms found"
-msgstr ""
+msgstr "ບໍ່ພົບການແຈ້ງເຕືອນທີ່ກຳລັງເຮັດວຽກຢູ່"
 
 #: src/timezone_names.c:31
 msgid "Africa"
