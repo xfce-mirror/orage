@@ -7,17 +7,17 @@
 # Xfce Bot <transifex@xfce.org>, 2024
 # 1763f4a4329a2376c933c5e919a36cbc_341ca53 <1f851310383599d03339229d772e1290_119292>, 2025
 # Nick Schermer <nick@xfce.org>, 2025
-# Seong-ho Cho <darkcircle.0426@gmail.com>, 2026
 # Junghee Lee <daemul72@gmail.com>, 2026
+# Seong-ho Cho <darkcircle.0426@gmail.com>, 2026
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-05-14 12:55+0200\n"
+"POT-Creation-Date: 2026-07-27 01:00+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Junghee Lee <daemul72@gmail.com>, 2026\n"
+"Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>, 2026\n"
 "Language-Team: Korean (https://app.transifex.com/xfce/teams/16840/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -44,7 +44,7 @@ msgstr "눌러서 줄을 선택하면 복사할 수 있습니다."
 
 #: src/event-list.c:1014
 msgid "You will permanently remove all selected appointments."
-msgstr ""
+msgstr "선택한 모든 일정을 완전히 제거합니다."
 
 #: src/event-list.c:1015 src/orage-appointment-window.c:982
 #: src/orage-appointment-window.c:1645 src/parameters.c:644
@@ -224,7 +224,7 @@ msgid ""
 "   E = event, T = todo, J = journal"
 msgstr ""
 
-#: src/ical-code.c:856
+#: src/ical-code.c:863
 msgid "Orage default alarm"
 msgstr "오라주 기본 알림"
 
@@ -379,7 +379,7 @@ msgstr "현재 보관 기준( %d 개월)"
 
 #: src/interface.c:1212
 msgid "You can change archive threshold in parameters."
-msgstr ""
+msgstr "보관 기한 값을 매개 변수로 바꿀 수 있습니다."
 
 #: src/interface.c:1224
 msgid "Revert archive now"
@@ -499,79 +499,84 @@ msgstr ""
 "Seong-ho Cho <darkcircle.0426@gmail.com>\n"
 "Jung-gyu Park <bagjunggyu@gmail.com>"
 
-#: src/orage-application.c:167
+#: src/orage-application.c:168
 msgid "Released under the terms of the GNU General Public License."
 msgstr "GNU 일반 공중 사용 허가서(GNU General Public License) 조건에 따라 배포됩니다."
 
-#: src/orage-application.c:169
+#: src/orage-application.c:170
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
 msgstr "GTK+-%d.%d.%d를 사용하여, GTK+-%d.%d.%d에 대해 컴파일됨."
 
-#: src/orage-application.c:174
+#: src/orage-application.c:175
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
 msgstr "libxfce4ui-%d.%d.%d를 사용하여, libxfce4ui-%d.%d.%d에 대해 컴파일됨."
 
 #: src/orage-application.c:180
 #, c-format
+msgid "Compiled against libical-%d.%d.%d."
+msgstr "libical-%d.%d.%d 기반으로 컴파일했습니다."
+
+#: src/orage-application.c:185
+#, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
 msgstr "libnotify-%d.%d.%d에 대해 컴파일됨."
 
-#: src/orage-application.c:183
+#: src/orage-application.c:188
 msgid "Not using libnotify."
 msgstr "libnotify를 사용하지 않습니다."
 
-#: src/orage-application.c:188
+#: src/orage-application.c:193
 msgid "Using automatic archiving."
 msgstr "자동 아카이빙을 사용합니다."
 
-#: src/orage-application.c:190
+#: src/orage-application.c:195
 msgid "Not using archiving."
 msgstr "아카이빙 기능을 사용하지 않습니다."
 
-#: src/orage-application.c:194
+#: src/orage-application.c:199
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "<%s>(으)로 버그를 알려주십시오."
 
-#: src/orage-application.c:775
+#: src/orage-application.c:780
 msgid "Open today's tasks"
 msgstr "오늘 할 일 열기"
 
-#: src/orage-application.c:784
+#: src/orage-application.c:789
 msgid "Add new appointment"
 msgstr "새 약속 추가"
 
-#: src/orage-application.c:793
+#: src/orage-application.c:798
 msgid "Show preferences form"
 msgstr "기본 설정 양식 표시"
 
-#: src/orage-application.c:802
+#: src/orage-application.c:807
 msgid "Make Orage visible/unvisible"
 msgstr "오라주 표시/숨김"
 
-#: src/orage-application.c:811
+#: src/orage-application.c:816
 msgid "Add a foreign file"
 msgstr "외부 파일 추가"
 
-#: src/orage-application.c:820
+#: src/orage-application.c:825
 msgid "Remove a foreign file"
 msgstr "외부 파일 제거"
 
-#: src/orage-application.c:829
+#: src/orage-application.c:834
 msgid "Import appointments from file to Orage"
 msgstr "오라주로 약속 파일 가져오기"
 
-#: src/orage-application.c:838
+#: src/orage-application.c:843
 msgid "Export appointments from Orage to file"
 msgstr "오라주 약속을 파일로 내보내기"
 
-#: src/orage-application.c:847
+#: src/orage-application.c:852
 msgid "Select logging backend (glib|orage)"
 msgstr "로깅 백엔드(glib|orage) 선택"
 
-#: src/orage-application.c:856
+#: src/orage-application.c:861
 msgid "Show version of Orage"
 msgstr "오라주 버전 표시"
 
@@ -1013,7 +1018,7 @@ msgstr "색상(_C)"
 
 #: src/orage-appointment-window.c:3732
 msgid "Update colors for categories."
-msgstr ""
+msgstr "분류 색상을 업데이트합니다."
 
 #. priority
 #: src/orage-appointment-window.c:3738
