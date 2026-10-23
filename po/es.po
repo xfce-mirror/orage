@@ -12,17 +12,17 @@
 # 629cf3e396111bb8c5fb6664e2dbc91d, 2025
 # Toni Estévez <toni.estevez@gmail.com>, 2026
 # Joel Barrios <darkshram@gmail.com>, 2026
-# Casper, 2026
 # em, 2026
+# Casper, 2026
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-05-14 12:55+0200\n"
+"POT-Creation-Date: 2026-07-27 01:00+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: em, 2026\n"
+"Last-Translator: Casper, 2026\n"
 "Language-Team: Spanish (https://app.transifex.com/xfce/teams/16840/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -254,7 +254,7 @@ msgstr ""
 "5. Tipo de cita:\n"
 "   E = evento, T = tarea, J = registro"
 
-#: src/ical-code.c:856
+#: src/ical-code.c:863
 msgid "Orage default alarm"
 msgstr "Alarma predeterminada de Orage"
 
@@ -523,6 +523,9 @@ msgid ""
 "\n"
 "<b>Warning:</b> modifying foreign files may make them incompatible with the original application."
 msgstr ""
+"<b>Habilita el modo de solo lectura</b> si quieres asegurarte de que Orage nunca modifique este archivo. \n"
+"\n"
+"<b>Advertencia:</b> modificar archivos externos puede hacerlos incompatibles con la aplicación original."
 
 #: src/interface.c:1524
 msgid "This internal name is displayed to user instead of file name."
@@ -549,79 +552,84 @@ msgstr ""
 "Toni Estevez <toni.estevez@gmail.com> 2019-2021\n"
 "Pablo Lezaeta <prflr88@gmail.com> 2013-2016."
 
-#: src/orage-application.c:167
+#: src/orage-application.c:168
 msgid "Released under the terms of the GNU General Public License."
 msgstr "Publicado bajo los términos de la Licencia Pública General GNU."
 
-#: src/orage-application.c:169
+#: src/orage-application.c:170
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
 msgstr "Compilado con GTK+-%d.%d.%d, usando GTK+-%d.%d.%d."
 
-#: src/orage-application.c:174
+#: src/orage-application.c:175
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
 msgstr "Compilado con libxfce4ui-%d.%d.%d, usando libxfce4ui-%d.%d.%d."
 
 #: src/orage-application.c:180
 #, c-format
+msgid "Compiled against libical-%d.%d.%d."
+msgstr ""
+
+#: src/orage-application.c:185
+#, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
 msgstr "Compilado con libnotify-%d.%d.%d."
 
-#: src/orage-application.c:183
+#: src/orage-application.c:188
 msgid "Not using libnotify."
 msgstr "No se usa libnotify."
 
-#: src/orage-application.c:188
+#: src/orage-application.c:193
 msgid "Using automatic archiving."
 msgstr "Usando el archivado automático."
 
-#: src/orage-application.c:190
+#: src/orage-application.c:195
 msgid "Not using archiving."
 msgstr "No se usa el archivado."
 
-#: src/orage-application.c:194
+#: src/orage-application.c:199
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Informe de errores a <%s>."
 
-#: src/orage-application.c:775
+#: src/orage-application.c:780
 msgid "Open today's tasks"
 msgstr "Abrir las tareas de hoy"
 
-#: src/orage-application.c:784
+#: src/orage-application.c:789
 msgid "Add new appointment"
 msgstr "Añadir nueva cita"
 
-#: src/orage-application.c:793
+#: src/orage-application.c:798
 msgid "Show preferences form"
 msgstr "Mostrar el formulario de preferencias"
 
-#: src/orage-application.c:802
+#: src/orage-application.c:807
 msgid "Make Orage visible/unvisible"
 msgstr "Mostrar/ocultar Orage"
 
-#: src/orage-application.c:811
+#: src/orage-application.c:816
 msgid "Add a foreign file"
 msgstr "Añadir un archivo externo"
 
-#: src/orage-application.c:820
+#: src/orage-application.c:825
 msgid "Remove a foreign file"
 msgstr "Eliminar un archivo externo"
 
-#: src/orage-application.c:829
+#: src/orage-application.c:834
 msgid "Import appointments from file to Orage"
 msgstr "Importar citas desde un archivo a Orage"
 
-#: src/orage-application.c:838
+#: src/orage-application.c:843
 msgid "Export appointments from Orage to file"
 msgstr "Exportar citas de Orage a un archivo"
 
-#: src/orage-application.c:847
+#: src/orage-application.c:852
 msgid "Select logging backend (glib|orage)"
 msgstr ""
 
-#: src/orage-application.c:856
+#: src/orage-application.c:861
 msgid "Show version of Orage"
 msgstr "Mostrar la versión de Orage"
 
