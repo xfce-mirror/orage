@@ -569,7 +569,7 @@ msgstr "Compilado con libxfce4ui-%d.%d.%d, usando libxfce4ui-%d.%d.%d."
 #: src/orage-application.c:180
 #, c-format
 msgid "Compiled against libical-%d.%d.%d."
-msgstr ""
+msgstr "Compilado con libical-%d.%d.%d."
 
 #: src/orage-application.c:185
 #, c-format
@@ -627,7 +627,7 @@ msgstr "Exportar citas de Orage a un archivo"
 
 #: src/orage-application.c:852
 msgid "Select logging backend (glib|orage)"
-msgstr ""
+msgstr "Seleccione el backend de registro (glib|orage)"
 
 #: src/orage-application.c:861
 msgid "Show version of Orage"
@@ -957,6 +957,8 @@ msgid ""
 "<b>Recurrence is based on the start time.</b>\n"
 "The TODO repeats at regular intervals regardless of when it was last completed."
 msgstr ""
+"<b>La recurrencia se basa en la hora de inicio.</b> \n"
+"El TODO se repite a intervalos regulares independientemente de cuándo se completó por última vez."
 
 #: src/orage-appointment-window.c:3488
 msgid ""
@@ -965,6 +967,10 @@ msgid ""
 "\n"
 "<b>Note:</b> the TODO history cannot be determined because the recurrence base changes after each completion."
 msgstr ""
+"<b>La recurrencia se basa en el tiempo de finalización.</b> \n"
+"TODO se repite después del intervalo contado desde la última hora de finalización. \n"
+"\n"
+"<b>Nota:</b> el historial de TODO no se puede determinar porque la base de recurrencia cambia después de cada finalización."
 
 #: src/orage-appointment-window.c:3517
 msgid "Save"
@@ -1000,6 +1006,8 @@ msgid ""
 "<b>Event</b> that happens at a specific time.\n"
 "For example: meeting, birthday, or TV show."
 msgstr ""
+"<b>Evento</b> que sucede en un momento específico. \n"
+"Por ejemplo: reunión, cumpleaños o programa de televisión."
 
 #: src/orage-appointment-window.c:3576
 msgid ""
