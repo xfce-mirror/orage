@@ -1099,6 +1099,11 @@ msgid ""
 "<b>Alarms still trigger normally.</b>\n"
 "The default limit of 8 can be changed using an undocumented parameter."
 msgstr ""
+"<b>La prioridad 8 o superior</b> oculta la cita en las ventanas de lista. \n"
+"\n"
+"Esto reduce el desorden, pero puede dificultar su localización. \n"
+"<b>Las alarmas se siguen activando con normalidad.</b> \n"
+"El límite por defecto de 8 se puede modificar mediante un parámetro no documentado."
 
 #. note
 #: src/orage-appointment-window.c:3754 src/orage-window-classic.c:466
@@ -1117,6 +1122,14 @@ msgid ""
 "<b>&lt;&amp;Ynnnn&gt;</b> is replaced with current year minus nnnn\n"
 "Useful for example in birthday reminders (e.g. age calculation)."
 msgstr ""
+"<b>Comandos abreviados (se aplican inmediatamente)</b> \n"
+"<b>&lt;D&gt;</b> inserta la fecha actual en formato local \n"
+"<b>&lt;T&gt;</b> inserta la hora actual \n"
+"<b>&lt;DT&gt;</b> inserta la fecha y la hora \n"
+"\n"
+"<b>Comandos diferidos (se procesan posteriormente)</b>\n"
+"<b>&lt;&amp;Ynnnn&gt;</b> se reemplaza por el año actual menos nnnn \n"
+"Útil, por ejemplo, para recordatorios de cumpleaños (p. ej., cálculo de la edad)."
 
 #: src/orage-appointment-window.c:3864
 msgid "Alarm"
