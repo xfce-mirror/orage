@@ -5,19 +5,19 @@
 # 
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2024
-# Eder Etxebarria Rojo, 2024
 # Piarres Beobide <pi@beobide.net>, 2025
 # beriain, 2025
 # Nick Schermer <nick@xfce.org>, 2025
+# Eder Etxebarria Rojo, 2026
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-05-14 12:55+0200\n"
+"POT-Creation-Date: 2026-07-27 01:00+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: Nick Schermer <nick@xfce.org>, 2025\n"
+"Last-Translator: Eder Etxebarria Rojo, 2026\n"
 "Language-Team: Basque (https://app.transifex.com/xfce/teams/16840/eu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,15 +36,17 @@ msgstr "Ordua"
 
 #: src/event-list.c:789
 msgid "No rows have been selected."
-msgstr "Ez da errenkadarik hautatu"
+msgstr "Ez da errenkadarik hautatu."
 
 #: src/event-list.c:790
 msgid "Click a row to select it and after that you can copy it."
-msgstr "Klikatu herrenkada bat kopiatu aurretik berau hautatzeko"
+msgstr ""
+"Egin klik errenkada batean hura hautatzeko, eta ondoren kopiatu ahal izango "
+"duzu."
 
 #: src/event-list.c:1014
 msgid "You will permanently remove all selected appointments."
-msgstr ""
+msgstr "Hautatutako hitzordu guztiak betiko kenduko dituzu."
 
 #: src/event-list.c:1015 src/orage-appointment-window.c:982
 #: src/orage-appointment-window.c:1645 src/parameters.c:644
@@ -85,7 +87,7 @@ msgstr "_Fitxategia"
 
 #: src/event-list.c:1140 src/orage-appointment-window.c:2895
 msgid "D_uplicate"
-msgstr "B_ikouztu"
+msgstr "B_ikoiztu"
 
 #. ********* View menu *********
 #. View menu
@@ -145,11 +147,11 @@ msgstr "Gertaera"
 
 #: src/event-list.c:1284
 msgid "Extra days to show:"
-msgstr ""
+msgstr "Erakutsi beharreko egun gehigarriak:"
 
 #: src/event-list.c:1298
 msgid "only first repeating"
-msgstr ""
+msgstr "errepikatzen direnen lehena soilik"
 
 #: src/event-list.c:1307
 msgid ""
@@ -160,10 +162,16 @@ msgid ""
 "- Urgencies are still shown for all events.\n"
 "- Repeating events may appear earlier in the list because only the first occurrence is displayed."
 msgstr ""
+"Erakutsi errepikatzen diren gertaeren <b>lehen agerraldia</b> soilik.\n"
+"Lehenespenez, agerraldi guztiak erakusten dira.\n"
+"\n"
+"<b>Oharra:</b>\n"
+"- Premiak gertaera guztietarako erakusten dira oraindik.\n"
+"- Errepikatzen diren gertaerak zerrendan lehenago ager daitezke, lehen agerraldia soilik bistaratzen delako."
 
 #: src/event-list.c:1319
 msgid "also old"
-msgstr ""
+msgstr "zaharrak ere bai"
 
 #: src/event-list.c:1325
 msgid ""
@@ -173,6 +181,11 @@ msgid ""
 "\n"
 "<b>Note:</b> The extra days setting still controls how many future appointments are shown."
 msgstr ""
+"Erakutsi gertaera zaharrak zerrendan.\n"
+"\n"
+"Aukera hau <b>Errepikatzen direnen lehena soilik</b> gaituta dagoenean bakarrik dago eskuragarri, zerrenda oso luzeak saihesteko.\n"
+"\n"
+"<b>Oharra:</b> egun gehigarrien ezarpenak zehazten du oraindik zenbat etorkizuneko hitzordu erakusten diren."
 
 #: src/event-list.c:1353 src/orage-appointment-window.c:3571
 #: src/orage-import.c:67
@@ -223,8 +236,21 @@ msgid ""
 "5. Appointment type:\n"
 "   E = event, T = todo, J = journal"
 msgstr ""
+"Egin klik bikoitza lerroan editatzeko.\n"
+"\n"
+"<b>Markak ordenan:</b>\n"
+"1. Alarma:\n"
+"   n = alarmarik ez, A = alarma ezarrita, P = alarma iraunkorra ezarrita\n"
+"2. Errepikatzea:\n"
+"   n = errepikatzerik ez, H = orduro, D = egunero, W = astero, M = hilabetero, Y = urtero\n"
+"3. Mota:\n"
+"   f = libre, B = okupatuta\n"
+"4. Fitxategi honetan:\n"
+"   O = Orage, A = artxiboa, F = kanpokoa\n"
+"5. Hitzordu mota:\n"
+"   E = gertaera, T = egitekoa, J = egunkaria"
 
-#: src/ical-code.c:856
+#: src/ical-code.c:863
 msgid "Orage default alarm"
 msgstr "Orage lehenetsiriko alarma"
 
@@ -248,7 +274,7 @@ msgstr "Uneko kanpo fitxategiak"
 
 #: src/interface.c:677
 msgid "READ ONLY"
-msgstr "IRAKURRI BAKARRIK"
+msgstr "IRAKURTZEKO SOILIK"
 
 #: src/interface.c:679
 msgid "READ WRITE"
@@ -256,7 +282,7 @@ msgstr "IRAKURRI-IDATZI"
 
 #: src/interface.c:684 src/orage-appointment-window.c:2331
 msgid "_Remove"
-msgstr "Kendu"
+msgstr "_Kendu"
 
 #: src/interface.c:703
 msgid "***** No foreign files *****"
@@ -264,11 +290,12 @@ msgstr "***** ez dago kanpo fitxategirik *****"
 
 #: src/interface.c:718
 msgid "Foreign file add failed"
-msgstr ""
+msgstr "Huts egin du kanpoko fitxategia gehitzean"
 
 #: src/interface.c:725
 msgid "Orage can only handle 10 foreign files. Limit reached"
 msgstr ""
+"Orage-k 10 kanpoko fitxategi bakarrik kudea ditzake. Mugara iritsi zara"
 
 #: src/interface.c:735
 msgid "Filename is empty."
@@ -284,11 +311,11 @@ msgstr "Fitxategia ez da existitzen."
 
 #: src/interface.c:766
 msgid "Same filename already exists in Orage."
-msgstr ""
+msgstr "Fitxategi-izen bera badago dagoeneko Orage-n."
 
 #: src/interface.c:776
 msgid "Same name already exists in Orage."
-msgstr ""
+msgstr "Izen bera badago dagoeneko Orage-n."
 
 #: src/interface.c:1029
 msgid "Import/export"
@@ -320,6 +347,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Commas are not allowed in Orage filenames."
 msgstr ""
+"Bereizi fitxategi-izenak komaz.\n"
+"\n"
+"<b>Oharra:</b> Orage-ren fitxategi-izenetan ez da komarik onartzen."
 
 #: src/interface.c:1082
 msgid "Export"
@@ -339,7 +369,7 @@ msgstr "Hitzordu guztiak"
 
 #: src/interface.c:1149
 msgid "Named appointments:"
-msgstr ""
+msgstr "Hitzordu zehatzak:"
 
 #: src/interface.c:1168
 msgid ""
@@ -347,6 +377,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Archived and foreign events are not included."
 msgstr ""
+"Egutegi-fitxategi nagusiko gertaerak soilik esportatzen dira.\n"
+"\n"
+"<b>Oharra:</b> artxibatutako eta kanpoko gertaerak ez dira sartzen."
 
 #: src/interface.c:1173
 msgid ""
@@ -354,6 +387,9 @@ msgid ""
 "\n"
 "<b>Note:</b> Foreign events are not included."
 msgstr ""
+"Egutegi-fitxategi nagusiko gertaerak soilik esportatzen dira.\n"
+"\n"
+"<b>Oharra:</b> kanpoko gertaerak ez dira sartzen."
 
 #: src/interface.c:1178
 msgid "You can easily drag these from event-list window."
@@ -361,11 +397,11 @@ msgstr "Erraz arrastatu ditzakezu gertaera-zerrenda leihotik."
 
 #: src/interface.c:1180
 msgid "Orage appointment UIDs separated by commas."
-msgstr "Orage hitzordua UIDak gakoz bereizirik."
+msgstr "Orage-ren hitzorduen UIDak, komaz bereizita."
 
 #: src/interface.c:1186
 msgid "Archive"
-msgstr "Gorde"
+msgstr "Artxibatu"
 
 #: src/interface.c:1195 src/interface.c:1217
 #: src/orage-appointment-window.c:4100
@@ -375,11 +411,11 @@ msgstr "_Exekutatu"
 #: src/interface.c:1201
 #, c-format
 msgid "Archive now (threshold: %d months)"
-msgstr "Gorde orain (tartea: %d hilabete)"
+msgstr "Artxibatu orain (muga: %d hilabete)"
 
 #: src/interface.c:1212
 msgid "You can change archive threshold in parameters."
-msgstr ""
+msgstr "Artxibatzeko muga parametroetan alda dezakezu."
 
 #: src/interface.c:1224
 msgid "Revert archive now"
@@ -391,6 +427,9 @@ msgid ""
 "\n"
 "This is useful, for example, when exporting or moving Orage appointments to another system."
 msgstr ""
+"<b>Leheneratu artxibatutako gertaera guztiak</b> Orage-ren fitxategi nagusira eta kendu artxibo-fitxategia.\n"
+"\n"
+"Hori erabilgarria da, adibidez, Orage-ren hitzorduak beste sistema batera esportatu edo eramatean."
 
 #: src/interface.c:1246
 msgid "Orage files"
@@ -402,7 +441,7 @@ msgstr "Orage egutegi nagusi fitxategia"
 
 #: src/interface.c:1262 src/interface.c:1364
 msgid "Current file:"
-msgstr ""
+msgstr "Uneko fitxategia:"
 
 #: src/interface.c:1275 src/interface.c:1377
 msgid "New file:"
@@ -410,7 +449,7 @@ msgstr "Fitxategi berria:"
 
 #: src/interface.c:1305 src/interface.c:1406
 msgid "Action options:"
-msgstr ""
+msgstr "Ekintza-aukerak:"
 
 #: src/interface.c:1309 src/interface.c:1410
 msgid "Rename"
@@ -422,6 +461,9 @@ msgid ""
 "\n"
 "External filesystem is not modified. The new file must already exist."
 msgstr ""
+"<b>Orage-ren barneko fitxategi-izena soilik aldatzen da.</b>\n"
+"\n"
+"Kanpoko fitxategi-sistema ez da aldatzen. Fitxategi berriak dagoeneko existitu behar du."
 
 #: src/interface.c:1323 src/interface.c:1418
 msgid "Copy"
@@ -435,11 +477,13 @@ msgstr ""
 
 #: src/interface.c:1334 src/interface.c:1426
 msgid "Move"
-msgstr "Lekuz aldatu"
+msgstr "Lekualdatu"
 
 #: src/interface.c:1341
 msgid "Current file is moved and vanishes from the old place."
-msgstr "Uneko fitxategia kopiatu eta lehengo kokalekutik desagertuko da."
+msgstr ""
+"Uneko fitxategia lekualdatu egingo da eta lehengo kokalekutik desagertuko "
+"da."
 
 #: src/interface.c:1355
 msgid "Archive file"
@@ -460,11 +504,11 @@ msgstr "Kanpo fitxategia:"
 #: src/interface.c:1484 src/orage-appointment-window.c:2404
 #: src/parameters.c:1387
 msgid "_Add"
-msgstr "Gehitu"
+msgstr "_Gehitu"
 
 #: src/interface.c:1499
 msgid "Visible name:"
-msgstr ""
+msgstr "Izen ikusgaia:"
 
 #: src/interface.c:1509
 msgid "Read only"
@@ -476,10 +520,14 @@ msgid ""
 "\n"
 "<b>Warning:</b> modifying foreign files may make them incompatible with the original application."
 msgstr ""
+"<b>Gaitu irakurtzeko soilik modua</b> Orage-k fitxategi hau inoiz aldatuko ez duela ziurtatu nahi baduzu.\n"
+"\n"
+"<b>Abisua:</b> kanpoko fitxategiak aldatzeak jatorrizko aplikazioarekin bateraezin bihur ditzake."
 
 #: src/interface.c:1524
 msgid "This internal name is displayed to user instead of file name."
 msgstr ""
+"Barneko izen hau erakusten zaio erabiltzaileari, fitxategi-izenaren ordez."
 
 #: src/interface.c:1538
 msgid "Exchange data - Orage"
@@ -492,87 +540,96 @@ msgstr "Orage"
 
 #: src/orage-about.c:44 org.xfce.orage.appdata.xml.in:8
 msgid "Orage is a time-managing application for the Xfce desktop environment"
-msgstr ""
+msgstr "Orage Xfce mahaigain-ingurunerako denbora kudeatzeko aplikazioa da"
 
 #: src/orage-about.c:51
 msgid "translator-credits"
-msgstr "Piarres Beobide <pi@beobide.net>"
-
-#: src/orage-application.c:167
-msgid "Released under the terms of the GNU General Public License."
 msgstr ""
+"Piarres Beobide <pi@beobide.net>\n"
+"Eder Etxebarria Rojo"
 
-#: src/orage-application.c:169
+#: src/orage-application.c:168
+msgid "Released under the terms of the GNU General Public License."
+msgstr "GNU Lizentzia Publiko Orokorraren baldintzapean argitaratua."
+
+#: src/orage-application.c:170
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
-msgstr ""
+msgstr "GTK+-%d.%d.%d bertsioarekin konpilatua, GTK+-%d.%d.%d erabiltzen."
 
-#: src/orage-application.c:174
+#: src/orage-application.c:175
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
 msgstr ""
+"libxfce4ui-%d.%d.%d bertsioarekin konpilatua, libxfce4ui-%d.%d.%d "
+"erabiltzen."
 
 #: src/orage-application.c:180
 #, c-format
-msgid "Compiled against libnotify-%d.%d.%d."
-msgstr ""
+msgid "Compiled against libical-%d.%d.%d."
+msgstr "libical-%d.%d.%d bertsioarekin konpilatua."
 
-#: src/orage-application.c:183
-msgid "Not using libnotify."
-msgstr ""
+#: src/orage-application.c:185
+#, c-format
+msgid "Compiled against libnotify-%d.%d.%d."
+msgstr "libnotify-%d.%d.%d bertsioarekin konpilatua."
 
 #: src/orage-application.c:188
+msgid "Not using libnotify."
+msgstr "Ez da libnotify erabiltzen."
+
+#: src/orage-application.c:193
 msgid "Using automatic archiving."
-msgstr ""
+msgstr "Artxibatze automatikoa erabiltzen."
 
-#: src/orage-application.c:190
+#: src/orage-application.c:195
 msgid "Not using archiving."
-msgstr ""
+msgstr "Ez da artxibatzerik erabiltzen."
 
-#: src/orage-application.c:194
+#: src/orage-application.c:199
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Programa-erroreen berri <%s>-en eman, mesedez."
 
-#: src/orage-application.c:775
+#: src/orage-application.c:780
 msgid "Open today's tasks"
-msgstr ""
+msgstr "Ireki gaurko atazak"
 
-#: src/orage-application.c:784
+#: src/orage-application.c:789
 msgid "Add new appointment"
-msgstr ""
+msgstr "Gehitu hitzordu berria"
 
-#: src/orage-application.c:793
+#: src/orage-application.c:798
 msgid "Show preferences form"
-msgstr ""
+msgstr "Erakutsi hobespenen inprimakia"
 
-#: src/orage-application.c:802
+#: src/orage-application.c:807
 msgid "Make Orage visible/unvisible"
-msgstr ""
+msgstr "Egin Orage ikusgai/ikusezin"
 
-#: src/orage-application.c:811
+#: src/orage-application.c:816
 msgid "Add a foreign file"
-msgstr ""
+msgstr "Gehitu kanpoko fitxategi bat"
 
-#: src/orage-application.c:820
+#: src/orage-application.c:825
 msgid "Remove a foreign file"
-msgstr ""
+msgstr "Kendu kanpoko fitxategi bat"
 
-#: src/orage-application.c:829
+#: src/orage-application.c:834
 msgid "Import appointments from file to Orage"
-msgstr ""
+msgstr "Inportatu hitzorduak fitxategitik Orage-ra"
 
-#: src/orage-application.c:838
+#: src/orage-application.c:843
 msgid "Export appointments from Orage to file"
-msgstr ""
+msgstr "Esportatu hitzorduak Orage-tik fitxategira"
 
-#: src/orage-application.c:847
+#: src/orage-application.c:852
 msgid "Select logging backend (glib|orage)"
-msgstr ""
+msgstr "Hautatu erregistro-motorra (glib|orage)"
 
-#: src/orage-application.c:856
+#: src/orage-application.c:861
 msgid "Show version of Orage"
-msgstr ""
+msgstr "Erakutsi Orage-ren bertsioa"
 
 #. if (gtk_toggle_button_get_active(
 #. GTK_TOGGLE_BUTTON(apptw->Type_journal_rb)))
@@ -581,7 +638,7 @@ msgstr ""
 #: src/orage-appointment-window.c:3627 src/orage-window-classic.c:507
 #: src/orage-window-next.c:914
 msgid "End"
-msgstr "Amaitu"
+msgstr "Amaiera"
 
 #: src/orage-appointment-window.c:545 src/orage-window-classic.c:490
 #: src/orage-window-next.c:896
@@ -598,11 +655,11 @@ msgstr "Hitzordu informazioa aldatua izan da."
 
 #: src/orage-appointment-window.c:983
 msgid "No, do not leave"
-msgstr ""
+msgstr "Ez, ez irten"
 
 #: src/orage-appointment-window.c:984
 msgid "Yes, ignore modifications and leave"
-msgstr ""
+msgstr "Bai, ez ikusi egin aldaketei eta irten"
 
 #: src/orage-appointment-window.c:1013
 msgid "The end of this appointment is earlier than the beginning."
@@ -614,30 +671,34 @@ msgstr "Ezarri gabe"
 
 #: src/orage-appointment-window.c:1471
 msgid "Add new appointment to this file."
-msgstr ""
+msgstr "Gehitu hitzordu berria fitxategi honetara."
 
 #: src/orage-appointment-window.c:1472 src/orage-appointment-window.c:1533
 msgid "Orage default file"
-msgstr ""
+msgstr "Orage-ren fitxategi lehenetsia"
 
 #: src/orage-appointment-window.c:1578
 msgid "Appointment addition failed."
-msgstr ""
+msgstr "Huts egin du hitzordua gehitzean."
 
 #: src/orage-appointment-window.c:1579
 msgid ""
 "Error happened when adding appointment. Look more details from the log file."
 msgstr ""
+"Errore bat gertatu da hitzordua gehitzean. Begiratu xehetasun gehiago "
+"erregistro-fitxategian."
 
 #: src/orage-appointment-window.c:1591
 msgid "Appointment update failed."
-msgstr ""
+msgstr "Huts egin du hitzordua eguneratzean."
 
 #: src/orage-appointment-window.c:1592
 msgid ""
 "Look more details from the log file. (Perhaps file was updated external from"
 " Orage?)"
 msgstr ""
+"Begiratu xehetasun gehiago erregistro-fitxategian. (Agian fitxategia Orage-"
+"tik kanpo eguneratu da?)"
 
 #: src/orage-appointment-window.c:1644
 msgid "This appointment will be permanently removed."
@@ -645,7 +706,7 @@ msgstr "Hitzordua betirako ezabatua izango da."
 
 #: src/orage-appointment-window.c:1647
 msgid "Yes, remove it"
-msgstr ""
+msgstr "Bai, kendu"
 
 #: src/orage-appointment-window.c:2140
 msgid "This appointment does not exist."
@@ -673,7 +734,7 @@ msgstr "Kategorien koloreak - Orage"
 
 #: src/orage-appointment-window.c:2479
 msgid "*** COPY ***"
-msgstr ""
+msgstr "*** KOPIA ***"
 
 #: src/orage-appointment-window.c:2532 src/orage-appointment-window.c:3855
 msgid "Before Start"
@@ -702,60 +763,60 @@ msgstr "Gord_e eta itxi"
 
 #: src/orage-appointment-window.c:3199
 msgid "first"
-msgstr ""
+msgstr "lehen"
 
 #: src/orage-appointment-window.c:3199
 msgid "second"
-msgstr ""
+msgstr "bigarren"
 
 #: src/orage-appointment-window.c:3199
 msgid "third"
-msgstr ""
+msgstr "hirugarren"
 
 #: src/orage-appointment-window.c:3199
 msgid "fourth"
-msgstr ""
+msgstr "laugarren"
 
 #: src/orage-appointment-window.c:3199
 msgid "last"
-msgstr ""
+msgstr "azken"
 
 #: src/orage-appointment-window.c:3209 src/orage-month-view.c:284
 msgid "Monday"
-msgstr ""
+msgstr "Astelehena"
 
 #: src/orage-appointment-window.c:3209 src/orage-month-view.c:284
 msgid "Tuesday"
-msgstr ""
+msgstr "Asteartea"
 
 #: src/orage-appointment-window.c:3209 src/orage-month-view.c:284
 msgid "Wednesday"
-msgstr ""
+msgstr "Asteazkena"
 
 #: src/orage-appointment-window.c:3209 src/orage-month-view.c:284
 msgid "Thursday"
-msgstr ""
+msgstr "Osteguna"
 
 #: src/orage-appointment-window.c:3209 src/orage-month-view.c:284
 msgid "Friday"
-msgstr ""
+msgstr "Ostirala"
 
 #: src/orage-appointment-window.c:3210 src/orage-month-view.c:285
 msgid "Saturday"
-msgstr ""
+msgstr "Larunbata"
 
 #: src/orage-appointment-window.c:3210 src/orage-month-view.c:285
 msgid "Sunday"
-msgstr ""
+msgstr "Igandea"
 
 #: src/orage-appointment-window.c:3223 src/orage-appointment-window.c:3256
 #: src/orage-appointment-window.c:3363 src/orage-appointment-window.c:3397
 msgid "Every"
-msgstr ""
+msgstr "Errepikatu"
 
 #: src/orage-appointment-window.c:3228
 msgid "day(s)"
-msgstr ""
+msgstr "egunean behin"
 
 #: src/orage-appointment-window.c:3245
 msgid "Mon"
@@ -787,67 +848,67 @@ msgstr "Iga"
 
 #: src/orage-appointment-window.c:3263
 msgid "week(s) on:"
-msgstr ""
+msgstr "astean behin, egun hauetan:"
 
 #: src/orage-appointment-window.c:3299
 msgid "From the beginning of the month:"
-msgstr ""
+msgstr "Hilabetearen hasieratik:"
 
 #: src/orage-appointment-window.c:3312
 msgid "From the end of the month:"
-msgstr ""
+msgstr "Hilabetearen amaieratik:"
 
 #: src/orage-appointment-window.c:3325
 msgid "Every:"
-msgstr ""
+msgstr "Errepikatu:"
 
 #: src/orage-appointment-window.c:3353
 msgid "January"
-msgstr ""
+msgstr "Urtarrila"
 
 #: src/orage-appointment-window.c:3353
 msgid "February"
-msgstr ""
+msgstr "Otsaila"
 
 #: src/orage-appointment-window.c:3353
 msgid "March"
-msgstr ""
+msgstr "Martxoa"
 
 #: src/orage-appointment-window.c:3353
 msgid "April"
-msgstr ""
+msgstr "Apirila"
 
 #: src/orage-appointment-window.c:3353
 msgid "May"
-msgstr ""
+msgstr "Maiatza"
 
 #: src/orage-appointment-window.c:3354
 msgid "June"
-msgstr ""
+msgstr "Ekaina"
 
 #: src/orage-appointment-window.c:3354
 msgid "July"
-msgstr ""
+msgstr "Uztaila"
 
 #: src/orage-appointment-window.c:3354
 msgid "August"
-msgstr ""
+msgstr "Abuztua"
 
 #: src/orage-appointment-window.c:3354
 msgid "September"
-msgstr ""
+msgstr "Iraila"
 
 #: src/orage-appointment-window.c:3354
 msgid "October"
-msgstr ""
+msgstr "Urria"
 
 #: src/orage-appointment-window.c:3355
 msgid "November"
-msgstr ""
+msgstr "Azaroa"
 
 #: src/orage-appointment-window.c:3355
 msgid "December"
-msgstr ""
+msgstr "Abendua"
 
 #. TRANSLATORS: this string is part of date line, for example
 #. * "second Thursday of August". In some languages ​​it is not necessary to
@@ -855,11 +916,11 @@ msgstr ""
 #. * the string "of", it can be replaced with an empty string.
 #: src/orage-appointment-window.c:3371
 msgid "of"
-msgstr ""
+msgstr "hilabetea:"
 
 #: src/orage-appointment-window.c:3402
 msgid "hour(s)"
-msgstr ""
+msgstr "orduan behin"
 
 #: src/orage-appointment-window.c:3438
 msgid "Repeat forever"
@@ -875,7 +936,7 @@ msgstr "aldiz"
 
 #: src/orage-appointment-window.c:3457
 msgid "Repeat until"
-msgstr ""
+msgstr "Errepikatu arte"
 
 #. start time
 #: src/orage-appointment-window.c:3475 src/orage-appointment-window.c:3612
@@ -883,7 +944,7 @@ msgstr ""
 #: src/orage-window-classic.c:506 src/orage-window-next.c:895
 #: src/orage-window-next.c:913
 msgid "Start"
-msgstr "Hasi"
+msgstr "Hasiera"
 
 #. completed (only for TODO)
 #: src/orage-appointment-window.c:3480 src/orage-appointment-window.c:3680
@@ -895,6 +956,8 @@ msgid ""
 "<b>Recurrence is based on the start time.</b>\n"
 "The TODO repeats at regular intervals regardless of when it was last completed."
 msgstr ""
+"<b>Errepikatzea hasiera-orduan oinarritzen da.</b>\n"
+"Egitekoa aldizka errepikatzen da, azken aldiz noiz osatu zen kontuan hartu gabe."
 
 #: src/orage-appointment-window.c:3488
 msgid ""
@@ -903,6 +966,10 @@ msgid ""
 "\n"
 "<b>Note:</b> the TODO history cannot be determined because the recurrence base changes after each completion."
 msgstr ""
+"<b>Errepikatzea osatze-orduan oinarritzen da.</b>\n"
+"Egitekoa azken aldiz osatu zenetik zenbatutako tartearen ondoren errepikatzen da.\n"
+"\n"
+"<b>Oharra:</b> ezin da egitekoaren historia zehaztu, errepikatzearen oinarria osatze bakoitzaren ondoren aldatzen delako."
 
 #: src/orage-appointment-window.c:3517
 msgid "Save"
@@ -914,7 +981,7 @@ msgstr "Gorde eta itxi"
 
 #: src/orage-appointment-window.c:3524
 msgid "Revert"
-msgstr "Itzuli"
+msgstr "Leheneratu"
 
 #: src/orage-appointment-window.c:3549
 msgid "Free"
@@ -938,18 +1005,24 @@ msgid ""
 "<b>Event</b> that happens at a specific time.\n"
 "For example: meeting, birthday, or TV show."
 msgstr ""
+"Une jakin batean gertatzen den <b>gertaera</b>.\n"
+"Adibidez: bilera, urtebetetzea edo telebista-saioa."
 
 #: src/orage-appointment-window.c:3576
 msgid ""
 "<b>Task or reminder</b> that should be completed sometime.\n"
 "For example: wash your car or test a new version of Orage."
 msgstr ""
+"Noizbait osatu beharreko <b>ataza edo oroigarria</b>.\n"
+"Adibidez: autoa garbitu edo Orage-ren bertsio berri bat probatu."
 
 #: src/orage-appointment-window.c:3586
 msgid ""
 "<b>Journal entry</b> used to record something that happened.\n"
 "For example: your mother called or the first snow arrived."
 msgstr ""
+"Gertatutako zerbait erregistratzeko <b>egunkari-sarrera</b>.\n"
+"Adibidez: zure amak deitu du edo lehen elurra iritsi da."
 
 #. location
 #: src/orage-appointment-window.c:3599 src/orage-window-classic.c:453
@@ -964,7 +1037,7 @@ msgstr "Egun osoko gertaera"
 
 #: src/orage-appointment-window.c:3630
 msgid "Set"
-msgstr ""
+msgstr "Ezarri"
 
 #: src/orage-appointment-window.c:3654
 msgid "Duration"
@@ -1010,11 +1083,11 @@ msgstr ""
 
 #: src/orage-appointment-window.c:3727
 msgid "_Colour"
-msgstr "Kolorea"
+msgstr "_Kolorea"
 
 #: src/orage-appointment-window.c:3732
 msgid "Update colors for categories."
-msgstr ""
+msgstr "Eguneratu kategorien koloreak."
 
 #. priority
 #: src/orage-appointment-window.c:3738
@@ -1029,6 +1102,11 @@ msgid ""
 "<b>Alarms still trigger normally.</b>\n"
 "The default limit of 8 can be changed using an undocumented parameter."
 msgstr ""
+"<b>8ko edo handiagoko lehentasunak</b> hitzordua ezkutatzen du zerrenda-leihoetatik.\n"
+"\n"
+"Horrek nahaspila murrizten du, baina hitzordua aurkitzea zailagoa egin dezake.\n"
+"<b>Alarmek ohi bezala jotzen dute.</b>\n"
+"8ko muga lehenetsia dokumentatu gabeko parametro baten bidez alda daiteke."
 
 #. note
 #: src/orage-appointment-window.c:3754 src/orage-window-classic.c:466
@@ -1047,6 +1125,14 @@ msgid ""
 "<b>&lt;&amp;Ynnnn&gt;</b> is replaced with current year minus nnnn\n"
 "Useful for example in birthday reminders (e.g. age calculation)."
 msgstr ""
+"<b>Komando laburrak (berehala aplikatzen dira)</b>\n"
+"<b>&lt;D&gt;</b>: uneko data txertatzen du formatu lokalean\n"
+"<b>&lt;T&gt;</b>: uneko ordua txertatzen du\n"
+"<b>&lt;DT&gt;</b>: data eta ordua txertatzen ditu\n"
+"\n"
+"<b>Komando atzeratuak (geroago prozesatzen dira)</b>\n"
+"<b>&lt;&amp;Ynnnn&gt;</b>: uneko urtea ken nnnn balioarekin ordezten da\n"
+"Erabilgarria, adibidez, urtebetetzeen oroigarrietan (adina kalkulatzeko)."
 
 #: src/orage-appointment-window.c:3864
 msgid "Alarm"
@@ -1065,6 +1151,11 @@ msgid ""
 "- before a TODO ends\n"
 "- after a TODO starts"
 msgstr ""
+"<b>Alarmaren denbora-aukerak</b>\n"
+"Alarmak abiaraz ditzakezu:\n"
+"- gertaera bat hasi aurretik\n"
+"- egiteko bat amaitu aurretik\n"
+"- egiteko bat hasi ondoren"
 
 #: src/orage-appointment-window.c:3904
 msgid "Persistent alarm"
@@ -1088,11 +1179,11 @@ msgstr "Erabili"
 
 #: src/orage-appointment-window.c:3927
 msgid "Select this if you want audible alarm."
-msgstr ""
+msgstr "Hautatu hau alarma entzungarria nahi baduzu."
 
 #: src/orage-appointment-window.c:3932
 msgid "Sound command is not set."
-msgstr ""
+msgstr "Soinu-komandoa ez dago ezarrita."
 
 #: src/orage-appointment-window.c:3961
 msgid "Repeat alarm sound"
@@ -1113,7 +1204,7 @@ msgstr "Erabili Orage leihoa"
 
 #: src/orage-appointment-window.c:4007
 msgid "Select this if you want Orage window alarm."
-msgstr ""
+msgstr "Hautatu hau Orage-ren leiho-alarma nahi baduzu."
 
 #: src/orage-appointment-window.c:4019
 msgid "Use notification"
@@ -1121,7 +1212,7 @@ msgstr "Erabili berri-ematea"
 
 #: src/orage-appointment-window.c:4021
 msgid "Select this if you want notification alarm."
-msgstr ""
+msgstr "Hautatu hau jakinarazpen-alarma nahi baduzu."
 
 #: src/orage-appointment-window.c:4029
 msgid "Set timeout"
@@ -1129,7 +1220,7 @@ msgstr "Ezarri denbora-muga"
 
 #: src/orage-appointment-window.c:4031
 msgid "Select this if you want notification to expire automatically."
-msgstr ""
+msgstr "Hautatu hau jakinarazpena automatikoki iraungitzea nahi baduzu."
 
 #: src/orage-appointment-window.c:4042
 msgid "0 = system default expiration time"
@@ -1146,7 +1237,7 @@ msgstr "Prozedura"
 
 #: src/orage-appointment-window.c:4066
 msgid "Select this if you want procedure or script alarm."
-msgstr ""
+msgstr "Hautatu hau prozedura- edo script-alarma nahi baduzu."
 
 #: src/orage-appointment-window.c:4078
 msgid ""
@@ -1160,10 +1251,19 @@ msgid ""
 "- &lt;&amp;ST&gt; appointment start time\n"
 "- &lt;&amp;ET&gt; appointment end time"
 msgstr ""
+"<b>Shell komandoen prozesamendua</b>\n"
+"Kate hau zuzenean pasatzen zaio shell-ari; beraz, ihes-karaktere guztiak zuk zeuk kudeatu behar dituzu.\n"
+"\n"
+"Leku-marka hauek exekuzio-garaian ordezten dira:\n"
+"- &lt;&amp;T&gt;  hitzorduaren izenburua\n"
+"- &lt;&amp;D&gt;  hitzorduaren deskribapena\n"
+"- &lt;&amp;AT&gt; alarmaren ordua\n"
+"- &lt;&amp;ST&gt; hitzorduaren hasiera-ordua\n"
+"- &lt;&amp;ET&gt; hitzorduaren amaiera-ordua"
 
 #: src/orage-appointment-window.c:4102
 msgid "Test this alarm by raising it now."
-msgstr ""
+msgstr "Probatu alarma hau orain abiaraziz."
 
 #: src/orage-appointment-window.c:4115
 msgid "<b>Default alarm</b>"
@@ -1171,7 +1271,7 @@ msgstr "<b>Lehenetsiriko alarma</b>"
 
 #: src/orage-appointment-window.c:4130
 msgid "Store current settings as default alarm."
-msgstr ""
+msgstr "Gorde uneko ezarpenak alarma lehenetsi gisa."
 
 #: src/orage-appointment-window.c:4132
 msgid "_Revert"
@@ -1179,11 +1279,11 @@ msgstr "Lehene_ratu"
 
 #: src/orage-appointment-window.c:4141
 msgid "Set current settings from default alarm."
-msgstr ""
+msgstr "Ezarri uneko ezarpenak alarma lehenetsitik."
 
 #: src/orage-appointment-window.c:4206
 msgid "None"
-msgstr "Batez"
+msgstr "Bat ere ez"
 
 #: src/orage-appointment-window.c:4206
 msgid "Daily"
@@ -1217,7 +1317,7 @@ msgstr "Maiztasuna"
 #. ****************************** Limit ***********************************
 #: src/orage-appointment-window.c:4270
 msgid "Limit"
-msgstr "Mugatu"
+msgstr "Muga"
 
 #. ****************************** TODO base (only for TODOs) **************
 #: src/orage-appointment-window.c:4276
@@ -1236,24 +1336,30 @@ msgid ""
 "An exception can be either exclusion (-) or inclusion (+), depending on selection.\n"
 "Remove by clicking the date."
 msgstr ""
+"<b>Salbuespen-datak</b>\n"
+"Gehitu salbuespen-datak beheko egutegiko egunetan klik eginez.\n"
+"Salbuespena baztertzea (-) edo sartzea (+) izan daiteke, hautapenaren arabera.\n"
+"Kentzeko, egin klik datan."
 
 #: src/orage-appointment-window.c:4324
 msgid "Add excluded date (-)"
-msgstr "Gehitu kendutako data (-)"
+msgstr "Gehitu baztertutako data (-)"
 
 #: src/orage-appointment-window.c:4326
 msgid "Excluded days are full days where this appointment is not happening."
-msgstr ""
+msgstr "Baztertutako egunak hitzordu hau gertatzen ez den egun osoak dira."
 
 #: src/orage-appointment-window.c:4333
 msgid "Add included time (+)"
-msgstr "Gehitu gehituriko denbora (+)"
+msgstr "Gehitu sartutako ordua (+)"
 
 #: src/orage-appointment-window.c:4335
 msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time."
 msgstr ""
+"Sartutako orduek hasiera-orduaren ordu-zona bera dute, baina ordu desberdina"
+" izan dezakete."
 
 #. calendars showing the action days
 #: src/orage-appointment-window.c:4354
@@ -1262,55 +1368,55 @@ msgstr "Ekintza datak"
 
 #: src/orage-import.c:74
 msgid "Unsupported event type"
-msgstr ""
+msgstr "Gertaera mota ez da onartzen"
 
 #: src/orage-import.c:106
 msgid "<b>Summary</b>"
-msgstr ""
+msgstr "<b>Laburpena</b>"
 
 #: src/orage-import.c:117
 msgid "<b>Type</b>"
-msgstr ""
+msgstr "<b>Mota</b>"
 
 #: src/orage-import.c:132
 msgid "<b>Location</b>"
-msgstr ""
+msgstr "<b>Kokalekua</b>"
 
 #: src/orage-import.c:147
 msgid "<b>URL</b>"
-msgstr ""
+msgstr "<b>URLa</b>"
 
 #: src/orage-import.c:166
 msgid "<b>All-day</b>"
-msgstr ""
+msgstr "<b>Egun osoa</b>"
 
 #: src/orage-import.c:181
 msgid "<b>From</b>"
-msgstr ""
+msgstr "<b>Noiztik</b>"
 
 #: src/orage-import.c:196
 msgid "<b>To</b>"
-msgstr ""
+msgstr "<b>Noiz arte</b>"
 
 #: src/orage-import.c:210
 msgid "<b>Recurring</b>"
-msgstr ""
+msgstr "<b>Errepikakorra</b>"
 
 #: src/orage-import.c:213
 msgid "Yes"
-msgstr ""
+msgstr "Bai"
 
 #: src/orage-import.c:213
 msgid "No"
-msgstr ""
+msgstr "Ez"
 
 #: src/orage-import.c:259
 msgid "Import calendar file"
-msgstr ""
+msgstr "Inportatu egutegi-fitxategia"
 
 #: src/orage-import.c:261
 msgid "_Import"
-msgstr ""
+msgstr "_Inportatu"
 
 #: src/orage-import.c:270
 msgid "_Cancel"
@@ -1322,24 +1428,24 @@ msgstr "Ut_zi"
 #. * use "%Y %B" instead.
 #: src/orage-month-view.c:217
 msgid "%B %Y"
-msgstr ""
+msgstr "%Y %B"
 
 #. Setup title row.
 #: src/orage-month-view.c:485 src/orage-window-next.c:1119
 msgid "Week"
-msgstr ""
+msgstr "Astea"
 
 #: src/orage-sync-edit-dialog.c:132
 msgid "Description:"
-msgstr ""
+msgstr "Deskribapena:"
 
 #: src/orage-sync-edit-dialog.c:134
 msgid "Command:"
-msgstr ""
+msgstr "Komandoa:"
 
 #: src/orage-sync-edit-dialog.c:136
 msgid "Period:"
-msgstr ""
+msgstr "Aldia:"
 
 #: src/orage-sync-edit-dialog.c:138
 msgid "minutes"
@@ -1347,15 +1453,15 @@ msgstr "minutu"
 
 #: src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task."
-msgstr ""
+msgstr "Sinkronizazio-ataza honen izena edo deskribapena."
 
 #: src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization."
-msgstr ""
+msgstr "Sinkronizaziorako komandoa."
 
 #: src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes."
-msgstr ""
+msgstr "Sinkronizazio-aldia minututan."
 
 #: src/orage-sync-edit-dialog.c:166 src/parameters.c:1430 src/reminder.c:696
 msgid "_Close"
@@ -1366,7 +1472,7 @@ msgstr "It_xi"
 #. * first day of the week, and so on.
 #: src/orage-time-utils.c:264
 msgid "calendar:week_start:0"
-msgstr ""
+msgstr "calendar:week_start:1"
 
 #: src/orage-week-window.c:490
 msgid "Back one week"
@@ -1390,7 +1496,7 @@ msgstr "Ezezaguna"
 
 #: src/orage-week-window.c:975
 msgid "Number of days to show"
-msgstr ""
+msgstr "Erakutsi beharreko egun kopurua"
 
 #: src/orage-week-window.c:1280
 msgid "Orage - day view"
@@ -1398,7 +1504,7 @@ msgstr "Orage - egun ikuspegia"
 
 #: src/orage-window-classic.c:294 src/orage-window-next.c:135
 msgid "_Exchange data"
-msgstr "_Trukatze datuak"
+msgstr "_Trukatu datuak"
 
 #. Edit menu
 #: src/orage-window-classic.c:304 src/orage-window-next.c:139
@@ -1427,7 +1533,7 @@ msgstr "_Laguntza"
 #: src/orage-window-classic.c:386 src/orage-window-next.c:790
 #: src/reminder.c:1028
 msgid "No title defined"
-msgstr ""
+msgstr "Ez da izenbururik zehaztu"
 
 #: src/orage-window-classic.c:476 src/orage-window-next.c:879
 msgid "Never"
@@ -1440,28 +1546,28 @@ msgstr "<b>Egiteko:</b>"
 #: src/orage-window-classic.c:624
 #, c-format
 msgid "<b>Events for %s:</b>"
-msgstr "<b>%s-ren geraterak:</b>"
+msgstr "<b>%s egunerako gertaerak:</b>"
 
 #: src/orage-window-classic.c:635
 #, c-format
 msgid "<b>Events for %s - %s:</b>"
-msgstr "<b>%s - %s-ren gertaerak:</b>"
+msgstr "<b>%s - %s tarterako gertaerak:</b>"
 
 #: src/orage-window-next.c:131
 msgid "Create a new appointment"
-msgstr ""
+msgstr "Sortu hitzordu berri bat"
 
 #: src/orage-window-next.c:133
 msgid "Reload external files"
-msgstr ""
+msgstr "Birkargatu kanpoko fitxategiak"
 
 #: src/orage-window-next.c:135
 msgid "Import/export data"
-msgstr ""
+msgstr "Inportatu/esportatu datuak"
 
 #: src/orage-window-next.c:136
 msgid "Close window"
-msgstr ""
+msgstr "Itxi leihoa"
 
 #: src/orage-window-next.c:137
 msgid "_Quit"
@@ -1469,7 +1575,7 @@ msgstr "_Irten"
 
 #: src/orage-window-next.c:137
 msgid "Quit program"
-msgstr ""
+msgstr "Irten programatik"
 
 #: src/orage-window-next.c:140
 msgid "_Preferences"
@@ -1481,15 +1587,15 @@ msgstr "Orage hobespenak"
 
 #: src/orage-window-next.c:143
 msgid "View selected date"
-msgstr ""
+msgstr "Ikusi hautatutako data"
 
 #: src/orage-window-next.c:145
 msgid "Go to today"
-msgstr ""
+msgstr "Joan gaurko egunera"
 
 #: src/orage-window-next.c:148
 msgid "Display Orage user manual"
-msgstr ""
+msgstr "Bistaratu Orage-ren erabiltzaile-eskuliburua"
 
 #: src/orage-window-next.c:149
 msgid "_About"
@@ -1497,25 +1603,25 @@ msgstr "_Honi buruz"
 
 #: src/orage-window-next.c:149
 msgid "Display information about Orage"
-msgstr ""
+msgstr "Bistaratu Orage-ri buruzko informazioa"
 
 #: src/orage-window-next.c:376
 msgid "New event"
-msgstr ""
+msgstr "Gertaera berria"
 
 #: src/orage-window-next.c:454
 #, c-format
 msgid "Events for %s:"
-msgstr ""
+msgstr "%s egunerako gertaerak:"
 
 #: src/orage-window-next.c:460
 #, c-format
 msgid "Events for %s - %s:"
-msgstr ""
+msgstr "%s - %s tarterako gertaerak:"
 
 #: src/orage-window-next.c:663
 msgid "To do:"
-msgstr ""
+msgstr "Egitekoak:"
 
 #: src/orage-window-next.c:1083
 msgid "Previous"
@@ -1527,23 +1633,23 @@ msgstr "Hurrengoa"
 
 #: src/orage-window-next.c:1117
 msgid "Day"
-msgstr ""
+msgstr "Eguna"
 
 #: src/orage-window-next.c:1122
 msgid "Month"
-msgstr ""
+msgstr "Hilabetea"
 
 #: src/orage-window-next.c:1125
 msgid "Year"
-msgstr ""
+msgstr "Urtea"
 
 #: src/parameters.c:643
 msgid "Remove selected synchronization task."
-msgstr ""
+msgstr "Kendu hautatutako sinkronizazio-ataza."
 
 #: src/parameters.c:646
 msgid "Yes, remove"
-msgstr ""
+msgstr "Bai, kendu"
 
 #: src/parameters.c:684
 msgid "Main settings"
@@ -1559,17 +1665,16 @@ msgstr "Beti zehaztu beharko zenuke zure ordu-zonaldea."
 
 #: src/parameters.c:720
 msgid "Archive threshold (months)"
-msgstr "Artxibo Muga (hilabeteak)"
+msgstr "Artxibatzeko muga (hilabeteak)"
 
 #: src/parameters.c:733
 msgid "(0 = no archiving)"
-msgstr "(0 = ez gordetzen)"
+msgstr "(0 = artxibatzerik ez)"
 
 #: src/parameters.c:737
 msgid "Archiving is used to save time and space when handling events."
 msgstr ""
-"Artxibatzea gerftaerak kudeatzean denbora eta lekua aurrezteko erabiltzen "
-"da."
+"Artxibatzea gertaerak kudeatzean denbora eta lekua aurrezteko erabiltzen da."
 
 #: src/parameters.c:745
 msgid "Sound command"
@@ -1581,47 +1686,47 @@ msgstr "Komando hau bidaltzen zaio shell-ari alarmetan soinua egin dezan"
 
 #: src/parameters.c:804
 msgid "Calendar window"
-msgstr ""
+msgstr "Egutegi-leihoa"
 
 #: src/parameters.c:811
 msgid "Calendar visual details"
-msgstr ""
+msgstr "Egutegiaren xehetasun bisualak"
 
 #: src/parameters.c:818
 msgid "Use new user interface"
-msgstr ""
+msgstr "Erabili erabiltzaile-interfaze berria"
 
 #: src/parameters.c:820
 msgid "Enable the new interface layout (requires restart)."
-msgstr ""
+msgstr "Gaitu interfazearen diseinu berria (berrabiarazi behar da)."
 
 #: src/parameters.c:825
 msgid "Show borders"
-msgstr "Ikusi ertzak"
+msgstr "Erakutsi ertzak"
 
 #: src/parameters.c:834
 msgid "Show menu"
-msgstr "Ikusi menua"
+msgstr "Erakutsi menua"
 
 #: src/parameters.c:839
 msgid "Show day names"
-msgstr "Ikusi egun izenak"
+msgstr "Erakutsi egunen izenak"
 
 #: src/parameters.c:848
 msgid "Show week numbers"
-msgstr "Ikusi aste zenbakiak"
+msgstr "Erakutsi asteen zenbakiak"
 
 #: src/parameters.c:853
 msgid "Show month and year"
-msgstr "Ikusi hilabete eta ordua"
+msgstr "Erakutsi hilabetea eta urtea"
 
 #: src/parameters.c:877
 msgid "Calendar info boxes"
-msgstr ""
+msgstr "Egutegiaren informazio-koadroak"
 
 #: src/parameters.c:884
 msgid "Show todo list"
-msgstr "Ikusi egitekoen zerrenda"
+msgstr "Erakutsi egitekoen zerrenda"
 
 #: src/parameters.c:891
 msgid "Number of days to show in event window"
@@ -1633,11 +1738,11 @@ msgstr "0 = ez erakutsi gertaera zerrenda"
 
 #: src/parameters.c:913
 msgid "Calendar visibility"
-msgstr ""
+msgstr "Egutegiaren ikusgaitasuna"
 
 #: src/parameters.c:919
 msgid "Show on all desktops"
-msgstr "Ikusi mahaigain guztietan"
+msgstr "Erakutsi mahaigain guztietan"
 
 #: src/parameters.c:924
 msgid "Keep on top"
@@ -1645,15 +1750,15 @@ msgstr "Mantendu goian"
 
 #: src/parameters.c:932
 msgid "Show in taskbar"
-msgstr "Ikusi ataza-barran"
+msgstr "Erakutsi ataza-barran"
 
 #: src/parameters.c:937
 msgid "Show in pager"
-msgstr "Ikusi orrialdekatzailean"
+msgstr "Erakutsi orrikatzailean"
 
 #: src/parameters.c:945
 msgid "Show in systray"
-msgstr "Ikusi sistema-barran"
+msgstr "Erakutsi sistemaren erretiluan"
 
 #: src/parameters.c:973
 msgid "Calendar start"
@@ -1661,7 +1766,7 @@ msgstr "Egutegia abiarazi"
 
 #: src/parameters.c:979
 msgid "Show"
-msgstr "Ikusi"
+msgstr "Erakutsi"
 
 #: src/parameters.c:995
 msgid "Hide"
@@ -1669,23 +1774,23 @@ msgstr "Ezkutatu"
 
 #: src/parameters.c:1012
 msgid "Minimized"
-msgstr "Txikiturik"
+msgstr "Minimizatuta"
 
 #: src/parameters.c:1038
 msgid "On calendar window open"
-msgstr ""
+msgstr "Egutegi-leihoa irekitzean"
 
 #: src/parameters.c:1044
 msgid "Select today's date"
-msgstr ""
+msgstr "Hautatu gaurko data"
 
 #: src/parameters.c:1061
 msgid "Select previously selected date"
-msgstr ""
+msgstr "Hautatu aurrez hautatutako data"
 
 #: src/parameters.c:1085
 msgid "Calendar day double click shows"
-msgstr ""
+msgstr "Egutegiko egun batean klik bikoitza egitean erakusten dena"
 
 #: src/parameters.c:1091
 msgid "Days view"
@@ -1701,11 +1806,11 @@ msgstr "Ezarpen gehigarriak"
 
 #: src/parameters.c:1147
 msgid "Event list window"
-msgstr ""
+msgstr "Gertaera-zerrendaren leihoa"
 
 #: src/parameters.c:1154
 msgid "Number of extra days to show in event list"
-msgstr "Gertaera zerrenda ikusi behar diren egun gehigarri kopurua"
+msgstr "Gertaera-zerrendan erakutsi beharreko egun gehigarrien kopurua"
 
 #: src/parameters.c:1164
 msgid ""
@@ -1717,19 +1822,19 @@ msgstr ""
 
 #: src/parameters.c:1172
 msgid "Show only first repeating event"
-msgstr ""
+msgstr "Erakutsi errepikatzen den gertaeraren lehena soilik"
 
 #: src/parameters.c:1189
 msgid "Day view window default first day"
-msgstr ""
+msgstr "Egun-ikuspegiko leihoaren lehen egun lehenetsia"
 
 #: src/parameters.c:1196
 msgid "First day of week"
-msgstr ""
+msgstr "Asteko lehen eguna"
 
 #: src/parameters.c:1213
 msgid "Selected day"
-msgstr ""
+msgstr "Hautatutako eguna"
 
 #: src/parameters.c:1236 src/parameters.c:1243
 msgid "Use wakeup timer"
@@ -1746,23 +1851,23 @@ msgstr ""
 
 #: src/parameters.c:1261
 msgid "Foreign file default visual alarm"
-msgstr ""
+msgstr "Kanpoko fitxategien alarma bisual lehenetsia"
 
 #: src/parameters.c:1268
 msgid "Orage window"
-msgstr ""
+msgstr "Orage-ren leihoa"
 
 #: src/parameters.c:1285
 msgid "Notify notification"
-msgstr ""
+msgstr "Notify jakinarazpena"
 
 #: src/parameters.c:1308
 msgid "Always quit when asked to close"
-msgstr ""
+msgstr "Irten beti ixteko eskatzean"
 
 #: src/parameters.c:1315
 msgid "Always quit"
-msgstr ""
+msgstr "Irten beti"
 
 #: src/parameters.c:1322
 msgid ""
@@ -1770,14 +1875,17 @@ msgid ""
 "option changes Orage to quit and never stay in background when it is asked "
 "to close."
 msgstr ""
+"Lehenespenez, Orage atzeko planoan irekita geratzen da ixteko eskatzean. "
+"Aukera honekin, Orage irten egiten da eta ez da inoiz atzeko planoan "
+"geratzen ixteko eskatzen zaionean."
 
 #: src/parameters.c:1375
 msgid "Synchronization settings"
-msgstr ""
+msgstr "Sinkronizazio-ezarpenak"
 
 #: src/parameters.c:1381
 msgid "Synchronization sources"
-msgstr ""
+msgstr "Sinkronizazio-iturriak"
 
 #: src/parameters.c:1407 org.xfce.orage.desktop.in:26
 msgid "Orage Preferences"
@@ -1785,7 +1893,7 @@ msgstr "Orage hobespenak"
 
 #: src/reminder.c:475
 msgid "Reminder"
-msgstr ""
+msgstr "Oroigarria"
 
 #: src/reminder.c:498
 msgid "Open"
@@ -1793,7 +1901,7 @@ msgstr "Ireki"
 
 #: src/reminder.c:503
 msgid "Silence"
-msgstr ""
+msgstr "Isilarazi"
 
 #: src/reminder.c:621
 msgid "Reminder - Orage"
@@ -1801,15 +1909,15 @@ msgstr "Gogorarazlea - Orage"
 
 #: src/reminder.c:704
 msgid "_Stop"
-msgstr "Gelditu"
+msgstr "_Gelditu"
 
 #: src/reminder.c:712
 msgid "Postpone"
-msgstr ""
+msgstr "Atzeratu"
 
 #: src/reminder.c:714
 msgid "Remind me again after the specified time."
-msgstr ""
+msgstr "Gogorarazi berriro zehaztutako denboraren ondoren."
 
 #: src/reminder.c:998
 msgid "Next active alarms:"
@@ -1819,10 +1927,11 @@ msgstr "Hurrengo alarma aktiboak:"
 #, c-format
 msgid "<span weight=\"bold\">%1$02d d %2$02d h %3$02d min to:</span> %4$s"
 msgstr ""
+"<span weight=\"bold\">%1$02d e %2$02d o %3$02d min falta dira:</span> %4$s"
 
 #: src/reminder.c:1057
 msgid "No active alarms found"
-msgstr ""
+msgstr "Ez da alarma aktiborik aurkitu"
 
 #: src/timezone_names.c:31
 msgid "Africa"
@@ -1914,7 +2023,7 @@ msgstr "Afrika/Duala"
 
 #: src/timezone_names.c:53
 msgid "Africa/El_Aaiun"
-msgstr "Afrika/EL_Aaiun"
+msgstr "Afrika/El_Aaiun"
 
 #: src/timezone_names.c:54
 msgid "Africa/Freetown"
@@ -2078,7 +2187,7 @@ msgstr "Amerika/Argentina/Catamarca"
 
 #: src/timezone_names.c:94
 msgid "America/Argentina/ComodRivadavia"
-msgstr ""
+msgstr "Amerika/Argentina/ComodRivadavia"
 
 #: src/timezone_names.c:95
 msgid "America/Argentina/Cordoba"
@@ -2090,7 +2199,7 @@ msgstr "Amerika/Argentina/Jujuy"
 
 #: src/timezone_names.c:97
 msgid "America/Argentina/La_Rioja"
-msgstr ""
+msgstr "Amerika/Argentina/La_Rioja"
 
 #: src/timezone_names.c:98
 msgid "America/Argentina/Mendoza"
@@ -2098,19 +2207,19 @@ msgstr "Amerika/Argentina/Mendoza"
 
 #: src/timezone_names.c:99
 msgid "America/Argentina/Rio_Gallegos"
-msgstr ""
+msgstr "Amerika/Argentina/Rio_Gallegos"
 
 #: src/timezone_names.c:100
 msgid "America/Argentina/Salta"
-msgstr ""
+msgstr "Amerika/Argentina/Salta"
 
 #: src/timezone_names.c:101
 msgid "America/Argentina/San_Juan"
-msgstr ""
+msgstr "Amerika/Argentina/San_Juan"
 
 #: src/timezone_names.c:102
 msgid "America/Argentina/San_Luis"
-msgstr ""
+msgstr "Amerika/Argentina/San_Luis"
 
 #: src/timezone_names.c:103
 msgid "America/Argentina/Tucuman"
@@ -2118,7 +2227,7 @@ msgstr "Amerika/Argentina/Tucuman"
 
 #: src/timezone_names.c:104
 msgid "America/Argentina/Ushuaia"
-msgstr ""
+msgstr "Amerika/Argentina/Ushuaia"
 
 #: src/timezone_names.c:105
 msgid "America/Aruba"
@@ -2130,19 +2239,19 @@ msgstr "Amerika/Asuncion"
 
 #: src/timezone_names.c:107
 msgid "America/Atikokan"
-msgstr ""
+msgstr "Amerika/Atikokan"
 
 #: src/timezone_names.c:108
 msgid "America/Atka"
-msgstr ""
+msgstr "Amerika/Atka"
 
 #: src/timezone_names.c:109
 msgid "America/Bahia"
-msgstr ""
+msgstr "Amerika/Bahia"
 
 #: src/timezone_names.c:110
 msgid "America/Bahia_Banderas"
-msgstr ""
+msgstr "Amerika/Bahia_Banderas"
 
 #: src/timezone_names.c:111
 msgid "America/Barbados"
@@ -2158,7 +2267,7 @@ msgstr "Amerika/Belize"
 
 #: src/timezone_names.c:114
 msgid "America/Blanc-Sablon"
-msgstr ""
+msgstr "Amerika/Blanc-Sablon"
 
 #: src/timezone_names.c:115
 msgid "America/Boa_Vista"
@@ -2182,7 +2291,7 @@ msgstr "Amerika/Cambridge_Bay"
 
 #: src/timezone_names.c:120
 msgid "America/Campo_Grande"
-msgstr ""
+msgstr "Amerika/Campo_Grande"
 
 #: src/timezone_names.c:121
 msgid "America/Cancun"
@@ -2214,7 +2323,7 @@ msgstr "Amerika/Chihuahua"
 
 #: src/timezone_names.c:128
 msgid "America/Coral_Harbour"
-msgstr ""
+msgstr "Amerika/Coral_Harbour"
 
 #: src/timezone_names.c:129
 msgid "America/Cordoba"
@@ -2226,7 +2335,7 @@ msgstr "Amerika/Costa_Rica"
 
 #: src/timezone_names.c:131
 msgid "America/Creston"
-msgstr ""
+msgstr "Amerika/Creston"
 
 #: src/timezone_names.c:132
 msgid "America/Cuiaba"
@@ -2238,7 +2347,7 @@ msgstr "Amerika/Curacao"
 
 #: src/timezone_names.c:134
 msgid "America/Danmarkshavn"
-msgstr ""
+msgstr "Amerika/Danmarkshavn"
 
 #: src/timezone_names.c:135
 msgid "America/Dawson"
@@ -2266,7 +2375,7 @@ msgstr "Amerika/Edmonton"
 
 #: src/timezone_names.c:141
 msgid "America/Ensenada"
-msgstr ""
+msgstr "Amerika/Ensenada"
 
 #: src/timezone_names.c:142
 msgid "America/Eirunepe"
@@ -2282,7 +2391,7 @@ msgstr "Amerika/Fortaleza"
 
 #: src/timezone_names.c:145
 msgid "America/Fort_Wayne"
-msgstr ""
+msgstr "Amerika/Fort_Wayne"
 
 #: src/timezone_names.c:146
 msgid "America/Glace_Bay"
@@ -2346,11 +2455,11 @@ msgstr "Amerika/Indiana/Marengo"
 
 #: src/timezone_names.c:161
 msgid "America/Indiana/Petersburg"
-msgstr ""
+msgstr "Amerika/Indiana/Petersburg"
 
 #: src/timezone_names.c:162
 msgid "America/Indiana/Tell_City"
-msgstr ""
+msgstr "Amerika/Indiana/Tell_City"
 
 #: src/timezone_names.c:163
 msgid "America/Indiana/Vevay"
@@ -2358,11 +2467,11 @@ msgstr "Amerika/Indiana/Vevay"
 
 #: src/timezone_names.c:164
 msgid "America/Indiana/Vincennes"
-msgstr ""
+msgstr "Amerika/Indiana/Vincennes"
 
 #: src/timezone_names.c:165
 msgid "America/Indiana/Winamac"
-msgstr ""
+msgstr "Amerika/Indiana/Winamac"
 
 #: src/timezone_names.c:166
 msgid "America/Indianapolis"
@@ -2398,11 +2507,11 @@ msgstr "Amerika/Kentucky/Monticello"
 
 #: src/timezone_names.c:174
 msgid "America/Knox_IN"
-msgstr ""
+msgstr "Amerika/Knox_IN"
 
 #: src/timezone_names.c:175
 msgid "America/Kralendijk"
-msgstr ""
+msgstr "Amerika/Kralendijk"
 
 #: src/timezone_names.c:176
 msgid "America/La_Paz"
@@ -2422,7 +2531,7 @@ msgstr "Amerika/Louisville"
 
 #: src/timezone_names.c:180
 msgid "America/Lower_Princes"
-msgstr ""
+msgstr "Amerika/Lower_Princes"
 
 #: src/timezone_names.c:181
 msgid "America/Maceio"
@@ -2438,7 +2547,7 @@ msgstr "Amerika/Manaus"
 
 #: src/timezone_names.c:184
 msgid "America/Marigot"
-msgstr ""
+msgstr "Amerika/Marigot"
 
 #: src/timezone_names.c:185
 msgid "America/Martinique"
@@ -2446,7 +2555,7 @@ msgstr "Amerika/Martinika"
 
 #: src/timezone_names.c:186
 msgid "America/Matamoros"
-msgstr ""
+msgstr "Amerika/Matamoros"
 
 #: src/timezone_names.c:187
 msgid "America/Mazatlan"
@@ -2466,7 +2575,7 @@ msgstr "Amerika/Merida"
 
 #: src/timezone_names.c:191
 msgid "America/Metlakatla"
-msgstr ""
+msgstr "Amerika/Metlakatla"
 
 #: src/timezone_names.c:192
 msgid "America/Mexico_City"
@@ -2478,7 +2587,7 @@ msgstr "Amerika/Mikelune"
 
 #: src/timezone_names.c:194
 msgid "America/Moncton"
-msgstr ""
+msgstr "Amerika/Moncton"
 
 #: src/timezone_names.c:195
 msgid "America/Monterrey"
@@ -2514,15 +2623,15 @@ msgstr "Amerika/Nome"
 
 #: src/timezone_names.c:203
 msgid "America/North_Dakota/Beulah"
-msgstr ""
+msgstr "Amerika/Ipar_Dakota/Beulah"
 
 #: src/timezone_names.c:204
 msgid "America/North_Dakota/Center"
-msgstr ""
+msgstr "Amerika/Ipar_Dakota/Center"
 
 #: src/timezone_names.c:205
 msgid "America/North_Dakota/New_Salem"
-msgstr ""
+msgstr "Amerika/Ipar_Dakota/New_Salem"
 
 #: src/timezone_names.c:206
 msgid "America/Noronha"
@@ -2530,7 +2639,7 @@ msgstr "Amerika/Noronha"
 
 #: src/timezone_names.c:207
 msgid "America/Ojinaga"
-msgstr ""
+msgstr "Amerika/Ojinaga"
 
 #: src/timezone_names.c:208
 msgid "America/Panama"
@@ -2558,7 +2667,7 @@ msgstr "Amerika/Port_of_Spain"
 
 #: src/timezone_names.c:214
 msgid "America/Porto_Acre"
-msgstr ""
+msgstr "Amerika/Porto_Acre"
 
 #: src/timezone_names.c:215
 msgid "America/Porto_Velho"
@@ -2586,7 +2695,7 @@ msgstr "Amerika/Regina"
 
 #: src/timezone_names.c:221
 msgid "America/Resolute"
-msgstr ""
+msgstr "Amerika/Resolute"
 
 #: src/timezone_names.c:222
 msgid "America/Rio_Branco"
@@ -2598,11 +2707,11 @@ msgstr "Amerika/Rosario"
 
 #: src/timezone_names.c:224
 msgid "America/Santa_Isabel"
-msgstr ""
+msgstr "Amerika/Santa_Isabel"
 
 #: src/timezone_names.c:225
 msgid "America/Santarem"
-msgstr ""
+msgstr "Amerika/Santarem"
 
 #: src/timezone_names.c:226
 msgid "America/Santiago"
@@ -2626,11 +2735,11 @@ msgstr "Amerika/Shiprock"
 
 #: src/timezone_names.c:231
 msgid "America/Sitka"
-msgstr ""
+msgstr "Amerika/Sitka"
 
 #: src/timezone_names.c:232
 msgid "America/St_Barthelemy"
-msgstr ""
+msgstr "Amerika/St_Barthelemy"
 
 #: src/timezone_names.c:233
 msgid "America/St_Johns"
@@ -2674,7 +2783,7 @@ msgstr "Amerika/Tijuana"
 
 #: src/timezone_names.c:243
 msgid "America/Toronto"
-msgstr ""
+msgstr "Amerika/Toronto"
 
 #: src/timezone_names.c:244
 msgid "America/Tortola"
@@ -2686,7 +2795,7 @@ msgstr "Amerika/Vancouver"
 
 #: src/timezone_names.c:246
 msgid "America/Virgin"
-msgstr ""
+msgstr "Amerika/Virgin"
 
 #: src/timezone_names.c:247
 msgid "America/Whitehorse"
@@ -2722,7 +2831,7 @@ msgstr "Antartika/DumontDUrville"
 
 #: src/timezone_names.c:255
 msgid "Antarctica/Macquarie"
-msgstr ""
+msgstr "Antartika/Macquarie"
 
 #: src/timezone_names.c:256
 msgid "Antarctica/Mawson"
@@ -2738,7 +2847,7 @@ msgstr "Antartika/Palmer"
 
 #: src/timezone_names.c:259
 msgid "Antarctica/Rothera"
-msgstr ""
+msgstr "Antartika/Rothera"
 
 #: src/timezone_names.c:260
 msgid "Antarctica/South_Pole"
@@ -2794,7 +2903,7 @@ msgstr "Asia/Ashgabat"
 
 #: src/timezone_names.c:273
 msgid "Asia/Ashkhabad"
-msgstr ""
+msgstr "Asia/Asgabat"
 
 #: src/timezone_names.c:274
 msgid "Asia/Baghdad"
@@ -2830,11 +2939,11 @@ msgstr "Asia/Kalkuta"
 
 #: src/timezone_names.c:282
 msgid "Asia/Choibalsan"
-msgstr ""
+msgstr "Asia/Choibalsan"
 
 #: src/timezone_names.c:283
 msgid "Asia/Chongqing"
-msgstr ""
+msgstr "Asia/Chongqing"
 
 #: src/timezone_names.c:284
 msgid "Asia/Chungking"
@@ -2846,7 +2955,7 @@ msgstr "Asia/Kolonbo"
 
 #: src/timezone_names.c:286
 msgid "Asia/Dacca"
-msgstr ""
+msgstr "Asia/Dhaka"
 
 #: src/timezone_names.c:287
 msgid "Asia/Damascus"
@@ -2878,7 +2987,7 @@ msgstr "Asia/Harbin"
 
 #: src/timezone_names.c:294
 msgid "Asia/Hebron"
-msgstr ""
+msgstr "Asia/Hebron"
 
 #: src/timezone_names.c:295
 msgid "Asia/Hong_Kong"
@@ -2886,7 +2995,7 @@ msgstr "Asia/Hong_Kong"
 
 #: src/timezone_names.c:296
 msgid "Asia/Ho_Chi_Minh"
-msgstr ""
+msgstr "Asia/Ho_Chi_Minh"
 
 #: src/timezone_names.c:297
 msgid "Asia/Hovd"
@@ -2930,7 +3039,7 @@ msgstr "Asia/Kashgar"
 
 #: src/timezone_names.c:307
 msgid "Asia/Kathmandu"
-msgstr ""
+msgstr "Asia/Katmandu"
 
 #: src/timezone_names.c:308
 msgid "Asia/Katmandu"
@@ -2938,11 +3047,11 @@ msgstr "Asia/Katmandu"
 
 #: src/timezone_names.c:309
 msgid "Asia/Khandyga"
-msgstr ""
+msgstr "Asia/Khandyga"
 
 #: src/timezone_names.c:310
 msgid "Asia/Kolkata"
-msgstr ""
+msgstr "Asia/Kalkuta"
 
 #: src/timezone_names.c:311
 msgid "Asia/Krasnoyarsk"
@@ -2966,7 +3075,7 @@ msgstr "Asia/Macau"
 
 #: src/timezone_names.c:316
 msgid "Asia/Macau"
-msgstr ""
+msgstr "Asia/Macau"
 
 #: src/timezone_names.c:317
 msgid "Asia/Magadan"
@@ -2974,7 +3083,7 @@ msgstr "Asia/Magadan"
 
 #: src/timezone_names.c:318
 msgid "Asia/Makassar"
-msgstr ""
+msgstr "Asia/Makassar"
 
 #: src/timezone_names.c:319
 msgid "Asia/Manila"
@@ -2990,7 +3099,7 @@ msgstr "Asia/Nikosia"
 
 #: src/timezone_names.c:322
 msgid "Asia/Novokuznetsk"
-msgstr ""
+msgstr "Asia/Novokuznetsk"
 
 #: src/timezone_names.c:323
 msgid "Asia/Novosibirsk"
@@ -3002,7 +3111,7 @@ msgstr "Asia/Omsk"
 
 #: src/timezone_names.c:325
 msgid "Asia/Oral"
-msgstr ""
+msgstr "Asia/Oral"
 
 #: src/timezone_names.c:326
 msgid "Asia/Phnom_Penh"
@@ -3022,7 +3131,7 @@ msgstr "Asia/Qatar"
 
 #: src/timezone_names.c:330
 msgid "Asia/Qyzylorda"
-msgstr ""
+msgstr "Asia/Qyzylorda"
 
 #: src/timezone_names.c:331
 msgid "Asia/Rangoon"
@@ -3034,15 +3143,15 @@ msgstr "Asia/Riad"
 
 #: src/timezone_names.c:333
 msgid "Asia/Riyadh87"
-msgstr ""
+msgstr "Asia/Riad87"
 
 #: src/timezone_names.c:334
 msgid "Asia/Riyadh88"
-msgstr ""
+msgstr "Asia/Riad88"
 
 #: src/timezone_names.c:335
 msgid "Asia/Riyadh89"
-msgstr ""
+msgstr "Asia/Riad89"
 
 #: src/timezone_names.c:336
 msgid "Asia/Saigon"
@@ -3050,7 +3159,7 @@ msgstr "Asia/Saigon"
 
 #: src/timezone_names.c:337
 msgid "Asia/Sakhalin"
-msgstr ""
+msgstr "Asia/Sakhalin"
 
 #: src/timezone_names.c:338
 msgid "Asia/Samarkand"
@@ -3086,11 +3195,11 @@ msgstr "Asia/Teheran"
 
 #: src/timezone_names.c:346
 msgid "Asia/Tel_Aviv"
-msgstr ""
+msgstr "Asia/Tel_Aviv"
 
 #: src/timezone_names.c:347
 msgid "Asia/Thimbu"
-msgstr ""
+msgstr "Asia/Thimbu"
 
 #: src/timezone_names.c:348
 msgid "Asia/Thimphu"
@@ -3110,7 +3219,7 @@ msgstr "Asia/Ulan Bator"
 
 #: src/timezone_names.c:352
 msgid "Asia/Ulan_Bator"
-msgstr ""
+msgstr "Asia/Ulan_Bator"
 
 #: src/timezone_names.c:353
 msgid "Asia/Urumqi"
@@ -3118,7 +3227,7 @@ msgstr "Asia/Urumtsi"
 
 #: src/timezone_names.c:354
 msgid "Asia/Ust-Nera"
-msgstr ""
+msgstr "Asia/Ust-Nera"
 
 #: src/timezone_names.c:355
 msgid "Asia/Vientiane"
@@ -3166,7 +3275,7 @@ msgstr "Atlantikoa/Faroe"
 
 #: src/timezone_names.c:366
 msgid "Atlantic/Faroe"
-msgstr ""
+msgstr "Atlantikoa/Faroe"
 
 #: src/timezone_names.c:367
 msgid "Atlantic/Jan_Mayen"
@@ -3198,7 +3307,7 @@ msgstr "Australia"
 
 #: src/timezone_names.c:374
 msgid "Australia/ACT"
-msgstr ""
+msgstr "Australia/ACT"
 
 #: src/timezone_names.c:375
 msgid "Australia/Adelaide"
@@ -3214,7 +3323,7 @@ msgstr "Australia/Broken_Hill"
 
 #: src/timezone_names.c:378
 msgid "Australia/Currie"
-msgstr ""
+msgstr "Australia/Currie"
 
 #: src/timezone_names.c:379
 msgid "Australia/Darwin"
@@ -3222,7 +3331,7 @@ msgstr "Australia/Darwin"
 
 #: src/timezone_names.c:380
 msgid "Australia/Eucla"
-msgstr ""
+msgstr "Australia/Eucla"
 
 #: src/timezone_names.c:381
 msgid "Australia/Hobart"
@@ -3250,219 +3359,219 @@ msgstr "Australia/Sydney"
 
 #: src/timezone_names.c:387
 msgid "Brazil"
-msgstr ""
+msgstr "Brasil"
 
 #: src/timezone_names.c:388
 msgid "Brazil/Acre"
-msgstr ""
+msgstr "Brasil/Acre"
 
 #: src/timezone_names.c:389
 msgid "Brazil/DeNoronha"
-msgstr ""
+msgstr "Brasil/DeNoronha"
 
 #: src/timezone_names.c:390
 msgid "Brazil/East"
-msgstr ""
+msgstr "Brasil/Ekialdea"
 
 #: src/timezone_names.c:391
 msgid "Brazil/West"
-msgstr ""
+msgstr "Brasil/Mendebaldea"
 
 #: src/timezone_names.c:392
 msgid "Canada"
-msgstr ""
+msgstr "Kanada"
 
 #: src/timezone_names.c:393
 msgid "Canada/Atlantic"
-msgstr ""
+msgstr "Kanada/Atlantikoa"
 
 #: src/timezone_names.c:394
 msgid "Canada/Central"
-msgstr ""
+msgstr "Kanada/Erdialdea"
 
 #: src/timezone_names.c:395
 msgid "Canada/East-Saskatchewan"
-msgstr ""
+msgstr "Kanada/Ekialde-Saskatchewan"
 
 #: src/timezone_names.c:396
 msgid "Canada/Eastern"
-msgstr ""
+msgstr "Kanada/Ekialdea"
 
 #: src/timezone_names.c:397
 msgid "Canada/Mountain"
-msgstr ""
+msgstr "Kanada/Mendialdea"
 
 #: src/timezone_names.c:398
 msgid "Canada/Newfoundland"
-msgstr ""
+msgstr "Kanada/Ternua"
 
 #: src/timezone_names.c:399
 msgid "Canada/Pacific"
-msgstr ""
+msgstr "Kanada/Pazifikoa"
 
 #: src/timezone_names.c:400
 msgid "Canada/Saskatchewan"
-msgstr ""
+msgstr "Kanada/Saskatchewan"
 
 #: src/timezone_names.c:401
 msgid "Canada/Yukon"
-msgstr ""
+msgstr "Kanada/Yukon"
 
 #: src/timezone_names.c:402
 msgid "Chile"
-msgstr ""
+msgstr "Txile"
 
 #: src/timezone_names.c:403
 msgid "Chile/Continental"
-msgstr ""
+msgstr "Txile/Kontinentala"
 
 #: src/timezone_names.c:404
 msgid "Chile/EasterIsland"
-msgstr ""
+msgstr "Txile/Pazko_uhartea"
 
 #: src/timezone_names.c:405
 msgid "Etc"
-msgstr ""
+msgstr "Etc"
 
 #: src/timezone_names.c:406
 msgid "Etc/GMT"
-msgstr ""
+msgstr "Etc/GMT"
 
 #: src/timezone_names.c:407
 msgid "Etc/GMT+0"
-msgstr ""
+msgstr "Etc/GMT+0"
 
 #: src/timezone_names.c:408
 msgid "Etc/GMT+1"
-msgstr ""
+msgstr "Etc/GMT+1"
 
 #: src/timezone_names.c:409
 msgid "Etc/GMT+10"
-msgstr ""
+msgstr "Etc/GMT+10"
 
 #: src/timezone_names.c:410
 msgid "Etc/GMT+11"
-msgstr ""
+msgstr "Etc/GMT+11"
 
 #: src/timezone_names.c:411
 msgid "Etc/GMT+12"
-msgstr ""
+msgstr "Etc/GMT+12"
 
 #: src/timezone_names.c:412
 msgid "Etc/GMT+2"
-msgstr ""
+msgstr "Etc/GMT+2"
 
 #: src/timezone_names.c:413
 msgid "Etc/GMT+3"
-msgstr ""
+msgstr "Etc/GMT+3"
 
 #: src/timezone_names.c:414
 msgid "Etc/GMT+4"
-msgstr ""
+msgstr "Etc/GMT+4"
 
 #: src/timezone_names.c:415
 msgid "Etc/GMT+5"
-msgstr ""
+msgstr "Etc/GMT+5"
 
 #: src/timezone_names.c:416
 msgid "Etc/GMT+6"
-msgstr ""
+msgstr "Etc/GMT+6"
 
 #: src/timezone_names.c:417
 msgid "Etc/GMT+7"
-msgstr ""
+msgstr "Etc/GMT+7"
 
 #: src/timezone_names.c:418
 msgid "Etc/GMT+8"
-msgstr ""
+msgstr "Etc/GMT+8"
 
 #: src/timezone_names.c:419
 msgid "Etc/GMT+9"
-msgstr ""
+msgstr "Etc/GMT+9"
 
 #: src/timezone_names.c:420
 msgid "Etc/GMT-0"
-msgstr ""
+msgstr "Etc/GMT-0"
 
 #: src/timezone_names.c:421
 msgid "Etc/GMT-1"
-msgstr ""
+msgstr "Etc/GMT-1"
 
 #: src/timezone_names.c:422
 msgid "Etc/GMT-10"
-msgstr ""
+msgstr "Etc/GMT-10"
 
 #: src/timezone_names.c:423
 msgid "Etc/GMT-11"
-msgstr ""
+msgstr "Etc/GMT-11"
 
 #: src/timezone_names.c:424
 msgid "Etc/GMT-12"
-msgstr ""
+msgstr "Etc/GMT-12"
 
 #: src/timezone_names.c:425
 msgid "Etc/GMT-13"
-msgstr ""
+msgstr "Etc/GMT-13"
 
 #: src/timezone_names.c:426
 msgid "Etc/GMT-14"
-msgstr ""
+msgstr "Etc/GMT-14"
 
 #: src/timezone_names.c:427
 msgid "Etc/GMT-2"
-msgstr ""
+msgstr "Etc/GMT-2"
 
 #: src/timezone_names.c:428
 msgid "Etc/GMT-3"
-msgstr ""
+msgstr "Etc/GMT-3"
 
 #: src/timezone_names.c:429
 msgid "Etc/GMT-4"
-msgstr ""
+msgstr "Etc/GMT-4"
 
 #: src/timezone_names.c:430
 msgid "Etc/GMT-5"
-msgstr ""
+msgstr "Etc/GMT-5"
 
 #: src/timezone_names.c:431
 msgid "Etc/GMT-6"
-msgstr ""
+msgstr "Etc/GMT-6"
 
 #: src/timezone_names.c:432
 msgid "Etc/GMT-7"
-msgstr ""
+msgstr "Etc/GMT-7"
 
 #: src/timezone_names.c:433
 msgid "Etc/GMT-8"
-msgstr ""
+msgstr "Etc/GMT-8"
 
 #: src/timezone_names.c:434
 msgid "Etc/GMT-9"
-msgstr ""
+msgstr "Etc/GMT-9"
 
 #: src/timezone_names.c:435
 msgid "Etc/GMT0"
-msgstr ""
+msgstr "Etc/GMT0"
 
 #: src/timezone_names.c:436
 msgid "Etc/Greenwich"
-msgstr ""
+msgstr "Etc/Greenwich"
 
 #: src/timezone_names.c:437
 msgid "Etc/UCT"
-msgstr ""
+msgstr "Etc/UCT"
 
 #: src/timezone_names.c:438
 msgid "Etc/UTC"
-msgstr ""
+msgstr "Etc/UTC"
 
 #: src/timezone_names.c:439
 msgid "Etc/Universal"
-msgstr ""
+msgstr "Etc/Universal"
 
 #: src/timezone_names.c:440
 msgid "Etc/Zulu"
-msgstr ""
+msgstr "Etc/Zulu"
 
 #: src/timezone_names.c:441
 msgid "Europe"
@@ -3510,7 +3619,7 @@ msgstr "Europa/Budapest"
 
 #: src/timezone_names.c:452
 msgid "Europe/Busingen"
-msgstr ""
+msgstr "Europa/Busingen"
 
 #: src/timezone_names.c:453
 msgid "Europe/Chisinau"
@@ -3530,7 +3639,7 @@ msgstr "Europa/Gibraltar"
 
 #: src/timezone_names.c:457
 msgid "Europe/Guernsey"
-msgstr ""
+msgstr "Europa/Guernsey"
 
 #: src/timezone_names.c:458
 msgid "Europe/Helsinki"
@@ -3538,7 +3647,7 @@ msgstr "Europa/Helsinki"
 
 #: src/timezone_names.c:459
 msgid "Europe/Isle_of_Man"
-msgstr ""
+msgstr "Europa/Man_uhartea"
 
 #: src/timezone_names.c:460
 msgid "Europe/Istanbul"
@@ -3546,7 +3655,7 @@ msgstr "Europa/Istanbul"
 
 #: src/timezone_names.c:461
 msgid "Europe/Jersey"
-msgstr ""
+msgstr "Europa/Jersey"
 
 #: src/timezone_names.c:462
 msgid "Europe/Kaliningrad"
@@ -3582,7 +3691,7 @@ msgstr "Europa/Malta"
 
 #: src/timezone_names.c:470
 msgid "Europe/Mariehamn"
-msgstr ""
+msgstr "Europa/Mariehamn"
 
 #: src/timezone_names.c:471
 msgid "Europe/Minsk"
@@ -3610,7 +3719,7 @@ msgstr "Europa/Paris"
 
 #: src/timezone_names.c:477
 msgid "Europe/Podgorica"
-msgstr ""
+msgstr "Europa/Podgorica"
 
 #: src/timezone_names.c:478
 msgid "Europe/Prague"
@@ -3662,7 +3771,7 @@ msgstr "Europa/Tirana"
 
 #: src/timezone_names.c:490
 msgid "Europe/Tiraspol"
-msgstr ""
+msgstr "Europa/Tiraspol"
 
 #: src/timezone_names.c:491
 msgid "Europe/Uzhgorod"
@@ -3686,7 +3795,7 @@ msgstr "Europa/Vilnius"
 
 #: src/timezone_names.c:496
 msgid "Europe/Volgograd"
-msgstr ""
+msgstr "Europa/Volgograd"
 
 #: src/timezone_names.c:497
 msgid "Europe/Warsaw"
@@ -3754,39 +3863,39 @@ msgstr "Indikoa/Reunion"
 
 #: src/timezone_names.c:513
 msgid "Mexico"
-msgstr ""
+msgstr "Mexiko"
 
 #: src/timezone_names.c:514
 msgid "Mexico/BajaNorte"
-msgstr ""
+msgstr "Mexiko/BajaNorte"
 
 #: src/timezone_names.c:515
 msgid "Mexico/BajaSur"
-msgstr ""
+msgstr "Mexiko/BajaSur"
 
 #: src/timezone_names.c:516
 msgid "Mexico/General"
-msgstr ""
+msgstr "Mexiko/Orokorra"
 
 #: src/timezone_names.c:517
 msgid "Mideast"
-msgstr ""
+msgstr "Ekialde_Hurbila"
 
 #: src/timezone_names.c:518
 msgid "Mideast/Riyadh87"
-msgstr ""
+msgstr "Ekialde_Hurbila/Riad87"
 
 #: src/timezone_names.c:519
 msgid "Mideast/Riyadh88"
-msgstr ""
+msgstr "Ekialde_Hurbila/Riad88"
 
 #: src/timezone_names.c:520
 msgid "Mideast/Riyadh89"
-msgstr ""
+msgstr "Ekialde_Hurbila/Riad89"
 
 #: src/timezone_names.c:521
 msgid "Pacific"
-msgstr "Pazidifikoa"
+msgstr "Pazifikoa"
 
 #: src/timezone_names.c:522
 msgid "Pacific/Apia"
@@ -3802,7 +3911,7 @@ msgstr "Pazifikoa/Chatham"
 
 #: src/timezone_names.c:525
 msgid "Pacific/Chuuk"
-msgstr ""
+msgstr "Pazifikoa/Chuuk"
 
 #: src/timezone_names.c:526
 msgid "Pacific/Easter"
@@ -3906,7 +4015,7 @@ msgstr "Pazifikoa/Pitcairn"
 
 #: src/timezone_names.c:551
 msgid "Pacific/Pohnpei"
-msgstr ""
+msgstr "Pazifikoa/Pohnpei"
 
 #: src/timezone_names.c:552
 msgid "Pacific/Ponape"
@@ -3926,7 +4035,7 @@ msgstr "Pazifikoa/Saipan"
 
 #: src/timezone_names.c:556
 msgid "Pacific/Samoa"
-msgstr ""
+msgstr "Pazifikoa/Samoa"
 
 #: src/timezone_names.c:557
 msgid "Pacific/Tahiti"
@@ -3958,115 +4067,115 @@ msgstr "Pazifikoa/Yap"
 
 #: src/timezone_names.c:564
 msgid "SystemV"
-msgstr ""
+msgstr "SystemV"
 
 #: src/timezone_names.c:565
 msgid "SystemV/AST4"
-msgstr ""
+msgstr "SystemV/AST4"
 
 #: src/timezone_names.c:566
 msgid "SystemV/AST4ADT"
-msgstr ""
+msgstr "SystemV/AST4ADT"
 
 #: src/timezone_names.c:567
 msgid "SystemV/CST6"
-msgstr ""
+msgstr "SystemV/CST6"
 
 #: src/timezone_names.c:568
 msgid "SystemV/CST6CDT"
-msgstr ""
+msgstr "SystemV/CST6CDT"
 
 #: src/timezone_names.c:569
 msgid "SystemV/EST5"
-msgstr ""
+msgstr "SystemV/EST5"
 
 #: src/timezone_names.c:570
 msgid "SystemV/EST5/EDT"
-msgstr ""
+msgstr "SystemV/EST5/EDT"
 
 #: src/timezone_names.c:571
 msgid "SystemV/HST10"
-msgstr ""
+msgstr "SystemV/HST10"
 
 #: src/timezone_names.c:572
 msgid "SystemV/MST7"
-msgstr ""
+msgstr "SystemV/MST7"
 
 #: src/timezone_names.c:573
 msgid "SystemV/MST7/MNT"
-msgstr ""
+msgstr "SystemV/MST7/MNT"
 
 #: src/timezone_names.c:574
 msgid "SystemV/PST8"
-msgstr ""
+msgstr "SystemV/PST8"
 
 #: src/timezone_names.c:575
 msgid "SystemV/PST8/PDT"
-msgstr ""
+msgstr "SystemV/PST8/PDT"
 
 #: src/timezone_names.c:576
 msgid "SystemV/YST9"
-msgstr ""
+msgstr "SystemV/YST9"
 
 #: src/timezone_names.c:577
 msgid "SystemV/YST9/YDT"
-msgstr ""
+msgstr "SystemV/YST9/YDT"
 
 #: src/timezone_names.c:578
 msgid "US"
-msgstr ""
+msgstr "AEB"
 
 #: src/timezone_names.c:579
 msgid "US/Alaska"
-msgstr ""
+msgstr "AEB/Alaska"
 
 #: src/timezone_names.c:580
 msgid "US/Aleutian"
-msgstr ""
+msgstr "AEB/Aleutiarrak"
 
 #: src/timezone_names.c:581
 msgid "US/Arizona"
-msgstr ""
+msgstr "AEB/Arizona"
 
 #: src/timezone_names.c:582
 msgid "US/Central"
-msgstr ""
+msgstr "AEB/Erdialdea"
 
 #: src/timezone_names.c:583
 msgid "US/Eastern"
-msgstr ""
+msgstr "AEB/Ekialdea"
 
 #: src/timezone_names.c:584
 msgid "US/East-Indiana"
-msgstr ""
+msgstr "AEB/Ekialde-Indiana"
 
 #: src/timezone_names.c:585
 msgid "US/Hawaii"
-msgstr ""
+msgstr "AEB/Hawaii"
 
 #: src/timezone_names.c:586
 msgid "US/Indiana-Starke"
-msgstr ""
+msgstr "AEB/Indiana-Starke"
 
 #: src/timezone_names.c:587
 msgid "US/Michigan"
-msgstr ""
+msgstr "AEB/Michigan"
 
 #: src/timezone_names.c:588
 msgid "US/Mountain"
-msgstr ""
+msgstr "AEB/Mendialdea"
 
 #: src/timezone_names.c:589
 msgid "US/Pacific"
-msgstr ""
+msgstr "AEB/Pazifikoa"
 
 #: src/timezone_names.c:590
 msgid "US/Pacific-New"
-msgstr ""
+msgstr "AEB/Pazifiko-Berria"
 
 #: src/timezone_names.c:591
 msgid "US/Samoa"
-msgstr ""
+msgstr "AEB/Samoa"
 
 #: src/timezone_selection.c:143
 #, c-format
@@ -4155,6 +4264,7 @@ msgstr "Orage egutegi hobespenak"
 #: plugin/org.xfce.orage-settings.desktop.in:14 org.xfce.orage.desktop.in:15
 msgid "calendar;date;schedule;appointment;time;"
 msgstr ""
+"calendar;date;schedule;appointment;time;egutegia;data;egitaraua;hitzordua;ordua;"
 
 #: org.xfce.orage.appdata.xml.in:11
 msgid ""
@@ -4162,6 +4272,9 @@ msgid ""
 " ical format and includes common calendar features like repeating "
 "appointments and multiple alarming possibilities."
 msgstr ""
+"Orage egutegi grafiko azkarra eta erabilerraza izan nahi du. ical formatu "
+"eramangarria erabiltzen du, eta egutegien ohiko ezaugarriak ditu, hala nola "
+"errepikatzen diren hitzorduak eta alarma-aukera ugari."
 
 #: org.xfce.orage.appdata.xml.in:15
 msgid ""
@@ -4170,10 +4283,14 @@ msgid ""
 "Contents of those files are read and converted into Orage, but those files "
 "are left untouched."
 msgstr ""
+"Orage-k ez du talde-egutegien ezaugarririk, eta erabiltzaile bakar batek "
+"bakarrik erabil dezake. Inportatu beharreko ical fitxategien zerrenda bat "
+"hartzen du. Fitxategi horien edukia irakurri eta Orage-ra bihurtzen da, "
+"baina fitxategiak ukitu gabe geratzen dira."
 
 #: org.xfce.orage.appdata.xml.in:35
 msgid "Orage Team"
-msgstr ""
+msgstr "Orage taldea"
 
 #: org.xfce.orage.desktop.in:4
 msgid "Orage Calendar"
@@ -4189,8 +4306,8 @@ msgstr "Egutegia"
 
 #: org.xfce.orage.desktop.in:18
 msgid "Show Today"
-msgstr ""
+msgstr "Erakutsi gaur"
 
 #: org.xfce.orage.desktop.in:22
 msgid "New Appointment"
-msgstr ""
+msgstr "Hitzordu berria"
