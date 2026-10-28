@@ -1240,6 +1240,7 @@ msgstr "Procedimiento"
 #: src/orage-appointment-window.c:4066
 msgid "Select this if you want procedure or script alarm."
 msgstr ""
+"Seleccione esta opción si desea una alarma por procedimiento o por script."
 
 #: src/orage-appointment-window.c:4078
 msgid ""
@@ -1253,10 +1254,19 @@ msgid ""
 "- &lt;&amp;ST&gt; appointment start time\n"
 "- &lt;&amp;ET&gt; appointment end time"
 msgstr ""
+"<b>Procesamiento de comandos de shell</b> \n"
+"Esta cadena se pasa directamente al shell, por lo que debe encargarse usted mismo del escape de caracteres. \n"
+"\n"
+"Los siguientes marcadores de posición se reemplazan en tiempo de ejecución: \n"
+"-  &lt;&amp;T&gt; título de la cita \n"
+"- &lt;&amp;D&gt; descripción de la cita \n"
+"- &lt;&amp;AT&gt; hora de la alarma \n"
+"- &lt;&amp;ST&gt; hora inicial de la cita \n"
+"- &lt;&amp;ET&gt; hora final de la cita"
 
 #: src/orage-appointment-window.c:4102
 msgid "Test this alarm by raising it now."
-msgstr ""
+msgstr "Pruebe esta alarma activándola ahora."
 
 #: src/orage-appointment-window.c:4115
 msgid "<b>Default alarm</b>"
@@ -1272,7 +1282,7 @@ msgstr "_Restaurar"
 
 #: src/orage-appointment-window.c:4141
 msgid "Set current settings from default alarm."
-msgstr ""
+msgstr "Configurar los ajustes actuales desde la alarma predeterminada."
 
 #: src/orage-appointment-window.c:4206
 msgid "None"
@@ -1329,6 +1339,10 @@ msgid ""
 "An exception can be either exclusion (-) or inclusion (+), depending on selection.\n"
 "Remove by clicking the date."
 msgstr ""
+"<b>Fechas de excepción</b> \n"
+"Añadir fechas de excepción haciendo clic en los días del calendario a continuación. \n"
+"Una excepción puede ser de exclusión (-) o de inclusión (+), según la selección. \n"
+"Eliminar haciendo clic en la fecha."
 
 #: src/orage-appointment-window.c:4324
 msgid "Add excluded date (-)"
@@ -1336,7 +1350,7 @@ msgstr "Añadir fecha excluida (-)"
 
 #: src/orage-appointment-window.c:4326
 msgid "Excluded days are full days where this appointment is not happening."
-msgstr ""
+msgstr "Se excluyen los días completos en los que no se realiza esta cita."
 
 #: src/orage-appointment-window.c:4333
 msgid "Add included time (+)"
@@ -1347,6 +1361,8 @@ msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time."
 msgstr ""
+"Los horarios incluidos tienen la misma zona horaria que la hora de inicio, "
+"pero pueden tener una hora diferente."
 
 #. calendars showing the action days
 #: src/orage-appointment-window.c:4354
@@ -1355,7 +1371,7 @@ msgstr "Fechas de acción"
 
 #: src/orage-import.c:74
 msgid "Unsupported event type"
-msgstr ""
+msgstr "Tipo de evento no compatible"
 
 #: src/orage-import.c:106
 msgid "<b>Summary</b>"
@@ -1440,15 +1456,15 @@ msgstr "minutos"
 
 #: src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task."
-msgstr ""
+msgstr "El nombre o la descripción de esta tarea de sincronización."
 
 #: src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization."
-msgstr ""
+msgstr "Comando para sincronización."
 
 #: src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes."
-msgstr ""
+msgstr "Periodo de sincronización en minutos."
 
 #: src/orage-sync-edit-dialog.c:166 src/parameters.c:1430 src/reminder.c:696
 msgid "_Close"
@@ -1687,7 +1703,7 @@ msgstr "Usar la nueva interfaz de usuario"
 
 #: src/parameters.c:820
 msgid "Enable the new interface layout (requires restart)."
-msgstr ""
+msgstr "Habilitar el nuevo diseño de interfaz (requiere reiniciar)."
 
 #: src/parameters.c:825
 msgid "Show borders"
@@ -1906,7 +1922,7 @@ msgstr "Posponer"
 
 #: src/reminder.c:714
 msgid "Remind me again after the specified time."
-msgstr ""
+msgstr "Recuérdamelo de nuevo después de la hora indicada."
 
 #: src/reminder.c:998
 msgid "Next active alarms:"
@@ -1915,11 +1931,11 @@ msgstr "Siguientes alarmas activas:"
 #: src/reminder.c:1040
 #, c-format
 msgid "<span weight=\"bold\">%1$02d d %2$02d h %3$02d min to:</span> %4$s"
-msgstr ""
+msgstr "<span weight=\"bold\">%1$02d d %2$02d h %3$02d min para:</span> %4$s"
 
 #: src/reminder.c:1057
 msgid "No active alarms found"
-msgstr ""
+msgstr "No se encontraron alarmas activas."
 
 #: src/timezone_names.c:31
 msgid "Africa"
