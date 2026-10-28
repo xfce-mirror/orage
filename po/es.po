@@ -1014,12 +1014,16 @@ msgid ""
 "<b>Task or reminder</b> that should be completed sometime.\n"
 "For example: wash your car or test a new version of Orage."
 msgstr ""
+"<b>Tarea o recordatorio</b> que debe completarse en algún momento. \n"
+"Por ejemplo: lavar el coche o probar una nueva versión de Orage."
 
 #: src/orage-appointment-window.c:3586
 msgid ""
 "<b>Journal entry</b> used to record something that happened.\n"
 "For example: your mother called or the first snow arrived."
 msgstr ""
+"</b>Entrada de registro</b> usada para registrar algo que sucedió. \n"
+"Por ejemplo: llamó tu madre o llegó la primera nevada."
 
 #. location
 #: src/orage-appointment-window.c:3599 src/orage-window-classic.c:453
@@ -1148,6 +1152,11 @@ msgid ""
 "- before a TODO ends\n"
 "- after a TODO starts"
 msgstr ""
+"<b>Opciones de programación de alarmas</b> \n"
+"Puedes activar alarmas: \n"
+"- antes de iniciar un evento \n"
+"- antes de que finalice TODO \n"
+"- después de iniciar TODO"
 
 #: src/orage-appointment-window.c:3904
 msgid "Persistent alarm"
@@ -1171,11 +1180,11 @@ msgstr "Utilización"
 
 #: src/orage-appointment-window.c:3927
 msgid "Select this if you want audible alarm."
-msgstr ""
+msgstr "Seleccione esta opción si desea una alarma sonora."
 
 #: src/orage-appointment-window.c:3932
 msgid "Sound command is not set."
-msgstr ""
+msgstr "El comando de sonido no está configurado."
 
 #: src/orage-appointment-window.c:3961
 msgid "Repeat alarm sound"
@@ -1196,7 +1205,7 @@ msgstr "Usar ventana de Orage"
 
 #: src/orage-appointment-window.c:4007
 msgid "Select this if you want Orage window alarm."
-msgstr ""
+msgstr "Seleccione esta opción si desea la alarma para ventanas Orage."
 
 #: src/orage-appointment-window.c:4019
 msgid "Use notification"
@@ -1204,7 +1213,7 @@ msgstr "Usar notificación"
 
 #: src/orage-appointment-window.c:4021
 msgid "Select this if you want notification alarm."
-msgstr ""
+msgstr "Seleccione esta opción si desea recibir una alarma de notificación."
 
 #: src/orage-appointment-window.c:4029
 msgid "Set timeout"
@@ -1213,6 +1222,7 @@ msgstr "Establecer tiempo de expiración"
 #: src/orage-appointment-window.c:4031
 msgid "Select this if you want notification to expire automatically."
 msgstr ""
+"Seleccione esta opción si desea que la notificación caduque automáticamente."
 
 #: src/orage-appointment-window.c:4042
 msgid "0 = system default expiration time"
