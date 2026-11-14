@@ -33,5 +33,5 @@ typedef struct _orage_timezone_array
     char **cc;        /* pointer to country code strings */
 } orage_timezone_array;
 
-orage_timezone_array get_orage_timezones(int details, int ical);
+orage_timezone_array get_orage_timezones(int ical);
 extern void free_orage_timezones (void);

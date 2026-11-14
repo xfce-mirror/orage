@@ -84,7 +84,6 @@ static guint number_of_proccessed_files = 0;
 static unsigned char *in_buf, *in_head, *in_tail;
 static int in_file_base_offset = 0;
 
-static int details;     /* show extra data (country and next change time) */
 static int check_ical;  /* check that we have also the ical timezone data */
 
 static char *in_file = NULL, *out_file = NULL;
@@ -344,8 +343,7 @@ static int write_ical_file(void)
 
     tz_array.cc[tz_array.count] = NULL;
     tz_array.country[tz_array.count] = NULL;
-    if (details)
-        get_country();
+    get_country();
 
     in_head = begin_timechanges;
     for (i = 0; (i < (int)timecnt) && (tc_time <= tt_now); i++) {
@@ -361,7 +359,7 @@ static int write_ical_file(void)
          * now and there are no changes defined, so use default UTC=GMT */
         tz_array.utc_offset[tz_array.count] = 0;
         tz_array.dst[tz_array.count] = 0;
-        tz_array.tz[tz_array.count] = "UTC";
+        tz_array.tz[tz_array.count] = g_strdup ("UTC"); /* Will be g_free'd */
         tz_array.prev[tz_array.count] = NULL;
         tz_array.next[tz_array.count] = NULL;
         tz_array.next_utc_offset[tz_array.count] = 0;
@@ -371,45 +369,39 @@ static int write_ical_file(void)
     if (tc_time > tt_now) {
         /* we found previous and next value */
         /* tc_time has the next change time */
-        if (details) {
-            /* NOTE: If the time change happens for example at 04:00
-             * and goes one hour backward, the new time is 03:00 and this
-             * is what localtime_r reports. In real life we want to show
-             * here 04:00, so let's subtract 1 sec to get close to that.
-             * This is a bit similar than 24:00 or 00:00. Summary:
-             * 04:00 is returned as 03:00 (change happened already) but
-             * 03:59 is returned as 03:59 (change did not yet happen) */
-            prev_tc_time -= 1;
-            localtime_r((const time_t *)&prev_tc_time, &cur_gm_time);
-            orage_strftime(s_prev, 100, "%c", &cur_gm_time);
-            tz_array.prev[tz_array.count] = g_strdup(s_prev);
+        /* NOTE: If the time change happens for example at 04:00
+         * and goes one hour backward, the new time is 03:00 and this
+         * is what localtime_r reports. In real life we want to show
+         * here 04:00, so let's subtract 1 sec to get close to that.
+         * This is a bit similar than 24:00 or 00:00. Summary:
+         * 04:00 is returned as 03:00 (change happened already) but
+         * 03:59 is returned as 03:59 (change did not yet happen) */
+        prev_tc_time -= 1;
+        localtime_r((const time_t *)&prev_tc_time, &cur_gm_time);
+        orage_strftime(s_prev, 100, "%c", &cur_gm_time);
+        tz_array.prev[tz_array.count] = g_strdup(s_prev);
 
-            tc_time -= 1;
-            localtime_r((const time_t *)&tc_time, &cur_gm_time);
-            orage_strftime(s_next, 100, "%c", &cur_gm_time);
-            tz_array.next[tz_array.count] = g_strdup(s_next);
-            /* get timechange type index */
-            if (timecnt) {
-                in_head = begin_timechangetypeindexes;
-                tct_i = (unsigned int)in_head[i];
-            }
-            else
-                tct_i = 0;
+        tc_time -= 1;
+        localtime_r((const time_t *)&tc_time, &cur_gm_time);
+        orage_strftime(s_next, 100, "%c", &cur_gm_time);
+        tz_array.next[tz_array.count] = g_strdup(s_next);
+        /* get timechange type index */
+        if (timecnt) {
+            in_head = begin_timechangetypeindexes;
+            tct_i = (unsigned int)in_head[i];
+        }
+        else
+            tct_i = 0;
 
-            /* get timechange type */
-            in_head = begin_timechangetypes;
-            in_head += 6*tct_i;
-            tz_array.next_utc_offset[tz_array.count] = (int)get_long();
-        }
-        else {
-            tz_array.prev[tz_array.count] = NULL;
-            tz_array.next[tz_array.count] = NULL;
-        }
+        /* get timechange type */
+        in_head = begin_timechangetypes;
+        in_head += 6*tct_i;
+        tz_array.next_utc_offset[tz_array.count] = (int)get_long();
         i--; /* we need to take the previous value */
     }
     else { /* no next value, but previous may exist */
         tz_array.next[tz_array.count] = NULL;
-        if (details && prev_tc_time) {
+        if (prev_tc_time) {
             prev_tc_time -= 1;
             localtime_r((const time_t *)&prev_tc_time, &cur_gm_time);
             orage_strftime(s_prev, 100, "%c", &cur_gm_time);
@@ -777,7 +769,7 @@ static gboolean read_countries (void)
     return TRUE;
 }
 
-orage_timezone_array get_orage_timezones(int show_details, int ical)
+orage_timezone_array get_orage_timezones(int ical)
 {
 #ifdef FTW_ACTIONRETVAL
     const guint tz_array_size = 1000; /* FIXME: this needs to be counted */
@@ -787,7 +779,6 @@ orage_timezone_array get_orage_timezones(int show_details, int ical)
     const int nftw_flags = FTW_PHYS;
 #endif
 
-    details = show_details;
     check_ical = ical;
 
     if (tz_array.count)
@@ -808,20 +799,11 @@ orage_timezone_array get_orage_timezones(int show_details, int ical)
 
     g_debug ("processing files from '%s'", in_file);
 
-    if (details)
-    {
-        if (read_os_timezones () == FALSE)
-            goto out;
+    if (read_os_timezones () == FALSE)
+        goto out;
 
-        if (read_countries () == FALSE)
-            goto out;
-    }
-
-    if (check_ical)
-    {
-        if (read_os_timezones () == FALSE)
-            goto out;
-    }
+    if (read_countries () == FALSE)
+        goto out;
 
     /* nftw goes through the whole file structure and calls "file_call" with
      * each file. It returns 0 when everything has been done and -1 if it run
@@ -892,7 +874,8 @@ void free_orage_timezones (void)
     g_free(tz_array.next_utc_offset);
     g_free(tz_array.country);
     g_free(tz_array.cc);
-    tz_array.count = 0;
+    /* reset every pointer too, so that a second call does not double free */
+    tz_array = (orage_timezone_array){0};
     timezone_name = NULL;
     if (zone_tab_buf) {
         g_free(zone_tab_buf);

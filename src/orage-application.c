@@ -37,6 +37,7 @@
 #include "orage-window.h"
 #include "parameters.h"
 #include "reminder.h"
+#include "tz_zoneinfo_read.h"
 #include <glib-2.0/gio/gapplication.h>
 #include <glib.h>
 #include <gtk/gtk.h>
@@ -550,6 +551,8 @@ static void orage_application_shutdown (GApplication *app)
 #endif
 
     write_parameters ();
+
+    free_orage_timezones ();
 
     G_APPLICATION_CLASS (orage_application_parent_class)->shutdown (app);
 }
