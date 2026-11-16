@@ -72,23 +72,22 @@
  *
  * See: https://github.com/freebsd/freebsd-src/blob/main/share/misc/iso3166
  */
-#define COUNTRY_DIR         "misc/"
-#define COUNTRY_FILE        "iso3166"
+#define COUNTRY_DIR "misc/"
+#define COUNTRY_FILE "iso3166"
 #define COUNTRY_SKIP_FIELDS 2
 #elif defined(__OpenBSD__)
 /* OpenBSD uses only a custom path. */
-#define COUNTRY_DIR         "misc/"
-#define COUNTRY_FILE        "iso3166.tab"
+#define COUNTRY_DIR "misc/"
+#define COUNTRY_FILE "iso3166.tab"
 #define COUNTRY_SKIP_FIELDS 0
 #else
 /* On Linux it depends on the distribution, but almost all of them use tzdata,
  * which provides the file with the format "AD<TAB>Andorra" on each line.
  */
-#define COUNTRY_DIR         "zoneinfo/"
+#define COUNTRY_DIR "zoneinfo/"
 #define COUNTRY_FILE        "iso3166.tab"
 #define COUNTRY_SKIP_FIELDS 0
 #endif
-
 
 /** This is the toplevel directory where the timezone data is installed in. */
 #define ORAGE_ZONEINFO_DIRECTORY PACKAGE_DATADIR "/orage/zoneinfo/"
@@ -336,7 +335,8 @@ static void get_country(void)
     /* Some files (like in FreeBSD) have extra columns between the country code
      * and the name (see COUNTRY_SKIP_FIELDS), skip them. Country names may
      * contain spaces, so the name is simply the rest of the line. */
-    for (i = 0; i < COUNTRY_SKIP_FIELDS; i++) {
+    for (i = 0; i < COUNTRY_SKIP_FIELDS; i++)
+    {
         while (*str == '\t' || *str == ' ')
             str++;
         while (*str != '\0' && !g_ascii_isspace (*str))
@@ -381,7 +381,7 @@ static int write_ical_file(void)
 
     tz_array.cc[tz_array.count] = NULL;
     tz_array.country[tz_array.count] = NULL;
-    get_country();
+    get_country ();
 
     in_head = begin_timechanges;
     for (i = 0; (i < (int)timecnt) && (tc_time <= tt_now); i++) {
@@ -415,16 +415,17 @@ static int write_ical_file(void)
          * 04:00 is returned as 03:00 (change happened already) but
          * 03:59 is returned as 03:59 (change did not yet happen) */
         prev_tc_time -= 1;
-        localtime_r((const time_t *)&prev_tc_time, &cur_gm_time);
-        orage_strftime(s_prev, 100, "%c", &cur_gm_time);
-        tz_array.prev[tz_array.count] = g_strdup(s_prev);
+        localtime_r ((const time_t *)&prev_tc_time, &cur_gm_time);
+        orage_strftime (s_prev, 100, "%c", &cur_gm_time);
+        tz_array.prev[tz_array.count] = g_strdup (s_prev);
 
         tc_time -= 1;
-        localtime_r((const time_t *)&tc_time, &cur_gm_time);
-        orage_strftime(s_next, 100, "%c", &cur_gm_time);
-        tz_array.next[tz_array.count] = g_strdup(s_next);
+        localtime_r ((const time_t *)&tc_time, &cur_gm_time);
+        orage_strftime (s_next, 100, "%c", &cur_gm_time);
+        tz_array.next[tz_array.count] = g_strdup (s_next);
         /* get timechange type index */
-        if (timecnt) {
+        if (timecnt)
+        {
             in_head = begin_timechangetypeindexes;
             tct_i = (unsigned int)in_head[i];
         }
@@ -433,13 +434,14 @@ static int write_ical_file(void)
 
         /* get timechange type */
         in_head = begin_timechangetypes;
-        in_head += 6*tct_i;
-        tz_array.next_utc_offset[tz_array.count] = (int)get_long();
+        in_head += 6 * tct_i;
+        tz_array.next_utc_offset[tz_array.count] = (int)get_long ();
         i--; /* we need to take the previous value */
     }
     else { /* no next value, but previous may exist */
         tz_array.next[tz_array.count] = NULL;
-        if (prev_tc_time) {
+        if (prev_tc_time)
+        {
             prev_tc_time -= 1;
             localtime_r((const time_t *)&prev_tc_time, &cur_gm_time);
             orage_strftime(s_prev, 100, "%c", &cur_gm_time);
@@ -786,7 +788,7 @@ static gboolean read_countries (void)
     && (ferror(country_file))) {
         g_warning ("country file read failed '%s': %s", country_file_name,
                    g_strerror (errno));
-        g_free(country_buf);
+        g_free (country_buf);
         country_buf = NULL;
         g_free(country_file_name);
         fclose(country_file);
@@ -799,7 +801,7 @@ static gboolean read_countries (void)
     return TRUE;
 }
 
-orage_timezone_array get_orage_timezones(int ical)
+orage_timezone_array get_orage_timezones (int ical)
 {
 #ifdef FTW_ACTIONRETVAL
     const guint tz_array_size = 1000; /* FIXME: this needs to be counted */
@@ -908,7 +910,7 @@ void free_orage_timezones (void)
     g_free(tz_array.country);
     g_free(tz_array.cc);
     /* reset every pointer too, so that a second call does not double free */
-    tz_array = (orage_timezone_array){0};
+    tz_array = (orage_timezone_array){ 0 };
     timezone_name = NULL;
     if (zone_tab_buf) {
         g_free(zone_tab_buf);

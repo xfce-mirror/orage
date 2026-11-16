@@ -41,9 +41,9 @@
 #include <glib-2.0/gio/gapplication.h>
 #include <glib.h>
 #include <gtk/gtk.h>
+#include <libical/ical.h>
 #include <libxfce4ui/libxfce4ui.h>
 #include <libxfce4util/libxfce4util.h>
-#include <libical/ical.h>
 
 #ifdef HAVE_NOTIFY
 #include <libnotify/notify.h>

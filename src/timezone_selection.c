@@ -78,7 +78,7 @@ static GtkTreeStore *tz_button_create_store(gboolean details
             , G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING
             , G_TYPE_STRING, G_TYPE_STRING);
     g_strlcpy (area_old, "S T a R T", sizeof (area_old)); /* this never matches */
-    tz_a = get_orage_timezones(check_ical ? 1 : 0);
+    tz_a = get_orage_timezones (check_ical ? 1 : 0);
 
     g_debug ("number of timezones %d", tz_a.count);
 
