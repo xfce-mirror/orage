@@ -33,5 +33,32 @@ typedef struct _orage_timezone_array
     char **cc;        /* pointer to country code strings */
 } orage_timezone_array;
 
-orage_timezone_array get_orage_timezones(int details, int ical);
-extern void free_orage_timezones (void);
+/**
+ * get_orage_timezones:
+ * @ical: %TRUE to include only timezones supported by libical, %FALSE otherwise
+ *
+ * Loads timezone information from the operating system's zoneinfo database.
+ * The timezone data is parsed and cached in memory for subsequent calls.
+ *
+ * If the timezone data has already been loaded, the cached data is returned.
+ * The returned array always includes the default UTC and floating timezone
+ * entries.
+ *
+ * The returned data is owned by the timezone module and must not be freed
+ * by the caller. Call free_orage_timezones() to release the allocated memory.
+ *
+ * Returns: (transfer none): The array of timezone information.
+ */
+orage_timezone_array get_orage_timezones (int ical);
+
+/**
+ * free_orage_timezones:
+ *
+ * Frees the cached timezone information and releases all associated memory.
+ * It is safe to call this function even if get_orage_timezones() has not
+ * been called or if the timezone data has already been freed.
+ *
+ * After this function returns, the timezone data can be loaded again by
+ * calling get_orage_timezones().
+ */
+void free_orage_timezones (void);
