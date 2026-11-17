@@ -85,7 +85,7 @@
  * which provides the file with the format "AD<TAB>Andorra" on each line.
  */
 #define COUNTRY_DIR "zoneinfo/"
-#define COUNTRY_FILE        "iso3166.tab"
+#define COUNTRY_FILE "iso3166.tab"
 #define COUNTRY_SKIP_FIELDS 0
 #endif
 
