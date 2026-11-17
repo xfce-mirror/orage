@@ -61,8 +61,33 @@
 
 #define DEFAULT_OS_ZONEINFO_DIRECTORY  "/usr/share/zoneinfo"
 #define ZONETAB_FILE        "zone.tab"
-#define COUNTRY_FILE        "iso3166.tab"
 
+/* Unfortunately, the file that maps ISO 3166 country codes to country names
+ * depends on the OS: the path, the filename and even the format can differ.
+ */
+#if defined(__FreeBSD__)
+/* FreeBSD uses a custom path, filename and format. Fortunately, the format is
+ * tab-separated like the others, so we only need to set the number of fields
+ * to skip to get the country name.
+ *
+ * See: https://github.com/freebsd/freebsd-src/blob/main/share/misc/iso3166
+ */
+#define COUNTRY_DIR "misc/"
+#define COUNTRY_FILE "iso3166"
+#define COUNTRY_SKIP_FIELDS 2
+#elif defined(__OpenBSD__)
+/* OpenBSD uses only a custom path. */
+#define COUNTRY_DIR "misc/"
+#define COUNTRY_FILE "iso3166.tab"
+#define COUNTRY_SKIP_FIELDS 0
+#else
+/* On Linux it depends on the distribution, but almost all of them use tzdata,
+ * which provides the file with the format "AD<TAB>Andorra" on each line.
+ */
+#define COUNTRY_DIR "zoneinfo/"
+#define COUNTRY_FILE "iso3166.tab"
+#define COUNTRY_SKIP_FIELDS 0
+#endif
 
 /** This is the toplevel directory where the timezone data is installed in. */
 #define ORAGE_ZONEINFO_DIRECTORY PACKAGE_DATADIR "/orage/zoneinfo/"
@@ -84,7 +109,6 @@ static guint number_of_proccessed_files = 0;
 static unsigned char *in_buf, *in_head, *in_tail;
 static int in_file_base_offset = 0;
 
-static int details;     /* show extra data (country and next change time) */
 static int check_ical;  /* check that we have also the ical timezone data */
 
 static char *in_file = NULL, *out_file = NULL;
@@ -279,6 +303,7 @@ static void get_country(void)
 { /* tz_array.city[tz_array.count] contains the city name.
      We will find corresponding country and fill it to the table */
     char *str, *str_nl, cc[4];
+    gint i;
 
     if (!(str = strstr(zone_tab_buf, tz_array.city[tz_array.count])))
         return; /* not found */
@@ -305,12 +330,24 @@ static void get_country(void)
     cc[3] = '\0';
     if (!country_buf || !(str = strstr(country_buf, cc)))
         return; /* not found */
-    /* country name is after the country code and a single tab */
-    str += 4;
+    /* skip "\n" and the country code */
+    str += 3;
+    /* Some files (like in FreeBSD) have extra columns between the country code
+     * and the name (see COUNTRY_SKIP_FIELDS), skip them. Country names may
+     * contain spaces, so the name is simply the rest of the line. */
+    for (i = 0; i < COUNTRY_SKIP_FIELDS; i++)
+    {
+        while (*str == '\t' || *str == ' ')
+            str++;
+        while (*str != '\0' && !g_ascii_isspace (*str))
+            str++;
+    }
+    while (*str == '\t' || *str == ' ')
+        str++;
     /* but we still need to find how long it is.
-     * It ends in the line end. 
-     * (There is a line end at the end of the file also.) */
-    for (str_nl = str; str_nl[0] != '\n'; str_nl++)
+     * It ends in the line end, or at the end of the file if the last line
+     * has no line end. */
+    for (str_nl = str; str_nl[0] != '\n' && str_nl[0] != '\0'; str_nl++)
         ;
     tz_array.country[tz_array.count] = g_new(char, (str_nl - str) + 1);
     strncpy(tz_array.country[tz_array.count], str, (str_nl - str));
@@ -344,8 +381,7 @@ static int write_ical_file(void)
 
     tz_array.cc[tz_array.count] = NULL;
     tz_array.country[tz_array.count] = NULL;
-    if (details)
-        get_country();
+    get_country ();
 
     in_head = begin_timechanges;
     for (i = 0; (i < (int)timecnt) && (tc_time <= tt_now); i++) {
@@ -361,7 +397,7 @@ static int write_ical_file(void)
          * now and there are no changes defined, so use default UTC=GMT */
         tz_array.utc_offset[tz_array.count] = 0;
         tz_array.dst[tz_array.count] = 0;
-        tz_array.tz[tz_array.count] = "UTC";
+        tz_array.tz[tz_array.count] = g_strdup ("UTC"); /* Will be g_free'd */
         tz_array.prev[tz_array.count] = NULL;
         tz_array.next[tz_array.count] = NULL;
         tz_array.next_utc_offset[tz_array.count] = 0;
@@ -371,45 +407,41 @@ static int write_ical_file(void)
     if (tc_time > tt_now) {
         /* we found previous and next value */
         /* tc_time has the next change time */
-        if (details) {
-            /* NOTE: If the time change happens for example at 04:00
-             * and goes one hour backward, the new time is 03:00 and this
-             * is what localtime_r reports. In real life we want to show
-             * here 04:00, so let's subtract 1 sec to get close to that.
-             * This is a bit similar than 24:00 or 00:00. Summary:
-             * 04:00 is returned as 03:00 (change happened already) but
-             * 03:59 is returned as 03:59 (change did not yet happen) */
-            prev_tc_time -= 1;
-            localtime_r((const time_t *)&prev_tc_time, &cur_gm_time);
-            orage_strftime(s_prev, 100, "%c", &cur_gm_time);
-            tz_array.prev[tz_array.count] = g_strdup(s_prev);
+        /* NOTE: If the time change happens for example at 04:00
+         * and goes one hour backward, the new time is 03:00 and this
+         * is what localtime_r reports. In real life we want to show
+         * here 04:00, so let's subtract 1 sec to get close to that.
+         * This is a bit similar than 24:00 or 00:00. Summary:
+         * 04:00 is returned as 03:00 (change happened already) but
+         * 03:59 is returned as 03:59 (change did not yet happen) */
+        prev_tc_time -= 1;
+        localtime_r ((const time_t *)&prev_tc_time, &cur_gm_time);
+        orage_strftime (s_prev, 100, "%c", &cur_gm_time);
+        tz_array.prev[tz_array.count] = g_strdup (s_prev);
 
-            tc_time -= 1;
-            localtime_r((const time_t *)&tc_time, &cur_gm_time);
-            orage_strftime(s_next, 100, "%c", &cur_gm_time);
-            tz_array.next[tz_array.count] = g_strdup(s_next);
-            /* get timechange type index */
-            if (timecnt) {
-                in_head = begin_timechangetypeindexes;
-                tct_i = (unsigned int)in_head[i];
-            }
-            else
-                tct_i = 0;
+        tc_time -= 1;
+        localtime_r ((const time_t *)&tc_time, &cur_gm_time);
+        orage_strftime (s_next, 100, "%c", &cur_gm_time);
+        tz_array.next[tz_array.count] = g_strdup (s_next);
+        /* get timechange type index */
+        if (timecnt)
+        {
+            in_head = begin_timechangetypeindexes;
+            tct_i = (unsigned int)in_head[i];
+        }
+        else
+            tct_i = 0;
 
-            /* get timechange type */
-            in_head = begin_timechangetypes;
-            in_head += 6*tct_i;
-            tz_array.next_utc_offset[tz_array.count] = (int)get_long();
-        }
-        else {
-            tz_array.prev[tz_array.count] = NULL;
-            tz_array.next[tz_array.count] = NULL;
-        }
+        /* get timechange type */
+        in_head = begin_timechangetypes;
+        in_head += 6 * tct_i;
+        tz_array.next_utc_offset[tz_array.count] = (int)get_long ();
         i--; /* we need to take the previous value */
     }
     else { /* no next value, but previous may exist */
         tz_array.next[tz_array.count] = NULL;
-        if (details && prev_tc_time) {
+        if (prev_tc_time)
+        {
             prev_tc_time -= 1;
             localtime_r((const time_t *)&prev_tc_time, &cur_gm_time);
             orage_strftime(s_prev, 100, "%c", &cur_gm_time);
@@ -722,41 +754,30 @@ static gboolean read_os_timezones (void)
 
 static gboolean read_countries (void)
 {
-    char *tz_dir, *country_file_name;
-    int zoneinfo_len=strlen("zoneinfo/");
+    char *base_dir, *country_file_name;
     FILE *country_file;
     struct stat country_file_stat;
-    size_t len;
 
-    /****** country=iso3166.tab file ******/
+    /****** country file (see COUNTRY_FILE) ******/
     if (country_buf) { /* we have read it already */
         return TRUE;
     }
 
-    len = in_file_base_offset + zoneinfo_len + 1;
-    tz_dir = g_new (char, len); /* '\0' */
-    strncpy(tz_dir, in_file, in_file_base_offset);
-    tz_dir[in_file_base_offset] = '\0'; 
-#ifdef __OpenBSD__ 
-    g_strlcat (tz_dir, "misc/", len); /* this is shorter than "zoneinfo" so it is safe */
-#else
-    g_strlcat (tz_dir, "zoneinfo/", len); /* now we have the base directory */
-#endif
-
-    len = strlen(tz_dir) + strlen(COUNTRY_FILE) + 1;
-    country_file_name = g_new (char, len);
-    g_strlcpy (country_file_name, tz_dir, len);
-    g_strlcat (country_file_name, COUNTRY_FILE, len);
-    g_free(tz_dir);
+    /* in_file_base_offset is the length of the base directory, for example
+     * "/usr/share/" when in_file is "/usr/share/zoneinfo/" */
+    base_dir = g_strndup (in_file, in_file_base_offset);
+    country_file_name = g_strconcat (base_dir, COUNTRY_DIR, COUNTRY_FILE,
+                                     NULL);
+    g_free (base_dir);
 
     if (!(country_file = g_fopen (country_file_name, "r"))) {
-        g_warning ("iso3166.tab file open failed '%s': %s", country_file_name,
+        g_warning ("country file open failed '%s': %s", country_file_name,
                    g_strerror (errno));
         g_free(country_file_name);
         return FALSE;
     }
     if (g_stat (country_file_name, &country_file_stat) == -1) {
-        g_warning ("iso3166.tab file stat failed '%s': %s", country_file_name,
+        g_warning ("country file stat failed '%s': %s", country_file_name,
                    g_strerror (errno));
         g_free(country_file_name);
         fclose(country_file);
@@ -765,19 +786,22 @@ static gboolean read_countries (void)
     country_buf = g_new(char, country_file_stat.st_size+1);
     if (((off_t)fread(country_buf, 1, country_file_stat.st_size, country_file) < country_file_stat.st_size)
     && (ferror(country_file))) {
-        g_warning ("iso3166.tab file read failed '%s': %s", country_file_name,
+        g_warning ("country file read failed '%s': %s", country_file_name,
                    g_strerror (errno));
+        g_free (country_buf);
+        country_buf = NULL;
         g_free(country_file_name);
         fclose(country_file);
         return FALSE;
     }
     country_buf[country_file_stat.st_size] = '\0';
+    g_message ("read country file '%s'", country_file_name);
     g_free(country_file_name);
     fclose(country_file);
     return TRUE;
 }
 
-orage_timezone_array get_orage_timezones(int show_details, int ical)
+orage_timezone_array get_orage_timezones (int ical)
 {
 #ifdef FTW_ACTIONRETVAL
     const guint tz_array_size = 1000; /* FIXME: this needs to be counted */
@@ -787,7 +811,6 @@ orage_timezone_array get_orage_timezones(int show_details, int ical)
     const int nftw_flags = FTW_PHYS;
 #endif
 
-    details = show_details;
     check_ical = ical;
 
     if (tz_array.count)
@@ -808,20 +831,14 @@ orage_timezone_array get_orage_timezones(int show_details, int ical)
 
     g_debug ("processing files from '%s'", in_file);
 
-    if (details)
-    {
-        if (read_os_timezones () == FALSE)
-            goto out;
+    if (read_os_timezones () == FALSE)
+        goto out;
 
-        if (read_countries () == FALSE)
-            goto out;
-    }
-
-    if (check_ical)
-    {
-        if (read_os_timezones () == FALSE)
-            goto out;
-    }
+    /* Country names are only additional information shown in the timezone
+     * selection dialog. If the country file is missing for whatever reason,
+     * keep going without them.
+     */
+    (void)read_countries ();
 
     /* nftw goes through the whole file structure and calls "file_call" with
      * each file. It returns 0 when everything has been done and -1 if it run
@@ -892,7 +909,8 @@ void free_orage_timezones (void)
     g_free(tz_array.next_utc_offset);
     g_free(tz_array.country);
     g_free(tz_array.cc);
-    tz_array.count = 0;
+    /* reset every pointer too, so that a second call does not double free */
+    tz_array = (orage_timezone_array){ 0 };
     timezone_name = NULL;
     if (zone_tab_buf) {
         g_free(zone_tab_buf);
