@@ -78,7 +78,7 @@ static GtkTreeStore *tz_button_create_store(gboolean details
             , G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING
             , G_TYPE_STRING, G_TYPE_STRING);
     g_strlcpy (area_old, "S T a R T", sizeof (area_old)); /* this never matches */
-    tz_a = get_orage_timezones(details, check_ical ? 1 : 0);
+    tz_a = get_orage_timezones (check_ical ? 1 : 0);
 
     g_debug ("number of timezones %d", tz_a.count);
 
@@ -333,7 +333,6 @@ gboolean orage_timezone_button_clicked(GtkButton *button, GtkWindow *parent
                 }
                 break;
             case 1:
-                free_orage_timezones ();
                 details = !details;
                 /* gtk_widget_destroy(GTK_WIDGET(store)); */
                 gtk_widget_destroy(tree);

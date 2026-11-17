@@ -12,17 +12,17 @@
 # 629cf3e396111bb8c5fb6664e2dbc91d, 2025
 # Toni Estévez <toni.estevez@gmail.com>, 2026
 # Joel Barrios <darkshram@gmail.com>, 2026
-# Casper, 2026
 # em, 2026
+# Casper, 2026
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: xfce-apps.orage\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2026-05-14 12:55+0200\n"
+"POT-Creation-Date: 2026-07-27 01:00+0200\n"
 "PO-Revision-Date: 2022-02-01 14:01+0000\n"
-"Last-Translator: em, 2026\n"
+"Last-Translator: Casper, 2026\n"
 "Language-Team: Spanish (https://app.transifex.com/xfce/teams/16840/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -254,7 +254,7 @@ msgstr ""
 "5. Tipo de cita:\n"
 "   E = evento, T = tarea, J = registro"
 
-#: src/ical-code.c:856
+#: src/ical-code.c:863
 msgid "Orage default alarm"
 msgstr "Alarma predeterminada de Orage"
 
@@ -523,6 +523,9 @@ msgid ""
 "\n"
 "<b>Warning:</b> modifying foreign files may make them incompatible with the original application."
 msgstr ""
+"<b>Habilita el modo de solo lectura</b> si quieres asegurarte de que Orage nunca modifique este archivo. \n"
+"\n"
+"<b>Advertencia:</b> modificar archivos externos puede hacerlos incompatibles con la aplicación original."
 
 #: src/interface.c:1524
 msgid "This internal name is displayed to user instead of file name."
@@ -549,79 +552,84 @@ msgstr ""
 "Toni Estevez <toni.estevez@gmail.com> 2019-2021\n"
 "Pablo Lezaeta <prflr88@gmail.com> 2013-2016."
 
-#: src/orage-application.c:167
+#: src/orage-application.c:168
 msgid "Released under the terms of the GNU General Public License."
 msgstr "Publicado bajo los términos de la Licencia Pública General GNU."
 
-#: src/orage-application.c:169
+#: src/orage-application.c:170
 #, c-format
 msgid "Compiled against GTK+-%d.%d.%d, using GTK+-%d.%d.%d."
 msgstr "Compilado con GTK+-%d.%d.%d, usando GTK+-%d.%d.%d."
 
-#: src/orage-application.c:174
+#: src/orage-application.c:175
 #, c-format
 msgid "Compiled against libxfce4ui-%d.%d.%d, using libxfce4ui-%d.%d.%d."
 msgstr "Compilado con libxfce4ui-%d.%d.%d, usando libxfce4ui-%d.%d.%d."
 
 #: src/orage-application.c:180
 #, c-format
+msgid "Compiled against libical-%d.%d.%d."
+msgstr "Compilado con libical-%d.%d.%d."
+
+#: src/orage-application.c:185
+#, c-format
 msgid "Compiled against libnotify-%d.%d.%d."
 msgstr "Compilado con libnotify-%d.%d.%d."
 
-#: src/orage-application.c:183
+#: src/orage-application.c:188
 msgid "Not using libnotify."
 msgstr "No se usa libnotify."
 
-#: src/orage-application.c:188
+#: src/orage-application.c:193
 msgid "Using automatic archiving."
 msgstr "Usando el archivado automático."
 
-#: src/orage-application.c:190
+#: src/orage-application.c:195
 msgid "Not using archiving."
 msgstr "No se usa el archivado."
 
-#: src/orage-application.c:194
+#: src/orage-application.c:199
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Informe de errores a <%s>."
 
-#: src/orage-application.c:775
+#: src/orage-application.c:780
 msgid "Open today's tasks"
 msgstr "Abrir las tareas de hoy"
 
-#: src/orage-application.c:784
+#: src/orage-application.c:789
 msgid "Add new appointment"
 msgstr "Añadir nueva cita"
 
-#: src/orage-application.c:793
+#: src/orage-application.c:798
 msgid "Show preferences form"
 msgstr "Mostrar el formulario de preferencias"
 
-#: src/orage-application.c:802
+#: src/orage-application.c:807
 msgid "Make Orage visible/unvisible"
 msgstr "Mostrar/ocultar Orage"
 
-#: src/orage-application.c:811
+#: src/orage-application.c:816
 msgid "Add a foreign file"
 msgstr "Añadir un archivo externo"
 
-#: src/orage-application.c:820
+#: src/orage-application.c:825
 msgid "Remove a foreign file"
 msgstr "Eliminar un archivo externo"
 
-#: src/orage-application.c:829
+#: src/orage-application.c:834
 msgid "Import appointments from file to Orage"
 msgstr "Importar citas desde un archivo a Orage"
 
-#: src/orage-application.c:838
+#: src/orage-application.c:843
 msgid "Export appointments from Orage to file"
 msgstr "Exportar citas de Orage a un archivo"
 
-#: src/orage-application.c:847
+#: src/orage-application.c:852
 msgid "Select logging backend (glib|orage)"
-msgstr ""
+msgstr "Seleccione el backend de registro (glib|orage)"
 
-#: src/orage-application.c:856
+#: src/orage-application.c:861
 msgid "Show version of Orage"
 msgstr "Mostrar la versión de Orage"
 
@@ -949,6 +957,8 @@ msgid ""
 "<b>Recurrence is based on the start time.</b>\n"
 "The TODO repeats at regular intervals regardless of when it was last completed."
 msgstr ""
+"<b>La recurrencia se basa en la hora de inicio.</b> \n"
+"El TODO se repite a intervalos regulares independientemente de cuándo se completó por última vez."
 
 #: src/orage-appointment-window.c:3488
 msgid ""
@@ -957,6 +967,10 @@ msgid ""
 "\n"
 "<b>Note:</b> the TODO history cannot be determined because the recurrence base changes after each completion."
 msgstr ""
+"<b>La recurrencia se basa en el tiempo de finalización.</b> \n"
+"TODO se repite después del intervalo contado desde la última hora de finalización. \n"
+"\n"
+"<b>Nota:</b> el historial de TODO no se puede determinar porque la base de recurrencia cambia después de cada finalización."
 
 #: src/orage-appointment-window.c:3517
 msgid "Save"
@@ -992,18 +1006,24 @@ msgid ""
 "<b>Event</b> that happens at a specific time.\n"
 "For example: meeting, birthday, or TV show."
 msgstr ""
+"<b>Evento</b> que sucede en un momento específico. \n"
+"Por ejemplo: reunión, cumpleaños o programa de televisión."
 
 #: src/orage-appointment-window.c:3576
 msgid ""
 "<b>Task or reminder</b> that should be completed sometime.\n"
 "For example: wash your car or test a new version of Orage."
 msgstr ""
+"<b>Tarea o recordatorio</b> que debe completarse en algún momento. \n"
+"Por ejemplo: lavar el coche o probar una nueva versión de Orage."
 
 #: src/orage-appointment-window.c:3586
 msgid ""
 "<b>Journal entry</b> used to record something that happened.\n"
 "For example: your mother called or the first snow arrived."
 msgstr ""
+"</b>Entrada de registro</b> usada para registrar algo que sucedió. \n"
+"Por ejemplo: llamó tu madre o llegó la primera nevada."
 
 #. location
 #: src/orage-appointment-window.c:3599 src/orage-window-classic.c:453
@@ -1083,6 +1103,11 @@ msgid ""
 "<b>Alarms still trigger normally.</b>\n"
 "The default limit of 8 can be changed using an undocumented parameter."
 msgstr ""
+"<b>La prioridad 8 o superior</b> oculta la cita en las ventanas de lista. \n"
+"\n"
+"Esto reduce el desorden, pero puede dificultar su localización. \n"
+"<b>Las alarmas se siguen activando con normalidad.</b> \n"
+"El límite por defecto de 8 se puede modificar mediante un parámetro no documentado."
 
 #. note
 #: src/orage-appointment-window.c:3754 src/orage-window-classic.c:466
@@ -1101,6 +1126,14 @@ msgid ""
 "<b>&lt;&amp;Ynnnn&gt;</b> is replaced with current year minus nnnn\n"
 "Useful for example in birthday reminders (e.g. age calculation)."
 msgstr ""
+"<b>Comandos abreviados (se aplican inmediatamente)</b> \n"
+"<b>&lt;D&gt;</b> inserta la fecha actual en formato local \n"
+"<b>&lt;T&gt;</b> inserta la hora actual \n"
+"<b>&lt;DT&gt;</b> inserta la fecha y la hora \n"
+"\n"
+"<b>Comandos diferidos (se procesan posteriormente)</b>\n"
+"<b>&lt;&amp;Ynnnn&gt;</b> se reemplaza por el año actual menos nnnn \n"
+"Útil, por ejemplo, para recordatorios de cumpleaños (p. ej., cálculo de la edad)."
 
 #: src/orage-appointment-window.c:3864
 msgid "Alarm"
@@ -1119,6 +1152,11 @@ msgid ""
 "- before a TODO ends\n"
 "- after a TODO starts"
 msgstr ""
+"<b>Opciones de programación de alarmas</b> \n"
+"Puedes activar alarmas: \n"
+"- antes de iniciar un evento \n"
+"- antes de que finalice TODO \n"
+"- después de iniciar TODO"
 
 #: src/orage-appointment-window.c:3904
 msgid "Persistent alarm"
@@ -1142,11 +1180,11 @@ msgstr "Utilización"
 
 #: src/orage-appointment-window.c:3927
 msgid "Select this if you want audible alarm."
-msgstr ""
+msgstr "Seleccione esta opción si desea una alarma sonora."
 
 #: src/orage-appointment-window.c:3932
 msgid "Sound command is not set."
-msgstr ""
+msgstr "El comando de sonido no está configurado."
 
 #: src/orage-appointment-window.c:3961
 msgid "Repeat alarm sound"
@@ -1167,7 +1205,7 @@ msgstr "Usar ventana de Orage"
 
 #: src/orage-appointment-window.c:4007
 msgid "Select this if you want Orage window alarm."
-msgstr ""
+msgstr "Seleccione esta opción si desea la alarma para ventanas Orage."
 
 #: src/orage-appointment-window.c:4019
 msgid "Use notification"
@@ -1175,7 +1213,7 @@ msgstr "Usar notificación"
 
 #: src/orage-appointment-window.c:4021
 msgid "Select this if you want notification alarm."
-msgstr ""
+msgstr "Seleccione esta opción si desea recibir una alarma de notificación."
 
 #: src/orage-appointment-window.c:4029
 msgid "Set timeout"
@@ -1184,6 +1222,7 @@ msgstr "Establecer tiempo de expiración"
 #: src/orage-appointment-window.c:4031
 msgid "Select this if you want notification to expire automatically."
 msgstr ""
+"Seleccione esta opción si desea que la notificación caduque automáticamente."
 
 #: src/orage-appointment-window.c:4042
 msgid "0 = system default expiration time"
@@ -1201,6 +1240,7 @@ msgstr "Procedimiento"
 #: src/orage-appointment-window.c:4066
 msgid "Select this if you want procedure or script alarm."
 msgstr ""
+"Seleccione esta opción si desea una alarma por procedimiento o por script."
 
 #: src/orage-appointment-window.c:4078
 msgid ""
@@ -1214,10 +1254,19 @@ msgid ""
 "- &lt;&amp;ST&gt; appointment start time\n"
 "- &lt;&amp;ET&gt; appointment end time"
 msgstr ""
+"<b>Procesamiento de comandos de shell</b> \n"
+"Esta cadena se pasa directamente al shell, por lo que debe encargarse usted mismo del escape de caracteres. \n"
+"\n"
+"Los siguientes marcadores de posición se reemplazan en tiempo de ejecución: \n"
+"-  &lt;&amp;T&gt; título de la cita \n"
+"- &lt;&amp;D&gt; descripción de la cita \n"
+"- &lt;&amp;AT&gt; hora de la alarma \n"
+"- &lt;&amp;ST&gt; hora inicial de la cita \n"
+"- &lt;&amp;ET&gt; hora final de la cita"
 
 #: src/orage-appointment-window.c:4102
 msgid "Test this alarm by raising it now."
-msgstr ""
+msgstr "Pruebe esta alarma activándola ahora."
 
 #: src/orage-appointment-window.c:4115
 msgid "<b>Default alarm</b>"
@@ -1233,7 +1282,7 @@ msgstr "_Restaurar"
 
 #: src/orage-appointment-window.c:4141
 msgid "Set current settings from default alarm."
-msgstr ""
+msgstr "Configurar los ajustes actuales desde la alarma predeterminada."
 
 #: src/orage-appointment-window.c:4206
 msgid "None"
@@ -1290,6 +1339,10 @@ msgid ""
 "An exception can be either exclusion (-) or inclusion (+), depending on selection.\n"
 "Remove by clicking the date."
 msgstr ""
+"<b>Fechas de excepción</b> \n"
+"Añadir fechas de excepción haciendo clic en los días del calendario a continuación. \n"
+"Una excepción puede ser de exclusión (-) o de inclusión (+), según la selección. \n"
+"Eliminar haciendo clic en la fecha."
 
 #: src/orage-appointment-window.c:4324
 msgid "Add excluded date (-)"
@@ -1297,7 +1350,7 @@ msgstr "Añadir fecha excluida (-)"
 
 #: src/orage-appointment-window.c:4326
 msgid "Excluded days are full days where this appointment is not happening."
-msgstr ""
+msgstr "Se excluyen los días completos en los que no se realiza esta cita."
 
 #: src/orage-appointment-window.c:4333
 msgid "Add included time (+)"
@@ -1308,6 +1361,8 @@ msgid ""
 "Included times have same timezone than start time, but they may have "
 "different time."
 msgstr ""
+"Los horarios incluidos tienen la misma zona horaria que la hora de inicio, "
+"pero pueden tener una hora diferente."
 
 #. calendars showing the action days
 #: src/orage-appointment-window.c:4354
@@ -1316,7 +1371,7 @@ msgstr "Fechas de acción"
 
 #: src/orage-import.c:74
 msgid "Unsupported event type"
-msgstr ""
+msgstr "Tipo de evento no compatible"
 
 #: src/orage-import.c:106
 msgid "<b>Summary</b>"
@@ -1401,15 +1456,15 @@ msgstr "minutos"
 
 #: src/orage-sync-edit-dialog.c:141
 msgid "The name or description of this synchronization task."
-msgstr ""
+msgstr "El nombre o la descripción de esta tarea de sincronización."
 
 #: src/orage-sync-edit-dialog.c:144
 msgid "Command for synchronization."
-msgstr ""
+msgstr "Comando para sincronización."
 
 #: src/orage-sync-edit-dialog.c:147
 msgid "Synchronization period in minutes."
-msgstr ""
+msgstr "Periodo de sincronización en minutos."
 
 #: src/orage-sync-edit-dialog.c:166 src/parameters.c:1430 src/reminder.c:696
 msgid "_Close"
@@ -1648,7 +1703,7 @@ msgstr "Usar la nueva interfaz de usuario"
 
 #: src/parameters.c:820
 msgid "Enable the new interface layout (requires restart)."
-msgstr ""
+msgstr "Habilitar el nuevo diseño de interfaz (requiere reiniciar)."
 
 #: src/parameters.c:825
 msgid "Show borders"
@@ -1867,7 +1922,7 @@ msgstr "Posponer"
 
 #: src/reminder.c:714
 msgid "Remind me again after the specified time."
-msgstr ""
+msgstr "Recuérdamelo de nuevo después de la hora indicada."
 
 #: src/reminder.c:998
 msgid "Next active alarms:"
@@ -1876,11 +1931,11 @@ msgstr "Siguientes alarmas activas:"
 #: src/reminder.c:1040
 #, c-format
 msgid "<span weight=\"bold\">%1$02d d %2$02d h %3$02d min to:</span> %4$s"
-msgstr ""
+msgstr "<span weight=\"bold\">%1$02d d %2$02d h %3$02d min para:</span> %4$s"
 
 #: src/reminder.c:1057
 msgid "No active alarms found"
-msgstr ""
+msgstr "No se encontraron alarmas activas."
 
 #: src/timezone_names.c:31
 msgid "Africa"
