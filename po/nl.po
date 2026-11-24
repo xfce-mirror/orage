@@ -52,7 +52,7 @@ msgstr "Wilt u doorgaan?"
 #: src/event-list.c:1016 src/orage-appointment-window.c:1646
 #: src/parameters.c:645
 msgid "No, cancel the removal"
-msgstr "Nee, annuleer de verwijdering"
+msgstr "Nee, breek de verwijdering af"
 
 #: src/event-list.c:1017
 msgid "Yes, remove them"
@@ -207,7 +207,7 @@ msgstr "Zoek tekst "
 
 #: src/event-list.c:1464
 msgid "Flags"
-msgstr "Merktekens"
+msgstr "Vlaggen (merktekens)"
 
 #. title
 #: src/event-list.c:1472 src/orage-appointment-window.c:3593
@@ -254,7 +254,7 @@ msgstr "Orage standaardwekker"
 #. Create file chooser
 #: src/interface.c:269 src/orage-appointment-window.c:932 src/parameters.c:390
 msgid "Select a file..."
-msgstr "Selecteer een bestand..."
+msgstr "Kies een bestand..."
 
 #: src/interface.c:276
 msgid "Calendar files"
@@ -294,7 +294,7 @@ msgstr "Orage kan slechts met 10 vreemde bestanden omgaan. Grens is bereikt"
 
 #: src/interface.c:735
 msgid "Filename is empty."
-msgstr "Bestandnaam is leeg."
+msgstr "Bestandsnaam is leeg."
 
 #: src/interface.c:745
 msgid "Name is empty."
@@ -306,7 +306,7 @@ msgstr "Bestand bestaat niet."
 
 #: src/interface.c:766
 msgid "Same filename already exists in Orage."
-msgstr "Zelfde bestandnaam bestaat reeds in Orage."
+msgstr "Zelfde bestandsnaam bestaat reeds in Orage."
 
 #: src/interface.c:776
 msgid "Same name already exists in Orage."
@@ -314,7 +314,7 @@ msgstr "Zelfde naam bestaat al in Orage."
 
 #: src/interface.c:1029
 msgid "Import/export"
-msgstr "Invoer/uitvoer"
+msgstr "Invoeren/uitvoeren"
 
 #: src/interface.c:1036
 msgid "Import"
@@ -1381,7 +1381,7 @@ msgstr "<b>Locatie</b>"
 
 #: src/orage-import.c:147
 msgid "<b>URL</b>"
-msgstr "<b>URL</b>"
+msgstr "<b>Webadres</b>"
 
 #: src/orage-import.c:166
 msgid "<b>All-day</b>"
@@ -1510,15 +1510,15 @@ msgstr "_Bewerken"
 
 #: src/orage-window-classic.c:313 src/orage-window-next.c:143
 msgid "View selected _date"
-msgstr "Geselecteerde _datum bekijken"
+msgstr "Gekozen _datum bekijken"
 
 #: src/orage-window-classic.c:316 src/orage-window-next.c:144
 msgid "View selected _week"
-msgstr "Geselecteerde _week bekijken"
+msgstr "Gekozen _week bekijken"
 
 #: src/orage-window-classic.c:321 src/orage-window-next.c:145
 msgid "Select _Today"
-msgstr "_Vandaag selecteren"
+msgstr "_Vandaag kiezen"
 
 #. Help menu
 #. the rest
@@ -1744,7 +1744,7 @@ msgstr "Toon op alle werkbladen"
 
 #: src/parameters.c:924
 msgid "Keep on top"
-msgstr "Hou bovenaan"
+msgstr "Houd bovenaan"
 
 #: src/parameters.c:932
 msgid "Show in taskbar"
@@ -4187,7 +4187,7 @@ msgstr "%d uur"
 #: src/timezone_selection.c:148
 #, c-format
 msgid "%d mins"
-msgstr "% d min"
+msgstr "%d min"
 
 #: src/timezone_selection.c:154
 msgid "backward"
